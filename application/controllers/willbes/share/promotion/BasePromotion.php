@@ -92,6 +92,9 @@ class BasePromotion extends \app\controllers\FrontController
             $file_yn[$fileidx] = 'Y';
         }
 
+        $this->load->library('user_agent');
+        $ismobile = $this->agent->is_mobile();
+
         $view_file = 'willbes/pc/promotion/' . $this->_site_code . '/' . $arr_base['promotion_code'];
         $this->load->view($view_file, [
             'arr_base' => $arr_base,
@@ -101,7 +104,8 @@ class BasePromotion extends \app\controllers\FrontController
             'file_data_promotion' => $file_data_promotion,
             'arr_promotion_params' => $arr_promotion_params,
             'file_link' => $file_link,
-            'file_yn' => $file_yn
+            'file_yn' => $file_yn,
+            'ismobile' => $ismobile
         ], false);
     }
 

@@ -190,7 +190,7 @@
             $('#enddate').on('dp.change', function(){
                 var $cdate = $(this).val();
 
-                if($cdate < '{{ date("Y-m-d", time()) }}'){
+/*                if($cdate < '{{ date("Y-m-d", time()) }}'){
                     $(this).val('');
                     $('#chgdate').html('{{ date("Y-m-d", time()) }} ~ {{$lec['RealLecEndDate']}}');
                     alert("일시중지 종료일은 오늘 이후 날짜만 가능합니다.");
@@ -206,7 +206,7 @@
                     $(this).val('');
                     $('#chgdate').html('{{ date("Y-m-d", time()) }} ~ {{$lec['RealLecEndDate']}}');
                     alert("일지중지는 수강 종료일을 초과할수 없습니다.");
-                }
+                } */
 
                 $('#chgdate').html(moment($('#enddate').val()).add(1, 'days').format('YYYY-MM-DD')
                     +' ~ '+

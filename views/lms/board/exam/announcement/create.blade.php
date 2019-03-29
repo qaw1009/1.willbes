@@ -52,12 +52,25 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
 
-                    <label class="control-label col-md-1-1 d-line" for="area_ccd">지역<span class="required">*</span></label>
-                    <div class="form-inline col-md-4 ml-12-dot item">
-                        <select class="form-control" required="required" id="area_ccd" name="area_ccd" title="지역">
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="area_ccd">지역</label>
+                    <div class="col-md-4 form-inline">
+                        <select class="form-control" id="area_ccd" name="area_ccd" title="지역">
+                            <option value="">선택</option>
                             @foreach($arr_area_ccd as $key => $val)
                                 <option value="{{$key}}" @if($key == $data['AreaCcd'])selected="selected"@endif>{{$val}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <label class="control-label col-md-1-1 d-line" for="type_ccd">분류</label>
+                    <div class="form-inline col-md-4 ml-12-dot">
+                        <select class="form-control" id="division_ccd" name="division_ccd" title="분류">
+                            <option value="">선택</option>
+                            @foreach($arr_division_ccd as $key => $val)
+                                <option value="{{$key}}" @if($key == $data['DivisionCcd'])selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
                     </div>

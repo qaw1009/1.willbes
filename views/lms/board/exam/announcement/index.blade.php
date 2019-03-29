@@ -82,6 +82,7 @@
                     <th>카테고리</th>
                     <th>유형</th>
                     <th>지역</th>
+                    <th>분류</th>
                     <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
@@ -166,6 +167,7 @@
 
                     {'data' : 'AnnouncementName'},
                     {'data' : 'AreaName'},
+                    {'data' : 'DivisionCcdName'},
 
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';

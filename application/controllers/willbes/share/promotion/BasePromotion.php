@@ -66,6 +66,10 @@ class BasePromotion extends \app\controllers\FrontController
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
 
+        //이벤트 신청리스트 조회
+        $arr_condition = ['EQ' => ['A.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y']];
+        $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
+
         // 인증여부 추출
         $apply_result = null;
         //인증 파람값이 존재한다면

@@ -393,7 +393,7 @@ class BoardModel extends WB_Model
 
             $insert_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
+                VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 Title, Content, ReadCnt, SettingReadCnt, OrderNum,
                 IsUse,
                 IsStatus, RegMemIdx, 
@@ -403,7 +403,7 @@ class BoardModel extends WB_Model
             ';
             $select_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
+                VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 
                 CASE IsUse WHEN "Y" THEN "N" ELSE "N" END AS IsUse,

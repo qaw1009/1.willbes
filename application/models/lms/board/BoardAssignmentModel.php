@@ -231,4 +231,66 @@ class BoardAssignmentModel extends BoardModel
         }
         return true;
     }
+
+    /**
+     * 첨삭데이터 삭제
+     * 제출된 데이터만 삭제 가능
+     * @param $idx
+     * @return array|bool
+     */
+    public function boardDeleteForAssignment($idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $ba_idx = $idx;
+            $admin_idx = $this->session->userdata('admin_idx');
+            $result = $this->_findBoardData($ba_idx);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $admin_idx,
+                'UpdAdminDatm' => date('Y-m-d H:i:s')
+            ])->where('BaIdx', $ba_idx)->where('IsStatus', 'Y')->where('AssignmentStatusCcd', '698002')->update($this->_table_board_assignment);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 단일 데이터 조회(데이터 update 발생 시 idx 검증)
+     * @param $idx
+     * @return mixed
+     */
+    private function _findBoardData($idx)
+    {
+        $column = 'BaIdx';
+        $from = "
+            FROM {$this->_table_board_assignment}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'BaIdx' => $idx,
+                'AssignmentStatusCcd' => '698002',
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->row_array();
+
+        return $query;
+    }
 }

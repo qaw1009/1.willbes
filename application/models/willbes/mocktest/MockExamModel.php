@@ -46,7 +46,7 @@ class MockExamModel extends WB_Model
         'mockGrades' => 'lms_mock_grades',
         'mockGradesLog' => 'lms_mock_grades_log',
         'answerNote' => 'lms_mock_wronganswernote',
-        'mockGroupRProduct' => 'lms_mock_group_r_product',
+        'mockGroupR' => 'lms_mock_group_r_product',
         'mockGroup' => 'lms_mock_group'
 
     ];
@@ -81,7 +81,7 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND TakeFormsCcd = '690001' -- 온라인응시자
                 LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
-                LEFT JOIN {$this->_table['mockGroupRProduct']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
                 LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
         ";
 
@@ -121,7 +121,7 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
                 LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
-                LEFT JOIN {$this->_table['mockGroupRProduct']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
                 LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
         ";
 
@@ -259,10 +259,10 @@ class MockExamModel extends WB_Model
                         JOIN {$this->_table['mockRegisterR']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx AND MP.MpIdx = RP.MpIdx
                 ";
 
-        $obder_by = " GROUP BY MpIdx ORDER BY MockType, OrderNum";
+        $order_by = " GROUP BY MpIdx ORDER BY MockType, OrderNum";
 
         $where = "WHERE PM.`ProdCode` = '" . $ProdCode . "' AND MP.IsStatus = 'Y' AND MR.MemIdx = " . $MemIdx;
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
         $resMp = $query->result_array();
         $num = 1;
@@ -298,12 +298,12 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['mockProductExam']} AS MP ON RP.MpIdx = MP.MpIdx AND RP.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
         ";
 
-        $obder_by = " ORDER BY MockType, OrderNum";
+        $order_by = " ORDER BY MockType, OrderNum";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
 
     }
@@ -330,10 +330,10 @@ class MockExamModel extends WB_Model
                 LEFT OUTER JOIN {$this->_table['mockExamBase']} AS MP ON RP.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MP.IsStatus = 'Y'
         ";
 
-        $obder_by = " ORDER BY SubjectIdx";
+        $order_by = " ORDER BY SubjectIdx";
 
         $where = " WHERE MR.MemIdx = ".$this->session->userdata('mem_idx')." AND MR.ProdCode = ".$prodcode. " AND MR.IsStatus = 'Y'";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
 
     }
@@ -363,11 +363,11 @@ class MockExamModel extends WB_Model
                 LEFT OUTER JOIN {$this->_table['mockAnswerTemp']} AS MT ON MQ.MqIdx = MT.MqIdx AND MT.MemIdx = ".$this->session->userdata('mem_idx')." AND ProdCode = ".$ProdCode."
         ";
 
-        $obder_by = " ORDER BY QuestionNO ";
+        $order_by = " ORDER BY QuestionNO ";
 
         $where = "WHERE MP.MpIdx = ".$MpIdx;
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
 
     }
@@ -395,11 +395,11 @@ class MockExamModel extends WB_Model
                 LEFT OUTER JOIN {$this->_table['mockAnswerTemp']} AS MT ON MQ.MqIdx = MT.MqIdx AND MT.MemIdx = ".$this->session->userdata('mem_idx')." AND ProdCode = ".$ProdCode."
         ";
 
-        $obder_by = " ORDER BY QuestionNO ";
+        $order_by = " ORDER BY QuestionNO ";
 
         $where = "";
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
 
     }
@@ -429,12 +429,12 @@ class MockExamModel extends WB_Model
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
 
-        $obder_by = " ORDER BY `MP`.`ProdCode` DESC";
+        $order_by = " ORDER BY `MP`.`ProdCode` DESC";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data = $query->row_array();
 
         // 직렬이름 추출
@@ -497,11 +497,11 @@ class MockExamModel extends WB_Model
                 {$this->_table['mockLog']}
         ";
 
-        $obder_by = " ORDER BY RemainSec";
+        $order_by = " ORDER BY RemainSec";
 
         $where = " WHERE MrIdx = ".$mridx;
-        //echo "<pre>".'select '. $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select '. $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data = $query->row_array();
         return $data['RemainSec'];
     }
@@ -545,9 +545,9 @@ class MockExamModel extends WB_Model
 
             $where = $this->_conn->makeWhere($arr_condition);
             $where = $where->getMakeWhere(false);
-            $obder_by = "";
+            $order_by = "";
 
-            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
             $result = $query->row_array();
 
@@ -636,9 +636,9 @@ class MockExamModel extends WB_Model
 
                 $where = $this->_conn->makeWhere($arr_condition);
                 $where = $where->getMakeWhere(false);
-                $obder_by = "";
+                $order_by = "";
 
-                $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
 
 
@@ -724,7 +724,7 @@ class MockExamModel extends WB_Model
             FROM {$this->_table['mockAnswerTemp']}
         ";
 
-        $obder_by = "";
+        $order_by = "";
         $arr_condition = [
             'EQ' => [
                 'MemIdx'   => $this->session->userdata('mem_idx'),
@@ -736,8 +736,8 @@ class MockExamModel extends WB_Model
         $where = $where->getMakeWhere(false);
         $limit = " limit 1";
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by. $limit);
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by. $limit."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by. $limit);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by. $limit."</pre>";
         $rowArr = $query->row_array();
 
         if($rowArr['LogIdx']) return $rowArr['LogIdx'];
@@ -764,12 +764,12 @@ class MockExamModel extends WB_Model
             
         ";
 
-        $obder_by = " GROUP BY MP.MpIdx ORDER BY MP.MpIdx";
+        $order_by = " GROUP BY MP.MpIdx ORDER BY MP.MpIdx";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
         return $query->result_array();
     }
@@ -885,31 +885,37 @@ class MockExamModel extends WB_Model
      */
     public function gradeCall($ProdCode, $mode, $mridx){
 
+        $ProdIn = "
+            SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
+                SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
+            )
+        ";
+
         if ($mode == 'org') {
             $column = "
                 MemIdx, SUM(OrgPoint) AS ORG,
                 (
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx
                     ) AS A
                 ) AS COUNT,
                 (
-                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx LIMIT 1
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx LIMIT 1
                 ) AS KCNT,
                 ((
-                	SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . "
+                	SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .")
                 )/((
-                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx LIMIT 1
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx LIMIT 1
                 ) * (
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx
                     ) AS A
                 ))) AS tavg,
                 ((
-                	SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . "
+                	SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .")
                 )/(
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx
                     ) AS A
                 )) AS tsum,
                 fn_org_pointsum_rank('".$ProdCode."','".$mridx."') AS OrgRank
@@ -920,40 +926,40 @@ class MockExamModel extends WB_Model
                     {$this->_table['mockGrades']} AS MG
             ";
 
-            $obder_by = " GROUP BY MrIdx 
+            $order_by = " GROUP BY MrIdx 
 		                  ORDER BY ORG DESC ";
 
-            $where = " WHERE ProdCode = " . $ProdCode . " AND MrIdx=" . $mridx;
+            $where = " WHERE ProdCode IN (". $ProdIn .") AND MrIdx=" . $mridx;
         } else {
             $column = "
                 MemIdx, SUM(AdjustPoint) AS AD,
                 (
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx
                     ) AS A
                 ) AS COUNT,
                 (
-                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx LIMIT 1
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx LIMIT 1
                 ) AS KCNT,
                 (
                     SELECT MAX(ad) FROM(
-                        SELECT SUM(AdjustPoint) AS ad FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                        SELECT SUM(AdjustPoint) AS ad FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx
                     ) AS A
                 ) AS ADMAX,
                 ((
-                	SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . "
+                	SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .")
                 )/((
-                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx LIMIT 1
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx LIMIT 1
                 ) * (
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx
                     ) AS A
                 ))) AS tavg,
                 ((
-                	SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . "
+                	SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .")
                 )/(
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx
                     ) AS A
                 )) AS tsum,
                 fn_adjust_pointsum_rank('".$ProdCode."','".$mridx."') AS ADRank
@@ -964,14 +970,14 @@ class MockExamModel extends WB_Model
                     {$this->_table['mockGrades']} AS MG
             ";
 
-            $obder_by = " GROUP BY MrIdx 
+            $order_by = " GROUP BY MrIdx 
 		                  ORDER BY AD DESC, MemIdx";
 
-            $where = " WHERE ProdCode = " . $ProdCode . " AND MrIdx=" . $mridx;
+            $where = " WHERE ProdCode IN (". $ProdIn .") AND MrIdx=" . $mridx;
         }
 
-        //echo '<pre>select ' . $column . $from . $where . $obder_by.'</pre>';
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo '<pre>select ' . $column . $from . $where . $order_by.'</pre>';
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->row_array();
 
     }
@@ -987,14 +993,17 @@ class MockExamModel extends WB_Model
             MR.MemIdx,
             (
                 SELECT COUNT(*) FROM (
-                    SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} GROUP BY MrIdx
+                    SELECT MrIdx FROM {$this->_table['mockGrades']} WHERE ProdCode IN (
+                        SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
+                            SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
+                        )
+                    ) GROUP BY MrIdx
                 ) AS A
-                WHERE ProdCode = MR.ProdCode	
             ) AS COUNT,
-            (SELECT MAX(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = MR.ProdCode AND MpIdx = MG.MpIdx GROUP BY MpIdx) AS ORGMAX,
-	        (SELECT MAX(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = MR.ProdCode AND MpIdx = MG.MpIdx GROUP BY MpIdx) AS ADMAX,
-	        (SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = MR.ProdCode AND MpIdx = MG.MpIdx GROUP BY MpIdx) AS ORGSUM,
-	        (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = MR.ProdCode AND MpIdx = MG.MpIdx GROUP BY MpIdx) AS ADSUM,
+            (SELECT MAX(OrgPoint) FROM {$this->_table['mockGrades']} WHERE MpIdx = MG.MpIdx GROUP BY MpIdx) AS ORGMAX,
+	        (SELECT MAX(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MpIdx = MG.MpIdx GROUP BY MpIdx) AS ADMAX,
+	        (SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE MpIdx = MG.MpIdx GROUP BY MpIdx) AS ORGSUM,
+	        (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MpIdx = MG.MpIdx GROUP BY MpIdx) AS ADSUM,
             (SELECT SubjectName FROM {$this->_table['subject']} WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,
             MP.MpIdx, MockType, OrderNum, MR.MrIdx, MG.*
         ";
@@ -1008,11 +1017,18 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['mockGrades']} AS MG ON MR.MrIdx = MG.MrIdx AND RP.MpIdx = MG.MpIdx
         ";
 
-        $obder_by = " ORDER BY MockType, OrderNum, AdjustPoint DESC  ";
+        $order_by = " ORDER BY MockType, OrderNum, AdjustPoint DESC  ";
 
-        $where = " WHERE MR.ProdCode = " . $ProdCode . " AND MR.MrIdx=" . $MrIdx;
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $where = " 
+            WHERE 
+                MR.ProdCode IN (
+                    SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
+                        SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
+                    )
+                ) 
+                AND MR.MrIdx = " . $MrIdx;
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
 
     }
@@ -1022,7 +1038,7 @@ class MockExamModel extends WB_Model
      * @param $ProdCode
      * @return AVG
      */
-    public function adjustPointData($prodcode){
+    public function adjustPointData($ProdCode){
 
         $column = "
             (ROUND(SUM(AdjustPoint) / COUNT(*),2)) AS AVG
@@ -1033,11 +1049,15 @@ class MockExamModel extends WB_Model
                 {$this->_table['mockGrades']}
         ";
 
-        $obder_by = " GROUP BY MrIdx";
+        $order_by = " GROUP BY MrIdx";
 
-        $where = " WHERE ProdCode = " . $prodcode;
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $where = " WHERE ProdCode IN (
+                    SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
+                        SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
+                    )
+                )";
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
     }
 
@@ -1046,7 +1066,8 @@ class MockExamModel extends WB_Model
      * @param array $MpIdx $ProdCode
      * @return mixed
      */
-    public function gradeSubjectDetailCall($ProdCode, $mridx, $mode){
+    public function gradeSubjectDetailCall($ProdCode, $mridx, $mode)
+    {
 
         $column = "
             PM.MockType,
@@ -1058,14 +1079,13 @@ class MockExamModel extends WB_Model
             (
                 SELECT ROUND(ycnt / (ycnt + ncnt) * 100) FROM (
                     SELECT 
-                      (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MrIdx = " . $mridx . " AND MpIdx = MP.MpIdx AND IsWrong = 'Y') AS ycnt,
-                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MrIdx = " . $mridx . " AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt,
+                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE MrIdx = " . $mridx . " AND MpIdx = MP.MpIdx AND IsWrong = 'Y') AS ycnt,
+                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE MrIdx = " . $mridx . " AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt,
                      MP.MpIdx
                     FROM
                     {$this->_table['mockExamBase']} AS MP
                     JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
-                    JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.ProdCode = ".$ProdCode." AND PM.IsStatus = 'Y'  
-                    LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx  AND AP.ProdCode = ".$ProdCode."
+                    JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.ProdCode = " . $ProdCode . " AND PM.IsStatus = 'Y'  
                     GROUP BY MP.MpIdx
                 ) AS AA
                 WHERE
@@ -1074,14 +1094,19 @@ class MockExamModel extends WB_Model
             (
                 SELECT ROUND(ycnt / (ycnt + ncnt) * 100) FROM (
                     SELECT 
-                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = AP.ProdCode AND MpIdx = Ap.MpIdx AND MqIdx = AP.MqIdx AND IsWrong = 'Y') AS ycnt,
-                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = AP.ProdCode AND MpIdx = Ap.MpIdx AND MqIdx = AP.MqIdx AND IsWrong = 'N') AS ncnt,
-                     MP.MpIdx,AP.MqIdx
+                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE MqIdx = MQ.MqIdx AND MpIdx = MP.MpIdx AND IsWrong = 'Y') AS ycnt,
+                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE MqIdx = MQ.MqIdx AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt,
+                     MP.MpIdx,MQ.MqIdx
                     FROM
                     {$this->_table['mockExamBase']} AS MP
                     JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
-                    JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.ProdCode = ".$ProdCode." AND PM.IsStatus = 'Y' 
-                    LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx  AND AP.ProdCode = ".$ProdCode."
+                    JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx 
+                    AND PM.ProdCode IN (
+                        SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
+                            SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
+                        )
+                    )
+                    AND PM.IsStatus = 'Y' 
                     GROUP BY MQ.MqIdx
                 ) AS AA
                 WHERE
@@ -1091,8 +1116,8 @@ class MockExamModel extends WB_Model
             AnswerNum, 
             QuestionNO, 
             Answer, IsWrong,
-            (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = AP.ProdCode AND MpIdx = Ap.MpIdx AND MemIdx = Ap.MemIdx AND IsWrong = 'Y') AS ycnt,
-            (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = AP.ProdCode AND MpIdx = Ap.MpIdx AND MemIdx = Ap.MemIdx AND IsWrong = 'N') AS ncnt,
+            (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MrIdx = " . $mridx . " AND MpIdx = MP.MpIdx AND IsWrong = 'Y') AS ycnt,
+            (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MrIdx = " . $mridx . " AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt,
             (SELECT AreaName FROM {$this->_table['mockAreaList']} WHERE MalIdx = MQ.MalIdx AND IsStatus = 'Y') AS areaName
         ";
 
@@ -1100,22 +1125,20 @@ class MockExamModel extends WB_Model
             FROM
                 {$this->_table['mockExamBase']} AS MP
                 JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
-                JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.ProdCode = ".$ProdCode." AND PM.IsStatus = 'Y'
-                JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$ProdCode." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
+                JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.ProdCode = " . $ProdCode . " AND PM.IsStatus = 'Y'
+                LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = " . $ProdCode . " AND AP.MrIdx = " . $mridx . "
                 
         ";
 
-        if($mode == 1){
-            $obder_by = " ORDER BY PM.MockType, PM.OrderNum, MP.MpIdx, QuestionNO ";
-        }else{
-            $obder_by = " ORDER BY PM.MockType, MQ.MalIdx, PM.OrderNum, MP.MpIdx, QuestionNO ";
+        if ($mode == 1) {
+            $order_by = " ORDER BY PM.MockType, PM.OrderNum, MP.MpIdx, QuestionNO ";
+        } else {
+            $order_by = " ORDER BY PM.MockType, MQ.MalIdx, PM.OrderNum, MP.MpIdx, QuestionNO ";
         }
-
 
         $where = "";
 
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
 
     }
@@ -1152,13 +1175,13 @@ class MockExamModel extends WB_Model
                 LEFT OUTER JOIN {$this->_table['mockRegisterR']} AS RP ON MP.MpIdx = RP.MpIdx AND AP.MrIdx = RP.MrIdx
         ";
 
-        $obder_by = " ORDER BY QuestionNO ";
+        $order_by = " ORDER BY QuestionNO ";
 
         $where = "  WHERE MP.MpIdx = ".$MpIdx;
 
         if($MalIdxSet) $where .= " AND MQ.MalIdx in (".$MalIdxSet.")";
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
 
     }
@@ -1186,10 +1209,10 @@ class MockExamModel extends WB_Model
         ";
 
         $where = " WHERE MP.MpIdx = ".$mpidx;
-        $obder_by = " GROUP BY MQ.MalIdx
+        $order_by = " GROUP BY MQ.MalIdx
                       ORDER BY MQ.MalIdx";
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $rows = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $rows = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
         return $rows->result_array();
 
@@ -1233,9 +1256,9 @@ class MockExamModel extends WB_Model
 
             $where = $this->_conn->makeWhere($arr_condition);
             $where = $where->getMakeWhere(false);
-            $obder_by = "";
-            //return "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+            $order_by = "";
+            //return "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
             $result = $query->row_array();
 

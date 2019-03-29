@@ -671,7 +671,7 @@ class Assignment extends BaseBoard
 
         $column = ' STRAIGHT_JOIN
             a.BaIdx, a.BoardIdx, a.MemIdx, a.AssignmentStatusCcd, a.RegDatm, a.ReplyRegDatm, a.ReplyRegAdminIdx,
-            fn_ccd_name(a.AssignmentStatusCcd) AS AssignmentStatusCcdName,
+            fn_ccd_name(a.AssignmentStatusCcd) AS AssignmentStatusCcdName, a.IsStatus,
             a.IsReply,
             b.Title, c.MemName, c.MemId, fn_dec(c.PhoneEnc) AS MemPhone,
             a.ReplyRegDatm,
@@ -766,6 +766,24 @@ class Assignment extends BaseBoard
         $result = $this->boardAssignmentModel->modifyAssignmentBoard($this->_reqP(null, false), $this->_arr_assignment_status_ccd['M'], 'Y');
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 제출자료삭제
+     */
+    public function deleteAssignment($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->boardAssignmentModel->boardDeleteForAssignment($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
     }
 
     /**

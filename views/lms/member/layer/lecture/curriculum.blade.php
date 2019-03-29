@@ -119,6 +119,22 @@
                     <td>
                         {{floor(intval($row['StudyTime'])/60)}}분<br>
                         ( {{floor(intval($row['RealStudyTime'])/60)}}분 / {{$row['remaintime']}} )
+                        @if(
+                            empty($lec['MultipleApply']) == false && // 배수적용 빈칸 아니고
+                            $lec['MultipleApply'] != 1 && // 1은 무제한
+                            $lec['MultipleTypeCcd'] == '612001' &&
+                            $row['RealStudyTime'] > 0
+                        )
+                            <br/><button class="btn btn-sm btn-primary border-radius-reset mr-15 btn-danger btn_change"
+                                         data-m="{{$row['MemIdx']}}"
+                                         data-o="{{$row['OrderIdx']}}"
+                                         data-op="{{$row['OrderProdIdx']}}"
+                                         data-p="{{$row['ProdCode']}}"
+                                         data-ps="{{$row['ProdCodeSub']}}"
+                                         data-l="{{$row['wLecIdx']}}"
+                                         data-u="{{$row['wUnitIdx']}}"
+                                         onclick="fnTime();">배수시간조정</button>
+                        @endif
                     </td>
                     <td>
                         @if(empty($row['wUnitAttachFile']) == false)
@@ -190,6 +206,7 @@
             popupOpen(app_url('/cms/lecture/player/?lecidx={{$lec['wLecIdx']}}&unitidx='+idx+'&quility=' + quility , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
         }
 
+
         function fnSetRate(){
             $('#rate').val($('#txtrate').val());
             if(window.confirm('인쇄용 진도율을 '+$('#rate').val()+'%로 변경하시겠습니까?')){
@@ -206,9 +223,56 @@
                     function(ret, status){
                         alert(ret.ret_msg);
                     }, false, 'GET', 'json');
-
             }
         }
+
+
+        function fnAddTime()
+        {
+            if($('#addmemo').val().trim() == ""){
+                alert('추가이유를 입력해주십시요.');
+                return;
+            }
+
+            if($('#addminutes').val().trim() == 0){
+                alert('추가할시간을 입력해주십시요.');
+                return;
+            }
+
+            if(window.confirm('배수시간을 '+$('#addminutes').val()+'분 추가하시겠습니까?')){
+                if($('#addminutes').val().trim() < 0) {
+                    if (!window.confirm('배수시간을 빼는것이 맞습니까?')) {
+                        return;
+                    }
+                }
+
+                url = "{{ site_url("/member/manage/setTime/") }}";
+                data = $('#time_form').formSerialize();
+
+                sendAjax(url,
+                    data,
+                    function(ret){
+                        alert(ret.ret_msg);
+                        location.reload();
+                    },
+                    function(ret, status){
+                        alert(ret.ret_msg);
+                    }, false, 'GET', 'json');
+            }
+        }
+
+
+        $(document).ready(function() {
+            $('.btn_change').setLayer({
+                url: "{{ site_url("member/manage/layerSetTime/") }}",
+                add_param_type:'attr_param',
+                add_param:[
+                    {'id':'m'},{'id':'o'},{'id':'op'},{'id':'p'},{'id':'ps'},{'id':'l'},{'id':'u'},
+                ],
+                width: 800
+            });
+        });
+
 
     </script>
 

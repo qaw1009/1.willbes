@@ -33,7 +33,7 @@
       <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2019/03/1180_01.jpg" usemap="#Map1180A" title="시험전,수강생공부방법" border="0">
         <map name="Map1180A">
-          <area shape="rect" coords="203,909,928,1002" href="#" target="_blank" alt="3개년 기출특강 신청하기">
+          <area shape="rect" coords="203,909,928,1002" href="#" target="_blank" title="3개년 기출특강 준비중">
         </map>
 	  </div>
 

@@ -39,9 +39,16 @@
                     <div class="form-control-static col-md-4">
                         {{$data['AnnouncementName']}}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">지역</label>
-                    <div class="form-control-static col-md-4 ml-12-dot">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="">지역</label>
+                    <div class="form-control-static col-md-4">
                         {{$data['AreaName']}}
+                    </div>
+                    <label class="control-label col-md-1-1 d-line" for="">분류</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
+                        {{$data['DivisionCcdName']}}
                     </div>
                 </div>
 

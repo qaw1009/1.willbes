@@ -21,7 +21,8 @@ class Announcement extends BaseBoard
     ];
     private $_groupCcd = [
         'type_group_ccd_announcement' => '630',     //유형 그룹 코드 = 공고유형
-        'type_group_ccd_area' => '631'              //유형 그룹 코드 = 지역
+        'type_group_ccd_area' => '631',              //유형 그룹 코드 = 지역
+        'type_group_ccd_division' => '714'           //유형 그룹 코드 = 분류
     ];
 
     public function __construct()
@@ -48,6 +49,9 @@ class Announcement extends BaseBoard
         //지역
         $arr_area_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd_area']);
 
+        //분류
+        $arr_division_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd_division']);
+
         $this->load->view("board/exam/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
@@ -55,6 +59,7 @@ class Announcement extends BaseBoard
             'arr_category' => $arr_category,
             'boardName' => $this->board_name,
             'arr_area_ccd' => $arr_area_ccd,
+            'arr_division_ccd' => $arr_division_ccd,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
         ]);
     }
@@ -108,7 +113,7 @@ class Announcement extends BaseBoard
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
-            LB.TypeCcd, LB.AreaCcd, LSC1.CcdName as AnnouncementName, LSC2.CcdName as AreaName
+            LB.TypeCcd, LB.AreaCcd, LB.DivisionCcd, LSC1.CcdName as AnnouncementName, LSC2.CcdName as AreaName, fn_ccd_name(LB.DivisionCcd) AS DivisionCcdName
         ';
 
         $list = [];
@@ -182,11 +187,14 @@ class Announcement extends BaseBoard
         //지역
         $arr_area_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd_area']);
 
+        //분류
+        $arr_division_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd_division']);
+
         if (empty($params[0]) === false) {
             $column = '
             LB.BoardIdx, LB.SiteCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
-            LB.TypeCcd, LB.AreaCcd, LSC1.CcdName as AnnouncementName, LSC2.CcdName as AreaName
+            LB.TypeCcd, LB.AreaCcd, LB.DivisionCcd, LSC1.CcdName as AnnouncementName, LSC2.CcdName as AreaName, fn_ccd_name(LB.DivisionCcd) AS DivisionCcdName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -222,6 +230,7 @@ class Announcement extends BaseBoard
             'bmIdx' => $this->bm_idx,
             'arr_announcement_ccd' => $arr_announcement_ccd,
             'arr_area_ccd' => $arr_area_ccd,
+            'arr_division_ccd' => $arr_division_ccd,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
@@ -252,7 +261,7 @@ class Announcement extends BaseBoard
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
             ['field' => 'type_ccd', 'label' => '공고유형', 'rules' => 'trim|required|integer'],
-            ['field' => 'area_ccd', 'label' => '지역', 'rules' => 'trim|required|integer'],
+            /*['field' => 'area_ccd', 'label' => '지역', 'rules' => 'trim|required|integer'],*/
         ];
 
         if ($this->validate($rules) === false) {
@@ -289,7 +298,7 @@ class Announcement extends BaseBoard
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            LB.TypeCcd, LB.AreaCcd, LSC1.CcdName as AnnouncementName, LSC2.CcdName as AreaName
+            LB.TypeCcd, LB.AreaCcd, LB.DivisionCcd, LSC1.CcdName as AnnouncementName, LSC2.CcdName as AreaName, fn_ccd_name(LB.DivisionCcd) AS DivisionCcdName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -392,6 +401,7 @@ class Announcement extends BaseBoard
                 'RegType' => element('reg_type', $input),
                 'TypeCcd' => element('type_ccd', $input),
                 'AreaCcd' => element('area_ccd', $input),
+                'DivisionCcd' => element('division_ccd', $input),
                 'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'Content' => element('board_content', $input),

@@ -57,7 +57,7 @@
                     <tr>
                         <td>{{$key+1}}회차</td>
                         <td>{{$row['AddMinutes']}}분</td>
-                        <td>{{$row['AddMemo']}}분</td>
+                        <td>{{$row['AddMemo']}}</td>
                         <td>{{$row['wAdminName']}}</td>
                         <td>{{$row['AddDatm']}}</td>
                         <td>{{$row['AddIp']}}</td>

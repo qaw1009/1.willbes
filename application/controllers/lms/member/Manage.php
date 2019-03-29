@@ -2097,6 +2097,10 @@ class Manage extends \app\controllers\BaseController
     }
 
 
+    /**
+     * 인쇄용 진도율 변경
+     * @return CI_Output
+     */
     public function setRate()
     {
         $memidx = $this->_req('memidx');
@@ -2129,9 +2133,114 @@ class Manage extends \app\controllers\BaseController
     }
 
 
-    public function setViewtime()
+    /**
+     * 배수시간 변경 레이어
+     */
+    public function layerSetTime()
     {
+        $memidx = $this->_req('m');
+        $orderidx = $this->_req('o');
+        $orderprodidx = $this->_req('op');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('ps');
+        $wlecidx = $this->_req('l');
+        $wunitidx = $this->_req('u');
 
+        $param = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $cond  = [
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'OrderProdIdx' => $orderprodidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $wlecidx,
+                'wUnitIdx' => $wunitidx
+            ]
+        ];
+
+        $log = $this->manageLectureModel->getTimeLog($cond);
+
+        $curriculum = $this->manageLectureModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $wlecidx,
+                'wUnitIdx' => $wunitidx
+            ]
+        ]);
+
+        $curriculum = $curriculum[0];
+
+
+        $this->load->view('member/layer/lecture/time_modal', [
+            'log' => $log,
+            'curriculum' => $curriculum,
+            'param' => $param
+        ]);
     }
 
+
+    /**
+     * 배수시간 변경
+     */
+    public function setTime()
+    {
+        $memidx = $this->_req('m');
+        $orderidx = $this->_req('o');
+        $orderprodidx = $this->_req('op');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('ps');
+        $wlecidx = $this->_req('l');
+        $wunitidx = $this->_req('u');
+        $addm = $this->_req('addminutes');
+        $memo = $this->_req('addmemo');
+
+        if(is_numeric($memidx) == false ||
+            is_numeric($orderidx) == false ||
+            is_numeric($orderprodidx) == false ||
+            is_numeric($prodcode) == false ||
+            is_numeric($prodcodesub) == false ||
+            is_numeric($wlecidx) == false ||
+            is_numeric($wunitidx) == false ||
+            is_numeric($addm) == false
+        ){
+            return $this->json_error('데이터가 정확하지 않습니다.');
+        }
+
+        $curriculum = $this->manageLectureModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $wlecidx,
+                'wUnitIdx' => $wunitidx
+            ]
+        ]);
+
+        if(count($curriculum) != 1){
+            return $this->json_error('강좌정보가 없습니다.');
+        }
+
+        if($this->manageLectureModel->addTime([
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'OrderProdIdx' => $orderprodidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $wlecidx,
+                'wUnitIdx' => $wunitidx,
+                'addTime' => $addm,
+                'memo' => $memo
+            ]) == true){
+            return $this->json_result(true, $addm.'분이 추가되었습니다.');
+        } else {
+            return $this->json_error('시간추가에 실패했습니다.');
+        }
+
+    }
 }

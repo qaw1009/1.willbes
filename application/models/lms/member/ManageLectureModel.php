@@ -16,6 +16,8 @@ class ManageLectureModel extends WB_Model
         'down_log' => 'lms_lecture_data_download_log',
         'order_product' => 'lms_order_product',
         'device' => 'lms_member_device',
+        'time_log' => 'lms_lecture_studyinfo_time_log',
+        'study_info' => 'lms_lecture_studyinfo'
     ];
 
     public function __construct()
@@ -506,8 +508,8 @@ class ManageLectureModel extends WB_Model
         }
 
         return true;
-
     }
+
 
     public function setRate($input)
     {
@@ -526,6 +528,7 @@ class ManageLectureModel extends WB_Model
         return true;
     }
 
+
     public function getDownLog($cond, $isCount = false)
     {
         if($isCount === true){
@@ -541,5 +544,62 @@ class ManageLectureModel extends WB_Model
         $result = $this->_conn->query($query);
 
         return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+
+    public function getTimeLog($cond)
+    {
+        $query = "SELECT * ";
+        $query .= " FROM {$this->_table['time_log']} AS L
+            LEFT JOIN {$this->_table['admin']} AS A ON L.AddAdminIdx = A.wAdminIdx
+        ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $result = $this->_conn->query($query);
+
+        return $result->result_array();
+    }
+
+
+    public function addTime($data)
+    {
+        $this->_conn->trans_begin();
+        try{
+            if($this->_conn->
+                set('RealExpireTime', 'RealExpireTime + '.element('addTime', $data), false)->
+                where('MemIdx', element('MemIdx', $data))->
+                where('OrderIdx', element('OrderIdx', $data))->
+                where('OrderProdIdx', element('OrderProdIdx', $data))->
+                where('ProdCode', element('ProdCode', $data))->
+                where('ProdCodeSub', element('ProdCodeSub', $data))->
+                where('wLecIdx', element('wLecIdx', $data))->
+                where('wUnitIdx', element('wUnitIdx', $data))->
+                update($this->_table['study_info']) == false){
+                throw new \Exception('배수시간추가 업데이트 실패했습니다.');
+            }
+
+            if($this->_conn->set([
+                    'MemIdx' => element('MemIdx', $data),
+                    'OrderIdx' => element('OrderIdx', $data),
+                    'OrderProdIdx' => element('OrderProdIdx', $data),
+                    'ProdCode' => element('ProdCode', $data),
+                    'ProdCodeSub' => element('ProdCodeSub', $data),
+                    'wLecIdx' => element('wLecIdx', $data),
+                    'wUnitIdx' => element('wUnitIdx', $data),
+                    'AddMinutes' => element('addTime', $data),
+                    'AddMemo' => element('memo', $data),
+                    'AddAdminIdx' => $this->session->userdata('admin_idx'),
+                    'AddIp' => $this->input->ip_address()
+                ])->insert($this->_table['time_log']) == false){
+                throw new \Exception('배수시간추가 로그기록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+        return true;
     }
 }

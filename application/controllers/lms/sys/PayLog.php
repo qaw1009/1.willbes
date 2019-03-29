@@ -7,7 +7,7 @@ class PayLog extends \app\controllers\BaseController
     protected $helpers = array();
     private $_codes = [
         'pay' => [
-            'PayType' => ['PA' => '결제완료', 'RP' => '부분환불', 'CA' => '결제취소', 'NC' => '망취소']
+            'PayType' => ['PA' => '결제요청', 'RP' => '부분환불', 'CA' => '결제취소', 'NC' => '망취소']
         ]
     ];
 

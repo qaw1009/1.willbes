@@ -37,7 +37,7 @@
                         </select>
                         <select class="form-control mr-10" id="search_pay_type" name="search_pay_type">
                             <option value="">연동구분</option>
-                            <option value="PA">결제완료</option>
+                            <option value="PA">결제요청</option>
                             <option value="CA">결제취소</option>
                             <option value="NC">망취소</option>
                             <option value="RP">부분환불</option>

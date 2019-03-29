@@ -159,8 +159,7 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                console.log(getQueryString());
-                /*location.href='{{ site_url("/board/offline/{$boardName}") }}' + getQueryString();*/
+                location.href='{{ site_url("/board/offline/{$boardName}") }}' + getQueryString();
             });
 
             //데이터 수정 폼

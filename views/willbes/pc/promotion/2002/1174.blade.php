@@ -180,6 +180,12 @@
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
+            var is_login = '{{sess_data('is_login')}}';
+            if (is_login != true) {
+                alert('로그인 후 이용해 주세요.');
+                return;
+            }
+
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;

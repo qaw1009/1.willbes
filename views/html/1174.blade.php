@@ -31,14 +31,21 @@
         .slide_con p.leftBtn {left:-40px; top:46%; width:80px; height:80px;}
         .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}
 
-        .wb_02 {background:#f297b8 url(https://static.willbes.net/public/images/promotion/2019/03/1174_02_bg.jpg) no-repeat center top;} 
+        .wb_02 {background:#f297b8 url(https://static.willbes.net/public/images/promotion/2019/03/1174_02_bg.jpg) no-repeat center top; line-height:1.4} 
         .wb_02 .request {width:1000px; margin:0 auto; text-align:left; background:#fff; padding:50px; font-size:14px; margin-bottom:150px}
         .wb_02 .request h3 {font-size:30px; padding-bottom:10px; margin-bottom:30px; border-bottom:2px solid #f297b8}
         .wb_02 .request h3 span {color:#f297b8;}
         .wb_02 .request p {font-size:16px; margin-bottom:20px; font-weight:bold}
         .wb_02 .request li {margin-bottom:10px}
         .wb_02 .request .tit { display:inline-block; width:70px;}  
-        .wb_02 .request input {width:180px; height:26px;}  
+        .wb_02 .request input[type="text"] {width:200px; height:26px; border:1px solid #999; padding:0 10px; color:#666}
+        .wb_02 .request input[type="checkbox"] {width:20px; height:20px; border:1px solid #999;}  
+        .wb_02 .termsBx {float:left; width:30%;}
+        .wb_02 .termsBx01 {float:right; width:69%}
+        .wb_02 .termsBx01 ul {height:100px; overflow-y:scroll; border:1px solid #999; margin-bottom:10px}
+        .wb_02 .request:after {content:''; display:block; clear:both}
+    
+
         
                	
     </style>
@@ -74,24 +81,53 @@
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_01.jpg" title=" " /></div>
             <div class="request">
                 <h3>윌비스 신광은경찰 <span class="strong">합격자의 밤</span> 신청 </h3>
-                <div>
+                <div class="termsBx">
                     <p>수강생 정보</p>
                     <ul>
                         <li>
-                            <span class="tit">이름</span>
-                            <input type="text" id="" name="" value="" >
+                            <input type="text" id="" name="" value="" placeholder="이름" >
                         </li>
                         <li>
-                            <span class="tit">아이디</span>
-                            <input type="text" id="" name="" value="" >
+                            <input type="text" id="" name="" value="" placeholder="아이디">
                         </li>
                         <li>
-                            <span class="tit">전화번호</span>
-                            <input type="text" id="" name="" value="" >
+                            <input type="text" id="" name="" value="" placeholder="전화번호 숫자만 입력하세요.">
                         </li>
                     </ul>
-                </div>               
-                
+                </div>
+
+                <div class="termsBx01">
+                    <p>개인정보 수집/이용 동의 안내</p>
+                    <ul>
+                        <li>
+                        1. 개인정보 수집 이용 목적<br>
+                        - 신청자 본인 확인 및 신청 접수 및 문의사항 응대<br>
+                        - 통계분석 및 마케팅<br>
+                        - 윌비스 신광은경찰학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
+                        </li>
+                        <li>
+                        2. 개인정보 수집 항목<br>
+                        - 필수항목 : 성명, 연락처, 이메일
+                        </li>
+                        <li>
+                        3. 개인정보 이용기간 및 보유기간<br>
+                        - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
+                        </li>
+                        <li>
+                        4. 신청자의 개인정보 수집 및 활용 동의 거부 시<br>
+                        - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다.
+                        </li>
+                        <li>
+                        5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.
+                        </li>
+                        <li>
+                        6. 이벤트 진행에 따른 단체사진 및 영상 촬영에 대한 귀하의 초상권 사용을 동의하며, 해당 저작물에 대한 저작권은 윌비스에 귀속됩니다.
+                        </li> 
+                    </ul>
+                    <input type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의"> <label for="is_chk">윌비스에 개인정보 제공 동의하기(필수)</label>
+                </div>
+                            
+                <div></div>
             </div>
 
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_02.jpg" title=" " /></div>

@@ -12,7 +12,7 @@
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">주문검색</label>
-                    <div class="col-md-3 form-inline">
+                    <div class="col-md-5 form-inline">
                         <select class="form-control mr-10" id="search_keyword" name="search_keyword">
                             <option value="OrderNo">주문번호</option>
                             <option value="PgMid">상점아이디</option>
@@ -21,12 +21,6 @@
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;">
                     </div>
-                    <div class="col-md-2">
-                        <div class="checkbox">
-                            <input type="checkbox" id="search_chk_is_error" name="search_chk_is_error" class="flat" value="Y"/>
-                            <label for="search_chk_is_error" class="input-label"><span class="red pull-none ml-0">연동오류만 보기</span></label>
-                        </div>
-                    </div>
                     <label class="control-label col-md-1" for="search_pay_type">구분</label>
                     <div class="col-md-5 form-inline">
                         <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid">
@@ -34,6 +28,11 @@
                             <option value="willbes015">동영상(willbes015)</option>
                             <option value="willbes515">교재(willbes515)</option>
                             <option value="INIpayTest">테스트상점아이디</option>
+                        </select>
+                        <select class="form-control mr-10" id="search_is_result" name="search_is_result">
+                            <option value="">연동성공여부</option>
+                            <option value="Y">연동성공</option>
+                            <option value="N">연동실패</option>
                         </select>
                     </div>
                 </div>

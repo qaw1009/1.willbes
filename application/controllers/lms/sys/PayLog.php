@@ -7,7 +7,7 @@ class PayLog extends \app\controllers\BaseController
     protected $helpers = array();
     private $_codes = [
         'pay' => [
-            'PayType' => ['PA' => '결제완료', 'RP' => '부분환불', 'CA' => '결제취소', 'NC' => '망취소']
+            'PayType' => ['PA' => '결제요청', 'RP' => '부분환불', 'CA' => '결제취소', 'NC' => '망취소']
         ]
     ];
 
@@ -52,11 +52,20 @@ class PayLog extends \app\controllers\BaseController
         ];
         
         // 연동오류만 보기 선택
-        if ($this->_reqP('search_chk_is_error') === 'Y') {
-            if ($log_type == 'pay') {
-                $arr_condition['NOTIN'] = ['ResultCode' => ['0000', '00']];
-            } elseif ($log_type == 'deposit') {
-                $arr_condition['RAW'] = ['ErrorMsg is ' => 'not null'];
+        $search_is_result = $this->_reqP('search_is_result');
+        if (empty($search_is_result) === false) {
+            if ($search_is_result == 'Y') {
+                if ($log_type == 'pay') {
+                    $arr_condition['IN'] = ['ResultCode' => ['0000', '00']];
+                } elseif ($log_type == 'deposit') {
+                    $arr_condition['RAW'] = ['ErrorMsg is ' => 'null'];
+                }
+            } else {
+                if ($log_type == 'pay') {
+                    $arr_condition['NOTIN'] = ['ResultCode' => ['0000', '00']];
+                } elseif ($log_type == 'deposit') {
+                    $arr_condition['RAW'] = ['ErrorMsg is ' => 'not null'];
+                }
             }
         }
 

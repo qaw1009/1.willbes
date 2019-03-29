@@ -18,8 +18,6 @@
         }
     @endphp
 
-
-
     <h5>- 온라인 무료강좌 상품 정보를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
         <div class="x_title">
@@ -122,7 +120,7 @@
                             @foreach($freelectype_ccd as $key => $val)
                                 <input type="radio" name="FreeLecTypeCcd" id="FreeLecTypeCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['FreeLecTypeCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
-                            &nbsp;&nbsp;[비밀번호] <input type="text" name="FreeLecPasswd" id="FreeLecPasswd" value="{{$data['FreeLecPasswd']}}" class="form-control" title="보강동영상 비밀번호" maxlength="8" >
+                            &nbsp;&nbsp;[비밀번호] <input type="text" name="FreeLecPasswd" id="FreeLecPasswd" value="{{$data['FreeLecPasswd']}}" class="form-control" title="보강동영상 비밀번호" maxlength="30" >
                         </div>
                     </div>
                 </div>

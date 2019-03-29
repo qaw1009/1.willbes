@@ -317,6 +317,7 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     @foreach($data['LectureUnits'] as $idx => $row)
                     <tr>
                         <td class="w-no">{{ $row['wUnitNum'] }}회차 {{ $row['wUnitLectureNum'] }}강</td>
@@ -334,7 +335,12 @@
                         </td>
                         <td class="w-file">
                             @if(empty($row['wUnitAttachFile']) === false)
+                                @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
+                                    <a href="{{site_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $row['wAttachPath'].'/'.$row['wUnitAttachFile'])).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}" >
+                                        <img src="{{ img_url('sub/icon_file.gif') }}"></a>
+                                @else
                                 <img src="{{ img_url('sub/icon_file.gif') }}">
+                                @endif
                             @endif
                         </td>
                         <td class="w-time">{{ $row['wRuntime'] }}분</td>

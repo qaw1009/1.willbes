@@ -250,6 +250,9 @@ class Lecture extends \app\controllers\FrontController
         return $this->json_result(true, '', []);
     }
 
+    /**
+     * todo 이 함수 어디서 쓰는지 파악필요 . 조규호 19.03.29
+     */
     protected function _download()
     {
         $file_path = $this->_reqG('path');
@@ -257,4 +260,15 @@ class Lecture extends \app\controllers\FrontController
 
         public_download($file_path, $file_name);
     }
+
+    /**
+     * 강좌 연결 첨부파일 다운로드
+     */
+    public function download()
+    {
+        $filename = urldecode($this->_req('filename', false));
+        $filename_ori = urldecode($this->_req('filename_ori',false));
+        public_download($filename, $filename_ori);
+    }
+
 }

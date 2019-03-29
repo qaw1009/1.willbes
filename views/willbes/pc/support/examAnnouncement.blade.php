@@ -25,7 +25,6 @@
                                     <option value="{{$key}}" @if(element('s_announcement_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                                 @endforeach
                             </select>
-
                             <select id="s_area" name="s_area" title="지역" class="seleLecA" onchange="goUrl('s_area',this.value)">
                                 <option value="">지역</option>
                                 @foreach($arr_base['area'] as $key => $val)

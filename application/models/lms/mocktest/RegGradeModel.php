@@ -1382,7 +1382,7 @@ class RegGradeModel extends WB_Model
     {
         $ProdIn = "
             SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
-                SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
+                SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode." LIMIT 1
             )
         ";
 
@@ -1482,24 +1482,25 @@ class RegGradeModel extends WB_Model
      * @param array $MpIdx $ProdCode
      * @return mixed
      */
-    public function gradeDetailCall($ProdCode, $MrIdx)
-    {
+    public function gradeDetailCall($ProdCode, $MrIdx){
+
+        $ProdIn = "
+            SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
+                SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode." LIMIT 1
+            )
+        ";
 
         $column = "
             MR.MemIdx,
             (
                 SELECT COUNT(*) FROM (
-                    SELECT MrIdx FROM {$this->_table['mockGrades']} WHERE ProdCode IN (
-                        SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
-                            SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
-                        )
-                    ) GROUP BY MrIdx
+                    SELECT MrIdx FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") GROUP BY MrIdx
                 ) AS A
             ) AS COUNT,
-            (SELECT MAX(OrgPoint) FROM {$this->_table['mockGrades']} WHERE MpIdx = MG.MpIdx GROUP BY MpIdx) AS ORGMAX,
-	        (SELECT MAX(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MpIdx = MG.MpIdx GROUP BY MpIdx) AS ADMAX,
-	        (SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE MpIdx = MG.MpIdx GROUP BY MpIdx) AS ORGSUM,
-	        (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MpIdx = MG.MpIdx GROUP BY MpIdx) AS ADSUM,
+            (SELECT MAX(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") AND MpIdx = MG.MpIdx GROUP BY MpIdx) AS ORGMAX,
+	        (SELECT MAX(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") AND MpIdx = MG.MpIdx GROUP BY MpIdx) AS ADMAX,
+	        (SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") AND MpIdx = MG.MpIdx GROUP BY MpIdx) AS ORGSUM,
+	        (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode IN (". $ProdIn .") AND MpIdx = MG.MpIdx GROUP BY MpIdx) AS ADSUM,
             (SELECT SubjectName FROM {$this->_table['subject']} WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,
             MP.MpIdx, MockType, OrderNum, MR.MrIdx, MG.*
         ";
@@ -1513,16 +1514,11 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['mockGrades']} AS MG ON MR.MrIdx = MG.MrIdx AND RP.MpIdx = MG.MpIdx
         ";
 
-        $order_by = " ORDER BY 
-                        MockType, OrderNum, AdjustPoint DESC  ";
+        $order_by = " ORDER BY MockType, OrderNum, AdjustPoint DESC  ";
 
         $where = " 
             WHERE 
-                MR.ProdCode IN (
-                    SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
-                        SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
-                    )
-                ) 
+                MR.ProdCode IN (". $ProdIn .")
                 AND MR.MrIdx = " . $MrIdx;
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -1550,7 +1546,7 @@ class RegGradeModel extends WB_Model
 
         $where = " WHERE ProdCode IN (
                     SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
-                        SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
+                        SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode." LIMIT 1
                     )
                 )";
 
@@ -1600,7 +1596,7 @@ class RegGradeModel extends WB_Model
                     JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx 
                     AND PM.ProdCode IN (
                         SELECT ProdCode FROM {$this->_table['mockGroupR']} WHERE MgIdx = (
-                            SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode."
+                            SELECT MgIdx FROM {$this->_table['mockGroupR']} WHERE ProdCode = ".$ProdCode." LIMIT 1
                         )
                     )
                     AND PM.IsStatus = 'Y' 

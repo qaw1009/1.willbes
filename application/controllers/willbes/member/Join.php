@@ -426,7 +426,7 @@ class Join extends BaseMember
                 'Mem.CertifiedInfoTypeCcd' => '655002'
             ],
             'NOT' => [
-                'Mem.IsStatus' => 'D'
+                'Mem.IsStatus' => 'N'
             ]
         ]);
 
@@ -466,7 +466,7 @@ class Join extends BaseMember
                 'Mem.CertifiedInfoTypeCcd' => '655003'
             ],
             'NOT' => [
-                'Mem.IsStatus' => 'D'
+                'Mem.IsStatus' => 'N'
             ]
         ];
 

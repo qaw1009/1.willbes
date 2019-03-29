@@ -16,7 +16,8 @@ class SupportExamAnnouncement extends BaseSupport
     protected $_paging_count = 10;
     private $_groupCcd = [
         'type_group_ccd_announcement' => '630',     //유형 그룹 코드 = 공고유형
-        'type_group_ccd_area' => '631'              //유형 그룹 코드 = 지역
+        'type_group_ccd_area' => '631',              //유형 그룹 코드 = 지역
+        'type_group_ccd_division' => '714'           //유형 그룹 코드 = 분류
     ];
 
     public function __construct()
@@ -32,10 +33,12 @@ class SupportExamAnnouncement extends BaseSupport
         $s_keyword = element('s_keyword',$arr_input);
         $s_announcement_type = element('s_announcement_type',$arr_input);
         $s_area = element('s_area',$arr_input);
+        $s_division = element('s_division',$arr_input);
         $view_type = element('view_type',$arr_input);
         $get_page_params = 's_keyword='.$s_keyword;
         $get_page_params .= '&s_announcement_type='.$s_announcement_type;
         $get_page_params .= '&s_area='.$s_area;
+        $get_page_params .= '&s_division='.$s_division;
         $get_page_params .= '&view_type='.$view_type;
 
         //공고유형
@@ -43,6 +46,13 @@ class SupportExamAnnouncement extends BaseSupport
 
         //지역
         $arr_base['area'] = $this->codeModel->getCcd($this->_groupCcd['type_group_ccd_area']);
+
+        //분류
+        $arr_base['division'] = $this->codeModel->getCcd($this->_groupCcd['type_group_ccd_division']);
+
+        if ($this->_cate_code == '3024') {
+
+        }
 
         $list = [];
         $arr_condition = [

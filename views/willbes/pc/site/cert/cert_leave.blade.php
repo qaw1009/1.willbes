@@ -18,12 +18,9 @@
 
     <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
         <div class="laj_top">
-            <h3>전역(예정)간부 간편회원가입</h3>
+            <h3>전역(예정)간부 간편인증</h3>
             <ul>
-                <li>회원가입을 하셔야 전직교육과정 <span>"윌비스 PASS"</span>의 신청이 가능합니다.</li>
-                <li>기존 가입된 회원의 경우 군복무정보 및 인증파일 등록만 해 주시면 됩니다. <br/>
-                    * <span><strong>[가입여부 확인]</strong></span> 버튼을 통해 가입여부를 확인해 주세요.
-                </li>
+                <li>인증을 완료 하셔야 전직교육과정 <span>"윌비스 PASS"</span>의 신청이 가능합니다.</li>
                 <li>전직교육과정별 신청 사이트가 상이 하오니, 이 점 유의해 주시기 바랍니다.<br/>
                     ※ 하단 및 상품 신청 페이지의 <span><strong>[교육과정 바로가기]</strong></span> 버튼을 통해 각 사이트를 확인하세요.
                 </li>

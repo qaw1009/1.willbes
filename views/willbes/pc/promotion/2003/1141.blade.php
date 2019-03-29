@@ -336,7 +336,7 @@
                                         width: '100%',
                                         logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
                                         image: "http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png",
-                                        aspectratio: "16:9",
+                                        aspectratio: "21:9",
                                         autostart: "true",
                                         file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream11011"
                                 });

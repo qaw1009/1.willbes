@@ -50,7 +50,7 @@
                 <div><img src="{{ img_url('cop_adm/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
                 <div><img src="{{ img_url('cop_adm/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
                 <div class="youtubeGod">
-                    <iframe src="https://www.youtube.com/embed/hmXMCD4lG4g?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
+                    <iframe src="https://www.youtube.com/embed/7Tj31IJSpeg?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
                     <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
                 </div>
                 <ul class="ProfCopBox mt100">
@@ -102,7 +102,7 @@
                         </li>
                         <li>
                             <a href="#tab4">
-                                3법 300점! 2단계 문제풀이에서 가능했습니다.
+                                3법 300, 평균 98!!!! 8개월 합격
                                 <span>신광은경찰TV</span>
                             </a>
                         </li>
@@ -118,7 +118,7 @@
                     <iframe src="https://www.youtube.com/embed/my1yYcTb0ig?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
                 </div>
                 <div id="tab4" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/1mea_m4iMok?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/Vldycfx-OaE?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
                 </div>
             </div>
         </div>
@@ -256,7 +256,7 @@
         var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
         var tab2_url = "https://www.youtube.com/embed/NPe7NiOyA5E?rel=0&modestbranding=1&showinfo=0";        
         var tab3_url = "https://www.youtube.com/embed/my1yYcTb0ig?rel=0&modestbranding=1&showinfo=0";
-        var tab4_url = "https://www.youtube.com/embed/1mea_m4iMok?rel=0&modestbranding=1&showinfo=0";
+        var tab4_url = "https://www.youtube.com/embed/Vldycfx-OaE?rel=0&modestbranding=1&showinfo=0";
 
         $(function() {
             $(".youtubeBox").hide();

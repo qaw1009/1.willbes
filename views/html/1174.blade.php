@@ -23,14 +23,23 @@
         .wb_01 {background:#202020 url(https://static.willbes.net/public/images/promotion/2019/03/1174_01_bg.jpg) no-repeat center top;}
         .wb_01 .youtube {height:1418px}	
         .wb_01 .youtube iframe {margin-top:439px; width:854px; height:480px}
+
         /* 슬라이드배너 */
-        .slide_con {position:relative; width:1120px; margin:0 auto}	
+        .slide_con {position:relative; width:854px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-40px; top:46%; width:80px; height:80px;}
         .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}
 
-        .wb_02 {background:#f297b8 url(https://static.willbes.net/public/images/promotion/2019/03/1174_02_bg.jpg) no-repeat center top;}       
+        .wb_02 {background:#f297b8 url(https://static.willbes.net/public/images/promotion/2019/03/1174_02_bg.jpg) no-repeat center top;} 
+        .wb_02 .request {width:1000px; margin:0 auto; text-align:left; background:#fff; padding:50px; font-size:14px; margin-bottom:150px}
+        .wb_02 .request h3 {font-size:30px; padding-bottom:10px; margin-bottom:30px; border-bottom:2px solid #f297b8}
+        .wb_02 .request h3 span {color:#f297b8;}
+        .wb_02 .request p {font-size:16px; margin-bottom:20px; font-weight:bold}
+        .wb_02 .request li {margin-bottom:10px}
+        .wb_02 .request .tit { display:inline-block; width:70px;}  
+        .wb_02 .request input {width:180px; height:26px;}  
+        
                	
     </style>
 
@@ -46,37 +55,45 @@
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_01.jpg" title=" " /></div>
             <div class="slide_con">
                 <ul id="slidesImg7">
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_1.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_2.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_3.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_4.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_5.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_6.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_7.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_8.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_9.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_10.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_11.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_12.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_13.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_14.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_15.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_16.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_17.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_18.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_19.jpg" alt="#" /></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_20.jpg" alt="#" /></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img01.jpg" alt="#" /></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img02.jpg" alt="#" /></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img03.jpg" alt="#" /></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img04.jpg" alt="#" /></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img05.jpg" alt="#" /></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img06.jpg" alt="#" /></li>
                 </ul>
             
-                <p class="leftBtn"><a id="imgBannerLeft7"><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_arr_prev.png" alt="이전" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight7"><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_arr_next.png" alt="다음" /></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft7"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_pre.png" alt="이전" /></a></p>
+                <p class="rightBtn"><a id="imgBannerRight7"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_next.png" alt="다음" /></a></p>
           </div>
             
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_02.jpg" title=" " /></div>
 		</div>
 
-   		<div class="wbCommon wb_02">
+   		<div class="wbCommon NSK wb_02">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_01.jpg" title=" " /></div>
+            <div class="request">
+                <h3>윌비스 신광은경찰 <span class="strong">합격자의 밤</span> 신청 </h3>
+                <div>
+                    <p>수강생 정보</p>
+                    <ul>
+                        <li>
+                            <span class="tit">이름</span>
+                            <input type="text" id="" name="" value="" >
+                        </li>
+                        <li>
+                            <span class="tit">아이디</span>
+                            <input type="text" id="" name="" value="" >
+                        </li>
+                        <li>
+                            <span class="tit">전화번호</span>
+                            <input type="text" id="" name="" value="" >
+                        </li>
+                    </ul>
+                </div>               
+                
+            </div>
+
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_02.jpg" title=" " /></div>
         </div>
         

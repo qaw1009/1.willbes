@@ -205,7 +205,7 @@
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_5.png" alt="윌비스가 준비한 수험생 합격 응원 선물 적중 50선 LIVE"/ >
             <div class="tabContaier">
                 <ul>
-                    <li><a href="#tab1" id="tab_css1" {!! (date('YmdHis') > '20190328190000' && date('YmdHis') < '20190328240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1.png" class="off" alt="3/28 기미진" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1_on.png" class="on"  alt="#"/></a></li>
+                    <li><a href="#tab1" id="tab_css1" {!! (date('YmdHis') > '20190328000000' && date('YmdHis') < '20190328240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1.png" class="off" alt="3/28 기미진" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1_on.png" class="on"  alt="#"/></a></li>
                     <li><a href="#tab2" id="tab_css2" {!! (date('YmdHis') > '20190329000000' && date('YmdHis') < '20190329240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2.png" class="off" alt="3/29 한경준" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2_on.png"  class="on" alt="#"/></a></li>
                     <li><a href="#tab3" id="tab_css3" {!! (date('YmdHis') > '20190331000000' && date('YmdHis') < '20180331240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t3.png" class="off" alt="3/31 김덕관" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t3_on.png"  class="on" alt="#"/></a></li>
                     <li><a href="#tab4" id="tab_css4" {!! (date('YmdHis') > '20190401000000' && date('YmdHis') < '20180401240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4.png" class="off" alt="4/1  한덕현" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4_on.png" class="on"  alt="#"/></a></li>
@@ -226,7 +226,7 @@
                         </map>
                     </p>
                 </div>
-                <div class="tabContents" id="tab2" style="display:none;">
+                <div class="tabContents" id="tab2" style="display:none;" {!! (date('YmdHis2') > '20190328000000' && date('YmdHis2') < '20190328240000') ? 'class="active"' : '' !!}>
                     <p>
                         @php
                             if (empty($file_data_promotion[1]) === true) {
@@ -241,7 +241,7 @@
                         </map>
                     </p>
                 </div>
-                <div class="tabContents" id="tab3" style="display:none;">
+                <div class="tabContents" id="tab3" style="display:none;" {!! (date('YmdHis2') > '20190329000000' && date('YmdHis2') < '20190329240000') ? 'class="active"' : '' !!}>>
                     <p>
                         @php
                             if (empty($file_data_promotion[2]) === true) {

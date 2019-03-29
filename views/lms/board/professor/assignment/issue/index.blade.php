@@ -118,6 +118,7 @@
                 <th>채점여부</th>
                 <th>채점자</th>
                 <th>채점일</th>
+                <th>삭제</th>
             </tr>
             </thead>
             <tbody>
@@ -166,6 +167,17 @@
                         return '';
                     }},
                 {'data' : 'ReplyRegDatm'},
+                {'data' : 'BaIdx', 'render' : function(data, type, row, meta) {
+                        if (row.IsStatus == 'Y') {
+                            if (row.AssignmentStatusCcd == '698002') {
+                                return '<a href="javascript:void(0);" class="btn-delete" data-idx="' + row.BaIdx + '"><u><p class="red">삭제</p></u></a>';
+                            } else {
+                                return '삭제불가';
+                            }
+                        } else {
+                            return '삭제처리완료';
+                        }
+                    }},
             ]
         });
 
@@ -187,6 +199,24 @@
                     { 'id' : 'board_idx', 'name' : '첨삭식별자', 'value' : board_idx, 'required' : true }
                 ]
             });
+        });
+
+        $list_table.on('click', '.btn-delete', function() {
+            var _url = '{{ site_url("/board/professor/{$boardName}/deleteAssignment") }}/' + $(this).data('idx') + getQueryString();
+            var data = {
+                '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE'
+            };
+
+            if (!confirm('해당 과제를 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable.draw();
+                }
+            }, showError, false, 'POST');
         });
     });
 </script>

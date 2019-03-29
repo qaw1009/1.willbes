@@ -292,7 +292,7 @@
             <ul class="tabs">
                 <li><a href="#tab1">6,12개월 PASS</a></li>
                 <li><a href="#tab2">평생 0원 PASS</a></li>
-                <li><a href="#tab3">리바운드 환승이벤트</a></li>
+                <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
 
             <!--6,12개월-->

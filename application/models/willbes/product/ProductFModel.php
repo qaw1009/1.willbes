@@ -347,7 +347,7 @@ class ProductFModel extends WB_Model
     public function findProductLectureUnits($prod_code)
     {
         $column = 'P.ProdCode, PL.wLecIdx, WL.wLecName, WLU.wUnitIdx, WLU.wUnitName, WLU.wUnitNum, WLU.wUnitLectureNum, WLU.wHD, WLU.wSD, WLU.wWD
-            , WLU.wUnitAttachFileReal, WLU.wUnitAttachFile, WLU.wRuntime, WLU.wBookPage, WLU.wShootingDate, WLU.wProfIdx';
+            , WLU.wUnitAttachFileReal, WLU.wUnitAttachFile, WLU.wRuntime, WLU.wBookPage, WLU.wShootingDate, WLU.wProfIdx,WL.wAttachPath';
         $from = '
             from ' . $this->_table['product'] . ' as P		
                 inner join ' . $this->_table['product_lecture'] . ' as PL

@@ -105,6 +105,7 @@
                     <th>과정</th>
                     <th>교수명</th>
                     <th>제목</th>
+                    <th>첨부</th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>HOT</th>
@@ -194,6 +195,11 @@
                     {'data' : 'ProfNickName'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                        }},
+                    {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
+                            var tmp_return;
+                            (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
+                            return tmp_return;
                         }},
                     {'data' : 'wAdminName'},
                     {'data' : 'RegDatm'},

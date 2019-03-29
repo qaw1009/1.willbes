@@ -185,10 +185,9 @@
         <div class="evtCtnsBox wb_06" id="go">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p7.png"  alt="접수하기" usemap="#go"/>
 			<map name="go">
-                <area shape="rect" coords="151,402,380,525" href="{{ site_url('/mockTest/apply/cate/3001') }}" alt="온라인 일반경찰 모의고사"/>
-                <area shape="rect" coords="393,401,628,526" href="{{ site_url('/mockTest/apply/cate/3002') }}" alt="온라인 경행경채 모의고사"/>
-                <area shape="rect" coords="748,400,972,520" href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="학원모의고사" />
-			</map>
+                <area shape="rect" coords="151,402,535,524" href="#none" alt="온라인 일반경찰 모의고사"/>
+                <area shape="rect" coords="590,402,965,524" href="#none" alt="학원모의고사" />
+            </map>
         </div>
         
         <div class="content_guide_wrap">

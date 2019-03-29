@@ -4,7 +4,8 @@
     <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다. (괄호 안 붉은색 숫자는 미답변 카운트입니다.)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, $arr_unAnswered, true) !!}
+        {{--{!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, $arr_unAnswered, true) !!}--}}
+        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, [], true) !!}
         <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
 
         <div class="x_panel">

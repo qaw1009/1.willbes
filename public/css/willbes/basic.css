@@ -261,7 +261,7 @@ html {
 
 
 /* START */
-html, body, div, span, applet, object, iframe,
+html, body, div, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -346,13 +346,13 @@ select[disabled] {
 	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
 }
 .NSK {
-	font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
+	font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;
 }
 .NSK-Thin {
-	font-family: "NotoSansCJKkr-Thin", "Noto Sans KR", "sans-serif";
+	font-family: "NotoSansCJKkr-Thin", "Noto Sans KR", "sans-serif" !important;
 }
 .NSK-Black {
-	font-family: "NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif";
+	font-family: "NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif" !important;
 }
 .NG {
 	font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";

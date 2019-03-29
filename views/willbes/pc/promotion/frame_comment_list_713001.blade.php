@@ -20,10 +20,9 @@
 
             <!--댓글공지-관리자만 등록,수정,삭제 가능-->
             <div class="replyNoticeWrap">
-                {{--<div class="btnRt ">
-                    <a href='#none'>새로고침</a>
-                    <a href='javascript:add_notice()'>공지등록</a>
-                </div>--}}
+                <div class="btnRt ">
+                    <a href='#none' onclick="reload();">새로고침</a>
+                </div>
 
                 @foreach($arr_base['notice_data'] as $row)
                 <ul class="replyNotice">
@@ -108,6 +107,10 @@
             return false;
         }
         return true;
+    }
+
+    function reload() {
+        location.reload();
     }
 </script>
 

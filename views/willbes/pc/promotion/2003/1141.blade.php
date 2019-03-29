@@ -226,7 +226,7 @@
                         </map>
                     </p>
                 </div>
-                <div class="tabContents" id="tab2" style="display:none;" {!! (date('YmdHis2') > '20190328000000' && date('YmdHis2') < '20190328240000') ? 'class="active"' : '' !!}>
+                <div class="tabContents" id="tab2" style="display:none;">
                     <p>
                         @php
                             if (empty($file_data_promotion[1]) === true) {
@@ -241,7 +241,7 @@
                         </map>
                     </p>
                 </div>
-                <div class="tabContents" id="tab3" style="display:none;" {!! (date('YmdHis2') > '20190329000000' && date('YmdHis2') < '20190329240000') ? 'class="active"' : '' !!}>>
+                <div class="tabContents" id="tab3" style="display:none;">
                     <p>
                         @php
                             if (empty($file_data_promotion[2]) === true) {

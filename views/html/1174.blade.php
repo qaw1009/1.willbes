@@ -43,10 +43,8 @@
         .wb_02 .termsBx {float:left; width:30%;}
         .wb_02 .termsBx01 {float:right; width:69%}
         .wb_02 .termsBx01 ul {height:100px; overflow-y:scroll; border:1px solid #999; margin-bottom:10px}
-        .wb_02 .request:after {content:''; display:block; clear:both}
-    
-
-        
+        .wb_02 .request .btn {clear:both;border-top:1px solid #f297b8; margin-top:20px}
+        .wb_02 .request:after {content:''; display:block; clear:both}       
                	
     </style>
 
@@ -127,7 +125,9 @@
                     <input type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의"> <label for="is_chk">윌비스에 개인정보 제공 동의하기(필수)</label>
                 </div>
                             
-                <div></div>
+                <div class="btn">
+                    <a href="#none">신청하기</a>
+                </div>
             </div>
 
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_02.jpg" title=" " /></div>

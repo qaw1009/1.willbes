@@ -1218,3 +1218,14 @@
         .offAirBar span.offAirBarBtn {position: absolute; top:0; right: 0; z-index: 2; float:right; display:block; color:#fff; line-height:60px; margin-right:20px}
         .offAirBar ul {position:absolute; top:0; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px; width: 920px;}
         .offAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}
+
+    /*메인 하단 bar 배너*/
+    .mainBottomBn {
+        position:fixed;
+        bottom:0;
+        width: 100%;
+        background:#13385e;
+        z-index: 200;
+    }
+    .mainBottomBn div {position: relative; width: 1120px; margin:0 auto;}
+    .mainBottomBn div span {position: absolute; top:10px; right:10px; width: 19px; z-index: 1; cursor: pointer}

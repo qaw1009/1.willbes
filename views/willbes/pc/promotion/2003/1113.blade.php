@@ -1008,7 +1008,7 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149359')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149358')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -1025,7 +1025,7 @@
                             @else
                                 <td>
                                     <ul class="price">
-                                        <li class="liSty1">1,190,000원</li>
+                                        <li class="liSty1">1,090,000원</li>
                                         <li class="liSty2">본인부담 : 218,000원
                                             <div>(* 직업능력개발 교육비 872,000원 환급)</div>
                                         </li>
@@ -1037,7 +1037,7 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149358')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149359')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>

@@ -53,10 +53,15 @@ class MockTest extends \app\controllers\FrontController
             $searchdate2 = '1';
         }
 
+        $TakeFormsCcd = '';
+        $TakeFormsCcds = array();
         if($state == '1'){
             $TakeFormsCcd = '690001';
-        } else {
+        } else if($state == '2') {
             $TakeFormsCcd = '690002';
+        } else {
+            $TakeFormsCcds[] = '690001';
+            $TakeFormsCcds[] = '690002';
         }
 
         $arr_condition = [
@@ -67,7 +72,8 @@ class MockTest extends \app\controllers\FrontController
                 , 'pm.TakeFormsCcd' => $TakeFormsCcd
                 //,'pm.AcceptStatusCcd' => $s_type
             ],
-
+            'IN' => ['pm.TakeFormsCcd' => $TakeFormsCcds
+            ],
             'LKB' => [
                 'pm.ProdName' => $s_keyword
             ],

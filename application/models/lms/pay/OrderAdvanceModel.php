@@ -131,6 +131,7 @@ class OrderAdvanceModel extends BaseOrderModel
 						and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" 
 						and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '"   # 운영자패키지선택형 정상가 조회 (안분율 계산)	
 			where ML.LecEndDate >= ?
+			    and O.CompleteDatm <= ?
 				and OP.RealPayPrice > 0
 				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
 				and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture'] . '"
@@ -141,7 +142,7 @@ class OrderAdvanceModel extends BaseOrderModel
 
         // where 조건 바인딩
         $base_datm = $base_date . ' 23:59:59';
-        $raw_binds = [$base_date, $base_datm, $base_datm, $base_date, $base_date];
+        $raw_binds = [$base_date, $base_datm, $base_datm, $base_date, $base_date, $base_datm];
 
         if ($is_count === true) {
             $query = $raw_query;
@@ -300,6 +301,7 @@ class OrderAdvanceModel extends BaseOrderModel
 						and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" 
 						and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '"     # 종합반선택형 정상가 조회 (안분율 계산)			
 			where ML.LecEndDate >= ?
+			    and O.CompleteDatm <= ?
 				and OP.RealPayPrice > 0
 				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
 				and P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
@@ -310,7 +312,7 @@ class OrderAdvanceModel extends BaseOrderModel
 
         // where 조건 바인딩
         $base_datm = $base_date . ' 23:59:59';
-        $raw_binds = [$base_date, $base_datm, $base_datm, $base_date, $base_date];
+        $raw_binds = [$base_date, $base_datm, $base_datm, $base_date, $base_date, $base_datm];
 
         if ($is_count === true) {
             $query = $raw_query;

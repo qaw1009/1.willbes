@@ -50,9 +50,10 @@
         .tabContaier ul:after {content:""; display:block; clear:both}
         
         .wb_cts04 {background:#8f755c;}	
-        .wb_cts04 #movieFrame {width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
+        .wb_cts04 #movieFrame {position:relative; width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
         .wb_cts04 .embedWrap {padding-top:13px; width:980px; margin:0 auto}
         .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}        
+        .wb_cts04 .mobileCh {position:absolute; bottom:0; }
         .wb_cts04 .mobileCh li {width:50%; display:inline; float:left;}
         .wb_cts04 .mobileCh li a {display:block; text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0}
         .wb_cts04 .mobileCh li a.ch2 {color:#6CF}
@@ -204,11 +205,11 @@
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_5.png" alt="윌비스가 준비한 수험생 합격 응원 선물 적중 50선 LIVE"/ >
             <div class="tabContaier">
                 <ul>
-                    <li><a href="#tab1" id="tab_css1" {!! (date('YmdHis') > '20190328190000' && date('YmdHis') < '20190329120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1.png" class="off" alt="3/28 기미진" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1_on.png" class="on"  alt="#"/></a></li>
-                    <li><a href="#tab2" id="tab_css2" {!! (date('YmdHis') > '20190329190000' && date('YmdHis') < '20190330120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2.png" class="off" alt="3/29 한경준" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2_on.png"  class="on" alt="#"/></a></li>
-                    <li><a href="#tab3" id="tab_css3" {!! (date('YmdHis') > '20190331100000' && date('YmdHis') < '20180401120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t3.png" class="off" alt="3/31 김덕관" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t3_on.png"  class="on" alt="#"/></a></li>
-                    <li><a href="#tab4" id="tab_css4" {!! (date('YmdHis') > '20190401190000' && date('YmdHis') < '20180402120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4.png" class="off" alt="4/1  한덕현" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4_on.png" class="on"  alt="#"/></a></li>
-                    <li><a href="#tab5" id="tab_css5" {!! (date('YmdHis') > '20190402190000' && date('YmdHis') < '20180403120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t5.png" class="off" alt="4/2  한세훈" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t5_on.png" class="on"  alt="#"/></a></li>
+                    <li><a href="#tab1" id="tab_css1" {!! (date('YmdHis') > '20190328000000' && date('YmdHis') < '20190328240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1.png" class="off" alt="3/28 기미진" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1_on.png" class="on"  alt="#"/></a></li>
+                    <li><a href="#tab2" id="tab_css2" {!! (date('YmdHis') > '20190329000000' && date('YmdHis') < '20190329240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2.png" class="off" alt="3/29 한경준" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2_on.png"  class="on" alt="#"/></a></li>
+                    <li><a href="#tab3" id="tab_css3" {!! (date('YmdHis') > '20190331000000' && date('YmdHis') < '20180331240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t3.png" class="off" alt="3/31 김덕관" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t3_on.png"  class="on" alt="#"/></a></li>
+                    <li><a href="#tab4" id="tab_css4" {!! (date('YmdHis') > '20190401000000' && date('YmdHis') < '20180401240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4.png" class="off" alt="4/1  한덕현" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4_on.png" class="on"  alt="#"/></a></li>
+                    <li><a href="#tab5" id="tab_css5" {!! (date('YmdHis') > '20190402000000' && date('YmdHis') < '20180402240000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t5.png" class="off" alt="4/2  한세훈" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t5_on.png" class="on"  alt="#"/></a></li>
                 </ul>
                 <div class="tabContents" id="tab1" style="display:none;">
                     <p>
@@ -413,10 +414,10 @@
             } else if(seq == 2 && (timeStr < 20190329140000 || timeStr > 20190330120000)){
                 alert("3월29일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 3 && (timeStr < 20190331100000 || timeStr > 20180401120000)){
+            } else if(seq == 3 && (timeStr < 20190331100000 || timeStr > 20190401120000)){
                 alert("3월31일 오전 10시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 4 && (timeStr < 20190401140000 || timeStr > 20180402120000)){
+            } else if(seq == 4 && (timeStr < 20190401140000 || timeStr > 20190402120000)){
                 alert("4월1일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
             } else if(seq == 5 && (timeStr < 20190402140000 || timeStr > 20180403120000)) {

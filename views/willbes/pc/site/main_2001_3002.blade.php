@@ -252,6 +252,15 @@
     </div>
     <!-- End Container -->
 
+    <div class="mainBottomBn">
+        <div>
+            <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" >
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_mainBottom_bn.jpg" title="평생 0원 pass 3월 31일 마감">
+            </a>
+            <span class="btmEvClose"><img src="https://static.willbes.net/public/images/promotion/common/mainBottom_btnclose.png" title="닫기"></span>
+        </div>
+    </div>
+
     <script type="text/javascript">
         var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
         var tab2_url = "https://www.youtube.com/embed/NPe7NiOyA5E?rel=0&modestbranding=1&showinfo=0";        
@@ -280,6 +289,13 @@
                 $(activeTab).html(html_str);
                 $(activeTab).fadeIn();
                 return false;
+            });
+        });
+
+        //하단이벤트배너 닫기
+        $(function(){        
+            $('.mainBottomBn .btmEvClose').click(function(){
+                $('.mainBottomBn').hide();
             });
         });
     </script>

@@ -35,7 +35,7 @@ class BaseSupportFModel extends WB_Model
     protected $upload_file_rule = [
         'allowed_types' => 'hwp|doc|pdf|jpg|gif|png|zip',
         'overwrite' => 'false',
-        'max_size' => 2560
+        'max_size' => 10240 //2560
     ];
 
     public function __construct()

@@ -310,7 +310,7 @@
                     $live_video_type = 'off';
                     foreach ($set_on_day as $key => $val) {
                         if ($val == '20190331') {
-                            if ($time >= '135500' && $time <= '180000') {
+                            if ($time >= '135500' && $time <= '193000') {
                                 $live_video_type = 'on';
                             }
                         } else if ($day == $val){
@@ -414,7 +414,7 @@
             } else if(seq == 2 && (timeStr < 20190329140000 || timeStr > 20190330120000)){
                 alert("3월29일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 3 && (timeStr < 20190330150000 || timeStr > 20190331120000)){
+            } else if(seq == 3 && (timeStr < 20190330150000 || timeStr > 20190401120000)){
                 alert("3월30일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
             } else if(seq == 4 && (timeStr < 20190401140000 || timeStr > 20190402120000)){

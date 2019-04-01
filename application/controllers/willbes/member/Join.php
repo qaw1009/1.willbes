@@ -98,6 +98,9 @@ class Join extends BaseMember
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
                         'Mem.MemName' => $name,
                         'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -155,6 +158,9 @@ class Join extends BaseMember
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
                         'Mem.MemName' => $name,
                         'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -237,7 +243,11 @@ class Join extends BaseMember
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
                         'Mem.MemName' => $name,
                         'Mem.CertifiedInfoTypeCcd' => $CertifiedInfoTypeCcd
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
+
                 ];
 
                 // 이미 가입한 정보인지 체크
@@ -290,6 +300,9 @@ class Join extends BaseMember
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
                         'Mem.MemName' => $name,
                         'Mem.CertifiedInfoTypeCcd' => $CertifiedInfoTypeCcd
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 

@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
+        .skybanner {position:fixed;top:250px;right:10px;z-index:10;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/03/1173_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#f2f6f8}
         .evt02 {background:#323099}
@@ -62,13 +62,13 @@
         <div class="evtCtnsBox evt07">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1173_07.jpg" usemap="#Map1173A" title="윌비스 면접 CAMP 수강신청하기" border="0">
             <map name="Map1173A" id="Map1173A">
-                <area shape="rect" coords="182,502,946,561" href="{{ site_url('pass/offLecture/index?cate_code=3053') }}" title="면접캠프 수강 신청하기" />
+                <area shape="rect" coords="182,502,946,561" href="{{ site_url('/pass/offLecture/index?cate_code=3053') }}" title="면접캠프 수강 신청하기" />
             </map>
         </div>
         <div class="evtCtnsBox evt08" id="lec_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1173_08.jpg" usemap="#Map1173B" title="서울시 면접 CAMP 설명회" border="0">
             <map name="Map1173B" id="Map1173B">
-                <area shape="rect" coords="75,583,555,660" href="{{ site_url('pass.willbes.net/pass/event/show/ongoing?event_idx=158&') }}" title="면접캠프 설명회 신청하기" />
+                <area shape="rect" coords="75,583,555,660" href="{{ site_url('/pass/event/show/ongoing?event_idx=158&') }}" title="면접캠프 설명회 신청하기" />
             </map>
         </div>
         <div class="evtCtnsBox evt09">

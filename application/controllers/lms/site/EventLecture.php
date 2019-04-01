@@ -430,7 +430,7 @@ class EventLecture extends \app\controllers\BaseController
 
             $count = $this->eventLectureModel->listAllEventRegister(true, $arr_condition);
             if ($count > 0) {
-                $list = $this->eventLectureModel->listAllEventRegister(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EmIdx' => 'asc']);
+                $list = $this->eventLectureModel->listAllEventRegister(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EmIdx' => 'desc']);
             }
         }
 
@@ -488,7 +488,7 @@ class EventLecture extends \app\controllers\BaseController
             $arr_condition = $this->_getCommentListConditions($el_idx);
             $count_comment = $this->eventLectureModel->listAllEventComment(true, $arr_condition);
             if (empty($count_comment) === false) {
-                $data_comment = $this->eventLectureModel->listAllEventComment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.CIdx' => 'asc']);
+                $data_comment = $this->eventLectureModel->listAllEventComment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.CIdx' => 'desc']);
 
                 foreach ($data_comment as $key => $row) {
                     $list_comment[$key]['temp_type'] = 'comment';
@@ -738,7 +738,7 @@ class EventLecture extends \app\controllers\BaseController
 
         $el_idx = $params[0];
         $arr_condition = $this->_getRegisterListConditions($el_idx);
-        $list = $this->eventLectureModel->listAllEventRegister('excel', $arr_condition, null, null, ['A.EmIdx' => 'asc']);
+        $list = $this->eventLectureModel->listAllEventRegister('excel', $arr_condition, null, null, ['A.EmIdx' => 'desc']);
 
         // export excel
         $this->load->library('excel');
@@ -755,7 +755,7 @@ class EventLecture extends \app\controllers\BaseController
 
         $el_idx = $params[0];
         $arr_condition = $this->_getCommentListConditions($el_idx);
-        $list = $this->eventLectureModel->listAllEventComment('excel', $arr_condition, null, null, ['A.CIdx' => 'asc']);
+        $list = $this->eventLectureModel->listAllEventComment('excel', $arr_condition, null, null, ['A.CIdx' => 'desc']);
         
         // export excel
         $this->load->library('excel');

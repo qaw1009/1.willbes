@@ -92,8 +92,12 @@
                 <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_name"  id ="register_name" value="{{ sess_data('mem_name') }}"/>
                 <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
-
+                <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_param_names[]" value="합격청"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_param_names[]" value="응시번호"/> {{-- 체크 항목 전송 --}}
                 <input type="hidden" name="register_type" value="promotion"/>
+
                 <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_01.jpg" title="" /></div>
                 <div class="request" id="request">
                     <h3>윌비스 신광은경찰 <span class="strong">합격자의 밤</span> 신청 </h3>
@@ -109,14 +113,12 @@
                             <li>
                                 <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" placeholder="전화번호 숫자만 입력.">
                             </li>
-                            {{--
                             <li>
-                                <input type="text" id="" name="" value="" placeholder="합격청">
+                                <input type="text" id="register_data1" name="register_data1" value="" placeholder="합격청">
                             </li>
                             <li>
-                                <input type="text" id="" name="" value="" placeholder="응시번호">
+                                <input type="text" id="register_data2" name="register_data2" value="" placeholder="응시번호">
                             </li>
-                            --}}
                         </ul>
                     </div>
 
@@ -206,7 +208,7 @@
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
-                    location.reload();
+                    /*location.reload();*/
                 }
             }, showValidateError, null, false, 'alert');
         }

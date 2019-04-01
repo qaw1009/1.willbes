@@ -39,7 +39,7 @@
             <div class="PeMenu">
                 <ul>
                     <li>
-                        <a href="#none" onFocus="this.blur();" >
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1023') }}" onFocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_1.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_1on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_1.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_1on.jpg'" alt="신광은 형소법"  />
                         </a>
                     </li>
@@ -81,13 +81,4 @@
 </div>
 <!-- End Container -->
 
-
-<script src="/public/js/willbes/jquery.nav.js"></script>
-<script>
-    $(function(e){
-        var targetOffset= $("#evtContainer").offset().top;
-        $('html, body').animate({scrollTop: targetOffset}, 700);
-        /*e.preventDefault(); */
-    });
-</script>
 @stop

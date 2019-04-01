@@ -25,12 +25,21 @@
                                     <option value="{{$key}}" @if(element('s_announcement_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                                 @endforeach
                             </select>
-                            <select id="s_area" name="s_area" title="지역" class="seleLecA" onchange="goUrl('s_area',this.value)">
-                                <option value="">지역</option>
-                                @foreach($arr_base['area'] as $key => $val)
-                                    <option value="{{$key}}" @if(element('s_area', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
-                                @endforeach
-                            </select>
+                            @if($__cfg['CateCode'] == '3024')
+                                <select id="s_division" name="s_division" title="분류" class="seleLecA" onchange="goUrl('s_division',this.value)">
+                                    <option value="">분류</option>
+                                    @foreach($arr_base['division'] as $key => $val)
+                                        <option value="{{$key}}" @if(element('s_division', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
+                                    @endforeach
+                                </select>
+                            @else
+                                <select id="s_area" name="s_area" title="지역" class="seleLecA" onchange="goUrl('s_area',this.value)">
+                                    <option value="">지역</option>
+                                    @foreach($arr_base['area'] as $key => $val)
+                                        <option value="{{$key}}" @if(element('s_area', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
                         </div>
                         <div class="willbes-Lec-Search GM f_left mg0">
                             <div class="inputBox p_re">
@@ -57,7 +66,7 @@
                             <tr>
                                 <th>No<span class="row-line">|</span></th>
                                 <th>공고유형<span class="row-line">|</span></th>
-                                <th>지역<span class="row-line">|</span></th>
+                                <th>{{ ($__cfg['CateCode'] == '3024') ? '분류' : '지역' }}<span class="row-line">|</span></th>
                                 <th>제목<span class="row-line">|</span></th>
                                 <th>첨부<span class="row-line">|</span></th>
                                 <th>작성일<span class="row-line">|</span></th>
@@ -76,7 +85,7 @@
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
 
                                     <td class="w-date">{{$row['TypeCcd_Name']}}</td>
-                                    <td class="w-date">{{$row['AreaCcd_Name']}}</td>
+                                    <td class="w-date">{{ ($__cfg['CateCode'] == '3024') ? $row['DivisionCcd_Name'] : $row['AreaCcd_Name'] }}</td>
 
                                     <td class="w-list tx-left pl20">
                                         <a href="{{front_url($default_path.'/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">

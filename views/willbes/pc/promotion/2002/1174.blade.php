@@ -85,9 +85,8 @@
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_02.jpg" title=" " /></div>
 		</div>
 
-   		<div class="wbCommon NSK wb_02">
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_end.jpg" title="신청마감" /></div>
-            {{--
+   		<div class="wbCommon NSK wb_02">           
+            <!--
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
@@ -160,7 +159,8 @@
                     </div>
                 </div>
             </form>
-            --}}
+            -->
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_end.jpg" title="신청마감" /></div>
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_02.jpg" title=" " /></div>
         </div>
         

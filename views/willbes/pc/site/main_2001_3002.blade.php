@@ -251,7 +251,8 @@
         </div>
     </div>
     <!-- End Container -->
-
+    
+    {{--
     <div class="mainBottomBn">
         <div>
             <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" >
@@ -260,6 +261,7 @@
             <span class="btmEvClose"><img src="https://static.willbes.net/public/images/promotion/common/mainBottom_btnclose.png" title="닫기"></span>
         </div>
     </div>
+    --}}
 
     <script type="text/javascript">
         var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";

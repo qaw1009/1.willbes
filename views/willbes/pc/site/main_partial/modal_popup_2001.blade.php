@@ -13,12 +13,11 @@
             <div class="pop-container">
                 <div class="pop-conts">
                     <!--content //-->
-                    <img src="https://static.willbes.net/public/images/promotion/2019/03/LayPop190328_p.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라" usemap="#Map190325" border="0"/>
-                        <map name="Map190325" id="Map190325">
-                            <area shape="rect" coords="110,411,258,463" href="{{ site_url('/promotion/index/cate/3001/code/1127') }}" alt="2단계 동형모의고사" />
-                            <area shape="rect" coords="593,138,707,173" href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}" alt="숨은 필홥자를 찾아라" />
-                            <area shape="rect" coords="381,196,745,464" href="{{ site_url('/pass/promotion/index/cate/3010/code/1174') }}" alt="합격자의 밤" />
-                        </map>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/LayPop190401_p.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라" usemap="#Map190325" border="0"/>
+                    <map name="Map190325" id="Map190325">
+                        <area shape="rect" coords="6,4,367,313" href="{{ site_url('/promotion/index/cate/3001/code/1127') }}" alt="2단계 동형모의고사" />
+                        <area shape="rect" coords="372,4,754,312" href="{{ site_url('/pass/promotion/index/cate/3010/code/1174') }}" alt="합격자의 밤" />
+                    </map>
                     <div class="btn-r">
                         <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop2002('passpopup', 'blackpopup');" >하루 보지않기</a>
                         <a class="cbtn" href="#">Close</a>

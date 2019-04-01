@@ -28,7 +28,7 @@
                 <ul class="replyNotice">
                     <li>
                         <div class="ry_info">
-                            <span class="notice">공지</span> <span class="date">{{ $row['RegDate'] }}</span> <strong>{{ $row['Title'] }}</strong>
+                            <span class="notice">공지</span> {{--<span class="date">{{ $row['RegDate'] }}</span> --}}<strong>{{ $row['Title'] }}</strong>
                         </div>
                         @if(empty($row['AttachData']) === false && $row['AttachData'] != 'N')
                         <div class="ry_info">

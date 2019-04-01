@@ -491,7 +491,7 @@ class EventFModel extends WB_Model
         return element('0', $result, []);
     }
 
-    public function getEventForNotice($event_idx, $column='*')
+    /*public function getEventForNotice($event_idx, $column='*')
     {
         $arr_condition = [
             'EQ' => [
@@ -503,6 +503,50 @@ class EventFModel extends WB_Model
         $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, null, null);
         //echo $this->_conn->last_query();exit;
         return $result;
+    }*/
+    public function getEventForNotice($event_idx, $column='*', $order_by=['b.BoardIdx' => 'desc'])
+    {
+        $def_column = "
+                m.*,
+                IFNULL((
+                    SELECT
+                    CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+                        'FileIdx', BoardFileIdx,
+                        'FileType', AttachFiletype,
+                        'FilePath', AttachFilePath,
+                        'FileName', AttachFileName,
+                        'RealName', AttachRealFileName,
+                        'Filesize', AttachFileSize
+                    )), ']') AS AttachData	
+                    
+                    FROM lms_board_attach
+                    WHERE BoardIdx=m.BoardIdx AND IsStatus='Y'
+                ),'N') AS AttachData
+            ";
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset(10, null)->getMakeLimitOffset();
+
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => $this->_bm_idx,
+                'b.ElIdx' => $event_idx,
+                'b.IsUse' => 'Y'
+            ],
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['board']} AS b
+        ";
+
+        $set_query = ' FROM ( select ' . $column;
+        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= ') AS m ';
+        $query = $this->_conn->query('select ' . $def_column . $set_query);
+
+        return $query->result_array();
     }
 
     /**

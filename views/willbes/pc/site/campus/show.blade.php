@@ -63,49 +63,77 @@
                 </ul>
             </div><!-- subSection02// -->
 
-            {{--부산캠퍼스만 추가
-            <div class="subSection02 mt20">
-                <ul>
-                    <li>
-                        <div class="bSlider acad blue">
-                            <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+            {{-- 부산 캠퍼스 --}}
+            @if($campus_code == '605003')
+                <div class="subSection02 mt20">
+                    <ul>
+                        <li>
+                            <div class="bSlider acad blue">
+                                <div class="slider">
+                                    @if(empty($arr_base['arr_main_banner']['캠퍼스_서브3']) === false)
+                                        @php $link_url = '#none'; @endphp
+                                        @foreach($arr_base['arr_main_banner']['캠퍼스_서브3'] as $row)
+                                            @if(empty($row['LinkUrl']) === false)
+                                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                            @endif
+                                            <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bSlider acad blue">
-                            <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                        </li>
+                        <li>
+                            <div class="bSlider acad blue">
+                                <div class="slider">
+                                    @if(empty($arr_base['arr_main_banner']['캠퍼스_서브4']) === false)
+                                        @php $link_url = '#none'; @endphp
+                                        @foreach($arr_base['arr_main_banner']['캠퍼스_서브4'] as $row)
+                                            @if(empty($row['LinkUrl']) === false)
+                                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                            @endif
+                                            <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="subSection02 mt20">
-                <ul>
-                    <li>
-                        <div class="bSlider acad blue">
-                            <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subSection02 mt20">
+                    <ul>
+                        <li>
+                            <div class="bSlider acad blue">
+                                <div class="slider">
+                                    @if(empty($arr_base['arr_main_banner']['캠퍼스_서브5']) === false)
+                                        @php $link_url = '#none'; @endphp
+                                        @foreach($arr_base['arr_main_banner']['캠퍼스_서브5'] as $row)
+                                            @if(empty($row['LinkUrl']) === false)
+                                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                            @endif
+                                            <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bSlider acad blue">
-                            <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                        </li>
+                        <li>
+                            <div class="bSlider acad blue">
+                                <div class="slider">
+                                    @if(empty($arr_base['arr_main_banner']['캠퍼스_서브6']) === false)
+                                        @php $link_url = '#none'; @endphp
+                                        @foreach($arr_base['arr_main_banner']['캠퍼스_서브6'] as $row)
+                                            @if(empty($row['LinkUrl']) === false)
+                                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                            @endif
+                                            <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            --}}
-            
+                        </li>
+                    </ul>
+                </div>
+            @endif
 
             <div class="noticeTabs acad">
                 <a name="tabLink"></a>

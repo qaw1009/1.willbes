@@ -40,7 +40,7 @@ class Campus extends \app\controllers\FrontController
 
     private function _banner($cate_code, $campus_code)
     {
-        $arr_banner_disp = ['캠퍼스_메인', '캠퍼스_서브1', '캠퍼스_서브2'];
+        $arr_banner_disp = ['캠퍼스_메인', '캠퍼스_서브1', '캠퍼스_서브2', '캠퍼스_서브3', '캠퍼스_서브4', '캠퍼스_서브5', '캠퍼스_서브6'];
         $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code, $campus_code);
 
         $data = [];

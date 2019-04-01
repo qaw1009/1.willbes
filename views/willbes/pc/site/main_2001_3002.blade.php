@@ -33,6 +33,7 @@
                     {{-- 메인핵심 배너 include --}}
                     @include('willbes.pc.site.main_partial.main_point_' . $__cfg['SiteCode'])
                 </ul>
+                {{--
                 <div class="willbes-Bnr mt30">
                     <ul>
                         <li>
@@ -42,6 +43,7 @@
                         </li>
                     </ul>
                 </div>
+                --}}
             </div>
         </div>
 

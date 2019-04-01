@@ -68,6 +68,9 @@ class Find extends BaseMember
                     'EQ' => [
                         'Mem.CertifiedInfoTypeCcd' => $jointype,
                         'Mem.CertifiedInfo' => $dupInfo
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -113,6 +116,9 @@ class Find extends BaseMember
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
                         'Mem.MemName' => $name,
                         'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -156,6 +162,9 @@ class Find extends BaseMember
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
                         'Mem.MemName' => $name,
                         'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -246,6 +255,9 @@ class Find extends BaseMember
                         'Mem.MemId' => $MemId,
                         'Mem.CertifiedInfoTypeCcd' => $jointype,
                         'Mem.CertifiedInfo' => $dupInfo
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -292,6 +304,9 @@ class Find extends BaseMember
                         'MemId' => $MemId,
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
                         'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -348,6 +363,9 @@ class Find extends BaseMember
                         'MemId' => $MemId,
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
                         'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -413,6 +431,9 @@ class Find extends BaseMember
                         'Mem.MemId' => $MemId,
                         'Mem.CertifiedInfoTypeCcd' => $jointype,
                         'Mem.CertifiedInfo' => $dupInfo
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -467,6 +488,9 @@ class Find extends BaseMember
                         'Mem.MemId' => $MemId,
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
                         'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 
@@ -533,6 +557,9 @@ class Find extends BaseMember
                         'Mem.MemId' => $MemId,
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
                         'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ],
+                    'NOT' => [
+                        'Mem.IsStatus' => 'N'
                     ]
                 ];
 

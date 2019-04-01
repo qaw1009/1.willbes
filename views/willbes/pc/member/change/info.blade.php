@@ -378,13 +378,18 @@
                         <a class="closeBtn" href="#none" onclick="closeWin('EMAILPASS')">
                             <img src="{{ img_url('sub/close.png') }}">
                         </a>
+                        <!--
                         <div class="Layer-Tit tx-dark-black NG">이메일 인증</div>
-
+                        -->
+                        <div class="Layer-Tit tx-dark-black NG">이메일 변경</div>
                         <div class="lecMoreWrap">
                             <div class="PASSZONE-List widthAutoFull Member">
                                 <ul class="passzoneInfo tx-gray NGR">
+                                    <li>- 변경할 이메일 주소를 입력해주십시요.</li>
+                                    <!--
                                     <li>- 본인 인증하시면 이메일 주소도 변경이 가능합니다.</li>
                                     <li>- 변경하실 이메일주소 입력 후 ‘이메일 인증’ 버튼을 클릭하여 메일로 발송된 인증링크를 30분 이내에 클릭해 주세요.</li>
+                                    -->
                                 </ul>
                                 <div class="widthAuto570">
                                     <div class="inputBox p_re">
@@ -404,7 +409,9 @@
                                         <span>확인</span>
                                     </button>
                                 </div>
+                                <!--
                                 <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
+                                -->
                             </div>
                             <!-- PASSZONE-List -->
                         </div>

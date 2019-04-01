@@ -51,7 +51,7 @@
         
         .wb_cts04 {background:#8f755c;}	
         .wb_cts04 #movieFrame {position:relative; width:980px; height:420px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center center;}
-        .wb_cts04 .embedWrap {padding-top:13px; width:980px; margin:0 auto}
+        .wb_cts04 .embedWrap {width:980px; margin:0 auto}
         .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:100%; height:auto; margin:0 auto}        
         .wb_cts04 .mobileCh {position:absolute; bottom:0; width:980px;}
         .wb_cts04 .mobileCh li {display:inline; float:left; width:490px;}

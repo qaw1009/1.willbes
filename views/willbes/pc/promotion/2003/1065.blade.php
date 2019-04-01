@@ -16,11 +16,11 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
-        .wb_cts01 {background:url(http://file3.willbes.net/new_gosi/2018/10/EV181031Y_01_bg.jpg) no-repeat center top}
+        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/03/1065_01_bg.jpg) no-repeat center top}
         .wb_cts02 {background:#33feb4}
         .tabWrapArmy {width:887px; margin:0 auto; box-shadow:0 5px 5px rgba(0,0,0,.2); margin-bottom:10px}
         .tabmenuT {width:200px; float:left}
@@ -44,13 +44,13 @@
         .event_table .tit_lec{font-size:14px; color:#f7d677}
 
         /*버튼*/
-        a.button01{display:inline-block;padding:8px 20px; border:1px solid #fff;  background:#e83e3e; color:#fff !important; font-size:12px; text-transform:uppercase;margin:0px; -webkit-transition: background-color 0.5s, border-color 0.5s;transition: background-color 0.35s, border-color 0.5s;font-weight:bold; text-decoration:none;border-radius:6px}
+        a.button01{display:inline-block;padding:8px 20px; border:1px solid #fff; background:#e83e3e; color:#fff !important; font-size:12px; text-transform:uppercase;margin:0px; -webkit-transition: background-color 0.5s, border-color 0.5s;transition: background-color 0.35s, border-color 0.5s;font-weight:bold; text-decoration:none;border-radius:6px}
         a.button01:hover{border:1px solid #000;background:#fff; color:#000 !important; font-size:12px;  border-radius:6px}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_cts01">
-            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_01.jpg" alt="윌비스 군무원 PASS 시즌5" usemap="#Map180831" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_01.jpg" alt="윌비스 군무원 PASS 시즌5" usemap="#Map180831" border="0">
             <map name="Map180831" id="Map180831">
                 <area shape="rect" coords="571,1699,731,1738" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149253') }}" alt="59만원" />
                 <area shape="rect" coords="918,1698,1080,1737" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />
@@ -58,7 +58,7 @@
         </div><!--wb_cts01//-->
 
         <div class="evtCtnsBox wb_cts02" id="wb01">
-            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_1.jpg" alt="수강생 전용해톅, 전문교수진">
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_1.jpg" alt="수강생 전용해톅, 전문교수진">
             <div class="tabWrapArmy">
                 <ul class="tabmenuT">
                     <li>
@@ -89,27 +89,27 @@
                         <a href="#tab9">한국사능력검정시험 한경준</a>
                     </li>
                 </ul>
-                <div id="tab1" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t1.jpg" alt="국어 임재진" class="off"></div>
-                <div id="tab2" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t2.jpg" alt="행정학 김헌" class="off"></div>
-                <div id="tab3" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t3.jpg" alt="행정법 이석준" class="off"></div>
-                <div id="tab4" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t4.jpg" alt="한국사능력검정시험 김상범" class="off"></div>
-                <div id="tab5" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t8.jpg" alt="국어 권기태" class="off"></div>
-                <div id="tab6" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t5.jpg" alt="국어 기미진" class="off"></div>
-                <div id="tab7" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t6.jpg" alt="행정학 김덕관" class="off"></div>
-                <div id="tab8" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t7.jpg" alt="행정법 변원갑" class="off"></div>
-                <div id="tab9" class="tabCts"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_t9.jpg" alt="한국사능력검정시험 한경준" class="off"></div>
+                <div id="tab1" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t1.jpg" alt="국어 임재진" class="off"></div>
+                <div id="tab2" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t2.jpg" alt="행정학 김헌" class="off"></div>
+                <div id="tab3" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t3.jpg" alt="행정법 이석준" class="off"></div>
+                <div id="tab4" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t4.jpg" alt="한국사능력검정시험 김상범" class="off"></div>
+                <div id="tab5" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t8.jpg" alt="국어 권기태" class="off"></div>
+                <div id="tab6" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t5.jpg" alt="국어 기미진" class="off"></div>
+                <div id="tab7" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t6.jpg" alt="행정학 김덕관" class="off"></div>
+                <div id="tab8" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t7.jpg" alt="행정법 변원갑" class="off"></div>
+                <div id="tab9" class="tabCts"><img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_t9.jpg" alt="한국사능력검정시험 한경준" class="off"></div>
             </div>
-            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_2.jpg" alt="군무원 커피큘럼">
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_2.jpg" alt="군무원 커피큘럼">
         </div><!--wb_cts02//-->
 
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_03.jpg" alt="" usemap="#Map180831B" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_03.jpg" alt="" usemap="#Map180831B" border="0"  />
             <map name="Map180831B" id="Map180831B">
                 <area shape="rect" coords="571,651,730,691" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149253') }}" alt="59만원" />
                 <area shape="rect" coords="919,650,1082,691" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />
             </map>
-            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_03_1.jpg" alt="군무원 수강생 이벤트"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_03_1.jpg" alt="군무원 수강생 이벤트"  />
             <div class="tbl_lec" id="tbl_lec">
                 <table width="0" border="0" cellpadding="0" cellspacing="0" class="event_table">
                     <tr>
@@ -186,7 +186,7 @@
                     </tr>
                 </table>
             </div><!--tbl_lec//-->
-            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_03_2.jpg" alt=""  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_03_2.jpg" alt=""  />
         </div><!--wb_cts03//-->
 
     </div>

@@ -63,7 +63,7 @@
         /*크롬*/
         @@media screen and (-webkit-min-device-pixel-ratio:0) {
         .wb_cts04 {background:#8f755c; position:relative;}	
-        .wb_cts04 #mmovieFrame {width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
+        .wb_cts04 #movieFrame {position:relative; width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
         .wb_cts04 .embedWrap {width:980px; margin-left:0; padding:0}
         .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}
         .wb_cts04 .mobileCh {position:absolute; bottom:0; }

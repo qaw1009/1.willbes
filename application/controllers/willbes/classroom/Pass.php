@@ -199,6 +199,7 @@ class Pass extends \app\controllers\FrontController
             ], $orderby);
 
             // 숨김강좌 이고 수강률이 100이 안된 강좌
+            // 학생등리 모바일에서 숨김탭이 없기때문에 헷갈려해서
             $leclist_nodisp = $this->classroomFModel->getLecture([
                 'EQ' => [
                     'MemIdx' => $passinfo['MemIdx'],
@@ -211,10 +212,10 @@ class Pass extends \app\controllers\FrontController
                 ],
                 'NOT' => [
                     'ProdCode' => 'ProdCodeSub'
-                ],
+                ],/*
                 'LT' => [
                     'StudyRate' => 100 // 수강율이 100%
-                ],
+                ], */
                 'LKB' => [
                     'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
                 ]

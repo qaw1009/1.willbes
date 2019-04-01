@@ -356,9 +356,23 @@ class Change extends BaseMember
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');
         $idx = $this->session->userdata('mem_idx');
+        $mail = $mailid.'@'.$maildomain;
+
+        // 이메일체크
+        if(empty($mail) === true){
+            return $this->json_error("이메일 주소를 입력해주십시요.");
+
+        } else {
+            // 이메일 패턴체크
+            $pattern = "/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i";
+            if(!preg_match($pattern, $mail)){
+                // 이메일패턴오류
+                return $this->json_error("이메일 주소를 정확하게 입력해주십시요.");
+            }
+        }
 
         $data = [
-            'Mail' => $mailid.'@'.$maildomain,
+            'Mail' => $mail,
             'MailId' => $mailid,
             'MailDomain' => $maildomain
         ];

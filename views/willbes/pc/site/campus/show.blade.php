@@ -63,6 +63,49 @@
                 </ul>
             </div><!-- subSection02// -->
 
+            {{--부산캠퍼스만 추가
+            <div class="subSection02 mt20">
+                <ul>
+                    <li>
+                        <div class="bSlider acad blue">
+                            <div class="sliderTM">
+                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bSlider acad blue">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="subSection02 mt20">
+                <ul>
+                    <li>
+                        <div class="bSlider acad blue">
+                            <div class="sliderTM">
+                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bSlider acad blue">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            --}}
+
             <div class="noticeTabs acad">
                 <a name="tabLink"></a>
                 <ul class="tabWrap noticeWrap_acad three NSK">

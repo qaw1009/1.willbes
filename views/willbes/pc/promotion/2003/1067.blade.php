@@ -58,7 +58,7 @@
         </div><!--WB_top//-->
 
         <div class="evtCtnsBox wb_cts01" >
-            <div class="youtube"><iframe width="800" height="450" src="https://www.youtube.com/embed/8KBfy1EXc0o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <!--div class="youtube"><iframe width="800" height="450" src="https://www.youtube.com/embed/8KBfy1EXc0o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div-->
             <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c2.jpg" alt="윌비스 빠른 합격을 위한 매직아이 영어"  />
             <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c3.jpg" alt=""  />
         </div><!--wb_cts01//-->

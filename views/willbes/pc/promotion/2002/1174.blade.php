@@ -86,6 +86,7 @@
 		</div>
 
    		<div class="wbCommon NSK wb_02">           
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_01.jpg" title="" /></div>
             <!--
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
@@ -99,7 +100,7 @@
                 <input type="hidden" name="target_param_names[]" value="응시번호"/> {{-- 체크 항목 전송 --}}
                 <input type="hidden" name="register_type" value="promotion"/>
 
-                <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_01.jpg" title="" /></div>
+                
                 <div class="request" id="request">
                     <h3>윌비스 신광은경찰 <span class="strong">합격자의 밤</span> 신청 </h3>
                     <div class="termsBx">

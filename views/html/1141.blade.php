@@ -50,9 +50,10 @@
         .tabContaier ul:after {content:""; display:block; clear:both}
         
         .wb_cts04 {background:#8f755c;}	
-        .wb_cts04 #movieFrame {width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
-        .wb_cts04 .embedWrap {padding-top:13px; width:980px; margin:0 auto}
+        .wb_cts04 #movieFrame {position:relative; width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
+        .wb_cts04 .embedWrap {width:980px; margin:0 auto;}
         .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}        
+        .wb_cts04 .mobileCh { position:absolute; width:980px; bottom:0}
         .wb_cts04 .mobileCh li {width:50%; display:inline; float:left;}
         .wb_cts04 .mobileCh li a {display:block; text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0}
         .wb_cts04 .mobileCh li a.ch2 {color:#6CF}
@@ -62,8 +63,8 @@
         /*크롬*/
         @@media screen and (-webkit-min-device-pixel-ratio:0) {
         .wb_cts04 {background:#8f755c; position:relative;}	
-        .wb_cts04 #mmovieFrame {width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
-        .wb_cts04 .embedWrap {width:980px; margin-left:0; padding:0}
+        .wb_cts04 #movieFrame {width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
+        .wb_cts04 .embedWrap {width:980px; margin:0 auto; margin-left:0; padding:0}
         .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}
         }   
 
@@ -323,6 +324,7 @@
                  @if ($live_type == 'standby')
                     <!--강의전 화면-->
                     <img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png" alt="라이브강의_지금은 진행시간이아닙니다" border="0" />
+                    
                  @elseif ($live_type == 'on')
                     <!--강의중 플레이어-->
                     <script src="/public/vendor/jwplayer/jwplayer.js"></script>
@@ -341,13 +343,14 @@
                                 });
                                 </script>
                             </div>
+
                             @if (APP_DEVICE == 'm')
                                 <!--모바일용 -->
                                 <ul class="mobileCh">
                                     <li><a href="javascript:fn_live('hd')">▶ 고화질 보기 클릭!</a></li>
                                     <li><a href="javascript:fn_live('low')" class="mbtn2">▶ 일반화질 보기 클릭!</a></li>
                                 </ul>
-                            @endif
+                            @endif                            
                         </div>
                     </div>
                  @else

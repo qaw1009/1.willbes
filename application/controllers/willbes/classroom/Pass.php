@@ -110,13 +110,13 @@ class Pass extends \app\controllers\FrontController
 
         // 선택된 패키지번호가 없다면 그냥 첫번째것으로OrderDate', 'DESC
         if(empty($passidx) == true && empty($passlist) == false){
-            $passidx = $passlist[0]['ProdCode'];
+            $passidx = $passlist[0]['OrderProdIdx'];
         }
 
         // 선택된 기간제패키지
         $passinfo = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
-                'ProdCode' => [$passidx]
+                'OrderProdIdx' => [$passidx]
             ]
         ]), ['OrderDate', 'DESC']);
 

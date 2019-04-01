@@ -356,15 +356,41 @@ class Change extends BaseMember
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');
         $idx = $this->session->userdata('mem_idx');
-
         $mail = $mailid.'@'.$maildomain;
 
+        // 이메일체크
+        if(empty($mail) === true){
+            return $this->json_error("이메일 주소를 입력해주십시요.");
+
+        } else {
+            // 이메일 패턴체크
+            $pattern = "/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i";
+            if(!preg_match($pattern, $mail)){
+                // 이메일패턴오류
+                return $this->json_error("이메일 주소를 정확하게 입력해주십시요.");
+            }
+        }
+
+        $data = [
+            'Mail' => $mail,
+            'MailId' => $mailid,
+            'MailDomain' => $maildomain
+        ];
+
+        if($this->memberFModel->setMemberMail($idx, $data) == false){
+            return $this->json_error('메일주소변경이 실패하였습니다. 다시 시도해주십시요.');
+        }
+
+        return $this->json_result(true, '메일주소가 변경되었습니다.');
+
+        /*
         // 인증메일 전송
         return $this->sendMail([
             'mail' => $mail,
             'MemIdx' => $idx,
             'typeccd' => 'UPDMAIL' // 회원가입인증메일
         ]);
+        */
     }
 
 

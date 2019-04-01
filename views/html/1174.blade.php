@@ -16,6 +16,7 @@
             background:#fff;
         }	
         .wbCommon {width:100%; text-align:center; min-width:1120px;}
+        span {vertical-align:auto}
 
         /************************************************************/  
 
@@ -41,10 +42,12 @@
         .wb_02 .request p {font-size:16px; margin-bottom:20px; font-weight:bold}
         .wb_02 .request li {margin-bottom:10px}
         .wb_02 .request .tit { display:inline-block; width:70px;}  
-        .wb_02 .request input[type="text"] {width:200px; height:26px; border:1px solid #999; padding:0 10px; color:#666}
+        .wb_02 .request input[type="text"] {width:160px; height:26px; border:1px solid #999; padding:0 10px; color:#666}
         .wb_02 .request input[type="checkbox"] {width:20px; height:20px; border:1px solid #999;}  
-        .wb_02 .termsBx {float:left; width:30%;}
-        .wb_02 .termsBx01 {float:right; width:69%; margin-bottom:20px}
+        .wb_02 .termsBx {margin-bottom:20px}
+        .wb_02 .termsBx li {display:inline; float:left; margin-right:10px}
+        .wb_02 .termsBx:after {content:''; display:block; clear:both} 
+        .wb_02 .termsBx01 {margin-bottom:20px}
         .wb_02 .termsBx01 ul {height:100px; overflow-y:scroll; border:1px solid #999; margin-bottom:10px; font-size:12px; color:#666; padding:0 10px}
         .wb_02 .request .btn {clear:both; border-top:1px solid #f297b8;}
         .wb_02 .request .btn a {width:100px; display:block; text-align:center; background:#f297b8; color:#fff; margin:30px auto 0; height:40px; line-height:40px}
@@ -64,7 +67,7 @@
         </div>
 		
 		<div class="wbCommon wb_01">
-            <div class="youtube"><iframe src="https://www.youtube.com/embed/-Q676VZ03FM?rel=0" frameborder="0" allowfullscreen></iframe></div>
+            <div class="youtube"><iframe src="https://www.youtube.com/embed/NxsREWiD_ME?rel=0" frameborder="0" allowfullscreen></iframe></div>
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_01.jpg" title=" " /></div>
             <div class="slide_con">
                 <ul id="slidesImg7">
@@ -97,7 +100,13 @@
                             <input type="text" id="" name="" value="" placeholder="아이디">
                         </li>
                         <li>
-                            <input type="text" id="" name="" value="" placeholder="전화번호 숫자만 입력하세요.">
+                            <input type="text" id="" name="" value="" placeholder="전화번호 숫자만 입력">
+                        </li>
+                        <li>
+                            <input type="text" id="" name="" value="" placeholder="합격청">
+                        </li>
+                        <li>
+                            <input type="text" id="" name="" value="" placeholder="응시번호">
                         </li>
                     </ul>
                 </div>

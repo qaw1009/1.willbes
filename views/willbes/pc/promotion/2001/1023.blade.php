@@ -49,7 +49,7 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1023_01_01.jpg" title="지난 시험대비 45점 상승!"/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1023_01_02.jpg" title="교수님 말씀이 다 맞아요!"/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1023_01_03.jpg" title="기출, 그것이 신의 한수!"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1023_01_04.jpg" title="따라만 가도 100점!"/></li>
+                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2019/03/1023_01_04.jpg" title="따라만 가도 100점!"/></li>--}}
                 </ul>
             </div>
         </div><!--wb_cts02//-->

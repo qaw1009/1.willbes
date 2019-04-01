@@ -34,7 +34,7 @@
                                     </tr>
                                     <tr>
                                         <td class="w-type pl20">{{$data['TypeCcd_Name']}}<span class="row-line">|</span></td>
-                                        <td class="w-area tx-left pl20">{{$data['AreaCcd_Name']}}<span class="row-line">|</span></td>
+                                        <td class="w-area tx-left pl20">{{ ($__cfg['CateCode'] == '3024') ? $data['DivisionCcd_Name'] : $data['AreaCcd_Name'] }}<span class="row-line">|</span></td>
                                         <td class="w-date">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                                         <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>
                                     </tr>

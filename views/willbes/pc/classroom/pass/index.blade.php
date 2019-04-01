@@ -64,7 +64,7 @@
                                         <option value="">무한PASS를 선택해주십시요.</option>
                                     @else
                                         @foreach($passlist as $row )
-                                            <option value="{{$row['ProdCode']}}" @if(isset($passinfo['ProdCode']) && $passinfo['ProdCode'] == $row['ProdCode']) selected="selected" @endif>{{$row['ProdName']}}</option>
+                                            <option value="{{$row['OrderProdIdx']}}" @if(isset($passinfo['OrderProdIdx']) && $passinfo['OrderProdIdx'] == $row['OrderProdIdx']) selected="selected" @endif>{{$row['ProdName']}}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -110,7 +110,7 @@
             <div class="willbes-Mypage-Tabs mt70">
                 <form name="searchFrm2" id="searchFrm2" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
                     <input type="hidden" name="sitecode" value="{{(empty($input_arr['sitecode']) == true) ? '' : $input_arr['sitecode']}}" >
-                    <input type="hidden" name="passidx" value="{{(empty($passinfo) == true) ? '' : $passinfo['ProdCode']}}" >
+                    <input type="hidden" name="passidx" value="{{(empty($passinfo) == true) ? '' : $passinfo['OrderProdIdx']}}" >
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
                         <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
                             <option value="">과목</option>

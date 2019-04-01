@@ -234,7 +234,7 @@ class BoardAssignmentModel extends BoardModel
 
     /**
      * 첨삭데이터 삭제
-     * 제출된 데이터만 삭제 가능
+     * 제출된 데이터만 삭제 가능, 미체점으로 업데이트
      * @param $idx
      * @return array|bool
      */
@@ -250,6 +250,7 @@ class BoardAssignmentModel extends BoardModel
             }
 
             $is_update = $this->_conn->set([
+                'IsReply' => 'N',
                 'IsStatus' => 'N',
                 'UpdAdminIdx' => $admin_idx,
                 'UpdAdminDatm' => date('Y-m-d H:i:s')

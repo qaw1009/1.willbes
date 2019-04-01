@@ -30,6 +30,15 @@
                         <div class="ry_info">
                             <span class="notice">공지</span> <span class="date">{{ $row['RegDate'] }}</span> <strong>{{ $row['Title'] }}</strong>
                         </div>
+                        @if(empty($row['AttachData']) === false && $row['AttachData'] != 'N')
+                        <div class="ry_info">
+                            @php $arr_attach_data = json_decode($row['AttachData'],true); @endphp
+                            @foreach($arr_attach_data as $f_row)
+                                <a href="{{front_url('/promotion/downloadNotice?file_idx=').$f_row['FileIdx'].'&board_idx='.$row['BoardIdx'] }}" target="_blank">
+                                    <img src="{{ img_url('prof/icon_file.gif') }}"> {{$f_row['RealName']}}</a>
+                            @endforeach
+                        </div>
+                        @endif
                         <div class="ry_cont">
                             <div>{!! $row['Content'] !!}
                             {{--<a href="javascript:modify_notice('VIEW',2)" class="rnView">[상세보기]</a>--}}
@@ -45,7 +54,7 @@
                 @foreach($list as $row)
                     <li>
                         <div class="ryw_info">
-                            <strong>{!! hpSubString($row['MemName'],0,2,'*') !!}</strong> <span class="date">{{$row['RegDatm']}}</span>
+                            <strong>{!! hpSubString($row['MemName'],0,2,'*') !!}</strong> <span class="date">{{$row['RegDay']}}</span>
                             @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                 <a class="rnDelBtn f_right btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">삭제</a>
                             @endif

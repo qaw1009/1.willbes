@@ -232,6 +232,24 @@ class BasePromotion extends \app\controllers\FrontController
         show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
     }
 
+    public function downloadNotice()
+    {
+        $file_idx = $this->_reqG('file_idx');
+        $board_idx = $this->_reqG('board_idx');
+        $this->downloadFModel->saveLog($board_idx);
+
+        $file_data = $this->downloadFModel->getFileData($board_idx, $file_idx);
+        if (empty($file_data) === true) {
+            show_alert('등록된 파일을 찾지 못했습니다.','close','');
+        }
+
+        $file_path = $file_data['FilePath'].$file_data['FileName'];
+        $file_name = $file_data['RealFileName'];
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.','close','');
+    }
+
     public function popup($param = [])
     {
         $arr_base['promotion_code'] = $param[0];

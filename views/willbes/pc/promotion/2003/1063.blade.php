@@ -16,13 +16,13 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
         .wb_top {
             font-size:15px; color:#ebebeb;
-            background:#f36a5d url(http://file3.willbes.net/new_gosi/2019/01/EV190124Y_01_bg.jpg) no-repeat center top;
+            background:#f36a5d url(https://static.willbes.net/public/images/promotion/2019/03/1063_01_bg.jpg) no-repeat center top;
             position:relative
         }
         /*플립 애니메이션*/
@@ -100,19 +100,19 @@
             <div class="time_date">
                 <table>
                     <tr>
-                    <td class="time_txt"><span>3/31(일) 마감!</span></td>
+                    <td class="time_txt"><span>4/10(수) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
-                    <td><img id="d1" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td><img id="d2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="d1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="d2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td class="time_txt">일 </td>
-                    <td><img id="h1" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td><img id="h2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="h1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="h2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td class="time_txt">:</td>
-                    <td><img id="m1" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td><img id="m2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="m1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="m2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td class="time_txt">:</td>
-                    <td><img id="s1" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td><img id="s2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="s1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="s2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     </tr>
                 </table>
                 
@@ -121,12 +121,12 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190124Y_01.jpg" alt="윌비스 7급 외무영사직 PASS" usemap="#Map190124A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1063_01.jpg" alt="윌비스 7급 외무영사직 PASS" usemap="#Map190124A" border="0" />
             <map name="Map190124A" id="Map190124A">
                 <area shape="rect" coords="884,901,1095,991" onclick="go_PassLecture(1);" target="_blank" alt="외무영사직 PASS 수강신청" />
             </map>
             <div class="main_img flipInX animated" style="opacity:1;">
-                <img src="http://file3.willbes.net/new_gosi/2019/01/EV190124Y_01_txt.png" alt="윌비스 7급 외무영사직 PASS" />
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1063_01_txt.png" alt="윌비스 7급 외무영사직 PASS" />
             </div>
 
             <div class="check" id="chkInfo">
@@ -141,11 +141,11 @@
 
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190124Y_02.jpg"  alt="윌비스 7급 외무영사직 PASS"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1063_02.jpg"  alt="윌비스 7급 외무영사직 PASS"  />
         </div><!--wb_cts01//-->
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190124Y_03.jpg"  alt="윌비스 7급 외무영사직 PASS" usemap="#Map190124B" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1063_03.jpg"  alt="윌비스 7급 외무영사직 PASS" usemap="#Map190124B" border="0"/>
             <map name="Map190124B" id="Map190124B">
                 <area shape="rect" coords="884,872,1095,962" onclick="go_PassLecture(2);" alt="외무영사직 PASS 수강신청" />
             </map>
@@ -156,7 +156,7 @@
                 </label>
                 <a href="#tab1">이용안내확인하기 ↓</a>
             </div>
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190124Y_04.jpg"  alt="윌비스 7급 외무영사직 PASS" id="tab1"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1063_04.jpg"  alt="윌비스 7급 외무영사직 PASS" id="tab1"/>
         </div><!--wb_cts02//-->
 
     </div>
@@ -195,7 +195,7 @@
 		function countDown() {
 		//event_day = new Date(2016,4,6,23,59,59);
 		// 이벤트 종료일의 한달 전 날짜로 입력한다. 
-		event_day = new Date(2019,2,31,23,59,59);
+		event_day = new Date(2019,3,10,23,59,59);
 		now = new Date();
 
 		var Monthleft = event_day.getMonth() - now.getMonth();
@@ -207,17 +207,17 @@
 		//alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
 
 		if((event_day.getTime() - now.getTime()) > 0) {
-		$("#d1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-		$("#d2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
+		$("#d1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft/10) + ".png");
+		$("#d2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft%10) + ".png");
 
-		$("#h1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-		$("#h2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
+		$("#h1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft/10) + ".png");
+		$("#h2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft%10) + ".png");
 
-		$("#m1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-		$("#m2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
+		$("#m1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft/10) + ".png");
+		$("#m2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft%10) + ".png");
 
-		$("#s1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-		$("#s2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+		$("#s1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft/10) + ".png");
+		$("#s2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft%10) + ".png");
 		}
 		else{
 		}

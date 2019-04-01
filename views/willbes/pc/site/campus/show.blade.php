@@ -68,7 +68,7 @@
                 <ul>
                     <li>
                         <div class="bSlider acad blue">
-                            <div class="sliderTM">
+                            <div class="slider">
                                 <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
                                 <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
                             </div>
@@ -88,7 +88,7 @@
                 <ul>
                     <li>
                         <div class="bSlider acad blue">
-                            <div class="sliderTM">
+                            <div class="slider">
                                 <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
                                 <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
                             </div>

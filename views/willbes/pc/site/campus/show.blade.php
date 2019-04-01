@@ -63,7 +63,7 @@
                 </ul>
             </div><!-- subSection02// -->
 
-            {{--부산캠퍼스만 추가--}}
+            {{--부산캠퍼스만 추가
             <div class="subSection02 mt20">
                 <ul>
                     <li>
@@ -104,6 +104,7 @@
                     </li>
                 </ul>
             </div>
+            --}}
             
 
             <div class="noticeTabs acad">

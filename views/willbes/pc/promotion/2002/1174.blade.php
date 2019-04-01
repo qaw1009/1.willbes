@@ -63,7 +63,7 @@
         </div>
 		
 		<div class="wbCommon wb_01">
-            <div class="youtube"><iframe src="https://www.youtube.com/embed/-Q676VZ03FM?rel=0" frameborder="0" allowfullscreen></iframe></div>
+            <div class="youtube"><iframe src="https://www.youtube.com/embed/NxsREWiD_ME?rel=0" frameborder="0" allowfullscreen></iframe></div>
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_01.jpg" title=" " /></div>
             <div class="slide_con">
                 <ul id="slidesImg7">

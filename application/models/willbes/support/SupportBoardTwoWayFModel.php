@@ -280,10 +280,24 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             }
             /*}*/
 
+            $sum_size = 0;
+            if (empty($_FILES['attach_file']) === false) {
+                foreach ($_FILES['attach_file']['size'] as $key => $size) {
+                    $sum_size += $size;
+                }
+
+                $sum_size_mb = round($sum_size / 1024);
+                if ($sum_size_mb > $this->upload_file_rule['max_size']) {
+                    throw new \Exception('첨부파일 총합 최대 5MB까지 등록 가능합니다.');
+                }
+            }
+
             $this->load->library('upload');
             $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Y') . '/' . date('md');
+            /*$uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir
+                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);*/
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir
-                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
+                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite']);
 
             if (is_array($uploaded) === false) {
                 throw new \Exception('파일 등록에 실패했습니다.');
@@ -369,7 +383,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
             $is_attach = $this->modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type);
             if ($is_attach !== true) {
-                throw new \Exception('파일 등록에 실패했습니다.');
+                throw new \Exception(empty($is_attach['ret_msg']) === true ? '파일 등록에 실패했습니다.' : $is_attach['ret_msg']);
             }
 
             $this->_conn->trans_commit();
@@ -572,10 +586,22 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             }
             $ba_idx = $this->_conn->insert_id();
 
+            $sum_size = 0;
+            if (empty($_FILES['attach_file']) === false) {
+                foreach ($_FILES['attach_file']['size'] as $key => $size) {
+                    $sum_size += $size;
+                }
+
+                $sum_size_mb = round($sum_size / 1024);
+                if ($sum_size_mb > $this->upload_file_rule['max_size']) {
+                    throw new \Exception('첨부파일 총합 최대 5MB까지 등록 가능합니다.');
+                }
+            }
+
             $this->load->library('upload');
             $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($ba_idx), $upload_sub_dir
-                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
+                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite']);
 
             if (is_array($uploaded) === false) {
                 throw new \Exception('파일 등록에 실패했습니다.');
@@ -640,7 +666,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
             $is_attach = $this->modifyBoardAttachForAssignment($ba_idx, $reg_type, $attach_file_type);
             if ($is_attach !== true) {
-                throw new \Exception('파일 등록에 실패했습니다.');
+                throw new \Exception(empty($is_attach['ret_msg']) === true ? '파일 등록에 실패했습니다.' : $is_attach['ret_msg']);
             }
 
             $this->_conn->trans_commit();

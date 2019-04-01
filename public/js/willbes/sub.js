@@ -302,7 +302,7 @@ $(function() {
         var width = parseInt(n)* 170 + 6;
 
         $thumb_table.addClass('rollover').css('width', width).show();
-    })
+    });
     $('.thumb_slide_wrap').mouseleave(function(){
         var $thumb_table = $(this).parents('.w-thumb').find('.thumb_slide_wrap');
         $thumb_table.removeClass('rollover').hide();
@@ -328,7 +328,6 @@ $(function() {
 
 // star rating Script //
 $(document).ready(function(){
-
     /* 1. Visualizing things on Hover - See next part for action on click */
     $('#stars li').on('mouseover', function(){
     var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
@@ -348,7 +347,6 @@ $(document).ready(function(){
             $(this).removeClass('hover').removeClass('none');
         });
     });
-
 
     /* 2. Action to perform on click */
     $('#stars li').on('click', function(){
@@ -373,10 +371,9 @@ $(document).ready(function(){
         msg = ratingValue;
     }
     responseMessage(msg);
-
     });
-
 });
+
 function responseMessage(msg) {
     $('.success-box').fadeIn(200);  
     $('.success-box div.text-message').html(msg);
@@ -407,6 +404,21 @@ $('*[id*=Sticky]:visible').ready(function() {
                 $('.sticky-Grid').addClass('fixed');
             } else {
                 $('.sticky-Grid').removeClass('fixed');
+            }
+        });
+    }
+});
+
+// 사이트 메인 퀵 배너 스크롤 이벤트
+$('*[id*=QuickMenu]:visible').ready(function() {
+    var stickyOffset = $('#QuickMenu').offset();
+
+    if (typeof stickyOffset !== 'undefined') {
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > stickyOffset.top) {
+                $('#QuickMenu').css('top', '20px');
+            } else {
+                $('#QuickMenu').css('top', '180px');
             }
         });
     }

@@ -110,8 +110,9 @@
             var _url = '{{ front_url('/survey/store') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
-
                     alert(ret.ret_msg);
+                    opener.location.reload();
+                    window.close();
                 }
             }, showValidateError, null, false, 'alert');
 

@@ -5822,7 +5822,7 @@ ul li.profList a.profBox:hover {
 }
 ul li.profList .Obj {
     position: absolute;
-    top: 35px;
+    top: 25px;
     left: 20px;
     font-size: 14px;
     color: #999;
@@ -5831,7 +5831,7 @@ ul li.profList .Obj {
 }
 ul li.profList .Name {
     position: absolute;
-    top: 82px;
+    top: 90px;
     left: 20px;
     font-size: 22px;
     font-weight: 600;

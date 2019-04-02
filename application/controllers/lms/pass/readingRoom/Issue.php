@@ -134,7 +134,7 @@ class Issue extends \app\controllers\BaseController
         unset($arr_seat_status[$this->readingRoomModel->_arr_reading_room_status_ccd['N']]);
 
         //상품기본정보
-        $data = $this->readingRoomModel->findReadingRoomForModify($now_order_idx);
+        $data = $this->readingRoomModel->findReadingRoomForModify($now_order_idx, [], $mang_type);
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
         }

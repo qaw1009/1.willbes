@@ -3,7 +3,7 @@
 @section('content')
     <!-- Container -->
     <style type="text/css">
-        .popWrap {width:782px; margin:20px auto; border:1px solid #000; box-shadow:5px 5px 5px rgba(0,0,0,.1)}
+        .popWrap {width:782px; margin:20px auto; border:1px solid #000; box-shadow:5px 5px 5px rgba(0,0,0,.1); overflow-y:auto}
         .popWrap * {font-family:'Noto Sans KR', Arial, Sans-serif}
 
         input[type=text] {padding:2px; width:150px}

@@ -136,6 +136,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
      * 독서실/사물함 상세 데이터 조회 [현재주문 식별자 기준 좌석데이터 조인]
      * @param $OrderIdx
      * @param array $arr_condition
+     * @param $mang_type
      * @return mixed
      */
     public function findReadingRoomForModify($OrderIdx, $arr_condition = [], $mang_type)
@@ -622,7 +623,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             $is_change_seat = 'Y';      //좌석변경여부 설정
 
             //좌석검증, 조회
-            $data = $this->findReadingRoomForModify($input['now_order_idx']);
+            $data = $this->findReadingRoomForModify($input['now_order_idx'], [], $mang_type);
             if (empty($data) === true) {
                 throw new \Exception('조회된 좌석정보가 없습니다.');
             }

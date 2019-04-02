@@ -76,7 +76,7 @@
         .Cts03 .graphWrap li {
             display:inline; float:left; width:48%; text-align:left; margin:0 0.5%; position:relative;
         }
-        .Cts03 .graphWrap select {position:absolute; top:20px; right:20px}
+        .Cts03 .graphWrap select {position:absolute; top:5px; right:0}
         .Cts03 .graphWrap:after {content:""; display:block; clear:both}
                 
         .Cts03 .graphbox {width:90%; margin:20px auto; border:1px solid #000;}
@@ -1164,7 +1164,7 @@
 
                 </li>
                 <li>
-                    <div class="graphbox">
+                    <div>
                         <h3>과목별 시험 난이도 : <span>[국어]</span></h3>
                         <select title="과목선택" onchange="fn_select_poll_id(this.value)">                            	
                             <option value=" " selected="selected">과목1</option>                        

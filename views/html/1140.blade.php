@@ -1173,7 +1173,50 @@
                             <option value=" ">과목4</option>                        
                             <option value=" ">과목5</option>                      
                         </select>
-                        <div>그래프영역</div>                        
+                        <div>
+                        <div class="graphbox">                                       
+                            <div class="graph">                                                        
+                                <p>3%</p>
+                                <div>
+                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="3%">
+                                </div>                            
+                                <p>매우 쉬움</p>
+                            </div>
+                                    
+                            <div class="graph">                                                                          
+                                <p>3%</p>
+                                <div>
+                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="3%">
+                                </div>                                    
+                                <p>쉬움</p>
+                            </div>
+                                    
+                            <div class="graph">
+                                <p>13%</p>
+                                <div>
+                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="13%">
+                                </div>
+                                <p>보통</p>
+                            </div>
+                                    
+                            <div class="graph">                                           
+                                <p>70%</p>
+                                <div>
+                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="70%">
+                                </div>                            
+                                <p>어려움</p>
+                            </div>
+                                    
+                            <div class="graph">                                     
+                                <p>10%</p>
+                                <div>
+                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="10%">
+                                </div>                            
+                                <p>매우 어려움</p>
+                            </div>
+                        </div>
+                        <!--graphbox//-->
+                    </div>                       
                     </div>
                 </li>
             </ul>

@@ -120,8 +120,8 @@ class StudyComment extends BaseBoard
         $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore,
-            IF(LB.RegType = 1, \'관리자\', MEM.MemId) AS RegMemId,
-            IF(LB.RegType = 1, \'관리자\', MEM.MemName) AS RegMemName,
+            IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
+            IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName,
             LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
             ';
@@ -192,8 +192,8 @@ class StudyComment extends BaseBoard
             $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore,
-            IF(LB.RegType = 1, \'관리자\', MEM.MemId) AS RegMemId,
-            IF(LB.RegType = 1, \'관리자\', MEM.MemName) AS RegMemName,
+            IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
+            IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName,
             LB.ProdApplyTypeCcd, LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
@@ -299,8 +299,8 @@ class StudyComment extends BaseBoard
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
-            IF(LB.RegType = 1, \'관리자\', MEM.MemId) AS RegMemId,
-            IF(LB.RegType = 1, \'관리자\', MEM.MemName) AS RegMemName
+            IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
+            IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -400,8 +400,8 @@ class StudyComment extends BaseBoard
         $column = '
             lms_board.BoardIdx, lms_board.RegType, lms_board.Title, lms_board.Content, lms_board.LecScore, lms_board.IsUse,
             lms_board.RegDatm,
-            IF(lms_board.RegType = 1, \'관리자\', MEM.MemId) AS RegMemId,
-            IF(lms_board.RegType = 1, \'관리자\', MEM.MemName) AS RegMemName,
+            IF(lms_board.RegType = 1, lms_board.RegMemId, MEM.MemId) AS RegMemId,
+            IF(lms_board.RegType = 1, lms_board.RegMemName, MEM.MemName) AS RegMemName,
             lms_board.UpdDatm, lms_board.UpdMemName, lms_board.UpdMemId, lms_board.UpdAdminIdx, wbs_sys_admin.wAdminName AS UpdAdminName
         ';
 

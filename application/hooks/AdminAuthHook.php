@@ -47,8 +47,21 @@ class AdminAuthHook
 
         if (empty(uri_string()) === false && starts_with('/' . uri_string(), $this->excepts) === false) {
             if ($this->_CI->session->userdata('is_admin_login') !== true) {
-                //show_error('운영자 인증에 실패했습니다.', _HTTP_UNAUTHORIZED, '운영자 인증 실패');
-                show_alert('운영자 인증에 실패했습니다.', site_url('/lcms/auth/login'), false);
+                if ($this->_CI->input->is_ajax_request() === true) {
+                    // return ajax error
+                    $this->_CI->output->set_content_type('application/json')
+                        ->set_status_header(_HTTP_UNAUTHORIZED)
+                        ->set_output(json_encode([
+                            'ret_cd' => false,
+                            'ret_msg' => '운영자 인증에 실패했습니다.',
+                            'ret_status' => _HTTP_UNAUTHORIZED
+                        ], JSON_UNESCAPED_UNICODE))
+                        ->_display();
+                    exit(1);
+                } else {
+                    //show_error('운영자 인증에 실패했습니다.', _HTTP_UNAUTHORIZED, '운영자 인증 실패');
+                    show_alert('운영자 인증에 실패했습니다.', site_url('/lcms/auth/login'), false);
+                }
             }
 
             // 현재 URI의 /{directory}/{controller}/{method}

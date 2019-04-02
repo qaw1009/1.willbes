@@ -1204,7 +1204,7 @@
             // Bind the click event handler
             $(this).on('click', 'a', function(e){
 
-            if(env == 'local' || env == 'dev'){
+            if(env == 'local' || env == 'development'){
                 $active.removeClass('active');
                 $content.hide();
 

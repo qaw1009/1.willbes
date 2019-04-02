@@ -104,6 +104,31 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     * 설문결과
+     */
+    public function answerCall($idx)
+    {
+        $column = "
+            SubTitle, sa.SqIdx, Answer, sa.Type 
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyProduct']} AS sp
+                JOIN {$this->_table['surveyAnswer']} AS si ON sp.SpIdx = si.SpIdx
+                JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx = sa.SaIdx
+                LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
+        ";
+
+        $obder_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
+        $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE = 'S'";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+    
+    /**
      * 설문저장
      */
     public function storeSurvey($formData = []){

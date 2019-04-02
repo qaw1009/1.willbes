@@ -150,14 +150,13 @@
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="select" name="select" title="직접입력" class="">
-                        <option selected="selected">직접입력</option>
-                        <option value="강좌명">강좌명</option>
-                        <option value="과목명">과목명</option>
-                        <option value="교수명">교수명</option>
-                        <option value="과정명">과정명</option>
+                        <option selected="selected">전체</option>
+                        <option value="교재명">교재명</option>
+                        <option value="출판사">출판사</option>
+                        <option value="저자">저자</option>
                     </select>
                 </div>
-                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강의명" maxlength="30">
+                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span>검색</span>
                 </button>
@@ -173,13 +172,17 @@
             <div class="willbes-Lec-Table">        
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
-                        <col style="width:150px;">
+                        <col style="width:200px;">
                         <col>
                         <col style="width:290px;">
                     </colgroup>
                     <tbody>
                         <tr>
-                            <td class="w-list">문제풀이</td>
+                            <td class="w-list">
+                                <div class="bookImg">
+                                    <img src="{{ img_url('sample/book.jpg') }}">
+                                </div>
+                            </td>
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">
                                     2019년 1차대비 신광은 형사소송법 적중예상 문제풀이
@@ -192,314 +195,129 @@
                                         </a>
                                     </dt>                                    
                                 </dl><br/>
-                                <div>
-                                    <select name="select" size="1" id="select">
+                                <div class="w-info">
+                                    <select name="select" id="select">
                                       <option>강좌1</option>
                                       <option>강좌2</option>
                                       <option>강좌3</option>
                                     </select>
                                 </div>
                             </td>
-                            <td class="w-notice p_re">
-                                <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
-                                <div id="viewBox" class="viewBox">
-                                    <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
-                                    <dl class="NSK">
-                                        <dt class="Tit NG">맛보기1</dt>
-                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                                    </dl>
-                                    <dl class="NSK">
-                                        <dt class="Tit NG">맛보기2</dt>
-                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                                    </dl>
-                                </div>
+                            <td class="w-notice p_re">                                
                                 <div class="priceWrap chk buybtn p_re">
                                     <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC]</span>
-                                    <span class="price tx-blue">7,000원</span>
-                                    <span class="discount">(↓20%)</span>
-                                </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[모바일]</span>
-                                    <span class="price tx-blue">80,000원</span>
+                                    <span class="select">[판매중]</span>
+                                    <span class="price tx-blue">41,000원</span>
                                     <span class="discount">(↓10%)</span>
                                 </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC+모바일]</span>
-                                    <span class="price tx-blue">123,000원</span>
-                                    <span class="discount">(↓15%)</span>
-                                </div>
-                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <!-- lecTable -->
-
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 865px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">수강생 교재</span> 
-                                    <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                    <span class="chk buybtn p_re">
-                                        <label>[판매중]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">30,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">주교재</span> 
-                                    <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)</span>
-                                    <span class="chk">
-                                        <label class="soldout">[품절]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">20,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">부교재</span> 
-                                    <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
-                                    <span class="chk">
-                                        <label class="press">[출간예정]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">0원</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
-                                <div class="w-sub">
-                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable -->
             </div>
             <!-- willbes-Lec-Table -->
-
-            <div class="willbes-Lec-Table">                
-            
+            <div class="willbes-Lec-Table">        
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 85px;">
-                        <col style="width: 490px;">
-                        <col style="width: 290px;">
+                        <col style="width:200px;">
+                        <col>
+                        <col style="width:290px;">
                     </colgroup>
                     <tbody>
                         <tr>
-                            <td class="w-list">문제풀이</td>
-                            <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
+                            <td class="w-list">
+                                <div class="bookImg">
+                                    <img src="{{ img_url('sample/book.jpg') }}">
+                                </div>
+                            </td>
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">
-                                    <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
+                                    2019년 1차대비 신광은 형사소송법 적중예상 문제풀이
                                 </div>
+                                <div class="w-info">신광은 저 <span class="row-line">|</span> 2019-03-08</div>
                                 <dl class="w-info">
                                     <dt class="mr20">
                                         <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>강좌상세정보</strong>
+                                            <strong>교재상세정보</strong>
                                         </a>
-                                    </dt>
-                                    <dt>강의수 : <span class="tx-blue">70강</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span></dt>
-                                    <dt class="NSK ml15">
-                                        <span class="nBox n1">2배수</span>
-                                        <span class="nBox n2">진행중</span>
-                                        <span class="nBox n3">예정</span>
-                                        <span class="nBox n4">완강</span>
-                                    </dt>
+                                    </dt>                                    
                                 </dl><br/>
-                                <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
+                                <div class="w-info">
+                                    <select name="select" id="select">
+                                      <option>강좌1</option>
+                                      <option>강좌2</option>
+                                      <option>강좌3</option>
+                                    </select>
+                                </div>
                             </td>
-                            <td class="w-notice p_re">
-                                <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
-                                <div id="viewBox" class="viewBox">
-                                    <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
-                                    <dl class="NSK">
-                                        <dt class="Tit NG">맛보기1</dt>
-                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                                    </dl>
-                                    <dl class="NSK">
-                                        <dt class="Tit NG">맛보기2</dt>
-                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                                    </dl>
-                                </div>
+                            <td class="w-notice p_re">                                
                                 <div class="priceWrap chk buybtn p_re">
                                     <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC]</span>
-                                    <span class="price tx-blue">7,000원</span>
-                                    <span class="discount">(↓20%)</span>
-                                </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[모바일]</span>
-                                    <span class="price tx-blue">80,000원</span>
+                                    <span class="select">[판매중]</span>
+                                    <span class="price tx-blue">41,000원</span>
                                     <span class="discount">(↓10%)</span>
                                 </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC+모바일]</span>
-                                    <span class="price tx-blue">123,000원</span>
-                                    <span class="discount">(↓15%)</span>
-                                </div>
-                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <!-- lecTable -->
-
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 865px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">수강생 교재</span> 
-                                    <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                    <span class="chk buybtn p_re">
-                                        <label>[판매중]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">30,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">주교재</span> 
-                                    <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)</span>
-                                    <span class="chk">
-                                        <label class="soldout">[품절]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">20,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">부교재</span> 
-                                    <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
-                                    <span class="chk">
-                                        <label class="press">[출간예정]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">0원</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
-                                <div class="w-sub">
-                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable -->
             </div>
             <!-- willbes-Lec-Table -->
 
-            <div class="willbes-Lec-Table">
+            <div class="willbes-Lec-Table">        
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 85px;">
-                        <col style="width: 490px;">
-                        <col style="width: 290px;">
+                        <col style="width:200px;">
+                        <col>
+                        <col style="width:290px;">
                     </colgroup>
                     <tbody>
                         <tr>
-                            <td class="w-list">문제풀이</td>
-                            <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
-                            <td class="w-data tx-left pl25">
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</div>
-                                <dl class="w-info">
-                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
-                                    <dt>강의수 : <span class="tx-blue">70강</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span></dt>
-                                    <dt class="NSK ml15">
-                                        <span class="nBox n1">2배수</span>
-                                        <span class="nBox n2">진행중</span>
-                                        <span class="nBox n3">예정</span>
-                                        <span class="nBox n4">완강</span>
-                                    </dt>
-                                </dl>
+                            <td class="w-list">
+                                <div class="bookImg">
+                                    <img src="{{ img_url('sample/book.jpg') }}">
+                                </div>
                             </td>
-                            <td class="w-notice p_re">
-                                <div class="w-sp one"><a href="#none">맛보기</a></div>
+                            <td class="w-data tx-left pl25">
+                                <div class="w-tit">
+                                    2019년 1차대비 신광은 형사소송법 적중예상 문제풀이
+                                </div>
+                                <div class="w-info">신광은 저 <span class="row-line">|</span> 2019-03-08</div>
+                                <dl class="w-info">
+                                    <dt class="mr20">
+                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                            <strong>교재상세정보</strong>
+                                        </a>
+                                    </dt>                                    
+                                </dl><br/>
+                                <div class="w-info">
+                                    <select name="select" id="select">
+                                      <option>강좌1</option>
+                                      <option>강좌2</option>
+                                      <option>강좌3</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="w-notice p_re">                                
                                 <div class="priceWrap chk buybtn p_re">
                                     <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC]</span>
-                                    <span class="price tx-blue">6,000원</span>
-                                    <span class="discount">(↓12%)</span>
+                                    <span class="select">[판매중]</span>
+                                    <span class="price tx-blue">41,000원</span>
+                                    <span class="discount">(↓10%)</span>
                                 </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[모바일]</span>
-                                    <span class="price tx-blue">90,000원</span>
-                                    <span class="discount">(↓50%)</span>
-                                </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC+모바일]</span>
-                                    <span class="price tx-blue">154,000원</span>
-                                    <span class="discount">(↓5%)</span>
-                                </div>
-                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <!-- lecTable -->
-
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 865px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div class="w-sub">
-                                    <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable -->
             </div>
             <!-- willbes-Lec-Table -->
+
+
+
+
         </div>
         <!-- willbes-Lec -->
 
@@ -526,64 +344,11 @@
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
             <div class="Layer-Tit tx-dark-black NG">
-                2018 기미진 국어 아침 실전 동형모의고사 특강[국가직 ~서울시] (3-6월)
+                교재상세정보
             </div>
             <div class="lecDetailWrap">
-                <ul class="tabWrap tabDepth1 NG">
-                    <li><a id="hover1" href="#ch1" class="on">강좌상세정보</a></li>
-                    <li><a id="hover2" href="#ch2">교재상세정보 (총 2권)</a></li>
-                </ul>
                 <div class="tabBox">
-                    <div id="ch1" class="tabLink">
-                        <div class="classInfo">
-                            <dl class="w-info NG">
-                                <dt>강의수 : <span class="tx-blue">70강</span></dt>
-                                <dt><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="tx-blue">50일</span></dt>
-                                <dt class="NSK ml15">
-                                    <span class="nBox n1">2배수</span>
-                                    <span class="nBox n2">진행중</span>
-                                    <span class="nBox n3">예정</span>
-                                    <span class="nBox n4">완강</span>
-                                </dt>
-                            </dl>
-                        </div>
-                        <div class="classInfoTable">
-                            <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 140px;">
-                                    <col width="*">
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <td class="w-list bg-light-white">
-                                            강좌유의사항<br/>
-                                            <span class="tx-red">(필독)</span>
-                                        </td>
-                                        <td class="w-data tx-left pl25">
-                                            LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
-                                            자동출력됩니다. (온라인상품기준)
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-list bg-light-white">강좌소개</td>
-                                        <td class="w-data tx-left pl25">
-                                            LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
-                                            자동출력됩니다. (온라인상품기준)
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-list bg-light-white">강좌특징</td>
-                                        <td class="w-data tx-left pl25">
-                                            LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
-                                            자동출력됩니다. (온라인상품기준)
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div id="ch2" class="tabLink book2">
+                    <div class="tabLink book2">
                         <div class="bookWrap">
                             <div class="bookInfo">
                                 <div class="bookImg">
@@ -600,7 +365,7 @@
                                         </ul>
                                         <ul>
                                             <li>출판일 : 2018-00-00 <span class="row-line">|</span></li>
-                                            <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong></li>
+                                            <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong> <strong class="tx-light-blue">[판매중]</strong></li>
                                         </ul>
                                     </div>
                                     <div class="bookBoxWrap">
@@ -620,58 +385,6 @@
                                                 <div class="caution-txt tx-red">수강생 교재는 해당 온라인 강좌 수강생에 한해 구매 가능합니다. (교재만 별도 구매 불가능)</div>
                                             </div>
                                             <div id="info2" class="tabContent">
-                                                <div class="book-TxtBox tx-gray">
-                                                    제1편 현대 문법<br/>
-                                                    제2편 고전 문법<br/>
-                                                    제3편 국어 생활<br/>
-                                                    제4편 현대 문학<br/>
-                                                    제5편 고전 문학<br/>
-                                                    제1편 현대 문법<br/>
-                                                    제2편 고전 문법<br/>
-                                                    제3편 국어 생활<br/>
-                                                    제4편 현대 문학<br/>
-                                                    제5편 고전 문학
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-                            <div class="bookInfo">
-                                <div class="bookImg">
-                                    <img src="{{ img_url('sample/book.jpg') }}">
-                                </div>
-                                <div class="bookDetail">
-                                    <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집2 (전5권)</div>
-                                    <div class="book-Author tx-gray">
-                                        <ul>
-                                            <li>분야 : 7급공무원 <span class="row-line">|</span></li>
-                                            <li>저자 : 저자명 <span class="row-line">|</span></li>
-                                            <li>출판사 : 출판사명 <span class="row-line">|</span></li>
-                                            <li>판형/쪽수 : 190*260 / 348</li>
-                                        </ul>
-                                        <ul>
-                                            <li>출판일 : 2018-12-25 <span class="row-line">|</span></li>
-                                            <li>교재비 : <strong class="tx-light-blue">40,000원</strong> (↓15%) <strong class="tx-black">[판매중]</strong></li>
-                                        </ul>
-                                    </div>
-                                    <div class="bookBoxWrap">
-                                        <ul class="tabWrap tabDepth2">
-                                            <li><a href="#info3" class="on">교재소개</a></li>
-                                            <li><a href="#info4">교재목차</a></li>
-                                        </ul>
-                                        <div class="tabBox">
-                                            <div id="info3" class="tabContent">
-                                                <div class="book-TxtBox tx-gray">
-                                                    2018년재신정판을내면서..<br/>
-                                                    첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
-                                                    둘째, 매지문마다해설을충실히달았습니다..<br/>
-                                                    셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
-                                                    기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
-                                                </div>
-                                                <div class="caution-txt tx-red">수강생 교재는 해당 온라인 강좌 수강생에 한해 구매 가능합니다. (교재만 별도 구매 불가능)</div>
-                                            </div>
-                                            <div id="info4" class="tabContent">
                                                 <div class="book-TxtBox tx-gray">
                                                     제1편 현대 문법<br/>
                                                     제2편 고전 문법<br/>

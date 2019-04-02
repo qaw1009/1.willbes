@@ -242,7 +242,8 @@
             <ul class="profGrid">
                 <li class="profList">
                     <a href="{{ site_url('/home/html/profsub') }}">
-                        <div class="Obj">공무원 국어종결자 공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Obj">공무원 국어종결자 <br/>
+                            공무원<br/>국어종결자</div>
                         <div class="Name">
                             <strong>정채영</strong><br/>
                             교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">

@@ -12,7 +12,7 @@
     .question span {color:#000; width:50px; display:block; font-weight:bold}
     .question div.qBox div {margin-bottom:10px}
     .question div.qBox ul {margin:0; padding:0; margin:10px 0}
-    .question div.qBox ul input:checked + label{
+    .question div.qBox input:checked + label{
         background: #fefe38;  
         }
 

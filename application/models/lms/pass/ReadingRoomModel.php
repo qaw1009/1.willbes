@@ -60,7 +60,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
         $where_temp = $where_temp->getMakeWhere(false);
 
         //켐퍼스 권한
-        $where_campus = $this->_makeAuthCampusQueryString();
+        $where_campus = $this->_makeAuthCampusQueryString('a');
         $where = $where_temp . $where_campus;
         $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
 
@@ -545,14 +545,14 @@ class ReadingRoomModel extends BaseReadingRoomModel
             $order_by_offset_limit = '';
         } else {
             $column = '
-                a.LrIdx, b.OrderIdx, b.OrderNo, c.MasterOrderIdx, c.NowOrderIdx, b.ReprProdName, b.OrderDatm, op.OrderPrice
-                , c.NowMIdx, a.CampusCcd, op.PayStatusCcd
+                b.LrIdx, o.OrderIdx, o.OrderNo, b.MasterOrderIdx, b.NowOrderIdx, o.ReprProdName, o.OrderDatm, op.OrderPrice
+                , b.NowMIdx, b.CampusCcd, op.PayStatusCcd
                 , op.ProdCode, op.OrderPrice, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone
-                , fn_ccd_name(a.CampusCcd) AS CampusName
+                , fn_ccd_name(b.CampusCcd) AS CampusName
                 , fn_ccd_name(op.PayStatusCcd) AS PayStatusName
-                , c.UseStartDate, c.UseEndDate, c.StatusCcd AS SeatStatusCcd
-                , fn_ccd_name(c.StatusCcd) AS SeatStatusName
-                , e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm
+                , b.UseStartDate, b.UseEndDate, b.StatusCcd AS SeatStatusCcd
+                , fn_ccd_name(b.StatusCcd) AS SeatStatusName
+                , e.wAdminName AS RegAdminName, b.RegDatm AS SeatRegDatm
                 , IFNULL(f.ExtensionType,\'N\') AS ExtensionType
                 , IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundTypeName
             ';
@@ -562,44 +562,46 @@ class ReadingRoomModel extends BaseReadingRoomModel
 
         $from = "
             FROM (
-                SELECT o.OrderIdx, o.OrderNo, o.MemIdx, o.SiteCode, o.ReprProdName, o.OrderDatm, o.CompleteDatm
-                FROM {$this->_table['lms_order']} AS o
-                WHERE o.PayRouteCcd = '{$this->_order_route_ccd}'
+                SELECT
+                    t_a.SiteCode, t_a.CampusCcd, t_a.LrIdx, t_a.ProdCode, t_a.SubProdCode
+                    , t_b.RegAdminIdx, t_b.NowMIdx, t_b.NowOrderIdx, t_b.StatusCcd, t_b.UseEndDate, t_b.RrudIdx
+                    , t_b.MasterOrderIdx, t_b.UseStartDate, t_b.RegDatm
+                FROM {$this->_table['readingRoom']} AS t_a
+                INNER JOIN {$this->_table['readingRoom_useDetail']} AS t_b ON t_a.LrIdx = t_b.LrIdx AND t_a.MangType = '{$mang_type}' AND t_a.IsStatus = 'Y'
             ) AS b
             
-            INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
-            INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
-            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
-            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx AND a.LrIdx = c.LrIdx
-            INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
+            INNER JOIN {$this->_table['lms_order']} AS o ON o.OrderIdx = b.NowOrderIdx AND PayRouteCcd = '{$this->_order_route_ccd}'
+            INNER JOIN {$this->_table['lms_order_product']} AS op ON o.OrderIdx = op.OrderIdx AND b.ProdCode = op.ProdCode
+            INNER JOIN {$this->_table['lms_member']} AS m ON o.MemIdx = m.MemIdx
+            INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON b.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             
             LEFT JOIN (
-                SELECT STRAIGHT_JOIN
-                    a.LrIdx, a.MasterOrderIdx, a.NowOrderIdx, a.SerialNumber, a.UseEndDate,
-                    IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 7) ||
-                            (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= -7), 'Y','N'
-                    ) AS ExtensionType
-                    FROM {$this->_table['readingRoom_mst']} as a
-                    INNER JOIN {$this->_table['readingRoom']} AS b ON a.LrIdx = b.LrIdx AND b.MangType = '{$mang_type}' AND b.IsStatus = 'Y'
-                    WHERE StatusCcd = '{$this->_arr_reading_room_status_ccd['Y']}'
-            ) AS f ON f.LrIdx = a.LrIdx AND f.SerialNumber = c.NowMIdx AND f.UseEndDate = c.UseEndDate
+            SELECT STRAIGHT_JOIN
+                a.LrIdx, a.MasterOrderIdx, a.NowOrderIdx, a.SerialNumber, a.UseEndDate,
+                IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 7) ||
+                    (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= -7), 'Y','N'
+                ) AS ExtensionType
+                FROM {$this->_table['readingRoom_mst']} AS a
+                INNER JOIN {$this->_table['readingRoom']} AS b ON a.LrIdx = b.LrIdx AND b.MangType = '{$mang_type}' AND b.IsStatus = 'Y'
+                WHERE StatusCcd = '{$this->_arr_reading_room_status_ccd['Y']}'
+            ) AS f ON f.LrIdx = b.LrIdx AND f.SerialNumber = b.NowMIdx AND f.UseEndDate = b.UseEndDate
             
             LEFT JOIN (
                 SELECT STRAIGHT_JOIN op.OrderIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
-                FROM lms_product AS p
+                FROM {$this->_table['product']} AS p
                 INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
                 INNER JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
                 WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
-            ) AS d ON a.SubProdCode = d.ProdCode AND c.NowOrderIdx = d.OrderIdx
+            ) AS d ON b.SubProdCode = d.ProdCode AND b.NowOrderIdx = d.OrderIdx
         ";
 
         //사이트 권한
-        $arr_condition['IN']['a.SiteCode'] = get_auth_site_codes();
+        $arr_condition['IN']['b.SiteCode'] = get_auth_site_codes();
         $where_temp = $this->_conn->makeWhere($arr_condition);
         $where_temp = $where_temp->getMakeWhere(false);
 
         //켐퍼스 권한
-        $where_campus = $this->_makeAuthCampusQueryString();
+        $where_campus = $this->_makeAuthCampusQueryString('b');
         $where = $where_temp . $where_campus;
         $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
 

@@ -57,11 +57,11 @@ class Issue extends \app\controllers\BaseController
 
         $arr_condition = [
             'EQ' => [
-                'a.SiteCode' => $this->_reqP('search_site_code'),       //사이트
-                'a.CampusCcd' => $this->_reqP('search_campus_ccd'),     //캠퍼스
+                'b.SiteCode' => $this->_reqP('search_site_code'),       //사이트
+                'b.CampusCcd' => $this->_reqP('search_campus_ccd'),     //캠퍼스
                 'op.PayStatusCcd' => $this->_reqP('search_pay_status'), //결제상태
-                'c.StatusCcd' => $this->_reqP('search_seat_status'),    //배정여부
-                'a.LrIdx' => $this->_reqP('search_readingroom_idx'),    //독서실명
+                'b.StatusCcd' => $this->_reqP('search_seat_status'),    //배정여부
+                'b.LrIdx' => $this->_reqP('search_readingroom_idx'),    //독서실명
                 //예치금반환
             ],
             'ORG' => [
@@ -71,7 +71,7 @@ class Issue extends \app\controllers\BaseController
                     'm.PhoneEnc' => $search_value_enc, // 암호화된 전화번호
                     'm.Phone2Enc' => $search_value_enc, // 암호화된 전화번호 중간자리
                     'm.Phone3' => $search_value, // 전화번호 뒷자리
-                    'b.OrderNo' => $search_value, // 주문번호
+                    'o.OrderNo' => $search_value, // 주문번호
                 ]
             ]
         ];
@@ -80,23 +80,23 @@ class Issue extends \app\controllers\BaseController
             switch ($this->_reqP('search_date_type')) {
                 case "P" :  //결제완료일
                     $arr_condition = array_merge($arr_condition, [
-                        'BDT' => ['b.OrderDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                        'BDT' => ['o.OrderDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
                         //'BDT' => ['b.CompleteDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
                     ]);
                     break;
                 case "R" :  //등록일 [자리등록일]
                     $arr_condition = array_merge($arr_condition, [
-                        'BDT' => ['c.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                        'BDT' => ['b.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
                     ]);
                     break;
                 case "S" :  //대여시작일
                     $arr_condition = array_merge($arr_condition, [
-                        'BDT' => ['c.UseStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                        'BDT' => ['b.UseStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
                     ]);
                     break;
                 case "E" :  //대여종료일
                     $arr_condition = array_merge($arr_condition, [
-                        'BDT' => ['c.UseEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                        'BDT' => ['b.UseEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
                     ]);
                     break;
             }
@@ -106,7 +106,7 @@ class Issue extends \app\controllers\BaseController
         $count = $this->readingRoomModel->listSeatDetail($mang_type,true, $arr_condition);
 
         if ($count > 0) {
-            $order_by = ['b.OrderIdx' => 'DESC', 'c.StatusCcd' => 'ASC', 'c.UseEndDate' => 'ASC', 'c.RrudIdx' => 'DESC'];
+            $order_by = ['o.OrderIdx' => 'DESC', 'b.StatusCcd' => 'ASC', 'b.UseEndDate' => 'ASC', 'b.RrudIdx' => 'DESC'];
             $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
         }
 

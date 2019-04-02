@@ -126,7 +126,6 @@ class BaseSurvey extends \app\controllers\FrontController
 
         $view_file = 'willbes/pc/survey/graph'.$idx;
         $this->load->view($view_file, [
-            'arrAnswerSet' => $arrAnswerSet,
             'resSet' => $resSet,
             'titleSet' => $titleSet,
             'numberSet' => $numberSet

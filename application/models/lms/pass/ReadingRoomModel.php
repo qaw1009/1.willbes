@@ -138,7 +138,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
      * @param array $arr_condition
      * @return mixed
      */
-    public function findReadingRoomForModify($OrderIdx, $arr_condition = [])
+    public function findReadingRoomForModify($OrderIdx, $arr_condition = [], $mang_type)
     {
         $column = '
                 a.LrIdx, a.CampusCcd, a.TransverseNum, b.OrderIdx, b.OrderNo, b.ReprProdName, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, op.ProdCode, op.RealPayPrice, b.OrderDatm,
@@ -159,7 +159,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                   ) AS b
             INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
-            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = 'R' AND a.IsStatus = 'Y'
+            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
             INNER JOIN {$this->_table['readingRoom_mst']} AS c ON b.OrderIdx = c.NowOrderIdx
             
             LEFT JOIN (

@@ -175,7 +175,8 @@
             //시험제출유무
             var submissionYN = 'Y';
             function popwin(prodcode, mode, mridx, tcnt){
-                if(tcnt == undefined){
+
+                if(tcnt == 0){
                     submissionYN = 'N';
                 } else {
                     submissionYN = 'Y';

@@ -574,6 +574,7 @@ class OrderModel extends BaseOrderModel
             $arr_subject_prof_idx = element('SubjectProfData', $input, []);     // 주문상품 과목/교수 연결 데이터 (기간제패키지)
             $is_visit_pay = element('IsVisitPay', $input, 'N');     // 방문결제 여부
             $is_delivery_info = element('IsDeliveryInfo', $input, 'N');     // 주문상품배송정보 입력 여부
+            $real_pay_price = element('RealPayPrice', $input, 0);   // 실결제금액
 
             // 주문상품 등록
             $data = [
@@ -584,7 +585,7 @@ class OrderModel extends BaseOrderModel
                 'SalePatternCcd' => element('SalePatternCcd', $input),
                 'PayStatusCcd' => $pay_status_ccd,
                 'OrderPrice' => element('RealSalePrice', $input, 0),
-                'RealPayPrice' => element('RealPayPrice', $input, 0),
+                'RealPayPrice' => $real_pay_price,
                 'CardPayPrice' => element('CardPayPrice', $input, 0),
                 'CashPayPrice' => element('CashPayPrice', $input, 0),
                 'DiscPrice' => element('DiscPrice', $input, 0),
@@ -646,7 +647,8 @@ class OrderModel extends BaseOrderModel
                     throw new \Exception($is_add_my_lecture);
                 }
 
-                if ($is_auto_add === true) {
+                // 실결제금액이 0원이면 자동지급 안함
+                if ($is_auto_add === true && $real_pay_price > 0) {
                     // 자동지급 주문상품 데이터 등록
                     $is_add_auto_product = $this->addOrderProductForAutoProduct($order_idx, $prod_code, $mem_idx, $pay_status_ccd, $input);
                     if ($is_add_auto_product !== true) {
@@ -1069,6 +1071,7 @@ class OrderModel extends BaseOrderModel
             $total_card_pay_price = 0;
             $total_cash_pay_price = 0;
             $total_disc_price = 0;
+            $is_auto_add = true;    // 자동지급 상품, 쿠폰 부여 여부
             $arr_prod_row = [];    // 상품조회 결과 배열
 
             if (empty($arr_prod_info) === true) {
@@ -1135,6 +1138,11 @@ class OrderModel extends BaseOrderModel
 
             // 주문 데이터 등록 (방문결제는 배송료, 쿠폰 사용, 포인트 사용/적립, 주문배송주소 등록 없음)
             $repr_prod_name = $arr_prod_row[0]['ProdName'] . (count($arr_prod_row) > 1 ? ' 외 ' . (count($arr_prod_row) - 1) . '건' : '');    // 대표상품명
+            
+            // 실결제금액이 0원이면 자동지급 안함 (0원결제(방문))
+            if ($total_real_pay_price < 1) {
+                $is_auto_add = false;
+            }
 
             $data = [
                 'OrderNo' => $this->makeOrderNo(),
@@ -1177,7 +1185,7 @@ class OrderModel extends BaseOrderModel
 
             // 주문상품 등록
             foreach ($arr_prod_row as $prod_row) {
-                $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], true, $prod_row);
+                $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], $is_auto_add, $prod_row);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }
@@ -1286,8 +1294,8 @@ class OrderModel extends BaseOrderModel
                             throw new \Exception('주문상품 정보 수정에 실패했습니다.');
                         }
 
-                        // 자동지급 쿠폰 데이터 등록 (학원 강좌일 경우만 실행)
-                        if ($row['ProdTypeCcd'] === $this->_prod_type_ccd['off_lecture']) {
+                        // 자동지급 쿠폰 데이터 등록 (학원 강좌일 경우만 실행, 0원결제(방문)일 경우 지급 안함)
+                        if ($real_pay_price > 0 && $row['ProdTypeCcd'] === $this->_prod_type_ccd['off_lecture']) {
                             $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $row['ProdCode'], $mem_idx);
                             if ($is_add_auto_coupon !== true) {
                                 throw new \Exception($is_add_auto_coupon);

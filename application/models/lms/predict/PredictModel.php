@@ -90,6 +90,10 @@ class PredictModel extends WB_Model
         $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
+        foreach ($data as $key => $val){
+            $data[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/survey/index/'.$val['SpIdx'];
+        }
+
         return array($data, $count);
     }
 
@@ -392,9 +396,9 @@ class PredictModel extends WB_Model
                 JOIN {$this->_table['surveyQuestionSetDetail']} AS sqsd ON sqs.SqsIdx = sqsd.SqsIdx
         ";
 
-        $obder_by = " ";
+        $obder_by = " ORDER BY Ordering ASC";
         $where = " WHERE sqs.SqsIdx = ".$idx;
-
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         $Res = $query->result_array();
 

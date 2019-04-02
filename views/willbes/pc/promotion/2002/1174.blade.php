@@ -161,8 +161,8 @@
                 </div>
             </form>
             -->
-            <div class="mt100 mb100"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_end.jpg" title="신청마감" /></div>
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_02.jpg" title=" " /></div>
+            <!--div class="mt100 mb100"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_end.jpg" title="신청마감" /></div-->
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_02.jpg" title=" " /></div>
         </div>
         
         <div>

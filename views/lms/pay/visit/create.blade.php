@@ -217,10 +217,11 @@
                         <div class="form-group bdt-line bg-odd">
                             <label class="control-label col-md-1 pt-5 pl-20">결제수단</label>
                             <div class="col-md-9 form-inline">
-                                <input type="radio" id="pay_method_card" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card'] }}" title="카드" required="required" disabled="disabled"/> <label class="input-label">카드</label>
+                                <input type="radio" id="pay_method_card" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card'] }}" title="카드" disabled="disabled"/> <label class="input-label">카드</label>
                                 <input type="radio" id="pay_method_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_cash'] }}" title="현금" disabled="disabled"/> <label class="input-label">현금</label>
-                                <input type="radio" id="pay_method_willbes_bank" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['willbes_bank'] }}" title="윌비스계좌이체" required="required" disabled="disabled"/> <label class="input-label">윌비스계좌이체</label>
-                                <input type="radio" id="pay_method_card_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card_cash'] }}" title="카드+현금" disabled="disabled"/> <label class="input-label mr-30">카드+현금</label>
+                                <input type="radio" id="pay_method_willbes_bank" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['willbes_bank'] }}" title="윌비스계좌이체" disabled="disabled"/> <label class="input-label">윌비스계좌이체</label>
+                                <input type="radio" id="pay_method_card_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card_cash'] }}" title="카드+현금" disabled="disabled"/> <label class="input-label">카드+현금</label>
+                                <input type="radio" id="pay_method_zero" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_zero'] }}" title="0원결제" disabled="disabled"/> <label class="input-label mr-50">0원결제</label>
                                 [카드선택]
                                 <select class="form-control input-sm ml-5" name="card_ccd" disabled="disabled" title="카드선택">
                                     <option value="">카드선택</option>
@@ -321,6 +322,18 @@
                 if ($regi_form.find('[name="pay_method_ccd"]:checked').length < 1) {
                     alert('결제수단을 선택해 주세요.');
                     return false;
+                }
+
+                if ($regi_form.find('[name="total_real_pay_price"]').val() > 0) {
+                    if ($regi_form.find('[id="pay_method_zero"]:checked').length > 0) {
+                        alert('0원이 초과되는 결제금액은 결제수단을 0원결제로 선택하실 수 없습니다.');
+                        return false;
+                    }
+                } else {
+                    if ($regi_form.find('[id="pay_method_zero"]:checked').length < 1) {
+                        alert('결제수단을 0원결제로 선택하셔야 합니다.');
+                        return false;
+                    }
                 }
 
                 if ($regi_form.find('[name="pay_method_ccd"]:checked').prop('id').indexOf('_card') > -1 && $regi_form.find('[name="card_ccd"]').val() === '') {
@@ -514,7 +527,13 @@
                     real_pay_price = order_price - disc_rate;
                 }
 
+                // 결제금액 셋팅
                 $regi_form.find('[name="real_pay_price[]"]').eq(index).val(real_pay_price);
+
+                // 카드/현금 입력 금액 초기화
+                $regi_form.find('[name="card_pay_price[]"]').eq(index).val('0');
+                $regi_form.find('[name="cash_pay_price[]"]').eq(index).val('0');
+
                 setTotalPrice();   // 결제금액 재계산
             });
 
@@ -543,24 +562,30 @@
                 // 총 카드, 현금결제금액
                 var total_card_pay_price = parseInt($regi_form.find('[name="total_card_pay_price"]').val());
                 var total_cash_pay_price = parseInt($regi_form.find('[name="total_cash_pay_price"]').val());
-                $regi_form.find('[name="sum_real_pay_price"]').val(total_card_pay_price + total_cash_pay_price);
+                var total_real_pay_price = total_card_pay_price + total_cash_pay_price;
+                $regi_form.find('[name="sum_real_pay_price"]').val(total_real_pay_price);
 
-                // 결제수단, 카드사 선택 셋팅
-                $regi_form.find('[name="pay_method_ccd"]').iCheck('disable');
+                if (total_real_pay_price > 0) {
+                    // 결제수단, 카드사 선택 셋팅
+                    $regi_form.find('[name="pay_method_ccd"]').iCheck('disable');
 
-                if (total_card_pay_price > 0) {
-                    $regi_form.find('[name="card_ccd"]').prop('disabled', false);
-                    if (total_cash_pay_price > 0) {
-                        $regi_form.find('[id="pay_method_card_cash"]').iCheck('enable').iCheck('check');
+                    if (total_card_pay_price > 0) {
+                        $regi_form.find('[name="card_ccd"]').prop('disabled', false);
+                        if (total_cash_pay_price > 0) {
+                            $regi_form.find('[id="pay_method_card_cash"]').iCheck('enable').iCheck('check');
+                        } else {
+                            $regi_form.find('[id="pay_method_card"]').iCheck('enable').iCheck('check');
+                        }
                     } else {
-                        $regi_form.find('[id="pay_method_card"]').iCheck('enable').iCheck('check');
+                        if (total_cash_pay_price > 0) {
+                            $regi_form.find('[name="card_ccd"]').prop('disabled', true);
+                            $regi_form.find('[id="pay_method_cash"]').iCheck('enable').iCheck('check');
+                            $regi_form.find('[id="pay_method_willbes_bank"]').iCheck('enable');
+                        }
                     }
                 } else {
-                    if (total_cash_pay_price > 0) {
-                        $regi_form.find('[name="card_ccd"]').prop('disabled', true);
-                        $regi_form.find('[id="pay_method_cash"]').iCheck('enable').iCheck('check');
-                        $regi_form.find('[id="pay_method_willbes_bank"]').iCheck('enable');
-                    }
+                    // 0원결제
+                    $regi_form.find('[id="pay_method_zero"]').iCheck('enable').iCheck('check');
                 }
             };
 

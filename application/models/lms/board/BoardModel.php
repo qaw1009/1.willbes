@@ -234,6 +234,7 @@ class BoardModel extends WB_Model
 
         $from = "
             FROM {$this->_table} as $this->_table
+            LEFT OUTER JOIN {$this->_table_member} AS MEM ON {$this->_table}.RegMemIdx = MEM.MemIdx
             LEFT OUTER JOIN {$this->_table_sys_admin} as {$this->_table_sys_admin} ON {$this->_table}.UpdAdminIdx = {$this->_table_sys_admin}.wAdminIdx and {$this->_table_sys_admin}.wIsStatus='Y'
         ";
 
@@ -653,6 +654,7 @@ class BoardModel extends WB_Model
                 break;
             case "studyComment" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx

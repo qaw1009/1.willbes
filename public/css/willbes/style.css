@@ -680,7 +680,7 @@ table.auTable tr td {
     background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -39px 0;
     width: 6px;
     height: 11px;
-    margin-top: 5px;
+    margin-top: 5px;    
 }
 #Gnb .toggle-Btn.gnb-Close .arrow-Btn {
     background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -30px 0;
@@ -2606,6 +2606,7 @@ table.auTable tr td {
     background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat -5px -1px;
     width: 8px;
     height: 6px;
+    vertical-align: middle;
 }
 
 /* subContainer : Content : Lec-Table */
@@ -2626,6 +2627,12 @@ table.auTable tr td {
 }
 .willbes-Lec-Table.d_block table.lecTable tr td {
     border-bottom: 1px solid #c9c9c9;
+}
+.lecTable td.w-list .bookImg img {
+    width:120px; margin:0 auto;
+}
+.w-info select {
+    width:99%; padding:5px;
 }
 
 /* subContainer : Content : w-info */

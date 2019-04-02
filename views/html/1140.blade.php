@@ -78,8 +78,8 @@
             .graph {width:20%; float:left; text-align:center; background:url(http://file.willbes.net/new_image/2015/04/graphBg.png) repeat;}
             .graph p {padding:10px 0; background:#fff}
             .graph p:last-child {border-top:1px solid #333}
-            .graph div {position:relative; width:45px; height:250px; margin:0 auto; }
-            .graph div img {position:absolute; bottom:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
+            .graph div {position:relative; width:45px; height:250px; margin:0 auto;}
+            .graph div img {position:absolute; bottom:0; left:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
             .graph2 div img {background:#bdbdcc url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
             .graphbox:after {content:""; display:block; clear:both}
             .graphWrap:after {content:""; display:block; clear:both}

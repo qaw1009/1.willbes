@@ -83,7 +83,7 @@
     .Cts03 .graph p {padding:10px 0; background:#fff}
     .Cts03 .graph p:last-child {border-top:1px solid #333}
     .Cts03 .graph div {position:relative; width:45px; height:250px; margin:0 auto; }
-    .Cts03 .graph div img {position:absolute; bottom:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
+    .Cts03 .graph div img {position:absolute; bottom:0; left:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
     .Cts03 .graph2 div img {background:#bdbdcc url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
     .Cts03 .graphbox:after {content:""; display:block; clear:both}
     .Cts03 .graphWrap:after {content:""; display:block; clear:both}

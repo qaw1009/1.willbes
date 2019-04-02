@@ -212,9 +212,7 @@
                         </a>
                     </div>
                     <div class="agree-Txt">
-                        987 약관이 노출 됩니다.<br/>
-                        654 약관이 노출 됩니다.<br/>
-                        321 약관이 노출 됩니다.<br/>
+                        @include('willbes.pc.site.main_partial.main_point_' . $__cfg['SiteCode'])
                     </div>
                 </li>
                 <li class="chk">

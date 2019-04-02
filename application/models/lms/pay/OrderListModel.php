@@ -565,16 +565,20 @@ class OrderListModel extends BaseOrderModel
                 $arr_prod_code[] = $data['ProdCode'];
             } else {
                 // 주문서브상품 상품코드 조회
-                $arr_prod_code = $this->_conn->getFindResult($this->_table['order_sub_product'], 'ProdCodeSub', [
+                $arr_prod_code = $this->_conn->getListResult($this->_table['order_sub_product'], 'ProdCodeSub', [
                     'EQ' => ['OrderProdIdx' => $order_prod_idx]
                 ]);
+                if (empty($arr_prod_code) === true) {
+                    return '종합반 상품의 단과 상품 정보가 없습니다.';
+                }
+                $arr_prod_code = array_pluck($arr_prod_code, 'ProdCodeSub');
 
                 /*// 선택형 종합반 선택된 상품 교수명 조회 (추후 데이터 보정 후 반영)
                 $prof_name = $this->getChoicePackSelectedProfName($order_prod_idx, $data['ProdCode']);
                 $prof_name = empty($prof_name) === false ? ' (' . mb_substr($prof_name['wProfName'], 0, 1) . ')' : '';*/
             }
 
-            /*// 나의 강좌정보 (my_lecture) 최소 강좌시작일자, 최대 강좌종료일자 조회 ==> 상품정보에서 조회로 변경
+            /*// 나의 강좌정보 (my_lecture) 최소 강좌시작일자, 최대 강좌종료일자 조회 (사용안함) ==> 상품정보에서 조회로 변경
             $add_data = $this->_conn->getFindResult($this->_table['my_lecture'], 'min(LecStartDate) as MinLecStartDate, max(LecEndDate) as MaxLecEndDate', [
                 'EQ' => ['OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx]]);*/
 

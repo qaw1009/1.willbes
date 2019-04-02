@@ -516,9 +516,9 @@ table.combineTable .addbox2 {
 .agree-Chk ul li .agree-Txt {
     display: none;
     color: #0d74ae;
-    height: 130px;
+    height: 150px;
     line-height: 20px;
-    padding: 20px;
+    padding: 0;
     border-top: 1px solid #e2e2e2;
     overflow-x: auto;
 }
@@ -10915,33 +10915,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .board_type a.freeLec {background-color:#06F !important}
 .board_type a:hover { background-color:#000 !important}
 
-/*이용약관*/
-.policyNew {padding:20px}
-.policyNew {padding:20px}
-.policyNew h3 {font-size:18px; color:#0c5dc0 !important; margin-bottom:20px; color:#06F; border-bottom:2px solid #0c5dc0; padding-bottom:10px}
-.policyNew p {margin-bottom:20px; font-weight:bold; font-size:14px; color:#333; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding:10px 0}
-.policyNew div {margin-bottom:10px}
-.policyNew ul,
-.policyNew ol {margin-bottom:30px}
-.policyNew li {margin-bottom:8px; line-height:1.5; margin-left:20px}
 
-.policyNew .titsubject {margin-top:20px; background:#f3f2f2; padding:20px 20px 10px;}
-.policyNew .titsubject li {display:inline; float:left; width:50%; margin:0; padding:0; border:0}
-.policyNew .titsubject li a {color:#000}
-.policyNew .titsubject:after {content:""; display:block; clear:both}
-
-.policyNew th {background:#f0f0f0; border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; color:#666; padding:10px 0}
-.policyNew td {border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; padding:8px; line-height:1.5}
-.policyNew th:last-child,
-.policyNew td:last-child {border-right:0}
-.policyNew tr.trTypeA td:last-child {border-right:#d7d7d7 1px solid}
-.policyNew tr.trTypeB td:last-child {border-bottom:#666 1px solid}
-.policyNew tr.trTypeC th {border-bottom:#666 1px solid}
-.policyNew tr:last-child td {border-bottom:0}
-.policyNew table.tdCenter td {text-align:center}
-.policyNew table {width:100%; border-collapse:collapse; border-spacing:0; border:#666 1px solid !important; background:#fff; margin:10px 0}
-.policyNew .txtInfo {margin:40px 0}
-.policyNew .tit2 {color:#F33}
 
 
 /* Only IE Hack */
@@ -11260,3 +11234,39 @@ table.acadlecInfoPackageTable tr.Top td {
         margin: 30px 0 0 0;
     }
 }
+
+/*이용약관*/
+.policyNew * {font-size:12px;; font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";}
+.policyNew {padding:20px; color:#555; line-height:1.5 !important; }
+.policyNew a {text-decoration:none}
+.policyNew ol,
+.policyNew ul,
+.policyNew li {margin:0 !important; padding:0 !important; border:0 !important; }
+.policyNew .mt10 {margin-top:10px}
+
+.policyNew h3 {font-size:18px; color:#0c5dc0 !important; margin-bottom:20px; color:#06F; border-bottom:2px solid #0c5dc0; padding-bottom:10px; font-weight: bold}
+.policyNew p {margin:20px 0; font-weight:bold; font-size:14px; color:#333; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding:10px 0}
+.policyNew div {margin-bottom:10px}
+.policyNew ul,
+.policyNew .policyNum {margin-bottom:30px}
+.policyNew .policyNum li {margin-bottom:8px; margin-left:20px !important; list-style-type: decimal; min-height: 20px !important; line-height:1.5 !important;}
+
+.policyNew .titsubject {margin-top:20px; background:#f3f2f2; padding:20px 20px 10px !important;}
+.policyNew .titsubject li {display:inline; float:left; width:50%; margin:0 !important; padding:0 !important; min-height: 30px; line-height: 1.5;}
+.policyNew .titsubject li a {color:#000;}
+.policyNew .titsubject:after {content:""; display:block; clear:both}
+
+.policyNew table {width:100%; border-collapse:collapse; border-spacing:0; border:#666 1px solid !important; background:#fff; margin:10px 0 30px}
+.policyNew table.tdCenter td {text-align:center}
+.policyNew th {background:#f0f0f0; border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; color:#666; padding:10px 0}
+.policyNew td {border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; padding:8px; line-height:1.5}
+.policyNew th:last-child,
+.policyNew td:last-child {border-right:0}
+.policyNew tr.trTypeA td:last-child {border-right:#d7d7d7 1px solid}
+.policyNew tr.trTypeB td:last-child {border-bottom:#666 1px solid}
+.policyNew tr.trTypeC th {border-bottom:#666 1px solid}
+.policyNew tr:last-child td {border-bottom:0}
+.policyNew .txtInfo {margin:40px 0}
+.policyNew .tit2 {color:#F33}
+.closebtn {position:absolute; top:20px; right:20px; z-index:10}
+.closebtn a {font-size:11px; color:#fff; background:#333; padding:3px; text-decoration:none}

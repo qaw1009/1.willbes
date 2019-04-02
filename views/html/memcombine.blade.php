@@ -256,9 +256,7 @@
                         </a>
                     </div>
                     <div class="agree-Txt">
-                        111 약관이 노출 됩니다.<br/>
-                        222 약관이 노출 됩니다.<br/>
-                        333 약관이 노출 됩니다.<br/>
+                        @include('willbes.pc.company.agreementContent')
                     </div>
                 </li>
                 <li class="chk">
@@ -267,13 +265,11 @@
                     </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="v_arrow">▼</span>
+                            <span class="tx-blue">(필수)</span> 개인정보 취급방침 및 이용 동의<span class="v_arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
-                        1약관이 노출 됩니다.<br/>
-                        2약관이 노출 됩니다.<br/>
-                        3약관이 노출 됩니다.<br/>
+                        @include('willbes.pc.company.protectContent')
                     </div>
                 </li>
                 <li class="chk">

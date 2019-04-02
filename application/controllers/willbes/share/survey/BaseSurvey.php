@@ -5,8 +5,8 @@ class BaseSurvey extends \app\controllers\FrontController
 {
     protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey');
     protected $helpers = array();
-    protected $auth_controller = true;
-    protected $auth_methods = array();
+    protected $auth_controller = false;
+    protected $auth_methods = array('index');
 
     public function __construct()
     {
@@ -77,8 +77,59 @@ class BaseSurvey extends \app\controllers\FrontController
     public function graph($params = [])
     {
         $idx = $params[0];
+
+        $res = $this->surveyModel->answerCall($idx);
+
+        $tempSq = '';
+        $temptitle = '';
+        $resSet = array();
+        $titleSet = array();
+        $tnum = 0; $num1 = 0; $num2 = 0; $num3 = 0; $num4 = 0; $num5 = 0; $num6 = 0; $num7 = 0; $num8 = 0; $num9 = 0; $num10 = 0;
+        $resCnt = count($res);
+        $defnum = 0;
+        foreach ($res as $key => $val){
+            $SqIdx = $val['SqIdx'];
+            $j = $key + 1;
+
+            if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
+                $tnum = $num1 + $num2 + $num3 + $num4 + $num5 + $num6 + $num7 + $num8 + $num9 + $num10;
+                $resSet[$defnum]['SubTitle'] = $temptitle;
+                $resSet[$defnum]['Answer1'] = ($num1 > 0 && $tnum > 0)? round($num1 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer2'] = ($num2 > 0 && $tnum > 0)? round($num2 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer3'] = ($num3 > 0 && $tnum > 0)? round($num3 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer4'] = ($num4 > 0 && $tnum > 0)? round($num4 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer5'] = ($num5 > 0 && $tnum > 0)? round($num5 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer6'] = ($num6 > 0 && $tnum > 0)? round($num6 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer7'] = ($num7 > 0 && $tnum > 0)? round($num7 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer8'] = ($num8 > 0 && $tnum > 0)? round($num8 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer9'] = ($num9 > 0 && $tnum > 0)? round($num9 / $tnum,2) * 100 : 0;
+                $resSet[$defnum]['Answer10'] = ($num10 > 0 && $tnum > 0)? round($num10 / $tnum,2) * 100 : 0;
+                $num1 = 0; $num2 = 0; $num3 = 0; $num4 = 0; $num5 = 0; $num6 = 0; $num7 = 0; $num8 = 0; $num9 = 0; $num10 = 0;
+                $titleSet[] = $temptitle;
+                $numberSet[] = $defnum;
+                $defnum++;
+            } else {
+                if($val['Answer'] == 1) $num1++;
+                if($val['Answer'] == 2) $num2++;
+                if($val['Answer'] == 3) $num3++;
+                if($val['Answer'] == 4) $num4++;
+                if($val['Answer'] == 5) $num5++;
+                if($val['Answer'] == 6) $num6++;
+                if($val['Answer'] == 7) $num7++;
+                if($val['Answer'] == 8) $num8++;
+                if($val['Answer'] == 9) $num9++;
+                if($val['Answer'] == 10) $num10++;
+            }
+            $tempSq = $SqIdx;
+            $temptitle = $val['SubTitle'];
+        }
+
         $view_file = 'willbes/pc/survey/graph'.$idx;
         $this->load->view($view_file, [
+            'arrAnswerSet' => $arrAnswerSet,
+            'resSet' => $resSet,
+            'titleSet' => $titleSet,
+            'numberSet' => $numberSet
         ], false);
     }
 

@@ -42,11 +42,11 @@
             position:relative; width:1120px; margin:0 auto; text-align:center;
         }
         .tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
-        .tabCts .download span:nth-child(1) {left:185px;}
-        .tabCts .download span:nth-child(2) {left:278px;}
-        .tabCts .download span:nth-child(3) {left:570px;}
-        .tabCts .download span:nth-child(4) {left:815px;}
-        .tabCts .download span:nth-child(5) {left:900px;}
+        .tabCts .download span:nth-child(1) {left:160px;}
+        .tabCts .download span:nth-child(2) {left:362px;}
+        .tabCts .download span:nth-child(3) {left:572px;}
+        .tabCts .download span:nth-child(4) {left:760px;}
+        .tabCts .download span:nth-child(5) {left:940px;}
         .tabCts .download span a {display:block; color:#fff; background:#d18f04; border-radius:14px;}
         .tabCts .download span a:hover {background:#e50001}
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
@@ -84,7 +84,7 @@
         .Cts03 .graph {width:20%; float:left; text-align:center; background:url(http://file.willbes.net/new_image/2015/04/graphBg.png) repeat;}
         .Cts03 .graph p {padding:10px 0; background:#fff}
         .Cts03 .graph p:last-child {border-top:1px solid #333}
-        .Cts03 .graph div {position:relative; width:45px; height:250px; margin:0 auto}
+        .Cts03 .graph div {position:relative; width:45px; height:250px; margin:0 auto; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
         .Cts03 .graph div img {position:absolute; bottom:0; width:100%}
         .Cts03 .graphbox:after {content:""; display:block; clear:both}
         .Cts03 .graphWrap:after {content:""; display:block; clear:both}
@@ -1122,7 +1122,7 @@
                             <div class="graph">                                                        
                                 <p>3%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="3%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
                                 </div>                            
                                 <p>매우 쉬움</p>
                             </div>
@@ -1130,7 +1130,7 @@
                             <div class="graph">                                                                          
                                 <p>3%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="3%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
                                 </div>                                    
                                 <p>쉬움</p>
                             </div>
@@ -1138,7 +1138,7 @@
                             <div class="graph">
                                 <p>13%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="13%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="13%">
                                 </div>
                                 <p>보통</p>
                             </div>
@@ -1146,7 +1146,7 @@
                             <div class="graph">                                           
                                 <p>70%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="70%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="70%">
                                 </div>                            
                                 <p>어려움</p>
                             </div>
@@ -1154,7 +1154,7 @@
                             <div class="graph">                                     
                                 <p>10%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="10%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="10%">
                                 </div>                            
                                 <p>매우 어려움</p>
                             </div>
@@ -1178,7 +1178,7 @@
                             <div class="graph">                                                        
                                 <p>3%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="3%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
                                 </div>                            
                                 <p>매우 쉬움</p>
                             </div>
@@ -1186,7 +1186,7 @@
                             <div class="graph">                                                                          
                                 <p>3%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="3%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
                                 </div>                                    
                                 <p>쉬움</p>
                             </div>
@@ -1194,7 +1194,7 @@
                             <div class="graph">
                                 <p>13%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="13%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="13%">
                                 </div>
                                 <p>보통</p>
                             </div>
@@ -1202,7 +1202,7 @@
                             <div class="graph">                                           
                                 <p>70%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="70%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="70%">
                                 </div>                            
                                 <p>어려움</p>
                             </div>
@@ -1210,7 +1210,7 @@
                             <div class="graph">                                     
                                 <p>10%</p>
                                 <div>
-                                    <img src="http://file3.willbes.net/new_gosi/2018/04/graph01_m.jpg" height="10%">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="10%">
                                 </div>                            
                                 <p>매우 어려움</p>
                             </div>

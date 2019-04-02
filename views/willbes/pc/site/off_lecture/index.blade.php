@@ -238,7 +238,7 @@
         {{-- 과목별 상품 리스트 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both mt20">
-                <div class="willbes-Lec-Subject tx-dark-black">· {{ $subject_name }}<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
+                {{--<div class="willbes-Lec-Subject tx-dark-black">· {{ $subject_name }}<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>--}}
                 <!-- willbes-Lec-Subject -->
 
                 <div class="willbes-Lec-Line mt20">-</div>

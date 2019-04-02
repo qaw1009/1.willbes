@@ -635,23 +635,24 @@ class BaseReadingRoomModel extends WB_Model
 
     /**
      * 캠퍼스 권한 쿼리 스트링
+     * @param $as [TABLE AS 값]
      * @return string
      */
-    protected function _makeAuthCampusQueryString()
+    protected function _makeAuthCampusQueryString($as)
     {
         $arr_auth_campus_ccds = get_auth_all_campus_ccds();
         $where_campus = $this->_conn->group_start();
         foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
             $where_campus->or_group_start();
-            $where_campus->or_where('a.SiteCode',$set_site_ccd);
+            $where_campus->or_where($as.'.SiteCode',$set_site_ccd);
             $where_campus->group_start();
-            $where_campus->where('a.CampusCcd', $this->codeModel->campusAllCcd);
-            $where_campus->or_where_in('a.CampusCcd', $set_campus_ccd);
+            $where_campus->where($as.'.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in($as.'.CampusCcd', $set_campus_ccd);
             $where_campus->group_end();
             $where_campus->group_end();
         }
-        $where_campus->or_where('a.CampusCcd', "''", false);
-        $where_campus->or_where('a.CampusCcd IS NULL');
+        $where_campus->or_where($as.'.CampusCcd', "''", false);
+        $where_campus->or_where($as.'.CampusCcd IS NULL');
         $where_campus->group_end();
         return $where_campus->getMakeWhere(true);
     }

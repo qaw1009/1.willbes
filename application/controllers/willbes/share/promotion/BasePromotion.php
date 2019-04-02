@@ -21,6 +21,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         $test_type = (int)element('type', $this->_reqG(null), '0');
         $arr_base['promotion_code'] = (int)$params['code'];
+        $arr_base['spidx'] = (int)$params['spidx'];
 
         //인증식별자
         //$cert_idx = element('cert', $this->_reqG(null), '');

@@ -1870,7 +1870,7 @@ table.auTable tr td {
     display: block;
     clear: both;
 }
-
+.subContainer span {vertical-align:auto}
 
 /* subContainer : Menu */
 .Menu {
@@ -3280,8 +3280,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .lec-profile {
     float: right;
-    width: 410px;
+    width: 400px;
     height: 294px;
+    margin-right:10px;
 }
 .lec-profile .w-list {
     font-size: 14px;

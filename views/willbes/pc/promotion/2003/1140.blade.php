@@ -1114,112 +1114,10 @@
 
         <!--시험총평 및 시험후기-->
         <div id="tab3" class="tabCts Cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" /> 
-            <ul class="graphWrap">
-                <li>
-                    <h3>전체 시험 난이도 </h3>
-                    <div>
-                        <div class="graphbox">                                       
-                            <div class="graph">                                                        
-                                <p>3%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
-                                </div>                            
-                                <p>매우 쉬움</p>
-                            </div>
-                                    
-                            <div class="graph">                                                                          
-                                <p>3%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
-                                </div>                                    
-                                <p>쉬움</p>
-                            </div>
-                                    
-                            <div class="graph">
-                                <p>13%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="13%">
-                                </div>
-                                <p>보통</p>
-                            </div>
-                                    
-                            <div class="graph">                                           
-                                <p>70%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="70%">
-                                </div>                            
-                                <p>어려움</p>
-                            </div>
-                                    
-                            <div class="graph">                                     
-                                <p>10%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="10%">
-                                </div>                            
-                                <p>매우 어려움</p>
-                            </div>
-                        </div>
-                        <!--graphbox//-->
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <h3>과목별 시험 난이도 : <span>[국어]</span></h3>
-                        <select title="과목선택" onchange="fn_select_poll_id(this.value)">                            	
-                            <option value=" " selected="selected">과목1</option>                        
-                            <option value=" ">과목2</option>                        
-                            <option value=" ">과목3</option>                        
-                            <option value=" ">과목4</option>                        
-                            <option value=" ">과목5</option>                      
-                        </select>
-                        <div>
-                            <div class="graphbox">                                       
-                                <div class="graph graph2">                                                        
-                                    <p>3%</p>
-                                    <div>
-                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
-                                    </div>                            
-                                    <p>매우 쉬움</p>
-                                </div>
-                                        
-                                <div class="graph graph2">                                                                          
-                                    <p>3%</p>
-                                    <div>
-                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
-                                    </div>                                    
-                                    <p>쉬움</p>
-                                </div>
-                                        
-                                <div class="graph graph2">
-                                    <p>13%</p>
-                                    <div>
-                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="13%">
-                                    </div>
-                                    <p>보통</p>
-                                </div>
-                                        
-                                <div class="graph graph2">                                           
-                                    <p>70%</p>
-                                    <div>
-                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="70%">
-                                    </div>                            
-                                    <p>어려움</p>
-                                </div>
-                                        
-                                <div class="graph graph2">                                     
-                                    <p>10%</p>
-                                    <div>
-                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="10%">
-                                    </div>                            
-                                    <p>매우 어려움</p>
-                                </div>
-                            </div>
-                            <!--graphbox//-->
-                        </div>                       
-                    </div>
-                </li>
-            </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
+            {{--<iframe src="https://www.local.willbes.net/survey/graph/2" style="width:1280px; height:1000px;" />--}}
+            <?php echo $this->runChild('willbes.pc.survey.show_graph_partial'); ?>
+
             <div class="mt30 tx-center">
                 <a href="javascript:pullOpen();">
                     <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn02.png" title="설문하기" />
@@ -1288,6 +1186,9 @@
 
         /*tab*/
         $(document).ready(function(){
+
+
+
         $('.evtMenu ul').each(function(){
             var $active, $content, $links = $(this).find('a');
             $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -1302,6 +1203,7 @@
         
             // Bind the click event handler
             $(this).on('click', 'a', function(e){
+
             if(env == 'local'){
                 $active.removeClass('active');
                 $content.hide();

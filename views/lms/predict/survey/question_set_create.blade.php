@@ -86,7 +86,7 @@
                                     <td><div id='title{{ $val['SqIdx'] }}' style="margin-top:5px;">{{ $val['SqTitle'] }}</div></td>
                                     <td><div id='cnt{{ $val['SqIdx'] }}' style="margin-top:5px;">{{ $val['Cnt'] }}</div></td>
                                     <td><div id='type{{ $val['SqIdx'] }}' style="margin-top:5px;">{{ $val['Type'] }}</div></td>
-                                    <td><button class="btn btn-primary" type="button" onClick="cart('{{ $val['SqIdx'] }}')">문항담기</button></td>
+                                    <td><button class="btn btn-primary" type="button" onClick="cart('{{ $val['SqIdx'] }}' , null)">문항담기</button></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -175,8 +175,7 @@
 
         $( document ).ready( function() {
             for(var i=0; i < arrKey.length; i++){
-                cart(arrKey[i]);
-                $('#GroupNumber'+arrKey[i]).val(arrGroupNumber[i]);
+                cart(arrKey[i], arrGroupNumber[i]);
             }
 
             groupTextMake();
@@ -192,13 +191,20 @@
             });
         });
 
-        function cart(sqidx){
+        function cart(sqidx, add){
+
             var useYn = cartCheck(sqidx);
-            var vnum = parseInt(sqidx) + 1;
+            var vnum = 0;
+            if(add == null){
+                vnum = currentnum;
+            } else {
+                vnum = add;
+            }
+
             if(useYn == 'N') {
 
                 var tempR2 = $('#r2').html();
-                tempR2 = tempR2 + "<div id='r2" + sqidx + "'>Q<input type='text' id='GroupNumber"+ sqidx +"' name='GroupNumber[]' value=" + currentnum + " style='width:25px;' onKeyup='groupTextMake()' /></div>";
+                tempR2 = tempR2 + "<div id='r2" + sqidx + "'>Q<input type='text' id='GroupNumber"+ sqidx +"' name='GroupNumber[]' value=" + vnum + " style='width:25px;' onKeyup='groupTextMake()' /></div>";
                 $('#r2').html(tempR2);
 
                 var tempR3 = $('#r3').html();
@@ -213,7 +219,7 @@
                 tempR5 = tempR5 + "<div id='r5" + sqidx + "'><input type='text' value='" + $('#type' + sqidx).html() + "' style='width:60px;' disabled /></div>";
                 $('#r5').html(tempR5);
                 var tempR6 = $('#r6').html();
-                tempR6 = tempR6 + "<div id='r6" + sqidx + "' style='margin-top:3px;'><button class='btn btn-primary' type='button' onClick='cartDel(" + sqidx + ")'>삭제</button></div>";
+                tempR6 = tempR6 + "<div id='r6" + sqidx + "' style='margin-top:5px;'><button class='btn btn-primary' type='button' onClick='cartDel(" + sqidx + ")'>삭제</button></div>";
                 $('#r6').html(tempR6);
 
                 var tempR7 = $('#r7').html();

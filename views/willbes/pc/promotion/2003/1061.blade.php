@@ -22,7 +22,7 @@
         /************************************************************/
 
         /*타이머*/
-        .time{background:#e1e1e1;}
+        .time{background:#e9e7e8;}
         .time_date {max-width:1120px; text-align:center;  margin: 0 auto;}
         .time_date .t_img {width:80%;}
         .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:22px; color:#171717; letter-spacing: -1px; font-weight:bold;}
@@ -182,7 +182,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,2,31,23,59,59);
+            event_day = new Date(2019,3,9,23,59,59);
             now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 

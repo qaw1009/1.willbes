@@ -27,7 +27,8 @@
                     <tr>
                         <th class="text-center" style="width:5%">NO</th>
                         <th class="text-center">제목</th>
-                        <th class="text-center" style="width:40%">설문세트제목</th>
+                        <th class="text-center" style="width:20%">설문링크</th>
+                        <th class="text-center" style="width:20%">설문세트제목</th>
                         <th class="text-center" style="width:20%">시작일 / 종료일</th>
                         <th class="text-center" style="width:5%">사용유무</th>
                     </tr>
@@ -84,6 +85,7 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<span class="blue underline-link act-edit"><input type="hidden" name="target" value="' + row.SpIdx + '" />' + row.SpTitle  + '</span>';
                         }},
+                    {'data' : 'link', 'class': 'text-center'},
                     {'data' : 'SqsTitle', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             var date = row.StartDate + ' / ' + row.EndDate;

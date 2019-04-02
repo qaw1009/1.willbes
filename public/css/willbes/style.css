@@ -1862,7 +1862,8 @@ table.auTable tr td {
 .subContainer {
     *zoom: 1;
     margin-bottom: 60px;
-    min-height: 700px;
+    min-height: 700px;   
+
 }
 .subContainer:after {
     content: "";
@@ -10857,6 +10858,84 @@ table.acadlecInfoPackageTable tr.Top td {
 
 
 
+
+
+.table-condensed {
+    width: 250px !important;
+}
+
+/**/
+.board_type{border:0 !important}
+.board_type{
+    width: 100% !important;
+    color: #666 !important;
+    border-top: solid 2px #000 !important;
+    border-left: solid 1px #d7d7d7 !important;
+    border-collapse: separate !important;
+    border-spacing: 0px !important;
+    text-align: left;
+} 
+.board_type caption {display:none}
+.board_type th{ 
+    padding:7px 0 !important;   
+    border-bottom:solid 1px #000 !important;
+    border-right:solid 1px #ccc !important;
+    background:#faf9fb !important;
+    color:#333 !important;
+    font-weight:bold !important;
+    line-height:18px !important;
+    vertical-align:middle !important;
+    font-size:12px !important;
+    text-align:center !important;
+}
+.board_type td {padding:5px !important;border-bottom:solid 1px #d7d7d7 !important; text-align:center !important; border-right:solid 1px #d7d7d7 !important; vertical-align:middle !important}
+.board_type td.td1 {text-align:left !important}
+.board_type td.td2 {    
+    font-weight: bold !important;
+    text-align: left;
+}
+.board_type td.td3 {font-size:120% !important; font-weight:bold !important; text-align:left !important}
+.board_type td.tdleft {text-align:left !important}
+.board_type p {line-height:120%}
+.board_type ul {margin:0; padding:0}
+.board_type ul li {list-style-type:none}
+.board_ul {margin:0 0 0 10px; padding:0 0 0 20px}
+.board_ul li {list-style-type:disc}
+
+.board_type a { display:block; padding:5px !important; border-radius:5px; text-decoration:none; background-color:#ff434a; color:#fff !important; font-weight:bold}
+.board_type a.cooming {background-color:#666 !important}
+.board_type a.freeLec {background-color:#06F !important}
+.board_type a:hover { background-color:#000 !important}
+
+/*이용약관*/
+.policyNew {padding:20px}
+.policyNew {padding:20px}
+.policyNew h3 {font-size:18px; color:#0c5dc0 !important; margin-bottom:20px; color:#06F; border-bottom:2px solid #0c5dc0; padding-bottom:10px}
+.policyNew p {margin-bottom:20px; font-weight:bold; font-size:14px; color:#333; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding:10px 0}
+.policyNew div {margin-bottom:10px}
+.policyNew ul,
+.policyNew ol {margin-bottom:30px}
+.policyNew li {margin-bottom:8px; line-height:1.5; margin-left:20px}
+
+.policyNew .titsubject {margin-top:20px; background:#f3f2f2; padding:20px 20px 10px;}
+.policyNew .titsubject li {display:inline; float:left; width:50%; margin:0; padding:0; border:0}
+.policyNew .titsubject li a {color:#000}
+.policyNew .titsubject:after {content:""; display:block; clear:both}
+
+.policyNew th {background:#f0f0f0; border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; color:#666; padding:10px 0}
+.policyNew td {border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; padding:8px; line-height:1.5}
+.policyNew th:last-child,
+.policyNew td:last-child {border-right:0}
+.policyNew tr.trTypeA td:last-child {border-right:#d7d7d7 1px solid}
+.policyNew tr.trTypeB td:last-child {border-bottom:#666 1px solid}
+.policyNew tr.trTypeC th {border-bottom:#666 1px solid}
+.policyNew tr:last-child td {border-bottom:0}
+.policyNew table.tdCenter td {text-align:center}
+.policyNew table {width:100%; border-collapse:collapse; border-spacing:0; border:#666 1px solid !important; background:#fff; margin:10px 0}
+.policyNew .txtInfo {margin:40px 0}
+.policyNew .tit2 {color:#F33}
+
+
 /* Only IE Hack */
 /* IE7, IE8, IE9 */
 #SettingForm .chkBox-Save strong {
@@ -11173,78 +11252,3 @@ table.acadlecInfoPackageTable tr.Top td {
         margin: 30px 0 0 0;
     }
 }
-
-.table-condensed {
-    width: 250px !important;
-}
-
-/**/
-.board_type{border:0 !important}
-.board_type{
-    width: 100% !important;
-    color: #666 !important;
-    border-top: solid 2px #000 !important;
-    border-left: solid 1px #d7d7d7 !important;
-    border-collapse: separate !important;
-    border-spacing: 0px !important;
-    text-align: left;
-} 
-.board_type caption {display:none}
-.board_type th{ 
-    padding:7px 0 !important;   
-    border-bottom:solid 1px #000 !important;
-    border-right:solid 1px #ccc !important;
-    background:#faf9fb !important;
-    color:#333 !important;
-    font-weight:bold !important;
-    line-height:18px !important;
-    vertical-align:middle !important;
-    font-size:12px !important;
-    text-align:center !important;
-}
-.board_type td {padding:5px !important;border-bottom:solid 1px #d7d7d7 !important; text-align:center !important; border-right:solid 1px #d7d7d7 !important; vertical-align:middle !important}
-.board_type td.td1 {text-align:left !important}
-.board_type td.td2 {    
-    font-weight: bold !important;
-    text-align: left;
-}
-.board_type td.td3 {font-size:120% !important; font-weight:bold !important; text-align:left !important}
-.board_type td.tdleft {text-align:left !important}
-.board_type p {line-height:120%}
-.board_type ul {margin:0; padding:0}
-.board_type ul li {list-style-type:none}
-.board_ul {margin:0 0 0 10px; padding:0 0 0 20px}
-.board_ul li {list-style-type:disc}
-
-.board_type a { display:block; padding:5px !important; border-radius:5px; text-decoration:none; background-color:#ff434a; color:#fff !important; font-weight:bold}
-.board_type a.cooming {background-color:#666 !important}
-.board_type a.freeLec {background-color:#06F !important}
-.board_type a:hover { background-color:#000 !important}
-
-/*이용약관*/
-.policyNew {padding:20px}
-.policyNew {padding:20px}
-.policyNew h3 {font-size:18px; color:#0c5dc0 !important; margin-bottom:20px; color:#06F; border-bottom:2px solid #0c5dc0; padding-bottom:10px}
-.policyNew p {margin-bottom:20px; font-weight:bold; font-size:14px; color:#333; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding:10px 0}
-.policyNew div {margin-bottom:10px}
-.policyNew ul,
-.policyNew ol {margin-bottom:30px}
-.policyNew li {margin-bottom:8px; line-height:1.5; margin-left:20px}
-
-.policyNew .titsubject {margin-top:20px; background:#f3f2f2; padding:20px 20px 10px;}
-.policyNew .titsubject li {display:inline; float:left; width:50%; margin:0; padding:0; border:0}
-.policyNew .titsubject li a {color:#000}
-.policyNew .titsubject:after {content:""; display:block; clear:both}
-
-.policyNew th {background:#f0f0f0; border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; color:#666; padding:10px 0}
-.policyNew td {border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; padding:8px; line-height:1.5}
-.policyNew th:last-child,
-.policyNew td:last-child {border-right:0}
-.policyNew tr.trTypeA td:last-child {border-right:#d7d7d7 1px solid}
-.policyNew tr.trTypeB td:last-child {border-bottom:#666 1px solid}
-.policyNew tr.trTypeC th {border-bottom:#666 1px solid}
-.policyNew tr:last-child td {border-bottom:0}
-.policyNew table.tdCenter td {text-align:center}
-.policyNew table {width:100%; border-collapse:collapse; border-spacing:0; border:#666 1px solid !important; background:#fff; margin:10px 0}
-.policyNew .txtInfo {margin:40px 0}
-.policyNew .tit2 {color:#F33}

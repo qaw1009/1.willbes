@@ -290,9 +290,10 @@ body {
 	font-size: 12px;
 	line-height: 1;
 	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
-  min-width: 1120px;
+  min-width: 1460px;
   word-break: break-all;
   overflow-x: hidden;
+
 }
 body#widthFrame {
   min-width: 100%;

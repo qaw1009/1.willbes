@@ -100,7 +100,7 @@
 
         <div class="evtCtnsBox wb_cts02">
             <ul>
-                <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c4.jpg" alt="윌비스 예비순환과 함께라면 단 1년 만에 합격!" /></li>
+                <!--li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c4.jpg" alt="윌비스 예비순환과 함께라면 단 1년 만에 합격!" /></li-->
                 <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c5.jpg" alt="윌비스 법원직만을 위한 혁신적인 커리큘럼" /></li>
                 <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c6.jpg" alt="업계의 판도를 바꿀, 차원이 다른 김동진법원팀 교수진" usemap="#Map190108_c1" border="0" />
                     <map name="Map190108_c1" >
@@ -192,7 +192,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,2,31,23,59,59);
+            event_day = new Date(2019,3,9,23,59,59);
             now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
@@ -250,9 +250,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/151823') }}"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/152329') }}"
             }else{
-                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/151823') }}"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/152329') }}"
             }
 
             location.href = lUrl;

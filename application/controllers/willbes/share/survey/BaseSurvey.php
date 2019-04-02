@@ -74,6 +74,14 @@ class BaseSurvey extends \app\controllers\FrontController
         ], false);
     }
 
+    public function graph($params = [])
+    {
+        $idx = $params[0];
+        $view_file = 'willbes/pc/survey/graph'.$idx;
+        $this->load->view($view_file, [
+        ], false);
+    }
+
     public function store()
     {
         $totalIdx = element('totalIdx', $this->_reqP(null, false));

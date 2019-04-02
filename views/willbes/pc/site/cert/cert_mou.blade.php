@@ -3,7 +3,7 @@
 @section('content')
     <!-- Container -->
     <style type="text/css">
-        .popMouWrap {overflow-y:scroll}
+        .popMouWrap {height:900px; overflow-y:scroll;}
         .popWrap {width:782px; margin:20px auto; border:1px solid #000; box-shadow:5px 5px 5px rgba(0,0,0,.1);}
         .popWrap * {font-family:'Noto Sans KR', Arial, Sans-serif}
 

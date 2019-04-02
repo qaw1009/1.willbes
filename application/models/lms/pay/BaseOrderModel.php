@@ -79,8 +79,8 @@ class BaseOrderModel extends WB_Model
     // 결제루트 공통코드 (온라인PG, 방문결제, 0원결제, 무료결제, 제휴사결제, 온라인0원)
     public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005', 'on_zero' => '670006'];
 
-    // 결제방법 공통코드 (신용카드, 실시간계좌이체, 가상계좌, 휴대폰, 윌비스계좌이체, 방문카드, 방문현금, 방문현금+카드)
-    public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004', 'willbes_bank' => '604005', 'visit_card' => '604006', 'visit_cash' => '604007', 'visit_card_cash' => '604008'];
+    // 결제방법 공통코드 (신용카드, 실시간계좌이체, 가상계좌, 휴대폰, 윌비스계좌이체, 방문카드, 방문현금, 방문현금+카드, 방문0원)
+    public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004', 'willbes_bank' => '604005', 'visit_card' => '604006', 'visit_cash' => '604007', 'visit_card_cash' => '604008', 'visit_zero' => '604009'];
 
     // 결제상태 공통코드 (결제완료, 입금대기, 입금대기취소, 입금대기만료, 접수대기, 환불완료, 신청완료, 취소완료)
     public $_pay_status_ccd = ['paid' => '676001', 'vbank_wait' => '676002', 'vbank_wait_cancel' => '676003', 'vbank_wait_expire' => '676004', 'receipt_wait' => '676005', 'refund' => '676006', 'apply' => '676007', 'cancel' => '676008'];

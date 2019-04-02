@@ -2,6 +2,8 @@
 
 @section('content')
     <h5 class="mt-20">- 설문을 등록하는 메뉴입니다.</h5>
+    <h5 class="mt-20 red">- 설문링크 와 프로모션페이지 내 그래프를 willbes/pc/survey/ 경로에 생성해주세요.</h5>
+    <h5 class="mt-20 red">- 프로모션 블레이드에 echo $this->runChild('willbes.pc.survey.show_graph_partial'); </h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
 
@@ -27,8 +29,8 @@
                     <tr>
                         <th class="text-center" style="width:5%">NO</th>
                         <th class="text-center">제목</th>
-                        <th class="text-center" style="width:20%">설문링크</th>
-                        <th class="text-center" style="width:20%">설문세트제목</th>
+                        <th class="text-center" style="width:20%">설문팝업링크</th>
+                        <th class="text-center" style="width:20%">그래프추가시</th>
                         <th class="text-center" style="width:20%">시작일 / 종료일</th>
                         <th class="text-center" style="width:5%">사용유무</th>
                     </tr>
@@ -86,7 +88,7 @@
                             return '<span class="blue underline-link act-edit"><input type="hidden" name="target" value="' + row.SpIdx + '" />' + row.SpTitle  + '</span>';
                         }},
                     {'data' : 'link', 'class': 'text-center'},
-                    {'data' : 'SqsTitle', 'class': 'text-center'},
+                    {'data' : 'include', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             var date = row.StartDate + ' / ' + row.EndDate;
                             return date;

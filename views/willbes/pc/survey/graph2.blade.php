@@ -114,110 +114,125 @@
     }
 </style>
 <div class="Cts03">
-<ul class="graphWrap">
-    <li>
-        <h3>전체 시험 난이도 </h3>
-        <div>
-            <div class="graphbox">
-                <div class="graph">
-                    <p>3%</p>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
-                    </div>
-                    <p>매우 쉬움</p>
-                </div>
-
-                <div class="graph">
-                    <p>3%</p>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
-                    </div>
-                    <p>쉬움</p>
-                </div>
-
-                <div class="graph">
-                    <p>13%</p>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="13%">
-                    </div>
-                    <p>보통</p>
-                </div>
-
-                <div class="graph">
-                    <p>70%</p>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="70%">
-                    </div>
-                    <p>어려움</p>
-                </div>
-
-                <div class="graph">
-                    <p>10%</p>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="10%">
-                    </div>
-                    <p>매우 어려움</p>
-                </div>
-            </div>
-            <!--graphbox//-->
-        </div>
-    </li>
-    <li>
-        <div>
-            <h3>과목별 시험 난이도 : <span>[국어]</span></h3>
-            <select title="과목선택" onchange="fn_select_poll_id(this.value)">
-                <option value=" " selected="selected">과목1</option>
-                <option value=" ">과목2</option>
-                <option value=" ">과목3</option>
-                <option value=" ">과목4</option>
-                <option value=" ">과목5</option>
-            </select>
+    <ul class="graphWrap">
+        <li>
+            <h3>전체 시험 난이도 </h3>
             <div>
                 <div class="graphbox">
-                    <div class="graph graph2">
-                        <p>3%</p>
+                    <div class="graph">
+                        <p>{{ $resSet[0]['Answer1'] }}%</p>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
+                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer1'] }}%">
                         </div>
                         <p>매우 쉬움</p>
                     </div>
 
-                    <div class="graph graph2">
-                        <p>3%</p>
+                    <div class="graph">
+                        <p>{{ $resSet[0]['Answer2'] }}%</p>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
+                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer2'] }}%">
                         </div>
                         <p>쉬움</p>
                     </div>
 
-                    <div class="graph graph2">
-                        <p>13%</p>
+                    <div class="graph">
+                        <p>{{ $resSet[0]['Answer3'] }}%</p>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="13%">
+                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer3'] }}%">
                         </div>
                         <p>보통</p>
                     </div>
 
-                    <div class="graph graph2">
-                        <p>70%</p>
+                    <div class="graph">
+                        <p>{{ $resSet[0]['Answer4'] }}%</p>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="70%">
+                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer4'] }}%">
                         </div>
                         <p>어려움</p>
                     </div>
 
-                    <div class="graph graph2">
-                        <p>10%</p>
+                    <div class="graph">
+                        <p>{{ $resSet[0]['Answer5'] }}%</p>
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="10%">
+                            <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer5'] }}%">
                         </div>
                         <p>매우 어려움</p>
                     </div>
                 </div>
                 <!--graphbox//-->
             </div>
-        </div>
-    </li>
-</ul>
+        </li>
+        <li>
+            <div>
+                <h3>과목별 시험 난이도 : <span id="karea">[{{ $titleSet[1] }}]</span></h3>
+                <select title="과목선택" onchange="fn_sel(this)">
+                    @for($i=1; $i < count($titleSet); $i++)
+                    <option value="{{ $numberSet[$i] }}/{{ $titleSet[$i] }}">{{ $titleSet[$i] }}</option>
+                    @endfor
+                </select>
+                <div>
+                    @for($i=1; $i < count($titleSet); $i++)
+                    <div id="div{{ $i }}" class="graphbox" @if($i != 1) style="display:none;" @endif>
+                        <div class="graph graph2">
+                            <p>{{ $resSet[$i]['Answer1'] }}%</p>
+                            <div>
+                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer1'] }}%">
+                            </div>
+                            <p>매우 쉬움</p>
+                        </div>
+
+                        <div class="graph graph2">
+                            <p>{{ $resSet[$i]['Answer2'] }}%</p>
+                            <div>
+                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer2'] }}%">
+                            </div>
+                            <p>쉬움</p>
+                        </div>
+
+                        <div class="graph graph2">
+                            <p>{{ $resSet[$i]['Answer3'] }}%</p>
+                            <div>
+                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer3'] }}%">
+                            </div>
+                            <p>보통</p>
+                        </div>
+
+                        <div class="graph graph2">
+                            <p>{{ $resSet[$i]['Answer4'] }}%</p>
+                            <div>
+                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer4'] }}%">
+                            </div>
+                            <p>어려움</p>
+                        </div>
+
+                        <div class="graph graph2">
+                            <p>{{ $resSet[$i]['Answer5'] }}%</p>
+                            <div>
+                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer5'] }}%">
+                            </div>
+                            <p>매우 어려움</p>
+                        </div>
+                    </div>
+                    @endfor
+                    <!--graphbox//-->
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>
+<script>
+    //과목 선택
+    function fn_sel(obj){
+        var seltxt = obj.value;
+        var arrTxt = seltxt.split('/');
+
+        for(var i=1; i <= 10; i++){
+            $('#div'+i).hide();
+        }
+
+        $('#div'+arrTxt[0]).show();
+        $('#karea').html('['+arrTxt[1]+']');
+
+    }
+</script>
 @stop

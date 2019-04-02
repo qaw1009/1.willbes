@@ -92,6 +92,7 @@ class PredictModel extends WB_Model
 
         foreach ($data as $key => $val){
             $data[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/survey/index/'.$val['SpIdx'];
+            $data[$key]['include'] = "프로모션 페이지 URL + /spidx/".$val['SpIdx'];
         }
 
         return array($data, $count);

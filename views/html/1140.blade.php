@@ -84,8 +84,9 @@
         .Cts03 .graph {width:20%; float:left; text-align:center; background:url(http://file.willbes.net/new_image/2015/04/graphBg.png) repeat;}
         .Cts03 .graph p {padding:10px 0; background:#fff}
         .Cts03 .graph p:last-child {border-top:1px solid #333}
-        .Cts03 .graph div {position:relative; width:45px; height:250px; margin:0 auto; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
-        .Cts03 .graph div img {position:absolute; bottom:0; width:100%}
+        .Cts03 .graph div {position:relative; width:45px; height:250px; margin:0 auto; }
+        .Cts03 .graph div img {position:absolute; bottom:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
+        .Cts03 .graph2 div img {background:#bdbdcc url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
         .Cts03 .graphbox:after {content:""; display:block; clear:both}
         .Cts03 .graphWrap:after {content:""; display:block; clear:both}
 
@@ -1174,49 +1175,49 @@
                             <option value=" ">과목5</option>                      
                         </select>
                         <div>
-                        <div class="graphbox">                                       
-                            <div class="graph">                                                        
-                                <p>3%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
-                                </div>                            
-                                <p>매우 쉬움</p>
-                            </div>
-                                    
-                            <div class="graph">                                                                          
-                                <p>3%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
-                                </div>                                    
-                                <p>쉬움</p>
-                            </div>
-                                    
-                            <div class="graph">
-                                <p>13%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="13%">
+                            <div class="graphbox">                                       
+                                <div class="graph graph2">                                                        
+                                    <p>3%</p>
+                                    <div>
+                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
+                                    </div>                            
+                                    <p>매우 쉬움</p>
                                 </div>
-                                <p>보통</p>
+                                        
+                                <div class="graph graph2">                                                                          
+                                    <p>3%</p>
+                                    <div>
+                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="3%">
+                                    </div>                                    
+                                    <p>쉬움</p>
+                                </div>
+                                        
+                                <div class="graph graph2">
+                                    <p>13%</p>
+                                    <div>
+                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="13%">
+                                    </div>
+                                    <p>보통</p>
+                                </div>
+                                        
+                                <div class="graph graph2">                                           
+                                    <p>70%</p>
+                                    <div>
+                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="70%">
+                                    </div>                            
+                                    <p>어려움</p>
+                                </div>
+                                        
+                                <div class="graph graph2">                                     
+                                    <p>10%</p>
+                                    <div>
+                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="10%">
+                                    </div>                            
+                                    <p>매우 어려움</p>
+                                </div>
                             </div>
-                                    
-                            <div class="graph">                                           
-                                <p>70%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="70%">
-                                </div>                            
-                                <p>어려움</p>
-                            </div>
-                                    
-                            <div class="graph">                                     
-                                <p>10%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="10%">
-                                </div>                            
-                                <p>매우 어려움</p>
-                            </div>
-                        </div>
-                        <!--graphbox//-->
-                    </div>                       
+                            <!--graphbox//-->
+                        </div>                       
                     </div>
                 </li>
             </ul>

@@ -105,18 +105,30 @@ class BaseSurvey extends \app\controllers\FrontController
 
                 $tnum = 0;
 
-                for($i = 1; $i <= $tempCNT; $i++) {
+                for($i = 1; $i <= $CNT; $i++) {
                     $tnum = $tnum + ${"num".$i};
                 }
                 $resSet[$defnum]['SubTitle'] = $temptitle;
-                for($i = 1; $i <= $tempCNT; $i++){
+                for($i = 1; $i <= $CNT; $i++){
                     $resSet[$defnum]['Answer'.$i] = ($num1 > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
                 }
-                for($i = 1; $i <= $tempCNT; $i++){
+                for($i = 1; $i <= $CNT; $i++){
                     if($Answer == $i){
-                        ${"num".$i} = 1;
+                        if($val['Type'] == 'S') {
+                            ${"num" . $i} = 1;
+                        } else {
+                            $AnswerArr = explode('/',$Answer);
+                            for($i = 1; $i <= $CNT; $i++){
+                                ${"num".$i} = 0;
+                                for($j = 0; $j < count($AnswerArr); $j++){
+                                    if($AnswerArr[$j] == $i){
+                                        ${"num".$i}++;
+                                    }
+                                }
+                            }
+                        }
                     } else {
-                        ${"num".$i} = 0;
+                        if($val['Type'] == 'S') ${"num".$i} = 0;
                     }
                 }
 
@@ -132,13 +144,14 @@ class BaseSurvey extends \app\controllers\FrontController
                     for($i = 1; $i <= $CNT; $i++){
                         if($Answer == $i) ${"num".$i}++;
                     }
-
                 } else {
                     //TYPE == 'T'
                     $AnswerArr = explode('/',$Answer);
                     for($i = 1; $i <= $CNT; $i++){
                         for($j = 0; $j < count($AnswerArr); $j++){
-                            if($AnswerArr[$j] == $i) ${"num".$i}++;
+                            if($AnswerArr[$j] == $i){
+                                ${"num".$i}++;
+                            }
                         }
                     }
                 }

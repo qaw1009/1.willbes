@@ -10,17 +10,17 @@
         line-height: 1.4;
         color:#555556;
     }
-    .urlWrap ul {
+    .urlWrap .snslink {
         width: 90%;
         margin: 0 auto;
     }
-    .urlWrap li {
+    .urlWrap .snslink li {
         display: inline;
         float: left;
         width: 25%;
         text-align: center;
     }
-    .urlWrap ul:after {
+    .urlWrap .snslink:after {
         content:'';
         display: block;
         clear:both;
@@ -105,7 +105,7 @@
 
         @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
             {{-- 경찰온라인 사이트일 경우만 적용 --}}
-            <ul>
+            <ul class="snslink">
                 <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline01.png"alt="다음카페 경사모" /></a></li>
                 <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline02.png" alt="네이버카페 경꿈사" /></a></li>
                 <li><a href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline03.png" alt="디시 공무원 갤러리" /></a></li>
@@ -150,11 +150,13 @@
             @endif
             </tbody>
         </table>
-    </div>    
-</div>
-    <div class="mt50">
+    </div>  
+    
+    <div class="mt30">
         {!! $paging['pagination'] !!}
     </div>
+</div>
+    
 
 <script type="text/javascript">
     var $regi_form_comment = $('#regi_form_comment');

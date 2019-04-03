@@ -363,7 +363,8 @@ class StudyComment extends BaseBoard
                     'lms_product.IsStatus' => 'Y'
                 ]
             ],
-            'lms_site.SiteName, lms_product.ProdName, lms_sys_category.CateName, lms_product_subject.SubjectName, vw_product_r_professor_concat.wProfName_String'
+            'lms_site.SiteName, lms_product.ProdName, lms_sys_category.CateName,lms_product_subject.SubjectName,
+            vw_product_r_professor_concat.wProfName_String, lms_product_lecture.LearnPatternCcd, fn_ccd_name(lms_product_lecture.LearnPatternCcd) AS LearnPatternCcdName'
         );
 
         if (count($product_data) < 1) {

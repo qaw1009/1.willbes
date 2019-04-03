@@ -39,10 +39,10 @@
         }
         .rLnb .typeA a {
             border-bottom:1px solid #bfbfbf; display:block; padding:10px 10px 10px 15px; line-height:1.4; font-weight:bold;
-            background:url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
+            background:url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
         .rLnb .typeA a:hover {
             font-weight: 600;
-            background:#ebebeb url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
+            background:#ebebeb url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
         }
         .rLnb .typeA li:last-child a {border:0}
         .rLnb .typeB li {
@@ -53,7 +53,7 @@
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
 
 
-        .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
+        .LAeventA01 {background:url(https://static.willbes.net/public/images/promotion/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
         @@keyframes flipInX {
              from {
@@ -173,21 +173,21 @@
                 @endif
             </ul>
             <div>
-                <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_q_bnr02.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_q_bnr02.jpg" alt=""/>
             </div>
         </div>
 
         <div class="evtCtnsBox LAeventA01">
             <div class="main_img flipInX animated" style="opacity:1;">
-                <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_txt.png" alt="">
+                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_top_txt.png" alt="">
             </div>
-            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top.jpg" alt="전역(예정)군인 인증센터"/>
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_top.jpg" alt="전역(예정)군인 인증센터"/>
         </div>
 
 
         <div class="LAeventB03">
             <div class="LAeventB03img">
-                <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_onLec_01.jpg" alt="자격증 교육과정의 경우, 일부 혜택 제외"/>
+                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_onLec_01.jpg" alt="자격증 교육과정의 경우, 일부 혜택 제외"/>
             </div>
 
 
@@ -234,9 +234,9 @@
                                 @endif
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149336')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149336')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -262,9 +262,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149337')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149337')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -299,9 +299,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149338')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149338')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -326,9 +326,9 @@
                                 @endif
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149339')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149339')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -364,9 +364,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149340')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149340')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -392,9 +392,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149341')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149341')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -430,9 +430,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149342')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149342')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -458,9 +458,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149343')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149343')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -496,9 +496,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149344')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149344')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -523,9 +523,9 @@
                                 @endif
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149345')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149345')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -560,9 +560,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149346')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149346')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -588,9 +588,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149347')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149347')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -625,9 +625,9 @@
                                 @endif
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149348')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149348')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -653,9 +653,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149349')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149349')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -692,9 +692,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149350')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149350')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -721,9 +721,9 @@
 
                                 <td>
                                     @if(empty($cert_apply))
-                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                        <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149351')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149351')}}',0)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -772,9 +772,9 @@
 
                             <td>
                                 @if(empty($cert_apply))
-                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149357')}}',1)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149357')}}',1)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -800,9 +800,9 @@
 
                             <td>
                                 @if(empty($cert_apply))
-                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149356')}}',1)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149356')}}',1)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -850,9 +850,9 @@
 
                             <td>
                                 @if(empty($cert_apply))
-                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3028/pack/648002/prod-code/149355')}}',2)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3028/pack/648002/prod-code/149355')}}',2)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -878,9 +878,9 @@
 
                             <td>
                                 @if(empty($cert_apply))
-                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3028/pack/648002/prod-code/149354')}}',2)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3028/pack/648002/prod-code/149354')}}',2)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -926,9 +926,9 @@
 
                             <td>
                                 @if(empty($cert_apply))
-                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149353')}}',3)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149353')}}',3)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -954,9 +954,9 @@
 
                             <td>
                                 @if(empty($cert_apply))
-                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149352')}}',3)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149352')}}',3)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -1006,9 +1006,9 @@
 
                             <td>
                                 @if(empty($cert_apply))
-                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149358')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149358')}}',4)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -1035,9 +1035,9 @@
 
                             <td>
                                 @if(empty($cert_apply))
-                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149359')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149359')}}',4)"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>

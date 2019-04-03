@@ -41,10 +41,10 @@
         }
         .rLnb .typeA a {
             border-bottom:1px solid #bfbfbf; display:block; padding:10px 10px 10px 15px; line-height:1.4; font-weight:bold;
-            background:url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
+            background:url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
         .rLnb .typeA a:hover {
             font-weight: 600;
-            background:#ebebeb url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
+            background:#ebebeb url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
         }
         .rLnb .typeA li:last-child a {border:0}
         .rLnb .typeB li {
@@ -55,7 +55,7 @@
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
  
 
-        .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
+        .LAeventA01 {background:url(https://static.willbes.net/public/images/promotion/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         /*플립 애니메이션*/
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
         @@keyframes flipInX {
@@ -124,7 +124,7 @@
                 @endif
             </ul>
             <div>
-                <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_q_bnr02.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_q_bnr02.jpg" alt=""/>
             </div>
         </div>
 

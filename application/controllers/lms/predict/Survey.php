@@ -149,11 +149,11 @@ class Survey extends \app\controllers\BaseController
 
                 $tnum = 0;
 
-                for($i = 1; $i <= $CNT; $i++) {
+                for($i = 1; $i <= $tempCNT; $i++) {
                     $tnum = $tnum + ${"num".$i};
                 }
                 $resSet[$defnum]['SubTitle'] = $temptitle;
-                for($i = 1; $i <= $CNT; $i++){
+                for($i = 1; $i <= $tempCNT; $i++){
                     $resSet[$defnum]['Answer'.$i] = ($num1 > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
                 }
                 for($i = 1; $i <= $CNT; $i++){
@@ -200,7 +200,6 @@ class Survey extends \app\controllers\BaseController
                     }
                 }
             }
-
 
             $tempSq = $SqIdx;
             $tempType = $val['Type'];

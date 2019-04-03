@@ -233,7 +233,7 @@ class OrderAdvanceModel extends BaseOrderModel
 				, if(OPR.RefundDatm <= ?, OPR.RefundDatm, null) as RefundDatm
 				, OP.RealPayPrice		
 				, if(OPR.RefundDatm <= ?, OPR.RefundPrice, 0) as RefundPrice					
-				, P.ProdName, PL.LearnPatternCcd, PL.PackTypeCcd
+				, P.ProdName, PL.LearnPatternCcd, PL.PackTypeCcd, PL.CampusCcd
 				, SP.ProdName as ProdNameSub
 				, ifnull(PL.Amount, SPL.Amount) as LecAmount	
 				, ifnull(PL.SubjectIdx, SPL.SubjectIdx) as SubjectIdx
@@ -265,7 +265,8 @@ class OrderAdvanceModel extends BaseOrderModel
                 , CPR.CcdName as PayRouteCcdName
                 , CPM.CcdName as PayMethodCcdName
                 , CLP.CcdName as LearnPatternCcdName
-                , CPT.CcdName as PackTypeCcdName';
+                , CPT.CcdName as PackTypeCcdName
+                , CCA.CcdName as CampusCcdName';
         }
 
         // 조회 로우 from 쿼리
@@ -355,7 +356,9 @@ class OrderAdvanceModel extends BaseOrderModel
                     left join ' . $this->_table['code'] . ' as CLP
                         on U.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"
                     left join ' . $this->_table['code'] . ' as CPT
-                        on U.PackTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"';
+                        on U.PackTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
+                    left join ' . $this->_table['code'] . ' as CCA
+                        on U.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y"';
 
             // order by, offset, limit
             $query .= ' order by U.OrderIdx desc';
@@ -364,7 +367,7 @@ class OrderAdvanceModel extends BaseOrderModel
 
         // 엑셀다운로드
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, LearnPatternCcdName, ifnull(PackTypeCcdName, "") as ProdDetailTypeName
+            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, LearnPatternCcdName, ifnull(PackTypeCcdName, "") as ProdDetailTypeName, CampusCcdName
                 , ProdCode, ProdName, ProdCodeSub, ProdNameSub, wProfName, SubjectName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
                 , PayStatusName, RemainPrice, ProdDivisionRate, DivisionPayPrice, ProdCalcPerc, DivisionCalcPrice, LecStartDate, LecEndDate, LecAmount, LecRemainAmount, LecUseAmount
                 , DivisionRemainPrice, DivisionUsePrice, BaseDate';

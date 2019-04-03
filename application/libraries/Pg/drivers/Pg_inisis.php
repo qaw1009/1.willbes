@@ -729,8 +729,8 @@ class Pg_inisis extends CI_Driver
                     'ReqPayPrice' => element('TotPrice', $params),
                     'ApprovalNo' => element('applNum', $params),
                     'ApprovalDatm' => element('applDatm', $params),
-                    'ResultCode' => element('resultCode', $params),
-                    'ResultMsg' => element('resultMsg', $params),
+                    'ResultCode' => element('resultCode', $params, ''),
+                    'ResultMsg' => element('resultMsg', $params, ''),
                     'ResultPgTid' => element('ResultPgTid', $params),
                     'ResultPayPrice' => element('ResultPayPrice', $params),
                     'ReqReason' => element('ReqReason', $params)

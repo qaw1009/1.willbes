@@ -135,8 +135,7 @@
                         <div class="willbes-Cart-Txt">
                             <table cellspacing="0" cellpadding="0" class="txtTable tx-gray">
                                 <tbody>
-                                <tr><td>• <span class="tx-red">정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</span></td></tr>
-                                <tr><td>• 장바구니에 담은 상품 구매시 강좌 상품 선 구매후 교재 구매가 가능합니다.</td></tr>
+                                <tr><td>• <span class="tx-red">정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</span></td></tr>                                
                                 <tr><td>• 장바구니 상품은 14일 안에 미구매 시 자동 삭제 처리됩니다.</td></tr>
                                 <tr><td>• 장바구니 강좌 삭제 시 해당 강좌의 수강생 교재가 포함된 경우 함께 삭제 처리됩니다.</td></tr>
                                 <tr><td>• 장바구니 담기 후 해당 상품의 접수기간이 지났거나, 판매상태가 '판매종료'로 변경된 경우 자동 삭제 처리됩니다.</td></tr>
@@ -239,8 +238,7 @@
                         <div class="willbes-Cart-Txt">
                             <table cellspacing="0" cellpadding="0" class="txtTable tx-gray">
                                 <tbody>
-                                <tr><td>• <span class="tx-red">정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</span></td></tr>
-                                <tr><td>• 장바구니에 담은 상품 구매시 강좌 상품 선 구매후 교재 구매가 가능합니다.</td></tr>
+                                <tr><td>• <span class="tx-red">정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</span></td></tr>                                
                                 <tr><td>• 장바구니 상품은 14일 안에 미구매 시 자동 삭제 처리됩니다.</td></tr>
                                 <tr><td>• 장바구니 강좌 삭제 시 해당 강좌의 수강생 교재가 포함된 경우 함께 삭제 처리됩니다.</td></tr>
                                 <tr><td>• 장바구니 담기 후 해당 상품의 판매상태가 '품절', '절판', '출간예정'으로 변경된 경우 자동 삭제 처리됩니다.</td></tr>

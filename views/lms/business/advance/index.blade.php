@@ -41,7 +41,7 @@
                 <thead class="bg-odd">
                 <tr>
                     <th rowspan="2" class="valign-middle">No</th>
-                    <th colspan="{{ $advance_type == 'lecture' ? '15' : '16' }}">결제정보</th>
+                    <th colspan="{{ $advance_type == 'lecture' ? '15' : '17' }}">결제정보</th>
                     <th colspan="{{ $advance_type == 'lecture' ? '20' : '13' }}" class="bg-success">회계정보</th>
                 </tr>
                 <tr>
@@ -50,6 +50,10 @@
                     <th class="valign-middle">결제루트</th>
                     <th class="valign-middle">결제수단</th>
                     <th class="valign-middle">상품구분</th>
+                @if($advance_type == 'offLecture')
+                    {{-- 학원강좌 --}}
+                    <th class="valign-middle">캠퍼스</th>
+                @endif
                     <th class="valign-middle">상품코드</th>
                     <th class="valign-middle">상품명</th>
                     <th class="valign-middle">강좌코드</th>
@@ -144,6 +148,10 @@
                     {'data' : 'LearnPatternCcdName', 'render' : function(data, type, row, meta) {
                         return (row.SalePatternCcd.slice(-1) !== '1' ? row.SalePatternCcdName : data) + (row.PackTypeCcdName !== null ? '<br/>(' + row.PackTypeCcdName + ')' : '');
                     }},
+                @if($advance_type == 'offLecture')
+                        {{-- 학원강좌 --}}
+                    {'data' : 'CampusCcdName'},
+                @endif
                     {'data' : 'ProdCode'},
                     {'data' : 'ProdName'},
                     {'data' : 'ProdCodeSub'},

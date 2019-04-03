@@ -15,13 +15,13 @@ class BasePromotion extends \app\controllers\FrontController
 
     public function index($params = [])
     {
-        if (empty((int)$params['code']) === true) {
+        if (empty($params['code']) === true) {
             show_alert('잘못된 접근 입니다.', 'back');
         }
 
         $test_type = (int)element('type', $this->_reqG(null), '0');
-        $arr_base['promotion_code'] = (int)$params['code'];
-        $arr_base['spidx'] = (int)$params['spidx'];
+        $arr_base['promotion_code'] = $params['code'];
+        $arr_base['spidx'] = (empty($params['spidx']) === false) ? $params['spidx'] : '';
 
         //인증식별자
         //$cert_idx = element('cert', $this->_reqG(null), '');

@@ -153,32 +153,41 @@
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="attachfile">첨부자료
+
+                    <label class="control-label col-md-2" for="ScheduleCount">예정강의수 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
-                        
-                            <input type="file" name="attachfile" class="form-control" title="첨부자료">
-                            @if(empty($data['wAttachFile']) === false)
-                            <br>
-                            <p class="form-control-static ml-10 mr-10">
-                                [
-                                <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}" target="_blank">
-                                {{ $data['wAttachFileReal'] }}</a> ]
-                            </p>
-                            <div class="checkbox">
-                                <input type="checkbox" name="attach_delete" value="Y" class="flat"/> <span class="red">삭제</span>
-                            </div>
-                            @endif
-                        
+                        <div class="item inline-block">
+                            <input type="text" id="ScheduleCount" name="ScheduleCount" class="form-control" title="예정강의수" value="{{ $data['wScheduleCount'] }}" style="width:40px" required="required" numberOnly>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="Keyword">키워드
                     </label>
-                    <div class="col-md-8 form-inline">
+                    <div class="col-md-4 form-inline">
                        <div class="item inline-block">
                             <input type="text" id="Keyword" name="Keyword" class="form-control" title="키워드" value="{{ $data['wKeyword'] }}" style="width: 400px">
                         </div>
+                    </div>
+
+                    <label class="control-label col-md-2" for="attachfile">첨부자료
+                    </label>
+                    <div class="col-md-4 form-inline">
+
+                        <input type="file" name="attachfile" class="form-control" title="첨부자료">
+                        @if(empty($data['wAttachFile']) === false)
+                            <br>
+                            <p class="form-control-static ml-10 mr-10">
+                                [
+                                <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}" target="_blank">
+                                    {{ $data['wAttachFileReal'] }}</a> ]
+                            </p>
+                            <div class="checkbox">
+                                <input type="checkbox" name="attach_delete" value="Y" class="flat"/> <span class="red">삭제</span>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -237,20 +246,20 @@
                         <thead>
                         <tr>
                             <th>회차</th>
-                            <th>영상제목/보조자료</th>
-                            <th>강의시간/북페이지</th>
+                            <th width="400">영상제목/보조자료</th>
+                            <th>강의시간<BR>/북페이지</th>
                             <th>영상경로</th>
                             <th>영상비율</th>
                             <th>촬영일/교수</th>
-                            <th>등록자</th>
-                            <th>등록일</th>
+                            <th>활성</th>
+                            <th>등록일/등록자</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($data_unit as $row)
                             <tr>
                                 <td>
-                                    {{ $row['wUnitNum'] }}회차<br>{{ $row['wUnitLectureNum'] }}강
+                                    {{ $row['wUnitNum'] }}회차 {{ $row['wUnitLectureNum'] }}강
                                 </td>
                                 <td>
                                     {{ $row['wUnitName'] }}
@@ -267,11 +276,11 @@
                                     {{ $row['wBookPage']  }} P
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD',{{$row['wUnitIdx']}})">와이드</button> {{ $row['wWD'] }}
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD','{{$row['wUnitIdx']}}')">와이드&nbsp;&nbsp;&nbsp;</button> {{ $row['wWD'] }}
                                     <BR>
-                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD',{{$row['wUnitIdx']}})">고화질</button> {{ $row['wHD'] }}
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD','{{$row['wUnitIdx']}}')">고화질&nbsp;&nbsp;&nbsp;</button> {{ $row['wHD'] }}
                                     <br>
-                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('SD',{{$row['wUnitIdx']}})">일반화질</button> {{ $row['wSD'] }}
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('SD','{{$row['wUnitIdx']}}')">일반화질</button> {{ $row['wSD'] }}
                                 </td>
                                 <td>{{$row['wCcdName']}}</td>
                                 <td>
@@ -279,8 +288,8 @@
                                     <Br>
                                     {{ $row['wProfName'] }}
                                 </td>
-                                <td>{{ $row['wAdminName'] }}</td>
-                                <td>{{ $row['wRegDatm'] }}</td>
+                                <td>{!! $row['wIsUse'] == 'Y' ? '활성' : '<b><font color=red>비활성</font></b>' !!}</td>
+                                <td>{{ $row['wRegDatm'] }}<BR>{{ $row['wAdminName'] }}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -328,8 +337,12 @@
 
                 $('.btn-unitregist').setLayer({
                     "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val() +"/"+$("#ProfIdx1").val()
-                    ,width : "1600"
+                    ,width : "1800"
                 });
+            });
+
+            $("input:text[numberOnly]").on("keyup", function() {
+                $(this).val($(this).val().replace(/[^0-9]/g,""));
             });
         });
 

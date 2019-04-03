@@ -397,6 +397,39 @@ class ProductFModel extends WB_Model
     }
 
     /**
+     * 해당 강좌상품의 서브강좌 중 해당 수강생교재를 포함하고 있는 단강좌 코드 리턴
+     * @param string $prod_lecture_code [강좌상품코드]
+     * @param string $prod_book_code [교재상품코드]
+     * @return mixed
+     */
+    public function findLectureProductToStudentBook($prod_lecture_code, $prod_book_code)
+    {
+        $column = 'LP.ProdLecCode as ProdCode';
+        // 연결상품 상품타입(교재상품) 조건 제외 (실DB 상품타입 데이터 부정확함) => and PRP.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '"
+        $from = '
+            from (
+                select ifnull(PRS.ProdCodeSub, P.ProdCode) as ProdLecCode
+                from ' . $this->_table['product'] . ' as P
+                    left join ' . $this->_table['product_r_sublecture'] . ' as PRS
+                        on P.ProdCode = PRS.ProdCode and PRS.IsStatus = "Y"
+                where P.ProdCode = ?    #강좌코드
+                    and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture'] . '"
+                    and P.IsStatus = "Y"		
+            ) as LP
+                inner join ' . $this->_table['product_r_product'] . ' as PRP
+                    on LP.ProdLecCode = PRP.ProdCode
+            where PRP.ProdCodeSub = ?   #교재코드
+                and PRP.OptionCcd = "' . $this->_student_book_ccd . '"
+                and PRP.IsStatus = "Y"            
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$prod_lecture_code, $prod_book_code]);
+
+        return $query->result_array();
+    }
+
+    /**
      * 상품별 단강좌 목록 조회 (패키지)
      * @param $prod_code
      * @param array $prod_sub_codes

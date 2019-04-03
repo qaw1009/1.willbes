@@ -79,8 +79,8 @@
             .graph p {padding:10px 0; background:#fff}
             .graph p:last-child {border-top:1px solid #333}
             .graph div {position:relative; width:45px; height:250px; margin:0 auto;}
-            .graph div img {position:absolute; bottom:0; left:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
-            .graph2 div img {background:#bdbdcc url(https://static.willbes.net/public/images/promotion/common/graphA.png) repeat;}
+            .graph div img {position:absolute; bottom:0; left:0; width:100%; background:#e2be43 url(https://static.willbes.net/public/images/promotion/common/patternA.png) repeat;}
+            .graph2 div img {background:#bdbdcc url(https://static.willbes.net/public/images/promotion/common/patternB.png) repeat;}
             .graphbox:after {content:""; display:block; clear:both}
             .graphWrap:after {content:""; display:block; clear:both}
         .Cts03_01 {width:1120px; text-align:left; margin:80px auto 0}
@@ -93,6 +93,7 @@
         .Cts04 .lecture li {
             display:inline; float:left; width:25%; text-align:center; margin-bottom:20px;
         }
+        .Cts04 .lecture li:hover {background:#fff url(https://static.willbes.net/public/images/promotion/common/patternB.png) repeat}
         .Cts04 .lecture li img.prof {
             width:200px !important; border:1px solid #ccc;
         }
@@ -1242,24 +1243,100 @@
             <div class="lecture">
                 <ul>
                     <li>
-                    <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" title="교수명" class="prof">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" title="교수명" class="prof">
                         <div class="t_tilte">
                             국어 기미진 교수<br>
-                            <span>공무원 한국사의 대명사</span>                               
+                            <span>국어 강사의<br>NEW 패러다임</span>                               
                             <p>추후 제공 예정입니다.</p>                            
                         </div>
                     </li>
                     <li>
-                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" title="교수명" class="prof">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50499/lec_detail_50499.png" title="교수명" class="prof">
                         <div class="t_tilte">
-                            국어 기미진 교수<br>
-                            <span>공무원 한국사의 대명사</span> 
+                            영어 한덕현 교수<br>
+                            <span>속 시원하고 진솔한<br>제니스 영어</span> 
                             <p>
                                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
                                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
                             </p>
+                        </div>
                     </li>
-
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50441/lec_detail_50441.png" title="교수명" class="prof">
+                        <div class="t_tilte">
+                            한국사 박민주 교수<br>
+                            <span>공무원 한국사의<br>대명사</span>                               
+                            <p>추후 제공 예정입니다.</p>                            
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50181/lec_detail_50181.png" title="교수명" class="prof">
+                        <div class="t_tilte">
+                            사회 문병일 교수<br>
+                            <span>사회, 만점으로 가는<br>매직 로드</span> 
+                            <p>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                            </p>
+                        </div>
+                    </li>                    
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50559/lec_detail_50559.png" title="교수명" class="prof">
+                        <div class="t_tilte">
+                            행정학 김덕관 교수<br>
+                            <span>흐름에 따른 정리<br>점수와 지결되는 암기</span> 
+                            <p>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50041/lec_detail_50041.png" title="교수명" class="prof">
+                        <div class="t_tilte">
+                            행정법 윤세훈 교수<br>
+                            <span>문제로 정리하는<br>153 행정학</span>                               
+                            <p>추후 제공 예정입니다.</p>                            
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50163/lec_detail_50163.png" title="교수명" class="prof">
+                        <div class="t_tilte">
+                            전자공학 최우영 교수<br>
+                            <span>차원이 다른<br>통신직의 대가</span>                               
+                            <p>추후 제공 예정입니다.</p>                            
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50163/lec_detail_50163.png" title="교수명" class="prof">
+                        <div class="t_tilte">
+                            무선공학 최우영 교수<br>
+                            <span>차원이 다른<br>퉁신직의 대가</span> 
+                            <p>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50429/lec_detail_50429.png" title="교수명" class="prof">
+                        <div class="t_tilte">
+                            재배학 장사원 교수<br>
+                            <span>농업직렬<br>4관왕 석권</span>                               
+                            <p>추후 제공 예정입니다.</p>                            
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50429/lec_detail_50429.png" title="교수명" class="prof">
+                        <div class="t_tilte">
+                            식용작물 장사원 교수<br>
+                            <span>농업직렬<br>4관왕 석권</span> 
+                            <p>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                            </p>
+                        </div>
+                    </li>                    
                 </ul>
             </div>
         </div>

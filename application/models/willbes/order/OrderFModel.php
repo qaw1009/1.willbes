@@ -63,6 +63,16 @@ class OrderFModel extends BaseOrderFModel
                 $row['SubRealSalePrice'] = json_decode($row['SubRealSalePrice'], true);
             }
 
+            // 주문정보 입력에서만 수강생교재 체크
+            if ($make_type == 'order') {
+                if ($row['CartProdType'] == 'book') {
+                    $check_student_book = $this->cartFModel->checkStudentBook($row['SiteCode'], $row['ProdCode'], $row['ParentProdCode']);
+                    if ($check_student_book !== true) {
+                        return $check_student_book;
+                    }
+                }
+            }
+
             // 상품 결제금액 초기화
             $row['RealPayPrice'] = $row['RealSalePrice'];
 

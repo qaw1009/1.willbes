@@ -269,9 +269,17 @@ class PlayerFModel extends WB_Model
         $LecStudyTime = (int)element('LecStudyTime', $input);
         $LecRealStudyTime = (int)element('LecRealStudyTime', $input);
 
+        if($UnitTime == 0 ){
+            $UnitRate = 0;
+        } else {
+            $UnitRate = floor((($UnitStudyTime + $StudyTime) / $UnitTime) * 100);
+        }
 
-        $UnitRate = floor((($UnitStudyTime + $StudyTime) / $UnitTime) * 100);
-        $LecRate = floor((($LecStudyTime + $StudyTime) / $LecTime) * 100);
+        if($LecTime == 0 ){
+            $LecRate = 0;
+        } else {
+            $LecRate = floor((($LecStudyTime + $StudyTime) / $LecTime) * 100);
+        }
 
         if($UnitRate > 100) { $UnitRate = 100; }
         if($LecRate > 100) { $LecRate = 100; }

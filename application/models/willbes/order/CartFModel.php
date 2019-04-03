@@ -169,13 +169,55 @@ class CartFModel extends BaseOrderFModel
 
     /**
      * 수강생교재 구매시 부모상품 주문여부 및 장바구니 확인
-     * @param int $site_code [사이트코드]
+     * @param int $site_code [미사용, 사이트코드]
      * @param string $prod_book_code [교재상품코드]
-     * @param string $parent_prod_code [부모상품코드]
-     * @param array $arr_input_prod_code [교재상품과 동시에 장바구니에 저장될 상품코드, form input 상품코드]
+     * @param string $parent_prod_code [부모상품코드 (강좌상품코드)]
+     * @param array $arr_input_prod_code [미사용, 교재상품과 동시에 장바구니에 저장될 상품코드, form input 상품코드]
      * @return bool|string [true : 구매가능, string : 구매불가]
      */
     public function checkStudentBook($site_code, $prod_book_code, $parent_prod_code, $arr_input_prod_code = [])
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        // 에러 메시지
+        $err_msg = '선택하신 수강생 교재에 해당하는 강좌를 구매하지 않으셨습니다. 해당 강좌를 선 구매 후 수강생 교재를 다시 구매해 주세요.';
+
+        // 1. 해당 강좌상품의 서브강좌 중 해당 수강생교재를 포함하고 있는 단강좌 코드 리턴
+        $target_rows = $this->productFModel->findLectureProductToStudentBook($parent_prod_code, $prod_book_code);
+
+        if (empty($target_rows) === true) {
+            // 수강생교재가 아닐 경우
+            return true;
+        }
+        $arr_target_prod_code = array_pluck($target_rows, 'ProdCode');
+
+        // 2. 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
+        $book_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+            'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $prod_book_code, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]
+        ]);
+
+        if ($book_paid_cnt > 0) {
+            return '이미 동일한 수강생 교재를 구매하셨습니다.';
+        }
+
+        // 3. 회원이 구매한 결제완료된 내강의실 정보 조회
+        $my_lecture_rows = $this->orderListFModel->getMemberMyLectureByProdCodeSub($arr_target_prod_code);
+        if (empty($my_lecture_rows) === false) {
+            return true;
+        }
+
+        return $err_msg;
+    }
+
+    /**
+     * 수강생교재 구매시 부모상품 주문여부 및 장바구니 확인 (사용안함)
+     * @param int $site_code [사이트코드]
+     * @param string $prod_book_code [교재상품코드]
+     * @param string $parent_prod_code [부모상품코드 (강좌상품코드)]
+     * @param array $arr_input_prod_code [교재상품과 동시에 장바구니에 저장될 상품코드, form input 상품코드]
+     * @return bool|string [true : 구매가능, string : 구매불가]
+     */
+    public function checkStudentBookNotUsed($site_code, $prod_book_code, $parent_prod_code, $arr_input_prod_code = [])
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
@@ -263,7 +305,7 @@ class CartFModel extends BaseOrderFModel
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
                 // 학습형태별 사전 체크
-                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay, false, false);
+                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay, false, true);
                 if ($check_result !== true) {
                     throw new \Exception($check_result);
                 }
@@ -561,17 +603,13 @@ class CartFModel extends BaseOrderFModel
         }
 
         if ($learn_pattern == 'book') {
-            // 수강생 교재 체크
-            $arr_input_prod_code = [];
-            if ($is_cart === true) {
-                // 장바구니에서만 부모상품코드 사용 (강좌 + 수강생교재를 바로결제할 경우 수강생교재를 장바구니에 담기 위해 임의로 강좌상품코드 전달)
-                $arr_input_prod_code[] = $parent_prod_code;
-            }
-
-            $check_result = $this->checkStudentBook($site_code, $prod_code, $parent_prod_code, $arr_input_prod_code);
-            if ($check_result !== true) {
-                return $check_result;
-            }
+            // 수강생 교재 체크 (체크안함)
+            /*if ($is_cart === false) {
+                $check_result = $this->checkStudentBook($site_code, $prod_code, $parent_prod_code);
+                if ($check_result !== true) {
+                    return $check_result;
+                }
+            }*/
         } elseif ($learn_pattern == 'mock_exam') {
             // 응시형태가 학원일 경우 정원 체크
             if ($data['TakeFormsCcd'] == '690002') {

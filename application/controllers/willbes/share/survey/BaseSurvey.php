@@ -17,7 +17,12 @@ class BaseSurvey extends \app\controllers\FrontController
     {
         $idx = $params[0];
         $product = $this->surveyModel->productCall($idx);
-        $data = $this->surveyModel->questionSetCall($product['SqsIdx']);
+        $SqsIdx = $product['SqsIdx'];
+        if(!$SqsIdx){
+            echo "<script>alert('등록되지 않은 설문입니다.');</script>";
+            return;
+        }
+        $data = $this->surveyModel->questionSetCall($SqsIdx);
         $question = array();
         $questionD = array();
         $questionD2 = array();

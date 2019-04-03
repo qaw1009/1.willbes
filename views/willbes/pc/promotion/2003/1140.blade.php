@@ -1109,8 +1109,7 @@
         <!--시험총평 및 시험후기-->
         <div id="tab3" class="tabCts Cts03">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
-            {{--<iframe src="https://www.local.willbes.net/survey/graph/2" style="width:1280px; height:1000px;" />--}}
-            <?php echo $this->runChild('willbes.pc.survey.show_graph_partial'); ?>
+            @include('willbes.pc.survey.show_graph_partial')
 
             <div class="mt30 tx-center">
                 <a href="javascript:pullOpen();">

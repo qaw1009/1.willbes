@@ -144,7 +144,7 @@
             $list_table.on('click', '.btn-unit', function() {
                 $('.btn-unit').setLayer({
                     "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $(this).data('idx')
-                    ,width : "1700"
+                    ,width : "1800"
                 });
             });
 

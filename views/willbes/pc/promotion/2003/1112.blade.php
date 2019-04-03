@@ -130,29 +130,29 @@
 
         <div class="evtCtnsBox LAeventA01">
             <div class="main_img flipInX animated" style="opacity:1;">
-                <img src="/public/img/willbes/leave_army/la_on_top_txt.png" alt="윌비스 PASS 혜택">
+                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_top_txt.png" alt="윌비스 PASS 혜택">
             </div>
-            <img src="/public/img/willbes/leave_army/la_on_top.jpg" alt="윌비스 PASS">
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_top.jpg" alt="윌비스 PASS">
         </div>
 
         <div class="LAeventA02">
-            <img src="/public/img/willbes/leave_army/la_on_01.jpg" alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_01.jpg" alt=""/>
             <ul>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m1.jpg" alt="군문원"/></a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m2.jpg" alt="소방직"/></a></li>
-                <li><a href="{{ app_url('/promotion/index/cate/3001/code/1121', 'police') }}" target="_blank"><img src="/public/img/willbes/leave_army/la_on_01_m3.jpg" alt="경찰직"/></a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m4.jpg" alt="기술직"/></a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m5.jpg" alt="일반행정직"/></a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m6.jpg" alt="소방(산업)기사 자격증"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_01_m1.jpg" alt="군문원"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_01_m2.jpg" alt="소방직"/></a></li>
+                <li><a href="{{ app_url('/promotion/index/cate/3001/code/1121', 'police') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_01_m3.jpg" alt="경찰직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_01_m4.jpg" alt="기술직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_01_m5.jpg" alt="일반행정직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_01_m6.jpg" alt="소방(산업)기사 자격증"/></a></li>
             </ul>
-            <img src="/public/img/willbes/leave_army/la_on_02.jpg"  alt="" usemap="#Mappass02"/>
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_02.jpg"  alt="" usemap="#Mappass02"/>
             <map name="Map" id="Mappass02">
                 <area shape="rect" coords="194,1063,398,1102" href="javascript:certOpen();" alt="빠른 간편가입 및 인증"/>
                 <area shape="rect" coords="714,1063,922,1102" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" alt="윌비스 pass 구매"/>
             </map>
         </div>
         <div class="LAeventA03">
-            <img src="/public/img/willbes/leave_army/la_on_03.jpg" alt="합격을 위한 너무나 다영한 선택! 윌비스 PASS"/>
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_on_03.jpg" alt="합격을 위한 너무나 다영한 선택! 윌비스 PASS"/>
         </div>
     </div>
     <!-- End Container -->

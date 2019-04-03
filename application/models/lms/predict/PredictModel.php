@@ -73,6 +73,7 @@ class PredictModel extends WB_Model
             SpTitle,
             SqsIdx,
             (SELECT SqsTitle FROM {$this->_table['surveyQuestionSet']} WHERE SqsIdx = SP.SqsIdx) AS SqsTitle,
+            (SELECT COUNT(*) FROM {$this->_table['surveyAnswer']} WHERE SpIdx = SP.SpIdx) AS CNT,
             StartDate,
             EndDate,
             SpComment,
@@ -108,8 +109,13 @@ class PredictModel extends WB_Model
         $column = "
                 SqIdx, SqTitle, 
                 IF(Type = 'S','선택형',IF(Type = 'M','선다형',IF(Type = 'T','복수형','서술형'))) AS Type, 
-                SqComment, Comment1, Comment2, Comment3, Comment4, Comment5, Comment6, Comment7, Comment8, Comment9, Comment10, 
-                Hint1, Hint2, Hint3, Hint4, Hint5, Hint6, Hint7, Hint8, Hint9, Hint10, Cnt, SqUseYn
+                SqComment, Comment1, Comment2, Comment3, Comment4, Comment5, Comment6, Comment7, Comment8, Comment9, Comment10,
+                Comment11, Comment12, Comment13, Comment14, Comment15, Comment16, Comment17, Comment18, Comment19, Comment20, 
+                Comment21, Comment22, Comment23, Comment24, Comment25, 
+                Hint1, Hint2, Hint3, Hint4, Hint5, Hint6, Hint7, Hint8, Hint9, Hint10, 
+                Hint11, Hint12, Hint13, Hint14, Hint15, Hint16, Hint17, Hint18, Hint19, Hint20, 
+                Hint21, Hint22, Hint23, Hint24, Hint25, 
+                Cnt, SqUseYn
         ";
         $from = "
             FROM 
@@ -124,6 +130,55 @@ class PredictModel extends WB_Model
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
         return array($data, $count);
+    }
+
+    /**
+     * 설문결과
+     */
+    public function answerCall($idx)
+    {
+        $column = "
+            SubTitle, sa.SqIdx, Answer, sa.Type, 
+            (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyProduct']} AS sp
+                JOIN {$this->_table['surveyAnswer']} AS si ON sp.SpIdx = si.SpIdx
+                JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx = sa.SaIdx
+                LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
+        ";
+
+        $obder_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
+        $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T')";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    /**
+     * 문항코멘트
+     */
+    public function questionSet($idx){
+        $column = "
+            Comment1,Comment2,Comment3,Comment4,Comment5,Comment6,Comment7,Comment8,Comment9,Comment10,
+            Comment11, Comment12, Comment13, Comment14, Comment15, Comment16, Comment17, Comment18, Comment19, Comment20, 
+            Comment21, Comment22, Comment23, Comment24, Comment25
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyQuestion']} 
+        ";
+
+        $obder_by = " ";
+        $where = " WHERE SqIdx = " . $idx;
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $Res = $query->row_array();
+
+        return $Res;
     }
 
     /**
@@ -339,7 +394,12 @@ class PredictModel extends WB_Model
             SqIdx, SqTitle, 
             IF(Type = 'S','선택형',IF(Type = 'M','선다형',IF(Type = 'T','복수형','서술형'))) AS Type, 
             SqComment, Comment1, Comment2, Comment3, Comment4, Comment5, Comment6, Comment7, Comment8, Comment9, Comment10, 
-            Hint1, Hint2, Hint3, Hint4, Hint5, Hint6, Hint7, Hint8, Hint9, Hint10, Cnt, SqUseYn
+            Comment11, Comment12, Comment13, Comment14, Comment15, Comment16, Comment17, Comment18, Comment19, Comment20, 
+            Comment21, Comment22, Comment23, Comment24, Comment25, 
+            Hint1, Hint2, Hint3, Hint4, Hint5, Hint6, Hint7, Hint8, Hint9, Hint10, 
+            Hint11, Hint12, Hint13, Hint14, Hint15, Hint16, Hint17, Hint18, Hint19, Hint20, 
+            Hint21, Hint22, Hint23, Hint24, Hint25, 
+            Cnt, SqUseYn
         ";
 
         $from = "
@@ -356,6 +416,9 @@ class PredictModel extends WB_Model
         return $Res;
     }
 
+
+
+
     /**
  * 문항호출
  */
@@ -364,7 +427,12 @@ class PredictModel extends WB_Model
             SqIdx, SqTitle, 
             IF(Type = 'S','선택형',IF(Type = 'M','선다형',IF(Type = 'T','복수형','서술형'))) AS Type, 
             SqComment, Comment1, Comment2, Comment3, Comment4, Comment5, Comment6, Comment7, Comment8, Comment9, Comment10, 
-            Hint1, Hint2, Hint3, Hint4, Hint5, Hint6, Hint7, Hint8, Hint9, Hint10, Cnt, SqUseYn
+            Comment11, Comment12, Comment13, Comment14, Comment15, Comment16, Comment17, Comment18, Comment19, Comment20, 
+            Comment21, Comment22, Comment23, Comment24, Comment25, 
+            Hint1, Hint2, Hint3, Hint4, Hint5, Hint6, Hint7, Hint8, Hint9, Hint10, 
+            Hint11, Hint12, Hint13, Hint14, Hint15, Hint16, Hint17, Hint18, Hint19, Hint20, 
+            Hint21, Hint22, Hint23, Hint24, Hint25, 
+            Cnt, SqUseYn
         ";
 
 

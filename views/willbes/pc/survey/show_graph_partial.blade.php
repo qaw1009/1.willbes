@@ -6,22 +6,17 @@
 
     function resizeIframeSurvey(iframe) {
         var newheight;
-        var newwidth;
 
         if(iframe.contentDocument){
             newheight = iframe.contentDocument.documentElement.scrollHeight+30;
-            newwidth = iframe.contentDocument.documentElement.scrollWidth+30;
         } else {
             newheight=iframe.contentWindow.document.body.scrollHeight+30;
-            newwidth=iframe.contentWindow.document.body.scrollWidth+30;
         }
 
         iframe.height= newheight + "px";
-        iframe.width= newwidth + "px";
-
-        // https://pass.local.willbes.net/promotion/index/cate/3019/code/1140/spidx/2 에서 스크립트가 안먹어서 넣음
+        // /promotion/index/cate/3019/code/1140/spidx/2 그래프가 3번째 탭에 있어서 크롬에서 세로사이즈를 제대로 감지못하는 오류가 있어서 예외처리
         if(spidx == 2){
-            //iframe.height = '505px';
+            iframe.height = '505px';
         }
     }
 

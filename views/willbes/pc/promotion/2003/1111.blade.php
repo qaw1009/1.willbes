@@ -42,10 +42,10 @@
         }
         .rLnb .typeA a {
             border-bottom:1px solid #bfbfbf; display:block; padding:10px 10px 10px 15px; line-height:1.4; font-weight:bold;
-            background:url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
+            background:url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
         .rLnb .typeA a:hover {
             font-weight: 600;
-            background:#ebebeb url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
+            background:#ebebeb url(https://static.willbes.net/public/images/promotion/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
         }
         .rLnb .typeA li:last-child a {border:0}
         .rLnb .typeB li {
@@ -57,7 +57,7 @@
         .rLnb_sectionFixed {position:fixed; top:20px}
 
         .LAeventZ01 {
-            background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_00_top_bg.jpg) no-repeat center top;
+            background:url(https://static.willbes.net/public/images/promotion/leave_army/la_00_top_bg.jpg) no-repeat center top;
             margin-top:10px;
             position:relative
         }
@@ -109,12 +109,12 @@
 
         <div class="evtCtnsBox LAeventZ01">
             <div class="main_img flipInX animated" style="opacity:1;">
-                <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_00_top_txt.png" alt="전역(예정)간부인증센터">
+                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_00_top_txt.png" alt="전역(예정)간부인증센터">
             </div>
-            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_00_top.jpg" alt="2년연속공식지정 국방부.보훈처 전문교육기관"/>
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_00_top.jpg" alt="2년연속공식지정 국방부.보훈처 전문교육기관"/>
         </div>
         <div class="evtCtnsBox LAeventZ02">
-            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_00_01.jpg" alt="학원실강/온라인동영상 교육과정" usemap="#Map180123" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_00_01.jpg" alt="학원실강/온라인동영상 교육과정" usemap="#Map180123" border="0"/>
             <map name="Map180123" id="Map180123">
                 <area shape="rect" coords="67,835,197,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" alt="학원실강 서울 노량진"/>
                 <area shape="rect" coords="215,835,346,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" alt="학원실강 인천 부평"/>

@@ -1242,7 +1242,7 @@ class CommonLectureModel extends WB_Model
                 ON {$this->_table['product']}.ProdCode = {$this->_table['category']}.ProdCode AND {$this->_table['category']}.IsStatus = 'Y'
             INNER JOIN {$this->_table['sys_category']} AS {$this->_table['sys_category']} 
                 ON {$this->_table['category']}.CateCode = {$this->_table['sys_category']}.CateCode AND {$this->_table['sys_category']}.IsStatus = 'Y'
-            INNER JOIN {$this->_table['product_subject']} AS {$this->_table['product_subject']} 
+            LEFT JOIN {$this->_table['product_subject']} AS {$this->_table['product_subject']} 
                 ON {$this->_table['lecture']}.SubjectIdx = {$this->_table['product_subject']}.SubjectIdx AND {$this->_table['product_subject']}.IsStatus = 'Y'
             INNER JOIN {$this->_table['vw_product_r_professor_concat']} AS {$this->_table['vw_product_r_professor_concat']} 
                 ON {$this->_table['product']}.ProdCode = {$this->_table['vw_product_r_professor_concat']}.ProdCode

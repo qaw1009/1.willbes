@@ -24,20 +24,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">과목명</label>
+                    <label class="control-label col-md-1-1">학습형태</label>
                     <div class="form-control-static col-md-4">
-                        {{$product_data['SubjectName']}}
+                        {{$product_data['LearnPatternCcdName']}}
                     </div>
-                    <label class="control-label col-md-1-1 d-line">교수명</label>
+                    <label class="control-label col-md-1-1 d-line">과목명</label>
                     <div class="form-control-static col-md-4 ml-12-dot">
-                        {{$product_data['wProfName_String']}}
+                        {{$product_data['SubjectName']}}
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1">강좌명</label>
-                    <div class="form-control-static col-md-10">
+                    <div class="form-control-static col-md-4">
                         {{$product_data['ProdName']}}
+                    </div>
+                    <label class="control-label col-md-1-1 d-line">교수명</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
+                        {{$product_data['wProfName_String']}}
                     </div>
                 </div>
 

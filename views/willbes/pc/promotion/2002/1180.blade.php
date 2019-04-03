@@ -33,7 +33,7 @@
       <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2019/03/1180_01.jpg" usemap="#Map1180A" title="시험전,수강생공부방법" border="0">
         <map name="Map1180A">
-          <area shape="rect" coords="203,909,928,1002" href="#" target="_blank" title="3개년 기출특강 준비중">
+          <area shape="rect" coords="203,909,928,1002" href="{{ site_url('/professor/show/prof-idx/50642/?cate_code=3010&subject_idx=1055&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture') }}" target="_blank" title="3개년 기출특강 준비중">
         </map>
 	  </div>
 

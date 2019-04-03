@@ -1287,6 +1287,7 @@ body.memBody #Footer {
 .lecTable .w-txt p img {
     width: 100% !important;
     height: auto !important;
+    max-width: 900px;
 }
 .lecTable .w-subtxt {
     width: 45%;

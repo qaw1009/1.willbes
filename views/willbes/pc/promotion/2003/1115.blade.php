@@ -56,7 +56,7 @@
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
         .rLnb_sectionFixed {position:fixed; top:20px}
 
-        .LAeventZ01 {width:100%; text-align:center; background:#111 url(http://file3.willbes.net/new_gosi/2019/leave_army/la_incheon_top_bg.jpg) no-repeat center top; background-size:auto; margin-top:20px; position:relative}
+        .LAeventZ01 {width:100%; text-align:center; background:#111 url(https://static.willbes.net/public/images/promotion/leave_army/la_incheon_top_bg.jpg) no-repeat center top; background-size:auto; margin-top:20px; position:relative}
 
         /*플립 애니메이션*/
         .LAeventZ01 .main_img {position:absolute; width:1120px; top:150px; left:50%; margin-left:-560px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
@@ -115,13 +115,13 @@
 
         <div class="LAeventZ01">
             <div class="main_img flipInX animated" style="opacity:1;">
-                <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_incheon_top_txt.png" alt="">
+                <img src="https://static.willbes.net/public/images/promotion/leave_army/la_incheon_top_txt.png" alt="">
             </div>
-            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_incheon_top.jpg" alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_incheon_top.jpg" alt=""/>
         </div>
 
         <div class="LAeventZ02">
-            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_incheon_01.jpg" alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/leave_army/la_incheon_01.jpg" alt=""/>
         </div>
     </div>
     <!-- End Container -->

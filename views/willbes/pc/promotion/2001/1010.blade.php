@@ -269,10 +269,9 @@
         </div>
 
         <!--  이모티콘 댓글 -->
-        {{--@include('html.event_incReplyEmoticon')--}}
-        <?php if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true): ?>
-            <?php echo $this->runChild('willbes.pc.promotion.show_comment_list_emoticon_partial'); ?>
-        <?php endif; ?>
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_emoticon_partial')
+        @endif
 
     </div>
     <!-- End Container -->

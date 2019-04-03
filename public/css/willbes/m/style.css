@@ -1283,9 +1283,11 @@ body.memBody #Footer {
     font-size: 14px;
     line-height: 24px;
 }
+.lecTable .w-txt img,
 .lecTable .w-txt p img {
     width: 100% !important;
     height: auto !important;
+    max-width: 900px;
 }
 .lecTable .w-subtxt {
     width: 45%;
@@ -1968,6 +1970,49 @@ body.memBody #Footer {
 .loading {background:#1a8ccb; height:100%; position:relative}
 .loadingImg {position:absolute; left:50%; top:50%; margin-left:-50%; width:100%; margin-top:-120px; text-align:center}
 .loadingImg div {text-align:center; color:#fff; font-size:130%; margin-top:20px; line-height: 1.5;}
+
+/**/
+.board_type{border:0 !important}
+.board_type{
+    width: 100% !important;
+    color: #666 !important;
+    border-top: solid 2px #000 !important;
+    border-left: solid 1px #d7d7d7 !important;
+    border-collapse: separate !important;
+    border-spacing: 0px !important;
+    text-align: left;
+} 
+.board_type caption {display:none}
+.board_type th{ 
+    padding:7px 0 !important;   
+    border-bottom:solid 1px #000 !important;
+    border-right:solid 1px #ccc !important;
+    background:#faf9fb !important;
+    color:#333 !important;
+    font-weight:bold !important;
+    line-height:18px !important;
+    vertical-align:middle !important;
+    font-size:12px !important;
+    text-align:center !important;
+}
+.board_type td {padding:5px !important;border-bottom:solid 1px #d7d7d7 !important; text-align:center !important; border-right:solid 1px #d7d7d7 !important; vertical-align:middle !important}
+.board_type td.td1 {text-align:left !important}
+.board_type td.td2 {    
+    font-weight: bold !important;
+    text-align: left;
+}
+.board_type td.td3 {font-size:120% !important; font-weight:bold !important; text-align:left !important}
+.board_type td.tdleft {text-align:left !important}
+.board_type p {line-height:120%}
+.board_type ul {margin:0; padding:0}
+.board_type ul li {list-style-type:none}
+.board_ul {margin:0 0 0 10px; padding:0 0 0 20px}
+.board_ul li {list-style-type:disc}
+
+.board_type a { display:block; padding:5px !important; border-radius:5px; text-decoration:none; background-color:#ff434a; color:#fff !important; font-weight:bold}
+.board_type a.cooming {background-color:#666 !important}
+.board_type a.freeLec {background-color:#06F !important}
+.board_type a:hover { background-color:#000 !important}
 
 /*********************************************     MYPAGE     *********************************************/
 

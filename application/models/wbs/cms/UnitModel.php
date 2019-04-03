@@ -21,7 +21,7 @@ class UnitModel extends WB_Model
      */
     public function listAllUnit($lecidx)
     {
-        $column = 'A.*,B.wProfName,C.wAdminName,Ccd.*';
+        $column = 'A.*,B.wProfName,C.wAdminName,Ccd.wCcd, Ccd.wCcdName';
 
         $from = '
                     From '.$this->_table.' A 
@@ -37,7 +37,6 @@ class UnitModel extends WB_Model
         $order_by = $this->_conn->makeOrderBy(['A.wOrderNum'=>'ASC'])->getMakeOrderBy();
 
         return $this->_conn->query('select ' .$column .$from .$where .$order_by) ->result_array();
-
     }
 
     /**
@@ -73,6 +72,7 @@ class UnitModel extends WB_Model
                 $wShootingDate = element('wShootingDate', $input);
                 $wProfIdx = element('wProfIdx', $input);
                 $wContentSizeCcd = element('wContentSizeCcd', $input);
+                $wIsUse = element('wIsUse',$input);
 
                 $this->load->library('upload');
 
@@ -104,17 +104,17 @@ class UnitModel extends WB_Model
 
                 for($i=0;$i<count($seq);$i++) {
 
-                    if(empty($wHD[$i])) {
-                        $wHD_Chg = str_replace("_1.mp4", "_2.mp4",$wWD[$i]);
-                    } else {
-                        $wHD_Chg =  $wHD[$i];
-                    }
+                        if(empty($wHD[$i])) {
+                            $wHD_Chg = str_replace("_1.mp4", "_2.mp4",$wWD[$i]);
+                        } else {
+                            $wHD_Chg =  $wHD[$i];
+                        }
 
-                    if(empty($wSD[$i])) {
-                        $wSD_Chg = str_replace("_1.mp4", "_3.mp4",$wWD[$i]);
-                    } else {
-                        $wSD_Chg =  $wSD[$i];
-                    }
+                        if(empty($wSD[$i])) {
+                            $wSD_Chg = str_replace("_1.mp4", "_3.mp4",$wWD[$i]);
+                        } else {
+                            $wSD_Chg =  $wSD[$i];
+                        }
 
                         // 기본항목
                         $input_data = [
@@ -130,8 +130,9 @@ class UnitModel extends WB_Model
 
                             ,'wShootingDate' => $wShootingDate[$i]
                             ,'wProfIdx' => $wProfIdx[$i]
-                            ,'wContentTypeCcd' => '106001'         //강의유형 : 임의로 고정
-                            ,'wContentSizeCcd' => $wContentSizeCcd[$i]          //컨텐트사이즈 (800 * 600) : 임의로 고정
+                            ,'wContentTypeCcd' => '106001'                            //강의유형 : 임의로 고정
+                            ,'wContentSizeCcd' => $wContentSizeCcd[$i]          //컨텐트사이즈
+                            ,'wIsUse' => $wIsUse[$i]
                         ];
 
                         //기존 회차식별자가 존재하면 업데이트 처리

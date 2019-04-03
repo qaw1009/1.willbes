@@ -68,6 +68,8 @@ class BaseSurvey extends \app\controllers\FrontController
             'Title' => $product['SpTitle'],
             'question' => $question,
             'questionD' => $questionD,
+            'StartDate' => $product['StartDate'],
+            'EndDate' => $product['EndDate'],
             'TypeT' => $TypeT,
             'SpIdx' => $idx,
             'Is' => $Is
@@ -84,6 +86,7 @@ class BaseSurvey extends \app\controllers\FrontController
         $temptitle = '';
         $resSet = array();
         $titleSet = array();
+        $numberSet = array();
         $tnum = 0; $num1 = 0; $num2 = 0; $num3 = 0; $num4 = 0; $num5 = 0; $num6 = 0; $num7 = 0; $num8 = 0; $num9 = 0; $num10 = 0;
         $resCnt = count($res);
         $defnum = 0;

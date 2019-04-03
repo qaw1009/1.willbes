@@ -28,10 +28,10 @@ class SurveyModel extends WB_Model
                 {$this->_table['surveyProduct']} 
         ";
 
-        $obder_by = "";
+        $order_by = "";
         $where = " WHERE SpIdx = ".$idx;
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
 
         return $Res;
@@ -51,10 +51,10 @@ class SurveyModel extends WB_Model
                 JOIN {$this->_table['surveyQuestionSetDetail']} AS sqsd ON sqs.SqsIdx = sqsd.SqsIdx
         ";
 
-        $obder_by = " ORDER BY Ordering ASC";
+        $order_by = " ORDER BY Ordering ASC";
         $where = " WHERE sqs.SqsIdx = ".$idx;
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
 
         return $Res;
@@ -73,10 +73,10 @@ class SurveyModel extends WB_Model
                 {$this->_table['surveyQuestion']}
         ";
 
-        $obder_by = "";
+        $order_by = "";
         $where = " WHERE SqIdx = ".$idx;
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
 
         return $Res;
@@ -95,9 +95,9 @@ class SurveyModel extends WB_Model
                 {$this->_table['surveyAnswer']}
         ";
 
-        $obder_by = "";
+        $order_by = "";
         $where = " WHERE SpIdx = ".$idx." AND MemIdx = ".$this->session->userdata('mem_idx');
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
 
         return $Res;
@@ -109,7 +109,8 @@ class SurveyModel extends WB_Model
     public function answerCall($idx)
     {
         $column = "
-            SubTitle, sa.SqIdx, Answer, sa.Type 
+            SubTitle, sa.SqIdx, Answer, sa.Type, 
+            (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT
         ";
 
         $from = "
@@ -120,10 +121,35 @@ class SurveyModel extends WB_Model
                 LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
         ";
 
-        $obder_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
-        $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE = 'S'";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $order_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
+        $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T')";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    /**
+     * 문항코멘트
+     */
+    public function questionSet($idx){
+        $column = "
+            Comment1,Comment2,Comment3,Comment4,Comment5,Comment6,Comment7,Comment8,Comment9,Comment10,
+            Comment11, Comment12, Comment13, Comment14, Comment15, Comment16, Comment17, Comment18, Comment19, Comment20, 
+            Comment21, Comment22, Comment23, Comment24, Comment25
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyQuestion']} 
+        ";
+
+        $order_by = " ";
+        $where = " WHERE SqIdx = " . $idx;
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->row_array();
 
         return $Res;
     }

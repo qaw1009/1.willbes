@@ -55,16 +55,9 @@ class BaseSurvey extends \app\controllers\FrontController
         $TypeT = array();
         foreach($questionD2 as $key => $val){
             if($val['Type'] == 'T'){
-                if(empty(trim($val['Comment1']))===false) $TypeT[] = trim($val['Comment1']);
-                if(empty(trim($val['Comment2']))===false) $TypeT[] = trim($val['Comment2']);
-                if(empty(trim($val['Comment3']))===false) $TypeT[] = trim($val['Comment3']);
-                if(empty(trim($val['Comment4']))===false) $TypeT[] = trim($val['Comment4']);
-                if(empty(trim($val['Comment5']))===false) $TypeT[] = trim($val['Comment5']);
-                if(empty(trim($val['Comment6']))===false) $TypeT[] = trim($val['Comment6']);
-                if(empty(trim($val['Comment7']))===false) $TypeT[] = trim($val['Comment7']);
-                if(empty(trim($val['Comment8']))===false) $TypeT[] = trim($val['Comment8']);
-                if(empty(trim($val['Comment9']))===false) $TypeT[] = trim($val['Comment9']);
-                if(empty(trim($val['Comment10']))===false) $TypeT[] = trim($val['Comment10']);
+                for($i = 1; $i <= 25; $i++){
+                    if(empty(trim($val['Comment'.$i]))===false) $TypeT[] = trim($val['Comment'.$i]);
+                }
             }
         }
 
@@ -89,53 +82,80 @@ class BaseSurvey extends \app\controllers\FrontController
 
         $tempSq = '';
         $temptitle = '';
+        $tempType = '';
+        $tempCNT = '';
         $resSet = array();
         $titleSet = array();
         $numberSet = array();
-        $tnum = 0; $num1 = 0; $num2 = 0; $num3 = 0; $num4 = 0; $num5 = 0; $num6 = 0; $num7 = 0; $num8 = 0; $num9 = 0; $num10 = 0;
+        $questionSet = array();
+        $typeSet = array();
+        for($i = 1; $i <= 25; $i++){
+            ${"num".$i} = 0;
+        }
+
         $resCnt = count($res);
         $defnum = 0;
         foreach ($res as $key => $val){
             $SqIdx = $val['SqIdx'];
+            $CNT = $val['CNT'];
+            $Answer = $val['Answer'];
             $j = $key + 1;
 
             if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
-                $tnum = $num1 + $num2 + $num3 + $num4 + $num5 + $num6 + $num7 + $num8 + $num9 + $num10;
+
+                $tnum = 0;
+
+                for($i = 1; $i <= $tempCNT; $i++) {
+                    $tnum = $tnum + ${"num".$i};
+                }
                 $resSet[$defnum]['SubTitle'] = $temptitle;
-                $resSet[$defnum]['Answer1'] = ($num1 > 0 && $tnum > 0)? round($num1 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer2'] = ($num2 > 0 && $tnum > 0)? round($num2 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer3'] = ($num3 > 0 && $tnum > 0)? round($num3 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer4'] = ($num4 > 0 && $tnum > 0)? round($num4 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer5'] = ($num5 > 0 && $tnum > 0)? round($num5 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer6'] = ($num6 > 0 && $tnum > 0)? round($num6 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer7'] = ($num7 > 0 && $tnum > 0)? round($num7 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer8'] = ($num8 > 0 && $tnum > 0)? round($num8 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer9'] = ($num9 > 0 && $tnum > 0)? round($num9 / $tnum,2) * 100 : 0;
-                $resSet[$defnum]['Answer10'] = ($num10 > 0 && $tnum > 0)? round($num10 / $tnum,2) * 100 : 0;
-                $num1 = 0; $num2 = 0; $num3 = 0; $num4 = 0; $num5 = 0; $num6 = 0; $num7 = 0; $num8 = 0; $num9 = 0; $num10 = 0;
+                for($i = 1; $i <= $tempCNT; $i++){
+                    $resSet[$defnum]['Answer'.$i] = ($num1 > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
+                }
+                for($i = 1; $i <= $tempCNT; $i++){
+                    if($Answer == $i){
+                        ${"num".$i} = 1;
+                    } else {
+                        ${"num".$i} = 0;
+                    }
+                }
+
+                $resSet[$defnum]['CNT'] = $tempCNT;
                 $titleSet[] = $temptitle;
                 $numberSet[] = $defnum;
+                $typeSet[] = $tempType;
+                $questionSet[] = $this->surveyModel->questionSet($tempSq);
                 $defnum++;
             } else {
-                if($val['Answer'] == 1) $num1++;
-                if($val['Answer'] == 2) $num2++;
-                if($val['Answer'] == 3) $num3++;
-                if($val['Answer'] == 4) $num4++;
-                if($val['Answer'] == 5) $num5++;
-                if($val['Answer'] == 6) $num6++;
-                if($val['Answer'] == 7) $num7++;
-                if($val['Answer'] == 8) $num8++;
-                if($val['Answer'] == 9) $num9++;
-                if($val['Answer'] == 10) $num10++;
+                if($val['Type'] == 'S'){
+
+                    for($i = 1; $i <= $CNT; $i++){
+                        if($Answer == $i) ${"num".$i}++;
+                    }
+
+                } else {
+                    //TYPE == 'T'
+                    $AnswerArr = explode('/',$Answer);
+                    for($i = 1; $i <= $CNT; $i++){
+                        for($j = 0; $j < count($AnswerArr); $j++){
+                            if($AnswerArr[$j] == $i) ${"num".$i}++;
+                        }
+                    }
+                }
             }
+
             $tempSq = $SqIdx;
+            $tempType = $val['Type'];
             $temptitle = $val['SubTitle'];
+            $tempCNT = $CNT;
         }
 
         $view_file = 'willbes/pc/survey/graph'.$idx;
         $this->load->view($view_file, [
             'resSet' => $resSet,
             'titleSet' => $titleSet,
+            'typeSet' => $typeSet,
+            'questionSet' => $questionSet,
             'numberSet' => $numberSet
         ], false);
     }

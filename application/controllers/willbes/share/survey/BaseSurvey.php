@@ -19,7 +19,7 @@ class BaseSurvey extends \app\controllers\FrontController
         $product = $this->surveyModel->productCall($idx);
         $SqsIdx = $product['SqsIdx'];
         if(!$SqsIdx){
-            echo "<script>alert('등록되지 않은 설문입니다.');</script>";
+            show_alert('등록되지 않은 설문입니다.','close');
             return;
         }
         $data = $this->surveyModel->questionSetCall($SqsIdx);

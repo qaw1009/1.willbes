@@ -9879,7 +9879,9 @@ table.acadlecInfoPackageTable tr.Top td {
     margin-left: 0;
 }
 .w-thumb .thumb_txt {
-    float: left;
+    float: right;
+    width: 400px;
+    text-align: left;
 }
 .w-thumb .thumb_txt .w-tit {
     font-size: 14px;

@@ -238,6 +238,16 @@ function setCheckLectureProduct($regi_form, $chk_obj, $chk_type, $target_prod_id
  * @returns {boolean}
  */
 function checkStudentBook($regi_form, $chk_obj) {
+    return true;
+}
+
+/**
+ * 수강생 교재 체크 (결제에서만 체크)
+ * @param $regi_form
+ * @param $chk_obj
+ * @returns {boolean}
+ */
+function checkStudentBookNoUsed($regi_form, $chk_obj) {
     var input_data = $chk_obj.data();
     var is_check = false;
     var code = '610003';

@@ -331,12 +331,13 @@
             var $tab_id = $(this).data('tab-id');
             var $form = $('#' + $tab_id + '_form');
 
+            {{-- // 교재상품 선구매 불가 처리
             if ($tab_id === 'book') {
                 if ($lecture_form.find('input[name="cart_idx[]"]').length > 0) {
                     alert('장바구니에 담긴 강좌 상품 선 구매 후 교재 상품 구매가 가능합니다.');
                     return;
                 }
-            }
+            }--}}
 
             if (confirm('해당 상품을 결제하시겠습니까?')) {
                 var data = {
@@ -369,12 +370,13 @@
                 return;
             }
 
+            {{-- // 교재상품 선구매 불가 처리
             if ($tab_id === 'book') {
                 if ($lecture_form.find('input[name="cart_idx[]"]').length > 0) {
                     alert('장바구니에 담긴 강좌 상품 선 구매 후 교재 상품 구매가 가능합니다.');
                     return;
                 }
-            }
+            }--}}
 
             if ($form.find('input[name="cart_idx[]"]:checked').length < 1) {
                 // 상품 자동 선택 처리

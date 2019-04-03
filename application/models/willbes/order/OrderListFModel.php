@@ -273,6 +273,32 @@ class OrderListFModel extends BaseOrderFModel
     }
 
     /**
+     * 회원이 구매한 내강의실 정보 조회 by ProdCodeSub (단강좌코드)
+     * @param string|array $arr_prod_code_sub [상품코드서브 (단강좌코드)]
+     * @return mixed
+     */
+    public function getMemberMyLectureByProdCodeSub($arr_prod_code_sub)
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+        $column = 'ML.MlIdx';
+        $from = '
+            from ' . $this->_table['order'] . ' as O
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on O.OrderIdx = OP.OrderIdx
+                inner join ' . $this->_table['my_lecture'] . ' as ML
+                    on O.OrderIdx = ML.OrderIdx and OP.OrderProdIdx = ML.OrderProdIdx
+            where O.MemIdx = ?
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"	
+                and ML.ProdCodeSub in ?            
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$sess_mem_idx, (array) $arr_prod_code_sub]);
+
+        return $query->result_array();
+    }
+
+    /**
      * 주문상품 SMS 발송 메시지 조회
      * @param int $order_no [주문번호 or 주문식별자]
      * @param int $mem_idx [회원식별자]

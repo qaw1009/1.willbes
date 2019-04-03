@@ -360,6 +360,7 @@ class LectureModel extends WB_Model
             ,'wMediaUrl' => element('MediaUrl',$input)
             ,'wIsUse' => element('is_use',$input)
             ,'wKeyword' => element('Keyword',$input)
+            ,'wScheduleCount' => element('ScheduleCount',$input)
 
         ];
         return $input_data;

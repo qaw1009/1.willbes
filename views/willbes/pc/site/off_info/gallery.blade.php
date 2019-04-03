@@ -118,7 +118,7 @@
                                                 </dl><br/>
                                                 <div class="w-tit">
                                                     <a href="{{front_url($default_path.'/show/?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
-                                                        <strong>{{hpSubString($row['Title'],0,35,'...')}}</strong>
+                                                        <strong>{{hpSubString($row['Title'],0,100,'...')}}</strong>
                                                     </a>
                                                 </div>
                                             </div>

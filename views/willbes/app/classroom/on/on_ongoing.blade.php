@@ -187,7 +187,7 @@
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
-                                                <dt>진도율 : <span class="tx-blue">{{$subrow['StudyRate']}}%%</span><span class="row-line">|</span></dt>
+                                                <dt>진도율 : <span class="tx-blue">{{$subrow['StudyRate']}}%</span><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}</span>일<span class="row-line">|</span></dt>
                                                 <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
                                             </dl>
@@ -325,7 +325,7 @@
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
-                                                <dt>진도율 : <span class="tx-blue">{{$subrow['StudyRate']}}%%</span><span class="row-line">|</span></dt>
+                                                <dt>진도율 : <span class="tx-blue">{{$subrow['StudyRate']}}%</span><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}</span>일<span class="row-line">|</span></dt>
                                                 <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
                                             </dl>

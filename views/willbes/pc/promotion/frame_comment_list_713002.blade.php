@@ -150,12 +150,11 @@
             @endif
             </tbody>
         </table>
-    </div>
-
+    </div>    
+</div>
     <div class="mt50">
         {!! $paging['pagination'] !!}
     </div>
-</div>
 
 <script type="text/javascript">
     var $regi_form_comment = $('#regi_form_comment');

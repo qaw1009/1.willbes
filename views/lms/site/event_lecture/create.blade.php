@@ -401,10 +401,20 @@
             $editor_profile.inputForm = 'content';
             $editor_profile.run();
 
+            var $promotion_editor_profile = new cheditor();
+            $promotion_editor_profile.config.editorHeight = '170px';
+            $promotion_editor_profile.config.editorWidth = '100%';
+            $promotion_editor_profile.inputForm = 'promotion_content';
+            $promotion_editor_profile.run();
+
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
             $regi_form.find('select[name="subject_code"]').chained("#site_code");
             $regi_form.find('select[name="prof_code"]').chained("#site_code");
+            $regi_form.find('select[name="set_other_data_1"]').chained("#site_code");
+            $regi_form.find('select[name="set_other_data_2"]').chained("#site_code");
+            $regi_form.find('select[name="other_prof_idx[]"]').chained("#site_code");
+            $regi_form.find('select[name="other_subject_idx[]"]').chained("#site_code");
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {

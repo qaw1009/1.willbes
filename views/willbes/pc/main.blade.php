@@ -11,7 +11,7 @@
         <div class="Section Act1 mb50">
             <div class="widthAuto">
                 <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
-                <div class="ProcessBox">
+                <div class="ProcessBox NGR">
                     <ul>
                         <li>
                             <a href="{{ app_url('/home/index/cate/3019', 'pass') }}" target="_blank">
@@ -30,8 +30,19 @@
                                     <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
                                 </div>
                                 <div class="wTxt">
-                                    독보적일반/경행/승진/간부/해경<br/>
+                                    독보적일반/경행/승진/해경<br/>
                                     <strong>윌비스 신광은경찰학원</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">
+                                <div class="wTit">
+                                    <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰간부
+                                </div>
+                                <div class="wTxt">
+                                    간부후보생 선발시험 대비<br/>
+                                    <strong>윌비스 한림법학원</strong>
                                 </div>
                             </a>
                         </li>
@@ -45,7 +56,9 @@
                                     <strong>윌비스 임용</strong>
                                 </div>
                             </a>
-                        </li>
+                        </li>                        
+                    </ul>
+                    <ul>
                         <li>
                             <a href="http://www.hanlimgosi.co.kr" target="_blank">
                                 <div class="wTit">
@@ -56,9 +69,7 @@
                                     <strong>윌비스 한림법학원</strong>
                                 </div>
                             </a>
-                        </li>
-                    </ul>
-                    <ul>
+                        </li>    
                         <li>
                             <a href="http://value.willbes.net" target="_blank">
                                 <div class="wTit">
@@ -91,7 +102,9 @@
                                     <strong>윌비스 패스하자</strong>
                                 </div>
                             </a>
-                        </li>
+                        </li>                        
+                    </ul>
+                    <ul>
                         <li>
                             <a href="http://www.willpass.co.kr" target="_blank">
                                 <div class="wTit">
@@ -102,16 +115,14 @@
                                     <strong>윌패스</strong>
                                 </div>
                             </a>
-                        </li>
-                    </ul>
-                    <ul>
+                        </li>    
                         <li>
                             <a href="http://lang.willbes.net" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes8.png') }}"> 어학
                                 </div>
                                 <div class="wTxt">
-                                    토익/텝스/지텔프/영어/지2외국어<br/>
+                                    토익/텝스/지텔프/영어/제2외국어<br/>
                                     <strong>윌비스랑</strong>
                                 </div>
                             </a>
@@ -138,6 +149,8 @@
                                 </div>
                             </a>
                         </li>
+                    </ul>
+                    <ul>
                         <li>
                             <a href="http://willbesedu.or.kr" target="_blank">
                                 <div class="wTit">
@@ -260,6 +273,12 @@
                                     <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605007', 'police') }}" target="_blank">전북</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605008', 'police') }}" target="_blank">진주</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="Tit">간부경찰</th>
+                                <td>
+                                    <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">신림(한림법학원)</a>
                                 </td>
                             </tr>
                             <tr>

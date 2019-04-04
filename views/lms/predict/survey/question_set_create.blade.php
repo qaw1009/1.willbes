@@ -101,7 +101,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 item" style="border:1px solid gray; height:500px; text-align:center; padding:1px; background-color:black;">
+                    <div class="col-md-4 item" style="border:1px solid gray; height:500px; text-align:center; padding:1px; background-color:black; overflow-y:auto;">
                         <div class="col-md-2 item" style="border:1px solid black; height:20px; font-weight: bold; background-color:white;">
                             그룹번호
                         </div>

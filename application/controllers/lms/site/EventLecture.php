@@ -158,6 +158,9 @@ class EventLecture extends \app\controllers\BaseController
 
             // 댓글UI타입 데이터 가공
             $data['comment_ui_type_ccds'] = array_flip(explode(',', $data['CommentUiTypeCcds']));   // 관리옵션 데이터 가공처리
+
+            // 프로모션 부가 정보 조회
+            $data['promotion_other_data'] = $this->eventLectureModel->listEventPromotionForOther($data['PromotionCode']);
         }
 
         $this->load->view("site/event_lecture/create", [
@@ -726,6 +729,21 @@ class EventLecture extends \app\controllers\BaseController
             $result = $this->boardModel->boardDelete($board_idx);
         }
         $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    public function deletePromotionOtherInfo()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'epo_idx', 'label' => '프로모션부가정보식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->deletePromotionOtherInfo($this->_reqP('epo_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
     /**

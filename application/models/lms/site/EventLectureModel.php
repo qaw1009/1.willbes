@@ -11,6 +11,7 @@ class EventLectureModel extends WB_Model
         'event_comment' => 'lms_event_comment',
         'event_member' => 'lms_event_member',
         'event_member_successinfo' => 'lms_event_member_successinfo',
+        'event_promotion_otherinfo' => 'lms_event_promotion_otherinfo',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
@@ -302,8 +303,14 @@ class EventLectureModel extends WB_Model
             }
 
             // 프로모션 파일저장
-            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type), $ordering) === false) {
+            $promo_file_cnt = (empty($_FILES['attach_file_promotion']) === true) ? '0' : count($_FILES['attach_file_promotion']['name']);
+            if ($this->_addContentAttachByPromotion($el_idx, $promo_file_cnt, $ordering) === false) {
                 throw new \Exception('프로모션 파일 등록에 실패했습니다.');
+            }
+
+            // 프로모션 부가정보 저장
+            if ($this->_addPromotionOtherInfo($promotionCode, $input) === false) {
+                throw new \Exception('프로모션 상세설정 등록에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -391,6 +398,7 @@ class EventLectureModel extends WB_Model
     /**
      * 이벤트/설명회/특강관리 수정
      * @param array $input
+     * @param bool $promotion_modify_type
      * @return array|bool
      */
     public function modifyEventLecture($input = [], $promotion_modify_type = false)
@@ -520,6 +528,12 @@ class EventLectureModel extends WB_Model
                     }
                 }
             }
+
+            // 프로모션 부가정보 수정
+            if ($this->_addPromotionOtherInfo(element('promotion_code', $input), $input, 'modify') === false) {
+                throw new \Exception('프로모션 상세설정 등록에 실패했습니다.');
+            }
+            
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -627,7 +641,6 @@ class EventLectureModel extends WB_Model
     /**
      * 이벤트 접수관리(정원제한) 데이터 조회
      * @param $el_idx
-     * @param $LimitType
      * @return bool
      */
     public function listEventForRegister($el_idx)
@@ -995,6 +1008,55 @@ class EventLectureModel extends WB_Model
     }
 
     /**
+     * 프로모션 부가정보 리스트
+     * @param $promotion_code
+     * @return mixed
+     */
+    public function listEventPromotionForOther($promotion_code)
+    {
+        $column = '
+        A.EpoIdx, A.PromotionCode, A.ProfIdx, A.SubjectIdx, A.OtherData1, A.OtherData2, A.OtherData3,
+        A.FileFullPath, A.FileRealName, A.OrderNum, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+        G.SubjectName, H.ProfNickName
+        ';
+        $from = "
+            FROM {$this->_table['event_promotion_otherinfo']} AS A
+            LEFT OUTER JOIN {$this->_table['product_subject']} as G ON A.SubjectIdx = G.SubjectIdx
+            LEFT OUTER JOIN {$this->_table['professor']} as H ON A.ProfIdx = H.ProfIdx
+        ";
+        $where = ' where A.PromotionCode = ? and A.IsStatus = "Y"';
+        $order_by_offset_limit = ' order by A.OrderNum asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();
+    }
+
+    /**
+     * 프로모션 부가정보 단일 데이터 삭제
+     * @param $epo_idx
+     * @return array|bool
+     */
+    public function deletePromotionOtherInfo($epo_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx)->where('EpoIdx', $epo_idx);
+            if ($this->_conn->update($this->_table['event_promotion_otherinfo']) === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 이벤트 파일저장
      * @param $el_idx
      * @param $cnt
@@ -1050,6 +1112,7 @@ class EventLectureModel extends WB_Model
      * 프로모션 파일저장
      * @param $el_idx
      * @param $cnt
+     * @param $ordering
      * @return bool
      */
     private function _addContentAttachByPromotion($el_idx, $cnt, $ordering)
@@ -1059,7 +1122,8 @@ class EventLectureModel extends WB_Model
             $this->load->library('image_lib');*/
 
             $upload_dir = config_item('upload_prefix_dir') . '/promotion/' . date('Y') . '/' . date('md');
-            $uploaded = $this->upload->uploadFile('file', ['attach_file_promotion'], $this->_getAttachImgNames($cnt), $upload_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file_promotion'], $this->_getAttachImgNames($cnt, 'promotion'), $upload_dir);
+
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -1209,21 +1273,26 @@ class EventLectureModel extends WB_Model
     /**
      * 파일명 배열 생성
      * @param $cnt
+     * @param string $name_type
      * @return array
      */
-    private function _getAttachImgNames($cnt)
+    private function _getAttachImgNames($cnt, $name_type = 'event')
     {
         $attach_file_names = [];
         $temp_time = date('YmdHis');
         $postfix = '';
         for ($i = 0; $i < $cnt; $i++) {
-            if (empty($this->_set_attache_type[$i]) === false) {
-                if ($this->_set_attache_type[$i] == 'S' || $this->_set_attache_type[$i] == 'I') {
-                    $postfix = $this->_thumb_postfixs['S'];
+            if ($name_type == 'event') {
+                if (empty($this->_set_attache_type[$i]) === false) {
+                    if ($this->_set_attache_type[$i] == 'S' || $this->_set_attache_type[$i] == 'I') {
+                        $postfix = $this->_thumb_postfixs['S'];
+                    }
                 }
+                $attach_file_names[] = 'event_' . $i . '_' . $temp_time . $postfix;
+            } else {
+                $attach_file_names[] = 'event_' . $i . '_' . $temp_time;
             }
 
-            $attach_file_names[] = 'event_' . $i . '_' . $temp_time . $postfix;
         }
         return $attach_file_names;
     }
@@ -1488,5 +1557,78 @@ class EventLectureModel extends WB_Model
     {
         $row = $this->_conn->getFindResult($this->_table['event_lecture'], 'ifnull(max(PromotionCode) + 1, 1001) as PromotionCode');
         return $row['PromotionCode'];
+    }
+
+    /**
+     * 프로모션 부가정보 저장
+     * @param $promotionCode
+     * @param array $input
+     * @return array|bool
+     */
+    private function _addPromotionOtherInfo($promotionCode, $input = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            if(empty($input['epo_idx']) === false) {
+                //파일 저장
+                $upload_dir = config_item('upload_prefix_dir') . '/promotion/' . date('Y') . '/' . date('md') . '/other';
+                $promo_file_cnt = (empty($_FILES['other_attach_file']) === true) ? '0' : count($_FILES['other_attach_file']['name']);
+                $uploaded = $this->upload->uploadFile('file', ['other_attach_file'], $this->_getAttachImgNames($promo_file_cnt, 'promotion'), $upload_dir);
+                if (is_array($uploaded) === false) {
+                    throw new \Exception($uploaded);
+                }
+                $set_attach_data = [];
+                foreach ($uploaded as $idx => $attach_files) {
+                    if (empty($attach_files) === false) {
+                        $set_attach_data['FileFullPath'][$idx] = $this->upload->_upload_url . $upload_dir . '/' . $attach_files['orig_name'];
+                        $set_attach_data['FileRealName'][$idx] = $attach_files['client_name'];
+                    }
+                }
+
+                /**
+                 * 프로모션 부가정보 저장
+                 * epo_idx 값으로 insert, update 구분
+                 */
+
+                foreach ($input['epo_idx'] as $key => $val) {
+                    $inputData['PromotionCode'] = $promotionCode;
+                    $inputData['ProfIdx'] = (empty($input['other_prof_idx'][$key]) === false) ? $input['other_prof_idx'][$key] : null;
+                    $inputData['SubjectIdx'] = (empty($input['other_subject_idx'][$key]) === false) ? $input['other_subject_idx'][$key] : null;
+                    $inputData['OtherData1'] = (empty($input['other_data_1'][$key]) === false) ? $input['other_data_1'][$key] : null;
+                    $inputData['OtherData2'] = (empty($input['other_data_2'][$key]) === false) ? $input['other_data_2'][$key] : null;
+                    $inputData['OtherData3'] = (empty($input['other_data_3'][$key]) === false) ? $input['other_data_3'][$key] : null;       //여분필드
+                    $inputData['OrderNum'] = (empty($input['other_order_num'][$key]) === false) ? $input['other_order_num'][$key] : null;
+
+                    if(empty($set_attach_data['FileFullPath'][$key]) === false) {
+                        $inputData['FileFullPath'] = $set_attach_data['FileFullPath'][$key];
+                        $inputData['FileRealName'] = $set_attach_data['FileRealName'][$key];
+                    }
+
+                    if (empty($val) === true) {
+                        $inputData['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                        if ($this->_conn->set($inputData)->insert($this->_table['event_promotion_otherinfo']) === false) {
+                            throw new \Exception('fail');
+                        }
+                    } else {
+                        //기존파일삭제
+                        if(empty($input['other_file_full_path'][$key]) === false) {
+                            $this->load->helper('file');
+                            $file_path = public_to_upload_path(urldecode($input['other_file_full_path'][$key]));
+                            if (@unlink($file_path) === false) {
+                                /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
+                            }
+                        }
+
+                        $inputData['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+                        if ($this->_conn->set($inputData)->where('EpoIdx', $val)->update($this->_table['event_promotion_otherinfo']) === false) {
+                            throw new \Exception('프로모션 부가정보 수정에 실패했습니다.');
+                        }
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
     }
 }

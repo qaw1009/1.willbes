@@ -18,10 +18,7 @@
                     <li role="presentation" class="active"><a href="#">입력 데이터</a></li>
                 </ul>
             </div>
-            <div class="col-md-1 form-inline">
-                <!-- //tab -->
-                <p><a href="javascript:window.print()" class="btn btn-default" role="button">출력</a></p>
-            </div>
+            
         </div>
         <div class="form-group">
             <div class="col-md-12">

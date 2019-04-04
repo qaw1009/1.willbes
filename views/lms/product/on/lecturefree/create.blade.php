@@ -168,13 +168,14 @@
                             </select>
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="unitNumberCount">강의회차/강의수 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="unitNumberCount">강의수/예정강의수 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item">
                         <div class="item inline-block">
-                            [회차] <input type="text" name="unitNumCount" id="unitNumCount" value="{{$data['wUnitCnt']}}" required="required" class="form-control" title="회차" style="width:70px;" readonly> 회
-                            &nbsp;&nbsp;&nbsp;
+                            <!--[회차] <input type="text" name="unitNumCount" id="unitNumCount" value="{{$data['wUnitCnt']}}" required="required" class="form-control" title="회차" style="width:70px;" readonly> 회//-->
                             [강의수] <input type="text" name="unitNumLectureCount" id="unitNumLectureCount" value="{{$data['wUnitLectureCnt']}}" required="required" class="form-control" title="강의수" style="width:70px;" readonly> 강
+                            &nbsp;&nbsp;
+                            [예정강의수] <input type="text" name="wScheduleCount" id="wScheduleCount" value="{{$data['wScheduleCount']}}" required="required" class="form-control" title="예상강의수" style="width:70px;" readonly> 강
                         </div>
                     </div>
                 </div>
@@ -688,7 +689,7 @@
             $("#searchMasterLecture").on('click', function () {
                 $("#searchMasterLecture").setLayer({
                     'url': '{{ site_url('/common/searchWMasterLecture/index/') }}'
-                    , 'width': 1100
+                    , 'width': 1500
                 });
             });
 
@@ -700,7 +701,7 @@
                 }
                 $('#searchMasterLectureUnit').setLayer({
                     'url': '{{ site_url('common/searchWMasterLecture/unit/') }}' + $('#wLecIdx').val()
-                    , 'width': 1200
+                    , 'width': 1500
                 })
             });
 

@@ -321,7 +321,7 @@
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchLectureBlend/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id.replace('Add','')
-                    ,'width' : 1200
+                    ,'width' : 1300
                 })
             });
 

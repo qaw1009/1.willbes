@@ -167,13 +167,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="unitNumberCount">강의회차/강의수 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="unitNumberCount">강의수/예정강의수 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            [회차] <input type="text" name="unitNumCount" id="unitNumCount" value="{{$data['wUnitCnt']}}" required="required" class="form-control" title="회차" style="width:70px;" readonly> 회
-                            &nbsp;&nbsp;&nbsp;
+                            <!--[회차] <input type="text" name="unitNumCount" id="unitNumCount" value="{{$data['wUnitCnt']}}" required="required" class="form-control" title="회차" style="width:70px;" readonly> 회//-->
                             [강의수] <input type="text" name="unitNumLectureCount" id="unitNumLectureCount" value="{{$data['wUnitLectureCnt']}}" required="required" class="form-control" title="강의수" style="width:70px;" readonly> 강
+                            &nbsp;&nbsp;
+                            [예정강의수] <input type="text" name="wScheduleCount" id="wScheduleCount" value="{{$data['wScheduleCount']}}" required="required" class="form-control" title="예상강의수" style="width:70px;" readonly> 강
                         </div>
                     </div>
                 </div>
@@ -806,7 +807,7 @@
                                     <td>{{$row['SubjectName']}}</td>
                                     <td>{{$row['wProfName_String']}}</td>
                                     <td style='text-align:left'>{{$row['ProdName']}}</td>
-                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitCnt']}}/{{$row['wUnitLectureCnt']}})</td>
+                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitLectureCnt']}}@if(empty($row['wScheduleCount']) == false)/{{$row['wScheduleCount']}}@endif)</td>
                                     <td>{{number_format($row['RealSalePrice'])}}원</td>
                                     <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>
                                     <td><a href='javascript:;' onclick="rowDelete('lecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
@@ -1123,7 +1124,7 @@
             $("#searchMasterLecture").on('click', function () {
                 $("#searchMasterLecture").setLayer({
                     'url': '{{ site_url('/common/searchWMasterLecture/index/') }}'
-                    , 'width': 1100
+                    , 'width': 1500
                 });
             });
 
@@ -1135,7 +1136,7 @@
                 }
                 $('#searchMasterLectureUnit').setLayer({
                     'url': '{{ site_url('common/searchWMasterLecture/unit/') }}' + $('#wLecIdx').val()
-                    , 'width': 1200
+                    , 'width': 1500
                 })
             });
 
@@ -1269,7 +1270,7 @@
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()
-                    ,'width' : 1300
+                    ,'width' : 1500
                 })
             });
 

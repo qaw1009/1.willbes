@@ -219,7 +219,7 @@
                                                             <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
-                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강</span></dt>
+                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if(empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 :
                                                         @if(empty($sub_row['ProdPriceData']) === false)
@@ -236,8 +236,6 @@
                                                     </dt>
                                                 </dl>
                                             </td>
-
-
                                             <td class="w-notice p_re">
                                                 @if(empty($sub_row['LectureSampleData']) === false)
                                                     <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기</a></div>
@@ -357,7 +355,7 @@
                                                             <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
-                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강</span></dt>
+                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if(empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 :
                                                         @if(empty($sub_row['ProdPriceData']) === false)

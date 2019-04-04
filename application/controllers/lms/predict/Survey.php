@@ -224,8 +224,41 @@ class Survey extends \app\controllers\BaseController
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $spidx = element('spidx',$arr_input);
+
+        $res = $this->predictModel->answerCallDetail($spidx);
+
+        $res2 = $this->predictModel->questionSetAll($spidx);
+        $questionSet = array();
+        foreach ($res2 as $key => $val){
+            $sqidx = $val['SqIdx'];
+            for($i = 1; $i <= 25; $i++){
+                $str = 'Comment'.$i;
+                $questionSet[$sqidx][$str] = $val[$str];
+            }
+        }
+
+        foreach ($res as $key => $val){
+            if($val['TYPE'] == 'S'||$val['TYPE'] == 'T'){
+                $Answer = $val['Answer'];
+                $arrAnswer = explode('/',$Answer);
+                $ResStr = "";
+                for($i=0; $i < count($arrAnswer); $i++){
+                    $num = $arrAnswer[$i];
+                    $sqidx = $val['SqIdx'];
+                    $str = 'Comment'.$num;
+                    $ResStr .= trim($questionSet[$sqidx][$str]).",";
+                }
+                $ResStr = substr($ResStr, 0, strlen($ResStr) - 1);
+                $res[$key]['ResStr'] = $ResStr;
+            } else {
+                $res[$key]['ResStr'] = $val['Comment'];
+            }
+        }
+
         $this->load->view('predict/survey/winpopup_survey_data', [
-            'spidx' => $spidx
+            'spidx' => $spidx,
+            'data' => $res,
+            'questionSet' => $questionSet
         ]);
     }
 

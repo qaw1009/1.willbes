@@ -150,9 +150,39 @@ class PredictModel extends WB_Model
                 LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
         ";
 
-        $obder_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
+        $order_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
         $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T')";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    /**
+     * 설문결과상세
+     */
+    public function answerCallDetail($idx)
+    {
+        $column = "
+            sa.SaIdx, SubTitle, sa.SqIdx, Answer, sa.Comment, sa.TYPE, si.MemIdx, lm.MemName, lm.MemId, si.RegDatm
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyProduct']} AS sp
+                JOIN {$this->_table['surveyAnswer']} AS si ON sp.SpIdx = si.SpIdx
+                JOIN {$this->_table['member']} AS lm ON si.MemIdx = lm.MemIdx
+                JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx = sa.SaIdx
+                LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
+        ";
+
+        $order_by = " ORDER BY si.SaIdx, si.MemIdx, sr.GroupNumber ASC, sa.SqIdx ASC";
+        $where = " WHERE sp.SpIdx = " . $idx;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
 
         return $Res;
@@ -173,10 +203,33 @@ class PredictModel extends WB_Model
                 {$this->_table['surveyQuestion']} 
         ";
 
-        $obder_by = " ";
+        $order_by = " ";
         $where = " WHERE SqIdx = " . $idx;
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
+
+        return $Res;
+    }
+
+    /**
+     * 문항코멘트
+     */
+    public function questionSetAll($idx){
+        $column = "
+            sq.*
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyProduct']} AS sp
+                JOIN {$this->_table['surveyQuestionSetDetail']} AS qs ON sp.SqsIdx = qs.SqsIdx
+                JOIN {$this->_table['surveyQuestion']} AS sq ON qs.SqIdx = sq.SqIdx
+        ";
+
+        $order_by = " ORDER BY SqIdx ";
+        $where = " WHERE sp.SpIdx = " . $idx;
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
 
         return $Res;
     }
@@ -407,10 +460,10 @@ class PredictModel extends WB_Model
                 {$this->_table['surveyQuestion']} 
         ";
 
-        $obder_by = " ";
+        $order_by = " ";
         $where = " WHERE SqIdx = ".$idx;
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
 
         return $Res;
@@ -442,10 +495,10 @@ class PredictModel extends WB_Model
                 {$this->_table['surveyQuestion']} 
         ";
 
-        $obder_by = " ";
+        $order_by = " ";
         $where = " WHERE SqUseYn = 'Y' ";
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
 
         return $Res;
@@ -465,10 +518,10 @@ class PredictModel extends WB_Model
                 JOIN {$this->_table['surveyQuestionSetDetail']} AS sqsd ON sqs.SqsIdx = sqsd.SqsIdx
         ";
 
-        $obder_by = " ORDER BY Ordering ASC";
+        $order_by = " ORDER BY Ordering ASC";
         $where = " WHERE sqs.SqsIdx = ".$idx;
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
 
         return $Res;
@@ -487,10 +540,10 @@ class PredictModel extends WB_Model
                 {$this->_table['surveyProduct']} 
         ";
 
-        $obder_by = " ";
+        $order_by = " ";
         $where = " WHERE SpIdx = ".$idx;
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
 
         return $Res;
@@ -510,10 +563,10 @@ class PredictModel extends WB_Model
                 JOIN {$this->_table['surveyQuestionSetDetail']} AS sqsd ON sqs.SqsIdx = sqsd.SqsIdx
         ";
 
-        $obder_by = " GROUP BY sqs.SqsIdx";
+        $order_by = " GROUP BY sqs.SqsIdx";
         $where = " WHERE sqs.`SqsUseYn` = 'Y'";
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
 
         return $Res;

@@ -56,7 +56,9 @@
                                     <strong>윌비스 임용</strong>
                                 </div>
                             </a>
-                        </li>
+                        </li>                        
+                    </ul>
+                    <ul>
                         <li>
                             <a href="http://www.hanlimgosi.co.kr" target="_blank">
                                 <div class="wTit">
@@ -67,9 +69,7 @@
                                     <strong>윌비스 한림법학원</strong>
                                 </div>
                             </a>
-                        </li>
-                    </ul>
-                    <ul>
+                        </li>    
                         <li>
                             <a href="http://value.willbes.net" target="_blank">
                                 <div class="wTit">
@@ -102,7 +102,9 @@
                                     <strong>윌비스 패스하자</strong>
                                 </div>
                             </a>
-                        </li>
+                        </li>                        
+                    </ul>
+                    <ul>
                         <li>
                             <a href="http://www.willpass.co.kr" target="_blank">
                                 <div class="wTit">
@@ -113,9 +115,7 @@
                                     <strong>윌패스</strong>
                                 </div>
                             </a>
-                        </li>
-                    </ul>
-                    <ul>
+                        </li>    
                         <li>
                             <a href="http://lang.willbes.net" target="_blank">
                                 <div class="wTit">
@@ -149,6 +149,8 @@
                                 </div>
                             </a>
                         </li>
+                    </ul>
+                    <ul>
                         <li>
                             <a href="http://willbesedu.or.kr" target="_blank">
                                 <div class="wTit">

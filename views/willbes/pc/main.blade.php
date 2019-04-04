@@ -8,10 +8,10 @@
                 <a href="{{ site_url('/member/join/') }}" target="_blank"><img src="{{ img_url('main/visual/visualTop.jpg') }}" title="통합회원 가입, 한번이면 OK"></a>
             </div>
         </div>
-        <div class="Section Act1 NGR mb50">
+        <div class="Section Act1 mb50">
             <div class="widthAuto">
                 <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
-                <div class="ProcessBox">
+                <div class="ProcessBox NGR">
                     <ul>
                         <li>
                             <a href="{{ app_url('/home/index/cate/3019', 'pass') }}" target="_blank">

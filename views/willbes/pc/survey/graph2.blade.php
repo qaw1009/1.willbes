@@ -30,45 +30,15 @@
             <div>
                 <div class="graphbox">
                     @if(empty($resSet)===false)
+                        @for($i=1; $i <= $resSet[0]['CNT']; $i++)
                         <div class="graph">
-                            <p> {{ $resSet[0]['Answer1'] }} %</p>
+                            <p> {{ $resSet[0]['Answer'.$i] }} %</p>
                             <div>
-                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{$resSet[0]['Answer1'] }}%">
+                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{$resSet[0]['Answer'.$i] }}%">
                             </div>
-                            <p>매우 쉬움</p>
+                            <p>{{ $questionSet[0]['Comment'.$i] }}</p>
                         </div>
-
-                        <div class="graph">
-                            <p>{{ $resSet[0]['Answer2'] }} %</p>
-                            <div>
-                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer2'] }}%">
-                            </div>
-                            <p>쉬움</p>
-                        </div>
-
-                        <div class="graph">
-                            <p>{{ $resSet[0]['Answer3'] }} %</p>
-                            <div>
-                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer3'] }}%">
-                            </div>
-                            <p>보통</p>
-                        </div>
-
-                        <div class="graph">
-                            <p>{{ $resSet[0]['Answer4'] }} %</p>
-                            <div>
-                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer4'] }}%">
-                            </div>
-                            <p>어려움</p>
-                        </div>
-
-                        <div class="graph">
-                            <p>{{ $resSet[0]['Answer5'] }} %</p>
-                            <div>
-                                <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[0]['Answer5'] }}%">
-                            </div>
-                            <p>매우 어려움</p>
-                        </div>
+                        @endfor
                     @else
                         <div class="graph">
                             <p> 0 %</p>
@@ -120,7 +90,7 @@
                 <select title="과목선택" onchange="fn_sel(this)">
                     @if(empty($resSet)===false)
                         @for($i=1; $i < count($titleSet); $i++)
-                        <option value="{{ $numberSet[$i] }}/{{ $titleSet[$i] }}">{{ $titleSet[$i] }}</option>
+                            @if($typeSet[$i] == 'S') <option value="{{ $numberSet[$i] }}/{{ $titleSet[$i] }}">{{ $titleSet[$i] }}</option> @endif
                         @endfor
                     @endif
                 </select>
@@ -128,45 +98,18 @@
                     @if(empty($resSet)===false)
                     @for($i=1; $i < count($titleSet); $i++)
                         <div id="div{{ $i }}" class="graphbox" @if($i != 1) style="display:none;" @endif>
-                            <div class="graph graph2">
-                                <p>{{ $resSet[$i]['Answer1'] }}%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer1'] }}%">
+                            @for($j=1; $j <= $resSet[$i]['CNT']; $j++)
+                                @if($typeSet[$i] == 'S')
+                                <div class="graph graph2">
+                                    <p>{{ $resSet[$i]['Answer'.$j] }}%</p>
+                                    <div>
+                                        <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer'.$j] }}%">
+                                    </div>
+                                    <p>{{ $questionSet[$i]['Comment'.$j] }}</p>
                                 </div>
-                                <p>매우 쉬움</p>
-                            </div>
+                                @endif
+                            @endfor
 
-                            <div class="graph graph2">
-                                <p>{{ $resSet[$i]['Answer2'] }}%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer2'] }}%">
-                                </div>
-                                <p>쉬움</p>
-                            </div>
-
-                            <div class="graph graph2">
-                                <p>{{ $resSet[$i]['Answer3'] }}%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer3'] }}%">
-                                </div>
-                                <p>보통</p>
-                            </div>
-
-                            <div class="graph graph2">
-                                <p>{{ $resSet[$i]['Answer4'] }}%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer4'] }}%">
-                                </div>
-                                <p>어려움</p>
-                            </div>
-
-                            <div class="graph graph2">
-                                <p>{{ $resSet[$i]['Answer5'] }}%</p>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer5'] }}%">
-                                </div>
-                                <p>매우 어려움</p>
-                            </div>
                         </div>
                     @endfor
                     @else
@@ -224,7 +167,7 @@
         var seltxt = obj.value;
         var arrTxt = seltxt.split('/');
 
-        for(var i=1; i <= 10; i++){
+        for(var i=1; i <= 25; i++){
             $('#div'+i).hide();
         }
 

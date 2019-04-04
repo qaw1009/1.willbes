@@ -114,6 +114,121 @@ class Survey extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 설문결과
+     */
+    public function surveyResult()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $spidx = element('spidx',$arr_input);
+
+        $res = $this->predictModel->answerCall($spidx);
+
+        $tempSq = '';
+        $temptitle = '';
+        $tempType = '';
+        $tempCNT = '';
+        $resSet = array();
+        $titleSet = array();
+        $numberSet = array();
+        $questionSet = array();
+        $typeSet = array();
+        for($i = 1; $i <= 25; $i++){
+            ${"num".$i} = 0;
+        }
+
+        $resCnt = count($res);
+        $defnum = 0;
+        foreach ($res as $key => $val){
+            $SqIdx = $val['SqIdx'];
+            $CNT = $val['CNT'];
+            $Answer = $val['Answer'];
+            $j = $key + 1;
+
+            if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
+
+                $tnum = 0;
+
+                for($i = 1; $i <= $tempCNT; $i++) {
+                    $tnum = $tnum + ${"num".$i};
+                }
+                $resSet[$defnum]['SubTitle'] = $temptitle;
+                for($i = 1; $i <= $tempCNT; $i++){
+                    $resSet[$defnum]['Answer'.$i] = ($num1 > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
+                }
+                for($i = 1; $i <= $CNT; $i++){
+                    if($Answer == $i){
+                        if($val['Type'] == 'S') {
+                            ${"num" . $i} = 1;
+                        } else {
+                            $AnswerArr = explode('/',$Answer);
+                            for($i = 1; $i <= $CNT; $i++){
+                                ${"num".$i} = 0;
+                                for($j = 0; $j < count($AnswerArr); $j++){
+                                    if($AnswerArr[$j] == $i){
+                                        ${"num".$i}++;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if($val['Type'] == 'S') ${"num".$i} = 0;
+                    }
+                }
+
+                $resSet[$defnum]['CNT'] = $tempCNT;
+                $titleSet[] = $temptitle;
+                $numberSet[] = $defnum;
+                $typeSet[] = $tempType;
+                $questionSet[] = $this->predictModel->questionSet($tempSq);
+                $defnum++;
+            } else {
+                if($val['Type'] == 'S'){
+
+                    for($i = 1; $i <= $CNT; $i++){
+                        if($Answer == $i) ${"num".$i}++;
+                    }
+                } else {
+                    //TYPE == 'T'
+                    $AnswerArr = explode('/',$Answer);
+                    for($i = 1; $i <= $CNT; $i++){
+                        for($j = 0; $j < count($AnswerArr); $j++){
+                            if($AnswerArr[$j] == $i){
+                                ${"num".$i}++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            $tempSq = $SqIdx;
+            $tempType = $val['Type'];
+            $temptitle = $val['SubTitle'];
+            $tempCNT = $CNT;
+        }
+
+        $this->load->view('predict/survey/winpopup_survey_result', [
+            'spidx' => $spidx,
+            'resSet' => $resSet,
+            'titleSet' => $titleSet,
+            'typeSet' => $typeSet,
+            'questionSet' => $questionSet,
+            'numberSet' => $numberSet
+        ]);
+    }
+
+    /**
+     * 설문응답데이터
+     */
+    public function surveyData()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $spidx = element('spidx',$arr_input);
+        $this->load->view('predict/survey/winpopup_survey_data', [
+            'spidx' => $spidx
+        ]);
+    }
+
 
     /**
      * 질문등록
@@ -238,6 +353,22 @@ class Survey extends \app\controllers\BaseController
         $Comment8  = element('Comment8',$arr_input);
         $Comment9  = element('Comment9',$arr_input);
         $Comment10 = element('Comment10',$arr_input);
+        $Comment11 = element('Comment11',$arr_input);
+        $Comment12 = element('Comment12',$arr_input);
+        $Comment13 = element('Comment13',$arr_input);
+        $Comment14 = element('Comment14',$arr_input);
+        $Comment15 = element('Comment15',$arr_input);
+        $Comment16 = element('Comment16',$arr_input);
+        $Comment17 = element('Comment17',$arr_input);
+        $Comment18 = element('Comment18',$arr_input);
+        $Comment19 = element('Comment19',$arr_input);
+        $Comment20 = element('Comment20',$arr_input);
+        $Comment21 = element('Comment21',$arr_input);
+        $Comment22 = element('Comment22',$arr_input);
+        $Comment23 = element('Comment23',$arr_input);
+        $Comment24 = element('Comment24',$arr_input);
+        $Comment25 = element('Comment25',$arr_input);
+
         $Hint1     = element('Hint1',$arr_input);
         $Hint2     = element('Hint2',$arr_input);
         $Hint3     = element('Hint3',$arr_input);
@@ -248,6 +379,21 @@ class Survey extends \app\controllers\BaseController
         $Hint8     = element('Hint8',$arr_input);
         $Hint9     = element('Hint9',$arr_input);
         $Hint10    = element('Hint10',$arr_input);
+        $Hint11    = element('Hint11',$arr_input);
+        $Hint12    = element('Hint12',$arr_input);
+        $Hint13    = element('Hint13',$arr_input);
+        $Hint14    = element('Hint14',$arr_input);
+        $Hint15    = element('Hint15',$arr_input);
+        $Hint16    = element('Hint16',$arr_input);
+        $Hint17    = element('Hint17',$arr_input);
+        $Hint18    = element('Hint18',$arr_input);
+        $Hint19    = element('Hint19',$arr_input);
+        $Hint20    = element('Hint20',$arr_input);
+        $Hint21    = element('Hint21',$arr_input);
+        $Hint22    = element('Hint22',$arr_input);
+        $Hint23    = element('Hint23',$arr_input);
+        $Hint24    = element('Hint24',$arr_input);
+        $Hint25    = element('Hint25',$arr_input);
         $SqUseYn   = element('SqUseYn',$arr_input);
         $Cnt       = element('Cnt',$arr_input);
 
@@ -265,6 +411,21 @@ class Survey extends \app\controllers\BaseController
             'Comment8'      => addslashes($Comment8),
             'Comment9'      => addslashes($Comment9),
             'Comment10'     => addslashes($Comment10),
+            'Comment11'     => addslashes($Comment11),
+            'Comment12'     => addslashes($Comment12),
+            'Comment13'     => addslashes($Comment13),
+            'Comment14'     => addslashes($Comment14),
+            'Comment15'     => addslashes($Comment15),
+            'Comment16'     => addslashes($Comment16),
+            'Comment17'     => addslashes($Comment17),
+            'Comment18'     => addslashes($Comment18),
+            'Comment19'     => addslashes($Comment19),
+            'Comment20'     => addslashes($Comment20),
+            'Comment21'     => addslashes($Comment21),
+            'Comment22'     => addslashes($Comment22),
+            'Comment23'     => addslashes($Comment23),
+            'Comment24'     => addslashes($Comment24),
+            'Comment25'     => addslashes($Comment25),
             'Hint1'         => addslashes($Hint1),
             'Hint2'         => addslashes($Hint2),
             'Hint3'         => addslashes($Hint3),
@@ -275,6 +436,21 @@ class Survey extends \app\controllers\BaseController
             'Hint8'         => addslashes($Hint8),
             'Hint9'         => addslashes($Hint9),
             'Hint10'        => addslashes($Hint10),
+            'Hint11'        => addslashes($Hint11),
+            'Hint12'        => addslashes($Hint12),
+            'Hint13'        => addslashes($Hint13),
+            'Hint14'        => addslashes($Hint14),
+            'Hint15'        => addslashes($Hint15),
+            'Hint16'        => addslashes($Hint16),
+            'Hint17'        => addslashes($Hint17),
+            'Hint18'        => addslashes($Hint18),
+            'Hint19'        => addslashes($Hint19),
+            'Hint20'        => addslashes($Hint20),
+            'Hint21'        => addslashes($Hint21),
+            'Hint22'        => addslashes($Hint22),
+            'Hint23'        => addslashes($Hint23),
+            'Hint24'        => addslashes($Hint24),
+            'Hint25'        => addslashes($Hint25),
             'SqUseYn'       => $SqUseYn,
             'Cnt'           => $Cnt,
         );
@@ -310,6 +486,22 @@ class Survey extends \app\controllers\BaseController
         $Comment8  = element('Comment8',$arr_input);
         $Comment9  = element('Comment9',$arr_input);
         $Comment10 = element('Comment10',$arr_input);
+        $Comment11 = element('Comment11',$arr_input);
+        $Comment12 = element('Comment12',$arr_input);
+        $Comment13 = element('Comment13',$arr_input);
+        $Comment14 = element('Comment14',$arr_input);
+        $Comment15 = element('Comment15',$arr_input);
+        $Comment16 = element('Comment16',$arr_input);
+        $Comment17 = element('Comment17',$arr_input);
+        $Comment18 = element('Comment18',$arr_input);
+        $Comment19 = element('Comment19',$arr_input);
+        $Comment20 = element('Comment20',$arr_input);
+        $Comment21 = element('Comment21',$arr_input);
+        $Comment22 = element('Comment22',$arr_input);
+        $Comment23 = element('Comment23',$arr_input);
+        $Comment24 = element('Comment24',$arr_input);
+        $Comment25 = element('Comment25',$arr_input);
+
         $Hint1     = element('Hint1',$arr_input);
         $Hint2     = element('Hint2',$arr_input);
         $Hint3     = element('Hint3',$arr_input);
@@ -320,6 +512,21 @@ class Survey extends \app\controllers\BaseController
         $Hint8     = element('Hint8',$arr_input);
         $Hint9     = element('Hint9',$arr_input);
         $Hint10    = element('Hint10',$arr_input);
+        $Hint11    = element('Hint11',$arr_input);
+        $Hint12    = element('Hint12',$arr_input);
+        $Hint13    = element('Hint13',$arr_input);
+        $Hint14    = element('Hint14',$arr_input);
+        $Hint15    = element('Hint15',$arr_input);
+        $Hint16    = element('Hint16',$arr_input);
+        $Hint17    = element('Hint17',$arr_input);
+        $Hint18    = element('Hint18',$arr_input);
+        $Hint19    = element('Hint19',$arr_input);
+        $Hint20    = element('Hint20',$arr_input);
+        $Hint21    = element('Hint21',$arr_input);
+        $Hint22    = element('Hint22',$arr_input);
+        $Hint23    = element('Hint23',$arr_input);
+        $Hint24    = element('Hint24',$arr_input);
+        $Hint25    = element('Hint25',$arr_input);
         $SqUseYn   = element('SqUseYn',$arr_input);
         $Cnt       = element('Cnt',$arr_input);
 
@@ -337,6 +544,21 @@ class Survey extends \app\controllers\BaseController
             'Comment8'      => addslashes($Comment8),
             'Comment9'      => addslashes($Comment9),
             'Comment10'     => addslashes($Comment10),
+            'Comment11'     => addslashes($Comment11),
+            'Comment12'     => addslashes($Comment12),
+            'Comment13'     => addslashes($Comment13),
+            'Comment14'     => addslashes($Comment14),
+            'Comment15'     => addslashes($Comment15),
+            'Comment16'     => addslashes($Comment16),
+            'Comment17'     => addslashes($Comment17),
+            'Comment18'     => addslashes($Comment18),
+            'Comment19'     => addslashes($Comment19),
+            'Comment20'     => addslashes($Comment20),
+            'Comment21'     => addslashes($Comment21),
+            'Comment22'     => addslashes($Comment22),
+            'Comment23'     => addslashes($Comment23),
+            'Comment24'     => addslashes($Comment24),
+            'Comment25'     => addslashes($Comment25),
             'Hint1'         => addslashes($Hint1),
             'Hint2'         => addslashes($Hint2),
             'Hint3'         => addslashes($Hint3),
@@ -347,6 +569,21 @@ class Survey extends \app\controllers\BaseController
             'Hint8'         => addslashes($Hint8),
             'Hint9'         => addslashes($Hint9),
             'Hint10'        => addslashes($Hint10),
+            'Hint11'        => addslashes($Hint11),
+            'Hint12'        => addslashes($Hint12),
+            'Hint13'        => addslashes($Hint13),
+            'Hint14'        => addslashes($Hint14),
+            'Hint15'        => addslashes($Hint15),
+            'Hint16'        => addslashes($Hint16),
+            'Hint17'        => addslashes($Hint17),
+            'Hint18'        => addslashes($Hint18),
+            'Hint19'        => addslashes($Hint19),
+            'Hint20'        => addslashes($Hint20),
+            'Hint21'        => addslashes($Hint21),
+            'Hint22'        => addslashes($Hint22),
+            'Hint23'        => addslashes($Hint23),
+            'Hint24'        => addslashes($Hint24),
+            'Hint25'        => addslashes($Hint25),
             'SqUseYn'       => $SqUseYn,
             'Cnt'           => $Cnt,
         );

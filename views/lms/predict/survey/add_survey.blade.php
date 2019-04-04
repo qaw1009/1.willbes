@@ -29,9 +29,10 @@
                     <tr>
                         <th class="text-center" style="width:5%">NO</th>
                         <th class="text-center">제목</th>
-                        <th class="text-center" style="width:20%">설문팝업링크</th>
-                        <th class="text-center" style="width:20%">그래프추가시</th>
-                        <th class="text-center" style="width:20%">시작일 / 종료일</th>
+                        <th class="text-center" style="width:18%">설문팝업링크</th>
+                        <th class="text-center" style="width:18%">그래프추가시</th>
+                        <th class="text-center" style="width:18%">시작일 / 종료일</th>
+                        <th class="text-center" style="width:8%">결과</th>
                         <th class="text-center" style="width:5%">사용유무</th>
                     </tr>
 
@@ -94,6 +95,10 @@
                             return date;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            var date = row.CNT > 0 ? '<button class="btn btn-sm btn-primary act-move" onClick="popResult(' + row.SpIdx + ')">' + row.CNT + '</button>' : row.CNT;
+                            return date;
+                        }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             var SpUseYn = (row.SpUseYn === 'Y') ? '<span>사용</span>' : '<span class="red">미사용</span>';
                             return SpUseYn;
                         }},
@@ -106,7 +111,22 @@
                 location.href = '{{ site_url('/predict/survey/surveyCreate') }}' + query + '&idx=' + $(this).closest('tr').find('[name=target]').val();
             });
 
+
+
         });
+
+        function popResult(idx){
+
+            var uri_param;
+
+            uri_param = 'spidx=' + idx;
+
+            var _url = '{{ site_url('/predict/survey/surveyResult') }}' + '?' + uri_param;
+
+            win = window.open(_url, 'surveyPopup', 'width=1100, height=845, scrollbars=yes, resizable=yes');
+            win.focus();
+
+        }
 
         function addquestionCreate(){
             location.href = '{{ site_url('/predict/survey/surveyCreate') }}';

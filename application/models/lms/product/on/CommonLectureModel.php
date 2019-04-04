@@ -43,7 +43,7 @@ class CommonLectureModel extends WB_Model
     {
         $column = 'A.*,B.*
                         ,Ba.wLecName,Ba.wCpName,Ba.wShootingCcd_Name,Ba.wProgressCcd_Name,Ba.wMakeYM,Ba.wAttachFileReal,Ba.wAttachFile,Ba.wAttachPath
-                        ,Ba.wUnitCnt,Ba.wUnitLectureCnt
+                        ,Ba.wUnitCnt,Ba.wUnitLectureCnt,Ba.wScheduleCount
                         ,C.CateCode,Ca.CateName,Ca.CateRouteName
                         ,D.wAdminName as RegAdminName,E.wAdminName as UpdAdminName
                         ,fn_dec(FreeLecPasswd) as FreeLecPasswd '
@@ -160,7 +160,7 @@ class CommonLectureModel extends WB_Model
                                     ,B.MultipleApply
                                     ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                                     ,Bd.CcdName as LecTypeCcd_Name
-                                    ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
+                                    ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt, Be.wScheduleCount
                                     ,C.CateCode
                                     ,Ca.CateName, Cb.CateName as CateName_Parent
                                     ,D.SalePrice, D.RealSalePrice
@@ -242,7 +242,7 @@ class CommonLectureModel extends WB_Model
                             ,B.SchoolStartYear,B.SchoolStartMonth,B.IsLecOpen,B.AcceptStatusCcd
                             ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                             ,Bd.CcdName as LecTypeCcd_Name
-                            ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
+                            ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt,Be.wScheduleCount
                             ,Bg.CcdName as CampusCcd_Name
                             ,Bh.CcdName as AcceptStatusCcd_Name
                             ,C.CateCode

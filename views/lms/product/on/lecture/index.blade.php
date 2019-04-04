@@ -224,7 +224,7 @@
                         }},//단강좌명
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.wProgressCcd_Name+'<BR>('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')';
+                            return row.wProgressCcd_Name+'<BR>('+row.wUnitLectureCnt+ (row.wScheduleCount == null ? '' : '/'+row.wScheduleCount)+')';
                         }},//진행상태
 
                     {'data' : null, 'render' : function(data, type, row, meta) {

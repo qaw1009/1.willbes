@@ -122,7 +122,7 @@
                                     <img src="{{ img_url('main/icon_willbes8.png') }}"> 어학
                                 </div>
                                 <div class="wTxt">
-                                    토익/텝스/지텔프/영어/지2외국어<br/>
+                                    토익/텝스/지텔프/영어/제2외국어<br/>
                                     <strong>윌비스랑</strong>
                                 </div>
                             </a>

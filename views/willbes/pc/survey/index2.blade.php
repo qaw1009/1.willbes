@@ -46,7 +46,7 @@
                             <input type="hidden" name="totalType[]" value="{{ trim($val3['Type']) }}" />
                             @if(trim($val3['Type']) == 'S')
                                 @for($i = 1; $i <= 25; $i++)
-                                    @if(empty(trim($val3['Comment'.$i]))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_1" value="1" /> {{ trim($val3['Comment1']) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
+                                    @if(empty(trim($val3['Comment'.$i]))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_1" value="1" /> {{ trim($val3['Comment'.$i]) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
                                 @endfor
 
                             @elseif(trim($val3['Type']) == 'M')

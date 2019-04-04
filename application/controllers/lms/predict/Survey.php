@@ -148,13 +148,16 @@ class Survey extends \app\controllers\BaseController
             if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
 
                 $tnum = 0;
+                if($resCnt == $j){
+                    ${"num".$Answer}++;
+                }
 
                 for($i = 1; $i <= $tempCNT; $i++) {
                     $tnum = $tnum + ${"num".$i};
                 }
                 $resSet[$defnum]['SubTitle'] = $temptitle;
                 for($i = 1; $i <= $tempCNT; $i++){
-                    $resSet[$defnum]['Answer'.$i] = ($num1 > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
+                    $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
                 }
                 for($i = 1; $i <= $CNT; $i++){
                     if($Answer == $i){
@@ -206,7 +209,7 @@ class Survey extends \app\controllers\BaseController
             $temptitle = $val['SubTitle'];
             $tempCNT = $CNT;
         }
-
+        //var_dump($resSet);
         $this->load->view('predict/survey/winpopup_survey_result', [
             'spidx' => $spidx,
             'resSet' => $resSet,

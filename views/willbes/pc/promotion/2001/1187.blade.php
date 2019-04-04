@@ -81,8 +81,6 @@
         });
 
         function doEvent() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-
             var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
             window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
         }

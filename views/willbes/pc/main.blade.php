@@ -38,7 +38,7 @@
                         <li>
                             <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">
                                 <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
+                                    <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰간부
                                 </div>
                                 <div class="wTxt">
                                     간부후보생 선발시험 대비<br/>

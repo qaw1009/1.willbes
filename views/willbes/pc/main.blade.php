@@ -8,7 +8,7 @@
                 <a href="{{ site_url('/member/join/') }}" target="_blank"><img src="{{ img_url('main/visual/visualTop.jpg') }}" title="통합회원 가입, 한번이면 OK"></a>
             </div>
         </div>
-        <div class="Section Act1 mb50">
+        <div class="Section Act1 NGR mb50">
             <div class="widthAuto">
                 <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
                 <div class="ProcessBox">
@@ -30,8 +30,19 @@
                                     <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
                                 </div>
                                 <div class="wTxt">
-                                    독보적일반/경행/승진/간부/해경<br/>
+                                    독보적일반/경행/승진/해경<br/>
                                     <strong>윌비스 신광은경찰학원</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">
+                                <div class="wTit">
+                                    <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
+                                </div>
+                                <div class="wTxt">
+                                    간부후보생 선발시험 대비<br/>
+                                    <strong>윌비스 한림법학원</strong>
                                 </div>
                             </a>
                         </li>

@@ -3,11 +3,16 @@
 @section('content')
 <!-- Container -->
 <style type="text/css">
-    .eventPop {font-size:12px; color:#333; line-height:1.5}
-	.eventPop {width:530px; margin:0 auto} 
-	.eventPop h3 {font-size:18px; font-weight:bold; border-bottom:2px solid #000; text-align:center; padding-bottom:15px; color:#000;}
-	.eventPopS1 {margin-top:1em}	
-	.eventPopS1 span {margin-right:10px}
+    span {vertical-align:auto}
+    .eventPop {width:600px; margin:0 auto; font-size:12px; color:#333; line-height:1.5}
+    .eventPop h3 {font-size:18px; font-weight:bold; border-bottom:2px solid #000; text-align:center; padding-bottom:15px; color:#000;} 
+
+    .eventPopS1 {margin-top:1em}
+    .eventPopS1 > li {border-bottom:1px solid #e4e4e4; padding:15px}	
+    .eventPopS1 strong {display:block; margin-bottom:10px}
+    .eventPopS1 p {margin:10px 0}
+    .eventPopS1 li ul {margin-bottom:10px}
+    .eventPopS1 li li {display:inline-block; border:0; margin-right:10px}
 
     .eventPopS2 {margin-top:1em}
     .eventPopS2 span {margin-right:10px}
@@ -25,10 +30,15 @@
 
     .eventPopS4 {text-align:center;padding:20px 0; margin-top:20px}
     .eventPopS4 a {margin:0 5px}
+
+    input[type=radio],
+    input[type=checkbox] {width:16px; height:16px;}    
     select,
     input[type=file],
-    input[type=text] {padding:2px; margin-right:10px}
-    }
+    input[type=text] {padding:2px; margin-right:10px; height:26px; border:1px solid #e4e4e4}
+    input[type=file]:focus,
+    input[type=text]:focus {border:1px solid #1087ef}
+    input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
@@ -36,24 +46,79 @@
 
     <div class="eventPop">
 		<h3>
-            2019년 경찰 1차 합격예측 풀서비스<br>
-            사전예약 신청하기
+            2019년 경찰 1차 <span class="tx-bright-blue">합격예측 풀서비스 사전예약</span> 신청하기
         </h3>
         <div class="eventPopS1">
+            <ul>
+                <li>
+                    <strong>* 직렬(직류구분)</strong>
+                    <select name="test_subject" id="test_subject"style="width:120px">
+                        <option value="AA">일반공채:남</option>
+                        <option value="BA">일반공채:여</option>
+                        <option value="CA">전의경경채</option> 
+                        <option value="DA">101단-서울</option>
+                    </select>
+                    <select id="listview" name="listview" >
+                        <option value="">지역구분</option>
+                        <option value="">지역1</option>
+                        <option value="">지역2</option>
+                        <option value="">지역3</option>
+                    </select>
+                    ※ 응시직렬은 최초 선택/저장 후 수정 불가
+                </li>
+                <li>
+                    <strong class="mt10">* 응시과목</strong>
+                    <p>직렬(지역)구분을 선택해주세요.</p>
+                    <div>
+                        <p>공통과목 : 공통과목1, 공통과목2</p>
+                        <p>선택과목 : </p>
+                        <ul>
+                            <li><input type="checkbox" name="aa1" id="aa1" value="" > <label for="aa1">선택과목A</label></li>
+                            <li><input type="checkbox" name="aa2" id="aa2" value="" > <label for="aa2">선택과목B</label></li>
+                            <li><input type="checkbox" name="aa3" id="aa3" value="" > <label for="aa3">선택과목C</label></li>
+                            <li><input type="checkbox" name="aa4" id="aa4" value="" > <label for="aa4">선택과목D</label></li>
+                            <li><input type="checkbox" name="aa5" id="aa5" value="" > <label for="aa5">선택과목E</label></li>
+                            <li><input type="checkbox" name="aa6" id="aa6" value="" > <label for="aa6">선택과목F</label></li>
+                        </ul>
+                    </div>
+                    <strong class="mt10">* 가산점여부</strong>
+                    <ul>
+                        <li><input type="radio" name="gasan1" id="gasan1" value="A" /> <label for="gasan1">5점</label></li>
+                        <li><input type="radio" name="gasan2" id="gasan2" value="B" /> <label for="gasan2">4점</label></li>
+                        <li><input type="radio" name="gasan3" id="gasan3" value="C" /> <label for="gasan3">3점</label></li>
+                        <li><input type="radio" name="gasan4" id="gasan4" value="D" /> <label for="gasan4">2점</label></li>
+                        <li><input type="radio" name="gasan5" id="gasan5" value="E" /> <label for="gasan5">1점</label></li>
+                        <li><input type="radio" name="gasan6" id="gasan6" value="F" /> <label for="gasan6">없음</label></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>* 응시번호</strong>
+                    <input type="text" name="textfield" id="textfield"> 
+                </li>
+                <li>
+                    <strong>* 신광은경찰팀 수강여부</strong>
+                    <ul>
+                        <li><input type="radio" name="lec1" id="lec1" value="A" /> <label for="lec1">온라인강의</label></li>
+                        <li><input type="radio" name="lec2" id="lec2" value="B" /> <label for="lec2">학원강의</label></li>
+                        <li><input type="radio" name="lec3" id="lec3" value="C" /> <label for="lec3">온라인+학원강의</label></li>
+                        <li><input type="radio" name="lec4" id="lec4" value="D" /> <label for="lec4">미수강</label></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>* 시험준비기간</strong>
+                    <ul>
+                        <li><input type="radio" name="lec1" id="lec1" value="A" /> <label for="lec1">6개월 이하</label></li>
+                        <li><input type="radio" name="lec2" id="lec2" value="B" /> <label for="lec2">1년 이하</label></li>
+                        <li><input type="radio" name="lec3" id="lec3" value="C" /> <label for="lec3">2년 이하</label></li>
+                        <li><input type="radio" name="lec4" id="lec4" value="D" /> <label for="lec4">2년 이상</label></li>
+                    </ul>
+                </li>
+            </ul>
 			<div>	
-				<span>직렬</span>
-				<select  name="test_subject" id="test_subject"style="width:120px" onchange="fn_area(this.value);">
-					<option value="AA">일반공채:남</option>
-					<option value="BA">일반공채:여</option>
-					<!-- <option value="CA">101단</option> -->
-					<option value="DA">전의경경채</option>
-				</select>
+				
 				<span>지역</span>
-				<select id="listview" name="listview" >
-					<option value="">지역구분</option>
-				</select>
-				<span>응시번호</span>
-				<input type="text" name="textfield" id="textfield" style="width:120px">
+				
+				<div>※ 응시직렬은 최초 선택/저장 후 수정 불가</div>
 			</div>
 			<div class="mt10">				
 				<span>추천인아이디</span>
@@ -100,217 +165,6 @@
 </div>
 <!--willbes-Layer-PassBox//-->
 
-<script>
-	$(document).ready(function(){
-		$(".ATTACH_FILE").change(function(){
-			var fileNm = $(this).val();
-			if (fileNm != "") {
-			    var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
-			    if (!(ext == "gif" || ext == "jpg" || ext == "png")) {
-			        alert("이미지파일 (.jpg, .png, .gif ) 만 업로드 가능합니다.");
-			        $(this).val('');
-			        return;
-			    }
-			}
-			// 사이즈체크
-	        var maxSize  = 2 * 1024 * 1024    //2MB
-	        var fileSize = 0;
-			// 브라우저 확인
-			var browser=navigator.appName;
-			// 익스플로러일 경우
-			if (browser=="Microsoft Internet Explorer")
-			{
-				 var myFSO = new ActiveXObject("Scripting.FileSystemObject");
-				 var filepath = $(this).val();
-				 var thefile = myFSO.getFile(filepath);
-				 var fileSize = thefile.size;
-			}
-			// 익스플로러가 아닐경우
-			else
-			{
-				fileSize = this.files[0].size;
-			}
-	        if(fileSize > maxSize)
-	        {
-	            alert("첨부파일 사이즈는 2MB 이내로 등록 가능합니다.    ");
-	            $(this).val('');
-	            return;
-	        }
-		});
-	});
-	
-	fn_area("AA");
-	function fn_area(type){
-		$.ajax({
-      		type: 'GET', 
-       		async: true,
-       		url: "<c:url value='/gosi/ajax_list.html' />?GOSI_TYPE=" + type + "&FLAG=AREA",
-       		success: function(data) {
-				var response = $.trim(data);
-       			if(response == "") {
-					jQuery("#listview").empty();
-       				jQuery("#listview").append("<option value=''>지역구분</option>");
-       			} else {
-                	jQuery("#listview").empty();
-                    jQuery("#listview").append(response);
-       			}
-       		},
-       		error: function(data, status, err) {
-				alert('서버와의 통신이 실패했습니다.');
-			}
-       	});
-	}
-		
-		
-	// 응시번호용
-	function fn_OnlyNumber2(obj) {
-		 
-		for (var i = 0; i < obj.value.length ; i++){
-			chr = obj.value.substr(i,1);  
-		  	chr = escape(chr);
-		  	key_eg = chr.charAt(1);
-			if (key_eg == "u"){
-		   		key_num = chr.substr(i,(chr.length-1));   
-			   	if((key_num < "AC00") || (key_num > "D7A3")) { 
-			    	event.returnValue = false;
-			   	}    
-		  	}
-		}
-		if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 8 || event.keyCode == 9) {
-			$(obj).focus();
-		}else{
-			alert("숫자만 입력해주세요.");
-			$(obj).val("");
-			event.returnValue = false;
-		}
 
-	}
-		
-	function fn_submit(){
-
-		var must_subject = '';
-		var  subject = '';
-		var  subject_temp = '';
-		var  c = 0;
-		
-		if("<c:out value='${userInfo.USER_ID}' />" == ""){
-			alert("로그인을 해주세요.");
-			return;
-		}
-		if($("#test_subject option:selected").val() == ''){
-			alert("응시직렬을 선택해주세요");
-			return;
-		}
-		if($("#listview option:selected").val() == ''){
-			alert("지역구분을 선택해주세요");
-			return;
-		}
-		if($("#textfield").val() == ''){
-			alert("응시번호를 입력해주세요");
-			return;
-		}
-		if($("#ATTACH_FILE").val() == ''){
-			alert("수험표 인증파일을 첨부해 주세요.");
-			return;
-		}
-		if($(".ATTACH_FILE").val() == ''){
-			alert("수험표 인증파일을 첨부해 주세요.");
-			return;
-		}
-	    if($("input[name='is_chk']:checked").val()!='Y'){
-			alert("개인정보 수집에 동의해 주세요.");
-			return;
-		}
-	    
-		var checkparam = "EVENT_NO="+$("#EVENT_NO").val()+"&GOSI_CD="+$("#GOSI_CD").val();
-		checkparam = checkparam+"&GOSI_TYPE="+$("#test_subject option:selected").val();
-		checkparam = checkparam+"&GOSI_AREA="+$("#listview option:selected").val();
-		checkparam = checkparam+"&RST_NO="+$("#textfield").val();
-		
-		$.ajax({		     
-			type: "GET", 
-		    url : '<c:url value="/gosi/rst_pass_check.json"/>?'+ checkparam,
-		    dataType: "text",
-		    async : false,
-		    success: function(RES) {
-				if($.trim(RES)=="Y"){
-					$.ajax({
-						type: "GET", 
-					    url : '<c:url value="/gosi/Event3_Check.do"/>?'+ checkparam,
-					    dataType: "text",  
-					    async : false,
-					    success: function(RES) {
-					    	if($.trim(RES)=="N"){
-					        	alert("이미 인증한 계정입니다.");
-					        	return;
-					      	}else{
-								fn_phone();
-								fn_insert();
-					      	}
-					 	},error: function(){
-					    	alert("검색실패");
-					      	return;
-					    }
-					});
-				}else{
-		   	 		alert("올바른 응시번호가 아닙니다.");
-		        	return;
-				}
-			},error: function(){
-		    	alert("인증오류! 다시 인증해주세요.");
-		      	return;
-	     	}
-		});
-	    
-	}
-	
-	function fn_insert(){
-
-	 	$('#ajaxForm').attr("action","<c:url value='/gosi/exam_event_3_insert.do'/>");
-		$('#ajaxForm').ajaxForm({
-	        beforeSubmit: function (data, frm, opt) {
-			 },
-	        success: function(responseText, statusText){
-	        	 if($.trim(responseText)=="N"){
-				     alert("인증 실패하였습니다.");
-				     return;  
-				   }else{
-				    alert("신청되었습니다.");
-				    window.close();
-				   }
-	        },
-	        //ajax error
-	        error: function(){
-	        	alert("인증실패");
-	        }                               
-	      }).submit();
-	}
-		
-	function fn_phone(){
-		$("#PHONENUM").val("<c:out value='${userInfo.PHONE_NO}' />");
-
-		var message = "";
-		message += "[윌비스 신광은경찰]\n\n";
-		message += "2018년 3차 필기 합격 인증이 완료되었습니다.\n";
-
-		$("#MESSAGE").val(message);
-		
-		$.ajax({
-	        type: "POST",
-	        url : '<c:url value="/event/doPhone.html"/>' ,
-	    	data: $("#ajaxForm").serialize(),
-	        cache : false,
-	        dataType : "text",
-	        success : function(RES) {
-	            if(RES != ""){
-	            }
-	        },
-	        error : function() {
-	            alert("문자 발송 실패");
-	            return;
-	        }
-	    });        
-	}
-</script>
 
 @stop

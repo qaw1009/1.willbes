@@ -219,6 +219,7 @@ html {
   input[type="search"]::-webkit-search-decoration {
 	-webkit-appearance: none;
   }
+  input:focus {border:1px solid #1087ef !important}
   fieldset {
 	padding: .35em .625em .75em;
 	margin: 0 2px;

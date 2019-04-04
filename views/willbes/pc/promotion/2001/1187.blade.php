@@ -3,12 +3,12 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">
-        span {vertical-align:auto}
+    <style type="text/css">        
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
         }
+        .subContainer span {vertical-align:auto}
         .evtContent {
             width:100% !important;
             min-width:1210px !important;

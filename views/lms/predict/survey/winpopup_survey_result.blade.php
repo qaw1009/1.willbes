@@ -73,7 +73,7 @@
             </div>
             <div class="col-md-1 form-inline">
                 <!-- //tab -->
-                <p><a href="javascript:printPage()" class="btn btn-default" role="button">출력</a></p>
+                <p><a href="javascript:window.print()" class="btn btn-default" role="button">출력</a></p>
             </div>
         </div>
         <div class="form-group">

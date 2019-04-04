@@ -57,29 +57,15 @@
                     <div class="col-md-10 form-inline">
                         @if($method == 'update')
                             <select id="Cnt" name="Cnt" title="number" class="seleProcess f_left" onchange="selnum(this)">
-                                <option value='1' @if($lastNum == 1) selected="selected" @endif>1</option>
-                                <option value='2' @if($lastNum == 2) selected="selected" @endif>2</option>
-                                <option value='3' @if($lastNum == 3) selected="selected" @endif>3</option>
-                                <option value='4' @if($lastNum == 4) selected="selected" @endif>4</option>
-                                <option value='5' @if($lastNum == 5) selected="selected" @endif>5</option>
-                                <option value='6' @if($lastNum == 6) selected="selected" @endif>6</option>
-                                <option value='7' @if($lastNum == 7) selected="selected" @endif>7</option>
-                                <option value='8' @if($lastNum == 8) selected="selected" @endif>8</option>
-                                <option value='9' @if($lastNum == 9) selected="selected" @endif>9</option>
-                                <option value='10' @if($lastNum == 10) selected="selected" @endif>10</option>
+                                @for($i = 1; $i <= 25; $i++)
+                                <option value='{{ $i }}' @if($lastNum == $i ) selected="selected" @endif>{{ $i }}</option>
+                                @endfor
                             </select>
                         @else
                             <select id="Cnt" name="Cnt" title="number" class="seleProcess f_left" onchange="selnum(this)">
-                                <option value='1'>1</option>
-                                <option value='2'>2</option>
-                                <option value='3'>3</option>
-                                <option value='4'>4</option>
-                                <option value='5'>5</option>
-                                <option value='6'>6</option>
-                                <option value='7'>7</option>
-                                <option value='8'>8</option>
-                                <option value='9'>9</option>
-                                <option value='10'>10</option>
+                                @for($i = 1; $i <= 25; $i++)
+                                <option value='{{ $i }}'>{{ $i }}</option>
+                                @endfor
                             </select>
                         @endif
 
@@ -102,27 +88,16 @@
                     <label class="control-label col-md-1-1">보기 / 힌트</label>
                     <div class="col-md-4 item form-inline">
                         <div id="v1">보기 &nbsp;1 <textarea id="Comment1" name="Comment1" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment1'] }} @endif</textarea></div>
-                        <div id="v2" style="display:none;">보기 &nbsp;2 <textarea id="Comment2" name="Comment2" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment2'] }} @endif</textarea></div>
-                        <div id="v3" style="display:none;">보기 &nbsp;3 <textarea id="Comment3" name="Comment3" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment3'] }} @endif</textarea></div>
-                        <div id="v4" style="display:none;">보기 &nbsp;4 <textarea id="Comment4" name="Comment4" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment4'] }} @endif</textarea></div>
-                        <div id="v5" style="display:none;">보기 &nbsp;5 <textarea id="Comment5" name="Comment5" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment5'] }} @endif</textarea></div>
-                        <div id="v6" style="display:none;">보기 &nbsp;6 <textarea id="Comment6" name="Comment6" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment6'] }} @endif</textarea></div>
-                        <div id="v7" style="display:none;">보기 &nbsp;7 <textarea id="Comment7" name="Comment7" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment7'] }} @endif</textarea></div>
-                        <div id="v8" style="display:none;">보기 &nbsp;8 <textarea id="Comment8" name="Comment8" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment8'] }} @endif</textarea></div>
-                        <div id="v9" style="display:none;">보기 &nbsp;9 <textarea id="Comment9" name="Comment9" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment9'] }} @endif</textarea></div>
-                        <div id="v10" style="display:none;">보기 10 <textarea id="Comment10" name="Comment10" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment10'] }} @endif</textarea></div>
+                        @for($i=2; $i <= 25; $i++)
+                            <div id="v{{ $i }}" style="display:none;">보기 &nbsp;{{ $i }} <textarea id="Comment{{ $i }}" name="Comment{{ $i }}" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Comment'.$i] }} @endif</textarea></div>
+                        @endfor
+
                     </div>
                     <div class="col-md-4 item form-inline">
                         <div id="h1">힌트 &nbsp;1 <textarea id="Hint1" name="Hint1" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint1'] }} @endif</textarea></div>
-                        <div id="h2" style="display:none;">힌트 &nbsp;2 <textarea id="Hint2" name="Hint2" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint2'] }} @endif</textarea></div>
-                        <div id="h3" style="display:none;">힌트 &nbsp;3 <textarea id="Hint3" name="Hint3" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint3'] }} @endif</textarea></div>
-                        <div id="h4" style="display:none;">힌트 &nbsp;4 <textarea id="Hint4" name="Hint4" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint4'] }} @endif</textarea></div>
-                        <div id="h5" style="display:none;">힌트 &nbsp;5 <textarea id="Hint5" name="Hint5" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint5'] }} @endif</textarea></div>
-                        <div id="h6" style="display:none;">힌트 &nbsp;6 <textarea id="Hint6" name="Hint6" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint6'] }} @endif</textarea></div>
-                        <div id="h7" style="display:none;">힌트 &nbsp;7 <textarea id="Hint7" name="Hint7" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint7'] }} @endif</textarea></div>
-                        <div id="h8" style="display:none;">힌트 &nbsp;8 <textarea id="Hint8" name="Hint8" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint8'] }} @endif</textarea></div>
-                        <div id="h9" style="display:none;">힌트 &nbsp;9 <textarea id="Hint9" name="Hint9" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint9'] }} @endif</textarea></div>
-                        <div id="h10" style="display:none;">힌트 10 <textarea id="Hint10" name="Hint10" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint10'] }} @endif</textarea></div>
+                        @for($i=2; $i <= 25; $i++)
+                            <div id="h{{ $i }}" style="display:none;">힌트 &nbsp;{{ $i }} <textarea id="Hint{{ $i }}" name="Hint{{ $i }}" cols="50" rows="1" class="memoText" style="width:80%;">@if($method == 'update') {{ $data['Hint'.$i] }} @endif</textarea></div>
+                        @endfor
                     </div>
                 </div>
 
@@ -189,7 +164,7 @@
 
         //갯수선택
         function selnum(obj){
-            for(var i = 1; i <= 10; i++){
+            for(var i = 1; i <= 25; i++){
                 $('#h' + i).hide();
                 $('#v' + i).hide();
             }
@@ -198,7 +173,7 @@
                 $('#v' + i).show();
             }
             var nextnum = obj.value + 1;
-            for(var j = nextnum; j <= 10; j++){
+            for(var j = nextnum; j <= 25; j++){
                 $('#h' + j).hide();
                 $('#v' + j).hide();
             }

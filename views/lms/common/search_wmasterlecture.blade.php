@@ -108,7 +108,7 @@
                                     return '<a href="#" class="btn-select" data-row-idx="' + meta.row + '"><u>' + data + '</u></a> ['+row.wLecIdx+ ']';
                                 }},
                             {'data' : 'profName_string'},
-                            {'data' : 'wUnitCnt'},
+                            {'data' : 'wUnitLectureCnt'},
                             {'data' : 'wProgressCcd_Name'},
                             {'data' : 'wMakeYM'},
                             {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
@@ -158,6 +158,7 @@
                         $('#ProdName').val(row.wLecName);   //강좌명
                         $('#unitNumCount').val(row.wUnitCnt);   //회차수
                         $('#unitNumLectureCount').val(row.wUnitLectureCnt);   //강의수
+                        $('#wScheduleCount').val(row.wScheduleCount);   //예정강의수
                         $('#AllLecTime').val(row.wRuntimeSum); //전체강의시간
 
                         $("#sampleList span").remove();   //회차 정보 초기화

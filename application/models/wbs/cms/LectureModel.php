@@ -394,7 +394,7 @@ class LectureModel extends WB_Model
 
             // 마스터강의 복사
             $insert_column = 'wLecName, wCpIdx, wContentCcd, wShootingCcd, wProgressCcd, wMakeYM, wMediaUrl
-                                    , wAttachFileReal, wAttachFile, wKeyword, wIsUse, wRegAdminIdx, wRegIp';
+                                    , wAttachFileReal, wAttachFile, wKeyword, wScheduleCount, wIsUse, wRegAdminIdx, wRegIp';
 
             //$select_column= str_replace('wLecName','concat(\'[복사]\',wLecName)',$insert_column);
             $select_column = $insert_column;

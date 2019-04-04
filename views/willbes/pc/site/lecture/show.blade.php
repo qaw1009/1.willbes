@@ -27,7 +27,7 @@
                 <div class="w-list">{{ $data['CourseName'] }} / {{ $data['SubjectName'] }}</div>
                 <div class="w-tit tx-blue">{{ $data['ProdName'] }}</div>
                 <dl class="w-info tx-dark-gray">
-                    <dt>강의수 : <span class="tx-black">{{ $data['wUnitLectureCnt'] }}강</span></dt>
+                    <dt>강의수 : <span class="tx-black">{{ $data['wUnitLectureCnt'] }}강@if(empty($data['wScheduleCount'])==false)/{{$data['wScheduleCount']}}강@endif</span></dt>
                     <dt><span class="row-line">|</span></dt>
                     <dt>수강기간 : <span class="tx-black">{{ $data['StudyPeriod'] }}일</span></dt>
                     <dt class="NSK ml15">
@@ -167,7 +167,7 @@
                     @if($data['IsSalesAble'] == 'Y')
                         <ul>
                             <li class="btnAuto180 h36">
-                                @if($data['IsCart'] == 'Y')
+                                @if($data['IsCart'] == 'Y' && $pattern != 'free')
                                 <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-blue bd-dark-blue">
                                     <span>장바구니</span>
                                 </button>
@@ -320,7 +320,7 @@
 
                     @foreach($data['LectureUnits'] as $idx => $row)
                     <tr>
-                        <td class="w-no">{{ $row['wUnitNum'] }}회차 {{ $row['wUnitLectureNum'] }}강</td>
+                        <td class="w-no"><!--{{ $row['wUnitNum'] }}회차 //-->{{ $row['wUnitLectureNum'] }}강</td>
                         <td class="w-list tx-left pl20">{{ $row['wUnitName'] }}</td>
                         <td class="w-free">
                             @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')

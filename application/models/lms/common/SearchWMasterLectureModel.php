@@ -73,7 +73,10 @@ class SearchWMasterLectureModel extends WB_Model
         $column = '*';
         $from = ' From '.$this->_table['masterlectureunit'];
         $where =  $this->_conn->makeWhere([
-            'EQ'=>['wLecIdx'=>$lecidx]
+            'EQ'=>[
+                'wLecIdx'=>$lecidx
+                ,'wIsUse' => 'Y'
+            ]
         ])->getMakeWhere(false);
 
         $order_by = $this->_conn->makeOrderBy(['wOrderNum'=>'ASC'])->getMakeOrderBy();

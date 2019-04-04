@@ -7,7 +7,7 @@
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
-        }        
+        }
         .evtContent {
             width:100% !important;
             min-width:1210px !important;
@@ -59,7 +59,7 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_03.jpg" usemap="#Map1187A" title="사전예약 이벤트" border="0">
             <map name="Map1187A" id="Map1187A">
-                <area shape="rect" coords="413,900,708,971" href="javascript:pullOpen();" alt="합격예측 사전접수하기" />
+                <area shape="rect" coords="413,900,708,971" href="#none" onclick="doEvent(); return false;" target="_blank" alt="합격예측 사전접수하기" />
             </map>
         </div>
 
@@ -80,9 +80,9 @@
             });
         });
 
-        function pullOpen(){
-            var url = "1187_popup";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+        function doEvent() {
+            var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
+            window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
         }
     </script>
 

@@ -28,7 +28,7 @@
                         <td>{{$data_lecture['wContentCcd_Name']}}</td>
                         <td>{{$data_lecture['wLecName']}} [{{$data_lecture['wLecIdx']}}]</td>
                         <td>{{$data_lecture['profName_string']}}</td>
-                        <td>{{$data_lecture['wUnitCnt']}}</td>
+                        <td>{{$data_lecture['wUnitLectureCnt']}}</td>
                         <td>{{$data_lecture['wProgressCcd_Name']}}</td>
                         <td>{{$data_lecture['wMakeYM']}}</td>
                         <td>@if($data_lecture['wIsUse']=='Y')사용@else<<span class="red">미사용</span>@endif</td>

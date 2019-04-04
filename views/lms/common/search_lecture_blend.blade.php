@@ -165,7 +165,7 @@
                                     return '['+row.ProdCode+ '] ' + row.ProdName + '';
                                 }},//단강좌명
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    return row.wProgressCcd_Name+'<BR>('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')';
+                                    return row.wProgressCcd_Name+'<BR>('+row.wUnitLectureCnt+ (row.wScheduleCount == null ? '' : '/'+row.wScheduleCount)+')';
                                 }},//진행상태
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.RealSalePrice === '' ? '' : (addComma(row.RealSalePrice))+'원<BR><strike>'+(addComma(row.SalePrice))+'원</strike>';
@@ -185,7 +185,7 @@
                                 }},//무료강좌명
 
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    return row.wProgressCcd_Name+'<BR>('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')';
+                                    return row.wProgressCcd_Name+'<BR>('+row.wUnitLectureCnt+ (row.wScheduleCount == null ? '' : '/'+row.wScheduleCount)+')';
                                 }},//진행상태
                             {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                                     return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';

@@ -214,7 +214,7 @@
                                     <td>{{$row['SubjectName']}}</td>
                                     <td>{{$row['wProfName_String']}}</td>
                                     <td style='text-align:left'>{{$row['ProdName']}}</td>
-                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitCnt']}}/{{$row['wUnitLectureCnt']}})</td>
+                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitLectureCnt']}}@if(empty($row['wScheduleCount']) == false)/{{$row['wScheduleCount']}}@endif)</td>
                                     <td>{{number_format($row['RealSalePrice'])}}원</td>
                                     <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>
                                     <td><a href='javascript:;' onclick="rowDelete('essLecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
@@ -265,7 +265,7 @@
                                     <td>{{$row['SubjectName']}}</td>
                                     <td>{{$row['wProfName_String']}}</td>
                                     <td style='text-align:left'>{{$row['ProdName']}}</td>
-                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitCnt']}}/{{$row['wUnitLectureCnt']}})</td>
+                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitLectureCnt']}}@if(empty($row['wScheduleCount']) == false)/{{$row['wScheduleCount']}}@endif)</td>
                                     <td>{{number_format($row['RealSalePrice'])}}원</td>
                                     <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>
                                     <td><a href='javascript:;' onclick="rowDelete('selLecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
@@ -697,7 +697,7 @@
                                     <td>{{$row['SubjectName']}}</td>
                                     <td>{{$row['wProfName_String']}}</td>
                                     <td style='text-align:left'>{{$row['ProdName']}}</td>
-                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitCnt']}}/{{$row['wUnitLectureCnt']}})</td>
+                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitLectureCnt']}}@if(empty($row['wScheduleCount']) == false)/{{$row['wScheduleCount']}}@endif)</td>
                                     <td>{{number_format($row['RealSalePrice'])}}원</td>
                                     <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>
                                     <td><a href='javascript:;' onclick="rowDelete('lecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>

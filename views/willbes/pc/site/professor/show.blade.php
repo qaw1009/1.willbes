@@ -83,7 +83,7 @@
                                     @if($__cfg['IsPassSite'] === false)
                                         <dt><span class="tx-blue">{{ $row['StudyPeriod'] }}</span>일</dt>
                                         <dt><span class="row-line">|</span></dt>
-                                        <dt><span class="tx-blue">{{ $row['wUnitLectureCnt'] }}</span>강</dt>
+                                        <dt><span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if(empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                     @else
                                         <dt><span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span></dt>
                                         <dt><span class="row-line">|</span></dt>

@@ -163,7 +163,7 @@
                                         +row.SubjectName+'@$'
                                         +row.wProfName_String+'@$'
                                         +row.ProdName+'@$'
-                                        +row.wProgressCcd_Name+' ('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')@$'
+                                        +row.wProgressCcd_Name+' ('+row.wUnitLectureCnt+ (row.wScheduleCount == null ? '' : '/'+row.wScheduleCount)+')@$'
                                         +addComma(row.RealSalePrice)+'원@$'
                                         +row.SaleStatusCcd_Name+'@$'
                                     ;
@@ -186,7 +186,7 @@
                                 }},//단강좌명
 
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    return row.wProgressCcd_Name+'<BR>('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')';
+                                    return row.wProgressCcd_Name+'<BR>('+row.wUnitLectureCnt+ (row.wScheduleCount == null ? '' : '/'+row.wScheduleCount)+')';
                                 }},//진행상태
 
                             @if($LearnPatternCcd !== "615005")

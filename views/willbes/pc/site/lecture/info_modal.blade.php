@@ -14,7 +14,7 @@
         <div id="ch1" class="tabLink">
             <div class="classInfo">
                 <dl class="w-info NG">
-                    <dt>강의수 : <span class="tx-blue">{{ $data['lecture']['wUnitLectureCnt'] }}강</span></dt>
+                    <dt>강의수 : <span class="tx-blue">{{ $data['lecture']['wUnitLectureCnt'] }}강@if(empty($data['lecture']['wScheduleCount'])==false)/{{$data['lecture']['wScheduleCount']}}강@endif</span></dt>
                     <dt><span class="row-line">|</span></dt>
                     <dt>수강기간 : <span class="tx-blue">{{ $data['lecture']['StudyPeriod'] }}일</span></dt>
                     <dt class="NSK ml15">

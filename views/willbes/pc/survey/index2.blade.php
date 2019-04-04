@@ -45,38 +45,18 @@
                             <input type="hidden" name="totalIdx[]" value="{{ trim($val3['SqIdx']) }}" />
                             <input type="hidden" name="totalType[]" value="{{ trim($val3['Type']) }}" />
                             @if(trim($val3['Type']) == 'S')
-                                @if(empty(trim($val3['Comment1']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_1" value="1" /> {{ trim($val3['Comment1']) }}</label><br>{{ trim($val3['Hint1']) }}</li> @endif
-                                @if(empty(trim($val3['Comment2']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_2" value="2" /> {{ trim($val3['Comment2']) }}</label><br>{{ trim($val3['Hint2']) }}</li> @endif
-                                @if(empty(trim($val3['Comment3']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_3" value="3" /> {{ trim($val3['Comment3']) }}</label><br>{{ trim($val3['Hint3']) }}</li> @endif
-                                @if(empty(trim($val3['Comment4']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_4" value="4" /> {{ trim($val3['Comment4']) }}</label><br>{{ trim($val3['Hint4']) }}</li> @endif
-                                @if(empty(trim($val3['Comment5']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_5" value="5" /> {{ trim($val3['Comment5']) }}</label><br>{{ trim($val3['Hint5']) }}</li> @endif
-                                @if(empty(trim($val3['Comment6']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_6" value="6" /> {{ trim($val3['Comment6']) }}</label><br>{{ trim($val3['Hint6']) }}</li> @endif
-                                @if(empty(trim($val3['Comment7']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_7" value="7" /> {{ trim($val3['Comment7']) }}</label><br>{{ trim($val3['Hint7']) }}</li> @endif
-                                @if(empty(trim($val3['Comment8']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_8" value="8" /> {{ trim($val3['Comment8']) }}</label><br>{{ trim($val3['Hint8']) }}</li> @endif
-                                @if(empty(trim($val3['Comment9']))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_9" value="9" /> {{ trim($val3['Comment9']) }}</label><br>{{ trim($val3['Hint9']) }}</li> @endif
-                                @if(empty(trim($val3['Comment10']))===false) <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_10" value="10" /> {{ trim($val3['Comment10']) }}</label><br>{{ trim($val3['Hint10']) }}</li> @endif
+                                @for($i = 1; $i <= 25; $i++)
+                                    @if(empty(trim($val3['Comment'.$i]))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_1" value="1" /> {{ trim($val3['Comment1']) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
+                                @endfor
+
                             @elseif(trim($val3['Type']) == 'M')
-                                @if(empty(trim($val3['Comment1']))===false)  {{ trim($val3['Comment1']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment2']))===false)  {{ trim($val3['Comment2']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment3']))===false)  {{ trim($val3['Comment3']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment4']))===false)  {{ trim($val3['Comment4']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment5']))===false)  {{ trim($val3['Comment5']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment6']))===false)  {{ trim($val3['Comment6']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment7']))===false)  {{ trim($val3['Comment7']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment8']))===false)  {{ trim($val3['Comment8']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment9']))===false)  {{ trim($val3['Comment9']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
-                                @if(empty(trim($val3['Comment10']))===false) {{ trim($val3['Comment10']) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
+                                @for($i = 1; $i <= 25; $i++)
+                                    @if(empty(trim($val3['Comment'.$i]))===false)  {{ trim($val3['Comment'.$i]) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
+                                @endfor
                             @elseif(trim($val3['Type']) == 'T')
-                                @if(empty(trim($val3['Comment1']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_1" value="1" onClick="fn_visible(this, {{ $key }}, 1)" /> {{ trim($val3['Comment1']) }}</label><br>{{ trim($val3['Hint1']) }}</li> @endif
-                                @if(empty(trim($val3['Comment2']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_2" value="2" onClick="fn_visible(this, {{ $key }}, 2)" /> {{ trim($val3['Comment2']) }}</label><br>{{ trim($val3['Hint2']) }}</li> @endif
-                                @if(empty(trim($val3['Comment3']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_3" value="3" onClick="fn_visible(this, {{ $key }}, 3)" /> {{ trim($val3['Comment3']) }}</label><br>{{ trim($val3['Hint3']) }}</li> @endif
-                                @if(empty(trim($val3['Comment4']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_4" value="4" onClick="fn_visible(this, {{ $key }}, 4)" /> {{ trim($val3['Comment4']) }}</label><br>{{ trim($val3['Hint4']) }}</li> @endif
-                                @if(empty(trim($val3['Comment5']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_5" value="5" onClick="fn_visible(this, {{ $key }}, 5)" /> {{ trim($val3['Comment5']) }}</label><br>{{ trim($val3['Hint5']) }}</li> @endif
-                                @if(empty(trim($val3['Comment6']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_6" value="6" onClick="fn_visible(this, {{ $key }}, 6)" /> {{ trim($val3['Comment6']) }}</label><br>{{ trim($val3['Hint6']) }}</li> @endif
-                                @if(empty(trim($val3['Comment7']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_7" value="7" onClick="fn_visible(this, {{ $key }}, 7)" /> {{ trim($val3['Comment7']) }}</label><br>{{ trim($val3['Hint7']) }}</li> @endif
-                                @if(empty(trim($val3['Comment8']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_8" value="8" onClick="fn_visible(this, {{ $key }}, 8)" /> {{ trim($val3['Comment8']) }}</label><br>{{ trim($val3['Hint8']) }}</li> @endif
-                                @if(empty(trim($val3['Comment9']))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_9" value="9" onClick="fn_visible(this, {{ $key }}, 9)" /> {{ trim($val3['Comment9']) }}</label><br>{{ trim($val3['Hint9']) }}</li> @endif
-                                @if(empty(trim($val3['Comment10']))===false) <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}_10" value="10" onClick="fn_visible(this, {{ $key }}, 10)" /> {{ trim($val3['Comment10']) }}</label><br>{{ trim($val3['Hint10']) }}</li> @endif
+                                @for($i = 1; $i <= 25; $i++)
+                                    @if(empty(trim($val3['Comment'.$i]))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}" value="{{ $i }}" onClick="fn_visible(this, {{ $key }}, {{ $i }}, {{ $val3['SqIdx'] }})" /> {{ trim($val3['Comment'.$i]) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
+                                @endfor
                             @else
                                 <li><textarea name="qd{{ trim($val3['SqIdx']) }}" /></textarea></li>
                             @endif
@@ -88,16 +68,25 @@
             @endforeach
 
             <div class="btnsSt3">
-                {{--@if($Is == 'N')--}}
-                <a href="javascript:fn_submit();">설문 완료</a>
-                {{--@endif--}}
+                @if(substr($StartDate,0,10) <= date('Y-m-d') && substr($EndDate,0,10) >= date('Y-m-d'))
+                    @if($Is == 'N')
+                    <a href="javascript:fn_submit();">설문 완료</a>
+                    @endif
+                @endif
             </div>
         </form>
     </div>
     <script>
         var $regi_form = $('#regi_form');
 
-        function fn_visible(obj, num1, num2){
+        function fn_visible(obj, num1, num2, qnum){
+            var cknum = $("input:checkbox[id=q"+qnum+"]:checked").length;
+            if(cknum == 3){
+                alert('선택과목은 2개까지 선택할 수 있습니다.');
+                obj.checked = false;
+                return;
+            }
+            
             if(obj.checked == true){
                 $('#div'+num1+num2).show();
             } else {
@@ -111,6 +100,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
+                    opener.location.replace('{{ front_url('/promotion/index/cate/3019/code/1140/spidx/2') }}'+'#tab3');
                     opener.location.reload();
                     window.close();
                 }

@@ -30,7 +30,7 @@ class LectureModel extends CommonLectureModel
                     ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                     ,Bd.CcdName as LecTypeCcd_Name
                     ,Bf.CcdName as FreeLecTypeCcd_Name
-                    ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
+                    ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt,Be.wScheduleCount
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice

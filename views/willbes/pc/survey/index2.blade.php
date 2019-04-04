@@ -68,9 +68,11 @@
             @endforeach
 
             <div class="btnsSt3">
-                {{--@if($Is == 'N')--}}
-                <a href="javascript:fn_submit();">설문 완료</a>
-                {{--@endif--}}
+                @if(substr($StartDate,0,10) <= date('Y-m-d') && substr($EndDate,0,10) >= date('Y-m-d'))
+                    @if($Is == 'N')
+                    <a href="javascript:fn_submit();">설문 완료</a>
+                    @endif
+                @endif
             </div>
         </form>
     </div>

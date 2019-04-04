@@ -274,6 +274,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th class="Tit">간부경찰</th>
+                                <td>
+                                    <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">신림(한림법학원)</a>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th class="Tit">교원임용</th>
                                 <td>
                                     <a href="http://ssam.willbes.net" target="_blank">노량진</a>

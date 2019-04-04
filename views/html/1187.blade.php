@@ -7,8 +7,7 @@
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
-        }
-        .subContainer span {vertical-align:auto}
+        }        
         .evtContent {
             width:100% !important;
             min-width:1210px !important;
@@ -17,6 +16,7 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/

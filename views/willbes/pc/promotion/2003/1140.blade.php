@@ -1151,14 +1151,14 @@
                                     {{ $row['SubjectName'] }} {{ $row['ProfNickName'] }} 교수<br>
                                     <span>{{ $row['OtherData2'] }}</span>
                                     <p>
-                                        @if(empty($row['wUnitIdx']) === true && empty($row['wAttachPath']) === true)
+                                        @if(empty($row['wUnitIdx']) === true && empty($row['wUnitAttachFile']) === true)
                                             추후 제공 예정입니다.
                                         @else
                                             <a href="javascript:fnPlayerFree('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">
                                                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의">
                                             </a>
-                                            @if(empty($row['wAttachPath']) === false)
-                                                <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['EfIdx'].'&event_idx='.$data['ElIdx']) }}">
+                                            @if(empty($row['wUnitAttachFile']) === false)
+                                                <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}">
                                                     <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료">
                                                 </a>
                                             @endif
@@ -1184,7 +1184,7 @@
         var todayAtMidn = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes());
 
         // Set start/end dates to a specified date (ISO format).
-        var startDate = new Date("2019-04-06T02:30:00Z");
+        var startDate = new Date("2019-04-05T02:30:00Z");
         var endDate = new Date("2099-06-09T15:20:00Z");
 
         /*tab*/
@@ -1201,7 +1201,7 @@
 
 
             $links.not($active).each(function () {
-            $(this.hash).hide()
+                $(this.hash).hide();
             });
         
             // Bind the click event handler

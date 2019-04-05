@@ -14,6 +14,17 @@ class BaseAccess extends \app\controllers\FrontController
     protected $auth_methods = array();
 
     /**
+     * TODO 접속 확인용 메소드 : 2019.4.5 특정IP의 서버 접속 오류 확인을 위한 메소드
+     */
+    public function conn_check()
+    {
+        $info = '<p><b><font size="4">'.$_SERVER["HTTP_HOST"].'</font></b></p>';
+        $info .= '<P>'. $_SERVER["SERVER_ADDR"].'</p>';
+        $info .= '<p>'. $_SERVER["REMOTE_ADDR"].'</p>';
+        echo $info;
+    }
+
+    /**
      * 외부 배너 연동 접속 - 일반적 외부 배너 형태
      * @param array $params
      */

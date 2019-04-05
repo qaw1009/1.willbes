@@ -10,6 +10,7 @@ class EventFModel extends WB_Model
         'event_comment' => 'lms_event_comment',
         'event_register' => 'lms_event_register',
         'event_member' => 'lms_event_member',
+        'event_promotion_otherinfo' => 'lms_event_promotion_otherinfo',
         'event_read_log' => 'lms_event_read_log',
         'board' => 'lms_board',
         'board_r_category' => 'lms_board_r_category',
@@ -22,9 +23,13 @@ class EventFModel extends WB_Model
         'crm_send_r_receive_sms' => 'lms_crm_send_r_receive_sms',
         'product_subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
-        'pms_professor' => 'wbs_pms_professor',
+        'professor_reference' => 'lms_professor_reference',
         'lms_event_promotion_log' => 'lms_event_promotion_log',
-        'lms_member' => 'lms_member'
+        'lms_member' => 'lms_member',
+        'product_lecture_sample' => 'lms_product_lecture_sample',
+        'pms_professor' => 'wbs_pms_professor',
+        'wbs_cms_lecture_unit_combine' => 'wbs_cms_lecture_unit_combine',
+        'wbs_cms_lecture' => 'wbs_cms_lecture'
     ];
     public $_request_type = [
         '1' => '설명회',
@@ -491,19 +496,6 @@ class EventFModel extends WB_Model
         return element('0', $result, []);
     }
 
-    /*public function getEventForNotice($event_idx, $column='*')
-    {
-        $arr_condition = [
-            'EQ' => [
-                'BmIdx' => $this->_bm_idx,
-                'ElIdx' => $event_idx,
-                'IsUse' => 'Y'
-            ],
-        ];
-        $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, null, null);
-        //echo $this->_conn->last_query();exit;
-        return $result;
-    }*/
     public function getEventForNotice($event_idx, $column='*', $order_by=['b.BoardIdx' => 'desc'])
     {
         $def_column = "
@@ -682,7 +674,7 @@ class EventFModel extends WB_Model
     public function findEventForPromotion($promotion_code, $test_type = '')
     {
         $column = '
-            ElIdx, OptionCcds, EventName, PromotionCode, PromotionParams, RegisterEndDate, CommentUseArea, LimitType
+            ElIdx, Content, OptionCcds, EventName, PromotionCode, PromotionParams, RegisterEndDate, CommentUseArea, LimitType
         ';
         $from = "
             FROM {$this->_table['event_lecture']}
@@ -799,6 +791,34 @@ class EventFModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 프로모션 부가정보 리스트
+     * @param $promotion_code
+     * @return mixed
+     */
+    public function listEventPromotionForOther($promotion_code)
+    {
+        $column = '
+        A.EpoIdx, A.PromotionCode, A.ProfIdx, A.SubjectIdx, A.OtherData1, A.OtherData2, A.OtherData3,
+        A.FileFullPath, A.FileRealName, A.OrderNum, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
+        G.SubjectName, H.ProfNickName, sample.wUnitIdx, PR.ReferValue, wLecUnit.wUnitIdx, MasterLecture.wAttachPath, wLecUnit.wUnitAttachFile, wLecUnit.wUnitAttachFileReal
+        ';
+        $from = "
+            FROM {$this->_table['event_promotion_otherinfo']} AS A
+            LEFT OUTER JOIN {$this->_table['product_subject']} AS G ON A.SubjectIdx = G.SubjectIdx
+            LEFT OUTER JOIN {$this->_table['professor']} AS H ON A.ProfIdx = H.ProfIdx
+            LEFT OUTER JOIN {$this->_table['product_lecture_sample']} AS sample ON A.OtherData1 = sample.ProdCode AND sample.IsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['wbs_cms_lecture_unit_combine']} AS wLecUnit ON sample.wUnitIdx = wLecUnit.wUnitIdx AND sample.IsStatus='Y' AND wLecUnit.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['wbs_cms_lecture']} AS MasterLecture ON wLecUnit.wLecIdx = MasterLecture.wLecIdx
+            LEFT OUTER JOIN {$this->_table['professor_reference']} AS PR ON A.ProfIdx = PR.ProfIdx AND PR.ReferType = 'lec_detail_img'
+        ";
+        $where = ' where A.PromotionCode = ? and A.IsStatus = "Y"';
+        $order_by_offset_limit = ' order by A.OrderNum asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();
     }
 
     private function __userAgent(&$agent_short, &$agent, &$platform)

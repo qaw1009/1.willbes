@@ -39,9 +39,16 @@ class ApplyUser extends \app\controllers\BaseController
         $search_PayStatusCcd = $this->_req('search_PayStatusCcd');
         $search_IsTake = $this->_req('search_IsTake');
         $search_fi = $this->_req('search_fi', true);
+        $search_site_code = $this->_req('search_site_code', true);
+
+        if($search_site_code){
+            $scode = $search_site_code;
+        } else {
+            $scode = $siteCode[0];
+        }
 
         $this->load->view('mocktest/apply/user/index', [
-            'siteCodeDef' => $siteCode[0],
+            'siteCodeDef' => $scode,
             'paymentStatus' => $codes[$paymentStatus],
             'applyType' => $codes[$applyType],
             'applyArea' => $applyArea,

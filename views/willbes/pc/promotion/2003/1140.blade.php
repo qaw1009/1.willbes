@@ -1202,7 +1202,7 @@
 
                 $links.not($active).each(function(){
                     $(this.hash).hide();
-                    $('#frm').height('1140px');
+                    $('#frm').height('400px');
                     $('#frm_713001').height('840px');
                     $('#frm_713004').height('840px');
                 });

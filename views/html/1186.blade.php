@@ -4,7 +4,7 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        span {vertical-align:auto}
+        
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,6 +17,7 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/

@@ -127,7 +127,7 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label col-md-1">내용</label>
+    <label class="control-label col-md-1-1">내용</label>
     <div class="col-md-7">
         <textarea id="promotion_content" name="promotion_content" class="form-control" rows="7" title="총평 내용" placeholder="">{!! $data['Content'] !!}</textarea>
     </div>

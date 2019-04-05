@@ -646,6 +646,21 @@ class On extends \app\controllers\FrontController
             $curriculum[$idx]['isstart'] = $isstart;
             $curriculum[$idx]['ispause'] = $ispause;
 
+            if(empty($row['wUnitAttachFile']) == false){
+                $curriculum[$idx]['downcount'] = $this->classroomFModel->getDownLog([
+                    'EQ' => [
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'OrderIdx' => $orderidx,
+                        'ProdCode' => $prodcode,
+                        'ProdCodeSub' => $prodcodesub,
+                        'wLecIdx' => $lec['wLecIdx'],
+                        'wUnitIdx' => $row['wUnitIdx']
+                    ]
+                ]);
+            } else {
+                $curriculum[$idx]['downcount'] = 0;
+            }
+
             if(empty($lec['MultipleApply']) == true){
                 // 무제한
                 $curriculum[$idx]['timeover'] = 'N';

@@ -26,7 +26,7 @@ class LectureModel extends WB_Model
             $column = ' count(*) as numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'A.wLecIdx,A.wLecName,A.wMakeYM,A.wAttachFile,A.wAttachPath,A.wRegDatm,A.wIsUse
+            $column = 'A.wLecIdx,A.wLecName,A.wMakeYM,A.wAttachFile,A.wAttachPath,A.wRegDatm,A.wIsUse,A.wScheduleCount
                             ,B.wCpName
                             ,C.wCcdName as wContentCcd_Name
                             ,D.wCcdName as wShootingCcd_Name

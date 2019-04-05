@@ -71,10 +71,10 @@
 
         <div class="evtCtnsBox wb_cts04" id="lect">
             <img src="https://static.willbes.net/public/images/promotion/superpass/1050_p5.jpg" alt="수강신청" usemap="#pass" />
-                <map name="pass">
-                    <area shape="rect" coords="302,1732,451,1791" href="{{ site_url('/pass/OffVisitPackage?cate_code=3010&campus_ccd=605001') }}" alt="일반11개월" target="_blank">
-                    <area shape="rect" coords="775,1732,927,1791" href="{{ site_url('/pass/OffVisitPackage?cate_code=3011&campus_ccd=605001') }}" alt="경행11개월" target="_blank">               
-                </map>
+            <map name="pass">
+                <area shape="rect" coords="518,1584,646,1731" href="{{ site_url('/pass/OffVisitPackage?cate_code=3010&campus_ccd=605001') }}" alt="일반10개월" target="_blank">
+                <area shape="rect" coords="833,1670,985,1729" href="{{ site_url('/pass/OffVisitPackage?cate_code=3011&campus_ccd=605001') }}" alt="경행10개월" target="_blank">               
+            </map>
         </div>
 
 

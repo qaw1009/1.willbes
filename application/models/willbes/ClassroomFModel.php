@@ -870,4 +870,29 @@ class ClassroomFModel extends WB_Model
         return true;
     }
 
+
+    /**
+     * 강좌 첨부파일 다운로드 횟수 읽어오기
+     * @param $cond
+     * @param bool $iscount
+     * @return mixed
+     */
+    public function getDownLog($cond, $iscount = true)
+    {
+        if($iscount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT * ";
+        }
+
+        $query .= " FROM {$this->_table['down_log']} ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $result = $this->_conn->query($query);
+
+        return ($iscount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
 }

@@ -6,6 +6,10 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        @if($__cfg['CateCode'] == '3008')
+        <div class="seaAcadTit">윌비스 KCG해양경찰학원</div>
+        @endif
+
         <div class="Section mt30">
             <div class="widthAuto bnrSec01">
                 <ul>
@@ -31,7 +35,7 @@
                 </a>
             </div>
         </div>
-
+        {{--
         <div class="Section mt8">
             <div class="widthAuto">
                 <a href="#none">
@@ -39,6 +43,7 @@
                 </a>
             </div>
         </div>
+        --}}
 
         <div class="Section mt95">
             <div class="widthAuto">

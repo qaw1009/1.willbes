@@ -44,7 +44,14 @@
         <div class="col-md-10">
             <div class="form-group">
                 <div class="col-md-1">관리자명</div>
-                <div class="col-md-2"><input type="text" class="form-control" id="admin_name" name="admin_name" value="{{$wAdmin_info['wAdminName']}}"></div>
+                <div class="col-md-5 form-inline">
+                    <input type="text" class="form-control" id="admin_name" name="admin_name" value="{{$wAdmin_info['wAdminName']}}">
+                    <select class="form-control" name="comment_ui_type_ccd">
+                    @foreach($data['arr_comment_ui_type_ccd'] as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-md-7">
@@ -66,6 +73,7 @@
             <tr>
                 <th>선택</th>
                 <th>No</th>
+                <th>댓글종류</th>
                 <th>이름</th>
                 <th>아이디</th>
                 <th>연락처</th>
@@ -118,7 +126,7 @@
                             return $datatable_comment.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }
                     }},
-
+                {'data' : 'temp_comment_ui_ccd_name'},
                 {'data' : 'temp_Name'},
                 {'data' : 'temp_MemId'},
                 {'data' : 'temp_Phone'},
@@ -135,7 +143,7 @@
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
                 {'data' : 'temp_isStatus', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">삭제</span>';
+                        return (data === 'Y') ? '<a href="#none" class="btn-delete" data-board-comment-idx="' + row.temp_idx + '"><span class="blue"><u>사용</u></span></a>' : '<span class="red">삭제</span>';
                     }}
             ]
         });
@@ -165,6 +173,24 @@
                 }
             }, showValidateError, addValidateComment, false, 'alert');
         });
+
+        $list_comment_table.on('click', '.btn-delete', function() {
+            var _url = '{{ site_url("/site/eventLecture/deleteComment/") }}' + $(this).data('board-comment-idx');
+            var data = {
+                '{{ csrf_token_name() }}' : $regi_comment_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE'
+            };
+
+            if (!confirm('해당 댓글을 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable_comment.draw();
+                }
+            }, showError, false, 'POST');
+        })
 
         // 공지등록
         $('.btn-evnet-notice').click(function () {

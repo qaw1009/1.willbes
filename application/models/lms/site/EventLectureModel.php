@@ -796,8 +796,9 @@ class EventLectureModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'A.CIdx, A.ElIdx, A.MemIdx, A.MemName, A.AdminIdx, A.CommentType, A.Comment AS eventComment, A.IsUse, A.IsStatus, A.RegDatm,
-                        B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail
+            $column = 'A.CIdx, A.ElIdx, A.MemIdx, A.MemName, A.AdminIdx, A.CommentType, A.CommentUiCcd, A.Comment AS eventComment, A.IsUse, A.IsStatus, A.RegDatm,
+                        B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail,
+                        fn_ccd_name(A.CommentUiCcd) AS CommentUiCcdName
             ';
 
             if ($is_count == 'excel') {
@@ -838,6 +839,7 @@ class EventLectureModel extends WB_Model
                 'MemName' => element('admin_name', $input),
                 'AdminIdx' => $admin_idx,
                 'CommentType' => 'A',
+                'CommentUiCcd' => element('comment_ui_type_ccd', $input),
                 'Comment' => element('event_comment', $input),
                 'RegAdminIdx' => $admin_idx,
                 'RegIp' => $reg_ip
@@ -853,6 +855,61 @@ class EventLectureModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    public function commentDelete($idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $event_comment_idx = $idx;
+            $admin_idx = $this->session->userdata('admin_idx');
+            $result = $this->_findEventCommentData($event_comment_idx);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $admin_idx,
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ])->where('CIdx', $event_comment_idx)->where('IsStatus', 'Y')->update($this->_table['event_comment']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 단일 이벤트 댓글 데이터 조회(데이터 update 발생 시 idx 검증)
+     * @param $idx
+     * @return mixed
+     */
+    private function _findEventCommentData($idx)
+    {
+        $column = 'CIdx';
+        $from = "
+            FROM {$this->_table['event_comment']}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'CIdx' => $idx,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->row_array();
+
+        return $query;
     }
 
     /**

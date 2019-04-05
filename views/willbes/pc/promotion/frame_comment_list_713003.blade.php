@@ -108,7 +108,7 @@
         <ul>
             @foreach($list as $row)
                 <li>
-                    <span class="crtImg emoticon_{{$row['EmoticonNo']}}">
+                    <span class="crtImg emoticon_{{ empty($row['EmoticonNo']) === true ? '1' : $row['EmoticonNo'] }}">
                         {{--<img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" alt=""/>--}}
                     </span>
                     <div class="crtReply">

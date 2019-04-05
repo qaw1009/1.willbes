@@ -172,9 +172,9 @@
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
                             <!--[회차] <input type="text" name="unitNumCount" id="unitNumCount" value="{{$data['wUnitCnt']}}" required="required" class="form-control" title="회차" style="width:70px;" readonly> 회//-->
-                            [강의수] <input type="text" name="unitNumLectureCount" id="unitNumLectureCount" value="{{$data['wUnitLectureCnt']}}" required="required" class="form-control" title="강의수" style="width:70px;" readonly> 강
+                            [강의수] <input type="text" name="unitNumLectureCount" id="unitNumLectureCount" value="{{$data['wUnitLectureCnt']}}" class="form-control" title="강의수" style="width:70px;" readonly> 강
                             &nbsp;&nbsp;
-                            [예정강의수] <input type="text" name="wScheduleCount" id="wScheduleCount" value="{{$data['wScheduleCount']}}" required="required" class="form-control" title="예상강의수" style="width:70px;" readonly> 강
+                            [예정강의수] <input type="text" name="wScheduleCount" id="wScheduleCount" value="{{$data['wScheduleCount']}}" class="form-control" title="예정강의수" style="width:70px;" readonly> 강
                         </div>
                     </div>
                 </div>

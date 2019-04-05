@@ -413,7 +413,7 @@
                             <td class="w-lec">강의명이 출력됩니다.</td>
                             <td class="w-page">10p~15p</td>
                             <td class="w-file">
-                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                <a href="#none"><img src="{{ img_url('prof/icon_down.png') }}"></a>
                             </td>
                             <td class="w-free mypage">
                                 <div class="tBox NSK t3 white"><a href="">WIDE</a></div>
@@ -429,7 +429,7 @@
                             <td class="w-lec">강의명이 출력됩니다.</td>
                             <td class="w-page">5p~15p</td>
                             <td class="w-file">
-                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                <a href="#none"><img src="{{ img_url('prof/icon_down.png') }}"></a>
                             </td>
                             <td class="w-free mypage">
                                 <div class="tBox NSK t3 white"><a href="">WIDE</a></div>

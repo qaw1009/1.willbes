@@ -265,7 +265,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         $file_data = $this->downloadFModel->getFileData($event_idx, $file_idx, 'prof_reference');
         if (empty($file_data) === true) {
-            show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
+            show_alert('조회된 파일이 없습니다.', 'close', '');
         }
 
         $file_path = $file_data['FilePath'] . $file_data['FileName'];

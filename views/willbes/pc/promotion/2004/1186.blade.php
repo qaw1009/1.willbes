@@ -160,7 +160,7 @@
 
           {{--소방학개론/소방관계법규 김종상--}}
           <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152494') }}" target="_blank">2019 소방직 소방학개론 및 총평&해설자료 ></a></span>
-          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152495') }}" target="_blank">2019 소방직 소방관계법규 및 총평&해설자료 ></a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152495') }}" target="_blank">2019 소방직 공채 소방관계법규 및 총평&해설자료 ></a></span>
           <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152496') }}" target="_blank">2019 소방직 경채 소방관계법규 및 총평&해설자료 ></a></span>
 
           {{--영어 이현정--}}

@@ -113,7 +113,7 @@
     @php
         $now = date('YmdHis');
         $show_date_tab3 = '20190406110000';
-        $show_date_tab4 = '20190408000000';
+        $show_date_tab4 = '20190408100000';
         $show_type_tab3 = 'open';
         $show_type_tab4 = 'open';
 

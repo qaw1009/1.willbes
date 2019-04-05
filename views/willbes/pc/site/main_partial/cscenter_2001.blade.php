@@ -40,6 +40,16 @@
                         공휴일/일요일휴무<br/>
                     </div>
                 </li>
+                {{--해양경찰특채--}}
+                <li>
+                    <div class="nTit">학원 수강문의</div>
+                    <div class="nNumber tx-color">1522-8112</div>
+                    <div class="nTxt">
+                        [운영시간]<br/>
+                        평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                        공휴일/일요일휴무<br/>
+                    </div>
+                </li>
                 <li>
                     <div class="nTit">교재문의</div>
                     <div class="nNumber tx-color">1544-4944</div>
@@ -49,7 +59,8 @@
                         공휴일/일요일휴무<br/>
                     </div>
                 </li>
-                {{--<li>
+                {{--
+                <li>
                     <div class="nTit">학원 고객센터</div>
                     <div class="nNumber tx-color">1544-0330</div>
                     <div class="nTxt">
@@ -57,7 +68,8 @@
                         월-토: 09시~ 22시<br/>
                         일요일: 09시~ 20시<br/>
                     </div>
-                </li>--}}
+                </li>
+                --}}
             </ul>
         </dt>
     </dl>

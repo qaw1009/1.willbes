@@ -28,7 +28,7 @@ class EventFModel extends WB_Model
         'lms_member' => 'lms_member',
         'product_lecture_sample' => 'lms_product_lecture_sample',
         'pms_professor' => 'wbs_pms_professor',
-        'wbs_cms_lecture_unit_combine' => 'wbs_cms_lecture_unit_combine',
+        'wbs_cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'wbs_cms_lecture' => 'wbs_cms_lecture'
     ];
     public $_request_type = [
@@ -810,7 +810,7 @@ class EventFModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['product_subject']} AS G ON A.SubjectIdx = G.SubjectIdx
             LEFT OUTER JOIN {$this->_table['professor']} AS H ON A.ProfIdx = H.ProfIdx
             LEFT OUTER JOIN {$this->_table['product_lecture_sample']} AS sample ON A.OtherData1 = sample.ProdCode AND sample.IsStatus='Y'
-            LEFT OUTER JOIN {$this->_table['wbs_cms_lecture_unit_combine']} AS wLecUnit ON sample.wUnitIdx = wLecUnit.wUnitIdx AND sample.IsStatus='Y' AND wLecUnit.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['wbs_cms_lecture_unit']} AS wLecUnit ON sample.wUnitIdx = wLecUnit.wUnitIdx AND sample.IsStatus='Y' AND wLecUnit.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['wbs_cms_lecture']} AS MasterLecture ON wLecUnit.wLecIdx = MasterLecture.wLecIdx
             LEFT OUTER JOIN {$this->_table['professor_reference']} AS PR ON A.ProfIdx = PR.ProfIdx AND PR.ReferType = 'lec_detail_img'
         ";

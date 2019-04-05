@@ -36,7 +36,7 @@
             <div class="widthAuto">
                 <div class="will-big-Tit">
                     <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
-                    <div class="big NSK-Thin">오늘도 최선을 다하는 <span class="cop-color NSK-Black">윌비스 신광은 경찰팀</span></div>
+                    <div class="big NSK-Thin">오늘도 최선을 다하는 <span class="cop-color NSK-Black">윌비스 KCG 해양경찰학원</span></div>
                 </div>
                 <ul class="ProfCopBox mt60 mb100">
                     <li>

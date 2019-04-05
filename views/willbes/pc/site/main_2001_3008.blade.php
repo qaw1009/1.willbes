@@ -7,10 +7,14 @@
         @include('willbes.pc.layouts.partial.site_menu')
 
         @if($__cfg['CateCode'] == '3008')
-        <div class="seaAcadTit">윌비스 KCG해양경찰학원</div>
+        <div class="Section">
+            <div class="widthAuto">
+                <div class="seaAcadTit">윌비스 KCG해양경찰학원</div>
+            </div>
+        </div>       
         @endif
 
-        <div class="Section mt30">
+        <div class="Section">
             <div class="widthAuto bnrSec01">
                 <ul>
                     <li><a href="{{ site_url('/promotion/index/cate/3007/code/1037') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_01.jpg') }}" title="해양경찰 특채PASS"></a></li>

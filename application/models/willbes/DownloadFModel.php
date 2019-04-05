@@ -68,6 +68,22 @@ class DownloadFModel extends WB_Model
                     'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
                 ];
                 break;
+            case "prof_reference":
+                $column = 'b.wAttachPath AS FilePath, a.wUnitAttachFile AS FileName, a.wUnitAttachFileReal AS RealFileName';
+                $table = "
+                wbs_cms_lecture_unit AS a
+                INNER JOIN wbs_cms_lecture AS b ON a.wLecIdx = b.wLecIdx
+                ";
+                $arr_condition = [
+                    'RAW' => [
+                        'a.wUnitIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx
+                    ],
+                    'EQ' => [
+                        'a.wIsUse' => 'Y', 'a.wIsStatus' => 'Y',
+                        'b.wIsUse' => 'Y', 'b.wIsStatus' => 'Y'
+                    ]
+                ];
+                break;
             default:
                 return null;
                 break;

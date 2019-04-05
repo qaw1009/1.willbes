@@ -45,6 +45,12 @@
 
             <div class="promotion">
                 <div class="form-group">
+                    <label class="control-label col-md-1-1">내용</label>
+                    <div class="form-control-static col-md-10">
+                        {!! $data['Content'] !!}
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-1-1">추가 파라미터(GET방식) </label>
                     <div class="form-control-static col-md-10">{{ $data['PromotionParams'] }}</div>
                 </div>

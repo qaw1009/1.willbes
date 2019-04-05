@@ -187,8 +187,14 @@ class EventLectureModel extends WB_Model
             $option_ccds = element('option_ccds', $input);
             $comment_use_area = element('comment_use_area', $input);
             $comment_ui_type_ccds = element('comment_ui_type_ccds', $input);
-
             $ordering = element('Ordering', $input);
+            $request_type = element('request_type', $input);    //신청유형
+
+            if ($this->_request_type_names[$request_type] == '프로모션') {
+                $content = element('promotion_content', $input);
+            } else {
+                $content = element('content', $input);
+            }
 
             if (empty($option_ccds) === false) {
                 foreach ($option_ccds as $key => $val) {
@@ -252,7 +258,7 @@ class EventLectureModel extends WB_Model
                 'IsUse' => element('is_use', $input),
                 'EventName' => element('event_name', $input),
                 'ContentType' => element('content_type', $input),
-                'Content' => element('content', $input),
+                'Content' => $content,
                 'OptionCcds' => $set_option_ccd,
                 'LimitType' => element('limit_type', $input),
                 'SelectType' => element('select_type', $input),
@@ -409,9 +415,15 @@ class EventLectureModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $el_idx = element('el_idx', $input);
             $ordering = element('Ordering', $input);
-
             $evnet_category_data = element('cate_code', $input);
             $option_ccds = element('option_ccds', $input);
+            $request_type = element('request_type', $input);    //신청유형
+
+            if ($this->_request_type_names[$request_type] == '프로모션') {
+                $content = element('promotion_content', $input);
+            } else {
+                $content = element('content', $input);
+            }
 
             if (empty($option_ccds) === false) {
                 foreach ($option_ccds as $key => $val) {
@@ -480,7 +492,7 @@ class EventLectureModel extends WB_Model
                 'IsUse' => element('is_use', $input),
                 'EventName' => element('event_name', $input),
                 'ContentType' => element('content_type', $input),
-                'Content' => element('content', $input),
+                'Content' => $content,
                 'OptionCcds' => $set_option_ccd,
                 'LimitType' => element('limit_type', $input),
                 'SelectType' => element('select_type', $input),

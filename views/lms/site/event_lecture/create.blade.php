@@ -643,6 +643,7 @@
             // ajax submit
             $regi_form.submit(function() {
                 getEditorBodyContent($editor_profile);
+                getEditorBodyContent($promotion_editor_profile);
                 var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {

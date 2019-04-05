@@ -9,7 +9,7 @@
         @if($__cfg['CateCode'] == '3008')
         <div class="Section NGR">
             <div class="widthAuto">
-                <div class="seaAcadTit">윌비스 <span>KCG해양경찰학원</span></div>
+                <div class="seaAcadTit">윌비스 <strong>KCG해양경찰학원</strong></div>
             </div>
         </div>       
         @endif

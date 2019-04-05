@@ -46,23 +46,23 @@
         .evt01 .lecture ul:after {
             content:""; display:block; clear:both;
         }
-        /*
+        
         .evt01 div {position:relative; width:1120px; margin:0 auto}
         .evt01 div span {position:absolute; left:463px; display:block; width:433px; height:67px; line-height:67px; z-index:10}
         .evt01 div span:nth-child(1) {top:220px}
-        .evt01 div span:nth-child(2) {top:300px}
-        .evt01 div span:nth-child(3) {top:620px}
-        .evt01 div span:nth-child(4) {top:700px}
-        .evt01 div span:nth-child(5) {top:780px}
-        .evt01 div span:nth-child(6) {top:860px}
-        .evt01 div span:nth-child(7) {top:1170px}
-        .evt01 div span:nth-child(8) {top:1250px}
-        .evt01 div span:nth-child(9) {top:1330px}
-        .evt01 div span:nth-child(10) {top:1710px}
+
+        .evt01 div span:nth-child(2) {top:620px}
+        .evt01 div span:nth-child(3) {top:700px}
+        .evt01 div span:nth-child(4) {top:780px}
+
+        .evt01 div span:nth-child(5) {top:1170px}
+        .evt01 div span:nth-child(6) {top:1250px}
+
+        .evt01 div span:nth-child(7) {top:1710px}
         .evt01 div span:nth-child(11) {top:1790px}
         .evt01 div span a {display:block; text-align:center; color:#333; background:#fff; font-size:18px; font-weight:600; border:1px solid #ff5d7a !important;}
         .evt01 div span a:hover {color:#fff; background:#ff5d7a}
-        */
+        
 		    .evt02 {background:#fff;}
 
     </style>
@@ -73,6 +73,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2019/04/1186_top.png" title="소방전담 교수님의 완벽분석 해설강의">
       </div>
       <div class="evtCtnsBox evt01">
+        {{--
         <div class="lecture">
           <ul>
               <li>
@@ -151,26 +152,27 @@
               </li>
           </ul>
         </div>
-        <!--  
+        --}}
+          
         <div>          
           {{--국어 김새령--}}
-          <span><a href="#">2019 소방직 국어 해설강의 보기</a></span>
-          <span><a href="#">총평&amp;해설자료 Download</a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152486') }}" target="_blank">2019 소방직 국어 해설강의 및 총평&해설자료 ></a></span>
+
           {{--소방학개론/소방관계법규 김종상--}}
-          <span><a href="#">2019 소방직 소방학개론 해설강의 보기</a></span>
-          <span><a href="#">2019 소방직 소방관계법규 해설강의 보기</a></span>
-          <span><a href="#">2019 소방직 경채 소방관계법규 해설강의 보기</a></span>
-          <span><a href="#">총평&amp;해설자료 Download</a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152494') }}" target="_blank">2019 소방직 소방학개론 및 총평&해설자료 ></a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152495') }}" target="_blank">2019 소방직 소방관계법규 및 총평&해설자료 ></a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152496') }}" target="_blank">2019 소방직 경채 소방관계법규 및 총평&해설자료 ></a></span>
+
           {{--영어 이현정--}}
-          <span><a href="#">2019 소방직 공채 영어 해설강의 보기</a></span>
-          <span><a href="#">2019 소방직 경채 영어 해설강의 보기</a></span>
-          <span><a href="#">총평&amp;해설자료 Download</a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152497') }}" target="_blank">2019 소방직 공채 영어 및 총평&해설자료 ></a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152498') }}" target="_blank">2019 소방직 경채 영어 및 총평&해설자료 ></a></span>
+
           {{--한국사 한경준--}}
-          <span><a href="#">2019 소방직 한국사 해설강의 보기</a></span>
-          <span><a href="#">총평&amp;해설자료 Download</a></span>
+          <span><a href="{{ site_url('/lecture/show/cate/3023/pattern/free/prod-code/152491') }}" target="_blank">2019 소방직 한국사 및 총평&해설자료 ></a></span>
+
           <img src="https://static.willbes.net/public/images/promotion/2019/04/1186_01.png" usemap="#1186_01" title="소방직 해설강의" border="0">
         </div>
-      -->
+      
       </div>
 	  
 	  <div class="evtCtnsBox evt02">

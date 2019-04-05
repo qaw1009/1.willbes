@@ -6,7 +6,15 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section mt30">
+        @if($__cfg['CateCode'] == '3008')
+        <div class="Section NGR">
+            <div class="widthAuto">
+                <div class="seaAcadTit">윌비스 <strong>KCG해양경찰학원</strong></div>
+            </div>
+        </div>       
+        @endif
+
+        <div class="Section">
             <div class="widthAuto bnrSec01">
                 <ul>
                     <li><a href="{{ site_url('/promotion/index/cate/3007/code/1037') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_01.jpg') }}" title="해양경찰 특채PASS"></a></li>
@@ -31,14 +39,15 @@
                 </a>
             </div>
         </div>
-
+        
         <div class="Section mt8">
             <div class="widthAuto">
                 <a href="#none">
-                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="합격은 공득인이 정답입니다.">
+                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_02.jpg') }}" title="면접에 필요한 전공 특강!! 공채 필수 강좌!! 곧 오픈됩니다.">
                 </a>
             </div>
         </div>
+        
 
         <div class="Section mt95">
             <div class="widthAuto">

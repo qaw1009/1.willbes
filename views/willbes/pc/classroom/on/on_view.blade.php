@@ -130,7 +130,13 @@
                                 <td class="w-page">{{$row['wBookPage']}}</td>
                                 <td class="w-file">
                                     @if(empty($row['wUnitAttachFile']) == false)
-                                        <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                        <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">
+                                            @if($row['downcount'] > 0)
+                                                <img src="{{ img_url('prof/icon_down.png') }}">
+                                            @else
+                                                <img src="{{ img_url('prof/icon_file.gif') }}">
+                                            @endif
+                                        </a>
                                     @endif
                                 </td>
                                 <td class="w-free mypage">

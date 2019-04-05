@@ -276,7 +276,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th class="Tit">간부경찰</th>
+                                <th class="Tit">경찰간부</th>
                                 <td>
                                     <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">신림(한림법학원)</a>
                                 </td>

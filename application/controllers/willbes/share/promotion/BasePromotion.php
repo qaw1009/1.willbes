@@ -26,8 +26,8 @@ class BasePromotion extends \app\controllers\FrontController
         //인증식별자
         //$cert_idx = element('cert', $this->_reqG(null), '');
 
+        //프로모션데이터 조회
         $data = $this->eventFModel->findEventForPromotion($arr_base['promotion_code'], $test_type);
-
         if (empty($data) === true) {
             show_alert('조회에 실패했습니다.', 'back');
         }
@@ -42,6 +42,9 @@ class BasePromotion extends \app\controllers\FrontController
         if ($test_type != 1) {
             $this->eventFModel->saveLogPromotion($this->_site_code, $this->_cate_code, $arr_base['promotion_code']);
         }
+
+        // 프로모션 부가정보 조회
+        $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
 
         $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing';
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
@@ -249,6 +252,27 @@ class BasePromotion extends \app\controllers\FrontController
         public_download($file_path, $file_name);
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
+    }
+
+    /**
+     * 보조자료 다운로드
+     */
+    public function downloadReference()
+    {
+        $file_idx = $this->_reqG('file_idx');
+        $event_idx = $this->_reqG('event_idx');
+        $this->downloadFModel->saveLogEvent($event_idx);
+
+        $file_data = $this->downloadFModel->getFileData($event_idx, $file_idx, 'prof_reference');
+        if (empty($file_data) === true) {
+            show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
+        }
+
+        $file_path = $file_data['FilePath'] . $file_data['FileName'];
+        $file_name = $file_data['RealFileName'];
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
     }
 
     public function popup($param = [])

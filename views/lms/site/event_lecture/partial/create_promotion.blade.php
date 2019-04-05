@@ -73,7 +73,7 @@
                         <th>과목</th>
                         <th>추가정보(TEXT)</th>
                         <th>추가정보(값)</th>
-                        <th>자료파일</th>
+                        <th>첨부파일</th>
                         <th>노출순서</th>
                         <th>삭제</th>
                     </tr>
@@ -102,8 +102,8 @@
                                         @endforeach
                                     </select>
                                 </td>
-                                <td><input type="text" name="other_data_1[]" class="form-control" title="일반텍스트" style="width: 230px;" value="{{$row['OtherData1']}}"></td>
-                                <td><input type="text" name="other_data_2[]" class="form-control" title="해설강의경로" style="width: 230px;" value="{{$row['OtherData2']}}"></td>
+                                <td><input type="text" name="other_data_1[]" class="form-control" title="추가정보" style="width: 230px;" value="{{$row['OtherData1']}}"></td>
+                                <td><input type="text" name="other_data_2[]" class="form-control" title="추가정보" style="width: 230px;" value="{{$row['OtherData2']}}"></td>
                                 <td>
                                     @if(empty($row['FileRealName']) === true)
                                         <input type="file" name="other_attach_file[]" class="form-control input-file" title="첨부"/>
@@ -129,7 +129,7 @@
 <div class="form-group">
     <label class="control-label col-md-1">내용</label>
     <div class="col-md-7">
-        <textarea id="promotion_content" name="content" class="form-control" rows="7" title="총평 내용" placeholder="">{!! $data['Content'] !!}</textarea>
+        <textarea id="promotion_content" name="promotion_content" class="form-control" rows="7" title="총평 내용" placeholder="">{!! $data['Content'] !!}</textarea>
     </div>
 </div>
 
@@ -151,8 +151,8 @@
             add_lists = '<tr id="temp-promotion-other-'+temp_other_idx+'">';
             add_lists += '<td><input type="hidden" name="epo_idx[]" value=""><input type="hidden" name="other_prof_idx[]" value="'+$('#set_other_data_1').val()+'">'+$("#set_other_data_1 option:selected").text()+'</td>';
             add_lists += '<td><input type="hidden" name="other_subject_idx[]" value="'+$('#set_other_data_2').val()+'">'+$("#set_other_data_2 option:selected").text()+'</td>';
-            add_lists += '<td><input type="text" name="other_data_1[]" class="form-control" title="일반텍스트" style="width: 230px;"/></td>';
-            add_lists += '<td><input type="text" name="other_data_2[]" class="form-control" title="해설강의경로" style="width: 230px;"/></td>';
+            add_lists += '<td><input type="text" name="other_data_1[]" class="form-control" title="추가정보" style="width: 230px;"/></td>';
+            add_lists += '<td><input type="text" name="other_data_2[]" class="form-control" title="추가정보" style="width: 230px;"/></td>';
             add_lists += '<td><input type="file" name="other_attach_file[]" class="form-control input-file" title="첨부"/></td>';
             add_lists += '<td><input type="text" name="other_order_num[]" class="form-control" title="노출순서" style="width: 50px;"/></td>';
             add_lists += '<td><a href="#none" class="btn-promotion-other-delete" data-temp-tr-idx="'+temp_other_idx+'"><i class="fa fa-times fa-lg red"></i></a></td>';

@@ -134,13 +134,13 @@
                             return (data === null) ? '없음' : data;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_PayStatusCcd=676001&search_fi='+row.ProdCode+'" target="_new">'+ row.pay_count +'</a>';
+                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_PayStatusCcd=676001&search_fi='+row.ProdCode+'&search_site_code='+$('#search_site_code').val()+'" target="_new">'+ row.pay_count +'</a>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_PayStatusCcd=676006&search_fi='+row.ProdCode+'" target="_new">'+ row.refund_count +'</a>';
+                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_PayStatusCcd=676006&search_fi='+row.ProdCode+'&search_site_code='+$('#search_site_code').val()+'" target="_new">'+ row.refund_count +'</a>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_IsTake=Y&search_fi='+row.ProdCode+'" target="_new">'+ row.take_count +'</a>';
+                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_IsTake=Y&search_fi='+row.ProdCode+'&search_site_code='+$('#search_site_code').val()+'" target="_new">'+ row.take_count +'</a>';
                         }},
                 ]
             });

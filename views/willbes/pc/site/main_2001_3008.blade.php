@@ -26,7 +26,15 @@
 
         <div class="Section mt8">
             <div class="widthAuto">
-                <a href="/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0">
+                <a href="{{ site_url('/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}">
+                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="합격은 공득인이 정답입니다.">
+                </a>
+            </div>
+        </div>
+
+        <div class="Section mt8">
+            <div class="widthAuto">
+                <a href="#none">
                     <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="합격은 공득인이 정답입니다.">
                 </a>
             </div>
@@ -49,7 +57,7 @@
                     <li>
                         <img src="{{ img_url('cop_sea_special/prof/prof_gdi2.jpg') }}" title="공득인">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">>▶</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
                             <li><a href="/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0
 " target="_blank">교수소개</a></li>
                         </ul>

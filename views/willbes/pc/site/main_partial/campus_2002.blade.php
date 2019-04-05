@@ -48,7 +48,7 @@
                                         </div>
                                     </dt>
                                     <dt>
-                                        <div class="c-tit"><span class="tx-color">전북 익산</span> 캠퍼스 오시는 길</div>
+                                        <div class="c-tit"><span class="tx-color">전북 전주</span> 캠퍼스 오시는 길</div>
                                         <div class="c-info">
                                             <div class="address">
                                                 <span class="a-tit">주소</span>

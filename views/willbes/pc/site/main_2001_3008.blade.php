@@ -26,7 +26,15 @@
 
         <div class="Section mt8">
             <div class="widthAuto">
-                <a href="/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0">
+                <a href="{{ site_url('/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}">
+                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="합격은 공득인이 정답입니다.">
+                </a>
+            </div>
+        </div>
+
+        <div class="Section mt8">
+            <div class="widthAuto">
+                <a href="#none">
                     <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="합격은 공득인이 정답입니다.">
                 </a>
             </div>
@@ -36,7 +44,7 @@
             <div class="widthAuto">
                 <div class="will-big-Tit">
                     <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
-                    <div class="big NSK-Thin">오늘도 최선을 다하는 <span class="cop-color NSK-Black">윌비스 신광은 경찰팀</span></div>
+                    <div class="big NSK-Thin">오늘도 최선을 다하는 <span class="cop-color NSK-Black">윌비스 KCG 해양경찰학원</span></div>
                 </div>
                 <ul class="ProfCopBox mt60 mb100">
                     <li>
@@ -49,7 +57,7 @@
                     <li>
                         <img src="{{ img_url('cop_sea_special/prof/prof_gdi2.jpg') }}" title="공득인">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">>▶</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
                             <li><a href="/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0
 " target="_blank">교수소개</a></li>
                         </ul>

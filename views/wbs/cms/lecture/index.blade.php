@@ -65,10 +65,11 @@
                     <th>CP사</th>
                     <th>콘텐츠유형 </th>
                     <th>마스터강의명[코드] </th>
-                    <th>업로드 </th>
+                    <th width="30">업로드</th>
+                    <th width="50">예정강의수</th>
                     <th>진행상태 </th>
                     <th>제작월 </th>
-                    <th>사용여부 </th>
+                    <th width="30">사용여부 </th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>복사</th>
@@ -121,6 +122,7 @@
                     {'data' : 'wUnitCnt', 'render' : function(data, type, row, meta) {
                             return '<a href="#" class="btn-unit" data-idx="' + row.wLecIdx + '"><u>' + data + '</u></a>';
                         }},
+                    {'data' : 'wScheduleCount'},
                     {'data' : 'wProgressCcd_Name'},
                     {'data' : 'wMakeYM'},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {

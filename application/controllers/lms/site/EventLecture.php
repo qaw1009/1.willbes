@@ -366,6 +366,9 @@ class EventLecture extends \app\controllers\BaseController
         // 접수상태
         $data['IsRegisterName'] = (empty($this->eventLectureModel->_is_register_names[$data['IsRegister']]) === true) ? '' : $this->eventLectureModel->_is_register_names[$data['IsRegister']];
 
+        //댓글UI종류
+        $data['arr_comment_ui_type_ccd'] = $this->codeModel->getCcd($this->_groupCcd['CommentUiType']);
+
         // 카테고리 연결 데이터 조회
         $arr_cate_code = $this->eventLectureModel->listEventCategory($el_idx);
         $data['CateCodes'] = $arr_cate_code;
@@ -476,6 +479,7 @@ class EventLecture extends \app\controllers\BaseController
                 foreach ($data_notice as $key => $row) {
                     $list_notice[$key]['temp_type'] = 'notice';
                     $list_notice[$key]['temp_idx'] = $row['BoardIdx'];
+                    $list_comment[$key]['temp_comment_ui_ccd_name'] = null;
                     $list_notice[$key]['temp_Name'] = $row['wAdminName'];
                     $list_notice[$key]['temp_Title'] = $row['Title'];
                     $list_notice[$key]['temp_RegDatm'] = $row['RegDatm'];
@@ -496,6 +500,7 @@ class EventLecture extends \app\controllers\BaseController
                 foreach ($data_comment as $key => $row) {
                     $list_comment[$key]['temp_type'] = 'comment';
                     $list_comment[$key]['temp_idx'] = $row['CIdx'];
+                    $list_comment[$key]['temp_comment_ui_ccd_name'] = $row['CommentUiCcdName'];
                     $list_comment[$key]['temp_Name'] = $row['MemName'];
                     $list_comment[$key]['temp_Title'] = $row['eventComment'];
                     $list_comment[$key]['temp_RegDatm'] = $row['RegDatm'];
@@ -553,6 +558,7 @@ class EventLecture extends \app\controllers\BaseController
             ['field' => 'comment_el_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'admin_name', 'label' => '관리자명', 'rules' => 'trim|required'],
             ['field' => 'event_comment', 'label' => '댓글', 'rules' => 'trim|required'],
+            ['field' => 'comment_ui_type_ccd', 'label' => '댓글유형', 'rules' => 'trim|required'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -562,6 +568,25 @@ class EventLecture extends \app\controllers\BaseController
         $result = $this->eventLectureModel->addEventComment($this->_reqP(null, false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 게시판 삭제
+     * @param array $params
+     */
+    public function deleteComment($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->eventLectureModel->commentDelete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
     }
 
     /**

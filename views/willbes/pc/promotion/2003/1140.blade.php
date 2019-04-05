@@ -1171,7 +1171,7 @@
                                         @if(empty($row['wUnitIdx']) === true && empty($row['wUnitAttachFile']) === true)
                                             추후 제공 예정입니다.
                                         @else
-                                            <a href="javascript:fnPlayerFree('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">
+                                            <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">
                                                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의">
                                             </a>
                                             @if(empty($row['wUnitAttachFile']) === false)

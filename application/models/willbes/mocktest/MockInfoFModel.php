@@ -258,11 +258,11 @@ class MockInfoFModel extends WB_Model
                         join {$this->_table['order']} o on op.OrderIdx = o.OrderIdx
                         join {$this->_table['sysCode']} sc1 on op.PayStatusCcd = sc1.Ccd
                         join {$this->_table['sysCode']} sc2 on o.PayRouteCcd = sc2.Ccd
-                        join {$this->_table['sysCode']} sc3 on o.PayMethodCcd = sc3.Ccd
+                        left join {$this->_table['sysCode']} sc3 on o.PayMethodCcd = sc3.Ccd
                         join {$this->_table['mockRegister']} mr on op.OrderProdIdx = mr.OrderProdIdx
                         join {$this->_table['sysCode']} sc4 on mr.TakeMockPart = sc4.Ccd
                         left outer join {$this->_table['sysCode']} sc5 on mr.TakeArea = sc5.Ccd
-                        left join {$this->_table['sysCode']} sc6 on mr.TakeForm = sc6.Ccd
+                        join {$this->_table['sysCode']} sc6 on mr.TakeForm = sc6.Ccd
                         join {$this->_table['mock_product']} pm on mr.ProdCode = pm.ProdCode";
 
         $where = "
@@ -271,7 +271,7 @@ class MockInfoFModel extends WB_Model
         $where .= $this->_conn->makeWhere(['EQ'=>['op.OrderProdIdx' => $order_prod_idx]])->getMakeWhere(true);
 
         $result = $this->_conn->query($select. $from. $where)->row_array();
-
+        //echo "<pre>".$this->_conn->last_query()."</pre>";
         return $result;
     }
 

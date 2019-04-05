@@ -1175,7 +1175,7 @@
                                                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의">
                                             </a>
                                             @if(empty($row['wUnitAttachFile']) === false)
-                                                <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}">
+                                                <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}" target="_blank">
                                                     <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료">
                                                 </a>
                                             @endif

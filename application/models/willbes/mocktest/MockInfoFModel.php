@@ -262,7 +262,7 @@ class MockInfoFModel extends WB_Model
                         join {$this->_table['mockRegister']} mr on op.OrderProdIdx = mr.OrderProdIdx
                         join {$this->_table['sysCode']} sc4 on mr.TakeMockPart = sc4.Ccd
                         left outer join {$this->_table['sysCode']} sc5 on mr.TakeArea = sc5.Ccd
-                        join {$this->_table['sysCode']} sc6 on mr.TakeForm = sc6.Ccd
+                        left join {$this->_table['sysCode']} sc6 on mr.TakeForm = sc6.Ccd
                         join {$this->_table['mock_product']} pm on mr.ProdCode = pm.ProdCode";
 
         $where = "
@@ -272,7 +272,6 @@ class MockInfoFModel extends WB_Model
 
         $result = $this->_conn->query($select. $from. $where)->row_array();
 
-        //echo $this->_conn->last_query();
         return $result;
     }
 

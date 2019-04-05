@@ -31,25 +31,28 @@
         </dt>
         <dt class="willbesNumber">
             <ul>
-                <li>
-                    <div class="nTit">온라인 수강문의</div>
-                    <div class="nNumber tx-color">1544-5006 <span>▶</span> 1</div>
-                    <div class="nTxt">
-                        [운영시간]<br/>
-                        평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                        공휴일/일요일휴무<br/>
-                    </div>
-                </li>
-                {{--해양경찰특채--}}
-                <li>
-                    <div class="nTit">학원 수강문의</div>
-                    <div class="nNumber tx-color">1522-8112</div>
-                    <div class="nTxt">
-                        [운영시간]<br/>
-                        평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                        공휴일/일요일휴무<br/>
-                    </div>
-                </li>
+                @if($__cfg['CateCode'] == '3008')
+                    {{--해양경찰특채--}}
+                    <li>
+                        <div class="nTit">학원 수강문의</div>
+                        <div class="nNumber tx-color">1522-8112</div>
+                        <div class="nTxt">
+                            [운영시간]<br/>
+                            평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                            공휴일/일요일휴무<br/>
+                        </div>
+                    </li>
+                @else
+                    <li>
+                        <div class="nTit">온라인 수강문의</div>
+                        <div class="nNumber tx-color">1544-5006 <span>▶</span> 1</div>
+                        <div class="nTxt">
+                            [운영시간]<br/>
+                            평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                            공휴일/일요일휴무<br/>
+                        </div>
+                    </li>
+                @endif
                 <li>
                     <div class="nTit">교재문의</div>
                     <div class="nNumber tx-color">1544-4944</div>

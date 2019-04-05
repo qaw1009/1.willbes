@@ -110,9 +110,26 @@
         }
     </style>
 
+    @php
+        $now = date('YmdHis');
+        $show_date_tab3 = '20190406110000';
+        $show_date_tab4 = '20190408000000';
+        $show_type_tab3 = 'open';
+        $show_type_tab4 = 'open';
 
-    <div class="evtContent NG" id="evtContainer">      
+        //실서버 반영
+        if (ENVIRONMENT == 'production') {
+            if ($now < $show_date_tab3) {
+                $show_type_tab3 = 'close';
+            }
 
+            if ($now < $show_date_tab4) {
+                $show_type_tab4 = 'close';
+            }
+        }
+    @endphp
+
+    <div class="evtContent NG" id="evtContainer">
         <div class="evtCtnsBox evtTop" >
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
         </div>
@@ -1171,96 +1188,68 @@
                 </ul>
             </div>
         </div>
-    
-        
-              
     </div>
     <!-- End Container --> 
 
     <script type="text/javascript">
-        var env = "{{ ENVIRONMENT }}";
-
-        var now = new Date();
-        var todayAtMidn = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes());
-
-        // Set start/end dates to a specified date (ISO format).
-        var startDate = new Date("2019-04-05T02:30:00Z");
-        var endDate = new Date("2099-06-09T15:20:00Z");
-
         /*tab*/
         $(document).ready(function(){
-
-
-
-        $('.evtMenu ul').each(function(){
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
-
-            $content = $($active[0].hash);
-
-
-            $links.not($active).each(function () {
-                $(this.hash).hide();
-            });
-        
-            // Bind the click event handler
-            $(this).on('click', 'a', function(e){
-
-            if(env == 'local' || env == 'development'){
-                $active.removeClass('active');
-                $content.hide();
-
-                $active = $(this);
-                $content = $(this.hash);
-
+            $('.evtMenu ul').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 $active.addClass('active');
-                $content.show();
+                $content = $($active[0].hash);
 
-                e.preventDefault();
-            } else {
+                $links.not($active).each(function(){
+                    $(this.hash).hide();
+                    $('#frm').height('1140px');
+                    $('#frm_713001').height('840px');
+                    $('#frm_713004').height('840px');
+                });
 
-                if($(this).attr('title') == 'tab1' || $(this).attr('title') == 'tab2'){
-                    $active.removeClass('active');
-                    $content.hide();
+                $(this).on('click', 'a', function(e){
+                    var open_type = 'false';
+                    var open_type3 = '{{ $show_type_tab3 }}';
+                    var open_type4 = '{{ $show_type_tab4 }}';
 
-                    $active = $(this);
-                    $content = $(this.hash);
+                    if($(this).attr('title') == 'tab1' || $(this).attr('title') == 'tab2') {
+                        open_type = 'true';
+                    } else {
+                        if($(this).attr('title') == 'tab3' && open_type3 == 'open') {
+                            open_type = 'true';
+                        }
 
-                    $active.addClass('active');
-                    $content.show();
+                        if($(this).attr('title') == 'tab4' && open_type4 == 'open') {
+                            open_type = 'true';
+                        }
+                    }
 
-                    e.preventDefault();
-                } else {
-                    // Compare the two dates by comparing the millisecond
-                    // representations.
-                    if (todayAtMidn.getTime() > startDate.getTime() &&
-                        todayAtMidn.getTime() < endDate.getTime()) {
-
+                    if (open_type == 'true') {
                         $active.removeClass('active');
                         $content.hide();
-
                         $active = $(this);
                         $content = $(this.hash);
-
                         $active.addClass('active');
                         $content.show();
-                    }
-                    else {
-                        alert('4월 6일 공개됩니다.');
-                    }
-                    e.preventDefault();
+                        e.preventDefault();
+                    } else {
+                        if($(this).attr('title') == 'tab3') {
+                            alert('4월 6일 공개됩니다.');
+                            return false;
+                        }
 
-                }
-
-            }
-            })})}
-        );
+                        if($(this).attr('title') == 'tab4') {
+                            alert('4월 8일 공개됩니다.');
+                            return false;
+                        }
+                    }
+                });
+            });
+        });
 
         function pullOpen(){
             var url = "{{front_url('/survey/index/2')}}";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
         }
-
     </script>
 @stop

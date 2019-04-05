@@ -39,15 +39,15 @@
                 </a>
             </div>
         </div>
-        {{--
+        
         <div class="Section mt8">
             <div class="widthAuto">
                 <a href="#none">
-                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="합격은 공득인이 정답입니다.">
+                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_02.jpg') }}" title="면접에 필요한 전공 특강!! 공채 필수 강좌!! 곧 오픈됩니다.">
                 </a>
             </div>
         </div>
-        --}}
+        
 
         <div class="Section mt95">
             <div class="widthAuto">

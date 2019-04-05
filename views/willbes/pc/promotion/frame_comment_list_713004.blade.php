@@ -66,13 +66,13 @@
         <ul>
             @foreach($list as $row)
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/common/icon_re0{{$row['EmoticonNo']}}.png" title="쉬웠어요">
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_re0{{ empty($row['EmoticonNo']) === true ? '1' : $row['EmoticonNo'] }}.png" title="쉬웠어요">
                     <div>
                         <p>{!! hpSubString($row['MemName'],0,2,'*') !!} <span>{{$row['RegDatm']}}</span></p>
                         {!!nl2br($row['Content'])!!}
                     </div>
                     @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
-                        <a href="#none" class="btnDel" data-comment-idx="{{$row['Idx']}}">삭제</a>
+                        <a class="btnDel btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">삭제</a>
                     @endif
                 </li>
                 @php $paging['rownum']-- @endphp

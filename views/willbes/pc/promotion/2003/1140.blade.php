@@ -151,13 +151,13 @@
                 <li>
                     <a title='tab3' href="#tab3">
                         <span>2019 국가직 9급</span>
-                        <div>시험총평 및 시험후기 준비중</div>
+                        <div>시험총평 및 시험후기</div>
                     </a>
                 </li>     
                 <li>
                     <a title='tab4' href="#tab4">
                         <span>2019 국가직 9급</span>
-                        <div>기출해설강의 준비중</div>
+                        <div>기출해설강의</div>
                     </a>
                 </li>
             </ul>

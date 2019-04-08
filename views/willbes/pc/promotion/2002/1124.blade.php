@@ -47,7 +47,7 @@
 	<div class="evtCtnsBox wb_04" >
 		<img src="https://static.willbes.net/public/images/promotion/2019/04/1124_03.jpg"  alt="언론" usemap="#link2" />
 		<map name="link2" >
-			<area shape="rect" coords="80,523,287,576" href="{{ site_url('/promotion/index/cate/3001/code/1021') }}" alt="언론보도" />
+			<area shape="rect" coords="151,524,358,577" href="{{ site_url('/promotion/index/cate/3001/code/1021') }}" alt="언론보도" />
 		</map>
 	</div>
 		

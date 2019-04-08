@@ -1306,7 +1306,7 @@ class Player extends \app\controllers\FrontController
             if($type == 'download'){
                 $XMLString .= "<limit-date><![CDATA[".str_replace('-', '', $enddate)."235959]]></limit-date>";
             } else {
-                $XMLString .= "<position>" . ((is_numeric($data['LastPosition']) == true) ? $data['LastPosition'] : 0) . "</position>";
+                $XMLString .= "<position>" . ((is_numeric($row['LastPosition']) == true) ? $row['LastPosition'] : 0) . "</position>";
             }
             $XMLString .= "</content>";
         }
@@ -1578,7 +1578,7 @@ class Player extends \app\controllers\FrontController
                 $rtnData = [
                     'url' => $url,
                     'cc' => '',
-                    'position' => ((is_numeric($data['LastPosition']) == true) ? $data['LastPosition'] : 0),
+                    'position' => ((is_numeric($row['LastPosition']) == true) ? $row['LastPosition'] : 0),
                     'tracker' => '',
                     'title' => base64_encode(rawurlencode($title)),
                     'subpage' => '',

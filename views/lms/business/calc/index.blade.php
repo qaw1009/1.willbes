@@ -185,7 +185,7 @@
                         return '<a class="blue bold">' + decimalFormat(data, 0) + '</a>';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        var study_period = (typeof row.StudyPeriod !== 'undefined') ? row.StudyPeriod : '';
+                        var study_period = (typeof row.StudyPeriodMonth !== 'undefined') ? row.StudyPeriodMonth : '';
                         var btn_html = '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">상세보기</button>';
 
                         @if($calc_type == 'lecture' && $prod_type != 'PP')
@@ -228,7 +228,7 @@
             // 정산엑셀다운로드 버튼 클릭
             $list_table.on('click', '.btn-calc-excel', function(event) {
                 event.preventDefault();
-                //if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
                     // 교수검색 조건 초기화
                     $search_form.find('select[name="search_prof_idx"]').val('');
 
@@ -238,7 +238,7 @@
                     arr_param.push({ 'name' : 'study_period', 'value' : $(this).data('study-period') });
 
                     formCreateSubmit('{{ site_url('/business/calc/' . $calc_type . '/calcExcel') }}', arr_param, 'POST');
-                //}
+                }
             });
 
             // 상세보기 버튼 클릭

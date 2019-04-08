@@ -346,9 +346,13 @@ class BaseCalc extends \app\controllers\BaseController
                         'O.SiteCode' => element('search_site_code', $params),
                         'OPP.ProfIdx' => $search_prof_idx,
                         'OPP.SubjectIdx' => $search_subject_idx,
-                        'PL.StudyPeriod' => $search_study_period
+                        //'PL.StudyPeriod' => $search_study_period  // my_lecture.LecExpireDay 컬럼으로 대체
                     ]
                 ];
+
+                if (empty($search_study_period) === false) {
+                    $arr_condition['BET']['ML.LecExpireDay'] = [$search_study_period * 30, ($search_study_period + 1) * 30 - 1];   // 개월수 * 30 ~ (개월수+1) * 30 - 1
+                }
                 break;
         }
 

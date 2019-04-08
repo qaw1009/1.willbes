@@ -133,12 +133,6 @@
                 slidesImg1.goToNextSlide();
             });
         });
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
     </script>
 
 @stop

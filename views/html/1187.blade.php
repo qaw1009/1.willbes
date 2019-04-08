@@ -23,8 +23,8 @@
         .skyBanner {position:absolute; top:200px;right:10px;z-index:10;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1187_top_bg.jpg) no-repeat center top;}
             .evtTopInmg {position:relative; width:1120px; margin:0 auto}
-            .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px}
-            .counter span {color:#fff200; font-size:30px;}
+            .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px; line-height:30px}
+            .counter span {color:#fff200; font-size:30px; vertical-align: text-bottom}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1187_01_bg.jpg) no-repeat center top}
         .evt01 div {position:relative; width:1120px; margin:0 auto}
         .evt01 div span {position:absolute; left:463px; display:block; width:433px; height:67px; line-height:67px; z-index:10}

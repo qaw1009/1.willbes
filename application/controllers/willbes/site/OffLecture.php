@@ -29,7 +29,7 @@ class OffLecture extends \app\controllers\FrontController
 
         /*  온라인신청 과 방문신청 분기*/
         if($class_type === 'offlecture') {
-            $_study_apply_ccds = ['654002', '654003']; //온라인 접수, 방문+온라인
+            $_study_apply_ccds = ['654001','654002', '654003']; //온라인 접수, 방문+온라인  : TODO 방문접수 까지 추가 (2019.04.05 - 최진영 차장 요청)
             $_view_page = 'site/off_lecture/index';
         } else {    //OffVisitLecture
             $_study_apply_ccds = ['654001', '654003']; //방문접수, 방문+온라인

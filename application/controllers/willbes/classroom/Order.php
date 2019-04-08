@@ -92,8 +92,8 @@ class Order extends \app\controllers\FrontController
         $order_idx = $results['order']['OrderIdx']; // 주문식별자
         $is_vbank = $results['order']['IsVBank'];   // 가상계좌 결제여부
 
-        // 가상계좌 결제가 아닐 경우 영수증 출력 URL 조회
-        if ($results['order']['PayRouteCcd'] == $this->orderListFModel->_pay_route_ccd['pg'] && $is_vbank == 'N') {
+        // PG사 결제완료일 경우 영수증 출력 URL 조회
+        if ($results['order']['PayRouteCcd'] == $this->orderListFModel->_pay_route_ccd['pg'] && empty($results['order']['CompleteDatm']) === false) {
             $pg_config_file = 'pg_' . config_app('PgDriver', 'inisis');
             $this->load->config($pg_config_file, true, true);
 

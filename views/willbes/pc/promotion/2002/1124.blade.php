@@ -32,7 +32,7 @@
     <div class="evtCtnsBox wb_01" id="main">
 		<img src="https://static.willbes.net/public/images/promotion/2019/04/1124_top.jpg"  alt="메인" usemap="#link1" />		
 		<map name="link1" >
-			<area shape="rect" coords="822,249,1028,434" href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1040') }}" alt="개강" />
+			<area shape="rect" coords="820,236,1026,421" href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1040') }}" alt="개강" />
 		</map>
 	</div>
 

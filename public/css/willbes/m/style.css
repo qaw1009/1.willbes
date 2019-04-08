@@ -2084,8 +2084,10 @@ body.memBody #Footer {
 .marking li:last-child div {margin-right:0}
 .marking ul:after {content:""; display:block; clear:both}
 
-.marking2 li {width:50%;}
+.marking2 li {width:50%; position: relative;}
+.marking2 li span {position: absolute; right:20px; top:30px}
 .marking3 li {width:33.33333%;}
+
 
 .markSbtn1 {width:100%; margin:1.5em auto; text-align:center;}
 .markSbtn1 a {display:inline-block; padding:0.5em 1em; background:#1087ef; color:#fff; font-weight:bold; border-radius:5px; border:1px solid #1087ef; margin:0 5px}

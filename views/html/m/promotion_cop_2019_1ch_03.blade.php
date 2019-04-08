@@ -169,7 +169,7 @@
                         <li>
                             <div>    
                                 <label>1 ~ 5번</label>
-                                <input value="" type="number" maxlength="5" name="" id="">
+                                <input value="" type="number" maxlength="5" name="" id="">                                
                             </div>
                         </li>
                         <li>
@@ -209,12 +209,14 @@
                             <div>    
                                 <label>공통과목1</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
+                                <span>점</span>
                             </div>
                         </li>
                         <li>
                             <div>    
                                 <label>공통과목2</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
+                                <span>점</span>
                             </div>
                         </li>
                     </ul>
@@ -225,18 +227,21 @@
                             <div>    
                                 <label>선택과목1</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
+                                <span>점</span>
                             </div>
                         </li>
                         <li>
                             <div>    
                                 <label>선택과목2</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
+                                <span>점</span>
                             </div>
                         </li>
                         <li>
                             <div>    
                                 <label>선택과목3</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
+                                <span>점</span>
                             </div>
                         </li>
                     </ul>

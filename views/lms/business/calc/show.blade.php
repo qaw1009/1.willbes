@@ -215,9 +215,6 @@
                     <th class="bold valign-middle">정산율(G)</th>
                     <th class="bold valign-middle">정산금액(H)<br/>(C-D-E)*G</th>
                 @endif
-                    <th class="bold valign-middle">소득세(I)<br/>H*0.03</th>
-                    <th class="bold valign-middle">주민세(J)<br/>I*0.1</th>
-                    <th class="bold blue valign-middle">지급액<br/>H-(I+J)</th>
                 </tr>
                 <tr class="bg-info">
                     <th colspan="5" class="text-center">합계</th>
@@ -257,9 +254,6 @@
                     <th></th>
                     <th id="sumH" class="sumTh"></th>
                 @endif
-                    <th id="sumI" class="sumTh"></th>
-                    <th id="sumJ" class="sumTh"></th>
-                    <th id="sumFinal" class="sumTh"></th>
                 </tr>
                 </thead>
                 <tbody class="bdt-line">
@@ -363,15 +357,6 @@
                     {'data' : 'ProdCalcPerc'},
                     {'data' : 'DivisionCalcPrice', 'render' : function(data, type, row, meta) {
                         return decimalFormat(data, 8);
-                    }},
-                    {'data' : 'DivisionIncomeTax', 'render' : function(data, type, row, meta) {
-                        return decimalFormat(data, 8);
-                    }},
-                    {'data' : 'DivisionResidentTax', 'render' : function(data, type, row, meta) {
-                        return decimalFormat(data, 8);
-                    }},
-                    {'data' : 'FinalCalcPrice', 'render' : function(data, type, row, meta) {
-                        return '<span class="bold blue no-line-height">' + decimalFormat(data, 8) + '</span>';
                     }}
                 ]
             });
@@ -386,9 +371,6 @@
                     $('#sumD').html(decimalFormat(json.sum_data.tDivisionPgFeePrice, 8));
                     $('#sumE').html(json.sum_data.tDivisionRefundPrice > 0 ? decimalFormat(json.sum_data.tDivisionRefundPrice, 8) : 0);
                     $('#sumH').html(decimalFormat(json.sum_data.tDivisionCalcPrice, 8));
-                    $('#sumI').html(decimalFormat(json.sum_data.tDivisionIncomeTax, 8));
-                    $('#sumJ').html(decimalFormat(json.sum_data.tDivisionResidentTax, 8));
-                    $('#sumFinal').html(addComma(json.sum_data.tFinalCalcPrice));
 
                     @if($arr_input['prod_type'] == 'PP')
                         {{-- 기간제패키지 --}}

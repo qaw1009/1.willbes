@@ -89,7 +89,7 @@
                             <option value="N">미사용</option>
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_w_is_use">
+                        <select class="form-control" id="search_w_is_use" name="search_w_is_use">
                             <option value="">사용여부(w)</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
@@ -97,8 +97,8 @@
                         &nbsp;
                         <select class="form-control" id="search_calc" name="search_calc">
                             <option value="">정산입력여부</option>
-                            <option value="1">입력</option>
-                            <option value="0">미입력</option>
+                            <option value="Y">입력</option>
+                            <option value="N">미입력</option>
                         </select>
                     </div>
                 </div>

@@ -462,7 +462,8 @@ class OrderCalcModel extends BaseOrderModel
             $in_column = 'if(O.CompleteDatm between ? and ?, OP.RealPayPrice, 0) as RealPayPrice
 				, if(O.CompleteDatm between ? and ?, OP.CardPayPrice, 0) as CardPayPrice
 				, if(OPR.RefundDatm between ? and ?, OPR.RefundPrice, 0) as RefundPrice
-				, PL.StudyPeriod, floor(PL.StudyPeriod / 30) as StudyPeriodMonth
+				#, PL.StudyPeriod, floor(PL.StudyPeriod / 30) as StudyPeriodMonth   #my_lecture.LecExpireDay 컬럼으로 대체
+				, ML.LecExpireDay as StudyPeriod, floor(ML.LecExpireDay / 30) as StudyPeriodMonth
 				, left(PC.CateCode, 4) as LgCateCode
 				, OPP.ProfIdx, OPP.SubjectIdx
 				, (select count(0) from ' . $this->_table['order_product_prof_subject'] . ' where OrderProdIdx = OP.OrderProdIdx) as ProfSubjectCnt
@@ -501,7 +502,7 @@ class OrderCalcModel extends BaseOrderModel
 
                 if ($is_count === 'sum') {
                     // 교수/과목별 합계일 경우만 (전체합계가 아닌 경우)
-                    $column .= ', U.ProfIdx, U.SubjectIdx, U.StudyPeriodMonth, max(U.StudyPeriod) as StudyPeriod, PSU.SubjectName, WPF.wProfName';
+                    $column .= ', U.ProfIdx, U.SubjectIdx, U.StudyPeriodMonth, PSU.SubjectName, WPF.wProfName';
                 }
             }
         }
@@ -537,6 +538,8 @@ class OrderCalcModel extends BaseOrderModel
 					on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
 				inner join ' . $this->_table['order_product_prof_subject'] . ' as OPP
 					on OP.OrderProdIdx = OPP.OrderProdIdx
+				inner join ' . $this->_table['my_lecture'] . ' as ML
+					on O.OrderIdx = ML.OrderIdx and OP.OrderProdIdx = ML.OrderProdIdx and OP.ProdCode = ML.ProdCode and OP.ProdCode = ML.ProdCodeSub					
 				left join ' . $this->_table['code'] . ' as CPM
 					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"							
 			where OP.RealPayPrice > 0

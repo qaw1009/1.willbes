@@ -117,7 +117,6 @@ class Counsel extends BaseBoard
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
                     'LB.ReplyContent' => $this->_reqP('search_replay_value'),
-
                     'MEM.MemId' => $this->_reqP('search_member_value'),
                     'MEM.MemName' => $this->_reqP('search_member_value'),
                     'MEM.Phone3' => $this->_reqP('search_member_value'),
@@ -126,7 +125,9 @@ class Counsel extends BaseBoard
         ];
 
         if ($this->_req('search_chk_delete_value') == '1') {
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsStatus' => 'N']);
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0', 'LB.IsStatus' => 'N']);
+        } else {
+            $arr_condition['ORG2']['RAW'] = ['LB.IsBest = ' => '0 OR (LB.IsBest = 1 AND LB.IsStatus = \'Y\')'];
         }
 
         if ($this->_req('search_chk_vod_value') == 1) {

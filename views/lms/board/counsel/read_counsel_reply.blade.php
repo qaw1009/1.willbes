@@ -86,7 +86,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">질문</label>
-                    <div class="form-control-static col-md-10">{!! $data['Content'] !!}</div>
+                    <div class="form-control-static col-md-10">{!! nl2br($data['Content']) !!}</div>
                 </div>
             </div>
         </div>

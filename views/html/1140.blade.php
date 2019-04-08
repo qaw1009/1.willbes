@@ -134,13 +134,13 @@
                 <li>
                     <a href="#tab3">
                         <span>2019 국가직 9급</span>
-                        <div>시험총평 및 시험후기 준비중</div>
+                        <div>시험총평 및 시험후기</div>
                     </a>
                 </li>     
                 <li>
                     <a href="#tab4">    
                         <span>2019 국가직 9급</span>
-                        <div>기출해설강의 준비중</div>
+                        <div>기출해설강의</div>
                     </a>
                 </li>
             </ul>
@@ -1275,8 +1275,7 @@
                             사회 문병일 교수<br>
                             <span>사회, 만점으로 가는<br>매직 로드</span> 
                             <p>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                            <p>추후 제공 예정입니다.</p> 
                             </p>
                         </div>
                     </li>                    
@@ -1286,8 +1285,9 @@
                             행정학 김덕관 교수<br>
                             <span>흐름에 따른 정리<br>점수와 지결되는 암기</span> 
                             <p>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                                <a href="{{ site_url('/lecture/show/cate/3019/pattern/free/prod-code/152487') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
+                               {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>--}}
                             </p>
                         </div>
                     </li>
@@ -1313,8 +1313,7 @@
                             무선공학 최우영 교수<br>
                             <span>차원이 다른<br>퉁신직의 대가</span> 
                             <p>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                            <p>추후 제공 예정입니다.</p> 
                             </p>
                         </div>
                     </li>
@@ -1332,8 +1331,7 @@
                             식용작물 장사원 교수<br>
                             <span>농업직렬<br>4관왕 석권</span> 
                             <p>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                            <p>추후 제공 예정입니다.</p> 
                             </p>
                         </div>
                     </li>                    

@@ -263,7 +263,7 @@ class RefundProc extends BaseOrder
         $column = 'OP.CardPayPrice, P.ProdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName
             , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice
             , fn_product_unit_lecture_cnt(OP.ProdCode) as TotalUnitLectureCnt
-            , (select count(0) from ' . $this->orderListModel->_table['lecture_studyinfo'] . ' where OrderIdx = O.OrderIdx and OrderProdIdx = OP.OrderProdIdx and ProdCode = OP.ProdCode and ProdCodeSub = OP.ProdCode) as StudyUnitLectureCnt
+            , fn_order_study_unit_lecture_cnt(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode) as StudyUnitLectureCnt
             , fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode, 1) as MyLecData';
         $data = $this->orderListModel->findOrderProduct($arr_condition, $column, 1, 0);
         if (empty($data) === true) {

@@ -57,7 +57,7 @@
 		
 	<div class="evtCtnsBox wb_06" >
 		<img src="http://file3.willbes.net/new_cop/basic/EVbasic_20190311_p6_1.png"  alt="신광은경찰팀"/>
-		<iframe width="854" height="480" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe>
+		{{--<iframe width="854" height="480" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe>--}}
 		<img src="http://file3.willbes.net/new_cop/basic/EVbasic_20190311_p6_2.png"  alt="수강신청하기"  usemap="#link3"/>
 		<map name="link3" >
 			<area shape="rect" coords="440,126,676,319" href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1040') }}" alt="신광은경찰팀 일반공채" />

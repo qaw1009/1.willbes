@@ -803,7 +803,7 @@ class EventFModel extends WB_Model
         $column = '
         A.EpoIdx, A.PromotionCode, A.ProfIdx, A.SubjectIdx, A.OtherData1, A.OtherData2, A.OtherData3,
         A.FileFullPath, A.FileRealName, A.OrderNum, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
-        G.SubjectName, H.ProfNickName, sample.wUnitIdx, PR.ReferValue, wLecUnit.wUnitIdx, MasterLecture.wAttachPath, wLecUnit.wUnitAttachFile, wLecUnit.wUnitAttachFileReal
+        G.SubjectName, H.ProfNickName, sample.wUnitIdx, PR.ReferValue, wLecUnit.wUnitIdx, MasterLecture.wAttachPath, wLecUnit.wUnitAttachFile, wLecUnit.wUnitAttachFileReal, wLecUnit.wHD
         ';
         $from = "
             FROM {$this->_table['event_promotion_otherinfo']} AS A

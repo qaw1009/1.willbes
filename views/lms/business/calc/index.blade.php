@@ -186,7 +186,14 @@
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         var study_period = (typeof row.StudyPeriod !== 'undefined') ? row.StudyPeriod : '';
-                        return '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">상세보기</button>';
+                        var btn_html = '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">상세보기</button>';
+
+                        @if($calc_type == 'lecture' && $prod_type != 'PP')
+                            {{-- 온라인강좌이면서 기간제패키지가 아닐 경우 정산엑셀다운로드 버튼 노출 --}}
+                            btn_html += '<button name="btn_calc_excel" class="btn btn-xs btn-primary mb-0 ml-5 btn-calc-excel" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">정산엑셀다운로드</button>';
+                        @endif
+
+                        return btn_html;
                     }}
                 ]
             });
@@ -216,6 +223,22 @@
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/business/calc/' . $calc_type . '/excel') }}', $search_form.serializeArray(), 'POST');
                 }
+            });
+
+            // 정산엑셀다운로드 버튼 클릭
+            $list_table.on('click', '.btn-calc-excel', function(event) {
+                event.preventDefault();
+                //if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    // 교수검색 조건 초기화
+                    $search_form.find('select[name="search_prof_idx"]').val('');
+
+                    var arr_param = $search_form.serializeArray();
+                    arr_param.push({ 'name' : 'prof_idx', 'value' : $(this).data('prof-idx') });
+                    arr_param.push({ 'name' : 'subject_idx', 'value' : $(this).data('subject-idx') });
+                    arr_param.push({ 'name' : 'study_period', 'value' : $(this).data('study-period') });
+
+                    formCreateSubmit('{{ site_url('/business/calc/' . $calc_type . '/calcExcel') }}', arr_param, 'POST');
+                //}
             });
 
             // 상세보기 버튼 클릭

@@ -10,6 +10,7 @@ class BaseCalc extends \app\controllers\BaseController
     protected $_methods = ['LE' => 'Lecture', 'AC' => 'AdminPackChoice', 'PP' => 'PeriodPack', 'OL' => 'Lecture', 'OP' => 'AdminPackChoice'];
     protected $_prod_name = ['LE' => '단강좌&사용자/운영자패키지(일반형)', 'AC' => '운영자패키지(선택형)', 'PP' => '기간제패키지', 'OL' => '단과반/종합반(일반형)', 'OP' => '종합반(선택형)'];
     protected $_group_ccd = [];
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct($calc_type, $calc_name)
     {
@@ -38,7 +39,7 @@ class BaseCalc extends \app\controllers\BaseController
         $def_site_code = key($arr_site_code);
 
         // 교수 조회
-        $arr_professor = $this->professorModel->getProfessorArray();
+        $arr_professor = $this->professorModel->getProfessorArray('', '', ['WP.wProfName' => 'asc']);
         
         $this->load->view('business/calc/index', [
             'calc_type' => $this->_calc_type,
@@ -260,6 +261,9 @@ class BaseCalc extends \app\controllers\BaseController
      */
     protected function orderListExcel()
     {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
         $prod_type = $this->_reqP('prod_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
@@ -279,11 +283,11 @@ class BaseCalc extends \app\controllers\BaseController
             // 기간제패키지
             $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
                 , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '수강개월수(F1)', '과목', '교수명'
-                , '기여도(B)', '기여도매출(C)', '기여도수수료(D)', '기여도환불(E)', '월안분(F)', '정산율(G)', '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
+                , '기여도(B)', '기여도매출(C)', '기여도수수료(D)', '기여도환불(E)', '월안분(F)', '정산율(G)', '정산금액(H)'];
         } else {
             $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
                 , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '과정', '단강좌코드', '단강좌명', '과목', '교수명'
-                , '안분율(B)', '안분매출(C)', '안분수수료(D)', '안분환불(E)', '정산율(G)', '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
+                , '안분율(B)', '안분매출(C)', '안분수수료(D)', '안분환불(E)', '정산율(G)', '정산금액(H)'];
         }
 
         // export excel
@@ -406,5 +410,184 @@ class BaseCalc extends \app\controllers\BaseController
         $sum_data['tFinalCalcPrice'] = array_sum(array_pluck($data, 'tFinalCalcPrice'));
 
         return $sum_data;
+    }
+
+    /**
+     * 온라인강좌 단강좌, 사용자/운영자 패키지 전용 정산 엑셀다운로드
+     */
+    protected function calcExcel()
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $prod_type = $this->_reqP('prod_type');
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_end_date = $this->_reqP('search_end_date');
+
+        if (empty($prod_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        $method = $this->_methods[$prod_type];
+        $arr_search_date = [$search_start_date, $search_end_date];
+        $arr_condition = $this->_getSumConditions($prod_type, $this->_reqP(null), true);
+        $paid_data = [];
+        $refund_data = [];
+        $paid_sum = ['tDivisionBankPrice' => 0, 'tDivisionCardPrice' => 0, 'tDivisionPayPrice' => 0, 'tDivisionPgFeePrice' => 0, 'tDivisionCalcPayPrice' => 0];
+        $refund_sum = ['tDivisionRefundPrice' => 0, 'tDivisionCalcRefundPrice' => 0];
+
+        // 데이터 조회
+        $results = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, false, $arr_condition);
+        if (empty($results) === true) {
+            show_alert('강사료 정산 데이터가 없습니다.', 'back');
+        }
+
+        // 교수명, 과목명 추출
+        $prof_name = $results[0]['wProfName'];
+        $subject_name = $results[0]['SubjectName'];
+
+        // 결제내역, 환불내역으로 데이터 분리
+        foreach ($results as $row) {
+            $arr_temp = [
+                'LearnPatternCcdName' => $row['LearnPatternCcdName'],
+                'MemName' => $row['MemName'],
+                'ProdName' => get_var($row['ProdNameSub'], $row['ProdName'])
+            ];
+
+            if ($row['RealPayPrice'] > 0) {
+                $paid_data[] = array_merge($arr_temp, [
+                    'CalcDate' => substr($row['CompleteDatm'], 0, 10),
+                    'CalcPrice' => $row['DivisionPayPrice'],
+                    'PayMethodCcdName' => $row['PayMethodCcdName']
+                ]);
+
+                $paid_sum['tDivisionBankPrice'] += $row['PayMethodCcd'] != $this->orderCalcModel->_pay_method_ccd['card'] ? $row['DivisionPayPrice'] : 0;
+                $paid_sum['tDivisionCardPrice'] += $row['PayMethodCcd'] == $this->orderCalcModel->_pay_method_ccd['card'] ? $row['DivisionPayPrice'] : 0;
+                $paid_sum['tDivisionPayPrice'] += $row['DivisionPayPrice'];
+                $paid_sum['tDivisionPgFeePrice'] += $row['DivisionPgFeePrice'];
+                $paid_sum['tDivisionCalcPayPrice'] += $row['DivisionCalcPayPrice'];
+            }
+
+            if ($row['RefundPrice'] > 0) {
+                $refund_data[] = array_merge($arr_temp, [
+                    'CalcDate' => substr($row['RefundDatm'], 0, 10),
+                    'CalcPrice' => $row['DivisionRefundPrice'],
+                    'PayMethodCcdName' => $row['PayMethodCcdName']
+                ]);
+
+                $refund_sum['tDivisionRefundPrice'] += $row['DivisionRefundPrice'];
+                $refund_sum['tDivisionCalcRefundPrice'] += $row['DivisionCalcRefundPrice'];
+            }
+        }
+
+        // 원천세, 주민세, 실지급액 계산
+        $paid_sum['tDivisionIncomeTax'] = (int) ($paid_sum['tDivisionCalcPayPrice'] * $this->orderCalcModel->_in_tax_rate);
+        $paid_sum['tDivisionResidentTax'] = (int) ($paid_sum['tDivisionCalcPayPrice'] * $this->orderCalcModel->_re_tax_rate);
+        $paid_sum['tFinalCalcPrice'] = $paid_sum['tDivisionCalcPayPrice'] - $paid_sum['tDivisionIncomeTax'] - $paid_sum['tDivisionResidentTax'];
+
+        $refund_sum['tDivisionIncomeTax'] = (int) ($refund_sum['tDivisionCalcRefundPrice'] * $this->orderCalcModel->_in_tax_rate);
+        $refund_sum['tDivisionResidentTax'] = (int) ($refund_sum['tDivisionCalcRefundPrice'] * $this->orderCalcModel->_re_tax_rate);
+        $refund_sum['tFinalCalcPrice'] = $refund_sum['tDivisionCalcRefundPrice'] - $refund_sum['tDivisionIncomeTax'] - $refund_sum['tDivisionResidentTax'];
+
+        // 총 실지급액
+        $real_final_calc_price = $paid_sum['tFinalCalcPrice'] - $refund_sum['tFinalCalcPrice'];
+
+        // export excel
+        try {
+            $file_name = '강사료정산내역_' . $prof_name . '_' . $subject_name . '_' . date('Ymd');
+            $price_format = '#,##0';
+            $table_head_color = 'ccccff';
+            $sum_color = 'ffff99';
+            $paid_data_cnt = count($paid_data);
+            $refund_data_cnt = count($refund_data);
+
+            $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+            $spreadsheet->getDefaultStyle()->getFont()->setName('Arial');
+            $spreadsheet->getDefaultStyle()->getFont()->setSize(10);
+
+            $sheet = $spreadsheet->getActiveSheet();
+            $sheet->setTitle('강사료');
+            $sheet->getDefaultColumnDimension()->setWidth('20');
+            $sheet->getColumnDimension('C')->setWidth('60');
+
+            // header
+            $sheet->setCellValue('A1', $prof_name . ' 강사님의 강사료 정산 내역')->mergeCells('A1:F1');
+            $sheet->getStyle('A1:F1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+            $sheet->getStyle('A1:F1')->getFont()->setBold(true)->setSize(14);
+            $sheet->setCellValue('A2', '정산(등록)기간 : ' . $search_start_date . '~' . $search_end_date)->mergeCells('A2:F2');
+
+            // 결제내역 목록
+            $sheet->fromArray(['구분', '수강자', '과목', '승인일', '금액', '입금구분'], null, 'A3')
+                ->getStyle('A3:F3')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setRGB($table_head_color);
+            $sheet->getStyle('E4:E' . ($paid_data_cnt + 3))->getNumberFormat()->setFormatCode($price_format);   // numberformat
+            $sheet->fromArray($paid_data, null, 'A4');
+
+            // 결제내역 합계
+            $last_row_num = $sheet->getHighestRow() + 1;
+            $sheet->mergeCells('A' . $last_row_num . ':D' . ($last_row_num + 9));
+            $sheet->getStyle('F' . ($last_row_num + 1) . ':F' . ($last_row_num + 9))->getNumberFormat()->setFormatCode($price_format);   // numberformat
+            $sheet->fromArray(['소계', $paid_data_cnt . '명'], null, 'E' . $last_row_num)
+                ->getStyle('E' . $last_row_num . ':F' . $last_row_num)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                ->getStartColor()->setRGB($sum_color);
+            $sheet->fromArray(['은행입금', $paid_sum['tDivisionBankPrice']], null, 'E' . ($last_row_num + 1));
+            $sheet->fromArray(['신용카드', $paid_sum['tDivisionCardPrice']], null, 'E' . ($last_row_num + 2));
+            $sheet->fromArray(['수강료계', $paid_sum['tDivisionPayPrice']], null, 'E' . ($last_row_num + 3))
+                ->getStyle('E' . ($last_row_num + 3) . ':F' . ($last_row_num + 3))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                ->getStartColor()->setRGB($sum_color);
+            $sheet->fromArray(['결제수수료', $paid_sum['tDivisionPgFeePrice']], null, 'E' . ($last_row_num + 4));
+            $sheet->fromArray(['정산합계', ($paid_sum['tDivisionPayPrice'] - $paid_sum['tDivisionPgFeePrice'])], null, 'E' . ($last_row_num + 5))
+                ->getStyle('E' . ($last_row_num + 5) . ':F' . ($last_row_num + 5))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                ->getStartColor()->setRGB($sum_color);
+            $sheet->fromArray(['강사료', $paid_sum['tDivisionCalcPayPrice']], null, 'E' . ($last_row_num + 6));
+            $sheet->fromArray(['원천세', $paid_sum['tDivisionIncomeTax']], null, 'E' . ($last_row_num + 7));
+            $sheet->fromArray(['주민세', $paid_sum['tDivisionResidentTax']], null, 'E' . ($last_row_num + 8));
+            $sheet->fromArray(['지급액', $paid_sum['tFinalCalcPrice']], null, 'E' . ($last_row_num + 9))
+                ->getStyle('E' . ($last_row_num + 9) . ':F' . ($last_row_num + 9))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                ->getStartColor()->setRGB($sum_color);
+
+            // 환불내역 목록
+            $last_row_num = $sheet->getHighestRow() + 1;
+            $sheet->setCellValue('A' . $last_row_num, '환불자 리스트')->mergeCells('A' . $last_row_num . ':F' . $last_row_num);
+
+            $last_row_num = $sheet->getHighestRow() + 1;
+            $sheet->fromArray(['구분', '수강자', '과목', '환불일', '금액', '입금구분'], null, 'A' . $last_row_num)
+                ->getStyle('A' . $last_row_num . ':F' . $last_row_num)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                ->getStartColor()->setRGB($table_head_color);
+            $sheet->getStyle('E' . ($last_row_num + 1) . ':E' . ($last_row_num + $refund_data_cnt))->getNumberFormat()->setFormatCode($price_format);   // numberformat
+            $sheet->fromArray($refund_data, null, 'A' . ($last_row_num + 1));
+
+            // 환불내역 합계
+            $last_row_num = $sheet->getHighestRow() + 1;
+            $sheet->mergeCells('A' . $last_row_num . ':D' . ($last_row_num + 6));
+            $sheet->getStyle('F' . ($last_row_num + 1) . ':F' . ($last_row_num + 6))->getNumberFormat()->setFormatCode($price_format);   // numberformat
+            $sheet->fromArray(['소계', $refund_data_cnt . '명'], null, 'E' . $last_row_num)
+                ->getStyle('E' . $last_row_num . ':F' . $last_row_num)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                ->getStartColor()->setRGB($sum_color);
+            $sheet->fromArray(['환불총금액', $refund_sum['tDivisionRefundPrice']], null, 'E' . ($last_row_num + 1));
+            $sheet->fromArray(['환불강사료', $refund_sum['tDivisionCalcRefundPrice']], null, 'E' . ($last_row_num + 2));
+            $sheet->fromArray(['원천세', $refund_sum['tDivisionIncomeTax']], null, 'E' . ($last_row_num + 3));
+            $sheet->fromArray(['주민세', $refund_sum['tDivisionResidentTax']], null, 'E' . ($last_row_num + 4));
+            $sheet->fromArray(['실환불액', $refund_sum['tFinalCalcPrice']], null, 'E' . ($last_row_num + 5));
+            $sheet->fromArray(['총실지급액', $real_final_calc_price], null, 'E' . ($last_row_num + 6))
+                ->getStyle('E' . ($last_row_num + 6) . ':F' . ($last_row_num + 6))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                ->getStartColor()->setRGB($sum_color);
+
+            // border
+            $sheet->getStyle('A1:F' . $sheet->getHighestRow())->getBorders()->getAllBorders()
+                ->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+            ob_end_clean();
+            header('Content-type: application/vnd.ms-excel'); // xls
+            header('Content-Disposition: attachment; filename="' . iconv('UTF-8','EUC-KR', $file_name).'.xls"');
+            header('Expires: 0');
+            header('Content-Transfer-Encoding: binary');
+            header('Cache-Control: private, no-transform, no-store, must-revalidate');
+
+            $writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+            $writer->save('php://output');
+        } catch (\Exception $e) {
+            logger($e->getFile() . ' : ' . $e->getLine() . ' line : ' . $e->getMessage() . ' => ' . $file_name, null, 'error');
+            show_alert('강사료정산내역 엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 }

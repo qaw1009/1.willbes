@@ -372,11 +372,13 @@ class ProfessorModel extends WB_Model
      * 교수 코드 목록 조회
      * @param string $site_code [사이트코드 (all : 사이트 권한과 상관없이 모든 교수식별자 조회)]
      * @param string $wprof_idx [WBS 교수식별자]
+     * @param array $order_by [정렬조건]
      * @return array
      */
-    public function getProfessorArray($site_code = '', $wprof_idx = '')
+    public function getProfessorArray($site_code = '', $wprof_idx = '', $order_by = [])
     {
         $arr_condition = ['EQ' => ['P.IsUse' => 'Y', 'P.IsStatus' => 'Y', 'WP.wIsUse' => 'Y', 'WP.wIsStatus' => 'Y']];
+        empty($order_by) === true && $order_by = ['P.SiteCode' => 'asc', 'P.ProfIdx' => 'asc'];
 
         if (empty($site_code) === false) {
             if ($site_code != 'all') {
@@ -392,8 +394,7 @@ class ProfessorModel extends WB_Model
 
         $data = $this->_conn->getJoinListResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP'
             , 'P.wProfIdx = WP.wProfIdx'
-            , 'P.SiteCode, P.ProfIdx, WP.wProfName', $arr_condition
-            , null, null, ['P.SiteCode' => 'asc', 'P.ProfIdx' => 'asc']
+            , 'P.SiteCode, P.ProfIdx, WP.wProfName', $arr_condition, null, null, $order_by
         );
 
         return (empty($site_code) === false) ? array_pluck($data, 'wProfName', 'ProfIdx') : $data;

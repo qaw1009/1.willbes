@@ -14,11 +14,11 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
-        .wb_01 {background:#4596db url(https://static.willbes.net/public/images/promotion/2019/04/1124_top_bg.jpg) no-repeat top;}
+        .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1124_top_bg.jpg) no-repeat top;}
         .wb_02 {background:#464646}	            
         .wb_03 {background:#eee}            
         .wb_04 {background:#fff}	
@@ -56,7 +56,7 @@
 	</div>
 		
 	<div class="evtCtnsBox wb_06" >
-		<img src="https://static.willbes.net/public/images/promotion/2019/04/1124_05.jpg"  alt="신광은경찰팀"/>
+		<img src="https://static.willbes.net/public/images/promotion/2019/04/1124_05.jpg"  alt="신광은경찰팀"/><br>
 		{{--<iframe width="854" height="480" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe>--}}
 		<img src="https://static.willbes.net/public/images/promotion/2019/04/1124_05_01.jpg"  alt="수강신청하기"  usemap="#link3"/>
 		<map name="link3" >

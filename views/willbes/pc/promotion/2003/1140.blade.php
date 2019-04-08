@@ -1171,9 +1171,12 @@
                                         @if(empty($row['wUnitIdx']) === true && empty($row['wUnitAttachFile']) === true)
                                             추후 제공 예정입니다.
                                         @else
+                                            @if(empty($row['wHD']) === false)
                                             <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">
                                                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의">
                                             </a>
+                                            @endif
+
                                             @if(empty($row['wUnitAttachFile']) === false)
                                                 <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}" target="_blank">
                                                     <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료">

@@ -219,7 +219,7 @@ class BaseStats extends \app\controllers\BaseController
     protected function show($params = [])
     {
         $prod_code = $params[0];
-        $qs = json_decode(base64_decode(urlencode($this->_reqG('q'))), true);
+        $qs = json_decode(base64_decode($this->_reqG('q')), true);
         $site_code = element('search_site_code', $qs);
 
         if (empty($prod_code) === true || empty($site_code) === true) {

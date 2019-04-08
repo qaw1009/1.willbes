@@ -91,7 +91,7 @@
             width:1000px; margin:0 auto;
         }
         .Cts04 .lecture li {
-            display:inline; float:left; width:25%; text-align:center; margin-bottom:20px;
+            display:inline; float:left; width:25%; text-align:center; margin-bottom:20px; min-height:330px;
         }
         .Cts04 .lecture li:hover {background:#fff url(https://static.willbes.net/public/images/promotion/common/patternB.png) repeat}
         .Cts04 .lecture li img.prof {

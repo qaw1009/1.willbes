@@ -202,8 +202,9 @@ class OrderCalcModel extends BaseOrderModel
                     is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
                 }
             } else {
-                // 교수/과목별 합계 or 전체합계 group by
+                // 교수/과목별 합계 or 전체합계 group by, order by
                 $query .= ' group by U.ProfIdx, U.SubjectIdx';
+                $query .= ' order by tDivisionCalcPrice desc';
             }
         }
 
@@ -420,8 +421,9 @@ class OrderCalcModel extends BaseOrderModel
                     is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
                 }
             } else {
-                // 교수/과목별 합계 or 전체합계 group by
+                // 교수/과목별 합계 or 전체합계 group by, order by
                 $query .= ' group by U.ProfIdx, U.SubjectIdx';
+                $query .= ' order by tDivisionCalcPrice desc';
             }
         }
 
@@ -627,8 +629,9 @@ class OrderCalcModel extends BaseOrderModel
                     is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
                 }
             } else {
-                // 교수/과목별 합계 or 전체합계 group by
+                // 교수/과목별 합계 or 전체합계 group by, order by
                 $query .= ' group by U.ProfIdx, U.SubjectIdx, U.StudyPeriodMonth';
+                $query .= ' order by tDivisionCalcPrice desc';
             }
         }
 

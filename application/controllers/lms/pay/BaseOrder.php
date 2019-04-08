@@ -50,8 +50,8 @@ class BaseOrder extends \app\controllers\BaseController
 
         $order_data = element('0', $data, []);
 
-        // 가상계좌 결제가 아닐 경우 영수증 출력 URL 조회
-        if ($order_data['PayRouteCcd'] === $this->orderListModel->_pay_route_ccd['pg'] && $order_data['IsVBank'] == 'N') {
+        // PG사 결제완료일 경우 영수증 출력 URL 조회
+        if ($order_data['PayRouteCcd'] === $this->orderListModel->_pay_route_ccd['pg'] && empty($order_data['CompleteDatm']) === false) {
             $pg_config_file = 'pg_' . $order_data['PgDriver'];
             $this->load->config($pg_config_file, true, true);
             $order_data['ReceiptUrl'] = str_replace('{{$tid$}}', $order_data['PgTid'], config_get($pg_config_file . '.receipt_url'));

@@ -1159,6 +1159,7 @@
         <div id="tab4" class="tabCts Cts04">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
             <div class="lecture">
+                {{--
                 <ul>
                     <li>
                         <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" title="교수명" class="prof">
@@ -1245,8 +1246,8 @@
                         </div>
                     </li>                    
                 </ul>
-
-                {{--
+                --}}                        
+                
                 <ul>
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
                         @foreach($arr_base['promotion_otherinfo_data'] as $row)
@@ -1274,7 +1275,7 @@
                         @endforeach
                     @endif
                 </ul>
-                --}}
+                
 
             </div>
         </div>

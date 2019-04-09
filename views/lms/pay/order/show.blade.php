@@ -75,6 +75,11 @@
                         <tr>
                             <th class="bg-odd">결제수단</th>
                             <td class="bg-white-only" colspan="5">{{ $data['order']['PayMethodCcdName'] }}
+                                {{-- 카드결제(방문) 결제카드명 노출 --}}
+                                @if(empty($data['order']['VisitPayCardCcdName']) === false)
+                                    ({{ $data['order']['VisitPayCardCcdName'] }})
+                                @endif
+
                                 @if(isset($data['order']['ReceiptUrl']) === true)
                                     <button name="btn_receipt_print" class="btn btn-xs btn-success ml-20 mb-0">매출전표</button>
                                 @endif

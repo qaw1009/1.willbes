@@ -62,7 +62,7 @@
         <div class="evtCtnsBox wb_cts02">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_2.png" alt="기미진국어" usemap="#Map_1123_lec1" border="0" />
             <map name="Map_1123_lec1">
-                <area shape="rect" coords="318,642,894,715" href="{{ site_url('/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture) }}" target="_blank">
+                <area shape="rect" coords="318,642,894,715" href="{{ site_url('/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts02//-->

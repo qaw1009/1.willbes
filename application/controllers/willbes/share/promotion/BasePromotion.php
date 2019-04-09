@@ -65,7 +65,6 @@ class BasePromotion extends \app\controllers\FrontController
                 }
             }
         }
-
         // 댓글사용영역 데이터 가공처리
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
@@ -102,6 +101,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         $this->load->library('user_agent');
         $ismobile = $this->agent->is_mobile();
+        echo "????=".$ismobile;
 
         $view_file = 'willbes/pc/promotion/' . $this->_site_code . '/' . $arr_base['promotion_code'];
         $this->load->view($view_file, [

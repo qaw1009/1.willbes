@@ -87,6 +87,8 @@
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
                 <li><p>경찰 온라인 ▼</p></li> 
                 <li>3월 6일 이후 추가분 ▼</li>
+                <li><a href="{{ site_url('/home/html/1188') }}" target="_blank">중경입교버스 든든이벤트 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/1188_popup') }}" target="_blank">└ 입교버스 신청팝업 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1187') }}" target="_blank">2019 경찰1차 합격예측 사전예약 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1187_popup') }}" target="_blank">└ 사전예약 신청팝업 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1141') }}" target="_blank">2019 국가직 9급 대비 라이브 적중 <span>*</span></a></li>

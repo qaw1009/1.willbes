@@ -51,6 +51,7 @@
                     <th rowspan="2" class="valign-middle">교수명</th>
                     <th rowspan="2" class="valign-middle">카테고리정보<br/>(대표카테고리만 표기)</th>
                     <th colspan="6">게시판운영여부</th>
+                    <th rowspan="2" class="valign-middle">공개사용여부<br/>(학습Q&A)</th>
                     <th rowspan="2" class="valign-middle">사용여부</th>
                     <th rowspan="2" class="valign-middle">사용여부(W)</th>
                     <th rowspan="2" class="valign-middle">등록자</th>
@@ -112,6 +113,9 @@
                     {'data' : 'IsTpassBoard'},
                     {'data' : 'IsAssignmentBoard'},
                     {'data' : 'IsTccBoard'},
+                    {'data' : 'IsBoardPublic', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                        }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

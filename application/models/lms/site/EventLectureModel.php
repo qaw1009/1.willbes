@@ -315,8 +315,10 @@ class EventLectureModel extends WB_Model
             }
 
             // 프로모션 부가정보 저장
-            if ($this->_addPromotionOtherInfo($promotionCode, $input) === false) {
-                throw new \Exception('프로모션 상세설정 등록에 실패했습니다.');
+            if (empty($promotionCode) === false) {
+                if ($this->_addPromotionOtherInfo($promotionCode, $input) === false) {
+                    throw new \Exception('프로모션 상세설정 등록에 실패했습니다.');
+                }
             }
 
             $this->_conn->trans_commit();
@@ -542,8 +544,10 @@ class EventLectureModel extends WB_Model
             }
 
             // 프로모션 부가정보 수정
-            if ($this->_addPromotionOtherInfo(element('promotion_code', $input), $input, 'modify') === false) {
-                throw new \Exception('프로모션 상세설정 등록에 실패했습니다.');
+            if (empty(element('promotion_code', $input)) === false) {
+                if ($this->_addPromotionOtherInfo(element('promotion_code', $input), $input) === false) {
+                    throw new \Exception('프로모션 상세설정 등록에 실패했습니다.');
+                }
             }
             
             $this->_conn->trans_commit();

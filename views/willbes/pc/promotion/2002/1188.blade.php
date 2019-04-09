@@ -87,7 +87,7 @@
 
     <script type="text/javascript">
         function requestOpen(){
-            var url = "1188_popup";
+            var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
         }
     </script>

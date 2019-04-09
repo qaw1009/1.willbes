@@ -145,7 +145,11 @@
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            if (row.IsBest == '1') {
+                                return '<span class="red">HOT</span>';
+                            } else {
+                                return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }
                         }},
 
                     {'data' : 'SiteName'},

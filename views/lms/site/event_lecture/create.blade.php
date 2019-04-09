@@ -28,6 +28,7 @@
                         @if($promotion_modify_type === true && $method == 'PUT')
                             <input type="text" class="form-control" name="promotion_code" id="promotion_code" value="{{$data['PromotionCode']}}">
                         @else
+                            <input type="hidden" name="promotion_code" value="{{$data['PromotionCode']}}">
                             {{$data['PromotionCode']}}
                         @endif
                             <p class="form-control-static"> # 등록 시 자동 생성</p>

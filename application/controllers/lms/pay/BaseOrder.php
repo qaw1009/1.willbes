@@ -28,7 +28,7 @@ class BaseOrder extends \app\controllers\BaseController
     protected function show($params = [])
     {
         // add join array
-        $_show_add_join = ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct'];
+        $_show_add_join = ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct', 'visit_card'];
         if (in_array($this->_order_type, ['order', 'visit']) === true) {
             $_show_add_join[] = 'campus';
         }

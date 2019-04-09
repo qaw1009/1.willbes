@@ -320,6 +320,13 @@ class OrderListModel extends BaseOrderModel
                 $column .= ', fn_product_sublecture_data(OP.ProdCode) as ProdSubLectureData';
                 $excel_column .= '';
             }
+
+            // 카드결제(방문) 결제카드명 추가
+            if (in_array('visit_card', $arr_add_join) === true) {
+                $from .= '';
+                $column .= ', if(O.VisitPayCardCcd is not null, fn_ccd_name(O.VisitPayCardCcd), "") as VisitPayCardCcdName';
+                $excel_column .= '';
+            }
         }
 
         return ${$add_type};

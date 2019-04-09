@@ -94,7 +94,7 @@
                     <td class="w-data tx-left pl15">
                         <div class="col-md-11 form-inline">
                             <div class="input-group mr-5">
-                                <input type="text" class="form-control" id="extenday" name="extenday">
+                                <input type="text" class="form-control" id="extenday" name="extenday" maxlength="3">
                                 <div class="input-group-addon no-border no-bgcolor">일</div>
                             </div>
                         </div>
@@ -155,6 +155,16 @@
         {
             if($("#extenday").val() == ""){
                 alert("연장할 기간을 입력하십시요.");
+                return;
+            }
+
+            if($.isNumeric($("#extenday").val()) == false){
+                alert("연장일은 숫자만 가능합니다.");
+                return;
+            }
+
+            if($("#extenday").val() > 365){
+                alert("연장은 365일까지만 가능합니다.");
                 return;
             }
 

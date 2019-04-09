@@ -15,7 +15,7 @@ class PackageAdminModel extends CommonLectureModel
      * @param array $order_by
      * @return mixed
      */
-    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_condition_add = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -32,6 +32,7 @@ class PackageAdminModel extends CommonLectureModel
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
+                    ,IFNULL(F.DivisionCount,0) AS DivisionCount
                     #,fn_product_count_cart(A.ProdCode) as CartCnt
                     #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
                     #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
@@ -58,6 +59,7 @@ class PackageAdminModel extends CommonLectureModel
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'
+                        left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
                         left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode	
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
@@ -67,6 +69,10 @@ class PackageAdminModel extends CommonLectureModel
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
+
+        if(empty($arr_condition_add) === false) {
+            $where .= ' and '.$arr_condition_add;
+        }
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

@@ -50,7 +50,12 @@
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-
+                        &nbsp;
+                        <select class="form-control" id="search_calc" name="search_calc">
+                            <option value="">정산입력여부</option>
+                            <option value="Y">입력</option>
+                            <option value="N">미입력</option>
+                        </select>
                     </div>
                 </div>
 
@@ -106,6 +111,7 @@
                     <th width="5%">배수</th>
                     <th width="5%">판매여부</th>
                     <th width="5%">사용여부</th>
+                    <th>정산입력</th>
                     <!--
                     <th width="5%">장바구니</th>
                     <th width="5%">입금대기</th>
@@ -187,6 +193,9 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
+                    {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
+                            return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
+                        }},//정산입력
                     /*
                     {'data' : 'CartCnt'},//장바구니
                     {'data' : 'PayIngCnt'},//입금대기

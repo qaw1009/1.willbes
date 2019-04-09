@@ -101,24 +101,23 @@ Class Lecture extends \app\controllers\BaseController
             ]);
         }
 
+        $arr_condition_add = null;
 
-        if( strlen($this->_req('search_calc')) > 0) {
-            $whereOper = $this->_req('search_calc') === '0' ? 'EQ' : 'GTE';
-            //$arr_condition[$whereOper]['F.DivisionCount'] = $this->_req('search_calc');
+        if( $this->_req('search_calc') == 'Y') {
             $arr_condition = array_merge_recursive($arr_condition,[
-                $whereOper => [
-                    'F.DivisionCount' => $this->_req('search_calc')
+                'GTE' => [
+                    'F.DivisionCount' => '1'
                 ],
             ]);
+        } else if( $this->_req('search_calc') == 'N') {
+            $arr_condition_add = ' F.DivisionCount is null ';
         }
 
-        //var_dump($arr_condition);
-
         $list = [];
-        $count = $this->lectureModel->listLecture(true, $arr_condition);
+        $count = $this->lectureModel->listLecture(true, $arr_condition,null,null,[],$arr_condition_add);
 
         if ($count > 0) {
-            $list = $this->lectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->lectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc'],$arr_condition_add);
         }
 
         return $this->response([

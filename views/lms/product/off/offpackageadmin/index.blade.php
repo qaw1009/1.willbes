@@ -98,6 +98,11 @@
                             <option value="N">미사용</option>
                         </select>
                         &nbsp;
+                        <select class="form-control" id="search_calc" name="search_calc">
+                            <option value="">정산입력여부</option>
+                            <option value="1">입력</option>
+                            <option value="0">미입력</option>
+                        </select>
                     </div>
                 </div>
 
@@ -149,6 +154,7 @@
                     <th>접수기간</th>
                     <th>접수상태</th>
                     <th>사용여부</th>
+                    <th>정산입력</th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>복사</th>
@@ -237,7 +243,9 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
-
+                    {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
+                            return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
+                        }},//정산입력
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
                     {'data' : null, 'render' : function(data, type, row, meta) {

@@ -317,6 +317,11 @@ class BookModel extends WB_Model
             }
 
             $this->_conn->trans_commit();
+
+            // 판매여부, 사용여부가 변경되었을 경우만 단강좌 json 데이터 업데이트
+            if ($row['wIsUse'] != element('is_use', $input) || $row['wSaleCcd'] != element('sale_ccd', $input)) {
+                $this->_replaceLmsProdJsonData($book_idx);
+            }
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -331,7 +336,7 @@ class BookModel extends WB_Model
      * @param $book_idx
      * @return bool|string
      */
-    public function replaceBookAuthor($arr_author_idx = [], $book_idx)
+    public function replaceBookAuthor($arr_author_idx, $book_idx)
     {
         try {
             $_table = $this->_table['book_r_author'];
@@ -380,5 +385,16 @@ class BookModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 해당 교재와 연관된 단강좌 json 데이터 업데이트
+     * @param $book_idx
+     * @return bool|string
+     */
+    private function _replaceLmsProdJsonData($book_idx)
+    {
+        $this->load->loadModels(['_lms/pay/salesProduct']);
+        return $this->salesProductModel->replaceProdJsonDataByWBookIdx($book_idx);
     }
 }

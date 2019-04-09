@@ -1207,9 +1207,9 @@
 
                 $links.not($active).each(function(){
                     $(this.hash).hide();
-                    $('#frm').height('450px');
+                    /*$('#frm').height('450px');
                     $('#frm_713001').height('840px');
-                    $('#frm_713004').height('840px');
+                    $('#frm_713004').height('840px');*/
                 });
 
                 $(this).on('click', 'a', function(e){

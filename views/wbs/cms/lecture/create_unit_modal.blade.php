@@ -70,7 +70,9 @@
                                         <button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete('{{$loop->index}}')">삭제</button>
                                     </td>
                                     <td>
-                                        <input type="text" name="wUnitName[]" id="wUnitName{{$loop->index}}"  class="form-control" title="영상제목" value="{{ $row['wUnitName'] }}" style="width: 100%">
+                                        <input type="text" name="wUnitName[]" id="wUnitName{{$loop->index}}"  class="form-control" title="영상제목" value="{{ $row['wUnitName'] }}" style="width: 394px;">
+                                        <BR>
+                                        <b>[설명]</b> <input type="text" name="wUnitInfo[]" id="wUnitInfo{{$loop->index}}"  class="form-control" title="설명" value="{{ $row['wUnitInfo'] }}" style="width: 348px">
                                         <BR>
                                         <input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile{{$loop->index}}" class="form-control" title="첨부자료">
                                         @if(empty($row['wUnitAttachFile']) !== true)
@@ -144,7 +146,9 @@
                                         <button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete('{{$i}}')">삭제</button>
                                     </td>
                                     <td>
-                                        <input type="text" name="wUnitName[]" id="wUnitName{{$i}}"  class="form-control" title="영상제목" value="" style="width: 100%">
+                                        <input type="text" name="wUnitName[]" id="wUnitName{{$i}}"  class="form-control" title="영상제목" value="" style="width: 394px">
+                                        <BR>
+                                        <b>[설명]</b> <input type="text" name="wUnitInfo[]" id="wUnitInfo{{$i}}"  class="form-control" title="설명" value="" style="width: 348px">
                                         <BR>
                                         <input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile{{$i}}" class="form-control" title="첨부자료">
                                     </td>
@@ -197,8 +201,6 @@
                     </table>
                 </div>
             </div>
-
-
             <script type="text/javascript">
 
                 var $regi_form_modal = $('#_regi_form');
@@ -242,7 +244,9 @@
                                 +'<button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete(\''+seq+'\')">삭제</button>'
                                 +'</td>'
                                 +'<td>'
-                                +'<input type="text" name="wUnitName[]" id="wUnitName'+seq+'" class="form-control" title="영상제목" value="" style="width: 100%">'
+                                +'<input type="text" name="wUnitName[]" id="wUnitName'+seq+'" class="form-control" title="영상제목" value="" style="width: 394px">'
+                                +'<BR>'
+                                +'<b>[설명]</b> <input type="text" name="wUnitInfo[]" id="wUnitInfo'+seq+'"  class="form-control" title="설명" value="" style="width: 348px">'
                                 +'<BR>'
                                 +'<input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile'+seq+'" class="form-control" title="첨부자료">'
                                 +'</td>'

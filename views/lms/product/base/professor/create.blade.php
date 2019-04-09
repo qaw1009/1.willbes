@@ -153,6 +153,18 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="is_board_public">게시판 학습Q&A 공개.비공개 사용여부
+                    </label>
+                    <div class="col-md-6">
+                        <div class="checkbox">
+                            <input type="checkbox" id="is_board_public" name="is_board_public" class="flat" value="Y" @if($data['IsBoardPublic'] == 'Y' || $method=="POST") checked="checked" @endif/> <label for="is_board_public" class="input-label">공개</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control-static"># 미체크시 사용자단 학습Q&A에서 공개로 자동 설정됩니다.</p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="is_cafe_use">교수카페정보
                     </label>
                     <div class="col-md-9">

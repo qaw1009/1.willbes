@@ -124,7 +124,7 @@ class EventLecture extends \app\controllers\BaseController
             ]);
 
             $data = $this->eventLectureModel->findEventForModify($arr_condition);
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
 
@@ -353,7 +353,7 @@ class EventLecture extends \app\controllers\BaseController
         $arr_condition = (['EQ'=>['A.ElIdx' => $el_idx,'A.IsStatus' => 'Y']]);
         $data = $this->eventLectureModel->findEventForModify($arr_condition);
 
-        if (count($data) < 1) {
+        if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }
 

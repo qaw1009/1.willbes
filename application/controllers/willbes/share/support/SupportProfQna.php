@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportProfQna extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code');
+    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'product/professorF', 'downloadF', '_lms/sys/site', '_lms/sys/code');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store');
@@ -27,7 +27,7 @@ class SupportProfQna extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 인덱스
+     * 교수진소개 > 학습Q&A 인덱스
      * @param array $params
      */
     public function index($params = [])
@@ -69,6 +69,9 @@ class SupportProfQna extends BaseSupport
 
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
+
+        //교수 정보 조회
+        $arr_base['prof_data'] = $this->professorFModel->findProfessorByProfIdx($prof_idx);
 
         $arr_condition = [
             'EQ' => [
@@ -141,7 +144,7 @@ class SupportProfQna extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 등록/수정 폼
+     * 교수진소개 > 학습Q&A 등록/수정 폼
      */
     public function create()
     {
@@ -179,6 +182,9 @@ class SupportProfQna extends BaseSupport
 
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
+
+        //교수 정보 조회
+        $arr_base['prof_data'] = $this->professorFModel->findProfessorByProfIdx($prof_idx);
 
         // 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
         $arr_condition = [
@@ -221,7 +227,7 @@ class SupportProfQna extends BaseSupport
             if (empty($data)) {
                 show_alert('게시글이 존재하지 않습니다.', 'back');
             }
-            if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+            if ($data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
                 show_alert('잘못된 접근 입니다.', 'back');
             }
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
@@ -298,7 +304,11 @@ class SupportProfQna extends BaseSupport
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
 
-        if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+        //교수 정보 조회
+        $arr_base['prof_data'] = $this->professorFModel->findProfessorByProfIdx($prof_idx);
+
+        if ((empty($arr_base['prof_data']['IsBoardPublic']) === false && $arr_base['prof_data']['IsBoardPublic'] == 'Y')
+            && $data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
             show_alert('잘못된 접근 입니다.', 'back');
         }
 
@@ -324,7 +334,7 @@ class SupportProfQna extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 등록/수정
+     * 교수진소개 > 학습Q&A 등록/수정
      */
     public function store()
     {
@@ -405,7 +415,7 @@ class SupportProfQna extends BaseSupport
     }
 
     /**
-     * 고객센터 > 상담게시판 삭제
+     * 교수진소개 > 학습Q&A 삭제
      */
     public function delete()
     {

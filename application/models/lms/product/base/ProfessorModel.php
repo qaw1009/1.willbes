@@ -62,7 +62,7 @@ class ProfessorModel extends WB_Model
             from (
                 select I.*, substring_index(I.SubjectMapping, "_", 1) as CateCode, substring_index(I.SubjectMapping, "_", -1) as SubjectIdx
                 from (
-                    select P.ProfIdx, P.SiteCode, P.UseBoardJson, P.IsUse, P.RegDatm, P.RegAdminIdx
+                    select P.ProfIdx, P.SiteCode, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx
                         , WP.wProfIdx, WP.wProfId, WP.wProfName, WP.wIsUse, S.SiteName, A.wAdminName as RegAdminName
                         , (select concat(CateCode, "_", SubjectIdx)
                             from ' . $this->_table['professor_r_subject_r_category'] . '
@@ -153,7 +153,7 @@ class ProfessorModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson, PrSC.CateCode
+                P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson, P.IsBoardPublic, PrSC.CateCode
             ';
             if (empty($reply_status_ccd) === false) {
                 $column = $column . '
@@ -165,7 +165,7 @@ class ProfessorModel extends WB_Model
         }
         $from = '
             FROM (
-                SELECT lp.ProfIdx, lp.wProfIdx, lp.SiteCode, lp.ProfNickName, lp.UseBoardJson, lp.IsStatus, ls.SiteName, wp.wProfId, wp.wProfName
+                SELECT lp.ProfIdx, lp.wProfIdx, lp.SiteCode, lp.ProfNickName, lp.UseBoardJson, lp.IsBoardPublic, lp.IsStatus, ls.SiteName, wp.wProfId, wp.wProfName
                 FROM '. $this->_table['professor'] .' AS lp
                 INNER JOIN '. $this->_table['site'] .' AS ls ON lp.SiteCode = ls.SiteCode
                 INNER JOIN '. $this->_table['pms_professor'] .' AS wp ON lp.wProfIdx = wp.wProfIdx
@@ -452,7 +452,7 @@ class ProfessorModel extends WB_Model
     public function findProfessorForModify($prof_idx)
     {
         $column = '
-            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.UseBoardJson, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
@@ -493,6 +493,7 @@ class ProfessorModel extends WB_Model
                 'ProfNickName' => element('prof_nickname', $input),
                 'ProfSlogan' => element('prof_slogan', $input),
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
+                'IsBoardPublic' => (empty(element('is_board_public', $input)) === false) ? 'Y' : 'N',
                 'ProfCurriculum' => element('prof_curriculum', $input),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -570,6 +571,7 @@ class ProfessorModel extends WB_Model
                 'ProfNickName' => element('prof_nickname', $input),
                 'ProfSlogan' => element('prof_slogan', $input),
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
+                'IsBoardPublic' => (empty(element('is_board_public', $input)) === false) ? 'Y' : 'N',
                 'ProfCurriculum' => element('prof_curriculum', $input),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')

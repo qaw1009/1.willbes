@@ -31,12 +31,13 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>NO</th>
-                    <th>운영사이트</th>
-                    <th>교수코드</th>
-                    <th>교수명</th>
-                    <th>카테고리->과목</th>
-                    <th>미답변개수</th>
+                    <th class="valign-middle">NO</th>
+                    <th class="valign-middle">운영사이트</th>
+                    <th class="valign-middle">교수코드</th>
+                    <th class="valign-middle">교수명</th>
+                    <th class="valign-middle">카테고리->과목</th>
+                    <th class="valign-middle">미답변개수</th>
+                    <th class="valign-middle" width="10%">공개사용여부<br/>(학습Q&A)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -86,6 +87,9 @@
                             }
                         }},
                     {'data' : 'BoardProfCount'},
+                    {'data' : 'IsBoardPublic', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                        }},
                 ]
             });
 

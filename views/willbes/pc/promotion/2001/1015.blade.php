@@ -60,10 +60,10 @@
                 <area shape="rect" coords="444,505,516,543" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132285') }}" onfocus='this.blur()' title="김원욱 형법 기본이론(19년 3월)" target="_blank"/>
                 <area shape="rect" coords="444,553,516,593" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132290') }}" onfocus='this.blur()' title="하승민 영어 기본이론(19년 3월)" target="_blank"/>
 
-                <area shape="rect" coords="868,406,944,441" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132261') }}" onfocus='this.blur()' title="오태진 한국사 기본이론(19년 2월)" target="_blank"/>
-                <area shape="rect" coords="868,455,944,491" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132259') }}" onfocus='this.blur()' title="원유철 한국사 기본이론(19년 2월)" target="_blank"/>
+                <area shape="rect" coords="868,406,944,441" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132261') }}" onfocus='this.blur()' title="오태진 한국사 기본이론(19년 3월)" target="_blank"/>
+                <area shape="rect" coords="868,455,944,491" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132259') }}" onfocus='this.blur()' title="원유철 한국사 기본이론(19년 3월)" target="_blank"/>
                 <area shape="rect" coords="868,505,944,542" href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/152609') }}" onfocus='this.blur()' title="신광은 수사 이론" target="_blank"/>
-                <area shape="rect" coords="868,553,944,593" href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/151726') }}" onfocus='this.blur()' title="장정훈 행정법 이론 (3월)" target="_blank"/>
+                <area shape="rect" coords="868,553,944,593" href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/151726') }}" onfocus='this.blur()' title="장정훈 행정법 이론" target="_blank"/>
 
                 <!--패키지-->
                 <area shape="rect" coords="808,835,938,879" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152607') }}" onfocus='this.blur()' title="2019대비 일반경찰 기본이론 동영상 종합반(원유철史)" target="_blank"/>

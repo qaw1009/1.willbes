@@ -15,7 +15,7 @@ class OffLectureModel extends CommonLectureModel
      * @param array $order_by
      * @return mixed
      */
-    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [],$arr_condition_add = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -77,6 +77,10 @@ class OffLectureModel extends CommonLectureModel
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
+
+        if(empty($arr_condition_add) === false) {
+            $where .= ' and '.$arr_condition_add;
+        }
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

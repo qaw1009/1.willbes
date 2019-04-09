@@ -20,9 +20,11 @@ class SalesProductModel extends BaseOrderModel
         'locker' => 'vw_product_locker',
         'deposit' => 'vw_product_deposit',
         'product' => 'lms_product',
+        'product_book' => 'lms_product_book',
         'product_lecture' => 'lms_product_lecture',
         'product_division' => 'lms_product_division',
         'product_r_sublecture' => 'lms_product_r_sublecture',
+        'product_r_product' => 'lms_product_r_product',
         'cms_lecture_unit' => 'wbs_cms_lecture_unit'
     ];
 
@@ -192,5 +194,56 @@ class SalesProductModel extends BaseOrderModel
         $query = $this->_conn->query('select ' . $column . $from, [$prod_code]);
 
         return $query->result_array();
+    }
+
+    /**
+     * wbs 교재식별자와 연결된 구매교재정보가 있는 단강좌의 json 데이터 업데이트 (교재 판매여부, 사용여부가 변경되었을 경우만)
+     * @param int $wbook_idx [wbs 교재식별자]
+     * @return bool|string
+     */
+    public function replaceProdJsonDataByWBookIdx($wbook_idx)
+    {
+        // 상품 판매상태 > 판매가능, 판매예정
+        $_sale_status_ccds = ['618001', '618002'];
+
+        try {
+            if (empty($wbook_idx) === true) {
+                throw new \Exception('교재 식별자가 없습니다.');
+            }
+
+            // 해당 wbs 교재식별자와 연결된 구매교재정보가 있는 단강좌 코드 조회
+            $column = 'distinct(PRP.ProdCode) as ProdLecCode';
+            $from = '
+                from ' . $this->_table['product_book'] . ' as PB
+                    inner join ' . $this->_table['product_r_product'] . ' as PRP
+                        on PB.ProdCode = PRP.ProdCodeSub
+                    inner join ' . $this->_table['product'] . ' as P
+                        on PRP.ProdCode = P.ProdCode
+                where PB.wBookIdx = ?
+                    and PRP.IsStatus = "Y"
+                    and P.SaleStatusCcd in ?
+                    and NOW() between P.SaleStartDatm and P.SaleEndDatm
+                    and P.IsSaleEnd = "N"
+                    and P.IsUse = "Y"';
+
+            // 쿼리 실행
+            $results = $this->_conn->query('select ' . $column . $from, [$wbook_idx, $_sale_status_ccds])->result_array();
+            if (empty($results) === true) {
+                return true;
+            }
+
+            foreach ($results as $row) {
+                // 단강좌 상품 가격 JSON 데이터 업데이트
+                $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$row['ProdLecCode']]);
+                $sp_result = $query->row(0)->ReturnMsg;
+                if ($sp_result != 'Success') {
+                    throw new \Exception('단강좌 상품 가격 JSON 데이터 등록에 실패했습니다.');
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 }

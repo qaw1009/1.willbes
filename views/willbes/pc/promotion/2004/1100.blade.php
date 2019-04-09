@@ -128,7 +128,7 @@
         <div id="nav">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV181030_scroll_bn-1.png" alt="예약하기" usemap="#Map_1030_lec_go" border="0"  />
             <map name="Map_1030_lec_go">
-                <area shape="rect" coords="813,16,1127,78" href="http://www.willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=001&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=961&SEARCHKIND=&SEARCHTEXT=" target="_blank" alt="예약하기">
+                <area shape="rect" coords="813,16,1127,78" href="{{ site_url('/pass/event/show/ongoing?event_idx=202&') }}" target="_blank" alt="예약하기">
             </map>
         </div>
 

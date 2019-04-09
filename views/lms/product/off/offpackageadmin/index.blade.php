@@ -100,8 +100,8 @@
                         &nbsp;
                         <select class="form-control" id="search_calc" name="search_calc">
                             <option value="">정산입력여부</option>
-                            <option value="Y">입력</option>
-                            <option value="N">미입력</option>
+                            <option value="1">입력</option>
+                            <option value="0">미입력</option>
                         </select>
                     </div>
                 </div>

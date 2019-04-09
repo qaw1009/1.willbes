@@ -888,11 +888,12 @@
                     'learnpatternccd' : $("#LearnPatternCcd").val()
                 };
 
-                var salesprice = $("#SalePrice_613001").val();
+                //var salesprice = $("#SalePrice_613001").val();
+                var salesprice = $("#RealSalePrice_613001").val();  {{--TODO 19.04.08 최진영차장님 요청으로 정상가에서 판매가로 변경--}}
 
                 if (salesprice == '') {
                     alert("정상가를 입력하신 후 진행해 주세요.");return;
-            }
+                }
 
                 sendAjax('{{ site_url('common/searchWMasterLecture/wMasterLectureProfessor') }}', data, function(ret) {
                     if(ret.ret_cd) {

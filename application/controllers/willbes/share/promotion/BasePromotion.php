@@ -102,7 +102,7 @@ class BasePromotion extends \app\controllers\FrontController
         $this->load->library('user_agent');
         $ismobile = $this->agent->is_mobile();
 
-        $view_file = 'willbes/pc/promotion/' . $this->_site_code . '/' . $arr_base['promotion_code'];
+        $view_file = 'willbes/'.APP_DEVICE.'/promotion/' . $this->_site_code . '/' . $arr_base['promotion_code'];
         $this->load->view($view_file, [
             'arr_base' => $arr_base,
             'data' => $data,

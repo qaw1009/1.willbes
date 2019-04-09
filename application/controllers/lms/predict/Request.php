@@ -130,7 +130,6 @@ class Request extends \app\controllers\BaseController
             $data = $this->predictModel->getProduct($ProdCode);
         }
 
-        echo "???=".$method;
         $this->load->view('predict/request/request_create', [
             'method' => $method,
             'siteCodeDef' => '',

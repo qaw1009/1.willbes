@@ -10917,6 +10917,15 @@ table.acadlecInfoPackageTable tr.Top td {
 .board_type a.freeLec {background-color:#06F !important}
 .board_type a:hover { background-color:#000 !important}
 
+.table_type {width:100%; margin:1em auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid}
+.table_type caption {display:none}	
+.table_type th,
+.table_type td {letter-spacing:normal; text-align:center; padding:10px 8px}
+.table_type th {color:#464646; background:#f3f3f3; font-weight:400; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid}
+.table_type td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:left}
+.table_type td input {vertical-align:middle}
+.table_type td label {margin-right:10px}
+
 
 
 

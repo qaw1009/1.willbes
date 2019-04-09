@@ -45,7 +45,8 @@
            <span class="tx-bright-blue">5월 4일</span> 경찰공무원 합격생 중경 무료 입교버스
         </h3>
         <div class="eventPopS1">
-        <table class="preTb">
+            <div>신청접수</div>
+        <table class="table_type">
         	<colgroup>
         		<col width="20%" />
         		<col width="30%" />
@@ -53,14 +54,14 @@
         		<col width="30%" />
         	</colgroup>            
         	<tbody>
-            	<tr >
-                	<td style="width:100px;">성명</td>
+            	<tr>
+                	<th>성명</th>
                 	<td ><input type="text" id="USER_NAME" name="USER_NAME" value="" style="width:100px"/></td>
-                	<td >연락처</td>
+                	<th>연락처</th>
                 	<td ><input type="text" id="PHONE_NO" name="PHONE_NO" value="" style="width:100px" onKeyUp="fn_OnlyNumber1(this);"/></td>
                 </tr>	
             	<tr >
-                	<td >성별</td>
+                	<th>성별</th>
 					<td>
 						<select id="ARM_NM" name="ARM_NM">
 							<option value="">선택</option>
@@ -68,20 +69,19 @@
 						 	<option value="여자">여자</option>
 						 </select>
 					</td>
-                	<td >응시번호</td>
+                	<th>응시번호</th>
                 	<td ><input type="text" id="ARM_NO" name="ARM_NO" value="" maxlength="5" style="width:100px" onKeyUp="fn_OnlyNumber1(this);"/></td>
 				</tr>
             	<tr>
-                	<td >직렬</td>
+                	<th>직렬</th>
 					<td colspan="3">
-						<input type="radio" name="CATEGORY_INFO" value="일반남자" /> 일반남자&nbsp;&nbsp;
-						<input type="radio" name="CATEGORY_INFO" value="일반여자" /> 일반여자&nbsp;&nbsp;
-						<input type="radio" name="CATEGORY_INFO" value="101 경비단" /> 101 경비단&nbsp;&nbsp;
-						<input type="radio" name="CATEGORY_INFO" value="경행경채" /> 경행경채
+						<input type="radio" name="CATEGORY_INFO" id="aa1" value="일반남자" /> <label for="aa1">일반남자</label>
+						<input type="radio" name="CATEGORY_INFO" id="aa2" value="일반여자" /> <label for="aa2">일반여자</label>
+						<input type="radio" name="CATEGORY_INFO" id="aa3" value="경행경채" /> <label for="aa3">경행경채</label>
 					</td>
 				</tr>
             	<tr>
-                	<td >버스탑승지역</td>
+                	<th>버스탑승지역</th>
 					<td colspan="3">
 						<input type="radio" name="ARM_RANK" value="서울" /> 서울&nbsp;&nbsp;
 						<input type="radio" name="ARM_RANK" value="인천" /> 인천&nbsp;&nbsp;
@@ -92,7 +92,7 @@
 					</td>
 				</tr>
             	<tr>
-                	<td >동반인</td>
+                	<th>동반인</th>
 					<td colspan="3">
 						<input type="radio" name="ARM_DIV1" value="가족1인" /> 가족1인&nbsp;&nbsp;
 						<input type="radio" name="ARM_DIV1" value="가족2인" /> 가족2인&nbsp;&nbsp;
@@ -100,8 +100,8 @@
 						<input type="radio" name="ARM_DIV1" value="없음" /> 없음
 					</td>
 				</tr>
-            	<tr >
-                	<td >동반인연락처</td>
+            	<tr>
+                	<th>동반인연락처</th>
 					<td colspan="3"><input type="text" id="ARM_DIV2" name="ARM_DIV2" value="" style="width:200px"/></td>
 				</tr>
             </tbody>

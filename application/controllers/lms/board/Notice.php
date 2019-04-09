@@ -237,7 +237,7 @@ class Notice extends BaseBoard
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
-            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];

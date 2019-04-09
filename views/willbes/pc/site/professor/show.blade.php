@@ -94,10 +94,10 @@
                                     <dt class="w-notice p_re">
                                         @if(empty($row['LectureSampleData']) === false)
                                             <ul class="w-sp">
-                                                <li><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></li>
+                                                <li><a href="#none" onclick="openWin('best_lec_sample_{{ $row['ProdCode'] }}'); return false;">맛보기</a></li>
                                             </ul>
-                                            <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: 0; left: 63px;">
-                                                <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
+                                            <div id="best_lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: 0; left: 63px;">
+                                                <a class="closeBtn" href="#none" onclick="closeWin('best_lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                 @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
                                                     <dl class="NSK">
                                                         <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>

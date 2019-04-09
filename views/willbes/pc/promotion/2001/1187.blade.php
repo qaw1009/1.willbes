@@ -81,7 +81,7 @@
         });
 
         function doEvent() {
-            var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
+            var url = "{{front_url('/predict/index/100001')}}";
             window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
         }
     </script>

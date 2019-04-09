@@ -20,19 +20,18 @@ class PredictModel extends WB_Model
         'mockBase' => 'lms_mock',
         'category' => 'lms_sys_category',
         'sysCode' => 'lms_sys_code',
+
         'subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
         'site' => 'lms_site',
 
-        'mockProduct' => 'lms_product_mock',
         'mockProductExam' => 'lms_product_mock_r_paper',
-        'mockRegisterR' => 'lms_mock_register_r_paper',
         'Product' => 'lms_Product',
         'ProductCate' => 'lms_product_r_category',
         'ProductSale' => 'lms_Product_Sale',
         'ProductSMS' => 'lms_Product_Sms',
-        'mockRegister' => 'lms_mock_register',
+
 
         'mockAnswerTemp' => 'lms_mock_answertemp',
         'mockAnswerPaper' => 'lms_mock_answerpaper',
@@ -53,12 +52,226 @@ class PredictModel extends WB_Model
         'surveyAnswer' => 'lms_survey_answer_info',
         'surveyAnswerDetail' => 'lms_survey_answer',
 
+        'predictProduct' => 'lms_product_predict',
+        'predictCode' => 'lms_predict_code',
+        'predictRegisterR' => 'lms_predict_register_r_paper',
+        'predictRegister' => 'lms_predict_register',
     ];
 
 
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * 메인리스트
+     */
+    public function mainList($conditionAdd='', $limit='', $offset='')
+    {
+        $condition = [ 'IN' => ['PP.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
+
+        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
+        $column = "
+            PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, PP.TakeStartDatm, PP.TakeEndDatm, 
+            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName
+        ";
+
+        $from = "
+            FROM {$this->_table['predictProduct']} AS PP
+            LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
+        ";
+        $selectCount = " SELECT COUNT(*) AS cnt";
+        $where = " WHERE PP.ProdCode > 0 ";
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $order = " ORDER BY PP.ProdCode DESC\n";
+        //echo "<pre>SELECT ". $column . $from . $where . $order . $offset_limit . "</pre>";
+        $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
+        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
+
+        // 직렬이름 추출
+        //$mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        //$codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+        $column = "
+            *
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictCode']} 
+                
+        ";
+
+        $order_by = " ";
+        $where = " WHERE GroupCcd = 0";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+        $arrCcd = array();
+        foreach ($Res as $key => $val){
+            $Ccd = $val['Ccd'];
+            $CcdName = $val['CcdName'];
+            $arrCcd[$Ccd] = $CcdName;
+        }
+
+        foreach ($data as &$it) {
+            $arrMockPart = explode(',',$it['MockPart']);
+
+            $mockpartstr = '';
+            for($i=0; $i < count($arrMockPart); $i++){
+                $tempstr = $arrMockPart[$i];
+                $mockpartstr .= $arrCcd[$tempstr]."/";
+            }
+            $mockpartstr = substr($mockpartstr, 0, strlen($mockpartstr) - 1);
+            if($it['TakeStartDatm'] > date('Y-m-d H:i:s')){
+                $dres = "접수대기";
+            } else if($it['TakeStartDatm'] < date('Y-m-d H:i:s') && $it['TakeEndDatm'] > date('Y-m-d H:i:s')) {
+                $dres = "접수중";
+            } else {
+                $dres = "접수마감";
+            }
+
+            $it['AcceptStatusCcd_Name'] = $dres;
+            $it['SerialStr'] = $mockpartstr;
+        }
+
+        return array($data, $count);
+    }
+
+    /**
+     *  합격예측용 기존데이터
+     */
+    public function getProduct($ProdCode){
+        $column = "
+            PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, PP.TakeStartDatm, PP.TakeEndDatm, 
+            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictProduct']} AS PP
+                LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A2 ON PP.UpdAdminIdx = A2.wAdminIdx
+                
+        ";
+
+        $order_by = " ";
+        $where = " WHERE PP.ProdCode = ".$ProdCode."";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->row_array();
+
+        return $Res;
+    }
+
+    /**
+     * @return array|bool
+     */
+    public function store()
+    {
+        $date = date("Y-m-d H:i:s");
+
+        try {
+            $this->_conn->trans_start();
+
+            // 신규 상품코드 조회
+            $prodcode = $this->_conn->getFindResult($this->_table['predictProduct'], 'IFNULL(MAX(ProdCode) + 1, 100001) as ProdCode');
+            $prodcode = $prodcode['ProdCode'];
+
+            // lms_Product_Mock 저장
+            $data = array(
+                'ProdCode'       => $prodcode,
+                'MockPart'       => implode(',', $this->input->post('MockPart')),
+                'SiteCode'      => $this->input->post('SiteCode'),
+                'ProdName'      => $this->input->post('ProdName', true),
+                //'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
+                'MockYear'       => $this->input->post('MockYear'),
+                'MockRotationNo' => $this->input->post('MockRotationNo'),
+                //'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
+                //'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
+                'RegIp'          => $this->input->ip_address(),
+                'RegDatm'        => $date,
+                'RegAdminIdx'    => $this->session->userdata('admin_idx'),
+            );
+
+            $this->_conn->insert($this->_table['predictProduct'], $data);
+
+            $this->_conn->trans_complete();
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('저장에 실패했습니다.');
+            }
+        }
+        catch (Exception $e) {
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $prodcode]];
+    }
+
+    /**
+     * @return array|bool
+     */
+    public function update()
+    {
+        $date = date("Y-m-d H:i:s");
+
+        try {
+            $this->_conn->trans_start();
+
+            // lms_Product_Mock 저장
+            $data = array(
+                'MockPart'       => implode(',', $this->input->post('MockPart')),
+                'ProdName'      => $this->input->post('ProdName', true),
+                //'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
+                'MockYear'       => $this->input->post('MockYear'),
+                'MockRotationNo' => $this->input->post('MockRotationNo'),
+                //'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
+                //'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
+                'RegIp'          => $this->input->ip_address(),
+                'RegDatm'        => $date,
+                'UpdAdminIdx'    => $this->session->userdata('admin_idx'),
+            );
+
+            $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where(['ProdCode' => $this->input->post('idx')]);
+
+            if ($this->_conn->update($this->_table['predictProduct']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_complete();
+        }
+        catch (Exception $e) {
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true];
+    }
+
+    /**
+     *  합격예측용 직렬호출
+     */
+    public function getSerial($GroupCcd){
+        $column = "
+            Ccd, CcdName  
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictCode']} 
+        ";
+
+        $order_by = " ORDER BY OrderNum";
+        $where = " WHERE IsUse = 'Y' AND GroupCcd = ".$GroupCcd."";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
     }
 
     /**

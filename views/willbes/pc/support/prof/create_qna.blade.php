@@ -20,6 +20,9 @@
             <input type="hidden" name="s_cate_code" value="{{element('s_cate_code', $arr_input)}}"/>
             <input type="hidden" name="s_prof_idx" value="{{element('prof_idx', $arr_input)}}"/>
             <input type="hidden" name="s_subject_idx" value="{{element('subject_idx', $arr_input)}}"/>
+            @if(empty($arr_base['prof_data']['IsBoardPublic']) === false && $arr_base['prof_data']['IsBoardPublic'] == 'N')
+                <input type="hidden" name="is_public" value="Y"/>
+            @endif
 
             <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
                 <colgroup>
@@ -49,6 +52,7 @@
                         </select>
                     </td>
                 </tr>
+                @if(empty($arr_base['prof_data']['IsBoardPublic']) === false && $arr_base['prof_data']['IsBoardPublic'] == 'Y')
                 <tr>
                     <td class="w-tit bg-light-white tx-left strong pl30">공개여부</td>
                     <td class="w-radio tx-left pl30" colspan="3">
@@ -58,6 +62,7 @@
                         </ul>
                     </td>
                 </tr>
+                @endif
                 <tr>
                     <td class="w-tit bg-light-white tx-left strong pl30">제목<span class="tx-light-blue">(*)</span></td>
                     <td class="w-text tx-left pl30" colspan="3">
@@ -132,15 +137,8 @@
         });
 
         function addValidate() {
-            var is_public = $(":input:radio[name=is_public]:checked").length;
-
             if ($('#s_consult_type').val() == '') {
                 alert('질문유형을 선택해 주세요.');
-                return false;
-            }
-
-            if (is_public < 1) {
-                alert('공개여부를 선택해 주세요.');
                 return false;
             }
 
@@ -150,7 +148,7 @@
             }
 
             if ($('#board_content').val() == '') {
-                alert('제목을 선택해 주세요.');
+                alert('내용을 선택해 주세요.');
                 return false;
             }
             return true;

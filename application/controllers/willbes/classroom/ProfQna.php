@@ -251,7 +251,7 @@ class ProfQna extends SupportQna
             if (empty($data)) {
                 show_alert('게시글이 존재하지 않습니다.', 'back');
             }
-            if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+            if ($data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
                 show_alert('잘못된 접근 입니다.', 'back');
             }
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
@@ -318,7 +318,7 @@ class ProfQna extends SupportQna
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
 
-        if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+        if ($data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
             show_alert('잘못된 접근 입니다.', 'back');
         }
 

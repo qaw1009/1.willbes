@@ -32,17 +32,22 @@
                     </div>
                 </div>
 
+                {{--
+                TODO: 필요없는 항목
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="">분류</label>
+                    <label class="control-label col-md-1-1" for="">분류</label>
                     <div class="form-control-static col-md-3">
                         {{$data['MdCateName']}}
                     </div>
-                    <label class="control-label col-md-1 b-line" for="">과목</label>
-                    <div class="form-control-static col-md-3 ml-8-dot">
+                </div>
+                --}}
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="">과목</label>
+                    <div class="form-control-static col-md-4">
                         {{$data['SubjectName']}}
                     </div>
-                    <label class="control-label col-md-1 c-line" for="">질문유형</label>
-                    <div class="form-control-static col-md-3 ml-8-dot">
+                    <label class="control-label col-md-1-1" for="">질문유형</label>
+                    <div class="form-control-static col-md-4">
                         {{$data['TypeCcdName']}}
                     </div>
                 </div>

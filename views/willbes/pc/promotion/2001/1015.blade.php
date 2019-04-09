@@ -32,7 +32,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1015_top.png" alt="1"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1015_top.jpg" alt="1"  />
         </div><!--//Wb_top-->
 
         <div class="evtCtnsBox wb_cts01" >
@@ -43,16 +43,16 @@
         </div><!--//wb_cts01-->
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1015_02.png"  alt="신광은경찰팀" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1015_02.jpg"  alt="신광은경찰팀" />
         </div><!--//wb_cts02-->
 
         <div class="evtCtnsBox wb_cts03" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1015_03.png"  alt="이론안내" /></li>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1015_03.jpg"  alt="이론안내" /></li>
             </ul>
         </div><!--//wb_cts03-->
 
         <div class="evtCtnsBox wb_cts04" id="table">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1015_04.png"  alt="강좌소개" usemap="#link2" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1015_04.jpg"  alt="강좌소개" usemap="#link2" />
             <map name="link2" >
                 <!--단과-->
                 <area shape="rect" coords="389,410,451,435" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/151727') }}" onfocus='this.blur()' alt="형사소송법 기본이론(19년 3월)" target="_blank"/>

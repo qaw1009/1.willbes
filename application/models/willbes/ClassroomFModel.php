@@ -813,7 +813,7 @@ class ClassroomFModel extends WB_Model
             $where = $where . " AND D.ProdCode IS NULL ";
         }
 
-        $orderby = " ORDER BY B.RegDatm DESC ";
+        $orderby = " ORDER BY B.PsIdx DESC ";
 
         return $this->_conn->query('SELECT straight_join '. $column. $from. $where. $orderby)->result_array();
     }

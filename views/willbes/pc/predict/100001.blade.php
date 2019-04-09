@@ -88,7 +88,7 @@
                         </li>
                         <li>
                             <strong>* 응시번호</strong>
-                            <input type="text" name="TakeNumber" id="TakeNumber">
+                            <input type="text" name="TakeNumber" id="TakeNumber" maxlength="10">
                         </li>
                         <li>
                             <strong>* 신광은경찰팀 수강여부</strong>

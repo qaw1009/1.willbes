@@ -102,7 +102,7 @@
                             <th>시험응시번호</th>
                             <td>
                                 <label>
-                                    <input type="text" name="TakeNumber" id="TakeNumber">
+                                    <input type="text" name="TakeNumber" id="TakeNumber" maxlength="10">
                                 </label>
                             </td>
                         </tr>

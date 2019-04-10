@@ -2027,7 +2027,7 @@ body.memBody #Footer {
 .predictWrap input[type="text"] {height: 2rem;}
 .predictWrap .willbes-Tit {background: #1f6877; color:#fff; border:0}
 .predictWrap .willbes-Tit span {color:#f6cc20}
-.predictWrap .predictMain { background:#122d38; text-align: center; padding-bottom:50px}
+.predictWrap .predictMain { background:#122d38 url(https://static.willbes.net/public/images/promotion/2019/04/1187M_bg.jpg) no-repeat center top; background-size:720px;  text-align: center; padding-bottom:50px}
 .predictWrap .predictMain .mainImg img {width:100%; max-width:720px;} 
 .predictWrap .predictMain .mainBtn a { 
     display:block; width: 80%; max-width: 700px; margin:0 auto; padding:1em 0;

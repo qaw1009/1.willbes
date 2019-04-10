@@ -1,11 +1,11 @@
 /* CSS : import */
 @import url("style_main.css");
 @import url("style_cop.css");
-@import url("style_cop_acad.css");
 @import url("style_cop_adm.css");
 @import url("style_cop_pro.css");
 @import url("style_cop_sea.css");
 @import url("style_cop_sea_special.css");
+@import url("style_cop_acad.css");
 @import url("style_gosi.css");
 @import url("style_gosi_acad.css");
 @import url("style_gosi_law.css");
@@ -1777,7 +1777,7 @@ table.auTable tr td {
     color: #888;
     line-height: 16px;
 }
-/* Main Container : QuickMenu */
+/* Main Container : QuickMenu*/ 
 .MainQuickMenu {
     position: fixed;
     top: 180px;
@@ -1790,6 +1790,7 @@ table.auTable tr td {
     background: #fff;
     margin-bottom: 8px;
 }
+
 .QuickSlider .QuickDdayBox {
     position: relative; 
     height: 100px;

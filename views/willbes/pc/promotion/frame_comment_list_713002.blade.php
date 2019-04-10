@@ -140,7 +140,8 @@
                     <tr>
                         <td>{!! hpSubString($row['MemId'],0,2,'*') !!}</td>
                         <td>
-                            {!! nl2br($row['Content']) !!}
+                            {{--{!! nl2br($row['Content']) !!}--}}
+                            {!! hpSubString($row['Content'], 0, 10, '*********************') !!}
                             @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                 <a class="btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">X</a>
                             @endif
@@ -202,7 +203,18 @@
             alert('홍보 URL을 입력해 주세요.');
             return false;
         }
+
+        if (validUrl($('#event_comment').val()) == false) {
+            alert('형식에 맞지않는 URL 입니다.');
+            return false;
+        }
         return true;
+    }
+
+    //URL 패턴 검사
+    function validUrl(url) {
+        var pattern = new RegExp('^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$');
+        return pattern.test(url);
     }
 </script>
 @stop

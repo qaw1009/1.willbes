@@ -104,6 +104,7 @@
             </tr>
             </thead>
             <tbody>
+            @php $totaltime = 0; @endphp
             @forelse($curriculum as $row)
                 <tr>
                     <td>{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
@@ -189,8 +190,14 @@
                     <td>{{$row['FirstStudyDate']}}</td>
                     <td>{{$row['LastStudyDate']}}</td>
                 </tr>
+                @php $totaltime += $row['StudyTime']; @endphp
             @empty
             @endforelse
+                <tr>
+                    <td colspan="6"></td>
+                    <td>총 수강시간 : {{floor(intval($totaltime)/60)}}분</td>
+                    <td colspan="3"></td>
+                </tr>
             </tbody>
         </table>
     </div>

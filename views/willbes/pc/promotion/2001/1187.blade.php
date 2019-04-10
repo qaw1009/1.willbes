@@ -27,9 +27,7 @@
             .counter span {color:#fff200; font-size:30px;}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1187_01_bg.jpg) no-repeat center top}
         .evt01 div {position:relative; width:1120px; margin:0 auto}
-        .evt01 div span {position:absolute; left:463px; display:block; width:433px; height:67px; line-height:67px; z-index:10}
-        .evt01 div span a {display:block; text-align:center; color:#333; background:#fff; font-size:18px; font-weight:600; border:1px solid #ff5d7a !important;}
-        .evt01 div span a:hover {color:#fff; background:#ff5d7a}
+        .evt01 div a {position:absolute; display:block; width:281px; left:50%; margin-left:-140px; top:1218px; z-index:10} 
         .evt02 {background:#f6f6f6;}
         .evt03 {background:#fff;}
 
@@ -49,7 +47,10 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_01.jpg" title="합격예측 사전예약 특전">
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_01.jpg" title="합격예측 사전예약 특전">
+                <a href="#none" onclick="doEvent(); return false;" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_btn01.png" title="합격예측 사전예약 신청하기"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt02">
@@ -57,10 +58,7 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_03.jpg" usemap="#Map1187A" title="사전예약 이벤트" border="0">
-            <map name="Map1187A" id="Map1187A">
-                <area shape="rect" coords="413,900,708,971" href="#none" onclick="doEvent(); return false;" target="_blank" alt="합격예측 사전접수하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_03.jpg" title="사전예약 이벤트">
         </div>
 
         {{--홍보url댓글--}}

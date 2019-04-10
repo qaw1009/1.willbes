@@ -411,7 +411,8 @@
                 </div>
             @endif
 
-            @if($data['order']['PayRouteCcd'] == $_pay_route_ccd['zero'] || $data['order']['PayRouteCcd'] == $_pay_route_ccd['alliance'])
+            @if(empty($data['admin_prod']) === false)
+                {{-- 관리자 결제정보 --}}
                 <div class="ln_solid mt-5"></div>
                 <div class="row">
                     <div class="col-md-6">
@@ -424,7 +425,7 @@
                             <tbody>
                             <tr>
                                 <th class="bg-odd">상품구분</th>
-                                <td class="bg-white-only">{{ $data['order']['PayRouteCcdName'] }}
+                                <td class="bg-white-only">{{ $data['admin_prod']['PayRouteCcdName'] }}
                                     | {{ $data['admin_prod']['ProdTypeCcdName'] }}
                                     {{ isset($data['admin_prod']['MyLecData']['wUnitData']) === true ? '(회차등록)' : '' }}
                                     | <div class="blue inline-block">[{{ $data['admin_prod']['LearnPatternCcdName'] or $data['admin_prod']['ProdTypeCcdName'] }}]</div> {{ $data['admin_prod']['ProdName'] }}
@@ -438,7 +439,7 @@
                                         [수강제공기간] {{ $data['admin_prod']['MyLecData']['LecExpireDay'] }}일 &nbsp;
                                     @endif
                                     [결제금액] {{ number_format($data['admin_prod']['RealPayPrice']) }}원 &nbsp;
-                                    @if($data['order']['PayRouteCcd'] == $_pay_route_ccd['alliance'])
+                                    @if($data['admin_prod']['PayRouteCcd'] == $_pay_route_ccd['alliance'])
                                         [제휴사] 해당없음
                                     @endif
                                 </td>
@@ -479,22 +480,22 @@
                                     <p>[휴대폰번호] {{ $data['delivery_addr']['ReceiverPhone'] }}</p>
                                     <p>[전화번호] {{ $data['delivery_addr']['ReceiverTel'] }}</p>
                                     <p>[배송시 요청사항] {{ $data['delivery_addr']['DeliveryMemo'] }}</p>
-                                    <p>[배송료] {{ number_format($data['order']['tDeliveryPrice']) }}원</p>
+                                    <p>[배송료] {{ number_format($data['admin_prod']['tDeliveryPrice']) }}원</p>
                                     <p>[배송료 입금정보] {{ $data['delivery_addr']['OrderMemo'] }}</p>
                                 </td>
                             </tr>
                             @endif
                             <tr>
                                 <th class="bg-odd">부여사유유형</th>
-                                <td class="bg-white-only">{{ $data['order']['AdminReasonCcdName'] }}</td>
+                                <td class="bg-white-only">{{ $data['admin_prod']['AdminReasonCcdName'] }}</td>
                             </tr>
                             <tr>
                                 <th class="bg-odd">상세부여사유</th>
-                                <td class="bg-white-only">{{ $data['order']['AdminEtcReason'] }}</td>
+                                <td class="bg-white-only">{{ $data['admin_prod']['AdminEtcReason'] }}</td>
                             </tr>
                             <tr>
                                 <th class="bg-odd">부여자</th>
-                                <td class="bg-white-only">{{ $data['order']['RegAdminName'] }}</td>
+                                <td class="bg-white-only">{{ $data['admin_prod']['RegAdminName'] }}</td>
                             </tr>
                             </tbody>
                         </table>

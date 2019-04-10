@@ -61,7 +61,7 @@
                         <tr>
                             <th>직렬(직류)</th>
                             <td>
-                                <select title="응시직렬" name="TakeMockPart" id="TakeMockPart" onChange="selSerial(this.value,'')">
+                                <select title="응시직렬" name="TakeMockPart" id="TakeMockPart" onChange="selSerial(this.value,'')" @if($mode=='MOD') disabled @endif>
                                     <option value="">응시직렬</option>
                                     @if($mode == 'NEW')
                                         @foreach($serial as $val)

@@ -56,7 +56,7 @@
                     <ul>
                         <li>
                             <strong>* 직렬(직류구분)</strong>
-                            <select name="TakeMockPart" id="TakeMockPart" style="width:120px" onchange="selSerial(this.value,'')">
+                            <select name="TakeMockPart" id="TakeMockPart" style="width:120px" onchange="selSerial(this.value,'')" @if($mode=='MOD') disabled @endif >
                                 <option value="">응시직렬</option>
                                 @if($mode == 'NEW')
                                     @foreach($serial as $val)

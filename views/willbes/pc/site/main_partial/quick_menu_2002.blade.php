@@ -8,3 +8,6 @@
     <li><a href="{{ front_url('/offinfo/gallery/index') }}">학원 갤러리</a></li>
     <li><a href="{{ site_url('/lecture/index/cate/3001/pattern/free?course_idx=1077') }}" target="_blank">보강동영상</a></li>
 </ul>
+<div class="mt5">
+    <a href="{{ site_url('/promotion/index/cate/3001/code/1044') }}"><img src="https://static.willbes.net/public/images/promotion/2019/04/sky_20190410_164_208.jpg" title="5월 개강 영어지옥 탈출반"></a>
+</div>

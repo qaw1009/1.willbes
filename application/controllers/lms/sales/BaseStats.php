@@ -54,7 +54,7 @@ class BaseStats extends \app\controllers\BaseController
         }
         // 교수
         if (in_array('prof_idx', $this->_search_column) === true) {
-            $arr_code['arr_professor'] = $this->professorModel->getProfessorArray();
+            $arr_code['arr_professor'] = $this->professorModel->getProfessorArray('', '', ['WP.wProfName' => 'asc']);
         }
         // 출판사
         if (in_array('publ_idx', $this->_search_column) === true) {

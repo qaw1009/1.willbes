@@ -10,7 +10,7 @@
 
         <div class="predictMain">
             <div class="mainImg">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/1187M_01.png" title="2019년 경찰 1차 합격예측 풀서비스 사전예약">
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1187M_01.jpg" title="2019년 경찰 1차 합격예측 풀서비스 사전예약">
             </div>
             <div class="mainBtn">
                 {{--로그인 전--}}

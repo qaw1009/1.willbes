@@ -44,13 +44,13 @@
                     <table id="list_table" class="table table-striped table-bordered" style="width:100%;">
                         <thead>
                         <tr>
-                            <th>NO</th>
+                            <th>순번</th>
                             <th>회차/강<span class="required">*</span></th>
                             <th width="400">영상제목<span class="required">*</span>/보조자료</th>
                             <th>강의시간<span class="required">*</span><BR>/북페이지</th>
-                            <th>영상경로<span class="required">*</span></th>
+                            <th width="420">영상경로<span class="required">*</span></th>
                             <th>영상비율<span class="required">*</span></th>
-                            <th>촬영일/교수<span class="required">*</span></th>
+                            <th  width="150">촬영일/교수<span class="required">*</span></th>
                             <th>활성</th>
                             <th>등록일/등록자</th>
                         </tr>
@@ -62,7 +62,9 @@
                                 <tr id="trID{{$loop->index}}">
                                     <input type="hidden" name="seq[]" id="seq{{$loop->index}}" value="{{$loop->index}}" >
                                     <input type="hidden" name="wUnitIdx[]" id="wUnitIdx{{$loop->index}}" value="{{$row['wUnitIdx'] }}" >
-                                    <td>{{ $loop->index }}</td>
+                                    <td>
+                                        <input type="text" name="wOrderNum[]" value="{{ $row['wOrderNum'] }}" size="3" required="required" class="form-control" >
+                                    </td>
                                     <td>
                                         <input type="number" name="wUnitNum[]" id="wUnitNum{{$loop->index}}" required="required"  class="form-control" title="회차" value="{{ $row['wUnitNum'] }}" style="width: 35px">회차
                                         <input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum{{$loop->index}}" required="required"  class="form-control" title="강" value="{{ $row['wUnitLectureNum'] }}" style="width: 42px">강
@@ -90,13 +92,13 @@
                                     </td>
                                     <td>
                                         [와이드] <font color="white">질</font><input type="text" name="wWD[]" id="wWD{{$loop->index}}" class="form-control"  title="와이드" value="{{ $row['wWD'] }}" style="width: 300px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$loop->index}}')">보기</button>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView('WD','{{$loop->index}}')">보기</button>
                                         <BR>
                                         [고화질] <font color="white">질</font><input type="text" name="wHD[]" id="wHD{{$loop->index}}" class="form-control" title="고화질" value="{{ $row['wHD'] }}" style="width: 300px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$loop->index}}')">보기</button>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView('HD','{{$loop->index}}')">보기</button>
                                         <BR>
                                         [일반화질] <input type="text" name="wSD[]" id="wSD{{$loop->index}}" class="form-control"  title="저화질" value="{{ $row['wSD'] }}" style="width: 300px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$loop->index}}')">보기</button>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView('SD','{{$loop->index}}')">보기</button>
                                     </td>
                                     <td>
                                         <select name="wContentSizeCcd[]" id="wContentSizeCcd{{$loop->index}}" class="form-control" title="화면비율" >
@@ -138,7 +140,7 @@
                                 <tr id="trID{{$i}}">
                                     <input type="hidden" name="seq[]" id="seq{{$i}}" value="{{$i}}" >
                                     <input type="hidden" name="wUnitIdx[]" id="wUnitIdx{{$i}}" value="" >
-                                    <td>{{ $i }}</td>
+                                    <td><input type="text" name="wOrderNum[]" value="{{$i}}" size="3" required="required" class="form-control" ></td>
                                     <td>
                                         <input type="number" name="wUnitNum[]" id="wUnitNum{{$i}}" required="required"  class="form-control" title="회차" value="1" style="width: 35px">회차
                                         <input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum{{$i}}" required="required"  class="form-control" title="강" value="{{$i}}" style="width: 42px">강
@@ -159,13 +161,13 @@
                                     </td>
                                     <td>
                                         [와이드] <font color="white">질</font><input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control"  title="와이드" value="" style="width: 300px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$i}}')">보기</button>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView('WD','{{$i}}')">보기</button>
                                         <BR>
                                         [고화질] <font color="white">질</font><input type="text" name="wHD[]" id="wHD{{$i}}" class="form-control"  title="고화질" value="" style="width: 300px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$i}}')">보기</button>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView('HD','{{$i}}')">보기</button>
                                         <BR>
                                         [일반화질] <input type="text" name="wSD[]" id="wSD{{$i}}" class="form-control" title="일반화질" value="" style="width: 300px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$i}}')">보기</button>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView('SD','{{$i}}')">보기</button>
                                     </td>
                                     <td>
                                         <select name="wContentSizeCcd[]" id="wContentSizeCcd{{$i}}" class="form-control" title="화면비율" >
@@ -196,7 +198,6 @@
                             @endfor
 
                         @endif
-
                         </tbody>
                     </table>
                 </div>
@@ -205,11 +206,11 @@
 
                 var $regi_form_modal = $('#_regi_form');
                 var $datatable_modal;
-                var $list_table = $('#list_table');
+                var $list_table_modal = $('#list_table');
 
                 $(document).ready(function() {
 
-                    $datatable_modal = $list_table.DataTable({
+                    $datatable_modal = $list_table_modal.DataTable({
                         responsive: false,
                         serverSide: false,
                         ajax : false,
@@ -233,11 +234,12 @@
                         //alert(last_wUnitNum+' - '+last_wUnitLectureNum);return;
 
                         for (i=0;i<addCnt;i++ ) {
-                            $list_table.append(
+                            $list_table_modal.append(
                                 '<tr id="trID'+seq+'">'
                                 +'<input type="hidden" name="seq[]" id="seq'+seq+'" value="'+seq+'" >'
                                 +'<input type="hidden" name="wUnitIdx[]" id="wUnitIdx'+seq+'" value="">'
-                                +'<td>'+seq+'</td>'
+                                //+'<td>'+seq+'</td>'
+                                +'<td><input type="text" name="wOrderNum[]" value="'+seq+'" size="3" required="required" class="form-control" ></td>'
                                 +'<td>'
                                 +'<input type="number" name="wUnitNum[]" id="wUnitNum'+seq+'" required="required"  class="form-control" title="회차" value="'+(parseInt(last_wUnitNum))+'" style="width: 35px">회차'
                                 +'<input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum'+seq+'" required="required"  class="form-control" title="강" value="'+(parseInt(last_wUnitLectureNum)+(i+1))+'" style="width: 42px">강<BR>'
@@ -257,13 +259,13 @@
                                 +'</td>'
                                 +'<td>'
                                 +'[와이드] <font color="white">질</font><input type="text" name="wWD[]" id="wWD'+seq+'" class="form-control" title="와이드" value="" style="width: 300px">'
-                                +' <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'WD\',\''+seq+'\')">보기</button>'
+                                +' <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView(\'WD\',\''+seq+'\')">보기</button>'
                                 +'<BR>'
                                 +'[고화질] <font color="white">질</font><input type="text" name="wHD[]" id="wHD'+seq+'" class="form-control" title="고화질" value="" style="width: 300px">'
-                                +' <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'HD\',\''+seq+'\')">보기</button>'
+                                +' <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView(\'HD\',\''+seq+'\')">보기</button>'
                                 +'<BR>'
                                 +'[일반화질] <input type="text" name="wSD[]" id="wSD'+seq+'" class="form-control" title="일반화질" value="" style="width: 300px">'
-                                +' <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'SD\',\''+seq+'\')">보기</button>'
+                                +' <button class="btn btn-sm btn-primary border-radius-reset mr-1" type="button" onclick="vodView(\'SD\',\''+seq+'\')">보기</button>'
                                 +'</td>'
                                 +'<td>'
                                 +'<select name="wContentSizeCcd[]" id="wContentSizeCcd'+seq+'" class="form-control" title="화면비율" >'
@@ -283,10 +285,10 @@
                                 +'    </select>'
                                 +'</td>'
                                 +'<td align=center><select name="wIsUse[]" class="form-control is_use" data-idx="'+seq+'" onchange="changeView(this,\''+seq+'\')">\n' +
-                                '                                            <option value="Y">활성</option>\n' +
-                                '                                            <option value="N" style=\'color:red;font-weight:bold;\'>비활성</option>\n' +
-                                '                                        </select><BR>' +
-                                '                                        <span id="is_use_view_'+seq+'"></span></td>'
+                                '               <option value="Y">활성</option>\n' +
+                                '               <option value="N" style=\'color:red;font-weight:bold;\'>비활성</option>\n' +
+                                '           </select><BR>' +
+                                '       <span id="is_use_view_'+seq+'"></span></td>'
                                 +'   <td></td>'
                                 +'</tr>'
                             );

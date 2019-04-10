@@ -86,23 +86,23 @@
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1056&campus_ccd=605001') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
-                        <td>형소법 신광은</td>
-                        <td>형소법 마무리 특강</td>
-                        <td>4/16(화) 14:30</td>
-                        <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1057&campus_ccd=605001') }}" target="_blank">수강신청</a></td>
-                    </tr>
-                    <tr>
                         <td>한국사 오태진</td>
                         <td>한국사 마무리 특강</td>
-                        <td>4/18(목) 14:30</td>
+                        <td>4/16(화) 14:30</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001&prof_idx=50132') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 원유철</td>
                         <td>한국사 마무리 특강</td>
-                        <td>4/18(목) 14:30</td>
+                        <td>4/16(화) 14:30</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001&prof_idx=50642') }}" target="_blank">수강신청</a></td>
                     </tr>
+                    <tr>
+                        <td>형소법 신광은</td>
+                        <td>형소법 마무리 특강</td>
+                        <td>4/18(목) 14:30</td>
+                        <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1057&campus_ccd=605001') }}" target="_blank">수강신청</a></td>
+                    </tr>                    
                     <tr>
                         <td>경찰학 장정훈</td>
                         <td>경찰학 마무리 특강</td>

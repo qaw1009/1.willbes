@@ -19,16 +19,17 @@
 /* Login Form : 공통 */
 .mem-Tit {
     text-align: center;
-    padding: 65px 0;
+    padding: 65px 0;    
 }
+.mem-Tit img { vertical-align: bottom}
 .mem-Tit span {
     font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "Malgun Gothic", "맑은 고딕";
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -2px;
     display: inline-block;
-    padding-top: 11px;
     padding-left: 11px;
+    padding-bottom:3px;
 }
 .mem-Acad-Tit {
     padding: 40px 0 50px;

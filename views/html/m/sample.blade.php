@@ -48,8 +48,8 @@
     </li>
     <li>
         <div>  
-            <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch') }}" target="_blank">경찰1차 합격예측 풀서비스 사전예약(시험전날까지)</a>
-            <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_01') }}" target="_blank">경찰1차 합격예측 채점서비스(시험일 오픈)</a>
+            <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch') }}" target="_blank">경찰1차 합격예측 풀서비스 사전예약 및 채점서비스</a>
+            {{--<a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_01') }}" target="_blank">경찰1차 합격예측 채점서비스(시험일 오픈)</a>--}}
             <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_02') }}" target="_blank">└ 기본정보입력</a>
             <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_03') }}" target="_blank">└ 채점하기</a>
             <a href="{{ site_url('/home/html/m/promotion_cop_2019_1ch_04') }}" target="_blank">└ 성적확인</a>

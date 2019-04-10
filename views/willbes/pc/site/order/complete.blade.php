@@ -51,13 +51,15 @@
                         <tr>
                             <td class="bg-light-white">주문번호</td>
                             <td><strong>{{ $results['order']['OrderNo'] }}</strong></td>
-                            <td class="bg-light-white">가상계좌취소</td>
+                            <td class="bg-light-white">{{--가상계좌취소--}}</td>
                             <td>
+                                {{-- 가상계좌취소 기능 삭제
                                 @if($results['order']['VBankStatus'] == 'O')
                                     <span class="btnAll NSK"><a href="#none" id="btn_vbank_cancel">취소</a></span>
                                 @else
                                     {{ $results['order']['VBankCancelDatm'] }}
                                 @endif
+                                --}}
                             </td>
                         </tr>
                     @else

@@ -46,6 +46,7 @@
             <input type="hidden" name="mode" value="{{ $mode }}" />
             @if($mode == 'MOD')
             <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
+            <input type="hidden" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
             @endif
 
             <div class="eventPop">
@@ -56,6 +57,7 @@
                     <ul>
                         <li>
                             <strong>* 직렬(직류구분)</strong>
+
                             <select name="TakeMockPart" id="TakeMockPart" style="width:120px" onchange="selSerial(this.value,'')" @if($mode=='MOD') disabled @endif >
                                 <option value="">응시직렬</option>
                                 @if($mode == 'NEW')

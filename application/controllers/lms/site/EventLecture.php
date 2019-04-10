@@ -794,7 +794,7 @@ class EventLecture extends \app\controllers\BaseController
      */
     public function commentExcel($params = [])
     {
-        $headers = ['이름', '아이디', '연락처', '이메일', '댓글', '작성일', '사용여부'];
+        $headers = ['댓글종류', '이름', '아이디', '연락처', '이메일', '댓글', '작성일', '사용여부'];
 
         $el_idx = $params[0];
         $arr_condition = $this->_getCommentListConditions($el_idx);

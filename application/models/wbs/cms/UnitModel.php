@@ -55,6 +55,8 @@ class UnitModel extends WB_Model
 
                 $lec_idx = element('LecIdx', $input);
                 $seq = element('seq', $input);
+
+                $wOrderNum = element('wOrderNum', $input);
                 $wUnitIdx = element('wUnitIdx', $input);
                 $wUnitNum = element('wUnitNum', $input);
                 $wUnitLectureNum= element('wUnitLectureNum', $input);
@@ -132,6 +134,7 @@ class UnitModel extends WB_Model
                             ,'wContentSizeCcd' => $wContentSizeCcd[$i]          //컨텐트사이즈
                             ,'wIsUse' => $wIsUse[$i]
                             ,'wUnitInfo' => $wUnitInfo[$i]
+                            ,'wOrderNum' => $wOrderNum[$i]
                         ];
 
                         //기존 회차식별자가 존재하면 업데이트 처리
@@ -181,7 +184,7 @@ class UnitModel extends WB_Model
                                     }
                                 }
 
-                                $this->_conn->set($input_data)->set('wOrderNum','fn_lecture_unit_maxnumber('.$lec_idx.')',false);
+                                //$this->_conn->set($input_data)->set('wOrderNum','fn_lecture_unit_maxnumber('.$lec_idx.')',false);
                                 $this->_conn->insert($this->_table,$input_data);
                         }
 

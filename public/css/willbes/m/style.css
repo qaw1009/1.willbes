@@ -2025,39 +2025,39 @@ body.memBody #Footer {
 }
 .predictWrap input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
 .predictWrap input[type="text"] {height: 2rem;}
-.predictWrap .willbes-Tit {background: #0c5dc0; color:#fff}
-.predictWrap .willbes-Tit span {color:#f90}
-.predictWrap .predictMain { background:#1d316e; text-align: center; padding-bottom:50px}
+.predictWrap .willbes-Tit {background: #1f6877; color:#fff; border:0}
+.predictWrap .willbes-Tit span {color:#f6cc20}
+.predictWrap .predictMain { background:#122d38; text-align: center; padding-bottom:50px}
 .predictWrap .predictMain .mainImg img {width:100%; max-width:720px;} 
 .predictWrap .predictMain .mainBtn a { 
     display:block; width: 80%; margin:0 auto; padding:1em 0;
     text-align: center; background: #000; color:#fff; border-radius: 10px;
-    font-size:16px; font-weight: bold;
+    font-size:18px; font-weight: bold;
     box-shadow: 5px 5px 5px rgba(0,0,0,.2);
 }
 .predictWrap .predictMain .mainBtn a.btn2 {
-    background:#bf1212; border:1px solid #bf1212;
+    background:#bf1212; 
     animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;
 }
 	@keyframes upDown{
-	from{background:#250509}
-	50%{background:#9a163e}
-	to{background:#250509}
+	from{background:#1f6877}
+	50%{background:#4ba8bb}
+	to{background:#1f6877}
 	}
 	@-webkit-keyframes upDown{
-	from{background:#250509}
-	50%{background:#9a163e}
-	to{background:#250509}
-    }
-    
+	from{background:#1f6877}
+	50%{background:#4ba8bb}
+	to{background:#1f6877}
+    }   
 
 .predictWrap .predictMain .sort {margin-top:30px}
-.predictWrap .predictMain .sort span {
-    display: inline-block; width: 100px; height: 100px; line-height: 100px;
-    border:3px solid #06f; border-radius: 50px; background: #fff; color:#06f;
+.predictWrap .predictMain .sort div {
+    display: inline-block; width: 100px; height: 100px; line-height: 100px; vertical-align: middle;
+    border:3px solid #1f6877; border-radius: 50px; background: #fff; color:#1f6877;
     font-size:16px; margin-right:10px;
 }
-.predictWrap .predictMain .sort span:last-child {margin:0}
+.predictWrap .predictMain .sort div:last-child {margin:0}
+.predictWrap .predictMain .sort div span {display:block; line-height: 1.4; margin-top:25px;}
 
 .tg-note .tg-tit {background:#1a8ccc; cursor:pointer; padding-left:10px; color:#fff; font-size:14px}
 .tg-note .tg-cont {background:#ddeff9; padding:1em}

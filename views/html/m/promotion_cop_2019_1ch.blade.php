@@ -10,7 +10,7 @@
 
         <div class="predictMain">
             <div class="mainImg">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/1187M_01.png" title="2019년 경찰 1차 합격예측 풀서비스 사전예약">
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1187M_01.jpg" title="2019년 경찰 1차 합격예측 풀서비스 사전예약">
             </div>
             <div class="mainBtn">
                 <a href="#none" class="btn2">
@@ -18,7 +18,9 @@
                 </a>
             </div>
             <div class="sort">
-                <span>일반공채</span> <span>101단</span> <span>전의경경채</span>
+                <div><span>일반<br>공채</span></div>
+                <div><span>101<br>경비단</span></div>
+                <div><span>전의경<br>경채</span></div>
             </div>
         </div>
     </div>   

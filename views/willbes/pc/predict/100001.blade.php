@@ -43,6 +43,10 @@
             <input type="hidden" id="GroupCcd" name="GroupCcd" >
             <input type="hidden" name="SiteCode" value="2001" />
             <input type="hidden" name="ProdCode" value="{{ $idx }}" />
+            <input type="hidden" name="mode" value="{{ $mode }}" />
+            @if($mode == 'MOD')
+            <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
+            @endif
 
             <div class="eventPop">
                 <h3>
@@ -52,18 +56,43 @@
                     <ul>
                         <li>
                             <strong>* 직렬(직류구분)</strong>
-                            <select name="TakeMockPart" id="TakeMockPart" style="width:120px" onchange="selSerial(this.value)">
+                            <select name="TakeMockPart" id="TakeMockPart" style="width:120px" onchange="selSerial(this.value,'')">
                                 <option value="">응시직렬</option>
-                                @foreach($serial as $val)
-                                <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
-                                @endforeach
+                                @if($mode == 'NEW')
+                                    @foreach($serial as $val)
+                                        <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
+                                    @endforeach
+                                @else
+                                    @foreach($serial as $val)
+                                        <option value="{{ $val['Ccd'] }}" @if($data['TakeMockPart'] == $val['Ccd']) selected @endif>{{ $val['CcdName'] }}</option>
+                                    @endforeach
+                                @endif
                             </select>
-                            <select id="TakeArea" name="TakeArea" >
-                                <option value="">지역구분</option>
-                                @foreach($area as $val)
-                                    <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
-                                @endforeach
-                            </select>
+                            <input type="hidden" id="TakeArea" name="TakeArea" @if($mode == 'MOD') value="{{ $data['TakeArea'] }}" @endif/>
+                            <span id="area1">
+                                <select title="지역구분" onChange="selArea(this.value)">
+                                    <option value="">지역구분</option>
+                                    @if($mode == 'NEW')
+                                        @foreach($area as $val)
+                                            @if($val['Ccd'] != '712018')
+                                                <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        @foreach($area as $val)
+                                            @if($val['Ccd'] != '712018')
+                                                <option value="{{ $val['Ccd'] }}" @if($data['TakeArea'] == $val['Ccd']) selected @endif>{{ $val['CcdName'] }}</option>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </span>
+                            <span id="area2" style="display:none;">
+                                <select title="지역구분" onChange="selArea(this.value)">
+                                    <option value="">지역구분</option>
+                                    <option value="712001">서울</option>
+                                </select>
+                            </span>
                             ※ 응시직렬은 최초 선택/저장 후 수정 불가
                         </li>
                         <li>
@@ -78,39 +107,42 @@
                             </div>
                             <strong class="mt10">* 가산점여부</strong>
                             <ul>
-                                <li><input type="radio" name="AddPoint" id="AddPoint1" value="5" /> <label for="AddPoint1">5점</label></li>
-                                <li><input type="radio" name="AddPoint" id="AddPoint2" value="4" /> <label for="AddPoint2">4점</label></li>
-                                <li><input type="radio" name="AddPoint" id="AddPoint3" value="3" /> <label for="AddPoint3">3점</label></li>
-                                <li><input type="radio" name="AddPoint" id="AddPoint4" value="2" /> <label for="AddPoint4">2점</label></li>
-                                <li><input type="radio" name="AddPoint" id="AddPoint5" value="1" /> <label for="AddPoint5">1점</label></li>
-                                <li><input type="radio" name="AddPoint" id="AddPoint6" value="0" /> <label for="AddPoint6">없음</label></li>
+                                <li><input type="radio" name="AddPoint" id="AddPoint1" value="5" @if($mode == 'MOD' && $data['AddPoint'] == '5') checked @endif /> <label for="AddPoint1">5점</label></li>
+                                <li><input type="radio" name="AddPoint" id="AddPoint2" value="4" @if($mode == 'MOD' && $data['AddPoint'] == '4') checked @endif /> <label for="AddPoint2">4점</label></li>
+                                <li><input type="radio" name="AddPoint" id="AddPoint3" value="3" @if($mode == 'MOD' && $data['AddPoint'] == '3') checked @endif /> <label for="AddPoint3">3점</label></li>
+                                <li><input type="radio" name="AddPoint" id="AddPoint4" value="2" @if($mode == 'MOD' && $data['AddPoint'] == '2') checked @endif /> <label for="AddPoint4">2점</label></li>
+                                <li><input type="radio" name="AddPoint" id="AddPoint5" value="1" @if($mode == 'MOD' && $data['AddPoint'] == '1') checked @endif /> <label for="AddPoint5">1점</label></li>
+                                <li><input type="radio" name="AddPoint" id="AddPoint6" value="0" @if($mode == 'MOD' && $data['AddPoint'] == '0') checked @endif /> <label for="AddPoint6">없음</label></li>
                             </ul>
                         </li>
                         <li>
                             <strong>* 응시번호</strong>
-                            <input type="text" name="TakeNumber" id="TakeNumber" maxlength="10">
+                            <input type="text" name="TakeNumber" id="TakeNumber" maxlength="5" @if($mode == 'MOD') value="{{ $data['TakeNumber'] }}" @endif />
                         </li>
                         <li>
                             <strong>* 신광은경찰팀 수강여부</strong>
                             <ul>
-                                <li><input type="radio" name="LectureType" id="LectureType1" value="1" /> <label for="LectureType1">온라인강의</label></li>
-                                <li><input type="radio" name="LectureType" id="LectureType2" value="2" /> <label for="LectureType2">학원강의</label></li>
-                                <li><input type="radio" name="LectureType" id="LectureType3" value="3" /> <label for="LectureType3">온라인+학원강의</label></li>
-                                <li><input type="radio" name="LectureType" id="LectureType4" value="4" /> <label for="LectureType4">미수강</label></li>
+                                <li><input type="radio" name="LectureType" id="LectureType1" value="1" @if($mode == 'MOD' && $data['LectureType'] == '1') checked @endif /> <label for="LectureType1">온라인강의</label></li>
+                                <li><input type="radio" name="LectureType" id="LectureType2" value="2" @if($mode == 'MOD' && $data['LectureType'] == '2') checked @endif /> <label for="LectureType2">학원강의</label></li>
+                                <li><input type="radio" name="LectureType" id="LectureType3" value="3" @if($mode == 'MOD' && $data['LectureType'] == '3') checked @endif /> <label for="LectureType3">온라인+학원강의</label></li>
+                                <li><input type="radio" name="LectureType" id="LectureType4" value="4" @if($mode == 'MOD' && $data['LectureType'] == '4') checked @endif /> <label for="LectureType4">미수강</label></li>
                             </ul>
                         </li>
                         <li>
                             <strong>* 시험준비기간</strong>
                             <ul>
-                                <li><input type="radio" name="Period" id="Period1" value="1" /> <label for="Period1">6개월 이하</label></li>
-                                <li><input type="radio" name="Period" id="Period2" value="2" /> <label for="Period2">1년 이하</label></li>
-                                <li><input type="radio" name="Period" id="Period3" value="3" /> <label for="Period3">2년 이하</label></li>
-                                <li><input type="radio" name="Period" id="Period4" value="4" /> <label for="Period4">2년 이상</label></li>
+                                <li><input type="radio" name="Period" id="Period1" value="1" @if($mode == 'MOD' && $data['Period'] == '1') checked @endif /> <label for="Period1">6개월 이하</label></li>
+                                <li><input type="radio" name="Period" id="Period2" value="2" @if($mode == 'MOD' && $data['Period'] == '2') checked @endif /> <label for="Period2">1년 이하</label></li>
+                                <li><input type="radio" name="Period" id="Period3" value="3" @if($mode == 'MOD' && $data['Period'] == '3') checked @endif /> <label for="Period3">2년 이하</label></li>
+                                <li><input type="radio" name="Period" id="Period4" value="4" @if($mode == 'MOD' && $data['Period'] == '4') checked @endif /> <label for="Period4">2년 이상</label></li>
                             </ul>
                         </li>
                         <li>
                             <strong>* 응시표 인증파일 - (jpg, gif, png 파일만 등록 가능)</strong>
                             <input type="file" name="RealConfirmFile" id="RealConfirmFile" style="width:300px">
+                            @if($mode == 'MOD' && !empty($data['ConfirmFile']))
+                                <a href="{{ $filepath.$data['RealConfirmFile'] }}" target="_blank" class="blue underline-link">{{ $data['ConfirmFile'] }}</a>
+                            @endif
                         </li>
                     </ul>
                 </div>
@@ -137,12 +169,12 @@
                         </li>
                     </ul>
                     <div>
-                        <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                        <input name="is_chk" id="is_chk" type="checkbox" value="Y" @if($mode == 'MOD') checked @endif><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
                     </div>
                 </div>
 
                 <div class="btnsSt3">
-                    <a href="javascript:js_submit();">확인</a>
+                    <a href="javascript:js_submit();">@if($mode == 'MOD')수정@else확인@endif</a>
                     <a href="javascript:window.close();">취소</a>
                 </div>
             </div>
@@ -152,6 +184,13 @@
     <!--willbes-Layer-PassBox//-->
     <script>
         var $regi_form = $('#regi_form');
+        var mode = '{{ $mode }}';
+
+        $( document ).ready( function() {
+           if(mode == 'MOD'){
+               selSerial('{{ $data['TakeMockPart'] }}', '{{ $data['SubjectCode'] }}');
+           }
+        });
 
         function selchk(obj){
             var cknum = $("input:checkbox[id=Ssubject]:checked").length;
@@ -160,6 +199,10 @@
                 obj.checked = false;
                 return;
             }
+        }
+
+        function selArea(obj){
+            $('#TakeArea').val(obj);
         }
 
         // 문항정보필드 등록,수정
@@ -176,7 +219,38 @@
                 }
             }
 
-            var _url = '{{ site_url('/predict/store') }}';
+            var takenum = '';
+            takenum = $('#TakeNumber').val();
+            takenum = parseInt(takenum);
+            if($("#TakeMockPart option:selected").val() == '100') {
+                if(takenum<10001||takenum>19999) {
+                    alert('일반공채(남)의 응시번호는 10001~19999 사이 값으로 입력해 주세요.');
+                    return;
+                }
+            } else if($("#TakeMockPart option:selected").val() == '200') {
+                if(takenum<20001||takenum>29999) {
+                    alert('일반공채(남)의 응시번호는 20001~29999 사이 값으로 입력해 주세요.');
+                    return;
+                }
+            } else if($("#TakeMockPart option:selected").val() == '300') {
+                if(takenum<30001||takenum>39999) {
+                    alert('일반공채(남)의 응시번호는 30001~39999 사이 값으로 입력해 주세요.');
+                    return;
+                }
+            } else {
+                if(takenum<40001||takenum>49999) {
+                    alert('일반공채(남)의 응시번호는 40001~49999 사이 값으로 입력해 주세요.');
+                    return;
+                }
+            }
+
+            var _url = '';
+            if(mode == 'NEW'){
+                _url = '{{ site_url('/predict/store') }}';
+            } else {
+                _url = '{{ site_url('/predict/update') }}';
+            }
+
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
@@ -185,13 +259,21 @@
             }, showValidateError, null, false, 'alert');
         }
 
-        function selSerial(num){
+        function selSerial(num,num2){
             if(num != ''){
                 $('#GroupCcd').val(num);
             } else {
                 $('#GroupCcd').val('');
                 $('#karea1').html('');
                 $('#karea2').html('');
+            }
+
+            if(num == '400'){
+                $('#area1').hide();
+                $('#area2').show();
+            } else {
+                $('#area1').show();
+                $('#area2').hide();
             }
 
             if(num != null){
@@ -201,22 +283,48 @@
                 sendAjax(url,
                     data,
                     function(d){
-                        var str = '';
-                        var str2 = '';
-                        for(var i=0; i < d.data.length; i++){
-                            if(d.data[i].Type == 'P'){
-                                if(i == 0){
-                                    str += d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                        if(num2 != ''){
+                            var arrnum2 = num2.split(',');
+                            var str = '';
+                            var str2 = '';
+                            for(var i=0; i < d.data.length; i++){
+                                if(d.data[i].Type == 'P'){
+                                    if(i == 0){
+                                        str += d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                                    } else {
+                                        str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                                    }
                                 } else {
-                                    str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                                    var chkyn = '';
+                                    for (var j = 0; j < arrnum2.length; j++) {
+                                        if(d.data[i].Ccd == arrnum2[j]){
+                                            chkyn = 'checked';
+                                        }
+                                    }
+                                    str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                                 }
-                            } else {
-                                str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject' value='" + d.data[i].Ccd + "' onClick='selchk(this)'><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                             }
-                        }
 
-                        $('#karea1').html(str);
-                        $('#karea2').html(str2);
+                            $('#karea1').html(str);
+                            $('#karea2').html(str2);
+                        } else {
+                            var str = '';
+                            var str2 = '';
+                            for(var i=0; i < d.data.length; i++){
+                                if(d.data[i].Type == 'P'){
+                                    if(i == 0){
+                                        str += d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                                    } else {
+                                        str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                                    }
+                                } else {
+                                    str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject' value='" + d.data[i].Ccd + "' onClick='selchk(this)'><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
+                                }
+                            }
+
+                            $('#karea1').html(str);
+                            $('#karea2').html(str2);
+                        }
                     },
                     function(ret, status){
                         //alert(ret.ret_msg);

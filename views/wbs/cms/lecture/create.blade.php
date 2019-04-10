@@ -263,6 +263,10 @@
                                 </td>
                                 <td>
                                     {{ $row['wUnitName'] }}
+                                    @if(empty($row['wUnitInfo']) === false)
+                                        <br>
+                                        <b>[설명]</b> {{ $row['wUnitInfo'] }}
+                                    @endif
                                     @if(empty($row['wUnitAttachFile']) === false)
                                         <br>
                                         <p class="form-control-static ml-10 mr-10">

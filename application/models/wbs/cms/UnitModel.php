@@ -66,13 +66,11 @@ class UnitModel extends WB_Model
                 $wHD = element('wHD', $input);
                 $wSD = element('wSD', $input);
 
-                //echo var_dump($wWD);exit;
-
-
                 $wShootingDate = element('wShootingDate', $input);
                 $wProfIdx = element('wProfIdx', $input);
                 $wContentSizeCcd = element('wContentSizeCcd', $input);
                 $wIsUse = element('wIsUse',$input);
+                $wUnitInfo= element('wUnitInfo', $input);
 
                 $this->load->library('upload');
 
@@ -133,6 +131,7 @@ class UnitModel extends WB_Model
                             ,'wContentTypeCcd' => '106001'                            //강의유형 : 임의로 고정
                             ,'wContentSizeCcd' => $wContentSizeCcd[$i]          //컨텐트사이즈
                             ,'wIsUse' => $wIsUse[$i]
+                            ,'wUnitInfo' => $wUnitInfo[$i]
                         ];
 
                         //기존 회차식별자가 존재하면 업데이트 처리

@@ -146,7 +146,7 @@
                 <ul>
                     <li>
                         <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">2019-72기</span>
+                        <span style="line-height:40px;font-size:22pt;color:#000">2019-73기</span>
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
@@ -161,7 +161,7 @@
                     <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">4.9(화) 24:00 마감!</span>
+                        <span style="line-height:40px;">4.16(화) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -591,7 +591,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            var event_day = new Date(2019,3,9,23,59,59);
+            var event_day = new Date(2019,3,16,23,59,59);
             var now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 

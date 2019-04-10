@@ -28,7 +28,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 기본정보 등록 (lms_Mock_Paper)
+     * 기본정보 등록
      */
     public function store()
     {
@@ -79,7 +79,7 @@ class SurveyModel extends WB_Model
                     );
 
                     if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
-                        throw new \Exception('저장에 실패했습니다2.');
+                        throw new \Exception('저장에 실패했습니다.');
                     }
                 }
             }
@@ -94,7 +94,7 @@ class SurveyModel extends WB_Model
                     );
 
                     if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
-                        throw new \Exception('저장에 실패했습니다2.');
+                        throw new \Exception('저장에 실패했습니다.');
                     }
                 }
             }
@@ -107,6 +107,103 @@ class SurveyModel extends WB_Model
         }
 
         return ['ret_cd' => true, 'dt' => ['idx' => $nowIdx]];
+    }
+
+    /**
+     * 기본정보 수정
+     */
+    public function update()
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            $names = $this->makeUploadFileName(['RealConfirmFile'], 1);
+            $ProdCode = $this->input->post('ProdCode');
+            $PrIdx = $this->input->post('PrIdx');
+            // 데이터 저장
+            $data = array(
+                'ProdCode' => $ProdCode,
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'SiteCode' => $this->input->post('SiteCode'),
+                'TakeNumber' => $this->input->post('TakeNumber'),
+                'TakeMockPart' => $this->input->post('TakeMockPart'),
+                'TakeArea' => $this->input->post('TakeArea'),
+                'AddPoint' => $this->input->post('AddPoint'),
+                'LectureType' => $this->input->post('LectureType'),
+                'Period' => $this->input->post('Period'),
+            );
+
+            if( isset($names['RealConfirmFile']['error']) && $names['RealConfirmFile']['error'] === UPLOAD_ERR_OK && $names['RealConfirmFile']['size'] > 0 ) {
+                $data['ConfirmFile'] = $names['RealConfirmFile']['name'];
+                $data['RealConfirmFile'] = $names['RealConfirmFile']['real'];
+
+                // 파일 업로드
+                $uploadSubPath = $this->upload_path_predict . $ProdCode;
+
+                $isSave = $this->uploadFileSave($uploadSubPath, $names);
+                if($isSave !== true) {
+                    throw new Exception('파일 저장에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where('PrIdx', $PrIdx);
+
+            if ($this->_conn->update($this->_table['predictRegister']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+
+            //삭제후 입력
+            $where = ['PrIdx' => $PrIdx];
+            try {
+                if($this->_conn->delete($this->_table['predictRegisterR'], $where) === false){
+                    throw new \Exception('삭제에 실패했습니다.');
+                }
+            } catch (\Exception $e) {
+                return error_result($e);
+            }
+
+            $Ssubject = $this->input->post('Ssubject');
+            $Psubject = $this->input->post('Psubject');
+
+            if(empty($Ssubject)===false){
+
+                for($i=0; $i < count($Ssubject); $i++){
+                    // 데이터 저장
+                    $data = array(
+                        'PrIdx' => $PrIdx,
+                        'ProdCode' => $this->input->post('ProdCode'),
+                        'SubjectCode' => $Ssubject[$i],
+                    );
+
+                    if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
+                        throw new \Exception('저장에 실패했습니다.');
+                    }
+                }
+            }
+
+            if(empty($Psubject)===false) {
+                for ($i = 0; $i < count($Psubject); $i++) {
+                    // 데이터 저장
+                    $data = array(
+                        'PrIdx' => $PrIdx,
+                        'ProdCode' => $this->input->post('ProdCode'),
+                        'SubjectCode' => $Psubject[$i],
+                    );
+
+                    if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
+                        throw new \Exception('저장에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true];
     }
 
     /**
@@ -182,28 +279,31 @@ class SurveyModel extends WB_Model
         return true;
     }
 
-    public function predictResistYn($ProdCode, $MemIdx){
+
+    /**
+     * 합격예측 접수데이터 호출
+     * @param $ProdCode
+     * @param $MemIdx
+     * @return mixed
+     */
+    public function predictResist($ProdCode, $MemIdx){
         $column = "
-            COUNT(*) AS CNT
+            pr.PrIdx, TakeNumber, TakeMockPart, TakeArea, AddPoint, LectureType, Period, ConfirmFile, RealConfirmFile, SubjectCode
         ";
 
         $from = "
             FROM 
-                {$this->_table['predictRegister']} 
+                {$this->_table['predictRegister']} AS pr
+                JOIN {$this->_table['predictRegisterR']} AS pc ON pr.PrIdx = pc.PrIdx
         ";
 
         $order_by = " ";
-        $where = " WHERE MemIdx = '".$MemIdx."' AND ProdCode = ".$ProdCode."";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $where = " WHERE MemIdx = '".$MemIdx."' AND pr.ProdCode = ".$ProdCode."";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $data = $query->row_array();
-        if($data['CNT'] > 0){
-            $Res = 'Y';
-        } else {
-            $Res = 'N';
-        }
-        return $Res;
+        $data = $query->result_array();
+
+        return $data;
     }
 
     /**

@@ -172,7 +172,7 @@ class BaseCalc extends \app\controllers\BaseController
 
         // 합계
         $method = $this->_methods[$prod_type];
-        $arr_search_date = [$search_start_date, $search_end_date];
+        $arr_search_date = [$search_start_date, $search_end_date, $study_period];
         $arr_condition = $this->_getSumConditions($prod_type, $arr_input, true);
         $data = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, $sum_type, $arr_condition);
         $data = array_merge($this->_getTotalSum($data), [
@@ -186,8 +186,8 @@ class BaseCalc extends \app\controllers\BaseController
         $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'LearnPattern', 'SalePattern']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
-        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제 코드만 필터링
-        $arr_pay_route_ccd = array_filter_keys($codes[$this->_group_ccd['PayRoute']], array_filter_keys($this->orderCalcModel->_pay_route_ccd, ['pg', 'visit', 'alliance']));
+        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제, 관리자유료결제 코드만 필터링
+        $arr_pay_route_ccd = array_filter_keys($codes[$this->_group_ccd['PayRoute']], array_filter_keys($this->orderCalcModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'admin_pay']));
 
         // 결제상태 공통코드에서 결제완료, 환불완료 코드만 필터링
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderCalcModel->_pay_status_ccd, ['paid', 'refund']));
@@ -227,6 +227,7 @@ class BaseCalc extends \app\controllers\BaseController
         $prod_type = $this->_reqP('prod_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
+        $study_period = $this->_reqP('study_period');  // 기간제패키지 수강기간
         $sum_type = empty($this->_reqP('prof_idx')) === false ? 'sum' : 'tSum';
         $count = 0;
         $list = [];
@@ -234,7 +235,7 @@ class BaseCalc extends \app\controllers\BaseController
 
         if (empty($prod_type) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
             $method = $this->_methods[$prod_type];
-            $arr_search_date = [$search_start_date, $search_end_date];
+            $arr_search_date = [$search_start_date, $search_end_date, $study_period];
             $arr_condition = $this->_getSumConditions($prod_type, $this->_reqP(null), true);
             $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions($prod_type, $this->_reqP(null)));
 
@@ -267,13 +268,14 @@ class BaseCalc extends \app\controllers\BaseController
         $prod_type = $this->_reqP('prod_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
+        $study_period = $this->_reqP('study_period');  // 기간제패키지 수강기간
 
         if (empty($prod_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         $method = $this->_methods[$prod_type];
-        $arr_search_date = [$search_start_date, $search_end_date];
+        $arr_search_date = [$search_start_date, $search_end_date, $study_period];
         $arr_condition = $this->_getSumConditions($prod_type, $this->_reqP(null), true);
         $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions($prod_type, $this->_reqP(null)));
 
@@ -309,7 +311,7 @@ class BaseCalc extends \app\controllers\BaseController
         $arr_condition = [];
         $search_prof_idx = get_var(element('search_prof_idx', $params), element('prof_idx', $params));
         $search_subject_idx = get_var(element('search_subject_idx', $params), element('subject_idx', $params));
-        $search_study_period = get_var(element('search_study_period', $params), element('study_period', $params));
+        //$search_study_period = get_var(element('search_study_period', $params), element('study_period', $params));
 
         switch ($prod_type) {
             case 'LE' :
@@ -346,13 +348,9 @@ class BaseCalc extends \app\controllers\BaseController
                         'O.SiteCode' => element('search_site_code', $params),
                         'OPP.ProfIdx' => $search_prof_idx,
                         'OPP.SubjectIdx' => $search_subject_idx,
-                        //'PL.StudyPeriod' => $search_study_period  // my_lecture.LecExpireDay 컬럼으로 대체
+                        //'PL.StudyPeriod' => $search_study_period  // 수강개월수(StudyPeriodMonth)로 대체
                     ]
                 ];
-
-                if (empty($search_study_period) === false) {
-                    $arr_condition['BET']['ML.LecExpireDay'] = [$search_study_period * 30, ($search_study_period + 1) * 30 - 1];   // 개월수 * 30 ~ (개월수+1) * 30 - 1
-                }
                 break;
         }
 
@@ -475,7 +473,7 @@ class BaseCalc extends \app\controllers\BaseController
             if ($row['RefundPrice'] > 0) {
                 $refund_data[] = array_merge($arr_temp, [
                     'CalcDate' => substr($row['RefundDatm'], 0, 10),
-                    'CalcPrice' => $row['DivisionRefundPrice'],
+                    'CalcPrice' => $row['DivisionRefundPrice'] * -1,
                     'PayMethodCcdName' => $row['PayMethodCcdName']
                 ]);
 
@@ -491,7 +489,7 @@ class BaseCalc extends \app\controllers\BaseController
 
         $refund_sum['tDivisionIncomeTax'] = (int) ($refund_sum['tDivisionCalcRefundPrice'] * $this->orderCalcModel->_in_tax_rate);
         $refund_sum['tDivisionResidentTax'] = (int) ($refund_sum['tDivisionCalcRefundPrice'] * $this->orderCalcModel->_re_tax_rate);
-        $refund_sum['tFinalCalcPrice'] = $refund_sum['tDivisionCalcRefundPrice'] - $refund_sum['tDivisionIncomeTax'] - $refund_sum['tDivisionResidentTax'];
+        $refund_sum['tFinalCalcPrice'] = ($refund_sum['tDivisionCalcRefundPrice'] - $refund_sum['tDivisionIncomeTax'] - $refund_sum['tDivisionResidentTax']);
 
         // 총 실지급액
         $real_final_calc_price = $paid_sum['tFinalCalcPrice'] - $refund_sum['tFinalCalcPrice'];
@@ -567,11 +565,11 @@ class BaseCalc extends \app\controllers\BaseController
             $sheet->fromArray(['소계', $refund_data_cnt . '명'], null, 'E' . $last_row_num)
                 ->getStyle('E' . $last_row_num . ':F' . $last_row_num)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                 ->getStartColor()->setRGB($sum_color);
-            $sheet->fromArray(['환불총금액', $refund_sum['tDivisionRefundPrice']], null, 'E' . ($last_row_num + 1));
-            $sheet->fromArray(['환불강사료', $refund_sum['tDivisionCalcRefundPrice']], null, 'E' . ($last_row_num + 2));
-            $sheet->fromArray(['원천세', $refund_sum['tDivisionIncomeTax']], null, 'E' . ($last_row_num + 3));
-            $sheet->fromArray(['주민세', $refund_sum['tDivisionResidentTax']], null, 'E' . ($last_row_num + 4));
-            $sheet->fromArray(['실환불액', $refund_sum['tFinalCalcPrice']], null, 'E' . ($last_row_num + 5));
+            $sheet->fromArray(['환불총금액', $refund_sum['tDivisionRefundPrice'] * -1], null, 'E' . ($last_row_num + 1));
+            $sheet->fromArray(['환불강사료', $refund_sum['tDivisionCalcRefundPrice'] * -1], null, 'E' . ($last_row_num + 2));
+            $sheet->fromArray(['원천세', $refund_sum['tDivisionIncomeTax'] * -1], null, 'E' . ($last_row_num + 3));
+            $sheet->fromArray(['주민세', $refund_sum['tDivisionResidentTax'] * -1], null, 'E' . ($last_row_num + 4));
+            $sheet->fromArray(['실환불액', $refund_sum['tFinalCalcPrice'] * -1], null, 'E' . ($last_row_num + 5));
             $sheet->fromArray(['총실지급액', $real_final_calc_price], null, 'E' . ($last_row_num + 6))
                 ->getStyle('E' . ($last_row_num + 6) . ':F' . ($last_row_num + 6))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                 ->getStartColor()->setRGB($sum_color);

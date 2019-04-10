@@ -16,7 +16,7 @@ class OrderCalcModel extends BaseOrderModel
     /**
      * 단강좌&사용자/운영자패키지(일반형) 강사료 정산 조회
      * @param string $prod_type [온라인/학원 구분, lecture/offLecture]
-     * @param array $arr_search_date [결제시작일,종료일]
+     * @param array $arr_search_date [결제시작일,종료일,수강개월수(사용안함)]
      * @param bool|string $is_count [조회구분, sum : 교수/과목별합계, tSum : 전체합계, true : 주문목록 카운트, false : 주문목록, excel : 엑셀다운로드]
      * @param array $arr_condition
      * @param null $limit
@@ -87,7 +87,7 @@ class OrderCalcModel extends BaseOrderModel
                         inner join ' . $this->_table['order_product'] . ' as ROP
                             on RO.OrderIdx = ROP.OrderIdx
                     where RO.CompleteDatm between ? and ?
-                        and ROP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+                        and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
                         and ROP.RealPayPrice > 0
                     union
                     select OrderIdx, OrderProdIdx
@@ -226,7 +226,7 @@ class OrderCalcModel extends BaseOrderModel
     /**
      * 운영자패키지(선택형) 강사료 정산 조회
      * @param string $prod_type [온라인/학원 구분, lecture/offLecture]
-     * @param array $arr_search_date [결제시작일,종료일]
+     * @param array $arr_search_date [결제시작일,종료일,수강개월수(사용안함)]
      * @param bool|string $is_count [조회구분, sum : 교수/과목별합계, tSum : 전체합계, true : 주문목록 카운트, false : 주문목록, excel : 엑셀다운로드]
      * @param array $arr_condition
      * @param null $limit
@@ -303,7 +303,7 @@ class OrderCalcModel extends BaseOrderModel
                         inner join ' . $this->_table['order_product'] . ' as ROP
                             on RO.OrderIdx = ROP.OrderIdx
                     where RO.CompleteDatm between ? and ?
-                        and ROP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+                        and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
                         and ROP.RealPayPrice > 0
                     union
                     select OrderIdx, OrderProdIdx
@@ -445,7 +445,7 @@ class OrderCalcModel extends BaseOrderModel
     /**
      * 기간제패키지 강사료 정산 조회
      * @param string $prod_type [온라인/학원 구분, lecture/offLecture]
-     * @param array $arr_search_date [결제시작일,종료일]
+     * @param array $arr_search_date [결제시작일,종료일,수강개월수]
      * @param bool|string $is_count [조회구분, sum : 교수/과목별합계, tSum : 전체합계, true : 주문목록 카운트, false : 주문목록, excel : 엑셀다운로드]
      * @param array $arr_condition
      * @param null $limit
@@ -454,16 +454,18 @@ class OrderCalcModel extends BaseOrderModel
      */
     public function listCalcPeriodPack($prod_type, $arr_search_date, $is_count, $arr_condition = [], $limit = null, $offset = null)
     {
+        // 수강일수, 수강개월수 기본 컬럼
+        $in_column = 'if(O.PayRouteCcd = "' . $this->_pay_route_ccd['admin_pay'] . '", ML.LecExpireDay, PL.StudyPeriod) as StudyPeriod
+				, if(O.PayRouteCcd = "' . $this->_pay_route_ccd['admin_pay'] . '", if(ML.LecExpireDay < 30, 1, floor(ML.LecExpireDay / 30)), floor(PL.StudyPeriod / 30)) as StudyPeriodMonth';
+
         if ($is_count === true) {
             // 상세보기 주문목록 카운트
-            $in_column = 'count(*) AS numrows';
-            $column = '';
+            $column = 'count(*) AS numrows';
         } else {
-            $in_column = 'if(O.CompleteDatm between ? and ?, OP.RealPayPrice, 0) as RealPayPrice
+            $in_column .= '
+                , if(O.CompleteDatm between ? and ?, OP.RealPayPrice, 0) as RealPayPrice
 				, if(O.CompleteDatm between ? and ?, OP.CardPayPrice, 0) as CardPayPrice
 				, if(OPR.RefundDatm between ? and ?, OPR.RefundPrice, 0) as RefundPrice
-				#, PL.StudyPeriod, floor(PL.StudyPeriod / 30) as StudyPeriodMonth   #my_lecture.LecExpireDay 컬럼으로 대체
-				, ML.LecExpireDay as StudyPeriod, floor(ML.LecExpireDay / 30) as StudyPeriodMonth
 				, left(PC.CateCode, 4) as LgCateCode
 				, OPP.ProfIdx, OPP.SubjectIdx
 				, (select count(0) from ' . $this->_table['order_product_prof_subject'] . ' where OrderProdIdx = OP.OrderProdIdx) as ProfSubjectCnt
@@ -516,7 +518,7 @@ class OrderCalcModel extends BaseOrderModel
                         inner join ' . $this->_table['order_product'] . ' as ROP
                             on RO.OrderIdx = ROP.OrderIdx
                     where RO.CompleteDatm between ? and ?
-                        and ROP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+                        and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
                         and ROP.RealPayPrice > 0
                     union
                     select OrderIdx, OrderProdIdx
@@ -538,7 +540,7 @@ class OrderCalcModel extends BaseOrderModel
 					on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
 				inner join ' . $this->_table['order_product_prof_subject'] . ' as OPP
 					on OP.OrderProdIdx = OPP.OrderProdIdx
-				inner join ' . $this->_table['my_lecture'] . ' as ML
+				left join ' . $this->_table['my_lecture'] . ' as ML
 					on O.OrderIdx = ML.OrderIdx and OP.OrderProdIdx = ML.OrderProdIdx and OP.ProdCode = ML.ProdCode and OP.ProdCode = ML.ProdCodeSub					
 				left join ' . $this->_table['code'] . ' as CPM
 					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"							
@@ -558,13 +560,19 @@ class OrderCalcModel extends BaseOrderModel
         // where 조건
         $raw_query .= $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
+        // 수강개월수 where 조건
+        $raw_where = '';
+        if (empty(element('2', $arr_search_date)) === false) {
+            $raw_where = ' where RR.StudyPeriodMonth = ' . $this->_conn->escape($arr_search_date[2]);
+        }
+
         // 기간조회 조건 바인딩
         $search_start_date = $arr_search_date[0] . ' 00:00:00';
         $search_end_date = $arr_search_date[1] . ' 23:59:59';
 
         if ($is_count === true) {
             $raw_binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date];
-            $query = $raw_query;
+            $query = 'select ' . $column . ' from (' . $raw_query . ') as RR' . $raw_where;
         } else {
             $raw_binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date,
                 $search_start_date, $search_end_date, $search_start_date, $search_end_date];
@@ -594,8 +602,9 @@ class OrderCalcModel extends BaseOrderModel
                             , (fn_split(RR.ProfCalcData, ":", 2) / 100) as ProdCalcRate
                             , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #D1                            		 
                         from ('
-                . $raw_query . '
-                        ) as RR				
+                            . $raw_query . '
+                        ) as RR'
+                        . $raw_where . '
                     ) as RD
                 ) as U';
 
@@ -634,7 +643,7 @@ class OrderCalcModel extends BaseOrderModel
             } else {
                 // 교수/과목별 합계 or 전체합계 group by, order by
                 $query .= ' group by U.ProfIdx, U.SubjectIdx, U.StudyPeriodMonth';
-                $query .= ' order by tDivisionCalcPrice desc';
+                //$query .= ' order by tDivisionCalcPrice desc';
             }
         }
 

@@ -49,7 +49,6 @@
         .evt02 .evt02_03 span a.end {color:#fff; background:#86aee8; border:1px solid #86aee8;}
         
         .evt03 {background:#fff;}
-
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -69,57 +68,37 @@
             <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1188_02_01.jpg" title="신청 및 출발안내"></div>
             <div class="evt02_02">
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1188_02_02.jpg" title="입교버스 지역별 신청">
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
+                @foreach($arr_base['register_member_list'] as $key => $val)
+                    <span>
+                        @if($val['PersonLimitType'] != 'L')
+                            <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                        @else
+                            @if($val['PersonLimit'] > $val['mem_cnt'])
+                                <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                            @else
+                                <a href="#none" class="end">신청마감</a>
+                            @endif
+                        @endif
+                    </span>
                 </span>
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
-                <span>
-                {{--<a href="javascript:requestOpen();">신청하기 > </a>--}}
-                    <a href="#none" class="end">신청마감 </a>
-                </span>
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
+                @endforeach
             </div>
             <div id="event" class="evt02_03">
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1188_02_03.jpg" title="입교버스 지역별 신청지역 안내">
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
-                <span>
-                {{--<a href="javascript:requestOpen();">신청하기 > </a>--}}
-                    <a href="#none" class="end">신청마감 </a>
-                </span>
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
-                <span>
-                    <a href="javascript:requestOpen();">신청하기 > </a>
-                    {{--<a href="#none">신청마감 </a>--}}
-                </span>
+                @foreach($arr_base['register_member_list'] as $key => $val)
+                    <span>
+                        @if($val['PersonLimitType'] != 'L')
+                            <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                        @else
+                            @if($val['PersonLimit'] > $val['mem_cnt'])
+                                <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                            @else
+                                <a href="#none" class="end">신청마감</a>
+                            @endif
+                        @endif
+                    </span>
+                    </span>
+                @endforeach
             </div>
         </div>
 	</div>
@@ -127,8 +106,14 @@
 
 
     <script type="text/javascript">
-        function requestOpen(){
-            var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
+        function requestOpen(obj){
+            var is_login = '{{sess_data('is_login')}}';
+            if (is_login != true) {
+                alert('로그인 후 이용해 주세요.');
+                return;
+            }
+
+            var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) }}" + '?selected='+obj;
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
         }
     </script>

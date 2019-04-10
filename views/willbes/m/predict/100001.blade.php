@@ -10,6 +10,7 @@
         <input type="hidden" name="mode" value="{{ $mode }}" />
         @if($mode == 'MOD')
             <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
+            <input type="hidden" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
         @endif
 
         <div id="Container" class="Container NG c_both">
@@ -92,7 +93,7 @@
                                         @endif
                                     </select>
                                 </span>
-                                <span id="area2" style="display:none;"  onChange="selArea(this.value)">
+                                <span id="area2" style="display:none;"  onChange="selArea(this.value,'')">
                                     <select title="지역구분">
                                         <option value="">지역구분</option>
                                         <option value="712001">서울</option>

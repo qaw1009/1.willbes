@@ -268,6 +268,7 @@ class Event extends \app\controllers\FrontController
         // 프로모션일 경우 검증 데이터가 유동적이므로 해당 값으로 데이터 검증
         $target_params = $this->_reqP('target_params');
         $target_param_names = $this->_reqP('target_param_names');
+        $target_params_item = $this->_reqP('target_params_item');
         $register_type = ($this->_reqP('register_type') == 'promotion') ? 'promotion' : 'event';
 
         $rules = [
@@ -285,9 +286,11 @@ class Event extends \app\controllers\FrontController
 
         if (empty($target_params) === false && is_array($target_params) === true) {
             foreach ($target_params as $key => $target_param) {
-                $rules = array_merge($rules, [
-                    ['field' => $target_param, 'label' => (empty($target_param_names) === false && empty($target_param_names[$key]) === false) ? $target_param_names[$key] : '데이타', 'rules' => 'trim|required']
-                ]);
+                if(empty($target_params_item[$key]) === true || $target_params_item[$key] == 'true') {
+                    $rules = array_merge($rules, [
+                        ['field' => $target_param, 'label' => (empty($target_param_names) === false && empty($target_param_names[$key]) === false) ? $target_param_names[$key] : '데이타', 'rules' => 'trim|required']
+                    ]);
+                }
             }
         }
 

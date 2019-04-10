@@ -99,7 +99,8 @@ class BaseOrder extends \app\controllers\BaseController
 
             // 관리자결제 상품 데이터 셋팅
             if (empty($admin_pay_data) === true) {
-                if ($row['ProdTypeCcd'] != $this->orderListModel->_prod_type_ccd['delivery_price'] && empty($order_data['RegAdminIdx']) === false) {
+                if (in_array(array_search($order_data['PayRouteCcd'], $this->orderListModel->_pay_route_ccd), ['zero', 'alliance', 'admin_pay']) === true
+                        && $row['ProdTypeCcd'] != $this->orderListModel->_prod_type_ccd['delivery_price']) {
                     $admin_pay_data = $row;
                 }
             }

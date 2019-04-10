@@ -44,7 +44,7 @@
                     <table id="list_table" class="table table-striped table-bordered" style="width:100%;">
                         <thead>
                         <tr>
-                            <th>NO</th>
+                            <th>순번</th>
                             <th>회차/강<span class="required">*</span></th>
                             <th width="400">영상제목<span class="required">*</span>/보조자료</th>
                             <th>강의시간<span class="required">*</span><BR>/북페이지</th>

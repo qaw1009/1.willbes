@@ -134,7 +134,6 @@
                             return (row.wLecIdx_Original !== '') ? '<span class="red">Y</span>' : '';
                         }},//복사여부
                 ]
-
             });
 
             // 데이터 수정 폼
@@ -142,14 +141,12 @@
                 location.replace('{{ site_url('/cms/lecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
 
-
             $list_table.on('click', '.btn-unit', function() {
                 $('.btn-unit').setLayer({
                     "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $(this).data('idx')
                     ,width : "1800"
                 });
             });
-
 
             //강의복사
             $('.btn-copy').on('click',function(){
@@ -176,8 +173,6 @@
                 }
 
             });
-
-
         });
     </script>
 @stop

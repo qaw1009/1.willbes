@@ -90,7 +90,7 @@
                                 </select>
                             </span>
                             <span id="area2" style="display:none;">
-                                <select title="지역구분" onChange="selArea(this.value)">
+                                <select title="지역구분" onChange="selArea(this.value,'')">
                                     <option value="">지역구분</option>
                                     <option value="712001">서울</option>
                                 </select>

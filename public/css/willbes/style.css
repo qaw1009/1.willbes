@@ -1,11 +1,11 @@
 /* CSS : import */
 @import url("style_main.css");
 @import url("style_cop.css");
-@import url("style_cop_acad.css");
 @import url("style_cop_adm.css");
 @import url("style_cop_pro.css");
 @import url("style_cop_sea.css");
 @import url("style_cop_sea_special.css");
+@import url("style_cop_acad.css");
 @import url("style_gosi.css");
 @import url("style_gosi_acad.css");
 @import url("style_gosi_law.css");
@@ -19,16 +19,17 @@
 /* Login Form : 공통 */
 .mem-Tit {
     text-align: center;
-    padding: 65px 0;
+    padding: 65px 0;    
 }
+.mem-Tit img { vertical-align: bottom}
 .mem-Tit span {
     font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "Malgun Gothic", "맑은 고딕";
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -2px;
     display: inline-block;
-    padding-top: 11px;
     padding-left: 11px;
+    padding-bottom:3px;
 }
 .mem-Acad-Tit {
     padding: 40px 0 50px;
@@ -1777,7 +1778,7 @@ table.auTable tr td {
     color: #888;
     line-height: 16px;
 }
-/* Main Container : QuickMenu */
+/* Main Container : QuickMenu*/ 
 .MainQuickMenu {
     position: fixed;
     top: 180px;
@@ -1790,6 +1791,7 @@ table.auTable tr td {
     background: #fff;
     margin-bottom: 8px;
 }
+
 .QuickSlider .QuickDdayBox {
     position: relative; 
     height: 100px;

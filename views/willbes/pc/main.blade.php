@@ -71,7 +71,7 @@
                             </a>
                         </li>    
                         <li>
-                            <a href="http://value.willbes.net" target="_blank">
+                            <a href="http://nomu.willbes.net" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes5.png') }}"> 전문자격증
                                 </div>
@@ -93,12 +93,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="http://cert.willbes.net" target="_blank">
+                            <a href="http://www.passhaja.co.kr" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes6.png') }}"> 자격증
                                 </div>
                                 <div class="wTxt">
-                                    국가기술자격/분야별일반자격증<br/>
+                                    무역/실무/공인자격/안전공학<br/>
                                     <strong>윌비스 패스하자</strong>
                                 </div>
                             </a>

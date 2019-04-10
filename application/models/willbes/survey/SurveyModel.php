@@ -13,7 +13,7 @@ class SurveyModel extends WB_Model
 
         'predictProduct' => 'lms_product_predict',
         'predictCode' => 'lms_predict_code',
-        'predictRegisterR' => 'lms_predict_register_r_paper',
+        'predictRegisterR' => 'lms_predict_register_r_code',
         'predictRegister' => 'lms_predict_register',
 
         'sysCode' => 'lms_sys_code',

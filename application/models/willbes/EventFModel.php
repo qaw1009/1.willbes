@@ -202,7 +202,7 @@ class EventFModel extends WB_Model
      * @param array $arr_condition
      * @return mixed
      */
-    public function getRegisterMemberCount($arr_condition=[])
+    public function getRegisterMemberCount($arr_condition = [])
     {
         $column = 'ErIdx, COUNT(ErIdx) AS MemCount';
         $from = " FROM {$this->_table['event_member']}";

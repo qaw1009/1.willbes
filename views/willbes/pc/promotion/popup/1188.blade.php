@@ -35,7 +35,29 @@
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
-    <form id="" name="" method="post"  action="">
+    <form name="regi_form_register" id="regi_form_register">
+        {!! csrf_field() !!}
+        {!! method_field($arr_base['method']) !!}
+        <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $arr_base['data']['ElIdx'] }}"/>
+        <input type="hidden" name="register_name"  id ="register_name" value="{{ sess_data('mem_name') }}"/>
+        <input type="hidden" name="register_type" value="promotion"/>
+        <input type="hidden" name="target_params[]" value="etcValue1"/>
+        <input type="hidden" name="target_params[]" value="etcValue2"/>
+        <input type="hidden" name="target_params[]" value="etcValue3"/>
+        <input type="hidden" name="target_params[]" value="etcValue4"/>
+        <input type="hidden" name="target_params[]" value="etcValue5"/>
+        <input type="hidden" name="target_params[]" value="etcValue6"/>
+        <input type="hidden" name="target_param_names[]" value="성별"/> {{--체크 항목--}}
+        <input type="hidden" name="target_param_names[]" value="응시번호"/> {{--체크 항목--}}
+        <input type="hidden" name="target_param_names[]" value="직렬"/> {{--체크 항목--}}
+        <input type="hidden" name="target_param_names[]" value="버스탑승지역"/> {{--체크 항목--}}
+        <input type="hidden" name="target_param_names[]" value="동반인"/> {{--체크 항목--}}
+        <input type="hidden" name="target_params_item[]" value="true"/>
+        <input type="hidden" name="target_params_item[]" value="true"/>
+        <input type="hidden" name="target_params_item[]" value="true"/>
+        <input type="hidden" name="target_params_item[]" value="true"/>
+        <input type="hidden" name="target_params_item[]" value="true"/>
+        <input type="hidden" name="target_params_item[]" value="false"/>
 
     <div class="eventPop">
 		<h3>
@@ -53,53 +75,64 @@
                 <tbody>
                     <tr>
                         <th>성명</th>
-                        <td ><input type="text" id="USER_NAME" name="USER_NAME" value="" style="width:100px"/></td>
+                        <td><input type="text" name="name" value="{{sess_data('mem_name')}}" title="성명" readonly="readonly" style="width:100px"/></td>
                         <th>연락처</th>
-                        <td ><input type="text" id="PHONE_NO" name="PHONE_NO" value="" style="width:100px" onKeyUp="fn_OnlyNumber1(this);"/></td>
-                    </tr>	
-                    <tr >
+                        <td><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" style="width:100px"/></td>
+                    </tr>
+                    <tr>
+                        <th>캠퍼스</th>
+                        <td colspan="3">
+                            <select id="register_chk" name="register_chk[]" title="캠퍼스" required="required">
+                                <option value="">선택</option>
+                                @foreach($arr_base['register_list'] as $row)
+                                    <option value="{{$row['ErIdx']}}" {{ (empty($arr_base['selected']) === false && $arr_base['selected'] == $row['ErIdx']) ? 'selected=selected' : '' }}>{{ $row['Name'] }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>성별</th>
                         <td>
-                            <select id="ARM_NM" name="ARM_NM">
+                            <select id="etcValue1" name="etcValue1">
                                 <option value="">선택</option>
                                 <option value="남자">남자</option>
                                 <option value="여자">여자</option>
                             </select>
                         </td>
                         <th>응시번호</th>
-                        <td ><input type="text" id="ARM_NO" name="ARM_NO" value="" maxlength="5" style="width:100px" onKeyUp="fn_OnlyNumber1(this);"/></td>
+                        <td ><input type="number" id="etcValue2" name="etcValue2" value="" maxlength="5" style="width:100px"/></td>
                     </tr>
                     <tr>
                         <th>직렬</th>
                         <td colspan="3">
-                            <input type="radio" name="CATEGORY_INFO" id="aa1" value="일반남자" /> <label for="aa1">일반남자</label>
-                            <input type="radio" name="CATEGORY_INFO" id="aa2" value="일반여자" /> <label for="aa2">일반여자</label>
-                            <input type="radio" name="CATEGORY_INFO" id="aa3" value="경행경채" /> <label for="aa3">경행경채</label>
+                            <input type="radio" name="etcValue3" value="일반남자" id="etcValue3_1"/> <label for="etcValue3_1">일반남자</label>
+                            <input type="radio" name="etcValue3" value="일반여자" id="etcValue3_2"/> <label for="etcValue3_2">일반여자</label>
+                            <input type="radio" name="etcValue3" value="경행경채" id="etcValue3_3"/> <label for="etcValue3_3">경행경채</label>
                         </td>
                     </tr>
                     <tr>
                         <th>버스탑승지역</th>
                         <td colspan="3">
-                            <input type="radio" name="ARM_RANK" value="서울" id="bb1"/> <label for="bb1">서울</label>
-                            <input type="radio" name="ARM_RANK" value="인천" id="bb2"/> <label for="bb2">인천</label>
-                            <input type="radio" name="ARM_RANK" value="대구" id="bb3"/> <label for="bb3">대구</label>
-                            <input type="radio" name="ARM_RANK" value="광주" id="bb4"/> <label for="bb4">광주</label>
-                            <input type="radio" name="ARM_RANK" value="부산" id="bb5"/> <label for="bb5">부산</label>
-                            <input type="radio" name="ARM_RANK" value="전북" id="bb6"/> <label for="bb6">전북</label>
+                            <input type="radio" name="etcValue4" value="서울" id="etcValue4_1"/> <label for="etcValue4_1">서울</label>
+                            <input type="radio" name="etcValue4" value="인천" id="etcValue4_2"/> <label for="etcValue4_2">인천</label>
+                            <input type="radio" name="etcValue4" value="대구" id="etcValue4_3"/> <label for="etcValue4_3">대구</label>
+                            <input type="radio" name="etcValue4" value="광주" id="etcValue4_4"/> <label for="etcValue4_4">광주</label>
+                            <input type="radio" name="etcValue4" value="부산" id="etcValue4_5"/> <label for="etcValue4_5">부산</label>
+                            <input type="radio" name="etcValue4" value="전북" id="etcValue4_6"/> <label for="etcValue4_6">전북</label>
                         </td>
                     </tr>
                     <tr>
                         <th>동반인</th>
                         <td colspan="3">
-                            <input type="radio" name="ARM_DIV1" value="가족1인" id="cc1"/> <label for="cc1">가족1인</label>
-                            <input type="radio" name="ARM_DIV1" value="가족2인" id="cc2"/> <label for="cc2">가족2인</label>
-                            <input type="radio" name="ARM_DIV1" value="친구1인" id="cc3"/> <label for="cc3">친구1인</label>
-                            <input type="radio" name="ARM_DIV1" value="없음" id="cc4"/> <label for="cc4">없음</label>
+                            <input type="radio" name="etcValue5" value="가족1인" id="etcValue5_1"/> <label for="etcValue5_1">가족1인</label>
+                            <input type="radio" name="etcValue5" value="가족2인" id="etcValue5_2"/> <label for="etcValue5_2">가족2인</label>
+                            <input type="radio" name="etcValue5" value="친구1인" id="etcValue5_3"/> <label for="etcValue5_3">친구1인</label>
+                            <input type="radio" name="etcValue5" value="없음" id="etcValue5_4"/> <label for="etcValue5_4">없음</label>
                         </td>
                     </tr>
                     <tr>
                         <th>동반인연락처</th>
-                        <td colspan="3"><input type="number" id="ARM_DIV2" name="ARM_DIV2" value="" style="width:150px"/>* 숫자만 기입</td>
+                        <td colspan="3"><input type="number" id="etcValue6" name="etcValue6" value="" style="width:150px"/>* 숫자만 기입</td>
                     </tr>
                 </tbody>
             </table>
@@ -138,7 +171,7 @@
         </div>
         
         <div class="btnsSt3">
-            <a href="#">신청하기</a>
+            <a href="#none" onclick="javascript:fn_submit();">신청하기</a>
             <a href="javascript:close();">취소</a>
         </div>
     </div>
@@ -147,6 +180,53 @@
 </div>
 <!--willbes-Layer-PassBox//-->
 
+<script>
+    var $regi_form_register = $('#regi_form_register');
+    var _url = '{!! front_url('/event/registerStore') !!}';
 
+    function fn_submit() {
+        if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+            alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+            return;
+        }
 
+        if (numberChk($(':radio[name="etcValue3"]:checked').val()) === false) {
+            alert('응시번호를 확인해 주세요.');
+            return;
+        }
+
+        if (!confirm('저장하시겠습니까?')) { return true; }
+        ajaxSubmit($regi_form_register, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert(ret.ret_msg);
+                window.close();
+            }
+        }, showValidateError, null, false, 'alert');
+    }
+
+    //응시번호 직렬별 범위 체크
+    function numberChk(type) {
+        var etc_value2 = $regi_form_register.find('input[name="etcValue2"]').val();
+        switch (type) {
+            case '일반남자' :
+                if (etc_value2 > 10000 && etc_value2 < 20000) {
+                    return true;
+                }
+                break;
+            case '일반여자' :
+                if (etc_value2 > 20000 && etc_value2 < 30000) {
+                    return true;
+                }
+                break;
+            case '경행경채' :
+                if (etc_value2 > 30000 && etc_value2 < 40000) {
+                    return true;
+                }
+                break;
+            default :
+                return false;
+        }
+        return false;
+    }
+</script>
 @stop

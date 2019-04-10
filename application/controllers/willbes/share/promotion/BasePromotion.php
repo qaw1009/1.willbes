@@ -73,6 +73,23 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_condition = ['EQ' => ['A.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y']];
         $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
 
+        //인원제한체크를 위한 특강별 회원 수
+        $arr_register_member_cnt = [];
+        $arr_base['register_member_list'] = [];
+        if (empty($arr_base['register_list']) === false) {
+            $get_register_idxs = array_pluck($arr_base['register_list'], 'Name', 'ErIdx');
+            $arr_condition = [
+                'IN' => ['ErIdx' => array_keys($get_register_idxs)]
+            ];
+            $arr_register_member_cnt = $this->eventFModel->getRegisterMemberCount($arr_condition);
+            $arr_register_member_cnt = array_pluck($arr_register_member_cnt, 'MemCount', 'ErIdx');
+        }
+        foreach ($arr_base['register_list'] as $row) {
+            $arr_base['register_member_list'][$row['ErIdx']]['PersonLimitType'] = $row['PersonLimitType'];
+            $arr_base['register_member_list'][$row['ErIdx']]['PersonLimit'] = $row['PersonLimit'];
+            $arr_base['register_member_list'][$row['ErIdx']]['mem_cnt'] = (empty($arr_register_member_cnt[$row['ErIdx']]) === true) ? '0' : $arr_register_member_cnt[$row['ErIdx']];
+        }
+
         // 인증여부 추출
         $apply_result = null;
         //인증 파람값이 존재한다면
@@ -278,7 +295,8 @@ class BasePromotion extends \app\controllers\FrontController
     public function popup($param = [])
     {
         $arr_base['promotion_code'] = $param[0];
-        $test_type = (int)element('type', $this->_reqG(null), '0');
+        $arr_base['selected'] = element('selected', $this->_reqG(null));
+        $test_type = element('type', $this->_reqG(null), '0');
         $arr_base['method'] = 'POST';
 
         if (empty($arr_base['promotion_code']) === true) {

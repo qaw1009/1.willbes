@@ -107,7 +107,6 @@ class BasePassPredict extends \app\controllers\FrontController
     public function update()
     {
         $rules = [
-            ['field' => 'TakeMockPart', 'label' => '응시직렬', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeArea', 'label' => '응시지역', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'AddPoint', 'label' => '가산점', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeNumber', 'label' => '응시번호', 'rules' => 'trim|required|is_natural_no_zero'],

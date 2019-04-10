@@ -25,18 +25,20 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1188_01_bg.jpg) no-repeat center top}
         .evt02 {background:#a3c4ef url(https://static.willbes.net/public/images/promotion/2019/04/1188_02_bg.jpg) no-repeat center top;}
         .evt02 .evt02_02 {position:relative; width:1120px; margin:0 auto}
-        .evt02 .evt02_02 span {position:absolute; top:207px; left:495px; display:block; width:98px; height:30px; line-height:30px; z-index:10}
+        .evt02 .evt02_02 span {position:absolute; left:495px; display:block; width:98px; height:30px; line-height:30px; z-index:10}
         .evt02 .evt02_02 span a {display:block; text-align:center; color:#010100; background:#ffff01; font-size:14px; font-weight:600; border:1px solid #010100;}
         .evt02 .evt02_02 span a:hover {color:#fff; background:#000}
+        .evt02 .evt02_02 span:nth-child(1) {top:207px;}
         .evt02 .evt02_02 span:nth-child(2) {top:256px}
         .evt02 .evt02_02 span:nth-child(3) {top:305px}
         .evt02 .evt02_02 span:nth-child(4) {top:354px}
         .evt02 .evt02_02 span:nth-child(5) {top:403px}
         .evt02 .evt02_02 span:nth-child(6) {top:452px}
         .evt02 .evt02_03 {position:relative; width:1120px; margin:0 auto}
-        .evt02 .evt02_03 span {position:absolute; top:577px; left:250px; display:block; width:98px; height:30px; line-height:30px; z-index:10}
+        .evt02 .evt02_03 span {position:absolute; top:577px; display:block; width:98px; height:30px; line-height:30px; z-index:10}
         .evt02 .evt02_03 span a {display:block; text-align:center; color:#fff; background:#000; font-size:14px; font-weight:600; border:1px solid #010100;}
         .evt02 .evt02_03 span a:hover {color:#fff; background:#0c95d3}
+        .evt02 .evt02_03 span:nth-child(1) {left:250px;}
         .evt02 .evt02_03 span:nth-child(2) {left:392px}
         .evt02 .evt02_03 span:nth-child(3) {left:534px}
         .evt02 .evt02_03 span:nth-child(4) {left:672px}

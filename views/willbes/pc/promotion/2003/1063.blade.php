@@ -80,13 +80,12 @@
 
         /*타이머*/
         .time{width:100%; text-align:center; background:#000}
-        .time_date {text-align:center; padding:20px 0}
-        .time_date table {width:1120px; margin:0 auto}
-        .time_date table td:first-child {font-size:40px}
-        .time_date table td img {width:80%}
-        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
-        .time_txt span {color:#ef6759}
-        .time p {text-alig:center}
+        .ddaytime {text-align:center; padding:20px 0}
+        .ddaytime table {width:1120px; margin:0 auto}
+        .ddaytime table td:first-child {font-size:40px}
+        .ddaytime table td img {width:80%}
+        .ddaytime .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
+        .ddaytime .time_txt span {color:#ef6759}
 
         .check {width:100%; margin:0 auto; padding:20px 0 100px; letter-spacing:3 !important; color:#fff; font-size:14px}
         .check label {cursor:pointer}
@@ -114,8 +113,7 @@
                     <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     </tr>
-                </table>
-                
+                </table>                
             </div>
         </div>
         <!-- 타이머 //-->

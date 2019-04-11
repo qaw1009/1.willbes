@@ -100,7 +100,7 @@
             <div class="time_date">
                 <table>
                     <tr>
-                    <td class="time_txt"><span>4/10(수) 마감!</span></td>
+                    <td class="time_txt"><span>4/17(수) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="d1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="d2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>

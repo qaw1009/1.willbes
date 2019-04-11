@@ -517,7 +517,7 @@
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsLecStart" class="flat" value="Y" required="required" title="강좌시작일설정" @if($data['IsLecStart']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
+                            &nbsp;
                             <input type="radio" name="IsLecStart" class="flat" value="N" title="강좌시작일설정" @if($method == 'POST' || $data['IsLecStart']=='N')checked="checked"@endif/> 불가능
                             &nbsp;
                             •수강기간설정 조건이 '수강기간'일 경우 시작일이 개강일보다 빠르면 개강일에 맞춰 자동 시작
@@ -590,7 +590,7 @@
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsTpass" class="flat" value="Y" title="T-pass 자료실사용" @if($data['IsTpass']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;                         &nbsp;
+                            &nbsp;
                             <input type="radio" name="IsTpass" class="flat" value="N" title="T-pass 자료실사용" @if($method == 'POST' || $data['IsTpass']=='N')checked="checked"@endif/> 불가능
                         </div>
                     </div>
@@ -603,7 +603,7 @@
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($data['IsRefund']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
+                            &nbsp;
                             <input type="radio" name="IsRefund" class="flat" value="N" @if($method == 'POST' || $data['IsRefund']=='N')checked="checked"@endif/> 불가능
                             &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
                         </div>
@@ -895,6 +895,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="IsUse">정렬순서 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="item inline-block">
+                           <input type="text" name="OrderNum" id="OrderNum" class="form-control" title="정렬순서" style="width: 30px" value="{{empty($data['OrderNum']) ==true ? '0' : $data['OrderNum']}}">
+                            [숫자가 높을수록 상위노출 - 필요시에만 입력]
+                        </div>
+                    </div>
                     <label class="control-label col-md-2">외부수강업체연동
                     </label>
                     <div class="col-md-4 form-inline item" >
@@ -986,14 +994,12 @@
             $('#site_code').focus(function () {
                 prev_val = $(this).val();
             }).change(function () {
-                //alert(prev_val)
                 if (prev_val == "") {
                     $('#site_code').blur();
                     return;
                 }
                 $(this).blur();
                 if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
-
                     /*
                     $("#selected_category").html("");
                     $("#teacherDivision tbody").remove();
@@ -1029,13 +1035,11 @@
                 }
             });
 
-
             @if($data['PackCateCcd'] == '649001')
                 $("#CourseIdx").attr("disabled", false);
             @else
                 $("#CourseIdx").attr("disabled", true);
             @endif
-
 
             //강사료정산 교수정보 추출
             $("#searchProfessor").on('click', function(){
@@ -1067,11 +1071,7 @@
 
                 sendAjax('{{ site_url('common/searchWMasterLecture/wMasterLectureProfessorFromLecture') }}', data, function(ret) {
                     if(ret.ret_cd) {
-                        //alert( (ret.ret_data).length );
-
                         if((ret.ret_data).length > 0) {
-                            //console.log(ret.ret_data);
-
                             data_array = ret.ret_data;
                             html = "";
 
@@ -1154,7 +1154,6 @@
                 $('#content_byte').val(fn_chk_byte($('#SmsMemo').val()));
             @endif
 
-
             // ajax submit
             $regi_form.submit(function() {
 
@@ -1186,7 +1185,7 @@
                 if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {
 
                     if ($("#PackSelCount").val() == "") {
-                        alert('선택과목 선택개수 입력하여 주십시오.');
+                        alert('선택과목 선택개수를 입력하여 주십시오.');
                         $('#PackSelCount').focus();
                         return;
                     }
@@ -1195,9 +1194,7 @@
                         $('#selLecAdd').focus();
                         return;
                     }
-
                 }
-
                 return true;
             }
 
@@ -1230,7 +1227,6 @@
             }
         }
 
-
         //안분율 자동 계산
         function rateCheck(strGubun) {
 
@@ -1246,12 +1242,12 @@
             if($('#ProdDivisionPrice_'+strGubun).val() != '') {
 
                 //---   기존 단수처리 항목이 존재할경우 초기화 처리
-                    remainValue = parseFloat($("#rateRemain").val());
-                    //기존 선택 교수코드
-                    selectedProfIdx = $("#rateRemainProfIdx").val();
-                    if(selectedProfIdx != "") {       //이미 선택된 교수정보가 존재한다면
-                        $("#ProdDivisionRate_"+selectedProfIdx).val( (parseFloat($("#ProdDivisionRate_"+selectedProfIdx).val()) - (remainValue)).toFixed(8) )
-                    }
+                remainValue = parseFloat($("#rateRemain").val());
+                //기존 선택 교수코드
+                selectedProfIdx = $("#rateRemainProfIdx").val();
+                if(selectedProfIdx != "") {       //이미 선택된 교수정보가 존재한다면
+                    $("#ProdDivisionRate_"+selectedProfIdx).val( (parseFloat($("#ProdDivisionRate_"+selectedProfIdx).val()) - (remainValue)).toFixed(8) )
+                }
                 //---   기존 단수처리 항목이 존재할경우 초기화 처리
 
                 if (parseInt($('#ProdDivisionPrice_' + strGubun).val()) > totalprice) {
@@ -1290,7 +1286,6 @@
                 $("#rateRemainProfIdx").val('') //선택교수 초기화
 
             }
-
         }
 
         //단수체크
@@ -1347,7 +1342,6 @@
             $('#rateRemain').val('{{$rateRemain}}');
             $('#rateRemainProfIdx').val('{{$rateRemainProfIdx}}');
         @endif
-
     </script>
 
 @stop

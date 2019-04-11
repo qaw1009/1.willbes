@@ -367,7 +367,7 @@ class Manage extends \app\controllers\BaseController
         }
 
         if($logtype == 'chg'){
-            $UpdTypeCcd = "656004"; //회원정보수정
+            $UpdTypeCcd = "656004,656007"; //회원정보수정
         } else if($logtype == 'pwd') {
             $UpdTypeCcd = "656001,656002,656003"; // 비밀번호변경 혹은 초기화
         }
@@ -2243,5 +2243,64 @@ class Manage extends \app\controllers\BaseController
             return $this->json_error('시간추가에 실패했습니다.');
         }
 
+    }
+
+
+    /**
+     * 성별 변경
+     */
+    public function chg_sex()
+    {
+        $memidx = $this->_req('m');
+
+        if(empty($memidx) == true){
+            return $this->json_error('회원번호가 정확하지않습니다.');
+        }
+
+        $data = $this->manageMemberModel->getMember($memidx);
+
+        if(empty($data) == true){
+            return $this->json_error('회원번호가 정확하지않습니다.');
+        }
+
+        // 성별을 반대로
+        $sex = ($data['Sex'] == 'F') ? 'M' : 'F';
+
+        //
+        if($this->manageMemberModel->setMemberSex($memidx, $sex) == false){
+            return $this->json_error('회원성별 전환에 실패했습니다.');
+        }
+
+        $this->json_result(true, '회원성별을 변경했습니다.');
+    }
+
+
+    /**
+     * 휴면회원 해제
+     */
+    public function sleep_cancel()
+    {
+        $memidx = $this->_req('m');
+
+        if(empty($memidx) == true){
+            return $this->json_error('회원번호가 정확하지않습니다.');
+        }
+
+        $data = $this->manageMemberModel->getMember($memidx);
+
+        if(empty($data) == true){
+            return $this->json_error('회원번호가 정확하지않습니다.');
+        }
+
+        if($data['IsStatus'] != 'D'){
+            return $this->json_error('휴면회원이 아닙니다.');
+        }
+
+        //
+        if($this->manageMemberModel->setNormalStatus($memidx) == false){
+            return $this->json_error('휴면해제에 실패했습니다.');
+        }
+
+        $this->json_result(true, '휴면상태를 해제했습니다.');
     }
 }

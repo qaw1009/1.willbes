@@ -248,8 +248,8 @@ class BaseStats extends \app\controllers\BaseController
         $arr_target_group_ccd = array_filter_keys($group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
-        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제, 온라인0원결제 코드만 필터링
-        $arr_pay_route_ccd = array_filter_keys($codes[$group_ccd['PayRoute']], array_filter_keys($this->orderListModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'on_zero']));
+        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제, 온라인0원결제, 관리자유료결제 코드만 필터링
+        $arr_pay_route_ccd = array_filter_keys($codes[$group_ccd['PayRoute']], array_filter_keys($this->orderListModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'on_zero', 'admin_pay']));
 
         // 결제상태 공통코드에서 결제완료, 환불완료 코드만 필터링
         $arr_pay_status_ccd = array_filter_keys($codes[$group_ccd['PayStatus']], array_filter_keys($this->orderListModel->_pay_status_ccd, ['paid', 'refund']));

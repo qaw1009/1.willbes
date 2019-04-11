@@ -86,7 +86,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $rules = [
             ['field' => 'TakeMockPart', 'label' => '응시직렬', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeArea', 'label' => '응시지역', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'AddPoint', 'label' => '가산점', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'AddPoint', 'label' => '가산점', 'rules' => 'trim|required'],
             ['field' => 'TakeNumber', 'label' => '응시번호', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'LectureType', 'label' => '수강여부', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'Period', 'label' => '시험준비기간', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -108,7 +108,7 @@ class BasePassPredict extends \app\controllers\FrontController
     {
         $rules = [
             ['field' => 'TakeArea', 'label' => '응시지역', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'AddPoint', 'label' => '가산점', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'AddPoint', 'label' => '가산점', 'rules' => 'trim|required'],
             ['field' => 'TakeNumber', 'label' => '응시번호', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'LectureType', 'label' => '수강여부', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'Period', 'label' => '시험준비기간', 'rules' => 'trim|required|is_natural_no_zero'],

@@ -381,7 +381,9 @@ class OrderModel extends BaseOrderModel
             $arr_prod_info = element('prod_code', $input, []);  // 상품코드:상품타입:학습형태공통코드
             $total_order_price = 0;   // 전체주문금액
             $total_order_prod_price = 0;    // 전체상품주문금액
+            $total_disc_price = 0;  // 전체할인금액
             $total_real_pay_price = 0;  // 전체실결제금액
+            $real_pay_price = element('real_pay_price', $input, 0);     // 관리자유료결제 실결제금액
             $delivery_price = element('delivery_price', $input, 0);     // 배송료
             $is_delivery_info = false;  // 배송정보 등록 여부
             $arr_prod_row = [];    // 상품조회 결과 배열
@@ -445,26 +447,49 @@ class OrderModel extends BaseOrderModel
                 if (empty($arr_prod_price_data) === true || isset($arr_prod_price_data[0]['SaleTypeCcd']) === false) {
                     throw new \Exception('판매가격 정보가 없습니다.', _HTTP_NOT_FOUND);
                 }
-                $row['SaleTypeCcd'] = $arr_prod_price_data[0]['SaleTypeCcd'];
-                $row['RealSalePrice'] = $arr_prod_price_data[0]['RealSalePrice'];
-                $row['RealPayPrice'] = 0;
-                $row['DiscPrice'] = $row['RealSalePrice'];  // 할인금액 = 판매금액
-                $row['DiscRate'] = 100;
-                $row['DiscType'] = 'R';
+                $row['SaleTypeCcd'] = $arr_prod_price_data[0]['SaleTypeCcd'];   // 판매타입 공통코드
+                $row['RealSalePrice'] = $arr_prod_price_data[0]['RealSalePrice'];   // 판매금액
+
+                // 결제금액, 할인금액 설정
+                if ($pay_route === 'zero') {
+                    $row['RealPayPrice'] = 0;
+                    $row['CardPayPrice'] = 0;
+                    $row['DiscPrice'] = $row['RealSalePrice'];  // 할인금액 = 판매금액
+                    $row['DiscRate'] = 100;
+                    $row['DiscType'] = 'R';                    
+                } else {
+                    // 판매금액보다 실결제금액이 크다면
+                    if ($row['RealSalePrice'] < $real_pay_price) {
+                        throw new \Exception('결제금액은 판매금액을 초과하여 입력하실 수 없습니다.', _HTTP_BAD_REQUEST);
+                    }
+
+                    $row['RealPayPrice'] = $real_pay_price;
+                    $row['CardPayPrice'] = $real_pay_price;
+                    $row['DiscPrice'] = $row['RealSalePrice'] - $real_pay_price;  // 할인금액 = 판매금액 - 실결제금액
+                    $row['DiscRate'] = $row['RealSalePrice'] - $real_pay_price;
+                    $row['DiscType'] = 'P';
+                }
 
                 // 전체주문 관련 금액 합산
-                $total_order_price += $arr_prod_price_data[0]['RealSalePrice'];
-                $total_order_prod_price += $arr_prod_price_data[0]['RealSalePrice'];
-                $total_real_pay_price += $pay_route === 'zero' ? 0 : $arr_prod_price_data[0]['RealSalePrice'];
+                $total_order_price += $row['RealSalePrice'];
+                $total_order_prod_price += $row['RealSalePrice'];
+                $total_disc_price += $row['DiscPrice'];
+                $total_real_pay_price += $row['RealPayPrice'];
                 $arr_prod_row[] = $row;
             }
 
             $total_order_price += $delivery_price;      // 전체주문금액 + 배송료
             $total_real_pay_price += $delivery_price;   // 전체실결제금액 + 배송료
-            $total_disc_price = $total_order_prod_price;    // 전체할인금액 = 전체상품주문금액
             $repr_prod_name = $arr_prod_row[0]['ProdName'] . (count($arr_prod_row) > 1 ? ' 외 ' . (count($arr_prod_row) - 1) . '건' : '');    // 대표상품명
-            $pay_route_ccd = element($pay_route, $this->_pay_route_ccd, $this->_pay_route_ccd['zero']);     // 결제루트 공통코드
-            $pay_method_ccd = $delivery_price > 0 ? $this->_pay_method_ccd['willbes_bank'] : '';    // 결제방법 공통코드 (배송료가 있을 경우 윌비스 계좌이체)
+
+            // 결제루트, 결제방법 공통코드
+            if ($pay_route == 'zero') {
+                $pay_route_ccd = $this->_pay_route_ccd['zero'];     // 결제루트 : 0원결제
+                $pay_method_ccd = $total_real_pay_price > 0 ? $this->_pay_method_ccd['willbes_bank'] : '';  // 결제방법 : 배송료가 있을 경우 윌비스 계좌이체
+            } else {
+                $pay_route_ccd = $this->_pay_route_ccd['admin_pay'];     // 결제루트 : 관리자유료결제
+                $pay_method_ccd = $this->_pay_method_ccd['admin_pay'];  // 결제방법 : 관리자유료결제
+            }
 
             foreach ($arr_mem_idx as $mem_idx) {
                 // 주문 데이터 등록
@@ -665,8 +690,8 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
-            // 주문상품배송정보 데이터 등록 (방문결제가 아닐 경우)
-            if ($is_delivery_info == 'Y' && $is_visit_pay == 'N') {
+            // 주문상품배송정보 데이터 등록 (교재만, 방문결제가 아닐 경우)
+            if ($order_prod_type == 'book' && $is_delivery_info == 'Y' && $is_visit_pay == 'N') {
                 // 택배사 공통코드 조회
                 $delivery_comp_ccd = element('DeliveryCompCcd', $this->siteModel->findSite('DeliveryCompCcd', ['EQ' => ['SiteCode' => $site_code]]));
 
@@ -1065,7 +1090,7 @@ class OrderModel extends BaseOrderModel
             $mem_idx = element('mem_idx', $input);
             $site_code = element('site_code', $input);
             $arr_prod_info = element('prod_code', $input, []);  // 상품코드:상품타입:학습형태공통코드
-            $arr_available_learn_pattern = ['off_lecture', 'book', 'reading_room', 'locker', 'deposit', 'mock_exam'];     // 주문가능 상품구분
+            $arr_available_learn_pattern = ['off_lecture', 'book', 'reading_room', 'locker', 'deposit'];     // 주문가능 상품구분
             $total_order_price = 0;
             $total_real_pay_price = 0;
             $total_card_pay_price = 0;
@@ -1083,10 +1108,10 @@ class OrderModel extends BaseOrderModel
                 // 상품정보 변수 할당
                 list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
 
-                // 학습형태 조회 (학원 단과, 교재, 독서실, 사물함, 예치금, 모의고사 상품만 주문 가능)
+                // 학습형태 조회 (학원 단과, 교재, 독서실, 사물함, 예치금 상품만 주문 가능)
                 $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
                 if ($learn_pattern === false || in_array($learn_pattern, $arr_available_learn_pattern) === false) {
-                    throw new \Exception('주문하실 수 없는 상품입니다.' . PHP_EOL . '학원 단과, 교재, 독서실, 사물함, 예치금, 모의고사 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
+                    throw new \Exception('주문하실 수 없는 상품입니다.' . PHP_EOL . '학원 단과, 교재, 독서실, 사물함, 예치금 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
                 }
 
                 // 상품정보 조회

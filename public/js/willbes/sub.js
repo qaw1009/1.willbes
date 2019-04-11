@@ -62,6 +62,7 @@ $(function() {
     });
 });
 
+
 // 강의 > 온라인 수강신청, 학원강좌 수강신청 안내 버튼 Script
 $(function() {    
     $('#requestInfo a').click(function() {
@@ -130,6 +131,21 @@ $(function() {
     });
     $('#CScenter.willbes-Layer-CScenterBox a').click(function() {
         $('.ActIndex1 .center-Btn a').removeClass('on').text('서비스별 고객센터 전체보기 ▼').attr("onclick","openWin('CScenter')");
+
+    });
+});
+
+// 교재구매 > 강의정보 보기 
+$(function() {
+    $('.bookLecBtn > a').click(function() {
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on').text('교재로 진행중인 강의 ▼ ').attr("onclick","openWin('bookLec')");
+        } else {
+            $(this).addClass('on').text('교재로 진행중인 강의 ▲').attr("onclick","closeWin('bookLec')");
+        }
+    });
+    $('.willbes-Layer-bookLecBox a').click(function() {
+        $('.bookLecBtn > a').removeClass('on').text('교재로 진행중인 강의 ▼').attr("onclick","openWin('bookLec')");
 
     });
 });

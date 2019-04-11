@@ -150,6 +150,12 @@
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="select" name="select" title="직접입력" class="">
+                        <option selected="selected">최근등록순</option>
+                        <option value="상품명순">상품명순</option>
+                        <option value="높은가격순">높은가격순</option>
+                        <option value="낮은가격순">낮은가격순</option>
+                    </select>
+                    <select id="select" name="select" title="직접입력" class="">
                         <option selected="selected">전체</option>
                         <option value="교재명">교재명</option>
                         <option value="출판사">출판사</option>
@@ -194,14 +200,28 @@
                                             <strong>교재상세정보</strong>
                                         </a>
                                     </dt>                                    
-                                </dl><br/>
-                                <div class="w-info">
-                                    <select name="select" id="select">
-                                      <option>강좌1</option>
-                                      <option>강좌2</option>
-                                      <option>강좌3</option>
-                                    </select>
+                                </dl><br>
+                                <div class="bookLecBtn">
+                                    <a href="#none" onclick="openWin('bookLec')" class="">
+                                        <strong>교재로 진행중인 강의 ▼</strong>
+                                    </a> 
+                                    {{--강의정보--}}
+                                    <div id="bookLec" class="willbes-Layer-CScenterBox willbes-Layer-bookLecBox">
+                                        <a class="closeBtn" href="#none" onclick="closeWin('bookLec')">
+                                            <img src="{{ img_url('prof/close.png') }}">
+                                        </a>
+                                        <div class="Layer-Cont">
+                                            <div class="LeclistTable">
+                                                <ul>
+                                                    <li>강의명 1</li>
+                                                    <li>강의명 2</li>
+                                                    <li>강의명 3</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>                                  
                                 </div>
+                                
                             </td>
                             <td class="w-notice p_re">                                
                                 <div class="priceWrap chk buybtn p_re">
@@ -242,14 +262,7 @@
                                             <strong>교재상세정보</strong>
                                         </a>
                                     </dt>                                    
-                                </dl><br/>
-                                <div class="w-info">
-                                    <select name="select" id="select">
-                                      <option>강좌1</option>
-                                      <option>강좌2</option>
-                                      <option>강좌3</option>
-                                    </select>
-                                </div>
+                                </dl>
                             </td>
                             <td class="w-notice p_re">                                
                                 <div class="priceWrap chk buybtn p_re">
@@ -291,14 +304,7 @@
                                             <strong>교재상세정보</strong>
                                         </a>
                                     </dt>                                    
-                                </dl><br/>
-                                <div class="w-info">
-                                    <select name="select" id="select">
-                                      <option>강좌1</option>
-                                      <option>강좌2</option>
-                                      <option>강좌3</option>
-                                    </select>
-                                </div>
+                                </dl>
                             </td>
                             <td class="w-notice p_re">                                
                                 <div class="priceWrap chk buybtn p_re">

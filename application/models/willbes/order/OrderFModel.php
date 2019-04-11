@@ -792,8 +792,8 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
-            // 주문상품배송정보 데이터 등록 (방문결제가 아닐 경우)
-            if ($is_delivery_info == 'Y' && $is_visit_pay == 'N') {
+            // 주문상품배송정보 데이터 등록 (교재만, 방문결제가 아닐 경우)
+            if ($cart_type == 'book' && $is_delivery_info == 'Y' && $is_visit_pay == 'N') {
                 $data = [
                     'OrderProdIdx' => $order_prod_idx,
                     'DeliveryCompCcd' => config_app('DeliveryCompCcd'),
@@ -959,7 +959,7 @@ class OrderFModel extends BaseOrderFModel
                 $order_prod_idx = $this->_conn->insert_id();
 
                 // 온라인 강좌일 경우 나의 강좌수정정보 데이터 등록
-                if ($row['ProdTypeCcd'] === $this->_prod_type_ccd['on_lecture']) {
+                if ($row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture']) {
                     $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $row['ProdCodeSub'], [], [
                         'UserStudyStartDate' => element('UserStudyStartDate', $input, '')
                     ]);

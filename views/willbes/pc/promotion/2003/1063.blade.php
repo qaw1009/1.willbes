@@ -195,7 +195,7 @@
 		function countDown() {
 		//event_day = new Date(2016,4,6,23,59,59);
 		// 이벤트 종료일의 한달 전 날짜로 입력한다. 
-		event_day = new Date(2019,3,10,23,59,59);
+		event_day = new Date(2019,3,17,23,59,59);
 		now = new Date();
 
 		var Monthleft = event_day.getMonth() - now.getMonth();

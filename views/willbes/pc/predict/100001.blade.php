@@ -46,7 +46,7 @@
             <input type="hidden" name="mode" value="{{ $mode }}" />
             @if($mode == 'MOD')
             <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
-            <input type="hidden" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
+            <input type="hidden"  id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
             @endif
 
             <div class="eventPop">
@@ -58,7 +58,7 @@
                         <li>
                             <strong>* 직렬(직류구분)</strong>
 
-                            <select name="TakeMockPart" id="TakeMockPart" style="width:120px" onchange="selSerial(this.value,'')" @if($mode=='MOD') disabled @endif >
+                            <select style="width:120px" onchange="selSerial(this.value,'')" @if($mode=='MOD') disabled @endif >
                                 <option value="">응시직렬</option>
                                 @if($mode == 'NEW')
                                     @foreach($serial as $val)
@@ -214,7 +214,7 @@
                 return ;
             }
 
-            if($("#TakeMockPart option:selected").val() != '300'){
+            if($("#TakeMockPart").val() != '300'){
                 if($("input:checkbox[id=Ssubject]:checked").length != 3){
                     alert('선택과목은 3개를 선택해 주세요.');
                     return ;
@@ -224,24 +224,24 @@
             var takenum = '';
             takenum = $('#TakeNumber').val();
             takenum = parseInt(takenum);
-            if($("#TakeMockPart option:selected").val() == '100') {
+            if($("#TakeMockPart").val() == '100') {
                 if(takenum<10001||takenum>19999) {
-                    alert('일반공채(남)의 응시번호는 10001~19999 사이 값으로 입력해 주세요.');
+                    alert('올바른 응시번호가 아닙니다.');
                     return;
                 }
-            } else if($("#TakeMockPart option:selected").val() == '200') {
+            } else if($("#TakeMockPart").val() == '200') {
                 if(takenum<20001||takenum>29999) {
-                    alert('일반공채(남)의 응시번호는 20001~29999 사이 값으로 입력해 주세요.');
+                    alert('올바른 응시번호가 아닙니다.');
                     return;
                 }
-            } else if($("#TakeMockPart option:selected").val() == '300') {
+            } else if($("#TakeMockPart").val() == '300') {
                 if(takenum<30001||takenum>39999) {
-                    alert('일반공채(남)의 응시번호는 30001~39999 사이 값으로 입력해 주세요.');
+                    alert('올바른 응시번호가 아닙니다.');
                     return;
                 }
             } else {
                 if(takenum<40001||takenum>49999) {
-                    alert('일반공채(남)의 응시번호는 40001~49999 사이 값으로 입력해 주세요.');
+                    alert('올바른 응시번호가 아닙니다.');
                     return;
                 }
             }
@@ -262,6 +262,7 @@
         }
 
         function selSerial(num,num2){
+            $("#TakeMockPart").val(num);
             if(num != ''){
                 $('#GroupCcd').val(num);
             } else {

@@ -7095,6 +7095,20 @@ ul li.profList .willbes-Layer-ProfileBox {
     line-height: 20px !important;
     padding: 13px 0;
 }
+/*교재구매 > 강의정보*/
+.bookLecBtn {position: relative;}
+.willbes-Layer-bookLecBox {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 29px;
+    left: 0;
+    z-index: 110;
+    width: 500px;
+    height: auto;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+}
 
 /* subContainer : Cs : CScenterIndex : ActIndex4 */
 .willbes-info .List-Table li {

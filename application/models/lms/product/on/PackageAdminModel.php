@@ -25,7 +25,7 @@ class PackageAdminModel extends CommonLectureModel
             $column = ' STRAIGHT_JOIN
                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
-                    ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply
+                    ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.OrderNum
                     ,Bc.CcdName as LearnPatternCcd_Name
                     ,Bd.CcdName as PackTypeCcd_Name
                     ,Be.CcdName as PackCateCcd_Name
@@ -469,6 +469,7 @@ class PackageAdminModel extends CommonLectureModel
             ,'IsTpass'=>element('IsTpass',$input,'N')
             ,'ExternalCorpCcd'=>element('ExternalCorpCcd',$input)
             ,'ExternalLinkCode'=>element('ExternalLinkCode',$input)
+            ,'OrderNum' =>element('OrderNum',$input)
         ];
 
     }

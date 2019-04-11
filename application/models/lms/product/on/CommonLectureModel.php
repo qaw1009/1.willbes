@@ -923,6 +923,36 @@ class CommonLectureModel extends WB_Model
         return true;
     }
 
+    /**
+     * 강좌 정렬 변경
+     * @param array $params
+     * @return array|bool
+     */
+    public function _modifyLectureByOrder($params=[])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $prod_code => $order_num) {
+                $this->_conn->set('OrderNum',$order_num )->where('ProdCode', $prod_code);
+
+                if ($this->_conn->update($this->_table['lecture']) === false) {
+                    throw new \Exception('정렬 정보 수정에 실패했습니다.');
+                }
+                //echo $this->_conn->last_query();
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
 
      /**
      * 강좌복사
@@ -964,7 +994,7 @@ class CommonLectureModel extends WB_Model
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
                     , PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount,PackAutoStudyExtenCcd,PackAutoStudyPeriod, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
                     , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen, AcceptStatusCcd, LecPlace,WeekArray,Amount,AmountDisp,DeviceLimitCount,IsTpass
-                    , ExternalCorpCcd, ExternalLinkCode ';
+                    , ExternalCorpCcd, ExternalLinkCode, OrderNum ';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
 
@@ -1212,7 +1242,6 @@ class CommonLectureModel extends WB_Model
                     throw new \Exception('옵션 수정(관리자 업데이트) 에 실패했습니다.');
                 }
             }
-
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

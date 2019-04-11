@@ -119,6 +119,7 @@
                     //-->
                     <th width="5%">등록자</th>
                     <th  width="8%">등록일</th>
+                    <th>정렬</th>
                     <th>복사</th>
                 </tr>
                 </thead>
@@ -136,10 +137,10 @@
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
-
+                //"lengthMenu": [20, 50, 100 ],
                 buttons: [
-
-                    { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 운영자패키지복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 운영자패키지등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('product/on/packageAdmin/create') }}';
@@ -204,17 +205,17 @@
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
                     {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<input type="text" class="form-control" name="OrderNum[]" data-idx="'+ row.ProdCode +'"  value="'+row.OrderNum+'" style="width:30px" maxlength="3">';
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
                             return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
                         }},//복사여부
                 ]
-
             });
-
 
             // 자동 변경
             $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
             $search_form.find('select[name="search_md_cate_code"]').chained("#search_lg_cate_code");
-
 
             //강의복사
             $('.btn-copy').on('click',function(){
@@ -238,7 +239,6 @@
                         }
                     }, showError, false, 'POST');
                 }
-
             });
 
             // 신규, 추천 상태 변경
@@ -282,11 +282,40 @@
                 }, showError, false, 'POST');
             });
 
+
+            // 정렬순서 변경
+            $('.btn-order-modify').on('click', function() {
+                if (!confirm('정렬순서를 적용하시겠습니까?')) {
+                    return;
+                }
+                var $order = $list_table.find('input[name="OrderNum[]"]');
+                var $params = {};
+                var this_prodcode,this_num;
+
+                $order.each(function(idx) {
+                    this_prodcode = $order.eq(idx).data('idx');
+                    this_num = $order.eq(idx).val();
+                    $params[this_prodcode] = this_num ;
+                });
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax('{{ site_url('/product/on/packageAdmin/reorder') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
+            });
+
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/product/on/packageAdmin/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
-
 
 
         });

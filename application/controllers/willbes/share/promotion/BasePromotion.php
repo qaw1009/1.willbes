@@ -20,6 +20,7 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         $test_type = (int)element('type', $this->_reqG(null), '0');
+        $arr_base['tab_id'] = element('tab', $this->_reqG(null), '1');
         $arr_base['promotion_code'] = $params['code'];
         $arr_base['spidx'] = (empty($params['spidx']) === false) ? $params['spidx'] : '';
 

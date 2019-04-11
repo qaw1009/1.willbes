@@ -207,7 +207,7 @@ class BaseStats extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel($this->_stats_name . '매출통계리스트', $list, $headers) !== true) {
+        if ($this->excel->exportExcel($this->_stats_name . '매출통계리스트', $list, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }
@@ -343,7 +343,7 @@ class BaseStats extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel($this->_stats_name . '매출통계상세보기리스트', $list, $headers) !== true) {
+        if ($this->excel->exportExcel($this->_stats_name . '매출통계상세보기리스트', $list, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

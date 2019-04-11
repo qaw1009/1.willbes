@@ -61,22 +61,22 @@
 
         <!-- 타이머 -->
         <div class="evtCtnsBox time">
-            <div class="time_date">
+            <div class="time_date" id="newTopDday">
                 <table>
                     <tr>
-                    <td class="time_txt"><span>4/10(수) 마감!</span></td>
+                    <td class="time_txt"><span>4/17(수) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
-                    <td><img id="d1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="d2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td class="time_txt">일 </td>
-                    <td><img id="h1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="h2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td class="time_txt">:</td>
-                    <td><img id="m1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="m2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td class="time_txt">:</td>
-                    <td><img id="s1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="s2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     </tr>
                 </table>                
             </div>
@@ -129,69 +129,70 @@
     <!-- End Container -->
 
     <script>
-        /*디데이*/
-		var DateDiff = {//타이머를 설정합니다.
-		inDays: function(d1, d2) {
-		var t2 = d2.getTime();
-		var t1 = d1.getTime();
+        /*타이머*/
+        var DdayDiff = { //타이머를 설정합니다.
+            inDays: function(dd1, dd2) {
+                var tt2 = dd2.getTime();
+                var tt1 = dd1.getTime();
 
-		return parseInt((t2-t1)/(24*3600*1000));
-		},
+                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
+            },
 
-		inWeeks: function(d1, d2) {
-		var t2 = d2.getTime();
-		var t1 = d1.getTime();
+            inWeeks: function(dd1, dd2) {
+                var tt2 = dd2.getTime();
+                var tt1 = dd1.getTime();
 
-		return parseInt((t2-t1)/(24*3600*1000*7));
-		},
+                return parseInt((tt2-tt1)/(24*3600*1000*7));
+            },
 
-		inMonths: function(d1, d2) {
-		var d1Y = d1.getFullYear();
-		var d2Y = d2.getFullYear();
-		var d1M = d1.getMonth();
-		var d2M = d2.getMonth();
+            inMonths: function(dd1, dd2) {
+                var dd1Y = dd1.getFullYear();
+                var dd2Y = dd2.getFullYear();
+                var dd1M = dd1.getMonth();
+                var dd2M = dd2.getMonth();
 
-		return (d2M+12*d2Y)-(d1M+12*d1Y);
-		},
+                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
+            },
 
-		inYears: function(d1, d2) {
-		return d2.getFullYear()-d1.getFullYear();
-		}
-		}
+            inYears: function(dd1, dd2) {
+                return dd2.getFullYear()-dd1.getFullYear();
+            }
+        }
 
-		function countDown() {
-		//event_day = new Date(2016,4,6,23,59,59);
-		// 이벤트 종료일의 한달 전 날짜로 입력한다. 
-		event_day = new Date(2019,3,10,23,59,59);
-		now = new Date();
+        function daycountDown() {
+            // 한달 전 날짜로 셋팅
+            event_day = new Date(2019,3,17,23,59,59);
+            now = new Date();
+            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
-		var Monthleft = event_day.getMonth() - now.getMonth();
-		var Dateleft = DateDiff.inDays(now, event_day);
-		var Hourleft = event_day.getHours() - now.getHours();
-		var Minuteleft = event_day.getMinutes() - now.getMinutes();
-		var Secondleft = event_day.getSeconds() - now.getSeconds();
+            var Monthleft = event_day.getMonth() - now.getMonth();
+            var Dateleft = DdayDiff.inDays(now, event_day);
+            var Hourleft = timeGap.getHours();
+            var Minuteleft = timeGap.getMinutes();
+            var Secondleft = timeGap.getSeconds();
 
-		//alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
+            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
 
-		if((event_day.getTime() - now.getTime()) > 0) {
-		$("#d1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft/10) + ".png");
-		$("#d2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft%10) + ".png");
+            if((event_day.getTime() - now.getTime()) > 0) {
+                $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
+                $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
 
-		$("#h1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft/10) + ".png");
-		$("#h2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft%10) + ".png");
+                $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
+                $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
 
-		$("#m1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft/10) + ".png");
-		$("#m2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft%10) + ".png");
+                $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
+                $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
 
-		$("#s1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft/10) + ".png");
-		$("#s2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft%10) + ".png");
-		}
-		else{
-		}
+                $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
+                $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+                setTimeout(daycountDown, 1000);
+            }
+            else{
+                $("#newTopDday").hide();
+            }
 
-		setTimeout(countDown, 1000);
-		}
-		countDown();
+        }
+        daycountDown();
 
 
     </script>

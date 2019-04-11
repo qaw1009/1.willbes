@@ -16,7 +16,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2019/04/LayPop190405_p.jpg" alt="실전빅매치데이2/든든이벤트" usemap="#MaplayerPopup" border="0" href="#none"/>
                     <map name="MaplayerPopup" id="MaplayerPopup">
                         <area shape="rect" coords="6,5,387,313" href="{{ site_url('/pass/promotion/index/cate/3010/code/1175') }}" alt="2단계 동형모의고사" />
-                        <area shape="rect" coords="396,4,778,312" href="#none" alt="합격생 중경 입교 버스 든든이벤트" />
+                        <area shape="rect" coords="396,4,778,312" href="{{ site_url('/pass/promotion/index/cate/3010/code/1188') }}" alt="합격생 중경 입교 버스 든든이벤트" />
                     </map>
                     <div class="btn-r">
                         <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop2002('passpopup', 'blackpopup');" >하루 보지않기</a>

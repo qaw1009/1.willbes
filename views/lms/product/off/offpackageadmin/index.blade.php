@@ -157,6 +157,7 @@
                     <th>정산입력</th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>정렬</th>
                     <th>복사</th>
                 </tr>
                 </thead>
@@ -178,7 +179,8 @@
                 buttons: [
                     /*{ text: '<i class="fa fa-pencil mr-5"></i> 개설여부/접수상태 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     { text: '<i class="fa fa-copy mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order'}*/
-                    { text: '<i class="fa fa-copy mr-5"></i> 종합반복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
+                    ,{ text: '<i class="fa fa-copy mr-5"></i> 종합반복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 종합반등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('product/off/offPackageAdmin/create') }}';
                         }
@@ -248,6 +250,9 @@
                         }},//정산입력
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<input type="text" class="form-control" name="OrderNum[]" data-idx="'+ row.ProdCode +'"  value="'+row.OrderNum+'" style="width:30px" maxlength="3">';
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
                         }},//복사여부
@@ -324,6 +329,34 @@
                 }, showError, false, 'POST');
             });
 
+            // 정렬순서 변경
+            $('.btn-order-modify').on('click', function() {
+                if (!confirm('정렬순서를 적용하시겠습니까?')) {
+                    return;
+                }
+                var $order = $list_table.find('input[name="OrderNum[]"]');
+                var $params = {};
+                var this_prodcode,this_num;
+
+                $order.each(function(idx) {
+                    this_prodcode = $order.eq(idx).data('idx');
+                    this_num = $order.eq(idx).val();
+                    $params[this_prodcode] = this_num ;
+                });
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax('{{ site_url('/product/off/offPackageAdmin/reorder') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
+            });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {

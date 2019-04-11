@@ -732,6 +732,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsUse">정렬순서 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="item inline-block">
+                            <input type="text" name="OrderNum" id="OrderNum" class="form-control" title="정렬순서" style="width: 30px" value="{{empty($data['OrderNum']) ==true ? '0' : $data['OrderNum']}}">
+                            [숫자가 높을수록 상위노출 - 필요시에만 입력]
+                        </div>
+                    </div>
+                </div>
 
                 @if($method === 'PUT')
                     <div class="form-group">

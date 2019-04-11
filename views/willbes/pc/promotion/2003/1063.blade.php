@@ -79,13 +79,13 @@
         .wb_cts02 { background:#232228; font-family:'Noto Sans KR', Arial, Sans-serif; color:#232228}
 
         /*타이머*/
-        .time{width:100%; text-align:center; background:#000}
-        .ddaytime {text-align:center; padding:20px 0}
-        .ddaytime table {width:1120px; margin:0 auto}
-        .ddaytime table td:first-child {font-size:40px}
-        .ddaytime table td img {width:80%}
-        .ddaytime .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
-        .ddaytime .time_txt span {color:#ef6759}
+        .time {width:100%; text-align:center; background:#000}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {font-size:40px}
+        .time table td img {width:80%}
+        .time .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
+        .time .time_txt span {color:#ef6759}
 
         .check {width:100%; margin:0 auto; padding:20px 0 100px; letter-spacing:3 !important; color:#fff; font-size:14px}
         .check label {cursor:pointer}

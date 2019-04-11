@@ -316,8 +316,6 @@
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/product/on/packageAdmin/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
-
-
         });
     </script>
 @stop

@@ -261,7 +261,6 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         $this->json_result($result,'복사 되었습니다.',$result);
     }
 
-
     /**
      * 강좌 개설/접수 변경
      */
@@ -276,6 +275,25 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         }
 
         $result = $this->offPackageAdminModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 리스트내 정렬순서 변경
+     */
+    public function reorder()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->offPackageAdminModel->_modifyLectureByOrder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

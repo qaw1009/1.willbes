@@ -44,17 +44,30 @@
                     <th class="text-center">회원명</th>
                     <th class="text-center">아이디</th>
                     <th class="text-center">회원인증방법</th>
-
+                    <th class="text-center">현재상태</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>{{ $data['MemIdx'] }}</td>
                     <td>{{ $data['JoinDate'] }}</td>
-                    <td>{{ $data['BirthDay'] }} ({{ $data['Sex'] == 'M' ? '남' : '여' }})</td>
+                    <td>
+                        {{ $data['BirthDay'] }} ({{ $data['Sex'] == 'M' ? '남' : '여' }})
+                        <button type="button" class="btn btn-default" id="chg_sexual">성별변경</button>
+                    </td>
                     <td>{{ $data['MemName'] }} <button type="button" class="btn btn-default" id="chgname">이름변경</button></td>
                     <td>{{ $data['MemId'] }}</td>
                     <td>{{ $data['CertName'] }}</td>
+                    <td>
+                        @if($data['IsStatus'] == 'Y')
+                            정상회원
+                        @elseif($data['IsStatus'] == 'N')
+                            탈퇴회원
+                        @elseif($data['IsStatus'] == 'D')
+                            휴면회원<br>
+                            <button type="button" class="btn btn-default" id="sleep_cancel">휴면회원해제</button>
+                        @endif
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -184,6 +197,45 @@
                        }, false, 'GET', 'json');
                }
             });
+
+            $('#chg_sexual').click(function() {
+                if(!confirm('성별을 변경하시겠습니까?')){
+                    return;
+                }
+
+                $url = '{{site_url('/member/manage/chg_sex/')}}';
+                $data = 'm={{$data['MemIdx']}}';
+
+                sendAjax($url,
+                    $data,
+                    function(d){
+                        alert(d.ret_msg);
+                        location.reload();
+                    },
+                    function(req, status, err){
+                        alert(req.ret_msg);
+                    }, false, 'GET', 'json');
+            });
+
+            $('#sleep_cancel').click(function() {
+                if(!confirm('휴면상태를 해제하시겠습니까?')){
+                    return;
+                }
+
+                $url = '{{site_url('/member/manage/sleep_cancel/')}}';
+                $data = 'm={{$data['MemIdx']}}';
+
+                sendAjax($url,
+                    $data,
+                    function(d){
+                        alert(d.ret_msg);
+                        location.reload();
+                    },
+                    function(req, status, err){
+                        alert(req.ret_msg);
+                    }, false, 'GET', 'json');
+            });
+
         });
 
 

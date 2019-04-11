@@ -91,6 +91,7 @@ class ManageMemberModel extends WB_Model
             IFNULL(Mem.LastLoginDatm, '') AS LoginDate, 
             IFNULL(Mem.LastInfoModyDatm, '') AS InfoUpdDate, 
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
+            Mem.IsStatus,
             IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
@@ -381,6 +382,11 @@ class ManageMemberModel extends WB_Model
     }
 
 
+    /**
+     * 사용자 로그인처리
+     * @param array $data
+     * @return bool
+     */
     public function storeMemberLogin($data = [])
     {
         // 데이타에 문제가 있을경우 오류
@@ -423,7 +429,13 @@ class ManageMemberModel extends WB_Model
 
         return true;
     }
-    
+
+
+    /**
+     * 비밀번호 1111 로 초기화
+     * @param $memIdx
+     * @return array|bool
+     */
     public function resetPWD($memIdx)
     {
         $this->_conn->trans_begin();
@@ -462,6 +474,83 @@ class ManageMemberModel extends WB_Model
         }
 
         return true;
+    }
 
+    public function setMemberSex($MemIdx, $Sex)
+    {
+        $data = [
+            'Sex' => $Sex
+        ];
+
+        $admin_idx = $this->session->userdata('admin_idx');
+
+        $this->_conn->trans_begin();
+
+        try {
+
+            if ($this->_conn->set($data)->where('MemIdx', $MemIdx)->update($this->_table['member']) === false) {
+                throw new \Exception('회원정보 업데이트에 실패했습니다.');
+            }
+
+            // 비밀번호 초기화 로그저장
+            $data = [
+                'MemIdx' => $MemIdx,
+                'UpdTypeCcd' => '656007',
+                'UpdMemo' => '성별변경('.$Sex.')',
+                'UpdData' => '성별변경('.$Sex.')',
+                'UpdAdminIdx' => $admin_idx,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['changeLog']) === false) {
+                throw new \Exception('데이터수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    public function setNormalStatus($MemIdx)
+    {
+        $data = [
+            'IsStatus' => 'Y'
+        ];
+
+        $admin_idx = $this->session->userdata('admin_idx');
+
+        $this->_conn->trans_begin();
+
+        try {
+
+            if ($this->_conn->set($data)->where('MemIdx', $MemIdx)->update($this->_table['member']) === false) {
+                throw new \Exception('회원정보 업데이트에 실패했습니다.');
+            }
+
+            // 비밀번호 초기화 로그저장
+            $data = [
+                'MemIdx' => $MemIdx,
+                'UpdTypeCcd' => '656007',
+                'UpdMemo' => '휴면해제',
+                'UpdData' => '휴면해제',
+                'UpdAdminIdx' => $admin_idx,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['changeLog']) === false) {
+                throw new \Exception('데이터수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 }

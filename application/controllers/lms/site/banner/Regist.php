@@ -278,6 +278,7 @@ class Regist extends \app\controllers\BaseController
             'EQ' => [
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
+                'A.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'A.BdIdx' => $this->_reqP('search_banner_disp_idx'),
                 'A.IsUse' => $this->_reqP('search_is_use')
             ],

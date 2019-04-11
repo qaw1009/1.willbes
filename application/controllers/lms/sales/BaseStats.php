@@ -13,6 +13,7 @@ class BaseStats extends \app\controllers\BaseController
     protected $_search_column = [];
     protected $_group_ccd = ['lec_type_ccd' => '607', 'pack_type_ccd' => '648', 'pack_period_ccd' => '650', 'study_pattern_ccd' => '653'];
     protected $_order_list_add_join = array('refund');
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct($stats_type, $stats_name, $prod_type, $learn_pattern, $search_column)
     {
@@ -199,6 +200,9 @@ class BaseStats extends \app\controllers\BaseController
      */
     protected function _excel($headers, $column)
     {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
         $headers = array_merge(['대분류', '상품코드', '상품명'], $headers, ['매출현황']);
         $column = 'GSC.CateName, SU.ProdCode, P.ProdName, ' . $column . ', (SU.SumPayPrice - SU.SumRefundPrice) as SumRemainPrice';
 
@@ -333,6 +337,9 @@ class BaseStats extends \app\controllers\BaseController
      */
     protected function orderListExcel()
     {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
         $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '상품구분', '상품명', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태'];
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, ProdTypeCcdName, ProdName

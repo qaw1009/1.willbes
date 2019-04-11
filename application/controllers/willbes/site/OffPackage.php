@@ -82,9 +82,9 @@ class OffPackage extends \app\controllers\FrontController
         ];
 
         if (element('search_order', $arr_input) == 'course') {
-            $order_by = ['OrderNumCourse'=>'desc'];
+            $order_by = ['OrderNum'=>'Desc','OrderNumCourse'=>'desc'];
         } else {
-            $order_by = ['ProdCode'=>'desc'];
+            $order_by = ['OrderNum'=>'Desc','ProdCode'=>'desc'];
         }
 
         $list= $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,$order_by);

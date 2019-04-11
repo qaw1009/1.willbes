@@ -28,7 +28,7 @@ class OffPackageAdminModel extends CommonLectureModel
                     ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
-                    ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd
+                    ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd,B.OrderNum
                     ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                     ,Bd.CcdName as StudyPatternCcd_Name
                     ,Be.CcdName as StudyApplyCcd_Name
@@ -406,6 +406,7 @@ class OffPackageAdminModel extends CommonLectureModel
             ,'LecCalcType'=>element('LecCalcType',$input)
             ,'IsLecOpen'=>element('IsLecOpen',$input,'N')
             ,'AcceptStatusCcd'=>element('AcceptStatusCcd',$input,null)
+            ,'OrderNum' =>element('OrderNum',$input)
         ];
     }
 

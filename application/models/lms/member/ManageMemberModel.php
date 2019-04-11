@@ -478,6 +478,10 @@ class ManageMemberModel extends WB_Model
 
     public function setMemberSex($MemIdx, $Sex)
     {
+        if(empty($MemIdx) == true){
+            return false;
+        }
+
         $data = [
             'Sex' => $Sex
         ];
@@ -517,6 +521,10 @@ class ManageMemberModel extends WB_Model
 
     public function setNormalStatus($MemIdx)
     {
+        if(empty($MemIdx) == true){
+            return false;
+        }
+
         $data = [
             'IsStatus' => 'Y'
         ];

@@ -240,25 +240,15 @@
 </script>
 
 <script type="text/javascript">
-	function go_PassLecture(){
-		if(parseInt()){
-				if($("input[name='ischk']:checked").size() < 1 && $("input[name='ischk2']:checked").size() < 1){
-						alert("이용안내에 동의하셔야 합니다.");
-						$("#chkInfo").focus();
-						return;
-				}
+	function go_PassLecture() {
+		if($("input[name='ischk']:checked").length < 1) {
+			alert("이용안내에 동의하셔야 합니다.");
+			$("#chkInfo").focus();
+			return;
 		}
 
-		var lUrl = "";
-
-		if(parseInt()){
-				lUrl = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152756') }}"
-		}
-		location.href = lUrl;
+		location.href = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152756') }}";
 	}
 </script>
-
 <!-- scripts -->
-
-
 @stop

@@ -258,7 +258,7 @@ Class PackageAdmin extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+            ['field' => 'params', 'label' => '신규/추천', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {
@@ -266,6 +266,25 @@ Class PackageAdmin extends \app\controllers\BaseController
         }
 
         $result = $this->packageAdminModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 리스트내 정렬순서 변경
+     */
+    public function reorder()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->packageAdminModel->_modifyLectureByOrder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

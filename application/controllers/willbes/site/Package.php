@@ -57,9 +57,9 @@ class Package extends \app\controllers\FrontController
 
         // 상품 정렬조건
         if (element('search_order', $arr_input) == 'course') {
-            $order_by = ['OrderNumCourse'=>'asc'];
+            $order_by = ['OrderNum'=>'Desc', 'OrderNumCourse'=>'asc'];
         } else {
-            $order_by = ['ProdCode'=>'desc'];
+            $order_by = ['OrderNum'=>'Desc', 'ProdCode'=>'desc'];
         }
 
         // 상품 조회

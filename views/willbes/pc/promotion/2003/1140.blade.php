@@ -110,25 +110,6 @@
         }
     </style>
 
-    @php
-        $now = date('YmdHis');
-        $show_date_tab3 = '20190406110000';
-        $show_date_tab4 = '20190408100000';
-        $show_type_tab3 = 'open';
-        $show_type_tab4 = 'open';
-
-        //실서버 반영
-        if (ENVIRONMENT == 'production') {
-            if ($now < $show_date_tab3) {
-                $show_type_tab3 = 'close';
-            }
-
-            if ($now < $show_date_tab4) {
-                $show_type_tab4 = 'close';
-            }
-        }
-    @endphp
-
     <div class="evtContent NG" id="evtContainer">
         <div class="evtCtnsBox evtTop" >
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
@@ -137,25 +118,25 @@
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
             <ul>
                 <li>
-                    <a title='tab1' href="#tab1">
+                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1140/spidx/2?tab=1#content_1') }}">
                         <span>합격을 위한</span>
                         <div>최종 마무리 전략</div>
                     </a>
                 </li>
-                <li>                    
-                    <a title='tab2' href="#tab2">
+                <li>
+                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1140/spidx/2?tab=2#content_2') }}">
                         <span>전년도 국가직 9급</span>
                         <div>완벽분석</div>				
                     </a>
                 </li>
                 <li>
-                    <a title='tab3' href="#tab3">
+                    <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1140/spidx/2?tab=3#content_3') }}">
                         <span>2019 국가직 9급</span>
                         <div>시험총평 및 시험후기</div>
                     </a>
                 </li>     
                 <li>
-                    <a title='tab4' href="#tab4">
+                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1140/spidx/2?tab=4#content_4') }}">
                         <span>2019 국가직 9급</span>
                         <div>기출해설강의</div>
                     </a>
@@ -164,7 +145,7 @@
         </div>
 
         <!--최종 마무리 전략-->
-        <div id="tab1" class="tabCts pb90">
+        <div id="content_1" class="tabCts pb90">
             <div class="download">		
                 <!--국어-->
                 <span>
@@ -202,7 +183,7 @@
         </div>
 
         <!--완벽분석-->
-        <div id="tab2" class="tabCts Cts02">
+        <div id="content_2" class="tabCts Cts02">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_02_2.jpg" title="풀캐어 강사진" />
             <div class="mt20 mb100">
@@ -1124,7 +1105,7 @@
         </div>
 
         <!--시험총평 및 시험후기-->
-        <div id="tab3" class="tabCts Cts03">
+        <div id="content_3" class="tabCts Cts03">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
             @include('willbes.pc.survey.show_graph_partial')
 
@@ -1156,7 +1137,7 @@
         </div>
 
         <!--기출해설강의-->
-        <div id="tab4" class="tabCts Cts04">
+        <div id="content_4" class="tabCts Cts04">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>
@@ -1189,8 +1170,6 @@
                         @endforeach
                     @endif
                 </ul>
-                
-
             </div>
         </div>
     </div>
@@ -1199,56 +1178,15 @@
     <script type="text/javascript">
         /*tab*/
         $(document).ready(function(){
-            $('.evtMenu ul').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-                $content = $($active[0].hash);
-
-                $links.not($active).each(function(){
-                    $(this.hash).hide();
-                    /*$('#frm').height('450px');
-                    $('#frm_713001').height('840px');
-                    $('#frm_713004').height('840px');*/
-                });
-
-                $(this).on('click', 'a', function(e){
-                    var open_type = 'false';
-                    var open_type3 = '{{ $show_type_tab3 }}';
-                    var open_type4 = '{{ $show_type_tab4 }}';
-
-                    if($(this).attr('title') == 'tab1' || $(this).attr('title') == 'tab2') {
-                        open_type = 'true';
-                    } else {
-                        if($(this).attr('title') == 'tab3' && open_type3 == 'open') {
-                            open_type = 'true';
-                        }
-
-                        if($(this).attr('title') == 'tab4' && open_type4 == 'open') {
-                            open_type = 'true';
-                        }
-                    }
-
-                    if (open_type == 'true') {
-                        $active.removeClass('active');
-                        $content.hide();
-                        $active = $(this);
-                        $content = $(this.hash);
-                        $active.addClass('active');
-                        $content.show();
-                        e.preventDefault();
-                    } else {
-                        if($(this).attr('title') == 'tab3') {
-                            alert('4월 6일 공개됩니다.');
-                            return false;
-                        }
-
-                        if($(this).attr('title') == 'tab4') {
-                            alert('4월 8일 공개됩니다.');
-                            return false;
-                        }
-                    }
-                });
+            var cnt;
+            var tab_id = '{{ $arr_base['tab_id'] }}';
+            $('#tab'+tab_id).addClass('active');
+            $('.evtMenu ul > li').each(function(item){
+                cnt = item + 1;
+                $("#content_"+cnt).hide();
+                if (tab_id == cnt) {
+                    $("#content_"+cnt).show();
+                }
             });
         });
 

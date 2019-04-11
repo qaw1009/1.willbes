@@ -62,7 +62,7 @@
 				<span><img src="https://static.willbes.net/public/images/promotion/2019/04/1193_top_txt.gif" alt="2020 국가직대비 전격출시!" /></span>
 				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_top.png" usemap="#Map_1193_qna"  title="한덕현T-PASS" border="0"/>
 				<map name="Map_1193_qna">
-					<area shape="rect" coords="123,1122,973,1211" href="javascript:go_PassLecture();" target="_blank">
+					<area shape="rect" coords="123,1122,973,1211" href="#none" onclick="go_PassLecture();">
 					<area shape="rect" coords="27,560,108,585" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
 				</map>	 
 			</div>
@@ -141,7 +141,7 @@
 			<div class="evtCtnsBox evt04">
 				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_04.jpg" usemap="#Map_1193_lec2" title="한덕현T-PASS" border="0" />
 				<map name="Map_1193_lec2">
-					<area shape="rect" coords="730,774,991,880" href="javascript:go_PassLecture();" target="_blank" title="수강신청">
+					<area shape="rect" coords="730,774,991,880"  href="#none" onclick="go_PassLecture();" title="수강신청">
 				</map>
 			</div>
 			<!--evt04//-->

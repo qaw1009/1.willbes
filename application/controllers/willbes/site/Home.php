@@ -150,6 +150,7 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
+            $data['dday'] = $this->_dday();
             $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus'] = $arr_campus;
             $data['gallery'] = $this->_gallery();
@@ -246,7 +247,9 @@ class Home extends \app\controllers\FrontController
                 '0' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_서브3', '메인_띠배너'
                     , '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
                     , '메인_미들6', '메인_미들7', '메인_미들8', '메인_미들9', '메인_미들10'
-                    , '메인_이벤트', '메인_대표교수', '메인_포커스']
+                    , '메인_이벤트', '메인_대표교수', '메인_포커스'
+                    , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
+                ]
             ]
         ];
 

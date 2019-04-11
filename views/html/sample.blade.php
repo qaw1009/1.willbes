@@ -183,6 +183,7 @@
             <ul>
             <li><p>공무원 온라인 ▼</p></li>
                 <li>3월 19일 이후 추가분 ▼</li>
+                <li class="w50"><a href="{{ site_url('/home/html/newLecList') }}" target="_blank">게시판용 신규강의 안내</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/1135') }}" target="_blank">윌비스 전국모의고사</a></li>
                 <li>&nbsp;</li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>

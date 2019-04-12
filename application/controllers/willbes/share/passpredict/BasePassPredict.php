@@ -129,8 +129,8 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function autocount($param){
         $ProdCode = $param['prodcode'];
-        $ElIdx = $param['elidx'];
-        $data = $this->surveyModel->autocount($ProdCode, $ElIdx);
+        $PromotionCode = $param['promotioncode'];
+        $data = $this->surveyModel->autocount($ProdCode, $PromotionCode);
         $CNT = $data['CNT'];
         $PreCnt = $data['PreCnt'];
         $totCNT = 0;

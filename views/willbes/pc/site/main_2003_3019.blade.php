@@ -8,7 +8,7 @@
 
         <div class="Section mt20">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/3019_1120x158.jpg" alt="반드시 합격할 수 있는 자신감이 되어 드리겠습니다.">
+                <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120.jpg" alt="반드시 합격할 수 있는 자신감이 되어 드리겠습니다.">
             </div>
         </div>
 

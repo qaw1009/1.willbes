@@ -15,7 +15,7 @@ class SurveyModel extends WB_Model
         'predictCode' => 'lms_predict_code',
         'predictRegisterR' => 'lms_predict_register_r_code',
         'predictRegister' => 'lms_predict_register',
-
+        'eventComment' => 'lms_event_comment',
         'sysCode' => 'lms_sys_code',
     ];
 
@@ -25,6 +25,29 @@ class SurveyModel extends WB_Model
     {
         parent::__construct('lms');
         $this->upload_path_predict = $this->config->item('upload_path_predict', 'predict');
+    }
+
+    /**
+     *  합격예측 접수인원
+     */
+    public function autocount($ProdCode, $ElIdx){
+        $column = "
+            ((SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE ProdCode = ".$ProdCode.") + (SELECT COUNT(*) FROM {$this->_table['eventComment']} WHERE ElIdx = ".$ElIdx.")) AS CNT,
+            (SELECT PreCnt FROM {$this->_table['predictProduct']} WHERE ProdCode = ".$ProdCode.") AS PreCnt   
+        ";
+
+        $from = "
+            FROM 
+                DUAL
+        ";
+
+        $order_by = "";
+        $where = " ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->row_array();
+
+        return $Res;
     }
 
     /**

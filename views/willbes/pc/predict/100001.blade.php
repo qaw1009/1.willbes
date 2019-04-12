@@ -46,8 +46,8 @@
             <input type="hidden" name="mode" value="{{ $mode }}" />
             @if($mode == 'MOD')
             <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
-            <input type="hidden"  id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
             @endif
+            <input type="hidden"  id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
 
             <div class="eventPop">
                 <h3>
@@ -224,6 +224,7 @@
             var takenum = '';
             takenum = $('#TakeNumber').val();
             takenum = parseInt(takenum);
+
             if($("#TakeMockPart").val() == '100') {
                 if(takenum<10001||takenum>19999) {
                     alert('올바른 응시번호가 아닙니다.');

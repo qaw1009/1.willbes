@@ -10,8 +10,8 @@
         <input type="hidden" name="mode" value="{{ $mode }}" />
         @if($mode == 'MOD')
             <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
-            <input type="hidden" id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
         @endif
+        <input type="hidden" id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
 
         <div id="Container" class="Container NG c_both">
             <div class="predictWrap">

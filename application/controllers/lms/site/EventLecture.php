@@ -486,6 +486,7 @@ class EventLecture extends \app\controllers\BaseController
         $count = 0;
         $list = [];
         $list_comment = [];
+        $count_comment = 0;
         $list_notice = [];
         $el_idx = $params[0];
 
@@ -533,10 +534,11 @@ class EventLecture extends \app\controllers\BaseController
             }
         }
 
+        $cnt = count($list_notice) + $count_comment;
         $list = array_merge($list_notice, $list_comment);
         return $this->response([
-            'recordsTotal' => count($list),
-            'recordsFiltered' => count($list),
+            'recordsTotal' => $cnt,
+            'recordsFiltered' => $cnt,
             'data' => $list,
         ]);
     }

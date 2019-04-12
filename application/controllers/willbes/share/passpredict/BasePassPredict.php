@@ -124,5 +124,26 @@ class BasePassPredict extends \app\controllers\FrontController
         $this->json_result($result['ret_cd'], '수정되었습니다.', $result, $result);
     }
 
+    /*
+     * 합격예측서비스인원
+     */
+    public function autocount($param){
+        $ProdCode = $param['prodcode'];
+        $ElIdx = $param['elidx'];
+        $data = $this->surveyModel->autocount($ProdCode, $ElIdx);
+        $CNT = $data['CNT'];
+        $PreCnt = $data['PreCnt'];
+        $totCNT = 0;
+        for($i = 1; $i <= $CNT; $i++){
+            $totCNT = $totCNT + mt_rand(2,10);
+        }
+
+        $cnt = $totCNT + $PreCnt;
+        $cnt = number_format($cnt);
+        $this->load->view('willbes/pc/predict/autocount', [
+            'cnt' => $cnt
+        ], false);
+    }
+
 }
 

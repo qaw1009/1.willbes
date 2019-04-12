@@ -70,14 +70,18 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1188_02_02.jpg" title="입교버스 지역별 신청">
                 @foreach($arr_base['register_member_list'] as $key => $val)
                     <span>
-                        @if($val['PersonLimitType'] != 'L')
-                            <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
-                        @else
-                            @if($val['PersonLimit'] > $val['mem_cnt'])
+                        @if($val['RegisterExpireStatus'] == 'Y')
+                            @if($val['PersonLimitType'] != 'L')
                                 <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
                             @else
-                                <a href="#none" class="end">신청마감</a>
+                                @if($val['PersonLimit'] > $val['mem_cnt'])
+                                    <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                                @else
+                                    <a href="#none" class="end">신청마감</a>
+                                @endif
                             @endif
+                        @else
+                            <a href="#none" class="end">신청마감</a>
                         @endif
                     </span>
                 </span>
@@ -87,14 +91,19 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1188_02_03.jpg" title="입교버스 지역별 신청지역 안내">
                 @foreach($arr_base['register_member_list'] as $key => $val)
                     <span>
-                        @if($val['PersonLimitType'] != 'L')
-                            <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
-                        @else
-                            @if($val['PersonLimit'] > $val['mem_cnt'])
+                        @if($val['RegisterExpireStatus'] == 'Y')
+                            @if($val['PersonLimitType'] != 'L')
                                 <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
                             @else
-                                <a href="#none" class="end">신청마감</a>
+                                @if($val['PersonLimit'] > $val['mem_cnt'])
+                                    <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                                @else
+                                    <a href="#none" class="end">신청마감</a>
+                                @endif
                             @endif
+                        @else
+                            {{--<a href="#none" class="end">신청마감</a>--}}
+                            <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
                         @endif
                     </span>
                     </span>

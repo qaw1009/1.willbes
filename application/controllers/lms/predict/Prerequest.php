@@ -101,26 +101,28 @@ class Prerequest extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-                'O.SiteCode' => $this->_req('search_site_code'),
-                'OP.PayStatusCcd' => $this->_req('search_PayStatusCcd'),
-                'MR.TakeForm' => $this->_req('search_TakeForm'),
-                'MR.TakeArea' => $this->_req('search_TakeArea'),
-                'MR.IsTake' => $this->_req('search_IsTake'),
+//                'O.SiteCode' => $this->_req('search_site_code'),
+//                'OP.PayStatusCcd' => $this->_req('search_PayStatusCcd'),
+//                'MR.TakeForm' => $this->_req('search_TakeForm'),
+//                'MR.TakeArea' => $this->_req('search_TakeArea'),
+//                'MR.IsTake' => $this->_req('search_IsTake'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'U.MemName' => $this->_req('search_fi', true),
-                    'U.MemId' => $this->_req('search_fi', true),
-                    'U.Phone3' => $this->_req('search_fi', true),
-                    'PD.ProdName' => $this->_req('search_fi', true),
-                    'MR.ProdCode' => $this->_req('search_fi', true),
-                    'MR.TakeNumber' => $this->_req('search_fi', true),
-                    'O.OrderNo' => $this->_req('search_fi', true),
+//                    'U.MemName' => $this->_req('search_fi', true),
+//                    'U.MemId' => $this->_req('search_fi', true),
+//                    'U.Phone3' => $this->_req('search_fi', true),
+//                    'PD.ProdName' => $this->_req('search_fi', true),
+//                    'MR.ProdCode' => $this->_req('search_fi', true),
+//                    'MR.TakeNumber' => $this->_req('search_fi', true),
+//                    'O.OrderNo' => $this->_req('search_fi', true),
                 ]
             ],
         ];
 
-        list($data, $count) = $this->predictModel->predictRegistList($condition, $this->input->post('length'), $this->input->post('start'),'');
+
+        list($data, $count) = $this->predictModel->predictRegistList($condition, $this->input->post('length'), $this->input->post('start'));
+
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,

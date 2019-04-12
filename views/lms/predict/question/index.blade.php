@@ -142,7 +142,7 @@
                 buttons: [
                     { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 act-copy', action: copyAreaData },
                     { text: '<i class="fa fa-pencil mr-5"></i> 문제등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/mocktest/regExam/create') }}' + dtParamsToQueryString($datatable);
+                            location.href = '{{ site_url('/predict/question/create/') }}' + dtParamsToQueryString($datatable);
                         }}
                 ],
                 serverSide: true,
@@ -199,7 +199,7 @@
             // 수정으로 이동
             $list_form.on('click', '.act-edit', function () {
                 var query = dtParamsToQueryString($datatable);
-                location.href = '{{ site_url('/mocktest/regExam/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+                location.href = '{{ site_url('/predict/question/create/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
             // 복사
@@ -207,7 +207,7 @@
                 if( !$list_form.find('[name="target"]:checked').val() ) { alert('복사할 문제영역을 선택해 주세요.'); return false; }
                 if (!confirm("복사하시겠습니까?")) return false;
 
-                var _url = '{{ site_url('/mocktest/regExam/copyData') }}';
+                var _url = '{{ site_url('/predict/question/copyData') }}';
                 var data = {
                     '{{ csrf_token_name() }}' : $list_form.find('[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'POST',
@@ -216,7 +216,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktest/regExam/edit/') }}' + ret.ret_data.dt.idx + dtParamsToQueryString($datatable));
+                        location.replace('{{ site_url('/predict/question/create/') }}' + ret.ret_data.dt.idx + dtParamsToQueryString($datatable));
                     }
                 }, showValidateError, false, 'POST');
             }

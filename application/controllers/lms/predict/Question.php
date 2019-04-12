@@ -71,26 +71,26 @@ class Question extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-                'EB.SiteCode' => $this->input->post('search_site_code'),
-                'MB.CateCode' => $this->input->post('search_cateD1'),
-                'MB.Ccd' => $this->input->post('search_cateD2'),
-                'MS.SubjectIdx' => $this->input->post('search_subject'),
-                'EB.ProfIdx' => $this->input->post('search_professor'),
-                'EB.Year' => $this->input->post('search_year'),
-                'EB.RotationNo' => $this->input->post('search_round'),
-                'EB.IsUse' => $this->input->post('search_use'),
+//                'EB.SiteCode' => $this->input->post('search_site_code'),
+//                'MB.CateCode' => $this->input->post('search_cateD1'),
+//                'MB.Ccd' => $this->input->post('search_cateD2'),
+//                'MS.SubjectIdx' => $this->input->post('search_subject'),
+//                'EB.ProfIdx' => $this->input->post('search_professor'),
+//                'EB.Year' => $this->input->post('search_year'),
+//                'EB.RotationNo' => $this->input->post('search_round'),
+//                'EB.IsUse' => $this->input->post('search_use'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'EB.PapaerName' => $this->input->post('search_fi', true),
-                    'A.wAdminName' => $this->input->post('search_fi', true),
-                    'SC.CcdName' => $this->input->post('search_fi', true),
-                    'SJ.SubjectName' => $this->input->post('search_fi', true),
-                    'PMS.wProfName' => $this->input->post('search_fi', true),
+//                    'EB.PapaerName' => $this->input->post('search_fi', true),
+//                    'A.wAdminName' => $this->input->post('search_fi', true),
+//                    'SC.CcdName' => $this->input->post('search_fi', true),
+//                    'SJ.SubjectName' => $this->input->post('search_fi', true),
+//                    'PMS.wProfName' => $this->input->post('search_fi', true),
                 ]
             ],
         ];
-        list($data, $count) = $this->regExamModel->mainList($condition, $this->input->post('length'), $this->input->post('start'));
+        list($data, $count) = $this->predictModel->QuestionMainList($condition, $this->input->post('length'), $this->input->post('start'));
 
         return $this->response([
             'recordsTotal' => $count,
@@ -106,6 +106,10 @@ class Question extends \app\controllers\BaseController
     {
         if($param) $ProdCode = $param[0];
 
+        //합격예측 기본정보호출
+        $productList = $this->predictModel->getProductALL();
+        $subjectList = $this->predictModel->getSubject();
+
         if(empty($ProdCode) === true){
             $method = "CREATE";
             $data = array();
@@ -116,10 +120,12 @@ class Question extends \app\controllers\BaseController
             $data = $this->predictModel->getProduct($ProdCode);
         }
 
-        $this->load->view('predict/request/request_create', [
+        $this->load->view('predict/question/question_create', [
             'method' => $method,
             'siteCodeDef' => '',
-            'data' => $data
+            'data' => $data,
+            'productList' => $productList,
+            'subjectList' => $subjectList
             /*
             'applyType' => $codes[$this->applyType],
             'applyArea1' => $codes[$this->applyArea1],
@@ -225,6 +231,21 @@ class Question extends \app\controllers\BaseController
 
         $result = $this->predictModel->update();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
+    }
+
+    /**
+     * 데이터 복사
+     */
+    public function copyData()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->regExamModel->copyData($this->input->post('idx'));
+        $this->json_result($result['ret_cd'], '복사되었습니다.', $result, $result);
     }
 
     /**

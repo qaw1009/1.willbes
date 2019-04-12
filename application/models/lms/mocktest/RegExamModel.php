@@ -88,6 +88,7 @@ class RegExamModel extends WB_Model
         $where = "WHERE EB.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY EB.MpIdx DESC\n";
+        //echo "<pre>". 'select' . $column . $from . $where . $order . "</pre>";
         $data = $this->_conn->query('SELECT '.$column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 

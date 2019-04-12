@@ -54,8 +54,11 @@ class PredictModel extends WB_Model
 
         'predictProduct' => 'lms_product_predict',
         'predictCode' => 'lms_predict_code',
-        'predictRegisterR' => 'lms_predict_register_r_paper',
+        'predictRegisterR' => 'lms_predict_register_r_code',
         'predictRegister' => 'lms_predict_register',
+
+        'predictPaper' => 'lms_predict_paper',
+        'productPredictR' => 'lms_product_predict_r_paper'
     ];
 
 
@@ -147,79 +150,25 @@ class PredictModel extends WB_Model
     /**
      * 과목별문제등록 리스트
      */
-    public function QuestionMainList($conditionAdd='', $limit='', $offset='')
+    public function QuestionMainList($condition='', $limit='', $offset='')
     {
-        $condition = [ 'IN' => ['PP.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
-        if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
-
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
         $column = "
-            PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, PP.TakeStartDatm, PP.TakeEndDatm, 
-            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName
-        ";
-
-        $from = "
-            FROM {$this->_table['predictProduct']} AS PP
-            LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
-        ";
-        $selectCount = " SELECT COUNT(*) AS cnt";
-        $where = " WHERE PP.ProdCode > 0 ";
-        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = " ORDER BY PP.ProdCode DESC\n";
-        //echo "<pre>SELECT ". $column . $from . $where . $order . $offset_limit . "</pre>";
-        $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
-        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
-
-        // 직렬이름 추출
-        //$mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
-        //$codes = $this->codeModel->getCcdInArray([$mockKindCode]);
-
-        $column = "
-            *
+	        * 
         ";
 
         $from = "
             FROM 
-                {$this->_table['predictCode']} 
-                
+                {$this->_table['predictPaper']} AS PP
+                JOIN {$this->_table['productPredictR']} AS PPR ON PP.PpIdx = PPR.PpIdx
         ";
-
-        $order_by = " ";
-        $where = " WHERE GroupCcd = 0";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res = $query->result_array();
-        $arrCcd = array();
-        foreach ($Res as $key => $val){
-            $Ccd = $val['Ccd'];
-            $CcdName = $val['CcdName'];
-            $arrCcd[$Ccd] = $CcdName;
-        }
-
-        foreach ($data as &$it) {
-            $arrMockPart = explode(',',$it['MockPart']);
-
-            $mockpartstr = '';
-            for($i=0; $i < count($arrMockPart); $i++){
-                $tempstr = $arrMockPart[$i];
-                $mockpartstr .= $arrCcd[$tempstr]."/";
-            }
-            $mockpartstr = substr($mockpartstr, 0, strlen($mockpartstr) - 1);
-            if($it['TakeStartDatm'] > date('Y-m-d H:i:s')){
-                $dres = "접수대기";
-            } else if($it['TakeStartDatm'] < date('Y-m-d H:i:s') && $it['TakeEndDatm'] > date('Y-m-d H:i:s')) {
-                $dres = "접수중";
-            } else {
-                $dres = "접수마감";
-            }
-
-            $it['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/predict/index/'.$it['ProdCode'];
-            $it['include'] = "프로모션 페이지 URL + /spidx/".$it['ProdCode'];
-
-            $it['AcceptStatusCcd_Name'] = $dres;
-            $it['SerialStr'] = $mockpartstr;
-        }
+        $selectCount = " SELECT COUNT(*) AS cnt";
+        $where = " WHERE PP.PpIdx > 0 ";
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $order = "";
+        //echo "<pre>SELECT ". $column . $from . $where . $order . $offset_limit . "</pre>";
+        $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
+        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
         return array($data, $count);
     }
@@ -227,133 +176,39 @@ class PredictModel extends WB_Model
     /**
      * 합격예측신청목록
      */
-    public function predictRegistList($conditionAdd='', $limit='', $offset='', $rowtype='')
+    public function predictRegistList($condition='', $limit='', $offset='')
     {
-
-        $condition = [ 'IN' => ['O.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
-        if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
-
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
+        $column = " 
+       
+            MemName,
+            PR.MemIdx,
+            MemId,
+            CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) AS Phone,
+            (SELECT CcdValue FROM lms_predict_code WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+            (SELECT CcdValue FROM lms_sys_code WHERE Ccd = PR.TaKeArea) AS TaKeArea,
+            TaKeNumber,
+            LectureType,
+            Period,
+            RegDatm
 
-        /* 신청 과목 정보 전체*/
-        $subject_all = "
-            SELECT GROUP_CONCAT(SJ.SubjectName)
-            FROM {$this->_table['mockApplySubject']} AS MAS
-            JOIN {$this->_table['subject']} AS SJ ON MAS.SubjectIdx = SJ.SubjectIdx
-            WHERE MR.MrIdx = MAS.MrIdx
         ";
 
-        /* 필수 신청 과목 정보*/
-        $subject_ess = "
-            SELECT GROUP_CONCAT(ps.SubjectName)
-            from
-                    lms_mock_register_r_paper mrp 
-                    join lms_product_mock_r_paper pmp on mrp.ProdCode = pmp.ProdCode and mrp.MpIdx = pmp.MpIdx and pmp.IsStatus='Y'
-                    join lms_mock_paper mp on pmp.MpIdx = mp.MpIdx and mp.IsStatus='Y'
-                    join lms_mock_r_category mrc on mp.MrcIdx = mrc.MrcIdx and mrc.IsStatus='Y'
-                    join lms_mock_r_subject mrs on  mrc.MrsIdx = mrs.MrsIdx and mrs.IsStatus='Y'
-                    join lms_product_subject ps on mrs.SubjectIdx = ps.SubjectIdx 
-            WHERE pmp.MockType='E' And mrp.MrIdx = MR.MrIdx 
-        ";
-
-        /* 선택 신청 과목 정보*/
-        $subject_sub = "
-            SELECT GROUP_CONCAT(ps.SubjectName)
-            from
-                    lms_mock_register_r_paper mrp 
-                    join lms_product_mock_r_paper pmp on mrp.ProdCode = pmp.ProdCode and mrp.MpIdx = pmp.MpIdx and pmp.IsStatus='Y'
-                    join lms_mock_paper mp on pmp.MpIdx = mp.MpIdx and mp.IsStatus='Y'
-                    join lms_mock_r_category mrc on mp.MrcIdx = mrc.MrcIdx and mrc.IsStatus='Y'
-                    join lms_mock_r_subject mrs on  mrc.MrsIdx = mrs.MrsIdx and mrs.IsStatus='Y'
-                    join lms_product_subject ps on mrs.SubjectIdx = ps.SubjectIdx 
-            WHERE pmp.MockType='S' And mrp.MrIdx = MR.MrIdx
-            order by mrp.MrrpIdx 
-        ";
-
-        $column = " Straight_join
-                            MR.*, PD.ProdName, PD.SiteCode, MP.MockYear, MP.MockRotationNo, MP.TakeStartDatm, MP.TakeEndDatm
-                            ,fn_day_name(MP.TakeStartDatm,'') as day_name
-                            ,C1.CateName
-                            ,U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone
-                            ,O.OrderIdx, O.OrderNo, O.RealPayPrice, O.CompleteDatm, OP.PayStatusCcd
-                            ,SC1.CcdName as TakeMockPart_Name
-                            ,SC2.CcdName as TakeForm_Name
-                            ,SC3.CcdName as TakeArea_Name
-                            ,SC4.CcdName as PayStatusCcd_Name
-                            ,SC5.CcdName as PayMethodCcd_Name
-                            ,(
-                                select count(*) 
-                                from {$this->_table['mockPrint']} mrpl
-                                where mrpl.MrIdx = Mr.MrIdx
-                            ) as PrintCnt
-                            ,($subject_all) AS SubjectNameList
-        ";
-
-        if($rowtype=='Y') {
-            $column .= ",($subject_ess) AS SubjectNameList_Ess
-                            ,($subject_sub) AS SubjectNameList_Sub";
-        }
 
         $from = "
-            FROM {$this->_table['mockApply']} AS MR
-                JOIN {$this->_table['member']} AS U ON MR.MemIdx = U.MemIdx AND U.IsStatus = 'Y'
-                JOIN {$this->_table['orderProduct']} AS OP ON OP.OrderProdIdx = MR.OrderProdIdx
-                JOIN {$this->_table['order']} AS O ON OP.OrderIdx = O.OrderIdx
-                JOIN {$this->_table['mockProduct']} AS MP ON MR.ProdCode = MP.ProdCode
-                JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
-                JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
-                JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-                JOIN {$this->_table['ProductSMS']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
-                JOIN {$this->_table['sysCode']} AS SC1 ON MR.TakeMockPart = SC1.Ccd AND SC1.IsStatus = 'Y'
-                JOIN {$this->_table['sysCode']} AS SC2 ON MR.TakeForm = SC2.Ccd AND SC2.IsStatus = 'Y'
-                LEFT OUTER JOIN {$this->_table['sysCode']} AS SC3 ON MR.TakeArea = SC3.Ccd AND SC3.IsStatus = 'Y'
-                JOIN {$this->_table['sysCode']} AS SC4 ON OP.PayStatusCcd = SC4.Ccd AND SC4.IsStatus = 'Y'
-                LEFT JOIN {$this->_table['sysCode']} AS SC5 ON O.PayMethodCcd = SC5.Ccd AND SC5.IsStatus = 'Y'
+            FROM 
+                lms_predict_register AS PR
+                JOIN lms_member AS M ON PR.MemIdx = M.MemIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
-        $where = "WHERE MR.IsStatus = 'Y'";
+        $where = "WHERE PR.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = "ORDER BY MR.MrIdx DESC\n";
+        $order = "";
+        //echo "<pre>". 'select' . $column . $from . $where . $order . "</pre>";
 
-        //echo 'Select'. $column . $from . $where . $order . $offset_limit;
-
-        //단일 데이터 조회 && 출력용 데이터 조회
-        if($rowtype == 'Y') {
-            $data =  $this->_conn->query('Select'. $column . $from . $where . $order . $offset_limit)->row_array();
-
-            //수강증 출력용 데이터 조합
-            if($data['SiteCode'] == '2001' || $data['SiteCode'] == '2002') {
-                // 경찰
-                $data['ViewType'] = 'C';
-                // 상품명 길이 조정
-                $this->load->helper('text');
-                $data['ProdName_Print'] = ellipsize($data['ProdName'], 14, 1, '');
-                $data['TakeDate'] = date('m/d', strtotime($data['TakeStartDatm'])).'('.$data['day_name'].') '. date('H', strtotime($data['TakeStartDatm'])).'시';
-                $data['Subject_Sub'] = ['',''];
-
-                if(empty($data['SubjectNameList_Sub'] === false)) {
-                    $data['Subject_Sub'] = explode(',',$data['SubjectNameList_Sub']);
-                }
-
-            } elseif ($data['SiteCode'] == '2003' || $data['SiteCode'] == '2004') {
-                // 공무원학원
-                $data['ViewType'] = 'G';
-                $data['ProdName_Print'] = $data['ProdName'];
-                $data['TakeDate'] = date('m/d', strtotime($data['TakeStartDatm']));
-                $data['Subject_Sub'] = ['',''];
-
-                if(empty($data['SubjectNameList_Sub'] === false)) {
-                    $data['Subject_Sub'] = explode(',',$data['SubjectNameList_Sub']);
-                }
-            }
-
-            return $data;
-
-        } else {
-            $data = $this->_conn->query('Select'. $column . $from . $where . $order . $offset_limit)->result_array();
-            $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
-            return array($data, $count);
-        }
+        $data = $this->_conn->query('Select'. $column . $from . $where . $order . $offset_limit)->result_array();
+        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
+        return array($data, $count);
     }
 
     /**
@@ -379,6 +234,56 @@ class PredictModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
+
+        return $Res;
+    }
+
+    /**
+     *  합격예측용 기존데이터 호출
+     */
+    public function getProductALL(){
+        $column = "
+            PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, PP.TakeStartDatm, PP.TakeEndDatm, 
+            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictProduct']} AS PP
+                LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A2 ON PP.UpdAdminIdx = A2.wAdminIdx
+                
+        ";
+
+        $order_by = " ";
+        $where = "";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    /**
+     *  합격예측용 과목코드 호출
+     */
+    public function getSubject(){
+        $column = "
+            Ccd, CcdValue, Type
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictCode']} 
+        ";
+
+        $order_by = " ";
+        $where = " WHERE Type IS NOT NULL ";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
 
         return $Res;
     }

@@ -2,8 +2,8 @@
 
 @section('content')
     <h5 class="mt-20">- 합격예측서비스 기본정보를 관리합니다.</h5>
-    <h5 class="mt-20 red">- 사전등록페이지를 willbes/pc/predict/+prodcode 와 willbes/m/predict/+prodcode 경로에 생성해주세요.</h5>
-    <h5 class="mt-20 red">- 프로모션 블레이드에 적중&합격예측 서비스 이용  &#64;include('willbes.pc.predict.show_count_partial') 을 추가해주세요.</h5>
+    <h5 class="mt-20 red">- 사전등록페이지를 /view/willbes/pc/predict/+prodcode 와 /view/willbes/m/predict/+prodcode 경로에 생성해주세요.</h5>
+    <h5 class="mt-20 red">- 프로모션 블레이드에 적중&합격예측 서비스 이용 건수 &#64;include('willbes.pc.predict.show_count_partial') 을 추가해주세요.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!}
         {!! csrf_field() !!}
@@ -44,6 +44,8 @@
                         <th class="text-center">연도</th>
                         <th class="text-center">회차</th>
                         <th class="text-center">합격예측서비스명</th>
+                        <th class="text-center">사전신청팝업링크</th>
+                        <th class="text-center">서비스이용건수 추가시</th>
                         <th class="text-center">응시직렬</th>
                         <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
@@ -109,6 +111,8 @@
                             return '<span class="blue underline-link act-edit"><input type="hidden" class="flat" name="prod" value="'+ row.ProdCode + '">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
 
+                    {'data' : 'link', 'class': 'text-center'},
+                    {'data' : 'include', 'class': 'text-center'},
                     {'data' : 'SerialStr', 'class': 'text-center'},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

@@ -126,7 +126,13 @@
                             return $datatable_comment.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }
                     }},
-                {'data' : 'temp_comment_ui_ccd_name'},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        if (typeof row.temp_comment_ui_ccd_name == 'undefined') {
+                            return '';
+                        } else {
+                            return row.temp_comment_ui_ccd_name;
+                        }
+                    }},
                 {'data' : 'temp_Name'},
                 {'data' : 'temp_MemId'},
                 {'data' : 'temp_Phone'},

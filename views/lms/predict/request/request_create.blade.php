@@ -44,13 +44,6 @@
                     </tr>
 
                     <tr>
-                        <th>조회수</th>
-                        <td colspan="3">
-                            <input type="text" class="form-control" name="PreCnt" value="@if($method == 'PUT'){{ $data['PreCnt'] }}@endif" style="width:70%;">
-                        </td>
-                    </tr>
-
-                    <tr>
                         <th>시험연도 <span class="required">*</span></th>
                         <td class="form-inline">
                             <select class="form-control mr-5" name="MockYear">

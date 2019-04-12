@@ -34,8 +34,13 @@ class SurveyModel extends WB_Model
      */
     public function autocount($ProdCode, $PromotionCode){
         $column = "
-            ((SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE ProdCode = ".$ProdCode.") + (SELECT COUNT(*) FROM {$this->_table['eventComment']} WHERE ElIdx = (SELECT ElIdx FROM {$this->_table['eventLecture']} WHERE PromotionCode = ".$PromotionCode."))) AS CNT,
-            (SELECT PreCnt FROM {$this->_table['predictProduct']} WHERE ProdCode = ".$ProdCode.") AS PreCnt   
+            (
+                (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE ProdCode = ".$ProdCode.") 
+                + (SELECT COUNT(*) FROM {$this->_table['eventComment']} WHERE ElIdx = (SELECT ElIdx FROM {$this->_table['eventLecture']} WHERE PromotionCode = ".$PromotionCode."))
+            ) AS CNT,
+            (SELECT ReadCnt FROM {$this->_table['eventLecture']} WHERE PromotionCode = ".$PromotionCode.") AS RCNT,
+            (SELECT AdjuReadCnt FROM {$this->_table['eventLecture']} WHERE PromotionCode = ".$PromotionCode.") AS PRECNT
+
         ";
 
         $from = "

@@ -63,26 +63,16 @@
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
-                        <th class="text-center"></th>
                         <th class="text-center">NO</th>
-                        <th class="text-center">주문번호</th>
-                        <th class="text-center">회원명</th>
-                        <th class="text-center">연락처</th>
-                        <th class="text-center">결제완료일</th>
-                        <th class="text-center">결제금액</th>
-                        <th class="text-center">결제상태</th>
-                        <th class="text-center">상품명</th>
-                        <th class="text-center">연도</th>
-                        <th class="text-center">회차</th>
-                        <th class="text-center">응시형태</th>
-                        <th class="text-center">응시번호</th>
-                        <th class="text-center">카테고리</th>
+                        <th class="text-center">이름</th>
+                        <th class="text-center">아이디</th>
+                        <th class="text-center">휴대폰번호</th>
                         <th class="text-center">직렬</th>
-                        <th class="text-center">과목</th>
-                        <th class="text-center">응시지역</th>
-                        <th class="text-center">응시여부</th>
-                        <th class="text-center">응시표출력</th>
-                        <th class="text-center">출력횟수</th>
+                        <th class="text-center">지역</th>
+                        <th class="text-center">응시번호</th>
+                        <th class="text-center">수강여부</th>
+                        <th class="text-center">시험준비기간</th>
+                        <th class="text-center">신청일</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -133,54 +123,18 @@
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" id="checkIdx'+data.MrIdx+ '" name="checkIdx[]" class="flat target-crm-member" value="'+data.MrIdx+'" data-mem-idx="'+data.MemIdx+'" />';
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'OrderNo', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{ site_url('/pay/order/show/') }}'+row.OrderIdx+'" target="_blank">' + data + '</a>';
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{ site_url('/member/manage/detail/') }}'+row.MemIdx+'" target="_blank">' + row.MemName + '<br>(' + row.MemId + ')</a>';
-                        }},
-                    {'data' : 'MemPhone', 'class': 'text-center'},
-                    {'data' : 'CompleteDatm', 'class': 'text-center'},
-                    {'data' : 'RealPayPrice', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return addComma(data);
-                        }},
-                    {'data' : 'PayStatusCcd', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (typeof paymentStatus[data] !== 'undefined') ? paymentStatus[data] : '';
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span>[' + row.ProdCode + '] ' + row.ProdName + '</span>';
-                        }},
-                    {'data' : 'MockYear', 'class': 'text-center'},
-                    {'data' : 'MockRotationNo', 'class': 'text-center'},
-                    /*
-                    {'data' : 'TakeForm', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (typeof applyType[data] !== 'undefined') ? applyType[data] : '';
-                    }},
-                    */
-                    {'data' : 'TakeForm_Name', 'class': 'text-center'},
-                    {'data' : 'TakeNumber', 'class': 'text-center'},
-                    {'data' : 'CateName', 'class': 'text-center'},
-                    {'data' : 'TakeMockPart_Name', 'class': 'text-center'},
-                    {'data' : 'SubjectNameList', 'class': 'text-center'},
-                    {'data' : 'TakeArea_Name', 'class': 'text-center'},
-                    /*{'data' : 'TakeArea', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (typeof applyArea[data] !== 'undefined') ? applyArea[data] : '';
-                    }},*/
-                    {'data' : 'IsTake', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '응시' : '미응시';
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return  '<a href="javascript:;" class="blue cs-pointer btn-print" data-idx="'+row.MrIdx+'">[출력]</a>';
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return  '<a href="javascript:;" class="print-log" data-idx="'+row.MrIdx+'">'+row.PrintCnt+'</a>';
-                        }},
 
+                    {'data' : 'MemName', 'class': 'text-center'},
+                    {'data' : 'MemId', 'class': 'text-center'},
+                    {'data' : 'Phone', 'class': 'text-center'},
+                    {'data' : 'TakeMockPart', 'class': 'text-center'},
+                    {'data' : 'TaKeArea', 'class': 'text-center'},
+                    {'data' : 'TaKeNumber', 'class': 'text-center'},
+                    {'data' : 'LectureType', 'class': 'text-center'},
+                    {'data' : 'Period', 'class': 'text-center'},
+                    {'data' : 'RegDatm', 'class': 'text-center'}
                 ]
             });
 

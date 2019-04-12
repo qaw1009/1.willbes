@@ -88,6 +88,7 @@ class BasePromotion extends \app\controllers\FrontController
         foreach ($arr_base['register_list'] as $row) {
             $arr_base['register_member_list'][$row['ErIdx']]['PersonLimitType'] = $row['PersonLimitType'];
             $arr_base['register_member_list'][$row['ErIdx']]['PersonLimit'] = $row['PersonLimit'];
+            $arr_base['register_member_list'][$row['ErIdx']]['RegisterExpireStatus'] = $row['RegisterExpireStatus'];
             $arr_base['register_member_list'][$row['ErIdx']]['mem_cnt'] = (empty($arr_register_member_cnt[$row['ErIdx']]) === true) ? '0' : $arr_register_member_cnt[$row['ErIdx']];
         }
 

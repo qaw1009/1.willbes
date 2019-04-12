@@ -33,17 +33,17 @@
                     {{-- 메인핵심 배너 include --}}
                     @include('willbes.pc.site.main_partial.main_point_' . $__cfg['SiteCode'])
                 </ul>
-                {{--
+
                 <div class="willbes-Bnr mt30">
                     <ul>
                         <li>
-                            <a href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}">
-                                <img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" title="숨은 필합자를 찾아라">
+                            <a href="{{ site_url('/promotion/index/cate/3001/code/1187') }}">
+                                <img src="https://static.willbes.net/public/images/promotion/main/3001_190412_1120_140_p.jpg" alt="2019 경찰 1차 적중&합격예측서비스">
                             </a>
                         </li>
                     </ul>
                 </div>
-                --}}
+                
             </div>
         </div>
 

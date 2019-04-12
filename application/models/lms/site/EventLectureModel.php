@@ -661,7 +661,7 @@ class EventLectureModel extends WB_Model
      */
     public function listEventForRegister($el_idx)
     {
-        $column = 'ErIdx, PersonLimitType, PersonLimit, Name';
+        $column = 'ErIdx, PersonLimitType, PersonLimit, Name, RegisterExpireStatus';
         $from = "
             FROM {$this->_table['event_register']}
         ";
@@ -774,6 +774,32 @@ class EventLectureModel extends WB_Model
             $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx)->where('ErIdx', $er_idx);
             if ($this->_conn->update($this->_table['event_register']) === false) {
                 throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 이벤트 접수 관리 단일 데이터 만료상태 수정
+     * @param $er_idx
+     * @param $expire_status
+     * @return array|bool
+     */
+    public function expireRegister($er_idx, $expire_status)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            $this->_conn->set('RegisterExpireStatus', $expire_status)->set('UpdAdminIdx', $admin_idx)->where('ErIdx', $er_idx);
+            if ($this->_conn->update($this->_table['event_register']) === false) {
+                throw new \Exception('접수관리 만료 상태 수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

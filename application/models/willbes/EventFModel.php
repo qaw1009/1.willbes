@@ -166,7 +166,7 @@ class EventFModel extends WB_Model
      */
     public function listEventForRegister($arr_condition=[])
     {
-        $column = 'A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, IFNULL(B.MemCount, \'0\') AS MemCount';
+        $column = 'A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, A.RegisterExpireStatus, IFNULL(B.MemCount, \'0\') AS MemCount';
         $from = "
             FROM {$this->_table['event_register']} AS A
             LEFT JOIN (
@@ -234,7 +234,7 @@ class EventFModel extends WB_Model
                 ]
             ];
             $event_data = $this->findEvent($arr_condition, $register_type);
-            if (count($event_data) < 1) {
+            if (empty($event_data) === true) {
                 throw new \Exception('조회된 이벤트 정보가 없습니다.');
             }
 
@@ -243,7 +243,7 @@ class EventFModel extends WB_Model
                 'IN' => ['A.ErIdx' => $inputData['register_chk']]
             ];
             $result_register = $this->listEventForRegister($arr_condition);
-            if (count($result_register) <= 0) {
+            if (empty($result_register) === true) {
                 throw new \Exception('조회된 특강 정보가 없습니다.');
             }
 
@@ -261,6 +261,11 @@ class EventFModel extends WB_Model
 
             //검증
             foreach ($register_info as $key => $row) {
+                //만료상태 체크
+                if ($row['RegisterExpireStatus'] == 'N') {
+                    throw new \Exception('접수 만료된 상태입니다.');
+                }
+
                 //특강별 인원제한 체크
                 if ((empty($arr_register_member[$key]) === false) && $row['PersonLimitType'] == $this->_register_limit_type['limit_true'] && $row['PersonLimit'] <= $arr_register_member[$key]) {
                     throw new \Exception('신청받는 횟수 제한이 넘었습니다.');

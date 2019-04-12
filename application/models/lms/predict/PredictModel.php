@@ -134,6 +134,9 @@ class PredictModel extends WB_Model
                 $dres = "접수마감";
             }
 
+            $it['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/predict/index/'.$it['ProdCode'];
+            $it['include'] = "프로모션 페이지 URL + /spidx/".$it['ProdCode'];
+
             $it['AcceptStatusCcd_Name'] = $dres;
             $it['SerialStr'] = $mockpartstr;
         }
@@ -325,7 +328,6 @@ class PredictModel extends WB_Model
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 //'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
                 //'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
-                'PreCnt'          => $this->input->post('PreCnt'),
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'RegAdminIdx'    => $this->session->userdata('admin_idx'),
@@ -364,7 +366,6 @@ class PredictModel extends WB_Model
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 //'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
                 //'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
-                'PreCnt'          => $this->input->post('PreCnt'),
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),

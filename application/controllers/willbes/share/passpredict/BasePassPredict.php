@@ -132,13 +132,15 @@ class BasePassPredict extends \app\controllers\FrontController
         $PromotionCode = $param['promotioncode'];
         $data = $this->surveyModel->autocount($ProdCode, $PromotionCode);
         $CNT = $data['CNT'];
-        $PreCnt = $data['PreCnt'];
-        $totCNT = 0;
+        $PRECNT = $data['PRECNT'];
+        $RCNT = $data['RCNT'];
+
+        $TOTCNT = 0;
         for($i = 1; $i <= $CNT; $i++){
-            $totCNT = $totCNT + mt_rand(2,10);
+            $TOTCNT = $TOTCNT + mt_rand(2,10);
         }
 
-        $cnt = $totCNT + $PreCnt;
+        $cnt = $TOTCNT + $PRECNT + $RCNT;
         $cnt = number_format($cnt);
         $this->load->view('willbes/pc/predict/autocount', [
             'cnt' => $cnt

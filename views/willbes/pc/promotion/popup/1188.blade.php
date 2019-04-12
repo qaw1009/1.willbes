@@ -85,7 +85,9 @@
                             <select id="register_chk" name="register_chk[]" title="캠퍼스" required="required">
                                 <option value="">선택</option>
                                 @foreach($arr_base['register_list'] as $row)
-                                    <option value="{{$row['ErIdx']}}" {{ (empty($arr_base['selected']) === false && $arr_base['selected'] == $row['ErIdx']) ? 'selected=selected' : '' }}>{{ $row['Name'] }}</option>
+                                    @if($row['RegisterExpireStatus'] == 'Y')
+                                        <option value="{{$row['ErIdx']}}" {{ (empty($arr_base['selected']) === false && $arr_base['selected'] == $row['ErIdx']) ? 'selected=selected' : '' }}>{{ $row['Name'] }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </td>

@@ -6,6 +6,12 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        <div class="Section mt20">
+            <div class="MainVisual">
+                <img src="https://static.willbes.net/public/images/promotion/main/3019_1120x158.jpg" alt="반드시 합격할 수 있는 자신감이 되어 드리겠습니다.">
+            </div>
+        </div>
+        
         <div class="Section mt20 p_re">
             <div class="MainVisual NSK">
                 <div class="VisualBox">

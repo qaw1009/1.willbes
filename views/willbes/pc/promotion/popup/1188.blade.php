@@ -221,7 +221,7 @@
                 }
                 break;
             case '경행경채' :
-                if (etc_value2 > 30000 && etc_value2 < 40000) {
+                if (etc_value2 >= 50001 && etc_value2 <= 51000) {
                     return true;
                 }
                 break;

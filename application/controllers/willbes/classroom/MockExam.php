@@ -93,6 +93,10 @@ class MockExam extends \app\controllers\FrontController
         $prodcode = element('prodcode',$arr_input);
         $mridx = element('mridx',$arr_input);
 
+        if(strlen($prodcode)!=6){
+            show_alert('상품코드가 유효하지 않습니다.', 'close');
+        }
+        
         $arr_condition = [
             'EQ' => [
                 'MR.MemIdx' => $_SESSION['mem_idx'],
@@ -101,6 +105,7 @@ class MockExam extends \app\controllers\FrontController
         ];
 
         $subject_list = $this->mockExamModel->subjectCall($arr_condition);
+
         $productInfo = $this->mockExamModel->productInfo($arr_condition);
         //응시로그 저장
         $sec = $productInfo['TakeTime'] * 60;
@@ -109,7 +114,6 @@ class MockExam extends \app\controllers\FrontController
 
         if($isTemp) $sec = $this->mockExamModel->callRemainTime($mridx);
 
-        //$logIdx = $this->mockExamModel->makeExamLog($sec,$mridx);
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
         $sCnt = 0;
@@ -139,11 +143,17 @@ class MockExam extends \app\controllers\FrontController
         ];
 
         $qtCntList = $this->mockExamModel->questionTempCnt($arr_condition2, $mridx);
+
+        if(empty($qtCntList)==true){
+            show_alert('문항이 등록되지 않았습니다.', 'close');
+        }
+
         foreach ($qtCntList as $key => $val) {
             $mpIdx = $val['MpIdx'];
             $qtList[$mpIdx]['CNT'] =  $val['CNT'];
             $qtList[$mpIdx]['TCNT'] =  $val['TCNT'];
         }
+
 
         $this->load->view('/classroom/mock/exam/winpopup_step1', [
             'productInfo' => $productInfo,
@@ -184,7 +194,6 @@ class MockExam extends \app\controllers\FrontController
 
         $subject_list = $this->mockExamModel->subjectCall($arr_condition);
         $productInfo = $this->mockExamModel->productInfo($arr_condition);
-
 
         if(empty($s_mpidx)==true){
             $s_mpidx = $subject_list[0]['MpIdx'];

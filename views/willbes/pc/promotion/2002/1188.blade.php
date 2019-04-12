@@ -102,8 +102,7 @@
                                 @endif
                             @endif
                         @else
-                            {{--<a href="#none" class="end">신청마감</a>--}}
-                            <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                            <a href="#none" class="end">신청마감</a>
                         @endif
                     </span>
                     </span>

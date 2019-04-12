@@ -344,6 +344,25 @@ class EventLecture extends \app\controllers\BaseController
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
+    /**
+     * 이벤트 접수 관리 : 만료상태 수정
+     */
+    public function expireRegister()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'er_idx', 'label' => '접수관리식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'expire_status', 'label' => '만료상태값', 'rules' => 'trim|required|in_list[Y,N]'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->expireRegister($this->_reqP('er_idx'), $this->_reqP('expire_status'));
+        $this->json_result($result, '만료상태 수정 정상 처리 되었습니다.', $result);
+    }
+
     public function read($params = [])
     {
         $el_idx = $params[0];

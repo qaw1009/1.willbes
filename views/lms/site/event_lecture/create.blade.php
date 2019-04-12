@@ -233,6 +233,7 @@
                                                 <th>정원</th>
                                                 <th>신청자</th>
                                                 <th>특강/설명회명</th>
+                                                <th>만료</th>
                                                 <th>삭제</th>
                                             </tr>
                                             </thead>
@@ -252,6 +253,13 @@
                                                         <td>
                                                             {{$row['Name']}}
                                                             <input type="hidden" name="event_register_name[]" value="{{$row['Name']}}">
+                                                        </td>
+                                                        <td>
+                                                            @if($row['RegisterExpireStatus'] == 'Y')
+                                                                <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="N">[<u>만료</u>]</a>
+                                                            @else
+                                                                <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="Y">[<u>복구</u>]</a>
+                                                            @endif
                                                         </td>
                                                         <td><a href="#none" class="btn-lecture-delete-submit" data-lecture-idx="{{$el_idx}}" data-register-idx="{{$row['ErIdx']}}"><i class="fa fa-times fa-lg red"></i></a></td>
                                                     </tr>
@@ -591,6 +599,26 @@
                     'er_idx' : $(this).data('register-idx')
                 };
                 if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
+            });
+
+            // 만료,복구 상태 수정
+            $regi_form.on('click', '.btn-lecture-expire-submit', function() {
+                var _url = '{{ site_url("/site/eventLecture/expireRegister") }}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'er_idx' : $(this).data('register-idx'),
+                    'expire_status' : $(this).data('expire-status')
+                };
+                if (!confirm('상태를 변경 하시겠습니까?')) {
                     return;
                 }
                 sendAjax(_url, data, function(ret) {

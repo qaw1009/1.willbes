@@ -20,17 +20,19 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:absolute; top:200px;right:10px;z-index:10;}
+        .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1199_top_bg.jpg) no-repeat center top;}
             .evtTopInmg {position:relative; width:1120px; margin:0 auto}
             .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px; line-height:30px}
             .counter span {color:#fff200; font-size:30px; vertical-align: text-bottom}
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1187_01_bg.jpg) no-repeat center top}
-        .evt01 div {position:relative; width:1120px; margin:0 auto}
-        .evt01 div span {position:absolute; left:463px; display:block; width:433px; height:67px; line-height:67px; z-index:10}
-        .evt01 div span a {display:block; text-align:center; color:#333; background:#fff; font-size:18px; font-weight:600; border:1px solid #ff5d7a !important;}
-        .evt01 div span a:hover {color:#fff; background:#ff5d7a}
-        .evt02 {background:#f6f6f6;}
+        .evt01 {background:#363636}
+        .evt02 {background:#766f65; padding:100px 0}
+        /* 슬라이드배너 */
+        .slide_con {position:relative; width:980px; margin:0 auto}	
+        .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn {left:-80px; top:46%; width:67px; height:67px;}
+        .slide_con p.rightBtn {right:-80px;top:46%; width:67px; height:67px;}
         .evt03 {background:#fff;}
 
     </style>
@@ -52,19 +54,27 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_02.jpg" title="합격예측 풀서비스">
+            <div class="slide_con">
+                <ul id="slidesImg3">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide01.png" alt="신광은" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide02.png" alt="장정훈" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide03.png" alt="김원욱" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide04.png" alt="하승민" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide05.png" alt="오태진" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide06.png" alt="원유철" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_prev.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_next.png"></a></p>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_03.jpg" usemap="#Map1187A" title="사전예약 이벤트" border="0">
-            <map name="Map1187A" id="Map1187A">
-                <area shape="rect" coords="413,900,708,971" href="javascript:pullOpen();" alt="합격예측 사전접수하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_03.jpg" title="사전예약 이벤트">
         </div>
 
         {{--홍보url댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
+            @include('willbes.pc.promotion.show_comment_list_emoticon_partial')
         @endif
 	</div>
     <!-- End Container -->
@@ -79,10 +89,34 @@
             });
         });
 
-        function pullOpen(){
-            var url = "1187_popup";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
-        }
+        $(document).ready(function() {
+            var slidesImg3 = $("#slidesImg3").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideWidth:980,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+
+                });
+            
+                $("#imgBannerLeft3").click(function (){
+                    slidesImg3.goToPrevSlide();
+                });
+            
+                $("#imgBannerRight3").click(function (){
+                    slidesImg3.goToNextSlide();
+                });
+        });
+
+
     </script>
 
 @stop

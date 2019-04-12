@@ -16,6 +16,8 @@ class SurveyModel extends WB_Model
         'predictRegisterR' => 'lms_predict_register_r_code',
         'predictRegister' => 'lms_predict_register',
         'eventComment' => 'lms_event_comment',
+        'eventLecture' => 'lms_event_lecture',
+
         'sysCode' => 'lms_sys_code',
     ];
 
@@ -30,9 +32,9 @@ class SurveyModel extends WB_Model
     /**
      *  합격예측 접수인원
      */
-    public function autocount($ProdCode, $ElIdx){
+    public function autocount($ProdCode, $PromotionCode){
         $column = "
-            ((SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE ProdCode = ".$ProdCode.") + (SELECT COUNT(*) FROM {$this->_table['eventComment']} WHERE ElIdx = ".$ElIdx.")) AS CNT,
+            ((SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE ProdCode = ".$ProdCode.") + (SELECT COUNT(*) FROM {$this->_table['eventComment']} WHERE ElIdx = (SELECT ElIdx FROM {$this->_table['eventLecture']} WHERE PromotionCode = ".$PromotionCode."))) AS CNT,
             (SELECT PreCnt FROM {$this->_table['predictProduct']} WHERE ProdCode = ".$ProdCode.") AS PreCnt   
         ";
 
@@ -42,7 +44,7 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = "";
-        $where = " ";
+        $where = "";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();

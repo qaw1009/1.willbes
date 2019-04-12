@@ -29,7 +29,7 @@
                                 <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>
                             @endif
                         @else
-                            <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>
+                            [신청만료]
                         @endif
                     </td>
                 </tr>

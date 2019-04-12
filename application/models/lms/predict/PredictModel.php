@@ -145,6 +145,86 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * 과목별문제등록 리스트
+     */
+    public function QuestionMainList($conditionAdd='', $limit='', $offset='')
+    {
+        $condition = [ 'IN' => ['PP.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
+
+        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
+        $column = "
+            PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, PP.TakeStartDatm, PP.TakeEndDatm, 
+            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName
+        ";
+
+        $from = "
+            FROM {$this->_table['predictProduct']} AS PP
+            LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
+        ";
+        $selectCount = " SELECT COUNT(*) AS cnt";
+        $where = " WHERE PP.ProdCode > 0 ";
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $order = " ORDER BY PP.ProdCode DESC\n";
+        //echo "<pre>SELECT ". $column . $from . $where . $order . $offset_limit . "</pre>";
+        $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
+        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
+
+        // 직렬이름 추출
+        //$mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        //$codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+        $column = "
+            *
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictCode']} 
+                
+        ";
+
+        $order_by = " ";
+        $where = " WHERE GroupCcd = 0";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+        $arrCcd = array();
+        foreach ($Res as $key => $val){
+            $Ccd = $val['Ccd'];
+            $CcdName = $val['CcdName'];
+            $arrCcd[$Ccd] = $CcdName;
+        }
+
+        foreach ($data as &$it) {
+            $arrMockPart = explode(',',$it['MockPart']);
+
+            $mockpartstr = '';
+            for($i=0; $i < count($arrMockPart); $i++){
+                $tempstr = $arrMockPart[$i];
+                $mockpartstr .= $arrCcd[$tempstr]."/";
+            }
+            $mockpartstr = substr($mockpartstr, 0, strlen($mockpartstr) - 1);
+            if($it['TakeStartDatm'] > date('Y-m-d H:i:s')){
+                $dres = "접수대기";
+            } else if($it['TakeStartDatm'] < date('Y-m-d H:i:s') && $it['TakeEndDatm'] > date('Y-m-d H:i:s')) {
+                $dres = "접수중";
+            } else {
+                $dres = "접수마감";
+            }
+
+            $it['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/predict/index/'.$it['ProdCode'];
+            $it['include'] = "프로모션 페이지 URL + /spidx/".$it['ProdCode'];
+
+            $it['AcceptStatusCcd_Name'] = $dres;
+            $it['SerialStr'] = $mockpartstr;
+        }
+
+        return array($data, $count);
+    }
+
+    /**
      * 합격예측신청목록
      */
     public function predictRegistList($conditionAdd='', $limit='', $offset='', $rowtype='')
@@ -282,7 +362,7 @@ class PredictModel extends WB_Model
     public function getProduct($ProdCode){
         $column = "
             PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, PP.TakeStartDatm, PP.TakeEndDatm, 
-            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2, PP.PreCnt
+            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
         ";
 
         $from = "

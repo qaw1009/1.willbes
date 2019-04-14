@@ -209,6 +209,15 @@
         //location.href(url);
     }
 
+
+    function isEmpty(str){
+
+        if(typeof str == "undefined" || str == null || str == "")
+            return true;
+        else
+            return false ;
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////
     //개별문항 저장
     /////////////////////////////////////////////////////////////////////////////////////////
@@ -218,12 +227,11 @@
         if(selnum == 0) $('#ko'+qnum).show();
         else            $('#ko'+qnum).hide();
 
-
-        if(selnum == null){
+        if(isEmpty(selnum) == true){
             window.location.reload();
             return ;
         }
-        
+
         $('#answer').val(selnum);
         $('#mqidx').val(mqidx);
 
@@ -241,7 +249,8 @@
     }
 
     function errorReload(){
-        window.location.reload();
+        alert(2)
+        //window.location.reload();
     }
 
     // 시간저장

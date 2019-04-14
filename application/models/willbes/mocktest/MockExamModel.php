@@ -640,11 +640,7 @@ class MockExamModel extends WB_Model
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
-
-
                 $result = $query->row_array();
-
-
 
                 if($result['MatIdx']){
                     // 데이터 수정
@@ -666,7 +662,6 @@ class MockExamModel extends WB_Model
                         'ProdCode'=> $ProdCode,
                         'LogIdx' => $LogIdx,
                         'MpIdx' => $MpIdx,
-                        'LogIdx' => $LogIdx,
                         'MqIdx' => ${"MqIdx$i"},
                         'Answer' => ${"answer$i"},
                     ];
@@ -697,15 +692,23 @@ class MockExamModel extends WB_Model
      * @return mixed
      */
     function saveTime($LogIdx, $RemainSec){
-        // 남은시간 저장
-        $data = [
-            'RemainSec' => $RemainSec
-        ];
+        try {
+            $this->_conn->trans_begin();
 
-        $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['LogIdx' => $LogIdx]);
+            // 남은시간 저장
+            $data = [
+                'RemainSec' => $RemainSec
+            ];
 
-        if ($this->_conn->update($this->_table['mockLog']) === false) {
-            throw new \Exception('시간저장에 실패했습니다.');
+            $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['LogIdx' => $LogIdx]);
+
+            if ($this->_conn->update($this->_table['mockLog']) === false) {
+                throw new \Exception('시간저장에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
         return true;
     }

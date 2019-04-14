@@ -66,12 +66,8 @@ class MockExam extends \app\controllers\FrontController
         $paging = $this->pagination($this->_default_path.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true,1);
 
         if ($total_rows > 0) {
-
-            $list = $this->mockExamModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by,1);
-
+            $list = $this->mockExamModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
         }
-
-        //var_dump($list);
 
         $this->load->view('/classroom/mock/exam/index', [
             'default_path' => $this->_default_path,
@@ -357,6 +353,10 @@ class MockExam extends \app\controllers\FrontController
      */
     public function answerAjax()
     {
+        $Answer = $this->_reqP('Answer');
+        if(empty($Answer) == true){
+            return $this->json_error('오류가발생하였습니다');
+        }
         $result = $this->mockExamModel->answerTempSave($this->_reqP(null, false));
         $this->json_result($result, '저장되었습니다.', $result, $result);
 

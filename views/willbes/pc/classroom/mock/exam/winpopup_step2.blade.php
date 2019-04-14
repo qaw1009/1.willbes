@@ -218,6 +218,12 @@
         if(selnum == 0) $('#ko'+qnum).show();
         else            $('#ko'+qnum).hide();
 
+
+        if(selnum == null){
+            window.location.reload();
+            return ;
+        }
+        
         $('#answer').val(selnum);
         $('#mqidx').val(mqidx);
 
@@ -228,11 +234,14 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     tempValue = qnum+'/'+selnum+'/'+mqidx;
-                    //alert(ret.ret_msg);
                 }
-            }, showValidateError, null, false, 'alert');
+            }, errorReload, null, false, 'alert');
 
         }
+    }
+
+    function errorReload(){
+        window.location.reload();
     }
 
     // 시간저장
@@ -247,6 +256,7 @@
 
     //임시저장
     function tempSaveAjax(){
+
         if($('#timer').html() != "--:--:--") {
             if (clickDelay == 'N') {
                 clickDelay = 'Y';

@@ -62,6 +62,7 @@
                                 <col style="width: 70px;">
                                 <col style="width: 85px;">
                                 <col style="width: 95px;">
+                                <col style="width: 95px;">
                             </colgroup>
                             <thead>
                             <tr>
@@ -74,6 +75,7 @@
                                 <th>평균<span class="row-line">|</span></th>
                                 <th>성적표</th>
                                 <th>부록</th>
+                                <th>문제/해설</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -106,7 +108,7 @@
                                         @endif
                                         <td class="w-file on tx-blue">
                                             @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
-                                                <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br>
+
                                                 @if($row['TCNT']!=null)
                                                     <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[오답노트]</a>
                                                 @else
@@ -115,6 +117,7 @@
                                             @else
                                             @endif
                                         </td>
+                                        <td>@if($row['MrIsStatus'] == 'Y') <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br> @endif</td>
                                     </tr>
                                     @php $paging['rownum']-- @endphp
                                 @endforeach

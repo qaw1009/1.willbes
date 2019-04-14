@@ -354,7 +354,7 @@ class MockExam extends \app\controllers\FrontController
     public function answerAjax()
     {
         $Answer = $this->_reqP('Answer');
-        if(empty($Answer) == true){
+        if($Answer == null){
             return $this->json_error('오류가발생하였습니다');
         }
         $result = $this->mockExamModel->answerTempSave($this->_reqP(null, false));

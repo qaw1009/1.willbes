@@ -20,9 +20,9 @@
 
         /************************************************************/
 
-        .wb_cts01 {background:#26347d url(http://file3.willbes.net/new_gosi/2018/06/EV180627_01_bg.png) center top  no-repeat}
+        .wb_cts01 {background:#26347d url(https://static.willbes.net/public/images/promotion/2019/04/EV180627_01_bg.png) center top  no-repeat}
         .wb_cts02 {background:#f8f8f8}
-        .wb_cts03 {background:#333b95 url(http://file3.willbes.net/new_gosi/2018/06/EV180627_03_bg.png) center top  repeat-y}
+        .wb_cts03 {background:#333b95 url(https://static.willbes.net/public/images/promotion/2019/04/EV180627_03_bg.png) center top  repeat-y}
         .wb_cts04 {background:#f8f8f8}
         .wb_cts05 {background:#f8f8f8}
         .wb_cts06 {background:#242424}
@@ -37,7 +37,7 @@
 
         .skybanner {
             position:fixed;
-            top:250px;
+            top:200px;
             right:0;
             width:290px;
         }
@@ -47,26 +47,26 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="{{ site_url('/promotion/index/cate/3019/code/1067') }}" target="_blank">
-                <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_sky.png" alt="첨삭지도반" alt="환승이벤트" >
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_skybanner.png" alt="첨삭지도반" alt="환승이벤트" >
             </a>
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180627_01.png" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01.png" alt="" />
             <div class="bannerImg1">
                 <ul id="slidesImg1">
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180517_01_txt1.png" alt="1"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180517_01_txt2.png" alt="2"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180517_01_txt3.png" alt="3"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt1.png" alt="1"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt2.png" alt="2"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt3.png" alt="3"/></li>
                 </ul>
-                <p class="left_arr"><a id="imgBannerLeft"><img src="http://file3.willbes.net/new_gosi/2018/05/EV_arr_l.png"></a></p>
-                <p class="right_arr"><a id="imgBannerRight"><img src="http://file3.willbes.net/new_gosi/2018/05/EV_arr_r.png"></a></p>
+                <p class="left_arr"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01_arr_l.png"></a></p>
+                <p class="right_arr"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01_arr_r.png"></a></p>
             </div>
         </div>
         <!--wb_cts01//-->
 
         <div class="evtCtnsBox wb_cts02"  id="evt01">
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_2.png" alt="갓덕현 2019대비신규강좌" usemap="#Map_lec_han" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_02.png" alt="갓덕현 2019대비신규강좌" usemap="#Map_lec_han" border="0">
             <map name="Map_lec_han">
                 <area shape="rect" coords="799,333,1050,394" href="{{ site_url('/lecture/show/cate/3019/prod-code/147104') }}" target="_blank">
                 <area shape="rect" coords="801,426,1047,483" href="{{ site_url('/lecture/show/cate/3019/prod-code/146969') }}" target="_blank">
@@ -79,7 +79,7 @@
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" id="live">
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180627_03.png" alt="" usemap="#Map_180412_lecplay"  border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_03.png" alt="" usemap="#Map_180412_lecplay"  border="0" />
             <map name="Map_180412_lecplay">
                 <area shape="rect" coords="896,690,1141,802" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" alt="한덕현유튜브">
                 <area shape="rect" coords="628,689,875,802" href="http://play.afreecatv.com/DHLAWRENCE31" target="_blank">
@@ -88,12 +88,12 @@
         <!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" >
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_4.png" alt="" />
+            <img src="http://file3.willbes.net/new_gosi/2019/01/1066_04.png" alt="" />
         </div>
         <!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts06" >
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_5.png" alt="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01.png" alt="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
             <map name="Map180412_lec2" id="Map180412_lec2">
                 <area shape="rect" coords="87,662,256,711" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150364') }}" target="_blank" alt="step1 기본이론"/>
                 <area shape="rect" coords="296,664,466,708" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150363') }}" target="_blank" alt="step2 심화+실전예비"/>

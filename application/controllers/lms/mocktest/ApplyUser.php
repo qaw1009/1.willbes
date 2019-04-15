@@ -108,7 +108,7 @@ class ApplyUser extends \app\controllers\BaseController
 
             $data  = $this->applyUserModel->mockRegistListExcel($condition);
 
-            $headers = ['NO','주문번호', '회원명', '회원아이디', '결제완료일', '결제금액', '결제상태', '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부'];
+            $headers = ['NO','주문번호', '회원명', '회원아이디', '전화번호', '결제완료일', '결제금액', '결제상태', '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부'];
 
             $this->load->library('excel');
             $this->excel->exportExcel('모의고사-개별접수현황('.date("Y-m-d").')', $data, $headers);

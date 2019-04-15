@@ -163,9 +163,6 @@
             app = new StarPlayerBridge();
             app.bindEvent("initEvent", onInitEvent);
 
-            alert(app.getDeviceId());
-            alert(app.getDeviceInfo());
-
             $('#allchk').on('change', function (){
                 $('.unitchk').prop('checked', $(this).is(':checked'));
             });
@@ -187,6 +184,9 @@
             fnAppDown('https:{{front_url('/Player/getApp/')}}', $('#downForm').serialize());
         }
 
-        function onInitEvent(){ }
+        function onInitEvent(){
+            alert(app.getDeviceId());
+            alert(app.getDeviceInfo());
+        }
     </script>
 @stop

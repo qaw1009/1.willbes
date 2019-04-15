@@ -1746,6 +1746,7 @@ class Player extends \app\controllers\FrontController
             $params .= $key.'='.$value.'&';
         }
 
+logger($event .':'.$params);
         switch($event){
             case 'downloaded':
                 break;

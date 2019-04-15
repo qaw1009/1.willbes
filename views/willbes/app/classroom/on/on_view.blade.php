@@ -166,11 +166,13 @@
             app.bindEvent("initEvent", onInitEvent);
 
             app.getDeviceId(function(device_id){
+                alert(device_id);
                 $('#device_id').val(device_id);
             });
 
             app.getDeviceInfo(function(device_info){
                 $('#device_info').val(device_info);
+                alert(device_info);
             });
 
             $('#allchk').on('change', function (){

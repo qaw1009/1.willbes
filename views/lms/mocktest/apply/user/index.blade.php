@@ -40,7 +40,7 @@
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">회원검색</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value="{{$search_fi}}"> 회원명, 연락처, 주문번호, 응시변호, 상품명/코드 검색 가능
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value="{{$search_fi}}"> 회원명, 연락처, 주문번호, 응시번호, 상품명/코드 검색 가능
                     </div>
                 </div>
                 <div class="pt-10">

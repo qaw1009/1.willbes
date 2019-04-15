@@ -64,10 +64,10 @@ function fnMobile($info_url, $license)
  */
 function fnApp($url, $data, $subpage)
 {
-    $device_id = app.getDeviceId();
-    $device_model = app.getDeviceInfo();
+    $device_id = $('#device_id').val();
+    $device_model = $('#device_info').val();
     $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model;
-alert($device_id);
+    alert($device_id);
     alert($device_model);
     sendAjax($url, $data,
         function(d){
@@ -88,8 +88,8 @@ alert($device_id);
  */
 function fnAppDown($url, $data)
 {
-    $device_id = app.getDeviceId();
-    $device_model = app.getDeviceInfo();
+    $device_id = $('#device_id').val();
+    $device_model = $('#device_info').val();
     $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model;
     alert($device_id);
     alert($device_model);

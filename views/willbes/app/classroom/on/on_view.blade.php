@@ -156,12 +156,22 @@
         <!-- Fixbtn -->
     </div>
     <!-- End Container -->
+    <input type="hidden" id="device_id" name="device_id" value="" />
+    <input type="hidden" id="device_info" name="device_info" value="" />
     <script>
         var app = null;
 
         $(document).ready(function() {
             app = new StarPlayerBridge();
             app.bindEvent("initEvent", onInitEvent);
+
+            app.getDeviceId(function(device_id){
+                $('#device_id').val(device_id);
+            });
+
+            app.getDeviceInfo(function(device_info){
+                $('#device_info').val(device_info);
+            });
 
             $('#allchk').on('change', function (){
                 $('.unitchk').prop('checked', $(this).is(':checked'));
@@ -184,9 +194,6 @@
             fnAppDown('https:{{front_url('/Player/getApp/')}}', $('#downForm').serialize());
         }
 
-        function onInitEvent(){
-            alert(app.getDeviceId());
-            alert(app.getDeviceInfo());
-        }
+        function onInitEvent(){ }
     </script>
 @stop

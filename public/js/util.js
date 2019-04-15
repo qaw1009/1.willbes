@@ -64,6 +64,10 @@ function fnMobile($info_url, $license)
  */
 function fnApp($url, $data, $subpage)
 {
+    $device_id = app.getDeviceId();
+    $device_model = app.getDeviceInfo();
+    $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model;
+
     sendAjax($url, $data,
         function(d){
             var media = null;
@@ -83,6 +87,10 @@ function fnApp($url, $data, $subpage)
  */
 function fnAppDown($url, $data)
 {
+    $device_id = app.getDeviceId();
+    $device_model = app.getDeviceInfo();
+    $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model;
+
     sendAjax($url, $data,
         function(d){
             var media = null;

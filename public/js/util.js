@@ -67,7 +67,8 @@ function fnApp($url, $data, $subpage)
     $device_id = app.getDeviceId();
     $device_model = app.getDeviceInfo();
     $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model;
-
+alert($device_id);
+    alert($device_model);
     sendAjax($url, $data,
         function(d){
             var media = null;

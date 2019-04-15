@@ -65,10 +65,10 @@ function fnMobile($info_url, $license)
 function fnApp($url, $data, $subpage)
 {
     $device_id = $('#device_id').val();
-    $device_model = $('#device_info').val();
-    $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model;
-    alert($device_id);
-    alert($device_model);
+    $device_name = $('#device_name').val();
+    $device_model = $('#device_model').val();
+    $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model + '&device_name=' + $device_name;
+
     sendAjax($url, $data,
         function(d){
             var media = null;
@@ -89,10 +89,10 @@ function fnApp($url, $data, $subpage)
 function fnAppDown($url, $data)
 {
     $device_id = $('#device_id').val();
-    $device_model = $('#device_info').val();
-    $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model;
-    alert($device_id);
-    alert($device_model);
+    $device_name = $('#device_name').val();
+    $device_model = $('#device_model').val();
+    $data = $data + '&device_id=' + $device_id + '&device_model=' + $device_model + '&device_name=' + $device_name;
+
     sendAjax($url, $data,
         function(d){
             var media = null;

@@ -157,7 +157,8 @@
     </div>
     <!-- End Container -->
     <input type="hidden" id="device_id" name="device_id" value="" />
-    <input type="hidden" id="device_info" name="device_info" value="" />
+    <input type="hidden" id="device_name" name="device_name" value="" />
+    <input type="hidden" id="device_model" name="device_model" value="" />
     <script>
         var app = null;
 
@@ -188,9 +189,9 @@
 
         function onInitEvent(){
             app.getDeviceInfo(function(id, name, model){
-                alert(id);
-                alert(name);
-                alert(model);
+                $('#device_id').val(id);
+                $('#device_name').val(name);
+                $('#device_model').val(model);
             });
         }
     </script>

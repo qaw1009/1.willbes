@@ -20,9 +20,9 @@
 
         /************************************************************/
 
-        .wb_cts01 {background:#26347d url(https://static.willbes.net/public/images/promotion/2019/04/EV180627_01_bg.png) center top  no-repeat}
+        .wb_cts01 {background:#26347d url(https://static.willbes.net/public/images/promotion/2019/04/1066_top_bg.png) center top  no-repeat}
         .wb_cts02 {background:#f8f8f8}
-        .wb_cts03 {background:#333b95 url(https://static.willbes.net/public/images/promotion/2019/04/EV180627_03_bg.png) center top  repeat-y}
+        .wb_cts03 {background:#333b95 url(https://static.willbes.net/public/images/promotion/2019/04/1066_02_bg.png) center top  repeat-y}
         .wb_cts04 {background:#f8f8f8}
         .wb_cts05 {background:#f8f8f8}
         .wb_cts06 {background:#242424}

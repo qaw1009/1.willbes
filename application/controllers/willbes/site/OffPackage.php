@@ -43,7 +43,7 @@ class OffPackage extends \app\controllers\FrontController
 
         // 카테고리 코드가 없을 경우 디폴트 설정
         if (isset($arr_input['cate_code']) === false) {
-            $arr_input['cate_code'] = array_get($arr_base['category'], '0.CateCode');;
+            $arr_input['cate_code'] = array_get($arr_base['category'], '0.CateCode');
         }
 
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);

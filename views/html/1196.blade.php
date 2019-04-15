@@ -74,7 +74,7 @@
 			</div>
 
 			<div class="evtCtnsBox evt05">
-				<a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_05.gif" title="설명회 신청하기"></a>
+				<a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=218"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_05.gif" title="설명회 신청하기"></a>
 			</div>
 
 			<!--유의사항-->

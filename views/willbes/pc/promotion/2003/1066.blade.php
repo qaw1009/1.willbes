@@ -89,12 +89,12 @@
         <!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" >
-            <img src="http://file3.willbes.net/new_gosi/2019/01/1066_04.png" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_04.png" alt="" />
         </div>
         <!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01.png" alt="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_05.png" alt="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
             <map name="Map180412_lec2">
 			  <area shape="rect" coords="925,666,1011,707" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152649" target="_blank" alt="05.지방직" />
 			  <area shape="rect" coords="1016,667,1100,706" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152651" target="_blank"alt="05.서울시">

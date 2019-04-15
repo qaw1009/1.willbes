@@ -165,14 +165,10 @@
             app = new StarPlayerBridge();
             app.bindEvent("initEvent", onInitEvent);
 
-            app.getDeviceId(function(device_id){
-                alert(device_id);
-                $('#device_id').val(device_id);
-            });
-
-            app.getDeviceInfo(function(device_info){
-                $('#device_info').val(device_info);
-                alert(device_info);
+            app.getDeviceInfo(function(id, name, model){
+                alert(id);
+                alert(name);
+                alert(model);
             });
 
             $('#allchk').on('change', function (){

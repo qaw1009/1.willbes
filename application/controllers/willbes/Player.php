@@ -1318,7 +1318,8 @@ class Player extends \app\controllers\FrontController
 
 
     /**
-     *
+     * 하이브리드앱 플레이 정보 읽어오기
+     * @return CI_Output
      */
     function getApp()
     {
@@ -2153,20 +2154,26 @@ class Player extends \app\controllers\FrontController
      */
     private function StarplayerResult($error, $msg ='', $debug = '', $isApp = false)
     {
-        if($error == true){
-            $error = 1;
-        } else if($error == false){
-            $error = 0;
-        }
-
         if($isApp == true){
             if($error == true){
-                $this->response(['result' => 'error']);
+                $this->response([
+                    'result' => 'error',
+                    'message' => $msg
+                ]);
             } else {
-                $this->response(['result' => 'success']);
+                $this->response([
+                    'result' => 'success',
+                    'message' => ''
+                ]);
             }
 
         } else {
+            if($error == true){
+                $error = 1;
+            } else if($error == false){
+                $error = 0;
+            }
+
             echo("<axis-app>");
             echo("<error>".$error."</error>");
             echo("<message>".$msg."</message>");

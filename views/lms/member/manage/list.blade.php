@@ -251,6 +251,15 @@
             $list_table.on('click', '.btn-view3', function() {
                 location.href=('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
             });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/member/manage/excel/') }}', $search_form.serializeArray(), 'POST');
+                }
+            });
+
         });
     </script>
 @stop

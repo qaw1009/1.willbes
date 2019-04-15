@@ -47,17 +47,17 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="{{ site_url('/promotion/index/cate/3019/code/1067') }}" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_skybanner.png" alt="첨삭지도반" alt="환승이벤트" >
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_skybanner.png" title="첨삭지도반" title="환승이벤트" >
             </a>
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01.png" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01.png" title="" />
             <div class="bannerImg1">
                 <ul id="slidesImg1">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt1.png" alt="1"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt2.png" alt="2"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt3.png" alt="3"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt1.png" title="1"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt2.png" title="2"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_top_txt3.png" title="3"/></li>
                 </ul>
                 <p class="left_arr"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01_arr_l.png"></a></p>
                 <p class="right_arr"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/04/1066_01_arr_r.png"></a></p>
@@ -66,42 +66,42 @@
         <!--wb_cts01//-->
 
         <div class="evtCtnsBox wb_cts02"  id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_02.png" alt="갓덕현 2019대비신규강좌" usemap="#Map_lec_han" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_02.png" title="갓덕현 2019대비신규강좌" usemap="#Map_lec_han" border="0">
             <map name="Map_lec_han">
-			  <area shape="rect" coords="797,357,1053,412" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/152605" target="_blank" alt="서울시 문풀 패키지">
-			  <area shape="rect" coords="798,508,1049,569" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146969" target="_blank" alt="실전보카371">
-			  <area shape="rect" coords="799,687,1044,751" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152651" target="_blank" alt="서울시아작내기">
-			  <area shape="rect" coords="799,603,1045,660" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152649" target="_blank" alt="지방직아작내기">
-			  <area shape="rect" coords="797,777,1046,839" href="https://pass.willbes.net/lecture/show/cate/3019/prod-code/146973" target="_blank" alt="지방직실전파이널모고">
-			  <area shape="rect" coords="797,866,1042,929" href="https://pass.willbes.net/lecture/show/cate/3019/prod-code/146977" target="_blank" alt="서울시실전파이널모고">
-			  <area shape="rect" coords="799,958,1046,1019" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152604" target="_blank" alt="새벽실전모고">
+			  <area shape="rect" coords="797,357,1053,412" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/152605" target="_blank" title="서울시 문풀 패키지">
+			  <area shape="rect" coords="798,508,1049,569" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146969" target="_blank" title="실전보카371">
+			  <area shape="rect" coords="799,687,1044,751" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152651" target="_blank" title="서울시아작내기">
+			  <area shape="rect" coords="799,603,1045,660" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152649" target="_blank" title="지방직아작내기">
+			  <area shape="rect" coords="797,777,1046,839" href="https://pass.willbes.net/lecture/show/cate/3019/prod-code/146973" target="_blank" title="지방직실전파이널모고">
+			  <area shape="rect" coords="797,866,1042,929" href="https://pass.willbes.net/lecture/show/cate/3019/prod-code/146977" target="_blank" title="서울시실전파이널모고">
+			  <area shape="rect" coords="799,958,1046,1019" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152604" target="_blank" title="새벽실전모고">
             </map>
         </div>
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" id="live">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_03.png" alt="" usemap="#Map_180412_lecplay"  border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_03.png" title="" usemap="#Map_180412_lecplay"  border="0" />
             <map name="Map_180412_lecplay">
-                <area shape="rect" coords="896,690,1141,802" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" alt="한덕현유튜브">
-                <area shape="rect" coords="628,689,875,802" href="http://play.afreecatv.com/DHLAWRENCE31" target="_blank">
+                <area shape="rect" coords="896,690,1141,802" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" title="한덕현 유튜브">
+                <area shape="rect" coords="628,689,875,802" href="http://play.afreecatv.com/DHLAWRENCE31" target="_blank" title="한덕현 아프리카TV">
             </map>
         </div>
         <!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_04.png" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_04.png" title="제니스영어 커리큘럼" />
         </div>
         <!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_05.png" alt="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_05.png" title="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
             <map name="Map180412_lec2">
-			  <area shape="rect" coords="925,666,1011,707" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152649" target="_blank" alt="05.지방직" />
-			  <area shape="rect" coords="1016,667,1100,706" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152651" target="_blank"alt="05.서울시">
-			  <area shape="rect" coords="715,665,892,712" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152604" target="_blank" alt="04.실전실력다지기" />
-			  <area shape="rect" coords="507,664,676,711" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" alt="03.문제해결스킬업" />
-			  <area shape="rect" coords="291,661,467,712" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="02.심화,실전예비" />
-			  <area shape="rect" coords="87,661,258,711" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" alt="01.기본이론" />
+			  <area shape="rect" coords="925,666,1011,707" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152649" target="_blank" title="05.지방직" />
+			  <area shape="rect" coords="1016,667,1100,706" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152651" target="_blank"title="05.서울시">
+			  <area shape="rect" coords="715,665,892,712" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152604" target="_blank" title="04.실전실력다지기" />
+			  <area shape="rect" coords="507,664,676,711" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" title="03.문제해결스킬업" />
+			  <area shape="rect" coords="291,661,467,712" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" title="02.심화,실전예비" />
+			  <area shape="rect" coords="87,661,258,711" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" title="01.기본이론" />
 			</map>   
         </div>
         <!--wb_cts06//-->

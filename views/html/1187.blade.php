@@ -20,7 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:absolute; top:200px;right:10px;z-index:10;}
+        .skyBanner {position:absolute; top:150px;right:10px;z-index:10;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1187_top_bg.jpg) no-repeat center top;}
             .evtTopInmg {position:relative; width:1120px; margin:0 auto}
             .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px; line-height:30px}
@@ -39,6 +39,7 @@
         <ul class="skyBanner">
             <li><a href="javascript:alert('준비중입니다');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr01.png" title="토크쇼"></a></li>
             <li><a href="javascript:alert('준비중입니다');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트"></a></li>
+            <li class="mt10"><a href="javascript:popOpen();" ><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr03.png" title="최신판례특강"></a></li>
         </ul>  
 
         <div class="evtCtnsBox evtTop">
@@ -83,6 +84,11 @@
         function pullOpen(){
             var url = "1187_popup";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+        }
+
+        function popOpen(){
+            var url = "1187_popup02";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=550');
         }
     </script>
 

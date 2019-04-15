@@ -11309,3 +11309,14 @@ table.acadlecInfoPackageTable tr.Top td {
 .policyNew .tit2 {color:#F33}
 .closebtn {position:absolute; top:20px; right:20px; z-index:10}
 .closebtn a {font-size:11px; color:#fff; background:#333; padding:3px; text-decoration:none}
+
+/*메인 하단 bar 배너*/
+.mainBottomBn {
+    position:fixed;
+    bottom:0;
+    width: 100%;
+    background:#13385e;
+    z-index: 200;
+}
+.mainBottomBn div {position: relative; width: 1120px; margin:0 auto;}
+.mainBottomBn div span {position: absolute; top:10px; right:10px; width: 19px; z-index: 1; cursor: pointer}

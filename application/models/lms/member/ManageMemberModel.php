@@ -74,6 +74,30 @@ class ManageMemberModel extends WB_Model
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
     }
 
+    public function listExcel($arr_condition = [], $order_by = [], $inQuery = '')
+    {
+        /*
+         * 회원번호, 회원명, 아이디, 휴대전화, 수신여부, 이메일, 수신여부
+         * 가입일, 통합여부, 마지막로그인일, 최종정보변경일, 비밀번호변경일, 탈퇴일
+         * 블랙컨슈머여부, 기기등록정보,
+         */
+        $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, 
+            fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
+            fn_dec(Mem.MailEnc) AS Mail, Info.MailRcvStatus,
+            Mem.IsStatus 
+            ";
+
+        $from = "FROM {$this->_table['member']} AS Mem 
+            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query('SELECT straight_join ' . $column . $from . $where . $inQuery );
+
+        return $rows->result_array();
+    }
+
     /**
      * 회원 상세정보 조회
      * @param int $memIdx

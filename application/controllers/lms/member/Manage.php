@@ -26,6 +26,8 @@ class Manage extends \app\controllers\BaseController
 
     protected $helpers = array('download','file');
 
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+
     public function __construct()
     {
         parent::__construct();
@@ -169,6 +171,130 @@ class Manage extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $list
         ]);
+    }
+
+    /**
+     * 엑셀 읽어오기
+     */
+    public function excel()
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $headers = [ '회원번호', '회원명', '아이디', '휴대폰', '휴대폰수신여부', '이메일', '이메일수신여부','상태'];
+
+        $search_value = $this->_reqP('search_value'); // 검색어
+        $search_value_enc = $this->manageMemberModel->getEncString($search_value); // 검색어 암호화
+        $inQuery = "";
+        $list = [];
+
+        // 기본 검색조건
+        $arr_condition = [
+            'ORG' => [
+                'EQ' => [
+                    'Mem.MemID' => $search_value, // 아이디
+                    'Mem.MemIdx' => $search_value, // 회원번호
+                    'Mem.MemName' => $search_value, // 회원이름
+                    'Mem.PhoneEnc' => $search_value_enc, // 암호화된 전화번호
+                    'Mem.Phone2Enc' => $search_value_enc, // 암호화된 전화번호 중간자리
+                    'Mem.Phone3' => $search_value, // 전화번호 뒷자리
+                    'Mem.MailEnc' => $search_value_enc // 암호화된 이메일
+                ]
+            ],
+            'EQ' => [
+                'Mem.IsChange' => $this->_req('IsChange'), // 회원통합 여부
+                'Info.SmsRcvStatus' => $this->_req('SmsRcv'), // sms 수신여부
+                'Info.MailRcvStatus' => $this->_req('MailRcv'), // 메일 수신여부
+                'Mem.IsBlackList' => $this->_req('IsBlackList') // 블랙리스트 여부
+            ]
+        ];
+
+        // 최신 가입순으로
+        $orderby = [
+            'Mem.MemIdx' => 'DESC'
+        ];
+
+        // 날짜검색 쿼리생성
+        $search_condition = $this->_req('search_condition');
+        $search_sdate = $this->_req('search_start_date');
+        $search_edate = $this->_req('search_end_date');
+        if($search_sdate != '' && $search_edate != ''){
+            switch($search_condition){
+                case 'joindate':
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => [
+                            'Mem.JoinDate' => [$search_sdate, $search_edate]
+                        ]
+                    ]);
+                    break;
+
+                case 'lastlogin':
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => [
+                            'Mem.JoinDate' => [$search_sdate, $search_edate]
+                        ]
+                    ]);
+                    break;
+
+                case 'lastmodify':
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => [
+                            'Mem.JoinDate' => [$search_sdate, $search_edate]
+                        ]
+                    ]);
+                    break;
+
+                case 'lastchgpwd':
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => [
+                            'Mem.JoinDate' => [$search_sdate, $search_edate]
+                        ]
+                    ]);
+                    break;
+
+                case 'outdate':
+                    $inQuery .= "
+                    AND Mem.IsStatus = 'N'
+                    AND Mem.MemIdx IN (
+                        SELECT memIdx FROM lms_Member_Out_Log 
+                        WHERE OutDatm >= '{$search_sdate} 00:00:00' AND OutDatm <= '{$search_edate} 23:59:59'
+                    )";
+                    break;
+            }
+        }
+
+        // 탈퇴회원쿼리
+        if($this->_req('IsOut') == 'Y' && $search_condition != 'outdate'){
+            $inQuery .= " AND Mem.IsStatus = 'N' ";
+        }
+
+        // 비번 6개월이상 미변경 회원
+        if($this->_req('NoChangePwd') == 'Y'){
+            $arr_condition = array_merge($arr_condition, [
+                'LTE' => ['Mem.LastPassModyDatm' => date("Y-m-d H:m:s", strtotime("-6 month"))]
+            ]);
+        }
+
+        // 휴면회원 1년이상 미로그인 회원
+        if($this->_req('IsSleep') == 'Y'){
+            $arr_condition = array_merge($arr_condition, [
+                'EQ' => ['Mem.IsStatus' => 'D']
+                //'LTE' => ['Mem.LastLoginDatm' => date("Y-m-d H:m:s", strtotime("-12 month"))]
+            ]);
+        }
+        // 기기등록회원
+        if($this->_req('IsRegDevice') == 'Y' ){
+            $inQuery .= "
+                    AND Mem.MemIdx IN (
+                        SELECT memIdx FROM lms_member_device 
+                    )";
+        }
+
+        $list = $this->manageMemberModel->listExcel($arr_condition, $orderby, $inQuery);
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportHugeExcel('사용자목록', $list, $headers);
     }
 
     /**

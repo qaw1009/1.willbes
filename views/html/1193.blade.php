@@ -22,7 +22,7 @@
         /************************************************************/
 
 				.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1193_top_bg.jpg) no-repeat center top; position:re}
-				.evtTop span {position:absolute; top:140px; left:50%;}
+				.evtTop span {position:absolute; top:220px; left:50%;}
 				.evtTop ul {width:100%; margin:0 auto; }
 				.evtTop .point {text-align:center; margin-left:500px; padding:120px 50px 0px 0px; }
 				.evt01 {background:#f5f5f5}

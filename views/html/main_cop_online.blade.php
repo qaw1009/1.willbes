@@ -1088,13 +1088,12 @@
 </div>
 <!-- End Container -->
 
-<div class="mainBottomBn">
-    <div>
-        <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_mainBottom_bn.jpg" title="평생 0원 pass 3월 31일 마감">
-        </a>
-        <span class="btmEvClose"><img src="https://static.willbes.net/public/images/promotion/common/mainBottom_btnclose.png" title="닫기"></span>
-    </div>
+<div class="mainBottomBn" id="bottomBn">
+    <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_mainBottom_bn.jpg" alt="배너명" usemap="#mainBottombn" title="배너명" border="0">
+    <map name="mainBottombn" id="mainBottombn">
+        <area shape="rect" coords="1496,7,1521,31" href="#none" onclick="closeWin('bottomBn')" alt="닫기" title="닫기"/>
+        <area shape="rect" coords="433,6,1488,114" href="#none" target="" alt="배너명" title="배너명"/>
+    </map>  
 </div>
 
 <script type="text/javascript">        

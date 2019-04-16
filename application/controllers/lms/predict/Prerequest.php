@@ -102,7 +102,7 @@ class Prerequest extends \app\controllers\BaseController
                 'LKB' => [
                     'M.MemName' => $this->_req('search_fi', true),
                     'M.MemId' => $this->_req('search_fi', true),
-                    'M.TakeNumber' => $this->_req('search_fi', true),
+                    'PR.TakeNumber' => $this->_req('search_fi', true),
 
                 ]
             ],

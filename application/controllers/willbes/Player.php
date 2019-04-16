@@ -1076,7 +1076,7 @@ class Player extends \app\controllers\FrontController
         }
 
         if(empty($wUnitIdx) == true){
-            $this->StarplayerResult(true, '수강할 회차 정보가 없습니다.');
+            return $this->StarplayerResult(true, '수강할 회차 정보가 없습니다.');
         }
 
         // 수강가능인지 체크
@@ -1093,7 +1093,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            $this->StarplayerResult(true, '강좌정보가 없습니다.');
+            return $this->StarplayerResult(true, '강좌정보가 없습니다.');
         }
 
         $lec = $lec[0];
@@ -1131,11 +1131,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isstart == 'N'){
-            $this->StarplayerResult(true,'아직 수강시작 전인 강의입니다.');
+            return $this->StarplayerResult(true,'아직 수강시작 전인 강의입니다.');
         }
 
         if($ispause == 'Y'){
-            $this->StarplayerResult(true, '일시중지 중인 강의입니다.');
+            return $this->StarplayerResult(true, '일시중지 중인 강의입니다.');
         }
 
         // 회차 열어준경우 IN 생성
@@ -1178,7 +1178,7 @@ class Player extends \app\controllers\FrontController
         $data = $this->classroomFModel->getCurriculum($cond_arr);
 
         if(empty($data) == true){
-            $this->StarplayerResult(true,'강의 정보가 없습니다.');
+            return $this->StarplayerResult(true,'강의 정보가 없습니다.');
         }
 
         $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
@@ -1639,7 +1639,7 @@ class Player extends \app\controllers\FrontController
             case 'begin_app':
                 // 앱 실행
                 $this->checkState($state); // 기기상태 체크
-                $this->StarplayerResult(false,'앱실행');
+                return $this->StarplayerResult(false,'앱실행');
                 break;
 
             case 'begin_content':
@@ -1672,7 +1672,7 @@ class Player extends \app\controllers\FrontController
                     'DeviceId' => $device_id
                 ]);
 
-                $this->StarplayerResult(false,'재생권한확인완료');
+                return $this->StarplayerResult(false,'재생권한확인완료');
                 break;
 
             case 'playing_content':
@@ -1688,14 +1688,14 @@ class Player extends \app\controllers\FrontController
                     'di' => $device_id
                 ]);
 
-                $this->StarplayerResult(false,'수강기록업데이트완료');
+                return $this->StarplayerResult(false,'수강기록업데이트완료');
                 break;
 
 
             case 'download_content':
                 // 다운로드 완료 기록을 남길것인가
 
-                $this->StarplayerResult(false,'다운로드완료');
+                return $this->StarplayerResult(false,'다운로드완료');
                 break;
 
             case 'playing_ratio_status':
@@ -1703,12 +1703,12 @@ class Player extends \app\controllers\FrontController
             case 'register_device_id':
             case 'unregister_device_id':
                 // 나머지는 모두 그냥 정상 처리
-                $this->StarplayerResult(false,'정상처리');
+                return $this->StarplayerResult(false,'정상처리');
                 break;
                 
             default;
                 // 알수없는 이벤트는 에러
-                $this->StarplayerResult(true,'알수없는 이벤트입니다.');
+                return $this->StarplayerResult(true,'알수없는 이벤트입니다.');
 
         }
     }
@@ -1745,7 +1745,7 @@ class Player extends \app\controllers\FrontController
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-
+logger($params);
         switch($event){
             case 'downloaded':
                 break;
@@ -1776,7 +1776,7 @@ class Player extends \app\controllers\FrontController
                     'DeviceId' => $device_id
                 ]);
 
-                $this->response(['result'=>'success']);
+                return $this->StarplayerResult(false, '', '',true);
                 break;
 
             case 'learninghistory':
@@ -1791,25 +1791,26 @@ class Player extends \app\controllers\FrontController
                     'di' => $device_id
                 ]);
 
-                $this->response(['result'=>'success']);
+                return $this->StarplayerResult(false, '', '',true);
                 break;
 
             default;
                 // 알수없는 이벤트는 에러
-                $this->response(['result'=>'success']);
+                return $this->StarplayerResult(true, '알수없는정보입니다', '',true);
         }
     }
 
 
     /**
-     * 기기산태체크
+     * 기기상태체크
      * @param string $state
+     * @return CI_Output
      */
     private function checkState($state = '')
     {
         if($state != 'normal'){
             // 기기상태가 normal 이 아니면 재생 불가
-            $this->StarplayerResult(true, '루팅 혹은 탈옥 기기는 수강이 불가능합니다.', '', false);
+            return $this->StarplayerResult(true, '루팅 혹은 탈옥 기기는 수강이 불가능합니다.', '', false);
         }
     }
 
@@ -1845,7 +1846,7 @@ class Player extends \app\controllers\FrontController
             || empty($prodcode) === true
             || empty($prodcodesub) === true
             || empty($unitidx) === true ){
-            $this->StarplayerResult(true, '정보가 정확하지 않습니다.', '', $isApp);
+            return $this->StarplayerResult(true, '정보가 정확하지 않습니다.', '', $isApp);
         }
 
         $lec = $this->classroomFModel->getLecture([
@@ -1861,7 +1862,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            $this->StarplayerResult(true, '수강신청정보가 없습니다.', '', $isApp);
+            return $this->StarplayerResult(true, '수강신청정보가 없습니다.', '', $isApp);
         }
 
         $lec = $lec[0];
@@ -1899,11 +1900,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isstart == 'N'){
-            $this->StarplayerResult(true, '수강시작 전인 강의입니다.','', $isApp);
+            return $this->StarplayerResult(true, '수강시작 전인 강의입니다.','', $isApp);
         }
 
         if($ispause == 'Y'){
-            $this->StarplayerResult(true, '일시중지중인 강의입니다.','', $isApp);
+            return $this->StarplayerResult(true, '일시중지중인 강의입니다.','', $isApp);
         }
 
         // 회차 열어준경우 IN 생성
@@ -1929,7 +1930,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($data) == true){
-            $this->StarplayerResult(true, '강의정보가 없습니다.','', $isApp);
+            return $this->StarplayerResult(true, '강의정보가 없습니다.','', $isApp);
         }
 
         $data = $data[0];
@@ -1978,7 +1979,7 @@ class Player extends \app\controllers\FrontController
         }
 
         if($timeover == 'Y'){
-            $this->StarplayerResult(true, '수강가능시간이 초과되었습니다.','', $isApp);
+            return $this->StarplayerResult(true, '수강가능시간이 초과되었습니다.','', $isApp);
         }
 
         return $lec;
@@ -1986,8 +1987,10 @@ class Player extends \app\controllers\FrontController
 
     /**
      * 수강기기 제한 강좌일때 기기등록하고 체크
-     * @param $device_id
-     * @param $limit
+     * @param $input
+     * @param int $limit
+     * @param bool $isApp
+     * @return CI_Output|void
      */
     private function checkDeviceMobile($input, $limit = 2, $isApp = false)
     {
@@ -2011,13 +2014,13 @@ class Player extends \app\controllers\FrontController
 
         // 등록기기댓수 초과
         if($count >= $limit){
-            $this->StarplayerResult(true, '등록기기 댓수를 초과하였습니다.','', $isApp);
+            return $this->StarplayerResult(true, '등록기기 댓수를 초과하였습니다.','', $isApp);
         }
 
         // 기기등록 시도
         if($this->playerFModel->storeDevice($input) == false){
             // 기기등록 실패
-            $this->StarplayerResult(true, '기기등록에 실패했습니다.','', $isApp);
+            return $this->StarplayerResult(true, '기기등록에 실패했습니다.','', $isApp);
         }
     }
 
@@ -2147,21 +2150,23 @@ class Player extends \app\controllers\FrontController
 
 
     /**
-     * 스타플레이어 리턴 xml 생성
+     * 모바일 리턴 코드 만들기
      * @param $error
      * @param string $msg
      * @param string $debug
+     * @param bool $isApp
+     * @return CI_Output
      */
     private function StarplayerResult($error, $msg ='', $debug = '', $isApp = false)
     {
         if($isApp == true){
             if($error == true){
-                $this->response([
+                return $this->response([
                     'result' => 'error',
                     'message' => $msg
                 ]);
             } else {
-                $this->response([
+                return $this->response([
                     'result' => 'success',
                     'message' => ''
                 ]);

@@ -16,7 +16,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2019/04/LayPop190415_p.jpg" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
                     <map name="MaplayerPopup" id="MaplayerPopup">
                         <area shape="rect" coords="6,5,387,313" href="{{ site_url('/pass/promotion/index/cate/3010/code/1190') }}" alt="마무리특강" />
-                        <area shape="rect" coords="396,4,778,312" href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1045') }}" alt="3단계실전모의고사" />
+                        <area shape="rect" coords="396,4,778,312" href="{{ site_url('/pass/promotion/index/cate/3010/code/1203') }}" alt="3단계실전모의고사" />
                     </map>
                     <div class="btn-r">
                         <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop2002('passpopup', 'blackpopup');" >하루 보지않기</a>

@@ -11,7 +11,7 @@ class ApplyUser extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'mocktest/mockCommon', 'mocktest/applyUser');
     protected $helpers = array();
-
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -106,12 +106,19 @@ class ApplyUser extends \app\controllers\BaseController
 
         if($excel === 'Y') {
 
+            set_time_limit(0);
+            ini_set('memory_limit', $this->_memory_limit_size);
+
             $data  = $this->applyUserModel->mockRegistListExcel($condition);
+            // export excel
+            $file_name = '모의고사 개별접수현황_'.date('Y-m-d');
 
             $headers = ['NO','주문번호', '회원명', '회원아이디', '전화번호', '결제완료일', '결제금액', '결제상태', '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부'];
 
             $this->load->library('excel');
-            $this->excel->exportExcel('모의고사-개별접수현황('.date("Y-m-d").')', $data, $headers);
+            if ($this->excel->exportHugeExcel($file_name, $data, $headers) !== true) {
+                show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+            }
 
         } else {
 

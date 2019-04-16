@@ -1738,7 +1738,7 @@ class Player extends \app\controllers\FrontController
         $rating = $this->_req('rating');
         $token = $this->_req('token');
         $play_type = $this->_req('play_type');
-        $app_version = ' ';
+        $app_version = $this->_req('app_version');
 
         // API 접근 로그남기기
         $params = '';

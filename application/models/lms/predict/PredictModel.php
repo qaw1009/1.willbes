@@ -184,12 +184,12 @@ class PredictModel extends WB_Model
             MemName,
             PR.MemIdx,
             MemId,
-            CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) AS Phone,
-            (SELECT CcdValue FROM lms_predict_code WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
-            (SELECT CcdValue FROM lms_sys_code WHERE Ccd = PR.TaKeArea) AS TaKeArea,
+            fn_dec(M.PhoneEnc) AS Phone,
+            (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+            (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
             TaKeNumber,
-            LectureType,
-            Period,
+            if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
+            if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
             RegDatm
 
         ";
@@ -197,18 +197,106 @@ class PredictModel extends WB_Model
 
         $from = "
             FROM 
-                lms_predict_register AS PR
-                JOIN lms_member AS M ON PR.MemIdx = M.MemIdx
+                {$this->_table['predictRegister']} AS PR
+                JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = "WHERE PR.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "";
-        //echo "<pre>". 'select' . $column . $from . $where . $order . "</pre>";
 
         $data = $this->_conn->query('Select'. $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
         return array($data, $count);
+    }
+
+    /**
+     * 합격예측신청목록
+     */
+    public function predictRegistListExcel($condition='', $limit='', $offset='')
+    {
+        $column = " 
+            MemName,
+            MemId,
+            fn_dec(M.PhoneEnc) AS Phone,
+            (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+            (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
+            TaKeNumber,
+            if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
+            if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
+            RegDatm
+
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictRegister']} AS PR
+                JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
+        ";
+
+        $where = "WHERE PR.IsStatus = 'Y'";
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $order = "ORDER BY MemName DESC\n";
+
+        $sql = "Select @SEQ := @SEQ+1 as NO,mm.*
+                    From  (SELECT @SEQ := 0) A,
+                    (
+                      SELECT 
+                        $column     
+                        $from  
+                        $where 
+                        $order              
+                    ) mm Order by @SEQ DESC
+        ";
+        //echo "<pre>".$sql."</pre>";
+        $data = $this->_conn->query($sql)->result_array();
+        return $data;
+    }
+
+    /**
+     *  합격예측용 직렬호출
+     */
+    public function getArea($GroupCcd){
+        $column = "
+            Ccd, CcdName  
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['sysCode']} 
+        ";
+
+        $order_by = " ORDER BY OrderNum";
+        $where = " WHERE IsUse = 'Y' AND GroupCcd = ".$GroupCcd;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    /**
+     *  합격예측용 직렬호출
+     */
+    public function getSerialAll(){
+        $column = "
+            Ccd, CcdName, Type  
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictCode']} 
+        ";
+
+        $order_by = " ORDER BY OrderNum";
+        $where = " WHERE IsUse = 'Y' AND GroupCcd = 0";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
     }
 
     /**

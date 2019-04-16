@@ -440,7 +440,7 @@ class LectureModel extends WB_Model
 
             //마스터강의 회차정보
             $insert_column = " wLecIdx, wUnitName, wUnitNum, wUnitLectureNum, wContentTypeCcd, wContentSizeCcd, wHD, wSD, wWD
-                                , wUnitAttachFileReal, wUnitAttachFile, wRuntime, wBookPage, wShootingDate, wProfIdx, wOrderNum, wIsUse, wRegAdminIdx, wRegIp";
+                                , wUnitAttachFileReal, wUnitAttachFile, wRuntime, wBookPage, wShootingDate, wProfIdx, wOrderNum, wIsUse, wUnitInfo, wRegAdminIdx, wRegIp";
 
             $select_column = $insert_column;
             $select_column= str_replace('wLecIdx','\''.$new_wlecidx.'\' as wLecIdx',$select_column);

@@ -226,7 +226,7 @@ Class PackagePeriod extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->packagePeriodModel->_prodCopy($prodcode,'packagePeriod');
+        $result = $this->packagePeriodModel->_prodCopy($prodcode,'packageperiod');
         //var_dump($result);exit;
         $this->json_result($result,'복사 되었습니다.',$result);
     }

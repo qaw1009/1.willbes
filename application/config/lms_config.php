@@ -39,3 +39,9 @@ $config['mock'] = array(
     'upload_path_mockBackup' => 'bak_' . date("Ymd"),                  // 백업파일 저장경로 {$uploadPath_mock}/bak_{date}/
     'upload_url_mock' => PUBLICURL . 'uploads/' . $config['upload_prefix_dir'] . '/mocktest/' // 업로드이미지 URL
 );
+
+$config['predict'] = array(
+    'sysCode_Area' => '712',
+    'upload_path_predict' => $config['upload_prefix_dir'] . '/predict/', // 응시표인증파일: ~/predict/{idx}/
+    'upload_url_predict' => PUBLICURL . 'uploads/' . $config['upload_prefix_dir'] . '/predict/' // 업로드이미지 URL
+);

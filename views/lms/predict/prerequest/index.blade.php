@@ -3,7 +3,7 @@
 @section('content')
     <h5 class="mt-20">- 주문번호 기준으로 모의고사 결제 및 응시여부를 확인하고 응시표를 출력하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
+        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!}
         {!! csrf_field() !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value="{{$siteCodeDef}}">
 
@@ -12,35 +12,26 @@
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
-                        {{--<select class="form-control mr-5" id="search_PayStatusCcd" name="search_PayStatusCcd">--}}
-                            {{--<option value="">결제상태</option>--}}
-                            {{--@foreach($paymentStatus as $k => $v)--}}
-                                {{--<option value="{{$k}}" @if($search_PayStatusCcd == $k) selected @endif>{{$v}}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                        {{--<select class="form-control mr-5" id="search_TakeForm" name="search_TakeForm">--}}
-                            {{--<option value="">응시형태</option>--}}
-                            {{--@foreach($applyType as $k => $v)--}}
-                                {{--<option value="{{$k}}">{{$v}}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                        {{--<select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">--}}
-                            {{--<option value="">응시지역</option>--}}
-                            {{--@foreach($applyArea as $k => $v)--}}
-                                {{--<option value="{{$k}}">{{$v}}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                        {{--<select class="form-control mr-5" id="search_IsTake" name="search_IsTake">--}}
-                            {{--<option value="">응시여부</option>--}}
-                            {{--<option value="Y" @if($search_IsTake == 'Y') selected @endif>응시</option>--}}
-                            {{--<option value="N" @if($search_IsTake == 'N') selected @endif>미응시</option>--}}
-                        {{--</select>--}}
+                        <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
+                            <option value="">응시직렬</option>
+                            @foreach($serial as $k => $v)
+                                <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
+                            <option value="">응시지역</option>
+                            @foreach($area as $k => $v)
+                                @if($v['Ccd'] != '712018')
+                                    <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
+                                @endif
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">회원검색</label>
                     <div class="col-md-6">
-                        {{--<input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value="{{$search_fi}}"> 회원명, 연락처, 주문번호, 응시변호, 상품명/코드 검색 가능--}}
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value="{{ $search_fi }}"> 회원명, 아이디, 응시변호 검색가능
                     </div>
                 </div>
                 <div class="pt-10">
@@ -63,6 +54,7 @@
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
+                        <th class="text-center"></th>
                         <th class="text-center">NO</th>
                         <th class="text-center">이름</th>
                         <th class="text-center">아이디</th>
@@ -109,7 +101,6 @@
                 },
                 dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
                 buttons: [
-                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn btn-sm btn-primary mr-15 btn-message'  },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn btn-sm btn-primary mr-15 btn-sms' },
 
                 ],
@@ -122,6 +113,9 @@
                     }
                 },
                 columns: [
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<input type="checkbox" id="checkIdx" name="checkIdx[]" class="flat target-crm-member" value="" data-mem-idx="'+data.MemIdx+'" />';
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
@@ -138,27 +132,11 @@
                 ]
             });
 
-
-            // 응시표  출력 폼
-            $list_table.on('click', '.btn-print', function() {
-                var url = '{{site_url('/common/printCert/')}}?prod_type=mock_exam&mr_idx='+$(this).data('idx');
-                popupOpen(url,'_cert_print', 620, 350);
-            });
-
-            // 응시표  출력 이력
-            $list_table.on('click', '.print-log', function() {
-                $('.print-log').setLayer({
-                    'url' : '{{site_url('/mocktest/applyUser/PrintLog/')}}'+$(this).data('idx'),
-                    'width' : 1400
-                });
-
-            });
-
             // 엑셀다운로드
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/mocktest/applyUser/list/Y') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/predict/prerequest/list/Y') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 

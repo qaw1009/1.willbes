@@ -1745,7 +1745,7 @@ class Player extends \app\controllers\FrontController
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-        logger($params);
+        //logger($params);
         switch($event){
             case 'downloaded':
                 // 다운로드 완료
@@ -1762,7 +1762,7 @@ class Player extends \app\controllers\FrontController
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
                     $this->checkDeviceMobile([
-                        'DeviceType' => 'M',
+                        'DeviceType' => 'A',
                         'MemIdx' => $lec['MemIdx'],
                         'DeviceModel' => $device_model,
                         'DeviceId' => $device_id,

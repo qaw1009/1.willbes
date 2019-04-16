@@ -288,7 +288,7 @@
                                         {{ $row['WeekArrayName'] }} ({{ $row['Amount'] }}회차)
                                     </td>
                                     <td class="w-notice p_re">
-                                        <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
+                                        <div class="acadInfo NGR n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
                                         @if(empty($row['ProdPriceData']) === false)
                                             @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                 <div class="priceWrap chk buybtn p_re">

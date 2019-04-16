@@ -25,7 +25,7 @@
                             <div class="w-tit">
                                 {{$data['ProdName']}}
                                 <dl class="w-info">
-                                    <dt class="NSK">
+                                    <dt class="NGR">
                                         <span class="acadBox n{{ substr($data['StudyApplyCcd'], -1) }}">{{$data['StudyApplyCcdName']}}</span>
                                     </dt>
                                 </dl>
@@ -35,7 +35,7 @@
                                     <dt>수강형태 : <span class="tx-blue">{{$data['StudyPatternCcdName']}}</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>접수기간 : <span class="tx-blue">{{ date('Y-m-d', strtotime($data['SaleStartDatm'])) }} ~ {{ date('Y-m-d', strtotime($data['SaleEndDatm'])) }}</span></dt>
-                                    <dt class="w-notice NSK ml15">
+                                    <dt class="w-notice NGR ml15">
                                     <span class="acadInfo n{{ substr($data['AcceptStatusCcd'], -1) }}">{{$data['AcceptStatusCcdName']}}</span>
                                 </dt>
                             </dl>
@@ -114,7 +114,7 @@
                             <tr class="w-info">
                                 <td class="w-lectit tx-left" colspan="2">
                                     <dl>
-                                        <dt class="NSK">
+                                        <dt class="NGR">
                                             <span class="acadBox n{{ substr($data['AcceptStatusCcd'], -1) }} mr15">{{$data['AcceptStatusCcdName']}}</span>
                                         </dt>
                                     </dl>
@@ -202,7 +202,7 @@
                                                         </a>
                                                     </dt>
                                                     <dt>수강형태 : <span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span></dt>
-                                                    <dt class="w-notice NSK ml15">
+                                                    <dt class="w-notice ml15">
                                                         <span class="acadInfo n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{$sub_row['AcceptStatusCcdName']}}</span>
                                                     </dt>
                                                 </dl>
@@ -288,7 +288,7 @@
                                                         </a>
                                                     </dt>
                                                     <dt>수강형태 : <span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span></dt>
-                                                    <dt class="w-notice NSK ml15">
+                                                    <dt class="w-notice ml15">
                                                         <span class="acadInfo n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{$sub_row['AcceptStatusCcdName']}}</span>
                                                     </dt>
                                                 </dl>

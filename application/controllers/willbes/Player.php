@@ -1738,14 +1738,14 @@ class Player extends \app\controllers\FrontController
         $rating = $this->_req('rating');
         $token = $this->_req('token');
         $play_type = $this->_req('play_type');
-        $app_version = ' ';
+        $app_version = $this->_req('app_version');
 
         // API 접근 로그남기기
         $params = '';
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-        // logger($params);
+        //logger($params);
         switch($event){
             case 'downloaded':
                 // 다운로드 완료
@@ -1762,7 +1762,7 @@ class Player extends \app\controllers\FrontController
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
                     $this->checkDeviceMobile([
-                        'DeviceType' => 'M',
+                        'DeviceType' => 'A',
                         'MemIdx' => $lec['MemIdx'],
                         'DeviceModel' => $device_model,
                         'DeviceId' => $device_id,
@@ -2164,15 +2164,15 @@ class Player extends \app\controllers\FrontController
     {
         if($isApp == true){
             if($error == true){
-                return $this->response([
-                    'result' => 'error',
-                    'message' => $msg
-                ]);
+                echo '{';
+                echo '"result":"error",';
+                echo '"message":"'.$msg.'"';
+                echo '}';
             } else {
-                return $this->response([
-                    'result' => 'success',
-                    'message' => ''
-                ]);
+                echo '{';
+                echo '"result":"success",';
+                echo '"message":"'.$msg.'"';
+                echo '}';
             }
 
         } else {

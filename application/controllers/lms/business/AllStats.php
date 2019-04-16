@@ -181,7 +181,7 @@ class AllStats extends \app\controllers\BaseController
 
         // 합계
         $sum_column = 'ifnull(sum(OP.RealPayPrice), 0) as SumPayPrice, ifnull(sum(OPR.RefundPrice), 0) as SumRefundPrice';
-        $sum_data = $this->orderListModel->listAllOrder($sum_column, $arr_condition, null, null, [], $this->_order_list_add_join);
+        $sum_data = $this->orderListModel->listAllOrder($sum_column, $arr_condition, null, null, [], $this->_order_list_add_join, false);
 
         return $this->response([
             'recordsTotal' => $count,

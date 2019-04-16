@@ -22,19 +22,23 @@
         clear:both;
     }
 
-    .character {width:980px; margin:0 auto 50px}
-    .character ul {margin-bottom:20px; border-top:1px solid #ccc; border-bottom:1px solid #ccc}
-    .character li {display:inline; float:left; width:16.666666%; text-align:center; cursor:pointer;border-right:1px solid #ccc}
+
+    .replyEvaluate {width:1000px; margin:0 auto;}
+    .character ul {border-top:1px solid #ababab; text-align:center}
+    .character li {display:inline; float:left; width:166px; text-align:center; margin:0 auto}
+    .character li:first-child,
+    .character li:last-child {width:168px}
+    .character li:first-child div {border-left:1px solid #ababab}
+    .character li:last-child div {border-right:1px solid #ababab}
+    .character li div {border-right:1px solid #eaeaea}
     .character li input {vertical-align:middle}
     .character li.active {background:#cde7f5}
     .character li p {height:40px; line-height:40px; color:#333; background:#eee; font-size:14px; font-weight:bold}
     .character li p span {color:#ee2365}
-    .character li:last-child {border-right:0; width:160px;}
     .character ul:after {content:""; display:block; clear:both}
-
-    .replyEvaluate {width:1000px; margin:0 auto;}
+    
     .replyEvaluate .reply_inbx {
-        position:relative; border:1px solid #ababab;  padding:20px 0; 
+        position:relative; border:1px solid #ababab; border-top:1px solid #eaeaea; padding:20px 0; 
     }
     .replyEvaluate .reply_inbx ul {margin-left:20px}
     .replyEvaluate .reply_inbx li {
@@ -45,7 +49,9 @@
     .replyEvaluate ul:after {
         content:""; display:block; clear:both;
     }
-    .replyEvaluate .textarBx { margin-top:10px}
+    .replyEvaluate .reportUrl { padding:0 20px}
+    .replyEvaluate .reportUrl input {height:24px; width:80%; padding:0 10px; margin-left:15px; background:#f7f7f7; border:1px solid #eaeaea}
+    .replyEvaluate .textarBx {margin-top:10px; border-top:1px solid #eaeaea; }
     .replyEvaluate .textarBx textarea {
         border:0; width:100%; line-height:1.5; border-bottom:1px solid #eaeaea; padding:10px 20px;
     }
@@ -61,7 +67,7 @@
         position:relative; border-bottom:1px solid #e6e4e4; padding:20px 0; min-height:105px;
     }
     .replyEvaluate .replyList li img {
-        position:absolute; top:15px; left:15px;
+        position:absolute; top:15px; left:15px; width:80px;
     }
     .replyEvaluate .replyList li div {margin-left:110px; line-height:1.5}
     .replyEvaluate .replyList li p {margin-bottom:10px; color:#999;}
@@ -72,8 +78,8 @@
     }
 </style>  
 
-{{--@if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')  --}}
-{{-- 경찰온라인 사이트일 경우만 적용 --}}  
+
+
 <div class="urlWrap">
     <ul class="snslink">
         <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline01.png"alt="다음카페 경사모" /></a></li>
@@ -82,43 +88,52 @@
         <li><a href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer" target="_blank"><img src="http://file3.willbes.net/new_cop/common/snsline04.png" alt="디시 순경마이너 갤러리" /></a></li>
     </ul>
 </div>
-<div class="character">
-    <ul>
-        <li>
-            <img src="https://static.willbes.net/public/images/promotion/common/icon_poof01.png" title="신광은" />
-            <p><label><input type="radio" name="sns_icon" value="1" /> 만점의 <span>신~</span></label></p>
-        </li>
-        <li>
-            <img src="https://static.willbes.net/public/images/promotion/common/icon_poof20.png" title="장정훈" />
-            <p><label><input type="radio" name="sns_icon" value="2" /> 만점의 <span>향기~~</span></label></p>
-        </li>
-        <li>
-            <img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" title="김원욱" />
-            <p><label><input type="radio" name="sns_icon" value="3" /> 만점<span>맨!~</span></label></p>
-        </li>
-        <li>
-            <img src="https://static.willbes.net/public/images/promotion/common/icon_poof18.png" title="하승민" />
-            <p><label><input type="radio" name="sns_icon" value="4" /> 히든 <span>만점러~</span></label></p>
-        </li>
-        <li>
-            <img src="https://static.willbes.net/public/images/promotion/common/icon_poof13.png" title="오태진" />
-            <p><label><input type="radio" name="sns_icon" value="5" /> 불타는 <span>만점러!</span></label></p>
-        </li>
-        <li>
-            <img src="https://static.willbes.net/public/images/promotion/common/icon_poof14.png" title="원유철" />
-            <p><label><input type="radio" name="sns_icon" value="6" /> 만점의 <span>워너원~</span></label></p>
-        </li>
-    </ul>
-</div>
-{{--@endif--}}
 
-<div class="replyEvaluate">
-    <div class="reply_inbx">							
+<div class="replyEvaluate"> 
+    <div class="character">
         <ul>
-            <li><input id="re1" name=" " type="radio" value=" "> <img src="https://static.willbes.net/public/images/promotion/common/icon_re01.png" title="쉬웠어요"> <label for="re1">쉬웠어요</label></li>
-            <li><input id="re2" name=" " type="radio" value=" "> <img src="https://static.willbes.net/public/images/promotion/common/icon_re02.png" title="보통이예요"> <label for="re2">보통이예요</label></li>
-            <li><input id="re3" name=" " type="radio" value=" "> <img src="https://static.willbes.net/public/images/promotion/common/icon_re03.png" title="어려웠어요"> <label for="re3">어려웠어요</label></li>
-        </ul>                
+            <li>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof01.png" title="신광은" />
+                    <p><input type="radio" name="sns_icon" value="1" id="icon1"/> <label for="icon1">만점의 <span>신~</span></label></p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof20.png" title="장정훈" />
+                    <p><input type="radio" name="sns_icon" value="2" id="icon2"/> <label for="icon2">만점의 <span>향기~~</span></label></p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" title="김원욱" />
+                    <p><input type="radio" name="sns_icon" value="3" id="icon3"/> <label for="icon3">만점<span>맨!~</span></label></p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof18.png" title="하승민" />
+                    <p><input type="radio" name="sns_icon" value="4" id="icon4"/> <label for="icon4">히든 <span>만점러~</span></label></p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof13.png" title="오태진" />
+                    <p><input type="radio" name="sns_icon" value="5" id="icon5"/> <label for="icon5">불타는 <span>만점러!</span></label></p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof14.png" title="원유철" />
+                    <p><label><input type="radio" name="sns_icon" value="6" /> 만점의 <span>워너원~</span></label></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="reply_inbx">							
+        <div class="reportUrl">소문내기 URL <input type="text" name="SNS_TXT" id="SNS_TXT" onclick="javascript:fn_focusSns();"></div>                
         <div class="textarBx">
             <textarea name="EVENT_TXT" id="EVENT_TXT" cols="30" rows="5" onclick="javascript:fn_focusComment();"></textarea>                        
         </div>
@@ -129,16 +144,18 @@
     <div class="replyList">
         <ul>
             <li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_re01.png" title="쉬웠어요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof01.png" title="쉬웠어요">
                 <div>
-                    <p>홍길* <span>2019-03-25</span></p>    
+                    <p>홍길* <span>2019-03-25</span></p>  
+                    <p>https://www.local.will********************</p>   
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.                                
                 </div>
             </li>
             <li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_re02.png" title="보통이예요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof18.png" title="보통이예요">
                 <div>
-                    <p>홍길* <span>2019-03-25</span></p>    
+                    <p>홍길* <span>2019-03-25</span></p>
+                    <p>https://www.local.will********************</p>  
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
                         우리는 일을하고 쉬는시간을 갖는다. We work and have a break.
                         그리고 우리는 쉬는시간에 게임, 드라마, 만화등 문화를 감상하며 쉬곤한다.
@@ -147,9 +164,10 @@
                 <a href="#none" class="btnDel">삭제</a>
             </li>
             <li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_re03.png" title="어려웠어요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof13.png" title="어려웠어요">
                 <div>
-                    <p>홍길* <span>2019-03-25</span></p>    
+                    <p>홍길* <span>2019-03-25</span></p>  
+                    <p>https://www.local.will********************</p>   
                         영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
                         우리는 일을하고 쉬는시간을 갖는다. We work and have a break.
                         그리고 우리는 쉬는시간에 게임, 드라마, 만화등 문화를 감상하며 쉬곤한다.
@@ -161,9 +179,10 @@
                 </div>
             </li>
             <li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_re02.png" title="보통이예요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof14.png" title="보통이예요">
                 <div>
-                    <p>홍길* <span>2019-03-25</span></p>    
+                    <p>홍길* <span>2019-03-25</span></p>   
+                    <p>https://www.local.will********************</p> 
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
                         우리는 일을하고 쉬는시간을 갖는다. We work and have a break.
                         그리고 우리는 쉬는시간에 게임, 드라마, 만화등 문화를 감상하며 쉬곤한다.
@@ -171,13 +190,14 @@
                 </div>
             </li>
             <li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_re01.png" title="쉬웠어요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" title="쉬웠어요">
                 <div>
-                    <p>홍길* <span>2019-03-25</span></p>    
+                    <p>홍길* <span>2019-03-25</span></p>  
+                    <p>https://www.local.will********************</p>   
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.                                
                 </div>
             </li>
         </ul>
     </div>
-    <div class="mt30">공통 페이지 넘버링 적용 </div>              
+    <div class="mt30 mb30">공통 페이지 넘버링 적용 </div>              
 </div>

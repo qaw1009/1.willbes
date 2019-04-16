@@ -138,12 +138,21 @@
                                 <td class="w-data tx-left">
                                     <div class="w-tit">2017 (지방직/서울시) 정채영 국어 필살기 모의고사 시즌Ⅲ-Ⅳ(4-6월)</div>
                                 </td>
-                                <td class="w-notice p_re tx-right">
-                                    <div class="priceWrap p_re">
+                                <td class="tx-left">
+                                    <!--div class="priceWrap p_re">
                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                         <span class="select">[PC+모바일]</span>
                                         <span class="price tx-blue">80,000원</span>
                                         <span class="discount">(↓10%)</span>
+                                    </div-->
+                                    <div class="pl10">
+                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                        <label for="goods_chk" class="pl10 d_inblock">
+                                            [PC+모바일] <br>
+                                            <span>80,000원</span>
+                                            <span class="discount">(↓10%) ▶ </span>
+                                            <span class="tx-blue">72,000원</span>
+                                        </label>
                                     </div>
                                 </td>
                             </tr>

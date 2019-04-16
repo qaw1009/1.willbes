@@ -72,10 +72,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_03.jpg" title="사전예약 이벤트">
         </div>
 
-        {{--홍보url댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_emoticon_partial')
-        @endif
+        {{--강사 이미티콘 홍보url댓글--}}
+        @include('html.event_replyEmoticonUrl')
+
 	</div>
     <!-- End Container -->
 

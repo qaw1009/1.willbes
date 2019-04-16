@@ -81,7 +81,11 @@
                                 @endif
                             @endif
                         @else
-                            <a href="#none" class="end">신청마감</a>
+                            @if($key == '213')
+                                <a href="{{app_url('/pass/support/notice/show?board_idx=222649', 'police')}}">캠퍼스문의</a>
+                            @else
+                                <a href="#none" class="end">신청마감</a>
+                            @endif
                         @endif
                     </span>
                 </span>
@@ -102,7 +106,11 @@
                                 @endif
                             @endif
                         @else
-                            <a href="#none" class="end">신청마감</a>
+                            @if($key == '213')
+                                <a href="{{app_url('/pass/support/notice/show?board_idx=222649', 'police')}}">캠퍼스문의</a>
+                            @else
+                                <a href="#none" class="end">신청마감</a>
+                            @endif
                         @endif
                     </span>
                     </span>

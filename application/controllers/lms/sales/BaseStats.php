@@ -340,10 +340,10 @@ class BaseStats extends \app\controllers\BaseController
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
-        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '상품구분', '상품명', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태'];
+        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '상품구분', '상품명', '결제금액', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태'];
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, ProdTypeCcdName, ProdName
-            , RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusCcdName';
+            , RealPayPrice, TRUNCATE(if(PgFee < 1, RealPayPrice * PgFee, PgFee), 0) as PgFeePrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusCcdName';
 
         $arr_condition = $this->_getOrderListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getOrderListOrderBy(), $this->_order_list_add_join);

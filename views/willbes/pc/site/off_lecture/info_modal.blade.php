@@ -14,7 +14,7 @@
             </dt>
             <dt><span class="row-line">|</span></dt>
             <dt>수강형태 : <span class="tx-blue">{{$data['StudyPatternCcdName']}}</span></dt>
-            <dt class="NSK ml15">
+            <dt class="NGR ml15">
                 <span class="acadBox n{{ substr($data['StudyApplyCcd'], -1) }}">{{ $data['StudyApplyCcdName'] }}</span>
             </dt>
 

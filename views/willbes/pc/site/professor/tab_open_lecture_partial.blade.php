@@ -88,7 +88,7 @@
                                                     <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강@if(empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강기간 : <span class="study-period tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriod'] }}일</span></dt>
-                                                    <dt class="NSK ml15">
+                                                    <dt class="NGR ml15">
                                                         <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                         <span class="lecture-progress nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                                     </dt>
@@ -103,7 +103,7 @@
                                                     <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
                                                         <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                         @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
-                                                            <dl class="NSK">
+                                                            <dl class="NGR">
                                                                 <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
                                                                 @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
                                                                 @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
@@ -223,7 +223,7 @@
                                                 <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDate']}}</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
-                                                <dt class="NSK ml15">
+                                                <dt class="NGR ml15">
                                                     <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                 </dt>
                                             </dl>
@@ -285,7 +285,7 @@
                                                 <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDate']}}</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
-                                                <dt class="NSK ml15">
+                                                <dt class="NGR ml15">
                                                     <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                 </dt>
                                             </dl>
@@ -366,7 +366,7 @@
                                                     </dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
-                                                    <dt class="NSK ml15">
+                                                    <dt class="NGR ml15">
                                                         <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{ $row['StudyApplyCcdName'] }}</span>
                                                     </dt>
                                                 </dl><br/>
@@ -376,7 +376,7 @@
                                                 {{ $row['WeekArrayName'] }} ({{ $row['Amount'] }}회차)
                                             </td>
                                             <td class="w-notice p_re">
-                                                <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
+                                                <div class="acadInfo NGR n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
                                                 @if(empty($row['ProdPriceData']) === false)
                                                     @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                         <div class="priceWrap chk buybtn p_re">
@@ -456,13 +456,13 @@
                                                 <dt>개강월 : <span class="tx-blue">{{$row['SchoolStartYear']}}-{{$row['SchoolStartMonth']}}</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강형태 : <span class="tx-blue">{{$row['StudyPatternCcdName']}}</span></dt>
-                                                <dt class="NSK ml15">
+                                                <dt class="NGR ml15">
                                                     <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{$row['StudyApplyCcdName']}}</span>
                                                 </dt>
                                             </dl><br/>
                                         </td>
                                         <td class="w-notice p_re">
-                                            <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{$row['AcceptStatusCcdName']}}</div>
+                                            <div class="acadInfo NGR n{{ substr($row['AcceptStatusCcd'], -1) }}">{{$row['AcceptStatusCcdName']}}</div>
                                             @if(empty($row['ProdPriceData']) === false)
                                                 @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                     <div class="priceWrap chk buybtn p_re">

@@ -31,17 +31,17 @@
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="#none" onclick="openWin('LayerProfile'); openWin('Profile');">
-                            <div class="NSK">프로필</div>
+                            <div class="NGR">프로필</div>
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url1']) === false ? 'fnPlayerProf(\'' . $prof_idx . '\', \'S1\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">
-                            <div class="NSK">맛보기</div>
+                            <div class="NGR">맛보기</div>
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="openWin('LayerCurriculum'); openWin('Curriculum');">
-                            <div class="NSK">커리큘럼</div>
+                            <div class="NGR">커리큘럼</div>
                         </a>
                     </li>
                 </ul>
@@ -99,7 +99,7 @@
                                             <div id="best_lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: 0; left: 63px;">
                                                 <a class="closeBtn" href="#none" onclick="closeWin('best_lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                 @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
-                                                    <dl class="NSK">
+                                                    <dl class="NGR">
                                                         <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
                                                         @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
                                                         @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif

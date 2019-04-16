@@ -1902,12 +1902,12 @@ class Player extends \app\controllers\FrontController
             $isstart = 'Y';
         }
 
-        if($isstart == 'N'){
-            return $this->StarplayerResult(true, '수강시작 전인 강의입니다.','', $isApp);
+        if($ispause == 'Y'){
+            return $this->StarplayerResult(true, '수강 정지 된 강의입니다.','', $isApp);
         }
 
-        if($ispause == 'Y'){
-            return $this->StarplayerResult(true, '일시중지중인 강의입니다.','', $isApp);
+        if($isstart == 'N'){
+            return $this->StarplayerResult(true, '수강시작 전인 강의입니다.','', $isApp);
         }
 
         // 회차 열어준경우 IN 생성

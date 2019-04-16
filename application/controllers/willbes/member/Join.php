@@ -36,13 +36,13 @@ class Join extends BaseMember
         }
 
         // 모바일 페이지에서 넘어온것인지 세션에 저장
-        $ismoblie = ($this->_req('ismobile') == '1') ? '1' : '0';
-        $this->session->set_userdata('join_mobile', $ismoblie);
+        $ismobile = ($this->_req('ismobile') == '1') ? '1' : '0';
+        $this->session->set_userdata('join_mobile', $ismobile);
 
         // 회원가입버튼 누른 사이트코드 세션에 저장 해서 회원가입할때 같이 넣어줌
         $sitecode = $this->_req('sitecode');
         $sitecode = (empty($sitecode) == true) ? '2000' : $sitecode;
-        $this->session->set_userdata('join_sitecode', $ismoblie);
+        $this->session->set_userdata('join_sitecode', $sitecode);
 
         // 이메일 코드
         $codes = $this->codeModel->getCcdInArray(['661']);
@@ -365,7 +365,7 @@ class Join extends BaseMember
         $SiteCode = $this->session->userdata('join_sitecode');
         $SiteCode = (empty($SiteCode) == true) ? '2000' : $SiteCode;
         $input = array_merge($input, [
-            'Sitecode' => $SiteCode
+            'SiteCode' => $SiteCode
         ]);
 
         // 실제 데이타 입력

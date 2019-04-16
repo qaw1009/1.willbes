@@ -94,7 +94,8 @@ class OrderListModel extends BaseOrderModel
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                       
             , P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
-            , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName';
+            , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName
+            , json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
         $in_column .= $this->_getAddListQuery('excel_column', $arr_add_join);
 
         $from = $from = $this->_getListFrom($arr_add_join);

@@ -210,7 +210,7 @@
                                         <dt>개강월 : <span class="tx-blue">{{$row['SchoolStartYear']}}-{{$row['SchoolStartMonth']}}</span></dt>
                                         <dt><span class="row-line">|</span></dt>
                                         <dt>수강형태 : <span class="tx-blue">{{$row['StudyPatternCcdName']}}</span></dt>
-                                        <dt class="NSK ml15">
+                                        <dt class="ml15">
                                             <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{$row['StudyApplyCcdName']}}</span>
                                         </dt>
                                     </dl><br/>

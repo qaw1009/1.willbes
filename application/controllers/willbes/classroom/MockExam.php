@@ -181,6 +181,10 @@ class MockExam extends \app\controllers\FrontController
         $RemainSec = element('RemainSec',$arr_input);
         $mridx = element('mridx',$arr_input);
 
+        if(strlen($prodcode)!=6){
+            show_alert('상품코드가 유효하지 않습니다.', 'back');
+        }
+
         $arr_condition = [
             'EQ' => [
                 'MR.MemIdx' => $_SESSION['mem_idx'],

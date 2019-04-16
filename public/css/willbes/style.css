@@ -3060,7 +3060,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 
 .willbes-Layer-popBox {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     z-index: 106;

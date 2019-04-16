@@ -1745,13 +1745,16 @@ class Player extends \app\controllers\FrontController
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-logger($params);
+        // logger($params);
         switch($event){
             case 'downloaded':
+                // 다운로드 완료
                 break;
 
+            case 'begin_content':
+                // 스트리밍 재생 시작
             case 'openingDownloadedContent':
-                // 다운로드한 강의 재생 시작할때
+                // 다운로드강의 재생 시작할때
 
                 // 재생가능한 강좌인지 체크
                 $lec = $this->checkOrderProduct($content_id,  true);

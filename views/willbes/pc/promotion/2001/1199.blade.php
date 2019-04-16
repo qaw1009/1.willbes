@@ -56,12 +56,13 @@
         <div class="evtCtnsBox evt02">
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide01.png" alt="신광은" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide02.png" alt="장정훈" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide03.png" alt="김원욱" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide04.png" alt="하승민" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide05.png" alt="오태진" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide06.png" alt="원유철" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide01.jpg" alt="신광은" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide02.jpg" alt="장정훈" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide03.jpg" alt="김원욱" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide04.jpg" alt="하승민" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide05.jpg" alt="오태진" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide06.jpg" alt="원유철" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide07.jpg" alt="김현정" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_next.png"></a></p>
@@ -114,8 +115,6 @@
                     slidesImg3.goToNextSlide();
                 });
         });
-
-
     </script>
 
 @stop

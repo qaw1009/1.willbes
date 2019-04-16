@@ -210,13 +210,13 @@
                                         <dt>개강월 : <span class="tx-blue">{{$row['SchoolStartYear']}}-{{$row['SchoolStartMonth']}}</span></dt>
                                         <dt><span class="row-line">|</span></dt>
                                         <dt>수강형태 : <span class="tx-blue">{{$row['StudyPatternCcdName']}}</span></dt>
-                                        <dt class="NSK ml15">
+                                        <dt class="ml15">
                                             <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{$row['StudyApplyCcdName']}}</span>
                                         </dt>
                                     </dl><br/>
                                 </td>
                                 <td class="w-notice p_re">
-                                    <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{$row['AcceptStatusCcdName']}}</div>
+                                    <div class="acadInfo NGR n{{ substr($row['AcceptStatusCcd'], -1) }}">{{$row['AcceptStatusCcdName']}}</div>
                                     @if(empty($row['ProdPriceData']) === false)
                                         @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                             <div class="priceWrap chk buybtn p_re">

@@ -50,7 +50,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_01.png" title="합격예측 사전예약 특전">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_01.jpg" title="합격예측 사전예약 특전">
         </div>
 
         <div class="evtCtnsBox evt02">

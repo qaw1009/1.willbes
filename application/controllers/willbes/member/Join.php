@@ -430,6 +430,10 @@ class Join extends BaseMember
 
         $isNew = ($sms_stat == "NEW" ? true : false);
 
+        if(preg_match("/[ #\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}0-9a-z]/i", $sms_name) > 0){
+            return $this->json_error("이름은 한글만 입력해주십시요.");
+        }
+
         // 이미 가입된 정보 검색
         $phoneEnc = $this->memberFModel->getEncString($phonenumber);
         $count = $this->memberFModel->getMember(true, [

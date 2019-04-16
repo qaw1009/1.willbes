@@ -42,6 +42,6 @@ $config['mock'] = array(
 
 $config['predict'] = array(
     'sysCode_Area' => '712',
-    'upload_path_predict' => $config['upload_prefix_dir'] . '/predict/', // 응시표인증파일: ~/predict/{idx}/
+    'upload_path_predict' => 'lms/predict/', // 응시표인증파일: ~/predict/{idx}/
     'upload_url_predict' => PUBLICURL . 'uploads/lms/predict/' // 업로드이미지 URL
 );

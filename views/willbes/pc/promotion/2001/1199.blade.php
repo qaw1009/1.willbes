@@ -26,7 +26,7 @@
             .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px; line-height:30px}
             .counter span {color:#fff200; font-size:30px; vertical-align: text-bottom}
         .evt01 {background:#363636}
-        .evt02 {background:#766f65; padding:100px 0}
+        .evt02 {background:#5b554e; padding:100px 0}
         /* 슬라이드배너 */
         .slide_con {position:relative; width:980px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}

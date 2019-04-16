@@ -29,9 +29,9 @@
         .evt04 div {margin-bottom:80px; font-size:40px;}
         .evt04 div span {color:#c43f90; border-bottom:3px solid #fff2fa}
         .evt04 table {background:#fff; width:100%} 
-        .evt04 tr {border-bottom:1px solid #ccc}
+        .evt04 tr {border-bottom:1px solid #ccc}        
+        .evt04 tr.st01 {background:#e3e4e5}
         .evt04 tr:hover {background:#fff2fa}
-        .evt04 tr:last-child {background:#b6bec9}
         .evt04 th,
         .evt04 td {padding:15px 20px; font-size:16px; font-weight:500;}
         .evt04 th {background:#e4e4e4; color:#000}
@@ -40,7 +40,6 @@
         .evt04 td:nth-child(3) {color:#c43f90}
         .evt04 td:last-chiild {border:0}
         .evt04 td p {font-size:12px}
-        .evt04
         .evt04 a {padding:10px 15px; color:#fff; background:#c43f90; font-size:14px; display:block; border-radius:20px 20px 0 20px}
         .evt04 a:hover {background:#252525}
         .evt04 a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
@@ -124,18 +123,19 @@
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1054&campus_ccd=605001') }}" target="_blank">수강신청</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152809') }}" target="_blank">수강신청</a></td>
                     </tr>
-                    <tr>
+                    <tr class="st01">
                       <td>학원 종합반</td>
                       <td>2019 1차 대비 마무리 특강 종합반</td>
                       <td>&nbsp;</td>
                       <td colspan="2"><a href="{{ site_url('/pass/offPackage/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1046') }}" target="_blank">수강신청</a></td>
                     </tr>
-                    <tr>
-                      <td rowspan="2">동영상 종합반</td>
+                    <tr class="st01">
+                      <td>동영상 종합반</td>
                       <td colspan="2">2019년 1차대비 윌비스 신광은경찰 마무리 특강 (史원유철)</td>
                       <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152830') }}" target="_blank">수강신청</a></td>
                     </tr>
-                    <tr>
+                    <tr class="st01">
+                        <td>동영상 종합반</td>    
                         <td colspan="2">2019년 1차대비 윌비스 신광은경찰 마무리 특강 (史오태진)</td>
                         <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152829') }}" target="_blank">수강신청</a></td>
                     </tr>

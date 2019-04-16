@@ -2164,15 +2164,15 @@ class Player extends \app\controllers\FrontController
     {
         if($isApp == true){
             if($error == true){
-                return $this->response([
-                    'result' => 'error',
-                    'message' => $msg
-                ]);
+                echo '{';
+                echo '"result":"error",';
+                echo '"message":"'.$msg.'"';
+                echo '}';
             } else {
-                return $this->response([
-                    'result' => 'success',
-                    'message' => ''
-                ]);
+                echo '{';
+                echo '"result":"success",';
+                echo '"message":"'.$msg.'"';
+                echo '}';
             }
 
         } else {

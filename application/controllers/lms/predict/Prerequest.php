@@ -13,6 +13,7 @@ class Prerequest extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict');
     protected $helpers = array();
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -35,43 +36,35 @@ class Prerequest extends \app\controllers\BaseController
      */
     public function index()
     {
-//        $paymentStatus = $this->config->item('sysCode_paymentStatus', 'mock');
-//        $applyType = $this->config->item('sysCode_applyType', 'mock');
-//        $applyArea1 = $this->config->item('sysCode_applyArea1', 'mock');
-//        $applyArea2 = $this->config->item('sysCode_applyArea2', 'mock');
-//
-          $siteCode = get_auth_site_codes();
-          //$codes = $this->codeModel->getCcdInArray([$paymentStatus, $applyType, $applyArea1, $applyArea2]);
-//
-//        $applyAreaTmp1 = array_map(function($v) { return '[지역1] '. $v; }, $codes[$applyArea1]);
-//        $applyAreaTmp2 = array_map(function($v) { return '[지역2] '. $v; }, $codes[$applyArea2]);
-//        $applyArea = $applyAreaTmp1 + $applyAreaTmp2;
-//
-//        /*모의고사별 접수현황 메뉴에서 검색조건 달고 페이지 접근*/
-//        $search_PayStatusCcd = $this->_req('search_PayStatusCcd');
-//        $search_IsTake = $this->_req('search_IsTake');
-//        $search_fi = $this->_req('search_fi', true);
+        $siteCode = get_auth_site_codes();
+
+        $search_fi = $this->_req('search_fi', true);
         $search_site_code = $this->_req('search_site_code', true);
+        $search_TakeMockPart = $this->_req('search_TakeMockPart', true);
+        $search_TakeArea = $this->_req('search_TakeArea', true);
 //
         if($search_site_code){
             $scode = $search_site_code;
         } else {
             $scode = $siteCode[0];
         }
-//
-//        $arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원'];
-//        $arrtab = array();
+
+        $arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원'];
+        $arrtab = array();
+
+        $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        $area = $this->predictModel->getArea($sysCode_Area);
+        $serial = $this->predictModel->getSerialAll();
 
         $this->load->view('predict/prerequest/index', [
               'siteCodeDef' => $scode,
-//            'paymentStatus' => $codes[$paymentStatus],
-//            'applyType' => $codes[$applyType],
-//            'applyArea' => $applyArea,
-//            'search_PayStatusCcd'=>$search_PayStatusCcd,
-//            'search_IsTake'=>$search_IsTake,
-//            'search_fi'=>$search_fi,
-//            'arrsite' => $arrsite,
-//            'arrtab' => $arrtab
+              'area' => $area,
+              'serial' => $serial,
+              'search_TakeMockPart'=> $search_TakeMockPart,
+              'search_TakeArea'=> $search_TakeArea,
+              'search_fi'=> $search_fi,
+              'arrsite' => $arrsite,
+              'arrtab' => $arrtab
         ]);
     }
 
@@ -101,33 +94,43 @@ class Prerequest extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-//                'O.SiteCode' => $this->_req('search_site_code'),
-//                'OP.PayStatusCcd' => $this->_req('search_PayStatusCcd'),
-//                'MR.TakeForm' => $this->_req('search_TakeForm'),
-//                'MR.TakeArea' => $this->_req('search_TakeArea'),
-//                'MR.IsTake' => $this->_req('search_IsTake'),
+                'PR.SiteCode' => $this->_req('search_site_code'),
+                'PR.TakeMockPart' => $this->_req('search_TakeMockPart'),
+                'PR.TakeArea' => $this->_req('search_TakeArea'),
             ],
             'ORG' => [
                 'LKB' => [
-//                    'U.MemName' => $this->_req('search_fi', true),
-//                    'U.MemId' => $this->_req('search_fi', true),
-//                    'U.Phone3' => $this->_req('search_fi', true),
-//                    'PD.ProdName' => $this->_req('search_fi', true),
-//                    'MR.ProdCode' => $this->_req('search_fi', true),
-//                    'MR.TakeNumber' => $this->_req('search_fi', true),
-//                    'O.OrderNo' => $this->_req('search_fi', true),
+                    'M.MemName' => $this->_req('search_fi', true),
+                    'M.MemId' => $this->_req('search_fi', true),
+                    'PR.TakeNumber' => $this->_req('search_fi', true),
+
                 ]
             ],
         ];
 
+        if($excel === 'Y') {
+            set_time_limit(0);
+            ini_set('memory_limit', $this->_memory_limit_size);
 
-        list($data, $count) = $this->predictModel->predictRegistList($condition, $this->input->post('length'), $this->input->post('start'));
+            $data  = $this->predictModel->predictRegistListExcel($condition);
+            // export excel
+            $file_name = '합격예측 사전입력자_'.date('Y-m-d');
 
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $data,
-        ]);
+            $headers = ['NO', '이름', '회원아이디', '휴대폰번호', '직렬', '지역', '응시번호', '수강여부', '시험준비기간', '신청일'];
+
+            $this->load->library('excel');
+            if ($this->excel->exportHugeExcel($file_name, $data, $headers) !== true) {
+                show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+            }
+        } else {
+            list($data, $count) = $this->predictModel->predictRegistList($condition, $this->input->post('length'), $this->input->post('start'));
+
+            return $this->response([
+                'recordsTotal' => $count,
+                'recordsFiltered' => $count,
+                'data' => $data,
+            ]);
+        }
 
     }
 

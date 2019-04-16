@@ -107,7 +107,10 @@
                 <span class="row-line">|</span>
                 <span>
                     <span class="price-txt">패키지</span>
-                    <span class="tx-light-blue">140,000원</span>
+                    <span class="tx-dark-gray">140,000원</span>
+                    <span class="tx-pink pl10">(↓10%)</span>
+                    <span class="pl10"> ▶ </span>
+                    <span class="tx-light-blue pl10">126,000원</span>
                 </span>
                 <span class="price-img">
                     <img src="{{ img_url('sub/icon_plus.gif') }}">

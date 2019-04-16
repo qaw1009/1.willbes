@@ -18,7 +18,7 @@
                         <div class="announce-Btn NSK mt20 mr70 f_right">
                             <ul>
                                 <li>
-                                    <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
+                                    <button type="submit" onclick="popupOpen('{{app_url('/company/agreement', 'www')}}', 'agreement', '1000', '600', null, null, 'yes');" class="mem-Btn bg-white bd-dark-gray">
                                         <span class="tx-purple-gray">윌비스 이용약관 확인</span>
                                     </button>
                                 </li>

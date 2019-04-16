@@ -13,16 +13,16 @@ class OrderListModel extends BaseOrderModel
      * @param null|int $offset
      * @param array $order_by
      * @param array $arr_add_join
+     * @param bool $is_all_from [true : 모든 테이블 조인, false : code, admin 테이블 조인 제외]
      * @return mixed
      */
-    public function listAllOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_join = [])
+    public function listAllOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_join = [], $is_all_from = true)
     {
-        $is_all_from = true;    // 모든 테이블 조인
         if (is_bool($is_count) === true) {
             if ($is_count === true) {
                 $in_column = 'straight_join count(*) AS numrows';
                 $column = 'numrows';
-                $is_all_from = false;
+                $is_all_from = false;   // 강제 제외 처리
             } else {
                 $in_column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, S.SiteName, O.MemIdx, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone
                     , O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid

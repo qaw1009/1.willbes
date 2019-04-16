@@ -72,7 +72,7 @@ class TmModel extends WB_Model
         //기본 조건
         $where = ' where 
                         A.IsStatus=\'Y\' And A.IsBlackList=\'N\' 
-                        #and B.SmsRcvStatus=\'Y\'
+                        and B.SmsRcvStatus=\'Y\'
                         ';
 
         if($assign_ccd === '687001' || $assign_ccd === '687002' || $assign_ccd === '687004' ) {
@@ -226,7 +226,7 @@ class TmModel extends WB_Model
         $order_by = ' Order by rand() ';
 
         $query = $this->_conn->query('select ' .$column .$from .$where. $order_by. $limit);
-        //echo $this->_conn->last_query();
+        echo $this->_conn->last_query();
         return ($search_type === 'search') ? $query->row(0)->numrows : $query->result_array();
     }
 

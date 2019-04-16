@@ -589,7 +589,7 @@ class MemberFModel extends WB_Model
 
             // 회원 정보 입력
             $data = [
-                'SiteCode' => config_item('app_intg_site_code'),
+                'SiteCode' => element('SiteCode', $input),
                 'MemId' => strtolower(element('MemId', $input)),
                 'MemName' => element('MemName', $input),
                 'BirthDay' => element('BirthDay', $input),

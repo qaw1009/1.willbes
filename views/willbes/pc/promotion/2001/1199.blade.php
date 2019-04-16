@@ -26,7 +26,7 @@
             .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px; line-height:30px}
             .counter span {color:#fff200; font-size:30px; vertical-align: text-bottom}
         .evt01 {background:#363636}
-        .evt02 {background:#766f65; padding:100px 0}
+        .evt02 {background:#5b554e; padding:100px 0}
         /* 슬라이드배너 */
         .slide_con {position:relative; width:980px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
@@ -50,18 +50,19 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_01.png" title="합격예측 사전예약 특전">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_01.jpg" title="합격예측 사전예약 특전">
         </div>
 
         <div class="evtCtnsBox evt02">
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide01.png" alt="신광은" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide02.png" alt="장정훈" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide03.png" alt="김원욱" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide04.png" alt="하승민" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide05.png" alt="오태진" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide06.png" alt="원유철" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide01.jpg" alt="신광은" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide02.jpg" alt="장정훈" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide03.jpg" alt="김원욱" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide04.jpg" alt="하승민" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide05.jpg" alt="오태진" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide06.jpg" alt="원유철" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_02_slide07.jpg" alt="김현정" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_next.png"></a></p>
@@ -114,8 +115,6 @@
                     slidesImg3.goToNextSlide();
                 });
         });
-
-
     </script>
 
 @stop

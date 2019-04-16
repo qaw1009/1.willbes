@@ -278,7 +278,27 @@
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/sales/' . $sales_type . 'Sales/excel') }}', $search_form.serializeArray(), 'POST');
+                    var params = [];
+                    var chk_params = {};
+
+                    $.each($search_form.serializeArray(), function(k, v) {
+                        if (v.name.indexOf('search_chk_') !== -1) {
+                            // checkbox value 설정
+                            if (chk_params.hasOwnProperty(v.name) === true) {
+                                chk_params[v.name] = chk_params[v.name] + ',' + v.value;
+                            } else {
+                                chk_params[v.name] = v.value;
+                            }
+                        } else {
+                            params.push({ 'name' : v.name, 'value' : v.value });
+                        }
+                    });
+
+                    $.each(chk_params, function(k, v) {
+                        params.push({ 'name' : k, 'value' : v });
+                    });
+
+                    formCreateSubmit('{{ site_url('/sales/' . $sales_type . 'Sales/excel') }}', params, 'POST');
                 }
             });
         });

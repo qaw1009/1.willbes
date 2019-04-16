@@ -22,7 +22,7 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
+            top:250px;
             right:10px;
             z-index:1;
         }
@@ -37,8 +37,11 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        <div class="skybanner">
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/1069_skybanner.png" alt="매직아이 김신주 영어 어휘 PACK"/></a>
+        </div>    
         <div class="evtCtnsBox wb_cts01" >
-            <div>
+                <div>
                 <span><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/1069_01_btn.gif" alt="선착순 20명 교재 무료" /></a></span>
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1069_01.jpg" alt="매직아이 김신주 영어 어휘 PACK"/>
             </div>

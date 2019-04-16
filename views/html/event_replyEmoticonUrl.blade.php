@@ -25,11 +25,12 @@
 
     .replyEvaluate {width:1000px; margin:0 auto;}
     .character ul {border-top:1px solid #ababab; text-align:center}
-    .character li {display:inline; float:left; width:166px; text-align:center; cursor:pointer; margin:0 auto}
+    .character li {display:inline; float:left; width:166px; text-align:center; margin:0 auto}
     .character li:first-child,
     .character li:last-child {width:168px}
     .character li:first-child div {border-left:1px solid #ababab}
-    .character li div {border-right:1px solid #ababab}
+    .character li:last-child div {border-right:1px solid #ababab}
+    .character li div {border-right:1px solid #eaeaea}
     .character li input {vertical-align:middle}
     .character li.active {background:#cde7f5}
     .character li p {height:40px; line-height:40px; color:#333; background:#eee; font-size:14px; font-weight:bold}
@@ -37,7 +38,7 @@
     .character ul:after {content:""; display:block; clear:both}
     
     .replyEvaluate .reply_inbx {
-        position:relative; border:1px solid #ababab; padding:20px 0; 
+        position:relative; border:1px solid #ababab; border-top:1px solid #eaeaea; padding:20px 0; 
     }
     .replyEvaluate .reply_inbx ul {margin-left:20px}
     .replyEvaluate .reply_inbx li {
@@ -49,8 +50,8 @@
         content:""; display:block; clear:both;
     }
     .replyEvaluate .reportUrl { padding:0 20px}
-    .replyEvaluate .reportUrl input {height:24px; width:70%; padding:0 10px; margin-left:10px }
-    .replyEvaluate .textarBx {margin-top:10px; border-top:1px solid #eaeaea;}
+    .replyEvaluate .reportUrl input {height:24px; width:80%; padding:0 10px; margin-left:15px; background:#f7f7f7; border:1px solid #eaeaea}
+    .replyEvaluate .textarBx {margin-top:10px; border-top:1px solid #eaeaea; }
     .replyEvaluate .textarBx textarea {
         border:0; width:100%; line-height:1.5; border-bottom:1px solid #eaeaea; padding:10px 20px;
     }
@@ -94,31 +95,31 @@
             <li>
                 <div>
                     <img src="https://static.willbes.net/public/images/promotion/common/icon_poof01.png" title="신광은" />
-                    <p><label><input type="radio" name="sns_icon" value="1" /> 만점의 <span>신~</span></label></p>
+                    <p><input type="radio" name="sns_icon" value="1" id="icon1"/> <label for="icon1">만점의 <span>신~</span></label></p>
                 </div>
             </li>
             <li>
                 <div>
                     <img src="https://static.willbes.net/public/images/promotion/common/icon_poof20.png" title="장정훈" />
-                    <p><label><input type="radio" name="sns_icon" value="2" /> 만점의 <span>향기~~</span></label></p>
+                    <p><input type="radio" name="sns_icon" value="2" id="icon2"/> <label for="icon2">만점의 <span>향기~~</span></label></p>
                 </div>
             </li>
             <li>
                 <div>
                     <img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" title="김원욱" />
-                    <p><label><input type="radio" name="sns_icon" value="3" /> 만점<span>맨!~</span></label></p>
+                    <p><input type="radio" name="sns_icon" value="3" id="icon3"/> <label for="icon3">만점<span>맨!~</span></label></p>
                 </div>
             </li>
             <li>
                 <div>
                     <img src="https://static.willbes.net/public/images/promotion/common/icon_poof18.png" title="하승민" />
-                    <p><label><input type="radio" name="sns_icon" value="4" /> 히든 <span>만점러~</span></label></p>
+                    <p><input type="radio" name="sns_icon" value="4" id="icon4"/> <label for="icon4">히든 <span>만점러~</span></label></p>
                 </div>
             </li>
             <li>
                 <div>
                     <img src="https://static.willbes.net/public/images/promotion/common/icon_poof13.png" title="오태진" />
-                    <p><label><input type="radio" name="sns_icon" value="5" /> 불타는 <span>만점러!</span></label></p>
+                    <p><input type="radio" name="sns_icon" value="5" id="icon5"/> <label for="icon5">불타는 <span>만점러!</span></label></p>
                 </div>
             </li>
             <li>
@@ -191,11 +192,12 @@
             <li>
                 <img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" title="쉬웠어요">
                 <div>
-                    <p>홍길* <span>2019-03-25</span></p>    
+                    <p>홍길* <span>2019-03-25</span></p>  
+                    <p>https://www.local.will********************</p>   
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.                                
                 </div>
             </li>
         </ul>
     </div>
-    <div class="mt30">공통 페이지 넘버링 적용 </div>              
+    <div class="mt30 mb30">공통 페이지 넘버링 적용 </div>              
 </div>

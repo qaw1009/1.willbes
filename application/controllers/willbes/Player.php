@@ -1745,7 +1745,7 @@ class Player extends \app\controllers\FrontController
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-        // logger($params);
+        logger($params);
         switch($event){
             case 'downloaded':
                 // 다운로드 완료

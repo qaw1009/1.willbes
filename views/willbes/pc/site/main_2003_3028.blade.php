@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container tech NSK c_both">
+    <div id="Container" class="Container tech NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 

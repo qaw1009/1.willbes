@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <div id="Container" class="Container GA NSK c_both">
+    <div id="Container" class="Container GA NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 

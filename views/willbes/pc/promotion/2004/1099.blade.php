@@ -72,7 +72,7 @@
 
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="p_re evtContent NGR" id="evtContainer">
         <ul class="wb_skybn">
             <li><a href="{{ site_url('/pass/offLecture/index?cate_code=3050&course_idx=1062') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L7.png" alt="실전 모의고사" ></a></li>
         </ul>

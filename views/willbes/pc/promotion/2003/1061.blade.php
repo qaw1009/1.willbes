@@ -213,11 +213,6 @@
         }
         daycountDown();
 
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
-        });
 
         function go_PassLecture(no){
             if(parseInt(no)==1 || parseInt(no)==2){

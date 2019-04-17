@@ -58,13 +58,21 @@ class PredictModel extends WB_Model
         'predictRegister' => 'lms_predict_register',
 
         'predictPaper' => 'lms_predict_paper',
-        'productPredictR' => 'lms_product_predict_r_paper'
+        'predictQuestion' => 'lms_predict_questions',
     ];
+
+    public $upload_path;            // 업로드 기본경로
+    public $upload_path_predict;       // 통파일 저장경로: ~/predict/{idx}/
+    public $upload_url_predict;       // 통파일 저장경로: ~/predict/{idx}/
 
 
     public function __construct()
     {
         parent::__construct('lms');
+        $this->load->config('upload');
+        $this->upload_path = $this->config->item('upload_path');
+        $this->upload_path_predict = $this->config->item('upload_path_predict', 'predict');
+        $this->upload_url_predict = $this->config->item('upload_url_predict', 'predict');
     }
 
     /**
@@ -154,20 +162,26 @@ class PredictModel extends WB_Model
     {
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
         $column = "
-	        * 
+	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.ProdCode, PP.SubjectCode, PP.Type, 
+	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse
         ";
 
         $from = "
             FROM 
                 {$this->_table['predictPaper']} AS PP
-                JOIN {$this->_table['productPredictR']} AS PPR ON PP.PpIdx = PPR.PpIdx
+                LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A2 ON PP.UpdAdminIdx = A2.wAdminIdx
         ";
         $selectCount = " SELECT COUNT(*) AS cnt";
         $where = " WHERE PP.PpIdx > 0 ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "";
-        //echo "<pre>SELECT ". $column . $from . $where . $order . $offset_limit . "</pre>";
+        //echo "<pre>". 'select' . $column . $from . $where . $order . $offset_limit . "</pre>";
+
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
+        foreach($data as $key => &$val){
+            $data[$key]['FilePath'] = $this->upload_url_predict.$val['PpIdx']."/";
+        }
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
         return array($data, $count);
@@ -178,7 +192,7 @@ class PredictModel extends WB_Model
      */
     public function predictRegistList($condition='', $limit='', $offset='')
     {
-        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
+        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
         $column = " 
        
             MemName,
@@ -201,13 +215,70 @@ class PredictModel extends WB_Model
                 JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
-        $where = "WHERE PR.IsStatus = 'Y'";
+        $where = " WHERE PR.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = "";
-
+        $order = " ORDER BY PR.RegDatm DESC";
         $data = $this->_conn->query('Select'. $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
         return array($data, $count);
+    }
+
+    /**
+     * 데이터 복사
+     */
+    public function copyData($idx)
+    {
+        if (!preg_match('/^[0-9]+$/', $idx)) return false;
+
+        $RegIp = $this->input->ip_address();
+        $RegAdminIdx = $this->session->userdata('admin_idx');
+        $RegDatm = date("Y-m-d H:i:s");
+
+        try {
+            $this->_conn->trans_begin();
+
+            // lms_mock_paper 복사
+            $sql = "
+                INSERT INTO {$this->_table['predictPaper']}
+                    (PaperName, AnswerNum, TotalScore, 
+                     QuestionFile, RealQuestionFile, ProdCode, SubjectCode, Type, IsUse, RegIp, RegAdminIdx, RegDate)
+                SELECT CONCAT('복사-', PaperName), AnswerNum, TotalScore,
+                       QuestionFile, RealQuestionFile, ProdCode, SubjectCode, Type, 'N', ?, ?, ?
+                FROM {$this->_table['predictPaper']}
+                WHERE PpIdx = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($RegIp, $RegAdminIdx, $RegDatm, $idx));
+
+            $nowIdx = $this->_conn->insert_id();
+
+            // lms_mock_questions 복사
+            $sql = "
+                INSERT INTO {$this->_table['predictQuestion']}
+                    (PpIdx, QuestionNO, RightAnswer, Scoring, RegIp, RegAdminIdx, RegDatm)
+                SELECT ?, QuestionNO, RightAnswer, Scoring, ?, ?, ?
+                FROM {$this->_table['predictQuestion']}
+                WHERE PpIdx = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($nowIdx, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+
+            // 파일 복사
+            $src = $this->upload_path . $this->upload_path_predict . $idx . "/";
+            $dest = $this->upload_path . $this->upload_path_predict . $nowIdx . "/";
+
+            exec("cp -rf $src $dest");
+            if(is_dir($dest) === false) {
+                throw new Exception('파일 저장에 실패했습니다.');
+            }
+
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('복사에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $nowIdx]];
     }
 
     /**
@@ -236,19 +307,15 @@ class PredictModel extends WB_Model
 
         $where = "WHERE PR.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = "ORDER BY MemName DESC\n";
+        $order = " ORDER BY PR.RegDatm DESC\n";
 
-        $sql = "Select @SEQ := @SEQ+1 as NO,mm.*
-                    From  (SELECT @SEQ := 0) A,
-                    (
-                      SELECT 
-                        $column     
-                        $from  
-                        $where 
-                        $order              
-                    ) mm Order by @SEQ DESC
+        $sql = "
+            SELECT 
+            $column     
+            $from  
+            $where 
+            $order              
         ";
-        //echo "<pre>".$sql."</pre>";
         $data = $this->_conn->query($sql)->result_array();
         return $data;
     }
@@ -354,6 +421,25 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * 기본정보, 문항정보 조회
+     */
+    public function getExamBase($idx)
+    {
+        if (!preg_match('/^[0-9]+$/', $idx)) return false;
+
+        $where = array('PpIdx' => $idx, 'IsStatus' => 'Y');
+
+        // 기본정보
+        $data = $this->_conn->get_where($this->_table['predictPaper'], $where)->row_array();
+        if(empty($data)) return false;
+
+        // 문항정보
+        $qData = $this->_conn->order_by('QuestionNO ASC')->get_where($this->_table['predictQuestion'], $where)->result_array();
+
+        return array($data, $qData);
+    }
+
+    /**
      *  합격예측용 과목코드 호출
      */
     public function getSubject(){
@@ -367,7 +453,7 @@ class PredictModel extends WB_Model
         ";
 
         $order_by = " ";
-        $where = " WHERE Type IS NOT NULL ";
+        $where = " WHERE Type != '' ";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -457,6 +543,218 @@ class PredictModel extends WB_Model
         }
 
         return ['ret_cd' => true];
+    }
+
+    /**
+     * 과목정보 등록 (lms_Predict_Paper)
+     */
+    public function storePaper()
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile'], 1);
+
+            // 데이터 저장
+            $data = array(
+                'PaperName' => $this->input->post('PaperName', true),
+                'AnswerNum' => $this->input->post('AnswerNum'),
+                'ProdCode' => $this->input->post('ProdCode'),
+                'SubjectCode' => $this->input->post('SubjectCode'),
+                'TotalScore' => $this->input->post('TotalScore'),
+                'Type' => $this->input->post('Type'),
+                'QuestionFile' => $names['QuestionFile']['name'],
+                'RealQuestionFile' => $names['QuestionFile']['real'],
+                'IsUse' => $this->input->post('IsUse'),
+                'RegIp' => $this->input->ip_address(),
+                'RegDate' => date("Y-m-d H:i:s"),
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+            );
+
+            $this->_conn->insert($this->_table['predictPaper'], $data);
+            if(!$this->_conn->affected_rows()) {
+                throw new Exception('저장에 실패했습니다.');
+            }
+
+            $nowIdx = $this->_conn->insert_id();
+
+            $uploadSubPath = $this->upload_path_predict . $nowIdx;
+
+            $isSave = $this->uploadFileSave($uploadSubPath, $names);
+            if($isSave !== true) {
+                throw new Exception('파일 저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $nowIdx]];
+    }
+
+    /**
+     * 과목정보 수정 (lms_Predict_Paper)
+     */
+    public function updatePaper()
+    {
+        $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile'], 1);
+
+        try {
+            $this->_conn->trans_begin();
+
+            // 데이터 수정
+            $data = array(
+                'PaperName' => $this->input->post('PaperName', true),
+                'ProdCode' => $this->input->post('ProdCode'),
+                'SubjectCode' => $this->input->post('SubjectCode'),
+                'Type' => $this->input->post('Type'),
+                'IsUse' => $this->input->post('IsUse'),
+                'UpdDate' => date("Y-m-d H:i:s"),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+            );
+            if($this->input->post('AnswerNum'))      $data['AnswerNum'] = $this->input->post('AnswerNum');
+            if($this->input->post('TotalScore'))     $data['TotalScore'] = $this->input->post('TotalScore');
+
+            if( isset($names['QuestionFile']['error']) && $names['QuestionFile']['error'] === UPLOAD_ERR_OK && $names['QuestionFile']['size'] > 0 ) {
+                $data['QuestionFile'] = $names['QuestionFile']['name'];
+                $data['RealQuestionFile'] = $names['QuestionFile']['real'];
+
+                // 파일 업로드
+                $uploadSubPath = $this->upload_path_predict . $this->input->post('idx');
+
+                $isSave = $this->uploadFileSave($uploadSubPath, $names);
+                if($isSave !== true) {
+                    throw new Exception('파일 저장에 실패했습니다.');
+                }
+            }
+
+            $where = array('PpIdx' => $this->input->post('idx'));
+
+            $this->_conn->update($this->_table['predictPaper'], $data, $where);
+            if(!$this->_conn->affected_rows()) {
+                throw new Exception('변경에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $this->input->post('idx')]];
+    }
+
+    /**
+     *  파일저장 및 수정
+     */
+    public function uploadFileSave($uploadSubPath, $names, $type='file')
+    {
+        $this->load->library('upload');
+
+        try {
+            if (!$uploadSubPath) {
+                throw new Exception('파라메타 오류');
+            }
+
+            $realFileNames = array();
+            foreach ($names as $name) {
+                if( is_array($name['real']) )
+                    $realFileNames = array_merge($realFileNames, $name['real']);
+                else
+                    $realFileNames[] = $name['real'];
+            }
+
+            // 이미지 업로드
+            $uploaded = $this->upload->uploadFile($type, array_keys($names), $realFileNames, $uploadSubPath);
+            if (is_array($uploaded) === false) {
+                throw new Exception($uploaded);
+            }
+
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 문항정보 등록,수정
+     *
+     * (주의) 저장파일에 Q1_~ 로 번호 붙으나 삭제를 하게 되면 index가 변경됨으로 번호가 안 맞을 수도 있음 (중복은 안됨)
+     */
+    public function storePPQuestion()
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            if( !empty($this->input->post('chapterTotal')) ) {
+                foreach ($this->input->post('chapterTotal') as $k => $v) {
+                    if ( empty($this->input->post('chapterExist')) || !in_array($v, $this->input->post('chapterExist')) ) { // 신규등록
+
+                        $dataReg = array(
+                            'PpIdx' => $this->input->post('idx'),
+                            'QuestionNO' => $_POST['QuestionNO'][$k],
+                            'RightAnswer' => $_POST['RightAnswer'][$k],
+                            'Scoring' => $_POST['Scoring'][$k],
+                            'RegIp' => $this->input->ip_address(),
+                            'RegDatm' => date("Y-m-d H:i:s"),
+                            'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                        );
+
+                        $this->_conn->insert($this->_table['predictQuestion'], $dataReg);
+                        if(!$this->_conn->affected_rows()) {
+                            throw new Exception('저장에 실패했습니다(1).');
+                        }
+                    }
+                    else { // 수정
+                        $dataMod = array(
+                            'QuestionNO' => $_POST['QuestionNO'][$k],
+                            'RightAnswer' => $_POST['RightAnswer'][$k],
+                            'Scoring' => $_POST['Scoring'][$k],
+                            'UpdDatm' => date("Y-m-d H:i:s"),
+                            'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                        );
+
+                        $where = array('PqIdx' => $v);
+                        $this->_conn->update($this->_table['predictQuestion'], $dataMod, $where);
+
+                        if(!$this->_conn->affected_rows()) {
+                            throw new Exception('저장에 실패했습니다(2).');
+                        }
+                    }
+                }
+            }
+
+            // 삭제 (IsStatus Update)
+            if( !empty($this->input->post('chapterDel')) ) {
+                foreach ($this->input->post('chapterDel') as $k => $v) {
+                    $dataDel = array(
+                        'IsStatus' => 'N',
+                        'UpdDatm' => date("Y-m-d H:i:s"),
+                        'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                    );
+
+                    $where = array('PqIdx' => $v);
+                    $this->_conn->update($this->_table['predictQuestion'], $dataDel, $where);
+                    if(!$this->_conn->affected_rows()) {
+                        throw new Exception('저장에 실패했습니다(3).');
+                    }
+
+                }
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $this->input->post('idx')]];
     }
 
     /**

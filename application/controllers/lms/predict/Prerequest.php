@@ -116,7 +116,7 @@ class Prerequest extends \app\controllers\BaseController
             // export excel
             $file_name = '합격예측 사전입력자_'.date('Y-m-d');
 
-            $headers = ['NO', '이름', '회원아이디', '휴대폰번호', '직렬', '지역', '응시번호', '수강여부', '시험준비기간', '신청일'];
+            $headers = ['이름', '회원아이디', '휴대폰번호', '직렬', '지역', '응시번호', '수강여부', '시험준비기간', '신청일'];
 
             $this->load->library('excel');
             if ($this->excel->exportHugeExcel($file_name, $data, $headers) !== true) {

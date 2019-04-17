@@ -3,7 +3,7 @@
 @section('content')
     <h5 class="mt-20">- 모의고사 구성을 위해 과목별 문제, 정답, 해설을 등록하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
+        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!}
         {!! csrf_field() !!}
 
         <div class="x_panel">
@@ -75,25 +75,14 @@
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
-                        <th rowspan="2" class="text-center">선택</th>
-                        <th rowspan="2" class="text-center">NO</th>
-                        <th rowspan="2" class="text-center" style="min-width:150px">카테고리</th>
-                        <th rowspan="2" class="text-center">과목</th>
-                        <th rowspan="2" class="text-center">교수</th>
-                        <th rowspan="2" class="text-center">연도</th>
-                        <th rowspan="2" class="text-center">회차</th>
-                        <th rowspan="2" class="text-center">과목별문제지명</th>
-                        <th rowspan="2" class="text-center">지문수</th>
-                        <th rowspan="2" class="text-center">문항수</th>
-                        <th colspan="2" class="text-center">응시현황</th>
-                        <th rowspan="2" class="text-center">사용여부</th>
-                        <th rowspan="2" class="text-center">문제보기</th>
-                        <th rowspan="2" class="text-center">등록자</th>
-                        <th rowspan="2" class="text-center" style="width:130px">등록일</th>
-                    </tr>
-                    <tr>
-                        <th class="text-center">ON</th>
-                        <th class="text-center">OFF</th>
+                        <th class="text-center">선택</th>
+                        <th class="text-center">NO</th>
+                        <th class="text-center">과목별문제지명</th>
+                        <th class="text-center">지문수</th>
+                        <th class="text-center">사용여부</th>
+                        <th class="text-center">문제보기</th>
+                        <th class="text-center">등록자</th>
+                        <th class="text-center" style="width:130px">등록일</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -115,11 +104,6 @@
         var $list_table = $('#list_table');
 
         $(document).ready(function() {
-            // 검색 Select 메뉴
-            $search_form.find('#search_cateD1').chained('#search_site_code');
-            $search_form.find('#search_cateD2').chained('#search_cateD1');
-            $search_form.find('#search_subject').chained('#search_site_code');
-            $search_form.find('#search_professor').chained('#search_site_code');
 
             // 검색 초기화
             $('#searchInit, #tabs_site_code > li').on('click', function () {
@@ -150,45 +134,25 @@
                     'url' : '{{ site_url('/predict/question/list') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        console.log(data);
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
                     }
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<input type="radio" class="flat" name="target" value="' + row.MpIdx + '">';
+                            return '<input type="radio" class="flat" name="target" value="' + row.PpIdx + '">';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var IsUseCate = (row.IsUseCate === 'Y') ? '' : '<span class="red">(미사용)</span>';
-                            return row.CateRouteName + IsUseCate;
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var SubjectType = (row.SubjectType === 'E') ? ' [필수]' : ' [선택]';
-                            var IsUseSubject = (row.IsUseSubject === 'Y') ? '' : '<span class="red">(미사용)</span>';
-
-                            return row.SubjectName + SubjectType + IsUseSubject;
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var IsUseProfessor = (row.IsUseProfessor === 'Y') ? '' : '<span class="red">(미사용)</span>';
-                            return row.wProfName + IsUseProfessor;
-                        }},
-                    {'data' : 'Year', 'class': 'text-center'},
-                    {'data' : 'RotationNo', 'class': 'text-center'},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit">[' + row.MpIdx + '] ' + row.PapaerName + '</span>';
+                            return '<span class="blue underline-link act-edit">[' + row.PpIdx + '] ' + row.PaperName + '</span>';
                         }},
                     {'data' : 'AnswerNum', 'class': 'text-center'},
-                    {'data' : 'ListCnt', 'class': 'text-center'},
-                    {'data' : 'OnlineCnt', 'class': 'text-center'},
-                    {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            upImgUrl = '{{$upImgUrl}}' + row.MpIdx + '/';
+                            upImgUrl = '{{$upImgUrl}}' + row.PpIdx + '/';
                             return '<a href="'+ row.FilePath + row.RealQuestionFile+'" target="_blank" class="blue underline_link">'+row.QuestionFile+'</span>';
                         }},
                     {'data' : 'wAdminName', 'class': 'text-center'},

@@ -251,17 +251,6 @@ class Lecture extends \app\controllers\FrontController
     }
 
     /**
-     * todo 이 함수 어디서 쓰는지 파악필요 . 조규호 19.03.29
-     */
-    protected function _download()
-    {
-        $file_path = $this->_reqG('path');
-        $file_name = $this->_reqG('fname');
-
-        public_download($file_path, $file_name);
-    }
-
-    /**
      * 강좌 연결 첨부파일 다운로드
      */
     public function download()
@@ -270,5 +259,4 @@ class Lecture extends \app\controllers\FrontController
         $filename_ori = urldecode($this->_req('filename_ori',false));
         public_download($filename, $filename_ori);
     }
-
 }

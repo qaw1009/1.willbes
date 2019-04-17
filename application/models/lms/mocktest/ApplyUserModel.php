@@ -218,11 +218,11 @@ class ApplyUserModel extends WB_Model
 
         $where = "WHERE MR.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = "ORDER BY MR.MrIdx DESC\n";
+        $order = "ORDER BY MR.MrIdx DESC";
 
         //echo $select . $from . $where . $order . $offset_limit;
 
-        $sql = "Select @SEQ := @SEQ+1 as NO,mm.*
+        /*$sql = "Select @SEQ := @SEQ+1 as NO,mm.*
                     From  (SELECT @SEQ := 0) A,
                     (
                       SELECT 
@@ -232,8 +232,8 @@ class ApplyUserModel extends WB_Model
                         $order              
                     ) mm Order by @SEQ DESC
         ";
-
-        $data = $this->_conn->query($sql)->result_array();
+       */
+        $data = $this->_conn->query('select '. $column . $from . $where . $order)->result_array();
         return $data;
     }
 

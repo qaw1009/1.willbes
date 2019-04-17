@@ -268,6 +268,9 @@ class ManageMemberModel extends WB_Model
 
         } else {
             $column = " MdIdx, MemIdx, DeviceId, DeviceType, IsUse, Os, App, RegDatm, 
+            IFNULL(Os, '') AS Os, 
+            IFNULL(App, '') AS App, 
+            IFNULL(DeviceModel, '') AS DeviceModel,
             DelDatm, DelAdminIdx, IFNULL(admin.wAdminName, '') AS adminName ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

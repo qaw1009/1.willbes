@@ -39,6 +39,7 @@
                             <th>No.</th>
                             <th>기기구분</th>
                             <th>고유번호</th>
+                            <td>정보</td>
                             <th>등록일</th>
                             <th>삭제일</th>
                             <th>삭제자</th>
@@ -74,9 +75,15 @@
                                     return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
                             {'data' : 'DeviceType', 'render' : function (data, type, row, meta) {
-                                    return ((data == 'P') ? 'PC' : 'Mobile');
+                                    if(data == 'P'){ return 'PC';}
+                                    else if(data == 'M'){ return 'Mobile';}
+                                    else if(data == 'A'){ return 'App';}
                                 }},
                             {'data' : 'DeviceId'},
+                            {'data' : null, 'render' : function(data, type, row, meta){
+                                    return row.Os + ' ' + row.DeviceModel + '(' + row.App + ')';
+
+                                }},
                             {'data' : 'RegDatm'},
                             {'data' : 'DelDatm'},
                             {'data' : 'adminName'},

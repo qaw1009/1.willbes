@@ -51,25 +51,28 @@
                         <span class="price-tit">총 주문금액</span>
                         <span class="row-line">|</span>
                         <span>
-                                <span class="price-txt">패키지</span>
-                                        @if(empty($data['ProdPriceData'] ) === false)
-                                            @foreach($data['ProdPriceData']  as $price_row)
-                                                @if($loop -> index === 1)
-                                                    @php
-                                                        $sale_type_ccd = $price_row['SaleTypeCcd'];
-                                                    @endphp
-                                                    <span class="lec_price tx-light-blue" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                </span>
-                            <span class="price-img">
-                                <img src="{{ img_url('sub/icon_plus.gif') }}">
-                            </span>
+                            <span class="price-txt">패키지</span>
+                            @if(empty($data['ProdPriceData'] ) === false)
+                                @foreach($data['ProdPriceData']  as $price_row)
+                                    @if($loop->index === 1)
+                                        @php
+                                            $sale_type_ccd = $price_row['SaleTypeCcd'];
+                                        @endphp
+                                        <span class="tx-dark-gray">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                        <span class="tx-pink pl10">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                        <span class="pl10"> ▶ </span>
+                                        <span class="lec_price tx-light-blue pl10" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </span>
+                        <span class="price-img">
+                            <img src="{{ img_url('sub/icon_plus.gif') }}">
+                        </span>
                         <span>
-                        <span class="price-txt">교재</span>
-                        <span class="tx-light-blue" id="bookPrice">0원</span>
-                    </span>
+                            <span class="price-txt">교재</span>
+                            <span class="tx-light-blue" id="bookPrice">0원</span>
+                        </span>
                         <span class="price-total tx-light-blue" id="totalPrice"></span>
                     </div>
                     <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-group-prod-code="{{$data['ProdCode']}}" data-sale-price="{{$price_row['RealSalePrice']}}"/>

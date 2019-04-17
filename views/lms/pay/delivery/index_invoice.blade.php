@@ -117,7 +117,7 @@
                     <th class="rowspan">배송료</th>
                     <th class="rowspan">수령인정보</th>
                     <th class="rowspan">배송지</th>
-                    <th class="rowspan">송장번호</th>
+                    <th class="rowspan" width="210">송장번호</th>
                 </tr>
                 </thead>
                 <tbody>

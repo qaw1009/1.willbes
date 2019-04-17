@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Question extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict' , 'mocktest/mockCommon');
     protected $helpers = array();
 
     public function __construct()
@@ -113,123 +113,130 @@ class Question extends \app\controllers\BaseController
         if(empty($ProdCode) === true){
             $method = "CREATE";
             $data = array();
-            $data['SiteCode'] = '2001';
-            $data['MockPart'] = '';
+            $qData = array();
+            $filepath = "";
         } else {
             $method = "PUT";
-            $data = $this->predictModel->getProduct($ProdCode);
+
+            list($data, $qData) = $this->predictModel->getExamBase($param[0]);
+            if (!$data) {
+                $this->json_error('데이터 조회에 실패했습니다.');
+                return;
+            }
+            $filepath = $this->config->item('upload_url_predict', 'predict');
+            $filepath = $filepath.$ProdCode."/";
         }
+
+
 
         $this->load->view('predict/question/question_create', [
             'method' => $method,
             'siteCodeDef' => '',
-            'data' => $data,
             'productList' => $productList,
-            'subjectList' => $subjectList
-            /*
-            'applyType' => $codes[$this->applyType],
-            'applyArea1' => $codes[$this->applyArea1],
-            'applyArea2' => $codes[$this->applyArea2],
-            'addPoint' => $codes[$this->addPoint],
-            'csTel' => json_encode($csTel),
-            'cateD2_sel' => json_encode(array()),
-            'applyType_on' => $this->applyType_on,
-            'accept_ccd' => $codes[$this->acceptStatus],
-            'arr_send_callback_ccd' => $arr_send_callback_ccd
-            */
+            'subjectList' => $subjectList,
+            'data' => $data,
+            'qData' => $qData,
+            'filepath' => $filepath,
+            'isDeny' => !empty($qData) ? true : false
+
         ]);
     }
 
     /**
-     * 등록
+     * 기본정보 등록 (lms_Mock_Paper)
      */
     public function store()
     {
         $rules = [
-            ['field' => 'SiteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'ProdName', 'label' => '서비스명', 'rules' => 'trim|required'],
-            ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'MockPart[]', 'label' => '직렬', 'rules' => 'trim|required|is_natural_no_zero'],
-
-//            ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
-//            ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeStartDatm_m', 'label' => '응시시작(분)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeEndDatm_d', 'label' => '응시마감일', 'rules' => 'trim'],
-//            ['field' => 'TakeEndDatm_h', 'label' => '응시마감(시)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeEndDatm_m', 'label' => '응시마감(분)', 'rules' => 'trim|numeric'],
-            ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
+            ['field' => 'PaperName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'ProdCode', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'SubjectCode', 'label' => '시험지명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
+            ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
+
+        if( $_FILES['QuestionFile']['error'] !== UPLOAD_ERR_OK || $_FILES['QuestionFile']['size'] == 0 ) {
+            $rules[] = ['field' => 'QuestionFile', 'label' => '문제통파일', 'rules' => 'required'];
+        }
+
         if ($this->validate($rules) === false) return;
 
-
-        // 날짜체크
-//        $SaleStartDatm = $this->input->post('SaleStartDatm_d') .' '. $this->input->post('SaleStartDatm_h') .':'. $this->input->post('SaleStartDatm_m') .':00';
-//        $SaleEndDatm = $this->input->post('SaleEndDatm_d') .' '. $this->input->post('SaleEndDatm_h') .':'. $this->input->post('SaleEndDatm_m') .':59';
-//        $TakeStartDatm = $this->input->post('TakeStartDatm_d') .' '. $this->input->post('TakeStartDatm_h') .':'. $this->input->post('TakeStartDatm_m') .':00';
-//        $TakeEndDatm = $this->input->post('TakeEndDatm_d') .' '. $this->input->post('TakeEndDatm_h') .':'. $this->input->post('TakeEndDatm_m') .':59';
-
-//        if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleStartDatm_d']) ) {
-//            $this->json_error('접수시작시간이 잘못되었습니다.');
-//            return;
-//        }
-//        if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleEndDatm_d']) ) {
-//            $this->json_error('접수마감시간이 잘못되었습니다.');
-//            return;
-//        }
-//        if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) <= 0 ) {
-//            $this->json_error('접수마감일이 접수시작일보다 빠릅니다.');
-//            return;
-//        }
-
-        $result = $this->predictModel->store();
+        $result = $this->predictModel->storePaper();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
     }
 
     /**
-     * 수정
+     * 기본정보 수정
      */
     public function update()
     {
         $rules = [
-            ['field' => 'idx', 'label' => '인덱스값', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'SiteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'ProdName', 'label' => '서비스명', 'rules' => 'trim|required'],
-            ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'MockPart[]', 'label' => '직렬', 'rules' => 'trim|required|is_natural_no_zero'],
-
-//            ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
-//            ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeStartDatm_m', 'label' => '응시시작(분)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeEndDatm_d', 'label' => '응시마감일', 'rules' => 'trim'],
-//            ['field' => 'TakeEndDatm_h', 'label' => '응시마감(시)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeEndDatm_m', 'label' => '응시마감(분)', 'rules' => 'trim|numeric'],
-            ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
+            ['field' => 'PaperName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'ProdCode', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'SubjectCode', 'label' => '시험지명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
+        if(!$this->input->post('isDeny')) {
+            $rules[] = ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'];
+            $rules[] = ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'];
+        }
         if ($this->validate($rules) === false) return;
 
+        $result = $this->predictModel->updatePaper();
+        $this->json_result($result['ret_cd'], '변경되었습니다.', $result, $result);
+    }
 
-        // 날짜체크
-//        $SaleStartDatm = $this->input->post('SaleStartDatm_d') .' '. $this->input->post('SaleStartDatm_h') .':'. $this->input->post('SaleStartDatm_m') .':00';
-//        $SaleEndDatm = $this->input->post('SaleEndDatm_d') .' '. $this->input->post('SaleEndDatm_h') .':'. $this->input->post('SaleEndDatm_m') .':59';
-//        $TakeStartDatm = $this->input->post('TakeStartDatm_d') .' '. $this->input->post('TakeStartDatm_h') .':'. $this->input->post('TakeStartDatm_m') .':00';
-//        $TakeEndDatm = $this->input->post('TakeEndDatm_d') .' '. $this->input->post('TakeEndDatm_h') .':'. $this->input->post('TakeEndDatm_m') .':59';
+    /**
+     * 문항정보 등록,수정
+     */
+    public function storeQuestion()
+    {
+        $Info = @json_decode($this->input->post('Info'));
+        if(!is_object($Info) || !isset($Info->chapterTotal) || !isset($Info->chapterExist) || !isset($Info->chapterDel)) {
+            $this->json_error("입력오류");
+            return;
+        }
+        else {
+            $_POST['chapterTotal'] = $Info->chapterTotal;
+            $_POST['chapterExist'] = $Info->chapterExist;
+            $_POST['chapterDel'] = $Info->chapterDel;
+        }
 
-//        if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleStartDatm_d']) ) {
-//            $this->json_error('접수시작시간이 잘못되었습니다.');
-//            return;
-//        }
-//        if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleEndDatm_d']) ) {
-//            $this->json_error('접수마감시간이 잘못되었습니다.');
-//            return;
-//        }
-//        if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) <= 0 ) {
-//            $this->json_error('접수마감일이 접수시작일보다 빠릅니다.');
-//            return;
-//        }
+        $rules = [
+            ['field' => 'QuestionNO[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'Scoring[]', 'label' => '배점', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
 
-        $result = $this->predictModel->update();
+            ['field' => 'chapterTotal[]', 'label' => 'tIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterExist[]', 'label' => 'eIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterDel[]', 'label' => 'dIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'regKind[]', 'label' => 'Call등록타입', 'rules' => 'trim|in_list[call]'],
+            ['field' => 'callIdx[]', 'label' => 'CallIdx', 'rules' => 'trim|is_natural_no_zero'],
+        ];
+
+        if ($this->validate($rules) === false) return;
+
+        // 조건체크
+        if( count($this->input->post('QuestionNO')) != count(array_unique($this->input->post('QuestionNO'))) ) {
+            $this->json_error('문항번호가 중복되어 있습니다.');
+            return;
+        }
+        if( $this->input->post('TotalScore') != array_reduce($this->input->post('Scoring'), function ($sum, $v) { $sum += $v; return $sum; }, 0) ) {
+            $this->json_error('문항별 배점의 합과 총점이 일치하지 않습니다.');
+            return;
+        }
+        //print_r($_POST);
+        foreach ($this->input->post('RightAnswerTmp') as $k => $v) {
+            if( !preg_match('/^[1-9,]+$/', $_POST['RightAnswerTmp'][$k]) ) {
+                $this->json_error('정답을 선택하세요');
+                return;
+            }
+        }
+
+        $result = $this->predictModel->storePPQuestion();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
     }
 
@@ -244,7 +251,7 @@ class Question extends \app\controllers\BaseController
         ];
         if ($this->validate($rules) === false) return;
 
-        $result = $this->regExamModel->copyData($this->input->post('idx'));
+        $result = $this->predictModel->copyData($this->input->post('idx'));
         $this->json_result($result['ret_cd'], '복사되었습니다.', $result, $result);
     }
 

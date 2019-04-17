@@ -259,5 +259,4 @@ class Lecture extends \app\controllers\FrontController
         $filename_ori = urldecode($this->_req('filename_ori',false));
         public_download($filename, $filename_ori);
     }
-
 }

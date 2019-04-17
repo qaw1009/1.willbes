@@ -19,9 +19,9 @@
 
         /************************************************************/
 
-        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/2019/03/1009_71_top_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_bg.jpg) no-repeat center top}
 
-        .wb_pop3 {background:#1e1e1e url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
+        .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
 
         .wb_top {background:#282828; padding-bottom:120px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
@@ -104,8 +104,8 @@
         .passMsg .bx-pager{display:none}
 
         /*타이머*/
-        .newTopDday * {font-family:'Noto Sans KR', Arial, Sans-serif; font-size:24px}
-        .newTopDday { clear:both; background:#f5f5f5; width:100%; padding:10px 0 25px}
+        .newTopDday * {font-size:24px}
+        .newTopDday {background:#f5f5f5; width:100%; padding:10px 0 35px}
         .newTopDday ul {width:1210px; margin:0 auto}
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
         .newTopDday ul li strong {line-height:70px}
@@ -139,29 +139,29 @@
     </style>
 
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="p_re evtContent NGR" id="evtContainer">
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">
                 <ul>
                     <li>
                         <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">2019-73기</span>
+                        <span style="line-height:40px;font-size:22pt;color:#000">2019-74기</span>
                     </li>
-                    <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
-                    <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><strong>일</strong></li>
-                    <li><img id="hh1" src="http://file.willbes.net/new_image/0.png" /></li>
-                    <li><img id="hh2" src="http://file.willbes.net/new_image/0.png" /></li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><strong>:</strong></li>
-                    <li><img id="mm1" src="http://file.willbes.net/new_image/0.png" /></li>
-                    <li><img id="mm2" src="http://file.willbes.net/new_image/0.png" /></li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><strong>:</strong></li>
-                    <li><img id="ss1" src="http://file.willbes.net/new_image/0.png" /></li>
-                    <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">4.16(화) 24:00 마감!</span>
+                        <span style="line-height:40px;">4.23(화) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -169,7 +169,7 @@
         <!--타이머//-->
 
         <div class="evtCtnsBox wb_pop2" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_top.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
                 <area shape="rect" coords="370,1172,545,1215" href="javascript:certOpen();" alt="수강생인증"/>
                 <area shape="rect" coords="567,1171,742,1214" href="javascript:goDesc('tab3')" alt="이용안내"/>
@@ -177,7 +177,7 @@
         </div>
 
         <div class="evtCtnsBox wb_pop3">
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20181214_02.png"  alt="열공지원" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01.png"  alt="열공지원" />
         </div>
 
         <div class="evtCtnsBox wb_top" id="pass">
@@ -211,31 +211,30 @@
                 <span style="color:#fff">
                     <label for="j_pkg">PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.</label>
                 </span>
-                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
+                <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
                 <map name="Map190123" id="Map190123">
                     <area shape="rect" coords="178,546,243,565" href="javascript:go_popup()" alt="6개월과목" />
                     <area shape="rect" coords="439,545,502,564" href="javascript:go_popup()" alt="12개월과목" />
                     <area shape="rect" coords="733,546,794,565" href="javascript:go_popup1()" alt="평생목팝업" />
                 </map> 
-                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_03_02.jpg"  alt="체력" usemap="#Map190117A"/>                
+                <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02.jpg"  alt="체력" usemap="#Map190117A"/>                
                 <map name="Map190117A" id="Map190117A">
                     <area shape="rect" coords="656,183,776,227" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
-                </map>
-                               
+                </map>                               
             </div>
 
             <!--레이어팝업-->
             <div id="popup" class="Pstyle">
                 <span class="b-close">X</span>
                 <div class="content">
-                    <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190123_prof_pop01.jpg" />
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_pop01.jpg" />
                 </div>
             </div>
 
             <div id="popup1" class="Pstyle">
                 <span class="b-close">X</span>
                 <div class="content">
-                    <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190123_prof_pop02.jpg" />
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_pop02.jpg" />
                 </div>
             </div>
 
@@ -256,39 +255,39 @@
                 </ul>
             </div>
 
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_03_re3.jpg"  alt="추가특전" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_03.jpg"  alt="추가특전" />
         </div>
         <!-- wb_top//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV05.jpg"  alt="신광은경찰팀 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04.jpg"  alt="신광은경찰팀 교수진" />
         </div>
 
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV04.jpg"  alt="영향력있는 언론이 먼저 찾는 윌비스 신광은경찰팀" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_05.jpg"  alt="영향력있는 언론이 먼저 찾는 윌비스 신광은경찰팀" />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV03.jpg"  alt="맞춤커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_06.jpg"  alt="맞춤커리큘럼" />
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV06.jpg"  alt="밀착관리 단계별 합격 프로그램" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_07.jpg"  alt="밀착관리 단계별 합격 프로그램" />
         </div>
 
         <div class="evtCtnsBox wb_cts05">
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re1.jpg"  alt="왕초보영어탑재" /><br />
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re2.jpg"  alt="경찰체력" usemap="#Map190117B" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_01.jpg"  alt="왕초보영어탑재" /><br />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_02.jpg"  alt="경찰체력" usemap="#Map190117B" border="0" />
             <map name="Map190117B" id="Map190117B">
                 <area shape="rect" coords="554,583,676,626" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력 상세보기" />
             </map>
             <br />
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re3.jpg"  alt="많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_03.jpg"  alt="많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀" />
         </div>
 
         <div class="content_guide_wrap" id="tab">
-            <p class="guide_tit"><img src="http://file3.willbes.net/new_cop/2018/03/180327_EV07.jpg" alt="신광은경찰 PASS 이용안내"> </p>
+            <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
                 <li><a href="#tab1">6,12개월 PASS</a></li>
                 <li><a href="#tab2">평생 0원 PASS</a></li>
@@ -503,7 +502,7 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV08.jpg">
+                        <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09_01.jpg">
                     </dt>
                 </dl>
             </div>
@@ -591,7 +590,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            var event_day = new Date(2019,3,16,23,59,59);
+            var event_day = new Date(2019,3,23,23,59,59);
             var now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
@@ -602,17 +601,17 @@
             var Secondleft = timeGap.getSeconds();
 
             if((event_day.getTime() - now.getTime()) > 0) {
-                $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-                $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
+                $("#dd1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft/10) + ".png");
+                $("#dd2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft%10) + ".png");
 
-                $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-                $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
+                $("#hh1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft/10) + ".png");
+                $("#hh2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft%10) + ".png");
 
-                $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-                $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
+                $("#mm1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft/10) + ".png");
+                $("#mm2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft%10) + ".png");
 
-                $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-                $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+                $("#ss1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft/10) + ".png");
+                $("#ss2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft%10) + ".png");
                 setTimeout(daycountDown, 1000);
             }
             else{

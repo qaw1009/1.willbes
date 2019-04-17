@@ -10,7 +10,7 @@
             <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
-                <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['MpIdx'] : '' }}">
+                <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['PpIdx'] : '' }}">
                 <input type="hidden" name="isDeny" value="{{ ($method == 'PUT') ? $isDeny : '' }}">
 
                 <table class="table table-bordered modal-table">
@@ -19,47 +19,37 @@
                         <td colspan="3" class="form-inline">
                             <select id="ProdCode" name="ProdCode">
                                 @foreach($productList as $key => $val)
-                                    <option value="{{ $val['ProdCode'] }}">{{ $val['ProdName'] }}</option>
+                                    <option value="{{ $val['ProdCode'] }}" @if($data['ProdCode'] == $val['ProdCode']) selected @endif>{{ $val['ProdName'] }}</option>
                                 @endforeach
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="1">시험지명 <span class="required">*</span></th>
+                        <th colspan="1">과목명 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <select>
+                            <select id="SubjectCode" name="SubjectCode" onChange="selType(this.value)">
+                                <option value="">과목선택</option>
                                 @foreach($subjectList as $key => $val)
-                                    <option value="{{ $val['Ccd'] }}">{{ $val['CcdValue'] }}</option>
+                                    <option value="{{ $val['Ccd'] }}" @if($data['SubjectCode'] == $val['Ccd']) selected @endif>{{ $val['CcdValue'] }}</option>
                                 @endforeach
                             </select>
+                            <input type="hidden" id="sType" name="Type" value="{{ $data['Type'] }}"/>
+                            @foreach($subjectList as $key => $val)
+                                <input type="hidden" id="sType{{ $val['Ccd'] }}" value="{{ $val['Type'] }}" />
+                            @endforeach
                         </td>
                     </tr>
                     <tr>
                         <th style="width:15%;">과목문제지명 <span class="required">*</span></th>
                         <td style="width:35%;">
-                            <input type="text" class="form-control" name="PapaerName" value="@if($method == 'PUT'){{ $data['PapaerName'] }}@endif">
+                            <input type="text" class="form-control" name="PaperName" value="@if($method == 'PUT'){{ $data['PaperName'] }}@endif">
                         </td>
                         <th style="width:15%;">과목문제지코드 <span class="required">*</span></th>
                         <td style="width:35%;">@if($method == 'PUT'){{ $data['PpIdx'] }}@endif</td>
                     </tr>
                     <tr>
-                        <th>연도/회차 <span class="required">*</span></th>
-                        <td class="form-inline">
-                            <select class="form-control mr-5" name="Year">
-                                <option value="">연도</option>
-                                @for($i=(date('Y')+1); $i>=2005; $i--)
-                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['Year']) selected @endif>{{$i}}</option>
-                                @endfor
-                            </select>
-                            <select class="form-control mr-5" name="RotationNo">
-                                <option value="">회차</option>
-                                @foreach(range(1, 20) as $i)
-                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['RotationNo']) selected @endif>{{$i}}</option>
-                                @endforeach
-                            </select>
-                        </td>
                         <th>문제등록옵션 <span class="required">*</span></th>
-                        <td class="form-inline">
+                        <td colspan="3" class="form-inline">
                             <select class="form-control mr-5" name="AnswerNum" {{($method == 'PUT' && $isDeny) ? 'disabled' : ''}}>
                                 <option value="">보기갯수</option>
                                 @foreach(range(1, 5) as $i)
@@ -87,8 +77,7 @@
                             <input type="file" name="QuestionFile">
                             @if($method == 'PUT' && !empty($data['QuestionFile']))
                                 <div class="file-wrap" style="cursor:pointer">
-                                    <a href="{{ $data['FilePath'].$data['RealQuestionFile'] }}" target="_blank" class="blue underline-link">{{ $data['QuestionFile'] }}</a>
-                                    {{--<span class="act-fileDel" data-file-idx="{{$data['MpIdx']}}" data-file-type="base" data-file-name="QuestionFile"><i class="fa fa-times red"></i></span>--}}
+                                    <a href="{{ $filepath.$data['RealQuestionFile'] }}" target="_blank" class="blue underline-link">{{ $data['QuestionFile'] }}</a>
                                 </div>
                             @endif
                         </td>
@@ -129,14 +118,12 @@
                             @endforeach
                         </select>
                         <button class="btn btn-sm btn-primary" id="act-addRow">필드추가</button>
-                        <button class="btn btn-sm btn-primary" id="act-sort">정렬변경</button>
-                        <button class="btn btn-sm btn-success" id="act-call">문항호출</button>
                     </div>
                 </div>
                 <form class="form-table form-table-sm" id="regi_sub_form" name="regi_sub_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                     {!! csrf_field() !!}
                     {!! method_field($method) !!}
-                    <input type="hidden" name="idx" value="{{ $data['MpIdx'] }}">
+                    <input type="hidden" name="idx" value="{{ $data['PpIdx'] }}">
                     <input type="hidden" name="TotalScore" value="{{ $data['TotalScore'] }}">
                     <input type="hidden" name="Info" value="">
 
@@ -144,14 +131,8 @@
                         <thead>
                         <tr>
                             <th class="text-center">문항<br>번호</th>
-                            <th class="text-center" style="min-width:130px">문제영역</th>
-                            <th class="text-center" style="min-width:120px">문제등록옵션</th>
-                            <th class="text-center">문제등록(분할이미지)</th>
-                            <th class="text-center">해설등록(분할이미지)</th>
-                            <th class="text-center" style="min-width:60px; width:60px;">정답</th>
+                            <th class="text-center">정답</th>
                             <th class="text-center" style="min-width:50px; width:50px;">배점</th>
-                            <th class="text-center">난이도</th>
-                            <th class="text-center">호출</th>
                             <th class="text-center">등록자</th>
                             <th class="text-center">등록일</th>
                             <th class="text-center">삭제</th>
@@ -164,52 +145,16 @@
                                 <input type="hidden" name="regKind[]" value="">
                                 <input type="text" class="form-control" style="width:45px" name="QuestionNO[]" value="">
                             </td>
-                            <td class="text-center">
-                                <select class="form-control" name="MalIdx[]">
-                                    <option value="">선택</option>
-                                    @foreach($areaList as $it)
-                                        <option value="{{$it['MalIdx']}}">{{$it['AreaName']}}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <select class="form-control" name="QuestionOption[]">
-                                    <option value="S">객관식(단일정답)</option>
-                                    <option value="M">객관식(복수정답)</option>
-                                    <option value="J">주관식</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="file" name="QuestionFile[]" style="width:180px">
-                                <input type="hidden" name="callIdx[]" value="">
-                                <input type="hidden" name="callQuestionFile[]" value="">
-                                <input type="hidden" name="callRealQuestionFile[]" value="">
-                                <div class="file-wrap" style="cursor:pointer"></div>
-                            </td>
-                            <td>
-                                <input type="file" name="ExplanFile[]" style="width:180px">
-                                <input type="hidden" name="callExplanFile[]" value="">
-                                <input type="hidden" name="callRealExplanFile[]" value="">
-                                <div class="file-wrap" style="cursor:pointer"></div>
-                            </td>
+
                             <td class="text-center right-answer">
-                                <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="1"> <label>1</label></div>
-                                <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="2"> <label>2</label></div>
-                                <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="3"> <label>3</label></div>
-                                <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="4"> <label>4</label></div>
-                                <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="5"> <label>5</label></div>
+                                <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="1"> <label style="margin-right:10px;">1</label>
+                                <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="2"> <label style="margin-right:10px;">2</label>
+                                <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="3"> <label style="margin-right:10px;">3</label>
+                                <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="4"> <label style="margin-right:10px;">4</label>
+                                <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="5"> <label>5</label>
                                 <input type="hidden" name="RightAnswer[]">
                             </td>
                             <td class="text-center"><input type="text" class="form-control" name="Scoring[]" value=""></td>
-                            <td class="text-center">
-                                <select class="form-control" name="Difficulty[]" style="padding:0">
-                                    <option value="">선택</option>
-                                    <option value="T">상</option>
-                                    <option value="M">중</option>
-                                    <option value="B">하</option>
-                                </select>
-                            </td>
-                            <td class="text-center"><button type="button" class="btn btn-xs btn-success mt-5 act-call-unit">호출</button></td>
                             <td class="text-center"></td>
                             <td class="text-center"></td>
                             <td class="text-center"><span class="addRow-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
@@ -217,65 +162,21 @@
                         {{-- [E] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
 
                         @foreach($qData as $row)
-                            <tr data-chapter-idx="{{ $row['MqIdx'] }}">
+                            <tr data-chapter-idx="{{ $row['PqIdx'] }}">
                                 <td class="text-center form-inline">
                                     <input type="hidden" name="regKind[]" value="">
                                     <input type="text" class="form-control" style="width:45px" name="QuestionNO[]" value="{{$row['QuestionNO']}}">
                                 </td>
-                                <td class="text-center">
-                                    <select class="form-control" name="MalIdx[]">
-                                        <option value="">선택</option>
-                                        @foreach($areaList as $it)
-                                            <option value="{{$it['MalIdx']}}" @if($it['MalIdx'] == $row['MalIdx']) selected @endif>{{$it['AreaName']}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td class="text-center">
-                                    <select class="form-control" name="QuestionOption[]">
-                                        <option value="S" @if($row['QuestionOption'] == 'S') selected @endif>객관식(단일정답)</option>
-                                        <option value="M" @if($row['QuestionOption'] == 'M') selected @endif>객관식(복수정답)</option>
-                                        <option value="J" @if($row['QuestionOption'] == 'J') selected @endif>주관식</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <input type="file" name="QuestionFile[]" style="width:180px" multiple>
-                                    <input type="hidden" name="callIdx[]" value="">
-                                    <input type="hidden" name="callQuestionFile[]" value="">
-                                    <input type="hidden" name="callRealQuestionFile[]" value="">
-                                    @if(!empty($row['QuestionFile']))
-                                        <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $row['FilePath'].$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
-                                        </div>
-                                    @endif
-                                </td>
-                                <td>
-                                    <input type="file" name="ExplanFile[]" style="width:180px" multiple>
-                                    <input type="hidden" name="callExplanFile[]" value="">
-                                    <input type="hidden" name="callRealExplanFile[]" value="">
-                                    @if(!empty($row['ExplanFile']))
-                                        <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $row['FilePath'].$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
-                                        </div>
-                                    @endif
-                                </td>
+
                                 <td class="text-center right-answer">
-                                    <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="1" @if(in_array('1', explode(',', $row['RightAnswer']))) checked @endif> <label>1</label></div>
-                                    <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="2" @if(in_array('2', explode(',', $row['RightAnswer']))) checked @endif> <label>2</label></div>
-                                    <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="3" @if(in_array('3', explode(',', $row['RightAnswer']))) checked @endif> <label>3</label></div>
-                                    <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="4" @if(in_array('4', explode(',', $row['RightAnswer']))) checked @endif> <label>4</label></div>
-                                    <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="5" @if(in_array('5', explode(',', $row['RightAnswer']))) checked @endif> <label>5</label></div>
+                                    <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="1" @if(in_array('1', explode(',', $row['RightAnswer']))) checked @endif> <label style="margin-right:10px;">1</label>
+                                    <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="2" @if(in_array('2', explode(',', $row['RightAnswer']))) checked @endif> <label style="margin-right:10px;">2</label>
+                                    <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="3" @if(in_array('3', explode(',', $row['RightAnswer']))) checked @endif> <label style="margin-right:10px;">3</label>
+                                    <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="4" @if(in_array('4', explode(',', $row['RightAnswer']))) checked @endif> <label style="margin-right:10px;">4</label>
+                                    <input type="checkbox" class="flat" name="RightAnswerTmp[]" value="5" @if(in_array('5', explode(',', $row['RightAnswer']))) checked @endif> <label>5</label>
                                     <input type="hidden" name="RightAnswer[]" value="{{$row['RightAnswer']}}">
                                 </td>
                                 <td class="text-center"><input type="text" class="form-control" name="Scoring[]" value="{{$row['Scoring']}}"></td>
-                                <td class="text-center">
-                                    <select class="form-control" name="Difficulty[]" style="padding:0">
-                                        <option value="">선택</option>
-                                        <option value="T" @if($row['Difficulty'] == 'T') selected @endif>상</option>
-                                        <option value="M" @if($row['Difficulty'] == 'M') selected @endif>중</option>
-                                        <option value="B" @if($row['Difficulty'] == 'B') selected @endif>하</option>
-                                    </select>
-                                </td>
-                                <td class="text-center"><button type="button" class="btn btn-xs btn-success mt-5 act-call-unit">호출</button></td>
                                 <td class="text-center">{{ @$adminName[$row['RegAdminIdx']] }}</td>
                                 <td class="text-center">{{ $row['RegDatm'] }}</td>
                                 <td class="text-center"><span class="addRow-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
@@ -310,80 +211,6 @@
                 placement: 'right',
             });
 
-            // 카테고리, 교수 검색창 오픈
-            $('.act-searchCate, .act-searchProfessor').on('click', function() {
-                if( !$('[name=siteCode]').val() ) { alert('운영사이트를 먼저 선택해 주세요'); return false; }
-
-                if( $(this).hasClass('act-searchCate') ) {
-                    $('.act-searchCate').setLayer({
-                        'url': '{{ site_url() }}' + 'mocktest/baseCode/moCate?reg=Y&single=Y&siteCode=' + $('[name=siteCode]').val(),
-                        'width': 1100
-                    });
-                }
-                else if( $(this).hasClass('act-searchProfessor') ) {
-                    $('.act-searchProfessor').setLayer({
-                        'url': '{{ site_url('/common/searchProfessor/?siteCode=') }}' + $('[name=siteCode]').val(),
-                        'width': 900
-                    });
-                }
-            });
-
-            // 선택 카테고리 삭제
-            $('#selected_category').on('click', '.selected-category-delete', function () {
-                $(this).closest('span').remove();
-            });
-
-            // 운영사이트 변경시 카테고리, 교수검색 초기화
-            $('[name=siteCode]').on('change', function () {
-                $('#selected_category').empty();
-                $('#selected_professor').empty();
-            });
-
-            // 목록 이동
-            $('#goList').on('click', function() {
-                location.replace('{{ site_url('/mocktest/regExam') }}' + getQueryString());
-            });
-
-            // 기본정보 등록,수정
-            $regi_form.submit(function() {
-                var _url = '{{ ($method == 'PUT') ? site_url('/mocktest/regExam/update') : site_url('/mocktest/regExam/store') }}';
-                ajaxSubmit($regi_form, _url, function(ret) {
-                    if(ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktest/regExam/edit/') }}' + ret.ret_data.dt.idx + getQueryString());
-                    }
-                }, showValidateError, null, false, 'alert');
-            });
-
-
-            /*********************************************************************************/
-
-            // 문항정보필드 정답보기 갯수
-            var exNum = $regi_form.find('[name="AnswerNum"]').val();
-            $regi_sub_form.find('tbody > tr').each(function () {
-                $(this).find('.right-answer > div').each(function (i,v) {
-                    if(i >= parseInt(exNum)) $(this).remove();
-                });
-            });
-
-            // 문항정보필드 문제등록옵션 변경시 정답 초기화
-            $regi_sub_form.find('[name="QuestionOption[]"]').each(function () {
-                if($(this).val() == 'J')
-                    $(this).closest('tr').find('[name="RightAnswerTmp[]"]').prop('disabled', true);
-            });
-            $regi_sub_form.on('change', '[name="QuestionOption[]"]', function () {
-                $(this).closest('tr').find('[name="RightAnswerTmp[]"]').iCheck('uncheck');
-                $(this).closest('tr').find('[name="RightAnswer[]"]').val('');
-
-                if($(this).val() == 'J') { // 주관식
-                    $(this).closest('tr').find('[name="RightAnswerTmp[]"]').prop('disabled', true);
-                }
-                else {
-                    $(this).closest('tr').find('[name="RightAnswerTmp[]"]').prop('disabled', false);
-                }
-                $(this).closest('tr').find('[name="RightAnswerTmp[]"]').iCheck('update');
-            });
-
             // 문항정보필드 문제등록옵션 오류체크 (객관식(단수) 1개, 객관식(복수) 2개, 주관식 비활성)
             $regi_sub_form.on('ifChanged', '[name="RightAnswerTmp[]"]', function () {
                 var wrap = $(this).closest('.right-answer');
@@ -407,6 +234,32 @@
                 wrap.find('[name="RightAnswer[]"]').val(right.join(','));
             });
 
+            // 목록 이동
+            $('#goList').on('click', function() {
+                location.replace('{{ site_url('/predict/question') }}' + getQueryString());
+            });
+
+            // 기본정보 등록,수정
+            $regi_form.submit(function() {
+                var _url = '{{ ($method == 'PUT') ? site_url('/predict/question/update') : site_url('/predict/question/store') }}';
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.replace('{{ site_url('/predict/question/create/') }}' + ret.ret_data.dt.idx + getQueryString());
+                    }
+                }, showValidateError, null, false, 'alert');
+            });
+
+
+            /*********************************************************************************/
+
+            // 문항정보필드 정답보기 갯수
+            var exNum = $regi_form.find('[name="AnswerNum"]').val();
+            $regi_sub_form.find('tbody > tr').each(function () {
+                $(this).find('.right-answer > div').each(function (i,v) {
+                    if(i >= parseInt(exNum)) $(this).remove();
+                });
+            });
 
             // 문항정보필드 처리을 위한 초기화작업
             var cList = $regi_sub_form.find('tbody');
@@ -456,11 +309,11 @@
 
                 $regi_sub_form.find('[name="Info"]').val( JSON.stringify({'chapterTotal':chapterTotal, 'chapterExist':chapterExist, 'chapterDel':chapterDel}) );
 
-                var _url = '{{ site_url('/mocktest/regExam/storeQuestion') }}';
+                var _url = '{{ site_url('/predict/question/storeQuestion') }}';
                 ajaxSubmit($regi_sub_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktest/regExam/edit/') }}' + ret.ret_data.dt.idx + getQueryString());
+                        location.replace('{{ site_url('/predict/question/create/') }}' + ret.ret_data.dt.idx + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });
@@ -517,5 +370,9 @@
                 });
             });
         });
+
+        function selType(val){
+            $('#sType').val($('#sType'+val).val());
+        }
     </script>
 @stop

@@ -93,7 +93,7 @@
         .check a {display:inline-block; padding:12px 20px 10px 20px;color:#27262c; background:#e3c0a2; margin-left:50px; border-radius:20px}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="p_re evtContent NGR" id="evtContainer">
         <!-- 타이머 -->
         <div class="evtCtnsBox time">
             <div id="ddaytime">

@@ -163,12 +163,13 @@ class PredictModel extends WB_Model
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
         $column = "
 	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.ProdCode, PP.SubjectCode, PP.Type, 
-	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse
+	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse, PD.ProdName
         ";
 
         $from = "
             FROM 
                 {$this->_table['predictPaper']} AS PP
+                LEFT JOIN {$this->_table['predictProduct']} AS PD ON PP.ProdCode = PD.ProdCode
                 LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
                 LEFT JOIN {$this->_table['admin']} AS A2 ON PP.UpdAdminIdx = A2.wAdminIdx
         ";

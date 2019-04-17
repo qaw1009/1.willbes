@@ -291,16 +291,16 @@
     </div>
     <!-- End Container --> 
     
-    {{-- 하단 띠배너
+    {{-- 하단 띠배너--}}
     <div class="mainBottomBn">
         <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_mainBottom_bn.jpg" title="" class="mbBanner">
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1009">
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1009_mainBottom_bn.jpg" title="" class="mbBanner">
             </a>
             <span class="btmEvClose">닫기</span>
         </div>
     </div>
-    --}}
+    
 
     <script type="text/javascript">
         var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";

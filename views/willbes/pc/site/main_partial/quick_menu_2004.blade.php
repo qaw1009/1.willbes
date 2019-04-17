@@ -7,7 +7,7 @@
                         <div class="QuickDdayBox">
                             <div class="q_tit">{{$row['DayTitle']}}</div>
                             <div class="q_day">{{$row['DayDatm']}}</div>
-                            <div class="q_dday NSK-Blac">{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</div>
+                            <div class="q_dday NSK-Black">{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</div>
                         </div>
                     @endforeach
                 </div>

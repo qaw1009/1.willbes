@@ -71,11 +71,11 @@ class Delivery extends BaseOrder
         // 기본조건
         $arr_condition = [
             'EQ' => [
-                'P.ProdTypeCcd' => $this->orderListModel->_prod_type_ccd['book'],
                 'O.SiteCode' => $this->_reqP('search_site_code'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd')
             ],
             'IN' => [
+                'P.ProdTypeCcd' => [$this->orderListModel->_prod_type_ccd['book'], $this->orderListModel->_prod_type_ccd['freebie']],
                 'O.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
             ],
             'RAW' => [
@@ -313,11 +313,11 @@ class Delivery extends BaseOrder
         // 기본 조건
         $arr_condition = [
             'EQ' => [
-                'P.ProdTypeCcd' => $this->orderListModel->_prod_type_ccd['book'],
-                'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid'],
+                'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']
             ],
             'IN' => [
-                'O.OrderIdx' => array_values($params)
+                'O.OrderIdx' => array_values($params),
+                'P.ProdTypeCcd' => [$this->orderListModel->_prod_type_ccd['book'], $this->orderListModel->_prod_type_ccd['freebie']]
             ]
         ];
 

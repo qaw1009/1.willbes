@@ -48,7 +48,6 @@ class DeliveryInfoModel extends BaseOrderModel
                         $arr_order_prod_idx = array_pluck($order_prod_rows, 'OrderProdIdx');
                         $is_update = $this->_conn->set($data)->set($column_prefix . 'Datm', 'NOW()', false)
                             ->where_in('OrderProdIdx', $arr_order_prod_idx)
-                            ->where('InvoiceNo is null')
                             ->update($this->_table['order_product_delivery_info']);
 
                         if ($is_update === false) {
@@ -136,10 +135,13 @@ class DeliveryInfoModel extends BaseOrderModel
 
                 // 발송완료 SMS 발송
                 if ($delivery_status == 'complete') {
-                    // 이미 발송된 운송장번호가 아닐 경우만 발송
-                    if (in_array($order_prod_row['InvoiceNo'], $sms_send_invoice_no) === false) {
-                        $this->_sendDeliverySendSms($order_prod_row['ReceiverPhone'], $order_prod_row['DeliveryCompCcdName'], $order_prod_row['InvoiceNo']);
-                        $sms_send_invoice_no[] = $order_prod_row['InvoiceNo'];                        
+                    // 실서버일 경우만 실행 ==> TODO : 서버 환경별 실행
+                    if (ENVIRONMENT == 'production') {
+                        // 이미 발송된 운송장번호가 아닐 경우만 발송
+                        if (in_array($order_prod_row['InvoiceNo'], $sms_send_invoice_no) === false) {
+                            $this->_sendDeliverySendSms($order_prod_row['ReceiverPhone'], $order_prod_row['DeliveryCompCcdName'], $order_prod_row['InvoiceNo']);
+                            $sms_send_invoice_no[] = $order_prod_row['InvoiceNo'];
+                        }
                     }
                 }
             }

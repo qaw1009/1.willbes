@@ -26,6 +26,17 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="search_comment_ui_type_ccd">댓글UI 형태</label>
+            <div class="col-md-2">
+                <select class="form-control" id="search_comment_ui_type_ccd" name="search_comment_ui_type_ccd">
+                    <option value="">==선택==</option>
+                    @foreach($data['arr_comment_ui_type_ccd'] as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
     </form>
 </div>
 <div class="row mt-10 mb-20">

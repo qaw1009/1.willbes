@@ -449,22 +449,28 @@
                     alert("신청 할 수 없는 강좌입니다.");return;
                 @endif
 
-                //필수강좌 체크 여부
+                {{--필수강좌 체크 여부--}}
                 var groupArray = {!!json_encode($subGroup_array)!!};
                 for(i=0; i<groupArray.length;i++) {
                     $checked = "";
+                    $ess_checked_count = 0;
                     $(".lec-essential").find('.essSubGroup-'+groupArray[i]).each(function (){
                         if ($(this).is(':checked')) {
-                            $checked = "Y"
+                            $checked = "Y";
+                            $ess_checked_count += 1;
                         }
                     });
                     if($checked === "") {
                         alert("필수과목은 과목별 1개씩 선택하셔야 합니다.");
                         return;
                     }
+                    if($ess_checked_count > 1) {
+                        alert("필수과목은 과목별 1개씩 선택하셔야 합니다. 현재 2개 이상의 과목이 선택되었습니다.");
+                        return;
+                    }
                 }
 
-                //선택강좌
+                {{--선택강좌--}}
                 $check_cnt = 0;
                 $(".lec-choice").find('.choSubGroup').each(function (){
                     if ($(this).is(':checked')) {
@@ -500,6 +506,21 @@
 
             setRowspan('row_td');
             setRowspan('row_td2');
+
+            {{--같은 과목내 2개이상의 과정일 경우 체크박스 해제--}}
+            var groupArray = {!!json_encode($subGroup_array)!!};
+            for(i=0; i<groupArray.length;i++) {
+                $checked_group = "";
+                $ess_checked_count = 0;
+                $(".lec-essential").find('.essSubGroup-'+groupArray[i]).each(function (){
+                    if ($(this).is(':checked')) {
+                        $ess_checked_count += 1;
+                        if($ess_checked_count > 1) {
+                            $(".lec-essential").find('.essSubGroup-'+groupArray[i]).prop("checked", false);
+                        }
+                    }
+                });
+            }
         });
     </script>
     <!-- End Container -->

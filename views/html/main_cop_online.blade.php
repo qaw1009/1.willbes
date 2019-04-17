@@ -1088,12 +1088,13 @@
 </div>
 <!-- End Container -->
 
-<div class="mainBottomBn" id="bottomBn">
-    <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_mainBottom_bn.jpg" alt="배너명" usemap="#mainBottombn" title="배너명" border="0">
-    <map name="mainBottombn" id="mainBottombn">
-        <area shape="rect" coords="1496,7,1521,31" href="#none" onclick="closeWin('bottomBn')" alt="닫기" title="닫기"/>
-        <area shape="rect" coords="433,6,1488,114" href="#none" target="" alt="배너명" title="배너명"/>
-    </map>  
+<div class="mainBottomBn">
+    <div>
+        <a href="#none">
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_mainBottom_bn.jpg" title="" class="mbBanner">
+        </a>
+        <span class="btmEvClose">닫기</span>
+    </div>
 </div>
 
 <script type="text/javascript">        

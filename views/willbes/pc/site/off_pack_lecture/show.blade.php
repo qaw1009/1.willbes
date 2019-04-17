@@ -31,11 +31,10 @@
                                 </dl>
                             </div>
                             <dl class="w-info">
-
-                                    <dt>수강형태 : <span class="tx-blue">{{$data['StudyPatternCcdName']}}</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>접수기간 : <span class="tx-blue">{{ date('Y-m-d', strtotime($data['SaleStartDatm'])) }} ~ {{ date('Y-m-d', strtotime($data['SaleEndDatm'])) }}</span></dt>
-                                    <dt class="w-notice NGR ml15">
+                                <dt>수강형태 : <span class="tx-blue">{{$data['StudyPatternCcdName']}}</span></dt>
+                                <dt><span class="row-line">|</span></dt>
+                                <dt>접수기간 : <span class="tx-blue">{{ date('Y-m-d', strtotime($data['SaleStartDatm'])) }} ~ {{ date('Y-m-d', strtotime($data['SaleEndDatm'])) }}</span></dt>
+                                <dt class="w-notice NGR ml15">
                                     <span class="acadInfo n{{ substr($data['AcceptStatusCcd'], -1) }}">{{$data['AcceptStatusCcdName']}}</span>
                                 </dt>
                             </dl>
@@ -48,6 +47,7 @@
 @php
     if(empty($data['ProdPriceData'] ) === false) {
         $sale_type_ccd = $data['ProdPriceData'][0]['SaleTypeCcd'];
+        $sale_price = $data['ProdPriceData'][0]['SalePrice'];
         $real_sale_price = $data['ProdPriceData'][0]['RealSalePrice'];
         $sale_info = $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'];
    }
@@ -70,7 +70,10 @@
                         <span class="row-line">|</span>
                         <span>
                             <span class="price-txt">종합반</span>
-                            <span class="tx-light-blue">{{ number_format($real_sale_price,0)}}원</span>
+                            <span class="tx-dark-gray">{{ number_format($sale_price, 0) }}원</span>
+                            <span class="tx-pink pl10">(↓{{$sale_info}})</span>
+                            <span class="pl10"> ▶ </span>
+                            <span class="tx-light-blue pl10">{{ number_format($real_sale_price,0)}}원</span>
                         </span>
                         <span class="price-total tx-light-blue">{{ number_format($real_sale_price,0)}}원</span>
                     </div>

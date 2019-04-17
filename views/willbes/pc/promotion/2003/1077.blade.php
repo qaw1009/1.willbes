@@ -33,9 +33,9 @@
         <div class="evtCtnsBox wb_top" >
             <img src="http://file3.willbes.net/new_gosi/2018/08/180830_1.png"alt="고득점 합격의 솔루션 황남기헌법/행정법" usemap="#Map_180820_lec" border="0"  />
             <map name="Map_180820_lec">
-                <area shape="rect" coords="78,1071,329,1131" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150604') }}" target="_blank" alt="헌법">
-                <area shape="rect" coords="354,1070,591,1134" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150606') }}" target="_blank" alt="행정법">
-                <area shape="rect" coords="619,1071,863,1136" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150603') }}" target="_blank" alt="헌법,행정법">
+                <area shape="rect" coords="78,1071,329,1131" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152868') }}" target="_blank" alt="헌법">
+                <area shape="rect" coords="354,1070,591,1134" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152871') }}" target="_blank" alt="행정법">
+                <area shape="rect" coords="619,1071,863,1136" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152867') }}" target="_blank" alt="헌법,행정법">
             </map>
         </div>
         <!--WB_top//-->
@@ -58,9 +58,9 @@
         <div class="evtCtnsBox wb_cts04">
             <img src="http://file3.willbes.net/new_gosi/2018/08/180817_5.png"alt="압도하는 황남기 T-pass" usemap="#Map_180820_lec2" border="0" />
             <map name="Map_180820_lec2">
-                <area shape="rect" coords="837,724,1046,786" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150604') }}" target="_blank">
-                <area shape="rect" coords="839,799,1043,863" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150606') }}" target="_blank">
-                <area shape="rect" coords="840,871,1042,936" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150603') }}" target="_blank">
+                <area shape="rect" coords="837,724,1046,786" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152868') }}" target="_blank">
+                <area shape="rect" coords="839,799,1043,863" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152871') }}" target="_blank">
+                <area shape="rect" coords="840,871,1042,936" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152867') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts04//-->

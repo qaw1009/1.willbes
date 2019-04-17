@@ -43,9 +43,9 @@
         <div class="evtCtnsBox wb_top" >
             <img src="http://file3.willbes.net/new_gosi/2018/09/EV180921_1.png"alt="이상구국제법/국제정치학 T-PASS" usemap="#Map_0921_lec" border="0"  />
             <map name="Map_0921_lec">
-                <area shape="rect" coords="158,1064,436,1140" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150611') }}" target="_blank">
-                <area shape="rect" coords="462,1065,742,1141" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150612') }}" target="_blank">
-                <area shape="rect" coords="763,1062,1038,1138" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150613') }}" target="_blank">
+                <area shape="rect" coords="158,1064,436,1140" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152873') }}" target="_blank">
+                <area shape="rect" coords="462,1065,742,1141" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152874') }}" target="_blank">
+                <area shape="rect" coords="763,1062,1038,1138" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152872') }}" target="_blank">
             </map>
         </div>
         <!--WB_top//-->
@@ -68,9 +68,9 @@
         <div class="evtCtnsBox wb_cts04" >
             <img src="http://file3.willbes.net/new_gosi/2018/09/EV180921_5.png"alt="이상구 국제법/국제정치학 T-PASS " usemap="#Map_0921_lec2" border="0"  />
             <map name="Map_0921_lec2">
-                <area shape="rect" coords="652,646,1062,714" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150611') }}" target="_blank">
-                <area shape="rect" coords="650,740,1064,807" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150612') }}" target="_blank">
-                <area shape="rect" coords="650,831,1067,898" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150613') }}" target="_blank">
+                <area shape="rect" coords="652,646,1062,714" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152873') }}" target="_blank">
+                <area shape="rect" coords="650,740,1064,807" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152874') }}" target="_blank">
+                <area shape="rect" coords="650,831,1067,898" href="{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/152872') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts04//-->

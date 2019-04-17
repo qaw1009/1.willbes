@@ -160,7 +160,7 @@ class PredictModel extends WB_Model
      */
     public function QuestionMainList($condition='', $limit='', $offset='')
     {
-        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
+        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
         $column = "
 	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.ProdCode, PP.SubjectCode, PP.Type, 
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse
@@ -175,7 +175,7 @@ class PredictModel extends WB_Model
         $selectCount = " SELECT COUNT(*) AS cnt";
         $where = " WHERE PP.PpIdx > 0 ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = "";
+        $order = " ORDER BY PP.RegDate DESC";
         //echo "<pre>". 'select' . $column . $from . $where . $order . $offset_limit . "</pre>";
 
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
@@ -427,12 +427,25 @@ class PredictModel extends WB_Model
     {
         if (!preg_match('/^[0-9]+$/', $idx)) return false;
 
-        $where = array('PpIdx' => $idx, 'IsStatus' => 'Y');
+        $column = "
+	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.ProdCode, PP.SubjectCode, PP.Type, PP.UpdDate, 
+	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse
+        ";
 
-        // 기본정보
-        $data = $this->_conn->get_where($this->_table['predictPaper'], $where)->row_array();
+        $from = "
+            FROM 
+                {$this->_table['predictPaper']} AS PP
+                LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A2 ON PP.UpdAdminIdx = A2.wAdminIdx
+        ";
+
+        $where = " WHERE PP.PpIdx = ".$idx;
+        $order = " ORDER BY PP.RegDate DESC";
+
+        $data = $this->_conn->query('SELECT' . $column . $from . $where . $order)->row_array();
         if(empty($data)) return false;
 
+        $where = array('PpIdx' => $idx, 'IsStatus' => 'Y');
         // 문항정보
         $qData = $this->_conn->order_by('QuestionNO ASC')->get_where($this->_table['predictQuestion'], $where)->result_array();
 
@@ -442,19 +455,19 @@ class PredictModel extends WB_Model
     /**
      *  합격예측용 과목코드 호출
      */
-    public function getSubject(){
+    public function getSubject($ProdCode){
+
         $column = "
-            Ccd, CcdValue, Type
+            Ccd, CcdName, pc.Type, if(pp.ProdCode != '','(등록완료)','') AS AddIs
         ";
 
         $from = "
             FROM 
-                {$this->_table['predictCode']} 
-        ";
+                {$this->_table['predictCode']} AS pc
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pc.Ccd = pp.SubjectCode AND pp.ProdCode = ".$ProdCode;
 
-        $order_by = " ";
-        $where = " WHERE Type != '' ";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $order_by = " ORDER BY Ccd";
+        $where = " WHERE GroupCcd = 100 GROUP BY CcdName";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();

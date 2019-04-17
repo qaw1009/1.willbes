@@ -57,7 +57,7 @@
         a.button01:hover{border:1px solid #000;background:#fff; color:#000 !important; font-size:12px;  border-radius:6px}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox time">
             <div id="ddaytime">
                 <table>
@@ -87,9 +87,7 @@
                 <area shape="rect" coords="571,1699,731,1738" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149253') }}" alt="59만원" />
                 <area shape="rect" coords="918,1698,1080,1737" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />
             </map>
-        </div><!--wb_cts01//-->
-
-        
+        </div><!--wb_cts01//-->        
 
         <div class="evtCtnsBox wb_cts02" id="wb01">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_02_1.jpg" alt="수강생 전용해톅, 전문교수진">

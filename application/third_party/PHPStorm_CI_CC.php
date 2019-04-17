@@ -74,6 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Excel $excel                                      Loads framework components.
  * @property Jwt $jwt                                           Loads Libraries JWT
  * @property LogViewer $logviewer                          CodeIgniter Log Viewer
+ * @property Approval $approval                              Approval Class
  ***************** DEPRECATED LIBRARIES **************************************************************
  * @property CI_Jquery $jquery                              Jquery Class
  * @property CI_Encrypt $encrypt                          Provides two-way keyed encoding using Mcrypt

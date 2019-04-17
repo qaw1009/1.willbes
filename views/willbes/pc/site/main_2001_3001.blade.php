@@ -295,7 +295,7 @@
     <div class="mainBottomBn">
         <div>
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/1009">
-                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_mainBottom_bn.jpg" title="" class="mbBanner">
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1009_mainBottom_bn.jpg" title="" class="mbBanner">
             </a>
             <span class="btmEvClose">닫기</span>
         </div>

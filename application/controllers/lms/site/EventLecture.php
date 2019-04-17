@@ -798,15 +798,24 @@ class EventLecture extends \app\controllers\BaseController
      */
     public function registerExcel($params = [])
     {
+        $file_name = '이벤트_신청현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
         $headers = ['이름', '아이디', '연락처', '이메일', '추가데이터', '신청일', '신청특강/설명회', '총신청수'];
 
         $el_idx = $params[0];
         $arr_condition = $this->_getRegisterListConditions($el_idx);
         $list = $this->eventLectureModel->listAllEventRegister('excel', $arr_condition, null, null, ['A.EmIdx' => 'desc']);
 
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->eventLectureModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
+
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('신청현황', $list, $headers);
+        $this->excel->exportExcel($file_name, $list, $headers);
     }
 
     /**
@@ -815,15 +824,24 @@ class EventLecture extends \app\controllers\BaseController
      */
     public function commentExcel($params = [])
     {
+        $file_name = '이벤트_댓글현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
         $headers = ['댓글종류', '이름', '아이디', '연락처', '이메일', '댓글', '작성일', '사용여부'];
 
         $el_idx = $params[0];
         $arr_condition = $this->_getCommentListConditions($el_idx);
         $list = $this->eventLectureModel->listAllEventComment('excel', $arr_condition, null, null, ['A.CIdx' => 'desc']);
+
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->eventLectureModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
         
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('댓글현황', $list, $headers);
+        $this->excel->exportExcel($file_name, $list, $headers);
     }
 
     /**
@@ -832,15 +850,24 @@ class EventLecture extends \app\controllers\BaseController
      */
     public function memberSuccessExcel($params = [])
     {
+        $file_name = '이벤트_합격수기_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
         $headers = ['이름', '아이디', '연락처', '응시번호', '응시직렬', '응시지역', '합격구분', '등록일'];
 
         $el_idx = $params[0];
         $arr_condition = $this->_getMemberSuccessListConditions($el_idx);
         $list = $this->eventLectureModel->listAllEventMemberSuccess('excel', $arr_condition, null, null, ['a.EmsIdx' => 'DESC']);
 
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->eventLectureModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
+
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('합격수기', $list, $headers);
+        $this->excel->exportExcel($file_name, $list, $headers);
     }
 
     public function download()
@@ -927,6 +954,7 @@ class EventLecture extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'A.ElIdx' => $el_idx,
+                'A.CommentUiCcd' => $this->_reqP('search_comment_ui_type_ccd')
                 /*'A.IsStatus' => 'Y'*/
             ],
             'ORG1' => [

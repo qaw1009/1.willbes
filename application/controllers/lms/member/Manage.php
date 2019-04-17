@@ -181,6 +181,7 @@ class Manage extends \app\controllers\BaseController
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
+        $file_name = '회원목록_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
         $headers = [ '회원번호', '회원명', '아이디', '휴대폰', '휴대폰수신여부', '이메일', '이메일수신여부','상태'];
 
         $search_value = $this->_reqP('search_value'); // 검색어
@@ -292,9 +293,17 @@ class Manage extends \app\controllers\BaseController
 
         $list = $this->manageMemberModel->listExcel($arr_condition, $orderby, $inQuery);
 
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->manageMemberModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
+
         // export excel
         $this->load->library('excel');
-        $this->excel->exportHugeExcel('사용자목록', $list, $headers);
+        $this->excel->exportHugeExcel($file_name, $list, $headers);
     }
 
     /**

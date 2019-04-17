@@ -81,7 +81,7 @@
                                 }},
                             {'data' : 'DeviceId'},
                             {'data' : null, 'render' : function(data, type, row, meta){
-                                    return row.Os + ' ' + row.DeviceModel + '(' + row.App + ')';
+                                    return row.Os + ' ' + row.DeviceModel + ' (' + row.App + ')';
 
                                 }},
                             {'data' : 'RegDatm'},

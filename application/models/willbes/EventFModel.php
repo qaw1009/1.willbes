@@ -268,7 +268,7 @@ class EventFModel extends WB_Model
 
                 //특강별 인원제한 체크
                 if ((empty($arr_register_member[$key]) === false) && $row['PersonLimitType'] == $this->_register_limit_type['limit_true'] && $row['PersonLimit'] <= $arr_register_member[$key]) {
-                    throw new \Exception('신청받는 횟수 제한이 넘었습니다.');
+                    throw new \Exception('마감되었습니다.');
                 }
 
                 //중복체크, 저장 데이터 셋팅

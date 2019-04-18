@@ -30,7 +30,57 @@
         .evt03 {background:#ececec}        
         .evt04 {background:#fff}
         
-        .evtLive {background:#f6f6f6}
+        .evtLive {background:#f6f6f6; position:relative}
+        .notice {
+            position:relative; width:980px; margin:0 auto; padding:10px; text-align:left;
+            background:#000 url(https://static.willbes.net/public/images/promotion/2019/04/1208_notice_title.jpg) no-repeat 10px 10px;
+        }        
+        .notice ul {margin-left:248px; background:#fff; padding:10px 40px 10px 20px}
+        .notice li {height:29px; line-height:29px;}
+        .notice li a {display:block}
+        .notice li a span {float:right; color:#999}
+        .notice li a strong {background:#ee1c24; color:#fff; margin-right:10px; font-size:11px; padding:2px 4px}        
+        .notice .morebtn {position:absolute; top:10px; right:10px; width:23px; z-index:1}
+
+        /*레이어팝업*/
+        .Pstyle {
+            opacity: 0;
+            display: none;
+            position: relative;
+            width: 600px;
+            border: 1px solid #000;            
+            background: #fff;
+            font-size:13px;
+            line-height:1.5;
+            box-shadow:0 10px 10px rgba(0,0,0,0.2);
+        }
+        .b-close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            padding: 5px;
+            display: inline-block;
+            cursor: pointer;
+            color:#fff;
+            font-size:14px;
+        }
+        .Pstyle h3 {height:60px; line-height:60px; padding-left:20px; color:#fff; background:#225fba; font-size:20px}
+        .Pstyle .content {height:auto; width:auto; padding:20px}
+        .Pstyle .content table {border-top:2px solid #333}
+        .Pstyle .content th,
+        .Pstyle .content td {padding:10px; text-align:center; border-bottom:1px solid #e4e4e4}
+        .Pstyle .content th {background:#f2f2f2}
+        .Pstyle .content th span {float:right}
+        .Pstyle .content td:nth-child(2) {text-align:left;}
+        .Pstyle .content tr:hover {background:#e9f1fe}
+        .Pstyle .content td a {display:block}
+        .Pstyle .content td .boradImg {margin:10px 0}
+        .Pstyle .content td .boradImg img {max-width:538px}
+        .Pstyle .content table strong {background:#ee1c24; color:#fff; margin-right:10px; font-size:11px; padding:2px 4px}
+        .Pstyle .btnsSt3 {text-align:center; margin-top:20px}
+        .Pstyle .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff; font-weight:bold; border:1px solid #333}
+        .btnsSt3 a:hover {background:#fff; color:#333}
+
         .evtLive #movieFrame {position:relative; width:980px; height:420px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center center;}
         .movieplayer .embedWrap {position:relative; width:980px; height:420px; margin:0 auto}
         .movieplayer .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:420px; margin:0 auto}        
@@ -79,7 +129,106 @@
 
 	<div class="evtCtnsBox evtLive">
         <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live_01.jpg" title="수강생 여러분의 합격을 기원합니다."></div>
-        
+        <div class="notice">
+            <ul>
+                <li><a href="javascript:go_popup();"><strong>공지</strong>라이브 토크쇼 14:00시부터 시작합니다.<span>2019-04-23</span></a></li>
+                <li><a href="javascript:go_popup();">해설강의 진행시간 안내 <span>2019-04-23</span></a></li>
+            </ul>
+            <a href="javascript:go_popup();" class="morebtn"><img src="https://static.willbes.net/public/images/promotion/common/btn_close01.jpg" title="더보기"></a>
+        </div>
+
+        {{--공지사항 레이어팝업--}}
+        <div id="popup" class="Pstyle NGR">
+            <span class="b-close">X</span>
+            <h3 class="NSK-Black">live 토크쇼 공지사항</h3> 
+            <div class="content">                               
+                {{--리스트--}}    
+                <table>
+                    <col widht="10%"/>
+                    <col widht=""/>
+                    <col widht="20%"/>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>제목</th>
+                            <th>등록일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>9</td>
+                            <td><a href="#none"><strong>공지</strong> 조정점수 5차 업데이트</a></td>
+                            <td>2018-12-27</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><a href="#none"><strong>공지</strong> 조정점수및 예상 합격선 4차 업데이트</a></td>
+                            <td>2018-12-26</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><a href="#none">조정점수및 예상 합격선 3차 업데이트</a></td>
+                            <td>2018-12-24</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><a href="#none">조정점수및 예상 합격선 업데이트 안내</a></td>
+                            <td>2018-12-22</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><a href="#none">조정점수 및 예상 합격선 1차 업데이트</a></td>
+                            <td>2018-12-22</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><a href="#none">채점시 오류 발생할 경우.</a></td>
+                            <td>2018-12-22</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><a href="#none">018년 3차 합격예측 풀서비스 오픈!</a></td>
+                            <td>2018-12-22</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="#none">2018년 3차 합격예측 풀서비스 coming soon!</a></td>
+                            <td>2018-12-21</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="#none">2018 경찰 3차 합격을 기원합니다!</a></td>
+                            <td>2018-12-21</td>
+                        </tr>
+                    </tbody>
+                </table>
+                {{--공통 페이지 넘버링--}}
+
+                {{--글보기--}}
+                <table>
+                    <col widht="10%"/>
+                    <col widht=""/>
+                    <col widht="20%"/>
+                    <thead>
+                        <tr>
+                            <th class="tx-left"><strong>공지</strong> 조정점수 5차 업데이트 <span>2018-12-27</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tx-left">                            
+                                복수정답 처리, 재채점 및 추가 채점자 합산 반영된 조정점수가 5차 업데이트 되었습니다.
+                                합격예측 풀서비스는 12/28(금) 오후 2시까지 채점 입력, 수정이 가능합니다.
+                                합격예측 풀서비스는 필기합격 발표에 따라 최종합격 예측 서비스로 이어질 예정입니다.
+                                <div class="boradImg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg" title="방송전"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btnsSt3"><a href="#none">목록</a></div>
+            </div>
+        </div>
+
         <div id="movieFrame">
             {{--방송 전 27일 00:00 까지 노출
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg" title="방송전">
@@ -140,7 +289,7 @@
 
 </div>
 <!-- End Container -->
-
+<script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 <script src="/public/js/willbes/jquery.counterup.min.js"></script>
 <script src="/public/js/willbes/waypoints.min.js"></script>
 <script type="text/javascript">
@@ -151,14 +300,9 @@
         });
     });
 
-    function pullOpen(){
-        var url = "1187_popup";
-        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
-    }
-
-    function popOpen(){
-        var url = "1187_popup02";
-        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=550');
+    /*레이어팝업*/
+    function go_popup() {
+        $('#popup').bPopup();
     }
 </script>
 

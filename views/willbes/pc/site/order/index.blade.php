@@ -839,10 +839,12 @@
             $('button[name="btn_pay"]').on('click', function () {
                 // 중복클릭 방지
                 var btn_pay = document.getElementById('btn_pay');
-                if (btn_pay.getAttribute('data-is-clicked') === 'Y') {
-                    return;
+                if (btn_pay) {
+                    if (btn_pay.getAttribute('data-is-clicked') === 'Y') {
+                        return;
+                    }
+                    btn_pay.setAttribute('data-is-clicked', 'Y');
                 }
-                btn_pay.setAttribute('data-is-clicked', 'Y');
 
                 var url = '{{ front_url('/payment/request') }}';
                 ajaxSubmit($regi_form, url, function(ret) {

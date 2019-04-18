@@ -16,8 +16,11 @@ class TmOrder extends \app\controllers\BaseController
     {
         //TM 목록
         $tm_admin = $this->tmModel->listAdmin(['EQ'=>['C.RoleIdx'=>'1010']]);   //TM목록
+
+        $codes = $this->codeModel->getCcdInArray(['615']);
         $this->load->view('crm/tm/order_list',[
             'AssignAdmin' => $tm_admin
+            ,'learnpattern_ccd' => $codes['615']
         ]);
     }
 
@@ -63,11 +66,15 @@ class TmOrder extends \app\controllers\BaseController
             'EQ' => [
                 'p.ProdTypeCcd' => '636001',		#온라인 강좌상품
                 'o.SiteCode' => $this->_reqP('search_site_code'),
+                'pl.LearnPatternCcd' => $this->_reqP('search_learnpattern'),
             ]
             ,'IN' => [
                 'op.SalePatternCcd' => ['694001','694002','694003']      #일반/재수강/수강연장 인것
                 ,'op.PayStatusCcd' => ['676001','676006']                  #결제완료/환불완료
                 ,'o.PayRouteCcd' => ['670001','670002','670005']         #온라인결제(PG사), 학원방문결제, 제휴사결제
+            ]
+            ,'GT' => [
+                'op.RealPayPrice' => '0'
             ]
         ];
 
@@ -120,7 +127,7 @@ class TmOrder extends \app\controllers\BaseController
 
         $list = $this->tmModel->listOrderExcel($arr_condition, $order_by);
 
-        $headers = ['회원명', '회원아이디', '주문번호', '사이트', '결제완료일', '상품명', '상품금액', '결제금액', '결제상태', 'TM담당자', '배정일', '최종상담일'];
+        $headers = ['회원명', '회원아이디', '주문번호', '사이트', '결제완료일', '학습형태', '상품명', '상품금액', '결제금액', '결제상태', 'TM담당자', '배정일', '최종상담일'];
         // export excel
         $this->load->library('excel');
         $this->excel->exportExcel('TM결제내역_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d"), $list, $headers);

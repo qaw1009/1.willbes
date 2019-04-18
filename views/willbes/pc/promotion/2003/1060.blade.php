@@ -27,8 +27,8 @@
         .time table {width:1120px; margin:0 auto}
         .time table td:first-child {font-size:40px}
         .time table td img {width:80%}
-        .time .time_txt {font-size:28px; color:#333; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#9b81e7}    
+        .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px; font-weight:bold}
+        .time .time_txt span {color:#d63e4d}    
         
 
         .wb_cts00 {background:#1c1c1c url(http://file3.willbes.net/new_gosi/2019/01/EV190115_c1_bg.jpg) no-repeat center top;}	

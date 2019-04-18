@@ -198,11 +198,21 @@ class BaseOrder extends \app\controllers\BaseController
      * @param array $list [엑셀내용]
      * @param array $headers [엑셀헤더]
      * @param bool $is_huge [대용량 다운로드 메소드 사용여부]
+     * @param string $query [엑셀다운로드 쿼리]
      */
-    protected function _makeExcel($file_name, $list, $headers, $is_huge = true)
+    protected function _makeExcel($file_name, $list, $headers, $is_huge = true, $query = '')
     {
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
+
+        // 파일명 가공
+        $file_name = $file_name . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        // download log
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($query, $file_name, count($list)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
 
         // export excel
         $this->load->library('excel');

@@ -137,8 +137,9 @@ class Order extends BaseOrder
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
+        $last_query = $this->orderListModel->getLastQuery();
 
         // export excel
-        $this->_makeExcel('전체결제현황리스트', $list, $headers);
+        $this->_makeExcel('전체결제현황리스트', $list, $headers, true, $last_query);
     }
 }

@@ -95,7 +95,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <!-- 타이머 -->
-        <div class="evtCtnsBox time">
+        <div class="evtCtnsBox time" id="newTopDday">
             <div id="ddaytime">
                 <table>
                     <tr>

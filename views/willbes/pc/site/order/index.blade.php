@@ -463,7 +463,7 @@
                             @endif
                             </li>
                             <li class="btnAuto180 h36">
-                                <button type="submit" name="btn_pay" class="mem-Btn bg-blue bd-dark-blue">
+                                <button type="submit" id="btn_pay" name="btn_pay" data-is-clicked="" class="mem-Btn bg-blue bd-dark-blue">
                                     <span>결제하기</span>
                                 </button>
                             </li>
@@ -837,6 +837,13 @@
 
             // 결제하기 버튼 클릭
             $('button[name="btn_pay"]').on('click', function () {
+                // 중복클릭 방지
+                var btn_pay = document.getElementById('btn_pay');
+                if (btn_pay.getAttribute('data-is-clicked') === 'Y') {
+                    return;
+                }
+                btn_pay.setAttribute('data-is-clicked', 'Y');
+
                 var url = '{{ front_url('/payment/request') }}';
                 ajaxSubmit($regi_form, url, function(ret) {
                     if(ret.ret_cd) {

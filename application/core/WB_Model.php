@@ -143,13 +143,16 @@ class WB_Model extends CI_Model
         else { return $this->_conn->query("SELECT fn_enc(?) AS enc", [$str])->row(0)->enc; }
     }
 
-
     /**
      * 마지막 실행 쿼리문 리턴
      * @return string
      */
     public function getLastQuery()
     {
-        return $this->_conn->last_query();
+        if (is_object($this->_conn->result_id) === true && isset($this->_conn->result_id->queryString) === true) {
+            return $this->_conn->result_id->queryString;
+        } else {
+            return $this->_conn->last_query();
+        }
     }
 }

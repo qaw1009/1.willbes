@@ -22,12 +22,13 @@
         /************************************************************/
 
         /*타이머*/
-        .time{background:#e1e1e1;}
-        .time_date {max-width:1120px; text-align:center;  margin: 0 auto;}
-        .time_date .t_img {width:80%;}		
-        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:22px; color:#171717; letter-spacing: -1px; font-weight:bold;}
-        .time_txt span {color:#b61216;}	
-        .time p {text-align:center; padding-top:20px}      
+        .time {width:100%; text-align:center; background:#e1e1e1}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {font-size:40px}
+        .time table td img {width:80%}
+        .time .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
+        .time .time_txt span {color:#ef6759}    
         
 
         .wb_cts00 {background:#1c1c1c url(http://file3.willbes.net/new_gosi/2019/01/EV190115_c1_bg.jpg) no-repeat center top;}	
@@ -86,31 +87,30 @@
         
     </style>
     
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">
 			<div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c11.png" alt="소방체력풀패키지런칭기념 파격할인" ></a></div>
 		</div>
 
-        <!-- 타이머 -->    
-        <div class="evtCtnsBox time">
-            <div class="time_date" id="newTopDday">			
-                <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
+        <div class="evtCtnsBox time" id="newTopDday">
+            <div id="ddaytime">
+                <table>
                     <tr>
-                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0.jpg" alt=""  /></td>                        
-                        <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
-                        <td width="62" height="101" align="center"><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
-                        <td width="62" height="101" align="center"><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
-                        <td width="60" height="101" align="center" class="time_txt">day</td>
-                        <td width="62" height="101" align="center"><img id="hh1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="hh2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="20" height="101" align="center" class="time_txt">:</td>
-                        <td width="62" height="101" align="center"><img id="mm1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="mm2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="20" height="101" align="center">:</td>
-                        <td width="62" height="101" align="center"><img id="ss1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="ss2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                    <td class="time_txt"><span>4/24(수) 마감!</span></td>
+                    <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">일 </td>
+                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     </tr>
-                </table>
+                </table>                
             </div>
         </div>
         <!-- 타이머 //-->

@@ -21,23 +21,22 @@
 
         /************************************************************/
         .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_top_bg.jpg) no-repeat center top;}            
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_top_bg.jpg) no-repeat center top;} 
+            .evtTopInmg {position:relative; width:1120px; margin:0 auto}
+            .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px; line-height:30px}
+            .counter span {color:#fff200; font-size:30px; vertical-align: text-bottom}           
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_01_bg.jpg) no-repeat center top;}
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_02_bg.jpg) no-repeat center top;}
-        .evt03 {background:#fff}        
-        .evt04 {background:#231f20}
-        .evt05 {background:#fff; position:relative;}
-        .evt05 a {position:absolute; display:block; top:685px; left:50%; width:200px; margin-left:-100px; height:50px; line-height:50px; background:#000; color:#fff; border-radius:26px; font-size:20px; z-index:1} 
-        .evt05 a:hover {background:#20bdb2;}
-        .evt06 {background:#ececec;}
+        .evt02 {background:#25353c}
+        .evt03 {background:#ececec}        
+        .evt04 {background:#fff}
         
-        .evtLive {padding-bottom:120px}
+        .evtLive {background:#f6f6f6}
         .evtLive #movieFrame {position:relative; width:980px; height:420px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center center;}
-        .movieplayer .embedWrap {width:980px; margin:0 auto}
-        .movieplayer .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:100%; height:auto; margin:0 auto}        
+        .movieplayer .embedWrap {position:relative; width:980px; height:420px; margin:0 auto}
+        .movieplayer .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:420px; margin:0 auto}        
         .movieplayer .mobileCh {position:absolute; bottom:0; width:980px;}
         .movieplayer .mobileCh li {display:inline; float:left; width:50%;}
-        .movieplayer .mobileCh li a {display:block; text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0; margin-right:1px}
+        .movieplayer .mobileCh li a {display:block; /*text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0; margin-right:1px*/}
         .movieplayer .mobileCh li:last-child a {margin:0}
         .movieplayer .mobileCh li a.ch2 {color:#6CF}
         .movieplayer .mobileCh li a:hover {color:#FC0}
@@ -46,11 +45,11 @@
         /*크롬*/
         @@media screen and (-webkit-min-device-pixel-ratio:0) {
         .evtLive #movieFrame {position:relative; width:980px; height:420px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center center;}
-        .movieplayer .embedWrap {width:980px; margin-left:0; padding:0}
-        .movieplayer .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}
+        .movieplayer .embedWrap {position:relative; width:980px; height:420px; margin-left:0; padding:0}
+        .movieplayer .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto}
         .movieplayer .mobileCh {position:absolute; bottom:0; width:980px;}
         .movieplayer .mobileCh li {display:inline; float:left; width:490px;}
-        .movieplayer .mobileCh li a {display:block; text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0}
+        .movieplayer .mobileCh li a {display:block;/*text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0*/}
         .movieplayer .mobileCh li a.ch2 {color:#6CF}
         .movieplayer .mobileCh li a:hover {color:#FC0}
         .movieplayer .mobileCh:after {content:""; display:block; clear:both}
@@ -64,22 +63,29 @@
     </div>
     
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_top.png" title="적중&합격예측 라이브 토크쇼">
+        <div class="evtTopInmg">
+            <div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span>986,129</span>건</div>    
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_top.jpg" title="2019년 경찰 1차 적중&합격예측 사전예약 이벤트">
+        </div> 
 	</div>
 
 	<div class="evtCtnsBox evt01">
-		<img src="https://static.willbes.net/public/images/promotion/2019/04/1208_01.png" title="토크쇼 교수진">
+		<img src="https://static.willbes.net/public/images/promotion/2019/04/1208_01.jpg" title="리얼 시험분석">
+    </div>
+    
+    <div class="evtCtnsBox evt02">
+		<img src="https://static.willbes.net/public/images/promotion/2019/04/1208_02.jpg" title="토크쇼 교수진">
 	</div>
 
 	<div class="evtCtnsBox evtLive">
-        <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live_01.png" title="수강생 여러분의 합격을 기원합니다."></div>
+        <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live_01.jpg" title="수강생 여러분의 합격을 기원합니다."></div>
         
         <div id="movieFrame">
-            {{--토크쇼 전
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg" title="토크쇼 교수진">
+            {{--방송 전 27일 00:00 까지 노출
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg" title="방송전">
             --}}
 
-            {{--토크쇼 중--}}
+            {{--방송 중--}}
             <script src="/public/vendor/jwplayer/jwplayer.js"></script>
             <div class="movieplayer">
                 <div class="embedWrap">
@@ -97,25 +103,25 @@
                         </script>
                     </div>
 
-                    {{--모바일용 
+                    {{--모바일용 --}}
                     <ul class="mobileCh">
-                        <li><a href="javascript:fn_live('hd')">▶ 고화질 보기 클릭!</a></li>
-                        <li><a href="javascript:fn_live('low')" class="ch2">▶ 일반화질 보기 클릭!</a></li>
+                        <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
+                        <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
                     </ul>
-                    --}}
+                    
                 </div>
             </div>
             
-            {{--토크쇼 종료 후
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg03.jpg" alt="라이브강의_지금은 진행시간이아닙니다" />
+            {{--방송종료 00:00 부터 노출
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg03.jpg" title="방송종료" />
             --}}
         </div>
 
-        <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live_02.png" title="생방송 강의 진행 안내"></div>
+        <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live_02.jpg" title="생방송 강의 진행 안내"></div>
 	</div>
 
-	<div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_02.png" title="토크쇼 소통 이벤트"> 
+	<div class="evtCtnsBox evt03">
+        <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_03.jpg" title="토크쇼 소통 이벤트"> 
     </div>
 
     {{--기본댓글--}}
@@ -123,8 +129,8 @@
         @include('willbes.pc.promotion.show_comment_list_normal_partial')
     @endif
 
-    <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_03.jpg" title="최종점검"> 
+    <div class="evtCtnsBox evt04">
+        <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_04.jpg" title="최종점검"> 
     </div> 
 
     {{--홍보url댓글--}}
@@ -134,5 +140,26 @@
 
 </div>
 <!-- End Container -->
+
+<script src="/public/js/willbes/jquery.counterup.min.js"></script>
+<script src="/public/js/willbes/waypoints.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function( $ ) {
+        $('.counter span').counterUp({
+            delay: 11, // the delay time in ms
+            time: 1000 // the speed time in ms
+        });
+    });
+
+    function pullOpen(){
+        var url = "1187_popup";
+        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+    }
+
+    function popOpen(){
+        var url = "1187_popup02";
+        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=550');
+    }
+</script>
 
 @stop

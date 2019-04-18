@@ -203,10 +203,18 @@ class BaseSales extends \app\controllers\BaseController
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
+        $last_query = $this->orderListModel->getLastQuery();
+        $file_name = $this->_sales_name . '_매출현황리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        // download log
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($last_query, $file_name, count($list)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel('매출현황리스트', $list, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

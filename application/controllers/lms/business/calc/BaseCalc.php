@@ -280,6 +280,14 @@ class BaseCalc extends \app\controllers\BaseController
         $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions($prod_type, $this->_reqP(null)));
 
         $results = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, 'excel', $arr_condition);
+        $last_query = $this->orderCalcModel->getLastQuery();
+        $file_name = '강사료정산상세리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        // download log
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($last_query, $file_name, count($results)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
 
         if ($prod_type == 'PP') {
             // 기간제패키지
@@ -294,7 +302,7 @@ class BaseCalc extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel('강사료정산_주문목록리스트', $results, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $results, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }
@@ -440,6 +448,8 @@ class BaseCalc extends \app\controllers\BaseController
 
         // 데이터 조회
         $results = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, false, $arr_condition);
+        $last_query = $this->orderCalcModel->getLastQuery();
+
         if (empty($results) === true) {
             show_alert('강사료 정산 데이터가 없습니다.', 'back');
         }
@@ -496,7 +506,7 @@ class BaseCalc extends \app\controllers\BaseController
 
         // export excel
         try {
-            $file_name = '강사료정산내역_' . $prof_name . '_' . $subject_name . '_' . date('Ymd');
+            $file_name = '강사료정산내역_' . $prof_name . '_' . $subject_name . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
             $price_format = '#,##0';
             $table_head_color = 'ccccff';
             $sum_color = 'ffff99';
@@ -577,6 +587,12 @@ class BaseCalc extends \app\controllers\BaseController
             // border
             $sheet->getStyle('A1:F' . $sheet->getHighestRow())->getBorders()->getAllBorders()
                 ->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+            // download log
+            $this->load->library('approval');
+            if($this->approval->SysDownLog($last_query, $file_name, count($results)) !== true) {
+                show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+            }
 
             ob_end_clean();
             header('Content-type: application/vnd.ms-excel'); // xls

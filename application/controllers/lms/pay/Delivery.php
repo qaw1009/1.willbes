@@ -204,7 +204,7 @@ class Delivery extends BaseOrder
         $last_query = $this->orderListModel->getLastQuery();
 
         // export excel
-        $this->_makeExcel('교재배송관리_' . $file_name . '리스트', $list, $headers, true, $last_query);
+        $this->_makeExcel('교재배송_' . $file_name . '리스트', $list, $headers, true, $last_query);
     }
 
     /**

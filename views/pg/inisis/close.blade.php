@@ -13,7 +13,7 @@
     }
 
     if (btn_pay) {
-        btn_pay.setAttribute('data-is-clicked', '');
+        //btn_pay.setAttribute('data-is-clicked', '');
     }
 </script>
 <script language="javascript" type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay_close.js" charset="UTF-8"></script>

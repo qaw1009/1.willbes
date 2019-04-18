@@ -6,6 +6,12 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        <div class="Section mt20">
+            <div class="widthAuto">
+                <img src="https://static.willbes.net/public/images/promotion/main/3020_top_1120.jpg" title="7급 공무원 합격을 위한 최상위권 학습 전략!">
+            </div>
+        </div>
+
         <div class="Section mt20 p_re">
             <div class="MainVisual NSK">
                 <div class="VisualBox">
@@ -32,7 +38,7 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
+                <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" title="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
                 <ul class="PBcts">
                     @for($i=1; $i<=5; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
@@ -49,7 +55,7 @@
 
         <div class="Section Section3 mt110">
             <div class="widthAuto">
-                <div><img src="{{ img_url('gosi/visual/visual_tit02.jpg') }}" alt="추천강좌/이벤트/최신소식"></div>
+                <div><img src="{{ img_url('gosi/visual/visual_tit02.jpg') }}" title="추천강좌/이벤트/최신소식"></div>
                 <ul class="SpecialBox">
                     @for($i=1; $i<=10; $i++)
                         @if(isset($data['arr_main_banner']['메인_hotpick'.$i]) === true)

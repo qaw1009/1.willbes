@@ -99,7 +99,7 @@
             <div id="ddaytime">
                 <table>
                     <tr>
-                    <td class="time_txt"><span>4/17(수) 마감!</span></td>
+                    <td class="time_txt"><span>4/24(수) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>

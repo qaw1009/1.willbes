@@ -70,7 +70,8 @@
     <div class="evtCtnsBox wb_cts03" id="event">
         <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c6.jpg" title="예약 접수" usemap="#Map1067" border="0" />
         <map name="Map1067" id="Map1067">
-            <area shape="rect" coords="664,674,938,777" href="#" onclick="{{ $goSubmit }}" />
+            {{--<area shape="rect" coords="664,674,938,777" href="#none" onclick="{{ $goSubmit }}" />--}}
+            <area shape="rect" coords="664,674,938,777" href="#none" onclick="javascript:alert('선착순 20명 마감되었습니다.');" />
         </map>
     </div><!--wb_cts03//-->
 

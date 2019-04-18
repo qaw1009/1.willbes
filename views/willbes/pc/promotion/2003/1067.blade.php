@@ -85,7 +85,7 @@
     <script type="text/javascript">
         function doEvent() {
             var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
-            window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
+            window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=400,height=500,top=50,left=100');
         }
     </script>
 @stop

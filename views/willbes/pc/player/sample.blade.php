@@ -20,7 +20,7 @@
                 visible: true,
                 auto_progressive_download: true,
                 dualMonitor: true,
-                watermarkText: "{{$data['memid'] == "ANOMYNOUS" ? $data['ip'] : $data['memid']}}",
+                watermarkText: "{{$data['memid'] == "ANONYMOUS" ? $data['ip'] : $data['memid']}}",
                 watermarkTextColor: "#308ECE92",
                 watermarkTextSize: "2%",
                 watermarkHorzAlign: WatermarkAlign.RANDOM,

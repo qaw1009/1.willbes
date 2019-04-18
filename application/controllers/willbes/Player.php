@@ -321,7 +321,7 @@ class Player extends \app\controllers\FrontController
         if($this->session->userdata('is_login') === true){
             $MemId = $this->session->userdata('mem_id');
         } else {
-            $MemId = "ANOMYNOUS";
+            $MemId = "ANONYMOUS";
         }
 
         if(empty($quility) === true){
@@ -509,7 +509,7 @@ class Player extends \app\controllers\FrontController
         if($this->session->userdata('is_login') === true){
             $MemId = $this->session->userdata('mem_id');
         } else {
-            $MemId = "ANOMYNOUS";
+            $MemId = "ANONYMOUS";
         }
 
         if(empty($this->_profReferDataName[$viewType]) === true){

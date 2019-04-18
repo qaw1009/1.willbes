@@ -64,10 +64,18 @@ class Issue extends \app\controllers\BaseController
 
         $arr_condition = $this->_getListConditions();
         $list = $this->couponIssueModel->listAllCouponDetail('excel', $arr_condition, null, null, ['CdIdx' => 'desc']);
+        $last_query = $this->couponIssueModel->getLastQuery();
+        $file_name = '쿠폰발급리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        // download log
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($last_query, $file_name, count($list)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('쿠폰발급리스트', $list, $headers);
+        $this->excel->exportHugeExcel($file_name, $list, $headers);
     }
 
     /**

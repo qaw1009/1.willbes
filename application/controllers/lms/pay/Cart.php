@@ -101,9 +101,10 @@ class Cart extends BaseOrder
 
         $arr_condition = $this->_getListConditions();
         $list = $this->cartModel->listExcelValidCart($arr_condition, $this->_getListOrderBy());
+        $last_query = $this->cartModel->getLastQuery();
 
         // export excel
-        $this->_makeExcel('장바구니리스트', $list, $headers);
+        $this->_makeExcel('장바구니리스트', $list, $headers, true, $last_query);
     }
 
     /**

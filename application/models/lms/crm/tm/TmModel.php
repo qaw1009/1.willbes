@@ -514,7 +514,7 @@ class TmModel extends WB_Model
             $column = 'count(*) AS numrows, ifnull(sum(op.RealPayPrice),0) as sum_price';
             $order_by_offset_limit = '';
         } else {
-            $column = ' straight_join 
+            $column = '  
                             o.OrderIdx,o.OrderNo,o.CompleteDatm
                             ,op.OrderProdIdx,op.ProdCode,op.RealPayPrice,op.PayStatusCcd
                             ,s.SiteName
@@ -557,7 +557,7 @@ class TmModel extends WB_Model
 
             $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
             $result = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-            //echo $this->_conn->last_query();
+            //echo $this->_conn->last_query();exit;
             //return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
             return ($is_count === true) ? $result->row_array() : $result->result_array();
     }
@@ -631,7 +631,7 @@ class TmModel extends WB_Model
             $column = 'count(*) AS numrows, ifnull(sum(op.RealPayPrice),0) as sum_price, ifnull(sum(op.RealPayPrice),0) as sum_refund_price';   // ifnull(sum(opr.RefundPrice),0) as sum_refund_price
             $order_by_offset_limit = '';
         } else {
-            $column = ' straight_join
+            $column = ' 
                             o.OrderIdx,o.OrderNo,o.CompleteDatm
                             ,op.OrderProdIdx,op.ProdCode,op.RealPayPrice,op.PayStatusCcd
                             ,opr.RefundPrice,opr.RefundDatm

@@ -574,7 +574,7 @@ class TmModel extends WB_Model
         $out_column = '@SEQ := @SEQ+1 as NO, MemName, MemId, OrderNo, SiteName, CompleteDatm
                         , ProdName, RealSalePrice, RealPayPrice, PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
-        $column = ' straight_join 
+        $column = '  
                         m.MemName, m.MemId, o.OrderNo, s.SiteName, o.CompleteDatm
                         , p.ProdName, ps.RealSalePrice, op.RealPayPrice, sc1.CcdName AS PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
@@ -692,9 +692,9 @@ class TmModel extends WB_Model
         $out_column = '@SEQ := @SEQ+1 as NO, MemName, MemId, OrderNo, SiteName, CompleteDatm
                         , ProdName, RealPayPrice, RefundPrice, RefundDatm, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
-        $column = ' straight_join 
+        $column = '  
                         m.MemName, m.MemId, o.OrderNo, s.SiteName, o.CompleteDatm
-                        , p.ProdName, op.RealPayPrice, sc1.CcdName AS PayStatusCcd_Name
+                        , p.ProdName, op.RealPayPrice
                         , CONCAT(\'-\',op.RealPayPrice) AS RefundPrice , opr.RefundDatm, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
         $from = '
@@ -714,7 +714,7 @@ class TmModel extends WB_Model
                 on tc1.TcIdx = 
                     (
                         select tc.TcIdx from vw_tm_consult tc 
-                        where m.MemIdx = tc.MemIdx and o.CompleteDatm between tc.ConsultDatm and DATE_ADD(tc.ConsultDatm, INTERVAL 21 day) 
+                        where m.MemIdx = tc.MemIdx and opr.RefundDatm between tc.ConsultDatm and DATE_ADD(tc.ConsultDatm, INTERVAL 30 day) 
                         order by TcIdx desc limit 1
                     )  
             where 
@@ -726,7 +726,8 @@ class TmModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
-        $sql  = ' select '.$out_column.' from (SELECT @SEQ := 0) A, ( select ' . $column . $from . $where . $order_by_offset_limit .') mm Order by @SEQ DESC';
+        //$sql  = ' select '.$out_column.' from (SELECT @SEQ := 0) A, ( select ' . $column . $from . $where . $order_by_offset_limit .') mm Order by @SEQ DESC';
+        $sql  = ' select ' . $column . $from . $where . $order_by_offset_limit ;
 
         $result = $this->_conn->query($sql);
         //echo $this->_conn->last_query();exit;

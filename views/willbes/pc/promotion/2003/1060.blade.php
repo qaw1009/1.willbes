@@ -27,8 +27,8 @@
         .time table {width:1120px; margin:0 auto}
         .time table td:first-child {font-size:40px}
         .time table td img {width:80%}
-        .time .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#ef6759}    
+        .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px; font-weight:bold}
+        .time .time_txt span {color:#d63e4d}    
         
 
         .wb_cts00 {background:#1c1c1c url(http://file3.willbes.net/new_gosi/2019/01/EV190115_c1_bg.jpg) no-repeat center top;}	
@@ -96,7 +96,7 @@
             <div id="ddaytime">
                 <table>
                     <tr>
-                    <td class="time_txt"><span>4/24(수) 마감!</span></td>
+                    <td class="time_txt NGEB"><span>4/24(수) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>

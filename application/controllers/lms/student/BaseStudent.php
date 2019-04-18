@@ -83,12 +83,12 @@ class BaseStudent extends \app\controllers\BaseController
     {
         // 관리자 검색
         $prof_idx = $this->_reqP('search_prof_idx');
-        
+
         // tzone 로그인중이면 검색 강사를 고정
         if($this->session->userdata('is_prof') == true){
             $prof_idx = $this->session->userdata('prof_idx');
         }
-        
+
         $arr_condition = [
             'EQ' => [
                 'A.ProdTypeCcd' => $this->ProdTypeCcd,
@@ -131,17 +131,17 @@ class BaseStudent extends \app\controllers\BaseController
                     ]
                 ],
             ]);
-        //} elseif($this->_reqP('search_type') === 'lec') {
+            //} elseif($this->_reqP('search_type') === 'lec') {
         } else {
-        $arr_condition = array_merge($arr_condition,[
-            'ORG1' => [
-                'LKB' => [
-                    'A.ProdCode' => $this->_reqP('search_value'),
-                    'A.ProdName' => $this->_reqP('search_value')
-                ]
-            ],
-        ]);
-    }
+            $arr_condition = array_merge($arr_condition,[
+                'ORG1' => [
+                    'LKB' => [
+                        'A.ProdCode' => $this->_reqP('search_value'),
+                        'A.ProdName' => $this->_reqP('search_value')
+                    ]
+                ],
+            ]);
+        }
 
 
         if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
@@ -207,7 +207,7 @@ class BaseStudent extends \app\controllers\BaseController
 
         // 사용하는 코드값 조회
         $codes = $this->codeModel->getCcdInArray(['670','604','694']);
-        
+
         // 강좌 정보 읽어오기
 
         return $this->load->view('/student/view_'.$this->LearnPattern, [
@@ -272,7 +272,7 @@ class BaseStudent extends \app\controllers\BaseController
 
         $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $this->_reqP('ProdCode')]]);
         $lec = $lec[0];
-
+        $file_name = '수강생현황('.$lec['ProdCode'].')_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
         $arr_condition = [
             'EQ' => [
                 'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
@@ -290,9 +290,17 @@ class BaseStudent extends \app\controllers\BaseController
 
         $list = $this->studentModel->getStudentExcelList($column, $arr_condition);
 
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->studentModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
+
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('수강생현황('.$lec['ProdCode'].')_'.date("Ymd", time()), $list, $headers);
+        $this->excel->exportHugeExcel($file_name, $list, $headers);
     }
 
 }

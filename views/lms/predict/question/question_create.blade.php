@@ -15,11 +15,16 @@
 
                 <table class="table table-bordered modal-table">
                     <tr>
-                        <th colspan="1">합격예측명 <span class="required">*</span></th>
+                        <th colspan="1">합격예측 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <select id="ProdCode" name="ProdCode">
+                            <select id="ProdCode" name="ProdCode" onChange="selProdCode(this.value,'')">
+                                <option value="">합격예측선택</option>
                                 @foreach($productList as $key => $val)
-                                    <option value="{{ $val['ProdCode'] }}" @if($data['ProdCode'] == $val['ProdCode']) selected @endif>{{ $val['ProdName'] }}</option>
+                                    @if($method == 'PUT')
+                                        <option value="{{ $val['ProdCode'] }}" @if($data['ProdCode'] == $val['ProdCode']) selected @endif>{{ $val['ProdName'] }}</option>
+                                    @else
+                                        <option value="{{ $val['ProdCode'] }}">{{ $val['ProdName'] }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </td>
@@ -27,16 +32,9 @@
                     <tr>
                         <th colspan="1">과목명 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <select id="SubjectCode" name="SubjectCode" onChange="selType(this.value)">
-                                <option value="">과목선택</option>
-                                @foreach($subjectList as $key => $val)
-                                    <option value="{{ $val['Ccd'] }}" @if($data['SubjectCode'] == $val['Ccd']) selected @endif>{{ $val['CcdValue'] }}</option>
-                                @endforeach
-                            </select>
-                            <input type="hidden" id="sType" name="Type" value="{{ $data['Type'] }}"/>
-                            @foreach($subjectList as $key => $val)
-                                <input type="hidden" id="sType{{ $val['Ccd'] }}" value="{{ $val['Type'] }}" />
-                            @endforeach
+                            <span id="chkArea"></span>
+                            <span id="chkArea2"></span>
+                            <input type="hidden" id="sType" name="Type" @if($method == 'PUT') value="{{ $data['Type'] }}" @endif/>
                         </td>
                     </tr>
                     <tr>
@@ -85,13 +83,13 @@
 
                     <tr>
                         <th>등록자</th>
-                        <td>@if($method == 'PUT'){{ @$adminName[$data['RegAdminIdx']] }}@endif</td>
+                        <td>@if($method == 'PUT'){{ $data['wAdminName'] }}@endif</td>
                         <th>등록일</th>
                         <td>@if($method == 'PUT'){{ $data['RegDate'] }}@endif</td>
                     </tr>
                     <tr>
                         <th>최종수정자</th>
-                        <td>@if($method == 'PUT'){{ @$adminName[$data['UpdAdminIdx']] }}@endif</td>
+                        <td>@if($method == 'PUT'){{ $data['wAdminName2'] }}@endif</td>
                         <th>최종수정일</th>
                         <td>@if($method == 'PUT'){{ $data['UpdDate'] }}@endif</td>
                     </tr>
@@ -199,6 +197,7 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         var $regi_sub_form = $('#regi_sub_form');
+        var method = '{{ $method }}';
         var addField;
         var chapterExist = [];
         var chapterDel = [];
@@ -210,6 +209,10 @@
                 html: true,
                 placement: 'right',
             });
+
+            if(method == 'PUT'){
+                selProdCode('{{ $prodcode }}','{{ $subject }}');
+            }
 
             // 문항정보필드 문제등록옵션 오류체크 (객관식(단수) 1개, 객관식(복수) 2개, 주관식 비활성)
             $regi_sub_form.on('ifChanged', '[name="RightAnswerTmp[]"]', function () {
@@ -330,49 +333,49 @@
                 $('#act-sort').prop('disabled', true);
             });
 
-            // 정렬변경
-            $('#act-sort').on('click', function () {
-                if (!confirm('저장되지 않은 정보는 제거됩니다. 정렬을 변경하시겠습니까?')) return false;
-
-                var sorting = {};
-                cList.find('tr').each(function () {
-                    if($(this).data('chapter-idx')) {
-                        sorting[$(this).data('chapter-idx')] = $(this).find('[name="QuestionNO[]"]').val();
-                    }
-                });
-                var _url = '{{ site_url("/mocktest/regExam/sort") }}';
-                var data = {
-                    '{{ csrf_token_name() }}' : $regi_sub_form.find('[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'idx' : $regi_sub_form.find('[name="idx"]').val(),
-                    'sorting' : JSON.stringify(sorting),
-                };
-
-                sendAjax(_url, data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktest/regExam/edit/') }}' + ret.ret_data.dt.idx + getQueryString());
-                    }
-                }, showValidateError, false, 'POST');
-            });
-
-            // 호출
-            $('#act-call').on('click', function() {
-                $('#act-call').setLayer({
-                    'url': '{{ site_url('/mocktest/regExam/callIndex') }}',
-                    'width': 1100
-                });
-            });
-            $regi_sub_form.on('click', '.act-call-unit', function() {
-                $('.act-call-unit').setLayer({
-                    'url': '{{ site_url('/mocktest/regExam/callIndex') }}',
-                    'width': 1100
-                });
-            });
         });
 
         function selType(val){
             $('#sType').val($('#sType'+val).val());
+        }
+
+        function selProdCode(num,num2){
+
+            if(num != null){
+                url = "{{ site_url("/predict/question/getSubjectAjax") }}";
+                data = $('#regi_form').serialize();
+
+                sendAjax(url,
+                    data,
+                    function(d){
+                        var str = "<select id='SubjectCode' name='SubjectCode' onChange='selType(this.value)'><option value=''>과목선택</option>";
+                        var str2 = '';
+                        if(num2 == ''){
+                            for(var i=0; i < d.data.length; i++){
+                                str += "<option value='"+ d.data[i].Ccd + "'>" + d.data[i].CcdName + d.data[i].AddIs +"</option>";
+                                str2 += "<input type='hidden' id='sType" + d.data[i].Ccd + "' value='" + d.data[i].Type +"' />";
+                            }
+                        } else {
+                            for(var i=0; i < d.data.length; i++) {
+                                if(d.data[i].Ccd == num2){
+                                    chkyn = 'selected';
+                                } else {
+                                    chkyn = '';
+                                }
+
+                                str += "<option value='"+ d.data[i].Ccd + "' "+ chkyn + ">" + d.data[i].CcdName + d.data[i].AddIs +"</option>";
+                                str2 += "<input type='hidden' id='sType" + d.data[i].Ccd + "' value='" + d.data[i].Type +"' />";
+                            }
+                        }
+                        str += "</select>";
+                        $('#chkArea').html(str);
+                        $('#chkArea2').html(str2);
+                    },
+                    function(ret, status){
+                        //alert(ret.ret_msg);
+                    }, true, 'POST', 'json');
+            }
+
         }
     </script>
 @stop

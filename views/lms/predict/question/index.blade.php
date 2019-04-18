@@ -77,6 +77,7 @@
                     <tr>
                         <th class="text-center">선택</th>
                         <th class="text-center">NO</th>
+                        <th class="text-center">합격예측명</th>
                         <th class="text-center">과목별문제지명</th>
                         <th class="text-center">지문수</th>
                         <th class="text-center">사용여부</th>
@@ -144,6 +145,7 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
+                    {'data' : 'ProdName', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<span class="blue underline-link act-edit">[' + row.PpIdx + '] ' + row.PaperName + '</span>';
                         }},

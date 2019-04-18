@@ -50,7 +50,7 @@
     </style>
 
 
-    <div class="p_re evtContent" id="evtContainer">
+    <div class="p_re evtContent NGR" id="evtContainer">
         <div id="nav">
             <img src="http://file3.willbes.net/new_gosi/2019/02/EV190211_sky1.png" alt="2019 윌비스 7급PASS 구매하기" usemap="#Map_180702_lecsky" border="0" />
             <map name="Map_180702_lecsky">

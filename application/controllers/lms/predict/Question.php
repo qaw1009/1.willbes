@@ -104,16 +104,21 @@ class Question extends \app\controllers\BaseController
      */
     public function create($param)
     {
-        if($param) $ProdCode = $param[0];
+        if($param){
+            $idx = $param[0];
+        } else {
+            $idx = '0';
+        }
 
         //합격예측 기본정보호출
         $productList = $this->predictModel->getProductALL();
-        $subjectList = $this->predictModel->getSubject();
 
-        if(empty($ProdCode) === true){
+        if(empty($idx) === true){
             $method = "CREATE";
             $data = array();
             $qData = array();
+            $subject = "";
+            $prodcode = "";
             $filepath = "";
         } else {
             $method = "PUT";
@@ -123,17 +128,18 @@ class Question extends \app\controllers\BaseController
                 $this->json_error('데이터 조회에 실패했습니다.');
                 return;
             }
+            $subject = $data['SubjectCode'];
+            $prodcode = $data['ProdCode'];
             $filepath = $this->config->item('upload_url_predict', 'predict');
-            $filepath = $filepath.$ProdCode."/";
+            $filepath = $filepath.$idx."/";
         }
-
-
 
         $this->load->view('predict/question/question_create', [
             'method' => $method,
             'siteCodeDef' => '',
             'productList' => $productList,
-            'subjectList' => $subjectList,
+            'subject' => $subject,
+            'prodcode' => $prodcode,
             'data' => $data,
             'qData' => $qData,
             'filepath' => $filepath,
@@ -270,6 +276,14 @@ class Question extends \app\controllers\BaseController
             'data' => $list
         ]);
 
+    }
+
+    public function getSubjectAjax(){
+        $ProdCode = $this->_req("ProdCode");
+        $list = $this->predictModel->getSubject($ProdCode);
+        return $this->response([
+            'data' => $list
+        ]);
     }
 
 

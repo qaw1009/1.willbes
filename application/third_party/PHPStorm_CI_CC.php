@@ -175,7 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ManageCsModel $manageCsModel                                     Member Manage Cs Model Class
  * @property ManageBlackConsumerModel $manageBlackConsumerModel     Member Manage BlackConsumer Model Class
  * @property CsModel $csModel                                                           Manage Cs Model Class
- * @property ExcelDownLogModel $excelDownModel                                 Excel Download Log Model Class
+ * @property ExcelDownLogModel $excelDownLogModel                                 Excel Download Log Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class
@@ -195,6 +195,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ProductFModel $productFModel                                        Product Main Model Class
  * @property LectureFModel $lectureFModel                                         Lecture Product Model Class
  * @property PackageFModel $packageFModel                                      Package Product Model Class
+ * @property BookFModel $bookFModel                                                Book Product Model Class
  * @property CartFModel $cartFModel                                                 Cart Model Class
  * @property OrderFModel $orderFModel                                              Order Model Class
  * @property OrderListFModel $orderListFModel                                     Order List Model Class

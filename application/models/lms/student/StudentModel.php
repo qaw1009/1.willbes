@@ -88,7 +88,7 @@ class StudentModel extends WB_Model
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus='Y'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd='613001' and D.IsStatus='Y'
-                        left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                        left outer join vw_product_r_professor_concat_repr E on A.ProdCode = E.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      WHERE A.IsStatus='Y'
         ";

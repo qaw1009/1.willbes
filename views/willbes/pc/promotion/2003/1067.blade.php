@@ -50,32 +50,33 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">
-            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_sky.png" alt="첨삭지도반" ></a></div>
+            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_sky.png" title="첨삭지도반" ></a></div>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c1.png" alt="윌비스 매직아이 김신주 영어"  />
+            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c1.png" title="윌비스 매직아이 김신주 영어"  />
         </div><!--WB_top//-->
 
         <div class="evtCtnsBox wb_cts01" >
             <!--div class="youtube"><iframe width="800" height="450" src="https://www.youtube.com/embed/8KBfy1EXc0o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div-->
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c2.jpg" alt="윌비스 빠른 합격을 위한 매직아이 영어"  />
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c3.jpg" alt=""  />
+            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c2.jpg" title="윌비스 빠른 합격을 위한 매직아이 영어"  />
+            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c3.jpg" title=""  />
         </div><!--wb_cts01//-->
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c4.jpg" alt="윌비스 실전에 강한 매직아이 영어"  />
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c5.jpg" alt=""  />
+            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c4.jpg" title="윌비스 실전에 강한 매직아이 영어"  />
+            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c5.jpg" title=""  />
         </div><!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c6.jpg" alt="예약 접수" usemap="#Map1067" border="0" />
+            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c6.jpg" title="예약 접수" usemap="#Map1067" border="0" />
             <map name="Map1067" id="Map1067">
                 {{-- 4.18(목) 14시 이전--}}
                 <area shape="rect" coords="664,674,938,777" href="#" onclick="javascript:alert('4.18(목) 14시부터 접수합니다.');" />
                 {{-- 4.18(목) 14시 이후
-                <area shape="rect" coords="664,674,938,777" href="#" onclick="doEvent();" />
+                <area shape="rect" coords="664,674,938,777" href="#" onclick="doEvent();" title="예약 접수" />
                 --}}
+                
             </map>
         </div><!--wb_cts03//-->
 
@@ -84,8 +85,8 @@
 
     <script type="text/javascript">
         function doEvent() {
-            var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
-            window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
+            var url = "https://www.dev.willbes.net/home/html/1067_popup" ;
+            window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=400,height=300,top=100,left=100');
         }
     </script>
 @stop

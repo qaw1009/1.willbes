@@ -24,6 +24,13 @@
                                 <option value="{{ $row['wAdminIdx'] }}">{{ $row['wAdminName'] }}</option>
                             @endforeach
                         </select>
+
+                        <select class="form-control" id="search_learnpattern" name="search_learnpattern">
+                            <option value="">학습형태</option>
+                            @foreach($learnpattern_ccd  as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -88,12 +95,14 @@
                 <tr>
                     <th width="50">NO</th>
                     <th width="110">회원정보</th>
-                    <th width="150">주문번호</th>
+                    <th width="120">주문번호</th>
+                    <th width="110">사이트</th>
                     <th width="110">결제완료일</th>
+                    <th width="80">학습형태</th>
                     <th width="">상품명</th>
-                    <th width="80">결제금액</th>
-                    <th width="80">환불금액</th>
-                    <th width="80">환불완료일</th>
+                    <th width="60">결제금액</th>
+                    <th width="60">환불금액</th>
+                    <th width="60">환불완료일</th>
                     <th width="80">TM담당자</th>
                     <th width="100">배정일</th>
                     <th width="100">최종상담일</th>
@@ -133,11 +142,13 @@
                             return data.MemName + ' ('+data.MemId+')<BR>'+ data.Phone +'';
                         }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                            return data.OrderNo + '<BR>'+data.SiteName+'';
+                            return data.OrderNo;
                         }},
+                    {'data' : 'SiteName'},
                     {'data' : 'CompleteDatm'},
+                    {'data' : 'LearnPatternCcd_Name'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return'['+data.LearnPatternCcd_Name+'] '+data.ProdName;
+                            return data.ProdName;
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return addComma(data.RealPayPrice)+'';

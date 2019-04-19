@@ -72,9 +72,10 @@ class Excel
      * @param string $file_name [확장자를 제외한 파일명]
      * @param array $data [데이터 배열]
      * @param array $headers [헤드 타이틀 배열]
+     * @param array $numerics [문자열 값을 숫자 값으로 변환할 대상 컬럼명 배열]
      * @return bool
      */
-    public function exportHugeExcel($file_name, $data = [], $headers = [])
+    public function exportHugeExcel($file_name, $data = [], $headers = [], $numerics = [])
     {
         try {
             $writer = Box\Spout\Writer\WriterFactory::create(Box\Spout\Common\Type::XLSX);
@@ -84,6 +85,15 @@ class Excel
             $writer->addRow($headers);
 
             foreach ($data as $idx => $row) {
+                // convert numeric to string
+                if (empty($numerics) === false) {
+                    foreach ($numerics as $column) {
+                        if (isset($row[$column]) === true && is_null($row[$column]) === false) {
+                            $row[$column] = $row[$column] + 0;
+                        }
+                    }
+                }
+
                 $writer->addRow($row);
 
                 ob_flush();

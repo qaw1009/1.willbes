@@ -75,6 +75,7 @@ class SaveUse extends \app\controllers\BaseController
         $list = [];
         $mem_idx = $this->_reqP('mem_idx');
         $headers = ['운영사이트', '주문번호', '유효기간', '상태', '적립/차감액', '적립/차감일', '등록자', '적립/차감사유'];
+        $file_name = '포인트적립차감리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         if (empty($mem_idx) === false) {
             $column = 'S.SiteName, O.OrderNo, if(PSU.ExpireDatm is not null, concat(substring(PSU.RegDatm, 1, 10), " ~ ", substring(PSU.ExpireDatm, 1, 10)), "") as ValidDatePeriod
@@ -87,7 +88,7 @@ class SaveUse extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('포인트적립차감리스트', $list, $headers);
+        $this->excel->exportExcel($file_name, $list, $headers);
     }
 
     /**

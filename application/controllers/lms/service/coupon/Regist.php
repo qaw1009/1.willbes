@@ -80,6 +80,7 @@ class Regist extends \app\controllers\BaseController
 
         $arr_condition = $this->_getListConditions();
         $list = $this->couponRegistModel->listAllCoupon('excel', $arr_condition, null, null, ['CouponIdx' => 'desc']);
+        $file_name = '쿠폰등록리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         if (count($list) > 0) {
             // 쿠폰상세적용구분 코드 조회
@@ -100,7 +101,7 @@ class Regist extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('쿠폰등록리스트', $list, $headers);
+        $this->excel->exportExcel($file_name, $list, $headers);
     }
 
     /**

@@ -106,6 +106,7 @@ class AllStats extends \app\controllers\BaseController
         $headers = ['사이트', '상품구분', '직종', '매출'];
         $arr_condition = $this->_getListConditions();
         $list = $this->orderStatsModel->listAllStatsOrder($arr_condition);
+        $file_name = '윌비스전체매출현황리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         if (empty($list) === false) {
             array_splice($list, 0, 1);
@@ -117,7 +118,7 @@ class AllStats extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportExcel('윌비스전체매출현황리스트', $data, $headers) !== true) {
+        if ($this->excel->exportExcel($file_name, $data, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }
@@ -247,13 +248,22 @@ class AllStats extends \app\controllers\BaseController
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName
             , ProdTypeCcdName, ProdName, RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusCcdName';
+        $numerics = ['RealPayPrice', 'RefundPrice'];    // 숫자형 변환 대상 컬럼
 
         $arr_condition = $this->_getOrderListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getOrderListOrderBy(), $this->_order_list_add_join);
+        $last_query = $this->orderListModel->getLastQuery();
+        $file_name = '윌비스전체매출현황상세리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        // download log
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($last_query, $file_name, count($list)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel('윌비스전체매출현황_상세보기리스트', $list, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers, $numerics) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

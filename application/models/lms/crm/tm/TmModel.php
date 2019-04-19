@@ -226,7 +226,7 @@ class TmModel extends WB_Model
         $order_by = ' Order by rand() ';
 
         $query = $this->_conn->query('select ' .$column .$from .$where. $order_by. $limit);
-        //echo $this->_conn->last_query();
+        echo $this->_conn->last_query();
         return ($search_type === 'search') ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -552,7 +552,8 @@ class TmModel extends WB_Model
                     )  
             where 
                     o.CompleteDatm is not null 
-                    and tc1.TmIdx is not null 
+                    and tc1.TmIdx is not null
+                    and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') )) 
                 ';
 
             $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
@@ -572,11 +573,11 @@ class TmModel extends WB_Model
     {
 
         $out_column = '@SEQ := @SEQ+1 as NO, MemName, MemId, OrderNo, SiteName, CompleteDatm
-                        , ProdName, RealSalePrice, RealPayPrice, PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+                        ,sc2.CcdName as LearnPatternCcd_Name, ProdName, RealSalePrice, RealPayPrice, PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
         $column = '  
                         m.MemName, m.MemId, o.OrderNo, s.SiteName, o.CompleteDatm
-                        , p.ProdName, ps.RealSalePrice, op.RealPayPrice, sc1.CcdName AS PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+                        ,sc2.CcdName as LearnPatternCcd_Name, p.ProdName, ps.RealSalePrice, op.RealPayPrice, sc1.CcdName AS PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
         $from = '
             from
@@ -601,6 +602,7 @@ class TmModel extends WB_Model
             where 
                     o.CompleteDatm is not null 
                     and tc1.TmIdx is not null 
+                    and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') ))
                 ';
 
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -669,7 +671,8 @@ class TmModel extends WB_Model
                     )  
             where 
                     o.CompleteDatm is not null 
-                    and tc1.TmIdx is not null 
+                    and tc1.TmIdx is not null
+                    and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') )) 
                 ';
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
@@ -690,11 +693,11 @@ class TmModel extends WB_Model
     {
 
         $out_column = '@SEQ := @SEQ+1 as NO, MemName, MemId, OrderNo, SiteName, CompleteDatm
-                        , ProdName, RealPayPrice, RefundPrice, RefundDatm, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+                        ,sc2.CcdName as LearnPatternCcd_Name, ProdName, RealPayPrice, RefundPrice, RefundDatm, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
         $column = '  
                         m.MemName, m.MemId, o.OrderNo, s.SiteName, o.CompleteDatm
-                        , p.ProdName, op.RealPayPrice
+                        ,sc2.CcdName as LearnPatternCcd_Name, p.ProdName, op.RealPayPrice
                         , CONCAT(\'-\',op.RealPayPrice) AS RefundPrice , opr.RefundDatm, ConsultAdmin_Name, AssignDatm, ConsultDatm';
 
         $from = '
@@ -719,7 +722,8 @@ class TmModel extends WB_Model
                     )  
             where 
                     o.CompleteDatm is not null 
-                    and tc1.TmIdx is not null 
+                    and tc1.TmIdx is not null
+                    and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') )) 
                 ';
 
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

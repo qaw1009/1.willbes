@@ -208,10 +208,11 @@ class BaseStats extends \app\controllers\BaseController
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderStatsModel->listStatsOrder($this->_learn_pattern, $column, $arr_condition, null, null, $this->_getListOrderBy());
+        $file_name = $this->_stats_name . '_매출통계리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportExcel($this->_stats_name . '매출통계리스트', $list, $headers) !== true) {
+        if ($this->excel->exportExcel($file_name, $list, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

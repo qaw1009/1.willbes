@@ -103,6 +103,7 @@ class BaseCalc extends \app\controllers\BaseController
         $arr_condition = $this->_getSumConditions($prod_type, $this->_reqP(null));
         $list = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, $sum_type, $arr_condition);
         $list[] = array_merge($this->_getTotalSum($list), ['wProfName' => '합계', 'SubjectName' => '']);
+        $file_name = '강사료정산리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         if ($prod_type == 'PP') {
             // 기간제패키지
@@ -132,7 +133,7 @@ class BaseCalc extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportExcel('강사료정산리스트', $results, $headers) !== true) {
+        if ($this->excel->exportExcel($file_name, $results, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

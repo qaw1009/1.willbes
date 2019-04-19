@@ -3,7 +3,6 @@
 @section('content')
     <h5 class="mt-20">- 모의고사 구성을 위해 과목별 문제, 정답, 해설을 등록하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!}
         {!! csrf_field() !!}
 
         <div class="x_panel">
@@ -12,42 +11,7 @@
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
                         {!! html_site_select($siteCodeDef, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        {{--<select class="form-control mr-5" id="search_cateD1" name="search_cateD1">--}}
-                            {{--<option value="">카테고리</option>--}}
-                            {{--@foreach($cateD1 as $row)--}}
-                                {{--<option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                        {{--<select class="form-control mr-5" id="search_cateD2" name="search_cateD2">--}}
-                            {{--<option value="">직렬</option>--}}
-                            {{--@foreach($cateD2 as $row)--}}
-                                {{--<option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                        {{--<select class="form-control mr-5" id="search_subject" name="search_subject">--}}
-                            {{--<option value="">과목</option>--}}
-                            {{--@foreach($subject as $row)--}}
-                                {{--<option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                        {{--<select class="form-control mr-5" id="search_professor" name="search_professor">--}}
-                            {{--<option value="">교수</option>--}}
-                            {{--@foreach($professor as $row)--}}
-                                {{--<option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                        {{--<select class="form-control mr-5" id="search_year" name="search_year">--}}
-                            {{--<option value="">연도</option>--}}
-                            {{--@for($i=(date('Y')+1); $i>=2005; $i--)--}}
-                                {{--<option value="{{$i}}">{{$i}}</option>--}}
-                            {{--@endfor--}}
-                        {{--</select>--}}
-                        {{--<select class="form-control mr-5" id="search_round" name="search_round">--}}
-                            {{--<option value="">회차</option>--}}
-                            {{--@foreach(range(1, 20) as $i)--}}
-                                {{--<option value="{{$i}}">{{$i}}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
+
                         <select class="form-control mr-5" id="search_use" name="search_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -58,7 +22,7 @@
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">통합검색</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 명칭, 코드 검색 가능
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 문제지명 검색 가능
                     </div>
                     <div class="col-md-5 text-right">
                         <button type="submit" class="btn btn-primary" id="btn_search">검색</button>
@@ -79,9 +43,8 @@
                         <th class="text-center">NO</th>
                         <th class="text-center">합격예측명</th>
                         <th class="text-center">과목별문제지명</th>
-                        <th class="text-center">지문수</th>
-                        <th class="text-center">사용여부</th>
                         <th class="text-center">문제보기</th>
+                        <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
                         <th class="text-center" style="width:130px">등록일</th>
                     </tr>
@@ -149,13 +112,12 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<span class="blue underline-link act-edit">[' + row.PpIdx + '] ' + row.PaperName + '</span>';
                         }},
-                    {'data' : 'AnswerNum', 'class': 'text-center'},
-                    {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             upImgUrl = '{{$upImgUrl}}' + row.PpIdx + '/';
                             return '<a href="'+ row.FilePath + row.RealQuestionFile+'" target="_blank" class="blue underline_link">'+row.QuestionFile+'</span>';
+                        }},
+                    {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
                     {'data' : 'RegDate', 'class': 'text-center'}

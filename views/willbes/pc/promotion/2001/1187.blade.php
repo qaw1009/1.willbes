@@ -37,7 +37,7 @@
         <ul class="skyBanner">
             <li><a href="javascript:alert('coming soon');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr01.png" title="토크쇼"></a></li>
             <li><a href="javascript:alert('coming soon');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트"></a></li>
-            <li class="mt10"><a href="javascript:alert('coming soon');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr03.png" title="최신판례특강"></a></li>
+            <li class="mt10"><a href="#none" onclick="javascript:doEvent2(); return false;"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr03.png" title="최신판례특강"></a></li>
         </ul>  
 
         <div class="evtCtnsBox evtTop">
@@ -85,6 +85,12 @@
         function doEvent() {
             var url = "{{front_url('/predict/index/100001')}}";
             window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
+        }
+
+        function doEvent2() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+            var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
+            window.open(url,'event2', 'scrollbars=no,toolbar=no,resizable=yes,width=665,height=629,top=50,left=100');
         }
     </script>
 

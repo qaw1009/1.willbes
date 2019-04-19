@@ -95,10 +95,12 @@ class BaseAdvance extends \app\controllers\BaseController
             $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '상품구분', '상품상세구분', '상품코드', '상품명', '강좌코드', '강좌명', '교수명', '결제금액', '결제일'
                 , '환불금액', '환불완료일', '결제상태', '전체금액', '안분율', '안분금액', '정산율', '배분금액', '수강시작일', '수강종료일', '실제수강종료일', '총무료연장일수', '총일시정지일수'
                 , '1차일시정지', '2차일시정지', '3차일시정지', '수강상태', '총유료수강일수', '잔여수강일수', '사용수강일수', '잔여금액(선수금)', '사용금액', '기준일'];
+            $numerics = ['RealPayPrice', 'RefundPrice', 'RemainPrice', 'DivisionPayPrice', 'DivisionCalcPrice', 'LecExpireDay', 'LecRemainDay', 'LecUseDay', 'DivisionRemainPrice', 'DivisionUsePrice'];    // 숫자형 변환 대상 컬럼
         } else {
             $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '상품구분', '상품상세구분', '캠퍼스', '상품코드', '상품명', '강좌코드', '강좌명', '교수명', '과목명', '결제금액', '결제일'
                 , '환불금액', '환불완료일', '결제상태', '전체금액', '안분율', '안분금액', '정산율', '배분금액', '개강일', '종강일', '전체강의횟수', '잔여강의횟수', '사용강의횟수'
                 , '잔여금액(선수금)', '사용금액', '기준일'];
+            $numerics = ['RealPayPrice', 'RefundPrice', 'RemainPrice', 'DivisionPayPrice', 'DivisionCalcPrice', 'LecAmount', 'LecRemainAmount', 'LecUseAmount', 'DivisionRemainPrice', 'DivisionUsePrice'];    // 숫자형 변환 대상 컬럼
         }
 
         // download log
@@ -108,7 +110,7 @@ class BaseAdvance extends \app\controllers\BaseController
         }
 
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers, $numerics) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

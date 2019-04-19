@@ -295,15 +295,17 @@ class BaseCalc extends \app\controllers\BaseController
             $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
                 , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '수강개월수(F1)', '과목', '교수명'
                 , '기여도(B)', '기여도매출(C)', '기여도수수료(D)', '기여도환불(E)', '월안분(F)', '정산율(G)', '정산금액(H)'];
+            $numerics = ['RealPayPrice', 'PgFee', 'PgFeePrice', 'RefundPrice', 'StudyPeriodMonth', 'DivisionPayPrice', 'DivisionPgFeePrice', 'DivisionRefundPrice', 'DivisionMonthPrice', 'DivisionCalcPrice'];    // 숫자형 변환 대상 컬럼
         } else {
             $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
                 , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '과정', '단강좌코드', '단강좌명', '과목', '교수명'
                 , '안분율(B)', '안분매출(C)', '안분수수료(D)', '안분환불(E)', '정산율(G)', '정산금액(H)'];
+            $numerics = ['RealPayPrice', 'PgFee', 'PgFeePrice', 'RefundPrice', 'DivisionPayPrice', 'DivisionPgFeePrice', 'DivisionRefundPrice', 'DivisionCalcPrice'];    // 숫자형 변환 대상 컬럼
         }
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel($file_name, $results, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $results, $headers, $numerics) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

@@ -200,6 +200,7 @@ class BaseSales extends \app\controllers\BaseController
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName
             , ProdTypeCcdName, ProdName, RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusCcdName';
+        $numerics = ['RealPayPrice', 'RefundPrice'];    // 숫자형 변환 대상 컬럼
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
@@ -214,7 +215,7 @@ class BaseSales extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers, $numerics) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

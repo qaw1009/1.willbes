@@ -16,7 +16,7 @@
                         <select class="form-control mr-10" id="search_keyword" name="search_keyword">
                             <option value="OrderNo">주문번호</option>
                             <option value="PgMid">상점아이디</option>
-                            <option value="PgTid">Tid</option>
+                            <option value="PgTid">TID</option>
                             <option value="VBankAccountNo">가상계좌번호</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;">
@@ -69,7 +69,7 @@
                     <th>주문번호</th>
                     <th>전문번호</th>
                     <th>상점아이디</th>
-                    <th>Tid</th>
+                    <th>TID</th>
                     <th>입금금액</th>
                     <th>입금은행코드</th>
                     <th>입금계좌번호</th>

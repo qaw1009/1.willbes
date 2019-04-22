@@ -16,8 +16,9 @@
                         <select class="form-control mr-10" id="search_keyword" name="search_keyword">
                             <option value="OrderNo">주문번호</option>
                             <option value="PgMid">상점아이디</option>
-                            <option value="PgTid">Tid</option>
+                            <option value="PgTid">TID</option>
                             <option value="ApprovalNo">승인번호</option>
+                            <option value="ResultMsg">결과메시지</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;">
                     </div>
@@ -82,7 +83,7 @@
                     <th class="valign-middle">주문번호</th>
                     <th class="valign-middle">결제구분</th>
                     <th class="valign-middle">상점아이디</th>
-                    <th class="valign-middle">Tid<br/>(부분환불Tid)</th>
+                    <th class="valign-middle">TID<br/>(부분환불TID)</th>
                     <th class="valign-middle">결제수단</th>
                     <th class="valign-middle">결제상세코드</th>
                     <th class="valign-middle">결제(취소)금액<br/>(부분환불남은금액)</th>

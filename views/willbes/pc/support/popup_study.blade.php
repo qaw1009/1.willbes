@@ -419,8 +419,22 @@
     //href 리턴 false, list,page ajax 호출
     function applyPagination() {
         $("div.Paging a").on("click", function() {
-            var num = $(this).text();
-            callAjax(num);
+            var link, temp_params, params, num;
+            /*var num = $(this).text();
+            callAjax(num);*/
+
+            link = $(this).attr('href');
+            if (link != undefined) {
+                temp_params = link.split('?');
+                params = temp_params[1].split('=');
+                num = params[1];
+            }
+
+            if (num != undefined) {
+                callAjax(num);
+            } else {
+                callAjax(1);
+            }
             return false;
         });
     }

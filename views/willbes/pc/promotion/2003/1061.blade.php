@@ -30,7 +30,6 @@
         .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px; font-weight:bold}
         .time .time_txt span {color:#6c1827}
 
-
         .wb_top {background:#a12932 url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c1_bg.jpg) no-repeat center top;}
         .wb_cts01 {background:#fff;}
 

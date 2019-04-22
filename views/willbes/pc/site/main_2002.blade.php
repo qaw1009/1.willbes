@@ -222,17 +222,15 @@
             </div>
         </div>
 
-        <!--                            
-        <div class="Section Bnr mt50">
-            <div class="widthAuto">
-                <div class="willbes-Bnr">
-                    <ul>
-                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1012') }}"><img src="{{ img_url('cop_acad/banner/bnr_190110.jpg') }}" title="0원특강"></a></li>
-                    </ul>
-                </div>
+        {{-- 하단 띠배너--}}
+        <div class="mainBottomBn">
+            <div>
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1187#evt01">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1209_mainBottom_bn_off.jpg" title="" class="mbBanner">
+                </a>
+                <span class="btmEvClose">닫기</span>
             </div>
         </div>
-        -->
 
         <div class="Section Section4 mb50 mt30">
             @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])

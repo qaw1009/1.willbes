@@ -91,7 +91,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_03.jpg" title="기특한국어커리큘럼" />
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="lec_go">
+        <div class="evtCtnsBox evt04" id="lec_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_04.jpg" usemap="#Map_1074_lec2" title="기미진T-PASS" border="0" />
 			<map name="Map_1074_lec2">
                 <area shape="rect" coords="485,771,705,825" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152965') }}" target="_blank" alt="39만원수강신청">

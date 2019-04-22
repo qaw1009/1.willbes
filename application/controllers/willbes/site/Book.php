@@ -92,7 +92,11 @@ class Book extends \app\controllers\FrontController
         $list = $this->bookFModel->listSalesProductBook(false, $arr_condition, null, null, $arr_order_by);
         $selected_list = [];
         foreach ($list as  $idx => $row) {
-            $selected_list[] = array_merge($row, element('0', json_decode($row['ProdPriceData'], true)));
+            $arr_price_data = $row['ProdPriceData'] != 'N' ? element('0', json_decode($row['ProdPriceData'], true)) : [];
+
+            if (empty($arr_price_data) === false && $arr_price_data['RealSalePrice'] > 0) {
+                $selected_list[] = array_merge($row, $arr_price_data);
+            }
         }
 
         $this->load->view('site/book/index', [

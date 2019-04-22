@@ -135,21 +135,6 @@ $(function() {
     });
 });
 
-// 교재구매 > 강의정보 보기 
-$(function() {
-    $('.bookLecBtn > a').click(function() {
-        if ($(this).hasClass('on')) {
-            $(this).removeClass('on').text('교재로 진행중인 강의 ▼ ').attr("onclick","openWin('bookLec')");
-        } else {
-            $(this).addClass('on').text('교재로 진행중인 강의 ▲').attr("onclick","closeWin('bookLec')");
-        }
-    });
-    $('.willbes-Layer-bookLecBox a').click(function() {
-        $('.bookLecBtn > a').removeClass('on').text('교재로 진행중인 강의 ▼').attr("onclick","openWin('bookLec')");
-
-    });
-});
-
 // 나의 예약현황 버튼 Script
 $(function() {
     $('.reserveTable .MoreBtn a').click(function() {

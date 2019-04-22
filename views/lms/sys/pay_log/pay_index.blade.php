@@ -19,6 +19,7 @@
                             <option value="PgTid">TID</option>
                             <option value="ApprovalNo">승인번호</option>
                             <option value="ResultMsg">결과메시지</option>
+                            <option value="ReqReason">요청사유</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;">
                     </div>

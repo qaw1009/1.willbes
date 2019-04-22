@@ -284,7 +284,7 @@ class BaseOrderFModel extends WB_Model
     /**
      * 상품코드 재정의 및 강좌, 교재상품 혼재 여부 리턴
      * @param string $learn_pattern [학습형태]
-     * @param array $arr_prod_code [상품코드배열, 상품코드:가격구분 공통코드:부모상품코드]
+     * @param array $arr_prod_code [상품코드배열, 상품코드:가격구분 공통코드:부모상품코드:학습형태(교재구매일 경우만 존재, book)]
      * @return array
      */
     public function makeProdCodeArray($learn_pattern, $arr_prod_code)
@@ -296,12 +296,22 @@ class BaseOrderFModel extends WB_Model
         foreach ($arr_prod_code as $idx => $val) {
             $tmp_arr = explode(':', $val);
 
-            if ($tmp_arr[0] == $tmp_arr[2]) {
-                $_learn_pattern = $learn_pattern;
-                $lecture_cnt++;
+            if (isset($tmp_arr[3]) === true && empty($tmp_arr[3]) === false) {
+                if ($tmp_arr[3] == 'book') {
+                    $book_cnt++;
+                } else {
+                    $lecture_cnt++;
+                }
+
+                $_learn_pattern = $tmp_arr[3];
             } else {
-                $_learn_pattern = 'book';
-                $book_cnt++;
+                if ($tmp_arr[0] == $tmp_arr[2]) {
+                    $_learn_pattern = $learn_pattern;
+                    $lecture_cnt++;
+                } else {
+                    $_learn_pattern = 'book';
+                    $book_cnt++;
+                }
             }
 
             $results['data'][$tmp_arr[0]] = ['LearnPattern' => $_learn_pattern, 'ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];

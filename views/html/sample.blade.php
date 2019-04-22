@@ -87,8 +87,12 @@
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
                 <li><p>경찰 온라인 ▼</p></li> 
                 <li>3월 6일 이후 추가분 ▼</li>
-                <li><a href="{{ site_url('/home/html/1211') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #1 메인 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1211_popup') }}" target="_blank">└ 2019 경찰 1차 합격예측 풀서비스 #1 난이도 설문팝업 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/1211') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #2 성적채점/확인 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/1211_popup01') }}" target="_blank">└ 일반채점 팝업 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/1211_popup02') }}" target="_blank">└ 빠른채점 팝업 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/1211_popup03') }}" target="_blank">└ 직법입력 팝업 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/1210') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #1 메인 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/1210_popup') }}" target="_blank">└ 2019 경찰 1차 합격예측 풀서비스 #1 난이도 설문팝업 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1199') }}" target="_blank">2019 경찰1차 적중 소문내기 이벤트 </a></li>
                 <li><a href="{{ site_url('/home/html/event_incReplyEmoticonUrl') }}" target="_blank">└ 강사 이모티콘 홍보 URL 댓글 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1208') }}" target="_blank">2019 경찰 1차 라이브 토크쇼 <span>*</span></a></li>

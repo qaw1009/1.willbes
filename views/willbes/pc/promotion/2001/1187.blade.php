@@ -47,7 +47,7 @@
             </div>        
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" id="evt01">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_01.jpg" title="합격예측 사전예약 특전">
                 <a href="#none" onclick="doEvent(); return false;" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_btn01.png" title="합격예측 사전예약 신청하기"></a>

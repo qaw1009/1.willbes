@@ -70,7 +70,7 @@ class RegGradeModel extends WB_Model
                 PD.IsUse, PS.SalePrice, PS.RealSalePrice, CONCAT(TakeStartDatm,'~',TakeEndDatm) AS SETIME, CONCAT(TakeTime,' 분') AS TakeStr,
                 (SELECT MgIdx FROM lms_mock_group_r_product WHERE ProdCode = PD.ProdCode AND IsStatus='Y') AS MgIdx,
                 (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'online')) AS OnlineCnt,
-                (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineCnt,
+                (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineCnt,
                 (SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = PD.ProdCode) AS GradeCNT,  
                 fn_ccd_name(MP.AcceptStatusCcd) AS AcceptStatusCcd,            
                 C1.CateName, C1.IsUse AS IsUseCate,

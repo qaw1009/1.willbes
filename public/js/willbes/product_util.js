@@ -28,7 +28,7 @@ function addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, $app_url)
     }
 
     if($regi_form.find('input[name="prod_code[]"]:checked').length < 1) {
-        alert('강좌를 선택해 주세요.');
+        alert('상품을 선택해 주세요.');
         return;
     }
 
@@ -169,6 +169,8 @@ function showBuyLayer($type, $chk_obj, $target_id) {
             if ($chk_obj.hasClass('chk_books') === true) {
                 right += 50;
             }
+        } else if ($type === 'book') {
+            right = 242;
         } else {
             right = 163;
         }

@@ -78,7 +78,7 @@ class PackageFModel extends ProductFModel
         $prod_code = is_array($prod_code) ? $prod_code : array($prod_code);
 
         $column =  'B.IsEssential, B.SubGroupName 
-	                    ,C.SubjectIdx,C.SubjectName,C.wProfName,C.ProfIdx,C.ProfReferData';
+	                    ,C.SubjectIdx,C.SubjectName,C.wProfName,C.ProfNickName,C.ProfIdx,C.ProfReferData';
 
         $_join_table = $this->_table['on_lecture'];        //단강좌 뷰
 

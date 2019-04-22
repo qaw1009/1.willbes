@@ -17,7 +17,7 @@
                     <tr>
                         <th colspan="1">합격예측 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <select id="ProdCode" name="ProdCode" onChange="selProdCode(this.value,'')">
+                            <select class="form-control mr-5" id="ProdCode" name="ProdCode" onChange="selProdCode(this.value,'')">
                                 <option value="">합격예측선택</option>
                                 @foreach($productList as $key => $val)
                                     @if($method == 'PUT')
@@ -348,7 +348,7 @@
                 sendAjax(url,
                     data,
                     function(d){
-                        var str = "<select id='SubjectCode' name='SubjectCode' onChange='selType(this.value)'><option value=''>과목선택</option>";
+                        var str = "<select class='form-control mr-5' id='SubjectCode' name='SubjectCode' onChange='selType(this.value)'><option value=''>과목선택</option>";
                         var str2 = '';
                         if(num2 == ''){
                             for(var i=0; i < d.data.length; i++){

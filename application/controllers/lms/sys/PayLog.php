@@ -43,11 +43,13 @@ class PayLog extends \app\controllers\BaseController
             'BDT' => ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
             'EQ' => [
                 'PgMid' => $this->_reqP('search_pg_mid'),
-                'PayType' => $this->_reqP('search_pay_type'),
-                $this->_reqP('search_keyword') => $this->_reqP('search_value')
+                'PayType' => $this->_reqP('search_pay_type')
             ],
             'LKL' => [
                 'PayMethod' => $this->_reqP('search_pay_method')
+            ],
+            'LKB' => [
+                $this->_reqP('search_keyword') => $this->_reqP('search_value')
             ]
         ];
         

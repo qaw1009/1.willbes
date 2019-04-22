@@ -71,18 +71,18 @@ class Question extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-//                'EB.SiteCode' => $this->input->post('search_site_code'),
+//                'PP.SiteCode' => $this->input->post('search_site_code'),
 //                'MB.CateCode' => $this->input->post('search_cateD1'),
 //                'MB.Ccd' => $this->input->post('search_cateD2'),
 //                'MS.SubjectIdx' => $this->input->post('search_subject'),
 //                'EB.ProfIdx' => $this->input->post('search_professor'),
 //                'EB.Year' => $this->input->post('search_year'),
 //                'EB.RotationNo' => $this->input->post('search_round'),
-//                'EB.IsUse' => $this->input->post('search_use'),
+                'PP.IsUse' => $this->input->post('search_use'),
             ],
             'ORG' => [
                 'LKB' => [
-//                    'EB.PapaerName' => $this->input->post('search_fi', true),
+                    'PP.PapaerName' => $this->input->post('search_fi', true),
 //                    'A.wAdminName' => $this->input->post('search_fi', true),
 //                    'SC.CcdName' => $this->input->post('search_fi', true),
 //                    'SJ.SubjectName' => $this->input->post('search_fi', true),

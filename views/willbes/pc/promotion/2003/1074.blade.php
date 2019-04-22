@@ -33,7 +33,7 @@
         .time table td:first-child {font-size:40px}
         .time table td img {width:70%}
         .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#6c1827}
+        .time .time_txt span {color:#ea263e}
 
         .skybanner {
             position:fixed;
@@ -49,7 +49,7 @@
             <div id="ddaytime">
                 <table>
                     <tr>
-                    <td class="time_txt NGEB"><span>4/23(화) 마감!</span></td>
+                    <td class="time_txt NGEB"><span>4/30(화) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>

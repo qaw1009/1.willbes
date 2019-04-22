@@ -20,7 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:absolute; top:200px;right:10px;z-index:10;}
+        .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1187_top_bg.jpg) no-repeat center top;}
             .evtTopInmg {position:relative; width:1120px; margin:0 auto}
             .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px}
@@ -47,7 +47,7 @@
             </div>        
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" id="evt01">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_01.jpg" title="합격예측 사전예약 특전">
                 <a href="#none" onclick="doEvent(); return false;" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_btn01.png" title="합격예측 사전예약 신청하기"></a>

@@ -169,7 +169,7 @@
                                     [할인율]
                                     <select name="SaleDiscType[]" id="SaleDiscType_{{$key}}" class="form-control" onchange="priceCheck('{{$key}}')">
                                         <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
-                                        <option value="P" @if($SaleDiscType == 'p') selected="selected"@endif>-</option>
+                                        <option value="P" @if($SaleDiscType == 'P') selected="selected"@endif>-</option>
                                     </select>&nbsp;
                                     <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required" @endif title="할인">
                                     &nbsp;&nbsp;

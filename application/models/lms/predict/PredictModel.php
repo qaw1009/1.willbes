@@ -57,7 +57,12 @@ class PredictModel extends WB_Model
         'predictRegisterR' => 'lms_predict_register_r_code',
         'predictRegister' => 'lms_predict_register',
 
+        'predictGradesLog' => 'lms_predict_grades_log',
         'predictPaper' => 'lms_predict_paper',
+        'predictAnswerPaper' => 'lms_predict_answerpaper',
+        'predictGradesOrigin' => 'lms_predict_grades_origin',
+        'predictGrades' => 'lms_predict_grades',
+        'predictGradesArea' => 'lms_predict_grades_area',
         'predictQuestion' => 'lms_predict_questions',
     ];
 
@@ -223,6 +228,7 @@ class PredictModel extends WB_Model
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
         return array($data, $count);
     }
+
 
     /**
      * 데이터 복사
@@ -1303,6 +1309,623 @@ class PredictModel extends WB_Model
         $Res = $query->result_array();
 
         return $Res;
+    }
+
+    /**
+     * 문항세트전체호출
+     */
+    public function statisticsList($ProdCode, $condition){
+
+        $column = "
+            pc.CcdName AS TakeMockPart, sc.CcdName AS TakeArea, pc2.CcdName AS SubjectName, TakeNum, AvrPoint, FivePerPoint
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['predictGradesArea']} AS pg
+                LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
+                LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                LEFT JOIN {$this->_table['predictCode']} AS pc2 ON pp.SubjectCode = pc2.Ccd
+        ";
+
+        $order_by = " ORDER BY pg.TakeMockPart, pg.TakeArea";
+        $where = " WHERE pg.ProdCode = ".$ProdCode;
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $data = $query->result_array();
+
+        $selectCount = "SELECT COUNT(*) AS cnt";
+        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
+
+        return array($data, $count);
+    }
+
+
+
+    /**
+     * 원점수입력
+     * @param $MgIdx $mode = cron or web
+     * @return mixed
+     */
+    public function scoreMakeStep1($ProdCode, $mode, $TakeMockPart)
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            if(empty($ProdCode) == true){
+                throw new \Exception('합격예측상품 미등록 상태입니다.');
+            }
+
+            $this->_conn->where(['ProdCode' => $ProdCode]);
+
+            if ($this->_conn->delete($this->_table['predictGradesOrigin']) === false) {
+                throw new \Exception('성적 삭제에 실패했습니다.');
+            }
+
+            // 데이터 입력
+            if ($mode == 'web') {
+                $data = [
+                    'MemId' => $this->session->userdata('admin_id'),
+                    'Step' => '1',
+                    'ProdCode' => $ProdCode
+                ];
+            } else {
+                $data = [
+                    'MemId' => 'systemcron',
+                    'Step' => '1',
+                    'ProdCode' => $ProdCode
+                ];
+            }
+
+            $is_insert = $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesLog']);
+            if ($is_insert === false) {
+                throw new \Exception('로그생성실패.');
+            }
+
+            $addQuery = "";
+            if(empty($TakeMockPart) == false){
+                $addQuery = " AND TakeMockPart = ".$TakeMockPart;
+            }
+
+            //시험코드
+            $column = "
+                pr.TakeMockPart, pr.TakeArea, pg.PpIdx, pp.Type
+            ";
+
+            $from = "
+                FROM
+                    
+                    {$this->_table['predictAnswerPaper']} AS pg
+	                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+	                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+            ";
+
+            $order_by = " GROUP BY PpIdx ORDER BY pg.PpIdx";
+
+            $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+            $result = $query->result_array();
+
+            foreach($result AS $key => $val){
+
+                $PpIdx = $val['PpIdx'];
+
+                // 응시자 개별과목 / 점수
+                $column = "
+                    MQ.PqIdx,
+                    MP.PpIdx,
+                    AnswerNum, 
+                    Scoring,
+                    QuestionNO, 
+                    MA.MemIdx,
+                    MA.Answer,
+                    MA.IsWrong,
+                    MA.PrIdx,
+                    MA.ProdCode,
+                    MR.TakeMockPart,
+                    MR.TakeArea,
+                    SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS OrgPoint
+                ";
+
+                $from = "
+                    FROM
+                        {$this->_table['predictPaper']} AS MP
+                        JOIN {$this->_table['predictQuestion']} AS MQ ON MQ.PpIdx = MP.PpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
+                        LEFT OUTER JOIN {$this->_table['predictAnswerPaper']} AS MA ON MQ.PqIdx = MA.PqIdx AND MA.PpIdx = " . $PpIdx . "
+                        JOIN {$this->_table['predictRegister']} AS MR ON MR.PrIdx = MA.PrIdx AND MR.IsStatus = 'Y' 
+                ";
+
+                $order_by = " GROUP BY PrIdx  ORDER BY OrgPoint DESC";
+
+                $where = " WHERE MP.PpIdx = " . $PpIdx;
+                //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+                //exit;
+
+                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+                $result = $query->result_array();
+
+                foreach ($result AS $key => $val) {
+                    $orgPoint = $val['OrgPoint'];
+
+                    // 데이터 입력
+                    $data = [
+                        'MemIdx' => $val['MemIdx'],
+                        'PrIdx' => $val['PrIdx'],
+                        'ProdCode' => $val['ProdCode'],
+                        'PpIdx' => $val['PpIdx'],
+                        'OrgPoint' => $orgPoint,
+                        'TakeMockPart' => $val['TakeMockPart'],
+                        'TakeArea' => $val['TakeArea']
+                    ];
+
+                    if ($this->_conn->set($data)->insert($this->_table['predictGradesOrigin']) === false) {
+                        throw new \Exception('시험데이터가 없습니다.');
+                    }
+                }
+
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 조정점수반영
+     * @param $MgIdx $mode = cron or web
+     * @return mixed
+     */
+    public function scoreMakeStep2($ProdCode, $mode, $TakeMockPart)
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            if(empty($ProdCode) == true){
+                throw new \Exception('합격예측상품 미등록 상태입니다.');
+            }
+
+            $this->_conn->where(['ProdCode' => $ProdCode]);
+
+            if ($this->_conn->delete($this->_table['predictGrades']) === false) {
+                throw new \Exception('성적 삭제에 실패했습니다.');
+            }
+
+            // 데이터 입력
+            if ($mode == 'web') {
+                $data = [
+                    'MemId' => $this->session->userdata('admin_id'),
+                    'Step' => '2',
+                    'ProdCode' => $ProdCode
+                ];
+            } else {
+                $data = [
+                    'MemId' => 'systemcron',
+                    'Step' => '2',
+                    'ProdCode' => $ProdCode
+                ];
+            }
+
+            $is_insert = $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesLog']);
+            if ($is_insert === false) {
+                throw new \Exception('로그생성실패.');
+            }
+
+            $addQuery = "";
+            if(empty($TakeMockPart) == false){
+                $addQuery = " AND TakeMockPart = " . $TakeMockPart;
+            }
+
+            //시험코드
+            $column = "
+                pr.TakeMockPart, pr.TakeArea, pg.PpIdx, pp.Type
+            ";
+
+            $from = "
+                FROM
+                    
+                    {$this->_table['predictGradesOrigin']} AS pg
+	                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+	                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+            ";
+
+            $order_by = " GROUP BY TakeMockPart, TaKeArea, PpIdx
+                          ORDER BY TakeMockPart, TakeArea, pg.PpIdx";
+
+            $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+            $result = $query->result_array();
+
+            foreach($result AS $key => $val){
+
+                $PpIdx = $val['PpIdx'];
+                $TakeMockPart = $val['TakeMockPart'];
+                $TakeArea = $val['TakeArea'];
+
+                $arrType[$PpIdx] = $val['Type'];
+
+                //원점수 평균총합 (응시자점수 - 원점수평균)제곱(총)
+                $column = "
+                    pg.PpIdx, ROUND(SUM(OrgPoint + TotalScore * (AddPoint * 0.01)),2) AS TOT
+                ";
+
+                $from = "
+                    FROM
+                        {$this->_table['predictGradesOrigin']} AS pg
+                        LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                ";
+
+                $order_by = " ";
+
+                $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea;
+
+                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+                $tresult = $query->row_array();
+
+                $arrMP[$PpIdx]['SUMAVG'] = $tresult['TOT'];
+
+
+                // 원점수평균/PpIdx/인원
+                $column = "
+                    pg.PpIdx, 
+                    ROUND(SUM(OrgPoint + TotalScore * (AddPoint * 0.01)),2) /
+                    (
+                        SELECT COUNT(MemIdx) FROM (
+                            SELECT 
+                                MemIdx 
+                            FROM 
+                                {$this->_table['predictGradesOrigin']}
+                            WHERE 
+                                ProdCode = " . $ProdCode . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
+                            GROUP BY PrIdx, PpIdx
+                        ) AS I
+                    ) AS AVG
+                    , 
+                    (
+                        SELECT COUNT(MemIdx) FROM (
+                            SELECT 
+                                MemIdx 
+                            FROM 
+                                {$this->_table['predictGradesOrigin']}
+                            WHERE 
+                                ProdCode = " . $ProdCode . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
+                            GROUP BY PrIdx, PpIdx
+                        ) AS I
+                    ) AS CNT
+                ";
+
+                $from = "
+                    FROM
+                        {$this->_table['predictGradesOrigin']} AS pg
+                        LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                ";
+
+                $order_by = " ";
+
+                $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+
+                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+                $wresult = $query->row_array();
+
+                $avg = $wresult['AVG'];
+                $cnt = $wresult['CNT'];
+                $arrMP[$PpIdx]['AVG'] = $avg;
+                $arrMP[$PpIdx]['CNT'] = $cnt;
+
+                // 응시자 개별과목 / 점수
+                $column = "
+                    pg.ProdCode, pg.PrIdx, pg.MemIdx, pg.OrgPoint, pg.PpIdx, 
+                    ROUND(OrgPoint + TotalScore * (AddPoint * 0.01),2) AS Res,
+                    ROUND(OrgPoint + TotalScore * (AddPoint * 0.01),2) /
+                    (
+                       SELECT COUNT(MemIdx) FROM (
+                           SELECT 
+                               MemIdx 
+                           FROM 
+                               {$this->_table['predictGradesOrigin']}
+                           WHERE 
+                               ProdCode = " . $ProdCode . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
+                           GROUP BY PrIdx, PpIdx
+                       ) AS I
+                    ) AS AVG,
+                    (
+                            SELECT 
+                               SUM(OrgPoint + TotalScore * (AddPoint * 0.01)) /
+                               (
+                                       SELECT COUNT(MemIdx) FROM (
+                                           SELECT 
+                                               MemIdx 
+                                           FROM 
+                                               {$this->_table['predictGradesOrigin']}
+                                           WHERE 
+                                               ProdCode = " . $ProdCode . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
+                                           GROUP BY PrIdx, PpIdx
+                                       ) AS I
+                                    ) AS won
+                           FROM 
+                                  {$this->_table['predictGradesOrigin']} AS pg
+                                  LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                                  LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                           WHERE 
+                               pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "
+                    ) AS won
+                ";
+
+                $from = "
+                    FROM
+                        {$this->_table['predictGradesOrigin']} AS pg
+                        LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                ";
+
+                $order_by = " GROUP BY pg.MemIdx ORDER BY OrgPoint DESC";
+
+                $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+
+                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+                $result = $query->result_array();
+
+                // 랭킹 산정시 동일점수때문에 임시저장
+                $tempJum = '';
+                $Rank = 1;
+                $minusRank = 1;
+                foreach ($result AS $key => $val) {
+                    $orgPoint = $val['OrgPoint'];
+                    //조정점수 반영로직
+                    if ($arrType[$PpIdx] == 'S') {
+                        /*
+                        * 선택과목은 아래와 같은 계산법을 따른다.
+                        *
+                        * 원점수평균 = 선택과목점수총합 / 응시자수
+                        * 원점수표준편차 = 루트( (응시자점수 - 원점수평균)제곱(응시자전체) / (응시자수 - 1) )
+                        * 조정점수 = ((응시자점수 - 선택과목의평균점수) / 원점수표준편차) * 10 + 50
+                        *
+                        */
+
+                        //가산점반영점수
+                        $g_num = $val['Res'];
+
+                        // 원점수평균 = 선택과목 점수총합 / 응시자수
+                        $wonAVG = $val['won'];
+                        $sumAVG = $arrMP[$PpIdx]['SUMAVG'];
+
+                        // 응시자수
+                        $pcnt = $arrMP[$PpIdx]['CNT'];
+
+                        //표준편차
+                        if($sumAVG != 0 && $pcnt != 1){
+                            $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
+                        } else {
+                            $tempRes = 0;
+                        }
+
+                        //조정점수
+                        if($g_num - $wonAVG != 0 && $tempRes != 0){
+                            $AdjustPoint = round((($g_num - $wonAVG) / $tempRes) * 10 + 50, 2);
+                        } else {
+                            $AdjustPoint = 50;
+                        }
+                    } else {
+                        // 원점수평균 = 선택과목 점수총합 / 응시자수
+                        $sumAVG = $arrMP[$PpIdx]['SUMAVG'];
+
+                        // 응시자수
+                        $pcnt = $arrMP[$PpIdx]['CNT'];
+
+                        //표준편차
+                        if($sumAVG != 0 && $pcnt != 1){
+                            $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
+                        } else {
+                            $tempRes = 0;
+                        }
+
+                        //필수과목일경우 가산점만 반영한다.
+                        $AdjustPoint = round($val['Res'], 2);
+                    }
+
+                    if ($tempJum == $orgPoint) {
+                        $rRank = $Rank - $minusRank;
+                        $minusRank++;
+                    } else {
+                        $rRank = $Rank;
+                        $minusRank = 1;
+                    }
+
+                    // 데이터 입력
+                    $data = [
+                        'MemIdx' => $val['MemIdx'],
+                        'PrIdx' => $val['PrIdx'],
+                        'ProdCode' => $val['ProdCode'],
+                        'PpIdx' => $val['PpIdx'],
+                        'OrgPoint' => $val['OrgPoint'],
+                        'TakeMockPart' => $TakeMockPart,
+                        'TakeArea' => $TakeArea,
+                        'AdjustPoint' => $AdjustPoint,
+                        'Rank' => $rRank,
+                        'StandardDeviation' => $tempRes
+                    ];
+
+                    $tempJum = $val['OrgPoint'];
+                    $Rank++;
+
+                    if ($this->_conn->set($data)->insert($this->_table['predictGrades']) === false) {
+                        throw new \Exception('시험데이터가 없습니다.');
+                    }
+                }
+
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+
+    }
+
+
+    /**
+     * 시험통계처리
+     * @param $MgIdx $mode = cron or web
+     * @return mixed
+     */
+    public function scoreProcess($ProdCode, $mode, $TakeMockPart)
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            if(empty($ProdCode) == true){
+                throw new \Exception('합격예측상품 미등록 상태입니다.');
+            }
+
+            $this->_conn->where(['ProdCode' => $ProdCode]);
+
+            if ($this->_conn->delete($this->_table['predictGradesArea']) === false) {
+                throw new \Exception('성적 삭제에 실패했습니다.');
+            }
+
+            // 데이터 입력
+            if ($mode == 'web') {
+                $data = [
+                    'MemId' => $this->session->userdata('admin_id'),
+                    'Step' => '3',
+                    'ProdCode' => $ProdCode
+                ];
+            } else {
+                $data = [
+                    'MemId' => 'systemcron',
+                    'Step' => '3',
+                    'ProdCode' => $ProdCode
+                ];
+            }
+
+            $is_insert = $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesLog']);
+            if ($is_insert === false) {
+                throw new \Exception('로그생성실패.');
+            }
+
+            $addQuery = "";
+            if(empty($TakeMockPart) == false){
+                $addQuery = " AND TakeMockPart = " . $TakeMockPart;
+            }
+
+            //시험코드
+            $column = "
+                pr.TakeMockPart, pr.TakeArea, pg.PpIdx, pp.Type
+            ";
+
+            $from = "
+                FROM
+                    
+                    {$this->_table['predictGradesOrigin']} AS pg
+	                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+	                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+            ";
+
+            $order_by = " GROUP BY TakeMockPart, TaKeArea, PpIdx
+                          ORDER BY TakeMockPart, TakeArea, pg.PpIdx";
+
+            $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+            $result = $query->result_array();
+
+            foreach($result AS $key => $val) {
+
+                $PpIdx = $val['PpIdx'];
+                $TakeMockPart = $val['TakeMockPart'];
+                $TakeArea = $val['TakeArea'];
+
+                // 응시자 개별과목 / 점수
+                $column = "
+                    pg.ProdCode, pg.PrIdx, pg.MemIdx, pg.OrgPoint, ROUND(OrgPoint + TotalScore * (AddPoint * 0.01),2) AS gasan, 
+					pg.AdjustPoint, pg.PpIdx, pg.Rank, pg.StandardDeviation
+                ";
+
+                $from = "
+                    FROM
+                        {$this->_table['predictGrades']} AS pg
+                        LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                ";
+
+                $order_by = " GROUP BY pg.MemIdx ORDER BY OrgPoint DESC";
+
+                $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+                //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+                $result = $query->result_array();
+
+                // 랭킹 산정시 동일점수때문에 임시저장
+                $Rank = 1;
+                $count = 0;
+                $sum = 0;
+                $arrAdPoint = array();
+                foreach ($result AS $key => $val) {
+                    $point = $val['AdjustPoint'];
+                    $arrAdPoint[$Rank] = $point;
+                    $StandardDeviation = $val['StandardDeviation'];
+                    $sum = $sum + $point;
+                    $Rank++;
+                    $count++;
+                }
+
+                //상위 5퍼의 점수
+                $FivePer = round($count * 0.05,1);
+                if($FivePer < 1){
+                    $FivePer = 1;
+                } else {
+                    $FivePer = floor($FivePer);
+                }
+
+                $FivePerPoint = $arrAdPoint[$FivePer];
+
+                if($sum != 0 && $count != 0){
+                    $avr = round($sum / $count, 2);
+                } else {
+                    $avr = 0;
+                }
+
+                // 데이터 입력
+                $data = [
+                    'TakeMockPart' => $TakeMockPart,
+                    'TakeArea' => $TakeArea,
+                    'TakeNum' => $count,
+                    'ProdCode' => $ProdCode,
+                    'PpIdx' => $PpIdx,
+                    'AvrPoint' => $avr,
+                    'FivePerPoint' => $FivePerPoint,
+                    'StandardDeviation' => $StandardDeviation
+                ];
+
+                if ($this->_conn->set($data)->insert($this->_table['predictGradesArea']) === false) {
+                    throw new \Exception('시험데이터가 없습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
 

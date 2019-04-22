@@ -18,7 +18,7 @@
                     <tr>
                         <th colspan="1">운영사이트 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <select name="SiteCode" id="SiteCode" onChange="selSiteCode(this.value,'');">
+                            <select class="form-control mr-5" name="SiteCode" id="SiteCode" onChange="selSiteCode(this.value,'');">
                                 <option value="">사이트선택</option>
                                 @if($method == 'PUT')
                                     <option value="2001" @if($data['SiteCode']=='2001') SELECTED @endif>온라인경찰</option>

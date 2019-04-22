@@ -58,7 +58,10 @@
                                         @php
                                             $sale_type_ccd = $price_row['SaleTypeCcd'];
                                         @endphp
-                                        <span class="lec_price tx-light-blue" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
+                                        <span class="tx-dark-gray">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                        <span class="tx-pink pl10">(↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})</span>
+                                        <span class="pl10"> ▶ </span>
+                                        <span class="lec_price tx-light-blue pl10" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
                                     @endif
                                 @endforeach
                             @endif
@@ -150,7 +153,7 @@
                                 <td class="w-notice p_re">
                                     <div class="priceWrap">
                                         <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0) }}원</span>
-                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                        <span class="discount">(↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})</span>
                                     </div>
                                 </td>
                             </tr>

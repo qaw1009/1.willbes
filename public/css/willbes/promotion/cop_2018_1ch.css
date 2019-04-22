@@ -15,11 +15,6 @@
 
 /************************************************************/
 
-select,
-input[type=text] {padding:5px}
-input[type=radio],
-input[type=checkbox] {width:18px; height:18px}
-
 .skyBanner {position:fixed; bottom:20px; right:20px; width:138px; border:1px solid #000; z-index:10;
 -webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
 -moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
@@ -104,62 +99,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .wNotice li a span {background:#424ac7; color:#fff; padding:2px 4px; margin-right:10px; font-size:12px}
 .wNotice li a span.st01 {background:#f57d20; }
 .wNotice li a,
-.wNotice div:after {content:""; display:block; clear:both}	
-
-/*레이어팝업*/
-.Pstyle {
-    opacity: 0;
-    display: none;
-    position: relative;
-    width: 600px;
-    border: 1px solid #000;            
-    background: #fff;
-    font-size:13px;
-    line-height:1.5;
-    box-shadow:0 10px 10px rgba(0,0,0,0.2);
-}
-.b-close {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    padding: 5px;
-    display: inline-block;
-    cursor: pointer;
-    color:#fff;
-    font-size:14px;
-}
-.Pstyle h3 {height:60px; line-height:60px; padding-left:20px; color:#fff; background:#225fba; font-size:20px}
-.Pstyle .content {height:auto; width:auto; padding:20px}
-.Pstyle .content table {border-top:2px solid #333}
-.Pstyle .content th,
-.Pstyle .content td {padding:10px; text-align:center; border-bottom:1px solid #e4e4e4}
-.Pstyle .content th {background:#f2f2f2}
-.Pstyle .content th span {float:right}
-.Pstyle .content td:nth-child(2) {text-align:left;}
-.Pstyle .content tr:hover {background:#e9f1fe}
-.Pstyle .content td a {display:block}
-.Pstyle .content td .boradImg {margin:10px 0}
-.Pstyle .content td .boradImg img {max-width:538px}
-.Pstyle .content table strong {background:#424ac7; color:#fff; margin-right:10px; font-size:11px; padding:2px 4px}
-.Pstyle .content table strong.st02 {background:#f57d20;}
-.Pstyle .btnsSt3 {text-align:center; margin-top:20px}
-.Pstyle .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff; font-weight:bold; border:1px solid #333}
-.btnsSt3 a:hover {background:#fff; color:#333}
-
-.popcontent {height:auto; width:auto; padding:10px; font-size:110%; /*width:600px*/}
-	.question {/*margin-top:1em*/}
-	.question p {padding:10px; background:#000; color:#fff !important; margin-bottom:1em; border-radius:10px 10px 0 0}
-	.question div.qBox {padding:5px 10px}
-	.question strong {color:#000}
-	.question div.qBox ul {margin-bottom:10px; margin-left:1em}
-	.question li {display:inline; float:left; margin-right:10px}
-	.question ul:after {content:""; display:block; clear:both}
-	.question .tab li {display:inline; float:left; margin-right:1px}	
-	.question .tab a {display:block; padding:5px 20px; border:1px solid #ccc; border-bottom:0; margin-right:2px; border-radius:0 10px 0 0}
-	.question .tab a:hover,
-	.question .tab a.active {background:#464646; color:#fff; border:1px solid #464646; border-bottom:0}
-	.question .tab:after {content:""; display:block; clear:both}
-	.popcontent .viewTb2 td {padding:5px; font-size:90%}
+.wNotice div:after {content:""; display:block; clear:both}
 
 .m_lnb {padding-top:50px;}
 .lnbMenu {width:980px; margin:0 auto}
@@ -168,99 +108,6 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .lnbMenu li a.active {background:#fff; color:#000}
 .lnbMenu li:last-child a {margin-right:0}
 .lnbMenu:after {content:""; display:block; clear:both}	
-
-input[type=radio],
-input[type=checkbox] {width:16px; height:16px;}    
-select,
-input[type=text] {padding:2px; margin-right:10px; height:26px; border:1px solid #e4e4e4}
-input[type=file]:focus,
-input[type=text]:focus {border:1px solid #1087ef}
-label {margin:0 10px 0 5px}
-input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
-
-/*********테이블*********/
-
-.boardTypeA caption {display:none}
-.boardTypeA {width:100%; margin:0 auto; border-top:1px solid #353535; border-left:1px solid #353535}
-.boardTypeA th,
-.boardTypeA td {text-align:center; color:#fff; border-bottom:1px solid #353535; border-right:1px solid #353535; padding:10px 5px}
-.boardTypeA th {font-weight:bold; background:#131313}
-
-.boardTypeB {width:100%; margin:0 auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid; background:#fff; line-height: 1.5}
-.boardTypeB caption {display:none}	
-.boardTypeB thead th, 
-.boardTypeB tbody th {color:#464646; font-weight:bold; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; text-align:center; padding:15px 8px}
-.boardTypeB tbody td {letter-spacing:normal; padding:10px 8px}
-.boardTypeB thead th {background:#e9e8e8;}
-.boardTypeB tbody th {background:#f3f3f3;}
-.boardTypeB tbody td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:center}
-.boardTypeB tbody tr.bg01 th {background:#e5f2fe}
-.boardTypeB tbody td input {vertical-align:middle}
-.boardTypeB tbody td label {margin-right:10px}
-
-.boardTypeC caption {display:none}
-.boardTypeC {width:100%; margin:0 auto; border:#464646 1px solid}
-.boardTypeC tr {display:table-row}
-.boardTypeC th,
-.boardTypeC td {letter-spacing:normal; font-size:12px; text-align:center; padding:15px 8px; vertical-align:middle}
-.boardTypeC th {color:#333; background:#fffcd1; *border-bottom:#e2e2e2 1px solid; border-right:#e2e2e2 1px solid}
-.boardTypeC td {position:relative; border-bottom:#e2e2e2 1px solid; border-right:#e2e2e2 1px solid; vertical-align:middle}
-.boardTypeC td.td_h250 {height:250px !important; padding:0 !important}
-.boardTypeC td input {vertical-align:middle}
-.boardTypeC td span.blueB {font-weight:bold; color:#33F}
-.boardTypeC td span.redB {font-weight:bold; color:#C00}
-.boardTypeC td.txtL {text-align:left}
-.boardTypeC tr td:last-child {border-right:#464646 1px solid}
-.boardTypeC tr:last-child td {border-bottom:#464646 1px solid}
-.boardTypeC .lineNo {border-right:none !important}
-.boardTypeC .ratio {position:absolute; right:10px; top:14px; width:50px; text-align:right; z-index:99}
-.boardTypeC .graph {position:absolute; left:10px; top:14px; width:85%; background:#f4f4f4}
-
-.boardTypeC .graph2ch {position:absolute; right:10px; top:14px; width:85%; background:#f4f4f4; display:block}
-.boardTypeC .ratio2ch {position:absolute; left:10px; top:14px; width:50px; text-align:left; z-index:99; display:block}
-
-.boardTypeC .graph span {display:block; height:14px}
-.boardTypeC .graph span.graph1 {background:#1087ef}
-.boardTypeC .graph span.graph2 {background:#8C132F}
-.boardTypeC .graph span.graph3 {background:#C69}
-.boardTypeC .graph span.graph4 {background:#639}
-.boardTypeC .graph span.graph5 {background:#C63}
-.boardTypeC .graph span.graph_etc {background:#999}
-
-.boardTypeC .graph2ch span {display:block; height:14px; float:right}
-.boardTypeC .graph2ch span.graph2 {background:#8C132F}
-
-.boardTypeC .graph_v {position:absolute; left:50%; margin-left:-18px; bottom:-25px; width:36px; height:200px; background:#f4f4f4}
-.boardTypeC .graph_v {position:relative}
-.boardTypeC .graph_v span {position:absolute; bottom:0; display:block; width:100%}
-.boardTypeC .graph_v span.graph1 {background:#3a5db1}
-.boardTypeC .graph_v span.graph2 {background:#e2e2e2}
-
-.boardTypeC td .ratio_v {position:absolute; top:15px; display:block; width:100%; z-index:99}
-
-.boardTypeD caption {display:none}
-.boardTypeD {width:100%; margin:0 auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid}
-.boardTypeD th,
-.boardTypeD td {letter-spacing:normal !important; font-size:14px !important; text-align:center; padding:10px 8px}
-.boardTypeD th {color:#464646; background:#f3f3f3; font-size:14px !important; font-weight:400; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid}
-.boardTypeD td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646}
-.boardTypeD td.td2 {background:#fffcd1}
-.boardTypeD td input {vertical-align:middle}
-.boardTypeD td span.blueB {font-weight:bold; color:#33F}
-.boardTypeD td span.redB {font-weight:bold; color:#C00}
-.boardTypeD td label {margin-right:10px}
-.boardTypeD .lineNo {border-right:none !important}
-.boardTypeD tfoot td {background:#dae9f7; font-weight:600; color:#000}
-
-.boardTypeD td .graph li {display:inline; float:left; width:25%; font-size:11px; text-align:center}
-.boardTypeD td .graph strong {font-weight:normal !important}
-.boardTypeD td .graph div {height:200px; background:#f4f4f4; width:15px; margin:5px auto; position:relative}
-.boardTypeD td .graph div span {display:block; background:#1087ef; position:absolute; bottom:0; width:100%}
-.boardTypeD td .graph2 div span {background:#2faed8}
-.boardTypeD td .graph3 div span {background:#10efe2}
-.boardTypeD td .graph4 div span {background:#10efad}
-.boardTypeD td .graph5 div span {background:#bdef10}
-
 
 
 /*********메인*********/
@@ -435,10 +282,6 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .m_section3_3R_warp ul:after {content:""; display:block; clear:both}
 .m_section3_3:after {content:""; display:block; clear:both}
 
-/*.controls a{position:absolute; top:0; width:30px; height:100%; display:block; font-size:0; z-index:10; background-size:auto}
-.controls a.bx-prev{left:-40px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png) no-repeat center center}
-.controls a.bx-next{right:-40px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png) no-repeat center center}*/
-
 .m_section3_4 {margin-bottom:100px}
 .m_section3_4 h2 {position:relative}
 .m_section3_4 h2 div {position:absolute; top:5px; right:0; font-size:12px; color:#adadad; letter-spacing:normal}	
@@ -490,8 +333,191 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .s_section2_wrap li {margin-bottom:1.5em}
 .s_section2_wrap li:last-child {margin:0}
 
-.sub_warp {width:980px; margin:0 auto; padding:60px 0}
+.sub_warp {width:980px; margin:0 auto; padding:60px 0; line-height: 1.5}
 .sub_warp h2 {clear:both; font-size:24px; font-weight:500; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
 .sub_warp h2 div {position:absolute; top:5px; right:0; font-size:12px; color:#adadad; letter-spacing:normal}
 .sub_warp h2 span {color:#C03}	
 .sub_warp h2 select {padding:5px}
+
+.sub3_1 {position:relative; margin:0 auto 80px}
+.sub3_1_txt {position:absolute; display:table; width:100%; height:500px; top:50px; background:url(http://file3.willbes.net/new_cop/2017/03/170306_passcop_bg1.png); text-align:center}
+.sub3_1_txt div {display:table-cell; vertical-align:middle}
+
+
+
+
+/*********공통*********/
+    
+.btns {text-align:center; margin-top:20px}
+.btns span,
+.btns a {display:inline-block; padding:8px 16px; background:#1087ef; color:#fff !important; font-weight:400; border:1px solid #1087ef}
+.btns a.btn2 {background:#464646; color:#fff !important; border:1px solid #464646}
+.btns a:hover {background:#fff; color:#1087ef !important}
+.btns a.btn2:hover {background:#fff; color:#464646 !important}
+
+.btns2 {text-align:right; margin-top:0.5em}
+.btns2 a {display:inline-block; padding:6px 14px; background:#fff; color:#484848; border:1px solid #484848}
+.btns2 a:hover {background:#484848; color:#fff}
+
+.btns3 a {display:inline-block; padding:4px 10px !important; background:#fff; color:#484848; border:1px solid #484848; border-radius:4px; font-size:90% !important}
+.btns3 a:hover {background:#484848; color:#fff}
+
+a.type1 {background:#464646; color:#fff; border-radius:6px; padding:10px 30px}
+a.type2 {background:#464646; color:#fff; border-radius:6px; padding:5px 15px}
+
+input[type=radio],
+input[type=checkbox] {width:16px; height:16px;}    
+select,
+input[type=text] {padding:2px; margin-right:10px; height:26px; border:1px solid #e4e4e4}
+input[type=file]:focus,
+input[type=text]:focus {border:1px solid #1087ef}
+label {margin:0 10px 0 5px}
+input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
+
+.boardTypeA caption {display:none}
+.boardTypeA {width:100%; margin:0 auto; border-top:1px solid #353535; border-left:1px solid #353535}
+.boardTypeA th,
+.boardTypeA td {text-align:center; color:#fff; border-bottom:1px solid #353535; border-right:1px solid #353535; padding:10px 5px}
+.boardTypeA th {font-weight:bold; background:#131313}
+
+.boardTypeB {width:100%; margin:0 auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid; background:#fff; line-height: 1.5}
+.boardTypeB caption {display:none}	
+.boardTypeB thead th, 
+.boardTypeB tbody th {color:#464646; font-weight:bold; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; text-align:center; padding:15px 8px}
+.boardTypeB tbody td {letter-spacing:normal; padding:10px 8px}
+.boardTypeB thead th {background:#e9e8e8;}
+.boardTypeB tbody th {background:#f3f3f3;}
+.boardTypeB tbody td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:center}
+.boardTypeB tbody tr.bg01 th {background:#e5f2fe}
+.boardTypeB tbody td input {vertical-align:middle}
+.boardTypeB tbody td label {margin-right:10px}
+.boardTypeB tbody td li {display: inline;}
+
+.boardTypeC caption {display:none}
+.boardTypeC {width:100%; margin:0 auto; border:#464646 1px solid}
+.boardTypeC tr {display:table-row}
+.boardTypeC th,
+.boardTypeC td {letter-spacing:normal; font-size:12px; text-align:center; padding:15px 8px; vertical-align:middle}
+.boardTypeC th {color:#333; background:#fffcd1; *border-bottom:#e2e2e2 1px solid; border-right:#e2e2e2 1px solid}
+.boardTypeC td {position:relative; border-bottom:#e2e2e2 1px solid; border-right:#e2e2e2 1px solid; vertical-align:middle}
+.boardTypeC td.td_h250 {height:250px !important; padding:0 !important}
+.boardTypeC td input {vertical-align:middle}
+.boardTypeC td span.blueB {font-weight:bold; color:#33F}
+.boardTypeC td span.redB {font-weight:bold; color:#C00}
+.boardTypeC td.txtL {text-align:left}
+.boardTypeC tr td:last-child {border-right:#464646 1px solid}
+.boardTypeC tr:last-child td {border-bottom:#464646 1px solid}
+.boardTypeC .lineNo {border-right:none !important}
+.boardTypeC .ratio {position:absolute; right:10px; top:14px; width:50px; text-align:right; z-index:99}
+.boardTypeC .graph {position:absolute; left:10px; top:14px; width:85%; background:#f4f4f4}
+
+.boardTypeC .graph2ch {position:absolute; right:10px; top:14px; width:85%; background:#f4f4f4; display:block}
+.boardTypeC .ratio2ch {position:absolute; left:10px; top:14px; width:50px; text-align:left; z-index:99; display:block}
+
+.boardTypeC .graph span {display:block; height:14px}
+.boardTypeC .graph span.graph1 {background:#1087ef}
+.boardTypeC .graph span.graph2 {background:#8C132F}
+.boardTypeC .graph span.graph3 {background:#C69}
+.boardTypeC .graph span.graph4 {background:#639}
+.boardTypeC .graph span.graph5 {background:#C63}
+.boardTypeC .graph span.graph_etc {background:#999}
+
+.boardTypeC .graph2ch span {display:block; height:14px; float:right}
+.boardTypeC .graph2ch span.graph2 {background:#8C132F}
+
+.boardTypeC .graph_v {position:absolute; left:50%; margin-left:-18px; bottom:-25px; width:36px; height:200px; background:#f4f4f4}
+.boardTypeC .graph_v {position:relative}
+.boardTypeC .graph_v span {position:absolute; bottom:0; display:block; width:100%}
+.boardTypeC .graph_v span.graph1 {background:#3a5db1}
+.boardTypeC .graph_v span.graph2 {background:#e2e2e2}
+
+.boardTypeC td .ratio_v {position:absolute; top:15px; display:block; width:100%; z-index:99}
+
+.boardTypeD caption {display:none}
+.boardTypeD {width:100%; margin:0 auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid}
+.boardTypeD th,
+.boardTypeD td {letter-spacing:normal !important; font-size:14px !important; text-align:center; padding:10px 8px}
+.boardTypeD th {color:#464646; background:#f3f3f3; font-size:14px !important; font-weight:400; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid}
+.boardTypeD td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646}
+.boardTypeD td.td2 {background:#fffcd1}
+.boardTypeD td input {vertical-align:middle}
+.boardTypeD td span.blueB {font-weight:bold; color:#33F}
+.boardTypeD td span.redB {font-weight:bold; color:#C00}
+.boardTypeD td label {margin-right:10px}
+.boardTypeD .lineNo {border-right:none !important}
+.boardTypeD tfoot td {background:#dae9f7; font-weight:600; color:#000}
+
+.boardTypeD td .graph li {display:inline; float:left; width:25%; font-size:11px; text-align:center}
+.boardTypeD td .graph strong {font-weight:normal !important}
+.boardTypeD td .graph div {height:200px; background:#f4f4f4; width:15px; margin:5px auto; position:relative}
+.boardTypeD td .graph div span {display:block; background:#1087ef; position:absolute; bottom:0; width:100%}
+.boardTypeD td .graph2 div span {background:#2faed8}
+.boardTypeD td .graph3 div span {background:#10efe2}
+.boardTypeD td .graph4 div span {background:#10efad}
+.boardTypeD td .graph5 div span {background:#bdef10}
+
+.tabSt1 {border-bottom:2px solid #1087ef; margin-bottom:1.5em}
+.tabSt1 li {display:inline; float:left; margin-right:1px}
+.tabSt1 a {display:block; padding:0 20px; height:40px; line-height:40px; background:#e2e2e2; color:#898989;}
+.tabSt1 a:hover,
+.tabSt1 a.active {background:#1087ef; color:#fff}
+.tabSt1 li img {vertical-align:middle}
+.tabSt1:after {content:""; display:block; clear:both}
+
+/*********팝업***********/
+.Pstyle {
+    opacity: 0;
+    display: none;
+    position: relative;
+    width: 600px;
+    border: 1px solid #000;            
+    background: #fff;
+    font-size:13px;
+    line-height:1.5;
+    box-shadow:0 10px 10px rgba(0,0,0,0.2);
+}
+.b-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    color:#fff;
+    font-size:14px;
+}
+.Pstyle h3 {height:60px; line-height:60px; padding-left:20px; color:#fff; background:#225fba; font-size:20px}
+.Pstyle .content {height:auto; width:auto; padding:20px}
+.Pstyle .content table {border-top:2px solid #333}
+.Pstyle .content th,
+.Pstyle .content td {padding:10px; text-align:center; border-bottom:1px solid #e4e4e4}
+.Pstyle .content th {background:#f2f2f2}
+.Pstyle .content th span {float:right}
+.Pstyle .content td:nth-child(2) {text-align:left;}
+.Pstyle .content tr:hover {background:#e9f1fe}
+.Pstyle .content td a {display:block}
+.Pstyle .content td .boradImg {margin:10px 0}
+.Pstyle .content td .boradImg img {max-width:538px}
+.Pstyle .content table strong {background:#424ac7; color:#fff; margin-right:10px; font-size:11px; padding:2px 4px}
+.Pstyle .content table strong.st02 {background:#f57d20;}
+.Pstyle .btnsSt3 {text-align:center; margin-top:20px}
+.Pstyle .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff; font-weight:bold; border:1px solid #333}
+.Pstyle .btnsSt3 a:hover {background:#fff; color:#333}
+
+.eventPop {width:600px; margin:0 auto; font-size:12px; color:#333; line-height:1.5; padding-bottom:50px}
+.eventPop h3 {font-size:18px; font-weight:bold; text-align:center; padding-bottom:15px; color:#000;} 
+
+.popcontent {height:auto; width:auto; padding:10px; font-size:110%; /*width:600px*/}
+.question {/*margin-top:1em*/}
+.question p {padding:10px; background:#000; color:#fff !important; margin-bottom:1em; border-radius:10px 10px 0 0}
+.question div.qBox {padding:5px 10px}
+.question strong {color:#000}
+.question div.qBox ul {margin-bottom:10px; margin-left:1em}
+.question li {display:inline; float:left; margin-right:10px}
+.question ul:after {content:""; display:block; clear:both}
+.question .tab li {display:inline; float:left; margin-right:1px}	
+.question .tab a {display:block; padding:5px 20px; border:1px solid #ccc; border-bottom:0; margin-right:2px; border-radius:0 10px 0 0}
+.question .tab a:hover,
+.question .tab a.active {background:#464646; color:#fff; border:1px solid #464646; border-bottom:0}
+.question .tab:after {content:""; display:block; clear:both}
+.popcontent .viewTb2 td {padding:5px; font-size:90%}

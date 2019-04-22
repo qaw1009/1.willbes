@@ -4,15 +4,7 @@
 <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
 <!-- Container -->
 <style type="text/css">
-    .willbes-Layer-PassBox {height:auto; overflow-y:scroll;}
-    .eventPop {width:600px; margin:0 auto; font-size:12px; color:#333; line-height:1.5; padding-bottom:50px}
-    .eventPop h3 {font-size:18px; font-weight:bold; text-align:center; padding-bottom:15px; color:#000;} 
-
-    .btnsSt3 {text-align:center; margin-top:20px}
-    .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333}
-    .btnsSt3 a:hover {background:#fff; color:#333 !important}
-
-    
+    .willbes-Layer-PassBox {height:auto; overflow-y:scroll;}    
 </style>
 
 <div class="willbes-Layer-PassBox NGR">

@@ -20,13 +20,12 @@
 
         /************************************************************/
 
-        .wb_top {background:#c7bfab url(http://file3.willbes.net/new_gosi/2018/12/EV181211_1_bg.png) no-repeat center top; position:relative; }
-        .wb_cts01 {background:#eee}
-        .wb_cts01_1 {background:#eee}
-        .wb_cts02 {background:#3c3559}
-        .wb_cts03 {background:#ebeff0}
-        .wb_cts05 {background:#cdc8ba}
-        .wb_cts06 {background:#fff}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1074_top_bg.jpg) no-repeat center top;}
+        .evt01 {background:#fdfdfd}
+        .evt02 {background:#ebeff0}
+        .evt03 {background:#fdfdfd}
+        .evt04 {background:#20242d url(https://static.willbes.net/public/images/promotion/2019/04/1074_04_bg.jpg) no-repeat center top;}
+        .evt05 {background:#fff}
 
 
         .skybanner {
@@ -39,50 +38,40 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="skybanner">
-            <div><a href="#lec_go"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_sky_end.png" alt="수강신청" ></a></div>
-        </div>
-
-        <div class="evtCtnsBox wb_top">
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_1_1219end.png"alt="국어 강의의 NEW 패러다임 기미진 국어" usemap="#Map_180730_lec" border="0" />
-            <map name="Map_180730_lec">
-                <area shape="rect" coords="98,1114,510,1199" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150648') }}" target="_blank" alt="아침특강제외">
-                <area shape="rect" coords="686,1119,1093,1202" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150647') }}" target="_blank" alt="아침특강포함">
+        <div class="evtCtnsBox evtTop">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_top.png" usemap="#Map_1074_lec" title="기미진T-PASS" border="0" />
+            <map name="Map_1074_lec">
+                <area shape="rect" coords="91,1143,539,1211" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152965') }}" target="_blank" alt="39만원수강신청">
+                <area shape="rect" coords="575,1144,1035,1211" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152964') }}" target="_blank" alt="49만원수강신청">
             </map>
         </div>
-        <!--WB_top//-->
 
-        <div class="evtCtnsBox wb_cts01_1">
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_1_open.png" alt="기미진Tpass서울시/지방직대비드디어오픈"/>
+        <div class="evtCtnsBox evt01">
+		<img src="https://static.willbes.net/public/images/promotion/2019/04/1074_01.jpg" usemap="#Map_pass_go" title="현직근무자가 추천하는 기특한 국어" border="0" />
+			<map name="Map_pass_go">
+			  <area shape="rect" coords="723,861,1017,926" href="https://cafe.naver.com/pskorean" target="_blank" alt="합격수기">
+			</map>
         </div>
-        <!--wb_cts01_1//-->
 
-        <div class="evtCtnsBox wb_cts01">
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_2.png" alt="국어 교재소개"/>
+        <div class="evtCtnsBox evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_02.jpg" title="기미진국어를 수식하는말 모음" />
         </div>
-        <!--wb_cts01//-->
 
-        <div class="evtCtnsBox wb_cts02">
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_3.png" alt="학습tip및 커리큘럼" />
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_03.jpg" title="기특한국어커리큘럼" />
         </div>
-        <!--wb_cts02//-->
-
-        <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_4.png"alt="기미진 국어를 수식하는 말 그리고 수강평"/>
-        </div>
-        <!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts05" id="lec_go">
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_5.png" alt="수강신청" usemap="#Map_180730_lec2" border="0"/>
-            <map name="Map_180730_lec2">
-                <area shape="rect" coords="532,803,752,873" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150648') }}" target="_blank" alt="아침특강제외">
-                <area shape="rect" coords="826,803,1043,869" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150647') }}" target="_blank" alt="2아침특강포함">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_04.jpg" usemap="#Map_1074_lec2" title="기미진T-PASS" border="0" />
+			<map name="Map_1074_lec2">
+                <area shape="rect" coords="485,771,705,825" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152965') }}" target="_blank" alt="39만원수강신청">
+                <area shape="rect" coords="746,773,976,823" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152964') }}" target="_blank" alt="49만원수강신청">
             </map>
         </div>
         <!--wb_cts05//-->
 
         <div class="evtCtnsBox wb_cts06" >
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_6.png" alt="이용안내 및 유의사항 " />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_05.jpg" alt="이용안내 및 유의사항 " />
         </div>
         <!--wb_cts06//-->
 

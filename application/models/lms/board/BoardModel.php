@@ -85,6 +85,7 @@ class BoardModel extends WB_Model
             case "gallery" :
             case "free" :
             case "mocktest/notice" :
+            case "predictNotice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
@@ -393,7 +394,7 @@ class BoardModel extends WB_Model
             $arr_board_category = $this->_getBoardCategoryArray($board_idx);
 
             $insert_column = '
-                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
+                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx,
                 VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 Title, Content, ReadCnt, SettingReadCnt, OrderNum,
                 IsUse,
@@ -403,7 +404,7 @@ class BoardModel extends WB_Model
                 UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
             ';
             $select_column = '
-                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
+                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx,
                 VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 
@@ -571,6 +572,7 @@ class BoardModel extends WB_Model
             case "gallery" :
             case "free" :
             case "mocktest/notice" :
+            case "predictNotice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";

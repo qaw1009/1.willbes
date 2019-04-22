@@ -13,10 +13,11 @@
             <div class="pop-container">
                 <div class="pop-conts">
                     <!--content //-->
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/LayPop190415_p.jpg" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/2002_LayPop190422_p.jpg" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
                     <map name="MaplayerPopup" id="MaplayerPopup">
-                        <area shape="rect" coords="6,5,387,313" href="{{ site_url('/pass/promotion/index/cate/3010/code/1190') }}" alt="마무리특강" />
-                        <area shape="rect" coords="396,4,778,312" href="{{ site_url('/pass/promotion/index/cate/3010/code/1203') }}" alt="3단계실전모의고사" />
+                        <area shape="rect" coords="6,5,387,313" href="{{ site_url('/promotion/index/cate/3001/code/1187') }}" title="경찰1차 합격예측" />
+                        <area shape="rect" coords="395,4,778,159" href="{{ site_url('/pass/promotion/index/cate/3010/code/1050') }}" title="슈퍼패스" />
+                        <area shape="rect" coords="398,163,779,315" href="{{ site_url('/pass/promotion/index/cate/3010/code/1202') }}" title="필합4개월 PASS"/>
                     </map>
                     <div class="btn-r">
                         <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop2002('passpopup', 'blackpopup');" >하루 보지않기</a>

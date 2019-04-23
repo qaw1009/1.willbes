@@ -1,7 +1,7 @@
     <style type="text/css">
         .modalPopup {display:block; position:fixed; _position:absolute; top:0; left:0; width:100%; height:100%; z-index:9999}
         .modalPopup .bg {position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.7; filter:alpha(opacity=70)}
-        .modalPopup .pop-layer {display:block; position:absolute; top:50%; left:50%; width:784px; margin-left:-392px; margin-top:-160px; height:auto; z-index:10} 
+        .modalPopup .pop-layer {display:block; position:absolute; top:50%; left:50%; width:960px; margin-left:-480px; margin-top:-160px; height:auto; z-index:10} 
         .modalPopup .pop-layer .btn-r {margin:10px 0; text-align:right}
         .modalPopup .pop-layer .btn-r a.cbtn {display:inline-block; height:25px; line-height:25px; padding:0 14px 0; border:1px solid #bbb; background-color:#16120f; font-size:13px; color:#bbb; margin-left:10px} 
         .modalPopup .pop-layer .btn-r a.cbtn:hover {border:1px solid #091940; background-color:#1f326a; color:#fff;}

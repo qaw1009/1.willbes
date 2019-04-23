@@ -190,7 +190,7 @@
                                             @php
                                                 $prof_img = json_decode($sub_row['ProfReferData'],true)
                                             @endphp
-                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);"></td>
+                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);" checked></td>
                                             <td class="w-img"><img src="{{$prof_img['lec_list_img'] or  ''}}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">

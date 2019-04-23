@@ -65,6 +65,9 @@ class PredictModel extends WB_Model
         'predictGradesArea' => 'lms_predict_grades_area',
         'predictGradesLine' => 'lms_predict_grades_line',
         'predictQuestion' => 'lms_predict_questions',
+
+        'predictCnt' => 'lms_predict_cnt',
+        'predictSubTitles' => 'lms_predict_subtitles'
     ];
 
     public $upload_path;            // 업로드 기본경로
@@ -2164,5 +2167,137 @@ class PredictModel extends WB_Model
         }
 
         return ['ret_cd' => true, 'dt' => ['idx' => $nowIdx]];
+    }
+
+    /**
+     * 합격예측카운트관리 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function findPredictCnt($arr_condition)
+    {
+        $column = 'PcIdx, PredictIdx, CntType, AddCnt, ResultCnt';
+
+        $from = "
+            FROM {$this->_table['predictCnt']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 합격예측카운트관리 등록
+     * @param $input
+     * @return array|bool
+     */
+    public function addPredictCnt($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $inputData['PredictIdx'] = element('predict_idx', $input);;
+            $inputData['CntType'] = element('type', $input);
+            $inputData['AddCnt'] = element('add_count', $input);
+
+            // 데이터 등록
+            if ($this->_conn->set($inputData)->insert($this->_table['predictCnt']) === false) {
+                throw new \Exception('메모 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 합격예측카운트관리 수정
+     * @param $input
+     * @return array|bool
+     */
+    public function modifyPredictCnt($input, $idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $inputData['PredictIdx'] = element('predict_idx', $input);
+            $inputData['CntType'] = element('type', $input);
+            $inputData['AddCnt'] = element('add_count', $input);
+
+            $this->_conn->set($inputData)->where('PcIdx', $idx);
+            if ($this->_conn->update($this->_table['predictCnt']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 자막관리 목록 조회
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listSubTitles($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                a.PstIdx, a.Title, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
+                a.UpdDatm, a.UpdAdminIdx, b.wAdminName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['predictSubTitles']} as a
+            LEFT JOIN {$this->_table['admin']} AS b ON a.RegAdminIdx = b.wAdminIdx and b.wIsStatus='Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 자막관리 데이터 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function findSubTitlesForModify($arr_condition)
+    {
+        $column = '
+                a.PstIdx, a.Title, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
+                a.UpdDatm, a.UpdAdminIdx, b.wAdminName
+            ';
+
+        $from = "
+            FROM {$this->_table['predictSubTitles']} as a
+            LEFT JOIN {$this->_table['admin']} AS b ON a.RegAdminIdx = b.wAdminIdx and b.wIsStatus='Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 }

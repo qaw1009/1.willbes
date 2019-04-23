@@ -112,13 +112,14 @@
             <div class="sub3_4_wrap">
                 <div class="sub3_4_L">
                     <p>나의 위치</p>
-                    <div class="sub3_4_L_warp">                        
+                    <div class="sub3_4_L_warp">                                
                         <div class="cutLine">
-                            <div>                                		 
-                                <span style="bottom:${(sum/500)*100}%"><strong>353.85</strong></span>	                                   		
+                            <div>
+                                <span style="bottom:70.77%"><strong>353.85</strong></span>                                 		
                             </div>
-                        </div>                        
-                        <table cellspacing="0" cellpadding="0" class="table_type2">
+                        </div>
+                                
+                        <table class="boardTypeE">
                             <col width="10%" />
                             <col width="30%" />
                             <col width="30%" />
@@ -135,66 +136,46 @@
                                     <li>0</li>
                                 </ul>
                             </td>
-                                <c:choose>
-                            <c:when test="${resultMyinfo[0].GOSI_TYPE == 'DA' || resultMyinfo[0].GOSI_TYPE == 'EA' || resultMyinfo[0].GOSI_TYPE == 'IA' || resultMyinfo[0].GOSI_TYPE == 'JA' 
-                                || resultMyinfo[0].GOSI_TYPE == 'KA' || resultMyinfo[0].GOSI_TYPE == 'LA'}">
-                                <td>
-                                <div><span class="myscore" style="height:${(sum/500)*100}%"></span></div>
-                                </td>
-                            </c:when>
-                            <c:when test="${resultMyinfo2[0].SHOW_STAT=='N'}"> 
-                                <td>
-                                <div><span class="myscore" style="height:0%"></span></div>
-                                </td>
-                            </c:when>
-                            <c:otherwise>
+                                
+                            
+                            
+                            
                             <td>
-                            <div><span class="myscore" style="height:${(fm_adj/500)*100}%"></span></div>
+                            <div><span class="myscore" style="height:68.652%"></span></div>
                             </td>
-                            </c:otherwise>
-                            </c:choose>
-                            <c:if test="${resultMyinfo2[0].SHOW_STAT=='Y'}">
+                            
+                            
+                            
                                 <td>
                                     <div>
-                                        <span class="score" style="height:${(resultMyinfo2[0].AVR_POINT/500)*100}%"></span>                                                
+                                        <span class="score" style="height:56.31799999999999%"></span>                                                
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <span class="score" style="height:${(resultMyinfo2[0].GOSI_5_POINT/500)*100}%"></span>                                                
+                                        <span class="score" style="height:68.652%"></span>                                                
                                     </div>
                                 </td>
                                 <td> </td>
-                            </c:if>
-                            <c:if test="${resultMyinfo2[0].SHOW_STAT=='N'}">
-                                <td><div><span class="score" style="height:0%"></span></div></td>
-                                <td><div><span class="score" style="height:0%"></span></div></td>
-                                <td> </td>
-                            </c:if>
+                            
+                            
                             </tr>
                             <tr>
                             <th></th>
                             <th>
-                                1배수컷<br>                                                                  
-                                <c:choose>
-                            <c:when test="${resultMyinfo[0].GOSI_TYPE == 'DA' || resultMyinfo[0].GOSI_TYPE == 'EA' || resultMyinfo[0].GOSI_TYPE == 'IA' || resultMyinfo[0].GOSI_TYPE == 'JA' 
-                                    || resultMyinfo[0].GOSI_TYPE == 'KA' || resultMyinfo[0].GOSI_TYPE == 'LA'}">
-                                <c:if test="${sum==0 || empty sum}">집계중</c:if>
-                                <c:if test="${sum!=0}"> ${sum}</c:if>
-                            </c:when>
-                            <c:otherwise>
-                                <c:if test="${(adj==0 || empty adj) or resultMyinfo2[0].SHOW_STAT=='N'}">집계중</c:if>
-                                <c:if test="${adj!=0 and resultMyinfo2[0].SHOW_STAT=='Y'}"> ${fm_adj}</c:if>
-                            </c:otherwise>
-                            </c:choose>
-                            </th>
-                            <th>상위10%<br>                                    
-                                <c:if test="${(resultMyinfo2[0].AVR_POINT=='0' || empty resultMyinfo2[0].AVR_POINT) or resultMyinfo2[0].SHOW_STAT=='N'}">집계중</c:if>
-                            <c:if test="${resultMyinfo2[0].AVR_POINT!='0' and resultMyinfo2[0].SHOW_STAT=='Y'}"> ${resultMyinfo2[0].AVR_POINT}</c:if>
+                                            1배수컷<br>      
+                                                                                                        
+                                    343.26
+                                    
+                                        
                             </th>
                             <th>전체평균<br>                                    
-                            <c:if test="${resultMyinfo2[0].GOSI_5_POINT=='0' or resultMyinfo2[0].SHOW_STAT=='N'}">집계중</c:if>                                    
-                            <c:if test="${resultMyinfo2[0].GOSI_5_POINT!='0' and resultMyinfo2[0].SHOW_STAT=='Y'}"> ${resultMyinfo2[0].GOSI_5_POINT}</c:if>
+                                
+                                281.59
+                            </th>
+                            <th>상위5%<br>                                    
+                                                                
+                                343.26
                             </th>
                             <th> </th>
                             </tr>
@@ -210,37 +191,37 @@
                             <col />
                             <tr>
                                 <th>합격기대권</th>
-                                <td>326.38~334.43</td>
+                                <td>326.38 ~ 334.43</td>
                             </tr>
                             <tr>
                                 <th>합격유력권</th>
-                                <td>334.44~356.03</td>
+                                <td>334.44 ~ 356.03</td>
                             </tr>
                             <tr>
                                 <th>합격안정권</th>
                                 <td>356.04 이상</td>
                             </tr>
-                            <tr>
+                            <tr class="bg01">
                                 <th>1배수컷</th>
-                                <td>343.26</td>
+                                <th>343.26</th>
                             </tr>
-                            <tr>
+                            <tr class="bg01">
                                 <th>합격예측</th>
-                                <td>현재 기준 '합격 유력권'입니다. </td>
+                                <th>현재 기준 <span class="tx-red">합격 유력권</span>입니다. </th>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div> 
 
-           <div class="sub3_1">
+           <div class="sub3_1 mt100">
                 <h2>직렬 점수대별 경쟁자 분포</h2>
                 <div>
                     그래프
                 </div>
 
                 <div class="mt20">
-                    * 합격 가능성 분석 결과는 본 서비스 참여 결과 및 패널 표본 합산 예측 결과이므로, 실제 결과와는 다를 수 있으니 참고자료로만 활용하시기 바랍니다.
+                    * 합격 가능성 분석 결과는 본 서비스 참여 결과 및 패널 표본 합산 예측 결과이므로, 실제 결과와는 다를 수 있으니 참고 자료로만 활용하시기 바랍니다.
                 </div>            
             </div>
         </div>        

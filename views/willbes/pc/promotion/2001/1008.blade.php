@@ -123,7 +123,7 @@
                     </tr>
                     <tr>
                         <td class="tx-left">【경위 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 조용석 경찰실무종합 PASS</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149097') }}" target="_blink">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149199') }}" target="_blink">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -261,14 +261,6 @@
             $("#imgBannerRight3").click(function (){
                 slidesImg3.goToNextSlide();
             });
-        });
-    </script>
-
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
         });
     </script>
 @stop

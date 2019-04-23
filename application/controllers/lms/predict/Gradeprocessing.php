@@ -35,7 +35,6 @@ class Gradeprocessing extends \app\controllers\BaseController
      */
     public function index()
     {
-
         //합격예측 기본정보호출
         $productList = $this->predictModel->getProductALL();
         $serialList = $this->predictModel->getSerialAll();
@@ -47,7 +46,7 @@ class Gradeprocessing extends \app\controllers\BaseController
         $this->load->view('predict/gradeprocess/index', [
             'productList' => $productList,
             'serialList' => $serialList,
-            'areaList' => $areaList,
+            'areaList' => $areaList
         ]);
     }
 

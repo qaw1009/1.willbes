@@ -42,87 +42,81 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1057#none') }}">형소법 기본<span>3.21 개강</span></a></div>
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1057#none') }}">동형 형소법<span>3.25 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1057&course_idx=1041&campus_ccd=605001') }}">형소법 심화<span>5.17 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1057&course_idx=1040&campus_ccd=605001') }}">형소법 기본<span>6.3 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론 장정훈">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1058') }}">동형 경찰학<span>3.27 개강</span></a></div>
-                            <!--div><a href="{{ site_url('#none') }}">무료특강</a></div-->
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1058&course_idx=1042&campus_ccd=605001') }}">경찰학 심화<span>5.6 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1058&course_idx=1040&campus_ccd=605001') }}">경찰학 기본<span>6.24 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" title="한국사 원유철">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1055&prof_idx=50642') }}">동형 한국사<span>3.26 개강</span></a></div>
-                            <!--div><a href="{{ site_url('#none') }}">심화강좌</a></div-->
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1040&subject_idx=1055&campus_ccd=605001') }}">한국사 기본<span>4.22 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1055&course_idx=1041&campus_ccd=605001') }}">한국사 심화<span>5.6 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" title="한국사 오태진">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1055&prof_idx=50132') }}">동형 한국사<span>3.26 개강</span></a></div>
-                            <!--div><a href="{{ site_url('#none') }}">문풀1단계<span>3.13 개강</span></a></div-->
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1040&subject_idx=1055&campus_ccd=605001') }}">한국사 기본<span>4.22 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1055&course_idx=1041&campus_ccd=605001') }}">한국사 심화<span>5.8 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1056&prof_idx=50298') }}">동형 형법<span>3.28 개강</span></a></div>
-                            <!--div><a href="{{ site_url('#none') }}">심화강좌</a></div-->
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1056&course_idx=1040') }}">형법 기본<span>5.13 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1056') }}">형법 심화<span>6.6 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1054&prof_idx=50136ㅊ') }}">동형 영어<span>3.29 개강</span></a></div>
-                            <!--div><a href="{{ site_url('#none') }}">심화강좌</a></div-->
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1054') }}">영어 기본<span>5.16 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1054') }}">영어 심화<span>5.13 개강</span></a></div>
                         </div>
                     </li>                                        
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1063&prof_idx=50130') }}">아침특강<span>4.1 개강</span></a></div>
-                            <!--div><a href="{{ site_url('#none') }}">아침특강</a></div-->
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1095&course_idx=1046') }}">영어 지옥탈출반<span>5.6 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">
-                            <!--div><a href="{{ site_url('#none') }}">지옥탈출<span>3.11 개강</span></a></div>
-                            <div><a href="{{ site_url('#none') }}">아침특강</a></div-->
+                            <div><a href="#none">영어 지옥탈출반<span>5.6 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" title="면접 황세웅">
                         <div class="caProfBtsn">
-                            <!--div><a href="{{ site_url('#none') }}">면접캠프</a></div>
-                            <div><a href="{{ site_url('#none') }}">면접 스파르타</a></div-->
+                            <div><a href="#none">Coming Soon</a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" title="인적성검사 강인엽">
                         <div class="caProfBtsn">
-                            <!--div><a href="{{ site_url('#none') }}">면접캠프</a></div>
-                            <div><a href="{{ site_url('#none') }}">면접 스파르타</a></div-->
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" title="면접 유봉진">
-                        <div class="caProfBtsn">
-                            <!--div><a href="{{ site_url('#none') }}">면접캠프</a></div>
-                            <div><a href="{{ site_url('#none') }}">면접 스파르타</a></div-->
+                            <div><a href="#none">Coming Soon</a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" title="면접 정용욱">
                         <div class="caProfBtsn">
-                            <!--div><a href="{{ site_url('#none') }}">면접캠프</a></div>
-                            <div><a href="{{ site_url('#none') }}">면접 스파르타</a></div-->
+                            <div><a href="#none">Coming Soon</a></div>
                         </div>
                     </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" title="면접 유봉진">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">Coming Soon</a></div>
+                        </div>
+                    </li>                    
                 </ul>
             </div>
         </div>

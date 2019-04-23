@@ -138,7 +138,7 @@
                                 </td>
                                 <td class="w-notice p_re">
                                     <div class="priceWrap">
-                                        <span class="price">{{ number_format($price_row['RealSalePrice'],0) }}원</span><br>
+                                        <span class="price">{{ number_format($price_row['RealSalePrice'],0) }}원</span>
                                         <span class="discount tx-blue">(↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})</span>
                                     </div>
                                 </td>

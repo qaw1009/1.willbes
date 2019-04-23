@@ -226,7 +226,7 @@ class TmModel extends WB_Model
         $order_by = ' Order by rand() ';
 
         $query = $this->_conn->query('select ' .$column .$from .$where. $order_by. $limit);
-        echo $this->_conn->last_query();
+        //echo $this->_conn->last_query();
         return ($search_type === 'search') ? $query->row(0)->numrows : $query->result_array();
     }
 

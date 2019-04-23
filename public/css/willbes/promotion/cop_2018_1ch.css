@@ -343,17 +343,16 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .sub3_1_txt {position:absolute; display:table; width:100%; height:500px; top:50px; background:url(http://file3.willbes.net/new_cop/2017/03/170306_passcop_bg1.png); text-align:center}
 .sub3_1_txt div {display:table-cell; vertical-align:middle}
 
-.markingTilte {position:relative; background:#e4e4e4 url(http://file3.willbes.net/new_cop/2017/03/willbes.png) no-repeat 20px center; text-align:center; padding:1em}
+.markingTilte {position:relative; background:#e4e4e4 url(http://file3.willbes.net/new_cop/2017/03/willbes.png) no-repeat 20px center; text-align:center; padding:20px 10px}
 .markingTilte span {font-size:140%}
-.markingTilte div {position:absolute; top:1em; right:1em}
+.markingTilte div {position:absolute; top:20px; right:10px}
 .markingTilte:after {content:""; display:block; clear:both}
 
 .omrWarp {padding:1em 0}
 .omrL {float:left; width:77%;}
-.omrR {float:right; width:22%; padding-left:15px; border-left:1px solid #ccc;}
-.omrWarp:after {content:""; display:block; clear:both}		
-
 .omrL .paper {width:100%; height:690px; overflow-y: scroll; background:#F0F0F0}
+.omrR {float:right; width:22%; padding-left:15px; border-left:1px solid #ccc;}
+	
 
 .omrR p {margin-bottom:1em}
 .omrWarp th,
@@ -369,10 +368,13 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .selfMarking input[type=text] {width:50%; margin:0 auto; letter-spacing:0}
 .selfMarking p {margin-top:1em}
 
-.omrWarp .errata .table_type tr td:nth-last-child(3) {color:#F00 !important}
-.errata li {display:inline; float:left; width:18%; padding:0 1%}	
+.errata {padding:0 10px}
+.errata li {display:inline; float:left; width:20%; padding-right:20px}	
+.errata li:last-child {padding:0}
 .errata p {background:#333; color:#fff; text-align:center; padding:10px 0; margin-bottom:10px}
-
+.errata .boardTypeB tr td:nth-last-child(3) {color:#09F !important}
+.errata td:first-child {color:#09F !important}
+.omrWarp:after {content:""; display:block; clear:both}
 
 /*********공통*********/
     
@@ -394,7 +396,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff; font-weight:bold; border:1px solid #333}
 .btnsSt3 a:hover {background:#fff; color:#333}
 
-a.type1 {background:#464646; color:#fff; border-radius:6px; padding:10px 30px}
+a.type1 {background:#464646; color:#fff; border-radius:6px; padding:5px 10px}
 a.type2 {background:#464646; color:#fff; border-radius:6px; padding:5px 15px}
 
 input[type=radio],

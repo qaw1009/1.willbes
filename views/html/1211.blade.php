@@ -145,7 +145,7 @@
                         <col width="25%" />
                         <tr>
                             <th scope="col">과목</th>
-                            <th scope="col" class="th2">채점</th>
+                            <th scope="col">채점</th>
                             <th scope="col">원점수</th>
                             <th scope="col">조정점수</th>
                         </tr>
@@ -175,10 +175,57 @@
                             <td>미입력</td>
                             <td>미입력</td>
                         </tr>
-                    </table>
-                    
+                    </table>                    
                     <div class="btns">
                         <a href="#none">지금 성적을 반영합니다. &gt;</a>
+                    </div>
+
+                    {{--성적확인--}}
+                    <table class="boardTypeB">
+                        <col width="25%" />
+                        <col width="25%" />
+                        <col width="25%" />
+                        <col width="25%" />
+                        <tr>
+                            <th scope="col">과목</th>
+                            <th scope="col">성적확인</th>
+                            <th scope="col">원점수</th>
+                            <th scope="col">조정점수</th>
+                        </tr>
+                        <tr>
+                            <td>영어</td>
+                            <td><a href="#none" class="type1">확인 &gt;</a></td>
+                            <td>80점</td>
+                            <td>101점</td>
+                        </tr>
+                        <tr>
+                            <td>한국사</td>
+                            <td><a href="#none" class="type1">확인 &gt;</a></td>
+                            <td>80점</td>
+                            <td>101점</td>
+                        </tr>
+                        <tr>
+                            <td>선택과목1</td>
+                            <td><a href="#none" class="type1">확인 &gt;</a></td>
+                            <td>미입력</td>
+                            <td>101점</td>
+                        </tr>
+                        <tr>
+                            <td>선택과목2</td>
+                            <td><a href="#none" class="type1">확인 &gt;</a></td>
+                            <td>미입력</td>
+                            <td>미입력</td>
+                        </tr>
+                        <tr>
+                            <td>선택과목3</td>
+                            <td><a href="#none" class="type1">확인 &gt;</a></td>
+                            <td>미입력</td>
+                            <td>미입력</td>
+                        </tr>
+                    </table>                    
+                    <div class="btns">
+                        <a href="#none">나의 합격예측 바로가기 &gt;</a>
+                        <a href="#none" class="btn2">재 채첨하기 &gt;</a>
                     </div>
                 </div>
 
@@ -191,13 +238,13 @@
                         <col width="25%" />
                         <tr>
                             <th scope="col">과목</th>
-                            <th scope="col" class="th2">채점</th>
+                            <th scope="col">채점</th>
                             <th scope="col">원점수</th>
                             <th scope="col">조정점수</th>
                         </tr>
                         <tr>
                             <td>영어</td>
-                            <td rowspan="5"><a href="#" class="type1">채점하기 ▶</a></td>
+                            <td rowspan="5"><a href="#" class="type1">채점하기 &gt;</a></td>
                             <td>미입력</td>
                             <td>미입력</td>
                         </tr>
@@ -236,13 +283,13 @@
                         <col width="25%" />
                         <tr>
                             <th scope="col">과목</th>
-                            <th scope="col" class="th2">채점</th>
+                            <th scope="col">채점</th>
                             <th scope="col">원점수</th>
                             <th scope="col">조정점수</th>
                         </tr>
                         <tr>
                             <td>영어</td>
-                            <td rowspan="5"><a href="#" class="type1">채점하기 ▶</a></td>
+                            <td rowspan="5"><a href="#" class="type1">채점하기 &gt;</a></td>
                             <td>미입력</td>
                             <td>미입력</td>
                         </tr>

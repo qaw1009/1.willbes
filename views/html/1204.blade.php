@@ -65,7 +65,7 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <div class="NSK-Black">2019 1차 대비 마무리 특강 <span>학원 개설강좌</span></div>
+            <div class="NSK-Black">2019 2차대비 심화이론 / 기출 <span>학원 개설강좌</span></div>
             <table border="0" cellspacing="0" cellpadding="0">
                 <col width="20%" />
                 <col width="" />

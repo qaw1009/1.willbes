@@ -42,18 +42,18 @@
 
     <div class="p_re evtContent NGR" id="evtContainer"> 
         <div class="skyBanner">
-            <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/04/1219_skybanner.png" title="합격전략설명회 신청"></a>
+            <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/04/1219_skybanner.png" title="무료입문특강 신청"></a>
         </div>
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1219_top.jpg" title="합격전략설명회">        
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1219_top.jpg" title="0원 무료입문특강">        
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1219_01.jpg" title="합격전략설명회 스페셜 혜택">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1219_01.jpg" title="기초를 잡으면 합격이 보입니다.">
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1219_02.jpg" title="9개지역 동시생중계">    
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1219_02.jpg" title="학원 입문특강 강의일정">    
             <div class="request" id="request"> 
                 <div class="requestL">
                     <h3 class="NSK-Black"><span class="tx-bright-blue">학원무료 입문특강</span> 신청하기</h3>                    

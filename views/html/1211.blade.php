@@ -54,12 +54,15 @@
                                     <option value="">인천</option>
                                 </select>
                                 <span class="txtRed">※ 응시직렬은 최초 선택/저장 후 수정 불가</span>
+                                {{--입력후--}}
+                                일반공채 : 남 / 서울 
                             </td>
                         </tr>
                         <tr id="sel_subject">
                             <th>응시과목</th>
                             <td class="tx-left" id="sel_sbj_info">                                
                                 직렬(지역)구분을 선택해주세요.
+                                {{--입력후--}}
                                 <div><strong>공통과목 : </strong> 한국사 / 영어</div>                               
                                 <ul>
                                     <li><strong>선택과목(3과목) : </strong></li>    
@@ -113,74 +116,169 @@
             
             <div class="sub3_1">
                 <h2>성적 입력/확인</h2> 
+                {{--성적채점--}}
+                <div>
+                    <div class="sub3_1_txt">
+                        <div>
+                            <p>
+                                {{--4월 27일 11시40분까지--}}
+                                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>
+                                
+                                {{--4월 27일 11시40분이후--}}
+                                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">
+                                
+                            </p>                   
+                        </div>
+                    </div>                 
+                
+                    <ul class="tabSt1">
+                        <li><a href="#tab1" class="active">일반채점</a></li>
+                        <li><a href="#tab2">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
+                        <li><a href="#tab3">직접입력</a></li>
+                    </ul>
 
-                <div class="sub3_1_txt">
-                    <div>
-                        <p>
-                            {{--4월 27일 11시40분까지--}}
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>
-                            
-                            {{--4월 27일 11시40분이후
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">
-                            --}}
-                        </p>                   
+                    <div id="tab1">
+                        <div class="mt10 mb10">
+                            '일반채점'은 문제창에서 바로 문제를 확인하면서 OMR 정답지에 답을 체크하는 방식입니다.<br />
+                            * 아크로뱃 리더 프로그램 설치 필요 <a href="https://get.adobe.com/reader/?loc=kr" target="_blank">[설치하기]</a>
+                        </div>
+                        <table class="boardTypeB">
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <tr>
+                                <th scope="col">과목</th>
+                                <th scope="col">채점</th>
+                                <th scope="col">원점수</th>
+                                <th scope="col">조정점수</th>
+                            </tr>
+                            <tr>
+                                <td>영어</td>
+                                <td rowspan="5"><a href="#" class="type1">채점하기 ▶</a></td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>한국사</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목1</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목2</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목3</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                        </table>                    
+                        <div class="btns">
+                            <a href="#none">지금 성적을 반영합니다. &gt;</a>
+                        </div>                    
                     </div>
-                </div>                
 
-                <ul class="tabSt1">
-                    <li><a href="#tab1" class="active">일반채점</a></li>
-                    <li><a href="#tab2">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
-                    <li><a href="#tab3">직접입력</a></li>
-                </ul>
-
-                <div id="tab1">
-                    <div class="mt10 mb10">
-                        '일반채점'은 문제창에서 바로 문제를 확인하면서 OMR 정답지에 답을 체크하는 방식입니다.<br />
-                        * 아크로뱃 리더 프로그램 설치 필요 <a href="https://get.adobe.com/reader/?loc=kr" target="_blank">[설치하기]</a>
-                    </div>
-                    <table class="boardTypeB">
-                        <col width="25%" />
-                        <col width="25%" />
-                        <col width="25%" />
-                        <col width="25%" />
-                        <tr>
-                            <th scope="col">과목</th>
-                            <th scope="col">채점</th>
-                            <th scope="col">원점수</th>
-                            <th scope="col">조정점수</th>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td rowspan="5"><a href="#" class="type1">채점하기 ▶</a></td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>한국사</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목1</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목2</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목3</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                    </table>                    
-                    <div class="btns">
-                        <a href="#none">지금 성적을 반영합니다. &gt;</a>
+                    <div id="tab2">
+                        <div class="mt10 mb10">'빠른채점'은 시험지를 다운받아 문제를 풀어본 후, 문항별 선택 번호만 입력하는 방식입니다.</div>
+                        <table class="boardTypeB">
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <tr>
+                                <th scope="col">과목</th>
+                                <th scope="col">채점</th>
+                                <th scope="col">원점수</th>
+                                <th scope="col">조정점수</th>
+                            </tr>
+                            <tr>
+                                <td>영어</td>
+                                <td rowspan="5"><a href="#" class="type1">채점하기 &gt;</a></td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>한국사</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목1</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목2</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목3</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="btns">
+                            <a href="#">지금 성적을 반영합니다. &gt;</a>
+                        </div>
                     </div>
 
-                    {{--성적확인--}}
+                    <div id="tab3">
+                        <table class="boardTypeB">
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <tr>
+                                <th scope="col">과목</th>
+                                <th scope="col">채점</th>
+                                <th scope="col">원점수</th>
+                                <th scope="col">조정점수</th>
+                            </tr>
+                            <tr>
+                                <td>영어</td>
+                                <td rowspan="5"><a href="#" class="type1">채점하기 &gt;</a></td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>한국사</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목1</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목2</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                            <tr>
+                                <td>선택과목3</td>
+                                <td>미입력</td>
+                                <td>미입력</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="btns">
+                            <a href="#">지금 성적을 반영합니다. &gt;</a>
+                        </div>
+                    </div>
+                </div>
+               
+                {{--성적확인--}}
+                <div>
                     <table class="boardTypeB">
                         <col width="25%" />
                         <col width="25%" />
@@ -194,32 +292,28 @@
                         </tr>
                         <tr>
                             <td>영어</td>
-                            <td><a href="#none" class="type1">확인 &gt;</a></td>
-                            <td>80점</td>
-                            <td>101점</td>
+                            <td rowspan="5"><a href="#" class="type1">확인 ▶</a></td>
+                            <td>80</td>
+                            <td>101</td>
                         </tr>
                         <tr>
                             <td>한국사</td>
-                            <td><a href="#none" class="type1">확인 &gt;</a></td>
-                            <td>80점</td>
-                            <td>101점</td>
+                            <td>80</td>
+                            <td>101</td>
                         </tr>
                         <tr>
-                            <td>선택과목1</td>
-                            <td><a href="#none" class="type1">확인 &gt;</a></td>
+                            <td>90</td>
                             <td>미입력</td>
-                            <td>101점</td>
+                            <td>62.95 </td>
                         </tr>
                         <tr>
-                            <td>선택과목2</td>
-                            <td><a href="#none" class="type1">확인 &gt;</a></td>
+                            <td>95</td>
                             <td>미입력</td>
                             <td>미입력</td>
                         </tr>
                         <tr>
                             <td>선택과목3</td>
-                            <td><a href="#none" class="type1">확인 &gt;</a></td>
-                            <td>미입력</td>
+                            <td>60.73 </td>
                             <td>미입력</td>
                         </tr>
                     </table>                    
@@ -228,98 +322,6 @@
                         <a href="#none" class="btn2">재 채첨하기 &gt;</a>
                     </div>
                 </div>
-
-                <div id="tab2">
-                    <div class="mt10 mb10">'빠른채점'은 시험지를 다운받아 문제를 풀어본 후, 문항별 선택 번호만 입력하는 방식입니다.</div>
-                    <table class="boardTypeB">
-                        <col width="25%" />
-                        <col width="25%" />
-                        <col width="25%" />
-                        <col width="25%" />
-                        <tr>
-                            <th scope="col">과목</th>
-                            <th scope="col">채점</th>
-                            <th scope="col">원점수</th>
-                            <th scope="col">조정점수</th>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td rowspan="5"><a href="#" class="type1">채점하기 &gt;</a></td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>한국사</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목1</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목2</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목3</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                    </table>
-                    
-                    <div class="btns">
-                        <a href="#">지금 성적을 반영합니다. &gt;</a>
-                    </div>
-                </div>
-
-                <div id="tab3">
-                    <table class="boardTypeB">
-                        <col width="25%" />
-                        <col width="25%" />
-                        <col width="25%" />
-                        <col width="25%" />
-                        <tr>
-                            <th scope="col">과목</th>
-                            <th scope="col">채점</th>
-                            <th scope="col">원점수</th>
-                            <th scope="col">조정점수</th>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td rowspan="5"><a href="#" class="type1">채점하기 &gt;</a></td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>한국사</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목1</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목2</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                        <tr>
-                            <td>선택과목3</td>
-                            <td>미입력</td>
-                            <td>미입력</td>
-                        </tr>
-                    </table>
-                    
-                    <div class="btns">
-                        <a href="#">지금 성적을 반영합니다. &gt;</a>
-                    </div>
-                </div>
-
             </div> 
         </div>
         

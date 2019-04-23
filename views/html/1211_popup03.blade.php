@@ -25,23 +25,23 @@
                         <th scope="col">점수입력</th>
                     </tr>
                     <tr>
-                        <td>한국사</td>
+                        <th>한국사</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                     <tr>
-                        <td>영어</td>
+                        <th>영어</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                     <tr>
-                        <td>형법</td>
+                        <th>형법</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                     <tr>
-                        <td>형사소송법</td>
+                        <th>형사소송법</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                     <tr>
-                        <td>경찰학개론</td>
+                        <th>경찰학개론</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                 </table>

@@ -37,6 +37,7 @@
         .evt03 .request:after {content:""; display:block; clear:both}
         .evt03 .btn {clear:both; width:1000px; margin:0 auto;}
         .evt03 .btn a {display:block; text-align:center; font-size:30px; color:#fff; background:#000; padding:30px 0; margin-top:30px}
+        .evt03 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1216_04_bg.jpg) no-repeat center top;}
         .evt05 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1216_05_bg.jpg) no-repeat center top;}
     </style>

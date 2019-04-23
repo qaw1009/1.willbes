@@ -41,8 +41,8 @@
         .evt04 td:last-chiild {border:0}
         .evt04 td p {font-size:12px}
         .evt04 a {padding:10px 15px; color:#fff; background:#ce9317; font-size:14px; display:block; border-radius:20px 20px 0 20px}
-        .evt04 a.btn2 {color:#666; background:#fff; border:1px solid #666}
-        .evt04 a:hover {background:#252525}
+        .evt04 a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
+        .evt04 a:hover {background:#252525; color:#fff;}
         .evt04 a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
 
     </style>

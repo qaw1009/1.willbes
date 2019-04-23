@@ -51,7 +51,7 @@
     </div><!--omrWarp//-->
       
     <div class="btns">
-        <a href="javascript:fn_Submit();">채점완료</a> <a href="javascript:fn_Clean()" class="btn2">채점취소</a>
+        <a href="javascript:fn_Submit();">입력완료</a> <a href="javascript:fn_Clean()" class="btn2">입력취소</a>
     </div>
     </form>
 </div>

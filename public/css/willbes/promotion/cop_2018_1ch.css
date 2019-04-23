@@ -427,6 +427,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeB tbody td input {vertical-align:middle}
 .boardTypeB tbody td label {margin-right:10px}
 .boardTypeB tbody td li {display: inline;}
+.boardTypeB tbody td span {vertical-align: top}
 
 .boardTypeC caption {display:none}
 .boardTypeC {width:100%; margin:0 auto; border:#464646 1px solid}
@@ -492,7 +493,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeD td .graph5 div span {background:#bdef10}
 
 .boardTypeE caption {display:none}
-.boardTypeE {width:100%; margin:0 auto; background:url(http://file3.willbes.net/new_cop/2017/03/v40_line.gif)}
+.boardTypeE {width:100%; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_v40_line.gif)}
 .boardTypeE th,
 .boardTypeE td {letter-spacing:normal !important; font-size:14px !important; text-align:center}
 .boardTypeE th {font-weight:400; padding:10px 0 10px; background:#fff; border-top:1px solid #e2e2e2}
@@ -521,15 +522,16 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 
 
 /*채점확인*/
-.sub3_4_wrap {margin:50px 0 20px; /*border:1px solid #464646; padding:1em*/}
+.sub3_4_wrap {margin:50px 0 20px;}
 .sub3_4_wrap p {font-size:120%; font-weight:600; color:#000; margin-bottom:20px}
 .sub3_4_L {float:left; width:480px}
 .sub3_4_L_warp {position:relative}
-.sub3_4_L_warp .cutLine {position:absolute; left:60px; width:420px; z-index:999}
+.sub3_4_L_warp .cutLine {position:absolute; left:60px; width:420px; z-index:10}
 .sub3_4_L_warp .cutLine div {position:relative; height:200px}
-.sub3_4_L_warp .cutLine div span {position:absolute; display:block; bottom:0; background:url(http://file3.willbes.net/new_cop/2017/03/sub3_4_02.png) no-repeat left top; width:100%; height:17px; text-align:right}	
-    
-.sub3_4_R {float:right; position:relative; /*background:url(http://file3.willbes.net/new_cop/2017/03/sub3_4_01.jpg) no-repeat;*/ width:480px}
+.sub3_4_L_warp .cutLine div span {position:absolute; display:block; bottom:0; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_myposition.png) no-repeat left bottom; width:100%; height:20px; text-align:right; padding-bottom:5px}	
+
+
+.sub3_4_R {float:right; position:relative; width:480px}
 .sub3_4_R h6 {position:absolute; width:100%; top:100px; color:#6c5223; font-weight:bold; text-align:center}
 .sub3_4_R .txt1 {font-size:16px}
 .sub3_4_R .txt2 {top:200px; font-size:24px}

@@ -50,7 +50,7 @@
                     <label class="control-label col-md-1" for="site_code">검색건수 <span class="required">*</span>
                     </label>
                     <div class="col-md-11 form-inline item">
-                        <input type='number' name='MemCnt' id="MemCnt" value='' title="검색회원수" class="form-control" size="2" required="required" readonly> 건
+                        <input type='number' name='MemCnt' id="MemCnt" value='' title="검색회원수" class="form-control" size="7" required="required" readonly> 건
                         &nbsp;• 검색건수 수정 불가
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                             @foreach($AssignAdmin as $row)
                             <p id="{{$loop->index}}">
                                 <input type="hidden" name="wAdminIdx[]" id="wAdminIdx_{{$row['wAdminIdx']}}" value="{{$row['wAdminIdx']}}" data-index="{{$loop->index}}">
-                                {{$row['wAdminName']}} &nbsp;&nbsp;<input type='number' name='eachCnt[]' id="'eachCnt_{{$row['wAdminIdx']}}'" value='' title="배정회원수" data-index="{{$loop->index}}" class="form-control" size="2" required="required" maxlength="3"> 건
+                                {{$row['wAdminName']}} &nbsp;&nbsp;<input type='number' name='eachCnt[]' id="'eachCnt_{{$row['wAdminIdx']}}'" value='' title="배정회원수" data-index="{{$loop->index}}" class="form-control" size="7" required="required" maxlength="3"> 건
                             </p>
                             @endforeach
                         </div>

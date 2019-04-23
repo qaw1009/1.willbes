@@ -90,31 +90,31 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('#none') }}">영어 지옥탈출반<span>5.6 개강</span></a></div>
+                            <div><a href="#none">영어 지옥탈출반<span>5.6 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" title="면접 황세웅">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('#none') }}">Coming Soon</a></div>
+                            <div><a href="#none">Coming Soon</a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" title="인적성검사 강인엽">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('#none') }}">Coming Soon</a></div>
+                            <div><a href="#none">Coming Soon</a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" title="면접 정용욱">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('#none') }}">Coming Soon</a></div>
+                            <div><a href="#none">Coming Soon</a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" title="면접 유봉진">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('#none') }}">Coming Soon</a></div>
+                            <div><a href="#none">Coming Soon</a></div>
                         </div>
                     </li>                    
                 </ul>

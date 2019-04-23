@@ -1,7 +1,7 @@
     <style type="text/css">
         .modalPopup {display:block; position:fixed; _position:absolute; top:0; left:0; width:100%; height:100%; z-index:9999}
         .modalPopup .bg {position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.7; filter:alpha(opacity=70)}
-        .modalPopup .pop-layer {display:block; position:absolute; top:50%; left:50%; width:784px; margin-left:-392px; margin-top:-160px; height:auto; z-index:10} 
+        .modalPopup .pop-layer {display:block; position:absolute; top:50%; left:50%; width:960px; margin-left:-480px; margin-top:-160px; height:auto; z-index:10} 
         .modalPopup .pop-layer .btn-r {margin:10px 0; text-align:right}
         .modalPopup .pop-layer .btn-r a.cbtn {display:inline-block; height:25px; line-height:25px; padding:0 14px 0; border:1px solid #bbb; background-color:#16120f; font-size:13px; color:#bbb; margin-left:10px} 
         .modalPopup .pop-layer .btn-r a.cbtn:hover {border:1px solid #091940; background-color:#1f326a; color:#fff;}
@@ -13,11 +13,13 @@
             <div class="pop-container">
                 <div class="pop-conts">
                     <!--content //-->
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/2002_LayPop190422_p.jpg" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/2002_LayPop190423_p.png" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
                     <map name="MaplayerPopup" id="MaplayerPopup">
-                        <area shape="rect" coords="6,5,387,313" href="{{ site_url('/promotion/index/cate/3001/code/1187') }}" title="경찰1차 합격예측" />
-                        <area shape="rect" coords="395,4,778,159" href="{{ site_url('/pass/promotion/index/cate/3010/code/1050') }}" title="슈퍼패스" />
-                        <area shape="rect" coords="398,163,779,315" href="{{ site_url('/pass/promotion/index/cate/3010/code/1202') }}" title="필합4개월 PASS"/>
+                        <area shape="rect" coords="9,5,177,400" href="{{site_url('/support/notice/show/cate/3001?board_idx=223660')}}" alt="트로피" />
+                        <area shape="rect" coords="181,5,565,474" href="{{site_url('/promotion/index/cate/3001/code/1187')}}" alt="경찰1차 합격예측" />
+                        <area shape="rect" coords="571,6,954,161" href="{{site_url('/pass/promotion/index/cate/3010/code/1050')}}" alt="슈퍼패스" />
+                        <area shape="rect" coords="572,165,953,317" href="{{site_url('/pass/promotion/index/cate/3010/code/1202')}}" alt="필합4개월 PASS"/>
+                        <area shape="rect" coords="572,323,952,474" href="{{site_url('/pass/promotion/index/cate/3010/code/1204')}}" alt="프리미엄 심화이론/기출" />                      
                     </map>
                     <div class="btn-r">
                         <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop2002('passpopup', 'blackpopup');" >하루 보지않기</a>

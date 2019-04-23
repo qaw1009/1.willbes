@@ -85,56 +85,56 @@
                         <td>2019 장정훈 경찰학 심화기출</td>
                         <td>5/6(월) 9:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1058') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" target="_blank">준비중</a></td>
+                        <td><a href="#none">준비중</a></td>
                     </tr>
                     <tr>
                         <td>한국사 오태진</td>
                         <td>2019 오태진 한국사 심화이론</td>
                         <td>5/8(수) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" target="_blank">준비중</a></td>
+                        <td><a href="#none">준비중</a></td>
                     </tr>
                     <tr>
                         <td>한국사 원유철</td>
                         <td>2019 원유철 한국사 심화이론</td>
                         <td>5/6(월) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" target="_blank">준비중</a></td>
+                        <td><a href="#none">준비중</a></td>
                     </tr>
                     <tr>
                         <td>행정법 장정훈</td>
                         <td>2019 장정훈 행정법 심화기출</td>
                         <td>5/10(금) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3011&campus_ccd=605001&course_idx=1042&subject_idx=1060') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" target="_blank">준비중</a></td>
+                        <td><a href="#none">준비중</a></td>
                     </tr>                    
                     <tr>
                         <td>수사 신광은</td>
                         <td>2019 신광은 수사 이론 </td>
                         <td>5/13(월) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3011&campus_ccd=605001&course_idx=1040&subject_idx=1059') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" target="_blank">준비중</a></td>
+                        <td><a href="#none">준비중</a></td>
                     </tr>
                     <tr>
                         <td>영어 하승민</td>
                         <td>2019 하승민 영어 심화이론</td>
                         <td>5/13(월) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1054') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" target="_blank">준비중</a></td>
+                        <td><a href="#none">준비중</a></td>
                     </tr>
                     <tr>
                         <td>형소법 신광은</td>
                         <td>2019 신광은 형소법 심화이론</td>
                         <td>5/17(금) 9:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" target="_blank">준비중</a></td>
+                        <td><a href="#none">준비중</a></td>
                     </tr>
                     <tr>
                         <td>형법 김원욱</td>
                         <td>2019 김원욱 형법 심화이론(판례)</td>
                         <td>6/6(목) 9:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1056') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" target="_blank">준비중</a></td>
+                        <td><a href="#none">준비중</a></td>
                     </tr>
                     <tr class="st01">
                       <td>학원 종합반</td>

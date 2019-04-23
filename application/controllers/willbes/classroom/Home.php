@@ -104,7 +104,7 @@ class Home extends \app\controllers\FrontController
         $data['coupon_cnt'] = $this->couponFModel->listMemberCoupon(true, [
             'EQ' => [
                 'CD.ValidStatus' => 'Y',
-                'CD.IsUse' => 'Y'
+                'CD.IsUse' => 'N'
             ],
             'RAW' => [
                 'NOW() between ' => 'CD.IssueDatm and CD.ExpireDatm'

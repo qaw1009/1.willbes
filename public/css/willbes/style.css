@@ -2739,7 +2739,7 @@ table.lecTable tr td .priceWrap {
     width: 240px;
     margin-right: 0;
     height: 18px;
-    text-align: left;    
+    text-align: right;    
 } 
 
 table.lecTable tr td .priceWrap .chkBox {
@@ -2759,14 +2759,14 @@ table.lecTable tr td .priceWrap .select {
     text-align: right;
 }
 table.lecTable tr td .priceWrap .price {
-    position: absolute;
+    /*position: absolute;
     top: 0;
-    right: 72px;
+    right: 72px;*/
 }
 table.lecTable tr td .priceWrap .discount {
-    float: right;
+    /*float: right;
     width: 70px;
-    color: #464646;
+    color: #464646;*/
 }
 table.lecTable tr td .visitBuy {clear: both; padding-top:15px}
 table.lecTable tr td .visitBuy a {    

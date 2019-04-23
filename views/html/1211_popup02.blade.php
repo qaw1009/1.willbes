@@ -4,7 +4,7 @@
 <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
 <!-- Container -->
 <style type="text/css">
-    .willbes-Layer-PassBox {height:auto;}
+    .willbes-Layer-PassBox {height:auto; padding:0}
 </style>
 
 <div class="willbes-Layer-PassBox NGR">

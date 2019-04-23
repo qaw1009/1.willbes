@@ -9,6 +9,7 @@
     .character .characterImg li img.on {display:none}
     .character .characterImg li img.off {display:block}
     .character .characterImg li:hover img.on {display:block; position:absolute; width:154px; top:50%; left:50%; border:2px solid #1087ef; background:#fff; box-shadow:2px 2px 4px rgba(0,0,0,.5); z-index:10}
+    .character .characterImg li:hover,
     .character .characterImg li.active {background:#cde7f5}
     .character .characterImg:after {content:""; display:block; clear:both}
     
@@ -61,7 +62,7 @@
             <li>* 아래 이미지를 선택 후 댓글 작성해주세요.</li>
         </ul>
         <ul class="characterImg">
-	        <li class="sel_icon" class="active">
+	        <li class="sel_icon active" >
                 <img src="https://static.willbes.net/public/images/promotion/common/character01_1.png" alt="" class="off" />
                 <img src="https://static.willbes.net/public/images/promotion/common/character01.png" alt="" class="on"/>
             </li>

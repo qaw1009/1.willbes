@@ -4,7 +4,7 @@
 <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
 <!-- Container -->
 <style type="text/css">
-    .willbes-Layer-PassBox {height:auto;}
+    .willbes-Layer-PassBox {height:auto; padding:0}
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
@@ -25,23 +25,23 @@
                         <th scope="col">점수입력</th>
                     </tr>
                     <tr>
-                        <td>한국사</td>
+                        <th>한국사</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                     <tr>
-                        <td>영어</td>
+                        <th>영어</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                     <tr>
-                        <td>형법</td>
+                        <th>형법</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                     <tr>
-                        <td>형사소송법</td>
+                        <th>형사소송법</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                     <tr>
-                        <td>경찰학개론</td>
+                        <th>경찰학개론</th>
                         <td><input name=" " type="number" id=" " value=" " maxlength="3"> 점</td>
                     </tr>
                 </table>
@@ -51,7 +51,7 @@
     </div><!--omrWarp//-->
       
     <div class="btns">
-        <a href="javascript:fn_Submit();">채점완료</a> <a href="javascript:fn_Clean()" class="btn2">채점취소</a>
+        <a href="javascript:fn_Submit();">입력완료</a> <a href="javascript:fn_Clean()" class="btn2">입력취소</a>
     </div>
     </form>
 </div>

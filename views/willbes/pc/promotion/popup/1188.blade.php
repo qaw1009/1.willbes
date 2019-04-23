@@ -113,10 +113,11 @@
                     <tr>
                         <th>버스탑승지역</th>
                         <td colspan="3">
-                            <input type="radio" name="etcValue4" value="서울" id="etcValue4_1"/> <label for="etcValue4_1">서울</label>    
-                            <input type="radio" name="etcValue4" value="대구" id="etcValue4_3"/> <label for="etcValue4_3">대구</label>                            
+                            <input type="radio" name="etcValue4" value="서울" id="etcValue4_1"/> <label for="etcValue4_1">서울</label>   
+                                                        
                             {{--
-                            <input type="radio" name="etcValue4" value="인천" id="etcValue4_2"/> <label for="etcValue4_2">인천</label>                            
+                            <input type="radio" name="etcValue4" value="인천" id="etcValue4_2"/> <label for="etcValue4_2">인천</label> 
+                            <input type="radio" name="etcValue4" value="대구" id="etcValue4_3"/> <label for="etcValue4_3">대구</label>                           
                             <input type="radio" name="etcValue4" value="광주" id="etcValue4_4"/> <label for="etcValue4_4">광주</label>
                             <input type="radio" name="etcValue4" value="부산" id="etcValue4_5"/> <label for="etcValue4_5">부산</label>
                             <input type="radio" name="etcValue4" value="전북" id="etcValue4_6"/> <label for="etcValue4_6">전북</label>

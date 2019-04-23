@@ -957,7 +957,8 @@
                     </div>          
 
                     <div class="m_section3_5">
-                        시험지 및 정답 다운로드 <a href="#none">바로가기 ▶</a>
+                        시험지 및 정답 다운로드 <a href="http://public.jinhakapply.com/PoliceV2/data/notice_list.aspx?ReturnSite=SC&ServiceID=19&CategoryID=3&CurrentPage=1
+" target="_blank">바로가기 ▶</a>
                     </div>
                         
                     <div class="m_section3_6">
@@ -977,7 +978,7 @@
                         <div class="bannerWarp">
                             <img src="http://file3.willbes.net/new_cop/2017/03/170306_passcop_bn1.png" alt="최종합격을 결정짓는 2차 전형 윌비스 전문가와 함께 전략적으로 준비하세요">
                             <div>
-                                <a href="/event/movie/event.html?event_cd=On_181220_j&topMenuType=O" target="_blank"><img src="http://file3.willbes.net/new_cop/2018/12/EV181222_passcop_bn5.jpg" alt="면접캠프설명회"></a>
+                                <a href="#none"><img src="http://file3.willbes.net/new_cop/2018/12/EV181222_passcop_bn5.jpg" alt="면접캠프설명회"></a>
                             </div>
                         </div>
                     </div>               

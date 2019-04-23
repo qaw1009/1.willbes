@@ -101,7 +101,15 @@ class Home extends \app\controllers\FrontController
         $data['book_point'] = element('book', $member_point, 0);
 
         // 쿠폰갯수
-        $data['coupon_cnt'] = $this->couponFModel->listMemberCoupon(true);
+        $data['coupon_cnt'] = $this->couponFModel->listMemberCoupon(true, [
+            'EQ' => [
+                'CD.ValidStatus' => 'Y',
+                'CD.IsUse' => 'N'
+            ],
+            'RAW' => [
+                'NOW() between ' => 'CD.IssueDatm and CD.ExpireDatm'
+            ]
+        ]);
         
         // 등록 기기정보 리스트
         $data['device_list'] = $this->classroomFModel->getMyDevice(false, [

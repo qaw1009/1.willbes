@@ -427,6 +427,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeB tbody td input {vertical-align:middle}
 .boardTypeB tbody td label {margin-right:10px}
 .boardTypeB tbody td li {display: inline;}
+.boardTypeB tbody td span {vertical-align: top}
 
 .boardTypeC caption {display:none}
 .boardTypeC {width:100%; margin:0 auto; border:#464646 1px solid}
@@ -491,6 +492,26 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeD td .graph4 div span {background:#10efad}
 .boardTypeD td .graph5 div span {background:#bdef10}
 
+.boardTypeE caption {display:none}
+.boardTypeE {width:100%; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_v40_line.gif)}
+.boardTypeE th,
+.boardTypeE td {letter-spacing:normal !important; font-size:14px !important; text-align:center}
+.boardTypeE th {font-weight:400; padding:10px 0 10px; background:#fff; border-top:1px solid #e2e2e2}
+.boardTypeE td {position:relative; vertical-align:middle; height:40px; line-height:40px; height:200px}
+.boardTypeE td ul {position:absolute; top:-18px; left:20px}
+.boardTypeE td li {height:40px; line-height:40px}
+.boardTypeE td div {position:absolute; bottom:0; left:50%; margin-left:-30px; width:60px; height:200px; background:#f4f4f4}
+.boardTypeE td div {position:relative}
+.boardTypeE td div span {position:absolute; bottom:0; display:block; width:100%; margin:0 auto}
+.boardTypeE td div span.myscore {background:#3a5db1}
+.boardTypeE td div span.score {background:#e2e2e2}
+.boardTypeE td div span.pass01 {background:#e2e2e2}
+.boardTypeE td div span.pass02 {background:#84a1e7}
+.boardTypeE td div span.pass03 {background:#5c7dcc}
+.boardTypeE td div span.pass04 {background:#3a5db1}
+.boardTypeE td div span strong {position:absolute; width:100%; top:-30px; font-weight:normal; color:#333; font-size:85%; text-align:center; line-height:1;}
+.boardTypeE td div span.mask {background:#f4f4f4; z-index:2}
+
 .tabSt1 {border-bottom:2px solid #1087ef; margin-bottom:1.5em}
 .tabSt1 li {display:inline; float:left; margin-right:1px}
 .tabSt1 a {display:block; padding:0 20px; height:40px; line-height:40px; background:#e2e2e2; color:#898989;}
@@ -498,6 +519,33 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .tabSt1 a.active {background:#1087ef; color:#fff}
 .tabSt1 li img {vertical-align:middle}
 .tabSt1:after {content:""; display:block; clear:both}
+
+
+/*채점확인*/
+.sub3_4_wrap {margin:50px 0 20px;}
+.sub3_4_wrap p {font-size:120%; font-weight:600; color:#000; margin-bottom:20px}
+.sub3_4_L {float:left; width:480px}
+.sub3_4_L_warp {position:relative}
+.sub3_4_L_warp .cutLine {position:absolute; left:60px; width:420px; z-index:10}
+.sub3_4_L_warp .cutLine div {position:relative; height:200px}
+.sub3_4_L_warp .cutLine div span {position:absolute; display:block; bottom:0; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_myposition.png) no-repeat left bottom; width:100%; height:20px; text-align:right; padding-bottom:5px}	
+
+
+.sub3_4_R {float:right; position:relative; width:480px}
+.sub3_4_R h6 {position:absolute; width:100%; top:100px; color:#6c5223; font-weight:bold; text-align:center}
+.sub3_4_R .txt1 {font-size:16px}
+.sub3_4_R .txt2 {top:200px; font-size:24px}
+.sub3_4_R div {position:relative}
+.sub3_4_R div .myposi {position:absolute; width:100%; top:20px; height:200px; z-index:3}
+.sub3_4_R div .myposi p {position:absolute; width:100%; text-align:right; z-index:10}
+.sub3_4_R div .myposi p span {position:absolute; bottom:-1px; right:-40px; color:#fff; font-size:11px !important; padding:0 4px; height:16px; line-height:16px}
+.sub3_4_R div .myposi p.posi01 {border-bottom:1px solid #000;  z-index:11}
+.sub3_4_R div .myposi p.posi01 span {background:#000}
+.sub3_4_R div .myposi p.posi02 {border-bottom:1px solid #333}
+.sub3_4_R div .myposi p.posi02 span {background:#333}
+.sub3_4_wrap:after {content:""; display:block; clear:both}
+
+
 
 /*********팝업***********/
 .Pstyle {

@@ -63,6 +63,7 @@ class PredictModel extends WB_Model
         'predictGradesOrigin' => 'lms_predict_grades_origin',
         'predictGrades' => 'lms_predict_grades',
         'predictGradesArea' => 'lms_predict_grades_area',
+        'predictGradesLine' => 'lms_predict_grades_line',
         'predictQuestion' => 'lms_predict_questions',
     ];
 
@@ -341,11 +342,42 @@ class PredictModel extends WB_Model
         ";
 
         $order_by = " ORDER BY OrderNum";
-        $where = " WHERE IsUse = 'Y' AND GroupCcd = ".$GroupCcd;
+        $where = " WHERE IsUse = 'Y' AND GroupCcd = ".$GroupCcd." AND Ccd != '712018' -- 전국제외";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    public function getCntVarious(){
+        $column = "
+            (SELECT COUNT(*) FROM lms_survey_answer_info WHERE SpIdx = '3') AS Survey, -- 설문
+            (SELECT COUNT(*) FROM lms_predict_register WHERE ProdCode = '100001') AS Preregist, -- 사전접수
+            (SELECT COUNT(*) FROM (
+                SELECT MemIdx FROM lms_predict_grades_origin WHERE ProdCode = '100001' GROUP BY MemIdx
+            ) AS A) AS Score, -- 채점
+            (SELECT COUNT(*) FROM lms_event_comment WHERE ElIdx = (SELECT ElIdx FROM lms_event_lecture WHERE PromotionCode = 1187)) AS Rumor, -- 소문내기
+            (SELECT COUNT(*) FROM lms_event_comment WHERE ElIdx = (SELECT ElIdx FROM lms_event_lecture WHERE PromotionCode = 1199)) AS Hit, -- 적중
+            (SELECT COUNT(*) FROM lms_event_comment WHERE ElIdx = (SELECT ElIdx FROM lms_event_lecture WHERE PromotionCode = 1200)) AS precedents -- 최신판례특강
+            -- 라이브특강플레이수
+            -- 해설강의
+            -- 봉투모의고사
+            -- 시크릿다운
+        ";
+
+        $from = "
+            FROM 
+                DUAL
+        ";
+
+        $order_by = "";
+        $where = " ";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->row_array();
 
         return $Res;
     }
@@ -1312,8 +1344,8 @@ class PredictModel extends WB_Model
     }
 
     /**
-     * 문항세트전체호출
-     */
+ * 문항세트전체호출
+ */
     public function statisticsList($ProdCode, $condition){
 
         $column = "
@@ -1342,7 +1374,46 @@ class PredictModel extends WB_Model
         return array($data, $count);
     }
 
+    /**
+     * 문항세트전체호출
+     */
+    public function statisticsListLine($ProdCode){
 
+        $column = "
+            pc.CcdName AS TakeMockPartName, sc.CcdName AS TakeAreaName, 
+            pg.TakeMockPart, pg.TakeArea, 
+            (
+            SELECT COUNT(*) FROM (
+                    SELECT * FROM {$this->_table['predictGradesOrigin']} GROUP BY MemIdx
+                ) AS A
+                WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart AND Prodcode = pg.ProdCode 
+            ) AS TakeOrigin,  
+            SUM(pg.AvrPoint) AS AvrPoint,
+            (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
+            pl.PickNum, pl.TakeNum, CompetitionRateNow, CompetitionRateAgo, PassLineAgo, AvrPointAgo, StabilityAvrPoint, StabilityAvrPercent,
+            StrongAvrPoint1, StrongAvrPoint2, StrongAvrPercent, ExpectAvrPoint1, ExpectAvrPoint2, ExpectAvrPercent, pl.IsUse,               
+            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef             
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['predictGradesArea']} AS pg
+                LEFT JOIN {$this->_table['predictGradesLine']} AS pl ON pg.TakeArea = pl.TakeArea AND pg.TakeMockPart = pl.TakeMockPart AND pg.ProdCode = pl.ProdCode
+                LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
+                LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                LEFT JOIN {$this->_table['predictCode']} AS pc2 ON pp.SubjectCode = pc2.Ccd
+        ";
+
+        $order_by = " GROUP BY pg.TakeMockPart, pg.TakeArea ORDER BY pg.TakeMockPart, pg.TakeArea";
+        $where = " WHERE pg.ProdCode = ".$ProdCode;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $data = $query->result_array();
+
+        return $data;
+    }
 
     /**
      * 원점수입력
@@ -1928,5 +1999,170 @@ class PredictModel extends WB_Model
         return true;
     }
 
+    /*
+     *  기대/유력/안정 점수계산
+     */
+    public function calculate($ProdCode, $TakeMockPart, $TakeArea, $P1, $P2, $P3){
+        // 응시자 개별과목 / 점수
+        $column = "
+                    ROUND(SUM(pg.AdjustPoint),2) AS POINT
+                ";
 
+        $from = "
+                    FROM
+                        {$this->_table['predictGrades']} AS pg
+                        LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                ";
+
+        $order_by = " GROUP BY pg.MemIdx ORDER BY SUM(pg.AdjustPoint) DESC";
+
+        $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+        $result = $query->result_array();
+
+        // 랭킹 산정시 동일점수때문에 임시저장
+        $Rank = 1;
+        $count = 0;
+        $sum = 0;
+        $arrAdPoint = array();
+        foreach ($result AS $key => $val) {
+            $point = $val['POINT'];
+            $arrAdPoint[$Rank] = $point;
+            $sum = $sum + $point;
+            $Rank++;
+            $count++;
+        }
+
+        $Per1 = round($count * 0.01 * $P1, 1);
+        if($Per1 < 1){
+            $Per1 = 1;
+        } else {
+            $Per1 = floor($Per1);
+        }
+
+        $Per2 = round($count * 0.01 * $P2, 1);
+        if($Per2 < 1){
+            $Per2 = 1;
+        } else {
+            $Per2 = floor($Per2);
+        }
+
+        $Per3 = round($count * 0.01 * $P3, 1);
+        if($Per3 < 1){
+            $Per3 = 1;
+        } else {
+            $Per3 = floor($Per3);
+        }
+
+        $PerPoint1 = $arrAdPoint[$Per1];
+        $PerPoint2 = $arrAdPoint[$Per2];
+        $PerPoint3 = $arrAdPoint[$Per3];
+        $PerPoint3M = $PerPoint3 - 0.01;
+
+        if($PerPoint3 == $PerPoint2){
+            $ResPerPoint2 = $PerPoint2 - 0.02;
+        } else {
+            $ResPerPoint2 = $PerPoint2;
+        }
+
+        if($PerPoint2 == $PerPoint1){
+            if($PerPoint3 == $PerPoint1){
+                $ResPerPoint1 = $PerPoint1 - 0.04;
+            } else {
+                $ResPerPoint1 = $PerPoint1 - 0.02;
+            }
+        } else {
+            $ResPerPoint1 = $PerPoint1;
+        }
+        $PerPoint2M = $ResPerPoint2 - 0.01;
+        //           고             저              고               저
+        return $PerPoint2M."/".$ResPerPoint1."/".$PerPoint3M."/".$ResPerPoint2."/".$PerPoint3;
+    }
+
+    /**
+     * 예상합격선저장
+     */
+    public function storeLine()
+    {
+        try {
+            $this->_conn->trans_begin();
+            $ProdCode = $this->input->post('ProdCode');
+
+            $this->_conn->where(['ProdCode' => $ProdCode]);
+
+            if ($this->_conn->delete($this->_table['predictGradesLine']) === false) {
+                throw new \Exception('성적 삭제에 실패했습니다.');
+            }
+
+            $arrTakeMockPart = $this->input->post('TakeMockPart[]');
+            $arrTakeArea = $this->input->post('TakeArea[]');
+            $arrPickNum = $this->input->post('PickNum[]');
+            $arrTakeNum = $this->input->post('TakeNum[]');
+            $arrCompetitionRateNow = $this->input->post('CompetitionRateNow[]');
+            $arrCompetitionRateAgo = $this->input->post('CompetitionRateAgo[]');
+            $arrPassLineAgo = $this->input->post('PassLineAgo[]');
+            $arrAvrPointAgo = $this->input->post('AvrPointAgo[]');
+            $arrStabilityAvrPoint = $this->input->post('StabilityAvrPoint[]');
+            $arrStabilityAvrPointRef = $this->input->post('StabilityAvrPointRef[]');
+            $arrStabilityAvrPercent = $this->input->post('StabilityAvrPercent[]');
+            $arrStrongAvrPoint1 = $this->input->post('StrongAvrPoint1[]');
+            $arrStrongAvrPoint1Ref = $this->input->post('StrongAvrPoint1Ref[]');
+            $arrStrongAvrPoint2 = $this->input->post('StrongAvrPoint2[]');
+            $arrStrongAvrPoint2Ref = $this->input->post('StrongAvrPoint2Ref[]');
+            $arrStrongAvrPercent = $this->input->post('StrongAvrPercent[]');
+            $arrExpectAvrPoint1 = $this->input->post('ExpectAvrPoint1[]');
+            $arrExpectAvrPoint1Ref = $this->input->post('ExpectAvrPoint1Ref[]');
+            $arrExpectAvrPoint2 = $this->input->post('ExpectAvrPoint2[]');
+            $arrExpectAvrPoint2Ref = $this->input->post('ExpectAvrPoint2Ref[]');
+            $arrExpectAvrPercent     = $this->input->post('ExpectAvrPercent[]');
+            $arrIsUse     = $this->input->post('IsUse[]');
+
+            // 데이터 저장
+            for($i=0; $i < COUNT($arrTakeMockPart); $i++){
+                $data = array(
+                    'ProdCode' => $ProdCode,
+                    'TakeMockPart' => $arrTakeMockPart[$i],
+                    'TakeArea' => $arrTakeArea[$i],
+                    'PickNum' => $arrPickNum[$i],
+                    'TakeNum' => $arrTakeNum[$i],
+                    'CompetitionRateNow' => $arrCompetitionRateNow[$i],
+                    'CompetitionRateAgo' => $arrCompetitionRateAgo[$i],
+                    'PassLineAgo' => $arrPassLineAgo[$i],
+                    'AvrPointAgo' => $arrAvrPointAgo[$i],
+                    'StabilityAvrPoint' => $arrStabilityAvrPoint[$i],
+                    'StabilityAvrPointRef' => $arrStabilityAvrPointRef[$i],
+                    'StabilityAvrPercent' => $arrStabilityAvrPercent[$i],
+                    'StrongAvrPoint1' => $arrStrongAvrPoint1[$i],
+                    'StrongAvrPoint1Ref' => $arrStrongAvrPoint1Ref[$i],
+                    'StrongAvrPoint2' => $arrStrongAvrPoint2[$i],
+                    'StrongAvrPoint2Ref' => $arrStrongAvrPoint2Ref[$i],
+                    'StrongAvrPercent' => $arrStrongAvrPercent[$i],
+                    'ExpectAvrPoint1' => $arrExpectAvrPoint1[$i],
+                    'ExpectAvrPoint1Ref' => $arrExpectAvrPoint1Ref[$i],
+                    'ExpectAvrPoint2' => $arrExpectAvrPoint2[$i],
+                    'ExpectAvrPoint2Ref' => $arrExpectAvrPoint2Ref[$i],
+                    'ExpectAvrPercent' => $arrExpectAvrPercent[$i],
+                    'IsUse' => $arrIsUse[$i]
+                );
+
+                $this->_conn->insert($this->_table['predictGradesLine'], $data);
+                if(!$this->_conn->affected_rows()) {
+                    throw new Exception('저장에 실패했습니다.');
+                }
+            }
+
+            $nowIdx = $this->_conn->insert_id();
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $nowIdx]];
+    }
 }

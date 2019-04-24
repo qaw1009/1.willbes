@@ -278,7 +278,7 @@
                 {{--<a href="#none"> 합격예측 </a>--}}
             </li>
             <li>
-                <a href="javascript:alert('준비중입니다.');"> 합격예측 </a>    
+                <a href="javascript:alert('준비중입니다.');"> 기출문제해설 </a>    
                 {{--<a href="#none">기출문제해설</a>--}}
             </li>
         </ul>

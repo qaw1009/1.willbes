@@ -25,7 +25,7 @@
                             - <strong>'직접입력'</strong>은 별도 채점 없이 본인의 점수를 직접 입력하는 방식입니다.<br />
                         </li>
                         <li>▶ 채점 후 '지금 성적을 반영합니다' 버튼을 반드시 눌러야 전형정보 관리에 성적이 반영됩니다.</li>
-                        <li>▶ 기본정보는 사전예약 기간에만(~4/26) 수정이 가능하며, 본 서비스 오픈 후에는(4/27~) 수정이 불가합니다. </li>
+                        <li>▶ 기본정보는 사전예약 기간에만<span class="tx-red">( ~ 4/26)</span> 수정이 가능하며, 본 서비스 오픈 후에는<span class="tx-red">(4/27 ~ )</span> 수정이 불가합니다. </li>
                     </ul>
                 </div>
             </div>
@@ -330,32 +330,5 @@
     
 </div>
 <!-- End Container -->
-<script>
-    $(document).ready(function(){
-        $('ul.tabSt1').each(function(){
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
-
-            $content = $($active[0].hash);
-
-            $links.not($active).each(function () {
-                $(this.hash).hide()});
-
-            // Bind the click event handler
-            $(this).on('click', 'a', function(e){
-                $active.removeClass('active');
-                $content.hide();
-
-                $active = $(this);
-                $content = $(this.hash);
-
-                $active.addClass('active');
-                $content.show();
-
-                e.preventDefault()})})}
-    );
-</script>
-
 
 @stop

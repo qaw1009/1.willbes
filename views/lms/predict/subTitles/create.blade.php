@@ -160,7 +160,7 @@
 
             $regi_table_form.submit(function() {
                 var _url = '{{ site_url("/predict/subTitles/storeDetail") }}' + getQueryString();
-                if (!confirm('수정하시겠습니까?')) { return; }
+                if (!confirm('데이터 양이 많을 경우 일부 누락된 상태로 수정 될 수 있습니다.\n수정하시겠습니까?')) { return; }
                 ajaxSubmit($regi_table_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);

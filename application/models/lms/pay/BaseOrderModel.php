@@ -15,6 +15,7 @@ class BaseOrderModel extends WB_Model
         'order_delivery_address' => 'lms_order_delivery_address',
         'order_refund_request' => 'lms_order_refund_request',
         'order_product_refund' => 'lms_order_product_refund',
+        'order_product_activity_log' => 'lms_order_product_activity_log',
         'order_memo' => 'lms_order_memo',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',

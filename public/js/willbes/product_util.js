@@ -172,7 +172,7 @@ function showBuyLayer($type, $chk_obj, $target_id) {
         } else if ($type === 'book') {
             right = 242;
         } else {
-            right = 163;
+            right = 166;
         }
 
         $target_layer.css({

@@ -966,6 +966,19 @@ class OrderFModel extends BaseOrderFModel
                     if ($is_add_my_lecture !== true) {
                         throw new \Exception($is_add_my_lecture);
                     }
+                } elseif ($row['ProdTypeCcd'] == $this->_prod_type_ccd['freebie']) {
+                    // 사은품일 경우 주문상품배송정보 데이터 등록 (방문결제가 아닐 경우)
+                    if (element('IsDeliveryInfo', $input) == 'Y' && element('IsVisitPay', $input) == 'N') {
+                        $data = [
+                            'OrderProdIdx' => $order_prod_idx,
+                            'DeliveryCompCcd' => config_app('DeliveryCompCcd'),
+                            'IsEscrowSend' => 'N'
+                        ];
+
+                        if ($this->_conn->set($data)->insert($this->_table['order_product_delivery_info']) === false) {
+                            throw new \Exception('자동지급 사은품 배송정보 등록에 실패했습니다.');
+                        }
+                    }
                 }
             }
         } catch (\Exception $e) {

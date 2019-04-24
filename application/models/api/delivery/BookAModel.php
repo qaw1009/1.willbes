@@ -13,8 +13,8 @@ class BookAModel extends WB_Model
         'admin' => 'wbs_sys_admin'
     ];
 
-    // 교재 상품구분 공통코드
-    private $_book_prod_type_ccd = '636003';
+    // 배송대상 상품구분 공통코드
+    private $_delivery_prod_type_ccd = ['636003', '636004'];    // 교재, 사은품
 
     // 결제완료 결제상태 공통코드
     private $_paid_pay_status_ccd = '676001';
@@ -59,9 +59,9 @@ class BookAModel extends WB_Model
                         on OP.ProdCode = P.ProdCode
                 where O.SiteCode = ?
                     and O.CompleteDatm >= ? and O.CompleteDatm < ? 
-                    and OP.PayStatusCcd = "' . $this->_paid_pay_status_ccd . '"
+                    and OP.PayStatusCcd = ?
                     and OPD.DeliveryStatusCcd is null		
-                    and P.ProdTypeCcd = "' . $this->_book_prod_type_ccd . '"		
+                    and P.ProdTypeCcd in ?		
             ) as TA
                 inner join ' . $this->_table['order'] . ' as O
                     on TA.OrderIdx = O.OrderIdx
@@ -72,7 +72,7 @@ class BookAModel extends WB_Model
         ';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from, [$site_code, $sdatm, $edatm, $site_code, $sdatm, $edatm]);
+        $query = $this->_conn->query('select ' . $column . $from, [$site_code, $sdatm, $edatm, $this->_paid_pay_status_ccd, $this->_delivery_prod_type_ccd, $site_code, $sdatm, $edatm]);
 
         return $query->result_array();
     }
@@ -115,11 +115,11 @@ class BookAModel extends WB_Model
             where O.SiteCode = ?
                 and O.CompleteDatm >= ? and O.CompleteDatm < ?
                 and OPD.DeliveryStatusCcd = ?
-                and P.ProdTypeCcd = "' . $this->_book_prod_type_ccd . '"                               
+                and P.ProdTypeCcd in ?                              
         ';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from, [$site_code, $sdatm, $edatm, $delivery_status_ccd]);
+        $query = $this->_conn->query('select ' . $column . $from, [$site_code, $sdatm, $edatm, $delivery_status_ccd, $this->_delivery_prod_type_ccd]);
 
         return $query->result_array();
     }
@@ -143,11 +143,11 @@ class BookAModel extends WB_Model
                     on OP.ProdCode = P.ProdCode		
             where O.OrderNo = ?
                 and O.SiteCode = ?
-                and P.ProdTypeCcd = "' . $this->_book_prod_type_ccd . '"        
+                and P.ProdTypeCcd in ?     
         ';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from, [$order_no, $site_code]);
+        $query = $this->_conn->query('select ' . $column . $from, [$order_no, $site_code, $this->_delivery_prod_type_ccd]);
 
         return $query->result_array();
     }

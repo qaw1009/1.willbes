@@ -41,6 +41,11 @@
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
+                        <select class="form-control mr-10" id="search_is_print_cert" name="search_is_print_cert">
+                            <option value="">수강증출력여부</option>
+                            <option value="Y">Y</option>
+                            <option value="N">N</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -207,7 +212,7 @@
                             + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
                     }},
                     {'data' : 'ProdTypeCcd', 'render' : function(data, type, row, meta) {
-                        return data === '{{ $_prod_type_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $_pay_status_ccd['paid'] }}' ? '<a class="blue cs-pointer btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">[출력]</a>' : '';
+                        return data === '{{ $_prod_type_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $_pay_status_ccd['paid'] }}' ? '<a class="blue cs-pointer btn-print" data-site-code="' + row.SiteCode + '" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">[출력]</a>' + (row.IsPrintCert === 'Y' ? ' <div class="inline-block red">(Y)</div>' : '') : '';
                     }}
                 ]
             });

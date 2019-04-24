@@ -146,7 +146,7 @@
                 <ul>
                     <li>
                         <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">2019-74기</span>
+                        <span style="line-height:40px;font-size:22pt;color:#000">2019-75기</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -161,7 +161,7 @@
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">4.23(화) 24:00 마감!</span>
+                        <span style="line-height:40px;">4.30(화) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -306,6 +306,7 @@
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 전 강좌를 무제한 수강 할 수 있습니다.</li>
                             <li>일반경찰 PASS의 경우 한국사과목은 교수님을 1분 선택하여야 합니다.(변경불가)</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.</li>
+                            <li>결제 완료 후 직렬 변경 불가합니다.</li>
                         </ol>
                     </dd>
 
@@ -381,7 +382,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>평생PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.<br />
+                            <li>평생PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.(1회 변경가능)<br />
                                 시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신시 다음 시험까지 무료 연장됩니다.
                             </li>
                             <li>수강기간 갱신이 필요한 경우 불합격 증빙(응시표, 성적표)자료를 제출하셔야 합니다.</li>
@@ -390,6 +391,7 @@
                             <li>수강기간 갱신(연장) 신청은 매회 시험 최종합격자 발표 후 1개월이내에 연장 신청가능하며, 별도공지 및 문자 안내할 예정입니다.</li>
                             <li>갱신 가능 직렬은 순경 채용에 한합니다.(승진,해경제외)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
+                            <li>모든 제출 서류는 반드시 윌비스 신광은경찰 아이디 본인 명의이여야 합니다.</li>
                         </ol>
                     </dd>
 
@@ -409,6 +411,7 @@
                             <li>교재비는 환급 대상이 아닙니다. </li>
                             <li>패스 수강기간 내에 합격예측 서비스 1회 이상 참여해주셔야 합니다. (해당 서비스는 시즌성 이벤트로 일정 시험에 확인이 불가하니, 참여 후 캡쳐해서 저장해 놓으셔야 합니다.)</li>
                             <li>패스 수강기간 내에 모의고사를 1회 이상 응시하여야 합니다.(온/오프 무관하며, 추후 응시내역 파일 첨부 제출해 주셔야 합니다.)</li>
+                            <li>모든 제출 서류는 반드시 윌비스 신광은경찰 아이디 본인 명의이여야 합니다.</li>
                         </ol>
                     </dd>
 
@@ -590,7 +593,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            var event_day = new Date(2019,3,23,23,59,59);
+            var event_day = new Date(2019,3,30,23,59,59);
             var now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 

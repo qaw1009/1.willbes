@@ -80,7 +80,7 @@
                             <tr>
                                 <th>* 이름</th>
                                 <td scope="col">
-                                    <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명"/>
+                                    <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
                                 </td>
                             </tr>
                             <tr>

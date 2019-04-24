@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
-class predictNotice extends BaseBoard
+class PredictNotice extends BaseBoard
 {
     protected $temp_models = array('sys/boardMaster', 'board/board', 'predict/predict');
     protected $helpers = array('download','file');

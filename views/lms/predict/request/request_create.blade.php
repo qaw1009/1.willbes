@@ -71,49 +71,147 @@
                         </td>
                     </tr>
 
-                    {{--<tr>--}}
-                        {{--<th colspan="1">응시가능기간 <span class="required">*</span></th>--}}
-                        {{--<td colspan="3" class="form-inline">--}}
-                            {{--<input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeStartDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="응시가능기간 시작일">--}}
-                            {{--<select name="TakeStartDatm_h" class="form-control">--}}
-                                {{--<!--option value="">선택</option//-->--}}
-                                {{--@foreach(range(0, 23) as $i)--}}
-                                    {{--@php $v = sprintf("%02d", $i); @endphp--}}
-                                    {{--<option value="{{$v}}" @if($method==='PUT' && substr($data['TakeStartDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>--}}
-                                {{--@endforeach--}}
-                            {{--</select> 시--}}
-                            {{--<select name="TakeStartDatm_m" class="form-control">--}}
-                                {{--<!--option value="">선택</option//-->--}}
-                                {{--@foreach(range(0, 59) as $i)--}}
-                                    {{--@php $v = sprintf("%02d", $i); @endphp--}}
-                                    {{--<option value="{{$v}}" @if($method==='PUT' && substr($data['TakeStartDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>--}}
-                                {{--@endforeach--}}
-                            {{--</select> 분--}}
-                            {{--<span class="ml-10 mr-10"> ~ </span>--}}
-                            {{--<input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeEndDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly  required="required" title="응시가능기간 종료일">--}}
-                            {{--<select name="TakeEndDatm_h" class="form-control">--}}
-                                {{--<!--option value="">선택</option//-->--}}
-                                {{--@foreach(range(0, 23) as $i)--}}
-                                    {{--@php $v = sprintf("%02d", $i); @endphp--}}
-                                    {{--<option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>--}}
-                                {{--@endforeach--}}
-                            {{--</select> 시--}}
-                            {{--<select name="TakeEndDatm_m" class="form-control">--}}
-                                {{--<!--option value="">선택</option//-->--}}
-                                {{--@foreach(range(0, 59) as $i)--}}
-                                    {{--@php $v = sprintf("%02d", $i); @endphp--}}
-                                    {{--<option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>--}}
-                                {{--@endforeach--}}
-                            {{--</select> 분--}}
+                    <tr>
+                        <th colspan="1">서비스기간 <span class="required">*</span></th>
+                        <td colspan="3" class="form-inline">
+                            사전예약 :
+                            <input type="radio" class="flat" name="PreServiceIsUse" value="Y" @if($data['PreServiceIsUse'] == 'Y') checked @endif />사용
+                            <input type="radio" class="flat" name="PreServiceIsUse" value="N" @if($data['PreServiceIsUse'] == 'N') checked @endif />미사용
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="PreServiceSDatm_d" value="@if($method == 'PUT'){{ substr($data['PreServiceSDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="사전예약 시작일">
+                            <select name="PreServiceSDatm_h" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['PreServiceSDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="PreServiceSDatm_m" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['PreServiceSDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분
+                            <span class="ml-10 mr-10"> ~ </span>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="PreServiceEDatm_d" value="@if($method == 'PUT'){{ substr($data['PreServiceEDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly  required="required" title="사전예약 종료일">
+                            <select name="PreServiceEDatm_h" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['PreServiceEDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="PreServiceEDatm_m" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['PreServiceEDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분 <br>
 
-                        {{--</td>--}}
-                    {{--</tr>--}}
+                            본서비스 :
+                            <input type="radio" class="flat" name="ServiceIsUse" value="Y" @if($data['ServiceIsUse'] == 'Y') checked @endif />사용
+                            <input type="radio" class="flat" name="ServiceIsUse" value="N" @if($data['ServiceIsUse'] == 'N') checked @endif />미사용
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="ServiceSDatm_d" value="@if($method == 'PUT'){{ substr($data['ServiceSDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="본서비스 시작일">
+                            <select name="ServiceSDatm_h" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['ServiceSDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="ServiceSDatm_m" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['ServiceSDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분
+                            <span class="ml-10 mr-10"> ~ </span>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="ServiceEDatm_d" value="@if($method == 'PUT'){{ substr($data['ServiceEDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly  required="required" title="본서비스 종료일">
+                            <select name="ServiceEDatm_h" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['ServiceEDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="ServiceEDatm_m" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['ServiceEDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분 <br>
+
+                            최종서비스 :
+                            <input type="radio" class="flat" name="LastServiceIsUse" value="Y" @if($data['LastServiceIsUse'] == 'Y') checked @endif />사용
+                            <input type="radio" class="flat" name="LastServiceIsUse" value="N" @if($data['LastServiceIsUse'] == 'N') checked @endif />미사용
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="LastServiceSDatm_d" value="@if($method == 'PUT'){{ substr($data['LastServiceSDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="최종서비스 시작일">
+                            <select name="LastServiceSDatm_h" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['LastServiceSDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="LastServiceSDatm_m" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['LastServiceSDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분
+                            <span class="ml-10 mr-10"> ~ </span>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="LastServiceEDatm_d" value="@if($method == 'PUT'){{ substr($data['LastServiceEDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly  required="required" title="최종서비스 종료일">
+                            <select name="LastServiceEDatm_h" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['LastServiceEDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="LastServiceEDatm_m" class="form-control">
+                                <!--option value="">선택</option//-->
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['LastServiceEDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분 <br>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="1">모바일 서비스 여부</th>
+                        <td colspan="3">
+                            <div>
+                                <input type="checkbox" name="MobileServiceIs[]" class="flat" value="716001" @if($method == 'PUT' && in_array('716001',$data['MobileServiceIsArr'])) checked="checked" @endif> <span class="flat-text mr-20">사전예약</span>
+                                <input type="checkbox" name="MobileServiceIs[]" class="flat" value="716002" @if($method == 'PUT' && in_array('716002',$data['MobileServiceIsArr'])) checked="checked" @endif> <span class="flat-text">본서비스</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="1">설문 조사 여부</th>
+                        <td>
+                            <div>
+                                <input type="checkbox" name="SurveyIs[]" class="flat" value="716001" @if($method == 'PUT' && in_array('716001',$data['SurveyIsArr'])) checked="checked" @endif> <span class="flat-text mr-20">사전예약</span>
+                                <input type="checkbox" name="SurveyIs[]" class="flat" value="716002" @if($method == 'PUT' && in_array('716002',$data['SurveyIsArr'])) checked="checked" @endif> <span class="flat-text">본서비스</span>
+                            </div>
+                        </td>
+                        <th colspan="1">해설강의 여부 <span class="required">*</span></th>
+                        <td>
+                            <div>
+                                <input type="radio" name="ExplainLectureIsUse" class="flat" value="Y" @if($method == 'PUT' && $data['ExplainLectureIsUse'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
+                                <input type="radio" name="ExplainLectureIsUse" class="flat" value="N" @if($method == 'PUT' && $data['ExplainLectureIsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
+                            </div>
+                        </td>
+                    </tr>
 
                     <tr>
                         <th colspan="1">사용여부 <span class="required">*</span></th>
                         <td colspan="3">
                             <div>
-                                <input type="radio" name="IsUse" class="flat" value="Y" @if($method == 'POST' || ($method == 'PUT' && $data['IsUse'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-20">사용</span>
+                                <input type="radio" name="IsUse" class="flat" value="Y" @if($method == 'PUT' && $data['IsUse'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
                                 <input type="radio" name="IsUse" class="flat" value="N" @if($method == 'PUT' && $data['IsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
                             </div>
                         </td>

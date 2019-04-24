@@ -112,10 +112,6 @@ class PredictModel extends WB_Model
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
-        // 직렬이름 추출
-        //$mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
-        //$codes = $this->codeModel->getCcdInArray([$mockKindCode]);
-
         $column = "
             *
         ";
@@ -148,18 +144,10 @@ class PredictModel extends WB_Model
                 $mockpartstr .= $arrCcd[$tempstr]."/";
             }
             $mockpartstr = substr($mockpartstr, 0, strlen($mockpartstr) - 1);
-            if($it['TakeStartDatm'] > date('Y-m-d H:i:s')){
-                $dres = "접수대기";
-            } else if($it['TakeStartDatm'] < date('Y-m-d H:i:s') && $it['TakeEndDatm'] > date('Y-m-d H:i:s')) {
-                $dres = "접수중";
-            } else {
-                $dres = "접수마감";
-            }
 
             $it['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/predict/index/'.$it['ProdCode'];
             $it['include'] = "프로모션 페이지 URL + /spidx/".$it['ProdCode'];
 
-            $it['AcceptStatusCcd_Name'] = $dres;
             $it['SerialStr'] = $mockpartstr;
         }
 
@@ -426,7 +414,6 @@ class PredictModel extends WB_Model
                 {$this->_table['predictProduct']} AS PP
                 LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
                 LEFT JOIN {$this->_table['admin']} AS A2 ON PP.UpdAdminIdx = A2.wAdminIdx
-                
         ";
 
         $order_by = " ";
@@ -435,6 +422,11 @@ class PredictModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
+
+        $MobileServiceIsArr = explode(',',$Res['MobileServiceIs']);
+        $SurveyIsArr = explode(',',$Res['SurveyIs']);
+        $Res['MobileServiceIsArr'] = $MobileServiceIsArr;
+        $Res['SurveyIsArr'] = $SurveyIsArr;
 
         return $Res;
     }
@@ -533,6 +525,15 @@ class PredictModel extends WB_Model
         try {
             $this->_conn->trans_start();
 
+            $PreServiceSDatm =   $this->input->post('PreServiceSDatm_d') .' '. $this->input->post('PreServiceSDatm_h') .':'. $this->input->post('PreServiceSDatm_m') .':00';
+            $PreServiceEDatm =   $this->input->post('PreServiceEDatm_d') .' '. $this->input->post('PreServiceEDatm_h') .':'. $this->input->post('PreServiceEDatm_m') .':00';
+
+            $ServiceSDatm =   $this->input->post('ServiceSDatm_d') .' '. $this->input->post('ServiceSDatm_h') .':'. $this->input->post('ServiceSDatm_m') .':00';
+            $ServiceEDatm =   $this->input->post('ServiceEDatm_d') .' '. $this->input->post('ServiceEDatm_h') .':'. $this->input->post('ServiceEDatm_m') .':00';
+
+            $LastServiceSDatm =   $this->input->post('LastServiceSDatm_d') .' '. $this->input->post('LastServiceSDatm_h') .':'. $this->input->post('LastServiceSDatm_m') .':00';
+            $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
+
             // 신규 상품코드 조회
             $prodcode = $this->_conn->getFindResult($this->_table['predictProduct'], 'IFNULL(MAX(ProdCode) + 1, 100001) as ProdCode');
             $prodcode = $prodcode['ProdCode'];
@@ -541,13 +542,23 @@ class PredictModel extends WB_Model
             $data = array(
                 'ProdCode'       => $prodcode,
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
+                'MobileServiceIs' => implode(',', $this->input->post('MobileServiceIs')),
+                'SurveyIs'       => implode(',', $this->input->post('SurveyIs')),
                 'SiteCode'      => $this->input->post('SiteCode'),
                 'ProdName'      => $this->input->post('ProdName', true),
-                //'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
-                //'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
-                //'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
+                'PreServiceIsUse' => $this->input->post('PreServiceIsUse'),
+                'ServiceIsUse' => $this->input->post('ServiceIsUse'),
+                'LastServiceIsUse' => $this->input->post('LastServiceIsUse'),
+                'ExplainLectureIsUse' => $this->input->post('ExplainLectureIsUse'),
+                'IsUse' => $this->input->post('IsUse'),
+                'PreServiceSDatm' => $PreServiceSDatm,
+                'PreServiceEDatm' => $PreServiceEDatm,
+                'ServiceSDatm' => $ServiceSDatm,
+                'ServiceEDatm' => $ServiceEDatm,
+                'LastServiceSDatm' => $LastServiceSDatm,
+                'LastServiceEDatm' => $LastServiceEDatm,
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'RegAdminIdx'    => $this->session->userdata('admin_idx'),
@@ -577,15 +588,34 @@ class PredictModel extends WB_Model
         try {
             $this->_conn->trans_start();
 
+            $PreServiceSDatm =   $this->input->post('PreServiceSDatm_d') .' '. $this->input->post('PreServiceSDatm_h') .':'. $this->input->post('PreServiceSDatm_m') .':00';
+            $PreServiceEDatm =   $this->input->post('PreServiceEDatm_d') .' '. $this->input->post('PreServiceEDatm_h') .':'. $this->input->post('PreServiceEDatm_m') .':00';
+
+            $ServiceSDatm =   $this->input->post('ServiceSDatm_d') .' '. $this->input->post('ServiceSDatm_h') .':'. $this->input->post('ServiceSDatm_m') .':00';
+            $ServiceEDatm =   $this->input->post('ServiceEDatm_d') .' '. $this->input->post('ServiceEDatm_h') .':'. $this->input->post('ServiceEDatm_m') .':00';
+
+            $LastServiceSDatm =   $this->input->post('LastServiceSDatm_d') .' '. $this->input->post('LastServiceSDatm_h') .':'. $this->input->post('LastServiceSDatm_m') .':00';
+            $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
+
             // lms_Product_Mock 저장
             $data = array(
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
                 'ProdName'      => $this->input->post('ProdName', true),
-                //'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
+                'MobileServiceIs' => implode(',', $this->input->post('MobileServiceIs')),
+                'SurveyIs'       => implode(',', $this->input->post('SurveyIs')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
-                //'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
-                //'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
+                'PreServiceIsUse' => $this->input->post('PreServiceIsUse'),
+                'ServiceIsUse' => $this->input->post('ServiceIsUse'),
+                'LastServiceIsUse' => $this->input->post('LastServiceIsUse'),
+                'ExplainLectureIsUse' => $this->input->post('ExplainLectureIsUse'),
+                'IsUse' => $this->input->post('IsUse'),
+                'PreServiceSDatm' => $PreServiceSDatm,
+                'PreServiceEDatm' => $PreServiceEDatm,
+                'ServiceSDatm' => $ServiceSDatm,
+                'ServiceEDatm' => $ServiceEDatm,
+                'LastServiceSDatm' => $LastServiceSDatm,
+                'LastServiceEDatm' => $LastServiceEDatm,
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),
@@ -2263,7 +2293,7 @@ class PredictModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                a.PstIdx, a.Title, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
+                a.PstIdx, a.Title, a.ContentType, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
                 a.UpdDatm, a.UpdAdminIdx, b.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -2292,7 +2322,7 @@ class PredictModel extends WB_Model
     public function findSubTitlesForModify($arr_condition)
     {
         $column = '
-                a.PstIdx, a.Title, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
+                a.PstIdx, a.Title, a.ContentType, a.Content, a.ExcelFileFullPath, a.ExcelFileRealName, a.AttachFileFullPath, a.AttachFileRealName, a.IsUse, a.RegDatm, a.RegAdminIdx, a.RegIp,
                 a.UpdDatm, a.UpdAdminIdx, b.wAdminName
             ';
 
@@ -2305,5 +2335,259 @@ class PredictModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 자막데이터 등록
+     * @param $input
+     * @return bool
+     */
+    public function addSubTitles($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $file_path = '';
+            $file_name = '';
+
+            $this->load->library('upload');
+            $this->load->library('excel');
+            $content_type = element('content_type', $input);
+
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/predict/subTitle/' . date('Y') . '/' . date('md');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames('img'), $upload_sub_dir);
+            if (empty($uploaded[0]) === false) {
+                $file_path = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
+                $file_name = $uploaded[0]['client_name'];
+            }
+
+            // text
+            if ($content_type == 1) {
+                $get_content_data = element('content', $input);
+                $content_data = implode('|', $get_content_data);
+                $excel_file_path = '';
+                $excel_file_name = '';
+            } else {    // excel
+                $excel_data = $this->setExcelData();
+                $excel_file_path = $excel_data['ExcelFileFullPath'];
+                $excel_file_name = $excel_data['ExcelFileRealName'];
+                $content_data = $excel_data['ExcelData'];
+            }
+
+            $input_data = [
+                'Title' => element('title', $input),
+                'ContentType' => element('content_type', $input),
+                'Content' => $content_data,
+                'ExcelFileFullPath' => $excel_file_path,
+                'ExcelFileRealName' => $excel_file_name,
+                'AttachFileFullPath' => $file_path,
+                'AttachFileRealName' => $file_name,
+                'IsUse' => element('is_use', $input),
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($input_data)->insert($this->_table['predictSubTitles']) === false) {
+                return false;
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+        }
+
+        return true;
+    }
+
+    /**
+     * 자막데이터 수정
+     * @param $input
+     * @return array|bool
+     */
+    public function modifySubTitles($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $file_path = '';
+            $file_name = '';
+
+            $this->load->library('upload');
+            $this->load->library('excel');
+            $content_type = element('content_type', $input);
+
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/predict/subTitle/' . date('Y') . '/' . date('md');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames('img'), $upload_sub_dir);
+            if (empty($uploaded[0]) === false) {
+                $file_path = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
+                $file_name = $uploaded[0]['client_name'];
+            }
+
+            // text
+            if ($content_type == 1) {
+                $content_data = '';
+                $temp_content = element('content', $input);
+                foreach ($temp_content as $key => $val) {
+                    if (empty($val) === false) {
+                        $content_data .= $val.'|';
+                    }
+                }
+                $content_data = substr($content_data, 0, -1);
+                $excel_file_path = '';
+                $excel_file_name = '';
+            } else {    // excel
+                $excel_data = $this->setExcelData();
+                $excel_file_path = $excel_data['ExcelFileFullPath'];
+                $excel_file_name = $excel_data['ExcelFileRealName'];
+                $content_data = $excel_data['ExcelData'];
+            }
+
+            $input_data = [
+                'Title' => element('title', $input),
+                'ContentType' => element('content_type', $input),
+                'IsUse' => element('is_use', $input),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if (empty($content_data) === false) {
+                $input_data = array_merge($input_data, [
+                    'Content' => $content_data
+                ]);
+            }
+
+            if (empty($excel_file_path) === false) {
+                $input_data = array_merge($input_data, [
+                    'ExcelFileFullPath' => $excel_file_path
+                ]);
+            }
+
+            if (empty($excel_file_name) === false) {
+                $input_data = array_merge($input_data, [
+                    'ExcelFileRealName' => $excel_file_name
+                ]);
+            }
+
+            if (empty($file_path) === false) {
+                $input_data = array_merge($input_data, [
+                    'AttachFileFullPath' => $file_path
+                ]);
+            }
+
+            if (empty($file_name) === false) {
+                $input_data = array_merge($input_data, [
+                    'AttachFileRealName' => $file_name
+                ]);
+            }
+
+            $this->_conn->set($input_data)->where('PstIdx', element('idx', $input));
+            if ($this->_conn->update($this->_table['predictSubTitles']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 자막데이터 테이블 형태 수정
+     * @param $input
+     * @return bool
+     */
+    public function modifySubtitlesForDetail($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $set_temp_data = '';
+
+            $cnt = element('params_cnt', $input);
+            for ($i = 0; $i < $cnt; $i++) {
+                $arr_temp_data = element('params'.$i, $input);
+                if (empty($arr_temp_data) === false) {
+                    $set_temp_data .= implode('^', $arr_temp_data) . '|';
+                }
+            }
+            $set_temp_data = substr($set_temp_data, 0, -1);
+
+            $this->_conn->set(['content' => $set_temp_data])->where_in('PstIdx',element('idx', $input));
+            if($this->_conn->update($this->_table['predictSubTitles'])=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+        }
+
+        return true;
+    }
+
+    /**
+     * 엑셀데이터 셋팅
+     * @return array|null
+     */
+    private function setExcelData()
+    {
+        try {
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/predict/subTitle/' . date('Y') . '/' . date('md');
+            $uploaded = $this->upload->uploadFile('file', ['content_excel'], $this->_getAttachImgNames('excel'), $upload_sub_dir);
+
+            if (empty($uploaded) === true || count($uploaded) <= 0) {
+                throw new \Exception('업로드할 파일이 없습니다.');
+            }
+
+            // 엑셀 데이터 셋팅
+            $set_data = '';
+            $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
+
+            if (empty($excel_data) === false) {
+                foreach ($excel_data as $keys => $vals) {
+                    foreach ($vals as $key => $val) {
+                        if (empty($val) === false) {
+                            $set_data .= $val . '^';
+                        }
+                    }
+                    $set_data = substr($set_data, 0, -1);
+                    $set_data = $set_data.'|';
+                }
+                $set_data = substr($set_data, 0, -1);
+            }
+
+        } catch (\Exception $e) {
+            return null;
+        }
+
+        $return = [
+            'ExcelFileFullPath' => $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'],
+            'ExcelFileRealName' => $uploaded[0]['client_name'],
+            'ExcelData' => $set_data
+        ];
+
+        return $return;
+    }
+
+    /**
+     * 엑셀 데이터 리턴
+     * @param $file_path
+     * @return array
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
+     */
+    private function _ExcelReader($file_path)
+    {
+        $excel_data = $this->excel->readExcel($file_path);
+        return $excel_data;
+    }
+
+    /**
+     * 파일명 배열 생성
+     * @param $type
+     * @return array
+     */
+    private function _getAttachImgNames($type)
+    {
+        $attach_file_names[] = 'excel_subtitles_' . $type . '_' . date('YmdHis');
+        return $attach_file_names;
     }
 }

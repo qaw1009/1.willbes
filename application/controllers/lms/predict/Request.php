@@ -129,22 +129,11 @@ class Request extends \app\controllers\BaseController
             $method = "PUT";
             $data = $this->predictModel->getProduct($ProdCode);
         }
-
+        
         $this->load->view('predict/request/request_create', [
             'method' => $method,
             'siteCodeDef' => '',
             'data' => $data
-            /*
-            'applyType' => $codes[$this->applyType],
-            'applyArea1' => $codes[$this->applyArea1],
-            'applyArea2' => $codes[$this->applyArea2],
-            'addPoint' => $codes[$this->addPoint],
-            'csTel' => json_encode($csTel),
-            'cateD2_sel' => json_encode(array()),
-            'applyType_on' => $this->applyType_on,
-            'accept_ccd' => $codes[$this->acceptStatus],
-            'arr_send_callback_ccd' => $arr_send_callback_ccd
-            */
         ]);
     }
 
@@ -160,35 +149,32 @@ class Request extends \app\controllers\BaseController
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockPart[]', 'label' => '직렬', 'rules' => 'trim|required|is_natural_no_zero'],
 
-//            ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
-//            ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeStartDatm_m', 'label' => '응시시작(분)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeEndDatm_d', 'label' => '응시마감일', 'rules' => 'trim'],
-//            ['field' => 'TakeEndDatm_h', 'label' => '응시마감(시)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeEndDatm_m', 'label' => '응시마감(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceSDatm_d', 'label' => '사전예약시작일시', 'rules' => 'trim'],
+            ['field' => 'PreServiceSDatm_h', 'label' => '사전예약시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceSDatm_m', 'label' => '사전예약시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceEDatm_d', 'label' => '사전종료시작일시', 'rules' => 'trim'],
+            ['field' => 'PreServiceEDatm_h', 'label' => '사전종료시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceEDatm_m', 'label' => '사전종료시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'ServiceSDatm_d', 'label' => '본서비스시작일시', 'rules' => 'trim'],
+            ['field' => 'ServiceSDatm_h', 'label' => '본서비스시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'ServiceSDatm_m', 'label' => '본서비스시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'ServiceEDatm_d', 'label' => '본서비스종료일시', 'rules' => 'trim'],
+            ['field' => 'ServiceEDatm_h', 'label' => '본서비스종료일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'ServiceEDatm_m', 'label' => '본서비스종료일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'LastServiceSDatm_d', 'label' => '최종서비스시작일시', 'rules' => 'trim'],
+            ['field' => 'LastServiceSDatm_h', 'label' => '최종서비스시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'LastServiceSDatm_m', 'label' => '최종서비스시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'LastServiceEDatm_d', 'label' => '최종서비스종료일시', 'rules' => 'trim'],
+            ['field' => 'LastServiceEDatm_h', 'label' => '최종서비스종료일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'LastServiceEDatm_m', 'label' => '최종서비스종료일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceIsUse', 'label' => '사전예약사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'ServiceIsUse', 'label' => '본서비스사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'LastServiceIsUse', 'label' => '최종서비스사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'ExplainLectureIsUse', 'label' => '해설강의사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
         ];
         if ($this->validate($rules) === false) return;
-
-
-        // 날짜체크
-//        $SaleStartDatm = $this->input->post('SaleStartDatm_d') .' '. $this->input->post('SaleStartDatm_h') .':'. $this->input->post('SaleStartDatm_m') .':00';
-//        $SaleEndDatm = $this->input->post('SaleEndDatm_d') .' '. $this->input->post('SaleEndDatm_h') .':'. $this->input->post('SaleEndDatm_m') .':59';
-//        $TakeStartDatm = $this->input->post('TakeStartDatm_d') .' '. $this->input->post('TakeStartDatm_h') .':'. $this->input->post('TakeStartDatm_m') .':00';
-//        $TakeEndDatm = $this->input->post('TakeEndDatm_d') .' '. $this->input->post('TakeEndDatm_h') .':'. $this->input->post('TakeEndDatm_m') .':59';
-
-//        if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleStartDatm_d']) ) {
-//            $this->json_error('접수시작시간이 잘못되었습니다.');
-//            return;
-//        }
-//        if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleEndDatm_d']) ) {
-//            $this->json_error('접수마감시간이 잘못되었습니다.');
-//            return;
-//        }
-//        if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) <= 0 ) {
-//            $this->json_error('접수마감일이 접수시작일보다 빠릅니다.');
-//            return;
-//        }
 
         $result = $this->predictModel->store();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
@@ -200,42 +186,38 @@ class Request extends \app\controllers\BaseController
     public function update()
     {
         $rules = [
-            ['field' => 'idx', 'label' => '인덱스값', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'SiteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'ProdName', 'label' => '서비스명', 'rules' => 'trim|required'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockPart[]', 'label' => '직렬', 'rules' => 'trim|required|is_natural_no_zero'],
 
-//            ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
-//            ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeStartDatm_m', 'label' => '응시시작(분)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeEndDatm_d', 'label' => '응시마감일', 'rules' => 'trim'],
-//            ['field' => 'TakeEndDatm_h', 'label' => '응시마감(시)', 'rules' => 'trim|numeric'],
-//            ['field' => 'TakeEndDatm_m', 'label' => '응시마감(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceSDatm_d', 'label' => '사전예약시작일시', 'rules' => 'trim'],
+            ['field' => 'PreServiceSDatm_h', 'label' => '사전예약시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceSDatm_m', 'label' => '사전예약시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceEDatm_d', 'label' => '사전종료시작일시', 'rules' => 'trim'],
+            ['field' => 'PreServiceEDatm_h', 'label' => '사전종료시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceEDatm_m', 'label' => '사전종료시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'ServiceSDatm_d', 'label' => '본서비스시작일시', 'rules' => 'trim'],
+            ['field' => 'ServiceSDatm_h', 'label' => '본서비스시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'ServiceSDatm_m', 'label' => '본서비스시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'ServiceEDatm_d', 'label' => '본서비스종료일시', 'rules' => 'trim'],
+            ['field' => 'ServiceEDatm_h', 'label' => '본서비스종료일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'ServiceEDatm_m', 'label' => '본서비스종료일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'LastServiceSDatm_d', 'label' => '최종서비스시작일시', 'rules' => 'trim'],
+            ['field' => 'LastServiceSDatm_h', 'label' => '최종서비스시작일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'LastServiceSDatm_m', 'label' => '최종서비스시작일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'LastServiceEDatm_d', 'label' => '최종서비스종료일시', 'rules' => 'trim'],
+            ['field' => 'LastServiceEDatm_h', 'label' => '최종서비스종료일시(시)', 'rules' => 'trim|numeric'],
+            ['field' => 'LastServiceEDatm_m', 'label' => '최종서비스종료일시(분)', 'rules' => 'trim|numeric'],
+            ['field' => 'PreServiceIsUse', 'label' => '사전예약사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'ServiceIsUse', 'label' => '본서비스사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'LastServiceIsUse', 'label' => '최종서비스사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'ExplainLectureIsUse', 'label' => '해설강의사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
         ];
         if ($this->validate($rules) === false) return;
-
-
-        // 날짜체크
-//        $SaleStartDatm = $this->input->post('SaleStartDatm_d') .' '. $this->input->post('SaleStartDatm_h') .':'. $this->input->post('SaleStartDatm_m') .':00';
-//        $SaleEndDatm = $this->input->post('SaleEndDatm_d') .' '. $this->input->post('SaleEndDatm_h') .':'. $this->input->post('SaleEndDatm_m') .':59';
-//        $TakeStartDatm = $this->input->post('TakeStartDatm_d') .' '. $this->input->post('TakeStartDatm_h') .':'. $this->input->post('TakeStartDatm_m') .':00';
-//        $TakeEndDatm = $this->input->post('TakeEndDatm_d') .' '. $this->input->post('TakeEndDatm_h') .':'. $this->input->post('TakeEndDatm_m') .':59';
-
-//        if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleStartDatm_d']) ) {
-//            $this->json_error('접수시작시간이 잘못되었습니다.');
-//            return;
-//        }
-//        if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleEndDatm_d']) ) {
-//            $this->json_error('접수마감시간이 잘못되었습니다.');
-//            return;
-//        }
-//        if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) <= 0 ) {
-//            $this->json_error('접수마감일이 접수시작일보다 빠릅니다.');
-//            return;
-//        }
 
         $result = $this->predictModel->update();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);

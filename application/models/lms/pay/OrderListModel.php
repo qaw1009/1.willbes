@@ -328,6 +328,20 @@ class OrderListModel extends BaseOrderModel
                 $column .= ', if(O.VisitPayCardCcd is not null, fn_ccd_name(O.VisitPayCardCcd), "") as VisitPayCardCcdName';
                 $excel_column .= '';
             }
+
+            // 학원접수 수강증출력 로그 추가
+            if (in_array('print_cert_log', $arr_add_join) === true) {
+                $from .= '
+                    left join (
+                        select OrderIdx, OrderProdIdx, "Y" as IsPrintCert
+                        from ' . $this->_table['order_product_activity_log'] . '
+                        where ActType = "PrintCert"
+                        group by OrderIdx, OrderProdIdx                         
+                    ) as LPC
+                        on O.OrderIdx = LPC.OrderIdx and OP.OrderProdIdx = LPC.OrderProdIdx';
+                $column .= ', LPC.IsPrintCert';
+                $excel_column .= '';
+            }
         }
 
         return ${$add_type};
@@ -687,5 +701,36 @@ class OrderListModel extends BaseOrderModel
         $query = $this->_conn->query('select ' . $column . $from, [$order_prod_idx, $prod_code]);
 
         return $query->row_array();
+    }
+
+    /**
+     * 주문상품 관련 활동로그 저장
+     * @param string $act_type [활동타입, PrintCert : 수강증출력]
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param null|string $act_content [활동내용]
+     * @return bool|string
+     */
+    public function addActivityLog($act_type, $order_idx, $order_prod_idx, $act_content = null)
+    {
+        if (empty($act_type) === true && empty($act_type) === true && empty($act_type) === true) {
+            return '필수 파라미터 오류입니다.';
+        }
+
+        $data = [
+            'ActType' => $act_type,
+            'OrderIdx' => $order_idx,
+            'OrderProdIdx' => $order_prod_idx,
+            'ActContent' => $act_content,
+            'RegAdminIdx' => $this->session->userdata('admin_idx'),
+            'RegIp' => $this->input->ip_address()
+        ];
+
+        $is_add = $this->_conn->set($data)->insert($this->_table['order_product_activity_log']);
+        if ($is_add !== true) {
+            return '주문상품 활동로그 저장에 실패했습니다.';
+        }
+
+        return true;
     }
 }

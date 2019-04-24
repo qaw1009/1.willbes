@@ -249,8 +249,7 @@
     }
 
     function errorReload(){
-        alert(2)
-        //window.location.reload();
+        window.location.reload();
     }
 
     // 시간저장

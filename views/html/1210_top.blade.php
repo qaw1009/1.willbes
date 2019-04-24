@@ -286,7 +286,7 @@
     <!--m_lnb//-->
 
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
-<script>
+    <script>
     /*서비스이용현황 */
     $( document ).ready( function() {
     var jbOffset = $( '.conut_section' ).offset();
@@ -299,6 +299,10 @@
         }
     });
     } );
+
+    function go_popup() {  
+        $('#popup').bPopup();
+    };
 
     $(function(){
         $("#map_area").bxSlider({

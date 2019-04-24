@@ -416,9 +416,12 @@ class OrderModel extends BaseOrderModel
                 $row['IsDeliveryInfo'] = 'N';   // 배송여부 설정 (상품정보 데이터 무시)
 
                 // 배송여부 체크 (교재일 경우만)
-                if ($is_delivery_info === false && $learn_pattern == 'book') {
-                    $is_delivery_info = true;
+                if ($learn_pattern == 'book') {
                     $row['IsDeliveryInfo'] = 'Y';
+                }
+
+                if ($is_delivery_info === false && $row['IsDeliveryInfo'] == 'Y') {
+                    $is_delivery_info = true;
                 }
 
                 // 기간제패키지일 경우 연결된 과목/교수 정보 조회
@@ -951,7 +954,7 @@ class OrderModel extends BaseOrderModel
     }
 
     /**
-     * 자동지급 강좌/사은품 주문상품 등록
+     * 자동지급 강좌/사은품 주문상품 등록 (사은품 배송정보 등록안함)
      * @param int $order_idx [주문식별자]
      * @param int $prod_code [상품코드]
      * @param int $mem_idx [회원식별자]

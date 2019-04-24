@@ -50,6 +50,7 @@
 <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skybanner">
         <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_sky.png" title="첨삭지도반" ></a></div>
+        <div><a href="https://pass.stage.willbes.net/pass/promotion/index/cate/3043/code/1196" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_popup.png" title="영어지도 첨삭지도반" ></a></div>
     </div>
 
     <div class="evtCtnsBox wb_top" >

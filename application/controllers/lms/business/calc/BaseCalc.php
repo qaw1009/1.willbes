@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseCalc extends \app\controllers\BaseController
 {
-    protected $models = array('pay/orderCalc', 'product/base/professor', 'sys/site', 'sys/category', 'sys/code');
+    protected $models = array('pay/orderCalc', 'product/base/professor', 'sys/site', 'sys/category', 'sys/code', 'sys/excelDownLog');
     protected $helpers = array();
     protected $_calc_type = '';
     protected $_calc_name = '';
@@ -73,6 +73,25 @@ class BaseCalc extends \app\controllers\BaseController
             $list = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, $sum_type, $arr_condition);
             $count = count($list);
             $sum_data = $this->_getTotalSum($list);
+
+            // 온라인강좌 단강좌, 운영자선택형패키지일 경우 엑셀다운로드 로그 조회
+            if ($this->_calc_type == 'lecture' && $prod_type != 'PP') {
+                $arr_log_condition = [
+                    'EQ' => ['a.DownloadTypeCcd' => '715040', 'a.RegAdminIdx' => $this->session->userdata('admin_idx')],
+                    'LKL' => ['a.DownloadFileName' => '_' . $prod_type . '_' . $search_start_date . '_' . $search_end_date]
+                ];
+                $log_column = 'substring_index(substring_index(DownloadFileName, "_", 3), "_", -2) as wProfSubjectName';    // 엑셀파일명에서 교수명_과목명 추출
+                $log_data = array_unique(array_pluck($this->excelDownLogModel->listDownLog($log_column, $arr_log_condition), 'wProfSubjectName'));
+
+                // 정산엑셀다운로드 여부 컬럼 추가
+                foreach ($list as $idx => $row) {
+                    $list[$idx]['IsCalcDown'] = 'N';
+
+                    if (in_array($row['wProfName'] . '_' . $row['SubjectName'], $log_data) === true) {
+                        $list[$idx]['IsCalcDown'] = 'Y';
+                    }
+                }
+            }
         }
 
         return $this->response([
@@ -509,7 +528,7 @@ class BaseCalc extends \app\controllers\BaseController
 
         // export excel
         try {
-            $file_name = '강사료정산내역_' . $prof_name . '_' . $subject_name . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+            $file_name = '강사료정산내역_' . $prof_name . '_' . $subject_name . '_' . $this->session->userdata('admin_idx') . '_' . $prod_type . '_' . $search_start_date . '_' . $search_end_date;
             $price_format = '#,##0';
             $table_head_color = 'ccccff';
             $sum_color = 'ffff99';

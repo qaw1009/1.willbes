@@ -190,7 +190,7 @@
 
                         @if($calc_type == 'lecture' && $prod_type != 'PP')
                             {{-- 온라인강좌이면서 기간제패키지가 아닐 경우 정산엑셀다운로드 버튼 노출 --}}
-                            btn_html += '<button name="btn_calc_excel" class="btn btn-xs btn-primary mb-0 ml-5 btn-calc-excel" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">정산엑셀다운로드</button>';
+                            btn_html += '<button name="btn_calc_excel" class="btn btn-xs btn-' + (row.IsCalcDown === 'Y' ? 'danger' : 'primary') + ' mb-0 ml-5 btn-calc-excel" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">정산엑셀다운로드</button>';
                         @endif
 
                         return btn_html;

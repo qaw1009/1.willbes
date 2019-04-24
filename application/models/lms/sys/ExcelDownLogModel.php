@@ -16,7 +16,7 @@ class ExcelDownLogModel extends WB_Model
 
     /**
      * 엑셀 다운로드 목록 조회
-     * @param $is_count
+     * @param bool|string $is_count
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
@@ -29,11 +29,15 @@ class ExcelDownLogModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-                a.*
-                ,b.wAdminId,b.wAdminName
-                ,c.CcdName,c.CcdValue,c.CcdDesc
-            ';
+            if (is_bool($is_count) === true) {
+                $column = '
+                    a.*
+                    ,b.wAdminId,b.wAdminName
+                    ,c.CcdName,c.CcdValue,c.CcdDesc
+                ';
+            } else {
+                $column = $is_count;
+            }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -44,7 +48,6 @@ class ExcelDownLogModel extends WB_Model
                 left join ' . $this->_table['admin'] . ' as b on a.RegAdminIdx = b.wAdminIdx and b.wIsStatus=\'Y\'
                 join ' . $this->_table['code'] . ' as c on a.DownloadTypeCcd = c.Ccd and c.IsStatus=\'Y\'
         ';
-
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

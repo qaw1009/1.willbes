@@ -156,5 +156,12 @@
                 });
             }, 200);
         });
+
+        //하단이벤트배너 닫기
+        $(function(){        
+            $('.mainBottomBn .btmEvClose').click(function(){
+                $('.mainBottomBn').hide();
+            });
+        });
     </script>
 @stop

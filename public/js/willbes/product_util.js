@@ -164,15 +164,15 @@ function showBuyLayer($type, $chk_obj, $target_id) {
             top = top - top_bn_height;
         }
 
-        var right = 242;
+        var right = 201;
         if ($type === 'on') {
             if ($chk_obj.hasClass('chk_books') === true) {
-                right += 50;
+                right += 92;
             }
         } else if ($type === 'book') {
-            right = 242;
+            right = 201;
         } else {
-            right = 163;
+            right = 167;
         }
 
         $target_layer.css({

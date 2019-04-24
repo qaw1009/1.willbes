@@ -64,7 +64,7 @@
             <iframe width="854" height="480" src="https://www.youtube.com/embed/-19yIQTjdQs?rel=0" frameborder="0" allowfullscreen></iframe>
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_02.jpg" alt="면접캠프 설명회" usemap="#Map1206B" border="0" id="go01">
             <map name="Map1206B" id="Map1206B" id="go01">
-                <area shape="rect" coords="605,402,1021,515" href="#" alt="사전특강&amp;설명회 신청하기"/>
+                <area shape="rect" coords="605,402,1021,515" href="javascript:pullOpen();" alt="사전특강&amp;설명회 신청하기"/>
             </map>
         </div>
 

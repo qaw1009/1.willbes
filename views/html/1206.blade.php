@@ -46,8 +46,8 @@
         <ul class="skybanner NGEB">
             <li><a href="#go01">사전특강&<br>설명회</a></li>
             <li><a href="#go02">인적성<br>검사일정</a></li>
-            <li><a href="#go01">사전조사서<br> 특강</a></li>
-            <li><a href="#go03">면접캠프<br>프로그램 안내</a></li>
+            <li><a href="#go03">사전조사서<br> 특강</a></li>
+            <li><a href="#go04">면접캠프<br>프로그램 안내</a></li>
         </ul>
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_top.jpg"alt="면접은 스피치가 아니다." usemap="#Map1206A" border="0" >
@@ -63,7 +63,7 @@
         <div class="evtCtnsBox evt02">
             <iframe width="854" height="480" src="https://www.youtube.com/embed/-19yIQTjdQs?rel=0" frameborder="0" allowfullscreen></iframe>
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_02.jpg" alt="면접캠프 설명회" usemap="#Map1206B" border="0" id="go01">
-            <map name="Map1206B" id="Map1206B">
+            <map name="Map1206B" id="Map1206B" id="go01">
                 <area shape="rect" coords="605,402,1021,515" href="#" alt="사전특강&amp;설명회 신청하기"/>
             </map>
         </div>
@@ -83,14 +83,14 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox evt06" id="go01">
+        <div class="evtCtnsBox evt06" id="go03">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_06.jpg" alt="사전조사서 특강 및 첨삭" usemap="#Map1206D" border="0"/>
             <map name="Map1206D" id="Map1206D">
                 <area shape="rect" coords="905,442,1067,576" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1070&amp;campus_ccd=605001&amp;course_idx=1047" />
             </map>
         </div>
 
-        <div class="evtCtnsBox evt07" id="go03">
+        <div class="evtCtnsBox evt07" id="go04">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_07.jpg" alt="황세웅 면접캠프 안내" usemap="#Map1206E" border="0"/>
             <map name="Map1206E" id="Map1206E">
                 <area shape="rect" coords="946,234,1107,435" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&campus_ccd=605001&course_idx=1047" />

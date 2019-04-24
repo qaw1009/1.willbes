@@ -2745,11 +2745,12 @@ table.lecTable tr td .priceWrap {
 table.lecTable tr td .priceWrap .chkBox {
     display: inline-block;
     line-height: 8px;
+    float:left;
 }
 table.lecTable tr td .priceWrap .chkBox input[type=checkbox] {
     width: 14px;
     height: 14px;
-    cursor: pointer;
+    cursor: pointer;    
 }
 table.lecTable tr td .priceWrap .select {
     display: inline-block;

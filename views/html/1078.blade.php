@@ -92,11 +92,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_02.jpg" alt="윌비스 성기건 교수님과 함께면 독해도 문법도 문제 없습니다." />            
         </div>
 
-        <div class="evtCtnsBox evt03" id="event">
+        <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_03.jpg" alt="성기건 교수! 영어는 충분합니다." />
         </div>
 
-        <div class="evtCtnsBox evt04" >
+        <div class="evtCtnsBox evt04" id="event">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_04.jpg" alt="수강신청" usemap="#Map1078A" border="0" />
             <map name="Map1078A" id="Map1078A">
                 <area shape="rect" coords="745,753,980,856" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153149" target="_blank" alt="수강신청" />

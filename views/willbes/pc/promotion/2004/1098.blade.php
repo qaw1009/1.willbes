@@ -49,8 +49,8 @@
             <div class="quick">
                 <ul>
                     <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_sky1.png" alt="학원문의" ></li>
-                    <!--li><a href="{{ site_url('#none') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_sky2.png" alt="국어" ></a></li>
-                    <li><a href="{{ site_url('#none') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_sky3.png" alt="영어" ></a></li-->
+                    <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=231&" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/04/1098_sky.jpg" alt="국어기미진개강" ></a></li>
+                    <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=230&" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/04/1098_sky2.jpg" alt="영어한덕현개강" ></a></li>
                 </ul>
             </div>
         </div>

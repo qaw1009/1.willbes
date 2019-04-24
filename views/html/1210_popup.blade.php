@@ -19,7 +19,7 @@
             <div class="qBox">
                 <ul>
                     <li><input type="radio" name=""  id="CT1"  value=""/><label for="CT1">일반공채</label></li>
-                    <li><input type="radio" name=""  id="CT2"  value=""/><label for="CT2">경행경채</label></li>
+                    <li><input type="radio" name=""  id="CT2"  value=""/><label for="CT2">전의경경채</label></li>
                     <li><input type="radio" name=""  id="CT3"  value=""/><label for="CT3">101단</label></li>
                 </ul>
             </div>

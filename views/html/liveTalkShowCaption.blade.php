@@ -31,7 +31,7 @@
     .liveTab02 li span.st02 {font-family:"Times New Roman", Times, serif}
     .liveTab02 li div { width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 
-    .counter {position:absolute; top:0; left:0; text-align:center; width:100%; padding-left:300px; z-index:10;}
+    .counter {position:absolute; top:0; left:0; text-align:center; width:100%; padding-left:200px; z-index:10;}
     .counter div {color:#fff; font-size:30px; line-height:30px; padding-top:30px}
     .counter span {color:#fff200; vertical-align: text-bottom}
     .counter p {font-size:11px; color:#fff; margin-top:10px; line-height: 1.4}	

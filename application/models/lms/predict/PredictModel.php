@@ -112,10 +112,6 @@ class PredictModel extends WB_Model
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
-        // 직렬이름 추출
-        //$mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
-        //$codes = $this->codeModel->getCcdInArray([$mockKindCode]);
-
         $column = "
             *
         ";
@@ -148,18 +144,10 @@ class PredictModel extends WB_Model
                 $mockpartstr .= $arrCcd[$tempstr]."/";
             }
             $mockpartstr = substr($mockpartstr, 0, strlen($mockpartstr) - 1);
-            if($it['TakeStartDatm'] > date('Y-m-d H:i:s')){
-                $dres = "접수대기";
-            } else if($it['TakeStartDatm'] < date('Y-m-d H:i:s') && $it['TakeEndDatm'] > date('Y-m-d H:i:s')) {
-                $dres = "접수중";
-            } else {
-                $dres = "접수마감";
-            }
 
             $it['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/predict/index/'.$it['ProdCode'];
             $it['include'] = "프로모션 페이지 URL + /spidx/".$it['ProdCode'];
 
-            $it['AcceptStatusCcd_Name'] = $dres;
             $it['SerialStr'] = $mockpartstr;
         }
 
@@ -426,7 +414,6 @@ class PredictModel extends WB_Model
                 {$this->_table['predictProduct']} AS PP
                 LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
                 LEFT JOIN {$this->_table['admin']} AS A2 ON PP.UpdAdminIdx = A2.wAdminIdx
-                
         ";
 
         $order_by = " ";
@@ -435,6 +422,11 @@ class PredictModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
+
+        $MobileServiceIsArr = explode(',',$Res['MobileServiceIs']);
+        $SurveyIsArr = explode(',',$Res['SurveyIs']);
+        $Res['MobileServiceIsArr'] = $MobileServiceIsArr;
+        $Res['SurveyIsArr'] = $SurveyIsArr;
 
         return $Res;
     }
@@ -533,6 +525,15 @@ class PredictModel extends WB_Model
         try {
             $this->_conn->trans_start();
 
+            $PreServiceSDatm =   $this->input->post('PreServiceSDatm_d') .' '. $this->input->post('PreServiceSDatm_h') .':'. $this->input->post('PreServiceSDatm_m') .':00';
+            $PreServiceEDatm =   $this->input->post('PreServiceEDatm_d') .' '. $this->input->post('PreServiceEDatm_h') .':'. $this->input->post('PreServiceEDatm_m') .':00';
+
+            $ServiceSDatm =   $this->input->post('ServiceSDatm_d') .' '. $this->input->post('ServiceSDatm_h') .':'. $this->input->post('ServiceSDatm_m') .':00';
+            $ServiceEDatm =   $this->input->post('ServiceEDatm_d') .' '. $this->input->post('ServiceEDatm_h') .':'. $this->input->post('ServiceEDatm_m') .':00';
+
+            $LastServiceSDatm =   $this->input->post('LastServiceSDatm_d') .' '. $this->input->post('LastServiceSDatm_h') .':'. $this->input->post('LastServiceSDatm_m') .':00';
+            $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
+
             // 신규 상품코드 조회
             $prodcode = $this->_conn->getFindResult($this->_table['predictProduct'], 'IFNULL(MAX(ProdCode) + 1, 100001) as ProdCode');
             $prodcode = $prodcode['ProdCode'];
@@ -541,13 +542,23 @@ class PredictModel extends WB_Model
             $data = array(
                 'ProdCode'       => $prodcode,
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
+                'MobileServiceIs' => implode(',', $this->input->post('MobileServiceIs')),
+                'SurveyIs'       => implode(',', $this->input->post('SurveyIs')),
                 'SiteCode'      => $this->input->post('SiteCode'),
                 'ProdName'      => $this->input->post('ProdName', true),
-                //'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
-                //'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
-                //'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
+                'PreServiceIsUse' => $this->input->post('PreServiceIsUse'),
+                'ServiceIsUse' => $this->input->post('ServiceIsUse'),
+                'LastServiceIsUse' => $this->input->post('LastServiceIsUse'),
+                'ExplainLectureIsUse' => $this->input->post('ExplainLectureIsUse'),
+                'IsUse' => $this->input->post('IsUse'),
+                'PreServiceSDatm' => $PreServiceSDatm,
+                'PreServiceEDatm' => $PreServiceEDatm,
+                'ServiceSDatm' => $ServiceSDatm,
+                'ServiceEDatm' => $ServiceEDatm,
+                'LastServiceSDatm' => $LastServiceSDatm,
+                'LastServiceEDatm' => $LastServiceEDatm,
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'RegAdminIdx'    => $this->session->userdata('admin_idx'),
@@ -577,15 +588,34 @@ class PredictModel extends WB_Model
         try {
             $this->_conn->trans_start();
 
+            $PreServiceSDatm =   $this->input->post('PreServiceSDatm_d') .' '. $this->input->post('PreServiceSDatm_h') .':'. $this->input->post('PreServiceSDatm_m') .':00';
+            $PreServiceEDatm =   $this->input->post('PreServiceEDatm_d') .' '. $this->input->post('PreServiceEDatm_h') .':'. $this->input->post('PreServiceEDatm_m') .':00';
+
+            $ServiceSDatm =   $this->input->post('ServiceSDatm_d') .' '. $this->input->post('ServiceSDatm_h') .':'. $this->input->post('ServiceSDatm_m') .':00';
+            $ServiceEDatm =   $this->input->post('ServiceEDatm_d') .' '. $this->input->post('ServiceEDatm_h') .':'. $this->input->post('ServiceEDatm_m') .':00';
+
+            $LastServiceSDatm =   $this->input->post('LastServiceSDatm_d') .' '. $this->input->post('LastServiceSDatm_h') .':'. $this->input->post('LastServiceSDatm_m') .':00';
+            $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
+
             // lms_Product_Mock 저장
             $data = array(
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
                 'ProdName'      => $this->input->post('ProdName', true),
-                //'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
+                'MobileServiceIs' => implode(',', $this->input->post('MobileServiceIs')),
+                'SurveyIs'       => implode(',', $this->input->post('SurveyIs')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
-                //'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
-                //'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
+                'PreServiceIsUse' => $this->input->post('PreServiceIsUse'),
+                'ServiceIsUse' => $this->input->post('ServiceIsUse'),
+                'LastServiceIsUse' => $this->input->post('LastServiceIsUse'),
+                'ExplainLectureIsUse' => $this->input->post('ExplainLectureIsUse'),
+                'IsUse' => $this->input->post('IsUse'),
+                'PreServiceSDatm' => $PreServiceSDatm,
+                'PreServiceEDatm' => $PreServiceEDatm,
+                'ServiceSDatm' => $ServiceSDatm,
+                'ServiceEDatm' => $ServiceEDatm,
+                'LastServiceSDatm' => $LastServiceSDatm,
+                'LastServiceEDatm' => $LastServiceEDatm,
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),

@@ -55,12 +55,14 @@
 
 <div class="replyEvaluate"> 
     <div class="character">
+        {{--
         <ul class="crtTab">
             <li><input type="radio" name="TITLE" value="일반공채" id="CT1" checked/><label for="CT1">일반공채</label></li>
             <li><input type="radio" name="TITLE" value="전의경경채" id="CT2"/><label for="CT2">전의경경채</label></li>
             <li><input type="radio" name="TITLE" value="101단" id="CT3"/><label for="CT3">101단</label></li>
             <li>* 아래 이미지를 선택 후 댓글 작성해주세요.</li>
         </ul>
+        --}}
         <ul class="characterImg">
 	        <li class="sel_icon active" >
                 <img src="https://static.willbes.net/public/images/promotion/common/character01_1.png" alt="" class="off" />

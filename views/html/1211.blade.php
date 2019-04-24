@@ -319,7 +319,7 @@
                     </table>                    
                     <div class="btns">
                         <a href="#none">나의 합격예측 바로가기 &gt;</a>
-                        <a href="#none" class="btn2">재 채첨하기 &gt;</a>
+                        <a href="#none" class="btn2">재채첨하기 &gt;</a>
                     </div>
                 </div>
             </div> 

@@ -159,7 +159,7 @@
                                             <td>171(3381)</td>
                                         </tr>                                        
                                         <tr>
-                                            <th>2018 경쟁률</th>
+                                            <th>2019 1차 경쟁률</th>
                                             <td>19:1 </td>
                                             <td> 19:1 </td>
                                         </tr>
@@ -247,7 +247,7 @@
                                             <td>171(3381)</td>
                                         </tr>                                        
                                         <tr>
-                                            <th>2018 경쟁률</th>
+                                            <th>2019 1차 경쟁률</th>
                                             <td>19:1 </td>
                                             <td> 19:1 </td>
                                         </tr>
@@ -335,7 +335,7 @@
                                             <td>171(3381)</td>
                                         </tr>                                        
                                         <tr>
-                                            <th>2018 경쟁률</th>
+                                            <th>2019 1차 경쟁률</th>
                                             <td>19:1 </td>
                                             <td> 19:1 </td>
                                         </tr>
@@ -597,8 +597,73 @@
                         <!--m_section3_3R//-->
                     </div>
 
-                    {{--과목별 체감난이도 --}}
                     <div class="m_section3_3">
+                        <div class="mt50">
+                            <div class="m_section3_3L clear">
+                                <h3>선택 과목 <strong>단일</strong> 선택 선호도 Best3</h3>
+                                <table class="boardTypeB">
+                                    <tr>
+                                        <th scope="col">순위</th>
+                                        <th scope="col">선택과목명</th>
+                                        <th scope="col">비율</th>
+                                    </tr>
+                                    <tr>
+                                        <th>1</th>
+                                        <td>형사소송법</td>
+                                        <td>33% </td>
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <td>형법</td>
+                                        <td>32% </td>
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <td>경찰학개론</td>
+                                        <td>31%</td>
+                                    </tr>
+                                </table>
+
+                                <div class="mt10">
+                                    그래프
+                                </div>		     
+                            </div>
+                            <!--m_section3_3L//-->
+ 
+                            <div class="m_section3_3R">
+                                <h3>선택 과목 <strong>조합</strong> 선택 선호도 Best3</h3>
+                                <table class="boardTypeB">
+                                    <tr>
+                                        <th scope="col">순위</th>
+                                        <th scope="col">선택과목명</th>
+                                        <th scope="col">비율</th>
+                                    </tr>
+                                    <tr>
+                                        <th>1</th>
+                                        <td>형사소송법</td>
+                                        <td>33% </td>
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <td>형법</td>
+                                        <td>32% </td>
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <td>경찰학개론</td>
+                                        <td>31%</td>
+                                    </tr>
+                                </table>
+
+                                <div class="mt10">
+                                    그래프
+                                </div>     
+                            </div><!--m_section3_3R//-->
+                        </div>
+                    </div>
+
+                    {{--과목별 체감난이도 --}}
+                    <div class="m_section3_3">      
                         <h2>
                             과목별 <span>체감난이도</span>
                             <div>
@@ -678,70 +743,7 @@
                                     <td>2018년 3차</td>
                                 </tr>
                             </table>
-                        </div>
-
-                        <div class="mt50">
-                            <div class="m_section3_3L clear">
-                                <h3>선택 과목 <strong>단일</strong> 선택 선호도 Best3</h3>
-                                <table class="boardTypeB">
-                                    <tr>
-                                        <th scope="col">순위</th>
-                                        <th scope="col">선택과목명</th>
-                                        <th scope="col">비율</th>
-                                    </tr>
-                                    <tr>
-                                        <th>1</th>
-                                        <td>형사소송법</td>
-                                        <td>33% </td>
-                                    </tr>
-                                    <tr>
-                                        <th>2</th>
-                                        <td>형법</td>
-                                        <td>32% </td>
-                                    </tr>
-                                    <tr>
-                                        <th>3</th>
-                                        <td>경찰학개론</td>
-                                        <td>31%</td>
-                                    </tr>
-                                </table>
-
-                                <div class="mt10">
-                                    그래프
-                                </div>		     
-                            </div>
-                            <!--m_section3_3L//-->
- 
-                            <div class="m_section3_3R">
-                                <h3>선택 과목 <strong>조합</strong> 선택 선호도 Best3</h3>
-                                <table class="boardTypeB">
-                                    <tr>
-                                        <th scope="col">순위</th>
-                                        <th scope="col">선택과목명</th>
-                                        <th scope="col">비율</th>
-                                    </tr>
-                                    <tr>
-                                        <th>1</th>
-                                        <td>형사소송법</td>
-                                        <td>33% </td>
-                                    </tr>
-                                    <tr>
-                                        <th>2</th>
-                                        <td>형법</td>
-                                        <td>32% </td>
-                                    </tr>
-                                    <tr>
-                                        <th>3</th>
-                                        <td>경찰학개론</td>
-                                        <td>31%</td>
-                                    </tr>
-                                </table>
-
-                                <div class="mt10">
-                                    그래프
-                                </div>     
-                            </div><!--m_section3_3R//-->
-                        </div>
+                        </div>                        
                     </div>
 
                     {{--과목별 오답 랭킹--}}
@@ -993,7 +995,7 @@
                                     <div class="qBox">
                                         <ul>
                                             <li><input type="radio"  name="" id="CT1" checked><label for="CT1">일반공채</label></li>
-                                            <li><input type="radio"  name="" id="CT2"/><label for="CT2">경행경채</label></li>
+                                            <li><input type="radio"  name="" id="CT2"/><label for="CT2">전의경 경채</label></li>
                                             <li><input type="radio"  name="" id="CT3"/><label for="CT3">101단</label></li>
                                         </ul>
                                     </div>

@@ -61,11 +61,11 @@
             <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2_1.png" alt="환승이벤트" ></a></div>
         </div>
 
-        <div class="evtCtnsBox time">
-            <div id="ddaytime">
+        <div class="evtCtnsBox time" id="newTopDday">
+            <div>
                 <table>
                     <tr>
-                    <td class="time_txt NGEB"><span>4/23(화) 마감!</span></td>
+                    <td class="time_txt NGEB"><span>4/30(화) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
@@ -181,7 +181,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            var event_day = new Date(2019,3,23,23,59,59);
+            var event_day = new Date(2019,3,30,23,59,59);
             var now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
@@ -211,7 +211,6 @@
 
         }
         daycountDown();
-
 
         function go_PassLecture(no){
             if(parseInt(no)==1 || parseInt(no)==2){

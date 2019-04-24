@@ -241,7 +241,7 @@ class SupportStudyComment extends BaseSupport
             ]
         ];
 
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,$cate_code);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition, '');
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         return $this->response([

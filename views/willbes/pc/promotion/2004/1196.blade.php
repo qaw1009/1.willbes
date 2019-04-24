@@ -28,8 +28,14 @@
         .evt04 {background:#e1e1e1}
         .evt05 {background:#2e124c}
 				.evt06 {width:980px !important; margin:100px auto; text-align:left}
-        .evt06Box {border:1px solid #000; padding:30px}
-
+				.evt06Box {border:1px solid #000; padding:30px}
+				
+				.skybanner {
+					position:fixed;
+					top:200px;
+					right:0;
+					width:243px;
+				}
 		  /* 유의사항 */
 	    .tab02 {margin-bottom:20px}
 			.tab02 li {display:inline; float:left; width:25%}
@@ -50,6 +56,9 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+			<div class="skybanner">
+					<div><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=218" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_popup.png" title="영어지도 첨삭지도반" ></a></div>
+			</div>
 
 			<div class="evtCtnsBox evtTop">
 				<img src="https://static.willbes.net/public/images/promotion/2019/04/1196_top.png" title=" 2020대비영어집중첨삭지도반 ">

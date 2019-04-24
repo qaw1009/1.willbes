@@ -97,6 +97,7 @@
                 <li><a href="{{ site_url('/home/html/1199') }}" target="_blank">2019 경찰1차 적중 소문내기 이벤트 </a></li>
                 <li><a href="{{ site_url('/home/html/event_incReplyEmoticonUrl') }}" target="_blank">└ 강사 이모티콘 홍보 URL 댓글 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1208') }}" target="_blank">2019 경찰 1차 라이브 토크쇼 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/liveTalkShowCaption') }}" target="_blank">└ 영상자막 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1187') }}" target="_blank">2019 경찰1차 합격예측 사전예약 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1187_popup') }}" target="_blank">└ 사전예약 신청팝업 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/1203') }}" target="_blank">3단계 파이널 실전모의고사 </a></li>

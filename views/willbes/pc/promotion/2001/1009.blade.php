@@ -32,17 +32,17 @@
         .wb_top .passLecBuy li:nth-child(2) {width:232px; padding-left:60px}
         .wb_top .passLecBuy li:nth-child(3) {width:400px; padding-left:140px}
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px}
-        .wb_top .passLecBuy li:last-child div {background:#4d8001;} /*평생0원PASS가격배경컬러변경*/
+        .wb_top .passLecBuy li:last-child div {background:#4d8001;} /*컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-weight:bold; font-size:20px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}
         .wb_top input[type="checkbox"] {height:20px; width:20px;}
         .wb_top label {border-bottom:1px dashed #000}
-        .wb_top input[type="checkbox"]:checked+label {color:#676ef3; border-bottom:1px dashed #676ef3}
+        .wb_top input:checked + label {color:#4d8001; border-bottom:1px dashed #4d8001} /*컬러변경*/
         .wb_top .check input[type="checkbox"]:checked+label {color:#000; border-bottom:1px dashed #000}
         .wb_top .passLecBuy span {position:absolute; top:1130px; left:222px; z-index:10; font-size:16px; color:#000}
         .wb_top .passLecBuy span label {border-bottom:0}
-        .wb_top .passLecBuy span input[type="checkbox"]:checked+label {color:#009ef5; border-bottom:0}
+        .wb_top .passLecBuy span input:checked + label {color:#009ef5; border-bottom:0}
 
         .wb_top .check {width:980px; margin:0 auto; background:#898989; padding:20px; font-size:16px; color:#fff; text-align:left; letter-spacing:-1px}
         .wb_top .check a {display:inline-block; padding:5px 10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
@@ -239,7 +239,7 @@
             </div>
 
             <div class="check">
-                <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="z1">페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정 사용 적발 시, 평생 0원 패스의 수강기간 갱신 및 환급이 불가합니다.<br />

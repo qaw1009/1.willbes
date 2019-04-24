@@ -172,19 +172,20 @@ class TmModel extends WB_Model
                             and A.MemIdx in
                             (
                                 select
-                                aa.MemIdx
+                                mm.MemIdx
                                 from
                                     lms_order aa
                                     join lms_order_product bb on aa.OrderIdx = bb.OrderIdx
                                     join lms_product cc on bb.ProdCode = cc.ProdCode
                                     join lms_my_lecture dd on bb.OrderProdIdx =  dd.OrderProdIdx
+                                    join lms_member mm ON aa.MemIdx = mm.MemIdx
                                 where 
                                     aa.PayRouteCcd in (\'670001\',\'670002\',\'670005\') #온라인결제(PG사), 학원방문결제, 제휴사결제
                                     and bb.PayStatusCcd = \'676001\'	#결제완료
                                     and bb.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
                                     and cc.ProdTypeCcd = \'636001\'	#온라인강좌상품
                                     and (dd.RealLecEndDate between DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY) and DATE_ADD(\''.$search_date.'\', INTERVAL +30 DAY) ) #검색일 기준 -30 +30 사이의 수강죵료면서
-                                    and aa.MemIdx not in
+                                    and mm.MemIdx not in
                                         (	# 검색일 기준 -30 +30 사이 결제가 있는 사람 추출 후 제외
                                             select 
                                                 o.MemIdx

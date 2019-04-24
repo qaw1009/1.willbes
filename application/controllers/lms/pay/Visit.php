@@ -7,7 +7,7 @@ class Visit extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
-    private $_list_add_join = array('refund', 'campus');
+    private $_list_add_join = array('refund', 'campus', 'print_cert_log');
 
     public function __construct()
     {
@@ -125,6 +125,15 @@ class Visit extends BaseOrder
                     ],
                 ],
             ]);
+
+            // 수강증출력여부 조건
+            if (empty($this->_reqP('search_is_print_cert')) === false) {
+                if ($this->_reqP('search_is_print_cert') == 'Y') {
+                    $arr_condition['RAW']['LPC.OrderIdx is'] = ' not null';
+                } else {
+                    $arr_condition['RAW']['LPC.OrderIdx is'] = ' null';
+                }
+            }
 
             // 날짜 검색
             $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));

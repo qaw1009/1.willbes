@@ -54,71 +54,93 @@
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1219_02.jpg" title="학원 입문특강 강의일정">    
-            <div class="request" id="request"> 
-                <div class="requestL">
-                    <h3 class="NSK-Black"><span class="tx-bright-blue">학원무료 입문특강</span> 신청하기</h3>                    
-                    <table width="0" cellspacing="0" cellpadding="0" class="table_type">
-                        <col width="25%" />
-                        <col  />
-                        <tr>
-                            <th>* 이름</th>
-                            <td scope="col">
-                                <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly="readonly"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>* 연락처</th>
-                            <td>
-                                <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>* 참여캠퍼스</th>
-                            <td>
-                                <ul>
-                                    <li><input type="radio" name="" id="campus1" value="" /> <label for="campus1">노량진</label></li>
-                                    <li><input type="radio" name="" id="campus2" value="" /> <label for="campus2">신림</label></li>
-                                    <li><input type="radio" name="" id="campus3" value="" /> <label for="campus3">부산</label></li>
-                                    <li><input type="radio" name="" id="campus4" value="" /> <label for="campus4">인천</label></li>
-                                    <li><input type="radio" name="" id="campus5" value="" /> <label for="campus5">광주</label></li>
-                                    <li><input type="radio" name="" id="campus6" value="" /> <label for="campus6">전북(전주)</label></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>일정</th>
-                            <td>2019.5.6(월)~5.10(금)</td>
-                        </tr>
-                    </table>                   
-                </div>
-                <div class="requestR">
-                    <h3 class="NSK-Black">* 개인정보 수집 및 이용에 대한 안내</h3>
-                    <ul>
-                        <li>
-                            <strong>1. 개인정보 수집 이용 목적</strong> <br>
-                            - 신청자 본인 확인 및 신청 접수 및 문의사항 응대<br>
-                            - 이벤트 참여에 따른 강의 수강자 목록에 활용
-                        </li>
-                        <li><strong>2. 개인정보 수집 항목</strong> <br>
-                        - 신청인의 이름 ,번호
-                        </li>
-                        <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
-                        - 본 수집, 활용목적 달성 후 바로 파기  
-                        </li>
-                        <li><strong>4. 신청자의 개인정보 수집 및 활용 동의 거부 시</strong><br>
-                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
-                        </li>
-                    </ul>
-                    <div>
-                        <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label> 
+            <div class="request" id="request">
+                <form name="regi_form_register" id="regi_form_register">
+                    {!! csrf_field() !!}
+                    <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+                    <input type="hidden" name="register_type" value="promotion"/>
+                    <div class="requestL">
+                        <h3 class="NSK-Black"><span class="tx-bright-blue">학원무료 입문특강</span> 신청하기</h3>
+                        <table width="0" cellspacing="0" cellpadding="0" class="table_type">
+                            <col width="25%" />
+                            <col  />
+                            <tr>
+                                <th>* 이름</th>
+                                <td scope="col">
+                                    <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly="readonly"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>* 연락처</th>
+                                <td>
+                                    <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>* 참여캠퍼스</th>
+                                <td>
+                                    <ul>
+                                        @foreach($arr_base['register_list'] as $row)
+                                            <li><input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label></li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>일정</th>
+                                <td>2019.4.29 ~ 30 / 5.6 ~ 10</td>
+                            </tr>
+                        </table>
                     </div>
-                </div>                
+                    <div class="requestR">
+                        <h3 class="NSK-Black">* 개인정보 수집 및 이용에 대한 안내</h3>
+                        <ul>
+                            <li>
+                                <strong>1. 개인정보 수집 이용 목적</strong> <br>
+                                - 신청자 본인 확인 및 신청 접수 및 문의사항 응대<br>
+                                - 이벤트 참여에 따른 강의 수강자 목록에 활용
+                            </li>
+                            <li><strong>2. 개인정보 수집 항목</strong> <br>
+                            - 신청인의 이름 ,번호
+                            </li>
+                            <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
+                            - 본 수집, 활용목적 달성 후 바로 파기
+                            </li>
+                            <li><strong>4. 신청자의 개인정보 수집 및 활용 동의 거부 시</strong><br>
+                            - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                            </li>
+                        </ul>
+                        <div>
+                            <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                        </div>
+                    </div>
+                </form>
             </div> 
             <div class="btn NSK-Black">
-                <a href="#none">무료 입문특강 신청하기 ></a>
+                <a href="#none" onclick="javascript:fn_submit();">무료 입문특강 신청하기 ></a>
             </div>           
         </div>
 	</div>
     <!-- End Container -->
 
+    <script>
+        function fn_submit() {
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            if (!confirm('저장하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+    </script>
 @stop

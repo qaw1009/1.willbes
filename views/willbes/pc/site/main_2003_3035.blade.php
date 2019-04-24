@@ -110,7 +110,9 @@
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
     </div>
-    <!-- End Container -->
+    <!-- End Container -->   
+
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
     {{-- 하단 띠배너--}}
     <div class="mainBottomBn">
@@ -121,8 +123,6 @@
             <span class="btmEvClose">닫기</span>
         </div>
     </div>
-
-    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop
 
 @section('post_content')

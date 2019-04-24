@@ -60,8 +60,8 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox time">
-            <div id="ddaytime">
+        <div class="evtCtnsBox time" id="newTopDday">
+            <div>
                 <table>
                     <tr>
                     <td class="time_txt NGEB">10기 - <span>4/30(화) 마감!</span></td>

@@ -61,8 +61,8 @@
             <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2_1.png" alt="환승이벤트" ></a></div>
         </div>
 
-        <div class="evtCtnsBox time">
-            <div id="ddaytime">
+        <div class="evtCtnsBox time" id="newTopDday">
+            <div>
                 <table>
                     <tr>
                     <td class="time_txt NGEB"><span>4/30(화) 마감!</span></td>
@@ -211,7 +211,6 @@
 
         }
         daycountDown();
-
 
         function go_PassLecture(no){
             if(parseInt(no)==1 || parseInt(no)==2){

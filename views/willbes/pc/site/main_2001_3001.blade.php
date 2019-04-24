@@ -291,7 +291,7 @@
     </div>
     <!-- End Container --> 
     
-    {{-- 하단 띠배너--}}
+    {{-- 하단 띠배너
     <div class="mainBottomBn">
         <div>
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/1009">
@@ -299,7 +299,7 @@
             </a>
             <span class="btmEvClose">닫기</span>
         </div>
-    </div>
+    </div>--}}
     
 
     <script type="text/javascript">

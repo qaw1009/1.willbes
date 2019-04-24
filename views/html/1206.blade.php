@@ -103,4 +103,11 @@
     </div>
     <!-- End Container -->
 
+    <script type="text/javascript">
+        function pullOpen(){
+            var url = "1206_popup";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+        }
+    </script>
+
 @stop

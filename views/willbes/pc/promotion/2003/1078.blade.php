@@ -10,21 +10,30 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
-        .wb_top {background:#555653 url(http://file3.willbes.net/new_gosi/2018/07/EV180723_c1_bg.jpg) no-repeat center top; position:relative;  }
-        .wb_cts01 {background:#9cffbc url(http://file3.willbes.net/new_gosi/2018/07/EV180723_c2_bg.jpg) repeat-x}
-        .wb_cts02 {background:#fff}
-        .wb_cts03 {background:#34372e url(http://file3.willbes.net/new_gosi/2018/07/EV180718_c7_bg.jpg) repeat;}
-        .wb_cts05 {background:#fff}
+        .time {width:100%; text-align:center; background:#e9e7e8}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {font-size:40px}
+        .time table td img {width:70%}
+        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px; font-weight:bold}
+        .time .time_txt span {color:#d6332c}
+
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1078_top_bg.jpg) no-repeat center top;}
+        .evt01 {background:#fff}
+        .evt02 {background:#9cffbc}
+        .evt03 {background:#fff}
+        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1078_04_bg.jpg)}
+        .evt05 {background:#fff}
 
         .skybanner {
             position:fixed;
@@ -38,49 +47,134 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        {{--
         <div class="skybanner">
             <div>
                 <!-- a href="javascript:alert('마감되었습니다.');" /-->
                 <a href="#event">
-                    <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c12.png" alt="성기건 영어 T-PASS" >
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_sky.png" alt="성기건 영어 T-PASS" >
                 </a>
             </div>
         </div>
+        --}}
 
-        <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c1.png" alt="윌비스 빛처럼 빠른 공무원 영어 정복 성기건 영어 " usemap="#Map20180719_c1" border="0"  />
-            <map name="Map20180719_c1" >
-                <area shape="rect" coords="823,1078,1047,1181" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150651') }}" target="_blank" onfocus="this.blur();" />
+        <div class="evtCtnsBox time" id="newTopDday">
+            <div>
+                <table>
+                    <tr>
+                    <td class="time_txt NGEB"><span>4/30(화) 마감!</span></td>
+                    <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">일 </td>
+                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    </tr>
+                </table>                
+            </div>
+        </div>
+        <!-- 타이머 //-->
+
+        <div class="evtCtnsBox evtTop" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_top_01.png" alt="윌비스 빛처럼 빠른 공무원 영어 정복 성기건 영어 " /><br>
+            <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153149" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1078_top_02.gif" alt="수강신청 " /></a>
+        </div>
+
+        <div class="evtCtnsBox evt01" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_01.jpg" alt="쉬워도 문제, 어려우면 더 문제! 영어, 확실하게 준비하고 계신가요?" />           
+        </div>
+
+        <div class="evtCtnsBox evt02" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_02.jpg" alt="윌비스 성기건 교수님과 함께면 독해도 문법도 문제 없습니다." />            
+        </div>
+
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_03.jpg" alt="성기건 교수! 영어는 충분합니다." />
+        </div>
+
+        <div class="evtCtnsBox evt04" id="event">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_04.jpg" alt="수강신청" usemap="#Map1078A" border="0" />
+            <map name="Map1078A" id="Map1078A">
+                <area shape="rect" coords="745,753,980,856" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153149" target="_blank" alt="수강신청" />
             </map>
         </div>
-        <!--WB_top//-->
 
-        <div class="evtCtnsBox wb_cts01" >
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c2.jpg" alt="쉬워도 문제, 어려우면 더 문제! 영어, 확실하게 준비하고 계신가요?" />
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c3.jpg" alt="윌비스 성기건 교수님과 함께면 독해도 문법도 문제 없습니다." />
+        <div class="evtCtnsBox evt05" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1078_05.jpg" alt="이용안내 및 유의사항 " />
         </div>
-        <!--wb_cts01//-->
-
-        <div class="evtCtnsBox wb_cts02" >
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c4.jpg" alt="윌비스 성기건 교수님을 선택한다는 것,그것 하나만으로도 영어는 충분합니다." />
-        </div>
-        <!--wb_cts02//-->
-
-
-        <div class="evtCtnsBox wb_cts03" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c5.jpg" alt="영어, 어떤 문제에도 당황하지 않는 자신감을 길러라!" usemap="#Map180724_c2" border="0" />
-            <map name="Map180724_c2" >
-                <area shape="rect" coords="779,738,1027,878" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150651') }}" onfocus="this.blur();" target="_blank" />
-            </map>
-        </div>
-        <!--wb_cts03//-->
-
-        <div class="evtCtnsBox wb_cts05" >
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c6.jpg" alt="성기건영어 이용안내 및 유의사항 " />
-        </div>
-        <!--wb_cts05//-->
 
     </div>
     <!-- End Container -->
+
+    <script>
+        /*타이머*/
+        var DdayDiff = { //타이머를 설정합니다.
+            inDays: function(dd1, dd2) {
+                var tt2 = dd2.getTime();
+                var tt1 = dd1.getTime();
+
+                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
+            },
+
+            inWeeks: function(dd1, dd2) {
+                var tt2 = dd2.getTime();
+                var tt1 = dd1.getTime();
+
+                return parseInt((tt2-tt1)/(24*3600*1000*7));
+            },
+
+            inMonths: function(dd1, dd2) {
+                var dd1Y = dd1.getFullYear();
+                var dd2Y = dd2.getFullYear();
+                var dd1M = dd1.getMonth();
+                var dd2M = dd2.getMonth();
+
+                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
+            },
+
+            inYears: function(dd1, dd2) {
+                return dd2.getFullYear()-dd1.getFullYear();
+            }
+        };
+
+        function daycountDown() {
+            // 한달 전 날짜로 셋팅
+            var event_day = new Date(2019,3,30,23,59,59);
+            var now = new Date();
+            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
+
+            var Monthleft = event_day.getMonth() - now.getMonth();
+            var Dateleft = DdayDiff.inDays(now, event_day);
+            var Hourleft = timeGap.getHours();
+            var Minuteleft = timeGap.getMinutes();
+            var Secondleft = timeGap.getSeconds();
+
+            if((event_day.getTime() - now.getTime()) > 0) {
+                $("#dd1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft/10) + ".png");
+                $("#dd2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft%10) + ".png");
+
+                $("#hh1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft/10) + ".png");
+                $("#hh2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft%10) + ".png");
+
+                $("#mm1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft/10) + ".png");
+                $("#mm2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft%10) + ".png");
+
+                $("#ss1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft/10) + ".png");
+                $("#ss2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft%10) + ".png");
+                setTimeout(daycountDown, 1000);
+            }
+            else{
+                $("#newTopDday").hide();
+            }
+
+        }
+        daycountDown();
+    </script>
 
 @stop

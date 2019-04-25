@@ -23,9 +23,9 @@
 
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
 
-        .wb_top {background:#282828; padding-bottom:120px}
+        .wb_top {background:#282828; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
-        .wb_top .passLecBuy ul {position:absolute; bottom:340px; left:128px; z-index:10}
+        .wb_top .passLecBuy ul {position:absolute; top:800px; left:128px; z-index:10}
         .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:30px}
         .wb_top .passLecBuy li h5 {font-size:20px; font-weight:600; margin-top:10px}
         .wb_top .passLecBuy li:nth-child(1) {width:232px}
@@ -208,8 +208,8 @@
                         <div><strong>143</strong>만원</div>
                     </li>
                 </ul>
-                <span style="color:#fff">
-                    <label for="j_pkg">PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.</label>
+                <span style="color:#fff" class="mt50">
+                    PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.
                 </span>
                 <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
                 <map name="Map190123" id="Map190123">

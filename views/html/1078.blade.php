@@ -47,6 +47,7 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        {{--
         <div class="skybanner">
             <div>
                 <!-- a href="javascript:alert('마감되었습니다.');" /-->
@@ -55,6 +56,7 @@
                 </a>
             </div>
         </div>
+        --}}
 
         <div class="evtCtnsBox time" id="newTopDday">
             <div>

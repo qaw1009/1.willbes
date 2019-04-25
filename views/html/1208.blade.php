@@ -247,7 +247,7 @@
                             image: "https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg02.jpg",
                             aspectratio: "21:9",
                             autostart: "true",
-                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream11011"
+                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
                         });
                         </script>
                     </div>

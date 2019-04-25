@@ -188,7 +188,7 @@ class PredictNotice extends BaseBoard
             ];
             $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
 
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
 

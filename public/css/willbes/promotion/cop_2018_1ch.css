@@ -105,6 +105,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .lnbMenu {width:980px; margin:0 auto}
 .lnbMenu li {display:inline; float:left; width:25%}
 .lnbMenu li a {display:block; text-align:center; color:#fff; font-size:140%; height: 60px; line-height: 60px; background:#000; margin-right:2px}
+.lnbMenu li a:hover,
 .lnbMenu li a.active {background:#fff; color:#000}
 .lnbMenu li:last-child a {margin-right:0}
 .lnbMenu:after {content:""; display:block; clear:both}	
@@ -544,6 +545,16 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .sub3_4_R div .myposi p.posi02 {border-bottom:1px solid #333}
 .sub3_4_R div .myposi p.posi02 span {background:#333}
 .sub3_4_wrap:after {content:""; display:block; clear:both}
+
+
+/*기출해설*/
+.sub4_1 .boardTypeB td img {vertical-align:middle; border:1px solid #e2e2e2; margin-right:5px; width:70px;height:70px;}		
+.sub4_1 .boardTypeB td:nth-child(3) {text-align:left}
+.sub4_1 .boardTypeB a.btn_data {background-image:url(https://static.willbes.net/public/images/promotion/2019/04/1211_icon_date.png)}
+.sub4_1 .boardTypeB a.btn_lec {background-image:url(https://static.willbes.net/public/images/promotion/2019/04/1211_icon_lec.png)}
+.sub4_1 .boardTypeB a.btn_data:hover {background-color:#f2f2f2}
+.sub4_1 .boardTypeB a.btn_lec:hover {background-color:#f2f2f2}
+.sub4_1 .boardTypeB a {display:block; width:50px; height:50px; margin:0 auto; background-repeat:no-repeat; background-position:center center}
 
 
 

@@ -174,15 +174,15 @@
                 <div class="lecCts mb40" id="lec1">
                     <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_05_02.jpg" usemap="#Map1220B" title="선행종합반" border="0"/>
                     <map name="Map1220B" id="Map1220B">
-                        <area shape="rect" coords="113,390,865,489" href="#none" alt="선행종합반 수강신청하기" />
+                        <area shape="rect" coords="113,390,865,489" href="https://pass.willbes.net/pass/OffPackage/show/prod-code/152966" target="_blank" alt="선행종합반 수강신청하기" />
                     </map>
                 </div>  
                 <div class="lecCts mb40" id="lec2">
                     <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_05_03.jpg" usemap="#Map1220C" title="연간종합반" border="0"/>
                     <map name="Map1220C" id="Map1220C">
-                        <area shape="rect" coords="113,390,865,489" href="#none" alt="연간종합반 수강신청하기" />
+                        <area shape="rect" coords="113,390,865,489" href="https://pass.willbes.net/pass/OffPackage/show/prod-code/153102" target="_blank" alt="연간종합반 수강신청하기" />
                     </map>
-                </div>              
+                </div>             
             </div>
         </div>
 

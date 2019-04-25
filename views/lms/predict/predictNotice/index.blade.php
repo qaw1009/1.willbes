@@ -69,6 +69,7 @@
                     <th>운영사이트</th>
                     <th>카테고리</th>
                     <th>합격예측코드</th>
+                    <th>프로모션코드</th>
                     <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
@@ -143,6 +144,7 @@
                             }
                         }},
                     {'data' : 'PredictIdx'},
+                    {'data' : 'PromotionCode'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},

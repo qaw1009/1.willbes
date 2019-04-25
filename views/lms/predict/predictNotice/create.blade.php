@@ -23,14 +23,21 @@
                     <div class="col-md-4 form-inline item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false, $arrsite) !!}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="predict_idx">합격예측기본데이터<span class="required">*</span></label>
-                    <div class="col-md-4 form-inline item ml-12-dot">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="site_code">합격예측기본데이터<span class="required">*</span></label>
+                    <div class="col-md-4 form-inline item">
                         <select class="form-control" id="predict_idx" name="predict_idx" required="required" title="합격예측기본데이터">
                             <option value="">합격예측기본데이터</option>
                             @foreach($arr_predict_data as $row)
                                 <option value="{{ $row['ProdCode'] }}" @if($method == 'PUT' && ($row['ProdCode'] == $data['PredictIdx'])) selected="selected" @endif>{{ $row['ProdName'] }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <label class="control-label col-md-1-1 d-line" for="promotion_code">프로모션코드<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline ml-12-dot">
+                        <input type="text" id="promotion_code" name="promotion_code" required="required" class="form-control" title="프로모션코드" value="{{ $data['PromotionCode'] }}">
                     </div>
                 </div>
 
@@ -87,14 +94,7 @@
                     <div class="col-md-10 form-inline">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             <div class="title">
-                                <!--div class="filetype">
-                                    <input type="text" class="form-control file-text" disabled="">
-                                    <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                                    <span class="file-select file-btn"-->
-                                        <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
-                                    <!--/span>
-                                    <input class="file-reset btn-danger btn" type="button" value="X" />
-                                </div-->
+                                <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
                                 @if(empty($data['arr_attach_file_path'][$i]) === false)
                                     <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]
                                         <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>

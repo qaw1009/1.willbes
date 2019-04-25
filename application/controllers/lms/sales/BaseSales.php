@@ -9,6 +9,7 @@ class BaseSales extends \app\controllers\BaseController
     protected $_sales_name = '';
     protected $_group_ccd = [];
     protected $_list_add_join = array('category', 'refund');
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct($sales_type, $sales_name)
     {
@@ -196,6 +197,9 @@ class BaseSales extends \app\controllers\BaseController
      */
     protected function excel()
     {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
         $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '상품명', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태'];
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName

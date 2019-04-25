@@ -129,7 +129,7 @@ class Request extends \app\controllers\BaseController
             $method = "PUT";
             $data = $this->predictModel->getProduct($ProdCode);
         }
-        
+
         $this->load->view('predict/request/request_create', [
             'method' => $method,
             'siteCodeDef' => '',

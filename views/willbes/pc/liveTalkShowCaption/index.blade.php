@@ -25,7 +25,7 @@
         .liveTab01 .txt04 {top:74px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
 
         .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
-        .liveTab02 li {padding-left:270px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-2px; text-align:left}
+        .liveTab02 li {padding-left:270px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-2px; text-align:left; width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
         .liveTab02 li span {margin-right:10px; vertical-align:top}
         .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
         .liveTab02 li span.st02 {font-family:"Times New Roman", Times, serif}

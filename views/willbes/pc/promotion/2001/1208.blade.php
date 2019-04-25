@@ -131,6 +131,9 @@
         <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live_01.jpg" title="수강생 여러분의 합격을 기원합니다."></div>
         <div class="notice">
             <ul>
+                @if(empty($arr_base['notice_list']) === true)
+                    <li>등록된 내용이 없습니다.</li>
+                @endif
                 @foreach($arr_base['notice_list'] as $row)
                     <li><a href="javascript:go_popup('{{ $row['BoardIdx'] }}');">{{ $row['Title'] }} <span>{{ $row['RegDatm'] }}</span></a></li>
                 @endforeach

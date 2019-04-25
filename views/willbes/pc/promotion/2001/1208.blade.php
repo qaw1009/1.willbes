@@ -96,7 +96,7 @@
         /*크롬*/
         @@media screen and (-webkit-min-device-pixel-ratio:0) {
         .evtLive #movieFrame {position:relative; width:980px; height:551px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg) no-repeat center center;}
-        .movieplayer .embedWrap {position:relative; width:980px; height:551px; margin-left:-490px; padding:0}
+        .movieplayer .embedWrap {position:relative; width:980px; height:551px; margin-left:0; padding:0}
         .movieplayer .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto}
         .movieplayer .mobileCh {position:absolute; left:490px; bottom:0; width:980px;}
         .movieplayer .mobileCh li {display:inline; float:left; width:490px;}

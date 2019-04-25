@@ -35,7 +35,7 @@
             position:relative; width:980px; margin:0 auto; padding:10px; text-align:left; height:98px;
             background:#000 url(https://static.willbes.net/public/images/promotion/2019/04/1208_notice_title.jpg) no-repeat 10px 10px;
         }        
-        .notice ul {margin-left:248px; background:#fff; padding:10px 40px 10px 20px}
+        .notice ul {margin-left:248px; background:#fff; padding:10px 40px 10px 20px; height:78px;}
         .notice li {height:29px; line-height:29px;}
         .notice li a {display:block}
         .notice li a span {float:right; color:#999}

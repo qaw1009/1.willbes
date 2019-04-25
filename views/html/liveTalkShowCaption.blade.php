@@ -29,7 +29,15 @@
 	.liveTab02 li span {margin-right:10px; vertical-align:top} 
     .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
     .liveTab02 li span.st02 {font-family:"Times New Roman", Times, serif}
-    .liveTab02 li div {width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+    .liveTab03 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
+	.liveTab03 li {padding-left:270px; height:130px; color:#fff; font-size:40px; letter-spacing:-2px; text-align:left; width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
+	.liveTab03 li span {margin-right:10px; vertical-align:top} 
+    .liveTab03 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
+    .liveTab03 li span.st02 {font-family:"Times New Roman", Times, serif}
+    .liveTab03 li div {font-size:22px; margin-bottom:12px; margin-top:26px}
+    .liveTab03 li div span.st01 {border:0; letter-spacing:0;}
+
 
     .counter {position:absolute; top:0; left:0; text-align:center; width:100%; padding-left:200px; z-index:10;}
     .counter div {color:#fff; font-size:30px; line-height:30px; padding-top:30px}
@@ -91,15 +99,18 @@
 
         {{--역대합격선--}}
         <div class="viewbox" id="tab02">                            
-            <ul class="liveTab02 slide01">       
+            <ul class="liveTab03 slide01">       
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">서울</span><span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">서울</span></div>
+                    <span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
                 </li>        
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">서울</span><span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">서울</span></div>
+                    <span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
                 </li> 
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">서울</span><span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">서울</span></div>
+                    <span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
                 </li> 
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live02.jpg" title="CONTENTS 명"></div>
@@ -109,16 +120,16 @@
         <div class="viewbox" id="tab03">                          
             <ul class="liveTab02 slide01" >       
                 <li>
-                    <div><span class="st01">[NEWS]</span>경찰공무원 합격? 12월 22일, 결전의 그 날!</div>
+                    <span class="st01">[NEWS]</span>경찰공무원 합격? 12월 22일, 결전의 그 날!
                 </li>        
                 <li>
-                    <div><span class="st01">[NEWS]</span>경찰 3차 '필기시험, 역시 기출이 답이었다!'</div>
+                    <span class="st01">[NEWS]</span>경찰 3차 '필기시험, 역시 기출이 답이었다!'
                 </li> 
                 <li>
-                    <div><span class="st01">[속보]</span>경찰 3차 경쟁률, '3년 만에 최저!"</div>
+                    <span class="st01">[속보]</span>경찰 3차 경쟁률, '3년 만에 최저!"
                 </li> 
                 <li>
-                    <div><span class="st01">[속보]</span>가답안 등록 완료. 지금 실시간 채점하고 바로 윌비스 합격예측 풀서비스에 참여하세요!</div>
+                    <span class="st01">[속보]</span>가답안 등록 완료. 지금 실시간 채점하고 바로 윌비스 합격예측 풀서비스에 참여하세요!
                 </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live03.jpg" title="CONTENTS 명"></div>
@@ -128,16 +139,16 @@
         <div class="viewbox" id="tab04">                         
             <ul class="liveTab02 slide01" >       
                 <li>
-                    <div><span class="st01">[형사소송법]</span>이번에도 역시나 판례 위주의 출제…판례의 중요성 더욱 높아져</div>
+                    <span class="st01">[형사소송법]</span>이번에도 역시나 판례 위주의 출제…판례의 중요성 더욱 높아져
                 </li>        
                 <li>
-                    <div><span class="st01">[영어]</span>점점 국가직화 되어가는 경찰 영어 시험…해답은 어디에</div>
+                    <span class="st01">[영어]</span>점점 국가직화 되어가는 경찰 영어 시험…해답은 어디에
                 </li> 
                 <li>
-                    <div><span class="st01">[영어]</span>평소 장문의 독해를 연습하지 않았다면 어려웠을 것으로 예상</div>
+                    <span class="st01">[영어]</span>평소 장문의 독해를 연습하지 않았다면 어려웠을 것으로 예상
                 </li> 
                 <li>
-                    <div><span class="st01">[한국사]</span>점차 지엽적인 문제보다 무난하게 출제되는 경향 높아져</div>
+                    <span class="st01">[한국사]</span>점차 지엽적인 문제보다 무난하게 출제되는 경향 높아져
                 </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live04.jpg" title="CONTENTS 명"></div>
@@ -147,10 +158,10 @@
         <div class="viewbox" id="tab05">                         
             <ul class="liveTab02 slide01" >       
                 <li>
-                    <div><span class="st01">[공지]</span>합격예측 라이브 토크쇼 본방사수, 상품권 10만원 증정~</div>
+                    <span class="st01">[공지]</span>합격예측 라이브 토크쇼 본방사수, 상품권 10만원 증정~
                 </li>        
                 <li>
-                    <div><span class="st01">[안내]</span>2019년 1차 시험, 기출 해설강의 오후 3시 시작!</div>
+                    <span class="st01">[안내]</span>2019년 1차 시험, 기출 해설강의 오후 3시 시작!
                 </li> 
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live05.jpg" title="CONTENTS 명"></div>
@@ -158,15 +169,18 @@
 
         {{--실시간채점현황1--}}   
         <div class="viewbox" id="tab06">                         
-            <ul class="liveTab02 slide01" >       
+            <ul class="liveTab03 slide01" >       
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">경기남부</span><span>한국사</span><span class="st01">85</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">70</span><span>경찰학</span><span class="st01">85</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
+                    <span>한국사</span><span class="st01">85</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">70</span><span>경찰학</span><span class="st01">85</span>
                 </li>        
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">경기남부</span><span>한국사</span><span class="st01">100</span><span>영어</span><span class="st01">75</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">80</span><span>경찰학</span><span class="st01">80</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
+                    <span>한국사</span><span class="st01">100</span><span>영어</span><span class="st01">75</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">80</span><span>경찰학</span><span class="st01">80</span>
                 </li>
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">경기남부</span><span>한국사</span><span class="st01">80</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">75</span><span>형소법</span><span class="st01">75</span><span>경찰학</span><span class="st01">55</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
+                    <span>한국사</span><span class="st01">80</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">75</span><span>형소법</span><span class="st01">75</span><span>경찰학</span><span class="st01">55</span>
                 </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live06.jpg" title="CONTENTS 명"></div>
@@ -174,15 +188,18 @@
 
         {{--실시간채점현황2--}}   
         <div class="viewbox" id="tab07">                         
-            <ul class="liveTab02 slide01" >       
+            <ul class="liveTab03 slide01" >       
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">경기남부</span><span>한국사</span><span class="st01">100</span><span>영어</span><span class="st01">100</span><span>형법</span><span class="st01">100</span><span>형소법</span><span class="st01">100</span><span>경찰학</span><span class="st01">100</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
+                    <span>한국사</span><span class="st01">85</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">70</span><span>경찰학</span><span class="st01">85</span>
                 </li>        
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">경기남부</span><span>한국사</span><span class="st01">100</span><span>영어</span><span class="st01">75</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">80</span><span>경찰학</span><span class="st01">80</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
+                    <span>한국사</span><span class="st01">100</span><span>영어</span><span class="st01">75</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">80</span><span>경찰학</span><span class="st01">80</span>
                 </li>
                 <li>
-                    <span class="st01">일반공채:남</span><span class="st01">경기남부</span><span>한국사</span><span class="st01">80</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">75</span><span>형소법</span><span class="st01">75</span><span>경찰학</span><span class="st01">55</span>
+                    <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
+                    <span>한국사</span><span class="st01">80</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">75</span><span>형소법</span><span class="st01">75</span><span>경찰학</span><span class="st01">55</span>
                 </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live06.jpg" title="CONTENTS 명"></div>

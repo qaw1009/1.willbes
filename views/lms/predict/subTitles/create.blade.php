@@ -26,10 +26,19 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">내용등록방식</label>
-                    <div class="col-md-5 item">
-                        <input type="radio" id="content_type_1" name="content_type" class="flat" value="1" @if($method == 'PUT' && $data['ContentType'] == 1) checked="checked" @endif> <label for="content_type_1" class="input-label">텍스트</label>
-                        <input type="radio" id="content_type_2" name="content_type" class="flat" value="2" @if($method == 'PUT' && $data['ContentType'] == 2) checked="checked" @endif> <label for="content_type_2" class="input-label">엑셀파일</label>
+                    <label class="control-label col-md-1-1" for="content_type_1">내용등록방식</label>
+                    <div class="col-md-5 form-inline">
+                        @if($method == 'POST')
+                            <input type="radio" id="content_type_1" name="content_type" class="flat" value="1"> <label for="content_type_1" class="input-label">텍스트</label>
+                            <input type="radio" id="content_type_2" name="content_type" class="flat" value="2"> <label for="content_type_2" class="input-label">엑셀파일</label>
+                        @else
+                            @if ($data['ContentType'] == 1)
+                                <input type="radio" id="content_type_1" name="content_type" class="flat" value="1" checked="checked"> <label for="content_type_1" class="input-label">텍스트</label>
+                            @else
+                                <input type="radio" id="content_type_2" name="content_type" class="flat" value="2" checked="checked"> <label for="content_type_2" class="input-label">엑셀파일</label>
+                            @endif
+                        @endif
+                            <span class="form-control-static red"> # 수정 불가 항목</span>
                     </div>
                 </div>
                 <div class="form-group content_type" id="type_1">
@@ -170,11 +179,6 @@
             });
         });
 
-        //목록
-        $('.btn_list').click(function() {
-            location.href='{{ site_url("/predict/subTitles") }}/' + getQueryString();
-        });
-
         function addValidate()
         {
             var content_type = $(":input:radio[name=content_type]:checked").val();
@@ -185,6 +189,11 @@
 
             return true;
         }
+
+        //목록
+        $('.btn_list').click(function() {
+            location.href='{{ site_url("/predict/subTitles") }}/' + getQueryString();
+        });
 
         $('.file-download').click(function() {
             var _url = '{{ site_url("/predict/subTitles/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');

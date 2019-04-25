@@ -110,7 +110,7 @@
 
 <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skyBanner">
-        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트 소문내기"></a>
+        <a href="javascript:alert('coming soon');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트 소문내기"></a>
     </div>
     
     <div class="evtCtnsBox evtTop">

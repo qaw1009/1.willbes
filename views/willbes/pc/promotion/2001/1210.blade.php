@@ -207,6 +207,10 @@
             </table>                 
         </div>
         <!--ddayBefore//-->
+
+        <div class="sectionEvt01_1">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_evt01.jpg" alt="시험후기 공유하고 채점하면 기프티콘 증정 " />
+        </div>
        
     </div>
     <!--evtCtnsBox//-->

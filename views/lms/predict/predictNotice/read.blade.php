@@ -45,6 +45,10 @@
                 <div class="form-control-static col-md-5">
                     {{$data['PredictIdx']}}
                 </div>
+                <label class="control-label col-md-1-1 d-line" for="">프로모션코드</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
+                    {{ $data['PromotionCode'] }}
+                </div>
             </div>
 
             <div class="form-group">

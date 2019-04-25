@@ -93,7 +93,7 @@ class PredictNotice extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.PredictIdx,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.PredictIdx, LB.PromotionCode,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
         ';
 
@@ -171,7 +171,7 @@ class PredictNotice extends BaseBoard
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.PredictIdx,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.PredictIdx, LB.PromotionCode,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -231,6 +231,7 @@ class PredictNotice extends BaseBoard
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'predict_idx', 'label' => '합격예측기본데이터', 'rules' => 'trim|required'],
+            ['field' => 'promotion_code', 'label' => '프로모션코드', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
@@ -271,7 +272,7 @@ class PredictNotice extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.PredictIdx,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.PredictIdx, LB.PromotionCode,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';
         $board_idx = $params[0];
@@ -342,6 +343,7 @@ class PredictNotice extends BaseBoard
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
                 'PredictIdx' => element('predict_idx', $input),
+                'PromotionCode' => element('promotion_code', $input),
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',

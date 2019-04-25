@@ -506,6 +506,12 @@ class SurveyModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data1 = $query->row_array();
+        $PrIdx = $data1['PrIdx'];
+        if(empty($PrIdx)===false){
+            $addWhere = " AND pr.PrIdx = ".$PrIdx;
+        } else {
+            $addWhere = "";
+        }
 
         $column = "
             pr.PrIdx, TakeNumber, TakeMockPart, TakeArea, AddPoint, LectureType, Period, ConfirmFile, RealConfirmFile, SubjectCode
@@ -518,8 +524,7 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = " ORDER BY pr.PrIdx DESC";
-        $where = " WHERE MemIdx = '".$MemIdx."' AND pr.ProdCode = ".$ProdCode." AND pr.PrIdx = ".$data1['PrIdx'];
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $where = " WHERE MemIdx = '".$MemIdx."' AND pr.ProdCode = ".$ProdCode.$addWhere;
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data2 = $query->result_array();

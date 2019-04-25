@@ -224,6 +224,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property MockInfoFModel $mockInfoFModel                                      MockTest Info  Model Class
  * @property MockExamModel $mockExamModel                                      MockExam Class
  * @property RegGradeModel $regGradeModel                                         RegGrade Class
+ * @property SubTitlesFModel $subTitlesFModel                                   SubTitles Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                                 API Delivery Book Model Class
  *******************************************************************************************************

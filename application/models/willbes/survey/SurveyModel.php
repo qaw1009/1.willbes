@@ -169,6 +169,12 @@ class SurveyModel extends WB_Model
             $this->_conn->trans_begin();
 
             $ProdCode = $this->input->post('ProdCode');
+
+            $regist_check = $this->predictResist($ProdCode, $this->session->userdata('mem_idx'));
+
+            if(empty($regist_check) === false) {
+                throw new \Exception('이미 신청하셨습니다.');
+            }
             // 데이터 저장
             $data = array(
                 'ProdCode' => $ProdCode,
@@ -898,7 +904,7 @@ class SurveyModel extends WB_Model
         }
 
         $column = "
-            pp.PpIdx, CcdName, pp.Type
+            TotalScore, pp.PpIdx, CcdName, pp.Type
         ";
 
         $from = "
@@ -924,6 +930,7 @@ class SurveyModel extends WB_Model
     public function predictQuestionCall($ppIdx, $prodcode, $pridx){
 
         $column = "
+            pp.PpIdx,
             pq.PqIdx,
             AnswerNum, 
             QuestionNO,
@@ -939,9 +946,14 @@ class SurveyModel extends WB_Model
                 LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa ON pq.PqIdx = pa.PqIdx AND pa.MemIdx = ".$this->session->userdata('mem_idx')." AND pp.ProdCode = ".$prodcode." AND pa.PrIdx = ".$pridx."
         ";
 
-        $order_by = " ORDER BY QuestionNO ";
+        if($ppIdx){
+            $where = "WHERE pp.PpIdx = ".$ppIdx;
+            $order_by = " ORDER BY QuestionNO ";
+        } else {
+            $where = "";
+            $order_by = " ORDER BY PpIdx, QuestionNO ";
+        }
 
-        $where = "WHERE pp.PpIdx = ".$ppIdx;
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();

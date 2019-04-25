@@ -79,14 +79,14 @@
         <div class="evtCtnsBox evt05" id="go02">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_05.jpg" alt="인적성 일정 미치 면접캠프 안내" usemap="#Map1206C" border="0" />
             <map name="Map1206C" id="Map1206C">
-                <area shape="rect" coords="836,780,975,893" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1069&amp;campus_ccd=605001&amp;course_idx=1047" />
+                <area shape="rect" coords="837,718,975,893" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1069&amp;campus_ccd=605001&amp;course_idx=1047" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt06" id="go03">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_06.jpg" alt="사전조사서 특강 및 첨삭" usemap="#Map1206D" border="0"/>
             <map name="Map1206D" id="Map1206D">
-                <area shape="rect" coords="905,442,1067,576" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1070&amp;campus_ccd=605001&amp;course_idx=1047" />
+                <area shape="rect" coords="905,361,1067,576" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1070&amp;campus_ccd=605001&amp;course_idx=1047" />
             </map>
         </div>
 

@@ -65,7 +65,7 @@
             font-size:14px;
         }
         .Pstyle h3 {height:60px; line-height:60px; padding-left:20px; color:#fff; background:#225fba; font-size:20px}
-        .Pstyle .content {height:auto; width:auto; padding:20px}
+        .Pstyle .content {height:600px; overflow-y:scroll; width:auto; padding:20px}
         .Pstyle .content table {border-top:2px solid #333}
         .Pstyle .content th,
         .Pstyle .content td {padding:10px; text-align:center; border-bottom:1px solid #e4e4e4}
@@ -152,7 +152,7 @@
             @php
             $live_type = 'standby';
             $now_datm = date('YmdHis');
-            $start_time = '20190428000000';
+            $start_time = '20190425000000';
             $end_time = '20190429000000';
 
             if ($now_datm < $start_time) {
@@ -181,7 +181,7 @@
                                 image: "https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg02.jpg",
                                 aspectratio: "21:9",
                                 autostart: "true",
-                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream11011"
+                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream3011"
                             });
                             </script>
                         </div>

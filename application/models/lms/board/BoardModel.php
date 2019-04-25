@@ -394,7 +394,7 @@ class BoardModel extends WB_Model
             $arr_board_category = $this->_getBoardCategoryArray($board_idx);
 
             $insert_column = '
-                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx,
+                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx, PromotionCode,
                 VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 Title, Content, ReadCnt, SettingReadCnt, OrderNum,
                 IsUse,
@@ -404,7 +404,7 @@ class BoardModel extends WB_Model
                 UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
             ';
             $select_column = '
-                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx,
+                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx, PromotionCode,
                 VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 

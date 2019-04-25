@@ -82,19 +82,19 @@ class SubTitles extends \app\controllers\BaseController
         $method = 'add';
         $idx = '';
 
+        if (empty($this->_reqP('idx')) === false) {
+            $method = 'modify';
+            $idx = $this->_reqP('idx');
+        }
+
         $rules = [
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'content_type', 'label' => '내용등록방식', 'rules' => 'trim|required|integer'],
+            ['field' => 'content_type', 'label' => '내용등록방식', 'rules' => 'trim|required|integer']
         ];
 
         if ($this->validate($rules) === false) {
             return;
-        }
-
-        if (empty($this->_reqP('idx')) === false) {
-            $method = 'modify';
-            $idx = $this->_reqP('idx');
         }
 
         //_addBoard, _modifyBoard

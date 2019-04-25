@@ -36,9 +36,7 @@
                 <div class="willbes-Bnr mt30">
                     <ul>
                         <li>
-                            <a href="{{ site_url('/promotion/index/cate/3001/code/1187') }}">
-                                <img src="https://static.willbes.net/public/images/promotion/main/3001_190412_1120_140_p.jpg" alt="2019 경찰 1차 적중&합격예측서비스">
-                            </a>
+                            {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner'])) !!}
                         </li>
                     </ul>
                 </div>

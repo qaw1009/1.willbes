@@ -65,7 +65,7 @@
             font-size:14px;
         }
         .Pstyle h3 {height:60px; line-height:60px; padding-left:20px; color:#fff; background:#225fba; font-size:20px}
-        .Pstyle .content {height:auto; width:auto; padding:20px}
+        .Pstyle .content {height:600px; overflow-y:scroll; width:auto; padding:20px}
         .Pstyle .content table {border-top:2px solid #333}
         .Pstyle .content th,
         .Pstyle .content td {padding:10px; text-align:center; border-bottom:1px solid #e4e4e4}

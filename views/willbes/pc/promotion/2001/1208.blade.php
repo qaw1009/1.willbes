@@ -64,7 +64,7 @@
             color:#fff;
             font-size:14px;
         }
-        
+
         .Pstyle h3 {height:60px; line-height:60px; padding-left:20px; color:#fff; background:#225fba; font-size:20px}
         .Pstyle .content {height:600px; overflow-y:scroll; width:auto; padding:20px}
         .Pstyle .content table {border-top:2px solid #333}
@@ -182,7 +182,7 @@
                                 image: "https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg02.jpg",
                                 aspectratio: "21:9",
                                 autostart: "true",
-                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream3011"
+                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
                             });
                             </script>
                         </div>

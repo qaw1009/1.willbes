@@ -13,10 +13,10 @@
     .viewmenu li a.active {background:#06F; color:#fff}
 	.viewmenu:after {content:""; display:block; clear:both}
 	
-	.viewArea {position:fixed; bottom:0; width:100%; height:130px; overflow:hidden}
-    .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px; overflow:hidden}  
-    .bgimg {position:absolute; top:0; left:0; width:1210px;height:130px; z-index:1}  
-    .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10;}
+	.viewArea {position:fixed; bottom:0; width:100%; height:130px;}
+    .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}  
+    .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}  
+    .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important;}
 	.liveTab01 li {height:130px; position:relative}
 	.liveTab01 span {position:absolute}
 	.liveTab01 .txt01 {top:30px; left:292px; font-size:30px; font-weight:bold; color:#fdf9c1; width:190px; text-align:center; line-height:1.3}
@@ -25,16 +25,23 @@
 	.liveTab01 .txt04 {top:74px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
     
     .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
-	.liveTab02 li {padding-left:270px; height:130px; line-height:130px; color:#fff; font-size:30px; letter-spacing:-2px; text-align:left}	
+	.liveTab02 li {padding-left:270px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-2px; text-align:left; width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
 	.liveTab02 li span {margin-right:10px; vertical-align:top} 
     .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
     .liveTab02 li span.st02 {font-family:"Times New Roman", Times, serif}
-    .liveTab02 li div { width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+    .liveTab02 li div {width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 
     .counter {position:absolute; top:0; left:0; text-align:center; width:100%; padding-left:200px; z-index:10;}
     .counter div {color:#fff; font-size:30px; line-height:30px; padding-top:30px}
     .counter span {color:#fff200; vertical-align: text-bottom}
-    .counter p {font-size:11px; color:#fff; margin-top:10px; line-height: 1.4}	
+    .counter p {font-size:11px; color:#fff; margin-top:10px; line-height: 1.4}
+    
+    /*크롬*/
+    @@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}  
+    .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}  
+    .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important;}
+    } 
 </style>
 
 <div class="NSK captionWrap">
@@ -59,6 +66,7 @@
     <div class="viewArea">
         {{--응시현황--}} 
         <div class="viewbox" id="tab01">                           
+            <div class="bgimg" style="background: url(https://static.willbes.net/public/images/promotion/2019/04/1208_live01.jpg) no-repeat right center;"> </div>    
             <ul class="liveTab01 slide01">       
                 <li>
                     <span class="txt01">일반공채:남<br>서울</span>
@@ -78,8 +86,7 @@
                     <span class="txt03">230 명</span>
                     <span class="txt04">7,166 명</span>
                 </li> 
-            </ul>
-            <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live01.jpg" title="CONTENTS명"></div>
+            </ul>            
         </div>
 
         {{--역대합격선--}}

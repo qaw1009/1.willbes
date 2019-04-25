@@ -152,7 +152,7 @@
             @php
             $live_type = 'standby';
             $now_datm = date('YmdHis');
-            $start_time = '20190428000000';
+            $start_time = '20190425000000';
             $end_time = '20190429000000';
 
             if ($now_datm < $start_time) {
@@ -181,7 +181,7 @@
                                 image: "https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg02.jpg",
                                 aspectratio: "21:9",
                                 autostart: "true",
-                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream11011"
+                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream3011"
                             });
                             </script>
                         </div>

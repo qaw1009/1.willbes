@@ -8,7 +8,7 @@
     <!-- Container -->   
 <div class="p_re evtContent NSK-Thin" id="evtContainer">  
     
-    <div class="m_sectin1_box">
+    <div class="m_sectin1_box" style="height:1000px">
         <div class="title">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_tit.png" alt="2018 경찰 3차 시험 합격예측 풀서비스">
         </div>

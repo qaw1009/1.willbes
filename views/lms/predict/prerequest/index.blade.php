@@ -12,6 +12,11 @@
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
+                        <select class="form-control mr-5" id="search_ApplyType" name="search_ApplyType">
+                            <option value="">구분</option>
+                            <option value="합격예측">합격예측</option>
+                            <option value="사전특강">사전특강</option>
+                        </select>
                         <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
                             <option value="">응시직렬</option>
                             @foreach($serial as $k => $v)
@@ -56,6 +61,7 @@
                     <tr>
                         <th class="text-center"></th>
                         <th class="text-center">NO</th>
+                        <th class="text-center">구분</th>
                         <th class="text-center">이름</th>
                         <th class="text-center">아이디</th>
                         <th class="text-center">휴대폰번호</th>
@@ -119,7 +125,7 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-
+                    {'data' : 'ApplyType', 'class': 'text-center'},
                     {'data' : 'MemName', 'class': 'text-center'},
                     {'data' : 'MemId', 'class': 'text-center'},
                     {'data' : 'Phone', 'class': 'text-center'},

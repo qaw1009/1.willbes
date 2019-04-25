@@ -15,10 +15,24 @@ class SurveyModel extends WB_Model
         'predictCode' => 'lms_predict_code',
         'predictRegisterR' => 'lms_predict_register_r_code',
         'predictRegister' => 'lms_predict_register',
+
+        'predictGradesLog' => 'lms_predict_grades_log',
+        'predictPaper' => 'lms_predict_paper',
+        'predictAnswerPaper' => 'lms_predict_answerpaper',
+        'predictGradesOrigin' => 'lms_predict_grades_origin',
+        'predictGrades' => 'lms_predict_grades',
+        'predictGradesArea' => 'lms_predict_grades_area',
+        'predictGradesLine' => 'lms_predict_grades_line',
+        'predictQuestion' => 'lms_predict_questions',
+
         'eventComment' => 'lms_event_comment',
         'eventLecture' => 'lms_event_lecture',
 
         'sysCode' => 'lms_sys_code',
+        'site' => 'lms_site',
+        'admin' => 'wbs_sys_admin',
+        'board' => 'lms_board',
+        'member' => 'lms_member',
     ];
 
     public $upload_path_predict;       // 통파일 저장경로: ~/predict/{idx}/
@@ -67,6 +81,13 @@ class SurveyModel extends WB_Model
 
             $names = $this->makeUploadFileName(['RealConfirmFile'], 1);
             $ProdCode = $this->input->post('ProdCode');
+
+            $regist_check = $this->predictResist($ProdCode, $this->session->userdata('mem_idx'));
+
+            if(empty($regist_check) === false) {
+                throw new \Exception('이미 신청하셨습니다.');
+            }
+
             // 데이터 저장
             $data = array(
                 'ProdCode' => $ProdCode,
@@ -95,6 +116,77 @@ class SurveyModel extends WB_Model
             if($isSave !== true) {
                 throw new Exception('파일 저장에 실패했습니다.');
             }
+
+            $Ssubject = $this->input->post('Ssubject');
+            $Psubject = $this->input->post('Psubject');
+
+            if(empty($Ssubject)===false){
+                for($i=0; $i < count($Ssubject); $i++){
+                    // 데이터 저장
+                    $data = array(
+                        'PrIdx' => $nowIdx,
+                        'ProdCode' => $this->input->post('ProdCode'),
+                        'SubjectCode' => $Ssubject[$i],
+                    );
+
+                    if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
+                        throw new \Exception('저장에 실패했습니다.');
+                    }
+                }
+            }
+
+            if(empty($Psubject)===false) {
+                for ($i = 0; $i < count($Psubject); $i++) {
+                    // 데이터 저장
+                    $data = array(
+                        'PrIdx' => $nowIdx,
+                        'ProdCode' => $this->input->post('ProdCode'),
+                        'SubjectCode' => $Psubject[$i],
+                    );
+
+                    if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
+                        throw new \Exception('저장에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $nowIdx]];
+    }
+
+    /**
+     * 기본정보 등록
+     */
+    public function storeV2()
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            $ProdCode = $this->input->post('ProdCode');
+            // 데이터 저장
+            $data = array(
+                'ProdCode' => $ProdCode,
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'SiteCode' => $this->input->post('SiteCode'),
+                'TakeNumber' => $this->input->post('TakeNumber'),
+                'TakeMockPart' => $this->input->post('TakeMockPart'),
+                'TakeArea' => $this->input->post('TakeArea'),
+                'AddPoint' => $this->input->post('AddPoint'),
+                'LectureType' => $this->input->post('LectureType'),
+                'Period' => $this->input->post('Period'),
+            );
+
+            if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictRegister']) === false) {
+                throw new \Exception('저장에 실패했습니다.');
+            }
+
+            $nowIdx = $this->_conn->insert_id();
 
             $Ssubject = $this->input->post('Ssubject');
             $Psubject = $this->input->post('Psubject');
@@ -237,6 +329,89 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     * 기본정보 수정
+     */
+    public function updateV2()
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            $ProdCode = $this->input->post('ProdCode');
+            $PrIdx = $this->input->post('PrIdx');
+            // 데이터 저장
+            $data = array(
+                'ProdCode' => $ProdCode,
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'SiteCode' => $this->input->post('SiteCode'),
+                'TakeNumber' => $this->input->post('TakeNumber'),
+                'TakeMockPart' => $this->input->post('TakeMockPart'),
+                'TakeArea' => $this->input->post('TakeArea'),
+                'AddPoint' => $this->input->post('AddPoint'),
+                'LectureType' => $this->input->post('LectureType'),
+                'Period' => $this->input->post('Period'),
+            );
+
+            $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where('PrIdx', $PrIdx);
+
+            if ($this->_conn->update($this->_table['predictRegister']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+
+            //삭제후 입력
+            $where = ['PrIdx' => $PrIdx];
+            try {
+                if($this->_conn->delete($this->_table['predictRegisterR'], $where) === false){
+                    throw new \Exception('삭제에 실패했습니다.');
+                }
+            } catch (\Exception $e) {
+                return error_result($e);
+            }
+
+            $Ssubject = $this->input->post('Ssubject');
+            $Psubject = $this->input->post('Psubject');
+
+            if(empty($Ssubject)===false){
+
+                for($i=0; $i < count($Ssubject); $i++){
+                    // 데이터 저장
+                    $data = array(
+                        'PrIdx' => $PrIdx,
+                        'ProdCode' => $this->input->post('ProdCode'),
+                        'SubjectCode' => $Ssubject[$i],
+                    );
+
+                    if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
+                        throw new \Exception('저장에 실패했습니다.');
+                    }
+                }
+            }
+
+            if(empty($Psubject)===false) {
+                for ($i = 0; $i < count($Psubject); $i++) {
+                    // 데이터 저장
+                    $data = array(
+                        'PrIdx' => $PrIdx,
+                        'ProdCode' => $this->input->post('ProdCode'),
+                        'SubjectCode' => $Psubject[$i],
+                    );
+
+                    if ($this->_conn->set($data)->insert($this->_table['predictRegisterR']) === false) {
+                        throw new \Exception('저장에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $PrIdx]];
+    }
+
+    /**
      *  업로드시 저장될 파일명 생성
      */
     public function makeUploadFileName($in, $prefixLen=0)
@@ -272,7 +447,7 @@ class SurveyModel extends WB_Model
     /**
      *  파일저장 및 수정
      */
-    public function uploadFileSave($uploadSubPath, $names, $fileBackup=array(), $type='file')
+    public function uploadFileSave($uploadSubPath, $names, $type='file')
     {
         $this->load->library('upload');
 
@@ -295,13 +470,6 @@ class SurveyModel extends WB_Model
                 throw new Exception($uploaded);
             }
 
-            // 수정, 삭제시 이미지 백업
-            if($fileBackup) {
-                $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($fileBackup), false, $this->upload_path_mockBackup);
-                if ($is_bak_uploaded_file !== true) {
-                    throw new Exception($is_bak_uploaded_file);
-                }
-            }
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -318,6 +486,22 @@ class SurveyModel extends WB_Model
      */
     public function predictResist($ProdCode, $MemIdx){
         $column = "
+            PrIdx
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictRegister']} 
+        ";
+
+        $order_by = " ORDER BY PrIdx ASC LIMIT 1";
+        $where = " WHERE MemIdx = '".$MemIdx."' AND ProdCode = ".$ProdCode."";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $data1 = $query->row_array();
+
+        $column = "
             pr.PrIdx, TakeNumber, TakeMockPart, TakeArea, AddPoint, LectureType, Period, ConfirmFile, RealConfirmFile, SubjectCode
         ";
 
@@ -327,13 +511,14 @@ class SurveyModel extends WB_Model
                 JOIN {$this->_table['predictRegisterR']} AS pc ON pr.PrIdx = pc.PrIdx
         ";
 
-        $order_by = " ";
-        $where = " WHERE MemIdx = '".$MemIdx."' AND pr.ProdCode = ".$ProdCode."";
+        $order_by = " ORDER BY pr.PrIdx DESC";
+        $where = " WHERE MemIdx = '".$MemIdx."' AND pr.ProdCode = ".$ProdCode." AND pr.PrIdx = ".$data1['PrIdx'];
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $data = $query->result_array();
+        $data2 = $query->result_array();
 
-        return $data;
+        return $data2;
     }
 
     /**
@@ -595,4 +780,385 @@ class SurveyModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 문항세트전체호출
+     */
+    public function statisticsListLine($ProdCode, $order){
+
+        $column = "
+            pc.CcdName AS TakeMockPartName, sc.CcdName AS TakeAreaName, 
+            pg.TakeMockPart, pg.TakeArea, 
+            (
+            SELECT COUNT(*) FROM (
+                    SELECT * FROM {$this->_table['predictGradesOrigin']} GROUP BY MemIdx
+                ) AS A
+                WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart AND Prodcode = pg.ProdCode 
+            ) AS TakeOrigin,  
+            ROUND(SUM(pg.AvrPoint),2) AS AvrPoint,
+            (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
+            pl.PickNum, pl.TakeNum, CompetitionRateNow, CompetitionRateAgo, PassLineAgo, AvrPointAgo, StabilityAvrPoint, StabilityAvrPercent,
+            StrongAvrPoint1, StrongAvrPoint2, StrongAvrPercent, ExpectAvrPoint1, ExpectAvrPoint2, ExpectAvrPercent, pl.IsUse,               
+            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef             
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['predictGradesArea']} AS pg
+                LEFT JOIN {$this->_table['predictGradesLine']} AS pl ON pg.TakeArea = pl.TakeArea AND pg.TakeMockPart = pl.TakeMockPart AND pg.ProdCode = pl.ProdCode
+                LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
+                LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                LEFT JOIN {$this->_table['predictCode']} AS pc2 ON pp.SubjectCode = pc2.Ccd
+        ";
+
+        if($order == 'area'){
+            $order_by = " GROUP BY pg.TakeMockPart, pg.TakeArea ORDER BY pg.TakeArea, pg.TakeMockPart";
+        } else {
+            $order_by = " GROUP BY pg.TakeMockPart, pg.TakeArea ORDER BY pg.TakeMockPart, pg.TakeArea";
+        }
+
+        $where = " WHERE pg.ProdCode = ".$ProdCode;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $data = $query->result_array();
+
+        return $data;
+    }
+
+    /**
+     * 공지
+     */
+    public function noticeList($BoardIdx){
+
+        $column = "
+            STRAIGHT_JOIN (SELECT COUNT(*) FROM lms_board_r_comment AS CT WHERE LB.BoardIdx = CT.BoardIdx AND CT.IsStatus = 'Y') AS CommentCnt, 
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, SUBSTR(LB.RegDatm, 1, 10) AS RegDatm, LB.IsBest, LB.IsUse, 
+            LB.PredictIdx, LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName ,IFNULL(FN_BOARD_CATECODE_DATA_LMS(LB.BoardIdx),'N') AS CateCode ,
+            IFNULL(fn_board_attach_data(LB.BoardIdx),NULL) AS AttachFileName,
+            LB.Content              
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['board']} AS LB 
+                LEFT OUTER JOIN {$this->_table['member']} AS MEM ON LB.RegMemIdx = MEM.MemIdx 
+                LEFT OUTER JOIN {$this->_table['site']} as LS ON LB.SiteCode = LS.SiteCode 
+                LEFT OUTER JOIN {$this->_table['admin']} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx AND ADMIN.wIsStatus='Y' 
+                LEFT OUTER JOIN {$this->_table['sysCode']} as LSC ON LB.CampusCcd = LSC.Ccd 
+        ";
+
+        $order_by = " ORDER BY `LB`.`IsBest` DESC, `LB`.`BoardIdx` ";
+
+        if($BoardIdx){
+            $where = " WHERE `LB`.`BmIdx` = '102' AND `LB`.`IsStatus` = 'Y' AND `LB`.`BoardIdx` = ".$BoardIdx;
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+            $data = $query->row_array();
+        } else {
+            $where = " WHERE `LB`.`BmIdx` = '102' AND `LB`.`IsStatus` = 'Y' ";
+            $order_by .= " LIMIT 10";
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+            $data = $query->result_array();
+        }
+
+        return $data;
+    }
+
+    /**
+     * 과목호출
+     */
+    public function subjectList($prodcode, $pridx){
+        $column = "
+            SubjectCode  
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['predictRegister']} AS pr
+	            JOIN {$this->_table['predictRegisterR']} AS prc ON pr.PrIdx = prc.PrIdx
+        ";
+
+        $order_by = " ";
+
+        $where = " WHERE pr.ProdCode = ". $prodcode ." AND MemIdx = ".$this->session->userdata('mem_idx')." AND pr.PrIdx = ".$pridx;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $data = $query->result_array();
+        $subjectIn = '';
+        foreach($data as $key => $val){
+            $SubjectCode = $val['SubjectCode'];
+            $SubjectCode = substr($SubjectCode, 3, 3);
+            if($key == 0) {
+                $subjectIn = "100".$SubjectCode;
+            } else {
+                $subjectIn .= ", 100".$SubjectCode;
+            }
+        }
+
+        $column = "
+            pp.PpIdx, CcdName, pp.Type
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['predictPaper']} AS pp
+	            LEFT JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
+        ";
+
+        $order_by = " ORDER BY OrderNum";
+
+        $where = " WHERE pp.ProdCode = ". $prodcode ." AND SubjectCode IN (" . $subjectIn . ")";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $res = $query->result_array();
+
+        return $res;
+    }
+
+    /**
+     * 문항정보호출(시험지코드포함)
+     * @param array $MpIdx $ProdCode
+     * @return mixed
+     */
+    public function predictQuestionCall($ppIdx, $prodcode, $pridx){
+
+        $column = "
+            pq.PqIdx,
+            AnswerNum, 
+            QuestionNO,
+            RightAnswer,
+            RealQuestionFile AS file,
+            pa.Answer
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['predictPaper']} AS pp
+                JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
+                LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa ON pq.PqIdx = pa.PqIdx AND pa.MemIdx = ".$this->session->userdata('mem_idx')." AND pp.ProdCode = ".$prodcode." AND pa.PrIdx = ".$pridx."
+        ";
+
+        $order_by = " ORDER BY QuestionNO ";
+
+        $where = "WHERE pp.PpIdx = ".$ppIdx;
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        return $query->result_array();
+    }
+
+    /**
+     * 임시저장 전문항
+     * @param array $formData
+     * @return mixed
+     */
+    public function answerTempAllSave($formData = [])
+    {
+
+        try {
+            $this->_conn->trans_begin();
+
+            $PrIdx = element('PrIdx', $formData);
+            $ProdCode = element('ProdCode', $formData);
+            $PpIdx = element('PpIdx', $formData);
+
+            $qcnt = element('QCnt',$formData);
+
+            for($i = 1; $i <= $qcnt; $i++){
+                ${"answer$i"} = element('answer'.$i,$formData);
+                ${"PqIdx$i"}  = element('PqIdx'.$i,$formData);
+
+                $column = "
+                    PapIdx
+                ";
+
+                $from = "
+                    FROM
+                        {$this->_table['predictAnswerPaper']}
+                ";
+
+                $arr_condition = [
+                    'EQ' => [
+                        'MemIdx'   => $this->session->userdata('mem_idx'),
+                        'ProdCode' => $ProdCode,
+                        'PrIdx' => $PrIdx,
+                        'PpIdx' => $PpIdx,
+                        'PqIdx' => ${"PqIdx$i"},
+                    ]
+                ];
+
+                $where = $this->_conn->makeWhere($arr_condition);
+                $where = $where->getMakeWhere(false);
+                $order_by = "";
+
+                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+                $result = $query->row_array();
+
+                if($result['PapIdx']){
+                    // 데이터 수정
+                    $data = [
+                        'Answer' => ${"answer$i"}
+                    ];
+
+                    $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'PrIdx' => $PrIdx, 'PpIdx' => $PpIdx, 'PqIdx' => ${"PqIdx$i"}]);
+
+                    if ($this->_conn->update($this->_table['predictAnswerPaper']) === false) {
+                        throw new \Exception('임시저장에 수정에 실패했습니다.');
+                    }
+
+                }else{
+                    // 데이터 입력
+                    $data = [
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'PrIdx'  => $PrIdx,
+                        'ProdCode'=> $ProdCode,
+                        'PpIdx' => $PpIdx,
+                        'PqIdx' => ${"PqIdx$i"},
+                        'Answer' => ${"answer$i"},
+                    ];
+
+                    if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictAnswerPaper']) === false) {
+                        throw new \Exception('임시저장에 실패했습니다.');
+                    }
+
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 임시저장 갯수(전체문항/임시저장문항)
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function questionTempCnt($arr_condition=[], $pridx){
+
+        $column = "
+            pp.PpIdx,
+            COUNT(*) AS TCNT,
+            (SELECT 
+                COUNT(*) 
+            FROM 
+                {$this->_table['predictAnswerPaper']} 
+            WHERE 
+                PpIdx = pp.PpIdx AND Answer != '0'  AND MemIdx = '".$this->session->userdata('mem_idx')."' AND PrIdx = ".$pridx.") AS CNT
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['predictPaper']} AS pp
+                JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
+            
+        ";
+
+        $order_by = " GROUP BY pp.PpIdx ORDER BY pp.PpIdx";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 정답제출삭제
+     * @param array $formData
+     * @return mixed
+     */
+    public function examDelete($formData = [])
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            $PrIdx = element('PrIdx', $formData);
+
+            $where = ['PrIdx' => $PrIdx];
+
+            try {
+                if($this->_conn->delete($this->_table['predictAnswerPaper'], $where) === false){
+                    throw new \Exception('삭제에 실패했습니다.');
+                }
+                if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
+                    throw new \Exception('삭제에 실패했습니다.');
+                }
+            } catch (\Exception $e) {
+                return error_result($e);
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 정답제출
+     * @param array $formData
+     * @return mixed
+     */
+    public function examSend($formData = [])
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            $ProdCode = element('ProdCode', $formData);
+            $PrIdx = element('PrIdx', $formData);
+            $MemIdx = $this->session->userdata('mem_idx');
+
+            $column = "
+                MemIdx, PrIdx, ProdCode, pp.PpIdx, pq.PqIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, pp.RegDatm
+            ";
+
+            $from = "
+                FROM
+                    {$this->_table['predictAnswerPaper']} AS pp
+                    JOIN {$this->_table['predictQuestion']} AS pq ON pp.PqIdx = pq.PqIdx AND pq.IsStatus = 'Y' 
+            ";
+
+            $order_by = " ORDER BY PpIdx ";
+
+            $where = " WHERE MemIdx = ".$MemIdx." AND ProdCode = ".$ProdCode." AND PrIdx = ".$PrIdx;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+            $res = $query->result_array();
+
+            foreach ($res as $key => $val){
+                $data = [
+                    'MemIdx' => $MemIdx,
+                    'PrIdx'  => $PrIdx,
+                    'ProdCode'=> $ProdCode,
+                    'PpIdx' => $val['PpIdx'],
+                    'PqIdx' => $val['PqIdx'],
+                    'Answer' => $val['Answer'],
+                    'IsWrong' => $val['IsWrong']
+                ];
+
+                $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $MemIdx, 'ProdCode' => $ProdCode, 'PrIdx' => $PrIdx, 'PpIdx' => $val['PpIdx'], 'PqIdx' => $val['PqIdx']]);
+
+                if ($this->_conn->update($this->_table['predictAnswerPaper']) === false) {
+                    throw new \Exception('저장에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+
+    }
+
 }

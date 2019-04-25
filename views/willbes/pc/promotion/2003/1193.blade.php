@@ -58,6 +58,30 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+			<!-- 타이머 -->
+			<div class="evtCtnsBox time">
+				<div class="time_date" id="newTopDday">
+					<table>
+						<tr>
+							<td class="time_txt"><span>4/30(화) 마감!</span></td>
+							<td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+							<td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+							<td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+							<td class="time_txt">일 </td>
+							<td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+							<td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+							<td class="time_txt">:</td>
+							<td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+							<td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+							<td class="time_txt">:</td>
+							<td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+							<td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!-- 타이머 //-->
+			
 			<div class="evtCtnsBox evtTop">
 				<span><img src="https://static.willbes.net/public/images/promotion/2019/04/1193_top_txt.gif" alt="2020 국가직대비 전격출시!" /></span>
 				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_top.png" usemap="#Map_1193_qna"  title="한덕현T-PASS" border="0"/>
@@ -68,29 +92,7 @@
 			</div>
 			<!--evtCtnsBox evtTop//-->
 
-			<!-- 타이머 -->
-			<div class="evtCtnsBox time">
-				<div class="time_date" id="newTopDday">
-					<table>
-							<tr>
-								<td class="time_txt"><span>4/30(화) 마감!</span></td>
-								<td class="time_txt">마감까지<br><span>남은 시간은</span></td>
-								<td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-								<td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-								<td class="time_txt">일 </td>
-								<td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-								<td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-								<td class="time_txt">:</td>
-								<td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-								<td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-								<td class="time_txt">:</td>
-								<td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-								<td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-							</tr>
-					</table>
-				</div>
-			</div>
-			<!-- 타이머 //-->
+			
 
 			<div class="check" id="chkInfo">
 				<input name="ischk" type="checkbox" value="Y" id="txt1"/> <label for="txt1">페이지 하단 한덕현 영어 T- PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

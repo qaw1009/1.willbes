@@ -45,7 +45,7 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox time">
+        <div class="evtCtnsBox time" id="newTopDday">
             <div id="ddaytime">
                 <table>
                     <tr>

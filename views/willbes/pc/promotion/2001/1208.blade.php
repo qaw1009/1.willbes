@@ -236,6 +236,14 @@
         });
     });
 
+    function fn_live(p_type) {
+        if(p_type == "hd"){
+            location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop3011/Playlist.m3u8";
+        }else{
+            location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop3011/Playlist.m3u8";
+        }
+    }
+
     /*레이어팝업*/
     function go_popup(param) {
         $('#popup').bPopup();

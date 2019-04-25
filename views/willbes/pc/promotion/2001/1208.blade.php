@@ -82,7 +82,7 @@
         .Pstyle .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff; font-weight:bold; border:1px solid #333}
         .btnsSt3 a:hover {background:#fff; color:#333}
 
-        .evtLive #movieFrame {position:relative; width:980px; height:551px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center center;}
+        .evtLive #movieFrame {position:relative; width:980px; height:551px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg) no-repeat center center;}
         .movieplayer .embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
         .movieplayer .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:551px; margin:0 auto}        
         .movieplayer .mobileCh {position:absolute; bottom:0; width:980px;}
@@ -95,10 +95,10 @@
         
         /*크롬*/
         @@media screen and (-webkit-min-device-pixel-ratio:0) {
-        .evtLive #movieFrame {position:relative; width:980px; height:551px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center center;}
+        .evtLive #movieFrame {position:relative; width:980px; height:551px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg) no-repeat center center;}
         .movieplayer .embedWrap {position:relative; width:980px; height:551px; margin-left:-490px; padding:0}
         .movieplayer .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto}
-        .movieplayer .mobileCh {position:absolute; bottom:0; width:980px;}
+        .movieplayer .mobileCh {position:absolute; left:490px; bottom:0; width:980px;}
         .movieplayer .mobileCh li {display:inline; float:left; width:490px;}
         .movieplayer .mobileCh li a {display:block;/*text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0*/}
         .movieplayer .mobileCh li a.ch2 {color:#6CF}
@@ -240,7 +240,7 @@
         if(p_type == "hd"){
             location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop3011/Playlist.m3u8";
         }else{
-            location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop3011/Playlist.m3u8";
+            location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop3012/Playlist.m3u8";
         }
     }
 

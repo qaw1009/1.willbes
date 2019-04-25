@@ -208,20 +208,24 @@
                         <div><strong>143</strong>만원</div>
                     </li>
                 </ul>
+                <div>
                 <span style="color:#fff" class="mt50">
                     PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.
                 </span>
-                <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
-                <map name="Map190123" id="Map190123">
-                    <area shape="rect" coords="178,546,243,565" href="javascript:go_popup()" alt="6개월과목" />
-                    <area shape="rect" coords="439,545,502,564" href="javascript:go_popup()" alt="12개월과목" />
-                    <area shape="rect" coords="733,546,794,565" href="javascript:go_popup1()" alt="평생목팝업" />
-                </map> 
-                <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02.jpg"  alt="체력" usemap="#Map1009A"/>                
-                <map name="Map1009A" id="Map1009A">
-                    <area shape="rect" coords="608,182,735,229" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
-                    <area shape="rect" coords="166,260,973,380" href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=234&amp;" target="_blank" alt="10일완성관리반" />
-                </map>                                 
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123">
+                    <map name="Map190123" id="Map190123">
+                        <area shape="rect" coords="178,546,243,565" href="javascript:go_popup()" alt="6개월과목" />
+                        <area shape="rect" coords="439,545,502,564" href="javascript:go_popup()" alt="12개월과목" />
+                        <area shape="rect" coords="733,546,794,565" href="javascript:go_popup1()" alt="평생목팝업" />
+                    </map>
+                </div>
+                <div> 
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02.jpg"  alt="체력" usemap="#Map1009A"/>                
+                    <map name="Map1009A" id="Map1009A">
+                        <area shape="rect" coords="608,182,735,229" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
+                        <area shape="rect" coords="166,260,973,380" href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=234&amp;" target="_blank" alt="10일완성관리반" />
+                    </map> 
+                </div>                                
             </div>
 
             <!--레이어팝업-->

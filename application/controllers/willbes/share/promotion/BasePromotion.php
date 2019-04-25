@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF','couponF');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -118,11 +118,22 @@ class BasePromotion extends \app\controllers\FrontController
             $file_yn[$fileidx] = 'Y';
         }
 
+        //공지사항조회
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => '102',
+                'IsUse' => 'Y',
+                'PredictIdx' => $arr_base['spidx'],
+                'PromotionCode' => $arr_base['promotion_code']
+            ]
+        ];
+        $arr_base['notice_list'] = $this->supportBoardFModel->listBoard(false, $arr_condition,'','BoardIdx, Title, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm', 2, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
+
+        //모바일체크
         $this->load->library('user_agent');
         $ismobile = $this->agent->is_mobile();
 
         $view_file = 'willbes/'.APP_DEVICE.'/promotion/' . $this->_site_code . '/' . $arr_base['promotion_code'];
-
         $this->load->view($view_file, [
             'arr_base' => $arr_base,
             'data' => $data,

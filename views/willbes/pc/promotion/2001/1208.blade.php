@@ -153,7 +153,7 @@
             @php
             $live_type = 'standby';
             $now_datm = date('YmdHis');
-            $start_time = '20190425000000';
+            $start_time = '20190427130000';
             $end_time = '20190429000000';
 
             if ($now_datm < $start_time) {

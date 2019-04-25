@@ -32,7 +32,7 @@
         
         .evtLive {background:#f6f6f6; position:relative}
         .notice {
-            position:relative; width:980px; margin:0 auto; padding:10px; text-align:left;
+            position:relative; width:980px; margin:0 auto; padding:10px; text-align:left; height:98px;
             background:#000 url(https://static.willbes.net/public/images/promotion/2019/04/1208_notice_title.jpg) no-repeat 10px 10px;
         }        
         .notice ul {margin-left:248px; background:#fff; padding:10px 40px 10px 20px}
@@ -64,6 +64,7 @@
             color:#fff;
             font-size:14px;
         }
+        
         .Pstyle h3 {height:60px; line-height:60px; padding-left:20px; color:#fff; background:#225fba; font-size:20px}
         .Pstyle .content {height:600px; overflow-y:scroll; width:auto; padding:20px}
         .Pstyle .content table {border-top:2px solid #333}

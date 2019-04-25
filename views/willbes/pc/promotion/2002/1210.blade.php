@@ -2,12 +2,11 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-    <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
+    <link href="/public/css/willbes/promotion/cop_2018_1ch.css" rel="stylesheet">
 
     
     <!-- Container -->   
-
-<div class="p_re evtContent NSK-Thin" id="evtContainer">   
+<div class="p_re evtContent NSK-Thin" id="evtContainer">  
     
     <div class="m_sectin1_box">
         <div class="title">
@@ -130,7 +129,7 @@
     <!--m_lnb//-->    
 
     <div class="evtCtnsBox">    
-        {{--4.26일까지 보여짐--}}
+
         <div class="ddayBefore"> 
             <h1 class="NGEB">"이것만은 꼭! 시험 전 / 시험 당일 체크 포인트"</h1>  
             <h2>시험 <span>전</span> 유의사항</h2> 
@@ -214,67 +213,4 @@
     
 </div>
 <!-- End Container -->
-
-<script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script>
-    /*서비스이용현황 */
-    $( document ).ready( function() {
-    var jbOffset = $( '.conut_section' ).offset();
-    $( window ).scroll( function() {
-        if ( $( document ).scrollTop() > jbOffset.top ) {
-        $( '.conut_section' ).addClass( 'conut_sectionFixed' );
-        }
-        else {
-        $( '.conut_section' ).removeClass( 'conut_sectionFixed' );
-        }
-    });
-    } );
-
-    function go_popup() {  
-        $('#popup').bPopup();
-    };
-
-    $(function(){
-        $("#map_area").bxSlider({
-            auto : true,		
-            mode: 'fade',
-            pagerCustom: '#MapRollingDiv',
-            speed: 1000,
-            pause: 1000,
-            controls:false
-        });
-    });
-
-    /*과목별 성적 분포*/
-    $(document).ready(function() {
-        var slidesImg3 = $("#slidesImg3").bxSlider({
-            mode:'fade', //option : 'horizontal', 'vertical', 'fade'
-            auto:true,
-            speed:1000,
-            pause:4000,
-            controls:false,
-            minSlides:1,
-            maxSlides:1,
-            slideWidth:980,
-            slideMargin:0,
-            autoHover: true,
-            moveSlides:1,
-            pager:false,
-        });
-    
-        $("#imgBannerLeft3").click(function (){
-            slidesImg3.goToPrevSlide();
-        });
-    
-        $("#imgBannerRight3").click(function (){
-            slidesImg3.goToNextSlide();
-        });
-    });
-
-    /*시험 난이도 설문조사 */
-    function pullOpen(){
-        var url = "1210_popup";
-        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
-    }
-</script>
 @stop

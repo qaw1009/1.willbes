@@ -217,10 +217,10 @@
         </div>
 
         {{-- 하단 띠배너--}}
-        <div class="mainBottomBn">
+        <div class="mainBottomBn mainBottomBn2">
             <div>
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1187#evt01">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1209_mainBottom_bn_off.jpg" title="" class="mbBanner">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1209_mainBottom_bn_off.jpg" width="1920" height="120" class="mbBanner" title="">
                 </a>
                 <span class="btmEvClose">닫기</span>
             </div>

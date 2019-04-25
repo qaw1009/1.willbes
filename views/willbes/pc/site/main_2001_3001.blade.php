@@ -291,15 +291,15 @@
     </div>
     <!-- End Container --> 
     
-    {{-- 하단 띠배너
-    <div class="mainBottomBn">
+    {{-- 하단 띠배너--}}
+    <div class="mainBottomBn mainBottomBn2">
         <div>
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1009">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/1009_mainBottom_bn.jpg" title="" class="mbBanner">
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1187#evt01">
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1209_mainBottom_bn_off.jpg" class="mbBanner" title="">
             </a>
             <span class="btmEvClose">닫기</span>
         </div>
-    </div>--}}
+    </div>
     
 
     <script type="text/javascript">

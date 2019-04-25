@@ -11318,13 +11318,16 @@ table.acadlecInfoPackageTable tr.Top td {
     left:0;
     margin-left:0;
     width:100%;
-    min-width:1450px;
-    min-height:100px;
+    min-width:1450px;   
+    height:100px; 
     text-align: center;
     z-index: 200;
 }
+.mainBottomBn2 {
+    height:120px; 
+}
 .mainBottomBn div {position:relative;}
-.mainBottomBn div .mbBanner {position:absolute; left:50%; margin-left:-960px;}
+.mainBottomBn div .mbBanner {position:absolute; left:50%; margin-left:-960px; display:block}
 .mainBottomBn div span {display:block; position:absolute; width:19px; height:19px; top:-9px; right:50%; margin-right:-700px; cursor: pointer;
     background: url(https://static.willbes.net/public/images/promotion/common/mainBottom_btnclose.png) no-repeat right center;
     font-size:0; text-indent: -9999px; z-index: 1;    

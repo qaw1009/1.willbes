@@ -94,6 +94,7 @@ class Prerequest extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
+                'PR.ApplyType' => $this->_req('search_ApplyType'),
                 'PR.SiteCode' => $this->_req('search_site_code'),
                 'PR.TakeMockPart' => $this->_req('search_TakeMockPart'),
                 'PR.TakeArea' => $this->_req('search_TakeArea'),
@@ -116,7 +117,7 @@ class Prerequest extends \app\controllers\BaseController
             // export excel
             $file_name = '합격예측 사전입력자_'.date('Y-m-d');
 
-            $headers = ['이름', '회원아이디', '휴대폰번호', '직렬', '지역', '응시번호', '수강여부', '시험준비기간', '신청일'];
+            $headers = ['구분', '이름', '회원아이디', '휴대폰번호', '직렬', '지역', '응시번호', '수강여부', '시험준비기간', '신청일'];
 
             $this->load->library('excel');
             if ($this->excel->exportHugeExcel($file_name, $data, $headers) !== true) {

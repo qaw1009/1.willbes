@@ -194,7 +194,7 @@ class PredictModel extends WB_Model
     {
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
         $column = " 
-       
+            PR.ApplyType,
             MemName,
             PR.MemIdx,
             MemId,
@@ -287,7 +287,8 @@ class PredictModel extends WB_Model
      */
     public function predictRegistListExcel($condition='', $limit='', $offset='')
     {
-        $column = " 
+        $column = "
+            PR.ApplyType, 
             MemName,
             MemId,
             fn_dec(M.PhoneEnc) AS Phone,

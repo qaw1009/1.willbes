@@ -131,139 +131,71 @@
         <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live_01.jpg" title="수강생 여러분의 합격을 기원합니다."></div>
         <div class="notice">
             <ul>
-                <li><a href="javascript:go_popup();"><strong>공지</strong>라이브 토크쇼 14:00시부터 시작합니다.<span>2019-04-23</span></a></li>
-                <li><a href="javascript:go_popup();">해설강의 진행시간 안내 <span>2019-04-23</span></a></li>
+                @foreach($arr_base['notice_list'] as $row)
+                    <li><a href="javascript:go_popup('{{ $row['BoardIdx'] }}');">{{ $row['Title'] }} <span>{{ $row['RegDatm'] }}</span></a></li>
+                @endforeach
+                {{--<li><a href="javascript:go_popup();"><strong>공지</strong>라이브 토크쇼 14:00시부터 시작합니다.<span>2019-04-23</span></a></li>
+                <li><a href="javascript:go_popup();">해설강의 진행시간 안내 <span>2019-04-23</span></a></li>--}}
             </ul>
             <a href="javascript:go_popup();" class="morebtn"><img src="https://static.willbes.net/public/images/promotion/common/btn_close01.jpg" title="더보기"></a>
         </div>
 
         {{--공지사항 레이어팝업--}}
         <div id="popup" class="Pstyle NGR">
-            <span class="b-close">X</span>
-            <h3 class="NSK-Black">live 토크쇼 공지사항</h3> 
-            <div class="content">                               
-                {{--리스트--}}    
-                <table>
-                    <col widht="10%"/>
-                    <col widht=""/>
-                    <col widht="20%"/>
-                    <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>제목</th>
-                            <th>등록일</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>9</td>
-                            <td><a href="#none"><strong>공지</strong> 조정점수 5차 업데이트</a></td>
-                            <td>2018-12-27</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td><a href="#none"><strong>공지</strong> 조정점수및 예상 합격선 4차 업데이트</a></td>
-                            <td>2018-12-26</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td><a href="#none">조정점수및 예상 합격선 3차 업데이트</a></td>
-                            <td>2018-12-24</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td><a href="#none">조정점수및 예상 합격선 업데이트 안내</a></td>
-                            <td>2018-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="#none">조정점수 및 예상 합격선 1차 업데이트</a></td>
-                            <td>2018-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="#none">채점시 오류 발생할 경우.</a></td>
-                            <td>2018-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="#none">018년 3차 합격예측 풀서비스 오픈!</a></td>
-                            <td>2018-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="#none">2018년 3차 합격예측 풀서비스 coming soon!</a></td>
-                            <td>2018-12-21</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="#none">2018 경찰 3차 합격을 기원합니다!</a></td>
-                            <td>2018-12-21</td>
-                        </tr>
-                    </tbody>
-                </table>
-                {{--공통 페이지 넘버링--}}
-
-                {{--글보기--}}
-                <table>
-                    <col widht="10%"/>
-                    <col widht=""/>
-                    <col widht="20%"/>
-                    <thead>
-                        <tr>
-                            <th class="tx-left"><strong>공지</strong> 조정점수 5차 업데이트 <span>2018-12-27</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tx-left">                            
-                                복수정답 처리, 재채점 및 추가 채점자 합산 반영된 조정점수가 5차 업데이트 되었습니다.
-                                합격예측 풀서비스는 12/28(금) 오후 2시까지 채점 입력, 수정이 가능합니다.
-                                합격예측 풀서비스는 필기합격 발표에 따라 최종합격 예측 서비스로 이어질 예정입니다.
-                                <div class="boradImg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg" title="방송전"></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="btnsSt3"><a href="#none">목록</a></div>
-            </div>
+            <div id="promotion_notice"></div>
         </div>
 
         <div id="movieFrame">
-            {{--방송 전 27일 00:00 까지 노출
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg" title="방송전">
-            --}}
+            @php
+            $live_type = 'standby';
+            $now_datm = date('YmdHis');
+            $start_time = '20190428000000';
+            $end_time = '20190429000000';
 
-            {{--방송 중--}}
-            <script src="/public/vendor/jwplayer/jwplayer.js"></script>
-            <div class="movieplayer">
-                <div class="embedWrap">
-                    <div class="embed-container" id="myElement">
-                        <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
-                        <script type="text/javascript">
-                            jwplayer("myElement").setup({
-                            width: '100%',
-                            logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
-                            image: "https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg02.jpg",
-                            aspectratio: "21:9",
-                            autostart: "true",
-                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream11011"
-                        });
-                        </script>
+            if ($now_datm < $start_time) {
+                $live_type = 'standby';
+            } else if ($now_datm >= $start_time && $now_datm < $end_time) {
+                $live_type = 'on';
+            } else {
+                $live_type = 'off';
+            }
+            @endphp
+
+            @if ($live_type == 'standby')
+                {{--방송 전 27일 00:00 까지 노출--}}
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg" title="방송전">
+            @elseif($live_type == 'on')
+                {{--방송 중--}}
+                <script src="/public/vendor/jwplayer/jwplayer.js"></script>
+                <div class="movieplayer">
+                    <div class="embedWrap">
+                        <div class="embed-container" id="myElement">
+                            <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                            <script type="text/javascript">
+                                jwplayer("myElement").setup({
+                                width: '100%',
+                                logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
+                                image: "https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg02.jpg",
+                                aspectratio: "21:9",
+                                autostart: "true",
+                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream11011"
+                            });
+                            </script>
+                        </div>
+
+                        @if ($ismobile == true)
+                            {{--모바일용 --}}
+                            <ul class="mobileCh">
+                                <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
+                                <li><a href="javascript:fn_live('low')" class="mbtn2"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
+                            </ul>
+                        @endif
                     </div>
-
-                    {{--모바일용 --}}
-                    <ul class="mobileCh">
-                        <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
-                        <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
-                    </ul>
-                    
                 </div>
-            </div>
-            
-            {{--방송종료 00:00 부터 노출
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg03.jpg" title="방송종료" />
-            --}}
+            @else
+                {{--방송종료 00:00 부터 노출--}}
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg03.jpg" title="방송종료" />
+            @endif
         </div>
 
         <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live_02.jpg" title="생방송 강의 진행 안내"></div>
@@ -301,8 +233,18 @@
     });
 
     /*레이어팝업*/
-    function go_popup() {
+    function go_popup(param) {
         $('#popup').bPopup();
+        var ele_id = 'promotion_notice';
+        var data = {
+            'ele_id' : ele_id,
+            'board_idx' : param,
+            'predict_idx' : '{{ $arr_base['spidx'] }}',
+            'promotion_code' : '{{ $arr_base['promotion_code'] }}'
+        };
+        sendAjax('{{ front_url('/support/predictNotice/index') }}', data, function(ret) {
+            $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+        }, showAlertError, false, 'GET', 'html');
     }
 </script>
 

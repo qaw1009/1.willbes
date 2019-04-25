@@ -121,10 +121,10 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .ddayBefore h1 {margin-bottom:2em; text-align: center; font-size:30px}
 .ddayBefore h2 {clear:both; font-size:24px; font-weight:500; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
 .ddayBefore h2 span {color:#1087ef !important}
-.ddayBefore table {margin-bottom:2em}
-.ddayBefore table th,
-.ddayBefore table td {padding:10px; line-height: 1.5}
-.ddayBefore table td {text-align:left}
+.ddayBefore .boardTypeB {margin-bottom:2em}
+.ddayBefore .boardTypeB th,
+.ddayBefore .boardTypeB td {padding:10px; line-height: 1.5}
+.ddayBefore .boardTypeB td {text-align:left !important}
 
 .m_section3 {width:100%}	
 .m_section3_wrap {width:980px; margin:0 auto 0; padding:80px 0 0}

@@ -216,7 +216,7 @@
             </div>
         </div>
 
-        {{-- 하단 띠배너
+        {{-- 하단 띠배너--}}
         <div class="mainBottomBn">
             <div>
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1187#evt01">
@@ -224,7 +224,7 @@
                 </a>
                 <span class="btmEvClose">닫기</span>
             </div>
-        </div>--}}
+        </div>
 
         <div class="Section Section4 mb50 mt30">
             @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])

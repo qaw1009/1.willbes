@@ -77,11 +77,9 @@
                             <ul class="liveTab03 slide01">
                                 @foreach($arr_input['data']['역대합격선'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                            <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                            <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span>
-                                        @endforeach
+                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
+                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
+                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -89,9 +87,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['동향뉴스'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
                                     </li>
                                 @endforeach
                             </ul>
@@ -99,9 +95,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['시험총평'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
                                     </li>
                                 @endforeach
                             </ul>
@@ -109,9 +103,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['안내사항'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
                                     </li>
                                 @endforeach
                             </ul>
@@ -119,12 +111,10 @@
                             <ul class="liveTab03 slide01" >
                                 @foreach($arr_input['data']['실시간채점현황1'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                            <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                            <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                            <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                        @endforeach
+                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
+                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
+                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
+                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -132,12 +122,10 @@
                             <ul class="liveTab03 slide01" >
                                 @foreach($arr_input['data']['실시간채점현황2'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
-                                            <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
-                                            <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
-                                            <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
-                                        @endforeach
+                                        <div><span class="st01">{{ $arr_content[0] }}</span><span class="st01">{{ $arr_content[1] }}</span></div>
+                                        <span>{{ $arr_content[2] }}</span><span class="st01">{{ $arr_content[3] }}</span><span>{{ $arr_content[4] }}</span><span class="st01">{{ $arr_content[5] }}</span>
+                                        <span>{{ $arr_content[6] }}</span><span class="st01">{{ $arr_content[7] }}</span><span>{{ $arr_content[8] }}</span><span class="st01">{{ $arr_content[9] }}</span>
+                                        <span>{{ $arr_content[10] }}</span><span class="st01">{{ $arr_content[11] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -145,9 +133,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['예상컷공개'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
                                     </li>
                                 @endforeach
                             </ul>
@@ -155,9 +141,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['예측참여현황'] as $arr_content)
                                     <div class="counter">
-                                        @foreach($arr_content as $key => $val)
-                                            <div class="NSK-Black">{{ $arr_content[0] }}<span>{{ $arr_content[1] }}</span>건</div>
-                                        @endforeach
+                                        <div class="NSK-Black">{{ $arr_content[0] }}<span>{{ $arr_content[1] }}</span>건</div>
                                     </div>
                                 @endforeach
                             </ul>
@@ -165,9 +149,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['이벤트당첨'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span>{{ $arr_content[0] }}</span>
-                                        @endforeach
+                                        <span>{{ $arr_content[0] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -175,9 +157,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['전화인터뷰'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -185,9 +165,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['실시간댓글1'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -195,9 +173,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['실시간댓글2'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -205,9 +181,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['실시간댓글3'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -215,9 +189,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['실시간댓글4'] as $arr_content)
                                     <li>
-                                        @foreach($arr_content as $key => $val)
-                                            <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
-                                        @endforeach
+                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
                                     </li>
                                 @endforeach
                             </ul>

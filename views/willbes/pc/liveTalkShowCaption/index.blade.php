@@ -157,7 +157,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['전화인터뷰'] as $arr_content)
                                     <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
+                                        <span class="st01">{{ $arr_content[0] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -165,7 +165,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['실시간댓글1'] as $arr_content)
                                     <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
+                                        <span class="st01">{{ $arr_content[0] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -173,7 +173,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['실시간댓글2'] as $arr_content)
                                     <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
+                                        <span class="st01">{{ $arr_content[0] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -181,7 +181,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['실시간댓글3'] as $arr_content)
                                     <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
+                                        <span class="st01">{{ $arr_content[0] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -189,7 +189,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['실시간댓글4'] as $arr_content)
                                     <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span><span>{{ $arr_content[1] }}</span>
+                                        <span class="st01">{{ $arr_content[0] }}</span>
                                     </li>
                                 @endforeach
                             </ul>

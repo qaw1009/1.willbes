@@ -128,7 +128,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 }
             }
 
-
+            $subject_list = $this->surveyModel->subjectList($idx, $PrIdx);
         } else {
             $mode = 'NEW';
             $scoreIs = 'N';
@@ -140,6 +140,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $data['PrIdx'] = '';
 
             $scoredata = array();
+            $subject_list = array();
 
         }
 
@@ -160,6 +161,7 @@ class BasePassPredict extends \app\controllers\FrontController
             'scoreIs' => $scoreIs,
             'addscoreIs' => $addscoreIs,
             'openYn' => $openYn,
+            'subject_list' => $subject_list,
             'scoreType' => $scoreType
         ], false);
     }
@@ -194,8 +196,10 @@ class BasePassPredict extends \app\controllers\FrontController
             ['field' => 'Period', 'label' => '시험준비기간', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
 
-        if( $_FILES['RealConfirmFile']['error'] !== UPLOAD_ERR_OK || $_FILES['RealConfirmFile']['size'] == 0 ) {
-            $rules[] = ['field' => 'RealConfirmFile', 'label' => '인증파일', 'rules' => 'required'];
+        if($this->input->post('img_pass') !== 'Y' ) {         //응시표 인증파일 무시일 경우
+            if ($_FILES['RealConfirmFile']['error'] !== UPLOAD_ERR_OK || $_FILES['RealConfirmFile']['size'] == 0) {
+                $rules[] = ['field' => 'RealConfirmFile', 'label' => '인증파일', 'rules' => 'required'];
+            }
         }
 
         if ($this->validate($rules) === false) return;

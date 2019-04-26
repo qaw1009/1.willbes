@@ -12,10 +12,10 @@
     .viewmenu li a:hover,
     .viewmenu li a.active {background:#06F; color:#fff}
 	.viewmenu:after {content:""; display:block; clear:both}
-	
+
 	.viewArea {position:fixed; bottom:0; width:100%; height:130px;}
-    .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}  
-    .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}  
+    .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}
+    .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}
     .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important}
 	.liveTab01 li {height:130px; position:relative}
 	.liveTab01 span {position:absolute}
@@ -24,16 +24,16 @@
 	.liveTab01 .txt03 {top:62px; left:824px; font-size:50px; font-weight:bold; color:#8e182e; letter-spacing:-1px; font-family:"Times New Roman", Times, serif}
 	.liveTab01 .txt04 {top:33px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
 	.liveTab01 .txt05 {top:74px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
-    
+
     .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
-	.liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
-	.liveTab02 li span {margin-right:10px; vertical-align:top} 
+	.liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+	.liveTab02 li span {margin-right:10px; vertical-align:top}
     .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
     .liveTab02 li span.st02 {font-family:"Times New Roman", Times, serif}
 
     .liveTab03 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
-	.liveTab03 li {padding-left:260px; height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
-	.liveTab03 li span {margin-right:10px; vertical-align:top} 
+	.liveTab03 li {padding-left:260px; height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+	.liveTab03 li span {margin-right:10px; vertical-align:top}
     .liveTab03 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
     .liveTab03 li span.st02 {font-family:"Times New Roman", Times, serif}
     .liveTab03 li div {font-size:22px; margin-bottom:12px; margin-top:26px}
@@ -43,13 +43,13 @@
     .counter div {color:#fff; font-size:40px; padding-top:45px}
     .counter span {color:#fff200; vertical-align: text-bottom}
     /*.counter p {font-size:11px; color:#fff; margin-top:10px; line-height: 1.4}*/
-    
+
     /*크롬*/
     @@media screen and (-webkit-min-device-pixel-ratio:0) {
-    .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}  
-    .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}  
+    .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}
+    .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}
     .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important;}
-    } 
+    }
 </style>
 
 <div class="NSK captionWrap">
@@ -72,65 +72,65 @@
     </ul>
 
     <div class="viewArea">
-        {{--응시현황--}} 
-        <div class="viewbox" id="tab01">                           
-            <div class="bgimg" style="background: url(https://static.willbes.net/public/images/promotion/2019/04/1208_live01.jpg) no-repeat right center;"> </div>    
-            <ul class="liveTab01 slide01">       
+        {{--응시현황--}}
+        <div class="viewbox" id="tab01">
+            <div class="bgimg" style="background: url(https://static.willbes.net/public/images/promotion/2019/04/1208_live01.jpg) no-repeat right center;"> </div>
+            <ul class="liveTab01 slide01">
                 <li>
                     <span class="txt01">일반공채:남</span>
                     <span class="txt02">서울</span>
                     <span class="txt03">31:1</span>
                     <span class="txt04">230 명</span>
                     <span class="txt05">7,166 명</span>
-                </li>        
+                </li>
                 <li>
                     <span class="txt01">일반공채:남</span>
                     <span class="txt02">부산</span>
                     <span class="txt03">62:1</span>
                     <span class="txt04">30 명</span>
                     <span class="txt05">1,881 명</span>
-                </li> 
+                </li>
                 <li>
                     <span class="txt01">일반공채:남</span>
                     <span class="txt02">서울</span>
                     <span class="txt03">31:1</span>
                     <span class="txt04">230 명</span>
                     <span class="txt05">7,166 명</span>
-                </li> 
-            </ul>            
+                </li>
+            </ul>
         </div>
 
         {{--역대합격선--}}
-        <div class="viewbox" id="tab02">                            
-            <ul class="liveTab03 slide01">       
+        <div class="viewbox" id="tab02">
+            <ul class="liveTab03 slide01">
                 <li>
                     <div><span class="st01">일반공채:남</span><span class="st01">서울</span></div>
                     <span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
-                </li>        
+                </li>
                 <li>
                     <div><span class="st01">일반공채:남</span><span class="st01">서울</span></div>
                     <span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
-                </li> 
+                </li>
                 <li>
                     <div><span class="st01">일반공채:남</span><span class="st01">서울</span></div>
                     <span>18년 1차</span><span class="st01">346.45</span><span>18년 2차</span><span class="st01">330.41</span><span>18년 3차</span><span class="st01">325.69</span>
-                </li> 
+                </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live02.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--동향뉴스--}}  
-        <div class="viewbox" id="tab03">                          
-            <ul class="liveTab02 slide01" >       
+        {{--동향뉴스--}}
+        <div class="viewbox" id="tab03">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">[NEWS]</span>경찰공무원 합격? 12월 22일, 결전의 그 날!
-                </li>        
+                </li>
                 <li>
                     <span class="st01">[NEWS]</span>경찰 3차 '필기시험, 역시 기출이 답이었다!'
-                </li> 
+                </li>
                 <li>
                     <span class="st01">[속보]</span>경찰 3차 경쟁률, '3년 만에 최저!"
-                </li> 
+                </li>
                 <li>
                     <span class="st01">[속보]</span>가답안 등록 완료. 지금 실시간 채점하고 바로 윌비스 합격예측 풀서비스에 참여하세요!
                 </li>
@@ -138,18 +138,18 @@
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live03.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--시험총평--}}   
-        <div class="viewbox" id="tab04">                         
-            <ul class="liveTab02 slide01" >       
+        {{--시험총평--}}
+        <div class="viewbox" id="tab04">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">[형사소송법]</span>이번에도 역시나 판례 위주의 출제…판례의 중요성 더욱 높아져
-                </li>        
+                </li>
                 <li>
                     <span class="st01">[영어]</span>점점 국가직화 되어가는 경찰 영어 시험…해답은 어디에
-                </li> 
+                </li>
                 <li>
                     <span class="st01">[영어]</span>평소 장문의 독해를 연습하지 않았다면 어려웠을 것으로 예상
-                </li> 
+                </li>
                 <li>
                     <span class="st01">[한국사]</span>점차 지엽적인 문제보다 무난하게 출제되는 경향 높아져
                 </li>
@@ -157,26 +157,26 @@
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live04.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--안내사항--}}   
-        <div class="viewbox" id="tab05">                         
-            <ul class="liveTab02 slide01" >       
+        {{--안내사항--}}
+        <div class="viewbox" id="tab05">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">[공지]</span>합격예측 라이브 토크쇼 본방사수, 상품권 10만원 증정~
-                </li>        
+                </li>
                 <li>
                     <span class="st01">[안내]</span>2019년 1차 시험, 기출 해설강의 오후 3시 시작!
-                </li> 
+                </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live05.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--실시간채점현황1--}}   
-        <div class="viewbox" id="tab06">                         
-            <ul class="liveTab03 slide01" >       
+        {{--실시간채점현황1--}}
+        <div class="viewbox" id="tab06">
+            <ul class="liveTab03 slide01" >
                 <li>
                     <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
                     <span>한국사</span><span class="st01">85</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">70</span><span>경찰학</span><span class="st01">85</span>
-                </li>        
+                </li>
                 <li>
                     <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
                     <span>한국사</span><span class="st01">100</span><span>영어</span><span class="st01">75</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">80</span><span>경찰학</span><span class="st01">80</span>
@@ -189,13 +189,13 @@
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live06.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--실시간채점현황2--}}   
-        <div class="viewbox" id="tab07">                         
-            <ul class="liveTab03 slide01" >       
+        {{--실시간채점현황2--}}
+        <div class="viewbox" id="tab07">
+            <ul class="liveTab03 slide01" >
                 <li>
                     <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
                     <span>한국사</span><span class="st01">85</span><span>영어</span><span class="st01">70</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">70</span><span>경찰학</span><span class="st01">85</span>
-                </li>        
+                </li>
                 <li>
                     <div><span class="st01">일반공채:남</span><span class="st01">경기남부</span></div>
                     <span>한국사</span><span class="st01">100</span><span>영어</span><span class="st01">75</span><span>형법</span><span class="st01">80</span><span>형소법</span><span class="st01">80</span><span>경찰학</span><span class="st01">80</span>
@@ -208,12 +208,12 @@
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live06.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--예상컷공개--}}   
-        <div class="viewbox" id="tab08">                         
-            <ul class="liveTab02 slide01" >       
+        {{--예상컷공개--}}
+        <div class="viewbox" id="tab08">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">[일반:남]</span><span>공통 140 ~ 170, 선택 250 ~ 300</span>
-                </li>        
+                </li>
                 <li>
                     <span class="st01">[일반:여]</span><span>공통 140 ~ 170, 선택 250 ~ 300</span>
                 </li>
@@ -221,74 +221,74 @@
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live07.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--예측참여현황--}}   
-        <div class="viewbox" id="tab09">                      
+        {{--예측참여현황--}}
+        <div class="viewbox" id="tab09">
             <div class="counter">
-                <div class="NSK-Black">적중&합격예측 서비스 이용 : <span>986,129</span>건</div> 
+                <div class="NSK-Black">적중&합격예측 서비스 이용 : <span>986,129</span>건</div>
             </div>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live08.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--이벤트당첨--}}   
-        <div class="viewbox" id="tab10">                         
-            <ul class="liveTab02 slide01" >       
+        {{--이벤트당첨--}}
+        <div class="viewbox" id="tab10">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span>지금 바로 상품권 당첨자 발표합니다!</span>
-                </li>  
+                </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live09.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--전화 인터뷰--}}   
-        <div class="viewbox" id="tab11">                         
-            <ul class="liveTab02 slide01" >       
+        {{--전화 인터뷰--}}
+        <div class="viewbox" id="tab11">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">[전화 인터뷰]</span><span>경찰 1차 시험 응시생, 부산캠퍼스 수험생 ***군 연결</span>
-                </li>  
+                </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live10.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--실시간댓글 1--}}   
-        <div class="viewbox" id="tab12">                         
-            <ul class="liveTab02 slide01" >       
+        {{--실시간댓글 1--}}
+        <div class="viewbox" id="tab12">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">will***</span><span>영어 독해 시간안배 비결이 궁금합니다~</span>
-                </li>  
+                </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live11.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--실시간댓글 2--}}   
-        <div class="viewbox" id="tab13">                         
-            <ul class="liveTab02 slide01" >       
+        {{--실시간댓글 2--}}
+        <div class="viewbox" id="tab13">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">poli***</span><span>한국사 고득점 비결이 궁금합니다~</span>
-                </li>  
+                </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live11.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--실시간댓글 3--}}   
-        <div class="viewbox" id="tab14">                         
-            <ul class="liveTab02 slide01" >       
+        {{--실시간댓글 3--}}
+        <div class="viewbox" id="tab14">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">pass***</span><span>면접 준비 어떻게 하면 될까요?</span>
-                </li>  
+                </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live11.jpg" title="CONTENTS 명"></div>
         </div>
 
-        {{--실시간댓글 4--}}   
-        <div class="viewbox" id="tab15">                         
-            <ul class="liveTab02 slide01" >       
+        {{--실시간댓글 4--}}
+        <div class="viewbox" id="tab15">
+            <ul class="liveTab02 slide01" >
                 <li>
                     <span class="st01">pass***</span><span>단기간 합격 비법이 있나요?</span>
-                </li>  
+                </li>
             </ul>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live11.jpg" title="CONTENTS 명"></div>
         </div>
-    </div> 
+    </div>
 
 </div>
 
@@ -335,7 +335,7 @@
                 delay: 11, // the delay time in ms
                 time: 1000 // the speed time in ms
             });
-        });    
+        });
 </script>
 
 @stop

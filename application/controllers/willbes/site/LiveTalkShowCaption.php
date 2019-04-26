@@ -31,15 +31,20 @@ class LiveTalkShowCaption extends \app\controllers\FrontController
                 $detail_content = explode('^', $c_val);
                 foreach ($detail_content as $d_key => $d_val) {
                     if (empty($d_val) === false) {
-                        $data_content[$keys][$c_key][$d_key] = $d_val;
+                        $data_content[$vals['Title']][$c_key][$d_key] = $d_val;
                     }
                 }
             }
         }
 
-        print_r($data_content);
+        /*print_r($data_content);*/
 
         /*print_r($data_subTitles);*/
+
+        $arr_input = [
+            'menu' => $data_subTitles,
+            'data' => $data_content
+        ];
 
         $this->load->view('liveTalkShowCaption/index', [
             'arr_input' => $arr_input

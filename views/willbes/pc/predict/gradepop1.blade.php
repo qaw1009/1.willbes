@@ -115,21 +115,24 @@
             ajaxSubmit($all_regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
+                    opener.location.reload();
+                    window.close();
                 }
             }, showValidateError, null, false, 'alert');
         }
+
         function examDeleteAjax() {
             if (confirm('채점취소시 기존의 성적모든데이터는 삭제됩니다. \n 채점취소 하시겠습니까?')) {
                 var _url = '{{ front_url('/predict/examDeleteAjax') }}';
                 ajaxSubmit($all_regi_form, _url, function (ret) {
                     if (ret.ret_cd) {
                         alert(ret.ret_msg);
-                        location.reload();
+                        opener.location.reload();
+                        window.close();
                     }
                 }, showValidateError, null, false, 'alert');
             }
         }
-
 
         //시험제출
         function examSave(){

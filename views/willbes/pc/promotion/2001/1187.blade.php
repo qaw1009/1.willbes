@@ -36,7 +36,7 @@
     <div class="p_re evtContent NGR" id="evtContainer">
         <ul class="skyBanner">
             <li><a href="javascript:alert('coming soon');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr01.png" title="토크쇼"></a></li>
-            <li><a href="javascript:alert('coming soon');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트"></a></li>
+            <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트"></a></li>
             {{--<li class="mt10"><a href="#none" onclick="javascript:doEvent2(); return false;"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr03.png" title="최신판례특강"></a></li>--}}
         </ul>  
 

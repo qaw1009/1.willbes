@@ -16,13 +16,14 @@
 	.viewArea {position:fixed; bottom:0; width:100%; height:130px;}
     .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}  
     .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}  
-    .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important;}
+    .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important}
 	.liveTab01 li {height:130px; position:relative}
 	.liveTab01 span {position:absolute}
-	.liveTab01 .txt01 {top:30px; left:292px; font-size:30px; font-weight:bold; color:#fdf9c1; width:190px; text-align:center; line-height:1.3}
-	.liveTab01 .txt02 {top:62px; left:824px; font-size:50px; font-weight:bold; color:#8e182e; letter-spacing:-1px; font-family:"Times New Roman", Times, serif}
-	.liveTab01 .txt03 {top:33px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
-	.liveTab01 .txt04 {top:74px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
+    .liveTab01 .txt01 {top:30px; left:292px; font-size:30px; font-weight:bold; color:#fdf9c1; width:190px; text-align:center; line-height:1.3}
+    .liveTab01 .txt02 {top:70px; left:292px; font-size:30px; font-weight:bold; color:#fdf9c1; width:190px; text-align:center; line-height:1.3}
+	.liveTab01 .txt03 {top:62px; left:824px; font-size:50px; font-weight:bold; color:#8e182e; letter-spacing:-1px; font-family:"Times New Roman", Times, serif}
+	.liveTab01 .txt04 {top:33px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
+	.liveTab01 .txt05 {top:74px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
     
     .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
 	.liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
@@ -37,7 +38,6 @@
     .liveTab03 li span.st02 {font-family:"Times New Roman", Times, serif}
     .liveTab03 li div {font-size:22px; margin-bottom:12px; margin-top:26px}
     .liveTab03 li div span.st01 {border:0; letter-spacing:0;}
-
 
     .counter {position:absolute; top:0; left:0; text-align:center; width:100%; padding-left:200px; z-index:10;}
     .counter div {color:#fff; font-size:40px; padding-top:45px}
@@ -77,22 +77,25 @@
             <div class="bgimg" style="background: url(https://static.willbes.net/public/images/promotion/2019/04/1208_live01.jpg) no-repeat right center;"> </div>    
             <ul class="liveTab01 slide01">       
                 <li>
-                    <span class="txt01">일반공채:남<br>서울</span>
-                    <span class="txt02">31:1</span>
-                    <span class="txt03">230 명</span>
-                    <span class="txt04">7,166 명</span>
+                    <span class="txt01">일반공채:남</span>
+                    <span class="txt02">서울</span>
+                    <span class="txt03">31:1</span>
+                    <span class="txt04">230 명</span>
+                    <span class="txt05">7,166 명</span>
                 </li>        
                 <li>
-                    <span class="txt01">일반공채:남<br>부산</span>
-                    <span class="txt02">62:1</span>
-                    <span class="txt03">30 명</span>
-                    <span class="txt04">1,881 명</span>
+                    <span class="txt01">일반공채:남</span>
+                    <span class="txt02">부산</span>
+                    <span class="txt03">62:1</span>
+                    <span class="txt04">30 명</span>
+                    <span class="txt05">1,881 명</span>
                 </li> 
                 <li>
-                    <span class="txt01">일반공채:남<br>서울</span>
-                    <span class="txt02">31:1</span>
-                    <span class="txt03">230 명</span>
-                    <span class="txt04">7,166 명</span>
+                    <span class="txt01">일반공채:남</span>
+                    <span class="txt02">서울</span>
+                    <span class="txt03">31:1</span>
+                    <span class="txt04">230 명</span>
+                    <span class="txt05">7,166 명</span>
                 </li> 
             </ul>            
         </div>

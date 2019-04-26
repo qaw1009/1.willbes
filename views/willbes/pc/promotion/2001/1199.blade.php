@@ -35,6 +35,23 @@
         .slide_con p.rightBtn {right:-80px;top:46%; width:67px; height:67px;}
         .evt03 {background:#fff;}
 
+        .snslink {
+            width: 980px;
+            margin: 0 auto 50px;
+        }
+        .snslink li {
+            display: inline;
+            float: left;
+            width: 25%;
+            text-align: center;
+        }
+        .snslink:after {
+            content:'';
+            display: block;
+            clear:both;
+        }
+
+
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -44,7 +61,7 @@
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">
-                <div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span>986,129</span>건</div>    
+                {{--<div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span>986,129</span>건</div>--}}    
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_top.png" title="2019년 경찰 1차 적중&합격예측 사전예약 이벤트">
             </div>        
         </div>
@@ -71,6 +88,12 @@
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_03.jpg" title="사전예약 이벤트">
+            <ul class="snslink">
+                <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline01.png"alt="다음카페 경사모" /></a></li>
+                <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline02.png" alt="네이버카페 경꿈사" /></a></li>
+                <li><a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline03.png" alt="디시 공무원 갤러리" /></a></li>
+                <li><a href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer" target="_blank"><img src="http://file3.willbes.net/new_cop/common/snsline04.png" alt="디시 순경마이너 갤러리" /></a></li>
+            </ul>
         </div>
 
         {{--강사 이미티콘 홍보url댓글

@@ -119,7 +119,9 @@
         });
 
         function selProd(value){
+
             location.href = "/predict/passline/?prodcode="+value;
+
         }
 
         function registLine(prodcode){

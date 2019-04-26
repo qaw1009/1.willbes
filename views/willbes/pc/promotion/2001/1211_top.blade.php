@@ -124,11 +124,11 @@
         <li>
             <a href="#none"  id="mt2"> 성적채점 및 확인 </a></li>
         <li>
-            <a href="javascript:alert('준비중입니다.');" id="mt3"> 합격예측 </a>
+            <a href="javascript:alert('4월 27일 오픈합니다.');" id="mt3"> 합격예측 </a>
             {{--<a href="#none"> 합격예측 </a>--}}
         </li>
         <li>
-            <a href="javascript:alert('준비중입니다.');"  id="mt4"> 기출문제및해설 </a>
+            <a href="javascript:alert('4월 27일 오픈합니다.');"  id="mt4"> 기출문제및해설 </a>
             {{--<a href="#none">기출문제해설</a>--}}
         </li>
     </ul>

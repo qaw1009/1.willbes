@@ -22,11 +22,15 @@
                     @endforeach
                 </ul>
                 <div class="paper">
-                    @if($question_list[0]['file'])
-                        <img src="{{ $filepath }}{{ $question_list[0]['file'] }}" width="100%"/>
+                @if($question_list[0]['file'])
+                    @if(strpos($question_list[0]['file'], 'pdf') !== false)
+                            <iframe src="{{ $filepath }}{{ $question_list[0]['file'] }}" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
                     @else
-                        <img src="http://file3.willbes.net/new_cop/2018/12/20181221j_default.jpg" width="100%"/>
+                            <img src="{{ $filepath }}{{ $question_list[0]['file'] }}" width="100%"/>
                     @endif
+                @else
+                    <img src="http://file3.willbes.net/new_cop/2018/12/20181221j_default.jpg" width="100%"/>
+                @endif
                 </div>
             </div>
             <!--omrL//-->

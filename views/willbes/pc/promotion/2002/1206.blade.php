@@ -64,12 +64,12 @@
             <iframe width="854" height="480" src="https://www.youtube.com/embed/-19yIQTjdQs?rel=0" frameborder="0" allowfullscreen></iframe>
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_02.jpg" alt="면접캠프 설명회" usemap="#Map1206B" border="0" id="go01">
             <map name="Map1206B" id="Map1206B" id="go01">
-                <area shape="rect" coords="605,402,1021,515" href="javascript:pullOpen();" alt="사전특강&amp;설명회 신청하기"/>
+                <area shape="rect" coords="605,402,1021,515" href="javascript:goEvent();" alt="사전특강&amp;설명회 신청하기"/>
             </map>
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_03.jpg"alt="윌비스신광은경찰팀의 황세웅 교수"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_03.jpg" alt="윌비스신광은경찰팀의 황세웅 교수"/>
         </div>
 
         <div class="evtCtnsBox evt04">
@@ -104,9 +104,9 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        function pullOpen(){
-            var url = "1206_popup";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+        function goEvent() {
+            var url = "{{front_url('/predict/index/'.$arr_promotion_params['prodcode'])}}";
+            window.open(url , "event_pop" , "scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100");
         }
     </script>
 

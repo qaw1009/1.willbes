@@ -78,8 +78,13 @@ class SurveyModel extends WB_Model
     {
         try {
             $this->_conn->trans_begin();
-
             $names = $this->makeUploadFileName(['RealConfirmFile'], 1);
+
+            if(empty($names)) {
+                $names['RealConfirmFile']['name'] = null;
+                $names['RealConfirmFile']['real'] = null;
+            }
+
             $ProdCode = $this->input->post('ProdCode');
 
             $regist_check = $this->predictResist($ProdCode, $this->session->userdata('mem_idx'));
@@ -113,9 +118,11 @@ class SurveyModel extends WB_Model
             // 파일 업로드
             $uploadSubPath = $this->upload_path_predict . $ProdCode;
 
-            $isSave = $this->uploadFileSave($uploadSubPath, $names);
-            if($isSave !== true) {
-                throw new Exception('파일 저장에 실패했습니다.');
+            if(empty($names) === false) {
+                $isSave = $this->uploadFileSave($uploadSubPath, $names);
+                if ($isSave !== true) {
+                    throw new Exception('파일 저장에 실패했습니다.');
+                }
             }
 
             $Ssubject = $this->input->post('Ssubject');

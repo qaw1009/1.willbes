@@ -52,7 +52,7 @@
                     <li class="a01"><a data-slide-index="1" href="#none" class="active">서울</a></li>
                     <li class="a12"><a data-slide-index="2" href="#none">부산</a></li>
                     <li class="a11"><a data-slide-index="3" href="#none">대구</a></li>
-                    <li class="a02"><a data-slide-index="4 href="#none">인천</a></li>
+                    <li class="a02"><a data-slide-index="4" href="#none">인천</a></li>
                     <li class="a16"><a data-slide-index="5" href="#none">광주</a></li>
                     <li class="a08"><a data-slide-index="6" href="#none">대전</a></li>
                     <li class="a13"><a data-slide-index="7" href="#none">울산</a></li>
@@ -71,13 +71,10 @@
         </div>
     </div>
 
-    <div class="embed-container">
-        <iframe src="https://www.youtube.com/embed/nRHUYZwBCuM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
 
     <div class="talkShow">
         <a href="#none" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_bn2.png" alt="LIVE 합격예측 토크쇼">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_bn3.png" alt="LIVE 합격예측 토크쇼">
         </a>
         {{--토크쇼 종료 후 노출
         <a href="#none" >
@@ -127,11 +124,11 @@
         <li>
             <a href="#none"  id="mt2"> 성적채점 및 확인 </a></li>
         <li>
-            <a href="javascript:alert('준비중입니다.');" id="mt3"> 합격예측 </a>
+            <a href="javascript:alert('4월 27일 오픈합니다.');" id="mt3"> 합격예측 </a>
             {{--<a href="#none"> 합격예측 </a>--}}
         </li>
         <li>
-            <a href="javascript:alert('준비중입니다.');"  id="mt4"> 기출문제및해설 </a>
+            <a href="javascript:alert('4월 27일 오픈합니다.');"  id="mt4"> 기출문제및해설 </a>
             {{--<a href="#none">기출문제해설</a>--}}
         </li>
     </ul>

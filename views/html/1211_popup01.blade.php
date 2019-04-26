@@ -25,12 +25,13 @@
                     <li><a href="#none">경찰학개론</a></li>
                 </ul>
                 <div class="paper">
-                    <iframe src="http://file3.willbes.net/subjItemPoolQ/20173/20170304141839582.pdf" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                    <iframe src="/public/uploads/lms/predict/37/Q_2f7e5f150dbe5810da0b3a5c8f7e74cf.pdf" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
                     <img src="http://file3.willbes.net/new_cop/2018/12/20181221j_default.jpg" width="100%"/>
                 </div>
             </div>
             <!--omrL//-->
-            
+
+
             <!--답안지-->
             <div class="omrR">
                 <p>왼쪽 문제에 맞춰 실제 시험에서 제출한 문항별 답안지를 체크해 주세요.</p>

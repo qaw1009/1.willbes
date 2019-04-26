@@ -541,7 +541,8 @@ class OrderCalcModel extends BaseOrderModel
 				inner join ' . $this->_table['order_product_prof_subject'] . ' as OPP
 					on OP.OrderProdIdx = OPP.OrderProdIdx
 				left join ' . $this->_table['my_lecture'] . ' as ML
-					on O.OrderIdx = ML.OrderIdx and OP.OrderProdIdx = ML.OrderProdIdx and OP.ProdCode = ML.ProdCode and OP.ProdCode = ML.ProdCodeSub					
+					on O.OrderIdx = ML.OrderIdx and OP.OrderProdIdx = ML.OrderProdIdx and OP.ProdCode = ML.ProdCode and OP.ProdCode = ML.ProdCodeSub
+					    and O.PayRouteCcd = "' . $this->_pay_route_ccd['admin_pay'] . '"					
 				left join ' . $this->_table['code'] . ' as CPM
 					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"							
 			where OP.RealPayPrice > 0

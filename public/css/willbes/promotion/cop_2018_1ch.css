@@ -38,9 +38,9 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .conut_section_wrap div ul:after {content:""; display:block; clear:both}	
 
 .m_sectin1_box {position:relative; width:1120px; margin:0 auto; height:1400px}
-.m_sectin1_box .title {position:absolute; width:464px; top:168px; left:100px; z-index:1}
+.m_sectin1_box .title {position:absolute; width:464px; top:168px; left:70px; z-index:1}
 
-.tmap {position:absolute; top:180px; left:620px; width:440px; height:430px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_03map.png) no-repeat}
+.tmap {position:absolute; top:180px; left:600px; width:440px; height:430px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_03map.png) no-repeat}
 .tmap .map_visual {position:relative}
 /*지도테이블*/
 .tmap .map_visual .tmapR {float:right; text-align:left; width:230px; height: 220px; margin-top:50px; overflow:hidden}
@@ -81,7 +81,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
     }
 .m_sectin1_box .embed-container iframe {width:456px; height:256px;}
 
-.talkShow {position:absolute; top:604px; left:600px; width:442px; animation:only 2s ease-in 0s infinite; z-index:1}
+.talkShow {position:absolute; top:604px; left:50%; margin-left:-490px; width:980px; text-align:center; animation:only 2s ease-in 0s infinite; z-index:1}
 @keyframes only{
 0%{top:604px}
 50%{top:630px; opacity:1}

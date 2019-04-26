@@ -15,8 +15,6 @@ class LiveTalkShowCaption extends \app\controllers\FrontController
 
     public function index()
     {
-        $arr_input = [];
-
         $result_subTitles = $this->subTitlesFModel->getSubTitlesList();
 
         $data_subTitles = [];
@@ -36,11 +34,6 @@ class LiveTalkShowCaption extends \app\controllers\FrontController
                 }
             }
         }
-
-        /*print_r($data_content);*/
-
-        /*print_r($data_subTitles);*/
-
         $arr_input = [
             'menu' => $data_subTitles,
             'data' => $data_content

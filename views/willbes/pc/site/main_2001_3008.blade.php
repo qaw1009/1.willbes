@@ -42,8 +42,8 @@
         
         <div class="Section mt8">
             <div class="widthAuto">
-                <a href="#none">
-                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_02.jpg') }}" title="면접에 필요한 전공 특강!! 공채 필수 강좌!! 곧 오픈됩니다.">
+                <a href="{{ site_url('/lecture/index/cate/3008/pattern/only?subject_idx=1011') }}">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3008_bnr_1120_02.jpg" title="올인원 면접 전공 특강">
                 </a>
             </div>
         </div>

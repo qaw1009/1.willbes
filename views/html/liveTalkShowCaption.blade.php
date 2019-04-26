@@ -25,13 +25,13 @@
 	.liveTab01 .txt04 {top:74px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
     
     .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
-	.liveTab02 li {padding-left:270px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-2px; text-align:left; width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
+	.liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
 	.liveTab02 li span {margin-right:10px; vertical-align:top} 
     .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
     .liveTab02 li span.st02 {font-family:"Times New Roman", Times, serif}
 
     .liveTab03 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
-	.liveTab03 li {padding-left:270px; height:130px; color:#fff; font-size:40px; letter-spacing:-2px; text-align:left; width:895px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
+	.liveTab03 li {padding-left:260px; height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}	
 	.liveTab03 li span {margin-right:10px; vertical-align:top} 
     .liveTab03 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
     .liveTab03 li span.st02 {font-family:"Times New Roman", Times, serif}
@@ -40,9 +40,9 @@
 
 
     .counter {position:absolute; top:0; left:0; text-align:center; width:100%; padding-left:200px; z-index:10;}
-    .counter div {color:#fff; font-size:30px; line-height:30px; padding-top:30px}
+    .counter div {color:#fff; font-size:40px; padding-top:45px}
     .counter span {color:#fff200; vertical-align: text-bottom}
-    .counter p {font-size:11px; color:#fff; margin-top:10px; line-height: 1.4}
+    /*.counter p {font-size:11px; color:#fff; margin-top:10px; line-height: 1.4}*/
     
     /*크롬*/
     @@media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -222,10 +222,6 @@
         <div class="viewbox" id="tab09">                      
             <div class="counter">
                 <div class="NSK-Black">적중&합격예측 서비스 이용 : <span>986,129</span>건</div> 
-                <p>
-                    * 서비스 이용현황 : 사전예약 및 본서비스 + 봉투모의고사 + 파이널찍기특강 + 최신판례특강 + 라이브토크쇼 + 적중이벤트 등 서비스 이용 페이지뷰 합산<Br />
-                    * 참여현황 : 사전예약, 성적채점, 설문조사, 시험후기, 토크쇼, 적중이벤트 참여건수 중복 합산 기준
-                </p>
             </div>
             <div class="bgimg"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_live08.jpg" title="CONTENTS 명"></div>
         </div>

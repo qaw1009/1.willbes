@@ -371,7 +371,8 @@
                 mode:'fade',
                 auto:true,
                 speed:350,
-                pause:4000,
+                pause:8000,
+                pager:true,
                 controls:false,
                 minSlides:1,
                 maxSlides:1,
@@ -402,6 +403,8 @@
 				slider2.stopAuto();
 				slider2.startAuto();
 			}
+		});
+
         });
         
         $(document).ready(function(){

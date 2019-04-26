@@ -2096,12 +2096,14 @@ body.memBody #Footer {
 .marking li div {margin-right:4px;  padding:3px; background:#666; text-align:center}
 .marking li div label {color:#fff; padding-bottom:5px; display: block}
 .marking li div input {width:100%; padding:5px 0; margin:0 auto; text-align:center; letter-spacing:4px}
+.marking li div span {position:absolute; right:20px; top:30px; z-index: 10;}
 .marking li:last-child div {margin-right:0}
 .marking ul:after {content:""; display:block; clear:both}
 
 .marking2 li {width:50%; position: relative;}
-.marking2 li span {position: absolute; right:20px; top:30px}
-.marking3 li {width:33.33333%;}
+
+.marking3 li {width:33.33333%; position: relative;}
+
 
 
 .markSbtn1 {width:100%; margin:1.5em auto; text-align:center;}

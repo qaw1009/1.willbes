@@ -28,10 +28,11 @@
         .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px; font-weight:bold}
         .time .time_txt span {color:#ea263e}
 
-        .wb_top {background:#2e5848 url(http://file3.willbes.net/new_gosi/2018/08/EV180802_c1_bg.jpg) no-repeat center top; position:relative}
-        .wb_cts01 {background:#f1efef url(http://file3.willbes.net/new_gosi/2018/08/EV180802_c2_bg.jpg) repeat-x}
-        .wb_cts02 {background:#fff}
-        .wb_cts03 {background:#31b38d}
+        .wb_top {background:#2e5848 url(https://static.willbes.net/public/images/promotion/2019/04/1075_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_cts01 {background:#fff}
+        .wb_cts02 {background:#f1eff0}
+        .wb_cts03 {background:#fff}
+        .wb_cts04 {background:#31b38d}
         .wb_cts05 {background:#fff}
 
         .skybanner {
@@ -48,7 +49,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         {{--
         <div class="skybanner">
-            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c12.png" alt="윌비스 박민주 한국사" ></a></div>
+            <div><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/EV180802_c12.png" alt="윌비스 박민주 한국사" ></a></div>
         </div>
         --}}
 
@@ -76,32 +77,33 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c1.png" alt="윌비스 한국사의 맥을 꿰뚫는 명품 강의 박민주 한국사 " usemap="#Map180802_c1" border="0"  />
-            <map name="Map180802_c1" >
-                <area shape="rect" coords="824,1077,1048,1180" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150653') }}" target="_blank" onfocus="this.blur();" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1075_top_01.png" alt="윌비스 한국사의 맥을 꿰뚫는 명품 강의 박민주 한국사 "  /><br>
+            <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153218" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1075_top_02.gif" alt="신청하기"  /></a>
         </div>
-        <!--WB_top//-->
+        
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c2.jpg" alt="많은 수험생들이 한국사를 버거워하는 이유는 무엇일까요? 체계 없이 단순 암기만을 추구하기 때문입니다." /><br>
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c3.jpg" alt="윌비스 공무원 한국사의 대명사, 바로 민주국사입니다." />
-        </div><!--wb_cts01//-->
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1075_01.jpg" alt="많은 수험생들이 한국사를 버거워하는 이유는 무엇일까요? 체계 없이 단순 암기만을 추구하기 때문입니다." />
+        </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c4.jpg" alt="윌비스 수강생들이 인정한 名品 한국사 강의!" />
-        </div><!--wb_cts02//-->
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1075_02.jpg" alt="공무원 한국사의 대명사, 바로 민주국사입니다." />
+        </div>
 
-        <div class="evtCtnsBox wb_cts03" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c5.jpg" alt="방대한 양의 한국사, 구조화 이론으로 제대로 흐름 잡자!" usemap="#Map180802_c2" border="0" />
-            <map name="Map180802_c2" >
-                <area shape="rect" coords="726,786,974,926" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150653') }}" onfocus="this.blur();" target="_blank" />
+        <div class="evtCtnsBox wb_cts03" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1075_03.jpg" alt="윌비스 수강생들이 인정한 名品 한국사 강의!" />
+        </div>
+
+        <div class="evtCtnsBox wb_cts04" id="event">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1075_04.jpg" alt="방대한 양의 한국사, 구조화 이론으로 제대로 흐름 잡자!" usemap="#Map1075A" border="0" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150653') }}" />
+            <map name="Map1075A" id="Map1075A" >
+                <area shape="rect" coords="684,782,932,922" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153218" onfocus="this.blur();" target="_blank" />
             </map>
-        </div><!--wb_cts03//-->
+        </div>
 
         <div class="evtCtnsBox wb_cts05" >
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c6.jpg" alt="박민주 한국사 이용안내 및 유의사항 " />>
-        </div><!--wb_cts05//-->
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1075_05.jpg" alt="이용안내 및 유의사항 " />>
+        </div>
 
     </div>
     <!-- End Container -->

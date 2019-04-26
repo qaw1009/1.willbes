@@ -128,7 +128,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 }
             }
 
-
+            $subject_list = $this->surveyModel->subjectList($idx, $PrIdx);
         } else {
             $mode = 'NEW';
             $scoreIs = 'N';
@@ -140,6 +140,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $data['PrIdx'] = '';
 
             $scoredata = array();
+            $subject_list = array();
 
         }
 
@@ -160,6 +161,7 @@ class BasePassPredict extends \app\controllers\FrontController
             'scoreIs' => $scoreIs,
             'addscoreIs' => $addscoreIs,
             'openYn' => $openYn,
+            'subject_list' => $subject_list,
             'scoreType' => $scoreType
         ], false);
     }

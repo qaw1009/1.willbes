@@ -157,28 +157,28 @@
                         <th scope="col">조정점수</th>
                     </tr>
                     <tr>
-                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }}@else 미입력 @endif</td>
+                        <td>@if(empty($subject_list)===false) {{ $subject_list[0]['CcdName'] }} @else 미입력 @endif</td>
                         <td rowspan="5"><a href="javascript:popWindow(100001)" class="type1">채점하기 ▶</a></td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                     <tr>
-                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][1] }}@else 미입력 @endif</td>
+                        <td>@if(empty($subject_list)===false) {{ $subject_list[1]['CcdName'] }} @else 미입력 @endif</td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                     <tr>
-                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][2] }}@else 미입력 @endif</td>
+                        <td>@if(empty($subject_list)===false) {{ $subject_list[2]['CcdName'] }} @else 미입력 @endif</td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                     <tr>
-                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][3] }}@else 미입력 @endif</td>
+                        <td>@if(empty($subject_list)===false) {{ $subject_list[3]['CcdName'] }} @else 미입력 @endif</td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                     <tr>
-                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][4] }}@else 미입력 @endif</td>
+                        <td>@if(empty($subject_list)===false) {{ $subject_list[4]['CcdName'] }} @else 미입력 @endif</td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>

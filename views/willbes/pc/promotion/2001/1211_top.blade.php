@@ -52,7 +52,7 @@
                     <li class="a01"><a data-slide-index="1" href="#none" class="active">서울</a></li>
                     <li class="a12"><a data-slide-index="2" href="#none">부산</a></li>
                     <li class="a11"><a data-slide-index="3" href="#none">대구</a></li>
-                    <li class="a02"><a data-slide-index="4 href="#none">인천</a></li>
+                    <li class="a02"><a data-slide-index="4" href="#none">인천</a></li>
                     <li class="a16"><a data-slide-index="5" href="#none">광주</a></li>
                     <li class="a08"><a data-slide-index="6" href="#none">대전</a></li>
                     <li class="a13"><a data-slide-index="7" href="#none">울산</a></li>

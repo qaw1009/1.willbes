@@ -90,6 +90,7 @@ class SurveyModel extends WB_Model
 
             // 데이터 저장
             $data = array(
+                'ApplyType' => empty($this->input->post('ApplyType')) === false ? $this->input->post('ApplyType') : '합격예측',
                 'ProdCode' => $ProdCode,
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'SiteCode' => $this->input->post('SiteCode'),

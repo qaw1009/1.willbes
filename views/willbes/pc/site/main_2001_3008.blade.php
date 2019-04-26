@@ -42,7 +42,7 @@
         
         <div class="Section mt8">
             <div class="widthAuto">
-                <a href="{{ site_url('/lecture/index/cate/3008/pattern/only?subject_idx=1011') }}">
+                <a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/152968') }}">
                     <img src="https://static.willbes.net/public/images/promotion/main/3008_bnr_1120_02.jpg" title="올인원 면접 전공 특강">
                 </a>
             </div>

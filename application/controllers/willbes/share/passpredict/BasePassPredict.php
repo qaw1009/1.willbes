@@ -138,7 +138,6 @@ class BasePassPredict extends \app\controllers\FrontController
             $data['TakeMockPart'] = '';
             $data['SubjectCode'] = '';
             $data['PrIdx'] = '';
-
             $scoredata = array();
             $subject_list = array();
 
@@ -448,7 +447,7 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view('willbes/pc/predict/gradepop2', [
+        $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop2', [
             'prodcode'      => $prodcode,
             'subject_list'  => $subject_list,
             'question_list' => $question_list,
@@ -492,7 +491,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
         $subject_grade = $this->surveyModel->orginGradeCall($pridx);
 
-        $this->load->view('willbes/pc/predict/gradepop3', [
+        $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop3', [
             'prodcode'      => $prodcode,
             'subject_list'  => $subject_list,
             'subject_grade'  => $subject_grade,

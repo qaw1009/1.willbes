@@ -221,7 +221,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $TOTCNT = 0;
         for($i = 1; $i <= $CNT; $i++){
-            $TOTCNT = $TOTCNT + mt_rand(2,10);
+            $TOTCNT = $TOTCNT + 6;
         }
 
         $cnt = $TOTCNT + $PRECNT + $RCNT;
@@ -354,13 +354,68 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $prodcode = element('prodcode', $arr_input);
+        $pridx = element('pridx', $arr_input);
+
+        $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
+
+        $ppidx = '';
+
+        $question_list= $this->surveyModel->predictQuestionCall($ppidx, $prodcode, $pridx);
+
+        $j = 1;
+        $newQuestion = array();
+        $numArr = array();
+        $numstr = '';
+
+        foreach($question_list as $key => $val){
+            $PpIdx = $val['PpIdx'];
+            $Answer = $val['Answer'];
+            $isPP = 'N';
+            foreach($subject_list as $key2 => $val2){
+                if($PpIdx == $val2['PpIdx']) $isPP = 'Y';
+            }
+            if($isPP == 'Y'){
+                $numArr[] = $j;
+                if($Answer) $numstr .= $Answer;
+                if($j % 5 == 0){
+                    $newQuestion['numset'][$PpIdx][] = min($numArr). "~" .max($numArr);
+                    $newQuestion['answerset'][$PpIdx][] = $numstr;
+                    unset($numArr);
+                    $numstr = '';
+                    if($j == 20) $j = 0;
+                }
+
+                $j++;
+            }
+        }
 
         $this->load->view('willbes/pc/predict/gradepop2', [
-            'prodcode' => $prodcode
+            'prodcode'      => $prodcode,
+            'subject_list'  => $subject_list,
+            'question_list' => $question_list,
+            'arr_input'     => $arr_input,
+            'pridx'         => $pridx,
+            'newQuestion'   => $newQuestion
         ], false);
+    }
 
+    /**
+     * 정답제출
+     * @return object|string
+     */
+    public function examSendAjax2()
+    {
+        $AnswerArr = $this->_reqP('Answer');
 
+        for($i = 0; $i < count($AnswerArr); $i++){
+            $Answer = $AnswerArr[$i];
+            if(strlen($Answer) != '5'){
+                $this->json_error('정답이 모두 입력되지 않았습니다.');
+            }
+        }
 
+        $result = $this->surveyModel->examSend2($this->_reqP(null, false));
+        $this->json_result($result, '저장되었습니다.', $result, $result);
     }
 
     /**

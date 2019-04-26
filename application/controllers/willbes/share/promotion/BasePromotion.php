@@ -403,4 +403,15 @@ class BasePromotion extends \app\controllers\FrontController
             }
         }
     }
+
+    /**
+     * 합격예측관련 카운트
+     * @param $event_idx
+     * @param $predict_idx
+     * @param $promotion_code
+     */
+    public function predictCntManager($event_idx, $predict_idx, $promotion_code)
+    {
+
+    }
 }

@@ -116,7 +116,7 @@
             </div>
         </div>
     </form>
-
+    @if($scoreIs == 'N')
     <div class="sub3_1">
         <h2>성적 입력/확인</h2>
         {{--성적채점--}}
@@ -139,7 +139,7 @@
                 <li><a id='t2' href="javascript:tabSel(2)">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
                 <li><a id='t3' href="javascript:tabSel(3)">직접입력</a></li>
             </ul>
-            <input type="text" id="selType" value="1"/>
+            <input type="hidden" id="selType" value="1"/>
             <div  id='gradeArea1'>
                 <div class="mt10 mb10">
                     '일반채점'은 문제창에서 바로 문제를 확인하면서 OMR 정답지에 답을 체크하는 방식입니다.<br />
@@ -157,37 +157,37 @@
                         <th scope="col">조정점수</th>
                     </tr>
                     <tr>
-                        <td>영어</td>
+                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }}@else 미입력 @endif</td>
                         <td rowspan="5"><a href="javascript:popWindow(100001)" class="type1">채점하기 ▶</a></td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                     <tr>
-                        <td>한국사</td>
+                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][1] }}@else 미입력 @endif</td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                     <tr>
-                        <td>선택과목1</td>
+                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][2] }}@else 미입력 @endif</td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                     <tr>
-                        <td>선택과목2</td>
+                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][3] }}@else 미입력 @endif</td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                     <tr>
-                        <td>선택과목3</td>
+                        <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][4] }}@else 미입력 @endif</td>
                         <td>미입력</td>
                         <td>미입력</td>
                     </tr>
                 </table>
 
             </div>
-
+        @else
         {{--성적확인--}}
-        <div id='gradeArea2' style="display:none;">
+        <div id='gradeArea2' style="display:none1;">
             <table class="boardTypeB">
                 <col width="25%" />
                 <col width="25%" />
@@ -200,52 +200,73 @@
                     <th scope="col">조정점수</th>
                 </tr>
                 <tr>
-                    <td>영어</td>
-                    <td rowspan="5"><a href="#" class="type1">확인 ▶</a></td>
-                    <td>80</td>
-                    <td>101</td>
+                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }}@else 미입력 @endif {{ $addscoreIs }}</td>
+                    <td rowspan="5"><a href="javascript:resultPop(100001)" class="type1">확인 ▶</a></td>
+                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][0] }} @else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>
                 </tr>
                 <tr>
-                    <td>한국사</td>
-                    <td>80</td>
-                    <td>101</td>
+                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][1] }}@else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][1] }} @else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][1] }} @else 미입력 @endif</td>
                 </tr>
                 <tr>
-                    <td>90</td>
-                    <td>미입력</td>
-                    <td>62.95 </td>
+                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][2] }}@else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][2] }} @else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][2] }} @else 미입력 @endif</td>
                 </tr>
                 <tr>
-                    <td>95</td>
-                    <td>미입력</td>
-                    <td>미입력</td>
+                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][3] }}@else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][3] }} @else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][3] }} @else 미입력 @endif</td>
                 </tr>
                 <tr>
-                    <td>선택과목3</td>
-                    <td>60.73 </td>
-                    <td>미입력</td>
+                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][4] }}@else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][4] }} @else 미입력 @endif</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][4] }} @else 미입력 @endif</td>
                 </tr>
             </table>
             <div class="btns">
-                <a href="#none">나의 합격예측 바로가기 &gt;</a>
-                <a href="#none" class="btn2">재 채첨하기 &gt;</a>
+                <a href="javascript:moveMyPredict();">나의 합격예측 바로가기 &gt;</a>
+                <a href="javascript:examDeleteAjax();" class="btn2">재 채첨하기 &gt;</a>
             </div>
         </div>
-
+        @endif
 
     </div>
 </div>
 <script>
     var $regi_form = $('#regi_form');
     var mode = '{{ $mode }}';
-
     var win = '';
+    var openYn = '{{ $openYn }}';
+    var scoreType = '{{ $scoreType }}';
 
     $( document ).ready( function() {
         if(mode == 'MOD'){
             selSerial('{{ $data['TakeMockPart'] }}', '{{ $data['SubjectCode'] }}');
         }
+
+        if(openYn == 'N' || $('#PrIdx').val() == ''){
+            $('#maskArea').show();
+        }
     });
+
+    function moveMyPredict(){
+        parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1212/spidx/100001') }}');
+    }
+
+    function examDeleteAjax() {
+        if (confirm('채점취소시 기존의 성적모든데이터는 삭제됩니다. \n 채점취소 하시겠습니까?')) {
+            var _url = '{{ front_url('/predict/examDeleteAjax') }}';
+            ajaxSubmit($regi_form, _url, function (ret) {
+                if (ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+    }
 
     function tabSel(num){
         $('#selType').val(num);
@@ -301,6 +322,10 @@
     }
 
     function resultPop(prodcode){
+        if(scoreType == 'DIRECT'){
+            alert('점수를 직접입력한 경우, 정오표를 제공하지 않습니다.');
+            return ;
+        }
         _url = '{{ front_url('/predict/popwin4/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
         width = 1300;
         height = 900;
@@ -366,8 +391,9 @@
 
         ajaxSubmit($regi_form, _url, function(ret) {
             if(ret.ret_cd) {
-                $('#PrIdx').val(ret.ret_data.dt.idx);
+                //$('#PrIdx').val(ret.ret_data.dt.idx);
                 alert(ret.ret_msg);
+                location.reload();
             }
         }, showValidateError, null, false, 'alert');
     }

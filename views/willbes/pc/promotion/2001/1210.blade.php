@@ -211,6 +211,11 @@
         <div class="sectionEvt01_1">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_evt01.jpg" alt="시험후기 공유하고 채점하면 기프티콘 증정 " />
         </div>
+
+        <!--  이모티콘 댓글 -->
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
+        @endif
        
     </div>
     <!--evtCtnsBox//-->

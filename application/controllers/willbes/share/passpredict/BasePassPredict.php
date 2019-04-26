@@ -69,11 +69,15 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $memidx = $this->session->userdata('mem_idx');
 
+        $openYn = $this->surveyModel->predictOpenTab2($idx);
+
         $res = $this->surveyModel->predictResist($idx, $memidx);
         if(empty($res) === false){
             $mode = 'MOD';
             $subject = '';
+            $PrIdx = '';
             foreach ($res as $key => $val){
+                $PrIdx = $val['PrIdx'];
                 $data['PrIdx'] = $val['PrIdx'];
                 $data['TakeNumber'] = $val['TakeNumber'];
                 $data['TakeMockPart'] = $val['TakeMockPart'];
@@ -88,17 +92,62 @@ class BasePassPredict extends \app\controllers\FrontController
             $subject = substr($subject,0,strlen($subject)-1);
             $data['SubjectCode'] = $subject;
 
+            $score1 = $this->surveyModel->getScore1($PrIdx, $idx);
+            $score2 = $this->surveyModel->getScore2($PrIdx, $idx);
+            $scoredata = array();
+            $scoreIs = 'N';
+            $addscoreIs = 'N';
+            $scoreType = '';
+            if(empty($score1)===false){
+                $scoreType = 'EACH';
+                foreach ($score1 as $key => $val){
+                    $scoredata['subject'][]  = $val['SubjectName'];
+                    $scoredata['score'][]    = $val['OrgPoint'];
+                    $scoredata['addscore'][] = $val['AdjustPoint'];
+                }
+                $scoreIs = 'Y';
+                if($score1[0]['AdjustPoint']){
+                    $addscoreIs = 'Y';
+                } else {
+                    $addscoreIs = 'N';
+                }
+            }
+
+            if(empty($score2)===false){
+                $scoreType = 'DIRECT';
+                foreach ($score2 as $key => $val){
+                    $scoredata['subject'][]  = $val['SubjectName'];
+                    $scoredata['score'][]    = $val['OrgPoint'];
+                    $scoredata['addscore'][] = $val['AdjustPoint'];
+                }
+                $scoreIs = 'Y';
+                if($score2[0]['AdjustPoint']){
+                    $addscoreIs = 'Y';
+                } else {
+                    $addscoreIs = 'N';
+                }
+            }
+
+
         } else {
             $mode = 'NEW';
+            $scoreIs = 'N';
+            $addscoreIs = 'N';
+            $scoreType = '';
             $data = array();
             $data['TakeMockPart'] = '';
             $data['SubjectCode'] = '';
             $data['PrIdx'] = '';
+
+            $scoredata = array();
+
         }
 
         $serial = $this->surveyModel->getSerial(0);
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $area = $this->surveyModel->getArea($sysCode_Area);
+
+        //var_dump($scoredata);
 
         $view_file = 'willbes/'.APP_DEVICE.'/predict/'.$idx."_v2";
         $this->load->view($view_file, [
@@ -106,7 +155,12 @@ class BasePassPredict extends \app\controllers\FrontController
             'area' => $area,
             'idx' => $idx,
             'mode' => $mode,
-            'data' => $data
+            'data' => $data,
+            'scoredata' => $scoredata,
+            'scoreIs' => $scoreIs,
+            'addscoreIs' => $addscoreIs,
+            'openYn' => $openYn,
+            'scoreType' => $scoreType
         ], false);
     }
 
@@ -341,7 +395,8 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function examDeleteAjax()
     {
-        $result = $this->surveyModel->examDelete($this->_reqP(null, false));
+        $PrIdx = $this->_reqP('PrIdx');
+        $result = $this->surveyModel->examDelete($PrIdx);
         $this->json_result($result, '삭제되었습니다.', $result, $result);
     }
 
@@ -409,8 +464,10 @@ class BasePassPredict extends \app\controllers\FrontController
 
         for($i = 0; $i < count($AnswerArr); $i++){
             $Answer = $AnswerArr[$i];
-            if(strlen($Answer) != '5'){
+
+            if(strlen($Answer) != 5) {
                 $this->json_error('정답이 모두 입력되지 않았습니다.');
+                return ;
             }
         }
 
@@ -427,11 +484,37 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $prodcode = element('prodcode', $arr_input);
+        $pridx = element('pridx', $arr_input);
+        $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
+        $subject_grade = $this->surveyModel->orginGradeCall($pridx);
 
         $this->load->view('willbes/pc/predict/gradepop3', [
-            'prodcode' => $prodcode
+            'prodcode'      => $prodcode,
+            'subject_list'  => $subject_list,
+            'subject_grade'  => $subject_grade,
+            'arr_input'     => $arr_input,
+            'pridx'         => $pridx
         ], false);
 
+    }
+
+    /**
+     * 정답제출
+     * @return object|string
+     */
+    public function examSendAjax3()
+    {
+        $ScoreArr = $this->_reqP('Score');
+
+        for($i = 0; $i < count($ScoreArr); $i++){
+            $Score = $ScoreArr[$i];
+            if(empty($Score) == true){
+                $this->json_error('점수가 모두 입력되지 않았습니다.');
+            }
+        }
+
+        $result = $this->surveyModel->examSend3($this->_reqP(null, false));
+        $this->json_result($result, '저장되었습니다.', $result, $result);
     }
 
     /**
@@ -443,9 +526,42 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $prodcode = element('prodcode', $arr_input);
+        $pridx = element('pridx', $arr_input);
+        $ppidx = '';
+
+        $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
+        $question_list = $this->surveyModel->predictQuestionCall($ppidx, $prodcode, $pridx);
+
+        foreach($question_list as $key => $val){
+            $PpIdx = $val['PpIdx'];
+            $Answer = $val['Answer'];
+            $RightAnswer = $val['RightAnswer'];
+            $QuestionNO = $val['QuestionNO'];
+            $IsWrong = $val['IsWrong'];
+            $OrgPoint = $val['OrgPoint'];
+            $isPP = 'N';
+            foreach($subject_list as $key2 => $val2){
+                if($PpIdx == $val2['PpIdx']) $isPP = 'Y';
+            }
+            if($isPP == 'Y'){
+                if($IsWrong == 'Y'){
+                    $IsWrong = "<span class='tx-blue'>O</span>";
+                } else {
+                    $IsWrong = "<span class='tx-red'>X</span>";
+                }
+                $newQuestion['QuestionNO'][$PpIdx][] = $QuestionNO;
+                $newQuestion['Answer'][$PpIdx][] = $Answer;
+                $newQuestion['RightAnswer'][$PpIdx][] = $RightAnswer;
+                $newQuestion['IsWrong'][$PpIdx][] = $IsWrong;
+                $newQuestion['OrgPoint'][$PpIdx][] = $OrgPoint;
+            }
+        }
 
         $this->load->view('willbes/pc/predict/gradepop4', [
-            'prodcode' => $prodcode
+            'prodcode' => $prodcode,
+            'subject_list' => $subject_list,
+            'question_list' => $question_list,
+            'newQuestion' => $newQuestion
         ], false);
 
     }

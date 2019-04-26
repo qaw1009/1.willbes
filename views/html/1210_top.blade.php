@@ -122,14 +122,16 @@
                 </div>          
             </div>
         </div>
-        
+
+        {{--
         <div class="embed-container">
 			<iframe src="https://www.youtube.com/embed/nRHUYZwBCuM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-		</div>
+        </div>
+        --}}
 
 		<div class="talkShow">
 			<a href="#none" >
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_bn2.png" alt="LIVE 합격예측 토크쇼">
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_bn3.png" alt="LIVE 합격예측 토크쇼">
             </a>
             {{--토크쇼 종료 후 노출
             <a href="#none" >

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePassPredict extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey');
+    protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('index','indexv2');
@@ -569,5 +569,128 @@ class BasePassPredict extends \app\controllers\FrontController
 
     }
 
+
+    public function cntForPromotion()
+    {
+        $promotion_code = element('promotion_code', $this->_reqG(null));    //프로모션코드
+        $event_idx = element('event_idx', $this->_reqG(null));      //이벤트코드
+        $predict_idx = element('predict_idx', $this->_reqG(null));  //합격예측코드
+        $sp_idx = element('sp_idx', $this->_reqG(null));    //설문코드
+
+        $data = [
+            'promotion_code' => $promotion_code,
+            'event_idx' => $event_idx,
+            'predict_idx' => $predict_idx,
+            'sp_idx' => $sp_idx
+        ];
+
+        $real_cnt = $this->_getPromotionForCnt($data);
+
+        $result = number_format($real_cnt);
+
+        $this->json_result(true, '조회 성공', '', $result);
+    }
+
+    /**
+     * 특정프로모션별 카운트조회 구분
+     * @param $data
+     * @return mixed|string
+     */
+    private function _getPromotionForCnt($data)
+    {
+        $promotion_data = $this->eventFModel->findEventForPromotion($data['promotion_code'],'');
+        if (empty($promotion_data['PromotionCnt']) === true || $promotion_data['PromotionCnt'] < 1) {
+            $cnt_type = 1;
+        } else {
+            $cnt_type = 2;
+        }
+
+        if ($cnt_type == 1) {
+            $result = $this->_promotion_cnt_type_1($data);
+        } else {
+            $result = $this->_promotion_cnt_type_2($data, $promotion_data['PromotionCnt']);
+        }
+
+        return $result;
+    }
+
+    /**
+     * 최초 카운트 저장 로직
+     * @param $data
+     * @return int|mixed|string
+     */
+    private function _promotion_cnt_type_1($data)
+    {
+        $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
+        $cnt1 = '0'; $cnt2 = '0'; $cnt3 = '0'; $cnt4 = '0'; $cnt5 = '0'; $cnt6 = '0'; $cnt7 = '0'; $cnt8 = '0';
+
+        switch ($data['promotion_code']) {
+            case "1187": case "1225":
+            $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
+            $cnt3 = $this->predictFModel->getCntScore('');              //채점
+            $cnt4 = $this->predictFModel->getCntEventComment('1187');     //소문내기
+            break;
+            case "1210": case "1211": case "1212": case "1213":
+            $cnt1 = $this->predictFModel->getCntSurvey($data['sp_idx']);            //설문
+            $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
+            $cnt3 = $this->predictFModel->getCntScore('');              //채점
+            $cnt4 = $this->predictFModel->getCntEventComment('1187');     //소문내기
+            $cnt5 = $this->predictFModel->getCntEventComment('1199');     //적중
+
+            $cnt6_1 = $this->predictFModel->getCntMyLecture('152583');   //최신판례특강
+            $cnt6_2 = $this->predictFModel->getCntMyLecture('152582');   //최신판례특강
+            $cnt6 = $cnt6_1 + $cnt6_2;
+
+            $cnt7 = $this->predictFModel->getCntMyLecture('152580');    //봉투모의고사
+            $cnt8 = $this->predictFModel->getCntMyLecture('152581');    //시크릿다운
+            break;
+            case "1199":
+                $cnt1 = $this->predictFModel->getCntSurvey($data['sp_idx']);            //설문
+                $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
+                $cnt3 = $this->predictFModel->getCntScore('');              //채점
+                $cnt4 = $this->predictFModel->getCntEventComment('1187');     //소문내기
+                $cnt5 = $this->predictFModel->getCntEventComment('1199');     //적중
+
+                $cnt6_1 = $this->predictFModel->getCntMyLecture('152583');   //최신판례특강
+                $cnt6_2 = $this->predictFModel->getCntMyLecture('152582');   //최신판례특강
+                $cnt6 = $cnt6_1 + $cnt6_2;
+
+                $cnt7 = $this->predictFModel->getCntMyLecture('152580');     //봉투모의고사
+                $cnt8 = $this->predictFModel->getCntMyLecture('152581');     //시크릿다운
+                break;
+        }
+        $real_cnt = $cnt1 + $cnt2 + $cnt3 + $cnt4 + $cnt5 + $cnt6 + $cnt7 + $cnt8;
+
+        $random = mt_rand(1, 10);
+        $ins_cnt = $real_cnt + $random; //DB 저장 데이터
+        $result = $event_pv + $ins_cnt;
+
+        $up_data = ['PromotionCnt' => $ins_cnt];
+        if (empty($data['promotion_code']) === false) {
+            $this->predictFModel->updCnt($data['promotion_code'], $up_data);
+        }
+        return $result;
+    }
+
+    /**
+     * 카운트값이 DB에 있을 경우
+     * @param $data
+     * @param $reg_cnt
+     * @return int|mixed
+     */
+    private function _promotion_cnt_type_2($data, $reg_cnt)
+    {
+        $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
+
+        $random = mt_rand(1, 10);
+        $ins_cnt = $reg_cnt + $random; //DB 저장 데이터
+        $result = $event_pv + $ins_cnt;
+
+        $up_data = ['PromotionCnt' => $ins_cnt];
+        if (empty($data['promotion_code']) === false) {
+            $this->predictFModel->updCnt($data['promotion_code'], $up_data);
+        }
+        return $result;
+    }
 }
 

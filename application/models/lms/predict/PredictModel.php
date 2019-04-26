@@ -1405,7 +1405,10 @@ class PredictModel extends WB_Model
         $where = " WHERE pg.ProdCode = ".$ProdCode;
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
 
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
         $data = $query->result_array();
 
         $selectCount = "SELECT COUNT(*) AS cnt";

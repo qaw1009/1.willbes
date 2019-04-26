@@ -35,7 +35,7 @@
             <!-- //tg-note -->
 
             <div class="markMbtn2">
-                <a href="{{ front_url('/promotion/index/cate/3001/code/1211') }}" class="btn2">기본정보입력</a>
+                <a href="javascript:parent.location.reload()" class="btn2">기본정보입력</a>
                 <a href="javascript:alert('기본정보를 저장하고 채점해주세요.');" >채점 및 성적확인</a>
             </div>
 

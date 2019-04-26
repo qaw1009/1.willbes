@@ -51,12 +51,16 @@
         .slide_con1 p.rightBtn1 {right:-62px;top:50%; width:62px; height:62px;  margin-top:-30px; opacity:0.9; filter:alpha(opacity=90);}        
 
         .evt02 {position:relative; background:#fff;}
-        .slide_con2 {position:relative; width:977px; margin:0 auto;}
-        .slide_con2 p {position:absolute; top:35%; width:30px; z-index:90}
-        .slide_con2 img {width:100%;}
-        .slide_con2 p a {cursor:pointer}
-        .slide_con2 p.leftBtn1 {left:-62px; top:50%; width:62px; height:62px; margin-top:-30px; opacity:0.9; filter:alpha(opacity=90);}
-        .slide_con2 p.rightBtn1 {right:-62px;top:50%; width:62px; height:62px;  margin-top:-30px; opacity:0.9; filter:alpha(opacity=90);} 
+        #tabwrap2 {width:977px; margin:0 auto; height:506px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab_bg.jpg) no-repeat; padding-left:13px}
+        .tabt2 {width:872px; margin:0 auto 0; padding-top:135px}
+        .tabt2 li {display:inline; float:left; width:20%;}
+        .tabt2 li a {display:block; text-align:center;}
+        .tabt2 li img.off {display:block}
+        .tabt2 li img.on {display:none}
+        .tabt2 li a.active img.off {display:none}
+        .tabt2 li a.active img.on {display:block}
+        .tabt2:after {content:""; display:block; clear:both}
+        .tab_inner2 {width:951px;}
 
         .evt03 {background:#fff}
         .evtTab {width:984px; margin:0 auto 140px;}
@@ -121,19 +125,49 @@
         <div>
 
         <div class="evtCtnsBox evt02" >            
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_01.jpg"  title="7급 학습/생활관리 프로그램" /><div>
-            <div class="slide_con2">
-                <ul id="slidesImg2">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_02.jpg" alt="연간 커리큘럼"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_03.jpg" alt="연간 커리큘럼"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_04.jpg" alt="연간 커리큘럼"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_05.jpg" alt="연간 커리큘럼"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_06.jpg" alt="연간 커리큘럼"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_07.jpg" alt="연간 커리큘럼"/></li>
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_01.jpg" title="7급 학습/생활관리 프로그램" /><div>
+            <div id="tabwrap2">
+                <ul class="tabt2">
+                    <li>
+                        <a href data-slide-index="0" class="active">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab01.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab01_on.png" title="" class="on" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href data-slide-index="1">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab02.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab02_on.png" title="" class="on" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href data-slide-index="2">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab03.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab03_on.png" title="" class="on" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href data-slide-index="3">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab04.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab04_on.png" title="" class="on" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href data-slide-index="4">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab05.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab05_on.png" title="" class="on" />
+                        </a>
+                    </li>
                 </ul>
-                <p class="leftBtn1"><a id="imgBannerLeft2"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_l.png"></a></p>
-                <p class="rightBtn1"><a id="imgBannerRight2"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_r.png"></a></p>
+                <div class="tab_inner2">
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab01_img.jpg" alt="기초및기초이론"/></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab02_img.jpg" alt="심화이론"/></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab03_img.jpg" alt="기출문제풀이"/></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab04_img.jpg" alt="단원동형문제풀이" /></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab05_img.jpg" alt="최종마무리" /></div>
+                </div>
             </div>
+
         </div>
         <!--wb_cts02//-->
 
@@ -343,27 +377,20 @@
         });
 
         $(document).ready(function() {
-            var slidesImg2 = $("#slidesImg2").bxSlider({
-                mode:'fade',
-                auto:true,
-                speed:350,
-                pause:8000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                autoHover: true,
-                moveSlides:1,
-                pager:false
-            });
+            var slider2=$('.tab_inner2').bxSlider({ //롤링 슬라이드
+			sliderMargin:0,
+			speed: 600,
+			pager: true,
+			auto: true,
+			controls: false,
+			mode:'fade',
+			pagerCustom: '.tabt2',
+			onSlideAfter: function(){
+				slider2.stopAuto();
+				slider2.startAuto();
+			}
+		});
 
-            $("#imgBannerLeft2").click(function (){
-                slidesImg2.goToPrevSlide();
-            });
-
-            $("#imgBannerRight2").click(function (){
-                slidesImg2.goToNextSlide();
-            });
         });
         
         $(document).ready(function(){

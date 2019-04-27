@@ -644,7 +644,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'scoreIs' => $scoreIs,
             'addscoreIs' => $addscoreIs,
             'scoreType' => $scoreType,
-            'scoredata' => $scoredata
+            'scoredata' => $scoredata,
+            'pridx' => $pridx
         ], false);
 
     }

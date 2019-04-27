@@ -289,15 +289,17 @@
     </div>
     <!-- End Container --> 
     
-    {{-- 하단 띠배너
+    {{-- 하단 띠배너--}}
     <div class="mainBottomBn mainBottomBn2">
         <div>
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1187#evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/1209_mainBottom_bn_off.jpg" class="mbBanner" title="">
-            </a>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/3001_mainBottom_bn.jpg" usemap="#Map190427" class="mbBanner" title="" border="0">
+            <map name="Map190427" id="Map190427">
+                <area shape="rect" coords="416,12,957,110" href="https://police.willbes.net/promotion/index/cate/3001/code/1210/" target="_blank" />
+                <area shape="rect" coords="973,12,1551,113" href="https://police.willbes.net/promotion/index/cate/3001/code/1208" target="_blank" />
+            </map>  
             <span class="btmEvClose">닫기</span>
         </div>
-    </div>--}}
+    </div>
     
 
     <script type="text/javascript">

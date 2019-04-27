@@ -98,7 +98,7 @@
                             </tr>
                             <tr class="bg01">
                                 <th>직전시험 합격선</th>
-                                @if($val2['IsUse'] == 'Y')<td>{{ $val2['PassLineAgo'] }} </td>@else<td>집계중</td>@endif
+                                <td>{{ $val2['PassLineAgo'] }} </td>
                             </tr>
                             </tbody>
                         </table>

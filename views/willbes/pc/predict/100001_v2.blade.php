@@ -235,7 +235,7 @@
             </table>
             <div class="btns">
                 <a href="javascript:moveMyPredict();">나의 합격예측 바로가기 &gt;</a>
-                <a href="javascript:examDeleteAjax();" class="btn2">재 채첨하기 &gt;</a>
+                <a href="javascript:examDeleteAjax();" class="btn2">재 채점하기 &gt;</a>
             </div>
         </div>
         @endif

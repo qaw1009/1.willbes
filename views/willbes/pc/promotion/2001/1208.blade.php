@@ -115,7 +115,7 @@
     
     <div class="evtCtnsBox evtTop">
         <div class="evtTopInmg">
-            <div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span>986,129</span>건</div>    
+            <div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span id="numarea3"></span>건</div>
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_top.jpg" title="2019년 경찰 1차 적중&합격예측 사전예약 이벤트">
         </div> 
 	</div>
@@ -230,6 +230,8 @@
 <script src="/public/js/willbes/waypoints.min.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function( $ ) {
+        get_cnt3();
+
         $('.counter span').counterUp({
             delay: 11, // the delay time in ms
             time: 1000 // the speed time in ms
@@ -251,12 +253,32 @@
         var data = {
             'ele_id' : ele_id,
             'board_idx' : param,
-            'predict_idx' : '{{ $arr_base['spidx'] }}',
+            'predict_idx' : '{{ (empty($arr_promotion_params['predict_idx']) === false) ? $arr_promotion_params['predict_idx'] : '' }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}'
         };
         sendAjax('{{ front_url('/support/predictNotice/index') }}', data, function(ret) {
             $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
         }, showAlertError, false, 'GET', 'html');
+    }
+
+    // 합격예측카운트수
+    function get_cnt3()
+    {
+        var _url = '{{ front_url("/predict/cntForPromotion/") }}';
+        var _data = {
+            'type' : 3,
+            'event_idx' : '{{ $data['ElIdx'] }}',
+            'promotion_code' : '{{ $arr_base['promotion_code'] }}',
+            'sp_idx' : '{{ (empty($arr_promotion_params['spidx']) === false) ? $arr_promotion_params['spidx'] : '' }}',
+            'predict_idx' : '{{ (empty($arr_promotion_params['prodcode']) === false) ? $arr_promotion_params['prodcode'] : '' }}'
+        };
+
+        sendAjax(_url, _data, function(ret) {
+            if (ret.ret_cd) {
+                var s = ret.ret_data; //.format();
+                $('#numarea3').html(s);
+            }
+        }, showError, false, 'GET');
     }
 </script>
 

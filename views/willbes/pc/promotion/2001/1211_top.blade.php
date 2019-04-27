@@ -749,7 +749,7 @@
             var url = "{{ site_url('/promotion/index/cate/3001/code/1211') }}" ;
             location.replace(url);
         } else if(num == 3) {
-            alert('준비중입니다.');
+            alert('안정화 작업중입니다!');
                     {{--{!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}--}}
             {{--var url = "{{ site_url('/promotion/index/cate/3001/code/1212') }}" ;--}}
             {{--location.replace(url);--}}

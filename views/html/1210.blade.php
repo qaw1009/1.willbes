@@ -980,7 +980,9 @@
                         <div class="bannerWarp">
                             <img src="http://file3.willbes.net/new_cop/2017/03/170306_passcop_bn1.png" alt="최종합격을 결정짓는 2차 전형 윌비스 전문가와 함께 전략적으로 준비하세요">
                             <div>
-                                <a href="#none"><img src="http://file3.willbes.net/new_cop/2018/12/EV181222_passcop_bn5.jpg" alt="면접캠프설명회"></a>
+                                <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1206" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/2019/04//1211_passcop_bn5" alt="면접캠프설명회">
+                                </a>
                             </div>
                         </div>
                     </div>               

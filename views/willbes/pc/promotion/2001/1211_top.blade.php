@@ -1,39 +1,27 @@
 <ul class="skyBanner">
-    <li><a href="#none">채점만해도<Br />선물증정</a></li>
-    <li><a href="#none">빠른채점</a></li>
-    <li><a href="#none" target="_blank">라이브 토크쇼</a></li>
-    <li><a href="#none" target="_blank">적중이벤트</a></li>
-    <li><a href="#none" >합격예측</a></li>
+    <li><a href="#event">채점만해도<Br />선물증정</a></li>
+    <li><a href="javascript:tabMove(2)">빠른채점</a></li>
+    <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1208" target="_blank">라이브 토크쇼</a></li>
+    <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank">적중이벤트</a></li>
+    {{--<li><a href="#none" >합격예측</a></li>--}}
     <li><a href="#evtContainer">top</a></li>
 </ul>
 
-<div class="conut_section">
-    <div class="conut_section_wrap" id="counter">
-        <div>
-            <span>서비스 이용현황 :</span>
-            <img src="https://static.willbes.net/public/images/promotion/common/7.png" />
-            ,
-            <img src="https://static.willbes.net/public/images/promotion/common/0.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/5.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/4.png" />
-            ,
-            <img src="https://static.willbes.net/public/images/promotion/common/3.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/2.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/1.png" />
+{{--<div class="conut_section">--}}
+    {{--<div class="conut_section_wrap" id="counter">--}}
+        {{--<div>--}}
+            {{--<span>서비스 이용현황 :</span>--}}
+            {{--<span id="numarea1"></span>--}}
 
-            <span>참여 현황 :</span>
-            <img src="https://static.willbes.net/public/images/promotion/common/4.png" />
-            ,
-            <img src="https://static.willbes.net/public/images/promotion/common/3.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/2.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/1.png" />
-        </div>
-        <p>
-            * 서비스 이용현황 : 사전예약 및 본서비스 + 봉투모의고사 + 파이널찍기특강 + 최신판례특강 + 라이브토크쇼 + 적중이벤트 등 서비스 이용 페이지뷰 합산<Br />
-            * 참여현황 : 사전예약, 성적채점, 설문조사, 시험후기, 토크쇼, 적중이벤트 참여건수 중복 합산 기준
-        </p>
-    </div>
-</div>
+            {{--<span>참여 현황 :</span>--}}
+            {{--<span id="numarea2"></span>--}}
+        {{--</div>--}}
+        {{--<p>--}}
+            {{--* 서비스 이용현황 : 사전예약 및 본서비스 + 봉투모의고사 + 파이널찍기특강 + 최신판례특강 + 라이브토크쇼 + 적중이벤트 등 서비스 이용 페이지뷰 합산<Br />--}}
+            {{--* 참여현황 : 사전예약, 성적채점, 설문조사, 시험후기, 토크쇼, 적중이벤트 참여건수 중복 합산 기준--}}
+        {{--</p>--}}
+    {{--</div>--}}
+{{--</div>--}}
 
 <div class="m_sectin1_box">
     <div class="title">
@@ -73,7 +61,7 @@
 
 
     <div class="talkShow">
-        <a href="#none" >
+        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1208" target="_blank" >
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_bn3.png" alt="LIVE 합격예측 토크쇼">
         </a>
         {{--토크쇼 종료 후 노출
@@ -85,16 +73,16 @@
 
     <div class="wNotice">
         <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_text.png" alt="최종 합격 솔루션">
-        <div>
-            <h3>
-                <a href="javascript:selTitle('')">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_notice.png" alt="공지사항">
-                </a>
-            </h3>
-            <ul>
-                <span id="noticeArea1"></span>
-            </ul>
-        </div>
+        {{--<div>--}}
+            {{--<h3>--}}
+                {{--<a href="javascript:selTitle('')">--}}
+                    {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_notice.png" alt="공지사항">--}}
+                {{--</a>--}}
+            {{--</h3>--}}
+            {{--<ul>--}}
+                {{--<span id="noticeArea1"></span>--}}
+            {{--</ul>--}}
+        {{--</div>--}}
     </div>
     <!--wNotice//-->
 
@@ -103,13 +91,13 @@
         <span class="b-close">X</span>
         <h3 class="NSK-Black">합격예측 공지사항</h3>
         <div class="content">
+            {{--글보기--}}
+            <span id="noticeArea3"></span>
+
             {{--리스트--}}
             <span id="noticeArea2"></span>
 
-            {{--공통 페이지 넘버링--}}
-
-            {{--글보기--}}
-            <span id="noticeArea3"></span>
+            {{--공통 페이지 넘버링--}}           
             
         </div>
     </div>
@@ -119,16 +107,16 @@
 <div class="m_lnb">
     <ul class="lnbMenu">
         <li>
-            <a href="#none" id="mt1"> 메인</a>
+            <a href="javascript:tabMove(1);" id="mt1"> 메인</a>
         </li>
         <li>
-            <a href="#none"  id="mt2"> 성적채점 및 확인 </a></li>
+            <a href="javascript:tabMove(2);"  id="mt2"> 성적채점 및 확인 </a></li>
         <li>
-            <a href="javascript:alert('4월 27일 오픈합니다.');" id="mt3"> 합격예측 </a>
+            <a href="javascript:tabMove(3);" id="mt3"> 합격예측 </a>
             {{--<a href="#none"> 합격예측 </a>--}}
         </li>
         <li>
-            <a href="javascript:alert('4월 27일 오픈합니다.');"  id="mt4"> 기출문제및해설 </a>
+            <a href="javascript:tabMove(4);"  id="mt4"> 기출문제및해설 </a>
             {{--<a href="#none">기출문제해설</a>--}}
         </li>
     </ul>
@@ -140,12 +128,17 @@
 <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 <script>
     var $ajax_form = $('#ajax_form');
+
     /*서비스이용현황 */
     $( document ).ready( function() {
-        areaAvrAjax('100001');
-        noticeListAjax('');
-        //$('#popup').bPopup();
-        timer = self.setInterval('slideGo()', 1000);
+        areaAvrAjax('{{$arr_promotion_params['prodcode']}}');
+        // noticeListAjax('');
+        //
+        // timer = self.setInterval('slideGo()', 3000);
+        //
+        // get_cnt2();
+        // get_cnt3();
+
         var jbOffset = $( '.conut_section' ).offset();
         $( window ).scroll( function() {
             if ( $( document ).scrollTop() > jbOffset.top ) {
@@ -156,6 +149,26 @@
             }
         });
     } );
+
+    // 숫자 타입에서 쓸 수 있도록 format() 함수 추가
+    Number.prototype.format = function(){
+        if(this==0) return 0;
+
+        var reg = /(^[+-]?\d+)(\d{3})/;
+        var n = (this + '');
+
+        while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+
+        return n;
+    };
+
+    // 문자열 타입에서 쓸 수 있도록 format() 함수 추가
+    String.prototype.format = function(){
+        var num = parseFloat(this);
+        if( isNaN(num) ) return "0";
+
+        return num.format();
+    };
 
     function slideGo(){
         $("#map_area").bxSlider({
@@ -193,6 +206,60 @@
             slidesImg3.goToNextSlide();
         });
     });
+
+    function makeCount(s){
+        var res = "";
+        for (var i = 0; i < s.length; i++) {
+            if(s.charAt(i) == ','){
+                res += s.charAt(i);
+            } else {
+                res += "<img src='https://static.willbes.net/public/images/promotion/common/"+s.charAt(i)+".png' />";
+            }
+        }
+        return res;
+    }
+
+    // 합격예측카운트수
+    function get_cnt2()
+    {
+
+        var _url = '{{ front_url("/predict/cntForPromotion/") }}';
+        var _data = {
+            'type' : 2,
+            'event_idx' : '{{ $data['ElIdx'] }}',
+            'promotion_code' : '{{ $arr_base['promotion_code'] }}',
+            'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',
+            'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'
+        };
+
+        sendAjax(_url, _data, function(ret) {
+            if (ret.ret_cd) {
+                var s = ret.ret_data; //.format();
+                $('#numarea1').html(makeCount(s));
+            }
+        }, showError, false, 'GET');
+    }
+
+    // 합격예측카운트수
+    function get_cnt3()
+    {
+
+        var _url = '{{ front_url("/predict/cntForPromotion/") }}';
+        var _data = {
+            'type' : 3,
+            'event_idx' : '{{ $data['ElIdx'] }}',
+            'promotion_code' : '{{ $arr_base['promotion_code'] }}',
+            'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',
+            'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'
+        };
+
+        sendAjax(_url, _data, function(ret) {
+            if (ret.ret_cd) {
+                var s = ret.ret_data; //.format();
+                $('#numarea2').html(makeCount(s));
+            }
+        }, showError, false, 'GET');
+    }
 
     function areaAvrAjax(ProdCode){
 
@@ -292,5 +359,27 @@
     function pullOpen(){
         var url = "1210_popup";
         window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+    }
+
+    function tabMove(num) {
+        if(num == 1){
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1210') }}" ;
+            location.replace(url);
+        } else if(num == 2) {
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1211') }}" ;
+            location.replace(url);
+        } else if(num == 3) {
+            alert('준비중입니다.');
+                    {{--{!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}--}}
+            {{--var url = "{{ site_url('/promotion/index/cate/3001/code/1212') }}" ;--}}
+            {{--location.replace(url);--}}
+        } else {
+            alert('준비중입니다.');
+                    {{--{!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}--}}
+            {{--var url = "{{ site_url('/promotion/index/cate/3001/code/1213') }}" ;--}}
+            {{--location.replace(url);--}}
+        }
+
     }
 </script>

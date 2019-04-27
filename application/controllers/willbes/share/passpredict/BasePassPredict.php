@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePassPredict extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey');
+    protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('index','indexv2');
@@ -138,7 +138,6 @@ class BasePassPredict extends \app\controllers\FrontController
             $data['TakeMockPart'] = '';
             $data['SubjectCode'] = '';
             $data['PrIdx'] = '';
-
             $scoredata = array();
             $subject_list = array();
 
@@ -448,13 +447,52 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view('willbes/pc/predict/gradepop2', [
+        $score1 = $this->surveyModel->getScore1($pridx, $prodcode);
+        $score2 = $this->surveyModel->getScore2($pridx, $prodcode);
+        $scoredata = array();
+        $scoreIs = 'N';
+        $addscoreIs = 'N';
+        $scoreType = '';
+        if(empty($score1)===false){
+            $scoreType = 'EACH';
+            foreach ($score1 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score1[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        if(empty($score2)===false){
+            $scoreType = 'DIRECT';
+            foreach ($score2 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score2[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop2', [
             'prodcode'      => $prodcode,
             'subject_list'  => $subject_list,
             'question_list' => $question_list,
             'arr_input'     => $arr_input,
             'pridx'         => $pridx,
-            'newQuestion'   => $newQuestion
+            'newQuestion'   => $newQuestion,
+            'scoreIs'       => $scoreIs,
+            'addscoreIs'    => $addscoreIs,
+            'scoreType'     => $scoreType
         ], false);
     }
 
@@ -489,10 +527,11 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $prodcode = element('prodcode', $arr_input);
         $pridx = element('pridx', $arr_input);
+
         $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
         $subject_grade = $this->surveyModel->orginGradeCall($pridx);
 
-        $this->load->view('willbes/pc/predict/gradepop3', [
+        $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop3', [
             'prodcode'      => $prodcode,
             'subject_list'  => $subject_list,
             'subject_grade'  => $subject_grade,
@@ -561,14 +600,361 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view('willbes/pc/predict/gradepop4', [
+        $score1 = $this->surveyModel->getScore1($pridx, $prodcode);
+        $score2 = $this->surveyModel->getScore2($pridx, $prodcode);
+        $scoredata = array();
+        $scoreIs = 'N';
+        $addscoreIs = 'N';
+        $scoreType = '';
+        if(empty($score1)===false){
+            $scoreType = 'EACH';
+            foreach ($score1 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score1[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        if(empty($score2)===false){
+            $scoreType = 'DIRECT';
+            foreach ($score2 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score2[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop4', [
             'prodcode' => $prodcode,
             'subject_list' => $subject_list,
             'question_list' => $question_list,
-            'newQuestion' => $newQuestion
+            'newQuestion' => $newQuestion,
+            'scoreIs' => $scoreIs,
+            'addscoreIs' => $addscoreIs,
+            'scoreType' => $scoreType,
+            'scoredata' => $scoredata,
+            'pridx' => $pridx
         ], false);
 
     }
 
+    public function totalgraph(){
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $prodcode = element('prodcode', $arr_input);
+        $spidx = element('spidx', $arr_input);
+
+        $arealist = $this->surveyModel->areaList($prodcode);
+        $gradelist = $this->surveyModel->gradeList();
+
+        //한국사 영어 경찰학개론 국어 사회
+        $gradeSet[0]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[6]['CcdName']."/".$gradelist[8]['CcdName'];
+        $gradeSet[0]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[6]['Avg']."/".$gradelist[8]['Avg'];
+        //한국사 영어 경찰학개론 형법 형사소송법
+        $gradeSet[1]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[2]['CcdName']."/".$gradelist[3]['CcdName'];
+        $gradeSet[1]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[2]['Avg']."/".$gradelist[3]['Avg'];
+        //한국사 국어 영어 형법 과학
+        $gradeSet[2]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[2]['CcdName']."/".$gradelist[8]['CcdName'];
+        $gradeSet[2]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[2]['Avg']."/".$gradelist[8]['Avg'];
+
+        $dtSet = array();
+        foreach ($arealist as $key => $val){
+            $Areaname = $val['Areaname'];
+            $Serialname = $val['Serialname'];
+            $TakeMockPart = $val['TakeMockPart'];
+            $TakeArea = $val['TakeArea'];
+            $PickNum = $val['PickNum'];
+            $TakeNum = $val['TakeNum'];
+            $CompetitionRateNow = $val['CompetitionRateNow'];
+            $CompetitionRateAgo = $val['CompetitionRateAgo'];
+            $PassLineAgo = $val['PassLineAgo'];
+            $AvrPointAgo = $val['AvrPointAgo'];
+            $StabilityAvrPoint = $val['StabilityAvrPoint'];
+            $StabilityAvrPointRef = $val['StabilityAvrPointRef'];
+            $StabilityAvrPercent = $val['StabilityAvrPercent'];
+            $StrongAvrPoint1 = $val['StrongAvrPoint1'];
+            $StrongAvrPoint1Ref = $val['StrongAvrPoint1Ref'];
+            $StrongAvrPoint2 = $val['StrongAvrPoint2'];
+            $StrongAvrPoint2Ref = $val['StrongAvrPoint2Ref'];
+            $StrongAvrPercent = $val['StrongAvrPercent'];
+            $ExpectAvrPoint1 = $val['ExpectAvrPoint1'];
+            $ExpectAvrPoint1Ref = $val['ExpectAvrPoint1Ref'];
+            $ExpectAvrPoint2 = $val['ExpectAvrPoint2'];
+            $ExpectAvrPoint2Ref = $val['ExpectAvrPoint2Ref'];
+            $ExpectAvrPercent = $val['ExpectAvrPercent'];
+            $IsUse = $val['IsUse'];
+
+            $dtSet[$TakeMockPart][$TakeArea]['TakeMockPart'] = $TakeMockPart;
+            $dtSet[$TakeMockPart][$TakeArea]['TakeArea'] = $TakeArea;
+            $dtSet[$TakeMockPart][$TakeArea]['Areaname'] = $Areaname;
+            $dtSet[$TakeMockPart][$TakeArea]['Serialname'] = $Serialname;
+            $dtSet[$TakeMockPart][$TakeArea]['PickNum'] = $PickNum;
+            $dtSet[$TakeMockPart][$TakeArea]['TakeNum'] = $TakeNum;
+            $dtSet[$TakeMockPart][$TakeArea]['CompetitionRateNow'] = $CompetitionRateNow;
+            $dtSet[$TakeMockPart][$TakeArea]['CompetitionRateAgo'] = $CompetitionRateAgo;
+            $dtSet[$TakeMockPart][$TakeArea]['PassLineAgo'] = $PassLineAgo;
+            $dtSet[$TakeMockPart][$TakeArea]['AvrPointAgo'] = $AvrPointAgo;
+            $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPoint'] = $StabilityAvrPoint;
+            $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPointRef'] = $StabilityAvrPointRef;
+            $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPercent'] = $StabilityAvrPercent;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPoint1'] = $StrongAvrPoint1;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPoint1Ref'] = $StrongAvrPoint1Ref;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPoint2'] = $StrongAvrPoint2;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPoint2Ref'] = $StrongAvrPoint2Ref;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPercent'] = $StrongAvrPercent;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint1'] = $ExpectAvrPoint1;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint1Ref'] = $ExpectAvrPoint1Ref;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint2'] = $ExpectAvrPoint2;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint2Ref'] = $ExpectAvrPoint2Ref;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPercent'] = $ExpectAvrPercent;
+            $dtSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
+        }
+        $res = $this->surveyModel->surveyAnswerCall($spidx);
+
+        $tempSq = '';
+        $temptitle = '';
+        $tempType = '';
+        $tempCNT = '';
+        $resSet = array();
+        $titleSet = array();
+        $numberSet = array();
+        $questionSet = array();
+        $typeSet = array();
+        for($i = 1; $i <= 25; $i++){
+            ${"num".$i} = 0;
+        }
+
+        $resCnt = count($res);
+        $defnum = 0;
+        foreach ($res as $key => $val){
+            $SqIdx = $val['SqIdx'];
+            $CNT = $val['CNT'];
+            $Answer = $val['Answer'];
+            $Type = $val['Type'];
+            $j = $key + 1;
+            if($Type != 'T'){
+                if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
+
+                    $tnum = 0;
+                    if($resCnt == $j){
+                        ${"num".$Answer}++;
+                    }
+
+                    for($i = 1; $i <= $tempCNT; $i++) {
+                        $tnum = $tnum + ${"num".$i};
+                    }
+                    $resSet[$defnum]['SubTitle'] = $temptitle;
+                    for($i = 1; $i <= $tempCNT; $i++){
+                        $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
+                    }
+                    for($i = 1; $i <= $CNT; $i++){
+                        if($Answer == $i){
+                            if($val['Type'] == 'S') {
+                                ${"num" . $i} = 1;
+                            } else {
+                                $AnswerArr = explode('/',$Answer);
+                                for($i = 1; $i <= $CNT; $i++){
+                                    ${"num".$i} = 0;
+                                    for($j = 0; $j < count($AnswerArr); $j++){
+                                        if($AnswerArr[$j] == $i){
+                                            ${"num".$i}++;
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if($val['Type'] == 'S') ${"num".$i} = 0;
+                        }
+                    }
+
+                    $resSet[$defnum]['CNT'] = $tempCNT;
+                    $titleSet[] = $temptitle;
+                    $numberSet[] = $defnum;
+                    $typeSet[] = $tempType;
+                    $questionSet[] = $this->surveyModel->surveyQuestionSet($tempSq);
+                    $defnum++;
+                } else {
+                    if($val['Type'] == 'S'){
+
+                        for($i = 1; $i <= $CNT; $i++){
+                            if($Answer == $i) ${"num".$i}++;
+                        }
+                    } else {
+                        //TYPE == 'T'
+                        $AnswerArr = explode('/',$Answer);
+                        for($i = 1; $i <= $CNT; $i++){
+                            for($j = 0; $j < count($AnswerArr); $j++){
+                                if($AnswerArr[$j] == $i){
+                                    ${"num".$i}++;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                $tempSq = $SqIdx;
+                $tempType = $val['Type'];
+                $temptitle = $val['SubTitle'];
+                $tempCNT = $CNT;
+            }
+        }
+
+        $this->load->view('willbes/pc/predict/graph', [
+            'prodcode' => $prodcode,
+            'spidx' => $spidx,
+            'areaList' => $dtSet,
+            'gradeList' => $gradeSet,
+            'gradelist2' => $gradelist,
+            'spidx' => $spidx,
+            'resSet' => $resSet,
+            'titleSet' => $titleSet,
+            'typeSet' => $typeSet,
+            'questionSet' => $questionSet,
+            'numberSet' => $numberSet
+        ], false);
+    }
+
+
+    public function cntForPromotion()
+    {
+        $type = element('type', $this->_reqG(null));    //산술 타입
+        $promotion_code = element('promotion_code', $this->_reqG(null));    //프로모션코드
+        $event_idx = element('event_idx', $this->_reqG(null));      //이벤트코드
+        $predict_idx = element('predict_idx', $this->_reqG(null));  //합격예측코드
+        $sp_idx = element('sp_idx', $this->_reqG(null));    //설문코드
+
+        $data = [
+            'type' => $type,
+            'promotion_code' => $promotion_code,
+            'event_idx' => $event_idx,
+            'predict_idx' => $predict_idx,
+            'sp_idx' => $sp_idx
+        ];
+
+        $real_cnt = $this->_getPromotionForCnt($data);
+
+        $result = number_format($real_cnt);
+
+        $this->json_result(true, '조회 성공', '', $result);
+    }
+
+    /**
+     * 특정프로모션별 카운트조회 구분
+     * @param $data
+     * @return mixed|string
+     */
+    private function _getPromotionForCnt($data)
+    {
+        $promotion_data = $this->eventFModel->findEventForPromotion($data['promotion_code'],'');
+        if (empty($promotion_data['PromotionCnt']) === true || $promotion_data['PromotionCnt'] < 1) {
+            $cnt_type = 1;
+        } else {
+            $cnt_type = 2;
+        }
+
+        if ($cnt_type == 1) {
+            $result = $this->_promotion_cnt_type_1($data);
+        } else {
+            $result = $this->_promotion_cnt_type_2($data, $promotion_data['PromotionCnt']);
+        }
+
+        return $result;
+    }
+
+    /**
+     * 최초 카운트 저장 로직
+     * @param $data
+     * @return int|mixed|string
+     */
+    private function _promotion_cnt_type_1($data)
+    {
+        $event_pv = '0'; $cnt1 = '0'; $cnt2 = '0'; $cnt3 = '0'; $cnt4 = '0'; $cnt5 = '0'; $cnt6 = '0'; $cnt7 = '0'; $cnt8 = '0'; $random = '0';
+
+        switch ($data['type']) {
+            case "1":
+                $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
+                $cnt3 = $this->predictFModel->getCntScore('');              //채점
+                $cnt4 = $this->predictFModel->getCntEventComment('1187');     //소문내기
+                $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
+                break;
+            case "2":
+                $cnt1 = $this->predictFModel->getCntSurvey($data['sp_idx']);            //설문
+                $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
+                $cnt3 = $this->predictFModel->getCntScore('');              //채점
+                $cnt4 = $this->predictFModel->getCntEventComment('1187');     //소문내기
+                $cnt5 = $this->predictFModel->getCntEventComment('1199');     //적중
+
+                $cnt6_1 = $this->predictFModel->getCntMyLecture('152583');   //최신판례특강
+                $cnt6_2 = $this->predictFModel->getCntMyLecture('152582');   //최신판례특강
+                $cnt6 = $cnt6_1 + $cnt6_2;
+                $cnt7 = $this->predictFModel->getCntMyLecture('152580');    //봉투모의고사
+                $cnt8 = $this->predictFModel->getCntMyLecture('152581');    //시크릿다운
+                $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
+                $random = mt_rand(1, 10);
+                break;
+            case "3":
+                $cnt1 = $this->predictFModel->getCntSurvey($data['sp_idx']);            //설문
+                $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
+                $cnt3 = $this->predictFModel->getCntScore('');              //채점
+                $cnt4 = $this->predictFModel->getCntEventComment('1187');     //소문내기
+                $cnt5 = $this->predictFModel->getCntEventComment('1199');     //적중
+                $random = mt_rand(1, 10);
+                break;
+        }
+        $real_cnt = $cnt1 + $cnt2 + $cnt3 + $cnt4 + $cnt5 + $cnt6 + $cnt7 + $cnt8;
+
+        $ins_cnt = $real_cnt + $random; //DB 저장 데이터
+        $result = $event_pv + $ins_cnt;
+
+        $up_data = ['PromotionCnt' => $ins_cnt];
+        if (empty($data['promotion_code']) === false) {
+            $this->predictFModel->updCnt($data['promotion_code'], $up_data);
+        }
+        return $result;
+    }
+
+    /**
+     * 카운트값이 DB에 있을 경우
+     * @param $data
+     * @param $reg_cnt
+     * @return int|mixed
+     */
+    private function _promotion_cnt_type_2($data, $reg_cnt)
+    {
+        switch ($data['type']) {
+            case "1":
+            case "2":
+                $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
+                break;
+            case "3":
+                $event_pv = 0;
+                break;
+            default:
+                $event_pv = 0;
+                break;
+        }
+
+        $random = mt_rand(1, 10);
+        $ins_cnt = $reg_cnt + $random; //DB 저장 데이터
+        $result = $event_pv + $ins_cnt;
+
+        $up_data = ['PromotionCnt' => $ins_cnt];
+        if (empty($data['promotion_code']) === false) {
+            $this->predictFModel->updCnt($data['promotion_code'], $up_data);
+        }
+        return $result;
+    }
 }
 

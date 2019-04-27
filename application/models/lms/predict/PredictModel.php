@@ -1459,6 +1459,30 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * 문항세트전체호출
+     */
+    public function statisticsListLine2($ProdCode){
+
+        $column = "
+            *
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['predictGradesLine']}
+        ";
+
+        $order_by = " ";
+        $where = " WHERE ProdCode = ".$ProdCode;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $data = $query->result_array();
+
+        return $data;
+    }
+
+    /**
      * 원점수입력
      * @param $MgIdx $mode = cron or web
      * @return mixed
@@ -2176,19 +2200,19 @@ class PredictModel extends WB_Model
                     'CompetitionRateAgo' => $arrCompetitionRateAgo[$i],
                     'PassLineAgo' => $arrPassLineAgo[$i],
                     'AvrPointAgo' => $arrAvrPointAgo[$i],
-                    'StabilityAvrPoint' => $arrStabilityAvrPoint[$i],
-                    'StabilityAvrPointRef' => $arrStabilityAvrPointRef[$i],
-                    'StabilityAvrPercent' => $arrStabilityAvrPercent[$i],
-                    'StrongAvrPoint1' => $arrStrongAvrPoint1[$i],
-                    'StrongAvrPoint1Ref' => $arrStrongAvrPoint1Ref[$i],
-                    'StrongAvrPoint2' => $arrStrongAvrPoint2[$i],
-                    'StrongAvrPoint2Ref' => $arrStrongAvrPoint2Ref[$i],
-                    'StrongAvrPercent' => $arrStrongAvrPercent[$i],
-                    'ExpectAvrPoint1' => $arrExpectAvrPoint1[$i],
-                    'ExpectAvrPoint1Ref' => $arrExpectAvrPoint1Ref[$i],
-                    'ExpectAvrPoint2' => $arrExpectAvrPoint2[$i],
-                    'ExpectAvrPoint2Ref' => $arrExpectAvrPoint2Ref[$i],
-                    'ExpectAvrPercent' => $arrExpectAvrPercent[$i],
+                    'StabilityAvrPoint' => (int)$arrStabilityAvrPoint[$i],
+                    'StabilityAvrPointRef' => (int)$arrStabilityAvrPointRef[$i],
+                    'StabilityAvrPercent' => (int)$arrStabilityAvrPercent[$i],
+                    'StrongAvrPoint1' => (int)$arrStrongAvrPoint1[$i],
+                    'StrongAvrPoint1Ref' => (int)$arrStrongAvrPoint1Ref[$i],
+                    'StrongAvrPoint2' => (int)$arrStrongAvrPoint2[$i],
+                    'StrongAvrPoint2Ref' => (int)$arrStrongAvrPoint2Ref[$i],
+                    'StrongAvrPercent' => (int)$arrStrongAvrPercent[$i],
+                    'ExpectAvrPoint1' => (int)$arrExpectAvrPoint1[$i],
+                    'ExpectAvrPoint1Ref' => (int)$arrExpectAvrPoint1Ref[$i],
+                    'ExpectAvrPoint2' => (int)$arrExpectAvrPoint2[$i],
+                    'ExpectAvrPoint2Ref' => (int)$arrExpectAvrPoint2Ref[$i],
+                    'ExpectAvrPercent' => (int)$arrExpectAvrPercent[$i],
                     'IsUse' => $arrIsUse[$i]
                 );
 

@@ -91,6 +91,14 @@
 
 <script>
     var $all_regi_form = $('#all_regi_form');
+    var scoreIs = '{{ $scoreIs }}';
+
+    $( document ).ready( function() {
+        if(scoreIs == 'Y'){
+            _url = '{{ front_url('/predict/popwin4/?prodcode=') }}' + $('#ProdCode').val() + '&pridx='+$('#PrIdx').val();
+            location.replace(_url);
+        }
+    });
 
     function maxLengthCheck(object){
         if (object.value.length > object.maxLength){

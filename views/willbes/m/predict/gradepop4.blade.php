@@ -40,7 +40,10 @@
             </div>
 
             <h4 class="markingTit1">결과보기</h4>
-            <form name="frm"  id="frm" action="" method="post">
+            <form id="all_regi_form" name="all_regi_form" method="POST" onsubmit="return false;" novalidate>
+                {!! csrf_field() !!}
+                <input type="hidden" id="PrIdx" name="PrIdx"    value="{{ $pridx }}">
+                <input type="hidden" id="ProdCode" name="ProdCode" value="{{ $prodcode }}">
                 <div>
                     <table cellspacing="0" cellpadding="0" class="table_type table_type2">
                         <col width="25%" />
@@ -238,6 +241,7 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+        var $all_regi_form = $('#all_regi_form');
         var scoreType = '{{ $scoreType }}';
         $(function() {
             $('.tg-tit a').click(function() {

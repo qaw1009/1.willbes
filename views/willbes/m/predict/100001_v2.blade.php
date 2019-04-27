@@ -155,7 +155,9 @@
     </table>
 
 <div class="markSbtn1">
-    <a href="javascript:js_submit();">@if($mode == 'MOD')수정@else저장@endif</a>
+    @if($mode != 'MOD')
+    <a href="javascript:js_submit();">저장</a>
+    @endif
 </div>
 </form>
 <script>

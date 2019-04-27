@@ -1708,7 +1708,7 @@ class PredictModel extends WB_Model
 
                 //원점수 평균총합 (응시자점수 - 원점수평균)제곱(총)
                 $column = "
-                    pg.PpIdx, ROUND(SUM(OrgPoint + TotalScore * (AddPoint * 0.01)),2) AS TOT
+                    pg.PpIdx, ROUND(SUM(OrgPoint),2) AS TOT
                 ";
 
                 $from = "
@@ -1731,7 +1731,7 @@ class PredictModel extends WB_Model
                 // 원점수평균/PpIdx/인원
                 $column = "
                     pg.PpIdx, 
-                    ROUND(SUM(OrgPoint + TotalScore * (AddPoint * 0.01)),2) /
+                    ROUND(SUM(OrgPoint),2) /
                     (
                         SELECT COUNT(MemIdx) FROM (
                             SELECT 
@@ -1780,8 +1780,8 @@ class PredictModel extends WB_Model
                 // 응시자 개별과목 / 점수
                 $column = "
                     pg.ProdCode, pg.PrIdx, pg.MemIdx, pg.OrgPoint, pg.PpIdx, 
-                    ROUND(OrgPoint + TotalScore * (AddPoint * 0.01),2) AS Res,
-                    ROUND(OrgPoint + TotalScore * (AddPoint * 0.01),2) /
+                    ROUND(OrgPoint,2) AS Res,
+                    ROUND(OrgPoint,2) /
                     (
                        SELECT COUNT(MemIdx) FROM (
                            SELECT 
@@ -1795,7 +1795,7 @@ class PredictModel extends WB_Model
                     ) AS AVG,
                     (
                             SELECT 
-                               SUM(OrgPoint + TotalScore * (AddPoint * 0.01)) /
+                               SUM(OrgPoint) /
                                (
                                        SELECT COUNT(MemIdx) FROM (
                                            SELECT 
@@ -2015,7 +2015,7 @@ class PredictModel extends WB_Model
 
                 // 응시자 개별과목 / 점수
                 $column = "
-                    pg.ProdCode, pg.PrIdx, pg.MemIdx, pg.OrgPoint, ROUND(OrgPoint + TotalScore * (AddPoint * 0.01),2) AS gasan, 
+                    pg.ProdCode, pg.PrIdx, pg.MemIdx, pg.OrgPoint, ROUND(OrgPoint,2) AS gasan, 
 					pg.AdjustPoint, pg.PpIdx, pg.Rank, pg.StandardDeviation
                 ";
 

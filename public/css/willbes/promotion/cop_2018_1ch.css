@@ -563,7 +563,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
     opacity: 0;
     display: none;
     position: relative;
-    width: 600px;
+    width: 640px;
     border: 1px solid #000;            
     background: #fff;
     font-size:13px;

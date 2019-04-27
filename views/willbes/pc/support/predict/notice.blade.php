@@ -1,5 +1,5 @@
 <span class="b-close">X</span>
-<h3 class="NSK-Black">live 토크쇼 공지사항</h3>
+<h3 class="NSK-Black">공지사항</h3>
 <div class="content">
     <form class="form-horizontal form-label-left" id="ajax_list_form" name="ajax_list_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}

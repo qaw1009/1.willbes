@@ -416,21 +416,21 @@
             <div id="MapRollingDiv">
                 <ul>
                     <li class="a01"><a data-slide-index="1" href="#none" class="active">서울</a></li>
-                    <li class="a12"><a data-slide-index="2" href="#none">부산</a></li>
-                    <li class="a11"><a data-slide-index="3" href="#none">대구</a></li>
-                    <li class="a02"><a data-slide-index="4" href="#none">인천</a></li>
-                    <li class="a16"><a data-slide-index="5" href="#none">광주</a></li>
-                    <li class="a08"><a data-slide-index="6" href="#none">대전</a></li>
-                    <li class="a13"><a data-slide-index="7" href="#none">울산</a></li>
-                    <li class="a10"><a data-slide-index="8" href="#none">경남</a></li>
+                    <li class="a02"><a data-slide-index="2" href="#none">인천</a></li>
+                    <li class="a03"><a data-slide-index="3" href="#none">경기북부</a></li>
+                    <li class="a04"><a data-slide-index="4" href="#none">경기남부</a></li>
+                    <li class="a05"><a data-slide-index="5" href="#none">강원</a></li>
+                    <li class="a06"><a data-slide-index="6" href="#none">충북</a></li>
+                    <li class="a07"><a data-slide-index="7" href="#none">충남</a></li>
+                    <li class="a08"><a data-slide-index="8" href="#none">대전</a></li>
                     <li class="a09"><a data-slide-index="9" href="#none">경북</a></li>
-                    <li class="a05"><a data-slide-index="10" href="#none">강원</a></li>
-                    <li class="a06"><a data-slide-index="11" href="#none">충북</a></li>
-                    <li class="a07"><a data-slide-index="12" href="#none">충남</a></li>
-                    <li class="a14"><a data-slide-index="13" href="#none">전북</a></li>
-                    <li class="a15"><a data-slide-index="14" href="#none">전남</a></li>
-                    <li class="a03"><a data-slide-index="15" href="#none">경기북부</a></li>
-                    <li class="a04"><a data-slide-index="16" href="#none">경기남부</a></li>
+                    <li class="a10"><a data-slide-index="10" href="#none">경남</a></li>
+                    <li class="a11"><a data-slide-index="11" href="#none">대구</a></li>
+                    <li class="a12"><a data-slide-index="12" href="#none">부산</a></li>                   
+                    <li class="a13"><a data-slide-index="13" href="#none">울산</a></li>
+                    <li class="a14"><a data-slide-index="14" href="#none">전북</a></li>
+                    <li class="a15"><a data-slide-index="15" href="#none">전남</a></li>
+                    <li class="a16"><a data-slide-index="16" href="#none">광주</a></li>                    
                     <li class="a17"><a data-slide-index="17" href="#none">제주</a></li>
                 </ul>
             </div>
@@ -554,7 +554,7 @@
             mode: 'fade',
             pagerCustom: '#MapRollingDiv',
             speed: 1000,
-            pause: 2000,
+            pause: 2000,    
             randomStart:true,
             controls:false
         });
@@ -574,7 +574,7 @@
             slideMargin:0,
             autoHover: true,
             moveSlides:1,
-            pager:false,
+            pager:false,            
         });
 
         $("#imgBannerLeft3").click(function (){

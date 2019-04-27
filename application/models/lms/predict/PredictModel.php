@@ -1897,13 +1897,22 @@ class PredictModel extends WB_Model
                         $minusRank = 1;
                     }
 
+                    if($AdjustPoint > 100){
+                        $AdjustPoint = 100;
+                    }
+
+                    $OrgPoint = $val['OrgPoint'];
+                    if($OrgPoint > 100){
+                        $OrgPoint = 100;
+                    }
+
                     // 데이터 입력
                     $data = [
                         'MemIdx' => $val['MemIdx'],
                         'PrIdx' => $val['PrIdx'],
                         'ProdCode' => $val['ProdCode'],
                         'PpIdx' => $val['PpIdx'],
-                        'OrgPoint' => $val['OrgPoint'],
+                        'OrgPoint' => $OrgPoint,
                         'TakeMockPart' => $TakeMockPart,
                         'TakeArea' => $TakeArea,
                         'AdjustPoint' => $AdjustPoint,

@@ -591,7 +591,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .Pstyle .content tr:hover {background:#e9f1fe}
 .Pstyle .content td a {display:block}
 .Pstyle .content td .boradImg {margin:10px 0}
-.Pstyle .content td .boradImg img {max-width:538px}
+.Pstyle .content td.tx-left img {max-width:538px}
 .Pstyle .content table strong {background:#424ac7; color:#fff; margin-right:10px; font-size:11px; padding:2px 4px}
 .Pstyle .content table strong.st02 {background:#f57d20;}
 

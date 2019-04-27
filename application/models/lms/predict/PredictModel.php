@@ -1818,7 +1818,9 @@ class PredictModel extends WB_Model
                                   LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
                            WHERE 
                                pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "
-                    ) AS won
+                    ) AS won,
+                    RegistAvgPoint,
+                    RegistStandard
                 ";
 
                 $from = "
@@ -1857,7 +1859,13 @@ class PredictModel extends WB_Model
                         $g_num = $val['Res'];
 
                         // 원점수평균 = 선택과목 점수총합 / 응시자수
-                        $wonAVG = $val['won'];
+                        $wonAVG = $val['RegistAvgPoint'];
+                        if (empty($wonAVG) === true) {
+                            throw new \Exception('원점수 평균이 없습니다..');
+                        }
+                        //$wonAVG = $val['won'];
+
+                        /**
                         $sumAVG = $arrMP[$PpIdx]['SUMAVG'];
 
                         // 응시자수
@@ -1865,9 +1873,14 @@ class PredictModel extends WB_Model
 
                         //표준편차
                         if($sumAVG != 0 && $pcnt != 1){
-                            $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
+                        $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
                         } else {
-                            $tempRes = 0;
+                        $tempRes = 0;
+                        }**/
+
+                        $tempRes = $val['RegistAvgPoint'];
+                        if (empty($tempRes) === true) {
+                            throw new \Exception('표준 편차가 없습니다.');
                         }
 
                         //조정점수

@@ -1600,7 +1600,7 @@ class PredictModel extends WB_Model
                     ";
 
                     $order_by = " ";
-                    $where = " WHERE PrIdx = " . $val['PrIdx'] ." AND ProdCode = ".$val['ProdCode'];
+                    $where = " WHERE PrIdx = " . $val['PrIdx'] ." AND ProdCode = ".$val['ProdCode']." AND PpIdx=".$val['PpIdx'];
                     $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
                     $rs = $query->row_array();
 

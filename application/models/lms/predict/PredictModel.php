@@ -1435,7 +1435,8 @@ class PredictModel extends WB_Model
             (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
             pl.PickNum, pl.TakeNum, CompetitionRateNow, CompetitionRateAgo, PassLineAgo, AvrPointAgo, StabilityAvrPoint, StabilityAvrPercent,
             StrongAvrPoint1, StrongAvrPoint2, StrongAvrPercent, ExpectAvrPoint1, ExpectAvrPoint2, ExpectAvrPercent, pl.IsUse,               
-            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef             
+            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef
+            ,RegistAvrPoint,  RegistStandard             
         ";
 
         $from = "
@@ -2211,6 +2212,8 @@ class PredictModel extends WB_Model
             $arrExpectAvrPoint2Ref = $this->input->post('ExpectAvrPoint2Ref[]');
             $arrExpectAvrPercent     = $this->input->post('ExpectAvrPercent[]');
             $arrIsUse     = $this->input->post('IsUse[]');
+            $arrRegistAvrPoint     = $this->input->post('RegistAvrPoint[]');
+            $arrRegistStandard    = $this->input->post('RegistStandard[]');
 
             // 데이터 저장
             for($i=0; $i < COUNT($arrTakeMockPart); $i++){
@@ -2237,7 +2240,9 @@ class PredictModel extends WB_Model
                     'ExpectAvrPoint2' => (float)$arrExpectAvrPoint2[$i],
                     'ExpectAvrPoint2Ref' => (float)$arrExpectAvrPoint2Ref[$i],
                     'ExpectAvrPercent' => (float)$arrExpectAvrPercent[$i],
-                    'IsUse' => $arrIsUse[$i]
+                    'IsUse' => $arrIsUse[$i],
+                    'RegistAvrPoint' => $arrRegistAvrPoint[$i],
+                    'RegistStandard' => $arrRegistStandard[$i]
                 );
 
                 $this->_conn->insert($this->_table['predictGradesLine'], $data);

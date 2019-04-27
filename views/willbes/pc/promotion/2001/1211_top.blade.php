@@ -235,7 +235,7 @@
 
         sendAjax(_url, _data, function(ret) {
             if (ret.ret_cd) {
-                var s = ret.ret_data.format();
+                var s = ret.ret_data; //.format();
                 $('#numarea1').html(makeCount(s));
             }
         }, showError, false, 'GET');
@@ -256,7 +256,7 @@
 
         sendAjax(_url, _data, function(ret) {
             if (ret.ret_cd) {
-                var s = ret.ret_data.format();
+                var s = ret.ret_data; //.format();
                 $('#numarea2').html(makeCount(s));
             }
         }, showError, false, 'GET');

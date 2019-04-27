@@ -73,33 +73,33 @@
 
     <div class="wNotice">
         <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_text.png" alt="최종 합격 솔루션">
-        {{--<div>--}}
-            {{--<h3>--}}
-                {{--<a href="javascript:selTitle('')">--}}
-                    {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_notice.png" alt="공지사항">--}}
-                {{--</a>--}}
-            {{--</h3>--}}
-            {{--<ul>--}}
-                {{--<span id="noticeArea1"></span>--}}
-            {{--</ul>--}}
-        {{--</div>--}}
+        <div>
+            <h3>
+                <a href="javascript:go_popup()">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_notice.png" alt="공지사항">
+                </a>
+            </h3>
+            <ul>
+                @if(empty($arr_base['notice_list']) === true)
+                    <li><a>등록된 내용이 없습니다.</a></li>
+                @endif
+                @foreach($arr_base['notice_list'] as $row)
+                    <li>
+                        <a href="javascript:go_popup('{{ $row['BoardIdx'] }}')">
+                            {{ $row['Title'] }}
+                            @if(date('Y-m-d') == $row['RegDatm'])<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_icon_new.png" alt="new">@endif
+                            <strong>{{ $row['RegDatm'] }}</strong>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <!--wNotice//-->
 
     {{--공지사항 레이어팝업--}}
     <div id="popup" class="Pstyle NGR">
-        <span class="b-close">X</span>
-        <h3 class="NSK-Black">합격예측 공지사항</h3>
-        <div class="content">
-            {{--글보기--}}
-            <span id="noticeArea3"></span>
-
-            {{--리스트--}}
-            <span id="noticeArea2"></span>
-
-            {{--공통 페이지 넘버링--}}           
-            
-        </div>
+        <div id="promotion_notice"></div>
     </div>
 </div>
 <!--m_sectin1_box//-->
@@ -380,6 +380,20 @@
             {{--var url = "{{ site_url('/promotion/index/cate/3001/code/1213') }}" ;--}}
             {{--location.replace(url);--}}
         }
+    }
 
+    /*레이어팝업*/
+    function go_popup(param) {
+        $('#popup').bPopup();
+        var ele_id = 'promotion_notice';
+        var data = {
+            'ele_id' : ele_id,
+            'board_idx' : param,
+            'predict_idx' : '{{ $arr_base['spidx'] }}',
+            'promotion_code' : '{{ $arr_base['promotion_code'] }}'
+        };
+        sendAjax('{{ front_url('/support/predictNotice/index') }}', data, function(ret) {
+            $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+        }, showAlertError, false, 'GET', 'html');
     }
 </script>

@@ -115,7 +115,7 @@
     
     <div class="evtCtnsBox evtTop">
         <div class="evtTopInmg">
-            <div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span id="numarea3"></span>건</div>
+            {{--<div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span id="numarea3"></span>건</div>--}}
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_top.jpg" title="2019년 경찰 1차 적중&합격예측 사전예약 이벤트">
         </div> 
 	</div>

@@ -112,7 +112,9 @@
                 </table>
             </div>
             <div class="btns">
-                <a href="javascript:js_submit();">@if($mode == 'MOD')수정@else저장@endif</a>
+                @if($mode != 'MOD')
+                    <a href="javascript:js_submit();">저장</a>
+                @endif
             </div>
         </div>
     </form>
@@ -253,7 +255,8 @@
     });
 
     function moveMyPredict(){
-        parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1212/spidx/100001') }}');
+        alert('준비중입니다.');
+        {{--parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1212/spidx/100001') }}');--}}
     }
 
     function examDeleteAjax() {

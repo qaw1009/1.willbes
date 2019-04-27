@@ -20,7 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
+        .skyBanner {position:fixed; top:240px;right:10px;z-index:10; text-align:center}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_top_bg.jpg) no-repeat center top;} 
             .evtTopInmg {position:relative; width:1120px; margin:0 auto}
             .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px; line-height:30px}
@@ -110,7 +110,16 @@
 
 <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skyBanner">
-        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트 소문내기"></a>
+        <div>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1210" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1199_skybanner.png" title="합격예측 풀서비스">
+            </a>
+        </div>    
+        <div>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트 소문내기">
+            </a>
+        </div>
     </div>
     
     <div class="evtCtnsBox evtTop">

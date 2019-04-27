@@ -43,7 +43,7 @@
         <form id="all_regi_form" name="all_regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" id="PrIdx" name="PrIdx"    value="{{ $pridx }}">
-            <input type="hidden" name="ProdCode" value="{{ element('prodcode', $arr_input) }}">
+            <input type="hidden" id="ProdCode" name="ProdCode" value="{{ element('prodcode', $arr_input) }}">
             <ul class="markTab">
                 <li><a href="#tab1" class="active">빠른채점</a></li>
                 <li><a href="javascript:gotab({{ element('prodcode', $arr_input) }})">직접입력</a></li>
@@ -109,7 +109,9 @@
             ajaxSubmit($all_regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1210') }}');
+                    {{--parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1210') }}');--}}
+                    _url = '{{ front_url('/predict/popwin4/?prodcode=') }}' + $('#ProdCode').val() + '&pridx='+$('#PrIdx').val();
+                    location.replace(_url);
                 }
             }, showValidateError, null, false, 'alert');
         }

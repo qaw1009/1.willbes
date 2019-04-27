@@ -488,6 +488,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $prodcode = element('prodcode', $arr_input);
         $pridx = element('pridx', $arr_input);
+
         $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
         $subject_grade = $this->surveyModel->orginGradeCall($pridx);
 
@@ -560,13 +561,229 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view('willbes/pc/predict/gradepop4', [
+        $score1 = $this->surveyModel->getScore1($pridx, $prodcode);
+        $score2 = $this->surveyModel->getScore2($pridx, $prodcode);
+        $scoredata = array();
+        $scoreIs = 'N';
+        $addscoreIs = 'N';
+        $scoreType = '';
+        if(empty($score1)===false){
+            $scoreType = 'EACH';
+            foreach ($score1 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score1[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        if(empty($score2)===false){
+            $scoreType = 'DIRECT';
+            foreach ($score2 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score2[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop4', [
             'prodcode' => $prodcode,
             'subject_list' => $subject_list,
             'question_list' => $question_list,
-            'newQuestion' => $newQuestion
+            'newQuestion' => $newQuestion,
+            'scoreIs' => $scoreIs,
+            'addscoreIs' => $addscoreIs,
+            'scoreType' => $scoreType,
+            'scoredata' => $scoredata
         ], false);
 
+    }
+
+    public function totalgraph(){
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $prodcode = element('prodcode', $arr_input);
+        $spidx = element('spidx', $arr_input);
+
+        $arealist = $this->surveyModel->areaList($prodcode);
+        $gradelist = $this->surveyModel->gradeList();
+
+        //한국사 영어 경찰학개론 국어 사회
+        $gradeSet[0]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[6]['CcdName']."/".$gradelist[8]['CcdName'];
+        $gradeSet[0]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[6]['Avg']."/".$gradelist[8]['Avg'];
+        //한국사 영어 경찰학개론 형법 형사소송법
+        $gradeSet[1]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[2]['CcdName']."/".$gradelist[3]['CcdName'];
+        $gradeSet[1]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[2]['Avg']."/".$gradelist[3]['Avg'];
+        //한국사 국어 영어 형법 과학
+        $gradeSet[2]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[2]['CcdName']."/".$gradelist[8]['CcdName'];
+        $gradeSet[2]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[2]['Avg']."/".$gradelist[8]['Avg'];
+
+        $dtSet = array();
+        foreach ($arealist as $key => $val){
+            $Areaname = $val['Areaname'];
+            $Serialname = $val['Serialname'];
+            $TakeMockPart = $val['TakeMockPart'];
+            $TakeArea = $val['TakeArea'];
+            $PickNum = $val['PickNum'];
+            $TakeNum = $val['TakeNum'];
+            $CompetitionRateNow = $val['CompetitionRateNow'];
+            $CompetitionRateAgo = $val['CompetitionRateAgo'];
+            $PassLineAgo = $val['PassLineAgo'];
+            $AvrPointAgo = $val['AvrPointAgo'];
+            $StabilityAvrPoint = $val['StabilityAvrPoint'];
+            $StabilityAvrPointRef = $val['StabilityAvrPointRef'];
+            $StabilityAvrPercent = $val['StabilityAvrPercent'];
+            $StrongAvrPoint1 = $val['StrongAvrPoint1'];
+            $StrongAvrPoint1Ref = $val['StrongAvrPoint1Ref'];
+            $StrongAvrPoint2 = $val['StrongAvrPoint2'];
+            $StrongAvrPoint2Ref = $val['StrongAvrPoint2Ref'];
+            $StrongAvrPercent = $val['StrongAvrPercent'];
+            $ExpectAvrPoint1 = $val['ExpectAvrPoint1'];
+            $ExpectAvrPoint1Ref = $val['ExpectAvrPoint1Ref'];
+            $ExpectAvrPoint2 = $val['ExpectAvrPoint2'];
+            $ExpectAvrPoint2Ref = $val['ExpectAvrPoint2Ref'];
+            $ExpectAvrPercent = $val['ExpectAvrPercent'];
+            $IsUse = $val['IsUse'];
+
+            $dtSet[$TakeMockPart][$TakeArea]['TakeMockPart'] = $TakeMockPart;
+            $dtSet[$TakeMockPart][$TakeArea]['TakeArea'] = $TakeArea;
+            $dtSet[$TakeMockPart][$TakeArea]['Areaname'] = $Areaname;
+            $dtSet[$TakeMockPart][$TakeArea]['Serialname'] = $Serialname;
+            $dtSet[$TakeMockPart][$TakeArea]['PickNum'] = $PickNum;
+            $dtSet[$TakeMockPart][$TakeArea]['TakeNum'] = $TakeNum;
+            $dtSet[$TakeMockPart][$TakeArea]['CompetitionRateNow'] = $CompetitionRateNow;
+            $dtSet[$TakeMockPart][$TakeArea]['CompetitionRateAgo'] = $CompetitionRateAgo;
+            $dtSet[$TakeMockPart][$TakeArea]['PassLineAgo'] = $PassLineAgo;
+            $dtSet[$TakeMockPart][$TakeArea]['AvrPointAgo'] = $AvrPointAgo;
+            $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPoint'] = $StabilityAvrPoint;
+            $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPointRef'] = $StabilityAvrPointRef;
+            $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPercent'] = $StabilityAvrPercent;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPoint1'] = $StrongAvrPoint1;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPoint1Ref'] = $StrongAvrPoint1Ref;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPoint2'] = $StrongAvrPoint2;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPoint2Ref'] = $StrongAvrPoint2Ref;
+            $dtSet[$TakeMockPart][$TakeArea]['StrongAvrPercent'] = $StrongAvrPercent;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint1'] = $ExpectAvrPoint1;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint1Ref'] = $ExpectAvrPoint1Ref;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint2'] = $ExpectAvrPoint2;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint2Ref'] = $ExpectAvrPoint2Ref;
+            $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPercent'] = $ExpectAvrPercent;
+            $dtSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
+        }
+        $res = $this->surveyModel->surveyAnswerCall($spidx);
+
+        $tempSq = '';
+        $temptitle = '';
+        $tempType = '';
+        $tempCNT = '';
+        $resSet = array();
+        $titleSet = array();
+        $numberSet = array();
+        $questionSet = array();
+        $typeSet = array();
+        for($i = 1; $i <= 25; $i++){
+            ${"num".$i} = 0;
+        }
+
+        $resCnt = count($res);
+        $defnum = 0;
+        foreach ($res as $key => $val){
+            $SqIdx = $val['SqIdx'];
+            $CNT = $val['CNT'];
+            $Answer = $val['Answer'];
+            $Type = $val['Type'];
+            $j = $key + 1;
+            if($Type != 'T'){
+                if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
+
+                    $tnum = 0;
+                    if($resCnt == $j){
+                        ${"num".$Answer}++;
+                    }
+
+                    for($i = 1; $i <= $tempCNT; $i++) {
+                        $tnum = $tnum + ${"num".$i};
+                    }
+                    $resSet[$defnum]['SubTitle'] = $temptitle;
+                    for($i = 1; $i <= $tempCNT; $i++){
+                        $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
+                    }
+                    for($i = 1; $i <= $CNT; $i++){
+                        if($Answer == $i){
+                            if($val['Type'] == 'S') {
+                                ${"num" . $i} = 1;
+                            } else {
+                                $AnswerArr = explode('/',$Answer);
+                                for($i = 1; $i <= $CNT; $i++){
+                                    ${"num".$i} = 0;
+                                    for($j = 0; $j < count($AnswerArr); $j++){
+                                        if($AnswerArr[$j] == $i){
+                                            ${"num".$i}++;
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if($val['Type'] == 'S') ${"num".$i} = 0;
+                        }
+                    }
+
+                    $resSet[$defnum]['CNT'] = $tempCNT;
+                    $titleSet[] = $temptitle;
+                    $numberSet[] = $defnum;
+                    $typeSet[] = $tempType;
+                    $questionSet[] = $this->surveyModel->surveyQuestionSet($tempSq);
+                    $defnum++;
+                } else {
+                    if($val['Type'] == 'S'){
+
+                        for($i = 1; $i <= $CNT; $i++){
+                            if($Answer == $i) ${"num".$i}++;
+                        }
+                    } else {
+                        //TYPE == 'T'
+                        $AnswerArr = explode('/',$Answer);
+                        for($i = 1; $i <= $CNT; $i++){
+                            for($j = 0; $j < count($AnswerArr); $j++){
+                                if($AnswerArr[$j] == $i){
+                                    ${"num".$i}++;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                $tempSq = $SqIdx;
+                $tempType = $val['Type'];
+                $temptitle = $val['SubTitle'];
+                $tempCNT = $CNT;
+            }
+        }
+
+        $this->load->view('willbes/pc/predict/graph', [
+            'prodcode' => $prodcode,
+            'spidx' => $spidx,
+            'areaList' => $dtSet,
+            'gradeList' => $gradeSet,
+            'gradelist2' => $gradelist,
+            'spidx' => $spidx,
+            'resSet' => $resSet,
+            'titleSet' => $titleSet,
+            'typeSet' => $typeSet,
+            'questionSet' => $questionSet,
+            'numberSet' => $numberSet
+        ], false);
     }
 
 

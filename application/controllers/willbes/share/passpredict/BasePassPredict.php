@@ -447,13 +447,52 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
+        $score1 = $this->surveyModel->getScore1($pridx, $prodcode);
+        $score2 = $this->surveyModel->getScore2($pridx, $prodcode);
+        $scoredata = array();
+        $scoreIs = 'N';
+        $addscoreIs = 'N';
+        $scoreType = '';
+        if(empty($score1)===false){
+            $scoreType = 'EACH';
+            foreach ($score1 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score1[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        if(empty($score2)===false){
+            $scoreType = 'DIRECT';
+            foreach ($score2 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score2[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
         $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop2', [
             'prodcode'      => $prodcode,
             'subject_list'  => $subject_list,
             'question_list' => $question_list,
             'arr_input'     => $arr_input,
             'pridx'         => $pridx,
-            'newQuestion'   => $newQuestion
+            'newQuestion'   => $newQuestion,
+            'scoreIs'       => $scoreIs,
+            'addscoreIs'    => $addscoreIs,
+            'scoreType'     => $scoreType
         ], false);
     }
 
@@ -870,13 +909,6 @@ class BasePassPredict extends \app\controllers\FrontController
                 $cnt3 = $this->predictFModel->getCntScore('');              //채점
                 $cnt4 = $this->predictFModel->getCntEventComment('1187');     //소문내기
                 $cnt5 = $this->predictFModel->getCntEventComment('1199');     //적중
-
-                $cnt6_1 = $this->predictFModel->getCntMyLecture('152583');   //최신판례특강
-                $cnt6_2 = $this->predictFModel->getCntMyLecture('152582');   //최신판례특강
-                $cnt6 = $cnt6_1 + $cnt6_2;
-
-                $cnt7 = $this->predictFModel->getCntMyLecture('152580');     //봉투모의고사
-                $cnt8 = $this->predictFModel->getCntMyLecture('152581');     //시크릿다운
                 $random = mt_rand(1, 10);
                 break;
         }
@@ -900,7 +932,18 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     private function _promotion_cnt_type_2($data, $reg_cnt)
     {
-        $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
+        switch ($data['type']) {
+            case "1":
+            case "2":
+                $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
+                break;
+            case "3":
+                $event_pv = 0;
+                break;
+            default:
+                $event_pv = 0;
+                break;
+        }
 
         $random = mt_rand(1, 10);
         $ins_cnt = $reg_cnt + $random; //DB 저장 데이터

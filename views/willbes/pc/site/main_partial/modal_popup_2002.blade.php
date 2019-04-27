@@ -13,10 +13,10 @@
             <div class="pop-container">
                 <div class="pop-conts">
                     <!--content //-->
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/2002_LayPop190423_p.png" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/2002_LayPop190426_p.png" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
                     <map name="MaplayerPopup" id="MaplayerPopup">
                         <area shape="rect" coords="9,5,177,400" href="{{site_url('/support/notice/show/cate/3001?board_idx=223660')}}" alt="트로피" />
-                        <area shape="rect" coords="181,5,565,474" href="{{site_url('/promotion/index/cate/3001/code/1187')}}" alt="경찰1차 합격예측" />
+                        <area shape="rect" coords="181,5,565,474" href="{{site_url('/promotion/index/cate/3001/code/1210')}}" alt="경찰1차 합격예측" />
                         <area shape="rect" coords="571,6,954,161" href="{{site_url('/pass/promotion/index/cate/3010/code/1050')}}" alt="슈퍼패스" />
                         <area shape="rect" coords="572,165,953,317" href="{{site_url('/pass/promotion/index/cate/3010/code/1202')}}" alt="필합4개월 PASS"/>
                         <area shape="rect" coords="572,323,952,474" href="{{site_url('/pass/promotion/index/cate/3010/code/1204')}}" alt="프리미엄 심화이론/기출" />                      

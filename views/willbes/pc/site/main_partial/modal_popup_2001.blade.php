@@ -13,11 +13,11 @@
             <div class="pop-container">
                 <div class="pop-conts">
                     <!--content //-->
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/2001_LayPop190423_p.png" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/04/2001_LayPop190426_p.png" alt="" usemap="#MaplayerPopup" border="0" href="#none"/>
                     <map name="MaplayerPopup" id="MaplayerPopup">
                         <area shape="rect" coords="6,5,118,310" href="{{site_url('/support/notice/show/cate/3001?board_idx=223660')}}" title="BCLI" />
                         <area shape="rect" coords="133,5,511,312" href="{{site_url('/promotion/index/cate/3001/code/1009')}}" title="평생0원PASS" />
-                        <area shape="rect" coords="525,5,901,312" href="{{site_url('/promotion/index/cate/3001/code/1187')}}" title="적중&합격예측서비스"/>
+                        <area shape="rect" coords="525,5,901,312" href="{{site_url('/promotion/index/cate/3001/code/1210')}}" title="적중&합격예측서비스"/>
                     </map>
                     <div class="btn-r">
                         <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop2002('passpopup', 'blackpopup');" >하루 보지않기</a>

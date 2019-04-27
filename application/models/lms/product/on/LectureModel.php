@@ -346,7 +346,7 @@ class LectureModel extends CommonLectureModel
             ]);
 
             // 백업 데이터 등록
-            $this->addBakData($this->_table['product'], ['ProdCode' => $prodcode]);
+            //$this->addBakData($this->_table['product'], ['ProdCode' => $prodcode]);
 
             if ($this->_conn->set($product_data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode)->update($this->_table['product']) === false) {
                 throw new \Exception('상품 정보 수정에 실패했습니다.');

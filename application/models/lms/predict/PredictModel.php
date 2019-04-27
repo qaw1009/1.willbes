@@ -471,6 +471,7 @@ class PredictModel extends WB_Model
         $column = "
 	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.ProdCode, PP.SubjectCode, PP.Type, PP.UpdDate, 
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse
+	        ,PP.RegistAvgPoint, PP.RegistStandard
         ";
 
         $from = "
@@ -661,6 +662,8 @@ class PredictModel extends WB_Model
                 'RegIp' => $this->input->ip_address(),
                 'RegDate' => date("Y-m-d H:i:s"),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegistAvgPoint' => $this->input->post('RegistAvgPoint'),
+                'RegistStandard' => $this->input->post('RegistStandard'),
             );
 
             $this->_conn->insert($this->_table['predictPaper'], $data);
@@ -706,6 +709,8 @@ class PredictModel extends WB_Model
                 'IsUse' => $this->input->post('IsUse'),
                 'UpdDate' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegistAvgPoint' => $this->input->post('RegistAvgPoint'),
+                'RegistStandard' => $this->input->post('RegistStandard'),
             );
             if($this->input->post('AnswerNum'))      $data['AnswerNum'] = $this->input->post('AnswerNum');
             if($this->input->post('TotalScore'))     $data['TotalScore'] = $this->input->post('TotalScore');

@@ -97,7 +97,7 @@
                         </span>
                     @endforeach
                 @endforeach
-                <p class="area_txt">※ 일반공채(남,여)의 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.</p>
+                <p class="area_txt">※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.</p>
             </div>
             <!--m_section3_R//-->
         </div>

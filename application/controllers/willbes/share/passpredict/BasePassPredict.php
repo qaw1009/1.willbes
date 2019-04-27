@@ -447,13 +447,52 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
+        $score1 = $this->surveyModel->getScore1($pridx, $prodcode);
+        $score2 = $this->surveyModel->getScore2($pridx, $prodcode);
+        $scoredata = array();
+        $scoreIs = 'N';
+        $addscoreIs = 'N';
+        $scoreType = '';
+        if(empty($score1)===false){
+            $scoreType = 'EACH';
+            foreach ($score1 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score1[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
+        if(empty($score2)===false){
+            $scoreType = 'DIRECT';
+            foreach ($score2 as $key => $val){
+                $scoredata['subject'][]  = $val['SubjectName'];
+                $scoredata['score'][]    = $val['OrgPoint'];
+                $scoredata['addscore'][] = $val['AdjustPoint'];
+            }
+            $scoreIs = 'Y';
+            if($score2[0]['AdjustPoint']){
+                $addscoreIs = 'Y';
+            } else {
+                $addscoreIs = 'N';
+            }
+        }
+
         $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop2', [
             'prodcode'      => $prodcode,
             'subject_list'  => $subject_list,
             'question_list' => $question_list,
             'arr_input'     => $arr_input,
             'pridx'         => $pridx,
-            'newQuestion'   => $newQuestion
+            'newQuestion'   => $newQuestion,
+            'scoreIs'       => $scoreIs,
+            'addscoreIs'    => $addscoreIs,
+            'scoreType'     => $scoreType
         ], false);
     }
 

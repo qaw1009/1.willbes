@@ -91,13 +91,13 @@
         <span class="b-close">X</span>
         <h3 class="NSK-Black">합격예측 공지사항</h3>
         <div class="content">
+            {{--글보기--}}
+            <span id="noticeArea3"></span>
+
             {{--리스트--}}
             <span id="noticeArea2"></span>
 
-            {{--공통 페이지 넘버링--}}
-
-            {{--글보기--}}
-            <span id="noticeArea3"></span>
+            {{--공통 페이지 넘버링--}}           
             
         </div>
     </div>

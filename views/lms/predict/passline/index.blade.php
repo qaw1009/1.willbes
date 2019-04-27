@@ -48,8 +48,6 @@
                         <th class="text-center">유력권</th>
                         <th class="text-center">안정권</th>
                         <th class="text-center">계산</th>
-                        <th class="text-center">입력-평균</th>
-                        <th class="text-center">입력-표준편차</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -107,8 +105,6 @@
                                     <td>
                                         <input type="button" value="계산" onClick="calculate('{{ $val2['TakeMockPart'] }}','{{ $val2['TakeArea'] }}','{{ $prodcode }}')" />
                                     </td>
-                                    <td><input type="text" name="RegistAvrPoint[]" value="{{ $val2['RegistAvrPoint'] }}" style="width:50px;" /></td>
-                                    <td><input type="text" name="RegistStandard[]" value="{{ $val2['RegistStandard'] }}" style="width:50px;" /></td>
                                 </tr>
                             @endforeach
                         @endforeach

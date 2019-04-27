@@ -146,6 +146,7 @@
                 @endif
                 @foreach($arr_base['notice_list'] as $row)
                     <li><a href="javascript:go_popup('{{ $row['BoardIdx'] }}');">{{ $row['Title'] }} <span>{{ $row['RegDatm'] }}</span></a></li>
+                    @if ($loop->index >= 2) @break; @endif
                 @endforeach
                 {{--<li><a href="javascript:go_popup();"><strong>공지</strong>라이브 토크쇼 14:00시부터 시작합니다.<span>2019-04-23</span></a></li>
                 <li><a href="javascript:go_popup();">해설강의 진행시간 안내 <span>2019-04-23</span></a></li>--}}

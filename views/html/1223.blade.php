@@ -27,7 +27,7 @@
             z-index:1;
         }
 
-        .evt01 {position:relative;overflow:hidden; min-width:1210px; text-align:center; background:#5f4b99 url("https://static.willbes.net/public/images/promotion/2019/04/1223_top_bg.jpg") center top  no-repeat; margin-top:5px;}
+        .evt01 {background:#5f4b99 url("https://static.willbes.net/public/images/promotion/2019/04/1223_top_bg.jpg") center top  no-repeat;}
         .evt02 {background:#0077ff }
         .evt03 {background:#eef2f5 url("https://static.willbes.net/public/images/promotion/2019/04/1223_02_bg.jpg") center top no-repeat; height:1310px}
         .evt04 {background:#000 url("https://static.willbes.net/public/images/promotion/2019/04/1223_03_bg.jpg") center top no-repeat;}
@@ -138,6 +138,11 @@
 		<div class="evtCtnsBox evt05">
           <img src="https://static.willbes.net/public/images/promotion/2019/04/1223_04.png" title="공무원문풀로열공하고합격선물받는이벤트">
         </div>
+
+        {{--기본댓글--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_normal_partial')
+        @endif
 
     </div>
     <!-- End Container -->

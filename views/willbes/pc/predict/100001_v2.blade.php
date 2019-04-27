@@ -205,32 +205,32 @@
                     <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }}@else 미입력 @endif</td>
                     <td rowspan="5"><a href="javascript:resultPop(100001)" class="type1">확인 ▶</a></td>
                     <td>@if($scoreIs == 'Y') {{ $scoredata['score'][0] }} @else 미입력 @endif</td>
-                    {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>--}}
-                    <td>집계중</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>
+                    {{--<td>집계중</td>--}}
                 </tr>
                 <tr>
                     <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][1] }}@else 미입력 @endif</td>
                     <td>@if($scoreIs == 'Y') {{ $scoredata['score'][1] }} @else 미입력 @endif</td>
-                    {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][1] }} @else 미입력 @endif</td>--}}
-                    <td>집계중</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][1] }} @else 미입력 @endif</td>
+                    {{--<td>집계중</td>--}}
                 </tr>
                 <tr>
                     <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][2] }}@else 미입력 @endif</td>
                     <td>@if($scoreIs == 'Y') {{ $scoredata['score'][2] }} @else 미입력 @endif</td>
-                    {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][2] }} @else 미입력 @endif</td>--}}
-                    <td>집계중</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][2] }} @else 미입력 @endif</td>
+                    {{--<td>집계중</td>--}}
                 </tr>
                 <tr>
                     <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][3] }}@else 미입력 @endif</td>
                     <td>@if($scoreIs == 'Y') {{ $scoredata['score'][3] }} @else 미입력 @endif</td>
-                    {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][3] }} @else 미입력 @endif</td>--}}
-                    <td>집계중</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][3] }} @else 미입력 @endif</td>
+                    {{--<td>집계중</td>--}}
                 </tr>
                 <tr>
                     <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][4] }}@else 미입력 @endif</td>
                     <td>@if($scoreIs == 'Y') {{ $scoredata['score'][4] }} @else 미입력 @endif</td>
-                    {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][4] }} @else 미입력 @endif</td>--}}
-                    <td>집계중</td>
+                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][4] }} @else 미입력 @endif</td>
+                    {{--<td>집계중</td>--}}
                 </tr>
             </table>
             <div class="btns">
@@ -260,7 +260,7 @@
     });
 
     function moveMyPredict(){
-        alert('준비중입니다.');
+        alert('안정화 작업중입니다!');
         {{--parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1212/spidx/100001') }}');--}}
     }
 

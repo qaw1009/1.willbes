@@ -1622,6 +1622,23 @@ class PredictModel extends WB_Model
                             throw new \Exception('시험데이터가 없습니다.');
                         }
 
+                    } else {
+                        $orgPoint = $val['OrgPoint'];
+
+                        // 데이터 입력
+                        $data = [
+                            'MemIdx' => $val['MemIdx'],
+                            'ProdCode' => $val['ProdCode'],
+                            'PpIdx' => $val['PpIdx'],
+                            'OrgPoint' => $orgPoint,
+                            'TakeMockPart' => $val['TakeMockPart'],
+                            'TakeArea' => $val['TakeArea']
+                        ];
+
+                        $this->_conn->set($data)->where('PrIdx', $val['PrIdx']);
+                        if ($this->_conn->update($this->_table['predictGradesOrigin']) === false) {
+                            throw new \Exception('데이터 수정에 실패했습니다.');
+                        }
                     }
 
                 }
@@ -1847,7 +1864,7 @@ class PredictModel extends WB_Model
                 foreach ($result AS $key => $val) {
                     $orgPoint = $val['OrgPoint'];
                     //조정점수 반영로직
-                    if ($arrType[$PpIdx] == 'S') {
+                    if ($arrType[$PpIdx] == 'S' && $TakeMockPart != 300) {
                         /*
                         * 선택과목은 아래와 같은 계산법을 따른다.
                         *

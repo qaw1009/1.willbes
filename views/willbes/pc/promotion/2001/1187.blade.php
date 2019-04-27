@@ -35,14 +35,14 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <ul class="skyBanner">
-            <li><a href="javascript:alert('coming soon');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr01.png" title="토크쇼"></a></li>
+            <li><a href="{{ site_url('/promotion/index/cate/3001/code/1208') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr01.png" title="토크쇼"></a></li>
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr02.png" title="적중이벤트"></a></li>
             {{--<li class="mt10"><a href="#none" onclick="javascript:doEvent2(); return false;"><img src="https://static.willbes.net/public/images/promotion/2019/04/1187_skyBnr03.png" title="최신판례특강"></a></li>--}}
         </ul>  
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">
-                <div class="counter NSK-Black" style="display:none;">적중&합격예측 서비스 이용 : <span id="autonumber">@include('willbes.pc.predict.show_count_partial')</span>건</div>
+                {{--<div class="counter NSK-Black" style="display:none;">적중&합격예측 서비스 이용 : <span id="autonumber">@include('willbes.pc.predict.show_count_partial')</span>건</div>--}}
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_top.jpg" title="2019년 경찰 1차 적중&합격예측 사전예약 이벤트">
             </div>        
         </div>

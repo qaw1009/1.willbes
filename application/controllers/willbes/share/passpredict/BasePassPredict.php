@@ -843,13 +843,13 @@ class BasePassPredict extends \app\controllers\FrontController
         $event_pv = '0'; $cnt1 = '0'; $cnt2 = '0'; $cnt3 = '0'; $cnt4 = '0'; $cnt5 = '0'; $cnt6 = '0'; $cnt7 = '0'; $cnt8 = '0'; $random = '0';
 
         switch ($data['type']) {
-            case "1187": case "1225":
+            case "1":
                 $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
                 $cnt3 = $this->predictFModel->getCntScore('');              //채점
                 $cnt4 = $this->predictFModel->getCntEventComment('1187');     //소문내기
                 $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
                 break;
-            case "1210": case "1211": case "1212": case "1213":
+            case "2":
                 $cnt1 = $this->predictFModel->getCntSurvey($data['sp_idx']);            //설문
                 $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
                 $cnt3 = $this->predictFModel->getCntScore('');              //채점
@@ -864,7 +864,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 $event_pv = $this->predictFModel->getCntEventPV($data['event_idx']);
                 $random = mt_rand(1, 10);
                 break;
-            case "1199":
+            case "3":
                 $cnt1 = $this->predictFModel->getCntSurvey($data['sp_idx']);            //설문
                 $cnt2 = $this->predictFModel->getCntPreregist('1187');      //사전접수
                 $cnt3 = $this->predictFModel->getCntScore('');              //채점

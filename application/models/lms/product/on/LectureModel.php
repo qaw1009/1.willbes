@@ -36,7 +36,7 @@ class LectureModel extends CommonLectureModel
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
                     ,E.ProfIdx_String,E.wProfName_String
                     ,IFNULL(F.DivisionCount,0) AS DivisionCount
-                    #,fn_product_count_cart(A.ProdCode) as CartCnt
+                        #,fn_product_count_cart(A.ProdCode) as CartCnt
                     #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
                     #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
                     ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하    19.02.18 최진영 차장님 협의
@@ -344,6 +344,10 @@ class LectureModel extends CommonLectureModel
             $product_data = array_merge($input_product,[
                 'UpdAdminIdx'=>$this->session->userdata('admin_idx')
             ]);
+
+            // 백업 데이터 등록
+            $this->addBakData($this->_table['product'], ['ProdCode' => $prodcode]);
+
             if ($this->_conn->set($product_data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode)->update($this->_table['product']) === false) {
                 throw new \Exception('상품 정보 수정에 실패했습니다.');
             }
@@ -354,6 +358,10 @@ class LectureModel extends CommonLectureModel
             $lecture_data = array_merge($input_lecture,[
                 //'LearnPatternCcd'=>element('LearnPatternCcd',$input)
             ]);
+
+            // 백업 데이터 등록
+            //$this->addBakData($this->_table['lecture'], ['ProdCode' => $prodcode]);
+
             if ($this->_conn->set($lecture_data)->where('ProdCode', $prodcode)->update($this->_table['lecture']) === false) {
                 throw new \Exception('강좌 정보 수정에 실패했습니다.');
             }

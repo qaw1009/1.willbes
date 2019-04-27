@@ -127,7 +127,7 @@
                 <div>
                     <p>
                         {{--4월 27일 11시40분까지--}}
-                        <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>
+                        {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>--}}
 
                     {{--4월 27일 11시40분이후--}}
                     <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">

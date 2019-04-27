@@ -73,6 +73,8 @@ class Passline extends \app\controllers\BaseController
             $ExpectAvrPoint2Ref = $val['ExpectAvrPoint2Ref'];
             $ExpectAvrPercent = $val['ExpectAvrPercent'];
             $IsUse = $val['IsUse'];
+            $RegistAvrPoint = $val['RegistAvrPoint'];
+            $RegistStandard = $val['RegistStandard'];
 
             $dtSet[$TakeMockPart][$TakeArea]['PickNum'] = $PickNum;
             $dtSet[$TakeMockPart][$TakeArea]['TakeNum'] = $TakeNum;
@@ -94,6 +96,8 @@ class Passline extends \app\controllers\BaseController
             $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint2Ref'] = $ExpectAvrPoint2Ref;
             $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPercent'] = $ExpectAvrPercent;
             $dtSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
+            $dtSet[$TakeMockPart][$TakeArea]['RegistAvrPoint'] = $RegistAvrPoint;
+            $dtSet[$TakeMockPart][$TakeArea]['RegistStandard'] = $RegistStandard;
         }
 
         $dataSet = array();
@@ -136,6 +140,9 @@ class Passline extends \app\controllers\BaseController
                             $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPoint2Ref'] = $dtSet[$SerialCcd][$TakeArea]['ExpectAvrPoint2Ref'];
                             $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPercent'] = $dtSet[$SerialCcd][$TakeArea]['ExpectAvrPercent'];
                             $dataSet[$SerialCcd][$TakeArea]['IsUse'] = $dtSet[$SerialCcd][$TakeArea]['IsUse'];
+                            $dataSet[$SerialCcd][$TakeArea]['RegistAvrPoint'] = $dtSet[$SerialCcd][$TakeArea]['RegistAvrPoint'];
+                            $dataSet[$SerialCcd][$TakeArea]['RegistStandard'] = $dtSet[$SerialCcd][$TakeArea]['RegistStandard'];
+
                         } else {
                             $dataSet[$SerialCcd][$TakeArea]['PickNum'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['TakeNum'] = '';
@@ -157,8 +164,9 @@ class Passline extends \app\controllers\BaseController
                             $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPoint2Ref'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPercent'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['IsUse'] = '';
+                            $dataSet[$SerialCcd][$TakeArea]['RegistAvrPoint'] = '';
+                            $dataSet[$SerialCcd][$TakeArea]['RegistStandard'] = '';
                         }
-
 
                     }
                 } else {
@@ -190,6 +198,8 @@ class Passline extends \app\controllers\BaseController
                         $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPoint2Ref'] = $dtSet[$SerialCcd][$TakeArea]['ExpectAvrPoint2Ref'];
                         $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPercent'] = $dtSet[$SerialCcd][$TakeArea]['ExpectAvrPercent'];
                         $dataSet[$SerialCcd][$TakeArea]['IsUse'] = $dtSet[$SerialCcd][$TakeArea]['IsUse'];
+                        $dataSet[$SerialCcd][$TakeArea]['RegistAvrPoint'] = $dtSet[$SerialCcd][$TakeArea]['RegistAvrPoint'];
+                        $dataSet[$SerialCcd][$TakeArea]['RegistStandard'] = $dtSet[$SerialCcd][$TakeArea]['RegistStandard'];
                     } else {
                         $dataSet[$SerialCcd][$TakeArea]['PickNum'] = '';
                         $dataSet[$SerialCcd][$TakeArea]['TakeNum'] = '';
@@ -211,6 +221,8 @@ class Passline extends \app\controllers\BaseController
                         $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPoint2Ref'] = '';
                         $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPercent'] = '';
                         $dataSet[$SerialCcd][$TakeArea]['IsUse'] = '';
+                        $dataSet[$SerialCcd][$TakeArea]['RegistAvrPoint'] = '';
+                        $dataSet[$SerialCcd][$TakeArea]['RegistStandard'] = '';
                     }
                 }
             }
@@ -248,6 +260,8 @@ class Passline extends \app\controllers\BaseController
                 $ExpectAvrPoint2Ref = $val['ExpectAvrPoint2Ref'];
                 $ExpectAvrPercent = $val['ExpectAvrPercent'];
                 $IsUse = $val['IsUse'];
+                $RegistAvrPoint = $val['RegistAvrPoint'];
+                $RegistStandard = $val['RegistStandard'];
 
                 if ($TakeMockPart == '400') {
                     //101단 - 서울만 접수받음
@@ -275,6 +289,9 @@ class Passline extends \app\controllers\BaseController
                         $dataSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint2Ref'] = $ExpectAvrPoint2Ref;
                         $dataSet[$TakeMockPart][$TakeArea]['ExpectAvrPercent'] = $ExpectAvrPercent;
                         $dataSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
+                        $dataSet[$TakeMockPart][$TakeArea]['RegistAvrPoint'] = $RegistAvrPoint;
+                        $dataSet[$TakeMockPart][$TakeArea]['RegistStandard'] = $RegistStandard;
+
                     }
                 } else {
                     $dataSet[$TakeMockPart][$TakeArea]['TakeOrigin'] = $TakeOrigin;
@@ -300,6 +317,8 @@ class Passline extends \app\controllers\BaseController
                     $dataSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint2Ref'] = $ExpectAvrPoint2Ref;
                     $dataSet[$TakeMockPart][$TakeArea]['ExpectAvrPercent'] = $ExpectAvrPercent;
                     $dataSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
+                    $dataSet[$TakeMockPart][$TakeArea]['RegistAvrPoint'] = $RegistAvrPoint;
+                    $dataSet[$TakeMockPart][$TakeArea]['RegistStandard'] = $RegistStandard;
                 }
             }
            //var_dump($dataSet);

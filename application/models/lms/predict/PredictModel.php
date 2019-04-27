@@ -1435,7 +1435,8 @@ class PredictModel extends WB_Model
             (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
             pl.PickNum, pl.TakeNum, CompetitionRateNow, CompetitionRateAgo, PassLineAgo, AvrPointAgo, StabilityAvrPoint, StabilityAvrPercent,
             StrongAvrPoint1, StrongAvrPoint2, StrongAvrPercent, ExpectAvrPoint1, ExpectAvrPoint2, ExpectAvrPercent, pl.IsUse,               
-            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef             
+            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef
+            ,RegistAvrPoint,  RegistStandard             
         ";
 
         $from = "
@@ -2211,6 +2212,8 @@ class PredictModel extends WB_Model
             $arrExpectAvrPoint2Ref = $this->input->post('ExpectAvrPoint2Ref[]');
             $arrExpectAvrPercent     = $this->input->post('ExpectAvrPercent[]');
             $arrIsUse     = $this->input->post('IsUse[]');
+            $arrRegistAvrPoint     = $this->input->post('RegistAvrPoint[]');
+            $arrRegistStandard    = $this->input->post('RegistStandard[]');
 
             // 데이터 저장
             for($i=0; $i < COUNT($arrTakeMockPart); $i++){
@@ -2224,20 +2227,22 @@ class PredictModel extends WB_Model
                     'CompetitionRateAgo' => $arrCompetitionRateAgo[$i],
                     'PassLineAgo' => $arrPassLineAgo[$i],
                     'AvrPointAgo' => $arrAvrPointAgo[$i],
-                    'StabilityAvrPoint' => (int)$arrStabilityAvrPoint[$i],
-                    'StabilityAvrPointRef' => (int)$arrStabilityAvrPointRef[$i],
-                    'StabilityAvrPercent' => (int)$arrStabilityAvrPercent[$i],
-                    'StrongAvrPoint1' => (int)$arrStrongAvrPoint1[$i],
-                    'StrongAvrPoint1Ref' => (int)$arrStrongAvrPoint1Ref[$i],
-                    'StrongAvrPoint2' => (int)$arrStrongAvrPoint2[$i],
-                    'StrongAvrPoint2Ref' => (int)$arrStrongAvrPoint2Ref[$i],
-                    'StrongAvrPercent' => (int)$arrStrongAvrPercent[$i],
-                    'ExpectAvrPoint1' => (int)$arrExpectAvrPoint1[$i],
-                    'ExpectAvrPoint1Ref' => (int)$arrExpectAvrPoint1Ref[$i],
-                    'ExpectAvrPoint2' => (int)$arrExpectAvrPoint2[$i],
-                    'ExpectAvrPoint2Ref' => (int)$arrExpectAvrPoint2Ref[$i],
-                    'ExpectAvrPercent' => (int)$arrExpectAvrPercent[$i],
-                    'IsUse' => $arrIsUse[$i]
+                    'StabilityAvrPoint' => (float)$arrStabilityAvrPoint[$i],
+                    'StabilityAvrPointRef' => (float)$arrStabilityAvrPointRef[$i],
+                    'StabilityAvrPercent' => (float)$arrStabilityAvrPercent[$i],
+                    'StrongAvrPoint1' => (float)$arrStrongAvrPoint1[$i],
+                    'StrongAvrPoint1Ref' => (float)$arrStrongAvrPoint1Ref[$i],
+                    'StrongAvrPoint2' => (float)$arrStrongAvrPoint2[$i],
+                    'StrongAvrPoint2Ref' => (float)$arrStrongAvrPoint2Ref[$i],
+                    'StrongAvrPercent' => (float)$arrStrongAvrPercent[$i],
+                    'ExpectAvrPoint1' => (float)$arrExpectAvrPoint1[$i],
+                    'ExpectAvrPoint1Ref' => (float)$arrExpectAvrPoint1Ref[$i],
+                    'ExpectAvrPoint2' => (float)$arrExpectAvrPoint2[$i],
+                    'ExpectAvrPoint2Ref' => (float)$arrExpectAvrPoint2Ref[$i],
+                    'ExpectAvrPercent' => (float)$arrExpectAvrPercent[$i],
+                    'IsUse' => $arrIsUse[$i],
+                    'RegistAvrPoint' => $arrRegistAvrPoint[$i],
+                    'RegistStandard' => $arrRegistStandard[$i]
                 );
 
                 $this->_conn->insert($this->_table['predictGradesLine'], $data);

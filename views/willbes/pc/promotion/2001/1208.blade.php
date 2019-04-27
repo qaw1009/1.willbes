@@ -164,7 +164,7 @@
             $live_type = 'standby';
             $now_datm = date('YmdHis');
             $start_time = '20190427125000';
-            $end_time = '20190429000000';
+            $end_time = '20190427154000';
 
             if ($now_datm < $start_time) {
                 $live_type = 'standby';

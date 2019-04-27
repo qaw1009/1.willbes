@@ -159,8 +159,9 @@
                         <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
-                    <li>
+                    <li class="active">
                         <div class="curriculumBox">
+                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
@@ -172,9 +173,8 @@
                         <a href="#none" onclick="fnPlayerSample('132216', '1019296', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
-                    <li class="active">
-                        <div class="curriculumBox">
-                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
+                    <li>
+                        <div class="curriculumBox">                            
                             <div class="Tit">문제풀이 과정</div>
                             <div class="subTit">(실전 1+2+3 단계)</div>
                             <ul class="info">

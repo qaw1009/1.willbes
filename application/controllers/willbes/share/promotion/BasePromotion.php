@@ -119,15 +119,17 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         //공지사항조회
-        $arr_condition = [
+        $arr_noti_condition = [
             'EQ' => [
                 'BmIdx' => '102',
                 'IsUse' => 'Y',
-                'PredictIdx' => $arr_base['spidx'],
                 'PromotionCode' => $arr_base['promotion_code']
             ]
         ];
-        $arr_base['notice_list'] = $this->supportBoardFModel->listBoard(false, $arr_condition,'','BoardIdx, Title, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm', 2, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
+        if (empty($arr_promotion_params['predict_idx']) === false) {
+            $arr_noti_condition['EQ'] = array_merge($arr_noti_condition['EQ'], ['PredictIdx' => $arr_promotion_params['predict_idx']]);
+        }
+        $arr_base['notice_list'] = $this->supportBoardFModel->listBoard(false, $arr_noti_condition,'','BoardIdx, Title, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm', 2, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
 
         //모바일체크
         $this->load->library('user_agent');

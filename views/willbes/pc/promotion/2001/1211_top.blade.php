@@ -223,48 +223,43 @@
     // 합격예측카운트수
     function get_cnt2()
     {
-        var s = "12345678".format();
-        $('#numarea1').html(makeCount(s));
 
-        {{--var _url = '{{ front_url("/predict/cntForPromotion/") }}';--}}
-        {{--var _data = {--}}
-            {{--'type' : 2,--}}
-            {{--'event_idx' : '{{ $data['ElIdx'] }}',--}}
-            {{--'promotion_code' : '{{ $arr_base['promotion_code'] }}',--}}
-            {{--'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',--}}
-            {{--'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'--}}
-        {{--};--}}
+        var _url = '{{ front_url("/predict/cntForPromotion/") }}';
+        var _data = {
+            'type' : 2,
+            'event_idx' : '{{ $data['ElIdx'] }}',
+            'promotion_code' : '{{ $arr_base['promotion_code'] }}',
+            'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',
+            'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'
+        };
 
-        {{--sendAjax(_url, _data, function(ret) {--}}
-            {{--if (ret.ret_cd) {--}}
-                {{--console.log(ret.ret_data);--}}
-                {{----}}
-                {{--//$("#cnt2").text(ret.ret_data);--}}
-            {{--}--}}
-        {{--}, showError, false, 'GET');--}}
+        sendAjax(_url, _data, function(ret) {
+            if (ret.ret_cd) {
+                var s = ret.ret_data.format();
+                $('#numarea1').html(makeCount(s));
+            }
+        }, showError, false, 'GET');
     }
 
     // 합격예측카운트수
     function get_cnt3()
     {
-        var s = "56789".format();
-        $('#numarea2').html(makeCount(s));
-        {{--var _url = '{{ front_url("/predict/cntForPromotion/") }}';--}}
-        {{--var _data = {--}}
-            {{--'type' : 3,--}}
-            {{--'event_idx' : '{{ $data['ElIdx'] }}',--}}
-            {{--'promotion_code' : '{{ $arr_base['promotion_code'] }}',--}}
-            {{--'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',--}}
-            {{--'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'--}}
-        {{--};--}}
 
-        {{--sendAjax(_url, _data, function(ret) {--}}
-            {{--if (ret.ret_cd) {--}}
-                {{--console.log(ret.ret_data);--}}
-                {{--alert(ret.ret_data);--}}
-                {{--//$("#cnt3").text(ret.ret_data);--}}
-            {{--}--}}
-        {{--}, showError, false, 'GET');--}}
+        var _url = '{{ front_url("/predict/cntForPromotion/") }}';
+        var _data = {
+            'type' : 3,
+            'event_idx' : '{{ $data['ElIdx'] }}',
+            'promotion_code' : '{{ $arr_base['promotion_code'] }}',
+            'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',
+            'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'
+        };
+
+        sendAjax(_url, _data, function(ret) {
+            if (ret.ret_cd) {
+                var s = ret.ret_data.format();
+                $('#numarea2').html(makeCount(s));
+            }
+        }, showError, false, 'GET');
     }
 
     function areaAvrAjax(ProdCode){

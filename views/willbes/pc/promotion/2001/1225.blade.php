@@ -115,7 +115,7 @@
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">
-                <div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span>986,129</span>건</div>
+                <div class="counter NSK-Black">적중&합격예측 서비스 이용 : <span id="cnt1"></span>건</div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1208_top.jpg" title="2019년 경찰 1차 적중&합격예측 사전예약 이벤트">
             </div>
         </div>
@@ -230,6 +230,10 @@
     <script src="/public/js/willbes/waypoints.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function( $ ) {
+            get_cnt1();
+            /*get_cnt2();
+            get_cnt3();*/
+
             $('.counter span').counterUp({
                 delay: 11, // the delay time in ms
                 time: 1000 // the speed time in ms
@@ -258,6 +262,98 @@
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showAlertError, false, 'GET', 'html');
         }
+
+        // 합격예측카운트수
+        function get_cnt1()
+        {
+            var _url = '{{ front_url("/predict/cntForPromotion/") }}';
+            var _data = {
+                'type' : 1,
+                'event_idx' : '{{ $data['ElIdx'] }}',
+                'promotion_code' : '{{ $arr_base['promotion_code'] }}',
+                'sp_idx' : '{{ $arr_base['spidx'] }}',
+                'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['predict_idx'] : '' }}'
+            };
+
+            sendAjax(_url, _data, function(ret) {
+                if (ret.ret_cd) {
+                    console.log(ret.ret_data);
+                    $("#cnt1").text(ret.ret_data);
+                }
+            }, showError, false, 'GET');
+        }
+
+        // 합격예측카운트수
+        function get_cnt2()
+        {
+            var _url = '{{ front_url("/predict/cntForPromotion/") }}';
+            var _data = {
+                'type' : 2,
+                'event_idx' : '{{ $data['ElIdx'] }}',
+                'promotion_code' : '{{ $arr_base['promotion_code'] }}',
+                'sp_idx' : '{{ $arr_base['spidx'] }}',
+                'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['predict_idx'] : '' }}'
+            };
+
+            sendAjax(_url, _data, function(ret) {
+                if (ret.ret_cd) {
+                    console.log(ret.ret_data);
+                    $("#cnt2").text(ret.ret_data);
+                }
+            }, showError, false, 'GET');
+        }
+
+        // 합격예측카운트수
+        function get_cnt3()
+        {
+            var _url = '{{ front_url("/predict/cntForPromotion/") }}';
+            var _data = {
+                'type' : 3,
+                'event_idx' : '{{ $data['ElIdx'] }}',
+                'promotion_code' : '{{ $arr_base['promotion_code'] }}',
+                'sp_idx' : '{{ $arr_base['spidx'] }}',
+                'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['predict_idx'] : '' }}'
+            };
+
+            sendAjax(_url, _data, function(ret) {
+                if (ret.ret_cd) {
+                    console.log(ret.ret_data);
+                    $("#cnt3").text(ret.ret_data);
+                }
+            }, showError, false, 'GET');
+        }
     </script>
 
+    <!-- WIDERPLANET  SCRIPT START 2019.2.18 -->
+    <div id="wp_tg_cts" style="display:none;"></div>
+    <script type="text/javascript">
+        var wptg_tagscript_vars = wptg_tagscript_vars || [];
+        var _device = '{{ ($ismobile == true) ? 'mobile' : 'web' }}';
+        wptg_tagscript_vars.push(
+            (function() {
+                return {
+                    wp_hcuid:"",   /*고객넘버 등 Unique ID (ex. 로그인  ID, 고객넘버 등 )를 암호화하여 대입.
+				*주의 : 로그인 하지 않은 사용자는 어떠한 값도 대입하지 않습니다.*/
+                    ti:"30030",	/*광고주 코드 */
+                    ty:"Home",	/*트래킹태그 타입 */
+                    device:_device	/*디바이스 종류  (web 또는  mobile)*/
+
+                };
+            }));
+    </script>
+    <script type="text/javascript" async src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+    <!-- // WIDERPLANET  SCRIPT END 2019.2.18 -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69505110-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-69505110-4');
+    </script>
+    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript">
+        kakaoPixel('6331763949938786102').pageView('willbescop');
+    </script>
 @stop

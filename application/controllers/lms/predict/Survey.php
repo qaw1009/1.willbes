@@ -143,71 +143,74 @@ class Survey extends \app\controllers\BaseController
             $SqIdx = $val['SqIdx'];
             $CNT = $val['CNT'];
             $Answer = $val['Answer'];
+            $Type = $val['Type'];
+
             $j = $key + 1;
+            if($Type != 'T'){
+                if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
 
-            if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
+                    $tnum = 0;
+                    if($resCnt == $j){
+                        ${"num".$Answer}++;
+                    }
 
-                $tnum = 0;
-                if($resCnt == $j){
-                    ${"num".$Answer}++;
-                }
-
-                for($i = 1; $i <= $tempCNT; $i++) {
-                    $tnum = $tnum + ${"num".$i};
-                }
-                $resSet[$defnum]['SubTitle'] = $temptitle;
-                for($i = 1; $i <= $tempCNT; $i++){
-                    $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
-                }
-                for($i = 1; $i <= $CNT; $i++){
-                    if($Answer == $i){
-                        if($val['Type'] == 'S') {
-                            ${"num" . $i} = 1;
-                        } else {
-                            $AnswerArr = explode('/',$Answer);
-                            for($i = 1; $i <= $CNT; $i++){
-                                ${"num".$i} = 0;
-                                for($j = 0; $j < count($AnswerArr); $j++){
-                                    if($AnswerArr[$j] == $i){
-                                        ${"num".$i}++;
+                    for($i = 1; $i <= $tempCNT; $i++) {
+                        $tnum = $tnum + ${"num".$i};
+                    }
+                    $resSet[$defnum]['SubTitle'] = $temptitle;
+                    for($i = 1; $i <= $tempCNT; $i++){
+                        $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
+                    }
+                    for($i = 1; $i <= $CNT; $i++){
+                        if($Answer == $i){
+                            if($val['Type'] == 'S') {
+                                ${"num" . $i} = 1;
+                            } else {
+                                $AnswerArr = explode('/',$Answer);
+                                for($i = 1; $i <= $CNT; $i++){
+                                    ${"num".$i} = 0;
+                                    for($j = 0; $j < count($AnswerArr); $j++){
+                                        if($AnswerArr[$j] == $i){
+                                            ${"num".$i}++;
+                                        }
                                     }
                                 }
                             }
+                        } else {
+                            if($val['Type'] == 'S') ${"num".$i} = 0;
+                        }
+                    }
+
+                    $resSet[$defnum]['CNT'] = $tempCNT;
+                    $titleSet[] = $temptitle;
+                    $numberSet[] = $defnum;
+                    $typeSet[] = $tempType;
+                    $questionSet[] = $this->predictModel->questionSet($tempSq);
+                    $defnum++;
+                } else {
+                    if($val['Type'] == 'S'){
+
+                        for($i = 1; $i <= $CNT; $i++){
+                            if($Answer == $i) ${"num".$i}++;
                         }
                     } else {
-                        if($val['Type'] == 'S') ${"num".$i} = 0;
-                    }
-                }
-
-                $resSet[$defnum]['CNT'] = $tempCNT;
-                $titleSet[] = $temptitle;
-                $numberSet[] = $defnum;
-                $typeSet[] = $tempType;
-                $questionSet[] = $this->predictModel->questionSet($tempSq);
-                $defnum++;
-            } else {
-                if($val['Type'] == 'S'){
-
-                    for($i = 1; $i <= $CNT; $i++){
-                        if($Answer == $i) ${"num".$i}++;
-                    }
-                } else {
-                    //TYPE == 'T'
-                    $AnswerArr = explode('/',$Answer);
-                    for($i = 1; $i <= $CNT; $i++){
-                        for($j = 0; $j < count($AnswerArr); $j++){
-                            if($AnswerArr[$j] == $i){
-                                ${"num".$i}++;
+                        //TYPE == 'T'
+                        $AnswerArr = explode('/',$Answer);
+                        for($i = 1; $i <= $CNT; $i++){
+                            for($j = 0; $j < count($AnswerArr); $j++){
+                                if($AnswerArr[$j] == $i){
+                                    ${"num".$i}++;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            $tempSq = $SqIdx;
-            $tempType = $val['Type'];
-            $temptitle = $val['SubTitle'];
-            $tempCNT = $CNT;
+                $tempSq = $SqIdx;
+                $tempType = $val['Type'];
+                $temptitle = $val['SubTitle'];
+                $tempCNT = $CNT;
+            }
         }
         //var_dump($resSet);
         $this->load->view('predict/survey/winpopup_survey_result', [

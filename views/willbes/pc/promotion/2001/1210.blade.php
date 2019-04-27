@@ -9,7 +9,7 @@
         @include('willbes.pc.promotion.2001.1211_top')
 
         <div class="evtCtnsBox">
-            {{--4.26일까지 보여짐--}}
+            {{--4.26일까지 보여짐
             <div class="ddayBefore">
                 <h1 class="NGEB">"이것만은 꼭! 시험 전 / 시험 당일 체크 포인트"</h1>
                 <h2>시험 <span>전</span> 유의사항</h2>
@@ -87,9 +87,9 @@
                 </table>
             </div>
             <!--ddayBefore//-->
+            --}}
 
             {{--27일 노출--}}
-
             <div class="ddayAfter">
                 <div class="m_section2">
                     <div>

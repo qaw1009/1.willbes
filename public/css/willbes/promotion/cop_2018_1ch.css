@@ -23,7 +23,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .skyBanner li:last-child a {height:27px; line-height:27px; padding:0; background:#000; color:#fff}
 .skyBanner li a:hover {background:#000; color:#fff;}
 
-.conut_section {position:absolute; top:0; left:0; width:100%; padding:20px 0; background:#191919; z-index:500;
+.conut_section {position:absolute; top:0; left:0; width:100%; padding:20px 0; background:#191919; z-index:90;
 	-webkit-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.2);
 	box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.2);;
@@ -563,7 +563,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
     opacity: 0;
     display: none;
     position: relative;
-    width: 600px;
+    width: 640px;
     border: 1px solid #000;            
     background: #fff;
     font-size:13px;
@@ -581,17 +581,17 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
     font-size:14px;
 }
 .Pstyle h3 {height:60px; line-height:60px; padding-left:20px; color:#fff; background:#225fba; font-size:20px}
-.Pstyle .content {height:auto; width:auto; padding:20px}
+.Pstyle .content {height:540px; width:auto; padding:20px; overflow-y: scroll}
 .Pstyle .content table {border-top:2px solid #333}
 .Pstyle .content th,
-.Pstyle .content td {padding:10px; text-align:center; border-bottom:1px solid #e4e4e4}
+.Pstyle .content td {padding:10px; text-align:center; border-bottom:1px solid #e4e4e4; margin-bottom:20px}
 .Pstyle .content th {background:#f2f2f2}
 .Pstyle .content th span {float:right}
 .Pstyle .content td:nth-child(2) {text-align:left;}
 .Pstyle .content tr:hover {background:#e9f1fe}
 .Pstyle .content td a {display:block}
 .Pstyle .content td .boradImg {margin:10px 0}
-.Pstyle .content td .boradImg img {max-width:538px}
+.Pstyle .content td.tx-left img {max-width:538px}
 .Pstyle .content table strong {background:#424ac7; color:#fff; margin-right:10px; font-size:11px; padding:2px 4px}
 .Pstyle .content table strong.st02 {background:#f57d20;}
 

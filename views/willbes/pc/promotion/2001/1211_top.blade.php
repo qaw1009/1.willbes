@@ -134,7 +134,7 @@
         areaAvrAjax('{{$arr_promotion_params['prodcode']}}');
         // noticeListAjax('');
         //
-        // timer = self.setInterval('slideGo()', 3000);
+        timer = self.setInterval('slideGo()', 3000);
         //
         // get_cnt2();
         // get_cnt3();

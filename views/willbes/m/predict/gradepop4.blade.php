@@ -59,28 +59,33 @@
                         <tr>
                             <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }}@else 미입력 @endif {{ $addscoreIs }}</td>
                             <td>@if($scoreIs == 'Y') {{ $scoredata['score'][0] }} @else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>
+                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>--}}
+                            <td>집계중</td>
                             <td rowspan="5" class="tx-center"><a href="javascript:resultPop(100001)" class="mypoint">확인 </a></td>
                         </tr>
                         <tr>
                             <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][1] }}@else 미입력 @endif</td>
                             <td>@if($scoreIs == 'Y') {{ $scoredata['score'][1] }} @else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][1] }} @else 미입력 @endif</td>
+                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][1] }} @else 미입력 @endif</td>--}}
+                            <td>집계중</td>
                         </tr>
                         <tr>
                             <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][2] }}@else 미입력 @endif</td>
                             <td>@if($scoreIs == 'Y') {{ $scoredata['score'][2] }} @else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][2] }} @else 미입력 @endif</td>
+                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][2] }} @else 미입력 @endif</td>--}}
+                            <td>집계중</td>
                         </tr>
                         <tr>
                             <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][3] }}@else 미입력 @endif</td>
                             <td>@if($scoreIs == 'Y') {{ $scoredata['score'][3] }} @else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][3] }} @else 미입력 @endif</td>
+                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][3] }} @else 미입력 @endif</td>--}}
+                            <td>집계중</td>
                         </tr>
                         <tr>
                             <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][4] }}@else 미입력 @endif</td>
                             <td>@if($scoreIs == 'Y') {{ $scoredata['score'][4] }} @else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][4] }} @else 미입력 @endif</td>
+                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][4] }} @else 미입력 @endif</td>--}}
+                            <td>집계중</td>
                         </tr>
                     </table>
 
@@ -241,7 +246,7 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        var $all_regi_form = $('#all_regi_form');
+        var $all_regi_form = $('#$all_regi_form');
         var scoreType = '{{ $scoreType }}';
         $(function() {
             $('.tg-tit a').click(function() {

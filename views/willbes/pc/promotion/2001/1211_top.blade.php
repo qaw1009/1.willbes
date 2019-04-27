@@ -285,14 +285,14 @@
                     if((areaStr != tempAreaStr && i != 0) || datalen == j){
                         if(datalen == j){
                             str = str + "<li>";
-                            instr = "<p>실시간 입력자평균 <span>"+tempAreaStr+"</span></p><table class='boardTypeA'><colgroup><col span='2'></colgroup><tbody><tr><th>직렬/지역</th><th>점수</th></tr>";
+                            instr = "<p>합격안정권 예측 <span>"+tempAreaStr+"</span></p><table class='boardTypeA'><colgroup><col span='2'></colgroup><tbody><tr><th>직렬/지역</th><th>점수</th></tr>";
                             str += instr;
                             instr2 += "<tr><td>" + d.data[i].TakeMockPartName + "</td><td>" + d.data[i].AvrPoint + "</td></tr>";
                             str += instr2;
                             str += "</tbody></table></li>";
                         } else {
                             str = str + "<li>";
-                            instr = "<p>실시간 입력자평균 <span>"+tempAreaStr+"</span></p><table class='boardTypeA'><colgroup><col span='2'></colgroup><tbody><tr><th>직렬/지역</th><th>점수</th></tr>";
+                            instr = "<p>합격안정권 예측 <span>"+tempAreaStr+"</span></p><table class='boardTypeA'><colgroup><col span='2'></colgroup><tbody><tr><th>직렬/지역</th><th>점수</th></tr>";
                             str += instr;
                             str += instr2;
                             str += "</tbody></table></li>";

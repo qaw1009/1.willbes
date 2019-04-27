@@ -151,7 +151,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 		
 .m_section3_L {position:relative; float:left; width:375px; height:445px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_map.jpg) no-repeat left top}
 
-.tabs_2016 li {display:block; position:absolute; width:63px; font-size:0; text-indent:-9999; z-index:100}
+.tabs_2016 li {display:block; position:absolute; width:63px; font-size:0; text-indent:-9999; z-index:60}
 .tabs_2016 li a {display:block; width:60px; height:28px; background-position:5px center; background-repeat:no-repeat; background-color:transparent}
 /*서울*/
 .tabs_2016 li.seoul {top:76px; left:154px}

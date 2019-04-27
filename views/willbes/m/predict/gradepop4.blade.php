@@ -246,7 +246,7 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        var $all_regi_form = $('#all_regi_form');
+        var $all_regi_form = $('#$all_regi_form');
         var scoreType = '{{ $scoreType }}';
         $(function() {
             $('.tg-tit a').click(function() {

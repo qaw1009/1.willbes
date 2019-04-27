@@ -96,7 +96,7 @@
         <ul>
             @foreach($list as $row)
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof{{ (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
+                    <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
                     <div>
                         <p>{!! hpSubString($row['MemName'],0,2,'*') !!} <span>{{$row['RegDatm']}}</span></p>
                         {!!nl2br($row['Content'])!!}

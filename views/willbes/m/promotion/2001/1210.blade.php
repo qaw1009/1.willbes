@@ -28,7 +28,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1187M_02.jpg" title="2019년 경찰 1차 합격예측 풀서비스 사전예약">
             </div>
             <div class="mainBtn">
-            <a href="javascript:alert('4월 27일 OPEN 입니다. ')">
+            <a href="javascript:tabMove()">
             로그인 후 서비스 이용이 가능합니다.
             </a>
 
@@ -51,4 +51,11 @@
 
     </div>
     <!-- End Container -->
+    <script>
+        function tabMove() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+            var url = "{{ site_url('/m/promotion/index/cate/3001/code/1211') }}" ;
+            location.replace(url);
+        }
+    </script>
 @stop

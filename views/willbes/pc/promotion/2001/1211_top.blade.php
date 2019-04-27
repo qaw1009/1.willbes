@@ -61,7 +61,7 @@
 
 
     <div class="talkShow">
-        <a href="#none" >
+        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1208" target="_blank" >
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_bn3.png" alt="LIVE 합격예측 토크쇼">
         </a>
         {{--토크쇼 종료 후 노출

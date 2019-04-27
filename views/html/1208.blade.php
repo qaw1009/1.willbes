@@ -92,12 +92,12 @@
         .movieplayer .mobileCh li a:hover {color:#FC0}
         .movieplayer .mobileCh:after {content:""; display:block; clear:both}
         
-        /*크롬*/
-        @@media screen and (-webkit-min-device-pixel-ratio:0) {
-        .evtLive #movieFrame {position:relative; width:980px; height:551px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center center;}
-        .movieplayer .embedWrap {position:relative; width:980px; height:551px; margin-left:-490px; padding:0}
+         /*크롬*/
+         @@media screen and (-webkit-min-device-pixel-ratio:0) {
+        .evtLive #movieFrame {position:relative; width:980px; height:551px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2019/04/1208_liveimg01.jpg) no-repeat center center;}
+        .movieplayer .embedWrap {position:relative; width:980px; height:551px; margin-left:0; padding:0}
         .movieplayer .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto}
-        .movieplayer .mobileCh {position:absolute; left:0; bottom:0; width:980px; margin-left:490px}
+        .movieplayer .mobileCh {position:absolute; left:0; bottom:0; width:980px;}
         .movieplayer .mobileCh li {display:inline; float:left; width:490px;}
         .movieplayer .mobileCh li a {display:block;/*text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0*/}
         .movieplayer .mobileCh li a.ch2 {color:#6CF}

@@ -779,6 +779,7 @@
     });
 
     function selSerial(num){
+        setAreaMsg(num);
         $("[id*='se_']").removeClass('active');
         $("#se_"+num).addClass('active');
         $('#selS').val(num);
@@ -828,6 +829,28 @@
         $("[id*='ss_']").removeClass('active');
         $("#ss_"+num).addClass('active');
         $("#area_"+$('#selS').val()+'_'+num).show();
+    }
+
+    function setAreaMsg(num)
+    {
+        var msg = '※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.';
+        switch (num) {
+            case 100 :
+                msg = '※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.';
+                break;
+            case 200 :
+                msg = '※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.';
+                break;
+            case 300 :
+                msg = '※ 전의경경채의 지난 시험 경쟁률, 합격선 정보는 2018년 1차 시험 기준임.';
+                break;
+            case 400 :
+                msg = '※ 일반공채(남,여)의 지난 시험 경쟁률, 합격선 정보는 2018년 2차 시험 기준임';
+                break;
+            default :
+                break;
+        }
+        $(".area_txt").text(msg);
     }
 </script>
 

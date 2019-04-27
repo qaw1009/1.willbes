@@ -7,21 +7,21 @@
     <li><a href="#evtContainer">top</a></li>
 </ul>
 
-<div class="conut_section">
-    <div class="conut_section_wrap" id="counter">
-        <div>
-            <span>서비스 이용현황 :</span>
-            <span id="numarea1"></span>
+{{--<div class="conut_section">--}}
+    {{--<div class="conut_section_wrap" id="counter">--}}
+        {{--<div>--}}
+            {{--<span>서비스 이용현황 :</span>--}}
+            {{--<span id="numarea1"></span>--}}
 
-            <span>참여 현황 :</span>
-            <span id="numarea2"></span>
-        </div>
-        <p>
-            * 서비스 이용현황 : 사전예약 및 본서비스 + 봉투모의고사 + 파이널찍기특강 + 최신판례특강 + 라이브토크쇼 + 적중이벤트 등 서비스 이용 페이지뷰 합산<Br />
-            * 참여현황 : 사전예약, 성적채점, 설문조사, 시험후기, 토크쇼, 적중이벤트 참여건수 중복 합산 기준
-        </p>
-    </div>
-</div>
+            {{--<span>참여 현황 :</span>--}}
+            {{--<span id="numarea2"></span>--}}
+        {{--</div>--}}
+        {{--<p>--}}
+            {{--* 서비스 이용현황 : 사전예약 및 본서비스 + 봉투모의고사 + 파이널찍기특강 + 최신판례특강 + 라이브토크쇼 + 적중이벤트 등 서비스 이용 페이지뷰 합산<Br />--}}
+            {{--* 참여현황 : 사전예약, 성적채점, 설문조사, 시험후기, 토크쇼, 적중이벤트 참여건수 중복 합산 기준--}}
+        {{--</p>--}}
+    {{--</div>--}}
+{{--</div>--}}
 
 <div class="m_sectin1_box">
     <div class="title">
@@ -73,16 +73,16 @@
 
     <div class="wNotice">
         <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_text.png" alt="최종 합격 솔루션">
-        <div>
-            <h3>
-                <a href="javascript:selTitle('')">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_notice.png" alt="공지사항">
-                </a>
-            </h3>
-            <ul>
-                <span id="noticeArea1"></span>
-            </ul>
-        </div>
+        {{--<div>--}}
+            {{--<h3>--}}
+                {{--<a href="javascript:selTitle('')">--}}
+                    {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_notice.png" alt="공지사항">--}}
+                {{--</a>--}}
+            {{--</h3>--}}
+            {{--<ul>--}}
+                {{--<span id="noticeArea1"></span>--}}
+            {{--</ul>--}}
+        {{--</div>--}}
     </div>
     <!--wNotice//-->
 
@@ -132,13 +132,12 @@
     /*서비스이용현황 */
     $( document ).ready( function() {
         areaAvrAjax('{{$arr_promotion_params['prodcode']}}');
-        noticeListAjax('');
-        //$('#popup').bPopup();
-
-        timer = self.setInterval('slideGo()', 3000);
-
-        get_cnt2();
-        get_cnt3();
+        // noticeListAjax('');
+        //
+        // timer = self.setInterval('slideGo()', 3000);
+        //
+        // get_cnt2();
+        // get_cnt3();
 
         var jbOffset = $( '.conut_section' ).offset();
         $( window ).scroll( function() {
@@ -371,13 +370,15 @@
             var url = "{{ site_url('/promotion/index/cate/3001/code/1211') }}" ;
             location.replace(url);
         } else if(num == 3) {
-                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-            var url = "{{ site_url('/promotion/index/cate/3001/code/1212') }}" ;
-            location.replace(url);
+            alert('준비중입니다.');
+                    {{--{!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}--}}
+            {{--var url = "{{ site_url('/promotion/index/cate/3001/code/1212') }}" ;--}}
+            {{--location.replace(url);--}}
         } else {
-                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-            var url = "{{ site_url('/promotion/index/cate/3001/code/1213') }}" ;
-            location.replace(url);
+            alert('준비중입니다.');
+                    {{--{!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}--}}
+            {{--var url = "{{ site_url('/promotion/index/cate/3001/code/1213') }}" ;--}}
+            {{--location.replace(url);--}}
         }
 
     }

@@ -187,7 +187,7 @@
             </div>
         @else
         {{--성적확인--}}
-        <div id='gradeArea2' style="display:none1;">
+        <div id='gradeArea2'>
             <table class="boardTypeB">
                 <col width="25%" />
                 <col width="25%" />

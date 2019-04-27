@@ -11,22 +11,10 @@
     <div class="conut_section_wrap" id="counter">
         <div>
             <span>서비스 이용현황 :</span>
-            <img src="https://static.willbes.net/public/images/promotion/common/7.png" />
-            ,
-            <img src="https://static.willbes.net/public/images/promotion/common/0.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/5.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/4.png" />
-            ,
-            <img src="https://static.willbes.net/public/images/promotion/common/3.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/2.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/1.png" />
+            <span id="numarea1"></span>
 
             <span>참여 현황 :</span>
-            <img src="https://static.willbes.net/public/images/promotion/common/4.png" />
-            ,
-            <img src="https://static.willbes.net/public/images/promotion/common/3.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/2.png" />
-            <img src="https://static.willbes.net/public/images/promotion/common/1.png" />
+            <span id="numarea2"></span>
         </div>
         <p>
             * 서비스 이용현황 : 사전예약 및 본서비스 + 봉투모의고사 + 파이널찍기특강 + 최신판례특강 + 라이브토크쇼 + 적중이벤트 등 서비스 이용 페이지뷰 합산<Br />
@@ -119,16 +107,16 @@
 <div class="m_lnb">
     <ul class="lnbMenu">
         <li>
-            <a href="#none" id="mt1"> 메인</a>
+            <a href="javascript:tabMove(1);" id="mt1"> 메인</a>
         </li>
         <li>
-            <a href="#none"  id="mt2"> 성적채점 및 확인 </a></li>
+            <a href="javascript:tabMove(2);"  id="mt2"> 성적채점 및 확인 </a></li>
         <li>
-            <a href="javascript:alert('4월 27일 오픈합니다.');" id="mt3"> 합격예측 </a>
+            <a href="javascript:tabMove(3);" id="mt3"> 합격예측 </a>
             {{--<a href="#none"> 합격예측 </a>--}}
         </li>
         <li>
-            <a href="javascript:alert('4월 27일 오픈합니다.');"  id="mt4"> 기출문제및해설 </a>
+            <a href="javascript:tabMove(4);"  id="mt4"> 기출문제및해설 </a>
             {{--<a href="#none">기출문제해설</a>--}}
         </li>
     </ul>
@@ -140,12 +128,18 @@
 <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 <script>
     var $ajax_form = $('#ajax_form');
+
     /*서비스이용현황 */
     $( document ).ready( function() {
-        areaAvrAjax('100001');
+        areaAvrAjax('{{$arr_promotion_params['prodcode']}}');
         noticeListAjax('');
         //$('#popup').bPopup();
-        timer = self.setInterval('slideGo()', 1000);
+
+        timer = self.setInterval('slideGo()', 3000);
+
+        get_cnt2();
+        get_cnt3();
+
         var jbOffset = $( '.conut_section' ).offset();
         $( window ).scroll( function() {
             if ( $( document ).scrollTop() > jbOffset.top ) {
@@ -156,6 +150,26 @@
             }
         });
     } );
+
+    // 숫자 타입에서 쓸 수 있도록 format() 함수 추가
+    Number.prototype.format = function(){
+        if(this==0) return 0;
+
+        var reg = /(^[+-]?\d+)(\d{3})/;
+        var n = (this + '');
+
+        while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+
+        return n;
+    };
+
+    // 문자열 타입에서 쓸 수 있도록 format() 함수 추가
+    String.prototype.format = function(){
+        var num = parseFloat(this);
+        if( isNaN(num) ) return "0";
+
+        return num.format();
+    };
 
     function slideGo(){
         $("#map_area").bxSlider({
@@ -193,6 +207,65 @@
             slidesImg3.goToNextSlide();
         });
     });
+
+    function makeCount(s){
+        var res = "";
+        for (var i = 0; i < s.length; i++) {
+            if(s.charAt(i) == ','){
+                res += s.charAt(i);
+            } else {
+                res += "<img src='https://static.willbes.net/public/images/promotion/common/"+s.charAt(i)+".png' />";
+            }
+        }
+        return res;
+    }
+
+    // 합격예측카운트수
+    function get_cnt2()
+    {
+        var s = "12345678".format();
+        $('#numarea1').html(makeCount(s));
+
+        {{--var _url = '{{ front_url("/predict/cntForPromotion/") }}';--}}
+        {{--var _data = {--}}
+            {{--'type' : 2,--}}
+            {{--'event_idx' : '{{ $data['ElIdx'] }}',--}}
+            {{--'promotion_code' : '{{ $arr_base['promotion_code'] }}',--}}
+            {{--'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',--}}
+            {{--'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'--}}
+        {{--};--}}
+
+        {{--sendAjax(_url, _data, function(ret) {--}}
+            {{--if (ret.ret_cd) {--}}
+                {{--console.log(ret.ret_data);--}}
+                {{----}}
+                {{--//$("#cnt2").text(ret.ret_data);--}}
+            {{--}--}}
+        {{--}, showError, false, 'GET');--}}
+    }
+
+    // 합격예측카운트수
+    function get_cnt3()
+    {
+        var s = "56789".format();
+        $('#numarea2').html(makeCount(s));
+        {{--var _url = '{{ front_url("/predict/cntForPromotion/") }}';--}}
+        {{--var _data = {--}}
+            {{--'type' : 3,--}}
+            {{--'event_idx' : '{{ $data['ElIdx'] }}',--}}
+            {{--'promotion_code' : '{{ $arr_base['promotion_code'] }}',--}}
+            {{--'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',--}}
+            {{--'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'--}}
+        {{--};--}}
+
+        {{--sendAjax(_url, _data, function(ret) {--}}
+            {{--if (ret.ret_cd) {--}}
+                {{--console.log(ret.ret_data);--}}
+                {{--alert(ret.ret_data);--}}
+                {{--//$("#cnt3").text(ret.ret_data);--}}
+            {{--}--}}
+        {{--}, showError, false, 'GET');--}}
+    }
 
     function areaAvrAjax(ProdCode){
 
@@ -292,5 +365,25 @@
     function pullOpen(){
         var url = "1210_popup";
         window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+    }
+
+    function tabMove(num) {
+        if(num == 1){
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1210') }}" ;
+            location.replace(url);
+        } else if(num == 2) {
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1211') }}" ;
+            location.replace(url);
+        } else if(num == 3) {
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1212') }}" ;
+            location.replace(url);
+        } else {
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1213') }}" ;
+            location.replace(url);
+        }
+
     }
 </script>

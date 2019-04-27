@@ -835,13 +835,10 @@ class SurveyModel extends WB_Model
 
                 $q = element('q'.$snum, $formData);
 
-                $txt = '';
                 if($type == 'S' || $type == 'D'){
                     $txt = $q;
                 } else {
-                    for($j=0; $j < COUNT($q); $j++){
-                        $txt .= $q[$j]."/";
-                    }
+                    $txt = implode("/",(array)$q);
                     $txt = substr($txt,0,strlen($txt)-1);
                 }
 
@@ -962,6 +959,104 @@ class SurveyModel extends WB_Model
         }
 
         return $data;
+    }
+
+    /***
+     * @param $prodcode
+     * 지역별현황
+     */
+    public function areaList($prodcode){
+        $column = "
+            sc.CcdName AS Areaname, pc.CcdName AS Serialname, pg.*       
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictGradesLine']} AS pg
+                LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
+                LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
+        ";
+
+        $where = " WHERE ProdCode = ".$prodcode;
+        $order_by = " ORDER BY TaKeMockPart, TakeArea";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $data = $query->result_array();
+
+        return $data;
+    }
+
+    /***
+     * 지역별현황
+     */
+    public function gradeList(){
+        $column = "
+            pg.PpIdx, ROUND(AVG(OrgPoInt)) AS Avg, CcdName       
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictGradesOrigin']} AS pg
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                LEFT JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
+        ";
+
+        $where = "";
+        $order_by = " GROUP BY pg.PpIdx ";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $data = $query->result_array();
+
+        return $data;
+    }
+
+    /**
+     * 문항코멘트
+     */
+    public function surveyQuestionSet($idx){
+        $column = "
+            Comment1,Comment2,Comment3,Comment4,Comment5,Comment6,Comment7,Comment8,Comment9,Comment10,
+            Comment11, Comment12, Comment13, Comment14, Comment15, Comment16, Comment17, Comment18, Comment19, Comment20, 
+            Comment21, Comment22, Comment23, Comment24, Comment25
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyQuestion']} 
+        ";
+
+        $order_by = " ";
+        $where = " WHERE SqIdx = " . $idx;
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->row_array();
+
+        return $Res;
+    }
+
+    /**
+     * 설문결과
+     */
+    public function surveyAnswerCall($idx)
+    {
+        $column = "
+            SubTitle, sa.SqIdx, Answer, sa.Type, 
+            (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyProduct']} AS sp
+                JOIN {$this->_table['surveyAnswer']} AS si ON sp.SpIdx = si.SpIdx
+                JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx = sa.SaIdx
+                LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
+        ";
+
+        $order_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
+        $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T')";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
     }
 
     /**

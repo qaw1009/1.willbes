@@ -471,6 +471,7 @@ class PredictModel extends WB_Model
         $column = "
 	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.ProdCode, PP.SubjectCode, PP.Type, PP.UpdDate, 
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse
+	        ,PP.RegistAvgPoint, PP.RegistStandard
         ";
 
         $from = "
@@ -661,6 +662,8 @@ class PredictModel extends WB_Model
                 'RegIp' => $this->input->ip_address(),
                 'RegDate' => date("Y-m-d H:i:s"),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegistAvgPoint' => $this->input->post('RegistAvgPoint'),
+                'RegistStandard' => $this->input->post('RegistStandard'),
             );
 
             $this->_conn->insert($this->_table['predictPaper'], $data);
@@ -706,6 +709,8 @@ class PredictModel extends WB_Model
                 'IsUse' => $this->input->post('IsUse'),
                 'UpdDate' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegistAvgPoint' => $this->input->post('RegistAvgPoint'),
+                'RegistStandard' => $this->input->post('RegistStandard'),
             );
             if($this->input->post('AnswerNum'))      $data['AnswerNum'] = $this->input->post('AnswerNum');
             if($this->input->post('TotalScore'))     $data['TotalScore'] = $this->input->post('TotalScore');
@@ -1813,7 +1818,9 @@ class PredictModel extends WB_Model
                                   LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
                            WHERE 
                                pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "
-                    ) AS won
+                    ) AS won,
+                    RegistAvgPoint,
+                    RegistStandard
                 ";
 
                 $from = "
@@ -1852,7 +1859,13 @@ class PredictModel extends WB_Model
                         $g_num = $val['Res'];
 
                         // 원점수평균 = 선택과목 점수총합 / 응시자수
-                        $wonAVG = $val['won'];
+                        $wonAVG = $val['RegistAvgPoint'];
+                        if (empty($wonAVG) === true) {
+                            throw new \Exception('원점수 평균이 없습니다..');
+                        }
+                        //$wonAVG = $val['won'];
+
+                        /**
                         $sumAVG = $arrMP[$PpIdx]['SUMAVG'];
 
                         // 응시자수
@@ -1860,9 +1873,14 @@ class PredictModel extends WB_Model
 
                         //표준편차
                         if($sumAVG != 0 && $pcnt != 1){
-                            $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
+                        $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
                         } else {
-                            $tempRes = 0;
+                        $tempRes = 0;
+                        }**/
+
+                        $tempRes = $val['RegistAvgPoint'];
+                        if (empty($tempRes) === true) {
+                            throw new \Exception('표준 편차가 없습니다.');
                         }
 
                         //조정점수

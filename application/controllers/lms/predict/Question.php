@@ -160,6 +160,8 @@ class Question extends \app\controllers\BaseController
             ['field' => 'SubjectCode', 'label' => '시험지명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'RegistAvgPoint', 'label' => '입력-평균', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'RegistStandard', 'label' => '입력-표준편차', 'rules' => 'trim|required|max_length[50]'],
         ];
 
         if( $_FILES['QuestionFile']['error'] !== UPLOAD_ERR_OK || $_FILES['QuestionFile']['size'] == 0 ) {
@@ -183,6 +185,8 @@ class Question extends \app\controllers\BaseController
             ['field' => 'SubjectCode', 'label' => '시험지명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'RegistAvgPoint', 'label' => '입력-평균', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'RegistStandard', 'label' => '입력-표준편차', 'rules' => 'trim|required|max_length[50]'],
         ];
         if(!$this->input->post('isDeny')) {
             $rules[] = ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'];

@@ -82,6 +82,17 @@
                     </tr>
 
                     <tr>
+                        <th>입력-평균 <span class="required">*</span></th>
+                        <td class="form-inline">
+                            <input type="text" class="form-control" style="width:60px" name="RegistAvgPoint" value="@if($method == 'PUT'){{ $data['RegistAvgPoint'] }}@endif"  > 점
+                        </td>
+                        <th>입력-표준편차 <span class="required">*</span></th>
+                        <td>
+                            <input type="text" class="form-control" style="width:60px" name="RegistStandard" value="@if($method == 'PUT'){{ $data['RegistStandard'] }}@endif"  >
+                        </td>
+                    </tr>
+
+                    <tr>
                         <th>등록자</th>
                         <td>@if($method == 'PUT'){{ $data['wAdminName'] }}@endif</td>
                         <th>등록일</th>

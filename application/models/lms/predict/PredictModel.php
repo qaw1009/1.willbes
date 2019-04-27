@@ -1833,6 +1833,8 @@ class PredictModel extends WB_Model
                 $order_by = " GROUP BY pg.MemIdx ORDER BY OrgPoint DESC";
 
                 $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+                //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
@@ -1878,7 +1880,7 @@ class PredictModel extends WB_Model
                         $tempRes = 0;
                         }**/
 
-                        $tempRes = $val['RegistAvgPoint'];
+                        $tempRes = $val['RegistStandard'];
                         if (empty($tempRes) === true) {
                             throw new \Exception('표준 편차가 없습니다.');
                         }

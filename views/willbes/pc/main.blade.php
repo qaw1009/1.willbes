@@ -30,7 +30,7 @@
                                     <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
                                 </div>
                                 <div class="wTxt">
-                                    1등* 일반/경행/승진/해경<br/>
+                                    1등* 일반경찰/경행/승진/해경<br/>
                                     <strong>윌비스 신광은경찰학원</strong><br/>
                                     <div class="sTxt">* 2019브랜드고객충성도대상 경찰공무원부문 1위 기준</div> 
                                 </div>

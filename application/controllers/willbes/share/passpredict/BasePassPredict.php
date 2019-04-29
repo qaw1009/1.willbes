@@ -837,97 +837,143 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $data = $this->surveyModel->predictResist($idx, $memidx);
 
-        $pridx = $data[0]['PrIdx'];
-        $TakeMockPart = $data[0]['TakeMockPart'];
-        $TakeArea = $data[0]['TakeArea'];
-        $score2 = $this->surveyModel->getScore2($pridx, $idx);
-        $data2 = $this->surveyModel->getSumAvg($pridx, $idx);
-        $dataline =$this->surveyModel->getGradeLine($idx,$TakeMockPart,$TakeArea);
-
-        //var_dump($data2);
-        $arrSum = array();
-        $mysum = "";
-        $mydataIs = 'N';
-        $arrPointSection = array();
-
-        foreach($data2 as $key => $val){
-            $SUM = (float)$val['SUM'];
-            $Memidx = $val['MemIdx'];
-            $arrSum[] = (float)$SUM;
-
-            if($Memidx == $memidx){
-                $mydataIs = 'Y';
-                $mysum = (float)$SUM;
-            }
-
-            if($SUM <= 50){
-                $arrPointSection['50'][] = $SUM;
-            } else if($SUM > 50 && $SUM <= 100) {
-                $arrPointSection['100'][] = $SUM;
-            } else if($SUM > 100 && $SUM <= 150) {
-                $arrPointSection['150'][] = $SUM;
-            } else if($SUM > 150 && $SUM <= 200) {
-                $arrPointSection['200'][] = $SUM;
-            } else if($SUM > 200 && $SUM <= 250) {
-                $arrPointSection['250'][] = $SUM;
-            } else if($SUM > 250 && $SUM <= 300) {
-                $arrPointSection['300'][] = $SUM;
-            } else if($SUM > 300 && $SUM <= 350) {
-                $arrPointSection['350'][] = $SUM;
-            } else if($SUM > 350 && $SUM <= 400) {
-                $arrPointSection['400'][] = $SUM;
-            } else if($SUM > 400 && $SUM <= 450) {
-                $arrPointSection['450'][] = $SUM;
-            } else {
-                $arrPointSection['500'][] = $SUM;
-            }
-        }
-
-        $arrPoint = "";
-        $num = 0;
-        foreach ($arrPointSection as $key => $val){
-            if($num == 0){
-                $arrPoint = '"'.$key.'" : '. COUNT($arrPointSection[$key]);
-            } else {
-                $arrPoint .= ',"'.$key.'" : '. COUNT($arrPointSection[$key]);
-            }
-            $num++;
-        }
-
-        $cnt = ROUND(COUNT($data2) * 0.05);
-        if($cnt < 0){
-            $cnt = 1;
-        }
-        $fiveperSum = $arrSum[$cnt];
-
-        $onePerRank = ROUND(((float)$dataline['PickNum'] / (float)$dataline['TakeNum']),2);
-        $cnt2 = ROUND(COUNT($data2) * $onePerRank);
-        if($cnt2 < 0){
-            $cnt2 = 1;
-        }
-
-        $onePerSum = $arrSum[$cnt2];
-
-        foreach ($data as $key => $val) {
-            if($key == 0){
-                $subjectStr = $val['subject'];
-            } else {
-                $subjectStr .= " | ".$val['subject'];
-            }
-        }
-
-        //평균
-        $avg = (float)$data2[0]['AVG'];
-        $avgper = ROUND(($avg / 500) * 100,2);
-        //5퍼
-        $fiveperPer = ROUND(($fiveperSum / 500) * 100,2);
-        //1배수컷
-        $onePerPer = ROUND(($onePerSum / 500) * 100,2);
-
-        if($mydataIs == 'Y'){
-            //내점수
+        if($data){
             $dataIs = 'Y';
-            $mysumPer = ROUND(($mysum / 500) * 100,2);
+        } else {
+            $dataIs = 'N';
+        }
+
+        if($dataIs == 'Y'){
+            $pridx = $data[0]['PrIdx'];
+            $TakeMockPart = $data[0]['TakeMockPart'];
+            $TakeArea = $data[0]['TakeArea'];
+
+            $data2 = $this->surveyModel->getSumAvg($pridx, $idx);
+            $dataline =$this->surveyModel->getGradeLine($idx,$TakeMockPart,$TakeArea);
+
+            $score1 = $this->surveyModel->getScore1($pridx, $idx);
+            $score2 = $this->surveyModel->getScore2($pridx, $idx);
+            $scoredata = array();
+
+            if(empty($score1)===false){
+                foreach ($score1 as $key => $val){
+                    $scoredata[$key]['subject']  = $val['SubjectName'];
+                    $scoredata[$key]['score']    = $val['OrgPoint'];
+                    $scoredata[$key]['addscore'] = '집계중';
+                    $scoredata[$key]['Rank'] = '집계중';
+                    $scoredata[$key]['FivePerPoint'] = '집계중';
+                    $scoredata[$key]['AvrPoint'] = '집계중';
+                }
+            }
+
+            $AdjustPointIs = 'N';
+            if(empty($score2)===false){
+                foreach ($score2 as $key => $val){
+                    $scoredata[$key]['subject']  = $val['SubjectName'];
+                    $scoredata[$key]['score']    = $val['OrgPoint'];
+                    $AdjustPoint = $val['AdjustPoint'];
+                    if($val['Rank'] == ''){
+                        $AdjustPoint = '집계중';
+                        $AdjustPointIs = 'N';
+                    } else {
+                        $AdjustPointIs = 'Y';
+                    }
+                    $scoredata[$key]['addscore'] = $AdjustPoint;
+                    $scoredata[$key]['Rank'] = ROUND($val['Rank'] / $val['TakeNum'] * 100,2);
+                    $scoredata[$key]['FivePerPoint'] = $val['FivePerPoint'];
+                    $scoredata[$key]['AvrPoint'] = $val['AvrPoint'];
+                }
+            }
+
+            $arrSum = array();
+            $mysum = "";
+            $mydataIs = 'N';
+            $arrPointSection = array();
+            foreach($data2 as $key => $val){
+                $SUM = (float)$val['SUM'];
+                $Memidx = $val['MemIdx'];
+                $arrSum[] = (float)$SUM;
+
+                if($Memidx == $memidx){
+                    $mydataIs = 'Y';
+                    $mysum = (float)$SUM;
+                }
+
+                if($SUM <= 50){
+                    $arrPointSection['50'][] = $SUM;
+                } else if($SUM > 50 && $SUM <= 100) {
+                    $arrPointSection['100'][] = $SUM;
+                } else if($SUM > 100 && $SUM <= 150) {
+                    $arrPointSection['150'][] = $SUM;
+                } else if($SUM > 150 && $SUM <= 200) {
+                    $arrPointSection['200'][] = $SUM;
+                } else if($SUM > 200 && $SUM <= 250) {
+                    $arrPointSection['250'][] = $SUM;
+                } else if($SUM > 250 && $SUM <= 300) {
+                    $arrPointSection['300'][] = $SUM;
+                } else if($SUM > 300 && $SUM <= 350) {
+                    $arrPointSection['350'][] = $SUM;
+                } else if($SUM > 350 && $SUM <= 400) {
+                    $arrPointSection['400'][] = $SUM;
+                } else if($SUM > 400 && $SUM <= 450) {
+                    $arrPointSection['450'][] = $SUM;
+                } else {
+                    $arrPointSection['500'][] = $SUM;
+                }
+            }
+
+            $arrPoint = "";
+            $num = 0;
+            foreach ($arrPointSection as $key => $val){
+                if($num == 0){
+                    $arrPoint = '"'.$key.'" : '. ROUND(COUNT($arrPointSection[$key])/COUNT($data2)*100,2);
+                } else {
+                    $arrPoint .= ',"'.$key.'" : '. ROUND(COUNT($arrPointSection[$key])/COUNT($data2)*100,2);
+                }
+                $num++;
+            }
+
+            $cnt = ROUND(COUNT($data2) * 0.05);
+            if($cnt < 0){
+                $cnt = 1;
+            }
+            $fiveperSum = $arrSum[$cnt];
+
+            $onePerRank = ROUND(((float)$dataline['PickNum'] / (float)$dataline['TakeNum']),2);
+            $cnt2 = ROUND(COUNT($data2) * $onePerRank);
+            if($cnt2 < 0){
+                $cnt2 = 1;
+            }
+
+            $onePerSum = $arrSum[$cnt2];
+
+            foreach ($data as $key => $val) {
+                if($key == 0){
+                    $subjectStr = $val['subject'];
+                } else {
+                    $subjectStr .= " | ".$val['subject'];
+                }
+            }
+
+            //평균
+            $avg = (float)$data2[0]['AVG'];
+            $avgper = ROUND(($avg / 500) * 100,2);
+            //5퍼
+            $fiveperPer = ROUND(($fiveperSum / 500) * 100,2);
+            //1배수컷
+            $onePerPer = ROUND(($onePerSum / 500) * 100,2);
+            //내점수
+            if($AdjustPointIs == 'Y'){
+                if($mysum != 0){
+                    $mysumPer = ROUND(($mysum / 500) * 100,2);
+                } else {
+                    $mysumPer = 0;
+                    $mysum = 0;
+                }
+            } else {
+                $mysumPer = "집계중";
+                $mysum = "집계중";
+            }
 
             $ExpectAvrPoint1 = $dataline['ExpectAvrPoint1']?(float)$dataline['ExpectAvrPoint1']:(float)$dataline['ExpectAvr1Ref'];
             $ExpectAvrPoint2 = $dataline['ExpectAvrPoint2']?(float)$dataline['ExpectAvrPoint2']:(float)$dataline['ExpectAvr2Ref'];
@@ -943,36 +989,34 @@ class BasePassPredict extends \app\controllers\FrontController
             } else if ($StabilityAvrPoint< $mysum){
                 $str .= "<span class='tx-red'>합격 안정권</span>입니다.";
             } else {
-                $str = "";
+                $str = " - ";
             }
-        } else {
-            $onePerSum = '집계중';
-            $onePerPer = '';
-            $mysum = '집계중';
-            $mysumPer = '';
-            $str = '집계중';
-            $dataIs = 'N';
-        }
 
-        $this->load->view('willbes/pc/predict/private', [
-            'prodcode' => $idx,
-            'subjectStr' => $subjectStr,
-            'data' => $data,
-            'scoreList' => $score2,
-            'avg' => $avg,
-            'avgper' => $avgper,
-            'fiveper' => $fiveperSum,
-            'fiveperPer' => $fiveperPer,
-            'onePerSum' => $onePerSum,
-            'onePerPer' => $onePerPer,
-            'mysum' => $mysum,
-            'mysumPer' => $mysumPer,
-            'gradeLine' => $dataline,
-            'str'       => $str,
-            'arrPoint' => $arrPoint,
-            'mydataIs' => $mydataIs,
-            'dataIs' => $dataIs
-        ], false);
+            $this->load->view('willbes/pc/predict/private', [
+                'prodcode' => $idx,
+                'subjectStr' => $subjectStr,
+                'data' => $data,
+                'scoreList' => $scoredata,
+                'avg' => $avg,
+                'avgper' => $avgper,
+                'fiveper' => $fiveperSum,
+                'fiveperPer' => $fiveperPer,
+                'onePerSum' => $onePerSum,
+                'onePerPer' => $onePerPer,
+                'mysum' => $mysum,
+                'mysumPer' => $mysumPer,
+                'gradeLine' => $dataline,
+                'str'       => $str,
+                'arrPoint' => $arrPoint,
+                'mydataIs' => $mydataIs,
+                'dataIs' => $dataIs
+            ], false);
+        } else {
+            $this->load->view('willbes/pc/predict/private', [
+                'dataIs' => $dataIs,
+                'arrPoint' => ""
+            ], false);
+        }
     }
 
     public function cntForPromotion()

@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container main NSK c_both">
+    <div id="Container" class="Container main NGR c_both">
         <div class="Section MainVisual mt30 mb50">
             <div class="widthAuto">
                 <a href="{{ site_url('/member/join/') }}" target="_blank"><img src="{{ img_url('main/visual/visualTop.jpg') }}" title="통합회원 가입, 한번이면 OK"></a>
@@ -11,7 +11,7 @@
         <div class="Section Act1 mb50">
             <div class="widthAuto">
                 <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
-                <div class="ProcessBox NGR">
+                <div class="ProcessBox">
                     <ul>
                         <li>
                             <a href="{{ app_url('/home/index/cate/3019', 'pass') }}" target="_blank">
@@ -30,8 +30,9 @@
                                     <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
                                 </div>
                                 <div class="wTxt">
-                                    독보적일반/경행/승진/해경<br/>
-                                    <strong>윌비스 신광은경찰학원</strong>
+                                    1등* 일반/경행/승진/해경<br/>
+                                    <strong>윌비스 신광은경찰학원</strong><br/>
+                                    <div class="sTxt">* 2019브랜드고객충성도대상 경찰공무원부문 1위 기준</div> 
                                 </div>
                             </a>
                         </li>

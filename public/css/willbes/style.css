@@ -1785,7 +1785,7 @@ table.auTable tr td {
     right: 10px;
     width: 100px;
     height: auto;
-    z-index: 999;
+    z-index: 100;
 }
 .MainQuickMenu ul li {
     background: #fff;

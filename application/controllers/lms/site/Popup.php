@@ -9,6 +9,7 @@ class Popup extends \app\controllers\BaseController
     // 노출섹션 그룹공통코드
     private $_groupCcd = [
         'popup_disp' => '657',   //노출섹션
+        'popup_type' => '717'   //팝업구분
     ];
 
     public function __construct()
@@ -81,13 +82,14 @@ class Popup extends \app\controllers\BaseController
         }
 
         //배너노출섹션
-        $popup_info = $this->codeModel->getCcdInArray([$this->_groupCcd['popup_disp']]);
+        $popup_info = $this->codeModel->getCcdInArray(array_values($this->_groupCcd));
 
         $this->load->view("site/popup/create", [
             'method' => $method,
             'data' => $data,
             'p_idx' => $p_idx,
-            'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']]
+            'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']],
+            'popup_type' => $popup_info[$this->_groupCcd['popup_type']]
         ]);
     }
 
@@ -98,6 +100,7 @@ class Popup extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => 'popup_disp', 'label' => '노출섹션', 'rules' => 'trim|required'],
+            ['field' => 'popup_type', 'label' => '팝업구분', 'rules' => 'trim|required'],
             ['field' => 'popup_name', 'label' => '배너명', 'rules' => 'trim|required'],
             ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[self,blank]'],
             ['field' => 'top_pixel', 'label' => '팝업위치 상단', 'rules' => 'trim|required|integer'],

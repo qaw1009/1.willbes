@@ -283,22 +283,8 @@
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
-
-        {{-- 모달 팝업 --}}
-        @include('willbes.pc.site.main_partial.modal_popup_' . $__cfg['SiteCode'])
     </div>
     <!-- End Container --> 
-    
-    {{-- 하단 띠배너--}}
-    <div class="mainBottomBn mainBottomBn2">
-        <div>
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1210">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/3001_mainBottom_bn_2.jpg">
-            </a>
-            <span class="btmEvClose">닫기</span>
-        </div>
-    </div>
-    
 
     <script type="text/javascript">
         var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
@@ -328,13 +314,6 @@
                 $(activeTab).html(html_str);
                 $(activeTab).fadeIn();
                 return false;
-            });
-        }); 
-
-        //하단이벤트배너 닫기
-        $(function(){        
-            $('.mainBottomBn .btmEvClose').click(function(){
-                $('.mainBottomBn').hide();
             });
         }); 
     </script>

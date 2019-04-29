@@ -113,16 +113,6 @@
     <!-- End Container -->   
 
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-
-    {{-- 하단 띠배너--}}
-    <div class="mainBottomBn">
-        <div>
-            <a href="https://pass.willbes.net/promotion/index/cate/3035/code/1064">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/3035_mainBottom_bn.gif" title="" class="mbBanner">
-            </a>
-            <span class="btmEvClose">닫기</span>
-        </div>
-    </div>
 @stop
 
 @section('post_content')
@@ -155,13 +145,6 @@
                     });
                 });
             }, 200);
-        });
-
-        //하단이벤트배너 닫기
-        $(function(){        
-            $('.mainBottomBn .btmEvClose').click(function(){
-                $('.mainBottomBn').hide();
-            });
         });
     </script>
 @stop

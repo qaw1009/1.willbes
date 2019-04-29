@@ -7,6 +7,9 @@ class Popup extends \app\controllers\BaseController
     protected $helpers = array();
     protected $sess_controller = false;  // 세션 사용안함
 
+    // 팝업구분 공통코드 (레이어팝업, 모달팝업, 하단고정팝업)
+    private $_popup_type_ccd = ['717001' => 'layer', '717002' => 'modal', '717003' => 'bnBottom'];
+
     public function __construct()
     {
         parent::__construct();
@@ -36,7 +39,8 @@ class Popup extends \app\controllers\BaseController
         }, $data);
 
         return $this->load->view('common/popup', [
-            'data' => $data
+            'data' => $data,
+            'arr_popup_type_ccd' => $this->_popup_type_ccd
         ]);
     }
 }

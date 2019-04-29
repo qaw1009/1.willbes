@@ -61,6 +61,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="popup_type">팝업구분<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" id="popup_type" name="popup_type" required="required" title="팝업구분">
+                            <option value="">팝업구분</option>
+                            @foreach($popup_type as $key => $val)
+                                <option value="{{$key}}" @if($key == $data['PopUpTypeCcd'])selected="selected"@endif>{{$val}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2" for="popup_name">팝업명<span class="required">*</span></label>
                     <div class="col-md-7 item">
                         <input type="text" id="popup_name" name="popup_name" required="required" class="form-control" maxlength="100" title="팝업명" value="{{ $data['PopUpName'] }}" >
@@ -359,6 +371,7 @@
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/site/popup") }}/' + getQueryString();
             });
+
             // ajax submit
             $regi_form.submit(function() {
                 var _url = '{{ site_url("/site/popup/store") }}' + getQueryString();

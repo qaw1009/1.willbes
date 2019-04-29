@@ -79,6 +79,7 @@
                     <th>운영사이트</th>
                     <th>카테고리</th>
                     <th>노출섹션</th>
+                    <th>팝업구분</th>
                     <th>팝업명</th>
                     <th width="20%">팝업이미지</th>
                     <th>노출기간</th>
@@ -133,6 +134,7 @@
                         return data === null ? '전체카테고리' : data.replace(/,/g, '<br/>');
                     }},
                     {'data' : 'DispName'},
+                    {'data' : 'PopUpTypeName'},
                     {'data' : 'PopUpName', 'render' : function(data, type, row, meta) {
                         return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.PIdx + '"><u class="blue">' + data + '</u></a>';
                     }},

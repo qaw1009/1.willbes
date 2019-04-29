@@ -285,7 +285,7 @@
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_01.jpg"  alt="왕초보영어탑재" /><br />
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_02.jpg"  alt="경찰체력" usemap="#Map190117B" border="0" />
             <map name="Map190117B" id="Map190117B">
-                <area shape="rect" coords="554,583,676,626" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력 상세보기" />
+                <area shape="rect" coords="510,583,632,626" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력 상세보기" />
             </map>
             <br />
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_08_03.jpg"  alt="많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀" />

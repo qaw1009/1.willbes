@@ -1943,6 +1943,10 @@ class PredictModel extends WB_Model
                         $OrgPoint = 100;
                     }
 
+                    if($OrgPoint == 0){
+                        $AdjustPoint = 0;
+                    }
+
                     // 데이터 입력
                     $data = [
                         'MemIdx' => $val['MemIdx'],

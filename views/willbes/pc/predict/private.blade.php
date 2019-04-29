@@ -34,6 +34,7 @@
 </style>
 <div class="evtCtnsBox">
     <div class="sub_warp">
+        @if($dataIs == 'Y')
         <div class="sub3_1">
             <h2>지원자 정보</h2>
             <div>
@@ -71,20 +72,25 @@
                         <th>과목</th>
                         <th>원점수</th>
                         <th>조정점수</th>
-                        <th>내 석차 </th>
+                        <th>내 석차(%)</th>
                         <th>전체 평균</th>
                         <th>상위 5% 평균</th>
                     </tr>
                     @foreach($scoreList as $key => $val)
                     <tr>
-                        <th>{{ $val['SubjectName'] }}</th>
-                        <td>{{ $val['OrgPoint'] }}</td>
-                        <td>{{ $val['AdjustPoint'] ? $val['AdjustPoint'] : '집계중'}}</td>
-                        <td>{{ $val['Rank'] ? $val['Rank']."/".$val['TakeNum'] : '집계중'}}</td>
+                        <th>{{ $val['subject'] }}</th>
+                        <td>{{ $val['score'] }}</td>
+                        <td>{{ $val['addscore'] }}</td>
+                        <td>{{ $val['Rank'] != '집계중'?$val['Rank']."%" : '집계중'}}</td>
                         <td>{{ $val['AvrPoint'] }}</td>
                         <td>{{ $val['FivePerPoint'] }}</td>
                     </tr>
                     @endforeach
+                    @if(empty($scoreList) == true)
+                        <tr>
+                            <td colspan="6"> - 입력된 점수가 없습니다.(성적채점 및 확인에서 점수를 입력해주세요) -</td>
+                        </tr>
+                    @endif
                 </table>
                 <div class="mt10">
                     * 채점결과에 따른 과목별, 총점과 응시 직렬/지역의 석차, 평균 정보입니다.<br>
@@ -185,7 +191,6 @@
                 </div>
             </div>
         </div>
-        @if($mydataIs == 'Y')
         <div class="sub3_1 mt100">
             <h2>직렬 점수대별 경쟁자 분포</h2>
             <div>
@@ -199,17 +204,16 @@
                 * 합격 가능성 분석 결과는 본 서비스 참여 결과 및 패널 표본 합산 예측 결과이므로, 실제 결과와는 다를 수 있으니 참고 자료로만 활용하시기 바랍니다.
             </div>
         </div>
-        @endif
     </div>
+    @endif
 </div>
 <!--evtCtnsBox//-->
 <script type="text/javascript">
     var dataIs = '{{ $dataIs }}';
-    var mydataIs = '{{ $mydataIs }}';
     $(document).ready(function () {
-        
+
         if(dataIs == 'N'){
-            alert('집계중입니다.');
+            alert('기본정보/점수를 입력해주세요.');
             var _url = '{{ site_url('/promotion/index/cate/3001/code/1211') }}';
             parent.location.href=_url;
             return ;
@@ -420,7 +424,7 @@
             label.style.display = "block";
             label.style.top = (m.y + 10) + "px";
             label.style.left = (m.x + 10) + "px";
-            label.innerHTML = "<strong>" + propsRy[i] + "</strong> 점 - " + valuesRy[i] + "명";
+            label.innerHTML = "<strong>" + propsRy[i] + "</strong> 점 - " + valuesRy[i] + "%";
             c.style.cursor = "pointer";
         }
     }

@@ -188,7 +188,6 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var request_type = '{{$data['RequestType']}}';
-            console.log(request_type);
             if (request_type == 5) {
                 $('.promotion').show();
                 $('.event').hide();
@@ -196,7 +195,6 @@
                 $('.promotion').hide();
                 $('.event').show();
             }
-
 
             // 목록
             $('#btn_list').click(function() {

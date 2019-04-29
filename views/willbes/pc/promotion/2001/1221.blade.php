@@ -112,16 +112,16 @@
         <div class="m_lnb">
             <ul class="lnbMenu">
                 <li>
-                    <a href="#none" class="active"> 메인</a>
+                    <a href="javascript:tabMove(1)" class="active"> 메인</a>
                 </li>
                 <li>
                     <a href="javascript:tabMove(2)"> 성적채점 및 확인 </a></li>
                 <li>
-                    <a href="javascript:alert('4월 27일 OPEN 입니다. ');"> 합격예측 </a>
+                    <a href="javascript:tabMove(3)"> 합격예측 </a>
                     {{--<a href="#none"> 합격예측 </a>--}}
                 </li>
                 <li>
-                    <a href="javascript:alert('4월 27일 OPEN 입니다. ');"> 기출문제해설 </a>
+                    <a href="javascript:tabMove(4)"> 기출문제해설 </a>
                     {{--<a href="#none">기출문제해설</a>--}}
                 </li>
             </ul>
@@ -220,15 +220,18 @@
     <script>
         function tabMove(num) {
             if(num == 1){
-
+                var url = "{{ site_url('/promotion/index/cate/3001/code/1210') }}" ;
+                location.replace(url);
             } else if(num == 2) {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-                var url = "{{ site_url('/promotion/index/cate/3001/code/1211/spidx/100001') }}" ;
+                var url = "{{ site_url('/promotion/index/cate/3001/code/1211') }}" ;
                 location.replace(url);
             } else if(num == 3) {
-
+                        {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+                var url = "{{ site_url('/promotion/index/cate/3001/code/1212') }}" ;
+                location.replace(url);
             } else {
-
+                alert('준비중입니다.');
             }
 
         }

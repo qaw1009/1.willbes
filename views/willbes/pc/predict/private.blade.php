@@ -1,6 +1,37 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 @section('content')
-    <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
+<link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
+<script src="/public/vendor/jqbars/jqbar.js"></script>
+<link rel="stylesheet" href="/public/vendor/jqbars/jqbar.css">
+<style rel="stylesheet">
+    /*body {*/
+        /*margin: 0;*/
+        /*overflow: hidden;*/
+        /*background: #152B39;*/
+        /*font-family: Courier, monospace;*/
+        /*font-size: 14px;*/
+        /*color:#ccc;*/
+    /*}*/
+
+    .wrapper {
+        display: block;
+        margin: 5em auto;
+        border: 2px solid #555;
+        width: 900px;
+        height: 350px;
+        position: relative;
+    }
+    p{text-align:center;}
+    .label {
+        height: 1em;
+        padding: .3em;
+        background: rgba(255, 255, 255, .8);
+        position: absolute;
+        display: none;
+        color:#333;
+
+    }
+</style>
 <div class="evtCtnsBox">
     <div class="sub_warp">
         <div class="sub3_1">
@@ -68,7 +99,7 @@
                 <div class="sub3_4_L_warp">
                     <div class="cutLine">
                         <div>
-                            <span style="bottom:70.77%"><strong>353.85</strong></span>
+                            <span style="bottom:{{ $mysumPer }}%"><strong>{{ $mysum }}</strong></span>
                         </div>
                     </div>
 
@@ -91,17 +122,17 @@
                             </td>
 
                             <td>
-                                <div><span class="myscore" style="height:68.652%"></span></div>
+                                <div><span class="myscore" style="height:{{ $onePerPer }}%"></span></div>
                             </td>
 
                             <td>
                                 <div>
-                                    <span class="score" style="height:56.31799999999999%"></span>
+                                    <span class="score" style="height:{{ $avgper }}%"></span>
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <span class="score" style="height:68.652%"></span>
+                                    <span class="score" style="height:{{ $fiveperPer }}%"></span>
                                 </div>
                             </td>
 
@@ -110,18 +141,13 @@
                             <th></th>
                             <th>
                                 1배수컷<br>
-
-                                343.26
-
-
+                                {{ $onePerSum }}
                             </th>
                             <th>전체평균<br>
-
-                                281.59
+                                {{ $avg }}
                             </th>
                             <th>상위5%<br>
-
-                                343.26
+                                {{ $fiveper }}
                             </th>
                             <th> </th>
                         </tr>
@@ -137,40 +163,330 @@
                         <col />
                         <tr>
                             <th>합격기대권</th>
-                            <td>326.38 ~ 334.43</td>
+                            <td>{{ $gradeLine['ExpectAvrPoint1']?$gradeLine['ExpectAvrPoint1']:$gradeLine['ExpectAvr1Ref'] }} ~ {{ $gradeLine['ExpectAvrPoint2']?$gradeLine['ExpectAvrPoint2']:$gradeLine['ExpectAvr2Ref'] }}</td>
                         </tr>
                         <tr>
                             <th>합격유력권</th>
-                            <td>334.44 ~ 356.03</td>
+                            <td>{{ $gradeLine['StrongAvrPoint1']?$gradeLine['StrongAvrPoint1']:$gradeLine['StrongAvr1Ref'] }} ~ {{ $gradeLine['StrongAvrPoint2']?$gradeLine['StrongAvrPoint2']:$gradeLine['StrongAvr2Ref'] }}</td>
                         </tr>
                         <tr>
                             <th>합격안정권</th>
-                            <td>356.04 이상</td>
+                            <td>{{ $gradeLine['StabilityAvrPoint']?$gradeLine['StabilityAvrPoint']:$gradeLine['StabilityAvrRef'] }}</td>
                         </tr>
                         <tr class="bg01">
                             <th>1배수컷</th>
-                            <th>343.26</th>
+                            <th>{{ $onePerSum }}</th>
                         </tr>
                         <tr class="bg01">
                             <th>합격예측</th>
-                            <th>현재 기준 <span class="tx-red">합격 유력권</span>입니다. </th>
+                            <th>{!! $str !!} </th>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-
+        @if($mydataIs == 'Y')
         <div class="sub3_1 mt100">
             <h2>직렬 점수대별 경쟁자 분포</h2>
             <div>
-                그래프
+                <div class="wrapper">
+                    <canvas id='c'></canvas>
+                    <div class="label">text</div>
+                </div>
             </div>
 
             <div class="mt20">
                 * 합격 가능성 분석 결과는 본 서비스 참여 결과 및 패널 표본 합산 예측 결과이므로, 실제 결과와는 다를 수 있으니 참고 자료로만 활용하시기 바랍니다.
             </div>
         </div>
+        @endif
     </div>
 </div>
 <!--evtCtnsBox//-->
+<script type="text/javascript">
+    var label = document.querySelector(".label");
+    var c = document.getElementById("c");
+    var ctx = c.getContext("2d");
+    var cw = c.width = 900;
+    var ch = c.height = 350;
+    var cx = cw / 2,
+        cy = ch / 2;
+    var rad = Math.PI / 180;
+    var frames = 0;
+
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#999";
+    ctx.fillStyle = "#ccc";
+    ctx.font = "14px monospace";
+
+    var grd = ctx.createLinearGradient(0, 0, 0, cy);
+    grd.addColorStop(0, "hsla(167,72%,60%,1)");
+    grd.addColorStop(1, "hsla(167,72%,60%,0)");
+
+    var oData = {
+        {!! $arrPoint !!}
+    };
+
+    var valuesRy = [];
+    var propsRy = [];
+    for (var prop in oData) {
+
+        valuesRy.push(oData[prop]);
+        propsRy.push(prop);
+    }
+
+
+    var vData = 4;
+    var hData = valuesRy.length;
+    var offset = 50.5; //offset chart axis
+    var chartHeight = ch - 2 * offset;
+    var chartWidth = cw - 2 * offset;
+    var t = 1 / 7; // curvature : 0 = no curvature
+    var speed = 2; // for the animation
+
+    var A = {
+        x: offset,
+        y: offset
+    }
+    var B = {
+        x: offset,
+        y: offset + chartHeight
+    }
+    var C = {
+        x: offset + chartWidth,
+        y: offset + chartHeight
+    }
+
+    /*
+          A  ^
+            |  |
+            + 25
+            |
+            |
+            |
+            + 25
+          |__|_________________________________  C
+          B
+    */
+
+    // CHART AXIS -------------------------
+    ctx.beginPath();
+    ctx.moveTo(A.x, A.y);
+    ctx.lineTo(B.x, B.y);
+    ctx.lineTo(C.x, C.y);
+    ctx.stroke();
+
+    // vertical ( A - B )
+    var aStep = (chartHeight - 50) / (vData);
+
+    var Max = Math.ceil(arrayMax(valuesRy) / 10) * 10;
+    var Min = Math.floor(arrayMin(valuesRy) / 10) * 10;
+    var aStepValue = (Max - Min) / (vData);
+    console.log("aStepValue: " + aStepValue); //8 units
+    var verticalUnit = aStep / aStepValue;
+
+    var a = [];
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    for (var i = 0; i <= vData; i++) {
+
+        if (i == 0) {
+            a[i] = {
+                x: A.x,
+                y: A.y + 25,
+                val: Max
+            }
+        } else {
+            a[i] = {}
+            a[i].x = a[i - 1].x;
+            a[i].y = a[i - 1].y + aStep;
+            a[i].val = a[i - 1].val - aStepValue;
+        }
+        drawCoords(a[i], 3, 0);
+    }
+
+    //horizontal ( B - C )
+    var b = [];
+    ctx.textAlign = "center";
+    ctx.textBaseline = "hanging";
+    var bStep = chartWidth / (hData + 1);
+
+    for (var i = 0; i < hData; i++) {
+        if (i == 0) {
+            b[i] = {
+                x: B.x + bStep,
+                y: B.y,
+                val: propsRy[0]
+            };
+        } else {
+            b[i] = {}
+            b[i].x = b[i - 1].x + bStep;
+            b[i].y = b[i - 1].y;
+            b[i].val = propsRy[i]
+        }
+        drawCoords(b[i], 0, 3)
+    }
+
+    function drawCoords(o, offX, offY) {
+        ctx.beginPath();
+        ctx.moveTo(o.x - offX, o.y - offY);
+        ctx.lineTo(o.x + offX, o.y + offY);
+        ctx.stroke();
+
+        ctx.fillText(o.val, o.x - 2 * offX, o.y + 2 * offY);
+    }
+    //----------------------------------------------------------
+
+    // DATA
+    var oDots = [];
+    var oFlat = [];
+    var i = 0;
+
+    for (var prop in oData) {
+        oDots[i] = {}
+        oFlat[i] = {}
+
+        oDots[i].x = b[i].x;
+        oFlat[i].x = b[i].x;
+
+        oDots[i].y = b[i].y - oData[prop] * verticalUnit - 25;
+        oFlat[i].y = b[i].y - 25;
+
+        oDots[i].val = oData[b[i].val];
+
+        i++
+    }
+
+
+
+    ///// Animation Chart ///////////////////////////
+    //var speed = 3;
+    function animateChart() {
+        requestId = window.requestAnimationFrame(animateChart);
+        frames += speed; //console.log(frames)
+        ctx.clearRect(60, 0, cw, ch - 60);
+
+        for (var i = 0; i < oFlat.length; i++) {
+            if (oFlat[i].y > oDots[i].y) {
+                oFlat[i].y -= speed;
+            }
+        }
+        drawCurve(oFlat);
+        for (var i = 0; i < oFlat.length; i++) {
+            ctx.fillText(oDots[i].val, oFlat[i].x, oFlat[i].y - 25);
+            ctx.beginPath();
+            ctx.arc(oFlat[i].x, oFlat[i].y, 3, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        if (frames >= Max * verticalUnit) {
+            window.cancelAnimationFrame(requestId);
+
+        }
+    }
+    requestId = window.requestAnimationFrame(animateChart);
+
+    /////// EVENTS //////////////////////
+    c.addEventListener("mousemove", function(e) {
+        label.innerHTML = "";
+        label.style.display = "none";
+        this.style.cursor = "default";
+
+        var m = oMousePos(this, e);
+        for (var i = 0; i < oDots.length; i++) {
+
+            output(m, i);
+        }
+
+    }, false);
+
+    function output(m, i) {
+        ctx.beginPath();
+        ctx.arc(oDots[i].x, oDots[i].y, 20, 0, 2 * Math.PI);
+        if (ctx.isPointInPath(m.x, m.y)) {
+            //console.log(i);
+            label.style.display = "block";
+            label.style.top = (m.y + 10) + "px";
+            label.style.left = (m.x + 10) + "px";
+            label.innerHTML = "<strong>" + propsRy[i] + "</strong> 점 - " + valuesRy[i] + "명";
+            c.style.cursor = "pointer";
+        }
+    }
+
+    // CURVATURE
+    function controlPoints(p) {
+        // given the points array p calculate the control points
+        var pc = [];
+        for (var i = 1; i < p.length - 1; i++) {
+            var dx = p[i - 1].x - p[i + 1].x; // difference x
+            var dy = p[i - 1].y - p[i + 1].y; // difference y
+            // the first control point
+            var x1 = p[i].x - dx * t;
+            var y1 = p[i].y - dy * t;
+            var o1 = {
+                x: x1,
+                y: y1
+            };
+
+            // the second control point
+            var x2 = p[i].x + dx * t;
+            var y2 = p[i].y + dy * t;
+            var o2 = {
+                x: x2,
+                y: y2
+            };
+
+            // building the control points array
+            pc[i] = [];
+            pc[i].push(o1);
+            pc[i].push(o2);
+        }
+        return pc;
+    }
+
+    function drawCurve(p) {
+
+        var pc = controlPoints(p); // the control points array
+
+        ctx.beginPath();
+        //ctx.moveTo(p[0].x, B.y- 25);
+        ctx.lineTo(p[0].x, p[0].y);
+        // the first & the last curve are quadratic Bezier
+        // because I'm using push(), pc[i][1] comes before pc[i][0]
+        ctx.quadraticCurveTo(pc[1][1].x, pc[1][1].y, p[1].x, p[1].y);
+
+        if (p.length > 2) {
+            // central curves are cubic Bezier
+            for (var i = 1; i < p.length - 2; i++) {
+                ctx.bezierCurveTo(pc[i][0].x, pc[i][0].y, pc[i + 1][1].x, pc[i + 1][1].y, p[i + 1].x, p[i + 1].y);
+            }
+            // the first & the last curve are quadratic Bezier
+            var n = p.length - 1;
+            ctx.quadraticCurveTo(pc[n - 1][0].x, pc[n - 1][0].y, p[n].x, p[n].y);
+        }
+
+        //ctx.lineTo(p[p.length-1].x, B.y- 25);
+        ctx.stroke();
+        ctx.save();
+        ctx.fillStyle = grd;
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function arrayMax(array) {
+        return Math.max.apply(Math, array);
+    };
+
+    function arrayMin(array) {
+        return Math.min.apply(Math, array);
+    };
+
+    function oMousePos(canvas, evt) {
+        var ClientRect = canvas.getBoundingClientRect();
+        return { //objeto
+            x: Math.round(evt.clientX - ClientRect.left),
+            y: Math.round(evt.clientY - ClientRect.top)
+        }
+    }
+</script>
 @stop

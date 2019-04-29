@@ -25,7 +25,7 @@
         clear:both;
     }
 
-    .replyEvaluate {width:1000px; margin:0 auto;}
+    .replyEvaluate {width:1000px; margin:0 auto 100px;}
     .character ul {border-top:1px solid #ababab; text-align:center}
     .character li {display:inline; float:left; width:166px; text-align:center; margin:0 auto}
     .character li:first-child,
@@ -63,13 +63,13 @@
         width:70px; border-left:1px solid #eaeaea; display:block; height:42px; line-height:42px; color:#333; background:#fff;
     }
     .replyEvaluate .replyList {
-        text-align:left; color:#666;
+        text-align:left; color:#666; 
     }
     .replyEvaluate .replyList li {
         position:relative; border-bottom:1px solid #e6e4e4; padding:20px 0; min-height:105px;
     }
     .replyEvaluate .replyList li img {
-        position:absolute; top:15px; left:15px; width:80px;
+        position:absolute; top:10px; left:15px; width:80px;
     }
     .replyEvaluate .replyList li div {margin-left:110px; line-height:1.5}
     .replyEvaluate .replyList li p {margin-bottom:10px; color:#999;}
@@ -78,7 +78,7 @@
         position:absolute; top:15px; right:5px;
         border:1px solid #dcdcdc; padding:5px 8px;
     }
-    .replyList li span.crtImg {display:block; float:left; width:120px; text-align:center; height:108px; background-size:100%; background-position:center center}
+    .replyList li span.crtImg {display:block; float:left; width:80px; text-align:center; height:86px; background-size:100%; background-position:center center; margin-top:-5px}
     .emoticon_1 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof01.png)}
     .emoticon_2 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof20.png)}
     .emoticon_3 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof17.png)}
@@ -141,8 +141,7 @@
             <div class="textarBx">
                 <textarea name="comment" id="comment" cols="30" rows="5" title="댓글" placeholder="댓글을 입력해주세요."></textarea>
             </div>
-            <p> * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다. </p>
-            <p> * 특수문자 파이프(|)는 입력 불가 입니다.</p>
+            <p> * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있으며, 특수문자 파이프(|)는 입력 불가 입니다. </p>
             <button type="button" class="btnrwt" id="btn_submit_comment">글쓰기</button>
         </div>
     </form>

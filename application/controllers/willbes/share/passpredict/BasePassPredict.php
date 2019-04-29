@@ -870,7 +870,11 @@ class BasePassPredict extends \app\controllers\FrontController
                 foreach ($score2 as $key => $val){
                     $scoredata[$key]['subject']  = $val['SubjectName'];
                     $scoredata[$key]['score']    = $val['OrgPoint'];
-                    $scoredata[$key]['addscore'] = $val['AdjustPoint'];
+                    $AdjustPoint = $val['AdjustPoint'];
+                    if($val['Rank'] == ''){
+                        $AdjustPoint = '집계중';
+                    }
+                    $scoredata[$key]['addscore'] = $AdjustPoint;
                     $scoredata[$key]['Rank'] = ROUND($val['Rank'] / $val['TakeNum'] * 100,2);
                     $scoredata[$key]['FivePerPoint'] = $val['FivePerPoint'];
                     $scoredata[$key]['AvrPoint'] = $val['AvrPoint'];

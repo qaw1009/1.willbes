@@ -639,9 +639,9 @@ class SurveyModel extends WB_Model
                 LEFT JOIN {$this->_table['predictCode']} AS pc2 ON pp.SubjectCode = pc2.Ccd 
         ";
 
-        $order_by = " ORDER BY pg.PpIdx";
+        $order_by = " GROUP BY pg.PpIdx ORDER BY pg.PpIdx ";
         $where = " WHERE pg.ProdCode = ".$prodcode." AND pg.PrIdx = ".$pridx;
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();

@@ -560,6 +560,7 @@
             pagerCustom: '#MapRollingDiv',
             speed: 1000,
             pause: 2000,
+            randomStart:true,
             controls:false
         });
     });

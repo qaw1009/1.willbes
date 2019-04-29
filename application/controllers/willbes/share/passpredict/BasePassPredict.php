@@ -866,6 +866,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 }
             }
 
+            $AdjustPointIs = 'N';
             if(empty($score2)===false){
                 foreach ($score2 as $key => $val){
                     $scoredata[$key]['subject']  = $val['SubjectName'];
@@ -873,6 +874,9 @@ class BasePassPredict extends \app\controllers\FrontController
                     $AdjustPoint = $val['AdjustPoint'];
                     if($val['Rank'] == ''){
                         $AdjustPoint = '집계중';
+                        $AdjustPointIs = 'N';
+                    } else {
+                        $AdjustPointIs = 'Y';
                     }
                     $scoredata[$key]['addscore'] = $AdjustPoint;
                     $scoredata[$key]['Rank'] = ROUND($val['Rank'] / $val['TakeNum'] * 100,2);
@@ -959,8 +963,13 @@ class BasePassPredict extends \app\controllers\FrontController
             //1배수컷
             $onePerPer = ROUND(($onePerSum / 500) * 100,2);
             //내점수
-            if($mysum){
-                $mysumPer = ROUND(($mysum / 500) * 100,2);
+            if($AdjustPointIs == 'Y'){
+                if($mysum != 0){
+                    $mysumPer = ROUND(($mysum / 500) * 100,2);
+                } else {
+                    $mysumPer = 0;
+                    $mysum = 0;
+                }
             } else {
                 $mysumPer = "집계중";
                 $mysum = "집계중";

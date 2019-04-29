@@ -834,8 +834,14 @@ class BasePassPredict extends \app\controllers\FrontController
     {
         $idx = $params[0];
         $memidx = $this->session->userdata('mem_idx');
-        echo $memidx;
+
         $data = $this->surveyModel->predictResist($idx, $memidx);
+
+        if(empty($data) === true){
+            echo "<script>alert('기본정보가 없습니다.'); parent.location.href='/promotion/index/cate/3001/code/1211';</script>";
+            return ;
+        }
+
         $pridx = $data[0]['PrIdx'];
         $TakeMockPart = $data[0]['TakeMockPart'];
         $TakeArea = $data[0]['TakeArea'];
@@ -966,7 +972,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'mysumPer' => $mysumPer,
             'gradeLine' => $dataline,
             'str'       => $str,
-            'arrPoint' => $arrPoint
+            'arrPoint' => $arrPoint,
+            'mydataIs' => $mydataIs
         ], false);
     }
 

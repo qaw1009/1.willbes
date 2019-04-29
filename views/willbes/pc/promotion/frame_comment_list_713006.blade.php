@@ -69,7 +69,7 @@
         position:relative; border-bottom:1px solid #e6e4e4; padding:20px 0; min-height:105px;
     }
     .replyEvaluate .replyList li img {
-        position:absolute; top:15px; left:15px; width:80px;
+        position:absolute; top:10px; left:15px; width:80px;
     }
     .replyEvaluate .replyList li div {margin-left:110px; line-height:1.5}
     .replyEvaluate .replyList li p {margin-bottom:10px; color:#999;}
@@ -78,7 +78,7 @@
         position:absolute; top:15px; right:5px;
         border:1px solid #dcdcdc; padding:5px 8px;
     }
-    .replyList li span.crtImg {display:block; float:left; width:120px; text-align:center; height:108px; background-size:100%; background-position:center center}
+    .replyList li span.crtImg {display:block; float:left; width:80px; text-align:center; height:86px; background-size:100%; background-position:center center; margin-top:-5px}
     .emoticon_1 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof01.png)}
     .emoticon_2 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof20.png)}
     .emoticon_3 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof17.png)}

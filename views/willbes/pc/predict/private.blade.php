@@ -204,6 +204,23 @@
 </div>
 <!--evtCtnsBox//-->
 <script type="text/javascript">
+    var dataIs = '{{ $dataIs }}';
+    var mydataIs = '{{ $mydataIs }}';
+    $(document).ready(function () {
+        if(mydataIs == 'N'){
+            alert('성적채점 및 기본정보를 입력해주세요.');
+            var _url = '{{ site_url('/promotion/index/cate/3001/code/1211') }}';
+            parent.location.href=_url;
+            return ;
+        }
+        if(dataIs == 'N'){
+            alert('집계중입니다.');
+            var _url = '{{ site_url('/promotion/index/cate/3001/code/1211') }}';
+            parent.location.href=_url;
+            return ;
+        }
+    });
+
     var label = document.querySelector(".label");
     var c = document.getElementById("c");
     var ctx = c.getContext("2d");

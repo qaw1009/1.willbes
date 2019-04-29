@@ -837,11 +837,6 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $data = $this->surveyModel->predictResist($idx, $memidx);
 
-        if(empty($data) === true){
-            echo "<script>alert('기본정보가 없습니다.'); parent.location.href='/promotion/index/cate/3001/code/1211';</script>";
-            return ;
-        }
-
         $pridx = $data[0]['PrIdx'];
         $TakeMockPart = $data[0]['TakeMockPart'];
         $TakeArea = $data[0]['TakeArea'];
@@ -854,6 +849,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $mysum = "";
         $mydataIs = 'N';
         $arrPointSection = array();
+
         foreach($data2 as $key => $val){
             $SUM = (float)$val['SUM'];
             $Memidx = $val['MemIdx'];
@@ -920,7 +916,6 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-
         //평균
         $avg = (float)$data2[0]['AVG'];
         $avgper = ROUND(($avg / 500) * 100,2);
@@ -931,6 +926,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         if($mydataIs == 'Y'){
             //내점수
+            $dataIs = 'Y';
             $mysumPer = ROUND(($mysum / 500) * 100,2);
 
             $ExpectAvrPoint1 = $dataline['ExpectAvrPoint1']?(float)$dataline['ExpectAvrPoint1']:(float)$dataline['ExpectAvr1Ref'];
@@ -955,6 +951,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $mysum = '집계중';
             $mysumPer = '';
             $str = '집계중';
+            $dataIs = 'N';
         }
 
         $this->load->view('willbes/pc/predict/private', [
@@ -973,7 +970,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'gradeLine' => $dataline,
             'str'       => $str,
             'arrPoint' => $arrPoint,
-            'mydataIs' => $mydataIs
+            'mydataIs' => $mydataIs,
+            'dataIs' => $dataIs
         ], false);
     }
 

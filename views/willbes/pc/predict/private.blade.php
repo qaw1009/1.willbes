@@ -424,7 +424,7 @@
             label.style.display = "block";
             label.style.top = (m.y + 10) + "px";
             label.style.left = (m.x + 10) + "px";
-            label.innerHTML = "<strong>" + propsRy[i] + "</strong> 점 - " + valuesRy[i] + "명";
+            label.innerHTML = "<strong>" + propsRy[i] + "</strong> 점 - " + valuesRy[i] + "%";
             c.style.cursor = "pointer";
         }
     }

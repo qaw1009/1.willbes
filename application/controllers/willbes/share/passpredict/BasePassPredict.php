@@ -926,9 +926,9 @@ class BasePassPredict extends \app\controllers\FrontController
             $num = 0;
             foreach ($arrPointSection as $key => $val){
                 if($num == 0){
-                    $arrPoint = '"'.$key.'" : '. COUNT($arrPointSection[$key]);
+                    $arrPoint = '"'.$key.'" : '. ROUND(COUNT($arrPointSection[$key])/COUNT($data2)*100,2);
                 } else {
-                    $arrPoint .= ',"'.$key.'" : '. COUNT($arrPointSection[$key]);
+                    $arrPoint .= ',"'.$key.'" : '. ROUND(COUNT($arrPointSection[$key])/COUNT($data2)*100,2);
                 }
                 $num++;
             }
@@ -1017,8 +1017,6 @@ class BasePassPredict extends \app\controllers\FrontController
                 'arrPoint' => ""
             ], false);
         }
-
-
     }
 
     public function cntForPromotion()

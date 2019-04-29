@@ -216,16 +216,6 @@
             </div>
         </div>
 
-        {{-- 하단 띠배너--}}
-        <div class="mainBottomBn mainBottomBn2">
-            <div>
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1210">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/3001_mainBottom_bn_2.jpg">
-                </a>
-                <span class="btmEvClose">닫기</span>
-            </div>
-        </div>
-
         <div class="Section Section4 mb50 mt30">
             @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])
         </div>
@@ -234,9 +224,6 @@
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
-
-        {{-- 모달 팝업 --}}
-        @include('willbes.pc.site.main_partial.modal_popup_' . $__cfg['SiteCode'])
     </div>
     <!-- End Container -->
 

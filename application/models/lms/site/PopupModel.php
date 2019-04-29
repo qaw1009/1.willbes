@@ -34,7 +34,7 @@ class PopupModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.DispCcd, H.CcdName AS DispName, A.DispStartDatm, A.DispEndDatm,
+            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.PopUpTypeCcd, I.CcdName as PopUpTypeName, A.DispCcd, H.CcdName AS DispName, A.DispStartDatm, A.DispEndDatm,
             A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.OrderNum,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
@@ -54,6 +54,7 @@ class PopupModel extends WB_Model
             ) AS D ON A.PIdx = D.PIdx
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             INNER JOIN {$this->_table['sys_code']} AS H ON A.DispCcd = H.Ccd
+            INNER JOIN {$this->_table['sys_code']} AS I ON A.PopUpTypeCcd = I.Ccd
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
         ";
@@ -88,8 +89,8 @@ class PopupModel extends WB_Model
     public function findPopupForModify($arr_condition)
     {
         $column = "
-            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.DispCcd, A.TopPixel, A.LeftPixel, A.Width, A.Height, H.CcdName AS DispName, A.DispStartDatm, A.DispEndDatm,
-            DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
+            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.PopUpTypeCcd, I.CcdName as PopUpTypeName, A.DispCcd, H.CcdName AS DispName, A.TopPixel, A.LeftPixel, A.Width, A.Height,
+            A.DispStartDatm, A.DispEndDatm, DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
             A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.LinkType, A.LinkUrl, A.OrderNum, A.Desc, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ";
@@ -98,6 +99,7 @@ class PopupModel extends WB_Model
             FROM {$this->_table['popup']} AS A
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             INNER JOIN {$this->_table['sys_code']} AS H ON A.DispCcd = H.Ccd
+            INNER JOIN {$this->_table['sys_code']} AS I ON A.PopUpTypeCcd = I.Ccd
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
         ";
@@ -183,6 +185,7 @@ class PopupModel extends WB_Model
             $data = [
                 'SiteCode' => $site_code,
                 'DispCcd' => element('popup_disp', $input),
+                'PopUpTypeCcd' => element('popup_type', $input),
                 'PopUpName' => element('popup_name', $input),
                 'DispStartDatm' => $disp_start_datm,
                 'DispEndDatm' => $disp_end_datm,
@@ -298,6 +301,7 @@ class PopupModel extends WB_Model
 
             $data = [
                 'DispCcd' => element('popup_disp', $input),
+                'PopUpTypeCcd' => element('popup_type', $input),
                 'PopUpName' => element('popup_name', $input),
                 'DispStartDatm' => $disp_start_datm,
                 'DispEndDatm' => $disp_end_datm,

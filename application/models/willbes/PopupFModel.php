@@ -27,7 +27,7 @@ class PopupFModel extends WB_Model
             return [];
         }
 
-        $column = 'P.PIdx, P.DispCcd, P.TopPixel, P.LeftPixel, P.Width, P.Height, P.LinkUrl, P.LinkType, P.PopUpFullPath, P.PopUpImgName
+        $column = 'P.PIdx, P.PopUpTypeCcd, P.DispCcd, P.TopPixel, P.LeftPixel, P.Width, P.Height, P.LinkUrl, P.LinkType, P.PopUpFullPath, P.PopUpImgName
             , (select concat("[", GROUP_CONCAT(JSON_OBJECT("ImgType", ImgType, "ImgArea", ImgArea, "LinkUrl", LinkUrl)), "]")
                 from ' . $this->_table['popup_imagemap'] . '
                 where PIdx = P.PIdx and IsUse = "Y" and IsStatus = "Y" and ImgType != "default"

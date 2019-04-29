@@ -280,6 +280,18 @@ if (!function_exists('img_url')) {
     }
 }
 
+if (!function_exists('img_static_url')) {
+    /**
+     * 스토리지 서버 이미지 경로 리턴
+     * @param string $img_path [스토리지 서버의 이미지 디렉토리 이후의 경로, 맨앞 / 제외]
+     * @return string
+     */
+    function img_static_url($img_path)
+    {
+        return 'https://static.willbes.net/public/images/' . $img_path;
+    }
+}
+
 if (!function_exists('logger')) {
     /**
      * log message

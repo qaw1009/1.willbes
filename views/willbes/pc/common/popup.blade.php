@@ -8,7 +8,7 @@
 
             {{--// 팝업타입별 style tag --}}
             @if($popup_type == 'modal')
-                @php $pop_style = 'top: ' . $row['TopPixel'] . 'px; margin-left: ' . (($row['Width'] / 2) * -1) . 'px;'; @endphp
+                @php $pop_style = 'position: fixed; top: ' . $row['TopPixel'] . 'px; margin-left: ' . (($row['Width'] / 2) * -1) . 'px;'; @endphp
             @elseif($popup_type == 'bnBottom')
                 @php $pop_style = 'position: fixed; top: auto; bottom: 0; left: 0; width: 100%; text-align: center; z-index: 101;'; @endphp
             @else

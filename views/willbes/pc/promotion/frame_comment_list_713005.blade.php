@@ -65,14 +65,6 @@
             <input type="hidden" name="{{$key}}" value="{{$val}}"/>
         @endforeach
         <div class="character">
-            {{--
-            <ul class="crtTab">
-                <li><input type="radio" name="TITLE" value="일반공채" id="CT1" checked/><label for="CT1">일반공채</label></li>
-                <li><input type="radio" name="TITLE" value="전의경경채" id="CT2"/><label for="CT2">전의경경채</label></li>
-                <li><input type="radio" name="TITLE" value="101단" id="CT3"/><label for="CT3">101단</label></li>
-                <li>* 아래 이미지를 선택 후 댓글 작성해주세요.</li>
-            </ul>
-            --}}
             <ul class="characterImg">
                 @for ($i=1; $i<=26; $i++)
                     <li class="sel_icon" id="character_{{$i}}">
@@ -103,54 +95,10 @@
                     </div>
                 </li>
             @endforeach
-
-            {{--<li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof18.png" title="보통이예요">
-                <div>
-                    <p>홍길* <span>2019-03-25</span></p>
-                    영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
-                    우리는 일을하고 쉬는시간을 갖는다. We work and have a break.
-                    그리고 우리는 쉬는시간에 게임, 드라마, 만화등 문화를 감상하며 쉬곤한다.
-                    And we usually take a break...
-                </div>
-                <a href="#none" class="btnDel">삭제</a>
-            </li>
-            <li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof13.png" title="어려웠어요">
-                <div>
-                    <p>홍길* <span>2019-03-25</span></p>
-                    영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
-                    우리는 일을하고 쉬는시간을 갖는다. We work and have a break.
-                    그리고 우리는 쉬는시간에 게임, 드라마, 만화등 문화를 감상하며 쉬곤한다.
-                    And we usually take a break...
-                    영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
-                    우리는 일을하고 쉬는시간을 갖는다. We work and have a break.
-                    그리고 우리는 쉬는시간에 게임, 드라마, 만화등 문화를 감상하며 쉬곤한다.
-                    And we usually take a break...
-                </div>
-            </li>
-            <li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof14.png" title="보통이예요">
-                <div>
-                    <p>홍길* <span>2019-03-25</span></p>
-                    영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
-                    우리는 일을하고 쉬는시간을 갖는다. We work and have a break.
-                    그리고 우리는 쉬는시간에 게임, 드라마, 만화등 문화를 감상하며 쉬곤한다.
-                    And we usually take a break...
-                </div>
-            </li>
-            <li>
-                <img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" title="쉬웠어요">
-                <div>
-                    <p>홍길* <span>2019-03-25</span></p>
-                    영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
-                </div>
-            </li>--}}
         </ul>
     </div>
 
     {!! $paging['pagination'] !!}
-    {{--<div class="mt30 mb30">공통 페이지 넘버링 적용 </div>--}}
 </div>
 
 <script type="text/javascript">

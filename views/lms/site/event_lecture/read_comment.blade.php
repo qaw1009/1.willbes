@@ -152,7 +152,13 @@
                         if (row.temp_type == 'notice') {
                             return '<a href="javascript:void(0);" class="btn-notice-read" data-read-board-idx="' + row.temp_idx + '"><u>'+row.temp_Title+'</u></a>';
                         } else if (row.temp_type == 'comment'){
-                            return "<textarea style='width:100%; height:100px; boarder:0px; margin:0px;' readonly='readonly'>"+row.temp_Title+"</textarea>";
+                            //이모티콘+url(713006) 댓글인경우 | 으로 구분자 처리
+                            if (row.temp_comment_ui_ccd == '713006') {
+                                var obj = row.temp_Title.split('|');
+                                return obj[0] + '<Br><Br>' + "<textarea style='width:100%; height:100px; boarder:0px; margin:0px;' readonly='readonly'>"+obj[1]+"</textarea>";
+                            } else {
+                                return "<textarea style='width:100%; height:100px; boarder:0px; margin:0px;' readonly='readonly'>"+row.temp_Title+"</textarea>";
+                            }
                         }
                     }},
                 {'data' : 'temp_RegDatm'},

@@ -141,8 +141,7 @@
             <div class="textarBx">
                 <textarea name="comment" id="comment" cols="30" rows="5" title="댓글" placeholder="댓글을 입력해주세요."></textarea>
             </div>
-            <p> * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다. </p>
-            <p> * 특수문자 파이프(|)는 입력 불가 입니다.</p>
+            <p> * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있으며, 특수문자 파이프(|)는 입력 불가 입니다. </p>
             <button type="button" class="btnrwt" id="btn_submit_comment">글쓰기</button>
         </div>
     </form>

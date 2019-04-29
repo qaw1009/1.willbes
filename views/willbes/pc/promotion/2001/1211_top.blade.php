@@ -517,7 +517,7 @@
         // get_cnt2();
         // get_cnt3();
 
-        var jbOffset = $( '.conut_section' ).offset();
+        /*var jbOffset = $( '.conut_section' ).offset();
         $( window ).scroll( function() {
             if ( $( document ).scrollTop() > jbOffset.top ) {
                 $( '.conut_section' ).addClass( 'conut_sectionFixed' );
@@ -525,7 +525,7 @@
             else {
                 $( '.conut_section' ).removeClass( 'conut_sectionFixed' );
             }
-        });
+        });*/
     } );
 
     // 숫자 타입에서 쓸 수 있도록 format() 함수 추가

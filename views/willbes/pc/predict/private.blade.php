@@ -72,6 +72,7 @@
                         <th>과목</th>
                         <th>원점수</th>
                         <th>조정점수</th>
+                        <th>내 석차(%)</th>
                         <th>전체 평균</th>
                         <th>상위 5% 평균</th>
                     </tr>
@@ -79,7 +80,8 @@
                     <tr>
                         <th>{{ $val['subject'] }}</th>
                         <td>{{ $val['score'] }}</td>
-                        <td>{{ $val['addscore'] ? $val['addscore'] : '집계중'}}</td>
+                        <td>{{ $val['addscore'] }}</td>
+                        <td>{{ $val['Rank'] != '집계중'?$val['Rank']."%" : '집계중'}}</td>
                         <td>{{ $val['AvrPoint'] }}</td>
                         <td>{{ $val['FivePerPoint'] }}</td>
                     </tr>

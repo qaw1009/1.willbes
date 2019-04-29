@@ -860,6 +860,7 @@ class BasePassPredict extends \app\controllers\FrontController
                     $scoredata[$key]['subject']  = $val['SubjectName'];
                     $scoredata[$key]['score']    = $val['OrgPoint'];
                     $scoredata[$key]['addscore'] = '집계중';
+                    $scoredata[$key]['Rank'] = '집계중';
                     $scoredata[$key]['FivePerPoint'] = '집계중';
                     $scoredata[$key]['AvrPoint'] = '집계중';
                 }
@@ -870,6 +871,7 @@ class BasePassPredict extends \app\controllers\FrontController
                     $scoredata[$key]['subject']  = $val['SubjectName'];
                     $scoredata[$key]['score']    = $val['OrgPoint'];
                     $scoredata[$key]['addscore'] = $val['AdjustPoint'];
+                    $scoredata[$key]['Rank'] = ROUND($val['Rank'] / $val['TakeNum'] * 100,2);
                     $scoredata[$key]['FivePerPoint'] = $val['FivePerPoint'];
                     $scoredata[$key]['AvrPoint'] = $val['AvrPoint'];
                 }
@@ -974,7 +976,7 @@ class BasePassPredict extends \app\controllers\FrontController
             } else if ($StabilityAvrPoint< $mysum){
                 $str .= "<span class='tx-red'>합격 안정권</span>입니다.";
             } else {
-                $str = "";
+                $str = " - ";
             }
 
             $this->load->view('willbes/pc/predict/private', [

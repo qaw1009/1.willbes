@@ -548,17 +548,22 @@ class SurveyModel extends WB_Model
         }
 
         $column = "
-            pr.PrIdx, TakeNumber, TakeMockPart, TakeArea, AddPoint, LectureType, Period, ConfirmFile, RealConfirmFile, SubjectCode
+            pr.PrIdx, TakeNumber, TakeMockPart, TakeArea, AddPoint, LectureType, Period, ConfirmFile, RealConfirmFile, SubjectCode, 
+            cc.CcdName as subject, cc2.CcdName AS serial, cc3.CcdName AS areanm
         ";
 
         $from = "
             FROM 
                 {$this->_table['predictRegister']} AS pr
                 JOIN {$this->_table['predictRegisterR']} AS pc ON pr.PrIdx = pc.PrIdx
+                LEFT JOIN {$this->_table['predictCode']} AS cc ON pc.SubjectCode = cc.Ccd
+                LEFT JOIN {$this->_table['predictCode']} AS cc2 ON pr.TakeMockPart = cc2.Ccd
+                LEFT JOIN {$this->_table['sysCode']} AS cc3 ON pr.TakeArea = cc3.Ccd
         ";
 
         $order_by = " ORDER BY pr.PrIdx DESC";
         $where = " WHERE MemIdx = '".$MemIdx."' AND pr.ProdCode = ".$ProdCode.$addWhere;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data2 = $query->result_array();
@@ -608,6 +613,7 @@ class SurveyModel extends WB_Model
 
         $order_by = " GROUP BY pg.PpIdx ORDER BY pg.PpIdx";
         $where = " WHERE pg.ProdCode = ".$prodcode." AND pg.PrIdx = ".$pridx;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
@@ -620,13 +626,14 @@ class SurveyModel extends WB_Model
      */
     public function getScore2($pridx, $prodcode){
         $column = "
-            pc2.CcdName AS SubjectName, pg.OrgPoint, AdjustPoint  
+            pg.PpIdx, pc2.CcdName AS SubjectName, pg.OrgPoint, AdjustPoint, Rank, FivePerPoint, AvrPoint, TakeNum
         ";
 
         $from = "
             FROM 
                 {$this->_table['predictGradesOrigin']} AS pg
                 LEFT JOIN {$this->_table['predictGrades']} AS g ON pg.PpIdx = g.PpIdx AND pg.PrIdx = g.PrIdx
+                LEFT JOIN {$this->_table['predictGradesArea']} AS ga ON ga.TakeMockPart = pg.TakeMockPart AND ga.TakeArea = pg.TakeArea AND ga.PpIdx = pg.PpIdx
                 LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
                 LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
                 LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
@@ -639,6 +646,57 @@ class SurveyModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    /**
+     *  합격예측용 성적입력 점수호출 타입1
+     */
+    public function getSumAvg(){
+        $column = "
+            MemIdx, ROUND(SUM(AdjustPoint)) AS SUM, 
+            (
+                SELECT ROUND(AVG(SUM),2) FROM(
+                    SELECT SUM(AdjustPoint) AS SUM FROM {$this->_table['predictGrades']} GROUP BY MemIdx
+                ) AS A
+            ) AS AVG
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictGrades']} 
+        ";
+
+        $order_by = " GROUP BY MemIdx ORDER BY SUM DESC";
+        $where = "";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    /**
+     *  합격예측용 성적입력 점수호출 타입1
+     */
+    public function getGradeLine($idx, $TakeMockPart, $TakeArea){
+        $column = "
+            *
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictGradesLine']} 
+        ";
+
+        $order_by = "";
+        $where = " WHERE ProdCode = ".$idx." AND TakeMockPart = ".$TakeMockPart." AND TakeArea = ".$TakeArea;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->row_array();
 
         return $Res;
     }
@@ -1109,6 +1167,8 @@ class SurveyModel extends WB_Model
 
         return $res;
     }
+
+
 
     /**
      * 과목호출

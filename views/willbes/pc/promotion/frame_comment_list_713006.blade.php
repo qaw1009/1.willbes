@@ -25,7 +25,7 @@
         clear:both;
     }
 
-    .replyEvaluate {width:1000px; margin:0 auto;}
+    .replyEvaluate {width:1000px; margin:0 auto 100px;}
     .character ul {border-top:1px solid #ababab; text-align:center}
     .character li {display:inline; float:left; width:166px; text-align:center; margin:0 auto}
     .character li:first-child,
@@ -63,7 +63,7 @@
         width:70px; border-left:1px solid #eaeaea; display:block; height:42px; line-height:42px; color:#333; background:#fff;
     }
     .replyEvaluate .replyList {
-        text-align:left; color:#666;
+        text-align:left; color:#666; 
     }
     .replyEvaluate .replyList li {
         position:relative; border-bottom:1px solid #e6e4e4; padding:20px 0; min-height:105px;

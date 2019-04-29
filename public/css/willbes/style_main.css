@@ -41,6 +41,7 @@
     height: 100%;
     padding: 25px 0 0 35px;
 }
+.sTxt {font-size:10px !important; color:#999}
 
 /* Main Container : Act2 */
 .main .Act2 .sliderDayList {

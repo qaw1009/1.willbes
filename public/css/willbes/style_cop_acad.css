@@ -514,7 +514,7 @@
     width: 164px;
     height: auto;
     background: #ececec;
-    z-index: 999;
+    z-index: 100;
 }
 .cop_acad .MainQuickMenu ul {
     margin:0 8px 5px !important;

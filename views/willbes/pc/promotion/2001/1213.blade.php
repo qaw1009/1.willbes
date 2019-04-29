@@ -18,8 +18,8 @@
                             <th width="15%">과목</th>
                             <th width="20%">교수 </th>
                             <th>강의명</th>
-                            <th width="10%">해설자료</th>
-                            <th width="10%">해설강의 </th>
+                            <th width="10%">자료</th>
+                            <th width="10%">강의 </th>
                         </tr>
                         {{-- 상세설정데이터 및 WBS 마스터강의코드, WBS 마스터강의에 등록된 첨부파일 체크 --}}
                         @if(empty($arr_base['promotion_otherinfo_data']) === false)

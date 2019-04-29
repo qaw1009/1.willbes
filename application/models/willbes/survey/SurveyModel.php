@@ -642,6 +642,7 @@ class SurveyModel extends WB_Model
         $order_by = " GROUP BY pg.PpIdx ORDER BY pg.PpIdx ";
         $where = " WHERE pg.ProdCode = ".$prodcode." AND pg.PrIdx = ".$pridx;
 
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
@@ -654,7 +655,7 @@ class SurveyModel extends WB_Model
      */
     public function getSumAvg(){
         $column = "
-            MemIdx, ROUND(SUM(AdjustPoint)) AS SUM, 
+            MemIdx, ROUND(SUM(AdjustPoint),2) AS SUM, 
             (
                 SELECT ROUND(AVG(SUM),2) FROM(
                     SELECT SUM(AdjustPoint) AS SUM FROM {$this->_table['predictGrades']} GROUP BY MemIdx
@@ -669,7 +670,6 @@ class SurveyModel extends WB_Model
 
         $order_by = " GROUP BY MemIdx ORDER BY SUM DESC";
         $where = "";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();

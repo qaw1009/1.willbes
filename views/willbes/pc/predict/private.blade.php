@@ -88,7 +88,7 @@
                     @endforeach
                     @if(empty($scoreList) == true)
                         <tr>
-                            <td colspan="5"> - 입력된 점수가 없습니다.(성적채점 및 확인에서 점수를 입력해주세요) -</td>
+                            <td colspan="6"> - 입력된 점수가 없습니다.(성적채점 및 확인에서 점수를 입력해주세요) -</td>
                         </tr>
                     @endif
                 </table>

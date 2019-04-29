@@ -499,6 +499,7 @@ class EventLecture extends \app\controllers\BaseController
                 foreach ($data_notice as $key => $row) {
                     $list_notice[$key]['temp_type'] = 'notice';
                     $list_notice[$key]['temp_idx'] = $row['BoardIdx'];
+                    $list_comment[$key]['temp_comment_ui_ccd'] = null;
                     $list_comment[$key]['temp_comment_ui_ccd_name'] = null;
                     $list_notice[$key]['temp_Name'] = $row['wAdminName'];
                     $list_notice[$key]['temp_Title'] = $row['Title'];
@@ -520,6 +521,7 @@ class EventLecture extends \app\controllers\BaseController
                 foreach ($data_comment as $key => $row) {
                     $list_comment[$key]['temp_type'] = 'comment';
                     $list_comment[$key]['temp_idx'] = $row['CIdx'];
+                    $list_comment[$key]['temp_comment_ui_ccd'] = $row['CommentUiCcd'];
                     $list_comment[$key]['temp_comment_ui_ccd_name'] = $row['CommentUiCcdName'];
                     $list_comment[$key]['temp_Name'] = $row['MemName'];
                     $list_comment[$key]['temp_Title'] = $row['eventComment'];

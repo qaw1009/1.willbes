@@ -250,7 +250,6 @@
 
         /*레이어팝업*/
         function go_popup(param) {
-            $('#popup').bPopup();
             var ele_id = 'promotion_notice';
             var data = {
                 'ele_id' : ele_id,
@@ -260,6 +259,7 @@
             };
             sendAjax('{{ front_url('/support/predictNotice/index') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                $('#popup').bPopup();
             }, showAlertError, false, 'GET', 'html');
         }
 

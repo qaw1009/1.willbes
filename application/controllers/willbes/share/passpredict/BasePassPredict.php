@@ -814,6 +814,32 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
+        //과목별 오답랭킹
+//        $wrongList = $this->surveyModel->wrongRank($prodcode);
+//        $wrongData = array();
+//        $cntPerAdd = '';
+//        foreach ($worngList as $key => $val){
+//            $CNT = $val['CNT'];
+//            $PpIdx = $val['PpIdx'];
+//            $PqIdx = $val['PqIdx'];
+//            $Answer = $val['Answer'];
+//            $IsWrong = $val['IsWrong'];
+//            $PaperName = $val['PaperName'];
+//            $RightAnswer = $val['RightAnswer'];
+//            $Wrong = $val['Wrong'];
+//
+////            if($IsWrong == 'Y'){
+////
+////            } else {
+////                $cntPer = ROUNT($CNT / $Wrong * 100,2);
+////                $cntPerAdd = $cntPerAdd + $cntPer;
+////                $wrongData[$PpIdx][$PqIdx][$Answer]['CNT'] = $cntPer;
+////            }
+//
+//
+//        }
+
+        //var_dump($resSet);
         $this->load->view('willbes/pc/predict/graph', [
             'prodcode' => $prodcode,
             'spidx' => $spidx,
@@ -897,6 +923,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 if($Memidx == $memidx){
                     $mydataIs = 'Y';
                     $mysum = (float)$SUM;
+
                 }
 
                 if($SUM <= 50){
@@ -963,6 +990,9 @@ class BasePassPredict extends \app\controllers\FrontController
             //1배수컷
             $onePerPer = ROUND(($onePerSum / 500) * 100,2);
             //내점수
+            $AvrPointAgo = $dataline['AvrPointAgo'];
+            $AgoPer = ROUND(($AvrPointAgo / 500) * 100,2);
+
             if($AdjustPointIs == 'Y'){
                 if($mysum != 0){
                     $mysumPer = ROUND(($mysum / 500) * 100,2);
@@ -1009,6 +1039,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 'str'       => $str,
                 'arrPoint' => $arrPoint,
                 'mydataIs' => $mydataIs,
+                'agoper' => $AgoPer,
                 'dataIs' => $dataIs
             ], false);
         } else {

@@ -1523,7 +1523,7 @@ class PredictModel extends WB_Model
 
             $addQuery = "";
             if(empty($TakeMockPart) == false){
-                $addQuery = " AND pg.TakeMockPart = ".$TakeMockPart;
+                $addQuery = " AND pr.TakeMockPart = ".$TakeMockPart;
             }
 
             //시험코드
@@ -1542,6 +1542,7 @@ class PredictModel extends WB_Model
             $order_by = " GROUP BY PpIdx ORDER BY pg.PpIdx";
 
             $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+            //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 

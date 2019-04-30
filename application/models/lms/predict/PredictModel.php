@@ -1501,8 +1501,6 @@ class PredictModel extends WB_Model
                 throw new \Exception('합격예측상품 미등록 상태입니다.');
             }
 
-            $this->_conn->where(['ProdCode' => $ProdCode]);
-
             // 데이터 입력
             if ($mode == 'web') {
                 $data = [

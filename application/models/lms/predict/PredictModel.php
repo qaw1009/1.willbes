@@ -1590,7 +1590,7 @@ class PredictModel extends WB_Model
 
                 foreach ($result AS $key => $val) {
 
-                    $where = ['PrIdx' => $val['PrIdx']];
+                    $where = ['PrIdx' => $val['PrIdx'],'PpIdx' => $val['PpIdx'],'ProdCode' => $val['ProdCode']];
                     try {
                         if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
                             throw new \Exception('삭제에 실패했습니다.');

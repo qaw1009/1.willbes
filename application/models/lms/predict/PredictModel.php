@@ -1605,8 +1605,19 @@ class PredictModel extends WB_Model
                     $rs = $query->row_array();
 
                     if(empty($rs)==true){
-                        $orgPoint = $val['OrgPoint'];
+                        $where = ['PrIdx' => $val['PrIdx']];
+                        try {
+                            if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
+                                throw new \Exception('삭제에 실패했습니다.');
+                            }
+                            if($this->_conn->delete($this->_table['predictGrades'], $where) === false){
+                                throw new \Exception('삭제에 실패했습니다.');
+                            }
+                        } catch (\Exception $e) {
+                            return error_result($e);
+                        }
 
+                        $orgPoint = $val['OrgPoint'];
                         // 데이터 입력
                         $data = [
                             'MemIdx' => $val['MemIdx'],
@@ -1622,23 +1633,6 @@ class PredictModel extends WB_Model
                             throw new \Exception('시험데이터가 없습니다.');
                         }
 
-                    } else {
-                        $orgPoint = $val['OrgPoint'];
-
-                        // 데이터 입력
-                        $data = [
-                            'MemIdx' => $val['MemIdx'],
-                            'ProdCode' => $val['ProdCode'],
-                            'PpIdx' => $val['PpIdx'],
-                            'OrgPoint' => $orgPoint,
-                            'TakeMockPart' => $val['TakeMockPart'],
-                            'TakeArea' => $val['TakeArea']
-                        ];
-
-                        $this->_conn->set($data)->where('PrIdx', $val['PrIdx']);
-                        if ($this->_conn->update($this->_table['predictGradesOrigin']) === false) {
-                            throw new \Exception('데이터 수정에 실패했습니다.');
-                        }
                     }
 
                 }

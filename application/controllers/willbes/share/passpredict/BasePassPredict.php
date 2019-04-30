@@ -990,6 +990,8 @@ class BasePassPredict extends \app\controllers\FrontController
             //1배수컷
             $onePerPer = ROUND(($onePerSum / 500) * 100,2);
             //내점수
+            $AvrPointAgo = $dataline['AvrPointAgo'];
+            $AgoPer = ROUND(($AvrPointAgo / 500) * 100,2);
 
             if($AdjustPointIs == 'Y'){
                 if($mysum != 0){
@@ -1037,6 +1039,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 'str'       => $str,
                 'arrPoint' => $arrPoint,
                 'mydataIs' => $mydataIs,
+                'agoper' => $AgoPer,
                 'dataIs' => $dataIs
             ], false);
         } else {

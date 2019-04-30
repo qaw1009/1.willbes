@@ -1525,7 +1525,7 @@ class PredictModel extends WB_Model
 
             $addQuery = "";
             if(empty($TakeMockPart) == false){
-                $addQuery = " AND TakeMockPart = ".$TakeMockPart;
+                $addQuery = " AND pg.TakeMockPart = ".$TakeMockPart;
             }
 
             //시험코드
@@ -1589,8 +1589,11 @@ class PredictModel extends WB_Model
                 $result = $query->result_array();
 
                 foreach ($result AS $key => $val) {
-
-                    $where = ['PrIdx' => $val['PrIdx'],'PpIdx' => $val['PpIdx'],'ProdCode' => $val['ProdCode']];
+                    if(empty($TakeMockPart) == false) {
+                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'ProdCode' => $val['ProdCode'], 'TakeMockPart' => $TakeMockPart];
+                    } else {
+                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'ProdCode' => $val['ProdCode']];
+                    }
                     try {
                         if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
                             throw new \Exception('삭제에 실패했습니다.');
@@ -1641,12 +1644,22 @@ class PredictModel extends WB_Model
                 throw new \Exception('합격예측상품 미등록 상태입니다.');
             }
 
-            $this->_conn->where(['ProdCode' => $ProdCode]);
+            $addQuery = "";
+            if(empty($TakeMockPart) == false){
+                $addQuery = " AND pg.TakeMockPart = " . $TakeMockPart;
+                $this->_conn->where(['ProdCode' => $ProdCode, 'TakeMockPart' => $TakeMockPart]);
 
-            if ($this->_conn->delete($this->_table['predictGrades']) === false) {
-                throw new \Exception('성적 삭제에 실패했습니다.');
+                if ($this->_conn->delete($this->_table['predictGrades']) === false) {
+                    throw new \Exception('성적 삭제에 실패했습니다.');
+                }
+            } else {
+                $this->_conn->where(['ProdCode' => $ProdCode]);
+
+                if ($this->_conn->delete($this->_table['predictGrades']) === false) {
+                    throw new \Exception('성적 삭제에 실패했습니다.');
+                }
             }
-
+            
             // 데이터 입력
             if ($mode == 'web') {
                 $data = [
@@ -1667,11 +1680,6 @@ class PredictModel extends WB_Model
                 throw new \Exception('로그생성실패.');
             }
 
-            $addQuery = "";
-            if(empty($TakeMockPart) == false){
-                $addQuery = " AND TakeMockPart = " . $TakeMockPart;
-            }
-
             //시험코드
             $column = "
                 pr.TakeMockPart, pr.TakeArea, pg.PpIdx, pp.Type
@@ -1689,6 +1697,7 @@ class PredictModel extends WB_Model
                           ORDER BY TakeMockPart, TakeArea, pg.PpIdx";
 
             $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+            //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 

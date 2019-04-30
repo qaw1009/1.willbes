@@ -26,16 +26,16 @@
         .evt02 {background:#fff}
         .evt03 {background:#f0f0f0}
         .evt04 {background:#e1e1e1}
-        .evt05 {background:#2e124c}
-				.evt06 {width:980px !important; margin:100px auto; text-align:left}
-				.evt06Box {border:1px solid #000; padding:30px}
-				
-				.skybanner {
-					position:fixed;
-					top:200px;
-					right:0;
-					width:243px;
-				}
+        .evt05 {background:#2e124c; padding-bottom:150px}
+		.evt06 {width:980px !important; margin:100px auto; text-align:left}
+		.evt06Box {border:1px solid #000; padding:30px}
+		
+		.skybanner {
+			position:fixed;
+			top:200px;
+			right:0;
+			width:243px;
+		}
 		  /* 유의사항 */
 	    .tab02 {margin-bottom:20px}
 			.tab02 li {display:inline; float:left; width:25%}
@@ -57,11 +57,11 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
 			<div class="skybanner">
-					<div><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=218" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_popup.png" title="영어지도 첨삭지도반" ></a></div>
+				<div><a href="#evtGo"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_popup_v2.png" title="영어지도 첨삭지도반" ></a></div>
 			</div>
 
 			<div class="evtCtnsBox evtTop">
-				<img src="https://static.willbes.net/public/images/promotion/2019/04/1196_top.png" title=" 2020대비영어집중첨삭지도반 ">
+				<img src="https://static.willbes.net/public/images/promotion/2019/04/1196_top.jpg" title=" 2020대비영어집중첨삭지도반 ">
 			</div>
 
 			<div class="evtCtnsBox evt01">
@@ -82,8 +82,11 @@
 					<p><a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=영어&tab=open_lecture" target="_blank" alt="수강신청"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_04_2.jpg"  title="수강신청하기" ></a></p>
 			</div>
 
-			<div class="evtCtnsBox evt05">
-				<a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=218"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_05.gif" title="설명회 신청하기"></a>
+			<div class="evtCtnsBox evt05" id="evtGo">
+				<img src="https://static.willbes.net/public/images/promotion/2019/04/1196_05_v2.gif" title="설명회 신청하기">
+				<div>
+					<iframe width="853" height="480" src="https://www.youtube.com/embed/9ezlch18_EY?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
+				</div>
 			</div>
 
 			<!--유의사항-->

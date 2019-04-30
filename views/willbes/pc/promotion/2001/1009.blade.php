@@ -140,7 +140,7 @@
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        <!-- 타이머 -->
+        <!-- 타이머zz -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">
                 <ul>

@@ -1590,49 +1590,29 @@ class PredictModel extends WB_Model
 
                 foreach ($result AS $key => $val) {
 
-                    $column = "
-                        *
-                    ";
-
-                    $from = "
-                        FROM
-                            {$this->_table['predictGradesOrigin']} 
-                    ";
-
-                    $order_by = " ";
-                    $where = " WHERE PrIdx = " . $val['PrIdx'] ." AND ProdCode = ".$val['ProdCode']." AND PpIdx=".$val['PpIdx'];
-                    $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-                    $rs = $query->row_array();
-
-                    if(empty($rs)==true){
-                        $where = ['PrIdx' => $val['PrIdx']];
-                        try {
-                            if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
-                                throw new \Exception('삭제에 실패했습니다.');
-                            }
-                            if($this->_conn->delete($this->_table['predictGrades'], $where) === false){
-                                throw new \Exception('삭제에 실패했습니다.');
-                            }
-                        } catch (\Exception $e) {
-                            return error_result($e);
+                    $where = ['PrIdx' => $val['PrIdx']];
+                    try {
+                        if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
+                            throw new \Exception('삭제에 실패했습니다.');
                         }
+                    } catch (\Exception $e) {
+                        return error_result($e);
+                    }
 
-                        $orgPoint = $val['OrgPoint'];
-                        // 데이터 입력
-                        $data = [
-                            'MemIdx' => $val['MemIdx'],
-                            'PrIdx' => $val['PrIdx'],
-                            'ProdCode' => $val['ProdCode'],
-                            'PpIdx' => $val['PpIdx'],
-                            'OrgPoint' => $orgPoint,
-                            'TakeMockPart' => $val['TakeMockPart'],
-                            'TakeArea' => $val['TakeArea']
-                        ];
+                    $orgPoint = $val['OrgPoint'];
+                    // 데이터 입력
+                    $data = [
+                        'MemIdx' => $val['MemIdx'],
+                        'PrIdx' => $val['PrIdx'],
+                        'ProdCode' => $val['ProdCode'],
+                        'PpIdx' => $val['PpIdx'],
+                        'OrgPoint' => $orgPoint,
+                        'TakeMockPart' => $val['TakeMockPart'],
+                        'TakeArea' => $val['TakeArea']
+                    ];
 
-                        if ($this->_conn->set($data)->insert($this->_table['predictGradesOrigin']) === false) {
-                            throw new \Exception('시험데이터가 없습니다.');
-                        }
-
+                    if ($this->_conn->set($data)->insert($this->_table['predictGradesOrigin']) === false) {
+                        throw new \Exception('시험데이터가 없습니다.');
                     }
 
                 }

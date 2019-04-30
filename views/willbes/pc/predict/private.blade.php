@@ -128,7 +128,7 @@
                             </td>
 
                             <td>
-                                <div><span class="myscore" style="height:{{ $agoper }}%"></span></div>
+                                <div><span class="myscore" style="height:{{ $oneper }}%"></span></div>
                             </td>
 
                             <td>
@@ -147,7 +147,7 @@
                             <th></th>
                             <th>
                                 1배수컷<br>
-                                {{ $gradeLine['AvrPointAgo'] }}
+                                {{ $gradeLine['OnePerCut'] }}
                             </th>
                             <th>전체평균<br>
                                 {{ $avg }}
@@ -181,7 +181,7 @@
                         </tr>
                         <tr class="bg01">
                             <th>1배수컷</th>
-                            <th>{{ $gradeLine['AvrPointAgo'] }}</th>
+                            <th>{{ $gradeLine['OnePerCut'] }}</th>
                         </tr>
                         <tr class="bg01">
                             <th>합격예측</th>

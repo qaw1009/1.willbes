@@ -42,6 +42,7 @@
                         <th class="text-center">직전시험경쟁률</th>
                         <th class="text-center">직전시험합격선</th>
                         <th class="text-center">지난평균</th>
+                        <th class="text-center">일배수컷</th>
                         <th class="text-center">전체평균</th>
                         <th class="text-center">채점수 / 등록수</th>
                         <th class="text-center">기대권</th>
@@ -68,6 +69,7 @@
                                     <td><input type="text" name="CompetitionRateAgo[]" value="{{ $val2['CompetitionRateAgo'] }}" style="width:50px;" /></td>
                                     <td><input type="text" name="PassLineAgo[]" value="{{ $val2['PassLineAgo'] }}" style="width:50px;" /></td>
                                     <td><input type="text" name="AvrPointAgo[]" value="{{ $val2['AvrPointAgo'] }}" style="width:50px;" /></td>
+                                    <td><input type="text" name="OnePerCut[]" value="{{ $val2['OnePerCut'] }}" style="width:50px;" /></td>
                                     <td>{{ ROUND($val2['AvrPoint'],2) }}</td>
                                     <td>{{ $val2['TakeOrigin'] ? $val2['TakeOrigin'] : 0 }} / {{ $val2['TotalRegist'] ? $val2['TotalRegist'] : 0}}</td>
                                     <td>

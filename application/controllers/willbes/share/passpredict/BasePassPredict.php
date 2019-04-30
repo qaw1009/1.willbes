@@ -815,31 +815,48 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         //과목별 오답랭킹
-        $wrongList = $this->surveyModel->wrongRank($prodcode);
-        $wrongData = array();
-        $cntPerAdd = '';
-        foreach ($wrongList as $key => $val){
-            $cnt = $val['wcnt'];
-            $PpIdx = $val['PpIdx'];
-            $PqIdx = $val['PqIdx'];
-            $Answer = $val['Answer'];
-            $IsWrong = $val['IsWrong'];
-            $PaperName = $val['PaperName'];
-            $RightAnswer = $val['RightAnswer'];
-            $Wrong = $val['Wrong'];
+//        $wrongList = $this->surveyModel->wrongRank($prodcode);
+//        $wrongData = array();
+//        $cntPerAdd = 0;
+//        $i = 0;
+//        foreach ($wrongList as $key => $val){
+//            $cnt = $val['wcnt'];
+//            $PpIdx = $val['PpIdx'];
+//            $PqIdx = $val['PqIdx'];
+//            $Answer = $val['Answer'];
+//            $IsWrong = $val['IsWrong'];
+//            $PaperName = $val['PaperName'];
+//            $RightAnswer = $val['RightAnswer'];
+//            $allcnt = $val['allcnt'];
+//
+//            if($IsWrong == 'Y'){
+//                $yper = (float)100 - (float)$cntPerAdd;
+//                $wrongData[$PpIdx][$i]['CNT'][$Answer] = $yper;
+//                $wrongData[$PpIdx]['PaperName'] = $PaperName;
+//                $wrongData[$PpIdx][$i]['RightAnswer'] = $RightAnswer;
+//                $wrongData[$PpIdx][$i]['PqIdx'] = $PqIdx;
+//
+//                $cntPerAdd = 0;
+//
+//            } else {
+//                if($cnt == 0){
+//                    $cntPer = 0;
+//                } else {
+//                    $cntPer = ROUND($cnt / $allcnt * 100,2);
+//                }
+//                $cntPerAdd = (float)$cntPerAdd + (float)$cntPer;
+//                $wrongData[$PpIdx][$i]['CNT'][$Answer] = $cntPer;
+//                $wrongData[$PpIdx]['PaperName'] = $PaperName;
+//                $wrongData[$PpIdx][$i]['RightAnswer'] = $RightAnswer;
+//                $wrongData[$PpIdx][$i]['PqIdx'] = $PqIdx;
+//
+//
+//            }
+//            $i++;
+//        }
 
-            if($IsWrong == 'Y'){
+        //var_dump($wrongData);
 
-            } else {
-                $cntPer = ROUND($cnt / $Wrong * 100,2);
-                $cntPerAdd = (float)$cntPerAdd + (float)$cntPer;
-                $wrongData[$PpIdx][$PqIdx][$Answer]['CNT'] = $cntPer;
-            }
-
-
-        }
-
-        //var_dump($resSet);
         $this->load->view('willbes/pc/predict/graph', [
             'prodcode' => $prodcode,
             'spidx' => $spidx,
@@ -851,7 +868,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'titleSet' => $titleSet,
             'typeSet' => $typeSet,
             'questionSet' => $questionSet,
-            'numberSet' => $numberSet
+            'numberSet' => $numberSet,
+            //'wrongList' => $wrongData
         ], false);
     }
 

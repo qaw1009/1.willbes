@@ -59,6 +59,7 @@ class Passline extends \app\controllers\BaseController
             $CompetitionRateAgo = $val['CompetitionRateAgo'];
             $PassLineAgo = $val['PassLineAgo'];
             $AvrPointAgo = $val['AvrPointAgo'];
+            $OnePerCut = $val['OnePerCut'];
             $StabilityAvrPoint = $val['StabilityAvrPoint'];
             $StabilityAvrPointRef = $val['StabilityAvrPointRef'];
             $StabilityAvrPercent = $val['StabilityAvrPercent'];
@@ -80,6 +81,7 @@ class Passline extends \app\controllers\BaseController
             $dtSet[$TakeMockPart][$TakeArea]['CompetitionRateAgo'] = $CompetitionRateAgo;
             $dtSet[$TakeMockPart][$TakeArea]['PassLineAgo'] = $PassLineAgo;
             $dtSet[$TakeMockPart][$TakeArea]['AvrPointAgo'] = $AvrPointAgo;
+            $dtSet[$TakeMockPart][$TakeArea]['OnePerCut'] = $OnePerCut;
             $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPoint'] = $StabilityAvrPoint;
             $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPointRef'] = $StabilityAvrPointRef;
             $dtSet[$TakeMockPart][$TakeArea]['StabilityAvrPercent'] = $StabilityAvrPercent;
@@ -122,6 +124,7 @@ class Passline extends \app\controllers\BaseController
                             $dataSet[$SerialCcd][$TakeArea]['CompetitionRateAgo'] = $dtSet[$SerialCcd][$TakeArea]['CompetitionRateAgo'];
                             $dataSet[$SerialCcd][$TakeArea]['PassLineAgo'] = $dtSet[$SerialCcd][$TakeArea]['PassLineAgo'];
                             $dataSet[$SerialCcd][$TakeArea]['AvrPointAgo'] = $dtSet[$SerialCcd][$TakeArea]['AvrPointAgo'];
+                            $dataSet[$SerialCcd][$TakeArea]['OnePerCut'] = $dtSet[$SerialCcd][$TakeArea]['OnePerCut'];
                             $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPoint'] = $dtSet[$SerialCcd][$TakeArea]['StabilityAvrPoint'];
                             $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPointRef'] = $dtSet[$SerialCcd][$TakeArea]['StabilityAvrPointRef'];
                             $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPercent'] = $dtSet[$SerialCcd][$TakeArea]['StabilityAvrPercent'];
@@ -143,6 +146,7 @@ class Passline extends \app\controllers\BaseController
                             $dataSet[$SerialCcd][$TakeArea]['CompetitionRateAgo'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['PassLineAgo'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['AvrPointAgo'] = '';
+                            $dataSet[$SerialCcd][$TakeArea]['OnePerCut'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPoint'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPointRef'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPercent'] = '';
@@ -176,6 +180,7 @@ class Passline extends \app\controllers\BaseController
                         $dataSet[$SerialCcd][$TakeArea]['CompetitionRateAgo'] = $dtSet[$SerialCcd][$TakeArea]['CompetitionRateAgo'];
                         $dataSet[$SerialCcd][$TakeArea]['PassLineAgo'] = $dtSet[$SerialCcd][$TakeArea]['PassLineAgo'];
                         $dataSet[$SerialCcd][$TakeArea]['AvrPointAgo'] = $dtSet[$SerialCcd][$TakeArea]['AvrPointAgo'];
+                        $dataSet[$SerialCcd][$TakeArea]['OnePerCut'] = $dtSet[$SerialCcd][$TakeArea]['OnePerCut'];
                         $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPoint'] = $dtSet[$SerialCcd][$TakeArea]['StabilityAvrPoint'];
                         $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPointRef'] = $dtSet[$SerialCcd][$TakeArea]['StabilityAvrPointRef'];
                         $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPercent'] = $dtSet[$SerialCcd][$TakeArea]['StabilityAvrPercent'];
@@ -197,6 +202,7 @@ class Passline extends \app\controllers\BaseController
                         $dataSet[$SerialCcd][$TakeArea]['CompetitionRateAgo'] = '';
                         $dataSet[$SerialCcd][$TakeArea]['PassLineAgo'] = '';
                         $dataSet[$SerialCcd][$TakeArea]['AvrPointAgo'] = '';
+                        $dataSet[$SerialCcd][$TakeArea]['OnePerCut'] = '';
                         $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPoint'] = '';
                         $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPointRef'] = '';
                         $dataSet[$SerialCcd][$TakeArea]['StabilityAvrPercent'] = '';
@@ -234,6 +240,7 @@ class Passline extends \app\controllers\BaseController
                 $CompetitionRateAgo = $val['CompetitionRateAgo'];
                 $PassLineAgo = $val['PassLineAgo'];
                 $AvrPointAgo = $val['AvrPointAgo'];
+                $OnePerCut = $val['OnePerCut'];
                 $StabilityAvrPoint = $val['StabilityAvrPoint'];
                 $StabilityAvrPointRef = $val['StabilityAvrPointRef'];
                 $StabilityAvrPercent = $val['StabilityAvrPercent'];
@@ -261,6 +268,7 @@ class Passline extends \app\controllers\BaseController
                         $dataSet[$TakeMockPart][$TakeArea]['CompetitionRateAgo'] = $CompetitionRateAgo;
                         $dataSet[$TakeMockPart][$TakeArea]['PassLineAgo'] = $PassLineAgo;
                         $dataSet[$TakeMockPart][$TakeArea]['AvrPointAgo'] = $AvrPointAgo;
+                        $dataSet[$TakeMockPart][$TakeArea]['OnePerCut'] = $OnePerCut;
                         $dataSet[$TakeMockPart][$TakeArea]['StabilityAvrPoint'] = $StabilityAvrPoint;
                         $dataSet[$TakeMockPart][$TakeArea]['StabilityAvrPointRef'] = $StabilityAvrPointRef;
                         $dataSet[$TakeMockPart][$TakeArea]['StabilityAvrPercent'] = $StabilityAvrPercent;
@@ -286,6 +294,7 @@ class Passline extends \app\controllers\BaseController
                     $dataSet[$TakeMockPart][$TakeArea]['CompetitionRateAgo'] = $CompetitionRateAgo;
                     $dataSet[$TakeMockPart][$TakeArea]['PassLineAgo'] = $PassLineAgo;
                     $dataSet[$TakeMockPart][$TakeArea]['AvrPointAgo'] = $AvrPointAgo;
+                    $dataSet[$TakeMockPart][$TakeArea]['OnePerCut'] = $OnePerCut;
                     $dataSet[$TakeMockPart][$TakeArea]['StabilityAvrPoint'] = $StabilityAvrPoint;
                     $dataSet[$TakeMockPart][$TakeArea]['StabilityAvrPointRef'] = $StabilityAvrPointRef;
                     $dataSet[$TakeMockPart][$TakeArea]['StabilityAvrPercent'] = $StabilityAvrPercent;

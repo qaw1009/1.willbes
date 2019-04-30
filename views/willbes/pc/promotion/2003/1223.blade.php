@@ -48,6 +48,29 @@
         .tabWrapEvt li:last-child a {float:none}
         .tabWrapEvt ul:after {content:""; display:block; clear:both}
         .tabcts {background:none; position:absolute; top:50px; left:50%; margin-left:-142px; width:285px; z-index:10}
+
+        .Pstyle {
+            opacity: 0;
+            display: none;
+            position: relative;
+            width: auto;
+            border: 1px solid #000;            
+            background: #fff;
+            font-size:13px;
+            line-height:1.5;
+            box-shadow:0 10px 10px rgba(0,0,0,0.2);
+        }
+        .b-close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            padding: 5px;
+            display: inline-block;
+            cursor: pointer;
+            color:#fff;
+            font-size:14px;
+        }
+        .Pstyle .content {height:auto; width:auto; }
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">       
@@ -136,7 +159,18 @@
         <!--evt04//-->
 
 		<div class="evtCtnsBox evt05">
-          <img src="https://static.willbes.net/public/images/promotion/2019/04/1223_04.png" title="공무원문풀로열공하고합격선물받는이벤트">
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1223_04.png" usemap="#Map1223A" title="공무원문풀로열공하고합격선물받는이벤트" border="0">
+            <map name="Map1223A" id="Map1223A">
+                <area shape="rect" coords="823,775,979,802" href="javascript:go_popup()" alt="개인정보추가방법보기" />
+            </map>
+        </div>
+
+        {{--레이어팝업--}}
+        <div id="popup" class="Pstyle NGR">
+            <span class="b-close">X</span>
+            <div class="content">                            
+                <img src="https://static.willbes.net/public/images/promotion/2019/04/1223_pop.jpg" alt="개인정보 추가 방법안내">
+            </div>
         </div>
 
         {{--기본댓글--}}
@@ -146,7 +180,7 @@
 
     </div>
     <!-- End Container -->
-
+    <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.tabWrapEvt').each(function(){
@@ -171,7 +205,11 @@
                 $content.show();
             
                 e.preventDefault()})})}
-        );     
+        );   
+
+        function go_popup() {  
+            $('#popup').bPopup();
+        };  
 
     </script>
 

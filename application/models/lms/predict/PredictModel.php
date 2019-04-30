@@ -1429,7 +1429,7 @@ class PredictModel extends WB_Model
 
         $column = "
             pc.CcdName AS TakeMockPartName, sc.CcdName AS TakeAreaName, 
-            pg.TakeMockPart, pg.TakeArea, 
+            pg.TakeMockPart, pg.TakeArea, OnePerCut,
             (
             SELECT COUNT(*) FROM (
                     SELECT * FROM {$this->_table['predictGradesOrigin']} GROUP BY MemIdx
@@ -1523,7 +1523,7 @@ class PredictModel extends WB_Model
 
             $addQuery = "";
             if(empty($TakeMockPart) == false){
-                $addQuery = " AND pg.TakeMockPart = ".$TakeMockPart;
+                $addQuery = " AND pr.TakeMockPart = ".$TakeMockPart;
             }
 
             //시험코드
@@ -1542,6 +1542,7 @@ class PredictModel extends WB_Model
             $order_by = " GROUP BY PpIdx ORDER BY pg.PpIdx";
 
             $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+            //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
@@ -2219,6 +2220,7 @@ class PredictModel extends WB_Model
             $arrCompetitionRateAgo = $this->input->post('CompetitionRateAgo[]');
             $arrPassLineAgo = $this->input->post('PassLineAgo[]');
             $arrAvrPointAgo = $this->input->post('AvrPointAgo[]');
+            $arrOnePerCut = $this->input->post('OnePerCut[]');
             $arrStabilityAvrPoint = $this->input->post('StabilityAvrPoint[]');
             $arrStabilityAvrPointRef = $this->input->post('StabilityAvrPointRef[]');
             $arrStabilityAvrPercent = $this->input->post('StabilityAvrPercent[]');
@@ -2246,6 +2248,7 @@ class PredictModel extends WB_Model
                     'CompetitionRateAgo' => $arrCompetitionRateAgo[$i],
                     'PassLineAgo' => $arrPassLineAgo[$i],
                     'AvrPointAgo' => $arrAvrPointAgo[$i],
+                    'OnePerCut' => $arrOnePerCut[$i],
                     'StabilityAvrPoint' => (float)$arrStabilityAvrPoint[$i],
                     'StabilityAvrPointRef' => (float)$arrStabilityAvrPointRef[$i],
                     'StabilityAvrPercent' => (float)$arrStabilityAvrPercent[$i],

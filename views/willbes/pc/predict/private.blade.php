@@ -181,7 +181,7 @@
                         </tr>
                         <tr class="bg01">
                             <th>1배수컷</th>
-                            <th>{{ $onePerSum }}</th>
+                            <th>{{ $gradeLine['AvrPointAgo'] }}</th>
                         </tr>
                         <tr class="bg01">
                             <th>합격예측</th>

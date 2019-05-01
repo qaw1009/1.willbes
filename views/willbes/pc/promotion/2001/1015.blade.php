@@ -12,7 +12,7 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
@@ -62,13 +62,13 @@
 
                 <area shape="rect" coords="868,406,944,441" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152386') }}" onfocus='this.blur()' title="원유철 한국사 기본이론(19년 3월)" target="_blank"/>
                 <area shape="rect" coords="868,455,944,491" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152384') }}" onfocus='this.blur()' title="오태진 한국사 기본이론(19년 3월)" target="_blank"/>
-                <area shape="rect" coords="868,505,944,542" href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/152609') }}" onfocus='this.blur()' title="신광은 수사 이론" target="_blank"/>
+                <area shape="rect" coords="868,505,944,542" href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153345') }}" onfocus='this.blur()' title="신광은 수사 이론" target="_blank"/>
                 <area shape="rect" coords="868,553,944,593" href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/151726') }}" onfocus='this.blur()' title="장정훈 행정법 이론" target="_blank"/>
 
                 <!--패키지-->
                 <area shape="rect" coords="808,835,938,879" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152607') }}" onfocus='this.blur()' title="2019대비 일반경찰 기본이론 동영상 종합반(원유철史)" target="_blank"/>
                 <area shape="rect" coords="808,1056,938,1102" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152606') }}" onfocus='this.blur()' title="2019대비 일반경찰 기본이론 동영상 종합반(오태진史)" target="_blank"/>
-                <area shape="rect" coords="808,1274,938,1324" href="{{ site_url('/package/show/cate/3002/pack/648001/prod-code/152610') }}" onfocus='this.blur()' title="2019대비 경행경채 기본이론 동영상 종합반" target="_blank"/>
+                <area shape="rect" coords="808,1274,938,1324" href="{{ site_url('/package/show/cate/3002/pack/648001/prod-code/153361') }}" onfocus='this.blur()' title="2019대비 경행경채 기본이론 동영상 종합반" target="_blank"/>
             </map>
         </div><!--//wb_cts04-->
 

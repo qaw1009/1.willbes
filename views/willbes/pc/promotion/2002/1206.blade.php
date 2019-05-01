@@ -52,7 +52,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_top.jpg"alt="면접은 스피치가 아니다." usemap="#Map1206A" border="0" >
             <map name="Map1206A" id="Map1206A">
-                <area shape="rect" coords="476,653,737,769" href="#go01" alt="면접캠프 신청하기" />
+                <area shape="rect" coords="476,653,737,769" href="#go04" alt="면접캠프 신청하기" />
             </map>
         </div>
 

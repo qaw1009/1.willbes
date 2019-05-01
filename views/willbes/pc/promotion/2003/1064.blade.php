@@ -64,7 +64,7 @@
             <div>
                 <table>
                     <tr>
-                    <td class="time_txt NGEB">10기 - <span>4/30(화) 마감!</span></td>
+                    <td class="time_txt NGEB">11기 - <span>5/8(수) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
@@ -193,7 +193,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,3,30,23,59,59);
+            event_day = new Date(2019,4,8,23,59,59);
             now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
@@ -251,9 +251,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/152329') }}"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/153337') }}"
             }else{
-                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/152329') }}"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/153337') }}"
             }
 
             location.href = lUrl;

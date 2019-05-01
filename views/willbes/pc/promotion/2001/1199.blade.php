@@ -55,9 +55,11 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
+        {{--
         <ul class="skyBanner">
             <li><a href="{{ site_url('/promotion/index/cate/3001/code/1210') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_skybanner.png" title="토크쇼"></a></li>            
-        </ul>  
+        </ul>
+        --}}  
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">

@@ -146,12 +146,12 @@
                     
                     <tr class="st01">
                       <td>동영상 종합반</td>
-                      <td colspan="2">2019년 1차대비 윌비스 신광은경찰 마무리 특강 (史원유철)</td>
+                      <td colspan="2">2019년 2차대비 일반경찰 심화과정패키지 (史 원유철)</td>
                       <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/153359') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr class="st01">
                         <td>동영상 종합반</td>    
-                        <td colspan="2">2019년 1차대비 윌비스 신광은경찰 마무리 특강 (史오태진)</td>
+                        <td colspan="2">2019년 2차대비 일반경찰 심화과정패키지 (史 오태진)</td>
                         <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/153358') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr class="st01">

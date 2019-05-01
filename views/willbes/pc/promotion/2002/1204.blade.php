@@ -38,7 +38,7 @@
         .evt04 td:nth-child(1) {text-align:center}
         .evt04 td:nth-child(2) {text-align:left}
         .evt04 td:nth-child(3) {color:#ce9317}
-        .evt04 td:last-chiild {border:0}
+        .evt04 td:last-child {border:0}
         .evt04 td p {font-size:12px}
         .evt04 a {padding:10px 15px; color:#fff; background:#ce9317; font-size:14px; display:block; border-radius:20px 20px 0 20px}
         .evt04 a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
@@ -86,56 +86,56 @@
                         <td>2019 장정훈 경찰학 심화기출</td>
                         <td>5/6(월) 9:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1058') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" class="btn2">준비중</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153340') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 오태진</td>
                         <td>2019 오태진 한국사 심화이론</td>
                         <td>5/8(수) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" class="btn2">준비중</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153344') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 원유철</td>
                         <td>2019 원유철 한국사 심화이론</td>
                         <td>5/6(월) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" class="btn2">준비중</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153343') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>행정법 장정훈</td>
                         <td>2019 장정훈 행정법 심화기출</td>
                         <td>5/10(금) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3011&campus_ccd=605001&course_idx=1042&subject_idx=1060') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" class="btn2">준비중</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153346') }}">수강신청</a></td>
                     </tr>                    
                     <tr>
                         <td>수사 신광은</td>
                         <td>2019 신광은 수사 이론 </td>
                         <td>5/13(월) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3011&campus_ccd=605001&course_idx=1040&subject_idx=1059') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" class="btn2">준비중</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153345') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>영어 하승민</td>
                         <td>2019 하승민 영어 심화이론</td>
                         <td>5/13(월) 14:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1054') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" class="btn2">준비중</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153342') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>형소법 신광은</td>
                         <td>2019 신광은 형소법 심화이론</td>
                         <td>5/17(금) 9:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" class="btn2">준비중</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153339') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>형법 김원욱</td>
                         <td>2019 김원욱 형법 심화이론(판례)</td>
                         <td>6/6(목) 9:00</td>
                         <td><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1056') }}" target="_blank">수강신청</a></td>
-                        <td><a href="#none" class="btn2">준비중</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153341') }}">수강신청</a></td>
                     </tr>
                     <tr class="st01">
                       <td>학원 종합반</td>
@@ -143,18 +143,23 @@
                       <td>&nbsp;</td>
                       <td colspan="2"><a href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041') }}" target="_blank">수강신청</a></td>
                     </tr>
-                    {{--
+                    
                     <tr class="st01">
                       <td>동영상 종합반</td>
                       <td colspan="2">2019년 1차대비 윌비스 신광은경찰 마무리 특강 (史원유철)</td>
-                      <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152830') }}" target="_blank">수강신청</a></td>
+                      <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/153359') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr class="st01">
                         <td>동영상 종합반</td>    
                         <td colspan="2">2019년 1차대비 윌비스 신광은경찰 마무리 특강 (史오태진)</td>
-                        <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152829') }}" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/153358') }}" target="_blank">수강신청</a></td>
                     </tr>
-                    --}}
+                    <tr class="st01">
+                        <td>동영상 종합반</td>    
+                        <td colspan="2">2019년 2차대비 경행경채 심화과정패키지</td>
+                        <td colspan="2"><a href="{{ site_url('/package/show/cate/3002/pack/648001/prod-code/153360') }}" target="_blank">수강신청</a></td>
+                    </tr>
+                    
                 </tbody>
             </table>
         </div>

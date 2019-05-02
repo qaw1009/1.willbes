@@ -18,7 +18,8 @@
 
         /************************************************************/
 
-        .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1124_top_bg.jpg) no-repeat top;}
+		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1124_top_00_bg.jpg) no-repeat top;}
+		.wb_01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1124_top_bg.jpg) no-repeat top;}
         .wb_02 {background:#464646}	            
         .wb_03 {background:#eee}            
         .wb_04 {background:#fff}	
@@ -29,6 +30,10 @@
 
 
 <div class="p_re evtContent" id="evtContainer">
+	<div class="evtCtnsBox wb_00" >
+		<img src="https://static.willbes.net/public/images/promotion/2019/04/1124_top_00.jpg"  alt="교수님"/>
+	</div>
+
     <div class="evtCtnsBox wb_01" id="main">
 		<img src="https://static.willbes.net/public/images/promotion/2019/04/1124_top.jpg"  alt="메인" usemap="#link1" />		
 		<map name="link1" >

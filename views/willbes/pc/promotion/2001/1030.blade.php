@@ -127,9 +127,11 @@
             </ul>
         </div>
 
+        {{-- 이벤트 종료
         <div class="skybanner2">
             <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=234&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1030_01_bann.png" alt="" /></a>
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_cts01" >
             <div class="wb_popWrap">

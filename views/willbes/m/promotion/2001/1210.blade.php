@@ -38,7 +38,16 @@
 
     </div>
     <!-- End Container -->
+
     <script>
+        $( document ).ready( function() {
+            @if(date('YmdHi') >= '201905011600')
+            alert('서비스가 종료되었습니다.');
+            var url = "{{ site_url('/m/home/index') }}";
+            location.href = url;
+            @endif
+        });
+
         function tabMove() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
             var url = "{{ site_url('/m/promotion/index/cate/3001/code/1211') }}" ;

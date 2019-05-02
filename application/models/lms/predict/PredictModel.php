@@ -1586,21 +1586,19 @@ class PredictModel extends WB_Model
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
                 $result = $query->result_array();
-                $tempPrIdx = '';
+
                 foreach ($result AS $key => $val) {
-                    if($tempPrIdx != $val['PrIdx']){
-                        if(empty($TakeMockPart) == false) {
-                            $where = ['PrIdx' => $val['PrIdx'], 'PredictIdx' => $val['PredictIdx'], 'TakeMockPart' => $TakeMockPart];
-                        } else {
-                            $where = ['PrIdx' => $val['PrIdx'], 'PredictIdx' => $val['PredictIdx']];
+                    if(empty($TakeMockPart) == false) {
+                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'PredictIdx' => $val['PredictIdx'], 'TakeMockPart' => $TakeMockPart];
+                    } else {
+                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'PredictIdx' => $val['PredictIdx']];
+                    }
+                    try {
+                        if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
+                            throw new \Exception('삭제에 실패했습니다.');
                         }
-                        try {
-                            if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
-                                throw new \Exception('삭제에 실패했습니다.');
-                            }
-                        } catch (\Exception $e) {
-                            return error_result($e);
-                        }
+                    } catch (\Exception $e) {
+                        return error_result($e);
                     }
 
                     $orgPoint = $val['OrgPoint'];
@@ -1618,8 +1616,6 @@ class PredictModel extends WB_Model
                     if ($this->_conn->set($data)->insert($this->_table['predictGradesOrigin']) === false) {
                         throw new \Exception('시험데이터가 없습니다.');
                     }
-
-                    $tempPrIdx = $val['PrIdx'];
 
                 }
 

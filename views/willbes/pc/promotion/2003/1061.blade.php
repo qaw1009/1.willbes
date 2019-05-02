@@ -27,8 +27,18 @@
         .time table {width:1120px; margin:0 auto}
         .time table td:first-child {font-size:40px}
         .time table td img {width:70%}
-        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#6c1827}
+        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px}
+        .time .time_txt span {color:#6c1827; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#6c1827}
+        50%{color:#ff6600}
+        to{color:#6c1827}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#6c1827}
+        50%{color:#ff6600}
+        to{color:#6c1827}
+        } 
 
         .wb_top {background:#a12932 url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c1_bg.jpg) no-repeat center top;}
         .wb_cts01 {background:#fff;}
@@ -61,11 +71,11 @@
             <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2_1.png" alt="환승이벤트" ></a></div>
         </div>
 
-        <div class="evtCtnsBox time" id="newTopDday">
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
                 <table>
                     <tr>
-                    <td class="time_txt NGEB"><span>5/8(수) 마감!</span></td>
+                    <td class="time_txt"><span>5/8(수) </span>마감!</td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>

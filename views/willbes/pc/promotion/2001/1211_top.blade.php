@@ -509,7 +509,7 @@
 
     /*서비스이용현황 */
     $( document ).ready( function() {
-        areaAvrAjax('{{$arr_promotion_params['prodcode']}}');
+        areaAvrAjax("{{ $arr_promotion_params['PredictIdx'] }}");
         // noticeListAjax('');
         //
         timer = self.setInterval('slideGo()', 3000);
@@ -615,7 +615,7 @@
             'event_idx' : '{{ $data['ElIdx'] }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}',
             'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',
-            'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'
+            'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['PredictIdx'] : '' }}'
         };
 
         sendAjax(_url, _data, function(ret) {
@@ -636,7 +636,7 @@
             'event_idx' : '{{ $data['ElIdx'] }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}',
             'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',
-            'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['prodcode'] : '' }}'
+            'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['PredictIdx'] : '' }}'
         };
 
         sendAjax(_url, _data, function(ret) {
@@ -647,13 +647,13 @@
         }, showError, false, 'GET');
     }
 
-    function areaAvrAjax(ProdCode){
+    function areaAvrAjax(PredictIdx){
 
         url = "{{ site_url("/predict/areaAvrAjax") }}";
         var data = {
             '{{ csrf_token_name() }}' : $ajax_form.find('[name="{{ csrf_token_name() }}"]').val(),
             '_method' : 'POST',
-            'ProdCode': ProdCode
+            'PredictIdx': PredictIdx
         };
         sendAjax(url,
             data,

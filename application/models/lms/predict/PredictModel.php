@@ -94,7 +94,7 @@ class PredictModel extends WB_Model
 
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
         $column = "
-            PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, 
+            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo, 
             PP.PreServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs, PP.PreServiceSDatm, PP.PreServiceEDatm,
             PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName
@@ -105,9 +105,9 @@ class PredictModel extends WB_Model
             LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = " SELECT COUNT(*) AS cnt";
-        $where = " WHERE PP.ProdCode > 0 ";
+        $where = " WHERE PP.PredictIdx > 0 ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = " ORDER BY PP.ProdCode DESC\n";
+        $order = " ORDER BY PP.PredictIdx DESC\n";
         //echo "<pre>SELECT ". $column . $from . $where . $order . $offset_limit . "</pre>";
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
@@ -145,8 +145,8 @@ class PredictModel extends WB_Model
             }
             $mockpartstr = substr($mockpartstr, 0, strlen($mockpartstr) - 1);
 
-            $it['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/predict/index/'.$it['ProdCode'];
-            $it['include'] = "프로모션 페이지 URL + /spidx/".$it['ProdCode'];
+            $it['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/predict/index/'.$it['PredictIdx'];
+            $it['include'] = "프로모션 페이지 URL + /spidx/".$it['PredictIdx'];
 
             $it['SerialStr'] = $mockpartstr;
         }
@@ -161,14 +161,14 @@ class PredictModel extends WB_Model
     {
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
         $column = "
-	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.ProdCode, PP.SubjectCode, PP.Type, 
+	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.PredictIdx, PP.SubjectCode, PP.Type, 
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse, PD.ProdName
         ";
 
         $from = "
             FROM 
                 {$this->_table['predictPaper']} AS PP
-                LEFT JOIN {$this->_table['predictProduct']} AS PD ON PP.ProdCode = PD.ProdCode
+                LEFT JOIN {$this->_table['predictProduct']} AS PD ON PP.PredictIdx = PD.PredictIdx
                 LEFT JOIN {$this->_table['admin']} AS A ON PP.RegAdminIdx = A.wAdminIdx
                 LEFT JOIN {$this->_table['admin']} AS A2 ON PP.UpdAdminIdx = A2.wAdminIdx
         ";
@@ -242,9 +242,9 @@ class PredictModel extends WB_Model
             $sql = "
                 INSERT INTO {$this->_table['predictPaper']}
                     (PaperName, AnswerNum, TotalScore, 
-                     QuestionFile, RealQuestionFile, ProdCode, SubjectCode, Type, IsUse, RegIp, RegAdminIdx, RegDate)
+                     QuestionFile, RealQuestionFile, PredictIdx, SubjectCode, Type, IsUse, RegIp, RegAdminIdx, RegDate)
                 SELECT CONCAT('복사-', PaperName), AnswerNum, TotalScore,
-                       QuestionFile, RealQuestionFile, ProdCode, SubjectCode, Type, 'N', ?, ?, ?
+                       QuestionFile, RealQuestionFile, PredictIdx, SubjectCode, Type, 'N', ?, ?, ?
                 FROM {$this->_table['predictPaper']}
                 WHERE PpIdx = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($RegIp, $RegAdminIdx, $RegDatm, $idx));
@@ -348,9 +348,9 @@ class PredictModel extends WB_Model
     public function getCntVarious(){
         $column = "
             (SELECT COUNT(*) FROM lms_survey_answer_info WHERE SpIdx = '3') AS Survey, -- 설문
-            (SELECT COUNT(*) FROM lms_predict_register WHERE ProdCode = '100001') AS Preregist, -- 사전접수
+            (SELECT COUNT(*) FROM lms_predict_register WHERE PredictIdx = '100001') AS Preregist, -- 사전접수
             (SELECT COUNT(*) FROM (
-                SELECT MemIdx FROM lms_predict_grades_origin WHERE ProdCode = '100001' GROUP BY MemIdx
+                SELECT MemIdx FROM lms_predict_grades_origin WHERE PredictIdx = '100001' GROUP BY MemIdx
             ) AS A) AS Score, -- 채점
             (SELECT COUNT(*) FROM lms_event_comment WHERE ElIdx = (SELECT ElIdx FROM lms_event_lecture WHERE PromotionCode = 1187)) AS Rumor, -- 소문내기
             (SELECT COUNT(*) FROM lms_event_comment WHERE ElIdx = (SELECT ElIdx FROM lms_event_lecture WHERE PromotionCode = 1199)) AS Hit, -- 적중
@@ -402,9 +402,9 @@ class PredictModel extends WB_Model
     /**
      *  합격예측용 기존데이터 호출
      */
-    public function getProduct($ProdCode){
+    public function getProduct($PredictIdx){
         $column = "
-            PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
+            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
             PP.PreServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs, PP.PreServiceSDatm, PP.PreServiceEDatm,
             PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
@@ -418,7 +418,7 @@ class PredictModel extends WB_Model
         ";
 
         $order_by = " ";
-        $where = " WHERE PP.ProdCode = ".$ProdCode."";
+        $where = " WHERE PP.PredictIdx = ".$PredictIdx."";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -437,7 +437,7 @@ class PredictModel extends WB_Model
      */
     public function getProductALL(){
         $column = "
-            PP.ProdCode, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,  
+            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,  
             PP.PreServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs, PP.PreServiceSDatm, PP.PreServiceEDatm,
             PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
@@ -469,7 +469,7 @@ class PredictModel extends WB_Model
         if (!preg_match('/^[0-9]+$/', $idx)) return false;
 
         $column = "
-	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.ProdCode, PP.SubjectCode, PP.Type, PP.UpdDate, 
+	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.PredictIdx, PP.SubjectCode, PP.Type, PP.UpdDate, 
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse
 	        ,PP.RegistAvgPoint, PP.RegistStandard
         ";
@@ -497,16 +497,16 @@ class PredictModel extends WB_Model
     /**
      *  합격예측용 과목코드 호출
      */
-    public function getSubject($ProdCode){
+    public function getSubject($PredictIdx){
 
         $column = "
-            Ccd, CcdName, pc.Type, if(pp.ProdCode != '','(등록완료)','') AS AddIs
+            Ccd, CcdName, pc.Type, if(pp.PredictIdx != '','(등록완료)','') AS AddIs
         ";
 
         $from = "
             FROM 
                 {$this->_table['predictCode']} AS pc
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pc.Ccd = pp.SubjectCode AND pp.ProdCode = ".$ProdCode;
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pc.Ccd = pp.SubjectCode AND pp.PredictIdx = ".$PredictIdx;
 
         $order_by = " ORDER BY Ccd";
         $where = " WHERE GroupCcd = 100 GROUP BY CcdName";
@@ -537,12 +537,12 @@ class PredictModel extends WB_Model
             $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
 
             // 신규 상품코드 조회
-            $prodcode = $this->_conn->getFindResult($this->_table['predictProduct'], 'IFNULL(MAX(ProdCode) + 1, 100001) as ProdCode');
-            $prodcode = $prodcode['ProdCode'];
+            $PredictIdx = $this->_conn->getFindResult($this->_table['predictProduct'], 'IFNULL(MAX(PredictIdx) + 1, 100001) as PredictIdx');
+            $PredictIdx = $PredictIdx['PredictIdx'];
 
             // lms_Product_Mock 저장
             $data = array(
-                'ProdCode'       => $prodcode,
+                'PredictIdx'       => $PredictIdx,
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
                 'MobileServiceIs' => implode(',', $this->input->post('MobileServiceIs')),
                 'SurveyIs'       => implode(',', $this->input->post('SurveyIs')),
@@ -577,7 +577,7 @@ class PredictModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true, 'dt' => ['idx' => $prodcode]];
+        return ['ret_cd' => true, 'dt' => ['idx' => $PredictIdx]];
     }
 
     /**
@@ -623,7 +623,7 @@ class PredictModel extends WB_Model
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),
             );
 
-            $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where(['ProdCode' => $this->input->post('idx')]);
+            $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where(['PredictIdx' => $this->input->post('idx')]);
 
             if ($this->_conn->update($this->_table['predictProduct']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
@@ -652,7 +652,7 @@ class PredictModel extends WB_Model
             $data = array(
                 'PaperName' => $this->input->post('PaperName', true),
                 'AnswerNum' => $this->input->post('AnswerNum'),
-                'ProdCode' => $this->input->post('ProdCode'),
+                'PredictIdx' => $this->input->post('PredictIdx'),
                 'SubjectCode' => $this->input->post('SubjectCode'),
                 'TotalScore' => $this->input->post('TotalScore'),
                 'Type' => $this->input->post('Type'),
@@ -703,7 +703,7 @@ class PredictModel extends WB_Model
             // 데이터 수정
             $data = array(
                 'PaperName' => $this->input->post('PaperName', true),
-                'ProdCode' => $this->input->post('ProdCode'),
+                'PredictIdx' => $this->input->post('PredictIdx'),
                 'SubjectCode' => $this->input->post('SubjectCode'),
                 'Type' => $this->input->post('Type'),
                 'IsUse' => $this->input->post('IsUse'),
@@ -1391,7 +1391,7 @@ class PredictModel extends WB_Model
     /**
  * 문항세트전체호출
  */
-    public function statisticsList($ProdCode, $condition){
+    public function statisticsList($PredictIdx, $condition){
 
         $column = "
             pc.CcdName AS TakeMockPart, sc.CcdName AS TakeArea, pc2.CcdName AS SubjectName, TakeNum, AvrPoint, FivePerPoint
@@ -1407,7 +1407,7 @@ class PredictModel extends WB_Model
         ";
 
         $order_by = " ORDER BY pg.TakeMockPart, pg.TakeArea";
-        $where = " WHERE pg.ProdCode = ".$ProdCode;
+        $where = " WHERE pg.PredictIdx = ".$PredictIdx;
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
 
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
@@ -1425,7 +1425,7 @@ class PredictModel extends WB_Model
     /**
      * 문항세트전체호출
      */
-    public function statisticsListLine($ProdCode){
+    public function statisticsListLine($PredictIdx){
 
         $column = "
             pc.CcdName AS TakeMockPartName, sc.CcdName AS TakeAreaName, 
@@ -1434,7 +1434,7 @@ class PredictModel extends WB_Model
             SELECT COUNT(*) FROM (
                     SELECT * FROM {$this->_table['predictGradesOrigin']} GROUP BY MemIdx
                 ) AS A
-                WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart AND Prodcode = pg.ProdCode 
+                WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart AND PredictIdx = pg.PredictIdx 
             ) AS TakeOrigin,  
             SUM(pg.AvrPoint) AS AvrPoint,
             (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
@@ -1446,7 +1446,7 @@ class PredictModel extends WB_Model
         $from = "
             FROM
                 {$this->_table['predictGradesArea']} AS pg
-                LEFT JOIN {$this->_table['predictGradesLine']} AS pl ON pg.TakeArea = pl.TakeArea AND pg.TakeMockPart = pl.TakeMockPart AND pg.ProdCode = pl.ProdCode
+                LEFT JOIN {$this->_table['predictGradesLine']} AS pl ON pg.TakeArea = pl.TakeArea AND pg.TakeMockPart = pl.TakeMockPart AND pg.PredictIdx = pl.PredictIdx
                 LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
                 LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
                 LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
@@ -1454,7 +1454,7 @@ class PredictModel extends WB_Model
         ";
 
         $order_by = " GROUP BY pg.TakeMockPart, pg.TakeArea ORDER BY pg.TakeMockPart, pg.TakeArea";
-        $where = " WHERE pg.ProdCode = ".$ProdCode;
+        $where = " WHERE pg.PredictIdx = ".$PredictIdx;
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -1466,7 +1466,7 @@ class PredictModel extends WB_Model
     /**
      * 문항세트전체호출
      */
-    public function statisticsListLine2($ProdCode){
+    public function statisticsListLine2($PredictIdx){
 
         $column = "
             *
@@ -1478,7 +1478,7 @@ class PredictModel extends WB_Model
         ";
 
         $order_by = " ";
-        $where = " WHERE ProdCode = ".$ProdCode;
+        $where = " WHERE PredictIdx = ".$PredictIdx;
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -1492,12 +1492,12 @@ class PredictModel extends WB_Model
      * @param $MgIdx $mode = cron or web
      * @return mixed
      */
-    public function scoreMakeStep1($ProdCode, $mode, $TakeMockPart)
+    public function scoreMakeStep1($PredictIdx, $mode, $TakeMockPart)
     {
         try {
             $this->_conn->trans_begin();
 
-            if(empty($ProdCode) == true){
+            if(empty($PredictIdx) == true){
                 throw new \Exception('합격예측상품 미등록 상태입니다.');
             }
 
@@ -1506,13 +1506,13 @@ class PredictModel extends WB_Model
                 $data = [
                     'MemId' => $this->session->userdata('admin_id'),
                     'Step' => '1',
-                    'ProdCode' => $ProdCode
+                    'PredictIdx' => $PredictIdx
                 ];
             } else {
                 $data = [
                     'MemId' => 'systemcron',
                     'Step' => '1',
-                    'ProdCode' => $ProdCode
+                    'PredictIdx' => $PredictIdx
                 ];
             }
 
@@ -1541,7 +1541,7 @@ class PredictModel extends WB_Model
 
             $order_by = " GROUP BY PpIdx ORDER BY pg.PpIdx";
 
-            $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+            $where = " WHERE pg.PredictIdx = " . $PredictIdx . $addQuery;
             //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -1563,7 +1563,7 @@ class PredictModel extends WB_Model
                     MA.Answer,
                     MA.IsWrong,
                     MA.PrIdx,
-                    MA.ProdCode,
+                    MA.PredictIdx,
                     MR.TakeMockPart,
                     MR.TakeArea,
                     SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS OrgPoint
@@ -1589,9 +1589,9 @@ class PredictModel extends WB_Model
 
                 foreach ($result AS $key => $val) {
                     if(empty($TakeMockPart) == false) {
-                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'ProdCode' => $val['ProdCode'], 'TakeMockPart' => $TakeMockPart];
+                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'PredictIdx' => $val['PredictIdx'], 'TakeMockPart' => $TakeMockPart];
                     } else {
-                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'ProdCode' => $val['ProdCode']];
+                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'PredictIdx' => $val['PredictIdx']];
                     }
                     try {
                         if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
@@ -1606,7 +1606,7 @@ class PredictModel extends WB_Model
                     $data = [
                         'MemIdx' => $val['MemIdx'],
                         'PrIdx' => $val['PrIdx'],
-                        'ProdCode' => $val['ProdCode'],
+                        'PredictIdx' => $val['PredictIdx'],
                         'PpIdx' => $val['PpIdx'],
                         'OrgPoint' => $orgPoint,
                         'TakeMockPart' => $val['TakeMockPart'],
@@ -1634,25 +1634,25 @@ class PredictModel extends WB_Model
      * @param $MgIdx $mode = cron or web
      * @return mixed
      */
-    public function scoreMakeStep2($ProdCode, $mode, $TakeMockPart)
+    public function scoreMakeStep2($PredictIdx, $mode, $TakeMockPart)
     {
         try {
             $this->_conn->trans_begin();
 
-            if(empty($ProdCode) == true){
+            if(empty($PredictIdx) == true){
                 throw new \Exception('합격예측상품 미등록 상태입니다.');
             }
 
             $addQuery = "";
             if(empty($TakeMockPart) == false){
                 $addQuery = " AND pg.TakeMockPart = " . $TakeMockPart;
-                $this->_conn->where(['ProdCode' => $ProdCode, 'TakeMockPart' => $TakeMockPart]);
+                $this->_conn->where(['PredictIdx' => $PredictIdx, 'TakeMockPart' => $TakeMockPart]);
 
                 if ($this->_conn->delete($this->_table['predictGrades']) === false) {
                     throw new \Exception('성적 삭제에 실패했습니다.');
                 }
             } else {
-                $this->_conn->where(['ProdCode' => $ProdCode]);
+                $this->_conn->where(['PredictIdx' => $PredictIdx]);
 
                 if ($this->_conn->delete($this->_table['predictGrades']) === false) {
                     throw new \Exception('성적 삭제에 실패했습니다.');
@@ -1664,13 +1664,13 @@ class PredictModel extends WB_Model
                 $data = [
                     'MemId' => $this->session->userdata('admin_id'),
                     'Step' => '2',
-                    'ProdCode' => $ProdCode
+                    'PredictIdx' => $PredictIdx
                 ];
             } else {
                 $data = [
                     'MemId' => 'systemcron',
                     'Step' => '2',
-                    'ProdCode' => $ProdCode
+                    'PredictIdx' => $PredictIdx
                 ];
             }
 
@@ -1695,7 +1695,7 @@ class PredictModel extends WB_Model
             $order_by = " GROUP BY TakeMockPart, TaKeArea, PpIdx
                           ORDER BY TakeMockPart, TakeArea, pg.PpIdx";
 
-            $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+            $where = " WHERE pg.PredictIdx = " . $PredictIdx . $addQuery;
             //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -1724,7 +1724,7 @@ class PredictModel extends WB_Model
 
                 $order_by = " ";
 
-                $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea;
+                $where = " WHERE pg.PredictIdx = " . $PredictIdx . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea;
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
                 $tresult = $query->row_array();
@@ -1743,7 +1743,7 @@ class PredictModel extends WB_Model
                             FROM 
                                 {$this->_table['predictGradesOrigin']}
                             WHERE 
-                                ProdCode = " . $ProdCode . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
+                                PredictIdx = " . $PredictIdx . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
                             GROUP BY PrIdx, PpIdx
                         ) AS I
                     ) AS AVG
@@ -1755,7 +1755,7 @@ class PredictModel extends WB_Model
                             FROM 
                                 {$this->_table['predictGradesOrigin']}
                             WHERE 
-                                ProdCode = " . $ProdCode . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
+                                PredictIdx = " . $PredictIdx . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
                             GROUP BY PrIdx, PpIdx
                         ) AS I
                     ) AS CNT
@@ -1770,7 +1770,7 @@ class PredictModel extends WB_Model
 
                 $order_by = " ";
 
-                $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+                $where = " WHERE pg.PredictIdx = " . $PredictIdx . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
@@ -1783,7 +1783,7 @@ class PredictModel extends WB_Model
 
                 // 응시자 개별과목 / 점수
                 $column = "
-                    pg.ProdCode, pg.PrIdx, pg.MemIdx, pg.OrgPoint, pg.PpIdx, 
+                    pg.PredictIdx, pg.PrIdx, pg.MemIdx, pg.OrgPoint, pg.PpIdx, 
                     ROUND(OrgPoint,2) AS Res,
                     ROUND(OrgPoint,2) /
                     (
@@ -1793,7 +1793,7 @@ class PredictModel extends WB_Model
                            FROM 
                                {$this->_table['predictGradesOrigin']}
                            WHERE 
-                               ProdCode = " . $ProdCode . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
+                               PredictIdx = " . $PredictIdx . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
                            GROUP BY PrIdx, PpIdx
                        ) AS I
                     ) AS AVG,
@@ -1807,7 +1807,7 @@ class PredictModel extends WB_Model
                                            FROM 
                                                {$this->_table['predictGradesOrigin']}
                                            WHERE 
-                                               ProdCode = " . $ProdCode . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
+                                               PredictIdx = " . $PredictIdx . " AND PpIdx = " . $PpIdx . " AND TakeMockPart = " . $TakeMockPart . " AND TakeArea = " . $TakeArea . " 
                                            GROUP BY PrIdx, PpIdx
                                        ) AS I
                                     ) AS won
@@ -1816,7 +1816,7 @@ class PredictModel extends WB_Model
                                   LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
                                   LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
                            WHERE 
-                               pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "
+                               pg.PredictIdx = " . $PredictIdx . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "
                     ) AS won,
                     RegistAvgPoint,
                     RegistStandard
@@ -1831,7 +1831,7 @@ class PredictModel extends WB_Model
 
                 $order_by = " GROUP BY pg.MemIdx ORDER BY OrgPoint DESC";
 
-                $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+                $where = " WHERE pg.PredictIdx = " . $PredictIdx . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
                 //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
 
@@ -1933,7 +1933,7 @@ class PredictModel extends WB_Model
                     $data = [
                         'MemIdx' => $val['MemIdx'],
                         'PrIdx' => $val['PrIdx'],
-                        'ProdCode' => $val['ProdCode'],
+                        'PredictIdx' => $val['PredictIdx'],
                         'PpIdx' => $val['PpIdx'],
                         'OrgPoint' => $OrgPoint,
                         'TakeMockPart' => $TakeMockPart,
@@ -1968,16 +1968,16 @@ class PredictModel extends WB_Model
      * @param $MgIdx $mode = cron or web
      * @return mixed
      */
-    public function scoreProcess($ProdCode, $mode, $TakeMockPart)
+    public function scoreProcess($PredictIdx, $mode, $TakeMockPart)
     {
         try {
             $this->_conn->trans_begin();
 
-            if(empty($ProdCode) == true){
+            if(empty($PredictIdx) == true){
                 throw new \Exception('합격예측상품 미등록 상태입니다.');
             }
 
-            $this->_conn->where(['ProdCode' => $ProdCode]);
+            $this->_conn->where(['PredictIdx' => $PredictIdx]);
 
             if ($this->_conn->delete($this->_table['predictGradesArea']) === false) {
                 throw new \Exception('성적 삭제에 실패했습니다.');
@@ -1988,13 +1988,13 @@ class PredictModel extends WB_Model
                 $data = [
                     'MemId' => $this->session->userdata('admin_id'),
                     'Step' => '3',
-                    'ProdCode' => $ProdCode
+                    'PredictIdx' => $PredictIdx
                 ];
             } else {
                 $data = [
                     'MemId' => 'systemcron',
                     'Step' => '3',
-                    'ProdCode' => $ProdCode
+                    'PredictIdx' => $PredictIdx
                 ];
             }
 
@@ -2024,7 +2024,7 @@ class PredictModel extends WB_Model
             $order_by = " GROUP BY TakeMockPart, TaKeArea, PpIdx
                           ORDER BY TakeMockPart, TakeArea, pg.PpIdx";
 
-            $where = " WHERE pg.ProdCode = " . $ProdCode . $addQuery;
+            $where = " WHERE pg.PredictIdx = " . $PredictIdx . $addQuery;
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
@@ -2038,7 +2038,7 @@ class PredictModel extends WB_Model
 
                 // 응시자 개별과목 / 점수
                 $column = "
-                    pg.ProdCode, pg.PrIdx, pg.MemIdx, pg.OrgPoint, ROUND(OrgPoint,2) AS gasan, 
+                    pg.PredictIdx, pg.PrIdx, pg.MemIdx, pg.OrgPoint, ROUND(OrgPoint,2) AS gasan, 
 					pg.AdjustPoint, pg.PpIdx, pg.Rank, pg.StandardDeviation
                 ";
 
@@ -2051,7 +2051,7 @@ class PredictModel extends WB_Model
 
                 $order_by = " GROUP BY pg.MemIdx ORDER BY OrgPoint DESC";
 
-                $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+                $where = " WHERE pg.PredictIdx = " . $PredictIdx . " AND pg.PpIdx = " . $PpIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
                 //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -2093,7 +2093,7 @@ class PredictModel extends WB_Model
                     'TakeMockPart' => $TakeMockPart,
                     'TakeArea' => $TakeArea,
                     'TakeNum' => $count,
-                    'ProdCode' => $ProdCode,
+                    'PredictIdx' => $PredictIdx,
                     'PpIdx' => $PpIdx,
                     'AvrPoint' => $avr,
                     'FivePerPoint' => $FivePerPoint,
@@ -2116,7 +2116,7 @@ class PredictModel extends WB_Model
     /*
      *  기대/유력/안정 점수계산
      */
-    public function calculate($ProdCode, $TakeMockPart, $TakeArea, $P1, $P2, $P3){
+    public function calculate($PredictIdx, $TakeMockPart, $TakeArea, $P1, $P2, $P3){
         // 응시자 개별과목 / 점수
         $column = "
                     ROUND(SUM(pg.AdjustPoint),2) AS POINT
@@ -2131,7 +2131,7 @@ class PredictModel extends WB_Model
 
         $order_by = " GROUP BY pg.MemIdx ORDER BY SUM(pg.AdjustPoint) DESC";
 
-        $where = " WHERE pg.ProdCode = " . $ProdCode . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
+        $where = " WHERE pg.PredictIdx = " . $PredictIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -2204,9 +2204,9 @@ class PredictModel extends WB_Model
     {
         try {
             $this->_conn->trans_begin();
-            $ProdCode = $this->input->post('ProdCode');
+            $PredictIdx = $this->input->post('PredictIdx');
 
-            $this->_conn->where(['ProdCode' => $ProdCode]);
+            $this->_conn->where(['PredictIdx' => $PredictIdx]);
 
             if ($this->_conn->delete($this->_table['predictGradesLine']) === false) {
                 throw new \Exception('성적 삭제에 실패했습니다.');
@@ -2239,7 +2239,7 @@ class PredictModel extends WB_Model
             // 데이터 저장
             for($i=0; $i < COUNT($arrTakeMockPart); $i++){
                 $data = array(
-                    'ProdCode' => $ProdCode,
+                    'PredictIdx' => $PredictIdx,
                     'TakeMockPart' => $arrTakeMockPart[$i],
                     'TakeArea' => $arrTakeArea[$i],
                     'PickNum' => $arrPickNum[$i],

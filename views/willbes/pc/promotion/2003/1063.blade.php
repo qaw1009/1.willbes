@@ -16,6 +16,7 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
@@ -79,13 +80,23 @@
         .wb_cts02 { background:#232228; font-family:'Noto Sans KR', Arial, Sans-serif; color:#232228}
 
         /*타이머*/
-        .time {width:100%; text-align:center; background:#000}
+        .time {width:100%; text-align:center; background:#e9e7e8}
         .time {text-align:center; padding:20px 0}
         .time table {width:1120px; margin:0 auto}
         .time table td:first-child {font-size:40px}
-        .time table td img {width:80%}
-        .time .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#ef6759}
+        .time table td img {width:70%}
+        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px}
+        .time .time_txt span {color:#ef6759; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#ef6759}
+        50%{color:#ff6600}
+        to{color:#ef6759}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#ef6759}
+        50%{color:#ff6600}
+        to{color:#ef6759}
+        } 
 
         .check {width:100%; margin:0 auto; padding:20px 0 100px; letter-spacing:3 !important; color:#fff; font-size:14px}
         .check label {cursor:pointer}
@@ -95,11 +106,11 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <!-- 타이머 -->
-        <div class="evtCtnsBox time" id="newTopDday">
-            <div id="ddaytime">
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
+            <div>
                 <table>
                     <tr>
-                    <td class="time_txt"><span>5/9(목) 마감!</span></td>
+                    <td class="time_txt"><span>5/9(목) </span>마감!</td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>

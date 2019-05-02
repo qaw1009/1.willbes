@@ -8,7 +8,7 @@
         {!! csrf_field() !!}
         <input type="hidden" id="GroupCcd" name="GroupCcd" >
         <input type="hidden" name="SiteCode" value="2001" />
-        <input type="hidden" name="ProdCode" value="{{ $idx }}" />
+        <input type="hidden" name="PredictIdx" value="{{ $idx }}" />
         <input type="hidden" name="mode" value="{{ $mode }}" />
         <input type="hidden" id="PrIdx" name="PrIdx" value="{{ $data['PrIdx'] }}" />
         <input type="hidden" id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
@@ -284,7 +284,7 @@
         $('#t'+num).addClass('active');
     }
 
-    function popWindow(prodcode){
+    function popWindow(PredictIdx){
         var type = $('#selType').val();
         var _url = "";
         var width = "";
@@ -292,15 +292,15 @@
 
         if (win == '') {
             if(type == 1){
-                _url = '{{ front_url('/predict/popwin1/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
+                _url = '{{ front_url('/predict/popwin1/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                 width = 1300;
                 height = 900;
             } else if(type == 2){
-                _url = '{{ front_url('/predict/popwin2/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
+                _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                 width = 680;
                 height = 700;
             } else {
-                _url = '{{ front_url('/predict/popwin3/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
+                _url = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                 width = 600;
                 height = 420;
             }
@@ -309,15 +309,15 @@
         }else{
             if(win.closed){
                 if(type == 1){
-                    _url = '{{ front_url('/predict/popwin1/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
+                    _url = '{{ front_url('/predict/popwin1/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                     width = 1300;
                     height = 900;
                 } else if(type == 2){
-                    _url = '{{ front_url('/predict/popwin2/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
+                    _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                     width = 680;
                     height = 700;
                 } else {
-                    _url = '{{ front_url('/predict/popwin3/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
+                    _url = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                     width = 600;
                     height = 420;
                 }
@@ -329,12 +329,12 @@
         }
     }
 
-    function resultPop(prodcode){
+    function resultPop(PredictIdx){
         if(scoreType == 'DIRECT'){
             alert('점수를 직접입력한 경우, 정오표를 제공하지 않습니다.');
             return ;
         }
-        _url = '{{ front_url('/predict/popwin4/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
+        _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
         width = 1300;
         height = 900;
         win = window.open(_url, 'resultpop', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');

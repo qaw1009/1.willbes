@@ -16,6 +16,7 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/

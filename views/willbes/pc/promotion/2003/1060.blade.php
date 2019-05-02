@@ -17,6 +17,7 @@
             padding:0 !important;
             background:#fff;
         }	
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
         /************************************************************/
@@ -27,8 +28,18 @@
         .time table {width:1120px; margin:0 auto}
         .time table td:first-child {font-size:40px}
         .time table td img {width:80%}
-        .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#d63e4d}    
+        .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }    
         
 
         .wb_cts00 {background:#1c1c1c url(https://static.willbes.net/public/images/promotion/2019/04/1060_c1_bg.jpg) no-repeat center top;}	
@@ -92,11 +103,11 @@
 			<div><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c11.png" alt="소방체력풀패키지런칭기념 파격할인" ></a></div>
 		</div>
 
-        <div class="evtCtnsBox time" id="newTopDday">
-            <div id="ddaytime">
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
+            <div>
                 <table>
                     <tr>
-                    <td class="time_txt NGEB"><span>5/9(목) 마감!</span></td>
+                    <td class="time_txt"><span>5/9(목) </span>마감!</td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>

@@ -17,8 +17,6 @@ class Survey extends \app\controllers\BaseController
     public function __construct()
     {
         parent::__construct();
-
-
     }
 
     /**

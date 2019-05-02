@@ -56,12 +56,12 @@ class Gradeprocessing extends \app\controllers\BaseController
     public function list()
     {
         $rules = [
-            ['field' => 'search_ProdCode', 'label' => '코드', 'rules' => 'trim|is_natural_no_zero']
+            ['field' => 'search_PredictIdx', 'label' => '코드', 'rules' => 'trim|is_natural_no_zero']
         ];
 
         if ($this->validate($rules) === false) return;
 
-        $ProdCode = $this->input->post('search_ProdCode');
+        $PredictIdx = $this->input->post('search_PredictIdx');
 
         $condition = [
             'EQ' => [
@@ -70,11 +70,11 @@ class Gradeprocessing extends \app\controllers\BaseController
             ],
         ];
 
-        if(empty($ProdCode) === true) {
-            $ProdCode = "100000";
+        if(empty($PredictIdx) === true) {
+            $PredictIdx = "100000";
         }
 
-        list($data, $count) = $this->predictModel->statisticsList($ProdCode, $condition);
+        list($data, $count) = $this->predictModel->statisticsList($PredictIdx, $condition);
 
         return $this->response([
             'recordsTotal' => $count,
@@ -90,10 +90,10 @@ class Gradeprocessing extends \app\controllers\BaseController
     public function scoreMakeStep1Ajax()
     {
         $formData = $this->_reqP(null, false);
-        $ProdCode = element('ProdCode', $formData);
+        $PredictIdx = element('PredictIdx', $formData);
         $TakeMockPart = element('TakeMockPart', $formData);
 
-        $result = $this->predictModel->scoreMakeStep1($ProdCode,'web',$TakeMockPart);
+        $result = $this->predictModel->scoreMakeStep1($PredictIdx,'web',$TakeMockPart);
         $this->json_result($result, '저장되었습니다.', $result, $result);
     }
 
@@ -104,10 +104,10 @@ class Gradeprocessing extends \app\controllers\BaseController
     public function scoreMakeStep2Ajax()
     {
         $formData = $this->_reqP(null, false);
-        $ProdCode = element('ProdCode', $formData);
+        $PredictIdx = element('PredictIdx', $formData);
         $TakeMockPart = element('TakeMockPart', $formData);
 
-        $result = $this->predictModel->scoreMakeStep2($ProdCode,'web',$TakeMockPart);
+        $result = $this->predictModel->scoreMakeStep2($PredictIdx,'web',$TakeMockPart);
         $this->json_result($result, '저장되었습니다.', $result, $result);
     }
 
@@ -118,10 +118,10 @@ class Gradeprocessing extends \app\controllers\BaseController
     public function scoreMakeStep3Ajax()
     {
         $formData = $this->_reqP(null, false);
-        $ProdCode = element('ProdCode', $formData);
+        $PredictIdx = element('PredictIdx', $formData);
         $TakeMockPart = element('TakeMockPart', $formData);
 
-        $result = $this->predictModel->scoreProcess($ProdCode,'web',$TakeMockPart);
+        $result = $this->predictModel->scoreProcess($PredictIdx,'web',$TakeMockPart);
         $this->json_result($result, '저장되었습니다.', $result, $result);
     }
 

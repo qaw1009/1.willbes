@@ -46,10 +46,10 @@ class SurveyModel extends WB_Model
     /**
      *  합격예측 접수인원
      */
-    public function autocount($ProdCode, $PromotionCode){
+    public function autocount($PredictIdx, $PromotionCode){
         $column = "
             (
-                (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE ProdCode = ".$ProdCode.") 
+                (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE PredictIdx = ".$PredictIdx.") 
                 + (SELECT COUNT(*) FROM {$this->_table['eventComment']} WHERE ElIdx = (SELECT ElIdx FROM {$this->_table['eventLecture']} WHERE PromotionCode = ".$PromotionCode."))
             ) AS CNT,
             (SELECT ReadCnt FROM {$this->_table['eventLecture']} WHERE PromotionCode = ".$PromotionCode.") AS RCNT,
@@ -85,9 +85,9 @@ class SurveyModel extends WB_Model
                 $names['RealConfirmFile']['real'] = null;
             }
 
-            $ProdCode = $this->input->post('ProdCode');
+            $PredictIdx = $this->input->post('PredictIdx');
 
-            $regist_check = $this->predictResist($ProdCode, $this->session->userdata('mem_idx'));
+            $regist_check = $this->predictResist($PredictIdx, $this->session->userdata('mem_idx'));
 
             if(empty($regist_check) === false) {
                 throw new \Exception('이미 신청하셨습니다.');
@@ -96,7 +96,7 @@ class SurveyModel extends WB_Model
             // 데이터 저장
             $data = array(
                 'ApplyType' => empty($this->input->post('ApplyType')) === false ? $this->input->post('ApplyType') : '합격예측',
-                'ProdCode' => $ProdCode,
+                'PredictIdx' => $PredictIdx,
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'SiteCode' => $this->input->post('SiteCode'),
                 'TakeNumber' => $this->input->post('TakeNumber'),
@@ -116,7 +116,7 @@ class SurveyModel extends WB_Model
             $nowIdx = $this->_conn->insert_id();
 
             // 파일 업로드
-            $uploadSubPath = $this->upload_path_predict . $ProdCode;
+            $uploadSubPath = $this->upload_path_predict . $PredictIdx;
 
             if(empty($names) === false) {
                 $isSave = $this->uploadFileSave($uploadSubPath, $names);
@@ -133,7 +133,7 @@ class SurveyModel extends WB_Model
                     // 데이터 저장
                     $data = array(
                         'PrIdx' => $nowIdx,
-                        'ProdCode' => $this->input->post('ProdCode'),
+                        'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Ssubject[$i],
                     );
 
@@ -148,7 +148,7 @@ class SurveyModel extends WB_Model
                     // 데이터 저장
                     $data = array(
                         'PrIdx' => $nowIdx,
-                        'ProdCode' => $this->input->post('ProdCode'),
+                        'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Psubject[$i],
                     );
 
@@ -176,16 +176,16 @@ class SurveyModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
-            $ProdCode = $this->input->post('ProdCode');
+            $PredictIdx = $this->input->post('PredictIdx');
 
-            $regist_check = $this->predictResist($ProdCode, $this->session->userdata('mem_idx'));
+            $regist_check = $this->predictResist($PredictIdx, $this->session->userdata('mem_idx'));
 
             if(empty($regist_check) === false) {
                 throw new \Exception('이미 신청하셨습니다.');
             }
             // 데이터 저장
             $data = array(
-                'ProdCode' => $ProdCode,
+                'PredictIdx' => $PredictIdx,
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'SiteCode' => $this->input->post('SiteCode'),
                 'TakeNumber' => $this->input->post('TakeNumber'),
@@ -210,7 +210,7 @@ class SurveyModel extends WB_Model
                     // 데이터 저장
                     $data = array(
                         'PrIdx' => $nowIdx,
-                        'ProdCode' => $this->input->post('ProdCode'),
+                        'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Ssubject[$i],
                     );
 
@@ -225,7 +225,7 @@ class SurveyModel extends WB_Model
                     // 데이터 저장
                     $data = array(
                         'PrIdx' => $nowIdx,
-                        'ProdCode' => $this->input->post('ProdCode'),
+                        'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Psubject[$i],
                     );
 
@@ -254,11 +254,11 @@ class SurveyModel extends WB_Model
             $this->_conn->trans_begin();
 
             $names = $this->makeUploadFileName(['RealConfirmFile'], 1);
-            $ProdCode = $this->input->post('ProdCode');
+            $PredictIdx = $this->input->post('PredictIdx');
             $PrIdx = $this->input->post('PrIdx');
             // 데이터 저장
             $data = array(
-                'ProdCode' => $ProdCode,
+                'PredictIdx' => $PredictIdx,
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'SiteCode' => $this->input->post('SiteCode'),
                 'TakeNumber' => $this->input->post('TakeNumber'),
@@ -274,7 +274,7 @@ class SurveyModel extends WB_Model
                 $data['RealConfirmFile'] = $names['RealConfirmFile']['real'];
 
                 // 파일 업로드
-                $uploadSubPath = $this->upload_path_predict . $ProdCode;
+                $uploadSubPath = $this->upload_path_predict . $PredictIdx;
 
                 $isSave = $this->uploadFileSave($uploadSubPath, $names);
                 if($isSave !== true) {
@@ -307,7 +307,7 @@ class SurveyModel extends WB_Model
                     // 데이터 저장
                     $data = array(
                         'PrIdx' => $PrIdx,
-                        'ProdCode' => $this->input->post('ProdCode'),
+                        'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Ssubject[$i],
                     );
 
@@ -322,7 +322,7 @@ class SurveyModel extends WB_Model
                     // 데이터 저장
                     $data = array(
                         'PrIdx' => $PrIdx,
-                        'ProdCode' => $this->input->post('ProdCode'),
+                        'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Psubject[$i],
                     );
 
@@ -350,11 +350,11 @@ class SurveyModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
-            $ProdCode = $this->input->post('ProdCode');
+            $PredictIdx = $this->input->post('PredictIdx');
             $PrIdx = $this->input->post('PrIdx');
             // 데이터 저장
             $data = array(
-                'ProdCode' => $ProdCode,
+                'PredictIdx' => $PredictIdx,
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'SiteCode' => $this->input->post('SiteCode'),
                 'TakeNumber' => $this->input->post('TakeNumber'),
@@ -390,7 +390,7 @@ class SurveyModel extends WB_Model
                     // 데이터 저장
                     $data = array(
                         'PrIdx' => $PrIdx,
-                        'ProdCode' => $this->input->post('ProdCode'),
+                        'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Ssubject[$i],
                     );
 
@@ -405,7 +405,7 @@ class SurveyModel extends WB_Model
                     // 데이터 저장
                     $data = array(
                         'PrIdx' => $PrIdx,
-                        'ProdCode' => $this->input->post('ProdCode'),
+                        'PredictIdx' => $this->input->post('PredictIdx'),
                         'SubjectCode' => $Psubject[$i],
                     );
 
@@ -494,7 +494,7 @@ class SurveyModel extends WB_Model
     /*
      *  합격예측 2번째탭 오픈여부
      */
-    public function predictOpenTab2($ProdCode){
+    public function predictOpenTab2($PredictIdx){
         $column = "
             ServiceSDatm, ServiceEDatm
         ";
@@ -505,7 +505,7 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = "";
-        $where = " WHERE ProdCode = ".$ProdCode;
+        $where = " WHERE PredictIdx = ".$PredictIdx;
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data = $query->row_array();
@@ -520,11 +520,11 @@ class SurveyModel extends WB_Model
 
     /**
      * 합격예측 접수데이터 호출
-     * @param $ProdCode
+     * @param $PredictIdx
      * @param $MemIdx
      * @return mixed
      */
-    public function predictResist($ProdCode, $MemIdx){
+    public function predictResist($PredictIdx, $MemIdx){
         $column = "
             PrIdx
         ";
@@ -535,7 +535,7 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = " ORDER BY PrIdx ASC LIMIT 1";
-        $where = " WHERE MemIdx = '".$MemIdx."' AND ProdCode = ".$ProdCode."";
+        $where = " WHERE MemIdx = '".$MemIdx."' AND PredictIdx = ".$PredictIdx."";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -562,7 +562,7 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = " ORDER BY pr.PrIdx DESC";
-        $where = " WHERE MemIdx = '".$MemIdx."' AND pr.ProdCode = ".$ProdCode.$addWhere;
+        $where = " WHERE MemIdx = '".$MemIdx."' AND pr.PredictIdx = ".$PredictIdx.$addWhere;
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -597,7 +597,7 @@ class SurveyModel extends WB_Model
     /**
      *  합격예측용 성적입력 점수호출 타입1
      */
-    public function getScore1($pridx, $prodcode){
+    public function getScore1($pridx, $PredictIdx){
         $column = "
             pc2.CcdName AS SubjectName, SUM(IF(pg.IsWrong = 'Y', Scoring, '0')) AS OrgPoint, AdjustPoint  
         ";
@@ -612,7 +612,8 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = " GROUP BY pg.PpIdx ORDER BY pg.PpIdx";
-        $where = " WHERE pg.ProdCode = ".$prodcode." AND pg.PrIdx = ".$pridx;
+        $where = " WHERE pg.PredictIdx = ".$PredictIdx." AND pg.PrIdx = ".$pridx;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
@@ -623,7 +624,7 @@ class SurveyModel extends WB_Model
     /**
      *  합격예측용 성적입력 점수호출 타입1
      */
-    public function getScore2($pridx, $prodcode){
+    public function getScore2($pridx, $PredictIdx){
         $column = "
             pg.PpIdx, pc2.CcdName AS SubjectName, pg.OrgPoint, AdjustPoint, Rank, FivePerPoint, AvrPoint, TakeNum
         ";
@@ -640,7 +641,7 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = " GROUP BY pg.PpIdx ORDER BY pg.PpIdx ";
-        $where = " WHERE pg.ProdCode = ".$prodcode." AND pg.PrIdx = ".$pridx;
+        $where = " WHERE pg.PredictIdx = ".$PredictIdx." AND pg.PrIdx = ".$pridx;
 
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
@@ -691,7 +692,7 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = "";
-        $where = " WHERE ProdCode = ".$idx." AND TakeMockPart = ".$TakeMockPart." AND TakeArea = ".$TakeArea;
+        $where = " WHERE PredictIdx = ".$idx." AND TakeMockPart = ".$TakeMockPart." AND TakeArea = ".$TakeArea;
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -829,7 +830,7 @@ class SurveyModel extends WB_Model
 
         $order_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
         $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T')";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
@@ -937,7 +938,7 @@ class SurveyModel extends WB_Model
     /**
      * 문항세트전체호출
      */
-    public function statisticsListLine($ProdCode, $order){
+    public function statisticsListLine($PredictIdx, $order){
 
         $column = "
             pc.CcdName AS TakeMockPartName, sc.CcdName AS TakeAreaName, 
@@ -946,7 +947,7 @@ class SurveyModel extends WB_Model
             SELECT COUNT(*) FROM (
                     SELECT * FROM {$this->_table['predictGradesOrigin']} GROUP BY MemIdx
                 ) AS A
-                WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart AND Prodcode = pg.ProdCode 
+                WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart AND PredictIdx = pg.PredictIdx 
             ) AS TakeOrigin,  
             ROUND(SUM(pg.AvrPoint),2) AS AvrPoint,
             (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
@@ -958,7 +959,7 @@ class SurveyModel extends WB_Model
         $from = "
             FROM
                 {$this->_table['predictGradesArea']} AS pg
-                LEFT JOIN {$this->_table['predictGradesLine']} AS pl ON pg.TakeArea = pl.TakeArea AND pg.TakeMockPart = pl.TakeMockPart AND pg.ProdCode = pl.ProdCode
+                LEFT JOIN {$this->_table['predictGradesLine']} AS pl ON pg.TakeArea = pl.TakeArea AND pg.TakeMockPart = pl.TakeMockPart AND pg.PredictIdx = pl.PredictIdx
                 LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
                 LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
                 LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
@@ -971,7 +972,7 @@ class SurveyModel extends WB_Model
             $order_by = " GROUP BY pg.TakeMockPart, pg.TakeArea ORDER BY pg.TakeMockPart, pg.TakeArea";
         }
 
-        $where = " WHERE pg.ProdCode = ".$ProdCode;
+        $where = " WHERE pg.PredictIdx = ".$PredictIdx;
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -1019,10 +1020,10 @@ class SurveyModel extends WB_Model
     }
 
     /***
-     * @param $prodcode
+     * @param $PredictIdx
      * 지역별현황
      */
-    public function areaList($prodcode){
+    public function areaList($PredictIdx){
         $column = "
             sc.CcdName AS Areaname, pc.CcdName AS Serialname, pg.*       
         ";
@@ -1034,8 +1035,10 @@ class SurveyModel extends WB_Model
                 LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
         ";
 
-        $where = " WHERE ProdCode = ".$prodcode;
+        $where = " WHERE PredictIdx = ".$PredictIdx;
         $order_by = " ORDER BY TaKeMockPart, TakeArea";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data = $query->result_array();
 
@@ -1088,6 +1091,37 @@ class SurveyModel extends WB_Model
         return $Res;
     }
 
+    public function wrongRank($PredictIdx){
+        $column = "
+            COUNT(*) AS wcnt, pa.PpIdx, pq.PqIdx, Answer, IsWrong, PaperName, RightAnswer,
+            (
+                SELECT COUNT(*) FROM {$this->_table['predictAnswerPaper']}  
+                WHERE PredictIdx = ".$PredictIdx." AND PpIdx = pa.PpIdx AND PqIdx = pa.PqIdx AND IsWrong = 'N'
+            ) AS Wrong,
+            (
+                SELECT COUNT(*) FROM {$this->_table['predictAnswerPaper']}  
+                WHERE PredictIdx = ".$PredictIdx." AND PpIdx = pa.PpIdx AND PqIdx = pa.PqIdx
+            ) AS allcnt
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictAnswerPaper']} AS pa
+                JOIN {$this->_table['predictPaper']} AS pp ON pa.PpIdx = pp.PpIdx  
+                JOIN {$this->_table['predictQuestion']} AS pq ON pq.PpIdx = pa.PpIdx AND pq.PqIdx = pa.PqIdx
+        ";
+
+        $order_by = " GROUP BY PpIdx, PqIdx, Answer 
+                      ORDER BY PpIdx, Wrong DESC, PqIdx, IsWrong ";
+        $where = " WHERE pa.PredictIdx = ".$PredictIdx." AND Answer IN ('1','2','3','4')";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+
     /**
      * 설문결과
      */
@@ -1119,7 +1153,7 @@ class SurveyModel extends WB_Model
     /**
      * 과목호출
      */
-    public function subjectList($prodcode, $pridx){
+    public function subjectList($PredictIdx, $pridx){
         $column = "
             SubjectCode  
         ";
@@ -1132,7 +1166,7 @@ class SurveyModel extends WB_Model
 
         $order_by = " ";
 
-        $where = " WHERE pr.ProdCode = ". $prodcode ." AND MemIdx = ".$this->session->userdata('mem_idx')." AND pr.PrIdx = ".$pridx;
+        $where = " WHERE pr.PredictIdx = ". $PredictIdx ." AND MemIdx = ".$this->session->userdata('mem_idx')." AND pr.PrIdx = ".$pridx;
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -1160,7 +1194,7 @@ class SurveyModel extends WB_Model
 
         $order_by = " ORDER BY OrderNum";
 
-        $where = " WHERE pp.ProdCode = ". $prodcode ." AND SubjectCode IN (" . $subjectIn . ")";
+        $where = " WHERE pp.PredictIdx = ". $PredictIdx ." AND SubjectCode IN (" . $subjectIn . ")";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $res = $query->result_array();
 
@@ -1200,10 +1234,10 @@ class SurveyModel extends WB_Model
 
     /**
      * 문항정보호출(시험지코드포함)
-     * @param array $MpIdx $ProdCode
+     * @param array $MpIdx $PredictIdx
      * @return mixed
      */
-    public function predictQuestionCall($ppIdx, $prodcode, $pridx){
+    public function predictQuestionCall($ppIdx, $PredictIdx, $pridx){
 
         $column = "
             pp.PpIdx,
@@ -1218,7 +1252,7 @@ class SurveyModel extends WB_Model
                 SUM(IF(pa2.IsWrong = 'Y', Scoring, '0')) 
                 FROM 
                     {$this->_table['predictQuestion']} AS pq
-                    LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa2 ON pq.PqIdx = pa2.PqIdx AND pa2.MemIdx = ".$this->session->userdata('mem_idx')." AND pa2.ProdCode = ".$prodcode." AND pa2.PrIdx = ".$pridx." 
+                    LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa2 ON pq.PqIdx = pa2.PqIdx AND pa2.MemIdx = ".$this->session->userdata('mem_idx')." AND pa2.PredictIdx = ".$PredictIdx." AND pa2.PrIdx = ".$pridx." 
                 WHERE pa2.PpIdx = pa.PpIdx
             ) AS OrgPoint 
         ";
@@ -1227,7 +1261,7 @@ class SurveyModel extends WB_Model
             FROM
                 {$this->_table['predictPaper']} AS pp
                 JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
-                LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa ON pq.PqIdx = pa.PqIdx AND pa.MemIdx = ".$this->session->userdata('mem_idx')." AND pp.ProdCode = ".$prodcode." AND pa.PrIdx = ".$pridx."
+                LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa ON pq.PqIdx = pa.PqIdx AND pa.MemIdx = ".$this->session->userdata('mem_idx')." AND pp.PredictIdx = ".$PredictIdx." AND pa.PrIdx = ".$pridx."
         ";
 
         if($ppIdx){
@@ -1255,7 +1289,7 @@ class SurveyModel extends WB_Model
             $this->_conn->trans_begin();
 
             $PrIdx = element('PrIdx', $formData);
-            $ProdCode = element('ProdCode', $formData);
+            $PredictIdx = element('PredictIdx', $formData);
             $PpIdx = element('PpIdx', $formData);
 
             $qcnt = element('QCnt',$formData);
@@ -1276,7 +1310,7 @@ class SurveyModel extends WB_Model
                 $arr_condition = [
                     'EQ' => [
                         'MemIdx'   => $this->session->userdata('mem_idx'),
-                        'ProdCode' => $ProdCode,
+                        'PredictIdx' => $PredictIdx,
                         'PrIdx' => $PrIdx,
                         'PpIdx' => $PpIdx,
                         'PqIdx' => ${"PqIdx$i"},
@@ -1297,7 +1331,7 @@ class SurveyModel extends WB_Model
                         'Answer' => ${"answer$i"}
                     ];
 
-                    $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'PrIdx' => $PrIdx, 'PpIdx' => $PpIdx, 'PqIdx' => ${"PqIdx$i"}]);
+                    $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'PredictIdx' => $PredictIdx, 'PrIdx' => $PrIdx, 'PpIdx' => $PpIdx, 'PqIdx' => ${"PqIdx$i"}]);
 
                     if ($this->_conn->update($this->_table['predictAnswerPaper']) === false) {
                         throw new \Exception('임시저장에 수정에 실패했습니다.');
@@ -1308,7 +1342,7 @@ class SurveyModel extends WB_Model
                     $data = [
                         'MemIdx' => $this->session->userdata('mem_idx'),
                         'PrIdx'  => $PrIdx,
-                        'ProdCode'=> $ProdCode,
+                        'PredictIdx'=> $PredictIdx,
                         'PpIdx' => $PpIdx,
                         'PqIdx' => ${"PqIdx$i"},
                         'Answer' => ${"answer$i"},
@@ -1408,12 +1442,12 @@ class SurveyModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
-            $ProdCode = element('ProdCode', $formData);
+            $PredictIdx = element('PredictIdx', $formData);
             $PrIdx = element('PrIdx', $formData);
             $MemIdx = $this->session->userdata('mem_idx');
 
             $column = "
-                MemIdx, PrIdx, ProdCode, pp.PpIdx, pq.PqIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, pp.RegDatm
+                MemIdx, PrIdx, PredictIdx, pp.PpIdx, pq.PqIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, pp.RegDatm
             ";
 
             $from = "
@@ -1424,7 +1458,7 @@ class SurveyModel extends WB_Model
 
             $order_by = " ORDER BY PpIdx ";
 
-            $where = " WHERE MemIdx = ".$MemIdx." AND ProdCode = ".$ProdCode." AND PrIdx = ".$PrIdx;
+            $where = " WHERE MemIdx = ".$MemIdx." AND PredictIdx = ".$PredictIdx." AND PrIdx = ".$PrIdx;
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
@@ -1434,14 +1468,14 @@ class SurveyModel extends WB_Model
                 $data = [
                     'MemIdx' => $MemIdx,
                     'PrIdx'  => $PrIdx,
-                    'ProdCode'=> $ProdCode,
+                    'PredictIdx'=> $PredictIdx,
                     'PpIdx' => $val['PpIdx'],
                     'PqIdx' => $val['PqIdx'],
                     'Answer' => $val['Answer'],
                     'IsWrong' => $val['IsWrong']
                 ];
 
-                $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $MemIdx, 'ProdCode' => $ProdCode, 'PrIdx' => $PrIdx, 'PpIdx' => $val['PpIdx'], 'PqIdx' => $val['PqIdx']]);
+                $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $MemIdx, 'PredictIdx' => $PredictIdx, 'PrIdx' => $PrIdx, 'PpIdx' => $val['PpIdx'], 'PqIdx' => $val['PqIdx']]);
 
                 if ($this->_conn->update($this->_table['predictAnswerPaper']) === false) {
                     throw new \Exception('저장에 실패했습니다.');
@@ -1468,7 +1502,7 @@ class SurveyModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
-            $ProdCode = element('ProdCode', $formData);
+            $PredictIdx = element('PredictIdx', $formData);
             $PrIdx = element('PrIdx', $formData);
             $PpIdx = element('PpIdx', $formData);
             $AnswerArr = element('Answer', $formData);
@@ -1517,7 +1551,7 @@ class SurveyModel extends WB_Model
                 $data = [
                     'MemIdx' => $MemIdx,
                     'PrIdx'  => $PrIdx,
-                    'ProdCode'=> $ProdCode,
+                    'PredictIdx'=> $PredictIdx,
                     'PpIdx' => $PpIdx,
                     'PqIdx' => $PqIdx,
                     'Answer' => $Answer,
@@ -1549,7 +1583,7 @@ class SurveyModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
-            $ProdCode = element('ProdCode', $formData);
+            $PredictIdx = element('PredictIdx', $formData);
             $PrIdx = element('PrIdx', $formData);
             $PpIdxArr = element('PpIdx', $formData);
             $ScoreArr = element('Score', $formData);
@@ -1582,7 +1616,7 @@ class SurveyModel extends WB_Model
                 $data = [
                     'MemIdx' => $MemIdx,
                     'PrIdx'  => $PrIdx,
-                    'ProdCode'=> $ProdCode,
+                    'PredictIdx'=> $PredictIdx,
                     'PpIdx' => $PpIdx,
                     'TakeMockPart' => $res['TakeMockPart'],
                     'TakeArea' => $res['TakeArea'],

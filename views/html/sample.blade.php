@@ -86,7 +86,7 @@
                 <li><a href="{{ site_url('/home/html/1137') }}" target="_blank">통합 웰컴팩 </a></li>
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
                 <li><p>경찰 온라인 ▼</p></li> 
-                <li>3월 6일 이후 추가분 ▼</li>
+                <li><a href="{{ site_url('/home/html/1227') }}" target="_blank">최종합격기원감사제 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1211') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #2 성적채점/확인 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/1211_popup01') }}" target="_blank">└ 일반채점 팝업 1300x900<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/1211_popup02') }}" target="_blank">└ 빠른채점 팝업 680x650<span>*</span></a></li>

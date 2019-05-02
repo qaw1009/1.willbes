@@ -45,7 +45,7 @@
             {!! csrf_field() !!}
             <input type="hidden" id="GroupCcd" name="GroupCcd" >
             <input type="hidden" name="SiteCode" value="{{ $__cfg['SiteCode'] }}" />
-            <input type="hidden" name="ProdCode" value="{{ $idx }}" />
+            <input type="hidden" name="PredictIdx" value="{{ $idx }}" />
             <input type="hidden" name="mode" value="{{ $mode }}" />
             <input type="hidden" name="img_pass" value="Y">
             <input type="hidden" name="ApplyType" value="사전특강">

@@ -18,7 +18,7 @@
             <div class="omrL">
                 <ul class="tabSt1 NGEB">
                     @foreach($subject_list as $key => $val)
-                    <li><a href="{{ front_url('/predict/popwin1/?prodcode=').$prodcode.'&ppidx='.$val['PpIdx'].'&pridx='.$pridx }}" @if($val['PpIdx'] == $ppidx) class="active" @endif>{{ $val['CcdName'] }}</a></li>
+                    <li><a href="{{ front_url('/predict/popwin1/?PredictIdx=').$PredictIdx.'&ppidx='.$val['PpIdx'].'&pridx='.$pridx }}" @if($val['PpIdx'] == $ppidx) class="active" @endif>{{ $val['CcdName'] }}</a></li>
                     @endforeach
                 </ul>
                 <div class="paper">
@@ -37,7 +37,7 @@
             <form id="all_regi_form" name="all_regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 <input type="hidden" name="PrIdx"    value="{{ $pridx }}">
-                <input type="hidden" name="ProdCode" value="{{ element('prodcode', $arr_input) }}">
+                <input type="hidden" name="PredictIdx" value="{{ element('PredictIdx', $arr_input) }}">
                 <input type="hidden" name="PpIdx"    value="{{ $ppidx }}">
                 <input type="hidden" id='QCnt' name="QCnt"    value="{{ count($question_list) }}">
 

@@ -1,8 +1,8 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 @section('content')
 <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
-<script src="/public/vendor/jqbars/jqbar.js"></script>
-<link rel="stylesheet" href="/public/vendor/jqbars/jqbar.css">
+<script src="/public/vendor/Nwagon/Nwagon.js"></script>
+<link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css">
 <div class="m_section3_wrap">
     {{--지역별 현황--}}
     <div class="m_section3_2">
@@ -171,14 +171,9 @@
                 {{--@endforeach--}}
             {{--</select>--}}
             {{--<div class="mt10">--}}
-                {{--<div>--}}
-                    {{--<div id="bar-1"></div>--}}
-                    {{--<div id="bar-2"></div>--}}
-                    {{--<div id="bar-3"></div>--}}
-                    {{--<div id="bar-4"></div>--}}
-                    {{--<div id="bar-5"></div>--}}
-                    {{--<div id="bar-6"></div>--}}
-                {{--</div>--}}
+
+                {{--<div id="Nwagon"></div>--}}
+
             {{--</div>--}}
         {{--</div>--}}
     {{--</div>--}}
@@ -414,8 +409,8 @@
             {{--</h2>--}}
             {{--@for($i=1; $i < count($titleSet); $i++)--}}
                 {{--<div id="div_{{ $i }}" @if($i != 1) style="display:none;" @endif>--}}
-                    {{--[{{ $titleSet[$i] }}]--}}
-                    {{--<table class="boardTypeC">--}}
+
+                    {{--<table class="boardTypeC" style="hieght:500px;">--}}
                         {{--<col width="20%" />--}}
                         {{--<col width="40%" />--}}
                         {{--@for($j=1; $j <= $resSet[$i]['CNT']; $j++)--}}
@@ -429,7 +424,7 @@
                         {{--@endfor--}}
                         {{--<tr>--}}
                             {{--<th>구분</th>--}}
-                            {{--<td>2019년 1차</td>--}}
+                            {{--<td>2018년 3차</td>--}}
                         {{--</tr>--}}
                     {{--</table>--}}
                 {{--</div>--}}
@@ -493,10 +488,7 @@
             {{--과목별 <span>오답 랭킹</span>--}}
             {{--<div>--}}
                 {{--<select id=" " name=" " >--}}
-                    {{--<option value="" >과목1</option>--}}
-                    {{--<option value="" >과목2</option>--}}
-                    {{--<option value="" >과목3</option>--}}
-                    {{--<option value="" >과목4</option>--}}
+
                 {{--</select>--}}
             {{--</div>--}}
         {{--</h2>--}}
@@ -516,49 +508,13 @@
                     {{--<th>④ </th>--}}
                 {{--</tr>--}}
                 {{--<tr>--}}
-                    {{--<td>1</td>--}}
-                    {{--<td>3</td>--}}
-                    {{--<td>4 </td>--}}
+                    {{--<td></td>--}}
+                    {{--<td></td>--}}
+                    {{--<td></td>--}}
                     {{--<td>2%</td>--}}
                     {{--<td>10%</td>--}}
                     {{--<td>16%</td>--}}
                     {{--<td>72%</td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td>2</td>--}}
-                    {{--<td>11</td>--}}
-                    {{--<td>2 </td>--}}
-                    {{--<td>11%</td>--}}
-                    {{--<td>58%</td>--}}
-                    {{--<td>5%</td>--}}
-                    {{--<td>25%</td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td>3</td>--}}
-                    {{--<td>12</td>--}}
-                    {{--<td>3 </td>--}}
-                    {{--<td>6%</td>--}}
-                    {{--<td>12%</td>--}}
-                    {{--<td>63%</td>--}}
-                    {{--<td>19%</td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td>4</td>--}}
-                    {{--<td>15</td>--}}
-                    {{--<td>3 </td>--}}
-                    {{--<td>22%</td>--}}
-                    {{--<td>6%</td>--}}
-                    {{--<td>68%</td>--}}
-                    {{--<td>4%</td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td>5</td>--}}
-                    {{--<td>20</td>--}}
-                    {{--<td>3 </td>--}}
-                    {{--<td>24%</td>--}}
-                    {{--<td>7%</td>--}}
-                    {{--<td>47%</td>--}}
-                    {{--<td>22%</td>--}}
                 {{--</tr>--}}
             {{--</table>--}}
 
@@ -699,9 +655,9 @@
         {{--</div>--}}
     {{--</div>--}}
 
-    <div class="m_section3_5">
-        시험지 및 정답 다운로드 <a href="http://public.jinhakapply.com/PoliceV2/data/notice_list.aspx?ReturnSite=SC&ServiceID=19&CategoryID=3&CurrentPage=1" target="_blank">바로가기 ▶</a>
-    </div>
+    {{--<div class="m_section3_5">--}}
+        {{--시험지 및 정답 다운로드 <a href="http://public.jinhakapply.com/PoliceV2/data/notice_list.aspx?ReturnSite=SC&ServiceID=19&CategoryID=3&CurrentPage=1" target="_blank">바로가기 ▶</a>--}}
+    {{--</div>--}}
 
     {{--<div class="m_section3_6">--}}
         {{--<div class="pollWrap">--}}
@@ -770,8 +726,8 @@
 </div><!--m_section3_wrap//-->
 <script>
     $(document).ready(function () {
-        var seltxt = $('#selgrade option:selected').val();
-        selGrade(seltxt);
+        //var seltxt = $('#selgrade option:selected').val();
+        //selGrade(seltxt);
     });
 
     function selSerial(num){
@@ -802,16 +758,32 @@
     function selGrade(val){
         var str = val;
         var arrStr = str.split('/');
-        $('#bar-1').html('');
-        $('#bar-2').html('');
-        $('#bar-3').html('');
-        $('#bar-4').html('');
-        $('#bar-5').html('');
-        $('#bar-1').jqbar({ label: arrStr[0], value: arrStr[5], barColor: '#D64747' });
-        $('#bar-2').jqbar({ label: arrStr[1], value: arrStr[6], barColor: '#FF681F' });
-        $('#bar-3').jqbar({ label: arrStr[2], value: arrStr[7], barColor: '#ea805c' });
-        $('#bar-4').jqbar({ label: arrStr[3], value: arrStr[8], barColor: '#88bbc8' });
-        $('#bar-5').jqbar({ label: arrStr[4], value: arrStr[9], barColor: '#939393' });
+
+        var options = {
+            'legend':{
+                names: [
+                    arrStr[0],
+                    arrStr[1],
+                    arrStr[2],
+                    arrStr[3],
+                    arrStr[4]
+                ],
+                hrefs: [
+
+                ]
+            },
+            'dataset': {
+                title: 'Web accessibility status',
+                values: [[ arrStr[5] , arrStr[6], arrStr[7], arrStr[8], arrStr[9] ]],
+                bgColor: '#f9f9f9',
+                fgColor: '#30a1ce',
+            },
+            'chartDiv': 'Nwagon',
+            'chartType': 'radar',
+            'chartSize': { width: 500, height: 300 }
+        };
+        $('#Nwagon').html('');
+        Nwagon.chart(options);
     }
 
     function surveyOpen(){

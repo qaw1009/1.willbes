@@ -17,13 +17,13 @@
                     <tr>
                         <th colspan="1">합격예측 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <select class="form-control mr-5" id="ProdCode" name="ProdCode" onChange="selProdCode(this.value,'')">
+                            <select class="form-control mr-5" id="PredictIdx" name="PredictIdx" onChange="selPredictIdx(this.value,'')">
                                 <option value="">합격예측선택</option>
                                 @foreach($productList as $key => $val)
                                     @if($method == 'PUT')
-                                        <option value="{{ $val['ProdCode'] }}" @if($data['ProdCode'] == $val['ProdCode']) selected @endif>{{ $val['ProdName'] }}</option>
+                                        <option value="{{ $val['PredictIdx'] }}" @if($data['PredictIdx'] == $val['PredictIdx']) selected @endif>{{ $val['ProdName'] }}</option>
                                     @else
-                                        <option value="{{ $val['ProdCode'] }}">{{ $val['ProdName'] }}</option>
+                                        <option value="{{ $val['PredictIdx'] }}">{{ $val['ProdName'] }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -222,7 +222,7 @@
             });
 
             if(method == 'PUT'){
-                selProdCode('{{ $prodcode }}','{{ $subject }}');
+                selPredictIdx('{{ $PredictIdx }}','{{ $subject }}');
             }
 
             // 문항정보필드 문제등록옵션 오류체크 (객관식(단수) 1개, 객관식(복수) 2개, 주관식 비활성)
@@ -350,7 +350,7 @@
             $('#sType').val($('#sType'+val).val());
         }
 
-        function selProdCode(num,num2){
+        function selPredictIdx(num,num2){
 
             if(num != null){
                 url = "{{ site_url("/predict/question/getSubjectAjax") }}";

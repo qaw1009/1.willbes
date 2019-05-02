@@ -43,10 +43,10 @@
         <form id="all_regi_form" name="all_regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" id="PrIdx" name="PrIdx"    value="{{ $pridx }}">
-            <input type="hidden" id="ProdCode" name="ProdCode" value="{{ element('prodcode', $arr_input) }}">
+            <input type="hidden" id="PredictIdx" name="PredictIdx" value="{{ element('PredictIdx', $arr_input) }}">
             <ul class="markTab">
                 <li><a href="#tab1" class="active">빠른채점</a></li>
-                <li><a href="javascript:gotab({{ element('prodcode', $arr_input) }})">직접입력</a></li>
+                <li><a href="javascript:gotab({{ element('PredictIdx', $arr_input) }})">직접입력</a></li>
             </ul>
             <div id="tab1">
                 <div class="marking">
@@ -94,10 +94,17 @@
     var scoreIs = '{{ $scoreIs }}';
 
     $( document ).ready( function() {
+        @if(date('YmdHi') >= '201905011600')
+        alert('서비스가 종료되었습니다.');
+        var url = "{{ site_url('/m/home/index') }}";
+        location.href = url;
+        @endif
+
         if(scoreIs == 'Y'){
-            _url = '{{ front_url('/predict/popwin4/?prodcode=') }}' + $('#ProdCode').val() + '&pridx='+$('#PrIdx').val();
+            _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();
             location.replace(_url);
         }
+
     });
 
     function maxLengthCheck(object){
@@ -106,8 +113,8 @@
         }
     }
 
-    function gotab(prodcode){
-        _url = '{{ front_url('/predict/popwin3/?prodcode=') }}' + prodcode + '&pridx='+$('#PrIdx').val();
+    function gotab(PredictIdx){
+        _url = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
         location.replace(_url);
     }
 
@@ -118,7 +125,7 @@
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
                     {{--parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1210') }}');--}}
-                    _url = '{{ front_url('/predict/popwin4/?prodcode=') }}' + $('#ProdCode').val() + '&pridx='+$('#PrIdx').val();
+                    _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();
                     location.replace(_url);
                 }
             }, showValidateError, null, false, 'alert');

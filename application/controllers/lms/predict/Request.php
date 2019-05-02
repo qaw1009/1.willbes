@@ -118,16 +118,16 @@ class Request extends \app\controllers\BaseController
      */
     public function create($param)
     {
-        if($param) $ProdCode = $param[0];
+        if($param) $PredictIdx = $param[0];
 
-        if(empty($ProdCode) === true){
+        if(empty($PredictIdx) === true){
             $method = "CREATE";
             $data = array();
             $data['SiteCode'] = '2001';
             $data['MockPart'] = '';
         } else {
             $method = "PUT";
-            $data = $this->predictModel->getProduct($ProdCode);
+            $data = $this->predictModel->getProduct($PredictIdx);
         }
 
         $this->load->view('predict/request/request_create', [

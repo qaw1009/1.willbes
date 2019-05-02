@@ -10,7 +10,7 @@
             <form class="form-table" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
-                <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['ProdCode'] : '' }}">
+                <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['PredictIdx'] : '' }}">
                 <input type="hidden" name="Info" value="">
                 <input type="hidden" id="GroupCcd" name="GroupCcd" >
 
@@ -39,7 +39,7 @@
                         </td>
                         <th>서비스코드</th>
                         <td>
-                            @if($method == 'PUT'){{ $data['ProdCode'] }}@endif
+                            @if($method == 'PUT'){{ $data['PredictIdx'] }}@endif
                         </td>
                     </tr>
 
@@ -75,8 +75,8 @@
                         <th colspan="1">서비스기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
                             사전예약 :
-                            <input type="radio" class="flat" name="PreServiceIsUse" value="Y" @if($data['PreServiceIsUse'] == 'Y') checked @endif />사용
-                            <input type="radio" class="flat" name="PreServiceIsUse" value="N" @if($data['PreServiceIsUse'] == 'N') checked @endif />미사용
+                            <input type="radio" class="flat" name="PreServiceIsUse" value="Y" @if($method == 'PUT') @if($data['PreServiceIsUse'] == 'Y') checked @endif @endif />사용
+                            <input type="radio" class="flat" name="PreServiceIsUse" value="N" @if($method == 'PUT') @if($data['PreServiceIsUse'] == 'N') checked @endif @endif />미사용
                             <input type="text" class="form-control datepicker" style="width:100px;" name="PreServiceSDatm_d" value="@if($method == 'PUT'){{ substr($data['PreServiceSDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="사전예약 시작일">
                             <select name="PreServiceSDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->
@@ -110,8 +110,8 @@
                             </select> 분 <br>
 
                             본서비스 :
-                            <input type="radio" class="flat" name="ServiceIsUse" value="Y" @if($data['ServiceIsUse'] == 'Y') checked @endif />사용
-                            <input type="radio" class="flat" name="ServiceIsUse" value="N" @if($data['ServiceIsUse'] == 'N') checked @endif />미사용
+                            <input type="radio" class="flat" name="ServiceIsUse" value="Y" @if($method == 'PUT') @if($data['ServiceIsUse'] == 'Y') checked @endif @endif />사용
+                            <input type="radio" class="flat" name="ServiceIsUse" value="N" @if($method == 'PUT') @if($data['ServiceIsUse'] == 'N') checked @endif @endif />미사용
                             <input type="text" class="form-control datepicker" style="width:100px;" name="ServiceSDatm_d" value="@if($method == 'PUT'){{ substr($data['ServiceSDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="본서비스 시작일">
                             <select name="ServiceSDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->
@@ -145,8 +145,8 @@
                             </select> 분 <br>
 
                             최종서비스 :
-                            <input type="radio" class="flat" name="LastServiceIsUse" value="Y" @if($data['LastServiceIsUse'] == 'Y') checked @endif />사용
-                            <input type="radio" class="flat" name="LastServiceIsUse" value="N" @if($data['LastServiceIsUse'] == 'N') checked @endif />미사용
+                            <input type="radio" class="flat" name="LastServiceIsUse" value="Y" @if($method == 'PUT') @if($data['LastServiceIsUse'] == 'Y') checked @endif @endif />사용
+                            <input type="radio" class="flat" name="LastServiceIsUse" value="N" @if($method == 'PUT') @if($data['LastServiceIsUse'] == 'N') checked @endif @endif />미사용
                             <input type="text" class="form-control datepicker" style="width:100px;" name="LastServiceSDatm_d" value="@if($method == 'PUT'){{ substr($data['LastServiceSDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="최종서비스 시작일">
                             <select name="LastServiceSDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->

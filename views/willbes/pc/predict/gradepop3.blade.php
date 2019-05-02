@@ -8,7 +8,7 @@
     <form id="all_regi_form" name="all_regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         <input type="hidden" name="PrIdx"    value="{{ $pridx }}">
-        <input type="hidden" name="ProdCode" value="{{ element('prodcode', $arr_input) }}">
+        <input type="hidden" name="PredictIdx" value="{{ element('PredictIdx', $arr_input) }}">
         <div class="willbes-Layer-PassBox NGR">
             <div class="markingTilte">
                 <span>점수 직접 입력</span>
@@ -28,7 +28,7 @@
                             </tr>
                             @foreach($subject_list as $key => $val)
                             <tr>
-                                <th>{{ $val['CcdName'] }}</th>
+                                <th>`</th>
                                 <td>
                                     <input type="text" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
                                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />

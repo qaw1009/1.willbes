@@ -16,6 +16,7 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
         /************************************************************/
@@ -34,14 +35,24 @@
         .check a {display:inline-block; padding:12px 20px 10px 20px;color:#27262c; background:#e3c0a2; margin-left:50px; border-radius:20px}
 
         /*타이머*/
-        .time{width:100%; text-align:center; background:#000}
-        .time_date {text-align:center; padding:20px 0}
-        .time_date table {width:1120px; margin:0 auto}
-        .time_date table td:first-child {font-size:40px}
-        .time_date table td img {width:80%}
-        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
-        .time_txt span {color:#ef6759}
+        .time {width:100%; text-align:center; background:#e1e1e1}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {font-size:40px}
+        .time table td img {width:80%}
+        .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px; font-weight:600}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         .time p {text-alig:center}
+        @@keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        } 
 
         /*하단퀵*/
         #nav {display:block; position:fixed;  bottom:0%;  width:100%; min-width:1210px;  text-align:center; background: url(http://file3.willbes.net/new_gosi/2019/02/EV190211_sky_bg.png) repeat-x; z-index:10;}
@@ -60,23 +71,23 @@
         </div>
 
         <!-- 타이머 -->
-        <div class="evtCtnsBox time">
-            <div class="time_date" id="newTopDday">
+        <div class="evtCtnsBox time NGEB"  id="newTopDday">
+            <div>
                 <table>
                     <tr>
-                    <td class="time_txt"><span>5/9(목) 마감!</span></td>
-                    <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
-                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td class="time_txt">일 </td>
-                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td class="time_txt">:</td>
-                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td class="time_txt">:</td>
-                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt"><span>5/9(목) </span>마감!</td>
+                        <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+                        <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">일 </td>
+                        <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     </tr>
                 </table>                
             </div>

@@ -43,7 +43,7 @@
             <form id="all_regi_form" name="all_regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 <input type="hidden" id="PrIdx" name="PrIdx"    value="{{ $pridx }}">
-                <input type="hidden" id="ProdCode" name="ProdCode" value="{{ $prodcode }}">
+                <input type="hidden" id="PredictIdx" name="PredictIdx" value="{{ $PredictIdx }}">
                 <div>
                     <table cellspacing="0" cellpadding="0" class="table_type table_type2">
                         <col width="25%" />
@@ -246,8 +246,17 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        var $all_regi_form = $('#$all_regi_form');
+        var $all_regi_form = $('#all_regi_form');
         var scoreType = '{{ $scoreType }}';
+
+        $( document ).ready( function() {
+            @if(date('YmdHi') >= '201905011600')
+            alert('서비스가 종료되었습니다.');
+            var url = "{{ site_url('/m/home/index') }}";
+            location.href = url;
+            @endif
+        });
+
         $(function() {
             $('.tg-tit a').click(function() {
                 var $lec_buy_table = $('.tg-cont');
@@ -269,7 +278,7 @@
             $('#ss_'+num).show();
         }
 
-        function resultPop(prodcode){
+        function resultPop(PredictIdx){
             if(scoreType == 'DIRECT'){
                 alert('점수를 직접입력한 경우, 정오표를 제공하지 않습니다.');
                 return ;

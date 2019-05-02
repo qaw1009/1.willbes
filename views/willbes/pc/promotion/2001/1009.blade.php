@@ -223,7 +223,6 @@
                     <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02.jpg"  alt="체력" usemap="#Map1009A"/>                
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="609,230,736,277" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
-                        <area shape="rect" coords="169,308,976,428" href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=234&amp;" target="_blank" alt="10일완성관리반" />
                     </map>  
                 </div>                                
             </div>

@@ -27,8 +27,19 @@
         .time table {width:1120px; margin:0 auto}
         .time table td:first-child {font-size:40px}
         .time table td img {width:70%}
-        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#b71314}
+        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px}
+        .time .time_txt span {color:#b71314; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#ef6759}
+        50%{color:#ff6600}
+        to{color:#ef6759}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#ef6759}
+        50%{color:#ff6600}
+        to{color:#ef6759}
+        } 
+            
 
         .wb_cts00 {background:#181818 url(http://file3.willbes.net/new_gosi/2019/01/EV190108_c1_bg.jpg) no-repeat center top;}
         .wb_cts00 p {width:100%; margin:0 auto;}
@@ -60,11 +71,11 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox time" id="newTopDday">
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
                 <table>
                     <tr>
-                    <td class="time_txt NGEB">11기 - <span>5/8(수) 마감!</span></td>
+                    <td class="time_txt">11기 - <span>5/8(수) </span>마감!</td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>

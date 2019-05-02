@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#3d3f3d url(http://file3.willbes.net/new_gosi/2018/07/EV180718_c1_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:#3d3f3d url(https://static.willbes.net/public/images/promotion/2019/05/1076_top_01_bg.jpg) no-repeat center top; position:relative}
 
         .wb_cts00 {background:#fff; padding-bottom:100px}
         .wb_cts00 iframe {width:870px; height:480px;}
@@ -51,9 +51,9 @@
         .tabContaier a.active img.on {display:block}
         .tabContaier ul:after {content:""; display:block; clear:both}
 
-        .wb_cts03 {background:#34372e url(http://file3.willbes.net/new_gosi/2018/07/EV180718_c7_bg.jpg) repeat;}
+        .wb_cts03 {background:#34372e url(https://static.willbes.net/public/images/promotion/2019/05/1076_06_bg.jpg) repeat;}
 
-        .wb_cts04 {background:#ebeb36 url(http://file3.willbes.net/new_gosi/2018/07/EV180718_c2_bg.jpg) repeat-x center top}
+        .wb_cts04 {background:#ebeb36 url(https://static.willbes.net/public/images/promotion/2019/05/EV180718_c2_bg.jpg) repeat-x center top}
         .bannerImg3 {position:relative; width:980px; margin:0 auto; background:#ebeb36; padding-bottom:100px}
         .bannerImg3 p {position:absolute; top:45%; width:30px; z-index:90;}
         .bannerImg3 img {width:100%}
@@ -99,7 +99,7 @@
             <div>
                 <!-- a href="javascript:alert('마감되었습니다.');" /-->
                 <a href="#event">
-                    <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c12.png" alt="윌비스 문병일 사회" >
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/EV180718_c12.png" alt="윌비스 문병일 사회" >
                 </a>
             </div>
         </div>
@@ -129,22 +129,23 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c11.png" alt="사회, 만점으로 가는 매직로드 문병일 사회 " usemap="#Map20180719_c1" border="0"  />
-            <map name="Map20180719_c1" >
-                <area shape="rect" coords="819,1068,1043,1171" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150655') }}" target="_blank" onfocus="this.blur();" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_top_01.png" alt="사회, 만점으로 가는 매직로드 문병일 사회 "/><br>
+            <a href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150655') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_top_02.gif" alt="신청하기"  /></a>
         </div><!--WB_top//-->
 
-        <div class="evtCtnsBox wb_cts04" >
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c2.jpg" alt="윌비스 문병일 사회 더 강하고 새로워진 압축 커리큘럼으로 진화했습니다."/><br>
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c9.jpg" alt="윌비스 문병일 사회 더 강하고 새로워진 압축 커리큘럼으로 진화했습니다."/>
+        <div class="evtCtnsBox wb_cts02" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_01.jpg" alt="윌비스 문병일 사회 더 강하고 새로워진 압축 커리큘럼으로 진화했습니다."/>
+        </div>
+
+        <div class="evtCtnsBox wb_cts04" >            
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_02.jpg" alt="윌비스 문병일 사회 더 강하고 새로워진 압축 커리큘럼으로 진화했습니다."/>
             <div class="bannerImg3">
                 <ul id="slidesImg3">
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c11_1.jpg" alt=""/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c11_2.jpg" alt=""/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c11_3.jpg" alt=""/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c11_4.jpg" alt=""/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c11_5.jpg" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_03_1.jpg" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_03_2.jpg" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_03_3.jpg" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_03_4.jpg" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_03_5.jpg" alt=""/></li>
                 </ul>
                 <p class="leftBtn3"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_gosi/com_img/arrow01_1.png"></a></p>
                 <p class="rightBtn3"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_gosi/com_img/arrow01_2.png"></a></p>
@@ -153,10 +154,10 @@
 
         <div class="evtCtnsBox wb_cts00" >
             <ul>
-                <li><img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c4.jpg" alt="윌비스 문병일 효율적 경제 학습, 고득점 사회 완성!"  ></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_04.jpg" alt="윌비스 문병일 효율적 경제 학습, 고득점 사회 완성!"  ></li>
                 <li>
-                    <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c5_1.gif" alt="" style="padding-right:10px;">
-                    <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c5_2.gif" alt=""></li>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_05_1.gif" alt="" style="padding-right:10px;">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_05_2.gif" alt=""></li>
                 <li>
                     <iframe src="https://www.youtube.com/embed/iku-4RrvuDE?rel=0" frameborder="0" allowfullscreen></iframe>
                 </li>
@@ -164,14 +165,14 @@
         </div><!--WB_cts00//-->
 
         <div class="evtCtnsBox wb_cts03" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c7.jpg" alt="윌비스 문병일 사회, 만점으로 가는 매직로드" usemap="#Map180719_c2" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_06.jpg" alt="윌비스 문병일 사회, 만점으로 가는 매직로드" usemap="#Map180719_c2" border="0" />
             <map name="Map180719_c2" >
                 <area shape="rect" coords="723,773,971,913" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150655') }}" onfocus="this.blur();" target="_blank" />
             </map>
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts05">
-            <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c8.jpg" alt="영어 김영교수 선행반 수강신청 바로가기 " />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_07.jpg" alt="영어 김영교수 선행반 수강신청 바로가기 " />
         </div><!--wb_cts05//-->
 
     </div>

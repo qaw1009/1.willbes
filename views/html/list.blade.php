@@ -317,14 +317,14 @@
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
                         <col style="width: 75px;">
-                        <col style="width: 85px;">
-                        <col style="width: 490px;">
+                        <col style="width: 95px;">
+                        <col>
                         <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
                             <td class="w-list">문제풀이</td>
-                            <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
+                            <td class="w-name">사전조사서특강<br/><span class="tx-blue">정채영</span></td>
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">
                                     <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>

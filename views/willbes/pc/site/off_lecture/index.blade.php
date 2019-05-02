@@ -256,9 +256,9 @@
                         <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
                             <colgroup>
                                 <col style="width: 75px;">
-                                <col style="width: 85px;">
+                                <col style="width: 95px;">
                                 <col style="width: 75px;">
-                                <col style="width: 355px;">
+                                <col>
                                 <col style="width: 165px;">
                                 <col style="width: 185px;">
                             </colgroup>

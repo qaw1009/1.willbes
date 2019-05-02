@@ -11,10 +11,10 @@
                     <label class="col-md-1 control-label">합격예측</label>
                     <div class="col-md-11">
 
-                        <select class="form-control mr-5" id="search_ProdCode" name="search_ProdCode" onChange="selProd(this.value)">
+                        <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx" onChange="selProd(this.value)">
                             <option value="">합격예측명</option>
                             @foreach($productList as $key => $val)
-                                <option value="{{ $val['ProdCode'] }}" @if($prodcode == $val['ProdCode']) selected @endif>{{ $val['ProdName'] }}</option>
+                                <option value="{{ $val['PredictIdx'] }}" @if($PredictIdx == $val['PredictIdx']) selected @endif>{{ $val['ProdName'] }}</option>
                             @endforeach
                         </select>
 
@@ -28,8 +28,8 @@
         <div class="x_content mb-20">
             <form class="form-horizontal" id="regi_form" name="regi_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
-                <input type="hidden" id="ProdCode" name="ProdCode" value="{{ $prodcode }}" />
-                <div style="text-align:right; margin:10px;"><input type="button" value="예상합격선 저장" onClick="registLine('{{ $prodcode }}')"/></div>
+                <input type="hidden" id="PredictIdx" name="PredictIdx" value="{{ $PredictIdx }}" />
+                <div style="text-align:right; margin:10px;"><input type="button" value="예상합격선 저장" onClick="registLine('{{ $PredictIdx }}')"/></div>
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
@@ -105,7 +105,7 @@
                                         <input type="text" name="StabilityAvrPoint[]" value="{{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : ""}}" style="width:60px;" /> ~
                                     </td>
                                     <td>
-                                        <input type="button" value="계산" onClick="calculate('{{ $val2['TakeMockPart'] }}','{{ $val2['TakeArea'] }}','{{ $prodcode }}')" />
+                                        <input type="button" value="계산" onClick="calculate('{{ $val2['TakeMockPart'] }}','{{ $val2['TakeArea'] }}','{{ $PredictIdx }}')" />
                                     </td>
                                 </tr>
                             @endforeach
@@ -124,21 +124,21 @@
 
         function selProd(value){
 
-            location.href = "/predict/passline/?prodcode="+value;
+            location.href = "/predict/passline/?PredictIdx="+value;
 
         }
 
-        function registLine(prodcode){
+        function registLine(PredictIdx){
             var _url = '{{ site_url('/predict/passline/store') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    location.replace('{{ site_url('/predict/passline/') }}?prodcode=' + prodcode);
+                    location.replace('{{ site_url('/predict/passline/') }}?PredictIdx=' + PredictIdx);
                 }
             }, showValidateError, null, false, 'alert');
         }
 
-        function calculate(TakeMockPart, TakeArea, ProdCode){
+        function calculate(TakeMockPart, TakeArea, PredictIdx){
             var per1 = $('#per1_'+TakeMockPart+'_'+TakeArea).val();
             var per2 = $('#per2_'+TakeMockPart+'_'+TakeArea).val();
             var per3 = $('#per3_'+TakeMockPart+'_'+TakeArea).val();
@@ -162,7 +162,7 @@
             var data = {
                 '{{ csrf_token_name() }}' : $regi_form.find('[name="{{ csrf_token_name() }}"]').val(),
                 '_method' : 'POST',
-                'ProdCode': ProdCode,
+                'PredictIdx': PredictIdx,
                 'TakeArea': TakeArea,
                 'TakeMockPart': TakeMockPart,
                 'Per1': per1,

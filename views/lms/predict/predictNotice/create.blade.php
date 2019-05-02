@@ -31,7 +31,7 @@
                         <select class="form-control" id="predict_idx" name="predict_idx" required="required" title="합격예측기본데이터">
                             <option value="">합격예측기본데이터</option>
                             @foreach($arr_predict_data as $row)
-                                <option value="{{ $row['ProdCode'] }}" @if($method == 'PUT' && ($row['ProdCode'] == $data['PredictIdx'])) selected="selected" @endif>{{ $row['ProdName'] }}</option>
+                                <option value="{{ $row['PredictIdx'] }}" @if($method == 'PUT' && ($row['PredictIdx'] == $data['PredictIdx'])) selected="selected" @endif>{{ $row['ProdName'] }}</option>
                             @endforeach
                         </select>
                     </div>

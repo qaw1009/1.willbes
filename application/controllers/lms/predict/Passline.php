@@ -36,10 +36,10 @@ class Passline extends \app\controllers\BaseController
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-        $prodcode = element('prodcode',$arr_input);
+        $PredictIdx = element('PredictIdx',$arr_input);
 
-        if(empty($prodcode)){
-            $prodcode = '1';
+        if(empty($PredictIdx)){
+            $PredictIdx = '1';
         }
 
         //합격예측 기본정보호출
@@ -47,7 +47,7 @@ class Passline extends \app\controllers\BaseController
         $serialList = $this->predictModel->getSerialAll();
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $areaList = $this->predictModel->getArea($sysCode_Area);
-        $agoData = $this->predictModel->statisticsListLine2($prodcode);
+        $agoData = $this->predictModel->statisticsListLine2($PredictIdx);
 
         $dtSet = array();
         foreach ($agoData as $key => $val){
@@ -222,9 +222,9 @@ class Passline extends \app\controllers\BaseController
             }
         }
 
-        if(empty($prodcode) == false) {
+        if(empty($PredictIdx) == false) {
 
-            $list = $this->predictModel->statisticsListLine($prodcode);
+            $list = $this->predictModel->statisticsListLine($PredictIdx);
 
             foreach ($list as $key => $val) {
 
@@ -316,7 +316,7 @@ class Passline extends \app\controllers\BaseController
 
         $this->load->view('predict/passline/index', [
             'productList' => $productList,
-            'prodcode' => $prodcode,
+            'PredictIdx' => $PredictIdx,
             'dataSet' => $dataSet
         ]);
     }
@@ -327,12 +327,12 @@ class Passline extends \app\controllers\BaseController
     public function list()
     {
         $rules = [
-            ['field' => 'search_ProdCode', 'label' => '코드', 'rules' => 'trim|is_natural_no_zero']
+            ['field' => 'search_PredictIdx', 'label' => '코드', 'rules' => 'trim|is_natural_no_zero']
         ];
 
         if ($this->validate($rules) === false) return;
 
-        $ProdCode = $this->input->post('search_ProdCode');
+        $PredictIdx = $this->input->post('search_PredictIdx');
 
         $condition = [
             'EQ' => [
@@ -341,11 +341,11 @@ class Passline extends \app\controllers\BaseController
             ],
         ];
 
-        if(empty($ProdCode) === true) {
-            $ProdCode = "100000";
+        if(empty($PredictIdx) === true) {
+            $PredictIdx = "100000";
         }
 
-        list($data, $count) = $this->predictModel->statisticsList($ProdCode, $condition);
+        list($data, $count) = $this->predictModel->statisticsList($PredictIdx, $condition);
 
         return $this->response([
             'recordsTotal' => $count,
@@ -360,7 +360,7 @@ class Passline extends \app\controllers\BaseController
     public function store()
     {
         $rules = [
-            ['field' => 'ProdCode', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'PredictIdx', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
 
         if ($this->validate($rules) === false) return;
@@ -373,14 +373,14 @@ class Passline extends \app\controllers\BaseController
      *  기대권 / 유력권 / 안정권
      */
     public function calculateAjax(){
-        $ProdCode = $this->_req("ProdCode");
+        $PredictIdx = $this->_req("PredictIdx");
         $TakeMockPart = $this->_req("TakeMockPart");
         $TakeArea = $this->_req("TakeArea");
         $Per1 = $this->_req("Per1");
         $Per2 = $this->_req("Per2");
         $Per3 = $this->_req("Per3");
 
-        $data = $this->predictModel->calculate($ProdCode, $TakeMockPart, $TakeArea, $Per1, $Per2, $Per3);
+        $data = $this->predictModel->calculate($PredictIdx, $TakeMockPart, $TakeArea, $Per1, $Per2, $Per3);
         return $this->response([
             'data' => $data
         ]);

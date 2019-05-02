@@ -8,7 +8,7 @@
     <form id="all_regi_form" name="all_regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         <input type="hidden" name="PrIdx"    value="{{ $pridx }}">
-        <input type="hidden" name="ProdCode" value="{{ element('prodcode', $arr_input) }}">
+        <input type="hidden" name="PredictIdx" value="{{ element('PredictIdx', $arr_input) }}">
         <div class="willbes-Layer-PassBox NGR">
             <div class="markingTilte">
                 <span>빠른 채점</span>

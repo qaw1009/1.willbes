@@ -118,7 +118,7 @@ class Question extends \app\controllers\BaseController
             $data = array();
             $qData = array();
             $subject = "";
-            $prodcode = "";
+            $PredictIdx = "";
             $filepath = "";
         } else {
             $method = "PUT";
@@ -129,7 +129,7 @@ class Question extends \app\controllers\BaseController
                 return;
             }
             $subject = $data['SubjectCode'];
-            $prodcode = $data['ProdCode'];
+            $PredictIdx = $data['PredictIdx'];
             $filepath = $this->config->item('upload_url_predict', 'predict');
             $filepath = $filepath.$idx."/";
         }
@@ -139,7 +139,7 @@ class Question extends \app\controllers\BaseController
             'siteCodeDef' => '',
             'productList' => $productList,
             'subject' => $subject,
-            'prodcode' => $prodcode,
+            'PredictIdx' => $PredictIdx,
             'data' => $data,
             'qData' => $qData,
             'filepath' => $filepath,
@@ -156,7 +156,7 @@ class Question extends \app\controllers\BaseController
         $rules = [
             ['field' => 'PaperName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'ProdCode', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'PredictIdx', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'SubjectCode', 'label' => '시험지명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -181,7 +181,7 @@ class Question extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => 'PaperName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
-            ['field' => 'ProdCode', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'PredictIdx', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'SubjectCode', 'label' => '시험지명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -283,8 +283,8 @@ class Question extends \app\controllers\BaseController
     }
 
     public function getSubjectAjax(){
-        $ProdCode = $this->_req("ProdCode");
-        $list = $this->predictModel->getSubject($ProdCode);
+        $PredictIdx = $this->_req("PredictIdx");
+        $list = $this->predictModel->getSubject($PredictIdx);
         return $this->response([
             'data' => $list
         ]);

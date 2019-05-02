@@ -272,9 +272,9 @@ class BasePassPredict extends \app\controllers\FrontController
      * 합격예측서비스인원
      */
     public function autocount($param){
-        $ProdCode = $param['prodcode'];
+        $PredictIdx = $param['PredictIdx'];
         $PromotionCode = $param['promotioncode'];
-        $data = $this->surveyModel->autocount($ProdCode, $PromotionCode);
+        $data = $this->surveyModel->autocount($PredictIdx, $PromotionCode);
         $CNT = $data['CNT'];
         $PRECNT = $data['PRECNT'];
         $RCNT = $data['RCNT'];
@@ -295,9 +295,9 @@ class BasePassPredict extends \app\controllers\FrontController
      * 합격예측 실시간 입력자평균
      */
     public function areaAvrAjax(){
-        $ProdCode = $this->_req("ProdCode");
+        $PredictIdx = $this->_req("PredictIdx");
         $order = 'area';
-        $data = $this->surveyModel->statisticsListLine($ProdCode, $order);
+        $data = $this->surveyModel->statisticsListLine($PredictIdx, $order);
         return $this->response([
             'data' => $data
         ]);
@@ -323,11 +323,11 @@ class BasePassPredict extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        $prodcode = element('prodcode', $arr_input);
+        $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
         $ppidx = element('ppidx', $arr_input);
 
-        $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
+        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
 
         if(empty($ppidx) === false) {
             $ppidx = $ppidx;
@@ -338,7 +338,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $filepath = $this->config->item('upload_url_predict_lms', 'predict');
         $filepath = $filepath.$ppidx."/";
 
-        $question_list= $this->surveyModel->predictQuestionCall($ppidx, $prodcode, $pridx);
+        $question_list= $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
         foreach ($subject_list as $key => $val){
             $tMpIdx[] =  $val['PpIdx'];
         }
@@ -362,7 +362,7 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         $this->load->view('willbes/pc/predict/gradepop1', [
-            'prodcode'      => $prodcode,
+            'PredictIdx'      => $PredictIdx,
             'ppidx'         => $ppidx,
             'subject_list'  => $subject_list,
             'question_list' => $question_list,
@@ -414,14 +414,14 @@ class BasePassPredict extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        $prodcode = element('prodcode', $arr_input);
+        $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
 
-        $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
+        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
 
         $ppidx = '';
 
-        $question_list= $this->surveyModel->predictQuestionCall($ppidx, $prodcode, $pridx);
+        $question_list= $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
 
         $j = 1;
         $newQuestion = array();
@@ -450,8 +450,8 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        $score1 = $this->surveyModel->getScore1($pridx, $prodcode);
-        $score2 = $this->surveyModel->getScore2($pridx, $prodcode);
+        $score1 = $this->surveyModel->getScore1($pridx, $PredictIdx);
+        $score2 = $this->surveyModel->getScore2($pridx, $PredictIdx);
         $scoredata = array();
         $scoreIs = 'N';
         $addscoreIs = 'N';
@@ -487,7 +487,7 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop2', [
-            'prodcode'      => $prodcode,
+            'PredictIdx'      => $PredictIdx,
             'subject_list'  => $subject_list,
             'question_list' => $question_list,
             'arr_input'     => $arr_input,
@@ -528,14 +528,14 @@ class BasePassPredict extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        $prodcode = element('prodcode', $arr_input);
+        $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
 
-        $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
+        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
         $subject_grade = $this->surveyModel->orginGradeCall($pridx);
 
         $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop3', [
-            'prodcode'      => $prodcode,
+            'PredictIdx'      => $PredictIdx,
             'subject_list'  => $subject_list,
             'subject_grade'  => $subject_grade,
             'arr_input'     => $arr_input,
@@ -571,12 +571,12 @@ class BasePassPredict extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        $prodcode = element('prodcode', $arr_input);
+        $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
         $ppidx = '';
 
-        $subject_list = $this->surveyModel->subjectList($prodcode, $pridx);
-        $question_list = $this->surveyModel->predictQuestionCall($ppidx, $prodcode, $pridx);
+        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
+        $question_list = $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
 
         foreach($question_list as $key => $val){
             $PpIdx = $val['PpIdx'];
@@ -603,8 +603,8 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        $score1 = $this->surveyModel->getScore1($pridx, $prodcode);
-        $score2 = $this->surveyModel->getScore2($pridx, $prodcode);
+        $score1 = $this->surveyModel->getScore1($pridx, $PredictIdx);
+        $score2 = $this->surveyModel->getScore2($pridx, $PredictIdx);
         $scoredata = array();
         $scoreIs = 'N';
         $addscoreIs = 'N';
@@ -640,7 +640,7 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop4', [
-            'prodcode' => $prodcode,
+            'PredictIdx' => $PredictIdx,
             'subject_list' => $subject_list,
             'question_list' => $question_list,
             'newQuestion' => $newQuestion,
@@ -656,10 +656,10 @@ class BasePassPredict extends \app\controllers\FrontController
     public function totalgraph(){
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        $prodcode = element('prodcode', $arr_input);
+        $PredictIdx = element('PredictIdx', $arr_input);
         $spidx = element('spidx', $arr_input);
 
-        $arealist = $this->surveyModel->areaList($prodcode);
+        $arealist = $this->surveyModel->areaList($PredictIdx);
         $gradelist = $this->surveyModel->gradeList();
 
         //한국사 영어 경찰학개론 국어 사회
@@ -815,50 +815,11 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         //과목별 오답랭킹
-//        $wrongList = $this->surveyModel->wrongRank($prodcode);
-//        $wrongData = array();
-//        $cntPerAdd = 0;
-//        $i = 0;
-//        foreach ($wrongList as $key => $val){
-//            $cnt = $val['wcnt'];
-//            $PpIdx = $val['PpIdx'];
-//            $PqIdx = $val['PqIdx'];
-//            $Answer = $val['Answer'];
-//            $IsWrong = $val['IsWrong'];
-//            $PaperName = $val['PaperName'];
-//            $RightAnswer = $val['RightAnswer'];
-//            $allcnt = $val['allcnt'];
-//
-//            if($IsWrong == 'Y'){
-//                $yper = (float)100 - (float)$cntPerAdd;
-//                $wrongData[$PpIdx][$i]['CNT'][$Answer] = $yper;
-//                $wrongData[$PpIdx]['PaperName'] = $PaperName;
-//                $wrongData[$PpIdx][$i]['RightAnswer'] = $RightAnswer;
-//                $wrongData[$PpIdx][$i]['PqIdx'] = $PqIdx;
-//
-//                $cntPerAdd = 0;
-//
-//            } else {
-//                if($cnt == 0){
-//                    $cntPer = 0;
-//                } else {
-//                    $cntPer = ROUND($cnt / $allcnt * 100,2);
-//                }
-//                $cntPerAdd = (float)$cntPerAdd + (float)$cntPer;
-//                $wrongData[$PpIdx][$i]['CNT'][$Answer] = $cntPer;
-//                $wrongData[$PpIdx]['PaperName'] = $PaperName;
-//                $wrongData[$PpIdx][$i]['RightAnswer'] = $RightAnswer;
-//                $wrongData[$PpIdx][$i]['PqIdx'] = $PqIdx;
-//
-//
-//            }
-//            $i++;
-//        }
+        //$wrongList = $this->surveyModel->wrongRank($PredictIdx);
 
-        //var_dump($wrongData);
 
         $this->load->view('willbes/pc/predict/graph', [
-            'prodcode' => $prodcode,
+            'PredictIdx' => $PredictIdx,
             'spidx' => $spidx,
             'areaList' => $dtSet,
             'gradeList' => $gradeSet,
@@ -868,8 +829,7 @@ class BasePassPredict extends \app\controllers\FrontController
             'titleSet' => $titleSet,
             'typeSet' => $typeSet,
             'questionSet' => $questionSet,
-            'numberSet' => $numberSet,
-            //'wrongList' => $wrongData
+            'numberSet' => $numberSet
         ], false);
     }
 
@@ -1008,7 +968,7 @@ class BasePassPredict extends \app\controllers\FrontController
             //1배수컷
             $onePerPer = ROUND(($onePerSum / 500) * 100,2);
             //내점수
-            $OnePerCut = $dataline['OnePerCut'];
+            $OnePerCut = (float)$dataline['OnePerCut'];
             $OnePer = ROUND(($OnePerCut / 500) * 100,2);
 
             if($AdjustPointIs == 'Y'){
@@ -1041,7 +1001,7 @@ class BasePassPredict extends \app\controllers\FrontController
             }
 
             $this->load->view('willbes/pc/predict/private', [
-                'prodcode' => $idx,
+                'PredictIdx' => $idx,
                 'subjectStr' => $subjectStr,
                 'data' => $data,
                 'scoreList' => $scoredata,

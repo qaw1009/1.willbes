@@ -11,10 +11,10 @@
                     <label class="col-md-1 control-label">합격예측</label>
                     <div class="col-md-11">
 
-                        <select class="form-control mr-5" id="search_ProdCode" name="search_ProdCode" onChange="selProd(this.value)">
+                        <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx" onChange="selProd(this.value)">
                             <option value="">합격예측명</option>
                             @foreach($productList as $key => $val)
-                                <option value="{{ $val['ProdCode'] }}">{{ $val['ProdName'] }}</option>
+                                <option value="{{ $val['PredictIdx'] }}">{{ $val['ProdName'] }}</option>
                             @endforeach
                         </select>
 
@@ -49,7 +49,7 @@
     <form class="form-horizontal" id="regi_form" name="regi_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="col-md-9">
-            <input type="hidden" id="ProdCode" name="ProdCode" value="" />
+            <input type="hidden" id="PredictIdx" name="PredictIdx" value="" />
         </div>
         <div class="col-md-3 text-right">
             - 건수가 많아서 정상동작 안할시 사용해주세요.
@@ -97,7 +97,7 @@
         $(document).ready(function() {
             // 검색 초기화
             $('#searchInit, #tabs_site_code > li').on('click', function () {
-                $search_form.find('[name^=search_]:not(#search_ProdCode)').each(function () {
+                $search_form.find('[name^=search_]:not(#search_PredictIdx)').each(function () {
                      $(this).val('');
                 });
 
@@ -203,7 +203,7 @@
         }
 
         function selProd(value){
-            $('#ProdCode').val(value);
+            $('#PredictIdx').val(value);
         }
     </script>
 @stop

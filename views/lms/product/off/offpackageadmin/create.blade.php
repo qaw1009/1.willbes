@@ -279,7 +279,7 @@
                                         <td>{{$row['CourseName']}}</td>
                                         <td>{{$row['SubjectName']}}</td>
                                         <td>{{$row['wProfName_String']}}</td>
-                                        <td style='text-align:left'>{{$row['ProdName']}}</td>
+                                        <td style='text-align:left'>[{{$row['ProdCodeSub']}}] {{$row['ProdName']}}</td>
                                         <td>{{number_format($row['RealSalePrice'])}}원</td>
                                         <td>{!!  $row['IsLecOpen'] === 'N' ? '<span class="red">폐강</span>' :'개설' !!}</td>
                                         <td>{!!  $row['AcceptStatusCcd_Name'] === '접수마감' ? '<span class="red">'.$row['AcceptStatusCcd_Name'].'</span>' :$row['AcceptStatusCcd_Name'] !!}</td>
@@ -334,7 +334,7 @@
                                         <td>{{$row['CourseName']}}</td>
                                         <td>{{$row['SubjectName']}}</td>
                                         <td>{{$row['wProfName_String']}}</td>
-                                        <td style='text-align:left'>{{$row['ProdName']}}</td>
+                                        <td style='text-align:left'>[{{$row['ProdCodeSub']}}] {{$row['ProdName']}}</td>
                                         <td>{{number_format($row['RealSalePrice'])}}원</td>
                                         <td>{!!  $row['IsLecOpen'] === 'N' ? '<span class="red">폐강</span>' :'개설' !!}</td>
                                         <td>{!!  $row['AcceptStatusCcd_Name'] === '접수마감' ? '<span class="red">'.$row['AcceptStatusCcd_Name'].'</span>' :$row['AcceptStatusCcd_Name'] !!}</td>

@@ -79,7 +79,6 @@
         <div class="evtCtnsBox evt01">
 		<img src="https://static.willbes.net/public/images/promotion/2019/04/1074_01.jpg" usemap="#Map_pass_go" title="현직근무자가 추천하는 기특한 국어" border="0" />
 			<map name="Map_pass_go">
-			  <area shape="rect" coords="723,861,1017,926" href="https://cafe.naver.com/pskorean" target="_blank" alt="합격수기">
 			  <area shape="rect" coords="773,866,1045,914" href="https://cafe.naver.com/pskorean" target="_blank" alt="합격수기">
 			</map>
         </div>

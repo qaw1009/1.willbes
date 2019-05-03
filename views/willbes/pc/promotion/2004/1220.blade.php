@@ -195,10 +195,6 @@
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_05_01.jpg" usemap="#Map1220A" title="소방직 설명회" border="0"  />
-            <map name="Map1220A" id="Map1220A">
-                <area shape="rect" coords="339,876,786,963" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=220&amp;" target="_blank" alt="설명회신청하기" />
-            </map>
             <div>
                 <ul class="NSK-Black">
                     <li><a href="#lec1" class="active">공통과목 선행학습반</a></li>
@@ -217,6 +213,10 @@
                     </map>
                 </div>              
             </div>
+			<img src="https://static.willbes.net/public/images/promotion/2019/04/1220_05_01.jpg" usemap="#Map1220A" title="소방직 설명회" border="0"  />
+            <map name="Map1220A" id="Map1220A">
+                <area shape="rect" coords="339,876,786,963" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=220&amp;" target="_blank" alt="설명회신청하기" />
+            </map>
         </div>
 
         <div class="evt06">

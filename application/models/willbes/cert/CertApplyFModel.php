@@ -185,7 +185,7 @@ class CertApplyFModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if($certtypeccd === '684002' || $cert_idx === '13') { //제대군인인증, 꿀팁이벤트(추천인) 일 경우 자동 승인 처리   ///아오 썅 하드코딩하고 있네
+            if($certtypeccd === '684002' || $cert_idx === '13' || $cert_idx === '20') { //제대군인인증, 꿀팁이벤트(추천인) 일 경우 자동 승인 처리   ///하드코딩하고 있네
                 $data = array_merge($data,[
                     'ApprovalStatus' => 'Y'
                 ]);
@@ -295,7 +295,6 @@ class CertApplyFModel extends WB_Model
      */
     public function findPassTakeNumber($input=[])
     {
-        $CenCode = element('CenCode', $input);
         $CertIdx = element('CertIdx', $input);
         $TakeKind = element('TakeKind', $input);
         $TakeArea = element('TakeArea', $input);

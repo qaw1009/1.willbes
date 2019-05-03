@@ -230,7 +230,8 @@ class CertApplyFModel extends WB_Model
                             lms_product A 
                             join lms_cert_r_product B on A.ProdCode = B.ProdCode
                             join lms_cert C on B.CertIdx = C.CertIdx
-                        Where A.IsStatus='Y' and B.IsStatus='Y' and C.IsStatus='Y' and C.IsUse='Y' and (now() between C.CertStartDate and C.CertEndDate) ";
+                        Where A.IsStatus='Y' and B.IsStatus='Y' and C.IsStatus='Y' And C.CertConditionCcd = '685001'
+                                and C.IsUse='Y' and (now() between C.CertStartDate and C.CertEndDate) ";
 
             $where = $this->_conn->makeWhere(['EQ'=>['B.ProdCode'=>$prod_code]])->getMakeWhere(true);
             $order_by = "order by C.CertIdx desc limit 1";
@@ -295,12 +296,13 @@ class CertApplyFModel extends WB_Model
     public function findPassTakeNumber($input=[])
     {
         $CenCode = element('CenCode', $input);
+        $CertIdx = element('CertIdx', $input);
         $TakeKind = element('TakeKind', $input);
         $TakeArea = element('TakeArea', $input);
         $TakeNo = element('TakeNo', $input);
 
         $arr_condition = [
-            'EQ'=>['CenCode'=>$CenCode , 'TakeKindCcd'=>$TakeKind, 'TakeAreaCcd'=>$TakeArea, 'PassTakeNumber'=>$TakeNo]
+            'EQ'=>['CertIdx' =>$CertIdx, 'TakeKindCcd'=>$TakeKind, 'TakeAreaCcd'=>$TakeArea, 'PassTakeNumber'=>$TakeNo]
         ];
 
         $column = " count(*) as checkNum ";

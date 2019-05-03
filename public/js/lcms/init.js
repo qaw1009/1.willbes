@@ -89,7 +89,7 @@ $(document).ready(function() {
     }
 
     // to json from query string
-    var qs = JSON.parse(Base64.decode(json.q));
+    var qs = JSON.parse(Base64.decode(decodeURIComponent(json.q)));
 
     // set search form input value
     var search_pattern = /^search_/i;   // input text, select box

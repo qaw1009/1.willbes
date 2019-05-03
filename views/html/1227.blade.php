@@ -78,6 +78,7 @@
 
         <div class="evtCtnsBox evt03" id="evt03">
             Big.1 경품 특전 
+            Big.1 경품 특전 111
             {{--5월 12일까지 노출 화면, 날짜 설정해주세요.--}}
             <div>룰렛 이벤트 5/13일 Coming soon!</div>
 

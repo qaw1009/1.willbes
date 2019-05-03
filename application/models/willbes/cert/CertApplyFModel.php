@@ -103,8 +103,8 @@ class CertApplyFModel extends WB_Model
 
         $from = ' from 
                         lms_cert A
-                        join lms_cert_r_product B on A.CertIdx = B.CertIdx and B.IsStatus=\'Y\'
-                        join lms_product C on B.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                        join lms_cert_r_product B on A.CertIdx = B.CertIdx
+                        join lms_product C on B.ProdCode = C.ProdCode
                         join lms_product_lecture D on C.ProdCode = D.ProdCode
                         join lms_sys_code D1 on D.LearnPatternCcd = D1.Ccd
                         join lms_sys_code D2 on D.PackTypeCcd = D2.Ccd
@@ -164,7 +164,6 @@ class CertApplyFModel extends WB_Model
                 $AttachFileReal= $upload_result[0]['client_name'];
                 $AttachFileName= $upload_result[0]['file_name'];
             }
-
 
             $data = [
               'CertIdx' => $cert_idx,

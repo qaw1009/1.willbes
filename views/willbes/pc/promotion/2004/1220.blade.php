@@ -73,7 +73,7 @@
         .evtTabCts {margin-top:10px}
 
         .evt04 {background:#f7f7f7} 
-        .evt05 {background:#fdd3d3; padding-top:50px; pxpadding-bottom:0px}  
+        .evt05 {background:#fdd3d3; padding-top:280px; pxpadding-bottom:0px}  
         .evt05 div {width:980px; margin:0 auto}
         .evt05 div li {display:inline; float:left; width:50%}
         .evt05 div li a {display:block; text-align:center; background:#bfa09b; color:#fdd6d6; border-radius:10px; margin:10px; height:80px; line-height:80px; font-size:35px}
@@ -212,7 +212,7 @@
                         <area shape="rect" coords="113,390,865,489" href="https://pass.willbes.net/pass/OffPackage/show/prod-code/153102" target="_blank" alt="연간종합반 수강신청하기" />
                     </map>
                 </div>              
-            </div><br>
+            </div>
 			<img src="https://static.willbes.net/public/images/promotion/2019/04/1220_05_01.jpg" usemap="#Map1220A" title="소방직 설명회" border="0"  />
             <map name="Map1220A" id="Map1220A">
                 <area shape="rect" coords="326,1098,791,1197" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=220&amp;" target="_blank" alt="설명회신청하기" />

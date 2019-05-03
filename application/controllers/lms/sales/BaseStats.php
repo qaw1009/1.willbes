@@ -224,8 +224,9 @@ class BaseStats extends \app\controllers\BaseController
     protected function show($params = [])
     {
         $prod_code = $params[0];
-        // + 기호가 공백으로 처리되는 것에 대한 예외 처리 추가
-        $qs = json_decode(base64_decode(str_replace(' ', '+', $this->_reqG('q'))), true);
+        // + 기호가 공백으로 처리되는 것에 대한 예외 처리 추가 (공통스크립트 dtParamsToQueryString > encodeURIComponent 사용하여 해결)
+        //$qs = json_decode(base64_decode(str_replace(' ', '+', $this->_reqG('q'))), true);
+        $qs = json_decode(base64_decode($this->_reqG('q')), true);
         $site_code = element('search_site_code', $qs);
 
         if (empty($prod_code) === true || empty($site_code) === true) {

@@ -72,7 +72,7 @@
             <br>
             불가능을 가능케 하고자 합니다.<br>
             최종합격! 윌비스 신광은 경찰학원이 함께 합니다.<br>
-            <div class="btn NGEB"><a href="javascript:pullOpen();" >필기합격 & 친구추천 한번에 인증하기 ></a></div>
+            <div class="btn NGEB"><a href="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"alert('이미 이벤트에 참가하셨습니다.')"!!}@endif" >필기합격 & 친구추천 한번에 인증하기 ></a></div>
         </div>
         <!--evt02//-->
 
@@ -129,9 +129,12 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        function pullOpen(){
-            var url = "" ;
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '{{front_url('')}}/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+            @endif
         }
     </script>
 @stop

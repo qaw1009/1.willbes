@@ -251,7 +251,7 @@ function dtParamsToQueryString($datatable) {
     // unset csrf token
     delete json._csrf_token;
 
-    return '?q=' + Base64.encode(JSON.stringify(json));
+    return '?q=' + encodeURIComponent(Base64.encode(JSON.stringify(json)));
 }
 
 /**

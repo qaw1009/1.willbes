@@ -114,7 +114,7 @@
                                     <td>{{$row['CourseName']}}</td>
                                     <td>{{$row['SubjectName']}}</td>
                                     <td>{{$row['wProfName_String']}}</td>
-                                    <td style='text-align:left'>{{$row['ProdName']}}</td>
+                                    <td style='text-align:left'>[{{$row['ProdCodeSub']}}] {{$row['ProdName']}}</td>
                                     <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitLectureCnt']}}@if(empty($row['wScheduleCount']) == false)/{{$row['wScheduleCount']}}@endif)</td>
                                     <td>{{number_format($row['RealSalePrice'])}}원</td>
                                     <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>

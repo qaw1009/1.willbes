@@ -216,7 +216,7 @@
                         },'name' : 'Extend'},
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.AddContent1 != null ? data.AddContent1 + '<BR>' + data.AddContent2 : '';
+                            return (data.AddContent1 != null && data.AddContent1 != '') ? data.AddContent1 + '<BR>' + data.AddContent2 : '';
                         },'name' : 'AddContent'},
 
                 ]

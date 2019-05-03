@@ -103,8 +103,8 @@ class CertApplyFModel extends WB_Model
 
         $from = ' from 
                         lms_cert A
-                        join lms_cert_r_product B on A.CertIdx = B.CertIdx and B.IsStatus=\'Y\'
-                        join lms_product C on B.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                        join lms_cert_r_product B on A.CertIdx = B.CertIdx
+                        join lms_product C on B.ProdCode = C.ProdCode
                         join lms_product_lecture D on C.ProdCode = D.ProdCode
                         join lms_sys_code D1 on D.LearnPatternCcd = D1.Ccd
                         join lms_sys_code D2 on D.PackTypeCcd = D2.Ccd
@@ -165,7 +165,6 @@ class CertApplyFModel extends WB_Model
                 $AttachFileName= $upload_result[0]['file_name'];
             }
 
-
             $data = [
               'CertIdx' => $cert_idx,
                 'MemIdx' => $this->session->userdata('mem_idx'),
@@ -185,7 +184,7 @@ class CertApplyFModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if($certtypeccd === '684002' || $cert_idx === '13') { //제대군인인증, 꿀팁이벤트(추천인) 일 경우 자동 승인 처리   ///아오 썅 하드코딩하고 있네
+            if($certtypeccd === '684002' || $cert_idx === '13' || $cert_idx === '20') { //제대군인인증, 꿀팁이벤트(추천인) 일 경우 자동 승인 처리   ///하드코딩하고 있네
                 $data = array_merge($data,[
                     'ApprovalStatus' => 'Y'
                 ]);
@@ -295,7 +294,6 @@ class CertApplyFModel extends WB_Model
      */
     public function findPassTakeNumber($input=[])
     {
-        $CenCode = element('CenCode', $input);
         $CertIdx = element('CertIdx', $input);
         $TakeKind = element('TakeKind', $input);
         $TakeArea = element('TakeArea', $input);

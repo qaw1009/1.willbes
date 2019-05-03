@@ -28,7 +28,8 @@ class CertApply extends \app\controllers\FrontController
 
         //echo $cert_page.' -'.$cert_idx;exit;
 
-        $cert_data = $this->certApplyFModel->findCertByCertIdx($cert_idx);
+        //$cert_data = $this->certApplyFModel->findCertByCertIdx($cert_idx);
+        //echo var_dump($cert_data);
 
         $arr_condition = [];
 
@@ -96,7 +97,7 @@ class CertApply extends \app\controllers\FrontController
 
 
     /**
-     * 상품코드 - 인증상품 여부, 인증했는지 여부
+     * 상품코드 - 상품기준 -> 인증상품 여부, 인증상품이면 인증했는지 여부
      * @return CI_Output
      */
     public function checkCertApply()
@@ -124,14 +125,14 @@ class CertApply extends \app\controllers\FrontController
      */
     public function checkTakeNumber()
     {
-        if (empty($this->_reqP('CenCode')) || empty($this->_reqP('TakeKind')) || empty($this->_reqP('TakeArea')) || empty($this->_reqP('TakeNo')) ) {
+        if (empty($this->_reqP('CertIdx')) || empty($this->_reqP('TakeKind')) || empty($this->_reqP('TakeArea')) || empty($this->_reqP('TakeNo')) ) {
             return $this->json_error('입력 정보가 비정상입니다.');
         }
 
         //합격자 응시번호 여부 파악
         $take_result = $this->certApplyFModel->findPassTakeNumber($this->_reqP(null));
         if($take_result == "0") {
-            return $this->json_error('정상적인  응시번호가 아닙니다. ');
+            return $this->json_error('정상적인 응시번호가 아닙니다. ');
         }
         //echo var_dump($take_result);exit;
 
@@ -153,8 +154,22 @@ class CertApply extends \app\controllers\FrontController
         //인증 등록 처리 프로세스
         $result = $this->certApplyFModel->addApply($this->_reqP(null));
 
+        if($result === true) {
+
+            //인증에 엮인 상품 존재 여부
+            $arr_condition['EQ'] = [
+                'A.CertConditionCCd' => '685004',           //상품지급 코드
+                'A.SiteCode' => $this->_site_code
+            ];
+            $product_list = $this->certApplyFModel->listProductByCertIdx($this->_reqP('CertIdx'), $arr_condition);
+
+            //상품지급 메소드 호출
+            if(empty($product_list) === false) {
+
+            }
+        }
+
         $this->json_result(true, '','',true);
     }
-
 
 }

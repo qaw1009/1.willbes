@@ -269,7 +269,7 @@
                                     +"		<td>"+temp_data_arr[2]+"</td>"
                                     +"		<td>"+temp_data_arr[3]+"</td>"
                                     +"		<td>"+temp_data_arr[4]+"</td>"
-                                    +"		<td style='text-align:left'>"+temp_data_arr[5]+"</td>"
+                                    +"		<td style='text-align:left'>["+temp_data_arr[0]+"] "+temp_data_arr[5]+"</td>"
                                     +"		<td>"+temp_data_arr[6]+"</td>"
                                     +"		<td>"+temp_data_arr[7]+"</td>"
                                     +"		<td>"+temp_data_arr[8]+"</td>"

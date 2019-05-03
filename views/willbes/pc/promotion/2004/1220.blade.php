@@ -195,9 +195,9 @@
         </div>
 
         <div class="evtCtnsBox evt05">
-		<p>&nbsp;</p><p>&nbsp;</p>
-            <div>
+		        <div>
                 <ul class="NSK-Black">
+				<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
                     <li><a href="#lec1" class="active">공통과목 선행학습반</a></li>
                     <li><a href="#lec2">연간 종합반</a></li>
                 </ul>

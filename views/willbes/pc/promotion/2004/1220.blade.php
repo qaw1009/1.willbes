@@ -73,7 +73,7 @@
         .evtTabCts {margin-top:10px}
 
         .evt04 {background:#f7f7f7} 
-        .evt05 {background:#fdd3d3; padding-top:50; pxpadding-bottom:0px}  
+        .evt05 {background:#fdd3d3; padding-top:50px; pxpadding-bottom:0px}  
         .evt05 div {width:980px; margin:0 auto}
         .evt05 div li {display:inline; float:left; width:50%}
         .evt05 div li a {display:block; text-align:center; background:#bfa09b; color:#fdd6d6; border-radius:10px; margin:10px; height:80px; line-height:80px; font-size:35px}

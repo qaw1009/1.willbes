@@ -130,7 +130,7 @@
 
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_top_01.png" alt="사회, 만점으로 가는 매직로드 문병일 사회 "/><br>
-            <a href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150655') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_top_02.gif" alt="신청하기"  /></a>
+            <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153338" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1076_top_02.gif" alt="신청하기"  /></a>
         </div><!--WB_top//-->
 
         <div class="evtCtnsBox wb_cts02" >
@@ -167,7 +167,7 @@
         <div class="evtCtnsBox wb_cts03" id="event">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1076_06.jpg" alt="윌비스 문병일 사회, 만점으로 가는 매직로드" usemap="#Map180719_c2" border="0" />
             <map name="Map180719_c2" >
-                <area shape="rect" coords="723,773,971,913" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150655') }}" onfocus="this.blur();" target="_blank" />
+                <area shape="rect" coords="723,773,971,913" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153338" onfocus="this.blur();" target="_blank" />
             </map>
         </div><!--wb_cts03//-->
 

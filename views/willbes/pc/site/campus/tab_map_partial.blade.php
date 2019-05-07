@@ -1,4 +1,4 @@
-<div class="noticeTabs campus c_both NSK mt50">
+<div class="noticeTabs campus c_both NGR mt50">
     <div class="tabBox noticeBox_campus">
 
     <!-- 노량진 -->

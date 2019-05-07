@@ -160,6 +160,7 @@
 
         //삭제
         $('#btn_del').click(function() {
+            if (!confirm('삭제하시겠습니까?')) { return; }
             location.href = '{!! front_url($default_path.'/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
     });

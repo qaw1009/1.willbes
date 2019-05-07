@@ -292,6 +292,27 @@ if (!function_exists('img_static_url')) {
     }
 }
 
+if (!function_exists('kw_date')) {
+    /**
+     * 날짜 포맷에 더하여 요일을 한글 형태로 리턴 (한글 요일값이 필요한 경우만 사용)
+     * @param string $format [날짜 포맷]
+     * @param string $date [일자]
+     * @param string $needle [치환될 요일 구분자]
+     * @return string
+     */
+    function kw_date($format, $date, $needle = '%')
+    {
+        $weeks = ['일', '월', '화', '수', '목', '금', '토'];
+        $timestamp = strtotime($date);
+
+        if (strpos($format, $needle) !== false) {
+            return str_replace($needle, element(date('w', $timestamp), $weeks, ''), date($format, $timestamp));
+        } else {
+            return date($format, $timestamp);
+        }
+    }
+}
+
 if (!function_exists('logger')) {
     /**
      * log message

@@ -176,6 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ManageBlackConsumerModel $manageBlackConsumerModel     Member Manage BlackConsumer Model Class
  * @property CsModel $csModel                                                           Manage Cs Model Class
  * @property ExcelDownLogModel $excelDownLogModel                                 Excel Download Log Model Class
+ * @property RouletteModel $rouletteModel                                         Roulette Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class
@@ -226,6 +227,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RegGradeModel $regGradeModel                                         RegGrade Class
  * @property SubTitlesFModel $subTitlesFModel                                   SubTitles Model Class
  * @property PredictFModel $predictFModel                                       Predict Model Class
+ * @property RouletteFModel $rouletteFModel                                         Roulette Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                                 API Delivery Book Model Class
  *******************************************************************************************************

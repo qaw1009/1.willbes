@@ -293,6 +293,38 @@ class ProductFModel extends WB_Model
     }
 
     /**
+     * 상품정보 조회 (뷰 테이블을 사용하지 않고 상품 테이블을 직접 조회)
+     * @param int|array $prod_code [상품코드]
+     * @param string $add_column [추가조회 컬럼]
+     * @param array $arr_condition [추가조회 조건]
+     * @return mixed
+     */
+    public function findRawProductByProdCode($prod_code, $add_column = '', $arr_condition = [])
+    {
+        $learn_pattern_ccd_to_prod_code_sub = ['615002', '615003', '615007'];   // 서브강좌 조회하는 학습형태 공통코드 (사용자패키지, 운영자패키지, 학원종합반)
+
+        $column = 'P.ProdCode, P.SiteCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, PL.PackTypeCcd	
+	        , if(PL.LearnPatternCcd in ?, fn_product_sublecture_codes(P.ProdCode), "") as ProdCodeSub  
+	        , ifnull(fn_product_saleprice_data(P.ProdCode), "N") as ProdPriceData' . $add_column;
+        $from = '
+            from ' . $this->_table['product'] . ' as P
+                left join ' . $this->_table['product_lecture'] . ' as PL
+                    on P.ProdCode = PL.ProdCode
+            where P.ProdCode in ?
+                and P.IsStatus = "Y"';
+
+        $where = '';
+        if (empty($arr_condition) === false) {
+            $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        }
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where, [$learn_pattern_ccd_to_prod_code_sub, (array) $prod_code]);
+
+        return $query->result_array();
+    }
+
+    /**
      * 상품강좌정보 조회
      * @param array $prod_code
      * @return array|int|mixed

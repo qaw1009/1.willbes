@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CertApply extends \app\controllers\FrontController
 {
-    protected $models = array('cert/certApplyF','_lms/sys/code');
+    protected $models = array('cert/certApplyF','_lms/sys/code','order/orderF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('store','checkCert');
@@ -129,6 +129,9 @@ class CertApply extends \app\controllers\FrontController
             return $this->json_error('입력 정보가 비정상입니다.');
         }
 
+        //인증식별자
+        $cert_idx = $this->_reqP('CertIdx');
+
         //합격자 응시번호 여부 파악
         $take_result = $this->certApplyFModel->findPassTakeNumber($this->_reqP(null));
         if($take_result == "0") {
@@ -138,7 +141,7 @@ class CertApply extends \app\controllers\FrontController
 
        $add_condition=[
             'EQ'=>[
-                'CertIdx'=>$this->_reqP('CertIdx')
+                'CertIdx'=>$cert_idx
                 ,'TakeKind'=>$this->_reqP('TakeKind')
                 ,'TakeArea'=>$this->_reqP('TakeArea')
                 ,'TakeNo'=>$this->_reqP('TakeNo')
@@ -159,13 +162,15 @@ class CertApply extends \app\controllers\FrontController
             //인증에 엮인 상품 존재 여부
             $arr_condition['EQ'] = [
                 'A.CertConditionCCd' => '685004',           //상품지급 코드
-                'A.SiteCode' => $this->_site_code
+                //'A.SiteCode' => $this->_site_code
             ];
-            $product_list = $this->certApplyFModel->listProductByCertIdx($this->_reqP('CertIdx'), $arr_condition);
+            $product_list = $this->certApplyFModel->listProductByCertIdx($cert_idx, $arr_condition);
 
             //상품지급 메소드 호출
             if(empty($product_list) === false) {
-
+                if($this->orderFModel->procAutoOrder('cert', $cert_idx) !== true) {
+                    return $this->json_error('제공상품이 처리되지 않았습니다.');
+                }
             }
         }
 

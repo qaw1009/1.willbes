@@ -72,12 +72,14 @@
                 </div>
                 <table cellspacing="0" cellpadding="0" class="listTable buyTable under-gray tx-gray">
                     <colgroup>
-                        <col style="width: 770px;">
-                        <col style="width: 170px;">
+                        <col>
+                        <col style="width: 60px;">
+                        <col style="width: 130px;">
                     </colgroup>
                     <thead>
                         <tr>
-                            <th>상품정보<span class="row-line">|</span></li></th>
+                            <th>상품정보<span class="row-line">|</span></th>
+                            <th>수량<span class="row-line">|</span></th>
                             <th>실 결제금액</th>
                         </tr>
                     </thead>
@@ -101,6 +103,7 @@
                                     </dt>
                                 </dl>
                             </td>
+                            <td>2</td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">75,000원</dt>
@@ -126,6 +129,7 @@
                                     </dt>
                                 </dl>
                             </td>
+                            <td>2</td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">80,000원</dt>
@@ -145,6 +149,7 @@
                                     </dt>
                                 </dl>
                             </td>
+                            <td>2</td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">180,000원</dt>
@@ -163,6 +168,7 @@
                                     </dt>
                                 </dl>
                             </td>
+                            <td>2</td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">7,000원</dt>
@@ -179,6 +185,7 @@
                                     </dt>
                                 </dl>
                             </td>
+                            <td>2</td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">5,000원</dt>
@@ -194,6 +201,7 @@
                                     </dt>
                                 </dl>
                             </td>
+                            <td>2</td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">2,500원</dt>

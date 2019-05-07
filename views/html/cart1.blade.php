@@ -62,9 +62,9 @@
                             </ul>
                             <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray">
                                 <colgroup>
-                                    <col style="width: 80px;">
-                                    <col style="width: 550px;">
-                                    <col style="width: 160px;">
+                                    <col style="width: 60px;">
+                                    <col>
+                                    <col style="width: 140px;">
                                     <col style="width: 150px;">
                                 </colgroup>
                                 <thead>
@@ -258,16 +258,18 @@
                             </ul>
                             <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray mt20">
                                 <colgroup>
-                                    <col style="width: 80px;">
-                                    <col style="width: 550px;">
-                                    <col style="width: 160px;">
+                                    <col style="width: 60px;">
+                                    <col>
+                                    <col style="width: 140px;">
+                                    <col style="width: 60px;">
                                     <col style="width: 150px;">
                                 </colgroup>
                                 <thead>
                                     <tr>
-                                        <th><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"><span class="row-line">|</span></li></th>
-                                        <th>상품정보<span class="row-line">|</span></li></th>
-                                        <th>판매가<span class="row-line">|</span></li></th>
+                                        <th><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"><span class="row-line">|</span></th>
+                                        <th>상품정보<span class="row-line">|</span></th>
+                                        <th>판매가<span class="row-line">|</span></th>
+                                        <th>수량<span class="row-line">|</span></th>
                                         <th>결제/삭제</th>
                                     </tr>
                                 </thead>
@@ -279,6 +281,7 @@
                                             2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
                                         </td>
                                         <td class="w-price tx-light-blue">80,000원</td>
+                                        <td>2</td>
                                         <td class="w-buy">
                                             <span class="tBox t1 black"><a href="">결제</a></span>
                                             <span class="tBox t2 white"><a href="">삭제</a></span>
@@ -291,6 +294,7 @@
                                             2018 김용철 행정법총론 실전 동형모의고사(3월)
                                         </td>
                                         <td class="w-price tx-light-blue">70,000원</td>
+                                        <td>2</td>
                                         <td class="w-buy">
                                             <span class="tBox t1 black"><a href="">결제</a></span>
                                             <span class="tBox t2 white"><a href="">삭제</a></span>
@@ -303,6 +307,7 @@
                                             2017 9급 공무원 이론 선택형 종합 패키지- 30일완성
                                         </td>
                                         <td class="w-price tx-light-blue">180,000원</td>
+                                        <td>1</td>
                                         <td class="w-buy">
                                             <span class="tBox t1 black"><a href="">결제</a></span>
                                             <span class="tBox t2 white"><a href="">삭제</a></span>
@@ -315,6 +320,7 @@
                                             2017 정채영 국어 서울시 문제를 알려주마!1
                                         </td>
                                         <td class="w-price tx-light-blue">8,000원</td>
+                                        <td>3</td>
                                         <td class="w-buy">
                                             <span class="tBox t1 black"><a href="">결제</a></span>
                                             <span class="tBox t2 white"><a href="">삭제</a></span>
@@ -327,6 +333,7 @@
                                             2017 정채영 국어 서울시 문제를 알려주마!2
                                         </td>
                                         <td class="w-price tx-light-blue">5,000원</td>
+                                        <td>4</td>
                                         <td class="w-buy">
                                             <span class="tBox t1 black"><a href="">결제</a></span>
                                             <span class="tBox t2 white"><a href="">삭제</a></span>

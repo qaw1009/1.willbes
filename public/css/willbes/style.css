@@ -2759,6 +2759,14 @@ table.lecTable tr td .priceWrap .select {
     color: #464646;
     text-align: right;
 }
+table.lecTable tr td .priceWrap .bookselect {
+    position: absolute;
+    right:0;
+    top:-35px;
+    width: 50px;
+    height: 24px;
+    border: 1px solid #d4d4d4;
+}
 table.lecTable tr td .priceWrap .price {
     /*position: absolute;
     top: 0;

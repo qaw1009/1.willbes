@@ -225,10 +225,22 @@
                             </td>
                             <td class="w-notice p_re">                                
                                 <div class="priceWrap chk buybtn p_re">
+                                    <select id="" name="" title="" class="bookselect">
+                                        <option selected="selected">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                        <option value="">6</option>
+                                        <option value="">7</option>
+                                        <option value="">8</option>
+                                        <option value="">9</option>
+                                        <option value="">10</option>
+                                    </select>
                                     <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">[판매중]</span>
                                     <span class="price tx-blue">41,000원</span>
-                                    <span class="discount">(↓10%)</span>
+                                    <span class="discount">(↓10%)</span>                                    
                                 </div>
                             </td>
                         </tr>

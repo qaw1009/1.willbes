@@ -227,6 +227,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RegGradeModel $regGradeModel                                         RegGrade Class
  * @property SubTitlesFModel $subTitlesFModel                                   SubTitles Model Class
  * @property PredictFModel $predictFModel                                       Predict Model Class
+ * @property RouletteFModel $rouletteFModel                                         Roulette Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                                 API Delivery Book Model Class
  *******************************************************************************************************

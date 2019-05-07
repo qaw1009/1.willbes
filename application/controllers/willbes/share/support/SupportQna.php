@@ -440,7 +440,7 @@ class SupportQna extends BaseSupport
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
 
-        $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx, $this->_groupCcd['reply_status_ccd_complete']);
+        $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx);
 
         if (empty($result['ret_status']) === false) {
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');

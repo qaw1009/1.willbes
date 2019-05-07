@@ -145,7 +145,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-comment-o mr-10"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel' },
+                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
                     { text: '<i class="fa fa-copy mr-5"></i> 승인취소', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-all-cancel' },
                     { text: '<i class="fa fa-copy mr-5"></i> 승인', className: 'btn-sm btn-success border-radius-reset btn-all-permission'}
@@ -216,7 +217,14 @@
                         },'name' : 'Extend'},
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return (data.AddContent1 != null && data.AddContent1 != '') ? data.AddContent1 + '<BR>' + data.AddContent2 : '';
+                            str = '';
+                            if(data.AddContent1 != null && data.AddContent1 != '') {
+                                str = data.AddContent1;
+                                if(data.AddContent2 != null && data.AddContent2 != '') {
+                                    str  += '<BR>' + data.AddContent2;
+                                }
+                            }
+                            return str;
                         },'name' : 'AddContent'},
 
                 ]
@@ -304,7 +312,6 @@
                     return;
                 }
 
-
                 if (confirm($branching_msg + " 하시겠습니까?")) {
 
                     $("#app_status").val($branching);
@@ -355,6 +362,14 @@
 
             $list_table.on('click', '.btn-member', function() {
                 window.open("{{site_url('/member/manage/detail/')}}"+$(this).data('idx'), '_blank');
+            });
+
+            //엑셀다운로드
+            $('.btn-excel').on('click', function() {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/site/cert/apply/listAjax/excel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
         });

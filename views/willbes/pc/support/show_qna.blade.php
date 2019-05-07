@@ -120,13 +120,19 @@
                         </table>
                     @endif
                     <div class="search-Btn mt20 h36 p_re">
-                        @if($data['RegType'] == 0 && $data['RegMemIdx'] == sess_data('mem_idx') && $data['ReplyStatusCcd'] != $reply_type_complete)
-                            <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left" id="btn_del">
-                                <a href="#none" class="tx-purple-gray">삭제</a>
-                            </div>
-                            <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center" id="btn_modify">
-                                <a href="#none" class="tx-purple-gray">수정</a>
-                            </div>
+                        @if($data['RegType'] == 0 && $data['RegMemIdx'] == sess_data('mem_idx'))
+                            @if($data['ReplyStatusCcd'] == $reply_type_complete)
+                                <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left" id="btn_del">
+                                    <a href="#none" class="tx-purple-gray">삭제</a>
+                                </div>
+                            @else
+                                <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left" id="btn_del">
+                                    <a href="#none" class="tx-purple-gray">삭제</a>
+                                </div>
+                                <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center" id="btn_modify">
+                                    <a href="#none" class="tx-purple-gray">수정</a>
+                                </div>
+                            @endif
                         @endif
                         <div id="btn_list" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
                             <a href="#none">목록</a>
@@ -154,6 +160,7 @@
 
         //삭제
         $('#btn_del').click(function() {
+            if (!confirm('삭제하시겠습니까?')) { return; }
             location.href = '{!! front_url($default_path.'/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
     });

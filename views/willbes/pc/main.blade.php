@@ -274,6 +274,7 @@
                                     <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605007', 'police') }}" target="_blank">전북</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605008', 'police') }}" target="_blank">진주</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605010', 'police') }}" target="_blank">경기 광주(기숙형)</a>
                                 </td>
                             </tr>
                             <tr>

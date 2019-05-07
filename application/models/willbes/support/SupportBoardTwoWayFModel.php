@@ -395,12 +395,12 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     }
 
     /**
-     * 상담게시글 답변완료글 제외
+     * 상담게시글 삭제
      * @param $idx
      * @param $reply_status_ccd_complete
      * @return array|bool
      */
-    public function boardDelete($idx, $reply_status_ccd_complete)
+    public function boardDelete($idx, $reply_status_ccd_complete = '')
     {
         $this->_conn->trans_begin();
         try {

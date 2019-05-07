@@ -60,7 +60,7 @@
         .tabt2 li a.active img.off {display:none}
         .tabt2 li a.active img.on {display:block}
         .tabt2:after {content:""; display:block; clear:both}
-        .tab_inner2 {width:951px;}
+        .tab_inner2 {width:951px; margin-top:-10px}
 
         .evt03 {background:#fff}
         .evtTab {width:984px; margin:0 auto 140px;}

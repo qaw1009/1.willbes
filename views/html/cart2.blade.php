@@ -103,7 +103,7 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td>2</td>
+                            <td> </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">75,000원</dt>
@@ -129,7 +129,7 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td>2</td>
+                            <td> </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">80,000원</dt>
@@ -149,7 +149,7 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td>2</td>
+                            <td> </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">180,000원</dt>
@@ -201,7 +201,7 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td>2</td>
+                            <td> </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">2,500원</dt>

@@ -287,5 +287,35 @@
             </div>
         </div>
     @endif
+
+    <!-- 경기광주 -->
+    @if($campus_code == '605010')
+        <div id="campus9" class="tabContent">
+            <div class="map_img">
+                <img src="{{ img_url('cop_acad/map/map_cop_kkkj.jpg') }}" alt="경기광주">
+                <span>경기 광주(기숙형)</span>
+            </div>
+            <div class="campus_info">
+                <dl>
+                    <dt>
+                        <div class="c-tit"><span class="tx-color">경기 광주(기숙형)</span> 캠퍼스 오시는 길</div>
+                        <div class="c-info">
+                            <div class="address">
+                                <span class="a-tit">주소</span>
+                                <span>
+                                    경기도 광주시 퇴촌면 탑선길 46-22
+                                </span>
+                            </div>
+                            <div class="tel">
+                                <span class="a-tit">연락처</span>
+                                <span class="tx-color">1599-9361</span>
+                            </div>
+                        </div>
+                    </dt>
+                </dl>
+
+            </div>
+        </div>
+    @endif
     </div>
 </div>

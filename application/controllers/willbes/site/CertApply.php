@@ -165,7 +165,7 @@ class CertApply extends \app\controllers\FrontController
 
             //상품지급 메소드 호출
             if(empty($product_list) === false) {
-                if($this->orderFModel->procAutoOrder('cert', '20') !== true) {
+                if($this->orderFModel->procAutoOrder('cert', $this->_reqP('CertIdx')) !== true) {
                     return $this->json_error('제공상품이 처리되지 않았습니다.');
                 }
             }

@@ -157,7 +157,7 @@
                 var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';
                 ajaxSubmit($regi_form, _check_url, function(ret) {
                     if(ret.ret_cd) {
-                        alert('인증 신청이 등록되었습니다.');
+                        alert('정상적으로 등록되었습니다.');
                         opener.location.reload();
                         self.close();
                     } else {

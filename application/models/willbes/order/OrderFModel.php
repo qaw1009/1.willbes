@@ -627,9 +627,10 @@ class OrderFModel extends BaseOrderFModel
      * @param string $pay_status_ccd [결제상태 공통코드]
      * @param string $is_escrow [에스크로 결제 여부, Y/N]
      * @param array $input [상품별 장바구니 데이터 배열]
+     * @param bool $is_auto_add [자동지급강좌/쿠폰 지급여부]
      * @return bool|string
      */
-    public function addOrderProduct($order_idx, $pay_status_ccd, $is_escrow = 'N', $input = [])
+    public function addOrderProduct($order_idx, $pay_status_ccd, $is_escrow = 'N', $input = [], $is_auto_add = true)
     {
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
@@ -769,17 +770,19 @@ class OrderFModel extends BaseOrderFModel
                     throw new \Exception($is_add_my_lecture);
                 }
 
-                // 자동지급 주문상품 데이터 등록
-                $is_add_auto_product = $this->addOrderProductForAutoProduct($order_idx, $prod_code, $pay_status_ccd, $input);
-                if ($is_add_auto_product !== true) {
-                    throw new \Exception($is_add_auto_product);
-                }
+                if ($is_auto_add === true) {
+                    // 자동지급 주문상품 데이터 등록
+                    $is_add_auto_product = $this->addOrderProductForAutoProduct($order_idx, $prod_code, $pay_status_ccd, $input);
+                    if ($is_add_auto_product !== true) {
+                        throw new \Exception($is_add_auto_product);
+                    }
 
-                // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료일 경우)
-                if ($pay_status_ccd == $this->_pay_status_ccd['paid']) {
-                    $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $prod_code);
-                    if ($is_add_auto_coupon !== true) {
-                        throw new \Exception($is_add_auto_coupon);
+                    // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료일 경우)
+                    if ($pay_status_ccd == $this->_pay_status_ccd['paid']) {
+                        $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $prod_code);
+                        if ($is_add_auto_coupon !== true) {
+                            throw new \Exception($is_add_auto_coupon);
+                        }
                     }
                 }
             }
@@ -1067,7 +1070,7 @@ class OrderFModel extends BaseOrderFModel
                 'RealPayPrice' => $prod_row['ProdPriceData']['RealSalePrice']
             ];
 
-            if ($this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data) !== true) {
+            if ($this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data, false) !== true) {
                 throw new \Exception('추가 배송료 주문상품 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
@@ -1519,7 +1522,7 @@ class OrderFModel extends BaseOrderFModel
                     'RealPayPrice' => 0
                 ];
 
-                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data);
+                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data, false);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }
@@ -1529,6 +1532,178 @@ class OrderFModel extends BaseOrderFModel
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 자동주문 데이터 등록
+     * @param string $req_type [요청구분 (수동: manual, 이벤트: event, 회원가입이벤트: join, 인증 : cert)]
+     * @param string|array $req_code [요청구분별 식별자 (수동: 상품코드, 이벤트: 이벤트식별자, 회원가입이벤트: 없음, 인증 : 인증식별자)]
+     * @return bool|string
+     */
+    public function procAutoOrder($req_type, $req_code = '')
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $order_no = $this->makeOrderNo();   // 주문번호 생성
+            $pay_status_ccd = $this->_pay_status_ccd['paid'];    // 주문완료 결제상태공통코드 (결제완료)
+            // 자동주문 가능 학습형태 (단강좌, 운영자패키지, 무료강좌, 학원단과, 학원종합반)
+            $target_learn_pattern_ccd = [
+                $this->_learn_pattern_ccd['on_lecture'], $this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['on_free_lecture'],
+                $this->_learn_pattern_ccd['off_lecture'], $this->_learn_pattern_ccd['off_pack_lecture']
+            ];
+            $admin_reason_ccd = '705008';   // 부여사유공통코드 (디폴트 : 이벤트자동부여)
+            $admin_etc_reason = null;   // 상세부여사유 (연관식별자가 있을 경우 추가)
+            $total_prod_order_price = 0;    // 전체상품주문금액
+            $order_prod_data = [];  // 주문상품 데이터
+            $arr_prod_code = [];    // 주문상품 상품코드
+
+            // 상품코드 추출
+            switch ($req_type) {
+                case 'event' :
+                    // 이벤트식별자 기준으로 자동지급상품 조회
+                    $admin_reason_ccd = '705008';   // 부여사유공통코드 (이벤트자동부여)
+                    $admin_etc_reason = '이벤트코드=>' . $req_code;
+                    break;
+                case 'join' :
+                    // 해당 이벤트신청타입의 유효한 최근 1건의 이벤트식별자를 기준으로 자동지급상품 조회 (회원가입이벤트)
+                    $admin_reason_ccd = '705007';   // 부여사유공통코드 (회원가입자동부여)
+                    $admin_etc_reason = '이벤트코드=>' . $req_code;
+                    break;
+                case 'cert' :
+                    // 인증모델 load
+                    $this->load->loadModels(['cert/certApplyF']);
+
+                    // 해당 인증상품 조회
+                    $cert_data = $this->certApplyFModel->listProductByCertIdx($req_code, ['EQ' => ['A.CertConditionCCd' => '685004']]);
+                    $arr_prod_code = array_pluck($cert_data, 'ProdCode');
+
+                    $admin_reason_ccd = '705009';   // 부여사유공통코드 (인증완료자동부여)
+                    $admin_etc_reason = '인증코드=>' . $req_code;
+                    break;
+                default :
+                    $arr_prod_code = (array) $req_code;
+                    break;
+            }
+
+            // 상품코드 체크 (자동주문상품이 없을 경우)
+            if (empty($arr_prod_code) === true) {
+                return true;
+            }
+
+            // 회원식별자 세션 체크
+            if (empty($sess_mem_idx) === true) {
+                return '로그인 정보가 없습니다.';
+            }
+
+            // 상품정보 조회
+            $prod_data = $this->productFModel->findRawProductByProdCode($arr_prod_code, '', ['IN' => ['PL.LearnPatternCcd' => $target_learn_pattern_ccd]]);
+            if (empty($prod_data) === true) {
+                return '상품정보 조회에 실패했습니다.';
+            }
+
+            // 주문상품 데이터 생성
+            $tmp_site_code = '';
+            foreach ($prod_data as $prod_row) {
+                $learn_pattern = $this->getLearnPattern($prod_row['ProdTypeCcd'], $prod_row['LearnPatternCcd']);
+
+                // 사이트코드 체크
+                if (empty($tmp_site_code) === false && $tmp_site_code != $prod_row['SiteCode']) {
+                    throw new \Exception('사이트코드가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
+                }
+
+                // 상품코드서브
+                $prod_code_sub = in_array($learn_pattern, ['adminpack_lecture', 'off_pack_lecture']) === true ? $prod_row['ProdCodeSub'] : '';
+
+                // 판매가격 정보 조회 및 확인
+                if ($prod_row['ProdPriceData'] == 'N') {
+                    throw new \Exception('판매가격 정보가 없습니다.', _HTTP_NOT_FOUND);
+                }
+                $prod_price_data = element('0', json_decode($prod_row['ProdPriceData'], true));
+
+                // 주문상품 데이터 가공
+                $order_prod_data[] = [
+                    'CartType' => array_search($prod_row['ProdTypeCcd'], $this->_prod_type_ccd),
+                    'CartProdType' => $learn_pattern,
+                    'SiteCode' => $prod_row['SiteCode'],
+                    'ProdCode' => $prod_row['ProdCode'],
+                    'ProdCodeSub' => $prod_code_sub,
+                    'ProdName' => $prod_row['ProdName'],
+                    'LearnPatternCcd' => $prod_row['LearnPatternCcd'],
+                    'PackTypeCcd' => $prod_row['PackTypeCcd'],
+                    'SaleTypeCcd' => $prod_price_data['SaleTypeCcd'],
+                    'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
+                    'RealSalePrice' => $prod_price_data['RealSalePrice'],
+                    'RealPayPrice' => 0,
+                    'CouponDiscPrice' => $prod_price_data['RealSalePrice'],
+                    'CouponDiscRate' => '100',
+                    'CouponDiscType' => 'R'
+                ];
+
+                $tmp_site_code = $prod_row['SiteCode'];
+                $total_prod_order_price += $prod_price_data['RealSalePrice'];
+            }
+
+            // 주문 데이터 등록
+            $site_code = $order_prod_data[0]['SiteCode'];   // 사이트코드
+            $repr_prod_name = $order_prod_data[0]['ProdName'] . (count($order_prod_data) > 1 ? ' 외 ' . (count($order_prod_data) - 1) . '건' : '');   // 대표 주문상품명
+
+            $data = [
+                'OrderNo' => $order_no,
+                'MemIdx' => $sess_mem_idx,
+                'SiteCode' => $site_code,
+                'ReprProdName' => $repr_prod_name,
+                'PayChannelCcd' => element(APP_DEVICE, $this->_pay_channel_ccd),
+                'PayRouteCcd' => element('zero', $this->_pay_route_ccd),
+                'PayMethodCcd' => '',
+                'PgCcd' => '',
+                'PgMid' => '',
+                'PgTid' => '',
+                'OrderPrice' => $total_prod_order_price,
+                'OrderProdPrice' => $total_prod_order_price,
+                'RealPayPrice' => 0,
+                'CardPayPrice' => 0,
+                'CashPayPrice' => 0,
+                'DeliveryPrice' => 0,
+                'DeliveryAddPrice' => 0,
+                'DiscPrice' => $total_prod_order_price,
+                'UseLecPoint' => 0,
+                'UseBookPoint' => 0,
+                'SaveLecPoint' => 0,
+                'SaveBookPoint' => 0,
+                'IsEscrow' => 'N',
+                'IsCashReceipt' => 'N',
+                'IsDelivery' => 'N',
+                'IsVisitPay' => 'N',
+                'GwIdx' => $this->session->userdata('gw_idx'),
+                'AdminReasonCcd' => $admin_reason_ccd,
+                'AdminEtcReason' => $admin_etc_reason,
+                'OrderIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->set('CompleteDatm', 'NOW()', false)->insert($this->_table['order']) === false) {
+                throw new \Exception('주문정보 등록에 실패했습니다.');
+            }
+
+            // 주문 식별자
+            $order_idx = $this->_conn->insert_id();
+
+            // 주문상품 데이터 등록
+            foreach ($order_prod_data as $order_prod_row) {
+                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $order_prod_row, false);
+                if ($is_order_product !== true) {
+                    throw new \Exception($is_order_product);
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return $e->getMessage();
         }
 
         return true;
@@ -1600,10 +1775,9 @@ class OrderFModel extends BaseOrderFModel
                 $total_prod_order_price += $prod_price_data['RealSalePrice'];
             }
 
-            // 대표 주문상품명
-            $repr_prod_name = $order_prod_data[0]['ProdName'] . (count($order_prod_data) > 1 ? ' 외 ' . (count($order_prod_data) - 1) . '건' : '');
-
             // 주문 데이터 등록
+            $repr_prod_name = $order_prod_data[0]['ProdName'] . (count($order_prod_data) > 1 ? ' 외 ' . (count($order_prod_data) - 1) . '건' : '');   // 대표 주문상품명
+
             $data = [
                 'OrderNo' => $order_no,
                 'MemIdx' => $sess_mem_idx,

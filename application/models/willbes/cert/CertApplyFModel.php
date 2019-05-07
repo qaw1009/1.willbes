@@ -143,7 +143,7 @@ class CertApplyFModel extends WB_Model
                 ]
             ];
             if(empty($this->findApplyByCertIdx($cert_idx, $add_condition)) !== true) {
-                throw new \Exception('이미 신청하신 인증내역이 존재합니다.');
+                throw new \Exception('이미 신청하신 내역이 존재합니다.');
             }
 
             $this->load->library('upload');

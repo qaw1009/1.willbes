@@ -36,10 +36,16 @@ class Apply extends \app\controllers\BaseController
     /**
      * 목록
      */
-    public function listAjax()
+    public function listAjax($params=[])
     {
         $search_value = $this->_reqP('search_value'); // 검색어
         $search_value_enc = $this->certApplyModel->getEncString($search_value); // 검색어 암호화
+
+        $param_check = '';
+        if(empty($params) === false) {
+            $param_check = $params[0];
+        }
+
 
         $arr_condition = [
             'EQ' => [
@@ -89,19 +95,44 @@ class Apply extends \app\controllers\BaseController
         }
 
 
-        $list = [];
-        $count = $this->certApplyModel->listApply(true, $arr_condition,null,null,[],$arr_condition_add);
+        if (empty($param_check)) {
+            $list = [];
+            $count = $this->certApplyModel->listApply(true, $arr_condition, null, null, [], $arr_condition_add);
 
-        if ($count > 0) {
-            $list = $this->certApplyModel->listApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SA.RegDatm' => 'desc'], $arr_condition_add);
+            if ($count > 0) {
+                $list = $this->certApplyModel->listApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SA.RegDatm' => 'desc'], $arr_condition_add);
+            }
+
+            return $this->response([
+                'recordsTotal' => $count,
+                'recordsFiltered' => $count,
+                'data' => $list,
+            ]);
+
+        }else{
+
+            $list = $this->certApplyModel->listApplyExcel($arr_condition, ['SA.RegDatm' => 'desc'], $arr_condition_add);
+
+            $file_name = '수강인증목록_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
+            $headers = ['사이트', '카테고리', '인증코드', '인증구분', '회차', '회차명', '회원아이디', '회원명', '등록일', '소속/군무기관', '직위/직급/계급', '재직구분/군별', '군번/수강사이트', '응시지역', '응시직렬', '응시번호', '승인자', '승인일', '승인취소자', '승인취소일', '승인여부','추가정보1','추가정보2'];
+
+            // export excel
+            /*----  다운로드 정보 저장  ----*/
+            $download_query = $this->certApplyModel->getLastQuery();
+
+            $this->load->library('approval');
+            if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+                show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+            }
+            /*----  다운로드 정보 저장  ----*/
+
+            $this->load->library('excel');
+            $this->excel->exportExcel($file_name, $list, $headers);
+            /*if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
+                show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+            }*/
+
         }
-
-
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $list,
-        ]);
 
     }
 

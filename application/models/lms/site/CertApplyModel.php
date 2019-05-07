@@ -102,6 +102,90 @@ class CertApplyModel extends WB_Model
     }
 
     /**
+     * 신청현황 목록 - 엑셀출력
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listApplyExcel($arr_condition = [], $order_by = [], $arr_condition_add = null)
+    {
+
+            $column = ' E.SiteName
+                            ,B.CateName
+                            ,A.CertIdx
+                            ,C.CcdName AS CertTypeCcd_Name
+                            ,A.`No`
+                            ,A.CertTitle
+                            ,F.MemId,F.MemName
+                            ,SA.RegDatm
+                            ,IFNULL(SA.Affiliation,\'\') AS Affiliation
+                            ,IFNULL(SA.Position,\'\') AS POSITION
+                            ,IFNULL(SA.WorkType,\'\') AS WorkType
+                            ,IFNULL(SA.EtcContent,\'\') AS EtcContent
+                            ,IFNULL(sc1.CcdName,\'\') AS TakeArea_Name
+                            ,IFNULL(sc2.CcdName,\'\') AS TakeKind_Name
+                            ,IFNULL(SA.TakeNo,\'\') AS TakeNo
+                            ,IFNULL(G.wAdminName,\'\') AS ApprovalAdmin_Name
+                            ,IFNULL(SA.ApprovalDatm,\'\') AS ApprovalDatm
+                            ,IFNULL(H.wAdminName,\'\') AS CancelAdmin_Name
+                            ,IFNULL(SA.CancelDatm,\'\') AS CancelDatm
+                            ,SA.ApprovalStatus
+                            ,IFNULL(SA.AddContent1,\'\') AS AddContent1
+                            ,IFNULL(SA.AddContent2,\'\') AS AddContent2
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+
+        $from = '
+                    from
+                        lms_cert_apply SA
+                        join lms_cert A on SA.CertIdx = A.CertIdx
+                        join lms_sys_category B on A.CateCode=B.CateCode and B.IsStatus=\'Y\'
+                        join lms_sys_code C on A.CertTypeCcd = C.Ccd and C.IsStatus=\'Y\'
+                        join lms_sys_code D on A.CertConditionCcd = D.Ccd and D.IsStatus=\'Y\'
+                        join lms_site E on A.SiteCode=E.SiteCode and E.IsStatus=\'Y\'
+                        join lms_member F on SA.MemIdx = F.MemIdx
+                        join lms_member_otherinfo F2 on F.MemIdx = F2.MemIdx
+                        left outer join wbs_sys_admin G on SA.ApprovalAdminIdx = G.wAdminIdx
+	                    left outer join wbs_sys_admin H on SA.CancelAdminIdx = H.wAdminIdx
+	                    left outer join lms_sys_code sc1 on sc1.Ccd = SA.TakeArea 
+	                    left outer join lms_sys_code sc2 on sc2.Ccd = SA.TakeKind
+
+	                    LEFT OUTER JOIN 
+                        (
+                            SELECT op.CaIdx, COUNT(*) AS orderCount
+                            FROM lms_order o 
+                                JOIN lms_order_product op ON o.OrderIdx = op.OrderIdx
+                            WHERE op.CaIdx IS NOT NULL AND op.PayStatusCcd=\'676001\' 
+                            GROUP BY op.CaIdx
+                        ) o ON o.CaIdx = Sa.CaIdx
+	                    
+                    where SA.IsStatus=\'Y\' and A.IsStatus=\'Y\'
+        ';
+
+        //echo var_dump($arr_condition);
+
+        // 사이트 권한 추가
+        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        if(empty($arr_condition_add) === false) {
+            $where .= ' and '.$arr_condition_add;
+        }
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;exit;
+        return $query->result_array();
+    }
+
+
+
+
+    /**
      * 신청현황 수정 - 승인 / 취소
      * @param array $input
      * @return array|bool

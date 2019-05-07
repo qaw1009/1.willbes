@@ -60,7 +60,7 @@
         .tabt2 li a.active img.off {display:none}
         .tabt2 li a.active img.on {display:block}
         .tabt2:after {content:""; display:block; clear:both}
-        .tab_inner2 {width:951px;}
+        .tab_inner2 {width:951px; margin-top:-10px}
 
         .evt03 {background:#fff}
         .evtTab {width:984px; margin:0 auto 140px;}
@@ -130,32 +130,32 @@
                 <ul class="tabt2">
                     <li>
                         <a href data-slide-index="0" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab01.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab01_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab01.gif" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab01_on.gif" title="" class="on" />
                         </a>
                     </li>
                     <li>
                         <a href data-slide-index="1">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab02.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab02_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab02.gif" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab02_on.gif" title="" class="on" />
                         </a>
                     </li>
                     <li>
                         <a href data-slide-index="2">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab03.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab03_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab03.gif" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab03_on.gif" title="" class="on" />
                         </a>
                     </li>
                     <li>
                         <a href data-slide-index="3">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab04.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab04_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab04.gif" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab04_on.gif" title="" class="on" />
                         </a>
                     </li>
                     <li>
                         <a href data-slide-index="4">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab05.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab05_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab05.gif" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab05_on.gif" title="" class="on" />
                         </a>
                     </li>
                 </ul>

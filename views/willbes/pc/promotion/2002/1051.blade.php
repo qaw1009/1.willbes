@@ -163,7 +163,7 @@
                 <area shape="rect" coords="320,2555,399,2580" href="{{ site_url('/pass/promotion/index/code/1057') }}" onfocus='this.blur()'  target="_blank"/>
                 <area shape="rect" coords="320,2591,399,2616" href="{{ site_url('/pass/promotion/index/code/1055') }}" onfocus='this.blur()' target="_blank" />
                 <area shape="rect" coords="320,2624,399,2654" href="{{ site_url('/pass/promotion/index/code/1051') }}" onfocus='this.blur()' target="_blank" />
-				<area shape="rect" coords="317,2656,401,2690" href="{{ site_url('https://police.willbes.net/pass/campus/show/code/605002') }}" onfocus='this.blur()' target="_blank" />
+				<area shape="rect" coords="317,2656,401,2690" href="{{ site_url('/pass/campus/show/code/605002') }}" onfocus='this.blur()' target="_blank" />
             </map>
         </div>
 

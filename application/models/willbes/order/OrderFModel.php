@@ -1638,7 +1638,10 @@ class OrderFModel extends BaseOrderFModel
                     'SaleTypeCcd' => $prod_price_data['SaleTypeCcd'],
                     'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
                     'RealSalePrice' => $prod_price_data['RealSalePrice'],
-                    'RealPayPrice' => 0
+                    'RealPayPrice' => 0,
+                    'CouponDiscPrice' => $prod_price_data['RealSalePrice'],
+                    'CouponDiscRate' => '100',
+                    'CouponDiscType' => 'R'
                 ];
 
                 $tmp_site_code = $prod_row['SiteCode'];

@@ -52,9 +52,9 @@
 
         .evt02 {position:relative; background:#fff;}
         #tabwrap2 {width:977px; margin:0 auto; height:506px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab_bg.jpg) no-repeat; padding-left:13px}
-        .tabt2 {width:872px; margin:0 auto 0; padding-top:135px}
+        .tabt2 {width:872px; margin:0 auto 0; padding-top:135px; height:144px}
         .tabt2 li {display:inline; float:left; width:20%;}
-        .tabt2 li a {display:block; text-align:center;}
+        .tabt2 li a {display:block; text-align:center; }
         .tabt2 li img.off {display:block}
         .tabt2 li img.on {display:none}
         .tabt2 li a.active img.off {display:none}

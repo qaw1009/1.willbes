@@ -146,7 +146,7 @@
                 <ul>
                     <li>
                         <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">2019-76기</span>
+                        <span style="line-height:40px;font-size:22pt;color:#000">{{$arr_promotion_params['turn']}}기</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -161,7 +161,7 @@
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">5.7(화) 24:00 마감!</span>
+                        <span style="line-height:40px;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -565,69 +565,6 @@
             $(activeTab).show();
         }
 
-        /*타이머*/
-        var DdayDiff = { //타이머를 설정합니다.
-            inDays: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-            },
-
-            inWeeks: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return parseInt((tt2-tt1)/(24*3600*1000*7));
-            },
-
-            inMonths: function(dd1, dd2) {
-                var dd1Y = dd1.getFullYear();
-                var dd2Y = dd2.getFullYear();
-                var dd1M = dd1.getMonth();
-                var dd2M = dd2.getMonth();
-
-                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-            },
-
-            inYears: function(dd1, dd2) {
-                return dd2.getFullYear()-dd1.getFullYear();
-            }
-        };
-
-        function daycountDown() {
-            // 한달 전 날짜로 셋팅
-            var event_day = new Date(2019,4,7,23,59,59);
-            var now = new Date();
-            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-
-            var Monthleft = event_day.getMonth() - now.getMonth();
-            var Dateleft = DdayDiff.inDays(now, event_day);
-            var Hourleft = timeGap.getHours();
-            var Minuteleft = timeGap.getMinutes();
-            var Secondleft = timeGap.getSeconds();
-
-            if((event_day.getTime() - now.getTime()) > 0) {
-                $("#dd1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft/10) + ".png");
-                $("#dd2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft%10) + ".png");
-
-                $("#hh1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft/10) + ".png");
-                $("#hh2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft%10) + ".png");
-
-                $("#mm1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft/10) + ".png");
-                $("#mm2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft%10) + ".png");
-
-                $("#ss1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft/10) + ".png");
-                $("#ss2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft%10) + ".png");
-                setTimeout(daycountDown, 1000);
-            }
-            else{
-                $("#newTopDday").hide();
-            }
-
-        }
-        daycountDown();
-
         /*레이어팝업*/
         function go_popup() {
             $('#popup').bPopup();
@@ -636,7 +573,13 @@
         function go_popup1() {
             $('#popup1').bPopup();
         }
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
     </script>
+
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 @stop

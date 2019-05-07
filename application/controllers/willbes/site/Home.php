@@ -473,7 +473,8 @@ class Home extends \app\controllers\FrontController
                     '6' => ['MapPath' => img_url('cop_acad/map/map_cop_jbjj.jpg'),'Addr' => '','Tel' => ''],
                     '7' => ['MapPath' => img_url('cop_acad/map/map_cop_jinj.jpg'),'Addr' => '경남 진주시 칠암동 490-8 엠코아빌딩 4층','Tel' => '055-755-7771'],
                     '8' => ['MapPath' => img_url('cop_acad/map/map_cop_jj.jpg'),'Addr' => '제주도 제주시 동광로 56 3층','Tel' => '064-722-8140']
-                    '9' => ['MapPath' => img_url('cop_acad/map/map_cop_kkkj.jpg'),'Addr' => '경기도 광주시 퇴촌면 탑선길 46-22','Tel' => '1599-9361'];
+                    '9' => ['MapPath' => img_url('cop_acad/map/map_cop_kkkj.jpg'),'Addr' => '경기도 광주시 퇴촌면 탑선길 46-22','Tel' => '1599-9361']
+                ];
                 break;
             case "2004":
                 $temp_campus = [

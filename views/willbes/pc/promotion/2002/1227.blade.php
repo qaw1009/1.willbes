@@ -72,7 +72,7 @@
             <br>
             불가능을 가능케 하고자 합니다.<br>
             최종합격! 윌비스 신광은 경찰학원이 함께 합니다.<br>
-            <div class="btn NGEB"><a href="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"alert('이미 이벤트에 참가하셨습니다.')"!!}@endif" >필기합격 & 친구추천 한번에 인증하기 ></a></div>
+            <div class="btn NGEB"><a href="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"javascript:alert('이미 이벤트에 참가하셨습니다.')"!!}@endif" >필기합격 & 친구추천 한번에 인증하기 ></a></div>
         </div>
         <!--evt02//-->
 

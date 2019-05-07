@@ -48,19 +48,19 @@
         .slide_con1 img {width:100%;}
         .slide_con1 p a {cursor:pointer}
         .slide_con1 p.leftBtn1 {left:-62px; top:50%; width:62px; height:62px; margin-top:-30px; opacity:0.9; filter:alpha(opacity=90);}
-        .slide_con1 p.rightBtn1 {right:-62px;top:50%; width:62px; height:62px;  margin-top:-30px; opacity:0.9; filter:alpha(opacity=90);}        
+        .slide_con1 p.rightBtn1 {right:-62px;top:50%; width:62px; height:62px; margin-top:-30px; opacity:0.9; filter:alpha(opacity=90);}        
 
         .evt02 {position:relative; background:#fff;}
         #tabwrap2 {width:977px; margin:0 auto; height:506px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1220_02_tab_bg.jpg) no-repeat; padding-left:13px}
-        .tabt2 {width:872px; margin:0 auto 0; padding-top:135px; height:144px}
+        .tabt2 {width:872px; margin:0 auto 0; padding-top:135px}
         .tabt2 li {display:inline; float:left; width:20%;}
-        .tabt2 li a {display:block; text-align:center; }
+        .tabt2 li a {display:block; text-align:center;}
         .tabt2 li img.off {display:block}
         .tabt2 li img.on {display:none}
         .tabt2 li a.active img.off {display:none}
         .tabt2 li a.active img.on {display:block}
         .tabt2:after {content:""; display:block; clear:both}
-        .tab_inner2 {width:951px; margin-top:-10px}
+        .tab_inner2 {width:951px;}
 
         .evt03 {background:#fff}
         .evtTab {width:984px; margin:0 auto 140px;}

@@ -195,7 +195,7 @@
                 </div>
                 --}}
 
-                {{--방송종료 00:00 부터 노출
+                {{--방송종료 00:00 부터 노출  
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live02.jpg" title="방송종료" />
                 --}}
             </div>

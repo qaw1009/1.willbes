@@ -47,6 +47,10 @@
         .evtTop .btn a:hover {background:#ffd835; color:#000}
 
         .evt01 {background:url("https://static.willbes.net/public/images/promotion/2019/05/1227_01_bg.jpg") center top  no-repeat;}
+        .rouletteBox {position:absolute; width:510px; height:510px; top:414px; left:50%; margin-left:-255px; z-index:1}
+        .rouletteBox .start{position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;width:100px;height:100px;line-height:100px;cursor:pointer;background-color:#000;color:#fff;text-align:center;border-radius:50%;}
+        .rouletteBox .target{position:absolute;left:0;right:0;top:-30px;margin:0 auto;border-left:20px solid transparent;border-right:20px solid transparent;border-top:50px solid #000;width:0;height:0;}
+        
         .evt02 {background:#295e79 url("https://static.willbes.net/public/images/promotion/2019/05/1227_02_bg.jpg") center top  no-repeat; padding-bottom:120px}
         /* 슬라이드 */
         .slide_con {position:relative; width:960px; margin:80px auto 0}	
@@ -115,6 +119,11 @@
 		</div>
 
         <div class="evtCtnsBox evt01" id="evt01">
+            <div class="rouletteBox">
+                <div class="roulett"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_roulette_s.png" alt="룰렛판"></div>
+                <div class="start">start</div>
+                <div class="target"></div>
+            </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_01.jpg" title="필기합격자 누구나 참여가능">            
         </div>
 
@@ -243,5 +252,16 @@
             var url = "1227_popup";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
         }
+    </script>
+    <script src="/public/js/willbes/jquery.transit.min.js"></script>
+    <script>
+        $(".rouletteBox .start").one("click", function(){
+            var time = ((Math.random()*6)+5)*1000;
+            var deg = ((Math.random()*2)+2)*1000;
+
+            $(".rouletteBox .roulett").transition({
+                rotate : deg
+            }, time, "cubic-bezier(.03,.87,.63,.98)");
+        });
     </script>
 @stop

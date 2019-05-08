@@ -464,11 +464,11 @@ class Home extends \app\controllers\FrontController
         switch ($this->_site_code) {
             case "2002":
                 $temp_campus = [
-                    '0' => ['MapPath' => img_url('cop_acad/map/map_cop_origin.jpg'),'Addr' => '서울시 동작구 만양로 105 2층<br/>(서울시 동작구 노량진동 116-2 2층)','Tel' => '1544-0336'],
+                    '0' => ['MapPath' => img_url('cop_acad/map/map_cop_origin.jpg'),'Addr' => '서울 동작구 만양로 105 2층<br/>(서울 동작구 노량진동 116-2 2층)','Tel' => '1544-0336'],
                     '1' => ['MapPath' => img_url('cop_acad/map/map_cop_sl.jpg'),'Addr' => '서울 관악구 신림로 23길 16 4층','Tel' => '1544-4006'],
                     '2' => ['MapPath' => img_url('cop_acad/map/map_cop_bs.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
                     '3' => ['MapPath' => img_url('cop_acad/map/map_cop_dg.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
-                    '4' => ['MapPath' => img_url('cop_acad/map/map_cop_ic.jpg'),'Addr' => '인천 부평구 부평동 534-28 중보빌딩 10층','Tel' => '1544-1661'],
+                    '4' => ['MapPath' => img_url('cop_acad/map/map_cop_ic.jpg'),'Addr' => '인천 부평구 경원대로 1395 부평1번가 11층','Tel' => '1544-1661'],
                     '5' => ['MapPath' => img_url('cop_acad/map/map_cop_kj.jpg'),'Addr' => '광주 북구 호동로 6-11','Tel' => '062-514-4560 / 070-7606-6060'],
                     '6' => ['MapPath' => img_url('cop_acad/map/map_cop_jbjj.jpg'),'Addr' => '','Tel' => ''],
                     '7' => ['MapPath' => img_url('cop_acad/map/map_cop_jinj.jpg'),'Addr' => '경남 진주시 칠암동 490-8 엠코아빌딩 4층','Tel' => '055-755-7771'],
@@ -478,7 +478,7 @@ class Home extends \app\controllers\FrontController
                 break;
             case "2004":
                 $temp_campus = [
-                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울시 동작구 장승배기로 168 드림타워<br/>(서울시 동작구 노량진동 54-11번지)','Tel' => '1544-0330'],
+                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울 동작구 장승배기로 168 드림타워<br/>(서울 동작구 노량진동 54-11번지)','Tel' => '1544-0330'],
                     '1' => ['MapPath' => img_url('gosi_acad/map/mapBS.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
                     '2' => ['MapPath' => img_url('gosi_acad/map/mapDG.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
                     '3' => ['MapPath' => img_url('gosi_acad/map/mapIC.jpg'),'Addr' => '인천 부평구 부평동 534-28 중보빌딩 10층','Tel' => '1544-1661'],

@@ -48,8 +48,17 @@
         .time_date table td:first-child {font-size:40px}
         .time_date table td img {width:80%}
         .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
-        .time_txt span {color:#ef6759}
-        .time p {text-alig:center}
+        .time_txt span {color:#ef6759; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ecd60f}
+        to{color:#d63e4d}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ecd60f}
+        to{color:#d63e4d}
+        }  
 
         .check {width:100%; text-align:center; margin:0 auto; padding:30px 0; letter-spacing:3 !important; color:#333; font-size:14px; background:#ccc}
         .check label {cursor:pointer}
@@ -63,7 +72,7 @@
 				<div class="time_date" id="newTopDday">
 					<table>
 						<tr>
-							<td class="time_txt"><span>4/30(화) 마감!</span></td>
+							<td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} 마감!</span></td>
 							<td class="time_txt">마감까지<br><span>남은 시간은</span></td>
 							<td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
 							<td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
@@ -152,105 +161,43 @@
 				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_tip.jpg" title="이용약관" />
 			</div>
 			<!--evt05//-->
-
 </div>
 <!-- End Container -->
-	
-<!-- scripts -->
 
- <script type="text/javascript">
-					/*tab*/
-					$(document).ready(function(){
-					$(".tabContents").hide(); 
-					$(".tabContents:first").show();
 
-					$(".tabContaier ul li a").click(function(){ 
+	<script type="text/javascript">
+		/*tab*/
+		$(document).ready(function(){
+			$(".tabContents").hide(); 
+			$(".tabContents:first").show();
 
-					var activeTab = $(this).attr("href"); 
-					$(".tabContaier ul li a").removeClass("active"); 
-					$(this).addClass("active"); 
-					$(".tabContents").hide(); 
-					$(activeTab).fadeIn(); 
+			$(".tabContaier ul li a").click(function(){ 
 
-					return false; 
-					});
-					});	
+			var activeTab = $(this).attr("href"); 
+			$(".tabContaier ul li a").removeClass("active"); 
+			$(this).addClass("active"); 
+			$(".tabContents").hide(); 
+			$(activeTab).fadeIn(); 
 
-					/*타이머*/
-					var DdayDiff = { //타이머를 설정합니다.
-            inDays: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
+			return false; 
+			});
+		});						
 
-                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-            },
-
-            inWeeks: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return parseInt((tt2-tt1)/(24*3600*1000*7));
-            },
-
-            inMonths: function(dd1, dd2) {
-                var dd1Y = dd1.getFullYear();
-                var dd2Y = dd2.getFullYear();
-                var dd1M = dd1.getMonth();
-                var dd2M = dd2.getMonth();
-
-                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-            },
-
-            inYears: function(dd1, dd2) {
-                return dd2.getFullYear()-dd1.getFullYear();
-            }
-        }
-
-        function daycountDown() {
-            // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,3,30,23,59,59);
-            now = new Date();
-            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-
-            var Monthleft = event_day.getMonth() - now.getMonth();
-            var Dateleft = DdayDiff.inDays(now, event_day);
-            var Hourleft = timeGap.getHours();
-            var Minuteleft = timeGap.getMinutes();
-            var Secondleft = timeGap.getSeconds();
-
-            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
-
-            if((event_day.getTime() - now.getTime()) > 0) {
-                $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-                $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
-
-                $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-                $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
-
-                $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-                $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
-
-                $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-                $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
-                setTimeout(daycountDown, 1000);
-            }
-            else{
-                $("#newTopDday").hide();
-            }
-        }
-        daycountDown();
-</script>
-
-<script type="text/javascript">
-	function go_PassLecture() {
-		if($("input[name='ischk']:checked").length < 1) {
-			alert("이용안내에 동의하셔야 합니다.");
-			$("#chkInfo").focus();
-			return;
+		function go_PassLecture() {
+			if($("input[name='ischk']:checked").length < 1) {
+				alert("이용안내에 동의하셔야 합니다.");
+				$("#chkInfo").focus();
+				return;
+			}
+			location.href = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152756') }}";
 		}
 
-		location.href = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152756') }}";
-	}
-</script>
-<!-- scripts -->
+		/*디데이카운트다운*/
+		$(document).ready(function() {
+			dDayCountDown('{{$arr_promotion_params['edate']}}');
+		});
+	</script>
+
+	{{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

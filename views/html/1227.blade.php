@@ -97,7 +97,7 @@
         <div class="skyBanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
             <map name="Map1227A" id="Map1227A">
-            <area shape="rect" coords="5,9,130,92" href="#evtTop" alt="다드림이벤트" />
+            <area shape="rect" coords="5,9,130,92" href="#evt06" alt="다드림이벤트" />
             <area shape="rect" coords="5,115,130,199" href="#evt01" alt="경품특전" />
             <area shape="rect" coords="5,211,130,296" href="#evt02" alt="체력특전" />
             <area shape="rect" coords="5,307,130,394" href="#evt03" alt="면접특전" />
@@ -111,7 +111,9 @@
         
         <div class="evtCtnsBox evtTop" id="evtTop">
             <div class="evtBcli">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top_bcli.png" title="브랜드 충성도 1위! 최종 합격기원 감사제!">   
+                <a href="https://police.dev.willbes.net/support/notice/show/cate/3001?board_idx=223660" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top_bcli.png" title="2019 브랜드 고객충성도 1위">
+                </a>  
             </div>    
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top.jpg" title="최종합격기원 감사제"><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top_01.jpg" title="필기합격자 누구나 참여가능">
@@ -119,11 +121,14 @@
 		</div>
 
         <div class="evtCtnsBox evt01" id="evt01">
+            {{--5.13일 노출
             <div class="rouletteBox">
                 <div class="roulett"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_roulette_s.png" alt="룰렛판"></div>
                 <div class="start">start</div>
                 <div class="target"></div>
             </div>
+            --}}
+            
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_01.jpg" title="필기합격자 누구나 참여가능">            
         </div>
 
@@ -146,15 +151,15 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_01.jpg" title="3법 면접 무료특강"><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_02.jpg" title="황세웅 교수 실시간 기출분석">
             <div id="movieFrame">
-                {{--방송 전 
+                {{--방송 전--}}
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live01.jpg" title="방송전">
-                --}}
+                
 
-                {{--7/2 ~ 7.15 오전 9시 30분 방송 중--}}
+                {{--7/2 ~ 7.15 오전 9시 30분 방송 중
                 <script src="/public/vendor/jwplayer/jwplayer.js"></script>
                 <div class="movieplayer">
                     <div class="embedWrap">
-                        {{--PC--}}    
+                        <!--PC-->    
                         <div class="embed-container" id="myElement">
                             <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
                             <script type="text/javascript">
@@ -169,7 +174,7 @@
                             </script>
                         </div>
 
-                        {{--모바일용
+                        <!--모바일용-->
                         <div class="embed-container-mobile" id="myElement">
                             <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
                             <script type="text/javascript">
@@ -186,11 +191,11 @@
                         <ul class="mobileCh">
                             <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
                             <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
-                        </ul>
-                        --}}    
+                        </ul>                           
                     </div>
                 </div>
-                
+                --}}
+
                 {{--방송종료 00:00 부터 노출
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live02.jpg" title="방송종료" />
                 --}}

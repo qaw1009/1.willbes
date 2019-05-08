@@ -47,6 +47,10 @@
         .evtTop .btn a:hover {background:#ffd835; color:#000}
 
         .evt01 {background:url("https://static.willbes.net/public/images/promotion/2019/05/1227_01_bg.jpg") center top  no-repeat;}
+        .rouletteBox {position:absolute; width:510px; height:510px; top:414px; left:50%; margin-left:-255px; z-index:1}
+        .rouletteBox .start{position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;width:100px;height:100px;line-height:100px;cursor:pointer;background-color:#000;color:#fff;text-align:center;border-radius:50%;}
+        .rouletteBox .target{position:absolute;left:0;right:0;top:-30px;margin:0 auto;border-left:20px solid transparent;border-right:20px solid transparent;border-top:50px solid #000;width:0;height:0;}
+        
         .evt02 {background:#295e79 url("https://static.willbes.net/public/images/promotion/2019/05/1227_02_bg.jpg") center top  no-repeat; padding-bottom:120px}
         /* 슬라이드 */
         .slide_con {position:relative; width:960px; margin:80px auto 0}	
@@ -93,7 +97,7 @@
         <div class="skyBanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
             <map name="Map1227A" id="Map1227A">
-            <area shape="rect" coords="5,9,130,92" href="#evtTop" alt="다드림이벤트" />
+            <area shape="rect" coords="5,9,130,92" href="#evt06" alt="다드림이벤트" />
             <area shape="rect" coords="5,115,130,199" href="#evt01" alt="경품특전" />
             <area shape="rect" coords="5,211,130,296" href="#evt02" alt="체력특전" />
             <area shape="rect" coords="5,307,130,394" href="#evt03" alt="면접특전" />
@@ -105,10 +109,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_txt01.jpg" title="브랜드 충성도 1위! 최종 합격기원 감사제!">   
         </div>
 
-
         <div class="evtCtnsBox evtTop" id="evtTop">
             <div class="evtBcli">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top_bcli.png" title="브랜드 충성도 1위! 최종 합격기원 감사제!">   
+                <a href="https://police.dev.willbes.net/support/notice/show/cate/3001?board_idx=223660" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top_bcli.png" title="2019 브랜드 고객충성도 1위">
+                </a>    
             </div>    
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top.jpg" title="최종합격기원 감사제"><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top_01.jpg" title="필기합격자 누구나 참여가능">
@@ -116,6 +121,14 @@
         </div>
 
         <div class="evtCtnsBox evt01" id="evt01">
+            {{--5.13일 노출
+            <div class="rouletteBox">
+                <div class="roulett"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_roulette_s.png" alt="룰렛판"></div>
+                <div class="start">start</div>
+                <div class="target"></div>
+            </div>
+            --}}
+            
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_01.jpg" title="필기합격자 누구나 참여가능">            
         </div>
 
@@ -138,15 +151,15 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_01.jpg" title="3법 면접 무료특강"><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_02.jpg" title="황세웅 교수 실시간 기출분석">
             <div id="movieFrame">
-                {{--방송 전 
+                {{--방송 전--}}
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live01.jpg" title="방송전">
-                --}}
+                
 
-                {{--7/2 ~ 7.15 오전 9시 30분 방송 중--}}
+                {{--7/2 ~ 7.15 오전 9시 30분 방송 중
                 <script src="/public/vendor/jwplayer/jwplayer.js"></script>
                 <div class="movieplayer">
                     <div class="embedWrap">
-                        {{--PC--}}    
+                        <!--PC-->    
                         <div class="embed-container" id="myElement">
                             <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
                             <script type="text/javascript">
@@ -161,7 +174,7 @@
                             </script>
                         </div>
 
-                        {{--모바일용
+                        <!--모바일용-->
                         <div class="embed-container-mobile" id="myElement">
                             <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
                             <script type="text/javascript">
@@ -178,10 +191,10 @@
                         <ul class="mobileCh">
                             <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
                             <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
-                        </ul>
-                        --}}    
+                        </ul>                            
                     </div>
                 </div>
+                --}}
                 
                 {{--방송종료 00:00 부터 노출
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live02.jpg" title="방송종료" />
@@ -248,5 +261,16 @@
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
             @endif
         }
+    </script>
+    <script src="/public/js/willbes/jquery.transit.min.js"></script>
+    <script>
+        $(".rouletteBox .start").one("click", function(){
+            var time = ((Math.random()*6)+5)*1000;
+            var deg = ((Math.random()*2)+2)*1000;
+
+            $(".rouletteBox .roulett").transition({
+                rotate : deg
+            }, time, "cubic-bezier(.03,.87,.63,.98)");
+        });
     </script>
 @stop

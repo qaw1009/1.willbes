@@ -75,7 +75,7 @@
                             <div class="address">
                                 <span class="a-tit">주소</span>
                                 <span>
-                                    인천 부평구 부평동 534-28 중보빌딩 10층
+                                    인천 부평구 경원대로 1395 부평1번가 11층
                                 </span>
                             </div>
                             <div class="tel">

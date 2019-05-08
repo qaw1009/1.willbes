@@ -17,118 +17,230 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
 
-        .skyBanner {position:fixed; bottom:20px; right:20px; width:138px; border:1px solid #000; z-index:10;
-            -webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
-            -moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
-            box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
-        .skyBanner li a {display:block; padding:15px 0; text-align:center; background:#fff; color:#000; font-size:14px; font-weight:600; border-bottom:1px solid #000; line-height:1.4}
-        .skyBanner li:last-child a {height:27px; line-height:27px; padding:0; background:#000; color:#fff}
-        .skyBanner li a:hover {background:#000; color:#fff;}
+        .skyBanner {position:fixed; bottom:20px; right:0; width:136px; z-index:10}
 
-        .evt01 {background:#5f4b99; height:500px}
-        .evt02 {background:#0077ff; height:500px}
-        .evt02 .btn a { display:block; width:600px; margin:0 auto; padding:20px 0; background:#fff; color:#000;
-            font-size:20px; border-radius:40px;
+        .evtTxt {background:#1e2a36}
+
+        .evtTop {background:#164e76 url("https://static.willbes.net/public/images/promotion/2019/05/1227_top_bg.jpg") center top  no-repeat;}
+        .evtBcli {position:absolute; left:50%; top:-50px; margin-left:-540px; width:215px; z-index:1; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{top:-50px}
+        50%{top:-10px}
+        to{top:-50px}
+        }
+        @@-webkit-keyframes upDown{
+        from{top:-50px}
+        50%{top:-10px}
+        to{top:-50px}
+        } 
+        .evtTop .btn {position:absolute; left:50%; bottom:120px; margin-left:-300px; width:600px; z-index:2;}
+        .evtTop .btn a {display:block; width:600px; margin:0 auto; padding:20px 0; background:#fff; color:#000; 
+            font-size:26px; border-radius:20px; border-bottom:10px solid #000;
             -webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
             -moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
             box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
         }
-        .evt02 .btn a:hover {background:#333; color:#fff}
-        .evt03 {background:#eef2f5; height:500px}
-        .evt04 {background:#666; height:500px}
-        .evt05 {background:#ccc; height:500px}
-        .evt06 {background:#999; height:500px}
-        .evt07 {background:#fff; height:500px}
-        .evtinfo {background:#e4e4e4; height:500px}
+        .evtTop .btn a:hover {background:#ffd835; color:#000}
 
+        .evt01 {background:url("https://static.willbes.net/public/images/promotion/2019/05/1227_01_bg.jpg") center top  no-repeat;}
+        .evt02 {background:#295e79 url("https://static.willbes.net/public/images/promotion/2019/05/1227_02_bg.jpg") center top  no-repeat; padding-bottom:120px}
+        /* 슬라이드 */
+        .slide_con {position:relative; width:960px; margin:80px auto 0}	
+        .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn {left:-34px; top:46%; width:67px; height:67px;}
+        .slide_con p.rightBtn {right:-34px;top:46%; width:67px; height:67px;}
+        
+        .evt03 {background:#cbc7c0}
+        #movieFrame {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1227_03_liveBg.jpg) no-repeat center center;}
+        .embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
+        .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:551px; margin:0 auto}      
+        
+                
+         /*크롬*/
+         @@media screen and (-webkit-min-device-pixel-ratio:0) {
+        #movieFrame {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1227_03_liveBg.jpg) no-repeat center center;}
+        .embedWrap {position:relative; width:980px; height:551px; margin-left:70px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1227_03_live01.jpg) no-repeat center center;}
+        .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto;}
+        .mobileCh {position:absolute; left:0; bottom:0; width:980px;}
+        .mobileCh li {display:inline; float:left; width:490px;}
+        .mobileCh li a {display:block;}
+        .mobileCh li a.ch2 {color:#6CF}
+        .mobileCh li a:hover {color:#FC0}
+        .mobileCh:after {content:""; display:block; clear:both}
+        } 
+
+        /*모바일*/
+        .mobileCh {position:absolute; bottom:0; width:980px;}
+        .mobileCh li {display:inline; float:left; width:50%;}
+        .mobileCh li a {display:block;}
+        .mobileCh li:last-child a {margin:0}
+        .mobileCh li a.ch2 {color:#6CF}
+        .mobileCh li a:hover {color:#FC0}
+        .mobileCh:after {content:""; display:block; clear:both}
+
+        .evt04 {background:url("https://static.willbes.net/public/images/promotion/2019/05/1227_04_bg.jpg") center top  no-repeat;}
+        .evt05 {background:#525685;}
+        .evt06 {background:#fff;}	
+        .evtinfo {background:#363636;}	
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        <ul class="skyBanner">
-            <li><a href="#evt01">다! 드림!</a></li>
-            <li><a href="#evt03">경품 특전</a></li>
-            <li><a href="#evt04">체력 특전</a></li>
-            <li><a href="#evt05">면접 특전</a></li>
-            <li><a href="#evt06">강의제공 특전</a></li>
-            <li><a href="#evt07">소문내기</a></li>
-            <li><a href="#evtContainer">top</a></li>
-        </ul>
+        <div class="skyBanner">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
+            <map name="Map1227A" id="Map1227A">
+            <area shape="rect" coords="5,9,130,92" href="#evtTop" alt="다드림이벤트" />
+            <area shape="rect" coords="5,115,130,199" href="#evt01" alt="경품특전" />
+            <area shape="rect" coords="5,211,130,296" href="#evt02" alt="체력특전" />
+            <area shape="rect" coords="5,307,130,394" href="#evt03" alt="면접특전" />
+            <area shape="rect" coords="5,407,130,492" href="#evt04" alt="강의제공특전" />
+            </map>
+        </div>        
 
-        <div class="evtCtnsBox evt01" id="evt01">
-            최종합격기원 감사제
+        <div class="evtCtnsBox evtTxt">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_txt01.jpg" title="브랜드 충성도 1위! 최종 합격기원 감사제!">   
         </div>
-        <!--evt01//-->
 
-        <div class="evtCtnsBox evt02" id="evt02">
-            경찰 합격의 요람 1등 경찰학원<br>
-            신광은 경찰팀이 체력부터 면접까지!<br>
-            ㅣ<br>
-            답은 정해져 있습니다.<br>
-            STEP-BY-STEP<br>
-            <br>
-            불가능을 가능케 하고자 합니다.<br>
-            최종합격! 윌비스 신광은 경찰학원이 함께 합니다.<br>
+
+        <div class="evtCtnsBox evtTop" id="evtTop">
+            <div class="evtBcli">
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top_bcli.png" title="브랜드 충성도 1위! 최종 합격기원 감사제!">   
+            </div>    
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top.jpg" title="최종합격기원 감사제"><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_top_01.jpg" title="필기합격자 누구나 참여가능">
             <div class="btn NGEB"><a href="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"javascript:alert('이미 이벤트에 참가하셨습니다.')"!!}@endif" >필기합격 & 친구추천 한번에 인증하기 ></a></div>
         </div>
-        <!--evt02//-->
+
+        <div class="evtCtnsBox evt01" id="evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_01.jpg" title="필기합격자 누구나 참여가능">            
+        </div>
+
+        <div class="evtCtnsBox evt02" id="evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_02.jpg" title="경찰 체력 특전">
+            <div class="slide_con">
+                <ul id="slidesImg">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_02_img01.jpg" alt="아이언 폴리스 1" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_02_img02.jpg" alt="아이언 폴리스 2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_02_img03.jpg" alt="아이언 폴리스 3" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_02_img04.jpg" alt="아이언 폴리스 4" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_02_img05.jpg" alt="아이언 폴리스 5" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_prev.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_next.png"></a></p>
+            </div>
+        </div>
 
         <div class="evtCtnsBox evt03" id="evt03">
-            Big.1 경품 특전
-            {{--5월 12일까지 노출 화면, 날짜 설정해주세요.--}}
-            <div>룰렛 이벤트 5/13일 Coming soon!</div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_01.jpg" title="3법 면접 무료특강"><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_02.jpg" title="황세웅 교수 실시간 기출분석">
+            <div id="movieFrame">
+                {{--방송 전 
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live01.jpg" title="방송전">
+                --}}
 
-            {{--5월 13일부터 노출 화면, 날짜 설정해주세요.--}}
-            <div>룰렛 이벤트 open!</div>
-        </div>
-        <!--evt03//-->
+                {{--7/2 ~ 7.15 오전 9시 30분 방송 중--}}
+                <script src="/public/vendor/jwplayer/jwplayer.js"></script>
+                <div class="movieplayer">
+                    <div class="embedWrap">
+                        {{--PC--}}    
+                        <div class="embed-container" id="myElement">
+                            <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                            <script type="text/javascript">
+                                jwplayer("myElement").setup({
+                                width: '100%',
+                                logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
+                                image: "https://static.willbes.net/public/images/promotion/2019/05/1227_03_live01.jpg",
+                                aspectratio: "16:9",
+                                autostart: "true",
+                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
+                            });
+                            </script>
+                        </div>
 
-        <div class="evtCtnsBox evt04" id="evt04">
-            Big.2 체력 특전
+                        {{--모바일용
+                        <div class="embed-container-mobile" id="myElement">
+                            <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                            <script type="text/javascript">
+                                jwplayer("myElement").setup({
+                                width: '100%',
+                                logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
+                                image: "https://static.willbes.net/public/images/promotion/2019/05/1227_03_live01.jpg",
+                                aspectratio: "16:9",
+                                autostart: "true",
+                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
+                            });
+                            </script>
+                        </div>
+                        <ul class="mobileCh">
+                            <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
+                            <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
+                        </ul>
+                        --}}    
+                    </div>
+                </div>
+                
+                {{--방송종료 00:00 부터 노출
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live02.jpg" title="방송종료" />
+                --}}
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_03.jpg" title="라이브 특강 진행 안내">
         </div>
-        <!--evt04//-->
+
+		<div class="evtCtnsBox evt04" id="evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_04.jpg" title="강의 제공 특전" />
+        </div>
 
         <div class="evtCtnsBox evt05" id="evt05">
-            Big.3 면접 특전
-            <div>3법면접 무료특강</div>
-            <div>
-                면접 19년 1차 기출분석 라이브
-                {{--방송전 화면--}}
-                <div>방송전</div>
-
-                {{--방송중 화면--}}
-                <div>방송중</div>
-
-                {{--방송 최종 종료 화면--}}
-                <div>방송최종종료</div>
-            </div>
-            <div>live 특강 진행 안내</div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_05.jpg" title="소문내기 경품 특전" />
         </div>
 
         <div class="evtCtnsBox evt06" id="evt06">
-            Big.4 강의 제공 특전
-        </div>
-
-        <div class="evtCtnsBox evt07" id="evt07">
-            Big.5 경품 특전 - 소문내기
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_06.jpg" title="다드림 소문내기 이벤트 경품" />
         </div>
 
         {{--기본댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_emoticon_url_partial')
+            @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
 
         <div class="evtCtnsBox evtinfo" id="evtLast">
-            상품혜택 및 유의사항 안내
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_07.jpg" title="유의사항" />
         </div>
 
     </div>
     <!-- End Container -->
 
     <script type="text/javascript">
+        $(document).ready(function() {
+            var slidesImg = $("#slidesImg").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideWidth:980,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+
+                });
+            
+                $("#imgBannerLeft").click(function (){
+                    slidesImg.goToPrevSlide();
+                });
+            
+                $("#imgBannerRight").click(function (){
+                    slidesImg.goToNextSlide();
+                });
+        });
+
         function certOpen(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             @if(empty($arr_promotion_params) === false)

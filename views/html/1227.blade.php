@@ -86,8 +86,7 @@
         .evt04 {background:url("https://static.willbes.net/public/images/promotion/2019/05/1227_04_bg.jpg") center top  no-repeat;}
         .evt05 {background:#525685;}
         .evt06 {background:#fff;}	
-        .evtinfo {background:#363636;}		
-
+        .evtinfo {background:#363636;}	
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer"> 
@@ -189,7 +188,6 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_03.jpg" title="라이브 특강 진행 안내">
         </div>
-        <!--evt04//-->
 
 		<div class="evtCtnsBox evt04" id="evt04">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_04.jpg" title="강의 제공 특전" />
@@ -205,7 +203,7 @@
 
         {{--기본댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_emoticon_url_partial')
+            @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
 
         <div class="evtCtnsBox evtinfo" id="evtLast">

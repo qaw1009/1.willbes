@@ -121,14 +121,13 @@
 		</div>
 
         <div class="evtCtnsBox evt01" id="evt01">
-            {{--5.13일 노출
+            {{--5.13일 노출--}}
             <div class="rouletteBox">
                 <div class="roulett"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_roulette_s.png" alt="룰렛판"></div>
                 <div class="start">start</div>
                 <div class="target"></div>
-            </div>
-            --}}
-            
+            </div>            
+
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_01.jpg" title="필기합격자 누구나 참여가능">            
         </div>
 

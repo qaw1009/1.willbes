@@ -13,7 +13,7 @@ class SupportNotice extends BaseSupport
     protected $_bm_idx;
     protected $_default_path;
     protected $_cate_path = '';
-    protected $_paging_limit = 10;
+    protected $_paging_limit = 20;
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 

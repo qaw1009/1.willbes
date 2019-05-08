@@ -119,7 +119,7 @@ class CertApplyModel extends WB_Model
                             ,C.CcdName AS CertTypeCcd_Name
                             ,A.`No`
                             ,A.CertTitle
-                            ,F.MemId,F.MemName
+                            ,F.MemId,F.MemName,fn_dec(F.PhoneEnc) AS phone
                             ,SA.RegDatm
                             ,IFNULL(SA.Affiliation,\'\') AS Affiliation
                             ,IFNULL(SA.Position,\'\') AS POSITION

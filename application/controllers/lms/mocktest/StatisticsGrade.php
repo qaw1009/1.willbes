@@ -167,4 +167,16 @@ class StatisticsGrade extends \app\controllers\BaseController
         $this->json_result($result, '저장되었습니다.', $result, $result);
 
     }
+
+    /**
+     * 복수정답처리
+     * @return object|string
+     */
+    public function scoreMultiAjax()
+    {
+        $formData = $this->_reqP(null, false);
+        $MgIdx = element('MgIdx', $formData);
+        $result = $this->regGradeModel->scoreMulti($MgIdx);
+        $this->json_result($result, '처리완료되었습니다.', $result, $result);
+    }
 }

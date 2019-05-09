@@ -913,6 +913,88 @@ class RegGradeModel extends WB_Model
     }
 
     /**
+     * 조정점수반영
+     * @param $MgIdx $mode = cron or web
+     * @return mixed
+     */
+    public function scoreMulti($MgIdx)
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            if(empty($MgIdx) == true){
+                throw new \Exception('모의고사 그룹 미등록 상태입니다.');
+            }
+
+            $column = "
+                ProdCode
+            ";
+
+            $from = "
+                FROM
+                    {$this->_table['mockGroupR']}  
+            ";
+
+            $order_by = " ";
+
+            $where = " 
+            WHERE 
+                MgIdx = " . $MgIdx . "
+                AND IsStatus = 'Y' ";
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+            $groupProd = $query->result_array();
+
+            foreach ($groupProd as $key => $val) {
+                $ProdCode = $val['ProdCode'];
+                $column = "
+                        MapIdx, ma.MrIdx, ma.MpIdx, ma.MqIdx, ma.ProdCode, Answer, RightAnswer, IsWrong 
+                ";
+
+                $from = "
+                    FROM 
+                        {$this->_table['mockAnswerPaper']} AS ma
+                        JOIN {$this->_table['mockExamQuestion']} AS mq ON mq.MqIdx = ma.MqIdx
+                ";
+
+                $order_by = " ";
+
+                $where = " WHERE mq.QuestionOption = 'M' AND ma.ProdCode = ".$ProdCode;
+
+                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+
+                $tresult = $query->result_array();
+
+                foreach ($tresult AS $key2 => $val2){
+                    $RightAnswer = $val2['RightAnswer'];
+                    $Answer = $val2['Answer'];
+
+                    if(strpos($RightAnswer, $Answer) !== false) {
+                        // 데이터 수정
+                        $data = [
+                            'IsWrong' => 'Y'
+                        ];
+                        $this->_conn->set($data)->where(['MapIdx'=> $val2['MapIdx'], 'ProdCode'=> $val2['ProdCode'], 'MrIdx' => $val2['MrIdx'], 'MpIdx' => $val2['MpIdx'], 'MqIdx' => $val2['MqIdx']]);
+
+                        if ($this->_conn->update($this->_table['mockAnswerPaper']) === false) {
+                            throw new \Exception('수정에 실패했습니다.');
+                        }
+
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+
+    }
+
+    /**
      * 모의고사 과목상세
      * @param array $prodcode
      * @return mixed

@@ -10,6 +10,7 @@
     <meta name="keywords" content="{{ $__cfg['MetaKeyword'] }}">
     <meta name="description" content="{{ $__cfg['MetaDesc'] }}">
     <link rel="shortcut icon" href="{{ $__cfg['Favicon'] }}"/>
+    {!! base64_decode($__cfg['HeaderInfo']) !!}
     <!-- CSS -->
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">

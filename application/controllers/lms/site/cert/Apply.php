@@ -5,6 +5,7 @@ class Apply extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'sys/code', 'sys/category', 'site/cert', 'site/certApply');
     protected $helpers = array('download','file');
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -111,10 +112,12 @@ class Apply extends \app\controllers\BaseController
 
         }else{
 
-            $list = $this->certApplyModel->listApplyExcel($arr_condition, ['SA.RegDatm' => 'desc'], $arr_condition_add);
+            set_time_limit(0);
+            ini_set('memory_limit', $this->_memory_limit_size);
 
+            $list = $this->certApplyModel->listApplyExcel($arr_condition, ['SA.RegDatm' => 'desc'], $arr_condition_add);
             $file_name = '수강인증목록_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
-            $headers = ['사이트', '카테고리', '인증코드', '인증구분', '회차', '회차명', '회원아이디', '회원명', '등록일', '소속/군무기관', '직위/직급/계급', '재직구분/군별', '군번/수강사이트', '응시지역', '응시직렬', '응시번호', '승인자', '승인일', '승인취소자', '승인취소일', '승인여부','추가정보1','추가정보2'];
+            $headers = ['사이트', '카테고리', '인증코드', '인증구분', '회차', '회차명', '회원아이디', '회원명','전화번호', '등록일', '소속/군무기관', '직위/직급/계급', '재직구분/군별', '군번/수강사이트', '응시지역', '응시직렬', '응시번호', '승인자', '승인일', '승인취소자', '승인취소일', '승인여부','추가정보1','추가정보2'];
 
             // export excel
             /*----  다운로드 정보 저장  ----*/
@@ -127,13 +130,8 @@ class Apply extends \app\controllers\BaseController
             /*----  다운로드 정보 저장  ----*/
 
             $this->load->library('excel');
-            $this->excel->exportExcel($file_name, $list, $headers);
-            /*if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
-                show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
-            }*/
-
+            $this->excel->exportHugeExcel($file_name, $list, $headers);
         }
-
     }
 
     /**

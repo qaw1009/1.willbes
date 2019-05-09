@@ -290,7 +290,7 @@
 
     <!-- 경기광주 -->
     @if($campus_code == '605010')
-        <div id="campus9" class="tabContent">
+        <div id="campus10" class="tabContent">
             <div class="map_img">
                 <img src="{{ img_url('cop_acad/map/map_cop_kkkj.jpg') }}" alt="경기광주">
                 <span>경기 광주(기숙형)</span>

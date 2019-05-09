@@ -44,10 +44,15 @@
                                         <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody>                                    
+                                    <tr>
+                                        <td class="w-txt tx-left" colspan="3">
+                                            {!! $data['Content'] !!}
+                                        </td>
+                                    </tr>
                                     @if(empty($data['AttachData']) === false)
                                     <tr>
-                                        <td class="w-file tx-left pl20" colspan="3">
+                                        <td class="w-file tx-left" colspan="3">
                                             @foreach($data['AttachData'] as $row)
                                                 <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
@@ -55,11 +60,6 @@
                                         </td>
                                     </tr>
                                     @endif
-                                    <tr>
-                                        <td class="w-txt tx-left" colspan="3">
-                                            {!! $data['Content'] !!}
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                                 <div class="search-Btn mt20 mb20 h36 p_re">

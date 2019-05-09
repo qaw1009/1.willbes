@@ -250,6 +250,13 @@
                         <p class="form-control-static">ex) 공무원, 가장 빠른 합격전략 윌비스</p>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="header_info">헤더영역 (HTML)
+                    </label>
+                    <div class="col-md-9">
+                        <textarea id="header_info" name="header_info" class="form-control" rows="9" title="헤더영역" placeholder="">{!! base64_decode($data['HeaderInfo']) !!}</textarea>
+                    </div>
+                </div>
                 {{-- 사용안함
                 <div class="form-group">
                     <label class="control-label col-md-2" for="front_css">CSS정보 (HTML)

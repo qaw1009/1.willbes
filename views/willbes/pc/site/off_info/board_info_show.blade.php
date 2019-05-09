@@ -52,21 +52,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if(empty($data['AttachData']) === false)
                                             <tr>
-                                                <td class="w-file tx-left pl20" colspan="4">
-                                                    @foreach($data['AttachData'] as $row)
-                                                        <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
-                                                            <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
-                                                    @endforeach
+                                                <td class="w-txt tx-left" colspan="4">
+                                                    {!! $data['Content'] !!}
                                                 </td>
                                             </tr>
-                                        @endif
-                                        <tr>
-                                            <td class="w-txt tx-left" colspan="4">
-                                                {!! $data['Content'] !!}
-                                            </td>
-                                        </tr>
+                                            @if(empty($data['AttachData']) === false)
+                                                <tr>
+                                                    <td class="w-file tx-left pl20" colspan="4">
+                                                        @foreach($data['AttachData'] as $row)
+                                                            <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                                                                <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         </tbody>
                                     </table>
                                     <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">

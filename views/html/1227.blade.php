@@ -214,7 +214,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_06.jpg" title="다드림 소문내기 이벤트 경품" />
         </div>
 
-        {{--기본댓글--}}
+        {{--홍보댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif

@@ -40,9 +40,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <tr>
+                                        <td class="w-txt tx-left" colspan="7">
+                                            {!! $data['Content'] !!}
+                                        </td>
+                                    </tr>
                                     @if(empty($data['AttachData']) === false)
                                         <tr>
-                                            <td class="w-file tx-left pl20" colspan="4">
+                                            <td class="w-file tx-left" colspan="7">
                                                 @foreach($data['AttachData'] as $row)
                                                     <a href="{{front_url($default_path.'/examAnnouncement/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
@@ -50,11 +55,6 @@
                                             </td>
                                         </tr>
                                     @endif
-                                    <tr>
-                                        <td class="w-txt tx-left" colspan="7">
-                                            {!! $data['Content'] !!}
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                                 <div class="search-Btn mt20 mb20 h36 p_re">

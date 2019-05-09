@@ -16,7 +16,7 @@
             <div class="layer">		
                 <div class="video">
                     <video style="width:100%" autoplay loop muted="" poster="">
-                        <source src="http://sample4.hd.willbes.gscdn.com/police/190318_junhkyeong_bus_1210x360(imsi).mp4" type="video/mp4" width="1210" height="360"></source>
+                        <source src="http://sample4.hd.willbes.gscdn.com/police/190509_junhkyeong_bus_1210x360.mp4" type="video/mp4" width="1210" height="360"></source>
                     </video>
                 </div>
                 <div class="pngimg-real">

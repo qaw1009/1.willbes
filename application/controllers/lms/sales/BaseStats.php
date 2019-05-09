@@ -350,7 +350,7 @@ class BaseStats extends \app\controllers\BaseController
         $arr_condition = $this->_getOrderListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getOrderListOrderBy(), $this->_order_list_add_join);
         $last_query = $this->orderListModel->getLastQuery();
-        $file_name = $this->_stats_name . '_매출통계상세리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $file_name = $this->_stats_name . '_매출통계상세_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // download log
         $this->load->library('approval');

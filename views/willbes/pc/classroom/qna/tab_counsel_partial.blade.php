@@ -24,7 +24,7 @@
                     @endforeach
                 </select>
 
-                <div class="willbes-Lec-Search GM f_right">
+                <div class="willbes-Lec-Search GM f_left">
                     <div class="inputBox p_re">
                         <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{ element('s_keyword', $arr_input) }}" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                         <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
@@ -34,9 +34,10 @@
                         <button type="submit" onclick="" class="search-Btn whiteBox">
                             <span>초기화</span>
                         </button>
-                    </div>
-                    <div class="subBtn blue NSK f_right" style="margin-left: 189px;"><a href="{{front_url('/support/qna/create')}}">문의하기 ></a></div>
+                    </div>                    
                 </div>
+
+                <div class="subBtn blue NSK f_right" style="margin-left: 189px;"><a href="{{front_url('/support/qna/create')}}">문의하기 ></a></div>
             </div>
         </div>
         <div class="LeclistTable pointTable">

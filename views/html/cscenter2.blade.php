@@ -231,18 +231,20 @@
                                     <td class="w-click"><strong>조회수</strong> 123</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="w-file tx-left pl20" colspan="4">
-                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
-                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
-                                    </td>
-                                </tr>
+                            <tbody>                                
                                 <tr>
                                     <td class="w-txt tx-left" colspan="7">
                                         이달의 개강 강좌 공지입니다.<br/>
                                         이달의 개강 강좌 공지입니다.<br/>
                                         이달의 개강 강좌 공지입니다.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-file tx-left" colspan="4">
+                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일3가 노출됩니다.docx</a>
+                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일4가 노출됩니다.docx</a>
                                     </td>
                                 </tr>
                             </tbody>

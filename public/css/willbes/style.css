@@ -3997,8 +3997,15 @@ form .LeclistTable .evtTable tr td a.w-del {
 .LecViewTable .listTable thead tr td dl dt .row-line {
     margin: 14px;
 }
+
 .LecViewTable .w-file a {
-    margin-right: 70px;
+    display:block;
+    line-height: 40px;
+    margin-left: 20px;
+}
+.LecWriteTable tr td.w-file {
+    padding: 15px 30px;
+    /*line-height: 22px;*/
 }
 .LecViewTable .w-txt {
     padding: 15px 20px;
@@ -4083,10 +4090,7 @@ form .LeclistTable .evtTable tr td a.w-del {
     padding: 20px;
     line-height: 16px;
 }
-.LecWriteTable tr td.w-file {
-    padding: 15px 30px;
-    line-height: 22px;
-}
+
 .LecWriteTable ul.attach li .filetype {
     margin-bottom: 10px;
 }

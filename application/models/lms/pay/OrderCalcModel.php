@@ -662,4 +662,225 @@ class OrderCalcModel extends BaseOrderModel
 
         return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
     }
+
+    /**
+     * 학원강좌 개강일/종강일 기준 강사료 정산 조회 (학원강좌 전용)
+     * @param int $prof_idx [교수식별자]
+     * @param string $study_date_type [개강일, 종강일 구분 (StudyStartDate, StudyEndDate)
+     * @param string $study_start_date [시작일자]
+     * @param string $study_end_date [종료일자]
+     * @param bool|string $is_count [조회구분, sum : 교수/상품별합계, tSum : 주문목록합계, true : 주문목록 카운트, false : 주문목록, excel : 주문목록 엑셀다운로드]
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @return mixed
+     */
+    public function listCalcOffLecture($prof_idx, $study_date_type, $study_start_date, $study_end_date, $is_count, $arr_condition = [], $limit = null, $offset = null)
+    {
+        if ($is_count === true) {
+            // 상세보기 주문목록 카운트
+            $in_column = 'count(*) AS numrows';
+            $column = '';
+        } else {
+            // 기본 로우 컬럼
+            $in_column = 'TA.ProfIdx, TA.ProdCode, TA.ProdName, TA.ProdCodeSub, TA.ProdNameSub, TA.SiteCode
+				, TA.LearnPatternCcd, TA.PackTypeCcd
+				, TA.StudyStartDate, TA.StudyEndDate, TA.CourseIdx, TA.SubjectIdx
+				, if(TA.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '", (
+					TA.ProdSalePrice / 
+					(select sum(B.SalePrice) 
+						from ' . $this->_table['order_sub_product'] . ' as A 
+							inner join ' . $this->_table['product_sale'] . ' as B 
+								on A.ProdCodeSub = B.ProdCode and B.SaleTypeCcd = "613001" and B.IsStatus = "Y" 
+						where A.OrderProdIdx = OP.OrderProdIdx)
+				  ), TA.ProdDivisionRate) as ProdDivisionRate 
+				, (TA.ProdCalcRate / 100) as ProdCalcRate, concat(TA.ProdCalcRate, "%") as ProdCalcPerc
+				, OP.RealPayPrice, OP.CardPayPrice, ifnull(OPR.RefundPrice, 0) as RefundPrice
+				, O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd
+				, OP.OrderProdIdx, OP.SalePatternCcd, OP.PayStatusCcd
+				, O.CompleteDatm, OPR.RefundDatm
+				, PC.CateCode
+				, json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
+
+            if ($is_count === false || $is_count === 'excel') {
+                $column = 'U.*
+	                , WPF.wProfName
+                    , M.MemId, M.MemName
+                    , PCO.CourseName, PSU.SubjectName, SC.CateName
+                    , CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CPS.CcdName as PayStatusCcdName
+                    , CLP.CcdName as LearnPatternCcdName, CPT.CcdName as PackTypeCcdName';
+            } else {
+                // 교수식별자, 상품코드별 합계
+                $column = 'U.ProfIdx';
+
+                if ($is_count == 'sum') {
+                    $column .= ', U.ProdCode, U.ProdCodeSub
+                        , WPF.wProfName 
+                        , fn_ccd_name(max(U.LearnPatternCcd)) as LearnPatternCcdName
+                        , if(U.ProdCode = U.ProdCodeSub, "", fn_ccd_name(max(U.PackTypeCcd))) as PackTypeCcdName
+                        , if(U.ProdCode = U.ProdCodeSub, "", max(U.ProdName)) as ProdName
+                        , max(U.ProdNameSub) as ProdNameSub
+                        , max(U.StudyStartDate) as StudyStartDate
+                        , max(U.StudyEndDate) as StudyEndDate';
+                }
+
+                $column .= ', sum(if(U.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '", 1, 0)) as tRemainPayCnt
+                    , sum(U.RealPayPrice) as tRealPayPrice
+                    , sum(U.RefundPrice) as tRefundPrice
+                    , sum(U.PgFeePrice) as tPgFeePrice                
+                    , sum(U.DivisionPayPrice) as tDivisionPayPrice
+                    , sum(U.DivisionRefundPrice) as tDivisionRefundPrice
+                    , sum(U.DivisionPgFeePrice) as tDivisionPgFeePrice
+                    , sum(U.DivisionCalcPrice) as tDivisionCalcPrice
+                    , TRUNCATE(sum(U.DivisionCalcPrice) * ' . $this->_in_tax_rate . ', 0) as tDivisionIncomeTax
+                    , TRUNCATE(sum(U.DivisionCalcPrice) * ' . $this->_re_tax_rate . ', 0) as tDivisionResidentTax
+                    , sum(U.DivisionCalcPrice) - TRUNCATE(sum(U.DivisionCalcPrice) * ' . $this->_in_tax_rate . ', 0) - TRUNCATE(sum(U.DivisionCalcPrice) * ' . $this->_re_tax_rate . ', 0) as tFinalCalcPrice
+                ';
+            }
+        }
+
+        // 조회 로우 from 쿼리
+        $raw_query = '
+            select ' . $in_column . '
+            from (
+				select PD.ProfIdx, P.ProdCode, P.ProdCode as ProdCodeSub, P.ProdName, P.ProdName as ProdNameSub, P.SiteCode
+					, PL.LearnPatternCcd, PL.PackTypeCcd
+					, PL.StudyStartDate, PL.StudyEndDate, PL.CourseIdx, PL.SubjectIdx 
+					, PD.ProdDivisionRate
+					, PD.ProdCalcRate
+					, null as ProdSalePrice
+				from ' . $this->_table['product'] . ' as P
+					inner join ' . $this->_table['product_lecture'] . ' as PL
+						on PL.ProdCode = P.ProdCode
+					inner join ' . $this->_table['product_division'] . ' as PD
+						on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = P.ProdCode and PD.IsStatus = "Y"
+				where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
+					and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '"
+					and PD.ProfIdx = ?
+					and `PL`.`'. $study_date_type .'` between ? and ?
+				union all
+				select SPD.ProfIdx, P.ProdCode, PRS.ProdCodeSub, P.ProdName, SP.ProdName as ProdNameSub, P.SiteCode
+					, PL.LearnPatternCcd, PL.PackTypeCcd
+					, SPL.StudyStartDate, SPL.StudyEndDate, SPL.CourseIdx, SPL.SubjectIdx
+					, if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", ifnull(PD.ProdDivisionRate, 0), null) as ProdDivisionRate
+					, if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", ifnull(PD.ProdCalcRate, 0), SPD.ProdCalcRate) as ProdCalcRate
+					, if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '", SPS.SalePrice * SPD.ProdDivisionRate, null) as ProdSalePrice
+				from ' . $this->_table['product'] . ' as P
+					inner join ' . $this->_table['product_lecture'] . ' as PL
+						on PL.ProdCode = P.ProdCode
+					inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
+						on PRS.ProdCode = P.ProdCode and PRS.IsStatus = "Y"
+					left join ' . $this->_table['product_division'] . ' as PD
+						on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = PRS.ProdCodeSub and PD.IsStatus = "Y"
+					inner join ' . $this->_table['product'] . ' as SP
+						on SP.ProdCode = PRS.ProdCodeSub
+					inner join ' . $this->_table['product_lecture'] . ' as SPL
+						on SPL.ProdCode = SP.ProdCode
+					inner join ' . $this->_table['product_division'] . ' as SPD
+						on SPD.ProdCode = SP.ProdCode and SPD.ProdCodeSub = SP.ProdCode and SPD.IsStatus = "Y"
+					left join ' . $this->_table['product_sale'] . ' as SPS
+						on SPS.ProdCode = SP.ProdCode and SPS.SaleTypeCcd = "613001" and SPS.IsStatus = "Y" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '"
+				where P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
+					and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '"
+					and SPD.ProfIdx = ?
+					and `SPL`.`'. $study_date_type .'` between ? and ?       
+            ) as TA
+				inner join ' . $this->_table['order_product'] . ' as OP
+					on OP.ProdCode = TA.ProdCode
+				inner join ' . $this->_table['order'] . ' as O
+					on OP.OrderIdx = O.OrderIdx		
+				left join ' . $this->_table['order_sub_product'] . ' as OSP
+					on OSP.OrderProdIdx = OP.OrderProdIdx and OSP.ProdCodeSub = TA.ProdCodeSub
+				left join ' . $this->_table['order_product_refund'] . ' as OPR
+					on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+				left join ' . $this->_table['product_r_category'] . ' as PC
+					on PC.ProdCode = TA.ProdCode and PC.IsStatus = "Y"				
+				left join ' . $this->_table['code'] . ' as CPM
+					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"		            
+			where OP.RealPayPrice > 0
+				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+				and (TA.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" or (TA.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and OSP.ProdCodeSub is not null))                            
+        ';
+
+        // 교수식별자, 조회일자 바인딩
+        $raw_binds = [$prof_idx, $study_start_date, $study_end_date, $prof_idx, $study_start_date, $study_end_date];
+
+        // where 조건
+        $raw_query .= $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        // 최종 쿼리
+        if ($is_count === true) {
+            $query = $raw_query;
+        } else {
+            $query = 'select ' . $column . '
+                from (
+                    select RD.*
+                        , TRUNCATE((RD.DivisionPayPrice - RD.DivisionRefundPrice - RD.DivisionPgFeePrice) * RD.ProdCalcRate, 0) as DivisionCalcPrice
+                    from (
+                        select RR.* 
+                            , RR.RealPayPrice - RR.RefundPrice as RemainPrice
+                            , TRUNCATE(RR.RealPayPrice * RR.ProdDivisionRate, 0) as DivisionPayPrice
+                            , TRUNCATE(RR.RefundPrice * RR.ProdDivisionRate, 0) as DivisionRefundPrice
+                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice
+                            , TRUNCATE(TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) * RR.ProdDivisionRate, 0) as DivisionPgFeePrice			 
+                        from ('
+                . $raw_query . '
+                        ) as RR				
+                    ) as RD
+                ) as U
+                    left join ' . $this->_table['professor'] . ' as PF		
+                        on U.ProfIdx = PF.ProfIdx and PF.IsStatus = "Y"	
+                    left join ' . $this->_table['pms_professor'] . ' as WPF
+                        on PF.wProfIdx = WPF.wProfIdx and WPF.wIsStatus = "Y"            
+            ';
+
+            if ($is_count === false || $is_count === 'excel') {
+                // 주문목록
+                $query .= '
+                    left join ' . $this->_table['member'] . ' as M
+                        on U.MemIdx = M.MemIdx
+                    left join ' . $this->_table['course'] . ' as PCO
+                        on U.CourseIdx = PCO.CourseIdx and PCO.IsStatus = "Y"
+                    left join ' . $this->_table['subject'] . ' as PSU
+                        on U.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"	
+                    left join ' . $this->_table['category'] . ' as SC
+                        on U.CateCode = SC.CateCode and SC.IsStatus = "Y"
+                    left join ' . $this->_table['code'] . ' as CPR
+                        on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
+                    left join ' . $this->_table['code'] . ' as CPM
+                        on U.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y"        
+                    left join ' . $this->_table['code'] . ' as CPS
+                        on U.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y"                
+                    left join ' . $this->_table['code'] . ' as CLP
+                        on U.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"
+                    left join ' . $this->_table['code'] . ' as CPT
+                        on U.PackTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"                                                  	                    
+                ';
+
+                if ($is_count === false) {
+                    $query .= ' order by U.OrderIdx desc';
+                    is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+                }
+            } else {
+                if ($is_count == 'sum') {
+                    $query .= ' group by U.ProfIdx, U.ProdCode, U.ProdCodeSub';
+                    $query .= ' order by tDivisionCalcPrice desc';
+                }
+            }
+        }
+
+        // 주문목록 엑셀다운로드
+        if ($is_count === 'excel') {
+            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
+                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusCcdName, CateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
+                , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
+                , ProdCalcPerc, DivisionCalcPrice';
+            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
+        }
+
+        // 쿼리 실행
+        $result = $this->_conn->query($query, $raw_binds);
+
+        return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+    }
 }

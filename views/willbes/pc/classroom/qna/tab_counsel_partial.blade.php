@@ -35,6 +35,7 @@
                             <span>초기화</span>
                         </button>
                     </div>
+                    <div class="subBtn blue NSK f_right" style="margin-left: 189px;"><a href="{{front_url('/support/qna/create')}}">문의하기 ></a></div>
                 </div>
             </div>
         </div>

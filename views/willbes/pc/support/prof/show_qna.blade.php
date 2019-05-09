@@ -27,18 +27,6 @@
             </thead>
             <tbody>
             <tr>
-                <td class="w-file tx-left pl20" colspan="4">
-                    @if(empty($data['AttachData']) === false)
-                        @foreach($data['AttachData'] as $row)
-                            @if($row['FileType'] == 0)
-                                <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
-                                    <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
-                            @endif
-                        @endforeach
-                    @endif
-                </td>
-            </tr>
-            <tr>
                 <td class="w-txt answer tx-left" colspan="4">
                     @if($data['RegType'] == 1)
                         {!! $data['Content'] !!}
@@ -47,6 +35,18 @@
                     @endif
                 </td>
             </tr>
+            @if(empty($data['AttachData']) === false)
+                <tr>
+                    <td class="w-file tx-left pl20" colspan="4">
+                        @foreach($data['AttachData'] as $row)
+                            @if($row['FileType'] == 0)
+                                <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                                    <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                            @endif
+                        @endforeach
+                    </td>
+                </tr>
+            @endif
             </tbody>
         </table>
 

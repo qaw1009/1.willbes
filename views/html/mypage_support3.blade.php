@@ -109,8 +109,8 @@
                             </ul>
                         </div>
                         <div class="willbes-Mypage-SUPPORT-list mt35 c_both">
-                            <div class="willbes-LecreplyList tx-gray c_both mt-zero ">
-                                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left bg-light-gray widthAutoFull">
+                            <div class="willbes-LecreplyList tx-gray c_both mt-zero">
+                                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left widthAutoFull">
                                     <select id="process" name="process" title="process" class="seleProcess mr10 h30 f_left">
                                         <option selected="selected">과정</option>
                                         <option value="헌법">헌법</option>

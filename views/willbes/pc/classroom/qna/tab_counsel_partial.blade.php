@@ -9,8 +9,8 @@
     </div>
     <div class="willbes-Mypage-SUPPORT-list mt35 c_both">
         <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-            <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
-                <select id="s_site_code" name="s_site_code" title="과정" class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left widthAutoFull" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+            <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left widthAutoFull">
+                <select id="s_site_code" name="s_site_code" title="과정" class="willbes-Lec-Search willbes-SelectBox mr10 f_left" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                     <option value="">과정</option>
                     @foreach($arr_base['site_list'] as $key => $val)
                         <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
@@ -37,7 +37,7 @@
                     </div>                    
                 </div>
 
-                <div class="subBtn blue NSK f_right" style="margin-left: 189px;"><a href="{{front_url('/support/qna/create')}}">문의하기 ></a></div>
+                <div class="subBtn blue f_right"><a href="{{front_url('/support/qna/create')}}">문의하기 ></a></div>
             </div>
         </div>
         <div class="LeclistTable pointTable">

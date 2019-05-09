@@ -110,24 +110,27 @@
                         </div>
                         <div class="willbes-Mypage-SUPPORT-list mt35 c_both">
                             <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left widthAutoFull">
+                                <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left widthAutoFull">
                                     <select id="process" name="process" title="process" class="seleProcess mr10 h30 f_left">
                                         <option selected="selected">과정</option>
                                         <option value="헌법">헌법</option>
                                         <option value="스파르타반">스파르타반</option>
                                         <option value="공직선거법">공직선거법</option>
                                     </select>
+
                                     <select id="academy" name="academy" title="academy" class="seleAcad mr10 h30 f_left">
                                         <option selected="selected">구분</option>
                                         <option value="온라인">온라인</option>
                                         <option value="학원">학원</option>
                                     </select>
+
                                     <select id="type" name="type" title="type" class="seleType mr10 h30 f_left">
                                         <option selected="selected">상담유형</option>
                                         <option value="기기">기기</option>
                                         <option value="수강">수강</option>
                                     </select>
-                                    <div class="willbes-Lec-Search GM bg-blue f_left">
+
+                                    <div class="willbes-Lec-Search GM f_left">
                                         <div class="inputBox c_both">
                                             <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
                                             <button type="submit" onclick="" class="search-Btn mr10">
@@ -139,7 +142,7 @@
                                         </div>                                                                                
                                     </div>
                                     <div class="subBtn blue f_right"><a href="{{front_url('/support/qna/create')}}" class="h30">문의하기 ></a></div>                                     
-                                </span>
+                                </div>
                                 
                             </div>
                             

@@ -62,12 +62,10 @@
 
         <div class="evtCtnsBox evt02">
             <iframe width="854" height="480" src="https://www.youtube.com/embed/-19yIQTjdQs?rel=0" frameborder="0" allowfullscreen></iframe>
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_02.jpg" alt="면접캠프 설명회" usemap="#Map1206B" border="0" id="go01">
-            {{--
-            <map name="Map1206B" id="Map1206B" id="go01">
-                <area shape="rect" coords="605,402,1021,515" href="javascript:goEvent();" alt="사전특강&amp;설명회 신청하기"/>
-            </map>
-            --}}
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_02.jpg" alt="면접캠프 설명회" usemap="#Map1206B" border="0" id="go01">            
+            <map name="Map1206B" id="Map1206B">
+                <area shape="rect" coords="423,310,701,385" href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?course_idx=1011&subject_idx=1011" tabget="_blank" alt="무료강의 바로보기"/>
+            </map>            
         </div>
 
         <div class="evtCtnsBox evt03">
@@ -79,16 +77,16 @@
         </div>
 
         <div class="evtCtnsBox evt05" id="go02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_05.jpg" alt="인적성 일정 미치 면접캠프 안내" usemap="#Map1206C" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_05_v2.jpg" alt="인적성 일정 미치 면접캠프 안내" usemap="#Map1206C" border="0" />
             <map name="Map1206C" id="Map1206C">
-                <area shape="rect" coords="837,718,975,893" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1069&amp;campus_ccd=605001&amp;course_idx=1047" />
+                <area shape="rect" coords="837,718,975,1076" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1069&campus_ccd=605001&course_idx=1047" target="_blank" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt06" id="go03">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_06.jpg" alt="사전조사서 특강 및 첨삭" usemap="#Map1206D" border="0"/>
             <map name="Map1206D" id="Map1206D">
-                <area shape="rect" coords="905,361,1067,576" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1070&amp;campus_ccd=605001&amp;course_idx=1047" />
+                <area shape="rect" coords="905,361,1067,576" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1070&amp;campus_ccd=605001&amp;course_idx=1047" target="_blank"/>
             </map>
         </div>
 

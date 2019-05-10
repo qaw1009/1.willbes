@@ -47,7 +47,7 @@ Class PackagePeriod extends \app\controllers\BaseController
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'C.CateCode' => $this->_reqP('search_md_cate_code'),
                 'B.SchoolYear' => $this->_reqP('search_schoolyear'),
-                'A.IsBest' =>$this->_reqP('search_best'),
+                'A.IsUse' =>$this->_reqP('search_is_use'),
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
                 'B.PackTypeCcd' =>$this->_reqP('search_packtype_ccd'),
             ],

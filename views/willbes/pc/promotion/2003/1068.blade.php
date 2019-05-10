@@ -81,7 +81,7 @@
 		<div class="skybanner">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_c8.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
 			<map name="EV181030_c8" id="EV181030_c8">
-			  <area shape="rect" coords="18,146,106,184" class="r_btn_tab" data-tab-id="1" style="cursor: pointer"/>
+			  <area shape="rect" coords="18,146,106,184" class="r_btn_tab" data-tab-id="1"/>
 			  <area shape="rect" coords="14,198,108,253" class="r_btn_tab" data-tab-id="2"/>
 			  <area shape="rect" coords="8,269,114,324" class="r_btn_tab" data-tab-id="3"/>
 			  <area shape="rect" coords="6,335,114,391" class="r_btn_tab" data-tab-id="4"/>
@@ -146,10 +146,9 @@
 				<li><a href="#tab4" id="menu_tab4">생물학개론</a></li>
 				<li><a href="#tab5" id="menu_tab5">유기농업기능사</a></li>
             </ul>
-
             <!--9급 농업직-->
             <div class="content_guide_box  LAeventB03" id="tab1">
-							<p>● 재배학</p>
+				<p>● 재배학</p>
                 <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -537,7 +536,17 @@
     <script type="text/javascript">
        /*tab*/
         $(document).ready(function(){
+            var $active, $links = $(this).find('.tabs li a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+            $links.not($active).each(function () {
+                $(this.hash).hide()
+            });
+
             $(".r_btn_tab").click(function () {
+                var offset = $('.tabs').offset();
+                $('html, body').animate({scrollTop : offset.top}, 400);
+
                 var activeTab = $(this).data("tab-id");
                 $(".tabs li a").removeClass("active");
                 $('#menu_tab'+activeTab).addClass("active");
@@ -554,21 +563,6 @@
                 $(activeTab).fadeIn();
                 return false;
             });
-
-            var url = window.location.href;
-            if(url.indexOf("tab4") > -1){
-                var activeTab = "#tab4";
-                $(".tabsl li a").removeClass("active");
-                $(".tabs li a[href='#tab4']").addClass("active");
-                $(".tabContents").hide();
-                $(activeTab).show();
-                return false;
-            }else{
-                $(".tabs li a").removeClass("active");
-                $(".tabs li a[href='#tab1']").addClass("active");
-                $(".content_guide_box").hide();
-                $(".content_guide_box:first").show();
-            }
         });
     </script>
     <script>

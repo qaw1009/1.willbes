@@ -806,7 +806,7 @@ class MockExamModel extends WB_Model
                 MemIdx, MrIdx, ProdCode, MpIdx, MqIdx, LogIdx, Answer, IsWrong, RegDatm
             ";
             $select_column = "
-                '".$MemIdx."', '".$MrIdx."', '".$ProdCode."', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, MA.RegDatm
+                '".$MemIdx."', '".$MrIdx."', '".$ProdCode."', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(LOCATE(Answer , RightAnswer), 'Y', 'N') AS IsWrong, MA.RegDatm
             ";
             $query = "
                 INSERT INTO {$this->_table['mockAnswerPaper']} ({$insert_column})

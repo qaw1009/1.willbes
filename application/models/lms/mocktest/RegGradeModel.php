@@ -1769,70 +1769,45 @@ class RegGradeModel extends WB_Model
                     $logidx = $this->_conn->insert_id();
                 }
 
-                $column = "
-                    Answer
-                ";
+                // 기존데이터삭제
+                $this->_conn->where(['ProdCode' => $prodcode, 'MemIdx' => $data['MemIdx'], 'MrIdx' => $data['MrIdx'], 'MpIdx' => $val['B']]);
 
-                $from = "
-                    FROM
-                        {$this->_table['mockExamQuestion']} AS MQ
-                        JOIN {$this->_table['mockAnswerPaper']} AS MA ON MQ.MqIdx = MA.MqIdx AND MQ.MpIdx = MA.MpIdx
-                ";
-
-                $order_by = "";
-
-                $where = " WHERE MA.ProdCode = " . $prodcode . " AND MA.MemIdx = " . $data['MemIdx'] . " AND MA.MrIdx = " . $data['MrIdx'] . " AND MA.MpIdx = " . $val['B'] . " AND QuestionNO = " . $val['C'];
-
-                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-                //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
-                $IsData = $query->row_array();
+                if ($this->_conn->delete($this->_table['mockAnswerPaper']) === false) {
+                    throw new \Exception('삭제에 실패했습니다.');
+                }
 
                 $column = "
                         QuestionNO, RightAnswer, MqIdx
                     ";
 
-                $from = "
-                        FROM
-                            {$this->_table['mockExamQuestion']} 
-                            
-                    ";
+                $from = "FROM
+                            {$this->_table['mockExamQuestion']}";
 
-                $order_by = "";
+                $order_by = " ORDER BY QuestionNO ";
 
-                $where = " WHERE MpIdx = " . $val['B'] . " AND QuestionNO = " . $val['C'];
+                $where = " WHERE MpIdx = " . $val['B'];
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
-                $indata = $query->row_array();
+                $indata = $query->result_array();
+                $arrAnswer = explode('/',$val['C']);
 
-                if ($indata['RightAnswer'] == $val['D']) {
-                    $okYN = 'Y';
-                } else {
-                    $okYN = 'N';
-                }
-
-                if ($IsData['Answer']) {
-                    // 데이터 수정
-                    $addData = [
-                        'Answer' => $val['D'],
-                        'IsWrong' => $okYN
-                    ];
-
-                    $this->_conn->set($addData)->set('RegDatm', 'NOW()', false)->where(['ProdCode' => $prodcode, 'MemIdx' => $data['MemIdx'], 'MrIdx' => $data['MrIdx'], 'MpIdx' => $val['B'], 'MqIdx' => $indata['MqIdx']])->update($this->_table['mockAnswerPaper']);
-
-                    if (!$this->_conn->affected_rows()) {
-                        throw new Exception('변경에 실패했습니다.');
+                foreach ($indata AS $key2 => $val2){
+                    if (strpos($val2['RightAnswer'], $arrAnswer[$key2]) !== false) {
+                        $okYN = 'Y';
+                    } else {
+                        $okYN = 'N';
                     }
-                } else {
+
                     // 데이터 등록
                     $addData = [
                         'MemIdx' => $data['MemIdx'],
                         'MrIdx' => $data['MrIdx'],
                         'ProdCode' => $prodcode,
                         'MpIdx' => $val['B'],
-                        'MqIdx' => $indata['MqIdx'],
+                        'MqIdx' => $val2['MqIdx'],
                         'LogIdx' => $logidx,
-                        'Answer' => $val['D'],
+                        'Answer' => $arrAnswer[$key2],
                         'IsWrong' => $okYN
                     ];
 
@@ -1841,8 +1816,10 @@ class RegGradeModel extends WB_Model
                     if ($this->_conn->set($addData)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
                         throw new \Exception('등록에 실패했습니다.');
                     }
+
+                    $tempId = $val['A'];
                 }
-                $tempId = $val['A'];
+
             }
 
             $this->_conn->trans_commit();

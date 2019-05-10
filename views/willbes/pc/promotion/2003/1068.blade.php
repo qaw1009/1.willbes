@@ -70,8 +70,8 @@
 		.skybanner {
             position:fixed;
             top:200px;
-            right:0;
-            width:290px;
+            right:0;			
+            width:122px;
 			z-index:1000;
         }
     </style>

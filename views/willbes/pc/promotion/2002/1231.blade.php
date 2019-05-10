@@ -81,7 +81,7 @@
             </div>    
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1231_top.jpg" title="최종합격기원 감사제"><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1231_top_01.jpg" title="필기합격자 누구나 참여가능">
-            <div class="btn NGEB"><a href="javascript:pullOpen();" >필기합격 & 친구추천 한번에 인증하기 ></a></div>
+            <div class="btn NGEB"><a href="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"javascript:alert('이미 이벤트에 참가하셨습니다.')"!!}@endif">필기합격 & 친구추천 한번에 인증하기 ></a></div>
         </div>
         
         <div class="evtCtnsBox evt01" id="evt01">
@@ -134,9 +134,12 @@
                 });
         });
 
-        function pullOpen(){
-            var url = "1227_popup";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700');
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '{{front_url('')}}/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+            @endif
         }
     </script>
 @stop

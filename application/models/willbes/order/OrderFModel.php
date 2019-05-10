@@ -1870,6 +1870,7 @@ class OrderFModel extends BaseOrderFModel
             // 주문정보
             $order_idx = $order_row['OrderIdx'];    // 주문 식별자
             $mem_idx = $order_row['MemIdx'];    // 회원 식별자
+            $order_date = substr($order_row['OrderDatm'], 0, 10);   // 주문일자 (Y-m-d)
 
             // 주문정보 완료일시 업데이트
             $is_update = $this->_conn->set('CompleteDatm', $deposit_results['deposit_datm'])
@@ -1901,6 +1902,24 @@ class OrderFModel extends BaseOrderFModel
                     $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_row['OrderProdIdx'], $order_prod_row['ProdCode'], $mem_idx);
                     if ($is_add_auto_coupon !== true) {
                         throw new \Exception($is_add_auto_coupon);
+                    }
+                }
+
+                // 온라인강좌 운영자/기간제 패키지일 경우 주문일 당일 입금완료가 아닐 경우 수강 시작/종료일을 결제일자 기준으로 업데이트
+                if ($order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['adminpack_lecture'] || $order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['periodpack_lecture']) {
+                    // 결제일자 - 주문일자
+                    $diff_days = diff_days(date('Y-m-d'), $order_date);
+
+                    if ($diff_days > 0) {
+                        $is_lec_date_update = $this->_conn->set('LecStartDate', date('Y-m-d'))
+                            ->set('LecEndDate', 'date_add(LecEndDate, interval ' . $diff_days . ' day)', false)
+                            ->set('RealLecEndDate', 'date_add(RealLecEndDate, interval ' . $diff_days . ' day)', false)
+                            ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_row['OrderProdIdx'])->where('ProdCode', $order_prod_row['ProdCode'])
+                            ->update($this->_table['my_lecture']);
+
+                        if ($is_lec_date_update !== true) {
+                            throw new \Exception('수강 시작/종료일 업데이트에 실패했습니다.');
+                        }
                     }
                 }
             }
@@ -1988,8 +2007,12 @@ class OrderFModel extends BaseOrderFModel
                 $this->load->library('sendSms');
 
                 if ($data['IsVBank'] == 'Y') {
-                    $sms_msg = '[윌비스] 가상계좌 ' . config_item('vbank_account_name') . ' ' . str_replace('은행', '', $data['VBankName']);
-                    $sms_msg .= ' ' . $data['VBankAccountNo'] . ' (' . date('n/j', strtotime($data['VBankExpireDatm'])) . '까지 유효)';
+                    //$sms_msg = '[윌비스] 가상계좌 ' . config_item('vbank_account_name') . ' ' . str_replace('은행', '', $data['VBankName']);
+                    //$sms_msg .= ' ' . $data['VBankAccountNo'] . ' (' . date('n/j', strtotime($data['VBankExpireDatm'])) . '까지 유효)';
+                    // 가상계좌 메시지 변경 (2019.05.09)
+                    $sms_msg = config_item('vbank_account_name') . ' ' . str_replace('은행', '', $data['VBankName']);
+                    $sms_msg .= ' 계좌번호 ' . $data['VBankAccountNo'] . ' 금액 : ' . number_format($data['RealPayPrice']);
+                    $sms_msg .= ' (~' . date('n/j', strtotime($data['VBankExpireDatm'])) . ')';
                 } else {
                     $sms_msg = '[윌비스] ' . $sess_mem_name . '님 결제완료되셨습니다. [주문번호 ' . $order_no . ']';
                 }

@@ -169,73 +169,7 @@
         </div><!--wb_cts02//-->
 
     </div>
-    <!-- End Container -->
-    <script>
-        /*타이머*/
-        var DdayDiff = { //타이머를 설정합니다.
-            inDays: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-            },
-
-            inWeeks: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return parseInt((tt2-tt1)/(24*3600*1000*7));
-            },
-
-            inMonths: function(dd1, dd2) {
-                var dd1Y = dd1.getFullYear();
-                var dd2Y = dd2.getFullYear();
-                var dd1M = dd1.getMonth();
-                var dd2M = dd2.getMonth();
-
-                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-            },
-
-            inYears: function(dd1, dd2) {
-                return dd2.getFullYear()-dd1.getFullYear();
-            }
-        };
-
-        function daycountDown() {
-            // 한달 전 날짜로 셋팅
-            var event_day = new Date(2019,4,9,23,59,59);
-            var now = new Date();
-            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-
-            var Monthleft = event_day.getMonth() - now.getMonth();
-            var Dateleft = DdayDiff.inDays(now, event_day);
-            var Hourleft = timeGap.getHours();
-            var Minuteleft = timeGap.getMinutes();
-            var Secondleft = timeGap.getSeconds();
-
-            if((event_day.getTime() - now.getTime()) > 0) {
-                $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-                $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
-
-                $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-                $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
-
-                $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-                $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
-
-                $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-                $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
-                setTimeout(daycountDown, 1000);
-            }
-            else{
-                $("#newTopDday").hide();
-            }
-
-        }
-        daycountDown();
-
-
-    </script>
+    <!-- End Container -->    
 
     <script type="text/javascript">
         function go_PassLecture(no){

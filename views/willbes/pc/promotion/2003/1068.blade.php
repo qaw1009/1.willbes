@@ -79,14 +79,14 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 	
 		<div class="skybanner">
-                <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_c8.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
-<map name="EV181030_c8" id="EV181030_c8">
-  <area shape="rect" coords="18,146,106,184" href="/promotion/index/cate/3028/code/1068#tab1" />
-  <area shape="rect" coords="14,198,108,253" href="/promotion/index/cate/3028/code/1068#tab2" />
-  <area shape="rect" coords="8,269,114,324" href="/promotion/index/cate/3028/code/1068#tab3" />
-  <area shape="rect" coords="6,335,114,391" href="/promotion/index/cate/3028/code/1068#tab4" />
-  <area shape="rect" coords="12,397,107,459" href="/promotion/index/cate/3028/code/1068#tab5" />
-</map>
+            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_c8.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
+			<map name="EV181030_c8" id="EV181030_c8">
+			  <area shape="rect" coords="18,146,106,184" class="r_btn_tab" data-tab-id="1" style="cursor: pointer"/>
+			  <area shape="rect" coords="14,198,108,253" class="r_btn_tab" data-tab-id="2"/>
+			  <area shape="rect" coords="8,269,114,324" class="r_btn_tab" data-tab-id="3"/>
+			  <area shape="rect" coords="6,335,114,391" class="r_btn_tab" data-tab-id="4"/>
+			  <area shape="rect" coords="12,397,107,459" class="r_btn_tab" data-tab-id="5"/>
+			</map>
         </div>
 		
         <div class="evtCtnsBox wb_top">
@@ -140,11 +140,11 @@
 		<div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_c7.jpg" alt="2019 농업직렬 단과 수강신청"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">9급 농업직</a></li>
-                <li><a href="#tab2">7급 농업직</a></li>
-                <li><a href="#tab3">농촌지도사</a></li>
-				<li><a href="#tab4">생물학개론</a></li>
-				<li><a href="#tab5">유기농업기능사</a></li>
+                <li><a href="#tab1" id="menu_tab1">9급 농업직</a></li>
+                <li><a href="#tab2" id="menu_tab2">7급 농업직</a></li>
+                <li><a href="#tab3" id="menu_tab3">농촌지도사</a></li>
+				<li><a href="#tab4" id="menu_tab4">생물학개론</a></li>
+				<li><a href="#tab5" id="menu_tab5">유기농업기능사</a></li>
             </ul>
 
             <!--9급 농업직-->
@@ -537,6 +537,15 @@
     <script type="text/javascript">
        /*tab*/
         $(document).ready(function(){
+            $(".r_btn_tab").click(function () {
+                var activeTab = $(this).data("tab-id");
+                $(".tabs li a").removeClass("active");
+                $('#menu_tab'+activeTab).addClass("active");
+                $(".content_guide_box").hide();
+                $('#tab'+activeTab).fadeIn();
+                return false;
+            });
+
             $(".tabs li a").click(function(){
                 var activeTab = $(this).attr("href");
                 $(".tabs li a").removeClass("active");

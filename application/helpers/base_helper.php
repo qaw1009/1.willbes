@@ -125,6 +125,22 @@ if (!function_exists('decimal_format')) {
     }
 }
 
+if (!function_exists('diff_days')) {
+    /**
+     * 날짜수 차이 계산 ($gt_date - $lt_date)
+     * @param string $gt_date [보다 큰 날짜 (Y-m-d)]
+     * @param string $lt_date [보다 작은 날짜 (Y-m-d)]
+     * @return int
+     */
+    function diff_days($gt_date, $lt_date)
+    {
+        $gt_date = date_create($gt_date);
+        $lt_date = date_create($lt_date);
+
+        return intval(date_diff($lt_date, $gt_date)->format('%r%a'));
+    }
+}
+
 if (!function_exists('ends_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 끝나는지 여부 체크

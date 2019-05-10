@@ -81,11 +81,11 @@
 		<div class="skybanner">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_c8.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
 			<map name="EV181030_c8" id="EV181030_c8">
-			  <area shape="rect" coords="18,146,106,184" class="r_btn_tab" data-tab-id="1"/>
-			  <area shape="rect" coords="14,198,108,253" class="r_btn_tab" data-tab-id="2"/>
-			  <area shape="rect" coords="8,269,114,324" class="r_btn_tab" data-tab-id="3"/>
-			  <area shape="rect" coords="6,335,114,391" class="r_btn_tab" data-tab-id="4"/>
-			  <area shape="rect" coords="12,397,107,459" class="r_btn_tab" data-tab-id="5"/>
+			  <area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
+			  <area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>
+			  <area shape="rect" coords="8,269,114,324" href="#" class="r_btn_tab" data-tab-id="3"/>
+			  <area shape="rect" coords="6,335,114,391" href="#" class="r_btn_tab" data-tab-id="4"/>
+			  <area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
 			</map>
         </div>
 		

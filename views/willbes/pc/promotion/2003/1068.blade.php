@@ -66,9 +66,28 @@
         .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .LAeventB03 table a:hover {background:#252525; color:#fff;}
         .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
+		
+		.skybanner {
+            position:fixed;
+            top:200px;
+            right:0;
+            width:290px;
+        }
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+	
+		<div class="skybanner">
+                <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_c8.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
+<map name="EV181030_c8" id="EV181030_c8">
+  <area shape="rect" coords="18,146,106,184" href="/promotion/index/cate/3028/code/1068#tab1" />
+  <area shape="rect" coords="14,198,108,253" href="/promotion/index/cate/3028/code/1068#tab2" />
+  <area shape="rect" coords="8,269,114,324" href="/promotion/index/cate/3028/code/1068#tab3" />
+  <area shape="rect" coords="6,335,114,391" href="/promotion/index/cate/3028/code/1068#tab4" />
+  <area shape="rect" coords="12,397,107,459" href="/promotion/index/cate/3028/code/1068#tab5" />
+</map>
+        </div>
+		
         <div class="evtCtnsBox wb_top">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_c1.png" alt=" 윌비스 농업직 절대지존 장사원교수 " usemap="#Map20181030_c1" border="0"  />
             <map name="Map20181030_c1" >

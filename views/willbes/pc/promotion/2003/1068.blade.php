@@ -72,6 +72,7 @@
             top:200px;
             right:0;
             width:290px;
+			z-index:1000;
         }
     </style>
 

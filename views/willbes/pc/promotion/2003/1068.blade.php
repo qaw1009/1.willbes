@@ -35,7 +35,36 @@
         .wb_cts02 {background:#4c52b4;}
         .wb_cts03 {background:#fff}
         .wb_cts04 {background:#f4f4f4;}
-        .wb_cts04 ul {width:100%; margin:0 auto;}
+        .wb_cts04 ul {width:100%; margin:0 auto;}]
+		
+		
+		.content_guide_wrap{background:#fff; width:1210px; margin:0 auto; padding:50px 0;}
+        .content_guide_wrap .guide_tit{width:1210px;margin:0 auto;text-align:center; }
+        .content_guide_wrap .tabs {width:960px; margin:0 auto;}
+        .content_guide_wrap .tabs li {display:inline; float:left; width:192px}
+        .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
+        .content_guide_wrap .tabs li a:hover,
+        .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
+        .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
+        .content_guide_box{width:960px; margin:0 auto; border:2px solid #202020; border-top:0; padding-top:30px; padding-bottom:30px}
+        .content_guide_box table{text-align:center; margin:0 50px; word-break:keep-all; padding:30px}
+		
+		.LAeventB03 table {background:#fff; width:870px; margin:0 auto; background:#fff} 
+        .LAeventB03 tr {border-bottom:1px solid #ccc}        
+        .LAeventB03 tr.st01 {background:#ececec}
+        .LAeventB03 tr:hover {background:#fdf5e4}
+        .LAeventB03 th,
+        .LAeventB03 td {padding:15px 20px; font-size:16px; font-weight:500;}
+        .LAeventB03 th {background:#5f5f5f; color:#fff}
+        .LAeventB03 td:nth-child(1) {text-align:center}
+        .LAeventB03 td:nth-child(2) {text-align:left}
+        .LAeventB03 td:nth-child(3) {color:#ce9317}
+        .LAeventB03 td:last-child {border:0}
+        .LAeventB03 td p {font-size:12px}
+		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#ce9317; font-size:14px; display:block; border-radius:20px 20px 0 20px}
+        .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
+        .LAeventB03 table a:hover {background:#252525; color:#fff;}
+        .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -87,10 +116,361 @@
             </map>
         </div>
         <!--wb_cts04//-->
+		<div class="content_guide_wrap" id="tab">
+            <p class="guide_tit"><img src="#" alt="2019 농업직렬 단과 수강신청"> </p>
+            <ul class="tabs">
+                <li><a href="#tab1">9급 농업직</a></li>
+                <li><a href="#tab2">7급 농업직</a></li>
+                <li><a href="#tab3">농촌지도사</a></li>
+				<li><a href="#tab4">생물학개론</a></li>
+				<li><a href="#tab5">유기농업기능사</a></li>
+            </ul>
 
+            <!--9급 농업직-->
+            <div class="content_guide_box  LAeventB03" id="tab1">
+                <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
+					  <tr>
+						<td>재배학</td>
+						<td>이론</td>
+						<td>2019 장사원 재배학 기본+심화이론</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>재배학</td>
+						<td>문제풀이</td>
+						<td>2019 장사원 재배학 기출문제풀이</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>재배학</td>
+						<td>문제풀이</td>
+						<td>2019 장사원 재배학 실전    동형모의고사</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>재배학</td>
+						<td>문제풀이</td>
+						<td>2019 (지방직) 장사원 재배학 실전    동형모의고사</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>재배학</td>
+						<td>유료특강</td>
+						<td>2019 장사원 컨셉 재배학    파이널정리특강</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>식용작물</td>
+						<td>이론</td>
+						<td>2019 장사원 식용작물 기본+심화이론</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>식용작물</td>
+						<td>문제풀이</td>
+						<td>2019 장사원 식용작물 기출문제풀이</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>식용작물</td>
+						<td>문제풀이</td>
+						<td>2019 장사원 식용작물 실전    동형모의고사</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>식용작물</td>
+						<td>문제풀이</td>
+						<td>2019 (지방직) 장사원 식용작물    실전 동형모의고사</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					  <tr>
+						<td>식용작물</td>
+						<td>유료특강</td>
+						<td>2019 장사원 컨셉 식용작물    파이널정리특강</td>
+						<td><a href="">수강신청</a></td>
+					  </tr>
+					</table>
+            </div>
+            <!--9급 농업직//-->
+
+            <!--7급 농업직-->
+            <div class="content_guide_box LAeventB03" id="tab2">
+                <table cellspacing="0" cellpadding="0">						
+				  <tr>
+					<th>과목</th>
+					<th>과정</th>
+					<th>강좌명</th>
+					<th>수강신청</th>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>이론</td>
+					<td>2019 장사원 재배학 기본+심화이론</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 재배학 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 재배학 실전    동형모의고사</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>문제풀이</td>
+					<td>2019 (지방직) 장사원 재배학 실전    동형모의고사</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>유료특강</td>
+					<td>2019 장사원 컨셉 재배학    파이널정리특강</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>식용작물</td>
+					<td>이론</td>
+					<td>2019 장사원 식용작물 기본+심화이론</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>식용작물</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 식용작물 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>식용작물</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 식용작물 실전    동형모의고사</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>식용작물</td>
+					<td>문제풀이</td>
+					<td>2019 (지방직) 장사원 식용작물    실전 동형모의고사</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>식용작물</td>
+					<td>유료특강</td>
+					<td>2019 장사원 컨셉 식용작물    파이널정리특강</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>생물학개론</td>
+					<td>이론</td>
+					<td>2019 장사원 생물학개론 이론강의</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>생물학개론</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 생물학개론 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>토양학</td>
+					<td>이론</td>
+					<td>2019 장사원 토양학 이론강의</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>토양학</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 토양학 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				</table>
+            </div>
+            <!--7급 농업직//-->
+
+            <!--농촌지도사-->
+            <div class="content_guide_box LAeventB03" id="tab3">
+                <table cellspacing="0" cellpadding="0">
+				  <tr>
+					<th>과목</th>
+					<th>과정</th>
+					<th>강좌명</th>
+					<th>수강신청</th>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>이론</td>
+					<td>2019 장사원 재배학 기본+심화이론</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 재배학 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 재배학 실전    동형모의고사</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>문제풀이</td>
+					<td>2019 (지방직) 장사원 재배학 실전    동형모의고사</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>재배학</td>
+					<td>유료특강</td>
+					<td>2019 장사원 컨셉 재배학    파이널정리특강</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>작물생리학</td>
+					<td>이론</td>
+					<td>2019 장사원 작물생리학 이론강의</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>작물생리학</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 작물생리학 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>생물학개론</td>
+					<td>이론</td>
+					<td>2019 장사원 생물학개론 이론강의</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>생물학개론</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 생물학개론 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>농촌지도론</td>
+					<td>이론</td>
+					<td>2019 장사원 농촌지도론 이론강의</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>농촌지도론</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 농촌지도론 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>토양학</td>
+					<td>이론</td>
+					<td>2019 장사원 토양학 이론강의</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>토양학</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 토양학 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				</table>
+            </div>
+            <!--농촌지도사//-->
+			
+			  <!--생물학개론-->
+            <div class="content_guide_box LAeventB03" id="tab4">
+                <table cellspacing="0" cellpadding="0">
+				  <tr>
+					<th>과목</th>
+					<th>과정</th>
+					<th>강좌명</th>
+					<th>수강신청</th>
+				  </tr>
+				  <tr>
+					<td>생물학개론</td>
+					<td>이론</td>
+					<td>2019 장사원 생물학개론 이론강의</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>생물학개론</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 생물학개론 기출문제풀이</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				</table>
+            </div>
+            <!--생물학개론//-->
+			
+			  <!--유기농업기능사-->
+            <div class="content_guide_box LAeventB03" id="tab5">
+                <table cellspacing="0" cellpadding="0">
+				  <tr>
+					<th>과목</th>
+					<th>과정</th>
+					<th>강좌명</th>
+					<th>수강신청</th>
+				  </tr>
+				  <tr>
+					<td>유기농업기능사</td>
+					<td>이론</td>
+					<td>2018 장사원 유기농업기능사(필기)</td>
+					<td><a href="">수강신청</a></td>
+				  </tr>
+				</table>
+            </div>
+            <!--유기농업기능사//-->
+        </div>
+		<p>&nbsp;</p><p>&nbsp;</p>
     </div>
     <!-- End Container -->
+ <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
+    <script type="text/javascript">
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
 
+       /*tab*/
+        $(document).ready(function(){
+            $(".tabs li a").click(function(){
+                var activeTab = $(this).attr("href");
+                $(".tabs li a").removeClass("active");
+                $(this).addClass("active");
+                $(".content_guide_box").hide();
+                $(activeTab).fadeIn();
+                return false;
+            });
+
+            var url = window.location.href;
+            if(url.indexOf("tab4") > -1){
+                var activeTab = "#tab4";
+                $(".tabsl li a").removeClass("active");
+                $(".tabs li a[href='#tab4']").addClass("active");
+                $(".tabContents").hide();
+                $(activeTab).show();
+                return false;
+            }else{
+                $(".tabs li a").removeClass("active");
+                $(".tabs li a[href='#tab1']").addClass("active");
+                $(".content_guide_box").hide();
+                $(".content_guide_box:first").show();
+            }
+        });
+    </script>
     <script>
         $(document).ready(function() {
             var slidesImg3 = $("#slidesImg3").bxSlider({

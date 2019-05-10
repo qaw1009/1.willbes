@@ -50,6 +50,7 @@
         .content_guide_box table{text-align:center; margin:0 50px; word-break:keep-all; padding:30px}
 		
 		.LAeventB03 table {background:#fff; width:960px; margin:0 auto; background:#fff} 
+		.LAeventB03 p {font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;}
         .LAeventB03 tr {border-bottom:1px solid #ccc}        
         .LAeventB03 tr.st01 {background:#ececec}
         .LAeventB03 tr:hover {background:#f9f9f9}
@@ -61,7 +62,7 @@
         .LAeventB03 td:nth-child(3) {color:#ce9317}
         .LAeventB03 td:last-child {border:0}
         .LAeventB03 td p {font-size:12px}
-		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#ce9317; font-size:14px; display:block; border-radius:20px 20px 0 20px}
+				.LAeventB03 table a {padding:10px 15px; color:#fff; background:#ce9317; font-size:14px; display:block; border-radius:20px 20px 0 20px}
         .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .LAeventB03 table a:hover {background:#252525; color:#fff;}
         .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
@@ -128,7 +129,7 @@
 
             <!--9급 농업직-->
             <div class="content_guide_box  LAeventB03" id="tab1">
-			<p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 재배학</p>
+							<p>● 재배학</p>
                 <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -212,7 +213,7 @@
 
             <!--7급 농업직-->
             <div class="content_guide_box LAeventB03" id="tab2">
-                <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 재배학</p>
+                <p>● 재배학</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -251,7 +252,7 @@
 					<td><a href="">수강신청</a></td>
 				  </tr>
 				  </table>
-				  <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 식용작물</p>
+				  <p>● 식용작물</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -290,7 +291,7 @@
 					<td><a href="">수강신청</a></td>
 				  </tr>
 				  </table>
-				  <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 생물학개론</p>
+				  <p>● 생물학개론</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -311,7 +312,7 @@
 					<td><a href="">수강신청</a></td>
 				  </tr>
 				  </table>
-				  <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 토양학</p>
+				  <p>● 토양학</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -337,7 +338,7 @@
 
             <!--농촌지도사-->
             <div class="content_guide_box LAeventB03" id="tab3">
-                <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 재배학</p>
+                <p>● 재배학</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -376,7 +377,7 @@
 					<td><a href="">수강신청</a></td>
 				  </tr>
 				  </table>
-				  <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 작물생리학</p>
+				  <p>● 작물생리학</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -397,7 +398,7 @@
 					<td><a href="">수강신청</a></td>
 				  </tr>
 				  </table>
-				  <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 생물학개론</p>
+				  <p>● 생물학개론</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -418,7 +419,7 @@
 					<td><a href="">수강신청</a></td>
 				  </tr>
 				  </table>
-				  <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 농촌지도론</p>
+				  <p>● 농촌지도론</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -439,7 +440,7 @@
 					<td><a href="">수강신청</a></td>
 				  </tr>
 				  </table>
-				  <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 토양학</p>
+				  <p>● 토양학</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -465,7 +466,7 @@
 			
 			  <!--생물학개론-->
             <div class="content_guide_box LAeventB03" id="tab4">
-               <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 생물학개론</p>
+               <p>● 생물학개론</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -491,7 +492,7 @@
 			
 			  <!--유기농업기능사-->
             <div class="content_guide_box LAeventB03" id="tab5">
-                <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 유기농업기능사</p>
+                <p>● 유기농업기능사</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -512,16 +513,8 @@
 		<p>&nbsp;</p><p>&nbsp;</p>
     </div>
     <!-- End Container -->
- <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script type="text/javascript">
-        function certOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($arr_promotion_params) === false)
-            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-            @endif
-        }
 
+    <script type="text/javascript">
        /*tab*/
         $(document).ready(function(){
             $(".tabs li a").click(function(){

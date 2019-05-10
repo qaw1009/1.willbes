@@ -128,6 +128,7 @@
 
             <!--9급 농업직-->
             <div class="content_guide_box  LAeventB03" id="tab1">
+			<p  style = " font-size:1.5em;  color: #000; padding-left:50px; padding-bottom:20px">● 재배학</p>
                 <table>
 					  <tr>
 						<th width="105">과목</th>
@@ -165,6 +166,16 @@
 						<td>2019 장사원 컨셉 재배학    파이널정리특강</td>
 						<td><a href="">수강신청</a></td>
 					  </tr>
+					  </table>
+					  <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 식용작물</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
+					  <tr>
 					  <tr>
 						<td>식용작물</td>
 						<td>이론</td>
@@ -201,13 +212,14 @@
 
             <!--7급 농업직-->
             <div class="content_guide_box LAeventB03" id="tab2">
-                <table cellspacing="0" cellpadding="0">						
-				  <tr>
-					<th>과목</th>
-					<th>과정</th>
-					<th>강좌명</th>
-					<th>수강신청</th>
-				  </tr>
+                <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 재배학</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>재배학</td>
 					<td>이론</td>
@@ -238,6 +250,15 @@
 					<td>2019 장사원 컨셉 재배학    파이널정리특강</td>
 					<td><a href="">수강신청</a></td>
 				  </tr>
+				  </table>
+				  <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 식용작물</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>식용작물</td>
 					<td>이론</td>
@@ -268,6 +289,15 @@
 					<td>2019 장사원 컨셉 식용작물    파이널정리특강</td>
 					<td><a href="">수강신청</a></td>
 				  </tr>
+				  </table>
+				  <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 생물학개론</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>생물학개론</td>
 					<td>이론</td>
@@ -280,6 +310,15 @@
 					<td>2019 장사원 생물학개론 기출문제풀이</td>
 					<td><a href="">수강신청</a></td>
 				  </tr>
+				  </table>
+				  <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 토양학</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>토양학</td>
 					<td>이론</td>
@@ -298,13 +337,14 @@
 
             <!--농촌지도사-->
             <div class="content_guide_box LAeventB03" id="tab3">
-                <table cellspacing="0" cellpadding="0">
-				  <tr>
-					<th>과목</th>
-					<th>과정</th>
-					<th>강좌명</th>
-					<th>수강신청</th>
-				  </tr>
+                <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 재배학</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>재배학</td>
 					<td>이론</td>
@@ -335,6 +375,15 @@
 					<td>2019 장사원 컨셉 재배학    파이널정리특강</td>
 					<td><a href="">수강신청</a></td>
 				  </tr>
+				  </table>
+				  <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 작물생리학</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>작물생리학</td>
 					<td>이론</td>
@@ -347,6 +396,15 @@
 					<td>2019 장사원 작물생리학 기출문제풀이</td>
 					<td><a href="">수강신청</a></td>
 				  </tr>
+				  </table>
+				  <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 생물학개론</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>생물학개론</td>
 					<td>이론</td>
@@ -359,6 +417,15 @@
 					<td>2019 장사원 생물학개론 기출문제풀이</td>
 					<td><a href="">수강신청</a></td>
 				  </tr>
+				  </table>
+				  <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 농촌지도론</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>농촌지도론</td>
 					<td>이론</td>
@@ -371,6 +438,15 @@
 					<td>2019 장사원 농촌지도론 기출문제풀이</td>
 					<td><a href="">수강신청</a></td>
 				  </tr>
+				  </table>
+				  <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 토양학</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>토양학</td>
 					<td>이론</td>
@@ -389,13 +465,14 @@
 			
 			  <!--생물학개론-->
             <div class="content_guide_box LAeventB03" id="tab4">
-                <table cellspacing="0" cellpadding="0">
-				  <tr>
-					<th>과목</th>
-					<th>과정</th>
-					<th>강좌명</th>
-					<th>수강신청</th>
-				  </tr>
+               <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 생물학개론</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>생물학개론</td>
 					<td>이론</td>
@@ -414,13 +491,14 @@
 			
 			  <!--유기농업기능사-->
             <div class="content_guide_box LAeventB03" id="tab5">
-                <table cellspacing="0" cellpadding="0">
-				  <tr>
-					<th>과목</th>
-					<th>과정</th>
-					<th>강좌명</th>
-					<th>수강신청</th>
-				  </tr>
+                <p  style = " font-size:1.5em;  color: #000; padding:30px; padding-bottom:20px">● 유기농업기능사</p>
+					  <table>
+					  <tr>
+						<th width="105">과목</th>
+						<th width="72">과정</th>
+						<th width="433">강좌명</th>
+						<th width="104">수강신청</th>
+					  </tr>
 				  <tr>
 					<td>유기농업기능사</td>
 					<td>이론</td>

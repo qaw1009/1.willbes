@@ -2,6 +2,8 @@
 
 @section('content')
 <h5>- {{$arr_prof_info['ProfNickName']}} 교수 첨삭 게시판</h5>
+@include('lms.board.professor.assignment.common_partial')
+
 <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     {!! html_def_site_tabs($arr_prof_info['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}
@@ -55,7 +57,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="x_panel">
         <div class="x_content">

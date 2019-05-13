@@ -2,6 +2,8 @@
 
 @section('content')
 <h5>- {{$arr_prof_info['ProfNickName']}} 교수 첨삭 게시판</h5>
+@include('lms.board.professor.assignment.common_partial')
+
 <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     {!! html_def_site_tabs($arr_prof_info['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}
@@ -47,17 +49,14 @@
                 <th rowspan="2" class="rowspan pb-30">과목</th>
                 <th rowspan="2" class="rowspan pb-30">단강좌명</th>
                 <th rowspan="2" class="rowspan pb-30">판매가</th>
-                <th rowspan="2" class="rowspan pb-30">판매여부</th>
-                <th rowspan="2" class="rowspan pb-30">사용여부</th>
                 <th rowspan="2" class="rowspan pb-30">과제등록</th>
                 <th rowspan="2" class="rowspan pb-30">첨삭현황</th>
                 <th colspan="4">강좌별 첨삭</th>
             </tr>
             <tr class="bg-odd">
-                <th>과제 수</th>
-                <th>제출 수</th>
+                <th>총과제 수</th>
+                <th>미체점 수</th>
                 <th>체점 수</th>
-                <th>임시저장 수</th>
             </tr>
             </thead>
             <tbody>
@@ -100,12 +99,6 @@
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                     }},//판매가
-                {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
-                        return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
-                    }},//판매여부
-                {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                    }},//사용여부
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         return '<a href="javascript:void(0);" class="btn-assignment-manager" data-prod-code="' + row.ProdCode + '"><u>등록</u></a>';
                     }},
@@ -113,9 +106,8 @@
                         return '<a href="javascript:void(0);" class="btn-assignment-info" data-prod-code="' + row.ProdCode + '"><u>확인</u></a>';
                     }},
                 {'data' : 'BoardTotalCnt'}, //첨삭 수
-                {'data' : 'BoardCnt2'}, //첨삭 제출 수
+                {'data' : 'BoardCnt2'}, //첨삭 미체점 수
                 {'data' : 'BoardCnt3'}, //첨삭 체점 수
-                {'data' : 'BoardCnt1'} //첨삭 임시저장 수
             ],
         });
 

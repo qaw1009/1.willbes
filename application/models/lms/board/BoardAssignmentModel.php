@@ -47,11 +47,10 @@ class BoardAssignmentModel extends BoardModel
         INNER JOIN {$this->_table_board_assignment} AS a ON ta.BaIdx = a.BaIdx
         
         INNER JOIN (
-            SELECT BoardIdx, SiteCode, CampusCcd, Title, Content, IsStatus, IsUse
+            SELECT BoardIdx, SiteCode, CampusCcd, Title, Content, IsStatus, IsUse, ProdCode
             FROM {$this->_table}
             {$sub_query_where}
         ) AS b ON a.BoardIdx = b.BoardIdx
-        
         INNER JOIN {$this->_table_member} AS c ON a.MemIdx = c.MemIdx
         
         LEFT OUTER JOIN (
@@ -60,6 +59,16 @@ class BoardAssignmentModel extends BoardModel
             WHERE IsStatus = 'Y' AND RegType = 0
             GROUP BY BaIdx
         ) AS e ON a.BaIdx = e.BaIdx
+        
+        LEFT OUTER JOIN (
+            SELECT BaIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
+            FROM lms_board_attach
+            WHERE IsStatus = 'Y' AND RegType = 0
+            GROUP BY BaIdx
+        ) AS d ON a.BaIdx = d.BaIdx
+        
+        LEFT OUTER JOIN {$this->_table_sys_admin} as ReplyADMIN ON a.ReplyRegAdminIdx = ReplyADMIN.wAdminIdx AND ReplyADMIN.wIsStatus='Y'
+        INNER JOIN lms_product AS lms_product ON b.ProdCode = lms_product.ProdCode
         ";
 
         if (empty($site_code) === false) {
@@ -156,6 +165,8 @@ class BoardAssignmentModel extends BoardModel
                 {$where_file_prof}
                 GROUP BY BaIdx
             ) AS e ON a.BaIdx = e.BaIdx
+            
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ReplyADMIN ON a.ReplyRegAdminIdx = ReplyADMIN.wAdminIdx AND ReplyADMIN.wIsStatus='Y'
         ";
 
         return $this->_conn->query('select '.$column .$from)->row_array();

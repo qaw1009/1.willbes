@@ -140,11 +140,11 @@ class LectureModel extends CommonLectureModel
                 join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                 LEFT JOIN (
                     SELECT 
-                    ProdCode, COUNT(ProdCode) AS BoardCnt
-                    FROM lms_board
-                    WHERE BmIdx = 88
-                    #INNER JOIN lms_board AS b ON a.BoardIdx= b.BoardIdx
-                    GROUP BY ProdCode
+                    a.ProdCode, COUNT(a.ProdCode) AS BoardCnt
+                    FROM lms_board AS a
+                    INNER JOIN lms_board_assignment AS b ON a.BoardIdx= b.BoardIdx AND AssignmentStatusCcd IN(\'698002\', \'698003\')
+                    WHERE a.BmIdx = 88
+                    GROUP BY a.ProdCode
                 ) AS BoardTotal ON BoardTotal.ProdCode = A.ProdCode
                 
                 LEFT JOIN (

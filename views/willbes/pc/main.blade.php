@@ -118,7 +118,7 @@
                             </a>
                         </li>    
                         <li>
-                            <a href="http://lang.willbes.net" target="_blank">
+                            <a href="http://lang.willbes.net/?sub_category=110" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes8.png') }}"> 어학
                                 </div>

@@ -10,7 +10,7 @@
         }        
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
@@ -45,7 +45,7 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer"> 
-    <div class="evtCtnsBox evtTop00">
+        <div class="evtCtnsBox evtTop00">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1235_top_00.jpg" title="전북대 설명회">        
         </div>
 

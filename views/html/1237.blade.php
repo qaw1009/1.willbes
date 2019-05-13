@@ -86,7 +86,7 @@
                             <th>과목</th>
                             <th>과정</th>
                             <th>강좌명</th>
-                            <th>학원강의</th>
+                            <th>수강신청</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,7 +115,7 @@
                             <th>과목</th>
                             <th>과정</th>
                             <th>강좌명</th>
-                            <th>학원강의</th>
+                            <th>수강신청</th>
                         </tr>
                     </thead>
                     <tbody>

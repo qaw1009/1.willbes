@@ -151,7 +151,11 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                 {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                        return '<a href="javascript:void(0);" class="btn-manager-assignment" data-idx="' + row.BaIdx + '" data-board-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                        if (row.IsStatus == 'Y') {
+                            return '<a href="javascript:void(0);" class="btn-manager-assignment" data-idx="' + row.BaIdx + '" data-board-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                        } else {
+                            return data;
+                        }
                     }},
                 {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
                         var tmp_return;

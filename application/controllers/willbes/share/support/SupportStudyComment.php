@@ -38,7 +38,8 @@ class SupportStudyComment extends BaseSupport
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
                 'IsBest' => '1',
-                'ProdCode' => $prod_code
+                'ProdCode' => $prod_code,
+                'b.ProfSiteCode' => $this->_site_code
             ],
             'RAW' => [
                 'ProfIdx is not ' => 'null'
@@ -49,7 +50,8 @@ class SupportStudyComment extends BaseSupport
             'EQ' => [
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
-                'ProdCode' => $prod_code
+                'ProdCode' => $prod_code,
+                'b.ProfSiteCode' => $this->_site_code
             ],
             'RAW' => [
                 'ProfIdx is not ' => 'null'
@@ -164,7 +166,8 @@ class SupportStudyComment extends BaseSupport
                 'IsUse' => 'Y',
                 'SubjectIdx' => $subject_idx,
                 'ProfIdx' => $prof_idx,
-                'ProdCode' => $prod_code
+                'ProdCode' => $prod_code,
+                'b.ProfSiteCode' => $this->_site_code
             ],
             'ORG' => [
                 'LKB' => [
@@ -240,13 +243,17 @@ class SupportStudyComment extends BaseSupport
                 'b.IsUse' => 'Y',
                 'b.SubjectIdx' => $subject_idx,
                 'b.ProfIdx' => $prof_idx,
-                'b.ProdCode' => $prod_code
+                'b.ProdCode' => $prod_code,
+                'b.ProfSiteCode' => $this->_site_code
             ],
             'ORG' => [
                 'LKB' => [
                     'b.Title' => $s_keyword,
                     'b.Content' => $s_keyword
                 ]
+            ],
+            'RAW' => [
+                'ProfIdx is not ' => 'null'
             ]
         ];
 

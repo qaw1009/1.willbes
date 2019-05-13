@@ -10,7 +10,7 @@
         }        
         .evtContent {
             width:100% !important;
-            min-width:1120px !important;
+            min-width:1210px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
@@ -21,11 +21,12 @@
 
         /************************************************************/
         .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1216_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/05/1230_top_bg.jpg) no-repeat center top;}
      
-        .evt01 {background:#c93241 url(https://static.willbes.net/public/images/promotion/2019/04/1216_03_bg.jpg) no-repeat center top; padding:785px 0 130px}
-        .evt01 .request { width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
+        .evt01 {padding:0 0 130px}
+        .evt01 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt01 .request h3 {font-size:18px;}
+        .evt01 .request h3 span {color:#3f3c95}
         .evt01 .request td {padding:10px}
         .evt01 .request input {height:26px;}
         .evt01 .requestL {width:48%; float:left}
@@ -34,23 +35,24 @@
         .evt01 .requestL li {display:inline-block; margin-right:10px}
         .evt01 .requestR li {margin-bottom:5px}
         .evt01 .request:after {content:""; display:block; clear:both}
-        .evt01 .btn {clear:both; width:1000px; margin:0 auto;}
-        .evt01 .btn a {display:block; text-align:center; font-size:30px; color:#fff; background:#000; padding:30px 0; margin-top:30px}
-        .evt01 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
+        .evt01 .btn {clear:both; width:900px; margin:0 auto;}
+        .evt01 .btn a {display:block; text-align:center; font-size:30px; color:#fff; background:#3f3c95; padding:30px 0; margin-top:30px}
+        .evt01 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2); background:#000;}
 
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1216_04_bg.jpg) no-repeat center top;}
+        .evt02 {background:#dfe2e7}
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer"> 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1216_top.jpg" title="전북대 설명회">        
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1230_top.jpg" title="전북대 설명회">        
         </div>
 
         <div class="evtCtnsBox evt01">
-            <div class="request" id="request"> 
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1230_01.jpg" title="셜명회 푸짐한 경품 이벤트"> 
+            <div class="request" id="request">                 
                 <div class="requestL">
-                    <h3 class="NGEB"><span class="tx-bright-blue">2019.5.21(화)14:00 합격전략 설명회</span> 신청접수</h3>                    
+                    <h3 class="NGEB"><span>2019.5.21(화)14:00 합격전략 설명회</span> 신청접수</h3>                    
                     <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                         <col width="25%" />
                         <col  />
@@ -124,7 +126,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1216_04.jpg" title="푸짐한 경품 이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1230_02.jpg" title="무엇이든 물어보세요."/>
         </div>
 
         {{--기본댓글--}}

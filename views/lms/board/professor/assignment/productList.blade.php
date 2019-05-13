@@ -106,7 +106,9 @@
                         return '<a href="javascript:void(0);" class="btn-assignment-info" data-prod-code="' + row.ProdCode + '"><u>확인</u></a>';
                     }},
                 {'data' : 'BoardTotalCnt'}, //첨삭 수
-                {'data' : 'BoardCnt2'}, //첨삭 미체점 수
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        return '<span class="red">' + row.BoardCnt2 + '</span>';
+                    }},
                 {'data' : 'BoardCnt3'}, //첨삭 체점 수
             ],
         });

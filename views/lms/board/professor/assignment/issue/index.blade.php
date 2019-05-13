@@ -2,6 +2,8 @@
 
 @section('content')
 <h5>- {{--{{$arr_prof_info['ProfNickName']}}--}} 교수 첨삭 게시판</h5>
+@include('lms.board.professor.assignment.common_partial')
+
 <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     {!! html_def_site_tabs($arr_prof_info['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}
@@ -149,7 +151,11 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                 {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                        return '<a href="javascript:void(0);" class="btn-manager-assignment" data-idx="' + row.BaIdx + '" data-board-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                        if (row.IsStatus == 'Y') {
+                            return '<a href="javascript:void(0);" class="btn-manager-assignment" data-idx="' + row.BaIdx + '" data-board-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                        } else {
+                            return data;
+                        }
                     }},
                 {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
                         var tmp_return;
@@ -163,9 +169,7 @@
                 {'data' : 'IsReply', 'render' : function(data, type, row, meta) {
                         return (data == 'Y') ? '채점' : '<p class="red">미채점</p>';
                     }},
-                {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '';
-                    }},
+                {'data' : 'ReplyAdminName'},
                 {'data' : 'ReplyRegDatm'},
                 {'data' : 'BaIdx', 'render' : function(data, type, row, meta) {
                         if (row.IsStatus == 'Y') {

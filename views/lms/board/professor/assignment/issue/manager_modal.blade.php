@@ -44,7 +44,7 @@
             </div>
             <label class="control-label col-md-2 form-control-static">채점자</label>
             <div class="col-md-2 form-control-static">
-                {{--{{$data['RegProfName']}}--}}
+                {{$data['ReplyAdminName']}}
             </div>
             <label class="control-label col-md-2 form-control-static">채점일</label>
             <div class="col-md-3 form-control-static">

@@ -84,9 +84,9 @@
         </div>
 
         <div class="evtCtnsBox evt06" id="go03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_06_v2.jpg" alt="사전조사서 특강 및 첨삭" usemap="#Map1206D" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_06_v3.jpg" alt="사전조사서 특강 및 첨삭" usemap="#Map1206D" border="0"/>
             <map name="Map1206D" id="Map1206D">
-                <area shape="rect" coords="905,361,1066,562" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;subject_idx=1070&amp;campus_ccd=605001&amp;course_idx=1047" target="_blank"/>
+                <area shape="rect" coords="905,361,1067,722" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1070&campus_ccd=605001&course_idx=1047" target="_blank"/>
             </map>
         </div>
 

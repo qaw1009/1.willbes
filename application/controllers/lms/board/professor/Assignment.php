@@ -171,6 +171,107 @@ class Assignment extends BaseBoard
     }
 
     /**
+     * 강사게시판 - 회원 과제 제출 리스트
+     */
+    public function boardList()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_findProfessor($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
+        $this->load->view("board/professor/{$this->board_name}/boardList", [
+            'bm_idx' => $this->bm_idx,
+            'boardName' => $this->board_name,
+            'arr_prof_info' => $arr_prof_info,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$arr_prof_info['SiteCode']}",
+        ]);
+    }
+
+    public function boardListAjax()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+        $this->site_code = $this->_req('site_code');
+
+        $target_condition = [
+            'IN' => [
+                'AssignmentStatusCcd' => [$this->_arr_assignment_status_ccd['S'], $this->_arr_assignment_status_ccd['M']]
+            ]
+        ];
+
+        $sub_query_condition = [
+            'EQ' => [
+                'BmIdx' => $this->bm_idx,
+                'ProfIdx' => $prof_idx,
+            ]
+        ];
+
+        $arr_condition = [
+            'EQ' => [
+                'b.IsStatus' => 'Y',
+                'b.IsUse' => 'Y',
+                'a.IsReply' => $this->_reqP('search_is_reply'),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'c.MemId' => $this->_reqP('search_member_value'),
+                    'c.MemName' => $this->_reqP('search_member_value'),
+                ],
+                'LKR' => [
+                    'c.Phone3' => $this->_reqP('search_member_value')
+                ]
+            ],
+            'LKB' => [
+                'b.Title' => $this->_reqP('search_title'),
+                'lms_product.ProdName' => $this->_reqP('search_product_name'),
+            ]
+        ];
+
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            if ($this->_reqP('search_date_type') == 'R') {
+                $arr_condition = array_merge($arr_condition, [
+                    'BDT' => ['a.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                ]);
+            } else {
+                $arr_condition = array_merge($arr_condition, [
+                    'BDT' => ['a.ReplyRegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                ]);
+            }
+        }
+
+        $column = ' STRAIGHT_JOIN
+            a.BaIdx, a.BoardIdx, a.MemIdx, a.AssignmentStatusCcd, a.RegDatm, a.ReplyRegDatm, a.ReplyRegAdminIdx,
+            fn_ccd_name(a.AssignmentStatusCcd) AS AssignmentStatusCcdName, a.IsStatus,
+            ReplyADMIN.wAdminName AS ReplyAdminName, a.IsReply, a.ReplyRegDatm, lms_product.ProdName,
+            b.Title, c.MemName, c.MemId, fn_dec(c.PhoneEnc) AS MemPhone,
+            e.AttachFilePath, e.AttachFileName, e.AttachRealFileName,
+            d.AttachFileIdx AS AttachFileIdx_User, d.AttachFilePath AS AttachFilePath_User, d.AttachFileName AS AttachFileName_User, d.AttachRealFileName AS AttachRealFileName_User
+        ';
+
+        $list = [];
+        $count = $this->boardAssignmentModel->listAllBoardForAssignment(true, $target_condition, $arr_condition, $sub_query_condition, $this->site_code);
+
+        if ($count > 0) {
+            $list = $this->boardAssignmentModel->listAllBoardForAssignment(false, $target_condition, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['a.BaIdx' => 'desc'], $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
      * 과제등록관리[게시판]
      * @param array $params
      */
@@ -672,7 +773,7 @@ class Assignment extends BaseBoard
         $column = ' STRAIGHT_JOIN
             a.BaIdx, a.BoardIdx, a.MemIdx, a.AssignmentStatusCcd, a.RegDatm, a.ReplyRegDatm, a.ReplyRegAdminIdx,
             fn_ccd_name(a.AssignmentStatusCcd) AS AssignmentStatusCcdName, a.IsStatus,
-            a.IsReply,
+            ReplyADMIN.wAdminName AS ReplyAdminName, a.IsReply,
             b.Title, c.MemName, c.MemId, fn_dec(c.PhoneEnc) AS MemPhone,
             a.ReplyRegDatm,
             e.AttachFilePath, e.AttachFileName, e.AttachRealFileName
@@ -713,8 +814,7 @@ class Assignment extends BaseBoard
         STRAIGHT_JOIN
         a.BaIdx, b.Title,
         f.MemName, f.MemId, fn_dec(f.PhoneEnc) AS MemPhone, f2.SmsRcvStatus,
-        a.RegDatm, a.IsReply, a.ReplyRegDatm,
-        
+        ReplyADMIN.wAdminName AS ReplyAdminName, a.RegDatm, a.IsReply, a.ReplyRegDatm,
         b.Content AS ProfContent, a.Content AS MemContent, a.ReplyContent,
         c.AttachFileIdx AS AttachFileIdx_Admin, c.AttachFilePath AS AttachFilePath_Admin, c.AttachFileName AS AttachFileName_Admin, c.AttachRealFileName AS AttachRealFileName_Admin,
         d.AttachFileIdx AS AttachFileIdx_User, d.AttachFilePath AS AttachFilePath_User, d.AttachFileName AS AttachFileName_User, d.AttachRealFileName AS AttachRealFileName_User,

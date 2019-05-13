@@ -39,6 +39,9 @@ class SupportStudyComment extends BaseSupport
                 'IsUse' => 'Y',
                 'IsBest' => '1',
                 'ProdCode' => $prod_code
+            ],
+            'RAW' => [
+                'ProfIdx is not ' => 'null'
             ]
         ];
 
@@ -47,6 +50,9 @@ class SupportStudyComment extends BaseSupport
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
                 'ProdCode' => $prod_code
+            ],
+            'RAW' => [
+                'ProfIdx is not ' => 'null'
             ]
         ];
 
@@ -165,6 +171,9 @@ class SupportStudyComment extends BaseSupport
                     'Title' => $s_keyword,
                     'Content' => $s_keyword
                 ]
+            ],
+            'RAW' => [
+                'ProfIdx is not ' => 'null'
             ]
         ];
 

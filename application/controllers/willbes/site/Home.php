@@ -481,7 +481,7 @@ class Home extends \app\controllers\FrontController
                     '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울 동작구 장승배기로 168 드림타워<br/>(서울 동작구 노량진동 54-11번지)','Tel' => '1544-0330'],
                     '1' => ['MapPath' => img_url('gosi_acad/map/mapBS.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
                     '2' => ['MapPath' => img_url('gosi_acad/map/mapDG.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
-                    '3' => ['MapPath' => img_url('gosi_acad/map/mapIC.jpg'),'Addr' => '인천 부평구 부평동 534-28 중보빌딩 10층','Tel' => '1544-1661'],
+                    '3' => ['MapPath' => img_url('gosi_acad/map/mapIC.jpg'),'Addr' => '인천 부평구 경원대로 1395 부평1번가 11층','Tel' => '1544-1661'],
                     '4' => ['MapPath' => img_url('gosi_acad/map/mapKJ.jpg'),'Addr' => '광주 북구 호동로 6-11','Tel' => '062-514-4560']
                 ];
                 break;

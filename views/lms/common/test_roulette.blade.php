@@ -24,14 +24,14 @@
         'drawMode'    : 'segmentImage',    // Must be segmentImage to draw wheel using one image per segemnt.
         'segments'    :
             [
-                {'image' : 'https://lms.local.willbes.net/public/uploads/willbes/promotion/1.png', 'text' : '1'},
-                {'image' : 'https://lms.local.willbes.net/public/uploads/willbes/promotion/2.png', 'text' : '2'},
-                {'image' : 'https://lms.local.willbes.net/public/uploads/willbes/promotion/3.png', 'text' : '3'},
-                {'image' : 'https://lms.local.willbes.net/public/uploads/willbes/promotion/4.png', 'text' : '4'},
-                {'image' : 'https://lms.local.willbes.net/public/uploads/willbes/promotion/5.png', 'text' : '5'},
-                {'image' : 'https://lms.local.willbes.net/public/uploads/willbes/promotion/6.png', 'text' : '6'},
-                {'image' : 'https://lms.local.willbes.net/public/uploads/willbes/promotion/7.png', 'text' : '7'},
-                {'image' : 'https://lms.local.willbes.net/public/uploads/willbes/promotion/8.png', 'text' : '8'}
+                {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/1.png', 'text' : '1'},
+                {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/2.png', 'text' : '2'},
+                {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/3.png', 'text' : '3'},
+                {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/4.png', 'text' : '4'},
+                {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/5.png', 'text' : '5'},
+                {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/6.png', 'text' : '6'},
+                {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/7.png', 'text' : '7'},
+                {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/8.png', 'text' : '8'}
             ],
         'animation' :
             {

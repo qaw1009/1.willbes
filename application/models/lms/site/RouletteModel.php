@@ -5,7 +5,7 @@ class RouletteModel extends WB_Model
 {
     private $_table = [
         'roulette' => 'lms_roulette',
-        'roulette_r_otherinfo' => 'lms_roulette_r_otherinfo',
+        'roulette_otherinfo' => 'lms_roulette_otherinfo',
         'admin' => 'wbs_sys_admin'
     ];
 
@@ -83,7 +83,7 @@ class RouletteModel extends WB_Model
             ]
         ];
 
-        $from = " FROM {$this->_table['roulette_r_otherinfo']} ";
+        $from = " FROM {$this->_table['roulette_otherinfo']} ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -253,7 +253,7 @@ class RouletteModel extends WB_Model
                 'UpdAdminIdx' => $admin_idx
             ];
 
-            if ($this->_conn->set($data)->where('RroIdx', $rro_idx)->update($this->_table['roulette_r_otherinfo']) === false) {
+            if ($this->_conn->set($data)->where('RroIdx', $rro_idx)->update($this->_table['roulette_otherinfo']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
             }
 
@@ -273,7 +273,7 @@ class RouletteModel extends WB_Model
     private function _addRouletteOtherInfo($set_roulette_product)
     {
         try {
-            if ($this->_conn->insert_batch($this->_table['roulette_r_otherinfo'], $set_roulette_product) === false) {
+            if ($this->_conn->insert_batch($this->_table['roulette_otherinfo'], $set_roulette_product) === false) {
                 throw new \Exception('부가정보 저장에 실패했습니다.');
             }
 
@@ -295,12 +295,12 @@ class RouletteModel extends WB_Model
 
                 if (empty($val) === true) {
                     $inputData['RegAdminIdx'] = $this->session->userdata('admin_idx');
-                    if ($this->_conn->set($inputData)->insert($this->_table['roulette_r_otherinfo']) === false) {
+                    if ($this->_conn->set($inputData)->insert($this->_table['roulette_otherinfo']) === false) {
                         throw new \Exception('부가정보 추가에 실패했습니다.');
                     }
                 } else {
                     $inputData['UpdAdminIdx'] = $this->session->userdata('admin_idx');
-                    if ($this->_conn->set($inputData)->where('RroIdx', $val)->update($this->_table['roulette_r_otherinfo']) === false) {
+                    if ($this->_conn->set($inputData)->where('RroIdx', $val)->update($this->_table['roulette_otherinfo']) === false) {
                         throw new \Exception('부가정보 수정에 실패했습니다.');
                     }
                 }

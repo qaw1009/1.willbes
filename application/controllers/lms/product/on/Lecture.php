@@ -67,11 +67,26 @@ Class Lecture extends \app\controllers\BaseController
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),
-            ],
-            'LKB' => [
-                'E.ProfIdx_String' => $this->_reqP('search_prof_idx'),
             ]
         ];
+
+        //교수 관리자의 경우 본인의 과정만 추출
+        if($this->session->userdata('admin_auth_data')['Role']['RoleIdx'] == $this->config->item('prof_role_idx')) {
+            if(empty($this->session->userdata("admin_wprof_idx")) === false) {
+                $arr_condition = array_merge_recursive($arr_condition,[
+                    'EQ' => [
+                        'E.wProfIdx' => $this->session->userdata("admin_wprof_idx")
+                    ]
+                ]);
+            }
+
+        } else {
+            $arr_condition = array_merge($arr_condition,[
+                'LKB' => [
+                    'E.ProfIdx_String' => $this->_reqP('search_prof_idx'),
+                ]
+            ]);
+        }
 
         if($this->_reqP('search_type') === 'lec') {
             $arr_condition = array_merge($arr_condition,[

@@ -45,3 +45,6 @@ $config['predict'] = array(
     'upload_path_predict' => 'lms/predict/', // 응시표인증파일: ~/predict/{idx}/
     'upload_url_predict' => PUBLICURL . 'uploads/lms/predict/' // 업로드이미지 URL
 );
+
+$config['prof_role_idx'] = '1011';        //교수관리자 권한
+

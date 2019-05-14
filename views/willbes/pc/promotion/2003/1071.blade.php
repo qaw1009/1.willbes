@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#fef053 url(http://file3.willbes.net/new_gosi/2018/10/EV181005_c1_bg.jpg) no-repeat center top}
+        .wb_top {background:#fef053 url(https://static.willbes.net/public/images/promotion/2019/05/1071_top_bg.jpg) no-repeat center top}
 
         .wb_cts01{background:#fff;}
         /* 탭 */
@@ -31,11 +31,41 @@
         .tabContaier a img.on {display:none}
         .tabContaier a.active img.off {display:none}
         .tabContaier a.active img.on {display:block}
+        .tabContaier ul:after {content:''; display:block; clear:both}
         .tabContentsEvt iframe {width:876px; height:480px;}
 
         .wb_cts02 {background:#ffd84f;}
 
-        .wb_cts03 {background:#ffd84f;}
+        .wb_cts03 {background:#ffd84f; padding-bottom:100px}
+        .wb_cts03 ul {width:960px; margin:0 auto}
+        .wb_cts03 li {display:inline; float:left; width:16.666666%}
+        .wb_cts03 li a {display:block; height:60px; line-height:60px; text-align:center; font-size:16px; position:relative; border:1px solid #1e1e1e; margin-right:5px}
+        .wb_cts03 li a span {position:absolute; display:block; left:50%; top:-10px; width:90px; margin-left:-45px; padding:0 10px; font-size:12px; color:#fff; 
+        background:#1e1e1e; height:24px; line-height:24px; border:2px solid #ffd84f; border-radius:20px;
+        }
+        .wb_cts03 li a.active,
+        .wb_cts03 li a:hover {background:#1e1e1e; color:#ffd84f}
+        .wb_cts03 li:last-child a {margin:0}
+        .wb_cts03 ul:after {content:''; display:block; clear:both}
+        .wb_cts03 .tabContents {width:960px; margin:16px auto 0; background:#fff; padding:50px 30px; text-align:left}
+        .wb_cts03 .tabContents p {font-size:18px; margin:20px 0}
+        .wb_cts03 table {background:#fff; width:100%; background:#fff} 
+        .wb_cts03 tr {border-bottom:1px solid #ccc}        
+        .wb_cts03 tr.st01 {background:#ececec}
+        .wb_cts03 tr:hover {background:#f9f9f9}
+        .wb_cts03 th,
+        .wb_cts03 td {padding:10px; font-size:14px; font-weight:500;}
+        .wb_cts03 th {background:#5f5f5f; color:#fff}
+        .wb_cts03 td:nth-child(1) {text-align:center}
+        .wb_cts03 td:nth-child(2) {text-align:center}
+        .wb_cts03 td:nth-child(3) {color:#ce9317}
+        .wb_cts03 td:last-child {border:0}
+        .wb_cts03 td p {font-size:12px}
+		.wb_cts03 table a {padding:10px 15px; color:#fff; background:#ce9317; font-size:14px; display:block; border-radius:20px; text-align:center}
+        .wb_cts03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
+        .wb_cts03 table a:hover {background:#252525; color:#fff;}
+        .wb_cts03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
+
 
         .PeMenu {width:1210px; margin:0 auto 0; padding-top:100px}
         .PeMenu li { display:inline; float:left}
@@ -45,148 +75,824 @@
         .skybanner {
             position:fixed;
             top:250px;
-            right:0;
-            width:185px;
+            right:10px;
+            width:122px;
             z-index:10;
         }
 
 
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">
             <div>
-                <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c9.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map181130_c1" border="0">
-                <map name="Map181130_c1" >
-                    <area shape="rect" coords="17,148,157,269" href="#event01"  onfocus="this.blur();"  />
-                    <area shape="rect" coords="23,289,146,398" href="#event02" onfocus="this.blur();" />
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
+                <map name="Map1071A" id="Map1071A" >
+                    <area shape="rect" coords="5,137,116,189" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="1" />
+                    <area shape="rect" coords="5,196,116,258" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="2"/>
+                    <area shape="rect" coords="5,266,116,326" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="3"/>
+                    <area shape="rect" coords="5,334,116,384" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="4"/>
+                    <area shape="rect" coords="5,390,116,457" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="5"/>
+                    <area shape="rect" coords="5,462,116,511" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="6"/>
                 </map>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_c1.png" alt=" 윌비스 차원이 다른 전기/통신 기술직의 대가 최우영교수 " usemap="#Map20181005_c1" border="0"  />
-            <map name="Map20181005_c1" >
-                <area shape="rect" coords="259,626,388,743" href="#event01" onfocus="this.blur();"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_top_01.png" alt=" 윌비스 차원이 다른 전기/통신 기술직의 대가 최우영교수 " usemap="#Map1071B" border="0"  />
+            <map name="Map1071B" id="Map1071B" >
+                <area shape="rect" coords="216,691,341,747" href="#event01" onfocus="this.blur();"/>
             </map>
-        </div><!--WB_top//-->
+        </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <p id="evt01" class="PlatF"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_c2.jpg" alt="기술직 수험생의 이유있는 선택 최우영교수"  >
-            <p id="evt02" class="PlatF"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_c3.jpg" alt="난해한 부분의 핵심포인트를 짚어주는 고득점 합격 필수 강의 최우영교수" ></p>
-            <div class="tabContaier"  >
-                <ul class="cf">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_01.jpg" alt="기술직 수험생의 이유있는 선택 최우영교수"  ><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02.jpg" alt="난해한 부분의 핵심포인트를 짚어주는 고득점 합격 필수 강의 최우영교수" >
+            <div class="tabContaier">
+                <ul class="youtubeTab">
                     <li>
-                        <a class="active" href="#tab1">
-                            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_tap01off_c.jpg"  class="off" alt="전자공학"/>
-                            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_tap01on_c.jpg" class="on"  />
+                        <a class="active" href="#ytb01">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap01off_c.jpg"  class="off" alt="전자공학"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap01on_c.jpg" class="on"  />
                         </a>
                     </li>
                     <li>
-                        <a  href="#tab2">
-                            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_tap02off_c.jpg"  class="off"  />
-                            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_tap02on_c.jpg"  class="on"  alt="무선공학"/>
+                        <a href="#ytb02">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap02off_c.jpg"  class="off"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap02on_c.jpg"  class="on"  alt="무선공학"/>
                         </a>
                     </li>
                     <li>
-                        <a  href="#tab3">
-                            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_tap03off_c.jpg"  class="off" />
-                            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_tap03on_c.jpg"  class="on" alt="전기이론학"/>
+                        <a href="#ytb03">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap03off_c.jpg"  class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap03on_c.jpg"  class="on" alt="전기이론학"/>
                         </a>
                     </li>
                     <li>
-                        <a  href="#tab4">
-                            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_tap04off_c.jpg"  class="off" alt="전기기기"/>
-                            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_tap04on_c.jpg" class="on" />
+                        <a href="#ytb04">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap04off_c.jpg"  class="off" alt="전기기기"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap04on_c.jpg" class="on" />
                         </a>
                     </li>
                 </ul>
 
-                <div class="tabContentsEvt" id="tab1">
+                <div class="tabContentsEvt" id="ytb01">
                     <iframe width="876px" height="480px" src="https://www.youtube.com/embed/ZJG2UIJmQxc?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class=" tabContentsEvt" id="tab2"></div>
-                <div class=" tabContentsEvt" id="tab3"></div>
-                <div class=" tabContentsEvt" id="tab4"></div>
+                <div class="tabContentsEvt" id="ytb02"></div>
+                <div class="tabContentsEvt" id="ytb03"></div>
+                <div class="tabContentsEvt" id="ytb04"></div>
             </div><!--tabContaier//-->
         </div>
         <!--WB_top01//-->
 
-        <div class="evtCtnsBox wb_cts02" id="event01">
-            <div class="PeMenu" >
-                <ul>
-                    <li>
-                        <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_1on.jpg" alt=""  />
-                    </li>
-                    <li>
-                        <a href="#event02"  onFocus="this.blur();" >
-                            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_2.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_2on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_2.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_2.jpg'" alt=""  />
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c7.jpg" alt="윌비스 최우영교수의 전기/통신직 대비 이론패키지"  usemap="#Map20181005_c2" border="0"  />
-            <map name="Map20181005_c2">
-                <area shape="rect" coords="167,621,433,726" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150626') }}" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="473,626,732,719" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150625') }}" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="790,624,1043,718" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150621') }}" onfocus="this.blur();" target="_blank" />
-                <area shape="rect" coords="747,942,970,1067" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150644') }}" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="746,1174,974,1280" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150643') }}"  onfocus="this.blur();" target="_blank"/>
+        <div class="evtCtnsBox wb_cts02">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_03.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0"  />
+            <map name="Map1071C" id="Map1071C">
+                <area shape="rect" coords="117,808,383,912" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150626') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="423,809,686,912" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150625') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="742,806,994,912" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150621') }}" onfocus="this.blur();" target="_blank" />
+                <area shape="rect" coords="700,1167,923,1292" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150644') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="700,1397,923,1503" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150643') }}"  onfocus="this.blur();" target="_blank"/>
             </map>
         </div>
         <!--wb_cts02//-->
 
-        <div class="evtCtnsBox wb_cts03" id="event02">
-            <div class="PeMenu">
-                <ul>
-                    <li>
-                        <a href="#event01"  onFocus="this.blur();" >
-                            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_1.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_1on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_1.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_1.jpg'" alt=""  />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#event02"  onFocus="this.blur();" >
-                            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c7_2on.jpg" alt=""/>
-                        </a>
-                    </li>
-                </ul>
+        <div class="evtCtnsBox wb_cts03">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_04.jpg" alt="윌비스 최우영 교수 단과 수강신청"/><br>
+            <ul class="tabs">
+                <li><a href="#tab1" id="menu_tab1">전송기술 9급<span>국가직</span></a></li>
+                <li><a href="#tab2" id="menu_tab2">통신기술 9급<span>서울/지방직</span></a></li>
+                <li><a href="#tab3" id="menu_tab3">통신직 9급</a></li>
+                <li><a href="#tab4" id="menu_tab4">전기직 9급</a></li>
+                <li><a href="#tab5" id="menu_tab5">전기직 7급</a></li>
+                <li><a href="#tab6" id="menu_tab6">군무원<span>전자/통신직</span></a></li>
+            </ul>
+            <div class="tabContents" id="tab1">
+                <p>● 전자공학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>기초전기전자</td>
+                        <td>이론</td>
+                        <td>2019 최우영 기초 전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146235" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146362" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>디지털공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146363" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146644" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 단원별 기출문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146957" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147120" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 전자공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152669" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 무선공학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>무선공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 무선/통신 공통 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146236" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>무선공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 무선공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146360" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>무선공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 무선/통신 공통 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146645" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>무선공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 무선공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146718" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>무선공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 무선공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147119" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
             </div>
 
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c8.jpg" alt="윌비스 최우영 교수의 학원실강"  usemap="#Map20181005_c4" border="0" />
-            <map name="Map20181005_c4" >
-                <area shape="rect" coords="330,1128,874,1223" href="{{ site_url('/professor/show/cate/3028/prof-idx/50163/?subject_idx=1160&subject_name=%EC%A0%84%EA%B8%B0%EC%A7%81') }}" onfocus="this.blur();" target="_blank"/>
-            </map>
+            <div class="tabContents" id="tab2">
+                <p>● 전자공학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>기초전기전자</td>
+                        <td>이론</td>
+                        <td>2019 최우영 기초 전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146235" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146362" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>디지털공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146363" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146644" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 단원별 기출문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146957" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147120" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 전자공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152669" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 통신이론/공학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>이론</td>
+                        <td>2019 최우영 통신이론 (이론/문풀)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 통신공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146361" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 통신공학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152841" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 통신공학/통신이론 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152663" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>                
+            </div>
+
+            <div class="tabContents" id="tab3">
+                <p>● 통신이론/공학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>이론</td>
+                        <td>2019 최우영 통신이론 (이론/문풀)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 통신공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146361" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 통신공학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152841" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 통신공학/통신이론 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152663" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 전기자기학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>이론</td>
+                        <td>2018 최우영 전기자기학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145753" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>문제풀이</td>
+                        <td>2018 최우영 전기자기학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146194" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 전자회로</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>전자회로</td>
+                        <td>이론</td>
+                        <td>2018 최우영 전자회로 이론 및 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146195" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자회로</td>
+                        <td>유료특강</td>
+                        <td>2018 최우영 전자회로 기출문제특강</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146348" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="tabContents" id="tab4">
+                <p>● 전기이론</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>전기이론</td>
+                        <td>이론</td>
+                        <td>2019 최우영 전기이론 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146237" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기이론</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전기이론 단원별 기출문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146365" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기이론</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전기이론 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146952" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기이론</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 전기이론 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152688" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 전기기기</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>전기기기</td>
+                        <td>이론</td>
+                        <td>2019 최우영 전기기기 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146238" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기기기</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전기기기 단원별 기출문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146364" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기기기</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전기기기 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146951" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기기기</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 전기기기 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152687" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="tabContents" id="tab5">
+                <p>● 전기기기</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>전기기기</td>
+                        <td>이론</td>
+                        <td>2019 최우영 전기기기 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146238" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기기기</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전기기기 단원별 기출문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146364" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기기기</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전기기기 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146951" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기기기</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 전기기기 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152687" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 전기자기학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>이론</td>
+                        <td>2018 최우영 전기자기학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145753" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>문제풀이</td>
+                        <td>2018 최우영 전기자기학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146194" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 회로이론</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>회로이론</td>
+                        <td>이론</td>
+                        <td>2017 최우영 회로이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145706" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>회로이론</td>
+                        <td>문제풀이</td>
+                        <td>2017 최우영 회로이론 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145710" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="tabContents" id="tab6">
+                <p>● 군무원 전자직 9/7급 전자공학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>기초전기전자</td>
+                        <td>이론</td>
+                        <td>2019 최우영 기초 전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146235" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146362" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>디지털공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146363" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146644" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 단원별 기출문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146957" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147120" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 전자공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152669" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 [군무원대비] 최우영 전자공학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152733" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 군무원 전자직 9/7급 전자회로</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>전자회로</td>
+                        <td>이론</td>
+                        <td>2018 최우영 전자회로 이론 및 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146195" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자회로</td>
+                        <td>유료특강</td>
+                        <td>2018 최우영 전자회로 기출문제특강</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146348" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 군무원 통신직 9/7급 전자공학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>기초전기전자</td>
+                        <td>이론</td>
+                        <td>2019 최우영 기초 전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146235" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146362" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>디지털공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146363" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146644" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 단원별 기출문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146957" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 전자공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147120" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 전자공학 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152669" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 [군무원대비] 최우영 전자공학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152733" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 군무원 통신직 9/7급 통신이론/공학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>이론</td>
+                        <td>2019 최우영 통신이론 (이론/문풀)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>이론</td>
+                        <td>2019 최우영 통신공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146361" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 통신공학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152841" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>문제풀이</td>
+                        <td>2019 [지방직/서울시] 최우영 통신공학/통신이론 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152663" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+                <p>● 군무원 통신직 9/7급 전기자기학</p>
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col />
+                    <col width="12%"/>
+                    <tr>
+                        <th>과목</th>
+                        <th>과정</th>
+                        <th>강좌명</th>
+                        <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>이론</td>
+                        <td>2018 최우영 전기자기학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145753" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>문제풀이</td>
+                        <td>2018 최우영 전기자기학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146194" target="_blank">수강신청</a></td>
+                    </tr>
+                </table>
+            </div>
         </div><!--wb_cts03//-->
+          
     </div>
     <!-- End Container -->
 
     <script type="text/javascript">
-        var tab1_url = "https://www.youtube.com/embed/ZJG2UIJmQxc?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/gTLrfJBKmGI?rel=0";
-        var tab3_url = "https://www.youtube.com/embed/8y8JNZapAB0?rel=0";
-        var tab4_url = "https://www.youtube.com/embed/6-W1MgmE8dc?rel=0";
+        var ytb01_url = "https://www.youtube.com/embed/ZJG2UIJmQxc?rel=0";
+        var ytb02_url = "https://www.youtube.com/embed/gTLrfJBKmGI?rel=0";
+        var ytb03_url = "https://www.youtube.com/embed/8y8JNZapAB0?rel=0";
+        var ytb04_url = "https://www.youtube.com/embed/6-W1MgmE8dc?rel=0";
 
         $(document).ready(function(){
+            /*영상탭*/
             $(".tabContentsEvt").hide();
             $(".tabContentsEvt:first").show();
-            $(".tabContaier ul li a").click(function(){
+            $(".youtubeTab a").click(function(){
                 var activeTab = $(this).attr("href");
                 var html_str = "";
-                if(activeTab == "#tab1"){
-                    html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab2"){
-                    html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab3"){
-                    html_str = "<iframe src='"+tab3_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab4"){
-                    html_str = "<iframe src='"+tab4_url+"' allowfullscreen></iframe>";
+                if(activeTab == "#ytb01"){
+                    html_str = "<iframe src='"+ytb01_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#ytb02"){
+                    html_str = "<iframe src='"+ytb02_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#ytb03"){
+                    html_str = "<iframe src='"+ytb03_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#ytb04"){
+                    html_str = "<iframe src='"+ytb04_url+"' allowfullscreen></iframe>";
                 }
-                $(".tabContaier ul li a").removeClass("active");
+                $(".youtubeTab a").removeClass("active");
                 $(this).addClass("active");
                 $(".tabContentsEvt").hide();
                 $(".tabContentsEvt").html('');
                 $(activeTab).html(html_str);
+                $(activeTab).fadeIn();
+                return false;
+            });
+
+            /*강의탭*/
+            var $active, $links = $(this).find('.tabs li a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+            $links.not($active).each(function () {
+                $(this.hash).hide()
+            });
+
+            $(".r_btn_tab").click(function () {
+                var offset = $('.tabs').offset();
+                $('html, body').animate({scrollTop : offset.top}, 400);
+
+                var activeTab = $(this).data("tab-id");
+                $(".tabs li a").removeClass("active");
+                $('#menu_tab'+activeTab).addClass("active");
+                $(".tabContents").hide();
+                $('#tab'+activeTab).fadeIn();
+                return false;
+            });
+
+            $(".tabs li a").click(function(){
+                var activeTab = $(this).attr("href");
+                $(".tabs li a").removeClass("active");
+                $(this).addClass("active");
+                $(".tabContents").hide();
                 $(activeTab).fadeIn();
                 return false;
             });

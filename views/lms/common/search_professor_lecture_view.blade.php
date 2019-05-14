@@ -72,7 +72,7 @@
                     <th>회차제목</th>
                     <th width="220px">강의보기</th>
                     <th>보조자료</th>
-                    <th width="100px">북페이지</th>
+                    <th width="100px">강의시간<BR>/북페이지</th>
                     <th width="100px">촬영일</th>
                 </tr>
             @if(empty($data_unit))
@@ -91,10 +91,10 @@
                         </td>
                         <td>
                             @if(empty($row['wUnitAttachFile']) === false)
-                                [ <a href="{{site_url('/product/on/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'&filename_ori='.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a>
+                                <a href="{{site_url('/product/on/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'&filename_ori='.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a>
                             @endif
                         </td>
-                        <td>{{ $row['wBookPage']  }}</td>
+                        <td>{{ $row['wRuntime']  }} 분<BR>{{ $row['wBookPage']  }} P</td>
                         <td>{{ $row['wShootingDate'] }}</td>
                     </tr>
                 @endforeach

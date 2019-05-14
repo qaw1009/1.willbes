@@ -55,7 +55,7 @@
 
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1025_p3.jpg"  alt="동영상" />
-            <iframe width="854" height="480" src="https://www.youtube.com/embed/ouOkVtFChAc?rel=0" frameborder="0" allowfullscreen></iframe>
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/dpal8B8gP2I?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox wb_cts03">

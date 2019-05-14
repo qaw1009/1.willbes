@@ -7,11 +7,17 @@
         @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="Section mt30">
-            <div class="widthAuto bnrSec01">
+            <div class="widthAuto bnrSec01 nSlider pick"> 
+                {{--
                 <div>
                     <a href="{{ site_url('/promotion/index/cate/3007/code/1043') }}">
                         <img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" title="기본이론">
                     </a>
+                </div>
+                --}}
+                <div class="sliderNum">
+                    <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1237" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_190514.jpg" alt="10일 완성 패키지"></a></div>
+                    <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1043" target="_blank"><img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론"></a></div>
                 </div>
                 <ul>
                     <li><a href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132260') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" title="원유철 한국사 기본이론"></a></li>

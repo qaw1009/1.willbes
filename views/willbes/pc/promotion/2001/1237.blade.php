@@ -69,10 +69,11 @@
         </div>        
 
         <div class="evtCtnsBox evt04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1237_04.jpg"  alt="해수부 청원경찰 대비 커리큘럼 수강신청" usemap="#Map1237B" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1237_04_v2.jpg"  alt="해수부 청원경찰 대비 커리큘럼 수강신청" usemap="#Map1237B" border="0" />
             <map name="Map1237B" id="Map1237B">
-                <area shape="rect" coords="384,406,489,484" href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/153503" target="_blank" alt="제1과목" />
-                <area shape="rect" coords="879,406,983,484" href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/153504" target="_blank" alt="제2과목" />
+                <area shape="rect" coords="878,390,983,466" href="https://police.willbes.net/package/show/cate/3008/pack/648001/prod-code/153493" target="_blank" alt="패키지"/>
+                <area shape="rect" coords="383,595,488,673" href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/153503" target="_blank" alt="제1과목" />
+                <area shape="rect" coords="880,597,984,675" href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/153504" target="_blank" alt="제2과목" />              
             </map>
             <div>
                 <p>● 제1과목</p>

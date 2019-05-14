@@ -116,8 +116,8 @@
                     <label class="control-label col-md-1-1" for="roulette_type">확률타입<span class="required">*</span></label>
                     <div class="col-md-4 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="probability_type_1" name="probability_type" class="flat" value="1" required="required" @if($method == 'POST' || $data['ProbabilityType']=='1')checked="checked"@endif/> <label for="probability_type_1" class="input-label">자동</label>
-                            <input type="radio" id="probability_type_2" name="probability_type" class="flat" value="2" @if($data['ProbabilityType']=='2')checked="checked"@endif/> <label for="probability_type_2" class="input-label">수동</label>
+                            <input type="radio" id="probability_type_2" name="probability_type" class="flat" value="2" @if($method == 'POST' || $data['ProbabilityType']=='2')checked="checked"@endif/> <label for="probability_type_2" class="input-label">수동</label>
+                            <input type="radio" id="probability_type_1" name="probability_type" class="flat" value="1" required="required" @if($data['ProbabilityType']=='1')checked="checked"@endif/> <label for="probability_type_1" class="input-label">자동</label>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                                         <th>룰렛상품명</th>
                                         <th>룰렛상품수량</th>
                                         <th>룰렛상품확률</th>
-                                        <th>룰렛상품노출횟수</th>
+                                        <th>룰렛상품정렬순서</th>
                                         <th>사용여부</th>
                                         <th>수정</th>
                                     </tr>
@@ -161,7 +161,7 @@
                                                     <input type="text" name="roulette_prod_probability[]" class="form-control" title="룰렛상품확률" style="width: 50px;" value="{{ (empty($row['ProdProbability']) === false) ? $row['ProdProbability'] : '0' }}"/>
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="roulette_prod_count[]" class="form-control" title="룰렛상품확률" style="width: 50px;" value="{{ (empty($row['ProdCount']) === false) ? $row['ProdCount'] : '0' }}"/>
+                                                    <input type="text" name="roulette_order_num[]" class="form-control" title="룰렛상품정렬순서" style="width: 50px;" value="{{ (empty($row['OrderNum']) === false) ? $row['OrderNum'] : '0' }}"/>
                                                 </td>
                                                 <td>
                                                     {!! (empty($row['IsUse']) === false) ? ($row['IsUse'] == 'Y') ? '사용' : '<span class="red">미사용</span>' : '' !!}
@@ -243,7 +243,7 @@
                 add_lists += '<td><input type="hidden" name="rro_idx[]" value=""><input type="text" name="roulette_prod_name[]" class="form-control" title="룰렛상품명" style="width: 230px;"/></td>';
                 add_lists += '<td><input type="text" name="roulette_prod_qty[]" class="form-control" title="룰렛상품수량" style="width: 50px;"/></td>';
                 add_lists += '<td><input type="text" name="roulette_prod_probability[]" class="form-control" title="룰렛상품확률" style="width: 50px;"/></td>';
-                add_lists += '<td><input type="text" name="roulette_prod_count[]" class="form-control" title="룰렛상품노출횟수" style="width: 50px;"/></td>';
+                add_lists += '<td><input type="text" name="roulette_order_num[]" class="form-control" title="룰렛상품노출횟수" style="width: 50px;"/></td>';
                 add_lists += '<td></td>';
                 add_lists += '<td><a href="#none" class="btn-roulette-product-delete" data-temp-tr-idx="'+temp_roulette_prod_num+'"><i class="fa fa-times fa-lg red"></i></a></td>';
                 add_lists += '<tr>';

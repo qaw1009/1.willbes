@@ -31,8 +31,8 @@
         <div class="Section mt8">
             <div class="widthAuto bnrSec02">
                 <ul>
-                    <li><a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/151930') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556x124_01.jpg') }}" title="권소현 항해술 진도별 문풀"></a></li>
-                    <li><a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/151931') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556x124_02.jpg') }}" title="황다혜 기관술 진도별 문풀"></a></li>
+                    <li><a href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/132255"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x124_190514_01.jpg" title="권소현 항해술"></a></li>
+                    <li><a href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/153472"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x124_190514_02.jpg" title="황다혜 기관술"></a></li>
                 </ul>
             </div>
         </div>

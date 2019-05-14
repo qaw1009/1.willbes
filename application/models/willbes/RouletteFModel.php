@@ -42,7 +42,7 @@ class RouletteFModel extends WB_Model
             ]
         ];
 
-        $column = 'RroIdx, RouletteCode, ProdName, ProdQty, ProdProbability, ProdCount';
+        $column = 'RroIdx, RouletteCode, ProdName, ProdQty, ProdProbability';
         $from = " FROM {$this->_table['roulette_otherinfo']}";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -63,13 +63,14 @@ class RouletteFModel extends WB_Model
             ]
         ];
         $column = '
-            a.RroIdx, a.RouletteCode, a.ProdName, a.ProdQty, a.ProdProbability, a.ProdCount
+            a.RroIdx, a.RouletteCode, a.ProdName, a.ProdQty, a.ProdProbability
             ,(cast(a.ProdQty as signed) - (SELECT COUNT(*) FROM lms_roulette_member WHERE RroIdx = a.RroIdx)) AS unUsedCount
         ';
         $from = " FROM {$this->_table['roulette_otherinfo']} AS a ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        return $this->_conn->query('select ' . $column . $from . $where)->result_array();
+        $order_by_offset_limit = ' order by a.OrderNum asc, a.RroIdx asc';
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit)->result_array();
     }
 
     public function findGetUsedCount($rro_idx)

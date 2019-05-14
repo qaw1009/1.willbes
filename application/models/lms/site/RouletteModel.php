@@ -76,7 +76,7 @@ class RouletteModel extends WB_Model
      */
     public function listRouletteOtherInfo($roulette_code)
     {
-        $column = 'RroIdx, RouletteCode, ProdName, ProdQty, ProdProbability, ProdCount, IsUse';
+        $column = 'RroIdx, RouletteCode, ProdName, ProdQty, ProdProbability, OrderNum, IsUse';
         $arr_condition = [
             'EQ' => [
                 'RouletteCode' => $roulette_code
@@ -140,7 +140,7 @@ class RouletteModel extends WB_Model
                     $set_roulette_product[$key]['ProdName'] = $val;
                     $set_roulette_product[$key]['ProdQty'] = element('roulette_prod_qty', $input)[$key];
                     $set_roulette_product[$key]['ProdProbability'] = element('roulette_prod_probability', $input)[$key];
-                    $set_roulette_product[$key]['ProdCount'] = element('roulette_prod_count', $input)[$key];
+                    $set_roulette_product[$key]['OrderNum'] = element('roulette_order_num', $input)[$key];
                     $set_roulette_product[$key]['RegIp'] = $this->input->ip_address();
                 }
             }
@@ -291,7 +291,7 @@ class RouletteModel extends WB_Model
                 $inputData['ProdName'] = (empty($input['roulette_prod_name'][$key]) === false) ? $input['roulette_prod_name'][$key] : null;
                 $inputData['ProdQty'] = (empty($input['roulette_prod_qty'][$key]) === false) ? $input['roulette_prod_qty'][$key] : null;
                 $inputData['ProdProbability'] = (empty($input['roulette_prod_probability'][$key]) === false) ? $input['roulette_prod_probability'][$key] : null;
-                $inputData['ProdCount'] = (empty($input['roulette_prod_count'][$key]) === false) ? $input['roulette_prod_count'][$key] : null;
+                $inputData['OrderNum'] = (empty($input['roulette_order_num'][$key]) === false) ? $input['roulette_order_num'][$key] : null;
 
                 if (empty($val) === true) {
                     $inputData['RegAdminIdx'] = $this->session->userdata('admin_idx');

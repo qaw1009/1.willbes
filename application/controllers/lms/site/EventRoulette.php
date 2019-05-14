@@ -89,7 +89,7 @@ class EventRoulette extends \app\controllers\BaseController
             ['field' => 'roulette_prod_name[]', 'label' => '룰렛상품명', 'rules' => 'trim|required'],
             ['field' => 'roulette_prod_qty[]', 'label' => '룰렛상품수량', 'rules' => 'trim|required'],
             ['field' => 'roulette_prod_probability[]', 'label' => '룰렛상품확률', 'rules' => 'trim|required'],
-            ['field' => 'roulette_prod_count[]', 'label' => '룰렛상품노출횟수', 'rules' => 'trim|required']
+            ['field' => 'roulette_order_num[]', 'label' => '룰렛상품정렬순서', 'rules' => 'trim|required']
         ];
 
         if (empty($this->_reqP('roulette_code')) === true) {

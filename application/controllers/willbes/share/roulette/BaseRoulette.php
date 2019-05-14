@@ -163,29 +163,18 @@ class BaseRoulette extends \app\controllers\FrontController
                 } else {
                     $set_prod_data['probability'][] = ceil(($row['unUsedCount'] / $prod_qty) * 100);
                 }
-                $set_prod_data['prod_count'][] = $row['ProdCount'];
             }
         } else {
             foreach ($data_info['roulette_data_otherinfo'] as $row) {
                 $set_prod_data['rro_idx'][] = $row['RroIdx'];
                 $set_prod_data['probability'][] = (empty($row['unUsedCount']) === true || $row['unUsedCount'] < 1) ? 0 : $row['ProdProbability'];
-                $set_prod_data['prod_count'][] = $row['ProdCount'];
             }
         }
 
         if (empty($set_prod_data) === false) {
             $index = $this->_weighted_random($set_prod_data['probability']);
             $random_rro_idx = $set_prod_data['rro_idx'][$index];
-            $result_key = array_search($random_rro_idx, $set_prod_data['rro_idx']);
-            $prod_num = $this->_prod_randum($set_prod_data['prod_count'][$result_key]);
-
-            //룰렛번호리턴
-            $temp_index = $index + 1;
-            if ($prod_num > 1) {
-                $roulette_num = count($set_prod_data['rro_idx']) + $temp_index;
-            } else {
-                $roulette_num = $temp_index;
-            }
+            $roulette_num = $index + 1;
 
             $result = [
                 'result' => $roulette_num,

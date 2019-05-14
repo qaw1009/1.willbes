@@ -341,6 +341,12 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
+                        <td>2019 최우영 무선/통신 공통 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146236" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>이론</td>
                         <td>2019 최우영 통신이론 (이론/문풀)</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
                     </tr>
@@ -349,6 +355,12 @@
                         <td>이론</td>
                         <td>2019 최우영 통신공학 이론</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146361" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 무선/통신 공통 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146645" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -381,6 +393,12 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
+                        <td>2019 최우영 무선/통신 공통 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146236" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>이론</td>
                         <td>2019 최우영 통신이론 (이론/문풀)</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
                     </tr>
@@ -389,6 +407,12 @@
                         <td>이론</td>
                         <td>2019 최우영 통신공학 이론</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146361" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>문제풀이</td>
+                        <td>2019 최우영 무선/통신 공통 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146645" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -773,7 +797,7 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152733" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
-                <p>● 군무원 통신직 9/7급 통신이론/공학</p>
+                <p>● 통신이론/공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
                     <col width="15%"/>
@@ -784,6 +808,12 @@
                         <th>과정</th>
                         <th>강좌명</th>
                         <th>수강신청</th>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>이론</td>
+                        <td>2019 최우영 무선/통신 공통 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146236" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -800,6 +830,12 @@
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
+                        <td>2019 최우영 무선/통신 공통 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146645" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>문제풀이</td>
                         <td>2019 최우영 통신공학 단원별 문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152841" target="_blank">수강신청</a></td>
                     </tr>
@@ -810,7 +846,7 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152663" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
-                <p>● 군무원 통신직 9/7급 전기자기학</p>
+                <p>● 전기자기학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
                     <col width="15%"/>

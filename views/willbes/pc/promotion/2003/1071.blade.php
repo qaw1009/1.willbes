@@ -59,12 +59,12 @@
         .wb_cts03 th {background:#5f5f5f; color:#fff}
         .wb_cts03 td:nth-child(1) {text-align:center}
         .wb_cts03 td:nth-child(2) {text-align:center}
-        .wb_cts03 td:nth-child(3) {color:#ce9317}
+        .wb_cts03 td:nth-child(3) {color:#930f0d}
         .wb_cts03 td:last-child {border:0}
         .wb_cts03 td p {font-size:12px}
-		.wb_cts03 table a {padding:10px 15px; color:#fff; background:#ce9317; font-size:14px; display:block; border-radius:20px; text-align:center}
+		.wb_cts03 table a {padding:10px 15px; color:#202020; background:#ffd84f; font-size:14px; display:block; border-radius:20px; text-align:center}
         .wb_cts03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
-        .wb_cts03 table a:hover {background:#252525; color:#fff;}
+        .wb_cts03 table a:hover {background:#202020; color:#fff;}
         .wb_cts03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
 
 

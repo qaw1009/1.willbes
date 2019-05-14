@@ -46,12 +46,12 @@
 /**/
 .seaSp .Section .bnrSec01 li {
     display: inline;
-    float: left;
-    margin-right: 8px;    
+    float: left;   
+    width: 556px;
+    height: 292px;  
+    overflow: hidden; 
 }
-.seaSp .Section .bnrSec01 li:last-child {
-    margin:0
-}
+.seaSp .Section .bnrSec01 li:last-child {margin-left:8px}
 .seaSp .Section .bnrSec01:after {
     content:'';
     display: block;

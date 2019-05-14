@@ -46,6 +46,7 @@
     float: left;
     width: 756px;
     height: 292px;
+    overflow: hidden;
 }
 .sea .Section .bnrSec01 ul {
     float: right;

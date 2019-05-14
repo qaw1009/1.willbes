@@ -55,10 +55,15 @@
     </div>
 
     <div class="Section mt30">
-        <div class="widthAuto bnrSec01">   
+        <div class="widthAuto bnrSec01 nSlider pick">   
             <ul>
                 <li><a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_556_01.jpg') }}" alt="정태정 핵심이론"></a></li>
-                <li><a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_556_02.jpg') }}" alt="공득인 핵심이론"></a></li>
+                <li>                    
+                    <div class="sliderNum">
+                        <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1237" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x292_190514.jpg" alt="10일 완성 패키지"></a></div>
+                        <div><a href="{{ site_url('/promotion/index/cate/3001/code/1035') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_02.jpg') }}" title="KCG 핵심요약"></a></div>
+                    </div>
+                </li>
             </ul>         
         </div>
     </div>
@@ -66,8 +71,8 @@
     <div class="Section mt8">
         <div class="widthAuto bnrSec02">   
             <ul>
-                <li><a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_556x124_01.jpg') }}" alt="정태정 핵심이론"></a></li>
-                <li><a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_556x124_02.jpg') }}" alt="공득인 핵심이론"></a></li>
+                <li><a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_556x124_01.jpg') }}" alt="권소현 항해술"></a></li>
+                <li><a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_556x124_02.jpg') }}" alt="황다혜 기관술"></a></li>
             </ul>  
         </div>
     </div>

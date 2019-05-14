@@ -48,6 +48,7 @@
         .wb_cts03 li:last-child a {margin:0}
         .wb_cts03 ul:after {content:''; display:block; clear:both}
         .wb_cts03 .tabContents {width:960px; margin:16px auto 0; background:#fff; padding:50px 30px; text-align:left}
+        .wb_cts03 .tabContents h3 {font-size:22px; color:#930f0d; margin:20px 0}
         .wb_cts03 .tabContents p {font-size:18px; margin:20px 0}
         .wb_cts03 table {background:#fff; width:100%; background:#fff} 
         .wb_cts03 tr {border-bottom:1px solid #ccc}        
@@ -163,7 +164,7 @@
             <ul class="tabs">
                 <li><a href="#tab1" id="menu_tab1">전송기술 9급<span>국가직</span></a></li>
                 <li><a href="#tab2" id="menu_tab2">통신기술 9급<span>서울/지방직</span></a></li>
-                <li><a href="#tab3" id="menu_tab3">통신직 9급</a></li>
+                <li><a href="#tab3" id="menu_tab3">통신직 7급</a></li>
                 <li><a href="#tab4" id="menu_tab4">전기직 9급</a></li>
                 <li><a href="#tab5" id="menu_tab5">전기직 7급</a></li>
                 <li><a href="#tab6" id="menu_tab6">군무원<span>전자/통신직</span></a></li>
@@ -622,7 +623,8 @@
             </div>
 
             <div class="tabContents" id="tab6">
-                <p>● 군무원 전자직 9/7급 전자공학</p>
+                <h3 class="NGEB">군무원 전자직 9/7급</h3>
+                <p>● 전자공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
                     <col width="15%"/>
@@ -683,7 +685,7 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152733" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
-                <p>● 군무원 전자직 9/7급 전자회로</p>
+                <p>● 전자회로</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
                     <col width="15%"/>
@@ -708,7 +710,9 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146348" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
-                <p>● 군무원 통신직 9/7급 전자공학</p>
+
+                <h3 class="NGEB">군무원 통신직 9/7급</h3>
+                <p>● 전자공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
                     <col width="15%"/>

@@ -6,7 +6,7 @@ class RouletteFModel extends WB_Model
     private $_table = [
         'roulette' => 'lms_roulette',
         'roulette_member' => 'lms_roulette_member',
-        'roulette_r_otherinfo' => 'lms_roulette_r_otherinfo'
+        'roulette_otherinfo' => 'lms_roulette_otherinfo'
     ];
 
     public function __construct()
@@ -43,7 +43,7 @@ class RouletteFModel extends WB_Model
         ];
 
         $column = 'RroIdx, RouletteCode, ProdName, ProdQty, ProdProbability, ProdCount';
-        $from = " FROM {$this->_table['roulette_r_otherinfo']}";
+        $from = " FROM {$this->_table['roulette_otherinfo']}";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
@@ -66,7 +66,7 @@ class RouletteFModel extends WB_Model
             a.RroIdx, a.RouletteCode, a.ProdName, a.ProdQty, a.ProdProbability, a.ProdCount
             ,(cast(a.ProdQty as signed) - (SELECT COUNT(*) FROM lms_roulette_member WHERE RroIdx = a.RroIdx)) AS unUsedCount
         ';
-        $from = " FROM {$this->_table['roulette_r_otherinfo']} AS a ";
+        $from = " FROM {$this->_table['roulette_otherinfo']} AS a ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select ' . $column . $from . $where)->result_array();
@@ -91,7 +91,7 @@ class RouletteFModel extends WB_Model
     {
         $this->_conn->select("RroIdx, COUNT(*) AS UsedTotalCount");
         $this->_conn->from($this->_table['roulette_member']);
-        $this->_conn->where_in('RroIdx', "select RroIdx from {$this->_table['roulette_r_otherinfo']} where RouletteCode = '{$roulette_code}' AND IsUse = 'Y'", false);
+        $this->_conn->where_in('RroIdx', "select RroIdx from {$this->_table['roulette_otherinfo']} where RouletteCode = '{$roulette_code}' AND IsUse = 'Y'", false);
         $this->_conn->group_by('RroIdx');
         $data = $this->_conn->get()->result_array();
         return array_pluck($data, 'UsedTotalCount', 'RroIdx');

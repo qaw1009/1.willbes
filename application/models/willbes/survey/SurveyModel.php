@@ -595,6 +595,202 @@ class SurveyModel extends WB_Model
     }
 
     /**
+     *  합격예측용 과목호출
+     */
+    public function getSubjectPoint($PredictIdx){
+        $column = "
+            A.PpIdx, pointarea, PaperName, COUNT(*) AS CNT, 
+            (SELECT COUNT(*) FROM lms_predict_grades_origin WHERE PpIdx = A.PpIdx) AS TNUM
+        ";
+
+        $from = "
+            FROM 
+                (
+                    SELECT 
+                        PpIdx, OrgPoint,
+                        IF ((OrgPoint > 0 && OrgPoint < 21),1,IF((OrgPoint > 20 && OrgPoint < 41),2,IF((OrgPoint > 40 && OrgPoint < 61),3,IF((OrgPoint > 60 && OrgPoint < 81),4,5)))) AS pointarea 
+                    FROM 
+                        {$this->_table['predictGradesOrigin']}
+                    WHERE 
+                        PredictIdx = ".$PredictIdx."	
+                ) AS A	
+                LEFT JOIN lms_predict_paper AS B ON A.PpIdx = B.PpIdx                
+        ";
+
+        $order_by = " GROUP BY PpIdx, pointarea";
+        $where = " WHERE PredictIdx = ".$PredictIdx."";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+        $arrRes = array();
+        $cnt = 1;
+        $tempPpIdx = '';
+        foreach ($Res AS $key => $val){
+            $PpIdx = $val['PpIdx'];
+            $PaperName = $val['PaperName'];
+            $pointarea = $val['pointarea'];
+            $CNT = $val['CNT'];
+            $TNUM = $val['TNUM'];
+
+            if($tempPpIdx != $PpIdx && $key != 0){
+                $cnt++;
+            }
+
+            $arrRes[$cnt]['AVR'][$pointarea] = $CNT ? ROUND(($CNT / $TNUM) * 100, 2) : '0';
+            $arrRes[$cnt]['PaperName'] = $PaperName;
+
+            $tempPpIdx = $PpIdx;
+        }
+        return $arrRes;
+    }
+
+    /**
+     *  선택과목 단일선택 선호도 Best3 / 조합선호도 Best3
+     */
+    public function bestSubject($PredictIdx){
+
+        //선택과목 단일선택 선호도 Best3
+        $column = "
+            COUNT(*) AS CNT, PaperName, 
+            (
+                SELECT 
+                    COUNT(*)
+                FROM 
+                    {$this->_table['predictRegisterR']} as rc
+                    LEFT JOIN {$this->_table['predictPaper']} AS pp ON substr(rc.subjectcode,4,3) = substr(pp.subjectcode,4,3)
+                WHERE TYPE = 'S' AND rc.PredictIdx = ".$PredictIdx."
+            ) AS TOTAL
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictRegisterR']} AS rc
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON substr(rc.subjectcode,4,3) = substr(pp.subjectcode,4,3)
+        ";
+
+        $order_by = " 
+                    GROUP BY substr(rc.subjectcode,4,3)
+                    ORDER BY CNT DESC
+                    LIMIT 3";
+
+        $where = " WHERE TYPE = 'S' AND rc.PredictIdx = ".$PredictIdx;
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res1 = $query->result_array();
+
+        $arrResult = array();
+        foreach ($Res1 as $key => $val){
+            $CNT = $val['CNT'];
+            $PaperName = $val['PaperName'];
+            $TOTAL = $val['TOTAL'];
+            $percent = $CNT ? ROUND(($CNT / $TOTAL) * 100,2) : '0';
+            $arrResult['PaperName'][] = $PaperName;
+            $arrResult['Percent'][] = $percent ;
+        }
+
+        //선택과목 조합 선호도 Best3
+        $column = "
+            COUNT(*) * 3 AS CNT, PaperName, 
+            (
+                SELECT COUNT(*)
+                from {$this->_table['predictRegisterR']} as rc
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON substr(rc.subjectcode,4,3) = substr(pp.subjectcode,4,3)
+                WHERE TYPE = 'S' AND rc.PredictIdx = ".$PredictIdx."
+            ) AS TOTAL 
+        ";
+
+        $from = "
+            FROM 
+                (
+                    SELECT 
+                        GROUP_CONCAT(pp.PaperName order by PaperName asc) AS PaperName
+                    FROM 
+                        {$this->_table['predictRegisterR']} as rc
+                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON substr(rc.subjectcode,4,3) = substr(pp.subjectcode,4,3)
+                    WHERE 
+                        TYPE = 'S' AND rc.PredictIdx = ".$PredictIdx."
+                    GROUP BY pridx
+                ) AS A
+
+        ";
+
+        $order_by = " 
+                    GROUP BY PaperName
+                    ORDER BY CNT DESC 
+                    LIMIT 3";
+
+        $where = " ";
+
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res2 = $query->result_array();
+
+        foreach ($Res2 as $key => $val){
+            $CNT = $val['CNT'];
+            $PaperName = $val['PaperName'];
+            $TOTAL = $val['TOTAL'];
+            $percent = $CNT ? ROUND(($CNT / $TOTAL) * 100,2) : '0';
+            $arrResult['PaperName'][] = str_replace(',','/',$PaperName);
+            $arrResult['Percent'][] = $percent ;
+        }
+
+        return $arrResult;
+    }
+
+    /**
+     *  총점 성적분포
+     */
+    public function pointArea($PredictIdx)
+    {
+        $column = "
+            COUNT(*) AS CNT, Pointarea
+        ";
+
+        $from = "
+            
+            FROM 
+            (
+                SELECT 
+                    SUBSTR(IF(SUM(OrgPoint) < 100, CONCAT('0',SUM(OrgPoint)), SUM(OrgPoint)),1,1) AS Pointarea
+                FROM 
+                    {$this->_table['predictGrades']} 
+                WHERE PredictIdx = ".$PredictIdx."
+                GROUP BY PrIdx
+                ORDER BY Pointarea DESC
+            ) AS A                
+        ";
+
+        $order_by = " GROUP BY Pointarea";
+
+        $where = "";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+        $arrData = array();
+        $total = $Res[0]['CNT'] + $Res[1]['CNT'] + $Res[2]['CNT'] + $Res[3]['CNT'] + $Res[4]['CNT'] + $Res[5]['CNT'];
+        // 0 ~ 100
+        $zh = $Res[0]['CNT']?ROUND($Res[0]['CNT'] / $total * 100,2):'0';
+        $arrData['zh'] = $zh;
+        // 100 ~ 200
+        $ht = $Res[1]['CNT']?ROUND($Res[1]['CNT'] / $total * 100,2):'0';
+        $arrData['ht'] = $ht;
+        // 200 ~ 300
+        $tt = $Res[2]['CNT']?ROUND($Res[2]['CNT'] / $total * 100,2):'0';
+        $arrData['tt'] = $tt;
+        // 300 ~ 400
+        $tf = $Res[3]['CNT']?ROUND($Res[3]['CNT'] / $total * 100,2):'0';
+        $arrData['tf'] = $tf;
+        // 400 ~ 500
+        $ff = 100 - ($zh + $ht + $tt + $tf);
+        $arrData['ff'] = $ff;
+        return $arrData;
+    }
+
+    /**
      *  합격예측용 성적입력 점수호출 타입1
      */
     public function getScore1($pridx, $PredictIdx){
@@ -1093,7 +1289,7 @@ class SurveyModel extends WB_Model
 
     public function wrongRank($PredictIdx){
         $column = "
-            COUNT(*) AS wcnt, pa.PpIdx, pq.PqIdx, Answer, IsWrong, PaperName, RightAnswer,
+            COUNT(*) AS wcnt, pa.PpIdx, pq.PqIdx, Answer, IsWrong, PaperName, RightAnswer, QuestionNO,
             (
                 SELECT COUNT(*) FROM {$this->_table['predictAnswerPaper']}  
                 WHERE PredictIdx = ".$PredictIdx." AND PpIdx = pa.PpIdx AND PqIdx = pa.PqIdx AND IsWrong = 'N'
@@ -1112,7 +1308,7 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = " GROUP BY PpIdx, PqIdx, Answer 
-                      ORDER BY PpIdx, Wrong DESC, PqIdx, IsWrong ";
+                      ORDER BY PpIdx, Wrong DESC, PqIdx, Answer ";
         $where = " WHERE pa.PredictIdx = ".$PredictIdx." AND Answer IN ('1','2','3','4')";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
@@ -1125,10 +1321,10 @@ class SurveyModel extends WB_Model
     /**
      * 설문결과
      */
-    public function surveyAnswerCall($idx)
+    public function surveyAnswerCall($idx1,$idx2)
     {
         $column = "
-            SubTitle, sa.SqIdx, Answer, sa.Type, 
+            sp.SpIdx, SubTitle, sa.SqIdx, Answer, sa.Type, 
             (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT
         ";
 
@@ -1140,8 +1336,117 @@ class SurveyModel extends WB_Model
                 LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
         ";
 
-        $order_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
-        $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T')";
+        $order_by = " ORDER BY sp.SpIdx DESC, sr.GroupNumber ASC, sa.SqIdx ASC";
+        $where = " WHERE sp.SpIdx in (" . $idx1 . "," . $idx2 . ") AND sa.TYPE IN ('S','T')";
+        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+
+    /**
+     * 조건별 설문결과
+     */
+    public function surveyAnswerV2Call($arr_condition = [], $SpIdx)
+    {
+        $column = "
+            sq.SqIdx, SubTitle,
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 1 AND si.SpIdx = sp.SpIdx
+            ) AS Answer1,
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 2 AND si.SpIdx = sp.SpIdx
+            ) AS Answer2,
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 3 AND si.SpIdx = sp.SpIdx
+            ) AS Answer3,
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 4 AND si.SpIdx = sp.SpIdx
+            ) AS Answer4,
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 5 AND si.SpIdx = sp.SpIdx
+            ) AS Answer5,
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 1 AND si.SpIdx = sp.SpIdx
+            )+
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 2 AND si.SpIdx = sp.SpIdx
+            )+
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 3 AND si.SpIdx = sp.SpIdx
+            )+
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 4 AND si.SpIdx = sp.SpIdx
+            )+
+            (
+            	SELECT 
+						COUNT(*) 
+					FROM 
+						{$this->_table['surveyAnswer']} AS si
+						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
+					WHERE SqIdx = sq.SqIdx AND Answer = 5 AND si.SpIdx = sp.SpIdx
+            ) AS total
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['surveyProduct']} AS sp
+                JOIN {$this->_table['surveyQuestionSetDetail']} AS sqs ON sp.SqsIdx = sqs.SqsIdx
+                JOIN {$this->_table['surveyQuestion']} AS sq ON sqs.SqIdx = sq.SqIdx
+  
+        ";
+
+        $order_by = "";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $where .= " AND sp.SpIdx= ".$SpIdx;
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);

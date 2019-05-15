@@ -10,35 +10,44 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtContent span {vertical-align:auto}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
-        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_bg.jpg) no-repeat center top}
+        .skybanner {
+            position:fixed;
+            top:250px;
+            right:10px;
+            z-index:1;
+        }
+
+        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/zeropass/1009_topB_bg.jpg) no-repeat center top}
 
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
 
         .wb_top {background:#282828; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
         .wb_top .passLecBuy ul {position:absolute; top:800px; left:128px; z-index:10}
-        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:30px}
-        .wb_top .passLecBuy li h5 {font-size:20px; font-weight:600; margin-top:10px}
-        .wb_top .passLecBuy li:nth-child(1) {width:232px}
-        .wb_top .passLecBuy li:nth-child(2) {width:232px; padding-left:60px}
-        .wb_top .passLecBuy li:nth-child(3) {width:400px; padding-left:140px}
-        .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px}
-        .wb_top .passLecBuy li:last-child div {background:#4d8001;} /*컬러변경*/
-        .wb_top .passLecBuy li:last-child p {font-weight:bold; font-size:20px}
+        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:10px}
+        .wb_top .passLecBuy li h5 {font-size:18px; font-weight:600; margin-top:10px}
+        .wb_top .passLecBuy li:nth-child(1) {width:204px}
+        .wb_top .passLecBuy li:nth-child(2) {width:204px}
+        .wb_top .passLecBuy li:nth-child(3) {width:204px}
+        .wb_top .passLecBuy li:nth-child(4) {width:400px; padding-left:20px}
+        .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px; width:90%}
+        .wb_top .passLecBuy li:last-child div {background:#0aaaa1; width:80%} /*컬러변경*/
+        .wb_top .passLecBuy li:last-child p {font-size:16px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}
         .wb_top input[type="checkbox"] {height:20px; width:20px;}
         .wb_top label {border-bottom:1px dashed #000}
-        .wb_top input:checked + label {color:#4d8001; border-bottom:1px dashed #4d8001} /*컬러변경*/
+        .wb_top input:checked + label {color:#0aaaa1; border-bottom:1px dashed #0aaaa1} /*컬러변경*/
         .wb_top .check input[type="checkbox"]:checked+label {color:#000; border-bottom:1px dashed #000}
         .wb_top .passLecBuy span {position:absolute; top:1130px; left:222px; z-index:10; font-size:16px; color:#000}
         .wb_top .passLecBuy span label {border-bottom:0}
@@ -52,7 +61,7 @@
         .wb_top .passLecbtn ul {border:1px solid #000; background:#fff; box-shadow: 0 5px 10px rgba(0,0,0,.5);}
         .wb_top .passLecbtn li {display:inline; float:left; width:100%; color:#000; font-size:20px; height:80px; line-height:80px}
         .wb_top .passLecbtn li a {background:#000; color:#fff; display:block}
-        .wb_top .passLecbtn li a:hover {background:#06C}
+        .wb_top .passLecbtn li a:hover {background:#0aaaa1}
         .wb_top .passLecbtn span {margin-left:50px}
         .wb_top .passLecbtn ul:after {content:""; display:block; clear:both}
 
@@ -140,6 +149,10 @@
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
+        <div class="skybanner" >
+            <a href="#pass"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_skybanner.png" alt="스카이스크래퍼" ></a>
+        </div>
+
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">
@@ -166,10 +179,10 @@
                 </ul>
             </div>
         </div>
-        <!--타이머//-->
+
 
         <div class="evtCtnsBox wb_pop2" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_topB.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
                 <area shape="rect" coords="366,808,549,857" href="javascript:certOpen();" alt="수강생인증"/>
                 <area shape="rect" coords="563,806,753,859" href="javascript:goDesc('tab3')" alt="이용안내"/>
@@ -183,6 +196,14 @@
         <div class="evtCtnsBox wb_top" id="pass">
             <div class="passLecBuy">
                 <ul>
+                    <li>
+                        <h5>일반</h5>
+                        <p><input type="radio" id="y_pkg9" name="y_pkg" value="153571" onClick=""/> <label for="y_pkg9">(선택) 오태진 한국사</label></p>
+                        <p><input type="radio" id="y_pkg10" name="y_pkg" value="153569" onClick=""/> <label for="y_pkg10">(선택) 원유철 한국사</label></p>
+                        <h5>특채</h5>
+                        <p><input type="radio" id="y_pkg11" name="y_pkg" value="153572" onClick=""/> <label for="y_pkg11">경행경채</label></p>
+                        <div><strong>49</strong>만원</div>
+                    </li>
                     <li>
                         <h5>일반</h5>
                         <p><input type="radio" id="y_pkg1" name="y_pkg" value="152010" onClick=""/> <label for="y_pkg1">(선택) 오태진 한국사</label></p>
@@ -212,16 +233,17 @@
                 <span style="color:#fff" class="mt50">
                     PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.
                 </span>
-                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123">
-                    <map name="Map190123" id="Map190123">
-                        <area shape="rect" coords="178,546,243,565" href="javascript:go_popup()" alt="6개월과목" />
-                        <area shape="rect" coords="439,545,502,564" href="javascript:go_popup()" alt="12개월과목" />
-                        <area shape="rect" coords="733,546,794,565" href="javascript:go_popup1()" alt="평생목팝업" />
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01B.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
+                    <map name="Map1009A" id="Map1009A">
+                        <area shape="rect" coords="144,544,210,567" href="javascript:go_popup()" alt="3개월" />
+                        <area shape="rect" coords="346,546,411,565" href="javascript:go_popup()" alt="6개월" />                        
+						<area shape="rect" coords="548,546,611,565" href="javascript:go_popup()" alt="12개월" />
+                        <area shape="rect" coords="763,546,824,565" href="javascript:go_popup1()" alt="전과목" />
                     </map>
                 </div>
                 <div> 
-                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02.jpg"  alt="체력" usemap="#Map1009A"/>                
-                    <map name="Map1009A" id="Map1009A">
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02B.jpg"  alt="체력" usemap="#Map1009B"/>                
+                    <map name="Map1009B" id="Map1009B">
                         <area shape="rect" coords="609,230,736,277" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
                     </map>  
                 </div>                                
@@ -252,7 +274,7 @@
                 </p>
             </div>
 
-            <div class="passLecbtn">
+            <div class="passLecbtn NGEB">
                 <ul>
                     <!--li><div id="sum_y">합계 <span><strong>0</strong>원</span></div></li-->
                     <li><a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ☞</a></li>
@@ -293,7 +315,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">6,12개월 PASS</a></li>
+                <li><a href="#tab1">3,6,12개월 PASS</a></li>
                 <li><a href="#tab2">평생 0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
@@ -324,7 +346,7 @@
                             <li>신광은경찰PASS 이용기간 중에는 일시정지 기능을 이용할 수 없습니다.</li>
                             <li>신광은경찰PASS 강좌 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.<br />
                                 <strong>PC+Mobile 신광은경찰PASS 수강 시</strong> : PC 2대 또는 PC 1대+모바일 1대 또는 모바일 2대 가능 (PMP 신광은경찰PASS는 제공하지 않습니다.)</li>
-                            <li>PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니 고객센터로 문의주시기 바랍니다.</li>
+                            <li>PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니 고객센터로 문의주시기 바랍니다.(무한PASS존 등록기기정보 확인)</li>
                         </ol>
                     </dd>
 
@@ -451,7 +473,7 @@
                             <li>신광은경찰평생PASS 강좌 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.<br />
                                 <strong>PC+Mobile 신광은경찰평생PASS 수강 시</strong> : PC 2대 또는 PC 1대+모바일 1대 또는 모바일 2대 가능 (PMP 신광은경찰PASS는 제공하지 않습니다.)
                             </li>
-                            <li>PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니 고객센터로 문의주시기 바랍니다.</li>
+                            <li>PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니 고객센터로 문의주시기 바랍니다.(무한PASS존 등록기기정보 확인)</li>
                         </ol>
                     </dd>
 

@@ -657,7 +657,8 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);
-        $spidx = element('spidx', $arr_input);
+        $spidx1 = element('spidx1', $arr_input);
+        $spidx2 = element('spidx2', $arr_input);
 
         $arealist = $this->surveyModel->areaList($PredictIdx);
         $gradelist = $this->surveyModel->gradeList();
@@ -724,9 +725,10 @@ class BasePassPredict extends \app\controllers\FrontController
             $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPercent'] = $ExpectAvrPercent;
             $dtSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
         }
-        $res = $this->surveyModel->surveyAnswerCall($spidx);
+        $res = $this->surveyModel->surveyAnswerCall($spidx1, $spidx2);
 
         $tempSq = '';
+        $tempSp = '';
         $temptitle = '';
         $tempType = '';
         $tempCNT = '';
@@ -741,15 +743,17 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $resCnt = count($res);
         $defnum = 0;
+        $k = 0;
         foreach ($res as $key => $val){
+            $SpIdx = $val['SpIdx'];
             $SqIdx = $val['SqIdx'];
             $CNT = $val['CNT'];
             $Answer = $val['Answer'];
             $Type = $val['Type'];
             $j = $key + 1;
+
             if($Type != 'T'){
                 if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
-
                     $tnum = 0;
                     if($resCnt == $j){
                         ${"num".$Answer}++;
@@ -758,9 +762,11 @@ class BasePassPredict extends \app\controllers\FrontController
                     for($i = 1; $i <= $tempCNT; $i++) {
                         $tnum = $tnum + ${"num".$i};
                     }
-                    $resSet[$defnum]['SubTitle'] = $temptitle;
+
+                    $resSet[$k][$temptitle]['SubTitle'] = $temptitle;
+
                     for($i = 1; $i <= $tempCNT; $i++){
-                        $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
+                        $resSet[$k][$temptitle]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
                     }
                     for($i = 1; $i <= $CNT; $i++){
                         if($Answer == $i){
@@ -782,11 +788,21 @@ class BasePassPredict extends \app\controllers\FrontController
                         }
                     }
 
-                    $resSet[$defnum]['CNT'] = $tempCNT;
-                    $titleSet[] = $temptitle;
+                    $resSet[$k][$temptitle]['CNT'] = $tempCNT;
+                    if($k == 0){
+                        $titleSet[$k][] = $temptitle;
+                    } else {
+                        if(in_array($temptitle, $titleSet[0])) $titleSet[$k][] = $temptitle;
+                    }
+
                     $numberSet[] = $defnum;
                     $typeSet[] = $tempType;
                     $questionSet[] = $this->surveyModel->surveyQuestionSet($tempSq);
+
+                    if($tempSp != $SpIdx){
+                        $k++;
+                    }
+
                     $defnum++;
                 } else {
                     if($val['Type'] == 'S'){
@@ -808,28 +824,118 @@ class BasePassPredict extends \app\controllers\FrontController
                 }
 
                 $tempSq = $SqIdx;
+                $tempSp = $SpIdx;
                 $tempType = $val['Type'];
                 $temptitle = $val['SubTitle'];
                 $tempCNT = $CNT;
             }
         }
 
-        //과목별 오답랭킹
-        //$wrongList = $this->surveyModel->wrongRank($PredictIdx);
+        //과목별선호도
+        $bestList = $this->surveyModel->bestSubject($PredictIdx);
+        $pointList = $this->surveyModel->pointArea($PredictIdx);
+        $subjectPointList = $this->surveyModel->getSubjectPoint($PredictIdx);
 
+        //과목별 오답랭킹
+        $wrongList = $this->surveyModel->wrongRank($PredictIdx);
+
+        $tempPaperName = '';
+        $tempPpIdx = '';
+        $tempQuestionNO = '';
+        $tempRightAnswer = '';
+        $tempI = '';
+        $arrWrongList = array();
+        $arrSubject = array();
+        $perAdd = 0;
+        $i = 0;
+        foreach ($wrongList as $key => $val){
+            $wcnt  = $val['wcnt'];
+            $PpIdx = $val['PpIdx'];
+            $Answer = $val['Answer'];
+            $PaperName = $val['PaperName'];
+            $RightAnswer = $val['RightAnswer'];
+            $allcnt = $val['allcnt'];
+            $QuestionNO = $val['QuestionNO'];
+
+            if($QuestionNO != $tempQuestionNO){
+                if($key == 0){
+                    $per = $wcnt ? ROUND(($wcnt / $allcnt) * 100, 2) : '0';
+                    $arrWrongList[$PpIdx][$i]['per'][$Answer] = $per;
+                    $arrWrongList[$PpIdx][$i]['RightAnswer'] = $RightAnswer;
+                    $arrWrongList[$PpIdx][$i]['QuestionNO'] = $QuestionNO;
+                } else {
+                    $arrWrongList[$tempPpIdx][$tempI]['per'][$Answer] = ROUND(100 - $perAdd,2);
+                    $arrWrongList[$tempPpIdx][$tempI]['RightAnswer'] = $tempRightAnswer;
+                    $arrWrongList[$tempPpIdx][$tempI]['QuestionNO'] = $tempQuestionNO;
+                    $i++;
+                }
+                $perAdd = 0;
+            } else {
+                $per = $wcnt ? ROUND(($wcnt / $allcnt) * 100, 2) : '0';
+                $arrWrongList[$PpIdx][$i]['per'][$Answer] = $per;
+                $perAdd = (float)$perAdd + (float)$per;
+            }
+
+            if($tempPaperName != $PaperName && $key != 0 || ($key + 1 == count($wrongList))){
+                $arrSubject[$tempPpIdx] = $tempPaperName;
+                $i = 0;
+            }
+
+            $tempI = $i;
+            $tempPaperName = $PaperName;
+            $tempPpIdx = $PpIdx;
+            $tempRightAnswer = $RightAnswer;
+            $tempQuestionNO = $QuestionNO;
+
+        }
+
+        $arrsqidx = array(1,20,19,43,27,8,6,7,28,29);
+        $arr_condition = [
+            'IN' => [
+                'sq.SqIdx' => $arrsqidx
+            ]
+        ];
+
+        $svList = $this->surveyModel->surveyAnswerV2Call($arr_condition, $spidx2);
+        $arrSurvey = array();
+        foreach ($svList as $key => $val){
+            $SubTitle = $val['SubTitle'];
+            $Answer1 = $val['Answer1'];
+            $Answer2 = $val['Answer2'];
+            $Answer3 = $val['Answer3'];
+            $Answer4 = $val['Answer4'];
+            $Answer5 = $val['Answer5'];
+            $total = $val['total'];
+
+            $arrSurvey[$key]['title'] = $SubTitle;
+            $arrSurvey[$key]['Answer1'] = $Answer1 ? ROUND(($Answer1 / $total) * 100, 2) : '0';
+            $arrSurvey[$key]['Answer2'] = $Answer2 ? ROUND(($Answer2 / $total) * 100, 2) : '0';
+            $arrSurvey[$key]['Answer3'] = $Answer3 ? ROUND(($Answer3 / $total) * 100, 2) : '0';
+            $arrSurvey[$key]['Answer4'] = $Answer4 ? ROUND(($Answer4 / $total) * 100, 2) : '0';
+            $arrSurvey[$key]['Answer5'] = $Answer5 ? ROUND(($Answer5 / $total) * 100, 2) : '0';
+        }
 
         $this->load->view('willbes/pc/predict/graph', [
             'PredictIdx' => $PredictIdx,
-            'spidx' => $spidx,
+
             'areaList' => $dtSet,
             'gradeList' => $gradeSet,
             'gradelist2' => $gradelist,
-            'spidx' => $spidx,
+
             'resSet' => $resSet,
             'titleSet' => $titleSet,
             'typeSet' => $typeSet,
             'questionSet' => $questionSet,
-            'numberSet' => $numberSet
+            'numberSet' => $numberSet,
+
+            'arrSubject' => $arrSubject,
+            'arrWrongList' => $arrWrongList,
+
+            'arrSurvey' => $arrSurvey,
+
+            'pointList' => $pointList,
+            'bestList' => $bestList,
+            'subjectPointList' => $subjectPointList
         ], false);
     }
 

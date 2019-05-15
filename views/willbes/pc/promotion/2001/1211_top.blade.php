@@ -513,7 +513,7 @@
         // noticeListAjax('');
         //
         timer = self.setInterval('slideGo()', 5000);
-        if('{{ENVIRONMENT}}'!='local' && '{{ENVIRONMENT}}'!='dev') {
+        if('{{ENVIRONMENT}}'!='dev') {
             @if(date('YmdHi') >= '201905011600')
                 alert('서비스가 종료되었습니다.');
                 var url = "{{ site_url('/home/index/cate/3001') }}";

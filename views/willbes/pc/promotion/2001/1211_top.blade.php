@@ -512,15 +512,15 @@
         areaAvrAjax("{{ $arr_promotion_params['PredictIdx'] }}");
         // noticeListAjax('');
         //
-        timer = self.setInterval('slideGo()', 3000);
+        timer = self.setInterval('slideGo()', 5000);
+        if('{{ENVIRONMENT}}'!='local' && '{{ENVIRONMENT}}'!='dev') {
+            @if(date('YmdHi') >= '201905011600')
+                alert('서비스가 종료되었습니다.');
+                var url = "{{ site_url('/home/index/cate/3001') }}";
+                location.href = url;
+            @endif
+        }
 
-        @if(date('YmdHi') >= '201905011600')
-            alert('서비스가 종료되었습니다.');
-            var url = "{{ site_url('/home/index/cate/3001') }}";
-            location.href = url;
-        @endif
-
-        
         // get_cnt2();
         // get_cnt3();
 
@@ -614,7 +614,7 @@
             'type' : 2,
             'event_idx' : '{{ $data['ElIdx'] }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}',
-            'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',
+            'sp_idx' : '{{ $arr_promotion_params['spidx2'] }}',
             'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['PredictIdx'] : '' }}'
         };
 
@@ -635,7 +635,7 @@
             'type' : 3,
             'event_idx' : '{{ $data['ElIdx'] }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}',
-            'sp_idx' : '{{ $arr_promotion_params['spidx'] }}',
+            'sp_idx' : '{{ $arr_promotion_params['spidx2'] }}',
             'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['PredictIdx'] : '' }}'
         };
 

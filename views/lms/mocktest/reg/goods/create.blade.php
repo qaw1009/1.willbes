@@ -1,17 +1,33 @@
 @extends('lcms.layouts.master')
 
 @section('content')
+    @php
+        $disabled = '';
+        if($method == 'PUT') {
+            $disabled = "disabled";
+        }
+
+        //메모코드 초기화
+        for($i=634001; $i<634007; $i++){
+            ${"MemoTypeCcd_".$i} = ''; //초기화
+        }
+        foreach ($data_memo as $row) {
+            ${"MemoTypeCcd_".$row['MemoTypeCcd']} = $row['Memo'];
+            //echo  ${"MemoTypeCcd_".$row['MemoTypeCcd']};
+        }
+    @endphp
     <h5 class="mt-20">- 모의고사 상품정보를 등록하고 관리하는 메뉴입니다.</h5>
-    <div class="x_panel">
+    <td class="x_panel">
         <div class="x_title mb-20">
             <h2>모의고사정보등록</h2>
         </div>
-        <div class="x_content">
+        <tr class="x_content">
             <form class="form-table" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
-                <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['ProdCode'] : '' }}">
+                <input type="hidden" id='ProdCode' name="idx" value="{{ ($method == 'PUT') ? $data['ProdCode'] : '' }}">
                 <input type="hidden" name="Info" value="">
+                <input type="hidden" id="site_code" value="{{ $siteCodeDef }}" />
 
                 <table class="table table-bordered modal-table">
                     <tr>
@@ -340,7 +356,54 @@
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <th colspan="1">자동지급쿠폰 <span class="required">*</span></th>
+                        <td colspan="3" class="form-inline">
+                            <p>
+                                • 해당 상품 구매 시 혜택으로 제공될 쿠폰 등록 (결제 후 내강의실 > 나의쿠폰 메뉴에 자동 지급 처리)
+                            </p>
+                            <p>
+                                <button type="button" class="btn btn-sm btn-primary ml-5" id="couponAdd">쿠폰검색</button>
+                                <input type="hidden" name="MemoTypeCcd[]" id="MemoTypeCcd_634004" value="634004">
+                                <input type="hidden" name="IsOutPut[]" id="IsOutPut_634004" value="Y">
+                                &nbsp;&nbsp;&nbsp;[지급목적] <input type="text" name="Memo[]" id="Memo_634004" value="{{$MemoTypeCcd_634004}}" class="form-control" size="70">
+                            </p>
+                            <table class="table table-striped table-bordered" id="couponList" width="100%">
+                                <colgroup>
+                                    <col width="12%">
+                                    <col width="12%">
+                                    <col>
+                                    <col width="12%">
+                                    <col width="12%">
+                                    <col width="8%">
+                                    <col width="5%">
+                                </colgroup>
+                                <tr>
+                                    <th>분류</th>
+                                    <th>쿠폰코드</th>
+                                    <th>쿠폰명</th>
+                                    <th>할인율(금액)</th>
+                                    <th>유효기간</th>
+                                    <th>쿠폰상태</th>
+                                    <th>삭제</th>
+                                </tr>
 
+                                @foreach($data_autocoupon as $row)
+                                    <tr id='couponTrId{{$loop->index}}'>
+                                        <input type='hidden'  name='CouponIdx[]' id='CouponIdx{{$loop->index}}' value='{{$row['AutoCouponIdx']}}'>
+                                        <td>{{$row['ApplyTypeCcdName']}}</td>
+                                        <td>{{$row['AutoCouponIdx']}}</td>
+                                        <td style='text-align:left'>{{$row['CouponName']}}</td>
+                                        <td>{{number_format($row['AutoCouponIdx']).(($row['DiscType'] === 'R') ? '%' : '원')}}</td>
+                                        <td>{{$row['ValidDay']}}</td>
+                                        <td>{{$row['IssueValid']}}</td>
+                                        <td><a href="javascript:;" onclick="rowDelete('couponTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
+                                    </tr>
+                                @endforeach
+
+                            </table>
+                        </td>
+                    </tr>
                     <tr>
                         <th colspan="1">자동문자(결제완료)</th>
                         <td colspan="3" class="form-inline">
@@ -528,6 +591,15 @@
                 location.replace('{{ site_url('/mocktest/regGoods') }}' + getQueryString());
             });
 
+            //쿠폰검색
+            $('#couponAdd').on('click', function() {
+                if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
+                $('#couponAdd').setLayer({
+                    'url' : '{{ site_url('common/searchCoupon/') }}'+'?site_code='+$("#site_code").val()+'&ProdCode='+$('#ProdCode').val()+'&deploy_type=N'
+                    ,'width' : 900
+                })
+            });
+
             // 등록,수정
             $regi_form.submit(function() {
                 var chapterTotal = [];
@@ -614,6 +686,7 @@
             }
 
 
+
             // 사이트, 카테고리, 응시분야, 직렬, 발신번호
             @if($method == 'POST') $regi_form.find('#cateD1').chained('#siteCode'); @endif
 
@@ -660,5 +733,9 @@
                 if(csTelChk === false) csTelChk = true;
             }
         });
+
+        function rowDelete(strRow) {
+            $('#'+strRow).remove();
+        }
     </script>
 @stop

@@ -25,6 +25,9 @@ class RegGoodsModel extends WB_Model
         'pms_professor' => 'wbs_pms_professor',
         'site' => 'lms_site',
 
+        'memo' => 'lms_Product_Memo',
+        'autocoupon' => 'lms_Product_R_AutoCoupon',
+
         'mockProduct' => 'lms_Product_Mock',
         'mockProductExam' => 'lms_Product_Mock_R_Paper',
         'Product' => 'lms_Product',
@@ -834,6 +837,21 @@ class RegGoodsModel extends WB_Model
                 if($dataSubject) $this->_conn->insert_batch($this->_table['mockProductExam'], $dataSubject);
             }
 
+            $Memo = $this->input->post('Memo');
+            $MemoTypeCcd = $this->input->post('MemoTypeCcd');
+            $IsOutPut = $this->input->post('IsOutPut');
+            $arrMemo = array('MemoTypeCcd'=>$MemoTypeCcd, 'Memo'=>$Memo,'IsOutPut'=>$IsOutPut);
+            /*----------------          메모등록        ---------------*/
+            if($this->_setMemo($arrMemo,$prodcode) !== true) {
+                throw new \Exception('메모 등록에 실패했습니다.');
+            }
+
+            $CouponIdx['CouponIdx'] = $this->input->post('CouponIdx');
+            /*----------------          자동지급쿠폰 등록        ---------------*/
+            if($this->_setAutoCoupon($CouponIdx,$prodcode) !== true) {
+                throw new \Exception('자동지급쿠폰 등록에 실패했습니다.');
+            }
+
             // 상품연관 데이터 json 형태로 테이블 저장
             $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$prodcode]);
             $result = $query->row(0)->ReturnMsg;
@@ -906,9 +924,9 @@ class RegGoodsModel extends WB_Model
                 'UpdDatm'     => $date,
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             );
-            $where = array('ProdCode' => $this->input->post('idx'));
+            $ProdCode = $this->input->post('idx');
+            $where = array('ProdCode' => $ProdCode);
             $this->_conn->update($this->_table['ProductSMS'], $data, $where);
-
 
             // lms_Product_Mock 저장
             $data = array(
@@ -936,6 +954,21 @@ class RegGoodsModel extends WB_Model
             // lms_Product_Mock_R_Paper 저장
             $this->updateSubject($date);
 
+            $Memo = $this->input->post('Memo');
+            $MemoTypeCcd = $this->input->post('MemoTypeCcd');
+            $IsOutPut = $this->input->post('IsOutPut');
+            $arrMemo = array('MemoTypeCcd'=>$MemoTypeCcd, 'Memo'=>$Memo,'IsOutPut'=>$IsOutPut);
+            /*----------------          메모등록        ---------------*/
+            if($this->_setMemo($arrMemo,$ProdCode) !== true) {
+                throw new \Exception('메모 등록에 실패했습니다.');
+            }
+
+            $CouponIdx['CouponIdx'] = $this->input->post('CouponIdx');
+
+            /*----------------          자동지급쿠폰 등록        ---------------*/
+            if($this->_setAutoCoupon($CouponIdx,$ProdCode) !== true) {
+                throw new \Exception('자동지급쿠폰 등록에 실패했습니다.');
+            }
 
             // 상품연관 데이터 json 형태로 테이블 저장
             $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$this->input->post('idx')]);
@@ -1058,7 +1091,121 @@ class RegGoodsModel extends WB_Model
         return array($data, $sData);
     }
 
+    //메모등록
+    public function _setMemo($input=[],$prodcode)
+    {
+        try {
+            /*각종 메모*/
+            $MemoTypeCcd = element('MemoTypeCcd',$input,'');
+            $IsOutPut = element('IsOutPut',$input,'Y');
+            $Memo = element('Memo',$input);
 
+            /*  기존 메모 정보 상태값 변경 : 강사료 정산 메모의 경우는 보존*/
+            if($this->_setDataDelete($prodcode,$this->_table['memo'],'메모','where_not_in','MemoTypeCcd','634001') !== true) {
+                throw new \Exception('메모 수정에 실패했습니다.');
+            }
+            //echo $this->_conn->last_query();
+
+            if(empty($MemoTypeCcd) === false) {
+
+                for($i=0;$i<count($MemoTypeCcd);$i++) {
+
+                    if(empty($Memo[$i]) === false) {
+                        $data = [
+                            'ProdCode' => $prodcode
+                            , 'MemoTypeCcd' => $MemoTypeCcd[$i]
+                            , 'Memo' => $Memo[$i]
+                            , 'IsOutput' => $IsOutPut[$i]
+                            , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+                            , 'RegIp' => $this->input->ip_address()
+                        ];
+
+                        if($this->_conn->set($data)->insert($this->_table['memo']) === false) {
+                            throw new \Exception('메모 등록에 실패했습니다.');
+                        }
+                        //echo $this->_conn->last_query().';';
+                    }
+
+                }
+
+            }
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    //자동지급쿠폰
+    public function _setAutoCoupon($input=[],$prodcode)
+    {
+        try {
+
+            /*  기존 쿠폰 정보 상태값 변경 */
+            if($this->_setDataDelete($prodcode,$this->_table['autocoupon'],'쿠폰') !== true) {
+                throw new \Exception('쿠폰 수정에 실패했습니다.');
+            }
+
+            $CouponIdx = element('CouponIdx',$input);
+
+            if(empty($CouponIdx) === false) {
+                for($i=0;$i<count($CouponIdx);$i++) {
+                    $data = [
+                        'ProdCode' => $prodcode
+                        ,'AutoCouponIdx' => $CouponIdx[$i]
+                        , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+                        , 'RegIp' => $this->input->ip_address()
+                    ];
+
+                    if($this->_conn->set($data)->insert($this->_table['autocoupon']) === false) {
+                        //echo $this->_conn->last_query();
+                        throw new \Exception('쿠폰 등록에 실패했습니다.');
+                    }
+
+                }
+            }
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 기존데이터 상태값 변경
+     * @param $prodcode
+     * @param $tablename
+     * @param $msg
+     * @throws Exception
+     */
+    public function _setDataDelete($prodcode,$tablename,$msg,$whereType=null,$whereKey=null,$whereVal=null)
+    {
+        try {
+            /*  기존 정보 상태값 변경 */
+            $del_data = [
+                'IsStatus' => 'N'
+                , 'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            $this->_conn->set($del_data)->where('ProdCode', $prodcode)->where('IsStatus', 'Y');
+
+            if(empty($whereType) === false) {
+                $this->_conn->{$whereType}($whereKey, $whereVal);
+            }
+
+            if ($this->_conn->update($tablename) === false) {
+                //echo $this->_conn->last_query();
+                throw new \Exception('이전 ' . $msg . ' 정보 수정에 실패했습니다.');
+            }
+
+            /*  기존 정보 상태값 변경 */
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
 
 
     /**

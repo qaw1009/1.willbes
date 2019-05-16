@@ -691,7 +691,7 @@ class RegGoodsModel extends WB_Model
                 SELECT ?, AutoCouponIdx, IsStatus, ?, ?, ?
                 FROM {$this->_table['autocoupon']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
-            $this->_conn->query($sql, array($prodcode, $RegDatm, $RegIp, $RegAdminIdx, $idx));
+            $this->_conn->query($sql, array($prodcode, $RegDatm, $RegAdminIdx, $RegIp, $idx));
             //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_product_memo 복사

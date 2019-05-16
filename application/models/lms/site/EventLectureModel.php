@@ -1701,6 +1701,9 @@ class EventLectureModel extends WB_Model
                     if(empty($set_attach_data['FileFullPath'][$key]) === false) {
                         $inputData['FileFullPath'] = $set_attach_data['FileFullPath'][$key];
                         $inputData['FileRealName'] = $set_attach_data['FileRealName'][$key];
+                    } else {
+                        unset($inputData['FileFullPath']);
+                        unset($inputData['FileRealName']);
                     }
 
                     if (empty($val) === true) {
@@ -1710,7 +1713,7 @@ class EventLectureModel extends WB_Model
                         }
                     } else {
                         //기존파일삭제
-                        if(empty($input['other_file_full_path'][$key]) === false) {
+                        if(empty($input['other_file_full_path'][$key]) === false && empty($inputData['FileFullPath']) === false) {
                             $this->load->helper('file');
                             $file_path = public_to_upload_path(urldecode($input['other_file_full_path'][$key]));
                             if (@unlink($file_path) === false) {

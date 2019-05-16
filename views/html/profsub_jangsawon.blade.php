@@ -785,39 +785,12 @@
                                                 <div class="curriWrap c_both">
                                                     <ul class="curriTabs c_both">
                                                         <li><a class="on" href="#none">전체</a></li>
-                                                        <li><a href="#none">이론</a></li>
-                                                        <li><a href="#none">문제풀이</a></li>
-                                                        <li><a href="#none">유료특강</a></li>
+                                                        <li><a href="#none">9급 농업직</a></li>
+                                                        <li><a href="#none">7급 농업직</a></li>
+                                                        <li><a href="#none">농촌지도사</a></li>
+                                                        <li><a href="#none">생물학개론</a></li>
+                                                        <li><a href="#none">유기농업기능사</a></li>
                                                     </ul>
-                                                    <table cellspacing="0" cellpadding="0" class="curriTable">
-                                                        <colgroup>
-                                                            <col width="*">
-                                                            <col width="*">
-                                                            <col width="*">
-                                                            <col width="*">
-                                                            <col width="*">
-                                                            <col width="*">
-                                                            <col width="*">
-                                                            <col width="*">
-                                                            <col width="*">
-                                                            <col width="*">
-                                                        </colgroup>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th class="tx-gray">직렬선택</th>
-                                                                <td colspan="9">
-                                                                    <ul class="curriSelect">
-                                                                        <li><a class="on" href="#none">전체</a></li>
-                                                                        <li><a href="#none">9급 농업직</a></li>
-                                                                        <li><a href="#none">7급 농업직</a></li>
-                                                                        <li><a href="#none">농촌지도사</a></li>
-                                                                        <li><a href="#none">생물학개론</a></li>
-                                                                        <li><a href="#none">유기농업기능사</a></li> 
-                                                                    </ul>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
                                                 </div>
                                                 <!-- curriWrap -->
 

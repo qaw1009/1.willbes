@@ -20,9 +20,9 @@
 
         /************************************************************/
 
-        .wb_cts01 {background:#26347d url(https://static.willbes.net/public/images/promotion/2019/04/1066_top_bg.png) center top  no-repeat}
+        .wb_cts01 {background:#26347d url(https://static.willbes.net/public/images/promotion/2019/04/1066_top_bg.png) center top no-repeat}
         .wb_cts02 {background:#f8f8f8}
-        .wb_cts03 {background:#333b95 url(https://static.willbes.net/public/images/promotion/2019/04/1066_02_bg.png) center top  repeat-y}
+        .wb_cts03 {background:#333b95 url(https://static.willbes.net/public/images/promotion/2019/04/1066_02_bg.png) center top repeat-y}
         .wb_cts04 {background:#f8f8f8}
         .wb_cts05 {background:#f8f8f8}
         .wb_cts06 {background:#242424}
@@ -99,9 +99,9 @@
 			  <area shape="rect" coords="925,666,1011,707" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152649" target="_blank" title="05.지방직" />
 			  <area shape="rect" coords="1016,667,1100,706" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152651" target="_blank"title="05.서울시">
 			  <area shape="rect" coords="715,665,892,712" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152604" target="_blank" title="04.실전실력다지기" />
-			  <area shape="rect" coords="507,664,676,711" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" title="03.문제해결스킬업" />
-			  <area shape="rect" coords="291,661,467,712" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" title="02.심화,실전예비" />
-			  <area shape="rect" coords="87,661,258,711" href="https://pass.stage.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" title="01.기본이론" />
+			  <area shape="rect" coords="507,664,676,711" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" title="03.문제해결스킬업" />
+			  <area shape="rect" coords="291,661,467,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" title="02.심화,실전예비" />
+			  <area shape="rect" coords="87,661,258,711" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" title="01.기본이론" />
 			</map>   
         </div>
         <!--wb_cts06//-->

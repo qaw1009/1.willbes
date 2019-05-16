@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class RegGoods extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regGoods');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regGoods','product/on/lecture');
     protected $helpers = array();
 
     protected $_groupCcd = [];
@@ -165,6 +165,9 @@ class RegGoods extends \app\controllers\BaseController
         //발신번호조회
         $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
+        $data_memo = array();
+        $data_autocoupon = array();
+
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'POST',
             'siteCodeDef' => '',
@@ -174,6 +177,8 @@ class RegGoods extends \app\controllers\BaseController
             'applyArea1' => $codes[$this->applyArea1],
             'applyArea2' => $codes[$this->applyArea2],
             'addPoint' => $codes[$this->addPoint],
+            'data_autocoupon'=>$data_autocoupon,
+            'data_memo'=>$data_memo,
             'csTel' => json_encode($csTel),
             'cateD2_sel' => json_encode(array()),
             'applyType_on' => $this->applyType_on,
@@ -401,6 +406,7 @@ class RegGoods extends \app\controllers\BaseController
      */
     public function edit($param = [])
     {
+        $prodcode = $param[0];
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
         $cateD2 = $this->mockCommonModel->getMockKind();
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint,$this->acceptStatus]);
@@ -412,7 +418,7 @@ class RegGoods extends \app\controllers\BaseController
         }
 
 
-        list($data, $sData) = $this->regGoodsModel->getGoods($param[0]);
+        list($data, $sData) = $this->regGoodsModel->getGoods($prodcode);
         if (!$data) {
             $this->json_error('데이터 조회에 실패했습니다.');
             return;
@@ -420,6 +426,9 @@ class RegGoods extends \app\controllers\BaseController
 
         //발신번호조회
         $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
+
+        $data_autocoupon = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
+        $data_memo = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_memo');
 
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'PUT',
@@ -433,7 +442,8 @@ class RegGoods extends \app\controllers\BaseController
             'csTel' => json_encode($csTel),
             'applyType_on' => $this->applyType_on,
             'accept_ccd' => $codes[$this->acceptStatus],
-
+            'data_autocoupon'=>$data_autocoupon,
+            'data_memo'=>$data_memo,
             'data' => $data,
             'sData' => $sData,
             'cateD2_sel' => json_encode($data['MockPart']),

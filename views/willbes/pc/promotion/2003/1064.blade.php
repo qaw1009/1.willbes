@@ -41,7 +41,7 @@
         } 
             
 
-        .wb_cts00 {background:#181818 url(http://file3.willbes.net/new_gosi/2019/01/EV190108_c1_bg.jpg) no-repeat center top;}
+        .wb_cts00 {background:#181818 url(https://static.willbes.net/public/images/promotion/2019/05/1064_top_bg.jpg) no-repeat center top;}
         .wb_cts00 p {width:100%; margin:0 auto;}
         .wb_cts00 ul {width:100%; margin:0 auto:}
         .bannerImg3 {position:relative; width:100%; max-width:1210px; margin:0 auto; padding:0px 0px 124px 0px;}
@@ -70,7 +70,7 @@
 
 
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
                 <table>
@@ -95,26 +95,25 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_cts00" >
-            <p><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c1.png" alt="2020 윌비스 김동진법원팀 PASS"/></p>
+            <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_top.png" alt="2020 윌비스 김동진법원팀 PASS"/></p>
             <div class="bannerImg3">
                 <ul id="slidesImg3">
-                    <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c2_1.png" alt=""/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c2_2.png" alt=""/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c2_3.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_text1.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_text2.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_text3.png" alt=""/></li>
                 </ul>
             </div>
         </div><!--wb_cts00//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c3.gif" alt="김동진법원팀 지금 PASS 구매 시, 특별 혜택!" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1064_01.gif" alt="김동진법원팀 지금 PASS 구매 시, 특별 혜택!" />
         </div>
         <!--wb_cts01//-->
 
         <div class="evtCtnsBox wb_cts02">
-            <ul>
-                <!--li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c4.jpg" alt="윌비스 예비순환과 함께라면 단 1년 만에 합격!" /></li-->
-                <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c5.jpg" alt="윌비스 법원직만을 위한 혁신적인 커리큘럼" /></li>
-                <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c6.jpg" alt="업계의 판도를 바꿀, 차원이 다른 김동진법원팀 교수진" usemap="#Map190108_c1" border="0" />
+            <ul>                
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_02.jpg" alt="윌비스 법원직만을 위한 혁신적인 커리큘럼" /></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_03.jpg" alt="업계의 판도를 바꿀, 차원이 다른 김동진법원팀 교수진" usemap="#Map190108_c1" border="0" />
                     <map name="Map190108_c1" >
                         <area shape="rect" coords="861,1129,978,1174" href="http://cafe.daum.net/LAW-KDJTEAM" target="_blank"/>
                     </map>
@@ -124,7 +123,7 @@
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c7.jpg" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1064_04.jpg" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
             <map name="Map190108_c2" >
                 <area shape="rect" coords="872,750,1015,836" href="javascript:go_PassLecture(2);" onfocus="this.blur();" />
             </map>
@@ -137,7 +136,7 @@
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts05"  id="tab1">
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c8.jpg" alt=" 2020 윌비스 김동진법원팀PASS" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1064_05.jpg" alt=" 2020 윌비스 김동진법원팀PASS" />
         </div><!--wb_cts05//-->
 
     </div>

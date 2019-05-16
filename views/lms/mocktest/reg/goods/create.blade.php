@@ -366,7 +366,7 @@
                                 <button type="button" class="btn btn-sm btn-primary ml-5" id="couponAdd">쿠폰검색</button>
                                 <input type="hidden" name="MemoTypeCcd[]" id="MemoTypeCcd_634004" value="634004">
                                 <input type="hidden" name="IsOutPut[]" id="IsOutPut_634004" value="Y">
-                                &nbsp;&nbsp;&nbsp;[지급목적] <input type="text" name="Memo[]" id="Memo_634004" value="{{$MemoTypeCcd_634004}}" class="form-control" size="70">
+                                &nbsp;&nbsp;&nbsp;[지급목적] <input type="text" name="CMemo[]" id="Memo_634004" value="{{$MemoTypeCcd_634004}}" class="form-control" size="70">
                             </p>
                             <table class="table table-striped table-bordered" id="couponList" width="100%">
                                 <colgroup>

@@ -837,10 +837,10 @@ class RegGoodsModel extends WB_Model
                 if($dataSubject) $this->_conn->insert_batch($this->_table['mockProductExam'], $dataSubject);
             }
 
-            $Memo = $this->input->post('Memo');
-            $MemoTypeCcd = $this->input->post('MemoTypeCcd');
-            $IsOutPut = $this->input->post('IsOutPut');
-            $arrMemo = array('MemoTypeCcd'=>$MemoTypeCcd, 'Memo'=>$Memo,'IsOutPut'=>$IsOutPut);
+            $arrMemo['Memo'] = $this->input->post('CMemo');
+            $arrMemo['MemoTypeCcd'] = $this->input->post('MemoTypeCcd');
+            $arrMemo['IsOutPut'] = $this->input->post('IsOutPut');
+
             /*----------------          메모등록        ---------------*/
             if($this->_setMemo($arrMemo,$prodcode) !== true) {
                 throw new \Exception('메모 등록에 실패했습니다.');
@@ -954,10 +954,9 @@ class RegGoodsModel extends WB_Model
             // lms_Product_Mock_R_Paper 저장
             $this->updateSubject($date);
 
-            $Memo = $this->input->post('Memo');
-            $MemoTypeCcd = $this->input->post('MemoTypeCcd');
-            $IsOutPut = $this->input->post('IsOutPut');
-            $arrMemo = array('MemoTypeCcd'=>$MemoTypeCcd, 'Memo'=>$Memo,'IsOutPut'=>$IsOutPut);
+            $arrMemo['Memo'] = $this->input->post('CMemo');
+            $arrMemo['MemoTypeCcd'] = $this->input->post('MemoTypeCcd');
+            $arrMemo['IsOutPut'] = $this->input->post('IsOutPut');
             /*----------------          메모등록        ---------------*/
             if($this->_setMemo($arrMemo,$ProdCode) !== true) {
                 throw new \Exception('메모 등록에 실패했습니다.');

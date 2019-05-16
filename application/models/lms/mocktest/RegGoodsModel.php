@@ -684,6 +684,26 @@ class RegGoodsModel extends WB_Model
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
             //echo $this->_conn->last_query().'<BR><BR><BR>';
 
+            // lms_product_r_autocoupon 복사
+            $sql = "
+                INSERT INTO {$this->_table['autocoupon']}
+                    (ProdCode, AutoCouponIdx, IsStatus, RegDatm, RegAdminIdx,RegIp)
+                SELECT ?, AutoCouponIdx, IsStatus, ?, ?, ?
+                FROM {$this->_table['autocoupon']}
+                WHERE ProdCode = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($prodcode, $RegDatm, $RegAdminIdx, $RegIp, $idx));
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
+
+            // lms_product_memo 복사
+            $sql = "
+                INSERT INTO {$this->_table['memo']}
+                    (ProdCode, MemoTypeCcd, Memo, IsOutput, IsStatus, RegDatm, RegAdminIdx, RegIp)
+                SELECT ?, MemoTypeCcd, Memo, IsOutput, IsStatus, ?, ?, ?
+                FROM {$this->_table['memo']}
+                WHERE ProdCode = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($prodcode, $RegDatm, $RegAdminIdx, $RegIp, $idx));
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
+
             // json 데이터 복사
             $sql = "
                 INSERT INTO {$this->_table['ProductJson']}

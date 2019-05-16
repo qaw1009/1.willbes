@@ -91,6 +91,11 @@
         .content_guide_box dd p{ margin-bottom:3px}
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
     <div class="p_re evtContent NGR" id="evtContainer">
         {{--
         <div class="skybanner" >
@@ -137,15 +142,15 @@
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1239_03.jpg"  alt="전국캠퍼스"/>
                 <ul>
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');" target="_blank">신청하기</a></li>
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');" target="_blank">신청하기</a></li>
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');" target="_blank">신청하기</a></li>
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');" target="_blank">신청하기</a></li>
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');" target="_blank">신청하기</a></li>                   
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');" target="_blank">신청하기</a></li>
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');" target="_blank">신청하기</a></li>
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="진주" onmouseover="$('span.area08').addClass('on');" onmouseleave="$('span.area08').removeClass('on');" target="_blank">신청하기</a></li>
-                    <li><a href="https://police.willbes.net/pass/mockTest/apply/cate" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="진주" onmouseover="$('span.area08').addClass('on');" onmouseleave="$('span.area08').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');" target="_blank">신청하기</a></li>
                 </ul>
                 <span class="area01">노량진</span>
                 <span class="area02">신림</span>
@@ -162,11 +167,11 @@
         <div class="evtCtnsBox wb_04" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1239_04_01.jpg"  alt="이벤트1" usemap="#Map1239A" border="0" /><br>
             <map name="Map1239A" id="Map1239A">
-                <area shape="rect" coords="341,1108,783,1187" href="#" target="_blank" alt="모의고사 할인받기" />
+                <area shape="rect" coords="341,1108,783,1187" href="{{ site_url('/pass/mockTest/apply/cate') }}" target="_blank" alt="모의고사 할인받기" />
             </map>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1239_04_02.jpg"  alt="이벤트2" usemap="#Map1239B" border="0" />
             <map name="Map1239B" id="Map1239B">
-                <area shape="rect" coords="443,861,678,933" href="#none" alt="응시쿠폰받기" />
+                <area shape="rect" coords="443,861,678,933" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰받기" />
             </map>
         </div>
 
@@ -178,7 +183,7 @@
         <div class="evtCtnsBox wb_05" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1239_05.jpg"  alt="6월 전국모의고사" usemap="#Map1239C" border="0" />
             <map name="Map1239C" id="Map1239C">
-                <area shape="rect" coords="314,467,809,561" href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" alt="모의고사 신청하기" />
+                <area shape="rect" coords="314,467,809,561" href="{{ site_url('/pass/mockTest/apply/cate') }}" target="_blank" alt="모의고사 신청하기" />
             </map>
         </div>
 
@@ -220,11 +225,27 @@
     </div>
     <!-- End Container -->
 
-    <script>
+    <script type="text/javascript">
+        $regi_form = $('#regi_form');
+
         /*디데이카운트다운*/
         $(document).ready(function() {
-                dDayCountDown('{{$arr_promotion_params['edate']}}');
-            });
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
+
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('온라인 모의고사 무료 응시쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                        location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';
+                    }
+                }, showValidateError, null, false, 'alert');
+            @endif
+        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

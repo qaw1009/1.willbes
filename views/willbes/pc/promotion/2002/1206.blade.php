@@ -28,17 +28,17 @@
             z-index:1;
         }
         .skybanner li a {display:block; padding:20px 0; text-align:center; background:#000; color:#fff; font-size:14px; line-height:1.5; margin-bottom:1px}
-        .skybanner li a:hover {background:#e11c57}
+        .skybanner li a:hover {background:#ef5a22}
 
-        .evtTop {background:#79edff url(https://static.willbes.net/public/images/promotion/2019/04/1206_top_bg.jpg)  repeat-x center top;}
-        .evt01 {background:#0956bd; padding:50px 0}
-        .evt02 {background:#79edff; padding:100px 0}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/05/1206_top_bg.jpg)  repeat-x center top;}
+        .evt01 {background:#f25920; padding:50px 0}
+        .evt02 {background:#fbe98e; padding:100px 0}
         .evt02 iframe {width:854px; height:480px; margin-bottom:80px}
-        .evt03 {background:#eee}
-        .evt04 {background:#79edff}
-        .evt05 {background:#022ef3}
-        .evt06 {background:#79edff}
-        .evt07 {background:#f5f5f5}
+        .evt03 {background:#fff}
+        .evt04 {background:#fbe98e}
+        .evt05 {background:#ef5926}
+        .evt06 {background:#fbe98e}
+        .evt07 {background:#fff}
         .evt08 {background:#101010}
     </style>
 
@@ -50,55 +50,56 @@
             <li><a href="#go04">면접캠프<br>프로그램 안내</a></li>
         </ul>
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_top.jpg"alt="면접은 스피치가 아니다." usemap="#Map1206A" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_top.jpg"alt="면접은 스피치가 아니다." usemap="#Map1206A" border="0" >
             <map name="Map1206A" id="Map1206A">
-                <area shape="rect" coords="476,653,737,769" href="#go04" alt="면접캠프 신청하기" />
+                <area shape="rect" coords="533,655,794,771" href="#go04" alt="면접캠프 신청하기" />
             </map>
         </div>
 
         <div  class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_01.jpg" alt="최종합격생이 추천하는 황세웅 면접캠프">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_01.jpg" alt="최종합격생이 추천하는 황세웅 면접캠프">
         </div>
 
         <div class="evtCtnsBox evt02">
             <iframe width="854" height="480" src="https://www.youtube.com/embed/-19yIQTjdQs?rel=0" frameborder="0" allowfullscreen></iframe>
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_02.jpg" alt="면접캠프 설명회" usemap="#Map1206B" border="0" id="go01">            
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_02.jpg" alt="면접캠프 설명회" usemap="#Map1206B" border="0" id="go01">            
             <map name="Map1206B" id="Map1206B">
-                <area shape="rect" coords="423,310,701,385" href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?course_idx=1011&subject_idx=1011" tabget="_blank" alt="무료강의 바로보기"/>
+                {{--<area shape="rect" coords="423,310,701,385" href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?course_idx=1011&subject_idx=1011" tabget="_blank" alt="무료강의 바로보기"/>--}}
+                <area shape="rect" coords="586,353,826,438" href="javascript:goEvent();" tabget="_blank" alt="공개면접특강 신청하기"/>
             </map>            
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_03.jpg" alt="윌비스신광은경찰팀의 황세웅 교수"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_03.jpg" alt="윌비스신광은경찰팀의 황세웅 교수"/>
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_04.jpg" alt="차별화된 면접 프로그램"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_04.jpg" alt="차별화된 면접 프로그램"/>
         </div>
 
         <div class="evtCtnsBox evt05" id="go02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_05_v2.jpg" alt="인적성 일정 미치 면접캠프 안내" usemap="#Map1206C" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_05_v2.jpg" alt="인적성 일정 미치 면접캠프 안내" usemap="#Map1206C" border="0" />
             <map name="Map1206C" id="Map1206C">
                 <area shape="rect" coords="837,718,975,1076" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1069&campus_ccd=605001&course_idx=1047" target="_blank" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt06" id="go03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_06_v3.jpg" alt="사전조사서 특강 및 첨삭" usemap="#Map1206D" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_06_v3.jpg" alt="사전조사서 특강 및 첨삭" usemap="#Map1206D" border="0"/>
             <map name="Map1206D" id="Map1206D">
                 <area shape="rect" coords="905,361,1067,722" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1070&campus_ccd=605001&course_idx=1047" target="_blank"/>
             </map>
         </div>
 
         <div class="evtCtnsBox evt07" id="go04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_07.jpg" alt="황세웅 면접캠프 안내" usemap="#Map1206E" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_07.jpg" alt="황세웅 면접캠프 안내" usemap="#Map1206E" border="0"/>
             <map name="Map1206E" id="Map1206E">
                 <area shape="rect" coords="946,234,1107,435" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&campus_ccd=605001&course_idx=1047" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt08">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1206_08.jpg" alt="황세웅 교수와 함께하면 최종 합격할 수 있습니다."/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_08.jpg" alt="황세웅 교수와 함께하면 최종 합격할 수 있습니다."/>
         </div>
     </div>
     <!-- End Container -->

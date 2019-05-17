@@ -114,6 +114,11 @@
                         <col width=""  />
                         <col width="15%"  />
                         <tr>
+                            <td>2019년 1차</td>
+                            <td>경찰공무원(일반/101단/전의경) 채용시험 기출</td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=225227&') }}" target="_blank">바로가기</a></td>
+                        </tr>
+                        <tr>
                             <td>2018년 3차</td>
                             <td>경찰공무원(일반/경행) 채용시험 기출문제</td>
                             <td><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=166081&') }}" target="_blank">바로가기</a></td>
@@ -264,9 +269,11 @@
             </div>
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_cts03">
             <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_03.jpg"  alt="" />
         </div>
+        --}}
 
         <!--  이모티콘 댓글 -->
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

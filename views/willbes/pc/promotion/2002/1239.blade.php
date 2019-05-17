@@ -226,12 +226,7 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        $regi_form = $('#regi_form');
-
-        /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
-        });
+        $regi_form = $('#regi_form');        
 
         {{--쿠폰발급--}}
         function giveCheck() {
@@ -246,6 +241,11 @@
                 }, showValidateError, null, false, 'alert');
             @endif
         }
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

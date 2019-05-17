@@ -28,13 +28,19 @@ class RegExam extends \app\controllers\BaseController
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
         $cateD2 = $this->mockCommonModel->getMockKind();
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
+
         $this->load->view('mocktest/reg/exam/index', [
-            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
+//            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
+            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[5]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
             'professor' => $this->searchProfessorModel->professorList('', '', '', false),
             'upImgUrl' => $this->config->item('upload_url_mock', 'mock'),
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 

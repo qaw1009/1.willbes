@@ -24,41 +24,5 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="x_panel">
-                <div class="x_title">
-                    <span class="gray"><i class="fa fa-check-square-o"></i> 학습Q&A 미답변 현황 <strong>[+]</strong></span>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th style="width: 40%;">운영사이트</th>
-                                <th>미답변현황</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>온라인경찰</td>
-                                <td><a href="#none" class="blue"><u>3건</u></a></td>
-                            </tr>
-                            <tr>
-                                <td>학원경찰</td>
-                                <td><a href="#none" class="blue"><u>3건</u></a></td>
-                            </tr>
-                            <tr>
-                                <td>온라인공무원</td>
-                                <td><a href="#none" class="blue"><u>3건</u></a></td>
-                            </tr>
-                            <tr>
-                                <td>학원공무원</td>
-                                <td><a href="#none" class="blue"><u>3건</u></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
 @stop

@@ -27,8 +27,17 @@ class RegGroup extends \app\controllers\BaseController
     public function index()
     {
         $siteCode = get_auth_site_codes();
+
+
+        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
+
         $this->load->view('mocktest/reg/group/index', [
-            'siteCodeDef' => $siteCode[0],
+//            'siteCodeDef' => $siteCode[0],
+            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[5]['SiteCode'],
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 

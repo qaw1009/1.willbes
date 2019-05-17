@@ -6,6 +6,7 @@ class RouletteModel extends WB_Model
     private $_table = [
         'roulette' => 'lms_roulette',
         'roulette_otherinfo' => 'lms_roulette_otherinfo',
+        'roulette_member' => 'lms_roulette_member',
         'admin' => 'wbs_sys_admin'
     ];
 
@@ -76,7 +77,7 @@ class RouletteModel extends WB_Model
      */
     public function listRouletteOtherInfo($roulette_code)
     {
-        $column = 'RroIdx, RouletteCode, ProdName, ProdQty, ProdProbability, OrderNum, IsUse';
+        $column = 'RroIdx, RouletteCode, ProdName, FileFullPath, FileRealName, ProdQty, ProdWinTurns, ProdProbability, OrderNum, IsUse';
         $arr_condition = [
             'EQ' => [
                 'RouletteCode' => $roulette_code
@@ -86,8 +87,8 @@ class RouletteModel extends WB_Model
         $from = " FROM {$this->_table['roulette_otherinfo']} ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-
-        return $this->_conn->query('select '.$column .$from .$where)->result_array();
+        $order_by_offset_limit = ' order by OrderNum asc, RroIdx asc';
+        return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->result_array();
     }
 
     /**
@@ -133,20 +134,8 @@ class RouletteModel extends WB_Model
                 throw new \Exception('룰렛 등록에 실패했습니다.');
             }
 
-            $set_roulette_product = [];
-            foreach (element('roulette_prod_name', $input) as $key => $val) {
-                if (empty($val) === false) {
-                    $set_roulette_product[$key]['RouletteCode'] = $rouletteCode;
-                    $set_roulette_product[$key]['ProdName'] = $val;
-                    $set_roulette_product[$key]['ProdQty'] = element('roulette_prod_qty', $input)[$key];
-                    $set_roulette_product[$key]['ProdProbability'] = element('roulette_prod_probability', $input)[$key];
-                    $set_roulette_product[$key]['OrderNum'] = element('roulette_order_num', $input)[$key];
-                    $set_roulette_product[$key]['RegIp'] = $this->input->ip_address();
-                }
-            }
-
             //부가정보저장
-            if ($this->_addRouletteOtherInfo($set_roulette_product) === false) {
+            if ($this->_addRouletteOtherInfo($rouletteCode, $input) === false) {
                 throw new \Exception('부가정보 등록에 실패했습니다.');
             }
 
@@ -167,10 +156,13 @@ class RouletteModel extends WB_Model
     public function modifyRoulette($input = [], $code_modify_type = false)
     {
         $this->_conn->trans_begin();
-
         try {
             $admin_idx = $this->session->userdata('admin_idx');
             $roulette_code = element('roulette_code', $input);
+
+            //당첨자데이터 체크
+            $arr_condition = ['EQ' => ['RouletteCode' => $roulette_code]];
+            $win_member_cnt = $this->listWinMember(true, $arr_condition);
 
             //정보 조회
             $row = $this->findRoulette('RouletteCode', ['EQ' => ['RouletteCode' => $roulette_code]]);
@@ -195,12 +187,15 @@ class RouletteModel extends WB_Model
                 'MaxLimitCount' => element('max_limit_count', $input),
                 'RouletteStartDatm' => $roulette_start_datm,
                 'RouletteEndDatm' => $roulette_end_datm,
-                'ProbabilityType' => element('probability_type', $input),
-                /*'rouletteProductJson' => $roulette_product_json,*/
                 'IsUse' => element('is_use', $input),
                 'Memo' => element('roulette_memo', $input),
                 'UpdAdminIdx' => $admin_idx
             ];
+
+            //당첨자데이터가 없을 경우 수정항목 추가
+            if (empty($win_member_cnt) === true) {
+                $data['ProbabilityType'] = element('probability_type', $input);
+            }
 
             if ($code_modify_type === true) {
                 $data['RouletteCode'] = element('up_roulette_code', $input);
@@ -211,7 +206,7 @@ class RouletteModel extends WB_Model
             }
 
             //부가정보수정
-            if ($this->_modifyRouletteOtherInfo($input) === false) {
+            if ($this->_addRouletteOtherInfo(element('up_roulette_code', $input), $input, $win_member_cnt) === false) {
                 throw new \Exception('부가정보 수정에 실패했습니다.');
             }
             $this->_conn->trans_commit();
@@ -244,19 +239,15 @@ class RouletteModel extends WB_Model
     public function updateOtherInfoIsUse($rro_idx, $is_use)
     {
         $this->_conn->trans_begin();
-
         try {
             $admin_idx = $this->session->userdata('admin_idx');
-
             $data = [
                 'IsUse' => $is_use,
                 'UpdAdminIdx' => $admin_idx
             ];
-
             if ($this->_conn->set($data)->where('RroIdx', $rro_idx)->update($this->_table['roulette_otherinfo']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
             }
-
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -266,39 +257,113 @@ class RouletteModel extends WB_Model
     }
 
     /**
-     * 부가정보저장
-     * @param $set_roulette_product
-     * @return array|bool
+     * 당첨자 명단
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
      */
-    private function _addRouletteOtherInfo($set_roulette_product)
+    public function listWinMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        try {
-            if ($this->_conn->insert_batch($this->_table['roulette_otherinfo'], $set_roulette_product) === false) {
-                throw new \Exception('부가정보 저장에 실패했습니다.');
-            }
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                a.RmIdx, a.RouletteCode, a.RroIdx, a.MemIdx, a.IsUse, a.RegDatm, a.RegIp
+            ';
 
-        } catch (\Exception $e) {
-            return error_result($e);
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
-        return true;
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['roulette_member']} AS a
+        ";
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
-    private function _modifyRouletteOtherInfo($input)
+
+    /**
+     * 부가정보 저장 / 수정
+     * @param $rouletteCode
+     * @param array $input
+     * @param int $win_member_cnt
+     * @return array|bool
+     */
+    private function _addRouletteOtherInfo($rouletteCode, $input = [], $win_member_cnt = 0)
     {
         try {
+            //파일 저장
+            $this->load->library('upload');
+            $upload_dir = config_item('upload_prefix_dir') . '/roulette/' . date('Y') . '/' . date('md');
+            $file_cnt = (empty($_FILES['roulette_attach_file']) === true) ? '0' : count($_FILES['roulette_attach_file']['name']);
+            $uploaded = $this->upload->uploadFile('file', ['roulette_attach_file'], $this->_getAttachImgNames($file_cnt), $upload_dir);
+            if (is_array($uploaded) === false) {
+                throw new \Exception($uploaded);
+            }
+            $set_attach_data = [];
+            foreach ($uploaded as $idx => $attach_files) {
+                if (empty($attach_files) === false) {
+                    $set_attach_data['FileFullPath'][$idx] = $this->upload->_upload_url . $upload_dir . '/' . $attach_files['orig_name'];
+                    $set_attach_data['FileRealName'][$idx] = $attach_files['client_name'];
+                }
+            }
+
+            /**
+             * 부가정보 저장
+             * rro_idx 값으로 insert, update 구분
+             */
             foreach ($input['rro_idx'] as $key => $val) {
-                $inputData['RouletteCode'] = element('up_roulette_code', $input);
+                if (empty($input['roulette_prod_win_turns'][$key]) === true) {
+                    $win_turns = 0;
+                } else {
+                    $win_turns = json_encode(explode(',', $input['roulette_prod_win_turns'][$key]));
+                }
+
+                $inputData['RouletteCode'] = $rouletteCode;
                 $inputData['ProdName'] = (empty($input['roulette_prod_name'][$key]) === false) ? $input['roulette_prod_name'][$key] : null;
                 $inputData['ProdQty'] = (empty($input['roulette_prod_qty'][$key]) === false) ? $input['roulette_prod_qty'][$key] : null;
                 $inputData['ProdProbability'] = (empty($input['roulette_prod_probability'][$key]) === false) ? $input['roulette_prod_probability'][$key] : null;
                 $inputData['OrderNum'] = (empty($input['roulette_order_num'][$key]) === false) ? $input['roulette_order_num'][$key] : null;
+                $inputData['RegIp'] = $this->input->ip_address();
+
+                //당첨자데이터가 없을 경우 수정항목 추가
+                if (empty($win_member_cnt) === true) {
+                    $inputData['ProdWinTurns'] = $win_turns;
+                }
+
+                if(empty($set_attach_data['FileFullPath'][$key]) === false) {
+                    $inputData['FileFullPath'] = $set_attach_data['FileFullPath'][$key];
+                    $inputData['FileRealName'] = $set_attach_data['FileRealName'][$key];
+                } else {
+                    unset($inputData['FileFullPath']);
+                    unset($inputData['FileRealName']);
+                }
 
                 if (empty($val) === true) {
                     $inputData['RegAdminIdx'] = $this->session->userdata('admin_idx');
                     if ($this->_conn->set($inputData)->insert($this->_table['roulette_otherinfo']) === false) {
-                        throw new \Exception('부가정보 추가에 실패했습니다.');
+                        throw new \Exception('부가정보 등록에 실패했습니다.');
                     }
                 } else {
+                    //기존파일삭제
+                    if(empty($input['roulette_file_full_path'][$key]) === false && empty($inputData['FileFullPath']) === false) {
+                        $this->load->helper('file');
+                        $file_path = public_to_upload_path(urldecode($input['roulette_file_full_path'][$key]));
+                        if (@unlink($file_path) === false) {
+                            /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
+                        }
+                    }
+
                     $inputData['UpdAdminIdx'] = $this->session->userdata('admin_idx');
                     if ($this->_conn->set($inputData)->where('RroIdx', $val)->update($this->_table['roulette_otherinfo']) === false) {
                         throw new \Exception('부가정보 수정에 실패했습니다.');
@@ -319,5 +384,20 @@ class RouletteModel extends WB_Model
     {
         $row = $this->_conn->getFindResult($this->_table['roulette'], 'ifnull(max(RouletteCode) + 1, 1001) as RouletteCode');
         return $row['RouletteCode'];
+    }
+
+    /**
+     * 파일명 배열 생성
+     * @param $cnt
+     * @return array
+     */
+    private function _getAttachImgNames($cnt)
+    {
+        $attach_file_names = [];
+        $temp_time = date('YmdHis');
+        for ($i = 0; $i < $cnt; $i++) {
+            $attach_file_names[] = 'roulette_' . $i . '_' . $temp_time;
+        }
+        return $attach_file_names;
     }
 }

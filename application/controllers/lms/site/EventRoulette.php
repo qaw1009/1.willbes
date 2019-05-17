@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class EventRoulette extends \app\controllers\BaseController
 {
     protected $models = array('site/roulette');
-    protected $helpers = array();
+    protected $helpers = array('download');
 
     public function __construct()
     {
@@ -88,6 +88,7 @@ class EventRoulette extends \app\controllers\BaseController
             ['field' => 'probability_type', 'label' => '확률타입', 'rules' => 'trim|required|in_list[1,2]'],
             ['field' => 'roulette_prod_name[]', 'label' => '룰렛상품명', 'rules' => 'trim|required'],
             ['field' => 'roulette_prod_qty[]', 'label' => '룰렛상품수량', 'rules' => 'trim|required'],
+            ['field' => 'roulette_prod_win_turns[]', 'label' => '룰렛상품당첨순번', 'rules' => 'trim|required'],
             ['field' => 'roulette_prod_probability[]', 'label' => '룰렛상품확률', 'rules' => 'trim|required'],
             ['field' => 'roulette_order_num[]', 'label' => '룰렛상품정렬순서', 'rules' => 'trim|required']
         ];
@@ -131,22 +132,42 @@ class EventRoulette extends \app\controllers\BaseController
         $this->json_result($result, '정상 처리 되었습니다.', $result);
     }
 
-    /**
-     * 룰렛 확률 테스트
-     * @return CI_Output
-     */
-    public function rouletteTestData()
+    public function listMemberAjax()
     {
-        $test_data = [
-            'probability' => [
-                '0' => 70,
-                '1' => 3,
-                '2' => 3,
-                '3' => 3,
+        $arr_condition = [
+            'EQ' => [
+                'a.IsStatus' => 'Y',
+                'a.RouletteCode' => $this->_reqP('search_roulette_code'),
+                'a.IsUse' => $this->_reqP('search_is_use')
             ],
-            'result' => '5'
+            'ORG1' => [
+                'LKB' => [
+                    'a.Title' => $this->_reqP('search_value')
+                ]
+            ]
         ];
 
-        return $this->json_result(true, '', [], $test_data);
+        $list = [];
+        $count = $this->rouletteModel->listAllRoulette(true, $arr_condition);
+        if ($count > 0) {
+            $list = $this->rouletteModel->listAllRoulette(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.RouletteCode' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 첨부파일 다운로드
+     */
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
     }
 }

@@ -52,12 +52,19 @@ class RegGoods extends \app\controllers\BaseController
         $cateD2 = $this->mockCommonModel->getMockKind();
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->acceptStatus]);
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
+
         $this->load->view('mocktest/reg/goods/index', [
-            'siteCodeDef' => $cateD1[0]['SiteCode'],
+//            'siteCodeDef' => $cateD1[0]['SiteCode'],
+            //            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
+            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[5]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'applyType' => $codes[$this->applyType],
             'accept_ccd' => $codes[$this->acceptStatus],
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 
@@ -168,6 +175,8 @@ class RegGoods extends \app\controllers\BaseController
         $data_memo = array();
         $data_autocoupon = array();
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'POST',
             'siteCodeDef' => '',
@@ -183,7 +192,8 @@ class RegGoods extends \app\controllers\BaseController
             'cateD2_sel' => json_encode(array()),
             'applyType_on' => $this->applyType_on,
             'accept_ccd' => $codes[$this->acceptStatus],
-            'arr_send_callback_ccd' => $arr_send_callback_ccd
+            'arr_send_callback_ccd' => $arr_send_callback_ccd,
+            'arrsite' => $arrsite
         ]);
     }
 
@@ -430,6 +440,8 @@ class RegGoods extends \app\controllers\BaseController
         $data_autocoupon = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
         $data_memo = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_memo');
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'PUT',
             'siteCodeDef' => $data['SiteCode'],
@@ -448,7 +460,8 @@ class RegGoods extends \app\controllers\BaseController
             'sData' => $sData,
             'cateD2_sel' => json_encode($data['MockPart']),
             'adminName' => $this->mockCommonModel->getAdminNames(),
-            'arr_send_callback_ccd' => $arr_send_callback_ccd
+            'arr_send_callback_ccd' => $arr_send_callback_ccd,
+            'arrsite' => $arrsite
         ]);
     }
 

@@ -28,13 +28,19 @@ class RegExam extends \app\controllers\BaseController
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
         $cateD2 = $this->mockCommonModel->getMockKind();
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
+
         $this->load->view('mocktest/reg/exam/index', [
-            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
+//            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
+            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[5]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
             'professor' => $this->searchProfessorModel->professorList('', '', '', false),
             'upImgUrl' => $this->config->item('upload_url_mock', 'mock'),
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 
@@ -111,9 +117,11 @@ class RegExam extends \app\controllers\BaseController
      */
     public function create()
     {
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
         $this->load->view('mocktest/reg/exam/create', [
             'siteCodeDef' => '',
             'method' => 'POST',
+            'arrsite' => $arrsite
         ]);
     }
 
@@ -160,6 +168,8 @@ class RegExam extends \app\controllers\BaseController
             $this->json_error('데이터 조회에 실패했습니다.');
             return;
         }
+
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
         
         $this->load->view('mocktest/reg/exam/create', [
             'siteCodeDef' => $data['SiteCode'],
@@ -174,6 +184,7 @@ class RegExam extends \app\controllers\BaseController
             'upImgUrl' => $this->config->item('upload_url_mock', 'mock') . $data['MpIdx'] .'/',
             'upImgUrlQ' => $this->config->item('upload_url_mock', 'mock') . $data['MpIdx'] . $this->config->item('upload_path_mockQ', 'mock'),
             'isDeny' => !empty($qData) ? true : false,  // 개별 문제가 등록된 경우 카테고리, 문제등록옵션, 총점 변경 불가
+            'arrsite' => $arrsite
         ]);
     }
 

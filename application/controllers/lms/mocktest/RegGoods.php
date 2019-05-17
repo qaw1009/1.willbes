@@ -175,6 +175,8 @@ class RegGoods extends \app\controllers\BaseController
         $data_memo = array();
         $data_autocoupon = array();
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'POST',
             'siteCodeDef' => '',
@@ -190,7 +192,8 @@ class RegGoods extends \app\controllers\BaseController
             'cateD2_sel' => json_encode(array()),
             'applyType_on' => $this->applyType_on,
             'accept_ccd' => $codes[$this->acceptStatus],
-            'arr_send_callback_ccd' => $arr_send_callback_ccd
+            'arr_send_callback_ccd' => $arr_send_callback_ccd,
+            'arrsite' => $arrsite
         ]);
     }
 
@@ -437,6 +440,8 @@ class RegGoods extends \app\controllers\BaseController
         $data_autocoupon = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
         $data_memo = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_memo');
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'PUT',
             'siteCodeDef' => $data['SiteCode'],
@@ -455,7 +460,8 @@ class RegGoods extends \app\controllers\BaseController
             'sData' => $sData,
             'cateD2_sel' => json_encode($data['MockPart']),
             'adminName' => $this->mockCommonModel->getAdminNames(),
-            'arr_send_callback_ccd' => $arr_send_callback_ccd
+            'arr_send_callback_ccd' => $arr_send_callback_ccd,
+            'arrsite' => $arrsite
         ]);
     }
 

@@ -17,7 +17,8 @@
                     <tr>
                         <th colspan="1">운영사이트 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            {!! html_site_select($siteCodeDef, 'site_code', 'siteCode', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '') !!}
+                            {{--{!! html_site_select($siteCodeDef, 'site_code', 'siteCode', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '') !!}--}}
+                            {!! html_site_select($siteCodeDef, 'site_code', 'siteCode', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '', '', $arrsite)!!}
                             <span class="ml-20">저장 후 운영사이트, 모의고사카테고리 정보는 수정이 불가능합니다.</span>
                         </td>
                     </tr>

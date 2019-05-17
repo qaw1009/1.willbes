@@ -17,6 +17,43 @@ class BaseRoulette extends \app\controllers\FrontController
     }
 
     /**
+     * 룰렛데이터 및 부가정보 조회
+     * @param array $params
+     * @return CI_Output
+     * TODO : 프론트에서 노출시키는 스크립트부분 완료X, 차 후 확인 필요
+     */
+    public function info($params = [])
+    {
+        $roulette_data = [];
+        $other_list = [];
+        if (empty($params[0]) === false) {
+            $data = $this->rouletteFModel->listRouletteInfo($params[0]);
+            if (empty($data) === false) {
+                foreach ($data as $key => $val) {
+                    $roulette_data['RouletteCode'] = $val['RouletteCode'];
+                    $roulette_data['RouletteStartDatm'] = $val['RouletteStartDatm'];
+                    $roulette_data['RouletteEndDatm'] = $val['RouletteEndDatm'];
+                    $other_list[$key]['image'] = $val['FileFullPath'];
+                    $other_list[$key]['text'] = $val['FileRealName'];
+
+                    /*$other_list[$key]['ProdName'] = $val['ProdName'];
+                    $other_list[$key]['FileFullPath'] = $val['FileFullPath'];
+                    $other_list[$key]['FileRealName'] = $val['FileRealName'];
+                    $other_list[$key]['ProdQty'] = $val['ProdQty'];
+                    $other_list[$key]['ProdUsedCnt'] = $val['ProdUsedCnt'];*/
+                }
+            }
+        }
+        $result = [
+            'roulette_data' => $roulette_data,
+            'other_list' => $other_list
+        ];
+        return $this->response([
+            'data' => $result,
+        ]);
+    }
+
+    /**
      * 룰렛 데이터 저장
      * @param array $params
      * @return CI_Output

@@ -120,6 +120,11 @@
             <div class="btn NGEB"><a href="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"javascript:alert('이미 이벤트에 참가하셨습니다.')"!!}@endif" >필기합격 & 친구추천 한번에 인증하기 ></a></div>
         </div>
 
+        {{--
+            TODO : Roulette 기능 (미적용, 미완료)
+            <canvas id="roulette" class="tutCanvas" width="400" height="400"></canvas>
+            @include('willbes.pc.site.event.show_roulette_patial')
+        --}}
         <div class="evtCtnsBox evt01" id="evt01">
             {{--5.13일 노출
             <div class="rouletteBox">
@@ -128,8 +133,8 @@
                 <div class="target"></div>
             </div>
             --}}
-            
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_01.jpg" title="필기합격자 누구나 참여가능">            
+
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_01.jpg" title="필기합격자 누구나 참여가능">
         </div>
 
         <div class="evtCtnsBox evt02" id="evt02">
@@ -242,16 +247,15 @@
                 autoHover: true,
                 moveSlides:1,
                 pager:false,
+            });
 
-                });
-            
-                $("#imgBannerLeft").click(function (){
-                    slidesImg.goToPrevSlide();
-                });
-            
-                $("#imgBannerRight").click(function (){
-                    slidesImg.goToNextSlide();
-                });
+            $("#imgBannerLeft").click(function (){
+                slidesImg.goToPrevSlide();
+            });
+
+            $("#imgBannerRight").click(function (){
+                slidesImg.goToNextSlide();
+            });
         });
 
         function certOpen(){
@@ -262,7 +266,7 @@
             @endif
         }
     </script>
-    <script src="/public/js/willbes/jquery.transit.min.js"></script>
+    {{--<script src="/public/js/willbes/jquery.transit.min.js"></script>
     <script>
         $(".rouletteBox .start").one("click", function(){
             var time = ((Math.random()*6)+5)*1000;
@@ -272,5 +276,5 @@
                 rotate : deg
             }, time, "cubic-bezier(.03,.87,.63,.98)");
         });
-    </script>
+    </script>--}}
 @stop

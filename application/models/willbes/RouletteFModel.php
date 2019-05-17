@@ -14,6 +14,38 @@ class RouletteFModel extends WB_Model
         parent::__construct('lms');
     }
 
+    public function listRouletteInfo($roulette_code)
+    {
+        $column = 'R.RouletteCode, R.RouletteStartDatm, R.RouletteEndDatm, O.ProdName, O.FileFullPath, O.FileRealName, O.ProdQty, IFNULL(M.ProdUsedCnt,\'0\') AS ProdUsedCnt';
+        $arr_condition = [
+            'EQ' => [
+                'R.RouletteCode' => $roulette_code,
+                'R.IsUse' => 'Y',
+                'R.IsStatus' => 'Y'
+            ]
+        ];
+        $order_by = $this->_conn->makeOrderBy(['O.OrderNum' => 'ASC', 'O.RroIdx' => 'ASC'])->getMakeOrderBy();
+        $from = "
+            FROM (
+                SELECT RouletteCode, RroIdx
+                FROM {$this->_table['roulette_otherinfo']}
+                WHERE RouletteCode = '{$roulette_code}' AND IsUse = 'Y'
+            ) AS other
+            
+            INNER JOIN {$this->_table['roulette_otherinfo']} AS O ON other.RroIdx = O.RroIdx
+            INNER JOIN {$this->_table['roulette']} AS R ON other.RouletteCode = R.RouletteCode
+            LEFT JOIN (
+                SELECT RroIdx, COUNT(*) AS ProdUsedCnt
+                FROM {$this->_table['roulette_member']}
+                WHERE RouletteCode = '{$roulette_code}'
+                GROUP BY RroIdx
+            ) AS M ON other.RroIdx = M.RroIdx
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+    }
+
     /**
      * 룰렛 데이터 조회
      * @param $arr_condition

@@ -237,10 +237,10 @@
                                 </div>
                                 <div class="infoList">
                                     <ul class="List-Table">
-                                        <li><p><span>[2018년 3차]</span>경찰공무원(일반/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><p><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><p><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><p><span>[2017년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2019년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=162318') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 3차]</span>경찰공무원(일반/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=162320') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=166081') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=225227') }}" target="_blank">바로가기 ></a></span></li>                                        
                                     </ul>
                                 </div>
                             </div>

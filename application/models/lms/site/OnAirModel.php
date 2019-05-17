@@ -429,6 +429,7 @@ class OnAirModel extends WB_Model
 
             $data = [
                 'SiteCode' => element('site_code', $input),
+                'CIdx' => element('class_room_idx', $input),
                 'StudyStartDate' => element('study_start_date', $input),
                 'OnAirNum' => element('on_air_num', $input),
                 'WeekArray' => element('week_str', $input),

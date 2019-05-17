@@ -1026,7 +1026,6 @@ class SurveyModel extends WB_Model
 
         $order_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
         $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T')";
-        echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();

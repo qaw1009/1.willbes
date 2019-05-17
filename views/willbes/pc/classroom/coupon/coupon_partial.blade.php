@@ -96,7 +96,7 @@
                                         <td class="w-discount">{{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}</td>
                                         <td class="w-product">{{ $row['ApplyTypeCcdName'] }}</td>
                                         <td class="w-l-price">{{ number_format($row['DiscAllowPrice']) }}원 이상</td>
-                                        <td class="w-period">{{ substr($row['IssueDatm'], 0, 10) }} ~ {{ substr($row['ExpireDatm'], 0, 10) }}</td>
+                                        <td class="w-period">{{ substr($row['IssueDatm'], 0, 16) }}<br/> ~ {{ substr($row['ExpireDatm'], 0, 16) }}</td>
                                         <td class="w-d-day">{{ $row['RemainDay'] }}일</td>
                                         <td class="w-date">{{ substr($row['IssueDatm'], 0, 10) }}</td>
                                     </tr>

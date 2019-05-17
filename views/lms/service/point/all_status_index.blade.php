@@ -143,7 +143,7 @@
                         return data != null ? '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>' : '';
                     }},
                     {'data' : 'ExpireDatm', 'render' : function(data, type, row, meta) {
-                        return data != null ? row.RegDatm.substr(0, 10) + ' ~ ' + data.substr(0, 10) : '';
+                        return data != null ? row.RegDatm.substr(0, 16) + ' ~ ' + data.substr(0, 16) : '';
                     }},
                     {'data' : 'PointStatusCcdName', 'render' : function(data, type, row, meta) {
                         return row.PointStatusCcd === 'U' ? '<div class="inline-block red">' + data + '</div>' : '<div class="inline-block blue">' + data + '</div>';

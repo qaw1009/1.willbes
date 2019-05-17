@@ -134,7 +134,7 @@
                                                                     <td class="w-point">+ {{ number_format($row['SavePoint']) }}</td>
                                                                     <td class="w-list">{{ $row['ReasonName'] }}</td>
                                                                     <td class="w-number">{{ $row['OrderNo'] }}</td>
-                                                                    <td class="w-period">~ {{ substr($row['ExpireDatm'], 0, 10) }}</td>
+                                                                    <td class="w-period">~ {{ substr($row['ExpireDatm'], 0, 16) }}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             @else

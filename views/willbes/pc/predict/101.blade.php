@@ -57,10 +57,10 @@
 
             <div class="eventPop">
                 <h3>
-                    <span class="tx-bright-blue">사전특강 & 황세웅 면접 설명회 </span> 신청하기
+                    <span class="tx-bright-blue">공개면접특강</span> 신청하기
                 </h3>
                 <div class="eventPopS1">
-                    <div class="datebox">사전특강 : <span>5월 5일 11시</span> / 설명회 : <span>5월 5일 13시</span> </div>
+                    <div class="datebox">특강일 : <span>5월 26일</span></div>
                     <ul>
                         <li>
                             <strong>* 직렬(직류구분)</strong>

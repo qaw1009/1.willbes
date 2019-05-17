@@ -39,36 +39,42 @@
         50%{color:#ff6600}
         to{color:#6c1827}
         } 
-
-        .wb_top {background:#a12932 url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c1_bg.jpg) no-repeat center top;}
+        .wb_top00 {background:#e9e7e8}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/05/1061_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top span {width:256px; position:absolute; left:50%; top:82px; margin-left:-450px}
         .wb_cts01 {background:#fff;}
 
-        .wb_cts02 {background:#fff url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c7_bg.jpg) no-repeat center top;}
-        .wb_cts02 .mv_bg {position:relative; width:1210px; height:553px; margin:0 auto; background:#fff url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c8_bg.jpg) no-repeat center top;}
+        .wb_cts02 {background:#fff url(https://static.willbes.net/public/images/promotion/2019/05/1061_04_bg.jpg) no-repeat center top;}
+        .wb_cts02 .mv_bg {position:relative; width:1210px; height:553px; margin:0 auto; background:#fff url(https://static.willbes.net/public/images/promotion/2019/05/1061_05_bg.jpg) no-repeat center top;}
         .wb_cts02 .mv_bg ul {position:absolute; width:954px; top:19px; left:50%; margin-left:-477px}
         .wb_cts02 .mv_bg li {display:inline; float:left;}
         .wb_cts02 .mv_bg ul:after {content:""; display:block; clear:both}
 
-        .wb_cts03 {background:#b5172c; border:#F00 1px solid;}
-        .wb_cts03 .check {width:980px; margin:0 auto; background:#b5172c; padding:15px 0px 120px 20px; letter-spacing:3; font-weight:bold; color:#f8eff0; cursor:pointer}
+        .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2019/05/1061_07_bg.jpg) no-repeat center top;}
+        .wb_cts03 .check {width:980px; margin:0 auto; padding:15px 0px 120px 20px; letter-spacing:3; font-weight:bold; color:#f8eff0; cursor:pointer}
         .wb_cts03 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px}
-        .wb_cts03 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#b5172c; background:#fff; margin-left:50px; border-radius:20px}
+        .wb_cts03 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#4680a5; background:#fff; margin-left:50px; border-radius:20px}
 
-        .wb_cts04 {background:#e5dac9;}
+        .wb_cts04 {background:#eeeced;}
         .wb_cts05 {background:#fff;}
 
         .skybanner {
             position:fixed;
-            bottom:20px;
+            top:250px;
             right:10px;
-            width:290px;
+            width:163px;
+            z-index:10;
         }
     </style>
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        <div class="skybanner">
-            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2_1.png" alt="환승이벤트" ></a></div>
+        <div class="skybanner">            
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_10.png" alt="환승이벤트" usemap="#Map1061C" border="0" >
+            <map name="Map1061C" id="Map1061C">
+                <area shape="rect" coords="36,131,121,163" href="#event" alt="환승" />
+                <area shape="rect" coords="37,327,119,361" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153566" target="_blank" alt="문제풀이" />
+            </map>
         </div>
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
@@ -94,57 +100,62 @@
         </div>
         <!-- 타이머 //-->
 
-        <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c1.png" alt="윌비스9급PASS X 세무PASS와 만나다!"  /><br>
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c2_1.gif" alt="11-12월 기출문제풀이 커리큘럼 업데이트 중"  /><br>
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c3.png" alt=""  />
+        <div class="evtCtnsBox wb_top00">
+            <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153566" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top00.jpg" alt="한정판매" />
+            </a>
+        </div>
+
+        <div class="evtCtnsBox wb_top">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top01.jpg" alt="윌비스9급PASS X 세무PASS와 만나다!"  />
+            <span><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top02.gif" alt="5~6월 지방직/서울직"  /></span>
         </div><!--WB_top//-->
 
 
-        <div class="evtCtnsBox wb_cts01" >
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c4.gif" alt="어떤 고민일지라도 윌비스9급PASS가 진리!" /><br>
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c5.gif" alt="" /><br>
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c6.jpg" alt="" />
+        <div class="evtCtnsBox wb_cts01">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_01.jpg" alt="무작정 시작한 공무원 시험 준비" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_02.gif" alt="고민?" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_03.jpg" alt="어떤 고민일지라도 윌비스9급PASS가 진리!" />
         </div><!--wb_cts01//-->
 
 
-        <div class="evtCtnsBox wb_cts02" >
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c7.jpg" alt="전문 교수진과 함께라면 흔들림 없는 실력 완성!" />
+        <div class="evtCtnsBox wb_cts02">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_04.jpg" alt="전문 교수진과 함께라면 흔들림 없는 실력 완성!" />
             <div class="mv_bg">
                 <ul>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_mv1.gif" alt="" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_mv2.gif" alt="" /></li>
-                    <li style="padding-left:60px;"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_mv5.gif" alt="" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_mv6.gif" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv1.gif" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv2.gif" alt="" /></li>
+                    <li style="padding-left:60px;"><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv5.gif" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv6.gif" alt="" /></li>
                     <!--다음줄-->
-                    <li style=" clear:left; "><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_mv3.gif" alt="" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_mv4.gif" alt="" /></li>
-                    <li style="padding-left:60px;"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_mv7.gif" alt="" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_mv8.gif" alt="" /></li>
+                    <li style="clear:left;"><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv3.gif" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv4.gif" alt="" /></li>
+                    <li style="padding-left:60px;"><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv7.gif" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv8.gif" alt="" /></li>
                 </ul>
             </div>
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c9.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_06.jpg" alt="" />
         </div><!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" >
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c10.jpg" alt=" " usemap="#Map181220_c1" border="0" />
-            <map name="Map181220_c1" >
-                <area shape="rect" coords="832,611,975,697" href="javascript:go_PassLecture(1);"   onfocus="this.blur();" />
-                <area shape="rect" coords="843,720,977,807" href="javascript:go_PassLecture(2);"   onfocus="this.blur();" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_07.jpg" alt=" " usemap="#Map1061A" border="0" />
+            <map name="Map1061A" id="Map1061A" >
+                <area shape="rect" coords="803,610,937,696" href="javascript:go_PassLecture(1);" alt="6개월 수강신청"   onfocus="this.blur();" />
+                <area shape="rect" coords="803,718,937,805" href="javascript:go_PassLecture(2);" alt="12개월 수강신청"   onfocus="this.blur();" />
             </map>
             <div class="check" id="chkInfo"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 윌비스 9급 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label><a href="#tab1">이용안내확인하기 ↓</a></div>
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c11.jpg" alt=" " usemap="#Map181220_c2" border="0" />
-            <map name="Map181220_c2" >
-                <area shape="rect" coords="369,819,845,916" href="javascript:certOpen();" alt="타 사이트 수강 인증하기" />
-                <area shape="rect" coords="499,925,675,969" href="#tab1" alt="유의사항 확인하기"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_08.jpg" alt=" " usemap="#Map1061B" border="0" />
+            <map name="Map1061B" id="Map1061B" >
+                <area shape="rect" coords="325,842,782,914" href="javascript:certOpen();" alt="타 사이트 수강 인증하기" />
+                <area shape="rect" coords="457,922,633,966" href="#info" alt="유의사항 확인하기"/>
             </map>
         </div><!--wb_cts04//-->
 
-        <div class="evtCtnsBox wb_cts05" id="tab1">
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c12.jpg" alt=" 윌비스 9급 PASS 이용안내" />
+        <div class="evtCtnsBox wb_cts05" id="info">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_09.jpg" alt=" 윌비스 9급 PASS 이용안내" />
         </div><!--wb_cts05//-->
 
     </div>

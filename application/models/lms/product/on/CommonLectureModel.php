@@ -229,7 +229,6 @@ class CommonLectureModel extends WB_Model
 
             $order_by = $this->_conn->makeOrderBy(['S.PcIdx'=>'asc'])->getMakeOrderBy();
             $where = $this->_conn->makeWhere(['EQ'=>['S.ProdCode'=>$prodcode]])->getMakeWhere(true);
-            echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
             $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
 

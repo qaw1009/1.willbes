@@ -28,7 +28,7 @@
             z-index:1;
         }
         .skybanner li a {display:block; padding:20px 0; text-align:center; background:#000; color:#fff; font-size:14px; line-height:1.5; margin-bottom:1px}
-        .skybanner li a:hover {background:#e11c57}
+        .skybanner li a:hover {background:#ef5a22}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/05/1206_top_bg.jpg)  repeat-x center top;}
         .evt01 {background:#f25920; padding:50px 0}
@@ -52,7 +52,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_top.jpg"alt="면접은 스피치가 아니다." usemap="#Map1206A" border="0" >
             <map name="Map1206A" id="Map1206A">
-                <area shape="rect" coords="476,653,737,769" href="#go04" alt="면접캠프 신청하기" />
+                <area shape="rect" coords="533,655,794,771" href="#go04" alt="면접캠프 신청하기" />
             </map>
         </div>
 

@@ -74,7 +74,6 @@ class PredictModel extends WB_Model
     public $upload_path_predict;       // 통파일 저장경로: ~/predict/{idx}/
     public $upload_url_predict;       // 통파일 저장경로: ~/predict/{idx}/
 
-
     public function __construct()
     {
         parent::__construct('lms');
@@ -205,7 +204,6 @@ class PredictModel extends WB_Model
             if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
             if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
             RegDatm
-
         ";
 
 
@@ -215,7 +213,7 @@ class PredictModel extends WB_Model
                 JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
-        $where = " WHERE PR.IsStatus = 'Y'";
+        $where = " WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = " ORDER BY PR.RegDatm DESC";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
@@ -267,7 +265,65 @@ class PredictModel extends WB_Model
         ";
 
         $selectCount = "SELECT COUNT(*) AS cnt FROM (SELECT PR.MemIdx ";
-        $where = " WHERE PR.IsStatus = 'Y'";
+        $where = " WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $where .= " AND PG.OrgPoint IS NOT NULL AND PG.PpIdx = (SELECT PpIdx FROM lms_predict_paper WHERE TYPE = 'P' LIMIT 1)";
+        $order = " ORDER BY RegDatm DESC";
+        //echo "<pre>"."SELECT * FROM (SELECT ". $column . $from . $where . $offset_limit .") AS A ".$order. "</pre>";
+
+        $data = $this->_conn->query("SELECT * FROM (SELECT ". $column . $from . $where . $offset_limit .") AS A ".$order)->result_array();
+        $count = $this->_conn->query($selectCount . $from . $where ." ) AS A")->row()->cnt;
+
+        foreach ($data as &$it) {
+            $it['OPOINT'] = str_replace(',','<br>',$it['OPOINT']);
+        }
+
+        return array($data, $count);
+    }
+
+    /**
+     * 합격가데이터
+     */
+    public function predictRegistList3($condition='', $limit='', $offset='')
+    {
+        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
+
+        $OPoint = "
+            (
+                SELECT 
+                    GROUP_CONCAT(CONCAT('-',PaperName,':',OrgPoint)) AS OPOINT
+                FROM 
+                    {$this->_table['predictGradesOrigin']} AS go
+                    LEFT JOIN {$this->_table['predictPaper']} AS pp ON go.PpIDx = pp.PpIdx
+                WHERE go.PrIdx = PR.PrIdx
+            )
+        ";
+
+        $column = " 
+            PR.ApplyType,
+            MemName,
+            PR.MemIdx,
+            MemId,
+            AddPoint,
+            fn_dec(M.PhoneEnc) AS Phone,
+            (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+            (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
+            TaKeNumber,
+            if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
+            if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
+            RegDatm,
+            ".$OPoint." AS OPOINT
+        ";
+
+        $from = "
+            FROM 
+                {$this->_table['predictRegister']} AS PR
+                JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
+                LEFT JOIN {$this->_table['predictGradesOrigin']} AS PG ON PR.PrIdx = PG.PrIdx
+        ";
+
+        $selectCount = "SELECT COUNT(*) AS cnt FROM (SELECT PR.MemIdx ";
+        $where = " WHERE PR.IsStatus = 'Y' AND PR.MemIdx = 1000000";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $where .= " AND PG.OrgPoint IS NOT NULL AND PG.PpIdx = (SELECT PpIdx FROM lms_predict_paper WHERE TYPE = 'P' LIMIT 1)";
         $order = " ORDER BY RegDatm DESC";
@@ -367,7 +423,7 @@ class PredictModel extends WB_Model
                 JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
         ";
 
-        $where = "WHERE PR.IsStatus = 'Y'";
+        $where = "WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = " ORDER BY PR.RegDatm DESC\n";
 
@@ -420,7 +476,7 @@ class PredictModel extends WB_Model
                 LEFT JOIN {$this->_table['predictGradesOrigin']} AS PG ON PR.PrIdx = PG.PrIdx
         ";
 
-        $where = " WHERE PR.IsStatus = 'Y'";
+        $where = " WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $where .= " AND PG.OrgPoint IS NOT NULL AND PG.PpIdx = (SELECT PpIdx FROM lms_predict_paper WHERE TYPE = 'P' LIMIT 1)";
         $order = " ORDER BY RegDatm DESC";
@@ -540,6 +596,121 @@ class PredictModel extends WB_Model
         $Res['SurveyIsArr'] = $SurveyIsArr;
 
         return $Res;
+    }
+
+    /**
+     *  가데이터입력
+     */
+    public function tempDataUpload($PredictIdx, $params = [])
+    {
+        //print_r($params);
+
+        $this->_conn->trans_begin();
+
+        try {
+            $column = "
+                        PpIdx
+                    ";
+
+            $from = "
+                        FROM 
+                            {$this->_table['predictPaper']}
+                    ";
+
+            $order_by = " ORDER BY PpIdx";
+            $where = " WHERE PredictIdx = ".$PredictIdx."";
+            //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+            $ArrPpIdx = $query->result_array();
+
+            foreach ($params as $key => $val) {
+                $TakeMockPart = $val['A'];
+                if(empty($TakeMockPart)===false){
+                    $TakeArea = $val['B'];
+
+                    $arrPoint[] = $val['C'];
+                    $arrPoint[] = $val['D'];
+                    $arrPoint[] = $val['E'];
+                    $arrPoint[] = $val['F'];
+                    $arrPoint[] = $val['G'];
+                    $arrPoint[] = $val['H'];
+                    $arrPoint[] = $val['I'];
+                    $arrPoint[] = $val['J'];
+                    $arrPoint[] = $val['K'];
+
+                    // 데이터 등록
+                    $addData = [
+                        'PredictIdx' => $PredictIdx,
+                        'MemIdx' => 1000000,
+                        'SiteCode' => 2001,
+                        'TakeMockPart' => $TakeMockPart,
+                        'TakeNumber' => '999',
+                        'TakeArea' => $TakeArea,
+                        'AddPoint' => 0,
+                        'IsStatus' => 'Y',
+                        'LectureType' => 1,
+                        'Period' => 1,
+                        'IsTake' => 'N'
+                    ];
+
+                    //print_r($addData);
+
+                    if ($this->_conn->set($addData)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictRegister']) === false) {
+                        throw new \Exception('등록에 실패했습니다.');
+                    }
+
+                    $idx = $this->_conn->insert_id();
+
+                    if($TakeMockPart == 300){
+                        for($i=0; $i<5; $i++){
+                            // 데이터 등록
+                            $addData2 = [
+                                'MemIdx' => 1000000,
+                                'PrIdx' => $idx,
+                                'PredictIdx' => $PredictIdx,
+                                'PpIdx' => $ArrPpIdx[$i]['PpIdx'],
+                                'TakeMockPart' => $TakeMockPart,
+                                'TakeArea' => $TakeArea,
+                                'OrgPoint' => $arrPoint[$i],
+                            ];
+
+                            //print_r($addData2);
+
+                            if ($this->_conn->set($addData2)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesOrigin']) === false) {
+                                throw new \Exception('점수등록에 실패했습니다.');
+                            }
+                        }
+                    } else {
+                        for($i=0; $i<count($arrPoint); $i++){
+                            // 데이터 등록
+                            $addData2 = [
+                                'MemIdx' => 1000000,
+                                'PrIdx' => $idx,
+                                'PredictIdx' => $PredictIdx,
+                                'PpIdx' => $ArrPpIdx[$i]['PpIdx'],
+                                'TakeMockPart' => $TakeMockPart,
+                                'TakeArea' => $TakeArea,
+                                'OrgPoint' => $arrPoint[$i],
+                            ];
+
+                            //print_r($addData2);
+
+                            if ($this->_conn->set($addData2)->insert($this->_table['predictGradesOrigin']) === false) {
+                                throw new \Exception('점수등록에 실패했습니다.');
+                            }
+                        }
+                    }
+                    unset($arrPoint);
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 
     /**
@@ -1207,9 +1378,6 @@ class PredictModel extends WB_Model
         return ['ret_cd' => true, 'dt' => ['idx' => $survey_idx]];
     }
 
-
-
-
     /**
      * 설문 문항등록수정
      */
@@ -1395,9 +1563,6 @@ class PredictModel extends WB_Model
         return $Res;
     }
 
-
-
-
     /**
  * 문항호출
  */
@@ -1413,8 +1578,6 @@ class PredictModel extends WB_Model
             Hint21, Hint22, Hint23, Hint24, Hint25, 
             Cnt, SqUseYn
         ";
-
-
 
         $from = "
             FROM

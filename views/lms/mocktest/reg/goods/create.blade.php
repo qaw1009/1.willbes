@@ -33,7 +33,8 @@
                     <tr>
                         <th colspan="1">운영사이트 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            {!! html_site_select($siteCodeDef, 'siteCode', 'siteCode', '', '운영 사이트', '', ($method == 'PUT') ? 'disabled' : '') !!}
+                            {{--{!! html_site_select($siteCodeDef, 'siteCode', 'siteCode', '', '운영 사이트', '', ($method == 'PUT') ? 'disabled' : '') !!}--}}
+                            {!! html_site_select($siteCodeDef, 'siteCode', 'siteCode', '', '운영 사이트', '', ($method == 'PUT') ? 'disabled' : '', '', $arrsite)!!}
                             <span class="ml-20">저장 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</span>
                         </td>
                     </tr>
@@ -394,7 +395,7 @@
                                         <td>{{$row['ApplyTypeCcdName']}}</td>
                                         <td>{{$row['AutoCouponIdx']}}</td>
                                         <td style='text-align:left'>{{$row['CouponName']}}</td>
-                                        <td>{{number_format($row['AutoCouponIdx']).(($row['DiscType'] === 'R') ? '%' : '원')}}</td>
+                                        <td>{{number_format($row['DiscRate']).(($row['DiscType'] === 'R') ? '%' : '원')}}</td>
                                         <td>{{$row['ValidDay']}}</td>
                                         <td>{{$row['IssueValid']}}</td>
                                         <td><a href="javascript:;" onclick="rowDelete('couponTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>

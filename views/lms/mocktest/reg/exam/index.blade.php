@@ -3,7 +3,8 @@
 @section('content')
     <h5 class="mt-20">- 모의고사 구성을 위해 과목별 문제, 정답, 해설을 등록하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
+        {{--{!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}--}}
+        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!}
         {!! csrf_field() !!}
 
         <div class="x_panel">

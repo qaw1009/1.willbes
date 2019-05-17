@@ -1,6 +1,44 @@
 @extends('lcms.layouts.master')
 
 @section('content')
+
+@php
+    $data = [
+        '0' => [
+            'text' => 'GS편의점 2000원 권',
+            'image' => 'https://static.willbes.net/public/images/promotion/2019/05/1.png'
+        ],
+        '1' => [
+            'text' => '스타벅스 아.아',
+            'image' => 'https://static.willbes.net/public/images/promotion/2019/05/2.png'
+        ],
+        '2' => [
+            'text' => '영화상품권(1인1매)',
+            'image' => 'https://static.willbes.net/public/images/promotion/2019/05/3.png'
+        ],
+        '3' => [
+            'text' => '10,000상품권(신세계)',
+            'image' => 'https://static.willbes.net/public/images/promotion/2019/05/4.png'
+        ],
+        '4' => [
+            'text' => 'GS편의점 2000원 권',
+            'image' => 'https://static.willbes.net/public/images/promotion/2019/05/1.png'
+        ],
+        '5' => [
+            'text' => '스타벅스 아.아',
+            'image' => 'https://static.willbes.net/public/images/promotion/2019/05/2.png'
+        ],
+        '6' => [
+            'text' => '영화상품권(1인1매)',
+            'image' => 'https://static.willbes.net/public/images/promotion/2019/05/3.png'
+        ],
+        '7' => [
+            'text' => '10,000상품권(신세계)',
+            'image' => 'https://static.willbes.net/public/images/promotion/2019/05/4.png'
+        ]
+    ];
+@endphp
+
 <script src="/public/js/willbes/javascript-winwheel-2.8.0/Winwheel.min.js"></script>
 <script src="/public/js/willbes/javascript-winwheel-2.8.0/TweenMax.min.js"></script>
 
@@ -20,9 +58,9 @@
         'numSegments' : 8,
         'outerRadius' : 170,
         'canvasId'    : 'roulette',
-        'drawText'    : true,             // Code drawn text can be used with segment images.
+        'drawText'    : false,             // Code drawn text can be used with segment images.
         'drawMode'    : 'segmentImage',    // Must be segmentImage to draw wheel using one image per segemnt.
-        'segments'    :
+        /*'segments'    :
             [
                 {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/1.png', 'text' : '1'},
                 {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/2.png', 'text' : '2'},
@@ -32,7 +70,8 @@
                 {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/6.png', 'text' : '6'},
                 {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/7.png', 'text' : '7'},
                 {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/8.png', 'text' : '8'}
-            ],
+            ],*/
+        'segments' : {!! json_encode($data) !!},
         'animation' :
             {
                 'type'          : 'spinToStop',

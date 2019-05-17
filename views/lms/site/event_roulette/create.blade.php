@@ -3,7 +3,7 @@
     <h5>- 이벤트 룰렛 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/popup/store") }}?bm_idx=45" novalidate>--}}
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/eventRoulette/store") }}" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="roulette_code" value="{{ $roulette_code }}"/>
@@ -113,11 +113,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="roulette_type">확률타입<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="probability_type_1">확률타입<span class="required">*</span></label>
                     <div class="col-md-4 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="probability_type_2" name="probability_type" class="flat" value="2" @if($method == 'POST' || $data['ProbabilityType']=='2')checked="checked"@endif/> <label for="probability_type_2" class="input-label">수동</label>
-                            <input type="radio" id="probability_type_1" name="probability_type" class="flat" value="1" required="required" @if($data['ProbabilityType']=='1')checked="checked"@endif/> <label for="probability_type_1" class="input-label">자동</label>
+                            <input type="radio" id="probability_type_1" name="probability_type" class="flat" value="1" @if($method == 'POST' || $data['ProbabilityType']=='1')checked="checked"@endif/> <label for="probability_type_1" class="input-label">수동</label>
+                            <input type="radio" id="probability_type_2" name="probability_type" class="flat" value="2" required="required" @if($data['ProbabilityType']=='2')checked="checked"@endif/> <label for="probability_type_2" class="input-label">자동</label>
                         </div>
                     </div>
                 </div>
@@ -139,8 +139,10 @@
                                     <thead>
                                     <tr>
                                         <th>룰렛상품명</th>
+                                        <th>룰렛상품이미지</th>
                                         <th>룰렛상품수량</th>
-                                        <th>룰렛상품확률</th>
+                                        <th>룰렛상품당첨순번(수동|콤마구분)</th>
+                                        <th>룰렛상품확률(자동)</th>
                                         <th>룰렛상품정렬순서</th>
                                         <th>사용여부</th>
                                         <th>수정</th>
@@ -152,10 +154,24 @@
                                             <tr class="temp_roulette_product" id="temp-roulette-product-{{ $loop->index }}">
                                                 <td>
                                                     <input type="hidden" name="rro_idx[]" value="{{ $row['RroIdx'] }}">
+                                                    <input type="hidden" name="roulette_file_full_path[]" value="{{ urlencode($row['FileFullPath']) }}">
                                                     <input type="text" name="roulette_prod_name[]" class="form-control" title="룰렛상품명" style="width: 230px;" value="{{ (empty($row['ProdName']) === false) ? $row['ProdName'] : '0' }}"/>
                                                 </td>
                                                 <td>
+                                                    @if(empty($row['FileRealName']) === true)
+                                                        <input type="file" name="roulette_attach_file[]" class="form-control input-file" title="룰렛상품이미지"/>
+                                                    @else
+                                                        <input type="file" name="roulette_attach_file[]" class="form-control input-file" title="룰렛상품이미지"/>
+                                                        <p class="mt-5">
+                                                            <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($row['FileFullPath'])}}" data-file-name="{{ urlencode($row['FileRealName']) }}" target="_blank">[{{ $row['FileRealName'] }}]</a>
+                                                        </p>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     <input type="text" name="roulette_prod_qty[]" class="form-control" title="룰렛상품수량" style="width: 50px;" value="{{ (empty($row['ProdQty']) === false) ? $row['ProdQty'] : '0' }}"/>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="roulette_prod_win_turns[]" class="form-control" title="룰렛상품당첨순번" style="width: 230px;" value="{{ (empty($row['ProdWinTurns']) === false) ? implode(',', json_decode($row['ProdWinTurns'])) : '0' }}"/>
                                                 </td>
                                                 <td>
                                                     <input type="text" name="roulette_prod_probability[]" class="form-control" title="룰렛상품확률" style="width: 50px;" value="{{ (empty($row['ProdProbability']) === false) ? $row['ProdProbability'] : '0' }}"/>
@@ -176,16 +192,14 @@
                             <div class="col-md-12">
                                 • 사용자 페이지에 노출되는 상품을 관리할 수 있습니다.<br>
                                 • <span class="bold blue">중요) 확률계산법</span><br>
-                                  - 자동 : ((상품별 수량 - 상품별 사용수) / 총 상품수) * 100 [특정상품의 사용 수량이 많을 경우 상대적으로 당첨확률을 낮아짐]<br>
-                                  - 수동 : 상품별 룰렛상품확률 [상품수량 관계X]<br>
-                                  - 공통조건 : 사용된 수량이 상품수량과 일치할 경우 당첨확률은 0으로 자동 설정됨
+                                  - 수동 : 상품별 당첨 순번 지정. 콤마(,)로 구분하여 순번 설정.<br>
+                                           1,11,21 (룰렛 실행 횟수가 1번째, 11번째, 21번째에 해당되는 회원이 당첨되는 구조.<br>
+                                           중복된 순번이 존재하지 않게 등록함.<br>
+                                           지정하지 않은 상품은 기본 0으로 설정.<br>
+                                           순번은 반드시 중복되지 않은 숫자로 설정.<br>
+                                  - 자동 : 상품별 룰렛상품확률 [상품수량 관계X]
                             </div>
                         </div>
-
-                        {{--<div class="form-group">
-                            <label class="control-label col-md-1-1" for="roulette_memo">확률 테스트 결과</label>
-                            <div class="col-md-10 form-control-static" id="roulette_test_box"></div>
-                        </div>--}}
                     </div>
                 </div>
 
@@ -227,9 +241,11 @@
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
             </div>
-
         </div>
     </form>
+
+    {{-- 당첨 회원 정보 --}}
+    {{--@include('lms.site.event_roulette.member_partial')--}}
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
@@ -241,7 +257,9 @@
                 var add_lists;
                 add_lists = '<tr id="temp-roulette-product-'+temp_roulette_prod_num+'">';
                 add_lists += '<td><input type="hidden" name="rro_idx[]" value=""><input type="text" name="roulette_prod_name[]" class="form-control" title="룰렛상품명" style="width: 230px;"/></td>';
+                add_lists += '<td><input type="file" name="roulette_attach_file[]" class="form-control input-file" title="룰렛상품이미지"/></td>'
                 add_lists += '<td><input type="text" name="roulette_prod_qty[]" class="form-control" title="룰렛상품수량" style="width: 50px;"/></td>';
+                add_lists += '<td><input type="text" name="roulette_prod_win_turns[]" class="form-control" title="룰렛상품당첨순번" style="width: 230px;" placeholder="1,3,5"/></td>';
                 add_lists += '<td><input type="text" name="roulette_prod_probability[]" class="form-control" title="룰렛상품확률" style="width: 50px;"/></td>';
                 add_lists += '<td><input type="text" name="roulette_order_num[]" class="form-control" title="룰렛상품노출횟수" style="width: 50px;"/></td>';
                 add_lists += '<td></td>';
@@ -249,26 +267,6 @@
                 add_lists += '<tr>';
                 $('#table_roulette_product > tbody:last').append(add_lists);
                 temp_roulette_prod_num = temp_roulette_prod_num + 1;
-            });
-
-            $regi_form.on('click', '.btn-roulette-test', function () {
-                var text = '테스트 실패';
-                var row_idx = $(this).data('otherinfo-idx');
-                var is_use = $(this).data('otherinfo-isuse');
-                var _url = '{{ site_url('/site/eventRoulette/rouletteTestData/') }}';
-                var _data = {
-                    '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method': 'PUT',
-                    'IsUse': is_use,
-                };
-                sendAjax(_url, _data, function (ret) {
-                    console.log(ret.ret_data);
-                    if (ret.ret_cd) {
-                        text = '상품별 확률 : ' + ret.ret_data['probability'] + '<Br>';
-                        text += '당첨 상품 : ' + ret.ret_data['result'] + '<Br>';
-                    }
-                    $('#roulette_test_box').html(text);
-                }, showError, false, 'POST');
             });
 
             /**
@@ -312,6 +310,12 @@
                         location.replace('{{ site_url("/site/eventRoulette/") }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
+            });
+
+            //파일다운로드
+            $('.file-download').click(function() {
+                var _url = '{{ site_url("/site/eventRoulette/download") }}' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                window.open(_url, '_blank');
             });
         });
     </script>

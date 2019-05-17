@@ -776,14 +776,6 @@ class OrderFModel extends BaseOrderFModel
                     if ($is_add_auto_product !== true) {
                         throw new \Exception($is_add_auto_product);
                     }
-
-                    // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료일 경우)
-                    if ($pay_status_ccd == $this->_pay_status_ccd['paid']) {
-                        $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $prod_code);
-                        if ($is_add_auto_coupon !== true) {
-                            throw new \Exception($is_add_auto_coupon);
-                        }
-                    }
                 }
             }
 
@@ -805,6 +797,18 @@ class OrderFModel extends BaseOrderFModel
 
                 if ($this->_conn->set($data)->insert($this->_table['order_product_delivery_info']) === false) {
                     throw new \Exception('주문상품 배송정보 등록에 실패했습니다.');
+                }
+            }
+
+            // 온라인강좌, 학원강좌, 모의고사 일 경우만 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료일 경우)
+            if ($cart_type == 'on_lecture' || $cart_type == 'off_lecture' || $cart_type == 'mock_exam') {
+                if ($is_auto_add === true) {
+                    if ($pay_status_ccd == $this->_pay_status_ccd['paid']) {
+                        $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $prod_code);
+                        if ($is_add_auto_coupon !== true) {
+                            throw new \Exception($is_add_auto_coupon);
+                        }
+                    }
                 }
             }
 
@@ -1897,8 +1901,8 @@ class OrderFModel extends BaseOrderFModel
                     }
                 }
 
-                // 자동지급 쿠폰 데이터 등록 (온라인 강좌, 학원 강좌일 경우만 실행)
-                if ($order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture'] || $order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['off_lecture']) {
+                // 자동지급 쿠폰 데이터 등록 (온라인강좌, 학원강좌, 모의고사 일 경우만 실행)
+                if ($order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture'] || $order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['off_lecture'] || $order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['mock_exam']) {
                     $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_row['OrderProdIdx'], $order_prod_row['ProdCode'], $mem_idx);
                     if ($is_add_auto_coupon !== true) {
                         throw new \Exception($is_add_auto_coupon);

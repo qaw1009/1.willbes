@@ -56,11 +56,11 @@ TODO : Roulette TEST 페이지
 
 <script>
     let theWheel = new Winwheel({
-        'numSegments' : 8,
-        'outerRadius' : 170,
-        'canvasId'    : 'roulette',
-        'drawText'    : false,             // Code drawn text can be used with segment images.
-        'drawMode'    : 'segmentImage',    // Must be segmentImage to draw wheel using one image per segemnt.
+        'numSegments': 8,
+        'outerRadius': 170,
+        'canvasId': 'roulette',
+        'drawText': false,             // Code drawn text can be used with segment images.
+        'drawMode': 'segmentImage',    // Must be segmentImage to draw wheel using one image per segemnt.
         /*'segments'    :
             [
                 {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/1.png', 'text' : '1'},
@@ -72,18 +72,19 @@ TODO : Roulette TEST 페이지
                 {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/7.png', 'text' : '7'},
                 {'image' : 'https://static.willbes.net/public/images/promotion/2019/05/8.png', 'text' : '8'}
             ],*/
-        'segments' : {!! json_encode($data) !!},
-        'animation' :
+        'segments': {!! json_encode($data) !!},
+        'animation':
             {
-                'type'          : 'spinToStop',
-                'duration'      : 5,
-                'spins'         : 8,
-                'callbackAfter' : ''
+                'type': 'spinToStop',
+                'duration': 5,
+                'spins': 8,
+                'callbackAfter': ''
             },
     });
 
     function startRoulette()
     {
+        console.log(theWheel);
         var _url = '/common/testProbability/send_test';
         var _data = {};
         sendAjax(_url, _data, function(ret) {

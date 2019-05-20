@@ -1,18 +1,16 @@
-{{--
-TODO : Roulette 프론트
-       개발 미비 사항 : AJAX 호출 후 글로벌 변수에 적용 기능 미비
---}}
+{{--Roulette 스크립트--}}
 <script src="/public/js/willbes/javascript-winwheel-2.8.0/Winwheel.min.js"></script>
 <script src="/public/js/willbes/javascript-winwheel-2.8.0/TweenMax.min.js"></script>
 
+<button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;">Spin the Wheel</button>
+<button id="btn_roulette_reset" class="btn-roulette-reset" onclick="theWheel.stopAnimation(false); theWheel.rotationAngle=0; theWheel.draw(); resetRoulette(); btn_roulette.disabled=false;">Reset</button>
+
 <script type="text/javascript">
-    /*$(document).ready(function() {
-        @if(isset($arr_promotion_params['roulette_code']) === true)
-            setTimeout(function () {
-                rouletteData();
-            }, 500);
-        @endif
-    });
+    let theWheel = new Winwheel();
+
+    setTimeout(function () {
+        rouletteData();
+    },500);
 
     //룰렛 상품 조회
     function rouletteData()
@@ -25,13 +23,14 @@ TODO : Roulette 프론트
         }, showError, false, 'GET');
     }
 
+    //룰렛 셋팅
     function setRoulette(data)
     {
-        let theWheel = new Winwheel({
-            'numSegments' : 8,
+        theWheel = new Winwheel({
+            'numSegments' : data.length,
             'outerRadius' : 170,
             'canvasId'    : 'roulette',
-            'drawText'    : false,             // Code drawn text can be used with segment images.
+            'drawText'    : true,             // Code drawn text can be used with segment images.
             'drawMode'    : 'segmentImage',    // Must be segmentImage to draw wheel using one image per segemnt.
             'segments'    : data,
             'animation' :
@@ -42,55 +41,12 @@ TODO : Roulette 프론트
                     'callbackAfter' : ''
                 },
         });
-    }*/
+    }
 
-
-    @if(isset($arr_promotion_params['roulette_code']) === true)
-        setTimeout(function () {
-            var param = '{{ (empty($arr_promotion_params['roulette_code']) === false) ? $arr_promotion_params['roulette_code'] : '' }}';
-            var _url = '{{ front_url('/roulette/info/') }}' + param;
-            var _data = {};
-            sendAjax(_url, _data, function (ret) {
-                let theWheel = new Winwheel({
-                    'numSegments' : 8,
-                    'outerRadius' : 170,
-                    'canvasId'    : 'roulette',
-                    'drawText'    : false,             // Code drawn text can be used with segment images.
-                    'drawMode'    : 'segmentImage',    // Must be segmentImage to draw wheel using one image per segemnt.
-                    /*'segments'    : ret.data.other_list,*/
-                    'segments'    : {!! json_encode($data) !!},
-                    'animation' :
-                        {
-                            'type'          : 'spinToStop',
-                            'duration'      : 5,
-                            'spins'         : 8,
-                            'callbackAfter' : ''
-                        },
-                });
-            }, showError, false, 'GET');
-        }, 500);
-    @endif
-
-    /*let theWheel = new Winwheel({
-            'numSegments' : 8,
-            'outerRadius' : 170,
-            'canvasId'    : 'roulette',
-            'drawText'    : false,             // Code drawn text can be used with segment images.
-            'drawMode'    : 'segmentImage',    // Must be segmentImage to draw wheel using one image per segemnt.
-            'segments'    : {!! json_encode($data) !!},
-            'animation' :
-                {
-                    'type'          : 'spinToStop',
-                    'duration'      : 5,
-                    'spins'         : 8,
-                    'callbackAfter' : ''
-                },
-        });*/
-
-
+    //룰렛 시작
     function startRoulette()
     {
-        var _url = '/common/testProbability/send_test';
+        var _url = '{{ front_url('/roulette/store/'.$arr_promotion_params['roulette_code']) }}';
         var _data = {};
         sendAjax(_url, _data, function(ret) {
             if (ret.ret_cd) {
@@ -106,6 +62,7 @@ TODO : Roulette 프론트
         }, showAlertError, false, 'GET');
     }
 
+    //룰렛 리셋
     function resetRoulette()
     {
         let ctx2 = theWheel.ctx;

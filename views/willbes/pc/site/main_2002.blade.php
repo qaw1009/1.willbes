@@ -43,14 +43,14 @@
                         <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1057&course_idx=1041&campus_ccd=605001') }}">형소법 심화<span>5.17 개강</span></a></div>
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1057&course_idx=1040&campus_ccd=605001') }}">형소법 기본<span>6.3 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1057&course_idx=1040&campus_ccd=605001') }}">형소법 기본<span>5.31 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론 장정훈">
                         <div class="caProfBtsn">
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1058&course_idx=1042&campus_ccd=605001') }}">경찰학 심화<span>5.6 개강</span></a></div>
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1058&course_idx=1040&campus_ccd=605001') }}">경찰학 기본<span>6.24 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1058&course_idx=1040&campus_ccd=605001') }}">경찰학 기본<span>6.18 개강</span></a></div>
                         </div>
                     </li>
                     <li>
@@ -70,14 +70,14 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1056&course_idx=1040') }}">형법 기본<span>5.13 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1054') }}">형법 기본<span>5.13 개강</span></a></div>
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1056') }}">형법 심화<span>6.6 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1054') }}">영어 기본<span>5.16 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1054') }}">영어 기본<span>6.6 개강</span></a></div>
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1054') }}">영어 심화<span>5.13 개강</span></a></div>
                         </div>
                     </li>                                        

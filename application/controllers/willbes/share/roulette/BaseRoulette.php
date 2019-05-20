@@ -20,7 +20,6 @@ class BaseRoulette extends \app\controllers\FrontController
      * 룰렛데이터 및 부가정보 조회
      * @param array $params
      * @return CI_Output
-     * TODO : 프론트에서 노출시키는 스크립트부분 완료X, 차 후 확인 필요
      */
     public function info($params = [])
     {
@@ -34,13 +33,7 @@ class BaseRoulette extends \app\controllers\FrontController
                     $roulette_data['RouletteStartDatm'] = $val['RouletteStartDatm'];
                     $roulette_data['RouletteEndDatm'] = $val['RouletteEndDatm'];
                     $other_list[$key]['image'] = $val['FileFullPath'];
-                    $other_list[$key]['text'] = $val['FileRealName'];
-
-                    /*$other_list[$key]['ProdName'] = $val['ProdName'];
-                    $other_list[$key]['FileFullPath'] = $val['FileFullPath'];
-                    $other_list[$key]['FileRealName'] = $val['FileRealName'];
-                    $other_list[$key]['ProdQty'] = $val['ProdQty'];
-                    $other_list[$key]['ProdUsedCnt'] = $val['ProdUsedCnt'];*/
+                    $other_list[$key]['text'] = $val['ProdName'];
                 }
             }
         }

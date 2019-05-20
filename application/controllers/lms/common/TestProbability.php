@@ -52,7 +52,7 @@ class TestProbability extends \app\controllers\BaseController
     }
 
     /**
-     * TODO : 서버호출 룰렛 테스트
+     * TODO : Roulette TEST
      */
     public function send_test()
     {

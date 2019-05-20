@@ -120,11 +120,10 @@
             <div class="btn NGEB"><a href="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"javascript:alert('이미 이벤트에 참가하셨습니다.')"!!}@endif" >필기합격 & 친구추천 한번에 인증하기 ></a></div>
         </div>
 
-        {{--
-            TODO : Roulette 기능 (미적용, 미완료)
-            <canvas id="roulette" class="tutCanvas" width="400" height="400"></canvas>
-            @include('willbes.pc.site.event.show_roulette_patial')
-        --}}
+        {{--TODO : Roulette 기능 (미적용)--}}
+        {{--<canvas id="roulette" class="tutCanvas" width="400" height="400"></canvas>
+        @include('willbes.pc.site.event.show_roulette_patial')--}}
+
         <div class="evtCtnsBox evt01" id="evt01">
             {{--5.13일 노출
             <div class="rouletteBox">

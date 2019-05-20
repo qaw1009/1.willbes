@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class OffLectureSD extends \app\controllers\BaseController
 {
-    protected $models = array('pay/orderCalc', 'product/base/professor', 'sys/category', 'sys/code', 'sys/excelDownLog');
+    protected $models = array('pay/orderCalc', 'product/base/professor', 'sys/site', 'sys/category', 'sys/code', 'sys/excelDownLog');
     protected $helpers = array();
     protected $_group_ccd = [];
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
@@ -27,10 +27,14 @@ class OffLectureSD extends \app\controllers\BaseController
         // 교수 조회
         $arr_professor = $this->professorModel->getProfessorArray('', '', ['WP.wProfName' => 'asc']);
 
+        // 캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
         $this->load->view('business/calc/off_index', [
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
-            'arr_professor' => $arr_professor
+            'arr_professor' => $arr_professor,
+            'arr_campus' => $arr_campus
         ]);
     }
 
@@ -51,7 +55,7 @@ class OffLectureSD extends \app\controllers\BaseController
 
         if (empty($search_prof_idx) === false && empty($search_study_start_date) === false && empty($search_study_end_date) === false) {
             // 정산 데이터 조회
-            $arr_condition = ['EQ' => ['TA.SiteCode' => $this->_reqP('search_site_code')]];
+            $arr_condition = ['EQ' => ['TA.SiteCode' => $this->_reqP('search_site_code'), 'TA.CampusCcd' => $this->_reqP('search_campus_ccd')]];
             $list = $this->orderCalcModel->listCalcOffLecture($search_prof_idx, $search_study_date_type, $search_study_start_date, $search_study_end_date, $sum_type, $arr_condition);
             $count = count($list);
             $sum_data = $this->_getTotalSum($list);
@@ -83,7 +87,7 @@ class OffLectureSD extends \app\controllers\BaseController
         }
 
         // 정산 데이터 조회
-        $arr_condition = ['EQ' => ['TA.SiteCode' => $this->_reqP('search_site_code')]];
+        $arr_condition = ['EQ' => ['TA.SiteCode' => $this->_reqP('search_site_code'), 'TA.CampusCcd' => $this->_reqP('search_campus_ccd')]];
         $list = $this->orderCalcModel->listCalcOffLecture($search_prof_idx, $search_study_date_type, $search_study_start_date, $search_study_end_date, $sum_type, $arr_condition);
         $sum_data = $this->_getTotalSum($list);
 
@@ -257,11 +261,11 @@ class OffLectureSD extends \app\controllers\BaseController
             , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '과정', '단과반코드', '단과반명', '과목', '교수명'
             , '안분율(B)', '안분매출(C)', '안분수수료(D)', '안분환불(E)', '정산율(G)', '정산금액(H)'];
 
-/*        // download log
+        // download log
         $this->load->library('approval');
         if($this->approval->SysDownLog($last_query, $file_name, count($results)) !== true) {
             show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
-        }*/
+        }
 
         // export excel
         $this->load->library('excel');

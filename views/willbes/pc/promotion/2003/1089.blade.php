@@ -41,10 +41,10 @@
                 <map name="Map1241C" id="Map1241C">
                     <area shape="rect" coords="9,51,118,106" href="#0108lec_go" alt="예비순환" />
                     <area shape="rect" coords="9,117,118,178" href="/promotion/index/cate/3035/code/1241" target="_blank" alt="1순환" />
-                    <area shape="rect" coords="9,189,118,243" href="#" alt="2순환" />
-                    <area shape="rect" coords="9,254,118,319" href="#" alt="3순환" />
-                    <area shape="rect" coords="9,326,119,386" href="#" alt="4순환" />
-                    <area shape="rect" coords="9,398,119,470" href="#" alt="5순환" />
+                    <area shape="rect" coords="9,189,118,243" href="javascript:alert('준비중입니다.');" alt="2순환" />
+                    <area shape="rect" coords="9,254,118,319" href="javascript:alert('준비중입니다.');" alt="3순환" />
+                    <area shape="rect" coords="9,326,119,386" href="javascript:alert('준비중입니다.');" alt="4순환" />
+                    <area shape="rect" coords="9,398,119,470" href="javascript:alert('준비중입니다.');" alt="5순환" />
                 </map>
         </div>
 

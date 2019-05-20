@@ -21,6 +21,15 @@
                             <span class="required">*</span> 교수를 선택해 주세요.
                         </div>
                     </div>
+                    <label class="control-label col-md-1">캠퍼스</label>
+                    <div class="col-md-5 form-inline">
+                        <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd">
+                            <option value="">선택</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1">검색일</label>
@@ -107,8 +116,9 @@
                 setDefaultDatepicker(-1, 'mon', 'search_study_start_date', 'search_study_end_date');
             }
 
-            // 교수 자동 변경
+            // 교수, 캠퍼스 자동 변경
             $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

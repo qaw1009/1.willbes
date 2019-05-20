@@ -140,8 +140,8 @@
                             <input type="text" id="USER_PHONE" name="USER_PHONE" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="30">
                         </div>
                         <div class="tx-red mt10" style="display: block;">                            
-                            <input name="" type="checkbox" value="" id="aaa" />
-                            <label for="aaa">
+                            <input name="" type="checkbox" value="" id="a01" />
+                            <label for="a01">
                             윌비스의 신규상품 안내 및 광고성 정보 SMS 수신에 동의합니다.
                             </label>
                         </div>
@@ -166,6 +166,13 @@
                             </button>
                         </div>
                         <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="combine-Tit">관심정보</td>
+                    <td>                       
+                        <input name="" type="checkbox" value="" id="a02" /> <label for="a02">공무원</label>
+                        <input name="" type="checkbox" value="" id="a03" class="ml10"/> <label for="a03">경찰</label>                        
                     </td>
                 </tr>
             </tbody>
@@ -324,6 +331,8 @@
             <span class="tx-blue">아이디 willbes</span>로 모든 윌비스 서비스를 이용하실 수 있습니다.
         </div>
         <div class="tx-center"><img class="mt70" src="{{ img_url('login/willbes_welcome.jpg') }}"></div>
+
+        {{--
         <div class="info-Txt info-Txt-Wrap tx-black mt60">
             현재 웰컴팩 이벤트 중입니다.<br>
             특별한 혜택을 받으시려면 아래 서비스를 선택해주세요.
@@ -332,17 +341,18 @@
                 <input name="cp1" type="radio" value="" id="cp2" /><label for="cp2"> 공무원</label>
             </div>            
         </div>
-        <!--div class="info-Txt info-Txt-Wrap tx-black mt60">
+        --}}
+
+        <div class="info-Txt info-Txt-Wrap tx-black mt60">
             <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
             <select id="site" name="site" title="선택안함" class="seleSite">
                 <option selected="selected">선택안함</option>
                 <option value="공무원">공무원</option>
                 <option value="경찰">경찰</option>
-                <option value="임용">임용</option>
             </select>
-        </div-->
+        </div>
         <button type="submit" onclick="" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
-            <span>이벤트 혜택 적용</span>
+            <span>시작하기</span>
         </button>
     </div>
     <!-- End 통합회원가입 : 회원가입완료 -->

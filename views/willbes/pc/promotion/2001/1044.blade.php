@@ -23,38 +23,37 @@
 
         .skybanner {
             position:fixed;
-            top:400px;
+            top:250px;
             right:10px;
-            z-index:1;
-            display:none;
+            z-index:1;  
         }
         .skybanner_sectionFixed {position:fixed; top:20px}
 
-        .WB_con01 {background:#ebe4d2 url('http://file3.willbes.net/new_cop/2019/02/EV190218_01_bg.png') no-repeat center;}
-        .WB_con02{background:#590100 url(http://file3.willbes.net/new_cop/2019/02/EV190218_02_bg.png) no-repeat center;}
+        .WB_con01 {background:#ebe4d2 url('https://static.willbes.net/public/images/promotion/2019/05/1044_01_bg.png') no-repeat center;}
+        .WB_con02{background:#590100 url(https://static.willbes.net/public/images/promotion/2019/05/1044_02_bg.png) no-repeat center;}
         .WB_con03{background:#3e100c;}
         .WB_con04{background:#e8e8e8;}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="#190218_evt_go"><img src="http://file3.willbes.net/new_cop/2019/02/EV190218_sky.png" alt="영어지옥탈출반" /></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/05/1044_sky.jpg" alt="영어지옥탈출반" /></a>
         </div>
 
         <div class="evtCtnsBox WB_con01">
-            <img src="http://file3.willbes.net/new_cop/2019/02/EV190218_01.png" alt="#" />>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1044_01.png" alt="#" />>
         </div>
 
         <div class="evtCtnsBox WB_con02">
-            <img src="http://file3.willbes.net/new_cop/2019/02/EV190218_02.png" alt="#" /><
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1044_02.png" alt="#" /><
         </div>
 
         <div class="evtCtnsBox WB_con03">
-            <img src="http://file3.willbes.net/new_cop/2019/02/EV190218_03.png" alt="#" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1044_03.png" alt="#" />
         </div>
 
-        <div class="evtCtnsBox WB_con04" id="190218_evt_go">
-            <img src="http://file3.willbes.net/new_cop/2019/02/EV190218_04.png" alt="#" usemap="#Map_0219_lec" border="0" />
+        <div class="evtCtnsBox WB_con04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1044_04.png" alt="#" usemap="#Map_0219_lec" border="0" />
             <map name="Map_0219_lec">
                 <area shape="rect" coords="209,794,921,870" href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1095#110779') }}" target="_blank">
             </map>

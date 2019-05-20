@@ -56,14 +56,14 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" title="한국사 원유철">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1040&subject_idx=1055&campus_ccd=605001') }}">한국사 기본<span>4.22 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1040&subject_idx=1055&campus_ccd=605001') }}">한국사 기본<span>5.20 개강</span></a></div>
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1055&course_idx=1041&campus_ccd=605001') }}">한국사 심화<span>5.6 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" title="한국사 오태진">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1040&subject_idx=1055&campus_ccd=605001') }}">한국사 기본<span>4.22 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1040&subject_idx=1055&campus_ccd=605001') }}">한국사 기본<span>5.20 개강</span></a></div>
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1055&course_idx=1041&campus_ccd=605001') }}">한국사 심화<span>5.8 개강</span></a></div>
                         </div>
                     </li>
@@ -84,13 +84,14 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1095&course_idx=1046') }}">영어 지옥탈출반<span>5.6 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1095&course_idx=1046') }}">영어 아침특강<span>6.3 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1095&campus_ccd=605001&course_idx=1046') }}">영어 지옥탈출반<span>6.3 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">
-                            <div><a href="#none">영어 지옥탈출반<span>5.6 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1095&campus_ccd=605001&course_idx=1046') }}">영어 지옥탈출반<span>6.3 개강</span></a></div>
                         </div>
                     </li>
                     <li>

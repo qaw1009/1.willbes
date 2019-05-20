@@ -684,7 +684,7 @@ class OrderCalcModel extends BaseOrderModel
         } else {
             // 기본 로우 컬럼
             $in_column = 'TA.ProfIdx, TA.ProdCode, TA.ProdName, TA.ProdCodeSub, TA.ProdNameSub, TA.SiteCode
-				, TA.LearnPatternCcd, TA.PackTypeCcd
+				, TA.LearnPatternCcd, TA.PackTypeCcd, TA.CampusCcd
 				, TA.StudyStartDate, TA.StudyEndDate, TA.CourseIdx, TA.SubjectIdx
 				, if(TA.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '", (
 					TA.ProdSalePrice / 
@@ -744,7 +744,7 @@ class OrderCalcModel extends BaseOrderModel
             select ' . $in_column . '
             from (
 				select PD.ProfIdx, P.ProdCode, P.ProdCode as ProdCodeSub, P.ProdName, P.ProdName as ProdNameSub, P.SiteCode
-					, PL.LearnPatternCcd, PL.PackTypeCcd
+					, PL.LearnPatternCcd, PL.PackTypeCcd, PL.CampusCcd
 					, PL.StudyStartDate, PL.StudyEndDate, PL.CourseIdx, PL.SubjectIdx 
 					, PD.ProdDivisionRate
 					, PD.ProdCalcRate
@@ -760,7 +760,7 @@ class OrderCalcModel extends BaseOrderModel
 					and `PL`.`'. $study_date_type .'` between ? and ?
 				union all
 				select SPD.ProfIdx, P.ProdCode, PRS.ProdCodeSub, P.ProdName, SP.ProdName as ProdNameSub, P.SiteCode
-					, PL.LearnPatternCcd, PL.PackTypeCcd
+					, PL.LearnPatternCcd, PL.PackTypeCcd, PL.CampusCcd
 					, SPL.StudyStartDate, SPL.StudyEndDate, SPL.CourseIdx, SPL.SubjectIdx
 					, if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", ifnull(PD.ProdDivisionRate, 0), null) as ProdDivisionRate
 					, if(PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", ifnull(PD.ProdCalcRate, 0), SPD.ProdCalcRate) as ProdCalcRate

@@ -36,8 +36,16 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="skybanner">
-            <a href="#0108lec_go"><img  src="http://file3.willbes.net/new_gosi/2019/01/EV190108_sky.png" alt="수강신청"></a>
+        <div class="skybanner" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1241_skybanner.png" alt="순환별 패키지" usemap="#Map1241C" border="0" >
+                <map name="Map1241C" id="Map1241C">
+                    <area shape="rect" coords="9,51,118,106" href="#0108lec_go" alt="예비순환" />
+                    <area shape="rect" coords="9,117,118,178" href="/promotion/index/cate/3035/code/1241" target="_blank" alt="1순환" />
+                    <area shape="rect" coords="9,189,118,243" href="#" alt="2순환" />
+                    <area shape="rect" coords="9,254,118,319" href="#" alt="3순환" />
+                    <area shape="rect" coords="9,326,119,386" href="#" alt="4순환" />
+                    <area shape="rect" coords="9,398,119,470" href="#" alt="5순환" />
+                </map>
         </div>
 
         <div class="evtCtnsBox WB_con01">

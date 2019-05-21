@@ -25,12 +25,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1">날짜검색</label>
+                    <label class="control-label col-md-1">결제일/환불일</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="paid">결제완료일</option>
-                            <option value="refund">환불완료일</option>
-                        </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
@@ -63,7 +59,7 @@
                 <h5 class="no-margin pt-5 inline-block"><span class="required">*</span> 매출 클릭 시 검색한 기간의 매출현황을 확인 할 수 있습니다.</h5>
                 <button type="button" class="btn btn-sm btn-success btn-excel ml-10 mr-0"><i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드</button>
             </div>
-            <table id="list_ajax_table" class="table table-bordered" style="display: none;">
+            <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
                     <th class="rowspan">사이트</th>
@@ -75,8 +71,8 @@
                     <td colspan="4" class="bg-odd text-center">
                         <h4 class="inline-block no-margin">
                             <span id="search_period" class="pr-5"></span>
-                            <span class="blue"><span id="sum_pay_price">0</span>원</span>
-                            - <span class="red"><span id="sum_refund_price">0</span>원</span>
+                            <span class="blue"><span id="sum_pay_price">0</span></span>
+                            - <span class="red"><span id="sum_refund_price">0</span></span>
                             = <span id="sum_total_price">0</span>원
                         </h4>
                     </td>
@@ -128,23 +124,24 @@
                     }},
                     {'data' : 'ProdTypeCcdName'},
                     {'data' : 'LgCateName'},
-                    {'data' : 'SumRemainPrice', 'render' : function(data, type, row, meta) {
-                        return '<a class="cs-pointer btn-view" data-site-code="' + row.SiteCode + '" data-prod-type-ccd="' + row.ProdTypeCcd + '" data-lg-cate-code="' + row.LgCateCode + '"><u>' + addComma(data) + '원</u> (' + row.OrderProdCnt + '건)</a>';
+                    {'data' : 'tRemainPrice', 'render' : function(data, type, row, meta) {
+                        return '<a class="cs-pointer btn-view" data-site-code="' + row.SiteCode + '" data-prod-type-ccd="' + row.ProdTypeCcd + '" data-lg-cate-code="' + row.LgCateCode + '"><u>' + addComma(data) + '원</u> (' + row.tOrderProdCnt + '건)</a>';
                     }}
                 ]
             });
 
             // 조회된 기간의 합계금액 표시 (datatable load event)
             $datatable.on('xhr.dt', function(e, settings, json) {
-                if (json.is_searching === true) {
-                    if (json.sum_data.hasOwnProperty('SumPayPrice') === true) {
-                        $('#sum_pay_price').html(addComma(json.sum_data.SumPayPrice));
-                        $('#sum_refund_price').html(addComma(json.sum_data.SumRefundPrice));
-                        $('#sum_total_price').html(addComma(json.sum_data.SumPayPrice - json.sum_data.SumRefundPrice));
-                    }
+                $('#search_period').html('[' + $search_form.find('input[name="search_start_date"]').val() + ' ~ ' + $search_form.find('input[name="search_end_date"]').val() + ']');
 
-                    $('#search_period').html('[' + $search_form.find('input[name="search_start_date"]').val() + ' ~ ' + $search_form.find('input[name="search_end_date"]').val() + ']');
-                    $('#list_ajax_table').css('display', '');
+                if (json.sum_data !== null) {
+                    $('#sum_pay_price').html(addComma(json.sum_data.tRealPayPrice) + ' (' + addComma(json.sum_data.tRealPayCnt) + '건)');
+                    $('#sum_refund_price').html(addComma(json.sum_data.tRefundPrice) + ' (' + addComma(json.sum_data.tRefundCnt) + '건)');
+                    $('#sum_total_price').html(addComma(json.sum_data.tRemainPrice));
+                } else {
+                    $('#sum_pay_price').html('0');
+                    $('#sum_refund_price').html('0');
+                    $('#sum_total_price').html('0');
                 }
             });
 
@@ -161,8 +158,11 @@
 
             // 매출현황 금액 클릭
             $list_table.on('click', '.btn-view', function() {
-                var show_uri = $(this).data('site-code')  + '/' + $(this).data('prod-type-ccd') + '/' + $(this).data('lg-cate-code');
-                location.href = '{{ site_url('/business/allStats/show') }}/' + show_uri + dtParamsToQueryString($datatable);
+                var start_date = $search_form.find('input[name="search_start_date"]').val();
+                var end_date = $search_form.find('input[name="search_end_date"]').val();
+                var show_uri = '/' + $(this).data('site-code')  + '/' + $(this).data('prod-type-ccd') + '/' + $(this).data('lg-cate-code') + '/' + start_date + '/' + end_date;
+
+                location.href = '{{ site_url('/business/allStats/show') }}' + show_uri + dtParamsToQueryString($datatable);
             });
         });
     </script>

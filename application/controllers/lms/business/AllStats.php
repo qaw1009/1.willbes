@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AllStats extends \app\controllers\BaseController
 {
-    protected $models = array('pay/orderStats', 'pay/orderList', 'sys/category', 'sys/code');
+    protected $models = array('pay/orderSales', 'sys/category', 'sys/code');
     protected $helpers = array();
-    protected $_order_list_add_join = array('refund', 'category');
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -21,7 +21,7 @@ class AllStats extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
 
         // 상품타입공통코드 조회
-        $arr_prod_type_ccd = $this->codeModel->getCcd($this->orderStatsModel->_group_ccd['ProdType']);
+        $arr_prod_type_ccd = $this->codeModel->getCcd($this->orderSalesModel->_group_ccd['ProdType']);
 
         $this->load->view('business/stats/index', [
             'arr_category' => $arr_category,
@@ -35,26 +35,24 @@ class AllStats extends \app\controllers\BaseController
      */
     public function listAjax()
     {
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_end_date = $this->_reqP('search_end_date');
         $list = [];
-        $sum_data = ['SumPayPrice' => 0, 'SumRefundPrice' => 0];
-        $is_searching = false;
+        $sum_data = null;
 
         if (empty($this->_reqP('search_start_date')) === false && empty($this->_reqP('search_end_date')) === false) {
             $arr_condition = $this->_getListConditions();
-            $is_searching = true;
-
-            $list = $this->orderStatsModel->listAllStatsOrder($arr_condition);
+            $list = $this->orderSalesModel->listAllStatsOrder($search_start_date, $search_end_date, 'real_pay', $arr_condition);
 
             if (count($list) > 0) {
-                $sum_data = $list[0];
-                array_splice($list, 0, 1);
+                $sum_data = end($list);
+                array_splice($list, -1, 1);
             }
         }
 
         return $this->response([
             'data' => $list,
-            'sum_data' => $sum_data,
-            'is_searching' => $is_searching
+            'sum_data' => $sum_data
         ]);
     }
 
@@ -67,28 +65,14 @@ class AllStats extends \app\controllers\BaseController
         // 기본조건
         $arr_condition = [
             'EQ' => [
-                'O.SiteCode' => $this->_reqP('search_site_code'),
+                'BO.SiteCode' => $this->_reqP('search_site_code'),
                 'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                 'SC.GroupCateCode' => $this->_reqP('search_cate_code')
             ],
             'IN' => [
-                'O.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
+                'BO.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
             ]
         ];
-
-        // 매출합계 날짜 조건
-        $search_date_type = $this->_reqP('search_date_type');
-        $search_start_date = $this->_reqP('search_start_date');
-        $search_end_date = $this->_reqP('search_end_date');
-
-        switch ($search_date_type) {
-            case 'refund' :
-                $arr_condition['BDT'] = ['OPR.RefundDatm' => [$search_start_date, $search_end_date]];
-                break;
-            default :
-                $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
-                break;
-        }
 
         return $arr_condition;
     }
@@ -98,21 +82,30 @@ class AllStats extends \app\controllers\BaseController
      */
     public function excel()
     {
-        if (empty($this->_reqP('search_start_date')) === true || empty($this->_reqP('search_end_date')) === true) {
-            show_alert('검색 후 엑셀다운로드를 실행해 주세요.', 'back');
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_end_date = $this->_reqP('search_end_date');
+
+        if (empty($search_start_date) === true || empty($search_end_date) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         $data = [];
         $headers = ['사이트', '상품구분', '직종', '매출'];
         $arr_condition = $this->_getListConditions();
-        $list = $this->orderStatsModel->listAllStatsOrder($arr_condition);
+        $list = $this->orderSalesModel->listAllStatsOrder($search_start_date, $search_end_date, 'real_pay', $arr_condition);
         $file_name = '윌비스전체매출현황리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         if (empty($list) === false) {
-            array_splice($list, 0, 1);
-
             foreach ($list as $row) {
-                $data[] = [$row['SiteName'], $row['ProdTypeCcdName'], $row['LgCateName'], $row['SumRemainPrice']];
+                if ($row['SiteCode'] != '9999' && $row['ProdTypeCcd'] != '999999' && $row['LgCateCode'] == '9999') {
+                    $row['LgCateName'] = '강좌 소계';
+                } elseif ($row['SiteCode'] != '9999' && $row['ProdTypeCcd'] == '999999' && $row['LgCateCode'] == '9999') {
+                    $row['SiteName'] = $row['SiteName'] . ' - 총 합계';
+                } elseif ($row['SiteCode'] == '9999' && $row['ProdTypeCcd'] == '999999' && $row['LgCateCode'] == '9999') {
+                    $row['SiteName'] = '총 합계';
+                }
+
+                $data[] = [$row['SiteName'], $row['ProdTypeCcdName'], $row['LgCateName'], $row['tRemainPrice']];
             }
         }
 
@@ -132,9 +125,10 @@ class AllStats extends \app\controllers\BaseController
         $site_code = $params[0];
         $prod_type_ccd = $params[1];
         $cate_code = $params[2];
-        $qs = json_decode(base64_decode($this->_reqG('q')), true);
+        $start_date = $params[3];
+        $end_date = $params[4];
 
-        if (empty($site_code) === true || empty($prod_type_ccd) === true || empty($cate_code) === true) {
+        if (empty($site_code) === true || empty($prod_type_ccd) === true || empty($cate_code) === true || empty($start_date) === true || empty($end_date) === true) {
             show_error('필수 파라미터 오류입니다.');
         }
 
@@ -145,16 +139,15 @@ class AllStats extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryArray($site_code, '', '', 1);
 
         // 상품타입공통코드 조회
-        $arr_prod_type_ccd = $this->codeModel->getCcd($this->orderStatsModel->_group_ccd['ProdType']);
+        $arr_prod_type_ccd = $this->codeModel->getCcd($this->orderSalesModel->_group_ccd['ProdType']);
 
         // 사이트코드, 상품타입, 대분류 카테고리 매출현황 파라미터 셋팅
         $arr_input = [
             'site_code' => $site_code,
             'prod_type_ccd' => $prod_type_ccd == '999999' ? '' : $prod_type_ccd,
             'cate_code' => $cate_code == '0000' || $cate_code == '9999' ? '' : $cate_code,
-            'search_date_type' => element('search_date_type', $qs),
-            'search_start_date' => element('search_start_date', $qs),
-            'search_end_date' => element('search_end_date', $qs),
+            'start_date' => $start_date,
+            'end_date' => $end_date,
         ];
 
         $this->load->view('business/stats/show', [
@@ -166,93 +159,90 @@ class AllStats extends \app\controllers\BaseController
     }
 
     /**
-     * 윌비스전체매출현황 상세보기 주문목록 조회
+     * 윌비스전체매출현황 상세보기 매출목록 조회
      * @return CI_Output
      */
     public function orderListAjax()
     {
-        $arr_condition = $this->_getOrderListConditions();
-
+        $site_code = $this->_reqP('site_code');
+        $start_date = $this->_reqP('start_date');
+        $end_date = $this->_reqP('end_date');
+        $count = 0;
         $list = [];
-        $count = $this->orderListModel->listAllOrder(true, $arr_condition, null, null, [], $this->_order_list_add_join);
+        $sum_data = null;
 
-        if ($count > 0) {
-            $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getOrderListOrderBy(), $this->_order_list_add_join);
+        if (empty($site_code) === false && empty($start_date) === false && empty($end_date) === false) {
+            $arr_condition = $this->_getOrderListConditions();
+
+            $count = $this->orderSalesModel->listSalesOrder($start_date, $end_date, 'real_pay', true, $arr_condition, null, null, []);
+
+            if ($count > 0) {
+                $list = $this->orderSalesModel->listSalesOrder($start_date, $end_date, 'real_pay', false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getOrderListOrderBy());
+
+                // 합계
+                $sum_data = element('0', $this->orderSalesModel->listSalesOrder($start_date, $end_date, 'real_pay', 'sum', $arr_condition));
+            }
         }
-
-        // 합계
-        $sum_column = 'ifnull(sum(OP.RealPayPrice), 0) as SumPayPrice, ifnull(sum(OPR.RefundPrice), 0) as SumRefundPrice';
-        $sum_data = $this->orderListModel->listAllOrder($sum_column, $arr_condition, null, null, [], $this->_order_list_add_join, false);
 
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-            'sum_data' => element('0', $sum_data)
+            'sum_data' => $sum_data
         ]);
     }
 
     /**
-     * 윌비스전체매출현황 상세보기 주문목록 조회 조건 리턴
+     * 윌비스전체매출현황 상세보기 매출목록 조회 조건 리턴
      * @return array
      */
     private function _getOrderListConditions()
     {
         $arr_condition = [
             'EQ' => [
-                'O.SiteCode' => $this->_reqP('site_code'),
+                'BO.SiteCode' => $this->_reqP('site_code'),
                 'P.ProdTypeCcd' => $this->_reqP('prod_type_ccd'),
                 'SC.GroupCateCode' => $this->_reqP('cate_code')
             ],
-            'GT' => [
-                'OP.RealPayPrice' => 0
-            ],
             'IN' => [
-                'OP.PayStatusCcd' => array_values(array_filter_keys($this->orderListModel->_pay_status_ccd, ['paid', 'refund'])),
-                'OP.SalePatternCcd' => array_values(array_filter_keys($this->orderListModel->_sale_pattern_ccd, ['normal', 'extend', 'retake']))
+                'BO.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
             ]
         ];
-
-        // 매출합계 날짜 조건
-        $search_date_type = $this->_reqP('search_date_type');
-        $search_start_date = $this->_reqP('search_start_date');
-        $search_end_date = $this->_reqP('search_end_date');
-
-        switch ($search_date_type) {
-            case 'refund' :
-                $arr_condition['BDT'] = ['OPR.RefundDatm' => [$search_start_date, $search_end_date]];
-                break;
-            default :
-                $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
-                break;
-        }
 
         return $arr_condition;
     }
 
     /**
-     * 윌비스전체매출현황 상세보기 주문목록 order by 배열 리턴
+     * 윌비스전체매출현황 상세보기 매출목록 정렬조건 리턴
      * @return array
      */
     private function _getOrderListOrderBy()
     {
-        return ['OrderIdx' => 'desc'];
+        return ['OrderIdx' => 'desc', 'OrderProdIdx' => 'asc'];
     }
 
     /**
-     * 윌비스전체매출현황 상세보기 주문목록 엑셀다운로드
+     * 윌비스전체매출현황 상세보기 매출목록 엑셀다운로드
      */
     public function orderListExcel()
     {
-        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '상품명', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태'];
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
 
-        $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName
-            , ProdTypeCcdName, ProdName, RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusCcdName';
+        $site_code = $this->_reqP('site_code');
+        $start_date = $this->_reqP('start_date');
+        $end_date = $this->_reqP('end_date');
+
+        if (empty($site_code) === true || empty($start_date) === true || empty($end_date) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        $headers = ['주문번호', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '학습형태', '상품명', '결제금액', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태'];
         $numerics = ['RealPayPrice', 'RefundPrice'];    // 숫자형 변환 대상 컬럼
 
         $arr_condition = $this->_getOrderListConditions();
-        $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getOrderListOrderBy(), $this->_order_list_add_join);
-        $last_query = $this->orderListModel->getLastQuery();
+        $list = $this->orderSalesModel->listSalesOrder($start_date, $end_date, 'real_pay', 'excel', $arr_condition, null, null, $this->_getOrderListOrderBy());
+        $last_query = $this->orderSalesModel->getLastQuery();
         $file_name = '윌비스전체매출현황상세리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // download log

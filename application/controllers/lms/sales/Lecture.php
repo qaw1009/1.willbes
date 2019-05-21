@@ -18,9 +18,6 @@ class Lecture extends BaseStats
     public function excel()
     {
         $headers = ['대비학년도', '강좌유형', '과정', '과목', '교수', '진행상태', '판매가', '정상가', '판매상태'];
-        $column = 'PL.SchoolYear, CLT.CcdName as LecTypeCcdName, PCO.CourseName, PSU.SubjectName, VPP.wProfName_String
-            , concat(VCL.wProgressCcd_Name, " (", VCL.wUnitCnt, "/", VCL.wUnitLectureCnt, ")") as wProgressCcd_Name, PS.RealSalePrice, PS.SalePrice, CSS.CcdName as SaleStatusCcdName';
-
-        parent::_excel($headers, $column);
+        parent::_excel($headers);
     }
 }

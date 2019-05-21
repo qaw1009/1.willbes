@@ -4,7 +4,9 @@
     <h5>- 사이트 기준 {{ $stats_name }}별 매출현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        <input type="hidden" name="prod_code" value="{{ $arr_input['prod_code'] }}"/>
+        @foreach($arr_input as $key => $val)
+            <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+        @endforeach
         <div class="x_panel">
             <div class="x_content mt-0">
                 <div class="row">
@@ -76,7 +78,7 @@
                             <tbody>
                             <tr>
                                 <td>{{ $data['SiteName'] }}</td>
-                                <td>{{ $data['LgCateName'] }}</td>
+                                <td>{{ $data['CateName'] }}</td>
                                 <td class="bold">[{{ $data['ProdCode'] }}] {{ $data['ProdName'] }}</td>
                                 @if($stats_type == 'lecture')
                                     {{-- 단강좌 --}}
@@ -130,7 +132,7 @@
                                     <td>{{ $data['IsLecOpen'] == 'Y' ? '개설' : '폐강' }}</td>
                                     <td>{{ $data['AcceptStatusCcdName'] }}</td>
                                 @endif
-                                <td class="blue bold">{{ number_format($data['SumRemainPrice']) }}원<br/>({{ number_format($data['OrderProdCnt']) }}건)</td>
+                                <td class="blue bold">{{ number_format($data['tRemainPrice']) }}원<br/>({{ number_format($data['tOrderProdCnt']) }}건)</td>
                             </tr>
                             </tbody>
                         </table>
@@ -184,22 +186,27 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1">날짜검색</label>
+                    <label class="control-label col-md-1" for="search_prod_value">주문검색</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value">
+                    </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">주문번호 검색 가능</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">결제일/환불일</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="paid"{!! $arr_input['search_date_type'] == 'paid' ? ' selected="selected"' : '' !!}>결제완료일</option>
-                            <option value="refund"{!! $arr_input['search_date_type'] == 'refund' ? ' selected="selected"' : '' !!}>환불완료일</option>
-                        </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{ $arr_input['search_start_date'] }}">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{ $arr_input['start_date'] }}">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="{{ $arr_input['search_end_date'] }}">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="{{ $arr_input['end_date'] }}">
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
@@ -265,8 +272,13 @@
                 setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
             }
 
+            // 검색조건 초기화
+            $search_form.find('input[name="search_prod_value"]').val('');
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
+                displayStart: 0,
+                displayLength: 20,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
@@ -276,6 +288,7 @@
                     'url' : '{{ site_url('/sales/' . $stats_type . '/orderListAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
+                        console.log(data);
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
@@ -297,23 +310,30 @@
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return row.RealPayPrice !== null ? addComma(data) : '';
                     }},
                     {'data' : 'CompleteDatm'},
                     {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
-                        return row.RefundIdx !== null ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
+                        return row.RefundPrice !== null ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
                     }},
                     {'data' : 'RefundDatm'},
-                    {'data' : 'PayStatusCcdName'}
+                    {'data' : 'PayStatusName'}
                 ]
             });
 
             // 조회된 기간의 합계금액 표시 (datatable load event)
             $datatable.on('xhr.dt', function(e, settings, json) {
                 $('#search_period').html('[' + $search_form.find('input[name="search_start_date"]').val() + ' ~ ' + $search_form.find('input[name="search_end_date"]').val() + ']');
-                $('#sum_pay_price').html(addComma(json.sum_data.SumPayPrice));
-                $('#sum_refund_price').html(addComma(json.sum_data.SumRefundPrice));
-                $('#sum_total_price').html(addComma(json.sum_data.SumPayPrice - json.sum_data.SumRefundPrice));
+
+                if (json.sum_data !== null) {
+                    $('#sum_pay_price').html(addComma(json.sum_data.tRealPayPrice) + ' (' + addComma(json.sum_data.tRealPayCnt) + '건)');
+                    $('#sum_refund_price').html(addComma(json.sum_data.tRefundPrice) + ' (' + addComma(json.sum_data.tRefundCnt) + '건)');
+                    $('#sum_total_price').html(addComma(json.sum_data.tRealPayPrice - json.sum_data.tRefundPrice));
+                } else {
+                    $('#sum_pay_price').html('0');
+                    $('#sum_refund_price').html('0');
+                    $('#sum_total_price').html('0');
+                }
             });
 
             // 엑셀다운로드 버튼 클릭

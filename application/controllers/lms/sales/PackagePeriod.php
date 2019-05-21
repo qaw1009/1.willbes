@@ -18,9 +18,6 @@ class PackagePeriod extends BaseStats
     public function excel()
     {
         $headers = ['대비학년도', '패키지유형', '수강기간', '판매가', '정상가', '판매상태'];
-        $column = 'PL.SchoolYear, CPT.CcdName as PackTypeCcdName, CPP.CcdName as PackPeriodCcdName, PS.RealSalePrice, PS.SalePrice
-            , CSS.CcdName as SaleStatusCcdName';
-
-        parent::_excel($headers, $column);
+        parent::_excel($headers);
     }
 }

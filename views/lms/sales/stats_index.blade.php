@@ -119,12 +119,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1">날짜검색</label>
+                    <label class="control-label col-md-1">결제일/환불일</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="paid">결제완료일</option>
-                            <option value="refund">환불완료일</option>
-                        </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
@@ -264,7 +260,7 @@
                         // 리스트 번호
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
-                    {'data' : 'LgCateName'},
+                    {'data' : 'CateName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '[' + row.ProdCode + '] ' + data;
                     }},
@@ -332,8 +328,8 @@
                     }},
                     {'data' : 'AcceptStatusCcdName'},
                 @endif
-                    {'data' : 'SumRemainPrice', 'render' : function(data, type, row, meta) {
-                        return '<a class="blue cs-pointer btn-view" data-idx="' + row.ProdCode + '"><u>' + addComma(data) + '원</u></a>';
+                    {'data' : 'tRemainPrice', 'render' : function(data, type, row, meta) {
+                        return '<a class="blue cs-pointer btn-view" data-idx="' + row.ProdCode + '"><u>' + addComma(data) + '원</u><br/>(' + addComma(row.tOrderProdCnt) + '건)</a>';
                     }}
                 ]
             });
@@ -341,9 +337,16 @@
             // 조회된 기간의 합계금액 표시 (datatable load event)
             $datatable.on('xhr.dt', function(e, settings, json) {
                 $('#search_period').html('[' + $search_form.find('input[name="search_start_date"]').val() + ' ~ ' + $search_form.find('input[name="search_end_date"]').val() + ']');
-                $('#sum_pay_price').html(addComma(json.sum_data.tSumPayPrice));
-                $('#sum_refund_price').html(addComma(json.sum_data.tSumRefundPrice));
-                $('#sum_total_price').html(addComma(json.sum_data.tSumPayPrice - json.sum_data.tSumRefundPrice));
+
+                if (json.sum_data !== null) {
+                    $('#sum_pay_price').html(addComma(json.sum_data.tRealPayPrice) + ' (' + addComma(json.sum_data.tRealPayCnt) + '건)');
+                    $('#sum_refund_price').html(addComma(json.sum_data.tRefundPrice) + ' (' + addComma(json.sum_data.tRefundCnt) + '건)');
+                    $('#sum_total_price').html(addComma(json.sum_data.tRemainPrice));
+                } else {
+                    $('#sum_pay_price').html('0');
+                    $('#sum_refund_price').html('0');
+                    $('#sum_total_price').html('0');
+                }
             });
 
             // 카테고리, 과정, 과목, 교수 자동 변경
@@ -363,7 +366,14 @@
 
             // 매출현황 금액 클릭
             $list_table.on('click', '.btn-view', function() {
-                location.href = '{{ site_url('/sales/' . $stats_type . '/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                var site_code = $search_form.find('select[name="search_site_code"]').val();
+                var start_date = $search_form.find('input[name="search_start_date"]').val();
+                var end_date = $search_form.find('input[name="search_end_date"]').val();
+
+                // uri 셋팅
+                var show_uri = '/' + $(this).data('idx') + '/' + site_code + '/' + start_date + '/' + end_date;
+
+                location.href = '{{ site_url('/sales/' . $stats_type . '/show') }}' + show_uri + dtParamsToQueryString($datatable);
             });
         });
     </script>

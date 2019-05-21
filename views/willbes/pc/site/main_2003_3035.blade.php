@@ -18,18 +18,18 @@
 
         <div class="Section Section2">
             <div class="widthAuto">
-                <a href="#none"><img src="{{ img_url('gosi_law/visual/visual_top.jpg') }}" alt="최적의 합격솔루션 김동진 법원팀"></a>
+                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3035_visual_top.jpg" alt="최적의 합격솔루션 김동진 법원팀"></a>
             </div>
         </div>
 
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">1순환, 큰 틀에서 흐름을 파악하라!</a></li>
-                    <li><a href="#tab02">예비순환, 동행의 첫걸음</a></li>
+                    <li><a href="#tab01">2순환, 충분한 이해를 위한 이론 완성</a></li>
+                    <li><a href="#tab02">1순환, 큰 틀에서 흐름을 파악하라!</a></li>
                 </ul>
                 <div id="tab01">
-                    <img src="{{ img_url('gosi_law/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tit01_01.jpg" alt="기출된, 그리고 출제 가능성 있는 모든 내용 정리">
                     <ul class="PBcts">
                         @for($i=1; $i<=4; $i++)
                             @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
@@ -43,7 +43,7 @@
                     </ul>
                 </div>
                 <div id="tab02">
-                    <img src="{{ img_url('gosi_law/visual/visual_tit01_02.jpg') }}" alt="예비순환과 함께라면 단 1년 만에 합격!">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tit01_02.jpg" alt="과목별 기본 원칙을 세워 점수의 기반 형성">
                     <ul class="PBcts">
                         @for($i=5; $i<=8; $i++)
                             @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
@@ -65,7 +65,7 @@
                 <ul class="tipGo NSK">
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1089') }}">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1241') }}">강좌 바로가기</a></li>
-                    <li><a href="#none">개강 준비중</a></li>
+                    <li><a href="{{ site_url('/lecture/index/cate/3035/pattern/only?subject_idx=&course_idx=1055&school_year=2020') }}">강좌 바로가기</a></li>
                     <li><a href="#none">개강 준비중</a></li>
                     <li><a href="#none">개강 준비중</a></li>
                     <li><a href="#none">개강 준비중</a></li>

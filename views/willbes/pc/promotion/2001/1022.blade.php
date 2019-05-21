@@ -74,7 +74,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://police.local.willbes.net/promotion/index/cate/3001/code/1028" onFocus="this.blur();" >
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1028" onFocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_7.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_7on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_7.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_7on.jpg'" alt="김현정 경찰영어"  />
                         </a>
                     </li>

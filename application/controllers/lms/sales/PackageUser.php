@@ -18,8 +18,6 @@ class PackageUser extends BaseStats
     public function excel()
     {
         $headers = ['대비학년도', '판매상태'];
-        $column = 'PL.SchoolYear, CSS.CcdName as SaleStatusCcdName';
-
-        parent::_excel($headers, $column);
+        parent::_excel($headers);
     }
 }

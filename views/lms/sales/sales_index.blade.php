@@ -103,12 +103,8 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label class="control-label col-md-1">날짜검색</label>
+                    <label class="control-label col-md-1">결제일/환불일</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="paid">결제완료일</option>
-                            <option value="refund">환불완료일</option>
-                        </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
@@ -225,7 +221,7 @@
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
-                    {'data' : 'LgCateName'},
+                    {'data' : 'CateName'},
                     {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
                     }},
@@ -233,23 +229,30 @@
                         return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return row.RealPayPrice !== null ? addComma(data) : '';
                     }},
                     {'data' : 'CompleteDatm'},
                     {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
-                        return row.RefundIdx !== null ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
+                        return row.RefundPrice !== null ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
                     }},
                     {'data' : 'RefundDatm'},
-                    {'data' : 'PayStatusCcdName'}
+                    {'data' : 'PayStatusName'}
                 ]
             });
 
             // 조회된 기간의 합계금액 표시 (datatable load event)
             $datatable.on('xhr.dt', function(e, settings, json) {
                 $('#search_period').html('[' + $search_form.find('input[name="search_start_date"]').val() + ' ~ ' + $search_form.find('input[name="search_end_date"]').val() + ']');
-                $('#sum_pay_price').html(addComma(json.sum_data.SumPayPrice));
-                $('#sum_refund_price').html(addComma(json.sum_data.SumRefundPrice));
-                $('#sum_total_price').html(addComma(json.sum_data.SumPayPrice - json.sum_data.SumRefundPrice));
+
+                if (json.sum_data !== null) {
+                    $('#sum_pay_price').html(addComma(json.sum_data.tRealPayPrice) + ' (' + addComma(json.sum_data.tRealPayCnt) + '건)');
+                    $('#sum_refund_price').html(addComma(json.sum_data.tRefundPrice) + ' (' + addComma(json.sum_data.tRefundCnt) + '건)');
+                    $('#sum_total_price').html(addComma(json.sum_data.tRealPayPrice - json.sum_data.tRefundPrice));
+                } else {
+                    $('#sum_pay_price').html('0');
+                    $('#sum_refund_price').html('0');
+                    $('#sum_total_price').html('0');
+                }
             });
 
             // 사이트 탭 클릭

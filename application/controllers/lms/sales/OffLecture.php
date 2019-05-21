@@ -18,9 +18,6 @@ class OffLecture extends BaseStats
     public function excel()
     {
         $headers = ['캠퍼스', '대비학년도', '수강형태', '개강년월', '과정', '과목', '교수', '판매가', '정상가', '개설여부', '접수상태'];
-        $column = 'CCA.CcdName as CampusCcdName, PL.SchoolYear, CSP.CcdName as StudyPatternCcdName, concat(PL.SchoolStartYear, "/", PL.SchoolStartMonth) as SchoolStartYearMonth
-            , PCO.CourseName, PSU.SubjectName, VPP.wProfName_String, PS.RealSalePrice, PS.SalePrice, if(PL.IsLecOpen = "Y", "개설", "폐강") as IsLecOpenName, CAS.CcdName as AcceptStatusCcdName';
-
-        parent::_excel($headers, $column);
+        parent::_excel($headers);
     }
 }

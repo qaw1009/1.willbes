@@ -18,8 +18,6 @@ class Book extends BaseStats
     public function excel()
     {
         $headers = ['과목/교수', '출판사', '저자', '판매가', '정상가', '판매상태'];
-        $column = 'VPB.ProfSubjectNames, VBB.wPublName, VBB.wAuthorNames, PS.RealSalePrice, PS.SalePrice, CSS.CcdName as SaleStatusCcdName';
-
-        parent::_excel($headers, $column);
+        parent::_excel($headers);
     }
 }

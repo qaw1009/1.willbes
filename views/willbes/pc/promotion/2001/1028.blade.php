@@ -41,7 +41,7 @@
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1028_02.jpg"  alt="적중" usemap="#p1" />
             <map name="p1" id="p1">
-                <area shape="rect" coords="394,517,725,580" href="https://police.willbes.net/pass/support/notice/show?board_idx=225870" onfocus='this.blur()'  target="_blank" alt="더많은적중사례보러가기">
+                <area shape="rect" coords="394,517,725,580" href="https://police.willbes.net/pass/support/notice/show?board_idx=225453" onfocus='this.blur()'  target="_blank" alt="더많은적중사례보러가기">
             </map>
         </div>
 

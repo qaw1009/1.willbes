@@ -44,7 +44,7 @@
             position: absolute;
             top:0;
             width:100%;
-            z-index: 1;
+            z-index: 1;            
         }
     </style>
 
@@ -78,7 +78,7 @@
                 </li>
                 <li>
                     <a href="#tab3">
-                        <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap03.jpg" class="off"  />
+                        <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap03.jpg" class="off" alt=""/>
                         <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap03on.jpg" class="on"  alt=""/>
                     </a>
                 </li>

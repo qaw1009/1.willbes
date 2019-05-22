@@ -68,7 +68,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1247_01.jpg" title="푸짐한 경품 이벤트">
                     <div class="request" id="request">
                         <div class="requestL">
-                            <h3 class="NGEB"><span>신광은경찰학원 1:1맟춤형 </span> 신청접수</h3>
+                            <h3 class="NGEB"><span>신광은경찰학원 1:1 맞춤형 </span> 신청접수</h3>
                             <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                                 <col width="20%" />
                                 <col  />
@@ -148,7 +148,7 @@
                         </div>
                     </div>
                     <div class="btn NGEB">
-                        <a href="#none" onclick="javascript:fn_submit();">신광은경찰학원 1:1맟춤형 설명회 신청하기 ></a>
+                        <a href="#none" onclick="javascript:fn_submit();">신광은경찰학원 1:1 맞춤형 설명회 신청하기 ></a>
                     </div>
                 </div>
 

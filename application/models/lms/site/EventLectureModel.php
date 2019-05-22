@@ -812,7 +812,7 @@ class EventLectureModel extends WB_Model
     }
 
     /**
-     * 신청리스트 : 단일리스트 특강 정보 수정
+     * 신청리스트 : 특강 정보 수정
      * @param $input
      * @return array|bool
      */

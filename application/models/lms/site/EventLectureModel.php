@@ -812,6 +812,34 @@ class EventLectureModel extends WB_Model
     }
 
     /**
+     * 신청리스트 : 단일리스트 특강 정보 수정
+     * @param $input
+     * @return array|bool
+     */
+    public function updateRegister($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input_data = [
+                'PersonLimitType' => $input['person_limit_type'],
+                'PersonLimit' => $input['person_limit'],
+                'Name' => $input['register_name'],
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($input_data)->where('ErIdx', $input['er_idx']);
+            if($this->_conn->update($this->_table['event_register'])=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 댓글리스트
      * @param $is_count
      * @param array $arr_condition

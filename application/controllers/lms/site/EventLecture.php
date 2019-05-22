@@ -363,6 +363,27 @@ class EventLecture extends \app\controllers\BaseController
         $this->json_result($result, '만료상태 수정 정상 처리 되었습니다.', $result);
     }
 
+    /**
+     * 신청리스트 : 단일리스트 특강 정보 수정
+     */
+    public function updateRegister()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'er_idx', 'label' => '특강식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'person_limit_type', 'label' => '인원제한타입', 'rules' => 'trim|required|in_list[L,N]'],
+            ['field' => 'person_limit', 'label' => '정원수', 'rules' => 'callback_validateRequiredIf[person_limit_type,L]|integer'],
+            ['field' => 'register_name', 'label' => '특강명', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->updateRegister($this->_reqP(null, false));
+        $this->json_result($result, '만료상태 수정 정상 처리 되었습니다.', $result);
+    }
+
     public function read($params = [])
     {
         $el_idx = $params[0];

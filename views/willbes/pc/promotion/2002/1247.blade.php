@@ -49,7 +49,6 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> {{-- 체크 항목 전송 --}}
@@ -88,10 +87,20 @@
                                     <th>* 참여날짜</th>
                                     <td>
                                         <ul>
-                                            <li><input type="checkbox" name="" id="dateA" value=""/> <label for="dateA">6/1(토)</label></li>
-                                            <li><input type="checkbox" name="" id="dateB" value=""/> <label for="dateB">6/15(토)</label></li>
-                                            <li><input type="checkbox" name="" id="dateC" value=""/> <label for="dateC">6/22(토)</label></li>
-                                            <li><input type="checkbox" name="" id="dateD" value=""/> <label for="dateD">6/29(토)</label></li>
+                                            @foreach($arr_base['register_list'] as $row)
+                                            <li>
+                                                @if($row['RegisterExpireStatus'] == 'Y')
+                                                    @if($data['LimitType'] == 'S')
+                                                        <input type="radio" name="register_chk[]" id="register_date_{{ $loop->index }}" value="{{$row['ErIdx']}}">
+                                                    @else
+                                                        <input type="checkbox" name="register_chk[]" id="register_date_{{ $loop->index }}" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>
+                                                    @endif
+                                                @else
+                                                    <span style="float:right;margin-top:1px;margin-right:10px;">[신청만료]</span>
+                                                @endif
+                                                <label for="register_date_{{ $loop->index }}">{{$row['Name']}}</label>
+                                            </li>
+                                            @endforeach
                                         </ul>
                                     </td>
                                 </tr>

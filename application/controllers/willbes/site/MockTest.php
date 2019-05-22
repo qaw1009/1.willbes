@@ -88,7 +88,7 @@ class MockTest extends \app\controllers\FrontController
 
         //var_dump($arr_condition);
 
-        $paging = $this->pagination('mockTest/apply/cate/'.$this->_cate_code.'/?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mockTest/apply/cate/'.$this->_cate_code.'/?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
 
         if($count > 0) {
             $list = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,$paging['limit'],$paging['offset'],$order_by);
@@ -307,7 +307,7 @@ class MockTest extends \app\controllers\FrontController
 
         $list = [];
         $count = $this->mockInfoFModel->listMockTestForBoard(true, $arr_condition);
-        $paging = $this->pagination('mockTest/board/cate/'.$this->_cate_code.'/?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mockTest/board/cate/'.$this->_cate_code.'/?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
         if($count > 0) {
             $list = $this->mockInfoFModel->listMockTestForBoard(false, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
         }

@@ -277,7 +277,7 @@
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
                         return row.RefundPrice > 0 ? '<span class="red no-line-height">' + data + '</span>' : data;
                     }},
-                    {'data' : 'CateName'},
+                    {'data' : 'LgCateName'},
                     {'data' : 'LearnPatternCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.PackTypeCcdName !== null ? '<br/>(' + row.PackTypeCcdName + ')' : '');
                     }},

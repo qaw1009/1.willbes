@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#2a2a2d url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c1_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:#2a2a2d url(https://static.willbes.net/public/images/promotion/2019/05/1243_bg01.png) no-repeat center top; position:relative; height:1468px;}
         .ev_winner {width:980px; margin:0 auto; height:515px; padding:55px 0 20px; margin:0 auto 72px;}
         .ev_winner .bx-wrapper .bx-viewport {height:405px;}
         .wb_cts02 {background:#353439 url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c2_bg.jpg) repeat-y}
@@ -51,17 +51,18 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c1.png" alt="윌비스 신규입성 이동민 관리형 면접반 " usemap="#Map180501_c1" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1243_01.png" alt="윌비스 신규입성 이동민 관리형 면접반 " usemap="#Map180501_c1" border="0"/>
             <div class="ev_winner">
                 <ul id="slider1" class="bxslider">
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/05/2018-0508-01-1.png"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1243_1-01.png"/></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/1243_1-02.png"/></li>
                 </ul>
             </div>
-            <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c2.jpg" alt="윌비스 신규입성 이동민 관리형 면접반 "/>
         </div><!--WB_top//-->
 
 
         <div class="evtCtnsBox wb_cts02" >
+			<img src="https://static.willbes.net/public/images/promotion/2019/05/1243_02.png"/>
             <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c3.jpg" />
             <ul class="BnRTab">
                 <li>
@@ -113,7 +114,7 @@
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c9.png" alt="면접, 합격을 위한 마지막 관문. 윌비스 이동민 관리형 면접반" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1243_03.png" alt="면접, 합격을 위한 마지막 관문. 윌비스 이동민 관리형 면접반" />
         </div><!--wb_cts04//-->
 
     </div>

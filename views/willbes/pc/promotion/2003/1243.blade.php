@@ -22,7 +22,7 @@
         /************************************************************/
 
         .wb_top {background:#2a2a2d url(https://static.willbes.net/public/images/promotion/2019/05/1243_bg01.png) no-repeat center top; position:relative; height:1468px;}
-        .ev_winner {width:980px; margin:0 auto; height:515px; padding:55px 0 20px; margin:0 auto 72px;}
+        .ev_winner {width:980px; margin:0 auto; height:515px; padding:75px 0 20px; margin:0 auto 72px;}
         .ev_winner .bx-wrapper .bx-viewport {height:405px;}
         .wb_cts02 {background:#353439 url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c2_bg.jpg) repeat-y}
         .wb_cts03 {background:#353439 url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c2_bg.jpg) repeat-y}

@@ -164,6 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property OrderModel $orderModel                                                  Order Model Class
  * @property OrderListModel $orderListModel                                         Order List Model Class
  * @property OrderSalesModel $orderSalesModel                                    Order Sales Model Class
+ * @property ProfSalesModel $profSalesModel                                    Professor Order Sales Model Class
  * @property OrderStatsModel $orderStatsModel                                    Order Statistics Model Class
  * @property OrderCalcModel $orderCalcModel                                       Order Professor Calculate Model Class
  * @property OrderAdvanceModel $orderAdvanceModel                           Order Advance Received Model Class

@@ -190,12 +190,13 @@
                                 <div class="col-md-11 form-limit-type hide" id="table_limit_type_S">
                                     <div class="form-group form-inline">
                                         <div class="col-md-11">
-                                        <select class="form-control" id="person_limit_type" name="person_limit_type">
-                                            <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
-                                            <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='N')selected="selected"@endif>무제한</option>
-                                        </select>
-                                        <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
-                                        <span class="ml-20">[특강명] </span><input type="text" id="register_name" name="register_name" class="form-control ml-5" required="required_if:person_limit_type,L" title="특강명" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['Name'] : ''}}">
+                                            <select class="form-control" id="person_limit_type" name="person_limit_type">
+                                                <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
+                                                <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='N')selected="selected"@endif>무제한</option>
+                                            </select>
+                                            <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
+                                            <span class="ml-20">[특강명] </span><input type="text" id="register_name" name="register_name" class="form-control ml-5" required="required_if:person_limit_type,L" title="특강명" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['Name'] : ''}}">
+                                            <button type="button" class="btn btn-dark btn-register-submit" style="margin-bottom: 2px;" data-register-idx="{{empty($list_event_register['S']) === false ? $list_event_register['S'][0]['ErIdx'] : ''}}">단일특강수정</button>
                                         </div>
                                     </div>
                                 </div>
@@ -574,6 +575,7 @@
                 add_lists += '<td><input type="text" name="event_register_parson_limit[]" class="form-control" readonly="readonly" value="'+temp_person_limit+'"></td>';
                 add_lists += '<td></td>';
                 add_lists += '<td><input type="text" name="event_register_name[]" class="form-control no-border" readonly="readonly" value="'+temp_lecture_name+'"></td>';
+                add_lists += '<td></td>';
                 add_lists += '<td><a href="#none" class="btn-lecture-delete" data-lecture-temp-idx="'+temp_idx+'"><i class="fa fa-times fa-lg red"></i></a></td>';
                 add_lists += '<tr>';
                 $('#table_lecture > tbody:last').append(add_lists);
@@ -662,6 +664,32 @@
                         $(this).parents($fileBox).find($fileUpload).val('');
                     });
                 });
+            });
+
+            //단일리스트 특강 수정
+            $regi_form.on('click', '.btn-register-submit', function() {
+                if ($(this).data('register-idx') == '') {
+                    alert('수정할 특강 정보가 없습니다.');
+                    return;
+                }
+                if (!confirm('특강정보를 수정 하시겠습니까?')) {
+                    return;
+                }
+                var _url = '{{ site_url("/site/eventLecture/updateRegister") }}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'er_idx' : $(this).data('register-idx'),
+                    'person_limit_type' : $regi_form.find('select[name="person_limit_type"]').val(),
+                    'person_limit' : $regi_form.find('input[name="person_limit"]').val(),
+                    'register_name' : $regi_form.find('input[name="register_name"]').val()
+                };
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
             });
 
             //목록

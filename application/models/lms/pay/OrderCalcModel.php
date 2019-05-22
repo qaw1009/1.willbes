@@ -699,14 +699,14 @@ class OrderCalcModel extends BaseOrderModel
 				, O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd
 				, OP.OrderProdIdx, OP.SalePatternCcd, OP.PayStatusCcd
 				, O.CompleteDatm, OPR.RefundDatm
-				, PC.CateCode
+				, left(PC.CateCode, 4) as LgCateCode
 				, json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
 
             if ($is_count === false || $is_count === 'excel') {
                 $column = 'U.*
 	                , WPF.wProfName
                     , M.MemId, M.MemName
-                    , PCO.CourseName, PSU.SubjectName, SC.CateName
+                    , PCO.CourseName, PSU.SubjectName, SC.CateName as LgCateName
                     , CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CPS.CcdName as PayStatusCcdName
                     , CLP.CcdName as LearnPatternCcdName, CPT.CcdName as PackTypeCcdName';
             } else {
@@ -844,7 +844,7 @@ class OrderCalcModel extends BaseOrderModel
                     left join ' . $this->_table['subject'] . ' as PSU
                         on U.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"	
                     left join ' . $this->_table['category'] . ' as SC
-                        on U.CateCode = SC.CateCode and SC.IsStatus = "Y"
+                        on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
                     left join ' . $this->_table['code'] . ' as CPR
                         on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
                     left join ' . $this->_table['code'] . ' as CPM
@@ -872,7 +872,7 @@ class OrderCalcModel extends BaseOrderModel
         // 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
-                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusCcdName, CateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
+                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusCcdName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
                 , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
                 , ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';

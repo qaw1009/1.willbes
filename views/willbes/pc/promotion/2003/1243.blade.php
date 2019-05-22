@@ -54,8 +54,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1243_01.png" alt="윌비스 신규입성 이동민 관리형 면접반 " usemap="#Map180501_c1" border="0"/>
             <div class="ev_winner">
                 <ul id="slider1" class="bxslider">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1243_1-01.png"/></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/1243_1-02.png"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1243_1-01.png"/></li>					
                 </ul>
             </div>
         </div><!--WB_top//-->

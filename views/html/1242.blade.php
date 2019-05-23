@@ -59,20 +59,27 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1242_01.jpg"  alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1242_01.jpg"  alt="" usemap="#Map1242B" border="0" />
+            <map name="Map1242B" id="Map1242B">
+                <area shape="rect" coords="253,1234,537,1294" href="javascript:doEvent1()" alt="필기합격인증하기" />
+                <area shape="rect" coords="581,1234,868,1294" href="javascript:doEvent2()" alt="나의성적입력하기" />
+                <area shape="rect" coords="252,1326,871,1388" href="javascript:doEvent3()" alt="실시간 참여현황" />
+            </map>
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_cts03" >
             <ul>
                 <li><a href="javascript:doEvent1()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn1.gif"  alt="" /></a></li>
                 <li><a href="javascript:doEvent2()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn2.gif"  alt="" /></a></li>
             </ul>
         </div>
+        --}}
             
         <div class="evtCtnsBox wb_cts04" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1242_02.jpg"  alt="" usemap="#Map1242A" border="0" />
             <map name="Map1242A" id="Map1242A">
-                <area shape="rect" coords="778,1102,1033,1192" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1231" target="_blank" alt="다드림" />
+                <area shape="rect" coords="251,1127,871,1192" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1231" target="_blank" alt="다드림" />
             </map>
         </div>
     </div>
@@ -80,13 +87,18 @@
 
     <script type="text/javascript">
         function doEvent1() {            
-            var url = '1242_pop1' ;
+            var url = '/pass/certApply/index/page/exam_no/cert/20' ;
             window.open(url,'police_event1', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=850');
         }
-        
-        function doEvent2() {
-            var url = '1242_pop2' ;
+
+        function doEvent2() {            
+            var url = '1242_pop1' ;
             window.open(url,'police_event2', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=850');
+        }
+        
+        function doEvent3() {
+            var url = '1242_pop2' ;
+            window.open(url,'police_event3', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=850');
         }  
     </script> 
    

@@ -60,7 +60,7 @@
     <form id="" name="" method="post" action="">
     <div class="eventPop">
         <h3>
-            2019년 1차 <span class="tx-bright-blue">최종합격기원 예측서비스</span> 이벤트
+            <span class="tx-bright-blue">나의 성적 입력</span>
         </h3>
         <div class="eventPopS1">
             <ul>
@@ -79,18 +79,6 @@
                         <option value="">지역3</option>
                     </select>
                     ※ 응시직렬은 최초 선택/저장 후 수정 불가
-                </li>
-                <li class="w50">
-                    <strong>* 2019년 1차 필기합격 응시번호</strong>
-                    <input type="text" name="textfield" id="textfield"> 
-                </li>
-                <li class="w50">
-                    <strong>* 추천해준 친구 윌비스 ID</strong>
-                    <input type="text" name="textfield" id="textfield"> 
-                </li>
-                <li class="c_both">
-                    <strong>* 응시표 인증파일 - (jpg, gif, png 파일만 등록 가능)</strong>
-                    <input type="file" name="ATTACH_FILE" id="ATTACH_FILE" style="width:300px">
                 </li>
                 <li>
                     <strong>* 필기점수 입력</strong>
@@ -146,29 +134,6 @@
                     * 본 서비스의 점수 입력 마감 기한은 <span class="tx-red">2019년 7월 16일 (화)</span> 까지 입니다.
                 </li>
             </ul>
-        </div>
-
-        <div class="eventPopS3">
-            <p>* 개인정보 수집 및 이용에 대한 안내</p>
-            <ul>
-                <li>
-                    1. 개인정보 수집 이용 목적 <br>
-                    - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 무료특강수강
-                </li>
-                <li>개인정보 수집 항목<br>
-                    - 신청인의 이름, 휴대폰 번호, 이메일 주소, 응시정보 (직렬 및 지역, 응시번호, 필기합격인증이미지) 
-                </li>
-                <li>개인정보 이용기간 및 보유기간<br>
-                    - 본 수집, 활용목적 달성 후 바로 파기
-                </li>
-                <li>개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                    - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,
-                    위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
-                </li>                
-            </ul>
-            <div>
-                <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label> 
-            </div>
         </div>
         
         <div class="btnsSt3">

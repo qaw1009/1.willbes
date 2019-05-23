@@ -70,7 +70,7 @@
     <form id="" name="" method="post" action="">
     <div class="eventPop">
         <h3>
-            <span class="tx-bright-blue">나의 위치</span> 
+            <span class="tx-bright-blue">나의 위치 파악</span> 
         </h3>
         <div class="eventPopS1">
             <ul>
@@ -102,7 +102,7 @@
                         <col width="" />
                         <tbody>
                             <tr>
-                                <th>전체 필기 합격자 </th>
+                                <th>필기 합격자 </th>
                                 <td>00 명 </td>
                             </tr>
                             <tr>

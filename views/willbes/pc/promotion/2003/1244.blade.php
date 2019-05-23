@@ -74,14 +74,16 @@
             <div class="content_2_wrap">             
                 <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_02_1.jpg" title="과목별 마무리 학습 전략" /></p>
                 <ul class="youtubeTab NGEB">
-                    <li><a href="#yTab01" class="active">국어 기미진</a></li>
-                    <li><a href="#yTab02">영어 한덕현</a></li>
-                    <li><a href="#yTab03">한국사 박민주</a></li>
-                    <li><a href="#yTab04">행정학 김덕관</a></li>
-                    <li><a href="#yTab05">행정법 한세훈</a></li>
+                    <li><a href="#yTab01" class="active">국어<br> 기미진</a></li>
+                    <li><a href="#yTab02">영어<br> 한덕현</a></li>
+                    <li><a href="#yTab03">한국사<br> 박민주</a></li>
+                    <li><a href="#yTab04">한국사<br> 조민주</a></li>
+                    <li><a href="#yTab05">행정학<br> 김덕관</a></li>
+                    <li><a href="#yTab06">행정법<br> 한세훈</a></li>
+                    <li><a href="#yTab07">지방법(세법)<br> 고선미</a></li>
                 </ul>
                 <div class="youtubeCts youtube" id="yTab01">
-                    <iframe src="https://www.youtube.com/embed/afYUa3Al1Vo?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/5KDnhVEf0bE?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="youtubeCts youtube" id="yTab02">                    
                 </div>
@@ -90,6 +92,10 @@
                 <div class="youtubeCts youtube" id="yTab04">                   
                 </div>
                 <div class="youtubeCts youtube" id="yTab05">                    
+                </div>
+                <div class="youtubeCts youtube" id="yTab06">                    
+                </div>
+                <div class="youtubeCts youtube" id="yTab07">                    
                 </div>
 
                 <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_02_2.jpg" title="시험전, 시험당일 유의사항" /></p>
@@ -125,7 +131,7 @@
             <p class="mb100">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_1.jpg" usemap="#Map1244D" title="족집게 라이브 특강" border="0" />
                 <map name="Map1244D" id="Map1244D">
-                    <area shape="rect" coords="669,1629,951,1680" href="#none" alt="라이브특강 현장 수강 신청" />
+                    <area shape="rect" coords="669,1629,951,1680" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=258" target="_blank" alt="라이브특강 현장 수강 신청" />
                 </map>
             </p>
             <div class="content_4_wrap">                
@@ -195,13 +201,14 @@
             <p>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_1.jpg" usemap="#Map1244E" title="소문내기 이벤트" border="0" />
                 <map name="Map1244E" id="Map1244E">
+                    <area shape="rect" coords="186,1026,300,1055" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="이미지다운로드"/>
                     <area shape="rect" coords="143,1262,310,1324" href="http://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="공무원갤러리" />
                     <area shape="rect" coords="366,1263,523,1325" href="https://cafe.naver.com/gugrade" target="_blank" alt="공드림" />
                     <area shape="rect" coords="586,1261,714,1325" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&amp;currentPage=1&amp;groupId=0" target="_blank" alt="블로그" />
                     <area shape="rect" coords="144,1340,287,1405" href="http://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
                     <area shape="rect" coords="366,1343,518,1404" href="https://www.facebook.com" target="_blank" alt="패이스북" />
                     <area shape="rect" coords="592,1340,749,1407" href="https://www.instagram.com/?hl=ko" target="_blank" alt="인스타그램" />
-                    <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="이미지다운로드"/>
+                    <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="이미지다운로드"/>                  
                 </map>
             </p>
             {{--댓글--}}
@@ -346,11 +353,13 @@
         });
 
         /*마무리특강*/
-        var tab1_url = "https://www.youtube.com/embed/afYUa3Al1Vo?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/Fb9xMNurYac?rel=0";
-        var tab3_url = "https://www.youtube.com/embed/GDz8dCWTw1w?rel=0";
-        var tab4_url = "https://www.youtube.com/embed/Fb9xMNurYac?rel=0";
-        var tab5_url = "https://www.youtube.com/embed/GDz8dCWTw1w?rel=0";
+        var tab1_url = "https://www.youtube.com/embed/5KDnhVEf0bE?rel=0";
+        var tab2_url = "https://www.youtube.com/embed/wyQBKuyvbY4?rel=0";
+        var tab3_url = "https://www.youtube.com/embed/uNRHXa8uTug?rel=0";
+        var tab4_url = "https://www.youtube.com/embed/9EfkeMj4CrQ?rel=0";
+        var tab5_url = "https://www.youtube.com/embed/bgd4ZRaHTCs?rel=0";
+        var tab6_url = "https://www.youtube.com/embed/bIQerU7Tijc?rel=0";
+        var tab7_url = "https://www.youtube.com/embed/vfWaXa4nMYs?rel=0";
 
         $(document).ready(function(){
         $(".youtubeCts").hide(); 
@@ -365,10 +374,15 @@
                 }else if(activeTab == "#yTab03"){
                     html_str = "<iframe src='"+tab3_url+"' allowfullscreen></iframe>";
                 }else if(activeTab == "#yTab04"){
-                    html_str = "<iframe src='"+tab3_url+"' allowfullscreen></iframe>";
+                    html_str = "<iframe src='"+tab4_url+"' allowfullscreen></iframe>";
                 }else if(activeTab == "#yTab05"){
-                    html_str = "<iframe src='"+tab3_url+"' allowfullscreen></iframe>";
+                    html_str = "<iframe src='"+tab5_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#yTab06"){
+                    html_str = "<iframe src='"+tab6_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#yTab07"){
+                    html_str = "<iframe src='"+tab7_url+"' allowfullscreen></iframe>";
                 }
+                
                 
                 $(".youtubeTab li a").removeClass("active"); 
                 $(this).addClass("active"); 

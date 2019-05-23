@@ -387,7 +387,7 @@ class OrderSalesModel extends BaseOrderModel
             select O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode
                 , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
                 , null as RealPayPrice
-                , null as CompleteDatm
+                , CompleteDatm
                 , OPR.RefundPrice
                 , OPR.RefundDatm
             from ' . $this->_table['order_product_refund'] . ' as OPR

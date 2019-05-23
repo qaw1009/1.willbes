@@ -154,7 +154,7 @@ class BaseStats extends \app\controllers\BaseController
     }
 
     /**
-     * 매출통계계 조회 조건 리턴
+     * 매출통계 목록 정렬조건 리턴
      * @return array
      */
     private function _getListOrderBy()

@@ -97,7 +97,7 @@ class Manage extends \app\controllers\BaseController
                 case 'lastlogin':
                     $arr_condition = array_merge($arr_condition, [
                         'BDT' => [
-                            'Mem.JoinDate' => [$search_sdate, $search_edate]
+                            'Mem.LastLoginDatm' => [$search_sdate, $search_edate]
                         ]
                     ]);
                     break;
@@ -105,7 +105,7 @@ class Manage extends \app\controllers\BaseController
                 case 'lastmodify':
                     $arr_condition = array_merge($arr_condition, [
                         'BDT' => [
-                            'Mem.JoinDate' => [$search_sdate, $search_edate]
+                            'Mem.LastInfoModyDatm' => [$search_sdate, $search_edate]
                         ]
                     ]);
                     break;
@@ -113,7 +113,7 @@ class Manage extends \app\controllers\BaseController
                 case 'lastchgpwd':
                     $arr_condition = array_merge($arr_condition, [
                         'BDT' => [
-                            'Mem.JoinDate' => [$search_sdate, $search_edate]
+                            'Mem.LastPassModyDatm' => [$search_sdate, $search_edate]
                         ]
                     ]);
                     break;

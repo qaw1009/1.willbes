@@ -174,8 +174,8 @@ class OffLectureSD extends \app\controllers\BaseController
         $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'LearnPattern']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
-        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제, 관리자유료결제 코드만 필터링
-        $arr_pay_route_ccd = array_filter_keys($codes[$this->_group_ccd['PayRoute']], array_filter_keys($this->orderCalcModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'admin_pay']));
+        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 0원결제, 제휴사결제, 온라인0원결제, 관리자유료결제 코드만 필터링
+        $arr_pay_route_ccd = array_filter_keys($codes[$this->_group_ccd['PayRoute']], array_filter_keys($this->orderCalcModel->_pay_route_ccd, ['pg', 'visit', 'zero', 'alliance', 'on_zero', 'admin_pay', 'on_zero']));
 
         // 결제상태 공통코드에서 결제완료, 환불완료 코드만 필터링
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderCalcModel->_pay_status_ccd, ['paid', 'refund']));

@@ -30,34 +30,34 @@
         <div class="evtCtnsBox evtMenu NGEB" id="evtMenu">                
             <ul>
                 <li>
-                    {{--<a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1244/spidx/2?tab=1#content_1') }}">--}}
+                    {{--<a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">--}}
                     <a id='tab1' href="javascript:alert('준비중입니다.');">
                         <span>서울시/지방직 9급</span>
                         <div>시험 완벽분석</div>
                     </a>
                 </li>
                 <li>                    
-                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1244/spidx/2?tab=2#content_2') }}">
+                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=2#content_2') }}">
                         <span>합격을 위한 최종점검</span>
                         <div>마무리 전략</div>				
                     </a>
                 </li>
                 <li>
-                    <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1244/spidx/2?tab=3#content_3') }}">                        
+                    <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}">
                         <strong>무료응시</strong>
                         <span>미리 보는 시험</span>
                         <div>6/2 전국 모의고사</div>
                     </a>
                 </li>     
                 <li>
-                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1244/spidx/2?tab=4#content_4') }}"> 
+                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}">
                         <strong>윌비스 TV</strong>   
                         <span>적중 마무리 특강</span>
                         <div>LIVE 특강</div>
                     </a>
                 </li>
                 <li>
-                    <a id='tab5' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1244/spidx/2?tab=5#content_5') }}">  
+                    <a id='tab5' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=5#content_5') }}">
                         <strong>진행중</strong>  
                         <span>참여하고 선물 받자!</span>
                         <div>합격기원 이벤트</div>
@@ -109,7 +109,7 @@
                 <area shape="rect" coords="550,1837,661,1869" href="javascript:go_popup()" alt="약도보기" />
                 <area shape="rect" coords="188,1904,549,1968" href="https://pass.willbes.net/pass/mockTest/apply/cate/?state=1&s_type=&s_keyword=" target="_blank" alt="온라인모의고사신청" />
               	<area shape="rect" coords="573,1903,934,1970" href="https://pass.willbes.net/pass/mockTest/apply/cate/?state=2&s_type=&s_keyword=" target="_blank" alt="오프라인모의고사신청" />
-                <area shape="rect" coords="97,2285,343,2334" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1244/spidx/2?tab=5#giftevent') }}" alt="이벤트자세히보기" />              
+                <area shape="rect" coords="97,2285,343,2334" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=5#giftevent') }}" alt="이벤트자세히보기" />
             </map>
             <!--레이어팝업-->
             <div id="popup" class="Pstyle">
@@ -201,7 +201,7 @@
                     <area shape="rect" coords="144,1340,287,1405" href="http://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
                     <area shape="rect" coords="366,1343,518,1404" href="https://www.facebook.com" target="_blank" alt="패이스북" />
                     <area shape="rect" coords="592,1340,749,1407" href="https://www.instagram.com/?hl=ko" target="_blank" alt="인스타그램" />
-                    <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="이미지다운로드" />
+                    <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="이미지다운로드"/>
                 </map>
             </p>
             {{--댓글--}}
@@ -211,7 +211,7 @@
             <p id="giftevent">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_2.jpg" usemap="#Map1244E1" title="소문내기 이벤트" border="0" />
                 <map name="Map1244E1" id="Map1244E1">
-                    <area shape="rect" coords="252,340,573,388" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1244/spidx/2?tab=3#content_3') }}" alt="모의고사신청하기" />
+                    <area shape="rect" coords="252,340,573,388" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}" alt="모의고사신청하기" />
                 </map>
             </p>
             <div class="note">

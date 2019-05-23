@@ -1,0 +1,154 @@
+.subContainer {
+    min-height:auto !important;
+    margin-bottom:0 !important;
+}
+.evtContent { 
+    position:relative;            
+    width:100% !important;
+    margin-top:20px !important;
+    padding:0 !important;
+    background:#fff;
+}	
+.evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+
+/*****************************************************************/  
+
+.evtTop {
+    background:url(https://static.willbes.net/public/images/promotion/2019/05/1244_top_bg.jpg) no-repeat center top; padding-bottom:125px;
+}
+.evtTop > div {width:1120px; margin:0 auto; position:relative;}
+.evtTop > div span {position:absolute; width:120px; z-index: 1;}
+.evtTop > div span.txt1 {top:52px; left:847px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
+.evtTop > div span.txt2 {top:163px; left:893px; animation:slidein2 0.4s ease-in; -webkit-animation:slidein2 0.4s ease-in;}
+.evtTop > div span.txt3 {top:294px; left:904px; animation:slidein3 0.6s ease-in; -webkit-animation:slidein3 0.6s ease-in;}
+.evtTop > div span.txt4 {top:415px; left:884px; animation:slidein4 0.8s ease-in; -webkit-animation:slidein4 0.8s ease-in;}
+.evtTop > div span.txt5 {top:530px; left:834px; animation:slidein5 1s ease-in; -webkit-animation:slidein5 1s ease-in;}
+.evtTop .youtube iframe {width:800px; height:453px; margin:0 auto}
+@keyframes slidein1 {
+    from {
+    left:605px; opacity: 0;
+    }
+    to {
+    left:847px; opacity: 1;
+    }
+}
+@keyframes slidein2 {
+    from {
+    left:605px; opacity: 0;
+    }
+    to {
+    left:893px; opacity: 1
+    }
+}
+@keyframes slidein3 {
+    from {
+    left:605px; opacity: 0;
+    }
+    to {
+    left:904px; opacity: 1
+    }
+}
+@keyframes slidein4 {
+    from {
+    left:605px; opacity: 0;
+    }
+    to {
+    left:884px; opacity: 1
+    }
+}
+@keyframes slidein5 {
+    from {
+    left:605px; opacity: 0;
+    }
+    to {
+    left:834px; opacity: 1
+    }
+}
+.evtMenu {width:100%; background:#c7b29a;}
+.evtMenu ul {width:1120px; margin:0 auto}
+.evtMenu li {display:inline; float:left; width:20%; position: relative;}
+.evtMenu li a {
+    display:block; text-align:center; padding:30px 0; color:#c7b29a; font-size:22px; font-weight:900; 
+    background:#a79681; border-right:5px solid #c7b29a;
+}  
+.evtMenu li a strong {position:absolute; top:-10px; left:50%; margin-left:-50px; font-size:14px; width: 100px; text-align:center; background:#d18f04; color:#fff;
+    height: 30px; line-height: 30px; border-radius: 15px;
+}
+.evtMenu li a span {font-weight:normal; font-size:16px}
+.evtMenu li a div {margin-top:8px}
+.evtMenu li:hover a,
+.evtMenu li a.active {background:#fff; color:#8a4e09}
+.evtMenu ul:after {content:""; display:block; clear:both}
+
+.tabCts {
+    position:relative; width:1120px; margin:0 auto; text-align:center;
+}
+.tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
+.tabCts .download span:nth-child(1) {left:160px;}
+.tabCts .download span:nth-child(2) {left:362px;}
+.tabCts .download span:nth-child(3) {left:572px;}
+.tabCts .download span:nth-child(4) {left:760px;}
+.tabCts .download span:nth-child(5) {left:940px;}
+.tabCts .download span a {display:block; color:#fff; background:#d18f04; border-radius:14px;}
+.tabCts .download span a:hover {background:#e50001}
+.tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
+.tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
+.tabCts p {margin-bottom:50px}
+
+.content_2_wrap,
+.content_4_wrap {width:980px; margin:0 auto; text-align: left}
+.youtubeTab {width:856px; margin:0 auto 30px;}
+.youtubeTab li {display:inline; float:left; width:20%;}
+.youtubeTab li a {display:block; border-radius:15px; background:#fff; color:#959595; text-align: center; border:2px solid #959595; margin:0 4px;
+height: 53px; line-height: 53px; font-size:18px;
+}
+.youtubeTab li a.active,
+.youtubeTab li a:hover {background:#959595; color:#fff;}
+.youtubeTab:after {content:""; display:block; clear:both}
+.content_2_wrap .youtubeCts {margin-bottom:100px;}
+
+/*레이어팝업*/
+.Pstyle {
+    opacity: 0;
+    display: none;
+    position: relative;
+    width: auto;    
+    padding: 20px;
+    background: #000;
+}
+.b-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    color:#fff;
+}
+.Pstyle .content {height:auto; width:auto;}
+
+#movieFrame {position:relative; width:980px; height:551px; margin:0 auto; padding-top:14px;}
+.embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
+.embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:551px; margin:0 auto}  
+        
+/*크롬*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+#movieFrame {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px;}
+.embedWrap {position:relative; width:980px; height:551px; margin-left:70px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1244_04_3.jpg) no-repeat center center;}
+.embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto;}
+.mobileCh {position:absolute; left:0; bottom:0; width:980px;}
+.mobileCh li {display:inline; float:left; width:490px;}
+.mobileCh li a {display:block;}
+.mobileCh li a.ch2 {color:#6CF}
+.mobileCh li a:hover {color:#FC0}
+.mobileCh:after {content:""; display:block; clear:both}
+} 
+
+/*모바일*/
+.mobileCh {position:absolute; bottom:0; width:980px;}
+.mobileCh li {display:inline; float:left; width:50%;}
+.mobileCh li a {display:block;}
+.mobileCh li:last-child a {margin:0}
+.mobileCh li a.ch2 {color:#6CF}
+.mobileCh li a:hover {color:#FC0}
+.mobileCh:after {content:""; display:block; clear:both}

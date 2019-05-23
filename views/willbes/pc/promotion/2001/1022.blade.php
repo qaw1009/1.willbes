@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://police.willbes.net/pass/support/notice/show?board_idx=226914&s_campus=605001&s_keyword=" >
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1026') }}">
                         {{--<a href="javascript:alert('19년 1차 적중, 곧 공개됩니다!');">--}}
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_5.jpg" class="off" alt="오태진 경찰한국사"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_5on.jpg" class="on" alt="오태진 경찰한국사"  />

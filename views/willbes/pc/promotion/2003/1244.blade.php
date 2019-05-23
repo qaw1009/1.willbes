@@ -182,8 +182,8 @@
                     </div>
                     --}}
                     
-                    {{--방송종료 00:00 부터 노출
-                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_3.jpg" title="방송종료" />
+                    {{--6/11 00:00 부터 노출
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_3_end.jpg" title="방송종료" />
                     --}}
                 </div>
                 <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_4.jpg" title="라이브 특강 수강 안내"></p>                

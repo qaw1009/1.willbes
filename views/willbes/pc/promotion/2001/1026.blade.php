@@ -22,7 +22,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#305f8b url(http://file3.willbes.net/new_cop/2018/04/EV190110_p1_bg.png) no-repeat center;}
+        .wb_top {background:#305f8b url(https://static.willbes.net/public/images/promotion/2019/05/1026_bg01.png) no-repeat center;}
         .wb_cts01 {background:#0c2641}
         .wb_cts02 {background:#fff url(http://file3.willbes.net/new_cop/2018/04/EV180412_p3_bg.png) no-repeat center}
         .wb_cts03 {background:#2d5177 url(http://file3.willbes.net/new_cop/2018/04/EV180412_p4_bg.png) no-repeat center; padding-bottom: 100px}
@@ -56,20 +56,22 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03" >
-            <img src="http://file3.willbes.net/new_cop/2018/04/EV190110_p4.png"  alt="동영상" /><br>
-            <iframe width="854" height="480" src="https://www.youtube.com/embed/EOwasVMWlrM?rel=0" frameborder="0" allowfullscreen></iframe>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1026_01.png"  alt="동영상" /><br>
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/Oz2eKCfPWU4" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox wb_cts05" >
             <img src="http://file3.willbes.net/new_cop/2018/04/EV190110_p5.png" usemap="#Map" alt="적중사례" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="249,587,765,674" href="{{ site_url('/support/notice/index/cate/3001') }}" target="_blank" />
+                <area shape="rect" coords="249,587,765,674" href="{{ site_url('/pass/support/notice/show?board_idx=226914&') }}" target="_blank" />
             </map>
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="http://file3.willbes.net/new_cop/2018/04/EV190110_p5_01.png" alt="2" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/04/EV190110_p5_02.png" alt="6" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/04/EV190110_p5_03.png" alt="10-12" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1026_s01.jpg" alt="5번,6번" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1026_s02.jpg" alt="9번" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1026_s03.jpg" alt="12번" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/1026_s04.jpg" alt="15번" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/1026_s05.jpg" alt="20번" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/09/EV170922_p_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/09/EV170922_p_next.png"></a></p>

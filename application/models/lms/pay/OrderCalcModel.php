@@ -797,8 +797,8 @@ class OrderCalcModel extends BaseOrderModel
 					on PC.ProdCode = TA.ProdCode and PC.IsStatus = "Y"				
 				left join ' . $this->_table['code'] . ' as CPM
 					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"		            
-			where OP.RealPayPrice > 0
-				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+			where OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+			    and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['free'] . '")
 				and (TA.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" or (TA.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and OSP.ProdCodeSub is not null))                            
         ';
 

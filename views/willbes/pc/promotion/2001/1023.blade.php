@@ -22,7 +22,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {background:#201f1f url(https://static.willbes.net/public/images/promotion/2019/03/1023_top_bg.jpg) no-repeat center top}
+        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/03/1023_top_bg.jpg) no-repeat center top}
         .wb_cts02 {background:#201f1f url(https://static.willbes.net/public/images/promotion/2019/03/1023_01_bg.jpg) no-repeat center top}
         .bannerImg3 {position:relative; width:966px; margin:0 auto; padding-bottom: 124px}
         .wb_cts02 ul {width:100%; margin:0 auto}        

@@ -216,6 +216,23 @@
                             </div>
                         </td>
                     </tr>
+
+                    <tr>
+                        <th colspan="1">필기합격자수</th>
+                        <td>
+                            <div>
+                                <input type="text" class="form-control" name="SuccessfulCount" value="@if($method == 'PUT'){{ $data['SuccessfulCount'] }}@endif" style="width:50px;">
+                            </div>
+                        </td>
+                        <th colspan="1">인증식별자</th>
+                        <td>
+                            <div>
+                                <input type="text" class="form-control" name="CertIdxArr" value="@if($method == 'PUT'){{ $data['CertIdxArr'] }}@endif" style="width:150px;">
+                            </div>
+                        </td>
+                    </tr>
+
+
                     <tr>
                         <th>등록자</th>
                         <td>@if($method == 'PUT'){{ $data['wAdminName'] }}@endif</td>

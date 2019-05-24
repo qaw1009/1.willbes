@@ -184,59 +184,73 @@
             <div class="LeclistTable">
                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray tx-gray">
                     <colgroup>
-                        <col style="width: 540px;">
+                        <col>
+                        <col style="width: 80px;">
+                        <col style="width: 100px;">
                         <col style="width: 120px;">
-                        <col style="width: 140px;">
-                        <col style="width: 140px;">
+                        <col style="width: 100px;">
+                        <col style="width: 100px;">
                     </colgroup>
                     <thead>
                         <tr>
                             <th>상품정보<span class="row-line">|</span></li></th>
                             <th>수강기간<span class="row-line">|</span></li></th>
+                            <th>정가(할인율)<span class="row-line">|</span></li></th>
                             <th>실 결제금액<span class="row-line">|</span></li></th>
-                            <th>사용쿠폰</th>
+                            <th>사용쿠폰<span class="row-line">|</span></th>
+                            <th>주문/배송상태</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
+                                <span class="pBox p1 mb3">강좌</span><br>2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
                             </td>
                             <td class="w-day">40일</td>
+                            <td>75,000원<br><span class="tx-light-blue">(↓77%)</span></td>
                             <td class="w-price tx-light-blue">75,000원</td>
                             <td class="w-coupon">20% 할인권</td>
+                            <td>결제완료</td>
                         </tr>
                         <tr>
                             <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p1">강좌</span> 2018 김용철행정법총론실전동형모의고사(3월)
+                                <span class="pBox p1 mb3">강좌</span><br>2018 김용철행정법총론실전동형모의고사(3월)
                             </td>
                             <td class="w-day">40일</td>
+                            <td>75,000원<br><span class="tx-light-blue">(↓77%)</span></td>
                             <td class="w-price tx-light-blue">80,000원</td>
                             <td class="w-coupon">20% 할인권</td>
+                            <td>결제완료</td>
                         </tr>
                         <tr>
                             <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p2">패키지</span> 2017 9급공무원이론선택형종합패키지-30일완성
+                                <span class="pBox p2 mb3">패키지</span><br>2017 9급공무원이론선택형종합패키지-30일완성
                             </td>
                             <td class="w-day">140일</td>
-                            <td class="w-price tx-light-blue">180,000원</td>
+                            <td>75,000원<br><span class="tx-light-blue">(↓77%)</span></td>
+                            <td class="w-price tx-light-blue">2,180,000원</td>
                             <td class="w-coupon">20% 할인권</td>
+                            <td>결제완료</td>
                         </tr>
                         <tr>
                             <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p3">교재</span> 2017 정채영국어서울시문제를알려주마!1
+                                <span class="pBox p3 mb3">교재</span><br>2017 정채영국어서울시문제를알려주마!1
                             </td>
                             <td class="w-day">&nbsp;</td>
+                            <td>75,000원<br><span class="tx-light-blue">(↓77%)</span></td>
                             <td class="w-price tx-light-blue">7,000원</td>
                             <td class="w-coupon">20% 할인권</td>
+                            <td>결제완료</td>
                         </tr>
                         <tr>
                             <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p3">교재</span> 2017정채영국어서울시문제를알려주마!2
+                                <span class="pBox p3 mb3">교재</span><br>2017정채영국어서울시문제를알려주마!2
                             </td>
                             <td class="w-day">&nbsp;</td>
+                            <td>75,000원<br><span class="tx-light-blue">(↓77%)</span></td>
                             <td class="w-price tx-light-blue">5,000원</td>
                             <td class="w-coupon">20% 할인권</td>
+                            <td>결제완료</td>
                         </tr>
                     </tbody>
                 </table>

@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {position:relative;overflow:hidden; min-width:1120px; text-align:center; background:#000 url("https://static.willbes.net/public/images/promotion/2019/05/1246_top_bg.jpg") center top  no-repeat; margin-top:5px;}
+        .wb_cts01 {position:relative; overflow:hidden;  background:#000 url("https://static.willbes.net/public/images/promotion/2019/05/1246_top_bg.jpg") center top  no-repeat}
         .wb_cts02 {background:#eceaeb}
         .wb_cts03 {background:#f4f4f4}
         .wb_cts04 {background:#fff}
@@ -31,8 +31,8 @@
         .wb_cts08 {background:#fff}
         .wb_cts09 {background:#d9d6d1}
         /* tip */
-        .wb_cts10 {background:#fff; text-align:left; padding:0px 0; width:1120px; margin:50px auto }
-        .wb_tipBox {width:948px; border:1px solid #333; padding:30px; margin:0 115px}
+        .wb_cts10 {background:#fff; text-align:left; padding:100px 0}
+        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; }
         .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
         .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
         .wb_tipBox ol li {margin-bottom:10px; line-height:1.3; list-style:decimal; margin-left:15px}
@@ -40,11 +40,11 @@
         .wb_tipBox ul li {margin-bottom:5px}
         .wb_tipBox table {width:100%; border-spacing:0px; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
         .wb_tipBox th,
-        .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4; font-size:100% !important}
+        .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
         .wb_tip_orange {font-size:12px; color:#c03011;}
 
-      /*TAB_tip*/
+        /*TAB_tip*/
         .tab02 {margin-bottom:20px}
         .tab02 li {display:inline; float:left; width:33.33333%;}
         .tab02 li a { display:block; text-align:center; font-size:14px; font-weight:bold; background:#323232; color:#fff; padding:14px 0; border:1px solid #323232; margin-right:2px}
@@ -53,22 +53,22 @@
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}
 
-      /*TAB*/
-            .tabWrapEvt{width:980px; margin:0 auto}
-            .tabWrapEvt li {display:inline; float:left; width:490px; margin-left:0px;}
-            .tabWrapEvt li a {display:block; text-align:center}
-            .tabWrapEvt li a img.off {display:block}
-            .tabWrapEvt li a img.on {display:none}
-            .tabWrapEvt li a:hover img.off {display:none}
-            .tabWrapEvt li a:hover img.on {display:block}
-            .tabWrapEvt li a.active img.off {display:none}
-            .tabWrapEvt li a.active img.on {display:block}
-            .tabWrapEvt li a:hover,
-            .tabWrapEvt li a.active {}
-            .tabWrapEvt li:last-child a {margin-right:0}
-            .tabWrapEvt:after {content:""; display:block; clear:both}
-            .tabcts {background:none; width:980px; margin:0px auto 0; text-align:center;}
-            .tabcts iframe {width:980px; margin:0px auto 0; height:450px; border:#000 solid 0px;}
+        /*TAB*/
+        .tabWrapEvt{width:980px; margin:0 auto}
+        .tabWrapEvt li {display:inline; float:left; width:490px; margin-left:0px;}
+        .tabWrapEvt li a {display:block; text-align:center}
+        .tabWrapEvt li a img.off {display:block}
+        .tabWrapEvt li a img.on {display:none}
+        .tabWrapEvt li a:hover img.off {display:none}
+        .tabWrapEvt li a:hover img.on {display:block}
+        .tabWrapEvt li a.active img.off {display:none}
+        .tabWrapEvt li a.active img.on {display:block}
+        .tabWrapEvt li a:hover,
+        .tabWrapEvt li a.active {}
+        .tabWrapEvt li:last-child a {margin-right:0}
+        .tabWrapEvt:after {content:""; display:block; clear:both}
+        .tabcts {background:none; width:980px; margin:0px auto 0; text-align:center;}
+        .tabcts iframe {width:980px; margin:0px auto 0; height:450px; border:#000 solid 0px;}
 
         .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
         .skybanner ul li {padding-bottom:5px;}
@@ -76,51 +76,52 @@
   </style>
 
  <div class="p_re evtContent NGR" id="evtContainer">
-  <div class="skybanner">
-            <ul>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky.jpg"  title="군무원합격전략설명회" /></a></li>
-                <li><a href="https://pass.willbes.net/guide/show/cate/3024/pattern/gpgosi" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky2.jpg"  title="군무원시험정보" /></a></li>
-                <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky3.jpg"  title="통생자습반" /></a></li>
-            </ul>
-    </div>    
-  <div class="evtCtnsBox wb_cts01">
-	  <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_top.png" title="윌비스군무원7월개강" />
-  </div>
-  <!--wb_cts01//-->
+    <div class="skybanner">
+      <ul>
+          <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=261" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky.jpg"  title="군무원합격전략설명회" /></a></li>
+          <li><a href="https://pass.willbes.net/guide/show/cate/3024/pattern/gpgosi" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky2.jpg"  title="군무원시험정보" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky3.jpg"  title="통생자습반" /></a></li>
+      </ul>
+    </div> 
+
+    <div class="evtCtnsBox wb_cts01">
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_top.png" title="윌비스군무원7월개강" />
+    </div>
+    <!--wb_cts01//-->
+    
+    <div class="evtCtnsBox wb_cts02">
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_01.jpg"  title="비교할수 없는 윌비스군무원" />
+    </div>
+    <!--wb_cts02//-->
   
-  <div class="evtCtnsBox wb_cts02">
-	  <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_01.jpg"  title="비교할수 없는 윌비스군무원" />
-  </div>
-  <!--wb_cts02//-->
+    <div class="evtCtnsBox wb_cts03">
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_02.jpg" title="군무원전문직렬확대" />
+    </div>
+    <!--wb_cts03//-->
+    
+    <div class="evtCtnsBox wb_cts04">
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_03.jpg" title="명품교수진" />
+    </div>
+    <!--wb_cts04//-->
   
-  <div class="evtCtnsBox wb_cts03">
-	  <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_02.jpg" title="군무원전문직렬확대" />
-  </div>
-  <!--wb_cts03//-->
+    <div class="evtCtnsBox wb_cts05">
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_04.jpg" title="군무원커리큘럼" />
+    </div>
+    <!--wb_cts05//-->
   
-  <div class="evtCtnsBox wb_cts04">
-    <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_03.jpg" title="명품교수진" />
-  </div>
-  <!--wb_cts04//-->
-  
-  <div class="evtCtnsBox wb_cts05">
-    <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_04.jpg" title="군무원커리큘럼" />
-  </div>
-  <!--wb_cts05//-->
-  
-  <div class="evtCtnsBox wb_cts06">
-	<img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05.jpg" title="학습관리시스템" />
-    <!--tab-->
-    <ul class="tabWrapEvt">
-      <li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t1.jpg" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t1_on.jpg" alt="" class="on"/></a></li>
-      <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t2.jpg" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t2_on.jpg" alt="" class="on"/></a></li>
-    </ul>
-    <div id="tab1" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t_c1.jpg" alt=""/></div>
-    <div id="tab2" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t_c2.jpg" alt=""/></div>
-    <!--tab//--> 
-  </div>
-  
-  <!--wb_cts06//-->
+    <div class="evtCtnsBox wb_cts06">
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05.jpg" title="학습관리시스템" />
+      <!--tab-->
+      <ul class="tabWrapEvt">
+        <li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t1.jpg" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t1_on.jpg" alt="" class="on"/></a></li>
+        <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t2.jpg" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t2_on.jpg" alt="" class="on"/></a></li>
+      </ul>
+      <div id="tab1" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t_c1.jpg" alt=""/></div>
+      <div id="tab2" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_05_t_c2.jpg" alt=""/></div>
+      <!--tab//--> 
+    </div>
+    
+    <!--wb_cts06//-->
   
   <div class="evtCtnsBox wb_cts07">
 	  <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_06.jpg"title="군무원학습환경" />
@@ -128,12 +129,12 @@
   <!--wb_cts07//-->
   
   <div class="evtCtnsBox wb_cts08">
-	  <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_07.jpg" title="선접수이벤트" /></a>
+	  <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_07.jpg" title="선접수이벤트" /></a>
   </div>
   <!--wb_cts08//-->
   
   <div class="evtCtnsBox wb_cts09">
-	  <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_08.jpg"title="군무원합격전략설명회" /></a>
+	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=261" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_08.jpg"title="군무원합격전략설명회" /></a>
   </div>
   <!--wb_cts09//-->
   
@@ -260,7 +261,7 @@
          </ol>
       </div>
     
-	</div>
+	  </div>
   </div>
   <!--wb_tip//-->
   

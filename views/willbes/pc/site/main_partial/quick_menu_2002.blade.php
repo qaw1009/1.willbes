@@ -9,3 +9,4 @@
     <li><a href="{{ site_url('/lecture/index/cate/3001/pattern/free?course_idx=1077') }}" target="_blank">보강동영상</a></li>
 </ul>
 {!! banner_html(element('메인_우측퀵_01', $data['arr_main_banner'])) !!}
+{!! banner_html(element('메인_우측퀵_02', $data['arr_main_banner'])) !!}

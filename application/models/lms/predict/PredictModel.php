@@ -574,6 +574,7 @@ class PredictModel extends WB_Model
             PP.PreServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs, PP.PreServiceSDatm, PP.PreServiceEDatm,
             PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
+            ,pp.SuccessfulCount,pp.CertIdxArr
         ";
 
         $from = "
@@ -843,6 +844,8 @@ class PredictModel extends WB_Model
                 'LastServiceSDatm' => $LastServiceSDatm,
                 'LastServiceEDatm' => $LastServiceEDatm,
                 'RegIp'          => $this->input->ip_address(),
+                'SuccessfulCount' =>$this->input->post('SuccessfulCount'),
+                'CertIdxArr' =>$this->input->post('CertIdxArr'),
                 'RegDatm'        => $date,
                 'RegAdminIdx'    => $this->session->userdata('admin_idx'),
             );
@@ -880,12 +883,13 @@ class PredictModel extends WB_Model
             $LastServiceSDatm =   $this->input->post('LastServiceSDatm_d') .' '. $this->input->post('LastServiceSDatm_h') .':'. $this->input->post('LastServiceSDatm_m') .':00';
             $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
 
+
             // lms_Product_Mock 저장
             $data = array(
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
                 'ProdName'      => $this->input->post('ProdName', true),
-                'MobileServiceIs' => implode(',', $this->input->post('MobileServiceIs')),
-                'SurveyIs'       => implode(',', $this->input->post('SurveyIs')),
+                'MobileServiceIs' => empty($this->input->post('MobileServiceIs')) ? null : implode(',', $this->input->post('MobileServiceIs')),
+                'SurveyIs'       => empty($this->input->post('SurveyIs')) ? null : implode(',', $this->input->post('SurveyIs')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'PreServiceIsUse' => $this->input->post('PreServiceIsUse'),
@@ -899,12 +903,13 @@ class PredictModel extends WB_Model
                 'ServiceEDatm' => $ServiceEDatm,
                 'LastServiceSDatm' => $LastServiceSDatm,
                 'LastServiceEDatm' => $LastServiceEDatm,
+                'SuccessfulCount' =>$this->input->post('SuccessfulCount'),
+                'CertIdxArr' =>$this->input->post('CertIdxArr'),
                 'RegIp'          => $this->input->ip_address(),
-                'RegDatm'        => $date,
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),
             );
 
-            $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where(['PredictIdx' => $this->input->post('idx')]);
+           $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where(['PredictIdx' => $this->input->post('idx')]);
 
             if ($this->_conn->update($this->_table['predictProduct']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
@@ -2940,4 +2945,59 @@ class PredictModel extends WB_Model
         $attach_file_names[] = 'excel_subtitles_' . $type . '_' . date('YmdHis');
         return $attach_file_names;
     }
+
+
+    /**
+     * 최종합격예측서비스 등록 리스트
+     */
+    public function listPredictFinal($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+
+            $column = 'A.*
+                            ,B.pointJson
+                            ,C.ProdName
+                            ,D.MemId,D.MemName,fn_dec(D.PhoneEnc) as phone
+                            ,E.CcdName as TakeMockPartName
+                            ,F.CcdName as TakeAreaCcdName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+                    from
+                        lms_predict_final A
+                        join
+                        (
+                            select
+                            PfIdx
+                            #,group_concat(CONCAT(\'{subjectName:"\',bb.CcdName,\'",point:"\',aa.Point,\'"}\')order by PfpIdx) as pointJson
+                            ,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point) order by PfpIdx separator \'<BR>\') as pointJson
+                            from
+                                lms_predict_final_point aa
+                                join lms_predict_code bb on aa.Subject = bb.Ccd
+                            where aa.IsStatus=\'Y\'
+                            group by PfIdx
+                        ) B on A.pfIdx = B.PfIdx
+                        join lms_product_predict C on A.PredictIdx = C.PredictIdx
+                        join lms_member D on A.MemIdx = D.MemIdx
+                        join lms_predict_code E on A.TakeMockPart = E.Ccd
+                        join lms_sys_code F on A.TakeAreaCcd = F.Ccd
+                     where A.IsStatus=\'Y\'
+        ';
+        // 사이트 권한 추가
+        $arr_condition['IN']['C.SiteCode'] = get_auth_site_codes();
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
 }

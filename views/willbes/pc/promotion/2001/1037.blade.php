@@ -11,34 +11,32 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px}
+        .evtContent span {vertical-align:auto}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
 
         /************************************************************/
 
-        .wb_main {background:#754c24 url(http://file3.willbes.net/new_cop/2018/08/EV180809_p1_bg.jpg) no-repeat center;}
-
-
-        .wb_top {background:#f3f3f3; padding-bottom:100px;}
-        .wb_top .check {width:980px; margin:0 auto; background:#f3f3f3; padding:20px 0; font-size:120%; color:#000; font-weight:bold}
-        .wb_top .check input {border:2px solid #000; height:24px; width:24px; }
-        .wb_top .check a {display:inline-block; padding:10px 20px; color:#fff; background:#000; margin-left:50px; border-radius:20px}
-        .wb_top .red {width:980px; margin:0 auto; background:#f3f3f3; padding:0 0 20px 0; font-size:120%; color:#ff0000; font-weight:bold;letter-spacing:-1px}
-
-        .wb01 {background:#2c2c2c;}
-        .wb02 {background:#f3f3f3; font-size:120%;}
-
+        .wb_main {background:#754c24 url(https://static.willbes.net/public/images/promotion/2019/05/1037_top_bg.jpg) no-repeat center;}
+        .wb_top {background:#f3f3f3; padding-bottom:100px; position:relative;}
+        .checkWrap {position:absolute; bottom:165px;text-align:center; width:1120px; left:50%; margin-left:-560px; z-index:1}
+        .checkWrap .check {padding:20px 0; font-size:120%; color:#000; font-weight:bold}
+        .checkWrap .check input {border:2px solid #000; height:24px; width:24px; }
+        .checkWrap .check a {display:inline-block; padding:10px 20px; color:#fff; background:#000; margin-left:50px; border-radius:20px}
+        .checkWrap .red { padding:0 0 20px 0; font-size:120%; color:#ff0000; font-weight:bold;letter-spacing:-1px}
+        .wb01 {background:#ebe9ea;}
+        .wb02 {background:#f3f3f3; font-size:14px;}
 
         /* 이용안내 */
-        .content_guide_wrap{background:#ffffff; margin:0;min-width:1210px;}
-        .content_guide_box{ position:relative; width:980px; margin:0 auto; padding:50px 0;}
+        .content_guide_wrap{background:#fff; width:980px; margin:0 auto; }
+        .content_guide_box{padding:100px 0;}
         .content_guide_box .guide_tit{margin-bottom:20px;}
-        .content_guide_box dl{ margin:0 20px; word-break:keep-all;border:2px solid #202020;padding:30px;}
+        .content_guide_box dl{border:2px solid #202020;padding:30px;}
         .content_guide_box dt{ margin-bottom:10px;}
         .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-size:13px; font-weight:bold; margin-right:10px;}
         .content_guide_box dt img.btn{padding:2px 0 0 0;}
@@ -48,33 +46,40 @@
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
+    <div class="evtContent NGR" id="evtContainer">
 
         <div class="evtCtnsBox wb_main" id="main">
-            <img src="http://file3.willbes.net/new_cop/2018/08/EV180809_p1.png"  alt="해양경찰 T-pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1037_top.jpg"  alt="해양경찰 T-pass"  />
         </div>
 
         <div class="evtCtnsBox wb01">
-            <img src="http://file3.willbes.net/new_cop/2018/08/EV180809_p2.png"  alt="교수님+커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1037_01.jpg"  alt="교수님+커리큘럼" />
         </div>
 
         <div class="evtCtnsBox wb_top" id="pass">
-            <img src="http://file3.willbes.net/new_cop/2018/08/EV180809_p3_.jpg"  alt="T-PASS" usemap="#Map1" border="0" />
-            <map name="Map1" id="Map1">
-                <area shape="rect" coords="913,464,1022,504" href="javascript:go_PassLecture(1);" alt="해사법규"/>
-                <area shape="rect" coords="915,574,1021,615" href="javascript:go_PassLecture(2);" alt="해사영어"/>
-                <area shape="rect" coords="914,684,1020,725" href="javascript:go_PassLecture(3);" alt="항해술"/>
-                <area shape="rect" coords="914,805,1020,843" href="javascript:go_PassLecture(4);" alt="기관술"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1037_02.jpg"  alt="T-PASS" usemap="#Map1037A" border="0" />
+            <map name="Map1037A" id="Map1037A">
+                <area shape="rect" coords="740,449,839,516" href="javascript:go_PassLecture(1);" target="_blank" alt="해양경찰학개론 4개월"/>
+                <area shape="rect" coords="896,446,995,515" href="javascript:go_PassLecture(2);" target="_blank" alt="해양경찰학개론 12개월"/>
+                <area shape="rect" coords="734,559,843,636" href="javascript:go_PassLecture(3);" target="_blank" alt="해사영어 4개월"/>
+                <area shape="rect" coords="892,560,1000,638" href="javascript:go_PassLecture(4);" target="_blank" alt="해사영어 12개월"/>
+                <area shape="rect" coords="737,676,843,747" href="javascript:go_PassLecture(5);" target="_blank" alt="해사법규 4개월" />
+                <area shape="rect" coords="895,675,997,748" href="javascript:go_PassLecture(6);" target="_blank" alt="해사법규 12개월" />
+                <area shape="rect" coords="736,795,842,868" href="javascript:go_PassLecture(7);" target="_blank" alt="항해술 4개월" />
+                <area shape="rect" coords="893,795,999,874" href="javascript:go_PassLecture(8);" target="_blank" alt="항해술 12개월" />
+                <area shape="rect" coords="736,918,841,985" href="javascript:go_PassLecture(9);" target="_blank" alt="기관술 4개월" />
+                <area shape="rect" coords="891,918,1003,988" href="javascript:go_PassLecture(10);" target="_blank" alt="기관술 12개월" />
             </map>
-            <div class="check"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label><a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a></div>
-            <div class="red">※ 강의공유, 콘텐츠 부정 사용 적발 시, 평생 0원 패스의 수강기간 갱신 및 환급이 불가합니다.</div>
+            <div class="checkWrap">
+                <div class="check"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 윌비스 KCG 해양경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label><a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a></div>
+                <div class="red">※ 강의공유, 콘텐츠 부정 사용 적발 시, 회원 자격 박탈 및 환불이 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다.</div>
+            </div>
         </div>
 
         <div class="content_guide_wrap" id="tab">
             <div class="content_guide_box">
-                <p class="guide_tit"> <img src="http://file3.willbes.net/new_cop/2018/02/EV170205_p4.png" alt="이용안내"> </p>
+                <p class="guide_tit"> <img src="https://static.willbes.net/public/images/promotion/2019/05/1037_03.jpg" alt="이용안내"> </p>
                 <dl>
-
                     <dt>
                         <h3>상품구성</h3>
                     </dt>
@@ -124,7 +129,6 @@
                     <dd>
                         <p>※ 이용문의 : 고객만족센터 1544-5006</p>
                     </dd>
-
                 </dl>
             </div>
         </div>
@@ -141,15 +145,26 @@
                 return;
             }
             var lUrl;
-
             if(no == 1){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/149063') }}";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153682') }}";
             }else if(no == 2){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/149066') }}";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153690') }}";
             }else if(no == 3){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/149065') }}";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153681') }}";
             }else if(no == 4){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/149067') }}";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153689') }}";
+            }else if(no == 5){
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153678') }}";
+            }else if(no == 6){
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153684') }}";
+            }else if(no == 7){
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153679') }}";
+            }else if(no == 8){
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153685') }}";
+            }else if(no == 9){
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153680') }}";
+            }else if(no == 10){
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/153688') }}";
             }
             location.href = lUrl;
         }
@@ -157,13 +172,5 @@
         function goDesc(tab){
             location.href = '#tab';
         }
-    </script>
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-        });
     </script>
 @stop

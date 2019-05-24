@@ -135,7 +135,7 @@ class BaseStats extends \app\controllers\BaseController
                 'PL.StudyPatternCcd' => $this->_reqP('search_study_pattern_ccd'),
             ],
             'IN' => [
-                'SU.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가
+                'SU.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
             ],
             'LKB' => [
                 'VPP.ProfIdx_String' => $this->_reqP('search_prof_idx')
@@ -149,6 +149,12 @@ class BaseStats extends \app\controllers\BaseController
                 ]
             ],
         ];
+
+        // 학원강좌일 경우 캠퍼스 권한 추가
+        if ($this->_prod_type == 'off_lecture') {
+            $arr_site_campus_ccd = empty($this->_reqP('search_site_code')) === false ? get_auth_campus_ccds($this->_reqP('search_site_code')) : [];
+            $arr_condition['IN']['PL.CampusCcd'] = empty($arr_site_campus_ccd) === false ? $arr_site_campus_ccd : ['000000'];
+        }
 
         return $arr_condition;
     }
@@ -322,6 +328,12 @@ class BaseStats extends \app\controllers\BaseController
             } else {
                 $arr_condition['RAW']['BO.RefundPrice is'] = ' not null';   // 환불완료
             }
+        }
+
+        // 학원강좌일 경우 캠퍼스 권한 추가
+        if ($this->_prod_type == 'off_lecture') {
+            $arr_site_campus_ccd = empty($this->_reqP('site_code')) === false ? get_auth_campus_ccds($this->_reqP('site_code')) : [];
+            $arr_condition['IN']['PL.CampusCcd'] = empty($arr_site_campus_ccd) === false ? $arr_site_campus_ccd : ['000000'];
         }
 
         return $arr_condition;

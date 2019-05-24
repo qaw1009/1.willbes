@@ -80,7 +80,7 @@
                     <li><a href="#yTab04">한국사<br> 조민주</a></li>
                     <li><a href="#yTab05">행정학<br> 김덕관</a></li>
                     <li><a href="#yTab06">행정법<br> 한세훈</a></li>
-                    <li><a href="#yTab07">지방법(세법)<br> 고선미</a></li>
+                    <li><a href="#yTab07">지방세(세법)<br> 고선미</a></li>
                 </ul>
                 <div class="youtubeCts youtube" id="yTab01">
                     <iframe src="https://www.youtube.com/embed/5KDnhVEf0bE?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -293,7 +293,7 @@
                                     <th>선발기준</th>
                                     <td>
                                         [장학생 선발]<br />
-                                        - OMR 채점결과 기준, 성적 상위 3등까지 선정<br />
+                                        - OMR 채점결과 기준, 성적 상위 3등까지 선정 <span class="tx-origin-red">(단, 오프라인 응시생에 한함)</span><br />
                                         - 조정점수가 아닌, 원점수의 평균으로 선발<br />
                                         - 원점수 평균 동점자의 경우, 과목별 100점이 많은 응시생 우선선발<br />
                                         ※ 100점이 없을 시, 과목별 고득점 수가 많은 응시생 우선선발<br />

@@ -94,7 +94,7 @@
                     <td class="w-data tx-left pl15">
                         <div class="col-md-11 form-inline">
                             <div class="input-group mr-5">
-                                <input type="text" class="form-control" id="extenday" name="extenday" maxlength="3">
+                                <input type="text" class="form-control" id="extenday" name="extenday" maxlength="4">
                                 <div class="input-group-addon no-border no-bgcolor">일</div>
                             </div>
                         </div>

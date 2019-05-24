@@ -42,7 +42,7 @@
             <div class="PeMenu">
                 <ul>
                     <li>
-                        <a href="https://police.willbes.net/pass/support/notice/show?board_idx=226913&s_campus=605001&s_keyword=" >
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1023') }}" >
                         {{--<a href="javascript:alert('19년 1차 적중, 곧 공개됩니다!');">--}}
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_1.jpg" class="off" alt="신광은 형소법"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_1on.jpg" class="on" alt="신광은 형소법"  />

@@ -62,7 +62,7 @@ if (!function_exists('get_auth_campus_ccds')) {
     {
         $_CI =& get_instance();
         $sess_auth_site_codes = element('Site', $_CI->session->userdata('admin_auth_data'), []);
-        $sess_auth_campus_ccds = array_get($sess_auth_site_codes, $site_code . '.CampusCcds');
+        $sess_auth_campus_ccds = array_get($sess_auth_site_codes, $site_code . '.CampusCcds', []);
 
         return $is_with_name === false ? array_keys($sess_auth_campus_ccds) : $sess_auth_campus_ccds;
     }

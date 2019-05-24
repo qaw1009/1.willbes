@@ -82,19 +82,19 @@ class OrderCalcModel extends BaseOrderModel
         $raw_query = '
             select ' . $in_column . '
 			from (
-                    select RO.OrderIdx, ROP.OrderProdIdx
-                    from ' . $this->_table['order'] . ' as RO
-                        inner join ' . $this->_table['order_product'] . ' as ROP
-                            on RO.OrderIdx = ROP.OrderIdx
-                    where RO.CompleteDatm between ? and ?
-                        and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
-                        and ROP.RealPayPrice > 0
-                    union
-                    select OrderIdx, OrderProdIdx
-                    from ' . $this->_table['order_product_refund'] . '
-                    where RefundDatm between ? and ?	
-                        and RefundPrice > 0					
-			    ) as BO
+                select RO.OrderIdx, ROP.OrderProdIdx
+                from ' . $this->_table['order'] . ' as RO
+                    inner join ' . $this->_table['order_product'] . ' as ROP
+                        on RO.OrderIdx = ROP.OrderIdx
+                where RO.CompleteDatm between ? and ?
+                    and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+                    and ROP.RealPayPrice > 0
+                union
+                select OrderIdx, OrderProdIdx
+                from ' . $this->_table['order_product_refund'] . '
+                where RefundDatm between ? and ?	
+                    and RefundPrice > 0					
+			) as BO
 			    inner join ' . $this->_table['order'] . ' as O
 			        on BO.OrderIdx = O.OrderIdx
 				inner join ' . $this->_table['order_product'] . ' as OP
@@ -298,19 +298,19 @@ class OrderCalcModel extends BaseOrderModel
         $raw_query = '
             select ' . $in_column . '
 			from (
-                    select RO.OrderIdx, ROP.OrderProdIdx
-                    from ' . $this->_table['order'] . ' as RO
-                        inner join ' . $this->_table['order_product'] . ' as ROP
-                            on RO.OrderIdx = ROP.OrderIdx
-                    where RO.CompleteDatm between ? and ?
-                        and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
-                        and ROP.RealPayPrice > 0
-                    union
-                    select OrderIdx, OrderProdIdx
-                    from ' . $this->_table['order_product_refund'] . '
-                    where RefundDatm between ? and ?	
-                        and RefundPrice > 0					 
-			    ) as BO
+                select RO.OrderIdx, ROP.OrderProdIdx
+                from ' . $this->_table['order'] . ' as RO
+                    inner join ' . $this->_table['order_product'] . ' as ROP
+                        on RO.OrderIdx = ROP.OrderIdx
+                where RO.CompleteDatm between ? and ?
+                    and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+                    and ROP.RealPayPrice > 0
+                union
+                select OrderIdx, OrderProdIdx
+                from ' . $this->_table['order_product_refund'] . '
+                where RefundDatm between ? and ?	
+                    and RefundPrice > 0					 
+            ) as BO
 			    inner join ' . $this->_table['order'] . ' as O
 			        on BO.OrderIdx = O.OrderIdx
 				inner join ' . $this->_table['order_product'] . ' as OP
@@ -513,19 +513,19 @@ class OrderCalcModel extends BaseOrderModel
         $raw_query = '
             select ' . $in_column . '
 			from (
-                    select RO.OrderIdx, ROP.OrderProdIdx
-                    from ' . $this->_table['order'] . ' as RO
-                        inner join ' . $this->_table['order_product'] . ' as ROP
-                            on RO.OrderIdx = ROP.OrderIdx
-                    where RO.CompleteDatm between ? and ?
-                        and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
-                        and ROP.RealPayPrice > 0
-                    union
-                    select OrderIdx, OrderProdIdx
-                    from ' . $this->_table['order_product_refund'] . '
-                    where RefundDatm between ? and ?	
-                        and RefundPrice > 0			
-			    ) as BO
+                select RO.OrderIdx, ROP.OrderProdIdx
+                from ' . $this->_table['order'] . ' as RO
+                    inner join ' . $this->_table['order_product'] . ' as ROP
+                        on RO.OrderIdx = ROP.OrderIdx
+                where RO.CompleteDatm between ? and ?
+                    and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+                    and ROP.RealPayPrice > 0
+                union
+                select OrderIdx, OrderProdIdx
+                from ' . $this->_table['order_product_refund'] . '
+                where RefundDatm between ? and ?	
+                    and RefundPrice > 0			
+            ) as BO
 			    inner join ' . $this->_table['order'] . ' as O
 			        on BO.OrderIdx = O.OrderIdx
 				inner join ' . $this->_table['order_product'] . ' as OP

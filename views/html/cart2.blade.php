@@ -75,11 +75,13 @@
                         <col>
                         <col style="width: 60px;">
                         <col style="width: 130px;">
+                        <col style="width: 130px;">
                     </colgroup>
                     <thead>
                         <tr>
                             <th>상품정보<span class="row-line">|</span></th>
                             <th>수량<span class="row-line">|</span></th>
+                            <th>정가(할인율)<span class="row-line">|</span></th>
                             <th>실 결제금액</th>
                         </tr>
                     </thead>
@@ -89,7 +91,7 @@
                                 <dl>
                                     <dt class="tit">
                                         <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                                        <span class="tBox NSK t1 black"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></span>
+                                                                                
                                     </dt>
                                     <dt>
                                         <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
@@ -98,12 +100,21 @@
                                             <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
                                             <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
                                             <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
-                                        </span>
-                                        <span class="w-coupon">최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
-                                    </dt>
-                                </dl>
+                                        </span>                                       
+                                    </dt> 
+                                    <dt class="w-coupon">
+                                        <span class="tBox NGR t1 black"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></span>
+                                        최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a>
+                                    </dt>                                  
+                                </dl>                                
                             </td>
                             <td> </td>
+                            <td class="w-buy-price">
+                                <dl>
+                                    <dt>6,000,000원</dt>
+                                    <dt class="tx-light-blue">(↓77%)</dt>
+                                </dl>
+                            </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">75,000원</dt>
@@ -115,8 +126,7 @@
                             <td class="w-list tx-left pl20">
                                 <dl>
                                     <dt class="tit">
-                                        <span class="pBox p1">강좌</span> 2018 김용철행정법총론실전동형모의고사(3월)
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
+                                        <span class="pBox p1">강좌</span> 2018 김용철행정법총론실전동형모의고사(3월)                                        
                                     </dt>
                                     <dt>
                                         <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
@@ -127,9 +137,18 @@
                                             <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
                                         </span>
                                     </dt>
+                                    <dt class="w-coupon">
+                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
+                                    </dt>
                                 </dl>
                             </td>
                             <td> </td>
+                            <td class="w-buy-price">
+                                <dl>
+                                    <dt>6,000,000원</dt>
+                                    <dt class="tx-light-blue">(↓77%)</dt>
+                                </dl>
+                            </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">80,000원</dt>
@@ -141,15 +160,23 @@
                                 <dl>
                                     <dt class="tit">
                                         <span class="pBox p2">패키지</span> 2017 9급공무원이론선택형종합패키지-30일완성
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
                                     </dt>
                                     <dt>
                                         <span class="w-day">수강기간 : <span class="tx-blue">100일</span></span>
                                         <span class="w-data">[강좌시작일 설정] <span class="tx-light-blue">결제완료 후 바로 수강 시작</span></span>
                                     </dt>
+                                    <dt class="w-coupon">
+                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
+                                    </dt>
                                 </dl>
                             </td>
                             <td> </td>
+                            <td class="w-buy-price">
+                                <dl>
+                                    <dt>6,000,000원</dt>
+                                    <dt class="tx-light-blue">(↓77%)</dt>
+                                </dl>
+                            </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">180,000원</dt>
@@ -161,14 +188,22 @@
                                 <dl>
                                     <dt class="tit">
                                         <span class="pBox p3">교재</span> 2017 정채영국어서울문제를알려주마!1
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
                                     </dt>
                                     <dt>
                                         <span class="w-coupon">10% 할인쿠폰 (<span class="tx-blue">10% 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
                                     </dt>
+                                    <dt class="w-coupon">
+                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
+                                    </dt>
                                 </dl>
                             </td>
                             <td>2</td>
+                            <td class="w-buy-price">
+                                <dl>
+                                    <dt>6,000,000원</dt>
+                                    <dt class="tx-light-blue">(↓77%)</dt>
+                                </dl>
+                            </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">7,000원</dt>
@@ -180,12 +215,20 @@
                             <td class="w-list tx-left pl20">
                                 <dl>
                                     <dt class="tit">
-                                        <span class="pBox p3">교재</span> 2017 정채영국어서울시문제를알려주마!2
+                                        <span class="pBox p3">교재</span> 2017 정채영국어서울시문제를알려주마!
+                                    </dt>
+                                    <dt class="w-coupon">
                                         <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
                                     </dt>
                                 </dl>
                             </td>
                             <td>2</td>
+                            <td class="w-buy-price">
+                                <dl>
+                                    <dt>6,000,000원</dt>
+                                    <dt class="tx-light-blue">(↓77%)</dt>
+                                </dl>
+                            </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">5,000원</dt>
@@ -197,11 +240,19 @@
                                 <dl>
                                     <dt class="tit">
                                         <span class="pBox p4">배송</span> 배송비 <span class="tx-light-blue">(교재 총 결제금액이 30,000원 이상 인 경우 배송비 무료)</span>
+                                    </dt>
+                                    <dt class="w-coupon">
                                         <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
                                     </dt>
                                 </dl>
                             </td>
                             <td> </td>
+                            <td class="w-buy-price">
+                                <dl>
+                                    <dt>6,000,000원</dt>
+                                    <dt class="tx-light-blue">(↓77%)</dt>
+                                </dl>
+                            </td>
                             <td class="w-buy-price">
                                 <dl>
                                     <dt class="tx-light-blue">2,500원</dt>

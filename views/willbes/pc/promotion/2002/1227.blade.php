@@ -105,14 +105,16 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skyBanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner_L.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
             <map name="Map1227A" id="Map1227A">
-            <area shape="rect" coords="5,9,130,92" href="#evt06" alt="다드림이벤트" />
-            <area shape="rect" coords="5,115,130,199" href="#evt01" alt="경품특전" />
-            <area shape="rect" coords="5,211,130,296" href="#evt02" alt="체력특전" />
-            <area shape="rect" coords="5,307,130,394" href="#evt03" alt="면접특전" />
-            <area shape="rect" coords="5,407,130,492" href="#evt04" alt="강의제공특전" />
-            </map>
+            <area shape="rect" coords="13,52,174,119" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt02" />
+			  <area shape="rect" coords="16,125,174,192" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt03" />
+			  <area shape="rect" coords="17,198,171,260" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt03" />
+			  <area shape="rect" coords="15,266,173,328" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt06" />
+			  <area shape="rect" coords="18,338,168,397" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt07" />
+			  <area shape="rect" coords="21,406,169,466" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt08" />
+			  <area shape="rect" coords="22,474,165,539" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt10" />
+			 </map>
         </div>        
 
         <div class="evtCtnsBox evtTxt">

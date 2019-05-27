@@ -32,6 +32,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/05/1206_top_bg.jpg)  repeat-x center top;}
         .evt01 {background:#f25920; padding:50px 0}
+		.evt001 {background:url(https://static.willbes.net/public/images/promotion/2019/05/1206_01_1_bg.jpg)  repeat-x center top;}
         .evt02 {background:#fbe98e; padding:100px 0}
         .evt02 iframe {width:854px; height:480px; margin-bottom:80px}
         .evt03 {background:#fff}
@@ -54,6 +55,10 @@
             <map name="Map1206A" id="Map1206A">
                 <area shape="rect" coords="533,655,794,771" href="#go04" alt="면접캠프 신청하기" />
             </map>
+        </div>
+		
+		<div  class="evtCtnsBox evt001">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1206_01_1.jpg" alt="최종합격생이 추천하는 황세웅 면접캠프">
         </div>
 
         <div  class="evtCtnsBox evt01">

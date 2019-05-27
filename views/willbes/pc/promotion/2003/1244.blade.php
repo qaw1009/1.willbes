@@ -30,7 +30,8 @@
         <div class="evtCtnsBox evtMenu NGEB" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">
+                    {{--<a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">--}}
+                    <a id='tab1' href="#" onclick="javascript:alert('준비중입니다.'); return false;">
                         <span>서울시/지방직 9급</span>
                         <div>시험 완벽분석</div>
                     </a>

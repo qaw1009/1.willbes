@@ -57,7 +57,7 @@
         <div class="evtCtnsBox wb_cts03" >            
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1023_02_1.jpg" title="빈틈없는 적중을 직접 확인하세요!" usemap="#Map1023A" border="0" /><br>
             <map name="Map1023A" id="Map1023A">
-                <area shape="rect" coords="424,369,700,431" href="{{ site_url('/pass/support/notice/show?board_idx=212095&s_keyword=%EC%A0%81%EC%A4%91') }}" target="_blank" title="더 많은 적중사례 보러가기" />
+                <area shape="rect" coords="424,369,700,431" href="{{ site_url('/pass/support/notice/show?board_idx=226913&') }}" target="_blank" title="더 많은 적중사례 보러가기" />
             </map>
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1023_02_2.jpg" title="완벽적중" />
         </div><!--wb_cts03//-->

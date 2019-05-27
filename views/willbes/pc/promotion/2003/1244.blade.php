@@ -66,9 +66,9 @@
         </div>
 
         <div id="content_1" class="tabCts pb90">
-            <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_1.jpg" title="서울시/지방직 9급 시험 완벽분석" /></p>
-			 <div class="noteWrap">
-			<table cellspacing="0" cellpadding="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_1.jpg" title="서울시/지방직 9급 시험 완벽분석" />
+			 <div class="noteWrap2">
+			<table cellspacing="0" cellpadding="0" align="center">
                             <col/>
 			  <tbody>
 			  <tr>

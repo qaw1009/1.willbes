@@ -481,6 +481,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="IsCoupon">쿠폰사용결제 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCoupon']=='Y')checked="checked"@endif/> 가능
+                            &nbsp;
+                            <input type="radio" name="IsCoupon" class="flat" value="N" @if($method == 'POST' || $data['IsCoupon']=='N')checked="checked"@endif/> 불가능
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2">종합반소개
                     </label>
                     <div class="col-md-10 form-inline item" >

@@ -30,8 +30,7 @@
         <div class="evtCtnsBox evtMenu NGEB" id="evtMenu">                
             <ul>
                 <li>
-                    {{--<a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">--}}
-                    <a id='tab1' href="javascript:alert('준비중입니다.');">
+                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">
                         <span>서울시/지방직 9급</span>
                         <div>시험 완벽분석</div>
                     </a>
@@ -67,7 +66,234 @@
         </div>
 
         <div id="content_1" class="tabCts pb90">
-            시험 완벽분석
+            <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_1.jpg" title="서울시/지방직 9급 시험 완벽분석" /></p>
+			 <div class="noteWrap">
+			<table cellspacing="0" cellpadding="0">
+                            <col/>
+			  <tbody>
+			  <tr>
+				<th rowspan="3">모집단위</th>
+				<th colspan="6">2019년</th>
+				<th colspan="2">2018년</th>
+			  </tr>
+			  <tr>
+				<th colspan="2">선발예정인원</th>
+				<th colspan="2">접수인원</th>
+				<th colspan="2">경쟁률</th>
+				<th>경쟁률</th>
+				<th>합격선<br>(최고점)</th>
+			  </tr>
+			  <tr>
+				<th>전체</th>
+				<th>일반행정<br>(9급)</th>
+				<th>전체</th>
+				<th>일반행정<br>(9급)</th>
+				<th>전체</th>
+				<th>일반행정<br>(9급)</th>
+				<th>일반행정<br>(9급)</th>
+				<th>일반행정<br> (9급)</th>
+			  </tr>
+			  </tbody>
+			  <tr>
+				<td>계</td>
+				<td>23,688</td>
+				<td>8,680</td>
+				<td>264,120</td>
+				<td>129,988</td>
+				<td>14.66:1</td>
+				<td>17.36:1</td>
+				<td>22.58:1</td>
+				<td><font color="red">385.27</td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_01_20190521093638.pdf" target="_blank"><b>서울</b></a></td>
+				<td>3,090</td>
+				<td>1,046</td>
+				<td>47,620</td>
+				<td>25,107</td>
+				<td>15.41:1</td>
+				<td>24.0:1</td>
+				<td>76.99:1</td>
+				<td><font color="red">381.71</td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_02_20190521093638.pdf" target="_blank"><b>강원</b></a></td>
+				<td>1,054</td>
+				<td>368</td>
+				<td>10,072</td>
+				<td>5,050</td>
+				<td>9.56:1</td>
+				<td>13.72:1</td>
+				<td>21.65:1</td>
+				<td><font color="red">370.95</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_03_20190521093638.pdf" target="_blank"><b>경기</b></a></td>
+				<td>4,873</td>
+				<td>1,731</td>
+				<td>44,484</td>
+				<td>23,983</td>
+				<td>9.13:1</td>
+				<td>13.85:1</td>
+				<td>21.22:1</td>
+				<td><font color="red">380.09</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_04_20190521093638.pdf" target="_blank"><b>경남</b></a></td>
+				<td>1,936</td>
+				<td>777</td>
+				<td>18,640</td>
+				<td>9,489</td>
+				<td>9.63:1</td>
+				<td>12.21:1</td>
+				<td>19.29:1</td>
+				<td><font color="red">369.33</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_05_20190521093638.pdf" target="_blank"><b>경북</b></a></td>
+				<td>2,216</td>
+				<td>854</td>
+				<td>18,957</td>
+				<td>8,912</td>
+				<td>8.55:1</td>
+				<td>10.44:1</td>
+				<td>15.11:1</td>
+				<td><font color="red">365.54</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_06_20190521093638.pdf" target="_blank"><b>광주</b></a></td>
+				<td>779</td>
+				<td>271</td>
+				<td>10,275</td>
+				<td>4,868</td>
+				<td>13.19:1</td>
+				<td>17.96:1</td>
+				<td>26.50:1</td>
+				<td><font color="red">367</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_07_20190521093638.pdf" target="_blank"><b>대구</b></a></td>
+				<td>628</td>
+				<td>331</td>
+				<td>13,753</td>
+				<td>7,509</td>
+				<td>21.90:1</td>
+				<td>22.69:1</td>
+				<td>31.61:1</td>
+				<td><font color="red">368.64</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_01_20190521093715.pdf" target="_blank"><b>대전</b></a></td>
+				<td>421</td>
+				<td>165</td>
+				<td>7,490</td>
+				<td>3,922</td>
+				<td>17.79:1</td>
+				<td>23.77:1</td>
+				<td>34.23:1</td>
+				<td><font color="red">369.96</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_02_20190521093715.pdf" target="_blank"><b>부산</b></a></td>
+				<td>903</td>
+				<td>333</td>
+				<td>15,985</td>
+				<td>8,097</td>
+				<td>17.70:1</td>
+				<td>24.32:1</td>
+				<td>31.24:1</td>
+				<td><font color="red">373.57</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_03_20190521093715.pdf" target="_blank"><b>세종</b></a></td>
+				<td>138</td>
+				<td>40</td>
+				<td>1,848</td>
+				<td>984</td>
+				<td>13.39:1</td>
+				<td>24.60:1</td>
+				<td>23.81:1</td>
+				<td><font color="red">363.2</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_04_20190521093715.pdf" target="_blank"><b>울산</b></a></td>
+				<td>250</td>
+				<td>63</td>
+				<td>16,345</td>
+				<td>2,573</td>
+				<td>65.38:1</td>
+				<td>40.84:1</td>
+				<td>25.85:1</td>
+				<td><font color="red">366.75</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_05_20190521093715.pdf" target="_blank"><b>인천</b></a></td>
+				<td>1,631</td>
+				<td>702</td>
+				<td>10,968</td>
+				<td>6,096</td>
+				<td>6.72:1</td>
+				<td>8.68:1</td>
+				<td>27.15:1</td>
+				<td><font color="red">375.88</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_06_20190521093715.pdf" target="_blank"><b>전남</b></a></td>
+				<td>1,455</td>
+				<td>483</td>
+				<td>12,023</td>
+				<td>5,646</td>
+				<td>8.26:1</td>
+				<td>11.69:1</td>
+				<td>14.11:1</td>
+				<td><font color="red">358.94</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_07_20190521093715.pdf" target="_blank"><b>전북</b></a></td>
+				<td>1,231</td>
+				<td>458</td>
+				<td>12,598</td>
+				<td>6,092</td>
+				<td>10.23:1</td>
+				<td>13.30:1</td>
+				<td>16.59:1</td>
+				<td><font color="red">367.64</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_01_20190521093735.pdf" target="_blank"><b>제주</b></a></td>
+				<td>414</td>
+				<td>169</td>
+				<td>3,421</td>
+				<td>1,829</td>
+				<td>8.26:1</td>
+				<td>10.82:1</td>
+				<td>19.85:1</td>
+				<td><font color="red">369.01</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_02_20190521093735.pdf" target="_blank"><b>충남</b></a></td>
+				<td>1,579</td>
+				<td>494</td>
+				<td>11,112</td>
+				<td>5,259</td>
+				<td>7.04:1</td>
+				<td>10.65:1</td>
+				<td>15.32:1</td>
+				<td><font color="red">379.88</font></td>
+			  </tr>
+			  <tr>
+				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_03_20190521093735.pdf" target="_blank"><b>충북</b></a></td>
+				<td>1,090</td>
+				<td>395</td>
+				<td>8,529</td>
+				<td>4,572</td>
+				<td>7.82:1</td>
+				<td>11.57:1</td>
+				<td>17.71:1</td>
+				<td><font color="red">385.27</font></td>
+			  </tr>
+			</table>
+			</div>
         </div>
 
         <div id="content_2" class="tabCts pb90 pt100">  

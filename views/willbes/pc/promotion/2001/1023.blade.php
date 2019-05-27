@@ -38,7 +38,7 @@
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1023_top.jpg" title="적중은 역시 신광은입니다."  />
-            <div><iframe width="886" height="497" src="https://www.youtube.com/embed/3iEgf4R4oHU?rel=0" frameborder="0" allowfullscreen></iframe></div>
+            <div><iframe width="886" height="497" src="https://www.youtube.com/embed/we3TVfmYW7M" frameborder="0" allowfullscreen></iframe></div>
         </div><!--wb_cts01//-->
 
 

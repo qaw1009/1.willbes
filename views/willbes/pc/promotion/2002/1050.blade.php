@@ -28,46 +28,53 @@
 
         .wb_mp4 {background:#000;}
 
-        .wb_cts00 {background:url(https://static.willbes.net/public/images/promotion/2019/05/1050_01L_bg.jpg) no-repeat center top;}
-        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/05/1050_02L_bg.jpg) no-repeat center top;}
-        .wb_cts02 {background:#fff}
-        .wb_cts03 {background:#abb1b9}
-        .wb_cts04 {background:#696d73}
-		.wb_cts05 {background:#ebecef}
-		.wb_cts06 {background:#f8f9fa}
+        .wb_cts00 {background:#04060f}
+        .wb_cts01 {background:#c8c7c4}
+        .wb_cts02 {background:#ebecef}
+        .wb_cts03 {background:#f8f9fa}
+        .wb_cts04 {background:#fff}
 
 
     </style>
 
-		<div class="evtCtnsBox wb_cts00">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1050_01L.png" alt="슈퍼pass"  />
+    <div class="evtContent NSK" id="evtContainer">
+        <div class="wb_mp4" id="main">
+            <div class="layer">
+                <div class="video">
+                    <video style="margin:0px auto; width:100%;" autoplay="" loop="" muted="">
+                        <source src="http://file3.willbes.net/new_cop/EV180628.mp4" type="video/mp4"></source>
+                    </video>
+                </div>
+                <div class="pngimg">
+                    <div class="pngimg-real">
+                        <img src="https://static.willbes.net/public/images/promotion/superpass/1050_p1_1.png" alt="슈퍼pass"  />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox wb_cts00" >
+            <img src="https://static.willbes.net/public/images/promotion/superpass/1050_p1_2.jpg"  alt="가격" />
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1050_02L.png" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/superpass/1050_p2.jpg"  alt="솔루션" />
         </div>
 
-        <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1050_03L.jpg" alt="슈퍼pass"  />
+        <div class="evtCtnsBox wb_cts02">
+            <img src="https://static.willbes.net/public/images/promotion/superpass/1050_p3.jpg"  alt="교수진" />
         </div>
 
-        <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1050_04L.jpg" alt="슈퍼pass"  />
+        <div class="evtCtnsBox wb_cts03" >
+            <img src="https://static.willbes.net/public/images/promotion/superpass/1050_p4.jpg"  alt="특별혜택" />
         </div>
 
-        <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1050_05L.jpg" alt="슈퍼pass"  />
-        </div>
-
-        <div class="evtCtnsBox wb_cts05" id="lect">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1050_06L.jpg" alt="슈퍼pass"  usemap="#pass"/>
+        <div class="evtCtnsBox wb_cts04" id="lect">
+            <img src="https://static.willbes.net/public/images/promotion/superpass/1050_p5.jpg" alt="수강신청" usemap="#pass" />
             <map name="pass">
-                <area shape="rect" coords="380,1202,741,1285"  href="{{ site_url('/pass/OffVisitPackage?cate_code=3010&campus_ccd=605001&course_idx=1085') }}" alt="일반10개월" target="_blank">       
+                <area shape="rect" coords="518,1584,646,1731" href="{{ site_url('/pass/OffVisitPackage?cate_code=3010&campus_ccd=605001') }}" alt="일반10개월" target="_blank">
+                <area shape="rect" coords="833,1670,985,1729" href="{{ site_url('/pass/OffVisitPackage?cate_code=3011&campus_ccd=605001') }}" alt="경행10개월" target="_blank">               
             </map>
-        </div>
-		
-		<div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1050_07L.jpg" alt="슈퍼pass"  />
         </div>
 
 

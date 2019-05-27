@@ -30,7 +30,8 @@
         <div class="evtCtnsBox evtMenu NGEB" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">
+                    {{--<a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">--}}
+                    <a id='tab1' href="#" onclick="javascript:alert('준비중입니다.'); return false;">
                         <span>서울시/지방직 9급</span>
                         <div>시험 완벽분석</div>
                     </a>
@@ -67,14 +68,14 @@
 
         <div id="content_1" class="tabCts pb90">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_1.jpg"  usemap="#1244_01_1" title="서울시/지방직 9급 시험 완벽분석" border="0" />
-<map name="1244_01_1" id="1244_01_1">
-  <area shape="rect" coords="704,1362,747,1402" href="#" title="2018.5.19. 시행 지방직 9급 공개경쟁채용시험 문제"/>
-  <area shape="rect" coords="932,1362,975,1402" href="#" title="2018.5.19. 시행 지방직 9급 공개경쟁채용시험 정답"/>
-  <area shape="rect" coords="704,1416,747,1460" href="#" title="2018.6.23. 시행 서울시 9급 공개경쟁채용시험 문제"/>
-  <area shape="rect" coords="932,1416,976,1459" href="#" title="2018.6.23. 시행 서울시 9급 공개경쟁채용시험 정답"/>
-  <area shape="rect" coords="702,1468,747,1516" href="#" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 문제"/>
-  <area shape="rect" coords="932,1471,977,1515" href="#" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 정답"/>
-</map>
+            <map name="1244_01_1" id="1244_01_1">
+                <area shape="rect" coords="704,1362,747,1402" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" target="_blank" title="2018.5.19. 시행 지방직 9급 공개경쟁채용시험 문제"/>
+                <area shape="rect" coords="932,1362,975,1402" href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" target="_blank" title="2018.5.19. 시행 지방직 9급 공개경쟁채용시험 정답"/>
+                <area shape="rect" coords="704,1416,747,1460" href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" target="_blank" title="2018.6.23. 시행 서울시 9급 공개경쟁채용시험 문제"/>
+                <area shape="rect" coords="932,1416,976,1459" href="@if(empty($file_yn) === false && $file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" target="_blank" title="2018.6.23. 시행 서울시 9급 공개경쟁채용시험 정답"/>
+                <area shape="rect" coords="702,1468,747,1516" href="@if(empty($file_yn) === false && $file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" target="_blank" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 문제"/>
+                <area shape="rect" coords="932,1471,977,1515" href="@if(empty($file_yn) === false && $file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" target="_blank" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 정답"/>
+            </map>
 			 <div class="noteWrap2">
 			<table cellspacing="0" cellpadding="0" align="center">
                             <col/>
@@ -435,14 +436,14 @@
             <p>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_1.jpg" usemap="#Map1244E" title="소문내기 이벤트" border="0" />
                 <map name="Map1244E" id="Map1244E">
-                    <area shape="rect" coords="186,1026,300,1055" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="이미지다운로드"/>
+                    <area shape="rect" coords="186,1026,300,1055" href="@if($file_yn[20] == 'Y') {{ front_url($file_link[20]) }} @else {{ $file_link[20] }} @endif" target="_blank" alt="이미지다운로드"/>
                     <area shape="rect" coords="143,1262,310,1324" href="http://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="공무원갤러리" />
                     <area shape="rect" coords="366,1263,523,1325" href="https://cafe.naver.com/gugrade" target="_blank" alt="공드림" />
                     <area shape="rect" coords="586,1261,714,1325" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&amp;currentPage=1&amp;groupId=0" target="_blank" alt="블로그" />
                     <area shape="rect" coords="144,1340,287,1405" href="http://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
                     <area shape="rect" coords="366,1343,518,1404" href="https://www.facebook.com" target="_blank" alt="패이스북" />
                     <area shape="rect" coords="592,1340,749,1407" href="https://www.instagram.com/?hl=ko" target="_blank" alt="인스타그램" />
-                    <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="이미지다운로드"/>                  
+                    <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn[21] == 'Y') {{ front_url($file_link[21]) }} @else {{ $file_link[21] }} @endif" target="_blank" alt="이미지다운로드"/>
                 </map>
             </p>
             {{--댓글--}}

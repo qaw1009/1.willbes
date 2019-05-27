@@ -107,13 +107,13 @@
         <div class="skyBanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner_L.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
             <map name="Map1227A" id="Map1227A">
-            <area shape="rect" coords="13,52,174,119" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt02" />
-			  <area shape="rect" coords="16,125,174,192" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt03" />
-			  <area shape="rect" coords="17,198,171,260" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt03" />
-			  <area shape="rect" coords="15,266,173,328" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt06" />
-			  <area shape="rect" coords="18,338,168,397" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt07" />
-			  <area shape="rect" coords="21,406,169,466" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt08" />
-			  <area shape="rect" coords="22,474,165,539" href="https://police.dev.willbes.net/pass/promotion/index/cate/3010/code/1227#evt10" />
+            <area shape="rect" coords="13,52,174,119" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt02" />
+			  <area shape="rect" coords="16,125,174,192" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt03" />
+			  <area shape="rect" coords="17,198,171,260" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt03" />
+			  <area shape="rect" coords="15,266,173,328" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt06" />
+			  <area shape="rect" coords="18,338,168,397" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt07" />
+			  <area shape="rect" coords="21,406,169,466" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt08" />
+			  <area shape="rect" coords="22,474,165,539" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt10" />
 			 </map>
         </div>        
 

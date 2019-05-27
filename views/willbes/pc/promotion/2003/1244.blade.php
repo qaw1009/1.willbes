@@ -66,7 +66,15 @@
         </div>
 
         <div id="content_1" class="tabCts pb90">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_1.jpg" title="서울시/지방직 9급 시험 완벽분석" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_1.jpg"  usemap="#1244_01_1" title="서울시/지방직 9급 시험 완벽분석" border="0" />
+<map name="1244_01_1" id="1244_01_1">
+  <area shape="rect" coords="704,1362,747,1402" href="#" title="2018.5.19. 시행 지방직 9급 공개경쟁채용시험 문제"/>
+  <area shape="rect" coords="932,1362,975,1402" href="#" title="2018.5.19. 시행 지방직 9급 공개경쟁채용시험 정답"/>
+  <area shape="rect" coords="704,1416,747,1460" href="#" title="2018.6.23. 시행 서울시 9급 공개경쟁채용시험 문제"/>
+  <area shape="rect" coords="932,1416,976,1459" href="#" title="2018.6.23. 시행 서울시 9급 공개경쟁채용시험 정답"/>
+  <area shape="rect" coords="702,1468,747,1516" href="#" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 문제"/>
+  <area shape="rect" coords="932,1471,977,1515" href="#" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 정답"/>
+</map>
 			 <div class="noteWrap2">
 			<table cellspacing="0" cellpadding="0" align="center">
                             <col/>

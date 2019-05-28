@@ -25,7 +25,7 @@
         .wb_top div {width:1210px; margin:0 auto; position:relative}
         .wb_top span {position:absolute; display:block; top:610px; left:374px; width:130px; z-index:10; color:#fff6c8; font-size:40px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:-1px}
 
-        .wb_01 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:120px; }
+        .wb_01 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:20px; }
         /* 슬라이드배너 */
         .slide_con5 {position:relative; width:900px; margin:0 auto}
         .slide_con5 p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}

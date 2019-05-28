@@ -153,6 +153,9 @@
 		<div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_04L.jpg" title="경찰 체력 특전">
         </div>
+		@if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_normal_partial')
+        @endif
 		<div class="evtCtnsBox evt04" id="evt04">
 			<img src="https://static.willbes.net/public/images/promotion/2019/05/1227_05L.png" title="경찰 체력 특전">
         </div>
@@ -209,10 +212,6 @@
                 --}}
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_06L.jpg" title="라이브 특강 진행 안내">
-			
-			@if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif
         </div>
 		
 		<div class="evtCtnsBox evt06" id="evt06">

@@ -106,15 +106,15 @@
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skyBanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner_L.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
-            <map name="Map1227A" id="Map1227A">
-            <area shape="rect" coords="13,52,174,119" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt02" />
-			  <area shape="rect" coords="16,125,174,192" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt03" />
-			  <area shape="rect" coords="17,198,171,260" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt03" />
-			  <area shape="rect" coords="15,266,173,328" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt06" />
-			  <area shape="rect" coords="18,338,168,397" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt07" />
-			  <area shape="rect" coords="21,406,169,466" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt08" />
-			  <area shape="rect" coords="22,474,165,539" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227#evt10" />
-			 </map>
+            <map id="Map1227A">
+			  <area shape="rect" coords="17,53,175,119" href="/pass/promotion/index/cate/3010/code/1227#evt02" />
+			  <area shape="rect" coords="19,122,172,209" href="/pass/promotion/index/cate/3010/code/1227#evt03" />
+			  <area shape="rect" coords="22,211,169,268" href="/pass/promotion/index/cate/3010/code/1227#evt06" />
+			  <area shape="rect" coords="21,265,168,323" href="/pass/promotion/index/cate/3010/code/1227#evt07" />
+			  <area shape="rect" coords="18,325,168,379" href="/pass/promotion/index/cate/3010/code/1227#evt08" />
+			  <area shape="rect" coords="19,382,168,446" href="/pass/promotion/index/cate/3010/code/1227#evt09" />
+			  <area shape="rect" coords="18,444,168,506" href="/pass/promotion/index/cate/3010/code/1227#evt10" />
+			</map>
         </div>        
 
         <div class="evtCtnsBox evtTxt">

@@ -54,8 +54,17 @@
             <div class="col-md-4">
                 <input type="text" id="CcdValue" name="CcdValue" required="required" class="form-control" title="세부항목값" value="{{ $data['CcdValue'] }}">
             </div>
-            <label class="control-label col-md-2" for="CcdDesc">세부항목설명</label>
+            <label class="control-label col-md-2" for="CcdDesc">세부항목값사용 <span class="required">*</span></label>
             <div class="col-md-4">
+                <div class="radio">
+                    <input type="radio" id="is_value_use_y" name="is_value_use" class="flat" value="Y" required="required" @if($data['IsValueUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                    <input type="radio" id="is_value_use_n" name="is_value_use" class="flat" value="N" required="required" @if($method=="POST" || $data['IsValueUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm item">
+            <label class="control-label col-md-2" for="CcdDesc">세부항목설명</label>
+            <div class="col-md-10">
                 <input type="text" id="CcdDesc" name="CcdDesc"  class="form-control" title="세부항목설명" value="{{ $data['CcdDesc'] }}">
             </div>
         </div>
@@ -126,7 +135,7 @@
 @stop
 
 @section('add_buttons')
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">저장</button>
 @endsection
 
 @section('layer_footer')

@@ -114,15 +114,26 @@
             <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY" usemap="#story"/><br />
             <div class="slide_con">
                 <ul id="slidesImg5">
-                    <li><a class="active" href="#tab1"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story"/></a></li>
-                    <li><a class="active" href="#tab2"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story"/></a></li>
+                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story1"/></li>
+                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story2"/></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
             </div>
-            <map name="story" id="story">
-                <area shape="rect" coords="670,457,887,505" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/videos?disable_polymer=1" target="_blank"  />
-            </map>
+            <map name="story1" id="story1">
+			  <area shape="rect" coords="22,82,229,441"  class="active" href="#tab1"/>
+			  <area shape="rect" coords="240,77,444,439" class="active" href="#tab2"/>
+			  <area shape="rect" coords="455,79,659,438" class="active" href="#tab3"/>
+			  <area shape="rect" coords="671,76,878,437" class="active" href="#tab4"/>
+			  <area shape="rect" coords="670,454,887,504" href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank"/>
+			</map>
+			<map name="story2" id="story2">
+			  <area shape="rect" coords="22,82,229,441"  class="active" href="#tab5"/>
+			  <area shape="rect" coords="240,77,444,439" class="active" href="#tab6"/>
+			  <area shape="rect" coords="455,79,659,438" class="active" href="#tab7"/>
+			  <area shape="rect" coords="671,76,878,437" class="active" href="#tab8"/>
+			  <area shape="rect" coords="670,454,887,504" href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank"/>
+			</map>
 
         </div>
 
@@ -156,16 +167,28 @@
                         </li>
                     </ul>--}}
                     <div class="tabContents" id="tab1">
-                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/XXbDBQcNtEA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/XXbDBQcNtEA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
                     </div>
                     <div class="tabContents" id="tab2" >
-                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/mI9cil-fFyU" frameborder="0" controls loop></iframe></p>
+                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/mI9cil-fFyU?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" frameborder="0" controls loop></iframe></p>
                     </div>
                     <div class="tabContents" id="tab3">
-                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/IUgBGlIjj3g" frameborder="0" controls loop></iframe></p>
+                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/IUgBGlIjj3g?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" frameborder="0" controls loop></iframe></p>
                     </div>
                     <div class="tabContents" id="tab4" >
-                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/L6k33zT_kQA"  frameborder="0" controls loop></iframe></p>
+                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/L6k33zT_kQA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab5" >
+                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/asSdq0i7ZFU"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab6" >
+                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/xV5p0RSbxl8"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab7" >
+                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/5mHzw2KjdB0"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab8" >
+                        <p><iframe width="854" height="480" src="https://www.youtube.com/embed/p47aOAGOO8E"  frameborder="0" controls loop></iframe></p>
                     </div>
                 </div>
             </div>
@@ -452,7 +475,7 @@
                 $(activeTab).fadeIn();
                 return false;
             });*/
-            $(".slide_con ul li a").click(function(){
+            $(".story map ").click(function(){
                 var activeTab = $(this).attr("href");
                 $(".evttabWrap ul li a").removeClass("active");
                 $(this).addClass("active");

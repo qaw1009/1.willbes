@@ -40,6 +40,7 @@
                     <th class="searching">세부항목명 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-code-type="sub">추가</button></th>
                     <th>세부항목값</th>
                     <th>세부항목설명</th>
+                    <th>항목값</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -59,6 +60,7 @@
                         </td>
                         <td>{{ $row['CcdValue'] }}</td>
                         <td>{{ $row['CcdDesc'] }}</td>
+                        <td>{!! $row['IsValueUse']=='Y' ? '<span class="red">사용</span>' : '미사용'!!}</td>
                         <td>{!! str_replace('미사용','<span class="red">미사용</span>',$row['IsUseView']) !!}<span class="hide">{{ $row['IsUse'] }}</span></td>
                         <td>{{ $row['wAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>
@@ -118,7 +120,7 @@
 
                 $('.btn-regist, .btn-modify').setLayer({
                     "url" : "{{ site_url('sys/code/createModal/') }}"+ uri_param
-                    ,width : "650"
+                    ,width : "800"
                 });
             });
         });

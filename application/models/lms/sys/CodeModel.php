@@ -150,8 +150,8 @@ class CodeModel extends WB_Model
     {
         $this->_conn->trans_begin();
 
-        $query = 'insert into lms_sys_code (Ccd,GroupCcd,CcdName,CcdValue,OrderNum,IsUse,CcdDesc,CcdEtc,RegAdminIdx) ';
-        $query .= 'select ifNull(max(Ccd)+1,?) ,? ,? ,ifNull(?,"0") ,ifNull(?,Max(OrderNum)+1) ,ifNull(?,"Y") ,? ,? ,? From lms_sys_code Where IsStatus="Y" ';
+        $query = 'insert into lms_sys_code (Ccd,GroupCcd,CcdName,CcdValue,OrderNum,IsValueUse,IsUse,CcdDesc,CcdEtc,RegAdminIdx) ';
+        $query .= 'select ifNull(max(Ccd)+1,?) ,? ,? ,ifNull(?,"0") ,ifNull(?,Max(OrderNum)+1) ,ifNull(?,"N"), ifNull(?,"Y") ,? ,? ,? From lms_sys_code Where IsStatus="Y" ';
 
         $ccd = "601";  //그룹코드생성 기본값
 
@@ -171,6 +171,7 @@ class CodeModel extends WB_Model
                 ,element('CcdName', $input)
                 ,element('CcdValue', $input)
                 ,$ordernum
+                ,element('is_value_use', $input)
                 ,element('is_use', $input)
                 ,element('CcdDesc', $input)
                 ,element('CcdEtc', $input)
@@ -200,6 +201,7 @@ class CodeModel extends WB_Model
             $ccdname = element('CcdName', $input);
             $ccdvalue = element('CcdValue', $input);
             $ordernum = (empty(element("OrderNum", $input)) === true) ? $this->getCcdOrderNum(element("groupCcd",$input)) : element("OrderNum", $input);
+            $is_value_use = element('is_value_use', $input);
             $is_use = element('is_use', $input);
             $ccdesc = element('CcdDesc', $input);
             $ccdetc = element('CcdEtc', $input);
@@ -214,6 +216,7 @@ class CodeModel extends WB_Model
                 $data = array_merge($data,[
                     'CcdValue' => $ccdvalue
                     ,'OrderNum' => $ordernum
+                    ,'IsValueUse' => $is_value_use
                     ,'IsUse' => $is_use
                     ,'CcdDesc' => $ccdesc
                     ,'CcdEtc' => $ccdetc

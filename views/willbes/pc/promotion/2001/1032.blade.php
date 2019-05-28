@@ -114,8 +114,8 @@
             <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY" usemap="#story"/><br />
             <div class="slide_con">
                 <ul id="slidesImg5">
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story"/></li>
+                    <li><a class="active" href="#tab1"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story"/></a></li>
+                    <li><a class="active" href="#tab2"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story"/></a></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
@@ -129,7 +129,7 @@
         <div class="wb_01">
             <div style="width:854px;text-align:center;margin:0 auto;">
                 <div class="evttabWrap">
-                    <ul class="cf">
+                    {{--<ul class="cf">
                         <li style="padding-bottom:40px;">
                             <a class="active" href="#tab1">
                                 <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap1_off.gif"  class="off" alt="01"/>
@@ -154,7 +154,7 @@
                                 <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap4_on.gif" class="on"  />
                             </a>
                         </li>
-                    </ul>
+                    </ul>--}}
                     <div class="tabContents" id="tab1">
                         <p><iframe width="854" height="480" src="https://www.youtube.com/embed/XXbDBQcNtEA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
                     </div>
@@ -444,14 +444,20 @@
             $(".tabContents").hide();
             $(".tabContents:first").show();
 
-            $(".evttabWrap ul li a").click(function(){
-
+            /*$(".evttabWrap ul li a").click(function(){
                 var activeTab = $(this).attr("href");
                 $(".evttabWrap ul li a").removeClass("active");
                 $(this).addClass("active");
                 $(".tabContents").hide();
                 $(activeTab).fadeIn();
-
+                return false;
+            });*/
+            $(".slide_con ul li a").click(function(){
+                var activeTab = $(this).attr("href");
+                $(".evttabWrap ul li a").removeClass("active");
+                $(this).addClass("active");
+                $(".tabContents").hide();
+                $(activeTab).fadeIn();
                 return false;
             });
         });

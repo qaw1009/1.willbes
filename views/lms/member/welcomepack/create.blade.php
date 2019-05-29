@@ -129,11 +129,18 @@
 
             // 쿠폰검색
             $('#btn_coupon_search').on('click', function() {
-                var prod_type = 'on';
                 var site_code = '';
+                switch($("#wInterestCode").val()){
+                    case '718001':
+                        site_code = '2001';
+                        break;
+                    case '718002':
+                        site_code = '2003';
+                        break;
+                }
 
                 $('#btn_coupon_search').setLayer({
-                    'url' : '{{ site_url('/common/searchCoupon/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&locationid=selected_product',
+                    'url' : '{{ site_url('/common/searchCoupon/') }}?site_code=' + site_code + '&locationid=selected_product',
                     'width' : 1200
                 });
 
@@ -144,6 +151,14 @@
             $('#btn_lecture_search').on('click', function (){
                 var prod_type = 'on';
                 var site_code = '';
+                switch($("#wInterestCode").val()){
+                    case '718001':
+                        site_code = '2001';
+                        break;
+                    case '718002':
+                        site_code = '2003';
+                        break;
+                }
 
                 $('#btn_lecture_search').setLayer({
                     'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',

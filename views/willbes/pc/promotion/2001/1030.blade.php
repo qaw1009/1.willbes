@@ -415,7 +415,7 @@
                 <area shape="rect" coords="885,637,979,672" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132210') }}" target="_blank" alt="종합단기완성 신청하기"/>
                 <area shape="rect" coords="885,737,979,772" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132208') }}" target="_blank" alt="달리기 단기완성 신청하기"/>
                 <area shape="rect" coords="885,838,978,872" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132206') }}" target="_blank" alt="근력단기완성 신청하기"/>
-                <area shape="rect" coords="884,1095,979,1129" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149542') }}" target="_blank" alt="6개월종합반신청하기" />
+                <area shape="rect" coords="884,1095,979,1129" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149538') }}" target="_blank" alt="6개월종합반신청하기" />
                 <area shape="rect" coords="885,1189,979,1224" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149541') }}" target="_blank" alt="12개월종합반신청하기" />
                 <area shape="rect" coords="884,992,978,1027" href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank" alt="PASS수강생 파격할인가"/>
             </map>

@@ -129,7 +129,7 @@ class AllStats extends \app\controllers\BaseController
         $end_date = $params[4];
 
         if (empty($site_code) === true || empty($prod_type_ccd) === true || empty($cate_code) === true || empty($start_date) === true || empty($end_date) === true) {
-            show_error('필수 파라미터 오류입니다.');
+            show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         // 사이트 조회

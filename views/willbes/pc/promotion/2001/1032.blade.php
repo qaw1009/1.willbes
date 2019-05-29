@@ -167,28 +167,28 @@
                         </li>
                     </ul>--}}
                     <div class="tabContents" id="tab1">
-                        <p><iframe id="youtube-player-1" width="854" height="480" src="https://www.youtube.com/embed/XXbDBQcNtEA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+                        <p><iframe id="youtube-player-1" width="854" height="480" src="https://www.youtube.com/embed/XXbDBQcNtEA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
                     </div>
                     <div class="tabContents" id="tab2" >
-                        <p><iframe id="youtube-player-2" width="854" height="480" src="https://www.youtube.com/embed/mI9cil-fFyU?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8&enablejsapi=1" frameborder="0" controls loop></iframe></p>
+                        <p><iframe id="youtube-player-2" width="854" height="480" src="https://www.youtube.com/embed/mI9cil-fFyU?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" controls loop></iframe></p>
                     </div>
                     <div class="tabContents" id="tab3">
-                        <p><iframe id="youtube-player-3" width="854" height="480" src="https://www.youtube.com/embed/IUgBGlIjj3g?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8&enablejsapi=1" frameborder="0" controls loop></iframe></p>
+                        <p><iframe id="youtube-player-3" width="854" height="480" src="https://www.youtube.com/embed/IUgBGlIjj3g?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" controls loop></iframe></p>
                     </div>
                     <div class="tabContents" id="tab4" >
-                        <p><iframe id="youtube-player-4" width="854" height="480" src="https://www.youtube.com/embed/L6k33zT_kQA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8&enablejsapi=1"  frameborder="0" controls loop></iframe></p>
+                        <p><iframe id="youtube-player-4" width="854" height="480" src="https://www.youtube.com/embed/L6k33zT_kQA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0"  frameborder="0" controls loop></iframe></p>
                     </div>
 					<div class="tabContents" id="tab5" >
-                        <p><iframe id="youtube-player-5" width="854" height="480" src="https://www.youtube.com/embed/asSdq0i7ZFU?enablejsapi=1"  frameborder="0" controls loop></iframe></p>
+                        <p><iframe id="youtube-player-5" width="854" height="480" src="https://www.youtube.com/embed/asSdq0i7ZFU?rel=0"  frameborder="0" controls loop></iframe></p>
                     </div>
 					<div class="tabContents" id="tab6" >
-                        <p><iframe id="youtube-player-6" width="854" height="480" src="https://www.youtube.com/embed/xV5p0RSbxl8?enablejsapi=1"  frameborder="0" controls loop></iframe></p>
+                        <p><iframe id="youtube-player-6" width="854" height="480" src="https://www.youtube.com/embed/xV5p0RSbxl8?rel=0"  frameborder="0" controls loop></iframe></p>
                     </div>
 					<div class="tabContents" id="tab7" >
-                        <p><iframe id="youtube-player-7" width="854" height="480" src="https://www.youtube.com/embed/5mHzw2KjdB0?enablejsapi=1"  frameborder="0" controls loop></iframe></p>
+                        <p><iframe id="youtube-player-7" width="854" height="480" src="https://www.youtube.com/embed/5mHzw2KjdB0?rel=0"  frameborder="0" controls loop></iframe></p>
                     </div>
 					<div class="tabContents" id="tab8" >
-                        <p><iframe id="youtube-player-8" width="854" height="480" src="https://www.youtube.com/embed/p47aOAGOO8E?enablejsapi=1"  frameborder="0" controls loop></iframe></p>
+                        <p><iframe id="youtube-player-8" width="854" height="480" src="https://www.youtube.com/embed/p47aOAGOO8E?rel=0"  frameborder="0" controls loop></iframe></p>
                     </div>
                 </div>
             </div>
@@ -197,11 +197,14 @@
         <div class="wb_02">
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV03_1.png" alt="1.경찰합교 최종합격자의 밤" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV03_2.png" alt="2.중앙경찰학교 입교하는 날" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV03_3.png" alt="3.합격수기 공모전 시상식" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV03_4.png" alt="3.합격수기 공모전 시상식" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV03_5.png" alt="3.합격수기 공모전 시상식" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_1.png" alt="1.경찰합교 최종합격자의 밤" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_2.png" alt="2.중앙경찰학교 입교하는 날" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_3.png" alt="3.합격수기 공모전 시상식" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_4.png" alt="3.합격수기 공모전 시상식" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_5.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_6.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_7.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_8.png" alt="3.합격수기 공모전 시상식" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>

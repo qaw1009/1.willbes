@@ -143,7 +143,7 @@
             // 강좌검색
             $('#btn_lecture_search').on('click', function (){
                 var prod_type = 'on';
-                var site_code = '2001';
+                var site_code = '';
 
                 $('#btn_lecture_search').setLayer({
                     'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',

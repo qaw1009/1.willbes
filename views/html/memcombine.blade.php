@@ -171,11 +171,11 @@
                 <tr>
                     <td class="combine-Tit">관심정보</td>
                     <td>
-                        <div class="inputBox p_re">
+                        <div class="p_re">
                             <input name="" type="checkbox" value="" id="a02" /> <label for="a02">공무원</label>
                             <input name="" type="checkbox" value="" id="a03" class="ml10"/> <label for="a03">경찰</label>
                         </div>
-                        <div class="tx-red mt10 err_msg" style="display: block;"></div>
+                        <div class="tx-red mt10 err_msg" style="display: block;">* 유효성메시지노출</div>
                     </td>
                 </tr>
             </tbody>

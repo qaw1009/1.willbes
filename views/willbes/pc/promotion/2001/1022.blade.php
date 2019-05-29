@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://police.willbes.net/pass/support/notice/show?board_idx=227154" >
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1024') }}" >
                         {{--<a href="javascript:alert('19년 1차 적중, 곧 공개됩니다!');">--}}
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_2.jpg" class="off" alt="장정훈 경찰학"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_2on.jpg" class="on" alt="장정훈 경찰학"  />

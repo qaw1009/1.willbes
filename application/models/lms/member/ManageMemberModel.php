@@ -121,12 +121,13 @@ class ManageMemberModel extends WB_Model
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
             (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName,
-            c1.CcdName AS CertName               
+            c1.CcdName AS CertName, c2.CcdName AS InterestName               
             ";
 
         $from = "FROM {$this->_table['member']} AS Mem 
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
-            LEFT JOIN {$this->_table['code']} AS c1 ON Mem.CertifiedInfoTypeCcd = c1.Ccd 
+            LEFT JOIN {$this->_table['code']} AS c1 ON Mem.CertifiedInfoTypeCcd = c1.Ccd
+            LEFT JOIN {$this->_table['code']} AS c2 ON Info.InterestCode = c2.Ccd
             ";
 
         $where = " WHERE Mem.MemIdx = {$memIdx} ";

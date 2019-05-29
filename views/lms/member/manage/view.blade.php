@@ -74,6 +74,7 @@
             <table class="table table-striped table-bordered text-center">
                 <thead>
                 <tr>
+                    <th class="text-center">관심직렬</th>
                     <th class="text-center">주소</th>
                     <th class="text-center">휴대폰(수신여부)</th>
                     <th class="text-center">E-Mail(수신여부)</th>
@@ -81,6 +82,7 @@
                 </thead>
                 <tbody>
                 <tr>
+                    <td>{{ $data['InterestName'] }}</td>
                     <td>({{ $data['ZipCode'] }}) {{ $data['Addr1'] }} {{ $data['Addr2'] }}</td>
                     <td>{{ $data['Phone'] }} ({{ $data['SmsRcvStatus'] }})</td>
                     <td>{{ $data['Mail'] }} ({{ $data['MailRcvStatus'] }})</td>

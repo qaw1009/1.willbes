@@ -34,7 +34,7 @@ class Welcomepack extends \app\controllers\BaseController
     {
         $cond_arr = [
             'EQ' => [
-                'w.wInterestCode' => $this->_req("site-code"),
+                'w.wInterestCode' => $this->_req("wInterestCode"),
                 'w.wType' => $this->_req("wType")
             ]
         ];

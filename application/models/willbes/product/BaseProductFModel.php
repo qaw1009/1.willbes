@@ -151,7 +151,7 @@ class BaseProductFModel extends WB_Model
             $group_by = ' group by PSC.CateCode, PSC.SubjectIdx';
         } else {
             $column = 'PSC.CateCode, PSC.SubjectIdx, PS.SubjectName, PSC.ChildCcd, CD.CcdName as ChildName';
-            $add_join = ' inner join ' . $this->_table['code'] . ' as CD on PSC.ChildCcd = CD.Ccd';
+            $add_join = ' inner join ' . $this->_table['code'] . ' as CD on PSC.ChildCcd = CD.Ccd and CD.IsUse = "Y" and CD.IsStatus = "Y"';
         }
 
         $from = '
@@ -186,16 +186,19 @@ class BaseProductFModel extends WB_Model
      */
     public function listSeriesCategoryMapping($site_code, $cate_code = null)
     {
-        $column = 'PSC.CateCode, PSC.ChildCcd, fn_ccd_name(PSC.ChildCcd) as ChildName';
+        $column = 'PSC.CateCode, PSC.ChildCcd, CD.CcdName as ChildName';
         $from = '
             from ' . $this->_table['subject_r_category_r_code'] . ' as PSC 
                 inner join ' . $this->_table['site'] . ' as S
                     on PSC.SiteCode = S.SiteCode
                 inner join ' . $this->_table['category'] . ' as SC
                     on PSC.CateCode = SC.CateCode
+                inner join ' . $this->_table['code'] . ' as CD
+                    on PSC.ChildCcd = CD.Ccd                    
             where PSC.SiteCode = ? and PSC.IsStatus = "Y"
                 and S.IsUse = "Y" and S.IsStatus = "Y"
-                and SC.IsUse = "Y" and SC.IsStatus = "Y"            
+                and SC.IsUse = "Y" and SC.IsStatus = "Y"
+                and CD.IsUse = "Y" and CD.IsStatus = "Y"           
         ';
 
         $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code]]);

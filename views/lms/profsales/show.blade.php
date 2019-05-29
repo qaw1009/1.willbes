@@ -286,7 +286,7 @@
                     }},
                 @endif
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
-                        return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
+                        return data + '(' + row.MemId + ')';
                     }},
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'PayRouteCcdName'},

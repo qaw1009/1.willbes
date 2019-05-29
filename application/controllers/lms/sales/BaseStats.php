@@ -161,11 +161,13 @@ class BaseStats extends \app\controllers\BaseController
 
     /**
      * 매출통계 목록 정렬조건 리턴
+     * @param bool $is_excel [엑셀다운로드 여부]
      * @return array
      */
-    private function _getListOrderBy()
+    private function _getListOrderBy($is_excel = false)
     {
-        return ['tRemainPrice' => 'desc'];
+        $prefix = $is_excel === false ? 'SU.' : '';
+        return ['tRemainPrice' => 'desc', $prefix . 'ProdCode' => 'asc'];
     }
 
     /**
@@ -187,7 +189,7 @@ class BaseStats extends \app\controllers\BaseController
         $headers = array_merge(['대분류', '상품코드', '상품명'], $headers, ['매출현황']);
 
         $arr_condition = $this->_getListConditions();
-        $list = $this->orderSalesModel->listStatsOrder($this->_learn_pattern, $search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getListOrderBy());
+        $list = $this->orderSalesModel->listStatsOrder($this->_learn_pattern, $search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getListOrderBy(true));
         $file_name = $this->_stats_name . '_매출통계리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // export excel
@@ -209,7 +211,7 @@ class BaseStats extends \app\controllers\BaseController
         $end_date = $params[3];
 
         if (empty($prod_code) === true || empty($site_code) === true || empty($start_date) === true || empty($end_date) === true) {
-            show_error('필수 파라미터 오류입니다.');
+            show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         // 상품코드별 매출현황 파라미터 셋팅
@@ -224,7 +226,7 @@ class BaseStats extends \app\controllers\BaseController
         $arr_condition = ['EQ' => ['SU.SiteCode' => $site_code, 'SU.ProdCode' => $prod_code]];
         $data = element('0', $this->orderSalesModel->listStatsOrder($this->_learn_pattern, $start_date, $end_date, 'all', false, $arr_condition));
         if (empty($data) === true) {
-            show_error('데이터가 없습니다.');
+            show_alert('데이터가 없습니다.', 'back');
         }
 
         // 운영사이트 추가

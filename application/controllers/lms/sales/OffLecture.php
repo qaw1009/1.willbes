@@ -17,7 +17,7 @@ class OffLecture extends BaseStats
      */
     public function excel()
     {
-        $headers = ['캠퍼스', '대비학년도', '수강형태', '개강년월', '과정', '과목', '교수', '판매가', '정상가', '개설여부', '접수상태'];
+        $headers = ['캠퍼스', '대비학년도', '수강형태', '개강년월', '개강일', '종강일', '과정', '과목', '교수', '판매가', '정상가', '개설여부', '접수상태'];
         parent::_excel($headers);
     }
 }

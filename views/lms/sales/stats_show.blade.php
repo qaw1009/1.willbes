@@ -46,6 +46,8 @@
                                     <th>대비학년도</th>
                                     <th>수강형태</th>
                                     <th>개강년월</th>
+                                    <th>개강일</th>
+                                    <th>종강일</th>
                                     <th>과정</th>
                                     <th>과목</th>
                                     <th>교수</th>
@@ -55,6 +57,8 @@
                                     <th>대비학년도</th>
                                     <th>수강형태</th>
                                     <th>개강년월</th>
+                                    <th>개강일</th>
+                                    <th>종강일</th>
                                 @elseif($stats_type == 'book')
                                     {{-- 교재 --}}
                                     <th>과목/교수</th>
@@ -102,24 +106,28 @@
                                     <td>{{ $data['PackPeriodCcdName'] }}</td>
                                 @elseif($stats_type == 'offLecture')
                                     {{-- 단과반 --}}
-                                    <th>{{ $data['CampusCcdName'] }}</th>
+                                    <td>{{ $data['CampusCcdName'] }}</td>
                                     <td>{{ $data['SchoolYear'] }}</td>
-                                    <th>{{ $data['StudyPatternCcdName'] }}</th>
-                                    <th>{{ $data['SchoolStartYear'] }}/{{ $data['SchoolStartMonth'] }}</th>
-                                    <th>{{ $data['CourseName'] }}</th>
-                                    <th>{{ $data['SubjectName'] }}</th>
-                                    <th>{{ $data['wProfName_String'] }}</th>
+                                    <td>{{ $data['StudyPatternCcdName'] }}</td>
+                                    <td>{{ $data['SchoolStartYear'] }}/{{ $data['SchoolStartMonth'] }}</td>
+                                    <td>{{ $data['StudyStartDate'] }}</td>
+                                    <td>{{ $data['StudyEndDate'] }}</td>
+                                    <td>{{ $data['CourseName'] }}</td>
+                                    <td>{{ $data['SubjectName'] }}</td>
+                                    <td>{{ $data['wProfName_String'] }}</td>
                                 @elseif($stats_type == 'offPackageAdmin')
                                     {{-- 종합반 --}}
-                                    <th>{{ $data['CampusCcdName'] }}</th>
+                                    <td>{{ $data['CampusCcdName'] }}</td>
                                     <td>{{ $data['SchoolYear'] }}</td>
-                                    <th>{{ $data['StudyPatternCcdName'] }}</th>
-                                    <th>{{ $data['SchoolStartYear'] }}/{{ $data['SchoolStartMonth'] }}</th>
+                                    <td>{{ $data['StudyPatternCcdName'] }}</td>
+                                    <td>{{ $data['SchoolStartYear'] }}/{{ $data['SchoolStartMonth'] }}</td>
+                                    <td>{{ substr($data['StudyPeriod'], 0, 10) }}</td>
+                                    <td>{{ substr($data['StudyPeriod'], 11, 10) }}</td>
                                 @elseif($stats_type == 'book')
                                     {{-- 교재 --}}
-                                    <th>{{ str_replace(',', '<br/>', $data['ProfSubjectNames']) }}</th>
-                                    <th>{{ $data['wPublName'] }}</th>
-                                    <th>{{ $data['wAuthorNames'] }}</th>
+                                    <td>{{ str_replace(',', '<br/>', $data['ProfSubjectNames']) }}</td>
+                                    <td>{{ $data['wPublName'] }}</td>
+                                    <td>{{ $data['wAuthorNames'] }}</td>
                                 @endif
                                 @if($stats_type != 'packageUser')
                                     {{-- 사용자패키지일 경우 판매가 없음 --}}

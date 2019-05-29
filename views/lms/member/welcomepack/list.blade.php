@@ -13,10 +13,18 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-1">품명 검색</label>
+                    <label class="control-label col-md-1"> 검색</label>
+                    <div class="col-md-1">
+                        <select class="form-control" id="wInterestCode" name="wInterestCode">
+                            <option value="">관심직렬</option>
+                            @foreach($wInterestCode as $key => $value)
+                                <option value="{{$key}}">{{$value}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="col-md-1">
                         <select class="form-control" id="wType" name="wType">
-                            <option value="">전체</option>
+                            <option value="">종류</option>
                             <option value="C">쿠폰</option>
                             <option value="L">강좌</option>
                         </select>

@@ -77,8 +77,8 @@
                 <area shape="rect" coords="932,1471,977,1515" href="@if(empty($file_yn) === false && $file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" target="_blank" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 정답"/>
             </map>
 			 <div class="noteWrap2">
-			<table cellspacing="0" cellpadding="0" align="center">
-                            <col/>
+			<table cellspacing="0" cellpadding="0">
+                <col/>
 			  <tbody>
 			  <tr>
 				<th rowspan="3">모집단위</th>

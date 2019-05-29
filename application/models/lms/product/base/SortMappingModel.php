@@ -172,7 +172,7 @@ class SortMappingModel extends WB_Model
                 and C.CateCode = ? and C.IsStatus = "Y"
                 and PS.IsStatus = "Y"                           
                 and PSC.IsStatus = "Y"             
-                and CC.GroupCcd = ? and CC.IsStatus = "Y"                
+                and CC.GroupCcd = ? and CC.IsStatus = "Y" and CC.IsUse="Y"
         ';
         $group_by = ' group by PSC.ChildCcd';
         $order_by = ' order by PSC.ChildCcd asc';

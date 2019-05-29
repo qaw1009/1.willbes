@@ -171,11 +171,15 @@ font-size:14px; padding:15px 0; line-height: 1.5;
 .noteWrap thead th,
 .noteWrap tbody th {text-align:center; font-weight:bold; border-right:1px solid #cdcdcd; background:#f0f0f0}
 
-.noteWrap2 table {width:980px; border-top:1px solid #cdcdcd; border-left:1px solid #cdcdcd; margin-bottom:30px; text-align:center;}
+
+.noteWrap2 table {width:980px; margin:0 auto; border-top:1px solid #cdcdcd; border-left:1px solid #cdcdcd; margin-bottom:30px;}
 .noteWrap2 th,
-.noteWrap2 td{padding:8px; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd}
+.noteWrap2 td{padding:8px; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd; line-height: 1.4}
 .noteWrap2 thead th,
 .noteWrap2 tbody th {text-align:center; font-weight:bold; border-right:1px solid #cdcdcd; background:#f0f0f0}
+.noteWrap2 tbody tr:hover {background:#e4e4e4}
+
+
 
 .noteWrap h5 {font-size:16px; font-weight: bold; margin-bottom:20px}
 .noteWrap ol li {list-style-type: decimal; margin-left:20px}

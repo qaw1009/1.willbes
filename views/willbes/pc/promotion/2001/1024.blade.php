@@ -79,6 +79,7 @@
             <map name="Map1204A" id="Map1204A">
                 <area shape="rect" coords="359,431,757,519" href="https://police.willbes.net/pass/support/notice/show?board_idx=227154" target="_blank" alt="더 많은 적중 사례 확인하기" />
             </map>
+            {{--
             <div class="slide_con">
                 <ul id="slidesImg3">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1024_s01.jpg" alt="5번,6번" /></li>
@@ -90,6 +91,7 @@
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/09/EV170922_p_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/09/EV170922_p_next.png"></a></p>
             </div>
+            --}}
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1024_02_title.jpg" alt="2019년 1차 경찰학 적중 내역" /><br><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1024_02_01.jpg" alt="2019년 1차 경찰학 적중 내역" /><br><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1024_02_02.jpg" alt="2019년 1차 경찰학 적중 내역" /><br><br>

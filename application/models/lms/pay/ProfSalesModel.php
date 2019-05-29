@@ -249,7 +249,7 @@ class ProfSalesModel extends BaseOrderModel
 
         // 쿼리 실행
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName 
+            $excel_column = 'OrderNo, MemName, MemId, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName 
                 , RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {

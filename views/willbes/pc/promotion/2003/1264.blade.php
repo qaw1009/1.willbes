@@ -145,7 +145,7 @@
         </div><!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts05" id="info">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_09.jpg" alt=" 윌비스 9급 PASS 이용안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1264_09.jpg" alt=" 윌비스 9급 PASS 이용안내" />
         </div><!--wb_cts05//-->
 
     </div>

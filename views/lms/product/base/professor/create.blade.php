@@ -164,6 +164,16 @@
                         <p class="form-control-static"># 미체크시 사용자단 학습Q&A에서 공개로 자동 설정됩니다.</p>
                     </div>
                 </div>
+                <div class="form-group form-control-static">
+                    <label class="control-label col-md-2">단강좌노출형태 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        @foreach($onlec_view_ccd as $key => $val)
+                            <input type="radio" name="onlec_view_ccd" id="onlec_view_ccd_{{$key}}" value="{{$key}}" class="flat" @if($data['OnLecViewCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                        @endforeach
+                        &nbsp;# 사용자단 교수소개 영역내 단강좌 노출형태를 설정합니다.
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_cafe_use">교수카페정보
                     </label>

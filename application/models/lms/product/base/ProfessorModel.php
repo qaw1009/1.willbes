@@ -452,7 +452,7 @@ class ProfessorModel extends WB_Model
     public function findProfessorForModify($prof_idx)
     {
         $column = '
-            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.OnLecViewCcd, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
@@ -495,6 +495,7 @@ class ProfessorModel extends WB_Model
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
                 'IsBoardPublic' => (empty(element('is_board_public', $input)) === false) ? 'Y' : 'N',
                 'ProfCurriculum' => element('prof_curriculum', $input),
+                'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -573,6 +574,7 @@ class ProfessorModel extends WB_Model
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
                 'IsBoardPublic' => (empty(element('is_board_public', $input)) === false) ? 'Y' : 'N',
                 'ProfCurriculum' => element('prof_curriculum', $input),
+                'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

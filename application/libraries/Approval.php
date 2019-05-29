@@ -45,7 +45,7 @@ class Approval
     {
         if(empty($page_url) === false) {
             $from = " Ccd From lms_sys_code WHERE IsUse='Y' AND IsStatus='Y' AND GroupCcd='715' ";
-            $where = ' AND ( INSTR(\''.$page_url.'\',CcdValue) > 0)';
+            $where = ' AND (INSTR(\'/'.$page_url.'\', concat(\'/\', CcdValue)) > 0)';
             $result = $this->_db->query('select '. $from. $where) -> row(0) -> Ccd;
             return $result;
         } else {

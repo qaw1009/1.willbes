@@ -78,12 +78,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
     {{--
      * 프로모션용 디데이카운터
-     * @@param end_date [마감일 (YYYYMMDD)]
+     * @@param end_date [마감일 (YYYY-MM-DD)]
     --}}
     function dDayCountDown(end_date) {
-        // 마감일 1개월전 날짜
-        var arr_start_date = moment(end_date).add(-1, 'months').format('YYYY-M-D').split('-');
-        var event_day = new Date(arr_start_date[0], arr_start_date[1], arr_start_date[2], 23, 59, 59);
+        // 마감일 1개월전 날짜 (사용안함)
+        //var arr_start_date = moment(end_date).add(-1, 'months').format('YYYY-M-D').split('-');
+        var arr_end_date = end_date.split('-');
+        var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
         var now = new Date();
         var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 

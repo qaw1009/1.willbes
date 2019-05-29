@@ -263,7 +263,7 @@
                         return (data !== null) ? data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')' : '';
                     }},
                     {'data' : 'ValidStatus', 'render' : function(data, type, row, meta) {
-                        return ((data !== 'Y') ? '<span class="red">' + row.ValidStatusName + '</span>' : row.ValidStatusName) + '<br/>(' + row.ExpireDatm.substr(0, 16) + ')';
+                        return ((data !== 'Y') ? '<span class="red">' + row.ValidStatusName + '</span>' : row.ValidStatusName) + '<br/>(' + (row.ExpireDatm !== null ? row.ExpireDatm.substr(0, 16) : '') + ')';
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data !== null) ? ((data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>') : '';

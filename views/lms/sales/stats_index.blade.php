@@ -188,6 +188,8 @@
                     <th>대비학년도</th>
                     <th>수강형태</th>
                     <th>개강년월</th>
+                    <th>개강일</th>
+                    <th>종강일</th>
                     <th>과정</th>
                     <th>과목</th>
                     <th>교수</th>
@@ -197,6 +199,8 @@
                     <th>대비학년도</th>
                     <th>수강형태</th>
                     <th>개강년월</th>
+                    <th>개강일</th>
+                    <th>종강일</th>
                 @elseif($stats_type == 'book')
                     {{-- 교재 --}}
                     <th>과목/교수</th>
@@ -294,6 +298,8 @@
                     {'data' : 'SchoolStartYear', 'render' : function(data, type, row, meta) {
                         return data + '/' + row.SchoolStartMonth;
                     }},
+                    {'data' : 'StudyStartDate'},
+                    {'data' : 'StudyEndDate'},
                     {'data' : 'CourseName'},
                     {'data' : 'SubjectName'},
                     {'data' : 'wProfName_String'},
@@ -304,6 +310,12 @@
                     {'data' : 'StudyPatternCcdName'},
                     {'data' : 'SchoolStartYear', 'render' : function(data, type, row, meta) {
                         return data + '/' + row.SchoolStartMonth;
+                    }},
+                    {'data' : 'StudyPeriod', 'render' : function(data, type, row, meta) {
+                        return data.substr(0, 10);
+                    }},
+                    {'data' : 'StudyPeriod', 'render' : function(data, type, row, meta) {
+                        return data.substr(11, 10);
                     }},
                 @elseif($stats_type == 'book')
                     {{-- 교재 --}}

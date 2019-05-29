@@ -1543,8 +1543,8 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * 자동주문 데이터 등록
-     * @param string $req_type [요청구분 (수동: manual, 이벤트: event, 회원가입이벤트: join, 인증 : cert)]
-     * @param string|array $req_code [요청구분별 식별자 (수동: 상품코드, 이벤트: 이벤트식별자, 회원가입이벤트: 없음, 인증 : 인증식별자)]
+     * @param string $req_type [요청구분 (수동: manual, 이벤트: event, 회원가입웰컴팩: join, 인증 : cert)]
+     * @param string|array $req_code [요청구분별 식별자 (수동: 상품코드, 이벤트: 이벤트식별자, 회원가입웰컴팩: 상품코드, 인증: 인증식별자)]
      * @return bool|string
      */
     public function procAutoOrder($req_type, $req_code = '')
@@ -1574,9 +1574,9 @@ class OrderFModel extends BaseOrderFModel
                     $admin_etc_reason = '이벤트코드=>' . $req_code;
                     break;
                 case 'join' :
-                    // 해당 이벤트신청타입의 유효한 최근 1건의 이벤트식별자를 기준으로 자동지급상품 조회 (회원가입이벤트)
+                    // 회원가입 웰컴팩
                     $admin_reason_ccd = '705007';   // 부여사유공통코드 (회원가입자동부여)
-                    $admin_etc_reason = '이벤트코드=>' . $req_code;
+                    $arr_prod_code = (array) $req_code;
                     break;
                 case 'cert' :
                     // 인증모델 load

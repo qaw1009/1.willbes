@@ -54,8 +54,7 @@
                     </label>
                     <div class="col-md-9 form-inline">
                         <label><input type="radio" name="IsStatus" value="Y" /> 사용 </label>
-                        &nbsp;&nbsp;&nbsp;                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label><input type="radio" name="IsStatus" value="N" checked /> 미사용 </label>
                     </div>
                 </div>
@@ -66,31 +65,6 @@
                         <textarea name="wDesc" id="wDesc" style="width:300px;" ></textarea>
                     </div>
                 </div>
-                <!--
-                <div class="form-group">
-                    <label class="control-label col-md-2">등록자
-                    </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
-                    </div>
-                    <label class="control-label col-md-2">등록일
-                    </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['RegDatm'] }}</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2">최종 수정자
-                    </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
-                    </div>
-                    <label class="control-label col-md-2">최종 수정일
-                    </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
-                    </div>
-                </div> -->
                 <div class="ln_solid"></div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
@@ -156,7 +130,7 @@
             // 쿠폰검색
             $('#btn_coupon_search').on('click', function() {
                 var prod_type = 'on';
-                var site_code = '2001';
+                var site_code = '';
 
                 $('#btn_coupon_search').setLayer({
                     'url' : '{{ site_url('/common/searchCoupon/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&locationid=selected_product',

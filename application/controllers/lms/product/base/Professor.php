@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professor extends \app\controllers\BaseController
 {
-    protected $models = array('product/base/sortMapping', 'product/base/professor', 'product/base/subject', 'sys/category');
+    protected $models = array('product/base/sortMapping', 'product/base/professor', 'product/base/subject', 'sys/category', 'sys/code');
     protected $helpers = array();
 
     public function __construct()
@@ -65,6 +65,8 @@ class Professor extends \app\controllers\BaseController
         $idx = null;
         $data = null;
 
+        $codes = $this->codeModel->getCcdInArray(['719']);
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $idx = $params[0];
@@ -95,7 +97,9 @@ class Professor extends \app\controllers\BaseController
             'idx' => $idx,
             'data' => $data,
             'arr_bm_idx' => $this->professorModel->_bm_idx,
-            'arr_calc_target' => $this->professorModel->listProfessorCalcRateTarget()
+            'arr_calc_target' => $this->professorModel->listProfessorCalcRateTarget(),
+            'onlec_view_ccd' => $codes['719']
+
         ]);
     }
 

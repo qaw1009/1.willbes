@@ -118,19 +118,64 @@
                         <p class="tx14 tx-center"><span class="tx-blue">{{ sess_data('mem_name') }}</span> 님은 현재 총 입력자 <span class="tx-blue">{{ $arr_base['service_count'] }}</span> 명 중 <span class="tx-blue">{{ $arr_base['my_rownum'] }}</span>등입니다.</p>
                         <div class="pyramid">				
                             <div class="transparent"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_transparent.png"  alt="피라미드" /></div>
-                            <ul class="myPosition">                                
+                            {{--<ul class="myPosition">
                                 <li class="active">
                                     <strong>{{ sess_data('mem_name') }}</strong> 님의 현재 추정<br>
                                     백분위는 동일한 직렬 응시 입력자 중<br>
                                     <strong>상위 {{ $arr_base['my_percentage'] }}%</strong> 입니다.
                                 </li>                  
-                            </ul>
+                            </ul>--}}
                             <ul class="chart">
-                                <li class="bar01"><span {!! ($arr_base['my_percentage'] > 0 && $arr_base['my_percentage'] <= 20) ? 'class="active"' : '' !!}></span></li>
-                                <li class="bar02"><span {!! ($arr_base['my_percentage'] > 20 && $arr_base['my_percentage'] <= 40) ? 'class="active"' : '' !!}></span></li>
-                                <li class="bar03"><span {!! ($arr_base['my_percentage'] > 40 && $arr_base['my_percentage'] <= 60) ? 'class="active"' : '' !!}></span></li>
-                                <li class="bar04"><span {!! ($arr_base['my_percentage'] > 60 && $arr_base['my_percentage'] <= 80) ? 'class="active"' : '' !!}></span></li>
-                                <li class="bar05"><span {!! ($arr_base['my_percentage'] > 80 && $arr_base['my_percentage'] <= 100) ? 'class="active"' : '' !!}></span></li>
+                                <li class="bar01">
+                                    @if ($arr_base['my_percentage'] > 0 && $arr_base['my_percentage'] <= 20)
+                                        <div class="myPosition">
+                                            <strong>{{ sess_data('mem_name') }}</strong> 님의 현재 추정<br>
+                                            백분위는 동일한 직렬 응시 입력자 중<br>
+                                            <strong>상위 {{ $arr_base['my_percentage'] }}%</strong> 입니다.
+                                        </div>
+                                    @endif
+                                    <span {!! ($arr_base['my_percentage'] > 0 && $arr_base['my_percentage'] <= 20) ? 'class="active"' : '' !!}></span>
+                                </li>
+                                <li class="bar02">
+                                    @if ($arr_base['my_percentage'] > 20 && $arr_base['my_percentage'] <= 40)
+                                        <div class="myPosition">
+                                            <strong>{{ sess_data('mem_name') }}</strong> 님의 현재 추정<br>
+                                            백분위는 동일한 직렬 응시 입력자 중<br>
+                                            <strong>상위 {{ $arr_base['my_percentage'] }}%</strong> 입니다.
+                                        </div>
+                                    @endif
+                                    <span {!! ($arr_base['my_percentage'] > 20 && $arr_base['my_percentage'] <= 40) ? 'class="active"' : '' !!}></span>
+                                </li>
+                                <li class="bar03">
+                                    @if ($arr_base['my_percentage'] > 40 && $arr_base['my_percentage'] <= 60)
+                                        <div class="myPosition">
+                                            <strong>{{ sess_data('mem_name') }}</strong> 님의 현재 추정<br>
+                                            백분위는 동일한 직렬 응시 입력자 중<br>
+                                            <strong>상위 {{ $arr_base['my_percentage'] }}%</strong> 입니다.
+                                        </div>
+                                    @endif
+                                    <span {!! ($arr_base['my_percentage'] > 40 && $arr_base['my_percentage'] <= 60) ? 'class="active"' : '' !!}></span>
+                                </li>
+                                <li class="bar04">
+                                    @if ($arr_base['my_percentage'] > 60 && $arr_base['my_percentage'] <= 80)
+                                        <div class="myPosition">
+                                            <strong>{{ sess_data('mem_name') }}</strong> 님의 현재 추정<br>
+                                            백분위는 동일한 직렬 응시 입력자 중<br>
+                                            <strong>상위 {{ $arr_base['my_percentage'] }}%</strong> 입니다.
+                                        </div>
+                                    @endif
+                                    <span {!! ($arr_base['my_percentage'] > 60 && $arr_base['my_percentage'] <= 80) ? 'class="active"' : '' !!}></span>
+                                </li>
+                                <li class="bar05">
+                                    @if ($arr_base['my_percentage'] > 80)
+                                        <div class="myPosition">
+                                            <strong>{{ sess_data('mem_name') }}</strong> 님의 현재 추정<br>
+                                            백분위는 동일한 직렬 응시 입력자 중<br>
+                                            <strong>상위 {{ $arr_base['my_percentage'] }}%</strong> 입니다.
+                                        </div>
+                                    @endif
+                                    <span {!! ($arr_base['my_percentage'] > 80) ? 'class="active"' : '' !!}></span>
+                                </li>
                             </ul>                            
                         </div>
                         <p class="tx14 tx-center">최종합격하는 그날까지 윌비스 신광은경찰이 함께하겠습니다.<br>

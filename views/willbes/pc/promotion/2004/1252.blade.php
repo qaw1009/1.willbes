@@ -145,7 +145,7 @@
   <!--wb_cts07//-->
   
   <div class="evtCtnsBox wb_cts08">
-	  <a href="#" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_07.jpg" title="합격 전략 설명회" /></a>
+	  <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_07.jpg" title="합격 전략 설명회" /></a>
   </div>
   <!--wb_cts08//-->
 

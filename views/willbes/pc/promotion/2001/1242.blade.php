@@ -61,21 +61,19 @@
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1242_01.jpg"  alt="" usemap="#Map1242B" border="0" />
             <map name="Map1242B" id="Map1242B">
-                <area shape="rect" coords="253,1234,537,1294" href="javascript:doEvent1()" alt="필기합격인증하기" />
-                <area shape="rect" coords="581,1234,868,1294" href="javascript:doEvent2()" alt="나의성적입력하기" />
-                <area shape="rect" coords="252,1326,871,1388" href="javascript:doEvent3()" alt="실시간 참여현황" />
+                <area shape="rect" coords="253,1234,537,1294" href="javascript:certOpen()" alt="필기합격인증하기" />
+                <area shape="rect" coords="581,1234,868,1294" href="javascript:gradOpen()" alt="나의성적입력하기" />
+                <area shape="rect" coords="252,1326,871,1388" href="javascript:doEvent2()" alt="실시간 참여현황" />
             </map>
         </div>
 
-        {{--
         <div class="evtCtnsBox wb_cts03" >
             <ul>
-                <li><a href="javascript:doEvent1()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn1.gif"  alt="" /></a></li>
-                <li><a href="javascript:doEvent2()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn2.gif"  alt="" /></a></li>
+                <li><a href="javascript:doEvent3()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn1.gif"  alt="" /></a></li>
+                {{--<li><a href="javascript:doEvent2()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn2.gif"  alt="" /></a></li>--}}
             </ul>
         </div>
-        --}}
-            
+
         <div class="evtCtnsBox wb_cts04" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1242_02.jpg"  alt="" usemap="#Map1242A" border="0" />
             <map name="Map1242A" id="Map1242A">
@@ -86,20 +84,33 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        function doEvent1() {            
-            var url = '/pass/certApply/index/page/exam_no/cert/20' ;
-            window.open(url,'police_event1', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=850');
+        function certOpen() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var url = '{{ site_url('/pass/certApply/index/page/'.$arr_promotion_params['page'].'/cert/'.$arr_promotion_params['cert']) }}';
+                window.open(url,'cert_popup', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+            @endif
         }
 
-        function doEvent2() {            
-            var url = '1242_pop1' ;
-            window.open(url,'police_event2', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=850');
+        function gradOpen() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var url = "{{ site_url('/predict/createGradeMember') }}";
+            url += "?predict={{ $arr_promotion_params['PredictIdx'] }}&cert={{ $arr_promotion_params['cert'] }}";
+            window.open(url,'popup1', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=850');
         }
         
+        function doEvent2() {
+            var url = "{{ site_url('/predict/predictInfo') }}";
+            url += "?predict={{ $arr_promotion_params['PredictIdx'] }}&cert={{ $arr_promotion_params['cert'] }}";
+            window.open(url,'popup2', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=910');
+        }
+
         function doEvent3() {
-            var url = '1242_pop2' ;
-            window.open(url,'police_event3', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=850');
-        }  
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var url = "{{ site_url('/predict/predictMyInfo') }}";
+            url += "?predict={{ $arr_promotion_params['PredictIdx'] }}&cert={{ $arr_promotion_params['cert'] }}";
+            window.open(url,'popup3', 'scrollbars=yes,toolbar=no,resizable=yes,width=700,height=850');
+        }
     </script> 
    
 @stop

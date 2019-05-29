@@ -1942,4 +1942,26 @@ class SurveyModel extends WB_Model
 
     }
 
+
+    /**
+     * 그룹공통코드 배열에 해당하는 공통코드 조회
+     * @param array $group_ccds
+     * @param string $add_column
+     * @param array $add_condition
+     * @return array
+     */
+    public function getCcdInArray($group_ccds = [], $add_column = '', $add_condition = [])
+    {
+        $column = 'GroupCcd, Ccd, CcdName';
+        $arr_condition = ['IN' => ['GroupCcd' => $group_ccds], 'EQ' => ['IsUse' => 'Y']];
+        empty($add_condition) === false && $arr_condition = array_merge_recursive($arr_condition, $add_condition);
+
+        $data = $this->_conn->getListResult($this->_table['predictCode'], $column, $arr_condition, null, null, ['GroupCcd' => 'asc', 'OrderNum' => 'asc']);
+
+        $codes = [];
+        foreach ($data as $rows) {
+            $codes[$rows['GroupCcd']][(string) $rows['Ccd']] = $rows['CcdName'];
+        }
+        return $codes;
+    }
 }

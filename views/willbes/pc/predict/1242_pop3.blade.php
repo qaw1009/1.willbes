@@ -82,32 +82,32 @@
                         <tbody>
                         <tr>
                             <th>이름 </th>
-                            <td>홍길동 </td>
+                            <td>{{ sess_data('mem_name') }}</td>
                         </tr>
                         <tr>
                             <th>응시번호 </th>
-                            <td>12345678</td>
+                            <td>{{ $data['TakeNo'] }}</td>
                         </tr>
                         <tr>
                             <th>직렬/지역 구분 </th>
-                            <td>일반공채:남 | 서울</td>
+                            <td>{{ $data['TakeMockPartCcdName'] }} | {{ $data['TakeAreaCcdName'] }}</td>
                         </tr>
                         </tbody>
                     </table>
                 </li>
                 <li>
-                    <strong>* <span class="tx-blue">일반공채:남 | 서울</span> 필기합격자 정보</strong>
+                    <strong>* <span class="tx-blue">{{ $data['TakeMockPartCcdName'] }} | {{ $data['TakeAreaCcdName'] }}</span> 필기합격자 정보</strong>
                     <table class="viewTb">
                         <col width="30%" />
                         <col width="" />
                         <tbody>
                             <tr>
                                 <th>필기 합격자 </th>
-                                <td>00 명 </td>
+                                <td>{{ $arr_base['predict_count'] }} 명 </td>
                             </tr>
                             <tr>
                                 <th>서비스 이용자 </th>
-                                <td>00 명</td>
+                                <td>{{ $arr_base['service_count'] }} 명</td>
                             </tr>
                         </tbody>
                     </table> 
@@ -115,22 +115,22 @@
                 <li>
                     <strong>* 나의 위치 파악</strong>
                     <div>
-                        <p class="tx14 tx-center"><span class="tx-blue">홍길동</span> 님은 현재 총 입력자 <span class="tx-blue">000</span> 명 중 <span class="tx-blue">00</span>등입니다.</p>
+                        <p class="tx14 tx-center"><span class="tx-blue">{{ sess_data('mem_name') }}</span> 님은 현재 총 입력자 <span class="tx-blue">{{ $arr_base['service_count'] }}</span> 명 중 <span class="tx-blue">{{ $arr_base['my_rownum'] }}</span>등입니다.</p>
                         <div class="pyramid">				
                             <div class="transparent"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_transparent.png"  alt="피라미드" /></div>
                             <ul class="myPosition">                                
                                 <li class="active">
-                                    <strong>홍길동</strong> 님의 현재 추정<br>
+                                    <strong>{{ sess_data('mem_name') }}</strong> 님의 현재 추정<br>
                                     백분위는 동일한 직렬 응시 입력자 중<br>
-                                    <strong>상위 16%</strong> 입니다.
+                                    <strong>상위 {{ $arr_base['my_percentage'] }}%</strong> 입니다.
                                 </li>                  
                             </ul>
                             <ul class="chart">
-                                <li class="bar01"><span class="active"></span></li>
-                                <li class="bar02"><span></span></li>
-                                <li class="bar03"><span></span></li>
-                                <li class="bar04"><span></span></li>
-                                <li class="bar05"><span></span></li>
+                                <li class="bar01"><span {!! ($arr_base['my_percentage'] > 0 && $arr_base['my_percentage'] <= 20) ? 'class="active"' : '' !!}></span></li>
+                                <li class="bar02"><span {!! ($arr_base['my_percentage'] > 20 && $arr_base['my_percentage'] <= 40) ? 'class="active"' : '' !!}></span></li>
+                                <li class="bar03"><span {!! ($arr_base['my_percentage'] > 40 && $arr_base['my_percentage'] <= 60) ? 'class="active"' : '' !!}></span></li>
+                                <li class="bar04"><span {!! ($arr_base['my_percentage'] > 60 && $arr_base['my_percentage'] <= 80) ? 'class="active"' : '' !!}></span></li>
+                                <li class="bar05"><span {!! ($arr_base['my_percentage'] > 80 && $arr_base['my_percentage'] <= 100) ? 'class="active"' : '' !!}></span></li>
                             </ul>                            
                         </div>
                         <p class="tx14 tx-center">최종합격하는 그날까지 윌비스 신광은경찰이 함께하겠습니다.<br>

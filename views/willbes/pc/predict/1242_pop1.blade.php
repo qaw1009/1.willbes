@@ -43,8 +43,8 @@
     .eventPopS3 input {vertical-align:middle}
 
     .btnsSt3 {text-align:center; margin-top:20px}
-    .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333}
-    .btnsSt3 a:hover {background:#fff; color:#333 !important}
+    .btnsSt3 button {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333; width:57px; height:37px;}
+    .btnsSt3 button:hover {background:#fff; color:#333 !important}
 
     input[type=radio],
     input[type=checkbox] {width:16px; height:16px;}    
@@ -57,91 +57,163 @@
 
 </style>
 <div class="willbes-Layer-PassBox NGR">
-    <form id="" name="" method="post" action="">
-    <div class="eventPop">
-        <h3>
-            <span class="tx-bright-blue">나의 성적 입력</span>
-        </h3>
-        <div class="eventPopS1">
-            <ul>
-                <li>
-                    <strong>* 직렬(직류구분)</strong>
-                    <select name="test_subject" id="test_subject"style="width:120px">
-                        <option value="AA">일반공채:남</option>
-                        <option value="BA">일반공채:여</option>
-                        <option value="CA">전의경경채</option> 
-                        <option value="DA">101단</option>
-                    </select>
-                    <select id="listview" name="listview" >
-                        <option value="">지역구분</option>
-                        <option value="">지역1</option>
-                        <option value="">지역2</option>
-                        <option value="">지역3</option>
-                    </select>
-                    ※ 응시직렬은 최초 선택/저장 후 수정 불가
-                </li>
-                <li>
-                    <strong>* 필기점수 입력</strong>
-                    <p class="tx-blue">
-                        반드시 성적표에 기재된 조정점수를 입력해 주세요. 
-                        <a href="http://gosi.police.go.kr"  target="_blank">필기시험 성적 확인하기 ▶</a>
-                    </p>
-                    <div>
-                        <strong>공통과목</strong>
-                        <span>영어</span> <input type="text" maxlength="3" name="" id="" onkeyup=""> 점   /  
-                        <span>한국사</span> <input type="text" maxlength="3" name="" id="" onkeyup="">점
-                    </div>
-                    <div>
-                        <strong>선택과목</strong>
-                        <table class="viewTb">
-                            <col span="2" />
-                            <thead>
-                                <tr class="bdRno">
-                                    <th>
-                                        <select name="" id="" onchange="" style="width:120px;">
-                                            <option value="">선택과목1</option>
-                                        </select>
-                                    </th>
-                                    <th>
-                                        <select name="" id="" onchange="" style="width:120px;">
-                                            <option value="">선택과목2</option>
-                                        </select>
-                                    </th>
-                                    <th>
-                                        <select name="" id="" onchange=""  style="width:120px;">
-                                            <option value="">선택과목3</option>
-                                        </select>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="txtC">
-                                    <td><input type="text" maxlength="5" name="" id=""  > 점</td>
-                                    <td><input type="text" maxlength="5" name="" id=""  > 점</td>
-                                    <td><input type="text" maxlength="5" name="" id=""  > 점</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <strong>체력점수 / 가산점 입력</strong>
-                        <span>체력점수</span> <input type="text" maxlength="3" name="" id="" onkeyup=""> 점   /  
-                        <span>가산점</span> <input type="text" maxlength="3" name="" id="" onkeyup="">점
-                    </div>
-                </li>
-                <li>
-                    * 본 서비스는 필기시험 점수, 체력 점수, 가산점을 합산한 성적으로 면접점수는 제외되어 실제 결과와 차이가 있을 수 있습니다.<br>
-                    * 본 서비스의 점수 입력 마감 기한은 <span class="tx-red">2019년 7월 16일 (화)</span> 까지 입니다.
-                </li>
-            </ul>
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;">
+        {!! csrf_field() !!}
+        {!! method_field($arr_base['METHOD']) !!}
+        <input type="hidden" name="predict" value="{{ $arr_base['predict_idx'] }}">
+        <input type="hidden" name="cert" value="{{ $arr_base['cert_idx'] }}">
+        <div class="eventPop">
+            <h3>
+                <span class="tx-bright-blue">나의 성적 입력</span>
+            </h3>
+            <div class="eventPopS1">
+                <ul>
+                    <li>
+                        <strong>* 직렬(직류구분)</strong>
+                        <select name="mock_part" id="mock_part" style="width:120px">
+                            @foreach($arr_base['arr_mock_part'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select id="take_area" name="take_area">
+                            <option value="">지역구분</option>
+                            @foreach($arr_base['arr_area'] as $row)
+                                <option value="{{ $row['Ccd'] }}">{{ $row['CcdName'] }}</option>
+                            @endforeach
+                        </select>
+                        ※ 응시직렬은 최초 선택/저장 후 수정 불가
+                    </li>
+                    <li>
+                        <strong>* 필기점수 입력</strong>
+                        <p class="tx-blue">
+                            반드시 성적표에 기재된 조정점수를 입력해 주세요.
+                            <a href="http://gosi.police.go.kr"  target="_blank">필기시험 성적 확인하기 ▶</a>
+                        </p>
+
+                        @foreach($arr_base['arr_subject_ccd']['P'] as $key => $rows)
+                            <div class="subject-p" id="subject_p_{{ $key }}">
+                                <strong>공통과목</strong>
+                                @foreach($rows as $value => $name)
+                                    <input type="hidden" name="subject_p_code[{{ $key }}][]" value="{{ $value }}">
+                                    <span>{{ $name }}</span> <input type="text" maxlength="3" name="subject_p[{{ $value }}]" id="subject_p_{{ $value }}"> 점 @if($loop->last === false) / @endif
+                                @endforeach
+                            </div>
+                        @endforeach
+
+                        @foreach($arr_base['arr_subject_ccd']['S'] as $key => $rows)
+                            <div class="subject-s" id="subject_s_{{ $key }}">
+                                <strong>{{($key == 300) ? '필수' : '선택'}}과목</strong>
+                                <table class="viewTb">
+                                    <col span="2" />
+                                    <thead>
+                                        <tr class="bdRno">
+                                            <th>
+                                                <select name="subject_s[{{ $key }}][]" style="width:120px;">
+                                                    <option value="">{{($key == 300) ? '필수' : '선택'}}과목1</option>
+                                                    @foreach($rows as $value => $name)
+                                                        <option value="{{ $value }}">{{ $name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </th>
+                                            <th>
+                                                <select name="subject_s[{{ $key }}][]" style="width:120px;">
+                                                    <option value="">{{($key == 300) ? '필수' : '선택'}}과목2</option>
+                                                    @foreach($rows as $value => $name)
+                                                        <option value="{{ $value }}">{{ $name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </th>
+                                            <th>
+                                                <select name="subject_s[{{ $key }}][]"  style="width:120px;">
+                                                    <option value="">{{($key == 300) ? '필수' : '선택'}}과목3</option>
+                                                    @foreach($rows as $value => $name)
+                                                        <option value="{{ $value }}">{{ $name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="txtC">
+                                            <td><input type="text" maxlength="5" name="point[{{ $key }}][]"> 점</td>
+                                            <td><input type="text" maxlength="5" name="point[{{ $key }}][]"> 점</td>
+                                            <td><input type="text" maxlength="5" name="point[{{ $key }}][]"> 점</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endforeach
+
+                        <div>
+                            <strong>체력점수 / 가산점 입력</strong>
+                            <span>체력점수</span> <input type="text" maxlength="3" name="strength_point" id="strength_point"> 점 /
+                            <span>가산점</span> <input type="text" maxlength="3" name="add_point" id="add_point">점
+                        </div>
+                    </li>
+                    <li>
+                        * 본 서비스는 필기시험 점수, 체력 점수, 가산점을 합산한 성적으로 면접점수는 제외되어 실제 결과와 차이가 있을 수 있습니다.<br>
+                        * 본 서비스의 점수 입력 마감 기한은 <span class="tx-red">2019년 7월 16일 (화)</span> 까지 입니다.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="btnsSt3">
+                <button type="submit">확인</button>
+                <button type="button" onclick="javascript:window.close();">취소</button>
+            </div>
         </div>
-        
-        <div class="btnsSt3">
-            <a href="#">확인</a>
-            <a href="javascript:close();">취소</a>
-        </div>
-    </div> 
     </form>
 </div>
+
+<script type="text/javascript">
+    var $regi_form = $('#regi_form');
+    var regexp = /^[0-9]*$/;
+    var mock_part = '';
+
+    $(document).ready(function() {
+        mock_part = $regi_form.find('select[name="mock_part"]').val();
+        $('.subject-p, .subject-s').hide();
+        $('#subject_p_'+mock_part+', #subject_s_'+mock_part).show();
+
+        $regi_form.on('change', 'select[name="mock_part"]', function() {
+            $('.subject-p, .subject-s').hide();
+            $('#subject_p_'+$(this).val()+', #subject_s_'+$(this).val()).show();
+        });
+
+        $regi_form.submit(function () {
+            var _url = '{{ front_url('/predict/storeFinalPoint') }}';
+            ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    window.close();
+                }
+            }, showValidateError, addValidate, false, 'alert');
+        });
+
+        function addValidate()
+        {
+            var ret = false;
+            mock_part = $regi_form.find('select[name="mock_part"]').val();
+            $regi_form.find('input[name="subject_p_code['+mock_part+'][]"]').each(function (index) {
+                var key = $(this).val();
+                var subject_p_val = $regi_form.find('input[name="subject_p['+key+']"]').val();
+                if (!regexp.test(subject_p_val)) {
+                    alert('공통과목은 숫자만 입력 가능합니다.');
+                    ret = false;
+                    return false;
+                } else {
+                    ret = true;
+                }
+            });
+
+            var add_point = $regi_form.find('input[name="add_point"]').val();
+            if (add_point > 5) {
+                alert('가산점은 0~5점 사이로 입력해 주세요.');
+                ret = false;
+            }
+            return ret;
+        }
+    });
+</script>
 <!--willbes-Layer-PassBox//-->
 @stop

@@ -4,12 +4,12 @@
     <h5>- 회원가입시 증정되는 월컴팩 관리페이지 입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        <ul id="tabs_site_code" class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
+        <!-- <ul id="tabs_site_code" class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
             <li role="presentation" class="active"><a href="#none" role="tab" data-toggle="tab" data-site-code=""><strong>전체</strong></a></li>
             @foreach($wInterestCode as $key => $value)
                 <li role="presentation" class=""><a href="#none" role="tab" data-toggle="tab" data-site-code="{{ $key  }}"><strong>{{ $value }}</strong></a></li>
             @endforeach
-        </ul>
+        </ul> -->
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -22,7 +22,7 @@
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <input type="text" class="form-cßontrol" id="search_value" name="search_value">
+                        <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-4">
                         <p class="form-control-static">• 등록된 쿠폰이나 강좌명 그리고 설명내용으로 검색이 가능합니다. </p>
@@ -95,7 +95,7 @@
                             return (data == 'C' ? '<font color=red>쿠폰</font>' : '<font color=blue>강좌</font>');
                         }},
                     {'data' : 'ProdName', 'render' : function(data,type,row,meta){
-                            return '<a href="#" class="btn-view1 blue" data-idx="' + row.wIdx + '">' + data + '</a>';
+                            return '<a href="#" class="btn-view1 blue" data-idx="' + row.wIdx + '">' + data + ' [' + row.wCode + ']</a>';
                         }},
                     {'data' : 'IsStatus', 'render' : function(data,type,row,meta){
                             return (data == 'N' ? '<font color=red>미사용</font>' : '<font color=blue>사용</font>');

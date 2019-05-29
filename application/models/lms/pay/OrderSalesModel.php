@@ -120,9 +120,6 @@ class OrderSalesModel extends BaseOrderModel
             if ($is_count === 'sum') {
                 $column = 'sum(SU.tRealPayPrice) as tRealPayPrice, sum(SU.tRefundPrice) as tRefundPrice, sum(SU.tRealPayPrice - SU.tRefundPrice) as tRemainPrice
                     , sum(SU.tOrderProdCnt) as tOrderProdCnt, sum(SU.tRealPayCnt) as tRealPayCnt, sum(SU.tRefundCnt) as tRefundCnt';
-            } elseif ($is_count === 'excel') {
-                $column = 'SC.CateName, SU.ProdCode, P.ProdName, ' . $this->_getListStatsQuery('excel_column', $learn_pattern) . '
-                    , (SU.tRealPayPrice - SU.tRefundPrice) as tRemainPrice';
             } else {
                 $column = 'SU.ProdCode, SU.tRealPayPrice, SU.tRefundPrice, (SU.tRealPayPrice - SU.tRefundPrice) as tRemainPrice
                     , SU.tOrderProdCnt, SU.tRealPayCnt, SU.tRefundCnt
@@ -166,7 +163,14 @@ class OrderSalesModel extends BaseOrderModel
         is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
         // 쿼리 실행
-        $result = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        if ($is_count === 'excel') {
+            $excel_column = 'CateName, ProdCode, ProdName, ' . $this->_getListStatsQuery('excel_column', $learn_pattern) . ', tRemainPrice';
+            $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
+        } else {
+            $query = 'select ' . $column . $from . $where . $order_by_offset_limit;
+        }
+
+        $result = $this->_conn->query($query);
 
         return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
     }
@@ -201,16 +205,15 @@ class OrderSalesModel extends BaseOrderModel
                         on PL.LecTypeCcd = CLT.Ccd and CLT.IsStatus = "Y"';
                 $column .= ', PL.SchoolYear, CLT.CcdName as LecTypeCcdName, PCO.CourseName, PSU.SubjectName, VPP.wProfName_String
                     , VCL.wProgressCcd_Name, VCL.wUnitCnt, VCL.wUnitLectureCnt';
-                $excel_column .= 'PL.SchoolYear, CLT.CcdName as LecTypeCcdName, PCO.CourseName, PSU.SubjectName, VPP.wProfName_String
-                    , concat(VCL.wProgressCcd_Name, " (", VCL.wUnitCnt, "/", VCL.wUnitLectureCnt, ")") as wProgressCcd_Name, PS.RealSalePrice, PS.SalePrice
-                    , CSS.CcdName as SaleStatusCcdName';
+                $excel_column .= 'SchoolYear, LecTypeCcdName, CourseName, SubjectName, wProfName_String
+                    , concat(wProgressCcd_Name, " (", wUnitCnt, "/", wUnitLectureCnt, ")") as wProgressCcd_Name, RealSalePrice, SalePrice, SaleStatusCcdName';
                 break;
             case 'userpack_lecture' :
                 // 사용자 패키지
                 $where .= 'P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture']. '" and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture']. '"';
                 $from .= '';
                 $column .= ', PL.SchoolYear';
-                $excel_column .= 'PL.SchoolYear, CSS.CcdName as SaleStatusCcdName';
+                $excel_column .= 'SchoolYear, SaleStatusCcdName';
                 break;
             case 'adminpack_lecture' :
                 // 운영자 패키지
@@ -219,7 +222,7 @@ class OrderSalesModel extends BaseOrderModel
                     left join ' . $this->_table['code'] . ' as CPT
                         on PL.PackTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"';
                 $column .= ', PL.SchoolYear, CPT.CcdName as PackTypeCcdName';
-                $excel_column .= 'PL.SchoolYear, CPT.CcdName as PackTypeCcdName, PS.RealSalePrice, PS.SalePrice, CSS.CcdName as SaleStatusCcdName';
+                $excel_column .= 'SchoolYear, PackTypeCcdName, RealSalePrice, SalePrice, SaleStatusCcdName';
                 break;
             case 'periodpack_lecture' :
                 // 기간제 패키지
@@ -230,8 +233,7 @@ class OrderSalesModel extends BaseOrderModel
                     left join ' . $this->_table['code'] . ' as CPP
                         on PL.StudyPeriod = CPP.CcdValue and CPP.IsStatus = "Y"';
                 $column .= ', PL.SchoolYear, CPT.CcdName as PackTypeCcdName, CPP.CcdName as PackPeriodCcdName';
-                $excel_column .= 'PL.SchoolYear, CPT.CcdName as PackTypeCcdName, CPP.CcdName as PackPeriodCcdName, PS.RealSalePrice, PS.SalePrice
-                    , CSS.CcdName as SaleStatusCcdName';
+                $excel_column .= 'SchoolYear, PackTypeCcdName, PackPeriodCcdName, RealSalePrice, SalePrice, SaleStatusCcdName';
                 break;
             case 'off_lecture' :
                 // 단과반
@@ -250,10 +252,10 @@ class OrderSalesModel extends BaseOrderModel
                     left join ' . $this->_table['code'] . ' as CAS
                         on PL.AcceptStatusCcd = CAS.Ccd and CAS.IsStatus = "Y"';
                 $column .= ', CCA.CcdName as CampusCcdName, PL.SchoolYear, CSP.CcdName as StudyPatternCcdName, PL.SchoolStartYear, PL.SchoolStartMonth
-                    , PCO.CourseName, PSU.SubjectName, VPP.wProfName_String, PL.IsLecOpen, CAS.CcdName as AcceptStatusCcdName';
-                $excel_column .= 'CCA.CcdName as CampusCcdName, PL.SchoolYear, CSP.CcdName as StudyPatternCcdName, concat(PL.SchoolStartYear, "/", PL.SchoolStartMonth) as SchoolStartYearMonth
-                    , PCO.CourseName, PSU.SubjectName, VPP.wProfName_String, PS.RealSalePrice, PS.SalePrice, if(PL.IsLecOpen = "Y", "개설", "폐강") as IsLecOpenName
-                    , CAS.CcdName as AcceptStatusCcdName';
+                    , PL.StudyStartDate, PL.StudyEndDate, PCO.CourseName, PSU.SubjectName, VPP.wProfName_String, PL.IsLecOpen, CAS.CcdName as AcceptStatusCcdName';
+                $excel_column .= 'CampusCcdName, SchoolYear, StudyPatternCcdName, concat(SchoolStartYear, "/", SchoolStartMonth) as SchoolStartYearMonth
+                    , StudyStartDate, StudyEndDate, CourseName, SubjectName, wProfName_String, RealSalePrice, SalePrice
+                    , if(IsLecOpen = "Y", "개설", "폐강") as IsLecOpenName, AcceptStatusCcdName';
                 break;
             case 'off_pack_lecture' :
                 // 종합반
@@ -266,9 +268,16 @@ class OrderSalesModel extends BaseOrderModel
                     left join ' . $this->_table['code'] . ' as CAS
                         on PL.AcceptStatusCcd = CAS.Ccd and CAS.IsStatus = "Y"';
                 $column .= ', CCA.CcdName as CampusCcdName, PL.SchoolYear, CSP.CcdName as StudyPatternCcdName, PL.SchoolStartYear, PL.SchoolStartMonth
-                    , PL.IsLecOpen, CAS.CcdName as AcceptStatusCcdName';
-                $excel_column .= 'CCA.CcdName as CampusCcdName, PL.SchoolYear, CSP.CcdName as StudyPatternCcdName, concat(PL.SchoolStartYear, "/", PL.SchoolStartMonth) as SchoolStartYearMonth
-                    , PS.RealSalePrice, PS.SalePrice, if(PL.IsLecOpen = "Y", "개설", "폐강") as IsLecOpenName, CAS.CcdName as AcceptStatusCcdName';
+                    , PL.IsLecOpen, CAS.CcdName as AcceptStatusCcdName
+                    , (select concat(min(B.StudyStartDate), "~", max(B.StudyEndDate)) 
+                        from ' . $this->_table['product_r_sublecture'] . ' as A
+                            inner join ' . $this->_table['product_lecture'] . ' as B
+                                on A.ProdCodeSub = B.ProdCode
+                        where A.ProdCode = SU.ProdCode
+                            and A.IsStatus = "Y") as StudyPeriod';
+                $excel_column .= 'CampusCcdName, SchoolYear, StudyPatternCcdName, concat(SchoolStartYear, "/", SchoolStartMonth) as SchoolStartYearMonth
+                    , left(StudyPeriod, 10) as StudyStartDate, right(StudyPeriod, 10) as StudyEndDate, RealSalePrice, SalePrice
+                    , if(IsLecOpen = "Y", "개설", "폐강") as IsLecOpenName, AcceptStatusCcdName';
                 break;
             case 'book' :
                 // 교재
@@ -281,7 +290,7 @@ class OrderSalesModel extends BaseOrderModel
                     left join ' . $this->_table['bms_book_combine'] . ' as VBB
                         on PB.wBookIdx = VBB.wBookIdx';
                 $column .= ', VPB.ProfSubjectNames, VBB.wPublName, VBB.wAuthorNames';
-                $excel_column .= 'VPB.ProfSubjectNames, VBB.wPublName, VBB.wAuthorNames, PS.RealSalePrice, PS.SalePrice, CSS.CcdName as SaleStatusCcdName';
+                $excel_column .= 'ProfSubjectNames, wPublName, wAuthorNames, RealSalePrice, SalePrice, SaleStatusCcdName';
                 break;
             default :
                 break;

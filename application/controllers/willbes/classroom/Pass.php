@@ -1018,7 +1018,7 @@ class Pass extends \app\controllers\FrontController
     private function _boardNotice($limit_cnt = 5)
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 99, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, '', $arr_condition, $column, $limit_cnt, 0, $order_by);

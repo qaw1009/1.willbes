@@ -71,8 +71,9 @@ class SupportBoardFModel extends BaseSupportFModel
         $where = $where->getMakeWhere(false);
 
         $set_query = ' FROM ( select ' . $column;
-        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= $from . $where;
         $set_query .= ') AS m ';
+        $set_query .= $order_by_offset_limit;
         $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
@@ -145,8 +146,9 @@ class SupportBoardFModel extends BaseSupportFModel
         $where = $where->getMakeWhere(false);
 
         $set_query = ' FROM ( select ' . $column;
-        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= $from . $where;
         $set_query .= ') AS m ';
+        $set_query .= $order_by_offset_limit;
         $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();

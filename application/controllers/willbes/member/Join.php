@@ -20,6 +20,11 @@ class Join extends BaseMember
         ]
     ];
 
+    protected $_interest_to_sitecode = [
+        '718001' => '2001', // 경찰
+        '718002' => '2003', // 공무원
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -67,6 +72,7 @@ class Join extends BaseMember
 
         // 이메일 코드
         $codes = $this->codeModel->getCcdInArray(['661']);
+        $inerestCode = $this->codeModel->getCcd('718');
 
         if($jointype === "655002") {
             // 핸드폰 sms 인증
@@ -125,7 +131,8 @@ class Join extends BaseMember
                     'phone' => $phone,
                     'memName' => $name,
                     'MailId' => '',
-                    'MailDomain' => ''
+                    'MailDomain' => '',
+                    'interestCode' => $inerestCode
                 ]);
 
             } catch(Exception $e) {
@@ -183,7 +190,8 @@ class Join extends BaseMember
                     'memName' => $name,
                     'MailId' => $mailId,
                     'MailDomain' => $mailDomain,
-                    'phone' => ''
+                    'phone' => '',
+                    'interestCode' => $inerestCode
                 ]);
 
             } catch(Exception $e) {
@@ -333,7 +341,8 @@ class Join extends BaseMember
             ['field' => 'Phone', 'label' => '전화번호', 'rules' => 'trim|required'],
             ['field' => 'MemId', 'label' => '아이디', 'rules' => 'trim|required'],
             ['field' => 'MemPassword', 'label' => '비밀번호', 'rules' => 'trim|required'],
-            ['field' => 'MemName', 'label' => '이름', 'rules' => 'trim|required']
+            ['field' => 'MemName', 'label' => '이름', 'rules' => 'trim|required'],
+            ['field' => 'InterestCode', 'label' => '관심정보', 'rules' => 'trim|required']
         ];
 
         // 파라미터오류발생시 오류페이지로 넘겨버림
@@ -376,6 +385,38 @@ class Join extends BaseMember
             $data = $this->memberFModel->getMemberForLogin($input['MemId'], $input['MemPassword'], false);
             $result = $this->memberFModel->storeMemberLogin($data);
 
+            // 회원가입 축하포인트
+            $this->pointFModel->addSavePoint('lecture', 2000, [
+                'site_code' => $this->_interest_to_sitecode[element('InterestCode', $input)],
+                'etc_reason' => '가입축하포인트',
+                'reason_type' => 'join'
+            ]); // 강좌포인트 2000
+            $this->pointFModel->addSavePoint('book', 1000, [
+                'site_code' => $this->_interest_to_sitecode[element('InterestCode', $input)],
+                'etc_reason' => '가입축하포인트',
+                'reason_type' => 'join'
+            ]); // 교재포인트 1000
+
+            // 월컴팩정보 읽어오기
+            $welcomepack_arr = $this->memberFModel->getWelcomepack(element('InterestCode', $input));
+            // for 돌면서 각각에 대해서 입력해주시
+            $welcomepack_lec = [];
+            foreach($welcomepack_arr as $row){
+                if($row['wType'] == 'C'){
+                    // 쿠폰 입력
+                    $this->couponFModel->addMemberCoupon('coupon', $row['wCode']);
+
+                } else if($row['wType'] == 'L'){
+                    // 입력할 강좌를 배열로 생성
+                    $welcomepack_lec = array_merge($welcomepack_lec, [$row['wCode']]);
+                }
+            }
+
+            if(count($welcomepack_lec) > 0){
+                // 강좌를 입력
+                $this->orderFModel->procAutoOrder('join', $welcomepack_lec);
+            }
+
             // 회원가입하고 넘어감
             $this->session->set_userdata('is_join', true);
             redirect('/member/join/success');
@@ -393,6 +434,8 @@ class Join extends BaseMember
         if($this->session->userdata("is_join") != true){
             redirect('/');
         }
+
+        $this->session->set_userdata('is_join', false);
 
         // 사용하고 있는 사이트들 검색
         $site = $this->siteModel->listSite(['SiteName', 'SiteUrl'], ['EQ'=>['IsUse'=>'Y'], 'NOT'=>['SiteCode'=>'2000']]);
@@ -509,6 +552,8 @@ class Join extends BaseMember
      */
     public function event()
     {
+        return $this->json_result(true, '');
+
         if($this->session->userdata("is_join") != true) {
             return $this->json_error('회원가입시에만 이벤트 신청이 가능합니다.');
         }

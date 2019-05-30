@@ -17,7 +17,8 @@ class MemberFModel extends WB_Model
         'btob_ip' => 'lms_btob_ip',
         'btob_log' => 'lms_btob_access_log',
         'btob_member' => 'lms_btob_r_member',
-        'draw' => 'lms_member_out_log'
+        'draw' => 'lms_member_out_log',
+        'welcomepack' => 'lms_welcomepack'
     ];
 
     protected $_mailSendTypeCcd = [
@@ -632,7 +633,8 @@ class MemberFModel extends WB_Model
                 'SmsRcvStatus' => (element('SmsRcvStatus', $input) == 'Y' ? 'Y' : 'N'),
                 'ZipCode' => element('ZipCode', $input),
                 'Addr1' => element('Addr1', $input),
-                'TrustStatus' => $TrustStatus
+                'TrustStatus' => $TrustStatus,
+                'InterestCode' => element('InterestCode', $input)
             ];
 
             // lms_member_otherinfo 저장
@@ -733,19 +735,15 @@ class MemberFModel extends WB_Model
     }
 
 
-
-
     /**
      * 사용자 탈퇴처리
      * @param $MemIdx
      * @return bool
-     */
+
     public function outMember($MemIdx)
     {
         return true;
     }
-
-
 
 
     /**
@@ -753,13 +751,11 @@ class MemberFModel extends WB_Model
      * @param $MemIdx
      * @param bool $onlyActive
      * @return array
-     */
+
     public function listDevice($MemIdx, $onlyActive = true)
     {
         return [];
     }
-
-
 
 
     /**
@@ -767,13 +763,11 @@ class MemberFModel extends WB_Model
      * @param $MemIdx
      * @param $deviceID
      * @return array
-     */
+
     public function getDevice($MemIdx, $deviceID)
     {
         return [];
     }
-
-
 
 
     /**
@@ -782,14 +776,12 @@ class MemberFModel extends WB_Model
      * @param $deviceType
      * @param $deviceID
      * @return bool
-     */
+
     public function newDevice($MemIdx, $deviceType, $deviceID)
     {
         return true;
     }
-
-
-
+     */
 
     /**
      * 인증메일 정보를 읽어온다
@@ -815,8 +807,6 @@ class MemberFModel extends WB_Model
 
         return $rows->row_array();
     }
-
-
     
 
     /**
@@ -959,6 +949,35 @@ class MemberFModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 선택한 관심분야에 등록된 상품 가져오기
+     * @param $interestCode
+     * @return mixed
+     */
+    public function getWelcomepack($interestCode)
+    {
+        $column = " w.wType, w.wCode ";
+
+        $from = "
+            FROM {$this->_table['welcomepack']} AS w 
+            WHERE 1=1
+        ";
+
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'IsStatus' => 'Y',
+                'wInterestCode' => $interestCode
+            ]
+        ]);
+
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where);
+
+        return $query->result_array();
     }
 
 }

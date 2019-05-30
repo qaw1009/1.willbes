@@ -115,13 +115,13 @@ class Regist extends \app\controllers\BaseController
                 'SiteCode' => $this->_reqP('search_site_code'),
                 'DeployType' => $this->_reqP('search_deploy_type'),
                 'ApplyTypeCcd' => $this->_reqP('search_apply_type_ccd'),
-                'LecTypeCcd' => $this->_reqP('search_lec_type_ccd'),
                 'ApplyRangeType' => $this->_reqP('search_apply_range_type'),
                 'IsIssue' => $this->_reqP('search_is_issue'),
                 'IssueValid' => $this->_reqP('search_issue_valid'),
             ],
             'LKB' => [
-                'CateCodes' => $this->_reqP('search_cate_code')
+                'CateCodes' => $this->_reqP('search_cate_code'),
+                'LecTypeCcds' => $this->_reqP('search_lec_type_ccd')
             ],
             'ORG1' => [
                 'LKB' => [

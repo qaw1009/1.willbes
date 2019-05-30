@@ -79,8 +79,6 @@ class PredictFinal extends \app\controllers\BaseController
             }
             /*----  다운로드 정보 저장  ----*/
 
-            //echo var_dump($list);exit;
-
             $this->load->library('excel');
             $this->excel->exportHugeExcel($file_name, $list, $headers);
 

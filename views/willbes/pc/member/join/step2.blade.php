@@ -110,7 +110,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="combine-Tit">관심정보</td>
+                        <td class="combine-Tit">준비과정</td>
                         <td>
                             <div class="p_re">
                                 @foreach($interestCode as $key => $value)
@@ -350,7 +350,7 @@
                         pwd_chk : "비밀번호가 일치하지 않습니다."
                     },
                     InterestCode : {
-                        required : "관심정보를 선택해주십시요."
+                        required : "준비과정을 선택해주십시요."
                     }
                 },
                 invalidHandler: function(form, validator) {

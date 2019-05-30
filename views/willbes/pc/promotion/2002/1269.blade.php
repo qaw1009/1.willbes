@@ -79,7 +79,7 @@
         .wb_03 div span.area09 {top:859px; left:774px} /*제주*/
 
         .wb_04 {background:#fff}
-        .wb_05 {background:#5eae01}
+        .wb_05 {background:#cca91a}
 
         .content_guide_wrap{background:#fff; padding:100px 0}
         .content_guide_box {position:relative; width:1000px; margin:0 auto;}
@@ -165,12 +165,8 @@
         </div>
 
         <div class="evtCtnsBox wb_04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1269_04_01.jpg"  alt="이벤트1" usemap="#Map1239A" border="0" /><br>
-            <map name="Map1239A" id="Map1239A">
-                <area shape="rect" coords="341,1108,783,1187" href="{{ site_url('/pass/mockTest/apply/cate') }}" target="_blank" alt="모의고사 할인받기" />
-            </map>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1269_04_02.jpg"  alt="이벤트2" usemap="#Map1239B" border="0" />
-            <map name="Map1239B" id="Map1239B">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1269_04.jpg"  alt="이벤트2" usemap="#Map1269B" border="0" />
+            <map name="Map1269B" id="Map1269B">
                 <area shape="rect" coords="443,861,678,933" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰받기" />
             </map>
         </div>
@@ -189,7 +185,7 @@
 
         <div class="content_guide_wrap">
             <div class="content_guide_box" id="ask">
-                <p class="guide_tit">응시자 유의사항</p>
+                <p class="guide_tit NGEB">응시자 유의사항</p>
                 <dl>
                     <dt>
                         <h3>유의사항</h3>
@@ -217,7 +213,32 @@
                         <p>※ 성적공지일 추후공지.</p>
                         <p>※ 통합 사이트 오픈으로  온/오프 성적 공지가 지연될수 있는점 양해말씀드립니다. </p>
                     </dd>
-
+                    <dt>
+                        <h3>모의고사 접수 현황</h3>
+                    </dt>
+                    <dd>
+                        <p>- 나의 모의고사 접수현황은 [내강의실 > 모의고사관리 > 접수현황]에서 확인 가능합니다.</p>
+                        <p>- 해당 모의고사명 클릭시 접수내역 확인 및 응시표를 출력할 수 있습니다.(단, 환불 완료된 모의고사는 응시표 출력불가능)</p>
+                        <p>- 온라인 모의고사(응시형태가 Online인 경우)는 내강의실 > 모의고사관리 > 온라인 모의고사 응시메뉴에서 응시해 주시기 바랍니다. </p>
+                    </dd>
+                    <dt>
+                        <h3>모의고사 응시</h3>
+                    </dt>
+                    <dd>
+                        <p>- 모의고사는 [내강의실 > 모의고사관리 > 온라인 모의고사 응시]에서 응시 가능합니다.</p>
+                        <p>- 온라인 응시기간 및 지정된 시간에만 응시가 가능하오니 시험기간을 엄수해 주세요.</p>
+                        <p>- 임의로 시험을 중단하거나 임시저장만 한 상태에서 시험 종료 시, 시험결과를 확인할 수 없습니다.</p>
+                        <p>- 모의고사 응시 창에서 응시 후, 답안지는 모두 체크하셔야 답안 제출이 가능합니다.<br>
+                        (답안을 제출해야만 성적결과를 확인할 수 있습니다.) 
+                        </p>
+                    </dd>
+                    <dt>
+                        <h3>성적결과</h3>
+                    </dt>
+                    <dd>
+                        <p>- [내강의실 > 모의고사관리 > 성적결과]에서 정답제출을 처리한 모의고사의 성적 결과만 확인 가능합니다.</p>
+                        <p>- 성적결과는 오프라인 시험응시일이 마감된 이후 3~5일 안에 제공됩니다.</p>
+                    </dd>
                 </dl>
             </div>
         </div>

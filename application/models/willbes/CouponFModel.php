@@ -220,6 +220,18 @@ class CouponFModel extends WB_Model
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
 
+            // 쿠폰사용 여부 체크
+            $use_row = $this->_conn->getFindResult($this->_table['coupon_detail'], 'IsUse', ['EQ' => ['CdIdx' => $coupon_detail_idx, 'MemIdx' => $sess_mem_idx]]);
+
+            if (empty($use_row) === true) {
+                throw new \Exception('회원쿠폰이 존재하지 않습니다.');
+            }
+
+            if ($use_row['IsUse'] == 'Y') {
+                throw new \Exception('이미 사용한 쿠폰입니다.');
+            }
+
+            // 쿠폰사용 업데이트
             $data = [
                 'UseOrderProdIdx' => $order_prod_idx,
                 'IsUse' => 'Y'

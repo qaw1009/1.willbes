@@ -67,241 +67,261 @@
         </div>
 
         <div id="content_1" class="tabCts pb90">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_1.jpg"  usemap="#1244_01_1" title="서울시/지방직 9급 시험 완벽분석" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_1A.jpg"  usemap="#1244_01_1" title="서울시/지방직 9급 시험 완벽분석" />  
+            <ul class="assayTab">
+                <li><a href="#assayTab01">서울시</a></li>
+                <li><a href="#assayTab02">지방직</a></li>
+            </ul>
+            <div id="assayTab01">
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_2A.jpg"  usemap="#1244_01_1" title="서울시/지방직 9급 시험 완벽분석" /> 
+            </div>
+            <div id="assayTab02">
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_2B.jpg"  usemap="#1244_01_1" title="서울시/지방직 9급 시험 완벽분석" /> 
+            </div> 
+            
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_01_3.jpg"  usemap="#1244_01_1" title="서울시/지방직 9급 시험 완벽분석" />            
             <map name="1244_01_1" id="1244_01_1">
-                <area shape="rect" coords="704,1362,747,1402" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" target="_blank" title="2018.5.19. 시행 지방직 9급 공개경쟁채용시험 문제"/>
-                <area shape="rect" coords="932,1362,975,1402" href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" target="_blank" title="2018.5.19. 시행 지방직 9급 공개경쟁채용시험 정답"/>
-                <area shape="rect" coords="704,1416,747,1460" href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" target="_blank" title="2018.6.23. 시행 서울시 9급 공개경쟁채용시험 문제"/>
-                <area shape="rect" coords="932,1416,976,1459" href="@if(empty($file_yn) === false && $file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" target="_blank" title="2018.6.23. 시행 서울시 9급 공개경쟁채용시험 정답"/>
-                <area shape="rect" coords="702,1468,747,1516" href="@if(empty($file_yn) === false && $file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" target="_blank" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 문제"/>
-                <area shape="rect" coords="932,1471,977,1515" href="@if(empty($file_yn) === false && $file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" target="_blank" title="2019.4.6. 시행 국가직 9급 공개경쟁채용시험 정답"/>
+                <area shape="rect" coords="706,217,745,255" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="16년 지방직 문제" />
+                <area shape="rect" coords="936,216,970,251" href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="16년 지방직 정답" />
+                <area shape="rect" coords="706,263,746,300" href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="16년 서울시 문제" />
+                <area shape="rect" coords="934,266,970,301" href="@if(empty($file_yn) === false && $file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" alt="16년 서울시 정답" />
+                <area shape="rect" coords="707,311,747,349" href="@if(empty($file_yn) === false && $file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" alt="17년 지방직 문제" />
+                <area shape="rect" coords="935,310,970,347" href="@if(empty($file_yn) === false && $file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" alt="17년 지방직 정답" />
+                <area shape="rect" coords="708,353,744,391" href="@if(empty($file_yn) === false && $file_yn[7] == 'Y') {{ front_url($file_link[7]) }} @else {{ $file_link[7] }} @endif" alt="17년 서울시 문제" />
+                <area shape="rect" coords="935,355,971,389" href="@if(empty($file_yn) === false && $file_yn[8] == 'Y') {{ front_url($file_link[8]) }} @else {{ $file_link[8] }} @endif" alt="17년 서울시 정답" />
+                <area shape="rect" coords="707,400,744,436" href="@if(empty($file_yn) === false && $file_yn[9] == 'Y') {{ front_url($file_link[9]) }} @else {{ $file_link[9] }} @endif" alt="18년 지방직 문제" />
+                <area shape="rect" coords="935,401,972,437" href="@if(empty($file_yn) === false && $file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" alt="18년 지방직 정답" />
+                <area shape="rect" coords="707,445,744,482" href="@if(empty($file_yn) === false && $file_yn[11] == 'Y') {{ front_url($file_link[11]) }} @else {{ $file_link[11] }} @endif" alt="18년 서울시 문제" />
+                <area shape="rect" coords="935,445,974,482" href="@if(empty($file_yn) === false && $file_yn[12] == 'Y') {{ front_url($file_link[12]) }} @else {{ $file_link[12] }} @endif" alt="18년 서울시 정답" />
+                <area shape="rect" coords="707,492,745,535" href="@if(empty($file_yn) === false && $file_yn[13] == 'Y') {{ front_url($file_link[13]) }} @else {{ $file_link[13] }} @endif" alt="19년 국가직 문제" />
+                <area shape="rect" coords="934,492,972,533" href="@if(empty($file_yn) === false && $file_yn[14] == 'Y') {{ front_url($file_link[14]) }} @else {{ $file_link[14] }} @endif" alt="19년 국가직 정답" />
             </map>
-			 <div class="noteWrap2">
-			<table cellspacing="0" cellpadding="0">
-                <col/>
-			  <tbody>
-			  <tr>
-				<th rowspan="3">모집단위</th>
-				<th colspan="6">2019년</th>
-				<th colspan="2">2018년</th>
-			  </tr>
-			  <tr>
-				<th colspan="2">선발예정인원</th>
-				<th colspan="2">접수인원</th>
-				<th colspan="2">경쟁률</th>
-				<th>경쟁률</th>
-				<th>합격선<br>(최고점)</th>
-			  </tr>
-			  <tr>
-				<th>전체</th>
-				<th>일반행정<br>(9급)</th>
-				<th>전체</th>
-				<th>일반행정<br>(9급)</th>
-				<th>전체</th>
-				<th>일반행정<br>(9급)</th>
-				<th>일반행정<br>(9급)</th>
-				<th>일반행정<br> (9급)</th>
-			  </tr>
-			  </tbody>
-			  <tr>
-				<td>계</td>
-				<td>23,688</td>
-				<td>8,680</td>
-				<td>264,120</td>
-				<td>129,988</td>
-				<td>14.66:1</td>
-				<td>17.36:1</td>
-				<td>22.58:1</td>
-				<td><font color="red">385.27</td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_01_20190521093638.pdf" target="_blank"><b>서울</b></a></td>
-				<td>3,090</td>
-				<td>1,046</td>
-				<td>47,620</td>
-				<td>25,107</td>
-				<td>15.41:1</td>
-				<td>24.0:1</td>
-				<td>76.99:1</td>
-				<td><font color="red">381.71</td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_02_20190521093638.pdf" target="_blank"><b>강원</b></a></td>
-				<td>1,054</td>
-				<td>368</td>
-				<td>10,072</td>
-				<td>5,050</td>
-				<td>9.56:1</td>
-				<td>13.72:1</td>
-				<td>21.65:1</td>
-				<td><font color="red">370.95</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_03_20190521093638.pdf" target="_blank"><b>경기</b></a></td>
-				<td>4,873</td>
-				<td>1,731</td>
-				<td>44,484</td>
-				<td>23,983</td>
-				<td>9.13:1</td>
-				<td>13.85:1</td>
-				<td>21.22:1</td>
-				<td><font color="red">380.09</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_04_20190521093638.pdf" target="_blank"><b>경남</b></a></td>
-				<td>1,936</td>
-				<td>777</td>
-				<td>18,640</td>
-				<td>9,489</td>
-				<td>9.63:1</td>
-				<td>12.21:1</td>
-				<td>19.29:1</td>
-				<td><font color="red">369.33</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_05_20190521093638.pdf" target="_blank"><b>경북</b></a></td>
-				<td>2,216</td>
-				<td>854</td>
-				<td>18,957</td>
-				<td>8,912</td>
-				<td>8.55:1</td>
-				<td>10.44:1</td>
-				<td>15.11:1</td>
-				<td><font color="red">365.54</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_06_20190521093638.pdf" target="_blank"><b>광주</b></a></td>
-				<td>779</td>
-				<td>271</td>
-				<td>10,275</td>
-				<td>4,868</td>
-				<td>13.19:1</td>
-				<td>17.96:1</td>
-				<td>26.50:1</td>
-				<td><font color="red">367</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_07_20190521093638.pdf" target="_blank"><b>대구</b></a></td>
-				<td>628</td>
-				<td>331</td>
-				<td>13,753</td>
-				<td>7,509</td>
-				<td>21.90:1</td>
-				<td>22.69:1</td>
-				<td>31.61:1</td>
-				<td><font color="red">368.64</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_01_20190521093715.pdf" target="_blank"><b>대전</b></a></td>
-				<td>421</td>
-				<td>165</td>
-				<td>7,490</td>
-				<td>3,922</td>
-				<td>17.79:1</td>
-				<td>23.77:1</td>
-				<td>34.23:1</td>
-				<td><font color="red">369.96</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_02_20190521093715.pdf" target="_blank"><b>부산</b></a></td>
-				<td>903</td>
-				<td>333</td>
-				<td>15,985</td>
-				<td>8,097</td>
-				<td>17.70:1</td>
-				<td>24.32:1</td>
-				<td>31.24:1</td>
-				<td><font color="red">373.57</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_03_20190521093715.pdf" target="_blank"><b>세종</b></a></td>
-				<td>138</td>
-				<td>40</td>
-				<td>1,848</td>
-				<td>984</td>
-				<td>13.39:1</td>
-				<td>24.60:1</td>
-				<td>23.81:1</td>
-				<td><font color="red">363.2</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_04_20190521093715.pdf" target="_blank"><b>울산</b></a></td>
-				<td>250</td>
-				<td>63</td>
-				<td>16,345</td>
-				<td>2,573</td>
-				<td>65.38:1</td>
-				<td>40.84:1</td>
-				<td>25.85:1</td>
-				<td><font color="red">366.75</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_05_20190521093715.pdf" target="_blank"><b>인천</b></a></td>
-				<td>1,631</td>
-				<td>702</td>
-				<td>10,968</td>
-				<td>6,096</td>
-				<td>6.72:1</td>
-				<td>8.68:1</td>
-				<td>27.15:1</td>
-				<td><font color="red">375.88</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_06_20190521093715.pdf" target="_blank"><b>전남</b></a></td>
-				<td>1,455</td>
-				<td>483</td>
-				<td>12,023</td>
-				<td>5,646</td>
-				<td>8.26:1</td>
-				<td>11.69:1</td>
-				<td>14.11:1</td>
-				<td><font color="red">358.94</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_07_20190521093715.pdf" target="_blank"><b>전북</b></a></td>
-				<td>1,231</td>
-				<td>458</td>
-				<td>12,598</td>
-				<td>6,092</td>
-				<td>10.23:1</td>
-				<td>13.30:1</td>
-				<td>16.59:1</td>
-				<td><font color="red">367.64</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_01_20190521093735.pdf" target="_blank"><b>제주</b></a></td>
-				<td>414</td>
-				<td>169</td>
-				<td>3,421</td>
-				<td>1,829</td>
-				<td>8.26:1</td>
-				<td>10.82:1</td>
-				<td>19.85:1</td>
-				<td><font color="red">369.01</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_02_20190521093735.pdf" target="_blank"><b>충남</b></a></td>
-				<td>1,579</td>
-				<td>494</td>
-				<td>11,112</td>
-				<td>5,259</td>
-				<td>7.04:1</td>
-				<td>10.65:1</td>
-				<td>15.32:1</td>
-				<td><font color="red">379.88</font></td>
-			  </tr>
-			  <tr>
-				<td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_03_20190521093735.pdf" target="_blank"><b>충북</b></a></td>
-				<td>1,090</td>
-				<td>395</td>
-				<td>8,529</td>
-				<td>4,572</td>
-				<td>7.82:1</td>
-				<td>11.57:1</td>
-				<td>17.71:1</td>
-				<td><font color="red">385.27</font></td>
-			  </tr>
-			</table>
+			<div class="noteWrap2 mt80">
+                <table cellspacing="0" cellpadding="0">
+                    <col/>
+                <tbody>
+                <tr>
+                    <th rowspan="3">모집단위</th>
+                    <th colspan="6">2019년</th>
+                    <th colspan="2">2018년</th>
+                </tr>
+                <tr>
+                    <th colspan="2">선발예정인원</th>
+                    <th colspan="2">접수인원</th>
+                    <th colspan="2">경쟁률</th>
+                    <th>경쟁률</th>
+                    <th>합격선<br>(최고점)</th>
+                </tr>
+                <tr>
+                    <th>전체</th>
+                    <th>일반행정<br>(9급)</th>
+                    <th>전체</th>
+                    <th>일반행정<br>(9급)</th>
+                    <th>전체</th>
+                    <th>일반행정<br>(9급)</th>
+                    <th>일반행정<br>(9급)</th>
+                    <th>일반행정<br> (9급)</th>
+                </tr>
+                </tbody>
+                <tr>
+                    <td>계</td>
+                    <td>23,688</td>
+                    <td>8,680</td>
+                    <td>264,120</td>
+                    <td>129,988</td>
+                    <td>14.66:1</td>
+                    <td>17.36:1</td>
+                    <td>22.58:1</td>
+                    <td><span class="tx-red">385.27</td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_01_20190521093638.pdf" target="_blank"><b>서울</b></a></td>
+                    <td>3,090</td>
+                    <td>1,046</td>
+                    <td>47,620</td>
+                    <td>25,107</td>
+                    <td>15.41:1</td>
+                    <td>24.0:1</td>
+                    <td>76.99:1</td>
+                    <td><span class="tx-red">381.71</td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_02_20190521093638.pdf" target="_blank"><b>강원</b></a></td>
+                    <td>1,054</td>
+                    <td>368</td>
+                    <td>10,072</td>
+                    <td>5,050</td>
+                    <td>9.56:1</td>
+                    <td>13.72:1</td>
+                    <td>21.65:1</td>
+                    <td><span class="tx-red">370.95</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_03_20190521093638.pdf" target="_blank"><b>경기</b></a></td>
+                    <td>4,873</td>
+                    <td>1,731</td>
+                    <td>44,484</td>
+                    <td>23,983</td>
+                    <td>9.13:1</td>
+                    <td>13.85:1</td>
+                    <td>21.22:1</td>
+                    <td><span class="tx-red">380.09</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_04_20190521093638.pdf" target="_blank"><b>경남</b></a></td>
+                    <td>1,936</td>
+                    <td>777</td>
+                    <td>18,640</td>
+                    <td>9,489</td>
+                    <td>9.63:1</td>
+                    <td>12.21:1</td>
+                    <td>19.29:1</td>
+                    <td><span class="tx-red">369.33</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_05_20190521093638.pdf" target="_blank"><b>경북</b></a></td>
+                    <td>2,216</td>
+                    <td>854</td>
+                    <td>18,957</td>
+                    <td>8,912</td>
+                    <td>8.55:1</td>
+                    <td>10.44:1</td>
+                    <td>15.11:1</td>
+                    <td><span class="tx-red">365.54</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_06_20190521093638.pdf" target="_blank"><b>광주</b></a></td>
+                    <td>779</td>
+                    <td>271</td>
+                    <td>10,275</td>
+                    <td>4,868</td>
+                    <td>13.19:1</td>
+                    <td>17.96:1</td>
+                    <td>26.50:1</td>
+                    <td><span class="tx-red">367</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226982_07_20190521093638.pdf" target="_blank"><b>대구</b></a></td>
+                    <td>628</td>
+                    <td>331</td>
+                    <td>13,753</td>
+                    <td>7,509</td>
+                    <td>21.90:1</td>
+                    <td>22.69:1</td>
+                    <td>31.61:1</td>
+                    <td><span class="tx-red">368.64</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_01_20190521093715.pdf" target="_blank"><b>대전</b></a></td>
+                    <td>421</td>
+                    <td>165</td>
+                    <td>7,490</td>
+                    <td>3,922</td>
+                    <td>17.79:1</td>
+                    <td>23.77:1</td>
+                    <td>34.23:1</td>
+                    <td><span class="tx-red">369.96</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_02_20190521093715.pdf" target="_blank"><b>부산</b></a></td>
+                    <td>903</td>
+                    <td>333</td>
+                    <td>15,985</td>
+                    <td>8,097</td>
+                    <td>17.70:1</td>
+                    <td>24.32:1</td>
+                    <td>31.24:1</td>
+                    <td><span class="tx-red">373.57</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_03_20190521093715.pdf" target="_blank"><b>세종</b></a></td>
+                    <td>138</td>
+                    <td>40</td>
+                    <td>1,848</td>
+                    <td>984</td>
+                    <td>13.39:1</td>
+                    <td>24.60:1</td>
+                    <td>23.81:1</td>
+                    <td><span class="tx-red">363.2</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_04_20190521093715.pdf" target="_blank"><b>울산</b></a></td>
+                    <td>250</td>
+                    <td>63</td>
+                    <td>16,345</td>
+                    <td>2,573</td>
+                    <td>65.38:1</td>
+                    <td>40.84:1</td>
+                    <td>25.85:1</td>
+                    <td><span class="tx-red">366.75</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_05_20190521093715.pdf" target="_blank"><b>인천</b></a></td>
+                    <td>1,631</td>
+                    <td>702</td>
+                    <td>10,968</td>
+                    <td>6,096</td>
+                    <td>6.72:1</td>
+                    <td>8.68:1</td>
+                    <td>27.15:1</td>
+                    <td><span class="tx-red">375.88</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_06_20190521093715.pdf" target="_blank"><b>전남</b></a></td>
+                    <td>1,455</td>
+                    <td>483</td>
+                    <td>12,023</td>
+                    <td>5,646</td>
+                    <td>8.26:1</td>
+                    <td>11.69:1</td>
+                    <td>14.11:1</td>
+                    <td><span class="tx-red">358.94</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226983_07_20190521093715.pdf" target="_blank"><b>전북</b></a></td>
+                    <td>1,231</td>
+                    <td>458</td>
+                    <td>12,598</td>
+                    <td>6,092</td>
+                    <td>10.23:1</td>
+                    <td>13.30:1</td>
+                    <td>16.59:1</td>
+                    <td><span class="tx-red">367.64</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_01_20190521093735.pdf" target="_blank"><b>제주</b></a></td>
+                    <td>414</td>
+                    <td>169</td>
+                    <td>3,421</td>
+                    <td>1,829</td>
+                    <td>8.26:1</td>
+                    <td>10.82:1</td>
+                    <td>19.85:1</td>
+                    <td><span class="tx-red">369.01</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_02_20190521093735.pdf" target="_blank"><b>충남</b></a></td>
+                    <td>1,579</td>
+                    <td>494</td>
+                    <td>11,112</td>
+                    <td>5,259</td>
+                    <td>7.04:1</td>
+                    <td>10.65:1</td>
+                    <td>15.32:1</td>
+                    <td><span class="tx-red">379.88</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/0521/board_226984_03_20190521093735.pdf" target="_blank"><b>충북</b></a></td>
+                    <td>1,090</td>
+                    <td>395</td>
+                    <td>8,529</td>
+                    <td>4,572</td>
+                    <td>7.82:1</td>
+                    <td>11.57:1</td>
+                    <td>17.71:1</td>
+                    <td><span class="tx-red">385.27</span></td>
+                </tr>
+                </table>
 			</div>
         </div>
 
@@ -343,7 +363,6 @@
             </div>  
         </div>
 
-
         <div id="content_3" class="tabCts">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_03_1.jpg" usemap="#Map1244C" title="윌비스 전국 모의고사" border="0" />
             <map name="Map1244C" id="Map1244C">
@@ -361,12 +380,17 @@
             </div>
         </div>
 
-
         <div id="content_4" class="tabCts">
             <p class="mb100">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_1.jpg" usemap="#Map1244D" title="족집게 라이브 특강" border="0" />
-                <map name="Map1244D" id="Map1244D">
-                    <area shape="rect" coords="669,1629,951,1680" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=258" target="_blank" alt="라이브특강 현장 수강 신청" />
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_1A.jpg" usemap="#Map1244D" title="족집게 라이브 특강" border="0" />
+                <map name="Map1244D" id="Map1244D">                  
+                  <area shape="rect" coords="122,945,243,981" href="@if(empty($file_yn) === false && $file_yn[21] == 'Y') {{ front_url($file_link[21]) }} @else {{ $file_link[21] }} @endif" title="기미진 특강자료" />
+                  <area shape="rect" coords="279,945,404,981" href="@if(empty($file_yn) === false && $file_yn[22] == 'Y') {{ front_url($file_link[22]) }} @else {{ $file_link[22] }} @endif" title="한덕현 특강자료" />
+                  <area shape="rect" coords="427,945,551,981" href="@if(empty($file_yn) === false && $file_yn[23] == 'Y') {{ front_url($file_link[23]) }} @else {{ $file_link[23] }} @endif" title="한경준 특강자료" />
+                  <area shape="rect" coords="579,945,708,981" href="@if(empty($file_yn) === false && $file_yn[24] == 'Y') {{ front_url($file_link[24]) }} @else {{ $file_link[24] }} @endif" title="김덕관 특강자료" />
+                  <area shape="rect" coords="741,945,867,981" href="@if(empty($file_yn) === false && $file_yn[25] == 'Y') {{ front_url($file_link[25]) }} @else {{ $file_link[25] }} @endif" title="한세훈 특강자료" />
+                  <area shape="rect" coords="899,945,1027,981" href="@if(empty($file_yn) === false && $file_yn[26] == 'Y') {{ front_url($file_link[26]) }} @else {{ $file_link[26] }} @endif" title="문병일 특강자료" />
+                  <area shape="rect" coords="669,1634,951,1685" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=258" target="_blank" alt="라이브특강 현장 수강 신청" />
                 </map>
             </p>
             <div class="content_4_wrap">                
@@ -436,14 +460,14 @@
             <p>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_1.jpg" usemap="#Map1244E" title="소문내기 이벤트" border="0" />
                 <map name="Map1244E" id="Map1244E">
-                    <area shape="rect" coords="186,1026,300,1055" href="@if($file_yn[20] == 'Y') {{ front_url($file_link[20]) }} @else {{ $file_link[20] }} @endif" target="_blank" alt="이미지다운로드"/>
+                    <area shape="rect" coords="186,1026,300,1055" href="@if($file_yn[31] == 'Y') {{ front_url($file_link[31]) }} @else {{ $file_link[31] }} @endif" alt="이미지다운로드"/>
                     <area shape="rect" coords="143,1262,310,1324" href="http://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="공무원갤러리" />
                     <area shape="rect" coords="366,1263,523,1325" href="https://cafe.naver.com/gugrade" target="_blank" alt="공드림" />
                     <area shape="rect" coords="586,1261,714,1325" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&amp;currentPage=1&amp;groupId=0" target="_blank" alt="블로그" />
                     <area shape="rect" coords="144,1340,287,1405" href="http://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
                     <area shape="rect" coords="366,1343,518,1404" href="https://www.facebook.com" target="_blank" alt="패이스북" />
                     <area shape="rect" coords="592,1340,749,1407" href="https://www.instagram.com/?hl=ko" target="_blank" alt="인스타그램" />
-                    <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn[21] == 'Y') {{ front_url($file_link[21]) }} @else {{ $file_link[21] }} @endif" target="_blank" alt="이미지다운로드"/>
+                    <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn[32] == 'Y') {{ front_url($file_link[32]) }} @else {{ $file_link[32] }} @endif" alt="이미지다운로드"/>
                 </map>
             </p>
             {{--댓글--}}
@@ -586,6 +610,31 @@
                 }
             });
         });
+
+        $(document).ready(function(){
+            $('.assayTab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+            
+                $content = $($active[0].hash);
+            
+                $links.not($active).each(function () {
+                $(this.hash).hide()});
+            
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+            
+                $active = $(this);
+                $content = $(this.hash);
+            
+                $active.addClass('active');
+                $content.show();
+            
+                e.preventDefault()})})}
+        ); 
 
         /*마무리특강*/
         var tab1_url = "https://www.youtube.com/embed/5KDnhVEf0bE?rel=0";

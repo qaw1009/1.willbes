@@ -3026,7 +3026,7 @@ class PredictModel extends WB_Model
                                 select
                                 PfIdx
                                 #,group_concat(CONCAT(\'{subjectName:"\',bb.CcdName,\'",point:"\',aa.Point,\'"}\')order by PfpIdx) as pointJson
-                                ,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point) order by PfpIdx separator \'\n\n\') as pointJson
+                                ,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point) order by PfpIdx separator \'\n\') as pointJson
                                 from
                                     lms_predict_final_point aa
                                     join lms_predict_code bb on aa.Subject = bb.Ccd

@@ -335,7 +335,7 @@ class Home extends \app\controllers\FrontController
     private function _boardNotice($limit_cnt = 5, $cate_code = '', $arr_campus = [])
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $order_by = ['IsBest' => 'Desc', 'BoardIdx' => 'Desc'];
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => 45
@@ -390,7 +390,7 @@ class Home extends \app\controllers\FrontController
     private function _boardExamAnnouncement($limit_cnt = 5, $cate_code = '', $arr_campus = [])
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $order_by = ['IsBest'=>'Desc', 'BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
@@ -406,7 +406,7 @@ class Home extends \app\controllers\FrontController
     private function _boardExamNews($limit_cnt = 5, $cate_code = '', $arr_campus = [])
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
@@ -423,7 +423,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName
             , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
-        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt, 0, $order_by);
@@ -443,7 +443,7 @@ class Home extends \app\controllers\FrontController
             ]
         ];
         $column = 'b.BoardIdx, b.Title,  b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['b.BoardIdx'=>'Desc'];
+        $order_by = ['BoardIdx'=>'Desc'];
         $data = $this->supportBoardFModel->listBoard(false,$arr_condition, '',$column,2,0,$order_by);
 
         if (empty($data) === false) {

@@ -18,6 +18,10 @@
     .eventPopS1 li ul {margin-bottom:10px}
     .eventPopS1 li li {display:inline-block; border:0; margin-right:10px; padding:0}
 
+    .subject-p li {display:inline; margin-right:20px; margin-bottom:10px}
+    .subject-p li span {width:80px; text-align:center; display:inline-block; background:#f0f0f0; height:26px; line-height:26px;}
+    .subject-p li input {margin-right:5px; width:80px}
+
     .viewTb {width:100%;}
 	.viewTb th,
 	.viewTb td{padding:8px; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd}
@@ -43,7 +47,7 @@
     .eventPopS3 input {vertical-align:middle}
 
     .btnsSt3 {text-align:center; margin-top:20px}
-    .btnsSt3 button {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333; width:57px; height:37px;}
+    .btnsSt3 button {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333; width:70px; height:37px;}
     .btnsSt3 button:hover {background:#fff; color:#333 !important}
 
     input[type=radio],
@@ -62,6 +66,15 @@
         {!! method_field($arr_base['METHOD']) !!}
         <input type="hidden" name="predict" value="{{ $arr_base['predict_idx'] }}">
         <input type="hidden" name="cert" value="{{ $arr_base['cert_idx'] }}">
+        <input type="hidden" name="flag_1" id="flag_1" value="1">
+        <input type="hidden" name="flag_2" id="flag_2" value="1">
+        <input type="hidden" name="flag_3" id="flag_3" value="1">
+        <input type="hidden" name="flag_value_1" id="flag_value_1">
+        <input type="hidden" name="flag_value_2" id="flag_value_2">
+        <input type="hidden" name="flag_value_3" id="flag_value_3">
+        <input type="hidden" name="flag_text_1" id="flag_text_1">
+        <input type="hidden" name="flag_text_2" id="flag_text_2">
+        <input type="hidden" name="flag_text_3" id="flag_text_3">
         <div class="eventPop">
             <h3>
                 <span class="tx-bright-blue">나의 성적 입력</span>
@@ -93,10 +106,14 @@
                         @foreach($arr_base['arr_subject_ccd']['P'] as $key => $rows)
                             <div class="subject-p" id="subject_p_{{ $key }}">
                                 <strong>공통과목</strong>
-                                @foreach($rows as $value => $name)
-                                    <input type="hidden" name="subject_p_code[{{ $key }}][]" value="{{ $value }}">
-                                    <span>{{ $name }}</span> <input type="text" maxlength="3" name="subject_p[{{ $value }}]" id="subject_p_{{ $value }}"> 점 @if($loop->last === false) / @endif
-                                @endforeach
+                                <ul>                                  
+                                    <li>
+                                    @foreach($rows as $value => $name)
+                                        <input type="hidden" name="subject_p_code[{{ $key }}][]" value="{{ $value }}">  
+                                        <span>{{ $name }}</span> <input type="text" maxlength="3" name="subject_p[{{ $value }}]" id="subject_p_{{ $value }}"> 점 @if($loop->last === false) / @endif                                        
+                                    @endforeach
+                                    </li>
+                                </ul>
                             </div>
                         @endforeach
 
@@ -108,7 +125,7 @@
                                     <thead>
                                         <tr class="bdRno">
                                             <th>
-                                                <select name="subject_s[{{ $key }}][]" style="width:120px;">
+                                                <select id="s_subject_1_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 1, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
                                                     <option value="">{{($key == 300) ? '필수' : '선택'}}과목1</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
@@ -116,7 +133,7 @@
                                                 </select>
                                             </th>
                                             <th>
-                                                <select name="subject_s[{{ $key }}][]" style="width:120px;">
+                                                <select id="s_subject_2_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 2, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
                                                     <option value="">{{($key == 300) ? '필수' : '선택'}}과목2</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
@@ -124,7 +141,7 @@
                                                 </select>
                                             </th>
                                             <th>
-                                                <select name="subject_s[{{ $key }}][]"  style="width:120px;">
+                                                <select id="s_subject_3_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 3, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
                                                     <option value="">{{($key == 300) ? '필수' : '선택'}}과목3</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
@@ -194,6 +211,8 @@
         {
             var ret = false;
             mock_part = $regi_form.find('select[name="mock_part"]').val();
+            var add_point = $regi_form.find('input[name="add_point"]').val();
+
             $regi_form.find('input[name="subject_p_code['+mock_part+'][]"]').each(function (index) {
                 var key = $(this).val();
                 var subject_p_val = $regi_form.find('input[name="subject_p['+key+']"]').val();
@@ -206,14 +225,125 @@
                 }
             });
 
-            var add_point = $regi_form.find('input[name="add_point"]').val();
             if (add_point > 5) {
                 alert('가산점은 0~5점 사이로 입력해 주세요.');
                 ret = false;
             }
+
+            var temp = [];
+            $regi_form.find('select[name="subject_s['+mock_part+'][]"]').each(function (index) {
+                if ($(this).val() != '') {
+                    temp[index] = $(this).val();
+                }
+            });
+
+            //임시 배열값 과 옵션값이 같으면 임시 변수값 증가
+            $(temp).each(function(i) {
+                var x = 0;
+                $regi_form.find('select[name="subject_s['+mock_part+'][]"]').each(function() {
+                    if( temp[i] == $(this).val() ) {
+                        x++;
+                    }
+                });
+                // 임시 변수 값 중복체크
+                if(x > 1) {
+                    alert('동일한 선택과목이 있습니다.');
+                    ret = false;
+                    return false;
+                }
+            });
+
             return ret;
         }
     });
+
+    function sortSelect(selId){
+        var sel = $('#'+selId);
+        var optionList = sel.find('option');
+        optionList.sort(function(a, b){
+            //if (a.text > b.text) return 1;
+            //else if (a.text < b.text) return -1;
+            //else {
+            if (a.value > b.value) return 1;
+            else if (a.value < b.value) return -1;
+            else return 0;
+            //}
+        });
+        // 정렬된 option 리스트를 HTML로 재작성
+        var sorted = '';
+        for (var i=0; i<optionList.length; i++) {
+            var selected = '';
+            if (optionList[i].selected) selected = ' selected';
+            sorted += '<option value="'+optionList[i].value+'"'+selected+'>'+optionList[i].text+'</option>';
+        }
+        sel.html(sorted);
+    }
+
+    function fn_sel_subject_tmp(s_key, flag, val, text){
+        var flag_1 = $("#flag_1").val();
+        var flag_2 = $("#flag_2").val();
+        var flag_3 = $("#flag_3").val();
+
+        if(flag==1){
+            if(flag_1==1){
+                $('#s_subject_2_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_3_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $("#flag_1").val("2");
+                $("#flag_value_1").val(val);
+                $("#flag_text_1").val(text);
+                $("#n_subject_1").attr("disabled", false);
+            }else{
+                $('#s_subject_2_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_3_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_2_'+s_key).append($("<option></option>").val($("#flag_value_1").val()).text($("#flag_text_1").val())); // 옵션 추가
+                $('#s_subject_3_'+s_key).append($("<option></option>").val($("#flag_value_1").val()).text($("#flag_text_1").val())); // 옵션 추가
+                $("#flag_value_1").val(val);
+                $("#flag_text_1").val(text);
+                sortSelect('s_subject_2');
+                sortSelect('s_subject_3');
+            }
+        }
+
+        if(flag==2){
+            if(flag_2==1){
+                $('#s_subject_1_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_3_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $("#flag_2").val("2");
+                $("#flag_value_2").val(val);
+                $("#flag_text_2").val(text);
+                $("#n_subject_2").attr("disabled", false);
+            }else{
+                $('#s_subject_1_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_3_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_1_'+s_key).append($("<option></option>").val($("#flag_value_2").val()).text($("#flag_text_2").val())); // 옵션 추가
+                $('#s_subject_3_'+s_key).append($("<option></option>").val($("#flag_value_2").val()).text($("#flag_text_2").val())); // 옵션 추가
+                $("#flag_value_2").val(val);
+                $("#flag_text_2").val(text);
+                sortSelect('s_subject_1');
+                sortSelect('s_subject_3');
+            }
+        }
+
+        if(flag==3){
+            if(flag_3==1){
+                $('#s_subject_1_'+s_key).children("[value='" + val + "']").remove(); // 옵션 삭제
+                $('#s_subject_2_'+s_key).children("[value='" + val + "']").remove(); // 옵션 삭제
+                $("#flag_3").val("2");
+                $("#flag_value_3").val(val);
+                $("#flag_text_3").val(text);
+                $("#n_subject_3").attr("disabled", false);
+            }else{
+                $('#s_subject_1_'+s_key).children("[value='" + val + "']").remove(); // 옵션 삭제
+                $('#s_subject_2_'+s_key).children("[value='" + val + "']").remove(); // 옵션 삭제
+                $('#s_subject_1_'+s_key).append($("<option></option>").val($("#flag_value_3").val()).text($("#flag_text_3").val())); // 옵션 추가
+                $('#s_subject_2_'+s_key).append($("<option></option>").val($("#flag_value_3").val()).text($("#flag_text_3").val())); // 옵션 추가
+                $("#flag_value_3").val(val);
+                $("#flag_text_3").val(text);
+                sortSelect('s_subject_1');
+                sortSelect('s_subject_2');
+            }
+        }
+    }
 </script>
 <!--willbes-Layer-PassBox//-->
 @stop

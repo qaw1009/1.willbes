@@ -5,7 +5,7 @@ class Apply extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'sys/code', 'sys/category', 'site/cert', 'site/certApply');
     protected $helpers = array('download','file');
-    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값1
 
     public function __construct()
     {

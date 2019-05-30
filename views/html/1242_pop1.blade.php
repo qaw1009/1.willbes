@@ -18,6 +18,10 @@
     .eventPopS1 li ul {margin-bottom:10px}
     .eventPopS1 li li {display:inline-block; border:0; margin-right:10px; padding:0}
 
+    .subject-p li {display:inline; margin-right:20px; margin-bottom:10px}
+    .subject-p li span {width:80px; text-align:center; display:inline-block; background:#f0f0f0; height:26px; line-height:26px;}
+    .subject-p li input {margin-right:5px; width:80px}
+
     .viewTb {width:100%;}
 	.viewTb th,
 	.viewTb td{padding:8px; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd}
@@ -43,8 +47,8 @@
     .eventPopS3 input {vertical-align:middle}
 
     .btnsSt3 {text-align:center; margin-top:20px}
-    .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333}
-    .btnsSt3 a:hover {background:#fff; color:#333 !important}
+    .btnsSt3 button {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333; width:70px; height:37px;}
+    .btnsSt3 button:hover {background:#fff; color:#333 !important}
 
     input[type=radio],
     input[type=checkbox] {width:16px; height:16px;}    
@@ -86,10 +90,15 @@
                         반드시 성적표에 기재된 조정점수를 입력해 주세요. 
                         <a href="http://gosi.police.go.kr"  target="_blank">필기시험 성적 확인하기 ▶</a>
                     </p>
-                    <div>
+                    <div class="subject-p">
                         <strong>공통과목</strong>
-                        <span>영어</span> <input type="text" maxlength="3" name="" id="" onkeyup=""> 점   /  
-                        <span>한국사</span> <input type="text" maxlength="3" name="" id="" onkeyup="">점
+                        <ul>
+                            <li><span>영어</span><input type="text" maxlength="3" name="" id="" onkeyup="">점</li>  
+                            <li><span>한국사</span><input type="text" maxlength="3" name="" id="" onkeyup="">점</li>
+                            <li><span>형법</span><input type="text" maxlength="3" name="" id="" onkeyup="">점</li> 
+                            <li><span>형사소송법</span><input type="text" maxlength="3" name="" id="" onkeyup="">점</li> 
+                            <li><span>경찰학개론</span><input type="text" maxlength="3" name="" id="" onkeyup="">점</li> 
+                        </ul>
                     </div>
                     <div>
                         <strong>선택과목</strong>
@@ -137,8 +146,8 @@
         </div>
         
         <div class="btnsSt3">
-            <a href="#">확인</a>
-            <a href="javascript:close();">취소</a>
+            <button type="submit">확인</button>
+            <button type="button" onclick="javascript:window.close();">취소</button>
         </div>
     </div> 
     </form>

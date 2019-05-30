@@ -35,7 +35,7 @@ class Home extends \app\controllers\FrontController
             
             // NOW 윌비스
             $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-            $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+            $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
             $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
             $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, '', $column, 6, 0, $order_by);
         }

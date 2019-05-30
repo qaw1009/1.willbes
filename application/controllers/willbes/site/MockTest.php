@@ -684,7 +684,7 @@ class MockTest extends \app\controllers\FrontController
                        ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition, '');
         $paging = $this->pagination('/mockTest/listNotice/cate/'.$this->_cate_code.'/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);

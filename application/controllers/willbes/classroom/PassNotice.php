@@ -51,7 +51,7 @@ class PassNotice extends BaseSupport
 
         $column = 'b.BoardIdx, b.TypeCcd, b.IsBest, b.Title,b.Content, Category_NameString, b.SiteName
         , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;

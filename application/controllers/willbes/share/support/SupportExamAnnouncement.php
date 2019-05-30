@@ -82,11 +82,11 @@ class SupportExamAnnouncement extends BaseSupport
                        ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
 
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/examAnnouncement/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/examAnnouncement/index/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);

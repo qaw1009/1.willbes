@@ -365,7 +365,7 @@
             });
 
             //엑셀다운로드
-            $('.btn-excel').on('click', function() {
+            $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/site/cert/apply/listAjax/excel') }}', $search_form.serializeArray(), 'POST');

@@ -17,6 +17,7 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
@@ -84,10 +85,10 @@
   <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skybanner">
       <ul>
-          <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s1.jpg"  title="설명회" /></a></li>
+          <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s1.jpg" title="설명회" /></a></li>
           <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s2.jpg"  title="학원방문상담" /></a></li>
           <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s3.jpg" title="카카오상담하기" /></a></li>
-		  <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s4.jpg"  title="윌비스통생반" /></a></li>
+		      <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s4.jpg"  title="윌비스통생반" /></a></li>
       </ul>
     </div> 
 
@@ -133,14 +134,14 @@
 	  <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06.jpg" title="수강신청" />
 	  <div>
 			<ul>
-                    <li><a href="#lec1" class="active">일반행정직 / 세무직</a></li>
-                    <li><a href="#lec2">외무영사직</a></li>
-                </ul>
-                <div class="lecCts mb40">
-                    <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c1.jpg" title="일반행정직 / 세무직"  id="lec1"/></a>
-                    <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c2.jpg" title="외무영사직"  id="lec2"/></a>
-                </div>
-			</div>
+          <li><a href="#lec1" class="active">일반행정직 / 세무직</a></li>
+          <li><a href="#lec2">외무영사직</a></li>
+      </ul>
+      <div class="lecCts mb40">
+          <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c1.jpg" title="일반행정직 / 세무직"  id="lec1"/></a>
+          <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c2.jpg" title="외무영사직"  id="lec2"/></a>
+      </div>
+    </div>
   </div>
   <!--wb_cts07//-->
   

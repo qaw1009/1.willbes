@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePassPredict extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF');
+    protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF', 'cert/certApplyF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('index','indexv2');
+    protected $auth_methods = array('index','indexv2','createGradeMember','storeFinalPoint','predictMyInfo');
 
     public function __construct()
     {
@@ -1055,9 +1055,9 @@ class BasePassPredict extends \app\controllers\FrontController
             if($cnt2 < 0){
                 $cnt2 = 1;
             }
-
             $onePerSum = $arrSum[$cnt2];
 
+            $subjectStr = '';
             foreach ($data as $key => $val) {
                 if($key == 0){
                     $subjectStr = $val['subject'];
@@ -1156,6 +1156,206 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $this->json_result(true, '조회 성공', '', $result);
     }
+
+    /**
+     * 합격예측 성적 입력 폼
+     */
+    public function createGradeMember()
+    {
+        $arr_base['predict_idx'] = element('predict', $this->_reqG(null));
+        $arr_base['cert_idx'] = element('cert', $this->_reqG(null));
+        $arr_base['METHOD'] = 'POST';
+
+        $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => $arr_base['predict_idx'], 'a.CertIdx' => $arr_base['cert_idx'], 'a.IsStatus' => 'Y']];
+        $member_ins_type = $this->predictFModel->findPredictFinalMember($arr_condition);
+        if (empty($member_ins_type) === false) {
+            show_alert('등록된 정보가 있습니다. 실시간 참여현황에서 확인해 주세요.', site_url('/predict/predictMyInfo?predict='.$arr_base['predict_idx'].'&cert='.$arr_base['cert_idx']));
+        }
+
+        $add_condition = ['IN' => ['ApprovalStatus' => ['A','Y']]];
+        $apply_result = $this->certApplyFModel->findApplyByCertIdx($arr_base['cert_idx'], $add_condition);
+        if(empty($apply_result) === true) {
+            show_alert('인증 후 등록 가능합니다.', 'close');
+        }
+
+        $column = 'PredictIdx, MockPart';
+        $arr_condition = ['EQ' => ['PredictIdx' => $arr_base['predict_idx'],'IsUse' => 'Y'],'LKB' => ['CertIdxArr' => $arr_base['cert_idx']]];
+        $arr_base['predict_data'] = $this->predictFModel->findPredictData($arr_condition, $column);
+        if (empty($arr_base['predict_data']) === true) {
+            show_alert('조회된 합격예측 서비스 정보가 없습니다.', 'close');
+        }
+
+        //직렬가공처리
+        $temp_mock_part = array_flip(explode(',', $arr_base['predict_data']['MockPart']));
+        $mock_part_ccd = $this->surveyModel->getSerial(0);
+        $temp_mock_part_ccd = array_pluck($mock_part_ccd,'CcdName','Ccd');
+        $arr_base['arr_mock_part'] = array_intersect_key($temp_mock_part_ccd, $temp_mock_part);
+
+        //응시지역
+        $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        $arr_base['arr_area'] = $this->surveyModel->getArea($sysCode_Area);
+
+        //필수과목
+        $add_condition = ['EQ' => ['Type' => 'P']];
+        $arr_base['arr_subject_ccd']['P'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part_ccd), '', $add_condition);
+
+        //선택과목
+        $add_condition = ['EQ' => ['Type' => 'S']];
+        $arr_base['arr_subject_ccd']['S'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part_ccd), '', $add_condition);
+
+        $this->load->view('predict/1242_pop1', [
+            'arr_base' => $arr_base
+        ]);
+    }
+
+    /**
+     * 최종합격예측 회원 점수 등록
+     */
+    public function storeFinalPoint()
+    {
+        $mock_part = element('mock_part', $this->_reqP(null));
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'predict', 'label' => '합격예측코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'cert', 'label' => '인증코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'mock_part', 'label' => '응시직렬', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'take_area', 'label' => '응시지역', 'rules' => 'trim|required|is_natural_no_zero'],
+        ];
+
+        //응시직렬에 따른 필수과목/점수 유효성검사
+        if (empty($this->_reqP('subject_p_code')[$mock_part]) === true) {
+            $rules = array_merge($rules, [
+                ['field' => 'subject_p_code', 'label' => '공통과목코드', 'rules' => 'trim|required']
+            ]);
+        } else {
+            foreach ($this->_reqP('subject_p_code')[$mock_part] as $key => $val_p) {
+                if (empty($this->_reqP('subject_p')[$val_p]) === true) {
+                    $rules = array_merge($rules, [
+                        ['field' => 'subject_p', 'label' => '공통과목점수', 'rules' => 'trim|required']
+                    ]);
+                }
+            }
+        }
+
+        //응시직렬에 따른 선택과목 유효성검사 [전의경경채 제외]
+        if ($mock_part != 300) {
+            if (empty($this->_reqP('subject_s')[$mock_part]) === true) {
+                $rules = array_merge($rules, [
+                    ['field' => 'subject_s', 'label' => '선택과목', 'rules' => 'trim|required']
+                ]);
+            } else {
+                foreach ($this->_reqP('subject_s')[$mock_part] as $key => $val_s) {
+                    if (empty($val_s) === true) {
+                        $rules = array_merge($rules, [
+                            ['field' => 'subject_s', 'label' => '선택과목', 'rules' => 'trim|required']
+                        ]);
+                    }
+                }
+            }
+
+            //응시직렬에 따른 선택과목점수 유효성검사
+            if (empty($this->_reqP('point')[$mock_part]) === true) {
+                $rules = array_merge($rules, [
+                    ['field' => 'point', 'label' => '선택과목점수', 'rules' => 'trim|required']
+                ]);
+            } else {
+                foreach ($this->_reqP('point')[$mock_part] as $key => $val_s) {
+                    $arr_point = explode('.', $val_s);
+                    if (empty($val_s) === true) {
+                        $rules = array_merge($rules, [
+                            ['field' => 'point', 'label' => '선택과목점수', 'rules' => 'trim|required']
+                        ]);
+                    }
+
+                    //소수점체크 [전의경경채 제외]
+                    if (($mock_part != $this->predictFModel->_mock_part_exception_ccd && empty($arr_point[1]) === true) || strlen($arr_point[1]) != 2) {
+                        $rules = array_merge($rules, [
+                            ['field' => 'point', 'label' => '선택과목 소수점(2자리)', 'rules' => 'trim|required|decimal']
+                        ]);
+                    }
+                }
+            }
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->predictFModel->addPredictForMemberPoint($this->_reqP(null));
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 최종합격예측 실시간 참여현황
+     */
+    public function predictInfo()
+    {
+        $data = [];
+        $arr_base['predict_idx'] = element('predict', $this->_reqG(null));
+        $arr_base['cert_idx'] = element('cert', $this->_reqG(null));
+
+        $column = 'PredictIdx, MockPart';
+        $arr_condition = ['EQ' => ['PredictIdx' => $arr_base['predict_idx'],'IsUse' => 'Y'],'LKB' => ['CertIdxArr' => $arr_base['cert_idx']]];
+        $arr_base['predict_data'] = $this->predictFModel->findPredictData($arr_condition, $column);
+        if (empty($arr_base['predict_data']) === true) {
+            show_alert('조회된 합격예측 서비스 정보가 없습니다.', 'close');
+        }
+
+        //직렬가공처리
+        $temp_mock_part = array_flip(explode(',', $arr_base['predict_data']['MockPart']));
+        $mock_part_ccd = $this->surveyModel->getSerial(0);
+        $temp_mock_part_ccd = array_pluck($mock_part_ccd,'CcdName','Ccd');
+        $arr_base['arr_mock_part'] = array_intersect_key($temp_mock_part_ccd, $temp_mock_part);
+
+        //응시지역
+        $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        $get_arr_area = $this->surveyModel->getArea($sysCode_Area);
+        $arr_base['arr_area'] = array_pluck($get_arr_area,'CcdName', 'Ccd');
+        unset($arr_base['arr_area']['712018']);
+
+        $arr_condition = ['EQ' => ['PredictIdx' => $arr_base['predict_idx'], 'CertIdx' => $arr_base['cert_idx'], 'IsStatus' => 'Y']];
+        $result_total_count = $this->predictFModel->countFinalMockPartForArea($arr_condition, 'total');
+        $arr_total_count = array_pluck($result_total_count, 'cnt', 'TakeMockPart');
+        $result = $this->predictFModel->countFinalMockPartForArea($arr_condition);
+        foreach ($result as $row) {
+            $data[$row['TakeMockPart']][$row['TakeAreaCcd']] = $row['cnt'];
+        }
+
+        $this->load->view('predict/1242_pop2', [
+            'arr_base' => $arr_base,
+            'arr_total_count' => $arr_total_count,
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 최종합격예측 [나의 위치 파악]
+     */
+    public function predictMyInfo()
+    {
+        $arr_base['predict_count'] = '2725';
+        $arr_base['predict_idx'] = element('predict', $this->_reqG(null));
+        $arr_base['cert_idx'] = element('cert', $this->_reqG(null));
+
+        $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => $arr_base['predict_idx'], 'a.CertIdx' => $arr_base['cert_idx'], 'a.IsStatus' => 'Y']];
+        $data = $this->predictFModel->findPredictFinalMember($arr_condition, 'PfIdx, c.CcdValue AS TakeMockPartCcdName, fn_ccd_name(TakeAreaCcd) AS TakeAreaCcdName, b.TakeNo');
+        $result_final_count = $this->predictFModel->getFinalData($arr_condition);
+
+        if (empty($data) === true) {
+            show_alert('조회된 성적 데이터가 없습니다. 성적 입력 후 확인해 주세요.', site_url('/predict/createGradeMember?predict='.$arr_base['predict_idx'].'&cert='.$arr_base['cert_idx']));
+        }
+
+        $arr_base['service_count'] = $result_final_count['Total'];
+        $arr_base['my_rownum'] = $result_final_count['Rownum'];
+        $arr_base['my_percentage'] = $result_final_count['MyPercentage'];
+
+        $this->load->view('predict/1242_pop3', [
+            'arr_base' => $arr_base,
+            'data' => $data
+        ]);
+    }
+
 
     /**
      * 특정프로모션별 카운트조회 구분

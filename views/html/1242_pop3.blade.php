@@ -43,14 +43,15 @@
 	.pyramid .chart li.bar05 {background-color:#14519d}
 	.pyramid .chart li span {display:block; width:100%; height:64px;}
 	.pyramid .chart li span.active {background-image:url(https://static.willbes.net/public/images/promotion/common/patternC.png)}
-	.pyramid .myPosition {position:absolute; margin-top:36px; left:52%; padding:0; z-index:3; border:0}
-	.pyramid .myPosition li {display:block; height:64px; margin:0 !important; padding:0 !important}
-	.pyramid .myPosition li.active {background-color:rgba(255,255,255,0.8); padding:5px !important; border:1px solid #000;
-	-webkit-box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.15);
-	-moz-box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.15);
-	box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.15);
-	}
-	.pyramid .myPosition li strong {color:#810eda; text-decoration:underline; display:inline}
+    .pyramid .myPosition {position:absolute; margin-top:0; left:52%; padding:0; display:block; height:64px; line-height:1.4;
+        padding:5px !important; border:1px solid #000; z-index:3;
+        background-color:rgba(255,255,255,0.8); 
+        -webkit-box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.15);
+        -moz-box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.15);
+        box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.15);
+    }
+
+	.pyramid .myPosition strong {color:#810eda; text-decoration:underline; display:inline}
 
     .btnsSt3 {text-align:center; margin-top:20px}
     .btnsSt3 a {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333}
@@ -118,17 +119,26 @@
                         <p class="tx14 tx-center"><span class="tx-blue">홍길동</span> 님은 현재 총 입력자 <span class="tx-blue">000</span> 명 중 <span class="tx-blue">00</span>등입니다.</p>
                         <div class="pyramid">				
                             <div class="transparent"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_transparent.png"  alt="피라미드" /></div>
+                            {{--
                             <ul class="myPosition">                                
                                 <li class="active">
-                                    <strong>홍길동</strong> 님의 현재 추정<br>
-                                    백분위는 동일한 직렬 응시 입력자 중<br>
-                                    <strong>상위 16%</strong> 입니다.
+                                    
                                 </li>                  
                             </ul>
+                            --}}
                             <ul class="chart">
-                                <li class="bar01"><span class="active"></span></li>
+                                <li class="bar01">
+                                    <span></span>
+                                </li>
                                 <li class="bar02"><span></span></li>
-                                <li class="bar03"><span></span></li>
+                                <li class="bar03">
+                                    <div class="myPosition">
+                                        <strong>홍길동</strong> 님의 현재 추정<br>
+                                        백분위는 동일한 직렬 응시 입력자 중<br>
+                                        <strong>상위 55%</strong> 입니다.
+                                    </div>
+                                    <span class="active"></span>
+                                </li>
                                 <li class="bar04"><span></span></li>
                                 <li class="bar05"><span></span></li>
                             </ul>                            

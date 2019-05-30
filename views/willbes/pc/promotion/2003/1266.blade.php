@@ -136,7 +136,7 @@
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts05"  id="tab1">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1064_05.jpg" alt=" 2020 윌비스 김동진법원팀PASS" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1266_05.jpg" alt=" 2020 윌비스 김동진법원팀PASS" />
         </div><!--wb_cts05//-->
 
     </div>

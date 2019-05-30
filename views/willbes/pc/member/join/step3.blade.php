@@ -19,6 +19,8 @@
                 아이디<span class="tx-blue"> {{$MemId}}</span>로 모든 윌비스 서비스를 이용하실 수 있습니다.
             </div>
             <div class="tx-center"><img class="mt70" src="{{ img_url('login/willbes_welcome.jpg') }}"></div>
+
+            <!--
             <div class="info-Txt info-Txt-Wrap tx-black mt60">
                 현재 웰컴팩 이벤트 중입니다.<br>
                 특별한 혜택을 받으시려면 아래 서비스를 선택해주세요.
@@ -28,25 +30,27 @@
                     <input name="cp1" type="radio" value="2003" id="cp2" /><label for="cp2"> 공무원</label>
                 </div>            
             </div>
-            <!--
+            <button type="button" id="btn_start" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
+                <span>이벤트 혜택 적용</span>
+            </button>
+            -->
             @if($ismobile == false)
                 <div class="info-Txt info-Txt-Wrap tx-black mt60">
                     <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
                     <select id="site" name="site" title="선택안함" class="seleSite">
-                        <option value="/">선택안함</option>
+                        <option value="/">메인화면</option>
                         @foreach($Site as $row)
-                            <option value="//{{ $row['SiteUrl'] }}">{{ $row['SiteName'] }}</option>
+                            <option value="//{{ app_to_env_url($row['SiteUrl']) }}">{{ $row['SiteName'] }}</option>
                         @endforeach
                     </select>
                 </div>
             @else
                 <select id="site" name="site" title="선택안함" class="seleSite" style="display:none;">
-                    <option value="/m/">선택안함</option>
+                    <option value="/m/">메인화면</option>
                 </select>
             @endif
-            -->
             <button type="button" id="btn_start" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
-                <span>이벤트 혜택 적용</span>
+                <span>이동하기</span>
             </button>
         </div>
         <!-- End 통합회원가입 : 회원가입완료 -->
@@ -56,6 +60,9 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#btn_start').click(function () {
+                location.replace($('#site').val());
+
+                /*
                 if($("input[name=cp1]:checked").length != 1){
                     alert("서비스를 선택해주십시요.");
                     return;
@@ -74,6 +81,7 @@
                     function(ret, status){
                         alert(ret.ret_msg);
                     }, false, 'GET', 'json');
+               */
             });
         });
     </script>

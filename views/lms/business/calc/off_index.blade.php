@@ -68,18 +68,20 @@
                     <th rowspan="2" class="valign-middle">No</th>
                     <th rowspan="2" class="valign-middle">교수명</th>
                     <th rowspan="2" class="valign-middle" style="width: 100px;">상품구분</th>
-                    <th rowspan="2" class="valign-middle" style="width: 180px;">상품명</th>
-                    <th rowspan="2" class="valign-middle" style="width: 180px;">단과반명</th>
-                    <th rowspan="2" class="valign-middle">개강일</th>
-                    <th rowspan="2" class="valign-middle">종강일</th>
+                    <th rowspan="2" class="valign-middle" style="width: 160px;">상품명</th>
+                    <th rowspan="2" class="valign-middle">캠퍼스</th>
+                    <th rowspan="2" class="valign-middle" style="width: 160px;">단과반명</th>
+                    <th rowspan="2" class="valign-middle" style="width: 80px;">개강일</th>
+                    <th rowspan="2" class="valign-middle" style="width: 80px;">종강일</th>
                     <th rowspan="2" class="valign-middle">인원</th>
                     <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
                     <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*안분율 적용</th>
                     <th rowspan="2" class="valign-middle">환불금액(E)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-D-E)*정산율</th>
+                    <th rowspan="2" class="valign-middle">순매출(F)<br/>(C-D-E)</th>
+                    <th rowspan="2" class="valign-middle">정산금액(H)<br/>F*정산율</th>
                     <th colspan="2">세액공제</th>
                     <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
-                    <th rowspan="2" class="valign-middle" style="width: 80px;">상세정보</th>
+                    <th rowspan="2" class="valign-middle" style="width: 70px;">상세정보</th>
                 </tr>
                 <tr>
                     <th>소득세(I)<br/>H*0.03</th>
@@ -90,11 +92,12 @@
                 </tbody>
                 <tfoot>
                 <tr class="bg-odd">
-                    <th colspan="7" class="text-center">합계</th>
+                    <th colspan="8" class="text-center">합계</th>
                     <th id="sumB" class="sumTh"></th>
                     <th id="sumC" class="sumTh"></th>
                     <th id="sumD" class="sumTh"></th>
                     <th id="sumE" class="sumTh"></th>
+                    <th id="sumF" class="sumTh"></th>
                     <th id="sumH" class="sumTh"></th>
                     <th id="sumI" class="sumTh"></th>
                     <th id="sumJ" class="sumTh"></th>
@@ -145,6 +148,7 @@
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return data !== '' ? '[' + row.ProdCode + '] ' + data : '';
                     }},
+                    {'data' : 'CampusCcdName'},
                     {'data' : 'ProdNameSub', 'render' : function(data, type, row, meta) {
                         return '[' + row.ProdCodeSub + '] ' + data;
                     }},
@@ -160,6 +164,9 @@
                         return addComma(data);
                     }},
                     {'data' : 'tDivisionRefundPrice', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
+                    {'data' : 'tDivisionRemainPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
                     {'data' : 'tDivisionCalcPrice', 'render' : function(data, type, row, meta) {
@@ -187,6 +194,7 @@
                     $('#sumC').html(addComma(json.sum_data.tDivisionPayPrice));
                     $('#sumD').html(addComma(json.sum_data.tDivisionPgFeePrice));
                     $('#sumE').html(addComma(json.sum_data.tDivisionRefundPrice));
+                    $('#sumF').html(addComma(json.sum_data.tDivisionRemainPrice));
                     $('#sumH').html(addComma(json.sum_data.tDivisionCalcPrice));
                     $('#sumI').html(addComma(json.sum_data.tDivisionIncomeTax));
                     $('#sumJ').html(addComma(json.sum_data.tDivisionResidentTax));

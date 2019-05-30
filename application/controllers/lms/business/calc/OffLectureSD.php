@@ -94,12 +94,14 @@ class OffLectureSD extends \app\controllers\BaseController
         // 엑셀 설정
         $last_query = $this->orderCalcModel->getLastQuery();
         $file_name = '학원강사료정산리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
-        $headers = ['교수명', '상품구분', '상품명', '단과반명', '개강일', '종강일', '인원', '매출금액(C)', '결제수수료(D)', '환불금액(E)', '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
+        $headers = ['교수명', '상품구분', '상품명', '캠퍼스', '단과반명', '개강일', '종강일', '인원', '매출금액(C)', '결제수수료(D)', '환불금액(E)', '순매출(F)'
+            , '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
 
         foreach ($list as $idx => $row) {
             $results[$idx]['wProfName'] = $row['wProfName'];
             $results[$idx]['LearnPatternCcdName'] = $row['LearnPatternCcdName'] . (empty($row['PackTypeCcdName']) === false ? '(' . $row['PackTypeCcdName'] . ')' : '');
             $results[$idx]['ProdName'] = empty($row['ProdName']) === false ? '[' . $row['ProdCode'] . '] ' . $row['ProdName'] : '';
+            $results[$idx]['CampusCcdName'] = $row['CampusCcdName'];
             $results[$idx]['ProdNameSub'] = '[' . $row['ProdCodeSub'] . '] ' . $row['ProdNameSub'];
             $results[$idx]['StudyStartDate'] = $row['StudyStartDate'];
             $results[$idx]['StudyEndDate'] = $row['StudyEndDate'];
@@ -107,6 +109,7 @@ class OffLectureSD extends \app\controllers\BaseController
             $results[$idx]['tDivisionPayPrice'] = $row['tDivisionPayPrice'];
             $results[$idx]['tDivisionPgFeePrice'] = $row['tDivisionPgFeePrice'];
             $results[$idx]['tDivisionRefundPrice'] = $row['tDivisionRefundPrice'];
+            $results[$idx]['tDivisionRemainPrice'] = $row['tDivisionRemainPrice'];
             $results[$idx]['tDivisionCalcPrice'] = $row['tDivisionCalcPrice'];
             $results[$idx]['tDivisionIncomeTax'] = $row['tDivisionIncomeTax'];
             $results[$idx]['tDivisionResidentTax'] = $row['tDivisionResidentTax'];
@@ -115,11 +118,11 @@ class OffLectureSD extends \app\controllers\BaseController
 
         // 전체합계 추가
         $results[] = [
-            'wProfName' => '합계', 'LearnPatternCcdName' => '', 'ProdName' => '', 'ProdNameSub' => '', 'StudyStartDate' => '', 'StudyEndDate' => '',
+            'wProfName' => '합계', 'LearnPatternCcdName' => '', 'ProdName' => '', 'CampusCcdName' => '', 'ProdNameSub' => '', 'StudyStartDate' => '', 'StudyEndDate' => '',
             'tRemainPayCnt' => $sum_data['tRemainPayCnt'], 'tDivisionPayPrice' => $sum_data['tDivisionPayPrice'],
             'tDivisionPgFeePrice' => $sum_data['tDivisionPgFeePrice'], 'tDivisionRefundPrice' => $sum_data['tDivisionRefundPrice'],
-            'tDivisionCalcPrice' => $sum_data['tDivisionCalcPrice'], 'tDivisionIncomeTax' => $sum_data['tDivisionIncomeTax'],
-            'tDivisionResidentTax' => $sum_data['tDivisionResidentTax'], 'tFinalCalcPrice' => $sum_data['tFinalCalcPrice']
+            'tDivisionRemainPrice' => $sum_data['tDivisionRemainPrice'], 'tDivisionCalcPrice' => $sum_data['tDivisionCalcPrice'],
+            'tDivisionIncomeTax' => $sum_data['tDivisionIncomeTax'], 'tDivisionResidentTax' => $sum_data['tDivisionResidentTax'], 'tFinalCalcPrice' => $sum_data['tFinalCalcPrice']
         ];
 
         // download log
@@ -148,14 +151,14 @@ class OffLectureSD extends \app\controllers\BaseController
             'prod_code' => element('5', $params), 'prod_code_sub' => element('6', $params)
         ];
 
-        if (empty($arr_input['prof_idx']) === true || empty($arr_input['study_date_type']) === true
+        if (empty($arr_input['prof_idx']) === true || empty($arr_input['site_code']) === true || empty($arr_input['study_date_type']) === true
             || empty($arr_input['study_start_date']) === true || empty($arr_input['study_end_date']) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         // 해당 상품 정산 데이터 조회
         $sum_type = 'sum';
-        $arr_condition = ['EQ' => ['TA.ProdCode' => $arr_input['prod_code'], 'TA.ProdCodeSub' => $arr_input['prod_code_sub']]];
+        $arr_condition = ['EQ' => ['TA.SiteCode' => $arr_input['site_code'], 'TA.ProdCode' => $arr_input['prod_code'], 'TA.ProdCodeSub' => $arr_input['prod_code_sub']]];
         $data = $this->orderCalcModel->listCalcOffLecture($arr_input['prof_idx'], $arr_input['study_date_type'], $arr_input['study_start_date'], $arr_input['study_end_date'], $sum_type, $arr_condition);
         $count = count($data);
 
@@ -206,13 +209,13 @@ class OffLectureSD extends \app\controllers\BaseController
         $list = [];
         $sum_data = null;
 
-        if (empty($arr_input['prof_idx']) === true || empty($arr_input['study_date_type']) === true
+        if (empty($arr_input['prof_idx']) === true || empty($arr_input['site_code']) === true || empty($arr_input['study_date_type']) === true
             || empty($arr_input['study_start_date']) === true || empty($arr_input['study_end_date']) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
 
         // 주문목록 조회
-        $arr_condition = ['EQ' => ['TA.ProdCode' => $arr_input['prod_code'], 'TA.ProdCodeSub' => $arr_input['prod_code_sub']]];
+        $arr_condition = ['EQ' => ['TA.SiteCode' => $arr_input['site_code'], 'TA.ProdCode' => $arr_input['prod_code'], 'TA.ProdCodeSub' => $arr_input['prod_code_sub']]];
         $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions());
 
         $count = $this->orderCalcModel->listCalcOffLecture($arr_input['prof_idx'], $arr_input['study_date_type'], $arr_input['study_start_date'], $arr_input['study_end_date'], true, $arr_condition);
@@ -244,13 +247,13 @@ class OffLectureSD extends \app\controllers\BaseController
         // 필수 파라미터
         $arr_input = $this->_reqP(null);
 
-        if (empty($arr_input['prof_idx']) === true || empty($arr_input['study_date_type']) === true
+        if (empty($arr_input['prof_idx']) === true || empty($arr_input['site_code']) === true || empty($arr_input['study_date_type']) === true
             || empty($arr_input['study_start_date']) === true || empty($arr_input['study_end_date']) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         // 주문목록 조회
-        $arr_condition = ['EQ' => ['TA.ProdCode' => $arr_input['prod_code'], 'TA.ProdCodeSub' => $arr_input['prod_code_sub']]];
+        $arr_condition = ['EQ' => ['TA.SiteCode' => $arr_input['site_code'], 'TA.ProdCode' => $arr_input['prod_code'], 'TA.ProdCodeSub' => $arr_input['prod_code_sub']]];
         $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions());
         $results = $this->orderCalcModel->listCalcOffLecture($arr_input['prof_idx'], $arr_input['study_date_type'], $arr_input['study_start_date'], $arr_input['study_end_date'], 'excel', $arr_condition);
 
@@ -259,7 +262,7 @@ class OffLectureSD extends \app\controllers\BaseController
         $file_name = '학원강사료정산상세리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
         $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
             , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '과정', '단과반코드', '단과반명', '과목', '교수명'
-            , '안분율(B)', '안분매출(C)', '안분수수료(D)', '안분환불(E)', '정산율(G)', '정산금액(H)'];
+            , '안분율(B)', '안분매출(C)', '안분수수료(D)', '안분환불(E)', '순매출(F)', '정산율(G)', '정산금액(H)'];
 
         // download log
         $this->load->library('approval');
@@ -305,6 +308,18 @@ class OffLectureSD extends \app\controllers\BaseController
             ]
         ];
 
+        // 결제일/환불일
+        if (empty($this->_reqP('search_start_date')) === false && empty($this->_reqP('search_end_date')) === false) {
+            switch ($this->_reqP('search_date_type')) {
+                case 'paid' :
+                    $arr_condition['BDT'] = ['O.CompleteDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];
+                    break;
+                case 'refund' :
+                    $arr_condition['BDT'] = ['OPR.RefundDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];
+                    break;
+            }
+        }
+
         return $arr_condition;
     }
 
@@ -319,6 +334,7 @@ class OffLectureSD extends \app\controllers\BaseController
         $sum_data['tDivisionPayPrice'] = array_sum(array_pluck($data, 'tDivisionPayPrice'));
         $sum_data['tDivisionPgFeePrice'] = array_sum(array_pluck($data, 'tDivisionPgFeePrice'));
         $sum_data['tDivisionRefundPrice'] = array_sum(array_pluck($data, 'tDivisionRefundPrice'));
+        $sum_data['tDivisionRemainPrice'] = array_sum(array_pluck($data, 'tDivisionRemainPrice'));
         $sum_data['tDivisionCalcPrice'] = array_sum(array_pluck($data, 'tDivisionCalcPrice'));
         $sum_data['tDivisionIncomeTax'] = array_sum(array_pluck($data, 'tDivisionIncomeTax'));
         $sum_data['tDivisionResidentTax'] = array_sum(array_pluck($data, 'tDivisionResidentTax'));

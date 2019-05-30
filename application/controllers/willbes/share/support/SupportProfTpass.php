@@ -93,7 +93,7 @@ class SupportProfTpass extends BaseSupport
                        ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoardForTpass($this->_site_code, '', true, $arr_condition_board, $arr_condition_pkg, $arr_condition_auth);
         $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);

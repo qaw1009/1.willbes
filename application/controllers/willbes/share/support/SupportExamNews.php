@@ -24,10 +24,8 @@ class SupportExamNews extends BaseSupport
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
-
         $s_keyword = element('s_keyword',$arr_input);
         $view_type = element('view_type',$arr_input);
-
         $get_page_params = 's_keyword='.$s_keyword;
         $get_page_params .= '&view_type='.$view_type;
 
@@ -57,11 +55,11 @@ class SupportExamNews extends BaseSupport
                        ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
 
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/examNews/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/examNews/index/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);

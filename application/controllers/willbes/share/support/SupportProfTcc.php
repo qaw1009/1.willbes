@@ -55,7 +55,7 @@ class SupportProfTcc extends  BaseSupport
                        ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm,
                        IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name
                        ';
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $paging_count = $this->_paging_count;
         $total_rows = $this->supportBoardFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition, '');
         $paging = $this->pagination($this->_default_path.'/tcc/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);

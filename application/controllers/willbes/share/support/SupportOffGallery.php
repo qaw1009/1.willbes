@@ -62,7 +62,7 @@ class SupportOffGallery extends BaseSupport
             ,(SELECT COUNT(*) AS cnt FROM lms_board_r_comment AS temp_c WHERE b.BoardIdx = temp_c.BoardIdx AND temp_c.IsStatus = \'Y\' AND temp_c.IsUse = \'Y\') AS TotalCommentCnt
             ,(SELECT COUNT(*) AS cnt FROM lms_board_attach AS temp_f WHERE b.BoardIdx = temp_f.BoardIdx AND temp_f.IsStatus = \'Y\') AS TotalFileCnt
         ';
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;

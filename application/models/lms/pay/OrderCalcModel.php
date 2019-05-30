@@ -718,6 +718,7 @@ class OrderCalcModel extends BaseOrderModel
                         , WPF.wProfName 
                         , fn_ccd_name(max(U.LearnPatternCcd)) as LearnPatternCcdName
                         , if(U.ProdCode = U.ProdCodeSub, "", fn_ccd_name(max(U.PackTypeCcd))) as PackTypeCcdName
+                        , fn_ccd_name(max(U.CampusCcd)) as CampusCcdName
                         , if(U.ProdCode = U.ProdCodeSub, "", max(U.ProdName)) as ProdName
                         , max(U.ProdNameSub) as ProdNameSub
                         , max(U.StudyStartDate) as StudyStartDate
@@ -731,6 +732,7 @@ class OrderCalcModel extends BaseOrderModel
                     , sum(U.DivisionPayPrice) as tDivisionPayPrice
                     , sum(U.DivisionRefundPrice) as tDivisionRefundPrice
                     , sum(U.DivisionPgFeePrice) as tDivisionPgFeePrice
+                    , sum(U.DivisionPayPrice - U.DivisionRefundPrice - U.DivisionPgFeePrice) as tDivisionRemainPrice
                     , sum(U.DivisionCalcPrice) as tDivisionCalcPrice
                     , TRUNCATE(sum(U.DivisionCalcPrice) * ' . $this->_in_tax_rate . ', 0) as tDivisionIncomeTax
                     , TRUNCATE(sum(U.DivisionCalcPrice) * ' . $this->_re_tax_rate . ', 0) as tDivisionResidentTax
@@ -815,6 +817,7 @@ class OrderCalcModel extends BaseOrderModel
             $query = 'select ' . $column . '
                 from (
                     select RD.*
+                        , (RD.DivisionPayPrice - RD.DivisionRefundPrice - RD.DivisionPgFeePrice) as DivisionRemainPrice
                         , TRUNCATE((RD.DivisionPayPrice - RD.DivisionRefundPrice - RD.DivisionPgFeePrice) * RD.ProdCalcRate, 0) as DivisionCalcPrice
                     from (
                         select RR.* 
@@ -874,7 +877,7 @@ class OrderCalcModel extends BaseOrderModel
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
                 , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusCcdName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
                 , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
-                , ProdCalcPerc, DivisionCalcPrice';
+                , DivisionRemainPrice, ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 

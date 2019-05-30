@@ -4,7 +4,7 @@
     @include('willbes.pc.layouts.partial.site_menu')
     
 <!-- Container -->
-     <style type="text/css">
+      <style type="text/css">
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -21,20 +21,20 @@
 
         /************************************************************/
 
-        .wb_cts01 {position:relative; overflow:hidden;  background:#000 url("https://static.willbes.net/public/images/promotion/2019/05/1252_top_bg.jpg") center top  no-repeat}
+        .wb_cts01 {position:relative; overflow:hidden;  background:#000 url("https://static.willbes.net/public/images/promotion/2019/05/1251_top_bg.jpg") center top  no-repeat}
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#fff}
         .wb_cts04 {background:#fff}
         .wb_cts05 {background:#fff}
-        .wb_cts06 {background:#095e4b}
+        .wb_cts06 {background:#4e13e1}
         .wb_cts07 {background:#f3ece6; padding-bottom:100px} 
         .wb_cts07 div {width:980px; margin:0 auto }
         .wb_cts07 div li {display:inline; float:left; width:50%}
-        .wb_cts07 div li a {display:block; text-align:center; background:#095e4b; color:#f3ece6; border-radius:10px; margin:10px; height:80px; line-height:80px; font-size:35px}
+        .wb_cts07 div li a {display:block; text-align:center; background:#095e4b; color:#000; border-radius:10px; margin:10px; height:80px; line-height:80px; font-size:35px}
         .wb_cts07 div li a.active,
-        .wb_cts07 div li a:hover {border:0px solid #000; border-bottom:0; background:#d9df01; color:#000; border-radius:10px 10px 0 0; height:100px; line-height:100px; margin:0;}
+        .wb_cts07 div li a:hover {border:0px solid #000; border-bottom:0; background:#d9df01; border-radius:10px 10px 0 0; height:100px; line-height:100px; margin:0;}
         .wb_cts07 div ul:after {content:""; display:block; clear:both} 
-        .wb_cts08 {background:#222222}
+        .wb_cts08 {background:#202020}
 
         /* tip */
         .wb_cts09 {background:#fff; text-align:left; padding:100px 0}
@@ -81,71 +81,62 @@
 
   </style>
 
-  <div class="p_re evtContent NGR" id="evtContainer">
+   <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skybanner">
       <ul>
-          <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s1.jpg"  title="설명회" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s2.jpg"  title="학원방문상담" /></a></li>
-          <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s3.jpg" title="카카오상담하기" /></a></li>
-		  <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s4.jpg"  title="윌비스통생반" /></a></li>
+          <li><a href="#" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s1.jpg"  title="설명회" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s2.jpg"  title="학원방문상담" /></a></li>
+          <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s3.jpg"  title="카카오상담하기" /></a></li>
+		  <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s4.jpg"  title="윌비스통생반" /></a></li>
       </ul>
     </div> 
 
     <div class="evtCtnsBox wb_cts01">
-      <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_top.png" title="7급 Beginners’ Class" />
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_top.png" title="9급 Beginners’ Class" />
     </div>
     <!--wb_cts01//-->
     
     <div class="evtCtnsBox wb_cts02">
-      <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_01.jpg" title="과목별 고득점 커리큘럼" />
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_01.jpg" title="과목별 고득점 커리큘럼" />
     </div>
     <!--wb_cts02//-->
   
     <div class="evtCtnsBox wb_cts03">
-      <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_02.jpg" title="학습부터 생활까지 꽉 찬 관리 시스템" />
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_02.jpg" title="학습부터 생활까지 꽉 찬 관리 시스템" />
 	   <!--tab-->
       <ul class="tabWrapEvt">
-        <li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_02_t1.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_02_t1_on.png" alt="" class="on"/></a></li>
-        <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_02_t2.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_02_t2_on.png" alt="" class="on"/></a></li>
+        <li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_02_t1.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_02_t1_on.png" alt="" class="on"/></a></li>
+        <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_02_t2.png" alt="" class="off"/><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_02_t2_on.png" alt="" class="on"/></a></li>
       </ul>
-      <div id="tab1" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_02_t_c1.jpg" alt=""/></div>
-      <div id="tab2" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_02_t_c2.jpg" alt=""/></div>
+      <div id="tab1" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_02_t_c1.jpg" alt=""/></div>
+      <div id="tab2" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_02_t_c2.jpg" alt=""/></div>
       <!--tab//--> 
     </div>
     <!--wb_cts03//-->
     
     <div class="evtCtnsBox wb_cts04">
-      <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_03.jpg" title="무한회독 학습 프로그램" />
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_03.jpg" title="무한회독 학습 프로그램" />
     </div>
     <!--wb_cts04//-->
   
     <div class="evtCtnsBox wb_cts05">
-      <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_04.jpg" title="정제된 학습환경 제공" />
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_04.jpg" title="정제된 학습환경 제공" />
     </div>
     <!--wb_cts05//-->
   
      <div class="evtCtnsBox wb_cts06">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_05.jpg" title="수험생에게 꼭 필요한 모든 것" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_05.jpg" title="수험생에게 꼭 필요한 모든 것" />
      </div>
     <!--wb_cts06//-->
   
   <div class="evtCtnsBox wb_cts07">
-	  <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06.jpg" title="수강신청" />
-	  <div>
-			<ul class="NGEB">
-        <li><a href="#lec1" class="active">일반행정직 / 세무직</a></li>
-        <li><a href="#lec2">외무영사직</a></li>
-      </ul>
-      <div class="lecCts mb40">
-          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c1.jpg" title="일반행정직 / 세무직"  id="lec1"/></a>
-          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c2.jpg" title="외무영사직"  id="lec2"/></a>
-      </div>
-    </div>
+	  <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_06.jpg" title="9급 Beginners’ Class 수강신청" />
+	 <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_06_t_c1.jpg" title=""  id="lec1"/></a>
   </div>
   <!--wb_cts07//-->
   
   <div class="evtCtnsBox wb_cts08">
-	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_07.jpg" title="합격 전략 설명회" /></a>
+	  <a href="#" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_07.jpg" title="합격 전략 설명회" /></a>
   </div>
   <!--wb_cts08//-->
 
@@ -244,7 +235,7 @@
           </li>
 		  <li><strong>면접 지원</strong><br />
            ▷ 13개월 종합반 수강 시에만 제공되는 혜택입니다.<br />
-		   ▷ 지원되는 시험은 2020년 7급 국가직(20.8월 시행) 입니다.<br />
+		   ▷ 지원되는 시험은 2020년 9급 국가직(20.8월 시행) 입니다.<br />
 		   ▷ 학원사정에 의해 면접반이 개설되지 않을 수도 있습니다.<br />
 		   ▷ 중도 수강 취소 시 제공되지 않습니다.<br />
           </li>

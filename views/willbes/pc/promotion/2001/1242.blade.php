@@ -86,6 +86,9 @@
     <script type="text/javascript">
         function certOpen() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($cert_apply) === false)
+                alert("이미 인증이 완료된 상태입니다.");return;
+            @endif
             @if(empty($arr_promotion_params) === false)
                 var url = '{{ site_url('/pass/certApply/index/page/'.$arr_promotion_params['page'].'/cert/'.$arr_promotion_params['cert']) }}';
                 window.open(url,'cert_popup', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');

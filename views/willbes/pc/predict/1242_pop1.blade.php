@@ -125,7 +125,7 @@
                                     <thead>
                                         <tr class="bdRno">
                                             <th>
-                                                <select id="s_subject_1" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp(1, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
+                                                <select id="s_subject_1_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 1, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
                                                     <option value="">{{($key == 300) ? '필수' : '선택'}}과목1</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
@@ -133,7 +133,7 @@
                                                 </select>
                                             </th>
                                             <th>
-                                                <select id="s_subject_2" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp(2, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
+                                                <select id="s_subject_2_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 2, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
                                                     <option value="">{{($key == 300) ? '필수' : '선택'}}과목2</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
@@ -141,7 +141,7 @@
                                                 </select>
                                             </th>
                                             <th>
-                                                <select id="s_subject_3" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp(3, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
+                                                <select id="s_subject_3_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 3, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
                                                     <option value="">{{($key == 300) ? '필수' : '선택'}}과목3</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
@@ -279,26 +279,24 @@
         sel.html(sorted);
     }
 
-    function fn_sel_subject_tmp(flag, val, text){
-        //alert(obj.data("prev"));
+    function fn_sel_subject_tmp(s_key, flag, val, text){
         var flag_1 = $("#flag_1").val();
         var flag_2 = $("#flag_2").val();
         var flag_3 = $("#flag_3").val();
 
-        //alert(flag_1 + " / " + flag_2 + " / " + flag_3);
         if(flag==1){
             if(flag_1==1){
-                $('#s_subject_2').children("[value='"+val+"']").remove(); // 옵션 삭제
-                $('#s_subject_3').children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_2_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_3_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
                 $("#flag_1").val("2");
                 $("#flag_value_1").val(val);
                 $("#flag_text_1").val(text);
                 $("#n_subject_1").attr("disabled", false);
             }else{
-                $('#s_subject_2').children("[value='"+val+"']").remove(); // 옵션 삭제
-                $('#s_subject_3').children("[value='"+val+"']").remove(); // 옵션 삭제
-                $("#s_subject_2").append($("<option></option>").val($("#flag_value_1").val()).text($("#flag_text_1").val())); // 옵션 추가
-                $("#s_subject_3").append($("<option></option>").val($("#flag_value_1").val()).text($("#flag_text_1").val())); // 옵션 추가
+                $('#s_subject_2_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_3_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_2_'+s_key).append($("<option></option>").val($("#flag_value_1").val()).text($("#flag_text_1").val())); // 옵션 추가
+                $('#s_subject_3_'+s_key).append($("<option></option>").val($("#flag_value_1").val()).text($("#flag_text_1").val())); // 옵션 추가
                 $("#flag_value_1").val(val);
                 $("#flag_text_1").val(text);
                 sortSelect('s_subject_2');
@@ -308,17 +306,17 @@
 
         if(flag==2){
             if(flag_2==1){
-                $('#s_subject_1').children("[value='"+val+"']").remove(); // 옵션 삭제
-                $('#s_subject_3').children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_1_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_3_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
                 $("#flag_2").val("2");
                 $("#flag_value_2").val(val);
                 $("#flag_text_2").val(text);
                 $("#n_subject_2").attr("disabled", false);
             }else{
-                $('#s_subject_1').children("[value='"+val+"']").remove(); // 옵션 삭제
-                $('#s_subject_3').children("[value='"+val+"']").remove(); // 옵션 삭제
-                $("#s_subject_1").append($("<option></option>").val($("#flag_value_2").val()).text($("#flag_text_2").val())); // 옵션 추가
-                $("#s_subject_3").append($("<option></option>").val($("#flag_value_2").val()).text($("#flag_text_2").val())); // 옵션 추가
+                $('#s_subject_1_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_3_'+s_key).children("[value='"+val+"']").remove(); // 옵션 삭제
+                $('#s_subject_1_'+s_key).append($("<option></option>").val($("#flag_value_2").val()).text($("#flag_text_2").val())); // 옵션 추가
+                $('#s_subject_3_'+s_key).append($("<option></option>").val($("#flag_value_2").val()).text($("#flag_text_2").val())); // 옵션 추가
                 $("#flag_value_2").val(val);
                 $("#flag_text_2").val(text);
                 sortSelect('s_subject_1');
@@ -328,17 +326,17 @@
 
         if(flag==3){
             if(flag_3==1){
-                $('#s_subject_1').children("[value='" + val + "']").remove(); // 옵션 삭제
-                $('#s_subject_2').children("[value='" + val + "']").remove(); // 옵션 삭제
+                $('#s_subject_1_'+s_key).children("[value='" + val + "']").remove(); // 옵션 삭제
+                $('#s_subject_2_'+s_key).children("[value='" + val + "']").remove(); // 옵션 삭제
                 $("#flag_3").val("2");
                 $("#flag_value_3").val(val);
                 $("#flag_text_3").val(text);
                 $("#n_subject_3").attr("disabled", false);
             }else{
-                $('#s_subject_1').children("[value='" + val + "']").remove(); // 옵션 삭제
-                $('#s_subject_2').children("[value='" + val + "']").remove(); // 옵션 삭제
-                $("#s_subject_1").append($("<option></option>").val($("#flag_value_3").val()).text($("#flag_text_3").val())); // 옵션 추가
-                $("#s_subject_2").append($("<option></option>").val($("#flag_value_3").val()).text($("#flag_text_3").val())); // 옵션 추가
+                $('#s_subject_1_'+s_key).children("[value='" + val + "']").remove(); // 옵션 삭제
+                $('#s_subject_2_'+s_key).children("[value='" + val + "']").remove(); // 옵션 삭제
+                $('#s_subject_1_'+s_key).append($("<option></option>").val($("#flag_value_3").val()).text($("#flag_text_3").val())); // 옵션 추가
+                $('#s_subject_2_'+s_key).append($("<option></option>").val($("#flag_value_3").val()).text($("#flag_text_3").val())); // 옵션 추가
                 $("#flag_value_3").val(val);
                 $("#flag_text_3").val(text);
                 sortSelect('s_subject_1');

@@ -10,21 +10,26 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="row">
-                    <div class="col-md-12 pl-5 pr-5">
+                    <div class="col-md-12">
+                        <h4><strong>상품정보</strong></h4>
+                    </div>
+                    <div class="col-md-12">
                         <table class="table table-bordered mb-0">
                             <thead class="bg-odd">
                             <tr>
                                 <th rowspan="2" class="valign-middle">교수명</th>
                                 <th rowspan="2" class="valign-middle" style="width: 100px;">상품구분</th>
-                                <th rowspan="2" class="valign-middle" style="width: 220px;">상품명</th>
-                                <th rowspan="2" class="valign-middle" style="width: 220px;">단과반명</th>
-                                <th rowspan="2" class="valign-middle">개강일</th>
-                                <th rowspan="2" class="valign-middle">종강일</th>
+                                <th rowspan="2" class="valign-middle" style="width: 160px;">상품명</th>
+                                <th rowspan="2" class="valign-middle">캠퍼스</th>
+                                <th rowspan="2" class="valign-middle" style="width: 160px;">단과반명</th>
+                                <th rowspan="2" class="valign-middle" style="width: 100px;">개강일</th>
+                                <th rowspan="2" class="valign-middle" style="width: 100px;">종강일</th>
                                 <th rowspan="2" class="valign-middle">인원</th>
                                 <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
                                 <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*안분율 적용</th>
                                 <th rowspan="2" class="valign-middle">환불금액(E)<br/>*안분율 적용</th>
-                                <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-D-E)*정산율</th>
+                                <th rowspan="2" class="valign-middle">순매출(F)<br/>(C-D-E)</th>
+                                <th rowspan="2" class="valign-middle">정산금액(H)<br/>F*정산율</th>
                                 <th colspan="2">세액공제</th>
                                 <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
                             </tr>
@@ -38,6 +43,7 @@
                                 <td>{{ $data['wProfName'] }}</td>
                                 <td>{{ $data['LearnPatternCcdName'] or '' }} {{ empty($data['PackTypeCcdName']) === false ? '(' . $data['PackTypeCcdName'] . ')' : '' }}</td>
                                 <td>{{ empty($data['ProdName']) === false ? '[' . $data['ProdCode'] . '] ' . $data['ProdName'] : '' }}</td>
+                                <td>{{ $data['CampusCcdName'] or '' }}</td>
                                 <td>{{ empty($data['ProdNameSub']) === false ? '[' . $data['ProdCodeSub'] . '] ' . $data['ProdNameSub'] : '' }}</td>
                                 <td>{{ $data['StudyStartDate'] or '' }}</td>
                                 <td>{{ $data['StudyEndDate'] or '' }}</td>
@@ -45,6 +51,7 @@
                                 <td>{{ number_format($data['tDivisionPayPrice'], 0) }}</td>
                                 <td>{{ number_format($data['tDivisionPgFeePrice'], 0) }}</td>
                                 <td>{{ number_format($data['tDivisionRefundPrice'], 0) }}</td>
+                                <td>{{ number_format($data['tDivisionRemainPrice'], 0) }}</td>
                                 <td>{{ number_format($data['tDivisionCalcPrice'], 0) }}</td>
                                 <td>{{ number_format($data['tDivisionIncomeTax'], 0) }}</td>
                                 <td>{{ number_format($data['tDivisionResidentTax'], 0) }}</td>
@@ -190,8 +197,9 @@
                     <th class="bold valign-middle">안분매출(C)<br/>A*B</th>
                     <th class="bold valign-middle">안분수수료(D)<br/>D1*B</th>
                     <th class="bold valign-middle">안분환불(E)<br/>E1*B</th>
+                    <th class="bold valign-middle">순매출(F)<br/>(C-D-E)</th>
                     <th class="bold valign-middle">정산율(G)</th>
-                    <th class="bold valign-middle">정산금액(H)<br/>(C-D-E)*G</th>
+                    <th class="bold valign-middle">정산금액(H)<br/>F*G</th>
                 </tr>
                 <tr class="bg-info">
                     <th colspan="5" class="text-center">합계</th>
@@ -215,6 +223,7 @@
                     <th id="sumC" class="sumTh"></th>
                     <th id="sumD" class="sumTh"></th>
                     <th id="sumE" class="sumTh"></th>
+                    <th id="sumF" class="sumTh"></th>
                     <th></th>
                     <th id="sumH" class="sumTh"></th>
                 </tr>
@@ -298,6 +307,9 @@
                     {'data' : 'DivisionRefundPrice', 'render' : function(data, type, row, meta) {
                         return '<span class="red no-line-height">' + (data > 0 ? decimalFormat(data, 8) : 0) + '</span>';
                     }},
+                    {'data' : 'DivisionRemainPrice', 'render' : function(data, type, row, meta) {
+                        return decimalFormat(data, 8);
+                    }},
                     {'data' : 'ProdCalcPerc'},
                     {'data' : 'DivisionCalcPrice', 'render' : function(data, type, row, meta) {
                         return decimalFormat(data, 8);
@@ -314,6 +326,7 @@
                     $('#sumC').html(addComma(json.sum_data.tDivisionPayPrice));
                     $('#sumD').html(addComma(json.sum_data.tDivisionPgFeePrice));
                     $('#sumE').html(json.sum_data.tDivisionRefundPrice > 0 ? addComma(json.sum_data.tDivisionRefundPrice) : 0);
+                    $('#sumF').html(addComma(json.sum_data.tDivisionRemainPrice));
                     $('#sumH').html(addComma(json.sum_data.tDivisionCalcPrice));
                 } else {
                     $('.sumTh').html('');

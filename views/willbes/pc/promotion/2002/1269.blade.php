@@ -79,7 +79,7 @@
         .wb_03 div span.area09 {top:859px; left:774px} /*제주*/
 
         .wb_04 {background:#fff}
-        .wb_05 {background:#5eae01}
+        .wb_05 {background:#cca91a}
 
         .content_guide_wrap{background:#fff; padding:100px 0}
         .content_guide_box {position:relative; width:1000px; margin:0 auto;}
@@ -165,12 +165,8 @@
         </div>
 
         <div class="evtCtnsBox wb_04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1269_04_01.jpg"  alt="이벤트1" usemap="#Map1239A" border="0" /><br>
-            <map name="Map1239A" id="Map1239A">
-                <area shape="rect" coords="341,1108,783,1187" href="{{ site_url('/pass/mockTest/apply/cate') }}" target="_blank" alt="모의고사 할인받기" />
-            </map>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1269_04_02.jpg"  alt="이벤트2" usemap="#Map1239B" border="0" />
-            <map name="Map1239B" id="Map1239B">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1269_04.jpg"  alt="이벤트2" usemap="#Map1269B" border="0" />
+            <map name="Map1269B" id="Map1269B">
                 <area shape="rect" coords="443,861,678,933" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰받기" />
             </map>
         </div>

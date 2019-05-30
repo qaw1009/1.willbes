@@ -181,19 +181,23 @@
         });
 
         $regi_form.submit(function () {
-            var _url = '{{ front_url('/predict/storeFinalPoint') }}';
+            addValidate();
+
+            /*var _url = '{{ front_url('/predict/storeFinalPoint') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
                     window.close();
                 }
-            }, showValidateError, addValidate, false, 'alert');
+            }, showValidateError, addValidate, false, 'alert');*/
         });
 
         function addValidate()
         {
             var ret = false;
             mock_part = $regi_form.find('select[name="mock_part"]').val();
+            var add_point = $regi_form.find('input[name="add_point"]').val();
+
             $regi_form.find('input[name="subject_p_code['+mock_part+'][]"]').each(function (index) {
                 var key = $(this).val();
                 var subject_p_val = $regi_form.find('input[name="subject_p['+key+']"]').val();
@@ -206,11 +210,34 @@
                 }
             });
 
-            var add_point = $regi_form.find('input[name="add_point"]').val();
             if (add_point > 5) {
                 alert('가산점은 0~5점 사이로 입력해 주세요.');
                 ret = false;
             }
+
+            var temp = [];
+            $regi_form.find('select[name="subject_s['+mock_part+'][]"]').each(function (index) {
+                if ($(this).val() != '') {
+                    temp[index] = $(this).val();
+                }
+            });
+
+            //임시 배열값 과 옵션값이 같으면 임시 변수값 증가
+            $(temp).each(function(i) {
+                var x = 0;
+                $regi_form.find('select[name="subject_s['+mock_part+'][]"]').each(function() {
+                    if( temp[i] == $(this).val() ) {
+                        x++;
+                    }
+                });
+                // 임시 변수 값 중복체크
+                if(x > 1) {
+                    alert('동일한 선택과목이 있습니다.');
+                    ret = false;
+                    return false;
+                }
+            });
+
             return ret;
         }
     });

@@ -121,30 +121,31 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th rowspan="2">선택</th>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2">회원번호</th>
-                    <th rowspan="2">이름</th>
-                    <th rowspan="2">아이디</th>
-                    <th colspan="2">휴대폰정보</th>
-                    <th colspan="2">E-mail정보</th>
-                    <th rowspan="2">가입일</th>
-                    <th rowspan="2">통합회원<br>전환여부</th>
-                    <th rowspan="2">마지막<br>로그인일</th>
-                    <th rowspan="2">최종정보<br>변경일</th>
-                    <th rowspan="2">비밀번호<br>변경일</th>
-                    <th rowspan="2">상태</th>
-                    <th rowspan="2">블랙컨슈머<br>여부</th>
-                    <th rowspan="2">기기<br>등록정보</th>
-                    <th rowspan="2">자동로그인</th>
-                    <th rowspan="2">정보관리</th>
+                    <th xrowspan="2">선택</th>
+                    <th xrowspan="2">No</th>
+                    <th xrowspan="2">관심분야</th>
+                    <th xrowspan="2">회원번호</th>
+                    <th xrowspan="2">이름</th>
+                    <th xrowspan="2">아이디</th>
+                    <th xcolspan="2">휴대폰정보(수신)</th>
+                    <th xcolspan="2">E-mail정보(수신)</th>
+                    <th xrowspan="2">가입일</th>
+                    <th xrowspan="2">통합회원<br>전환여부</th>
+                    <th xrowspan="2">마지막<br>로그인일</th>
+                    <th xrowspan="2">최종정보<br>변경일</th>
+                    <th xrowspan="2">비밀번호<br>변경일</th>
+                    <th xrowspan="2">상태</th>
+                    <th xrowspan="2">블랙컨슈머<br>여부</th>
+                    <th xrowspan="2">기기<br>등록정보</th>
+                    <th xrowspan="2">자동로그인</th>
+                    <!-- <th xrowspan="2">정보관리</th> -->
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th>번호</th>
                     <th>수신여부</th>
                     <th>주소</th>
                     <th class="bdr-line">수신여부</th>
-                </tr>
+                </tr> -->
                 </thead>
                 <tbody>
                 </tbody>
@@ -184,6 +185,7 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
+                    {'data' : 'InterestName'},
                     {'data' : 'MemIdx', 'render' : function(data,type,row,meta){
                             return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</a>';
                         }},
@@ -193,10 +195,12 @@
                     {'data' : 'MemId', 'render' : function(data,type,row,meta){
                             return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</a>';
                         }},
-                    {'data' : 'Phone'},
-                    {'data' : 'SmsRcvStatus'},
-                    {'data' : 'Mail'},
-                    {'data' : 'MailRcvStatus'},
+                    {'data' : 'Phone', 'render' : function(data, type, row, meta){
+                            return data + ' (' + row.SmsRcvStatus + ')';
+                        }},
+                    {'data' : 'Mail', 'render' : function(data, type, row, meta){
+                            return data + ' (' + row.MailRcvStatus + ')';
+                        }},
                     {'data' : 'JoinDate', 'render' : function(data, type, row, meta){
                             return data.substring(0,10);
                         }},
@@ -231,12 +235,12 @@
                         }},
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta){
                             return '<a href="{{site_url('/member/manage/setMemberLogin/')}}'+data+'/" target="_blank">[자동로그인]</a>';
-                        }},
-                    {'data' : null, 'render' : function(data, type, row, meta){
+                        }}
+                    /* {'data' : null, 'render' : function(data, type, row, meta){
                             return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '"">[수강정보관리]</a><br>' +
                                 '<a href="#" class="btn-view2 blue" data-idx="' + row.MemIdx + '"">[결제정보관리]</a><br>' +
                                 '<a href="#" class="btn-view3 blue" data-idx="' + row.MemIdx + '"">[상담/메모관리]</a>';
-                        }}
+                        }} */
                 ]
             });
 

@@ -56,7 +56,8 @@ class ManageMemberModel extends WB_Model
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             Mem.IsStatus,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
-            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount         
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
+            c1.CcdName AS InterestName  
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -64,7 +65,9 @@ class ManageMemberModel extends WB_Model
         }
 
         $from = "FROM {$this->_table['member']} AS Mem 
-            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx ";
+            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
+            LEFT JOIN {$this->_table['code']} AS c1 ON Info.InterestCode = c1.Ccd
+             ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -121,7 +124,8 @@ class ManageMemberModel extends WB_Model
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
             (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName,
-            c1.CcdName AS CertName, c2.CcdName AS InterestName               
+            c1.CcdName AS CertName, 
+            c2.CcdName AS InterestName               
             ";
 
         $from = "FROM {$this->_table['member']} AS Mem 

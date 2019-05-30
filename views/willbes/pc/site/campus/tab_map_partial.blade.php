@@ -133,7 +133,7 @@
                             <div class="address">
                                 <span class="a-tit">주소</span>
                                 <span>
-                                부산 진구 부정동 223-8
+                                부산 진구 부전동 223-8
                                 </span>
                             </div>
                             <div class="tel">

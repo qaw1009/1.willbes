@@ -2963,6 +2963,7 @@ class PredictModel extends WB_Model
                             ,D.MemId,D.MemName,fn_dec(D.PhoneEnc) as phone
                             ,E.CcdName as TakeMockPartName
                             ,F.CcdName as TakeAreaCcdName
+                            ,G.TakeNo
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -2987,6 +2988,7 @@ class PredictModel extends WB_Model
                         join lms_member D on A.MemIdx = D.MemIdx
                         join lms_predict_code E on A.TakeMockPart = E.Ccd
                         join lms_sys_code F on A.TakeAreaCcd = F.Ccd
+                        left outer join lms_cert_apply G on A.MemIdx = G.MemIdx And A.CertIdx = G.CertIdx And G.ApprovalStatus=\'Y\' And G.IsStatus=\'Y\'  
                      where A.IsStatus=\'Y\'
         ';
         // 사이트 권한 추가
@@ -2998,6 +3000,60 @@ class PredictModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function listPredictFinalExcel($arr_condition = [], $order_by = [], $arr_condition_add = null)
+    {
+
+            $column = '
+                            C.ProdName
+                            ,D.MemId,D.MemName,fn_dec(D.PhoneEnc) as phone
+                            ,G.TakeNo
+                            ,E.CcdName as TakeMockPartName
+                            ,F.CcdName as TakeAreaCcdName
+                            ,B.pointJson
+                            ,A.StrengthPoint,A.AddPoint
+                            ,A.RegDatm
+                            
+            ';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+
+            $from = '
+                        from
+                            lms_predict_final A
+                            join
+                            (
+                                select
+                                PfIdx
+                                #,group_concat(CONCAT(\'{subjectName:"\',bb.CcdName,\'",point:"\',aa.Point,\'"}\')order by PfpIdx) as pointJson
+                                ,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point) order by PfpIdx separator \'<BR>\') as pointJson
+                                from
+                                    lms_predict_final_point aa
+                                    join lms_predict_code bb on aa.Subject = bb.Ccd
+                                where aa.IsStatus=\'Y\'
+                                group by PfIdx
+                            ) B on A.pfIdx = B.PfIdx
+                            join lms_product_predict C on A.PredictIdx = C.PredictIdx
+                            join lms_member D on A.MemIdx = D.MemIdx
+                            join lms_predict_code E on A.TakeMockPart = E.Ccd
+                            join lms_sys_code F on A.TakeAreaCcd = F.Ccd
+                            left outer join lms_cert_apply G on A.MemIdx = G.MemIdx And A.CertIdx = G.CertIdx And G.ApprovalStatus=\'Y\' And G.IsStatus=\'Y\'  
+                         where A.IsStatus=\'Y\'
+            ';
+        // 사이트 권한 추가
+        $arr_condition['IN']['C.SiteCode'] = get_auth_site_codes();
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        if(empty($arr_condition_add) === false) {
+            $where .= ' and '.$arr_condition_add;
+        }
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
+        return $query->result_array();
     }
 
 }

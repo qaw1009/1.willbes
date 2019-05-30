@@ -64,6 +64,7 @@
                     <th class="text-center">이름</th>
                     <th class="text-center">아이디</th>
                     <th class="text-center">휴대폰번호</th>
+                    <th class="text-center" width="100px">응시번호</th>
                     <th class="text-center" width="150px">직렬</th>
                     <th class="text-center" width="100px">지역</th>
                     <th class="text-center"  width="180px">과목점수</th>
@@ -93,6 +94,7 @@
                 },
                 dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
                 buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }
                 ],
                 serverSide: true,
                 ajax: {
@@ -110,6 +112,7 @@
                     {'data' : 'MemName', 'class': 'text-center'},
                     {'data' : 'MemId', 'class': 'text-center'},
                     {'data' : 'phone', 'class': 'text-center'},
+                    {'data' : 'TakeNo', 'class': 'text-center'},
                     {'data' : 'TakeMockPartName', 'class': 'text-center'},
                     {'data' : 'TakeAreaCcdName', 'class': 'text-center'},
                     {'data' : 'pointJson', 'class': 'text-center'},
@@ -118,6 +121,14 @@
                         }},
                     {'data' : 'RegDatm', 'class': 'text-center'}
                 ]
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{site_url('predict/predictFinal/listAjax/Y')}}', $search_form.serializeArray(), 'POST');
+                }
             });
 
         });

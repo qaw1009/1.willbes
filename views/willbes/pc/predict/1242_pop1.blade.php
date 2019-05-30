@@ -189,15 +189,13 @@
         });
 
         $regi_form.submit(function () {
-            addValidate();
-
-            /*var _url = '{{ front_url('/predict/storeFinalPoint') }}';
+            var _url = '{{ front_url('/predict/storeFinalPoint') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
                     window.close();
                 }
-            }, showValidateError, addValidate, false, 'alert');*/
+            }, showValidateError, addValidate, false, 'alert');
         });
 
         function addValidate()

@@ -18,6 +18,10 @@
     .eventPopS1 li ul {margin-bottom:10px}
     .eventPopS1 li li {display:inline-block; border:0; margin-right:10px; padding:0}
 
+    .subject-p li {display:inline; margin-right:20px; margin-bottom:10px}
+    .subject-p li span {width:80px; text-align:center; display:inline-block; background:#f0f0f0; height:26px; line-height:26px;}
+    .subject-p li input {margin-right:5px; width:80px}
+
     .viewTb {width:100%;}
 	.viewTb th,
 	.viewTb td{padding:8px; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd}
@@ -43,7 +47,7 @@
     .eventPopS3 input {vertical-align:middle}
 
     .btnsSt3 {text-align:center; margin-top:20px}
-    .btnsSt3 button {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333; width:57px; height:37px;}
+    .btnsSt3 button {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333; width:70px; height:37px;}
     .btnsSt3 button:hover {background:#fff; color:#333 !important}
 
     input[type=radio],
@@ -93,10 +97,14 @@
                         @foreach($arr_base['arr_subject_ccd']['P'] as $key => $rows)
                             <div class="subject-p" id="subject_p_{{ $key }}">
                                 <strong>공통과목</strong>
-                                @foreach($rows as $value => $name)
-                                    <input type="hidden" name="subject_p_code[{{ $key }}][]" value="{{ $value }}">
-                                    <span>{{ $name }}</span> <input type="text" maxlength="3" name="subject_p[{{ $value }}]" id="subject_p_{{ $value }}"> 점 @if($loop->last === false) / @endif
-                                @endforeach
+                                <ul>                                  
+                                    <li>
+                                    @foreach($rows as $value => $name)
+                                        <input type="hidden" name="subject_p_code[{{ $key }}][]" value="{{ $value }}">  
+                                        <span>{{ $name }}</span> <input type="text" maxlength="3" name="subject_p[{{ $value }}]" id="subject_p_{{ $value }}"> 점 @if($loop->last === false) / @endif                                        
+                                    @endforeach
+                                    </li>
+                                </ul>
                             </div>
                         @endforeach
 

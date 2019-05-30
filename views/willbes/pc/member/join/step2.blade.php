@@ -109,6 +109,19 @@
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="combine-Tit">관심정보</td>
+                        <td>
+                            <div class="p_re">
+                                @foreach($interestCode as $key => $value)
+                                    <label><input name="InterestCode" type="radio" value="{{ $key }}" class="ml10" /> {{$value}}</label>
+                                @endforeach
+                                <input type="hidden" name="int_temp" />
+                            </div>
+                        <!-- <input name="INterestCode" type="checkbox" value="" id="a03" class="ml10"/> <label for="a03">경찰</label> -->
+                            <div class="tx-red mt10 err_msg" style="display: block;"></div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <table cellspacing="0" cellpadding="0" class="combineTable">
@@ -297,6 +310,9 @@
                     MemPassword_chk : {
                         required : true,
                         pwd_chk : true
+                    },
+                    InterestCode : {
+                        required : true
                     }
                 },
                 messages : {
@@ -332,6 +348,9 @@
                     MemPassword_chk : {
                         required : "비밀번호를 다시한번 입력해주십시요.",
                         pwd_chk : "비밀번호가 일치하지 않습니다."
+                    },
+                    InterestCode : {
+                        required : "관심정보를 선택해주십시요."
                     }
                 },
                 invalidHandler: function(form, validator) {
@@ -347,7 +366,9 @@
                     var name = $element.attr("name");
                     if(name == 'Sex'){
                         var obj = $('input[name=MemName]');
-                    }else {
+                    } else if(name == 'InterestCode') {
+                        var obj = $("input[name=int_temp]");
+                    } else {
                         var obj = $("input[name=" + name + "]");
                     }
 

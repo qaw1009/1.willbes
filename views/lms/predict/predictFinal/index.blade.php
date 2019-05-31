@@ -69,6 +69,7 @@
                     <th class="text-center" width="100px">지역</th>
                     <th class="text-center"  width="180px">과목점수</th>
                     <th class="text-center">체력/가산점</th>
+                    <th class="text-center">환산점수</th>
                     <th class="text-center">등록일</th>
                 </tr>
                 </thead>
@@ -119,6 +120,7 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '체력점수 : ' + row.StrengthPoint + ' / 가산점 : ' + row.AddPoint + '</>';
                         }},
+                    {'data' : 'FinalPoint', 'class': 'text-center'},
                     {'data' : 'RegDatm', 'class': 'text-center'}
                 ]
             });

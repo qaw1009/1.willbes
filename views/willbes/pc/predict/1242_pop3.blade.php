@@ -104,7 +104,7 @@
                         <tbody>
                             <tr>
                                 <th>필기 합격자 </th>
-                                <td>{{ $arr_base['predict_count'] }} 명 </td>
+                                <td>{{ $arr_base['arrAllFinal'][$data['TakeMockPartCcd']][$data['TakeAreaCcd']] }} 명 </td>
                             </tr>
                             <tr>
                                 <th>서비스 이용자 </th>

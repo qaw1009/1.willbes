@@ -90,8 +90,8 @@
                         </select>
                         <select id="take_area" name="take_area">
                             <option value="">지역구분</option>
-                            @foreach($arr_base['arr_area'] as $row)
-                                <option value="{{ $row['Ccd'] }}">{{ $row['CcdName'] }}</option>
+                            @foreach($arr_base['arr_area'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
                         ※ 응시직렬은 최초 선택/저장 후 수정 불가
@@ -195,6 +195,20 @@
         $regi_form.on('change', 'select[name="mock_part"]', function() {
             $('.subject-p, .subject-s').hide();
             $('#subject_p_'+$(this).val()+', #subject_s_'+$(this).val()).show();
+
+            //직렬 '101단'인 경우 지역구분 '서울'만 표기
+            if ($(this).val() == '400') {
+                console.log($('#take_area').find('option'));
+                $('#take_area').find('option').each(function (index, json) {
+                    if (json.value != '' && json.value != '712001') {
+                        $('#take_area').children("[value='" + json.value + "']").attr('disabled', true).hide();
+                    }
+                });
+            } else {
+                $('#take_area').find('option').each(function (index, json) {
+                    $('#take_area').children("[value='" + json.value + "']").attr('disabled', false).show();
+                });
+            }
         });
 
         $regi_form.submit(function () {

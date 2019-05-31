@@ -1193,7 +1193,9 @@ class BasePassPredict extends \app\controllers\FrontController
 
         //응시지역
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
-        $arr_base['arr_area'] = $this->surveyModel->getArea($sysCode_Area);
+        $arr_area = $this->surveyModel->getArea($sysCode_Area);
+        $arr_base['arr_area'] = array_pluck($arr_area,'CcdName','Ccd');
+        unset($arr_base['arr_area']['712018']);     //'전국'값 제거
 
         //필수과목
         $add_condition = ['EQ' => ['Type' => 'P']];
@@ -1334,18 +1336,18 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function predictMyInfo()
     {
-        $arr_base['predict_count'] = '2725';
         $arr_base['predict_idx'] = element('predict', $this->_reqG(null));
         $arr_base['cert_idx'] = element('cert', $this->_reqG(null));
 
         $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => $arr_base['predict_idx'], 'a.CertIdx' => $arr_base['cert_idx'], 'a.IsStatus' => 'Y']];
-        $data = $this->predictFModel->findPredictFinalMember($arr_condition, 'PfIdx, c.CcdValue AS TakeMockPartCcdName, fn_ccd_name(TakeAreaCcd) AS TakeAreaCcdName, b.TakeNo');
+        $data = $this->predictFModel->findPredictFinalMember($arr_condition, 'PfIdx, c.Ccd as TakeMockPartCcd, c.CcdValue AS TakeMockPartCcdName, TakeAreaCcd, fn_ccd_name(TakeAreaCcd) AS TakeAreaCcdName, b.TakeNo');
         $result_final_count = $this->predictFModel->getFinalData($arr_condition);
 
         if (empty($data) === true) {
             show_alert('조회된 성적 데이터가 없습니다. 성적 입력 후 확인해 주세요.', site_url('/predict/createGradeMember?predict='.$arr_base['predict_idx'].'&cert='.$arr_base['cert_idx']));
         }
 
+        $arr_base['arrAllFinal'] = $this->_arrAllFinal();   //합격자 수 셋팅
         $arr_base['service_count'] = $result_final_count['Total'];
         $arr_base['my_rownum'] = $result_final_count['Rownum'];
         $arr_base['my_percentage'] = $result_final_count['MyPercentage'];
@@ -1354,6 +1356,78 @@ class BasePassPredict extends \app\controllers\FrontController
             'arr_base' => $arr_base,
             'data' => $data
         ]);
+    }
+
+    /**
+     * 전국 합격자 수 데이터 셋팅
+     * @return array
+     */
+    private function _arrAllFinal()
+    {
+        $arr_total_final = [
+            '100' => [
+                '712001' => '345',
+                '712002' => '54',
+                '712003' => '51',
+                '712004' => '175',
+                '712005' => '366',
+                '712006' => '44',
+                '712007' => '60',
+                '712008' => '131',
+                '712009' => '27',
+                '712010' => '22',
+                '712011' => '24',
+                '712012' => '15',
+                '712013' => '36',
+                '712014' => '116',
+                '712015' => '26',
+                '712016' => '103',
+                '712017' => '96'
+            ],
+            '200' => [
+                '712001' => '140',
+                '712002' => '20',
+                '712003' => '20',
+                '712004' => '78',
+                '712005' => '152',
+                '712006' => '27',
+                '712007' => '22',
+                '712008' => '53',
+                '712009' => '13',
+                '712010' => '12',
+                '712011' => '15',
+                '712012' => '10',
+                '712013' => '13',
+                '712014' => '45',
+                '712015' => '12',
+                '712016' => '40',
+                '712017' => '40'
+            ],
+            '300' => [
+                '712001' => '56',
+                '712002' => '10',
+                '712003' => '13',
+                '712004' => '27',
+                '712005' => '65',
+                '712006' => '10',
+                '712007' => '13',
+                '712008' => '20',
+                '712009' => '9',
+                '712010' => '10',
+                '712011' => '8',
+                '712012' => '8',
+                '712013' => '8',
+                '712014' => '24',
+                '712015' => '9',
+                '712016' => '17',
+                '712017' => '15'
+            ],
+            '400' => [
+                '712001' => '192'
+            ]
+        ];
+
+        return $arr_total_final;
     }
 
 

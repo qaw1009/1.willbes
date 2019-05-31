@@ -1341,11 +1341,22 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => $arr_base['predict_idx'], 'a.CertIdx' => $arr_base['cert_idx'], 'a.IsStatus' => 'Y']];
         $data = $this->predictFModel->findPredictFinalMember($arr_condition, 'PfIdx, c.Ccd as TakeMockPartCcd, c.CcdValue AS TakeMockPartCcdName, TakeAreaCcd, fn_ccd_name(TakeAreaCcd) AS TakeAreaCcdName, b.TakeNo');
-        $result_final_count = $this->predictFModel->getFinalData($arr_condition);
-
         if (empty($data) === true) {
             show_alert('조회된 성적 데이터가 없습니다. 성적 입력 후 확인해 주세요.', site_url('/predict/createGradeMember?predict='.$arr_base['predict_idx'].'&cert='.$arr_base['cert_idx']));
         }
+
+        //서비스이용자, 내등수 조회
+        $arr_condition = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'PredictIdx' => $arr_base['predict_idx'],
+                'CertIdx' => $arr_base['cert_idx'],
+                'TakeMockPart' => $data['TakeMockPartCcd'],
+                'TakeAreaCcd' => $data['TakeAreaCcd'],
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $result_final_count = $this->predictFModel->getFinalData($arr_condition);
 
         $arr_base['arrAllFinal'] = $this->_arrAllFinal();   //합격자 수 셋팅
         $arr_base['service_count'] = $result_final_count['Total'];

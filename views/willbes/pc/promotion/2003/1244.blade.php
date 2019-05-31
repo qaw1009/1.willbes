@@ -416,7 +416,7 @@
                 }
 
                 //라이브 방송 테스트 타입 기본 값 off
-                $LiveTEST = 'on';
+                $LiveTEST = 'off';
                 if ($LiveTEST == 'on') { $live_type = 'on'; $live_video_type = 'on'; }
             @endphp
             <p class="mb100">

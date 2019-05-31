@@ -14,7 +14,7 @@
 /*****************************************************************/  
 
 .evtTop {
-    background:url(https://static.willbes.net/public/images/promotion/2019/05/1244_top_bg.jpg) no-repeat center top; padding-bottom:125px;
+    background:#c8b29b url(https://static.willbes.net/public/images/promotion/2019/05/1244_top_bg.jpg) no-repeat center top; padding-bottom:125px;
 }
 .evtTop > div {width:1120px; margin:0 auto; position:relative;}
 .evtTop > div span {position:absolute; width:120px; z-index: 1;}

@@ -901,6 +901,9 @@ select[disabled] {
 .tx18 {
   font-size: 18px !important;
 }
+.tx22 {
+  font-size: 22px !important;
+}
 
 .tx-center {
   text-align: center !important;

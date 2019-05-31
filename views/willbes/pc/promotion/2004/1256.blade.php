@@ -117,12 +117,16 @@
     <div class="p_re evtContent NGR" id="evtContainer">  
         
         <div class="evtCtnsBox evtTop" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top.jpg" title="불꽃소방 기본이론 완성반">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top.jpg" usemap="#Map1256A" title="불꽃소방 기본이론 완성반" border="0">
+            <map name="Map1256A" id="Map1256A">
+                <area shape="rect" coords="338,1058,484,1148" href="#evt01" />
+                <area shape="rect" coords="706,1059,827,1148" href="#" onclick="javascript:alert('준비중입니다.');" />
+            </map>
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top_img1.png" alt="화살표"></span>
             <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top_img2.png" alt="손"></span>
         </div>
 
-        <div class="evtCtnsBox evt01" >
+        <div class="evtCtnsBox evt01" id="evt01">
            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_01.jpg" title="">
         </div>
 

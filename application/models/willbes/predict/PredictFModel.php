@@ -275,21 +275,22 @@ class PredictFModel extends WB_Model
         $where_member = $this->_conn->makeWhere($arr_condition);
         $where_member = $where_member->getMakeWhere(false);
 
-        unset($arr_condition['EQ']['a.MemIdx']);
+        unset($arr_condition['EQ']['MemIdx']);
         $where_total = $this->_conn->makeWhere($arr_condition);
         $where_total = $where_total->getMakeWhere(false);
 
         $from = "
             FROM (
                 SELECT COUNT(*) AS total
-                FROM lms_predict_final as a
+                FROM lms_predict_final
                 {$where_total}
             ) AS T,
             (
                 SELECT COUNT(*) AS Rownum
                 FROM lms_predict_final
-                WHERE FinalPoint >= (
-                    SELECT FinalPoint FROM lms_predict_final as a 
+                {$where_total}
+                AND FinalPoint >= (
+                    SELECT FinalPoint FROM lms_predict_final
                     {$where_member}
                 )
             ) AS M

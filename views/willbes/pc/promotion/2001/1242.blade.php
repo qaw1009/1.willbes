@@ -74,7 +74,7 @@
                 <li><a href="javascript:doEvent2()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn2.gif"  alt="" /></a></li>}
             </ul>
         </div>
-        --}
+        --}}
         <div class="evtCtnsBox wb_cts04" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1242_02.jpg"  alt="" usemap="#Map1242A" border="0" />
             <map name="Map1242A" id="Map1242A">

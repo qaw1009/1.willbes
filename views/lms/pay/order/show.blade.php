@@ -119,8 +119,8 @@
                             <th rowspan="2" class="valign-middle">할인사유</th>
                         </tr>
                         <tr>
-                            <th>카드</th>
-                            <th>현금</th>
+                            <th style="min-width: 140px;">PG사 또는 학원카드</th>
+                            <th>학원현금</th>
                             <th>쿠폰적용</th>
                             <th>할인율</th>
                             <th>미수금</th>
@@ -192,11 +192,11 @@
                                     <th colspan="7">환불정보</th>
                                 </tr>
                                 <tr>
-                                    <th>카드</th>
-                                    <th>현금</th>
+                                    <th style="min-width: 140px;">PG사 또는 학원카드</th>
+                                    <th>학원현금</th>
                                     <th>환불산출금액확인</th>
-                                    <th>카드,계좌이체,무통장</th>
-                                    <th>현금</th>
+                                    <th style="min-width: 140px;">PG사 또는 학원카드</th>
+                                    <th>학원현금</th>
                                     <th>쿠폰복구</th>
                                     <th>사용포인트복구</th>
                                     <th>환불자</th>
@@ -233,10 +233,10 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CalcCardRefundPrice'] }}" @if($order_prod_row['CardPayPrice'] < 1 || $order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['userpack_lecture']) readonly="readonly" @endif style="width: 140px;"/>
+                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CalcCardRefundPrice'] }}" @if($order_prod_row['CardPayPrice'] < 1 || $order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['userpack_lecture']) readonly="readonly" @endif style="width: 120px;"/>
                                             </td>
                                             <td>
-                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CalcCashRefundPrice'] }}" @if($order_prod_row['CashPayPrice'] < 1 || $order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['userpack_lecture']) readonly="readonly" @endif style="width: 140px;"/>
+                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CalcCashRefundPrice'] }}" @if($order_prod_row['CashPayPrice'] < 1 || $order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['userpack_lecture']) readonly="readonly" @endif style="width: 120px;"/>
                                             </td>
                                             <td>
                                                 @if($order_prod_row['IsUseCoupon'] == 'Y')
@@ -308,10 +308,10 @@
                                     <th colspan="6">환불정보</th>
                                 </tr>
                                 <tr>
-                                    <th>카드</th>
-                                    <th>현금</th>
-                                    <th>카드</th>
-                                    <th>현금</th>
+                                    <th style="min-width: 140px;">PG사 또는 학원카드</th>
+                                    <th>학원현금</th>
+                                    <th style="min-width: 140px;">PG사 또는 학원카드</th>
+                                    <th>학원현금</th>
                                     <th>쿠폰복구</th>
                                     <th>사용포인트복구</th>
                                     <th>환불자</th>
@@ -386,7 +386,7 @@
                                     </td>
                                     <td>
                                         {{ number_format(array_sum($refund_prod_row['RefundPrice'])) }}<br/>
-                                        (카드 {{ number_format(array_sum($refund_prod_row['CardRefundPrice'])) }} + 현금 {{ number_format(array_sum($refund_prod_row['CashRefundPrice'])) }})
+                                        (PG사 또는 학원카드 {{ number_format(array_sum($refund_prod_row['CardRefundPrice'])) }} + 학원현금 {{ number_format(array_sum($refund_prod_row['CashRefundPrice'])) }})
                                     </td>
                                     <td>{{ $refund_prod_row['PayStatusCcdName'] }}<br/>
                                         ({{ $refund_prod_row['RefundType'] == 'P' ? '연동환불' : ($refund_prod_row['RefundType'] == 'B' ? '계좌환불' : '0원환불') }}{{ $refund_prod_row['IsApproval'] == 'Y' ? ', 지출결의' : '' }})

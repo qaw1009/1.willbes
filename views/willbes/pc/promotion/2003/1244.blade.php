@@ -414,11 +414,6 @@
                         }
                     }
                 }
-                $LiveTTEST = 'on';  //기본값 off
-                if ($LiveTTEST == 'on') {
-                    $live_type = 'on';
-                    $live_video_type = 'on';
-                }
             @endphp
             <p class="mb100">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_1A.jpg" usemap="#Map1244D" title="족집게 라이브 특강" border="0" />
@@ -455,7 +450,7 @@
                                             image: "https://static.willbes.net/public/images/promotion/2019/05/1244_04_3.jpg",
                                             aspectratio: "16:9",
                                             autostart: "true",
-                                            file: "rtmp://origin.flive.skcdn.com/willbeslive/livestream401%!"
+                                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
                                         });
                                         </script>
                                     </div>
@@ -470,7 +465,7 @@
                                             image: "https://static.willbes.net/public/images/promotion/2019/05/1244_04_3.jpg",
                                             aspectratio: "16:9",
                                             autostart: "true",
-                                            file: "rtmp://origin.flive.skcdn.com/willbeslive/livestream401%!"
+                                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
                                         });
                                         </script>
                                     </div>

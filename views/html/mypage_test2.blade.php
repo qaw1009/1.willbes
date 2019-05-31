@@ -164,7 +164,7 @@
                             <td class="w-list">7/2 전국모의고사-일방경찰</td>
                             <td class="w-state">미응시</td>
                             <td class="w-dday">2018-10-10</td>
-                            <td class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="{{ site_url('/home/html/startExam') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">응시하기</a></td>
+                            <td class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="{{ site_url('/home/html/startExam') }}" onclick="window.open(this.href, '_blank', 'width=1200, height=845, scrollbars=yes, resizable=yes' ); return false">응시하기</a></td>
                         </tr>
                         <tr>
                             <td class="w-no">7</td>

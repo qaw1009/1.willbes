@@ -63,17 +63,18 @@
             <map name="Map1242B" id="Map1242B">
                 <area shape="rect" coords="253,1234,537,1294" href="javascript:certOpen()" alt="필기합격인증하기" />
                 <area shape="rect" coords="581,1234,868,1294" href="javascript:gradOpen()" alt="나의성적입력하기" />
-                <area shape="rect" coords="252,1326,871,1388" href="javascript:doEvent2()" alt="실시간 참여현황" />
+                <area shape="rect" coords="252,1325,539,1389" href="javascript:doEvent3()" alt="나의위치파악" />
+                <area shape="rect" coords="579,1326,871,1388" href="javascript:doEvent2()" alt="실시간 참여현황" />              
             </map>
         </div>
-
+        {{--
         <div class="evtCtnsBox wb_cts03" >
             <ul>
                 <li><a href="javascript:doEvent3()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn1.gif"  alt="" /></a></li>
-                {{--<li><a href="javascript:doEvent2()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn2.gif"  alt="" /></a></li>--}}
+                <li><a href="javascript:doEvent2()"><img src="https://static.willbes.net/public/images/promotion/2019/05/1242_btn2.gif"  alt="" /></a></li>}
             </ul>
         </div>
-
+        --}
         <div class="evtCtnsBox wb_cts04" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1242_02.jpg"  alt="" usemap="#Map1242A" border="0" />
             <map name="Map1242A" id="Map1242A">

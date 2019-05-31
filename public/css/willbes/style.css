@@ -7960,7 +7960,7 @@ table.PassZoneTable .w-data {
 }
 
 .willbes-Layer-PassBox .passzoneTitInfo {
-    background: #f9f9f9;
+    background: #e4e4e4;
     font-size: 16px;
     font-weight: 600;
     padding: 20px 10px;
@@ -8780,6 +8780,7 @@ table.testTable tr td.w-date {
 /* subContainer : Mypage : 모의고사관리 : usertestTable */
 .LeclistTable .usertestTable tr th {
     line-height: 40px;
+    background:#e4e4e4 !important;
 }
 .LeclistTable .usertestTable tr td {
     line-height: 20px;
@@ -8888,7 +8889,7 @@ table.testTable tr td.w-date {
 }
 .ExamBox .examPaperWp .exam-paper {
     float: left;
-    width: 450px;
+    width: 650px;
     height: 665px;
     overflow-x: auto;
 }

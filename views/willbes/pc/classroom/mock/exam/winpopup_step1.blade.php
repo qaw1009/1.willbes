@@ -6,7 +6,7 @@
         <div class="popupContainer">
             <div class="lecMoreWrap pt10">
                 <div class="PASSZONE-List widthAutoFull">
-                    <div class="passzoneTitInfo tx-light-blue tx-center NG">{{ $productInfo['ProdName'] }}</div>
+                    <div class="passzoneTitInfo tx-light-blue tx-center NG tx22">{{ $productInfo['ProdName'] }}</div>
                     <ul class="passzoneSubInfo tx-gray NGR">
                         <li class="tit strong GM">· 응시 전 필독사항</li>
                         <li class="txt">- 온라인 응시기간 및 지정된 시간에만 응시가 가능하오니 <span class="tx-red">시험시간을 엄수</span>해 주세요.</li>

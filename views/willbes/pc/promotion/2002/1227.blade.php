@@ -132,7 +132,10 @@
         </div>
 
         <div class="evtCtnsBox evt01" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_02L.jpg" title="필기합격자 누구나 참여가능">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_02L.jpg" usemap="#Map1227Q" title="필기합격자 누구나 참여가능" border="0">
+            <map name="Map1227Q" id="Map1227Q">
+                <area shape="rect" coords="827,1197,971,1240" href="https://police.willbes.net/pass/support/qna/index" target="_blank" alt="1:1상담게시판가기" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt02" id="evt02">

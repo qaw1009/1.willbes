@@ -414,10 +414,14 @@
                         }
                     }
                 }
+
+                //라이브 방송 테스트 타입 기본 값 off
+                $LiveTEST = 'on';
+                if ($LiveTEST == 'on') { $live_type = 'on'; $live_video_type = 'on'; }
             @endphp
             <p class="mb100">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_1A.jpg" usemap="#Map1244D" title="족집게 라이브 특강" border="0" />
-                <map name="Map1244D" id="Map1244D">                  
+                <map name="Map1244D" id="Map1244D">
                   <area shape="rect" coords="122,945,243,981" href="@if(empty($file_yn) === false && $file_yn[21] == 'Y') {{ front_url($file_link[21]) }} @else {{ $file_link[21] }} @endif" title="기미진 특강자료" />
                   <area shape="rect" coords="279,945,404,981" href="@if(empty($file_yn) === false && $file_yn[22] == 'Y') {{ front_url($file_link[22]) }} @else {{ $file_link[22] }} @endif" title="한덕현 특강자료" />
                   <area shape="rect" coords="427,945,551,981" href="@if(empty($file_yn) === false && $file_yn[23] == 'Y') {{ front_url($file_link[23]) }} @else {{ $file_link[23] }} @endif" title="한경준 특강자료" />
@@ -427,8 +431,8 @@
                   <area shape="rect" coords="669,1634,951,1685" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=258" target="_blank" alt="라이브특강 현장 수강 신청" />
                 </map>
             </p>
-            <div class="content_4_wrap">                
-                <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_2.jpg" title="라이브 특강 방송보기" /></p>          
+            <div class="content_4_wrap">
+                <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_2.jpg" title="라이브 특강 방송보기" /></p>
 
                 <div id="movieFrame">
                     @if ($live_type == 'standby')
@@ -450,7 +454,7 @@
                                             image: "https://static.willbes.net/public/images/promotion/2019/05/1244_04_3.jpg",
                                             aspectratio: "16:9",
                                             autostart: "true",
-                                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
+                                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream4011"
                                         });
                                         </script>
                                     </div>
@@ -465,7 +469,7 @@
                                             image: "https://static.willbes.net/public/images/promotion/2019/05/1244_04_3.jpg",
                                             aspectratio: "16:9",
                                             autostart: "true",
-                                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
+                                            file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream4011"
                                         });
                                         </script>
                                     </div>
@@ -748,9 +752,9 @@
 
         function fn_live(p_type) {
             if(p_type == "hd"){
-                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestream11011/Playlist.m3u8";
+                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop4012/Playlist.m3u8";
             }else{
-                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestream11011/Playlist.m3u8";
+                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop4012/Playlist.m3u8";
             }
         }
     </script>

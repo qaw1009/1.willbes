@@ -27,7 +27,7 @@
             <div class="exam-paper mt50">
                 <ul>
                     <li id="que1" name="que1">
-                        <a>01.</a>  
+                        <a class="strong tx-black underline">01.</a>  
                         <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
                     </li>
                     <li id="que2" name="que2">

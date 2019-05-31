@@ -49,7 +49,7 @@
                     <!-- 문제이미지 -->
                     @foreach($question_list as $key => $row)
                     <li id="que{{ $key + 1 }}" name="que{{ $key + 1 }}">
-                        <a class="strong tx-black">{{ $key + 1 }}.</a>
+                        <a class="strong tx-black underline">{{ $key + 1 }}.</a>
                         <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
                     </li>
                     @endforeach

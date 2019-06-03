@@ -119,14 +119,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_skybanner.png" alt="" usemap="#Mapskybanner" border="0">
             <map name="Mapskybanner" id="Mapskybanner">
                 <area shape="rect" coords="36,69,153,120" href="#evt01" />
-                <area shape="rect" coords="40,131,153,187" href="#none" onclick="javascript:alert('준비중입니다.');"  alt="경채반" />
+                <area shape="rect" coords="40,131,153,187" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1257" target="_blank" alt="경채반" />
             </map>
         </div>
         <div class="evtCtnsBox evtTop" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top.jpg" usemap="#Map1256A" title="불꽃소방 기본이론 완성반" border="0">
             <map name="Map1256A" id="Map1256A">
                 <area shape="rect" coords="338,1058,484,1148" href="#evt01" />
-                <area shape="rect" coords="706,1059,827,1148" href="#none" onclick="javascript:alert('준비중입니다.');" />
+                <area shape="rect" coords="706,1059,827,1148" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1257" target="_blank" />
             </map>
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top_img1.png" alt="화살표"></span>
             <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top_img2.png" alt="손"></span>

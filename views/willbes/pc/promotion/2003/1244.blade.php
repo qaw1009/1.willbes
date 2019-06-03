@@ -405,7 +405,7 @@
                 $live_video_type = 'off';
                 foreach ($set_on_day as $key => $val) {
                     if ($day == '20190603') {
-                        if ($time >= '100000' && $time <= '180000') {
+                        if ($time >= '100000' && $time <= '190000') {
                             $live_video_type = 'on';
                         }
                     } else if ($day == $val) {

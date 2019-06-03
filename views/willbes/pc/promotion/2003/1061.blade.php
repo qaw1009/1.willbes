@@ -70,11 +70,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">            
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_10.png" alt="환승이벤트" usemap="#Map1061C" border="0" >
-            <map name="Map1061C" id="Map1061C">
-                <area shape="rect" coords="36,131,121,163" href="#event" alt="환승" />
-                <area shape="rect" coords="37,327,119,361" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153566" target="_blank" alt="문제풀이" />
-            </map>
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/05/1264_skybanner.png" alt="환승이벤트"></a>
         </div>
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
@@ -99,12 +95,6 @@
             </div>
         </div>
         <!-- 타이머 //-->
-
-        <div class="evtCtnsBox wb_top00">
-            <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/153566" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top00.jpg" alt="한정판매" />
-            </a>
-        </div>
 
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top01.jpg" alt="윌비스9급PASS X 세무PASS와 만나다!"  />
@@ -155,7 +145,7 @@
         </div><!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts05" id="info">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_09.jpg" alt=" 윌비스 9급 PASS 이용안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1264_09.jpg" alt=" 윌비스 9급 PASS 이용안내" />
         </div><!--wb_cts05//-->
 
     </div>

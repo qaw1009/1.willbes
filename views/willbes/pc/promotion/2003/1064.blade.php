@@ -106,7 +106,7 @@
         </div><!--wb_cts00//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1064_01.gif" alt="김동진법원팀 지금 PASS 구매 시, 특별 혜택!" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1266_01.gif" alt="김동진법원팀 지금 PASS 구매 시, 특별 혜택!" />
         </div>
         <!--wb_cts01//-->
 
@@ -123,7 +123,7 @@
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1064_04.jpg" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1266_04.jpg" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
             <map name="Map190108_c2" >
                 <area shape="rect" coords="872,750,1015,836" href="javascript:go_PassLecture(2);" onfocus="this.blur();" />
             </map>
@@ -136,7 +136,7 @@
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts05"  id="tab1">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1064_05.jpg" alt=" 2020 윌비스 김동진법원팀PASS" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1266_05.jpg" alt=" 2020 윌비스 김동진법원팀PASS" />
         </div><!--wb_cts05//-->
 
     </div>

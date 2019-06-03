@@ -83,7 +83,7 @@
         .evtTab ul:after {content:""; display:block; clear:both}
         .evtTabCts {margin-top:10px}
 
-        .evt03 {background:#36374d; padding-bottom:100px}
+        .evt03 {background:#36374d}
         .evt03 div {width:930px; margin:0 auto}
         .evt03 div li {display:inline; float:left; width:50%}
         .evt03 div li a {display:block; text-align:center; background:#5a5b6d; color:#36374d; border-radius:10px; margin-right:10px; height:80px; line-height:80px; font-size:35px}

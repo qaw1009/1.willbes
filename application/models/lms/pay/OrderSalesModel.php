@@ -289,8 +289,8 @@ class OrderSalesModel extends BaseOrderModel
                         on SU.ProdCode = VPB.ProdCode			
                     left join ' . $this->_table['bms_book_combine'] . ' as VBB
                         on PB.wBookIdx = VBB.wBookIdx';
-                $column .= ', VPB.ProfSubjectNames, VBB.wPublName, VBB.wAuthorNames';
-                $excel_column .= 'ProfSubjectNames, wPublName, wAuthorNames, RealSalePrice, SalePrice, SaleStatusCcdName';
+                $column .= ', VPB.ProfSubjectNames, VBB.wPublName, VBB.wAuthorNames, VBB.wIsbn';
+                $excel_column .= 'concat(wIsbn, " ") as wIsbn, ProfSubjectNames, wPublName, wAuthorNames, RealSalePrice, SalePrice, SaleStatusCcdName, tRealPayCnt';
                 break;
             default :
                 break;

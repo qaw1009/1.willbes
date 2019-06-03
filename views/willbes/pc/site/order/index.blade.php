@@ -39,12 +39,14 @@
                         </div>
                         <table cellspacing="0" cellpadding="0" class="listTable buyTable under-gray tx-gray">
                             <colgroup>
-                                <col style="width: 770px;">
-                                <col style="width: 170px;">
+                                <col>
+                                <col style="width: 130px;">
+                                <col style="width: 130px;">
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>상품정보<span class="row-line">|</span></th>
+                                <th>정가(할인율)<span class="row-line">|</span></th>
                                 <th>실 결제금액</th>
                             </tr>
                             </thead>
@@ -58,9 +60,6 @@
                                                 {{ $row['ProdName'] }}
                                                 <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-real-sale-price="{{ $row['RealSalePrice'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
                                                 <input type="hidden" name="coupon_detail_idx[{{ $row['CartIdx'] }}]" value="" data-cart-idx="{{ $row['CartIdx'] }}" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
-                                                @if($row['IsCoupon'] == 'Y')
-                                                    <span class="tBox NSK t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
-                                                @endif
                                                 @if($row['CartProdType'] == 'mock_exam')
                                                     {{-- 모의고사 응시정보 --}}
                                                     <span class="pBox p4 ml5"><a href="#none" class="btn-mock-exam-info" data-cart-idx="{{ $row['CartIdx'] }}">응시정보</a></span>
@@ -91,16 +90,30 @@
                                                                 <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
                                                             @endif
                                                         @endif
-                                                </span>
-                                                @endif
-                                                @if($row['IsCoupon'] == 'Y')
-                                                    <span class="w-coupon d_none wrap-coupon"><span class="coupon-name"></span>
-                                                    (<span class="tx-blue"><span class="coupon-disc-price">0</span>원 할인</span>)
-                                                    <a href="#none" class="btn-coupon-apply-delete" data-cart-idx="{{ $row['CartIdx'] }}"><img src="{{ img_url('cart/close.png') }}"></a>
-                                                </span>
+                                                    </span>
                                                 @endif
                                             </dt>
+                                            @if($row['IsCoupon'] == 'Y')
+                                                {{-- 쿠폰사용가능 상품일 경우만 노출 --}}
+                                                <dt class="w-coupon">
+                                                    <span class="tBox NGR t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
+                                                    <span class="d_none wrap-coupon">
+                                                        <span class="coupon-name"></span>
+                                                        (<span class="tx-blue"><span class="coupon-disc-price">0</span>원 할인</span>)
+                                                        <a href="#none" class="btn-coupon-apply-delete" data-cart-idx="{{ $row['CartIdx'] }}"><img src="{{ img_url('cart/close.png') }}"></a>
+                                                    </span>
+                                                </dt>
+                                            @endif
                                         </dl>
+                                    </td>
+                                    <td class="w-buy-price">
+                                        @if(ends_with($row['SalePatternCcd'], '001') === true)
+                                            {{-- 정가(할인율), 판매형태가 일반일 경우만 노출 (재수강, 수강연장 제외) --}}
+                                            <dl>
+                                                <dt>{{ number_format($row['SalePrice']) }}원</dt>
+                                                <dt class="tx-light-blue">(↓{{ number_format($row['SaleRate']) . ($row['SaleDiscType'] == 'R' ? '%' : '원') }})</dt>
+                                            </dl>
+                                        @endif
                                     </td>
                                     <td class="w-buy-price">
                                         <dl>
@@ -171,8 +184,8 @@
                         </div>
                         <div class="p-info tx-gray c_both">
                             • {{ $results['point_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
-                            <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 <!--사용 가능하며,
-                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만--> 사용 가능합니다.
+                            <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 {{--사용 가능하며,
+                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만--}} 사용 가능합니다.
                             @if($cart_type == 'book')
                                 {{-- 교재상품 구매일 경우 배송료 안내문구 노출 --}}
                                 ({{ number_format(config_app('DeliveryFreePrice')) }}원 이상 교재 구매 시 무료 배송)
@@ -298,8 +311,8 @@
                             </table>
                         </div>
                     </div>
-            @endif
-            <!-- willbes-Delivery-Info -->
+                @endif
+                <!-- willbes-Delivery-Info -->
                 <div class="willbes-BuyInfo c_both">
                     <div class="willbes-Lec-Tit NG tx-black">결제정보</div>
                     <div class="buyInfoTable GM">
@@ -327,21 +340,24 @@
                                     </dl>
                                 </td>
                             </tr>
-                            <tr id="pay_method">
-                                <td class="w-list bg-light-white">결제수단</td>
-                                <td class="w-buyinfo tx-left pl25">
-                                    <dl>
-                                        <dt>
-                                            <ul class="item">
-                                                @foreach($arr_pay_method_ccd as $key => $val)
-                                                    <li><input type="radio" name="pay_method_ccd" value="{{ $key }}" data-pay-method-name="{{ $val }}" @if($loop->index == 1) title="결제수단" required="required" checked="checked" @endif/><label>{{ $val }}</label></li>
-                                                @endforeach
-                                            </ul>
-                                        </dt>
-                                        <dt><div id="pay_method_caution_txt" class="caution-txt"></div></dt>
-                                    </dl>
-                                </td>
-                            </tr>
+                            @if($results['total_pay_price'] > 0)
+                                {{-- 총결제금액이 0원 초과일 경우만 노출 --}}
+                                <tr id="pay_method">
+                                    <td class="w-list bg-light-white">결제수단</td>
+                                    <td class="w-buyinfo tx-left pl25">
+                                        <dl>
+                                            <dt>
+                                                <ul class="item">
+                                                    @foreach($arr_pay_method_ccd as $key => $val)
+                                                        <li><input type="radio" name="pay_method_ccd" value="{{ $key }}" data-pay-method-name="{{ $val }}" @if($loop->index == 1) title="결제수단" required="required" checked="checked" @endif/><label>{{ $val }}</label></li>
+                                                    @endforeach
+                                                </ul>
+                                            </dt>
+                                            <dt><div id="pay_method_caution_txt" class="caution-txt"></div></dt>
+                                        </dl>
+                                    </td>
+                                </tr>
+                            @endif
                             @if($results['is_delivery_info'] === true)
                                 {{-- 여부배송정보 : Y, 결제수단이 실시간 계좌이체, 무통장입금(가상계좌) 일 경우 --}}
                                 <tr id="is_escrow" style="display: none;">
@@ -559,8 +575,8 @@
 
                     $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').data('coupon-disc-price', 0);
                     $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').val('').trigger('change');
-                    $cart_row.find('.wrap-coupon').removeClass('d_block').addClass('d_none');
-                    $cart_row.find('.wrap-real-sale-price').removeClass('d_block').addClass('d_none');
+                    $cart_row.find('.wrap-coupon').addClass('d_none');
+                    $cart_row.find('.wrap-real-sale-price').addClass('d_none');
                     $cart_row.find('.coupon-name').html('');
                     $cart_row.find('.coupon-disc-price').html('0');
                     $cart_row.find('.real-pay-price').html(addComma($cart_row.find('input[name="cart_idx[]"]').data('real-sale-price')));
@@ -831,21 +847,12 @@
             });
 
             // 장바구니 가기 버튼 클릭
-            $('button[name="btn_cart"]').on('click', function () {
+            $('button[name="btn_cart"]').on('click', function() {
                 location.href = '{{ front_url('/cart/index') }}';
             });
 
             // 결제하기 버튼 클릭
-            $('button[name="btn_pay"]').on('click', function () {
-                /*// 중복클릭 방지
-                var btn_pay = document.getElementById('btn_pay');
-                if (btn_pay) {
-                    if (btn_pay.getAttribute('data-is-clicked') === 'Y') {
-                        return;
-                    }
-                    btn_pay.setAttribute('data-is-clicked', 'Y');
-                }*/
-
+            $('button[name="btn_pay"]').on('click', function() {
                 var url = '{{ front_url('/payment/request') }}';
                 ajaxSubmit($regi_form, url, function(ret) {
                     if(ret.ret_cd) {

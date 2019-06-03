@@ -138,15 +138,17 @@
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray tx-gray">
                         <colgroup>
-                            <col style="width: 510px;">
-                            <col style="width: 120px;">
-                            <col style="width: 170px;">
+                            <col>
+                            <col style="width: 100px;">
+                            <col style="width: 140px;">
+                            <col style="width: 140px;">
                             <col style="width: 140px;">
                         </colgroup>
                         <thead>
                         <tr>
                             <th>상품정보<span class="row-line">|</span></th>
                             <th>수강기간<span class="row-line">|</span></th>
+                            <th>정가(할인율)<span class="row-line">|</span></th>
                             <th>실 결제금액<span class="row-line">|</span></th>
                             <th>사용쿠폰</th>
                         </tr>
@@ -158,6 +160,12 @@
                                     <span class="pBox p{{ $arr_prod_type_idx[$row['OrderProdType']] }}">{{ $arr_prod_type_name[$row['OrderProdType']] }}</span> {{ $row['ProdName'] }}
                                 </td>
                                 <td class="w-day">@if(empty($row['StudyPeriod']) === false) {{ $row['StudyPeriod'] }}일 @endif</td>
+                                <td>
+                                    @if(ends_with($row['SalePatternCcd'], '001') === true)
+                                        {{-- 정가(할인율), 판매형태가 일반일 경우만 노출 (재수강, 수강연장 제외) --}}
+                                        {{ number_format($row['SalePrice']) }}원<br><span class="tx-light-blue">(↓{{ number_format($row['SaleRate']) . $row['SaleRateUnit'] }})</span>
+                                    @endif
+                                </td>
                                 <td class="w-price tx-light-blue">{{ number_format($row['RealPayPrice']) }}원</td>
                                 <td class="w-coupon">{{ $row['UseCoupon'] }}</td>
                             </tr>

@@ -156,8 +156,8 @@
                 // 주문 폼에 선택된 쿠폰정보 셋팅
                 $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').data('coupon-disc-price', coupon_disc_price);
                 $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').val($selected_coupon.val()).trigger('change');
-                $cart_row.find('.wrap-coupon').removeClass('d_none').addClass('d_block');
-                $cart_row.find('.wrap-real-sale-price').removeClass('d_none').addClass('d_block');
+                $cart_row.find('.wrap-coupon').removeClass('d_none');
+                $cart_row.find('.wrap-real-sale-price').removeClass('d_none');
                 $cart_row.find('.coupon-name').html($selected_coupon.data('coupon-name'));
                 $cart_row.find('.coupon-disc-price').html(addComma(coupon_disc_price));
                 $cart_row.find('.real-pay-price').html(addComma(real_sale_price - coupon_disc_price));

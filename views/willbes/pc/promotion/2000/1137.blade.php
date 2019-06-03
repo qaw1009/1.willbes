@@ -63,6 +63,8 @@
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1137_01_L.png"  alt="아주특별한혜택"  usemap="#1137_01_L" border="0" />
 <map name="1137_01_L" id="1137_01_L">
+  <!--<area shape="rect" coords="396,554,509,594" href="#" onClick='alert("준비중입니다")'/>
+  <area shape="rect" coords="624,555,735,594" href="#" onClick='alert("준비중입니다")'/>-->
   <area shape="rect" coords="163,2034,979,2156" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank"/>
 </map>
         </div>

@@ -5245,11 +5245,11 @@ span.calendar_btn {
     margin: 0 5px;
 }
 .LeclistTable .buyTable .tBox {
-    float: right;
+    /*float: right;*/
     margin-top: 5px;
 }
 .LeclistTable .buyTable .w-coupon {
-    float: right;
+    /*float: right;*/
 }
 .LeclistTable .buyTable tr td .w-coupon a {
     display: inline-block;

@@ -27,9 +27,11 @@
             z-index:1;
         }
 
-        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/zeropass/1009_topB_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_190603_bg.jpg) no-repeat center top}
 
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
+        .wb_pop4 {background:#313131; padding-bottom:100px}
+        .wb_pop4 iframe {width:853px; height:480px}
 
         .wb_top {background:#282828; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
@@ -41,13 +43,13 @@
         .wb_top .passLecBuy li:nth-child(3) {width:204px}
         .wb_top .passLecBuy li:nth-child(4) {width:400px; padding-left:20px}
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px; width:90%}
-        .wb_top .passLecBuy li:last-child div {background:#0aaaa1; width:80%} /*컬러변경*/
+        .wb_top .passLecBuy li:last-child div {background:#0d3692; width:80%} /*컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-size:16px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}
         .wb_top input[type="checkbox"] {height:20px; width:20px;}
         .wb_top label {border-bottom:1px dashed #000}
-        .wb_top input:checked + label {color:#0aaaa1; border-bottom:1px dashed #0aaaa1} /*컬러변경*/
+        .wb_top input:checked + label {color:#0d3692; border-bottom:1px dashed #0d3692} /*컬러변경*/
         .wb_top .check input[type="checkbox"]:checked+label {color:#000; border-bottom:1px dashed #000}
         .wb_top .passLecBuy span {position:absolute; top:1130px; left:222px; z-index:10; font-size:16px; color:#000}
         .wb_top .passLecBuy span label {border-bottom:0}
@@ -61,7 +63,7 @@
         .wb_top .passLecbtn ul {border:1px solid #000; background:#fff; box-shadow: 0 5px 10px rgba(0,0,0,.5);}
         .wb_top .passLecbtn li {display:inline; float:left; width:100%; color:#000; font-size:20px; height:80px; line-height:80px}
         .wb_top .passLecbtn li a {background:#000; color:#fff; display:block}
-        .wb_top .passLecbtn li a:hover {background:#0aaaa1}
+        .wb_top .passLecbtn li a:hover {background:#0d3692}
         .wb_top .passLecbtn span {margin-left:50px}
         .wb_top .passLecbtn ul:after {content:""; display:block; clear:both}
 
@@ -150,7 +152,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner" >
-            <a href="#pass"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_skybanner.png" alt="스카이스크래퍼" ></a>
+            <a href="#pass"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_skybanner_190603.png" alt="스카이스크래퍼" ></a>
         </div>
 
         <!-- 타이머 -->
@@ -182,15 +184,20 @@
 
 
         <div class="evtCtnsBox wb_pop2" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_topB.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_190603.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
-                <area shape="rect" coords="366,808,549,857" href="javascript:certOpen();" alt="수강생인증"/>
-                <area shape="rect" coords="563,806,753,859" href="javascript:goDesc('tab3')" alt="이용안내"/>
+                <area shape="rect" coords="426,779,557,807" href="javascript:certOpen();" alt="수강생인증"/>
+                <area shape="rect" coords="565,777,694,808" href="javascript:goDesc('tab3')" alt="이용안내"/>
             </map>
         </div>
 
         <div class="evtCtnsBox wb_pop3">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01.png"  alt="열공지원" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01.png"  alt="열공지원" />            
+        </div>
+
+        <div class="evtCtnsBox wb_pop4">
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01_190603.gif"  alt="열공지원" />
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/4947Jur0ZP4?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox wb_top" id="pass">
@@ -233,7 +240,7 @@
                 <span style="color:#fff" class="mt50">
                     PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.
                 </span>
-                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01B.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01_190603.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="144,544,210,567" href="javascript:go_popup()" alt="3개월" />
                         <area shape="rect" coords="346,546,411,565" href="javascript:go_popup()" alt="6개월" />                        
@@ -242,7 +249,7 @@
                     </map>
                 </div>
                 <div> 
-                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02B.jpg"  alt="체력" usemap="#Map1009B"/>                
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02_190603.jpg"  alt="체력" usemap="#Map1009B"/>                
                     <map name="Map1009B" id="Map1009B">
                         <area shape="rect" coords="609,230,736,277" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
                     </map>  
@@ -286,7 +293,7 @@
         <!-- wb_top//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04.jpg"  alt="신광은경찰팀 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04_190603.jpg"  alt="신광은경찰팀 교수진" />
         </div>
 
 

@@ -14,6 +14,7 @@ class BaseProfSales extends \app\controllers\BaseController
     protected $_is_package = false;
     protected $_is_tzone = false;
     protected $_sess_tzone_prof_idxs = null;
+    protected $_limit_start_date = '2019-03-25';    // 검색제한일자
 
     public function __construct($sales_type, $sales_name, $search_column)
     {
@@ -77,7 +78,8 @@ class BaseProfSales extends \app\controllers\BaseController
             'def_site_code' => $def_site_code,
             'is_off_site' => $this->_is_off_site,
             'is_package' => $this->_is_package,
-            'is_tzone' => $this->_is_tzone
+            'is_tzone' => $this->_is_tzone,
+            'limit_start_date' => $this->_limit_start_date
         ], $arr_code));
     }
 
@@ -95,21 +97,26 @@ class BaseProfSales extends \app\controllers\BaseController
         $sum_data = null;
 
         if (empty($search_start_date) === false && empty($search_end_date) === false) {
-            $arr_search_date = [$search_start_date, $search_end_date];
-            if ($this->_is_off_site == 'Y') {
-                $arr_search_date[] = $this->_reqP('search_study_date_type');
-            }
+            // tzone > 온라인강좌일 경우 통합 이후 주문내역만 조회 가능
+            if ($this->_is_tzone === true && $this->_is_off_site == 'N' && $search_start_date < $this->_limit_start_date) {
+                // do nothing
+            } else {
+                $arr_search_date = [$search_start_date, $search_end_date];
+                if ($this->_is_off_site == 'Y') {
+                    $arr_search_date[] = $this->_reqP('search_study_date_type');
+                }
 
-            $arr_condition = $this->_getListConditions();
-            $list = $this->profSalesModel->listProfSales($this->_sales_type, $arr_search_date, $search_prof_idx, false, $arr_condition);
+                $arr_condition = $this->_getListConditions();
+                $list = $this->profSalesModel->listProfSales($this->_sales_type, $arr_search_date, $search_prof_idx, false, $arr_condition);
 
-            if (empty($list) === false) {
-                $count = count($list);
-                $list = array_slice($list, $this->_reqP('start'), $this->_reqP('length'));  // 페이지 번호에 맞게 결과배열 추출
+                if (empty($list) === false) {
+                    $count = count($list);
+                    $list = array_slice($list, $this->_reqP('start'), $this->_reqP('length'));  // 페이지 번호에 맞게 결과배열 추출
 
-                // 합계 (단강좌/단과반일 경우만 조회)
-                if ($this->_is_package === false) {
-                    $sum_data = element('0', $this->profSalesModel->listProfSales($this->_sales_type, $arr_search_date, $search_prof_idx, 'sum', $arr_condition));
+                    // 합계 (단강좌/단과반일 경우만 조회)
+                    if ($this->_is_package === false) {
+                        $sum_data = element('0', $this->profSalesModel->listProfSales($this->_sales_type, $arr_search_date, $search_prof_idx, 'sum', $arr_condition));
+                    }
                 }
             }
         }
@@ -247,6 +254,11 @@ class BaseProfSales extends \app\controllers\BaseController
         // tzone일 경우 세션 교수식별자가 있을 경우만 접근 가능
         if ($this->_is_tzone === true && in_array($prof_idx, $this->_sess_tzone_prof_idxs) === false) {
             show_alert('잘못된 접근입니다.', 'back');
+        }
+
+        // tzone > 온라인강좌일 경우 통합 이후 주문내역만 조회 가능
+        if ($this->_is_tzone === true && $this->_is_off_site == 'N' && $start_date < $this->_limit_start_date) {
+            show_alert($this->_limit_start_date . ' 이전 매출은 조회하실 수 없습니다.', 'back');
         }
 
         // 상품코드별 매출현황 파라미터 셋팅

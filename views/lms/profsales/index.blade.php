@@ -1,11 +1,21 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- {{ $is_off_site == 'Y' ? '학원' : '온라인' }} {{ $sales_name }} 매출현황을 확인할 수 있습니다.</h5>
+    <h5 class="mb-0">- {{ $is_off_site == 'Y' ? '학원' : '온라인' }} {{ $sales_name }} 매출현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
-        <div class="x_panel">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pull-left">
+                    {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
+                </div>
+                <div id="wrap_prev_sales_view" class="pull-left ml-15 mt-15 hide">
+                    <a href="#none" id="btn_prev_sales_view" class="btn btn-dark mb-0" target="_blank">~ {{ $limit_start_date }} 이전 매출보기</a>
+                    [안내사항] 리뉴얼 전({{ $limit_start_date }} 이전) 매출은 직전 <span id="txt_prev_sales_view"></span>에서 확인해 주시기 바랍니다.
+                </div>
+            </div>
+        </div>
+        <div class="x_panel clear">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1">강좌기본정보</label>
@@ -189,6 +199,25 @@
             $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");
 
+            @if($is_tzone === true)
+                // 이전 매출보기 셋팅
+                $search_form.on('change', '#search_site_code', function() {
+                    var tab_txt = $(this).find('option:selected').text();
+                    if (tab_txt.indexOf('경찰') > -1 || tab_txt.indexOf('공무원') > -1) {
+                        $('#wrap_prev_sales_view').removeClass('hide');
+
+                        if (tab_txt.indexOf('경찰') > -1) {
+                            $('#txt_prev_sales_view').html('T존 관리자');
+                            $('#btn_prev_sales_view').prop('href', 'http://c3.willbescop.net/TZON/login.html');
+                        } else {
+                            $('#txt_prev_sales_view').html('강사 마이페이지');
+                            $('#btn_prev_sales_view').prop('href', 'http://w1.willbesgosi.net/main/index.html');
+                        }
+                    }
+                });
+                $search_form.find('select[name="search_site_code"]').trigger('change');
+            @endif
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
@@ -197,6 +226,20 @@
                 ajax: {
                     'url' : '{{ site_url('/profsales/' . $sales_type . '/listAjax') }}',
                     'type' : 'POST',
+                @if($is_tzone === true && $is_off_site == 'N')
+                    {{-- tzone > 온라인강좌일 경우 통합 이후 주문내역만 조회 가능 --}}
+                    'beforeSend' : function() {
+                        var limit_start_date = '{{ $limit_start_date }}';
+                        var search_start_date = $search_form.find('input[name="search_start_date"]').val();
+
+                        if (search_start_date < limit_start_date) {
+                            alert(limit_start_date + ' 이전 매출은 위 `' + limit_start_date + ' 이전 매출보기`에서 확인해 주세요.');
+                            setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
+                            $('.dataTables_processing').css('display', 'none');
+                            return false;
+                        }
+                    },
+                @endif
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }

@@ -17,7 +17,7 @@ class Book extends BaseStats
      */
     public function excel()
     {
-        $headers = ['과목/교수', '출판사', '저자', '판매가', '정상가', '판매상태'];
+        $headers = ['ISBN', '과목/교수', '출판사', '저자', '판매가', '정상가', '판매상태', '순매출'];
         parent::_excel($headers);
     }
 }

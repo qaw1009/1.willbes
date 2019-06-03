@@ -52,7 +52,7 @@
                     </video>
                 </div>
                 <div class="pngimg">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1137_top_L.png"  alt="메인" usemap="#welcomepack1"  />
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1137_top-1_L.png"  alt="메인" usemap="#welcomepack1"  />
                     <map name="welcomepack1" id="welcomepack1">
                         <area shape="rect" coords="282,949,696,1005" href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
                     </map>
@@ -61,8 +61,10 @@
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1137_01_L.png"  alt="아주특별한혜택"  usemap="#1137_01_L" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1137_01-1_L.png"  alt="아주특별한혜택"  usemap="#1137_01_L" border="0" />
 <map name="1137_01_L" id="1137_01_L">
+  <area shape="rect" coords="396,554,509,594" href="#" onClick='alert("준비중입니다")'/>
+  <area shape="rect" coords="624,555,735,594" href="#" onClick='alert("준비중입니다")'/>
   <area shape="rect" coords="163,2034,979,2156" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank"/>
 </map>
         </div>

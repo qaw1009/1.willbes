@@ -110,10 +110,10 @@
 			  <area shape="rect" coords="36,66,185,132" href="/pass/promotion/index/cate/3010/code/1227#evt02" />
 			  <area shape="rect" coords="36,136,185,254" href="/pass/promotion/index/cate/3010/code/1227#evt03" />
 			  <area shape="rect" coords="36,254,185,311" href="/pass/promotion/index/cate/3010/code/1227#evt06" />
-			  <area shape="rect" coords="36,310,185,368" href="/pass/promotion/index/cate/3010/code/1227#evt07" />
-			  <area shape="rect" coords="36,370,185,424" href="/pass/promotion/index/cate/3010/code/1227#evt08" />
-			  <area shape="rect" coords="36,425,185,489" href="/pass/promotion/index/cate/3010/code/1227#evt09" />
-			  <area shape="rect" coords="36,492,185,554" href="/pass/promotion/index/cate/3010/code/1227#evt10" />
+			  <area shape="rect" coords="36,312,184,385" href="/pass/promotion/index/cate/3010/code/1227#evt07" />
+			  <area shape="rect" coords="36,387,185,441" href="/pass/promotion/index/cate/3010/code/1227#evt08" />
+			  <area shape="rect" coords="36,442,185,506" href="/pass/promotion/index/cate/3010/code/1227#evt09" />
+			  <area shape="rect" coords="36,510,185,572" href="/pass/promotion/index/cate/3010/code/1227#evt10" />
 			</map>
         </div>        
 
@@ -231,7 +231,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_11L.jpg" title="다드림 소문내기 이벤트 경품" />
         </div>
 
-        {{--기본댓글--}}
+        {{--url댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif

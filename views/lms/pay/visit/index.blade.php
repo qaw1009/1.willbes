@@ -5,12 +5,18 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
-        <input type="hidden" id="search_site_code" name="search_site_code" value="{{ $def_site_code }}"/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1">결제기본정보</label>
                     <div class="col-md-11 form-inline">
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
                             <option value="">결제루트</option>
                             @foreach($arr_pay_route_ccd as $key => $val)
@@ -143,6 +149,9 @@
             if ($search_form.find('input[name="search_start_date"]').val().length < 1 || $search_form.find('input[name="search_end_date"]').val().length < 1) {
                 setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
             }
+
+            // 캠퍼스 자동 변경
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

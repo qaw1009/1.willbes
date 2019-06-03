@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/lms/pay/BaseOrder.php';
 
 class Visit extends BaseOrder
 {
-    protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/code');
+    protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/site', 'sys/code');
     protected $helpers = array();
     private $_list_add_join = array('refund', 'campus', 'print_cert_log');
 
@@ -22,6 +22,9 @@ class Visit extends BaseOrder
         // 학원사이트 코드 조회
         $arr_site_code = get_auth_on_off_site_codes('Y', true);
 
+        // 캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
         // 사용하는 코드값 조회
         $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayRoute', 'PayMethod', 'ProdType', 'LearnPattern', 'PayStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
@@ -32,6 +35,7 @@ class Visit extends BaseOrder
         $this->load->view('pay/visit/index', [
             'def_site_code' => element('0', array_keys($arr_site_code)),
             'arr_site_code' => $arr_site_code,
+            'arr_campus' => $arr_campus,
             'arr_pay_route_ccd' => $codes[$this->_group_ccd['PayRoute']],
             'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
@@ -105,7 +109,8 @@ class Visit extends BaseOrder
                     'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                     'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                     'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
-                    'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd')
+                    'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
+                    'PL.CampusCcd' => $this->_reqP('search_campus_ccd')
                 ],
                 'ORG1' => [
                     'LKR' => [

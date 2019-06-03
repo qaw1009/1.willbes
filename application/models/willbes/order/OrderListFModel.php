@@ -118,7 +118,7 @@ class OrderListFModel extends BaseOrderFModel
             $order_by_offset_limit = '';
         } else {
             $column = 'OP.OrderProdIdx, O.SiteCode, OP.ProdCode, OP.SaleTypeCcd, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName
-                , OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice, OP.UsePoint, OP.SavePoint, OP.SavePointType
+                , OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice, OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.SalePatternCcd
                 , if(OP.IsUseCoupon = "Y", concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원"), " 할인권"), "") as UseCoupon
                 , concat(P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(OP.SalePatternCcd), ")"), "")) as ProdName
                 , P.ProdTypeCcd, PL.LearnPatternCcd
@@ -134,7 +134,8 @@ class OrderListFModel extends BaseOrderFModel
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['freebie'] . '" then "freebie"
                      else "etc" 
                   end as OrderProdType
-                , OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, replace(CDC.CcdEtc, "{{$invoice_no$}}", OPD.InvoiceNo) as DeliverySearchUrl';
+                , OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, replace(CDC.CcdEtc, "{{$invoice_no$}}", OPD.InvoiceNo) as DeliverySearchUrl
+                , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, if(PS.SaleDiscType = "R", "%", "원") as SaleRateUnit';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -147,6 +148,8 @@ class OrderListFModel extends BaseOrderFModel
                     on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on P.ProdCode = PL.ProdCode
+                left join ' . $this->_table['product_sale'] . ' as PS
+                    on P.ProdCode = PS.ProdCode and OP.SaleTypeCcd = PS.SaleTypeCcd and PS.IsStatus = "Y" and PS.SalePriceIsUse = "Y"                 
                 left join ' . $this->_table['order_product_delivery_info'] . ' as OPD		
                     on OP.OrderProdIdx = OPD.OrderProdIdx
                 left join ' . $this->_table['code'] . ' as CPS

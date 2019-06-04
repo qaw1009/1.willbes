@@ -29,7 +29,9 @@ class ProductFModel extends WB_Model
         'cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'bms_book_combine' => 'wbs_bms_book_combine',
         'category' => 'lms_sys_category',
-        'code' => 'lms_sys_code'
+        'code' => 'lms_sys_code',
+        'product_series' => 'lms_product_subject_r_category_r_code'
+
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재)
@@ -526,6 +528,38 @@ class ProductFModel extends WB_Model
 
         return $query->result_array();
     }
+
+
+    /**
+     * 상품 과목에 연결된 직렬 정보 추출
+     * @param array $add_condition
+     * @param array $order_by
+     * @return mixed
+     */
+    public function findProductSubjectSeries($add_condition=[], $order=[]) {
+
+        //$column = 'distinct B.ChildCcd,C.CcdName';
+        $column =' B.ChildCcd,C.CcdName,GROUP_CONCAT(distinct B.SubjectIdx) as subject_arr';
+        $from = '
+                from 
+                    '.$this->_table['on_lecture'].' A 
+                    join '.$this->_table['product_series'].' B on A.SubjectIdx = B.SubjectIdx 
+                    join '.$this->_table['code'].' C on B.ChildCcd = C.Ccd 
+                where
+                        A.IsUse=\'Y\' and A.wIsUse=\'Y\'  
+                        and B.IsStatus=\'Y\' 
+                        and C.IsStatus=\'Y\' and C.IsUse=\'Y\' 
+                ';
+        $group_by = ' Group by B.ChildCcd,C.CcdName ';
+
+        $where = $this->_conn->makeWhere($add_condition)->getMakeWhere(true);
+        $order_by = $this->_conn->makeOrderBy($order)->getMakeOrderBy();
+        $query = $this->_conn->query('select '. $column . $from . $where . $group_by. $order_by)->result_array();
+        //echo $this->_conn->last_query();
+        return $query;
+    }
+
+
 
     /**
      * 랜딩 컨텐츠 추출

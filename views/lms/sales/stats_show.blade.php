@@ -82,7 +82,7 @@
                             <tbody>
                             <tr>
                                 <td>{{ $data['SiteName'] }}</td>
-                                <td>{{ $data['CateName'] }}</td>
+                                <td>{{ $data['LgCateName'] }}</td>
                                 <td class="bold">[{{ $data['ProdCode'] }}] {{ $data['ProdName'] }}</td>
                                 @if($stats_type == 'lecture')
                                     {{-- 단강좌 --}}

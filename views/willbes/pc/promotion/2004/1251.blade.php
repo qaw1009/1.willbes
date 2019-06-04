@@ -84,7 +84,7 @@
    <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skybanner">
       <ul>
-          <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s1.jpg"  title="설명회" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=273" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s1.jpg"  title="설명회" /></a></li>
           <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s2.jpg"  title="학원방문상담" /></a></li>
           <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s3.jpg"  title="카카오상담하기" /></a></li>
 		  <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_s4.jpg"  title="윌비스통생반" /></a></li>
@@ -131,12 +131,12 @@
   
   <div class="evtCtnsBox wb_cts07">
 	  <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_06.jpg" title="9급 Beginners’ Class 수강신청" />
-	 <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_06_t_c1.jpg" title=""  id="lec1"/></a>
+	 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&course_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_06_t_c1.jpg" title=""  id="lec1"/></a>
   </div>
   <!--wb_cts07//-->
   
   <div class="evtCtnsBox wb_cts08">
-	  <a href="#" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_07.jpg" title="합격 전략 설명회" /></a>
+	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=273" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_07.jpg" title="합격 전략 설명회" /></a>
   </div>
   <!--wb_cts08//-->
 

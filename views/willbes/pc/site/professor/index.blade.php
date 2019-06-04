@@ -24,7 +24,7 @@
                     @foreach($arr_base['product'] as $idx => $row)
                         <li>
                             <a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
-                            <span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span>
+                            <!--span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span//-->
                         </li>
                     @endforeach
                 </ul>

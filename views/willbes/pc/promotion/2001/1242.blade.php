@@ -78,7 +78,7 @@
         <div class="evtCtnsBox wb_cts04" >
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1242_02.jpg"  alt="" usemap="#Map1242A" border="0" />
             <map name="Map1242A" id="Map1242A">
-                <area shape="rect" coords="251,1127,871,1192" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1231" target="_blank" alt="다드림" />
+                <area shape="rect" coords="251,1127,871,1192" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1227" target="_blank" alt="다드림" />
             </map>
         </div>
     </div>

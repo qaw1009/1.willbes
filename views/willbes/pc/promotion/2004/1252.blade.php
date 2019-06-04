@@ -137,8 +137,8 @@
         <li><a href="#lec2">외무영사직</a></li>
       </ul>
       <div class="lecCts mb40">
-          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c1.jpg" title="일반행정직 / 세무직"  id="lec1"/></a>
-          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c2.jpg" title="외무영사직"  id="lec2"/></a>
+          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001&course_idx=1061" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c1.jpg" title="일반행정직 / 세무직"  id="lec1"/></a>
+          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001&course_idx=1061" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c2.jpg" title="외무영사직"  id="lec2"/></a>
       </div>
     </div>
   </div>

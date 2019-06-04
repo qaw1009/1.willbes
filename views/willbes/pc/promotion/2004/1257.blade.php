@@ -28,7 +28,7 @@
             z-index:1;
         }
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/05/1256_top_bg.jpg) no-repeat center top}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/06/1257_top_bg.jpg) no-repeat center top}
         .evtTop span {position:absolute; left:50%; z-index:1; }
         .evtTop span.img1 {top:75px; margin-left:-307px; width:615px; animation:iptimg1 0.5s ease-out;-webkit-animation:iptimg1 0.5s ease-out;}
         .evtTop span.img2 {top:875px; margin-left:-13px; width:134px;}
@@ -52,20 +52,20 @@
         100%{transform:scale(1);}
         } 
 
-        .evt01 {position:relative; background:url(https://static.willbes.net/public/images/promotion/2019/05/1256_01_bg.jpg) no-repeat center top;}              
+        .evt01 {position:relative; background:url(https://static.willbes.net/public/images/promotion/2019/06/1257_01_bg.jpg) no-repeat center top;}              
 
-        .evt02 {background:#fff; padding:100px 0; position:relative;}
-        .slide_con1 {position:absolute; width:1055px; top:900px; left:50%; margin-left:-527px}
+        .evt02 {background:#fff; padding:0 0 100px; position:relative}
+        .slide_con1 {position:absolute; width:1055px; top:2445px; left:50%; margin-left:-527px}
         .slide_con1 p {position:absolute; top:35%; width:30px; z-index:90}
         .slide_con1 img {width:100%;}
         .slide_con1 p a {cursor:pointer}
         .slide_con1 p.leftBtn1 {left:-62px; top:50%; width:62px; height:62px; margin-top:-30px; opacity:0.9; filter:alpha(opacity=90);}
         .slide_con1 p.rightBtn1 {right:-62px;top:50%; width:62px; height:62px;  margin-top:-30px; opacity:0.9; filter:alpha(opacity=90);}  
 
-        #tabwrap2 {width:977px; margin:0 auto; height:466px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1256_02_2A.jpg) no-repeat;}
-        .tab2 {width:872px; margin:0 auto; padding-top:108px; margin-bottom:30px; margin-left:80px}
+        #tabwrap2 {width:977px; margin:0 auto; height:466px; background:url(https://static.willbes.net/public/images/promotion/2019/06/1257_02_03_bg.jpg) no-repeat;}
+        .tab2 {width:977px; margin:0 auto; padding-top:108px; margin-bottom:30px; margin-left:50px}
         .tab2 li {display:inline; float:left;}
-        .tab2 li a {display:block; text-align:center; margin-right:30px}
+        .tab2 li a {display:block; text-align:center; margin-right:10px}
         .tab2 li:last-child a {margin-right:0}
         .tab2 li img.off {display:block}
         .tab2 li img.on {display:none}
@@ -116,117 +116,108 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">  
         <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_skybanner.png" alt="" usemap="#Mapskybanner" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_skybanner.png" alt="" usemap="#Mapskybanner" border="0">
             <map name="Mapskybanner" id="Mapskybanner">
-                <area shape="rect" coords="36,69,153,120" href="#evt01" />
-                <area shape="rect" coords="40,131,153,187" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1257" target="_blank" alt="경채반" />
+                <area shape="rect" coords="38,69,155,120" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1256" target="_blank" alt="공채반" />
+                <area shape="rect" coords="40,131,153,187" href="#evt01" alt="경채반" />
             </map>
         </div>
         <div class="evtCtnsBox evtTop" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top.jpg" usemap="#Map1256A" title="불꽃소방 기본이론 완성반" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_top.jpg" usemap="#Map1256A" title="불꽃소방 기본이론 완성반" border="0">
             <map name="Map1256A" id="Map1256A">
-                <area shape="rect" coords="338,1058,484,1148" href="#evt01" />
-                <area shape="rect" coords="706,1059,827,1148" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1257" target="_blank" />
+                <area shape="rect" coords="338,1058,484,1148" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1256" target="_blank" alt="공채반" />
+                <area shape="rect" coords="706,1059,827,1148" href="#evt01" alt="경채반"/>
             </map>
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top_img1.png" alt="화살표"></span>
             <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_top_img2.png" alt="손"></span>
         </div>
 
         <div class="evtCtnsBox evt01" id="evt01">
-           <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_01.jpg" title="">
+           <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_01.jpg" title="">
         </div>
 
         <div class="evtCtnsBox evt02">
-            <div class="mb100">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_1.jpg"  title="파이널 문제풀이 특징" />
-                <div class="slide_con1">
-                    <ul id="slidesImg1">
-                        <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_01_02.png" alt="후기"/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_01_03.png" alt="후기"/></li>
-                    </ul>
-                    <p class="leftBtn1"><a id="imgBannerLeft1"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_l.png"></a></p>
-                    <p class="rightBtn1"><a id="imgBannerRight1"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_r.png"></a></p>
-                </div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_01.jpg" title="파이널 문제풀이 특징" /><br/>          
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_02.jpg" title="" />
+            <div class="slide_con1">
+                <ul id="slidesImg1">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_02A.png" alt="후기"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_02B.png" alt="후기"/></li>
+                </ul>
+                <p class="leftBtn1"><a id="imgBannerLeft1"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_l.png"></a></p>
+                <p class="rightBtn1"><a id="imgBannerRight1"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_r.png"></a></p>
             </div>
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_2.jpg" title="" /><div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_03.jpg" title="" />
+            
             <div id="tabwrap2">
                 <ul class="tab2">
                     <li>
                         <a href data-slide-index="0" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab01.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab01_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab01.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab01_on.png" title="" class="on" />
                         </a>
                     </li>
                     <li>
                         <a href data-slide-index="1">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab02.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab02_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab02.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab02_on.png" title="" class="on" />
                         </a>
                     </li>
                     <li>
                         <a href data-slide-index="2">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab03.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab03_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab03.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab03_on.png" title="" class="on" />
                         </a>
                     </li>
                     <li>
                         <a href data-slide-index="3">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab04.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab04_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab04.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab04_on.png" title="" class="on" />
                         </a>
                     </li>
                     <li>
                         <a href data-slide-index="4">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab05.png" title="" class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab05_on.png" title="" class="on" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab05.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab05_on.png" title="" class="on" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href data-slide-index="5">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab06.png" title="" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab06_on.png" title="" class="on" />
                         </a>
                     </li>
                 </ul>
                 <div class="tab_inner2">
-                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab01_img.jpg" alt="기초및기초이론"/></div>
-                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab02_img.jpg" alt="심화이론"/></div>
-                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab03_img.jpg" alt="기출문제풀이"/></div>
-                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab04_img.jpg" alt="단원동형문제풀이" /></div>
-                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_tab05_img.jpg" alt="최종마무리" /></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab01_img.jpg" alt="기초및기초이론"/></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab02_img.jpg" alt="심화이론"/></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab03_img.jpg" alt="기출문제풀이"/></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab04_img.jpg" alt="단원동형문제풀이" /></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab05_img.jpg" alt="최종마무리" /></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_tab06_img.jpg" alt="최종마무리" /></div>
                 </div>
-            </div>
+            </div>           
 
-            <div class="mt100">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3.jpg" title="" />
-                <div class="evtTab">
-                    <ul>
-                        <li><a href="#tab1" class="active">1 DAY<br>11 HOURS</a></li>
-                        <li><a href="#tab2">효율 100%<br>복습 TEST SYSTEM</a></li>
-                        <li><a href="#tab3">DOUBLE CARE<br>PROGRAM</a></li>
-                    </ul>
-                    <div class="evtTabCts">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3_tab1.jpg" title="" id="tab1"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3_tab2.jpg" title="" id="tab2"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3_tab3.jpg" title="" id="tab3"/>
-                    </div>
-                </div>
-            <div>
-
-            <div class="mt100 mb100"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_4.jpg" title="" /></div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_02_04.jpg" title="" /></div>
         </div>
 
         <div class="evtCtnsBox evt03" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_03.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_01.jpg" title="" />
             <div>
                 <ul class="NSK-Black">
                     <li><a href="#lec1" class="active">7월 기본이론 완성반</a></li>
                     <li><a href="#lec2">19.7월 ~ 20.3월 연간반</a></li>
                 </ul>
                 <div class="mt10" id="lec1">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_03_tab1.jpg" title="7월 기본이론 완성반"></a>
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_tab1.jpg" title="7월 기본이론 완성반"></a>
                 </div>  
                 <div class="mt10" id="lec2">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1256_03_tab2.jpg" title="연간종합반"/></a>
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_tab2.jpg" title="연간종합반"/></a>
                 </div>             
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_03_1.jpg" usemap="#Map1256B" title="" border="0" />
-            <map name="Map1256B" id="Map1256B">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_1.jpg" usemap="#Map1257B" title="" border="0" />
+            <map name="Map1257B" id="Map1257B">
                 <area shape="rect" coords="465,610,654,667" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=275" target="_blank" alt="설명회신청하기" />
             </map>
         </div>

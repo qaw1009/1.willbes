@@ -52,10 +52,10 @@ class Professor extends \app\controllers\FrontController
                 $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_def_cate_code);
             }
 
-            // 신규강좌 조회 (온라인사이트만 조회)
+            // 신규강좌 조회 (온라인사이트만 조회) :
             $arr_base['product'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
                 , ['EQ' => ['SiteCode' => $this->_site_code, 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_def_cate_code]]
-                , 5, 0, ['ProdCode' => 'desc']);
+                , 5, 0, 'random');
         }
 
         // 전체 교수 조회

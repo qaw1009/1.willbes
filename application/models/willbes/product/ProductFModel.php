@@ -145,6 +145,9 @@ class ProductFModel extends WB_Model
             }
         }
 
+        if($order_by == 'random') {
+            $this->_conn->order_by('id', 'RANDOM');
+        }
         return $this->_conn->getListResult($this->_table[$learn_pattern], $column . $add_column, $arr_condition, $limit, $offset, $order_by);
     }
 

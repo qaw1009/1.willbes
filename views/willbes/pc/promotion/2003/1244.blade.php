@@ -46,7 +46,7 @@
                     <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}">
                         <strong>무료응시</strong>
                         <span>미리 보는 시험</span>
-                        <div>6/2 전국 모의고사</div>
+                        <div>온라인 전국 모의고사</div>
                     </a>
                 </li>     
                 <li>
@@ -364,12 +364,9 @@
         </div>
 
         <div id="content_3" class="tabCts">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_03_1.jpg" usemap="#Map1244C" title="윌비스 전국 모의고사" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_03_1A.jpg" usemap="#Map1244C" title="윌비스 전국 모의고사" border="0" />
             <map name="Map1244C" id="Map1244C">
-                <area shape="rect" coords="558,1839,669,1871" href="javascript:go_popup()" alt="약도보기" />
-                <area shape="rect" coords="188,1904,549,1968" href="https://pass.willbes.net/pass/mockTest/apply/cate/?state=1&s_type=&s_keyword=" target="_blank" alt="온라인모의고사신청" />
-              	<area shape="rect" coords="573,1903,934,1970" href="https://pass.willbes.net/pass/mockTest/apply/cate/?state=2&s_type=&s_keyword=" target="_blank" alt="오프라인모의고사신청" />
-                <area shape="rect" coords="97,2314,343,2363" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=5#giftevent') }}" alt="이벤트자세히보기" />
+                <area shape="rect" coords="379,1868,740,1932" href="https://pass.willbes.net/pass/mockTest/apply/cate/?state=1&s_type=&s_keyword=" target="_blank" alt="온라인모의고사신청" />
             </map>
             <!--레이어팝업-->
             <div id="popup" class="Pstyle">
@@ -500,7 +497,7 @@
 
         <div id="content_5" class="tabCts">
             <p>
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_1.jpg" usemap="#Map1244E" title="소문내기 이벤트" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_1A.jpg" usemap="#Map1244E" title="소문내기 이벤트" border="0" />
                 <map name="Map1244E" id="Map1244E">
                     <area shape="rect" coords="186,1026,300,1055" href="@if($file_yn[31] == 'Y') {{ front_url($file_link[31]) }} @else {{ $file_link[31] }} @endif" alt="이미지다운로드"/>
                     <area shape="rect" coords="143,1262,310,1324" href="http://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="공무원갤러리" />

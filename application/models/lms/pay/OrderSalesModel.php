@@ -34,7 +34,7 @@ class OrderSalesModel extends BaseOrderModel
                     , M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
                     , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName
                     , if(BO.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName
-                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, SC.CateName 
+                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, SC.CateName, SGC.CateName as LgCateName 
                     , json_value(CPM.CcdEtc, if(BO.PgCcd != "", concat("$.fee.", BO.PgCcd), "$.fee")) as PgFee';
             }
         }
@@ -50,7 +50,7 @@ class OrderSalesModel extends BaseOrderModel
                 left join ' . $this->_table['product_r_category'] . ' as PC
                     on BO.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
                 left join ' . $this->_table['category'] . ' as SC
-                    on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"                       
+                    on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"                                              
                 left join ' . $this->_table['member'] . ' as M
                     on BO.MemIdx = M.MemIdx            
         ';
@@ -58,6 +58,8 @@ class OrderSalesModel extends BaseOrderModel
         // 매출현황 목록 조회일 경우 공통코드명, 카테고리명 조회
         if ($is_count === false || $is_count === 'excel') {
             $from .= '                  
+                left join ' . $this->_table['category'] . ' as SGC
+                    on SC.GroupCateCode = SGC.CateCode and SGC.IsStatus = "Y"              
                 left join ' . $this->_table['code'] . ' as CPC
                     on BO.PayChannelCcd = CPC.Ccd and CPC.IsStatus = "Y" and CPC.GroupCcd = "' . $this->_group_ccd['PayChannel'] . '"
                 left join ' . $this->_table['code'] . ' as CPR
@@ -86,7 +88,7 @@ class OrderSalesModel extends BaseOrderModel
 
         // 쿼리 실행
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, CateName
+            $excel_column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName
                 , concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName            
                 , LearnPatternCcdName, ProdName, RealPayPrice, PgFee, CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
@@ -123,7 +125,7 @@ class OrderSalesModel extends BaseOrderModel
             } else {
                 $column = 'SU.ProdCode, SU.tRealPayPrice, SU.tRefundPrice, (SU.tRealPayPrice - SU.tRefundPrice) as tRemainPrice
                     , SU.tOrderProdCnt, SU.tRealPayCnt, SU.tRefundCnt
-                    , P.ProdName, SC.CateName, PS.SalePrice, PS.RealSalePrice, CSS.CcdName as SaleStatusCcdName';
+                    , P.ProdName, SC.CateName, SGC.CateName as LgCateName, PS.SalePrice, PS.RealSalePrice, CSS.CcdName as SaleStatusCcdName';
                 $column .= $this->_getListStatsQuery('column', $learn_pattern);
             }
         }
@@ -148,6 +150,8 @@ class OrderSalesModel extends BaseOrderModel
                     on SU.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
                 left join ' . $this->_table['category'] . ' as SC
                     on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"     
+                left join ' . $this->_table['category'] . ' as SGC
+                    on SC.GroupCateCode = SGC.CateCode and SGC.IsStatus = "Y"                     
                 left join ' . $this->_table['code'] . ' as CSS
                     on P.SaleStatusCcd = CSS.Ccd and CSS.IsStatus = "Y"
                 ' . $this->_getListStatsQuery('from', $learn_pattern) . '
@@ -164,7 +168,7 @@ class OrderSalesModel extends BaseOrderModel
 
         // 쿼리 실행
         if ($is_count === 'excel') {
-            $excel_column = 'CateName, ProdCode, ProdName, ' . $this->_getListStatsQuery('excel_column', $learn_pattern) . ', tRemainPrice';
+            $excel_column = 'LgCateName, ProdCode, ProdName, ' . $this->_getListStatsQuery('excel_column', $learn_pattern) . ', tRemainPrice';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {
             $query = 'select ' . $column . $from . $where . $order_by_offset_limit;

@@ -264,7 +264,7 @@
                         // 리스트 번호
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
-                    {'data' : 'CateName'},
+                    {'data' : 'LgCateName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '[' + row.ProdCode + '] ' + data;
                     }},

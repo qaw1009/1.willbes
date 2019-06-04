@@ -221,7 +221,7 @@
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
-                    {'data' : 'CateName'},
+                    {'data' : 'LgCateName'},
                     {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
                     }},

@@ -6581,6 +6581,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     padding: 0 35px 20px;
     border-left: 1px solid #4f4f4f;
     border-right: 1px solid #4f4f4f;
+    border-bottom: 1px solid #4f4f4f;
 }
 .ListTabs ul li {   
     display: inline-block;

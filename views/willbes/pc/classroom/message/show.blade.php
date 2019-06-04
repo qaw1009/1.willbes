@@ -4,7 +4,7 @@
 </form>
 
 <div id="MEMOPASS" class="willbes-Layer-Black" style="display: block">
-    <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590 fix">
+    <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590 fix of-hidden">
         <a class="closeBtn" href="#none" onclick="closeWin('{{ $arr_input['ele_id'] }}');">
             <img src="{{ img_url('sub/close.png') }}">
         </a>

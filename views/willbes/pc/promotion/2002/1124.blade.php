@@ -13,10 +13,13 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }
+		}
+		.evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
-        /************************************************************/
+		/************************************************************/
+		
+		.skybanner {position:fixed; top:250px; right:0; z-index:1;}
 
 		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2019/05/1124_top_00_bg.jpg) no-repeat top; }
 		.wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/05/1124_top_bg.jpg) repeat-y top; background-attachment:fixed}
@@ -33,6 +36,9 @@
 
 
 <div class="p_re evtContent" id="evtContainer">
+	<div class="skybanner">
+		<a href="#wb_03"><img src="https://static.willbes.net/public/images/promotion/2019/05/1124_skybanner.png"  alt="교수님"/></a>
+	</div>	
 	<div class="evtCtnsBox wb_00" >
 		<img src="https://static.willbes.net/public/images/promotion/2019/05/1124_top_00.jpg"  alt="교수님"/>
 	</div>
@@ -49,11 +55,8 @@
 		<img src="https://static.willbes.net/public/images/promotion/2019/05/1124_02.jpg"  alt="커리큘럼" />
 	</div>
 		
-	<div class="evtCtnsBox wb_03" >
-		<img src="https://static.willbes.net/public/images/promotion/2019/05/1124_03.jpg"  alt="언론" usemap="#link2" />
-		<map name="link2" >
-			<area shape="rect" coords="151,524,358,577" href="{{ site_url('/promotion/index/cate/3001/code/1021') }}" alt="언론보도" />
-		</map>
+	<div class="evtCtnsBox wb_03" id="wb_03">
+		<img src="https://static.willbes.net/public/images/promotion/2019/05/1124_03.jpg"  alt="장정훈" />
 	</div>
 		
 	<div class="evtCtnsBox wb_04" >
@@ -75,7 +78,7 @@
 	<div class="evtCtnsBox wb_07" >
 	<img src="https://static.willbes.net/public/images/promotion/2019/05/1124_07.jpg"  alt="언론" usemap="#link2" />
 		<map name="link2" >
-			<area shape="rect" coords="151,524,358,577" href="{{ site_url('/promotion/index/cate/3001/code/1021') }}" alt="언론보도" />
+			<area shape="rect" coords="151,524,358,577" href="{{ site_url('/promotion/index/cate/3001/code/1021') }}" target="_blank" alt="언론보도" />
 		</map>
 	</div>
     

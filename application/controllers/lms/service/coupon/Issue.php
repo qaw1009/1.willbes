@@ -109,8 +109,11 @@ class Issue extends \app\controllers\BaseController
             ],
             'ORG2' => [
                 'LKB' => [
-                    'CouponIdx' => $this->_reqP('search_value'),
                     'CouponName' => $this->_reqP('search_value')
+                ],
+                'EQ' => [
+                    'CouponIdx' => $this->_reqP('search_value'),
+                    'CdIdx' => $this->_reqP('search_value')
                 ]
             ],
         ];

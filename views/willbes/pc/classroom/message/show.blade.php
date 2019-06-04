@@ -10,7 +10,7 @@
         </a>
         <div class="Layer-Tit tx-dark-black NG">쪽지</div>
 
-        <div class="lecMoreWrap">
+        <div class="lecMoreWrap pb30">
             <div class="PASSZONE-List widthAutoFull LeclistTable Memolist">
                 <table cellspacing="0" cellpadding="0" class="listTable userMemoTable under-gray bdt-gray tx-gray GM">
                     <colgroup>

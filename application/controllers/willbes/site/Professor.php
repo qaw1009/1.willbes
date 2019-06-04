@@ -275,7 +275,7 @@ class Professor extends \app\controllers\FrontController
                 $list = $this->_getOnLectureData('on_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
 
                 //추출된 단강좌의 과목 추출
-                $on_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
+                $on_subjects = array_pluck($this->baseProductFModel->listSubject($arr_site_code['on'], array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
 
                 foreach ($list as $idx => $row) {
                     $data['on_lecture'][$row['SubjectIdx']][] = $row;

@@ -29,7 +29,7 @@
         }
 
         /*타이머*/
-        .time {width:100%; text-align:center; background:#fff}
+        .time {width:100%; text-align:center; background:#ebebeb}
         .time {text-align:center; padding:20px 0}
         .time table {width:1120px; margin:0 auto}
         .time table td {line-height:1.2}        

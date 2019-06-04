@@ -6539,7 +6539,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     width: 100%;
     padding: 15px 35px;
     border-left: 1px solid #4f4f4f;
-    border-right: 1px solid #4f4f4f;
+    border-right: 1px solid #4f4f4f;    
 }
 .AcadtabBox .acadline {
     border-bottom: none;
@@ -6574,13 +6574,14 @@ ul li.profList .willbes-Layer-ProfileBox {
     width: 33.333333333333%;
 }
 .AcadListBox .willbes-Lec {
-    border-top: 1px solid #4f4f4f;
+    /*border-top: 1px solid #4f4f4f;*/
     padding-top: 15px;
 }
 .ListTabs {
     padding: 0 35px 20px;
     border-left: 1px solid #4f4f4f;
     border-right: 1px solid #4f4f4f;
+    border-bottom: 1px solid #4f4f4f;
 }
 .ListTabs ul li {   
     display: inline-block;
@@ -9423,6 +9424,7 @@ table.testTable tr td.w-date {
 .userMemoTable tr td.w-file a {
     margin-right: 30px;
 }
+
 
 .Memolist .w-btn {
     float: right; 

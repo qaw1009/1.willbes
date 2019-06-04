@@ -265,7 +265,7 @@
         <!-- willbes-Leclist -->
 
         <div id="MEMOPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590 fix">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590 fix of-hidden">
                 <a class="closeBtn" href="#none" onclick="closeWin('MEMOPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
@@ -311,7 +311,16 @@
                                     <td class="w-list w-content" colspan="3">  
                                         내용이 출력됩니다.<br/>
                                         내용이 출력됩니다.<br/>  
-                                        내용이 출력됩니다.<br/>              
+                                        내용이 출력됩니다.<br/>  
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>
                                     </td>
                                 </tr>
                             </tbody>

@@ -71,7 +71,12 @@
                                 @endif
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
-                            <div class="tx-red mt10" style="display: block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="combine-Tit">수신동의</td>
+                        <td>
+                            <div class="mt10" style="display: block;">
                                 <input name="SmsRcvStatus" type="checkbox" value="Y" id="SmsRcvStatus" />
                                 <label for="SmsRcvStatus">
                                     윌비스의 신규상품 안내 및 광고성 정보 SMS 수신에 동의합니다.
@@ -155,8 +160,15 @@
                                         </select>
                                     </dt>
                                 </dl>
+                                <input type="hidden" name="mail_tmp" />
                             </div>
-                            <div class="tx-red mbox-txt mt10" style="display: block;">
+                            <div class="tx-red mt10 err_msg" style="display: block;"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="combine-Tit">수신동의</td>
+                        <td>
+                            <div class="mbox-txt mt10" style="display: block;">
                                 <input name="MailRcvStatus" type="checkbox" value="Y" id="MailRcvStatus" />
                                 <label for="MailRcvStatus">
                                     윌비스의 신규상품 안내 및 광고성 정보 이메일 수신에 동의합니다.
@@ -227,30 +239,6 @@
                                 @include('willbes.pc.company.protectContent')
                             </div>
                         </li>
-                        <!--
-                        <li class="chk">
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="agree4" name="agree4" class="" value="Y">
-                            </div>
-                            <div class="agree-Tit">
-                                <a href="#none">
-                                    (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
-                                </a>
-                            </div>
-                            <div class="agree-Txt">
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                            </div>
-                        </li>
-                        -->
                     </ul>
                 </div>
                 <div class="combine-Btn mt40 pt30 bdt-light-gray btnAuto h66">
@@ -313,6 +301,12 @@
                     },
                     InterestCode : {
                         required : true
+                    },
+                    MailId : {
+                        mail_chk : true
+                    },
+                    MailDomain : {
+                        mail_chk : true
                     }
                 },
                 messages : {
@@ -351,6 +345,12 @@
                     },
                     InterestCode : {
                         required : "준비과정을 선택해주십시요."
+                    },
+                    MailDomain : {
+                        mail_chk : "메일형식이 올바르지 않습니다."
+                    },
+                    MailId : {
+                        mail_chk : "메일형식이 올바르지 않습니다."
                     }
                 },
                 invalidHandler: function(form, validator) {
@@ -368,6 +368,8 @@
                         var obj = $('input[name=MemName]');
                     } else if(name == 'InterestCode') {
                         var obj = $("input[name=int_temp]");
+                    } else if(name == 'MailId' || name == 'MailDomain') {
+                        var obj = $("input[name=mail_tmp]");
                     } else {
                         var obj = $("input[name=" + name + "]");
                     }
@@ -430,6 +432,19 @@
                     rtn = false;
                 }
                 return this.optional(element) || rtn;
+            });
+
+            $.validator.addMethod("mail_chk",function(value, element){
+                var mail_id = $("input[name='MailId']").val();
+                var mail_domain = $("input[name='MailDomain']").val();
+
+                if(mail_id == '' && mail_domain == ''){
+                    return true;
+                }
+
+                var email = mail_id + '@' + mail_domain;
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
             });
 
             $('#btn_submit').click(function(){

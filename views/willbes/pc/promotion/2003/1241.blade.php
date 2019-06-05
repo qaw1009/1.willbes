@@ -54,9 +54,10 @@
 
         <div class="evtCtnsBox evt01">
             <div>
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1241_01.jpg" alt="커리큘럼" usemap="#Map1241A" border="0" />
                 <map name="Map1241A" id="Map1241A">
                     <area shape="rect" coords="176,692,262,722" href="https://pass.willbes.net/promotion/index/cate/3035/code/1089" target="_blank" alt="예비순환바로가기" />
-                    <area shape="rect" coords="320,693,407,722" href="#evtContainer" target="_blank" alt="1순환" />
+                    <area shape="rect" coords="320,693,407,722" href="#evtContainer" alt="1순환" />
                     <area shape="rect" coords="453,694,540,721" href="https://pass.willbes.net/promotion/index/cate/3035/code/1273" target="_blank" alt="2순환" />
                     <area shape="rect" coords="583,692,673,724" href="javascript:alert('준비중입니다.');" alt="3순환" />
                     <area shape="rect" coords="722,692,812,723" href="javascript:alert('준비중입니다.');" alt="4순환" />

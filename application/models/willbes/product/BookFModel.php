@@ -65,32 +65,49 @@ class BookFModel extends ProductFModel
     }
 
     /**
-     * 교재와 연관된 온라인 단강좌 조회
+     * 교재와 연관된 온라인 단강좌/무료강좌 조회
      * @param int $prod_code [교재상품코드]
      * @param array $arr_condition [단강좌 조회 추가조건]
      * @return mixed
      */
     public function findSalesProductLectureToBook($prod_code, $arr_condition = [])
     {
-        $learn_pattern = 'on_lecture';  // 단강좌
+        $column = '*';
+        $in_column = 'LP.ProdCode, LP.ProdName, LP.CateCode';
 
-        $column = 'LP.ProdCode, LP.ProdName, LP.CateCode';
-        $from = '
-            from (
-                select distinct(PRP.ProdCode) as ProdCode
-                from ' . $this->_table['product_r_product'] . ' as PRP
-                where PRP.ProdCodeSub = ?
-                    and PRP.IsStatus = "Y"
-            ) as TP
-                inner join ' . $this->_table[$learn_pattern] . ' as LP
-                    on TP.ProdCode = LP.ProdCode            
-        ';
-
-        $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition($learn_pattern, 'LP'));
+        // 단강좌/무료강좌 조건
+        $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition('on_lecture', 'LP'));
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
+        $raw_from = /** @lang text */ '
+            select distinct(PRP.ProdCode) as ProdCode
+            from ' . $this->_table['product_r_product'] . ' as PRP
+            where PRP.ProdCodeSub = ?
+                and PRP.IsStatus = "Y"            
+        ';
+
+        $from = '
+            from (
+                select "only" as Pattern, ' . $in_column . '
+                from (
+                    ' . $raw_from . '
+                ) as TP
+                    inner join ' . $this->_table['on_lecture'] . ' as LP
+                        on TP.ProdCode = LP.ProdCode
+                ' . $where . '
+                union all
+                select "free" as Pattern, ' . $in_column . '
+                from (
+                    ' . $raw_from . '
+                ) as TP
+                    inner join ' . $this->_table['on_free_lecture'] . ' as LP
+                        on TP.ProdCode = LP.ProdCode
+                ' . $where . '                                                            
+            ) U
+        ';
+
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where, [$prod_code]);
+        $query = $this->_conn->query('select ' . $column . $from, [$prod_code, $prod_code]);
 
         return $query->result_array();
     }

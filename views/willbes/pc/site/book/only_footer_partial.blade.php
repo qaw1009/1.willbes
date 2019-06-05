@@ -68,7 +68,7 @@
                 $(this).addClass('on').text('교재로 진행중인 강의 ▲');
                 openWin(ele_id);
 
-                // 단강좌 정보 조회 (기존 조회결과가 없을 경우만 조회)
+                // 단강좌/무료강좌 정보 조회 (기존 조회결과가 없을 경우만 조회)
                 if (lec_selector.html() === '') {
                     var url = '{{ front_url('/book/lectureInfo/prod-code/') }}' + prod_code + '?cate_code=' + cate_code;
                     var html = '';
@@ -79,7 +79,7 @@
                                 html += '<li>해당 교재로 진행중인 강의가 없습니다.</li>';
                             } else {
                                 $.each(ret.ret_data, function (i, item) {
-                                    html += '<li><a href="{{ site_url('/lecture/show') }}/cate/' + item.CateCode + '/pattern/only/prod-code/' + item.ProdCode + '" target="_blank">' + item.ProdName + '</a></li>';
+                                    html += '<li><a href="{{ site_url('/lecture/show') }}/cate/' + item.CateCode + '/pattern/' + item.Pattern + '/prod-code/' + item.ProdCode + '" target="_blank">' + item.ProdName + '</a></li>';
                                 });
                             }
 

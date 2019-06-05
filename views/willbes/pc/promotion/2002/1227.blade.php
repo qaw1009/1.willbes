@@ -159,9 +159,7 @@
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_live01L.jpg" title="방송전"></a>        
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_06L.jpg" title="라이브 특강 진행 안내">
-        </div>
-
-        
+        </div>        
 		
 		<div class="evtCtnsBox evt06" id="evt06">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_07L.jpg" title="강의 제공 특전" />

@@ -174,6 +174,12 @@ class Professor extends \app\controllers\FrontController
         }
         $data['tabUseCount'] = $tabUseCount;
 
+
+        //선택한 직렬값이 없을경우
+        if(empty(element('series', $arr_input)) == true) {
+            $arr_input['series'] = empty(element('selected_series', $tab_data)) == true ? '' :  $tab_data['selected_series'];
+        }
+
         // 게시판식별자 초기화
         unset($arr_input['board_idx']);
         
@@ -271,6 +277,13 @@ class Professor extends \app\controllers\FrontController
                 //강좌상품을 추출하기 위한 결과삽입
                 $arr_input['setting_series'] = $data['setting_series'];
 
+                //선택한 직렬이 없을 경우 첫번째 직렬을 삽입
+                if(empty(element('series',$arr_input) == true)) {
+                    if(empty($data['setting_series']) != true) {
+                        $arr_input['series'] = $data['setting_series'][0]['ChildCcd'];
+                    }
+                }
+
                 // 온라인 단강좌 조회
                 $list = $this->_getOnLectureData('on_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
 
@@ -315,8 +328,9 @@ class Professor extends \app\controllers\FrontController
             'off_lecture' => element('off_lecture', $data, []),
             'off_pack_lecture' => element('off_pack_lecture', $data, []),
             'study_comment' => element('study_comment', $data, []),
-            'series' => element('setting_series', $data, []),
-            'on_subject' => $on_subjects
+            'setting_series' => element('setting_series', $data, []),
+            'on_subject' => $on_subjects,
+            'selected_series' =>  element('series', $arr_input)
         ];
     }
 
@@ -335,6 +349,11 @@ class Professor extends \app\controllers\FrontController
 
         //선택한 직렬
         $series = element('series', $arr_input);
+
+        //전체일 경우
+        if($series == 'all') {
+            $series = '';
+        }
 
         //선택한 직렬의 과목값
         $series_subjectidx = [];
@@ -466,35 +485,6 @@ class Professor extends \app\controllers\FrontController
             'B.ChildCcd' => 'ASC'
         ];
         $data = $this->lectureFModel->findProductSubjectSeries($add_condition, $order);
-        return $data;
-    }
-
-
-
-    private function _getOnLectureSeriesSubject($learn_pattern, $site_code, $prof_idx, $arr_input = [])
-    {
-        $arr_condition = ['EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $site_code, 'CourseIdx' => element('course_idx', $arr_input)]];
-        if ($this->_is_pass_site === false) {
-            // 온라인 사이트일 경우 카테고리 조건 추가
-            $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
-        }
-
-        if ($learn_pattern == 'on_free_lecture') {
-            // 보강동영상 제외
-            $arr_condition['EQ']['FreeLecTypeCcd'] = $this->lectureFModel->_free_lec_type_ccd['normal'];
-        }
-
-        $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
-
-        // 상품 json 데이터 decode
-        $data = array_map(function ($row) {
-            $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-            $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
-            $row['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
-            unset($row['ProfReferData']);
-            return $row;
-        }, $data);
-
         return $data;
     }
 

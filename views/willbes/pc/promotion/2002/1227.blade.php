@@ -63,7 +63,7 @@
         
 		.evt04 {background:#ececec url("https://static.willbes.net/public/images/promotion/2019/05/1227_05L_bg.jpg") center top  no-repeat}
         
-        .evt05 {background:#ececec  url("");}
+        .evt05 {background:#ececec; padding:100px 0}
         #movieFrame {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1227_03_liveBg_L.jpg) no-repeat center center;}
         .embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
         .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:551px; margin:0 auto}      
@@ -146,13 +146,6 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/05/1227_05L.png" title="경찰 체력 특전">
         </div>
 
-        <div class="evtCtnsBox evt05" id="evt05">            
-            <div id="movieFrame">
-                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_live01L.jpg" title="방송전"></a>        
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_06L.jpg" title="라이브 특강 진행 안내">
-        </div>
-
         <div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_04L.jpg" title="경찰 체력 특전">
         </div>
@@ -160,6 +153,15 @@
 		@if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_normal_partial')
         @endif
+
+        <div class="evtCtnsBox evt05" id="evt05">            
+            <div id="movieFrame">
+                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_live01L.jpg" title="방송전"></a>        
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_06L.jpg" title="라이브 특강 진행 안내">
+        </div>
+
+        
 		
 		<div class="evtCtnsBox evt06" id="evt06">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_07L.jpg" title="강의 제공 특전" />

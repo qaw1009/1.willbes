@@ -71,6 +71,7 @@
                         <th class="text-center">결제완료일</th>
                         <th class="text-center">결제금액</th>
                         <th class="text-center">결제상태</th>
+                        <th class="text-center">결제방법</th>
                         <th class="text-center">상품명</th>
                         <th class="text-center">연도</th>
                         <th class="text-center">회차</th>
@@ -154,6 +155,7 @@
                     {'data' : 'PayStatusCcd', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (typeof paymentStatus[data] !== 'undefined') ? paymentStatus[data] : '';
                     }},
+                    {'data' : 'PayMethodCcd_Name'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return '<span>[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                     }},

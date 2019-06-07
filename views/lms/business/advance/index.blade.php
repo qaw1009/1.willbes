@@ -9,25 +9,33 @@
             <div class="x_content">
                 <div class="form-group no-border-bottom">
                     <label class="control-label col-md-1">기준일</label>
-                    <div class="col-md-11 form-inline">
+                    <div class="col-md-5 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_date" name="search_date" value="" autocomplete="off" readonly="readonly">
-                        </div>
-                        <div class="inline-block ml-30">
-                            {{--<span class="required">*</span> 기준일이 오늘일 경우 조회결과가 상이할 수 있습니다.--}}
+                            <input type="text" class="form-control datepicker" id="search_date" name="search_date" value="{{ date('Y-m-d', strtotime('-1 days')) }}" autocomplete="off" readonly="readonly">
                         </div>
                     </div>
+                    @if($advance_type == 'offLecture')
+                        <label class="control-label col-md-1">캠퍼스</label>
+                        <div class="col-md-5 form-inline">
+                            <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd">
+                                <option value="">선택</option>
+                                @foreach($arr_campus as $row)
+                                    <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                <button type="button" class="btn btn-default btn-search" id="btn_reset_in_set_search_date">초기화</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -113,10 +121,8 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-            // 날짜검색 디폴트 셋팅
-            if ($search_form.find('input[name="search_date"]').val().length < 1) {
-                $search_form.find('input[name="search_date"]').val('{{ date('Y-m-d', strtotime('-1 days')) }}');
-            }
+            // 캠퍼스 자동 변경
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

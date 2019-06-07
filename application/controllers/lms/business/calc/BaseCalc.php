@@ -31,11 +31,7 @@ class BaseCalc extends \app\controllers\BaseController
         $prod_type = get_var($prod_type, ($this->_calc_type == 'lecture' ? 'LE' : 'OL'));
 
         // 사이트탭 조회
-        $arr_site = $this->siteModel->listSite('SiteCode, SiteName', [
-            'EQ' => ['IsUse' => 'Y', 'IsCampus' => ($this->_calc_type == 'lecture' ? 'N' : 'Y')],
-            'IN' => ['SiteCode' => get_auth_site_codes()]
-        ]);
-        $arr_site_code = array_pluck($arr_site, 'SiteName', 'SiteCode');
+        $arr_site_code = get_auth_on_off_site_codes(($this->_calc_type == 'lecture' ? 'N' : 'Y'), true);
         $def_site_code = key($arr_site_code);
 
         // 교수 조회

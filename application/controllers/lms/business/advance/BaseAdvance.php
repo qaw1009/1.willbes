@@ -9,6 +9,7 @@ class BaseAdvance extends \app\controllers\BaseController
     protected $_advance_name = '';
     protected $_group_ccd = [];
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+    protected $_is_off_site = 'N';
 
     public function __construct($advance_type, $advance_name)
     {
@@ -17,6 +18,7 @@ class BaseAdvance extends \app\controllers\BaseController
         $this->_advance_type = $advance_type;
         $this->_advance_name = $advance_name;
         $this->_group_ccd = $this->orderAdvanceModel->_group_ccd;
+        $this->_is_off_site = $this->_advance_type == 'lecture' ? 'N' : 'Y';
     }
 
     /**
@@ -25,18 +27,21 @@ class BaseAdvance extends \app\controllers\BaseController
     protected function index()
     {
         // 사이트탭 조회
-        $arr_site = $this->siteModel->listSite('SiteCode, SiteName', [
-            'EQ' => ['IsUse' => 'Y', 'IsCampus' => ($this->_advance_type == 'lecture' ? 'N' : 'Y')],
-            'IN' => ['SiteCode' => get_auth_site_codes()]
-        ]);
-        $arr_site_code = array_pluck($arr_site, 'SiteName', 'SiteCode');
+        $arr_site_code = get_auth_on_off_site_codes($this->_is_off_site, true);
         $def_site_code = key($arr_site_code);
+
+        // 캠퍼스 조회
+        $arr_campus = [];
+        if ($this->_is_off_site == 'Y') {
+            $arr_campus = $this->siteModel->getSiteCampusArray('');
+        }
 
         $this->load->view('business/advance/index', [
             'advance_type' => $this->_advance_type,
             'advance_name' => $this->_advance_name,
             'def_site_code' => $def_site_code,
-            'arr_site_code' => $arr_site_code
+            'arr_site_code' => $arr_site_code,
+            'arr_campus' => $arr_campus
         ]);
     }
 
@@ -52,7 +57,7 @@ class BaseAdvance extends \app\controllers\BaseController
 
         if (empty($search_date) === false) {
             $method = ucfirst($this->_advance_type);
-            $arr_condition = ['EQ' => ['O.SiteCode' => $this->_reqP('search_site_code')]];
+            $arr_condition = $this->_getListConditions();
 
             $list = $this->orderAdvanceModel->{'listAdvance' . $method}($search_date, false, $arr_condition, 100, 0);
             $count = count($list);
@@ -63,6 +68,22 @@ class BaseAdvance extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $list
         ]);
+    }
+
+    /**
+     * 선수금 목록 조회 조건 리턴
+     * @return array
+     */
+    private function _getListConditions()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'O.SiteCode' => $this->_reqP('search_site_code'),
+                'PL.CampusCcd' => $this->_reqP('search_campus_ccd')
+            ]
+        ];
+
+        return $arr_condition;
     }
 
     /**
@@ -80,7 +101,7 @@ class BaseAdvance extends \app\controllers\BaseController
 
         // 데이터 조회
         $method = ucfirst($this->_advance_type);
-        $arr_condition = ['EQ' => ['O.SiteCode' => $this->_reqP('search_site_code')]];
+        $arr_condition = $this->_getListConditions();
         $list = $this->orderAdvanceModel->{'listAdvance' . $method}($search_date, 'excel', $arr_condition);
         $last_query = $this->orderAdvanceModel->getLastQuery();
 
@@ -130,7 +151,7 @@ class BaseAdvance extends \app\controllers\BaseController
 
         // 데이터 조회
         $method = ucfirst($this->_advance_type);
-        $arr_condition = ['EQ' => ['O.SiteCode' => $this->_reqP('search_site_code')]];
+        $arr_condition = $this->_getListConditions();
         $list = $this->orderAdvanceModel->{'listAdvance' . $method}($search_date, 'excel', $arr_condition);
 
         if (empty($list) === true) {

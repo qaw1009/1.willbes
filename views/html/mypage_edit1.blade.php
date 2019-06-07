@@ -311,11 +311,11 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th>No<span class="row-line">|</span></li></th>
-                            <th>과제제목<span class="row-line">|</span></li></th>
-                            <th>제출상태<span class="row-line">|</span></li></th>
-                            <th>과제제출일<span class="row-line">|</span></li></th>
-                            <th>채점상태<span class="row-line">|</span></li></th>
+                            <th>No<span class="row-line">|</span></th>
+                            <th>과제제목<span class="row-line">|</span></th>
+                            <th>제출상태<span class="row-line">|</span></th>
+                            <th>과제제출일<span class="row-line">|</span></th>
+                            <th>채점상태<span class="row-line">|</span></th>
                             <th>채점완료일</th>
                         </tr>
                     </thead>

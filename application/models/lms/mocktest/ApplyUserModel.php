@@ -187,7 +187,7 @@ class ApplyUserModel extends WB_Model
         ";
 
         $column = " Straight_join
-                            O.OrderNo,U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone, O.CompleteDatm,O.RealPayPrice,SC4.CcdName as PayStatusCcd_Name
+                            O.OrderNo,U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone, O.CompleteDatm,O.RealPayPrice,SC4.CcdName as PayStatusCcd_Name,SC5.CcdName as PayMethodCcd_Name
                             ,concat('[',PD.ProdCode,'] ', PD.ProdName) as prodName, MP.MockYear, MP.MockRotationNo
                             ,SC2.CcdName as TakeForm_Name
                             ,MR.TakeNumber, C1.CateName
@@ -197,6 +197,7 @@ class ApplyUserModel extends WB_Model
                             ,case MR.IsTake
 		        	            when 'Y' then '응시'
 		                    else '미응시' end AS IsTake
+		                    
         ";
 
         $from = "
@@ -214,6 +215,7 @@ class ApplyUserModel extends WB_Model
                 JOIN {$this->_table['sysCode']} AS SC2 ON MR.TakeForm = SC2.Ccd AND SC2.IsStatus = 'Y'
                 left outer JOIN {$this->_table['sysCode']} AS SC3 ON MR.TakeArea = SC3.Ccd AND SC3.IsStatus = 'Y'
                 JOIN {$this->_table['sysCode']} AS SC4 ON OP.PayStatusCcd = SC4.Ccd AND SC4.IsStatus = 'Y'
+                LEFT JOIN {$this->_table['sysCode']} AS SC5 ON O.PayMethodCcd = SC5.Ccd AND SC5.IsStatus = 'Y'
         ";
 
         $where = "WHERE MR.IsStatus = 'Y'";

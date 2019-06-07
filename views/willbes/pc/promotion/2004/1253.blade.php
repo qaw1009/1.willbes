@@ -141,7 +141,7 @@
 				<p><img src="https://static.willbes.net/public/images/promotion/2019/06/1253_02_3.jpg" usemap="#Map_p3" title="조민주" border="0" />
 				  <map name="Map_p3">
 					<area shape="rect" coords="278,31,417,65" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&subject_idx=1255&prof_idx=50648" target="_blank">
-					<area shape="rect" coords="279,202,425,234" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&subject_idx=1255&prof_idx=50648" target="_blank">
+					<area shape="rect" coords="279,202,425,234" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&subject_idx=1255&prof_idx=50648" target="_blank">
 				  </map>
 				</p>
 			  </div>
@@ -230,7 +230,7 @@
 				<p><a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&subject_idx=1269&prof_idx=50188" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1253_02_7.jpg"  title="고선미" /></a></p>
 			  </div>
 			  <div id="t7_2">
-				<p><a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&subject_idx=1253&prof_idx=50242" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1253_02_7_2.jpg" title="김영훈" /></a></p>
+				<p><a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&subject_idx=1270&prof_idx=50228" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1253_02_7_2.jpg" title="김영훈" /></a></p>
 			  </div>
 			</div>
 			<!--세법/회계학//--> 

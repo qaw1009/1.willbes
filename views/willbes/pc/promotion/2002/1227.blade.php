@@ -108,12 +108,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner_L.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
             <map id="Map1227A">
 			  <area shape="rect" coords="36,66,185,132" href="/pass/promotion/index/cate/3010/code/1227#evt02" />
-			  <area shape="rect" coords="36,136,185,254" href="/pass/promotion/index/cate/3010/code/1227#evt03" />
-			  <area shape="rect" coords="36,254,185,311" href="/pass/promotion/index/cate/3010/code/1227#evt06" />
-			  <area shape="rect" coords="36,312,184,385" href="/pass/promotion/index/cate/3010/code/1227#evt07" />
-			  <area shape="rect" coords="36,387,185,441" href="/pass/promotion/index/cate/3010/code/1227#evt08" />
-			  <area shape="rect" coords="36,442,185,506" href="/pass/promotion/index/cate/3010/code/1227#evt09" />
-			  <area shape="rect" coords="36,510,185,572" href="/pass/promotion/index/cate/3010/code/1227#evt10" />
+			  <area shape="rect" coords="37,137,188,265" href="/pass/promotion/index/cate/3010/code/1227#evt03" />
+              <area shape="rect" coords="37,268,187,381" href="/pass/promotion/index/cate/3010/code/1227#evt07" />
+			  <area shape="rect" coords="36,384,186,497" href="/pass/promotion/index/cate/3010/code/1227#evt06" />			  
+			  <area shape="rect" coords="37,498,186,552" href="/pass/promotion/index/cate/3010/code/1227#evt08" />
+			  <area shape="rect" coords="38,556,187,620" href="/pass/promotion/index/cate/3010/code/1227#evt09" />
+			  <area shape="rect" coords="38,621,187,683" href="/pass/promotion/index/cate/3010/code/1227#evt10" />
 			</map>
         </div>        
 

@@ -77,11 +77,11 @@
 
 
         /* 슬라이드배너 */
-        .slide_con {position:relative; width:980px; margin:0 auto}
-        .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
+        .slide_con {position:relative; width:1120px; margin:0 auto}
+        .slide_con p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
         .slide_con p a {cursor:pointer}
-        .slide_con p.leftBtn {left:-50px}
-        .slide_con p.rightBtn {right:-50px}
+        .slide_con p.leftBtn {left:0}
+        .slide_con p.rightBtn {right:0}
         #slidesImg3 li {display:inline; float:left}
         #slidesImg3 li img {width:100%}
         #slidesImg3:after {content::""; display:block; clear:both}
@@ -293,7 +293,16 @@
         <!-- wb_top//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04_190603.jpg"  alt="신광은경찰팀 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04.jpg"  alt="신광은경찰팀 교수진" />
+            <div class="slide_con">
+                <ul id="slidesImg3">
+                    <li><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04_01.jpg" alt="1" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04_02.jpg" alt="2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_04_03.jpg" alt="3" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/zeropass//1009_p_prev.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/zeropass//1009_p_next.png"></a></p>
+            </div>
         </div>
 
 
@@ -557,6 +566,32 @@
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
+
+        $(document).ready(function() {
+            var slidesImg3 = $("#slidesImg3").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideWidth:2000,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft3").click(function (){
+                slidesImg3.goToPrevSlide();
+            });
+
+            $("#imgBannerRight3").click(function (){
+                slidesImg3.goToNextSlide();
+            });
+        });
 
         /*tab*/
         $(document).ready(function(){

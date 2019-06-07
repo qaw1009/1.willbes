@@ -113,7 +113,7 @@ class ApplyUser extends \app\controllers\BaseController
 
             // export excel
             $file_name = '모의고사_개별접수현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
-            $headers = ['주문번호', '회원명', '회원아이디', '전화번호', '결제완료일', '결제금액', '결제상태', '결제방법', '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부'];
+            $headers = ['주문번호', '회원명', '회원아이디', '전화번호', '결제완료일', '결제금액', '결제상태', '결제수단', '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부'];
 
             /*----  다운로드 정보 저장  ----*/
             $download_query = $this->applyUserModel->getLastQuery();

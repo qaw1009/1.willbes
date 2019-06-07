@@ -71,7 +71,7 @@
                         <th class="text-center">결제완료일</th>
                         <th class="text-center">결제금액</th>
                         <th class="text-center">결제상태</th>
-                        <th class="text-center">결제방법</th>
+                        <th class="text-center">결제수단</th>
                         <th class="text-center">상품명</th>
                         <th class="text-center">연도</th>
                         <th class="text-center">회차</th>

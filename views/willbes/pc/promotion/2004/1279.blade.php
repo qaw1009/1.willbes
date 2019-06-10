@@ -38,7 +38,7 @@
 .evtMenu ul {width:1120px; margin:0 auto}
 .evtMenu li {display:inline; float:left; width:20%; position: relative;}
 .evtMenu li a {
-    display:block; text-align:center; padding:30px 0; color:#c7b29a; font-size:22px; font-weight:900; 
+    display:block; text-align:center; padding:30px 0; color:#e3ceb6; font-size:22px; font-weight:900; 
     background:#a79681; margin-right:5px;
 }
 .evtMenu li:last-child() {margin-right:0}

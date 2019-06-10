@@ -177,7 +177,7 @@ font-size:16px; padding:10px 0; line-height: 1.5;
         <div class="evtCtnsBox evtMenu NGEB" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_1') }}" class="active">
+                    <a id='tab1' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_1') }}">
                         <span>합격을 위한 최종점검</span>
                         <div>6/16 전국 모의고사</div>
                     </a>

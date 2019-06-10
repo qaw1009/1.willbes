@@ -178,15 +178,15 @@ font-size:16px; padding:10px 0; line-height: 1.5;
             <ul>
                 <li>
                     <a id='tab1' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">
-                        <span>합격을 위한 최종점검</span>
-                        <div>6/16 전국 모의고사</div>
+                        <span>미리 보는 시험</span>
+                        <div>마무리 전략</div>
                     </a>
                 </li>
                 <li>                    
                     <a id='tab2' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=2#content_2') }}">
                         <strong>무료응시</strong>
-                        <span>미리 보는 시험</span>
-                        <div>마무리 전략</div>				
+                        <span>합격을 위한 최종점검</span>
+                        <div>6/16 전국 모의고사</div>				
                     </a>
                 </li>
                 <li>

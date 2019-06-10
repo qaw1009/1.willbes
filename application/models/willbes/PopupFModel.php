@@ -48,7 +48,13 @@ class PopupFModel extends WB_Model
 
         $order_by = ['P.OrderNum' => 'asc', 'P.PIdx' => 'desc'];
 
-        return $this->_conn->getJoinListResult($this->_table['popup'] . ' as P', 'left', $this->_table['popup_category'] . ' as PC'
-            , 'P.PIdx = PC.PIdx and PC.IsStatus = "Y"', $column, $arr_condition, null, null, $order_by);
+        if (empty($cate_code) === true) {
+            $result = $this->_conn->getListResult($this->_table['popup'] . ' as P', $column, $arr_condition, null, null, $order_by);
+        } else {
+            $result = $this->_conn->getJoinListResult($this->_table['popup'] . ' as P', 'left', $this->_table['popup_category'] . ' as PC'
+                , 'P.PIdx = PC.PIdx and PC.IsStatus = "Y"', $column, $arr_condition, null, null, $order_by);
+        }
+
+        return $result;
     }
 }

@@ -27,7 +27,7 @@
 .evtTop > div span.txt1 {top:182px; left:847px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
 @@keyframes slidein1 {
     from {
-    left:605px; opacity: 0;
+    left:1120px; opacity: 0;
     }
     to {
     left:847px; opacity: 1;

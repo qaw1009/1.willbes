@@ -87,6 +87,7 @@
                 <li><a href="{{ site_url('/home/html/1137') }}" target="_blank">통합 웰컴팩 </a></li>
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
                 <li><p>경찰 온라인 ▼</p></li>
+                <li><a href="{{ site_url('/home/html/supporters') }}" target="_blank">광은 서포터즈<span>*</span></a></li>  
                 <li><a href="{{ site_url('/home/html/event_onMouPop_2019') }}" target="_blank">2019 온라인 교육 콘텐츠 제공 MOU 체결 팝업 size 850x700 <span>*</span></a></li>  
                 <li><a href="{{ site_url('/home/html/1227') }}" target="_blank">최종합격기원감사제 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1211') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #2 성적채점/확인 <span>*</span></a></li>

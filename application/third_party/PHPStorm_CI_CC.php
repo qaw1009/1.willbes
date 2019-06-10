@@ -180,6 +180,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ExcelDownLogModel $excelDownLogModel                                 Excel Download Log Model Class
  * @property RouletteModel $rouletteModel                                         Roulette Model Class
  * @property SupportersRegistModel $supportersRegistModel                   Supporters Regist Model Class
+ * @property SupportersMemberModel $supportersMemberModel                   Supporters Member Model Class
  * @property WelcomePackModel $welcomePackModel                             Welcompack Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class

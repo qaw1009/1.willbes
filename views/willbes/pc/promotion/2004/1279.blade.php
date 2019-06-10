@@ -177,34 +177,34 @@ font-size:16px; padding:10px 0; line-height: 1.5;
         <div class="evtCtnsBox evtMenu NGEB" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_1') }}" class="active">
+                    <a id='tab1' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_1') }}" class="active">
                         <span>합격을 위한 최종점검</span>
                         <div>6/16 전국 모의고사</div>
                     </a>
                 </li>
                 <li>                    
-                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_2') }}">
+                    <a id='tab2' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_2') }}">
                         <strong>무료응시</strong>
                         <span>미리 보는 시험</span>
                         <div>마무리 전략</div>				
                     </a>
                 </li>
                 <li>
-                    {{--<a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_3') }}"> --}}
+                    {{--<a id='tab3' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_3') }}"> --}}
                     <a id='tab3' href="#" onclick="javascript:alert('준비중입니다.'); return false;">                      
                         <span>2019 군무원 시험</span>
                         <div>문제복원 이벤트</div>
                     </a>
                 </li>     
                 <li>
-                    {{--<a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_4') }}">--}}
+                    {{--<a id='tab4' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_4') }}">--}}
                     <a id='tab4' href="#" onclick="javascript:alert('준비중입니다.'); return false;"> 
                         <span>공유해보아요!</span>
                         <div>시험후기 이벤트</div>
                     </a>
                 </li>
                 <li>
-                    {{--<a id='tab5' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_5') }}">--}}
+                    {{--<a id='tab5' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_5') }}">--}}
                     <a id='tab5' href="#" onclick="javascript:alert('준비중입니다.'); return false;">  
                         <span>합격까지 풀케어</span>
                         <div>군무원 단독 면접반</div>

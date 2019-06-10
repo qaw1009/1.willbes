@@ -177,34 +177,34 @@ font-size:16px; padding:10px 0; line-height: 1.5;
         <div class="evtCtnsBox evtMenu NGEB" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_1') }}">
+                    <a id='tab1' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}">
                         <span>합격을 위한 최종점검</span>
                         <div>6/16 전국 모의고사</div>
                     </a>
                 </li>
                 <li>                    
-                    <a id='tab2' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_2') }}">
+                    <a id='tab2' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=2#content_2') }}">
                         <strong>무료응시</strong>
                         <span>미리 보는 시험</span>
                         <div>마무리 전략</div>				
                     </a>
                 </li>
                 <li>
-                    {{--<a id='tab3' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_3') }}"> --}}
+                    {{--<a id='tab3' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}"> --}}
                     <a id='tab3' href="#" onclick="javascript:alert('준비중입니다.'); return false;">                      
                         <span>2019 군무원 시험</span>
                         <div>문제복원 이벤트</div>
                     </a>
                 </li>     
                 <li>
-                    {{--<a id='tab4' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_4') }}">--}}
+                    {{--<a id='tab4' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}">--}}
                     <a id='tab4' href="#" onclick="javascript:alert('준비중입니다.'); return false;"> 
                         <span>공유해보아요!</span>
                         <div>시험후기 이벤트</div>
                     </a>
                 </li>
                 <li>
-                    {{--<a id='tab5' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_5') }}">--}}
+                    {{--<a id='tab5' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=5#content_5') }}">--}}
                     <a id='tab5' href="#" onclick="javascript:alert('준비중입니다.'); return false;">  
                         <span>합격까지 풀케어</span>
                         <div>군무원 단독 면접반</div>
@@ -216,10 +216,10 @@ font-size:16px; padding:10px 0; line-height: 1.5;
         <div id="content_1" class="tabCts pb90">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1279_tab01_01.jpg" usemap="#Map1279A" title="군무원 마무리 전략 특강" border="0" /><br>
             <map name="Map1279A" id="Map1279A">
-                <area shape="rect" coords="239,533,477,582" href="#none" alt="온라인무료수강신청" />
-                <area shape="rect" coords="240,585,478,635" href="#none" alt="학원실강수강신청" />
-                <area shape="rect" coords="257,966,469,1016" href="#none" alt="권기태국어" />
-                <area shape="rect" coords="653,964,864,1016" href="#none" alt="전수환경영학" />
+                <area shape="rect" coords="239,533,477,582" href="#" onclick="javascript:alert('준비중입니다.');" alt="온라인무료수강신청" />
+                <area shape="rect" coords="240,585,478,635" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&course_idx=1063" target="_blank" alt="학원실강수강신청" />
+                <area shape="rect" coords="257,966,469,1016" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153710" target="_blank" alt="권기태국어" />
+                <area shape="rect" coords="653,964,864,1016" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153268" target="_blank" alt="전수환경영학" />
             </map>
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1279_tab01_02.jpg" title="시험전, 당일 유의사항" />
             <ul class="cts01">
@@ -233,7 +233,8 @@ font-size:16px; padding:10px 0; line-height: 1.5;
         <div id="content_2" class="tabCts pb90 pt100">               
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1279_tab02_01.jpg" usemap="#Map1279B" title="윌비스 군무원 전국모의고사" border="0" />
             <map name="Map1279B" id="Map1279B">
-                <area shape="rect" coords="755,2208,973,2249" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=271&amp;" target="_blank" alt="모의과사신청하기" />
+                <area shape="rect" coords="262,328,861,390" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=271&;" target="_blank" alt="무료응시" />
+                <area shape="rect" coords="755,2208,973,2249" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=271&;" target="_blank" alt="모의과사신청하기" />
             </map>
         </div>
 

@@ -24,10 +24,10 @@
 }
 .evtTop > div {width:1120px; margin:0 auto; position:relative;}
 .evtTop > div span {position:absolute; width:120px; z-index: 1;}
-.evtTop > div span.txt1 {top:52px; left:847px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
+.evtTop > div span.txt1 {top:182px; left:847px; animation:slidein1 0.5s ease-in; -webkit-animation:slidein1 0.5s ease-in;}
 @@keyframes slidein1 {
     from {
-    left:605px; opacity: 0;
+    left:1120px; opacity: 0;
     }
     to {
     left:847px; opacity: 1;

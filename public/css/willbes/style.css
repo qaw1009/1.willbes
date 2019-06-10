@@ -8522,14 +8522,14 @@ table.PassZoneTable .w-data {
     color: #707070;
 }
 .editTableList .listTable tr td .MoreBtn a .arrow-Btn {
-    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px 0;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px 6px;
     width: 9px;
-    height: 8px;
+    /*height: 8px;*/
     margin-left: 7px;
     margin-top: -1px;
 }
 .editTableList.hover .listTable tr td .MoreBtn a .arrow-Btn {
-    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px -12px;
+    background:url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px -6px;
 }
 
 

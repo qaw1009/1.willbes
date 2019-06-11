@@ -29,10 +29,10 @@
         .tabMenu li span {display:block; font-size:16px; margin-bottom:10px}
         .tabMenu ul:after {content:""; display:block; clear:both}
 
-        .wb_top {background:#2a2a2d url(https://static.willbes.net/public/images/promotion/2019/06/1274_top_bg.png) no-repeat center top; position:relative; height:1468px;}
+        .wb_top {background:#2a2a2d url(https://static.willbes.net/public/images/promotion/2019/06/1275_top_bg.png) no-repeat center top; position:relative; height:1468px;}
         .ev_winner {width:980px; margin:0 auto; height:430px; padding:80px 0; margin:0 auto; overflow:hidden}
         .ev_winner .bx-wrapper .bx-viewport {height:400px;}
-        .wb_cts01 {background:#202020}
+        .wb_cts01 {background:#202020; height:1779px;}
         .wb_cts02 {background:#353439 url(https://static.willbes.net/public/images/promotion/2019/06/1274_02_bg.png) no-repeat center top}
 
     </style>
@@ -47,20 +47,23 @@
         </div>
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1274_top.png" alt="윌비스 신규입성 이동민 관리형 면접반 " usemap="#Map180501_c1" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1275_top.png" alt="윌비스 신규입성 이동민 관리형 면접반 " usemap="#Map180501_c1" border="0"/>
             <div class="ev_winner">
                 <ul id="slider1" class="bxslider">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1274_top_img1.png"/></li>					
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1275_txt.png"/></li>					
                 </ul>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/1274_01.png"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/1275_01.png"/><br>
+			 <span><iframe src="https://www.youtube.com/embed/cBCMjHraOFM" frameborder="0" width="854px" height="480px" allowfullscreen></iframe></span><br>
+			 <img src="https://static.willbes.net/public/images/promotion/2019/06/1275_01-1.png"/><br>
+			 
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1274_02.png" alt="면접, 혼자서는 실력을 완성할 수 없습니다. " />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1275_02.png" alt="면접, 혼자서는 실력을 완성할 수 없습니다. " />
         </div>
     </div>
     <!-- End Container -->

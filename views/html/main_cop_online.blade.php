@@ -148,7 +148,17 @@
             </ul>
             <div class="willbes-Bnr mt30">
                 <ul>
-                    <li><a href="{{ site_url('#none') }}" target="_blank"><img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" title="숨은 필합자를 찾아라"></a></li>
+                    <li class="nSlider">
+                        {{--<a href="{{ site_url('#none') }}" target="_blank"><img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" title="숨은 필합자를 찾아라"></a>--}}
+                        <div class="sliderNum">
+                            <div>
+                                <a href="//www.willbes.net/banner/click?banner_idx=676&return_url=police.willbes.net%2Fpass%2Fsupport%2Fnotice%2Fshow%3Fboard_idx%3D225261&link_url_type=I" target="_self" class=""><img src="https://police.willbes.net/public/uploads/willbes/banner/2019/0604/banner_20190604183514.jpg" alt="19년 1차 고득점"></a>
+                            </div>
+                            <div>
+                                <a href="//www.willbes.net/banner/click?banner_idx=852&return_url=police.willbes.net%2Fpromotion%2Findex%2Fcate%2F3001%2Fcode%2F1242&link_url_type=I" target="_self" class=""><img src="https://police.willbes.net/public/uploads/willbes/banner/2019/0604/banner_20190604183514.jpg" alt="19년 1차 최종합격예측서비스"></a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

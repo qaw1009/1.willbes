@@ -35,8 +35,8 @@
                 </ul>
                 <div class="willbes-Bnr mt30">
                     <ul>
-                        <li>
-                            {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner'])) !!}
+                        <li class="nSlider">
+                            {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), 'sliderNum') !!}
                         </li>
                     </ul>
                 </div>
@@ -154,9 +154,7 @@
                 </div>
             </div>
         </div>
-        <!-- youtubeWrap //-->
-
-               
+        <!-- youtubeWrap //-->               
 
         <div class="Section Section2 pb110">
             <div class="widthAuto CurriStepBox">
@@ -264,6 +262,7 @@
         <div class="Section Section5 mb70">
             @include('willbes.pc.site.main_partial.hot_pick_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
         </div>
+        
         <div class="Section Section6 mb50">
             <div class="widthAuto">
                 {{-- best/new product include --}}

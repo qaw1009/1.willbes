@@ -18,16 +18,7 @@
                     <tr>
                         <th colspan="1">운영사이트 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <select class="form-control mr-5" name="SiteCode" id="SiteCode" onChange="selSiteCode(this.value,'');">
-                                <option value="">사이트선택</option>
-                                @if($method == 'PUT')
-                                    <option value="2001" @if($data['SiteCode']=='2001') SELECTED @endif>온라인경찰</option>
-                                    <option value="2003" @if($data['SiteCode']=='2003') SELECTED @endif>온라인공무원</option>
-                                @else
-                                    <option value="2001">온라인경찰</option>
-                                    <option value="2003">온라인공무원</option>
-                                @endif
-                            </select>
+                            {!! html_site_select($data['SiteCode'], 'SiteCode', 'SiteCode', '', '운영 사이트', 'required', '', false) !!}
                             <span class="ml-20">저장 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</span>
                         </td>
                     </tr>

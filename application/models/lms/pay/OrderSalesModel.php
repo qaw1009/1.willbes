@@ -89,8 +89,9 @@ class OrderSalesModel extends BaseOrderModel
         // 쿼리 실행
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName
-                , concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName            
-                , LearnPatternCcdName, ProdName, RealPayPrice, PgFee, CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
+                , concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName, LearnPatternCcdName, ProdName
+                , RealPayPrice, PgFee, if(RealPayPrice > ifnull(RefundPrice, 0), if(PgFee < 1, TRUNCATE(RealPayPrice * PgFee, 0), PgFee), 0) as PgFeePrice
+                , CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {
             $query = 'select ' . $column . $from . $where . $order_by_offset_limit;

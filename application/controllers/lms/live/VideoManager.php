@@ -224,12 +224,15 @@ class VideoManager extends \app\controllers\BaseController
             ]);
         }
 
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y',
-                'subLBrC.CateCode' => $this->_reqP('search_modal_category')
-            ]
-        ];
+        $sub_query_condition = [];
+        if (empty($this->_reqP('search_category')) === false) {
+            $sub_query_condition = [
+                'EQ' => [
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                ]
+            ];
+        }
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title,LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
@@ -313,12 +316,15 @@ class VideoManager extends \app\controllers\BaseController
             ]);
         }
 
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y',
-                'subLBrC.CateCode' => $this->_reqP('search_modal_category')
-            ]
-        ];
+        $sub_query_condition = [];
+        if (empty($this->_reqP('search_category')) === false) {
+            $sub_query_condition = [
+                'EQ' => [
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                ]
+            ];
+        }
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,

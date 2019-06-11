@@ -897,6 +897,18 @@ class RegGradeModel extends WB_Model
                     $tempJum = $val['OrgPoint'];
                     $Rank++;
 
+                    // 이전에 저장된 성적 데이타 삭제
+
+                    if($this->_conn->where([
+                        'MemIdx' => $val['MemIdx'],
+                        'MrIdx' => $val['MrIdx'],
+                        'ProdCode' => $val['ProdCode'],
+                        'MpIdx' => $val['MpIdx']
+                        ])->delete($this->_table['mockGrades']) == false){
+                        throw new \Exception('이전 성적데이타 삭제에 실패했습니다.');
+                    }
+
+                    // 신규 성적 데이타 입력
                     if ($this->_conn->set($data)->insert($this->_table['mockGrades']) === false) {
                         throw new \Exception('시험데이터가 없습니다.');
                     }

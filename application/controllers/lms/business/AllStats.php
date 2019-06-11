@@ -237,8 +237,9 @@ class AllStats extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = ['주문번호', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '학습형태', '상품명', '결제금액', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태'];
-        $numerics = ['RealPayPrice', 'RefundPrice'];    // 숫자형 변환 대상 컬럼
+        $headers = ['주문번호', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '학습형태', '상품명'
+            , '결제금액', '수수료율', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태'];
+        $numerics = ['RealPayPrice', 'RefundPrice', 'PgFeePrice'];    // 숫자형 변환 대상 컬럼
 
         $arr_condition = $this->_getOrderListConditions();
         $list = $this->orderSalesModel->listSalesOrder($start_date, $end_date, 'real_pay', 'excel', $arr_condition, null, null, $this->_getOrderListOrderBy());

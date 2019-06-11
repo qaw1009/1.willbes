@@ -137,7 +137,7 @@
                     });
 
                     $('.file-download').click(function() {
-                        var _url = '{{ site_url("/live/videoManager/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                        var _url = '{{ site_url("/live/videoManager/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
                         window.open(_url, '_blank');
                     });
                 });

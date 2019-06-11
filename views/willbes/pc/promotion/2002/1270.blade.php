@@ -151,13 +151,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_05.jpg" alt="더블할인 이벤트"/><br>
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1270_05_btn.png" alt="더블할인 이벤트"/></a>
         </div>
-
+        {{--
         <div class="evtCtnsBox wb_06">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_06.jpg" alt="언론보도 자세히 보기" usemap="#Map1270B" border="0"/>
             <map name="Map1270B" id="Map1270B">
                 <area shape="rect" coords="77,517,292,581" href="https://police.willbes.net/promotion/index/cate/3001/code/1021" target="_blank" alt="언론보도" />
             </map>
         </div>
+        --}}
     </div>
     <!-- End Container -->
 

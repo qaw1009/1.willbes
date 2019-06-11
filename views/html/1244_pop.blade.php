@@ -1,0 +1,244 @@
+@extends('willbes.pc.layouts.master_no_sitdbar')
+
+@section('content')
+<!-- Container -->
+<style type="text/css">   
+    .willbes-Layer-PassBox span {vertical-align:auto}
+    .eventPop {width:640px; margin:0 auto; font-size:12px; color:#333; line-height:1.5; padding-bottom:50px}
+    .eventPop h3 {font-size:18px; font-weight:bold; border-bottom:2px solid #000; text-align:center; padding-bottom:15px; color:#000;} 
+    .eventPop h3 span.title {display:block; color:#fff; background:#1087ef; border-radius:30px; padding:10px 20px; width:60%; margin:0 auto 10px}
+
+    .eventPopS1 {margin-top:1em}
+    .eventPopS1 ul > li {border-bottom:1px solid #e4e4e4; padding:15px 0; line-height:1.5}
+    .eventPopS1 ul > li:last-child {border:0} 
+    .eventPopS1 ul > li.w50 {display:inline; float:left; width:50%}
+    .eventPopS1 strong {display:block; margin-bottom:10px; font-size:14px}
+    .eventPopS1 p {margin-bottom:10px}
+    .eventPopS1 p a {float:right; text-decoration:underline}
+    
+    .eventPopS1 ul > li div strong {font-size:12px}
+    .eventPopS1 li ul {margin-bottom:10px}
+    .eventPopS1 li li {display:inline-block; border:0; margin-right:10px; padding:0}
+    .eventPopS1 th,
+    .eventPopS1 td {text-align:center; padding:5px}
+    .eventPopS1 th {background:#f0f0f0;}
+    .eventPopS1 .info {border:1px solid #e4e4e4; padding:10px; height:150px; overflow-y:scroll}
+
+    .subject-p {}
+    .subject-p li {display:inline; margin-right:20px; margin-bottom:10px}
+    .subject-p li span {width:80px; text-align:center; display:inline-block; background:#f0f0f0; height:26px; line-height:26px;}
+    .subject-p li input {margin-right:5px; width:80px}
+
+    .viewTb {width:100%;}
+	.viewTb th,
+	.viewTb td{padding:8px; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd}
+	.viewTb thead th,
+	.viewTb tbody th {text-align:center; font-weight:bold; border-right:1px solid #cdcdcd; background:#f0f0f0}
+    .viewTb thead th {border-top:1px solid #cdcdcd}
+    .viewTb th:last-child,
+    .viewTb td:last-child {border-right:0}
+	.viewTb tr.txtC td {text-align:center}
+	.viewTb input[type=text],
+	.viewTb input[type=password],
+	.viewTb input[type=number] {width:70px}
+	.viewTb td .route li {display:inline; float:left; width:50%}
+    .viewTb td .route:after {content:""; display:block; clear:both}
+
+    .eventPopS3 {margin-top:1em}
+    .eventPopS3 p {font-weight:bold; margin-bottom:10px}
+    .eventPopS3 ul,
+    .eventPopS3 li {padding:0; margin:0}
+    .eventPopS3 ul {border:1px solid #adadad; padding:10px; overflow-y:scroll; height:100px}
+    .eventPopS3 li {margin-left:15px; margin-bottom:5px}
+    .eventPopS3 div {margin-top:10px;}
+    .eventPopS3 input {vertical-align:middle}
+
+    .btnsSt3 {text-align:center; margin-top:20px}
+    .btnsSt3 button {display:inline-block; padding:8px 16px; background:#333; color:#fff !important; font-weight:bold; border:1px solid #333; width:70px; height:37px;}
+    .btnsSt3 button:hover {background:#fff; color:#333 !important}
+
+    input[type=radio],
+    input[type=checkbox] {width:16px; height:16px; margin-right:5px}    
+    select,
+    input[type=text] {padding:2px; margin-right:10px; height:26px; border:1px solid #e4e4e4}
+    input[type=file]:focus,
+    input[type=text]:focus {border:1px solid #1087ef}
+    input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
+    label {margin-right:10px}
+}
+
+</style>
+<div class="willbes-Layer-PassBox NGR">
+    <form id="" name="" method="post" action="">
+    <div class="eventPop">
+        <h3>
+            <span class="title">윌비스 합격기원 2차 EVENT</span> <span class="tx-bright-blue">내 예상 점수와 체감 난이도 등록하기</span>
+        </h3>
+        <div class="eventPopS1">
+            <ul>
+                <li>
+                    이름 <span class="tx-red">*</span> <input type="text" name="" id="" onkeyup="">
+                    휴대폰번호 <span class="tx-red">*</span> <input type="text" name="" id="" onkeyup="">
+                    <span class="tx-red">※ 응시직렬은 최초 선택/저장 후 수정 불가</span>
+                </li>
+                <li>
+                    <strong>1. 공고 유형 <span class="tx-red">*</span> </strong>    
+                    <input type="radio" name="" id="" value=""><label>서울시</label>
+                    <input type="radio" name="" id="" value=""><label>지방직</label>
+                </li>
+                <li>
+                    <strong>2. 응시 직렬 <span class="tx-red">*</span> </strong>    
+                    <input type="radio" name="" id="" value=""><label>일반행정</label>
+                    <input type="radio" name="" id="" value=""><label>세무</label>
+                    <input type="radio" name="" id="" value=""><label>기타</label>
+                </li>
+                <li>
+                    <strong>3. 예상 점수 <span class="tx-red">*</span> </strong> 
+                    <div class="subject-p">   
+                        <ul>
+                            <li><span>영어</span><input type="text" maxlength="3" name="" id="" onkeyup="">점</li>  
+                            <li><span>한국사</span><input type="text" maxlength="3" name="" id="" onkeyup="">점</li>
+                            <li><span>형법</span><input type="text" maxlength="3" name="" id="" onkeyup="">점</li> 
+                            <li> 
+                                <select name="" id="" onchange="" style="width:120px;">
+                                    <option value="">선택과목1</option>
+                                </select>
+                                <input type="text" maxlength="3" name="" id="" onkeyup="">점
+                            </li> 
+                            <li>
+                                <select name="" id="" onchange="" style="width:120px;">
+                                    <option value="">선택과목2</option>
+                                </select>
+                                <input type="text" maxlength="3" name="" id="" onkeyup="">점
+                            </li> 
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <strong>4. 체감 난이도<span class="tx-red">*</span> </strong> 
+                    <table cellspacing="0" cellpadding="0">
+                        <col width="20%"  />
+                        <col width="20%" />
+                        <col width="" />
+                        <col width="20%" />
+                        <thead>
+                            <tr>
+                                <th>과목</th>
+                                <th colspan="3">난이도</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>국어</td>
+                                <td>매우 어려움</td>
+                                <td>
+                                    <input type="radio" name="" id="" value=""><label>5</label>
+                                    <input type="radio" name="" id="" value=""><label>4</label>
+                                    <input type="radio" name="" id="" value=""><label>3</label>
+                                    <input type="radio" name="" id="" value=""><label>2</label>
+                                    <input type="radio" name="" id="" value=""><label>1</label>
+                                </td>
+                                <td>매우 쉬움</td>
+                            </tr>
+                            <tr>
+                                <td>영어</td>
+                                <td>매우 어려움</td>
+                                <td>
+                                    <input type="radio" name="" id="" value=""><label>5</label>
+                                    <input type="radio" name="" id="" value=""><label>4</label>
+                                    <input type="radio" name="" id="" value=""><label>3</label>
+                                    <input type="radio" name="" id="" value=""><label>2</label>
+                                    <input type="radio" name="" id="" value=""><label>1</label>
+                                </td>
+                                <td>매우 쉬움</td>
+                            </tr>
+                            <tr>
+                                <td>한국사</td>
+                                <td>매우 어려움</td>
+                                <td>
+                                    <input type="radio" name="" id="" value=""><label>5</label>
+                                    <input type="radio" name="" id="" value=""><label>4</label>
+                                    <input type="radio" name="" id="" value=""><label>3</label>
+                                    <input type="radio" name="" id="" value=""><label>2</label>
+                                    <input type="radio" name="" id="" value=""><label>1</label>
+                                </td>
+                                <td>매우 쉬움</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select name="" id="" onchange="" style="width:100px;">
+                                        <option value="">선택과목1</option>
+                                    </select>
+                                </td>
+                                <td>매우 어려움</td>
+                                <td>
+                                    <input type="radio" name="" id="" value=""><label>5</label>
+                                    <input type="radio" name="" id="" value=""><label>4</label>
+                                    <input type="radio" name="" id="" value=""><label>3</label>
+                                    <input type="radio" name="" id="" value=""><label>2</label>
+                                    <input type="radio" name="" id="" value=""><label>1</label>
+                                </td>
+                                <td>매우 쉬움</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select name="" id="" onchange="" style="width:100px;">
+                                        <option value="">선택과목2</option>
+                                    </select>
+                                </td>
+                                <td>매우 어려움</td>
+                                <td>
+                                    <input type="radio" name="" id="" value=""><label>5</label>
+                                    <input type="radio" name="" id="" value=""><label>4</label>
+                                    <input type="radio" name="" id="" value=""><label>3</label>
+                                    <input type="radio" name="" id="" value=""><label>2</label>
+                                    <input type="radio" name="" id="" value=""><label>1</label>
+                                </td>
+                                <td>매우 쉬움</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    <strong>5. 윌비스 풀케어 서비스를 알게 된 경로는? (다중선택 가능)</strong>
+                    <input type="radio" name="" id="" value=""><label>윌비스 홈페이지</label>
+                    <input type="radio" name="" id="" value=""><label>학원 내 게시물</label>
+                    <input type="radio" name="" id="" value=""><label>전단지</label>
+                    <input type="radio" name="" id="" value=""><label>현수막</label>
+                    <input type="radio" name="" id="" value=""><label>커뮤니티(카페, DC등) 게시물</label><br>
+                    <input type="radio" name="" id="" value=""><label>커뮤니티(카페, DC등) 배너</label>
+                    <input type="radio" name="" id="" value=""><label>온라인 보도자료</label>
+                    <input type="radio" name="" id="" value=""><label>Daum 배너</label>
+                    <input type="radio" name="" id="" value=""><label>YouTube</label>
+                    <input type="radio" name="" id="" value=""><label>기타</label>
+                </li>
+                <li>
+                    <strong>* 개인정보 수집 및 이용에 대한 안내</strong>
+                    <div class="info">
+                        1. 개인정보 수집 이용 목적 <br>
+                        - 이벤트 참여자 경품 추첨 및 설문조사 결과 활용<br>
+                        <br>
+                        2. 개인정보 수집 항목 <br>
+                        - 필수항목 : 성명, 연락처<br>
+                        <br>
+                        3. 개인정보 이용기간 및 보유기간<br>
+                        - 이용 목적 달성 시 파기<br>
+                        <br>
+                        4. 신청자의 개인정보 수집 및 활용 동의 거부 시<br>
+                        - 개인정보 수집에 동의하지 않는 경우 이벤트 참여가 어렵습니다.<br>
+                        <br>
+                        5. 입력하신 개인정보는 수집목적 외 참여자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="btnsSt3">
+            <button type="submit">확인</button>
+            <button type="button" onclick="javascript:window.close();">취소</button>
+        </div>
+    </div> 
+    </form>
+</div>
+<!--willbes-Layer-PassBox//-->
+@stop

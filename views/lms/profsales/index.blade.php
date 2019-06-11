@@ -9,13 +9,11 @@
                 <div class="pull-left">
                     {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
                 </div>
-                <div id="wrap_prev_sales_view" class="pull-left ml-15 mt-15 hide">
-                    <a href="#none" id="btn_prev_sales_view" class="btn btn-dark mb-0" target="_blank">~ {{ $limit_start_date }} 이전 매출보기</a>
-                    [안내사항] 리뉴얼 전({{ $limit_start_date }} 이전) 매출은 직전 <span id="txt_prev_sales_view"></span>에서 확인해 주시기 바랍니다.
-                </div>
+                {{-- 이전 매출보기 --}}
+                @include('lms.profsales.prev_sales_view_partial')
             </div>
         </div>
-        <div class="x_panel clear">
+        <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1">강좌기본정보</label>
@@ -198,25 +196,6 @@
             $search_form.find('select[name="search_course_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");
-
-            @if($is_tzone === true)
-                // 이전 매출보기 셋팅
-                $search_form.on('change', '#search_site_code', function() {
-                    var tab_txt = $(this).find('option:selected').text();
-                    if (tab_txt.indexOf('경찰') > -1 || tab_txt.indexOf('공무원') > -1) {
-                        $('#wrap_prev_sales_view').removeClass('hide');
-
-                        if (tab_txt.indexOf('경찰') > -1) {
-                            $('#txt_prev_sales_view').html('T존 관리자');
-                            $('#btn_prev_sales_view').prop('href', 'http://c3.willbescop.net/TZON/login.html');
-                        } else {
-                            $('#txt_prev_sales_view').html('강사 마이페이지');
-                            $('#btn_prev_sales_view').prop('href', 'http://w1.willbesgosi.net/main/index.html');
-                        }
-                    }
-                });
-                $search_form.find('select[name="search_site_code"]').trigger('change');
-            @endif
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

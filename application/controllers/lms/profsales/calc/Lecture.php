@@ -53,6 +53,7 @@ class Lecture extends \app\controllers\BaseController
             'arr_site_code' => $arr_site_code,
             'arr_professor' => $arr_professor,
             'is_tzone' => $this->_is_tzone,
+            'tzone_admin_id' => $this->_getTzoneAdminId(),
             'limit_start_date' => $this->_limit_start_date
         ]);
     }
@@ -106,6 +107,20 @@ class Lecture extends \app\controllers\BaseController
         }
 
         return $arr_prof_idx;
+    }
+
+    /**
+     * 이전 사이트 자동로그인 전용 관리자 아이디 리턴
+     * @return string
+     */
+    private function _getTzoneAdminId()
+    {
+        if ($this->_is_tzone === true) {
+            $this->load->library('Crypto', ['license' => 'Willbes_Tzone']);
+            return $this->crypto->encrypt($this->session->userdata('admin_id'));
+        }
+
+        return '';
     }
 
     /**

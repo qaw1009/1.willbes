@@ -35,7 +35,7 @@
                 </ul>
                 <div class="willbes-Bnr mt30">
                     <ul>
-                        <li>
+                        <li class="nSlider">
                             {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), 'sliderNum') !!}
                         </li>
                     </ul>

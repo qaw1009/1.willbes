@@ -5,7 +5,7 @@
     <h5 class="mt-20 red">- 사전등록페이지를 /view/willbes/pc/predict/+PredictIdx 와 /view/willbes/m/predict/+PredictIdx 경로에 생성해주세요.</h5>
     <h5 class="mt-20 red">- 프로모션 블레이드에 적중&합격예측 서비스 이용 건수 &#64;include('willbes.pc.predict.show_count_partial') 을 추가해주세요.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!}
         {!! csrf_field() !!}
 
         <div class="x_panel">

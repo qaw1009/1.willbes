@@ -79,6 +79,7 @@ class BaseProfSales extends \app\controllers\BaseController
             'is_off_site' => $this->_is_off_site,
             'is_package' => $this->_is_package,
             'is_tzone' => $this->_is_tzone,
+            'tzone_admin_id' => $this->_getTzoneAdminId(),
             'limit_start_date' => $this->_limit_start_date
         ], $arr_code));
     }
@@ -169,6 +170,20 @@ class BaseProfSales extends \app\controllers\BaseController
     private function _getProfIdx()
     {
         return $this->_is_tzone === true ? $this->_sess_tzone_prof_idxs : $this->_reqP('search_prof_idx');
+    }
+
+    /**
+     * 이전 사이트 자동로그인 전용 관리자 아이디 리턴
+     * @return string
+     */
+    private function _getTzoneAdminId()
+    {
+        if ($this->_is_tzone === true) {
+            $this->load->library('Crypto', ['license' => 'Willbes_Tzone']);
+            return $this->crypto->encrypt($this->session->userdata('admin_id'));
+        }
+
+        return '';
     }
 
     /**

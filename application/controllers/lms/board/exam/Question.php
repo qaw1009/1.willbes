@@ -103,7 +103,9 @@ class Question extends BaseBoard
         if (empty($this->_reqP('search_category')) === false) {
             $sub_query_condition = [
                 'EQ' => [
-                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.IsStatus' => 'Y'
+                ],
+                'LKR' => [
                     'subLBrC.CateCode' => $this->_reqP('search_category')
                 ]
             ];

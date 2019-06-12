@@ -106,7 +106,6 @@ class Counsel extends BaseBoard
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
-                'LB.MdCateCode' => $this->_reqP('search_md_cate_code'),
                 'LB.TypeCcd' => $this->_reqP('search_type_group_ccd'),
                 'LB.ReplyStatusCcd' => $this->_reqP('search_reply_type'),
                 'LB.isPublic' => $this->_reqP('search_is_public'),
@@ -150,6 +149,9 @@ class Counsel extends BaseBoard
             $sub_query_condition = [
                 'EQ' => [
                     'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_md_cate_code')
+                ],
+                'LKR' => [
                     'subLBrC.CateCode' => $this->_reqP('search_category')
                 ]
             ];
@@ -227,19 +229,13 @@ class Counsel extends BaseBoard
             }
 
             // 카테고리 연결 데이터 조회
-            /*$arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+            $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
             $data['CateCodes'] = $arr_cate_code;
-            $data['CateNames'] = implode(', ', array_values($arr_cate_code));*/
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
-
-            $data['arr_cate_code'] = [];
-            $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
-            if (empty($arr_cate_code) === false) {
-                $data['arr_cate_code'] = array_values($arr_cate_code);
-            }
         }
 
         $this->load->view("board/{$this->board_name}/create", [

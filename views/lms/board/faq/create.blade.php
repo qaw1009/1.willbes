@@ -198,7 +198,7 @@
                 }
 
                 $('#btn_category_search').setLayer({
-                    'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
+                    'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code,
                     'width' : 900
                 });
             });

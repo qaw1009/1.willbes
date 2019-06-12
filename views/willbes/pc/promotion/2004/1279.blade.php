@@ -225,8 +225,8 @@ font-size:16px; padding:10px 0; line-height: 1.5;
             <ul class="cts01">
                 <li><a href="https://pass.willbes.net/support/examAnnouncement/show/cate/3024?board_idx=228246&" target="_blank"><strong>국방부</strong> 공고문 확인하기 ▶</a></li>
                 <li><a href="https://pass.willbes.net/support/examAnnouncement/show/cate/3024?board_idx=228252&" target="_blank"><strong>육군</strong> 공고문 확인하기 ▶</a></li>
-                <li><a href="#" onclick="javascript:alert('준비중입니다.'); return false;"><strong>공군</strong> 공고문 확인하기 ▶</a></li>
-                <li><a href="#" onclick="javascript:alert('준비중입니다.'); return false;"><strong>해군</strong> 공고문 확인하기 ▶</a></li>
+                <li><a href="https://pass.willbes.net/support/examAnnouncement/show/cate/3024?board_idx=229021&" target="_blank"><strong>공군</strong> 공고문 확인하기 ▶</a></li>
+                <li><a href="https://pass.willbes.net/support/examAnnouncement/show/cate/3024?board_idx=229025&" target="_blank"><strong>해군</strong> 공고문 확인하기 ▶</a></li>
             </ul>
         </div>
 

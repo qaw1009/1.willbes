@@ -546,7 +546,9 @@ class TmModel extends WB_Model
                             ,p.ProdName
                             ,pl.LearnPatternCcd
                             ,sc2.CcdName as LearnPatternCcd_Name
-                            ,m.MemIdx,m.MemId,m.MemName,fn_dec(m.PhoneEnc) as Phone
+                            ,m.MemIdx,m.MemId,m.MemName
+                            #,fn_dec(m.PhoneEnc) as Phone
+                            ,concat(m.Phone1,\'****\',m.Phone3) as Phone
                             ,mo.SmsRcvStatus
                             ,ps.SalePrice, ps.SaleRate, ps.RealSalePrice
                             ,tc1.* ';
@@ -666,7 +668,9 @@ class TmModel extends WB_Model
                             ,p.ProdName
                             ,pl.LearnPatternCcd
                             ,sc2.CcdName as LearnPatternCcd_Name
-                            ,m.MemIdx,m.MemId,m.MemName,fn_dec(m.PhoneEnc) as Phone
+                            ,m.MemIdx,m.MemId,m.MemName
+                            #,fn_dec(m.PhoneEnc) as Phone
+                            ,concat(m.Phone1,\'****\',m.Phone3) as Phone
                             ,mo.SmsRcvStatus
                             ,tc1.* ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

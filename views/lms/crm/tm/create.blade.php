@@ -19,7 +19,16 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="AssignCcd">조건</label>
                     <div class="col-md-11 form-inline">
+
+                        <select class="form-control" id="InterestCcd" name="InterestCcd" title="준비과정" required="required">
+                            <option value="" disabled>-준비과정-</option>
+                            @foreach($InterestCcd as $key=>$val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="AssignCcd" name="AssignCcd" title="배정구분" required="required">
+                            <option value="" disabled>-배정구분-</option>
                             @foreach($AssignCcd as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
@@ -83,8 +92,6 @@
     <input type="hidden" name="tm_idx" id="tm_idx" value="">
     <button type="button" id="btn_tm_list" class="btn_tm_list hide" ></button>
 
-
-
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
@@ -99,6 +106,9 @@
 
             $("#btn_search").click(function () {
 
+                if($("#InterestCcd").val() == "") {
+                    alert("준비과정을 선택해 주세요.");return;
+                }
                 if($("#AssignCcd").val() == "") {
                     alert("배정조건을 선택해 주세요.");return;
                 }
@@ -114,6 +124,7 @@
 
                 var data =  {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    'InterestCcd' : $("#InterestCcd").val(),
                     'AssignCcd' : $("#AssignCcd").val(),
                     'SearchDate' : $("#SearchDate").val(),
                     'SearchEndDate' : $("#SearchEndDate").val(),
@@ -187,6 +198,9 @@
 
             $("#btn_assign").click(function () {
 
+                if($("#InterestCcd").val() == "") {
+                    alert("준비과정을 선택해 주세요.");return;
+                }
                 if($("#AssignCcd").val() == "") {
                     alert("배정조건을 선택해 주세요.");return;
                 }
@@ -205,8 +219,13 @@
                     sum += +$(this).val();
                 });
 
+                /*
                 if($("#MemCnt").val() != sum) {
                     alert("검색건수 와 배정회원건수의 합이 일치하지 않습니다.");return;
+                }
+                 */
+                if( parseInt($("#MemCnt").val()) < sum) {
+                    alert("배정건수가 더 많습니다. 배정건수를 확인하여 주십시오.\n\n배정건수 : "+sum);return;
                 }
 
                 if(!confirm("회원을 배정하시겠습니까?")) {
@@ -224,7 +243,6 @@
                 }, showValidateError, null, false, 'alert');
 
             });
-
 
             showAssign = function(tm_idx) {
                 var url = '{{ site_url('/crm/tm/TmMng/assignList/') }}'+tm_idx;

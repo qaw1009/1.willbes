@@ -63,6 +63,7 @@
                 <thead>
                 <tr>
                     <th width="50">NO</th>
+                    <th width="120">배정시 준비과정</th>
                     <th width="150">배정조건</th>
                     <th width="100">회원명</th>
                     <th width="150">아이디</th>
@@ -102,6 +103,7 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
+                    {'data' : 'InterestCcd_Name'},
                     {'data' : 'AssignCcd_Name'},
                     {'data' : 'MemName'},
                     {'data' : 'MemId'},

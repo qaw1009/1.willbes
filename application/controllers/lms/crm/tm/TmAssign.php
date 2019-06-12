@@ -54,19 +54,27 @@ class TmAssign extends BaseTm
         ];
 
         if(empty($this->_reqP('StartDate'))=== false and empty($this->_reqP('EndDate')) === false ) {
-            $arr_condition = array_merge($arr_condition,[
+            $arr_condition = array_merge_recursive($arr_condition,[
                 'RAW' => [
                     'Date_format(A.RegDatm,\'%Y-%m-%d\')  between' => '\''.  $this->_reqP('StartDate') .'\' and \'' . $this->_reqP('EndDate') .'\''
                 ]
             ]);
         }
 
-        // 본인이 TM 담당자 일경우 본인 배정 회원만 추출해야 함.
+
+        // 본인이 TM 담당자 일경우 본인 배정 회원만 (1년이내) 추출.
         if($this->session->userdata('admin_auth_data')['Role']['RoleIdx'] == '1010') {
             $arr_condition = array_merge($arr_condition,[
                 'EQ' => ['B.AssignAdminIdx' => $this->session->userdata('admin_idx')],
             ]);
+            $arr_condition = array_merge_recursive($arr_condition,[
+                'RAW' => [
+                    'Date_format(A.RegDatm,\'%Y-%m-%d\')  > ' => ' Date_format(DATE_SUB(NOW(), INTERVAL 1 YEAR),\'%Y-%m-%d\') '
+                ]
+            ]);
         }
+
+        //echo var_dump($arr_condition);
 
         $order_by =  ['A.TmIdx'=>'desc', 'B.TaIdx' => 'asc'];
 

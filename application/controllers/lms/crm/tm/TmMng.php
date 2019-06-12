@@ -77,7 +77,7 @@ class TmMng extends BaseTm
         if(empty($this->_reqP('StartDate'))=== false and empty($this->_reqP('EndDate')) === false ) {
             $arr_condition = array_merge($arr_condition,[
                 'RAW' => [
-                    'A.RegDatm between' => '\''.  $this->_reqP('StartDate') .'\' and \'' . $this->_reqP('EndDate') .'\''
+                    'DATE_FORMAT(A.RegDatm,\'%Y-%m-%d\')' => '\''.  $this->_reqP('StartDate') .'\' and \'' . $this->_reqP('EndDate') .'\''
                 ]
             ]);
         }

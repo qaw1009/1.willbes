@@ -48,6 +48,7 @@ class TmModel extends WB_Model
      */
     public function searchMember($input=[])
     {
+        $interest_ccd = element('InterestCcd',$input);
         $assign_ccd = element('AssignCcd',$input);
         $search_date = element('SearchDate', $input);
         $search_end_date = element('SearchEndDate', $input);
@@ -67,13 +68,21 @@ class TmModel extends WB_Model
         $from = '
                     from
                         lms_member A
-                        join lms_member_otherinfo B on A.MemIdx = B.MemIdx';
+                        join lms_member_otherinfo B on A.MemIdx = B.MemIdx
+                    ';
 
         //기본 조건
         $where = ' where 
-                        A.IsStatus=\'Y\' And A.IsBlackList=\'N\' 
+                        A.IsStatus=\'Y\' 
+                        and A.IsBlackList=\'N\'
                         and B.SmsRcvStatus=\'Y\'
-                        ';
+                        and B.InterestCode=\''. $interest_ccd .'\'
+                        # btob 회원이 아닌 회원
+                        and A.MemIdx not in
+                        (
+                            select MemIdx from lms_btob_r_member where IsStatus=\'Y\'
+                        )
+                     ';
 
         if($assign_ccd === '687001' || $assign_ccd === '687002' || $assign_ccd === '687004' ) {
 
@@ -253,8 +262,9 @@ class TmModel extends WB_Model
             $wAdminIdx = element('wAdminIdx',$input);
             $eachCnt = element('eachCnt',$input);
 
-
+            //tm 배정 테이블
             $tm_data = [
+                'InterestCcd' => element('InterestCcd',$input),
                 'AssignCcd' => element('AssignCcd',$input),
                 'SearchDate' => element('SearchDate',$input),
                 'SearchEndDate' => element('SearchEndDate',$input,null),
@@ -294,8 +304,10 @@ class TmModel extends WB_Model
                         throw new \Exception("회원 배정시 오류가 발생되었습니다.");
                     }
                     $total_cnt -= 1;
+                    //echo $this->_conn->last_query().'\n\n';
                 }
             }
+
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();
 
@@ -326,7 +338,10 @@ class TmModel extends WB_Model
         } else {
             $column = 'A.*, Date_format(A.RegDatm,\'%Y-%m-%d\') as RegDate
                             ,IFNULL(A.SearchDate, A.SearchDate+\'~\'+A.SearchEndDate) as SearchPeriod
-                            ,B.CcdName as AssignCcd_Name,C.wAdminName';
+                            ,B.CcdName as AssignCcd_Name,C.wAdminName,D.CcdName As InterestCcd_Name
+                            ,(select count(*) from lms_tm_assign where TmIdx = A.TmIdx) as AssignCnt
+                            ';
+
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -336,6 +351,7 @@ class TmModel extends WB_Model
                         lms_tm A
                         left outer join lms_sys_code B on A.AssignCcd = B.Ccd
                         join wbs_sys_admin C on A.RegAdminIdx = C.wAdminIdx
+                        left outer join lms_sys_code D on A.InterestCcd = D.Ccd
                     where A.IsStatus=\'Y\'
         ';
 
@@ -388,8 +404,12 @@ class TmModel extends WB_Model
             $column = ' straight_join  
                             A.TmIdx,A.RegDatm,Date_format(A.RegDatm,\'%Y-%m-%d\') as RegDate, B.TaIdx,AssignAdminIdx
                             ,B.MemIdx,C.CcdName as AssignCcd_Name,D.MemId,D.MemName
-                            ,fn_dec(D.PhoneEnc) as Phone,E.wAdminName
-                            ,(select RegDatm from lms_tm_consult aa where aa.taIdx = B.TaIdx order by aa.RegDatm LIMIT 0, 1 ) as LastCousultDate
+                            #,fn_dec(D.PhoneEnc) as Phone
+                            ,concat(D.Phone1,\'****\',D.Phone3) as Phone
+                            ,E.wAdminName
+                            #,(select RegDatm from lms_tm_consult aa where aa.taIdx = B.TaIdx  And aa.IsStatus=\'Y\' order by aa.RegDatm desc LIMIT 0, 1 ) as LastCousultDate
+                            ,(select RegDatm from lms_tm_consult aa where aa.taIdx = B.TaIdx And aa.IsStatus=\'Y\' order by aa.TaIdx desc LIMIT 1 ) as LastCousultDate
+                            ,F.CcdName As InterestCcd_Name
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -401,6 +421,7 @@ class TmModel extends WB_Model
                             join lms_sys_code C on A.AssignCcd = C.Ccd
                             join lms_member D on B.MemIdx = D.MemIdx
                             join wbs_sys_admin E on B.AssignAdminIdx = E.wAdminIdx
+                            left outer join lms_sys_code F on A.InterestCcd = F.Ccd
                     where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' ';
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);

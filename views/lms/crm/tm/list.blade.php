@@ -19,6 +19,13 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="search_is_use">조건검색</label>
                     <div class="col-md-4 form-inline">
+                        <select class="form-control" id="InterestCcd" name="InterestCcd" title="준비과정" required="required">
+                            <option value="">준비과정</option>
+                            @foreach($InterestCcd as $key=>$val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="AssignCcd" name="AssignCcd">
                             <option value="">배정조건</option>
                             @foreach($AssignCcd  as $key=>$val)
@@ -48,11 +55,14 @@
                 <thead>
                 <tr>
                     <th width="50">NO</th>
-                    <th width="150">배정일</th>
                     <th >조회기간</th>
+                    <th width="120">준비과정</th>
                     <th width="200">배정조건</th>
-                    <th width="150">배정건수</th>
-                    <th width="100">확인</th>
+                    <th width="120">검색건수</th>
+                    <th width="120">배정건수</th>
+                    <th width="100">배정일</th>
+                    <th width="80">배정관리자</th>
+                    <th width="100">배정확인</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -60,9 +70,6 @@
             </table>
         </div>
     </div>
-
-
-
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -91,12 +98,16 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'RegDate'},
+
                     {'data' : null, 'render' : function(data,type,row,meta) {
                             return data.SearchPeriod;
                         }},
+                    {'data' : 'InterestCcd_Name'},
                     {'data' : 'AssignCcd_Name'},
                     {'data' : 'MemCnt'},
+                    {'data' : 'AssignCnt'},
+                    {'data' : 'RegDate'},
+                    {'data' : 'wAdminName'},
                     {'data' : null, 'render' : function(data,type,row,meta) {
                             return '<a href="#" class="btn-modify btn_info" data-idx="' + data.TmIdx + '"><u>확인</u></a>';
                         }}

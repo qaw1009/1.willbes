@@ -14,12 +14,13 @@ class TmMng extends BaseTm
      */
     public function index()
     {
-        $codes = $this->codeModel->getCcdInArray(['687']);
+        $codes = $this->codeModel->getCcdInArray(['687', '718']);
         $assign_admin = $this->tmModel->listAdmin(['EQ'=>['C.RoleIdx'=>'1010']]);
         $method='POST';
 
         $this->load->view("crm/tm/create",[
             'AssignCcd' => $codes['687'],
+            'InterestCcd' => $codes['718'],
             'AssignAdmin' => $assign_admin,
             'method'=>$method
         ]);
@@ -33,6 +34,7 @@ class TmMng extends BaseTm
     {
 
         $rules = [
+            ['field'=>'InterestCcd', 'label'=>'준비과정', 'rules'=>'trim|required'],
             ['field'=>'AssignCcd', 'label'=>'조건', 'rules'=>'trim|required'],
             ['field'=>'SearchDate', 'label'=>'조건 적용일', 'rules'=>'trim|required']
         ];
@@ -51,10 +53,11 @@ class TmMng extends BaseTm
      */
     public function tmIndex()
     {
-        $codes = $this->codeModel->getCcdInArray(['687']);
+        $codes = $this->codeModel->getCcdInArray(['687', '718']);
 
         $this->load->view("crm/tm/list", [
-            'AssignCcd' => $codes['687']
+            'AssignCcd' => $codes['687'],
+            'InterestCcd' => $codes['718'],
         ]);
     }
 
@@ -66,7 +69,8 @@ class TmMng extends BaseTm
     {
         $arr_condition = [
             'EQ' => [
-                'A.AssignCcd' => $this->_reqP('AssignCcd')
+                'A.AssignCcd' => $this->_reqP('AssignCcd'),
+                'A.InterestCcd' => $this->_reqP('InterestCcd')
             ]
         ];
 
@@ -99,6 +103,7 @@ class TmMng extends BaseTm
     public function assign()
     {
         $rules = [
+            ['field'=>'InterestCcd', 'label'=>'준비과정', 'rules'=>'trim|required'],
             ['field'=>'AssignCcd', 'label'=>'조건', 'rules'=>'trim|required'],
             ['field'=>'SearchDate', 'label'=>'조건 적용일', 'rules'=>'trim|required'],
             ['field'=>'MemCnt', 'label'=>'검색건수', 'rules'=>'trim|required']

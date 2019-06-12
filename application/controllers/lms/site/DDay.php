@@ -28,9 +28,9 @@ class Dday extends \app\controllers\BaseController
     {
         $arr_condition = $this->_getListConditions();
         $arr_condition_category = [
-            'EQ' => [
+            'LKR' => [
                 'B.CateCode' => $this->_reqP('search_category')
-            ],
+            ]
         ];
 
         $list = [];

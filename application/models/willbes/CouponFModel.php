@@ -197,7 +197,7 @@ class CouponFModel extends WB_Model
                 'C.CouponTypeCcd' => element('CouponTypeCcd', $arr_param)
             ],  // 사이트코드, 사용자쿠폰식별자, 쿠폰유형
             'LKB' => [
-                'CC.CateCodes' => substr(element('CateCode', $arr_param), 0, 4)
+                'CC.CateCodes' => element('CateCode', $arr_param)
             ]  // 카테고리코드
         ];
         $where = $this->_conn->makeWhere($arr_condition);

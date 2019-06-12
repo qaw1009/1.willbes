@@ -93,7 +93,7 @@
         <!-- 타이머 //-->
         
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1267_01.jpg" alt="윌비스 군무원 PASS 시즌5" usemap="#Map180831" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_01.jpg" alt="윌비스 군무원 PASS 시즌5" usemap="#Map180831" border="0">
             <map name="Map180831" id="Map180831">
                 <area shape="rect" coords="571,1699,731,1738" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149253') }}" alt="59만원" />
                 <area shape="rect" coords="918,1698,1080,1737" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />
@@ -147,7 +147,7 @@
 
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1267_03.jpg" alt="" usemap="#Map180831B" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1065_03.jpg" alt="" usemap="#Map180831B" border="0"  />
             <map name="Map180831B" id="Map180831B">
                 <area shape="rect" coords="571,651,730,691" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149253') }}" alt="59만원" />
                 <area shape="rect" coords="919,650,1082,691" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />

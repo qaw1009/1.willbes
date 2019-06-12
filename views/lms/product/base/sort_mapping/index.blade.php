@@ -76,17 +76,17 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="course" data-conn-uri="create" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
+                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="course" data-conn-uri="create" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['LastCateCode'] }}">
                                 연결 ({!! $row['CateCourseCnt'] > 0 ? 'Y' : '<span class="red no-line-height">N</span>' !!})
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="subject" data-conn-uri="create" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
+                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="subject" data-conn-uri="create" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['LastCateCode'] }}">
                                 연결 ({!! $row['CateSubjectCnt'] > 0 ? 'Y' : '<span class="red no-line-height">N</span>' !!})
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="complex" data-conn-uri="list" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
+                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="complex" data-conn-uri="list" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['LastCateCode'] }}">
                                 연결 ({!! $row['ComplexSubjectCnt'] > 0 ? 'Y' : '<span class="red no-line-height">N</span>' !!})
                             </button>
                         </td>

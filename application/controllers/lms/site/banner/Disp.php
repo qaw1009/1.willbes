@@ -141,9 +141,11 @@ class Disp extends \app\controllers\BaseController
             'EQ' => [
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
-                'A.CateCode' => $this->_reqP('search_cate_code'),
                 'A.DispTypeCcd' => $this->_reqP('search_banner_disp_type'),
                 'A.IsUse' => $this->_reqP('search_is_use')
+            ],
+            'LKR' => [
+                'A.CateCode' => $this->_reqP('search_cate_code')
             ],
             'ORG1' => [
                 'LKB' => [

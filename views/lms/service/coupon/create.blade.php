@@ -363,7 +363,7 @@
 
                 if (btn_id === 'btn_category_search') {
                     $('#btn_category_search').setLayer({
-                        'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
+                        'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code,
                         'width' : 900
                     });
                 } else if (btn_id === 'btn_product_search') {

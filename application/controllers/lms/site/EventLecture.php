@@ -25,7 +25,7 @@ class EventLecture extends \app\controllers\BaseController
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         //카테고리 조회(구분)
-        $arr_category = $this->categoryModel->getCategoryArray('');
+        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
 
         $this->load->view("site/event_lecture/index", [
             'arr_campus' => $arr_campus,
@@ -41,7 +41,9 @@ class EventLecture extends \app\controllers\BaseController
 
         $sub_query_condition = [
             'EQ' => [
-                'B.IsStatus' => 'Y',
+                'B.IsStatus' => 'Y'
+            ],
+            'LKR' => [
                 'B.CateCode' => $this->_reqP('search_category')
             ]
         ];

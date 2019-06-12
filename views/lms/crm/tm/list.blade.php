@@ -60,7 +60,7 @@
                     <th width="200">배정조건</th>
                     <th width="120">검색건수</th>
                     <th width="120">배정건수</th>
-                    <th width="100">배정일</th>
+                    <th width="150">배정일</th>
                     <th width="80">배정관리자</th>
                     <th width="100">배정확인</th>
                 </tr>
@@ -106,7 +106,7 @@
                     {'data' : 'AssignCcd_Name'},
                     {'data' : 'MemCnt'},
                     {'data' : 'AssignCnt'},
-                    {'data' : 'RegDate'},
+                    {'data' : 'RegDatm'},
                     {'data' : 'wAdminName'},
                     {'data' : null, 'render' : function(data,type,row,meta) {
                             return '<a href="#" class="btn-modify btn_info" data-idx="' + data.TmIdx + '"><u>확인</u></a>';

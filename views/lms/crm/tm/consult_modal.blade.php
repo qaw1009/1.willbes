@@ -26,14 +26,15 @@
                             <th>회원명</th>
                             <th>아이디 </th>
                             <th>핸드폰번호(수신여부) </th>
+                            <th width="120">준비과정</th>
                             <th>가입일</th>
                         </tr>
                         <tr>
                             <td>{{$data_mem['SiteName']}}</td>
                             <td>{{$data_mem['MemName']}}</td>
                             <td>{{$data_mem['MemId']}}</td>
-
                             <td>{{$data_mem['Phone']}} ({{$data_mem['SmsRcvStatus']}})</td>
+                            <td>{{$data_mem['InterestName']}}</td>
                             <td>{{$data_mem['JoinDate']}}</td>
                         </tr>
                         </thead>

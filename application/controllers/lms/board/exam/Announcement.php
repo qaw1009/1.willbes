@@ -104,7 +104,9 @@ class Announcement extends BaseBoard
         if (empty($this->_reqP('search_category')) === false) {
             $sub_query_condition = [
                 'EQ' => [
-                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.IsStatus' => 'Y'
+                ],
+                'LKB' => [
                     'subLBrC.CateCode' => $this->_reqP('search_category')
                 ]
             ];

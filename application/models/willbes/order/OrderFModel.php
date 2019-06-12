@@ -1555,10 +1555,10 @@ class OrderFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $order_no = $this->makeOrderNo();   // 주문번호 생성
             $pay_status_ccd = $this->_pay_status_ccd['paid'];    // 주문완료 결제상태공통코드 (결제완료)
-            // 자동주문 가능 학습형태 (단강좌, 운영자패키지, 무료강좌, 학원단과, 학원종합반)
+            // 자동주문 가능 학습형태 (단강좌, 운영자패키지, 기간제패키지, 무료강좌, 학원단과, 학원종합반)
             $target_learn_pattern_ccd = [
-                $this->_learn_pattern_ccd['on_lecture'], $this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['on_free_lecture'],
-                $this->_learn_pattern_ccd['off_lecture'], $this->_learn_pattern_ccd['off_pack_lecture']
+                $this->_learn_pattern_ccd['on_lecture'], $this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['periodpack_lecture'],
+                $this->_learn_pattern_ccd['on_free_lecture'], $this->_learn_pattern_ccd['off_lecture'], $this->_learn_pattern_ccd['off_pack_lecture']
             ];
             $admin_reason_ccd = '705008';   // 부여사유공통코드 (디폴트 : 이벤트자동부여)
             $admin_etc_reason = null;   // 상세부여사유 (연관식별자가 있을 경우 추가)
@@ -1618,6 +1618,11 @@ class OrderFModel extends BaseOrderFModel
                 // 사이트코드 체크
                 if (empty($tmp_site_code) === false && $tmp_site_code != $prod_row['SiteCode']) {
                     throw new \Exception('사이트코드가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
+                }
+
+                // 기간제패키지일 경우 일반형만 등록 가능
+                if ($learn_pattern == 'periodpack_lecture' && $prod_row['PackTypeCcd'] == $this->_adminpack_lecture_type_ccd['choice']) {
+                    throw new \Exception('기간제 선택형 패키지는 등록하실 수 없습니다.', _HTTP_BAD_REQUEST);
                 }
 
                 // 상품코드서브
@@ -1909,13 +1914,15 @@ class OrderFModel extends BaseOrderFModel
                     }
                 }
 
-                // 온라인강좌 운영자/기간제 패키지일 경우 주문일 당일 입금완료가 아닐 경우 수강 시작/종료일을 결제일자 기준으로 업데이트
-                if ($order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['adminpack_lecture'] || $order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['periodpack_lecture']) {
+                // 온라인강좌 운영자/기간제패키지/수강연장일 경우 주문일 당일 입금완료가 아닐 경우 수강 시작/종료일을 결제일자 기준으로 업데이트
+                if ($order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['adminpack_lecture'] || $order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['periodpack_lecture']
+                    || $order_prod_row['SalePatternCcd'] == $this->_sale_pattern_ccd['extend']
+                ) {
                     // 결제일자 - 주문일자
                     $diff_days = diff_days(date('Y-m-d'), $order_date);
 
                     if ($diff_days > 0) {
-                        $is_lec_date_update = $this->_conn->set('LecStartDate', date('Y-m-d'))
+                        $is_lec_date_update = $this->_conn->set('LecStartDate', 'date_add(LecStartDate, interval ' . $diff_days . ' day)', false)
                             ->set('LecEndDate', 'date_add(LecEndDate, interval ' . $diff_days . ' day)', false)
                             ->set('RealLecEndDate', 'date_add(RealLecEndDate, interval ' . $diff_days . ' day)', false)
                             ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_row['OrderProdIdx'])->where('ProdCode', $order_prod_row['ProdCode'])

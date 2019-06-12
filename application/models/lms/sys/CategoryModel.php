@@ -178,6 +178,46 @@ class CategoryModel extends WB_Model
     }
 
     /**
+     * 카테고리 코드 목록 조회 (카테고리 경로명 포함)
+     * @param string $site_code
+     * @param string $parent_cate_code
+     * @param string $group_cate_code
+     * @param string $cate_depth
+     * @return mixed
+     */
+    public function getCategoryRouteArray($site_code = '', $parent_cate_code = '', $group_cate_code = '', $cate_depth = '')
+    {
+        $arr_condition = ['EQ' => [
+            'C.ParentCateCode' => $parent_cate_code, 'C.GroupCateCode' => $group_cate_code, 'C.CateDepth' => $cate_depth
+        ]];
+
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['S.SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['S.SiteCode'] = get_auth_site_codes();
+        }
+
+        $column = 'S.SiteCode, S.SiteName, C.CateCode, C.CateName, C.ParentCateCode, PC.CateName as ParentCateName, C.GroupCateCode, C.CateDepth';
+        $column .= ', concat(if(PC.CateCode is null, "", concat(PC.CateName, " > ")), C.CateName) as CateRouteName';
+        $from = '
+            from ' . $this->_table['site'] . ' as S
+                inner join ' . $this->_table['category'] . ' as C
+                    on S.SiteCode = C.SiteCode
+                left join ' . $this->_table['category'] . ' as PC
+                    on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
+            where S.IsUse = "Y" and S.IsStatus = "Y"
+                and C.IsStatus = "Y" and C.IsUse = "Y"             
+        ';
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['S.SiteCode' => 'asc', 'PC.OrderNum' => 'asc', 'C.OrderNum' => 'asc'])->getMakeOrderBy();
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return $query->result_array();
+    }
+
+    /**
      * 카테고리 경로 리턴
      * @param $site_code
      * @param $cate_code

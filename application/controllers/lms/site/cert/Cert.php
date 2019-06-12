@@ -35,12 +35,14 @@ class Cert extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'A.SiteCode' => $this->_reqP('search_site_code'),
-                'A.CateCode' => $this->_reqP('search_category'),
                 'A.CertTypeCcd' => $this->_reqP('search_type'),
                 'A.CertConditionCcd' =>$this->_reqP('search_condition'),
                 'A.No' =>$this->_reqP('search_no'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
             ],
+            'LKR' => [
+                'A.CateCode' => $this->_reqP('search_category')
+            ]
         ];
 
         $list = [];
@@ -78,7 +80,7 @@ class Cert extends \app\controllers\BaseController
             }
         }
 
-        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $arr_category = $this->categoryModel->getCategoryRouteArray();
         $codes = $this->codeModel->getCcdInArray(['684','685']);
 
         $this->load->view('site/cert/cert_create_modal',[

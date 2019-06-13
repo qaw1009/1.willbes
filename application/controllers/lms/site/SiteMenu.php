@@ -20,7 +20,31 @@ class SiteMenu extends \app\controllers\BaseController
      */
     public function index()
     {
-        $list = $this->siteMenuModel->listAllSiteMenu();
+        $def_site_code = element('0', get_auth_site_codes());
+
+        $this->load->view('site/site_menu/index', [
+            'def_site_code' => $def_site_code
+        ]);
+    }
+
+    /**
+     * 사이트 메뉴 목록 조회
+     * @return CI_Output
+     */
+    public function listAjax()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'M.SiteCode' => $this->_reqP('search_site_code'),
+                'M.IsUse' => $this->_reqP('search_is_use')
+            ],
+            'LKB' => [
+                'M.MenuName' => $this->_reqP('search_value')
+            ]
+        ];
+
+        $list = $this->siteMenuModel->listAllSiteMenu($arr_condition);
+        $count = count($list);
 
         // 메뉴타입명 추가
         $list = array_map(function ($row) {
@@ -28,7 +52,9 @@ class SiteMenu extends \app\controllers\BaseController
             return $row;
         }, $list);
 
-        $this->load->view('site/site_menu/index', [
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
             'data' => $list
         ]);
     }

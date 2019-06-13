@@ -20,7 +20,7 @@ class SiteMenu extends \app\controllers\BaseController
      */
     public function index()
     {
-        $def_site_code = element('0', get_auth_site_codes());
+        $def_site_code = config_item('app_intg_site_code');
 
         $this->load->view('site/site_menu/index', [
             'def_site_code' => $def_site_code

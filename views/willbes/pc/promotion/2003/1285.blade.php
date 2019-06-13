@@ -546,7 +546,7 @@
                 <li><a href="#assayTab21">지방직</a></li>
             </ul>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_07_01.png" title="총평" class="mt50"/>
-            <ul class="level NGEB" id="assayTab10">
+            <ul class="level NGEB" id="assayTab20">
                 <li>
                     <div><strong>국어</strong> 평균점수 <strong>75.23</strong></div>
                     <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star04.jpg" ></div>
@@ -569,24 +569,24 @@
                 </li>
             </ul> 
             
-            <ul class="level NGEB" id="assayTab11">
+            <ul class="level NGEB" id="assayTab21">
                 <li>
-                    <div><strong>국어</strong> 평균점수 <strong>75.23</strong></div>
+                    <div><strong>국어</strong> 평균점수 <strong>70.23</strong></div>
                     <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star04.jpg" ></div>
                 </li>
                 <li>
-                    <div><strong>영어</strong> 평균점수 <strong>44.23</strong></div>
+                    <div><strong>영어</strong> 평균점수 <strong>40.23</strong></div>
                     <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star02.jpg" ></div>
                 </li>
                 <li>
-                    <div><strong>한국사</strong> 평균점수 <strong>16.23</strong></div>
+                    <div><strong>한국사</strong> 평균점수 <strong>11.23</strong></div>
                     <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star01.jpg" ></div>
                 </li>
                 <li>
                     <div>
                         <select name="" id="" onchange="" style="width:100px;">
                             <option value="">과목선택</option>
-                        </select> 평균점수 <strong>67.23</strong>
+                        </select> 평균점수 <strong>60.23</strong>
                     </div>
                     <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star03.jpg" ></div>
                 </li>

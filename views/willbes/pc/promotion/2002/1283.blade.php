@@ -41,6 +41,7 @@
         .wb_cts04 {background:#696d73}
 		.wb_cts05 {background:#ebecef}
         .wb_cts06 {background:#f8f9fa}
+        .wb_cts07 {background:#4d5258}
         
         /*타이머*/
         .time {width:100%; text-align:center; background:#e1e1e1; padding:20px 0}

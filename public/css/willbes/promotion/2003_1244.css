@@ -80,7 +80,7 @@
 .evtMenu li a.active {background:#fff; color:#8a4e09}
 .evtMenu ul:after {content:""; display:block; clear:both}
 
-.assayTab {width:980px; margin:30px auto}
+.assayTab {width:980px; margin:30px auto; text-align:center}
 .assayTab li {display:inline; float:left; width:14.28571%;}
 .assayTab li a {display:block; border-radius:15px; background:#fff; color:#959595; text-align: center; border:2px solid #959595; margin:0 2px;
 font-size:16px; padding:10px 0; line-height: 1.5;
@@ -89,12 +89,42 @@ font-size:16px; padding:10px 0; line-height: 1.5;
 .assayTab li a:hover {background:#959595; color:#fff;}
 .assayTab:after {content:""; display:block; clear:both}
 
+.assayTab2 {width:300px; margin:30px auto;}
+.assayTab2 li {display:inline; float:left; width:50%}
+.assayTab2 li a {width:136px}
+.assayTab2:after {content:""; display:block; clear:both}
+
 .tabCts {
     position:relative; width:1120px; margin:0 auto; text-align:center;
 }
 .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
 .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 .tabCts p {margin-bottom:50px}
+
+.subject {width:1000px; margin:0 auto;}
+.subject li {display:inline; float:left; width:11.11111%}
+.subject li a {display: block; height: 50px; line-height: 50px; text-align: center; color:#ccc; 
+    border:1px solid #d9d9d9; border-bottom:0; margin-right:3px; font-size:14px; font-weight: bold;
+}
+.subject li a:hover,
+.subject li a.active {color:#fff; background:#15365d; border:1px solid #15365d; border-bottom:0;}
+.subject li:last-child a {margin:0}
+.subject:after {content:""; display:block; clear:both}
+.subCts,
+.subCts2,
+.subCts3,
+.subCts4 {border:1px solid #15365d; height: 300px; overflow-y: auto;}
+.comingsoon {display:table-cell; vertical-align:middle; text-align:center; width: 1000px; height:290px;}
+
+.level {width: 860px; margin:100px auto 0}
+.level li {display:inline; float:left; width: 50%; margin-bottom:40px; font-size:24px; color:#555}
+.level li div {padding:14px 0; margin:0 20px;}
+.level li div img {vertical-align: middle}
+.level li div:first-child {border-bottom:2px solid #15365d}
+.level li div:last-child {font-size:20px}
+.level li strong {color:#d18f04}
+.level li select {font-size:14px; padding:2px; margin-right:5px; height:26px; margin-top:-4px}
+.level:after {content:""; display:block; clear:both}
 
 .content_2_wrap,
 .content_4_wrap {width:980px; margin:0 auto; text-align: left}
@@ -172,7 +202,6 @@ font-size:14px; padding:15px 0; line-height: 1.5;
 .noteWrap thead th,
 .noteWrap tbody th {text-align:center; font-weight:bold; border-right:1px solid #cdcdcd; background:#f0f0f0}
 
-
 .noteWrap2 table {width:980px; margin:0 auto; border-top:1px solid #cdcdcd; border-left:1px solid #cdcdcd; margin-bottom:30px;}
 .noteWrap2 th,
 .noteWrap2 td{padding:8px; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd; line-height: 1.4}
@@ -180,9 +209,7 @@ font-size:14px; padding:15px 0; line-height: 1.5;
 .noteWrap2 tbody th {text-align:center; font-weight:bold; border-right:1px solid #cdcdcd; background:#f0f0f0}
 .noteWrap2 tbody tr:hover {background:#e4e4e4}
 
-
-
 .noteWrap h5 {font-size:16px; font-weight: bold; margin-bottom:20px}
-.noteWrap ol li {list-style-type: decimal; margin-left:20px}
+.noteWrap ol li {list-style-type: decimal; margin-left:20px; margin-bottom:10px}
 .noteWrap ol {margin-bottom:20px}
 .noteWrap p {margin:0}

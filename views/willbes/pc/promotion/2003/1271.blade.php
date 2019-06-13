@@ -25,7 +25,7 @@
   .wb_cts02 {background:#c37a5a url("https://static.willbes.net/public/images/promotion/2019/06/1271_01_bg.jpg") center top  no-repeat}
   .wb_cts03 {background:#e8e6f1;}
   .wb_cts03 .mv_bg {position:relative; width:1120px; height:600px; margin:0 auto; background:#e8e6f1 url("https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv_bg.jpg") no-repeat center top;}
-  .wb_cts03 .mv_bg ul {position:absolute; width:810px; top:50px; left:50%; margin-left:-400px}
+  .wb_cts03 .mv_bg ul {position:absolute; width:804px; top:60px; left:50%; margin-left:-400px; border:2px solid #222}
   .wb_cts03 .mv_bg li {display:inline; float:left;}
   .wb_cts03 .mv_bg ul:after {content:""; display:block; clear:both}
   .wb_cts04 {background:#f5f5f5;}
@@ -87,11 +87,11 @@
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv2.gif" alt="" /></li>
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv3.gif" alt="" /></li>
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv4.gif" alt="" /></li>
-        <li style="clear:left;"><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv5.gif" alt="" /></li>
+        <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv5.gif" alt="" /></li>
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv6.gif" alt="" /></li>
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv7.gif" alt="" /></li>
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv8.gif" alt="" /></li>
-        <li style="clear:left;"><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv9.gif" alt="" /></li>
+        <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv9.gif" alt="" /></li>
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv10.gif" alt="" /></li>
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv11.gif" alt="" /></li>
         <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_02_mv12.gif" alt="" /></li>

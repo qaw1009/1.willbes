@@ -35,7 +35,7 @@
 .Section.MainVisual .widthAuto {
     position: relative;
 }
-.Section.MainVisual div:last-child {    
+.Section.MainVisual div.summer {    
     background: url("https://static.willbes.net/public/images/promotion/main/3001_visual_190613_02_bg.jpg") no-repeat center top;
     text-align: center;
 }

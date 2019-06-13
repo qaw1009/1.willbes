@@ -2,9 +2,10 @@
 
 @section('content')
     <h5>- 윌비스 사용자 운영 사이트 메뉴를 생성하는 메뉴입니다.</h5>
-    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code', 'tab', false, [], true) !!}
-        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
+    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! csrf_field() !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], true) !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value="{{ $def_site_code }}"/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -39,48 +40,20 @@
                 <table id="list_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th class="searching searching_site_code rowspan">운영사이트 [<span class="blue">코드</span>]</th>
+                        <th class="rowspan">운영사이트 [<span class="blue">코드</span>]</th>
                         <th>정렬</th>
                         <th>뎁스</th>
                         <th>메뉴코드</th>
                         <th>메뉴구분</th>
-                        <th class="searching">메뉴경로 (하위메뉴 등록)</th>
-                        <th class="searching" style="width: 220px;">메뉴명 (메뉴 수정)</th>
+                        <th>메뉴경로 (하위메뉴 등록)</th>
+                        <th style="width: 220px;">메뉴명 (메뉴 수정)</th>
                         <th>URL</th>
-                        <th class="searching_is_use">사용여부</th>
+                        <th>사용여부</th>
                         <th>등록자</th>
                         <th>등록일</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($data as $row)
-                        <tr>
-                            <td>{{ $row['SiteName'] }} [<span class="blue">{{ $row['SiteCode'] }}</span>]</td>
-                            <td>
-                                <div class="form-group form-group-sm no-border-bottom">
-                                    <input type="text" name="order_num" class="form-control" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['MenuIdx'] }}" style="width: 80px;" />
-                                </div>
-                            </td>
-                            <td>{{ $row['MenuDepth'] }}</td>
-                            <td>{{ $row['MenuIdx'] }}</td>
-                            <td>{{ $row['MenuTypeName'] }}</td>
-                            <td>
-                                <a href="#none" class="btn-regist" data-idx="{{ $row['MenuIdx'] }}" data-menu-depth="{{ $row['MenuDepth'] + 1 }}"><u>{{ str_replace('>', ' > ', $row['MenuRouteName']) }}</u></a>
-                            </td>
-                            <td>
-                                @if($row['MenuDepth'] > 1)
-                                    <i class="fa fa-hand-o-right red bold" style="margin-left: {{ ($row['MenuDepth'] - 1) * 20 }}px;"></i>
-                                @endif
-                                <a href="#none" class="btn-modify" data-idx="{{ $row['MenuIdx'] }}"><u>{{ $row['MenuName'] }}</u></a>
-                            </td>
-                            <td>{{ $row['MenuUrl'] }}</td>
-                            <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
-                                <span class="hide">{{ $row['IsUse'] }}</span>
-                            </td>
-                            <td>{{ $row['RegAdminName'] }}</td>
-                            <td>{{ $row['RegDatm'] }}</td>
-                        </tr>
-                    @endforeach
                     </tbody>
                 </table>
             </form>
@@ -95,23 +68,70 @@
         $(document).ready(function() {
             // datatable setting
             $datatable = $list_table.DataTable({
-                ajax: false,
+                serverSide: true,
                 paging: false,
-                searching: true,
-                rowsGroup: ['.rowspan'],
                 buttons: [
                     { text: '<i class="fa fa-floppy-o mr-5"></i> 수동캐시저장', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 최상위 메뉴 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
+                ],
+                ajax: {
+                    'url' : '{{ site_url('/site/siteMenu/listAjax') }}',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend(arrToJson($search_form.serializeArray()), {});
+                    }
+                },
+                rowsGroup: ['.rowspan'],
+                columns: [
+                    {'data' : 'SiteName', 'render' : function(data, type, row, meta) {
+                        return data + '[<span class="blue">' + row.SiteCode + '</span>]';
+                    }},
+                    {'data' : 'OrderNum', 'render' : function(data, type, row, meta) {
+                        return '<input type="text" name="order_num" class="form-control input-sm" value="' + data + '" data-origin-order-num="' + data + '" data-idx="' + row.MenuIdx + '" style="width: 80px;" />';
+                    }},
+                    {'data' : 'MenuDepth'},
+                    {'data' : 'MenuIdx'},
+                    {'data' : 'MenuTypeName'},
+                    {'data' : 'MenuRouteName', 'render' : function(data, type, row, meta) {
+                        return '<a href="#none" class="btn-regist" data-idx="' + row.MenuIdx + '" data-menu-depth="' + (row.MenuIdx + 1) + '"><u>' + data.replace(/>/gi, ' > ') + '</u></a>';
+                    }},
+                    {'data' : 'MenuName', 'render' : function(data, type, row, meta) {
+                        var icon = '';
+                        if (row.MenuDepth > 1) {
+                            icon = '<i class="fa fa-hand-o-right red bold" style="margin-left: ' + ((row.MenuDepth - 1) * 20) + 'px;"></i>';
+                        }
+
+                        return icon + ' <a href="#none" class="btn-modify" data-idx="' + row.MenuIdx + '"><u>' + data + '</u></a>';
+                    }},
+                    {'data' : 'MenuUrl'},
+                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                        return data === 'Y' ? '사용' : '<span class="red">미사용</span>';
+                    }},
+                    {'data' : 'RegAdminName'},
+                    {'data' : 'RegDatm'}
                 ]
             });
 
-            // 초기 페이지 접근시 첫번째 탭 클릭 처리 (전체탭 제거)
-            if ($search_form.find('input[name="search_site_code"]').val() === '') {
-                setTimeout(function() {
-                    $('#tabs_site_code li:eq(0) > a').trigger('click');
-                }, 0);
-            }
+            // 카테고리 등록/수정 모달창 오픈
+            $list_form.on('click', '.btn-regist, .btn-modify', function() {
+                var is_regist = ($(this).prop('class').indexOf('btn-regist') !== -1) ? true : false;
+                var uri_param = '';
+
+                if (is_regist === true) {
+                    var menu_depth = (typeof $(this).data('menu-depth') != 'undefined') ? $(this).data('menu-depth') : 1;
+                    var parent_menu_idx = (menu_depth != 1) ? $(this).data('idx') : 0;
+
+                    uri_param = menu_depth + '/' + parent_menu_idx;
+                } else {
+                    uri_param = $(this).data('idx');
+                }
+
+                $('.btn-regist, .btn-modify').setLayer({
+                    'url' : '{{ site_url('/site/siteMenu/create/') }}' + uri_param,
+                    'width' : 900
+                });
+            });
 
             // 수동캐시저장 버튼 클릭
             $('.btn-save-cache').on('click', function() {
@@ -158,39 +178,10 @@
                 sendAjax('{{ site_url('/site/siteMenu/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace(location.pathname + dtParamsToQueryString($datatable));
+                        $datatable.draw();
                     }
                 }, showError, false, 'POST');
             });
-
-            // 카테고리 등록/수정 모달창 오픈
-            $('.btn-regist, .btn-modify').click(function() {
-                var is_regist = ($(this).prop('class').indexOf('btn-regist') !== -1) ? true : false;
-                var uri_param = '';
-
-                if (is_regist === true) {
-                    var menu_depth = (typeof $(this).data('menu-depth') != 'undefined') ? $(this).data('menu-depth') : 1;
-                    var parent_menu_idx = (menu_depth != 1) ? $(this).data('idx') : 0;
-
-                    uri_param = menu_depth + '/' + parent_menu_idx;
-                } else {
-                    uri_param = $(this).data('idx');
-                }
-
-                $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/site/siteMenu/create/') }}' + uri_param,
-                    'width' : 900
-                });
-            });
         });
-
-        // datatable searching
-        function datatableSearching() {
-            $datatable
-                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
-                .draw();
-        }
     </script>
 @stop

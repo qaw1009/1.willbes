@@ -179,4 +179,16 @@ class StatisticsGrade extends \app\controllers\BaseController
         $result = $this->regGradeModel->scoreMulti($MgIdx);
         $this->json_result($result, '처리완료되었습니다.', $result, $result);
     }
+
+
+    /**
+     * 정답 재처리
+     */
+    public function reGradingAjax()
+    {
+        $formData = $this->_reqP(null, false);
+        $MgIdx = element('MgIdx', $formData);
+        $result = $this->regGradeModel->reGrading($MgIdx);
+        $this->json_result($result['ret_cd'], $result['ret_msg']);
+    }
 }

@@ -30,7 +30,7 @@ class BaseOrder extends \app\controllers\BaseController
         // add join array
         $_show_add_join = ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct', 'visit_card'];
         if (in_array($this->_order_type, ['order', 'visit']) === true) {
-            $_show_add_join[] = 'campus';
+            $_show_add_join[] = 'campus_all';
         }
 
         // url segment 에서 숫자 값 리턴

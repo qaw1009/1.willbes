@@ -20,13 +20,10 @@
                         <td colspan="3" class="form-inline">
                             <select class="form-control mr-5" name="SiteCode" id="SiteCode" onChange="selSiteCode(this.value,'');">
                                 <option value="">사이트선택</option>
-                                @if($method == 'PUT')
-                                    <option value="2001" @if($data['SiteCode']=='2001') SELECTED @endif>온라인경찰</option>
-                                    <option value="2003" @if($data['SiteCode']=='2003') SELECTED @endif>온라인공무원</option>
-                                @else
-                                    <option value="2001">온라인경찰</option>
-                                    <option value="2003">온라인공무원</option>
-                                @endif
+                                <option value="2001" @if($data['SiteCode']=='2001') selected="selected" @endif>온라인경찰</option>
+                                <option value="2002" @if($data['SiteCode']=='2002') selected="selected" @endif>온라인경찰</option>
+                                <option value="2003" @if($data['SiteCode']=='2003') selected="selected" @endif>온라인공무원</option>
+                                <option value="2004" @if($data['SiteCode']=='2004') selected="selected" @endif>온라인경찰</option>
                             </select>
                             <span class="ml-20">저장 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</span>
                         </td>
@@ -284,13 +281,7 @@
         });
 
         function selSiteCode(num, num2){
-            if(num == 2001){
-                $('#GroupCcd').val(0);
-            } else {
-                $('#GroupCcd').val('');
-                $('#chkArea').html('');
-            }
-
+            $('#GroupCcd').val(0);
             if(num != null){
                 url = "{{ site_url("/predict/request/getSerialAjax") }}";
                 data = $('#regi_form').serialize();

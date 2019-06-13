@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select($arr_prof_info['SiteCode'], 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_category" name="search_category">
                             <option value="">카테고리</option>
                             @foreach($arr_lg_category as $row)

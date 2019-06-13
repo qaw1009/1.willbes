@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="search_is_use">조건검색</label>
                     <div class="col-md-4 form-inline">
-                        <select class="form-control" id="InterestCcd" name="InterestCcd" title="준비과정" required="required">
+                        <select class="form-control" id="InterestCcd" name="InterestCcd">
                             <option value="">준비과정</option>
                             @foreach($InterestCcd as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>

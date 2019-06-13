@@ -35,17 +35,7 @@ class Request extends \app\controllers\BaseController
      */
     public function index()
     {
-        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
-
-        $arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원'];
-        $arrtab = array();
-
-        $this->load->view('predict/request/index', [
-            'siteCodeDef' => $cateD1[0]['SiteCode'],
-            'cateD1' => $cateD1,
-            'arrsite' => $arrsite,
-            'arrtab' => $arrtab
-        ]);
+        $this->load->view('predict/request/index', []);
     }
 
     /**
@@ -118,14 +108,11 @@ class Request extends \app\controllers\BaseController
      */
     public function create($param)
     {
-        if($param) $PredictIdx = $param[0];
+        $PredictIdx = (empty($param[0]) === false) ? $param[0] : '';
+        $method = "CREATE";
+        $data = null;
 
-        if(empty($PredictIdx) === true){
-            $method = "CREATE";
-            $data = array();
-            $data['SiteCode'] = '2001';
-            $data['MockPart'] = '';
-        } else {
+        if(empty($PredictIdx) === false){
             $method = "PUT";
             $data = $this->predictModel->getProduct($PredictIdx);
         }

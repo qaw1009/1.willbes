@@ -6,7 +6,7 @@ class BasePassPredict extends \app\controllers\FrontController
     protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF', 'cert/certApplyF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('index','indexv2','createGradeMember','storeFinalPoint','predictMyInfo');
+    protected $auth_methods = array('index','indexv2','createGradeMember', 'createGradeMember2','storeFinalPoint', 'storeFinalPoint2','predictMyInfo');
 
     public function __construct()
     {
@@ -1199,11 +1199,11 @@ class BasePassPredict extends \app\controllers\FrontController
 
         //필수과목
         $add_condition = ['EQ' => ['Type' => 'P']];
-        $arr_base['arr_subject_ccd']['P'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part_ccd), '', $add_condition);
+        $arr_base['arr_subject_ccd']['P'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part), $add_condition);
 
         //선택과목
         $add_condition = ['EQ' => ['Type' => 'S']];
-        $arr_base['arr_subject_ccd']['S'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part_ccd), '', $add_condition);
+        $arr_base['arr_subject_ccd']['S'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part), $add_condition);
 
         $this->load->view('predict/1242_pop1', [
             'arr_base' => $arr_base
@@ -1367,6 +1367,90 @@ class BasePassPredict extends \app\controllers\FrontController
             'arr_base' => $arr_base,
             'data' => $data
         ]);
+    }
+
+    /**
+     * 회원점수 등록 폼
+     */
+    public function createGradeMember2()
+    {
+        $arr_base['predict_idx'] = element('predict', $this->_reqG(null));
+        $arr_base['METHOD'] = 'POST';
+
+        if (empty($arr_base['predict_idx']) === true) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
+
+        $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => $arr_base['predict_idx'], 'a.IsStatus' => 'Y']];
+        $member_ins_type = $this->predictFModel->findPredictFinalMember($arr_condition, 'a.PfIdx', false);
+        if (empty($member_ins_type) === false) {
+            show_alert('등록된 정보가 있습니다.', 'close');
+        }
+
+        $column = 'PredictIdx, MockPart';
+        $arr_condition = ['EQ' => ['PredictIdx' => $arr_base['predict_idx'],'IsUse' => 'Y']];
+        $arr_base['predict_data'] = $this->predictFModel->findPredictData($arr_condition, $column);
+        if (empty($arr_base['predict_data']) === true) {
+            show_alert('조회된 합격예측 서비스 정보가 없습니다.', 'close');
+        }
+
+        //직렬가공처리
+        $temp_mock_part = array_flip(explode(',', $arr_base['predict_data']['MockPart']));
+        $mock_part_ccd = $this->surveyModel->getSerial(0);
+        $temp_mock_part_ccd = array_pluck($mock_part_ccd,'CcdName','Ccd');
+        $arr_base['arr_mock_part'] = array_intersect_key($temp_mock_part_ccd, $temp_mock_part);
+
+        //필수과목
+        $add_condition = ['EQ' => ['Type' => 'P']];
+        $data_subject_p = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part), $add_condition);
+        $arr_base['arr_subject_ccd']['P'] = (empty($data_subject_p) === false) ? $data_subject_p['500'] : [];
+
+        //선택과목
+        $add_condition = ['EQ' => ['Type' => 'S']];
+        $data_subject_s = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part), $add_condition);
+        $arr_base['arr_subject_ccd']['S'] = (empty($data_subject_s) === false) ? $data_subject_s['500'] : [];
+
+        $this->load->view('predict/1244_pop', [
+            'arr_base' => $arr_base
+        ]);
+    }
+
+    public function storeFinalPoint2()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'predict', 'label' => '합격예측코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'announcement_type', 'label' => '공고지역', 'rules' => 'trim|required'],
+            ['field' => 'mock_part', 'label' => '응시직렬', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'subject_p[]', 'label' => '필수과목', 'rules' => 'trim|required|integer'],
+            ['field' => 'point_p[]', 'label' => '필수과목점수', 'rules' => 'trim|required'],
+            ['field' => 'subject_s[]', 'label' => '선택과목', 'rules' => 'trim|required|integer'],
+            ['field' => 'point_s[]', 'label' => '선택과목점수', 'rules' => 'trim|required'],
+        ];
+
+        //체감 난이도 유효성검사
+        foreach ($this->_reqP('subject_p') as $key => $val) {
+            if (empty($this->_reqP('level_p')[$val]) === true) {
+                $rules = array_merge($rules, [
+                    ['field' => 'level_p', 'label' => '난이도', 'rules' => 'trim|required']
+                ]);
+            }
+        }
+
+        foreach ($this->_reqP('subject_s') as $key => $val) {
+            if (empty($this->_reqP('level_s')[$val]) === true) {
+                $rules = array_merge($rules, [
+                    ['field' => 'level_s', 'label' => '난이도', 'rules' => 'trim|required']
+                ]);
+            }
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->predictFModel->addPredictForMemberPoint2($this->_reqP(null));
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**

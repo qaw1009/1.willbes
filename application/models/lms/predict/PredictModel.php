@@ -826,8 +826,8 @@ class PredictModel extends WB_Model
             $data = array(
                 'PredictIdx'       => $PredictIdx,
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
-                'MobileServiceIs' => implode(',', $this->input->post('MobileServiceIs')),
-                'SurveyIs'       => implode(',', $this->input->post('SurveyIs')),
+                'MobileServiceIs' => empty($this->input->post('MobileServiceIs')) ? null : implode(',', $this->input->post('MobileServiceIs')),
+                'SurveyIs'       => empty($this->input->post('SurveyIs')) ? null : implode(',', $this->input->post('SurveyIs')),
                 'SiteCode'      => $this->input->post('SiteCode'),
                 'ProdName'      => $this->input->post('ProdName', true),
                 'MockYear'       => $this->input->post('MockYear'),
@@ -2964,6 +2964,7 @@ class PredictModel extends WB_Model
                             ,E.CcdName as TakeMockPartName
                             ,F.CcdName as TakeAreaCcdName
                             ,G.TakeNo
+                            ,REPLACE(A.EtcValues,\',\',\'<BR>\') AS SetEtcValues
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -2977,7 +2978,8 @@ class PredictModel extends WB_Model
                             select
                             PfIdx
                             #,group_concat(CONCAT(\'{subjectName:"\',bb.CcdName,\'",point:"\',aa.Point,\'"}\')order by PfpIdx) as pointJson
-                            ,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point) order by PfpIdx separator \'<BR>\') as pointJson
+                            #,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point) order by PfpIdx separator \'<BR>\') as pointJson
+                            ,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point,IF(ISNULL(aa.Level),\'\',CONCAT(\'(\',aa.Level,\')\'))) order by PfpIdx separator \'<BR>\') as pointJson
                             from
                                 lms_predict_final_point aa
                                 join lms_predict_code bb on aa.Subject = bb.Ccd
@@ -2987,7 +2989,7 @@ class PredictModel extends WB_Model
                         join lms_product_predict C on A.PredictIdx = C.PredictIdx
                         join lms_member D on A.MemIdx = D.MemIdx
                         join lms_predict_code E on A.TakeMockPart = E.Ccd
-                        join lms_sys_code F on A.TakeAreaCcd = F.Ccd
+                        left join lms_sys_code F on A.TakeAreaCcd = F.Ccd
                         left outer join lms_cert_apply G on A.MemIdx = G.MemIdx And A.CertIdx = G.CertIdx And G.ApprovalStatus=\'Y\' And G.IsStatus=\'Y\'  
                      where A.IsStatus=\'Y\'
         ';
@@ -3013,6 +3015,8 @@ class PredictModel extends WB_Model
                             ,F.CcdName as TakeAreaCcdName
                             ,B.pointJson
                             ,A.StrengthPoint,A.AddPoint
+                            ,A.AnnouncementType
+                            ,REPLACE(A.EtcValues,\',\',\'\n\') AS SetEtcValues
                             ,A.RegDatm
             ';
 
@@ -3026,7 +3030,8 @@ class PredictModel extends WB_Model
                                 select
                                 PfIdx
                                 #,group_concat(CONCAT(\'{subjectName:"\',bb.CcdName,\'",point:"\',aa.Point,\'"}\')order by PfpIdx) as pointJson
-                                ,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point) order by PfpIdx separator \'\n\') as pointJson
+                                #,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point,\'(\',aa.Level,\')\') order by PfpIdx separator \'\n\') as pointJson
+                                ,GROUP_CONCAT(CONCAT(\'-\',bb.CcdName,\':\',aa.Point,IF(ISNULL(aa.Level),\'\',CONCAT(\'(\',aa.Level,\')\'))) order by PfpIdx separator \'\n\') as pointJson
                                 from
                                     lms_predict_final_point aa
                                     join lms_predict_code bb on aa.Subject = bb.Ccd
@@ -3036,7 +3041,7 @@ class PredictModel extends WB_Model
                             join lms_product_predict C on A.PredictIdx = C.PredictIdx
                             join lms_member D on A.MemIdx = D.MemIdx
                             join lms_predict_code E on A.TakeMockPart = E.Ccd
-                            join lms_sys_code F on A.TakeAreaCcd = F.Ccd
+                            left join lms_sys_code F on A.TakeAreaCcd = F.Ccd
                             left outer join lms_cert_apply G on A.MemIdx = G.MemIdx And A.CertIdx = G.CertIdx And G.ApprovalStatus=\'Y\' And G.IsStatus=\'Y\'  
                          where A.IsStatus=\'Y\'
             ';

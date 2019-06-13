@@ -169,15 +169,18 @@ class PredictFModel extends WB_Model
      * 합격예측 회원 등록 정보 조회
      * @param $arr_condition
      * @param string $column
+     * @param bool $cert_type 조인타입
      * @return mixed
      */
-    public function findPredictFinalMember($arr_condition, $column = 'a.PfIdx')
+    public function findPredictFinalMember($arr_condition, $column = 'a.PfIdx', $cert_type = true)
     {
         $from = "
             FROM lms_predict_final AS a
-            INNER JOIN lms_cert_apply AS b ON a.CertIdx = b.CertIdx AND a.MemIdx = b.MemIdx
             INNER JOIN lms_predict_code AS c ON a.TakeMockPart = c.Ccd AND c.IsUse = 'Y'
         ";
+        if ($cert_type === true) {
+            $from .= 'INNER JOIN lms_cert_apply AS b ON a.CertIdx = b.CertIdx AND a.MemIdx = b.MemIdx';
+        }
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select '. $column . $from . $where)->row_array();
@@ -230,6 +233,39 @@ class PredictFModel extends WB_Model
             }
 
             if ($this->_addPredictFinalPoint($input) === false) {
+                throw new \Exception('저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    public function addPredictForMemberPoint2($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => element('predict', $input), 'a.IsStatus' => 'Y']];
+            $member_ins_type = $this->findPredictFinalMember($arr_condition, 'a.PfIdx', false);
+            if (empty($member_ins_type) === false) {
+                throw new \Exception('등록된 정보가 있습니다. 실시간 참여현황에서 확인해 주세요.');
+            }
+
+            $column = 'PredictIdx, MockPart';
+            $arr_condition = ['EQ' => ['PredictIdx' => element('predict', $input),'IsUse' => 'Y']];
+            $predict_result = $this->findPredictData($arr_condition, $column);
+            if (empty($predict_result) === true) {
+                throw new \Exception('조회된 합격예측 서비스 정보가 없습니다.');
+            }
+
+            if ($this->_addPredictFinal($input) === false) {
+                throw new \Exception('저장에 실패했습니다.');
+            }
+
+            if ($this->_addPredictFinalPoint2($input) === false) {
                 throw new \Exception('저장에 실패했습니다.');
             }
 
@@ -313,7 +349,9 @@ class PredictFModel extends WB_Model
                 'TakeMockPart' => element('mock_part', $input),
                 'TakeAreaCcd' => element('take_area', $input),
                 'StrengthPoint' => element('strength_point', $input),
-                'AddPoint' => element('add_point', $input)
+                'AddPoint' => element('add_point', $input),
+                'AnnouncementType' => element('announcement_type', $input),
+                'EtcValues' => (empty(element('etc_values', $input)) === false) ? implode(',', element('etc_values', $input)) : ''
             ];
 
             if ($this->_conn->set($data)->insert('lms_predict_final') === false) {
@@ -346,6 +384,7 @@ class PredictFModel extends WB_Model
             foreach (element('subject_p_code', $input)[$mock_part] as $key => $val) {
                 if ((element('subject_p', $input)[$val]) === true) throw new \Exception('필수과목점수를 입력해주세요.');
                 $data[] = [
+                    'PredictIdx' => element('predict', $input),
                     'PfIdx' => $pf_idx,
                     'MemIdx' => $this->session->userdata('mem_idx'),
                     'Subject' => $val,
@@ -361,6 +400,7 @@ class PredictFModel extends WB_Model
                 foreach (element('subject_s', $input)[$mock_part] as $key => $val) {
                     if ((element('point', $input)[$mock_part]) === true) throw new \Exception('선택 과목 점수가 없습니다.');
                     $data[] = [
+                        'PredictIdx' => element('predict', $input),
                         'PfIdx' => $pf_idx,
                         'MemIdx' => $this->session->userdata('mem_idx'),
                         'Subject' => $val,
@@ -378,6 +418,52 @@ class PredictFModel extends WB_Model
             $final_point = round(((($total_subject_p + $total_subject_s) / 5) / 2), 2) + (element('strength_point', $input, '0') / 2) + element('add_point', $input);
             if ($this->_conn->set(['FinalPoint' => $final_point])->where('PfIdx', $pf_idx)->update('lms_predict_final') === false) {
                 throw new \Exception('최종 환산점수 등록에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 과목점수 저장 유형2
+     * @param $input
+     * @return array|bool
+     */
+    private function _addPredictFinalPoint2($input)
+    {
+        try {
+            $data = [];
+            $pf_idx = $this->_conn->insert_id();
+            foreach (element('subject_p', $input) as $key => $val) {
+                if (empty(element('point_p', $input)[$key]) === true) throw new \Exception('필수과목점수를 입력해주세요.');
+                $data[] = [
+                    'PredictIdx' => element('predict', $input),
+                    'PfIdx' => $pf_idx,
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'Subject' => $val,
+                    'Point' => element('point_p', $input)[$key],
+                    'Level' => (empty(element('level_p', $input)[$val][0]) === false) ? element('level_p', $input)[$val][0] : ''
+                ];
+            }
+
+            foreach (element('subject_s', $input) as $key => $val) {
+                if (empty(element('point_s', $input)[$key]) === true) throw new \Exception('선택과목점수를 입력해주세요.');
+                $data[] = [
+                    'PredictIdx' => element('predict', $input),
+                    'PfIdx' => $pf_idx,
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'Subject' => $val,
+                    'Point' => element('point_s', $input)[$key],
+                    'Level' => (empty(element('level_s', $input)[$val][0]) === false) ? element('level_s', $input)[$val][0] : ''
+                ];
+            }
+
+            foreach ($data as $key => $val) {
+                if ($this->_conn->set($data[$key])->insert('lms_predict_final_point') === false) {
+                    throw new \Exception('저장에 실패했습니다.');
+                }
             }
 
         } catch (\Exception $e) {

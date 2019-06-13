@@ -1843,4 +1843,77 @@ class RegGradeModel extends WB_Model
         return true;
     }
 
+
+    public function reGrading($MgIdx)
+    {
+        $y2n = 0;
+        $n2y = 0;
+
+        if(empty($MgIdx) == true){
+            return [
+                'ret_cd' => true,
+                'ret_msg' => '그룹이 없습니다.'
+            ];
+        }
+        // 해당 그룹의 모든 답안지를 구해온다.
+        $query = " SELECT g.MgIdx, lma.*, lmq.RightAnswer, lmq.QuestionOption
+                FROM lms_mock_group as g
+                    INNER JOIN lms_mock_group_r_product as grp on grp.MgIdx = g.MgIdx
+                    INNER JOIN lms_mock_answerpaper lma on grp.ProdCode = lma.ProdCode
+                    INNER JOIN lms_mock_questions lmq on lma.MqIdx = lmq.MqIdx
+                WHERE lmq.QuestionOption = 'S' AND (
+                    (lma.Answer <> lmq.RightAnswer and IsWrong = 'Y')
+                    or (lma.Answer = lmq.RightAnswer and IsWrong = 'N')
+                )
+                and g.MgIdx = ".$MgIdx ;
+
+        $list = $this->_conn->query($query)->result_array();
+        if(count($list) <= 0){
+            return [
+                'ret_cd' => true,
+                'ret_msg' => '잘못처리된 정답이 없습니다.'
+            ];
+        }
+
+        try{
+            $this->_conn->trans_begin();
+
+            foreach($list as $key => $row){
+                if($row['Answer'] == $row['RightAnswer']){
+                    // 답이 동일하면
+                    $data = ['IsWrong' => 'Y'];
+                    $n2y ++;
+                } else {
+                    // 동일하지 않으면
+                    $data = ['IsWrong' => 'N'];
+                    $y2n ++;
+                }
+
+                if ($this->_conn->
+                    set($data)->
+                    where(['MapIdx'=> $row['MapIdx'],
+                        'ProdCode'=> $row['ProdCode'],
+                        'MrIdx' => $row['MrIdx'],
+                        'MpIdx' => $row['MpIdx'],
+                        'MqIdx' => $row['MqIdx']
+                    ])->
+                    update($this->_table['mockAnswerPaper']) === false) {
+                    throw new \Exception('답안 업데이트에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch(\Exception $e){
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return [
+            'ret_cd' => true,
+            'ret_msg' => $y2n.'개가 오답으로, '.$n2y.'개가 정답으로 변경되었습니다.\n조점정수를 반영해야 변경된 답안이 적용됩니다.'
+        ];
+
+    }
+
 }

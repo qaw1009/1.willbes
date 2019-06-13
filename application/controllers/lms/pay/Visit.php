@@ -7,7 +7,7 @@ class Visit extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/site', 'sys/code');
     protected $helpers = array();
-    private $_list_add_join = array('refund', 'campus', 'print_cert_log');
+    private $_list_add_join = array('refund', 'campus_all', 'print_cert_log');
 
     public function __construct()
     {
@@ -97,7 +97,7 @@ class Visit extends BaseOrder
             ],
             'IN' => [
                 'O.SiteCode' => $arr_site_code,     // 학원 사이트 권한 추가
-                'PL.CampusCcd' => $arr_site_campus_ccd,     // 학원 캠퍼스 권한 추가
+                'ifnull(PL.CampusCcd, ifnull(RRM.CampusCcd, RRS.CampusCcd))' => $arr_site_campus_ccd,     // 학원 캠퍼스 권한 추가
                 'OP.PayStatusCcd' => array_values(array_filter_keys($this->orderListModel->_pay_status_ccd, ['receipt_wait', 'paid', 'refund']))    // 방문결제용 결제상태 코드만 조회
             ]
         ];
@@ -110,7 +110,7 @@ class Visit extends BaseOrder
                     'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                     'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
                     'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
-                    'PL.CampusCcd' => $this->_reqP('search_campus_ccd')
+                    'ifnull(PL.CampusCcd, ifnull(RRM.CampusCcd, RRS.CampusCcd))' => $this->_reqP('search_campus_ccd')
                 ],
                 'ORG1' => [
                     'LKR' => [

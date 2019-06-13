@@ -154,7 +154,7 @@
                         if(ret.ret_cd) {
                             notifyAlert('success', '알림', ret.ret_msg);
                             $("#pop_modal").modal('toggle');
-                            location.replace('{{ site_url('/site/siteMenu/index/') }}' + dtParamsToQueryString($datatable));
+                            $datatable.draw();
                         }
                     }, showValidateError, null, false, 'alert');
                 });

@@ -27,7 +27,7 @@
             z-index:1;
         }
 
-        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_bg.jpg) no-repeat center top}
 
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
         .wb_pop4 {background:#313131; padding-bottom:100px}

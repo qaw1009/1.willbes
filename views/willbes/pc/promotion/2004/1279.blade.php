@@ -216,7 +216,7 @@ font-size:16px; padding:10px 0; line-height: 1.5;
         <div id="content_1" class="tabCts pb90">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1279_tab01_01.jpg" usemap="#Map1279A" title="군무원 마무리 전략 특강" border="0" /><br>
             <map name="Map1279A" id="Map1279A">
-                <area shape="rect" coords="239,533,477,582" href="#" onclick="javascript:alert('준비중입니다.');" alt="온라인무료수강신청" />
+                <area shape="rect" coords="239,533,477,582" href="https://pass.willbes.net/lecture/index/cate/3024/pattern/free?search_text=UHJvZE5hbWU66riw7Lac66y47KCc67aE7ISd" target="_blank" alt="온라인무료수강신청" />
                 <area shape="rect" coords="240,585,478,635" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&course_idx=1063" target="_blank" alt="학원실강수강신청" />
                 <area shape="rect" coords="257,966,469,1016" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153710" target="_blank" alt="권기태국어" />
                 <area shape="rect" coords="653,964,864,1016" href="https://pass.willbes.net/lecture/show/cate/3024/pattern/only/prod-code/153268" target="_blank" alt="전수환경영학" />

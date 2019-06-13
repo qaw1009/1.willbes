@@ -35,6 +35,10 @@
 .Section.MainVisual .widthAuto {
     position: relative;
 }
+.Section.MainVisual div:last-child {    
+    background: url("https://static.willbes.net/public/images/promotion/main/3001_visual_190613_02_bg.jpg") no-repeat center top;
+    text-align: center;
+}
 .cop .smallTit {
     border-top:1px solid #b8b8b8;
     font-size: 22px;
@@ -287,7 +291,7 @@
 .newPlaybn .layer .pngimg-real a {display:block}
 
 /* Main Container : flipped : Cop */
-.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 40px; padding-bottom:30px; margin-top: 60px}
+.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 40px; padding-bottom:30px; /*margin-top: 60px*/}
 .Flipped ul.inner {height:370px}
 .Flipped ul.inner li {position: relative; float:left; width:280px; height:100%; margin-left:20px; overflow: hidden;}
 .Flipped ul.inner li:first-child {width:520px; margin-left:0}

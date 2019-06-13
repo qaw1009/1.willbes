@@ -13,10 +13,10 @@
 
                     if (tab_txt.indexOf('경찰') > -1) {
                         $('#txt_prev_sales_view').html('T존 관리자');
-                        $('#btn_prev_sales_view').prop('href', 'http://c3.willbescop.net/TZON/login.html?userId={{ $tzone_admin_id }}');
+                        $('#btn_prev_sales_view').prop('href', 'http://c3.willbescop.net/TZON/login.html?userId=' + encodeURIComponent('{{ $tzone_admin_id }}'));
                     } else {
                         $('#txt_prev_sales_view').html('강사 마이페이지');
-                        $('#btn_prev_sales_view').prop('href', 'http://w1.willbesgosi.net/main/index.html?userId={{ $tzone_admin_id }}');
+                        $('#btn_prev_sales_view').prop('href', 'http://w1.willbesgosi.net/main/index.html?userId=' + encodeURIComponent('{{ $tzone_admin_id }}'));
                     }
                 }
             });

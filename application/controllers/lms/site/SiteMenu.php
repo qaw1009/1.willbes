@@ -119,8 +119,8 @@ class SiteMenu extends \app\controllers\BaseController
 
         $result = $this->siteMenuModel->{$method . 'SiteMenu'}($this->_reqP(null, false));
 
-        // 사이트 메뉴 캐쉬 저장
-        $this->_saveSiteMenuCache($result);
+        // 사이트 메뉴 캐쉬 저장 (빈번한 캐쉬수정 방지, 수동캐시저장 버튼 활용)
+        //$this->_saveSiteMenuCache($result);
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

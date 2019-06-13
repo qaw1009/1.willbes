@@ -1946,11 +1946,10 @@ class SurveyModel extends WB_Model
     /**
      * 그룹공통코드 배열에 해당하는 공통코드 조회
      * @param array $group_ccds
-     * @param string $add_column
      * @param array $add_condition
      * @return array
      */
-    public function getCcdInArray($group_ccds = [], $add_column = '', $add_condition = [])
+    public function getCcdInArray($group_ccds = [], $add_condition = [])
     {
         $column = 'GroupCcd, Ccd, CcdName';
         $arr_condition = ['IN' => ['GroupCcd' => $group_ccds], 'EQ' => ['IsUse' => 'Y']];

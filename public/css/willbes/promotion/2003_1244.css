@@ -13,6 +13,13 @@
 
 /*****************************************************************/  
 
+.skybanner {
+    position:fixed;
+    top:250px;
+    right:10px;
+    z-index:1;
+}
+
 .evtTop {
     background:#c8b29b url(https://static.willbes.net/public/images/promotion/2019/05/1244_top_bg.jpg) no-repeat center top; padding-bottom:125px;
 }

@@ -27,7 +27,7 @@
             z-index:1;
         }
 
-        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_190603_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_bg.jpg) no-repeat center top}
 
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
         .wb_pop4 {background:#313131; padding-bottom:100px}
@@ -184,7 +184,7 @@
 
 
         <div class="evtCtnsBox wb_pop2" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_190603.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
                 <area shape="rect" coords="431,1089,562,1117" href="javascript:certOpen();" alt="수강생인증"/>
                 <area shape="rect" coords="568,1089,697,1120" href="javascript:goDesc('tab3')" alt="이용안내"/>

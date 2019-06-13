@@ -37,10 +37,12 @@
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        <input type="checkbox" class="flat" id="_is_all" value="Y"><span class="bold mr-10">전체</span>
-                        @foreach($arr_prof_info['arr_prof_cate_code'] as $key => $val)
-                            <input type="checkbox" class="flat" name="cate_code[]" value="{{$val}}" @if(empty($data['CateCodes'][$val]) === false)checked="checked"@endif>{{$arr_prof_info['arr_prof_cate_name'][$key]}}
-                        @endforeach
+                        <div class="checkbox">
+                            <input type="checkbox" class="flat" id="_is_all" value="Y"> <label for="_is_all" class="input-label bold">전체</label>
+                            @foreach($arr_prof_info['arr_prof_cate_code'] as $key => $val)
+                                <input type="checkbox" class="flat" name="cate_code[]" value="{{$val}}" @if(empty($data['CateCodes'][$val]) === false)checked="checked"@endif> <label class="input-label">{{$arr_prof_info['arr_prof_cate_name'][$key]}}</label>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
 

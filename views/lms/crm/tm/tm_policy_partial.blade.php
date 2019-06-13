@@ -36,7 +36,7 @@
             <div class="modal-body">
                 <div class="form-group form-group-sm">
                     <div class="x_title no-border text-left">• TM 대상</div>
-                    <div class="x_txt">- 활성화된 회원(휴면, 탈퇴회원 제외) 중 ‘블랙컨슈머’ 회원 제외 and SMS 수신동의 ‘Y’인 회원</div>
+                    <div class="x_txt">- 활성화된 회원(휴면, 탈퇴회원 제외) 중 ‘블랙컨슈머’ 회원 및 BtoB 회원 제외이며 SMS 수신동의 ‘Y’인 회원</div>
 
                     <div class="x_title no-border text-left">• TM 배정 조건</div>
                     <div class="x_txt">- 신규/장바구니/회수의 경우 1회 배정 시 이후 30일간 배정되지 않음</div>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="x_title no-border text-left">• 배정 회원 조회</div>
-                    <div class="x_txt">- 접근일로부터 3개월 이내만 배정된 회원 검색/조회 가능</div>
+                    <div class="x_txt">- 배정일로부터 1년 이내만 배정된 회원 검색/조회 가능</div>
 
                     <div class="x_title no-border text-left">• 결제/환불 집계 조건</div>
                     <div class="x_txt">

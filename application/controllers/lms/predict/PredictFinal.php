@@ -67,7 +67,7 @@ class PredictFinal extends \app\controllers\BaseController
 
             $list = $this->predictModel->listPredictFinalExcel($arr_condition, ['A.PfIdx' => 'desc']);
             $file_name = '최종합격예측등록현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
-            $headers = ['합격예측명', '이름', '아이디', '휴대폰번호', '응시번호', '직렬', '지역', '과목점수', '체력점수', '가산점', '등록일'];
+            $headers = ['합격예측명', '이름', '아이디', '휴대폰번호', '응시번호', '직렬', '지역', '과목점수(난이도)', '체력점수', '가산점', '시험공고', '기타데이터', '등록일'];
 
             // export excel
             /*----  다운로드 정보 저장  ----*/

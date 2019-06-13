@@ -170,7 +170,6 @@ class Qna extends BaseBoard
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.ProfIdx' => $prof_idx,
-                'LB.MdCateCode' => $this->_reqP('search_md_cate_code'),
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
                 'LB.TypeCcd' => $this->_reqP('search_type_group_ccd'),
                 'LB.ReplyStatusCcd' => $this->_reqP('search_reply_type'),
@@ -208,6 +207,9 @@ class Qna extends BaseBoard
             $sub_query_condition = [
                 'EQ' => [
                     'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_md_cate_code')
+                ],
+                'LKR' => [
                     'subLBrC.CateCode' => $this->_reqP('search_category')
                 ]
             ];

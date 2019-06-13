@@ -292,7 +292,8 @@ class BaseBoard extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'a.ProfIdx' => $prof_idx
+                'a.ProfIdx' => $prof_idx,
+                'a.IsStatus' => 'Y'
             ]
         ];
         return $this->professorModel->findProfessorDetail('a.ProfNickName, a.SiteCode, b.SiteName, c.CateCode, c.CateName', $arr_condition);

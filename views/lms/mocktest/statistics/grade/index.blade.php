@@ -103,6 +103,7 @@
                         <th rowspan="2" class="text-center">통계확인</th>
                         <th rowspan="2" class="text-center">성적오픈일</th>
                         <th rowspan="2" class="text-center">복수정답처리</th>
+                        <th rowspan="2" class="text-center">답안재검</th>
                         <th rowspan="2" class="text-center">조정점수</th>
                         <th rowspan="2" class="text-center">등록일</th>
                     </tr>
@@ -191,6 +192,9 @@
                             return row.GradeOpenDatm != null ? '<span class="blue underline-link" onClick="scoreMulti('+ row.MgIdx +')">' + '복수정답처리' + '</span>' : '';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return row.GradeOpenDatm != null ? '<span class="blue underline-link" onClick="reGrading('+ row.MgIdx +')">' + '답안재검' + '</span>' : '';
+                        }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.GradeOpenDatm != null ? '<span class="blue underline-link" onClick="scoreMake('+ row.MgIdx +')">' + '조정점수반영' + '</span>' : '';
                         }},
                     {'data' : 'wAdminName', 'class': 'text-center'}
@@ -230,6 +234,20 @@
             $('#MgIdx').val(mgidx);
 
             var _url = '{{ site_url('/mocktest/statisticsGrade/scoreMultiAjax') }}';
+            ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
+        function reGrading(mgidx){
+            if(!confirm("답안재검은 모든 일반문제를 새로 채점하기 때문에 시간이 오래걸릴 수 있습니다.\n다시 채점하시겠습니까?"))
+                return;
+
+            $('#MgIdx').val(mgidx);
+
+            var _url = '{{ site_url('/mocktest/statisticsGrade/reGradingAjax') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);

@@ -4,7 +4,10 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <link href="/public/css/willbes/promotion/2003_1244.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
-    <div class="evtContent NGR" id="evtContainer">    
+    <div class="evtContent NGR" id="evtContainer">
+        <div class="skybanner">
+            <a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}"><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_skybanner.jpg" title="내 예상점수와 체감 난이도는?" /></a>
+        </div>
 
         <div class="evtCtnsBox evtTop">
             <div>
@@ -37,19 +40,38 @@
                     </a>
                 </li>
                 <li>
-                    <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}">
+                    {{--<a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}">--}}
+                    <a id='tab3' href="#" onclick="javascript:alert('준비중입니다.'); return false;">
+                        <strong>무료응시</strong>
+                        <span>미리 보는 시험</span>
+                        <div>온라인 전국 모의고사</div>
+                    </a>
+                </li>     
+                <li>
+                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}">
+                        <strong>윌비스 TV</strong>   
+                        <span>적중 마무리 특강</span>
+                        <div>LIVE 특강</div>
+                    </a>
+                </li>
+                {{-- 15일 노출 영역
+                <li>
+                    <a id='tab3' href="#none" onclick="javascript:alert('준비중입니다.'); return false;">
                         <strong>2019</strong>
                         <span>서울시/지방직 9급</span>
                         <div>총평/해설/해설강의</div>
                     </a>
                 </li>     
                 <li>
-                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}">
+                    <a id='tab4' href="#none" onclick="javascript:alert('준비중입니다.'); return false;">
+                    <!-- 15일 11시 노출
+                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}">-->
                         <strong>2019</strong>   
                         <span>서울시/지방직 9급</span>
                         <div>평균 점수/체감난이도</div>
                     </a>
                 </li>
+                --}}
                 <li>
                     <a id='tab5' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=5#content_5') }}">
                         <strong>진행중</strong>  
@@ -357,6 +379,7 @@
             </div>  
         </div>
 
+        {{-- 17일 이후 노출--}}
         <div id="content_3" class="tabCts pb90 pt100">
             <ul class="assayTab assayTab2">
                 <li><a href="#assayTab10">서울시</a></li>
@@ -539,7 +562,8 @@
                 </div>
             </div> 
         </div>
-
+        
+        {{-- 15일 노출--}}
         <div id="content_4" class="tabCts pb90 pt100">
             <ul class="assayTab assayTab2">
                 <li><a href="#assayTab20">서울시</a></li>
@@ -593,7 +617,79 @@
             </ul> 
         </div>
 
-        {{--
+        <div id="content_5" class="tabCts">
+            <p>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_08_01.jpg" usemap="#Map1244H" title="소문내기 이벤트" border="0" />
+                <map name="Map1244H" id="Map1244H">
+                    <area shape="rect" coords="917,223,1031,252" href="/pass/support/notice/show?board_idx=228393" target="_blank" alt="당첨확인"/>
+                    <area shape="rect" coords="227,860,551,926" href="#none" alt="예상점수 등록하기" />
+                    <area shape="rect" coords="569,861,890,925" href="/promotion/index/cate/3019/code/1244?tab=4#content_4" alt="평균 점수 보러가기" />
+                </map>
+            </p>
+            {{--댓글--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_normal_partial')
+            @endif
+
+            <div class="note">
+                <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_3.jpg" /></p>
+                <div class="noteWrap">
+                    <div id="event01">
+                        <ol>
+                            <li>
+                                이벤트 기간<br>
+                                - 신청 기간: 6월 15일(토)~6월 30(일) (16일간)<br>
+                                - 당첨자 발표: 7월 12일(금)<br>
+                            </li>
+                            <li>
+                                이벤트 대상<br>
+                                - 설문조사(예상 점수/체감 난이도 등록) 참여자<br>
+                                - 후기 작성/적중 신고 참여자<br>
+                            </li>
+                            <li>
+                                선발 및 추첨<br>
+                                - 참여자 전원 면접 캠프 20% 수강 할인권 지급<br>
+                                - 경품: 설문작성자와 후기/적중 신고 작성자 중 무작위 추첨되며, <span class="tx-origin-red">후기/적중 신고 댓글을 정성스럽게 작성해주신 분들에게 유리합니다. </span><br>
+                                - 영화예매권-아이스크림-드링크 순으로 추첨이 진행됩니다. 기추첨된 인원이 재추첨 될 시, 재추첨을 통해 다른 인원을 추첨합니다. (중복 당첨 불가)<br>
+                                - 6월 17일(월)에 공지사항을 통해 당첨자가 발표됩니다.
+                            </li>
+                            <li>
+                                이벤트 혜택<br>
+                                - 경품은 모바일 쿠폰(기프티콘) 형태로 발송되며, 발송은 1회로 제한합니다.<br>
+                                - 기프티콘은 이벤트 참여시 기재된 전화번호로 7월 12일에 발송됩니다.<br>
+                                - 휴대폰번호 오류 시 기프티콘은 재발송 되지 않습니다.<br>
+                                - 휴대전화 단말기의 MMS 수신상태가 양호하지 않은 경우, 기프티콘 발송이 불가할 수 있습니다.<br>
+                                - 이벤트 참여 전 회원정보(휴대폰 번호)를 정확히 수정해주시기 바랍니다. <br>
+                                - 기프티콘을 수신한 이후 개인사정에 의해 유효기간이 지나 사용하지 못한 경우 사용하지 않은 혜택에 대해서는 별도로 보상하지 않습니다.<br>
+                            </li>
+                            <li>
+                                기타<br>
+                                - URL 공유목적의 댓글을 제외한 모든 댓글은 사전 예고없이 삭제될 수 있습니다.<br>
+                            </li>
+                        </ol>
+                    </div>
+                    <p>※ 유의사항을 읽지 않고 발생한 모든 상황에 대해서 윌비스고시학원은 책임지지 않습니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        {{-- 기존 3번탭
+        <div id="content_3" class="tabCts">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_03_1A.jpg" usemap="#Map1244C" title="윌비스 전국 모의고사" border="0" />
+            <map name="Map1244C" id="Map1244C">
+                <area shape="rect" coords="379,1868,740,1932" href="https://pass.willbes.net/pass/mockTest/apply/cate/?state=1&s_type=&s_keyword=" target="_blank" alt="온라인모의고사신청" />
+            </map>
+            <!--레이어팝업-->
+            <div id="popup" class="Pstyle">
+                <span class="b-close">X</span>
+                <div class="content">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_03_2.jpg" />
+                </div>
+            </div>
+        </div>
+        --}}
+
+        {{-- 기존 4번탭
         <div id="content_4" class="tabCts">
             @php
                 //라이브방송 날짜 셋팅
@@ -710,65 +806,9 @@
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
             @endif        
         </div>
-        --}}
+        --}}        
 
-        <div id="content_5" class="tabCts">
-            <p>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_08_01.jpg" usemap="#Map1244H" title="소문내기 이벤트" border="0" />
-                <map name="Map1244H" id="Map1244H">
-                    <area shape="rect" coords="917,223,1031,252" href="/pass/support/notice/show?board_idx=228393" target="_blank" alt="당첨확인"/>
-                    <area shape="rect" coords="227,860,551,926" href="#none" alt="예상점수 등록하기" />
-                    <area shape="rect" coords="569,861,890,925" href="/promotion/index/cate/3019/code/1244?tab=4#content_4" alt="평균 점수 보러가기" />
-                </map>
-            </p>
-            {{--댓글--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_normal_partial')
-            @endif
-
-            <div class="note">
-                <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_3.jpg" /></p>
-                <div class="noteWrap">
-                    <div id="event01">
-                        <ol>
-                            <li>
-                                이벤트 기간<br>
-                                - 신청 기간: 6월 15일(토)~6월 30(일) (16일간)<br>
-                                - 당첨자 발표: 7월 12일(금)<br>
-                            </li>
-                            <li>
-                                이벤트 대상<br>
-                                - 설문조사(예상 점수/체감 난이도 등록) 참여자<br>
-                                - 후기 작성/적중 신고 참여자<br>
-                            </li>
-                            <li>
-                                선발 및 추첨<br>
-                                - 참여자 전원 면접 캠프 20% 수강 할인권 지급<br>
-                                - 경품: 설문작성자와 후기/적중 신고 작성자 중 무작위 추첨되며, <span class="tx-origin-red">후기/적중 신고 댓글을 정성스럽게 작성해주신 분들에게 유리합니다. </span><br>
-                                - 영화예매권-아이스크림-드링크 순으로 추첨이 진행됩니다. 기추첨된 인원이 재추첨 될 시, 재추첨을 통해 다른 인원을 추첨합니다. (중복 당첨 불가)<br>
-                                - 6월 17일(월)에 공지사항을 통해 당첨자가 발표됩니다.
-                            </li>
-                            <li>
-                                이벤트 혜택<br>
-                                - 경품은 모바일 쿠폰(기프티콘) 형태로 발송되며, 발송은 1회로 제한합니다.<br>
-                                - 기프티콘은 이벤트 참여시 기재된 전화번호로 7월 12일에 발송됩니다.<br>
-                                - 휴대폰번호 오류 시 기프티콘은 재발송 되지 않습니다.<br>
-                                - 휴대전화 단말기의 MMS 수신상태가 양호하지 않은 경우, 기프티콘 발송이 불가할 수 있습니다.<br>
-                                - 이벤트 참여 전 회원정보(휴대폰 번호)를 정확히 수정해주시기 바랍니다. <br>
-                                - 기프티콘을 수신한 이후 개인사정에 의해 유효기간이 지나 사용하지 못한 경우 사용하지 않은 혜택에 대해서는 별도로 보상하지 않습니다.<br>
-                            </li>
-                            <li>
-                                기타<br>
-                                - URL 공유목적의 댓글을 제외한 모든 댓글은 사전 예고없이 삭제될 수 있습니다.<br>
-                            </li>
-                        </ol>
-                    </div>
-                    <p>※ 유의사항을 읽지 않고 발생한 모든 상황에 대해서 윌비스고시학원은 책임지지 않습니다.</p>
-                </div>
-            </div>
-        </div> 
-
-        {{--
+        {{-- 기존 5번탭
         <div id="content_5" class="tabCts">
             <p>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_1A.jpg" usemap="#Map1244E" title="소문내기 이벤트" border="0" />

@@ -22,9 +22,12 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
+            top:250px;
             right:10px;
             z-index:1;
+        }
+        .skybanner li {
+            margin-bottom:5px
         }
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/04/1197_top_bg.jpg) no-repeat center top; }
@@ -84,7 +87,11 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">       
-
+        <ul class="skybanner">
+            <li><a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&course_idx=1062" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1197_skybanner01.jpg" title="" /></a></li>
+            <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1197_skybanner02.jpg" title="" /></a></li>
+            <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1197_skybanner03.jpg" title="" /></a></li>
+        </ul>
         <div class="evtCtnsBox wb_cts01" >
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/04/1197_top.jpg" title="7급 행정직/외무영사직 파이널 문제풀이" />
@@ -121,17 +128,10 @@
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1197_02_01.jpg" title="30% 파격할인"  />
-            <div>
-                <ul>
-                    <li><a href="#lec1" class="active">일반행정직 / 세무직</a></li>
-                    <li><a href="#lec2">외무영사직</a></li>
-                </ul>
-                <div class="lecCts mb40">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1197_02_02.jpg" title="일반행정직 / 세무직"  id="lec1"/>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1197_02_03.jpg" title="외무영사직"  id="lec2"/>
-                </div>
-                <a href="{{ site_url('/pass/offPackage/index?cate_code=3044&course_idx=&campus_ccd=') }}"><img src="https://static.willbes.net/public/images/promotion/2019/04/1197_02_btn.png" title="7급 문제풀이 순환반 수강신청 하기"  /></a>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1197_02_01.jpg" title=""  /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/04/1197_02_02.jpg" title=""  id="lec1"/>
+            <div class="mt50">
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&course_idx=1062"><img src="https://static.willbes.net/public/images/promotion/2019/04/1197_02_btn.png" title="7급 문제풀이 순환반 수강신청 하기"  /></a>
             </div>
         </div>
         <!--WB_cts03//-->

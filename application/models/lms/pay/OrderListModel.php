@@ -193,12 +193,25 @@ class OrderListModel extends BaseOrderModel
                 $excel_column .= ', SC.CateName, ifnull(SPC.CateName, SC.CateName) as LgCateName, if(SPC.CateCode is not null, SC.CateName, "") as MdCateName';
             }
 
-            // 캠퍼스 정보 추가
+            // 캠퍼스 정보 추가 (강좌상품)
             if (in_array('campus', $arr_add_join) === true) {
                 $from .= '
                     left join ' . $this->_table['code'] . ' as CCA
                         on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"';
                 $column .= ', PL.CampusCcd, CCA.CcdName as CampusCcdName';
+                $excel_column .= ', CCA.CcdName as CampusCcdName';
+            }
+
+            // 캠퍼스 정보 추가 (독서실, 사물함, 예치금이 포함된 전체상품)
+            if (in_array('campus_all', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['readingroom'] . ' as RRM
+                        on OP.ProdCode = RRM.ProdCode	        
+                    left join ' . $this->_table['readingroom'] . ' as RRS
+                        on OP.ProdCode = RRS.SubProdCode                
+                    left join ' . $this->_table['code'] . ' as CCA
+                        on CCA.Ccd = ifnull(PL.CampusCcd, ifnull(RRM.CampusCcd, RRS.CampusCcd)) and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"';
+                $column .= ', ifnull(PL.CampusCcd, ifnull(RRM.CampusCcd, RRS.CampusCcd)) as CampusCcd, CCA.CcdName as CampusCcdName';
                 $excel_column .= ', CCA.CcdName as CampusCcdName';
             }
 

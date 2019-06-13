@@ -40,6 +40,7 @@ class BaseOrderModel extends WB_Model
         'lecture_extend' => 'lms_lecture_extend',
         'lecture_pause_history' => 'lms_lecture_pause_history',
         'cms_lecture_basics' => 'wbs_cms_lecture_basics',
+        'readingroom' => 'lms_readingroom',
         'member' => 'lms_member',
         'member_info' => 'lms_member_otherinfo',
         'category' => 'lms_sys_category',

@@ -133,6 +133,7 @@
         </div>
 
         <div class="evtCtnsBox wb_04" id="wb_04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_04_top.jpg"  alt="성원 감사"/><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_04.jpg"  alt="이벤트" usemap="#Map1268A" border="0" />
             <map name="Map1268A" id="Map1268A">
                 <area shape="rect" coords="93,550,222,596" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" alt="일반경찰 원유철 신청하기" />

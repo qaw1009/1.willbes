@@ -6,12 +6,12 @@
         //텝,내용 노출 시간 셋팅
         $set_tab_day = [
             'tab' => [
-                '3' => '201906141350',
-                '4' => '201906141350'
+                '3' => '201906141409',
+                '4' => '201906141410'
             ],
             'content' => [
-                '3' => '201906141351',
-                '4' => '201906141350'
+                '3' => '201906141409',
+                '4' => '201906141410'
             ]
         ];
         $now_day = date('YmdHi');
@@ -19,9 +19,11 @@
     <link href="/public/css/willbes/promotion/2003_1244.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div class="evtContent NGR" id="evtContainer">
+        @if ($now_day >= $set_tab_day['tab']['4'])
         <div class="skybanner">
             <a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}"><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_skybanner.jpg" title="내 예상점수와 체감 난이도는?" /></a>
         </div>
+        @endif
 
         <div class="evtCtnsBox evtTop">
             <div>

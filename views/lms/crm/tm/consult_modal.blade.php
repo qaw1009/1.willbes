@@ -235,7 +235,6 @@
                         if($("#_reg_TmContent").val() == "") {
                             alert("상담내용을 등록해 주세요.");return;
                         }
-
                         if(!confirm("저장 후 수정이 불가능합니다. 저장하시겠습니까?")) {
                             return;
                         }
@@ -246,12 +245,10 @@
                                 notifyAlert('success', '알림', '상담이 저정되었습니다.');
                                 $regi_form_modal[0].reset();
                                 $search_form_modal[0].reset();
-                                //$search_form_modal.submit();
                                 $datatable_modal.draw();
                             }
                         }, showValidateError, null, false, 'alert');
                     });
-
 
                     // 쿠폰발급 목록
                     $datatable_coupon = $_coupon_list_table.DataTable({
@@ -296,8 +293,6 @@
                         ]
                     });
 
-
-
                     $('.btn-modal-message').click(function (){
                         var target_idx = $('#MemIdx').val();
                         if(target_idx == ''){ alert('쪽지발송 대상 회원을 선택해 주세요.');return;}
@@ -318,9 +313,6 @@
                         });
                     });
 
-
-
-
                     $('.btn-coupon-return').on('click',function(){
                         var target_idx = $('#MemIdx').val();
                         var _link = "{{ site_url('/service/coupon/issue/') }}"+'?memidx='+target_idx;
@@ -332,8 +324,6 @@
                         var obj = window.open("{{ site_url('/service/coupon/regist/') }}",'couponadd','');
                         obj.focus();
                     });
-
-
 
                 });
             </script>

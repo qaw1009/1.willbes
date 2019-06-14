@@ -41,6 +41,43 @@ class TmModel extends WB_Model
         return $query;
     }
 
+    /**
+     * 수동배정을 위한 회원검색 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function searchMemberManual($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'A.MemIdx,A.MemId,A.MemName,fn_dec(PhoneEnc) as Phone,A.JoinDate,B.InterestCode,C.CcdName as Interest_Name,A.IsBlackList,B.SmsRcvStatus';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+                    from
+                        lms_member A 
+                        join lms.lms_member_otherinfo B on A.MemIdx = B.MemIdx
+                        left outer join lms_sys_code C on B.InterestCode = C.Ccd
+                    where 
+                        A.IsStatus IN (\'Y\',\'D\') 
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $result = $this->_conn->query('select '. $column .$from .$where. $order_by_offset_limit);
+        //echo $this->_conn->last_query();
+        return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+    }
+
+
 
     /**
      * 조건별 회원검색 시도
@@ -159,26 +196,31 @@ class TmModel extends WB_Model
 
         } elseif($assign_ccd === '687002') {      // #장바구니에 온라인 상품이 존재해야 함
             $where .= ' 
-                            #검색일이 가입일
-                            and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') =\''.$search_date.'\'    
-            
-                            and A.MemIdx in
+                            #검색일이 가입일 --> 제거 2019.06.14 김상구 실장님, 최의식 차장님 협의
+                            #and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') =\''.$search_date.'\'
+                            #검색일이 장바구니 등록일.
+                            and A.MemIdx in 
                             ( 
-                                	select 
-                                        aa.MemIdx
-                                    from
-                                        lms_cart aa
-                                        join lms_product bb on aa.ProdCode = bb.ProdCode
-                                    where 
-                                        aa.IsDirectPay=\'N\' and aa.IsVisitPay=\'N\' and aa.IsStatus=\'Y\' and isnull(aa.ConnOrderIdx)
-                                        and aa.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
-                                        and DATE_FORMAT(aa.ExpireDatm ,\'%Y-%m-%d\') >= DATE_FORMAT(NOW() ,\'%Y-%m-%d\')	#소멸일자는 현재날짜보다 같거나 크고                                        
-                                        and bb.IsStatus=\'Y\' and bb.IsUse=\'Y\'
-                                        and bb.ProdTypeCcd = \'636001\'	#온라인강좌상품
-                            )';
+                                select 
+                                    aa.MemIdx
+                                from
+                                    lms_cart aa
+                                    join lms_product bb on aa.ProdCode = bb.ProdCode
+                                where 
+                                    aa.IsDirectPay=\'N\' and aa.IsVisitPay=\'N\' and aa.IsStatus=\'Y\' and isnull(aa.ConnOrderIdx)
+                                    and aa.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
+                                    and DATE_FORMAT(aa.ExpireDatm ,\'%Y-%m-%d\') >= DATE_FORMAT(NOW() ,\'%Y-%m-%d\')	#소멸일자는 현재날짜보다 같거나 크고
+                                    and bb.IsStatus=\'Y\' and bb.IsUse=\'Y\'
+                                    and bb.ProdTypeCcd = \'636001\'	#온라인강좌상품
+                                    and DATE_FORMAT(aa.RegDatm,\'%Y-%m-%d\') =\''.$search_date.'\'    
+                            )
+                            ';
 
         } elseif($assign_ccd === '687003') {      // 재수강 ( ‘검색일-30일 <= 수강종료일 <= 검색일+30일’ 회원 중  ‘검색일-30일 <= 결제완료일 <= 검색일+30일' 결제가 존재하지 않는 회원 )
             $where .= ' 
+                            #2018년1월1일 이후 가입자 조건 추가 : 2019.06.14 김상구 실장님 협의
+                            and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') >= \'2018-01-01\'
+            
                             and A.MemIdx in
                             (
                                 select
@@ -234,12 +276,68 @@ class TmModel extends WB_Model
             $where .= ' 1=2 ';
         }
 
-        //$order_by = $this->_conn->makeOrderBy(['A.JoinDate' =>'ASC'])->getMakeOrderBy();
         $order_by = ' Order by rand() ';
 
         $query = $this->_conn->query('select ' .$column .$from .$where. $order_by. $limit);
-        echo $this->_conn->last_query();
+        //echo $this->_conn->last_query();
         return ($search_type === 'search') ? $query->row(0)->numrows : $query->result_array();
+    }
+
+
+    /**
+     * 회원 수동 배정 처리
+     * @param array $input
+     * @return array|bool
+     */
+    public function assignMemberManual($input=[])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+
+            $MemIdx = element('MemIdx',$input);
+
+            if (empty($MemIdx)) {
+                throw new \Exception('배정할 회원이 존재하지 않습니다.');
+            }
+
+            //tm 배정 테이블
+            $tm_data = [
+                'InterestCcd' => element('_InterestCcd',$input),
+                'AssignCcd' => element('_AssignCcd',$input),
+                'SearchDate' => date("Y-m-d"),
+                'SearchEndDate' => element('SearchEndDate',$input,null),
+                'MemCnt' => count($MemIdx),
+                'AssignType' => '수동',
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if($this->_conn->set($tm_data)->insert('lms_tm') === false) {
+                throw new \Exception('TM 배정 등록에 실패했습니다.');
+            }
+
+            $TmIdx = $this->_conn->insert_id();
+
+            $input_data = [
+                'TmIdx' => $TmIdx,
+                'AssignAdminIdx' => element('_wAdminIdx',$input),
+                'MemIdx' => $MemIdx
+            ];
+
+            if($this->_conn->set($input_data)->insert('lms_tm_assign') === false) {
+                throw new \Exception("회원 배정시 오류가 발생되었습니다.");
+            }
+
+            //$this->_conn->trans_rollback();
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'ret_data' => $TmIdx];
     }
 
     /**
@@ -317,7 +415,6 @@ class TmModel extends WB_Model
         }
 
         return ['ret_cd' => true, 'ret_data' => $TmIdx];
-
     }
 
     /**
@@ -356,8 +453,6 @@ class TmModel extends WB_Model
         ';
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-
-
 
         $result = $this->_conn->query('select '. $column .$from .$where. $order_by_offset_limit);
         //var_dump($result);exit;

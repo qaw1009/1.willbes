@@ -6,12 +6,12 @@
         //텝,내용 노출 시간 셋팅
         $set_tab_day = [
             'tab' => [
-                '3' => '201906141330',
-                '4' => '201906141330'
+                '3' => '201906141320',
+                '4' => '201906141320'
             ],
             'content' => [
-                '3' => '201906141331',
-                '4' => '201906141330'
+                '3' => '201906141341',
+                '4' => '201906141340'
             ]
         ];
         $now_day = date('YmdHi');
@@ -866,7 +866,7 @@
                 location.href = "{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}";
             }
 
-            if (tab_id == 3 && (now >= time_tab_4 && now < time_content_4)) {
+            if (tab_id == 4 && (now >= time_tab_4 && now < time_content_4)) {
                 alert('준비중입니다.');
                 location.href = "{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=1#content_1') }}";
             }

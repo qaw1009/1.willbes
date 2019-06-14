@@ -4,14 +4,24 @@
     @include('willbes.pc.layouts.partial.site_menu')
     @php
         //텝,내용 노출 시간 셋팅
-        $set_tab_day = [
+        /*$set_tab_day = [
             'tab' => [
                 '3' => '201906140000',
                 '4' => '201906140000'
             ],
             'content' => [
                 '3' => '201906202300',
-                '4' => '201906151100'
+                '4' => '201906151130'
+            ]
+        ];*/
+        $set_tab_day = [
+            'tab' => [
+                '3' => '201906140000',
+                '4' => '201906140000'
+            ],
+            'content' => [
+                '3' => '201906141450',
+                '4' => '201906141451'
             ]
         ];
         $now_day = date('YmdHi');
@@ -21,7 +31,7 @@
     <div class="evtContent NGR" id="evtContainer">
         @if ($now_day >= $set_tab_day['tab']['4'])
         <div class="skybanner">
-            <a href="{{ ($now_day >= $set_tab_day['content']['4']) ? 'javascript:gradOpen();' : 'javascript:alert("준비중 입니다.");' }}"><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_skybanner.jpg" title="내 예상점수와 체감 난이도는?" /></a>
+            <a href="{{ ($now_day >= $set_tab_day['content']['4']) ? 'javascript:gradOpen();' : 'javascript:alert("6/15 시험 종료 후 등록 가능합니다.");' }}"><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_skybanner.jpg" title="내 예상점수와 체감 난이도는?" /></a>
         </div>
         @endif
 
@@ -763,8 +773,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_08_01.jpg" usemap="#Map1244H" title="소문내기 이벤트" border="0" />
                 <map name="Map1244H" id="Map1244H">
                     <area shape="rect" coords="917,223,1031,252" href="/pass/support/notice/show?board_idx=228393" target="_blank" alt="당첨확인"/>
-                    <area shape="rect" coords="227,860,551,926" href="{{ ($now_day >= $set_tab_day['content']['4']) ? 'javascript:gradOpen();' : 'javascript:alert("준비중 입니다.");' }}" alt="예상점수 등록하기" />
-                    <area shape="rect" coords="569,861,890,925" href="{{ ($now_day >= $set_tab_day['content']['4']) ? site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') : 'javascript:alert("준비중 입니다.");' }}" alt="평균 점수 보러가기" />
+                    <area shape="rect" coords="227,860,551,926" href="{{ ($now_day >= $set_tab_day['content']['4']) ? 'javascript:gradOpen();' : 'javascript:alert("6/15 시험 종료 후 등록 가능합니다.");' }}" alt="예상점수 등록하기" />
+                    <area shape="rect" coords="569,861,890,925" href="{{ ($now_day >= $set_tab_day['content']['4']) ? site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') : 'javascript:alert("6/15 시험 종료 후 확인 가능합니다");' }}" alt="평균 점수 보러가기" />
                 </map>
             </p>
             {{--댓글--}}

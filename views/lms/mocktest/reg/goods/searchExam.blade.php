@@ -24,6 +24,10 @@
                                 @foreach($cateD1 as $row)
                                     @if($row['CateCode'] == $cateD1Def)
                                         <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}" selected>{{ $row['CateName'] }}</option>
+                                    @else
+                                        @if(in_array(ENVIRONMENT, ['local','development']))
+                                            <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}" >{{ $row['CateName'] }}</option>
+                                        @endif
                                     @endif
                                 @endforeach
                             </select>

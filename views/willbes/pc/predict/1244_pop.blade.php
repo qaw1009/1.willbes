@@ -15,6 +15,7 @@
         .eventPopS1 strong {display:block; margin-bottom:10px; font-size:14px}
         .eventPopS1 p {margin-bottom:10px}
         .eventPopS1 p a {float:right; text-decoration:underline}
+        .eventPopS1 .editBtn { display:inline-block; background:#e4e4e4; color:#333; padding:4px 20px; border-radius:10px}
 
         .eventPopS1 ul > li div strong {font-size:12px}
         .eventPopS1 li ul {margin-bottom:10px}
@@ -89,7 +90,8 @@
                         <li>
                             이름 <span class="tx-red">*</span> <input type="text" value="{{sess_data('mem_name')}}" title="성명" readonly="readonly">
                             휴대폰번호 <span class="tx-red">*</span> <input type="text" value="{{sess_data('mem_phone')}}" title="연락처" readonly="readonly">
-                            <span class="tx-red">※ 응시직렬은 최초 선택/저장 후 수정 불가</span>
+                            <a href="https://www.willbes.net/member/change/index/info" class="editBtn" target="_blank">회원정보 수정하기 ></a>
+                            <p class="tx-red mt10">※ 이벤트 참여 전 회원정보(휴대폰 번호)를 정확히 수정해주시기 바랍니다. 회원정보 오류 시 경품 재발송은 어렵습니다. </p>
                         </li>
                         <li>
                             <strong>1. 공고 유형 <span class="tx-red">*</span> </strong>
@@ -226,6 +228,9 @@
                             </div>
                         </li>
                     </ul>
+                    <div>
+                        <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                    </div>
                 </div>
 
                 <div class="btnsSt3">
@@ -315,6 +320,12 @@
 
         $regi_form.submit(function () {
             var _url = '{{ front_url('/predict/storeFinalPoint2') }}';
+
+            if ($regi_form.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);

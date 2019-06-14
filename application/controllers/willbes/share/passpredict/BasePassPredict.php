@@ -1454,6 +1454,44 @@ class BasePassPredict extends \app\controllers\FrontController
     }
 
     /**
+     * 과목별 점수,난이도 평균값 조회
+     * @return CI_Output
+     */
+    public function getPredictPointAvg()
+    {
+        $arr_base['predict_idx'] = element('predict', $this->_reqG(null));
+
+        $arr_condition_main = [
+            'EQ' => [
+                'PC.GroupCcd' => '500',
+                'PC.IsUse' => 'Y'
+            ]
+        ];
+        $arr_condition_sub = [
+            'EQ' => [
+                'PredictIdx' => $arr_base['predict_idx'],
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $data = $this->predictFModel->getFinalAvg($arr_condition_main, $arr_condition_sub);
+
+        $result = [];
+        /*foreach ($data as $key => $row) {
+            $result[$row['Type']][$key]['SubjectName'] = $row['CcdName'];
+            $result[$row['Type']][$key]['AvgPoint'] = $row['AvgPoint'];
+            $result[$row['Type']][$key]['AvgLevel'] = $row['AvgLevel'];
+            $result[$row['Type']][$key]['CountSubject'] = $row['CountSubject'];
+        }*/
+        foreach ($data as $key => $row) {
+            $result[$row['AnnouncementType']][$row['Type']][$key]['SubjectName'] = $row['CcdName'];
+            $result[$row['AnnouncementType']][$row['Type']][$key]['AvgPoint'] = $row['AvgPoint'];
+            $result[$row['AnnouncementType']][$row['Type']][$key]['AvgLevel'] = $row['AvgLevel'];
+            $result[$row['AnnouncementType']][$row['Type']][$key]['CountSubject'] = $row['CountSubject'];
+        }
+        $this->json_result(true, '', [], $result);
+    }
+
+    /**
      * 전국 합격자 수 데이터 셋팅
      * @return array
      */

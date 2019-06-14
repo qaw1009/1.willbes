@@ -1,0 +1,719 @@
+/* top bar banner */
+.gosi .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.gosi .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.gosi .topBanner p img {width:100%}
+
+/*********************************************     Main Container : Gosi     *********************************************/
+.gosi .Depth .depth:last-child strong {
+    color: #ba560e;
+}
+
+/* Main Container : MainVisual */
+.cert .Section .bnrSec01 li {
+    display: inline;
+    float: left;   
+    width: 556px;
+    height: 292px;  
+    overflow: hidden; 
+}
+.cert .Section .bnrSec01 li:last-child {margin-left:8px}
+.cert .Section .bnrSec01:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+
+/**/
+.cert .Section .bnrSec02 li {
+    display: inline;
+    float: left;
+    margin-right: 8px;    
+}
+.cert .Section .bnrSec02 li:last-child {
+    margin:0
+}
+.cert .Section .bnrSec01:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+
+
+.gosi .MainVisual {
+    position: relative;
+    width: 1120px;
+    margin:0 auto;
+    height: 400px;
+}
+.gosi .MainVisual:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.gosi .VisualBox {
+    position: absolute;
+    width:1120px;  
+    height: 400px;
+    overflow: hidden;
+    z-index: 1;
+  }
+.gosi .VisualBox img {
+    height: 400px;
+  }
+  
+.gosi .VisualBox .bx-wrapper .bx-controls-auto {
+    left:50%;
+    bottom: 20px;
+    margin-left: -540px;
+    width: 50px;
+    z-index: 100;
+}
+.gosi .VisualBox .bx-wrapper .bx-pager {
+    width: auto;
+    left:50%;
+    margin-left: -500px;
+    bottom: 20px;
+    text-align: left;
+    z-index: 90;
+}
+.gosi .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #ccc;
+  }
+
+.gosi .VisualsubBox {
+    position: absolute;
+    right:10px;
+    margin-left:196px;
+    top:10px;
+    width: 364px;
+    z-index: 2;
+}
+
+.gosi .VisualsubBox .bSlider {
+    margin-top:3px;
+    width: 364px;
+    height: 248px !important;
+    overflow: hidden;
+  }
+
+.gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    margin: 0;
+    width: 50px;
+    z-index: 110;
+  }
+.gosi .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+    z-index: 110;
+}
+.gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+
+
+/**/
+.gosi .Section.barBnr {
+    background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
+}
+
+/* Main Container : Prof */
+.gosi .PBcts li {
+    display: inline;
+    float: left;    
+    width: 224px;
+    height: 390px;
+    overflow: hidden;
+    margin:0;
+}
+
+.gosi .PBcts:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 0;
+    bottom: 10px;
+    text-align: center;
+}
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #ba560e !important;
+}
+
+/*.gosi .Section .ProfBox li {
+    float: left;
+    width: 216px;
+    height: 237px;
+    margin-left: 10px;
+}
+.gosi .Section .ProfBox li:first-child {
+    margin-left: 0;
+}
+
+.gosi .Section .ProfBox:after {
+    content: "";
+    display: block;
+    clear: both;
+}*/
+
+/**/
+.gosi .Section .willbesLec {
+    width:614px;
+    float:left;
+}
+.gosi .smallTit {
+    border-top:1px solid #000;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.gosi .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align:left;
+    width: 100%;
+}
+.gosi .smallTit p a {vertical-align: top; margin-left: 10px}
+.gosi .smallTit span {
+    font-weight: 600;
+    background: #fff;
+    padding:0 20px 0 0;
+}
+.gosi .smallTit strong {
+    color:#ba560e;
+}
+
+.gosi .will-listTit {
+    margin-bottom: 15px;
+    color:#181818;
+}
+
+/*메인 과목별 베스트 강의*/
+.bestLectBx {position:relative;}
+.bestLectBx .prof-subject {
+    position:absolute;
+    top:0;
+    left:30px !important; 
+    background:#fff;
+    overflow: hidden;
+}
+.bestLectBx .prof-subject li {
+    display: inline; float: left; margin:0;
+}
+.bestLectBx .prof-subject li a {
+    display:block;    
+    width:78px;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    font-size:12px; 
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    vertical-align:middle; 
+    background:#ececec;  
+    overflow: hidden;    
+}
+.bestLectBx .prof-subject li span {float:left; color:#c8c8c8}
+.bestLectBx .prof-subject li a:hover, 
+.bestLectBx .prof-subject li a.active{color:#c7763c;}
+.bestLectBx .prof-subjec:after {content:""; display: block; clear:both;}
+
+.bestLectBx .prof-professors {clear:both; margin-top:40px;}
+.bestLectBx .prof-slider {width:614px; height:120px; overflow:hidden;}
+.bestLectBx .prof-slider li {position:relative; display:inline; float:left; height:120px; width:50%}
+.bestLectBx .prof-slider li div {position:absolute; width:120px; height:120px; overflow: hidden; background:#ececec}
+.bestLectBx .prof-slider li img {width:120px}
+.bestLectBx .prof-slider li span {position:absolute; left:138px; width:150px}
+.bestLectBx .prof-slider li span.txt1 {top:0; color:#3a3a3a; font-size:17px}
+.bestLectBx .prof-slider li span.txt2 {top:22px; color:#ba560e; font-size:22px; font-weight:bold;}
+.bestLectBx .prof-slider li span.txt3 {top:50px; color:#666; font-size: 14px; line-height: 1.4}
+.bestLectBx .prof-slider li > a {position:absolute; left:138px; bottom:0; border:1px solid #c9c9c9; display: inline; padding:3px 5px; color:#898989}
+.bestLectBx .prof-slider:after {
+    content:""; display: block; clear:both;
+}
+
+.bestLectBx .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.bestLectBx .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top:0;
+}
+.bestLectBx .bx-wrapper .bx-controls-direction a {
+    width: 30px;
+    height: 30px;
+}
+.bestLectBx .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.5;
+}
+.bestLectBx .bx-wrapper .bx-prev {
+    background:#ececec url("../../img/willbes/gosi/btn_prev.png") no-repeat center center;
+    left: 0;
+    right: inherit;
+}
+.bestLectBx .bx-wrapper .bx-next {
+    background:#ececec url("../../img/willbes/gosi/btn_next.png") no-repeat center center;
+    left: inherit;
+    right: 0;
+}
+
+/*메인 무료특강*/
+.freeLectBx li {display: inline; float:left; margin-right:4px; line-height: 1.4; font-size: 13px}
+.freeLectBx li:last-child {margin:0}
+.freeLectBx li p {color:#ba560e; font-size: 15px; font-weight: 500; margin-top: 15px}
+.freeLectBx:after {content:''; display: block; clear:both}
+
+/*메인 윌비스 소식*/
+.gosi .Section .willbesNews {float: right; width: 465px;}
+
+/* Main Container : Notice : noticeTabs */
+.gosi .tabWrap.noticeWrap {
+    height: 16px;
+    border: none;
+}
+.gosi .tabWrap.noticeWrap li {
+    float: left;
+    width: auto;
+    height: 16px;
+    margin-right: 10px;
+}
+.gosi .tabWrap.noticeWrap li a {
+    display: block;
+    width: 100%;
+    height: 19px;
+    line-height: 19px;
+    font-size: 17px;
+    color: #c5c5c5;
+    text-align: center;
+    letter-spacing: 0;
+    border:none !important;
+    border-right:1px solid #999 !important;
+    padding-right: 10px;
+}
+.gosi .tabWrap.noticeWrap li a.on {
+    height: 19px;
+    line-height: 19px;
+    font-weight: 600;
+    color: #ba560e;
+    border:none !important;
+    border-right:1px solid #999 !important;
+}
+.gosi .tabWrap.noticeWrap li:last-child a.on,
+.gosi .tabWrap.noticeWrap li:last-child a {
+    border-right:none !important;
+}
+.gosi .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+.gosi .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.gosi .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.gosi .tabBox.noticeBox .List-Table li a span {
+    background: #ba560e;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+/**/
+/*메인 수강후기*/
+.reviewBx {height:150px; overflow: hidden; border-bottom:1px solid #ccc}
+.reviewBx .sliderNumV {position:relative} 
+.reviewBx .sliderNumV .lecReview {float:left; display: inline-block; width:370px !important; min-height:120px !important; margin-top:30px; line-height: 1.3}
+.reviewBx .sliderNumV .imgBox {
+    float: left;
+    width: 82px;
+    margin: 0 15px 0 25px;
+    background:#e1e1e1;
+}
+.reviewBx .sliderNumV .imgBox img {
+    width: 100%;
+} 
+.reviewBx .sliderNumV .imgBox.cover {
+    position: relative;
+}
+.reviewBx .sliderNumV .imgBox.cover img.coverImg {
+    position: absolute;
+}
+
+.reviewBx .sliderNumV .lecReview ul {position: absolute; top:0; left:130px; width:220px}
+.reviewBx .sliderNumV .lecReview li {margin-bottom: 5px; color:#3a3a3a}
+.reviewBx .sliderNumV .lecReview li:first-child {color:#c7763c; font-size:16px; font-weight: 600}
+.reviewBx .sliderNumV .lecReview li:nth-child(2) {font-weight: 600}
+
+.reviewBx .sliderNumV:after {content:''; display: block; clear:both}
+
+.reviewBx .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
+}
+.reviewBx .bx-wrapper .bx-next {
+    background: url("../../img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
+    left: 20px;
+}
+.reviewBx .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 40px;
+    height: 20px;
+}
+.reviewBx .bx-wrapper .bx-controls-direction a {
+    width: 20px;
+    height: 20px;
+}
+.reviewBx .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: 5px;
+    right: 60px;
+    bottom: 0;
+    font-size: 11px;
+    font-weight: 300;
+    color: #888;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+
+/* Main Container : Gosi */
+.gosi .tx-color {
+    color: #ba560e;
+}
+.gosi .Section3 {
+    background: #f8f8f8;
+    padding-bottom:90px;
+}
+.gosi .List-Table li a img,
+.gosi .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gosi .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gosi .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
+.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #ba560e;
+}
+.gosi .Section .SpecialBox li {
+    display: inline; float: left;
+    width: 216px; height: 143px;
+    margin-right:10px; margin-bottom:10px;
+}
+.gosi .Section .SpecialBox li:nth-child(5),
+.gosi .Section .SpecialBox li:last-child {
+    margin-right:0;
+}
+.gosi .Section .SpecialBox ul:after {
+    content:''; display: block; clear:both;
+}
+
+/* Main Container : QuickMenu : Gosi */
+.gosi .QuickDdayBox .q_dday {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ba560e;
+    padding-top: 10px;
+    letter-spacing: 0;
+}
+.gosi .QuickSlider .sliderNum {
+    width: 100px;
+    height: 192px;
+    overflow: hidden;
+}
+
+/* Guide Container : Gosi */
+/*수험가이드*/
+.tabShow.tab_gosi_Guide {
+    background: #026f61;
+    height: 62px;
+    border-bottom: none;
+}
+.tabShow.tab_gosi_Guide li {
+    width: 12.5%;
+    height: 62px;
+    padding: 0 8px;
+}
+.tabShow.tab_gosi_Guide li a.two,
+.tabShow.tab_gosi_Guide li a.on.two {
+    line-height: 17px;
+}
+.tabShow.tab_gosi_Guide li a.two span {
+    padding-top: 15px;
+    display: inline-block;
+}
+.tabShow.tab_gosi_Guide li a.on.two span {
+    line-height: 17px;
+    padding-top: 10px;
+}
+.tabShow.tab_gosi_Guide li a.on span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    color: #026f61;
+    display: inline-block;
+    height: 54px;
+    line-height: 52px;
+    border-top: 1px solid #026f61;
+    border-left: 1px solid #026f61;
+    border-right: 1px solid #026f61;
+}
+.tabShow.tab_gosi_Guide li a,
+.tabShow.tab_gosi_Guide li a.on {
+    background: #026f61;
+    color: #fff;
+    line-height: 58px;
+    font-size: 14px;
+    font-weight: 300;
+    height: 62px;
+    border: none;
+}
+.tabShow.tab_gosi_Guide li:first-child a,
+.tabShow.tab_gosi_Guide li:first-child a.on {
+    border: none;
+}
+
+.w-gosi-Guide {letter-spacing: 0}
+.w-gosi-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24606a; line-height: 30px; padding-left: 25px;}
+
+.examInfoGu3 {padding: 35px 45px 55px}
+.examInfoGu3 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
+.examInfoGu3 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
+.examInfoGu3 .hTy.txt-red {font-size: 14px; font-weight:bold; color: #d52b2b; line-height: 18px}
+.examInfoGu3 .hTy4 {width: 786px; margin: 0 auto 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
+
+.examInfoGu3 .hTy5 {width: 786px; margin: 0 auto 15px}
+.examInfoGu3 .hTy5 span {font-size: 13px}
+
+.examInfoGu3 .hTy6.center {margin: 15px 60px 0; font-size:13px}
+.examInfoGu3 .hTy6.right {margin: 0 0 5px; text-align: right;}
+.examInfoGu3 .hTy6.right span {font-size: 13px}
+.examInfoGu3 .hTy6.left span {margin: 5px 0 0; text-align: left; font-size: 12px}
+
+.sliderGuide .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.sliderGuide .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+}
+.sliderGuide .bx-wrapper .bx-controls-direction a {
+    width: 35px;
+    height: 45px;
+}
+.sliderGuide .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.5;
+}
+.sliderGuide .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/gosi/guide/guide_prev.png") no-repeat 0 0;
+    left: -45px;
+    right: inherit;
+}
+.sliderGuide .bx-wrapper .bx-next {
+    background: url("../../img/willbes/gosi/guide/guide_next.png") no-repeat 0 0;
+    left: inherit;
+    right: -45px;
+}
+.sliderGuide .bx-wrapper .bx-pager {
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0;
+    bottom: -40px;
+}
+
+.guide_slider {
+    width: 848px !important;
+}
+.basicWd {
+    width:786px;
+    margin: 0 auto;
+}
+.basicWd1 tr td {
+    padding: 20px;
+}
+.basicWd .txtL ul li {margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 6px}
+
+.mgBox {
+    background: #f0f0f0;
+    border: 1px solid #dbdbdb;
+    padding: 25px 30px;
+    width: 786px;
+    margin: 20px auto 0;
+}
+.mgBox-none {
+    background: none;
+    border: none;
+}
+.mgBox .tt {
+    background: url("../../img/willbes/gosi/guide/right_arrow.png") no-repeat 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #232323;
+    padding-left: 12px;
+    margin-bottom: 10px;
+}
+.mgBox .st {
+    margin-bottom: 5px;
+}
+.mgBox .ttx {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4d4d4d;
+}
+.mgBox ul li {
+    margin-top: 15px;
+    padding-left: 10px;
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+}
+.mgBox dl dt {
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+    padding-left: 10px;
+}
+.mgBox ul li:first-child {
+    margin-top: 0;
+}
+.mgBox_no {
+    border: 1px solid #dbdbdb;
+    padding: 40px 60px;
+    width: 786px;
+    margin: 20px auto 0;
+}
+.mgBox span {
+    vertical-align: baseline;
+}
+ul.dot li {
+    margin-top: 15px;
+    padding-left: 10px;
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+}
+
+.tableBox tr th {
+    font-size: 21px;
+    font-weight: 600;
+    color: #243553;
+    border-right: 1px solid #bfbfbf;
+}
+.tableBox tr td {
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+    border-bottom: 1px solid #bfbfbf;
+    padding: 25px 0;
+}
+.tableBox tr.hh td {
+    border: none;
+    height: 25px;
+}
+
+.tabWrap.tab_gosi_success_Guide {
+    height: 67px;
+    border: 1px solid #24606a;
+}
+.tabWrap.tab_gosi_success_Guide li {
+    width: 50%;
+    height: 65px;
+}
+.tabWrap.tab_gosi_success_Guide li a {
+    background: #fff;
+    color: #24606a;
+}
+.tabWrap.tab_gosi_success_Guide li a.on {
+    background: #24606a;
+    color: #fff;
+}
+.tabWrap.tab_gosi_success_Guide li a,
+.tabWrap.tab_gosi_success_Guide li a.on {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 63px;
+    height: 65px;
+    border: none;
+}
+.tabWrap.tab_gosi_success_Guide a.on:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 66px;
+    left: 50%;
+    margin-left: -5px;
+    border-color: #24606a transparent transparent;
+    border-width: 10px;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide {
+    float: left;
+    height: 35px;
+    border-bottom: none;
+    clear: both;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li {
+    height: 35px;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a {
+    color: #24606a;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
+    color: #8f724d;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a,
+.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
+    background: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 33px;
+    height: 35px;
+    border: none;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a,
+.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a.on {
+    border: none;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide .row-line {
+    float: right;
+    background: #b7b7b7;
+    width: 1px;
+    height: 16px;
+    margin: 11px 0;
+}

@@ -34,7 +34,7 @@ class OrderSalesModel extends BaseOrderModel
                     , M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
                     , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName
                     , if(BO.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName
-                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, SC.CateName, SGC.CateName as LgCateName 
+                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName, SC.CateName, SGC.CateName as LgCateName 
                     , json_value(CPM.CcdEtc, if(BO.PgCcd != "", concat("$.fee.", BO.PgCcd), "$.fee")) as PgFee';
             }
         }
@@ -71,7 +71,9 @@ class OrderSalesModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CPT
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType'] . '"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"                                     
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"
+                left join ' . $this->_table['code'] . ' as CCA
+                    on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"                                                         
             ';
         }
 
@@ -89,8 +91,8 @@ class OrderSalesModel extends BaseOrderModel
         // 쿼리 실행
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName
-                , concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName, LearnPatternCcdName, ProdName
-                , RealPayPrice, PgFee, if(RealPayPrice > ifnull(RefundPrice, 0), if(PgFee < 1, TRUNCATE(RealPayPrice * PgFee, 0), PgFee), 0) as PgFeePrice
+                , concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName, CampusCcdName, LearnPatternCcdName
+                , ProdName, RealPayPrice, PgFee, if(RealPayPrice > ifnull(RefundPrice, 0), if(PgFee < 1, TRUNCATE(RealPayPrice * PgFee, 0), PgFee), 0) as PgFeePrice
                 , CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {
@@ -351,7 +353,7 @@ class OrderSalesModel extends BaseOrderModel
                 left join ' . $this->_table['site'] . ' as S
                     on U.SiteCode = S.SiteCode and S.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as C
-                    on U.ProdTypeCcd = C.Ccd and C.GroupCcd = "' . $this->_group_ccd['ProdType'] . '" and C.IsStatus = "Y"
+                    on U.ProdTypeCcd = C.Ccd and C.IsStatus = "Y" and C.GroupCcd = "' . $this->_group_ccd['ProdType'] . '"
                 left join ' . $this->_table['category'] . ' as SC
                     on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
             where U.SiteCode is null

@@ -18,6 +18,12 @@
                     </div>
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
+                        <select class="form-control" id="search_menu_type" name="search_menu_type">
+                            <option value="">메뉴구분</option>
+                            @foreach($arr_menu_type as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -64,6 +70,7 @@
         var $search_form = $('#search_form');
         var $list_form = $('#list_form');
         var $list_table = $('#list_table');
+        var $json_menu_type = {!! json_encode($arr_menu_type) !!};  // 메뉴구분 코드
 
         $(document).ready(function() {
             // datatable setting
@@ -92,7 +99,9 @@
                     }},
                     {'data' : 'MenuDepth'},
                     {'data' : 'MenuIdx'},
-                    {'data' : 'MenuTypeName'},
+                    {'data' : 'MenuType', 'render' : function(data, type, row, meta) {
+                        return $json_menu_type[data];
+                    }},
                     {'data' : 'MenuRouteName', 'render' : function(data, type, row, meta) {
                         return '<a href="#none" class="btn-regist" data-idx="' + row.MenuIdx + '" data-menu-depth="' + (row.MenuIdx + 1) + '"><u>' + data.replace(/>/gi, ' > ') + '</u></a>';
                     }},

@@ -335,6 +335,57 @@ class PredictFModel extends WB_Model
     }
 
     /**
+     * 과목별 점수,난이도 평균값 조회
+     * @param $arr_condition_main
+     * @param $arr_condition_sub
+     * @return mixed
+     */
+    public function getFinalAvg($arr_condition_main, $arr_condition_sub)
+    {
+        $where_main = $this->_conn->makeWhere($arr_condition_main);
+        $where_main = $where_main->getMakeWhere(false);
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub);
+        $where_sub = $where_sub->getMakeWhere(false);
+        $group_by = ' GROUP BY a.Subject';
+
+        $query = "
+            SELECT 'S' AS AnnouncementType, PC.Type, PC.Ccd, PC.CcdName, FP.*
+            FROM lms_predict_code AS PC
+            LEFT JOIN (
+                SELECT a.Subject, ROUND(AVG(a.Point),2) AS AvgPoint, ROUND(AVG(a.Level),0) AS AvgLevel, COUNT(a.Level) AS CountSubject
+                FROM lms_predict_final_point AS a
+                WHERE PfIdx IN (
+                    SELECT PfIdx
+                    FROM lms_predict_final
+                    {$where_sub}
+                    AND AnnouncementType = '서울시'
+                )
+                {$group_by}
+            ) AS FP ON PC.Ccd = FP.Subject
+            {$where_main}
+            
+            UNION ALL
+            
+            SELECT 'J' AS AnnouncementType, PC.Type, PC.Ccd, PC.CcdName, FP.*
+            FROM lms_predict_code AS PC
+            LEFT JOIN (
+                SELECT a.Subject, ROUND(AVG(a.Point),2) AS AvgPoint, ROUND(AVG(a.Level),0) AS AvgLevel, COUNT(a.Level) AS CountSubject
+                FROM lms_predict_final_point AS a
+                WHERE PfIdx IN (
+                    SELECT PfIdx
+                    FROM lms_predict_final
+                    {$where_sub}
+                    AND AnnouncementType = '지방직'
+                )
+                {$group_by}
+            ) AS FP ON PC.Ccd = FP.Subject
+            {$where_main}
+        ";
+
+        return $this->_conn->query($query)->result_array();
+    }
+
+    /**
      * 과목저장
      * @param $input
      * @return array|bool

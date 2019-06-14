@@ -495,7 +495,7 @@ body.no_sidebar {
 
 /* right_col */
 .page-title {
-    height: 46px;
+    height: auto;   /*height: 46px;*/
     padding: 0;
 }
 .page-title i {

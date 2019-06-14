@@ -226,6 +226,9 @@
                             </div>
                         </li>
                     </ul>
+                    <div>
+                        <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                    </div>
                 </div>
 
                 <div class="btnsSt3">
@@ -315,6 +318,12 @@
 
         $regi_form.submit(function () {
             var _url = '{{ front_url('/predict/storeFinalPoint2') }}';
+
+            if ($regi_form.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);

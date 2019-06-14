@@ -23,7 +23,8 @@ class SiteMenu extends \app\controllers\BaseController
         $def_site_code = config_item('app_intg_site_code');
 
         $this->load->view('site/site_menu/index', [
-            'def_site_code' => $def_site_code
+            'def_site_code' => $def_site_code,
+            'arr_menu_type' => $this->_menu_type_code
         ]);
     }
 
@@ -36,21 +37,28 @@ class SiteMenu extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'M.SiteCode' => $this->_reqP('search_site_code'),
+                'M.MenuType' => $this->_reqP('search_menu_type'),
                 'M.IsUse' => $this->_reqP('search_is_use')
             ],
-            'LKB' => [
-                'M.MenuName' => $this->_reqP('search_value')
+            'ORG' => [
+                'EQ' => [
+                    'M.MenuIdx' => $this->_reqP('search_value')
+                ],
+                'LKB' => [
+                    'M.MenuName' => $this->_reqP('search_value'),
+                    'M.MenuUrl' => $this->_reqP('search_value')
+                ]
             ]
         ];
 
         $list = $this->siteMenuModel->listAllSiteMenu($arr_condition);
         $count = count($list);
 
-        // 메뉴타입명 추가
+        /*// 메뉴타입명 추가 (view에서 치환)
         $list = array_map(function ($row) {
             $row['MenuTypeName'] = $this->_menu_type_code[$row['MenuType']];
             return $row;
-        }, $list);
+        }, $list);*/
 
         return $this->response([
             'recordsTotal' => $count,

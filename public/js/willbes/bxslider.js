@@ -5,6 +5,7 @@ $(function() {
         autoControls: true,
         stopAutoOnClick: true,
         pager: false,
+        touchEnabled: false,
         controls: false
     });
 });
@@ -16,6 +17,7 @@ $(function() {
         autoControls: true,
         stopAutoOnClick: true,
         pager: true,
+        touchEnabled: false,
         controls: false
     });
 });
@@ -23,6 +25,7 @@ $(function() {
 $(function() {
     $('.slider').bxSlider({
         auto: true,
+        touchEnabled: false,
         controls: false,
         pause: 3000,
         onSliderLoad: function(){
@@ -35,6 +38,7 @@ $(function() {
 $(function() {
     $('.sliderTab').show().bxSlider({
         auto: true,
+        touchEnabled: false,
         controls: false,
         pause: 3000,
         preloadImages: 'all',
@@ -48,6 +52,7 @@ $(function() {
 $(function() {
     $('.sliderTM').bxSlider({
         auto: false,
+        touchEnabled: false,
         controls: false,
         pause: 3000,
         onSliderLoad: function(){
@@ -67,7 +72,7 @@ $(function() {
         moveSlides:1,
         adaptiveHeight: true,
         infiniteLoop: true,
-        touchEnabled : (navigator.maxTouchPoints > 0),
+        touchEnabled: false,
         onSliderLoad: function(){
             $(".nSlider").css("visibility", "visible").animate({opacity:1}); 
         }  
@@ -79,6 +84,7 @@ $(function() {
 $(function() {
     $('.sliderNumTM').bxSlider({
         auto: false,
+        touchEnabled: false,
         controls: true,
         pause: 3000,
         pager: true,
@@ -94,6 +100,7 @@ $(function() {
 $(function() {
     $('.sliderControls').bxSlider({
         auto: true,
+        touchEnabled: false,
         controls: true,
         pause: 3000,
         pager: false,
@@ -107,6 +114,7 @@ $(function() {
 $(function() {
     $('.sliderControlsHover').bxSlider({
         auto: true,
+        touchEnabled: false,
         controls: true,
         pause: 3000,
         pager: false,
@@ -121,6 +129,7 @@ $(function() {
 $(function() {
     $('.sliderControlsTM').bxSlider({
         auto: false,
+        touchEnabled: false,
         controls: true,
         pause: 3000,
         pager: true,
@@ -139,6 +148,7 @@ $(function() {
     $('.sliderVertical').bxSlider({
         mode: 'vertical', 
         auto: true,
+        touchEnabled: false,
         controls: false,
         infiniteLoop: true,
         slideWidth: 370,
@@ -155,6 +165,7 @@ $(function() {
 $(function(){ 
     $(".MaintabSlider").bxSlider({
         mode:'fade',
+        touchEnabled: false,
         speed:400,
         pause:2000,
         auto : true,	

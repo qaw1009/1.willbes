@@ -67,7 +67,6 @@ $(function() {
         moveSlides:1,
         adaptiveHeight: true,
         infiniteLoop: true,
-        touchEnabled : (navigator.maxTouchPoints > 0),
         onSliderLoad: function(){
             $(".nSlider").css("visibility", "visible").animate({opacity:1}); 
         }  

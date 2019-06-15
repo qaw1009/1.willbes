@@ -1039,7 +1039,7 @@
                     $.each(tab_row, function (subject_key, subject_row) {
                         $.each(subject_row, function (key, value) {
                             if (tab_key == 'S') {
-                                if (value.AvgPoint == null || value.AvgPoint == '') {
+                                if (value.AvgPoint == null || value.AvgPoint == '' || value.AvgPoint == '0') {
                                     point = 0; level = 0; count = 0;
                                 } else {
                                     point = value.AvgPoint; level = value.AvgLevel; count = value.CountSubject;
@@ -1054,8 +1054,8 @@
                                     $('#subject_s_1').append('<option value="'+point+'" data-level="'+level+'" data-count="'+count+'">'+value.SubjectName+'</option>');
                                 }
                             } else {
-                                if (value.AvgPoint == null || value.AvgPoint == '') {
-                                    point = 0; level = 0;
+                                if (value.AvgPoint == null || value.AvgPoint == '' || value.AvgPoint == '0') {
+                                    point = 0; level = 0; count = 0;
                                 } else {
                                     point = value.AvgPoint; level = value.AvgLevel; count = value.CountSubject;
                                 }

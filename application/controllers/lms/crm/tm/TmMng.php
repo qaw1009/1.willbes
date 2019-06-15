@@ -123,4 +123,80 @@ class TmMng extends BaseTm
     }
 
 
+    /**
+     * 수동 배정
+     */
+    public function assignManualCreate()
+    {
+        $codes = $this->codeModel->getCcdInArray(['687', '718']);
+        $assign_admin = $this->tmModel->listAdmin(['EQ'=>['C.RoleIdx'=>'1010']]);
+
+        $this->load->view("crm/tm/create_manual_modal",[
+            'AssignCcd' => $codes['687'],
+            'InterestCcd' => $codes['718'],
+            'AssignAdmin' => $assign_admin,
+        ]);
+    }
+
+    /**
+     * 수동 배정을 위한 회원 목록
+     * @return CI_Output
+     */
+    public function assignManualMemberList()
+    {
+        $list = [];
+        $count = 0;
+
+        if(empty($this->_reqP('_manual_search_value')) != true) {
+
+            $arr_condition = [
+                'ORG' => [
+                    //'LKB' => [
+                    'EQ' => [
+                        'A.MemId' => $this->_reqP('_manual_search_value'),
+                        'A.MemName' => $this->_reqP('_manual_search_value')
+                    ]
+                ]
+            ];
+
+            $order_by = ['A.JoinDate'=>'desc'];
+
+            $count = $this->tmModel->searchMemberManual(true,$arr_condition);
+            if($count > 0) {
+                $list = $this->tmModel->searchMemberManual(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 회원 수동 배정 처리
+     * @return CI_Output|void
+     */
+    public function assignManual()
+    {
+        $rules = [
+            ['field'=>'_InterestCcd', 'label'=>'준비과정', 'rules'=>'trim|required'],
+            ['field'=>'_AssignCcd', 'label'=>'조건', 'rules'=>'trim|required'],
+            ['field'=>'_wAdminIdx', 'label'=>'TM', 'rules'=>'trim|required'],
+        ];
+
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->tmModel->assignMemberManual($this->_reqP(null));
+
+        if($result['ret_cd'] === true) {
+            return $this->json_result($result['ret_cd'], '', '', $result['ret_data']);
+        } else {
+            return $this->json_result($result['ret_cd'], '', $result);
+        }
+    }
+
 }

@@ -82,7 +82,8 @@
                 <div class="row mt-20">
                     <div class="col-xs-12 text-center">
                         <button type="button" class="btn btn-success mr-10" id="btn_assign">회원배정</button>
-                        <button class="btn btn-primary" type="button" id="btn_list">배정이력</button>
+                        <button class="btn btn-primary" type="button" id="btn_list">배정이력</button>&nbsp;
+                        <button type="button" class="btn btn-default mr-10 btn_manual" id="btn_manual">수동배정</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +103,6 @@
                 $("input[name='eachCnt[]']").val('');
                 $("#btn_assign").attr("disabled",false);
             });
-
 
             $("#btn_search").click(function () {
 
@@ -139,7 +139,6 @@
                 }, showError, false, 'POST');
 
             });
-
 
             $("#btn_reset").click(function () {
                 location.replace('{{site_url('/crm/tm/TmMng/')}}')
@@ -213,7 +212,6 @@
                 if($("#MemCnt").val() == '' || $("#MemCnt").val() == '0') {
                     alert("배정할 회원이 없습니다.");return;
                 }
-
                 var sum = 0;
                 $("input[name= 'eachCnt[]']").each(function(){
                     sum += +$(this).val();
@@ -241,19 +239,25 @@
                         showAssign(ret.ret_data)
                     }
                 }, showValidateError, null, false, 'alert');
-
             });
 
             showAssign = function(tm_idx) {
                 var url = '{{ site_url('/crm/tm/TmMng/assignList/') }}'+tm_idx;
                 $('.btn_tm_list').setLayer({
                      'url' : url,
-                     'width' : 1000
+                     'width' : 1000,
                  }).click();
-            }
+            };
+
+            $("#btn_manual").click(function () {
+                var url = '{{ site_url('/crm/tm/TmMng/assignManualCreate/') }}';
+                //location.href = url;
+                $('.btn_manual').setLayer({
+                    'url' : url,
+                    'width' : 1000,
+                });
+            });
 
         });
-
-
     </script>
 @stop

@@ -1025,6 +1025,7 @@
         }
 
         function getPredictPoint() {
+            var point = 0; var level = 0; var count = 0;
             var view_data_p_1 = '';
             var view_data_s_1 = '';
             var view_data_p_2 = '';
@@ -1034,29 +1035,38 @@
             _url += "?predict={{ empty($arr_promotion_params['PredictIdx']) === true ? '' : $arr_promotion_params['PredictIdx'] }}";
 
             sendAjax(_url, _data, function(ret) {
-                /*console.log(ret.ret_data);*/
                 $.each(ret.ret_data, function(tab_key, tab_row) {
                     $.each(tab_row, function (subject_key, subject_row) {
                         $.each(subject_row, function (key, value) {
                             if (tab_key == 'S') {
+                                if (value.AvgPoint == null || value.AvgPoint == '') {
+                                    point = 0; level = 0; count = 0;
+                                } else {
+                                    point = value.AvgPoint; level = value.AvgLevel; level = value.CountSubject;
+                                }
                                 if (subject_key == 'P') {
                                     view_data_p_1 += '<li>';
-                                    view_data_p_1 += '<div><strong>'+value.SubjectName+'</strong> 평균점수 <strong>'+value.AvgPoint+'</strong></div>';
-                                    view_data_p_1 += '<div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star0'+value.AvgLevel+'.jpg" ></div>';
+                                    view_data_p_1 += '<div><strong>'+value.SubjectName+'</strong> 평균점수 <strong>'+point+'</strong></div>';
+                                    view_data_p_1 += '<div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star0'+level+'.jpg" ></div>';
                                     view_data_p_1 += '</li>';
                                     $('#assayTab20_subject_p').html(view_data_p_1);
                                 } else {
-                                    $('#subject_s_1').append('<option value="'+value.AvgPoint+'" data-level="'+value.AvgLevel+'" data-count="'+value.CountSubject+'">'+value.SubjectName+'</option>');
+                                    $('#subject_s_1').append('<option value="'+point+'" data-level="'+level+'" data-count="'+count+'">'+value.SubjectName+'</option>');
                                 }
                             } else {
+                                if (value.AvgPoint == null || value.AvgPoint == '') {
+                                    point = 0; level = 0;
+                                } else {
+                                    point = value.AvgPoint; level = value.AvgLevel; level = value.CountSubject;
+                                }
                                 if (subject_key == 'P') {
                                     view_data_p_2 += '<li>';
-                                    view_data_p_2 += '<div><strong>'+value.SubjectName+'</strong> 평균점수 <strong>'+value.AvgPoint+'</strong></div>';
-                                    view_data_p_2 += '<div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star0'+value.AvgLevel+'.jpg" ></div>';
+                                    view_data_p_2 += '<div><strong>'+value.SubjectName+'</strong> 평균점수 <strong>'+point+'</strong></div>';
+                                    view_data_p_2 += '<div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star0'+level+'.jpg" ></div>';
                                     view_data_p_2 += '</li>';
                                     $('#assayTab21_subject_p').html(view_data_p_2);
                                 } else {
-                                    $('#subject_s_2').append('<option value="'+value.AvgPoint+'" data-level="'+value.AvgLevel+'" data-count="'+value.CountSubject+'">'+value.SubjectName+'</option>');
+                                    $('#subject_s_2').append('<option value="'+point+'" data-level="'+level+'" data-count="'+count+'">'+value.SubjectName+'</option>');
                                 }
                             }
                         });

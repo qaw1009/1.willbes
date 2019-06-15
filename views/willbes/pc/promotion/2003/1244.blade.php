@@ -1042,7 +1042,7 @@
                                 if (value.AvgPoint == null || value.AvgPoint == '') {
                                     point = 0; level = 0; count = 0;
                                 } else {
-                                    point = value.AvgPoint; level = value.AvgLevel; level = value.CountSubject;
+                                    point = value.AvgPoint; level = value.AvgLevel; count = value.CountSubject;
                                 }
                                 if (subject_key == 'P') {
                                     view_data_p_1 += '<li>';
@@ -1057,7 +1057,7 @@
                                 if (value.AvgPoint == null || value.AvgPoint == '') {
                                     point = 0; level = 0;
                                 } else {
-                                    point = value.AvgPoint; level = value.AvgLevel; level = value.CountSubject;
+                                    point = value.AvgPoint; level = value.AvgLevel; count = value.CountSubject;
                                 }
                                 if (subject_key == 'P') {
                                     view_data_p_2 += '<li>';

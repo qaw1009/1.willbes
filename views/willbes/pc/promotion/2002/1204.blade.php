@@ -75,8 +75,6 @@
                 <thead>
                     <tr>
                         <th colspan="2">강의명</th>
-                        <th>개강일</th>
-                        <th>학원강의</th>
                         <th>동영상강의</th>
                     </tr>
                 </thead>
@@ -84,80 +82,42 @@
                     <tr>
                         <td>형소법 신광은</td>
                         <td>2019 신광은 형소법 심화이론</td>
-                        <td>5/17(금) 9:00</td>
-                        <td><a href="#none" target="_blank" class="btn2">마감</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153339') }}">수강신청</a></td>
                     </tr>    
                     <tr>
                         <td>경찰학 장정훈</td>
                         <td>2019 장정훈 경찰학 심화기출</td>
-                        <td>5/6(월) 9:00</td>
-                        <td><a href="#none" target="_blank" class="btn2">마감</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153340') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>형법 김원욱</td>
                         <td>2019 김원욱 형법 심화이론(판례)</td>
-                        <td>6/6(목) 9:00</td>
-                        <td><a href="#none" target="_blank" class="btn2">마감</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153341') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>영어 하승민</td>
                         <td>2019 하승민 영어 심화이론</td>
-                        <td>5/13(월) 14:00</td>
-                        <td><a href="#none" target="_blank" class="btn2">마감</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153342') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 원유철</td>
                         <td>2019 원유철 한국사 심화이론</td>
-                        <td>5/6(월) 14:00</td>
-                        <td><a href="#none" target="_blank" class="btn2">마감</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153343') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 오태진</td>
                         <td>2019 오태진 한국사 심화이론</td>
-                        <td>5/8(수) 14:00</td>
-                        <td><a href="#none" target="_blank" class="btn2">마감</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153344') }}">수강신청</a></td>
                     </tr>  
                     <tr>
                         <td>수사 신광은</td>
                         <td>2019 신광은 수사 이론 </td>
-                        <td>5/13(월) 14:00</td>
-                        <td><a href="#none" target="_blank" class="btn2">마감</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153345') }}">수강신청</a></td>
                     </tr>                  
                     <tr>
                         <td>행정법 장정훈</td>
                         <td>2019 장정훈 행정법 심화기출</td>
-                        <td>5/10(금) 14:00</td>
-                        <td><a href="#none" target="_blank" class="btn2">마감</a></td>
                         <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153346') }}">수강신청</a></td>
-                    </tr>                  
-                    <tr class="st01">
-                      <td>학원 종합반</td>
-                      <td>2019 심화이론/기출 종합반</td>
-                      <td>&nbsp;</td>
-                      <td colspan="2"><a href="#none" target="_blank" class="btn2">마감</a></td>
-                    </tr>
-                    
-                    <tr class="st01">
-                      <td>동영상 종합반</td>
-                      <td colspan="2">2019년 2차대비 일반경찰 심화과정패키지 (史 원유철)</td>
-                      <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/153359') }}" target="_blank">수강신청</a></td>
-                    </tr>
-                    <tr class="st01">
-                        <td>동영상 종합반</td>    
-                        <td colspan="2">2019년 2차대비 일반경찰 심화과정패키지 (史 오태진)</td>
-                        <td colspan="2"><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/153358') }}" target="_blank">수강신청</a></td>
-                    </tr>
-                    <tr class="st01">
-                        <td>동영상 종합반</td>    
-                        <td colspan="2">2019년 2차대비 경행경채 심화과정패키지</td>
-                        <td colspan="2"><a href="{{ site_url('/package/show/cate/3002/pack/648001/prod-code/153360') }}" target="_blank">수강신청</a></td>
                     </tr>
                     
                 </tbody>

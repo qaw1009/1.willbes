@@ -35,22 +35,29 @@ label {vertical-align:middle; margin-right:10px}
 </style>
 
 <div class="popWrap NGR">
-    <div><img src="https://static.willbes.net/public/images/promotion/2019/06/mou01.jpg" alt="경찰공무원 인증 특별할인" /></div>
+    <div><img src="https://static.willbes.net/public/images/promotion/2019/06/mou02.jpg" alt="경찰공무원 인증 특별할인" /></div>
     <div class="popCts">
         <h4><img src="https://static.willbes.net/public/images/promotion/2019/05/20190515_cop_mou_t1.png" alt="혜택안내" /></h4>
         <table>
-            <col width="50%"/>
-            <col width="50%"/>
+            <col width="33.33333%"/>
+            <col width="33.33333%"/>
+            <col/>
             <thead>
                 <tr>
                     <th>학원</th>
                     <th>온라인</th>
+                    <th>추가혜택</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th><strong>형법,형사소송법 단과강의 50% 할인</strong></th>
-                    <th><strong>단과강의 40% 할인 </strong></th>
+                    <th><strong>기본이론 단과 및<br>종합반 30% 할인</strong><br>(전역 후 1년 이내 등록 시)</th>
+                    <th><strong>단과강의 50% 할인<br />
+                      패키지강의 30% 할인<br />
+                      프리패스 20% 할인</strong><br />
+                      (평생PASS, 평생0원 패스는 제외)</th>
+                    <th><strong>월별 모의고사 무료제공</strong><br>
+					(단, 당월 시험 종료 후 <br />신청자에 한해 제공.)</th>
                 </tr>
             </tbody>
         </table>
@@ -61,6 +68,7 @@ label {vertical-align:middle; margin-right:10px}
             <li>※ 온,오프 혜택은 인증 받은 날로부터 1년간 유효, 1인 1회에 한함</li>
             <li class="cl01">※ 온라인 쿠폰 추가 발급: 내강의실 > 나의 상담내역 게시판 문의 또는 1544-5006 전화 문의</li>
             <li class="cl01">※ 온라인 혜택 문의: 1544-5006  | 학원 혜택 문의: 1544-0336 </li>
+            <li>※ 월별 모의고사는 월 말에 일괄 지급 예정 (단, 모의고사 진행하는 달에 한함)</li>
         </ul>
         
         <h4><img src="https://static.willbes.net/public/images/promotion/2019/05/20190515_cop_mou_t2.png"  alt="인증파일 등록" /></h4>
@@ -72,8 +80,8 @@ label {vertical-align:middle; margin-right:10px}
             <div class="file">
                 <ul>
                     <li>
-                        <label for="Affiliation">소속</label> <input type="text" id="Affiliation" name="Affiliation" class="iptNm" maxlength="30" >
-                        <label for="Affiliation">직위/직급</label> <input type="text" id="Affiliation" name="Affiliation" class="iptNm" maxlength="30" >
+                        <label for="Affiliation1">소속</label> <input type="text" id="Affiliation1" name="Affiliation" class="iptNm" maxlength="30" >
+                        <label for="Affiliation2">직위/직급</label> <input type="text" id="Affiliation2" name="Affiliation" class="iptNm" maxlength="30" >
                     </li>
                     <li>
                         <ul class="attach">
@@ -84,7 +92,7 @@ label {vertical-align:middle; margin-right:10px}
                 </ul>
             </div>
             <ul>
-                <li>＊ 재직증명서, 경찰 공무원 신분증 뒷면 등</li>
+                <li>＊ 복무확인서</li>
                 <li>＊ 인증 신청 후 24시간 이내에 승인 처리</li>
                 <li>＊ 인증시간: 오후 4시 이전 요청 시, 당일 승인 | 오후 4시 이후 요청 시 익일 승인</li>
                 <li>＊ 단, 주말 및 공휴일 인증 요청건의 경우, 휴일 다음날 22시 이전에 일괄 처리</li>

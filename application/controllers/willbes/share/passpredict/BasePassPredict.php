@@ -1420,12 +1420,13 @@ class BasePassPredict extends \app\controllers\FrontController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'predict', 'label' => '합격예측코드', 'rules' => 'trim|required|integer'],
-            ['field' => 'announcement_type', 'label' => '공고지역', 'rules' => 'trim|required'],
+            ['field' => 'announcement_type', 'label' => '공고유형', 'rules' => 'trim|required'],
             ['field' => 'mock_part', 'label' => '응시직렬', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'subject_p[]', 'label' => '필수과목', 'rules' => 'trim|required|integer'],
             ['field' => 'point_p[]', 'label' => '필수과목점수', 'rules' => 'trim|required'],
             ['field' => 'subject_s[]', 'label' => '선택과목', 'rules' => 'trim|required|integer'],
             ['field' => 'point_s[]', 'label' => '선택과목점수', 'rules' => 'trim|required'],
+            ['field' => 'etc_values[]', 'label' => '윌비스 풀케어 서비스 경로', 'rules' => 'trim|required'],
         ];
 
         //체감 난이도 유효성검사

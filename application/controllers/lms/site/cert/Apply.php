@@ -42,11 +42,12 @@ class Apply extends \app\controllers\BaseController
         $search_value = $this->_reqP('search_value'); // 검색어
         $search_value_enc = $this->certApplyModel->getEncString($search_value); // 검색어 암호화
 
+        $search_cert = $this->_reqP('search_cert'); // 인증정보
+
         $param_check = '';
         if(empty($params) === false) {
             $param_check = $params[0];
         }
-
 
         $arr_condition = [
             'EQ' => [
@@ -71,9 +72,20 @@ class Apply extends \app\controllers\BaseController
             $arr_condition_add = ' op.PayStatusCcd is null ';
         }
 
+        if(empty($search_cert) === false) {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'ORG1' => [
+                    'LKB' => [
+                        'A.CertIdx' => $search_cert,
+                        'A.CertTitle' => $search_cert,
+                    ]
+                ]
+            ]);
+        }
+
         if(empty($search_value) === false) {
             $arr_condition = array_merge_recursive($arr_condition, [
-                'ORG' => [
+                'ORG2' => [
                     'LKB' => [
                         'F.MemId' => $search_value,
                         'F.MemName' => $search_value,

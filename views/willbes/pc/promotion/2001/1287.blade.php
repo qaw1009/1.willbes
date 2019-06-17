@@ -127,8 +127,8 @@
             <div class="slide_con">
                 <ul id="slidesImg">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1287_03_01.png" alt="문플특징1" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1287_03_01.png" alt="문플특징2" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1287_03_01.png" alt="문플특징3" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1287_03_02.png" alt="문플특징2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1287_03_03.png" alt="문플특징3" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2019/06/1287_arrow_l.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/06/1287_arrow_r.png"></a></p>

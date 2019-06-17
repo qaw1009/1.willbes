@@ -33,7 +33,7 @@
 
                 @for($i = 0; $i <= 8; $i++)
                     @if(empty(element($i, $data['OrderProdNameData'])) === false)
-                        ctkprint_bar.prt_text_L{{ 8 + ($i * 3) }} = txt_blank + '{{ str_mb_pad(element($i, $data['OrderProdNameData']), 21) }}' + ';굴림;8;false;left';
+                        ctkprint_bar.prt_text_L{{ 8 + ($i * 3) }} = txt_blank + '{!! str_mb_pad(element($i, $data['OrderProdNameData']), 21) !!}' + ';굴림;8;false;left';
                     @endif
                 @endfor
             @endif

@@ -197,7 +197,7 @@
                             </table>
                         </li>
                         <li>
-                            <strong>5. 윌비스 풀케어 서비스를 알게 된 경로는? (다중선택 가능)</strong>
+                            <strong>5. 윌비스 풀케어 서비스를 알게 된 경로는? <span class="tx-red">*</span> (다중선택 가능)</strong>
                             <input type="checkbox" name="etc_values[]" id="윌비스 홈페이지" value="윌비스 홈페이지"><label for="윌비스 홈페이지">윌비스 홈페이지</label>
                             <input type="checkbox" name="etc_values[]" id="학원 내 게시물" value="학원 내 게시물"><label for="학원 내 게시물">학원 내 게시물</label>
                             <input type="checkbox" name="etc_values[]" id="전단지" value="전단지"><label for="전단지">전단지</label>

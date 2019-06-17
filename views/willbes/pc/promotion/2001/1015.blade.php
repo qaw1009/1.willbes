@@ -26,7 +26,7 @@
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/06/1015_top_bg.jpg) no-repeat center}
         .wb_cts01 {background:#fff}
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2019/06/1015_02_bg.jpg) no-repeat center}
-        .wb_cts03 {background:#d8e1e8}
+        .wb_cts03 {background:#e0e0e0}
         .wb_cts04 {background:#fff}
     </style>
 

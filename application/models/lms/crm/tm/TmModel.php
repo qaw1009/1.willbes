@@ -236,9 +236,10 @@ class TmModel extends WB_Model
                                     and bb.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
                                     and bb.RealPayPrice > 0                 #0원이상 결제 건 : 2019-04-24 김상구 실장님 요청
                                     and cc.ProdTypeCcd = \'636001\'	#온라인강좌상품
-                                    and (dd.RealLecEndDate between DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY) and DATE_ADD(\''.$search_date.'\', INTERVAL +30 DAY) ) #검색일 기준 -30 +30 사이의 수강죵료면서
+                                    #and (dd.RealLecEndDate between DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY) and DATE_ADD(\''.$search_date.'\', INTERVAL +30 DAY) ) #검색일 기준 -30 +30 사이의 수강죵료면서 -> 주석 2019-06-17 최의식 차장님 요청
+                                    and dd.RealLecEndDate = DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY)  #2019-06-17 최의식 차장님 요청 -> 검색일 기준 -30일이 수강종료일이며
                                     and aa.MemIdx not in
-                                        (	# 검색일 기준 -30 +30 사이 결제가 있는 사람 추출 후 제외
+                                        (	# 검색일 기준 -30 +30 사이 결제가 있는 사람 추출 후 제외 -> 변경 :  2019-06-17 최의식 차장님 요청 검색일 기준 -30 부터 검색일 사이 유료결제가 있는 사람 추출 후 제외
                                             select 
                                                 o.MemIdx
                                             from
@@ -251,7 +252,8 @@ class TmModel extends WB_Model
                                                     and op.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
                                                     and op.RealPayPrice > 0             #0원이상 결제 건 : 2019-04-24 김상구 실장님 요청
                                                     and p.ProdTypeCcd = \'636001\'	#온라인강좌상품
-                                                    and DATE_FORMAT(o.OrderDatm ,\'%Y-%m-%d\') between DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY) and DATE_ADD(\''.$search_date.'\', INTERVAL +30 DAY) #검색일 기준 -30 +30 사이의 결제가 있는사람
+                                                    #and DATE_FORMAT(o.OrderDatm ,\'%Y-%m-%d\') between DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY) and DATE_ADD(\''.$search_date.'\', INTERVAL +30 DAY) #검색일 기준 -30 +30 사이의 결제가 있는사람
+                                                    and DATE_FORMAT(o.OrderDatm ,\'%Y-%m-%d\') between DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY) and \''.$search_date.'\' #검색일 기준 -30 + 검색일 사이의 결제가 있는사람
                                         )
                             )';
         } elseif($assign_ccd === '687004') {      // 회수(부재중) ( 상담분류값이 부재중으로 등록된 회원 )

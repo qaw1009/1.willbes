@@ -40,17 +40,17 @@
         to{color:#6c1827}
         } 
         .wb_top00 {background:#e9e7e8}
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/05/1061_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/06/t-1300_bg01.png) no-repeat center top; position:relative}
         .wb_top span {width:256px; position:absolute; left:50%; top:82px; margin-left:-450px}
         .wb_cts01 {background:#fff;}
 
-        .wb_cts02 {background:#fff url(https://static.willbes.net/public/images/promotion/2019/05/1061_04_bg.jpg) no-repeat center top;}
+        .wb_cts02 {background:#fff url(https://static.willbes.net/public/images/promotion/2019/06/t-1300_bg02.png) no-repeat center top;}
         .wb_cts02 .mv_bg {position:relative; width:1210px; height:553px; margin:0 auto; background:#fff url(https://static.willbes.net/public/images/promotion/2019/05/1061_05_bg.jpg) no-repeat center top;}
         .wb_cts02 .mv_bg ul {position:absolute; width:954px; top:19px; left:50%; margin-left:-477px}
         .wb_cts02 .mv_bg li {display:inline; float:left;}
         .wb_cts02 .mv_bg ul:after {content:""; display:block; clear:both}
 
-        .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2019/05/1061_07_bg.jpg) no-repeat center top;}
+        .wb_cts03 {background:#f5f5f5; no-repeat center top;}
         .wb_cts03 .check {width:980px; margin:0 auto; padding:15px 0px 120px 20px; letter-spacing:3; font-weight:bold; color:#f8eff0; cursor:pointer}
         .wb_cts03 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px}
         .wb_cts03 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#4680a5; background:#fff; margin-left:50px; border-radius:20px}
@@ -97,20 +97,17 @@
         타이머 //-->
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top01.jpg" alt="윌비스9급PASS X 세무PASS와 만나다!"  />
-            <span><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top02.gif" alt="5~6월 지방직/서울직"  /></span>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_01.jpg" alt="윌비스 자격증_전기.소방산업기사"  />
         </div><!--WB_top//-->
 
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_01.jpg" alt="무작정 시작한 공무원 시험 준비" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_02.gif" alt="고민?" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_03.jpg" alt="어떤 고민일지라도 윌비스9급PASS가 진리!" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_02.jpg" alt="윌비스 자격증_전기.소방산업기사"  />
         </div><!--wb_cts01//-->
 
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_04.jpg" alt="전문 교수진과 함께라면 흔들림 없는 실력 완성!" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_03.jpg" alt="윌비스 자격증_전기.소방산업기사"  />
             <div class="mv_bg">
                 <ul>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv1.gif" alt="" /></li>
@@ -124,7 +121,9 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv8.gif" alt="" /></li>
                 </ul>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_06.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_03-1.jpg" alt="윌비스 자격증_전기.소방산업기사"  /><br>
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_04.jpg" alt="윌비스 자격증_전기.소방산업기사"  /><br>
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_05.jpg" alt="윌비스 자격증_전기.소방산업기사"  />
         </div><!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" >

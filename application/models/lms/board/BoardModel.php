@@ -11,7 +11,7 @@ class BoardModel extends WB_Model
     private $_table_r_comment = 'lms_board_r_comment';
     private $_table_assignment_r_schedule = 'lms_board_assignment_r_schedule';
     private $_table_assignment_r_schedule_date = 'lms_board_assignment_r_schedule_date';
-    private $_table_sys_site = 'lms_site';
+    protected $_table_sys_site = 'lms_site';
     protected $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_code = 'lms_sys_code';
     private $_table_sys_category = 'lms_sys_category';

@@ -4,14 +4,12 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <link href="/public/css/willbes/promotion/2003_1244.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
-    <style type="text/css">
-        
-    </style>
+    <div class="evtContent NGR" id="evtContainer">
+        <div class="skybanner">
+            <a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}"><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_skybanner.jpg" title="내 예상점수와 체감 난이도는?" /></a>
+        </div>
 
-
-    <div class="evtContent NGR" id="evtContainer">      
-
-    <div class="evtCtnsBox evtTop">
+        <div class="evtCtnsBox evtTop">
             <div>
                 <span class="txt1"><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_top_txt1.png" title="출제경향" /></span>
                 <span class="txt2"><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_top_txt2.png" title="필수팁" /></span>
@@ -22,8 +20,7 @@
                 
                 <div class="youtube">
                     <iframe src="https://www.youtube.com/embed/um0UBAs7IDw?rel=0" frameborder="0" allowfullscreen></iframe>
-                </div>
-                
+                </div>                
             </div>
         </div>
 
@@ -43,10 +40,11 @@
                     </a>
                 </li>
                 <li>
-                    <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}">
-                        <strong>2019</strong>
-                        <span>서울시/지방직 9급</span>
-                        <div>총평/해설/해설강의</div>
+                    {{--<a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}">--}}
+                    <a id='tab3' href="#" onclick="javascript:alert('준비중입니다.'); return false;">
+                        <strong>무료응시</strong>
+                        <span>미리 보는 시험</span>
+                        <div>온라인 전국 모의고사</div>
                     </a>
                 </li>     
                 <li>
@@ -56,6 +54,24 @@
                         <div>LIVE 특강</div>
                     </a>
                 </li>
+                {{-- 15일 노출 영역
+                <li>
+                    <a id='tab3' href="#none" onclick="javascript:alert('준비중입니다.'); return false;">
+                        <strong>2019</strong>
+                        <span>서울시/지방직 9급</span>
+                        <div>총평/해설/해설강의</div>
+                    </a>
+                </li>     
+                <li>
+                    <a id='tab4' href="#none" onclick="javascript:alert('준비중입니다.'); return false;">
+                    <!-- 15일 11시 노출
+                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}">-->
+                        <strong>2019</strong>   
+                        <span>서울시/지방직 9급</span>
+                        <div>평균 점수/체감난이도</div>
+                    </a>
+                </li>
+                --}}
                 <li>
                     <a id='tab5' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=5#content_5') }}">
                         <strong>진행중</strong>  
@@ -363,11 +379,303 @@
             </div>  
         </div>
 
-        <div id="content_3" class="tabCts">
-            <ul class="assayTab">
-                <li><a href="#assayTab01">서울시</a></li>
-                <li><a href="#assayTab02">지방직</a></li>
+        {{-- 17일 이후 노출--}}
+        <div id="content_3" class="tabCts pb90 pt100">
+            <ul class="assayTab assayTab2">
+                <li><a href="#assayTab10">서울시</a></li>
+                <li><a href="#assayTab11">지방직</a></li>
             </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_01.png" title="총평" class="mt50"/>            
+            <div id="assayTab10" class="subject mt50">
+                <ul class="subjectMenu">
+                    <li><a href="#sub01" class="active">국어</a></li>
+                    <li><a href="#sub02">영어</a></li>
+                    <li><a href="#sub03">한국사</a></li>
+                    <li><a href="#sub04">행정학</a></li>
+                    <li><a href="#sub05">행정법</a></li>
+                    <li><a href="#sub06">사회</a></li>
+                    <li><a href="#sub07">세법</a></li>
+                    <li><a href="#sub08">회계학</a></li>
+                    <li><a href="#sub09">기술직</a></li>
+                </ul>            
+                <div class="subCts" id="sub01">
+                    <div class="comingsoon">국어 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts" id="sub02">
+                    <div class="comingsoon">영어 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts" id="sub03">
+                    <div class="comingsoon">한국사 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts" id="sub04">
+                    <div class="comingsoon">행정학 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts" id="sub05">
+                    <div class="comingsoon">행정법 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts" id="sub06">
+                    <div class="comingsoon">사회 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts" id="sub07">
+                    <div class="comingsoon">세법 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts" id="sub08">
+                    <div class="comingsoon">회계학 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts" id="sub09">
+                    <div class="comingsoon">기술직 총평을 준비중입니다.</div>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_02.png" usemap="#Map1244F" class="mt100" title="해설" border="0"/>
+                <map name="Map1244F" id="Map1244F">
+                    <area shape="rect" coords="195,159,310,196" href="@if($file_yn[41] == 'Y') {{ front_url($file_link[41]) }} @else {{ $file_link[41] }} @endif" alt="국어 다운로드" />
+                    <area shape="rect" coords="514,160,632,197" href="@if($file_yn[42] == 'Y') {{ front_url($file_link[42]) }} @else {{ $file_link[42] }} @endif" alt="영어다운로드" />
+                    <area shape="rect" coords="194,210,312,247" href="@if($file_yn[43] == 'Y') {{ front_url($file_link[43]) }} @else {{ $file_link[43] }} @endif" alt="한국사다운로드" />
+                    <area shape="rect" coords="516,210,632,248" href="@if($file_yn[44] == 'Y') {{ front_url($file_link[44]) }} @else {{ $file_link[44] }} @endif" alt="행정학다운로드" />
+                    <area shape="rect" coords="194,258,311,297" href="@if($file_yn[45] == 'Y') {{ front_url($file_link[45]) }} @else {{ $file_link[45] }} @endif" alt="행정법다운로드" />
+                    <area shape="rect" coords="514,258,632,295" href="@if($file_yn[46] == 'Y') {{ front_url($file_link[46]) }} @else {{ $file_link[46] }} @endif" alt="사회다운로드" />
+                </map>
+                <ul class="subjectMenu2 mt50">
+                    <li><a href="#sub11" class="active">국어</a></li>
+                    <li><a href="#sub12">영어</a></li>
+                    <li><a href="#sub13">한국사</a></li>
+                    <li><a href="#sub14">행정학</a></li>
+                    <li><a href="#sub15">행정법</a></li>
+                    <li><a href="#sub16">사회</a></li>
+                    <li><a href="#sub17">세법</a></li>
+                    <li><a href="#sub18">회계학</a></li>
+                    <li><a href="#sub19">기술직</a></li>
+                </ul>            
+                <div class="subCts2" id="sub11">
+                    <div class="comingsoon">국어 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts2" id="sub12">
+                    <div class="comingsoon">영어 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts2" id="sub13">
+                    <div class="comingsoon">한국사 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts2" id="sub14">
+                    <div class="comingsoon">행정학 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts2" id="sub15">
+                    <div class="comingsoon">행정법 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts2" id="sub16">
+                    <div class="comingsoon">사회 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts2" id="sub17">
+                    <div class="comingsoon">세법 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts2" id="sub18">
+                    <div class="comingsoon">회계학 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts2" id="sub19">
+                    <div class="comingsoon">기술직 해설강의을 준비중입니다.</div>
+                </div>
+            </div>
+
+            <div id="assayTab11" class="subject mt50">
+                <ul class="subjectMenu3">
+                    <li><a href="#sub21" class="active">국어</a></li>
+                    <li><a href="#sub22">영어</a></li>
+                    <li><a href="#sub23">한국사</a></li>
+                    <li><a href="#sub24">행정학</a></li>
+                    <li><a href="#sub25">행정법</a></li>
+                    <li><a href="#sub26">사회</a></li>
+                    <li><a href="#sub27">세법</a></li>
+                    <li><a href="#sub28">회계학</a></li>
+                    <li><a href="#sub29">기술직</a></li>
+                </ul>            
+                <div class="subCts3" id="sub21">
+                    <div class="comingsoon">국어 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts3" id="sub22">
+                    <div class="comingsoon">영어 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts3" id="sub23">
+                    <div class="comingsoon">한국사 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts3" id="sub24">
+                    <div class="comingsoon">행정학 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts3" id="sub25">
+                    <div class="comingsoon">행정법 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts3" id="sub26">
+                    <div class="comingsoon">사회 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts3" id="sub27">
+                    <div class="comingsoon">세법 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts3" id="sub28">
+                    <div class="comingsoon">회계학 총평을 준비중입니다.</div>
+                </div>
+                <div class="subCts3" id="sub29">
+                    <div class="comingsoon">기술직 총평을 준비중입니다.</div>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_02.png" usemap="#Map1244G" class="mt100" title="해설" border="0"/>
+                <map name="Map1244G" id="Map1244G">
+                    <area shape="rect" coords="195,159,310,196" href="@if($file_yn[51] == 'Y') {{ front_url($file_link[51]) }} @else {{ $file_link[51] }} @endif" alt="국어 다운로드" />
+                    <area shape="rect" coords="514,160,632,197" href="@if($file_yn[52] == 'Y') {{ front_url($file_link[52]) }} @else {{ $file_link[52] }} @endif" alt="영어다운로드" />
+                    <area shape="rect" coords="194,210,312,247" href="@if($file_yn[53] == 'Y') {{ front_url($file_link[53]) }} @else {{ $file_link[53] }} @endif" alt="한국사다운로드" />
+                    <area shape="rect" coords="516,210,632,248" href="@if($file_yn[54] == 'Y') {{ front_url($file_link[54]) }} @else {{ $file_link[54] }} @endif" alt="행정학다운로드" />
+                    <area shape="rect" coords="194,258,311,297" href="@if($file_yn[55] == 'Y') {{ front_url($file_link[55]) }} @else {{ $file_link[55] }} @endif" alt="행정법다운로드" />
+                    <area shape="rect" coords="514,258,632,295" href="@if($file_yn[56] == 'Y') {{ front_url($file_link[56]) }} @else {{ $file_link[56] }} @endif" alt="사회다운로드" />
+                </map>
+                <ul class="subjectMenu4 mt50">
+                    <li><a href="#sub31" class="active">국어</a></li>
+                    <li><a href="#sub32">영어</a></li>
+                    <li><a href="#sub33">한국사</a></li>
+                    <li><a href="#sub34">행정학</a></li>
+                    <li><a href="#sub35">행정법</a></li>
+                    <li><a href="#sub36">사회</a></li>
+                    <li><a href="#sub37">세법</a></li>
+                    <li><a href="#sub38">회계학</a></li>
+                    <li><a href="#sub39">기술직</a></li>
+                </ul>            
+                <div class="subCts4" id="sub31">
+                    <div class="comingsoon">국어 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts4" id="sub32">
+                    <div class="comingsoon">영어 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts4" id="sub33">
+                    <div class="comingsoon">한국사 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts4" id="sub34">
+                    <div class="comingsoon">행정학 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts4" id="sub35">
+                    <div class="comingsoon">행정법 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts4" id="sub36">
+                    <div class="comingsoon">사회 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts4" id="sub37">
+                    <div class="comingsoon">세법 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts4" id="sub38">
+                    <div class="comingsoon">회계학 해설강의을 준비중입니다.</div>
+                </div>
+                <div class="subCts4" id="sub39">
+                    <div class="comingsoon">기술직 해설강의을 준비중입니다.</div>
+                </div>
+            </div> 
+        </div>
+        
+        {{-- 15일 노출--}}
+        <div id="content_4" class="tabCts pb90 pt100">
+            <ul class="assayTab assayTab2">
+                <li><a href="#assayTab20">서울시</a></li>
+                <li><a href="#assayTab21">지방직</a></li>
+            </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_07_01.png" title="총평" class="mt50"/>
+            <ul class="level NGEB" id="assayTab20">
+                <li>
+                    <div><strong>국어</strong> 평균점수 <strong>75.23</strong></div>
+                    <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star04.jpg" ></div>
+                </li>
+                <li>
+                    <div><strong>영어</strong> 평균점수 <strong>44.23</strong></div>
+                    <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star02.jpg" ></div>
+                </li>
+                <li>
+                    <div><strong>한국사</strong> 평균점수 <strong>16.23</strong></div>
+                    <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star01.jpg" ></div>
+                </li>
+                <li>
+                    <div>
+                        <select name="" id="" onchange="" style="width:100px;">
+                            <option value="">과목선택</option>
+                        </select> 평균점수 <strong>67.23</strong>
+                    </div>
+                    <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star03.jpg" ></div>
+                    <div>충분한 데이터가 확보되지 않았습니다.<br>조금만 기다려 주세요.</div>
+                </li>
+            </ul> 
+            
+            <ul class="level NGEB" id="assayTab21">
+                <li>
+                    <div><strong>국어</strong> 평균점수 <strong>70.23</strong></div>
+                    <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star04.jpg" ></div>
+                </li>
+                <li>
+                    <div><strong>영어</strong> 평균점수 <strong>40.23</strong></div>
+                    <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star02.jpg" ></div>
+                </li>
+                <li>
+                    <div><strong>한국사</strong> 평균점수 <strong>11.23</strong></div>
+                    <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star01.jpg" ></div>
+                </li>
+                <li>
+                    <div>
+                        <select name="" id="" onchange="" style="width:100px;">
+                            <option value="">과목선택</option>
+                        </select> 평균점수 <strong>60.23</strong>
+                    </div>
+                    <div>체감난이도 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_star03.jpg" ></div>
+                </li>
+            </ul> 
+        </div>
+
+        <div id="content_5" class="tabCts">
+            <p>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_08_01.jpg" usemap="#Map1244H" title="소문내기 이벤트" border="0" />
+                <map name="Map1244H" id="Map1244H">
+                    <area shape="rect" coords="917,223,1031,252" href="/pass/support/notice/show?board_idx=228393" target="_blank" alt="당첨확인"/>
+                    <area shape="rect" coords="227,860,551,926" href="#none" alt="예상점수 등록하기" />
+                    <area shape="rect" coords="569,861,890,925" href="/promotion/index/cate/3019/code/1244?tab=4#content_4" alt="평균 점수 보러가기" />
+                </map>
+            </p>
+            {{--댓글--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_normal_partial')
+            @endif
+
+            <div class="note">
+                <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_3.jpg" /></p>
+                <div class="noteWrap">
+                    <div id="event01">
+                        <ol>
+                            <li>
+                                이벤트 기간<br>
+                                - 신청 기간: 6월 15일(토)~6월 30(일) (16일간)<br>
+                                - 당첨자 발표: 7월 12일(금)<br>
+                            </li>
+                            <li>
+                                이벤트 대상<br>
+                                - 설문조사(예상 점수/체감 난이도 등록) 참여자<br>
+                                - 후기 작성/적중 신고 참여자<br>
+                            </li>
+                            <li>
+                                선발 및 추첨<br>
+                                - 참여자 전원 면접 캠프 20% 수강 할인권 지급<br>
+                                - 경품: 설문작성자와 후기/적중 신고 작성자 중 무작위 추첨되며, <span class="tx-origin-red">후기/적중 신고 댓글을 정성스럽게 작성해주신 분들에게 유리합니다. </span><br>
+                                - 영화예매권-아이스크림-드링크 순으로 추첨이 진행됩니다. 기추첨된 인원이 재추첨 될 시, 재추첨을 통해 다른 인원을 추첨합니다. (중복 당첨 불가)<br>
+                                - 6월 17일(월)에 공지사항을 통해 당첨자가 발표됩니다.
+                            </li>
+                            <li>
+                                이벤트 혜택<br>
+                                - 경품은 모바일 쿠폰(기프티콘) 형태로 발송되며, 발송은 1회로 제한합니다.<br>
+                                - 기프티콘은 이벤트 참여시 기재된 전화번호로 7월 12일에 발송됩니다.<br>
+                                - 휴대폰번호 오류 시 기프티콘은 재발송 되지 않습니다.<br>
+                                - 휴대전화 단말기의 MMS 수신상태가 양호하지 않은 경우, 기프티콘 발송이 불가할 수 있습니다.<br>
+                                - 이벤트 참여 전 회원정보(휴대폰 번호)를 정확히 수정해주시기 바랍니다. <br>
+                                - 기프티콘을 수신한 이후 개인사정에 의해 유효기간이 지나 사용하지 못한 경우 사용하지 않은 혜택에 대해서는 별도로 보상하지 않습니다.<br>
+                            </li>
+                            <li>
+                                기타<br>
+                                - URL 공유목적의 댓글을 제외한 모든 댓글은 사전 예고없이 삭제될 수 있습니다.<br>
+                            </li>
+                        </ol>
+                    </div>
+                    <p>※ 유의사항을 읽지 않고 발생한 모든 상황에 대해서 윌비스고시학원은 책임지지 않습니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        {{-- 기존 3번탭
+        <div id="content_3" class="tabCts">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_03_1A.jpg" usemap="#Map1244C" title="윌비스 전국 모의고사" border="0" />
             <map name="Map1244C" id="Map1244C">
                 <area shape="rect" coords="379,1868,740,1932" href="https://pass.willbes.net/pass/mockTest/apply/cate/?state=1&s_type=&s_keyword=" target="_blank" alt="온라인모의고사신청" />
@@ -380,7 +688,9 @@
                 </div>
             </div>
         </div>
+        --}}
 
+        {{-- 기존 4번탭
         <div id="content_4" class="tabCts">
             @php
                 //라이브방송 날짜 셋팅
@@ -437,10 +747,10 @@
 
                 <div id="movieFrame">
                     @if ($live_type == 'standby')
-                        {{--방송 전--}}
+                        <!--방송 전-->
                         <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_3.jpg" title="방송전">
                     @elseif ($live_type == 'on' && $live_video_type == 'on')
-                        {{--6/3 ~ 6/11 방송 중--}}
+                        <!--6/3 ~ 6/11 방송 중-->
                         <script src="/public/vendor/jwplayer/jwplayer.js"></script>
                         <div class="movieplayer">
                             <div class="embedWrap">
@@ -484,7 +794,7 @@
                     @elseif ($live_type == 'on' && $live_video_type == 'off')
                         <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_3.jpg" title="방송전">
                     @else
-                        {{--6/11 00:00 부터 노출--}}
+                        <!--6/11 00:00 부터 노출-->
                         <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_3_end.jpg" title="방송종료" />
                     @endif
                 </div>
@@ -492,13 +802,14 @@
                 
                 <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1244_04_5.jpg" title="라이브 특강 방송보기" /></p>
             </div> 
-            {{--댓글--}}
+
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
             @endif        
         </div>
+        --}}        
 
-
+        {{-- 기존 5번탭
         <div id="content_5" class="tabCts">
             <p>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_05_1A.jpg" usemap="#Map1244E" title="소문내기 이벤트" border="0" />
@@ -513,7 +824,6 @@
                     <area shape="rect" coords="794,1259,1019,1385" href="@if($file_yn[32] == 'Y') {{ front_url($file_link[32]) }} @else {{ $file_link[32] }} @endif" alt="이미지다운로드"/>
                 </map>
             </p>
-            {{--댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_url_partial')
             @endif
@@ -632,9 +942,8 @@
                     <p>※ 유의사항을 읽지 않고 발생한 모든 상황에 대해서 윌비스고시학원은 책임지지 않습니다.</p>
                 </div>
             </div>
-        </div>   
-        
-              
+        </div>          
+        --}}      
     </div>
     <!-- End Container --> 
 
@@ -708,8 +1017,7 @@
                     html_str = "<iframe src='"+tab6_url+"' allowfullscreen></iframe>";
                 }else if(activeTab == "#yTab07"){
                     html_str = "<iframe src='"+tab7_url+"' allowfullscreen></iframe>";
-                }
-                
+                }                
                 
                 $(".youtubeTab li a").removeClass("active"); 
                 $(this).addClass("active"); 
@@ -726,31 +1034,6 @@
             $('#popup').bPopup();
         }
 
-        $(document).ready(function(){
-            $('.noteWrap ul').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-            
-                $content = $($active[0].hash);
-            
-                $links.not($active).each(function () {
-                $(this.hash).hide()});
-            
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                $active.removeClass('active');
-                $content.hide();
-            
-                $active = $(this);
-                $content = $(this.hash);
-            
-                $active.addClass('active');
-                $content.show();
-            
-                e.preventDefault()})})}
-        );
-
         function fn_live(p_type) {
             if(p_type == "hd"){
                 location.href = "http://willbes.flive.skcdn.com/willbeslive/livestream4011/Playlist.m3u8";
@@ -758,5 +1041,69 @@
                 location.href = "http://willbes.flive.skcdn.com/willbeslive/livestream4012/Playlist.m3u8";
             }
         }
+
+        $(document).ready(function(){
+            $(".subCts").hide();
+            $(".subCts:first").show();
+
+            $(".subjectMenu a").click(function(){
+
+                var activeTab = $(this).attr("href");
+                $(".subjectMenu a").removeClass("active");
+                $(this).addClass("active");
+                $(".subCts").hide();
+                $(activeTab).fadeIn();
+
+                return false;
+            });
+        }); 
+
+        $(document).ready(function(){
+            $(".subCts2").hide();
+            $(".subCts2:first").show();
+
+            $(".subjectMenu2 a").click(function(){
+
+                var activeTab = $(this).attr("href");
+                $(".subjectMenu2 a").removeClass("active");
+                $(this).addClass("active");
+                $(".subCts2").hide();
+                $(activeTab).fadeIn();
+
+                return false;
+            });
+        }); 
+
+        $(document).ready(function(){
+            $(".subCts3").hide();
+            $(".subCts3:first").show();
+
+            $(".subjectMenu2 a").click(function(){
+
+                var activeTab = $(this).attr("href");
+                $(".subjectMenu3 a").removeClass("active");
+                $(this).addClass("active");
+                $(".subCts3").hide();
+                $(activeTab).fadeIn();
+
+                return false;
+            });
+        }); 
+
+        $(document).ready(function(){
+            $(".subCts4").hide();
+            $(".subCts4:first").show();
+
+            $(".subjectMenu4 a").click(function(){
+
+                var activeTab = $(this).attr("href");
+                $(".subjectMenu4 a").removeClass("active");
+                $(this).addClass("active");
+                $(".subCts4").hide();
+                $(activeTab).fadeIn();
+
+                return false;
+            });
+        }); 
     </script>
 @stop

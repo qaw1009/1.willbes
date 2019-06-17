@@ -31,6 +31,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_special_online') }}" target="_blank">해양경찰특채 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 학원 메인</a></li>
                 <li><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
+                <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_seven') }}" target="_blank">공무원 7급 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_tex') }}" target="_blank">공무원 세무직 온라인 메인</a></li>                
@@ -40,6 +41,8 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gp') }}" target="_blank">공무원 군무원 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_noncom') }}" target="_blank">공무원 부사관 온라인 메인</a></li>
                 <li><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/main_cert_fire') }}" target="_blank">자격증 메인 - 소방</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인 page 이동</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memsearch') }}" target="_blank">아이디찾기 page 이동</a></li>

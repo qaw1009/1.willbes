@@ -32,6 +32,8 @@
                             @endforeach
                         </select>
 
+                        <input type="text" class="form-control" id="search_cert" name="search_cert" style="width:150px;"> 인증코드, 회차명 검색 가능
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -109,7 +111,7 @@
                     <th>카테고리</th>
                     <th>인증코드</th>
                     <th>인증구분</th>
-                    <th>회차</th>
+                    <th>회차 - 회차명</th>
                     <th>응시직렬</th>
                     <th>회원명</th>
                     <th>상세<br>정보</th>
@@ -170,7 +172,7 @@
                     {'data' : 'CertIdx'},
                     {'data' : 'CertTypeCcd_Name'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.No + ' [' + data.CertTitle+ ']';
+                            return data.No +' - '+ data.CertTitle;
                         }},
                     {'data' : null,  'render' : function(data,type,row,meta) {
                             return data.TakeKind_Name !=null ? data.TakeKind_Name:data.TakeKind;

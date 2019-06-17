@@ -81,7 +81,12 @@
         .wb_01 {background:#343434}
         .wb_02 {background:#24272d url(https://static.willbes.net/public/images/promotion/2019/06/1287_02_bg.jpg) no-repeat center top;}
         .wb_03 {background:#f0c756; padding:150px 0}
-        .wb_04 {background:#fff}
+        .wb_04 {background:#fff; position:relative}
+        .wb_04 .check {position:absolute; width:1000px; left:50%; top:760px; margin-left:-500px; z-index:1;
+            font-size:14px; text-align:center; line-height:1.5;
+        }
+        .wb_04 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
+        .wb_04 .check a {display:inline-block; padding:5px 20px; color:#fff; background:#c40007; margin-left:20px; border-radius:20px}
         .wb_05 {background:#636363; padding:60px 0 100px}
 
         /* 슬라이드 */
@@ -137,13 +142,14 @@
                 <area shape="rect" coords="481,614,636,661" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/154677" target="_blank" alt="문풀 패키지 오태진" />
                 <area shape="rect" coords="837,612,993,663" href="https://police.willbes.net/periodPackage/show/cate/3002/pack/648001/prod-code/154679" target="_blank" alt="문풀패키지" />
             </map>
-            <div>
-                페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다.      이용안내확인하기 ↓ 
+            <div class="check">
+                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <a href="#wb_05">이용안내확인하기 ↓</a> <br>
                 ※ 강의공유, 콘텐츠 부정 사용 적발 시, 회원 자격 박탈 및 환불이 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다.
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_05" >
+        <div class="evtCtnsBox wb_05" id="wb_05" >
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1287_05.jpg"  alt="유의사항"/>
         </div>
     </div>

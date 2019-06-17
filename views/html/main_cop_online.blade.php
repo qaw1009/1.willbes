@@ -89,7 +89,7 @@
         <div class="widthAuto">
             <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190613_01.jpg" title="수험생이 증명하는 대한민국 1등 경찰학원">
         </div>
-        <div class="widthAutoFull">
+        <div class="widthAutoFull summer">
             <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190613_02.jpg" usemap="#Map160913" title="신광은 경찰 여름이벤트" border="0">
             <map name="Map160913" id="Map160913">
                 <area shape="rect" coords="16,210,227,424" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268 " target="_blank" alt="문풀사전접수" />

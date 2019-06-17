@@ -184,9 +184,9 @@ font-size:16px; padding:10px 0; line-height: 1.5;
                 </li>
                 <li>                    
                     <a id='tab2' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=2#content_2') }}">
-                        <strong>무료응시</strong>
+                        <strong>무료제공</strong>
                         <span>합격을 위한 최종점검</span>
-                        <div>6/16 전국 모의고사</div>				
+                        <div>전국 모의고사</div>				
                     </a>
                 </li>
                 <li>
@@ -230,11 +230,10 @@ font-size:16px; padding:10px 0; line-height: 1.5;
             </ul>
         </div>
 
-        <div id="content_2" class="tabCts pb90 pt100">               
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1279_tab02_01.jpg" usemap="#Map1279B" title="윌비스 군무원 전국모의고사" border="0" />
+        <div id="content_2" class="tabCts pb90">               
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1279_tab02_02.jpg" usemap="#Map1279B" title="윌비스 군무원 전국모의고사" border="0" />
             <map name="Map1279B" id="Map1279B">
-                <area shape="rect" coords="262,328,861,390" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=271&;" target="_blank" alt="무료응시" />
-                <area shape="rect" coords="755,2208,973,2249" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=271&;" target="_blank" alt="모의과사신청하기" />
+                <area shape="rect" coords="787,1678,1003,1914" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" target="_blank" alt="무료응시" />                
             </map>
         </div>
 

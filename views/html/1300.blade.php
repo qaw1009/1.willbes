@@ -40,29 +40,47 @@
         to{color:#6c1827}
         } 
         .wb_top00 {background:#e9e7e8}
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/05/1061_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/06/t-1300_bg01.png) no-repeat center top; position:relative}
         .wb_top span {width:256px; position:absolute; left:50%; top:82px; margin-left:-450px}
         .wb_cts01 {background:#fff;}
 
-        .wb_cts02 {background:#fff url(https://static.willbes.net/public/images/promotion/2019/05/1061_04_bg.jpg) no-repeat center top;}
+        .wb_cts02 {background:#f5f5f5 url(https://static.willbes.net/public/images/promotion/2019/06/t-1300_bg02.png) no-repeat center top;}
         .wb_cts02 .mv_bg {position:relative; width:1210px; height:553px; margin:0 auto; background:#fff url(https://static.willbes.net/public/images/promotion/2019/05/1061_05_bg.jpg) no-repeat center top;}
         .wb_cts02 .mv_bg ul {position:absolute; width:954px; top:19px; left:50%; margin-left:-477px}
         .wb_cts02 .mv_bg li {display:inline; float:left;}
         .wb_cts02 .mv_bg ul:after {content:""; display:block; clear:both}
 
-        .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2019/05/1061_07_bg.jpg) no-repeat center top;}
+        .wb_cts03 {background:#fff; no-repeat center top;}
         .wb_cts03 .check {width:980px; margin:0 auto; padding:15px 0px 120px 20px; letter-spacing:3; font-weight:bold; color:#f8eff0; cursor:pointer}
         .wb_cts03 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px}
         .wb_cts03 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#4680a5; background:#fff; margin-left:50px; border-radius:20px}
 
-        .wb_cts04 {background:#eeeced;}
+        .wb_cts04 {background:#fff;}
         .wb_cts05 {background:#fff;}
+		
+		.LAeventB03 table {background:#fff; width:960px; margin:0 auto; background:#fff} 
+		.LAeventB03 p {font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;}
+        .LAeventB03 tr {border-bottom:1px solid #ccc}        
+        .LAeventB03 tr.st01 {background:#ececec}
+        .LAeventB03 tr:hover {background:#f9f9f9}
+        .LAeventB03 th,
+        .LAeventB03 td {padding:15px 20px; font-size:16px; font-weight:500;}
+        .LAeventB03 th {background:#5f5f5f; color:#fff}
+        .LAeventB03 td:nth-child(1) {text-align:center}
+        .LAeventB03 td:nth-child(2) {text-align:center; color:#d40000}
+        .LAeventB03 td:nth-child(3) {color:#d40000; font-size:14px;}
+        .LAeventB03 td:last-child {border:0}
+        .LAeventB03 td p {font-size:12px}
+		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#d40000; font-size:14px; display:block; border-radius:20px 20px 0 20px}
+        .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
+        .LAeventB03 table a:hover {background:#252525; color:#fff;}
+        .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
 
         .skybanner {
             position:fixed;
             top:250px;
             right:10px;
-            width:163px;
+            width:285px;
             z-index:10;
         }
     </style>
@@ -70,7 +88,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">            
-            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/05/1264_skybanner.png" alt="환승이벤트"></a>
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_sky.png" alt="환승이벤트"></a>
         </div>
  <!--
         <div class="evtCtnsBox time NGEB" id="newTopDday">
@@ -97,57 +115,27 @@
         타이머 //-->
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top01.jpg" alt="윌비스9급PASS X 세무PASS와 만나다!"  />
-            <span><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top02.gif" alt="5~6월 지방직/서울직"  /></span>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_01.png" alt="윌비스 자격증_전기.소방산업기사"  />
         </div><!--WB_top//-->
 
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_01.jpg" alt="무작정 시작한 공무원 시험 준비" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_02.gif" alt="고민?" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_03.jpg" alt="어떤 고민일지라도 윌비스9급PASS가 진리!" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_02.png" alt="윌비스 자격증_전기.소방산업기사"  />
         </div><!--wb_cts01//-->
 
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_04.jpg" alt="전문 교수진과 함께라면 흔들림 없는 실력 완성!" />
-            <div class="mv_bg">
-                <ul>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv1.gif" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv2.gif" alt="" /></li>
-                    <li style="padding-left:60px;"><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv5.gif" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv6.gif" alt="" /></li>
-                    <!--다음줄-->
-                    <li style="clear:left;"><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv3.gif" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv4.gif" alt="" /></li>
-                    <li style="padding-left:60px;"><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv7.gif" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1061_05_mv8.gif" alt="" /></li>
-                </ul>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_06.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_03.png" alt="윌비스 자격증_전기.소방산업기사"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_03-1.png" alt="윌비스 자격증_전기.소방산업기사"  /><br>
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_04.png" alt="윌비스 자격증_전기.소방산업기사"  /><br>
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_05.png" alt="윌비스 자격증_전기.소방산업기사"  />
         </div><!--wb_cts02//-->
 
-        <div class="evtCtnsBox wb_cts03" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_07.jpg" alt=" " usemap="#Map1061A" border="0" />
-            <map name="Map1061A" id="Map1061A" >
-                <area shape="rect" coords="803,610,937,696" href="javascript:go_PassLecture(1);" alt="6개월 수강신청"   onfocus="this.blur();" />
-                <area shape="rect" coords="803,718,937,805" href="javascript:go_PassLecture(2);" alt="12개월 수강신청"   onfocus="this.blur();" />
-            </map>
-            <div class="check" id="chkInfo"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 윌비스 9급 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label><a href="#tab1">이용안내확인하기 ↓</a></div>
-        </div><!--wb_cts03//-->
-
-        <div class="evtCtnsBox wb_cts04" id="event">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_08.jpg" alt=" " usemap="#Map1061B" border="0" />
-            <map name="Map1061B" id="Map1061B" >
-                <area shape="rect" coords="325,842,782,914" href="javascript:certOpen();" alt="타 사이트 수강 인증하기" />
-                <area shape="rect" coords="457,922,633,966" href="#info" alt="유의사항 확인하기"/>
-            </map>
-        </div><!--wb_cts04//-->
-
-        <div class="evtCtnsBox wb_cts05" id="info">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1264_09.jpg" alt=" 윌비스 9급 PASS 이용안내" />
-        </div><!--wb_cts05//-->
-
+       <div class="evtCtnsBox wb_cts03">
+	   		<p>● 소방설비(산업)기사 PASS 수강신청 테이블</p>
+		</div>
+	<div class="evtCtnsBox wb_cts04">
+		<img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_06.png" alt="윌비스 자격증_전기.소방산업기사"  />
     </div>
     <!-- End Container -->
     <script>

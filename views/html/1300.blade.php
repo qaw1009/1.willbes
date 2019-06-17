@@ -72,7 +72,7 @@
         <div class="skybanner">            
             <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/05/1264_skybanner.png" alt="환승이벤트"></a>
         </div>
-
+ <!--
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
                 <table>
@@ -94,7 +94,7 @@
                 </table>                
             </div>
         </div>
-        <!-- 타이머 //-->
+        타이머 //-->
 
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1061_top01.jpg" alt="윌비스9급PASS X 세무PASS와 만나다!"  />

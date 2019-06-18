@@ -2,7 +2,8 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-    <!-- Container -->
+    
+	<!-- Container -->
     <style type="text/css">
         .subContainer {
             min-height: auto !important;
@@ -20,7 +21,7 @@
 
         /************************************************************/
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1074_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1074_top2_bg.jpg) no-repeat center top;}
         .evt01 {background:#fdfdfd}
         .evt02 {background:#ebeff0}
         .evt03 {background:#fdfdfd}
@@ -49,7 +50,7 @@
             <div id="ddaytime">
                 <table>
                     <tr>
-                    <td class="time_txt NGEB"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} 마감!</span></td>
+                    <td class="time_txt NGEB"><span>4/30(화) 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
@@ -70,10 +71,10 @@
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_top2.png" usemap="#Map_1074_lec" title="기미진T-PASS" border="0" />
-            <map name="Map_1074_lec">
-                <area shape="rect" coords="105,796,532,910" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/152965" target="_blank">
-                <area shape="rect" coords="584,796,1034,912" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/152964" target="_blank">
-            </map>
+		<map name="Map_1074_lec">
+		  <area shape="rect" coords="105,796,532,910" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/152965" target="_blank">
+		  <area shape="rect" coords="584,796,1034,912" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/152964" target="_blank">
+		</map>
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -94,8 +95,8 @@
         <div class="evtCtnsBox evt04" id="lec_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1074_04.jpg" usemap="#Map_1074_lec2" title="기미진T-PASS" border="0" />
 			<map name="Map_1074_lec2">
-                <area shape="rect" coords="485,771,705,825" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152965') }}" target="_blank" alt="39만원수강신청">
-                <area shape="rect" coords="746,773,976,823" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152964') }}" target="_blank" alt="49만원수강신청">
+                <area shape="rect" coords="479,697,705,831" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/152965" target="_blank" alt="39만원수강신청">
+                <area shape="rect" coords="757,697,975,830" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/152964" target="_blank" alt="49만원수강신청">
             </map>
         </div>
         <!--wb_cts05//-->
@@ -109,19 +110,74 @@
     <!-- End Container -->
 
     <script>
-        function certOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($arr_promotion_params) === false)
-            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-            @endif
-        }
 
-        /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
-        });
+        function certOpen(){
+            alert("로그인 후 이용하여 주십시오.");
+return;
+                    }
+
+        /*타이머*/
+        var DdayDiff = { //타이머를 설정합니다.
+            inDays: function(dd1, dd2) {
+                var tt2 = dd2.getTime();
+                var tt1 = dd1.getTime();
+
+                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
+            },
+
+            inWeeks: function(dd1, dd2) {
+                var tt2 = dd2.getTime();
+                var tt1 = dd1.getTime();
+
+                return parseInt((tt2-tt1)/(24*3600*1000*7));
+            },
+
+            inMonths: function(dd1, dd2) {
+                var dd1Y = dd1.getFullYear();
+                var dd2Y = dd2.getFullYear();
+                var dd1M = dd1.getMonth();
+                var dd2M = dd2.getMonth();
+
+                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
+            },
+
+            inYears: function(dd1, dd2) {
+                return dd2.getFullYear()-dd1.getFullYear();
+            }
+        };
+
+        function daycountDown() {
+            // 한달 전 날짜로 셋팅
+            var event_day = new Date(2019,3,30,23,59,59);
+            var now = new Date();
+            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
+
+            var Monthleft = event_day.getMonth() - now.getMonth();
+            var Dateleft = DdayDiff.inDays(now, event_day);
+            var Hourleft = timeGap.getHours();
+            var Minuteleft = timeGap.getMinutes();
+            var Secondleft = timeGap.getSeconds();
+
+            if((event_day.getTime() - now.getTime()) > 0) {
+                $("#dd1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft/10) + ".png");
+                $("#dd2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Dateleft%10) + ".png");
+
+                $("#hh1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft/10) + ".png");
+                $("#hh2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Hourleft%10) + ".png");
+
+                $("#mm1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft/10) + ".png");
+                $("#mm2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Minuteleft%10) + ".png");
+
+                $("#ss1").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft/10) + ".png");
+                $("#ss2").attr("src", "https://static.willbes.net/public/images/promotion/common/" + parseInt(Secondleft%10) + ".png");
+                setTimeout(daycountDown, 1000);
+            }
+            else{
+                $("#newTopDday").hide();
+            }
+
+        }
+        daycountDown();
     </script>
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
+
 @stop

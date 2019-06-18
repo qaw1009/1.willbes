@@ -239,12 +239,18 @@ font-size:16px; padding:10px 0; line-height: 1.5;
 
 
         <div id="content_3" class="tabCts">
-            
+        {{--댓글--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_normal_partial')
+        @endif    
         </div>
 
 
         <div id="content_4" class="tabCts">
-
+        {{--후기댓글--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
+        @endif
         </div>
 
 

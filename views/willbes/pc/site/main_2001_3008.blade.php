@@ -44,8 +44,8 @@
 
         <div class="Section mt8">
             <div class="widthAuto">
-                <a href="{{ site_url('/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}">
-                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="합격은 공득인이 정답입니다.">
+                <a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/153470') }}">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3008_1120_110_01.jpg" title="합격은 공득인이 정답입니다.">
                 </a>
             </div>
         </div>
@@ -125,10 +125,10 @@
                                 </div>
                                 <div class="infoList">
                                     <ul class="List-Table">
-                                        <li><p><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3008/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><p><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3008/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><p><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3008/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><p><span>[2018년 1차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3008/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2019년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3008?board_idx=229416') }}" target="_blank">바로가기 ></a></span></li>    
+                                        <li><p><span>[2018년 3차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3008?board_idx=162332') }}" target="_blank">바로가기 ></a></span></li>                     
+                                        <li><p><span>[2018년 2차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3008?board_idx=162333') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3008?board_idx=162334') }}" target="_blank">바로가기 ></a></span></li>
                                     </ul>
                                 </div>
                             </div>

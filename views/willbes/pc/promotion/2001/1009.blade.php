@@ -36,12 +36,12 @@
         .wb_top {background:#282828; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
         .wb_top .passLecBuy ul {position:absolute; top:800px; left:128px; z-index:10}
-        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:10px}
+        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:30px}
         .wb_top .passLecBuy li h5 {font-size:18px; font-weight:600; margin-top:10px}
-        .wb_top .passLecBuy li:nth-child(1) {width:204px}
-        .wb_top .passLecBuy li:nth-child(2) {width:204px}
-        .wb_top .passLecBuy li:nth-child(3) {width:204px}
-        .wb_top .passLecBuy li:nth-child(4) {width:400px; padding-left:20px}
+        .wb_top .passLecBuy li:nth-child(1) {width:260px}
+        .wb_top .passLecBuy li:nth-child(2) {width:260px}
+        .wb_top .passLecBuy li:nth-child(3) {width:400px}
+        /*.wb_top .passLecBuy li:nth-child(4) {width:400px; padding-left:20px}*/
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px; width:90%}
         .wb_top .passLecBuy li:last-child div {background:#0d3692; width:80%} /*컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-size:16px}
@@ -152,7 +152,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner" >
-            <a href="#pass"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_skybanner_190603.png" alt="스카이스크래퍼" ></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_skybanner.png" alt="스카이스크래퍼" ></a>
         </div>
 
         <!-- 타이머 -->
@@ -203,6 +203,7 @@
         <div class="evtCtnsBox wb_top" id="pass">
             <div class="passLecBuy">
                 <ul>
+                    {{--
                     <li>
                         <h5>일반</h5>
                         <p><input type="radio" id="y_pkg9" name="y_pkg" value="153571" onClick=""/> <label for="y_pkg9">(선택) 오태진 한국사</label></p>
@@ -211,6 +212,7 @@
                         <p><input type="radio" id="y_pkg11" name="y_pkg" value="153572" onClick=""/> <label for="y_pkg11">경행경채</label></p>
                         <div><strong>49</strong>만원</div>
                     </li>
+                    --}}
                     <li>
                         <h5>일반</h5>
                         <p><input type="radio" id="y_pkg1" name="y_pkg" value="152010" onClick=""/> <label for="y_pkg1">(선택) 오태진 한국사</label></p>
@@ -240,16 +242,16 @@
                 <span style="color:#fff" class="mt50">
                     PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.
                 </span>
-                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01_190603.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
                     <map name="Map1009A" id="Map1009A">
-                        <area shape="rect" coords="144,544,210,567" href="javascript:go_popup()" alt="3개월" />
-                        <area shape="rect" coords="346,546,411,565" href="javascript:go_popup()" alt="6개월" />                        
-						<area shape="rect" coords="548,546,611,565" href="javascript:go_popup()" alt="12개월" />
-                        <area shape="rect" coords="763,546,824,565" href="javascript:go_popup1()" alt="전과목" />
+                        {{--<area shape="rect" coords="92,543,158,566" href="javascript:go_popup()" alt="3개월" />--}}
+                        <area shape="rect" coords="174,545,239,564" href="javascript:go_popup()" alt="6개월" />                        
+						<area shape="rect" coords="439,546,502,565" href="javascript:go_popup()" alt="12개월" />
+                        <area shape="rect" coords="723,547,784,566" href="javascript:go_popup1()" alt="전과목" />
                     </map>
                 </div>
                 <div> 
-                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02_190603.jpg"  alt="체력" usemap="#Map1009B"/>                
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02.jpg"  alt="체력" usemap="#Map1009B"/>                
                     <map name="Map1009B" id="Map1009B">
                         <area shape="rect" coords="609,230,736,277" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
                     </map>  

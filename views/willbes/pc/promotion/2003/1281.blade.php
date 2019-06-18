@@ -127,28 +127,44 @@
       <li><a href="#tab8"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8.png" class="off" alt="03"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8_on.png" class="on"  /></a></li>
     </ul>
     <div id="tab1">
-      <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/1074"  target="_balnk"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c1.jpg" title="기미진" /></a></li>
+        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1074"  target="_balnk">
+        <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c1.jpg" title="기미진" />
+        </a>
     </div>
     <div id="tab2">
-      <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_balnk"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c2.jpg" title="한덕현"/></a></li>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c2.jpg" title="한덕현"/>
+      </a>
     </div>
     <div id="tab3">
-      <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/1078" target="_balnk"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c3.jpg" title="성기건"/></a></li>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1078" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c3.jpg" title="성기건"/>
+    </a>
     </div>
     <div id="tab4">
-      <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/1075" target="_balnk"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c4.jpg" title="박민주"/></a></li>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1075" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c4.jpg" title="박민주"/>
+      </a>
     </div>
     <div id="tab5">
-      <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_balnk"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c5.jpg" title="김덕관"/></a></li>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c5.jpg" title="김덕관"/>
+      </a>
     </div>
     <div id="tab6">
-      <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/1076" target="_balnk"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c6.jpg" title="문병일"/></a></li>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1076" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c6.jpg" title="문병일"/>
+      </a>
     </div>
     <div id="tab7">
-      <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_balnk"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c7.jpg" title="황남기"/></a></li>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c7.jpg" title="황남기"/>
+      </a>
     </div>
     <div id="tab8">
-      <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/1079" target="_balnk"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c8.jpg" title="이상구"/></a></li>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1079" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c8.jpg" title="이상구"/>
+      </a>
     </div>
   </div>
   <!--wb_cts04//-->
@@ -160,32 +176,36 @@
 <!-- End Container -->
 
 <script type="text/javascript">
-	$(document).ready(function(){
-    $('.tab').each(function(){
-    var $active, $content, $links = $(this).find('a');
-    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-    $active.addClass('active');
-
-    $content = $($active[0].hash);
-
-    $links.not($active).each(function () {
-    $(this.hash).hide()});
-
-    // Bind the click event handler
-    $(this).on('click', 'a', function(e){
-    $active.removeClass('active');
-    $content.hide();
-
-    $active = $(this);
-    $content = $(this.hash);
-
-    $active.addClass('active');
-    $content.show();
-
-    e.preventDefault()})});
-    tabMenuSlider();
-	}); 
+$(document).ready(function(){
+        $('.tab').each(function(){
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+        
+            $content = $($active[0].hash);
+        
+            $links.not($active).each(function () {
+            $(this.hash).hide()});
+        
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+            $active.removeClass('active');
+            $content.hide();
+        
+            $active = $(this);
+            $content = $(this.hash);
+        
+            $active.addClass('active');
+            $content.show();
+        
+            e.preventDefault()})})}
+        );
+ /*디데이카운트다운*/
+ $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
 </script>
-
+{{-- 프로모션용 스크립트 include --}}
+@include('willbes.pc.promotion.promotion_script')
 
 @stop

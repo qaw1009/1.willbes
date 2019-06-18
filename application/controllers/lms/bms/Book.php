@@ -49,6 +49,8 @@ class Book extends \app\controllers\BaseController
                 'P.IsUse' => $this->_reqP('search_is_use'),
                 'VWB.wIsUse' => $this->_reqP('search_w_is_use'),
                 'VWB.wSaleCcd' => $this->_reqP('search_sale_ccd'),
+                'P.IsNew' =>$this->_reqP('search_new'),
+                'P.IsBest' =>$this->_reqP('search_best'),
             ],
             'LKR' => [
                 'BC.CateCode' => $this->_reqP('search_lg_cate_code'),

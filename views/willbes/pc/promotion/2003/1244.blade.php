@@ -486,12 +486,15 @@
                     </div>
                     <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_02.png" usemap="#Map1244F" class="mt100" title="해설" border="0"/>
                     <map name="Map1244F" id="Map1244F">
-                        <area shape="rect" coords="195,159,310,196" href="@if($file_yn[41] == 'Y') {{ front_url($file_link[41]) }} @else {{ $file_link[41] }} @endif" alt="국어 다운로드" />
-                        <area shape="rect" coords="514,160,632,197" href="@if($file_yn[42] == 'Y') {{ front_url($file_link[42]) }} @else {{ $file_link[42] }} @endif" alt="영어다운로드" />
-                        <area shape="rect" coords="194,210,312,247" href="@if($file_yn[43] == 'Y') {{ front_url($file_link[43]) }} @else {{ $file_link[43] }} @endif" alt="한국사다운로드" />
-                        <area shape="rect" coords="516,210,632,248" href="@if($file_yn[44] == 'Y') {{ front_url($file_link[44]) }} @else {{ $file_link[44] }} @endif" alt="행정학다운로드" />
-                        <area shape="rect" coords="194,258,311,297" href="@if($file_yn[45] == 'Y') {{ front_url($file_link[45]) }} @else {{ $file_link[45] }} @endif" alt="행정법다운로드" />
-                        <area shape="rect" coords="514,258,632,295" href="@if($file_yn[46] == 'Y') {{ front_url($file_link[46]) }} @else {{ $file_link[46] }} @endif" alt="사회다운로드" />
+                        <area shape="rect" coords="109,158,224,195" href="@if($file_yn[41] == 'Y') {{ front_url($file_link[41]) }} @else {{ $file_link[41] }} @endif" alt="국어 다운로드" />
+                        <area shape="rect" coords="370,159,488,196" href="@if($file_yn[42] == 'Y') {{ front_url($file_link[42]) }} @else {{ $file_link[42] }} @endif" alt="영어다운로드" />
+                        <area shape="rect" coords="608,159,726,196" href="@if($file_yn[43] == 'Y') {{ front_url($file_link[43]) }} @else {{ $file_link[43] }} @endif" alt="한국사다운로드" />
+                        <area shape="rect" coords="108,208,224,246" href="@if($file_yn[44] == 'Y') {{ front_url($file_link[44]) }} @else {{ $file_link[44] }} @endif" alt="행정학다운로드" />
+                        <area shape="rect" coords="370,211,487,250" href="@if($file_yn[45] == 'Y') {{ front_url($file_link[45]) }} @else {{ $file_link[45] }} @endif" alt="행정법다운로드" />
+                        <area shape="rect" coords="611,209,729,246" href="@if($file_yn[46] == 'Y') {{ front_url($file_link[46]) }} @else {{ $file_link[46] }} @endif" alt="사회다운로드" />
+                        <area shape="rect" coords="106,258,228,298" href="@if($file_yn[47] == 'Y') {{ front_url($file_link[47]) }} @else {{ $file_link[47] }} @endif" alt="세법" />
+                        <area shape="rect" coords="370,259,488,296" href="@if($file_yn[48] == 'Y') {{ front_url($file_link[48]) }} @else {{ $file_link[48] }} @endif" alt="회계학" />
+                        <area shape="rect" coords="609,257,728,301" href="@if($file_yn[49] == 'Y') {{ front_url($file_link[49]) }} @else {{ $file_link[49] }} @endif" alt="기술직" />
                     </map>
                     <ul class="subjectMenu2 mt50">
                         <li><a href="#sub11" class="active">국어</a></li>
@@ -514,10 +517,21 @@
                         <div class="comingsoon">한국사 해설강의을 준비중입니다.</div>
                     </div>
                     <div class="subCts2" id="sub14">
-                        <div class="comingsoon">행정학 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t1.jpg" usemap="#Map1244play01" border="0" >
+                            <map name="Map1244play01" id="Map1244play01">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/in1xigPEbkI" target="_blank" alt="행정학 김덕관 해설강의" />
+                                <area shape="rect" coords="662,63,736,117" href="https://youtu.be/CYD7mAoMTvg" target="_blank" alt="행정학 윤세훈 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts2" id="sub15">
-                        <div class="comingsoon">행정법 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t3.jpg" usemap="#Map1244play03" border="0" >
+                            <map name="Map1244play03" id="Map1244play03">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/FsXxBFzQTQ8" target="_blank" alt="행정법 한세훈 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts2" id="sub16">
                         <div class="comingsoon">사회 해설강의을 준비중입니다.</div>
@@ -526,7 +540,12 @@
                         <div class="comingsoon">세법 해설강의을 준비중입니다.</div>
                     </div>
                     <div class="subCts2" id="sub18">
-                        <div class="comingsoon">회계학 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t3.jpg" usemap="#Map1244play04" border="0" >
+                            <map name="Map1244play04" id="Map1244play04">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/BrkvNiyPMAU" target="_blank" alt="회계학 김영훈 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts2" id="sub19">
                         <div class="comingsoon">기술직 해설강의을 준비중입니다.</div>
@@ -594,12 +613,15 @@
                     </div>
                     <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_02.png" usemap="#Map1244G" class="mt100" title="해설" border="0"/>
                     <map name="Map1244G" id="Map1244G">
-                        <area shape="rect" coords="195,159,310,196" href="@if($file_yn[51] == 'Y') {{ front_url($file_link[51]) }} @else {{ $file_link[51] }} @endif" alt="국어 다운로드" />
-                        <area shape="rect" coords="514,160,632,197" href="@if($file_yn[52] == 'Y') {{ front_url($file_link[52]) }} @else {{ $file_link[52] }} @endif" alt="영어다운로드" />
-                        <area shape="rect" coords="194,210,312,247" href="@if($file_yn[53] == 'Y') {{ front_url($file_link[53]) }} @else {{ $file_link[53] }} @endif" alt="한국사다운로드" />
-                        <area shape="rect" coords="516,210,632,248" href="@if($file_yn[54] == 'Y') {{ front_url($file_link[54]) }} @else {{ $file_link[54] }} @endif" alt="행정학다운로드" />
-                        <area shape="rect" coords="194,258,311,297" href="@if($file_yn[55] == 'Y') {{ front_url($file_link[55]) }} @else {{ $file_link[55] }} @endif" alt="행정법다운로드" />
-                        <area shape="rect" coords="514,258,632,295" href="@if($file_yn[56] == 'Y') {{ front_url($file_link[56]) }} @else {{ $file_link[56] }} @endif" alt="사회다운로드" />
+                        <area shape="rect" coords="110,160,225,197" href="@if($file_yn[51] == 'Y') {{ front_url($file_link[51]) }} @else {{ $file_link[51] }} @endif" alt="국어 다운로드" />
+                        <area shape="rect" coords="368,159,486,196" href="@if($file_yn[52] == 'Y') {{ front_url($file_link[52]) }} @else {{ $file_link[52] }} @endif" alt="영어다운로드" />
+                        <area shape="rect" coords="609,160,727,197" href="@if($file_yn[53] == 'Y') {{ front_url($file_link[53]) }} @else {{ $file_link[53] }} @endif" alt="한국사다운로드" />
+                        <area shape="rect" coords="109,209,225,247" href="@if($file_yn[54] == 'Y') {{ front_url($file_link[54]) }} @else {{ $file_link[54] }} @endif" alt="행정학다운로드" />
+                        <area shape="rect" coords="368,208,485,247" href="@if($file_yn[55] == 'Y') {{ front_url($file_link[55]) }} @else {{ $file_link[55] }} @endif" alt="행정법다운로드" />
+                        <area shape="rect" coords="608,210,726,247" href="@if($file_yn[56] == 'Y') {{ front_url($file_link[56]) }} @else {{ $file_link[56] }} @endif" alt="사회다운로드" />
+                        <area shape="rect" coords="106,258,228,298" href="@if($file_yn[57] == 'Y') {{ front_url($file_link[57]) }} @else {{ $file_link[57] }} @endif" alt="세법" />
+                        <area shape="rect" coords="370,259,488,296" href="@if($file_yn[58] == 'Y') {{ front_url($file_link[58]) }} @else {{ $file_link[58] }} @endif" alt="회계학" />
+                        <area shape="rect" coords="609,257,728,301" href="@if($file_yn[59] == 'Y') {{ front_url($file_link[59]) }} @else {{ $file_link[59] }} @endif" alt="기술직" />
                     </map>
                     <ul class="subjectMenu4 mt50">
                         <li><a href="#sub31" class="active">국어</a></li>
@@ -622,7 +644,13 @@
                         <div class="comingsoon">한국사 해설강의을 준비중입니다.</div>
                     </div>
                     <div class="subCts4" id="sub34">
-                        <div class="comingsoon">행정학 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t2.jpg" usemap="#Map1244play02" border="0" >
+                            <map name="Map1244play02" id="Map1244play02">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/zFR11Rt1_2o" target="_blank" alt="행정학 김덕관 해설강의" />
+                                <area shape="rect" coords="662,63,736,117" href="https://youtu.be/6oIU2YNKZ_Q" target="_blank" alt="행정학 윤세훈 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts4" id="sub35">
                         <div class="comingsoon">행정법 해설강의을 준비중입니다.</div>
@@ -634,7 +662,12 @@
                         <div class="comingsoon">세법 해설강의을 준비중입니다.</div>
                     </div>
                     <div class="subCts4" id="sub38">
-                        <div class="comingsoon">회계학 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t3.jpg" usemap="#Map1244play05" border="0" >
+                            <map name="Map1244play05" id="Map1244play05">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/-TPhvKq5edc" target="_blank" alt="회계학 김영훈 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts4" id="sub39">
                         <div class="comingsoon">기술직 해설강의을 준비중입니다.</div>

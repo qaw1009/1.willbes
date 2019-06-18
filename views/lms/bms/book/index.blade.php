@@ -66,6 +66,18 @@
                         <input type="text" class="form-control input-sm" id="search_publ_author" name="search_publ_author">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_is_use">신규/추천</label>
+                    <div class="col-md-5 form-inline">
+                        <div class="checkbox">
+                            <input type="checkbox" name="search_new" id="search_new" class="flat" value="Y"> 신규
+                        </div>
+                        &nbsp;
+                        <div class="checkbox">
+                            <input type="checkbox" name="search_best" id="search_best" class="flat" value="Y"> 추천
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

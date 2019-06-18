@@ -21,12 +21,14 @@
 
         /************************************************************/
 
-		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1193_top_bg.jpg) no-repeat center top; position:re}
+		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1193_top2_bg.jpg) no-repeat center top; }
 		.evtTop span {position:absolute; top:220px; left:50%;}
 		.evtTop ul {width:100%; margin:0 auto; }
 		.evtTop .point {text-align:center; margin-left:500px; padding:120px 50px 0px 0px; }
-		.evt01 {background:#f5f5f5}
-		.evt02 {background:#fff; padding-bottom:100px}
+		.evt01 {background:#fff; position:relative}
+		.evt01 span {position:absolute; left:50%; margin-left:-442px; top:300px; width:300px; z-index:10}
+		.evt01_1 {background:#f5f5f5}
+		.evt02 {background:#fff}
 		.evt03 {background:#f5f5f5}
 		.evt04 {background:#35385b}
 		.evt05 {background:#fff}
@@ -92,11 +94,12 @@
 			<!-- 타이머 //-->
 			
 			<div class="evtCtnsBox evtTop">
-				<span><img src="https://static.willbes.net/public/images/promotion/2019/04/1193_top_txt.gif" alt="2020 국가직대비 전격출시!" /></span>
-				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_top.png" usemap="#Map_1193_qna"  title="한덕현T-PASS" border="0"/>
+				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_top2.png" usemap="#Map_1193_qna"  title="한덕현T-PASS" border="0"/>
 				<map name="Map_1193_qna">
-					<area shape="rect" coords="123,1122,973,1211" href="#none" onclick="go_PassLecture();">
-					<area shape="rect" coords="27,560,108,585" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
+					
+					<area shape="rect" coords="432,177,513,202" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
+			      	<area shape="rect" coords="651,301,765,325" href="#evt01">
+                    <area shape="rect" coords="138,1071,974,1157" href="#none" onClick="go_PassLecture();">
 				</map>	 
 			</div>
 			<!--evtCtnsBox evtTop//-->
@@ -109,10 +112,16 @@
 			</div>
 	  
 
-			<div class="evtCtnsBox evt01">
-				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01.jpg" title="영어, 자신있나요?" />
+			<div class="evtCtnsBox evt01" id="evt01">
+				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_1_t.gif" title="티패스 수강생 전용 특별 혜택 제공" /><br>
+				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_1.jpg" /><br>
+				<span><img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_mv1.gif" alt="" /></span>
 			</div>
 	  	<!--evt01//-->
+
+		  	<div class="evtCtnsBox evt01_1">
+				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01.jpg" title="영어, 자신있나요?" />
+			</div>
 
 			<div class="evtCtnsBox evt02">
 				<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_02.jpg"  title="갓덕현이 모두 해결해드립니다." />

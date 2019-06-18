@@ -32,8 +32,18 @@
         .time table {width:1120px; margin:0 auto}
         .time table td:first-child {font-size:40px}
         .time table td img {width:70%}
-        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#ea263e}
+        .time .time_txt {font-size:24px; color:#000; letter-spacing: -1px}
+        .time .time_txt span {color:#407df3; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#407df3}
+        50%{color:#d20f5d}
+        to{color:#407df3}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#407df3}
+        50%{color:#d20f5d}
+        to{color:#407df3}
+        } 
 
         .skybanner {
             position:fixed;
@@ -45,11 +55,11 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox time" id="newTopDday">
-            <div id="ddaytime">
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
+            <div>
                 <table>
                     <tr>
-                    <td class="time_txt NGEB"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} 마감!</span></td>
+                    <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} 마감!</span></td>
                     <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
@@ -109,18 +119,10 @@
     <!-- End Container -->
 
     <script>
-        function certOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($arr_promotion_params) === false)
-            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-            @endif
-        }
-
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
-        });
+        });        
     </script>
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

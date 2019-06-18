@@ -541,7 +541,7 @@
                     </div>
                     <div class="subCts2" id="sub18">
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t3.jpg" usemap="#Map1244play04" border="0" >
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t4.jpg" usemap="#Map1244play04" border="0" >
                             <map name="Map1244play04" id="Map1244play04">
                                 <area shape="rect" coords="186,62,259,117" href="https://youtu.be/BrkvNiyPMAU" target="_blank" alt="회계학 김영훈 해설강의" />
                             </map>
@@ -663,7 +663,7 @@
                     </div>
                     <div class="subCts4" id="sub38">
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t3.jpg" usemap="#Map1244play05" border="0" >
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t5.jpg" usemap="#Map1244play05" border="0" >
                             <map name="Map1244play05" id="Map1244play05">
                                 <area shape="rect" coords="186,62,259,117" href="https://youtu.be/-TPhvKq5edc" target="_blank" alt="회계학 김영훈 해설강의" />
                             </map>

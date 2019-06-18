@@ -518,8 +518,8 @@
                     </div>
                     <div class="subCts2" id="sub14">
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t1.jpg" usemap="#Map1244play01" border="0" >
-                            <map name="Map1244play01" id="Map1244play01">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t1.jpg" usemap="#Map1244play04" border="0" >
+                            <map name="Map1244play04" id="Map1244play04">
                                 <area shape="rect" coords="186,62,259,117" href="https://youtu.be/in1xigPEbkI" target="_blank" alt="행정학 김덕관 해설강의" />
                                 <area shape="rect" coords="662,63,736,117" href="https://youtu.be/CYD7mAoMTvg" target="_blank" alt="행정학 윤세훈 해설강의" />
                             </map>
@@ -527,28 +527,39 @@
                     </div>
                     <div class="subCts2" id="sub15">
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t3.jpg" usemap="#Map1244play03" border="0" >
-                            <map name="Map1244play03" id="Map1244play03">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t3.jpg" usemap="#Map1244play05" border="0" >
+                            <map name="Map1244play05" id="Map1244play05">
                                 <area shape="rect" coords="186,62,259,117" href="https://youtu.be/FsXxBFzQTQ8" target="_blank" alt="행정법 한세훈 해설강의" />
                             </map>
                         </div>
                     </div>
                     <div class="subCts2" id="sub16">
-                        <div class="comingsoon">사회 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t7.jpg" usemap="#Map1244play06" border="0" >
+                            <map name="Map1244play06" id="Map1244play06">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/a1wq1c7wfBA" target="_blank" alt="사회 문병일 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts2" id="sub17">
                         <div class="comingsoon">세법 해설강의을 준비중입니다.</div>
                     </div>
                     <div class="subCts2" id="sub18">
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t4.jpg" usemap="#Map1244play04" border="0" >
-                            <map name="Map1244play04" id="Map1244play04">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t4.jpg" usemap="#Map1244play08" border="0" >
+                            <map name="Map1244play08" id="Map1244play08">
                                 <area shape="rect" coords="186,62,259,117" href="https://youtu.be/BrkvNiyPMAU" target="_blank" alt="회계학 김영훈 해설강의" />
                             </map>
                         </div>
                     </div>
                     <div class="subCts2" id="sub19">
-                        <div class="comingsoon">기술직 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t9.jpg" usemap="#Map1244play09" border="0" >
+                            <map name="Map1244play09" id="Map1244play09">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/gU1ZLu1CL6o" target="_blank" alt="전자공학 최우영 해설강의" />
+                                <area shape="rect" coords="662,63,736,117" href="https://youtu.be/KLYnCWT8ekw" target="_blank" alt="통신이론 최우영 해설강의" />
+                            </map>
+                        </div>
                     </div>
                 </div>
 
@@ -645,27 +656,37 @@
                     </div>
                     <div class="subCts4" id="sub34">
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t2.jpg" usemap="#Map1244play02" border="0" >
-                            <map name="Map1244play02" id="Map1244play02">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t2.jpg" usemap="#Map1244play14" border="0" >
+                            <map name="Map1244play14" id="Map1244play14">
                                 <area shape="rect" coords="186,62,259,117" href="https://youtu.be/zFR11Rt1_2o" target="_blank" alt="행정학 김덕관 해설강의" />
                                 <area shape="rect" coords="662,63,736,117" href="https://youtu.be/6oIU2YNKZ_Q" target="_blank" alt="행정학 윤세훈 해설강의" />
                             </map>
                         </div>
                     </div>
                     <div class="subCts4" id="sub35">
-                        <div class="comingsoon">행정법 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t6.jpg" usemap="#Map1244play15" border="0" >
+                            <map name="Map1244play15" id="Map1244play15">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/ufDQt5cRUYk" target="_blank" alt="행정법 한세훈 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts4" id="sub36">
-                        <div class="comingsoon">사회 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t8.jpg" usemap="#Map1244play16" border="0" >
+                            <map name="Map1244play16" id="Map1244play16">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/Bzvm8_FZhIo" target="_blank" alt="사회 문병일 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts4" id="sub37">
                         <div class="comingsoon">세법 해설강의을 준비중입니다.</div>
                     </div>
                     <div class="subCts4" id="sub38">
                         <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t5.jpg" usemap="#Map1244play05" border="0" >
-                            <map name="Map1244play05" id="Map1244play05">
-                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/-TPhvKq5edc" target="_blank" alt="회계학 김영훈 해설강의" />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t5.jpg" usemap="#Map1244play18" border="0" >
+                            <map name="Map1244play18" id="Map1244play18">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/Bzvm8_FZhIo" target="_blank" alt="회계학 김영훈 해설강의" />
                             </map>
                         </div>
                     </div>

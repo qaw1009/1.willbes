@@ -76,7 +76,7 @@
 
     <div class="Section">
         <div class="widthAuto">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/308902_01.jpg" title="김종상 교수 직강"></a>
+            <img src="https://static.willbes.net/public/images/promotion/main/308902_01.jpg" title="이재원 교수 직강">
         </div>
     </div>
     
@@ -87,17 +87,17 @@
                 <li><a href="#tab02">전기기능사</a></li>
             </ul>  
             <div id="tab01">  
-                <img src="https://static.willbes.net/public/images/promotion/main/308902_tab01.jpg" alt="전기분야">         
+                <img src="https://static.willbes.net/public/images/promotion/main/308902_tab01.jpg" alt="전기(산업)기사">         
             </div>
             <div id="tab02">  
-                <img src="https://static.willbes.net/public/images/promotion/main/308902_tab02.jpg" alt="기계분야">           
+                <img src="https://static.willbes.net/public/images/promotion/main/308902_tab02.jpg" alt="전기기능사">           
             </div>
         </div>
     </div>
 
     <div class="Section Section3">
         <div class="widthAuto p_re">
-            <img src="https://static.willbes.net/public/images/promotion/main/308902_03.jpg" alt="김종상 교수">
+            <img src="https://static.willbes.net/public/images/promotion/main/308902_03.jpg" alt="이재원 교수">
             <span class="txt02"><img src="https://static.willbes.net/public/images/promotion/main/308902_03_txt.gif" alt="언제나 누구나"></span>
             <div class="curriBox NGR">
                 <h4>소방설비(산업)기사 『 전기 / 기계 』</h4>

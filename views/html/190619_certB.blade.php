@@ -25,12 +25,22 @@
 		.cert02{background:#fff;}
 		.cert03{background:#f5f5f5;}
 		.cert04 {position:relative; width:1120px; margin:0 auto} 
-		.cert04 label {position:absolute; z-index:1; width:20px; height:20px;}
-		input[type="checkbox"] + label {width:30px;height:30px; outline:5px solid #15365d; background:#fff}
-		.cert04 label.check1 {top:380px; left:679px;}
-		.cert04 label.check2 {top:518px; left:930px;}
-		.cert04 label.check3 {top:645px; left:174px;}		
-		input[type="checkbox"] + label.check3 {background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}            
+		label.check1 {top:380px; left:679px;}
+		label.check2 {top:518px; left:930px;}
+		label.check3 {top:645px; left:174px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		input + label {
+			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
+		}
+		input:checked + label:after {
+			position: relative;
+			content: '\2714';
+			font-size: 30px;
+		}
+		input:checked + label.check3:after {
+			font-size: 20px;
+		}		
+		input {display:none}		
+           
     </style>
 
 	<div class="evtContent">
@@ -53,9 +63,9 @@
 				<area shape="rect" coords="742,638,901,673" href="#;" target="_blank"  />
 				<area shape="rect" coords="271,771,857,858" href="#;" target="_blank"  />
 			</map>
-			<input name="ischk1" type="checkbox" value="Y"><label class="check1"></label>
-			<input name="ischk2" type="checkbox" value="Y"><label class="check2"></label>
-			<input name="ischk3" type="checkbox" value="Y"><label class="check3"></label>            
+			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
+			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
+			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>            
 		</div>
 		<div class="evtCtnsBox">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_05.jpg" alt="이용안내" />

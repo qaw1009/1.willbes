@@ -722,10 +722,11 @@ table.auTable tr td {
     padding-top: 15px;
     margin: 0 10px;
 }
+#Gnb .topView h4 ul {padding-bottom:15px}
 #Gnb .topView h4 ul li.dropdown {
     position: relative;
 }
-#Gnb .topView h4 ul li:nth-last-child(2) {padding-bottom:15px}
+
 #Gnb .sns-Btn {
     text-align: center;
     margin-top: 5px;

@@ -53,7 +53,7 @@ class Regist extends BaseSupporters
         $count = $this->supportersRegistModel->listSupporters(false, true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->supportersRegistModel->listSupporters(false, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.SupportersIdx' => 'desc']);
+            $list = $this->supportersRegistModel->listSupporters(false, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SP.SupportersIdx' => 'desc']);
         }
 
         return $this->response([

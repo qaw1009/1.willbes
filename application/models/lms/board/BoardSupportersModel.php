@@ -7,7 +7,7 @@ class BoardSupportersModel extends BoardModel
 {
     private $_table_supporters = 'lms_supporters';
 
-    public function listAllNoticeForSupporters($is_count, $arr_condition = [], $site_code = '', $limit = null, $offset = null, $order_by = [], $column = '*')
+    public function listAllBoardForSupporters($is_count, $arr_condition = [], $site_code = '', $limit = null, $offset = null, $order_by = [], $column = '*')
     {
         if ($is_count === true) {
             $column = 'STRAIGHT_JOIN count(*) AS numrows';
@@ -62,7 +62,7 @@ class BoardSupportersModel extends BoardModel
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
-    public function findNoticeForSupporters($column, $arr_condition, $arr_condition_file)
+    public function findBoardForSupporters($column, $arr_condition, $arr_condition_file)
     {
         $from = "
             FROM {$this->_table} as LB
@@ -94,7 +94,7 @@ class BoardSupportersModel extends BoardModel
      * @param $inputData
      * @return array|bool
      */
-    public function addNoticeForSupporters($inputData = [])
+    public function addBoardForSupporters($inputData = [])
     {
         $set_board_attach_data = [];
         $this->_conn->trans_begin();
@@ -145,7 +145,7 @@ class BoardSupportersModel extends BoardModel
         return true;
     }
 
-    public function modifyNoticeForSupporters($inputData = [], $idx)
+    public function modifyBoardForSupporters($inputData = [], $idx)
     {
         $this->_conn->trans_begin();
         try {

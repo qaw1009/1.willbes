@@ -16,6 +16,7 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
@@ -98,7 +99,7 @@
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
-            <div id="ddaytime">
+            <div>
                 <ul>
                     <li>
                         <div>접수 마감까지</div>남은 시간
@@ -239,7 +240,7 @@
             @endif
         }
 
-        {{--디데이카운트다운--}}
+        /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });

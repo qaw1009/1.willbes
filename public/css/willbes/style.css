@@ -720,7 +720,7 @@ table.auTable tr td {
 #Gnb h4 ul li.Acad  {
     border-top: 1px solid #ececec;
     padding-top: 15px;
-    margin: 0 10px -15px;
+    margin:15px 10px -15px;
 }
 #Gnb .topView h4 ul {padding-bottom:15px}
 #Gnb .topView h4 ul li.dropdown {

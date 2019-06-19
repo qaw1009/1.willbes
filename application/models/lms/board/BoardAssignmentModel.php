@@ -56,14 +56,14 @@ class BoardAssignmentModel extends BoardModel
         LEFT OUTER JOIN (
             SELECT BaIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
             FROM {$this->_table_attach}
-            WHERE IsStatus = 'Y' AND RegType = 0
+            WHERE (BaIdx IS NOT NULL OR BaIdx != '') AND IsStatus = 'Y' AND RegType = 0
             GROUP BY BaIdx
         ) AS e ON a.BaIdx = e.BaIdx
         
         LEFT OUTER JOIN (
             SELECT BaIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
             FROM lms_board_attach
-            WHERE IsStatus = 'Y' AND RegType = 0
+            WHERE (BaIdx IS NOT NULL OR BaIdx != '') AND IsStatus = 'Y' AND RegType = 0
             GROUP BY BaIdx
         ) AS d ON a.BaIdx = d.BaIdx
         

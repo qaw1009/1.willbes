@@ -86,6 +86,11 @@
 
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2019/06/1290_skybanner.png" alt="스카이스크래퍼" ></a>
@@ -115,11 +120,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
-
-        <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
-        {!! csrf_field() !!}
-        {!! method_field('POST') !!}
+        </div>        
 
         <div class="evtCtnsBox wb_top" id="main">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/1290_top.jpg"  alt="메인" usemap="#link"/>
@@ -217,7 +218,7 @@
 				</dl>
 			</div>
 		</div>
-        </form>
+       
 	</div>
     <!-- End Container -->
 

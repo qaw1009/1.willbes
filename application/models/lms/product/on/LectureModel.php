@@ -152,7 +152,7 @@ class LectureModel extends CommonLectureModel
                     b.ProdCode, a.AssignmentStatusCcd, COUNT(a.AssignmentStatusCcd) AS BoardCnt
                     FROM lms_board_assignment AS a
                     INNER JOIN lms_board AS b ON a.BoardIdx= b.BoardIdx
-                    WHERE a.AssignmentStatusCcd = \'698001\'
+                    WHERE b.BmIdx = 88 AND a.AssignmentStatusCcd = \'698001\'
                     GROUP BY b.ProdCode, a.AssignmentStatusCcd
                 ) AS Board1 ON Board1.ProdCode = A.ProdCode
                 
@@ -161,7 +161,7 @@ class LectureModel extends CommonLectureModel
                     b.ProdCode, a.AssignmentStatusCcd, COUNT(a.AssignmentStatusCcd) AS BoardCnt
                     FROM lms_board_assignment AS a
                     INNER JOIN lms_board AS b ON a.BoardIdx= b.BoardIdx
-                    WHERE a.AssignmentStatusCcd = \'698002\'
+                    WHERE b.BmIdx = 88 AND a.AssignmentStatusCcd = \'698002\'
                     GROUP BY b.ProdCode, a.AssignmentStatusCcd
                 ) AS Board2 ON Board2.ProdCode = A.ProdCode
                 
@@ -170,7 +170,7 @@ class LectureModel extends CommonLectureModel
                 b.ProdCode, a.AssignmentStatusCcd, COUNT(a.AssignmentStatusCcd) AS BoardCnt
                 FROM lms_board_assignment AS a
                 INNER JOIN lms_board AS b ON a.BoardIdx= b.BoardIdx
-                WHERE a.AssignmentStatusCcd = \'698003\'
+                WHERE b.BmIdx = 88 AND a.AssignmentStatusCcd = \'698003\'
                 GROUP BY b.ProdCode, a.AssignmentStatusCcd
                 ) AS Board3 ON Board3.ProdCode = A.ProdCode
             where A.IsStatus=\'Y\'

@@ -522,7 +522,7 @@
                             2. 판례는 중요한 판례가 대부분 다시 출제되므로 이미 기출된 판례는 대충보고 지나가는 것이 아니라 원칙과 예외 부분으로 나뉘어져 있는 등의 특별한 내용을 잘 습득하도록 노력하여야 합니다.<br><br>
                             3. 학원에서 나누어 주는 문제들은 보통 기출을 기반해서 꼭 알아야 하는 내용을 선별하여 나갑니다. 따라서 기본강의를 들으실 때, 반드시 데일리 테스트와 같은 컨텐츠가 있다면 반드시 하셔야 합니다. <br><br>
                             수험생 여러분! 그동안 고생 많으셨습니다.<br><br>
-                            2019.  6 .  15 .<br>
+                            2019. 6. 15.<br>
                             한세훈 올림
                         </div>
                     </div>
@@ -562,7 +562,12 @@
                         <li><a href="#sub19">기술직</a></li>
                     </ul>
                     <div class="subCts2" id="sub11">
-                        <div class="comingsoon">국어 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t11.jpg" usemap="#Map1244play01" border="0" >
+                            <map name="Map1244play01" id="Map1244play01">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/_iE5Ht4I-j8" target="_blank" alt="국어 기미진 해설강의" />   
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts2" id="sub12">
                         <div class="comingsoon">영어 해설강의을 준비중입니다.</div>
@@ -612,6 +617,7 @@
                             <map name="Map1244play09" id="Map1244play09">
                                 <area shape="rect" coords="186,62,259,117" href="https://youtu.be/gU1ZLu1CL6o" target="_blank" alt="전자공학 최우영 해설강의" />
                                 <area shape="rect" coords="662,63,736,117" href="https://youtu.be/KLYnCWT8ekw" target="_blank" alt="통신이론 최우영 해설강의" />
+                                <area shape="rect" coords="192,326,255,374" href="https://youtu.be/eRrHTbcFBtY" target="_blank" alt="전기이론 최우영 해설강의" />
                             </map>
                         </div>
                     </div>
@@ -660,7 +666,7 @@
                             2. 판례는 중요한 판례가 대부분 다시 출제되므로 이미 기출된 판례는 대충보고 지나가는 것이 아니라 원칙과 예외 부분으로 나뉘어져 있는 등의 특별한 내용을 잘 습득하도록 노력하여야 합니다.<br><br>
                             3. 판례의 비중이 높지만 중요판례들과 책에 나온 판례의 범위에서 벗어나는 것은 거의 없습니다.  따라서 중요한 것 위주로 공부하고 마지막으로 판례를 보충하여 점수를 높이는 전략을 써야합니다.<br><br>
                             수험생 여러분! 그동안 고생 많으셨습니다.<br><br>
-                            2019.  6 .  15 .<br>
+                            2019. 6. 15.<br>
                             한세훈 올림
                         </div>
                     </div>
@@ -700,7 +706,12 @@
                         <li><a href="#sub39">기술직</a></li>
                     </ul>
                     <div class="subCts4" id="sub31">
-                        <div class="comingsoon">국어 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t12.jpg" usemap="#Map1244play11" border="0" >
+                            <map name="Map1244play11" id="Map1244play11">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/XIc1h4J91ow" target="_blank" alt="국어 기미진 해설강의" />   
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts4" id="sub32">
                         <div class="comingsoon">영어 해설강의을 준비중입니다.</div>
@@ -745,7 +756,12 @@
                         </div>
                     </div>
                     <div class="subCts4" id="sub39">
-                        <div class="comingsoon">기술직 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t10.jpg" usemap="#Map1244play19" border="0" >
+                            <map name="Map1244play19" id="Map1244play19">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/9UfvR07bPwk" target="_blank" alt="전기이론 최우영 해설강의" />
+                            </map>
+                        </div>
                     </div>
                 </div>
             </div>

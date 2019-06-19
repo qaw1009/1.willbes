@@ -182,7 +182,7 @@
 		</div>      
 
 
-        <div class="evtCtnsBox wb_06">
+        <div class="evtCtnsBox wb_06" id="go">
         <img src="https://static.willbes.net/public/images/promotion/2019/06/1290_05.jpg"  alt="접수하기" usemap="#Map1290B"/>
             <map name="Map1290B" id="Map1290B">
                 <area shape="rect" coords="309,464,812,566" href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" alt="모의고사 신청하기"/>

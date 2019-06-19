@@ -14,7 +14,7 @@ class OrderAdvanceModel extends BaseOrderModel
     }
 
     /**
-     * 온라인강좌 선수금 조회
+     * 온라인강좌 선수금 조회 (환불주문건은 잔여일수, 잔여금액 => 0, 부분환불주문건의 사용금액은 환불일 당일 잔여금액, 환불일 이후 0원)
      * TODO : lms_my_lecture > IX_lms_My_Lecture_LecEndDate (LecEndDate) 인덱스 삭제 또는 명칭 변경 불가 (인덱스 강제적용)
      * @param string $base_date [기준일자]
      * @param bool|string $is_count [조회구분, true : 카운트, false : 목록, excel : 엑셀다운로드]
@@ -79,7 +79,10 @@ class OrderAdvanceModel extends BaseOrderModel
             $column = 'U.*
                 , round(U.DivisionPayPrice * (U.ProdCalcRate / 100)) as DivisionCalcPrice
                 , round((U.DivisionPayPrice / U.LecExpireDay) * U.LecRemainDay) as DivisionRemainPrice
-                , (U.DivisionPayPrice - round((U.DivisionPayPrice / U.LecExpireDay) * U.LecRemainDay)) as DivisionUsePrice
+                , (select case
+                    when U.RefundDatm is not null and date_format(U.RefundDatm, "%Y-%m-%d") != U.BaseDate then 0 
+                    else (U.DivisionPayPrice - round((U.DivisionPayPrice / U.LecExpireDay) * U.LecRemainDay))
+                  end) as DivisionUsePrice                                
                 , json_value(U.tPauseData, "$[0].PausePeriod") as LecPausePeriod1
                 , json_value(U.tPauseData, "$[1].PausePeriod") as LecPausePeriod2
                 , json_value(U.tPauseData, "$[2].PausePeriod") as LecPausePeriod3	
@@ -151,7 +154,7 @@ class OrderAdvanceModel extends BaseOrderModel
                 from (
                     select RD.*
                         , concat(RD.ProdCalcRate, "%") as ProdCalcPerc
-                        , (RD.LecExpireDay - RD.LecUseDay) as LecRemainDay		
+                        , if(RD.RefundDatm is not null, 0, (RD.LecExpireDay - RD.LecUseDay)) as LecRemainDay
                         , round(RD.RemainPrice * RD.ProdDivisionRate) as DivisionPayPrice			
                     from (
                         select RR.*
@@ -211,7 +214,7 @@ class OrderAdvanceModel extends BaseOrderModel
     }
 
     /**
-     * 학원강좌 선수금 조회
+     * 학원강좌 선수금 조회 (환불주문건은 잔여강의일수, 잔여금액 => 0, 부분환불주문건의 사용금액은 환불일 당일 잔여금액, 환불일 이후 0원)
      * TODO : lms_my_lecture > IX_lms_My_Lecture_LecEndDate (LecEndDate) 인덱스 삭제 또는 명칭 변경 불가 (인덱스 강제적용)
      * @param string $base_date [기준일자]
      * @param bool|string $is_count [조회구분, true : 카운트, false : 목록, excel : 엑셀다운로드]
@@ -257,7 +260,10 @@ class OrderAdvanceModel extends BaseOrderModel
             $column = 'U.*
                 , round(U.DivisionPayPrice * (U.ProdCalcRate / 100)) as DivisionCalcPrice
                 , round((U.DivisionPayPrice / U.LecAmount) * U.LecRemainAmount) as DivisionRemainPrice
-                , (U.DivisionPayPrice - round((U.DivisionPayPrice / U.LecAmount) * U.LecRemainAmount)) as DivisionUsePrice
+                , (select case
+                    when U.RefundDatm is not null and date_format(U.RefundDatm, "%Y-%m-%d") != U.BaseDate then 0 
+                    else (U.DivisionPayPrice - round((U.DivisionPayPrice / U.LecAmount) * U.LecRemainAmount))
+                  end) as DivisionUsePrice                 
                 , if(U.RefundDatm is not null, "환불완료", "결제완료") as PayStatusName
                 , M.MemId, M.MemName
                 , PSU.SubjectName
@@ -325,7 +331,7 @@ class OrderAdvanceModel extends BaseOrderModel
                         , round(RD.RemainPrice * RD.ProdDivisionRate) as DivisionPayPrice							
                     from (
                         select RR.*
-                            , (RR.LecAmount - RR.LecUseAmount) as LecRemainAmount
+                            , if(RR.RefundDatm is not null, 0, (RR.LecAmount - RR.LecUseAmount)) as LecRemainAmount
                             , (RR.RealPayPrice - RR.RefundPrice) as RemainPrice
                             , ifnull((select case
                                 when RR.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['off_lecture'] . '", "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '") 

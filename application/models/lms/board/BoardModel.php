@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BoardModel extends WB_Model
 {
-    private $_table_master = 'lms_sys_board_master';
+    protected $_table_master = 'lms_sys_board_master';
     protected $_table = 'lms_board';
     private $_table_r_category = 'lms_board_r_category';
     protected $_table_attach = 'lms_board_attach';
@@ -394,7 +394,7 @@ class BoardModel extends WB_Model
             $arr_board_category = $this->_getBoardCategoryArray($board_idx);
 
             $insert_column = '
-                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx, PromotionCode,
+                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx, PromotionCode, SupportersIdx,
                 VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 Title, Content, ReadCnt, SettingReadCnt, OrderNum,
                 IsUse,
@@ -404,7 +404,7 @@ class BoardModel extends WB_Model
                 UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
             ';
             $select_column = '
-                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx, PromotionCode,
+                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx, PromotionCode, SupportersIdx,
                 VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 
@@ -456,18 +456,16 @@ class BoardModel extends WB_Model
             ";
 
             $from = "
-                FROM
-                    {$this->_table_attach}
+                FROM {$this->_table_attach}
             ";
 
             $obder_by = " 
                  ORDER BY RegDatm DESC
-				 LIMIT 1";
+				 LIMIT 1
+		    ";
 
             $where = " WHERE BoardIdx = " . $board_idx;
-
             $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
-
             $resPath = $query->row_array();
 
             //BMIDX추출
@@ -476,22 +474,17 @@ class BoardModel extends WB_Model
             ";
 
             $from = "
-                FROM
-                    {$this->_table}
+                FROM {$this->_table}
             ";
-
             $obder_by = " ";
 
             $where = " WHERE BoardIdx = " . $insert_board_idx;
-
             $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
-
             $resBmIdx = $query->row_array();
 
             //기존첨부파일이 있으면
             if($resPath['AttachFilePath']){
                 // 기존파일경로
-
                 $loadPath = $resPath['AttachFilePath'];
                 $src = str_replace('/public/uploads/', $this->upload_path ,$loadPath);
                 // 복사될 파일경로
@@ -519,7 +512,6 @@ class BoardModel extends WB_Model
                 if ($this->_conn->update($this->_table_attach) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');
                 }
-
             }
 
             $this->_conn->trans_commit();
@@ -1506,7 +1498,7 @@ class BoardModel extends WB_Model
      * @param $attach_file_type
      * @return array|bool
      */
-    private function _modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type)
+    public function _modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type)
     {
         try {
             $board_attach_data = $_FILES['attach_file']['size'];

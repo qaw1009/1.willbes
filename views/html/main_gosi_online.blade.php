@@ -63,7 +63,14 @@
         </h3>
     </div>
     
-    <div class="Section mt20 p_re">        
+    <div class="Section">
+        <div class="widthAuto lastTime">
+            <span>72,894</span>
+            <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120_190619.jpg" alt="단 1명의 꿈이라도">
+        </div>
+    </div>
+
+    <div class="Section p_re">        
         <div class="MainVisual NSK">            
             <div class="VisualBox">
                 <div class="bSlider">

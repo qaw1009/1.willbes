@@ -91,9 +91,7 @@
             <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2019/06/1290_skybanner.png" alt="스카이스크래퍼" ></a>
         </div>
 
-        <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
-        {!! csrf_field() !!}
-        {!! method_field('POST') !!}
+        
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
@@ -103,17 +101,17 @@
                         <div>접수 마감까지</div>
                         남은 시간
                     </li>
-                    <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
-                    <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><strong>일</strong></li>
-                    <li><img id="hh1" src="http://file.willbes.net/new_image/0.png" /></li>
-                    <li><img id="hh2" src="http://file.willbes.net/new_image/0.png" /></li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><strong>:</strong></li>
-                    <li><img id="mm1" src="http://file.willbes.net/new_image/0.png" /></li>
-                    <li><img id="mm2" src="http://file.willbes.net/new_image/0.png" /></li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><strong>:</strong></li>
-                    <li><img id="ss1" src="http://file.willbes.net/new_image/0.png" /></li>
-                    <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
                         <div><a href="#go" target="_self">신청하기 &gt;</a><div>
                         <div class="mt5">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감!</div>
@@ -121,6 +119,10 @@
                 </ul>
             </div>
         </div>
+
+        <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
 
         <div class="evtCtnsBox wb_top" id="main">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/1290_top.jpg"  alt="메인" usemap="#link"/>

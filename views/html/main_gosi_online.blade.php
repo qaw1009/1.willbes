@@ -66,7 +66,7 @@
     <div class="Section">
         <div class="widthAuto lastTime">
             <span>72,894</span>
-            <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120_190619.jpg" alt="단 1명의 꿈이라도">
+            <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120_190619.gif" alt="단 1명의 꿈이라도">
         </div>
     </div>
 

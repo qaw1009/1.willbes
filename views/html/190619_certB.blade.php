@@ -54,7 +54,10 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_02.jpg" alt="자격증 수강" />
 		</div>
 		<div class="evtCtnsBox cert03">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_03.jpg" alt="윌비스 수강 스텝별" />
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_03.jpg" alt="자격증 수강" usemap="#Map1288A"  />
+			<map name="#Map1288A" id="#Map1288A">
+				<area shape="rect" coords="843,1653,1060,1717" href="#;"target="_blank" />
+			</map>
 		</div>
 		<div class="evtCtnsBox cert04">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_04.jpg" alt="수강신청" usemap="#Map1287A"/>

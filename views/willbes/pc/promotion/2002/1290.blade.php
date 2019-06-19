@@ -89,17 +89,14 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2019/06/1290_skybanner.png" alt="스카이스크래퍼" ></a>
-        </div>
-
-        
+        </div>        
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <div>접수 마감까지</div>
-                        남은 시간
+                        <div>접수 마감까지</div>남은 시간
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -224,8 +221,7 @@
 	</div>
     <!-- End Container -->
 
-    <script>
-
+    <script type="text/javascript">
         $regi_form = $('#regi_form');
 
         {{--쿠폰발급--}}
@@ -242,7 +238,7 @@
             @endif
         }
 
-        /*디데이카운트다운*/
+        {{--디데이카운트다운--}}
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });

@@ -40,7 +40,8 @@
 			content: '\2714';
 			font-size: 30px;
 		}
-		input:checked + label.check3:after {
+		input:checked + label.check3:after,
+		input:checked + label.check6:after {
 			font-size: 20px;
 		}		
 		input {display:none}	 
@@ -57,20 +58,20 @@
 		</div>
 		<div class="evtCtnsBox cert02">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_02.jpg" alt="윌비스와 함께" usemap="#Map1289A"/>
-			<map name="#Map1289A" id="#Map1289A">
-			  <area shape="rect" coords="844,776,1054,845" href="#;" />
-			  <area shape="rect" coords="846,1304,1053,1379" href="#;" />
+			<map name="Map1289A" id="Map1289A">
+			  <area shape="rect" coords="844,776,1054,845" href="#none" />
+			  <area shape="rect" coords="846,1304,1053,1379" href="#none" />
 			</map>
 		</div>
 		<div class="evtCtnsBox cert03">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_03.jpg" alt="수강신청" usemap="#Map1290A" />
-				<map name="#Map1290A" id="#Map1290A">
-				  <area shape="rect" coords="665,471,743,504" href="#" />
-				  <area shape="rect" coords="720,622,888,655" href="#" />
-				  <area shape="rect" coords="301,715,822,805" href="#" /> 
-				  <area shape="rect" coords="662,1258,748,1294" href="#" />
-				  <area shape="rect" coords="743,1410,901,1446" href="#" />
-				  <area shape="rect" coords="266,1545,863,1636" href="#" />
+				<map name="Map1290A" id="Map1290A">
+				  <area shape="rect" coords="665,471,743,504" href="#none" />
+				  <area shape="rect" coords="720,622,888,655" href="#none" />
+				  <area shape="rect" coords="301,715,822,805" href="#none" /> 
+				  <area shape="rect" coords="662,1258,748,1294" href="#none" />
+				  <area shape="rect" coords="743,1410,901,1446" href="#none" />
+				  <area shape="rect" coords="266,1545,863,1636" href="#none" />
 				</map>
 			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
 			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
@@ -80,7 +81,7 @@
 			<input name="ischk6" type="checkbox" value="Y" id="ischk6"><label for="ischk6" class="check6"></label> 
 		</div>
 		<div class="evtCtnsBox cert04">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_04.jpg" alt="이용안내 /" usemap="#Map1287A"/>  
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_04.jpg" alt="이용안내" />  
 		</div>  
 	</div>
     <!-- End Container -->

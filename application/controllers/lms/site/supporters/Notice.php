@@ -70,10 +70,10 @@ class Notice extends BaseSupporters
         ';
 
         $list = [];
-        $count = $this->boardSupportersModel->listAllNoticeForSupporters(true, $arr_condition, $this->site_code);
+        $count = $this->boardSupportersModel->listAllBoardForSupporters(true, $arr_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardSupportersModel->listAllNoticeForSupporters(false, $arr_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
+            $list = $this->boardSupportersModel->listAllBoardForSupporters(false, $arr_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
 
         return $this->response([
@@ -151,9 +151,9 @@ class Notice extends BaseSupporters
                 'reg_type' => $this->_reg_type['admin'],
                 'attach_file_type' => $this->_attach_reg_type['default']
             ];
-            $data = $this->boardSupportersModel->findNoticeForSupporters($column, $arr_condition, $arr_condition_file);
+            $data = $this->boardSupportersModel->findBoardForSupporters($column, $arr_condition, $arr_condition_file);
 
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
@@ -200,7 +200,7 @@ class Notice extends BaseSupporters
         $inputData = $this->_setInputData($this->_reqP(null, false));
 
         //_addBoard, _modifyBoard
-        $result = $this->boardSupportersModel->{$method . 'NoticeForSupporters'}($inputData, $idx);
+        $result = $this->boardSupportersModel->{$method . 'BoardForSupporters'}($inputData, $idx);
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -231,7 +231,7 @@ class Notice extends BaseSupporters
             'reg_type' => $this->_reg_type['admin'],
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
-        $data = $this->boardSupportersModel->findNoticeForSupporters($column, $arr_condition, $arr_condition_file);
+        $data = $this->boardSupportersModel->findBoardForSupporters($column, $arr_condition, $arr_condition_file);
         // 첨부파일 이미지일 경우 해당 배열에 담기
         $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
 

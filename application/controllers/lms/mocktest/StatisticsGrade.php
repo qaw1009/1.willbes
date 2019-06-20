@@ -47,6 +47,8 @@ class StatisticsGrade extends \app\controllers\BaseController
         $cateD2 = $this->mockCommonModel->getMockKind();
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->acceptStatus]);
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
 
         $this->load->view('mocktest/statistics/grade/index', [
             'siteCodeDef' => $cateD1[0]['SiteCode'],
@@ -54,6 +56,8 @@ class StatisticsGrade extends \app\controllers\BaseController
             'cateD2' => $cateD2,
             'applyType' => $codes[$this->applyType],
             'accept_ccd' => $codes[$this->acceptStatus],
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 

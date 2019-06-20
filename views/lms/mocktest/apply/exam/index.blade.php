@@ -3,7 +3,8 @@
 @section('content')
     <h5 class="mt-20">- 모의고사 기준으로 모의고사 결제현황 및 응시여부를 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
+        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!}
+
         {!! csrf_field() !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value="{{$siteCodeDef}}">
 

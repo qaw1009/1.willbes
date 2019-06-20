@@ -30,6 +30,9 @@ class BaseRange extends \app\controllers\BaseController
 
         list($data, $modata) = $this->baseRangeModel->list();
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
+
         $this->load->view('mocktest/base/range/index', [
             'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
@@ -37,6 +40,8 @@ class BaseRange extends \app\controllers\BaseController
             'subject' => $this->subjectModel->getSubjectArray(),
             'data' => $data,
             'moData' => $modata,
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 

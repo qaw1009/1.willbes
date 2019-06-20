@@ -31,12 +31,24 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
+                <label class="control-label col-md-2" for="BtobId">제휴사 아이디 <span class="required">*</span>
+                </label>
+                <div class="col-md-4 item">
+                @if($method == 'POST')
+                    <input type="text" id="BtobId" name="BtobId" required="required" class="form-control" title="제휴사아이디" value="" maxlength="20">
+                @else
+                    <p class="form-control-static pl-0">{{ $data['BtobId'] }}</p>
+                @endif
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="ManagerName">담당자명
                 </label>
 
                 <div class="col-md-4 item form-inline">
                     <div class="item inline-block">
-                        <input type="text" id="ManagerName" name="ManagerName" class="form-control" title="담당자명" style="width: 80px"  value="{{ $data['ManagerName'] }}"> • 제휴사 담당자명
+                        <input type="text" id="ManagerName" name="ManagerName" class="form-control" title="담당자명" style="width: 80px"  value="{{ $data['ManagerName'] }}">
+                        <span class="pl-10"># 제휴사 담당자명</span>
                     </div>
                 </div>
 

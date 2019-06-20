@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
 
-<div id="Container" class="Container cert c_both">
+<div id="Container" class="Container job c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">

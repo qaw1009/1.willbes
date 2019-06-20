@@ -495,7 +495,109 @@
                         <div class="comingsoon">영어 총평을 준비중입니다.</div>
                     </div>
                     <div class="subCts" id="sub03">
-                        <div class="comingsoon">한국사 총평을 준비중입니다.</div>
+                    <div>
+                        <h5>국어 | 기미진 교수</h5>
+                        [2019 문항분석]
+                        <div class="mt20 mb20 board_type">                     
+                            <table cellspacing="0" cellpadding="0">
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <tr>
+                                    <th>유형</th>
+                                    <th>정치 [14]</th>
+                                    <th>경제 [1]</th>
+                                    <th>사회 [1]</th>
+                                    <th>문화 [5]</th>
+                                </tr>
+                                <tr>
+                                    <td>선사시대</td>
+                                    <td>1. 고조선</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td>고대</td>
+                                  <td>2. 백제의 발전<br />
+                                    3. 금관가야<br />
+                                  4. 발해의 사회<br /></td>
+                                  <td>&nbsp;</td>
+                                  <td>5. 삼국의 사회/문화</td>
+                                  <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td>중세</td>
+                                  <td>6. 고려의 군사제도<br />
+                                    7. 성종의 업적<br />
+                                  9. 무신집권기</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>8. 고려 불교계의 동향</td>
+                                </tr>
+                                <tr>
+                                  <td>근세</td>
+                                  <td>10. 조선 태종</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td>근대태동기</td>
+                                  <td>&nbsp;</td>
+                                  <td>11. 대동법</td>
+                                  <td>&nbsp;</td>
+                                  <td>12. 실학자<br />
+                                    13. 지도 편찬</td>
+                                </tr>
+                                <tr>
+                                  <td>근대</td>
+                                  <td>15. 위정척사 운동<br />
+                                  16. 미국과의 관계</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td>민족독립운동가</td>
+                                  <td>17. 한일 신협약<br />
+                                  18. 사건 발생 순서</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td>현대</td>
+                                  <td>19. 4.19 혁명 <br />
+                                  20. 유신체제</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td>통합</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>13. 의서</td>
+                                </tr>
+                            </table>
+                            </div>
+                            [총평]<br>
+                            <br>
+                            2019년 서울시 9급 한국사는 작년 서울시 9급에 비해서 전반적으로 평이하게 출제되었습니다. 
+                            국가직 9급이 워낙 쉬웠기 때문에 그보다는 약간 어려웠으나 예년에 비해서는 쉽게 출제되었습니다.
+                            전근대사 14문제, 근현대사 6문제가 출제되었고 정치사 비중이 역시 높았으며 문화사가 5문제로 경제ㆍ사회 보다는 비중이 높았습니다. 
+                            지방직과 비슷하게 의서의 순서를 물어보는 문제가 출제되었고 삼국의 문화를 물어본 5번과 지도 편찬에 대해 묻는 14번 문제가 약간 까다로웠습니다. 
+                            울시에서 자주 출제되는 유형인 순서나열 문제가 3문제 출제되었고 사료 제시형 문제가 9문제가 출제되어 예년보다는 조금 더 늘어났습니다.<br>
+                            <br>
+                            [향후 공부 방법]<br>
+                            <br>
+                            문제가 전반적으로 평이하게 출제 될 경우에는 기본 개념을 정확하게 파악하면서 기출문제를 중심으로 공부하되 실수를 줄이는 연습을 해야합니다. 
+                            수험생 여러분! 그동안 고생 많으셨습니다.
+                        </div>
                     </div>
                     <div class="subCts" id="sub04">
                         <div>
@@ -573,7 +675,12 @@
                         <div class="comingsoon">영어 해설강의을 준비중입니다.</div>
                     </div>
                     <div class="subCts2" id="sub13">
-                        <div class="comingsoon">한국사 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t15.jpg" usemap="#Map1244play03" border="0" >
+                            <map name="Map1244play03" id="Map1244play03">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/Q92AdHR1yaM" target="_blank" alt="한국사 조민주 해설강의" />   
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts2" id="sub14">
                         <div>
@@ -601,7 +708,12 @@
                         </div>
                     </div>
                     <div class="subCts2" id="sub17">
-                        <div class="comingsoon">세법 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t13.jpg" usemap="#Map1244play07" border="0" >
+                            <map name="Map1244play07" id="Map1244play07">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/WxxZPyuNRwY" target="_blank" alt="세법 고선미 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts2" id="sub18">
                         <div>
@@ -642,7 +754,107 @@
                         <div class="comingsoon">영어 총평을 준비중입니다.</div>
                     </div>
                     <div class="subCts3" id="sub23">
-                        <div class="comingsoon">한국사 총평을 준비중입니다.</div>
+                    <h5>국어 | 기미진 교수</h5>
+                        [2019 문항분석]
+                        <div class="mt20 mb20 board_type">                     
+                            <table cellspacing="0" cellpadding="0">
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <tr>
+                                    <th>유형</th>
+                                    <th>정치 [13]</th>
+                                    <th>경제 [2]</th>
+                                    <th>사회 [1]</th>
+                                    <th>문화 [4]</th>
+                                </tr>
+                                <tr>
+                                    <td>선사시대</td>
+                                    <td>1. 여러나라의 성장</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>고대</td>
+                                    <td>2. 삼국의 발전<br /></td>
+                                    <td>3. 통일신라의 경제</td>
+                                    <td>&nbsp;</td>
+                                    <td>5. 삼국의 문화<br />
+                                9. 자장
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td>중세</td>
+                                    <td>6. 고려 태조</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>7. 고려의 승려</td>
+                                </tr>
+                                <tr>
+                                    <td>근세</td>
+                                    <td>8. 세종<br />
+                                    10. 임진왜란<br />
+                                    11. 정도전</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>근대태동기</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>14. 서학(천주교)</td>
+                                    <td>12. 실학자<br />
+                                    13. 지도 편찬</td>
+                                </tr>
+                                <tr>
+                                    <td>근대</td>
+                                    <td>12. 근대의 조약<br />
+                                    13. 대한제국<br />
+                                    18. 고종(흥선대원군</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>민족독립운동가</td>
+                                    <td>15. 대한민국 임시정부<br />
+                                    16. 의열단<br />
+                                    17. 일제의 식민정책</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>현대</td>
+                                    <td>20. 베트남 파병</td>
+                                    <td>19. 농지개혁</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>통합</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>4. 의서</td>
+                                </tr>
+                            </table>
+                            </div>
+                            [총평]<br>
+                            <br>
+                            2019년 지방직 9급 한국사는 올해 시행된 국가직 9급과 비슷하게 전반적으로 평이하게 출제되었습니다. 국가직 9급 워낙 쉬웠기 때문에 그보다는 약간 어려웠으나 예년에 비해서는 쉽게 출제되었고, 서울시 9급과 비슷한 수준이었습니다.
+                            전근대사 12문제, 근현대사 8문제가 출제되어 근현대사의 비중이 높았고 정치사가 13문제로 비중이 역시 높았으며, 문화사가 경제ㆍ사회보다는 비중이 높았습니다. 서울시와 비슷하게 의서의 순서를 물어보는 문제가 출제되었는데, 4번 의서 관련 문제와  15번 임시정부의 건국 강령,  19번 농지개혁과 관련 문제가 약간 까다로웠습니다. 
+                            이번 시험에서도 역시  사료 제시형 문제가 16문제가 출제되어 예년보다는 조금 더 늘어났습니다.<br>
+                            <br>
+                            [향후 공부 방법]<br>
+                            <br>
+                            문제가 전반적으로 평이하게 출제 될 경우에는 기본 개념을 정확하게 파악하면서 기출문제를 중심으로 공부하되 실수를 줄이는 연습을 해야합니다. 
+                            수험생 여러분! 그동안 고생 많으셨습니다.
+                        </div>
                     </div>
                     <div class="subCts3" id="sub24">
                         <div>
@@ -717,7 +929,12 @@
                         <div class="comingsoon">영어 해설강의을 준비중입니다.</div>
                     </div>
                     <div class="subCts4" id="sub33">
-                        <div class="comingsoon">한국사 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t16.jpg" usemap="#Map1244play13" border="0" >
+                            <map name="Map1244play13" id="Map1244play13">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/rnZLWC83iPo" target="_blank" alt="한국사 조민주 해설강의" />   
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts4" id="sub34">
                         <div>
@@ -745,7 +962,12 @@
                         </div>
                     </div>
                     <div class="subCts4" id="sub37">
-                        <div class="comingsoon">세법 해설강의을 준비중입니다.</div>
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_t14.jpg" usemap="#Map1244play17" border="0" >
+                            <map name="Map1244play17" id="Map1244play17">
+                                <area shape="rect" coords="186,62,259,117" href="https://youtu.be/rtT9ZjhIU_M" target="_blank" alt="세법 고선미 해설강의" />
+                            </map>
+                        </div>
                     </div>
                     <div class="subCts4" id="sub38">
                         <div>

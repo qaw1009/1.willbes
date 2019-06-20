@@ -199,7 +199,12 @@
     <li>
         <div>
             <ul>
-            <li><p>공무원 온라인 ▼</p></li>
+                <li><p>자격증 ▼</p></li>
+                <li><a href="{{ site_url('/home/html/190619_jobA') }}" target="_blank">전기소방 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/190619_jobB') }}" target="_blank">전기소방 올패스 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/190619_jobC') }}" target="_blank">전기소방 자격증 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/190619_jobD') }}" target="_blank">대학생 및 공시생 전용 논스톱 패스 <span>*</span></a></li>
+                <li><p>공무원 온라인 ▼</p></li>
                 <li>3월 19일 이후 추가분 ▼</li>
                 <li><a href="{{ site_url('/home/html/1141') }}" target="_blank">2019 국가직 9급 대비 라이브 적중 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1140') }}" target="_blank">2019 국가직 9급 풀캐어 서비스 <span>*</span></a></li>

@@ -12,17 +12,17 @@
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
-                            <option value="">카테고리</option>
+                            <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        {{--<select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
-                        </select>--}}
+                        </select>
                         <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
@@ -67,14 +67,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_is_use">신규/추천</label>
+                    <label class="control-label col-md-1">신규/추천</label>
                     <div class="col-md-5 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" name="search_new" id="search_new" class="flat" value="Y"> 신규
+                            <input type="checkbox" name="search_chk_is_new" id="search_chk_is_new" class="flat" value="Y"> 신규
                         </div>
                         &nbsp;
                         <div class="checkbox">
-                            <input type="checkbox" name="search_best" id="search_best" class="flat" value="Y"> 추천
+                            <input type="checkbox" name="search_chk_is_best" id="search_chk_is_best" class="flat" value="Y"> 추천
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,6 @@
                     <th>복사선택</th>
                     <th>운영사이트</th>
                     <th>카테고리</th>
-                    {{--<th>중분류</th>--}}
                     <th>과목/교수정보</th>
                     <th>교재코드</th>
                     <th>교재명</th>
@@ -144,8 +143,9 @@
                         return '<input type="radio" name="prod_code" class="flat" value="' + data + '">';
                     }},
                     {'data' : 'SiteName'},
-                    {'data' : 'BCateName'},
-                    /*{'data' : 'MCateName'},*/
+                    {'data' : 'BCateName', 'render' : function(data, type, row, meta) {
+                        return data + (row.MCateName !== '' ? ' > ' + row.MCateName : '');
+                    }},
                     {'data' : 'ProfSubjectNames', 'render' : function(data, type, row, meta) {
                         return data !== null ? data.replace(/,/g, '<br/>') : '';
                     }},

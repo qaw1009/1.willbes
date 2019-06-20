@@ -53,7 +53,7 @@
 		<div class="evtCtnsBox cert02">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_02.jpg" alt="윌비스와 함께" usemap="#Map1293A"/>
 			<map name="Map1293A" id="Map1293A">
-				<area shape="rect" coords="843,1443,1056,1506" href="#none" />
+				<area shape="rect" coords="843,1443,1056,1506" href="#none" alt="교재 구매하기" />
 			</map>
 		</div>
 		<div class="evtCtnsBox cert03">

@@ -35,7 +35,7 @@ class BtobModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'A.BtobIdx,A.BtobName,A.ManagerName, A.Tel1, fn_dec(A.Tel2Enc) as Tel2, A.Tel3, A.IsUse
+            $column = 'A.BtobIdx, A.BtobId, A.BtobName, A.ManagerName, A.Tel1, fn_dec(A.Tel2Enc) as Tel2, A.Tel3, A.IsUse
                            ,fn_dec(EmailEnc) as Email, ReferDomains, A.RegDatm, A.`Desc`, A.IpControlTypeCcds, D.wAdminName as RegAdminName';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -63,7 +63,7 @@ class BtobModel extends WB_Model
     public function findCompanyForModify($compidx)
     {
 
-        $column = 'BtobIdx, BtobName, ManagerName, Phone1, fn_dec(Phone2Enc) as Phone2, Phone3, Tel1, fn_dec(Tel2Enc) as Tel2, Tel3
+        $column = 'BtobIdx, BtobId, BtobName, ManagerName, Phone1, fn_dec(Phone2Enc) as Phone2, Phone3, Tel1, fn_dec(Tel2Enc) as Tel2, Tel3
                         ,fn_dec(EmailEnc) as Email, ReferDomains, `Desc`, IpControlTypeCcds, A.ReturnUrl, A.IsUse, A.RegDatm, A.RegIp, A.UpdDatm
                         ,C.wAdminName as RegAdminName 
                         ,D.wAdminName as UpdAdminName ';
@@ -90,11 +90,18 @@ class BtobModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+            $btob_id = element('BtobId',$input);
+
+            $chk_row = $this->_conn->getFindResult($this->_table['btob'], 'BtobId', ['EQ' => ['BtobId' => $btob_id]]);
+            if (empty($chk_row) === false) {
+                throw new \Exception('동일한 제휴사 아이디가 존재합니다.');
+            }
 
             $input_data = $this->inputCommon($input);
 
             $input_data = array_merge($input_data,[
-                'RegAdminIdx'=>$this->session->userdata('admin_idx')
+                'BtobId'=>$btob_id
+                ,'RegAdminIdx'=>$this->session->userdata('admin_idx')
                 ,'RegIp'=>$this->input->ip_address()
             ]);
 

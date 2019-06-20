@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/site/supporters/BaseSupporters.php';
 
 class Assignment extends BaseSupporters
 {
-    protected $temp_models = array('board/board', 'board/boardSupporters', 'board/boardAssignmentSupporters');
+    protected $temp_models = array('board/board', 'board/boardSupporters');
     protected $helpers = array('download','file');
     private $bm_idx = 104;
     private $_reg_type = [

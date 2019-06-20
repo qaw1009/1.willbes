@@ -640,19 +640,31 @@
                     <div class="subCts" id="sub09">
                         <div class="comingsoon">기술직 총평을 준비중입니다.</div>
                     </div>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_02.png" usemap="#Map1244F" class="mt100" title="해설" border="0"/>
-                    <map name="Map1244F" id="Map1244F">
-                        <area shape="rect" coords="109,158,224,195" href="@if($file_yn[41] == 'Y') {{ front_url($file_link[41]) }} @else {{ $file_link[41] }} @endif" alt="국어 다운로드" />
-                        <area shape="rect" coords="370,159,488,196" href="@if($file_yn[42] == 'Y') {{ front_url($file_link[42]) }} @else {{ $file_link[42] }} @endif" alt="영어다운로드" />
-                        <area shape="rect" coords="608,159,726,196" href="@if($file_yn[43] == 'Y') {{ front_url($file_link[43]) }} @else {{ $file_link[43] }} @endif" alt="한국사다운로드" />
-                        <area shape="rect" coords="108,208,224,246" href="@if($file_yn[44] == 'Y') {{ front_url($file_link[44]) }} @else {{ $file_link[44] }} @endif" alt="행정학다운로드" />
-                        <area shape="rect" coords="370,211,487,250" href="@if($file_yn[45] == 'Y') {{ front_url($file_link[45]) }} @else {{ $file_link[45] }} @endif" alt="행정법다운로드" />
-                        <area shape="rect" coords="611,209,729,246" href="@if($file_yn[46] == 'Y') {{ front_url($file_link[46]) }} @else {{ $file_link[46] }} @endif" alt="사회다운로드" />
-                        <area shape="rect" coords="106,258,228,298" href="@if($file_yn[47] == 'Y') {{ front_url($file_link[47]) }} @else {{ $file_link[47] }} @endif" alt="세법" />
-                        <area shape="rect" coords="370,259,488,296" href="@if($file_yn[48] == 'Y') {{ front_url($file_link[48]) }} @else {{ $file_link[48] }} @endif" alt="회계학" />
-                        <area shape="rect" coords="609,257,728,301" href="@if($file_yn[49] == 'Y') {{ front_url($file_link[49]) }} @else {{ $file_link[49] }} @endif" alt="기술직" />
-                    </map>
-                    <ul class="subjectMenu2 mt50">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_03.png" class="mt100" title="해설"/>
+                    <ul class="pdfdown">
+                        <li><a href="@if($file_yn[41] == 'Y') {{ front_url($file_link[41]) }} @else {{ $file_link[41] }} @endif"> 국어</a></li>
+                        <li><a href="@if($file_yn[42] == 'Y') {{ front_url($file_link[42]) }} @else {{ $file_link[42] }} @endif"> 영어</a></li>
+                        <li><a href="@if($file_yn[43] == 'Y') {{ front_url($file_link[43]) }} @else {{ $file_link[43] }} @endif"> 한국사</a></li>
+                        <li><a href="@if($file_yn[44] == 'Y') {{ front_url($file_link[44]) }} @else {{ $file_link[44] }} @endif"> 행정학</a></li>
+                        <li><a href="@if($file_yn[45] == 'Y') {{ front_url($file_link[45]) }} @else {{ $file_link[45] }} @endif"> 행정법</a></li>
+                        <li><a href="@if($file_yn[46] == 'Y') {{ front_url($file_link[46]) }} @else {{ $file_link[46] }} @endif"> 세법</a></li>
+                        <li><a href="@if($file_yn[47] == 'Y') {{ front_url($file_link[47]) }} @else {{ $file_link[47] }} @endif"> 회계학</a></li>
+                        <li><a href="@if($file_yn[48] == 'Y') {{ front_url($file_link[48]) }} @else {{ $file_link[48] }} @endif"> 사회</a></li>
+                        <li><a href="@if($file_yn[49] == 'Y') {{ front_url($file_link[49]) }} @else {{ $file_link[49] }} @endif"> 과학</a></li>
+                        <li><a href="@if($file_yn[50] == 'Y') {{ front_url($file_link[50]) }} @else {{ $file_link[50] }} @endif"> 수학</a></li>
+                        <li><a href="@if($file_yn[51] == 'Y') {{ front_url($file_link[51]) }} @else {{ $file_link[51] }} @endif"> 재배학</a></li>
+                        <li><a href="@if($file_yn[52] == 'Y') {{ front_url($file_link[52]) }} @else {{ $file_link[52] }} @endif"> 식용작물</a></li>
+                        <li><a href="@if($file_yn[53] == 'Y') {{ front_url($file_link[53]) }} @else {{ $file_link[53] }} @endif"> 전기이론</a></li>
+                        <li><a href="@if($file_yn[54] == 'Y') {{ front_url($file_link[54]) }} @else {{ $file_link[54] }} @endif"> 전기기기</a></li>
+                        <li><a href="@if($file_yn[55] == 'Y') {{ front_url($file_link[55]) }} @else {{ $file_link[55] }} @endif"> 통신이론</a></li>
+                        <li><a href="@if($file_yn[56] == 'Y') {{ front_url($file_link[56]) }} @else {{ $file_link[56] }} @endif"> 전자공학</a></li>
+                        <li><a href="@if($file_yn[57] == 'Y') {{ front_url($file_link[57]) }} @else {{ $file_link[57] }} @endif"> 공중보건</a></li>
+                        <li><a href="@if($file_yn[58] == 'Y') {{ front_url($file_link[58]) }} @else {{ $file_link[58] }} @endif"> 보건행정</a></li>
+                        <li><a href="@if($file_yn[59] == 'Y') {{ front_url($file_link[59]) }} @else {{ $file_link[59] }} @endif"> 토목설계</a></li>
+                        <li><a href="@if($file_yn[60] == 'Y') {{ front_url($file_link[60]) }} @else {{ $file_link[60] }} @endif"> 응용역학</a></li>
+                    </ul>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_04.png" class="mt100" title="해설"/>
+                    <ul class="subjectMenu subjectMenu2 mt50">
                         <li><a href="#sub11" class="active">국어</a></li>
                         <li><a href="#sub12">영어</a></li>
                         <li><a href="#sub13">한국사</a></li>
@@ -736,7 +748,7 @@
                 </div>
 
                 <div id="assayTab11" class="subject mt50">
-                    <ul class="subjectMenu3">
+                    <ul class="subjectMenu subjectMenu3">
                         <li><a href="#sub21" class="active">국어</a></li>
                         <li><a href="#sub22">영어</a></li>
                         <li><a href="#sub23">한국사</a></li>
@@ -892,20 +904,32 @@
                     </div>
                     <div class="subCts3" id="sub29">
                         <div class="comingsoon">기술직 총평을 준비중입니다.</div>
-                    </div>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_02.png" usemap="#Map1244G" class="mt100" title="해설" border="0"/>
-                    <map name="Map1244G" id="Map1244G">
-                        <area shape="rect" coords="110,160,225,197" href="@if($file_yn[51] == 'Y') {{ front_url($file_link[51]) }} @else {{ $file_link[51] }} @endif" alt="국어 다운로드" />
-                        <area shape="rect" coords="368,159,486,196" href="@if($file_yn[52] == 'Y') {{ front_url($file_link[52]) }} @else {{ $file_link[52] }} @endif" alt="영어다운로드" />
-                        <area shape="rect" coords="609,160,727,197" href="@if($file_yn[53] == 'Y') {{ front_url($file_link[53]) }} @else {{ $file_link[53] }} @endif" alt="한국사다운로드" />
-                        <area shape="rect" coords="109,209,225,247" href="@if($file_yn[54] == 'Y') {{ front_url($file_link[54]) }} @else {{ $file_link[54] }} @endif" alt="행정학다운로드" />
-                        <area shape="rect" coords="368,208,485,247" href="@if($file_yn[55] == 'Y') {{ front_url($file_link[55]) }} @else {{ $file_link[55] }} @endif" alt="행정법다운로드" />
-                        <area shape="rect" coords="608,210,726,247" href="@if($file_yn[56] == 'Y') {{ front_url($file_link[56]) }} @else {{ $file_link[56] }} @endif" alt="사회다운로드" />
-                        <area shape="rect" coords="106,258,228,298" href="@if($file_yn[57] == 'Y') {{ front_url($file_link[57]) }} @else {{ $file_link[57] }} @endif" alt="세법" />
-                        <area shape="rect" coords="370,259,488,296" href="@if($file_yn[58] == 'Y') {{ front_url($file_link[58]) }} @else {{ $file_link[58] }} @endif" alt="회계학" />
-                        <area shape="rect" coords="609,257,728,301" href="@if($file_yn[59] == 'Y') {{ front_url($file_link[59]) }} @else {{ $file_link[59] }} @endif" alt="기술직" />
-                    </map>
-                    <ul class="subjectMenu4 mt50">
+                    </div>                    
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_03.png" class="mt100" title="해설"/>
+                    <ul class="pdfdown">
+                        <li><a href="@if($file_yn[71] == 'Y') {{ front_url($file_link[71]) }} @else {{ $file_link[71] }} @endif"> 국어</a></li>
+                        <li><a href="@if($file_yn[72] == 'Y') {{ front_url($file_link[72]) }} @else {{ $file_link[72] }} @endif"> 영어</a></li>
+                        <li><a href="@if($file_yn[73] == 'Y') {{ front_url($file_link[73]) }} @else {{ $file_link[73] }} @endif"> 한국사</a></li>
+                        <li><a href="@if($file_yn[74] == 'Y') {{ front_url($file_link[74]) }} @else {{ $file_link[74] }} @endif"> 행정학</a></li>
+                        <li><a href="@if($file_yn[75] == 'Y') {{ front_url($file_link[75]) }} @else {{ $file_link[75] }} @endif"> 행정법</a></li>
+                        <li><a href="@if($file_yn[76] == 'Y') {{ front_url($file_link[76]) }} @else {{ $file_link[76] }} @endif"> 세법</a></li>
+                        <li><a href="@if($file_yn[77] == 'Y') {{ front_url($file_link[77]) }} @else {{ $file_link[77] }} @endif"> 회계학</a></li>
+                        <li><a href="@if($file_yn[78] == 'Y') {{ front_url($file_link[78]) }} @else {{ $file_link[78] }} @endif"> 사회</a></li>
+                        <li><a href="@if($file_yn[79] == 'Y') {{ front_url($file_link[79]) }} @else {{ $file_link[79] }} @endif"> 과학</a></li>
+                        <li><a href="@if($file_yn[80] == 'Y') {{ front_url($file_link[80]) }} @else {{ $file_link[80] }} @endif"> 수학</a></li>
+                        <li><a href="@if($file_yn[81] == 'Y') {{ front_url($file_link[81]) }} @else {{ $file_link[81] }} @endif"> 재배학</a></li>
+                        <li><a href="@if($file_yn[82] == 'Y') {{ front_url($file_link[82]) }} @else {{ $file_link[82] }} @endif"> 식용작물</a></li>
+                        <li><a href="@if($file_yn[83] == 'Y') {{ front_url($file_link[83]) }} @else {{ $file_link[83] }} @endif"> 전기이론</a></li>
+                        <li><a href="@if($file_yn[84] == 'Y') {{ front_url($file_link[84]) }} @else {{ $file_link[84] }} @endif"> 전기기기</a></li>
+                        <li><a href="@if($file_yn[85] == 'Y') {{ front_url($file_link[85]) }} @else {{ $file_link[85] }} @endif"> 통신이론</a></li>
+                        <li><a href="@if($file_yn[86] == 'Y') {{ front_url($file_link[86]) }} @else {{ $file_link[86] }} @endif"> 전자공학</a></li>
+                        <li><a href="@if($file_yn[87] == 'Y') {{ front_url($file_link[87]) }} @else {{ $file_link[87] }} @endif"> 공중보건</a></li>
+                        <li><a href="@if($file_yn[88] == 'Y') {{ front_url($file_link[88]) }} @else {{ $file_link[88] }} @endif"> 보건행정</a></li>
+                        <li><a href="@if($file_yn[89] == 'Y') {{ front_url($file_link[89]) }} @else {{ $file_link[89] }} @endif"> 토목설계</a></li>
+                        <li><a href="@if($file_yn[90] == 'Y') {{ front_url($file_link[90]) }} @else {{ $file_link[90] }} @endif"> 응용역학</a></li>
+                    </ul>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1244_06_04.png" class="mt100" title="해설"/>
+                    <ul class="subjectMenu subjectMenu4 mt50">
                         <li><a href="#sub31" class="active">국어</a></li>
                         <li><a href="#sub32">영어</a></li>
                         <li><a href="#sub33">한국사</a></li>

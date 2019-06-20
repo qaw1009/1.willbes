@@ -13,7 +13,7 @@
         {!! form_errors() !!}
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2" for="search_mem_id">회원등록</label>
-            <div class="col-md-4 item">
+            <div class="col-md-4 item pl-0">
                 <input type="text" id="search_mem_id" name="search_mem_id" required="required" class="form-control" value="">
             </div>
             <button type="button" id="btn_member_search" name="btn_member_search" data-result-type="single" class="btn bg-green btn-sm btn-primary">회원검색</button>

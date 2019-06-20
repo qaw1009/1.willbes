@@ -19,9 +19,8 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 		/************************************************************/   
-		.cert_top{background:url(https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top_bg.jpg) no-repeat center top;}	
-		.cert02{background:#f5f5f5;}
-
+		.cert_top {background:url(https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top_bg.jpg) no-repeat center top;}	
+		.cert02 {background:#f5f5f5;}
 		.cert03 {position:relative; width:1120px; margin:0 auto} 
 		label.check1 {top:355px; left:910px;}
 		label.check2 {top:480px; left:930px;}
@@ -59,22 +58,21 @@
 		</div>
 		<div class="evtCtnsBox cert03">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certA.jpg" alt="수강신청" usemap="#Map1294A" />
-			<map name="Map1294A" id="Map1294A">
-				<area shape="rect" coords="667,456,747,485" href="#none" />
-				<area shape="rect" coords="719,605,884,640" href="#none" />
-				<area shape="rect" coords="300,700,819,785" href="#none" />
-				<area shape="rect" coords="736,1244,815,1276" href="#none" />
-				<area shape="rect" coords="711,1395,873,1429" href="#none" />
-				<area shape="rect" coords="302,1527,826,1619" href="#none" />
-			</map>
+				<map name="Map1294A" id="Map1294A">
+					<area shape="rect" coords="667,456,747,485" href="#none" alt="상세보기" />
+					<area shape="rect" coords="719,605,884,640" href="#info" alt="이용안내 확인하기" />
+					<area shape="rect" coords="300,700,819,785" href="#none" alt="전기기사 패스 신청하기" />
+					<area shape="rect" coords="736,1244,815,1276" href="#none" alt="상세보기" />
+					<area shape="rect" coords="711,1395,873,1429" href="#info" alt="이용안내 확인하기" />
+					<area shape="rect" coords="302,1527,826,1619" href="#none" alt="소방설비 패스 신청하기" />
+				</map>
 			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
 			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
 			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label> 
 			<input name="ischk4" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label>
-
 			<input name="ischk6" type="checkbox" value="Y" id="ischk6"><label for="ischk6" class="check6"></label> 
 		</div>
-		<div class="evtCtnsBox">
+		<div class="evtCtnsBox" id="info">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_03.jpg" alt="윌비스 수강 이용안내" />
 		</div>
 	</div>

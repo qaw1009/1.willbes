@@ -7,7 +7,7 @@
         @include('willbes.pc.layouts.partial.site_menu')
         <div class="Section">
             <div class="widthAuto lastTime">
-                <span>{{ $data['Interval_time'] }}</span>
+                <span id="counter">{{ $data['Interval_time'] }}</span>
                 <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120_190619.gif" alt="단 1명의 꿈이라도">
             </div>
         </div>
@@ -125,4 +125,15 @@
     <!-- End Container -->
 
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
+    <script src="/public/js/willbes/jquery.counterup.min.js"></script>
+    <script src="/public/js/willbes/waypoints.min.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function( $ ) {
+        $('#counter').counterUp({
+            delay: 11, // the delay time in ms
+            time: 1000 // the speed time in ms
+        });
+    });
+    </script>
 @stop

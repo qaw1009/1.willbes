@@ -496,7 +496,7 @@
                     </div>
                     <div class="subCts" id="sub03">
                     <div>
-                        <h5>국어 | 기미진 교수</h5>
+                        <h5>한국사 | 조민주 교수</h5>
                         [2019 문항분석]
                         <div class="mt20 mb20 board_type">                     
                             <table cellspacing="0" cellpadding="0">
@@ -754,7 +754,7 @@
                         <div class="comingsoon">영어 총평을 준비중입니다.</div>
                     </div>
                     <div class="subCts3" id="sub23">
-                    <h5>국어 | 기미진 교수</h5>
+                    <h5>한국사 | 조민주 교수</h5>
                         [2019 문항분석]
                         <div class="mt20 mb20 board_type">                     
                             <table cellspacing="0" cellpadding="0">

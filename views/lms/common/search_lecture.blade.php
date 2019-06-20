@@ -154,7 +154,6 @@
                         columns: [
                             @if(empty($wLecIdx) === true)
                             {'data' : null, 'render' : function(data, type, row, meta) {
-
                                     var checked = ($selected_prodcode.hasOwnProperty(row.ProdCode) === true) ? 'Y' : '';
                                     var seq = meta.row;     //무조건 0 부터 시작 하단에서 걸림 ( for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔... )
                                     var codeInfo= row.ProdCode+'@$'
@@ -167,7 +166,7 @@
                                         +addComma(row.RealSalePrice)+'원@$'
                                         +row.SaleStatusCcd_Name+'@$'
                                     ;
-                                    return checked == 'Y' ? '<span class="red"><b>선택<BR>완료</b></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
+                                    return checked == 'Y' ? '<span class="red"><b>선택<BR>완료</b><input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="hide"></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
                             @endif
                             {'data' : null, 'render' : function(data, type, row, meta) {

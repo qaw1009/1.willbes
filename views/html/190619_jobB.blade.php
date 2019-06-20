@@ -54,17 +54,17 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_02.jpg" alt="자격증 수강" />
 		</div>
 		<div class="evtCtnsBox cert03">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_03.jpg" alt="자격증 수강" usemap="#Map1288A"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_03.jpg" alt="윌비스와 함께" usemap="#Map1288A"/>
 			<map name="Map1288A" id="Map1288A">
-				<area shape="rect" coords="843,1653,1060,1717" href="#none" />
+				<area shape="rect" coords="843,1653,1060,1717" href="#none"alt="교재 구매하기" />
 			</map>
 		</div>
 		<div class="evtCtnsBox cert04">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_04.jpg" alt="수강신청" usemap="#Map1287A"/>
 			<map name="Map1287A" id="Map1287A">
-				<area shape="rect" coords="666,488,746,520" href="#none" />
-				<area shape="rect" coords="742,638,901,673" href="#none" />
-				<area shape="rect" coords="271,771,857,858" href="#none" />
+				<area shape="rect" coords="666,488,746,520" href="#none" alt="상세보기" />
+				<area shape="rect" coords="742,638,901,673" href="#none" alt="이용안내 확인하기" />
+				<area shape="rect" coords="271,771,857,858" href="#none" alt="소방분야 패스 신청하기" />
 			</map>
 			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
 			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>

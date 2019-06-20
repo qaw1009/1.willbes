@@ -43,7 +43,7 @@
 		}		
 		input {display:none}	 
         /************************************************************/      
-    </style>
+    </style> 
 	<div class="evtContent">
 		<div class="evtCtnsBox cert_top">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top.jpg" alt="전기/소방 윌비스 자격증" />

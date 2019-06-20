@@ -63,6 +63,7 @@
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['BCateCode'] }}"><u>{{ $row['BCateName'] }}</u></a>
                                     [<span class="blue">{{ $row['BCateCode'] }}</span>]
                                     @if($row['BIsUse'] == 'Y') (사용) @elseif($row['BIsUse'] == 'N') (<span class="red">미사용</span>) @endif
+                                    @if($row['BIsDefault'] == 'Y') <span class="red pl-5">[디폴트]</span> @endif
                                 </div>
                             </td>
                             <td>
@@ -73,6 +74,7 @@
                                         [<span class="blue">{{ $row['MCateCode'] }}</span>]
                                     </div>
                                 @endif
+                                @if($row['MIsDefault'] == 'Y') <span class="red">[디폴트]</span> @endif
                             </td>
                             <td>@if($row['LastIsUse'] == 'Y') 사용 @elseif($row['LastIsUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['LastIsUse'] }}</span>
@@ -167,7 +169,7 @@
 
                 $('.btn-regist, .btn-modify').setLayer({
                     'url' : '{{ site_url('/sys/site/create/category/') }}' + uri_param,
-                    'width' : 900
+                    'width' : 940
                 });
             });
         });

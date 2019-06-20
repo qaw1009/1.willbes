@@ -81,6 +81,17 @@
                     <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                 </div>
             </div>
+            <label class="control-label col-md-2" for="is_default">디폴트 여부 <span class="required">*</span>
+            </label>
+            <div class="col-md-4 item form-inline">
+                <div class="radio">
+                    <input type="radio" id="is_default_y" name="is_default" class="flat" value="Y" required="required" title="디폴트여부" @if($method == 'POST' || $data['IsDefault']=='Y')checked="checked"@endif/> <label for="is_default_y" class="input-label">디폴트</label>
+                    <input type="radio" id="is_default_n" name="is_default" class="flat" value="N" @if($data['IsDefault']=='N')checked="checked"@endif/> <label for="is_default_n" class="input-label">일반</label>
+                </div>
+                <span class="red pl-10"># 사이트별 1개만 설정</span>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
             <label class="control-label col-md-2" for="order_num">정렬
             </label>
             <div class="col-md-1">

@@ -41,17 +41,17 @@ class CategoryModel extends WB_Model
         $from = '
             from (
                 select SiteCode, SiteName 
-                    , BCateCode, BCateName, BCateDepth, BOrderNum, if(BCateDepth < LastCateDepth, BIsUse, "") as BIsUse
-                    , MCateCode, MCateName, MCateDepth, MOrderNum, if(MCateDepth < LastCateDepth, MIsUse, "") as MIsUse
+                    , BCateCode, BCateName, BCateDepth, BOrderNum, if(BCateDepth < LastCateDepth, BIsUse, "") as BIsUse, BIsDefault
+                    , MCateCode, MCateName, MCateDepth, MOrderNum, if(MCateDepth < LastCateDepth, MIsUse, "") as MIsUse, MIsDefault
                     , if(LastCateDepth = 1, BIsUse, MIsUse) as LastIsUse
                     , if(LastCateDepth = 1, BRegAdminIdx, MRegAdminIdx) as LastRegAdminIdx
                     , if(LastCateDepth = 1, BRegDatm, MRegDatm) as LastRegDatm
                 from (
                     select S.SiteCode, S.SiteName
                         , BC.CateCode as BCateCode, BC.CateName as BCateName, BC.CateDepth as BCateDepth, BC.OrderNum as BOrderNum
-                        , BC.IsUse as BIsUse, BC.RegAdminIdx as BRegAdminIdx, BC.RegDatm as BRegDatm
+                        , BC.IsDefault as BIsDefault, BC.IsUse as BIsUse, BC.RegAdminIdx as BRegAdminIdx, BC.RegDatm as BRegDatm
                         , MC.CateCode as MCateCode, MC.CateName as MCateName, MC.CateDepth as MCateDepth, MC.OrderNum as MOrderNum
-                        , MC.IsUse as MIsUse, MC.RegAdminIdx as MRegAdminIdx, MC.RegDatm as MRegDatm
+                        , MC.IsDefault as MIsDefault, MC.IsUse as MIsUse, MC.RegAdminIdx as MRegAdminIdx, MC.RegDatm as MRegDatm
                         , greatest(BC.CateDepth, ifnull(MC.CateDepth, 0)) as LastCateDepth
                     from ' . $this->_table['site'] . ' as S
                         inner join ' . $this->_table['category'] . ' as BC
@@ -266,7 +266,7 @@ class CategoryModel extends WB_Model
      */
     public function findCategoryForModify($cate_code)
     {
-        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsUse, C.RegDatm, C.UpdDatm';
+        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsDefault, C.IsUse, C.RegDatm, C.UpdDatm';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
@@ -329,6 +329,7 @@ class CategoryModel extends WB_Model
                 'GroupCateCode' => $_group_cate_code,
                 'CateDepth' => $_cate_depth,
                 'OrderNum' => (empty(element('order_num', $input)) === true) ? $this->getCategoryOrderNum(element('site_code', $input), $parent_cate_code) : element('order_num', $input),
+                'IsDefault' => element('is_default', $input),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -370,6 +371,7 @@ class CategoryModel extends WB_Model
             $data = [
                 'CateName' => element('cate_name', $input),
                 'OrderNum' => (empty(element('order_num', $input)) === true) ? $this->getCategoryOrderNum($row['SiteCode'], $row['ParentCateCode']) : element('order_num', $input),
+                'IsDefault' => element('is_default', $input),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

@@ -128,6 +128,10 @@ class Home extends \app\controllers\FrontController
 
             // 특정 카테고리에서만 노출 (9급, 7급, 세무직, 소방직)
             if (in_array($s_cate_code, ['3019', '3020', '3022', '3023']) === true) {
+                //특정일 기준 시간차 계산 [3019]
+                $target_time = '2011-01-03 00:00:00';
+                $data['Interval_time'] = number_format(floor((strtotime(date('Y-m-d H:i:s')) - strtotime($target_time)) / 3600));
+
                 $data['study_comment'] = $this->_boardStudyComment(6, $s_cate_code);
             }
         }

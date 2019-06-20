@@ -164,6 +164,26 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 자격증 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2006Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+
+        if (APP_DEVICE == 'pc') {
+            $data['notice'] = $this->_boardNotice(5, $cate_code);
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $cate_code);
+            $data['exam_news'] = $this->_boardExamNews(5, $cate_code);
+            $data['arr_main_banner'] = $this->_banner($cate_code);
+        }
+
+        return $data;
+    }
+
+    /**
      * 메인 배너
      * @param int $cate_code
      * @return array
@@ -250,6 +270,12 @@ class Home extends \app\controllers\FrontController
                     , '메인_이벤트', '메인_대표교수', '메인_포커스'
                     , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
                 ]
+            ],
+            '2006' => [
+                // 소방(산업)기사
+                '308901' => ['메인_서브1', '메인_서브2'],
+                // 전기(산업)기사
+                '308902' => ['메인_서브1', '메인_서브2']
             ]
         ];
 

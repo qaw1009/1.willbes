@@ -38,7 +38,7 @@ class Caching_site_menu extends CI_Driver
 
         $column = '
             S.SiteCode, S.SiteUrl, SM.MenuIdx, SM.MenuType, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, trim(SM.MenuUrl) as MenuUrl
-            , SM.UrlType, SM.UrlTarget, SM.MenuIcon, SM.MenuEtc, fn_site_menu_connect_by_type(SM.MenuIdx, "both") as UrlRouteBoth
+            , SM.UrlType, SM.UrlTarget, SM.MenuIcon, SM.MenuEtc, fn_site_menu_connect_by_type(SM.MenuIdx, "both") as UrlRouteBoth, left(SM.MenuType, 1) as MenuTypeOrder
             #, substring_index(replace(SM.MenuUrl, "//", ""), ".", 1) as SubDomainByMenuUrl
             #, substring(replace(substring_index(replace(SM.MenuUrl, "//", ""), "/", 2), substring_index(replace(SM.MenuUrl, "//", ""), "/", 1), ""), 2) as Segment1ByMenuUrl
         ';
@@ -52,7 +52,7 @@ class Caching_site_menu extends CI_Driver
                 and S.IsUse = "Y" and S.IsStatus = "Y"
                 and SM.IsUse= "Y" and SM.IsStatus = "Y"                              
         ';
-        $order_by = ' order by S.OrderNum asc, SM.GroupOrderNum asc, SM.OrderNum asc';
+        $order_by = ' order by S.OrderNum asc, MenuTypeOrder asc, SM.GroupOrderNum asc, SM.OrderNum asc';
 
         // 쿼리 실행
         $result = $this->_db->query('select ' . $column . $from . $order_by)->result_array();

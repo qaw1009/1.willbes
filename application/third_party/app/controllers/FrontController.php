@@ -204,14 +204,16 @@ abstract class FrontController extends BaseController
                             // 사이트 일반 메뉴
                             $_tree_menu = array_get($all_site_tree_menus, implode('.', array_slice(explode('.', $_active_route_idx), 0, 4)) . '.Children');
                         } else {
-                            // 사이트 예외메뉴
-                            $_tree_menu = current(current($_tree_menu)['Children'])['Children'];
+                            // 사이트 예외메뉴 (불필요한 배열 초기화)
+                            //$_tree_menu = current(current($_tree_menu)['Children'])['Children'];
+                            $_tree_menu = [];
                         }
                     } else {
                         // 일치하는 사이트 메뉴가 없을 경우 디폴트 메뉴정보 설정
-                        if ($this->_is_pass_site === false && empty($this->_cate_code) === false) {
+                        if ($this->_is_pass_site === false) {
                             // 온라인 사이트일 경우 카테고리 > 메인 페이지를 기준으로 조회
-                            $_not_match_route_val = '//' . parse_url(current_url(), PHP_URL_HOST) . '/home/index/' . config_get('uri_segment_keys.cate') . '/' . $this->_cate_code;
+                            $_not_match_cate_code = empty($this->_cate_code) === false ? $this->_cate_code : element('DefCateCode', $site_cache);
+                            $_not_match_route_val = '//' . parse_url(current_url(), PHP_URL_HOST) . '/home/index/' . config_get('uri_segment_keys.cate') . '/' . $_not_match_cate_code;
                             $_not_match_route_idx = str_first_pos_after(array_search($_not_match_route_val, array_slice($menu_urls, 1)), '.');
                             $_active_menu = array_get($_tree_menu, $_not_match_route_idx);
                         }
@@ -219,7 +221,7 @@ abstract class FrontController extends BaseController
                         if (empty($_active_menu) === true) {
                             $_active_menu = current(current($_tree_menu)['Children']);
                         }
-                        $_tree_menu = $_active_menu['Children'];
+                        $_tree_menu = element('Children', $_active_menu);
                     }
                 }
             }
@@ -253,7 +255,7 @@ abstract class FrontController extends BaseController
         $configs = array_merge(
             $site_cache,
             ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile, 'IsApp' => $this->_is_app],
-            config_item(SUB_DOMAIN),
+            config_get(SUB_DOMAIN, []),
             ['GNBMenu' => $front_menus['GNB']],
             ['SiteMenu' => $front_menus[$this->_site_code]],
             ['TabMenu' => $tab_menus]

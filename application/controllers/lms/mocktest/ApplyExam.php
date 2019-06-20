@@ -33,9 +33,14 @@ class ApplyExam extends \app\controllers\BaseController
         $applyAreaTmp2 = array_map(function($v) { return '[지역2] '. $v; }, $codes[$applyArea2]);
         $applyArea = $applyAreaTmp1 + $applyAreaTmp2;
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
+
         $this->load->view('mocktest/apply/exam/index', [
             'siteCodeDef' => $siteCode[0],
             'applyArea' => $applyArea,
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 

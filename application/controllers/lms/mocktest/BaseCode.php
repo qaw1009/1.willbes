@@ -28,6 +28,9 @@ class BaseCode extends \app\controllers\BaseController
 
         list($listDB, $subjectNames, $subjectIdxs) = $this->baseCodeModel->list();
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
+
         $this->load->view('mocktest/base/code/index', [
             'siteCodeDef' => $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
@@ -36,6 +39,8 @@ class BaseCode extends \app\controllers\BaseController
             'listDB' => $listDB,
             'subjectNames' => $subjectNames,
             'subjectIdxs' => $subjectIdxs,
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 

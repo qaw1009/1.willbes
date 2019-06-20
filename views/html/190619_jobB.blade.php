@@ -41,7 +41,7 @@
 		}		
 		input {display:none}		
            
-    </style>
+    </style> 
 
 	<div class="evtContent">
 		<div class="evtCtnsBox cert_top">

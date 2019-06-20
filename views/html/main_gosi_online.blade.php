@@ -65,7 +65,7 @@
     
     <div class="Section">
         <div class="widthAuto lastTime">
-            <span>72,894</span>
+            <span id="counter">72,894</span>
             <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120_190619.gif" alt="단 1명의 꿈이라도">
         </div>
     </div>
@@ -485,8 +485,16 @@
 </div>
 
 <!-- End Container -->
-
+<script src="/public/js/willbes/jquery.counterup.min.js"></script>
+<script src="/public/js/willbes/waypoints.min.js"></script>
 <script type="text/javascript">
+    jQuery(document).ready(function( $ ) {
+        $('#counter').counterUp({
+            delay: 11, // the delay time in ms
+            time: 1000 // the speed time in ms
+        });
+    });
+    
     $(function(){ 
         $('.prof-subject').bxSlider({ 
             speed:800,  

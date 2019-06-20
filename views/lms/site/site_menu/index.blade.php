@@ -77,6 +77,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 paging: false,
+                dom: 'T<"clear"><<"pull-left mt-5 txt-caution-info"><"pull-right"B>><"clear">rtip',
                 buttons: [
                     { text: '<i class="fa fa-floppy-o mr-5"></i> 수동캐시저장', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
@@ -121,6 +122,9 @@
                     {'data' : 'RegDatm'}
                 ]
             });
+
+            // 주의 메시지 출력
+            $('div.txt-caution-info').html('<span class="red">* 사이트 메뉴 등록/수정 이후 `수동캐시저장` 버튼을 클릭해야만 운영(프런트) 사이트에 반영됩니다.</span>');
 
             // 카테고리 등록/수정 모달창 오픈
             $list_form.on('click', '.btn-regist, .btn-modify', function() {

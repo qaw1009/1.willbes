@@ -47,6 +47,9 @@ class ApplyUser extends \app\controllers\BaseController
             $scode = $siteCode[0];
         }
 
+        $arrsite = ['2002' => '경찰[학원]', '2004' => '공무원[학원]'];
+        $arrtab = array();
+
         $this->load->view('mocktest/apply/user/index', [
             'siteCodeDef' => $scode,
             'paymentStatus' => $codes[$paymentStatus],
@@ -55,6 +58,8 @@ class ApplyUser extends \app\controllers\BaseController
             'search_PayStatusCcd'=>$search_PayStatusCcd,
             'search_IsTake'=>$search_IsTake,
             'search_fi'=>$search_fi,
+            'arrsite' => $arrsite,
+            'arrtab' => $arrtab
         ]);
     }
 

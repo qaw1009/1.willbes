@@ -3,7 +3,7 @@
 @section('content')
     <h5 class="mt-20">- 모의고사 문제등록을 위한 과목별 문제영역(학습요소)을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
+        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!}
 
         <div class="x_panel">
             <div class="x_content">

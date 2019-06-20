@@ -1,19 +1,19 @@
 /* CSS : import */
 @import url("style_main.css");
-@import url("style_cop.css");
-@import url("style_cop_adm.css");
-@import url("style_cop_pro.css");
-@import url("style_cop_sea.css");
-@import url("style_cop_sea_special.css");
-@import url("style_cop_acad.css");
-@import url("style_gosi.css");
-@import url("style_gosi_acad.css");
-@import url("style_gosi_law.css");
-@import url("style_gosi_tech.css");
+@import url("style_cop.css"); /*일반경찰*/
+@import url("style_cop_adm.css"); /*경행경채*/
+@import url("style_cop_pro.css"); /*경찰승진*/
+@import url("style_cop_sea.css"); /*해양경찰*/
+@import url("style_cop_sea_special.css"); /*해양경찰특채*/
+@import url("style_cop_acad.css"); /*경찰학원*/
+@import url("style_gosi.css"); /*9급,7급*/
+@import url("style_gosi_acad.css"); /*공무원학원*/
+@import url("style_gosi_law.css"); /*법원직*/
+@import url("style_gosi_tech.css"); /*기술직*/
 @import url("style_gosi_gp.css");
 @import url("style_gosi_noncom.css");
 @import url("style_gpgosi.css");
-@import url("style_cert.css");
+@import url("style_job.css"); /*자격증*/
 
 
 

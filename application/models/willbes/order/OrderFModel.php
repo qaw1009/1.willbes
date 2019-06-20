@@ -864,7 +864,7 @@ class OrderFModel extends BaseOrderFModel
             // 접수번호 초기값 (경찰 5자리, 공무원 8자리)
             switch (config_app('SiteGroupCode')) {
                 case '1001' : $first_take_number = '10001'; break;
-                case '1002' : $first_take_number = '10000001'; break;
+                case '1002' : $first_take_number = '1000001'; break;
                 default : $first_take_number = '10001'; break;
             }
 

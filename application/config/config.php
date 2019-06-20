@@ -53,6 +53,7 @@ $config['app_name_mapping'] = [
     'police' => 'willbes',
     'pass' => 'willbes',
     'ssam' => 'willbes',
+    'job' => 'willbes',
     'tzone' => 'lms'
 ];
 
@@ -65,7 +66,8 @@ $config['app_front_site_except'] = [
     'www' => ['route_add_path' => ''],
     'police' => ['route_add_path' => '/site'],
     'pass' => ['route_add_path' => '/site'],
-    'ssam' => ['route_add_path' => '/site']
+    'ssam' => ['route_add_path' => '/site'],
+    'job' => ['route_add_path' => '/site']
 ];
 
 /*

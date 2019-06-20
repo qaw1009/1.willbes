@@ -42,26 +42,24 @@ if(ENVIRONMENT == "production" || ENVIRONMENT == "testing"){
     $config['starplayer_license'] = '5EDC454C-81A1-4434-A386-7314FCB74991';
 }
 
-
-
 // 통합사이트 설정
 $config['www'] = array(
-
 );
 
 // 경찰사이트 설정
 $config['police'] = array(
-
 );
 
 // 공무원사이트 설정
 $config['pass'] = array(
-
 );
 
 // 임용사이트 설정
 $config['ssam'] = array(
+);
 
+// 자격증사이트 설정
+$config['job'] = array(
 );
 
 // 모의고사

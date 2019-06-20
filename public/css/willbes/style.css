@@ -705,6 +705,7 @@ table.auTable tr td {
     text-align: center;
     padding-top: 15px;
 }
+
 #Gnb h4 ul li {
     line-height: 26px;
 }
@@ -719,11 +720,13 @@ table.auTable tr td {
 #Gnb h4 ul li.Acad  {
     border-top: 1px solid #ececec;
     padding-top: 15px;
-    margin: 15px 10px 0;
+    margin:15px 10px -15px;
 }
+#Gnb .topView h4 ul {padding-bottom:15px}
 #Gnb .topView h4 ul li.dropdown {
     position: relative;
 }
+
 #Gnb .sns-Btn {
     text-align: center;
     margin-top: 5px;

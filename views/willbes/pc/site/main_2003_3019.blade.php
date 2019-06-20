@@ -5,10 +5,10 @@
     <div id="Container" class="Container gosi NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
-
-        <div class="Section mt20">
-            <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120.jpg" alt="반드시 합격할 수 있는 자신감이 되어 드리겠습니다.">
+        <div class="Section">
+            <div class="widthAuto lastTime">
+                <span>{{ $data['Interval_time'] }}</span>
+                <img src="https://static.willbes.net/public/images/promotion/main/3019_top_1120_190619.gif" alt="단 1명의 꿈이라도">
             </div>
         </div>
 

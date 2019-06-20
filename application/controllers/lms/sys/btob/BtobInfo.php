@@ -58,15 +58,18 @@ class BtobInfo extends \app\controllers\BaseController
     public function store()
     {
         $rules = [
-            ['field' => 'BtobName', 'label' => '제휴사명', 'rules' => 'trim|required'],
+            ['field' => 'BtobName', 'label' => '제휴사명', 'rules' => 'trim|required']
         ];
 
         if(empty($this->_reqP('btobidx')) === true){
             $method = 'add';
+            $rules = array_merge($rules,[
+                ['field' => 'BtobId', 'label' => '제휴사아이디', 'rules' => 'trim|required|alpha_dash']
+            ]);
         } else {
             $method = 'modify';
             $rules = array_merge($rules,[
-                ['field' => 'btobidx', 'label' => '식별자', 'rules' => 'trim|required'],
+                ['field' => 'btobidx', 'label' => '식별자', 'rules' => 'trim|required']
             ]);
         }
 
@@ -75,8 +78,6 @@ class BtobInfo extends \app\controllers\BaseController
         }
 
         $result = $this->btobModel->{$method.'Company'}($this->_reqP(null));
-
-        //var_dump($result);exit;
 
         $this->json_result($result,'저장 되었습니다.',$result);
     }

@@ -57,7 +57,7 @@
                         <tr>
                             <td>{{ ($loop->count) - ($loop->index) + 1}}</td>
                             <td>{{ $row['BtobIdx'] }}</td>
-                            <td><a href="#" class="btn-modify" data-idx="{{ $row['BtobIdx'] }}"><u>{{ $row['BtobName'] }}</u></a></td>
+                            <td><a href="#" class="btn-modify" data-idx="{{ $row['BtobIdx'] }}"><u>{{ $row['BtobName'] }}</u></a> ({{ $row['BtobId'] }})</td>
                             <td>{{ $row['ManagerName'] }}</td>
                             <td>@if(!empty($row['Tel2'])){{ $row['Tel1'] .'-'. $row['Tel2'].'-'.$row['Tel3']  }}@endif</td>
                             <td>{{ $row['ReferDomains'] }}</td>

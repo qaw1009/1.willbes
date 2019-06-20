@@ -416,6 +416,12 @@
 					<td>2019 장사원 작물생리학 기출문제풀이</td>
 					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146853">수강신청</a></td>
 				  </tr>
+				  <tr>
+					<td>작물생리학</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 작물생리학 실전 동형모의고사</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/154998">수강신청</a></td>
+				  </tr>
 				  </table>
 				  <p>● 생물학개론</p>
 					  <table>
@@ -457,6 +463,12 @@
 					<td>문제풀이</td>
 					<td>2019 장사원 농촌지도론 기출문제풀이</td>
 					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146854">수강신청</a></td>
+				  </tr>
+				  <tr>
+					<td>농촌지도론</td>
+					<td>문제풀이</td>
+					<td>2019 장사원 농촌지도론 실전 동형모의고사</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/154999">수강신청</a></td>
 				  </tr>
 				  </table>
 				  <p>● 토양학</p>

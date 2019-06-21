@@ -28,6 +28,7 @@
 		label.check4 {top:1145px; left:675px;}
 	
 		label.check6 {top:1400px; left:205px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		label.check7 {top:355px; left:425px;}
 		input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
 		}
@@ -41,9 +42,15 @@
 			font-size: 20px;
 		}		
 		input {display:none}	 
+		
+		.skybanner{position: fixed; top: 280px;right: 2px;z-index: 1;}	
+		.tipPopup{position: absolute;left: 49%;top: 100px;z-index: 1;display:none;}
         /************************************************************/      
     </style> 
 	<div class="evtContent">
+		<div class="skybanner">
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/t-1300_sky.png" alt="전기기사 베너">
+		</div>
 		<div class="evtCtnsBox cert_top">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top.jpg" alt="전기/소방 윌비스 자격증" />
 		</div>
@@ -59,18 +66,22 @@
 		<div class="evtCtnsBox cert03">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certA.jpg" alt="수강신청" usemap="#Map1294A" />
 				<map name="Map1294A" id="Map1294A">
-					<area shape="rect" coords="667,456,747,485" href="#none" alt="상세보기" />
+					<area shape="rect" coords="667,456,747,485" href="#none" alt="상세보기" id="stoggleBtn" />
 					<area shape="rect" coords="719,605,884,640" href="#info" alt="이용안내 확인하기" />
 					<area shape="rect" coords="300,700,819,785" href="#none" alt="전기기사 패스 신청하기" />
 					<area shape="rect" coords="736,1244,815,1276" href="#none" alt="상세보기" />
 					<area shape="rect" coords="711,1395,873,1429" href="#info" alt="이용안내 확인하기" />
 					<area shape="rect" coords="302,1527,826,1619" href="#none" alt="소방설비 패스 신청하기" />
 				</map>
+				<div class="tipPopup"id="textZone">
+					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
+				</div>
 			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
 			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
 			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label> 
 			<input name="ischk4" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label>
 			<input name="ischk6" type="checkbox" value="Y" id="ischk6"><label for="ischk6" class="check6"></label> 
+			<input name="ischk7" type="checkbox" value="Y" id="ischk7"><label for="ischk7" class="check7"></label> 
 		</div>
 		<div class="evtCtnsBox" id="info">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_03.jpg" alt="윌비스 수강 이용안내" />
@@ -78,7 +89,11 @@
 	</div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-
-    </script>
+    <script type="text/javascript">   
+    $(document).ready(function(){
+        $("#stoggleBtn").click(function(){
+            $("#textZone").slideToggle("fast");
+        });        
+    });
+	</script>
 @stop

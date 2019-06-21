@@ -78,6 +78,9 @@
                             </p>
                             {!!nl2br($row['Content'])!!}
                         </div>
+                        @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
+                            <a class="btnDel btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">삭제</a>
+                        @endif
                     </li>
                 @endforeach
             </ul>

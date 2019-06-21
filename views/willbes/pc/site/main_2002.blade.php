@@ -37,6 +37,21 @@
 
         <div class="Section mb50">
             <div class="widthAuto">
+                {{--<div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰학원</span> 특별관리반</div>--}}
+                <ul class="specialClass">
+                    @for($i=1; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['메인_특별관리반'.$i]) === true)
+                            <li>
+                                {!! banner_html(element('메인_특별관리반'.$i, $data['arr_main_banner'])) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section mb50">
+            <div class="widthAuto">
                 <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>
                 <ul class="caProfBox">
                     <li>
@@ -121,23 +136,7 @@
                 </ul>
             </div>
         </div>
-        <!-- 교수별 빠른강좌 //-->
-
-
-        <div class="Section mb50">
-            <div class="widthAuto">
-                <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰학원</span> 특별관리반</div>
-                <ul class="specialClass">
-                    @for($i=1; $i<=4; $i++)
-                        @if(isset($data['arr_main_banner']['메인_특별관리반'.$i]) === true)
-                            <li>
-                                {!! banner_html(element('메인_특별관리반'.$i, $data['arr_main_banner'])) !!}
-                            </li>
-                        @endif
-                    @endfor
-                </ul>
-            </div>
-        </div>
+        <!-- 교수별 빠른강좌 //-->        
 
         <div class="Section Section2 pb110">     
             <div class="widthAuto tx-center pt80 pb80">    

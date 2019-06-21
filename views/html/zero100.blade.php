@@ -23,10 +23,18 @@
         /************************************************************/
 
         .zero100_01 {background:url(https://static.willbes.net/public/images/promotion/2019/06/zero100_01_bg.jpg) no-repeat center top;}
-        .zrCts01 {position:relative; width:1120px; margin:0 auto;}
+        .zrCts01 {position:relative; width:1120px; margin:0 auto;}        
+        
         .zrCts01 span {position:absolute; }
-        .zrCts01 span.img01 {width:696px; top:650px; left:567px; z-index:2;}  
-        .zrCts01 span.img02 {width:702px; top:572px; left:56px; z-index:1;}
+        .zrCts01 span.img01 {width:696px; top:650px; left:567px; z-index:2;}        
+        
+        .zrCts01 span.img02 {width:702px; top:572px; left:56px; z-index:1; animation:ani02 1s ease-in; -webkit-animation:ani02 1s ease-in;}
+        @@keyframes ani02{
+		0%{left:567px; opacity: 0;}
+		90%{left:0; opacity: .9;}
+		100%{left:56px; opacity: 1;}
+        }
+
         .zrCts01 span.img03 {width:204px; top:1500px; left:335px; z-index:1; animation:ani03 1s infinite 1s;}
         @@keyframes ani03{
 		0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
@@ -40,7 +48,7 @@
         <div class="evtCtnsBox zero100_01">
             <div class="zrCts01">
                 <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_01.jpg" alt="공무원 시작은 윌비스 ‘제로백’과 함께"  />
-                <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_img01.png" alt="자동차"  /></span>
+                <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_img01.png" alt="zero100"  /></span>
                 <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_img02.png" alt="자동차"  /></span>
                 <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_img03.png" alt="조건없이"  /></span>
             </div>      

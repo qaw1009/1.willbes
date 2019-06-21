@@ -190,15 +190,13 @@ font-size:16px; padding:10px 0; line-height: 1.5;
                     </a>
                 </li>
                 <li>
-                    {{--<a id='tab3' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}"> --}}
-                    <a id='tab3' href="#" onclick="javascript:alert('준비중입니다.'); return false;">                      
+                    <a id='tab3' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=3#content_3') }}">
                         <span>2019 군무원 시험</span>
                         <div>문제복원 이벤트</div>
                     </a>
                 </li>     
                 <li>
-                    {{--<a id='tab4' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}">--}}
-                    <a id='tab4' href="#" onclick="javascript:alert('준비중입니다.'); return false;"> 
+                    <a id='tab4' href="{{ site_url('/pass/promotion/index/cate/' . $__cfg['CateCode'] . '/code/'.$data['PromotionCode'].'?tab=4#content_4') }}">
                         <span>공유해보아요!</span>
                         <div>시험후기 이벤트</div>
                     </a>

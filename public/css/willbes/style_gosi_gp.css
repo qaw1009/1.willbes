@@ -63,7 +63,7 @@
   width: 364px;
   z-index: 2;
 }
-.gp .VisualsubBox .bSlider {
+.gp .VisualsubBox .bSlider:nth-child(2) {
   margin-top:3px;
   width: 364px;
   height: 248px !important;
@@ -86,6 +86,24 @@
 .gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #000 !important;
+}
+
+.gp .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+
+.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 20px;
+    bottom: 10px;
+    text-align: left;
+}
+.gp .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gp .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #000 !important;
 }
 

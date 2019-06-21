@@ -160,6 +160,13 @@
             </div>
         </div>
 
+        <ul class="nav nav-tabs bar_tabs mt-30" role="tablist">
+            <li role="presentation"><a role="tab" href="#none" class="fn_load ajax_assignment" data-target-load="ajaxAssignment" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>과제수행</strong></a></li>
+            <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxFreeBoard" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>제안/토론</strong></a></li>
+            <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxMyInfo" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>나의 소개</strong></a></li>
+        </ul>
+        <div id="tab_content"></div>
+
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -193,13 +200,31 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <script type="text/javascript">
         $(document).ready(function() {
+            setTimeout(function() {
+                $(".ajax_assignment").trigger('click');
+            },10);
+
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/site/supporters/member/") }}' + getQueryString();
+            });
+
+            $('.fn_load').click(function() {
+                var _target_url = $(this).data('target-load');
+                var _url = '{{site_url('/site/supporters/member/')}}' + _target_url;
+                var _data = 'supporters_idx='+$(this).data('supporters-idx')+'&member_idx='+$(this).data('member-idx');
+
+                sendAjax(_url,
+                    _data,
+                    function(d){
+                        $("#tab_content").html(d).end()
+                    },
+                    function(req, status, err){
+                        showError(req, status);
+                    }, false, 'GET', 'html');
             });
         });
     </script>

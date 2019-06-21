@@ -1547,7 +1547,7 @@ class Player extends \app\controllers\FrontController
                 'wUnitIdx' => $row['wUnitIdx'],
                 'RealExpireTime' => $RealExpireTime,
                 'PlayType' => $PlayType,
-                'StudyType' => 'M'
+                'StudyType' => 'A'
             ]);
 
             if(empty($logidx) == true){

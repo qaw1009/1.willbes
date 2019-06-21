@@ -88,6 +88,7 @@
                 ajax: false,
                 paging: false,
                 searching: true,
+                dom: 'T<"clear"><<"pull-left mt-5 txt-caution-info"><"pull-right"B>><"clear">rtip',
                 buttons: [
                     { text: '<i class="fa fa-floppy-o mr-5"></i> 수동캐시저장', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 사이트 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
@@ -95,6 +96,9 @@
                     }}
                 ]
             });
+
+            // 주의 메시지 출력
+            $('div.txt-caution-info').html('<span class="red">* 사이트 정보 등록/수정 이후 `수동캐시저장` 버튼을 클릭해야만 운영(프런트) 사이트에 반영됩니다.</span>');
 
             // 수동캐시저장 버튼 클릭
             $('.btn-save-cache').on('click', function() {

@@ -77,6 +77,7 @@
 .job .Section3 .curriBox .curri li {list-style-type: disc; margin-left:15px; margin-bottom:10px}
 .job .Section3 .curriBox .curri li:last-child {margin-bottom:0}
 .job .Section3 span.txt01 {position:absolute; left:50%; top:325px; margin-left:350px; z-index:10;}
+.job .Section3 span.prof {position:absolute; left:28px; top:253px; border:2px solid #000; z-index:10;}
 .job .Section3 span.txt02 {position:absolute; left:50%; top:325px; margin-left:420px; z-index:10;}
 
 /* Main Container : Notice : noticeTabs */

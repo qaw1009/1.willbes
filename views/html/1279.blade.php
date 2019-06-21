@@ -198,7 +198,7 @@ font-size:16px; padding:10px 0; line-height: 1.5;
                 </li>     
                 <li>
                     {{--<a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1279/spidx/2?tab=1#content_4') }}">--}}
-                    <a id='tab4' href="#" onclick="javascript:alert('준비중입니다.'); return false;"> 
+                    <a id='tab4' href="#content_4"> 
                         <span>공유해보아요!</span>
                         <div>시험후기 이벤트</div>
                     </a>
@@ -244,7 +244,7 @@ font-size:16px; padding:10px 0; line-height: 1.5;
 
 
         <div id="content_4" class="tabCts">
-
+            @include('html.event_replyEpilogue')
         </div>
 
 

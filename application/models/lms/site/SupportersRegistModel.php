@@ -28,50 +28,6 @@ class SupportersRegistModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    /*public function listSupporters($is_board_count, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
-    {
-        if ($is_count === true) {
-            $column = 'count(*) AS numrows';
-            $order_by_offset_limit = '';
-        } else {
-            $column = '
-                a.SupportersIdx, a.SiteCode, a.Title, a.SupportersYear, a.SupportersNumber, a.StartDate, a.EndDate, a.CouponIssueCcd, a.IsUse, a.RegDatm, a.RegAdminIdx,
-                b.SiteName, c.wAdminName as RegAdminName,
-                fn_ccd_name(a.CouponIssueCcd) AS CouponIssueCcdName
-            ';
-            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-        }
-        $from = "
-            FROM {$this->_table['supporters']} AS a
-            INNER JOIN {$this->_table['lms_site']} as b ON a.SiteCode = b.SiteCode
-            INNER JOIN {$this->_table['wbs_sys_admin']} as c ON a.RegAdminIdx = c.wAdminIdx AND c.wIsStatus='Y'
-        ";
-
-        if ($is_board_count === true) {
-            $column .= ", IFNULL(d.cnt, 0) AS SupportersAssignmentTotalCount ";
-            $from .= "
-                LEFT JOIN (
-                    SELECT SupportersIdx, COUNT(*) AS cnt FROM {$this->_table['lms_board']} WHERE BmIdx = '{$this->_supporters_bm_idx}'
-                    AND IsStatus = 'Y' AND IsUse = 'Y'
-                    GROUP BY SupportersIdx                    
-                ) AS d ON a.SupportersIdx = d.SupportersIdx
-            ";
-        }
-
-        // 사이트 권한 추가
-        $arr_condition = array_merge_recursive($arr_condition,[
-            'IN' => [
-                'a.SiteCode' => get_auth_site_codes()
-            ]
-        ]);
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
-
-        // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
-    }*/
     public function listSupporters($is_board_count, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {

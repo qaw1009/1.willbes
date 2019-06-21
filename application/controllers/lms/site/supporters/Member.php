@@ -212,4 +212,49 @@ class Member extends BaseSupporters
             'srm_idx' => $srm_idx
         ]);
     }
+
+    public function ajaxAssignment()
+    {
+        $arr_hidden_data['supporters_idx'] = $this->_reqG('supporters_idx');
+        $arr_hidden_data['member_idx'] = $this->_reqG('member_idx');
+
+        $this->load->view('site/supporters/member/layer/list_assignment', [
+            'arr_hidden_data' => $arr_hidden_data
+        ]);
+    }
+
+    public function ajaxAssignmentDataTable()
+    {
+        /*$arr_condition = [
+            'EQ' => [
+                'Board.SiteCode' => $this->_reqP('search_site_code'),
+                'Board.SupportersIdx' => $this->_reqP('search_supporters_idx'),
+                'Board.BmIdx' => $this->_reqP('search_supporters_type')
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'M.MemId' => $this->_reqP('search_value'),
+                    'M.MemName' => $this->_reqP('search_value'),
+                ]
+            ]
+        ];*/
+        $count = 0;
+        $list = [];
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    public function ajaxFreeBoard()
+    {
+
+    }
+
+    public function ajaxMyInfo()
+    {
+
+    }
 }

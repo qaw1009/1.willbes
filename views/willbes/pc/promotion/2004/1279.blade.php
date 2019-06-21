@@ -261,7 +261,7 @@ font-size:16px; padding:10px 0; line-height: 1.5;
             <span id="event04"></span>
             {{--후기댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
+                @include('willbes.pc.promotion.show_comment_list_emoticon3_partial')
             @endif
         </div>
 

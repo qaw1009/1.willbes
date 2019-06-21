@@ -82,7 +82,12 @@
                 </div>
             </div>
             <div class="VisualsubBox">
-                <div class="VisualsubBoxTop"><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x128_01.jpg') }}" alt="배너명"></a></div>   
+                <div class="bSlider VisualsubBoxTop">                    
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2019/0604/banner_20190604154532.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x128_01.jpg') }}" alt="배너명"></a></div>
+                    </div>
+                </div>   
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
                         <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>

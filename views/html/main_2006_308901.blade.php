@@ -109,6 +109,7 @@
         <div class="widthAuto p_re">
             <img src="https://static.willbes.net/public/images/promotion/main/308901_03.jpg" alt="김종상 교수">
             <span class="txt01"><img src="https://static.willbes.net/public/images/promotion/main/308902_03_txt.gif" alt="언제나 누구나"></span>
+            <span class="prof"><img src="https://static.willbes.net/public/images/promotion/main/308901_03_t.gif" alt="김종상 교수"></span>
             <div class="curriBox NGR">
                 <h4>소방설비(산업)기사 『 전기 / 기계 』</h4>
                 <ul class="curritab">

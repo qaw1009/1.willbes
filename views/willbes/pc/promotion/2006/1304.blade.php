@@ -66,7 +66,7 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_02.jpg" alt="윌비스와 함께" usemap="#Map1299A"/>
 			<map name="Map1299A" id="Map1299A">
 				<area shape="rect" coords="843,775,1063,846" href="#none" alt="대표강의" />
-				<area shape="rect" coords="845,1308,1059,1375" href="#" alt="교재 구매하기"/>
+				<area shape="rect" coords="845,1308,1059,1375" href="#none" alt="교재 구매하기"/>
 			</map>
 
 		</div>

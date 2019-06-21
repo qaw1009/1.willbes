@@ -74,8 +74,7 @@
 		</div>
 		<div class="evtCtnsBox cert04" id="info">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_04.jpg" alt="이용안내" />			
-		</div>
-	
+		</div>			
 	</div>
     <!-- End Container -->
 

@@ -51,7 +51,7 @@ class Caching_site extends CI_Driver
             S.SiteCode, S.SiteName, S.SiteGroupCode, SG.SiteGroupName, S.SiteTypeCcd, S.SiteUrl, S.UseDomain, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds
                 , S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.HeaderInfo, S.FooterInfo, S.CommPcScript, S.CommMobileScript, S.CommAppScript
-                , (select CateCode from ' . $_table['category'] . ' where SiteCode = S.SiteCode and CateDepth = 1 and IsUse = "Y" and IsStatus = "Y" order by OrderNum asc limit 1) as DefCateCode
+                , (select CateCode from ' . $_table['category'] . ' where SiteCode = S.SiteCode and IsUse = "Y" and IsStatus = "Y" order by IsDefault desc, OrderNum asc limit 1) as DefCateCode
                 , DCC.CcdName as DeliveryCompName
                 , PGC.CcdEtc as PgDriver
                 , if(IsCampus = "Y", (

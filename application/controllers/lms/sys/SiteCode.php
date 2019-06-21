@@ -149,8 +149,8 @@ class SiteCode
             return $this->_CI->json_error($is_delivery_price['ret_msg'], $is_delivery_price['ret_status']);
         }
 
-        // 사이트 정보 캐쉬 저장
-        $this->_saveSiteCache(true);
+        // 사이트 정보 캐쉬 저장 (빈번한 캐쉬수정 방지, 수동캐시저장 버튼 활용)
+        //$this->_saveSiteCache(true);
 
         return $this->_CI->json_result(true, '저장 되었습니다.');
     }
@@ -172,8 +172,8 @@ class SiteCode
 
         $result = $this->_CI->siteModel->removeImg($this->_CI->_reqP('img_type'), $this->_CI->_reqP('idx'));
 
-        // 사이트 정보 캐쉬 저장
-        $this->_saveSiteCache($result);
+        // 사이트 정보 캐쉬 저장 (빈번한 캐쉬수정 방지, 수동캐시저장 버튼 활용)
+        //$this->_saveSiteCache($result);
 
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
     }

@@ -63,11 +63,12 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_01.jpg" alt="취업난 돌파" />
 		</div>
 		<div class="evtCtnsBox cert02">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_02.jpg" alt="윌비스와 함께" usemap="#Map1289A"/>
-			<map name="Map1289A" id="Map1289A">
-			  <area shape="rect" coords="844,776,1054,845" href="#none" alt="대표강의" />
-			  <area shape="rect" coords="846,1304,1053,1379" href="#none" alt="교재 구매하기" />
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_02.jpg" alt="윌비스와 함께" usemap="#Map1299A"/>
+			<map name="Map1299A" id="Map1299A">
+				<area shape="rect" coords="843,775,1063,846" href="#none" alt="대표강의" />
+				<area shape="rect" coords="845,1308,1059,1375" href="#" alt="교재 구매하기"/>
 			</map>
+
 		</div>
 		<div class="evtCtnsBox cert03">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_03.jpg" alt="수강신청" usemap="#Map1290A" />

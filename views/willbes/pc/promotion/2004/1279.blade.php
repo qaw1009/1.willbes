@@ -238,19 +238,31 @@ font-size:16px; padding:10px 0; line-height: 1.5;
         </div>
 
 
-        <div id="content_3" class="tabCts">
-        {{--댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif    
-        </div>
+        <div id="content_3" class="tabCts mb100">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1279_tab03_01.jpg" usemap="#Map1279_03" title="윌비스 군무원 문제복원 이벤트" border="0" />
+            <map name="Map1279_03" id="Map1279_03">
+                <area shape="rect" coords="302,476,817,544" href="#event03" alt="문제복원 이벤트 참여하기" />
+                <area shape="rect" coords="303,1617,456,1653" href="https://www.willbes.net/member/change/index/info" target="_blank" alt="회원정보 수정하기" />
+            </map>
+            <span id="event03"></span>
+            {{--기본댓글--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_normal_partial')
+            @endif             
+        </div>        
 
 
-        <div id="content_4" class="tabCts">
-        {{--후기댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
-        @endif
+        <div id="content_4" class="tabCts mb100">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1279_tab04_01.jpg" usemap="#Map1279_04" title="윌비스 군무원 시험후기 이벤트" border="0" />
+            <map name="Map1279_04" id="Map1279_04">
+                <area shape="rect" coords="304,727,816,795" href="#event04" alt="시험후기 작성하기" />
+                <area shape="rect" coords="306,1739,455,1772" href="https://www.willbes.net/member/change/index/info" alt="회원정보 수정하기" />
+            </map>
+            <span id="event04"></span>
+            {{--후기댓글--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
+            @endif
         </div>
 
 

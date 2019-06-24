@@ -157,8 +157,9 @@
     <div class="Section Bnr">
         <div class="widthAuto">
             <div class="willbes-Bnr">
-                <ul>
-                    <li><a href="none" target="_blank"><img src="{{ img_url('main/banner/bnr_180913.png') }}"></a></li>
+                <ul class="slider">
+                    <li><a href="none" target="_blank"><img src="https://www.willbes.net/public/uploads/willbes/banner/2019/0614/banner_20190614170948.png"></a></li>
+                    <li><a href="none" target="_blank"><img src="https://www.willbes.net/public/uploads/willbes/banner/2019/0614/banner_20190614170948.png"></a></li>
                 </ul>
             </div>
         </div>

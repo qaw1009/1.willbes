@@ -43,6 +43,8 @@
 }
 .sTxt {font-size:10px !important; color:#999}
 
+
+
 /* Main Container : Act2 */
 .main .Act2 .sliderDayList {
     background: #f6f6f6;
@@ -80,12 +82,6 @@
 .main .Act2 .line {
     background: #e2e2e2;
     text-indent: -9999px;
-}
-
-.main .willbes-Bnr .bx-wrapper .bx-pager {
-    width: auto;
-    right:5px;
-    top: 0;
 }
 
 /* Main Container : Act2 : cSlider : sliderDayList  */

@@ -184,7 +184,7 @@
                                                         </colgroup>
                                                         <tbody>
                                                         <tr>
-                                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);"></td>
+                                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);" checked></td>
                                                             <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
                                                             <td class="w-data tx-left pl25">
                                                                 <dl class="w-info">
@@ -232,7 +232,6 @@
                             </tbody>
                         </table>
 
-
                         <div class="TopBtn">
                             <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                         </div>
@@ -249,12 +248,16 @@
                                 <col style="width: 865px;">
                             </colgroup>
                             <tbody>
-                            @foreach($data_sublist as $idx => $sub_row /*선택 과목*/)
-                                @if($sub_row['IsEssential'] === 'N')
+                            @if(empty($data_sublist) === false)
+                                @foreach($data_sublist as $idx => $sub_row /*선택 과목*/)
+                                    @if($sub_row['IsEssential'] === 'N')
+                                        @php
+                                            $subGroup_cho_array[] = $sub_row['SubGroupName'];
+                                        @endphp
                                     <tr>
-                                        <td class="w-list tx-center bg-light-gray row_td2">{{$sub_row['SubjectName']}}<div class="{{$sub_row['SubGroupName']}} d_none">{{$sub_row['SubGroupName']}}</td>
+                                        <td class="w-list tx-center bg-light-gray row_td2">{{$sub_row['SubjectName']}}<div class="{{$sub_row['SubGroupName']}} d_none">{{$sub_row['SubGroupName']}}</div></td>
                                         <td class="bdb-dark-gray">
-                                            <div class="willbes-Lec-Table">
+                                            <div id="lec_table_{{ $sub_row['ProdCode'] }}" class="willbes-Lec-Table">
                                                 <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
                                                     <colgroup>
                                                         <col style="width: 50px;">
@@ -263,37 +266,37 @@
                                                         <col style="width: 200px;">
                                                     </colgroup>
                                                     <tbody>
-                                                    <tr>
-                                                        <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup"></td>
-                                                        <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
-                                                        <td class="w-data tx-left pl25">
-                                                            <dl class="w-info">
-                                                                <dt class="w-name">{{$sub_row['ProfNickName']}}</dt>
-                                                                <dt><span class="row-line">|</span></dt>
-                                                                <dt class="w-tit">{{ $sub_row['ProdName'] }}</dt>
-                                                            </dl>
-                                                            <dl class="w-info">
-                                                                <dt class="mr20">
-                                                                    <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">
-                                                                        <strong>강좌상세정보</strong>
-                                                                    </a>
-                                                                </dt>
-                                                                <dt>수강형태 : <span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span></dt>
-                                                                <dt class="w-notice NSK ml15">
-                                                                    <span class="acadInfo n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{$sub_row['AcceptStatusCcdName']}}</span>
-                                                                </dt>
-                                                            </dl>
-                                                            @php
-                                                                $id = 'sel_'.$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode'];
-                                                                $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
-                                                                lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content']);
-                                                            @endphp
-                                                        </td>
-                                                        <td class="w-schedule">
-                                                            <span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}}</span><br/>
-                                                            {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)
-                                                        </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup choSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.choSubGroup-{{$sub_row['SubGroupName']}}', this.value);" ></td>
+                                                            <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
+                                                            <td class="w-data tx-left pl25">
+                                                                <dl class="w-info">
+                                                                    <dt class="w-name">{{$sub_row['ProfNickName']}}</dt>
+                                                                    <dt><span class="row-line">|</span></dt>
+                                                                    <dt class="w-tit">{{ $sub_row['ProdName'] }}</dt>
+                                                                </dl>
+                                                                <dl class="w-info">
+                                                                    <dt class="mr20">
+                                                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">
+                                                                            <strong>강좌상세정보</strong>
+                                                                        </a>
+                                                                    </dt>
+                                                                    <dt>수강형태 : <span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span></dt>
+                                                                    <dt class="w-notice NSK ml15">
+                                                                        <span class="acadInfo n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{$sub_row['AcceptStatusCcdName']}}</span>
+                                                                    </dt>
+                                                                </dl>
+                                                                @php
+                                                                    $id = 'sel_'.$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode'];
+                                                                    $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
+                                                                    lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content']);
+                                                                @endphp
+                                                            </td>
+                                                            <td class="w-schedule">
+                                                                <span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}}</span><br/>
+                                                                {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)
+                                                            </td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                                 <!-- lecTable -->
@@ -301,9 +304,14 @@
                                             <!-- willbes-Lec-Table -->
                                         </td>
                                     </tr>
-                                @endif
-                            @endforeach
-
+                                    @endif
+                                @endforeach
+                            @endif
+                            @php
+                                if(empty($subGroup_cho_array) === false) {
+                                    $subGroup_cho_array = array_values(array_unique($subGroup_cho_array));
+                                }
+                            @endphp
                             </tbody>
                         </table>
                         <!-- pos2 -->
@@ -386,14 +394,19 @@
                 var groupArray = {!!json_encode($subGroup_array)!!};
                 for(i=0; i<groupArray.length;i++) {
                     $checked = "";
+                    $ess_checked_count = 0;
                     $(".lec-essential").find('.essSubGroup-'+groupArray[i]).each(function (){
                         if ($(this).is(':checked')) {
-                            $checked = "Y"
+                            $checked = "Y";
+                            $ess_checked_count += 1;
                         }
                     });
-
                     if($checked === "") {
                         alert("필수과목은 과목별 1개씩 선택하셔야 합니다.");
+                        return;
+                    }
+                    if($ess_checked_count > 1) {
+                        alert("필수과목은 과목별 1개씩 선택하셔야 합니다. 현재 2개 이상의 과목이 선택되었습니다.");
                         return;
                     }
                 }
@@ -424,6 +437,20 @@
             setRowspan('row_td');
             setRowspan('row_td2');
 
+            {{--같은 그룹내 2개이상의 강의 일 경우 체크박스 해제--}}
+            var groupArray = {!!json_encode($subGroup_array)!!};
+            for(i=0; i<groupArray.length;i++) {
+                $checked_group = "";
+                $ess_checked_count = 0;
+                $(".lec-essential").find('.essSubGroup-'+groupArray[i]).each(function (){
+                    if ($(this).is(':checked')) {
+                        $ess_checked_count += 1;
+                        if($ess_checked_count > 1) {
+                            $(".lec-essential").find('.essSubGroup-'+groupArray[i]).prop("checked", false);
+                        }
+                    }
+                });
+            }
         });
     </script>
     <!-- End Container -->

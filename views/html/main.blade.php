@@ -158,8 +158,8 @@
         <div class="widthAuto">
             <div class="bar-banner">
                 <div class="slider">
-                <div><a href="none" target="_blank"><img src="https://www.willbes.net/public/uploads/willbes/banner/2019/0614/banner_20190614170948.png"></a></div>
-                <div><a href="none" target="_blank"><img src="https://www.willbes.net/public/uploads/willbes/banner/2019/0614/banner_20190614170948.png"></a></div>
+                    <div><a href="none" target="_blank"><img src="https://www.willbes.net/public/uploads/willbes/banner/2019/0614/banner_20190614170948.png"></a></div>
+                    <div><a href="none" target="_blank"><img src="https://www.willbes.net/public/uploads/willbes/banner/2019/0614/banner_20190614170948.png"></a></div>
                 </div>
             </div>
         </div>

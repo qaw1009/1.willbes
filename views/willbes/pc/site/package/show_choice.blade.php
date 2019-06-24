@@ -187,6 +187,7 @@
                         <tbody>
                     @php
                         $subGroup_array = [];
+                        $subGroup_cho_array = [];
                     @endphp
 
                     @if(empty($data_sublist) === false)
@@ -208,7 +209,7 @@
                                         </colgroup>
                                         <tbody>
                                         <tr>
-                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);"></td>
+                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);" checked></td>
                                             <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
@@ -267,7 +268,6 @@
                                         <tbody>
                                         <tr>
                                             <td>
-
                                                 @if(empty($sub_row['ProdBookData']) === false)
                                                     @foreach($sub_row['ProdBookData'] as $book_idx => $book_row)
                                                         <div class="w-sub">
@@ -329,10 +329,14 @@
                             <col style="width: 865px;">
                         </colgroup>
                         <tbody>
-                    @foreach($data_sublist as $idx => $sub_row /*선택 과목*/)
-                        @if($sub_row['IsEssential'] === 'N')
+                    @if(empty($data_sublist) === false)
+                        @foreach($data_sublist as $idx => $sub_row /*선택 과목*/)
+                            @if($sub_row['IsEssential'] === 'N')
+                                @php
+                                    $subGroup_cho_array[] = $sub_row['SubGroupName'];
+                                @endphp
                         <tr>
-                            <td class="w-list tx-center bg-light-gray row_td2" >{{$sub_row['SubjectName']}}<div class="{{$sub_row['SubGroupName']}} d_none">{{$sub_row['SubGroupName']}}</td>
+                            <td class="w-list tx-center bg-light-gray row_td2" >{{$sub_row['SubjectName']}}<div class="{{$sub_row['SubGroupName']}} d_none">{{$sub_row['SubGroupName']}}</div></td>
                             <td class="bdb-dark-gray">
                                 <div id="lec_table_{{ $sub_row['ProdCode'] }}" class="willbes-Lec-Table">
                                     <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -344,7 +348,7 @@
                                         </colgroup>
                                         <tbody>
                                         <tr>
-                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup"></td>
+                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup choSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.choSubGroup-{{$sub_row['SubGroupName']}}', this.value);" ></td>
                                             <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
@@ -425,7 +429,6 @@
                                                         <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
                                                     </div>
                                                 @endif
-
                                             </td>
                                         </tr>
                                         </tbody>
@@ -435,8 +438,14 @@
                                 <!-- willbes-Lec-Table -->
                             </td>
                         </tr>
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
+                    @endif
+                    @php
+                        if(empty($subGroup_cho_array) === false) {
+                            $subGroup_cho_array = array_values(array_unique($subGroup_cho_array));
+                        }
+                    @endphp
                         </tbody>
                     </table>
                     <!-- pos2 -->
@@ -542,12 +551,27 @@
             setRowspan('row_td');
             setRowspan('row_td2');
 
+            {{--필수과목 같은 그룹내 2개이상의 강의 일 경우 체크박스 해제--}}
+            var groupArray = {!!json_encode($subGroup_array)!!};
+            for(i=0; i<groupArray.length;i++) {
+                $checked_group = "";
+                $ess_checked_count = 0;
+                $(".lec-essential").find('.essSubGroup-'+groupArray[i]).each(function (){
+                    if ($(this).is(':checked')) {
+                        $ess_checked_count += 1;
+                        if($ess_checked_count > 1) {
+                            $(".lec-essential").find('.essSubGroup-'+groupArray[i]).prop("checked", false);
+                        }
+                    }
+                });
+            }
+
             price_cal();            //가격 계산
 
-            //
-
-
+            /*
             $(".checkbox").change(function() {
+
+                alert("aaaa");
                 if(this.checked) {
                     //선택강좌
                     $check_cnt = 0;
@@ -563,10 +587,7 @@
                     }
                 }
             });
-
-
+            */
         });
-
-
     </script>
 @stop

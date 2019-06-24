@@ -171,7 +171,7 @@
         <div class="Section Bnr">
             <div class="widthAuto">
                 <div class="willbes-Bnr">
-                    <ul>
+                    <ul class="slider">
                         <li>{!! banner('메인_띠배너', '', $__cfg['SiteCode'], '0') !!}</li>
                     </ul>
                 </div>

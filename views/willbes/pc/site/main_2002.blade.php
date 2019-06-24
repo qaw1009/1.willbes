@@ -159,9 +159,9 @@
                         <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
-                    <li class="active">
+                    <li>
                         <div class="curriculumBox">
-                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
+                           {{--<span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>--}}
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
@@ -187,10 +187,12 @@
                         <a href="#none" onclick="fnPlayerSample('131811', '1014607', 'HD');">OT보기 &gt;</a>
                     </li>
                 </ul>
+              
                 <div class="curriculumTxt">
-                    <span class="cop-color">모든 강의</span>를 SUPER PASS 하나로 <span class="cop-color"> 수강</span>하실 수 있습니다.
-                    <span class="btn"><a href="{{ site_url('/pass/promotion/index/cate/3010/code/1050') }}" target="_blank">SUPER PASS 구매하기</a></span>
+                    {{--<span class="cop-color">모든 강의</span>를 SUPER PASS 하나로 <span class="cop-color"> 수강</span>하실 수 있습니다.--}}
+                    {{--<span class="btn"><a href="{{ site_url('/pass/promotion/index/cate/3010/code/1050') }}" target="_blank">SUPER PASS 구매하기</a></span>--}}
                 </div>
+                
             </div>
             <!-- CurriStepBox //--> 
             <div class="widthAuto tx-center pt80">    

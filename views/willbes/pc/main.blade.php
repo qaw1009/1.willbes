@@ -171,7 +171,7 @@
         <div class="Section">
             <div class="widthAuto">
                 <div class="bar-banner">
-                    <div class="slider">
+                    <div>
                         {!! banner('메인_띠배너', '', $__cfg['SiteCode'], '0') !!}
                     </div>
                 </div>

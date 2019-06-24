@@ -172,7 +172,7 @@
             <div class="widthAuto">
                 <div class="bar-banner">
                     <div class="slider">
-                        {!! banner('메인_띠배너', '', $__cfg['SiteCode'], '0') !!}
+                        {!! banner('메인_띠배너', '', $__cfg['SiteCode']) !!}
                     </div>
                 </div>
             </div>

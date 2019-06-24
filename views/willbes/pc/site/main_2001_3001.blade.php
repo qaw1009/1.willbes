@@ -184,9 +184,9 @@
                         <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
-                    <li class="active">                           
+                    <li>                           
                         <div class="curriculumBox">
-                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>     
+                            {{--<span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>--}}    
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">

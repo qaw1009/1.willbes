@@ -32,7 +32,7 @@ class SearchProfessorSubject extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'PF.SiteCode' => $this->_reqP('site_code'),
-                'PSC.CateCode' => substr($this->_reqP('cate_code'), 0, 4),
+                'PSC.CateCode' => $this->_reqP('cate_code'),
             ],
             'ORG' => [
                 'LKB' => [

@@ -362,9 +362,3 @@
     top: 8px;
     padding-top: 0;
 }
-.main .bar-banner {margin-bottom:40px;}
-.main .bar-banner .bx-wrapper .bx-pager {
-    width: auto;
-    right:10px;
-    top: -5px;
-}

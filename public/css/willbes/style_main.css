@@ -82,6 +82,12 @@
     text-indent: -9999px;
 }
 
+.main .willbes-Bnr .bx-wrapper .bx-pager {
+    width: auto;
+    right:5px;
+    top: 0;
+}
+
 /* Main Container : Act2 : cSlider : sliderDayList  */
 .cSlider.sliderDayList .bx-wrapper .bx-prev {
     background: url("../../img/willbes/main/main_btn_prev.png") no-repeat 0 0;

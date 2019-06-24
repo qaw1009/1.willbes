@@ -168,12 +168,12 @@
             </div>
         </div>
 
-        <div class="Section Bnr">
+        <div class="Section">
             <div class="widthAuto">
-                <div class="willbes-Bnr">
-                    <ul class="slider">
-                        <li>{!! banner('메인_띠배너', '', $__cfg['SiteCode'], '0') !!}</li>
-                    </ul>
+                <div class="bar-banner">
+                    <div class="slider">
+                        <div>{!! banner('메인_띠배너', '', $__cfg['SiteCode'], '0') !!}</div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -28,9 +28,9 @@
 		label.check1 {top:370px; left:910px;}
 		label.check2 {top:500px; left:930px;}
 		label.check3 {top:480px; left:173px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
-		label.check4 {top:1150px; left:920px;}
+		label.check4 {top:1010px; left:680px;}
 		label.check5 {top:1290px; left:930px;}
-		label.check6 {top:1270px; left:153px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		label.check6 {top:1120px; left:153px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
 		label.check7 {top:370px; left:425px;}
 		input + label {
 			position:absolute; z-index:1; width:30px; height:30px; outline:5px solid #15365d; background:#fff
@@ -70,12 +70,10 @@
 		<div class="evtCtnsBox cert03">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_03.jpg" alt="수강신청" usemap="#Map1292A" />
 			<map name="Map1292A" id="Map1292A">
-			  {{--<area shape="rect" coords="538,472,616,505" href="#none" alt="상세보기" id="stoggleBtn" />--}}
 			  <area shape="rect" coords="715,471,883,504" href="#info" alt="이용안내 확인하기"/>
 			  <area shape="rect" coords="297,563,818,653" href="#none" alt="소방설비 신청하기" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
-			  <area shape="rect" coords="663,1107,749,1143" href="#none" alt="상세보기" id="stoggleBtn2"/>
-			  <area shape="rect" coords="741,1261,899,1297" href="#info" alt="이용안내 확인하기" />
-			  <area shape="rect" coords="262,1392,859,1483" href="#none" alt="소방설비 더블패스 신청하기" onclick="goCartNDirectPay('double_pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
+			  <area shape="rect" coords="740,1107,898,1143" href="#info" alt="이용안내 확인하기" />
+			  <area shape="rect" coords="263,1240,860,1331" href="#none" alt="소방설비 더블패스 신청하기" onclick="goCartNDirectPay('double_pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
 			</map>
 			<div class="tipPopup" id="textZone1">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobC_D_popup.png" alt="전기기사 상세보기 팝업">

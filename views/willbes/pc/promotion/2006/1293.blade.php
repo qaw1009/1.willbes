@@ -21,13 +21,13 @@
 		/************************************************************/  
 
 		.cert_top{background:url(https://static.willbes.net/public/images/promotion/2019/06/190619_certD_top_bg.jpg) no-repeat center top;}	
-		.cert02{background:#f5f5f5;}
-
+		.cert02{background:#f5f5f5; position:relative}
+		.cert02 ul {position:absolute; width:458px; height:278px; top:612px; left:50%; margin-left:-524px; z-index:10;}
+		.cert02 ul li {display:inline; float:left;}
 		.cert03 {position:relative; width:1120px; margin:0 auto} 
-		label.check1 {top:370px; left:920px;}
-		label.check2 {top:500px; left:930px;}
-		label.check3 {top:625px; left:173px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}	
-		label.check4 {top:370px; left:425px;}	
+		label.check1 {top:370px; left:420px;}
+		label.check2 {top:370px; left:905px;}
+		label.check3 {top:480px; left:175px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}	
 		input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
 		}
@@ -56,6 +56,12 @@
 			<map name="Map1293A" id="Map1293A">
 				<area shape="rect" coords="841,1439,1059,1507" href="#none" alt="교재 구매하기"/>
 			</map>
+			<ul>
+				<li><img src="https://static.willbes.net/public/images/promotion/2019/06/308901_03_t1.gif" alt="김종상 교수" /></li>
+				<li><img src="https://static.willbes.net/public/images/promotion/2019/06/308901_03_t2.gif" alt="이세령 교수" /></li>
+				<li><img src="https://static.willbes.net/public/images/promotion/2019/06/308901_03_t3.gif" alt="이아람 교수" /></li>
+				<li><img src="https://static.willbes.net/public/images/promotion/2019/06/308901_03_t4.gif" alt="한경준 교수" /></li>
+			</ul>
 		</div>
 		<div class="evtCtnsBox cert03">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_03.jpg" alt="수강신청" usemap="#Map1293B"/>
@@ -67,9 +73,8 @@
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 			</div>
 			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
-			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
-			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>   
-			<input name="ischk4" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label>         
+			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>  
+			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk4" class="check3"></label>         
 		</div>
 		<div class="evtCtnsBox cert04" id="info">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_04.jpg" alt="이용안내" />			

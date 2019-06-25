@@ -27,16 +27,15 @@
 		.cert04 {position:relative; width:1120px; margin:0 auto; background:#fff;} 
 		.cert05 {background:#f5f5f5;}
 		.cert06 {position:relative; width:1120px; margin:0 auto} 
-		label.check1 {top:355px; left:910px;}
-		label.check2 {top:480px; left:930px;}
-		label.check3 {top:610px; left:180px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
-		label.check4 {top:1145px; left:675px;}
-	
-		label.check6 {top:1400px; left:205px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
-		label.check7 {top:355px; left:425px;}
-		label.check8 {top:385px; left:690px;}
-		label.check9 {top:525px; left:910px;}
-		label.check10 {top:644px; left:175px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
+		label.check1 {top:350px; left:420px;}
+		label.check2 {top:350px; left:910px;}
+		label.check3 {top:460px; left:180px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
+		label.check4 {top:990px; left:670px;}
+		label.check5 {top:1250px; left:205px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
+		label.check8 {top:385px; left:680px;}
+		label.check9 {top:530px; left:910px;}
+		label.check10 {top:645px; left:170px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		
 		input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
 		}
@@ -95,20 +94,19 @@
 			<div class="evtCtnsBox cert02">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certA.jpg" alt="수강신청" usemap="#Map1294A" />
 				<map name="Map1294A" id="Map1294A">
-				  	<area shape="rect" coords="719,605,884,640" href="#info" alt="이용안내 확인하기" />
-					<area shape="rect" coords="300,700,819,785" href="#none" alt="전기기사 패스 신청하기" />
-					<area shape="rect" coords="711,1395,873,1429" href="#info" alt="이용안내 확인하기" />
-					<area shape="rect" coords="302,1527,826,1619" href="#none" alt="소방설비 패스 신청하기" />
+				  	<area shape="rect" coords="719,454,884,489" href="#info" alt="이용안내 확인하기" />
+					<area shape="rect" coords="303,547,822,632" href="#none" alt="전기기사 패스 신청하기" />
+					<area shape="rect" coords="711,1246,873,1280" href="#info" alt="이용안내 확인하기" />
+					<area shape="rect" coords="308,1365,832,1457" href="#none" alt="소방설비 패스 신청하기" />
 				</map>
 				<div class="tipPopup"id="textZone">
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
 				<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
 				<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
-				<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label> 
-				<input name="ischk4" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label>
-				<input name="ischk6" type="checkbox" value="Y" id="ischk6"><label for="ischk6" class="check6"></label> 
-				<input name="ischk7" type="checkbox" value="Y" id="ischk7"><label for="ischk7" class="check7"></label> 
+				<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
+				<input name="ischk4" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label> 
+				<input name="ischk5" type="checkbox" value="Y" id="ischk5"><label for="ischk5" class="check5"></label> 
 			</div>
 			<div class="evtCtnsBox" id="info">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_03.jpg" alt="윌비스 수강 이용안내" />

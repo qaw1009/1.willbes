@@ -52,17 +52,16 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_01.jpg" alt="자격증 취득자" />
 		</div>
 		<div class="evtCtnsBox cert02">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_02.jpg" alt="윌비스와 함께" usemap="#Map1292A" />
-			<map name="Map1292A" id="Map1292A">
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_02.jpg" alt="윌비스와 함께" usemap="#Map1293A" />
+			<map name="Map1293A" id="Map1293A">
 				<area shape="rect" coords="841,1439,1059,1507" href="#none" alt="교재 구매하기"/>
 			</map>
 		</div>
 		<div class="evtCtnsBox cert03">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_03.jpg" alt="수강신청" usemap="#Map1291A"/>
-			<map name="Map1291A" id="Map1291A">
-				<area shape="rect" coords="668,472,746,501" href="#none" alt="상세보기" id="stoggleBtn"  />
-			    <area shape="rect" coords="722,621,882,655" href="#info" alt="이용안내 확인하기" />
-			    <area shape="rect" coords="271,715,854,801" href="#none" alt="전기+소방 합격패스 신청하기" />
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_03.jpg" alt="수강신청" usemap="#Map1293B"/>
+			<map name="Map1293B" id="Map1293B">
+			  	<area shape="rect" coords="721,470,881,504" href="#info" alt="이용안내 확인하기" />
+			    <area shape="rect" coords="265,558,855,662" href="#none" alt="소방분야 논스톱 패스 신청하기" />
 			</map>
 			<div class="tipPopup"id="textZone">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">

@@ -45,6 +45,12 @@
 		
 		.skybanner{position: fixed; top: 280px;right: 2px;z-index: 1;}	
 		.tipPopup{position: absolute;left: 49%;top: 100px;z-index: 1;display:none;}
+
+		.ProfBox{width:1120px;margin:0 auto;}
+		.ProfBox .PBtab li{display:inline;float:left;width:50%;}		
+		.ProfBox .PBtab li a.active{color:#5756a2;border:1px solid #5756a2;border-bottom:1px solid #fff;font-weight:600;}
+		.ProfBox .PBtab li a{display:block;text-align:center;font-size:22px;height:54px;line-height:54px;color:##b9b9b9;border:1px solid #b9b9b9;
+							border-bottom:1px solid #5756a2;}		
         /************************************************************/      
     </style> 
 	<div class="evtContent">
@@ -54,8 +60,21 @@
 		<div class="evtCtnsBox cert_top">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top.jpg" alt="전기/소방 윌비스 자격증" />
 		</div>
+		<div class="evtCtnsBox ProfBox">
+			<ul class="PBtab NGR">
+				<li>
+					<a href="#tab01" class="active">전기(산업)기사 PASS / 전기기능사 PASS</a>	
+				</li>
+				<li>
+					<a href="#tab02" class>전기+소방분야 All PASS</a>	
+				</li>
+			</ul>
+		</div>
 		<div class="evtCtnsBox">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_01.jpg" alt="취업난 돌파" />
+		</div>
+		<div class="evtCtnsBox cert_01">
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_01.jpg" alt="취업난 돌파" />
 		</div>
 		<div class="evtCtnsBox cert02">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_02.jpg" alt="윌비스와 함께" usemap="#Map1293A"/>
@@ -94,6 +113,19 @@
         $("#stoggleBtn").click(function(){
             $("#textZone").slideToggle("fast");
         });        
+
+		$(this).on('click', 'a', function (e) {
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault();
+        });		
     });
 	</script>
 @stop

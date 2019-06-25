@@ -19,9 +19,14 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 		/************************************************************/   
-		.cert_top {background:url(https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top_bg.jpg) no-repeat center top;}	
-		.cert02 {background:#f5f5f5;}
-		.cert03 {position:relative; width:1120px; margin:0 auto} 
+		.cert_top {background:url(https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top_bg.jpg) no-repeat center top;}
+		.cert00 {padding-top:85px}	
+		.cert01 {background:#f5f5f5;}
+		.cert02 {position:relative; width:1120px; margin:0 auto} 
+		.cert03 {background:#fff;}
+		.cert04 {position:relative; width:1120px; margin:0 auto; background:#fff;} 
+		.cert05 {background:#f5f5f5;}
+		.cert06 {position:relative; width:1120px; margin:0 auto} 
 		label.check1 {top:355px; left:910px;}
 		label.check2 {top:480px; left:930px;}
 		label.check3 {top:610px; left:180px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
@@ -29,9 +34,9 @@
 	
 		label.check6 {top:1400px; left:205px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
 		label.check7 {top:355px; left:425px;}
-		label.check8 {top:7645px; left:1075px;}
-		label.check9 {top:7777px; left:1315px;}
-		label.check10 {top:7905px; left:535px;}
+		label.check8 {top:385px; left:690px;}
+		label.check9 {top:525px; left:910px;}
+		label.check10 {top:644px; left:175px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
 		input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
 		}
@@ -52,9 +57,10 @@
 
 		.ProfBox{width:1120px;margin:0 auto;}
 		.ProfBox .PBtab li{display:inline;float:left;width:50%;}		
-		.ProfBox .PBtab li a.active{color:#5756a2;border:1px solid #5756a2;border-bottom:1px solid #fff;font-weight:600;}
 		.ProfBox .PBtab li a{display:block;text-align:center;font-size:22px;height:54px;line-height:54px;color:##b9b9b9;border:1px solid #b9b9b9;
-							border-bottom:1px solid #5756a2;}		
+							border-bottom:1px solid #5756a2;}	
+		.ProfBox .PBtab li a.active{color:#5756a2;border:1px solid #5756a2;border-bottom:1px solid #fff;font-weight:600;}	
+		.ProfBox .PBtab:after {content:""; display:block; clear:both}
         /************************************************************/      
     </style> 
 	<div class="evtContent">
@@ -77,16 +83,16 @@
 		</div>
 
 		<div id="tab01">
-			<div class="evtCtnsBox">
-				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_01.jpg" alt="취업난 돌파" style="margin-top:65px"/>
+			<div class="evtCtnsBox cert00">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_01.jpg" alt="취업난 돌파"/>
 			</div>
-			<div class="evtCtnsBox cert02">
+			<div class="evtCtnsBox cert01">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_02.jpg" alt="윌비스와 함께" usemap="#Map1293A"/>
 				<map name="Map1293A" id="Map1293A">
 					<area shape="rect" coords="843,1443,1056,1506" href="#none" alt="교재 구매하기" />
 				</map>
 			</div>
-			<div class="evtCtnsBox cert03">
+			<div class="evtCtnsBox cert02">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certA.jpg" alt="수강신청" usemap="#Map1294A" />
 				<map name="Map1294A" id="Map1294A">
 				  	<area shape="rect" coords="719,605,884,640" href="#info" alt="이용안내 확인하기" />
@@ -110,31 +116,30 @@
 		</div>
 
 		<div id="tab02">
-			<div class="evtCtnsBox cert_01">
+			<div class="evtCtnsBox cert03">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_01.jpg" alt="취업난 돌파" />
 			</div>
-			<div class="evtCtnsBox cert02">
+			<div class="evtCtnsBox cert04">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_02.jpg" alt="자격증 수강" />
 			</div>
-			<div class="evtCtnsBox cert03">
+			<div class="evtCtnsBox cert05">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_03.jpg" alt="윌비스와 함께" usemap="#Map1288A"/>
 				<map name="Map1288A" id="Map1288A">
 					<area shape="rect" coords="843,1653,1060,1717" href="#none"alt="교재 구매하기" />
 				</map>
 			</div>
-			<div class="evtCtnsBox cert04">
+			<div class="evtCtnsBox cert06">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_04.jpg" alt="수강신청" usemap="#Map1287A"/>
 				<map name="Map1287A" id="Map1287A">
-					<area shape="rect" coords="666,488,746,520" href="#none" alt="상세보기" id="stoggleBtn" />
 					<area shape="rect" coords="742,638,901,673" href="#info" alt="이용안내 확인하기" />
 					<area shape="rect" coords="271,771,857,858" href="#none" alt="소방분야 패스 신청하기" />
 				</map>
 				<div class="tipPopup"id="textZone">
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
-				<input name="ischk8" type="checkbox" value="Y" id="ischk1"><label for="ischk8" class="check8"></label>
-				<input name="ischk9" type="checkbox" value="Y" id="ischk2"><label for="ischk9" class="check9"></label>
-				<input name="ischk10" type="checkbox" value="Y" id="ischk3"><label for="ischk10" class="check10"></label>            
+				<input name="ischk8" type="checkbox" value="Y" id="ischk8"><label for="ischk8" class="check8"></label>
+				<input name="ischk9" type="checkbox" value="Y" id="ischk9"><label for="ischk9" class="check9"></label>
+				<input name="ischk10" type="checkbox" value="Y" id="ischk10"><label for="ischk10" class="check10"></label>            
 			</div>
 			<div class="evtCtnsBox" id="info">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_05.jpg" alt="이용안내" />

@@ -27,10 +27,10 @@
 		.cert03 {position:relative; width:1120px; margin:0 auto} 
 		label.check1 {top:370px; left:910px;}
 		label.check2 {top:500px; left:930px;}
-		label.check3 {top:625px; left:173px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
-		label.check4 {top:1160px; left:675px;}
+		label.check3 {top:480px; left:173px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		label.check4 {top:1150px; left:920px;}
 		label.check5 {top:1290px; left:930px;}
-		label.check6 {top:1415px; left:153px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		label.check6 {top:1270px; left:153px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
 		label.check7 {top:370px; left:425px;}
 		input + label {
 			position:absolute; z-index:1; width:30px; height:30px; outline:5px solid #15365d; background:#fff
@@ -62,21 +62,20 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_01.jpg" alt="취업난 돌파" />
 		</div>
 		<div class="evtCtnsBox cert02">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_02.jpg" alt="윌비스와 함께" usemap="#Map1299A"/>
-			<map name="Map1299A" id="Map1299A">
-				<area shape="rect" coords="840,853,1060,924" href="#none" alt="대표강의" />
-				<area shape="rect" coords="840,1387,1054,1454" href="#none" alt="교재 구매하기"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_02.jpg" alt="윌비스와 함께" usemap="#Map1292B"/>
+			<map name="Map1292B" id="Map1292B">
+			  <area shape="rect" coords="840,1387,1054,1454" href="https://job.willbes.net/book/index/cate/308902" target="_blank" alt="교재 구매하기"/>
 			</map>
 		</div>
 		<div class="evtCtnsBox cert03">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_03.jpg" alt="수강신청" usemap="#Map1290A" />
-			<map name="Map1290A" id="Map1290A">
-			  <area shape="rect" coords="665,471,743,504" href="#none" alt="상세보기" id="stoggleBtn" />
-			  <area shape="rect" coords="720,622,888,655" href="#info" alt="이용안내 확인하기"/>
-			  <area shape="rect" coords="301,715,822,805" href="#none" alt="소방설비 신청하기" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
-			  <area shape="rect" coords="662,1258,748,1294" href="#none" alt="상세보기" id="stoggleBtn2"/>
-			  <area shape="rect" coords="743,1410,901,1446" href="#info" alt="이용안내 확인하기" />
-			  <area shape="rect" coords="266,1545,863,1636" href="#none" alt="소방설비 더블패스 신청하기" onclick="goCartNDirectPay('double_pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
+			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_03.jpg" alt="수강신청" usemap="#Map1292A" />
+			<map name="Map1292A" id="Map1292A">
+			  {{--<area shape="rect" coords="538,472,616,505" href="#none" alt="상세보기" id="stoggleBtn" />--}}
+			  <area shape="rect" coords="715,471,883,504" href="#info" alt="이용안내 확인하기"/>
+			  <area shape="rect" coords="297,563,818,653" href="#none" alt="소방설비 신청하기" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
+			  <area shape="rect" coords="663,1107,749,1143" href="#none" alt="상세보기" id="stoggleBtn2"/>
+			  <area shape="rect" coords="741,1261,899,1297" href="#info" alt="이용안내 확인하기" />
+			  <area shape="rect" coords="262,1392,859,1483" href="#none" alt="소방설비 더블패스 신청하기" onclick="goCartNDirectPay('double_pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
 			</map>
 			<div class="tipPopup" id="textZone1">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobC_D_popup.png" alt="전기기사 상세보기 팝업">

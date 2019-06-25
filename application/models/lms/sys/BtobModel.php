@@ -81,6 +81,20 @@ class BtobModel extends WB_Model
     }
 
     /**
+     * 제휴사(회사) 코드 목록 조회
+     * @return array
+     */
+    public function getCompanyArray()
+    {
+        $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+        $data = $this->_conn->getListResult($this->_table['btob'], 'BtobIdx, BtobName' ,$arr_condition, null, null, [
+            'BtobIdx' => 'asc'
+        ]);
+
+        return array_pluck($data, 'BtobName', 'BtobIdx');
+    }
+
+    /**
      * 입력
      * @param array $input
      * @return array|bool

@@ -156,6 +156,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property OnAirModel $onAirModel                                                  OnAir Model Class
  * @property SearchaAnalysisModel $searchaAnalysisModel                     SearchaAnalysis Model Class
  * @property BtobModel $btobModel                                                    BtoB Model Class
+ * @property BtobMenuModel $btobMenuModel                                            BtoB Admin Menu Model Class
+ * @property BtobRoleModel $btobRoleModel                                            BtoB Admin Role Model Class
  * @property DeliveryPriceModel $deliveryPriceModel                               Delivery Price Product Model Class
  * @property BaseReadingRoomModel $baseReadingRoomModel                 BaseReadingRoom Model Class
  * @property ReadingRoomModel $readingRoomModel                              ReadingRoom Model Class

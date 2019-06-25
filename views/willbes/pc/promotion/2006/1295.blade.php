@@ -29,6 +29,9 @@
 	
 		label.check6 {top:1400px; left:205px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
 		label.check7 {top:355px; left:425px;}
+		label.check8 {top:7645px; left:1075px;}
+		label.check9 {top:7777px; left:1315px;}
+		label.check10 {top:7905px; left:535px;}
 		input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
 		}
@@ -38,7 +41,8 @@
 			font-size: 30px;
 		}
 		input:checked + label.check3:after,
-		input:checked + label.check6:after {
+		input:checked + label.check6:after,
+		input:checked + label.check10:after {
 			font-size: 20px;
 		}		
 		input {display:none}	 
@@ -74,7 +78,7 @@
 
 		<div id="tab01">
 			<div class="evtCtnsBox">
-				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_01.jpg" alt="취업난 돌파" />
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_01.jpg" alt="취업난 돌파" style="margin-top:65px"/>
 			</div>
 			<div class="evtCtnsBox cert02">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_02.jpg" alt="윌비스와 함께" usemap="#Map1293A"/>
@@ -128,9 +132,9 @@
 				<div class="tipPopup"id="textZone">
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
-				<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
-				<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
-				<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>            
+				<input name="ischk8" type="checkbox" value="Y" id="ischk1"><label for="ischk8" class="check8"></label>
+				<input name="ischk9" type="checkbox" value="Y" id="ischk2"><label for="ischk9" class="check9"></label>
+				<input name="ischk10" type="checkbox" value="Y" id="ischk3"><label for="ischk10" class="check10"></label>            
 			</div>
 			<div class="evtCtnsBox" id="info">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_05.jpg" alt="이용안내" />

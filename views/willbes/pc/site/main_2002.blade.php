@@ -196,7 +196,7 @@
             </div>
             <!-- CurriStepBox //--> 
             <div class="widthAuto tx-center pt80">    
-                <img src="{{ img_url('cop_acad/visual/visual_curri_table.png') }}" title="최적의 합격 커리큘럼 연간 테이블">
+                <img src="https://static.willbes.net/public/images/promotion/main/2002_curri_table.png" title="최적의 합격 커리큘럼 연간 테이블">
             </div>        
         </div>
 

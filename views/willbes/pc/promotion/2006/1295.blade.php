@@ -60,6 +60,7 @@
 		<div class="evtCtnsBox cert_top">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top.jpg" alt="전기/소방 윌비스 자격증" />
 		</div>
+
 		<div class="evtCtnsBox ProfBox">
 			<ul class="PBtab NGR">
 				<li>
@@ -70,62 +71,99 @@
 				</li>
 			</ul>
 		</div>
-		<div class="evtCtnsBox">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_01.jpg" alt="취업난 돌파" />
-		</div>
-		<div class="evtCtnsBox cert_01">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_01.jpg" alt="취업난 돌파" />
-		</div>
-		<div class="evtCtnsBox cert02">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_02.jpg" alt="윌비스와 함께" usemap="#Map1293A"/>
-			<map name="Map1293A" id="Map1293A">
-				<area shape="rect" coords="843,1443,1056,1506" href="#none" alt="교재 구매하기" />
-			</map>
-		</div>
-		<div class="evtCtnsBox cert03">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certA.jpg" alt="수강신청" usemap="#Map1294A" />
+
+		<div id="tab01">
+			<div class="evtCtnsBox">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_01.jpg" alt="취업난 돌파" />
+			</div>
+			<div class="evtCtnsBox cert02">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_02.jpg" alt="윌비스와 함께" usemap="#Map1293A"/>
+				<map name="Map1293A" id="Map1293A">
+					<area shape="rect" coords="843,1443,1056,1506" href="#none" alt="교재 구매하기" />
+				</map>
+			</div>
+			<div class="evtCtnsBox cert03">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certA.jpg" alt="수강신청" usemap="#Map1294A" />
 				<map name="Map1294A" id="Map1294A">
-					<area shape="rect" coords="667,456,747,485" href="#none" alt="상세보기" id="stoggleBtn" />
-					<area shape="rect" coords="719,605,884,640" href="#info" alt="이용안내 확인하기" />
+				  	<area shape="rect" coords="719,605,884,640" href="#info" alt="이용안내 확인하기" />
 					<area shape="rect" coords="300,700,819,785" href="#none" alt="전기기사 패스 신청하기" />
-					<area shape="rect" coords="736,1244,815,1276" href="#none" alt="상세보기" />
 					<area shape="rect" coords="711,1395,873,1429" href="#info" alt="이용안내 확인하기" />
 					<area shape="rect" coords="302,1527,826,1619" href="#none" alt="소방설비 패스 신청하기" />
 				</map>
 				<div class="tipPopup"id="textZone">
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
-			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
-			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
-			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label> 
-			<input name="ischk4" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label>
-			<input name="ischk6" type="checkbox" value="Y" id="ischk6"><label for="ischk6" class="check6"></label> 
-			<input name="ischk7" type="checkbox" value="Y" id="ischk7"><label for="ischk7" class="check7"></label> 
+				<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
+				<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
+				<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label> 
+				<input name="ischk4" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label>
+				<input name="ischk6" type="checkbox" value="Y" id="ischk6"><label for="ischk6" class="check6"></label> 
+				<input name="ischk7" type="checkbox" value="Y" id="ischk7"><label for="ischk7" class="check7"></label> 
+			</div>
+			<div class="evtCtnsBox" id="info">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_03.jpg" alt="윌비스 수강 이용안내" />
+			</div>
 		</div>
-		<div class="evtCtnsBox" id="info">
-			<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_03.jpg" alt="윌비스 수강 이용안내" />
+
+		<div id="tab02">
+			<div class="evtCtnsBox cert_01">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_01.jpg" alt="취업난 돌파" />
+			</div>
+			<div class="evtCtnsBox cert02">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_02.jpg" alt="자격증 수강" />
+			</div>
+			<div class="evtCtnsBox cert03">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_03.jpg" alt="윌비스와 함께" usemap="#Map1288A"/>
+				<map name="Map1288A" id="Map1288A">
+					<area shape="rect" coords="843,1653,1060,1717" href="#none"alt="교재 구매하기" />
+				</map>
+			</div>
+			<div class="evtCtnsBox cert04">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_04.jpg" alt="수강신청" usemap="#Map1287A"/>
+				<map name="Map1287A" id="Map1287A">
+					<area shape="rect" coords="666,488,746,520" href="#none" alt="상세보기" id="stoggleBtn" />
+					<area shape="rect" coords="742,638,901,673" href="#info" alt="이용안내 확인하기" />
+					<area shape="rect" coords="271,771,857,858" href="#none" alt="소방분야 패스 신청하기" />
+				</map>
+				<div class="tipPopup"id="textZone">
+					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
+				</div>
+				<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
+				<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
+				<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>            
+			</div>
+			<div class="evtCtnsBox" id="info">
+				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_05.jpg" alt="이용안내" />
+			</div>
 		</div>
+		
 	</div>
     <!-- End Container -->
 
-    <script type="text/javascript">   
-    $(document).ready(function(){
-        $("#stoggleBtn").click(function(){
-            $("#textZone").slideToggle("fast");
-        });        
+    <script type="text/javascript">  
+	$(document).ready(function(){
+        $('.PBtab').each(function(){
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
 
-		$(this).on('click', 'a', function (e) {
-                    $active.removeClass('active');
-                    $content.hide();
+            $content = $($active[0].hash);
 
-                    $active = $(this);
-                    $content = $(this.hash);
+            $links.not($active).each(function () {
+                $(this.hash).hide()});
 
-                    $active.addClass('active');
-                    $content.show();
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
 
-                    e.preventDefault();
-        });		
-    });
+                $active = $(this);
+                $content = $(this.hash);
+
+                $active.addClass('active');
+                $content.show();
+
+                e.preventDefault()})})}
+        ); 
 	</script>
 @stop

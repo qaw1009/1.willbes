@@ -34,7 +34,7 @@
 		label.check5 {top:1250px; left:205px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
 		label.check8 {top:385px; left:680px;}
 		label.check9 {top:530px; left:910px;}
-		label.check10 {top:645px; left:170px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		label.check10 {top:493px; left:170px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
 		
 		input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
@@ -136,7 +136,7 @@
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
 				<input name="ischk8" type="checkbox" value="Y" id="ischk8"><label for="ischk8" class="check8"></label>
-				<input name="ischk9" type="checkbox" value="Y" id="ischk9"><label for="ischk9" class="check9"></label>
+				{{--<input name="ischk9" type="checkbox" value="Y" id="ischk9"><label for="ischk9" class="check9"></label>--}}
 				<input name="ischk10" type="checkbox" value="Y" id="ischk10"><label for="ischk10" class="check10"></label>            
 			</div>
 			<div class="evtCtnsBox" id="info">

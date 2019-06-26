@@ -37,7 +37,7 @@ class ApplyExam extends \app\controllers\BaseController
         $arrtab = array();
 
         $this->load->view('mocktest/apply/exam/index', [
-            'siteCodeDef' => $siteCode[0],
+            'siteCodeDef' => '2002', //$siteCode[0],
             'applyArea' => $applyArea,
             'arrsite' => $arrsite,
             'arrtab' => $arrtab

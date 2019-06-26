@@ -51,7 +51,7 @@ class ApplyUser extends \app\controllers\BaseController
         $arrtab = array();
 
         $this->load->view('mocktest/apply/user/index', [
-            'siteCodeDef' => $scode,
+            'siteCodeDef' => '2002', //$scode,
             'paymentStatus' => $codes[$paymentStatus],
             'applyType' => $codes[$applyType],
             'applyArea' => $applyArea,

@@ -77,7 +77,6 @@
         to{margin-left:-285px; opacity: 1;}
         }
 
-
         .wb_01 {background:#343434}
         .wb_02 {background:#24272d url(https://static.willbes.net/public/images/promotion/2019/06/1268_02_bg.jpg) no-repeat center top;}
         .wb_03 {background:#aeaeae}
@@ -134,7 +133,16 @@
         </div>
 
         <div class="evtCtnsBox wb_03" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_03.jpg"  alt="문제풀이 특징"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_03.jpg"  alt="문제풀이 특징" usemap="#Map1268C" border="0"/>
+            <map name="Map1268C" id="Map1268C">
+                <area shape="rect" coords="183,2739,269,2767" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=1057" target="_blank" alt="형소법" />
+                <area shape="rect" coords="319,2742,405,2765" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=1058" target="_blank" alt="경찰학개론" />
+                <area shape="rect" coords="454,2743,538,2765" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=1055" target="_blank" alt="한국사" />
+                <area shape="rect" coords="452,2769,538,2789" href="https://police.willbes.net/pass/offLecture/index?cate_code=3011&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=1060" target="_blank" alt="행정법" />
+                <area shape="rect" coords="590,2743,671,2763" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=1056" target="_blank" alt="형법" />
+                <area shape="rect" coords="726,2742,808,2764" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=1054" target="_blank" alt="영어" />
+                <area shape="rect" coords="724,2768,810,2790" href="https://police.willbes.net/pass/offLecture/index?cate_code=3011&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=1059" target="_blank" alt="수사" />
+            </map>
         </div>
 
         <div class="evtCtnsBox wb_04" id="wb_04">

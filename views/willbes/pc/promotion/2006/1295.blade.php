@@ -88,27 +88,31 @@
 			<div class="evtCtnsBox cert01">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_02.jpg" alt="윌비스와 함께" usemap="#Map1293A"/>
 				<map name="Map1293A" id="Map1293A">
-					<area shape="rect" coords="843,1443,1056,1506" href="#none" alt="교재 구매하기" />
+					<area shape="rect" coords="843,1443,1056,1506" href="https://job.willbes.net/book/index/cate/308901" alt="교재 구매하기" />
 				</map>
 			</div>
 			<div class="evtCtnsBox cert02">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certA.jpg" alt="수강신청" usemap="#Map1294A" />
 				<map name="Map1294A" id="Map1294A">
-				  	<area shape="rect" coords="719,454,884,489" href="#info" alt="이용안내 확인하기" />
-					<area shape="rect" coords="303,547,822,632" href="#none" alt="전기기사 패스 신청하기" />
-					<area shape="rect" coords="711,1246,873,1280" href="#info" alt="이용안내 확인하기" />
-					<area shape="rect" coords="308,1365,832,1457" href="#none" alt="소방설비 패스 신청하기" />
+				  	<area shape="rect" coords="719,454,884,489" href="#info1" alt="이용안내 확인하기" />
+					<area shape="rect" coords="303,547,822,632" href="#none" alt="전기기사 패스 신청하기" onclick="goCartNDirectPay('pass1', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
+					<area shape="rect" coords="711,1246,873,1280" href="#info1" alt="이용안내 확인하기" />
+					<area shape="rect" coords="308,1365,832,1457" href="#none" alt="소방설비 패스 신청하기" onclick="goCartNDirectPay('pass2', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
 				</map>
-				<div class="tipPopup"id="textZone">
+				<div class="tipPopup" id="textZone">
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
-				<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
-				<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>
-				<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
-				<input name="ischk4" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label> 
-				<input name="ischk5" type="checkbox" value="Y" id="ischk5"><label for="ischk5" class="check5"></label> 
+				<div id="pass1">
+					<input name="y_pkg" type="checkbox" value="155174" id="ischk1" class="chk_pass" onchange="checkOnly('.chk_pass', this.value);"><label for="ischk1" class="check1"></label>
+					<input name="y_pkg" type="checkbox" value="155175" id="ischk2" class="chk_pass" onchange="checkOnly('.chk_pass', this.value);"><label for="ischk2" class="check2"></label>
+					<input name="is_chk" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
+				</div>
+				<div id="pass2">
+					<input name="y_pkg" type="checkbox" value="155176" id="ischk4"><label for="ischk4" class="check4"></label>
+					<input name="is_chk" type="checkbox" value="Y" id="ischk5"><label for="ischk5" class="check5"></label>
+				</div>
 			</div>
-			<div class="evtCtnsBox" id="info">
+			<div class="evtCtnsBox" id="info1">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190618_certA_03.jpg" alt="윌비스 수강 이용안내" />
 			</div>
 		</div>
@@ -129,17 +133,19 @@
 			<div class="evtCtnsBox cert06">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_04.jpg" alt="수강신청" usemap="#Map1287A"/>
 				<map name="Map1287A" id="Map1287A">
-					<area shape="rect" coords="742,638,901,673" href="#info" alt="이용안내 확인하기" />
-					<area shape="rect" coords="271,771,857,858" href="#none" alt="소방분야 패스 신청하기" />
+					<area shape="rect" coords="744,490,897,515" href="#info2" alt="이용안내 확인하기" />
+					<area shape="rect" coords="273,626,849,699" href="#none" alt="소방분야 패스 신청하기" onclick="goCartNDirectPay('pass3', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
 				</map>
-				<div class="tipPopup"id="textZone">
+				<div class="tipPopup" id="textZone">
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
-				<input name="ischk8" type="checkbox" value="Y" id="ischk8"><label for="ischk8" class="check8"></label>
-				{{--<input name="ischk9" type="checkbox" value="Y" id="ischk9"><label for="ischk9" class="check9"></label>--}}
-				<input name="ischk10" type="checkbox" value="Y" id="ischk10"><label for="ischk10" class="check10"></label>            
+				<div id="pass3">
+					<input name="y_pkg" type="checkbox" value="Y" id="ischk8"><label for="ischk8" class="check8"></label>
+					{{--<input name="ischk9" type="checkbox" value="Y" id="ischk9"><label for="ischk9" class="check9"></label>--}}
+					<input name="is_chk" type="checkbox" value="Y" id="ischk10"><label for="ischk10" class="check10"></label>
+				</div>
 			</div>
-			<div class="evtCtnsBox" id="info">
+			<div class="evtCtnsBox" id="info2">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_05.jpg" alt="이용안내" />
 			</div>
 		</div>
@@ -173,4 +179,7 @@
                 e.preventDefault()})})}
         ); 
 	</script>
+
+	{{-- 프로모션용 스크립트 include --}}
+	@include('willbes.pc.promotion.promotion_script')
 @stop

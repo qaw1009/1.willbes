@@ -140,11 +140,11 @@
 			      	<area shape="rect" coords="840,1651,1054,1719" href="https://job.willbes.net/book/index/cate/308902" target="_blank" alt="전기 교재 구매하기" />
 				</map>
 				<ul class="prof">
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t01.gif" alt="김종상 교수" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t02.gif" alt="이세령 교수" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t03.gif" alt="이아람 교수" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t04.gif" alt="한경준 교수" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t05.gif" alt="한경준 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t01.gif" alt="이재원 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t02.gif" alt="김용택 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t03.gif" alt="류선희 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t04.gif" alt="주리호 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t05.gif" alt="홍성욱 교수" /></li>
 				</ul>
 			</div>
 			<div class="evtCtnsBox cert06">

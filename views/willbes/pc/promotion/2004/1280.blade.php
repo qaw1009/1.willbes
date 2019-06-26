@@ -56,12 +56,12 @@
         .tabcts iframe {width:900px; margin:30px auto 0; height:520px; border:#f4f4f4 solid 14px;}
 
 		/* txt_motion */
-		.wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
-		.wb_cts01 > div span {position:absolute; width:120px; z-index: 1;}
-		.wb_cts01 > div span.txt1 {top:80px; left:100px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
-		.wb_cts01 > div span.txt2 {top:200px; left:100px; animation:slidein2 0.4s ease-in; -webkit-animation:slidein2 0.4s ease-in;}
-		@keyframes slidein1 {from {left:605px; opacity: 0;}to {left:100px; opacity: 1}}
-		@keyframes slidein2 {from {left:605px; opacity: 0;}to {left:100px; opacity: 1}}
+      .wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
+      .wb_cts01 > div span {position:absolute; width:120px; z-index: 1;}
+      .wb_cts01 > div span.txt1 {top:80px; left:100px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
+      .wb_cts01 > div span.txt2 {top:200px; left:100px; animation:slidein2 0.4s ease-in; -webkit-animation:slidein2 0.4s ease-in;}
+      @@keyframes slidein1 {from {left:605px; opacity: 0;}to {left:100px; opacity: 1}}
+      @@keyframes slidein2 {from {left:605px; opacity: 0;}to {left:100px; opacity: 1}}
 
  </style>
 
@@ -127,9 +127,11 @@
   </div>
   <!--wb_cts06//-->
   
-  <div class="evtCtnsBox wb_cts07"> <img src="https://static.willbes.net/public/images/promotion/2019/06/1280_06.jpg"  title="김종상교수님의 필수 수험서"/> </div>
+  <div class="evtCtnsBox wb_cts07">
+    <img src="https://static.willbes.net/public/images/promotion/2019/06/1280_06.jpg"  title="김종상교수님의 필수 수험서"/>
+  </div>
   <!--wb_cts07//-->
-  <iframe width="1280" height="720" src="https://www.youtube.com/embed/rHfE0KMGmf8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ 
 </div>
 <!-- End Container --> 
 
@@ -143,28 +145,28 @@
 
 		$(document).ready(function(){
 		$(".tabcts").hide(); 
-		$(".tabcts:first").show();
-		$(".tabWrapEvt li a").click(function(){ 
-		var activeTab = $(this).attr("href"); 
-		var html_str = "";
-		if(activeTab == "#tab1"){
-		html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt1.png' alt=''/> <iframe src='"+tab1_url+"' allowfullscreen></iframe>";
-		}else if(activeTab == "#tab2"){
-		html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt2.png' alt=''/> <iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
-		}else if(activeTab == "#tab3"){
-		html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt3.png' alt=''/> <iframe src='"+tab3_url+"' allowfullscreen></iframe>";
-		}else if(activeTab == "#tab4"){
-		html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt4.png' alt=''/> <iframe src='"+tab4_url+"' allowfullscreen></iframe>";
-		}else if(activeTab == "#tab5"){
-		html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt5.png' alt=''/> <iframe src='"+tab5_url+"' allowfullscreen></iframe>";
-		}
-		$(".tabWrapEvt li a").removeClass("active"); 
-		$(this).addClass("active"); 
-		$(".tabcts").hide(); 
-		$(".tabcts").html(''); 
-		$(activeTab).html(html_str);
-		$(activeTab).fadeIn(); 
-		return false; 
+      $(".tabcts:first").show();
+        $(".tabWrapEvt li a").click(function(){ 
+          var activeTab = $(this).attr("href"); 
+          var html_str = "";
+          if(activeTab == "#tab1"){
+          html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt1.png' alt=''/> <iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+          }else if(activeTab == "#tab2"){
+          html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt2.png' alt=''/> <iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
+          }else if(activeTab == "#tab3"){
+          html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt3.png' alt=''/> <iframe src='"+tab3_url+"' allowfullscreen></iframe>";
+          }else if(activeTab == "#tab4"){
+          html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt4.png' alt=''/> <iframe src='"+tab4_url+"' allowfullscreen></iframe>";
+          }else if(activeTab == "#tab5"){
+          html_str = "<img src='https://static.willbes.net/public/images/promotion/2019/06/1280_04_txt5.png' alt=''/> <iframe src='"+tab5_url+"' allowfullscreen></iframe>";
+        }
+      $(".tabWrapEvt li a").removeClass("active"); 
+      $(this).addClass("active"); 
+      $(".tabcts").hide(); 
+      $(".tabcts").html(''); 
+      $(activeTab).html(html_str);
+      $(activeTab).fadeIn(); 
+      return false; 
 		});
 	});
 </script>
@@ -203,6 +205,4 @@
 	});
 
 </script>
-
-
 @stop

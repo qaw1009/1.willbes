@@ -51,6 +51,7 @@
             <table id="list_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
+                    <th>No</th>
                     <th>제휴사명</th>
                     <th class="rowspan">GNB-2depth [<span class="blue">코드</span>]</th>
                     <th class="rowspan">LNB-3depth [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-menu-depth="2">추가</button></th>
@@ -91,6 +92,10 @@
                 },
                 rowsGroup: ['.rowspan'],
                 columns: [
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        // 리스트 번호
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'BtobName'},
                     {'data' : 'BOrderNum', 'render' : function(data, type, row, meta) {
                         var is_use = '';

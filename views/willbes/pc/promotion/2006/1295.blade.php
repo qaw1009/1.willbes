@@ -21,11 +21,13 @@
 		/************************************************************/   
 		.cert_top {background:url(https://static.willbes.net/public/images/promotion/2019/06/190618_certA_top_bg.jpg) no-repeat center top;}
 		.cert00 {padding-top:85px}	
-		.cert01 {background:#f5f5f5;}
-		.cert02 {position:relative; width:1120px; margin:0 auto} 
-		.cert03 {background:#fff;}
+		.cert01 {background:#f5f5f5; position:relative}
+		.prof {position:absolute; width:458px; height:278px; top:612px; left:50%; margin-left:-524px; overflow:hidden; z-index:10;}
+		.prof li {display:inline; float:left;}
+		.prof:after {content:""; display:block; clear:both}
+		.cert02 {position:relative; width:1120px; margin:0 auto;}		
 		.cert04 {position:relative; width:1120px; margin:0 auto; background:#fff;} 
-		.cert05 {background:#f5f5f5;}
+		.cert05 {background:#f5f5f5; position:relative}
 		.cert06 {position:relative; width:1120px; margin:0 auto} 
 		label.check1 {top:350px; left:420px;}
 		label.check2 {top:350px; left:910px;}
@@ -90,6 +92,13 @@
 				<map name="Map1293A" id="Map1293A">
 					<area shape="rect" coords="860,1441,1073,1504" href="https://job.willbes.net/book/index/cate/308902" target="_blank" alt="교재 구매하기" />
 				</map>
+				<ul class="prof">
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t01.gif" alt="김종상 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t02.gif" alt="이세령 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t03.gif" alt="이아람 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t04.gif" alt="한경준 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t05.gif" alt="한경준 교수" /></li>
+				</ul>
 			</div>
 			<div class="evtCtnsBox cert02">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certA.jpg" alt="수강신청" usemap="#Map1294A" />
@@ -98,7 +107,7 @@
 					<area shape="rect" coords="303,547,822,632" href="#none" alt="전기기사 패스 신청하기" onclick="goCartNDirectPay('pass1', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
 					<area shape="rect" coords="711,1246,873,1280" href="#info1" alt="이용안내 확인하기" />
 					<area shape="rect" coords="308,1365,832,1457" href="#none" alt="소방설비 패스 신청하기" onclick="goCartNDirectPay('pass2', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" />
-				</map>
+				</map>				
 				<div class="tipPopup" id="textZone">
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
@@ -129,7 +138,14 @@
 				<map name="Map1288A" id="Map1288A">
 					<area shape="rect" coords="838,1581,1055,1645" href="https://job.willbes.net/book/index/cate/308901" target="_blank" alt="소방 교재 구매하기" />
 			      	<area shape="rect" coords="840,1651,1054,1719" href="https://job.willbes.net/book/index/cate/308902" target="_blank" alt="전기 교재 구매하기" />
-				</map>>
+				</map>
+				<ul class="prof">
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t01.gif" alt="이재원 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t02.gif" alt="김용택 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t03.gif" alt="류선희 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t04.gif" alt="주리호 교수" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/06/1295_01_t05.gif" alt="홍성욱 교수" /></li>
+				</ul>
 			</div>
 			<div class="evtCtnsBox cert06">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certB_04.jpg" alt="수강신청" usemap="#Map1287A"/>

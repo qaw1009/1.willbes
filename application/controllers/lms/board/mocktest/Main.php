@@ -42,7 +42,7 @@ class Main extends BaseBoard
         $this->load->view('board/mocktest/main/mainList', [
             'boardName' => $this->boardName,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
-            'siteCodeDef' => $cateD1[0]['SiteCode'],
+            'siteCodeDef' => '2002', //$cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'applyType' => $codes[$this->applyType],

@@ -51,7 +51,7 @@ class StatisticsGrade extends \app\controllers\BaseController
         $arrtab = array();
 
         $this->load->view('mocktest/statistics/grade/index', [
-            'siteCodeDef' => $cateD1[0]['SiteCode'],
+            'siteCodeDef' => '2002', //$cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'applyType' => $codes[$this->applyType],

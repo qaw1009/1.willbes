@@ -46,7 +46,7 @@
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2">제휴사 명
             </label>
-            <div class="col-md-10 form-control-static">
+            <div class="col-md-10 form-control-static item">
                 {{ element($btob_idx, $arr_btob_idx) }}
                 <input type="hidden" name="btob_idx" value="{{ $btob_idx }}" required="required" title="제휴사"/>
             </div>

@@ -1797,7 +1797,7 @@ class RegGradeModel extends WB_Model
 
                 $order_by = " ORDER BY QuestionNO ";
 
-                $where = " WHERE MpIdx = " . $val['B'];
+                $where = " WHERE IsStatus = 'Y' AND MpIdx = " . $val['B'];
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 

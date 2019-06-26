@@ -65,15 +65,14 @@ class BtobMenuModel extends WB_Model
                     where BM.MenuDepth = 1 and BM.IsStatus = "Y"
                 ) as I
             ) as U 
-                inner join ' . $this->_table['btob'] . ' as B
-                    on U.BtobIdx = B.BtobIdx                
+                left join ' . $this->_table['btob'] . ' as B
+                    on U.BtobIdx = B.BtobIdx and B.IsStatus = "Y"                
                 left join ' . $this->_table['admin'] . ' as A
                     on U.LastRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
-            where B.IsStatus = "Y"                     
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
+        $where = $where->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy(['BOrderNum' => 'asc', 'MOrderNum' => 'asc', 'SOrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행

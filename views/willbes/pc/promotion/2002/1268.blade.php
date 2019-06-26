@@ -83,6 +83,7 @@
         .wb_03 {background:#aeaeae}
         .wb_04 {background:#fff}
         .wb_05 {background:#555}
+        .wb_06 {background:#ececec}
     </style>
 
 
@@ -145,6 +146,10 @@
                 <area shape="rect" coords="80,1157,463,1203" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044" target="_blank" alt="일반경찰" />
               <area shape="rect" coords="651,1157,1036,1203" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&amp;campus_ccd=605001&amp;course_idx=1044" target="_blank" alt="경행경채" />
             </map>
+        </div>
+
+        <div class="evtCtnsBox wb_06" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_06.jpg"  alt=""/>
         </div>
 
         <div class="evtCtnsBox wb_05" >

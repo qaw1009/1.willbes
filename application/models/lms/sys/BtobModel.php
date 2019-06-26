@@ -81,6 +81,19 @@ class BtobModel extends WB_Model
     }
 
     /**
+     * 제휴사(회사) 정보 조회
+     * @param string $column
+     * @param array $arr_condition
+     * @return array
+     */
+    public function findCompany($column = '*', $arr_condition = [])
+    {
+        $arr_condition['EQ']['IsStatus'] = 'Y';
+
+        return $this->_conn->getFindResult($this->_table['btob'], $column, $arr_condition);
+    }
+
+    /**
      * 제휴사(회사) 코드 목록 조회
      * @return array
      */

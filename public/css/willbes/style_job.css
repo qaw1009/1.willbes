@@ -68,12 +68,12 @@
 .job .Section3 .curriBox {position:absolute; left:50%; top:500px; margin-left:100px; z-index:10;}
 .job .Section3 .curriBox h4 {color:#b7b7b7; font-size:18px; font-weight: bold; margin-bottom:20px}
 .job .Section3 .curriBox ul {float:left}
-.job .Section3 .curriBox ul li a {display:block; height: 78px; line-height: 78px; text-align:center; margin-bottom:3px; font-size:16px; color:#242b35; background:#63686f;
+.job .Section3 .curriBox ul li a {display:block; height: 100px; line-height: 100px; text-align:center; margin-bottom:3px; font-size:16px; color:#242b35; background:#63686f;
     border-radius:10px 0 0 10px; width: 98px; font-weight: bold;
 }
 .job .Section3 .curriBox ul li a:hover,
 .job .Section3 .curriBox ul li a.active {background: #fff}
-.job .Section3 .curriBox .curri {background:#fff; padding:30px; float:left; font-size:14px; width:300px; min-height: 186px; line-height: 1.5}
+.job .Section3 .curriBox .curri {background:#fff; padding:20px; float:left; font-size:14px; width:300px; height: 203px; line-height: 1.4}
 .job .Section3 .curriBox .curri li {list-style-type: disc; margin-left:15px; margin-bottom:10px}
 .job .Section3 .curriBox .curri li:last-child {margin-bottom:0}
 .job .Section3 span.txt01 {position:absolute; left:50%; top:325px; margin-left:350px; z-index:10;}

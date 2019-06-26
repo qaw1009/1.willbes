@@ -1182,6 +1182,7 @@
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
                 }
 
+                /* 2019-06-25 최진영 차장 요청건 - 제어 조건 제거
                 if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {
 
                     if ($("#PackSelCount").val() == "") {
@@ -1195,6 +1196,7 @@
                         return;
                     }
                 }
+                */
                 return true;
             }
 

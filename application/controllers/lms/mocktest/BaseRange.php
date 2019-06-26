@@ -34,7 +34,7 @@ class BaseRange extends \app\controllers\BaseController
         $arrtab = array();
 
         $this->load->view('mocktest/base/range/index', [
-            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
+            'siteCodeDef' => '2002', //$this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),

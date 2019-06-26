@@ -83,6 +83,7 @@
         .wb_03 {background:#aeaeae}
         .wb_04 {background:#fff}
         .wb_05 {background:#555}
+        .wb_06 {background:#ececec}
     </style>
 
 
@@ -115,7 +116,11 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_top.jpg" alt="실전 문제풀이 패키지"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_top.jpg" alt="실전 문제풀이 패키지" usemap="#Map1268TOP" border="0"/>
+            <map name="Map1268TOP" id="Map1268TOP">
+                <area shape="rect" coords="169,1075,292,1114" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1284" target="_blank" alt="1단계" />
+                <area shape="rect" coords="499,1073,622,1118" href="#wb_04" alt="2단계" />
+            </map>
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2019/06/1268_top_img1.png" alt="화살표"></span>
             <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2019/06/1268_top_img2.png" alt="손"></span>
         </div>
@@ -133,13 +138,18 @@
         </div>
 
         <div class="evtCtnsBox wb_04" id="wb_04">
-            {{--<img src="https://static.willbes.net/public/images/promotion/2019/06/1268_04_top.jpg"  alt="성원 감사"/><br>--}}
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_04.jpg"  alt="이벤트" usemap="#Map1268A" border="0" />
             <map name="Map1268A" id="Map1268A">
-                <area shape="rect" coords="93,550,222,596" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" alt="일반경찰 원유철 신청하기" />
-                <area shape="rect" coords="495,549,623,596" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" alt="일반경찰 오태진 신청하기" />
-                <area shape="rect" coords="896,548,1027,597" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" alt="경행경채 신청하기" />
+                <area shape="rect" coords="93,558,222,604" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" alt="일반경찰 원유철 신청하기" />
+                <area shape="rect" coords="495,558,623,605" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" alt="일반경찰 오태진 신청하기" />
+                <area shape="rect" coords="896,557,1027,606" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" alt="경행경채 신청하기" />
+                <area shape="rect" coords="80,1157,463,1203" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044" target="_blank" alt="일반경찰" />
+              <area shape="rect" coords="651,1157,1036,1203" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&amp;campus_ccd=605001&amp;course_idx=1044" target="_blank" alt="경행경채" />
             </map>
+        </div>
+
+        <div class="evtCtnsBox wb_06" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_06.jpg"  alt=""/>
         </div>
 
         <div class="evtCtnsBox wb_05" >

@@ -140,7 +140,7 @@
 					<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 				</div>
 				<div id="pass3">
-					<input name="y_pkg" type="checkbox" value="Y" id="ischk8"><label for="ischk8" class="check8"></label>
+					<input name="y_pkg" type="checkbox" value="155211" id="ischk8"><label for="ischk8" class="check8"></label>
 					{{--<input name="ischk9" type="checkbox" value="Y" id="ischk9"><label for="ischk9" class="check9"></label>--}}
 					<input name="is_chk" type="checkbox" value="Y" id="ischk10"><label for="ischk10" class="check10"></label>
 				</div>

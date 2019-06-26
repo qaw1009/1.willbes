@@ -5,7 +5,7 @@ class BtobMenuModel extends WB_Model
 {
     private $_table = [
         'btob' => 'lms_btob',
-        'menu' => 'lms_btob_admin_menu',
+        'btob_admin_menu' => 'lms_btob_admin_menu',
         'admin' => 'wbs_sys_admin',
     ];
 
@@ -27,7 +27,7 @@ class BtobMenuModel extends WB_Model
         $column = 'MenuIdx, BtobIdx, MenuType, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, MenuUrl, IconClassName, OrderNum, IsUse';
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table['menu'], $column, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table['btob_admin_menu'], $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -57,10 +57,10 @@ class BtobMenuModel extends WB_Model
                         , SM.MenuIdx as SMenuIdx, SM.MenuName as SMenuName, SM.MenuDepth as SMenuDepth, SM.OrderNum as SOrderNum
                         , SM.IsUse as SIsUse, SM.MenuUrl as SMenuUrl, SM.RegAdminIdx as SRegAdminIdx, SM.RegDatm as SRegDatm
                         , greatest(BM.MenuDepth, ifnull(MM.MenuDepth, 0), ifnull(SM.MenuDepth, 0)) as LastMenuDepth		
-                    from ' . $this->_table['menu'] . ' as BM
-                        left join ' . $this->_table['menu'] . ' as MM
+                    from ' . $this->_table['btob_admin_menu'] . ' as BM
+                        left join ' . $this->_table['btob_admin_menu'] . ' as MM
                             on MM.GroupMenuIdx = BM.MenuIdx and MM.MenuDepth = 2 and MM.IsStatus = "Y"
-                        left join ' . $this->_table['menu'] . ' as SM
+                        left join ' . $this->_table['btob_admin_menu'] . ' as SM
                             on SM.ParentMenuIdx = MM.MenuIdx and SM.MenuDepth = 3 and SM.IsStatus = "Y"
                     where BM.MenuDepth = 1 and BM.IsStatus = "Y"
                 ) as I
@@ -90,8 +90,8 @@ class BtobMenuModel extends WB_Model
     {
         $column = 'PM.MenuIdx, PM.MenuName, PM.MenuDepth';
         $from = '
-            from ' . $this->_table['menu'] . ' as M
-                inner join ' . $this->_table['menu'] . ' as PM
+            from ' . $this->_table['btob_admin_menu'] . ' as M
+                inner join ' . $this->_table['btob_admin_menu'] . ' as PM
                     on M.ParentMenuIdx = PM.ParentMenuIdx            
         ';
         $where = $this->_conn->makeWhere([
@@ -115,7 +115,7 @@ class BtobMenuModel extends WB_Model
      */
     public function findMenuByMenuIdx($menu_idx)
     {
-        return $this->_conn->getFindResult($this->_table['menu'], 'MenuIdx, BtobIdx, MenuType, ParentMenuIdx, GroupMenuIdx, MenuDepth', [
+        return $this->_conn->getFindResult($this->_table['btob_admin_menu'], 'MenuIdx, BtobIdx, MenuType, ParentMenuIdx, GroupMenuIdx, MenuDepth', [
             'EQ' => ['MenuIdx' => $menu_idx, 'IsStatus' => 'Y']
         ]);
     }
@@ -131,7 +131,7 @@ class BtobMenuModel extends WB_Model
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.UpdAdminIdx and wIsStatus = "Y") as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table['menu'] . ' as M', $column, [
+        return $this->_conn->getFindResult($this->_table['btob_admin_menu'] . ' as M', $column, [
             'EQ' => ['M.MenuIdx' => $menu_idx, 'M.IsStatus' => 'Y']
         ]);
     }
@@ -143,7 +143,7 @@ class BtobMenuModel extends WB_Model
      */
     public function getMenuOrderNum($parent_menu_idx)
     {
-        return $this->_conn->getFindResult($this->_table['menu'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
+        return $this->_conn->getFindResult($this->_table['btob_admin_menu'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
             'EQ' => ['ParentMenuIdx' => $parent_menu_idx]
         ])['NextOrderNum'];
     }
@@ -197,14 +197,14 @@ class BtobMenuModel extends WB_Model
             }
             
             // 메뉴 등록
-            if ($this->_conn->set($data)->insert($this->_table['menu']) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['btob_admin_menu']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
             // GNB 메뉴일 경우 GroupMenuIdx 값을 등록된 MenuIdx 값으로 업데이트
             if ($group_menu_idx == 0) {
                 $inserted_menu_idx = $this->_conn->insert_id();
-                $is_update = $this->_conn->set(['GroupMenuIdx' => $inserted_menu_idx, 'UpdAdminIdx' => $admin_idx])->where('MenuIdx', $inserted_menu_idx)->update($this->_table['menu']);
+                $is_update = $this->_conn->set(['GroupMenuIdx' => $inserted_menu_idx, 'UpdAdminIdx' => $admin_idx])->where('MenuIdx', $inserted_menu_idx)->update($this->_table['btob_admin_menu']);
                 if ($is_update === false) {
                     throw new \Exception('그룹메뉴식별자 수정에 실패했습니다.');
                 }
@@ -261,7 +261,7 @@ class BtobMenuModel extends WB_Model
             }
 
             $this->_conn->set($data)->where('MenuIdx', $menu_idx);
-            if ($this->_conn->update($this->_table['menu']) === false) {
+            if ($this->_conn->update($this->_table['btob_admin_menu']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
@@ -293,7 +293,7 @@ class BtobMenuModel extends WB_Model
             foreach ($params as $menu_idx => $order_num) {
                 $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $admin_idx)->where('MenuIdx', $menu_idx);
 
-                if ($this->_conn->update($this->_table['menu']) === false) {
+                if ($this->_conn->update($this->_table['btob_admin_menu']) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');
                 }
             }

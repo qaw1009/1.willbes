@@ -24,6 +24,7 @@
 		.cert02{background:#f5f5f5; position:relative}
 		.cert02 ul {position:absolute; width:458px; height:278px; top:612px; left:50%; margin-left:-524px; z-index:10;}
 		.cert02 ul li {display:inline; float:left;}
+		.cert02 ul:after {content:""; display:block; clear:both}
 		.cert03 {position:relative; width:1120px; margin:0 auto} 
 		label.check1 {top:370px; left:420px;}
 		label.check2 {top:370px; left:905px;}

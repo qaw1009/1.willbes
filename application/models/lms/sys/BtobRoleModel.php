@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BtobRoleModel extends WB_Model
 {
     private $_table = [
-        'admin_role' => 'lms_btob_admin_role',
-        'admin_role_r_menu' => 'lms_btob_admin_role_r_menu',
         'btob' => 'lms_btob',
-        'menu' => 'lms_btob_admin_menu',
+        'btob_admin_menu' => 'lms_btob_admin_menu',
+        'btob_admin_role' => 'lms_btob_admin_role',
+        'btob_admin_role_r_menu' => 'lms_btob_admin_role_r_menu',
         'admin' => 'wbs_sys_admin'
     ];    
 
@@ -30,20 +30,21 @@ class BtobRoleModel extends WB_Model
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['R.IsStatus'] = 'Y';
 
-        return $this->_conn->getJoinListResult($this->_table['admin_role'] . ' as R', 'left', $this->_table['btob'] . ' as B'
+        return $this->_conn->getJoinListResult($this->_table['btob_admin_role'] . ' as R', 'left', $this->_table['btob'] . ' as B'
             , 'R.BtobIdx = B.BtobIdx and B.IsStatus = "Y"'
             , $column, $arr_condition, $limit, $offset, $order_by
         );
     }
 
     /**
-     * 권한유형 코드 목록 조회
+     * 제휴사 권한유형 코드 목록 조회
+     * @param string|null $btob_idx
      * @return array
      */
-    public function getRoleArray()
+    public function getRoleArray($btob_idx = null)
     {
-        $data = $this->_conn->getListResult($this->_table['admin_role'], 'RoleIdx, RoleName', [
-            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
+        $data = $this->_conn->getListResult($this->_table['btob_admin_role'], 'RoleIdx, RoleName', [
+            'EQ' => ['BtobIdx' => $btob_idx, 'IsUse' => 'Y', 'IsStatus' => 'Y']
         ], null, null, [
             'RoleIdx' => 'asc'
         ]);
@@ -62,7 +63,7 @@ class BtobRoleModel extends WB_Model
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= ' , if(R.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table['admin_role'] . ' as R', $column, [
+        return $this->_conn->getFindResult($this->_table['btob_admin_role'] . ' as R', $column, [
             'EQ' => ['R.RoleIdx' => $role_idx]
         ]);
     }
@@ -88,7 +89,7 @@ class BtobRoleModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if ($this->_conn->set($data)->insert($this->_table['admin_role']) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['btob_admin_role']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
@@ -124,7 +125,7 @@ class BtobRoleModel extends WB_Model
             ];
             $this->_conn->set($data)->where('RoleIdx', $role_idx);
 
-            if ($this->_conn->update($this->_table['admin_role']) === false) {
+            if ($this->_conn->update($this->_table['btob_admin_role']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
@@ -163,18 +164,18 @@ class BtobRoleModel extends WB_Model
                         , SM.MenuIdx as SMenuIdx, SM.MenuName as SMenuName, SM.ParentMenuIdx as SParentMenuIdx, SM.MenuUrl as SMenuUrl, SM.OrderNum as SOrderNum
                         , BM.GroupMenuIdx
                         , greatest(BM.MenuDepth, ifnull(MM.MenuDepth, 0), ifnull(SM.MenuDepth, 0)) as LastMenuDepth		
-                    from ' . $this->_table['menu'] . ' as BM
-                        left join ' . $this->_table['menu'] . ' as MM
+                    from ' . $this->_table['btob_admin_menu'] . ' as BM
+                        left join ' . $this->_table['btob_admin_menu'] . ' as MM
                             on MM.GroupMenuIdx = BM.MenuIdx and MM.MenuDepth = 2 and MM.IsUse = "Y" and MM.IsStatus = "Y"
-                        left join ' . $this->_table['menu'] . ' as SM
+                        left join ' . $this->_table['btob_admin_menu'] . ' as SM
                             on SM.ParentMenuIdx = MM.MenuIdx and SM.MenuDepth = 3 and SM.IsUse = "Y" and SM.IsStatus = "Y"
                     where BM.BtobIdx = ? and BM.MenuDepth = 1 and BM.IsUse = "Y" and BM.IsStatus = "Y"
                 ) as I
-            ) as M left join ' . $this->_table['admin_role_r_menu'] . ' as RBM
+            ) as M left join ' . $this->_table['btob_admin_role_r_menu'] . ' as RBM
                     on M.BMenuIdx = RBM.MenuIdx and RBM.IsStatus = "Y" and RBM.RoleIdx = ? 
-                left join ' . $this->_table['admin_role_r_menu'] . ' as RMM
+                left join ' . $this->_table['btob_admin_role_r_menu'] . ' as RMM
                     on M.MMenuIdx = RMM.MenuIdx and RMM.IsStatus = "Y" and RMM.RoleIdx = ?
-                left join ' . $this->_table['admin_role_r_menu'] . ' as RSM
+                left join ' . $this->_table['btob_admin_role_r_menu'] . ' as RSM
                     on M.SMenuIdx = RSM.MenuIdx and RSM.IsStatus = "Y" and RSM.RoleIdx = ?            
         ';
         $order_by = ' order by BOrderNum asc, MOrderNum asc, SOrderNum asc';
@@ -191,10 +192,10 @@ class BtobRoleModel extends WB_Model
      * @param $role_idx
      * @return array|bool
      */
-    public function replaceRoleMenu($arr_menu_idx = [], $role_idx)
+    public function replaceRoleMenu($arr_menu_idx, $role_idx)
     {
         try {
-            $_table = $this->_table['admin_role_r_menu'];
+            $_table = $this->_table['btob_admin_role_r_menu'];
             $arr_menu_idx = (is_null($arr_menu_idx) === true) ? [] : array_values(array_unique($arr_menu_idx));
             $admin_idx = $this->session->userdata('admin_idx');
             

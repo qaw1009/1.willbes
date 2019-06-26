@@ -54,7 +54,7 @@
 		<div class="evtCtnsBox cert02">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_02.jpg" alt="윌비스와 함께" usemap="#Map1293A" />
 			<map name="Map1293A" id="Map1293A">
-				<area shape="rect" coords="841,1439,1059,1507" href="https://job.willbes.net/book/index/cate/308901" alt="교재 구매하기"/>
+				<area shape="rect" coords="841,1439,1059,1507" href="#none" alt="교재 구매하기"/>
 			</map>
 			<ul>
 				<li><img src="https://static.willbes.net/public/images/promotion/2019/06/308901_03_t1.gif" alt="김종상 교수" /></li>
@@ -67,16 +67,14 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_03.jpg" alt="수강신청" usemap="#Map1293B"/>
 			<map name="Map1293B" id="Map1293B">
 			  	<area shape="rect" coords="721,470,881,504" href="#info" alt="이용안내 확인하기" />
-			    <area shape="rect" coords="265,558,855,662" href="#none" alt="소방분야 논스톱 패스 신청하기" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');"/>
+			    <area shape="rect" coords="265,558,855,662" href="#none" alt="소방분야 논스톱 패스 신청하기" />
 			</map>
-			<div class="tipPopup" id="textZone">
+			<div class="tipPopup"id="textZone">
 				<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobA_B_popup.png" alt="전기기사 상세보기 팝업">
 			</div>
-			<div id="pass">
-				<input name="y_pkg" type="checkbox" value="155178" id="ischk1" class="chk_pass" onchange="checkOnly('.chk_pass', this.value);"><label for="ischk1" class="check1"></label>
-				<input name="y_pkg" type="checkbox" value="155179" id="ischk2" class="chk_pass" onchange="checkOnly('.chk_pass', this.value);"><label for="ischk2" class="check2"></label>
-				<input name="is_chk" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
-			</div>
+			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
+			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>  
+			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk4" class="check3"></label>         
 		</div>
 		<div class="evtCtnsBox cert04" id="info">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_04.jpg" alt="이용안내" />			
@@ -91,7 +89,4 @@
         });        
     });
 	</script>
-
-	{{-- 프로모션용 스크립트 include --}}
-	@include('willbes.pc.promotion.promotion_script')
 @stop

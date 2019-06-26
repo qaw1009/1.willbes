@@ -129,7 +129,10 @@
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1289_03.png"  alt="이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1289_03.png"  alt="소문내기 이벤트" usemap="#Map1289B" border="0"/>
+            <map name="Map1289B" id="Map1289B">
+                <area shape="rect" coords="337,998,782,1067" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="소문내기 이미지 다운로드" />
+            </map>
         </div>
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

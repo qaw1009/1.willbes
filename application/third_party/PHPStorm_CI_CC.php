@@ -158,6 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BtobModel $btobModel                                                    BtoB Model Class
  * @property BtobMenuModel $btobMenuModel                                            BtoB Admin Menu Model Class
  * @property BtobRoleModel $btobRoleModel                                            BtoB Admin Role Model Class
+ * @property BtobCodeModel $btobCodeModel                                            BtoB Code Model Class
  * @property DeliveryPriceModel $deliveryPriceModel                               Delivery Price Product Model Class
  * @property BaseReadingRoomModel $baseReadingRoomModel                 BaseReadingRoom Model Class
  * @property ReadingRoomModel $readingRoomModel                              ReadingRoom Model Class
@@ -239,8 +240,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RouletteFModel $rouletteFModel                                         Roulette Model Class
  * @property SupportersFModel $supportersFModel                                 Supporters Model Class
  ***************** API ***********************************************************************************
- * @property BookAModel $bookAModel                                                 API Delivery Book Model Class
- *******************************************************************************************************
+ * @property BookAModel $bookAModel                                             API Delivery Book Model Class
+ ***************** BtoB **********************************************************************************
+ * @property BtobLoginModel $btobLoginModel                                     Btob Login Model Class
+ * @property BtobAdminModel $btobAdminModel                                     Btob Admin Model Class
+ *********************************************************************************************************
  */
 class PHPStorm_CI_CC
 {

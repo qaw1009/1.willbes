@@ -19,6 +19,18 @@
     @if($menu_depth == '1')
         {{-- GNB 메뉴 등록 --}}
         <div class="form-group form-group-sm">
+            <label class="control-label col-md-2" for="btob_idx">제휴사 선택 <span class="required">*</span>
+            </label>
+            <div class="col-md-3 item">
+                <select class="form-control" id="btob_idx" name="btob_idx" required="required" title="제휴사" @if($method == 'PUT') disabled="disabled" @endif>
+                    <option value="">선택</option>
+                    @foreach($arr_btob_idx as $key => $val)
+                        <option value="{{ $key }}" @if($btob_idx == $key) selected="selected" @endif>{{ $val }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
             <label class="control-label col-md-2" for="menu_name">GNB 메뉴명 <span class="required">*</span>
             </label>
             <div class="col-md-4 item">
@@ -28,18 +40,6 @@
             </label>
             <div class="col-md-4 form-control-static">
                 @if($method == 'PUT'){{ $data['MenuIdx'] }}@else # 등록 시 자동 생성 @endif
-            </div>
-        </div>
-        <div class="form-group form-group-sm">
-            <label class="control-label col-md-2" for="btob_idx">제휴사 선택 <span class="required">*</span>
-            </label>
-            <div class="col-md-3 item">
-                <select class="form-control" id="btob_idx" name="btob_idx" required="required" title="제휴사" @if($method == 'PUT') disabled="disabled" @endif>
-                    <option value="">선택</option>
-                @foreach($arr_btob_idx as $key => $val)
-                    <option value="{{ $key }}" @if($btob_idx == $key) selected="selected" @endif>{{ $val }}</option>
-                @endforeach
-                </select>
             </div>
         </div>
     @else

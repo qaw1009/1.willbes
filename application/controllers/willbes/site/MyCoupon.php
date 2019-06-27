@@ -38,6 +38,9 @@ class MyCoupon extends \app\controllers\FrontController
         $cart_data['CartProdTypeName'] = $this->cartFModel->_cart_prod_type_name[$cart_data['CartProdType']];
         $cart_data['CartProdTypeNum'] = $this->cartFModel->_cart_prod_type_idx[$cart_data['CartProdType']];
 
+        // 상품 결제금액
+        $cart_data['RealPayPrice'] = $cart_data['RealSalePrice'] * $cart_data['ProdQty'];
+
         // 전체보유 쿠폰조회 조건
         $arr_condition = [
             'EQ' => [

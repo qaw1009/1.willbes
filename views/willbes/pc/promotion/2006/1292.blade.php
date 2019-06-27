@@ -52,9 +52,11 @@
  
     </style>
 	<div class="evtContent">
+		{{--
 		<div class="skybanner">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_jobC_D_popup.png" alt="소방설비 베너">
 		</div>
+		--}}
 		<div class="evtCtnsBox cert_top">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certC_top.jpg" alt="전기/소방 자격증" />
 		</div>

@@ -75,7 +75,7 @@
 			</div>
 			<input name="ischk1" type="checkbox" value="Y" id="ischk1"><label for="ischk1" class="check1"></label>
 			<input name="ischk2" type="checkbox" value="Y" id="ischk2"><label for="ischk2" class="check2"></label>  
-			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk4" class="check3"></label>         
+			<input name="ischk3" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>         
 		</div>
 		<div class="evtCtnsBox cert04" id="info">
 			<img src="https://static.willbes.net/public/images/promotion/2019/06/190619_certD_04.jpg" alt="이용안내" />			

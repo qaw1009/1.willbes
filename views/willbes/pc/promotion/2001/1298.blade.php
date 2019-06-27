@@ -4,7 +4,7 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
 <style type="text/css">
-        .subContainer {
+.subContainer {
     min-height:auto !important;
     margin-bottom:0 !important;
 }
@@ -22,13 +22,59 @@
 .sec01 , .sec05{background:#ececec;}
 .sec03{background:#c5cbcd;}
 .sec06{background:#555555;}
+
+/*타이머*/
+.time {width:100%; text-align:center; background:#f5f5f5}
+.time {text-align:center; padding:20px 0}
+.time table {width:1120px; margin:0 auto}
+.time table td:last-child {font-size:40px}
+.time table td img {width:80%}
+.time .time_txt {font-size:28px; color:#000; letter-spacing: -1px; font-weight:600}
+.time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+.time p {text-alig:center}
+@@keyframes upDown{
+from{color:#000}
+50%{color:#0086ed}
+to{color:#000}
+}
+@@-webkit-keyframes upDown{
+from{color:#000}
+50%{color:#0086ed}
+to{color:#000}
+}
 </style>
 
 
     <div class="evtContent NGR" id="evtContainer">      
+        <!-- 타이머 -->
+        <div class="evtCtnsBox time NGEB"  id="newTopDday">
+            <div>
+                <table>
+                    <tr>                        
+                        <td class="time_txt"><span>텀블러 무료배포</span><br>이벤트 마감까지</td>
+                        <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">일 </td>
+                        <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} </span>마감!</td>
+                    </tr>
+                </table>                
+            </div>
+        </div>
+        <!-- 타이머 //-->
 
         <div class="evtCtnsBox top_bg">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_top.jpg" alt="텀블러 무료 배포">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_top.jpg" alt="텀블러 무료 배포" usemap="#1298a">
+            <map name="#1298a" id="#1298a">
+            <area shape="rect" coords="339,776,783,847" href="#none"target="_blank" alt="텀블러 응모하기"/>
+            </map>
         </div>
         <div class="evtCtnsBox sec01">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_sec01.jpg" alt="신의 한 수 베너">
@@ -47,7 +93,12 @@
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
         <div class="evtCtnsBox sec05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_sec05.jpg" alt="경찰 합격비법"> 
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_sec05.jpg" alt="경찰 합격비법" usemap="#1298b">
+            <map name="#1298b" id="#1298b">
+            <area shape="rect" coords="347,586,518,634" href="https://www.willbes.net/promotion/index/code/1137" target="_blank" alt="지원혜택 자세히보기"/>
+            <area shape="rect" coords="922,362,1029,433" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" alt="신광은경찰 자세히보기"/>
+            <area shape="rect" coords="926,562,1027,634" href="https://police.willbes.net/promotion/index/cate/3001/code/1015" target="_blank" alt="기본이론 자세히보기"/>
+            </map>
         </div>  
         <div class="evtCtnsBox sec06">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_sec06.jpg" alt="이벤트 유의사항"> 
@@ -56,5 +107,13 @@
     </div>
     <!-- End Container --> 
 
+    <script type="text/javascript">
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
+    </script>
 
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

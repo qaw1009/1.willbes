@@ -36,7 +36,7 @@ class Cart extends \app\controllers\FrontController
             array_set($results, $count_key, array_get($results, $count_key, 0) + 1);
 
             // 상품 금액
-            array_set($results, $price_key, array_get($results, $price_key, 0) + $row['RealSalePrice']);
+            array_set($results, $price_key, array_get($results, $price_key, 0) + ($row['RealSalePrice'] * $row['ProdQty']));
 
             // 강좌, 교재 목록 구분, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재)
             $results['list'][$row['CartType']][] = $row;
@@ -273,6 +273,7 @@ class Cart extends \app\controllers\FrontController
         $add_data = [
             'prod_code' => $prod_code,
             'prod_code_sub' => $this->_reqP('prod_code_sub'),
+            'prod_qty' => $this->_reqP('prod_qty'),
             'site_code' => $site_code,
             'is_direct_pay' => $is_direct_pay,
             'is_visit_pay' => $is_visit_pay,

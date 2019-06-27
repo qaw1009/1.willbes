@@ -173,9 +173,10 @@ class CartFModel extends BaseOrderFModel
      * @param string $prod_book_code [교재상품코드]
      * @param string $parent_prod_code [부모상품코드 (강좌상품코드)]
      * @param array $arr_input_prod_code [미사용, 교재상품과 동시에 장바구니에 저장될 상품코드, form input 상품코드]
+     * @param int $prod_qty [상품수량]
      * @return bool|string [true : 구매가능, string : 구매불가]
      */
-    public function checkStudentBook($site_code, $prod_book_code, $parent_prod_code, $arr_input_prod_code = [])
+    public function checkStudentBook($site_code, $prod_book_code, $parent_prod_code, $arr_input_prod_code = [], $prod_qty = 1)
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
@@ -191,7 +192,12 @@ class CartFModel extends BaseOrderFModel
         }
         $arr_target_prod_code = array_pluck($target_rows, 'ProdCode');
 
-        // 2. 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
+        // 2. 1권만 구매 가능
+        if ($prod_qty > 1) {
+            return '수강생 교재는 1권만 구매 가능합니다.';
+        }
+
+        // 3. 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
         $book_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
             'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $prod_book_code, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]
         ]);
@@ -200,7 +206,7 @@ class CartFModel extends BaseOrderFModel
             return '이미 동일한 수강생 교재를 구매하셨습니다.';
         }
 
-        // 3. 회원이 구매한 결제완료된 내강의실 정보 조회
+        // 4. 회원이 구매한 결제완료된 내강의실 정보 조회
         $my_lecture_rows = $this->orderListFModel->getMemberMyLectureByProdCodeSub($arr_target_prod_code);
         if (empty($my_lecture_rows) === false) {
             return true;
@@ -322,6 +328,12 @@ class CartFModel extends BaseOrderFModel
                     $is_direct_pay_change = true;
                 }
 
+                // 상품 수량
+                $prod_qty = array_get($input, 'prod_qty.' . $prod_code, 1);
+                if (empty($prod_qty) === true || is_numeric($prod_qty) === false || $prod_qty < 1) {
+                    $prod_qty = 1;
+                }
+
                 // 데이터 등록
                 $data = [
                     'MemIdx' => $sess_mem_idx,
@@ -331,6 +343,7 @@ class CartFModel extends BaseOrderFModel
                     'ParentProdCode' => $prod_row['ParentProdCode'],
                     'SaleTypeCcd' => $prod_row['SaleTypeCcd'],
                     'SalePatternCcd' => $sale_pattern_ccd,
+                    'ProdQty' => $prod_qty,
                     'IsDirectPay' => $is_direct_pay_change === true ? 'N' : $is_direct_pay,
                     'IsVisitPay' => $is_visit_pay,
                     'TargetOrderIdx' => element('target_order_idx', $input),
@@ -442,7 +455,7 @@ class CartFModel extends BaseOrderFModel
                 $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
                 
                 // 전체상품 주문금액
-                $total_prod_order_price += $row['RealSalePrice'];
+                $total_prod_order_price += $row['RealSalePrice'] * $row['ProdQty'];
             }
 
             if ($is_delivery_info === true) {

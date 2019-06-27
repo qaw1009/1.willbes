@@ -158,7 +158,8 @@
                                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 80px;">
-                                        <col style="width: 550px;">
+                                        <col style="width: 490px;">
+                                        <col style="width: 60px;">
                                         <col style="width: 160px;">
                                         <col style="width: 150px;">
                                     </colgroup>
@@ -166,6 +167,7 @@
                                     <tr>
                                         <th><input type="checkbox" name="_is_all" class="all-check" data-tab-id="book"/><span class="row-line">|</span></th>
                                         <th>상품정보<span class="row-line">|</span></th>
+                                        <th>수량<span class="row-line">|</span></th>
                                         <th>판매가<span class="row-line">|</span></th>
                                         <th>결제/삭제</th>
                                     </tr>
@@ -176,6 +178,7 @@
                                             <tr>
                                                 <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
                                                 <td class="w-list tx-left pl20"><span class="pBox p3">교재</span> {{ $row['ProdName'] }}</td>
+                                                <td>{{ $row['ProdQty'] }}</td>
                                                 <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
                                                 <td class="w-buy">
                                                     <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="book" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>

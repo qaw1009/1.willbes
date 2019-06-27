@@ -53,6 +53,11 @@ class OrderFModel extends BaseOrderFModel
                 return '장바구니와 주문상품의 구분이 일치하지 않습니다.';
             }
 
+            // 상품수량 체크
+            if (empty($row['ProdQty']) === true || is_numeric($row['ProdQty']) === false || $row['ProdQty'] < 1) {
+                return '상품수량 정보가 올바르지 않습니다.';
+            }
+
             // 사용자 패키지 가격 확인
             if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture']) {
                 if (empty($row['CalcPriceData']) === true || $row['CalcPriceData'] == 'NODATA') {
@@ -66,15 +71,27 @@ class OrderFModel extends BaseOrderFModel
             // 주문정보 입력에서만 수강생교재 체크
             if ($make_type == 'order') {
                 if ($row['CartProdType'] == 'book') {
-                    $check_student_book = $this->cartFModel->checkStudentBook($row['SiteCode'], $row['ProdCode'], $row['ParentProdCode']);
+                    $check_student_book = $this->cartFModel->checkStudentBook($row['SiteCode'], $row['ProdCode'], $row['ParentProdCode'], $row['ProdQty']);
                     if ($check_student_book !== true) {
                         return $check_student_book;
                     }
                 }
             }
 
-            // 상품 결제금액 초기화
-            $row['RealPayPrice'] = $row['RealSalePrice'];
+            // 배송정보 입력 여부
+            if ($is_delivery_info === false && $row['IsDeliveryInfo'] == 'Y') {
+                $is_delivery_info = true;
+            }
+
+            // 패키지상품 포함 여부
+            if ($is_package === false && ends_with($row['CartProdType'], '_pack_lecture') === true) {
+                $is_package = true;
+            }
+
+            // 변수 초기화
+            $prod_qty = $make_type == 'pay' ? 1 : $row['ProdQty'];      // 상품수량
+            $row['RealPayPrice'] = $row['RealSalePrice'] * $prod_qty;   // 실결제금액
+            $row['CouponDiscPrice'] = 0;                                // 쿠폰할인금액
 
             if ($make_type == 'order') {
                 // 주문정보 입력에서 필요한 데이터 생성
@@ -120,7 +137,8 @@ class OrderFModel extends BaseOrderFModel
             if (($make_type == 'pay' && ($use_point > 0 || $row['CouponDiscPrice'] > 0)) || $row['IsPoint'] != 'Y') {
                 // do nothing
             } else {
-                $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? (int) ($row['RealPayPrice'] * ($row['PointSavePrice'] / 100)) : $row['PointSavePrice'];
+                $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? (int) ($row['RealSalePrice'] * ($row['PointSavePrice'] / 100)) : $row['PointSavePrice'];
+                $row['RealSavePoint'] = $row['RealSavePoint'] * $prod_qty;
 
                 if ($row['PointApplyCcd'] == $this->_point_apply_ccd['book']) {
                     $row['RealSaveBookPoint'] = $row['RealSavePoint'];
@@ -129,36 +147,41 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
-            // 배송정보 입력 여부
-            if ($is_delivery_info === false && $row['IsDeliveryInfo'] == 'Y') {
-                $is_delivery_info = true;
-            }
-
-            // 패키지상품 포함 여부
-            if ($is_package === false && ends_with($row['CartProdType'], '_pack_lecture') === true) {
-                $is_package = true;
-            }
-
             if ($row['CartProdType'] == 'delivery_price') {
                 // 주문 배송료, 실제 결제 배송료
                 $delivery_price = $row['RealSalePrice'];
                 $delivery_pay_price = $row['RealPayPrice'];
             } else {
                 // 전체상품 주문금액, 실제 결제금액, 실제 적립 포인트, 전체상품수
-                $total_prod_order_price += $row['RealSalePrice'];
-                $total_prod_pay_price += $row['RealPayPrice'];
+                $total_prod_order_price += $row['RealSalePrice'] * $row['ProdQty'];
+                $total_prod_pay_price += $row['RealSalePrice'] * $row['ProdQty'] - $row['CouponDiscPrice'];
                 $total_save_lec_point += $row['RealSaveLecPoint'];
                 $total_save_book_point += $row['RealSaveBookPoint'];
                 $total_save_point += $row['RealSavePoint'];
-                $total_prod_cnt++;
+                $total_prod_cnt += 1 * $row['ProdQty'];
             }
 
             if ($row['IsUsePoint'] == 'Y') {
                 // 포인트 사용 가능상품의 실제 결제금액 합계 (온라인 단강좌, 온라인 수강연장, 교재상품만 구매할 경우 사용 가능)
-                $total_use_point_target_price += $row['RealPayPrice'];
+                $total_use_point_target_price += $row['RealSalePrice'] * $row['ProdQty'] - $row['CouponDiscPrice'];
             }
 
-            $results['list'][] = $row;
+            if ($make_type == 'pay' && $row['ProdQty'] > 1) {
+                for($i = 1; $i <= $row['ProdQty']; $i++) {
+                    // 1번째 상품만 쿠폰 적용
+                    if ($i > 1) {
+                        $row['RealPayPrice'] = $row['RealSalePrice'];
+                        $row['UserCouponIdx'] = '';
+                        $row['CouponDiscPrice'] = 0;
+                        $row['CouponDiscType'] = 'R';
+                        $row['CouponDiscRate'] = 0;
+                    }
+
+                    $results['list'][] = $row;
+                }
+            } else {
+                $results['list'][] = $row;
+            }
         }
 
         // 사용포인트 체크 (온라인 단강좌, 교재상품만 구매할 경우 사용 가능)
@@ -861,7 +884,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 모의고사 접수등록
-            // 접수번호 초기값 (경찰 5자리, 공무원 8자리)
+            // 접수번호 초기값 (경찰 5자리, 공무원 7자리)
             switch (config_app('SiteGroupCode')) {
                 case '1001' : $first_take_number = '10001'; break;
                 case '1002' : $first_take_number = '1000001'; break;

@@ -1,6 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
         .subContainer {
@@ -85,7 +86,5 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_05.jpg" alt="이벤트 유의사항"  />    
         </div>        
     </div> 
-    <!-- End Container -->
-
-    
+    <!-- End Container -->    
 @stop

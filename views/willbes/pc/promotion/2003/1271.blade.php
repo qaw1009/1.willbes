@@ -36,7 +36,7 @@
   .PeMenu li a img.off {display:block}
   .PeMenu li a img.on {display:none}
 
-  .slide_con1 {position:absolute; width:640px; top:620px; left:50%; margin-left:-325px;}
+  .slide_con1 {position:absolute; width:640px; top:620px; left:50%; margin-left:-325px; z-index:10}
   .slide_con1 p {position:absolute; top:35%; width:30px; z-index:10}
   .slide_con1 img {width:100%;}
   .slide_con1 p a {cursor:pointer}
@@ -46,20 +46,18 @@
   /* 상단 메뉴 제어 */
   .jbMenu {display:none}
   .jbMenu {position:absolute; top:0px; width:100%; background:url("https://static.willbes.net/public/images/promotion/2019/06/1271_t_navi_bg.png"); display:block; border-bottom:#002c59 solid 1px; z-index:100}
-  .jbMenu ul {width:100%; max-width:980px; margin:0 auto}
-  .jbMenu li {display:inline; float:left; width:}
+  .jbMenu div {width:100%; max-width:980px; margin:0 auto}
   .jbFixed {position:fixed; top: 0px}
   </style>
 
  <div class="p_re evtContent NGR" id="evtContainer">
   <div class="jbMenu cf">
-    <ul>
-      <li><img src="https://static.willbes.net/public/images/promotion/2019/06/1271_t_navi.png" usemap="#Map_1271_welcome"  title="선택의 폭을 넓히면 공무원 합격이 더 빨라집니다." border="0" />
-		<map name="Map_1271_welcome">
-		  <area shape="rect" coords="698,23,898,82" href="https://www.willbes.net/promotion/index/code/1137" target="_blank">
-		</map>
-		</li>
-    </ul>
+    <div>
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1271_t_navi.png" usemap="#Map_1271_welcome"  title="선택의 폭을 넓히면 공무원 합격이 더 빨라집니다." border="0" />
+      <map name="Map_1271_welcome">
+        <area shape="rect" coords="698,23,898,82" href="https://www.willbes.net/promotion/index/code/1137" target="_blank">
+      </map>
+    </div>
   </div>
   <div class="slide_con1">
     <ul id="slidesImg1">

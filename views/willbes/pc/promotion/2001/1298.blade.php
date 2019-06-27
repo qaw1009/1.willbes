@@ -71,10 +71,10 @@ to{color:#000}
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox top_bg">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_top.jpg" alt="텀블러 무료 배포" usemap="#1298a">
-            <map name="#1298a" id="#1298a">
-            <area shape="rect" coords="339,776,783,847" href="#none"target="_blank" alt="텀블러 응모하기"/>
-            </map>
+        <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_top.jpg" alt="텀블러 무료 배포" usemap="#Map1298a" border="0">
+        <map name="Map1298a" id="Map1298a">
+            <area shape="rect" coords="333,774,782,849" href="#none" />
+        </map>
         </div>
         <div class="evtCtnsBox sec01">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_sec01.jpg" alt="신의 한 수 베너">
@@ -93,8 +93,8 @@ to{color:#000}
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
         <div class="evtCtnsBox sec05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_sec05.jpg" alt="경찰 합격비법" usemap="#1298b">
-            <map name="#1298b" id="#1298b">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_sec05.jpg" alt="경찰 합격비법" usemap="#m1298b">
+            <map name="m1298b" id="m1298b">
             <area shape="rect" coords="347,586,518,634" href="https://www.willbes.net/promotion/index/code/1137" target="_blank" alt="지원혜택 자세히보기"/>
             <area shape="rect" coords="922,362,1029,433" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" alt="신광은경찰 자세히보기"/>
             <area shape="rect" coords="926,562,1027,634" href="https://police.willbes.net/promotion/index/cate/3001/code/1015" target="_blank" alt="기본이론 자세히보기"/>

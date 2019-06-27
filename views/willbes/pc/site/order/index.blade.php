@@ -40,12 +40,14 @@
                         <table cellspacing="0" cellpadding="0" class="listTable buyTable under-gray tx-gray">
                             <colgroup>
                                 <col>
+                                <col style="width: 60px;">
                                 <col style="width: 130px;">
                                 <col style="width: 130px;">
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>상품정보<span class="row-line">|</span></th>
+                                <th>수량<span class="row-line">|</span></th>
                                 <th>정가(할인율)<span class="row-line">|</span></th>
                                 <th>실 결제금액</th>
                             </tr>
@@ -58,7 +60,7 @@
                                             <dt class="tit">
                                                 <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
                                                 {{ $row['ProdName'] }}
-                                                <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-real-sale-price="{{ $row['RealSalePrice'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
+                                                <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-real-sale-price="{{ $row['RealPayPrice'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
                                                 <input type="hidden" name="coupon_detail_idx[{{ $row['CartIdx'] }}]" value="" data-cart-idx="{{ $row['CartIdx'] }}" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
                                                 @if($row['CartProdType'] == 'mock_exam')
                                                     {{-- 모의고사 응시정보 --}}
@@ -106,6 +108,7 @@
                                             @endif
                                         </dl>
                                     </td>
+                                    <td>{{ $row['CartProdType'] == 'book' ? $row['ProdQty'] : '' }}</td>
                                     <td class="w-buy-price">
                                         @if(ends_with($row['SalePatternCcd'], '001') === true)
                                             {{-- 정가(할인율), 판매형태가 일반일 경우만 노출 (재수강, 수강연장 제외) --}}
@@ -117,8 +120,8 @@
                                     </td>
                                     <td class="w-buy-price">
                                         <dl>
-                                            <dt class="tx-light-blue"><span class="real-pay-price">{{ number_format($row['RealSalePrice']) }}</span>원</dt>
-                                            <dt class="origin-price tx-gray d_none wrap-real-sale-price">(<span class="real-sale-price">{{ number_format($row['RealSalePrice']) }}</span>원)</dt>
+                                            <dt class="tx-light-blue"><span class="real-pay-price">{{ number_format($row['RealPayPrice']) }}</span>원</dt>
+                                            <dt class="origin-price tx-gray d_none wrap-real-sale-price">(<span class="real-sale-price">{{ number_format($row['RealPayPrice']) }}</span>원)</dt>
                                         </dl>
                                     </td>
                                 </tr>
@@ -672,19 +675,19 @@
                 $regi_form.find('.total-pay-price').html(addComma(total_pay_price));
 
                 // 적립포인트 계산
-                if (point_disc_price > 0 || total_coupon_disc_price > 0) {
-                    // 포인트, 쿠폰을 사용한 경우 적립포인트 없음
+                if (point_disc_price > 0) {
+                    // 포인트를 사용한 경우 적립포인트 없음
                     $regi_form.find('#total_save_point').html('0');
                 } else {
-                    var cart_data = {}, cart_idx, real_pay_price, total_save_point = 0;
+                    var cart_data = {}, cart_idx, coupon_disc_price = 0, total_save_point = 0;
 
                     $regi_form.find('input[name="cart_idx[]"]').each(function() {
                         cart_idx = $(this).val();
                         cart_data = $(this).data();
-                        real_pay_price = cart_data.realSalePrice - parseInt($regi_form.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').data('coupon-disc-price'));
+                        coupon_disc_price = parseInt($regi_form.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').data('coupon-disc-price'));
 
-                        if (cart_data.isPoint === 'Y') {
-                            total_save_point += cart_data.savePointType === 'R' ? parseInt(real_pay_price * (cart_data.savePointPrice / 100), 10) : cart_data.savePointPrice;
+                        if (cart_data.isPoint === 'Y' && coupon_disc_price < 1) {
+                            total_save_point += cart_data.savePointType === 'R' ? parseInt(cart_data.realSalePrice * (cart_data.savePointPrice / 100), 10) : cart_data.savePointPrice;
                         }
                     });
 

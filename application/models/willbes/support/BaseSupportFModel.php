@@ -352,7 +352,7 @@ class BaseSupportFModel extends WB_Model
     {
         try {
             $board_attach_data = $_FILES['attach_file']['size'];
-            $arr_board_attach = $this->_getBoardAttachArray($board_idx, $reg_type, $attach_file_type);
+            $arr_board_attach = $this->_getBoardAttachArray($board_idx, $reg_type, $attach_file_type, 'BoardIdx');
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $sum_size = 0;
@@ -422,16 +422,17 @@ class BaseSupportFModel extends WB_Model
 
     /**
      * 첨삭게시판 파일 수정
+     * @param $bm_idx
      * @param $ba_idx
      * @param $reg_type
      * @param $attach_file_type
      * @return array|bool
      */
-    protected function modifyBoardAttachForAssignment($ba_idx, $reg_type, $attach_file_type)
+    protected function modifyBoardAttachForAssignment($bm_idx, $ba_idx, $reg_type, $attach_file_type)
     {
         try {
             $board_attach_data = $_FILES['attach_file']['size'];
-            $arr_board_attach = $this->_getBoardAttachArray($ba_idx, $reg_type, $attach_file_type);
+            $arr_board_attach = $this->_getBoardAttachArray($ba_idx, $reg_type, $attach_file_type, 'BaIdx');
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $sum_size = 0;
@@ -447,7 +448,7 @@ class BaseSupportFModel extends WB_Model
             }
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Y') . '/' . date('md');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $bm_idx . '/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($ba_idx) , $upload_sub_dir
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite']);
 
@@ -573,17 +574,18 @@ class BaseSupportFModel extends WB_Model
 
     /**
      * 게시판 식별자 기준 파일 목록 조회
-     * @param $board_idx
+     * @param $idx
      * @param $reg_type
      * @param $attach_file_type
+     * @param $where_column
      * @return array|int
      */
-    private function _getBoardAttachArray($board_idx, $reg_type, $attach_file_type)
+    private function _getBoardAttachArray($idx, $reg_type, $attach_file_type, $where_column)
     {
         $arr_condition = [
             'EQ' => [
                 'IsStatus' => 'Y',
-                'BoardIdx' => $board_idx,
+                $where_column => $idx,
                 'RegType' => $reg_type,
                 'AttachFileType' => $attach_file_type,
             ]

@@ -14,7 +14,7 @@
             <ul class="PriceBox p_re NG">
                 <li>
                     <div>상품금액</div>
-                    <div class="price tx-light-blue">{{ number_format($cart_data['RealSalePrice']) }}원</div>
+                    <div class="price tx-light-blue">{{ number_format($cart_data['RealPayPrice']) }}원</div>
                 </li>
                 <li class="price-img">
                     <span class="row-line">|</span>
@@ -30,7 +30,7 @@
                 </li>
                 <li>
                     <div>할인적용금액</div>
-                    <span class="price price-total tx-light-blue"><span id="_real_pay_price">{{ number_format($cart_data['RealSalePrice']) }}</span>원</span>
+                    <span class="price price-total tx-light-blue"><span id="_real_pay_price">{{ number_format($cart_data['RealPayPrice']) }}</span>원</span>
                 </li>
             </ul>
         </div>
@@ -133,6 +133,7 @@
     var $parent_regi_form = $('#regi_form');
     var cart_idx = '{{ $cart_data['CartIdx'] }}';
     var real_sale_price = '{{ $cart_data['RealSalePrice'] }}';
+    var real_pay_price = '{{ $cart_data['RealPayPrice'] }}';
     var coupon_disc_price = 0;
 
     $(document).ready(function() {
@@ -144,7 +145,7 @@
             coupon_disc_price = (input_data.discType === 'R') ? real_sale_price * (input_data.discRate / 100) : input_data.discRate;
             $('#_coupon_disc_price').html(addComma(coupon_disc_price));
             // 할인적용금액
-            $('#_real_pay_price').html(addComma(real_sale_price - coupon_disc_price));
+            $('#_real_pay_price').html(addComma(real_pay_price - coupon_disc_price));
         });
 
         // 쿠폰 적용 버튼 클릭
@@ -160,7 +161,7 @@
                 $cart_row.find('.wrap-real-sale-price').removeClass('d_none');
                 $cart_row.find('.coupon-name').html($selected_coupon.data('coupon-name'));
                 $cart_row.find('.coupon-disc-price').html(addComma(coupon_disc_price));
-                $cart_row.find('.real-pay-price').html(addComma(real_sale_price - coupon_disc_price));
+                $cart_row.find('.real-pay-price').html(addComma(real_pay_price - coupon_disc_price));
 
                 alert('적용 되었습니다.');
                 closeWin('{{ $ele_id }}');

@@ -178,6 +178,11 @@
                                     </td>
                                     <td class="w-notice p_re">
                                         <div class="priceWrap chk buybtn p_re">
+                                            <select name="prod_qty[{{ $row['ProdCode'] }}]" title="수량" class="bookselect">
+                                                @for($i = 1; $i <= 10; $i++)
+                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                            </select>
                                             <span class="chkBox">
                                                 <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}:book" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_books" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/>
                                             </span>

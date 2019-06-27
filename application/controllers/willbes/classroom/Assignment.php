@@ -182,7 +182,7 @@ class Assignment extends BaseSupport
             $method = 'modify';
             $ba_idx = $this->_reqP('ba_idx');
         }
-        $result = $this->supportBoardTwoWayFModel->{$method . 'BoardForAssignment'}($inputData, $ba_idx);
+        $result = $this->supportBoardTwoWayFModel->{$method . 'BoardForAssignment'}($this->_bm_idx, $inputData, $ba_idx);
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

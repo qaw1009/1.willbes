@@ -83,11 +83,9 @@
 
         <div class="evtCtnsBox zero100_05">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_05.jpg" alt="이벤트 유의사항"  />    
-        </div>
-
-        
-
+        </div>        
+    </div> 
     <!-- End Container -->
 
-    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+    
 @stop

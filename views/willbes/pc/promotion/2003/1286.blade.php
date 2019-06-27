@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
+
     <!-- Container -->
     <style type="text/css">
         .subContainer {
@@ -33,7 +33,6 @@
 		90%{left:0; opacity: .9;}
 		100%{left:56px; opacity: 1;}
         }
-
         .zero100_02 {background:url(https://static.willbes.net/public/images/promotion/2019/06/zero100_02_bg.jpg) no-repeat center top;}
         .zrCts02 {position:relative; width:1120px; margin:0 auto;}               
         .zrCts02 span {position:absolute; width:204px; top:710px; left:335px; z-index:1; animation:ani03 1s infinite;}
@@ -41,8 +40,7 @@
 		0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
 		50%{-webkit-transform:scale3d(1.15,1.15,1);transform:scale3d(1.15,1.15,1)}
 		100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
-        }
-        
+        }        
         .zero100_03 {background:#fbfa00}
         .zero100_04 {}
         .zero100_05 {}

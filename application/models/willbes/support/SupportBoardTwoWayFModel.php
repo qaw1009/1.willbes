@@ -362,19 +362,21 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             }
 
             // 카테고리
-            if ($result['SiteCode'] != config_item('app_intg_site_code')) {
-                // 카테고리삭제
-                $up_cate_data['BoardIdx'] = $board_idx;
-                if ($this->updateBoardCategory($up_cate_data) === false) {
-                    throw new \Exception('게시판 수정에 실패했습니다.');
-                }
+            if (empty($board_category_data['site_category']) === false) {
+                if ($result['SiteCode'] != config_item('app_intg_site_code')) {
+                    // 카테고리삭제
+                    $up_cate_data['BoardIdx'] = $board_idx;
+                    if ($this->updateBoardCategory($up_cate_data) === false) {
+                        throw new \Exception('게시판 수정에 실패했습니다.');
+                    }
 
-                $set_board_category_data['BoardIdx'] = $board_idx;
-                $set_board_category_data['CateCode'] = $board_category_data['site_category'];
-                $set_board_category_data['RegMemIdx'] = $this->session->userdata('mem_idx');
-                $set_board_category_data['RegIp'] = $this->input->ip_address();
-                if ($this->addBoardCategory($set_board_category_data) === false) {
-                    throw new \Exception('게시판 수정에 실패했습니다.');
+                    $set_board_category_data['BoardIdx'] = $board_idx;
+                    $set_board_category_data['CateCode'] = $board_category_data['site_category'];
+                    $set_board_category_data['RegMemIdx'] = $this->session->userdata('mem_idx');
+                    $set_board_category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->addBoardCategory($set_board_category_data) === false) {
+                        throw new \Exception('게시판 수정에 실패했습니다.');
+                    }
                 }
             }
 
@@ -417,9 +419,11 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                 'UpdMemName'=> $this->session->userdata('mem_name'),
                 'UpdDatm' => date('Y-m-d H:i:s')
             ])->where('BoardIdx', $board_idx)
-                ->where('IsStatus', 'Y')
-                ->where_not_in('ReplyStatusCcd', $reply_status_ccd_complete)
-                ->update($this->_table['lms_board']);
+                ->where('IsStatus', 'Y');
+            if (empty($reply_status_ccd_complete) === false) {
+                $is_update = $is_update->where_not_in('ReplyStatusCcd', $reply_status_ccd_complete);
+            }
+            $is_update = $is_update->update($this->_table['lms_board']);
 
             if ($is_update === false) {
                 throw new \Exception('삭제에 실패했습니다.');
@@ -574,10 +578,11 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
     /**
      * 과제 제출
+     * @param $bm_idx
      * @param array $inputData
      * @return array|bool
      */
-    public function addBoardForAssignment($inputData = [])
+    public function addBoardForAssignment($bm_idx, $inputData = [])
     {
         $this->_conn->trans_begin();
         try {
@@ -599,7 +604,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             }
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Y') . '/' . date('md');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $bm_idx . '/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($ba_idx), $upload_sub_dir
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite']);
 
@@ -635,11 +640,12 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
     /**
      * 과제 임시 저장 시 내용 수정
-     * @param $input
+     * @param $bm_idx
+     * @param array $input
      * @param $ba_idx
      * @return array|bool
      */
-    public function modifyBoardForAssignment($input = [], $ba_idx) {
+    public function modifyBoardForAssignment($bm_idx, $input = [], $ba_idx) {
         $this->_conn->trans_begin();
         try {
             /*$board_idx = element('board_idx', $input);*/
@@ -664,7 +670,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
             $reg_type = 0;              //0:일반유저등록, 1:관리자등록
             $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
-            $is_attach = $this->modifyBoardAttachForAssignment($ba_idx, $reg_type, $attach_file_type);
+            $is_attach = $this->modifyBoardAttachForAssignment($bm_idx, $ba_idx, $reg_type, $attach_file_type);
             if ($is_attach !== true) {
                 throw new \Exception(empty($is_attach['ret_msg']) === true ? '파일 등록에 실패했습니다.' : $is_attach['ret_msg']);
             }
@@ -675,6 +681,38 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 서포터즈 회원별 과제 조회
+     * @param $is_count
+     * @param array $arr_condition
+     * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listBoardForSupprotersAssignment($is_count, $arr_condition = [], $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['twoway_board_2']}
+            LEFT JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx AND a.MemIdx = {$this->session->userdata('mem_idx')} AND a.IsStatus = 'Y'
+        ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

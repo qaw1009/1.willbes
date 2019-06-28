@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/site/supporters/BaseSupporters.php';
 
 class Member extends BaseSupporters
 {
-    protected $temp_models = array();
+    protected $temp_models = array('board/boardSupporters', 'board/boardAssignmentSupporters');
     protected $helpers = array();
 
     public function __construct()
@@ -225,21 +225,21 @@ class Member extends BaseSupporters
 
     public function ajaxAssignmentDataTable()
     {
-        /*$arr_condition = [
+        $arr_condition = [
             'EQ' => [
-                'Board.SiteCode' => $this->_reqP('search_site_code'),
-                'Board.SupportersIdx' => $this->_reqP('search_supporters_idx'),
-                'Board.BmIdx' => $this->_reqP('search_supporters_type')
-            ],
-            'ORG' => [
-                'LKB' => [
-                    'M.MemId' => $this->_reqP('search_value'),
-                    'M.MemName' => $this->_reqP('search_value'),
-                ]
+                'b.BmIdx' => '104',
+                'b.SupportersIdx' => $this->_reqP('supporters_idx'),
+                'b.IsStatus' => 'Y',
+                'b.IsUse' => 'Y'
             ]
-        ];*/
-        $count = 0;
+        ];
+
         $list = [];
+        $count = $this->boardAssignmentSupportersModel->listBoardForAssignmentSupportersMember($this->_reqP('member_idx'), true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->boardAssignmentSupportersModel->listBoardForAssignmentSupportersMember($this->_reqP('member_idx'),false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['b.BoardIdx' => 'desc']);
+        }
 
         return $this->response([
             'recordsTotal' => $count,
@@ -248,13 +248,91 @@ class Member extends BaseSupporters
         ]);
     }
 
-    public function ajaxFreeBoard()
+    public function ajaxSuggest()
     {
+        $arr_hidden_data['supporters_idx'] = $this->_reqG('supporters_idx');
+        $arr_hidden_data['member_idx'] = $this->_reqG('member_idx');
 
+        $this->load->view('site/supporters/member/layer/list_suggest', [
+            'arr_hidden_data' => $arr_hidden_data
+        ]);
     }
 
-    public function ajaxMyInfo()
+    public function ajaxSuggestDataTable()
     {
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => '105',
+                'b.SupportersIdx' => $this->_reqP('supporters_idx'),
+                'b.RegMemIdx' => $this->_reqP('member_idx'),
+                'b.IsStatus' => 'Y',
+                'b.IsUse' => 'Y'
+            ]
+        ];
 
+        $list = [];
+        $count = $this->boardSupportersModel->listSuggestForMember(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->boardSupportersModel->listSuggestForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['b.BoardIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    public function ajaxMyClass()
+    {
+        $arr_hidden_data['supporters_idx'] = $this->_reqG('supporters_idx');
+        $arr_hidden_data['member_idx'] = $this->_reqG('member_idx');
+
+        $column = 'SmcIdx, IsPublic, Content, AttachFileName, AttachFileRealName, AttachFilePath';
+        $arr_condition = [
+            'EQ' => [
+                'SupportersIdx' => $arr_hidden_data['supporters_idx'],
+                'MemIdx' => $arr_hidden_data['member_idx']
+            ]
+        ];
+        $data = $this->supportersMemberModel->findMyClass($arr_condition, $column);
+
+        $this->load->view('site/supporters/member/layer/list_myClass', [
+            'method' => 'PUT',
+            'arr_hidden_data' => $arr_hidden_data,
+            'data' => $data
+        ]);
+    }
+
+    public function storeMyClass()
+    {
+        $rules = [
+            ['field' => 'supporters_idx', 'label' => '서포터즈식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'member_idx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'smc_idx', 'label' => '나의소개식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'myclass_content', 'label' => '내용', 'rules' => 'trim|required'],
+            ['field' => 'is_public', 'label' => '공개여부', 'rules' => 'trim|required|in_list[Y,N]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+        $idx = $this->_reqP('smc_idx');
+        $inputData = $this->_setInputData($this->_reqP(null, false));
+
+        //_addBoard, _modifyBoard
+        $result = $this->supportersMemberModel->modifyMyClass($inputData, $idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    private function _setInputData($input){
+        $input_data = [
+            'Content' => element('myclass_content', $input),
+            'IsPublic' => element('is_public', $input),
+            'UpdAdminIdx' => $this->session->userdata('admin_idx')
+        ];
+        return$input_data;
     }
 }

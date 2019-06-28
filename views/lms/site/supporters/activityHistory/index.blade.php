@@ -122,7 +122,7 @@
                 if ($(this).data('bm-idx') == '104') {
                     var _url = "{{ site_url("/site/supporters/activityHistory/readAssignmentModal/") }}" + $(this).data('idx');
                 } else {
-                    var _url = "{{ site_url("/site/supporters/activityHistory/readFreeBoardModal/") }}" + $(this).data('idx');
+                    var _url = "{{ site_url("/site/supporters/activityHistory/readSuggestModal/") }}" + $(this).data('idx');
                 }
                 var board_idx = $(this).data('board-idx');
 

@@ -172,54 +172,80 @@
         <div class="evtCtnsBox evt08" id="evt08">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L.jpg" title="다드림 소문내기 이벤트 경품" />
 			<div id="movieFrame2">
-                {{--방송 전--}}
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg" title="방송전">
-                
+                @php
+                    $set_on_day = ['20190702','20190703','20190704','20190705','20190707','20190708','20190709','20190710','20190711','20190712','20190714','20190715'];
+                    $day = date('Ymd');
+                    $time = date('His');
 
-                {{--7/2 ~ 7.15 오전 9시 30분 방송 중
-                <script src="/public/vendor/jwplayer/jwplayer.js"></script>
-                <div class="movieplayer">
-                    <div class="embedWrap">
-                        <!--PC-->    
-                        <div class="embed-container" id="myElement">
-                            <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
-                            <script type="text/javascript">
-                                jwplayer("myElement").setup({
-                                width: '100%',
-                                logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
-                                image: "https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg",
-                                aspectratio: "16:9",
-                                autostart: "true",
-                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
-                            });
-                            </script>
-                        </div>
+                    if ($day < '20190702') {
+                        $live_type = 'standby';
+                    } else if ($day >= '20190702' && $day <= '20190715'){
+                        $live_type = 'on';
+                    } else {
+                        $live_type = 'off';
+                    }
 
-                        <!--모바일용-->
-                        <div class="embed-container-mobile" id="myElement">
-                            <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
-                            <script type="text/javascript">
-                                jwplayer("myElement").setup({
-                                width: '100%',
-                                logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
-                                image: "https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg",
-                                aspectratio: "16:9",
-                                autostart: "true",
-                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
-                            });
-                            </script>
+                    $live_video_type = 'off';
+                    foreach ($set_on_day as $key => $val) {
+                        if ($day == $val){
+                            if ($time >= '095000' && $time <= '122000') {
+                                $live_video_type = 'on';
+                            }
+                        }
+                    }
+                @endphp
+
+                @if ($live_type == 'standby')
+                    {{--방송 전--}}
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg" title="방송전">
+
+                @elseif ($live_type == 'on')
+                    {{--7/2 ~ 7.15 오전 9시 30분 방송 중--}}
+                    <script src="/public/vendor/jwplayer/jwplayer.js"></script>
+                    <div class="movieplayer">
+                        <div class="embedWrap">
+                            @if ($ismobile == false)
+                                <!--PC-->
+                                <div class="embed-container" id="myElement">
+                                    <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                                    <script type="text/javascript">
+                                        jwplayer("myElement").setup({
+                                        width: '100%',
+                                        logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
+                                        image: "https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg",
+                                        aspectratio: "16:9",
+                                        autostart: "true",
+                                        file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011"
+                                    });
+                                    </script>
+                                </div>
+                            @else
+                                <!--모바일용-->
+                                <div class="embed-container-mobile" id="myElement">
+                                    <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                                    <script type="text/javascript">
+                                        jwplayer("myElement").setup({
+                                        width: '100%',
+                                        logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
+                                        image: "https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg",
+                                        aspectratio: "16:9",
+                                        autostart: "true",
+                                        file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011"
+                                    });
+                                    </script>
+                                </div>
+                                <ul class="mobileCh">
+                                    <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
+                                    <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
+                                </ul>
+                            @endif
                         </div>
-                        <ul class="mobileCh">
-                            <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
-                            <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
-                        </ul>                            
                     </div>
-                </div>
-                --}}
-                
-                {{--방송종료 00:00 부터 노출
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live02.jpg" title="방송종료" />
-                --}}
+
+                @else
+                    {{--방송종료 00:00 부터 노출--}}
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live02.jpg" title="방송종료" />
+                @endif
             </div>
 			<img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09-1L.jpg" title="다드림 소문내기 이벤트 경품" />
         </div>
@@ -275,6 +301,29 @@
             var url = '{{front_url('')}}/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
             @endif
+        }
+
+        function fn_live(p_type) {
+            if(p_type == "hd"){
+                location.href = "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011/Playlist.m3u8";
+            }else{
+                location.href = "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5012/Playlist.m3u8";
+            }
+        }
+
+        /*레이어팝업*/
+        function go_popup(param) {
+            var ele_id = 'promotion_notice';
+            var data = {
+                'ele_id' : ele_id,
+                'board_idx' : param,
+                'predict_idx' : '{{ (empty($arr_promotion_params['predict_idx']) === false) ? $arr_promotion_params['predict_idx'] : '' }}',
+                'promotion_code' : '{{ $arr_base['promotion_code'] }}'
+            };
+            sendAjax('{{ front_url('/support/predictNotice/index') }}', data, function(ret) {
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                $('#popup').bPopup();
+            }, showAlertError, false, 'GET', 'html');
         }
     </script>
     {{--<script src="/public/js/willbes/jquery.transit.min.js"></script>

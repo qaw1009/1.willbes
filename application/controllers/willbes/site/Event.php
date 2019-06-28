@@ -452,6 +452,20 @@ class Event extends \app\controllers\FrontController
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 
+    public function registerStoreForCheckMember()
+    {
+        $start_date = $this->_reqG('start_date');
+        $end_date = $this->_reqG('end_date');
+
+        $data = $this->memberFModel->getMemberForJoinDate($this->session->userdata('mem_idx'), $start_date, $end_date);
+        if (empty($data) === true) {
+            $result = false;
+        } else {
+            $result = true;
+        }
+        $this->json_result(true, '정상.', '',$result);
+    }
+
     /**
      * 진행중이벤트 인덱스
      */

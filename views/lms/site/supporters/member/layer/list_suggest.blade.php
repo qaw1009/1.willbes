@@ -1,4 +1,4 @@
-<form class="form-horizontal" id="search_form_assignment" name="search_form_assignment" method="POST" onsubmit="return false;">
+<form class="form-horizontal" id="search_form_suggest" name="search_form_suggest" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     @foreach($arr_hidden_data as $key => $val)
         <input type="hidden" name="{{ $key }}" value="{{ $val }}">
@@ -11,11 +11,11 @@
             <thead>
             <tr class="bg-odd">
                 <th>NO</th>
-                <th>과제명</th>
-                <th>제출기간</th>
-                <th>제출명</th>
-                <th>제출상태</th>
-                <th>과제제출일</th>
+                <th>제목</th>
+                <th>첨부파일</th>
+                <th>등록일</th>
+                <th>공개여부</th>
+                <th>조회수</th>
             </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@
 </div>
 <script type="text/javascript">
     var $datatable;
-    var $search_form = $('#search_form_assignment');
+    var $search_form = $('#search_form_suggest');
     var $list_table = $('#list_ajax_table');
 
     $(document).ready(function() {
@@ -34,7 +34,7 @@
             serverSide: true,
             buttons: [],
             ajax: {
-                'url' : '{{ site_url('/site/supporters/member/ajaxAssignmentDataTable/') }}',
+                'url' : '{{ site_url('/site/supporters/member/ajaxSuggestDataTable/') }}',
                 'type' : 'POST',
                 'data' : function(data) {
                     return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -56,30 +56,35 @@
                     }},
                 {'data' : 'Title', 'render' : function(data, type, row, meta) {
                         if (data != '') {
-                            return '<a href="javascript:void(0);" class="btn-board-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         } else {
                             return '';
                         }
                     }},
-                {'data' : null, 'render' : function(data, type, row, meta) {
-                        return row.SupportersStartDate + '~' + row.SupportersEndDate;
+                {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
+                        var tmp_return;
+                        (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
+                        return tmp_return;
                     }},
-                {'data' : 'AssignmentTitle', 'render' : function(data, type, row, meta) {
-                        if (data != '') {
-                            return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BaIdx + '" data-board-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
-                        } else {
+                {'data' : 'RegDatm'},
+                {'data' : 'IsPublic', 'render' : function(data, type, row, meta) {
+                        if (row.IsBest == 1) {
                             return '';
+                        } else {
+                            return (data == 'Y') ? '공개' : '<p class="red">비공개</p>';
                         }
                     }},
-                {'data' : 'AssignmentStatusCcdName'},
-                {'data' : 'AssignmentRegDatm'}
+                {'data' : 'ReadCnt', 'render' : function(data, type, row, meta) {
+                        var cnt = Number(data) + Number(row.SettingReadCnt);
+                        return cnt;
+                    }}
             ]
         });
 
         init_datatable();
 
         $list_table.on('click', '.btn-read', function() {
-            var _url = "{{ site_url("/site/supporters/activityHistory/readAssignmentModal/") }}" + $(this).data('idx');
+            var _url = "{{ site_url("/site/supporters/activityHistory/readSuggestModal/") }}" + $(this).data('idx');
             var board_idx = $(this).data('board-idx');
 
             $('.btn-read').setLayer({
@@ -89,13 +94,6 @@
                 'add_param' : [
                     { 'id' : 'board_idx', 'name' : '게시판식별자', 'value' : board_idx, 'required' : true }
                 ]
-            });
-        });
-
-        $list_table.on('click', '.btn-board-read', function() {
-            $('.btn-board-read').setLayer({
-                "url" : "{{ site_url("/site/supporters/assignment/readAssignmentModal/") }}" + $(this).data('idx'),
-                "width" : "1200"
             });
         });
     });

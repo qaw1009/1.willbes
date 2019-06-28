@@ -228,6 +228,46 @@ class BoardSupportersModel extends BoardModel
     }
 
     /**
+     * 특정 회원 제안/토론 리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listSuggestForMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                b.RegMemIdx, b.BoardIdx, b.Title, b.IsPublic, b.ReadCnt, b.RegDatm ,IFNULL(fn_board_attach_data(b.BoardIdx),\'N\') AS AttachFileName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+        $from = "
+            FROM {$this->_table} AS b
+            INNER JOIN {$this->_table_supporters} AS s ON b.SupportersIdx = s.SupportersIdx AND s.IsUse = 'Y'
+        ";
+
+        // 사이트 권한 추가
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'IN' => [
+                'b.SiteCode' => get_auth_site_codes()
+            ]
+        ]);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
      * 단일 데이터 조회(데이터 update 발생 시 idx 검증)
      * @param $idx
      * @return mixed

@@ -162,8 +162,8 @@
 
         <ul class="nav nav-tabs bar_tabs mt-30" role="tablist">
             <li role="presentation"><a role="tab" href="#none" class="fn_load ajax_assignment" data-target-load="ajaxAssignment" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>과제수행</strong></a></li>
-            <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxFreeBoard" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>제안/토론</strong></a></li>
-            <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxMyInfo" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>나의 소개</strong></a></li>
+            <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxSuggest" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>제안/토론</strong></a></li>
+            <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxMyClass" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>나의 소개</strong></a></li>
         </ul>
         <div id="tab_content"></div>
 

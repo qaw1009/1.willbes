@@ -83,7 +83,7 @@ to{color:#000}
     <div class="evtCtnsBox top_bg">
     <img src="https://static.willbes.net/public/images/promotion/2019/06/1298_top.jpg" alt="텀블러 무료 배포" usemap="#Map1298a" border="0">
     <map name="Map1298a" id="Map1298a">
-        <area shape="rect" coords="333,774,782,849" href="javascript:fn_submit();" />
+        <area shape="rect" coords="333,774,782,849" href="#none" onclick="javascript:fn_submit();"/>
     </map>
     </div>
     <div class="evtCtnsBox sec01">
@@ -138,7 +138,7 @@ to{color:#000}
             return false;
         }
 
-        if (!confirm('저장하시겠습니까?')) { return true; }
+        if (!confirm('응모하시겠습니까?')) { return true; }
         ajaxSubmit($regi_form_register, _url, function(ret) {
             if(ret.ret_cd) {
                 alert(ret.ret_msg);
@@ -149,7 +149,7 @@ to{color:#000}
 
     function checkMemberJoinDate() {
         var $regi_form_register = $('#regi_form_register');
-        var _url = '{{ site_url('/event/registerStoreForCheckMember/') }}' + '?start_date=2019-07-01&end_date=2019-07-31';
+        var _url = '{{ site_url('/event/registerStoreForCheckMember/') }}' + '?start_date=2018-07-01&end_date=2019-07-31';
         var _data = {
             '{{ csrf_token_name() }}': $regi_form_register.find('input[name="{{ csrf_token_name() }}"]').val(),
             '_method': 'POST'

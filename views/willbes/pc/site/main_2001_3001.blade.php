@@ -16,8 +16,9 @@
                     <area shape="rect" coords="16,210,227,424" href=": https://police.willbes.net/pass/promotion/index/cate/3010/code/1270" target="_blank" alt="기본이론" />
                     <area shape="rect" coords="349,337,486,400" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강" />
                     <area shape="rect" coords="894,212,1102,429" href="https://police.willbes.net/pass/promotion/index/cate/3011/code/1290" target="_blank" alt="빅매치" />
-                    <area shape="rect" coords="492,339,629,398" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268#wb_04" target="_blank" alt="2단계" />
-                    <area shape="rect" coords="635,340,772,399" href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank" alt="동영상" />
+                  <area shape="rect" coords="492,339,629,398" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268#wb_04" target="_blank" alt="2단계" />
+                  <area shape="rect" coords="635,340,772,399" href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank" alt="동영상" />
+                  <area shape="rect" coords="424,418,694,469" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강신청하기" />
                 </map>
             </div>
         </div>

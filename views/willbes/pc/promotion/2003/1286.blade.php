@@ -44,6 +44,7 @@
         .zero100_03 {background:#fbfa00}
         .zero100_04 {}
         .zero100_05 {}
+        .zero100_06 {background:#e9eaee}
 
         .m-margin {margin-top:-100px}
     </style>
@@ -65,8 +66,14 @@
             </div>      
         </div>
 
+        {{--
         <div class="evtCtnsBox zero100_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_03.jpg" alt="제로100 기본서 시리즈"  />    
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_03.jpg" alt="제로100 기본서 시리즈"/>
+        </div>
+        --}}
+
+        <div class="evtCtnsBox zero100_06">
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_06.jpg" alt="제로효과 단 100시간"/>
         </div>
 
         <div class="evtCtnsBox zero100_04">

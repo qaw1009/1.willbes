@@ -6,6 +6,7 @@ class SupportersMemberModel extends WB_Model
     private $_table = [
         'supporters' => 'lms_supporters',
         'supporters_r_member' => 'lms_supporters_r_member',
+        'supporters_myclass' => 'lms_supporters_myclass',
         'lms_member' => 'lms_member',
         'lms_member_otherinfo' => 'lms_member_otherinfo',
         'lms_site' => 'lms_site',
@@ -189,6 +190,87 @@ class SupportersMemberModel extends WB_Model
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 
+    public function findMyClass($arr_condition, $column = 'a.SupportersIdx')
+    {
+        $from = "
+            FROM {$this->_table['supporters_myclass']}
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    public function modifyMyClass($inputData, $idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'SmcIdx' => $idx
+                ]
+            ];
+            $myClassData = $this->findMyClass($arr_condition, 'AttachFileName, AttachFileRealName, AttachFilePath');
+            if (empty($myClassData)) {
+                throw new \Exception('조회된 나의 소개 데이터가 없습니다.');
+            }
+
+            $inputData = array_merge($inputData,[
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ]);
+            $this->_conn->set($inputData)->where('SmcIdx', $idx);
+            if ($this->_conn->update($this->_table['supporters_myclass']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            //이미지 수정
+            if ($_FILES['attach_file']['size'] > 0) {
+                $this->load->library('upload');
+                $paths = explode('/', $myClassData['AttachFilePath']);  //날짜 형태의 값만 추출
+
+                if (empty($myClassData['AttachFilePath']) === false) {
+                    $paths1 = $paths[6];
+                    $paths2 = $paths[7];
+                } else {
+                    $paths1 = date('Y');
+                    $paths2 = date('md');
+                }
+
+                $upload_dir = config_item('upload_prefix_dir') . '/supporters/myclass/' . $paths1 . '/' . $paths2;
+                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_dir);
+
+                if (empty($uploaded) === true || empty($uploaded[0]) === true) {
+                    throw new \Exception('이미지 등록에 실패했습니다.');
+                }
+                if (count($uploaded) > 0) {
+                    //기존 파일 삭제
+                    $this->load->helper('file');
+                    $real_img_path = public_to_upload_path($myClassData['AttachFilePath'] . $myClassData['AttachFileName']);
+                    if (@unlink($real_img_path) === false) {
+                        // 로컬에서 등록한 이미지는 삭제가 안되기 때문에 에러 메시지 노출 안함으로 변경
+                        //throw new \Exception('이미지 삭제에 실패했습니다.');
+                    }
+
+                    $img_data['AttachFilePath'] = $this->upload->_upload_url . $upload_dir . '/';
+                    $img_data['AttachFileName'] = $uploaded[0]['orig_name'];
+                    $img_data['AttachFileRealName'] = $uploaded[0]['client_name'];
+
+                    if ($this->_conn->set($img_data)->where('SmcIdx', $idx)->update($this->_table['supporters_myclass']) === false) {
+                        throw new \Exception('이미지 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
     /**
      * 인풋항목 공통처리
      * @param array $input
@@ -215,5 +297,16 @@ class SupportersMemberModel extends WB_Model
             'Content5' => element('content_5',$input)
         ];
         return $input_data;
+    }
+
+    /**
+     * 파일명 생성
+     * @return string
+     */
+    private function _getAttachImgNames()
+    {
+        $temp_time = date('YmdHis');
+        $attach_file_names = 'myclass_' . $temp_time;
+        return $attach_file_names;
     }
 }

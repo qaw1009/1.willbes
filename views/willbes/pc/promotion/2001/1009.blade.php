@@ -26,9 +26,8 @@
             right:10px;
             z-index:1;
         }
-
+        .wb_pop0 {background:url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_00_190701_bg.jpg) no-repeat center top}
         .wb_pop2 {background:url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_bg.jpg) no-repeat center top}
-
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
         .wb_pop4 {background:#313131; padding-bottom:100px}
         .wb_pop4 iframe {width:853px; height:480px}
@@ -38,8 +37,8 @@
         .wb_top .passLecBuy ul {position:absolute; top:800px; left:128px; z-index:10}
         .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:30px}
         .wb_top .passLecBuy li h5 {font-size:18px; font-weight:600; margin-top:10px}
-        .wb_top .passLecBuy li:nth-child(1) {width:260px}
-        .wb_top .passLecBuy li:nth-child(2) {width:260px}
+        .wb_top .passLecBuy li:nth-child(1) {width:280px}
+        .wb_top .passLecBuy li:nth-child(2) {width:290px}
         .wb_top .passLecBuy li:nth-child(3) {width:400px}
         /*.wb_top .passLecBuy li:nth-child(4) {width:400px; padding-left:20px}*/
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px; width:90%}
@@ -182,9 +181,13 @@
             </div>
         </div>
 
+        <div class="evtCtnsBox wb_pop0">
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_00_190701.jpg"  alt="열공지원" />            
+        </div>
+
 
         <div class="evtCtnsBox wb_pop2" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
+            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_190701.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
                 <area shape="rect" coords="431,1089,562,1117" href="javascript:certOpen();" alt="수강생인증"/>
                 <area shape="rect" coords="568,1089,697,1120" href="javascript:goDesc('tab3')" alt="이용안내"/>
@@ -242,7 +245,7 @@
                 <span style="color:#fff" class="mt50">
                     PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.
                 </span>
-                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_01_190701.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
                     <map name="Map1009A" id="Map1009A">
                         {{--<area shape="rect" coords="92,543,158,566" href="javascript:go_popup()" alt="3개월" />--}}
                         <area shape="rect" coords="174,545,239,564" href="javascript:go_popup()" alt="6개월" />                        
@@ -251,7 +254,7 @@
                     </map>
                 </div>
                 <div> 
-                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02.jpg"  alt="체력" usemap="#Map1009B"/>                
+                    <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02_190701.jpg"  alt="체력" usemap="#Map1009B"/>                
                     <map name="Map1009B" id="Map1009B">
                         <area shape="rect" coords="609,230,736,277" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
                     </map>  
@@ -277,7 +280,7 @@
                 <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                 <p>
-                    ※ 강의공유, 콘텐츠 부정 사용 적발 시, 평생 0원 패스의 수강기간 갱신 및 환급이 불가합니다.<br />
+                    ※ 강의공유, 콘텐츠 부정사용 적발 시, 0원 패스의 수강기간 갱신 및 환급이 불가합니다.<br />
                     ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br/>
                     ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다.
                 </p>
@@ -333,8 +336,8 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">3,6,12개월 PASS</a></li>
-                <li><a href="#tab2">평생 0원 PASS</a></li>
+                <li><a href="#tab1">6,12개월 PASS</a></li>
+                <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
 
@@ -396,6 +399,10 @@
                             <li>결제 후 7일 이내 강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다. 학습자료 및 모바일 다운로드 이용시 수강한 것으로  간주됩니다.</li>
                             <li>고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)</li>
                             <li>수강시작일로부터 60일 초과 또는 차감액이 결제 금액을 초과할 시 환불 불가합니다.</li>
+                            <li>유료기간은 구매일로부터 각각 상품의 수강기간을 따르며, 추가 제공되는 기간은  무료 제공기간입니다.<Br>
+                            <strong>2020년 1차 PASS</strong>: 유료기간 6개월, 추가 제공기간은 무료.<Br>
+                            <strong>2020년 1+2차 PASS</strong>: 유료기간 12개월, 추가 제공기간은 무료.
+                            </li>
                         </ol>
                     </dd>
 
@@ -426,10 +433,16 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>평생PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.(1회 변경가능)<br />
-                                시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신시 다음 시험까지 무료 연장됩니다.
+                            <li>0원 PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.(1회 변경가능)<br>
+                            시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신시 2021 경찰 2차 시험일까지 무료 연장됩니다.<br> 
+                            수강종료일 2020년 12월 31일은 수험생의 편의를 위해 제공되는 기간입니다.<br>
+                            유료기간은 구매일로부터 12개월이며, 추후 제공되는 강의는 모두 무료제공기간입니다.<br>
                             </li>
-                            <li>수강기간 갱신이 필요한 경우 불합격 증빙(응시표, 성적표)자료를 제출하셔야 합니다.</li>
+                            <li>수강기간 갱신이 필요한 경우 불합격 증빙(응시표, 성적표)자료를 제출하셔야 합니다.<br>
+                            ex) 2019년 7월 1일 구매하여 기본수강기간이 2020.12.31 까지일 경우  <br>
+                            2019년도 갱신 신청 불가, 2020년도 갱신 신청 가능<br>
+                            2020년도 1차, 2차 시험 중 하나의 시험 불합격 인증 가능
+                            </li>
                             <li>불합격 인증시에 전과목 0점일 경우 수강기간 갱신은 불가능합니다.</li>
                             <li>시험 접수 후 개인사정으로 시험에 응시하지 못한 경우 수강기간 갱신 불가합니다.</li>
                             <li>수강기간 갱신(연장) 신청은 매회 시험 최종합격자 발표 후 1개월이내에 연장 신청가능하며, 별도공지 및 문자 안내할 예정입니다.</li>
@@ -445,8 +458,8 @@
                     <dd>
                         <ol>
                             <li>환급시 상품 결제금액에서 제세공과금 22% 제외 후 환급됩니다.(포인트가 지급된 경우에는 실결제 금액에서 포인트 금액을 차감 후 제세공과금 22%를 공제한 금액으로 환급됩니다.) </li>
-                            <li>구매 후 유료 수강기간인 12개월 이내에 최종 합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<br />
-                                (12개월 이내에만 가능하며, 무료 수강기간 연장은 최종합격 인증 기간과 관련이 없습니다.)
+                            <li>구매 후 유료 수강기간인 12개월 이내에 최종 합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<Br>
+                            (12개월 이내에만 가능하며, 무료 수강기간 연장은 최종합격 인증 기간과 관련이 없습니다.) 
                             </li>
                             <li>환급 신청은 합격한 시험의 최종합격자 발표일로부터 3개월 이내에만 가능합니다. <br />
                                 최종합격자 발표일로부터 3개월 경과 후 요청 시에는 환급이 불가합니다.<br />
@@ -464,7 +477,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>별도 제공되는 15만 포인트는 결제일로부터 1년 이내 사용 가능하며, 해당 기간내 사용하지 않을 경우 자동 소멸됩니다.</li>
+                            <li>별도 제공되는 20만 포인트는 결제일로부터 1년 이내 사용 가능하며, 해당 기간내 사용하지 않을 경우 자동 소멸됩니다.</li>
                             <li>환불 시 사용한 포인트 금액만큼 차감 후 환불이 진행되며 남은 포인트는 회수됩니다.</li>
                             <li>포인트를 사용하여 구매한 교재는 환불 불가합니다.</li>
                         </ol>
@@ -475,7 +488,9 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>구매일로부터 12개월(365일)간 유료 수강 가능하며, 합격 할 때 까지 무료 무제한 수강할 수 있습니다. </li>
+                            <li>구매일로부터 12개월(365일)간 유료 수강 가능기간이여, 이후 20.12.31까지 추가기간은 무료기간입니다.<br>
+                            수강종료일 2020년 12월 31일은 수험생의 편의를 위해 제공되는 기간이며, 환불대상 기간 아닙니다.
+                            </li>
                             <li>갱신되어 제공되는 기간의 강의는 무료서비스이며, 환불대상이 아닙니다.</li>
                         </ol>
                     </dd>
@@ -500,7 +515,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>신광은경찰평생PASS는 교재를 별도로 구매하셔야 하며,.각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 별도 구매 가능합니다. </li>
+                            <li>신광은경찰평생PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 별도 구매 가능합니다. </li>
                         </ol>
                     </dd>
 
@@ -509,7 +524,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>체력 강좌 별 수강 기간은 구매한 패스의 수강기간과 동일한 상품으로 구매가능합니다(단, 평생 0원은 12개월 체력 구매 가능)</li>
+                            <li>체력 강좌 별 수강 기간은 구매한 패스의 수강기간과 동일한 상품으로 구매가능합니다(단, 0원 PASS는 12개월 체력 구매 가능)</li>
                             <li>체력 동영상 강좌는 매년 차수마다 업데이트 예정이오나, 제휴 등 사정에 따라 신규 강좌 업데이트가 불가할 수 있습니다.</li>
                             <li>결제 완료 즉시 수강가능하며, 재수강, 일시정지,연장 불가합니다.</li>
                         </ol>

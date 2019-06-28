@@ -149,7 +149,7 @@ to{color:#000}
 
     function checkMemberJoinDate() {
         var $regi_form_register = $('#regi_form_register');
-        var _url = '{{ site_url('/event/registerStoreForCheckMember/') }}' + '?start_date=2019-07-01&end_date=2019-07-31';
+        var _url = '{{ site_url('/event/registerStoreForCheckMember/') }}' + '?start_date=2019-06-28&end_date=2019-07-31';
         var _data = {
             '{{ csrf_token_name() }}': $regi_form_register.find('input[name="{{ csrf_token_name() }}"]').val(),
             '_method': 'POST'

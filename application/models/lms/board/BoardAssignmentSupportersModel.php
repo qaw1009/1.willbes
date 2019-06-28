@@ -112,8 +112,12 @@ class BoardAssignmentSupportersModel extends BoardModel
 
     /**
      * 제안/토론 데이터 조회
+     * @param $column
+     * @param $arr_condition
+     * @param $arr_condition_file
+     * @return mixed
      */
-    public function findFreeBoardForSupporters($column, $arr_condition, $arr_condition_file)
+    public function findSuggestForSupporters($column, $arr_condition, $arr_condition_file)
     {
         $from = "
             FROM {$this->_table} as LB
@@ -138,5 +142,49 @@ class BoardAssignmentSupportersModel extends BoardModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select STRAIGHT_JOIN ' . $column .$from .$where)->row_array();
+    }
+
+    /**
+     * 특정 회원 과제 현황
+     * @param $member_idx
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listBoardForAssignmentSupportersMember($member_idx, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                b.BoardIdx, a.BaIdx, a.MemIdx, b.Title, b.SupportersStartDate, b.SupportersEndDate,
+                IFNULL(a.Title, "") AS AssignmentTitle, a.AssignmentStatusCcd, a.RegDatm AS AssignmentRegDatm,
+                fn_ccd_name(a.AssignmentStatusCcd) AS AssignmentStatusCcdName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+        $from = "
+            FROM {$this->_table} AS b
+            LEFT JOIN {$this->_this_table['lms_board_assignment']} AS a ON b.BoardIdx = a.BoardIdx AND a.MemIdx = '{$member_idx}'
+            INNER JOIN {$this->_this_table['lms_supporters']} AS s ON b.SupportersIdx = s.SupportersIdx AND s.IsUse = 'Y'
+        ";
+
+        // 사이트 권한 추가
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'IN' => [
+                'b.SiteCode' => get_auth_site_codes()
+            ]
+        ]);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 }

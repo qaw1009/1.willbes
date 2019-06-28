@@ -114,7 +114,7 @@ class ActivityHistory extends BaseSupporters
      * 제안/토론 뷰
      * @param array $param
      */
-    public function readFreeBoardModal($param = [])
+    public function readSuggestModal($param = [])
     {
         if (empty($param) === true) {
             show_alert('잘못된 접근 입니다.','back');

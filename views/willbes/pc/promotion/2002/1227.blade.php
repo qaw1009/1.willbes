@@ -190,7 +190,7 @@
                                 image: "https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg",
                                 aspectratio: "16:9",
                                 autostart: "true",
-                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
+                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011"
                             });
                             </script>
                         </div>
@@ -205,7 +205,7 @@
                                 image: "https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg",
                                 aspectratio: "16:9",
                                 autostart: "true",
-                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop3011"
+                                file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011"
                             });
                             </script>
                         </div>
@@ -275,6 +275,29 @@
             var url = '{{front_url('')}}/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
             @endif
+        }
+
+        function fn_live(p_type) {
+            if(p_type == "hd"){
+                location.href = "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011/Playlist.m3u8";
+            }else{
+                location.href = "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5012/Playlist.m3u8";
+            }
+        }
+
+        /*레이어팝업*/
+        function go_popup(param) {
+            var ele_id = 'promotion_notice';
+            var data = {
+                'ele_id' : ele_id,
+                'board_idx' : param,
+                'predict_idx' : '{{ (empty($arr_promotion_params['predict_idx']) === false) ? $arr_promotion_params['predict_idx'] : '' }}',
+                'promotion_code' : '{{ $arr_base['promotion_code'] }}'
+            };
+            sendAjax('{{ front_url('/support/predictNotice/index') }}', data, function(ret) {
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                $('#popup').bPopup();
+            }, showAlertError, false, 'GET', 'html');
         }
     </script>
     {{--<script src="/public/js/willbes/jquery.transit.min.js"></script>

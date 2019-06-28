@@ -120,14 +120,14 @@
         <div class="evtCtnsBox wb_00">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_00.jpg" alt="문제풀이과정 커리큘럼" />
         </div>
-
+{{--
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_top.jpg" alt="실전 문제풀이 패키지"/>
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2019/06/1270_top_img1.png" alt="50$"></span>
             <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2019/06/1270_top_img1.png" alt="50%"></span>
             <span class="img3"><img src="https://static.willbes.net/public/images/promotion/2019/06/1270_top_img2.png" alt="추가할인"></span>
         </div>
-
+        --}}
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_01.jpg" alt="여름방학 집중완성" usemap="#Map1270A" border="0" />
             <map name="Map1270A" id="Map1270A">

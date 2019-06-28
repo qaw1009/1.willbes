@@ -305,6 +305,9 @@ class Member extends BaseSupporters
         ]);
     }
 
+    /**
+     * 나의 소개 관리자 수정
+     */
     public function storeMyClass()
     {
         $rules = [
@@ -325,6 +328,21 @@ class Member extends BaseSupporters
         $result = $this->supportersMemberModel->modifyMyClass($inputData, $idx);
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->supportersMemberModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
     private function _setInputData($input){

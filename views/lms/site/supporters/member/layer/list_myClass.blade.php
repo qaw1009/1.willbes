@@ -17,6 +17,11 @@
                 <label class="control-label col-md-1-1" for="attach_file">첨부</label>
                 <div class="col-md-10 form-inline">
                     <input type="file" id="attach_file" name="attach_file" class="form-control input-file" title="첨부"/>
+                    @if(empty($data['AttachFilePath']) === false)
+                        <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['AttachFilePath'] . $data['AttachFileName'] }}" rel="popup-image">{{ $data['AttachFileRealName'] }}</a> ]
+                            <a href="#none" class="file-delete" data-attach-idx="{{ $data['SmcIdx']  }}"><i class="fa fa-times red"></i></a>
+                        </p>
+                    @endif
                 </div>
             </div>
 
@@ -50,7 +55,7 @@
     $(document).ready(function() {
         // 파일삭제
         $('.file-delete').click(function() {
-            var _url = '{{ site_url("/board/destroyFile/") }}' + getQueryString();
+            var _url = '{{ site_url("/site/supporters/member/destroyFile/") }}' + getQueryString();
             var data = {
                 '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                 '_method' : 'DELETE',

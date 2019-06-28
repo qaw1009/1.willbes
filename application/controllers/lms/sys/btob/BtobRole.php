@@ -77,6 +77,7 @@ class BtobRole extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => 'role_name', 'label' => '권한유형명', 'rules' => 'trim|required'],
+            ['field' => 'role_type', 'label' => '전체조회가능여부', 'rules' => 'trim|required|in_list[A,B]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 

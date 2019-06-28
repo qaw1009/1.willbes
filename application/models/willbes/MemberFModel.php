@@ -980,4 +980,34 @@ class MemberFModel extends WB_Model
         return $query->result_array();
     }
 
+    /**
+     * 가입일기준 회원 조회
+     * @param $mem_idx
+     * @param $start_day
+     * @param $end_day
+     * @return mixed
+     */
+    public function getMemberForJoinDate($mem_idx, $start_day, $end_day)
+    {
+        $column = 'MemIdx';
+        $arr_condition = [
+            'EQ' => [
+                'MemIdx' => $mem_idx,
+                'IsChange' => 'Y',
+                'IsStatus' => 'Y'
+            ],
+            'RAW' => [
+                'Date_format(JoinDate,\'%Y-%m-%d\')  between' => '\''. $start_day .'\' and \'' . $end_day .'\''
+            ]
+        ];
+
+        $from = "
+            FROM {$this->_table['member']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('SELECT ' . $column . $from . $where)->row_array();
+    }
 }

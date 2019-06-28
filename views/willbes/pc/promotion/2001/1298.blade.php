@@ -8,16 +8,16 @@
 min-height:auto !important;
 margin-bottom:0 !important;
 }
-.evtContent { 
+.evtContent {
 position:relative;
 width:100% !important;
 margin-top:20px !important;
 padding:0 !important;
 background:#fff;
-}	
+}
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
-/*****************************************************************/  
+/*****************************************************************/
 .top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/06/1298_top_bg.jpg) no-repeat center top;}
 .sec01 , .sec05{background:#ececec;}
 .sec03{background:#c5cbcd;}
@@ -52,6 +52,7 @@ to{color:#000}
     <input type="hidden" name="register_name"  id ="register_name" value="{{ sess_data('mem_name') }}"/>
     <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}"/>
     <input type="hidden" name="register_type" value="promotion"/>
+    <input type="hidden" id="check_member" value="0">
 
 </form>
 <div class="evtContent NGR" id="evtContainer">
@@ -130,6 +131,12 @@ to{color:#000}
             alert('로그인 후 이용해 주세요.');
             return;
         }
+        checkMemberJoinDate();
+
+        if ($('#check_member').val() != 1) {
+            alert('신규회원만 응모가능합니다.');
+            return false;
+        }
 
         if (!confirm('저장하시겠습니까?')) { return true; }
         ajaxSubmit($regi_form_register, _url, function(ret) {
@@ -138,6 +145,20 @@ to{color:#000}
                 location.reload();
             }
         }, showValidateError, null, false, 'alert');
+    }
+
+    function checkMemberJoinDate() {
+        var $regi_form_register = $('#regi_form_register');
+        var _url = '{{ site_url('/event/registerStoreForCheckMember/') }}' + '?start_date=2019-07-01&end_date=2019-07-31';
+        var _data = {
+            '{{ csrf_token_name() }}': $regi_form_register.find('input[name="{{ csrf_token_name() }}"]').val(),
+            '_method': 'POST'
+        };
+        sendAjax(_url, _data, function (ret) {
+            if (ret.ret_data === true) {
+                $('#check_member').val(1);
+            }
+        }, null, false, 'POST');
     }
 </script>
 

@@ -53,6 +53,7 @@
                     <th class="searching_btob_idx">제휴사명</th>
                     <th class="searching">권한유형코드</th>
                     <th class="searching">권한유형명</th>
+                    <th>전체조회 가능여부</th>
                     <th>설명</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
@@ -66,6 +67,7 @@
                         <td>{{ $row['BtobName'] }}<span class="hide">{{ $row['BtobIdx'] }}</span></td>
                         <td>{{ $row['RoleIdx'] }}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['RoleIdx'] }}"><u class="blue">{{ $row['RoleName'] }}</u></a></td>
+                        <td>@if($row['RoleType'] == 'A') 가능 @elseif($row['RoleType'] == 'B') 불가능 @endif</td>
                         <td>{{ $row['RoleShortDesc'] }}</td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                             <span class="hide">{{ $row['IsUse'] }}</span>

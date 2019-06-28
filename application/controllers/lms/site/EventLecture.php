@@ -824,7 +824,7 @@ class EventLecture extends \app\controllers\BaseController
     public function registerExcel($params = [])
     {
         $file_name = '이벤트_신청현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
-        $headers = ['이름', '아이디', '연락처', '이메일', '추가데이터', '신청일', '신청특강/설명회', '총신청수'];
+        $headers = ['이름', '아이디', '연락처', '이메일', '추가데이터', '신청일', '신청특강/설명회', '총신청수', '주소', '상세주소', '우편번호'];
 
         $el_idx = $params[0];
         $arr_condition = $this->_getRegisterListConditions($el_idx);

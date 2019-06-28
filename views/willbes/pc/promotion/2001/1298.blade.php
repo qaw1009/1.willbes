@@ -134,7 +134,7 @@ to{color:#000}
         checkMemberJoinDate();
 
         if ($('#check_member').val() != 1) {
-            alert('신규회원만 응모가능합니다.');
+            alert('이벤트 기간에 가입한 신규 회원만 응모 가능합니다.');
             return false;
         }
 

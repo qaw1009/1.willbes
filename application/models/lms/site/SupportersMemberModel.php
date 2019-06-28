@@ -271,6 +271,42 @@ class SupportersMemberModel extends WB_Model
         return true;
     }
 
+    public function removeFile($attach_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'SmcIdx' => $attach_idx
+                ]
+            ];
+            $data = $this->findMyClass($arr_condition, 'AttachFileName, AttachFileRealName, AttachFilePath');
+            if (empty($data) === true) {
+                throw new \Exception('삭제할 데이터가 없습니다.');
+            }
+
+            $file_path = $data['AttachFilePath'].$data['AttachFileName'];
+            $this->load->helper('file');
+            $real_file_path = public_to_upload_path($file_path);
+            if (@unlink($real_file_path) === false) {
+                throw new \Exception('이미지 삭제에 실패했습니다.');
+            }
+
+            $img_data['AttachFilePath'] = '';
+            $img_data['AttachFileName'] = '';
+            $img_data['AttachFileRealName'] = '';
+            if ($this->_conn->set($img_data)->where('SmcIdx', $attach_idx)->update($this->_table['supporters_myclass']) === false) {
+                throw new \Exception('이미지 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
     /**
      * 인풋항목 공통처리
      * @param array $input

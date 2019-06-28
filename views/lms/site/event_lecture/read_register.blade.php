@@ -61,6 +61,7 @@
                 <th>아이디</th>
                 <th>연락처</th>
                 <th>이메일</th>
+                <th>주소</th>
                 <th>추가데이터</th>
                 <th>신청일</th>
                 <th class="rowspan">신청특강/설명회</th>
@@ -108,6 +109,10 @@
                 {'data' : 'MemId'},
                 {'data' : 'Phone'},
                 {'data' : 'Mail'},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        // 리스트 번호
+                        return row.Addr1 + row.Addr2 + ' ('+ row.ZipCode +')';
+                    }},
                 {'data' : 'EtcValue'},
                 {'data' : 'RegDatm'},
                 {'data' : 'RegisterName'},

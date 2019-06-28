@@ -30,7 +30,7 @@ class BtobRoleModel extends WB_Model
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['R.IsStatus'] = 'Y';
 
-        return $this->_conn->getJoinListResult($this->_table['btob_admin_role'] . ' as R', 'left', $this->_table['btob'] . ' as B'
+        return $this->_conn->getJoinListResult($this->_table['btob_admin_role'] . ' as R', 'inner', $this->_table['btob'] . ' as B'
             , 'R.BtobIdx = B.BtobIdx and B.IsStatus = "Y"'
             , $column, $arr_condition, $limit, $offset, $order_by
         );

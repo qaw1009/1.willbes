@@ -61,7 +61,7 @@ to{color:#000}
         <div>
             <table>
                 <tr>
-                    <td class="time_txt"><span>텀블러 무료배포</span><br>이벤트 마감까지</td>
+                    <td class="time_txt"><span>텀블러 무료증정</span><br>이벤트 마감까지</td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td class="time_txt">일 </td>

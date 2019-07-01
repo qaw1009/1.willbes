@@ -256,7 +256,7 @@
                 <div> 
                     <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_03_02_190701.jpg"  alt="체력" usemap="#Map1009B"/>                
                     <map name="Map1009B" id="Map1009B">
-                        <area shape="rect" coords="609,230,736,277" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
+                        <area shape="rect" coords="611,178,732,230" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
                     </map>  
                 </div>                                
             </div>

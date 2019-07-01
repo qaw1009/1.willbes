@@ -135,7 +135,7 @@
   <!--wb_cts08//-->
   
   <div class="evtCtnsBox wb_cts09">
-	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=261" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_08.jpg"title="군무원합격전략설명회" /></a>
+	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=315&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_08.jpg"title="군무원합격전략설명회" /></a>
   </div>
   <!--wb_cts09//-->
   

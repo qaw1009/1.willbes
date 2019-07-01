@@ -452,6 +452,11 @@ class OrderFModel extends BaseOrderFModel
             // 장바구니 조회
             $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $post_row['SiteCode'], null, $sess_cart_idx, null, null, 'N');
 
+            // 장바구니 식별자 세션 수와 조회된 장바구니 데이터 수 비교
+            if (empty($cart_rows) === true || count($sess_cart_idx) != count($cart_rows)) {
+                throw new \Exception('장바구니 데이터 수가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
+            }
+
             // 장바구니 데이터 가공
             $cart_results = $this->getMakeCartReData(
                 'pay', $post_row['CartType'], $cart_rows, $arr_user_coupon_idx, $post_row['UsePoint'], element('zipcode', $post_data, '')

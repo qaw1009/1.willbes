@@ -138,6 +138,7 @@
                     <th>결제금액</th>
                     <th>결제자</th>
                     <th>결제일</th>
+                    <td>수강종료일</td>
                     <th>휴대폰정보</th>
                     <th>E-mail정보</th>
                     <th>자동로그인</th>
@@ -195,6 +196,7 @@
                         }},//결제자
 
                     {'data' : 'PayDate'}, // 결제일
+                    {'data' : 'EndDate'}, // 종료일
                     {'data' : 'Phone'},// 휴대폰
                     {'data' : 'Mail'},//이메일
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {

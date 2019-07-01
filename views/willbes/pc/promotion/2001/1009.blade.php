@@ -189,14 +189,14 @@
         <div class="evtCtnsBox wb_pop2" id="main">
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_190701.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
-                <area shape="rect" coords="431,1089,562,1117" href="javascript:certOpen();" alt="수강생인증"/>
-                <area shape="rect" coords="568,1089,697,1120" href="javascript:goDesc('tab3')" alt="이용안내"/>
+				<area shape="rect" coords="866,1307,998,1338" href="javascript:certOpen();" alt="수강생인증"/>
+  <area shape="rect" coords="1003,1306,1137,1339" href="javascript:goDesc('tab3')" alt="이용안내"/>
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_pop3">
+      <!--  <div class="evtCtnsBox wb_pop3">
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01.png"  alt="열공지원" />            
-        </div>
+        </div> -->
 
         <div class="evtCtnsBox wb_pop4">
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01_190603.gif"  alt="열공지원" />
@@ -222,7 +222,7 @@
                         <p><input type="radio" id="y_pkg2" name="y_pkg" value="152009" onClick=""/> <label for="y_pkg2">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
                         <p><input type="radio" id="y_pkg3" name="y_pkg" value="149193" onClick=""/> <label for="y_pkg3">경행경채</label></p>
-                        <div><strong>61</strong>만원</div>
+                        <div><strong>69</strong>만원</div>
                     </li>
                     <li>
                         <h5>일반</h5>
@@ -230,7 +230,7 @@
                         <p><input type="radio" id="y_pkg5" name="y_pkg" value="152008" onClick=""/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
                         <p><input type="radio" id="y_pkg6" name="y_pkg" value="149195" onClick=""/> <label for="y_pkg6">경행경채</label></p>
-                        <div><strong>73</strong>만원</div>
+                        <div><strong>79</strong>만원</div>
                     </li>
                     <li>
                         <h5>&nbsp;</h5>
@@ -238,7 +238,7 @@
                         <p>&nbsp;</p>
                         <p><input type="radio" id="y_pkg7" name="y_pkg" value="149107" onClick=""/> <label for="y_pkg7">일반</label></p>
                         <p><input type="radio" id="y_pkg8" name="y_pkg" value="149108" onClick=""/> <label for="y_pkg8">특채 경행경채</label></p>
-                        <div><strong>143</strong>만원</div>
+                        <div><strong>148</strong>만원</div>
                     </li>
                 </ul>
                 <div>
@@ -353,7 +353,9 @@
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 전 강좌를 무제한 수강 할 수 있습니다.</li>
                             <li>일반경찰 PASS의 경우 한국사과목은 교수님을 1분 선택하여야 합니다.(변경불가)</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.</li>
-                            <li>결제 완료 후 직렬 변경 불가합니다.</li>
+                            <li>결제 완료 후 직렬 변경 불가합니다.<br>6개월 PASS는 구매일로부터 기본 6개월(유료기간) 추가 2개월(무료기간)제공됩니다.<br>
+							12개월 PASS는 구매일로부터 기본 12개월(유료기간) 추가 3개월(무료기간)제공됩니다.
+							</li>
                         </ol>
                     </dd>
 
@@ -400,8 +402,8 @@
                             <li>고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)</li>
                             <li>수강시작일로부터 60일 초과 또는 차감액이 결제 금액을 초과할 시 환불 불가합니다.</li>
                             <li>유료기간은 구매일로부터 각각 상품의 수강기간을 따르며, 추가 제공되는 기간은  무료 제공기간입니다.<Br>
-                            <strong>2020년 1차 PASS</strong>: 유료기간 6개월, 추가 제공기간은 무료.<Br>
-                            <strong>2020년 1+2차 PASS</strong>: 유료기간 12개월, 추가 제공기간은 무료.
+                            <strong>6개월 PASS</strong>: 유료기간 6개월, 추가 제공기간은 무료.<Br>
+                            <strong>12개월 PASS</strong>: 유료기간 12개월, 추가 제공기간은 무료.
                             </li>
                         </ol>
                     </dd>
@@ -434,7 +436,7 @@
                     <dd>
                         <ol>
                             <li>0원 PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.(1회 변경가능)<br>
-                            시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신시 2021 경찰 2차 시험일까지 무료 연장됩니다.<br> 
+                            시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신 시 1년 무료연장 됩니다.<br> 
                             수강종료일 2020년 12월 31일은 수험생의 편의를 위해 제공되는 기간입니다.<br>
                             유료기간은 구매일로부터 12개월이며, 추후 제공되는 강의는 모두 무료제공기간입니다.<br>
                             </li>
@@ -445,7 +447,7 @@
                             </li>
                             <li>불합격 인증시에 전과목 0점일 경우 수강기간 갱신은 불가능합니다.</li>
                             <li>시험 접수 후 개인사정으로 시험에 응시하지 못한 경우 수강기간 갱신 불가합니다.</li>
-                            <li>수강기간 갱신(연장) 신청은 매회 시험 최종합격자 발표 후 1개월이내에 연장 신청가능하며, 별도공지 및 문자 안내할 예정입니다.</li>
+                            <li>수강갱신 갱신신청은 2020년 11월 진행예정입니다.(연장기간 이후 갱신 신청 불가능합니다.) 추후 별도 공지 및 문자 안내할 예정입니다.</li>
                             <li>갱신 가능 직렬은 순경 채용에 한합니다.(승진,해경제외)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                             <li>모든 제출 서류는 반드시 윌비스 신광은경찰 아이디 본인 명의이여야 합니다.</li>

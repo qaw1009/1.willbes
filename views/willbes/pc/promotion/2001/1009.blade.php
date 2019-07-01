@@ -34,7 +34,7 @@
 
         .wb_top {background:#282828; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
-        .wb_top .passLecBuy ul {position:absolute; top:800px; left:128px; z-index:10}
+        .wb_top .passLecBuy ul {position:absolute; top:770px; left:128px; z-index:10}
         .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:30px}
         .wb_top .passLecBuy li h5 {font-size:18px; font-weight:600; margin-top:10px}
         .wb_top .passLecBuy li:nth-child(1) {width:280px}
@@ -50,7 +50,7 @@
         .wb_top label {border-bottom:1px dashed #000}
         .wb_top input:checked + label {color:#0d3692; border-bottom:1px dashed #0d3692} /*컬러변경*/
         .wb_top .check input[type="checkbox"]:checked+label {color:#000; border-bottom:1px dashed #000}
-        .wb_top .passLecBuy span {position:absolute; top:1130px; left:222px; z-index:10; font-size:16px; color:#000}
+        .wb_top .passLecBuy span {position:absolute; top:1070px; left:222px; z-index:10; font-size:16px; color:#000}
         .wb_top .passLecBuy span label {border-bottom:0}
         .wb_top .passLecBuy span input:checked + label {color:#009ef5; border-bottom:0}
 

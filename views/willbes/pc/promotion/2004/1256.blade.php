@@ -120,7 +120,7 @@
             <map name="Mapskybanner" id="Mapskybanner">
                 <area shape="rect" coords="36,69,153,120" href="#evt01" />
                 <area shape="rect" coords="40,131,153,187" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1257" target="_blank" alt="경채반" />
-				<area shape="rect" coords="7,230,208,323" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1282"  target="_blank" />
+				<area shape="rect" coords="36,245,156,310" href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1282"  target="_blank" />
             </map>
         </div>
         <div class="evtCtnsBox evtTop" >

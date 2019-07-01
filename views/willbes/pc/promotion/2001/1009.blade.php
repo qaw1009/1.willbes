@@ -218,26 +218,26 @@
                     --}}
                     <li>
                         <h5>일반</h5>
-                        <p><input type="radio" id="y_pkg1" name="y_pkg" value="152010" onClick=""/> <label for="y_pkg1">(선택) 오태진 한국사</label></p>
-                        <p><input type="radio" id="y_pkg2" name="y_pkg" value="152009" onClick=""/> <label for="y_pkg2">(선택) 원유철 한국사</label></p>
+                        <p><input type="radio" id="y_pkg1" name="y_pkg" value="155230" onClick=""/> <label for="y_pkg1">(선택) 오태진 한국사</label></p>
+                        <p><input type="radio" id="y_pkg2" name="y_pkg" value="155242" onClick=""/> <label for="y_pkg2">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
-                        <p><input type="radio" id="y_pkg3" name="y_pkg" value="149193" onClick=""/> <label for="y_pkg3">경행경채</label></p>
+                        <p><input type="radio" id="y_pkg3" name="y_pkg" value="155231" onClick=""/> <label for="y_pkg3">경행경채</label></p>
                         <div><strong>69</strong>만원</div>
                     </li>
                     <li>
                         <h5>일반</h5>
-                        <p><input type="radio" id="y_pkg4" name="y_pkg" value="152007" onClick=""/> <label for="y_pkg4">(선택) 오태진 한국사</label></p>
-                        <p><input type="radio" id="y_pkg5" name="y_pkg" value="152008" onClick=""/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
+                        <p><input type="radio" id="y_pkg4" name="y_pkg" value="155243" onClick=""/> <label for="y_pkg4">(선택) 오태진 한국사</label></p>
+                        <p><input type="radio" id="y_pkg5" name="y_pkg" value="155244" onClick=""/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
-                        <p><input type="radio" id="y_pkg6" name="y_pkg" value="149195" onClick=""/> <label for="y_pkg6">경행경채</label></p>
+                        <p><input type="radio" id="y_pkg6" name="y_pkg" value="155245" onClick=""/> <label for="y_pkg6">경행경채</label></p>
                         <div><strong>79</strong>만원</div>
                     </li>
                     <li>
                         <h5>&nbsp;</h5>
                         <h5>&nbsp;</h5>
                         <p>&nbsp;</p>
-                        <p><input type="radio" id="y_pkg7" name="y_pkg" value="149107" onClick=""/> <label for="y_pkg7">일반</label></p>
-                        <p><input type="radio" id="y_pkg8" name="y_pkg" value="149108" onClick=""/> <label for="y_pkg8">특채 경행경채</label></p>
+                        <p><input type="radio" id="y_pkg7" name="y_pkg" value="155246" onClick=""/> <label for="y_pkg7">일반</label></p>
+                        <p><input type="radio" id="y_pkg8" name="y_pkg" value="155247" onClick=""/> <label for="y_pkg8">특채 경행경채</label></p>
                         <div><strong>148</strong>만원</div>
                     </li>
                 </ul>

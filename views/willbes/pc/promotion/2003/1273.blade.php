@@ -70,7 +70,7 @@
                     <area shape="rect" coords="319,1156,804,1257" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/153859" target="_blank" />
                 </map>
             </div>          
-        </div>
+        </div> 
     </div>
     <!-- End Container -->   
 @stop

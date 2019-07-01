@@ -201,7 +201,7 @@
                     {{--방송 전--}}
                     <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg" title="방송전">
 
-                @elseif ($live_type == 'on')
+                @elseif ($live_type == 'on' && $live_video_type == 'on')
                     {{--7/2 ~ 7.15 오전 9시 30분 방송 중--}}
                     <script src="/public/vendor/jwplayer/jwplayer.js"></script>
                     <div class="movieplayer">
@@ -244,6 +244,9 @@
                         </div>
                     </div>
 
+                @elseif ($live_type == 'on' && $live_video_type == 'off')
+                    {{--방송 전--}}
+                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg" title="방송전">
                 @else
                     {{--방송종료 00:00 부터 노출--}}
                     <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live02.jpg" title="방송종료" />

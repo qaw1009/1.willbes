@@ -23,6 +23,7 @@ class Join extends BaseMember
     protected $_interest_to_sitecode = [
         '718001' => '2001', // 경찰
         '718002' => '2003', // 공무원
+        '718003' => '2006', // 자격증
     ];
 
     public function __construct()

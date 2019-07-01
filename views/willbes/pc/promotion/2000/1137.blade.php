@@ -48,7 +48,7 @@
             <div class="layer">
                 <div class="video">
                     <video autoplay="" loop="" muted="">
-                        <source src="https://static.willbes.net/public/images/promotion/2019/05/Clouds1137.mp4" type="video/mp4"></source>
+                        <source src="https://static.willbes.net/public/images/promotion/2019/05/Beach-0701.mp4" type="video/mp4"></source>
                     </video>
                 </div>
                 <div class="pngimg">
@@ -65,7 +65,7 @@
 <map name="1137_01_L" id="1137_01_L">
   <area shape="rect" coords="396,554,509,594" href="https://police.willbes.net/promotion/index/cate/3001/code/1012" target="_blank"/>
   <area shape="rect" coords="624,555,735,594" href="https://pass.willbes.net/promotion/index/cate/3019/code/1271" target="_blank"/>
-  {{--<area shape="rect" coords="163,2034,979,2156" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank"/>--}}
+  <area shape="rect" coords="163,2034,979,2156" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank"/>
 </map>
         </div>
 		<div class="evtCtnsBox wb_02">

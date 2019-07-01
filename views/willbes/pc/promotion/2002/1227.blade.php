@@ -101,6 +101,8 @@
 		
 		.evt10 {background:#fff;}	
         .evtinfo {background:#363636;}	
+
+        #myElement{position:absolute;left:0;}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">

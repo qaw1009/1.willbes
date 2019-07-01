@@ -181,9 +181,9 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_pop0">
+        <!--<div class="evtCtnsBox wb_pop0">
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_00_190701.jpg"  alt="열공지원" />            
-        </div>
+        </div>-->
 
 
         <div class="evtCtnsBox wb_pop2" id="main">

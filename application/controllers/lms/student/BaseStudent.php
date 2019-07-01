@@ -265,10 +265,23 @@ class BaseStudent extends \app\controllers\BaseController
      */
     public function excel()
     {
-        $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
-            '결제자', '결제일', '휴대폰', '이메일'];
-        $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
+        if($this->LearnPattern == 'lecture' ||
+            $this->LearnPattern == 'freelecture' ||
+            $this->LearnPattern == 'adminpkg' ||
+            $this->LearnPattern == 'periodpkg' ){
+
+            $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
+                '결제자', '결제일', '종료일', '휴대폰', '이메일'];
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail';
+
+        } else {
+            $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
+                '결제자', '결제일', '휴대폰', '이메일'];
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
             ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+        }
+
 
         $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $this->_reqP('ProdCode')]]);
         $lec = $lec[0];

@@ -189,8 +189,8 @@
         <div class="evtCtnsBox wb_pop2" id="main">
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_190701.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
-                <area shape="rect" coords="431,1089,562,1117" href="javascript:certOpen();" alt="수강생인증"/>
-                <area shape="rect" coords="568,1089,697,1120" href="javascript:goDesc('tab3')" alt="이용안내"/>
+				<area shape="rect" coords="866,1307,998,1338" href="javascript:certOpen();" alt="수강생인증"/>
+  <area shape="rect" coords="1003,1306,1137,1339" href="javascript:goDesc('tab3')" alt="이용안내"/>
             </map>
         </div>
 
@@ -222,7 +222,7 @@
                         <p><input type="radio" id="y_pkg2" name="y_pkg" value="152009" onClick=""/> <label for="y_pkg2">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
                         <p><input type="radio" id="y_pkg3" name="y_pkg" value="149193" onClick=""/> <label for="y_pkg3">경행경채</label></p>
-                        <div><strong>61</strong>만원</div>
+                        <div><strong>69</strong>만원</div>
                     </li>
                     <li>
                         <h5>일반</h5>
@@ -230,7 +230,7 @@
                         <p><input type="radio" id="y_pkg5" name="y_pkg" value="152008" onClick=""/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
                         <p><input type="radio" id="y_pkg6" name="y_pkg" value="149195" onClick=""/> <label for="y_pkg6">경행경채</label></p>
-                        <div><strong>73</strong>만원</div>
+                        <div><strong>79</strong>만원</div>
                     </li>
                     <li>
                         <h5>&nbsp;</h5>
@@ -238,7 +238,7 @@
                         <p>&nbsp;</p>
                         <p><input type="radio" id="y_pkg7" name="y_pkg" value="149107" onClick=""/> <label for="y_pkg7">일반</label></p>
                         <p><input type="radio" id="y_pkg8" name="y_pkg" value="149108" onClick=""/> <label for="y_pkg8">특채 경행경채</label></p>
-                        <div><strong>143</strong>만원</div>
+                        <div><strong>148</strong>만원</div>
                     </li>
                 </ul>
                 <div>

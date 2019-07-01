@@ -101,6 +101,8 @@
 		
 		.evt10 {background:#fff;}	
         .evtinfo {background:#363636;}	
+
+        #myElement{position:absolute;left:0;}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -173,7 +175,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L.jpg" title="다드림 소문내기 이벤트 경품" />
 			<div id="movieFrame2">
                 @php
-                    $set_on_day = ['20190702','20190703','20190704','20190705','20190707','20190708','20190709','20190710','20190711','20190712','20190714','20190715'];
+                    $set_on_day = ['20190702', '20190702','20190703','20190704','20190705','20190707','20190708','20190709','20190710','20190711','20190712','20190714','20190715'];
                     $day = date('Ymd');
                     $time = date('His');
 
@@ -305,9 +307,9 @@
 
         function fn_live(p_type) {
             if(p_type == "hd"){
-                location.href = "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011/Playlist.m3u8";
+                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop5011/Playlist.m3u8";
             }else{
-                location.href = "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5012/Playlist.m3u8";
+                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop5012/Playlist.m3u8";
             }
         }
 

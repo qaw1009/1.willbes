@@ -63,6 +63,11 @@ class Payment extends \app\controllers\FrontController
         // 장바구니 조회
         $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N');
 
+        // 장바구니 식별자 세션 수와 조회된 장바구니 데이터 수 비교
+        if (empty($cart_rows) === true || count($sess_cart_idx) != count($cart_rows)) {
+            return $this->json_error('장바구니 데이터 수가 일치하지 않습니다.');
+        }
+
         // 장바구니 데이터 가공 (전체결제금액 리턴)
         $results = $this->orderFModel->getMakeCartReData(
             'pay', element('cart_type', $arr_input), $cart_rows, element('coupon_detail_idx', $arr_input, []), element('use_point', $arr_input, 0), element('zipcode', $arr_input, '')

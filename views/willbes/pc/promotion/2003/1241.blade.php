@@ -67,7 +67,8 @@
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1241_02.jpg" alt="커리큘럼" usemap="#Map1241B" border="0" />
                 <map name="Map1241B" id="Map1241B">
-                    <area shape="rect" coords="319,1156,804,1257" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/152392" target="_blank" />
+                    <area shape="rect" coords="215,1180,525,1242" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/152392" target="_blank" alt="전과목 수강신청하기" />
+                    <area shape="rect" coords="592,1179,915,1242" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/155271" target="_blank" alt="법과목 수강신청하기"/>
                 </map>
             </div>          
         </div>

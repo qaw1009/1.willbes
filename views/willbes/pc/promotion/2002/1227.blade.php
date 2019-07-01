@@ -195,9 +195,6 @@
                             }
                         }
                     }
-
-                $live_type = 'on';
-                $live_video_type = 'on';
                 @endphp
 
                 @if ($live_type == 'standby')

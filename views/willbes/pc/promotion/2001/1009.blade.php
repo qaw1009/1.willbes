@@ -34,7 +34,7 @@
 
         .wb_top {background:#282828; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
-        .wb_top .passLecBuy ul {position:absolute; top:750px; left:128px; z-index:10}
+        .wb_top .passLecBuy ul {position:absolute; top:770px; left:128px; z-index:10}
         .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:30px}
         .wb_top .passLecBuy li h5 {font-size:18px; font-weight:600; margin-top:10px}
         .wb_top .passLecBuy li:nth-child(1) {width:280px}

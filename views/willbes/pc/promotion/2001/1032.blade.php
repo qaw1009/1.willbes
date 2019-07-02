@@ -21,9 +21,9 @@
 
         /************************************************************/
 
-        .wb_top {width:100%; text-align:center; background:#3c3e3f url(http://file3.willbes.net/new_cop/2018/07/180713_EV01_bg_1.jpg) no-repeat center; margin-top:20px; min-width:1210px}
+        .wb_top {width:100%; text-align:center; background:#3c3e3f url(https://static.willbes.net/public/images/promotion/2019/07/190702_EV01_1_bg.jpg) no-repeat center; margin-top:20px; min-width:1210px}
         .wb_top div {width:1210px; margin:0 auto; position:relative}
-        .wb_top span {position:absolute; display:block; top:610px; left:374px; width:130px; z-index:10; color:#fff6c8; font-size:40px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:-1px}
+        .wb_top span {position:absolute; display:block; top:610px; left:420px; width:400px; z-index:10; color:#fff6c8; font-size:40px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:-1px}
 
         .wb_01 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:20px; }
         /* 슬라이드배너 */
@@ -105,8 +105,8 @@
 
         <div class="wb_top">
             <div>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV01_1.jpg" alt="신광은경찰 합격스토리 대공개" />
-                <span>2,080</span>
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/190702_EV01_1.jpg" alt="신광은경찰 합격스토리 대공개" />
+                <span>2,080명</span>
             </div>
         </div>
 
@@ -114,7 +114,9 @@
             <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY" usemap="#story"/><br />
             <div class="slide_con">
                 <ul id="slidesImg5">
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story1"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/190702_EV02_1.jpg" alt="2"  usemap="#story3"/></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/07/190702_EV02_2.jpg" alt="2"  usemap="#story4"/></li>
+					<li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story1"/></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story2"/></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
@@ -132,6 +134,20 @@
 			  <area class="story_map" shape="rect" coords="240,77,444,439" href="#tab6"/>
 			  <area class="story_map" shape="rect" coords="455,79,659,438" href="#tab7"/>
 			  <area class="story_map" shape="rect" coords="671,76,878,437" href="#tab8"/>
+			  <area shape="rect" coords="670,454,887,504" href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank"/>
+			</map>
+			<map name="story2" id="story3">
+			  <area class="story_map" shape="rect" coords="22,82,229,441"  href="#tab-1"/>
+			  <area class="story_map" shape="rect" coords="240,77,444,439" href="#tab-2"/>
+			  <area class="story_map" shape="rect" coords="455,79,659,438" href="#tab-3"/>
+			  <area class="story_map" shape="rect" coords="671,76,878,437" href="#tab-4"/>
+			  <area shape="rect" coords="670,454,887,504" href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank"/>
+			</map>
+			<map name="story2" id="story4">
+			  <area class="story_map" shape="rect" coords="22,82,229,441"  href="#tab-5"/>
+			  <area class="story_map" shape="rect" coords="240,77,444,439" href="#tab-6"/>
+			  <area class="story_map" shape="rect" coords="455,79,659,438" href="#tab-7"/>
+			  <area class="story_map" shape="rect" coords="671,76,878,437" href="#tab-8"/>
 			  <area shape="rect" coords="670,454,887,504" href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank"/>
 			</map>
 
@@ -166,8 +182,34 @@
                             </a>
                         </li>
                     </ul>--}}
+					<div class="tabContents" id="tab-1" >
+                        <p><iframe id="youtube-player-9" width="854" height="480" src="https://www.youtube.com/embed/9Th4Ur2Px-k"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab-2" >
+                        <p><iframe id="youtube-player-10" width="854" height="480" src="https://www.youtube.com/embed/Vpe87p_O4-I"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab-3" >
+                        <p><iframe id="youtube-player-8" width="854" height="480" src="https://www.youtube.com/embed/5wPsViPfppY"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab-4" >
+                        <p><iframe id="youtube-player-11" width="854" height="480" src="https://www.youtube.com/embed/qzWbRzB_AI0"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab-5" >
+                        <p><iframe id="youtube-player-12" width="854" height="480" src="https://www.youtube.com/embed/sFK1u739qaM"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab-6" >
+                        <p><iframe id="youtube-player-13" width="854" height="480" src="https://www.youtube.com/embed/U__iG4VtVUo"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab-7" >
+                        <p><iframe id="youtube-player-14" width="854" height="480" src="https://www.youtube.com/embed/eUGgcT7GDe0"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					<div class="tabContents" id="tab-8" >
+                        <p><iframe id="youtube-player-15" width="854" height="480" src="https://www.youtube.com/embed/s1JYbeMvUvI"  frameborder="0" controls loop></iframe></p>
+                    </div>
+					
+					
                     <div class="tabContents" id="tab1">
-                        <p><iframe id="youtube-player-1" width="854" height="480" src="https://www.youtube.com/embed/XXbDBQcNtEA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+                        <p><iframe id="youtube-player-1" width="854" height="480" src="https://www.youtube.com/embed/XXbDBQcNtEA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" controls loop></iframe></p>
                     </div>
                     <div class="tabContents" id="tab2" >
                         <p><iframe id="youtube-player-2" width="854" height="480" src="https://www.youtube.com/embed/mI9cil-fFyU?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" controls loop></iframe></p>

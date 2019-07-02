@@ -594,7 +594,6 @@
                             <input type="radio" name="IsTpass" class="flat" value="N" title="T-pass 자료실사용" @if($method == 'POST' || $data['IsTpass']=='N')checked="checked"@endif/> 불가능
                         </div>
                     </div>
-
                 </div>
 
                 <div class="form-group">

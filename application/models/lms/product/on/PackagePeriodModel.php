@@ -374,6 +374,7 @@ class PackagePeriodModel extends CommonLectureModel
             ,'RetakeSaleRate'=>element('RetakeSaleRate',$input)
             ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
             ,'IsEdit'=>element('IsEdit',$input,'N')
+            ,'IsTpass'=>element('IsTpass',$input,'N')
             ,'PackAutoStudyExtenCcd'=>element('PackAutoStudyExtenCcd', $input)
             ,'PackAutoStudyPeriod'=>element('PackAutoStudyPeriod', $input)
             ,'DeviceLimitCount'=>element('DeviceLimitCount', $input)

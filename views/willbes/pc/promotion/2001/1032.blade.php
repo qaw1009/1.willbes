@@ -603,7 +603,7 @@
     <script type="text/javascript">
     jQuery(document).ready(function( $ ) {
         $('#counter').counterUp({
-            delay: 11, // the delay time in ms
+            delay: 10, // the delay time in ms
             time: 1000 // the speed time in ms
         });
     });

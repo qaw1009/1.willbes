@@ -154,7 +154,7 @@
                     <li>&nbsp;</li>
                     <li>
                         <div class="curriculumBox">
-                            <span><img src="{{ img_url('cop_adm/icon_bubble.gif') }}" alt="2019대비 진행중"> </span>    
+                            {{--<span><img src="{{ img_url('cop_adm/icon_bubble.gif') }}" alt="2019대비 진행중"></span>--}} 
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
@@ -194,11 +194,11 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop_adm/visual/visual_190323_05.jpg') }}" title="합격수기"></a>
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="https://static.willbes.net/public/images/promotion/main/3002_visual_05.gif" title="합격수기"></a>
             </div>
         </div>
 
-        <div class="Section Section3 mt100 pb90">
+        <div class="Section Section3 pb90">
             <div class="widthAuto">
                 <img src="{{ img_url('cop_adm/visual/visual_190323_06.jpg') }}" title="기출문제와 강의 One-Stop!">
                 <div class="SpecialLecBox mt60">

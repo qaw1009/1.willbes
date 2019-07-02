@@ -1,5 +1,9 @@
 /*********************************************     Main Container : Gosi Acad     *********************************************/
 /* Main Container : Gosi Acad */
+.GA .tx-color {
+    color: #ba560e;
+}
+
 .GA .VisualBox {
     clear: both;
     float: left;
@@ -207,7 +211,7 @@
     width: 420px;
 }
 
-/* Main Container : acad_infoBox : Cop Acad */
+/* Main Container : acad_infoBox */
 .acad_infoBox {
     float: left;
     width: 1120px;
@@ -241,7 +245,7 @@
     letter-spacing: 0;
     border: none;
 }
-.GA  .acad_infoBox li a.on,
+.GA .acad_infoBox li a.on,
 .GA .acad_infoBox li a:hover {
     color: #b7550e;
 }

@@ -22,7 +22,10 @@
         /************************************************************/
 
         .wb_cts01 {position:relative; overflow:hidden; background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/06/1280_top_bg.jpg") center top  no-repeat}
-        .wb_cts02 {background:#dedede;}
+        .wb_cts02 {background:#dedede; position:relative; }
+        .wb_cts02 span {position:absolute; top:280px; left:50%; margin-left:300px; width:180px; background:#fff url("/public/img/willbes/cs/icon_cs_arrow_n.png") 90% center no-repeat}
+        .wb_cts02 span a {display:block; border:1px solid #000; height:30px; line-height:30px;}
+        .wb_cts02 span a:hover {background:#000; color:#fff}
         .wb_cts03 {background:#a2252b;}
         .wb_cts04 {background:#dab483; padding-bottom:120px;}
 		    .wb_cts05 {background:#e9e9e9; padding-bottom:120px;}
@@ -73,7 +76,9 @@
   </div>
   <!--wb_cts01//-->
   
-  <div class="evtCtnsBox wb_cts02"><img src="https://static.willbes.net/public/images/promotion/2019/06/1280_01.jpg"  title="김종상교수님" />
+  <div class="evtCtnsBox wb_cts02">
+    <img src="https://static.willbes.net/public/images/promotion/2019/06/1280_01.jpg"  title="김종상교수님" />
+    <span><a href="https://pass.willbes.net/pass/professor/show/prof-idx/50466/?cate_code=3050&subject_idx=1259&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank">교수님 홈 바로가기</a></span>
   </div>
   <!--wb_cts02//-->
   

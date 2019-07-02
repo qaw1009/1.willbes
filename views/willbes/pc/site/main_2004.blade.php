@@ -134,7 +134,7 @@
                 <div class="sliderInfo">
                     <div class="will-acadTit">Hot <span class="tx-color">Focus</span></div>
                     <div class="bSlider acad">
-                        {!! banner_html(element('메인_포커스', $data['arr_main_banner']), 'sliderTM') !!}
+                        {!! banner_html(element('메인_포커스', $data['arr_main_banner']), 'bSlider slider') !!}
                     </div>
                 </div>
             </div>

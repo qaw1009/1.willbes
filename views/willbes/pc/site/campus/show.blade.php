@@ -63,8 +63,8 @@
                 </ul>
             </div><!-- subSection02// -->
 
-            {{-- 부산 캠퍼스 --}}
-            @if($campus_code == '605003')
+            {{-- 대구,부산 캠퍼스 --}}
+            @if($campus_code == '605003' || $campus_code == '605004')
                 <div class="subSection02 mt20">
                     <ul>
                         <li>

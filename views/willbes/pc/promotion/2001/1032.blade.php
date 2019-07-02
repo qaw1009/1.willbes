@@ -156,7 +156,7 @@
             </div>
 
             <div>
-                <a href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank" class="moreBtn">더 많은 고득점차 인터뷰 보기 ></a>
+                <a href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank" class="moreBtn">더 많은 고득점자 인터뷰 보기 ></a>
             </div>
         </div>        
 

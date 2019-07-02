@@ -59,12 +59,12 @@
         <div class="Section Section3">
             <div class="widthAuto">
                 <div><img src="{{ img_url('cop_adm/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
-                <div><img src="{{ img_url('cop_adm/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/main/3002_visual_190702_02_01.jpg" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
                 <div class="youtubeGod">
                     <iframe src="https://www.youtube.com/embed/1t-y10ZK6ig?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
                     <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
                 </div>
-                <ul class="ProfCopBox mt100">
+                <ul class="ProfCopBox mt100 mb170">
                     <li class="sliderHotIssue nSlider pick">
                         <div class="sliderNum">
                             <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50721/?subject_idx=1006&subject_name=%EC%88%98%EC%82%AC') }}"><img src="{{ img_url('cop_adm/prof/prof_ske.jpg') }}" alt="신광은 수사"></a></div>
@@ -81,7 +81,6 @@
                         <a href="{{ site_url('/professor/show/cate/3002/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_kwu.jpg') }}" alt="김원욱 형법"></a>
                     </li>
                 </ul>
-                <div><img src="{{ img_url('cop/visual/visual_190323_02_02.jpg') }}" ></div>
             </div>
         </div>
 
@@ -153,7 +152,7 @@
                         <a href="#none" onclick="fnPlayerSample('132200', '1019097', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
-                    <li class="active">
+                    <li>
                         <div class="curriculumBox">
                             <span><img src="{{ img_url('cop_adm/icon_bubble.gif') }}" alt="2019대비 진행중"> </span>    
                             <div class="Tit">심화과정</div>

@@ -59,12 +59,12 @@
         <div class="Section Section3">
             <div class="widthAuto">
                 <div><img src="{{ img_url('cop/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
-                <div><img src="{{ img_url('cop/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190702_02_01.jpg" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
                 <div class="youtubeGod">
                     <iframe src="https://www.youtube.com/embed/1t-y10ZK6ig?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
                     <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
                 </div>
-                <ul class="ProfCopBox mt100">
+                <ul class="ProfCopBox mt100 mb170">
                     <li>
                         <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" title="신광은">
                         <ul class="ProfBtns">
@@ -115,7 +115,6 @@
                         </ul>
                     </li>
                 </ul>
-                <div><img src="{{ img_url('cop/visual/visual_190323_02_02.jpg') }}" ></div>
             </div>
         </div> 
 

@@ -52,8 +52,8 @@
         .wb_02 {width:100%; text-align:center; background:#444645; min-width:1210px; padding:30px 0}
         
 
-        #slidesImg3 li {display:inline; float:left}
-        #slidesImg3:after {content:""; display:block; clear:both}
+        #slidesCts3 li {display:inline; float:left; width:900px; position:static; left:0}
+        #slidesCts3:after {content:""; display:block; clear:both}
 
 
         .wb_03 {width:100%; text-align:center; background:#dedede; min-width:1210px; padding:150px 0}
@@ -94,7 +94,7 @@
         .slide_con6 p a {cursor:pointer}
         .slide_con6 p.leftBtn {left:-100px}
         .slide_con6 p.rightBtn {right:-100px}
-        #slidesImg6 li {display:inline; float:left}
+        #slidesImg6 li {display:inline; float:left; position:static; left:0}
         #slidesImg6:after {content:""; display:block; clear:both}
 
     </style>
@@ -162,7 +162,7 @@
 
         <div class="wb_02">
             <div class="slide_con">
-                <ul id="slidesImg3">
+                <ul id="slidesCts3">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_1.png" alt="1.경찰합교 최종합격자의 밤" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_2.png" alt="2.중앙경찰학교 입교하는 날" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_3.png" alt="3.합격수기 공모전 시상식" /></li>
@@ -431,21 +431,6 @@
 
                     e.preventDefault()})})
         });
-/*
-        $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".story_map").click(function(){
-                var activeTab = $(this).attr("href");
-                var tab_id = activeTab.charAt(activeTab.length-1);
-                $(".evttabWrap ul li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContents").hide();
-                $(activeTab).fadeIn();
-                $('#youtube-player-'+tab_id)[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-                return false;
-            });
-        });*/
 
         $(document).ready(function() {
             var slidesImg5 = $("#slidesImg5").bxSlider({
@@ -539,7 +524,7 @@
         });
 
         $(document).ready(function() {
-            var slidesImg3 = $("#slidesImg3").bxSlider({
+            var slidesCts3 = $("#slidesCts3").bxSlider({
                 mode:'fade', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
                 speed:350,
@@ -551,10 +536,10 @@
             });
 
             $("#imgBannerLeft3").click(function (){
-                slidesImg3.goToPrevSlide();
+                slidesCts3.goToPrevSlide();
             });
             $("#imgBannerRight3").click(function (){
-                slidesImg3.goToNextSlide();
+                slidesCts3.goToNextSlide();
             });
         });
 

@@ -114,16 +114,18 @@
         .gift { position:absolute; right:0; top:-40px; z-index:1}
 
         .wtgMember {margin-top:20px; width:100%}
-        .wtgMember li {display:inline; float:left; width:25%; margin-bottom:10px}
-        .wtgMember .wtgUser {border:1px solid #d9d9d9; padding:17px 0; text-align:center; position:relative; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_user.png) no-repeat center 17px; margin-right:10px}
-        .wtgMember .wtgUser .mask {width:100%; height:80px; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_mask.png) no-repeat center top; position:absolute; top:17px; z-index:10}
-        .wtgMember .wtgUser .userMsg {width:80%; margin:15px auto; line-height:1.5; text-align:left}
-        .wtgMember .wtgUser p {margin-top:10px}
-        .wtgMember .wtgUser strong {color:#424ac7}
-        .wtgMember .wtgUser img {margin-bottom:10px; width:80px; height:80px; margin:0 auto}
-        .wtgMember .wtgUser a {font-size:11px; color:#222; border:2px solid #222; padding:3px 0 2px; display:block; width:56px; margin:0 auto; text-align:center;}
-        .wtgMember .wtgUser a:hover {background:#222; color:#fff}
-        .wtgMember:after {content:""; display:block; clear:both}
+		.wtgMember li {display:inline; float:left; width:25%; margin-bottom:10px}
+		.wtgMember .wtgUser {border:1px solid #d9d9d9; padding:17px 0; height:254px; text-align:center; position:relative; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_user.png) no-repeat center 17px; margin-right:10px}
+		.wtgMember .wtgUser .mask {width:100%; height:80px; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_mask.png) no-repeat center top; position:absolute; top:17px; z-index:10}
+		.wtgMember .wtgUser .userMsg {width:80%; margin:15px auto; height:54px; overflow:hidden; line-height:1.5; text-align:left}
+		.wtgMember .wtgUser p {margin-top:10px}
+		.wtgMember .wtgUser strong {color:#424ac7}
+		.wtgMember .wtgUser img {margin-bottom:10px; width:80px; height:80px; margin:0 auto}
+		.wtgMember .wtgUser a {font-size:11px; color:#222; border:2px solid #222; padding:3px 0 2px; display:block; width:56px; margin:0 auto; text-align:center;}
+		.wtgMember .wtgUser a:hover {background:#222; color:#fff}
+		.wtgMember:after {content:""; display:block; clear:both}
+
+        
 
 
         /*********팝업***********/

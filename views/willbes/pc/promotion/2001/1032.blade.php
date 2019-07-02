@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_top {width:100%; text-align:center; background:#3c3e3f url(https://static.willbes.net/public/images/promotion/2019/07/190702_EV01_1_bg.jpg) no-repeat center; margin-top:20px; min-width:1210px}
+        .wb_top {width:100%; text-align:center; background:#3c3e3f url(https://static.willbes.net/public/images/promotion/2019/07/1032_EV01_1_bg.jpg) no-repeat center; margin-top:20px; min-width:1210px}
         .wb_top div {width:1210px; margin:0 auto; position:relative}
         .wb_top span {position:absolute; display:block; top:610px; left:420px; width:400px; z-index:10; color:#fff6c8; font-size:40px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:-1px}
 
@@ -105,7 +105,7 @@
 
         <div class="wb_top">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/190702_EV01_1.jpg" alt="신광은경찰 합격스토리 대공개" />
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1032_EV01_1.jpg" alt="신광은경찰 합격스토리 대공개" />
                 <span>2,080명</span>
             </div>
         </div>
@@ -114,8 +114,8 @@
             <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY" usemap="#story"/><br />
             <div class="slide_con">
                 <ul id="slidesImg5">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/190702_EV02_1.jpg" alt="2"  usemap="#story3"/></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/07/190702_EV02_2.jpg" alt="2"  usemap="#story4"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_EV02_1.jpg" alt="2"  usemap="#story3"/></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_EV02_2.jpg" alt="2"  usemap="#story4"/></li>
 					<li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story1"/></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story2"/></li>
                 </ul>

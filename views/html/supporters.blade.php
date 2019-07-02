@@ -115,9 +115,9 @@
 
         .wtgMember {margin-top:20px; width:100%}
 		.wtgMember li {display:inline; float:left; width:25%; margin-bottom:10px}
-		.wtgMember .wtgUser {border:1px solid #d9d9d9; padding:17px 0; text-align:center; position:relative; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_user.png) no-repeat center 17px; margin-right:10px}
+		.wtgMember .wtgUser {border:1px solid #d9d9d9; padding:17px 0; height:254px; text-align:center; position:relative; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_user.png) no-repeat center 17px; margin-right:10px}
 		.wtgMember .wtgUser .mask {width:100%; height:80px; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_mask.png) no-repeat center top; position:absolute; top:17px; z-index:10}
-		.wtgMember .wtgUser .userMsg {width:80%; margin:15px auto; line-height:1.5; text-align:left}
+		.wtgMember .wtgUser .userMsg {width:80%; margin:15px auto; height:54px; overflow:hidden; line-height:1.5; text-align:left}
 		.wtgMember .wtgUser p {margin-top:10px}
 		.wtgMember .wtgUser strong {color:#424ac7}
 		.wtgMember .wtgUser img {margin-bottom:10px; width:80px; height:80px; margin:0 auto}
@@ -847,7 +847,7 @@
                             <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_sample.jpg">
                         </div>
                         <p><strong>홍길동</strong>님</p>
-                        <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.</div>
+                        <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.</div>
                         <a href="javascript:go_popup_user()" >소개보기</a>
                     </div>
                 </li>
@@ -869,7 +869,7 @@
                             <img src="">
                         </div>
                         <p><strong>홍길동</strong>님</p>
-                        <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.</div>
+                        <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 </div>
                         <a href="#none">소개보기</a>
                     </div>
                 </li>

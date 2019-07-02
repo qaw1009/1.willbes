@@ -67,10 +67,10 @@
             @if($campus_code == '605003' || $campus_code == '605004')
                 <div class="subSection02 mt20">
                     <ul>
-                        <li>
-                            <div class="bSlider acad blue">
-                                <div class="slider">
-                                    @if(empty($arr_base['arr_main_banner']['캠퍼스_서브3']) === false)
+                        @if(empty($arr_base['arr_main_banner']['캠퍼스_서브3']) === false)
+                            <li>
+                                <div class="bSlider acad blue">
+                                    <div class="slider">
                                         @php $link_url = '#none'; @endphp
                                         @foreach($arr_base['arr_main_banner']['캠퍼스_서브3'] as $row)
                                             @if(empty($row['LinkUrl']) === false)
@@ -78,14 +78,14 @@
                                             @endif
                                             <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
                                         @endforeach
-                                    @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="bSlider acad blue">
-                                <div class="slider">
-                                    @if(empty($arr_base['arr_main_banner']['캠퍼스_서브4']) === false)
+                            </li>
+                        @endif
+                        @if(empty($arr_base['arr_main_banner']['캠퍼스_서브4']) === false)
+                            <li>
+                                <div class="bSlider acad blue">
+                                    <div class="slider">
                                         @php $link_url = '#none'; @endphp
                                         @foreach($arr_base['arr_main_banner']['캠퍼스_서브4'] as $row)
                                             @if(empty($row['LinkUrl']) === false)
@@ -93,18 +93,18 @@
                                             @endif
                                             <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
                                         @endforeach
-                                    @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="subSection02 mt20">
                     <ul>
-                        <li>
-                            <div class="bSlider acad blue">
-                                <div class="slider">
-                                    @if(empty($arr_base['arr_main_banner']['캠퍼스_서브5']) === false)
+                        @if(empty($arr_base['arr_main_banner']['캠퍼스_서브5']) === false)
+                            <li>
+                                <div class="bSlider acad blue">
+                                    <div class="slider">
                                         @php $link_url = '#none'; @endphp
                                         @foreach($arr_base['arr_main_banner']['캠퍼스_서브5'] as $row)
                                             @if(empty($row['LinkUrl']) === false)
@@ -112,14 +112,14 @@
                                             @endif
                                             <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
                                         @endforeach
-                                    @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="bSlider acad blue">
-                                <div class="slider">
-                                    @if(empty($arr_base['arr_main_banner']['캠퍼스_서브6']) === false)
+                            </li>
+                        @endif
+                        @if(empty($arr_base['arr_main_banner']['캠퍼스_서브6']) === false)
+                            <li>
+                                <div class="bSlider acad blue">
+                                    <div class="slider">
                                         @php $link_url = '#none'; @endphp
                                         @foreach($arr_base['arr_main_banner']['캠퍼스_서브6'] as $row)
                                             @if(empty($row['LinkUrl']) === false)
@@ -127,10 +127,10 @@
                                             @endif
                                             <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
                                         @endforeach
-                                    @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             @endif

@@ -148,6 +148,7 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/05/1227_05L.png" title="경찰 체력 특전">
         </div>
 
+        {{--
         <div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_04L.jpg" title="경찰 체력 특전">
         </div>
@@ -155,12 +156,14 @@
 		@if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_normal_partial')
         @endif
+        --}}
 
         <div class="evtCtnsBox evt05" id="evt05">            
             <div id="movieFrame">
-                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_live01L.jpg" title="방송전"></a>        
+                {{--<a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_live01L.jpg" title="방송전"></a>  --}}
+                <iframe width="980" height="551" src="https://www.youtube.com/embed/TVJtG3DbEgQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_06L.jpg" title="라이브 특강 진행 안내">
+            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/videos?view=0&sort=dd&shelf_id=1" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1227_btn_tv.png" title="라이브 특강 진행 안내"></a>
         </div>        
 		
 		<div class="evtCtnsBox evt06" id="evt06">
@@ -190,7 +193,7 @@
                     $live_video_type = 'off';
                     foreach ($set_on_day as $key => $val) {
                         if ($day == $val){
-                            if ($time >= '095000' && $time <= '122000') {
+                            if ($time >= '095000' && $time <= '142000') {
                                 $live_video_type = 'on';
                             }
                         }

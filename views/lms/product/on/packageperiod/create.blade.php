@@ -485,7 +485,7 @@
                     <div class="col-md-4 form-inline item" >
                         <input type="radio" name="IsTpass" class="flat" value="Y" required="required" title="T-pass 자료실사용" @if($data['IsTpass']=='Y')checked="checked"@endif/> 가능
                         &nbsp;
-                        <input type="radio" name="IsTpass" class="flat" value="N" required="required" title="T-pass 자료실사용" @if($method == 'POST' || $data['IsTpass']=='aN')checked="checked"@endif/> 불가능
+                        <input type="radio" name="IsTpass" class="flat" value="N" required="required" title="T-pass 자료실사용" @if($method == 'POST' || $data['IsTpass']=='N')checked="checked"@endif/> 불가능
                     </div>
                 </div>
 

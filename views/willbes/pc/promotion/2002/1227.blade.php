@@ -224,17 +224,7 @@
                             @else
                                 <!--모바일용-->
                                 <div class="embed-container-mobile" id="myElement">
-                                    <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
-                                    <script type="text/javascript">
-                                        jwplayer("myElement").setup({
-                                        width: '100%',
-                                        logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
-                                        image: "https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg",
-                                        aspectratio: "16:9",
-                                        autostart: "true",
-                                        file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011"
-                                    });
-                                    </script>
+
                                 </div>
                                 <ul class="mobileCh">
                                     <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>

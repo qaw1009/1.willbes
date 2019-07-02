@@ -224,7 +224,7 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop/visual/visual_190323_05.jpg') }}" title="합격수기"></a>
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="https://static.willbes.net/public/images/promotion/main/3001_visual_05.gif" title="합격수기"></a>
             </div>
         </div>
 

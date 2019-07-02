@@ -387,11 +387,9 @@
                     <label class="control-label col-md-2" for="IsCoupon">쿠폰사용결제 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
-                        <div class="radio">
-                            <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCoupon']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;
-                            <input type="radio" name="IsCoupon" class="flat" value="N" @if($method == 'POST' || $data['IsCoupon']=='N')checked="checked"@endif/> 불가능
-                        </div>
+                        <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCoupon']=='Y')checked="checked"@endif/> 가능
+                        &nbsp;
+                        <input type="radio" name="IsCoupon" class="flat" value="N" @if($method == 'POST' || $data['IsCoupon']=='N')checked="checked"@endif/> 불가능
                     </div>
                     <label class="control-label col-md-2" for="IsPoint">결제포인트적립 <span class="required">*</span>
                     </label>
@@ -419,13 +417,11 @@
                     <label class="control-label col-md-2" for="IsLecStart">강좌시작일설정 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item" >
-                        <div class="radio">
-                            <input type="radio" name="IsLecStart" class="flat" value="Y" required="required" title="강좌시작일설정" @if($data['IsLecStart']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
-                            <input type="radio" name="IsLecStart" class="flat" value="N" title="강좌시작일설정" @if($method == 'POST' || $data['IsLecStart']=='N')checked="checked"@endif/> 불가능
-                            &nbsp;
-                            •수강기간설정 조건이 '수강기간'일 경우 시작일이 개강일보다 빠르면 개강일에 맞춰 자동 시작
-                        </div>
+                        <input type="radio" name="IsLecStart" class="flat" value="Y" required="required" title="강좌시작일설정" @if($data['IsLecStart']=='Y')checked="checked"@endif/> 가능
+                        &nbsp;
+                        <input type="radio" name="IsLecStart" class="flat" value="N" title="강좌시작일설정" @if($method == 'POST' || $data['IsLecStart']=='N')checked="checked"@endif/> 불가능
+                        &nbsp;
+                        •수강기간설정 조건이 '수강기간'일 경우 시작일이 개강일보다 빠르면 개강일에 맞춰 자동 시작
                     </div>
                 </div>
 
@@ -433,21 +429,19 @@
                     <label class="control-label col-md-2" for="IsPause">일시정지설정 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item" >
-                        <div class="radio">
-                            <input type="radio" name="IsPause" class="flat" value="Y" required="required" title="일시정지설정" @if($data['IsPause']=='Y')checked="checked"@endif/> 가능
-                            [
-                            총
-                            <select name="PauseNum" id="PauseNum" class="form-control">
-                                @for($i=1;$i<6;$i++)
-                                    <option value="{{$i}}" @if( ($method=='POST' && $i==3) || trim($i) == $data['PauseNum'])selected="selected"@endif>{{$i}}</option>
-                                @endfor
-                            </select>
-                            회
-                            ]
-                            <input type="radio" name="IsPause" class="flat" value="N" @if($method == 'POST' || $data['IsPause']=='N')checked="checked"@endif/> 불가능
-                            &nbsp;
-                            •일시정지는 수강 잔여기간 내에서만 설정 가능
-                        </div>
+                        <input type="radio" name="IsPause" class="flat" value="Y" required="required" title="일시정지설정" @if($data['IsPause']=='Y')checked="checked"@endif/> 가능
+                        [
+                        총
+                        <select name="PauseNum" id="PauseNum" class="form-control">
+                            @for($i=1;$i<6;$i++)
+                                <option value="{{$i}}" @if( ($method=='POST' && $i==3) || trim($i) == $data['PauseNum'])selected="selected"@endif>{{$i}}</option>
+                            @endfor
+                        </select>
+                        회
+                        ]
+                        <input type="radio" name="IsPause" class="flat" value="N" @if($method == 'POST' || $data['IsPause']=='N')checked="checked"@endif/> 불가능
+                        &nbsp;
+                        •일시정지는 수강 잔여기간 내에서만 설정 가능
                     </div>
                 </div>
 
@@ -455,21 +449,19 @@
                     <label class="control-label col-md-2" for="IsExten">수강연장신청 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item" >
-                        <div class="radio">
-                            <input type="radio" name="IsExten" class="flat" value="Y" required="required" title="수강연장신청" @if($data['IsExten']=='Y')checked="checked"@endif/> 가능
-                            [
-                            총
-                            <select name="ExtenNum" id="ExtenNum" class="form-control">
-                                @for($i=1;$i<6;$i++)
-                                    <option value="{{$i}}" @if( ($method=='POST' && $i==3) || trim($i) == $data['ExtenNum'])selected="selected"@endif>{{$i}}</option>
-                                @endfor
-                            </select>
-                            회
-                            ]
-                            <input type="radio" name="IsExten" class="flat" value="N" @if($method == 'POST' || $data['IsExten']=='N')checked="checked"@endif/> 불가능
-                            &nbsp;
-                            •수강연장은 본 강좌 수강기간의 50% 범위 내에서만 가능
-                        </div>
+                        <input type="radio" name="IsExten" class="flat" value="Y" required="required" title="수강연장신청" @if($data['IsExten']=='Y')checked="checked"@endif/> 가능
+                        [
+                        총
+                        <select name="ExtenNum" id="ExtenNum" class="form-control">
+                            @for($i=1;$i<6;$i++)
+                                <option value="{{$i}}" @if( ($method=='POST' && $i==3) || trim($i) == $data['ExtenNum'])selected="selected"@endif>{{$i}}</option>
+                            @endfor
+                        </select>
+                        회
+                        ]
+                        <input type="radio" name="IsExten" class="flat" value="N" @if($method == 'POST' || $data['IsExten']=='N')checked="checked"@endif/> 불가능
+                        &nbsp;
+                        •수강연장은 본 강좌 수강기간의 50% 범위 내에서만 가능
                     </div>
                 </div>
 
@@ -478,7 +470,7 @@
                     </label>
                     <div class="col-md-10 form-inline">
                         <input type="radio" name="IsRetake" class="flat" value="Y" required="required" title="재수강신청" @if($data['IsRetake']=='Y')checked="checked"@endif/> 가능
-                        &nbsp;&nbsp;
+                        &nbsp;
                         [할인율] <input type="number" name="RetakeSaleRate" id="RetakeSaleRate" value="@if($method == 'POST'){{0}}@else{{$data['RetakeSaleRate']}}@endif" class="form-control" size="2"> %
                         &nbsp;&nbsp;
                         [신청가능기간] 수강종료 후 <input type='number' name='RetakePeriod' value='{{$data['RetakePeriod']}} ' class="form-control" size="2"> 일까지 ]
@@ -488,15 +480,23 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="IsTpass">T-pass 자료실사용 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <input type="radio" name="IsTpass" class="flat" value="Y" required="required" title="T-pass 자료실사용" @if($data['IsTpass']=='Y')checked="checked"@endif/> 가능
+                        &nbsp;
+                        <input type="radio" name="IsTpass" class="flat" value="N" required="required" title="T-pass 자료실사용" @if($method == 'POST' || $data['IsTpass']=='N')checked="checked"@endif/> 불가능
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2" for="IsRefund">환불신청 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item" >
-                        <div class="radio">
-                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($data['IsRefund']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
-                            <input type="radio" name="IsRefund" class="flat" value="N" @if($method == 'POST' || $data['IsRefund']=='N')checked="checked"@endif/> 불가능
-                            &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
-                        </div>
+                        <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($data['IsRefund']=='Y')checked="checked"@endif/> 가능
+                        &nbsp;
+                        <input type="radio" name="IsRefund" class="flat" value="N" @if($method == 'POST' || $data['IsRefund']=='N')checked="checked"@endif/> 불가능
+                        &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
                     </div>
                 </div>
 

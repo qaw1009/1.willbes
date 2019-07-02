@@ -119,14 +119,14 @@
 
 /* slider : 페이징 버튼 => bSlider */
 
-.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #fff;
+.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #ccc;
     width: 9px;
     height: 9px;
 }
-.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #313131;
 }
 

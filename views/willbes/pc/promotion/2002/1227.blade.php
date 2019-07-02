@@ -224,6 +224,7 @@
                             @else
                                 <!--모바일용-->
                                 <div class="embed-container-mobile" id="myElement">
+                                    {{--
                                     <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
                                     <script type="text/javascript">
                                         jwplayer("myElement").setup({
@@ -235,6 +236,7 @@
                                         file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011"
                                     });
                                     </script>
+                                    --}}
                                 </div>
                                 <ul class="mobileCh">
                                     <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>

@@ -21,39 +21,37 @@
 
         /************************************************************/
 
-        .wb_top {width:100%; text-align:center; background:#3c3e3f url(http://file3.willbes.net/new_cop/2018/07/180713_EV01_bg_1.jpg) no-repeat center; margin-top:20px; min-width:1210px}
+        .wb_top {width:100%; text-align:center; background:#3c3e3f url(https://static.willbes.net/public/images/promotion/2019/07/1032_EV01_1_bg.jpg) no-repeat center; margin-top:20px; min-width:1210px}
         .wb_top div {width:1210px; margin:0 auto; position:relative}
-        .wb_top span {position:absolute; display:block; top:610px; left:374px; width:130px; z-index:10; color:#fff6c8; font-size:40px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:-1px}
+        .wb_top span {position:absolute; display:block; top:588px; left:425px; width:340px; z-index:10; color:#fff6c8; font-size:80px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:15px}
 
-        .wb_01 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:20px; }
-        /* 슬라이드배너 */
-        .slide_con5 {position:relative; width:900px; margin:0 auto}
-        .slide_con5 p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
-        .slide_con5 p a {cursor:pointer}
-        .slide_con5 p.leftBtn {left:-100px}
-        .slide_con5 p.rightBtn {right:-100px}
-        #slidesImg5 li {display:inline; float:left}
-        #slidesImg5:after {content:""; display:block; clear:both}
-
-        /* 탭 */
-        .evttabWrap{width:100%; text-align:center;}
-        .evttabWrap ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }
-        .evttabWrap li {display:inline; text-align:center; float:left; }
-        .evttabWrap a img.off {display:block}
-        .evttabWrap a img.on {display:none}
-        .evttabWrap a.active img.off {display:none}
-        .evttabWrap a.active img.on {display:block}
-
-        .Pstyle {opacity:0; display:none; position:absolute; background-color:#fff;z-index:9;top:0;}
-
-
-        .wb_02 {width:100%; text-align:center; background:#444645; min-width:1210px; padding:30px 0}
+        .wb_01 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:20px;}
+        
         /* 슬라이드배너 */
         .slide_con {position:relative; width:900px; margin:0 auto}
         .slide_con p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-100px}
         .slide_con p.rightBtn {right:-100px}
+        #slidesImg5 {height:363px; overflow:hidden}
+        #slidesImg5 li {display:inline; float:left; margin-bottom:50px}
+        #slidesImg5:after {content:""; display:block; clear:both}
+        
+
+        .wb_01 .moreBtn {display:block; width:400px; margin:150px auto 0; height:50px; line-height:50px; font-size:20px; text-align:center; color:#fff; background:#405acb; border-radius:30px; margin-bottom:100px}
+        .wb_01 .moreBtn:hover {color:#fff; background:#333;}
+
+        /* 탭 */
+        .evttabWrap{width:854px; height:480px; text-align:center; margin:0 auto;}
+        .tabContents {padding-top:50px}
+        .tabContents iframe {width:854px; height:480px}
+
+        .Pstyle {opacity:0; display:none; position:absolute; background-color:#fff;z-index:9;top:0;}
+
+
+        .wb_02 {width:100%; text-align:center; background:#444645; min-width:1210px; padding:30px 0}
+        
+
         #slidesImg3 li {display:inline; float:left}
         #slidesImg3:after {content:""; display:block; clear:both}
 
@@ -105,94 +103,62 @@
 
         <div class="wb_top">
             <div>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV01_1.jpg" alt="신광은경찰 합격스토리 대공개" />
-                <span>2,080</span>
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1032_EV01_1.jpg" alt="신광은경찰 합격스토리 대공개" />
+                <span id="counter">8,447</span>
             </div>
         </div>
 
         <div class="wb_01">
-            <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY" usemap="#story"/><br />
+            <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY"><br />
             <div class="slide_con">
                 <ul id="slidesImg5">
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story1"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story2"/></li>
+                    <li><a href="#interview16"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_16.jpg" alt=""/></a></li>
+					<li><a href="#interview15"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_15.jpg" alt=""/></a></li>
+					<li><a href="#interview14"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_14.jpg" alt=""/></a></li>
+                    <li><a href="#interview13"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_13.jpg" alt=""/></a></li>
+                    <li><a href="#interview12"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_12.jpg" alt=""/></a></li>
+					<li><a href="#interview11"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_11.jpg" alt=""/></a></li>
+					<li><a href="#interview10"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_10.jpg" alt=""/></a></li>
+                    <li><a href="#interview09"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_09.jpg" alt=""/></a></li>
+                    <li><a href="#interview08"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_08.jpg" alt=""/></a></li>
+					<li><a href="#interview07"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_07.jpg" alt=""/></a></li>
+					<li><a href="#interview06"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_06.jpg" alt=""/></a></li>
+                    <li><a href="#interview05"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_05.jpg" alt=""/></a></li>
+                    <li><a href="#interview04"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_04.jpg" alt=""/></a></li>
+					<li><a href="#interview03"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_03.jpg" alt=""/></a></li>
+					<li><a href="#interview02"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_02.jpg" alt=""/></a></li>
+                    <li><a href="#interview01"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_01.jpg" alt=""/></a></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
-            </div>
-            <map name="story1" id="story1">
-			  <area class="story_map" shape="rect" coords="22,82,229,441"  href="#tab1"/>
-			  <area class="story_map" shape="rect" coords="240,77,444,439" href="#tab2"/>
-			  <area class="story_map" shape="rect" coords="455,79,659,438" href="#tab3"/>
-			  <area class="story_map" shape="rect" coords="671,76,878,437" href="#tab4"/>
-			  <area shape="rect" coords="670,454,887,504" href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank"/>
-			</map>
-			<map name="story2" id="story2">
-			  <area class="story_map" shape="rect" coords="22,82,229,441"  href="#tab5"/>
-			  <area class="story_map" shape="rect" coords="240,77,444,439" href="#tab6"/>
-			  <area class="story_map" shape="rect" coords="455,79,659,438" href="#tab7"/>
-			  <area class="story_map" shape="rect" coords="671,76,878,437" href="#tab8"/>
-			  <area shape="rect" coords="670,454,887,504" href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank"/>
-			</map>
+            </div>          
 
-        </div>
 
-        <div class="wb_01">
-            <div style="width:854px;text-align:center;margin:0 auto;">
-                <div class="evttabWrap">
-                    {{--<ul class="cf">
-                        <li style="padding-bottom:40px;">
-                            <a class="active" href="#tab1">
-                                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap1_off.gif"  class="off" alt="01"/>
-                                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap1_on.gif" class="on"  />
-                            </a>
-                        </li>
-                        <li>
-                            <a  href="#tab2">
-                                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap2_off.gif"  class="off" alt="02"/>
-                                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap2_on.gif" class="on"  />
-                            </a>
-                        </li>
-                        <li>
-                            <a  href="#tab3">
-                                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap3_off.gif"  class="off" alt="03"/>
-                                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap3_on.gif" class="on"  />
-                            </a>
-                        </li>
-                        <li>
-                            <a  href="#tab4">
-                                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap4_off.gif"  class="off" alt="04"/>
-                                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_tap4_on.gif" class="on"  />
-                            </a>
-                        </li>
-                    </ul>--}}
-                    <div class="tabContents" id="tab1">
-                        <p><iframe id="youtube-player-1" width="854" height="480" src="https://www.youtube.com/embed/XXbDBQcNtEA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-                    </div>
-                    <div class="tabContents" id="tab2" >
-                        <p><iframe id="youtube-player-2" width="854" height="480" src="https://www.youtube.com/embed/mI9cil-fFyU?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" controls loop></iframe></p>
-                    </div>
-                    <div class="tabContents" id="tab3">
-                        <p><iframe id="youtube-player-3" width="854" height="480" src="https://www.youtube.com/embed/IUgBGlIjj3g?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0" frameborder="0" controls loop></iframe></p>
-                    </div>
-                    <div class="tabContents" id="tab4" >
-                        <p><iframe id="youtube-player-4" width="854" height="480" src="https://www.youtube.com/embed/L6k33zT_kQA?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8?rel=0"  frameborder="0" controls loop></iframe></p>
-                    </div>
-					<div class="tabContents" id="tab5" >
-                        <p><iframe id="youtube-player-5" width="854" height="480" src="https://www.youtube.com/embed/asSdq0i7ZFU?rel=0"  frameborder="0" controls loop></iframe></p>
-                    </div>
-					<div class="tabContents" id="tab6" >
-                        <p><iframe id="youtube-player-6" width="854" height="480" src="https://www.youtube.com/embed/xV5p0RSbxl8?rel=0"  frameborder="0" controls loop></iframe></p>
-                    </div>
-					<div class="tabContents" id="tab7" >
-                        <p><iframe id="youtube-player-7" width="854" height="480" src="https://www.youtube.com/embed/5mHzw2KjdB0?rel=0"  frameborder="0" controls loop></iframe></p>
-                    </div>
-					<div class="tabContents" id="tab8" >
-                        <p><iframe id="youtube-player-8" width="854" height="480" src="https://www.youtube.com/embed/p47aOAGOO8E?rel=0"  frameborder="0" controls loop></iframe></p>
-                    </div>
-                </div>
+            <div class="evttabWrap">
+                <div class="tabContents" id="interview16" >
+                    <iframe src="https://www.youtube.com/embed/9Th4Ur2Px-k?rel=0"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+                </div>                
+                <div class="tabContents" id="interview15" ></div>
+                <div class="tabContents" id="interview14" ></div>
+                <div class="tabContents" id="interview13" > </div>
+                <div class="tabContents" id="interview12" ></div>
+                <div class="tabContents" id="interview11" ></div>
+                <div class="tabContents" id="interview10" ></div>
+                <div class="tabContents" id="interview09" ></div>          
+                <div class="tabContents" id="interview08"></div>
+                <div class="tabContents" id="interview07" ></div>
+                <div class="tabContents" id="interview06"></div>
+                <div class="tabContents" id="interview05" ></div>
+                <div class="tabContents" id="interview04" ></div>
+                <div class="tabContents" id="interview03" ></div>
+                <div class="tabContents" id="interview02" ></div>
+                <div class="tabContents" id="interview01" ></div>  
             </div>
-        </div>
+
+            <div>
+                <a href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank" class="moreBtn">더 많은 고득점자 인터뷰 보기 ></a>
+            </div>
+        </div>        
 
         <div class="wb_02">
             <div class="slide_con">
@@ -465,7 +431,7 @@
 
                     e.preventDefault()})})
         });
-
+/*
         $(document).ready(function(){
             $(".tabContents").hide();
             $(".tabContents:first").show();
@@ -479,18 +445,21 @@
                 $('#youtube-player-'+tab_id)[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
                 return false;
             });
-        });
+        });*/
 
         $(document).ready(function() {
             var slidesImg5 = $("#slidesImg5").bxSlider({
-                mode:'fade', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                controls:false,
-                slideWidth:900,
-                autoHover: true,
-                pager:false,
+                mode: 'horizontal',
+                speed: 500,        // 이동 속도를 설정
+                pager: false,      // 현재 위치 페이징 표시 여부 설정
+                moveSlides: 4,     // 슬라이드 이동시 개수
+                slideWidth: 225,   // 슬라이드 너비
+                minSlides: 4,      // 최소 노출 개수
+                maxSlides: 4,      // 최대 노출 개수
+                slideMargin: 5,    // 슬라이드간의 간격
+                auto: true,        // 자동 실행 여부
+                autoHover: true,   // 마우스 호버시 정지 여부
+                controls: false    // 이전 다음 버튼 노출 여부
             });
 
             $("#imgBannerLeft5").click(function (){
@@ -498,6 +467,74 @@
             });
             $("#imgBannerRight5").click(function (){
                 slidesImg5.goToNextSlide();
+            });
+        });
+
+        var tab16_url = "https://www.youtube.com/embed/9Th4Ur2Px-k?rel=0";
+        var tab15_url = "https://www.youtube.com/embed/Vpe87p_O4-I?rel=0";
+        var tab14_url = "https://www.youtube.com/embed/5wPsViPfppY?rel=0";
+        var tab13_url = "https://www.youtube.com/embed/qzWbRzB_AI0?rel=0";
+        var tab12_url = "https://www.youtube.com/embed/sFK1u739qaM?rel=0";
+        var tab11_url = "https://www.youtube.com/embed/U__iG4VtVUo?rel=0";
+        var tab10_url = "https://www.youtube.com/embed/eUGgcT7GDe0?rel=0";
+        var tab09_url = "https://www.youtube.com/embed/s1JYbeMvUvI?rel=0";
+        var tab08_url = "https://www.youtube.com/embed/XXbDBQcNtEA?rel=0";
+        var tab07_url = "https://www.youtube.com/embed/mI9cil-fFyU?rel=0";
+        var tab06_url = "https://www.youtube.com/embed/IUgBGlIjj3g?rel=0";
+        var tab05_url = "https://www.youtube.com/embed/L6k33zT_kQA?rel=0";
+        var tab04_url = "https://www.youtube.com/embed/asSdq0i7ZFU?rel=0";
+        var tab03_url = "https://www.youtube.com/embed/xV5p0RSbxl8?rel=0";
+        var tab02_url = "https://www.youtube.com/embed/5mHzw2KjdB0?rel=0";
+        var tab01_url = "https://www.youtube.com/embed/p47aOAGOO8E?rel=0";
+
+
+        $(document).ready(function(){
+        $(".tabContents ").hide(); 
+        $(".tabContents:first").show();
+            $("#slidesImg5 li a").click(function(){ 
+            var activeTab = $(this).attr("href"); 
+            var html_str = "";
+            if(activeTab == "#interview16"){
+            html_str = "<iframe src='"+tab16_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview15"){
+            html_str = "<iframe src='"+tab15_url+"' allowfullscreen></iframe>";					
+            }else if(activeTab == "#interview14"){
+            html_str = "<iframe src='"+tab14_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview13"){
+            html_str = "<iframe src='"+tab13_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview12"){
+            html_str = "<iframe src='"+tab12_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview11"){
+            html_str = "<iframe src='"+tab11_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview10"){
+            html_str = "<iframe src='"+tab10_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview09"){
+            html_str = "<iframe src='"+tab09_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview08"){
+            html_str = "<iframe src='"+tab08_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview07"){
+            html_str = "<iframe src='"+tab07_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview06"){
+            html_str = "<iframe src='"+tab06_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview05"){
+            html_str = "<iframe src='"+tab05_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview04"){
+            html_str = "<iframe src='"+tab04_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview03"){
+            html_str = "<iframe src='"+tab03_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview02"){
+            html_str = "<iframe src='"+tab02_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview01"){
+            html_str = "<iframe src='"+tab01_url+"' allowfullscreen></iframe>";
+            }
+
+        $("#slidesImg5 li a").removeClass("active"); 
+        $(this).addClass("active"); 
+        $(".tabContents").hide(); 
+        $(".tabContents").html(''); 
+        $(activeTab).html(html_str);
+        $(activeTab).fadeIn(); 
+        return false; 
             });
         });
 
@@ -559,6 +596,17 @@
                 slidesImg6.goToNextSlide();
             });
         });
+    </script>
+
+    <script src="/public/js/willbes/jquery.counterup.min.js"></script>
+    <script src="/public/js/willbes/waypoints.min.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function( $ ) {
+        $('#counter').counterUp({
+            delay: 10, // the delay time in ms
+            time: 1000 // the speed time in ms
+        });
+    });
     </script>
     
 @stop

@@ -54,12 +54,12 @@
         <div class="evtCtnsBox wb_cts04" id="table">
         <img src="https://static.willbes.net/public/images/promotion/2019/06/1015_04.jpg"  title="기본이론강좌소개" usemap="#link2" />
         <map name="link2" >
-            <area shape="rect" coords="820,373,915,406" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/153645" target="_blank" alt="신광은 형소법" title="신광은 형소법" onfocus='this.blur()'/>
+            <area shape="rect" coords="820,373,915,406" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/155252" target="_blank" alt="신광은 형소법" title="신광은 형소법" onfocus='this.blur()'/>
             <area shape="rect" coords="819,413,913,446" href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/153345" target="_blank" alt="신광은 수사" title="신광은 수사" onfocus='this.blur()'/>
-            <area shape="rect" coords="817,544,915,577" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/153644" target="_blank" alt="장정훈 경찰학개론" title="장정훈 경찰학개론" onfocus='this.blur()'/>
+            <area shape="rect" coords="817,544,915,577" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/155256" target="_blank" alt="장정훈 경찰학개론" title="장정훈 경찰학개론" onfocus='this.blur()'/>
             <area shape="rect" coords="817,583,916,618" href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/151726" target="_blank" alt="장정훈 행정법" title="장정훈 행정" onfocus='this.blur()'/>
             <area shape="rect" coords="818,731,916,768" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/153531" target="_blank" alt="김원욱 형법" title="김원욱 형법" onfocus='this.blur()'/>
-            <area shape="rect" coords="814,902,915,938" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/153546" target="_blank" alt="하승민영어" title="하승민영어" onfocus='this.blur()'/>
+            <area shape="rect" coords="814,902,915,938" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/155259" target="_blank" alt="하승민영어" title="하승민영어" onfocus='this.blur()'/>
             <area shape="rect" coords="819,1072,919,1106" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/153627" target="_blank" alt="원유철 한국사" title="원유철 한국사" onfocus='this.blur()'/>
             <area shape="rect" coords="817,1241,918,1277" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/153626" target="_blank" alt="오태진 한국사" title="오태진 한국사" onfocus='this.blur()'/>
         </map>

@@ -39,8 +39,8 @@
                     <label class="control-label col-md-2" for="txt_member_name">회원검색
                     </label>
                     <div class="col-md-8 form-inline">
-                        <input type="text" id="search_mem_id" name="search_mem_id" class="form-control" title="회원검색어" value="">
-                        <button type="button" name="btn_member_search" data-result-type="single" class="btn btn-primary mb-0 ml-5">회원검색</button>
+                        <input type="text" id="search_mem_id" name="search_mem_id" class="form-control" title="회원검색어" value="" @if($method == 'PUT')readonly="readonly"@endif>
+                        <button type="button" name="btn_member_search" data-result-type="single" class="btn btn-primary mb-0 ml-5" @if($method == 'PUT')disabled="true"@endif>회원검색</button>
                         <p class="form-control-static ml-20">이름, 아이디, 휴대폰번호 검색 가능</p>
                         <input type="hidden" id="mem_idx" name="mem_idx" value="{{ $data['MemIdx'] }}" data-result-data=""/>
                     </div>
@@ -268,6 +268,11 @@
 
             // ajax submit
             $regi_form.submit(function() {
+                if ($('#mem_idx').val() == '') {
+                    alert('회원 검색을 해주세요.');
+                    return false;
+                }
+
                 var _url = '{{ site_url("/site/supporters/member/store/") }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {

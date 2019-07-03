@@ -13,6 +13,11 @@ class SupportersMemberModel extends WB_Model
         'wbs_sys_admin' => 'wbs_sys_admin'
     ];
 
+    public $_arr_bm_idx = [
+        'assignment' => '104',
+        'suggest' => '105'
+    ];
+
     public function __construct()
     {
         parent::__construct('lms');
@@ -30,10 +35,15 @@ class SupportersMemberModel extends WB_Model
                 b.SupportersYear, b.SupportersNumber, b.Title,
                 m.MemName, m.MemId,
                 c.SiteName, d.wAdminName as RegAdminName,
+                fn_ccd_name(a.SupportersStatusCcd) AS SupportersStatusCcdName,
                 fn_ccd_name(a.SerialCcd) AS SerialCcdName,
                 fn_ccd_name(a.SchoolYearCcd) AS SchoolYearCcdName,
                 fn_ccd_name(a.IsSchoolCcd) AS IsSchoolCcdName,
-                "과제수행" as reply, "제안/토론" as board
+                ( SELECT COUNT(*) FROM lms_board WHERE BmIdx = "'.$this->_arr_bm_idx['assignment'].'" AND SupportersIdx = a.SupportersIdx ) AS AssignmentTotalCnt,
+                ( SELECT COUNT(*) FROM lms_board AS ta 
+                    INNER JOIN lms_board_assignment AS tb ON ta.BoardIdx = tb.BoardIdx WHERE ta.BmIdx = "'.$this->_arr_bm_idx['assignment'].'" AND ta.SupportersIdx = a.SupportersIdx AND tb.MemIdx = a.MemIdx
+                ) AS AssignmentCnt,
+                ( SELECT COUNT(*) FROM lms_board WHERE BmIdx = "'.$this->_arr_bm_idx['suggest'].'" AND SupportersIdx = a.SupportersIdx AND RegMemIdx = a.MemIdx ) AS SuggestCnt
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

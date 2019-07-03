@@ -116,6 +116,18 @@ class SupportersFModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
+            $arr_condition = [
+                'EQ' => [
+                    'a.SupportersIdx' => element('SupportersIdx',$inputData),
+                    'a.MemIdx' => element('MemIdx',$inputData)
+                ],
+            ];
+            $data = $this->findMyClass($arr_condition, 'a.SmcIdx');
+            if (empty($data) === false) {
+                throw new \Exception('이미 등록된 소개글이 있습니다.');
+            }
+
+
             if (empty($_FILES['attach_file']['name']) === false) {
                 $sum_size_mb = round($_FILES['attach_file']['size'] / 1024);
                 if ($sum_size_mb > $this->upload_file_rule['max_size']) {

@@ -126,12 +126,11 @@
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-srm-idx="' + row.SrmIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'SupportersStatusCcd', 'render' : function(data, type, row, meta) {
-                            return data;
+                    {'data' : 'SupportersStatusCcdName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.AssignmentCnt + '/' + row.AssignmentTotalCnt;
                         }},
-                    {'data' : 'reply'},
-                    {'data' : 'board'},
-
+                    {'data' : 'SuggestCnt'},
                     {'data' : 'UniversityName'},
                     {'data' : 'Department'},
                     {'data' : 'SchoolYearCcdName'},

@@ -5,20 +5,9 @@
     <link href="/public/css/willbes/promotion/2002_supporters.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div class="p_re evtContent NGR" id="evtContainer">
-        <div class="jumpMenu">
+        {{--<div class="jumpMenu">
             {{ $data['SupportersYear'] }}년 {{ $data['SupportersNumber'] }}기
-            {{--<select name="jumpMenu1" id="jumpMenu1" onchange="MM_jumpMenu1('parent',this,0)">
-                <option>2019년</option>
-                <option>2020년</option>
-                <option>2021년</option>
-            </select>
-            <select name="jumpMenu2" id="jumpMenu2" onchange="MM_jumpMenu2('parent',this,0)">
-                <option>1기</option>
-                <option>2기</option>
-                <option>3기</option>
-                <option>4기</option>
-            </select>--}}
-        </div>
+        </div>--}}
         <div class="evtTop" >
             <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top.jpg" title="광은 서포터즈">
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_title.png" alt="화살표"></span>

@@ -791,20 +791,28 @@
                     <label class="control-label col-md-2">판매여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
-                        <div class="radio">
-                            @foreach($sales_ccd as $key=>$val)
-                                <input type="radio" name="SaleStatusCcd" class="flat" value="{{$key}}" required="required" title="판매여부" @if($loop->index==1 || $data['SaleStatusCcd'] == $key)checked="checked"@endif/> {{$val}}&nbsp;&nbsp;
-                            @endforeach
-
-                        </div>
+                        @foreach($sales_ccd as $key=>$val)
+                            <input type="radio" name="SaleStatusCcd" class="flat" value="{{$key}}" required="required" title="판매여부" @if($loop->index==1 || $data['SaleStatusCcd'] == $key)checked="checked"@endif/> {{$val}}&nbsp;&nbsp;
+                        @endforeach
                     </div>
                     <label class="control-label col-md-2" for="IsUse">사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
-                        <div class="radio">
-                            <input type="radio" name="IsUse" class="flat" value="Y" required="required" title="사용여부" @if($data['IsUse']=='Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="IsUse" class="flat" value="N" @if($method == 'POST' || $data['IsUse']=='N')checked="checked"@endif/> 미사용
-                        </div>
+                        <input type="radio" name="IsUse" class="flat" value="Y" required="required" title="사용여부" @if($data['IsUse']=='Y')checked="checked"@endif/> 사용
+                        &nbsp; <input type="radio" name="IsUse" class="flat" value="N" @if($method == 'POST' || $data['IsUse']=='N')checked="checked"@endif/> 미사용
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">BtoB제휴사정보
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <select name="BtobIdx" id="BtobIdx" class="form-control" title="제휴사">
+                            <option value="">제휴사선택</option>
+                            @foreach($arr_btob as $key => $val)
+                                <option value="{{$key}}" @if($data_btob['BtobIdx'] == $key)selected="selected"@endif>{{$val}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 

@@ -26,7 +26,8 @@ class CommonLectureModel extends WB_Model
         'vw_product_r_professor_concat' => 'vw_product_r_professor_concat',
         'copylog' => 'lms_product_copy_log',
         'subproduct' =>'lms_Product_R_Product',          //구매교재,자동지급강좌,자동지급사은품 공통저장
-        'product_json' => 'lms_product_json_data'
+        'product_json' => 'lms_product_json_data',
+        'product_btob' => 'lms_product_r_btob'
     ];
 
     public function __construct()
@@ -297,8 +298,6 @@ class CommonLectureModel extends WB_Model
         //var_dump($result);
         return $result;
     }
-
-
 
     /**
      * 기존데이터 상태값 변경
@@ -672,7 +671,6 @@ class CommonLectureModel extends WB_Model
                     if($this->_conn->set($data)->insert($this->_table['subproduct']) === false) {
                         throw new \Exception($msg.' 등록에 실패했습니다.');
                     }
-                    //echo $this->_conn->last_query();
                 }
 
             }
@@ -680,7 +678,6 @@ class CommonLectureModel extends WB_Model
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-        //return false;
         return true;
     }
 
@@ -706,18 +703,14 @@ class CommonLectureModel extends WB_Model
                     ];
 
                     if($this->_conn->set($data)->insert($this->_table['autocoupon']) === false) {
-                        //echo $this->_conn->last_query();
                         throw new \Exception('쿠폰 등록에 실패했습니다.');
                     }
-
                 }
             }
-
 
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
         return true;
     }
 
@@ -849,6 +842,37 @@ class CommonLectureModel extends WB_Model
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+        return true;
+    }
+
+    //제휴사 등록
+    public function _setProdBtob($input=[],$prodcode)
+    {
+        try {
+
+            /*  제휴사 정보 상태값 변경 */
+            if($this->_setDataDelete($prodcode,$this->_table['product_btob'],'제휴사(BtoB)') !== true) {
+                throw new \Exception('제휴사(BtoB) 수정에 실패했습니다.');
+            }
+
+            $BtobIdx = element('BtobIdx',$input);
+
+            if(empty($BtobIdx) === false) {
+                $data = [
+                    'ProdCode' => $prodcode
+                    , 'BtobIdx' => $BtobIdx
+                    , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+                    , 'RegIp' => $this->input->ip_address()
+                ];
+
+                if ($this->_conn->set($data)->insert($this->_table['product_btob']) === false) {
+                    throw new \Exception('제휴사(BtoB) 등록에 실패했습니다.');
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
         return true;
     }
 
@@ -1176,7 +1200,6 @@ class CommonLectureModel extends WB_Model
                 throw new \Exception('JSON 데이터 복사에 실패했습니다.');
             };
 
-
             //복사 로그 저장
             $copy_data = [
                 'ProdCode' => $prodcode_new
@@ -1187,8 +1210,6 @@ class CommonLectureModel extends WB_Model
                 throw new \Exception('복사 이력 저장에 실패했습니다.');
             }
 
-            //echo $this->_conn->last_query();
-            //$this->_conn->trans_rollback();w
             $this->_conn->trans_commit();
 
         } catch (\Exception $e) {

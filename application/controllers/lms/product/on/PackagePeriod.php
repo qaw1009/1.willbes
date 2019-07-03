@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class PackagePeriod extends \app\controllers\BaseController
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/on/packagePeriod');
+    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/on/packagePeriod','sys/btob');
     protected $helpers = array('download');
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615004'; //기간제 패키지
@@ -99,6 +99,7 @@ Class PackagePeriod extends \app\controllers\BaseController
 
         $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','650','651','635']);
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
+        $arr_btob = $this->btobModel->getCompanyArray();    //btob목록
 
         $prodcode = null;
         $data = null;
@@ -110,25 +111,22 @@ Class PackagePeriod extends \app\controllers\BaseController
         $data_autocoupon = [];
         $data_autofreebie = [];
         $data_sublecture = [];
+        $data_btob = null;
 
         if(empty($params[0]) === false) {
             $method='PUT';
             $prodcode = $params[0];
-
             $data = $this->packagePeriodModel->_findProductForModify($prodcode);
             $data_sale = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_sale');
             $data_memo = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_memo');
             $data_content = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_sms');
-
             $data_autolec = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
             $data_autofreebie = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
-
             $data_autocoupon = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
             $data_sublecture = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data_btob =  $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_r_btob');
         }
-
-        //var_dump($codes['613']['613001']);
 
         $this->load->view('product/on/packageperiod/create',[
             'method'=>$method
@@ -149,6 +147,7 @@ Class PackagePeriod extends \app\controllers\BaseController
             ,'pointapply_ccd' => $codes['635']  //포인트적립타입
             ,'prodcode' => $prodcode
             ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
+            ,'arr_btob'=>$arr_btob      //btob 목록
             ,'data'=>$data
             ,'data_sale'=>$data_sale
             ,'data_memo'=>$data_memo
@@ -158,6 +157,7 @@ Class PackagePeriod extends \app\controllers\BaseController
             ,'data_autocoupon'=>$data_autocoupon
             ,'data_autofreebie'=>$data_autofreebie
             ,'data_sublecture'=>$data_sublecture
+            ,'data_btob' => empty($data_btob) ? null : $data_btob[0]
         ]);
     }
 

@@ -183,6 +183,12 @@ class PackagePeriodModel extends CommonLectureModel
             }
             /*----------------          Json 데이터 등록        ---------------*/
 
+            /*----------------          제휴사(BtoB) 등록        ---------------*/
+            if($this->_setProdBtob($input,$prodcode) !== true) {
+                throw new \Exception('제휴사(BtoB) 등록에 실패했습니다.');
+            }
+            /*----------------          제휴사(BtoB) 등록        ---------------*/
+
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
 
@@ -290,6 +296,12 @@ class PackagePeriodModel extends CommonLectureModel
             }
             /*----------------          Json 데이터 등록        ---------------*/
 
+            /*----------------          제휴사(BtoB) 등록        ---------------*/
+            if($this->_setProdBtob($input,$prodcode) !== true) {
+                throw new \Exception('제휴사(BtoB) 등록에 실패했습니다.');
+            }
+            /*----------------          제휴사(BtoB) 등록        ---------------*/
+
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();
 
@@ -379,6 +391,5 @@ class PackagePeriodModel extends CommonLectureModel
             ,'PackAutoStudyPeriod'=>element('PackAutoStudyPeriod', $input)
             ,'DeviceLimitCount'=>element('DeviceLimitCount', $input)
         ];
-
     }
 }

@@ -88,6 +88,7 @@
                     <th>NO</th>
                     <th>과제명</th>
                     <th>첨부</th>
+                    <th>제출기간</th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>사용</th>
@@ -131,6 +132,9 @@
                             var tmp_return;
                             (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
                             return tmp_return;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.SupportersStartDate + ' ~ ' + row.SupportersEndDate;
                         }},
                     {'data' : 'wAdminName'},
                     {'data' : 'RegDatm'},

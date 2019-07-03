@@ -227,7 +227,7 @@ class Member extends BaseSupporters
     {
         $arr_condition = [
             'EQ' => [
-                'b.BmIdx' => '104',
+                'b.BmIdx' => $this->supportersMemberModel->_arr_bm_idx['assignment'],
                 'b.SupportersIdx' => $this->_reqP('supporters_idx'),
                 'b.IsStatus' => 'Y',
                 'b.IsUse' => 'Y'
@@ -262,7 +262,7 @@ class Member extends BaseSupporters
     {
         $arr_condition = [
             'EQ' => [
-                'b.BmIdx' => '105',
+                'b.BmIdx' => $this->supportersMemberModel->_arr_bm_idx['suggest'],
                 'b.SupportersIdx' => $this->_reqP('supporters_idx'),
                 'b.RegMemIdx' => $this->_reqP('member_idx'),
                 'b.IsStatus' => 'Y',

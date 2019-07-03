@@ -124,7 +124,7 @@ class SupportersFModel extends WB_Model
             ];
             $data = $this->findMyClass($arr_condition, 'a.SmcIdx');
             if (empty($data) === false) {
-                throw new \Exception('이미 등록 된 소개글이 있습니다.');
+                throw new \Exception('이미 등록된 소개글이 있습니다.');
             }
 
 

@@ -88,6 +88,7 @@
     <li>
         <div>       
             <ul>
+            <li><a href="{{ site_url('/home/html/event_zaksim_190702') }}" target="_blank">작심독서실 인증 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1137') }}" target="_blank">통합 웰컴팩 </a></li>
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
                 <li><p>경찰 온라인 ▼</p></li>

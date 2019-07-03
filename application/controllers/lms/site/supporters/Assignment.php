@@ -129,7 +129,7 @@ class Assignment extends BaseSupporters
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LS.SiteName, LB.Title, LB.SupportersStartDate, LB.SupportersEndDate, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.SupportersIdx, SP.SupportersYear, SP.SupportersNumber
         ';

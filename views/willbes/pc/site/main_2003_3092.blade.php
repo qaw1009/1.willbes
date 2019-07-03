@@ -2,64 +2,84 @@
 
 @section('content')
     <!-- Container -->
-    <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
-        .evtContent {
-            width:100% !important;
-            min-width:1120px !important;
-            background:#ccc;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
-        }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-
-        /************************************************************/
-
-        .zero100_01 {background:url(https://static.willbes.net/public/images/promotion/2019/06/zero100_01_bg.jpg) no-repeat center top;}
-        .zrCts01 {position:relative; width:1120px; margin:0 auto;}        
+    <div id="Container" class="Container free NGR c_both">
+        <!-- site nav -->
+        @include('willbes.pc.layouts.partial.site_menu')
         
-        .zrCts01 span {position:absolute;}
-        .zrCts01 span.img01 {width:696px; top:650px; left:567px; z-index:2;}        
-        
-        .zrCts01 span.img02 {width:702px; top:572px; left:56px; z-index:1; animation:ani02 1s ease-in; -webkit-animation:ani02 1s ease-in;}
-        @@keyframes ani02{
-		0%{left:567px; opacity: 0;}
-		90%{left:0; opacity: .9;}
-		100%{left:56px; opacity: 1;}
-        }
-
-        .zero100_02 {background:url(https://static.willbes.net/public/images/promotion/2019/06/zero100_02_bg.jpg) no-repeat center top;}
-        .zrCts02 {position:relative; width:1120px; margin:0 auto;}               
-        .zrCts02 span {position:absolute; width:204px; top:710px; left:335px; z-index:1; animation:ani03 1s infinite;}
-        @@keyframes ani03{
-		0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
-		50%{-webkit-transform:scale3d(1.15,1.15,1);transform:scale3d(1.15,1.15,1)}
-		100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
-		}
-    </style>
-
-
-    <div class="p_re evtContent NGR" id="evtContainer">
-        <div class="evtCtnsBox zero100_01">
-            <div class="zrCts01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_01.jpg" alt="공무원 시작은 윌비스 ‘제로백’과 함께"  />
-                <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_img01.png" alt="zero100"  /></span>
-                <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_img02.png" alt="자동차"  /></span>
-            </div>      
-        </div>
-        <div class="evtCtnsBox zero100_02">
-            <div class="zrCts02">
-                <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_02.jpg" alt="공무원 시작은 윌비스 ‘제로백’과 함께"  />
-                <span><img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_img03.png" alt="조건없이"  /></span>
-            </div>      
+        <div class="Section MainVisual">
+            <div class="widthAuto NSK mt30">
+                <div class="VisualsubBox">
+                    <div class="bSlider">
+                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <div class="Section mt30">
+            <div class="widthAuto bSlider">
+                {!! banner_html(element('메인_띠배너', $data['arr_main_banner']), 'sliderPlay') !!}
+            </div>
+        </div>
+
+        <div class="Section">
+            <div class="widthAuto">
+                <img src="{{ img_url('gosi_noncom/visual/visual_tit01.jpg') }}" alt="오랜 경험과 노하우를 가진 전문 교수진">
+                <ul class="PBcts">
+                    @for($i=1; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section NSK mt90">
+            <div class="widthAuto">
+                <div class="willbesNews">
+                    {{-- board include --}}
+                    @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'] . '_wide')
+                </div>
+                <!--willbesNews //-->
+            </div>
+        </div>
+
+        <div class="Section NSK mt70 mb90">
+            <div class="widthAuto">
+                {{-- cscenter --}}
+                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
+            </div>
+        </div>
+
+        <div id="QuickMenu" class="MainQuickMenu">
+            {{-- quick menu --}}
+            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
+        </div>
+
+    </div>
     <!-- End Container -->
+
+    <script type="text/javascript">
+        $(function() {
+            $('.sliderPlay').bxSlider({
+                auto: true,
+                controls: false,
+                pause: 4000,
+                moveSlides:2,
+                minSlides:2,
+                maxSlides:2,
+                slideWidth:1120,
+                slideMargin:6,
+                autoHover: true,
+                onSliderLoad: function(){
+                    $(".bSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
+        });
+    </script>
 
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

@@ -90,7 +90,7 @@
                     {!! banner('내강의실_우측퀵', 'Quick-Bnr', $__cfg['SiteCode'], '0') !!}
                     {{-- 서포터즈 회원인 경우 배너 노출 --}}
                     @if (empty($data['supporters']) === false)
-                        <a href="{{ ($data['supporters']['SiteCode'] == '2001') ? 'https://police.local.willbes.net' : 'https://pass.local.willbes.net' }}/supporters/home/index">
+                        <a href="{{ ($data['supporters']['SiteCode'] == '2001') ? 'https://police.willbes.net' : 'https://pass.willbes.net' }}/supporters/home/index">
                             <img class="mt10" src="https://static.willbes.net/public/images/willbes/mypage/banner_supporters.jpg">
                         </a>
                     @endif

@@ -73,6 +73,7 @@ class Member extends BaseSupporters
         //응시직렬,활동상태,학년,재학여부,시험준비기간
         $set_ccd = [$this->_ccd['serial'], $this->_ccd['supporters_status'], $this->_ccd['year'], $this->_ccd['is_school'], $this->_ccd['exam_period']];
         $arr_base['ccds'] = $this->_getCcdArrayData($set_ccd);
+        unset($arr_base['ccds']['666']['666001']); //'일반' 항목 제거
 
         $data = null;
         $srm_idx = '';

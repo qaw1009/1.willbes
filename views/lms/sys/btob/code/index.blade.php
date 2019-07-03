@@ -79,7 +79,7 @@
 
         $(document).ready(function() {
             $datatable = $list_table.DataTable({
-                serverSide: true,
+                serverSide: false,
                 paging: true,
                 pageLength: 50,
                 buttons: [
@@ -96,7 +96,7 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        return meta.settings.json.recordsTotal - meta.row;
                     }},
                     {'data' : 'BtobName'},
                     {'data' : 'ParentCcd', 'render' : function(data, type, row, meta) {

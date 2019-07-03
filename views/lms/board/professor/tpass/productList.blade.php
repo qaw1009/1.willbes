@@ -78,6 +78,7 @@
             <thead>
             <tr>
                 <th>NO</th>
+                <th>상품종류</th>
                 <th>대분류</th>
                 <th>중분류</th>
                 <th>대비학년도</th>
@@ -121,6 +122,7 @@
                         // 리스트 번호
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
+                {'data' : 'LearnPatternCcd_Name'},
 
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         return row.CateName_Parent;

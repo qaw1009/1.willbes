@@ -10,9 +10,10 @@
 @import url("style_gosi_acad.css"); /*공무원학원*/
 @import url("style_gosi_law.css"); /*법원직*/
 @import url("style_gosi_tech.css"); /*기술직*/
-@import url("style_gosi_gp.css");
-@import url("style_gosi_noncom.css");
+@import url("style_gosi_gp.css"); 
+@import url("style_gosi_noncom.css"); /*부사관*/
 @import url("style_gpgosi.css");
+@import url("style_gosi_free.css"); /*무료인강*/
 @import url("style_job.css"); /*자격증*/
 
 

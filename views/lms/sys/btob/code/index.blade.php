@@ -1,6 +1,6 @@
 @extends('lcms.layouts.master')
 @section('content')
-    <h5>- 윌비스 사이트 운영을 위한 공통코드를 관리하는 메뉴입니다.</h5>
+    <h5>- 제휴사 사이트 운영을 위한 공통코드를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">

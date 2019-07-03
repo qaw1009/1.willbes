@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'crm/messageF');
+    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'crm/messageF', 'supportersF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -138,12 +138,43 @@ class Home extends \app\controllers\FrontController
         $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, '', $column, 4, 0, $order_by);
 
         // 쪽지
-        $data['msg_list'] = $this->messageFModel->listMessage(false, [], $memidx,
-            2, null, ['a.SendIdx' => 'DESC']);
+        $data['msg_list'] = $this->messageFModel->listMessage(false, [], $memidx,2, null, ['a.SendIdx' => 'DESC']);
+
+        // 서포터즈회원조회
+        $data['supporters'] = $this->_isSupporters();
 
         $this->load->view('/classroom/index', [
             'data' => $data
         ]);
+    }
+
+    /**
+     * 서포터즈회원 여부
+     * @return bool : true 회원, false 비회원
+     */
+    private function _isSupporters()
+    {
+        $column = 'a.SupportersIdx, a.SiteCode';
+        $arr_condition_1 = [
+            'EQ' => [
+                'IsUse' => 'Y'
+            ],
+            'LTE' => ['StartDate' => date('Y-m-d')],
+            'GTE' => ['EndDate' => date('Y-m-d')],
+            'RAW' => [
+                '(SiteCode = ' => '2001 OR SiteCode = 2003)'
+            ]
+        ];
+
+        $arr_condition_2 = [
+            'EQ' => [
+                'b.MemIdx' => $this->session->userdata('mem_idx'),
+                'b.SupportersStatusCcd' => '720001',
+                'b.IsStatus' => 'Y'
+            ]
+        ];
+        $data = $this->supportersFModel->findSupporters($arr_condition_1, $arr_condition_2, $column);
+        return $data;
     }
 
 }

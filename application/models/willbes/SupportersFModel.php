@@ -44,10 +44,10 @@ class SupportersFModel extends WB_Model
         $from = "
             FROM (
                 SELECT
-                SupportersIdx, Title, SupportersYear, SupportersNumber, CouponIssueCcd
+                SiteCode, SupportersIdx, Title, SupportersYear, SupportersNumber, CouponIssueCcd
                 FROM {$this->_table['supporters']}
                 {$where_1}
-                ORDER BY SupportersIdx DESC LIMIT 1
+                ORDER BY SupportersIdx DESC
             ) AS a
             INNER JOIN {$this->_table['supporters_r_member']} AS b ON a.SupportersIdx = b.SupportersIdx
         ";

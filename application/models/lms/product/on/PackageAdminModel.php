@@ -101,7 +101,7 @@ class PackageAdminModel extends CommonLectureModel
             $column = ' STRAIGHT_JOIN
                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
-                    ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply
+                    ,temp_a.LearnPatternCcd,temp_a.SchoolYear,temp_a.MultipleApply
                     ,Bc.CcdName as LearnPatternCcd_Name
                     ,Bd.CcdName as PackTypeCcd_Name
                     ,Be.CcdName as PackCateCcd_Name
@@ -122,18 +122,24 @@ class PackageAdminModel extends CommonLectureModel
                     from
                         lms_product A
                         join (
-                        SELECT b.ProdCode
-                        FROM lms_product_division AS a
-                        join lms_product_lecture AS b ON a.ProdCode = b.ProdCode AND b.LearnPatternCcd = \'615003\'
-                        WHERE a.ProfIdx = '.$prof_idx.' AND a.IsStatus = \'Y\' AND b.IsTpass = \'Y\'
-                        GROUP BY b.ProdCode
+                            SELECT p.ProdCode, pl.LearnPatternCcd, pl.SchoolYear,pl.MultipleApply,pl.PackTypeCcd,pl.PackCateCcd
+                            FROM lms_product p
+                            JOIN lms_product_lecture pl ON p.ProdCode = pl.ProdCode
+                            JOIN lms_product_r_sublecture prs ON p.ProdCode = prs.ProdCode AND prs.IsEssential=\'Y\' AND prs.IsStatus=\'Y\'
+                            JOIN lms_product_division pd ON prs.ProdCodeSub = pd.ProdCode AND pd.IsStatus=\'Y\'
+                            WHERE 
+                            pl.IsTpass=\'Y\'
+                            AND p.IsStatus=\'Y\' 
+                            #AND p.IsUse=\'Y\'		#강좌 사용여부
+                            AND pl.LearnPatternCcd IN (\'615003\',\'615004\')	#강좌 유형 (운영자, 기간제페키지)
+                            AND pd.ProfIdx="'.$prof_idx.'" #강사코드
+                            GROUP BY p.ProdCode
                         ) AS temp_a ON A.ProdCode = temp_a.ProdCode
                         left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
                         left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
-                        join lms_product_lecture B on A.ProdCode = B.ProdCode
-                        left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
-                        left outer join lms_sys_code Bd on B.PackTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
-                        left outer join lms_sys_code Be on B.PackCateCcd = Be.Ccd and Be.IsStatus=\'Y\'
+                        left outer join lms_sys_code Bc on temp_a.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                        left outer join lms_sys_code Bd on temp_a.PackTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                        left outer join lms_sys_code Be on temp_a.PackCateCcd = Be.Ccd and Be.IsStatus=\'Y\'
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                         join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                         left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode

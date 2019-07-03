@@ -150,16 +150,13 @@ class Tpass extends BaseBoard
 
         $arr_condition = [
             'EQ' => [
-                /*'A.ProdTypeCcd' => $this->prodtypeccd,
-                'B.LearnPatternCcd' => $this->learnpatternccd,
-                'A.SiteCode' => $this->_reqP('search_site_code'),*/
                 'C.CateCode' => $this->_reqP('search_md_cate_code'),
-                'B.SchoolYear' => $this->_reqP('search_schoolyear'),
+                'temp_a.SchoolYear' => $this->_reqP('search_schoolyear'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
                 'A.IsNew' =>$this->_reqP('search_new'),
                 'A.IsBest' =>$this->_reqP('search_best'),
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
-                'B.PackTypeCcd' =>$this->_reqP('search_packtype_ccd'),
+                'temp_a.PackTypeCcd' =>$this->_reqP('search_packtype_ccd'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),
@@ -221,7 +218,6 @@ class Tpass extends BaseBoard
         $arr_condition = [
             'EQ' => [
                 'A.ProdTypeCcd' => $this->prodtypeccd,
-                'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->site_code,
                 'A.ProdCode' => $prod_code
             ]
@@ -336,7 +332,6 @@ class Tpass extends BaseBoard
         $arr_condition = [
             'EQ' => [
                 'A.ProdTypeCcd' => $this->prodtypeccd,
-                'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->site_code,
                 'A.ProdCode' => $prod_code
             ]
@@ -470,7 +465,6 @@ class Tpass extends BaseBoard
         $arr_condition = [
             'EQ' => [
                 'A.ProdTypeCcd' => $this->prodtypeccd,
-                'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->site_code,
                 'A.ProdCode' => $prod_code
             ]
@@ -609,7 +603,6 @@ class Tpass extends BaseBoard
         $arr_condition = [
             'EQ' => [
                 'A.ProdTypeCcd' => $this->prodtypeccd,
-                'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->site_code,
                 'A.ProdCode' => $prod_code
             ]

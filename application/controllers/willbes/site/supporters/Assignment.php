@@ -274,6 +274,7 @@ class Assignment extends \app\controllers\FrontController
             'EQ' => [
                 'b.MemIdx' => $this->session->userdata('mem_idx'),
                 'b.SiteCode' => $this->_site_code,
+                'b.SupportersStatusCcd' => '720001',
                 'b.IsStatus' => 'Y'
             ]
         ];

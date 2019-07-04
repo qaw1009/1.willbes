@@ -92,6 +92,7 @@
                 paging: false,
                 searching: true,
                 buttons: [
+                    { text: '<i class="fa fa-pencil mr-5"></i> 제휴사 시스템 운영자 등록', className: 'btn-sm btn-success border-radius-reset mr-15 btn-admin-regist' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 권한유형 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                         location.href = '{{ site_url('/sys/btob/btobRole/create') }}' + dtParamsToQueryString($datatable);
                     }}
@@ -101,6 +102,14 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.href = '{{ site_url('/sys/btob/btobRole/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+            });
+
+            // 시스템 운영자 등록 버튼 클릭
+            $('.btn-admin-regist').click(function() {
+                $('.btn-admin-regist').setLayer({
+                    'url' : '{{ site_url('/sys/btob/btobRole/createAdmin') }}',
+                    'width' : 700
+                });
             });
         });
 

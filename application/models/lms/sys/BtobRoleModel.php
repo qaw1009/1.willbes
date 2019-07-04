@@ -252,6 +252,7 @@ class BtobRoleModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+            $sess_admin_idx = $this->session->userdata('admin_idx');
             $admin_id = element('admin_id', $input, 'none');
             $btob_admin_id = element('btob_admin_id', $input, 'none');
             $btob_admin_passwd = element('btob_admin_passwd', $input);
@@ -277,7 +278,8 @@ class BtobRoleModel extends WB_Model
                 'AdminId' => $btob_admin_id,
                 'AdminName' => $row['wAdminName'],
                 'IsApproval' => 'Y',
-                'RegAdminIdx' => '0'
+                'ApprovalAdminIdx' => $sess_admin_idx,
+                'RegAdminIdx' => $sess_admin_idx
             ];
 
             $this->_conn->set($data)->set('ApprovalDatm', 'NOW()', false);

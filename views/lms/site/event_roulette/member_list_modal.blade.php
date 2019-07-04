@@ -38,11 +38,11 @@
                     </div>
 
                     <div class="form-group form-group-sm">
-                        <label class="control-label col-md-2" for="search_rro_idx">신규회원가입대상 사용여부</label>
+                        <label class="control-label col-md-2" for="search_rro_idx">신규회원 가입대상 사용여부</label>
                         <div class="col-md-2">
                             {{ ($arr_base['roulette_data']['NewMemberJoinType'] == 'Y') ? '사용' : '미사용' }}
                         </div>
-                        <label class="control-label col-md-2" for="search_rro_idx">신규회원가입대상 기간</label>
+                        <label class="control-label col-md-2" for="search_rro_idx">신규회원 가입대상 기간</label>
                         <div class="col-md-4">
                             {{ $arr_base['roulette_data']['NewMemberJoinStartDate'] }} ~ {{ $arr_base['roulette_data']['NewMemberJoinEndDate'] }}
                         </div>

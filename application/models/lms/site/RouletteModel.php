@@ -341,7 +341,11 @@ class RouletteModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-            $this->_conn->set('IsUse', 'Y')->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->set('UseDatm', date('Y-m-d H:i:s'))->where('RouletteCode', $roulette_code);
+            $this->_conn->set('IsUse', 'Y')
+                ->set('UpdAdminIdx', $this->session->userdata('admin_idx'))
+                ->set('UseDatm', date('Y-m-d H:i:s'))
+                ->where('IsUse', 'N')
+                ->where('RouletteCode', $roulette_code);
 
             if ($this->_conn->update($this->_table['roulette_member']) === false) {
                 throw new \Exception('지급 상태 수정에 실패했습니다.');

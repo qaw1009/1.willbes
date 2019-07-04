@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class RouletteModel extends WB_Model
 {
     private $_table = [
+        'member' => 'lms_member',
         'roulette' => 'lms_roulette',
         'roulette_otherinfo' => 'lms_roulette_otherinfo',
         'roulette_member' => 'lms_roulette_member',
@@ -22,7 +23,7 @@ class RouletteModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                a.RouletteCode, a.Title, a.DayLimitCount, a.MaxLimitCount, a.RouletteStartDatm, a.RouletteEndDatm, a.ProbabilityType, a.IsUse, a.IsStatus, a.Memo, a.RegDatm, a.RegAdminIdx
+                a.RouletteCode, a.Title, a.DayLimitCount, a.MaxLimitCount, a.NewMemberJoinType, a.NewMemberJoinStartDate, a.NewMemberJoinEndDate, a.RouletteStartDatm, a.RouletteEndDatm, a.ProbabilityType, a.IsUse, a.IsStatus, a.Memo, a.RegDatm, a.RegAdminIdx
                 ,b.wAdminName AS RegAdminName
             ';
 
@@ -52,7 +53,7 @@ class RouletteModel extends WB_Model
     public function findRouletteForModify($arr_condition = [])
     {
         $column = '
-                a.RouletteCode, a.Title, a.DayLimitCount, a.MaxLimitCount, a.RouletteStartDatm, a.RouletteEndDatm, a.ProbabilityType, a.IsUse, a.IsStatus, a.Memo, a.RegDatm, a.RegAdminIdx, a.UpdDatm
+                a.RouletteCode, a.Title, a.DayLimitCount, a.MaxLimitCount, a.NewMemberJoinType, a.NewMemberJoinStartDate, a.NewMemberJoinEndDate, a.RouletteStartDatm, a.RouletteEndDatm, a.ProbabilityType, a.IsUse, a.IsStatus, a.Memo, a.RegDatm, a.RegAdminIdx, a.UpdDatm
                 ,DATE_FORMAT(A.RouletteStartDatm, \'%Y-%m-%d\') AS RouletteStartDay, DATE_FORMAT(A.RouletteStartDatm, \'%H\') AS RouletteStartHour, DATE_FORMAT(A.RouletteStartDatm, \'%i\') AS RouletteStartMin
                 ,DATE_FORMAT(A.RouletteEndDatm, \'%Y-%m-%d\') AS RouletteEndDay, DATE_FORMAT(A.RouletteEndDatm, \'%H\') AS RouletteEndHour, DATE_FORMAT(A.RouletteEndDatm, \'%i\') AS RouletteEndMin
                 ,b.wAdminName AS RegAdminName, c.wAdminName AS UpdAdminName
@@ -120,6 +121,9 @@ class RouletteModel extends WB_Model
                 'Title' => element('roulette_title', $input),
                 'DayLimitCount' => element('day_limit_count', $input),
                 'MaxLimitCount' => element('max_limit_count', $input),
+                'NewMemberJoinType' => element('new_member_join_type', $input),
+                'NewMemberJoinStartDate' => element('new_member_join_start_date', $input),
+                'NewMemberJoinEndDate' => element('new_member_join_end_date', $input),
                 'RouletteStartDatm' => $roulette_start_datm,
                 'RouletteEndDatm' => $roulette_end_datm,
                 'ProbabilityType' => element('probability_type', $input),
@@ -161,7 +165,7 @@ class RouletteModel extends WB_Model
             $roulette_code = element('roulette_code', $input);
 
             //당첨자데이터 체크
-            $arr_condition = ['EQ' => ['RouletteCode' => $roulette_code]];
+            $arr_condition = ['EQ' => ['a.RouletteCode' => $roulette_code]];
             $win_member_cnt = $this->listWinMember(true, $arr_condition);
 
             //정보 조회
@@ -185,6 +189,9 @@ class RouletteModel extends WB_Model
                 'Title' => element('roulette_title', $input),
                 'DayLimitCount' => element('day_limit_count', $input),
                 'MaxLimitCount' => element('max_limit_count', $input),
+                'NewMemberJoinType' => element('new_member_join_type', $input),
+                'NewMemberJoinStartDate' => element('new_member_join_start_date', $input),
+                'NewMemberJoinEndDate' => element('new_member_join_end_date', $input),
                 'RouletteStartDatm' => $roulette_start_datm,
                 'RouletteEndDatm' => $roulette_end_datm,
                 'IsUse' => element('is_use', $input),
@@ -272,7 +279,7 @@ class RouletteModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                a.RmIdx, a.RouletteCode, a.RroIdx, a.MemIdx, a.IsUse, a.RegDatm, a.RegIp
+                a.RmIdx, a.MemIdx, a.RegDatm, a.IsUse, a.UseDatm, b.ProdName, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS Phone
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -284,11 +291,72 @@ class RouletteModel extends WB_Model
 
         $from = "
             FROM {$this->_table['roulette_member']} AS a
+            INNER JOIN {$this->_table['roulette_otherinfo']} AS b ON a.RroIdx = b.RroIdx
+            INNER JOIN {$this->_table['member']} AS m ON a.MemIdx = m.MemIdx
         ";
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * IsUse 업데이트
+     * @param array $params
+     * @return array|bool
+     */
+    public function storeIsUse($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $rm_idx => $columns) {
+                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->set('UseDatm', date('Y-m-d H:i:s'))->where('RmIdx', $rm_idx);
+
+                if ($this->_conn->update($this->_table['roulette_member']) === false) {
+                    throw new \Exception('지급 상태 수정에 실패했습니다.');
+                }
+                //echo $this->_conn->last_query();
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * IsUse 업데이트
+     * @param $roulette_code
+     * @return array|bool
+     */
+    public function storeIsUseAll($roulette_code)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $this->_conn->set('IsUse', 'Y')
+                ->set('UpdAdminIdx', $this->session->userdata('admin_idx'))
+                ->set('UseDatm', date('Y-m-d H:i:s'))
+                ->where('IsUse', 'N')
+                ->where('RouletteCode', $roulette_code);
+
+            if ($this->_conn->update($this->_table['roulette_member']) === false) {
+                throw new \Exception('지급 상태 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
 

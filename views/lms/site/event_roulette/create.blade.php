@@ -53,14 +53,36 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="max_limit_count">최대 횟수제한<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="max_limit_count">일일 최대 횟수제한<span class="required">*</span></label>
                     <div class="col-md-6 item">
                         <input type="text" class="form-control" name="max_limit_count" id="max_limit_count" value="{{$data['MaxLimitCount']}}" style="width: 100px;">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="roulette_start_datm">기간설정 <span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="new_member_join_type_Y">신규회원가입대상 사용여부<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <div class="radio">
+                            <input type="radio" id="new_member_join_type_Y" name="new_member_join_type" class="flat" value="Y" @if($data['NewMemberJoinType']=='Y')checked="checked"@endif/> <label for="new_member_join_type_Y" class="input-label">사용</label>
+                            <input type="radio" id="new_member_join_type_N" name="new_member_join_type" class="flat" value="N" required="required" @if($method == 'POST' || $data['NewMemberJoinType']=='N')checked="checked"@endif/> <label for="new_member_join_type_N" class="input-label">미사용</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 form-inline member-join-date">
+                        <div class="input-group mb-0">
+                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            <input type="text" class="form-control datepicker" id="new_member_join_start_date" name="new_member_join_start_date" value="{{$data['NewMemberJoinStartDate']}}">
+                        </div>
+                        <span class="pl-5 pr-5">~</span>
+                        <div class="input-group mb-0">
+                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            <input type="text" class="form-control datepicker" id="new_member_join_end_date" name="new_member_join_end_date" value="{{$data['NewMemberJoinEndDate']}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="roulette_start_datm">룰렛 이벤트 기간설정 <span class="required">*</span></label>
                     <div class="col-md-6 form-inline">
                         <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
@@ -251,6 +273,15 @@
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
             var temp_roulette_prod_num = $(".temp_roulette_product").length + 1;
+
+            $regi_form.on('ifChanged ifCreated', 'input[name="new_member_join_type"]:checked', function() {
+                var set_val = $(this).val();
+                if (set_val == 'Y') {
+                    $(".member-join-date").show();
+                } else {
+                    $(".member-join-date").hide();
+                }
+            });
 
             //상품추가
             $regi_form.on('click', '.btn-add-product', function() {

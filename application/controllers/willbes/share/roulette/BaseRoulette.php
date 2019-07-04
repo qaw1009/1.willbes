@@ -3,8 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseRoulette extends \app\controllers\FrontController
 {
-    protected $models = array('rouletteF');
+    protected $models = array('rouletteF','memberF');
     protected $helpers = array();
+    protected $auth_controller = false;
+    protected $auth_methods = array('store');
     private $_err_data = [
         'ret_cd' => false,
         'ret_msg' => '잘못된 접근입니다.',
@@ -57,15 +59,9 @@ class BaseRoulette extends \app\controllers\FrontController
             return $this->json_result(false, '', $this->_err_data);
         }
 
-        if ($this->isLogin() !== true) {
-            $this->_err_data['ret_msg'] = '로그인 후 이용해 주세요.';
-            return $this->json_result(false, '', $this->_err_data);
-        }
-
+        //룰렛 데이터 조회
         $roulette_code = $params[0];
         $data_info = [];
-
-        //룰렛 데이터 조회
         $arr_condition = [
             'EQ' => [
                 'RouletteCode' => $roulette_code,
@@ -78,6 +74,15 @@ class BaseRoulette extends \app\controllers\FrontController
         if (empty($data_info['roulette_data']) === true) {
             $this->_err_data['ret_msg'] = '조회된 룰렛 상품이 없습니다.';
             return $this->json_result(false, '', $this->_err_data);
+        }
+
+        //신규회원체크
+        if ($data_info['roulette_data']['NewMemberJoinType'] == 'Y') {
+            $member_data = $this->memberFModel->getMemberForJoinDate($this->session->userdata('mem_idx'), $data_info['roulette_data']['NewMemberJoinStartDate'],$data_info['roulette_data']['NewMemberJoinEndDate']);
+            if (empty($member_data) === true) {
+                $this->_err_data['ret_msg'] = "{$data_info['roulette_data']['NewMemberJoinStartDate']} ~ {$data_info['roulette_data']['NewMemberJoinEndDate']}까지 회원가입한 회원만 참여할 수 있습니다.";
+                return $this->json_result(false, '', $this->_err_data);
+            }
         }
 
         $result = $this->rouletteFModel->{'storeRoulette_'.$data_info['roulette_data']['ProbabilityType']}($roulette_code, $data_info);

@@ -46,10 +46,12 @@
                     <th>일일횟수제한</th>
                     <th>최대횟수제한</th>
                     <th>기간</th>
+                    <th>신규회원가입대상 사용여부</th>
                     <th>룰렛확률타입</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>수정</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -92,12 +94,15 @@
                         }},
                     {'data' : 'RouletteCode'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.RouletteCode + '"><u>' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-member-list" data-idx="' + row.RouletteCode + '"><u>' + data + '</u></a>';
                         }},
                     {'data' : 'DayLimitCount'},
                     {'data' : 'MaxLimitCount'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.RouletteStartDatm + ' ~ ' + row.RouletteEndDatm;
+                        }},
+                    {'data' : 'NewMemberJoinType', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? '사용' + ' ('+ row.NewMemberJoinStartDate + ' ~ ' + row.NewMemberJoinEndDate +')' : '미사용';
                         }},
                     {'data' : 'ProbabilityType', 'render' : function(data, type, row, meta) {
                             return (data === '1') ? '자동' : '<span class="blue">수동</span>';
@@ -106,13 +111,23 @@
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'RegAdminName'},
-                    {'data' : 'RegDatm'}
+                    {'data' : 'RegDatm'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.RouletteCode + '"><u>수정</u></a>';
+                        }}
                 ]
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.href='{{ site_url('/site/eventRoulette/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+            });
+
+            $list_table.on('click', '.btn-member-list', function() {
+                $('.btn-member-list').setLayer({
+                    "url" : "{{ site_url('site/eventRoulette/memberListModal/') }}" + $(this).data('idx'),
+                    width : "1200"
+                });
             });
         });
     </script>

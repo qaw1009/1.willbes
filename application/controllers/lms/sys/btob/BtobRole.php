@@ -106,4 +106,32 @@ class BtobRole extends \app\controllers\BaseController
             $this->json_error($result['ret_msg'], $result['ret_status']);
         }
     }
+
+    /**
+     * 제휴사 시스템 운영자 등록 폼
+     */
+    public function createAdmin()
+    {
+        $this->load->view('sys/btob/role/create_admin');
+    }
+
+    /**
+     * 제휴사 시스템 운영자 등록
+     */
+    public function storeAdmin()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'admin_id', 'label' => '기존 운영자 아이디', 'rules' => 'trim|required|alpha_dash'],
+            ['field' => 'btob_admin_id', 'label' => '신규 운영자 아이디', 'rules' => 'trim|required|alpha_dash']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->btobRoleModel->addSystemAdmin($this->_reqP(null, false));
+
+        $this->json_result($result, '등록 되었습니다.', $result);
+    }
 }

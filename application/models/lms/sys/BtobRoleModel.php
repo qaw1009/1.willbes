@@ -5,6 +5,7 @@ class BtobRoleModel extends WB_Model
 {
     private $_table = [
         'btob' => 'lms_btob',
+        'btob_admin' => 'lms_btob_admin',
         'btob_admin_menu' => 'lms_btob_admin_menu',
         'btob_admin_role' => 'lms_btob_admin_role',
         'btob_admin_role_r_menu' => 'lms_btob_admin_role_r_menu',
@@ -236,6 +237,65 @@ class BtobRoleModel extends WB_Model
             }
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 제휴사 시스템 관리자 저장
+     * @param array $input
+     * @return array|bool
+     */
+    public function addSystemAdmin($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $admin_id = element('admin_id', $input, 'none');
+            $btob_admin_id = element('btob_admin_id', $input, 'none');
+            $btob_admin_passwd = element('btob_admin_passwd', $input);
+
+            // 기존 운영자 정보 조회
+            $row = $this->_conn->getFindResult($this->_table['admin'], 'wAdminId, wAdminPasswd, wAdminName', [
+                'EQ' => ['wAdminId' => $admin_id, 'wIsStatus' => 'Y']
+            ]);
+            if (empty($row) === true) {
+                throw new \Exception('기존 운영자 정보 조회에 실패했습니다.');
+            }
+
+            // 제휴사 시스템 아이디 중복 체크
+            $dup_count = $this->_conn->getListResult($this->_table['btob_admin'], true, ['EQ' => ['AdminId' => $btob_admin_id]]);
+            if ($dup_count > 0) {
+                throw new \Exception('이미 사용중인 아이디입니다. 다른 아이디를 입력해 주세요.', _HTTP_CONFLICT);
+            }
+
+            // 운영자 등록
+            $data = [
+                'BtobIdx' => '0',
+                'RoleIdx' => '6001',
+                'AdminId' => $btob_admin_id,
+                'AdminName' => $row['wAdminName'],
+                'IsApproval' => 'Y',
+                'RegAdminIdx' => '0'
+            ];
+
+            $this->_conn->set($data)->set('ApprovalDatm', 'NOW()', false);
+
+            if (empty($btob_admin_passwd) === true) {
+                $this->_conn->set('AdminPasswd', $row['wAdminPasswd']);
+            } else {
+                $this->_conn->set('AdminPasswd', 'fn_hash("' . $btob_admin_passwd . '")', false);
+            }
+
+            if ($this->_conn->insert($this->_table['btob_admin']) === false) {
+                throw new \Exception('시스템 운영자 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
         return true;

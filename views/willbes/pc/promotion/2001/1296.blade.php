@@ -50,7 +50,7 @@
         <div class="evtCtnsBox top_bg">           
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1296_hs_top.jpg" alt="오태진 한국사" usemap="#Map1296a" border="0">
             <map name="Map1296a" id="Map1296a">
-            <area shape="rect" coords="825,759,1055,879" href="#none" />
+            <area shape="rect" coords="825,759,1055,879" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청"/>
             </map>     
             <div class="check">
                 <label>
@@ -69,16 +69,13 @@
         <div class="evtCtnsBox sec02">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1296_hs_02.jpg" alt="커리큘럼">  
         </div>
-        <div class="evtCtnsBox sec03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1296_hs_03.jpg" alt="재미있는 한국사"> 
-        </div>
         <div class="evtCtnsBox sec04">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1296_hs_04.jpg" alt="실전 모의고사"> 
         </div>
         <div class="evtCtnsBox sec05">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1296_hs_05.jpg" alt="수강신청" usemap="#Map1296b" border="0">
             <map name="Map1296b" id="Map1296b">
-            <area shape="rect" coords="171,441,716,735" href="#none" />
+            <area shape="rect" coords="171,441,716,735" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
             </map> 
             <div class="check">
                 <label>
@@ -108,7 +105,7 @@
                         PC+Mobile 으로 PASS 수강 시 : PC 2대 또는 PC 1대+모바일 1대 또는 모바일 2대 가능 (PMP는 제공하지 않습니다.)</p> 
                         <p> 2. PC, 모바일 기기변경 등 단말기 초기화가 필요한 경우 내용 확인 후 초기화 진행가능하오니
                         <br>
-                        객센터로 문의바랍니다. (무한PASS존 등록기기정보 확인)          ※고객센터 : 1544-5006 </p>     
+                        고객센터로 문의바랍니다. (무한PASS존 등록기기정보 확인)          ※고객센터 : 1544-5006 </p>     
                      </div>                           
                 <h3>수강안내</h3>
                     <div>
@@ -142,7 +139,22 @@
     <!-- End Container --> 
 
     <script type="text/javascript">
-   
+        function go_PassLecture(no){
+
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+            var lUrl;
+            if(no == 1){
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/155240') }}";
+            }
+            location.href = lUrl;
+        }
+
+        function goDesc(tab){
+            location.href = '#careful';
+        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

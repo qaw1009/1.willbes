@@ -60,10 +60,12 @@
  <!-- WB_con03//-->
 
  <div class="evtCtnsBox WB_con04" id="1304_go">
-	 <img src="https://static.willbes.net/public/images/promotion/2019/07/1304_03.jpg" alt="#" usemap="#Map_down" border="0" />
-	<map name="Map_down">
-	  <area shape="rect" coords="148,673,987,786" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" target="_blank">
-	</map>
+   <img src="https://static.willbes.net/public/images/promotion/2019/07/1304_03.jpg" alt="#" usemap="#Map_down" border="0" />
+   {{--
+   <map name="Map_down">
+     <area shape="rect" coords="148,673,987,786" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" target="_blank">
+   </map>
+   --}}
   </div>
  <!-- WB_con03//-->
  

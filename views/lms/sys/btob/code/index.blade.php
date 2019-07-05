@@ -79,7 +79,7 @@
 
         $(document).ready(function() {
             $datatable = $list_table.DataTable({
-                serverSide: false,
+                serverSide: true,
                 paging: true,
                 pageLength: 50,
                 buttons: [
@@ -89,14 +89,14 @@
                     'url' : '{{ site_url('/sys/btob/btobCode/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), {});
+                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length });
                     }
                 },
                 rowsGroup: ['.rowspan'],
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
-                        return meta.settings.json.recordsTotal - meta.row;
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'BtobName'},
                     {'data' : 'ParentCcd', 'render' : function(data, type, row, meta) {

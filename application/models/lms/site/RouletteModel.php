@@ -279,10 +279,15 @@ class RouletteModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-                a.RmIdx, a.MemIdx, a.RegDatm, a.IsUse, a.UseDatm, b.ProdName, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS Phone
-            ';
-
+            if ($is_count == 'excel') {
+                $column = '
+                    b.ProdName, a.RegDatm, m.MemName, m.MemId, fn_dec(m.PhoneEnc) AS Phone, fn_dec(m.MailEnc) AS Mail, m.JoinDate
+                ';
+            } else {
+                $column = '
+                    a.RmIdx, a.MemIdx, a.RegDatm, a.IsUse, a.UseDatm, b.ProdName, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS Phone
+                ';
+            }
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }

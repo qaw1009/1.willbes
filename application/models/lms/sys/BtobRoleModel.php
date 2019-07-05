@@ -243,6 +243,45 @@ class BtobRoleModel extends WB_Model
     }
 
     /**
+     * 제휴사 시스템 관리자 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listSystemAdmin($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'BA.AdminIdx, BA.AdminId, BA.AdminName, BA.RegDatm, BA.LastLoginDatm, A.wAdminName as RegAdminName';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from ' . $this->_table['btob_admin_role'] . ' as BR
+                inner join ' . $this->_table['btob_admin'] . ' as BA
+                    on BR.RoleIdx = BA.RoleIdx
+                left join ' . $this->_table['admin'] . ' as A
+                    on BA.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
+            where BR.RoleType = "S"
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
      * 제휴사 시스템 관리자 저장
      * @param array $input
      * @return array|bool

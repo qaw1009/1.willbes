@@ -127,11 +127,11 @@ class RouletteFModel extends WB_Model
             }
 
             //당첨된 상품수 조회
-            $arr_condition = ['EQ' => ['RroIdx' => $otherinfo_data['RroIdx']]];
+           /* $arr_condition = ['EQ' => ['RroIdx' => $otherinfo_data['RroIdx']]];
             $used_count = $this->_findGetUsedCount($arr_condition);
             if ($otherinfo_data['ProdQty'] <= $used_count['UsedCount']) {
                 throw new \Exception('해당 상품의 당첨수가 초과되었습니다. 다시 시도해 주세요.');
-            }
+            }*/
 
             //상품식별자 UPDATE
             $this->_conn->set('RroIdx', $otherinfo_data['RroIdx'])->where('RmIdx', $ins_rm_idx);
@@ -458,11 +458,11 @@ class RouletteFModel extends WB_Model
             }
 
             //당첨된 상품수 조회
-            $arr_condition = ['EQ' => ['RroIdx' => $rro_idx]];
+            /*$arr_condition = ['EQ' => ['RroIdx' => $rro_idx]];
             $used_count = $this->_findGetUsedCount($arr_condition);
             if ($otherinfo_data['ProdQty'] <= $used_count['UsedCount']) {
                 throw new \Exception('해당 상품의 당첨수가 초과되었습니다. 다시 시도해 주세요.');
-            }
+            }*/
 
             //당첨데이터 저장
             $data = [

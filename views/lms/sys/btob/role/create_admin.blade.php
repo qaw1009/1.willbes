@@ -45,17 +45,61 @@
             </div>
         </div>
     </div>
-    <div class="well mt-15">
+    <div class="well mt-15 mb-0">
         <ul class="no-margin">
             <li class="blue">기존 운영자 아이디를 기준으로 조회된 운영자 정보를 제휴사 시스템 운영자로 등록합니다.</li>
             <li>운영자 아이디가 동일할 경우 신규 운영자 아이디를 변경하여 등록해 주시기 바랍니다.</li>
             <li>LMS와 제휴사 시스템은 별개의 계정으로 운영됩니다.</li>
         </ul>
     </div>
+    <div class="row mb-10">
+        <div class="col-md-12 clearfix">
+            <table id="_list_ajax_table" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>아이디</th>
+                    <th>이름</th>
+                    <th>등록자</th>
+                    <th>등록일시</th>
+                    <th>최종접속일시</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script type="text/javascript">
+        var $datatable_modal;
+        var $list_table_modal = $('#_list_ajax_table');
         var $_regi_form = $('#_regi_form');
 
         $(document).ready(function() {
+            $datatable_modal = $list_table_modal.DataTable({
+                serverSide: true,
+                lengthChange: false,
+                pageLength : 7,
+                ajax: {
+                    'url' : '{{ site_url('/sys/btob/btobRole/listAdminAjax') }}',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend({'{{ csrf_token_name() }}' : $_regi_form.find('input[name="{{ csrf_token_name() }}"]').val()}, { 'start' : data.start, 'length' : data.length});
+                    }
+                },
+                columns: [
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        // 리스트 번호
+                        return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
+                    {'data' : 'AdminId'},
+                    {'data' : 'AdminName'},
+                    {'data' : 'RegAdminName'},
+                    {'data' : 'RegDatm'},
+                    {'data' : 'LastLoginDatm'}
+                ]
+            });
+
             // 제휴사 시스템 운영자 등록
             $_regi_form.submit(function() {
                 var _url = '{{ site_url('/sys/btob/btobRole/storeAdmin') }}';
@@ -63,7 +107,7 @@
                 ajaxSubmit($_regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        $("#pop_modal").modal('toggle');
+                        $datatable_modal.draw();
                     }
                 }, showValidateError, null, false, 'alert');
             });

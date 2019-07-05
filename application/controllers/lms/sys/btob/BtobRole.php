@@ -134,4 +134,26 @@ class BtobRole extends \app\controllers\BaseController
 
         $this->json_result($result, '등록 되었습니다.', $result);
     }
+
+    /**
+     * 제휴사 시스템 운영자 목록
+     * @return CI_Output
+     */
+    public function listAdminAjax()
+    {
+        $arr_condition = [];
+
+        $list = [];
+        $count = $this->btobRoleModel->listSystemAdmin(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->btobRoleModel->listSystemAdmin(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['BA.AdminIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
 }

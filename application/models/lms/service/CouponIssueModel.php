@@ -239,7 +239,7 @@ class CouponIssueModel extends WB_Model
     public function checkAddCouponDetail($coupon_idx)
     {
         // 쿠폰등록 모델 로드
-        $this->load->loadModels(['service/couponRegist']);
+        $this->load->loadModels(['_lms/service/couponRegist']);
 
         // 기존 쿠폰 기본정보 조회
         $row = $this->couponRegistModel->findCoupon('CouponIdx, CouponTypeCcd, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
@@ -382,21 +382,19 @@ class CouponIssueModel extends WB_Model
      * 주문 결제완료시 발급된 자동지급 쿠폰 회수
      * @param int $mem_idx [회원식별자]
      * @param int $issue_order_prod_idx [발급주문상품식별자]
+     * @param int $retire_admin_idx [회수요청관리자식별자]
      * @return bool|string
      */
-    public function modifyRetireCouponDetailByOrderProdIdx($mem_idx, $issue_order_prod_idx)
+    public function modifyRetireCouponDetailByOrderProdIdx($mem_idx, $issue_order_prod_idx, $retire_admin_idx)
     {
         try {
             if (empty($mem_idx) === true || empty($issue_order_prod_idx) === true) {
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            $admin_idx = $this->session->userdata('admin_idx');
-            $reg_ip = $this->input->ip_address();
-
             // 사용자 쿠폰 회수
             $this->_conn->set('RetireDatm', 'NOW()', false);
-            $this->_conn->set(['ValidStatus' => 'R', 'RetireUserType' => 'A', 'RetireUserIdx' => $admin_idx, 'RetireIp' => $reg_ip]);
+            $this->_conn->set(['ValidStatus' => 'R', 'RetireUserType' => 'A', 'RetireUserIdx' => $retire_admin_idx, 'RetireIp' => $this->input->ip_address()]);
             $this->_conn->where(['MemIdx' => $mem_idx, 'IssueOrderProdIdx' => $issue_order_prod_idx, 'IsUse' => 'N']);
 
             if ($this->_conn->update($this->_table['coupon_detail']) === false) {

@@ -346,10 +346,14 @@ class RefundProc extends BaseOrder
         // 입금은행공통코드 조회
         $arr_bank_ccd = $this->codeModel->getCcd($this->_group_ccd['Bank']);
 
+        // 환불계좌정보 수정 가능여부
+        $bank_disabled = $data['RefundType'] == 'B' ? '' : 'disabled="disabled"';
+
         return $this->load->view('pay/refund/edit', [
             'order_idx' => $order_idx,
             'refund_req_idx' => $refund_req_idx,
             'arr_bank_ccd' => $arr_bank_ccd,
+            'bank_disabled' => $bank_disabled,
             'data' => $data
         ]);
     }

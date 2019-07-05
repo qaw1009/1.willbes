@@ -43,6 +43,7 @@
                                 <option value="willbes">willbes</option>
                                 <option value="lms">lms</option>
                                 <option value="wbs">wbs</option>
+                                <option value="btob">btob</option>
                                 <option value="api">api</option>
                                 <option value="cron">cron</option>
                                 <option value="pg">PG결제</option>

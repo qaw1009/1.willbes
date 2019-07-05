@@ -200,9 +200,10 @@ class RouletteModel extends WB_Model
             ];
 
             //당첨자데이터가 없을 경우 수정항목 추가
-            if (empty($win_member_cnt) === true) {
+            /*if (empty($win_member_cnt) === true) {
                 $data['ProbabilityType'] = element('probability_type', $input);
-            }
+            }*/
+            $data['ProbabilityType'] = element('probability_type', $input);
 
             if ($code_modify_type === true) {
                 $data['RouletteCode'] = element('up_roulette_code', $input);
@@ -405,9 +406,10 @@ class RouletteModel extends WB_Model
                 $inputData['RegIp'] = $this->input->ip_address();
 
                 //당첨자데이터가 없을 경우 수정항목 추가
-                if (empty($win_member_cnt) === true) {
+                /*if (empty($win_member_cnt) === true) {
                     $inputData['ProdWinTurns'] = $win_turns;
-                }
+                }*/
+                $inputData['ProdWinTurns'] = $win_turns;
 
                 if(empty($set_attach_data['FileFullPath'][$key]) === false) {
                     $inputData['FileFullPath'] = $set_attach_data['FileFullPath'][$key];

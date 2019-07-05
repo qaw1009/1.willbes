@@ -31,19 +31,19 @@
                         </div>
                     </th>
                     <td class="form-inline form-group-sm pl-15" colspan="3">
-                        @if($data['RefundType'] == 'B')
+                        @if($data['RefundType'] == 'B' || ($data['RefundType'] == 'P' && empty($data['RefundAccountNo']) === false))
                         <div class="mt-5">
                             [입금은행]
-                            <select class="form-control ml-5 mr-30" id="refund_bank_ccd" name="refund_bank_ccd" title="입금은행">
+                            <select class="form-control ml-5 mr-30" id="refund_bank_ccd" name="refund_bank_ccd" title="입금은행" {!! $bank_disabled !!}>
                                 <option value="">은행선택</option>
                                 @foreach($arr_bank_ccd as $key => $val)
                                     <option value="{{ $key }}" {{ $data['RefundBankCcd'] == $key ? 'selected="selected"' : '' }}>{{ $val }}</option>
                                 @endforeach
                             </select>
                             [계좌번호]
-                            <input type="number" id="refund_account_no" name="refund_account_no" class="form-control ml-5 mr-30" title="계좌번호" value="{{ $data['RefundAccountNo'] }}"/>
+                            <input type="number" id="refund_account_no" name="refund_account_no" class="form-control ml-5 mr-30" title="계좌번호" value="{{ $data['RefundAccountNo'] }}" {!! $bank_disabled !!}/>
                             [예금주]
-                            <input type="text" id="refund_deposit_name" name="refund_deposit_name" class="form-control ml-5" title="예금주" value="{{ $data['RefundDepositName'] }}"/>
+                            <input type="text" id="refund_deposit_name" name="refund_deposit_name" class="form-control ml-5" title="예금주" value="{{ $data['RefundDepositName'] }}" {!! $bank_disabled !!}/>
                         </div>
                         @endif
                         <div class="mt-10 item">

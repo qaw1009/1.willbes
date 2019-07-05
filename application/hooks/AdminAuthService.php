@@ -22,10 +22,11 @@ abstract class AdminAuthService
 
     /**
      * 로그인한 관리자의 권한유형에 맞는 메뉴 목록 조회
-     * @param $role_idx
-     * @return array
+     * @param int $role_idx
+     * @param string $role_type
+     * @return mixed
      */
-    abstract protected function getAuthMenu($role_idx);
+    abstract protected function getAuthMenu($role_idx, $role_type = '');
 
     /**
      * 관리자 환경설정 정보 조회

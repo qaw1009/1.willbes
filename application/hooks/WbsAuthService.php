@@ -18,9 +18,10 @@ class WbsAuthService extends AdminAuthService
     /**
      * 로그인한 관리자의 권한유형에 맞는 메뉴 목록 조회
      * @param $role_idx
+     * @param string $role_type
      * @return array
      */
-    public function getAuthMenu($role_idx)
+    public function getAuthMenu($role_idx, $role_type = '')
     {
         $column = '
             M.wMenuIdx as MenuIdx, M.wMenuName as MenuName, M.wParentMenuIdx as ParentMenuIdx, M.wGroupMenuIdx as GroupMenuIdx, M.wMenuDepth as MenuDepth

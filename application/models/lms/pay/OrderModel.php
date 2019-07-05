@@ -10,7 +10,7 @@ class OrderModel extends BaseOrderModel
         parent::__construct();
 
         // 사용 모델 로드
-        $this->load->loadModels(['pay/salesProduct', 'pay/orderList', 'sys/site']);
+        $this->load->loadModels(['_lms/pay/salesProduct', '_lms/pay/orderList', '_lms/sys/site']);
     }
 
     /**
@@ -76,8 +76,30 @@ class OrderModel extends BaseOrderModel
         $this->_conn->trans_begin();
 
         try {
+            $is_refund = $this->_refundOrderProduct($input);
+            if ($is_refund !== true) {
+                throw new \Exception($is_refund);
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 주문상품 환불 처리 실행
+     * @param array $input
+     * @return array|bool
+     */
+    public function _refundOrderProduct($input = [])
+    {
+        try {
             // 쿠폰 발급, 포인트 모델 로드
-            $this->load->loadModels(['service/couponIssue', 'service/point']);
+            $this->load->loadModels(['_lms/service/couponIssue', '_lms/service/point']);
 
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();
@@ -88,6 +110,7 @@ class OrderModel extends BaseOrderModel
             $pg_bank_ccd = str_first_pos_after(element('refund_bank_ccd', $input, ''), ':');    // PG사 은행코드
             $refund_account_no = element('refund_account_no', $input, '');
             $refund_deposit_name = element('refund_deposit_name', $input, '');
+            $refund_admin_idx = element('refund_admin_idx', $input, $sess_admin_idx);   // 환불요청 관리자식별자
             
             // 요청 환불금액 합계
             $sum_req_refund_price = array_sum(array_pluck($order_prod_param, 'card_refund_price')) + array_sum(array_pluck($order_prod_param, 'cash_refund_price'));
@@ -142,7 +165,7 @@ class OrderModel extends BaseOrderModel
                 'RefundReason' => element('refund_reason', $input),
                 'RefundMemo' => element('refund_memo', $input),
                 'IsApproval' => element('is_approval', $input, 'N'),
-                'RefundReqAdminIdx' => $sess_admin_idx,
+                'RefundReqAdminIdx' => $refund_admin_idx,
                 'RefundReqIp' => $reg_ip
             ];
 
@@ -175,7 +198,7 @@ class OrderModel extends BaseOrderModel
 
                 // 자동지급 쿠폰 회수 (온라인, 학원강좌일 경우만 실행, 쿠폰 복구보다 먼저 실행되어야 함 => 나중에 실행되면 복구된 쿠폰도 다시 회수 처리됨)
                 if ($row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture'] || $row['ProdTypeCcd'] == $this->_prod_type_ccd['off_lecture']) {
-                    $is_retire_auto_coupon = $this->couponIssueModel->modifyRetireCouponDetailByOrderProdIdx($row['MemIdx'], $row['OrderProdIdx']);
+                    $is_retire_auto_coupon = $this->couponIssueModel->modifyRetireCouponDetailByOrderProdIdx($row['MemIdx'], $row['OrderProdIdx'], $refund_admin_idx);
                     if ($is_retire_auto_coupon !== true) {
                         throw new \Exception($is_retire_auto_coupon);
                     }
@@ -244,7 +267,7 @@ class OrderModel extends BaseOrderModel
 
                 // 독서실/사물함 좌석취소
                 if ($row['ProdTypeCcd'] == $this->_prod_type_ccd['reading_room'] || $row['ProdTypeCcd'] == $this->_prod_type_ccd['locker']) {
-                    $this->load->loadModels(['pass/readingRoom']);
+                    $this->load->loadModels(['_lms/pass/readingRoom']);
 
                     $is_seat_cancel = $this->readingRoomModel->refundReadingRoom($row['ProdCode'], $order_idx);
                     if ($is_seat_cancel !== true) {
@@ -267,7 +290,7 @@ class OrderModel extends BaseOrderModel
                     'RecoPointIdx' => $reco_point_idx,
                     'IsCouponRefund' => $is_coupon_refund,
                     'RecoCouponIdx' => $reco_coupon_idx,
-                    'RefundAdminIdx' => $sess_admin_idx,
+                    'RefundAdminIdx' => $refund_admin_idx,
                     'RefundIp' => $reg_ip
                 ];
 
@@ -276,7 +299,7 @@ class OrderModel extends BaseOrderModel
                 }
 
                 // 주문상품 결제상태 변경 (환불완료)
-                $data = ['PayStatusCcd' => $this->_pay_status_ccd['refund'], 'UpdAdminIdx' => $sess_admin_idx];
+                $data = ['PayStatusCcd' => $this->_pay_status_ccd['refund'], 'UpdAdminIdx' => $refund_admin_idx];
 
                 $is_pay_status_update = $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)
                     ->where('OrderProdIdx', $row['OrderProdIdx'])->where('OrderIdx', $order_idx)->where('PayStatusCcd', $this->_pay_status_ccd['paid'])
@@ -350,11 +373,8 @@ class OrderModel extends BaseOrderModel
                     }
                 }
             }
-
-            $this->_conn->trans_commit();
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
+            return $e->getMessage();
         }
 
         return true;
@@ -371,8 +391,31 @@ class OrderModel extends BaseOrderModel
         $this->_conn->trans_begin();
 
         try {
+            $is_proc = $this->_procAdminOrder($pay_route, $input);
+            if ($is_proc !== true) {
+                throw new \Exception($is_proc);
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 관리자 주문 등록 실행
+     * @param string $pay_route [결제루트구분]
+     * @param array $input
+     * @return bool|string
+     */
+    public function _procAdminOrder($pay_route, $input = [])
+    {
+        try {
             // 주문메모 모델 로드
-            $this->load->loadModels(['pay/orderMemo']);
+            $this->load->loadModels(['_lms/pay/orderMemo']);
             
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();
@@ -523,9 +566,11 @@ class OrderModel extends BaseOrderModel
                     'IsCashReceipt' => 'N',
                     'IsDelivery' => ($is_delivery_info === true ? 'Y' : 'N'),
                     'IsVisitPay' => 'N',
+                    'BtobIdx' => element('btob_idx', $input),
+                    'BtobCaIdx' => element('btob_ca_idx', $input),
                     'AdminReasonCcd' => element('admin_reason_ccd', $input),
                     'AdminEtcReason' => element('admin_etc_reason', $input),
-                    'RegAdminIdx' => $sess_admin_idx,
+                    'RegAdminIdx' => element('reg_admin_idx', $input, $sess_admin_idx),
                     'OrderIp' => $reg_ip
                 ];
 
@@ -573,11 +618,8 @@ class OrderModel extends BaseOrderModel
                     }
                 }
             }
-
-            $this->_conn->trans_commit();
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
+            return $e->getMessage();
         }
 
         return true;
@@ -1051,7 +1093,7 @@ class OrderModel extends BaseOrderModel
             }
 
             // 쿠폰발급 모델 로드
-            $this->load->loadModels(['service/couponIssue']);
+            $this->load->loadModels(['_lms/service/couponIssue']);
             
             foreach ($rows as $row) {
                 // 사용자 쿠폰 등록
@@ -1221,7 +1263,7 @@ class OrderModel extends BaseOrderModel
 
             // 독서실 좌석배정 등록
             if (empty(element('rdr_prod_code', $input)) === false) {
-                $this->load->loadModels(['pass/readingRoom']);
+                $this->load->loadModels(['_lms/pass/readingRoom']);
 
                 $data = [
                     'prod_code' => element('rdr_prod_code', $input),
@@ -1460,20 +1502,26 @@ class OrderModel extends BaseOrderModel
             $refund_req_idx = element('refund_req_idx', $input);
 
             // 환불요청정보 조회
-            $data = $this->orderListModel->findOrderRefundRequest($order_idx, $refund_req_idx);
-            if (empty($data) === true) {
+            $row = $this->orderListModel->findOrderRefundRequest($order_idx, $refund_req_idx);
+            if (empty($row) === true) {
                 throw new \Exception('데이터가 없습니다.', _HTTP_NOT_FOUND);
             }
 
             // 환불요청 데이터 저장
             $data = [
-                'RefundBankCcd' => element('refund_bank_ccd', $input, ''),
-                'RefundAccountNo' => element('refund_account_no', $input, ''),
-                'RefundDepositName' => element('refund_deposit_name', $input, ''),
                 'RefundReason' => element('refund_reason', $input),
                 'RefundMemo' => element('refund_memo', $input),
                 'RefundReqUpdAdminIdx' => $sess_admin_idx
             ];
+
+            // 계좌환불일 경우만 계좌정보 수정 가능
+            if ($row['RefundType'] == 'B') {
+                $data = array_merge($data, [
+                    'RefundBankCcd' => element('refund_bank_ccd', $input, ''),
+                    'RefundAccountNo' => element('refund_account_no', $input, ''),
+                    'RefundDepositName' => element('refund_deposit_name', $input, '')
+                ]);
+            }
 
             $is_update = $this->_conn->set($data)->set('RefundReqUpdDatm', 'NOW()', false)
                 ->where('RefundReqIdx', $refund_req_idx)

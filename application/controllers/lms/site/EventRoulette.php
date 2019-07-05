@@ -122,6 +122,12 @@ class EventRoulette extends \app\controllers\BaseController
                 ]
             ];
 
+            if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+                $arr_condition = array_merge($arr_condition, [
+                    'BDT' => ['a.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                ]);
+            }
+
             $count = $this->rouletteModel->listWinMember(true, $arr_condition, $params[0]);
             if ($count > 0) {
                 $list = $this->rouletteModel->listWinMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.RmIdx' => 'DESC']);
@@ -282,6 +288,12 @@ class EventRoulette extends \app\controllers\BaseController
                 ]
             ]
         ];
+
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['a.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+            ]);
+        }
 
         $list = $this->rouletteModel->listWinMember('excel', $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.RmIdx' => 'DESC']);
 

@@ -114,6 +114,23 @@
                         <p class="form-control-static">아이디, 이름, 휴대폰번호(끝4자리)</p>
                     </div>
                 </div>
+
+                <div class="row mt-5">
+                    <label class="control-label col-md-2" for="search_start_date">당첨일</label>
+                    <div class="col-md-5 form-inline">
+                        <div class="input-group mb-0">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <div class="input-group-addon no-border no-bgcolor">~</div>
+                            <div class="input-group-addon no-border-right">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row text-center mt-10">
                 <button type="submit" class="btn btn-primary btn-sm btn-search" id="btn_search_modal">검 색</button>

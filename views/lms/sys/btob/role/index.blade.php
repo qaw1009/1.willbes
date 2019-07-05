@@ -108,7 +108,7 @@
             $('.btn-admin-regist').click(function() {
                 $('.btn-admin-regist').setLayer({
                     'url' : '{{ site_url('/sys/btob/btobRole/createAdmin') }}',
-                    'width' : 700
+                    'width' : 900
                 });
             });
         });

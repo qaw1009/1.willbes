@@ -111,12 +111,25 @@ class BtobCodeModel extends WB_Model
 
     /**
      * 제휴사 공통코드 목록 조회
+     * @param $is_count
      * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
      * @return mixed
      */
-    public function listAllCode($arr_condition = [])
+    public function listCode($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'S.*, A.*, (case A.IsUse when "Y" then "사용" when "N" then "미사용" else "" end) as IsUseView, B.BtobName, C.wAdminName';
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'S.*, A.*, (case A.IsUse when "Y" then "사용" when "N" then "미사용" else "" end) as IsUseView, B.BtobName, C.wAdminName';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
         $from = '
             From 
                 (Select Ccd As ParentCcd, CcdName As ParentName, OrderNum As ParentOrder, BtobIdx as ParentBtobIdx 
@@ -125,10 +138,14 @@ class BtobCodeModel extends WB_Model
                 LEFT OUTER JOIN lms_btob B ON S.ParentBtobIdx = B.BtobIdx and B.IsStatus = "Y"
                 LEFT OUTER JOIN wbs_sys_admin C ON A.RegAdminIdx = C.wAdminIdx and C.wIsStatus = "Y" 
         ';
-        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        $order_by = $this->_conn->makeOrderBy(['S.ParentOrder' => 'Desc', 'A.OrderNum' => 'Asc'])->getMakeOrderBy();
 
-        return $this->_conn->query('select '. $column . $from . $where . $order_by)->result_array();
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

@@ -46,8 +46,12 @@ class BtobCode extends \app\controllers\BaseController
             ]
         ];
 
-        $list = $this->btobCodeModel->listAllCode($arr_condition);
-        $count = count($list);
+        $list = [];
+        $count = $this->btobCodeModel->listCode(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->btobCodeModel->listCode(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['S.ParentOrder' => 'Desc', 'A.OrderNum' => 'Asc']);
+        }
 
         return $this->response([
             'recordsTotal' => $count,

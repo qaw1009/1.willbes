@@ -100,8 +100,9 @@
         <div class="evtCtnsBox wb_03" id="wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1278_03.jpg" alt="신청하기" usemap="#Map1278A" border="0"/>
             <map name="Map1278A" id="Map1278A">
-                <area shape="rect" coords="944,480,1046,585" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1046&subject_idx=1054" target="_blank" />
-                <area shape="rect" coords="943,658,1047,701" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1046" target="_blank" />
+                <area shape="rect" coords="753,541,889,581" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1046&subject_idx=1054" target="_blank" alt="학원강의" />
+                <area shape="rect" coords="899,481,1031,524" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/155177" target="_blank" alt="김준기" />
+                <area shape="rect" coords="896,543,1034,582" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?course_idx=1010&amp;subject_idx=1010" target="_blank" alt="김현정" />
             </map>
         </div>
     </div>

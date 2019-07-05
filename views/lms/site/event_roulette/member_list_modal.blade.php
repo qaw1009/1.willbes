@@ -151,8 +151,9 @@
                     $datatable_modal = $list_modal_table.DataTable({
                         serverSide: true,
                         buttons: [
-                            { text: '<i class="fa fa-truck mr-10"></i> 일괄지급', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-win-all' },
-                            { text: '<i class="fa fa-truck mr-10"></i> 선택지급', className: 'btn-sm btn-success border-radius-reset mr-15 btn-win' },
+                            { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel' },
+                            { text: '<i class="fa fa-truck mr-10"></i> 일괄지급', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-win-all' },
+                            { text: '<i class="fa fa-truck mr-10"></i> 선택지급', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-win' },
                         ],
                         ajax: {
                             "url" : "{{ site_url('site/eventRoulette/memberListModalAjax/'.$roulette_code) }}",
@@ -238,6 +239,12 @@
                                 $datatable_modal.draw();
                             }
                         }, showError, false, 'POST');
+                    });
+
+                    // 엑셀다운로드 버튼 클릭
+                    $('.btn-excel').on('click', function(event) {
+                        event.preventDefault();
+                        formCreateSubmit('{{ site_url('site/eventRoulette/memberListExcel/'.$roulette_code) }}', $search_form_modal.serializeArray(), 'POST');
                     });
                 });
             </script>

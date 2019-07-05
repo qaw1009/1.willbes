@@ -148,6 +148,8 @@
             var roulette_code = '{{ (empty($arr_promotion_params['roulette_code']) === true) ? '' : $arr_promotion_params['roulette_code'] }}';
             var _url = '{{ front_url('/roulette/store/') }}' + roulette_code;
             var _data = {};
+            $('.btn-roulette > img').css('-webkit-filter','invert(0.4)');
+
             sendAjax(_url, _data, function(ret) {
                 if (ret.ret_cd) {
                     let segmentNumber = ret.ret_data;   // The segment number should be in response.
@@ -164,6 +166,7 @@
 
         function resetRoulette()
         {
+            $('.btn-roulette > img').css('-webkit-filter','');
             let ctx2 = theWheel.ctx;
             ctx2.beginPath();              // Begin path.
             ctx2.moveTo(170, 5);           // Move to initial position.

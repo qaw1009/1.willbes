@@ -15,7 +15,7 @@
     padding:0 !important;
     background:#fff;
 }	
-.evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+.evtCtnsBox {width:100%; text-align:center; min-width:1120px; max-width:2000px; margin:0 auto; position:relative;}
 
 /*****************************************************************/  
 .evt_top {background:url(https://static.willbes.net/public/images/promotion/2019/07/1312_top_bg.jpg) repeat-x center top;}
@@ -32,11 +32,12 @@
 .evt_top span.img02 {position:absolute; top:1012px; left:50%; margin-left:400px; z-index:10; animation:rubberBand2 1s infinite 1s;}
 @@keyframes rubberBand2{
 0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
-50%{-webkit-transform:scale3d(.85,.85,1);transform:scale3d(.85,.85,1)}
+50%{-webkit-transform:scale3d(.85,.85,1);transform:scale3d(.85,.85,1)} 
 100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
 }
 .sec01 {background:#445974;}
-.sec02 {background:#445974 url(https://static.willbes.net/public/images/promotion/2019/07/1312_02_bg.png) no-repeat center top; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+.sec02 {background:#445974 url(https://static.willbes.net/public/images/promotion/2019/07/1312_02_bg.png) no-repeat center top;
+    animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
 @@keyframes upDown{
 0{background-color:#445974}
 25%{background-color:#6583aa}

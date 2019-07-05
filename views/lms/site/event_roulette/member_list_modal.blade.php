@@ -11,6 +11,9 @@
 
         @section('layer_content')
             <div class="x_panel">
+                <div class="x_title">
+                    <h5>룰렛관리정보</h5>
+                </div>
                 <div class="x_content">
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-2" for="search_rro_idx">룰렛코드</label>
@@ -83,7 +86,8 @@
                 </div>
             </div>
 
-            <div class="form-group form-group-bordered pt-10 pb-10">
+            <div class="mt-20"></div>
+            <div class="form-group form-group-bordered pb-10">
                 <div class="row mt-5">
                     <label class="control-label col-md-2" for="search_rro_idx">조건</label>
                     <div class="col-md-2">
@@ -102,15 +106,11 @@
                             <option value="N">미지급</option>
                         </select>
                     </div>
-                </div>
 
-                <div class="row mt-5">
-                    <label class="control-label col-md-2" for="search_value">검색
-                    </label>
                     <div class="col-md-3">
                         <input type="text" class="form-control input-sm" id="search_value" name="search_value">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <p class="form-control-static">아이디, 이름, 휴대폰번호(끝4자리)</p>
                     </div>
                 </div>

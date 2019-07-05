@@ -64,7 +64,7 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론/행정법 장정훈">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3011&campus_ccd=605001&course_idx=1043&subject_idx=1060') }}">경찰학 문풀1단계<span>7.1 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1043&subject_idx=1058') }}">경찰학 문풀1단계<span>7.15 개강</span></a></div>
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1058&course_idx=1040&campus_ccd=605001') }}">경찰학 기본<span>7.11 개강</span></a></div>
                         </div>
                     </li>

@@ -88,14 +88,13 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2" for="site_code">제어구분 <span class="required">*</span>
+                <label class="control-label col-md-2" for="site_code">제어구분
                 </label>
                 <div class="col-md-4 form-inline item">
                     <div class="item inline-block">
                         @foreach($control as $key=>$val)
-
-                            <input type="checkbox" id="control_{{$key}}" name="IpControlTypeCcds[]" class="flat" value="{{$key}}" required="required" title="제어구분"
-                                   @if(strpos($data['IpControlTypeCcds'],$key) == false)checked="checked"@endif/> <label for="control_{{$key}}" class="input-label">{{$val}}</label>
+                            <input type="checkbox" id="control_{{$key}}" name="IpControlTypeCcds[]" class="flat" value="{{$key}}" title="제어구분"
+                                   @if(strpos($data['IpControlTypeCcds'],(string)$key) !== false)checked="checked"@endif/> <label for="control_{{$key}}" class="input-label">{{$val}}</label>
                         @endforeach
                     </div>
                 </div>

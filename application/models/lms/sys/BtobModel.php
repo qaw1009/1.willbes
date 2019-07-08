@@ -205,7 +205,7 @@ class BtobModel extends WB_Model
             ,'Tel3'=>element('Tel3',$input)
             ,'ReferDomains'=>element('ReferDomains',$input)
             ,'Desc' => element('Desc',$input)
-            ,'IpControlTypeCcds' => implode(',',element('IpControlTypeCcds',$input))
+            ,'IpControlTypeCcds' => empty(element('IpControlTypeCcds',$input)) ? null : implode(',',element('IpControlTypeCcds',$input))
             ,'ReturnUrl' => element('ReturnUrl',$input)
             ,'IsUse'=>element('IsUse',$input)
         ];

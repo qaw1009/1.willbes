@@ -35,7 +35,7 @@
                 <thead>
                 <tr>
                     <th width="60px">No</th>
-                    <th width="60px">사용자</th>
+                    <th width="150px">사용자</th>
                     <th width="100px" >전화번호</th>
                     <th >등록일(삭제일)</th>
                     <th width="60px">상태</th>
@@ -110,7 +110,7 @@
                             return $_datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta){
-                            return data.MemName;
+                            return data.MemId + ' (' + data.MemName + ')';
                         }},
                     {'data' : 'Phone'},
                     {'data' : null, 'render' : function(data, type, row, meta){

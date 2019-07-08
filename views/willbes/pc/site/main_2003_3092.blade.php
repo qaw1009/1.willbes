@@ -23,7 +23,7 @@
         </div>
 
         <div class="Section">
-            <div class="widthAuto">
+            <div class="widthAuto mb30 mt50">
                 <img src="https://static.willbes.net/public/images/promotion/main/3092_1120x125.gif" alt="제로백 교재">
                 <ul class="PBcts">
                     @for($i=1; $i<=4; $i++)

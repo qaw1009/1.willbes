@@ -23,6 +23,12 @@
         </div>
 
         <div class="Section">
+            <div class="widthAuto">
+                <img src="https://static.willbes.net/public/images/promotion/main/3092_visual_01.jpg" alt="제로백 안내">
+            </div>
+        </div>
+
+        <div class="Section">
             <div class="widthAuto mt80">
                 <img src="https://static.willbes.net/public/images/promotion/main/3092_1120x125.gif" alt="제로백 교재">
                 <ul class="PBcts mt30">

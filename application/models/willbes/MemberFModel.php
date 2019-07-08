@@ -102,11 +102,12 @@ class MemberFModel extends WB_Model
      */
     public function getBtobMember($MemIdx)
     {
-        $query = " SELECT M.MemIdx, B.BtobIdx ";
+        /* btob 값에 수강제어가 걸려있을때만 */
+        $query = " SELECT M.MemIdx, B.BtobIdx, B.IpControlTypeCcds ";
         $query .= " FROM {$this->_table['member']} AS M
             LEFT JOIN {$this->_table['btob_member']} AS BM ON M.MemIdx = BM.MemIdx AND BM.IsStatus = 'Y' 
             LEFT JOIN {$this->_table['btob']} AS B ON BM.BtobIdx = B.BtobIdx AND B.IsStatus = 'Y' AND B.IsUse = 'Y'
-            WHERE M.MemIdx='{$MemIdx}'
+            WHERE M.MemIdx='{$MemIdx}' AND B.IpControlTypeCcds LIKE '%699001%'
             ";
 
         $rows = $this->_conn->query($query);

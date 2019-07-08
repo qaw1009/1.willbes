@@ -23,9 +23,9 @@
         </div>
 
         <div class="Section">
-            <div class="widthAuto mb30 mt50">
+            <div class="widthAuto mt100">
                 <img src="https://static.willbes.net/public/images/promotion/main/3092_1120x125.gif" alt="제로백 교재">
-                <ul class="PBcts">
+                <ul class="PBcts mt30">
                     @for($i=1; $i<=4; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
                             <li>

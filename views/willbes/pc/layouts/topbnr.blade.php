@@ -95,7 +95,7 @@
         </div>
     </div>
 @endif
-@if($__cfg['CateCode'] == '3029')
+@if($__cfg['CateCode'] == '3092')
     {{-- 공무원 무료인강 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">

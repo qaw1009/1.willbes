@@ -81,9 +81,9 @@
     </div>
     
     <div class="Section">
-        <div class="widthAuto">
-            <img src="{{ img_url('gosi_noncom/visual/visual_tit01.jpg') }}" alt="빠른 합격을 위한 윌비스 군무원 추천강좌">            
-            <ul class="PBcts">
+        <div class="widthAuto mt80">
+        <img src="https://static.willbes.net/public/images/promotion/main/3092_1120x125.gif" alt="제로백 교재">           
+            <ul class="PBcts mt30">
                 <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
                 <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_prof_02.jpg') }}" alt="배너명"></a></li>
                 <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_prof_03.jpg') }}" alt="배너명"></a></li>

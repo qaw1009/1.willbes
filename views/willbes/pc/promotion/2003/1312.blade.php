@@ -42,13 +42,13 @@
 0{background-color:#445974}
 25%{background-color:#6583aa}
 50%{background-color:#65aa9e}
-100%{background-color:#90cfa2}
+100%{background-color:#445974}
 }
 @@-webkit-keyframes upDown{
-0{background:#445974 url(https://static.willbes.net/public/images/promotion/2019/07/1312_02_bg.png) no-repeat center top}
-25%{background:#6583aa url(https://static.willbes.net/public/images/promotion/2019/07/1312_02_bg.png) no-repeat center top}
-50%{background:#65aa9e url(https://static.willbes.net/public/images/promotion/2019/07/1312_02_bg.png) no-repeat center top}
-100%{background:#90cfa2 url(https://static.willbes.net/public/images/promotion/2019/07/1312_02_bg.png) no-repeat center top }
+0{background-color:#445974}
+25%{background-color:#6583aa}
+50%{background-color:#65aa9e}
+100%{background-color:#445974}
 } 
 .sec02_1 {background:#fff;}
 .sec03 {background:#e7eaec;}

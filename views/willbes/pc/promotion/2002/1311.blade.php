@@ -36,7 +36,7 @@
     .contacts{padding:35px 10px;}
     .contacts p{font-size:16px;padding:10px;}
 
-    .contacts label{font-weight:bold;font-size:14px;display:inline-block; margin-left:5px; margin-right:15px}
+    .contacts label{font-weight:bold;font-size:14px;display:inline-block; margin-left:5px; margin-right:10px}
     .contacts label.username{letter-spacing:10px;letter-spacing:3.5px;}
     .contacts input[type=text],
     .contacts input[type=tel] { height:30px; line-height:30px}
@@ -92,7 +92,7 @@
                         <p><strong><span class="star">*</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly="readonly"/></p>
                         <p><strong><span class="star">*</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/></p>
                         <p class="check_contact">
-                            <strong><span class="star">*</span>참여캠퍼스</strong>
+                            <strong><span class="star">*</span>참여캠퍼스</strong><br><br>
                             @foreach($arr_base['register_list'] as $row)
                                 <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
                             @endforeach

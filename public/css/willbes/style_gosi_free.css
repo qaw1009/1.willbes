@@ -33,14 +33,7 @@
 }
 
 /* Main Container : MainVisual */
-.free .MainVisual:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
 .free .VisualsubBox {
-    position: relative;
     width: 1120px;
     height: 380px;
     overflow: hidden;
@@ -58,13 +51,24 @@
     left:60px;
     bottom: 20px;
     text-align: right;
+    z-index: 100;
 }
 .free .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #fff;
     width: 8px;
     height: 8px;
-    margin: 0 2px;
+    margin: 0 2px;    
 }
+
+.free .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #fff !important;
+}
+.free .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.free .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.free .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #fff !important;
+}
+
 
 /**/
 .free .sliderPlay {

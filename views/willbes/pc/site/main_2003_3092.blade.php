@@ -23,9 +23,9 @@
         </div>
 
         <div class="Section">
-            <div class="widthAuto">
-                <img src="{{ img_url('gosi_noncom/visual/visual_tit01.jpg') }}" alt="오랜 경험과 노하우를 가진 전문 교수진">
-                <ul class="PBcts">
+            <div class="widthAuto mt80">
+                <img src="https://static.willbes.net/public/images/promotion/main/3092_1120x125.gif" alt="제로백 교재">
+                <ul class="PBcts mt30">
                     @for($i=1; $i<=4; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
                             <li>

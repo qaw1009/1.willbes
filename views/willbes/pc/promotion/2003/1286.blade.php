@@ -74,9 +74,9 @@
 
         <div class="evtCtnsBox zero100_06">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_06.jpg" alt="제로효과 단 100시간" usemap="#Map1286A" border="0"/>
-            <map name="Map1286A" id="Map1286A">
+            {{--<map name="Map1286A" id="Map1286A">
                 <area shape="rect" coords="245,1473,874,1559" href="https://pass.willbes.net/promotion/index/cate/3092/code/1312" target="_blank" alt="제로백 무료 수강하기" />
-            </map>
+            </map>--}}
         </div>
 
         <div class="evtCtnsBox zero100_04">

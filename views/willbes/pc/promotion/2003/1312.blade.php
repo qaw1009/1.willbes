@@ -63,7 +63,7 @@
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1312_top.jpg" alt="제로백" usemap="#Map1312A" border="0">
             <map name="Map1312A" id="Map1312A">
-                <area shape="rect" coords="654,935,1030,1053" href="#none" alt="무료수강하기" />
+                <area shape="rect" coords="654,935,1030,1053" href="https://pass.willbes.net/periodPackage/show/cate/3020/pack/648001/prod-code/155361" target="_blank" alt="무료수강하기" />
             </map>
             <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2019/07/1312_top_img01.png" alt="0원"></span>
             <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2019/07/1312_top_img02.png" alt="손가락"></span>
@@ -92,7 +92,7 @@
         <div class="evtCtnsBox sec05">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1312_05.jpg" alt="제로백" usemap="#Map1312B" border="0">
             <map name="Map1312B" id="Map1312B">
-                <area shape="rect" coords="652,872,1033,999" href="#none" alt="무료수강하기" />
+                <area shape="rect" coords="652,872,1033,999" href="https://pass.willbes.net/periodPackage/show/cate/3020/pack/648001/prod-code/155361" target="_blank" alt="무료수강하기" />
             </map> 
         </div>  
 

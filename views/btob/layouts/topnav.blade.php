@@ -2,8 +2,8 @@
     <div class="row main_top_header lms">
         <div class="col-md-12 mt-10">
             <div class="col-md-4 logo">
-                <img src="https://static.willbes.net/public/images/btob/{{ sess_data('btob.btob_id') }}_logo.png" alt="BtoB 로고" class="ml-15 mr-20">
-                <img src="/public/img/logo.png" alt="윌비스 로고"/>
+                <img src="https://static.willbes.net/public/images/btob/{{ sess_data('btob.btob_id') }}_logo.png" alt="BtoB 로고" class="ml-15">
+                <img src="/public/img/logo.png" alt="윌비스 로고" class="ml-20"/>
             </div>
             <div class="col-md-5">
             </div>

@@ -40,6 +40,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_tech') }}" target="_blank">공무원 기술직 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gp') }}" target="_blank">공무원 군무원 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_noncom') }}" target="_blank">공무원 부사관 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_free') }}" target="_blank">공무원 무료특강</a></li>
                 <li><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/main_2006_308901') }}" target="_blank">자격증 메인 - 소방</a></li>

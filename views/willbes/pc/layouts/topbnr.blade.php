@@ -95,3 +95,11 @@
         </div>
     </div>
 @endif
+@if($__cfg['CateCode'] == '3092')
+    {{-- 공무원 무료인강 --}}
+    <div id="topBannerLayer" class="gosi">
+        <div class="topBanner">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3092_1120x70.gif" alt="무료인강 제로백"></a>
+        </div>
+    </div>
+@endif

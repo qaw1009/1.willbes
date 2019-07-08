@@ -4,7 +4,10 @@
     <div class="row lms">
         <div class="login_header col-md-12 pt-10 pd-zero p_re">
             <div class="col-md-4 logo">
-                <img src="/public/img/logo.png" class="ml-15 mr-20"/>
+                @if(empty($btob_id) === false)
+                    <img src="https://static.willbes.net/public/images/btob/{{ $btob_id }}_logo.png" alt="BtoB 로고" class="ml-15" onerror="javascript:this.style.display = 'none';">
+                @endif
+                <img src="/public/img/logo.png" class="ml-20"/>
             </div>
             <div class="col-md-5">
             </div>

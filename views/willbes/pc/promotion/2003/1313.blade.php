@@ -110,20 +110,20 @@
         <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_mid_curri.jpg" title="커리큘럼" />
     </div>
     </div> 
-  </div>  
+  </div>
   </div>
   <!--wb_cts02//-->  
   <div class="evtCtnsBox wb_cts03"id="banner">
     <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_pass.jpg" usemap="#Map1313" title="수강신청" border="0" />
         <map name="Map1313" id="Map1313">
-        <area shape="rect" coords="819,538,939,613" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155379" target=_blank />
-        <area shape="rect" coords="819,649,943,721" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155380" target=_blank />
-        <area shape="rect" coords="815,951,965,998" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155380" target=_blank />
-        <area shape="rect" coords="814,1011,971,1060" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155381" target=_blank />
-        <area shape="rect" coords="813,1070,969,1119" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155382" target=_blank/>
-        <area shape="rect" coords="812,1129,967,1180" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155383" target=_blank/>
-        <area shape="rect" coords="810,1190,968,1239" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155385" target=_blank />
-        <area shape="rect" coords="812,1251,972,1298" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155386" target=_blank />
+            <area shape="rect" coords="819,538,939,613"   href="javascript:;" onclick="go_PassLecture('155379')"/>
+            <area shape="rect" coords="819,649,943,721"   href="javascript:;" onclick="go_PassLecture('155380')"/>
+            <area shape="rect" coords="815,951,965,998"   href="javascript:;" onclick="go_PassLecture('155380')"/>
+            <area shape="rect" coords="814,1011,971,1060" href="javascript:;" onclick="go_PassLecture('155381')"/>
+            <area shape="rect" coords="813,1070,969,1119" href="javascript:;" onclick="go_PassLecture('155382')"/>
+            <area shape="rect" coords="812,1129,967,1180" href="javascript:;" onclick="go_PassLecture('155383')"/>
+            <area shape="rect" coords="810,1190,968,1239" href="javascript:;" onclick="go_PassLecture('155385')"/>
+            <area shape="rect" coords="812,1251,972,1298" href="javascript:;" onclick="go_PassLecture('155386')"/>
         </map>
     <div class="check" id="chkInfo">
 		<input name="ischk" type="checkbox" value="Y" id="txt1"/> <label for="txt1">페이지 하단 군무원0원PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
@@ -146,24 +146,30 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-			$(".tabContents").hide(); 
-			$(".tabContents:first").show();
+    $(".tabContents").hide();
+    $(".tabContents:first").show();
+    $(".tabContaier ul li a").click(function(){
+    var activeTab = $(this).attr("href");
+    $(".tabContaier ul li a").removeClass("active");
+    $(this).addClass("active");
+    $(".tabContents").hide();
+    $(activeTab).fadeIn();
+    return false;
+    });
+});
 
-			$(".tabContaier ul li a").click(function(){ 
-
-			var activeTab = $(this).attr("href"); 
-			$(".tabContaier ul li a").removeClass("active"); 
-			$(this).addClass("active"); 
-			$(".tabContents").hide(); 
-			$(activeTab).fadeIn(); 
-
-			return false; 
-			});
-		});						
  /*디데이카운트다운*/
- $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
-        });
+$(document).ready(function() {
+    dDayCountDown('{{$arr_promotion_params['edate']}}');
+});
+
+function go_PassLecture(code){
+    if($("input[name='ischk']:checked").size() < 1){
+        alert("이용안내에 동의하셔야 합니다.");
+        return;
+    }
+    location.href = "{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/') }}" + code;
+}
 </script>
 {{-- 프로모션용 스크립트 include --}}
 @include('willbes.pc.promotion.promotion_script')

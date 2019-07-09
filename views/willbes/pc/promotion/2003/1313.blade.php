@@ -73,7 +73,7 @@
     </div>
     <!-- 타이머 //-->
     <div class="skybanner">
-        <a href="#none;">
+        <a href="#banner">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_quick.png" alt="퀵배너">       
         </a>
     </div>  
@@ -113,7 +113,7 @@
   </div>  
   </div>
   <!--wb_cts02//-->  
-  <div class="evtCtnsBox wb_cts03">
+  <div class="evtCtnsBox wb_cts03"id="banner">
     <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_pass.jpg" usemap="#Map1313" title="수강신청" border="0" />
         <map name="Map1313" id="Map1313">
         <area shape="rect" coords="819,538,939,613" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155379" target=_blank />

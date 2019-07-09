@@ -42,9 +42,8 @@ class SupportProfTpass extends BaseSupport
         $get_page_params .= '&view_type='.$view_type;
 
         $arr_condition_pkg = [
-            'EQ' => [
-                /*'MemIdx' => $this->session->userdata('mem_idx'),*/
-                'LearnPatternCcd' => '615003',    //운영자패키지
+            'IN' => [
+                'LearnPatternCcd' => ['615003','615004']    //운영자,기간제 패키지
             ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일이 <= 오늘
@@ -141,7 +140,9 @@ class SupportProfTpass extends BaseSupport
         $arr_condition_pkg = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자 아이디
-                'LearnPatternCcd' => '615003',    //운영자패키지
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615003','615004']    //운영자,기간제 패키지
             ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일이 <= 오늘

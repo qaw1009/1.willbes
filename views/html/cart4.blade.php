@@ -218,10 +218,19 @@
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">주소<span class="tx-light-blue">(*)</span></td>
-                            <td class="w-info tx-left pl20">
-                                [258445]<br/>
+                            <td class="w-info tx-left pl20">                            
+                                [258445] <br/>
                                 서울시 동작구 만양로 105 한성빌딩<br/>
-                                2층 (동작구 노량진동) ㈜윌비스
+                                2층 (동작구 노량진동) ㈜윌비스  
+                                <div class="tx-light-blue mt10">
+                                * 송장번호가 이미 등록되었거나, 주문/배송상태가 ‘발송완료’인 경우 배송지 수정이 불가능합니다.<br>
+                                * 교재 배송 관련 문의 : 1544-4944 
+                                </div>  
+                                <div class="searchadd mt10">
+                                    <button type="submit" onclick="openWin('MyAddress')" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue">
+                                        <span>배송지 수정</span>
+                                    </button>
+                                </div>                             
                             </td>
                         </tr>
                         <tr>
@@ -238,7 +247,64 @@
                         </tr>
                     </tbody>
                 </table>
+            </div> 
+            
+            <div id="MyAddress"class="willbes-Layer-Black">
+                <div class="willbes-Layer-CartBox">
+                    <a class="closeBtn" href="#none" onclick="closeWin('MyAddress')">
+                        <img src="{{ img_url('cart/close_cart.png') }}">
+                    </a>
+                    <div class="Layer-Tit NG bg-blue">배송지 수정</div>
+                    <div id="AddModify" class="Layer-Cont Modify p_re">
+                        <div class="couponWrap">
+                            <table cellspacing="0" cellpadding="0" class="classTable deliveryTable under-gray tx-gray">
+                                <tbody>
+                                    <tr class="u-to">
+                                        <td class="w-info tx-left">
+                                            <div class="inputBox Add p_re">
+                                                <div class="searchadd">
+                                                    <input type="text" id="ADD1" name="ADD1" class="iptAdd" maxlength="30"> -
+                                                    <input type="text" id="ADD2" name="ADD2" class="iptAdd" maxlength="30">   
+                                                    <button type="submit" onclick="" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
+                                                        <span>우편번호 찾기</span>
+                                                    </button>
+                                                    <span class="btnAdd underline"><a href="#none" onclick="alert('입력한 주소를 나의 배송 주소록에 등록하시겠습니까?')">[나의 배송 주소록에 등록하기]</a></span>
+                                                    
+                                                </div>
+
+                                                <div>
+                                                    <div class="Layer-Tit Layer-Tit2 NG bg-heavy-gray">우편번호 검색
+                                                        <a href="#none" onclick="">
+                                                            <img src="{{ img_url('sub/icon_delete.gif') }}">
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                        다음 우편번호
+                                                    </div>
+                                                </div>
+
+                                                <div class="addbox1 p_re">
+                                                    <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
+                                                </div>
+                                                <div class="addbox2 p_re">
+                                                    <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" placeholder="상세주소" maxlength="30">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ul class="btnWrapbt mt30">
+                                <li class="subBtn NSK"><a href="#none">수정</a></li>
+                            </ul> 
+                        </div>
+                    </div>
+                    <!-- 배송 주소 수정 -->                   
+                </div>
             </div>
+            <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
+
+
             <div class="willbes-Lec-buyBtn">
                 <ul>
                     <li class="btnAuto180 h36">

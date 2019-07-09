@@ -20,18 +20,11 @@ class AccessFModel extends WB_Model
      * @param null $idx
      * @return array|bool
      */
-    public function saveLog($strType, $idx=null)
+    public function saveLog($strType, $idx=null, $etcMsg=null)
     {
         $refer_info = get_var($this->input->server('HTTP_REFERER'), null);
         $refer_domain = parse_url($refer_info, PHP_URL_HOST);
         $this->__userAgent($agent_short, $agent, $platform);
-        /*
-        echo ( $refer_info ).'<BR>';
-        echo ( $refer_domain ).'<BR>';
-        echo ( $agent ).'<BR>';
-        echo ( $agent_full ).'<BR>';
-        echo ( $platform ).'<BR>';
-        */
 
         $input_data = [
             'SiteCode' => config_app('SiteCode'),
@@ -41,12 +34,14 @@ class AccessFModel extends WB_Model
             'RegIp' =>$this->input->ip_address()
         ];
 
-        /* 확장성을 고려해 테이블 분리 */
+        /* 테이블 분리 */
         if ($strType == 'gw') {
             $input_data = array_merge($input_data,[
+                'GwIdx' => $idx,
                 'UserPlatform' =>$platform,
                 'UserAgentShort' =>substr($agent_short,0,99),
-                'GwIdx' => $idx
+                'SessId' => $this->session->userdata('make_sessionid'),
+                'Memo' => $etcMsg
             ]);
         } elseif ($strType == 'btob') {
             $input_data = array_merge($input_data,[
@@ -90,8 +85,10 @@ class AccessFModel extends WB_Model
                 'EQ' => ['BtobIdx' => $idx]
             ];
         }
-        $result = $this->_conn->getListResult($this->_table[$strType],'*',$arr_condition,null,null,[]);
 
+        $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['IsStatus' => 'Y']]);
+
+        $result = $this->_conn->getListResult($this->_table[$strType],'*',$arr_condition,null,null,[]);
         return element('0', $result, []);
     }
 

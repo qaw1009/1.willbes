@@ -54,15 +54,9 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <div class="input-group mb-0 mr-20">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
+                        <div class="input-group mb-0 ml-5">
                             <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
-                            <div class="input-group-addon no-border-right">
-                                <i class="fa fa-calendar"></i>
-                            </div>
                             <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
                         </div>
                     </div>

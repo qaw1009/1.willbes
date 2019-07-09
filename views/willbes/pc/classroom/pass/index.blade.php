@@ -232,7 +232,7 @@
                                         <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
                                         <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
                                         <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                        <input type='hidden' name='ProdCodeSub[]' id='ProdCodeSub_liked' value='' />
+                                        <input type='hidden' name='ProdCodeSub[]' id='ProdCodeSub_like' value='' />
                                     @endif
                                     <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                         <colgroup>
@@ -732,13 +732,13 @@
             url = "{{ site_url("/classroom/pass/unset/like/") }}";
 
             if(code == 'all'){
-                $("#ProdCodeSub_liked").val('');
+                $("#ProdCodeSub_like").val('');
                 if($("input:checkbox[id='ProdCodeSub_liked']").is(":checked") == false){
                     alert("삭제할 강좌를 선택해주세요.");
                     return;
                 }
             } else {
-                $("#ProdCodeSub_liked").val(code);
+                $("#ProdCodeSub_like").val(code);
             }
 
             data = $('#likedForm').serialize();
@@ -767,6 +767,7 @@
                 $("#ProdCodeSub_ing").val(code);
             }
 
+            data = $('#ingForm').serialize();
             data = $('#ingForm').serialize();
 
             sendAjax(url, data, function(ret){

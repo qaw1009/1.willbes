@@ -30,7 +30,7 @@
 .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px}
 .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
 
-.skybanner{position:fixed;top:700px;right:10px;z-index:1;}
+.skybanner{position:fixed;top:500px;right:10px;z-index:1;}
 
 .wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") center top  no-repeat}
 .wb_cts02{background:#ccc}
@@ -73,7 +73,7 @@
     </div>
     <!-- 타이머 //-->
     <div class="skybanner">
-        <a href="#none;"target=_blank>
+        <a href="#none;">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_quick.png" alt="퀵배너">       
         </a>
     </div>  
@@ -116,14 +116,14 @@
   <div class="evtCtnsBox wb_cts03">
     <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_pass.jpg" usemap="#Map1313" title="수강신청" border="0" />
         <map name="Map1313" id="Map1313">
-        <area shape="rect" coords="819,538,939,613" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155379" />
-        <area shape="rect" coords="819,649,943,721" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155380" />
-        <area shape="rect" coords="815,951,965,998" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155380" />
-        <area shape="rect" coords="814,1011,971,1060" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155381" />
-        <area shape="rect" coords="813,1070,969,1119" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155382" />
-        <area shape="rect" coords="812,1129,967,1180" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155383" />
-        <area shape="rect" coords="810,1190,968,1239" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155385" />
-        <area shape="rect" coords="812,1251,972,1298" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155386" />
+        <area shape="rect" coords="819,538,939,613" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155379" target=_blank />
+        <area shape="rect" coords="819,649,943,721" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155380" target=_blank />
+        <area shape="rect" coords="815,951,965,998" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155380" target=_blank />
+        <area shape="rect" coords="814,1011,971,1060" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155381" target=_blank />
+        <area shape="rect" coords="813,1070,969,1119" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155382" target=_blank/>
+        <area shape="rect" coords="812,1129,967,1180" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155383" target=_blank/>
+        <area shape="rect" coords="810,1190,968,1239" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155385" target=_blank />
+        <area shape="rect" coords="812,1251,972,1298" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155386" target=_blank />
         </map>
     <div class="check" id="chkInfo">
 		<input name="ischk" type="checkbox" value="Y" id="txt1"/> <label for="txt1">페이지 하단 군무원0원PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>

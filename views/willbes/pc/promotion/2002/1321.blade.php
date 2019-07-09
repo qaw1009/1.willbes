@@ -169,8 +169,7 @@
         <div class="evtCtnsBox wb_05" id="evt">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1321_con05.jpg"  alt="접수하기" usemap="#Map1290A" border="0" />
             <map name="Map1290A" id="Map1290A">
-                <area shape="rect" coords="374,1110,849,1183" href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" alt="모의고사 할인받기" />
-                <area shape="rect" coords="491,2215,729,2293" href="javascript:;" onclick="giveCheck()"  alt="응시쿠폰 받기" />
+                <area shape="rect" coords="374,1110,849,1183" href="javascript:;" onclick="giveCheck()"  alt="응시쿠폰 받기" />
             </map>
             {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -180,8 +179,8 @@
 
 
         <div class="evtCtnsBox wb_06" id="go">
-        <img src="https://static.willbes.net/public/images/promotion/2019/07/1321_con06.jpg" usemap="#Map1321" border="0" />
-            <map name="Map1321" id="Map1321">
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1321_con06.jpg" usemap="#Map1321B" border="0" />
+            <map name="Map1321B" id="Map1321B">
                 <area shape="rect" coords="313,468,809,561" href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank"/>
             </map>
         </div>

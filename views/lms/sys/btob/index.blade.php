@@ -110,7 +110,7 @@
                 var uri_param = $(this).data('idx');
                 $('.btn_ip').setLayer({
                     'url' : '{{ site_url('/sys/btob/btobInfo/createIp/') }}' + uri_param,
-                    'width' : 700
+                    'width' : 1000
                     ,'modal_id' : 'modal_ip'
                 });
             });

@@ -114,6 +114,17 @@ class BtobInfo extends \app\controllers\BaseController
             return;
         }
 
+        $cnt = $this->btobModel->listIp(true, [
+            'EQ' => [
+                'A.BtoBIdx' => $this->_req('btobidx'),
+                'A.ApprovalIp' => $this->_req('ApprovalIp')
+            ]
+        ]);
+
+        if($cnt > 0){
+            return $this->json_error('이미 등록된 아이피 입니다.');
+        }
+
         $result = $this->btobModel->addIp($this->_reqP(null));
         //echo var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);

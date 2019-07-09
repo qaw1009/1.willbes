@@ -35,7 +35,7 @@
 .wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") center top  no-repeat}
 .wb_cts02{background:#ccc}
 .wb_cts03{background:#f4f4f4;position:relative;}
-.check {position:absolute;left:0;top:50%;width:100%; text-align:center; margin:0 auto; padding:30px 0; color:#333; font-size:14px;}
+.check {position:absolute;left:0;top:1350px;width:100%; text-align:center; margin:0 auto; padding:30px 0; color:#333; font-size:14px;}
 .check label {cursor:pointer}
 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
 .check a{display:inline-block; padding:12px 20px 10px 20px;color:#27262c; background:#545454; margin-left:50px; border-radius:20px;color:#fff;}

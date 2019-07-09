@@ -635,7 +635,9 @@ class MemberFModel extends WB_Model
                 'ZipCode' => element('ZipCode', $input),
                 'Addr1' => element('Addr1', $input),
                 'TrustStatus' => $TrustStatus,
-                'InterestCode' => element('InterestCode', $input)
+                'InterestCode' => element('InterestCode', $input),
+                'GwIdx' => $this->session->userdata('gw_idx')
+
             ];
 
             // lms_member_otherinfo 저장

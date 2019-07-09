@@ -5300,6 +5300,13 @@ span.calendar_btn {
     letter-spacing: 0;
     padding-left: 35px;
 }
+.willbes-Layer-CartBox .Layer-Tit2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    padding:0 20px;
+}
+.willbes-Layer-CartBox .Layer-Tit2 a {float:right}
 .willbes-Layer-CartBox .Layer-Cont {
     margin: 35px;
 }

@@ -100,7 +100,7 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'AdminName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.AdminIdx + '"><u>' + data + '</u></a> (' + row.AdminId.substr(0, row.AdminId.length - 3) + '***)';
+                        return '<a href="#" class="btn-modify" data-idx="' + row.AdminIdx + '"><u>' + data + '</u></a> (' + row.AdminId + ')';
                     }},
                     {'data' : 'AdminPhone1', 'render' : function(data, type, row, meta) {
                         return data + '-' + row.AdminPhone2 + '-' + row.AdminPhone3;

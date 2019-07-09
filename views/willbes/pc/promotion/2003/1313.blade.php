@@ -30,10 +30,16 @@
 .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px}
 .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
 
-.wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") center top  no-repeat}
+.skybanner{position:fixed;top:700px;right:10px;z-index:1;}
 
+.wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") center top  no-repeat}
 .wb_cts02{background:#ccc}
-.wb_cts03{background:#f4f4f4}
+.wb_cts03{background:#f4f4f4;position:relative;}
+.check {position:absolute;left:0;top:50%;width:100%; text-align:center; margin:0 auto; padding:30px 0; color:#333; font-size:14px;}
+.check label {cursor:pointer}
+.check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
+.check a{display:inline-block; padding:12px 20px 10px 20px;color:#27262c; background:#545454; margin-left:50px; border-radius:20px;color:#fff;}
+
 
 .tabContaier{width:1120px;margin:0 auto;}
 .tabContaier li{display:inline-block;width:280px;height:84px;line-height:84px;background:#fff;color:#000;float:left;font-size:18px;font-weight:bold;}
@@ -66,7 +72,11 @@
         </div>
     </div>
     <!-- 타이머 //-->
-  
+    <div class="skybanner">
+        <a href="#none;"target=_blank>
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_quick.png" alt="퀵배너">       
+        </a>
+    </div>  
   <div class="evtCtnsBox wb_cts01">
     <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_top.jpg"  title="군무원 0원 패스" />
   </div>  
@@ -76,8 +86,11 @@
         <div class="tabContaier">    
             <ul>    
                 <li><a href="#tab1" class="active">국어</a></li>
+                    
                 <li><a href="#tab2">행정학</a></li>
+                
                 <li><a href="#tab3">행정법</a></li>
+                   
                 <li><a href="#tab4">한국사능력검정시험</a></li>
             </ul>
         </div> 
@@ -101,10 +114,24 @@
   </div>
   <!--wb_cts02//-->  
   <div class="evtCtnsBox wb_cts03">
-     <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_pass.jpg" title="수강신청" />
+    <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_pass.jpg" usemap="#Map1313" title="수강신청" border="0" />
+        <map name="Map1313" id="Map1313">
+        <area shape="rect" coords="819,538,939,613" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155379" />
+        <area shape="rect" coords="819,649,943,721" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155380" />
+        <area shape="rect" coords="815,951,965,998" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155380" />
+        <area shape="rect" coords="814,1011,971,1060" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155381" />
+        <area shape="rect" coords="813,1070,969,1119" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155382" />
+        <area shape="rect" coords="812,1129,967,1180" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155383" />
+        <area shape="rect" coords="810,1190,968,1239" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155385" />
+        <area shape="rect" coords="812,1251,972,1298" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155386" />
+        </map>
+    <div class="check" id="chkInfo">
+		<input name="ischk" type="checkbox" value="Y" id="txt1"/> <label for="txt1">페이지 하단 군무원0원PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+			<a href="#tip">이용안내확인하기 ↓</a>
+	</div>    
   </div>
   <!--wb_cts03//-->  
-  <div class="evtCtnsBox wb_cts04">
+  <div class="evtCtnsBox wb_cts04" id="tip">
      <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_bot.jpg" title="이용안내" />  
   </div>
   <!--wb_cts04//-->

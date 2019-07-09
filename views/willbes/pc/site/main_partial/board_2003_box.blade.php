@@ -10,7 +10,7 @@
                     @foreach($data['notice'] as $row)
                         <li>
                             <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
-                                @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
+                                @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
                                 @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
                             </a>
                             <span class="date">{{$row['RegDatm']}}</span>

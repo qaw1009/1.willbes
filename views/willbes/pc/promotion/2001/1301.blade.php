@@ -82,9 +82,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1301_03.jpg" alt="실전 모의고사"> 
         </div>
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1301_04.jpg" alt="수강신청" usemap="#Map1296b" border="0">
-            <map name="Map1296b" id="Map1296b">
-            <area shape="rect" coords="171,441,716,735" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1301_04.jpg" alt="수강신청" usemap="#Map1301b" border="0">
+            <map name="Map1301b" id="Map1301b">
+                <area shape="rect" coords="123,851,990,950" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
             </map> 
             <div class="check">
                 <label>
@@ -111,7 +111,7 @@
             }
             var lUrl;
             if(no == 1){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/155372') }}";
+                lUrl = "https://police.willbes.net/periodPackage/show/cate/3008/pack/648001/prod-code/155372";
             }
             location.href = lUrl;
         }

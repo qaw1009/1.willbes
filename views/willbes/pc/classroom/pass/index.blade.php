@@ -733,6 +733,10 @@
 
             if(code == 'all'){
                 $("#ProdCodeSub_liked").val('');
+                if($("input:checkbox[id='ProdCodeSub_liked']").is(":checked") == false){
+                    alert("삭제할 강좌를 선택해주세요.");
+                    return;
+                }
             } else {
                 $("#ProdCodeSub_liked").val(code);
             }
@@ -785,6 +789,10 @@
 
             if(code == 'all'){
                 $("#ProdCodeSub_hide").val('');
+                if($("input:checkbox[id='ProdCodeSub_hidden']").is(":checked") == false){
+                    alert("숨김 해제할 강좌를 선택해주세요.");
+                    return;
+                }
             } else {
                 $("#ProdCodeSub_hide").val(code);
             }

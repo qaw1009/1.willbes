@@ -121,7 +121,7 @@
                     </li>
                 </ul>
             </div>
-        </div>        
+        </div>       
 
         <div class="evtCtnsBox wb_top" id="main">
 			<img src="https://static.willbes.net/public/images/promotion/2019/07/1321_top.jpg"  alt="메인" usemap="#link"/>

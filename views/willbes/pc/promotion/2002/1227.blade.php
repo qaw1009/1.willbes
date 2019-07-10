@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .skyBanner {position:fixed; top:220px; right:0; z-index:10}
+        .skyBanner {position:fixed; top:180px; right:0; z-index:10}
 
         .evtTxt {background:#1e2a36}
 

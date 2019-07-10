@@ -205,7 +205,7 @@
                                         {{ $results['order_delivery']['Addr1'] }}<br/>
                                         {{ $results['order_delivery']['Addr2'] }}
                                         <div class="tx-light-blue mt10">
-                                            * 송장번호가 이미 등록되었거나, 주문/배송상태가 ‘발송완료’인 경우 배송지 수정이 불가능합니다.<br>
+                                            * 송장번호가 발급되었거나, 주문/배송상태가 ‘발송완료’, '환불완료(전체환불만 해당)' 경우 배송지 수정 불가능<br>
                                             * 교재 배송 관련 문의 : 1544-4944
                                         </div>
                                         <div class="searchadd mt10">

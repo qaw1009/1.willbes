@@ -246,7 +246,10 @@ class OrderListFModel extends BaseOrderFModel
     {
         // 주문배송정보 조회 (송장번호등록, 발송여부 조회)
         $column = 'ifnull(sum(if(ifnull(OPD.InvoiceNo, "") = "", 0, 1)), -1) as InvoiceNoRegCnt
-            , ifnull(sum(if(OPD.DeliveryStatusCcd = "' . $this->_delivery_status_ccd['complete'] . '", 1, 0)), -1) as DeliverySendCnt';
+            , ifnull(sum(if(OPD.DeliveryStatusCcd = "' . $this->_delivery_status_ccd['complete'] . '", 1, 0)), -1) as DeliverySendCnt
+            , count(0) as DeliveryCnt
+            , ifnull(sum(if(OP.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '", 1, 0)), 0) as RefundCnt                
+        ';
         $arr_condition = [
             'EQ' => ['OP.OrderIdx' => get_var($order_idx, -1), 'OP.MemIdx' => get_var($mem_idx, -1)]
         ];
@@ -256,6 +259,8 @@ class OrderListFModel extends BaseOrderFModel
 
         if ($chk_row['DeliverySendCnt'] < 0 || $chk_row['InvoiceNoRegCnt'] < 0) {
             return '주문 배송정보가 없습니다.';
+        } elseif ($chk_row['DeliveryCnt'] == $chk_row['RefundCnt']) {
+            return '환불완료되어 배송지 수정이 불가능합니다.';
         } elseif ($chk_row['DeliverySendCnt'] > 0) {
             return '교재가 발송완료되어 배송지 수정이 불가능합니다.';
         } elseif ($chk_row['InvoiceNoRegCnt'] > 0) {

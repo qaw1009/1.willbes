@@ -116,9 +116,9 @@
   <div class="evtCtnsBox wb_cts03"id="banner">
     <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_pass.jpg" usemap="#Map1313" title="수강신청" border="0" />
         <map name="Map1313" id="Map1313">
-            <area shape="rect" coords="814,539,943,613"   href="javascript:;" onclick="go_PassLecture('155379')"/>
-            <area shape="rect" coords="813,650,947,723"   href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155378" onclick="go_PassLecture('155380')"/>
-            <area shape="rect" coords="822,869,960,917"   href="javascript:;" onclick="go_PassLecture('155380')"/>
+            <area shape="rect" coords="814,539,943,613" href="javascript:;" onclick="go_PassLecture('155379')"/>
+            <area shape="rect" coords="813,650,947,723" href="javascript:;" onclick="go_PassLecture('155378')"/>
+            <area shape="rect" coords="822,869,960,917" href="javascript:;" onclick="go_PassLecture('155380')"/>
             <area shape="rect" coords="818,929,960,973" href="javascript:;" onclick="go_PassLecture('155381')"/>
             <area shape="rect" coords="820,990,960,1037" href="javascript:;" onclick="go_PassLecture('155382')"/>
             <area shape="rect" coords="818,1050,965,1099" href="javascript:;" onclick="go_PassLecture('155383')"/>

@@ -35,7 +35,7 @@
 .wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") center top  no-repeat}
 .wb_cts02{background:#ccc}
 .wb_cts03{background:#f4f4f4;position:relative;}
-.check {position:absolute;left:0;top:1350px;width:100%; text-align:center; margin:0 auto; padding:30px 0; color:#333; font-size:14px;}
+.check {position:absolute;left:0;top:1275px;width:100%; text-align:center; margin:0 auto; padding:30px 0; color:#333; font-size:14px;}
 .check label {cursor:pointer}
 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
 .check a{display:inline-block; padding:12px 20px 10px 20px;color:#27262c; background:#545454; margin-left:50px; border-radius:20px;color:#fff;}
@@ -116,14 +116,14 @@
   <div class="evtCtnsBox wb_cts03"id="banner">
     <img src="https://static.willbes.net/public/images/promotion/2019/07/1313_pass.jpg" usemap="#Map1313" title="수강신청" border="0" />
         <map name="Map1313" id="Map1313">
-            <area shape="rect" coords="819,538,939,613"   href="javascript:;" onclick="go_PassLecture('155379')"/>
-            <area shape="rect" coords="819,649,943,721"   href="javascript:;" onclick="go_PassLecture('155380')"/>
-            <area shape="rect" coords="815,951,965,998"   href="javascript:;" onclick="go_PassLecture('155380')"/>
-            <area shape="rect" coords="814,1011,971,1060" href="javascript:;" onclick="go_PassLecture('155381')"/>
-            <area shape="rect" coords="813,1070,969,1119" href="javascript:;" onclick="go_PassLecture('155382')"/>
-            <area shape="rect" coords="812,1129,967,1180" href="javascript:;" onclick="go_PassLecture('155383')"/>
-            <area shape="rect" coords="810,1190,968,1239" href="javascript:;" onclick="go_PassLecture('155385')"/>
-            <area shape="rect" coords="812,1251,972,1298" href="javascript:;" onclick="go_PassLecture('155386')"/>
+            <area shape="rect" coords="814,539,943,613"   href="javascript:;" onclick="go_PassLecture('155379')"/>
+            <area shape="rect" coords="813,650,947,723"   href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/155378" onclick="go_PassLecture('155380')"/>
+            <area shape="rect" coords="822,869,960,917"   href="javascript:;" onclick="go_PassLecture('155380')"/>
+            <area shape="rect" coords="818,929,960,973" href="javascript:;" onclick="go_PassLecture('155381')"/>
+            <area shape="rect" coords="820,990,960,1037" href="javascript:;" onclick="go_PassLecture('155382')"/>
+            <area shape="rect" coords="818,1050,965,1099" href="javascript:;" onclick="go_PassLecture('155383')"/>
+            <area shape="rect" coords="819,1110,967,1159" href="javascript:;" onclick="go_PassLecture('155385')"/>
+            <area shape="rect" coords="820,1170,965,1217" href="javascript:;" onclick="go_PassLecture('155386')"/>
         </map>
     <div class="check" id="chkInfo">
 		<input name="ischk" type="checkbox" value="Y" id="txt1"/> <label for="txt1">페이지 하단 군무원0원PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>

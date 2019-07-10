@@ -161,7 +161,6 @@
                 <span class="area05">전북<em>(전주,익산)</em></span>
                 <span class="area06">대구</span>
                 <span class="area07">부산</span>
-                <span class="area08">진주</span>
                 <span class="area09">제주</span>   
 			</div>
 		</div>

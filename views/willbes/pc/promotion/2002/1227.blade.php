@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .skyBanner {position:fixed; top:220px; right:0; z-index:10}
+        .skyBanner {position:fixed; top:180px; right:0; z-index:10}
 
         .evtTxt {background:#1e2a36}
 
@@ -109,7 +109,7 @@
         <div class="skyBanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner_02.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
             <map id="Map1227A">
-			  <area shape="rect" coords="20,52,170,180" href="/pass/promotion/index/cate/3010/code/1227#evt03" />
+			  <area shape="rect" coords="20,52,170,180" href="/pass/promotion/index/cate/3010/code/1227#evt04" />
               <area shape="rect" coords="20,182,170,248" href="/pass/promotion/index/cate/3010/code/1227#evt02" />
 			  <area shape="rect" coords="20,254,170,318" href="/pass/promotion/index/cate/3010/code/1227#evt09" />
               <area shape="rect" coords="20,325,170,438" href="/pass/promotion/index/cate/3010/code/1227#evt07" />
@@ -178,7 +178,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L.jpg" title="다드림 소문내기 이벤트 경품" />
 			<div id="movieFrame2">
                 @php
-                    $set_on_day = ['20190702','20190703','20190704','20190705','20190706','20190708','20190709','20190710','20190711','20190712','20190715'];
+                    $set_on_day = ['20190702','20190703','20190704','20190705','20190706','20190708','20190709','20190710','20190711','20190712', '20190713','20190715'];
                     $day = date('Ymd');
                     $time = date('His');
 

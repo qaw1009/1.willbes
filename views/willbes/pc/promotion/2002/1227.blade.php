@@ -109,7 +109,7 @@
         <div class="skyBanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_skybanner_02.png" usemap="#Map1227A" title="다! 드림! 이벤트" border="0">
             <map id="Map1227A">
-			  <area shape="rect" coords="20,52,170,180" href="/pass/promotion/index/cate/3010/code/1227#evt03" />
+			  <area shape="rect" coords="20,52,170,180" href="/pass/promotion/index/cate/3010/code/1227#evt04" />
               <area shape="rect" coords="20,182,170,248" href="/pass/promotion/index/cate/3010/code/1227#evt02" />
 			  <area shape="rect" coords="20,254,170,318" href="/pass/promotion/index/cate/3010/code/1227#evt09" />
               <area shape="rect" coords="20,325,170,438" href="/pass/promotion/index/cate/3010/code/1227#evt07" />

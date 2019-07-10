@@ -28,6 +28,7 @@ class BaseOrderModel extends WB_Model
         'product_r_product' => 'lms_product_r_product',
         'product_r_sublecture' => 'lms_product_r_sublecture',
         'product_r_autocoupon' => 'lms_product_r_autocoupon',
+        'product_sms' => 'lms_product_sms',
         'product_professor_concat' => 'vw_product_r_professor_concat',
         'product_professor_concat_repr' => 'vw_product_r_professor_concat_repr',
         'professor' => 'lms_professor',
@@ -41,6 +42,7 @@ class BaseOrderModel extends WB_Model
         'lecture_pause_history' => 'lms_lecture_pause_history',
         'cms_lecture_basics' => 'wbs_cms_lecture_basics',
         'readingroom' => 'lms_readingroom',
+        'mock_register' => 'lms_mock_register',
         'member' => 'lms_member',
         'member_info' => 'lms_member_otherinfo',
         'category' => 'lms_sys_category',
@@ -50,9 +52,10 @@ class BaseOrderModel extends WB_Model
         'admin' => 'wbs_sys_admin'
     ];
 
-    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, PG사, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 택배사, 결제은행, 결제카드, 관리자부여사유
+    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, PG사, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 택배사, 결제은행, 결제카드, 관리자부여사유, 모의고사응시형태, 모의고사응시지역
     public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'Pg' => '603', 'ProdType' => '636', 'LearnPattern' => '615', 'SalePattern' => '694'
         , 'PayStatus' => '676', 'DeliveryStatus' => '677', 'DeliveryComp' => '606', 'Bank' => '678', 'Card' => '697', 'AdminReason' => '705', 'Campus' => '605'
+        , 'MockTakeForm' => '690', 'MockTakeArea' => '691'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)

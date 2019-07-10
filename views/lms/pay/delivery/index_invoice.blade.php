@@ -125,6 +125,8 @@
             </table>
         </div>
     </div>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <script src="/public/js/post_util.js"></script>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -182,7 +184,7 @@
                         return data + '<br/>' + row.ReceiverPhone;
                     }},
                     {'data' : 'Addr1', 'render' : function(data, type, row, meta) {
-                        return row.ZipCode + '<br/>' + data + '<br/>' + row.Addr2;
+                        return row.ZipCode + ' <a href="#none" class="blue btn-addr-modify" data-order-idx="' + row.OrderIdx + '">[<u>배송지수정</u>]</a><br/>' + data + '<br/>' + row.Addr2;
                     }},
                     {'data' : 'InvoiceNo', 'render' : function(data, type, row, meta) {
                         var bt_html = '', attr_disabled = '';
@@ -335,6 +337,16 @@
                     }
                 }, showError, false, 'POST', 'json', is_file);
             };
+
+            // 배송지수정 버튼 클릭
+            $list_table.on('click', '.btn-addr-modify', function() {
+                var order_idx = $(this).data('order-idx');
+
+                $('.btn-addr-modify').setLayer({
+                    'url' : '{{ site_url('/pay/delivery/editAddr/') }}' + order_idx,
+                    'width' : 900
+                });
+            });
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {

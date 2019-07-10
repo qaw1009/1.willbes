@@ -1143,6 +1143,7 @@ class OrderModel extends BaseOrderModel
             $total_disc_price = 0;
             $is_auto_add = true;    // 자동지급 상품, 쿠폰 부여 여부
             $arr_prod_row = [];    // 상품조회 결과 배열
+            $arr_prod_code = [];    // 상품코드 배열
 
             if (empty($arr_prod_info) === true) {
                 throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
@@ -1204,6 +1205,7 @@ class OrderModel extends BaseOrderModel
                 $total_cash_pay_price += $row['CashPayPrice'];
                 $total_disc_price += $row['DiscPrice'];
                 $arr_prod_row[] = $row;
+                $arr_prod_code[] = $prod_code;
             }
 
             // 주문 데이터 등록 (방문결제는 배송료, 쿠폰 사용, 포인트 사용/적립, 주문배송주소 등록 없음)
@@ -1282,6 +1284,9 @@ class OrderModel extends BaseOrderModel
             }
 
             $this->_conn->trans_commit();
+
+            // 주문상품 자동문자 발송 (리턴결과 처리안함)
+            $this->sendOrderProductAutoSms($arr_prod_code, $mem_idx);
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -1315,6 +1320,7 @@ class OrderModel extends BaseOrderModel
             $total_card_pay_price = 0;
             $total_cash_pay_price = 0;
             $total_disc_price = 0;
+            $arr_prod_code = [];    // 상품코드 배열
 
             if (empty($order_idx) === true || empty($arr_order_prod_idx) === true) {
                 throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
@@ -1377,6 +1383,7 @@ class OrderModel extends BaseOrderModel
                         $total_card_pay_price += $card_pay_price;
                         $total_cash_pay_price += $cash_pay_price;
                         $total_disc_price += $disc_price;
+                        $arr_prod_code[] = $row['ProdCode'];
 
                         break;
                     }
@@ -1412,6 +1419,9 @@ class OrderModel extends BaseOrderModel
             }
 
             $this->_conn->trans_commit();
+
+            // 주문상품 자동문자 발송 (리턴결과 처리안함)
+            $this->sendOrderProductAutoSms($arr_prod_code, $mem_idx);
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -1536,6 +1546,103 @@ class OrderModel extends BaseOrderModel
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 배송지 정보 수정
+     * @param array $input
+     * @return array|bool
+     */
+    public function modifyOrderDeliveryAddress($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $order_idx = element('order_idx', $input);
+            $receiver = element('receiver', $input);
+
+            // 송장번호 등록여부 체크
+            $inv_no_reg_cnt = element('InvoiceNoRegCnt'
+                , $this->_conn->getJoinFindResult($this->_table['order_product_delivery_info'] . ' as OPD', 'inner', $this->_table['order_product'] . ' as OP'
+                , 'OPD.OrderProdIdx = OP.OrderProdIdx'
+                , 'sum(if(ifnull(OPD.InvoiceNo, "") = "", 0, 1)) as InvoiceNoRegCnt'
+                , ['EQ' => ['OP.OrderIdx' => $order_idx]]), -1);
+            if ($inv_no_reg_cnt < 0) {
+                throw new \Exception('주문 배송정보가 없습니다.');
+            } elseif ($inv_no_reg_cnt > 0) {
+                throw new \Exception('송장번호가 이미 등록된 상태로 배송지 수정이 불가능합니다.');
+            }
+
+            // 배송지 데이터 수정
+            $data = [
+                'ZipCode' => element('zipcode', $input),
+                'Addr1' => element('addr1', $input),
+                'UpdUserType' => 'A',
+                'UpdUserIdx' => $sess_admin_idx,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            $is_update = $this->_conn->set($data)
+                ->set('Addr2Enc', 'fn_enc("' . element('addr2', $input, '') . '")', false)
+                ->where('OrderIdx', $order_idx)
+                ->where('Receiver', $receiver)
+                ->update($this->_table['order_delivery_address']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 주문상품 자동문자 발송
+     * @param array $arr_prod_code
+     * @param int $mem_idx
+     * @return bool|string
+     */
+    public function sendOrderProductAutoSms($arr_prod_code, $mem_idx)
+    {
+        try {
+            if (empty($arr_prod_code) === true || empty($mem_idx) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 자동문자 조회
+            $sms_row = $this->_conn->getJoinListResult($this->_table['product_sms'] . ' as PSM', 'inner', $this->_table['product'] . ' as P'
+                , 'PSM.ProdCode = P.ProdCode and PSM.IsStatus = "Y" and P.IsSms = "Y" and P.IsStatus = "Y"'
+                , 'PSM.SendTel as SendSmsTel, PSM.Memo as SendSmsMsg'
+                , ['IN' => ['PSM.ProdCode' => $arr_prod_code]]
+            );
+            if (empty($sms_row) === true) {
+                return true;
+            }
+
+            // 회원 휴대폰번호 조회
+            $mem_row = $this->_conn->getFindResult($this->_table['member'], 'fn_dec(PhoneEnc) as MemPhone', ['EQ' => ['MemIdx' => $mem_idx]]);
+            if (empty($mem_row) === true) {
+                throw new \Exception('회원 정보가 없습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 자동문자 발송
+            $this->load->library('sendSms');
+            foreach ($sms_row as $row) {
+                if (empty($row['SendSmsTel']) === false && empty($row['SendSmsMsg']) === false) {
+                    $this->sendsms->send($mem_row['MemPhone'], $row['SendSmsMsg'], $row['SendSmsTel']);
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
 
         return true;

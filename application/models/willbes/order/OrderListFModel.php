@@ -237,6 +237,40 @@ class OrderListFModel extends BaseOrderFModel
     }
 
     /**
+     * 주문배송지 정보 수정가능 여부 리턴
+     * @param int $order_idx [주문식별자]
+     * @param int $mem_idx [회원식별자]
+     * @return bool|string
+     */
+    public function checkModifiableOrderDeliveryAddress($order_idx, $mem_idx)
+    {
+        // 주문배송정보 조회 (송장번호등록, 발송여부 조회)
+        $column = 'ifnull(sum(if(ifnull(OPD.InvoiceNo, "") = "", 0, 1)), -1) as InvoiceNoRegCnt
+            , ifnull(sum(if(OPD.DeliveryStatusCcd = "' . $this->_delivery_status_ccd['complete'] . '", 1, 0)), -1) as DeliverySendCnt
+            , count(0) as DeliveryCnt
+            , ifnull(sum(if(OP.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '", 1, 0)), 0) as RefundCnt                
+        ';
+        $arr_condition = [
+            'EQ' => ['OP.OrderIdx' => get_var($order_idx, -1), 'OP.MemIdx' => get_var($mem_idx, -1)]
+        ];
+
+        $chk_row = $this->_conn->getJoinFindResult($this->_table['order_product_delivery_info'] . ' as OPD', 'inner', $this->_table['order_product'] . ' as OP'
+            , 'OPD.OrderProdIdx = OP.OrderProdIdx', $column, $arr_condition);
+
+        if ($chk_row['DeliverySendCnt'] < 0 || $chk_row['InvoiceNoRegCnt'] < 0) {
+            return '주문 배송정보가 없습니다.';
+        } elseif ($chk_row['DeliveryCnt'] == $chk_row['RefundCnt']) {
+            return '환불완료되어 배송지 수정이 불가능합니다.';
+        } elseif ($chk_row['DeliverySendCnt'] > 0) {
+            return '교재가 발송완료되어 배송지 수정이 불가능합니다.';
+        } elseif ($chk_row['InvoiceNoRegCnt'] > 0) {
+            return '송장번호가 이미 등록된 상태로 배송지 수정이 불가능합니다.';
+        }
+
+        return true;
+    }
+
+    /**
      * 회원이 구매한 상품코드 조회
      * @param string|array $pay_status_ccd
      * @param null|int $order_idx

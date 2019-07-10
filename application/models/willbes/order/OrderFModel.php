@@ -2028,6 +2028,54 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
+     * 주문배송지 정보 수정
+     * @param array $input
+     * @return array|bool
+     */
+    public function modifyOrderDeliveryAddress($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');
+            $order_idx = element('order_idx', $input, -1);
+            $receiver = element('receiver', $input);
+
+            // 주문배송지 정보 수정가능여부 체크
+            $is_modifiable = $this->orderListFModel->checkModifiableOrderDeliveryAddress($order_idx, $sess_mem_idx);
+            if ($is_modifiable !== true) {
+                throw new \Exception($is_modifiable);
+            }
+
+            // 배송지 데이터 수정
+            $data = [
+                'ZipCode' => element('zipcode', $input),
+                'Addr1' => element('addr1', $input),
+                'UpdUserType' => 'M',
+                'UpdUserIdx' => $sess_mem_idx,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            $is_update = $this->_conn->set($data)
+                ->set('Addr2Enc', 'fn_enc("' . element('addr2', $input, '') . '")', false)
+                ->where('OrderIdx', $order_idx)
+                ->where('Receiver', $receiver)
+                ->update($this->_table['order_delivery_address']);
+
+            if ($is_update === false) {
+                throw new \Exception('배송지 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 결제완료, 가상계좌신청완료 SMS 발송, 주문상품 자동문자 메시지 발송
      * @param $order_no
      */

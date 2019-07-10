@@ -98,7 +98,7 @@ class OrderListModel extends BaseOrderModel
             , json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
         $in_column .= $this->_getAddListQuery('excel_column', $arr_add_join);
 
-        $from = $from = $this->_getListFrom($arr_add_join);
+        $from = $this->_getListFrom($arr_add_join);
 
         // where 조건
         $where = $this->_conn->makeWhere($arr_condition);

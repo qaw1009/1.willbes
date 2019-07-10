@@ -173,54 +173,117 @@
                     {{-- 배송정보가 있는 경우만 노출 --}}
                     <div class="willbes-Lec-Tit NG tx-black">배송정보</div>
                     <div class="deliveryInfoTable pb60 GM">
-                    <table cellspacing="0" cellpadding="0" class="classTable deliveryTable upper-gray tx-gray">
-                        <colgroup>
-                            <col style="width: 140px;">
-                            <col style="width: 140px;">
-                            <col width="*">
-                        </colgroup>
-                        <tbody>
-                            <tr class="u-from">
-                                <th class="w-list" rowspan="3">구매자<br/>정보</th>
-                                <td class="w-tit bg-light-white tx-left pl20">이름</td>
-                                <td class="w-info tx-left pl20">{{ $results['member']['MemName'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
-                                <td class="w-info tx-left pl20">{{ $results['member']['Phone'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white tx-left pl20">이메일</td>
-                                <td class="w-info tx-left pl20">{{ $results['member']['Mail'] }}</td>
-                            </tr>
-                            <tr class="u-to">
-                                <th class="w-list" rowspan="5">받는사람<br/>정보</th>
-                                <td class="w-tit bg-light-white tx-left pl20">이름</td>
-                                <td class="w-info tx-left pl20">{{ $results['order_delivery']['Receiver'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white tx-left pl20">주소</td>
-                                <td class="w-info tx-left pl20">
-                                    [{{ $results['order_delivery']['ZipCode'] }}]<br/>
-                                    {{ $results['order_delivery']['Addr1'] }}<br/>
-                                    {{ $results['order_delivery']['Addr2'] }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
-                                <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverPhone'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
-                                <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverTel'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white tx-left pl20">배송시 요청사항</td>
-                                <td class="w-info tx-left pl20">{{ $results['order_delivery']['DeliveryMemo'] }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                        <table cellspacing="0" cellpadding="0" class="classTable deliveryTable upper-gray tx-gray">
+                            <colgroup>
+                                <col style="width: 140px;">
+                                <col style="width: 140px;">
+                                <col width="*">
+                            </colgroup>
+                            <tbody>
+                                <tr class="u-from">
+                                    <th class="w-list" rowspan="3">구매자<br/>정보</th>
+                                    <td class="w-tit bg-light-white tx-left pl20">이름</td>
+                                    <td class="w-info tx-left pl20">{{ $results['member']['MemName'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
+                                    <td class="w-info tx-left pl20">{{ $results['member']['Phone'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">이메일</td>
+                                    <td class="w-info tx-left pl20">{{ $results['member']['Mail'] }}</td>
+                                </tr>
+                                <tr class="u-to">
+                                    <th class="w-list" rowspan="5">받는사람<br/>정보</th>
+                                    <td class="w-tit bg-light-white tx-left pl20">이름</td>
+                                    <td class="w-info tx-left pl20">{{ $results['order_delivery']['Receiver'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">주소</td>
+                                    <td class="w-info tx-left pl20">
+                                        [{{ $results['order_delivery']['ZipCode'] }}]<br/>
+                                        {{ $results['order_delivery']['Addr1'] }}<br/>
+                                        {{ $results['order_delivery']['Addr2'] }}
+                                        <div class="tx-light-blue mt10">
+                                            * 송장번호가 발급되었거나, 주문/배송상태가 ‘발송완료’, '환불완료(전체환불만 해당)' 경우 배송지 수정 불가능<br>
+                                            * 교재 배송 관련 문의 : 1544-4944
+                                        </div>
+                                        <div class="searchadd mt10">
+                                            <button type="button" name="btn_show_addr_modify" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue">
+                                                <span>배송지 수정</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
+                                    <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverPhone'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
+                                    <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverTel'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">배송시 요청사항</td>
+                                    <td class="w-info tx-left pl20">{{ $results['order_delivery']['DeliveryMemo'] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {{-- 배송지 정보수정 레이어 팝업 --}}
+                    @if($results['order_delivery']['IsModifiable'] === true)
+                    <div id="DeliveryAddress" class="willbes-Layer-Black">
+                        <div class="willbes-Layer-CartBox">
+                            <a class="closeBtn" href="#none" onclick="closeWin('DeliveryAddress')">
+                                <img src="{{ img_url('cart/close_cart.png') }}">
+                            </a>
+                            <div class="Layer-Tit NG bg-blue">배송지 수정</div>
+                            <div class="Layer-Cont Modify p_re">
+                                <div class="couponWrap">
+                                    <form id="regi_addr_form" name="regi_addr_form" method="POST" onsubmit="return false;" novalidate>
+                                        {!! csrf_field() !!}
+                                        {!! method_field('PUT') !!}
+                                        <input type="hidden" name="order_idx" value="{{ $results['order']['OrderIdx'] }}"/>
+                                        <input type="hidden" name="receiver" value="{{ $results['order_delivery']['Receiver'] }}"/>
+                                        <table cellspacing="0" cellpadding="0" class="classTable deliveryTable under-gray tx-gray">
+                                            <tbody>
+                                            <tr class="u-to">
+                                                <td class="w-info tx-left">
+                                                    <div class="inputBox Add p_re">
+                                                        <div class="searchadd">
+                                                            <input type="text" id="zipcode" name="zipcode" value="{{ $results['order_delivery']['ZipCode'] }}" title="우편번호" required="required" readonly="readonly" class="iptAdd bg-gray" maxlength="6"/>
+                                                            <button type="submit" onclick="searchPost('SearchPost', 'zipcode', 'addr1', 'N');" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue ml5 mr5">
+                                                                <span>우편번호 찾기</span>
+                                                            </button>
+                                                        </div>
+                                                        <div id="SearchPost" style="max-height: 286px; max-width: 688px; display: none;">
+                                                            <div class="Layer-Tit Layer-Tit2 NG bg-heavy-gray">우편번호 검색
+                                                                <a href="#none" onclick="closeSearchPost('SearchPost');">
+                                                                    <img src="{{ img_url('sub/icon_delete.gif') }}">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="addbox1 p_re">
+                                                            <input type="text" id="addr1" name="addr1" value="{{ $results['order_delivery']['Addr1'] }}" title="기본주소" required="required" readonly="readonly" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30"/>
+                                                        </div>
+                                                        <div class="addbox2 p_re">
+                                                            <input type="text" id="addr2" name="addr2" value="{{ $results['order_delivery']['Addr2'] }}" title="상세주소" required="required" class="iptAdd2" placeholder="상세주소" maxlength="30"/>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <ul class="btnWrapbt mt30">
+                                            <li class="subBtn NSK"><a href="#none" class="btn-addr-modify">수정</a></li>
+                                        </ul>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- 배송 주소 수정 -->
+                        </div>
+                    </div>
+                    @endif
                 @endif
                 <div class="mb60"></div>
                 <div class="willbes-Lec-buyBtn">
@@ -243,6 +306,8 @@
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <script src="/public/js/post_util.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             // 영수증 출력하기 버튼 클릭
@@ -265,6 +330,29 @@
                         }
                     }, showAlertError, false, 'POST');
                 }
+            });
+
+            // 배송지 수정 버튼 클릭 (수정 폼)
+            $('button[name="btn_show_addr_modify"]').on('click', function() {
+                @if($results['order_delivery']['IsModifiable'] === true)
+                    openWin('DeliveryAddress');
+                @else
+                    alert('{{ $results['order_delivery']['IsModifiable'] }}');
+                @endif
+            });
+
+            // 배송지 수정 버튼 클릭
+            $('.btn-addr-modify').on('click', function() {
+                var $regi_form = $('#regi_addr_form');
+                var _url = '{{ site_url('/classroom/order/modifyAddr') }}';
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        location.reload();
+                    }
+                }, showValidateError, function() {
+                    return confirm('수정하시겠습니까?');
+                }, false, 'alert');
             });
 
             // 내강의실 바로가기 버튼 클릭

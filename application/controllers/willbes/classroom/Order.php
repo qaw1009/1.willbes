@@ -107,6 +107,11 @@ class Order extends \app\controllers\FrontController
         // 주문배송정보 조회
         $results['order_delivery'] = $this->orderListFModel->findOrderDeliveryAddressByOrderIdx($order_idx, $sess_mem_idx);
 
+        // 주문배송지 정보 수정가능여부 체크
+        if (empty($results['order_delivery']) === false) {
+            $results['order_delivery']['IsModifiable'] = $this->orderListFModel->checkModifiableOrderDeliveryAddress($order_idx, $sess_mem_idx);
+        }
+
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
@@ -118,5 +123,28 @@ class Order extends \app\controllers\FrontController
             'query_string' => http_build_query(array_slice($arr_input, 1)),
             'results' => $results
         ]);
+    }
+
+    /**
+     * 주문배송지 정보 수정
+     */
+    public function modifyAddr()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'order_idx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'receiver', 'label' => '받는사람이름', 'rules' => 'trim|required'],
+            ['field' => 'zipcode', 'label' => '우편번호', 'rules' => 'trim|required|integer'],
+            ['field' => 'addr1', 'label' => '주소', 'rules' => 'trim|required'],
+            ['field' => 'addr2', 'label' => '상세주소', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->orderFModel->modifyOrderDeliveryAddress($this->_reqP(null, false));
+
+        $this->json_result($result, '수정되었습니다.', $result);
     }
 }

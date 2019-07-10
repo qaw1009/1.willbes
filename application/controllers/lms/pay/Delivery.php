@@ -347,4 +347,55 @@ class Delivery extends BaseOrder
             'data' => $data
         ]);        
     }
+
+    /**
+     * 배송지주소 수정 폼
+     * @param array $params
+     * @return mixed
+     */
+    public function editAddr($params = [])
+    {
+        $order_idx = element('0', $params);
+        if (empty($order_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
+        }
+
+        // 주문상품, 배송지 정보 조회
+        $order_rows = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_address']);
+        if (empty($order_rows) === true) {
+            return $this->json_error('주문정보가 없습니다.', _HTTP_NOT_FOUND);
+        }
+
+        return $this->load->view('pay/delivery/edit_addr', [
+            'order_idx' => $order_idx,
+            'data' => [
+                'order' => element('0', $order_rows),
+                'order_prod' => $order_rows,
+                'order_cnt' => count($order_rows)
+            ]
+        ]);
+    }
+
+    /**
+     * 배송지주소 수정
+     */
+    public function modifyAddr()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'order_idx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'receiver', 'label' => '받는사람이름', 'rules' => 'trim|required'],
+            ['field' => 'zipcode', 'label' => '우편번호', 'rules' => 'trim|required|integer'],
+            ['field' => 'addr1', 'label' => '주소', 'rules' => 'trim|required'],
+            ['field' => 'addr2', 'label' => '상세주소', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->orderModel->modifyOrderDeliveryAddress($this->_reqP(null, false));
+
+        $this->json_result($result, '수정되었습니다.', $result);
+    }
 }

@@ -1,2 +1,6 @@
 User-agent: *
-Disallow: /
+Disallow: /lcms/
+Disallow: /member/
+Disallow: /classroom/
+Disallow: /m/member/
+Disallow: /m/classroom/

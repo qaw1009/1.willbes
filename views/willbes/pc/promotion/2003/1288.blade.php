@@ -28,7 +28,14 @@
             border:10px solid #810000; z-index:6}
             .rulletBox a:hover {background:#810000; color:#fff}
         .wb_01 {}
-        .wb_02 {background:#f5f5f5}
+        .wb_02 {background:#f5f5f5; padding-bottom:120px}
+        .wb_02 ul {width:960px; margin:0 auto}
+        .wb_02 li {display:inline; float:left; margin-right:20px; margin-bottom:20px}
+        .wb_02 li a img.off {display:block}
+        .wb_02 li a img.on {display:none}
+        .wb_02 li a:hover img.off {display:none}
+        .wb_02 li a:hover img.on {display:block}
+        .wb_02 ul:after {content:""; display:block; clear:both}
         .wb_03 {background:#fff}
         .wb_04 {background:#fff; padding:100px 0}
 
@@ -77,19 +84,53 @@
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02.png" alt="회원가입" usemap="#Map1289A" border="0" />
-            <map name="Map1289A" id="Map1289A">
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02.png" alt="회원가입" usemap="#Map1288A" border="0" />
+            <map name="Map1288A" id="Map1288A">
                 <area shape="rect" coords="304,978,815,1058" href="https://www.willbes.net/member/join/?ismobile=0&amp;sitecode=2000" target="_blank" alt="회원가입" />
-                <area shape="rect" coords="123,1827,236,1872" href="https://police.willbes.net/home/index/cate/3001" target="_blank" alt="신광은경찰" />
-                <area shape="rect" coords="378,1827,490,1872" href="https://police.willbes.net/home/index/cate/3002" target="_blank" alt="경행경채" />
-                <area shape="rect" coords="630,1827,743,1872" href="https://police.willbes.net/home/index/cate/3006" target="_blank" alt="경찰승진" />
-                <area shape="rect" coords="882,1827,996,1872" href="https://police.willbes.net/home/index/cate/3006" target="_blank" alt="해양경찰" />
             </map>
+            <ul>
+                <li>
+                    <a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c1.jpg" alt="윌비스 T-PASS" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c1_on.jpg" alt="윌비스 T-PASS" class="on"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c2.jpg" alt="7급 외무영사직" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c2_on.jpg" alt="7급 외무영사직" class="on"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://pass.willbes.net/home/index/cate/3035" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c3.jpg" alt="김동진 법원팀" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c3_on.jpg" alt="김동진 법원팀" class="on"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c4.jpg" alt="윌비스 소방 PASS" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c4_on.jpg" alt="윌비스 소방 PASS" class="on"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c5.jpg" alt="윌비스 기술직" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c5_on.jpg" alt="윌비스 기술직" class="on"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://pass.willbes.net/home/index/cate/3024 " target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c6.jpg" alt="윌비스 군무원 PASS" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_02_c6_on.jpg" alt="윌비스 군무원 PASS" class="on"/>
+                    </a>
+                </li>
+            </ul>
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_03.png"  alt="소문내기 이벤트" usemap="#Map1289B" border="0"/>
-            <map name="Map1289B" id="Map1289B">
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_03.png"  alt="소문내기 이벤트" usemap="#Map1288B" border="0"/>
+            <map name="Map1288B" id="Map1288B">
                 <area shape="rect" coords="337,998,782,1067" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="소문내기 이미지 다운로드" />
             </map>
             {{--홍보url--}}

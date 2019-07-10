@@ -93,7 +93,7 @@
                                                 <dt>잔여시간 : <span class="tx-blue">{{$row['remaintime']}}</span></dt>
                                             </dl>
                                             <ul class="w-free NGEB">
-                                                @if($lec['isBtob'] == 'Y' /* && $lec['enableIp'] == 'N' BoB 는 모바일 에서는 수강불가*/)
+                                                @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
                                                     <li class="btn_black_line"><a>수강불가</a></li>
                                                 @else
                                                     @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
@@ -144,14 +144,17 @@
             </a>
         </div>
         <!-- Topbtn -->
-        @if($lec['isstart'] == 'Y' && $lec['ispause'] == 'N')
-        <div id="Fixbtn" class="Fixbtn three">
-            <ul>
-                <li class="btn_black_line"><a href="javascript:;" onclick="fnDown('WD');">WIDE 다운</a></li>
-                <li class="btn-purple"><a href="javascript:;" onclick="fnDown('HD');">HIGH 다운</a></li>
-                <li class="btn_gray"><a href="javascript:;" onclick="fnDown('SD');">LOW 다운</a></li>
-            </ul>
-        </div>
+        @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
+        @else
+            @if($lec['isstart'] == 'Y' && $lec['ispause'] == 'N')
+            <div id="Fixbtn" class="Fixbtn three">
+                <ul>
+                    <li class="btn_black_line"><a href="javascript:;" onclick="fnDown('WD');">WIDE 다운</a></li>
+                    <li class="btn-purple"><a href="javascript:;" onclick="fnDown('HD');">HIGH 다운</a></li>
+                    <li class="btn_gray"><a href="javascript:;" onclick="fnDown('SD');">LOW 다운</a></li>
+                </ul>
+            </div>
+            @endif
         @endif
         <!-- Fixbtn -->
     </div>

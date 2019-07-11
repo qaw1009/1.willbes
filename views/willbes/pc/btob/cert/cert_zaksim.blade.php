@@ -1,53 +1,53 @@
 @extends('willbes.pc.layouts.master_popup')
 
 @section('content')
-    <!-- Container -->
-    <style type="text/css">
-        .popWrap {width:782px; margin:20px auto; border:1px solid #000; box-shadow:5px 5px 5px rgba(0,0,0,.1)}
-        .popWrap * {font-family:'Noto Sans KR', Arial, Sans-serif}
+<!-- Container -->
+<style type="text/css">
+.popWrap {width:782px; margin:20px auto; border:1px solid #000; box-shadow:5px 5px 5px rgba(0,0,0,.1)}
+.popWrap * {font-family:'Noto Sans KR', Arial, Sans-serif}
 
-        .popWrap span {vertical-align:auto}
-        .popWrap .logo {padding-top:10px; position:relative;}
-        .popWrap .logo .zaksim {position:absolute; top:17px; left:190px}
+.popWrap span {vertical-align:auto}
+.popWrap .logo {padding-top:10px; position:relative;}
+.popWrap .logo .zaksim {position:absolute; top:22px; right:30px; z-index:10}
 
-        .copyright {position:relative; background:#fee9a3; padding:40px; margin-bottom:30px}
-        .copyright span {display:block; width:150px; height:150px; border-radius:75px 0 75px 75px; background:#051a2b; text-align:center; color:#fff;
-            font-weight:bold; font-size:24px; padding-top:35px; line-height:1.4;
-        }
-        .copyright div {position:absolute; top:50px; left:240px; font-size:18px; line-height:1.5; color:#051a2b; padding-right:40px}
-        .copyright div h4 {font-size:40px; font-weight:bold; border-bottom:1px dotted #051a2b}
-        .copyright div p {font-size:12px; margin-top:10px; color:#000}
+.copyright {position:relative; background:#fee9a3; padding:40px; margin-bottom:30px}
+.copyright span {display:block; width:150px; height:150px; border-radius:75px 0 75px 75px; background:#051a2b; text-align:center; color:#fff;
+    font-weight:bold; font-size:24px; padding-top:35px; line-height:1.4;
+}
+.copyright div {position:absolute; top:50px; left:240px; font-size:18px; line-height:1.5; color:#051a2b; padding-right:40px}
+.copyright div h4 {font-size:40px; font-weight:bold; border-bottom:1px dotted #051a2b}
+.copyright div p {font-size:12px; margin-top:10px; color:#000}
 
-        input[type=text] {padding:2px; width:150px}
-        input {margin-right:5px}
-        label {vertical-align:middle; margin-right:10px;}
-        input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
-        select {padding:5px;}
-        select option:before {height:20px}
+input[type=text] {padding:2px; width:150px}
+input {margin-right:5px}
+label {vertical-align:middle; margin-right:10px;}
+input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
+select {padding:5px;}
+select option:before {height:20px}
 
-        .popCts {padding:0 54px 54px}
-        .popCts h4 {margin-bottom:20px; font-size:18px; font-weight:bold}
-        .popCts table {width:100%; border-top:2px solid #8f8f8f; border-bottom:1px solid #8f8f8f; margin:20px 0}
-        .popCts th,
-        .popCts td {border-bottom:1px solid #d9d9d9; padding:10px; line-height:1.4}
-        .popCts td strong {font-size:13px; color:#000}
-        .popCts thead th {background:#f8f8f8; color:#555; font-weight:bold; text-align:center;}
-        .popCts tbody th {background:#f9f2eb}
-        .popCts tbody td {text-align:left}
-        .popCts > ul {margin-bottom:30px}
-        .popCts > ul:last-child {margin:0}
-        .popCts li {line-height:1.5; list-style:disc; margin-left:15px}
-        .cl01 {color:#051a2b; padding:10px 0; font-weight:bold}
+.popCts {padding:0 50px 50px}
+.popCts h4 {margin-bottom:20px; font-size:18px; font-weight:bold}
+.popCts table {width:100%; border-top:2px solid #8f8f8f; border-bottom:1px solid #8f8f8f; margin:20px 0}
+.popCts th,
+.popCts td {border-bottom:1px solid #d9d9d9; padding:10px; line-height:1.4}
+.popCts td strong {font-size:13px; color:#000}
+.popCts thead th {background:#f8f8f8; color:#555; font-weight:bold; text-align:center;}
+.popCts tbody th {background:#f9f2eb}
+.popCts tbody td {text-align:left}
+.popCts > ul {margin-bottom:30px}
+.popCts > ul:last-child {margin:0}
+.popCts li {line-height:1.5; list-style:disc; margin-left:15px}
+.cl01 {color:#051a2b; padding:10px 0; font-weight:bold}
 
-        .popCts .btns {margin:40px 0; text-align:center}
-        .popCts .btns a {display:inline-block; height:50px; padding:0 20px; background:#051a2b; font-size:160%; color:#fff; line-height:50px; font-weight:500; border-radius:10px}
-        .popCts .btns a:hover {background:#1f326a; color:#fff}
-    </style>
+.popCts .btns {margin:30px 0 60px; text-align:center}
+.popCts .btns a {display:inline-block; height:50px; padding:0 20px; background:#051a2b; font-size:160%; color:#fff; line-height:50px; font-weight:500; border-radius:10px}
+.popCts .btns a:hover {background:#1f326a; color:#fff}
+</style>
 
     <div class="popWrap NGR mt5">
         <div class="logo">
-            <img src="https://police.stage.willbes.net/public/img/willbes/gnb/logo.gif" alt="윌비스" /> |
-            <span class="zaksim"><img src="https://static.willbes.net/public/images/promotion/2019/07/zaksim_logo.png" alt="작심독서실" /></span>
+            <img src="https://police.stage.willbes.net/public/img/willbes/gnb/logo.gif" alt="윌비스" />
+            <span class="zaksim"><img src="https://static.willbes.net/public/images/btob/zaksim_logo_b.png" alt="작심독서실" /></span>
         </div>
         <div class="copyright">
             <span>제휴<br>인증센터</span>
@@ -129,26 +129,26 @@
                 <li>
                     본 서비스는 작심독서실 이용자에 한해 제공되며, 이용자 확인을 위해 다음과 같이 개인정보가 제공됩니다.
                     <table>
-                        <col width="60%"/>
+                        <col width="55%"/>
                         <col />
                         <tbody>
                         <tr>
                             <th>개인정보 항목</th>
-                            <td>회원명, 아이디, 연락처</td>
+                            <td>회원명, 아이디</td>
                         </tr>
                         <tr>
                             <th>개인정보를 제공 받는 자</th>
-                            <td>㈜아이엔지스토리 '작심독서실'</td>
+                            <td>㈜아이엔지스토리 '작심독서실', '작심스터디카페'</td>
                         </tr>
                         <tr>
                             <th>개인정보를 제공 받는 자의 개인정보 이용목적</th>
-                            <td>'작심독서실' 이용자 확인</td>
+                            <td>'작심독서실', '작심스터디카페' 이용자 확인</td>
                         </tr>
                         <tr>
                             <th>개인정보를 제공 받는 자의 개인정보 이용기간 및 보유기간</th>
                             <td>제휴 종료 시</td>
                         </tr>
-                        </tbody>
+                    </tbody>
                     </table>
                 </li>
                 <li>상기 개인정보 제공 및 활용에 대한 동의를 거부할 수 있으며, 동의를 거부하실 경우 이용이 제한될 수 있습니다.</li>

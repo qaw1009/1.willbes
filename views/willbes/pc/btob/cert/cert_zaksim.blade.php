@@ -25,7 +25,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 select {padding:5px;}
 select option:before {height:20px}
 
-.popCts {padding:0 50px 50px}
+.popCts {padding:0 50px 50px; letter-spacing: -1px;}
 .popCts h4 {margin-bottom:20px; font-size:18px; font-weight:bold}
 .popCts table {width:100%; border-top:2px solid #8f8f8f; border-bottom:1px solid #8f8f8f; margin:20px 0}
 .popCts th,

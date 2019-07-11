@@ -18,10 +18,10 @@
                 <input type="hidden" name="idx" value="{{ $idx }}"/>
                 <input type="hidden" name="is_approval" value="Y"/>
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="admin_name">이름 <span class="required">*</span>
+                    <label class="control-label col-md-1" for="admin_name">지점명 <span class="required">*</span>
                     </label>
                     <div class="col-md-2 item">
-                        <input type="text" id="admin_name" name="admin_name" required="required" class="form-control" title="이름" value="{{ $data['AdminName'] }}">
+                        <input type="text" id="admin_name" name="admin_name" required="required" class="form-control" title="지점명" value="{{ $data['AdminName'] }}">
                     </div>
                     <label class="control-label col-md-1 col-md-offset-3" for="admin_id">아이디 <span class="required">*</span>
                     </label>

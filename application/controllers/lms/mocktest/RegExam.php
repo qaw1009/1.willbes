@@ -273,7 +273,7 @@ class RegExam extends \app\controllers\BaseController
                     break;
                 }
                 if (isset($_FILES['ExplanFile']['error'][$k]) && ($_FILES['ExplanFile']['error'][$k] !== UPLOAD_ERR_OK  || $_FILES['ExplanFile']['size'][$k] == 0)) {
-                    $rules[] = ['field' => 'ExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
+                    // $rules[] = ['field' => 'ExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
                     break;
                 }
             }

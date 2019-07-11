@@ -40,10 +40,6 @@ class Cart extends \app\controllers\FrontController
 
             // 강좌, 교재 목록 구분, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재)
             $results['list'][$row['CartType']][] = $row;
-
-            if ($idx == 0) {
-                $results['recent_cate_code'] = substr($row['CateCode'], 0, 4);
-            }
         }
 
         // 온라인 강좌 배송료

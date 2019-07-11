@@ -32,7 +32,7 @@
                 <ul>
                     @foreach($menu_group_row['Children'] as $menu_idx => $menu_row)
                         @if($menu_row['MenuType'] == 'GN')
-                            @php $active_class = empty($__cfg['CateCode']) === false && strpos($menu_row['MenuUrl'], substr($__cfg['CateCode'], 0, 4)) > -1 ? 'strong' : ''; @endphp
+                            @php $active_class = empty($__cfg['CateCode']) === false && strpos($menu_row['MenuUrl'], $__cfg['CateCode']) > -1 ? 'strong' : ''; @endphp
                             <li class="dropdown">
                                 <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}" class="{{ $active_class }}">{{ $menu_row['MenuName'] }}</a>
                                 @if(isset($menu_row['Children']) === true)

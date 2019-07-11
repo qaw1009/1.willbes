@@ -185,8 +185,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2019 최우영 기초 전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146235" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155014" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -240,8 +240,8 @@
                     <tr>
                         <td>무선공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 무선/통신 공통 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146236" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155015" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
@@ -286,8 +286,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2019 최우영 기초 전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146235" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155014" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -341,8 +341,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2019 최우영 무선/통신 공통 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146236" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155015" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -393,8 +393,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2019 최우영 무선/통신 공통 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146236" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155015" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -495,8 +495,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>이론</td>
-                        <td>2019 최우영 전기이론 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146237" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기이론 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155016" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
@@ -572,8 +572,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>이론</td>
-                        <td>2019 최우영 전기기기 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146238" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기이론 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155016" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -663,8 +663,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2019 최우영 기초 전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146235" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155014" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -751,8 +751,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2019 최우영 기초 전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146235" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155014" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -812,8 +812,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2019 최우영 무선/통신 공통 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146236" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155015" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>

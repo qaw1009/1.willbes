@@ -84,7 +84,7 @@
   <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skybanner">
       <ul>
-          <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1309_s1.jpg"  title="설명회" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=328&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1309_s1.jpg"  title="설명회" /></a></li>
           <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/07/1309_s2.jpg"  title="학원방문상담" /></a></li>
           <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1309_s3.jpg" title="카카오상담하기" /></a></li>
 		  <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1309_s4.jpg"  title="윌비스통생반" /></a></li>
@@ -144,10 +144,8 @@
   </div>
   <!--wb_cts07//-->
   
-  <div class="evtCtnsBox wb_cts08">
-      <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274&" target="_blank">
-        <img src="https://static.willbes.net/public/images/promotion/2019/07/1309_07.jpg" title="합격 전략 설명회" />
-      </a>  
+  <div class="evtCtnsBox wb_cts08">   
+        <img src="https://static.willbes.net/public/images/promotion/2019/07/1309_07.jpg" title="합격 전략 설명회" />  
          <img src="https://static.willbes.net/public/images/promotion/2019/07/1309_08.jpg" usemap="#Map1309" title="설명회 시간" border="0" />
             <map name="Map1309" id="Map1309">
                 <area shape="rect" coords="96,165,582,236" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=328&" target="_blank"/>

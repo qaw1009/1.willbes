@@ -85,8 +85,14 @@
     <div class="skybanner">
       <ul>
           <li><a href="http://pass.willbes.net/pass/promotion/index/cate/3052/code/1308" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1307_s1.jpg"  title="설명회" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/07/1307_s2.jpg"  title="학원방문상담" /></a></li>
-          <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1307_s3.jpg" title="카카오상담하기" /></a></li>
+          <li>
+          <img src="https://static.willbes.net/public/images/promotion/2019/07/1307_s2.jpg" usemap="#Map1307sky"  title="학원방문상담" border="0" />
+            <map name="Map1307sky" id="Map1307sky">
+                <area shape="rect" coords="11,69,90,114" href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" />
+                <area shape="rect" coords="7,117,89,165" href="https://pf.kakao.com/_kcZIu" target="_blank" />
+            </map>
+          </li>
+          <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=327&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1307_s3.jpg" title="카카오상담하기" /></a></li>
       </ul>
     </div> 
 

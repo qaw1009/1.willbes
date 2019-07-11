@@ -107,6 +107,7 @@
         var $search_form = $('#search_form');
         var $list_table = $('#list_ajax_table');
         var $json_approval_status = {!! json_encode($arr_approval_status) !!};  // 진행상태 코드
+        var $json_approval_color = {!! json_encode($arr_approval_color) !!};  // 진행상태 색상
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
@@ -129,7 +130,7 @@
                     }},
                     {'data' : 'ApplySeq'},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
-                        return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
+                        return data + '(' + row.MemId + ')<br/>' + row.MemPhone + '<br/>' + row.BirthDay + '(' + row.SexKr + ')';
                     }},
                     {'data' : 'AreaCcdName'},
                     {'data' : 'BranchCcdName'},
@@ -142,7 +143,7 @@
                         return '<a href="#none" class="btn-approval" data-idx="' + row.ApplyIdx + '"><u class="blue">[확인]</u></a>';
                     }},
                     {'data' : 'ApprovalStatus', 'render' : function(data, type, row, meta) {
-                        return data === 'N' ? '<div class="red inline-block">' + $json_approval_status[data] + '</div>' : $json_approval_status[data];
+                        return '<div class="inline-block ' + $json_approval_color[data] + '">' + $json_approval_status[data] + '</div>';
                     }},
                     {'data' : 'ApprovalRejectAdminName', 'render' : function(data, type, row, meta) {
                         return data !== null ? data : row.ApprovalAdminName;

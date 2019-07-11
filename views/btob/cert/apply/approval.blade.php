@@ -18,48 +18,48 @@
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2">인증회차
                 </label>
-                <div class="col-md-3 form-control-static">
+                <div class="col-md-2 form-control-static">
                     {{ $data['ApplySeq'] }}
                 </div>
                 <label class="control-label col-md-2">회원정보
                 </label>
-                <div class="col-md-5 form-control-static">
-                    {{ $data['MemName'] }} ({{ $data['MemId'] }}) | {{ $data['MemPhone'] }}
+                <div class="col-md-6 form-control-static">
+                    {{ $data['MemName'] }} ({{ $data['MemId'] }}) | {{ $data['MemPhone'] }} | {{ $data['BirthDay'] }}({{ $data['SexKr'] }})
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2">지역
                 </label>
-                <div class="col-md-3 form-control-static">
+                <div class="col-md-2 form-control-static">
                     {{ $data['AreaCcdName'] }}
                 </div>
                 <label class="control-label col-md-2">지점
                 </label>
-                <div class="col-md-5 form-control-static">
+                <div class="col-md-6 form-control-static">
                     {{ $data['BranchCcdName'] }}
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2">수험직렬
                 </label>
-                <div class="col-md-3 form-control-static">
+                <div class="col-md-2 form-control-static">
                     {{ $data['TakeKindCcdName'] }}
                 </div>
                 <label class="control-label col-md-2">신청상품
                 </label>
-                <div class="col-md-5 form-control-static">
+                <div class="col-md-6 form-control-static">
                     {{ $data['ProdName'] }}
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2">진행상태
                 </label>
-                <div class="col-md-3 form-control-static">
-                    {{ $data['ApprovalStatusName'] }}
+                <div class="col-md-2 form-control-static">
+                    <span class="{{ $data['ApprovalStatusColor'] }}">{{ $data['ApprovalStatusName'] }}</span>
                 </div>
                 <label class="control-label col-md-2">수강기간
                 </label>
-                <div class="col-md-5 form-inline">
+                <div class="col-md-6 form-inline">
                     <div class="input-group mb-0 item">
                         <input type="text" class="form-control datepicker" id="lec_start_date" name="lec_start_date" title="수강시작일" readonly="readonly" value="{{ $data['LecStartDate'] }}">
                         <div class="input-group-addon no-border no-bgcolor">~</div>
@@ -73,11 +73,11 @@
         <div class="col-md-12 form-inline text-right">
             @if($data['ApprovalStatus'] == 'N')
                 {{-- 미승인일 경우만 노출 --}}
-                <button type="button" name="btn_approval_reject" data-approval-status="R" class="btn btn-success btn-approval-proc">승인반려(재인증가능)</button>
-                <button type="button" name="btn_approval_complete" data-approval-status="Y" class="btn btn-primary btn-approval-proc mr-0">승인완료(수강등록)</button>
+                <button type="button" name="btn_approval_reject" data-approval-status="R" data-confirm-msg="승인반려" class="btn btn-success btn-approval-proc">승인반려(재인증가능)</button>
+                <button type="button" name="btn_approval_complete" data-approval-status="Y" data-confirm-msg="승인완료(수강등록)" class="btn btn-primary btn-approval-proc mr-0">승인완료(수강등록)</button>
             @elseif($data['ApprovalStatus'] == 'Y')
                 {{-- 승인완료일 경우만 노출 --}}
-                <button type="button" name="btn_approval_cancel" data-approval-status="C" class="btn btn-danger btn-approval-proc">승인취소(수강취소)</button>
+                <button type="button" name="btn_approval_cancel" data-approval-status="C" data-confirm-msg="승인취소(수강취소)" class="btn btn-danger btn-approval-proc">승인취소(수강취소)</button>
             @endif
         </div>
     </div>
@@ -103,6 +103,9 @@
         $(document).ready(function() {
             // 승인처리 버튼 클릭
             $_regi_form.on('click', '.btn-approval-proc', function() {
+                // confirm 메시지
+                var confirm_msg = '정말로 ' + $(this).data('confirm-msg') + ' 하시겠습니까?';
+
                 // 승인상태
                 $_regi_form.find('input[name="approval_status"]').val($(this).data('approval-status'));
 
@@ -116,9 +119,21 @@
                         alert('수강종료일을 선택해 주세요.');
                         return;
                     }
+
+                    // 수강기간 계산
+                    var lec_diff_days = moment($_regi_form.find('input[name="lec_end_date"]').val(), 'YYYY-MM-DD').diff($_regi_form.find('input[name="lec_start_date"]').val(), 'days');
+                    if (lec_diff_days < 0) {
+                        alert('수강종료일은 수강시작일보다 작을 수 없습니다.');
+                        return;
+                    }
+
+                    // 수강기간 체크 (28일 미만일 경우 메시지 추가)
+                    if (lec_diff_days < 27) {
+                        confirm_msg = '일반적인 수강기간 설정이 아닙니다.\n' + confirm_msg;
+                    }
                 }
 
-                if (!confirm('정말로 진행상태를 변경하시겠습니까?')) {
+                if (!confirm(confirm_msg)) {
                     return;
                 }
 

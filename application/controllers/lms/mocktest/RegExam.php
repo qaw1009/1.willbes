@@ -272,10 +272,12 @@ class RegExam extends \app\controllers\BaseController
                     $rules[] = ['field' => 'QuestionFile', 'label' => '문제파일', 'rules' => 'required'];
                     break;
                 }
+                /*
                 if (isset($_FILES['ExplanFile']['error'][$k]) && ($_FILES['ExplanFile']['error'][$k] !== UPLOAD_ERR_OK  || $_FILES['ExplanFile']['size'][$k] == 0)) {
-                    // $rules[] = ['field' => 'ExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
+                    $rules[] = ['field' => 'ExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
                     break;
                 }
+                */
             }
         }
         if ($this->validate($rules) === false) return;

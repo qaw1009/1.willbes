@@ -134,7 +134,7 @@ select option:before {height:20px}
                         <tbody>
                         <tr>
                             <th>개인정보 항목</th>
-                            <td>회원명, 아이디</td>
+                            <td>회원명,아이디,연락처,생년월일(성별)</td>
                         </tr>
                         <tr>
                             <th>개인정보를 제공 받는 자</th>

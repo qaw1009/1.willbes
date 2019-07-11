@@ -11,15 +11,27 @@
                 <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190613_01.jpg" title="수험생이 증명하는 대한민국 1등 경찰학원">
             </div>
             <div class="widthAutoFull summer">
+                {{--13일 16시까지--}}
                 <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190628_02.jpg" usemap="#Map190628" title="신광은 경찰 여름이벤트" border="0">
                 <map name="Map190628" id="Map190628">
                     <area shape="rect" coords="16,210,227,424" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1270" target="_blank" alt="기본이론" />
                     <area shape="rect" coords="349,337,486,400" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강" />
                     <area shape="rect" coords="894,212,1102,429" href="https://police.willbes.net/pass/promotion/index/cate/3011/code/1290" target="_blank" alt="빅매치" />
-                  <area shape="rect" coords="492,339,629,398" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268#wb_04" target="_blank" alt="2단계" />
-                  <area shape="rect" coords="635,340,772,399" href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank" alt="동영상" />
-                  <area shape="rect" coords="424,418,694,469" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강신청하기" />
+                    <area shape="rect" coords="492,339,629,398" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268#wb_04" target="_blank" alt="2단계" />
+                    <area shape="rect" coords="635,340,772,399" href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank" alt="동영상" />
+                    <area shape="rect" coords="424,418,694,469" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강신청하기" />
                 </map>
+                {{--13일 16시 이후
+                <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190711_02.jpg" usemap="#Map190711" title="신광은 경찰 여름이벤트" border="0">
+                <map name="Map190711" id="Map190711">
+                    <area shape="rect" coords="16,210,227,424" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1270" target="_blank" alt="기본이론" />
+                    <area shape="rect" coords="349,337,486,400" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강" />
+                    <area shape="rect" coords="894,212,1102,429" href="police.willbes.net/pass/promotion/index/cate/3010/code/1321" target="_blank" alt="빅매치2" />
+                    <area shape="rect" coords="492,339,629,398" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268#wb_04" target="_blank" alt="2단계" />
+                    <area shape="rect" coords="635,340,772,399" href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank" alt="동영상" />
+                    <area shape="rect" coords="424,418,694,469" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강신청하기" />
+                </map>
+                --}}
             </div>
         </div>
 

@@ -47,7 +47,7 @@ select option:before {height:20px}
 <div class="popWrap NGR">
     <div class="logo">
         <img src="https://police.stage.willbes.net/public/img/willbes/gnb/logo.gif" alt="윌비스" />
-        <span class="zaksim"><img src="https://static.willbes.net/public/images/btob/zaksim_logo_b.png.png" alt="작심독서실" /></span>
+        <span class="zaksim"><img src="https://static.willbes.net/public/images/btob/zaksim_logo_b.png" alt="작심독서실" /></span>
     </div>
     <div class="copyright">
         <span>제휴<br>인증센터</span>

@@ -172,7 +172,7 @@
                                     </select>
                                     <select class="form-control ml-5" name="live_start_min[]">
                                         @php
-                                            $start_min = substr($row['LiveStartTime'],'2','4');
+                                            $start_min = substr($row['LiveStartTime'],'2','2');
                                             for($i=0; $i<=59; $i++) {
                                                 $str = (strlen($i) <= 1) ? '0' : '';
                                                 $selected = ($str.$i == $start_min) ? "selected='selected'" : "";
@@ -194,7 +194,7 @@
                                     </select>
                                     <select class="form-control ml-5" name="live_end_min[]">
                                         @php
-                                            $end_min = substr($row['LiveEndTime'],'2','4');
+                                            $end_min = substr($row['LiveEndTime'],'2','2');
                                             for($i=0; $i<=59; $i++) {
                                                 $str = (strlen($i) <= 1) ? '0' : '';
                                                 $selected = ($str.$i == $end_min) ? "selected='selected'" : "";

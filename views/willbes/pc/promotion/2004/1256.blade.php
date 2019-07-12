@@ -228,7 +228,7 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_03_1.jpg" usemap="#Map1256B" title="" border="0" />
             <map name="Map1256B" id="Map1256B">
-                <area shape="rect" coords="465,610,654,667" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=275" target="_blank" alt="설명회신청하기" />
+                <area shape="rect" coords="169,1009,946,1087" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=336" target="_blank" alt="설명회신청하기" />
             </map>
         </div>
 

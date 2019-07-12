@@ -95,7 +95,7 @@
         .evt07 {background:#2ecbc2;}
         .evt08 {background:#414852;}	
 		.evt09 {background:#525685;}	
-		#movieFrame2 {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live-bg.jpg) no-repeat center center;}
+		#movieFrame2 {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/live/liveTV.png) no-repeat center top;}
         .embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
         .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:551px; margin:0 auto}
 		
@@ -202,7 +202,7 @@
 
                 @if ($live_type == 'standby')
                     {{--방송 전--}}
-                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg" title="방송전">
+                    <img src="https://static.willbes.net/public/images/promotion/live/liveBefore.jpg" title="방송전">
 
                 @elseif ($live_type == 'on' && $live_video_type == 'on')
                     {{--7/2 ~ 7.15 오전 9시 30분 방송 중--}}
@@ -216,8 +216,8 @@
                                     <script type="text/javascript">
                                         jwplayer("myElement").setup({
                                         width: '100%',
-                                        logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
-                                        image: "https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg",
+                                        logo: {file: 'https://static.willbes.net/public/images/promotion/live/liveBi.png'},
+                                        image: "https://static.willbes.net/public/images/promotion/live/liveIng.jpg",
                                         aspectratio: "16:9",
                                         autostart: "true",
                                         file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011"
@@ -230,8 +230,8 @@
 
                                 </div>
                                 <ul class="mobileCh">
-                                    <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnH.png" title="고화질 보기"></a></li>
-                                    <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1208_playbtnN.png" title="일반화질 보기"></a></li>
+                                    <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/live/livePlaybtnH.png" title="고화질 보기"></a></li>
+                                    <li><a href="javascript:fn_live('low')"><img src="https://static.willbes.net/public/images/promotion/live/livePlaybtnN.png" title="일반화질 보기"></a></li>
                                 </ul>
                             @endif
                         </div>
@@ -239,10 +239,10 @@
 
                 @elseif ($live_type == 'on' && $live_video_type == 'off')
                     {{--방송 전--}}
-                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09L-live.jpg" title="방송전">
+                    <img src="https://static.willbes.net/public/images/promotion/live/liveBefore.jpg" title="방송전">
                 @else
                     {{--방송종료 00:00 부터 노출--}}
-                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1227_03_live02.jpg" title="방송종료" />
+                    <img src="https://static.willbes.net/public/images/promotion/live/liveAfter.jpg" title="방송종료" />
                 @endif
             </div>
 			<img src="https://static.willbes.net/public/images/promotion/2019/05/1227_09-1L.jpg" title="다드림 소문내기 이벤트 경품" />

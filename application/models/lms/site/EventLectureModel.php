@@ -12,6 +12,7 @@ class EventLectureModel extends WB_Model
         'event_member' => 'lms_event_member',
         'event_member_successinfo' => 'lms_event_member_successinfo',
         'event_promotion_otherinfo' => 'lms_event_promotion_otherinfo',
+        'event_promotion_live_video' => 'lms_Event_Promotion_Live_Video',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
@@ -189,6 +190,7 @@ class EventLectureModel extends WB_Model
             $comment_ui_type_ccds = element('comment_ui_type_ccds', $input);
             $ordering = element('Ordering', $input);
             $request_type = element('request_type', $input);    //신청유형
+            $promotion_live_type = element('promotion_live_type', $input, 'N');    //라이브송출관리타입
 
             if ($this->_request_type_names[$request_type] == '프로모션') {
                 $content = element('promotion_content', $input);
@@ -248,6 +250,7 @@ class EventLectureModel extends WB_Model
                 'TakeType' => element('take_type', $input),
                 'PromotionCode' => $promotionCode,
                 'PromotionParams' => element('promotion_params', $input),
+                'PromotionLiveType' => $promotion_live_type,
                 'BIdx' => element('banner_idx', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
@@ -321,6 +324,13 @@ class EventLectureModel extends WB_Model
                 }
             }
 
+            // 프로모션 라이브송출 데이터 저장
+            if ($promotion_live_type == 'Y') {
+                if ($this->_addPromotionLiveVideo($promotionCode, $input) === false) {
+                    throw new \Exception('프로모션 라이브송출데이터 등록에 실패했습니다.');
+                }
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -352,12 +362,12 @@ class EventLectureModel extends WB_Model
 
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, PromotionCode, PromotionParams, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
+                SiteCode, CampusCcd, PromotionCode, PromotionParams, PromotionLiveType, , BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, '.$promotionCode.', PromotionParams, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
+                SiteCode, CampusCcd, '.$promotionCode.', PromotionParams, PromotionLiveType, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
@@ -393,8 +403,6 @@ class EventLectureModel extends WB_Model
             } else {
                 throw new \Exception('게시물 복사에 실패했습니다.');
             }
-
-
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -420,6 +428,7 @@ class EventLectureModel extends WB_Model
             $evnet_category_data = element('cate_code', $input);
             $option_ccds = element('option_ccds', $input);
             $request_type = element('request_type', $input);    //신청유형
+            $promotion_live_type = element('promotion_live_type', $input, 'N');    //라이브송출관리타입
 
             if ($this->_request_type_names[$request_type] == '프로모션') {
                 $content = element('promotion_content', $input);
@@ -484,6 +493,7 @@ class EventLectureModel extends WB_Model
                 'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
                 'PromotionParams' => element('promotion_params', $input),
+                'PromotionLiveType' => $promotion_live_type,
                 'BIdx' => element('banner_idx', $input),
                 'IsBest' => element('is_best', $input, 0),
                 'SubjectIdx' => element('subject_idx', $input),
@@ -549,6 +559,13 @@ class EventLectureModel extends WB_Model
                     throw new \Exception('프로모션 상세설정 등록에 실패했습니다.');
                 }
             }
+
+            // 프로모션 라이브송출 데이터 저장
+            if ($promotion_live_type == 'Y') {
+                if ($this->_addPromotionLiveVideo(element('promotion_code', $input), $input) === false) {
+                    throw new \Exception('프로모션 라이브송출데이터 등록에 실패했습니다.');
+                }
+            }
             
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -579,7 +596,7 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequestType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.PromotionCode, A.PromotionParams, A.BIdx, F.BannerName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequestType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.PromotionCode, A.PromotionParams, A.PromotionLiveType, A.BIdx, F.BannerName,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
@@ -1186,6 +1203,51 @@ class EventLectureModel extends WB_Model
     }
 
     /**
+     * 프로모션 라이브송출 리스트
+     * @param $promotion_code
+     * @return mixed
+     */
+    public function listEventPromotionForLiveVideo($promotion_code)
+    {
+        $column = '
+            EplvIdx, PromotionCode, Title, LiveAutoType, LiveRatio, LiveDate, LiveStartTime, LiveEndTime, LiveUrl, FileFullPath, FileRealName, IsUse, IsStatus
+        ';
+        $from = "
+            FROM {$this->_table['event_promotion_live_video']}
+        ";
+        $where = ' where PromotionCode = ? and IsStatus = "Y"';
+        $order_by_offset_limit = ' order by EplvIdx asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();
+    }
+
+    /**
+     * 프로모션 라이브송출 단일 데이터 삭제
+     * @param $eplv_idx
+     * @return array|bool
+     */
+    public function deletePromotionLiveVideo($eplv_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx)->where('EplvIdx', $eplv_idx);
+            if ($this->_conn->update($this->_table['event_promotion_live_video']) === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 이벤트 파일저장
      * @param $el_idx
      * @param $cnt
@@ -1229,8 +1291,6 @@ class EventLectureModel extends WB_Model
                     }
                 }
             }
-
-            $this->_conn->trans_commit();
         } catch (\Exception $e) {
             return false;
         }
@@ -1275,8 +1335,6 @@ class EventLectureModel extends WB_Model
                     }
                 }
             }
-
-            $this->_conn->trans_commit();
         } catch (\Exception $e) {
             return false;
         }
@@ -1590,7 +1648,6 @@ class EventLectureModel extends WB_Model
                 }
             }
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
             return error_result($e);
         }
         return true;
@@ -1696,7 +1753,6 @@ class EventLectureModel extends WB_Model
      */
     private function _addPromotionOtherInfo($promotionCode, $input = [])
     {
-        $this->_conn->trans_begin();
         try {
             if(empty($input['epo_idx']) === false) {
                 //파일 저장
@@ -1718,7 +1774,6 @@ class EventLectureModel extends WB_Model
                  * 프로모션 부가정보 저장
                  * epo_idx 값으로 insert, update 구분
                  */
-
                 foreach ($input['epo_idx'] as $key => $val) {
                     $inputData['PromotionCode'] = $promotionCode;
                     $inputData['ProfIdx'] = (empty($input['other_prof_idx'][$key]) === false) ? $input['other_prof_idx'][$key] : null;
@@ -1754,6 +1809,82 @@ class EventLectureModel extends WB_Model
                         $inputData['UpdAdminIdx'] = $this->session->userdata('admin_idx');
                         if ($this->_conn->set($inputData)->where('EpoIdx', $val)->update($this->_table['event_promotion_otherinfo']) === false) {
                             throw new \Exception('프로모션 부가정보 수정에 실패했습니다.');
+                        }
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 라이브송출데이터 저장
+     * @param $promotionCode
+     * @param array $input
+     * @return array|bool
+     */
+    private function _addPromotionLiveVideo($promotionCode, $input = [])
+    {
+        try {
+            if(empty($input['eplv_idx']) === false) {
+                //파일 저장
+                $upload_dir = config_item('upload_prefix_dir') . '/promotion/' . date('Y') . '/' . date('md') . '/live';
+                $promo_file_cnt = (empty($_FILES['live_attach_file']) === true) ? '0' : count($_FILES['live_attach_file']['name']);
+                $uploaded = $this->upload->uploadFile('file', ['live_attach_file'], $this->_getAttachImgNames($promo_file_cnt, 'promotion'), $upload_dir);
+                if (is_array($uploaded) === false) {
+                    throw new \Exception($uploaded);
+                }
+                $set_attach_data = [];
+                foreach ($uploaded as $idx => $attach_files) {
+                    if (empty($attach_files) === false) {
+                        $set_attach_data['FileFullPath'][$idx] = $this->upload->_upload_url . $upload_dir . '/' . $attach_files['orig_name'];
+                        $set_attach_data['FileRealName'][$idx] = $attach_files['client_name'];
+                    }
+                }
+
+                /**
+                 * 프로모션 라이브송출데이터 저장
+                 * eplv_idx 값으로 insert, update 구분
+                 */
+                foreach ($input['eplv_idx'] as $key => $val) {
+                    $inputData['PromotionCode'] = $promotionCode;
+                    $inputData['Title'] = $input['live_title'][$key];
+                    $inputData['LiveAutoType'] = (empty($input['live_auto_type'][$key]) === false && $input['live_auto_type'][$key] == 'Y') ? $input['live_auto_type'][$key] : 'N';
+                    $inputData['LiveRatio'] = $input['live_ratio'][$key];
+                    $inputData['LiveDate'] = $input['live_date'][$key];
+                    $inputData['LiveStartTime'] = $input['live_start_hour'][$key].$input['live_start_min'][$key].'00';
+                    $inputData['LiveEndTime'] = $input['live_end_hour'][$key].$input['live_end_min'][$key].'00';
+                    $inputData['LiveUrl'] = $input['live_url'][$key];
+                    $inputData['IsUse'] = $input['live_is_use'][$key];
+
+                    if(empty($set_attach_data['FileFullPath'][$key]) === false) {
+                        $inputData['FileFullPath'] = $set_attach_data['FileFullPath'][$key];
+                        $inputData['FileRealName'] = $set_attach_data['FileRealName'][$key];
+                    } else {
+                        unset($inputData['FileFullPath']);
+                        unset($inputData['FileRealName']);
+                    }
+
+                    if (empty($val) === true) {
+                        $inputData['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                        if ($this->_conn->set($inputData)->insert($this->_table['event_promotion_live_video']) === false) {
+                            throw new \Exception('fail');
+                        }
+                    } else {
+                        //기존파일삭제
+                        if(empty($input['live_file_full_path'][$key]) === false && empty($inputData['FileFullPath']) === false) {
+                            $this->load->helper('file');
+                            $file_path = public_to_upload_path(urldecode($input['live_file_full_path'][$key]));
+                            if (@unlink($file_path) === false) {
+                                /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
+                            }
+                        }
+
+                        $inputData['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+                        if ($this->_conn->set($inputData)->where('EplvIdx', $val)->update($this->_table['event_promotion_live_video']) === false) {
+                            throw new \Exception('프로모션 라이브송출데이터 수정에 실패했습니다.');
                         }
                     }
                 }

@@ -637,14 +637,7 @@
                 var file_id = $('.file-input-box').length;
 
                 add_file_box_text += '<div class="title file-input-box">';
-                //add_file_box_text += '<div class="filetype">';
-                //add_file_box_text += '<input type="text" class="form-control file-text" disabled="disabled">';
-                //add_file_box_text += '<button class="btn btn-primary mb-0 ml-5" type="button">파일 선택</button>';
-                //add_file_box_text += '<span class="file-select file-btn">';
                 add_file_box_text += '<input type="file" id="attach_file_promotion'+file_id+'" name="attach_file_promotion[]" class="form-control input-file" title="첨부'+file_id+'"/>&nbsp;<input type="text" id="Ordering'+file_id+'" name="Ordering[]" style="width:20px;"/>';
-                //add_file_box_text += '</span>';
-                //add_file_box_text += '<input class="file-reset btn-danger btn" type="button" value="X" />';
-                //add_file_box_text += '</div>';
                 add_file_box_text += '</div>';
                 $('.file-box').append(add_file_box_text);
 
@@ -714,6 +707,12 @@
             // 바이트 수
             $('#sms_content').on('change keyup input', function() {
                 $('#content_byte').val(fn_chk_byte($(this).val()));
+            });
+
+            // 파일 다운로드
+            $('.file-download').click(function() {
+                var _url = '{{ site_url("/site/eventLecture/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                window.open(_url, '_blank');
             });
         });
 

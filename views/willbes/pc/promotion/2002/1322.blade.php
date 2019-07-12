@@ -40,7 +40,7 @@
         .wb_02 {background:#fae8d8 url(https://static.willbes.net/public/images/promotion/2019/07/1322_02_bg.jpg) no-repeat center top; line-height:1.4} 
         
         .wb_02 .request {
-            width:1000px; text-align:left; background:#fff; padding:50px; font-size:14px; margin:100px auto; 
+            width:1000px; text-align:left; background:#fff; padding:50px; font-size:14px; margin:0 auto 100px; 
             box-shadow: 10px 10px 10px rgba(010,0,0,.1);
         }
         .wb_02 .request h3 {font-size:30px; padding-bottom:10px; margin-bottom:30px; border-bottom:2px solid #c14842}

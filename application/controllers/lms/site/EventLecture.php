@@ -163,6 +163,9 @@ class EventLecture extends \app\controllers\BaseController
 
             // 프로모션 부가 정보 조회
             $data['promotion_other_data'] = $this->eventLectureModel->listEventPromotionForOther($data['PromotionCode']);
+
+            // 프로모션 부가 정보 조회
+            $data['promotion_live_video_data'] = $this->eventLectureModel->listEventPromotionForLiveVideo($data['PromotionCode']);
         }
 
         $this->load->view("site/event_lecture/create", [
@@ -222,6 +225,7 @@ class EventLecture extends \app\controllers\BaseController
         $content_type = $this->_reqP('content_type');       //내용타입
         $option_ccds = $this->_reqP('option_ccds[]');       //관리옵션
         $limit_type = $this->_reqP('limit_type');           //정원제한타입
+        $promotion_live_type = $this->_reqP('promotion_live_type');  //라이브송출타입
 
         //프로모션 제외
         if (($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') && (empty($option_ccds) === false) && count($option_ccds) > 0) {
@@ -265,6 +269,17 @@ class EventLecture extends \app\controllers\BaseController
                         break;
                 }
             }
+        }
+
+        // 프로모션,라이브송출관리 Y인 경우
+        if ($this->eventLectureModel->_request_type_names[$request_type] == '프로모션' && $promotion_live_type == 'Y') {
+            $rules = array_merge($rules, [
+                ['field' => 'live_title[]', 'label' => '라이브송출제목', 'rules' => 'trim|required'],
+                ['field' => 'live_auto_type[]', 'label' => '동영상자동실행', 'rules' => 'trim|required'],
+                ['field' => 'live_ratio[]', 'label' => '동영상비율', 'rules' => 'trim|required'],
+                ['field' => 'live_date[]', 'label' => '라이브송출날짜', 'rules' => 'trim|required'],
+                ['field' => 'live_url[]', 'label' => '라이브송출경로', 'rules' => 'trim|required']
+            ]);
         }
 
         // 등록,수정 조건 분기 처리, 프로모션 제외
@@ -814,6 +829,21 @@ class EventLecture extends \app\controllers\BaseController
         }
 
         $result = $this->eventLectureModel->deletePromotionOtherInfo($this->_reqP('epo_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    public function deletePromotionLiveVideo()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'eplv_idx', 'label' => '프로모션부가정보식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->deletePromotionLiveVideo($this->_reqP('eplv_idx'));
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
 

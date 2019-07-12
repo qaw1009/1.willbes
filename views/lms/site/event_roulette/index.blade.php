@@ -105,7 +105,7 @@
                             return (data === 'Y') ? '사용' + ' ('+ row.NewMemberJoinStartDate + ' ~ ' + row.NewMemberJoinEndDate +')' : '미사용';
                         }},
                     {'data' : 'ProbabilityType', 'render' : function(data, type, row, meta) {
-                            return (data === '1') ? '자동' : '<span class="blue">수동</span>';
+                            return (data === '1') ? '수동' : '<span class="blue">자동</span>';
                         }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

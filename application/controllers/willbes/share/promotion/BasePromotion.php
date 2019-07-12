@@ -47,6 +47,9 @@ class BasePromotion extends \app\controllers\FrontController
         // 프로모션 부가정보 조회
         $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
 
+        // 프로모션 라이브송출 조회
+        $arr_base['promotion_live_data'] = ($data['PromotionLiveType'] == 'Y') ? $this->eventFModel->listEventPromotionForLiveVideo($data['PromotionCode']) : [];
+
         $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing';
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;

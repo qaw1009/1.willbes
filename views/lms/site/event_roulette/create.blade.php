@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="new_member_join_type_Y">신규회원가입대상 사용여부<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="new_member_join_type_Y">신규회원가입대상사용여부<span class="required">*</span></label>
                     <div class="col-md-2 item">
                         <div class="radio">
                             <input type="radio" id="new_member_join_type_Y" name="new_member_join_type" class="flat" value="Y" @if($data['NewMemberJoinType']=='Y')checked="checked"@endif/> <label for="new_member_join_type_Y" class="input-label">사용</label>

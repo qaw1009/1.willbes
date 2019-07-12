@@ -58,7 +58,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>이름 (아이디)</th>
+                    <th>지점명 (아이디)</th>
                     <th>연락처</th>
                     <th>지역</th>
                     <th>지점</th>

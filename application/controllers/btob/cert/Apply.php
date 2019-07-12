@@ -8,6 +8,7 @@ class Apply extends \app\controllers\BaseController
     private $_sess_btob_idx = null;
     private $_sess_btob_branch_ccd = null;
     private $_arr_approval_status = ['N' => '미승인', 'R' => '승인반려', 'Y' => '승인완료', 'C' => '승인취소', 'E' => '승인만료'];
+    private $_arr_approval_color = ['N' => 'red', 'R' => 'orange', 'Y' => 'blue', 'C' => 'green', 'E' => ''];
     private $_arr_search_date_type = ['N' => '신청일', 'R' => '승인반려일', 'Y' => '승인완료일', 'C' => '승인취소일', 'E' => '승인만료일'];
     private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
@@ -40,6 +41,7 @@ class Apply extends \app\controllers\BaseController
             'arr_branch_ccd' => $arr_branch_ccd,
             'arr_take_kind_ccd' => $arr_take_kind_ccd,
             'arr_approval_status' => $this->_arr_approval_status,
+            'arr_approval_color' => $this->_arr_approval_color,
             'arr_search_date_type' => $this->_arr_search_date_type
         ]);
     }
@@ -156,8 +158,8 @@ class Apply extends \app\controllers\BaseController
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
-        $headers = ['인증회차', '회원명', '회원아이디', '회원휴대폰번호', '지역', '지점', '신청일', '수험직렬', '상품명', '진행상태', '승인완료자', '승인완료일'
-            , '승인반려자', '승인반려일', '승인취소자', '승인취소일', '승인만료일'];
+        $headers = ['인증회차', '회원명', '회원아이디', '회원휴대폰번호', '생년월일', '성별', '지역', '지점', '신청일', '수험직렬', '상품명', '진행상태'
+            , '승인완료자', '승인완료일', '승인반려자', '승인반려일', '승인취소자', '승인취소일', '승인만료일'];
         $file_name = '인증신청목록_' . $this->_sess_btob_idx . '_' . date('Y-m-d');
 
         $arr_condition = $this->_getListConditions();
@@ -189,6 +191,7 @@ class Apply extends \app\controllers\BaseController
             return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
         }
         $data['ApprovalStatusName'] = $this->_arr_approval_status[$data['ApprovalStatus']];
+        $data['ApprovalStatusColor'] = $this->_arr_approval_color[$data['ApprovalStatus']];
 
         return $this->load->view('cert/apply/approval', [
             'idx' => $apply_idx,

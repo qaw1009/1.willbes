@@ -217,9 +217,9 @@
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_tab2.jpg" title="연간종합반"/></a>
                 </div>             
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_1.jpg" usemap="#Map1257B" title="" border="0" />
-            <map name="Map1257B" id="Map1257B">
-                <area shape="rect" coords="465,610,654,667" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=275" target="_blank" alt="설명회신청하기" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_1.jpg" usemap="#Map1256B" title="" border="0" />
+            <map name="Map1256B" id="Map1256B">
+                <area shape="rect" coords="169,1009,946,1087" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=336" target="_blank" alt="설명회신청하기" />
             </map>
         </div>
 

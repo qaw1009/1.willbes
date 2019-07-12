@@ -34,7 +34,7 @@ class BtobCertModel extends WB_Model
         } else {
             $column = 'CA.ApplyIdx, CA.BtobIdx, CA.MemIdx, CA.ApplySeq, CA.SiteCode, CA.ProdCode, CA.OrderIdx, CA.LecStartDate, CA.LecEndDate
                 , CA.ApprovalDatm, CA.ApprovalExpireDatm, CA.RegDatm
-                , M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone, P.ProdName
+                , M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone, M.BirthDay, M.Sex, if(M.Sex = "M", "남", "여") as SexKr, P.ProdName
                 , AC.CcdName as AreaCcdName, BC.CcdName as BranchCcdName, TKC.CcdName as TakeKindCcdName
                 , AAP.AdminName as ApprovalAdminName
                 , if(CA.ApprovalStatus = "Y" and CA.ApprovalExpireDatm < NOW(), "E", CA.ApprovalStatus) as ApprovalStatus
@@ -71,7 +71,7 @@ class BtobCertModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         if ($is_count === 'excel') {
-            $excel_column = 'ApplySeq, MemName, MemId, MemPhone, AreaCcdName, BranchCcdName, RegDatm, TakeKindCcdName, ProdName, ApprovalStatus
+            $excel_column = 'ApplySeq, MemName, MemId, MemPhone, BirthDay, SexKr, AreaCcdName, BranchCcdName, RegDatm, TakeKindCcdName, ProdName, ApprovalStatus
                 , ApprovalAdminName, ApprovalDatm, ApprovalRejectAdminName, ApprovalRejectDatm, ApprovalCancelAdminName, ApprovalCancelDatm, ApprovalExpireDatm';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {

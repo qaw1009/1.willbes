@@ -11,6 +11,7 @@ class EventFModel extends WB_Model
         'event_register' => 'lms_event_register',
         'event_member' => 'lms_event_member',
         'event_promotion_otherinfo' => 'lms_event_promotion_otherinfo',
+        'event_promotion_live_video' => 'lms_event_promotion_live_video',
         'event_read_log' => 'lms_event_read_log',
         'board' => 'lms_board',
         'board_r_category' => 'lms_board_r_category',
@@ -679,7 +680,7 @@ class EventFModel extends WB_Model
     public function findEventForPromotion($promotion_code, $test_type = '')
     {
         $column = '
-            ElIdx, Content, OptionCcds, EventName, PromotionCode, PromotionParams, RegisterEndDate, CommentUseArea, LimitType, PromotionCnt
+            ElIdx, Content, OptionCcds, EventName, PromotionCode, PromotionParams, PromotionLiveType, RegisterEndDate, CommentUseArea, LimitType, PromotionCnt
         ';
         $from = "
             FROM {$this->_table['event_lecture']}
@@ -821,6 +822,21 @@ class EventFModel extends WB_Model
         ";
         $where = ' where A.PromotionCode = ? and A.IsStatus = "Y"';
         $order_by_offset_limit = ' order by A.OrderNum asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();
+    }
+
+    public function listEventPromotionForLiveVideo($promotion_code)
+    {
+        $column = '
+            EplvIdx, PromotionCode, Title, LiveAutoType, LiveRatio, REPLACE(LiveDate, "-", "") AS LiveDate, LiveStartTime, LiveEndTime, LiveUrl, FileFullPath, FileRealName
+        ';
+        $from = "
+            FROM {$this->_table['event_promotion_live_video']}
+        ";
+        $where = ' where PromotionCode = ? and IsStatus = "Y" and IsUse = "Y"';
+        $order_by_offset_limit = ' order by EplvIdx asc';
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();

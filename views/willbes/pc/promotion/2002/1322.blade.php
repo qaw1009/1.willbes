@@ -40,25 +40,30 @@
         .wb_02 {background:#fae8d8 url(https://static.willbes.net/public/images/promotion/2019/07/1322_02_bg.jpg) no-repeat center top; line-height:1.4} 
         
         .wb_02 .request {
-            width:1000px; margin:0 auto; text-align:left; background:#fff; padding:50px; font-size:14px; margin:150px auto; 
+            width:1000px; text-align:left; background:#fff; padding:50px; font-size:14px; margin:0 auto 100px; 
             box-shadow: 10px 10px 10px rgba(010,0,0,.1);
         }
-        .wb_02 .request h3 {font-size:30px; padding-bottom:10px; margin-bottom:30px; border-bottom:2px solid #f297b8}
-        .wb_02 .request h3 span {color:#f297b8;}
-        .wb_02 .request p {font-size:16px; margin-bottom:20px; font-weight:bold}
+        .wb_02 .request h3 {font-size:30px; padding-bottom:10px; margin-bottom:30px; border-bottom:2px solid #c14842}
+        .wb_02 .request h3 span {color:#c14842;}
+        .wb_02 .request p {font-size:16px; margin-bottom:10px; font-weight:bold}
         .wb_02 .request li {margin-bottom:10px}
         .wb_02 .request .tit { display:inline-block; width:70px;}  
         .wb_02 .request input[type="text"] {width:160px; height:26px; border:1px solid #999; padding:0 10px; color:#666}
         .wb_02 .request input[type="checkbox"] {width:20px; height:20px; border:1px solid #999;}  
         .wb_02 .termsBx {margin-bottom:20px}
+        .wb_02 .termsBx a {display:block; width:250px; border-radius:4px; color:#fff; background:#c14842; text-align:center; height:50px; line-height:50px;
+            font-size:18px; border-bottom:5px solid #6b1612; margin-bottom:20px;
+        }
+        .wb_02 .termsBx a:hover {background:#a8312b;}
         .wb_02 .termsBx li {display:inline; float:left; margin-right:10px}
         .wb_02 .termsBx:after {content:''; display:block; clear:both} 
-        .wb_02 .termsBx01 {margin-bottom:20px}
+        .wb_02 .termsBx01 {margin:30px 0}
         .wb_02 .termsBx01 ul {height:100px; overflow-y:scroll; border:1px solid #999; margin-bottom:10px; font-size:12px; color:#666; padding:0 10px}
-        .wb_02 .request .btn {clear:both; border-top:1px solid #f297b8;}
-        .wb_02 .request .btn a {width:100px; display:block; text-align:center; background:#f297b8; color:#fff; margin:30px auto 0; height:40px; line-height:40px}
+        .wb_02 .request .btn {clear:both; border-top:1px solid #c14842;}
+        .wb_02 .request .btn a {width:100px; display:block; text-align:center; background:#c14842; color:#fff; margin:30px auto 0; height:40px; line-height:40px}
         .wb_02 .request .btn a:hover {background:#000;}
-        .wb_02 .request:after {content:''; display:block; clear:both}       
+        .wb_02 .request:after {content:''; display:block; clear:both}  
+        input[type=file]:focus {border:1px solid #1087ef}    
                	
     </style>
 
@@ -102,8 +107,8 @@
             </div>
 		</div>
 
-   		<div class="wbCommon NSK wb_02">         
-
+   		<div class="wbCommon NSK wb_02">            
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02.jpg" title=" " /></div>
             <!--
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
@@ -141,6 +146,14 @@
                         </ul>
                     </div>
 
+                    <div class="termsBx">
+                        <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" target="_blank" class="file">참여신청 양식 파일 받기 ↓</a> 
+
+                        <p>참여신청 양식 등록</p>
+                        <input type="file" name="ATTACH_FILE" id="ATTACH_FILE" style="width:300px"><br>
+                        • 참여신청 양식 파일 2MB까지 업로드 가능하며, 이미지파일 (jpg, png, gif 등) 또는 PDF파일 형태로 첨부
+                    </div>
+
                     <div class="termsBx01">
                         <p>개인정보 수집/이용 동의 안내</p>
                         <ul>
@@ -176,15 +189,11 @@
                         <a href="#none" onclick="javascript:fn_submit();">신청하기</a>
                     </div>
                 </div>
-            </form>
+            </form>          
             -->
-            <!--div class="mt100 mb100"><img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02_end.jpg" title="신청마감" /></div-->
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02.jpg" title=" " /></div>
-        </div>
-        
-        <div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02_01.jpg" title=" " /></div>
+        </div>  
 
-        </div>
         
     </div>
     <!-- End Container -->   

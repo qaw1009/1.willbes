@@ -189,7 +189,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property WelcomePackModel $welcomePackModel                             Welcompack Model Class
  * @property ContractModel $contractModel                                   ContractModel Model Class
  * @property GatewayModel $gatewayModel                                     GatewayModel Model Class
- * @property GatewayModel $gatewayStatModel                                     GatewayStatModel Model Class
+ * @property GatewayStatModel $gatewayStatModel                                     GatewayStatModel Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class

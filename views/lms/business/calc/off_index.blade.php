@@ -155,28 +155,28 @@
                     {'data' : 'StudyStartDate'},
                     {'data' : 'StudyEndDate'},
                     {'data' : 'tRemainPayCnt', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data == null ? 0 : data);
                     }},
                     {'data' : 'tDivisionPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data == null ? 0 : data);
                     }},
                     {'data' : 'tDivisionPgFeePrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data == null ? 0 : data);
                     }},
                     {'data' : 'tDivisionRefundPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data == null ? 0 : data);
                     }},
                     {'data' : 'tDivisionRemainPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data == null ? 0 : data);
                     }},
                     {'data' : 'tDivisionCalcPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data == null ? 0 : data);
                     }},
                     {'data' : 'tDivisionIncomeTax', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data == null ? 0 : data);
                     }},
                     {'data' : 'tDivisionResidentTax', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data == null ? 0 : data);
                     }},
                     {'data' : 'tFinalCalcPrice', 'render' : function(data, type, row, meta) {
                         return '<a class="blue bold">' + addComma(data) + '</a>';

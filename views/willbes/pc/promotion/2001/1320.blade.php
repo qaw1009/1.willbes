@@ -55,8 +55,8 @@
 
     <div class="evtContent NGR" id="evtContainer">  
         <div class="evtCtnsBox top_bg">  
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1320_top.jpg" alt="원유철태진 한국사" usemap="#Map1301a" border="0">
-            <map name="Map1301a" id="Map1301a">
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1320_top.jpg" alt="원유철 한국사" usemap="#Map1322a" border="0">
+            <map name="Map1322a" id="Map1322a">
                 <area shape="rect" coords="316,767,804,829" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청"/>
             </map>
             <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2019/07/1320_top_img01.png" alt="수 많은 합격생이 증명"></span>
@@ -82,9 +82,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1320_03.jpg" alt="실전 모의고사"> 
         </div>
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1320_04.jpg" alt="수강신청" usemap="#Map1301b" border="0">
-            <map name="Map1301b" id="Map1301b">
-                <area shape="rect" coords="123,851,990,950" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1320_04.jpg" alt="수강신청" usemap="#Map1322b" border="0">
+            <map name="Map1322b" id="Map1322b">
+                <area shape="rect" coords="124,753,991,852" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
             </map> 
             <div class="check">
                 <label>

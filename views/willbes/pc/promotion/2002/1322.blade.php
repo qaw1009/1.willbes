@@ -118,7 +118,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02_01.jpg" title=" " />
         </div>
 
-        
+        <!--
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
@@ -199,7 +199,7 @@
                     </div>
                 </div>
             </form>          
-            
+            -->
 
         
     </div>

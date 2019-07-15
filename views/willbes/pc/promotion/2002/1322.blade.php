@@ -84,7 +84,7 @@
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_01_02.png" usemap="#Map1322A" title=" " border="0" />
                 <map name="Map1322A" id="Map1322A">
-                    <area shape="rect" coords="309,153,812,233" href="https://www.youtube.com/playlist?list=PLl65lsiDN8NO1mrd18tE6fd_QKQ-ovSbQ" target="_blank" alt="더 많은 영상 보러가기" />
+                    <area shape="rect" coords="309,153,812,233" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/search?query=%ED%95%A9%EA%B2%A9%EC%9E%90%EC%9D%98+%EB%B0%A4" target="_blank" alt="더 많은 영상 보러가기" />
                 </map>
             </div>
             <div class="slide_con">

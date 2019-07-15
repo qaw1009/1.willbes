@@ -155,31 +155,31 @@
                     {'data' : 'StudyStartDate'},
                     {'data' : 'StudyEndDate'},
                     {'data' : 'tRemainPayCnt', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionPgFeePrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionRefundPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionRemainPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionCalcPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionIncomeTax', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionResidentTax', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tFinalCalcPrice', 'render' : function(data, type, row, meta) {
-                        return '<a class="blue bold">' + addComma(data) + '</a>';
+                        return '<a class="blue bold">' + (data == null ? '0' : addComma(data)) + '</a>';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prod-code="' + row.ProdCode + '" data-prod-code-sub="' + row.ProdCodeSub + '">상세보기</button>';

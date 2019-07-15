@@ -24,6 +24,10 @@
     position:absolute; width:1000px; left:50%; top:920px; margin-left:-500px; z-index:1;font-size:14px;text-align:center;line-height:1.5;
     letter-spacing:-1px;
 }
+.check2{
+    position:absolute; width:1000px; left:43%; top:985px; margin-left:-500px; z-index:1;font-size:14px;text-align:center;line-height:1.5;
+    letter-spacing:-1px;
+}
 
 .top_bg span {position:absolute; z-index:5;}
 .top_bg .img03 {width:520px; top:380px; left:50%; margin-left:-500px; animation:img3 0.5s ease-in;-webkit-animation:img3 0.5s ease-in;}
@@ -40,6 +44,11 @@
 .evtCtnsBox .check input {border: 2px solid #000;margin-right: 8px;height: 17px; width: 17px;} 
 .evtCtnsBox .check a {display: inline-block; padding:5px 20px; color: #111528;background: #d7d7d7;border-radius:20px; margin-left:20px}
 .evtCtnsBox .check a:hover {color: #fff;background: #000;}
+
+.check2 label {color:#000;font-size:16px;}
+.check2 input {border: 2px solid #000;margin-right: 8px;height: 17px; width: 17px;} 
+.check2 a {display: inline-block; padding:5px 20px; color: #111528;background: #fff;border-radius:20px; margin-left:20px}
+.check2 a:hover {color: #fff;background: #000;}
 
 .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/07/1316_top_bg.jpg) repeat center top;}
 .evt02 {background:#0d40b6;}
@@ -83,8 +92,18 @@
         </div>
 
         <div class="evtCtnsBox evt05">
-          <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/07/1316_04.jpg" alt="수강신청" ></a>
-          </div>
+        <img src="https://static.willbes.net/public/images/promotion/2019/07/1316_04.jpg" alt="수강신청" usemap="#Map1316b" border="0" >
+            <map name="Map1316b" id="Map1316b">
+                <area shape="rect" coords="145,769,711,903" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청 이용약관동의"/>
+            </map>
+            <div class="check2">
+                <label>
+                    <input type="checkbox" name="ischk" value="Y">
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.   
+                </label>
+                <a href="#careful">이용안내확인하기 ↓</a>
+            </div>   
+        </div>
         <div class="evtCtnsBox evt06" id="careful">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1316_05.jpg" alt="이용안내 및 유의사항"> 
         </div>    

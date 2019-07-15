@@ -179,7 +179,7 @@
                         return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tFinalCalcPrice', 'render' : function(data, type, row, meta) {
-                        return '<a class="blue bold">' + addComma(data) + '</a>';
+                        return '<a class="blue bold">' + (data == null ? '0' : addComma(data)) + '</a>';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prod-code="' + row.ProdCode + '" data-prod-code-sub="' + row.ProdCodeSub + '">상세보기</button>';

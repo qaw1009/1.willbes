@@ -37,34 +37,36 @@
         .slide_con p.leftBtn {left:-40px; top:46%; width:80px; height:80px;}
         .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}
 
-        .wb_02 {background:#fae8d8 url(https://static.willbes.net/public/images/promotion/2019/07/1322_02_bg.jpg) no-repeat center top; line-height:1.4} 
-        
-        .wb_02 .request {
-            width:1000px; text-align:left; background:#fff; padding:50px; font-size:14px; margin:0 auto 100px; 
-            box-shadow: 10px 10px 10px rgba(010,0,0,.1);
+        .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2019/07/1322_02_bg.jpg) no-repeat center top; position:relative;}
+        .wb_02 a {position: absolute; left:50%; margin-left:-300px; display:block; width:600px; bottom:100px; z-index:5;
+            font-size:30px; color:#fff; border:3px solid #fff; border-radius:50px; text-align:center; height:60px; line-height:60px;
         }
-        .wb_02 .request h3 {font-size:30px; padding-bottom:10px; margin-bottom:30px; border-bottom:2px solid #c14842}
-        .wb_02 .request h3 span {color:#c14842;}
-        .wb_02 .request p {font-size:16px; margin-bottom:10px; font-weight:bold}
-        .wb_02 .request li {margin-bottom:10px}
-        .wb_02 .request .tit { display:inline-block; width:70px;}  
-        .wb_02 .request input[type="text"] {width:160px; height:26px; border:1px solid #999; padding:0 10px; color:#666}
-        .wb_02 .request input[type="checkbox"] {width:20px; height:20px; border:1px solid #999;}  
-        .wb_02 .termsBx {margin-bottom:20px}
-        .wb_02 .termsBx a {display:block; width:250px; border-radius:4px; color:#fff; background:#c14842; text-align:center; height:50px; line-height:50px;
+        .wb_02_01 {background:url(https://static.willbes.net/public/images/promotion/2019/07/1322_02_bg2.jpg) no-repeat center top; line-height:1.4} 
+        .request {
+            width:1000px; text-align:left; background:#fff; padding:50px; font-size:14px; margin:150px auto; 
+            box-shadow: 10px 10px 10px rgba(010,0,0,.1); line-height:1.4; border:1px solid #333;
+        }
+        .request h3 {font-size:30px; padding-bottom:10px; margin-bottom:30px; border-bottom:2px solid #c14842}
+        .request h3 span {color:#c14842;}
+        .request p {font-size:16px; margin-bottom:10px; font-weight:bold}
+        .request li {margin-bottom:10px}
+        .request .tit { display:inline-block; width:70px;}  
+        .request input[type="text"] {width:160px; height:26px; border:1px solid #999; padding:0 10px; color:#666}
+        .request input[type="checkbox"] {width:20px; height:20px; border:1px solid #999;}  
+        .termsBx {margin-bottom:20px}
+        .termsBx a {display:block; width:250px; border-radius:4px; color:#fff; background:#c14842; text-align:center; height:50px; line-height:50px;
             font-size:18px; border-bottom:5px solid #6b1612; margin-bottom:20px;
         }
-        .wb_02 .termsBx a:hover {background:#a8312b;}
-        .wb_02 .termsBx li {display:inline; float:left; margin-right:10px}
-        .wb_02 .termsBx:after {content:''; display:block; clear:both} 
-        .wb_02 .termsBx01 {margin:30px 0}
-        .wb_02 .termsBx01 ul {height:100px; overflow-y:scroll; border:1px solid #999; margin-bottom:10px; font-size:12px; color:#666; padding:0 10px}
-        .wb_02 .request .btn {clear:both; border-top:1px solid #c14842;}
-        .wb_02 .request .btn a {width:100px; display:block; text-align:center; background:#c14842; color:#fff; margin:30px auto 0; height:40px; line-height:40px}
-        .wb_02 .request .btn a:hover {background:#000;}
-        .wb_02 .request:after {content:''; display:block; clear:both}  
-        input[type=file]:focus {border:1px solid #1087ef}    
-               	
+        .termsBx a:hover {background:#a8312b;}
+        .termsBx li {display:inline; float:left; margin-right:10px}
+        .termsBx:after {content:''; display:block; clear:both} 
+        .termsBx01 {margin:30px 0}
+        .termsBx01 ul {height:100px; overflow-y:scroll; border:1px solid #999; margin-bottom:10px; font-size:12px; color:#666; padding:0 10px}
+        .request .btn {clear:both; border-top:1px solid #c14842;}
+        .request .btn a {width:100px; display:block; text-align:center; background:#c14842; color:#fff; margin:30px auto 0; height:40px; line-height:40px}
+        .request .btn a:hover {background:#000;}
+        .request:after {content:''; display:block; clear:both}  
+        input[type=file]:focus {border:1px solid #1087ef}                   	
     </style>
 
 
@@ -107,9 +109,16 @@
             </div>
 		</div>
 
-   		<div class="wbCommon NSK wb_02">            
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02.jpg" title=" " /></div>
-            <!--
+   		<div class="wbCommon wb_02">            
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02.jpg" title=" " />
+            <a href="#none">coming soon</a>    
+        </div>
+
+        <div class="wbCommon wb_02_01">        
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02_01.jpg" title=" " />
+        </div>
+
+        
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
@@ -123,7 +132,7 @@
                 <input type="hidden" name="register_type" value="promotion"/>
 
                 
-                <div class="request" id="request">
+                <div class="request NSK" id="request">
                     <h3>윌비스 신광은경찰 <span class="strong">합격자의 밤</span> 신청 </h3>
                     <div class="termsBx">
                         <p>수강생 정보</p>
@@ -190,9 +199,7 @@
                     </div>
                 </div>
             </form>          
-            -->
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02_01.jpg" title=" " /></div>
-        </div>  
+            
 
         
     </div>

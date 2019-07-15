@@ -155,28 +155,28 @@
                     {'data' : 'StudyStartDate'},
                     {'data' : 'StudyEndDate'},
                     {'data' : 'tRemainPayCnt', 'render' : function(data, type, row, meta) {
-                        return addComma(data == null ? 0 : data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data == null ? 0 : data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionPgFeePrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data == null ? 0 : data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionRefundPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data == null ? 0 : data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionRemainPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data == null ? 0 : data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionCalcPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data == null ? 0 : data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionIncomeTax', 'render' : function(data, type, row, meta) {
-                        return addComma(data == null ? 0 : data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionResidentTax', 'render' : function(data, type, row, meta) {
-                        return addComma(data == null ? 0 : data);
+                        return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tFinalCalcPrice', 'render' : function(data, type, row, meta) {
                         return '<a class="blue bold">' + addComma(data) + '</a>';

@@ -75,10 +75,10 @@
                     <th rowspan="2" class="valign-middle" style="width: 80px;">종강일</th>
                     <th rowspan="2" class="valign-middle">인원</th>
                     <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">환불금액(E)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">순매출(F)<br/>(C-D-E)</th>
-                    <th rowspan="2" class="valign-middle">정산금액(H)<br/>F*정산율</th>
+                    <th rowspan="2" class="valign-middle">환불금액(D)<br/>*안분율 적용</th>
+                    <th rowspan="2" class="valign-middle">순매출(F)<br/>(C-D)</th>
+                    <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*안분율 적용</th>
+                    <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-D-E)*정산율</th>
                     <th colspan="2">세액공제</th>
                     <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
                     <th rowspan="2" class="valign-middle" style="width: 70px;">상세정보</th>
@@ -96,8 +96,8 @@
                     <th id="sumB" class="sumTh"></th>
                     <th id="sumC" class="sumTh"></th>
                     <th id="sumD" class="sumTh"></th>
-                    <th id="sumE" class="sumTh"></th>
                     <th id="sumF" class="sumTh"></th>
+                    <th id="sumE" class="sumTh"></th>
                     <th id="sumH" class="sumTh"></th>
                     <th id="sumI" class="sumTh"></th>
                     <th id="sumJ" class="sumTh"></th>
@@ -160,13 +160,13 @@
                     {'data' : 'tDivisionPayPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '0' : addComma(data);
                     }},
-                    {'data' : 'tDivisionPgFeePrice', 'render' : function(data, type, row, meta) {
-                        return data == null ? '0' : addComma(data);
-                    }},
                     {'data' : 'tDivisionRefundPrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionRemainPrice', 'render' : function(data, type, row, meta) {
+                        return data == null ? '0' : addComma(data);
+                    }},
+                    {'data' : 'tDivisionPgFeePrice', 'render' : function(data, type, row, meta) {
                         return data == null ? '0' : addComma(data);
                     }},
                     {'data' : 'tDivisionCalcPrice', 'render' : function(data, type, row, meta) {
@@ -192,8 +192,8 @@
                 if (json.sum_data !== null) {
                     $('#sumB').html(addComma(json.sum_data.tRemainPayCnt));
                     $('#sumC').html(addComma(json.sum_data.tDivisionPayPrice));
-                    $('#sumD').html(addComma(json.sum_data.tDivisionPgFeePrice));
-                    $('#sumE').html(addComma(json.sum_data.tDivisionRefundPrice));
+                    $('#sumD').html(addComma(json.sum_data.tDivisionRefundPrice));
+                    $('#sumE').html(addComma(json.sum_data.tDivisionPgFeePrice));
                     $('#sumF').html(addComma(json.sum_data.tDivisionRemainPrice));
                     $('#sumH').html(addComma(json.sum_data.tDivisionCalcPrice));
                     $('#sumI').html(addComma(json.sum_data.tDivisionIncomeTax));

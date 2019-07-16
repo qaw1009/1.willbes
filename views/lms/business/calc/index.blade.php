@@ -7,25 +7,30 @@
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
-                <div class="form-group">
-                    <label class="control-label col-md-1">상품구분</label>
-                    <div class="col-md-11 form-inline">
-                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <div class="radio">
-                        @if($calc_type == 'lecture')
-                            <input type="radio" id="prod_type_1" name="prod_type" class="flat" value="LE" @if($prod_type == 'LE') checked="checked" @endif/> <label for="prod_type_1" class="input-label">단강좌&사용자/운영자패키지(일반형)</label>
-                            <input type="radio" id="prod_type_2" name="prod_type" class="flat" value="AC" @if($prod_type == 'AC') checked="checked" @endif/> <label for="prod_type_2" class="input-label">운영자패키지(선택형)</label>
-                            <input type="radio" id="prod_type_3" name="prod_type" class="flat" value="PP" @if($prod_type == 'PP') checked="checked" @endif/> <label for="prod_type_3" class="input-label">기간제패키지</label>
-                        @else
-                            <input type="radio" id="prod_type_1" name="prod_type" class="flat" value="OL" @if($prod_type == 'OL') checked="checked" @endif/> <label for="prod_type_1" class="input-label">단과반/종합반(일반형)</label>
-                            <input type="radio" id="prod_type_2" name="prod_type" class="flat" value="OP" @if($prod_type == 'OP') checked="checked" @endif/> <label for="prod_type_2" class="input-label">종합반(선택형)</label>
-                        @endif
+                @if($calc_type == 'mockTest')
+                    {{-- 모의고사 --}}
+                    <input type="hidden" name="prod_type" value="{{ $prod_type }}"/>
+                @else
+                    <div class="form-group">
+                        <label class="control-label col-md-1">상품구분</label>
+                        <div class="col-md-11 form-inline">
+                            <div class="radio">
+                            @if($calc_type == 'lecture')
+                                <input type="radio" id="prod_type_1" name="prod_type" class="flat" value="LE" @if($prod_type == 'LE') checked="checked" @endif/> <label for="prod_type_1" class="input-label">단강좌&사용자/운영자패키지(일반형)</label>
+                                <input type="radio" id="prod_type_2" name="prod_type" class="flat" value="AC" @if($prod_type == 'AC') checked="checked" @endif/> <label for="prod_type_2" class="input-label">운영자패키지(선택형)</label>
+                                <input type="radio" id="prod_type_3" name="prod_type" class="flat" value="PP" @if($prod_type == 'PP') checked="checked" @endif/> <label for="prod_type_3" class="input-label">기간제패키지</label>
+                            @else
+                                <input type="radio" id="prod_type_1" name="prod_type" class="flat" value="OL" @if($prod_type == 'OL') checked="checked" @endif/> <label for="prod_type_1" class="input-label">단과반/종합반(일반형)</label>
+                                <input type="radio" id="prod_type_2" name="prod_type" class="flat" value="OP" @if($prod_type == 'OP') checked="checked" @endif/> <label for="prod_type_2" class="input-label">종합반(선택형)</label>
+                            @endif
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 <div class="form-group">
                     <label class="control-label col-md-1">교수검색</label>
                     <div class="col-md-11 form-inline">
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
                             <option value="">교수선택</option>
                             @foreach($arr_professor as $row)
@@ -76,16 +81,16 @@
                 @if($prod_type == 'PP')
                     {{-- 기간제패키지 --}}
                     <th rowspan="2" class="valign-middle">매출금액(C)<br/>*기여도 적용</th>
-                    <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*기여도 적용</th>
-                    <th rowspan="2" class="valign-middle">환불금액(E)<br/>*기여도 적용</th>
+                    <th rowspan="2" class="valign-middle">환불금액(D)<br/>*기여도 적용</th>
+                    <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*기여도 적용</th>
                     <th rowspan="2" class="valign-middle">수강개월수(F1)</th>
-                    <th rowspan="2" class="valign-middle">월안분금액(F)<br/>(C-D-E)/F1</th>
+                    <th rowspan="2" class="valign-middle">월안분금액(F)<br/>(C-E-D)/F1</th>
                     <th rowspan="2" class="valign-middle">당월정산금액(H)<br/>F*정산율</th>
                 @else
                     <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">환불금액(E)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-D-E)*정산율</th>
+                    <th rowspan="2" class="valign-middle">환불금액(D)<br/>*안분율 적용</th>
+                    <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*안분율 적용</th>
+                    <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-E-D)*정산율</th>
                 @endif
                     <th colspan="2">세액공제</th>
                     <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
@@ -157,10 +162,10 @@
                     {'data' : 'tDivisionPayPrice', 'render' : function(data, type, row, meta) {
                         return decimalFormat(data, 8);
                     }},
-                    {'data' : 'tDivisionPgFeePrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'tDivisionRefundPrice', 'render' : function(data, type, row, meta) {
                         return decimalFormat(data, 8);
                     }},
-                    {'data' : 'tDivisionRefundPrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'tDivisionPgFeePrice', 'render' : function(data, type, row, meta) {
                         return decimalFormat(data, 8);
                     }},
                 @if($prod_type == 'PP')
@@ -188,8 +193,8 @@
                         var study_period = (typeof row.StudyPeriodMonth !== 'undefined') ? row.StudyPeriodMonth : '';
                         var btn_html = '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">상세보기</button>';
 
-                        @if($calc_type == 'lecture' && $prod_type != 'PP')
-                            {{-- 온라인강좌이면서 기간제패키지가 아닐 경우 정산엑셀다운로드 버튼 노출 --}}
+                        @if(($calc_type == 'lecture' && $prod_type != 'PP') || $calc_type == 'mockTest')
+                            {{-- 온라인강좌이면서 기간제패키지가 아닐 경우 정산엑셀다운로드 버튼 노출 (모의고사 추가) --}}
                             btn_html += '<button name="btn_calc_excel" class="btn btn-xs btn-' + (row.IsCalcDown === 'Y' ? 'danger' : 'primary') + ' mb-0 ml-5 btn-calc-excel" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">정산엑셀다운로드</button>';
                         @endif
 
@@ -202,8 +207,8 @@
             $datatable.on('xhr.dt', function(e, settings, json) {
                 if (json.sum_data !== null) {
                     $('#sumC').html(decimalFormat(json.sum_data.tDivisionPayPrice, 8));
-                    $('#sumD').html(decimalFormat(json.sum_data.tDivisionPgFeePrice, 8));
-                    $('#sumE').html(decimalFormat(json.sum_data.tDivisionRefundPrice, 8));
+                    $('#sumD').html(decimalFormat(json.sum_data.tDivisionRefundPrice, 8));
+                    $('#sumE').html(decimalFormat(json.sum_data.tDivisionPgFeePrice, 8));
                     $('#sumH').html(decimalFormat(json.sum_data.tDivisionCalcPrice, 8));
                     $('#sumI').html(decimalFormat(json.sum_data.tDivisionIncomeTax, 8));
                     $('#sumJ').html(decimalFormat(json.sum_data.tDivisionResidentTax, 8));

@@ -334,6 +334,12 @@ class BasePromotion extends \app\controllers\FrontController
             show_alert('이벤트 조회에 실패했습니다.', '');
         }
 
+        // 등록파일 데이터 조회
+        $list_event_file = $this->eventFModel->listEventForFile($arr_base['data']['ElIdx']);
+        if (empty($list_event_file) === false) {
+            $arr_base['arr_file'] = $list_event_file[0];
+        }
+
         $this->load->view('willbes/pc/promotion/popup/' . $arr_base['promotion_code'], [
             'arr_base' => $arr_base
         ], false);

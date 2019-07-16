@@ -63,6 +63,7 @@
                 <th>이메일</th>
                 <th>주소</th>
                 <th>추가데이터</th>
+                <th>첨부파일</th>
                 <th>신청일</th>
                 <th class="rowspan">신청특강/설명회</th>
                 <th>총신청수</th>
@@ -114,6 +115,9 @@
                         return row.Addr1 + row.Addr2 + ' ('+ row.ZipCode +')';
                     }},
                 {'data' : 'EtcValue'},
+                {'data' : 'FileRealName', 'render' : function(data, type, row, meta) {
+                        return '<a href="javascript:void(0);" class="file-register-download" data-file-path="'+encodeURIComponent(row.FileFullPath)+'" data-file-name="'+encodeURIComponent(row.FileRealName)+'" target="_blank">['+row.FileRealName+']</a>';
+                    }},
                 {'data' : 'RegDatm'},
                 {'data' : 'RegisterName'},
                 {'data' : 'registerCnt'}
@@ -164,6 +168,11 @@
         $('.btn-excel-register').on('click', function(event) {
             event.preventDefault();
             formCreateSubmit('{{ site_url('/site/eventLecture/registerExcel/'.$el_idx) }}', $search_register_form.serializeArray(), 'POST');
+        });
+
+        $list_regitster_table.on('click', '.file-register-download', function() {
+            var _url = '{{ site_url("/site/eventLecture/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+            window.open(_url, '_blank');
         });
     });
 </script>

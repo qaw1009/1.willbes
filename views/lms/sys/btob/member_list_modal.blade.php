@@ -22,11 +22,18 @@
         </div>
     </form>
 
-    <form class="form-horizontal" id="_search_modal_form" name="_search_modal_form" method="POST" >
+    <form class="form-horizontal" id="_search_modal_form" name="_search_modal_form" method="POST" onsubmit="return false;">
         <input type="hidden" name="btobidx" id="btobidx" value="{{$btobidx}}"/>
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2" for="search_mem_id">삭제회원보기</label>
-            <input type="checkbox" id="istatus" name="istatus" value="N" /> 삭제회원을 표시합니다.
+            <label><input type="checkbox" id="istatus" name="istatus" value="N" /> 삭제회원을 표시합니다.</label>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="control-label col-md-2">회원검색</label>
+            <div class="col-md-4 item pl-0">
+                <input type="text" class="form-control" id="search_value" name="search_value">
+            </div>
+            <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
         </div>
     </form>
     <div class="row mt-20 mb-20">
@@ -64,6 +71,10 @@
 
         $(document).ready(function() {
             $('#istatus').on('change', function(){
+                $_datatable.draw();
+            });
+
+            $_search_modal_form.submit(function (){
                 $_datatable.draw();
             });
 
@@ -127,7 +138,7 @@
                                 return '';
                             }
 
-                            return '<button type="submit" class="btn btn-sm btn-primary border-radius-reset btn-regist bg-red btn_del" data-idx="' + data.bmIdx + '" >삭제</button>';
+                            return '<button type="button" class="btn btn-sm btn-primary border-radius-reset btn-regist bg-red btn_del" data-idx="' + data.bmIdx + '" >삭제</button>';
                         }}
                 ]
             });

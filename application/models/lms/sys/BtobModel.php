@@ -289,15 +289,16 @@ class BtobModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = ' straight_join A.*,B.wAdminName';
+            $column = ' A.*, B.wAdminName AS regAdminName, B2.wAdminName AS delAdminName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $from = '
-                    from '.$this->_table['ip'].' A
-	                        left outer join wbs_sys_admin B on A.RegAdminIdx = B.wAdminIdx
-                    where A.IsStatus=\'Y\' ';
+                    FROM '.$this->_table['ip'].' A
+	                        LEFT JOIN wbs_sys_admin B on A.RegAdminIdx = B.wAdminIdx
+	                        LEFT JOIN wbs_sys_admin B2 on A.UpdAdminIdx = B2.wAdminIdx
+                    WHERE 1=1 ';
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 

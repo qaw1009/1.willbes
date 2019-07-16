@@ -19,17 +19,27 @@
             </div>
             {!! form_errors() !!}
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2" for="BtobName">IP등록
-                </label>
-                <div class="col-md-4 item">
+                <label class="control-label col-md-2">IP등록</label>
+                <div class="col-md-4 item pl-0">
                     <input type="text" id="ApprovalIp" name="ApprovalIp" required="required" class="form-control" title="ip주소" value="">
                 </div>
                 <button type="submit" class="btn btn-sm btn-success">저장</button>
             </div>
         </form>
 
-        <form class="form-horizontal" id="_search_modal_form" name="_search_modal_form" method="POST" >
+        <form class="form-horizontal" id="_search_modal_form" name="_search_modal_form" method="POST"  onsubmit="return false;">
             <input type="hidden" name="btobidx" id="btobidx" value="{{$btobidx}}"/>
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-2" for="search_mem_id">삭제아이피보기</label>
+                <label><input type="checkbox" id="istatus" name="istatus" value="N" /> 삭제아이피를 표시합니다.</label>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-2">아이피검색</label>
+                <div class="col-md-4 item pl-0">
+                    <input type="text" class="form-control" id="search_value" name="search_value">
+                </div>
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+            </div>
         </form>
             <div class="row mt-20 mb-20">
                 <div class="col-md-12 clearfix">
@@ -38,7 +48,8 @@
                         <tr>
                             <th width="60px">No</th>
                             <th width="200px">IP정보</th>
-                            <th >등록일</th>
+                            <th >등록일(삭제일)</th>
+                            <th width="60px">상태</th>
                             <th width="120px">등록자</th>
                             <th width="60px">삭제</th>
                         </tr>
@@ -63,7 +74,14 @@
                 var $_delete_form = $('#_delete_form');
 
                 $(document).ready(function() {
-                    // 과목 등록
+                    $('#istatus').on('change', function(){
+                        $_datatable.draw();
+                    });
+
+                    $_search_modal_form.submit(function (){
+                        $_datatable.draw();
+                    });
+
                     $_regi_form_modal.submit(function() {
                         var _url = '{{ site_url('/sys/btob/btobInfo/storeIp') }}';
 
@@ -94,10 +112,21 @@
                                     return $_datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
                             {'data' : 'ApprovalIp'},
-                            {'data' : 'RegDatm'},
-                            {'data' : 'wAdminName'},
+                            {'data' : null, 'render' : function(data, type, row, meta){
+                                    return (data.IsStatus == 'Y' ? data.RegDatm : data.RegDatm+' (<font color=red>'+data.UpdDatm+'</font>)');
+                                }},
+                            {'data' : null, 'render' : function(data, type, row, meta){
+                                    return (data.IsStatus == 'Y' ? '<font color=blue>정상</font>' : '<font color=red>삭제</font>');
+                                }},
+                            {'data' : null, 'render' : function(data, type, row, meta){
+                                    return (data.IsStatus == 'Y' ? data.regAdminName : data.regAdminName+' (<font color=red>'+data.delAdminName+'</font>)');
+                                }},
                             {'data' : null, 'render' : function(data,type,row,meta) {
-                                    return '<a href="#" class="btn_del" data-idx="' + data.BiIdx + '" ><u>삭제</u></a>';
+                                    if(data.IsStatus == 'N'){
+                                        return '';
+                                    }
+
+                                    return '<button type="button" class="btn btn-sm btn-primary border-radius-reset bg-red btn_del" data-idx="' + data.BiIdx + '" >삭제</button>';
                                 }}
                         ]
                     });

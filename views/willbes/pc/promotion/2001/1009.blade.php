@@ -26,8 +26,8 @@
             right:10px;
             z-index:1;
         }
-        .wb_pop0 {background:url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_00_190701_bg.jpg) no-repeat center top}
-        .wb_pop2 {background:url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_bg.jpg) no-repeat center top}
+
+        .wb_pop2 {background:url(https://static.willbes.net/public/images/promotion/zeropass/1009_top_190701_bg.jpg) no-repeat center top}
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
         .wb_pop4 {background:#313131; padding-bottom:100px}
         .wb_pop4 iframe {width:853px; height:480px}
@@ -181,22 +181,13 @@
             </div>
         </div>
 
-        <!--<div class="evtCtnsBox wb_pop0">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_00_190701.jpg"  alt="열공지원" />            
-        </div>-->
-
-
         <div class="evtCtnsBox wb_pop2" id="main">
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_190701.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
 				<area shape="rect" coords="866,1307,998,1338" href="javascript:certOpen();" alt="수강생인증"/>
-  <area shape="rect" coords="1003,1306,1137,1339" href="javascript:goDesc('tab3')" alt="이용안내"/>
+                <area shape="rect" coords="1003,1306,1137,1339" href="javascript:goDesc('tab3')" alt="이용안내"/>
             </map>
         </div>
-
-      <!--  <div class="evtCtnsBox wb_pop3">
-            <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01.png"  alt="열공지원" />            
-        </div> -->
 
         <div class="evtCtnsBox wb_pop4">
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_01_190603.gif"  alt="열공지원" />

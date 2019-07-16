@@ -1,6 +1,11 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
+
+@php
+    if (date('YmdH') < '2019071616') { show_alert('잘못된 접근 입니다.','close'); }
+@endphp
+
 <!-- Container -->
 <style type="text/css">
     h3 {color:#115087; text-align:center; padding:20px 0; font-size:20px; font-weight:600; border-bottom:2px solid #c14842}}

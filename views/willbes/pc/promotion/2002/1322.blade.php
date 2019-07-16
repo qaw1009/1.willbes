@@ -110,10 +110,11 @@
 
    		<div class="wbCommon wb_02">            
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02.jpg" title=" " />
-            {{--<a href="#none">coming soon</a> --}}
-
-            {{--신청하기 팝업 19일 17시 노출--}}
-            <a href="javascript:popup();">합격자의 밤 신청하기 ></a>
+            @if (date('YmdH') < '2019071616')
+                <a href="javascript:;">coming soon</a>
+            @else
+                <a href="javascript:;" onclick="javascript:popup();">합격자의 밤 신청하기 ></a>
+            @endif
         </div>
 
         <div class="wbCommon wb_02_01">        

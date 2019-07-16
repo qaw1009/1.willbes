@@ -112,8 +112,10 @@
    		<div class="wbCommon wb_02">            
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02.jpg" title=" " />
             <a href="#none">coming soon</a> 
-            {{--신청하기 팝업--}}   
-            <a href="#none">coming soon</a> 
+
+            {{--신청하기 팝업 19일 17시 노출   
+            <a href="#none">합격자의 밤 신청하기 ></a> 
+            --}}
         </div>
 
         <div class="wbCommon wb_02_01">        

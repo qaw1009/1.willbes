@@ -706,7 +706,7 @@ class EventLectureModel extends WB_Model
         } else {
             $column = '
             A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.EtcValue, A.RegDatm,
-            A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, D.registerCnt,
+            A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, D.registerCnt, A.FileFullPath, A.FileRealName,
             O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode
             ';
 

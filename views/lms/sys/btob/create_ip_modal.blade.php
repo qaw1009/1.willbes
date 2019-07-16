@@ -31,7 +31,7 @@
             <input type="hidden" name="btobidx" id="btobidx" value="{{$btobidx}}"/>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="search_mem_id">삭제아이피보기</label>
-                <label><input type="checkbox" id="istatus" name="istatus" value="N" /> 삭제아이피를 표시합니다.</label>
+                <label><input type="checkbox" id="istatus" name="istatus" value="N" /> 삭제아아피만 표시합니다.</label>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2">아이피검색</label>

@@ -123,7 +123,7 @@
             }
 
             $(document).on('click', '.cont_idx', function () {
-                alert($(this).data('idx'));
+                //alert($(this).data('idx'));
                 $('.cont_idx').setLayer({
                     'url' : '{{ site_url('/site/marketing/gatewayStat/detail/') }}' + $(this).data('idx'),
                     'width' : 1200,

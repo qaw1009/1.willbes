@@ -3,12 +3,12 @@
 @section('content')
 
 @php
-    if (date('YmdH') < '2019071917') { show_alert('잘못된 접근 입니다.','close'); }
+    if (date('YmdH') < '2019051917') { show_alert('잘못된 접근 입니다.','close'); }
 @endphp
 
 <!-- Container -->
 <style type="text/css">
-    h3 {color:#115087; text-align:center; padding:20px 0; font-size:20px; font-weight:600; border-bottom:2px solid #c14842}}
+    h3 {color:#115087; text-align:center; padding:20px 0; font-size:20px; font-weight:600; border-bottom:2px solid #c14842}
     span {vertical-align:auto}
 	select {height:28px;line-height:28px}
 	input[type=text],

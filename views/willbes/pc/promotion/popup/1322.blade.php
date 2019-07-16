@@ -90,7 +90,7 @@
 
                     <p class="tit">참여신청 양식 등록</p>
                     <input type="file" name="attach_file" id="attach_file" style="width:300px"><br>
-                    <div class="mt10">• 참여신청 양식 파일 2MB까지 업로드 가능하며, 이미지파일 (jpg, png, gif 등) 또는 PDF파일 형태로 첨부</div>
+                    <div class="mt10">• 참여신청 양식 파일 2MB까지 업로드 가능합니다.</div>
                 </div>
 
                 <div class="termsBx01">

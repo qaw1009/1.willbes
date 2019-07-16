@@ -7,6 +7,6 @@ class OffLecture extends BaseCalc
 {
     public function __construct()
     {
-        parent::__construct('offLecture', '학원강좌');
+        parent::__construct('offLecture', '학원강좌', 'OL', 'Y');
     }
 }

@@ -270,6 +270,7 @@ class Event extends \app\controllers\FrontController
         $target_param_names = $this->_reqP('target_param_names');
         $target_params_item = $this->_reqP('target_params_item');
         $register_type = ($this->_reqP('register_type') == 'promotion') ? 'promotion' : 'event';
+        $file_chk = $this->_reqP('file_chk');   //첨부파일 체크 유무
 
         $rules = [
             ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
@@ -281,6 +282,12 @@ class Event extends \app\controllers\FrontController
         if ($register_type == 'event') {
             $rules = array_merge($rules, [
                 ['field' => 'register_email', 'label' => '이메일', 'rules' => 'trim|required|max_length[30]']
+            ]);
+        }
+
+        if ($file_chk == 'Y') {
+            $rules = array_merge($rules, [
+                ['field' => 'attach_file', 'label' => '첨부파일', 'rules' => 'callback_validateFileRequired[attach_file]']
             ]);
         }
 

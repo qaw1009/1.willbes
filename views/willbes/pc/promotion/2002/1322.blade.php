@@ -110,6 +110,7 @@
 
    		<div class="wbCommon wb_02">            
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02.jpg" title=" " />
+            {{--@if (date('YmdH') < '2019071917')--}}
             @if (date('YmdH') < '2019071616')
                 <a href="javascript:;">coming soon</a>
             @else

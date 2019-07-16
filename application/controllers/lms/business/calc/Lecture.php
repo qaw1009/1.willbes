@@ -7,6 +7,6 @@ class Lecture extends BaseCalc
 {
     public function __construct()
     {
-        parent::__construct('lecture', '온라인강좌');
+        parent::__construct('lecture', '온라인강좌', 'LE', 'N');
     }
 }

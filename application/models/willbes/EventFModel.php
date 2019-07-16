@@ -32,6 +32,14 @@ class EventFModel extends WB_Model
         'wbs_cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'wbs_cms_lecture' => 'wbs_cms_lecture'
     ];
+
+    //등록파일 rule 설정
+    private $_upload_file_rule = [
+        'allowed_types' => 'jpg|gif|png|pdf|hwp',
+        'overwrite' => 'false',
+        'max_size' => 2560
+    ];
+
     public $_request_type = [
         '1' => '설명회',
         '2' => '특강',
@@ -325,6 +333,27 @@ class EventFModel extends WB_Model
                 $register_member_info = $this->getRegisterMember($arr_condition);
                 if (count($register_member_info) > 0) {
                     throw new \Exception('등록된 신청자 정보가 있습니다.');
+                }
+
+                //이미지 등록
+                if (empty($_FILES['attach_file']) === false) {
+                    $sum_size_mb = round($_FILES['attach_file']['size'] / 1024);
+                    if ($sum_size_mb > $this->_upload_file_rule['max_size']) {
+                        throw new \Exception('첨부파일 최대 2MB까지 등록 가능합니다.');
+                    }
+
+                    $this->load->library('upload');
+                    $upload_dir = config_item('upload_prefix_dir') . '/event/member/' . date('Y') . '/' . date('md');
+                    $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_dir
+                        ,'allowed_types:'.$this->_upload_file_rule['allowed_types'].',overwrite:'.$this->_upload_file_rule['overwrite']);
+                    if (is_array($uploaded) === false) {
+                        throw new \Exception($uploaded);
+                    }
+
+                    if (count($uploaded) > 0) {
+                        $input_register_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/' . $uploaded[0]['orig_name'];
+                        $input_register_data['FileRealName'] = $uploaded[0]['client_name'];
+                    }
                 }
 
                 if ($this->_addEventRegisterMember($input_register_data) !== true) {
@@ -919,5 +948,15 @@ class EventFModel extends WB_Model
         } else {
             return true;
         }
+    }
+
+    /**
+     * 파일명 생성
+     * @return string
+     */
+    private function _getAttachImgNames()
+    {
+        $attach_file_names = date("YmdHis").'-'.rand(100,999);
+        return $attach_file_names;
     }
 }

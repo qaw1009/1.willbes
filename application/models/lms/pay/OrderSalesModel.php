@@ -442,7 +442,7 @@ class OrderSalesModel extends BaseOrderModel
                 , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
                 , null as RealPayPrice
                 , null as CardPayPrice
-                , CompleteDatm
+                , O.CompleteDatm
                 , OPR.RefundPrice
                 , OPR.CardRefundPrice
                 , OPR.RefundDatm

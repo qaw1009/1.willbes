@@ -33,6 +33,7 @@ class OrderCalcModel extends BaseOrderModel
             $in_column = 'if(O.CompleteDatm between ? and ?, if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", OSP.RealPayPrice, OP.RealPayPrice), 0) as RealPayPrice
                 , if(O.CompleteDatm between ? and ?, if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", OSP.RealPayPrice, OP.CardPayPrice), 0) as CardPayPrice
                 , if(OPR.RefundDatm between ? and ?, if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", OSP.RefundPrice, OPR.RefundPrice), 0) as RefundPrice
+                , if(OPR.RefundDatm between ? and ?, if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", OSP.RefundPrice, OPR.CardRefundPrice), 0) as CardRefundPrice
                 , ifnull(SPL.SubjectIdx, PL.SubjectIdx) as SubjectIdx
                 , PD.ProfIdx, PD.ProdDivisionRate, (PD.ProdCalcRate / 100) as ProdCalcRate, concat(PD.ProdCalcRate, "%") as ProdCalcPerc
                 , json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
@@ -143,12 +144,12 @@ class OrderCalcModel extends BaseOrderModel
             $query = $raw_query;
         } else {
             $raw_binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date,
-                $search_start_date, $search_end_date, $search_start_date, $search_end_date];
+                $search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date];
 
             $query = 'select ' . $column . '
                 from (
                     select RD.*
-                        , TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0) as DivisionPgFeePrice #D	
+                        , TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0) as DivisionPgFeePrice #E	
                         , TRUNCATE((RD.DivisionPayPrice - TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0)) * RD.ProdCalcRate, 0) as DivisionCalcPayPrice #H1
                         , TRUNCATE(RD.DivisionRefundPrice * RD.ProdCalcRate, 0) as DivisionCalcRefundPrice #H2
                         , (TRUNCATE((RD.DivisionPayPrice - TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0)) * RD.ProdCalcRate, 0) 
@@ -157,8 +158,8 @@ class OrderCalcModel extends BaseOrderModel
                         select RR.*
                             , (RR.RealPayPrice - RR.RefundPrice) as RemainPayPrice
                             , TRUNCATE(RR.RealPayPrice * RR.ProdDivisionRate, 0) as DivisionPayPrice #C
-                            , TRUNCATE(RR.RefundPrice * RR.ProdDivisionRate, 0) as DivisionRefundPrice #E
-                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #D1			 
+                            , TRUNCATE(RR.RefundPrice * RR.ProdDivisionRate, 0) as DivisionRefundPrice #D
+                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, (RR.CardPayPrice - RR.CardRefundPrice) * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #E1			 
                         from ('
                             . $raw_query . '
                         ) as RR				
@@ -210,9 +211,9 @@ class OrderCalcModel extends BaseOrderModel
 
         // 상세보기 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
-                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusName, LgCateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
-                , ProdCode, ProdName, CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
+            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
+                , PgFee, PgFeePrice, PayStatusName, LgCateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
+                , ProdCode, ProdName, CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice
                 , ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
@@ -243,6 +244,7 @@ class OrderCalcModel extends BaseOrderModel
             $in_column = 'if(O.CompleteDatm between ? and ?, OP.RealPayPrice, 0) as RealPayPrice
 				, if(O.CompleteDatm between ? and ?, OP.CardPayPrice, 0) as CardPayPrice
 				, if(OPR.RefundDatm between ? and ?, OPR.RefundPrice, 0) as RefundPrice
+				, if(OPR.RefundDatm between ? and ?, OPR.CardRefundPrice, 0) as CardRefundPrice
 				, SPL.SubjectIdx
 				, SPD.ProfIdx, (SPD.ProdCalcRate / 100) as ProdCalcRate, concat(SPD.ProdCalcRate, "%") as ProdCalcPerc
 				, (SPS.SalePrice * SPD.ProdDivisionRate) as DivisionSalePrice
@@ -361,14 +363,14 @@ class OrderCalcModel extends BaseOrderModel
             $query = $raw_query;
         } else {
             $raw_binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date,
-                $search_start_date, $search_end_date, $search_start_date, $search_end_date];
+                $search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date];
 
             $query = 'select ' . $column . '
                 from (
                     select RD.*
                         , TRUNCATE(RD.RealPayPrice * RD.ProdDivisionRate, 0) as DivisionPayPrice #C
-                        , TRUNCATE(RD.RefundPrice * RD.ProdDivisionRate, 0) as DivisionRefundPrice #E
-                        , TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0) as DivisionPgFeePrice #D                        
+                        , TRUNCATE(RD.RefundPrice * RD.ProdDivisionRate, 0) as DivisionRefundPrice #D
+                        , TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0) as DivisionPgFeePrice #E                      
                         , TRUNCATE((TRUNCATE(RD.RealPayPrice * RD.ProdDivisionRate, 0) - TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0)) * RD.ProdCalcRate, 0) as DivisionCalcPayPrice #H1                        
                         , TRUNCATE(TRUNCATE(RD.RefundPrice * RD.ProdDivisionRate, 0) * RD.ProdCalcRate, 0) as DivisionCalcRefundPrice #H2
                         , (TRUNCATE((TRUNCATE(RD.RealPayPrice * RD.ProdDivisionRate, 0) - TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0)) * RD.ProdCalcRate, 0)
@@ -377,7 +379,7 @@ class OrderCalcModel extends BaseOrderModel
                         select RR.*
                             , (RR.RealPayPrice - RR.RefundPrice) as RemainPayPrice
                             , ifnull(RR.DivisionSalePrice / RR.TotalSalePrice, 0) as ProdDivisionRate #B
-                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #D1			 
+                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, (RR.CardPayPrice - RR.CardRefundPrice) * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #E1			 
                         from ('
                             . $raw_query . '
                         ) as RR				
@@ -429,9 +431,9 @@ class OrderCalcModel extends BaseOrderModel
 
         // 상세보기 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
-                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusName, LgCateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
-                , ProdCode, ProdName, CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
+            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
+                , PgFee, PgFeePrice, PayStatusName, LgCateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
+                , ProdCode, ProdName, CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice
                 , ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
@@ -466,6 +468,7 @@ class OrderCalcModel extends BaseOrderModel
                 , if(O.CompleteDatm between ? and ?, OP.RealPayPrice, 0) as RealPayPrice
 				, if(O.CompleteDatm between ? and ?, OP.CardPayPrice, 0) as CardPayPrice
 				, if(OPR.RefundDatm between ? and ?, OPR.RefundPrice, 0) as RefundPrice
+				, if(OPR.RefundDatm between ? and ?, OPR.CardRefundPrice, 0) as CardRefundPrice
 				, left(PC.CateCode, 4) as LgCateCode
 				, OPP.ProfIdx, OPP.SubjectIdx
 				, (select count(0) from ' . $this->_table['order_product_prof_subject'] . ' where OrderProdIdx = OP.OrderProdIdx) as ProfSubjectCnt
@@ -576,7 +579,7 @@ class OrderCalcModel extends BaseOrderModel
             $query = 'select ' . $column . ' from (' . $raw_query . ') as RR' . $raw_where;
         } else {
             $raw_binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date,
-                $search_start_date, $search_end_date, $search_start_date, $search_end_date];
+                $search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date];
 
             $query = 'select ' . $column . '
                 from (
@@ -584,8 +587,8 @@ class OrderCalcModel extends BaseOrderModel
                         , concat(RD.ProdContribRate * 100, "%") as ProdContribPerc
                         , concat(RD.ProdCalcRate * 100, "%") as ProdCalcPerc                               
                         , TRUNCATE(RD.RealPayPrice * RD.ProdContribRate, 0) as DivisionPayPrice #C
-                        , TRUNCATE(RD.RefundPrice * RD.ProdContribRate, 0) as DivisionRefundPrice #E
-                        , TRUNCATE(RD.PgFeePrice * RD.ProdContribRate, 0) as DivisionPgFeePrice #D                        
+                        , TRUNCATE(RD.RefundPrice * RD.ProdContribRate, 0) as DivisionRefundPrice #D
+                        , TRUNCATE(RD.PgFeePrice * RD.ProdContribRate, 0) as DivisionPgFeePrice #E                      
                         , TRUNCATE((
                             TRUNCATE(RD.RealPayPrice * RD.ProdContribRate, 0) - 
                             TRUNCATE(RD.RefundPrice * RD.ProdContribRate, 0) - 
@@ -601,7 +604,7 @@ class OrderCalcModel extends BaseOrderModel
                             , (RR.RealPayPrice - RR.RefundPrice) as RemainPayPrice            
                             , if(RR.LgCateCode = "3002", 1 / RR.ProfSubjectCnt, fn_split(RR.ProfCalcData, ":", 1) / 100) as ProdContribRate
                             , (fn_split(RR.ProfCalcData, ":", 2) / 100) as ProdCalcRate
-                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #D1                            		 
+                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, (RR.CardPayPrice - RR.CardRefundPrice) * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #E1                            		 
                         from ('
                             . $raw_query . '
                         ) as RR'
@@ -650,9 +653,9 @@ class OrderCalcModel extends BaseOrderModel
 
         // 상세보기 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
-                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
-                , StudyPeriodMonth, SubjectName, wProfName, ProdContribPerc, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
+            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
+                , PgFee, PgFeePrice, PayStatusName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
+                , StudyPeriodMonth, SubjectName, wProfName, ProdContribPerc, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice
                 , DivisionMonthPrice, ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
@@ -695,7 +698,7 @@ class OrderCalcModel extends BaseOrderModel
 						where A.OrderProdIdx = OP.OrderProdIdx)
 				  , 0), TA.ProdDivisionRate) as ProdDivisionRate 
 				, (TA.ProdCalcRate / 100) as ProdCalcRate, concat(TA.ProdCalcRate, "%") as ProdCalcPerc
-				, OP.RealPayPrice, OP.CardPayPrice, ifnull(OPR.RefundPrice, 0) as RefundPrice
+				, OP.RealPayPrice, OP.CardPayPrice, ifnull(OPR.RefundPrice, 0) as RefundPrice, ifnull(OPR.CardRefundPrice, 0) as CardRefundPrice
 				, O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd
 				, OP.OrderProdIdx, OP.SalePatternCcd, OP.PayStatusCcd
 				, O.CompleteDatm, OPR.RefundDatm
@@ -824,8 +827,8 @@ class OrderCalcModel extends BaseOrderModel
                             , RR.RealPayPrice - RR.RefundPrice as RemainPrice
                             , TRUNCATE(RR.RealPayPrice * RR.ProdDivisionRate, 0) as DivisionPayPrice
                             , TRUNCATE(RR.RefundPrice * RR.ProdDivisionRate, 0) as DivisionRefundPrice
-                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice
-                            , TRUNCATE(TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) * RR.ProdDivisionRate, 0) as DivisionPgFeePrice			 
+                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, (RR.CardPayPrice - RR.CardRefundPrice) * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice
+                            , TRUNCATE(TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, (RR.CardPayPrice - RR.CardRefundPrice) * RR.PgFee, RR.PgFee), 0), 0) * RR.ProdDivisionRate, 0) as DivisionPgFeePrice			 
                         from ('
                             . $raw_query . '
                         ) as RR				
@@ -874,10 +877,10 @@ class OrderCalcModel extends BaseOrderModel
 
         // 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
-                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusCcdName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
-                , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
-                , DivisionRemainPrice, ProdCalcPerc, DivisionCalcPrice';
+            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
+                , PgFee, PgFeePrice, PayStatusCcdName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
+                , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice, DivisionRemainPrice
+                , ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 
@@ -907,6 +910,7 @@ class OrderCalcModel extends BaseOrderModel
             $in_column = 'if(O.CompleteDatm between ? and ?, OP.RealPayPrice, 0) as RealPayPrice
                 , if(O.CompleteDatm between ? and ?, OP.CardPayPrice, 0) as CardPayPrice
                 , if(OPR.RefundDatm between ? and ?, OPR.RefundPrice, 0) as RefundPrice
+                , if(OPR.RefundDatm between ? and ?, OPR.CardRefundPrice, 0) as CardRefundPrice
                 , MRP.SubjectIdx, MP.ProfIdx
                 , ifnull(1 / (select count(0) from ' . $this->_table['mock_register_r_paper'] . ' where MrIdx = MR.MrIdx), 0) as ProdDivisionRate
                 , (select CalcRate 
@@ -1002,12 +1006,12 @@ class OrderCalcModel extends BaseOrderModel
             $query = $raw_query;
         } else {
             $raw_binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date,
-                $search_start_date, $search_end_date, $search_start_date, $search_end_date];
+                $search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date];
 
             $query = 'select ' . $column . '
                 from (
                     select RD.*
-                        , TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0) as DivisionPgFeePrice #D	
+                        , TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0) as DivisionPgFeePrice #E
                         , TRUNCATE((RD.DivisionPayPrice - TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0)) * RD.ProdCalcRate, 0) as DivisionCalcPayPrice #H1
                         , TRUNCATE(RD.DivisionRefundPrice * RD.ProdCalcRate, 0) as DivisionCalcRefundPrice #H2
                         , (TRUNCATE((RD.DivisionPayPrice - TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0)) * RD.ProdCalcRate, 0) 
@@ -1016,8 +1020,8 @@ class OrderCalcModel extends BaseOrderModel
                         select RR.*
                             , (RR.RealPayPrice - RR.RefundPrice) as RemainPayPrice
                             , TRUNCATE(RR.RealPayPrice * RR.ProdDivisionRate, 0) as DivisionPayPrice #C
-                            , TRUNCATE(RR.RefundPrice * RR.ProdDivisionRate, 0) as DivisionRefundPrice #E
-                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #D1	
+                            , TRUNCATE(RR.RefundPrice * RR.ProdDivisionRate, 0) as DivisionRefundPrice #D
+                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, (RR.CardPayPrice - RR.CardRefundPrice) * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #E1	
                             , (RR.ProfCalcData / 100) as ProdCalcRate
                             , concat(RR.ProfCalcData, "%") as ProdCalcPerc                                		 
                         from ('
@@ -1063,9 +1067,9 @@ class OrderCalcModel extends BaseOrderModel
 
         // 상세보기 주문목록 엑셀다운로드
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
-                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusName, LgCateName, ProdCode, ProdName, SubjectName, wProfName
-                , ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice, ProdCalcPerc, DivisionCalcPrice';
+            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
+                , PgFee, PgFeePrice, PayStatusName, LgCateName, ProdCode, ProdName, SubjectName, wProfName
+                , ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice, ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 

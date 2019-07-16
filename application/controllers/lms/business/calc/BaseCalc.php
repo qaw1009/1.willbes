@@ -7,17 +7,21 @@ class BaseCalc extends \app\controllers\BaseController
     protected $helpers = array();
     protected $_calc_type = '';
     protected $_calc_name = '';
-    protected $_methods = ['LE' => 'Lecture', 'AC' => 'AdminPackChoice', 'PP' => 'PeriodPack', 'OL' => 'Lecture', 'OP' => 'AdminPackChoice'];
-    protected $_prod_name = ['LE' => '단강좌&사용자/운영자패키지(일반형)', 'AC' => '운영자패키지(선택형)', 'PP' => '기간제패키지', 'OL' => '단과반/종합반(일반형)', 'OP' => '종합반(선택형)'];
+    protected $_def_prod_type = '';
+    protected $_is_off_site = '';
+    protected $_methods = ['LE' => 'Lecture', 'AC' => 'AdminPackChoice', 'PP' => 'PeriodPack', 'OL' => 'Lecture', 'OP' => 'AdminPackChoice', 'MT' => 'MockTest'];
+    protected $_prod_name = ['LE' => '단강좌&사용자/운영자패키지(일반형)', 'AC' => '운영자패키지(선택형)', 'PP' => '기간제패키지', 'OL' => '단과반/종합반(일반형)', 'OP' => '종합반(선택형)', 'MT' => '모의고사'];
     protected $_group_ccd = [];
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
-    public function __construct($calc_type, $calc_name)
+    public function __construct($calc_type, $calc_name, $def_prod_type, $is_off_site)
     {
         parent::__construct();
 
         $this->_calc_type = $calc_type;
         $this->_calc_name = $calc_name;
+        $this->_def_prod_type = $def_prod_type;
+        $this->_is_off_site = $is_off_site;
         $this->_group_ccd = $this->orderCalcModel->_group_ccd;
     }
 
@@ -28,10 +32,10 @@ class BaseCalc extends \app\controllers\BaseController
     {
         // 상품구분 파라미터 (우선순위 = `prod_type` 파라미터값 > `q` 파라미터값 > `기본값`)
         $prod_type = get_var($this->_reqG('prod_type'), array_get(json_decode(base64_decode($this->_reqG('q')), true), 'prod_type'));
-        $prod_type = get_var($prod_type, ($this->_calc_type == 'lecture' ? 'LE' : 'OL'));
+        $prod_type = get_var($prod_type, $this->_def_prod_type);
 
         // 사이트탭 조회
-        $arr_site_code = get_auth_on_off_site_codes(($this->_calc_type == 'lecture' ? 'N' : 'Y'), true);
+        $arr_site_code = get_auth_on_off_site_codes($this->_is_off_site, true);
         $def_site_code = key($arr_site_code);
 
         // 교수 조회
@@ -70,10 +74,12 @@ class BaseCalc extends \app\controllers\BaseController
             $count = count($list);
             $sum_data = $this->_getTotalSum($list);
 
-            // 온라인강좌 단강좌, 운영자선택형패키지일 경우 엑셀다운로드 로그 조회
-            if ($this->_calc_type == 'lecture' && $prod_type != 'PP') {
+            // 온라인강좌 단강좌, 운영자선택형패키지일 경우 엑셀다운로드 로그 조회 (모의고사 추가)
+            if (($this->_calc_type == 'lecture' && $prod_type != 'PP') || $this->_calc_type == 'mockTest') {
+                $arr_download_type_ccd = ['715040', '715055'];  // 온라인강좌, 모의고사 정산엑셀다운로드 엑셀다운로그 공통코드
                 $arr_log_condition = [
-                    'EQ' => ['a.DownloadTypeCcd' => '715040', 'a.RegAdminIdx' => $this->session->userdata('admin_idx')],
+                    'IN' => ['a.DownloadTypeCcd' => $arr_download_type_ccd],
+                    'EQ' => ['a.RegAdminIdx' => $this->session->userdata('admin_idx')],
                     'LKL' => ['a.DownloadFileName' => '_' . $prod_type . '_' . $search_start_date . '_' . $search_end_date]
                 ];
                 $log_column = 'substring_index(substring_index(DownloadFileName, "_", 3), "_", -2) as wProfSubjectName';    // 엑셀파일명에서 교수명_과목명 추출
@@ -122,17 +128,17 @@ class BaseCalc extends \app\controllers\BaseController
 
         if ($prod_type == 'PP') {
             // 기간제패키지
-            $headers = ['교수명', '과목명', '매출금액(C)', '결제수수료(D)', '환불금액(E)', '수강개월수(F1)', '월안분금액(F)', '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
+            $headers = ['교수명', '과목명', '매출금액(C)', '환불금액(D)', '결제수수료(E)', '수강개월수(F1)', '월안분금액(F)', '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
         } else {
-            $headers = ['교수명', '과목명', '매출금액(C)', '결제수수료(D)', '환불금액(E)', '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
+            $headers = ['교수명', '과목명', '매출금액(C)', '환불금액(D)', '결제수수료(E)', '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
         }
 
         foreach ($list as $idx => $row) {
             $results[$idx]['wProfName'] = $row['wProfName'];
             $results[$idx]['SubjectName'] = $row['SubjectName'];
             $results[$idx]['tDivisionPayPrice'] = number_format($row['tDivisionPayPrice'], 8, '.', '');
-            $results[$idx]['tDivisionPgFeePrice'] = number_format($row['tDivisionPgFeePrice'], 8, '.', '');
             $results[$idx]['tDivisionRefundPrice'] = number_format($row['tDivisionRefundPrice'], 8, '.', '');
+            $results[$idx]['tDivisionPgFeePrice'] = number_format($row['tDivisionPgFeePrice'], 8, '.', '');
 
             if ($prod_type == 'PP') {
                 // 기간제패키지
@@ -169,6 +175,7 @@ class BaseCalc extends \app\controllers\BaseController
         $search_start_date = element('search_start_date', $qs);
         $search_end_date = element('search_end_date', $qs);
         $sum_type = empty($prof_idx) === false ? 'sum' : 'tSum';
+        $arr_code = [];
 
         if (empty($prod_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
@@ -196,42 +203,43 @@ class BaseCalc extends \app\controllers\BaseController
         ]);
 
         // 1차 카테고리 조회
-        $arr_category = $this->categoryModel->getCategoryArray($search_site_code, '', '', 1);
+        $arr_code['arr_category'] = $this->categoryModel->getCategoryArray($search_site_code, '', '', 1);
 
         // 사용하는 코드값 조회
         $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'LearnPattern', 'SalePattern']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
-
-        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제, 관리자유료결제 코드만 필터링
-        $arr_pay_route_ccd = array_filter_keys($codes[$this->_group_ccd['PayRoute']], array_filter_keys($this->orderCalcModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'admin_pay']));
-
-        // 결제상태 공통코드에서 결제완료, 환불완료 코드만 필터링
-        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderCalcModel->_pay_status_ccd, ['paid', 'refund']));
-
-        // 학습형태 공통코드에서 온라인/학원강좌 코드만 필터링
-        if ($this->_calc_type == 'lecture') {
-            $arr_learn_pattern_ccd = array_filter_keys($codes[$this->_group_ccd['LearnPattern']], array_filter_keys($this->orderCalcModel->_learn_pattern_ccd, ['on_lecture', 'userpack_lecture', 'adminpack_lecture']));
-        } else {
-            $arr_learn_pattern_ccd = array_filter_keys($codes[$this->_group_ccd['LearnPattern']], array_filter_keys($this->orderCalcModel->_learn_pattern_ccd, ['off_lecture', 'off_pack_lecture']));
+        foreach ($arr_target_group_ccd as $key => $group_ccd) {
+            $arr_code['arr_' . snake_case($key) . '_ccd'] = $codes[$group_ccd];     // 언더스코어 형태로 변경 (PayChannel => arr_pay_channel_ccd)
         }
 
-        // 판매형태 공통코드에서 일반, 재수강, 수강연장 코드만 필터링
-        $arr_sale_pattern_ccd = array_filter_keys($codes[$this->_group_ccd['SalePattern']], array_filter_keys($this->orderCalcModel->_sale_pattern_ccd, ['normal', 'retake', 'extend']));
+        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제, 관리자유료결제 코드만 필터링
+        $arr_code['arr_pay_route_ccd'] = array_filter_keys($arr_code['arr_pay_route_ccd'], array_filter_keys($this->orderCalcModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'admin_pay']));
 
-        $this->load->view('business/calc/show', [
+        // 결제상태 공통코드에서 결제완료, 환불완료 코드만 필터링
+        $arr_code['arr_pay_status_ccd'] = array_filter_keys($arr_code['arr_pay_status_ccd'], array_filter_keys($this->orderCalcModel->_pay_status_ccd, ['paid', 'refund']));
+
+        // 학습형태 공통코드에서 온라인/학원강좌 코드만 필터링
+        if ($this->_calc_type != 'mockTest') {
+            if ($this->_calc_type == 'lecture') {
+                $arr_code['arr_learn_pattern_ccd'] = array_filter_keys($arr_code['arr_learn_pattern_ccd'], array_filter_keys($this->orderCalcModel->_learn_pattern_ccd, ['on_lecture', 'userpack_lecture', 'adminpack_lecture']));
+            } else {
+                $arr_code['arr_learn_pattern_ccd'] = array_filter_keys($arr_code['arr_learn_pattern_ccd'], array_filter_keys($this->orderCalcModel->_learn_pattern_ccd, ['off_lecture', 'off_pack_lecture']));
+            }
+
+            // 판매형태 공통코드에서 일반, 재수강, 수강연장 코드만 필터링
+            $arr_code['arr_sale_pattern_ccd'] = array_filter_keys($arr_code['arr_sale_pattern_ccd'], array_filter_keys($this->orderCalcModel->_sale_pattern_ccd, ['normal', 'retake', 'extend']));
+        }
+
+        // datatable 강좌정보 colspan 값
+        $arr_code['arr_thead_colspan'] = ['PP' => 7, 'MT' => '6'];
+
+        $this->load->view('business/calc/show', array_merge([
             'calc_type' => $this->_calc_type,
             'calc_name' => $this->_calc_name,
             'prod_name' => $this->_prod_name[$prod_type],
             'arr_input' => $arr_input,
-            'arr_category' => $arr_category,
-            'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],
-            'arr_pay_route_ccd' => $arr_pay_route_ccd,
-            'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
-            'arr_pay_status_ccd' => $arr_pay_status_ccd,
-            'arr_learn_pattern_ccd' => $arr_learn_pattern_ccd,
-            'arr_sale_pattern_ccd' => $arr_sale_pattern_ccd,
             'data' => $data
-        ]);
+        ], $arr_code));
     }
 
     /**
@@ -297,7 +305,7 @@ class BaseCalc extends \app\controllers\BaseController
 
         $results = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, 'excel', $arr_condition);
         $last_query = $this->orderCalcModel->getLastQuery();
-        $file_name = '강사료정산상세리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $file_name = '강사료정산상세리스트_' . $this->session->userdata('admin_idx') . '_' . $prod_type . '_' . date('Y-m-d');
 
         // download log
         $this->load->library('approval');
@@ -307,14 +315,19 @@ class BaseCalc extends \app\controllers\BaseController
 
         if ($prod_type == 'PP') {
             // 기간제패키지
-            $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
+            $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제일', '환불금액(D1)', '환불완료일', '결제수수료율(E2)', '결제수수료(E1)', '결제상태'
                 , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '수강개월수(F1)', '과목', '교수명'
-                , '기여도(B)', '기여도매출(C)', '기여도수수료(D)', '기여도환불(E)', '월안분(F)', '정산율(G)', '정산금액(H)'];
+                , '기여도(B)', '기여도매출(C)', '기여도환불(D)', '기여도수수료(E)', '월안분(F)', '정산율(G)', '정산금액(H)'];
             $numerics = ['RealPayPrice', 'PgFee', 'PgFeePrice', 'RefundPrice', 'StudyPeriodMonth', 'DivisionPayPrice', 'DivisionPgFeePrice', 'DivisionRefundPrice', 'DivisionMonthPrice', 'DivisionCalcPrice'];    // 숫자형 변환 대상 컬럼
+        } elseif ($prod_type == 'MT') {
+            // 모의고사
+            $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제일', '환불금액(D1)', '환불완료일', '결제수수료율(E2)', '결제수수료(E1)', '결제상태'
+                , '직종', '상품코드', '상품명', '과목', '교수명', '안분율(B)', '안분매출(C)', '안분환불(D)', '안분수수료(E)', '정산율(G)', '정산금액(H)'];
+            $numerics = ['RealPayPrice', 'PgFee', 'PgFeePrice', 'RefundPrice', 'DivisionPayPrice', 'DivisionPgFeePrice', 'DivisionRefundPrice', 'DivisionCalcPrice'];    // 숫자형 변환 대상 컬럼
         } else {
-            $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
+            $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제일', '환불금액(D1)', '환불완료일', '결제수수료율(E2)', '결제수수료(E1)', '결제상태'
                 , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '과정', '단강좌코드', '단강좌명', '과목', '교수명'
-                , '안분율(B)', '안분매출(C)', '안분수수료(D)', '안분환불(E)', '정산율(G)', '정산금액(H)'];
+                , '안분율(B)', '안분매출(C)', '안분환불(D)', '안분수수료(E)', '정산율(G)', '정산금액(H)'];
             $numerics = ['RealPayPrice', 'PgFee', 'PgFeePrice', 'RefundPrice', 'DivisionPayPrice', 'DivisionPgFeePrice', 'DivisionRefundPrice', 'DivisionCalcPrice'];    // 숫자형 변환 대상 컬럼
         }
 
@@ -375,6 +388,16 @@ class BaseCalc extends \app\controllers\BaseController
                         'OPP.ProfIdx' => $search_prof_idx,
                         'OPP.SubjectIdx' => $search_subject_idx,
                         //'PL.StudyPeriod' => $search_study_period  // 수강개월수(StudyPeriodMonth)로 대체
+                    ]
+                ];
+                break;
+            case 'MT' :
+                // 모의고사
+                $arr_condition = [
+                    'EQ' => [
+                        'O.SiteCode' => element('search_site_code', $params),
+                        'MP.ProfIdx' => $search_prof_idx,
+                        'MRP.SubjectIdx' => $search_subject_idx
                     ]
                 ];
                 break;
@@ -479,9 +502,9 @@ class BaseCalc extends \app\controllers\BaseController
         // 결제내역, 환불내역으로 데이터 분리
         foreach ($results as $row) {
             $arr_temp = [
-                'LearnPatternCcdName' => $row['LearnPatternCcdName'],
+                'LearnPatternCcdName' => element('LearnPatternCcdName', $row, $this->_calc_name),
                 'MemName' => $row['MemName'],
-                'ProdName' => get_var($row['ProdNameSub'], $row['ProdName'])
+                'ProdName' => get_var(element('ProdNameSub', $row), $row['ProdName'])
             ];
 
             if ($row['RealPayPrice'] > 0) {

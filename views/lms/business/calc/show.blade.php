@@ -24,16 +24,16 @@
                             @if($arr_input['prod_type'] == 'PP')
                                 {{-- 기간제패키지 --}}
                                 <th rowspan="2" class="valign-middle">매출금액(C)<br/>*기여도 적용</th>
-                                <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*기여도 적용</th>
-                                <th rowspan="2" class="valign-middle">환불금액(E)<br/>*기여도 적용</th>
+                                <th rowspan="2" class="valign-middle">환불금액(D)<br/>*기여도 적용</th>
+                                <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*기여도 적용</th>
                                 <th rowspan="2" class="valign-middle">수강개월수(F1)</th>
-                                <th rowspan="2" class="valign-middle">월안분금액(F)<br/>(C-D-E)/F1</th>
+                                <th rowspan="2" class="valign-middle">월안분금액(F)<br/>(C-E-D)/F1</th>
                                 <th rowspan="2" class="valign-middle">당월정산금액(H)<br/>F*정산율</th>
                             @else
                                 <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
-                                <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*안분율 적용</th>
-                                <th rowspan="2" class="valign-middle">환불금액(E)<br/>*안분율 적용</th>
-                                <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-D-E)*정산율</th>
+                                <th rowspan="2" class="valign-middle">환불금액(D)<br/>*안분율 적용</th>
+                                <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*안분율 적용</th>
+                                <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-E-D)*정산율</th>
                             @endif
                                 <th colspan="2">세액공제</th>
                                 <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
@@ -47,8 +47,8 @@
                             <tr>
                                 <td>@if(empty($arr_input['prof_idx']) === false){{ $data['wProfName'] }}({{ $data['SubjectName'] }})@else 합계 @endif</td>
                                 <td>{{ decimal_format($data['tDivisionPayPrice'], 8) }}</td>
-                                <td>{{ decimal_format($data['tDivisionPgFeePrice'], 8) }}</td>
                                 <td>{{ decimal_format($data['tDivisionRefundPrice'], 8) }}</td>
+                                <td>{{ decimal_format($data['tDivisionPgFeePrice'], 8) }}</td>
                             @if($arr_input['prod_type'] == 'PP')
                                 {{-- 기간제패키지 --}}
                                 <td>{{ $data['StudyPeriodMonth'] }}개월</td>
@@ -171,8 +171,8 @@
                 <tr>
                     <th rowspan="2" class="valign-middle">No</th>
                     <th colspan="11">주문정보</th>
-                    <th colspan="{{ $arr_input['prod_type'] == 'PP' ? '7' : '9' }}">강좌정보</th>
-                    <th colspan="{{ $arr_input['prod_type'] == 'PP' ? '10' : '9' }}">정산정보</th>
+                    <th colspan="{{ element($arr_input['prod_type'], $arr_thead_colspan, 9) }}">강좌정보</th>
+                    <th colspan="7">정산정보</th>
                 </tr>
                 <tr>
                     <th class="valign-middle">주문번호</th>
@@ -180,11 +180,11 @@
                     <th class="valign-middle">결제루트</th>
                     <th class="valign-middle">결제수단</th>
                     <th class="bold valign-middle">결제금액(A)</th>
-                    <th class="bold valign-middle">결제수수료율(D2)</th>
-                    <th class="bold valign-middle">결제수수료(D1)<br/>A*D2</th>
                     <th class="valign-middle" style="min-width: 76px;">결제일</th>
-                    <th class="bold valign-middle">환불금액(E1)</th>
+                    <th class="bold valign-middle">환불금액(D1)</th>
                     <th class="valign-middle" style="min-width: 76px;">환불완료일</th>
+                    <th class="bold valign-middle">결제수수료율(E2)</th>
+                    <th class="bold valign-middle">결제수수료(E1)<br/>(A-D1)*E2</th>
                     <th class="valign-middle">결제상태</th>
                     <th class="valign-middle">직종</th>
                     <th class="valign-middle">상품구분</th>
@@ -197,23 +197,26 @@
                     <th class="valign-middle">교수명</th>
                     <th class="bold valign-middle">기여도(B)</th>
                     <th class="bold valign-middle">기여도매출(C)<br/>A*B</th>
-                    <th class="bold valign-middle">기여도수수료(D)<br/>D1*B</th>
-                    <th class="bold valign-middle">기여도환불(E)<br/>E1*B</th>
-                    <th class="bold valign-middle" style="min-width: 76px;">월안분(F)<br/>(C-D-E)/F1</th>
+                    <th class="bold valign-middle">기여도환불(D)<br/>D1*B</th>
+                    <th class="bold valign-middle">기여도수수료(E)<br/>E1*B</th>
+                    <th class="bold valign-middle" style="min-width: 76px;">월안분(F)<br/>(C-E-D)/F1</th>
                     <th class="bold valign-middle">정산율(G)</th>
                     <th class="bold valign-middle">정산금액(H)<br/>F*G</th>
                 @else
+                    @if($arr_input['prod_type'] != 'MT')
+                    {{-- 모의고사가 아닐 경우 --}}
                     <th class="valign-middle">과정</th>
                     <th class="valign-middle">단강좌코드</th>
                     <th class="valign-middle">단강좌명</th>
+                    @endif
                     <th class="valign-middle">과목</th>
                     <th class="valign-middle">교수명</th>
                     <th class="bold valign-middle">안분율(B)</th>
                     <th class="bold valign-middle">안분매출(C)<br/>A*B</th>
-                    <th class="bold valign-middle">안분수수료(D)<br/>D1*B</th>
-                    <th class="bold valign-middle">안분환불(E)<br/>E1*B</th>
+                    <th class="bold valign-middle">안분환불(D)<br/>D1*B</th>
+                    <th class="bold valign-middle">안분수수료(E)<br/>E1*B</th>
                     <th class="bold valign-middle">정산율(G)</th>
-                    <th class="bold valign-middle">정산금액(H)<br/>(C-D-E)*G</th>
+                    <th class="bold valign-middle">정산금액(H)<br/>(C-E-D)*G</th>
                 @endif
                 </tr>
                 <tr class="bg-info">
@@ -222,8 +225,8 @@
                     <th></th>
                     <th id="sumD1" class="sumTh"></th>
                     <th></th>
-                    <th id="sumE1" class="sumTh"></th>
                     <th></th>
+                    <th id="sumE1" class="sumTh"></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -242,9 +245,12 @@
                     <th></th>
                     <th id="sumH" class="sumTh"></th>
                 @else
+                    @if($arr_input['prod_type'] != 'MT')
+                    {{-- 모의고사가 아닐 경우 --}}
                     <th></th>
                     <th></th>
                     <th></th>
+                    @endif
                     <th></th>
                     <th></th>
                     <th></th>
@@ -303,10 +309,6 @@
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
-                    {'data' : 'PgFee'},
-                    {'data' : 'PgFeePrice', 'render' : function(data, type, row, meta) {
-                        return decimalFormat(data, 8);
-                    }},
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
                         return data.substr(0, 10);
                     }},
@@ -316,12 +318,20 @@
                     {'data' : 'RefundDatm', 'render' : function(data, type, row, meta) {
                         return data !== null ? data.substr(0, 10) : '';
                     }},
+                    {'data' : 'PgFee'},
+                    {'data' : 'PgFeePrice', 'render' : function(data, type, row, meta) {
+                        return decimalFormat(data, 8);
+                    }},
                     {'data' : 'PayStatusName', 'render' : function(data, type, row, meta) {
                         return row.RefundPrice > 0 ? '<span class="red no-line-height">' + data + '</span>' : data;
                     }},
                     {'data' : 'LgCateName'},
                     {'data' : 'LearnPatternCcdName', 'render' : function(data, type, row, meta) {
-                        return (row.SalePatternCcd.slice(-1) !== '1' ? row.SalePatternCcdName : data) + (row.PackTypeCcdName !== null ? '<br/>(' + row.PackTypeCcdName + ')' : '');
+                        if (typeof data !== 'undefined') {
+                            return (row.SalePatternCcd.slice(-1) !== '1' ? row.SalePatternCcdName : data) + (row.PackTypeCcdName !== null ? '<br/>(' + row.PackTypeCcdName + ')' : '');
+                        } else {
+                            return '';
+                        }
                     }},
                     {'data' : 'ProdCode'},
                     {'data' : 'ProdName'},
@@ -332,9 +342,12 @@
                     {'data' : 'wProfName'},
                     {'data' : 'ProdContribPerc'},
                 @else
+                    @if($arr_input['prod_type'] != 'MT')
+                    {{-- 모의고사가 아닐 경우 --}}
                     {'data' : 'CourseName'},
                     {'data' : 'ProdCodeSub'},
                     {'data' : 'ProdNameSub'},
+                    @endif
                     {'data' : 'SubjectName'},
                     {'data' : 'wProfName'},
                     {'data' : 'ProdDivisionRate'},
@@ -342,11 +355,11 @@
                     {'data' : 'DivisionPayPrice', 'render' : function(data, type, row, meta) {
                         return decimalFormat(data, 8);
                     }},
-                    {'data' : 'DivisionPgFeePrice', 'render' : function(data, type, row, meta) {
-                        return decimalFormat(data, 8);
-                    }},
                     {'data' : 'DivisionRefundPrice', 'render' : function(data, type, row, meta) {
                         return '<span class="red no-line-height">' + (data > 0 ? decimalFormat(data, 8) : 0) + '</span>';
+                    }},
+                    {'data' : 'DivisionPgFeePrice', 'render' : function(data, type, row, meta) {
+                        return decimalFormat(data, 8);
                     }},
                 @if($arr_input['prod_type'] == 'PP')
                     {{-- 기간제패키지 --}}
@@ -365,11 +378,11 @@
             $datatable.on('xhr.dt', function(e, settings, json) {
                 if (json.sum_data !== null) {
                     $('#sumA').html(addComma(json.sum_data.tRealPayPrice));
-                    $('#sumD1').html(decimalFormat(json.sum_data.tPgFeePrice, 8));
-                    $('#sumE1').html(addComma(json.sum_data.tRefundPrice));
+                    $('#sumD1').html(addComma(json.sum_data.tRefundPrice));
+                    $('#sumE1').html(decimalFormat(json.sum_data.tPgFeePrice, 8));
                     $('#sumC').html(decimalFormat(json.sum_data.tDivisionPayPrice, 8));
-                    $('#sumD').html(decimalFormat(json.sum_data.tDivisionPgFeePrice, 8));
-                    $('#sumE').html(json.sum_data.tDivisionRefundPrice > 0 ? decimalFormat(json.sum_data.tDivisionRefundPrice, 8) : 0);
+                    $('#sumD').html(json.sum_data.tDivisionRefundPrice > 0 ? decimalFormat(json.sum_data.tDivisionRefundPrice, 8) : 0);
+                    $('#sumE').html(decimalFormat(json.sum_data.tDivisionPgFeePrice, 8));
                     $('#sumH').html(decimalFormat(json.sum_data.tDivisionCalcPrice, 8));
 
                     @if($arr_input['prod_type'] == 'PP')

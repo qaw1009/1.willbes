@@ -69,7 +69,6 @@
         input[type=file]:focus {border:1px solid #1087ef}                   	
     </style>
 
-
     <div class="evtContent NSK" id="evtContainer">
         <div class="wbCommon wb_00">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_top.jpg" title="합격자의밤" />
@@ -109,21 +108,18 @@
             </div>
 		</div>
 
-   		<div class="wbCommon wb_02">            
+   		<div class="wbCommon wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02.jpg" title=" " />
-            <a href="#none">coming soon</a> 
-
-            {{--신청하기 팝업 19일 17시 노출   
-            <a href="#none">합격자의 밤 신청하기 ></a> 
-            --}}
+            @if (date('YmdH') < '2019071917')
+                <a href="javascript:;">coming soon</a>
+            @else
+                <a href="javascript:;" onclick="javascript:popup();">합격자의 밤 신청하기 ></a>
+            @endif
         </div>
 
         <div class="wbCommon wb_02_01">        
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1322_02_01.jpg" title=" " />
         </div>  
-
-
-        
     </div>
     <!-- End Container -->   
 
@@ -149,9 +145,7 @@
 	    });
 
         var tab1_url = "https://www.youtube.com/embed/Ugzo18tp4Ag?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/NxsREWiD_ME?rel=0";  
-
-
+        var tab2_url = "https://www.youtube.com/embed/NxsREWiD_ME?rel=0";
         $(function() {
             $(".youtube").hide();
             $(".youtube:first").show();
@@ -171,7 +165,18 @@
                 $(activeTab).fadeIn();
                 return false;
             });
-        }); 
+        });
+
+        function popup(){
+            var is_login = '{{sess_data('is_login')}}';
+            if (is_login != true) {
+                alert('로그인 후 이용해 주세요.');
+                return;
+            }
+
+            var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) }}";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+        }
     </script>
     
 @stop

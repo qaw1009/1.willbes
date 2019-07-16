@@ -94,7 +94,7 @@ class OffLectureSD extends \app\controllers\BaseController
         // 엑셀 설정
         $last_query = $this->orderCalcModel->getLastQuery();
         $file_name = '학원강사료정산리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
-        $headers = ['교수명', '상품구분', '상품명', '캠퍼스', '단과반명', '개강일', '종강일', '인원', '매출금액(C)', '결제수수료(D)', '환불금액(E)', '순매출(F)'
+        $headers = ['교수명', '상품구분', '상품명', '캠퍼스', '단과반명', '개강일', '종강일', '인원', '매출금액(C)', '환불금액(D)', '결제수수료(E)', '순매출(F)'
             , '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
 
         foreach ($list as $idx => $row) {
@@ -107,8 +107,8 @@ class OffLectureSD extends \app\controllers\BaseController
             $results[$idx]['StudyEndDate'] = $row['StudyEndDate'];
             $results[$idx]['tRemainPayCnt'] = $row['tRemainPayCnt'];
             $results[$idx]['tDivisionPayPrice'] = $row['tDivisionPayPrice'];
-            $results[$idx]['tDivisionPgFeePrice'] = $row['tDivisionPgFeePrice'];
             $results[$idx]['tDivisionRefundPrice'] = $row['tDivisionRefundPrice'];
+            $results[$idx]['tDivisionPgFeePrice'] = $row['tDivisionPgFeePrice'];
             $results[$idx]['tDivisionRemainPrice'] = $row['tDivisionRemainPrice'];
             $results[$idx]['tDivisionCalcPrice'] = $row['tDivisionCalcPrice'];
             $results[$idx]['tDivisionIncomeTax'] = $row['tDivisionIncomeTax'];
@@ -120,7 +120,7 @@ class OffLectureSD extends \app\controllers\BaseController
         $results[] = [
             'wProfName' => '합계', 'LearnPatternCcdName' => '', 'ProdName' => '', 'CampusCcdName' => '', 'ProdNameSub' => '', 'StudyStartDate' => '', 'StudyEndDate' => '',
             'tRemainPayCnt' => $sum_data['tRemainPayCnt'], 'tDivisionPayPrice' => $sum_data['tDivisionPayPrice'],
-            'tDivisionPgFeePrice' => $sum_data['tDivisionPgFeePrice'], 'tDivisionRefundPrice' => $sum_data['tDivisionRefundPrice'],
+            'tDivisionRefundPrice' => $sum_data['tDivisionRefundPrice'], 'tDivisionPgFeePrice' => $sum_data['tDivisionPgFeePrice'],
             'tDivisionRemainPrice' => $sum_data['tDivisionRemainPrice'], 'tDivisionCalcPrice' => $sum_data['tDivisionCalcPrice'],
             'tDivisionIncomeTax' => $sum_data['tDivisionIncomeTax'], 'tDivisionResidentTax' => $sum_data['tDivisionResidentTax'], 'tFinalCalcPrice' => $sum_data['tFinalCalcPrice']
         ];
@@ -260,9 +260,9 @@ class OffLectureSD extends \app\controllers\BaseController
         // 엑셀 설정
         $last_query = $this->orderCalcModel->getLastQuery();
         $file_name = '학원강사료정산상세리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
-        $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
+        $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제일', '환불금액(D1)', '환불완료일', '결제수수료율(E2)', '결제수수료(E1)', '결제상태'
             , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '과정', '단과반코드', '단과반명', '과목', '교수명'
-            , '안분율(B)', '안분매출(C)', '안분수수료(D)', '안분환불(E)', '순매출(F)', '정산율(G)', '정산금액(H)'];
+            , '안분율(B)', '안분매출(C)', '안분환불(D)', '안분수수료(E)', '순매출(F)', '정산율(G)', '정산금액(H)'];
 
         // download log
         $this->load->library('approval');

@@ -139,7 +139,7 @@ class BtobInfo extends \app\controllers\BaseController
     public function listIp()
     {
 
-        $isStatus = $this->_req('istatus') === 'N' ? '' : 'Y';
+        $isStatus = $this->_req('istatus') === 'N' ? 'N' : '';
         $search_value = $this->_req('search_value');
 
         $arr_condition = [
@@ -205,7 +205,7 @@ class BtobInfo extends \app\controllers\BaseController
     public function ajaxCpMember()
     {
 
-        $isStatus = $this->_req('istatus') === 'N' ? '' : 'Y';
+        $isStatus = $this->_req('istatus') === 'N' ? 'N' : '';
         $search_value = $this->_req('search_value');
 
         $arr_condition = [

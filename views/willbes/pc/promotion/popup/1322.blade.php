@@ -3,7 +3,7 @@
 @section('content')
 
 @php
-    if (date('YmdH') < '2019071616') { show_alert('잘못된 접근 입니다.','close'); }
+    if (date('YmdH') < '2019071917') { show_alert('잘못된 접근 입니다.','close'); }
 @endphp
 
 <!-- Container -->

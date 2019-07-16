@@ -71,7 +71,15 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1">조건검색</label>
-                    <div class="col-md-11">
+                    <div class="col-md-11 form-inline">
+                        <div class="input-group mr-20">
+                            <select name="search_interest" class="form-control">
+                                <option value="">관심분야</option>
+                                @foreach($InterestCcd as $key => $value)
+                                    <option value="{{$key}}">{{$value}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <label class="input-label">
                             <input type="checkbox" class="flat" id="IsChange" name="IsChange" value="Y">
                             통합전환회원

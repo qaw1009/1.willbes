@@ -454,6 +454,23 @@ if (!function_exists('show_alert')) {
     }
 }
 
+if (!function_exists('snake_case')) {
+    /**
+     * 언더스코어 표기법(snake case)으로 문자열 변환 (SnakeCase => snake_case)
+     * @param string $str
+     * @param string $delimiter
+     * @return string
+     */
+    function snake_case($str, $delimiter = '_')
+    {
+        if (ctype_lower($str) === false) {
+            $str = strtolower(preg_replace('/(.)(?=[A-Z])/', '$1'.$delimiter, $str));
+        }
+
+        return $str;
+    }
+}
+
 if (!function_exists('starts_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 시작하는지 여부 체크

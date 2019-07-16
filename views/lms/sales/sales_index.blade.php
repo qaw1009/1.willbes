@@ -4,7 +4,7 @@
     <h5>- 사이트 기준 {{ $sales_name }} 매출현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false) !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value="{{ $def_site_code }}"/>
         <div class="x_panel">
             <div class="x_content">
@@ -37,6 +37,26 @@
                         </select>
                     </div>
                 </div>
+                @if($sales_type == 'mockTest')
+                    {{-- 모의고사 전용 --}}
+                    <div class="form-group">
+                        <label class="control-label col-md-1">응시조건</label>
+                        <div class="col-md-11 form-inline">
+                            <select class="form-control mr-10" id="search_take_form_ccd" name="search_take_form_ccd">
+                                <option value="">응시형태</option>
+                                @foreach($arr_mock_take_form_ccd as $key => $val)
+                                    <option value="{{ $key }}">{{ $val }}</option>
+                                @endforeach
+                            </select>
+                            <select class="form-control mr-10" id="search_take_area_ccd" name="search_take_area_ccd">
+                                <option value="">응시지역</option>
+                                @foreach($arr_mock_take_area_ccd as $key => $val)
+                                    <option value="{{ $key }}">{{ $val }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                @endif
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3">
@@ -53,6 +73,7 @@
                         <p class="form-control-static">명칭, 주문번호 검색 가능</p>
                     </div>
                 </div>
+                @if(isset($arr_category) === true)
                 <div class="form-group">
                     <label class="control-label col-md-1">직종구분</label>
                     <div class="col-md-11 form-inline">
@@ -66,6 +87,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if(isset($arr_prod_type_ccd) === true)
                 <div class="form-group">
                     <label class="control-label col-md-1">상품구분</label>
                     <div class="col-md-11 form-inline">
@@ -77,8 +100,8 @@
                         </div>
                     </div>
                 </div>
-                @if($sales_type == 'all')
-                    {{-- 전체매출현황 --}}
+                @endif
+                @if(isset($arr_learn_pattern_ccd) === true)
                     <div class="form-group">
                         <label class="control-label col-md-1">학습형태</label>
                         <div class="col-md-11 form-inline">
@@ -90,6 +113,8 @@
                             </div>
                         </div>
                     </div>
+                @endif
+                @if(isset($arr_sale_pattern_ccd) === true)
                     <div class="form-group">
                         <label class="control-label col-md-1">판매형태</label>
                         <div class="col-md-11 form-inline">
@@ -147,6 +172,11 @@
                     <th class="rowspan">결제루트</th>
                     <th class="rowspan">결제수단</th>
                     <th>직종구분</th>
+                @if($sales_type == 'mockTest')
+                    {{-- 모의고사 전용 --}}
+                    <th>응시형태</th>
+                    <th>응시지역</th>
+                @endif
                     <th>상품구분</th>
                     <th>[학습형태] 상품명</th>
                     <th>결제금액</th>
@@ -156,7 +186,7 @@
                     <th>결제상태</th>
                 </tr>
                 <tr>
-                    <td colspan="14" class="bg-odd text-center">
+                    <td colspan="16" class="bg-odd text-center">
                         <h4 class="inline-block no-margin">
                             <span id="search_period" class="pr-5"></span>
                             <span class="blue"><span id="sum_pay_price">0</span></span>
@@ -222,6 +252,11 @@
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'LgCateName'},
+                @if($sales_type == 'mockTest')
+                    {{-- 모의고사 전용 --}}
+                    {'data' : 'TakeFormCcdName'},
+                    {'data' : 'TakeAreaCcdName'},
+                @endif
                     {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
                     }},

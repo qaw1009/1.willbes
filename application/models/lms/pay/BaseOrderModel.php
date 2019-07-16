@@ -43,6 +43,8 @@ class BaseOrderModel extends WB_Model
         'cms_lecture_basics' => 'wbs_cms_lecture_basics',
         'readingroom' => 'lms_readingroom',
         'mock_register' => 'lms_mock_register',
+        'mock_register_r_paper' => 'lms_mock_register_r_paper',
+        'mock_paper' => 'lms_mock_paper',
         'member' => 'lms_member',
         'member_info' => 'lms_member_otherinfo',
         'category' => 'lms_sys_category',

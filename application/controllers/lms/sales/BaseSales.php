@@ -7,15 +7,19 @@ class BaseSales extends \app\controllers\BaseController
     protected $helpers = array();
     protected $_sales_type = '';
     protected $_sales_name = '';
+    protected $_add_join = [];
+    protected $_add_excel_header = [];
     protected $_group_ccd = [];
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
-    public function __construct($sales_type, $sales_name)
+    public function __construct($sales_type, $sales_name, $add_join = [], $add_excel_header = [])
     {
         parent::__construct();
 
         $this->_sales_type = $sales_type;
         $this->_sales_name = $sales_name;
+        $this->_add_join = $add_join;
+        $this->_add_excel_header = $add_excel_header;
         $this->_group_ccd = $this->orderSalesModel->_group_ccd;
     }
 
@@ -24,54 +28,61 @@ class BaseSales extends \app\controllers\BaseController
      */
     protected function index()
     {
-        // 1차 카테고리 조회
-        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $arr_code = [];
 
-        // 사용하는 코드값 조회
-        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'ProdType', 'LearnPattern', 'SalePattern']);
+        // 메뉴별 설정 (사이트코드, 카테고리, 그룹공통코드)
+        if ($this->_sales_type == 'mockTest') {
+            /* 모의고사 */
+            $arr_code['arr_site_code'] = get_auth_on_off_site_codes('Y', true);
+            $arr_ccd_filter_key = ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'MockTakeForm', 'MockTakeArea'];
+        } else {
+            $arr_code['arr_site_code'] = get_auth_site_codes(true);
+            $arr_code['arr_category'] = $this->categoryModel->getCategoryArray('', '', '', 1);  // 1차 카테고리 조회
+
+            if ($this->_sales_type == 'book') {
+                /* 교재 */
+                $arr_ccd_filter_key = ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'ProdType'];
+            } else {
+                /* 전체매출현황 */
+                $arr_ccd_filter_key = ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'ProdType', 'LearnPattern', 'SalePattern'];
+            }
+        }
+
+        // 공통코드 조회 및 변수명 설정
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, $arr_ccd_filter_key);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
+        foreach ($arr_target_group_ccd as $key => $group_ccd) {
+            $arr_code['arr_' . snake_case($key) . '_ccd'] = $codes[$group_ccd];     // 언더스코어 형태로 변경 (PayChannel => arr_pay_channel_ccd)
+        }
 
         // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제, 온라인0원결제, 관리자유료결제 코드만 필터링
-        $arr_pay_route_ccd = array_filter_keys($codes[$this->_group_ccd['PayRoute']], array_filter_keys($this->orderSalesModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'on_zero', 'admin_pay']));
+        $arr_code['arr_pay_route_ccd'] = array_filter_keys($arr_code['arr_pay_route_ccd'], array_filter_keys($this->orderSalesModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'on_zero', 'admin_pay']));
 
         // 결제상태 공통코드에서 결제완료, 환불완료 코드만 필터링
-        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderSalesModel->_pay_status_ccd, ['paid', 'refund']));
+        $arr_code['arr_pay_status_ccd'] = array_filter_keys($arr_code['arr_pay_status_ccd'], array_filter_keys($this->orderSalesModel->_pay_status_ccd, ['paid', 'refund']));
 
-        // 메뉴별 공통코드 설정
-        $arr_sale_pattern_ccd = [];
-        $arr_learn_pattern_ccd = [];
-
+        // 메뉴별 공통코드 부가 설정
         if ($this->_sales_type == 'all') {
             /* 전체매출현황 */
             // 상품구분 공통코드 (사은품 제외)
-            unset($codes[$this->_group_ccd['ProdType']][$this->orderSalesModel->_prod_type_ccd['freebie']]);
-            $arr_prod_type_ccd = $codes[$this->_group_ccd['ProdType']];
+            unset($arr_code['arr_prod_type_ccd'][$this->orderSalesModel->_prod_type_ccd['freebie']]);
 
             // 학습형태 공통코드에서 무료강좌 제외
-            unset($codes[$this->_group_ccd['LearnPattern']][$this->orderSalesModel->_learn_pattern_ccd['on_free_lecture']]);
-            $arr_learn_pattern_ccd = $codes[$this->_group_ccd['LearnPattern']];
+            unset($arr_code['arr_learn_pattern_ccd'][$this->orderSalesModel->_learn_pattern_ccd['on_free_lecture']]);
 
             // 판매형태 공통코드에서 일반, 수강연장, 재수강 코드만 필터링
-            $arr_sale_pattern_ccd = array_filter_keys($codes[$this->_group_ccd['SalePattern']], array_filter_keys($this->orderSalesModel->_sale_pattern_ccd, ['normal', 'extend', 'retake']));
-        } else {
+            $arr_code['arr_sale_pattern_ccd'] = array_filter_keys($arr_code['arr_sale_pattern_ccd'], array_filter_keys($this->orderSalesModel->_sale_pattern_ccd, ['normal', 'extend', 'retake']));
+        } elseif ($this->_sales_type == 'book') {
             /* 교재 */
             // 상품구분 공통코드 (교재, 배송료, 추가배송료 코드만 필터링)
-            $arr_prod_type_ccd = array_filter_keys($codes[$this->_group_ccd['ProdType']], array_filter_keys($this->orderSalesModel->_prod_type_ccd, ['book', 'delivery_price', 'delivery_add_price']));
+            $arr_code['arr_prod_type_ccd'] = array_filter_keys($arr_code['arr_prod_type_ccd'], array_filter_keys($this->orderSalesModel->_prod_type_ccd, ['book', 'delivery_price', 'delivery_add_price']));
         }
 
-        $this->load->view('sales/sales_index', [
+        $this->load->view('sales/sales_index', array_merge([
             'sales_type' => $this->_sales_type,
             'sales_name' => $this->_sales_name,
-            'def_site_code' => element('0', get_auth_site_codes()),
-            'arr_category' => $arr_category,
-            'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],
-            'arr_pay_route_ccd' => $arr_pay_route_ccd,
-            'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
-            'arr_pay_status_ccd' => $arr_pay_status_ccd,
-            'arr_prod_type_ccd' => $arr_prod_type_ccd,
-            'arr_learn_pattern_ccd' => $arr_learn_pattern_ccd,
-            'arr_sale_pattern_ccd' => $arr_sale_pattern_ccd,
-        ]);
+            'def_site_code' => key($arr_code['arr_site_code'])
+        ], $arr_code));
     }
 
     /**
@@ -89,13 +100,13 @@ class BaseSales extends \app\controllers\BaseController
         if (empty($search_start_date) === false && empty($search_end_date) === false) {
             $arr_condition = $this->_getListConditions();
 
-            $count = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', true, $arr_condition, null, null, []);
+            $count = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', true, $arr_condition, null, null, [], $this->_add_join);
 
             if ($count > 0) {
-                $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy());
+                $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy(), $this->_add_join);
 
                 // 합계
-                $sum_data = element('0', $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'sum', $arr_condition));
+                $sum_data = element('0', $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'sum', $arr_condition, null, null, [], $this->_add_join));
             }
         }
 
@@ -113,11 +124,15 @@ class BaseSales extends \app\controllers\BaseController
      */
     private function _getListConditions()
     {
+        // 상품구분 조회 조건
         $arr_search_prod_type_ccd = array_filter(explode(',', $this->_reqP('search_chk_prod_type_ccd')));
 
-        // 교재일 경우 기본 조건
         if ($this->_sales_type == 'book' && empty($arr_search_prod_type_ccd) === true) {
+            // 교재일 경우 기본 조건
             $arr_search_prod_type_ccd = array_values(array_filter_keys($this->orderSalesModel->_prod_type_ccd, ['book', 'delivery_price', 'delivery_add_price']));
+        } elseif ($this->_sales_type == 'mockTest') {
+            // 모의고사일 경우 기본 조건
+            $arr_search_prod_type_ccd = [$this->orderSalesModel->_prod_type_ccd['mock_exam']];
         }
 
         $arr_condition = [
@@ -125,7 +140,9 @@ class BaseSales extends \app\controllers\BaseController
                 'BO.SiteCode' => $this->_reqP('search_site_code'),
                 'BO.PayChannelCcd' => $this->_reqP('search_pay_channel_ccd'),
                 'BO.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
-                'BO.PayMethodCcd' => $this->_reqP('search_pay_method_ccd')
+                'BO.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
+                'MR.TakeForm' => $this->_reqP('search_take_form_ccd'),
+                'MR.TakeArea' => $this->_reqP('search_take_area_ccd')
             ],
             'IN' => [
                 'BO.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가
@@ -200,12 +217,14 @@ class BaseSales extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = ['주문번호', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '캠퍼스', '학습형태', '상품명'
-            , '결제금액', '수수료율', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태'];
+        $headers = array_merge(['주문번호', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분']
+            , $this->_add_excel_header
+            , ['상품구분', '캠퍼스', '학습형태', '상품명', '결제금액', '수수료율', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태']
+        );
         $numerics = ['RealPayPrice', 'RefundPrice', 'PgFeePrice'];    // 숫자형 변환 대상 컬럼
 
         $arr_condition = $this->_getListConditions();
-        $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getListOrderBy());
+        $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getListOrderBy(), $this->_add_join);
         $last_query = $this->orderSalesModel->getLastQuery();
         $file_name = $this->_sales_name . '_매출현황리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 

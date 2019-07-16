@@ -15,9 +15,10 @@ class OrderSalesModel extends BaseOrderModel
      * @param null $limit
      * @param null $offset
      * @param array $order_by
+     * @param array $arr_add_join [추가조회 구분값]
      * @return mixed
      */
-    public function listSalesOrder($start_date, $end_date, $search_type, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSalesOrder($start_date, $end_date, $search_type, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_join = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -28,7 +29,7 @@ class OrderSalesModel extends BaseOrderModel
             } else {
                 $column = 'BO.OrderIdx, BO.OrderNo, BO.SiteCode, BO.MemIdx, BO.OrderProdIdx, BO.ProdCode, BO.PayChannelCcd, BO.PayRouteCcd, BO.PgCcd, BO.PayMethodCcd
                     , BO.PayStatusCcd, BO.SalePatternCcd
-                    , BO.RealPayPrice, BO.CompleteDatm, BO.RefundPrice, BO.RefundDatm
+                    , BO.RealPayPrice, BO.CardPayPrice, BO.CompleteDatm, BO.RefundPrice, BO.CardRefundPrice, BO.RefundDatm
                     , if(BO.RefundPrice is null, "결제완료", "환불완료") as PayStatusName
                     , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PC.CateCode 
                     , M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
@@ -36,6 +37,7 @@ class OrderSalesModel extends BaseOrderModel
                     , if(BO.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName
                     , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName, SC.CateName, SGC.CateName as LgCateName 
                     , json_value(CPM.CcdEtc, if(BO.PgCcd != "", concat("$.fee.", BO.PgCcd), "$.fee")) as PgFee';
+                $column .= $this->_getListSalesQuery('column', $arr_add_join);
             }
         }
 
@@ -54,6 +56,7 @@ class OrderSalesModel extends BaseOrderModel
                 left join ' . $this->_table['member'] . ' as M
                     on BO.MemIdx = M.MemIdx            
         ';
+        $from .= $this->_getListSalesQuery('from', $arr_add_join);
 
         // 매출현황 목록 조회일 경우 공통코드명, 카테고리명 조회
         if ($is_count === false || $is_count === 'excel') {
@@ -90,9 +93,11 @@ class OrderSalesModel extends BaseOrderModel
 
         // 쿼리 실행
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName
-                , concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName, CampusCcdName, LearnPatternCcdName
-                , ProdName, RealPayPrice, PgFee, if(RealPayPrice > ifnull(RefundPrice, 0), if(PgFee < 1, TRUNCATE(RealPayPrice * PgFee, 0), PgFee), 0) as PgFeePrice
+            $excel_column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName';
+            $excel_column .= $this->_getListSalesQuery('excel_column', $arr_add_join);
+            $excel_column .= ', concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName
+                , CampusCcdName, LearnPatternCcdName, ProdName, RealPayPrice, PgFee
+                , if(RealPayPrice > ifnull(RefundPrice, 0), if(PgFee < 1, TRUNCATE((CardPayPrice - ifnull(CardRefundPrice, 0)) * PgFee, 0), PgFee), 0) as PgFeePrice
                 , CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {
@@ -102,6 +107,37 @@ class OrderSalesModel extends BaseOrderModel
         $result = $this->_conn->query($query);
 
         return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+    }
+
+    /**
+     * 매출현황 주문조회 관련 추가정보 쿼리 리턴
+     * @param string $type [쿼리타입]
+     * @param array $arr_add_join [추가조회 구분값]
+     * @return mixed
+     */
+    private function _getListSalesQuery($type, $arr_add_join = [])
+    {
+        $from = '';
+        $column = '';
+        $excel_column = '';
+
+        if (empty($arr_add_join) === false) {
+            // 모의고사 응시정보
+            if (in_array('mock_regi', $arr_add_join) === true) {
+                $from .= '
+                    inner join ' . $this->_table['mock_register'] . ' as MR
+                        on BO.OrderProdIdx = MR.OrderProdIdx and MR.IsStatus = "Y"
+                    left join ' . $this->_table['code'] . ' as CTF
+                        on MR.TakeForm = CTF.Ccd and CTF.IsStatus = "Y" and CTF.GroupCcd = "' . $this->_group_ccd['MockTakeForm'] . '"
+                    left join ' . $this->_table['code'] . ' as CTA
+                        on MR.TakeArea = CTA.Ccd and CTA.IsStatus = "Y" and CTA.GroupCcd = "' . $this->_group_ccd['MockTakeArea'] . '"                    
+                ';
+                $column .= ', MR.TakeForm, MR.TakeArea, CTF.CcdName as TakeFormCcdName, CTA.CcdName as TakeAreaCcdName';
+                $excel_column .= ', TakeFormCcdName, TakeAreaCcdName';
+            }
+        }
+
+        return ${$type};
     }
 
     /**
@@ -387,8 +423,10 @@ class OrderSalesModel extends BaseOrderModel
             select O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode
                 , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
                 , OP.RealPayPrice
+                , OP.CardPayPrice
                 , O.CompleteDatm
                 , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date . ' 23:59:59') . ', null, OPR.RefundPrice) as RefundPrice
+                , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date . ' 23:59:59') . ', null, OPR.CardRefundPrice) as CardRefundPrice
                 , if(OPR.RefundDatm > ' . $this->_conn->escape($end_date . ' 23:59:59') . ', null, OPR.RefundDatm) as RefundDatm	
             from ' . $this->_table['order'] . ' as O
                 inner join ' . $this->_table['order_product'] . ' as OP
@@ -403,8 +441,10 @@ class OrderSalesModel extends BaseOrderModel
             select O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode
                 , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.PayStatusCcd, OP.SalePatternCcd
                 , null as RealPayPrice
+                , null as CardPayPrice
                 , CompleteDatm
                 , OPR.RefundPrice
+                , OPR.CardRefundPrice
                 , OPR.RefundDatm
             from ' . $this->_table['order_product_refund'] . ' as OPR
                 inner join ' . $this->_table['order'] . ' as O

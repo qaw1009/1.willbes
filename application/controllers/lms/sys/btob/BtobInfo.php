@@ -117,7 +117,8 @@ class BtobInfo extends \app\controllers\BaseController
         $cnt = $this->btobModel->listIp(true, [
             'EQ' => [
                 'A.BtoBIdx' => $this->_req('btobidx'),
-                'A.ApprovalIp' => $this->_req('ApprovalIp')
+                'A.ApprovalIp' => $this->_req('ApprovalIp'),
+                'A.IsStatus' => 'Y'
             ]
         ]);
 
@@ -138,9 +139,16 @@ class BtobInfo extends \app\controllers\BaseController
     public function listIp()
     {
 
+        $isStatus = $this->_req('istatus') === 'N' ? '' : 'Y';
+        $search_value = $this->_req('search_value');
+
         $arr_condition = [
             'EQ' => [
                 'A.BtoBIdx' => $this->_reqP('btobidx'),
+                'A.IsStatus' => $isStatus
+            ],
+            'LKB' => [
+                'ApprovalIp' => $search_value
             ]
         ];
         $order_by =  ['A.BiIdx'=>'desc'];
@@ -169,7 +177,7 @@ class BtobInfo extends \app\controllers\BaseController
     {
         $result = $this->btobModel->deleteIp($this->_reqP(null));
 
-        return $this->json_result($result, '', $result);
+        return $this->json_result($result, '삭제되었습니다.', $result);
 
     }
 
@@ -198,8 +206,15 @@ class BtobInfo extends \app\controllers\BaseController
     {
 
         $isStatus = $this->_req('istatus') === 'N' ? '' : 'Y';
+        $search_value = $this->_req('search_value');
 
         $arr_condition = [
+            'ORG' => [
+                'EQ' => [
+                    'M.MemName' => $search_value,
+                    'M.MemId' => $search_value
+                ]
+            ],
             'EQ' => [
                 'B.BtobIdx' => $this->_reqP('btobidx'),
                 'R.IsStatus' => $isStatus

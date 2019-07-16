@@ -51,7 +51,7 @@
         .slide_cons p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_cons p a {cursor:pointer}
         .slide_cons p.leftBtn {left:-40px; top:37%; width:80px; height:80px;}
-        .slide_cons p.rightBtn {right:0;top:37%; width:80px; height:80px;}        
+        .slide_cons p.rightBtn {right:-40px;top:37%; width:80px; height:80px;}        
 
     </style>
     

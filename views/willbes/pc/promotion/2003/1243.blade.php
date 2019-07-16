@@ -38,7 +38,7 @@
         .BnRTab:after {content:""; display:block; clear:both}
 
         /* 슬라이드배너*/
-        .slide_con {position:relative; width:980px; margin:0 auto; height:658px; background:#999; overflow:hidden}
+        .slide_con {position:relative; width:980px; margin:0 auto;  overflow:hidden}
 
         .slide_con .bx-wrapper .bx-controls {
             position: absolute;
@@ -46,9 +46,15 @@
             width:100%;
             z-index: 1;            
         }
+       
+        .slide_cons {position:relative;width:1210px; margin:0 auto}	
+        .slide_cons p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
+        .slide_cons p a {cursor:pointer}
+        .slide_cons p.leftBtn {left:-40px; top:37%; width:80px; height:80px;}
+        .slide_cons p.rightBtn {right:0;top:37%; width:80px; height:80px;}        
+
     </style>
-
-
+    
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox wb_top" id="main">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1243_01.png" alt="윌비스 신규입성 이동민 관리형 면접반 " usemap="#Map180501_c1" border="0"/>
@@ -108,8 +114,19 @@
         </div><!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" >
-            <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c7.jpg" alt="면접, 혼자서는 실력을 완성할 수 없습니다. " /><Br>
-            <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c8.jpg" alt="면접, 혼자서는 실력을 완성할 수 없습니다. " />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1243_txt.jpg" alt="#">
+            <div class="slide_cons">
+                <ul id="slidesImg7">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1243_s1.jpg" alt="#" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1243_s2.jpg" alt="#" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1243_s3.jpg" alt="#" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1243_s4.jpg" alt="#" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1243_s5.jpg" alt="#" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1243_s6.jpg" alt="#" /></li>
+                </ul>            
+                <p class="leftBtn"><a id="imgBannerLeft7"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_pre.png" alt="이전" /></a></p>
+                <p class="rightBtn"><a id="imgBannerRight7"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_next.png" alt="다음" /></a></p>
+            </div>                          
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" id="event">
@@ -120,6 +137,26 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+        $(document).ready(function() {
+            var slidesImg7 = $("#slidesImg7").bxSlider({
+            //mode:'fade', option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            controls:false,
+            slideWidth:1210,
+            autoHover: true,
+            pager:false,
+            });
+
+            $("#imgBannerLeft7").click(function (){
+            slidesImg7.goToPrevSlide();
+            });
+            $("#imgBannerRight7").click(function (){
+            slidesImg7.goToNextSlide();
+            });
+	    });        
+
         $(function() {
             //Count the number of li elements
             var bx_num01 = $("#slider1 li").length;

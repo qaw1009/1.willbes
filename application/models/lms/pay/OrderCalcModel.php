@@ -376,10 +376,10 @@ class OrderCalcModel extends BaseOrderModel
                     from (
                         select RR.*
                             , (RR.RealPayPrice - RR.RefundPrice) as RemainPayPrice
-                            , (RR.DivisionSalePrice / RR.TotalSalePrice) as ProdDivisionRate #B
+                            , ifnull(RR.DivisionSalePrice / RR.TotalSalePrice, 0) as ProdDivisionRate #B
                             , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #D1			 
                         from ('
-                . $raw_query . '
+                            . $raw_query . '
                         ) as RR				
                     ) as RD
                 ) as U';
@@ -686,14 +686,14 @@ class OrderCalcModel extends BaseOrderModel
             $in_column = 'TA.ProfIdx, TA.ProdCode, TA.ProdName, TA.ProdCodeSub, TA.ProdNameSub, TA.SiteCode
 				, TA.LearnPatternCcd, TA.PackTypeCcd, TA.CampusCcd
 				, TA.StudyStartDate, TA.StudyEndDate, TA.CourseIdx, TA.SubjectIdx
-				, if(TA.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '", (
+				, if(TA.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '", ifnull(
 					TA.ProdSalePrice / 
 					(select sum(B.SalePrice) 
 						from ' . $this->_table['order_sub_product'] . ' as A 
 							inner join ' . $this->_table['product_sale'] . ' as B 
 								on A.ProdCodeSub = B.ProdCode and B.SaleTypeCcd = "613001" and B.IsStatus = "Y" 
 						where A.OrderProdIdx = OP.OrderProdIdx)
-				  ), TA.ProdDivisionRate) as ProdDivisionRate 
+				  , 0), TA.ProdDivisionRate) as ProdDivisionRate 
 				, (TA.ProdCalcRate / 100) as ProdCalcRate, concat(TA.ProdCalcRate, "%") as ProdCalcPerc
 				, OP.RealPayPrice, OP.CardPayPrice, ifnull(OPR.RefundPrice, 0) as RefundPrice
 				, O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd
@@ -827,7 +827,7 @@ class OrderCalcModel extends BaseOrderModel
                             , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice
                             , TRUNCATE(TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) * RR.ProdDivisionRate, 0) as DivisionPgFeePrice			 
                         from ('
-                . $raw_query . '
+                            . $raw_query . '
                         ) as RR				
                     ) as RD
                 ) as U
@@ -878,6 +878,194 @@ class OrderCalcModel extends BaseOrderModel
                 , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusCcdName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
                 , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
                 , DivisionRemainPrice, ProdCalcPerc, DivisionCalcPrice';
+            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
+        }
+
+        // 쿼리 실행
+        $result = $this->_conn->query($query, $raw_binds);
+
+        return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+    }
+
+    /**
+     * 모의고사 강사료 정산 조회
+     * @param string $prod_type [상품구분값, mockTest (고정값)]
+     * @param array $arr_search_date [결제시작일,종료일]
+     * @param bool|string $is_count [조회구분, sum : 교수/과목별합계, tSum : 전체합계, true : 주문목록 카운트, false : 주문목록, excel : 엑셀다운로드]
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @return mixed
+     */
+    public function listCalcMockTest($prod_type, $arr_search_date, $is_count, $arr_condition = [], $limit = null, $offset = null)
+    {
+        if ($is_count === true) {
+            // 상세보기 주문목록 카운트
+            $in_column = 'count(*) AS numrows';
+            $column = '';
+        } else {
+            $in_column = 'if(O.CompleteDatm between ? and ?, OP.RealPayPrice, 0) as RealPayPrice
+                , if(O.CompleteDatm between ? and ?, OP.CardPayPrice, 0) as CardPayPrice
+                , if(OPR.RefundDatm between ? and ?, OPR.RefundPrice, 0) as RefundPrice
+                , MRP.SubjectIdx, MP.ProfIdx
+                , ifnull(1 / (select count(0) from ' . $this->_table['mock_register_r_paper'] . ' where MrIdx = MR.MrIdx), 0) as ProdDivisionRate
+                , (select CalcRate 
+					from ' . $this->_table['professor_calculate_rate'] . ' 
+					where ProfIdx = MP.ProfIdx
+						and LearnPatternCcd = "' . $this->_prod_type_ccd['mock_exam'] . '" 
+						and O.CompleteDatm between ApplyStartDatm and ApplyEndDatm 
+						and IsStatus = "Y" 
+					order by ProfCalcIdx desc 
+					limit 1) as ProfCalcData                               
+                , json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
+
+            if ($is_count === false || $is_count === 'excel') {
+                // 상세보기 주문목록 or 상세보기 주문목록 엑셀다운로드
+                $in_column .= ', O.OrderIdx, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd, O.CompleteDatm, OPR.RefundDatm as OriRefundDatm
+				    , OP.OrderProdIdx, OP.ProdCode, OP.SalePatternCcd
+				    , P.ProdName, left(PC.CateCode, 4) as LgCateCode';
+
+                $column = 'U.*
+                    , if(U.RefundPrice > 0, U.OriRefundDatm, null) as RefundDatm
+                    , if(U.RefundPrice > 0, "환불완료", "결제완료") as PayStatusName
+                    , M.MemId, M.MemName
+                    , PSU.SubjectName, WPF.wProfName
+                    , SC.CateName as LgCateName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName';
+            } else {
+                $column = 'sum(U.RealPayPrice) as tRealPayPrice, sum(U.RefundPrice) as tRefundPrice, sum(U.PgFeePrice) as tPgFeePrice                
+                    , sum(U.DivisionPayPrice) as tDivisionPayPrice, sum(U.DivisionRefundPrice) as tDivisionRefundPrice, sum(U.DivisionPgFeePrice) as tDivisionPgFeePrice
+                    , sum(U.DivisionCalcPrice) as tDivisionCalcPrice, sum(U.DivisionCalcPayPrice) as tDivisionCalcPayPrice, sum(U.DivisionCalcRefundPrice) as tDivisionCalcRefundPrice
+                    , (TRUNCATE(sum(U.DivisionCalcPayPrice) * ' . $this->_in_tax_rate . ', 0) - TRUNCATE(sum(U.DivisionCalcRefundPrice) * ' . $this->_in_tax_rate . ', 0)) as tDivisionIncomeTax
+                    , (TRUNCATE(sum(U.DivisionCalcPayPrice) * ' . $this->_re_tax_rate . ', 0) - TRUNCATE(sum(U.DivisionCalcRefundPrice) * ' . $this->_re_tax_rate . ', 0)) as tDivisionResidentTax
+                    , ((sum(U.DivisionCalcPayPrice)
+                        - TRUNCATE(sum(U.DivisionCalcPayPrice) * ' . $this->_in_tax_rate . ', 0)
+                        - TRUNCATE(sum(U.DivisionCalcPayPrice) * ' . $this->_re_tax_rate . ', 0))
+                        - (sum(U.DivisionCalcRefundPrice)
+                        - TRUNCATE(sum(U.DivisionCalcRefundPrice) * ' . $this->_in_tax_rate . ', 0)
+                        - TRUNCATE(sum(U.DivisionCalcRefundPrice) * ' . $this->_re_tax_rate . ', 0))) as tFinalCalcPrice';
+
+                if ($is_count === 'sum') {
+                    // 교수/과목별 합계일 경우만 (전체합계가 아닌 경우)
+                    $column .= ', U.ProfIdx, U.SubjectIdx, PSU.SubjectName, WPF.wProfName';
+                }
+            }
+        }
+
+        // 조회 로우 from 쿼리
+        $raw_query = '
+            select ' . $in_column . '
+            from (
+                select RO.OrderIdx, ROP.OrderProdIdx
+                from ' . $this->_table['order'] . ' as RO
+                    inner join ' . $this->_table['order_product'] . ' as ROP
+                        on RO.OrderIdx = ROP.OrderIdx
+                where RO.CompleteDatm between ? and ?
+                    and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+                    and ROP.RealPayPrice > 0
+                union
+                select OrderIdx, OrderProdIdx
+                from ' . $this->_table['order_product_refund'] . '
+                where RefundDatm between ? and ?	
+                    and RefundPrice > 0					
+            ) as BO
+                inner join ' . $this->_table['order'] . ' as O
+                    on BO.OrderIdx = O.OrderIdx
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on BO.OrderIdx = OP.OrderIdx and BO.OrderProdIdx = OP.OrderProdIdx
+                left join ' . $this->_table['order_product_refund'] . ' as OPR
+                    on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                inner join ' . $this->_table['product'] . ' as P
+                    on OP.ProdCode = P.ProdCode
+                left join ' . $this->_table['product_r_category'] . ' as PC
+                    on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
+                inner join ' . $this->_table['mock_register'] . ' as MR
+                    on BO.OrderProdIdx = MR.OrderProdIdx and MR.IsStatus = "Y"
+                inner join ' . $this->_table['mock_register_r_paper'] . ' as MRP
+                    on MR.MrIdx = MRP.MrIdx
+                inner join ' . $this->_table['mock_paper'] . ' as MP
+                    on MRP.MpIdx = MP.MpIdx and MP.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CPM
+                    on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"
+            where OP.RealPayPrice > 0
+                and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")				
+                and P.ProdTypeCcd = "' . $this->_prod_type_ccd['mock_exam'] . '"';
+
+        // where 조건
+        $raw_query .= $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        // 기간조회 조건 바인딩
+        $search_start_date = $arr_search_date[0] . ' 00:00:00';
+        $search_end_date = $arr_search_date[1] . ' 23:59:59';
+
+        if ($is_count === true) {
+            $raw_binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date];
+            $query = $raw_query;
+        } else {
+            $raw_binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date,
+                $search_start_date, $search_end_date, $search_start_date, $search_end_date];
+
+            $query = 'select ' . $column . '
+                from (
+                    select RD.*
+                        , TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0) as DivisionPgFeePrice #D	
+                        , TRUNCATE((RD.DivisionPayPrice - TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0)) * RD.ProdCalcRate, 0) as DivisionCalcPayPrice #H1
+                        , TRUNCATE(RD.DivisionRefundPrice * RD.ProdCalcRate, 0) as DivisionCalcRefundPrice #H2
+                        , (TRUNCATE((RD.DivisionPayPrice - TRUNCATE(RD.PgFeePrice * RD.ProdDivisionRate, 0)) * RD.ProdCalcRate, 0) 
+                            - TRUNCATE(RD.DivisionRefundPrice * RD.ProdCalcRate, 0)) as DivisionCalcPrice #H=H1-H2
+                    from (
+                        select RR.*
+                            , (RR.RealPayPrice - RR.RefundPrice) as RemainPayPrice
+                            , TRUNCATE(RR.RealPayPrice * RR.ProdDivisionRate, 0) as DivisionPayPrice #C
+                            , TRUNCATE(RR.RefundPrice * RR.ProdDivisionRate, 0) as DivisionRefundPrice #E
+                            , TRUNCATE(if(RR.RealPayPrice > RR.RefundPrice, if(RR.PgFee < 1, RR.CardPayPrice * RR.PgFee, RR.PgFee), 0), 0) as PgFeePrice #D1	
+                            , (RR.ProfCalcData / 100) as ProdCalcRate
+                            , concat(RR.ProfCalcData, "%") as ProdCalcPerc                                		 
+                        from ('
+                            . $raw_query . '
+                        ) as RR				
+                    ) as RD
+                ) as U';
+
+            if ($is_count !== 'tSum') {
+                // 상세보기 주문목록 or 상세보기 주문목록 엑셀다운로드 or 교수/과목별 합계 (=> 전체합계가 아닌 경우)
+                $query .= '
+                    left join ' . $this->_table['subject'] . ' as PSU		
+                        on U.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"
+                    left join ' . $this->_table['professor'] . ' as PF		
+                        on U.ProfIdx = PF.ProfIdx and PF.IsStatus = "Y"	
+                    left join ' . $this->_table['pms_professor'] . ' as WPF
+                        on PF.wProfIdx = WPF.wProfIdx and WPF.wIsStatus = "Y"';
+            }
+
+            if ($is_count === false || $is_count === 'excel') {
+                // 상세보기 주문목록 or 상세보기 주문목록 엑셀다운로드
+                $query .= '
+                    left join ' . $this->_table['member'] . ' as M
+                        on U.MemIdx = M.MemIdx
+                    left join ' . $this->_table['category'] . ' as SC
+                        on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
+                    left join ' . $this->_table['code'] . ' as CPR
+                        on U.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
+                    left join ' . $this->_table['code'] . ' as CPM
+                        on U.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y"';
+
+                if ($is_count === false) {
+                    // 상세보기 주문목록 order by, offset, limit
+                    $query .= ' order by U.OrderIdx desc';
+                    is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+                }
+            } else {
+                // 교수/과목별 합계 or 전체합계 group by, order by
+                $query .= ' group by U.ProfIdx, U.SubjectIdx';
+                $query .= ' order by tDivisionCalcPrice desc';
+            }
+        }
+
+        // 상세보기 주문목록 엑셀다운로드
+        if ($is_count === 'excel') {
+            $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, PgFee, PgFeePrice, left(CompleteDatm, 10) as CompleteDate
+                , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusName, LgCateName, ProdCode, ProdName, SubjectName, wProfName
+                , ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice, ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 

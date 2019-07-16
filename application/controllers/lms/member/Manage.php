@@ -40,7 +40,11 @@ class Manage extends \app\controllers\BaseController
      */
     public function index()
     {
-        $this->load->view('member/manage/list');
+        $InterestCcd = $this->codeModel->getCcd('718');
+
+        $this->load->view('member/manage/list', [
+            'InterestCcd' => $InterestCcd
+        ]);
     }
 
     /**
@@ -71,7 +75,8 @@ class Manage extends \app\controllers\BaseController
                 'Mem.IsChange' => $this->_req('IsChange'), // 회원통합 여부
                 'Info.SmsRcvStatus' => $this->_req('SmsRcv'), // sms 수신여부
                 'Info.MailRcvStatus' => $this->_req('MailRcv'), // 메일 수신여부
-                'Mem.IsBlackList' => $this->_req('IsBlackList') // 블랙리스트 여부
+                'Mem.IsBlackList' => $this->_req('IsBlackList'), // 블랙리스트 여부
+                'Info.InterestCode' => $this->_req('search_interest')
             ]
         ];
 
@@ -155,6 +160,7 @@ class Manage extends \app\controllers\BaseController
                         SELECT memIdx FROM lms_member_device 
                     )";
         }
+
 
         // 갯수 구해오기
         $count = $this->manageMemberModel->list(true, $arr_condition,

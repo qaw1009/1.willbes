@@ -735,7 +735,7 @@ class OrderCalcModel extends BaseOrderModel
                     , sum(U.DivisionPayPrice) as tDivisionPayPrice
                     , sum(U.DivisionRefundPrice) as tDivisionRefundPrice
                     , sum(U.DivisionPgFeePrice) as tDivisionPgFeePrice
-                    , sum(U.DivisionRemainPrice) as tDivisionRemainPrice
+                    , sum(U.DivisionPayPrice - U.DivisionRefundPrice - U.DivisionPgFeePrice) as tDivisionRemainPrice
                     , sum(U.DivisionCalcPrice) as tDivisionCalcPrice
                     , TRUNCATE(sum(U.DivisionCalcPrice) * ' . $this->_in_tax_rate . ', 0) as tDivisionIncomeTax
                     , TRUNCATE(sum(U.DivisionCalcPrice) * ' . $this->_re_tax_rate . ', 0) as tDivisionResidentTax
@@ -820,7 +820,7 @@ class OrderCalcModel extends BaseOrderModel
             $query = 'select ' . $column . '
                 from (
                     select RD.*
-                        , (RD.DivisionPayPrice - RD.DivisionRefundPrice) as DivisionRemainPrice
+                        , (RD.DivisionPayPrice - RD.DivisionRefundPrice - RD.DivisionPgFeePrice) as DivisionRemainPrice
                         , TRUNCATE((RD.DivisionPayPrice - RD.DivisionRefundPrice - RD.DivisionPgFeePrice) * RD.ProdCalcRate, 0) as DivisionCalcPrice
                     from (
                         select RR.* 
@@ -879,7 +879,7 @@ class OrderCalcModel extends BaseOrderModel
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
                 , PgFee, PgFeePrice, PayStatusCcdName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
-                , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionRemainPrice, DivisionPgFeePrice
+                , CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionRefundPrice, DivisionPgFeePrice, DivisionRemainPrice
                 , ProdCalcPerc, DivisionCalcPrice';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }

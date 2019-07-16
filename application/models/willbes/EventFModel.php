@@ -35,7 +35,7 @@ class EventFModel extends WB_Model
 
     //등록파일 rule 설정
     private $_upload_file_rule = [
-        'allowed_types' => 'jpg|gif|png|pdf',
+        'allowed_types' => 'jpg|gif|png|pdf|hwp',
         'overwrite' => 'false',
         'max_size' => 2560
     ];

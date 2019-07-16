@@ -29,7 +29,7 @@
                                 <th rowspan="2" class="valign-middle">환불금액(D)<br/>*안분율 적용</th>
                                 <th rowspan="2" class="valign-middle">순매출(F)<br/>(C-D)</th>
                                 <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*안분율 적용</th>
-                                <th rowspan="2" class="valign-middle">정산금액(H)<br/>F*정산율</th>
+                                <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-D-E)*정산율</th>
                                 <th colspan="2">세액공제</th>
                                 <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
                             </tr>
@@ -199,7 +199,7 @@
                     <th class="bold valign-middle">순매출(F)<br/>(C-D)</th>
                     <th class="bold valign-middle">안분수수료(E)<br/>E1*B</th>
                     <th class="bold valign-middle">정산율(G)</th>
-                    <th class="bold valign-middle">정산금액(H)<br/>F*G</th>
+                    <th class="bold valign-middle">정산금액(H)<br/>(C-D-E)*G</th>
                 </tr>
                 <tr class="bg-info">
                     <th colspan="5" class="text-center">합계</th>

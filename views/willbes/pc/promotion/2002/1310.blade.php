@@ -20,7 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
+        .skyBanner {position:fixed; top:200px;right:0;z-index:10;}
         .top_police{background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_police_bg.jpg) no-repeat center top;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_top_bg.jpg) no-repeat center top;}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_01_bg.jpg) no-repeat center top;}
@@ -43,7 +43,7 @@
         .evt03 .NGEBS{color:#5687e3;font-weight:bold;}
 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_04_bg.jpg) no-repeat center top;}
-        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_05_bg.jpg) no-repeat center top;}
+        .evt05 {background:#555555;}
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>
 

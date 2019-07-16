@@ -55,6 +55,7 @@
             {!! method_field($arr_base['method']) !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $arr_base['data']['ElIdx'] }}"/>
             <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="file_chk" value="Y"/>
             <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
@@ -146,7 +147,7 @@
         }
 
         var files = $('#attach_file')[0].files[0];
-        if (files === undefined) {
+        if (files === undefined || files == null || files == '') {
             alert('참여신청 양식을 등록해 주세요.');
             return false;
         }

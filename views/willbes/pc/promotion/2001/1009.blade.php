@@ -184,8 +184,8 @@
         <div class="evtCtnsBox wb_pop2" id="main">
             <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_top_190701.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
-				<area shape="rect" coords="866,1307,998,1338" href="javascript:certOpen();" alt="수강생인증"/>
-                <area shape="rect" coords="1003,1306,1137,1339" href="javascript:goDesc('tab3')" alt="이용안내"/>
+				<area shape="rect" coords="426,1307,558,1338" href="javascript:certOpen();" alt="수강생인증"/>
+                <area shape="rect" coords="563,1306,697,1339" href="javascript:goDesc('tab3')" alt="이용안내"/>
             </map>
         </div>
 

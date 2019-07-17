@@ -1,4 +1,35 @@
-<div id="movieFrame2">
+<style type="text/css">    
+    /*라이브영상*/
+    #movieFrame {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/live/liveTV.png) no-repeat center top;}
+    .embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
+    .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:551px; margin:0 auto}
+    
+    /*크롬*/
+    @@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #movieFrame2 {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/live/liveTV.png) no-repeat center center;}
+    .embedWrap {position:relative; width:980px; height:551px; background:url(https://static.willbes.net/public/images/promotion/live/liveBefore.jpg) no-repeat center center;}
+    .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto}
+    .mobileCh {position:absolute; left:0; bottom:0; width:980px;}
+    .mobileCh li {display:inline; float:left; width:490px;}
+    .mobileCh li a {display:block;}
+    .mobileCh li a.ch2 {color:#6CF}
+    .mobileCh li a:hover {color:#FC0}
+    .mobileCh:after {content:""; display:block; clear:both}
+    }
+    
+    /*모바일*/
+    .mobileCh {position:absolute; bottom:0; width:980px;}
+    .mobileCh li {display:inline; float:left; width:50%;}
+    .mobileCh li a {display:block;}
+    .mobileCh li:last-child a {margin:0}
+    .mobileCh li a.ch2 {color:#6CF}
+    .mobileCh li a:hover {color:#FC0}
+    .mobileCh:after {content:""; display:block; clear:both}
+
+    #myElement{position:absolute;left:0;}
+</style>
+
+<div id="movieFrame">
     @php
         $live_type = 'off';
         $live_video_type = 'off';

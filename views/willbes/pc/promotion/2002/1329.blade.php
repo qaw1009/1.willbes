@@ -114,7 +114,7 @@
                                 <th>* 참여일</th>
                                 <td>
                                     <ul>
-                                        <li><input type="radio" name="register_data1" id="campus1" value="7.20(토)" /> <label for="campus1">7.21(일)</label></li>
+                                        <li><input type="radio" name="register_data1" id="campus1" value="7.21(일)" /> <label for="campus1">7.21(일)</label></li>
                                     </ul>
                                 </td>
                             </tr>

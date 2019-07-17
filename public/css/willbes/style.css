@@ -1030,7 +1030,7 @@ table.auTable tr td {
 .dropdown:hover .left-drop-Box {
     opacity: 1;
     visibility: visible;
-    width: 380px;
+    width: 160px;
     height: auto;
 }
 .dropdown.active .left-drop-Box .sliderView {
@@ -1081,7 +1081,7 @@ table.auTable tr td {
 }
 .left-drop-Box ul {
     float: left;
-    width: 105px;
+    width: 100%;
 }
 .left-drop-Box ul li {
     text-align: left;

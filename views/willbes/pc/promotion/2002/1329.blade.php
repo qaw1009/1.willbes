@@ -51,7 +51,7 @@
             <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="참여일"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
 
@@ -95,7 +95,7 @@
                                 <th>* 캠퍼스</th>
                                 <td>
                                     <ul>
-                                        <li><input type="radio" name="register_data2" id="campus2" value="노량진" /> <label for="campus2">노량진</label></li>
+                                        <li>노량진</li>
                                     </ul>
                                 </td>
                             </tr>

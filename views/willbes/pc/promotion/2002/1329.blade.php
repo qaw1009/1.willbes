@@ -39,34 +39,7 @@
         .evt01 .btn a:hover {background:#e71833}
         .evt02 {background:#2e3c52 url(https://static.willbes.net/public/images/promotion/2019/07/1329_02_bg.jpg) no-repeat center top; padding-top:100px}         
         .evt03 {background:#fff;} 
-
-        /*라이브영상*/
-        #movieFrame1 {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/live/liveTV.png) no-repeat center top;}
-        #movieFrame2 {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/live/liveTV.png) no-repeat center top;}
-        .embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
-        .embedWrap {position:relative; width:980px; height:551px; margin:0 auto}
-        .embed-container {padding-bottom:46.25%; overflow:hidden; width:100%; min-height:551px; margin:0 auto}
-        /*크롬*/
-        @@media screen and (-webkit-min-device-pixel-ratio:0) {
-        #movieFrame {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1227_03_liveBg_L.jpg) no-repeat center center;}
-        .embedWrap {position:relative; width:980px; height:551px; margin-left:70px; background:url(https://static.willbes.net/public/images/promotion/2019/05/1227_03_live01.jpg) no-repeat center center;}
-        .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto;}
-        .mobileCh {position:absolute; left:0; bottom:0; width:980px;}
-        .mobileCh li {display:inline; float:left; width:490px;}
-        .mobileCh li a {display:block;}
-        .mobileCh li a.ch2 {color:#6CF}
-        .mobileCh li a:hover {color:#FC0}
-        .mobileCh:after {content:""; display:block; clear:both}
-        }
-        /*모바일*/
-        .mobileCh {position:absolute; bottom:0; width:980px;}
-        .mobileCh li {display:inline; float:left; width:50%;}
-        .mobileCh li a {display:block;}
-        .mobileCh li:last-child a {margin:0}
-        .mobileCh li a.ch2 {color:#6CF}
-        .mobileCh li a:hover {color:#FC0}
-        .mobileCh:after {content:""; display:block; clear:both}
-
+        
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>
 

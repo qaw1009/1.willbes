@@ -84,14 +84,14 @@
 
 
             <div class="evtCtnsBox top_police">
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_00.jpg" title="신광은 경찰팀">
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_00.jpg" title="대한민국 경찰학원 1위">
             </div>
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_top.jpg" title="합격전략 환승 설명회">
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_01.jpg" title="환승이벤트">
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_01.jpg" title="출제가능한 문제만 모조리 정리한다">
                 <div class="request" id="request">
                     <div class="requestL">
                         <h3>* 장정훈 경찰학 무료특강 신청접수</h3>
@@ -177,10 +177,10 @@
 
             <div class="evtCtnsBox evt02">
                 @include('willbes.pc.promotion.live_video_partial')
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_02.jpg" title="스페셜 혜택">                
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_02.jpg" title="라이브 특강 진행 안내">                
             </div>
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_03.jpg" title="신청접수">                
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1329_03.jpg" title="무엇이든 물어보세요~">                
             </div>
             {{--url댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

@@ -47,13 +47,13 @@ to{color:#d63e4d}
 .evt02 ul li {display:inline; float:left; margin-right:8px}
 .evt02 ul li:last-child {margin-right:0}
 .evt02 ul li a {display:block; width:138px; height:209px; font-size:0; text-indent:-9999px}
-.evt02 ul li:nth-child(1) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t1_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(2) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t2_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(3) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t3_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(4) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t4_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(5) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t5_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(6) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t6_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(7) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t7_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(1) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t6_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(2) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t7_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(3) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t4_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(4) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t5_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(5) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t1_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(6) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t2_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(7) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t3_btn.jpg) no-repeat left top;}
 .evt02 ul li a.active,
 .evt02 ul li a:hover {background-position:right top}
 .evt02 ul:after {content:""; display:block; clear:both}
@@ -103,13 +103,13 @@ to{color:#d63e4d}
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02.jpg" alt="즉시 4만원 할인">
             <ul>
+                <li><a href="#tab6">영어 하승민</a></li>
+                <li><a href="#tab7">영어 김현정</a></li>                
+                <li><a href="#tab4">한국사 원유철</a></li>
+                <li><a href="#tab5">한국사 오태진</a></li>
                 <li><a href="#tab1">형소법 신광은</a></li>
                 <li><a href="#tab2">형법 김원욱</a></li>
-                <li><a href="#tab3">경찰학 장정훈</a></li>
-                <li><a href="#tab4">경찰학 장정훈</a></li>
-                <li><a href="#tab5">한국사 오태진</a></li>
-                <li><a href="#tab6">영어 하승민</a></li>
-                <li><a href="#tab7">영어 김현정</a></li>
+                <li><a href="#tab3">경찰학 장정훈</a></li>               
             </ul>
             <div id="tab1" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02_t1.jpg" alt="형소법 신광은" usemap="#Map1333A" border="0">

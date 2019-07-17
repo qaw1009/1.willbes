@@ -42,7 +42,7 @@
                                                 <li><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
                                             @endforeach
                                         </ul>
-                                        <div class="sliderViewWrap"></div>
+                                        {{--<div class="sliderViewWrap"></div>--}}
                                     </div>
                                 @endif
                             </li>

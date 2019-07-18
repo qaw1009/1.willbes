@@ -20,9 +20,10 @@
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">룰렛 코드</label>
-                    <div class="col-md-5 form-inline">
-                        <input type="text" class="form-control" name="up_roulette_code" id="up_roulette_code" value="{{$data['RouletteCode']}}" style="width: 100px;" @if($method == 'PUT')readonly="readonly"@endif>
-                        <p class="form-control-static"># 등록 시 자동 생성</p>
+                    <div class="col-md-5">
+                        {{--<input type="text" class="form-control" name="up_roulette_code" id="up_roulette_code" value="{{$data['RouletteCode']}}" style="width: 100px;" @if($method == 'PUT')readonly="readonly"@endif>
+                        <p class="form-control-static"># 등록 시 자동 생성</p>--}}
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RouletteCode'] }}@else # 등록 시 자동 생성 @endif</p>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
                     <div class="col-md-4 ml-12-dot item form-inline">

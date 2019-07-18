@@ -396,7 +396,7 @@ class RouletteModel extends WB_Model
                 }
             }
 
-            $file_cnt = (empty($_FILES['roulette_attach_finish_file']) === true) ? '0' : count($_FILES['roulette_attach_file']['name']);
+            $file_cnt = (empty($_FILES['roulette_attach_finish_file']) === true) ? '0' : count($_FILES['roulette_attach_finish_file']['name']);
             $uploaded = $this->upload->uploadFile('file', ['roulette_attach_finish_file'], $this->_getAttachImgNames($file_cnt,'_finish'), $upload_dir);
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);

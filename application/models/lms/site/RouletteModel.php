@@ -155,10 +155,9 @@ class RouletteModel extends WB_Model
     /**
      * 룰렛 수정
      * @param array $input
-     * @param bool $code_modify_type
      * @return array|bool
      */
-    public function modifyRoulette($input = [], $code_modify_type = false)
+    public function modifyRoulette($input = [])
     {
         $this->_conn->trans_begin();
         try {
@@ -205,10 +204,6 @@ class RouletteModel extends WB_Model
                     'MaxLimitCount' => element('max_limit_count', $input),
                     'ProbabilityType' => element('probability_type', $input)
                 ]);
-            }
-
-            if ($code_modify_type === true) {
-                $data['RouletteCode'] = element('up_roulette_code', $input);
             }
 
             if ($this->_conn->set($data)->where('RouletteCode', $roulette_code)->update($this->_table['roulette']) === false) {

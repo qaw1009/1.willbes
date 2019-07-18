@@ -49,30 +49,36 @@ class EventRoulette extends \app\controllers\BaseController
         $method = 'POST';
         $data = null;
         $roulette_code = null;
+        $modify_type = '';
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $roulette_code = $params[0];
-            $arr_condition = ([
+            $arr_condition = [
                 'EQ'=>[
                     'a.RouletteCode' => $roulette_code,
                     'a.IsStatus' => 'Y'
                 ]
-            ]);
+            ];
 
             $data = $this->rouletteModel->findRouletteForModify($arr_condition);
             if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
-            /*$data['arr_roulette_product'] = json_decode($data['RouletteProductJson'], true);*/
             $data['roulette_list_otherinfo'] = $this->rouletteModel->listRouletteOtherInfo($roulette_code);
+
+            unset($arr_condition['EQ']['a.IsStatus']);
+            if (empty($this->rouletteModel->listWinMember(true, $arr_condition, $roulette_code)) === false) {
+                $modify_type = 'disabled="disabled"';
+            }
         }
 
         $this->load->view("site/event_roulette/create", [
             'method' => $method,
             'code_modify_type' => (ENVIRONMENT === 'production') ? false : true,
             'data' => $data,
-            'roulette_code' => $roulette_code
+            'roulette_code' => $roulette_code,
+            'modify_type' => $modify_type
         ]);
     }
 
@@ -181,25 +187,26 @@ class EventRoulette extends \app\controllers\BaseController
         $rules = [
             ['field' => 'roulette_title', 'label' => '제목', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'day_limit_count', 'label' => '일일 횟수제한', 'rules' => 'trim|required'],
-            ['field' => 'max_limit_count', 'label' => '최대 횟수제한', 'rules' => 'trim|required'],
-
             ['field' => 'new_member_join_type', 'label' => '신규회원가입대상 사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'new_member_join_start_date', 'label' => '신규회원가입 기간설정', 'rules' => 'callback_validateRequiredIf[new_member_join_type,Y]'],
             ['field' => 'new_member_join_end_date', 'label' => '신규회원가입 기간설정', 'rules' => 'callback_validateRequiredIf[new_member_join_type,Y]'],
-
             ['field' => 'roulette_start_datm', 'label' => '기간설정', 'rules' => 'trim|required'],
-            ['field' => 'roulette_end_datm', 'label' => '기간설정', 'rules' => 'trim|required'],
-            ['field' => 'probability_type', 'label' => '확률타입', 'rules' => 'trim|required|in_list[1,2]'],
-            ['field' => 'roulette_prod_name[]', 'label' => '룰렛상품명', 'rules' => 'trim|required'],
-            ['field' => 'roulette_prod_qty[]', 'label' => '룰렛상품수량', 'rules' => 'trim|required'],
-            ['field' => 'roulette_prod_win_turns[]', 'label' => '룰렛상품당첨순번', 'rules' => 'trim|required'],
-            ['field' => 'roulette_prod_probability[]', 'label' => '룰렛상품확률', 'rules' => 'trim|required'],
-            ['field' => 'roulette_order_num[]', 'label' => '룰렛상품정렬순서', 'rules' => 'trim|required']
+            ['field' => 'roulette_end_datm', 'label' => '기간설정', 'rules' => 'trim|required']
         ];
 
         if (empty($this->_reqP('roulette_code')) === true) {
             $method = 'add';
+            $rules = array_merge($rules, [
+                ['field' => 'count_type', 'label' => '당첨 카운트 기준일', 'rules' => 'trim|required|in_list[D,T]'],
+                ['field' => 'member_limit_count', 'label' => '아이디 기준 참여 횟수', 'rules' => 'trim|required'],
+                ['field' => 'max_limit_count', 'label' => '전체 참여 횟수', 'rules' => 'trim|required'],
+                ['field' => 'probability_type', 'label' => '확률타입', 'rules' => 'trim|required|in_list[1,2]'],
+                ['field' => 'roulette_prod_name[]', 'label' => '룰렛상품명', 'rules' => 'trim|required'],
+                ['field' => 'roulette_prod_qty[]', 'label' => '룰렛상품수량', 'rules' => 'trim|required'],
+                ['field' => 'roulette_prod_win_turns[]', 'label' => '룰렛상품당첨순번', 'rules' => 'trim|required'],
+                ['field' => 'roulette_prod_probability[]', 'label' => '룰렛상품확률', 'rules' => 'trim|required'],
+                ['field' => 'roulette_order_num[]', 'label' => '룰렛상품정렬순서', 'rules' => 'trim|required']
+            ]);
         } else {
             $method = 'modify';
             $rules = array_merge($rules, [

@@ -8,15 +8,24 @@ class RouletteFModel extends WB_Model
         'roulette_member' => 'lms_roulette_member',
         'roulette_otherinfo' => 'lms_roulette_otherinfo'
     ];
-
+    public $_finish_img_path = 'https://static.willbes.net/public/images/promotion/common/rull_end.png';
     public function __construct()
     {
         parent::__construct('lms');
     }
 
-    public function listRouletteInfo($roulette_code)
+    /**
+     * 룰렛 상품 리스트
+     * @param $roulette_code
+     * @param $defaultCondition
+     * @return mixed
+     */
+    public function listRouletteInfo($roulette_code, $defaultCondition)
     {
-        $column = 'R.RouletteCode, R.RouletteStartDatm, R.RouletteEndDatm, O.ProdName, O.FileFullPath, O.FileRealName, O.ProdQty, IFNULL(M.ProdUsedCnt,\'0\') AS ProdUsedCnt';
+        $default_where = $this->_conn->makeWhere($defaultCondition);
+        $default_where = $default_where->getMakeWhere(true);
+
+        $column = 'R.RouletteCode, R.RouletteStartDatm, R.RouletteEndDatm, O.ProdName, O.FileFullPath, O.FileRealName, O.FinishFileFullPath, O.FinishFileRealName, O.ProdQty, IFNULL(M.ProdUsedCnt,\'0\') AS ProdUsedCnt';
         $arr_condition = [
             'EQ' => [
                 'R.RouletteCode' => $roulette_code,
@@ -37,7 +46,7 @@ class RouletteFModel extends WB_Model
             LEFT JOIN (
                 SELECT RroIdx, COUNT(*) AS ProdUsedCnt
                 FROM {$this->_table['roulette_member']}
-                WHERE RouletteCode = '{$roulette_code}'
+                WHERE RouletteCode = '{$roulette_code}' {$default_where}
                 GROUP BY RroIdx
             ) AS M ON other.RroIdx = M.RroIdx
         ";
@@ -53,7 +62,7 @@ class RouletteFModel extends WB_Model
      */
     public function findRoulette($arr_condition)
     {
-        $column = 'RouletteCode, Title, DayLimitCount, MaxLimitCount, NewMemberJoinType, NewMemberJoinStartDate, NewMemberJoinEndDate, RouletteStartDatm, RouletteEndDatm, ProbabilityType';
+        $column = 'RouletteCode, Title, MemberLimitCount, MaxLimitCount, CountType, NewMemberJoinType, NewMemberJoinStartDate, NewMemberJoinEndDate, RouletteStartDatm, RouletteEndDatm, ProbabilityType';
         $from = " FROM {$this->_table['roulette']}";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -75,14 +84,10 @@ class RouletteFModel extends WB_Model
                 throw new \Exception('조회된 룰렛 부가상품이 없습니다.');
             }
 
-            //룰렛 상품 총 당첨수
-            $data_member_info['list_used_total_count'] = $this->_arrUsedTotalCount($roulette_code);
-
-            //회원 당첨 총횟수
-            $data_member_info['used_total_member_count'] = $this->_getUsedMemberTotalCount($roulette_code);
-
-            //금일 회원 당첨 횟수
-            $data_member_info['used_today_member_count'] = $this->_getUsedMemberCount($roulette_code);
+            $count_type = $data_info['roulette_data']['CountType'];
+            $data_member_info['list_used_total_count'] = $this->_arrUsedTotalCount($roulette_code, $count_type);
+            $data_member_info['used_total_member_count'] = $this->_getUsedMemberTotalCount($roulette_code, $count_type);
+            $data_member_info['used_today_member_count'] = $this->_getUsedMemberCount($roulette_code, $count_type);
 
             //룰렛참여 가능여부 체크
             $result = $this->_rouletteDataValidate($data_info, $data_member_info);
@@ -99,7 +104,7 @@ class RouletteFModel extends WB_Model
 
             //순번 가져오기
             $arr_condition = ['EQ' => ['RouletteCode' => $roulette_code]];
-            $arr_temp_member_data = $this->_findGetUsedCount($arr_condition);
+            $arr_temp_member_data = $this->_findGetUsedCount($arr_condition, $count_type);
 
             //순번에 해당되는 상품 조회 null -> 0으로된 상품 다시 조회
             $arr_condition = [
@@ -125,13 +130,6 @@ class RouletteFModel extends WB_Model
             if (empty($otherinfo_data) === true) {
                 throw new \Exception('조회된 룰렛 부가상품이 없습니다.');
             }
-
-            //당첨된 상품수 조회
-           /* $arr_condition = ['EQ' => ['RroIdx' => $otherinfo_data['RroIdx']]];
-            $used_count = $this->_findGetUsedCount($arr_condition);
-            if ($otherinfo_data['ProdQty'] <= $used_count['UsedCount']) {
-                throw new \Exception('해당 상품의 당첨수가 초과되었습니다. 다시 시도해 주세요.');
-            }*/
 
             //상품식별자 UPDATE
             $this->_conn->set('RroIdx', $otherinfo_data['RroIdx'])->where('RmIdx', $ins_rm_idx);
@@ -163,14 +161,10 @@ class RouletteFModel extends WB_Model
                 throw new \Exception('조회된 룰렛 부가상품이 없습니다.');
             }
 
-            //룰렛 상품 총 당첨수
-            $data_member_info['list_used_total_count'] = $this->_arrUsedTotalCount($roulette_code);
-
-            //금일 당첨 총횟수
-            $data_member_info['used_total_member_count'] = $this->_getUsedMemberTotalCount($roulette_code);
-
-            //금일 회원 당첨 횟수
-            $data_member_info['used_today_member_count'] = $this->_getUsedMemberCount($roulette_code);
+            $count_type = $data_info['roulette_data']['CountType'];
+            $data_member_info['list_used_total_count'] = $this->_arrUsedTotalCount($roulette_code, $count_type);
+            $data_member_info['used_total_member_count'] = $this->_getUsedMemberTotalCount($roulette_code, $count_type);
+            $data_member_info['used_today_member_count'] = $this->_getUsedMemberCount($roulette_code, $count_type);
 
             //룰렛참여 가능여부 체크
             $result = $this->_rouletteDataValidate($data_info, $data_member_info);
@@ -242,15 +236,16 @@ class RouletteFModel extends WB_Model
     /**
      * 당첨 테이블 카운트
      * @param $arr_condition
+     * @param $count_type
      * @return mixed
      */
-    private function _findGetUsedCount($arr_condition)
+    private function _findGetUsedCount($arr_condition, $count_type)
     {
-        $arr_condition = array_merge($arr_condition, [
-            'RAW' => [
-                'RegDatm > ' => 'CURRENT_DATE()'
-            ]
-        ]);
+        if ($count_type == 'D') {
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => ['RegDatm > ' => 'CURRENT_DATE()']
+            ]);
+        }
 
         $column = 'COUNT(*) AS UsedCount';
         $from = " FROM {$this->_table['roulette_member']}";
@@ -262,54 +257,74 @@ class RouletteFModel extends WB_Model
     /**
      * 룰렛 상품별 총 당첨수
      * @param $roulette_code
+     * @param $count_type
      * @return array
      */
-    private function _arrUsedTotalCount($roulette_code)
+    private function _arrUsedTotalCount($roulette_code, $count_type)
     {
-        $this->_conn->select("RroIdx, COUNT(*) AS UsedTotalCount");
-        $this->_conn->from($this->_table['roulette_member']);
-        $this->_conn->where_in('RroIdx', "select RroIdx from {$this->_table['roulette_otherinfo']} where RouletteCode = '{$roulette_code}' AND IsUse = 'Y' AND RegDatm > CURRENT_DATE()", false);
-        $this->_conn->group_by('RroIdx');
-        $data = $this->_conn->get()->result_array();
+        $sub_where = ($count_type == 'D') ? 'AND RegDatm > CURRENT_DATE()' : '';
+        $arr_condition = [
+            'EQ' => [
+                'A.RouletteCode' => $roulette_code
+            ]
+        ];
+        $column = 'A.RroIdx, IFNULL(B.UsedTotalCount,"0") AS UsedTotalCount';
+        $from = "
+            FROM {$this->_table['roulette_otherinfo']} AS A
+            LEFT JOIN (
+                SELECT RroIdx, COUNT(*) AS UsedTotalCount
+                FROM {$this->_table['roulette_member']}
+                WHERE RouletteCode = '{$roulette_code}'
+                {$sub_where}
+                GROUP BY `RroIdx`
+            ) AS B ON A.RroIdx = B.RroIdx
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $data = $this->_conn->query('select '.$column .$from .$where)->result_array();
         return array_pluck($data, 'UsedTotalCount', 'RroIdx');
     }
 
-
-    private function _getUsedMemberTotalCount($roulette_code)
+    private function _getUsedMemberTotalCount($roulette_code, $count_type)
     {
         $arr_condition = [
             'EQ' => [
                 'RouletteCode' => $roulette_code
-            ],
-            'RAW' => [
-                'RegDatm > ' => 'CURRENT_DATE()'
             ]
         ];
+        if ($count_type == 'D') {
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => ['RegDatm > ' => 'CURRENT_DATE()']
+            ]);
+        }
 
         $column = 'COUNT(*) AS UsedMemberCount';
         $from = " FROM {$this->_table['roulette_member']}";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
     /**
      * 사용자 당첨 횟수
      * @param $roulette_code
+     * @param $count_type
      * @return mixed
      */
-    private function _getUsedMemberCount($roulette_code)
+    private function _getUsedMemberCount($roulette_code, $count_type)
     {
         $arr_condition = [
             'EQ' => [
                 'RouletteCode' => $roulette_code,
                 'MemIdx' => $this->session->userdata('mem_idx')
-            ],
-            'RAW' => [
-                'RegDatm > ' => 'CURRENT_DATE()'
             ]
         ];
+        if ($count_type == 'D') {
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => ['RegDatm > ' => 'CURRENT_DATE()']
+            ]);
+        }
 
         $column = 'COUNT(*) AS UsedMemberCount';
         $from = " FROM {$this->_table['roulette_member']}";
@@ -342,22 +357,21 @@ class RouletteFModel extends WB_Model
                 }
             }
             if ($chk_true_count < 1) {
-                throw new \Exception('잔여 상품이 없습니다.');
+                throw new \Exception('준비된 상품이 모두 소진되었습니다.');
             }
 
-            //총참여횟수 체크
+            //총 상품 횟수 체크
             if ($data_info['roulette_data']['MaxLimitCount'] <= $data_member_info['used_total_member_count']['UsedMemberCount']) {
-                throw new \Exception('금일 룰렛 참여 횟수가 모두 소진되었습니다. 내일 다시 참여해 주세요.');
+                throw new \Exception('준비된 상품이 모두 소진되었습니다.');
             }
 
-            //상품일일참여횟수 체크
-            if ($data_info['roulette_data']['DayLimitCount'] <= $data_member_info['used_today_member_count']['UsedMemberCount']) {
-                throw new \Exception('금일 룰렛 참여 횟수가 모두 소진되었습니다. 내일 다시 참여해 주세요.');
+            //회원 기준 상품 횟수 체크
+            if ($data_info['roulette_data']['MemberLimitCount'] <= $data_member_info['used_today_member_count']['UsedMemberCount']) {
+                throw new \Exception('룰렛 참여 횟수가 모두 소진되었습니다');
             }
         } catch (\Exception $e) {
             return error_result($e);
         }
-
         return true;
     }
 
@@ -456,13 +470,6 @@ class RouletteFModel extends WB_Model
             if (empty($otherinfo_data) === true) {
                 throw new \Exception('조회된 부가정보가 없습니다. 다시 시도해 주세요');
             }
-
-            //당첨된 상품수 조회
-            /*$arr_condition = ['EQ' => ['RroIdx' => $rro_idx]];
-            $used_count = $this->_findGetUsedCount($arr_condition);
-            if ($otherinfo_data['ProdQty'] <= $used_count['UsedCount']) {
-                throw new \Exception('해당 상품의 당첨수가 초과되었습니다. 다시 시도해 주세요.');
-            }*/
 
             //당첨데이터 저장
             $data = [

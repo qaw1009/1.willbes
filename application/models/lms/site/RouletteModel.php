@@ -23,7 +23,7 @@ class RouletteModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                a.RouletteCode, a.Title, a.DayLimitCount, a.MaxLimitCount, a.NewMemberJoinType, a.NewMemberJoinStartDate, a.NewMemberJoinEndDate, a.RouletteStartDatm, a.RouletteEndDatm, a.ProbabilityType, a.IsUse, a.IsStatus, a.Memo, a.RegDatm, a.RegAdminIdx
+                a.RouletteCode, a.Title, a.CountType, a.MemberLimitCount, a.MaxLimitCount, a.NewMemberJoinType, a.NewMemberJoinStartDate, a.NewMemberJoinEndDate, a.RouletteStartDatm, a.RouletteEndDatm, a.ProbabilityType, a.IsUse, a.IsStatus, a.Memo, a.RegDatm, a.RegAdminIdx
                 ,b.wAdminName AS RegAdminName
             ';
 
@@ -53,7 +53,7 @@ class RouletteModel extends WB_Model
     public function findRouletteForModify($arr_condition = [])
     {
         $column = '
-                a.RouletteCode, a.Title, a.DayLimitCount, a.MaxLimitCount, a.NewMemberJoinType, a.NewMemberJoinStartDate, a.NewMemberJoinEndDate, a.RouletteStartDatm, a.RouletteEndDatm, a.ProbabilityType, a.IsUse, a.IsStatus, a.Memo, a.RegDatm, a.RegAdminIdx, a.UpdDatm
+                a.RouletteCode, a.Title, a.CountType, a.MemberLimitCount, a.MaxLimitCount, a.NewMemberJoinType, a.NewMemberJoinStartDate, a.NewMemberJoinEndDate, a.RouletteStartDatm, a.RouletteEndDatm, a.ProbabilityType, a.IsUse, a.IsStatus, a.Memo, a.RegDatm, a.RegAdminIdx, a.UpdDatm
                 ,DATE_FORMAT(A.RouletteStartDatm, \'%Y-%m-%d\') AS RouletteStartDay, DATE_FORMAT(A.RouletteStartDatm, \'%H\') AS RouletteStartHour, DATE_FORMAT(A.RouletteStartDatm, \'%i\') AS RouletteStartMin
                 ,DATE_FORMAT(A.RouletteEndDatm, \'%Y-%m-%d\') AS RouletteEndDay, DATE_FORMAT(A.RouletteEndDatm, \'%H\') AS RouletteEndHour, DATE_FORMAT(A.RouletteEndDatm, \'%i\') AS RouletteEndMin
                 ,b.wAdminName AS RegAdminName, c.wAdminName AS UpdAdminName
@@ -78,7 +78,7 @@ class RouletteModel extends WB_Model
      */
     public function listRouletteOtherInfo($roulette_code)
     {
-        $column = 'RroIdx, RouletteCode, ProdName, FileFullPath, FileRealName, ProdQty, ProdWinTurns, ProdProbability, OrderNum, IsUse';
+        $column = 'RroIdx, RouletteCode, ProdName, FileFullPath, FileRealName, FinishFileFullPath, FinishFileRealName, ProdQty, ProdWinTurns, ProdProbability, OrderNum, IsUse';
         $arr_condition = [
             'EQ' => [
                 'RouletteCode' => $roulette_code
@@ -119,7 +119,8 @@ class RouletteModel extends WB_Model
             $data = [
                 'RouletteCode' => $rouletteCode,
                 'Title' => element('roulette_title', $input),
-                'DayLimitCount' => element('day_limit_count', $input),
+                'CountType' => element('count_type', $input),
+                'MemberLimitCount' => element('member_limit_count', $input),
                 'MaxLimitCount' => element('max_limit_count', $input),
                 'NewMemberJoinType' => element('new_member_join_type', $input),
                 'NewMemberJoinStartDate' => element('new_member_join_start_date', $input),
@@ -187,8 +188,6 @@ class RouletteModel extends WB_Model
 
             $data = [
                 'Title' => element('roulette_title', $input),
-                'DayLimitCount' => element('day_limit_count', $input),
-                'MaxLimitCount' => element('max_limit_count', $input),
                 'NewMemberJoinType' => element('new_member_join_type', $input),
                 'NewMemberJoinStartDate' => element('new_member_join_start_date', $input),
                 'NewMemberJoinEndDate' => element('new_member_join_end_date', $input),
@@ -199,11 +198,14 @@ class RouletteModel extends WB_Model
                 'UpdAdminIdx' => $admin_idx
             ];
 
-            //당첨자데이터가 없을 경우 수정항목 추가
-            /*if (empty($win_member_cnt) === true) {
-                $data['ProbabilityType'] = element('probability_type', $input);
-            }*/
-            $data['ProbabilityType'] = element('probability_type', $input);
+            if (empty($win_member_cnt) === true) {
+                $data = array_merge($data, [
+                    'CountType' => element('count_type', $input),
+                    'MemberLimitCount' => element('member_limit_count', $input),
+                    'MaxLimitCount' => element('max_limit_count', $input),
+                    'ProbabilityType' => element('probability_type', $input)
+                ]);
+            }
 
             if ($code_modify_type === true) {
                 $data['RouletteCode'] = element('up_roulette_code', $input);
@@ -214,8 +216,10 @@ class RouletteModel extends WB_Model
             }
 
             //부가정보수정
-            if ($this->_addRouletteOtherInfo(element('up_roulette_code', $input), $input, $win_member_cnt) === false) {
-                throw new \Exception('부가정보 수정에 실패했습니다.');
+            if (empty($win_member_cnt) === true) {
+                if ($this->_addRouletteOtherInfo(element('up_roulette_code', $input), $input) === false) {
+                    throw new \Exception('부가정보 수정에 실패했습니다.');
+                }
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -373,7 +377,7 @@ class RouletteModel extends WB_Model
      * @param int $win_member_cnt
      * @return array|bool
      */
-    private function _addRouletteOtherInfo($rouletteCode, $input = [], $win_member_cnt = 0)
+    private function _addRouletteOtherInfo($rouletteCode, $input = [])
     {
         try {
             //파일 저장
@@ -389,6 +393,19 @@ class RouletteModel extends WB_Model
                 if (empty($attach_files) === false) {
                     $set_attach_data['FileFullPath'][$idx] = $this->upload->_upload_url . $upload_dir . '/' . $attach_files['orig_name'];
                     $set_attach_data['FileRealName'][$idx] = $attach_files['client_name'];
+                }
+            }
+
+            $file_cnt = (empty($_FILES['roulette_attach_finish_file']) === true) ? '0' : count($_FILES['roulette_attach_file']['name']);
+            $uploaded = $this->upload->uploadFile('file', ['roulette_attach_finish_file'], $this->_getAttachImgNames($file_cnt,'_finish'), $upload_dir);
+            if (is_array($uploaded) === false) {
+                throw new \Exception($uploaded);
+            }
+            $set_attach_finish_data = [];
+            foreach ($uploaded as $idx => $attach_files) {
+                if (empty($attach_files) === false) {
+                    $set_attach_finish_data['FinishFileFullPath'][$idx] = $this->upload->_upload_url . $upload_dir . '/' . $attach_files['orig_name'];
+                    $set_attach_finish_data['FinishFileRealName'][$idx] = $attach_files['client_name'];
                 }
             }
 
@@ -409,11 +426,6 @@ class RouletteModel extends WB_Model
                 $inputData['ProdProbability'] = (empty($input['roulette_prod_probability'][$key]) === false) ? $input['roulette_prod_probability'][$key] : null;
                 $inputData['OrderNum'] = (empty($input['roulette_order_num'][$key]) === false) ? $input['roulette_order_num'][$key] : null;
                 $inputData['RegIp'] = $this->input->ip_address();
-
-                //당첨자데이터가 없을 경우 수정항목 추가
-                /*if (empty($win_member_cnt) === true) {
-                    $inputData['ProdWinTurns'] = $win_turns;
-                }*/
                 $inputData['ProdWinTurns'] = $win_turns;
 
                 if(empty($set_attach_data['FileFullPath'][$key]) === false) {
@@ -422,6 +434,14 @@ class RouletteModel extends WB_Model
                 } else {
                     unset($inputData['FileFullPath']);
                     unset($inputData['FileRealName']);
+                }
+
+                if(empty($set_attach_finish_data['FinishFileFullPath'][$key]) === false) {
+                    $inputData['FinishFileFullPath'] = $set_attach_finish_data['FinishFileFullPath'][$key];
+                    $inputData['FinishFileRealName'] = $set_attach_finish_data['FinishFileRealName'][$key];
+                } else {
+                    unset($inputData['FinishFileFullPath']);
+                    unset($inputData['FinishFileRealName']);
                 }
 
                 if (empty($val) === true) {
@@ -464,14 +484,15 @@ class RouletteModel extends WB_Model
     /**
      * 파일명 배열 생성
      * @param $cnt
+     * @param string $add_name
      * @return array
      */
-    private function _getAttachImgNames($cnt)
+    private function _getAttachImgNames($cnt, $add_name = '')
     {
         $attach_file_names = [];
         $temp_time = date('YmdHis');
         for ($i = 0; $i < $cnt; $i++) {
-            $attach_file_names[] = 'roulette_' . $i . '_' . $temp_time;
+            $attach_file_names[] = 'roulette_' . $add_name . $i . '_' . $temp_time;
         }
         return $attach_file_names;
     }

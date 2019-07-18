@@ -17,7 +17,7 @@
                 <div class="x_content">
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-2" for="search_rro_idx">룰렛코드</label>
-                        <div class="col-md-2">
+                        <div class="col-md-2 ">
                             {{ $roulette_code }}
                         </div>
                     </div>
@@ -30,13 +30,21 @@
                     </div>
 
                     <div class="form-group form-group-sm">
-                        <label class="control-label col-md-2" for="search_rro_idx">일일 횟수제한</label>
-                        <div class="col-md-2">
-                            {{ $arr_base['roulette_data']['DayLimitCount'] }}
+                        <label class="control-label col-md-2" for="day_limit_count">참여 횟수 조건</label>
+                        <div class="form-inline col-md-10 item">
+                            아이디 기준 참여 횟수
+                            {{ $arr_base['roulette_data']['MemberLimitCount'] }} 회
+                            <span class="ml-10 mr-10"> | </span>
+                            전체 참여 횟수
+                            {{ $arr_base['roulette_data']['MaxLimitCount'] }} 회
                         </div>
-                        <label class="control-label col-md-2" for="search_rro_idx">일일 최대 횟수제한</label>
+
+                    </div>
+
+                    <div class="form-group form-group-sm">
+                        <label class="control-label col-md-2" for="search_rro_idx">당첨 카운트 기준일</label>
                         <div class="col-md-2">
-                            {{ $arr_base['roulette_data']['MaxLimitCount'] }}
+                            {{ ($arr_base['roulette_data']['CountType'] == 'D' ? '1일씩' : '전체 룰렛 진행 기간') }}
                         </div>
                     </div>
 

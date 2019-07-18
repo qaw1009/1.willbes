@@ -17,6 +17,27 @@
 }	
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
+
+/*타이머*/
+.time {width:100%; text-align:center; background:#000}
+.time {text-align:center; padding:20px 0}
+.time table {width:1120px; margin:0 auto}
+.time table td:first-child {font-size:40px}
+.time table td img {width:80%}
+.time .time_txt {font-size:28px; color:#fff; letter-spacing: -1px; font-weight:600}
+.time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+.time p {text-alig:center}
+@@keyframes upDown{
+from{color:#d63e4d}
+50%{color:#eebd8f}
+to{color:#d63e4d}
+}
+@@-webkit-keyframes upDown{
+from{color:#d63e4d}
+50%{color:#eebd8f}
+to{color:#d63e4d}
+}
+
 .top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/07/1330_top_bg.jpg) no-repeat center top;}
 .top_bg .check{
     position:absolute; width:1000px; left:50%; top:1200px; margin-left:-500px; z-index:1;font-size:14px;text-align:center;line-height:1.5;
@@ -47,6 +68,29 @@
 
 
     <div class="evtContent NGR" id="evtContainer">  
+        <!-- 타이머 -->
+        <div class="evtCtnsBox time NGEB"  id="newTopDday">
+            <div>
+                <table>
+                    <tr>                        
+                        <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} </span>마감!</td>
+                        <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+                        <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">일 </td>
+                        <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>                        
+                    </tr>
+                </table>                
+            </div>
+        </div>
+
         <div class="evtCtnsBox top_bg">  
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1330_top.jpg" alt="조민주 한국사" usemap="#Map1330a" border="0">
             <map name="Map1330a" id="Map1330a">

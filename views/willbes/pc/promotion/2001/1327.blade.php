@@ -59,14 +59,10 @@
 
     <script>
         function popup(){
-            var is_login = '{{sess_data('is_login')}}';
-            if (is_login != true) {
-                alert('로그인 후 이용해 주세요.');
-                return;
-            }
-
-            var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) }}";
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
         }
+
     </script>
 @stop

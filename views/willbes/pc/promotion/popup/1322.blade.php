@@ -90,7 +90,7 @@
 
                     <p class="tit">참여신청 양식 등록</p>
                     <input type="file" name="attach_file" id="attach_file" style="width:300px"><br>
-                    <div class="mt10">• 참여신청 양식 파일 2MB까지 업로드 가능합니다.</div>
+                    <div class="mt10">• 참여신청 양식 파일 5MB까지 업로드 가능합니다.</div>
                 </div>
 
                 <div class="termsBx01">
@@ -104,7 +104,7 @@
                         </li>
                         <li>
                         2. 개인정보 수집 항목<br>
-                        - 필수항목 : 성명, 연락처, 이메일
+                        - 필수항목 : 성명, 연락처, 부모님 연락처
                         </li>
                         <li>
                         3. 개인정보 이용기간 및 보유기간<br>

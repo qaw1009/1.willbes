@@ -155,10 +155,9 @@ class RouletteModel extends WB_Model
     /**
      * 룰렛 수정
      * @param array $input
-     * @param bool $code_modify_type
      * @return array|bool
      */
-    public function modifyRoulette($input = [], $code_modify_type = false)
+    public function modifyRoulette($input = [])
     {
         $this->_conn->trans_begin();
         try {
@@ -207,17 +206,13 @@ class RouletteModel extends WB_Model
                 ]);
             }
 
-            if ($code_modify_type === true) {
-                $data['RouletteCode'] = element('up_roulette_code', $input);
-            }
-
             if ($this->_conn->set($data)->where('RouletteCode', $roulette_code)->update($this->_table['roulette']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
             }
 
             //부가정보수정
             if (empty($win_member_cnt) === true) {
-                if ($this->_addRouletteOtherInfo(element('up_roulette_code', $input), $input) === false) {
+                if ($this->_addRouletteOtherInfo($roulette_code, $input) === false) {
                     throw new \Exception('부가정보 수정에 실패했습니다.');
                 }
             }
@@ -374,7 +369,6 @@ class RouletteModel extends WB_Model
      * 부가정보 저장 / 수정
      * @param $rouletteCode
      * @param array $input
-     * @param int $win_member_cnt
      * @return array|bool
      */
     private function _addRouletteOtherInfo($rouletteCode, $input = [])

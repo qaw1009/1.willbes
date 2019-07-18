@@ -212,7 +212,7 @@ class RouletteModel extends WB_Model
 
             //부가정보수정
             if (empty($win_member_cnt) === true) {
-                if ($this->_addRouletteOtherInfo(element('up_roulette_code', $input), $input) === false) {
+                if ($this->_addRouletteOtherInfo($roulette_code, $input) === false) {
                     throw new \Exception('부가정보 수정에 실패했습니다.');
                 }
             }
@@ -369,7 +369,6 @@ class RouletteModel extends WB_Model
      * 부가정보 저장 / 수정
      * @param $rouletteCode
      * @param array $input
-     * @param int $win_member_cnt
      * @return array|bool
      */
     private function _addRouletteOtherInfo($rouletteCode, $input = [])

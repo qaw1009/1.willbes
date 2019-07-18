@@ -51,7 +51,7 @@
   <div class="evtCtnsBox WB_con01">
 	  <img src="https://static.willbes.net/public/images/promotion/2019/06/1299_top.png" alt="좋은데이 하승민" />
 	  <img src="https://static.willbes.net/public/images/promotion/2019/06/1299_yb.png" alt="하승님교수님좋은데이" />
-      <iframe width="900" height="506" src="https://www.youtube.com/embed/RJeRYZCe3vE?rel=0" frameborder="0" allowfullscreen></iframe>
+      <iframe width="900" height="506" src="https://www.youtube.com/embed/xkMOyz9wPVM?rel=0" frameborder="0" allowfullscreen></iframe>
       <img src="https://static.willbes.net/public/images/promotion/2019/06/1299_01.png" alt="하승민 적중사례 보러가기" usemap="#Map_1299_go" border="0" />
      <map name="Map_1299_go">
       <area shape="rect" coords="276,717,791,792" href="https://police.willbes.net/promotion/index/cate/3001/code/1025" target="_blank">

@@ -75,7 +75,6 @@ class EventRoulette extends \app\controllers\BaseController
 
         $this->load->view("site/event_roulette/create", [
             'method' => $method,
-            'code_modify_type' => (ENVIRONMENT === 'production') ? false : true,
             'data' => $data,
             'roulette_code' => $roulette_code,
             'modify_type' => $modify_type
@@ -218,9 +217,7 @@ class EventRoulette extends \app\controllers\BaseController
         if ($this->validate($rules) === false) {
             return;
         }
-
-        $code_modify_type = (ENVIRONMENT === 'production') ? false : true;
-        $result = $this->rouletteModel->{$method . 'Roulette'}($this->_reqP(null, false), $code_modify_type);
+        $result = $this->rouletteModel->{$method . 'Roulette'}($this->_reqP(null, false));
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 

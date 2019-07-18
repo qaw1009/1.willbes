@@ -33,7 +33,8 @@
 
     <div class="x_panel">
         <div class="x_content">
-            <div class="form-group chart_div"></div>
+            <div class="form-group chart_div">
+            </div>
         </div>
     </div>
 
@@ -107,7 +108,7 @@
 
                 for(i=0;i<contract_data.length;i++) {
                     $( ".chart_div" ).append( " <div id=\"contract"+i+"\" class=\"col-md-3 form-inline\" style=\"width: 500px; height: 350px;\"></div>" +
-                        "<div id=\"gateway"+i+"\"  class=\"col-md-7 form-inline cont_idx\" style=\"width: 800px; height: 350px;\" data-idx=\""+cont_idx[i]+"\"></div>" );
+                        "<div id=\"gateway"+i+"\"  class=\"cont_idx col-md-7 form-inline\" style=\"width: 800px; height: 350px;\" data-idx=\""+cont_idx[i]+"\" onclick=\"statDetail('"+cont_idx[i]+"')\"></div>" );
                     makeChart(contract_data[i], contract_options[i], 'PieChart', 'contract'+i);
                     makeChart(gateway_data[i], gateway_options[i], 'ComboChart', 'gateway'+i);
                 }
@@ -122,30 +123,28 @@
                 chart.draw(data, options);
             }
 
-            $(document).on('click', '.cont_idx', function () {
-                //alert($(this).data('idx'));
+            function statDetail(cont_idx){
                 $('.cont_idx').setLayer({
-                    'url' : '{{ site_url('/site/marketing/gatewayStat/detail/') }}' + $(this).data('idx'),
+                    'url' : '{{ site_url('/site/marketing/contractStat/contractDetail/') }}' + cont_idx,
                     'width' : 1200,
                     'modal_id' : 'cont_modal'
                 });
+            }
+
+            $(document).ready(function() {
+                $('#search_value').on('keyup', function() {
+                    if (window.event.keyCode === 13) {
+                        goSearch();
+                    }
+                });
+                $('#btn_search').on('click', function() {
+                    goSearch();
+                });
+                var goSearch = function() {
+                    $url_form.action = '{{site_url('/site/marketing/contractStat/')}}';
+                    $url_form.submit();
+                };
             });
 
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#search_value').on('keyup', function() {
-                if (window.event.keyCode === 13) {
-                    goSearch();
-                }
-            });
-            $('#btn_search').on('click', function() {
-                goSearch();
-            });
-            var goSearch = function() {
-                $url_form.action = '{{site_url('/site/marketing/gatewayStat/')}}';
-                $url_form.submit();
-            };
-        });
     </script>
 @stop

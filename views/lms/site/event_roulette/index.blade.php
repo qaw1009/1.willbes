@@ -43,8 +43,9 @@
                     <th>No</th>
                     <th>룰렛코드</th>
                     <th>제목</th>
-                    <th>일일횟수제한</th>
-                    <th>최대횟수제한</th>
+                    <th>아이디 기준 참여 횟수</th>
+                    <th>전체 참여 횟수</th>
+                    <th>당첨카운트기준일</th>
                     <th>기간</th>
                     <th>신규회원가입대상 사용여부</th>
                     <th>룰렛확률타입</th>
@@ -96,8 +97,11 @@
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-member-list" data-idx="' + row.RouletteCode + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'DayLimitCount'},
+                    {'data' : 'MemberLimitCount'},
                     {'data' : 'MaxLimitCount'},
+                    {'data' : 'CountType', 'render' : function(data, type, row, meta) {
+                            return (data === 'D') ? '1일' : '전체';
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.RouletteStartDatm + ' ~ ' + row.RouletteEndDatm;
                         }},

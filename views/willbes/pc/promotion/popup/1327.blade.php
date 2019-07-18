@@ -158,7 +158,7 @@
 
                 <div class="btn">
                     <a href="#none" onclick="javascript:fn_submit();">등록</a>
-                    <a href="#none">취소</a>
+                    <a href="#none" onclick="javascript:self.close();">취소</a>
                 </div>
             </div>
         </form>  
@@ -166,16 +166,13 @@
 </div>
 <!--willbes-Layer-PassBox//-->
 
-<script>
+<script type="text/javascript">
     $('#TakeKind').attr('readonly', 'true');
 
     function fn_submit() {
         var $regi_form_register = $('#regi_form_register');
-        var is_login = '{{sess_data('is_login')}}';
-        if (is_login != true) {
-            alert('로그인 후 이용해 주세요.');
-            return;
-        }
+
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
         @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
             @if($arr_cert['cert_data']["IsCertAble"] !== 'Y')

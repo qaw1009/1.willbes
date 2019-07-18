@@ -37,7 +37,7 @@ class EventFModel extends WB_Model
     private $_upload_file_rule = [
         'allowed_types' => 'jpg|gif|png|pdf|hwp',
         'overwrite' => 'false',
-        'max_size' => 2560
+        'max_size' => 5120
     ];
 
     public $_request_type = [

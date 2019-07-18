@@ -27,22 +27,53 @@ class BaseRoulette extends \app\controllers\FrontController
     {
         $roulette_data = [];
         $other_list = [];
-        if (empty($params[0]) === false) {
-            $data = $this->rouletteFModel->listRouletteInfo($params[0]);
+
+        //룰렛 데이터 조회
+        $roulette_code = $params[0];
+        $data_info = [];
+        $arr_condition = [
+            'EQ' => [
+                'RouletteCode' => $roulette_code,
+                'IsUse' => 'Y',
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $arr_condition['RAW'] = ['(RouletteStartDatm <= "' => date('Y-m-d H:i') . '" AND RouletteEndDatm >= "' . date('Y-m-d H:i') . '")'];
+        $data_info['roulette_data'] = $this->rouletteFModel->findRoulette($arr_condition);
+        if (empty($data_info['roulette_data']) === true) {
+            $this->_err_data['ret_msg'] = '조회된 룰렛 상품이 없습니다.';
+            return $this->json_result(false, '', $this->_err_data);
+        }
+
+        $defaultCondition = $this->_defaultCondition($data_info['roulette_data']['CountType']);
+
+        if (empty($roulette_code) === false) {
+            $data = $this->rouletteFModel->listRouletteInfo($roulette_code, $defaultCondition);
             if (empty($data) === false) {
                 foreach ($data as $key => $val) {
                     $roulette_data['RouletteCode'] = $val['RouletteCode'];
                     $roulette_data['RouletteStartDatm'] = $val['RouletteStartDatm'];
                     $roulette_data['RouletteEndDatm'] = $val['RouletteEndDatm'];
-                    $other_list[$key]['image'] = $val['FileFullPath'];
+
+                    if ($val['ProdQty'] <= $val['ProdUsedCnt']) {
+                        if (empty($val['FinishFileFullPath']) === true) {
+                            $other_list[$key]['image'] = $this->rouletteFModel->_finish_img_path;
+                        } else {
+                            $other_list[$key]['image'] = $val['FinishFileFullPath'];
+                        }
+                    } else {
+                        $other_list[$key]['image'] = $val['FileFullPath'];
+                    }
                     $other_list[$key]['text'] = $val['ProdName'];
                 }
             }
         }
+
         $result = [
             'roulette_data' => $roulette_data,
             'other_list' => $other_list
         ];
+
         return $this->response([
             'data' => $result,
         ]);
@@ -92,5 +123,24 @@ class BaseRoulette extends \app\controllers\FrontController
         } else {
             return $this->json_result($result['ret_cd'], '당첨', [], $result['ret_msg']);
         }
+    }
+
+    /**
+     * 룰렛 정책 기준 조건 셋팅 (1일, 전체)
+     * @param $count_type
+     * @return array
+     */
+    private function _defaultCondition($count_type)
+    {
+        $arr_condition = [];
+
+        if ($count_type == 'D') {
+            $arr_condition = [
+                'RAW' => [
+                    'RegDatm > ' => 'CURRENT_DATE()'
+                ]
+            ];
+        }
+        return $arr_condition;
     }
 }

@@ -116,8 +116,8 @@
                 </ul>
             </h4>
         </div>
-        <!-- main sub menu slider (set html 방식) -->
-        {!! banner('네비게이션_레이어', 'sliderView', config_item('app_intg_site_code'), '0', 'sliderViewWrap') !!}
+        {{-- main sub menu slider (set html 방식, 배너사용안함) --}}
+        {{--{!! banner('네비게이션_레이어', 'sliderView', config_item('app_intg_site_code'), '0', 'sliderViewWrap') !!}--}}
     @endif
     <!-- gnb menu -->
     <div class="gnb-List">

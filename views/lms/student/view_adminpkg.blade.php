@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 온라인 운영자패키지 수강생을 관리하는 메뉴입니다.</h5>
+    <h5>- 운영자패키지 수강생(결제완료자) 현황을 확인할 수 있습니다.</h5>
     <div class="x_panel mt-10">
         <div class="x_content">
             <table class="table table-striped table-bordered">
@@ -38,7 +38,7 @@
             </table>
         </div>
     </div>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal" id="search_form_view" name="search_form_view" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="ProdCode" value="{{$lec['ProdCode']}}" />
         <div class="x_panel">
@@ -117,6 +117,7 @@
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default btn-search" id="btn_reset_in_set_search_date">초기화</button>
+                <button class="btn btn-primary" type="button" id="btn_list">목록으로</button>
             </div>
         </div>
     </form>
@@ -149,7 +150,7 @@
     </div>
     <script type="text/javascript">
         var $datatable;
-        var $search_form = $('#search_form');
+        var $search_form = $('#search_form_view');
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
@@ -209,6 +210,10 @@
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/student/'.$lecType.'/excel/') }}', $search_form.serializeArray(), 'POST');
                 }
+            });
+
+            $('#btn_list').click(function() {
+                location.replace('{{ site_url('/student/adminpkg/') }}' + getQueryString());
             });
         });
     </script>

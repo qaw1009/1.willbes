@@ -417,7 +417,7 @@ class EventFModel extends WB_Model
                     $input_data['FileRealName'] = $uploaded[0]['client_name'];
                 }
             } else {
-                throw new \Exception('수정할 이미지를 선택해 주세요.');
+                throw new \Exception('수정할 파일을 선택해 주세요.');
             }
 
             $is_update = $this->_conn->set($input_data)->where('MemIdx', $this->session->userdata('mem_idx'))->where('ErIdx', element('register_chk', $inputData)[0])->update($this->_table['event_member']);

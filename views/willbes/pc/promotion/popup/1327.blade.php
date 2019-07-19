@@ -157,7 +157,7 @@
                 </div>
 
                 <div class="btn">
-                    <a href="#none" onclick="javascript:fn_submit();">등록</a>
+                    <a href="#none" onclick="javascript:fn_submit();" style="{{ (empty($arr_cert['apply_result']) === false) ? 'display: none;' : '' }}">등록</a>
                     <a href="#none" onclick="javascript:self.close();">취소</a>
                 </div>
             </div>
@@ -237,6 +237,8 @@
     {
         var $regi_form_register = $('#regi_form_register');
         var _url = '{!! front_url('/event/registerStoreForModifyFile') !!}';
+
+        if (!confirm('합격수기 파일이 이미 등록되어 있습니다. \n재등록하시면 기존 파일은 삭제됩니다. \n재등록하시겠습니까?')) { return true; }
 
         ajaxSubmit($regi_form_register, _url, function(ret) {
             if(ret.ret_cd) {

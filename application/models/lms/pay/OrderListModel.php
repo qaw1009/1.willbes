@@ -20,7 +20,7 @@ class OrderListModel extends BaseOrderModel
     {
         if (is_bool($is_count) === true) {
             if ($is_count === true) {
-                $in_column = 'straight_join count(*) AS numrows';
+                $in_column = 'count(*) AS numrows'; // straight_join 삭제
                 $column = 'numrows';
                 $is_all_from = false;   // 강제 제외 처리
             } else {
@@ -50,11 +50,11 @@ class OrderListModel extends BaseOrderModel
                     , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
                 $in_column .= $this->_getAddListQuery('column', $arr_add_join);
-                $column = 'straight_join *, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice';
+                $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice'; // straight_join 삭제
             }
         } else {
             $in_column = $is_count;
-            $column = 'straight_join *';
+            $column = '*';  // straight_join 삭제
         }
 
         $from = $this->_getListFrom($arr_add_join, $is_all_from);
@@ -113,8 +113,8 @@ class OrderListModel extends BaseOrderModel
             $order_by_offset_limit = $this->_conn->makeOrderBy($_order_by)->getMakeOrderBy();
         }
 
-        // 쿼리 실행 및 결과값 리턴
-        return $this->_conn->query('select straight_join ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
+        // 쿼리 실행 및 결과값 리턴 (straight_join 삭제)
+        return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
     }
 
     /**

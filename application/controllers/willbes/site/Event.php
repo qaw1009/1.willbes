@@ -310,6 +310,24 @@ class Event extends \app\controllers\FrontController
     }
 
     /**
+     * 단일 첨부파일 수정
+     */
+    public function registerStoreForModifyFile()
+    {
+        $rules = [
+            ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'register_chk[]', 'label' => '특강', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventFModel->modifyRegisterMemberForFile($this->_reqP(null, false));
+        $this->json_result($result, '수정되었습니다.', $result);
+    }
+
+    /**
      * 댓글 등록 처리
      */
     public function commentStore()

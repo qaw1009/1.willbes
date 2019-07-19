@@ -56,13 +56,12 @@
             {!! csrf_field() !!}
             {!! method_field($arr_base['method']) !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $arr_base['data']['ElIdx'] }}"/>
+            <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
+            <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
+            <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
             <input type="hidden" name="register_type" value="promotion"/>
             <input type="hidden" name="file_chk" value="Y"/>
             <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
-            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="수강생정보"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="수강생정보"/> {{-- 체크 항목 전송 --}}
 
             <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
@@ -105,7 +104,6 @@
                         </li>
                         <li>
                             <strong>합격 인증 파일</strong>
-
                             <input type="radio" id="AddContent11" name="AddContent1" value="필기합격" {{($addcontent1 == '필기합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass1"  class="mr10">필기합격</label>
                             <input type="radio" id="AddContent12" name="AddContent1" value="최종합격" {{($addcontent1 == '최종합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass2"  class="mr10">최종합격</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
@@ -118,8 +116,9 @@
                     </ul>
 
                     <h3  class="tit">[합격생 인증 정보]</h3>
-                    <a href="#none" class="file">합격수기 양식 파일 다운로드 ↓</a>
-                    <input type="file" name="attach_file2" id="attach_file2" style="width:300px">
+                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}" class="file">합격수기 양식 파일 다운로드 ↓</a>
+                    <input type="file" name="attach_file" id="attach_file" style="width:180px">
+                    <input type="button" onclick="javascript:modifyFile();" value="파일수정">
                     <div class="mt10">
                         - 반드시 위의 합격수기 양식 파일을 다운로드 받아서 작성해 주세요.<Br>
                         - 합격수기 양식은 개별 상황에 맞게 워드, 한글 파일 양식 중 하나를 첨부해 주시면 됩니다.<Br>
@@ -128,7 +127,7 @@
                 </div>
 
                 <h3>[개인정보 수집/이용 동의 안내]</h3>
-                <div class="termsBx01">                    
+                <div class="termsBx01">
                     <ul>
                         <li>
                         1. 개인정보 수집 이용 목적<br>
@@ -171,11 +170,8 @@
 
     function fn_submit() {
         var $regi_form_register = $('#regi_form_register');
-
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-
-        @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
-            @if($arr_cert['cert_data']["IsCertAble"] !== 'Y')
+        @if(empty($arr_cert) === false && $arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
+            @if(empty($arr_cert) === false && $arr_cert['cert_data']["IsCertAble"] !== 'Y')
                 alert("인증 신청을 할 수 없습니다.");return;
             @endif
 
@@ -226,8 +222,21 @@
 
     function submitEnd() {
         var $regi_form_register = $('#regi_form_register');
-        var _url = '{!! front_url('/event/registerStore') !!}'
-        ;
+        var _url = '{!! front_url('/event/registerStore') !!}';
+
+        ajaxSubmit($regi_form_register, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert(ret.ret_msg);
+                window.close();
+            }
+        }, showValidateError, null, false, 'alert');
+    }
+
+    function modifyFile()
+    {
+        var $regi_form_register = $('#regi_form_register');
+        var _url = '{!! front_url('/event/registerStoreForModifyFile') !!}';
+
         ajaxSubmit($regi_form_register, _url, function(ret) {
             if(ret.ret_cd) {
                 alert(ret.ret_msg);

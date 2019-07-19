@@ -197,7 +197,7 @@ class EventFModel extends WB_Model
      */
     public function getRegisterMember($arr_condition=[])
     {
-        $column = 'A.EmIdx, A.ErIdx, A.MemIdx, A.UserName, A.UserTelEnc, A.UserMailEnc';
+        $column = 'A.EmIdx, A.ErIdx, A.MemIdx, A.UserName, A.UserTelEnc, A.UserMailEnc, A.FileFullPath, A.FileRealName';
         $from = " FROM {$this->_table['event_member']} AS A";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -339,7 +339,7 @@ class EventFModel extends WB_Model
                 if (empty($_FILES['attach_file']) === false) {
                     $sum_size_mb = round($_FILES['attach_file']['size'] / 1024);
                     if ($sum_size_mb > $this->_upload_file_rule['max_size']) {
-                        throw new \Exception('첨부파일 최대 2MB까지 등록 가능합니다.');
+                        throw new \Exception('첨부파일 최대 5MB까지 등록 가능합니다.');
                     }
 
                     $this->load->library('upload');
@@ -367,6 +367,63 @@ class EventFModel extends WB_Model
                 if ($this->_sendSms($event_data, $inputData) === false) {
                     throw new \Exception('SMS발송 실패했습니다. 관리자에게 문의해 주세요.');
                 }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    public function modifyRegisterMemberForFile($inputData)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input_data = [];
+            $arr_condition = [
+                'EQ' => [
+                    'A.ErIdx' => element('register_chk', $inputData)[0],
+                    'A.MemIdx' => $this->session->userdata('mem_idx')
+                ]
+            ];
+
+            $register_member_info = $this->getRegisterMember($arr_condition);
+            if (empty($register_member_info) === true) {
+                throw new \Exception('등록된 신청자 정보가 없습니다.');
+            }
+
+            $this->load->library('upload');
+            $this->load->helper('file');
+            $upload_dir = config_item('upload_prefix_dir') . '/event/member/' . date('Y') . '/' . date('md');
+
+            if ($_FILES['attach_file']['size'] > 0) {
+                if (empty($register_member_info[0]['FileRealName']) === false) {
+                    $file_path = $register_member_info[0]['FileFullPath'];
+                    $real_file_path = public_to_upload_path($file_path);
+                    if (@unlink($real_file_path) === false) {
+                        /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
+                    }
+                }
+                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_dir
+                    ,'allowed_types:'.$this->_upload_file_rule['allowed_types'].',overwrite:'.$this->_upload_file_rule['overwrite']);
+                if (is_array($uploaded) === false) {
+                    throw new \Exception($uploaded);
+                }
+
+                if (count($uploaded) > 0) {
+                    $input_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/' . $uploaded[0]['orig_name'];
+                    $input_data['FileRealName'] = $uploaded[0]['client_name'];
+                }
+            } else {
+                throw new \Exception('수정할 이미지를 선택해 주세요.');
+            }
+
+            $is_update = $this->_conn->set($input_data)->where('MemIdx', $this->session->userdata('mem_idx'))->where('ErIdx', element('register_chk', $inputData)[0])->update($this->_table['event_member']);
+
+            if ($is_update === false) {
+                throw new \Exception('파일 수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

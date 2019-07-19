@@ -51,8 +51,10 @@
             <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data3"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="참여일"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="캠퍼스"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
 
 
@@ -95,7 +97,15 @@
                                 <th>* 캠퍼스</th>
                                 <td>
                                     <ul>
-                                        <li>노량진</li>
+                                        <li><input type="radio" name="register_data3" id="CP1" value="노량진" /> <label for="CP1">노량진</label></li>
+                                        <li><input type="radio" name="register_data3" id="CP2" value="신림" /> <label for="CP2">신림</label></li>
+                                        <li><input type="radio" name="register_data3" id="CP3" value="인천" /> <label for="CP3">인천</label></li>
+                                        <li><input type="radio" name="register_data3" id="CP4" value="대구" /> <label for="CP4">대구</label></li>
+                                        <li><input type="radio" name="register_data3" id="CP5" value="부산" /> <label for="CP5">부산</label></li>
+                                        <li><input type="radio" name="register_data3" id="CP6" value="광주" /> <label for="CP6">광주</label></li>
+                                        <li><input type="radio" name="register_data3" id="CP7" value="제주" /> <label for="CP7">제주</label></li>
+                                        <li><input type="radio" name="register_data3" id="CP8" value="전북" /> <label for="CP8">전북</label></li>
+                                        <li><input type="radio" name="register_data3" id="CP9" value="참수리" /> <label for="CP9">참수리</label></li>
                                     </ul>
                                 </td>
                             </tr>

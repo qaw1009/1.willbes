@@ -1,9 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', '_lms/sys/code');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -318,6 +319,32 @@ class BasePromotion extends \app\controllers\FrontController
         $test_type = element('type', $this->_reqG(null), '0');
         $arr_base['method'] = 'POST';
 
+        /**
+         * 인증정보 추가
+         */
+        $arr_cert = [];
+        $cert_idx = element('cert', $this->_reqG(null), null);
+        if(empty($cert_idx) != true) {
+
+
+            $arr_condition['EQ'] = [
+                //'A.SiteCode' => $this->_site_code
+            ];
+            $arr_cert['cert_idx'] = $cert_idx;
+            $arr_cert['cert_data'] = $this->certApplyFModel->findCertByCertIdx($cert_idx,$arr_condition);
+
+            if(empty($this->session->userdata('mem_idx')) == false) {
+                $arr_cert['apply_result'] = $this->certApplyFModel->findApplyByCertIdx($cert_idx);
+            }
+
+            $codes = $this->codeModel->getCcdInArray(['711','712']);
+            $arr_cert['kind_ccd'] = $codes['711'];
+            $arr_cert['area_ccd'] = $codes['712'];
+        }
+        /**
+         * 인증정보 추가
+         */
+
         if (empty($arr_base['promotion_code']) === true) {
             show_alert('잘못된 접근 입니다.', 'close', '');
         }
@@ -340,8 +367,11 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['arr_file'] = $list_event_file[0];
         }
 
+
+
         $this->load->view('willbes/pc/promotion/popup/' . $arr_base['promotion_code'], [
             'arr_base' => $arr_base
+            ,'arr_cert' => $arr_cert
         ], false);
     }
 

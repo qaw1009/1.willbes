@@ -23,7 +23,7 @@
                     <th>접수기간</th>
                     <th>접수상태</th>
                     <th>사용여부</th>
-                    <th>수강생</th>
+                    <th>수강생(종합반)</th>
                 </tr>
                 <tr>
                     <td>{{$lec['CampusCcd_Name']}}</td>
@@ -46,7 +46,7 @@
                     <td>{{$lec['SaleStartDatm']}} {{$lec['SaleStartHour']}}시 ~ {{$lec['SaleEndDatm']}} {{$lec['SaleEndHour']}} 시</td>
                     <td>{{$lec['AcceptStatusCcd_Name']}}</td>
                     <td>{{($lec['IsUse'] == 'Y') ? '사용' : '미사용'}}</td>
-                    <td>{{$lec['Count']}}명</td>
+                    <td>{{$lec['Count']}}명 ({{$lec['CountPkg']}}명)</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -139,6 +139,7 @@
                     <th>No.</th>
                     <th>회원번호</th>
                     <th>회원명(아이디)</th>
+                    <th>종합반여부</th>
                     <th>주문번호</th>
                     <th>결제루트</th>
                     <th>결제수단</th>
@@ -187,6 +188,7 @@
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/member/manage/detail/')}}'+data+'" target="_blank"><u>'+row.MemId + '(' + row.MemName + ')'+'</u></a>';
                         }}, //회원명(아이디)
+                    {'data' : 'IsPkg'}, // 종합반 여부
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/pay/order/show/')}}'+data+'" target="_blank"><u>'+data+'</u></a>';
                         }},// 주문번호

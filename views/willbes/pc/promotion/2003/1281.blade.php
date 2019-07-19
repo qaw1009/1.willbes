@@ -142,8 +142,8 @@
     </a>
     </div>
     <div id="tab4">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1075" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c4.jpg" title="박민주"/>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1330" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c4.jpg" title="조민주"/>
       </a>
     </div>
     <div id="tab5">
@@ -152,7 +152,7 @@
       </a>
     </div>
     <div id="tab6">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1076" target="_balnk">
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1334" target="_balnk">
       <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c6.jpg" title="문병일"/>
       </a>
     </div>

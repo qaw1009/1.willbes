@@ -48,7 +48,7 @@
     letter-spacing:-1px;
 }
 .evt04 .check label{color:#333}
-.evt05 {background:#555}
+.evt05 {background:#424242}
 
 </style>
 
@@ -95,7 +95,7 @@
             </div>   
         </div>
         <div class="evtCtnsBox evt05" id="careful">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1301_05.jpg" alt="실전 모의고사"> 
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_03.jpg" alt="실전 모의고사"> 
         </div>    
                         
               

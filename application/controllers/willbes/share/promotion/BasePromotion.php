@@ -325,8 +325,6 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_cert = [];
         $cert_idx = element('cert', $this->_reqG(null), null);
         if(empty($cert_idx) != true) {
-
-
             $arr_condition['EQ'] = [
                 //'A.SiteCode' => $this->_site_code
             ];
@@ -341,9 +339,6 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_cert['kind_ccd'] = $codes['711'];
             $arr_cert['area_ccd'] = $codes['712'];
         }
-        /**
-         * 인증정보 추가
-         */
 
         if (empty($arr_base['promotion_code']) === true) {
             show_alert('잘못된 접근 입니다.', 'close', '');
@@ -367,11 +362,9 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['arr_file'] = $list_event_file[0];
         }
 
-
-
         $this->load->view('willbes/pc/promotion/popup/' . $arr_base['promotion_code'], [
-            'arr_base' => $arr_base
-            ,'arr_cert' => $arr_cert
+            'arr_base' => $arr_base,
+            'arr_cert' => $arr_cert
         ], false);
     }
 

@@ -58,10 +58,6 @@
         .giftPop span {display:block; position:absolute; top:245px; width:100%; text-align:center; z-index:10}
     </style>
 
-    <form id="rouletteForm">
-        <input type="hidden" id="temp_roulette_starting" name="temp_roulette_starting" value="0">
-        <input type="hidden" id="temp_prod_num" name="temp_prod_num">
-    </form>
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="giftPopupWrap" id="giftPopupWrap" style="display: none;">
             <div class="giftPop">
@@ -77,8 +73,8 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1288_top.jpg" alt="실전 문제풀이 패키지"/>
             <div class="rulletBox">
-                <canvas id="roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
-                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2019/07/1288_rull_start.png" alt="starg" /></button>
+                <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
+                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2019/06/1289_rull_start.png" alt="starg" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>
         </div>
@@ -150,99 +146,5 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/javascript-winwheel-2.8.0/Winwheel.min.js"></script>
-    <script src="/public/js/willbes/javascript-winwheel-2.8.0/TweenMax.min.js"></script>
-    <script>
-        setTimeout(function () {
-            rouletteData();
-        },500);
-
-        //룰렛 상품 조회
-        function rouletteData() {
-            var param = '{{ (empty($arr_promotion_params['roulette_code']) === true) ? '' : $arr_promotion_params['roulette_code'] }}';
-            var _url = '{{ front_url('/roulette/info/') }}' + param;
-            var _data = {};
-            sendAjax(_url, _data, function (ret) {
-                setRoulette(ret.data.other_list);
-            }, showError, false, 'GET');
-        }
-
-        //룰렛 셋팅
-        function setRoulette(data) {
-            theWheel = new Winwheel({
-                'numSegments' : data.length,
-                'outerRadius' : 170,
-                'canvasId'    : 'roulette',
-                'drawText'    : false,          // Code drawn text can be used with segment images.
-                'drawMode'    : 'segmentImage', // Must be segmentImage to draw wheel using one image per segemnt.
-                'segments'    : data,
-                'animation' :
-                    {
-                        'type'          : 'spinToStop',
-                        'duration'      : 5,
-                        'spins'         : 8,
-                        'callbackAfter' : '',
-                        'callbackFinished' : function () {
-                            $("#giftPopupWrap").css("display","block");
-                            $("#temp_roulette_starting").val('1');
-                            $("#gift_box_id").html('<img src="https://static.willbes.net/public/images/promotion/2019/06/1289_rull_giftbox0'+$("#temp_prod_num").val()+'.png" alt="당첨상품"/>');
-                        }
-                    },
-            });
-        }
-
-        function startRoulette() {
-            var roulette_code = '{{ (empty($arr_promotion_params['roulette_code']) === true) ? '' : $arr_promotion_params['roulette_code'] }}';
-            var _url = '{{ front_url('/roulette/store/') }}' + roulette_code;
-            var _data = {};
-            $('.btn-roulette > img').css('-webkit-filter','invert(0.4)');
-
-            sendAjax(_url, _data, function(ret) {
-                if (ret.ret_cd) {
-                    let segmentNumber = ret.ret_data;   // The segment number should be in response.
-                    if (segmentNumber) {
-                        $("#temp_prod_num").val(segmentNumber);
-                        let stopAt = theWheel.getRandomForSegment(segmentNumber);
-                        // Important thing is to set the stopAngle of the animation before stating the spin.
-                        theWheel.animation.stopAngle = stopAt;
-                        // Start the spin animation here.
-                        theWheel.startAnimation();
-                    }
-                }
-            }, function (ret) {
-                var err_msg = ret.ret_msg || '';
-                if (err_msg === '') {
-                    if (ret.status === 401) {  //권한 없음 || 미로그인
-                        err_msg = '권한이 없습니다.';
-                    } else if (ret.status === 403) {
-                        err_msg = '토큰 정보가 올바르지 않습니다.';
-                    } else if (ret.status === 404) {
-                        err_msg = '데이터 조회에 실패했습니다.';
-                    } else if (ret.status === 422) {
-                        err_msg = '필수 파라미터 오류입니다.';
-                    }
-                }
-                alert(err_msg);
-                $("#temp_roulette_starting").val('1');
-            }, false, 'GET');
-        }
-
-        function resetRoulette() {
-            if ($("#rouletteForm").find('input[name="temp_roulette_starting"]').val() != '1') {
-                return false;
-            }
-            $("#temp_roulette_starting").val('0');
-            theWheel.stopAnimation(false); theWheel.rotationAngle=0; theWheel.draw();
-            $("#btn_roulette").attr2("disabled",false);
-
-            $('.btn-roulette > img').css('-webkit-filter','');
-            let ctx2 = theWheel.ctx;
-            ctx2.beginPath();              // Begin path.
-            ctx2.moveTo(170, 5);           // Move to initial position.
-            ctx2.lineTo(230, 5);           // Draw lines to make the shape.
-            ctx2.lineTo(200, 40);
-            ctx2.lineTo(171, 5);
-        }
-</script>
-
+    @include('willbes.pc.promotion.roulette_script')
 @stop

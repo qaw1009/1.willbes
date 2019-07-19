@@ -27,13 +27,13 @@
                                 <th rowspan="2" class="valign-middle">환불금액(D)<br/>*기여도 적용</th>
                                 <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*기여도 적용</th>
                                 <th rowspan="2" class="valign-middle">수강개월수(F1)</th>
-                                <th rowspan="2" class="valign-middle">월안분금액(F)<br/>(C-E-D)/F1</th>
+                                <th rowspan="2" class="valign-middle">월안분금액(F)<br/>(C-D-E)/F1</th>
                                 <th rowspan="2" class="valign-middle">당월정산금액(H)<br/>F*정산율</th>
                             @else
                                 <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
                                 <th rowspan="2" class="valign-middle">환불금액(D)<br/>*안분율 적용</th>
                                 <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*안분율 적용</th>
-                                <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-E-D)*정산율</th>
+                                <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-D-E)*정산율</th>
                             @endif
                                 <th colspan="2">세액공제</th>
                                 <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
@@ -199,7 +199,7 @@
                     <th class="bold valign-middle">기여도매출(C)<br/>A*B</th>
                     <th class="bold valign-middle">기여도환불(D)<br/>D1*B</th>
                     <th class="bold valign-middle">기여도수수료(E)<br/>E1*B</th>
-                    <th class="bold valign-middle" style="min-width: 76px;">월안분(F)<br/>(C-E-D)/F1</th>
+                    <th class="bold valign-middle" style="min-width: 76px;">월안분(F)<br/>(C-D-E)/F1</th>
                     <th class="bold valign-middle">정산율(G)</th>
                     <th class="bold valign-middle">정산금액(H)<br/>F*G</th>
                 @else
@@ -216,7 +216,7 @@
                     <th class="bold valign-middle">안분환불(D)<br/>D1*B</th>
                     <th class="bold valign-middle">안분수수료(E)<br/>E1*B</th>
                     <th class="bold valign-middle">정산율(G)</th>
-                    <th class="bold valign-middle">정산금액(H)<br/>(C-E-D)*G</th>
+                    <th class="bold valign-middle">정산금액(H)<br/>(C-D-E)*G</th>
                 @endif
                 </tr>
                 <tr class="bg-info">

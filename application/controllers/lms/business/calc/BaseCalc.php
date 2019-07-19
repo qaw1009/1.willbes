@@ -11,6 +11,7 @@ class BaseCalc extends \app\controllers\BaseController
     protected $_is_off_site = '';
     protected $_methods = ['LE' => 'Lecture', 'AC' => 'AdminPackChoice', 'PP' => 'PeriodPack', 'OL' => 'Lecture', 'OP' => 'AdminPackChoice', 'MT' => 'MockTest'];
     protected $_prod_name = ['LE' => '단강좌&사용자/운영자패키지(일반형)', 'AC' => '운영자패키지(선택형)', 'PP' => '기간제패키지', 'OL' => '단과반/종합반(일반형)', 'OP' => '종합반(선택형)', 'MT' => '모의고사'];
+    protected $_excel_download_type_ccd = ['LE' => '715040', 'AC' => '715040', 'MT' => '715055'];    // 정산엑셀다운로드 엑셀다운로그 공통코드
     protected $_group_ccd = [];
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
@@ -74,12 +75,10 @@ class BaseCalc extends \app\controllers\BaseController
             $count = count($list);
             $sum_data = $this->_getTotalSum($list);
 
-            // 온라인강좌 단강좌, 운영자선택형패키지일 경우 엑셀다운로드 로그 조회 (모의고사 추가)
-            if (($this->_calc_type == 'lecture' && $prod_type != 'PP') || $this->_calc_type == 'mockTest') {
-                $arr_download_type_ccd = ['715040', '715055'];  // 온라인강좌, 모의고사 정산엑셀다운로드 엑셀다운로그 공통코드
+            // 단강좌, 사용자/운영자패키지, 모의고사일 경우 엑셀다운로드 로그 조회
+            if (array_key_exists($prod_type, $this->_excel_download_type_ccd) === true) {
                 $arr_log_condition = [
-                    'IN' => ['a.DownloadTypeCcd' => $arr_download_type_ccd],
-                    'EQ' => ['a.RegAdminIdx' => $this->session->userdata('admin_idx')],
+                    'EQ' => ['a.DownloadTypeCcd' => element($prod_type, $this->_excel_download_type_ccd, 'none'), 'a.RegAdminIdx' => $this->session->userdata('admin_idx')],
                     'LKL' => ['a.DownloadFileName' => '_' . $prod_type . '_' . $search_start_date . '_' . $search_end_date]
                 ];
                 $log_column = 'substring_index(substring_index(DownloadFileName, "_", 3), "_", -2) as wProfSubjectName';    // 엑셀파일명에서 교수명_과목명 추출
@@ -464,7 +463,7 @@ class BaseCalc extends \app\controllers\BaseController
     }
 
     /**
-     * 온라인강좌 단강좌, 사용자/운영자 패키지 전용 정산 엑셀다운로드
+     * 단강좌, 사용자/운영자패키지, 모의고사 전용 정산 엑셀다운로드
      */
     protected function calcExcel()
     {

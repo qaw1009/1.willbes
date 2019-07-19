@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 온라인 단강좌 수강생을 관리하는 메뉴입니다.</h5>
+    <h5>- 단과반 수강생(결제완료자) 현황을 확인할 수 있습니다.(종합반에 포함된 단과반 수강생 현황도 확인 가능)</h5>
     <div class="x_panel mt-10">
         <div class="x_content">
             <table class="table table-striped table-bordered">
@@ -23,7 +23,7 @@
                     <th>접수기간</th>
                     <th>접수상태</th>
                     <th>사용여부</th>
-                    <th>수강생</th>
+                    <th>수강생(종합반)</th>
                 </tr>
                 <tr>
                     <td>{{$lec['CampusCcd_Name']}}</td>
@@ -46,7 +46,7 @@
                     <td>{{$lec['SaleStartDatm']}} {{$lec['SaleStartHour']}}시 ~ {{$lec['SaleEndDatm']}} {{$lec['SaleEndHour']}} 시</td>
                     <td>{{$lec['AcceptStatusCcd_Name']}}</td>
                     <td>{{($lec['IsUse'] == 'Y') ? '사용' : '미사용'}}</td>
-                    <td>{{$lec['Count']}}명</td>
+                    <td>{{$lec['Count']}}명 ({{$lec['CountPkg']}}명)</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,7 +54,7 @@
             </table>
         </div>
     </div>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal" id="search_form_view" name="search_form_view" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="ProdCode" value="{{$lec['ProdCode']}}" />
         <div class="x_panel">
@@ -127,6 +127,7 @@
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default btn-search" id="btn_reset_in_set_search_date">초기화</button>
+                <button class="btn btn-primary btn-search" type="button" id="btn_list">목록으로</button>
             </div>
         </div>
     </form>
@@ -139,6 +140,7 @@
                     <th>No.</th>
                     <th>회원번호</th>
                     <th>회원명(아이디)</th>
+                    <th>종합반여부</th>
                     <th>주문번호</th>
                     <th>결제루트</th>
                     <th>결제수단</th>
@@ -157,7 +159,7 @@
     </div>
     <script type="text/javascript">
         var $datatable;
-        var $search_form = $('#search_form');
+        var $search_form = $('#search_form_view');
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
@@ -187,6 +189,7 @@
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/member/manage/detail/')}}'+data+'" target="_blank"><u>'+row.MemId + '(' + row.MemName + ')'+'</u></a>';
                         }}, //회원명(아이디)
+                    {'data' : 'IsPkg'}, // 종합반 여부
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/pay/order/show/')}}'+data+'" target="_blank"><u>'+data+'</u></a>';
                         }},// 주문번호
@@ -215,6 +218,10 @@
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/student/'.$lecType.'/excel/') }}', $search_form.serializeArray(), 'POST');
                 }
+            });
+
+            $('#btn_list').click(function() {
+                location.replace('{{ site_url('/student/offlecture/') }}' + getQueryString());
             });
         });
     </script>

@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 학원 단강좌 상품 정보를 관리하는 메뉴입니다.</h5>
+    <h5>- 단과반 수강생(결제완료자) 현황을 확인할 수 있습니다.(종합반에 포함된 단과반 수강생 현황도 확인 가능)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
@@ -168,7 +168,7 @@
                     <th>접수기간</th>
                     <th>접수상태</th>
                     <th>사용여부</th>
-                    <th>수강생현황</th>
+                    <th>수강생현황(종합반)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -233,7 +233,7 @@
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
                     {'data' : 'Count', 'render' : function(data, type, row, meta) {
-                            return data + '명';
+                            return data + '명 (' + row.CountPkg + '명)';
                         }}
                 ]
 

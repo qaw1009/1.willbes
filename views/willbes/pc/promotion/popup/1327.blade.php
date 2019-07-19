@@ -64,26 +64,51 @@
             <input type="hidden" name="target_param_names[]" value="수강생정보"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="수강생정보"/> {{-- 체크 항목 전송 --}}
 
-            
+            <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
+            <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
+
             <div id="request">                
                 <div class="termsBx">
                     <h3 class="tit">[합격생 인증 정보]</h3>
                     <ul>
-                        <li><strong>회원명(아이디)</strong> <span>홍길동(abc***)</span></li>
+                        @php
+                            $takekind = '';
+                            $takearea = '';
+                            $addcontent1 = '';
+
+                            if(empty($arr_cert['apply_result']['TakeKind']) != true) {
+                                $takekind = $arr_cert['apply_result']['TakeKind'];
+                            }
+                            if(empty($arr_cert['apply_result']['TakeArea']) != true) {
+                                $takearea = $arr_cert['apply_result']['TakeArea'];
+                            }
+                            if(empty($arr_cert['apply_result']['AddContent1']) != true) {
+                                $addcontent1 = $arr_cert['apply_result']['AddContent1'];
+                            }
+                        @endphp
+
+                        <li><strong>회원명(아이디)</strong> <span>{{sess_data('mem_name')}}({{ substr(sess_data('mem_id'),0, (strlen(sess_data('mem_id'))-3)) }}***)</span></li>
                         <li><strong>응시 시험정보</strong>
-                            <select id="listview" name="listview" >
+                            <select  name="TakeKind" id="TakeKind" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
+                                @foreach($arr_cert['kind_ccd'] as $key => $val)
+                                    <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
+                                @endforeach
                             </select>
-                            <select id="listview" name="listview" >
+                            <select id="TakeArea" name="TakeArea" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                                 <option value="">지역구분</option>
+                                @foreach($arr_cert['area_ccd'] as $key => $val)
+                                    <option value="{{$key}}" {{($key == $takearea ? 'selected="selected"' : '')}}>{{$val}}</option>
+                                @endforeach
                             </select>
-                            <input type="text" id="register_data2" name="register_data2" value="" placeholder="응시번호">
+                            <input type="text" name="TakeNo" id="TakeNo"  numberOnly value="{{empty($arr_cert['apply_result']) != true ? $arr_cert['apply_result']['TakeNo'] : ''}}" placeholder="응시번호"  {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                         </li>
                         <li>
                             <strong>합격 인증 파일</strong>
-                            <input type="radio" id="pass1" name="pass1" value="Y"> <label for="pass1"  class="mr10">필기합격</label>
-                            <input type="radio" id="pass2" name="pass2" value="N"> <label for="pass2"  class="mr10">최종합격</label>
-                            <input type="file" name="attach_file" id="attach_file" style="width:300px">
+
+                            <input type="radio" id="AddContent11" name="AddContent1" value="필기합격" {{($addcontent1 == '필기합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass1"  class="mr10">필기합격</label>
+                            <input type="radio" id="AddContent12" name="AddContent1" value="최종합격" {{($addcontent1 == '최종합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass2"  class="mr10">최종합격</label>
+                            <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
                                 - 합격생을 증빙할 수 있는 합격생 지원청별 합격자 발표 공고를 응시표와 함께 캡쳐하거나,
                                 핸드폰으로 응시표와 함께 사진을 찍어서 등록해 주세요.<br>
@@ -127,13 +152,13 @@
                 
                 <div class="mt10">
                     위의 내용을 이해하였으며, 위와 같은 개인정보 수집/이용 내용에
-                    <input type="radio" id="is_chk1" name="is_chk1" value="Y" class="ml10"> <label for="is_chk1">동의합니다.</label>
-                    <input type="radio" id="is_chk2" name="is_chk2" value="N" class="ml10"> <label for="is_chk2">동의하지 않습니다.</label>
+                    <input type="radio" id="is_chk1" name="is_chk" value="Y" class="ml10"> <label for="is_chk1">동의합니다.</label>
+                    <input type="radio" id="is_chk2" name="is_chk" value="N" class="ml10"> <label for="is_chk2">동의하지 않습니다.</label>
                 </div>
 
                 <div class="btn">
                     <a href="#none" onclick="javascript:fn_submit();">등록</a>
-                    <a href="#none">취소</a>
+                    <a href="#none" onclick="javascript:self.close();">취소</a>
                 </div>
             </div>
         </form>  
@@ -141,29 +166,68 @@
 </div>
 <!--willbes-Layer-PassBox//-->
 
-<script>
+<script type="text/javascript">
+    $('#TakeKind').attr('readonly', 'true');
+
     function fn_submit() {
         var $regi_form_register = $('#regi_form_register');
-        var _url = '{!! front_url('/event/registerStore') !!}';
 
-        var is_login = '{{sess_data('is_login')}}';
-        if (is_login != true) {
-            alert('로그인 후 이용해 주세요.');
-            return;
-        }
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
-        var files = $('#attach_file')[0].files[0];
-        if (files === undefined || files == null || files == '') {
-            alert('참여신청 양식을 등록해 주세요.');
-            return false;
-        }
+        @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
+            @if($arr_cert['cert_data']["IsCertAble"] !== 'Y')
+                alert("인증 신청을 할 수 없습니다.");return;
+            @endif
 
-        if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+            if ($('#TakeKind').val() == '') {
+                alert('직렬을 선택해 주세요.');$('#TakeKind').focus();return;
+            }
+            if ($('#TakeArea').val() == '') {
+                alert('지역을 선택해 주세요.');$('#TakeArea').focus();return;
+            }
+            if ($('#TakeNo').val() == '') {
+                $('#TakeNo').focus();alert('응시번호를 등록해 주세요.');return;
+            }
+            if ($("input:radio[name='AddContent1']").is(':checked') == false) {
+                $('#AddContent11').focus();alert('합격구분을 선택해 주세요.');return;
+            }
+            if ($('#attachfile').val() == '') {
+                alert('인증파일을 등록해 주세요.');return;
+            }
+        @endif
+
+        if ($("input:radio[name='is_chk']:checked").val() != 'Y') {
             alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
             return;
         }
 
         if (!confirm('저장하시겠습니까?')) { return true; }
+
+        @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
+            @if($arr_cert['cert_data']["IsCertAble"] == 'Y')
+                {{--인증 프로세스--}}
+                var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';
+                    ajaxSubmit($regi_form_register, _check_url, function(ret) {
+                    if(ret.ret_cd) {
+                        //alert('정상적으로 등록되었습니다.');
+                        submitEnd();
+                    } else {
+                        alert("인증 확인이 불가합니다. 운영자에게 문의하여 주십시오.");return;
+                    }
+                }, showValidateError, null, false, 'alert');
+                {{--인증 프로세스--}}
+            @else
+                submitEnd();
+            @endif
+        @else
+                submitEnd();
+        @endif
+    }
+
+    function submitEnd() {
+        var $regi_form_register = $('#regi_form_register');
+        var _url = '{!! front_url('/event/registerStore') !!}'
+        ;
         ajaxSubmit($regi_form_register, _url, function(ret) {
             if(ret.ret_cd) {
                 alert(ret.ret_msg);
@@ -171,5 +235,9 @@
             }
         }, showValidateError, null, false, 'alert');
     }
+
+    $("input:text[numberOnly]").on("keyup", function() {
+        $(this).val($(this).val().replace(/[^0-9]/g,""));
+    });
 </script>
 @stop

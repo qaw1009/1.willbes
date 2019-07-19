@@ -45,6 +45,15 @@ class StudentModel extends WB_Model
                         OP.PayStatusCcd IN ('676001', '676007') 
                         AND OP.ProdCode = A.ProdCode 
                     ) as Count
+                    ,(
+                        SELECT COUNT(*) FROM
+                            lms_order_product as OP
+                            join lms_product_r_sublecture as rs on rs.ProdCode = OP.ProdCode and rs.IsStatus = 'Y'
+                        WHERE
+                            OP.PayStatusCcd IN ('676001', '676007')
+                            AND rs.ProdCodeSub = A.ProdCode
+                            AND rs.ProdCodeSub <> rs.ProdCode
+                    ) as CountPkg
                     ,B.PackTypeCCd, Bg.CcdName as PackTypeCcd_Name, B.FreeLecTypeCcd, Bh.CcdName as FreeLecTypeCcd_Name
                     ,Bi.CcdName as PackStudyPeriod_Name
                     
@@ -192,4 +201,110 @@ class StudentModel extends WB_Model
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
     }
+
+
+    /**
+     * 수강중인 회원 리스트 오프단과용
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function getOffStudentList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = '  count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+
+            $column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+                ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
+                ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
+                ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName,
+                (SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate,
+                IF(P.LearnPatternCcd = '615007', 'Y', 'N') AS IsPkg,
+                P1.ProdName
+            ";
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+                    FROM 
+                        lms_order_product AS OP
+                            left outer join lms_sys_code OPa on OP.SalePatternCcd = OPa.Ccd and OPa.IsStatus='Y'
+                        join lms_order as O on O.OrderIdx = OP.OrderIdx
+                            left outer join lms_sys_code Oa on O.PayRouteCcd = Oa.Ccd and Oa.IsStatus='Y'
+                            left outer join lms_sys_code Ob on O.PayMethodCcd = Ob.Ccd and Ob.IsStatus='Y'
+                            left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
+                        join lms_member AS M on M.MemIdx = O.MemIdx
+                        join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx
+                        join lms_product_lecture AS P ON P.ProdCode = OP.ProdCode
+                        join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
+                    WHERE OP.PayStatusCcd in ('676001', '676007')    
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+
+    /**
+     * 엑셀용 리스트 뽑기 오프 단과용
+     * @param $column
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function getOffStudentExcelList($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+
+        $in_column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+            ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
+            ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
+            ,O.CompleteDatm as PayDate, A.wAdminName as AdminName, OP.OrderProdIdx, OP.ProdCode,
+            (SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate,
+            IF(P.LearnPatternCcd = '615007', 'Y', 'N') AS IsPkg,
+            CONCAT(P1.ProdName, ' [',P1.ProdCode,']') AS ProdName 
+        ";
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        $from = "
+                    FROM 
+                        lms_order_product AS OP
+                            left outer join lms_sys_code OPa on OP.SalePatternCcd = OPa.Ccd and OPa.IsStatus='Y'
+                        join lms_order as O on O.OrderIdx = OP.OrderIdx
+                            left outer join lms_sys_code Oa on O.PayRouteCcd = Oa.Ccd and Oa.IsStatus='Y'
+                            left outer join lms_sys_code Ob on O.PayMethodCcd = Ob.Ccd and Ob.IsStatus='Y'
+                            left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
+                        join lms_member AS M on M.MemIdx = O.MemIdx
+                        join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx
+                        join lms_product_lecture AS P ON P.ProdCode = OP.ProdCode
+                        join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
+                    WHERE OP.PayStatusCcd in ('676001', '676007')
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
+    }
+
+    //
+    public function getProdCode($ProdCode)
+    {
+        $query = "SELECT DISTINCT ProdCode FROM lms_product_r_sublecture where IsStatus = 'Y' AND ProdCodeSub = {$ProdCode}";
+        return $this->_conn->query($query)->result_array();
+    }
+
 }

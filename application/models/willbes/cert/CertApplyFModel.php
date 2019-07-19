@@ -184,7 +184,7 @@ class CertApplyFModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if($certtypeccd === '684002' || $cert_idx === '13' || $cert_idx === '20') { //제대군인인증, 꿀팁이벤트(추천인) 일 경우 자동 승인 처리   ///하드코딩하고 있네
+            if($certtypeccd === '684002' || $cert_idx === '13' || $cert_idx === '20' || $cert_idx === '23') { //제대군인인증, 꿀팁이벤트(추천인) 등등 자동 승인 처리
                 $data = array_merge($data,[
                     'ApprovalStatus' => 'Y'
                 ]);
@@ -261,7 +261,7 @@ class CertApplyFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
-        $query = $this->_conn->query("select CaIdx from lms_cert_apply where IsStatus='Y' ".$where ." limit 1") -> row_array();
+        $query = $this->_conn->query("select CaIdx,TakeNo,TakeArea,TakeKind, AddContent1 from lms_cert_apply where IsStatus='Y' ".$where ." limit 1") -> row_array();
         //echo $this->_conn->last_query();
         return $query;
     }

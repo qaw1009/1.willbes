@@ -84,13 +84,13 @@
                     <th rowspan="2" class="valign-middle">환불금액(D)<br/>*기여도 적용</th>
                     <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*기여도 적용</th>
                     <th rowspan="2" class="valign-middle">수강개월수(F1)</th>
-                    <th rowspan="2" class="valign-middle">월안분금액(F)<br/>(C-E-D)/F1</th>
+                    <th rowspan="2" class="valign-middle">월안분금액(F)<br/>(C-D-E)/F1</th>
                     <th rowspan="2" class="valign-middle">당월정산금액(H)<br/>F*정산율</th>
                 @else
                     <th rowspan="2" class="valign-middle">매출금액(C)<br/>*안분율 적용</th>
                     <th rowspan="2" class="valign-middle">환불금액(D)<br/>*안분율 적용</th>
                     <th rowspan="2" class="valign-middle">결제수수료(E)<br/>*안분율 적용</th>
-                    <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-E-D)*정산율</th>
+                    <th rowspan="2" class="valign-middle">정산금액(H)<br/>(C-D-E)*정산율</th>
                 @endif
                     <th colspan="2">세액공제</th>
                     <th rowspan="2" class="valign-middle blue">지급액<br/>H-(I+J)</th>
@@ -193,8 +193,8 @@
                         var study_period = (typeof row.StudyPeriodMonth !== 'undefined') ? row.StudyPeriodMonth : '';
                         var btn_html = '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">상세보기</button>';
 
-                        @if(($calc_type == 'lecture' && $prod_type != 'PP') || $calc_type == 'mockTest')
-                            {{-- 온라인강좌이면서 기간제패키지가 아닐 경우 정산엑셀다운로드 버튼 노출 (모의고사 추가) --}}
+                        @if(in_array($prod_type, ['LE', 'AC', 'MT']) === true)
+                            {{-- 단강좌, 사용자/운영자패키지, 모의고사일 경우 정산엑셀다운로드 버튼 노출 --}}
                             btn_html += '<button name="btn_calc_excel" class="btn btn-xs btn-' + (row.IsCalcDown === 'Y' ? 'danger' : 'primary') + ' mb-0 ml-5 btn-calc-excel" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">정산엑셀다운로드</button>';
                         @endif
 

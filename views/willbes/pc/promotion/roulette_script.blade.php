@@ -6,9 +6,11 @@
 <script src="/public/js/willbes/javascript-winwheel-2.8.0/Winwheel.min.js"></script>
 <script src="/public/js/willbes/javascript-winwheel-2.8.0/TweenMax.min.js"></script>
 <script>
-    setTimeout(function () {
-        rouletteData();
-    },500);
+    $(document).ready(function() {
+        setTimeout(function () {
+            rouletteData();
+        }, 500);
+    });
 
     //룰렛 상품 조회
     function rouletteData() {
@@ -52,10 +54,10 @@
 
         sendAjax(_url, _data, function(ret) {
             if (ret.ret_cd) {
-                let segmentNumber = ret.ret_data;   // The segment number should be in response.
+                var segmentNumber = ret.ret_data;   // The segment number should be in response.
                 if (segmentNumber) {
                     $("#temp_prod_num").val(segmentNumber);
-                    let stopAt = theWheel.getRandomForSegment(segmentNumber);
+                    var stopAt = theWheel.getRandomForSegment(segmentNumber);
                     // Important thing is to set the stopAngle of the animation before stating the spin.
                     theWheel.animation.stopAngle = stopAt;
                     // Start the spin animation here.
@@ -89,7 +91,7 @@
         $("#btn_roulette").attr2("disabled",false);
 
         $('.btn-roulette > img').css('-webkit-filter','');
-        let ctx2 = theWheel.ctx;
+        var ctx2 = theWheel.ctx;
         ctx2.beginPath();              // Begin path.
         ctx2.moveTo(170, 5);           // Move to initial position.
         ctx2.lineTo(230, 5);           // Draw lines to make the shape.

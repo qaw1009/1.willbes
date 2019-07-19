@@ -57,7 +57,7 @@
 .evt04 .check{position:absolute;width: 800px;left:50%;top:970px;margin-left:-400px;z-index:1;font-size:14px; text-align:center;line-height:1.5; letter-spacing:-1px;}
 .evt04 .check label{color:#a5aeb5;}
 .evt05 {background:#dc3c44;}
-.evt06 {background:#ffffff;}
+.evt06 {background:#424242;}
 </style>
 
 
@@ -105,7 +105,7 @@
             </div>   
         </div>
         <div class="evtCtnsBox evt06" id="careful">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1317_05.jpg" alt="이용안내 및 유의사항"> 
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_03.jpg" alt="이용안내 및 유의사항"> 
         </div>    
                         
               

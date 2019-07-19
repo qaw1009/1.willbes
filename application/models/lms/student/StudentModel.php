@@ -52,6 +52,7 @@ class StudentModel extends WB_Model
                         WHERE
                             OP.PayStatusCcd IN ('676001', '676007')
                             AND rs.ProdCodeSub = A.ProdCode
+                            AND rs.ProdCodeSub <> rs.ProdCodeSub
                     ) as CountPkg
                     ,B.PackTypeCCd, Bg.CcdName as PackTypeCcd_Name, B.FreeLecTypeCcd, Bh.CcdName as FreeLecTypeCcd_Name
                     ,Bi.CcdName as PackStudyPeriod_Name

@@ -367,7 +367,7 @@ class RouletteFModel extends WB_Model
 
             //회원 기준 상품 횟수 체크
             if ($data_info['roulette_data']['MemberLimitCount'] <= $data_member_info['used_today_member_count']['UsedMemberCount']) {
-                throw new \Exception('룰렛 참여 횟수가 모두 소진되었습니다');
+                throw new \Exception('참여가 완료되었습니다.');
             }
         } catch (\Exception $e) {
             return error_result($e);

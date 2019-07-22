@@ -80,12 +80,8 @@
         </div>
 
         <div class="evtCtnsBox zero100_04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_04.jpg" alt="제로100 소문내기" usemap="#Map1286B" border="0"  />
-            <map name="Map1286B" id="Map1286B">
-                <area shape="rect" coords="725,491,872,557" href="http://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
-                <area shape="rect" coords="723,579,880,648" href="https://cafe.naver.com/gugrade" target="_blank" alt="공드림" />
-                <area shape="rect" coords="726,673,895,738" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" alt="공무원갤러리" />
-            </map>      
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_04.jpg" alt="제로100 소문내기"/>
+   
         </div>
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

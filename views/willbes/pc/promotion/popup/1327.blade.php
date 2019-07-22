@@ -36,6 +36,7 @@
     .termsBx a {display:inline-block; width:280px; border-radius:4px; color:#fff; background:#c14842; text-align:center; height:26px; line-height:26px;
         font-size:12px; border-bottom:2px solid #6b1612; border-right:1px solid #6b1612; vertical-align:auto}
     .termsBx a:hover {background:#a8312b;}
+    .termsBx input[type=button] {display:inline-block; color:#fff; background:#4582cd; text-align:center; padding:0 15px; height:26px; line-height:26px; border:0}
 	
 	.termsBx01{padding:0px 20px; height:100px; overflow:hidden; overflow-y:scroll; border:1px solid #cecece}
 	.termsBx01 h2{margin:10px 0;font-weight:bold;font-size:14px}
@@ -115,7 +116,7 @@
                         </li>
                     </ul>
 
-                    <h3  class="tit">[합격생 인증 정보]</h3>
+                    <h3  class="tit">[합격수기 공모]</h3>
                     <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}" class="file">합격수기 양식 파일 다운로드 ↓</a>
                     <input type="file" name="attach_file" id="attach_file" style="width:180px">
                     <input type="button" onclick="javascript:modifyFile();" value="파일수정">
@@ -156,7 +157,7 @@
                 </div>
 
                 <div class="btn">
-                    <a href="#none" onclick="javascript:fn_submit();">등록</a>
+                    <a href="#none" onclick="javascript:fn_submit();" style="{{ (empty($arr_cert['apply_result']) === false) ? 'display: none;' : '' }}">등록</a>
                     <a href="#none" onclick="javascript:self.close();">취소</a>
                 </div>
             </div>
@@ -236,6 +237,8 @@
     {
         var $regi_form_register = $('#regi_form_register');
         var _url = '{!! front_url('/event/registerStoreForModifyFile') !!}';
+
+        if (!confirm('합격수기 파일이 이미 등록되어 있습니다. \n재등록하시면 기존 파일은 삭제됩니다. \n재등록하시겠습니까?')) { return true; }
 
         ajaxSubmit($regi_form_register, _url, function(ret) {
             if(ret.ret_cd) {

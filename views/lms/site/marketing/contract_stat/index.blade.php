@@ -1,6 +1,6 @@
 @extends('lcms.layouts.master')
 @section('content')
-    <h5>- 광고 통계를 확인 할 수 있는 메뉴입니다. </h5>
+    <h5>- 계약건 단위의 광고 통계를 확인 할 수 있는 메뉴입니다. </h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST">
         {!! csrf_field() !!}
         <div class="x_panel">

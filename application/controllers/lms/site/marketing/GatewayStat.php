@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . 'controllers/lms/site/marketing/CommonStat.php';
-class ContractStat extends CommonStat
+class GatewayStat extends CommonStat
 {
     public function __construct()
     {
@@ -11,6 +11,6 @@ class ContractStat extends CommonStat
 
     public function index()
     {
-        $this->ContractIndex();
+        $this->GatewayIndex();
     }
 }

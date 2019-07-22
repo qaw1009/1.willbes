@@ -65,7 +65,7 @@
                 <span class="wb_cts01_tit2"><img src="http://file3.willbes.net/new_gosi/2018/03/180316_EV01_01.png" alt="노트이미지"></span>
                 <img src="http://file3.willbes.net/new_gosi/2018/03/180316_EV01.jpg" usemap="#Map180316" border="0" alt="N수생를 위한 합격비법">
                 <map name="Map180316" >
-                    <area shape="rect" coords="158,18,586,97"  href="{{ site_url('/promotion/index/cate/3019/code/1085') }}" onFocus="this.blur();" alt="초시생을 위한 합격비법"/>
+                    <area shape="rect" coords="158,18,586,97"  href="{{ site_url('/promotion/index/cate/3019/code/1084') }}" onFocus="this.blur();" alt="초시생을 위한 합격비법"/>
                     <area shape="rect" coords="677,22,1055,93" href="#none"  onfocus="this.blur();"  alt="N수생을 위한 합격비법" />
                 </map>
             </div>

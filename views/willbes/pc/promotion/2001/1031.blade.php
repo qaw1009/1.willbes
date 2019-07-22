@@ -12,18 +12,18 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
 
         /************************************************************/
 
-        .wb_top {background:#34b696 url(http://file3.willbes.net/new_cop/2019/01/EV190113_p1_bg.jpg) no-repeat center}
-        .wb_cts01 {background:#292b2e url(http://file3.willbes.net/new_cop/2019/01/EV190113_p2_bg.jpg) no-repeat center}
+        .wb_top {background:#34b696 url(https://static.willbes.net/public/images/promotion/2019/07/1031_top_bg.jpg) no-repeat center}
+        .wb_cts01 {background:#292b2e url(https://static.willbes.net/public/images/promotion/2019/07/1031_01_bg.jpg) no-repeat center}
         .wb_cts02 {background:#f5f5f5}
         .wb_cts03 {background:#ececec}
         .wb_cts04 {background:#fff}
@@ -33,23 +33,23 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190113_p1.png"  alt="메인" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1031_top.png"  alt="메인" />
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190113_p2.png"  alt="교수소개" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1031_01.png"  alt="교수소개" />
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190113_p3.png"  alt="1" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1031_02.png"  alt="1" />
         </div>
 
         <div class="evtCtnsBox wb_cts03" >
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190113_p4.png"  alt="2" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1031_03.png"  alt="2" />
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="table">
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190113_p5.png"  alt="구매하기" usemap="#link2" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1031_04.png"  alt="구매하기" usemap="#link2" />
             <map name="link2" >
                 <area shape="rect" coords="118,675,264,711" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/131276') }}" onfocus='this.blur()' alt="김현정" target="_blink"/>
                 <area shape="rect" coords="417,675,562,711" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/131733') }}" onfocus='this.blur()' alt="김준기" target="_blink"/>
@@ -59,13 +59,4 @@
 
     </div>
     <!-- End Container -->
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-        });
-    </script>
-
 @stop

@@ -111,7 +111,7 @@ class BaseRoulette extends \app\controllers\FrontController
         if ($data_info['roulette_data']['NewMemberJoinType'] == 'Y') {
             $member_data = $this->memberFModel->getMemberForJoinDate($this->session->userdata('mem_idx'), $data_info['roulette_data']['NewMemberJoinStartDate'],$data_info['roulette_data']['NewMemberJoinEndDate']);
             if (empty($member_data) === true) {
-                $this->_err_data['ret_msg'] = "{$data_info['roulette_data']['NewMemberJoinStartDate']} ~ {$data_info['roulette_data']['NewMemberJoinEndDate']}까지 회원가입한 회원만 참여할 수 있습니다.";
+                $this->_err_data['ret_msg'] = "{$data_info['roulette_data']['NewMemberJoinStartDate']} ~ {$data_info['roulette_data']['NewMemberJoinEndDate']}까지 신규가입한 회원만 참여할 수 있습니다.";
                 return $this->json_result(false, '', $this->_err_data);
             }
         }

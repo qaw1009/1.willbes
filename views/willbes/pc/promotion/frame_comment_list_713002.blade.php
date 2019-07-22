@@ -106,10 +106,19 @@
         @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
             {{-- 경찰온라인 사이트일 경우만 적용 --}}
             <ul class="snslink">
-                <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline01.png"alt="다음카페 경사모" /></a></li>
-                <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline02.png" alt="네이버카페 경꿈사" /></a></li>
-                <li><a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline03.png" alt="디시 공무원 갤러리" /></a></li>
-                <li><a href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer" target="_blank"><img src="http://file3.willbes.net/new_cop/common/snsline04.png" alt="디시 순경마이너 갤러리" /></a></li>
+                <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/snsline01.png"alt="다음카페 경사모" /></a></li>
+                <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/snsline02.png" alt="네이버카페 경꿈사" /></a></li>
+                <li><a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/snsline03.png" alt="디시 공무원 갤러리" /></a></li>
+                <li><a href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer" target="_blank"><img src="https://static.willbes.net/public/images/promotion/common/snsline04.png" alt="디시 순경마이너 갤러리" /></a></li>
+            </ul>
+        @endif
+
+        @if(config_app('SiteCode') == '2003' || config_app('SiteCode') == '2004')
+            {{-- 경찰온라인 사이트일 경우만 적용 --}}
+            <ul class="snslink">
+                <li><a href="http://cafe.daum.net/9glade" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/pass_snsline01.jpg"alt="다음카페 구꿈사" /></a></li>
+                <li><a href="https://cafe.naver.com/gugrade" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/pass_snsline02.jpg" alt="네이버카페 공드림" /></a></li>
+                <li><a href="https://gall.dcinside.com/board/lists?id=government" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/pass_snsline03.jpg" alt="디시 공무원 갤러리" /></a></li>               
             </ul>
         @endif
 

@@ -34,8 +34,8 @@
                         <tr>
                             <td class="bg-light-white">주문번호</td>
                             <td><strong>{{ $results['order']['OrderNo'] }}</strong></td>
-                            <td class="bg-light-white">{{--가상계좌취소--}}</td>
-                            <td>
+                            <td class="bg-light-white">결제일</td>
+                            <td>{{ $results['order']['CompleteDatm'] }}
                                 {{-- 가상계좌취소 기능 삭제
                                 @if($results['order']['VBankStatus'] == 'O')
                                     <span class="btnAll NSK"><a href="#none" id="btn_vbank_cancel">취소</a></span>
@@ -332,28 +332,31 @@
                 }
             });
 
-            // 배송지 수정 버튼 클릭 (수정 폼)
-            $('button[name="btn_show_addr_modify"]').on('click', function() {
-                @if($results['order_delivery']['IsModifiable'] === true)
-                    openWin('DeliveryAddress');
-                @else
-                    alert('{{ $results['order_delivery']['IsModifiable'] }}');
-                @endif
-            });
+            {{-- 배송정보가 있는 경우만 노출 --}}
+            @if($results['order']['IsDelivery'] == 'Y')
+                // 배송지 수정 버튼 클릭 (수정 폼)
+                $('button[name="btn_show_addr_modify"]').on('click', function() {
+                    @if($results['order_delivery']['IsModifiable'] === true)
+                        openWin('DeliveryAddress');
+                    @else
+                        alert('{{ $results['order_delivery']['IsModifiable'] }}');
+                    @endif
+                });
 
-            // 배송지 수정 버튼 클릭
-            $('.btn-addr-modify').on('click', function() {
-                var $regi_form = $('#regi_addr_form');
-                var _url = '{{ site_url('/classroom/order/modifyAddr') }}';
-                ajaxSubmit($regi_form, _url, function(ret) {
-                    if(ret.ret_cd) {
-                        alert(ret.ret_msg);
-                        location.reload();
-                    }
-                }, showValidateError, function() {
-                    return confirm('수정하시겠습니까?');
-                }, false, 'alert');
-            });
+                // 배송지 수정 버튼 클릭
+                $('.btn-addr-modify').on('click', function() {
+                    var $regi_form = $('#regi_addr_form');
+                    var _url = '{{ site_url('/classroom/order/modifyAddr') }}';
+                    ajaxSubmit($regi_form, _url, function(ret) {
+                        if(ret.ret_cd) {
+                            alert(ret.ret_msg);
+                            location.reload();
+                        }
+                    }, showValidateError, function() {
+                        return confirm('수정하시겠습니까?');
+                    }, false, 'alert');
+                });
+            @endif
 
             // 내강의실 바로가기 버튼 클릭
             $('button[name="btn_go_classroom"]').on('click', function() {

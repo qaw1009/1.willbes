@@ -38,6 +38,7 @@
         .wb_02 ul:after {content:""; display:block; clear:both}
         .wb_03 {background:#fff}
         .wb_04 {background:#fff; padding:100px 0}
+        .wb_05 {background:#dce5ea; padding:100px 0}
 
 
         .giftPopupWrap {
@@ -126,6 +127,10 @@
                     </a>
                 </li>
             </ul>
+        </div>
+
+        <div class="evtCtnsBox wb_05">
+            <a href="https://pass.willbes.net/home/index/cate/3092" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1288_05.jpg"  alt="0원으로 공무원 시작하기"/></a>
         </div>
 
         <div class="evtCtnsBox wb_03">

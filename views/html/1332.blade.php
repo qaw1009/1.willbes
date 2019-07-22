@@ -30,8 +30,8 @@
         .evt01 div {position:relative; width:1120px; margin:0 auto}
         .evt01 div a {position:absolute; display:block; width:281px; left:50%; margin-left:-140px; top:1218px; z-index:10} 
         .evt02 {background:#f6f6f6;}
-        .evt03 {background:#fff;} 
- 
+        .evt03 {background:#fff;}
+
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">

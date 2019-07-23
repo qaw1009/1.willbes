@@ -20,10 +20,10 @@
                         <td colspan="3" class="form-inline">
                             <select class="form-control mr-5" name="SiteCode" id="SiteCode" onChange="selSiteCode(this.value,'');">
                                 <option value="">사이트선택</option>
-                                <option value="2001" @if($data['SiteCode']=='2001') selected="selected" @endif>온라인경찰</option>
-                                <option value="2002" @if($data['SiteCode']=='2002') selected="selected" @endif>온라인경찰</option>
-                                <option value="2003" @if($data['SiteCode']=='2003') selected="selected" @endif>온라인공무원</option>
-                                <option value="2004" @if($data['SiteCode']=='2004') selected="selected" @endif>온라인경찰</option>
+                                <option value="2001" @if($data['SiteCode']=='2001') selected="selected" @endif>경찰온라인</option>
+                                <option value="2002" @if($data['SiteCode']=='2002') selected="selected" @endif>경찰학원</option>
+                                <option value="2003" @if($data['SiteCode']=='2003') selected="selected" @endif>공무원온라인</option>
+                                <option value="2004" @if($data['SiteCode']=='2004') selected="selected" @endif>공무원학원</option>
                             </select>
                             <span class="ml-20">저장 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</span>
                         </td>

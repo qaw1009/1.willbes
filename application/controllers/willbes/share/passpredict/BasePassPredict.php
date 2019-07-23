@@ -6,7 +6,7 @@ class BasePassPredict extends \app\controllers\FrontController
     protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF', 'cert/certApplyF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('index','indexv2','createGradeMember', 'createGradeMember2','storeFinalPoint', 'storeFinalPoint2','predictMyInfo');
+    protected $auth_methods = array('indexv2','createGradeMember', 'createGradeMember2','storeFinalPoint', 'storeFinalPoint2','predictMyInfo');
 
     public function __construct()
     {
@@ -15,8 +15,11 @@ class BasePassPredict extends \app\controllers\FrontController
 
     public function index($params = [])
     {
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', 'close');
+        }
+
         $idx = $params[0];
-        
         $memidx = $this->session->userdata('mem_idx');
 
         $res = $this->surveyModel->predictResist($idx, $memidx);
@@ -46,9 +49,22 @@ class BasePassPredict extends \app\controllers\FrontController
             $data['PrIdx'] = '';
         }
 
+        $column = 'PredictIdx, MockPart';
+        $arr_condition = ['EQ' => ['PredictIdx' => $idx,'IsUse' => 'Y']];
+        $arr_base['predict_data'] = $this->predictFModel->findPredictData($arr_condition, $column);
+        if (empty($arr_base['predict_data']) === true) {
+            show_alert('조회된 합격예측 서비스 정보가 없습니다.', 'close');
+        }
+
         $serial = $this->surveyModel->getSerial(0);
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $area = $this->surveyModel->getArea($sysCode_Area);
+
+        //직렬가공처리
+        $temp_mock_part = array_flip(explode(',', $arr_base['predict_data']['MockPart']));
+        $mock_part_ccd = $this->surveyModel->getSerial(0);
+        $temp_mock_part_ccd = array_pluck($mock_part_ccd,'CcdName','Ccd');
+        $arr_base['arr_mock_part'] = array_intersect_key($temp_mock_part_ccd, $temp_mock_part);
 
         $filepath = $this->config->item('upload_url_predict', 'predict');
         $filepath = $filepath.$idx."/";
@@ -59,7 +75,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'idx' => $idx,
             'mode' => $mode,
             'filepath' => $filepath,
-            'data' => $data
+            'data' => $data,
+            'arr_base' => $arr_base
         ], false);
     }
 
@@ -1169,7 +1186,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => $arr_base['predict_idx'], 'a.CertIdx' => $arr_base['cert_idx'], 'a.IsStatus' => 'Y']];
         $member_ins_type = $this->predictFModel->findPredictFinalMember($arr_condition);
         if (empty($member_ins_type) === false) {
-            show_alert('등록된 정보가 있습니다. 실시간 참여현황에서 확인해 주세요.', site_url('/predict/predictMyInfo?predict='.$arr_base['predict_idx'].'&cert='.$arr_base['cert_idx']));
+            /*show_alert('등록된 정보가 있습니다. 실시간 참여현황에서 확인해 주세요.', site_url('/predict/predictMyInfo?predict='.$arr_base['predict_idx'].'&cert='.$arr_base['cert_idx']));*/
         }
 
         $add_condition = ['IN' => ['ApprovalStatus' => ['A','Y']]];

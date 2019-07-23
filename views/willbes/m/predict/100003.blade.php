@@ -255,7 +255,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
-                    location.href= '{{ site_url('/m/promotion/index/cate/3001/code/1187') }}';
+                    location.href= '{{ site_url('/m/promotion/index/cate/3001/code/1332') }}';
                 }
             }, showValidateError, null, false, 'alert');
         }

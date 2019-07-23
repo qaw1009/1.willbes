@@ -23,7 +23,7 @@
                 ctkprint_bar.prt_text_L12 = '{{ $data['MinLecStartDate'] }} ~ {{ $data['MaxLecEndDate'] }}' + ';굴림;18;true;left';
                 ctkprint_bar.prt_text_L16 = '{{ $data['MemName'] }}' + ';굴림;18;true;left';
                 ctkprint_bar.prt_text_L19 = '({{ $data['MemId'] }})' + ';굴림;10;false;left';
-                ctkprint_bar.prt_text_L22 = '{{ number_format($data['RealPayPrice']) }}원 ({{ $data['PayMethodCcdName'] }})' + ';굴림;10;false;left';
+                ctkprint_bar.prt_text_L22 = '{{ number_format($data['RealPayPrice']) }}원 ({{ $data['PayMethodCcdName'] }})' + '     {{ date('Y-m-d H:i') }}' + ';굴림;10;false;left';
                 ctkprint_bar.prt_text_L24 = '{{ $data['OrderNo'] }}' + ';굴림;10;false;left';
                 ctkprint_bar.prt_text_L26 = '{{ date('Y-m-d H:i') }}' + ';굴림;8;false;left';
             @elseif($data['ViewType'] == 'G')

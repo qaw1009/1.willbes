@@ -49,7 +49,7 @@
         <div class="evtCtnsBox evt01" id="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1332_01.jpg" alt="사전 접수하기" usemap="#Map1332a" border="0">
                 <map name="Map1332a" id="Map1332a">
-                    <area shape="rect" coords="331,610,789,709" href="#none" alt="사전접수하기"/>
+                    <area shape="rect" coords="331,610,789,709" href="javascript:void(0);" onclick="javascript:doEvent();" target="_blank" alt="사전접수하기"/>
                 </map>
         </div>
 
@@ -82,7 +82,8 @@
         });
 
         function doEvent() {
-            var url = "{{front_url('/predict/index/100001')}}";
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var url = "{{front_url('/predict/index/' . (empty($arr_promotion_params['PredictIdx']) === true ? '' : $arr_promotion_params['PredictIdx']))}}";
             window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
         }
 

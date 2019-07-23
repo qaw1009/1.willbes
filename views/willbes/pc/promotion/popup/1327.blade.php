@@ -92,13 +92,17 @@
                             <select  name="TakeKind" id="TakeKind" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
                                 @foreach($arr_cert['kind_ccd'] as $key => $val)
-                                    <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
+                                    @if($key != '711003'){{--경행경채제외--}}
+                                        <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             <select id="TakeArea" name="TakeArea" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                                 <option value="">지역구분</option>
                                 @foreach($arr_cert['area_ccd'] as $key => $val)
-                                    <option value="{{$key}}" {{($key == $takearea ? 'selected="selected"' : '')}}>{{$val}}</option>
+                                    @if($key != '712018') {{--전국제외--}}
+                                        <option value="{{$key}}" {{($key == $takearea ? 'selected="selected"' : '')}}>{{$val}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             <input type="text" name="TakeNo" id="TakeNo"  numberOnly value="{{empty($arr_cert['apply_result']) != true ? $arr_cert['apply_result']['TakeNo'] : ''}}" placeholder="응시번호"  {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
@@ -117,7 +121,7 @@
                     </ul>
 
                     <h3  class="tit">[합격수기 공모]</h3>
-                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}" class="file">합격수기 양식 파일 다운로드 ↓</a>
+                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">합격수기 양식 파일 다운로드 ↓</a>
                     <input type="file" name="attach_file" id="attach_file" style="width:180px">
                     <input type="button" onclick="javascript:modifyFile();" value="파일수정">
                     <div class="mt10">
@@ -169,8 +173,6 @@
 <!--willbes-Layer-PassBox//-->
 
 <script type="text/javascript">
-    $('#TakeKind').attr('readonly', 'true');
-
     function fn_submit() {
         var $regi_form_register = $('#regi_form_register');
         @if(empty($arr_cert) === false && $arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
@@ -194,6 +196,14 @@
                 alert('인증파일을 등록해 주세요.');return;
             }
         @endif
+
+        if ($('#attach_file').val() == '') {
+            alert('합격수기 파일을 등록해 주세요.');return;
+        } else {
+            if(fileExtCheck($('#attach_file').val()) == false) {
+                return;
+            }
+        }
 
         if ($("input:radio[name='is_chk']:checked").val() != 'Y') {
             alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
@@ -222,6 +232,17 @@
                 submitEnd();
         @endif
     }
+
+    function fileExtCheck(strfile) {
+        if( strfile != "" ){
+            var ext = strfile.split('.').pop().toLowerCase();
+            if($.inArray(ext, ['hwp','doc','docx','pdf']) == -1) {
+                alert('hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.');
+                return false;
+            }
+        }
+    }
+
 
     function submitEnd() {
         var $regi_form_register = $('#regi_form_register');

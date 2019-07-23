@@ -25,6 +25,7 @@
                 ctkprint_bar.prt_text_L19 = '({{ $data['MemId'] }})' + ';굴림;10;false;left';
                 ctkprint_bar.prt_text_L22 = '{{ number_format($data['RealPayPrice']) }}원 ({{ $data['PayMethodCcdName'] }})' + ';굴림;10;false;left';
                 ctkprint_bar.prt_text_L24 = '{{ $data['OrderNo'] }}' + ';굴림;10;false;left';
+                ctkprint_bar.prt_text_L26 = '{{ date('Y-m-d H:i') }}' + ';굴림;8;false;left';
             @elseif($data['ViewType'] == 'G')
                 {{-- 공무원학원 --}}
                 var txt_blank = '{{ str_repeat(' ', 15) }}';
@@ -36,9 +37,9 @@
                         ctkprint_bar.prt_text_L{{ 8 + ($i * 3) }} = txt_blank + '{!! str_mb_pad(element($i, $data['OrderProdNameData']), 21) !!}' + ';굴림;8;false;left';
                     @endif
                 @endfor
-            @endif
 
-            ctkprint_bar.prt_text_L28 = '{{ date('Y-m-d H:i') }}' + ';굴림;8;false;left';
+                ctkprint_bar.prt_text_L28 = '{{ date('Y-m-d H:i') }}' + ';굴림;8;false;left';
+            @endif
 
             // 인쇄 관련 부분 시작
             ctkprint_bar.CT_DOC_Prt = 1;	    // 인쇄 요청 코드

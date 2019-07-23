@@ -168,11 +168,11 @@
     var scoreType = '{{ $scoreType }}';
 
     $( document ).ready( function() {
-        @if(date('YmdHi') >= '201905011600')
+        {{--@if(date('YmdHi') >= '201905011600')
         alert('서비스가 종료되었습니다.');
         var url = "{{ site_url('/m/home/index') }}";
         location.href = url;
-        @endif
+        @endif--}}
 
         if(mode == 'MOD'){
             selSerial('{{ $data['TakeMockPart'] }}', '{{ $data['SubjectCode'] }}');

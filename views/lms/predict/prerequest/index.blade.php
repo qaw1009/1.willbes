@@ -13,6 +13,12 @@
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
+                        <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
+                            <option value="">합격예측서비스</option>
+                            @foreach($predictList as $row)
+                                <option value="{{$row['PredictIdx']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-5" id="search_ApplyType" name="search_ApplyType">
                             <option value="">구분</option>
                             <option value="합격예측">합격예측</option>
@@ -62,6 +68,7 @@
                     <tr>
                         <th class="text-center"></th>
                         <th class="text-center">NO</th>
+                        <th class="text-center">서비스명</th>
                         <th class="text-center">구분</th>
                         <th class="text-center">이름</th>
                         <th class="text-center">아이디</th>
@@ -125,6 +132,9 @@
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return row.ProdName + '[' + row.PredictIdx + ']';
                         }},
                     {'data' : 'ApplyType', 'class': 'text-center'},
                     {'data' : 'MemName', 'class': 'text-center'},

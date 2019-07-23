@@ -49,7 +49,7 @@
         <div class="evtCtnsBox evt01" id="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1332_01.jpg" alt="사전 접수하기" usemap="#Map1332a" border="0">
                 <map name="Map1332a" id="Map1332a">
-                    <area shape="rect" coords="331,610,789,709" href="javascript:void(0);" onclick="javascript:doEvent();" target="_blank" alt="사전접수하기"/>
+                    <area shape="rect" coords="331,610,789,709" href="#none" onclick="javascript:doEvent();" alt="사전접수하기"/>
                 </map>
         </div>
 

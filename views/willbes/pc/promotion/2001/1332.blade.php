@@ -36,8 +36,8 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <ul class="skyBanner">
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/07/1332_sky_banner1.png" title="토크쇼"></a></li>
-            <li><a href="#none" ><img src="https://static.willbes.net/public/images/promotion/2019/07/1332_sky_banner2.png" title="적중이벤트"></a></li>           
+            <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/07/1332_sky_banner1.png" title="토크쇼"></a></li>
+            <li><a href="javascript:alert('Coming Soon!');" ><img src="https://static.willbes.net/public/images/promotion/2019/07/1332_sky_banner2.png" title="적중이벤트"></a></li>
         </ul>     
         
         <div class="evtCtnsBox evtTop">

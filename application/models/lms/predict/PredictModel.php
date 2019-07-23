@@ -193,6 +193,8 @@ class PredictModel extends WB_Model
     {
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
         $column = " 
+            P.ProdName,
+            P.PredictIdx,
             PR.ApplyType,
             MemName,
             PR.MemIdx,
@@ -203,7 +205,7 @@ class PredictModel extends WB_Model
             TaKeNumber,
             if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
             if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
-            RegDatm
+            PR.RegDatm
         ";
 
 
@@ -211,6 +213,7 @@ class PredictModel extends WB_Model
             FROM 
                 {$this->_table['predictRegister']} AS PR
                 JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
+                JOIN {$this->_table['predictProduct']} AS P ON PR.PredictIdx = P.PredictIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = " WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";
@@ -404,6 +407,7 @@ class PredictModel extends WB_Model
     public function predictRegistListExcel($condition='', $limit='', $offset='')
     {
         $column = "
+            CONCAT(P.ProdName,'[',P.PredictIdx,']') AS ProdName,
             PR.ApplyType, 
             MemName,
             MemId,
@@ -413,7 +417,7 @@ class PredictModel extends WB_Model
             TaKeNumber,
             if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
             if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
-            RegDatm
+            PR.RegDatm
 
         ";
 
@@ -421,6 +425,7 @@ class PredictModel extends WB_Model
             FROM 
                 {$this->_table['predictRegister']} AS PR
                 JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
+                JOIN {$this->_table['predictProduct']} AS P ON PR.PredictIdx = P.PredictIdx
         ";
 
         $where = "WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";

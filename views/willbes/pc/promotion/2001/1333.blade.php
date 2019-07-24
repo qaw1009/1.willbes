@@ -114,43 +114,43 @@ to{color:#d63e4d}
             <div id="tab1" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02_t1.jpg" alt="형소법 신광은" usemap="#Map1333A" border="0">
                 <map name="Map1333A" id="Map1333A">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/promotion/index/cate/3001/code/1317" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155453" target="_blank" alt="수강신청" />
                 </map>
             </div>
             <div id="tab2" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02_t2.jpg" alt="형법 김원욱" usemap="#Map1333B" border="0">
                 <map name="Map1333B" id="Map1333B">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/promotion/index/cate/3001/code/1318" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155450" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab3" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02_t3.jpg" alt="경찰학 장정훈" usemap="#Map1333C" border="0">
                 <map name="Map1333C" id="Map1333C">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/promotion/index/cate/3001/code/1319" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155449" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab4" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02_t4.jpg" alt="한국사 원유철" usemap="#Map1333D" border="0">
                 <map name="Map1333D" id="Map1333D">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/promotion/index/cate/3001/code/1301" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href=https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155372" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab5" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02_t5.jpg" alt="한국사 오태진" usemap="#Map1333E" border="0">
                 <map name="Map1333E" id="Map1333E">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/promotion/index/cate/3001/code/1296" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3008/pack/648001/prod-code/155240" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab6" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02_t6.jpg" alt="영어 하승민" usemap="#Map1333F" border="0">
                 <map name="Map1333F" id="Map1333F">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/promotion/index/cate/3001/code/1316" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155451" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab7" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_02_t7.jpg" alt="영어 김현정" usemap="#Map1333G" border="0">
                 <map name="Map1333G" id="Map1333G">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/promotion/index/cate/3001/code/1320" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155452" target="_blank" alt="수강신청" />
                 </map>
             </div>  
         </div>

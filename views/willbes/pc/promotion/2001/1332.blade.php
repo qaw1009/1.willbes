@@ -17,21 +17,33 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
 
         /************************************************************/
         .skyBanner {position:fixed; bottom:250px;right:10px;z-index:10;}
-        .skyBanner li{margin-top:15px;}      
+        .skyBanner li{margin-top:15px;} 
+        .evt_banner {height:100px;background:#000;font-size:15px;font-weight:700;letter-spacing:-1px;}
+        .evt_banner span{color:#fff;}
+        .evt_banner .left_area img{position:absolute;left:550px;top:17px;} 
+        .evt_banner .left_area span{position:absolute;left:550px;top:53px;}   
+        .evt_banner .right_area .small1{position:absolute;left:777px;top:53px;}    
+        .evt_banner .right_area .big1{position:absolute;left:840px;top:45px;font-size:25px;}     
+        .evt_banner .right_area .small3{position:absolute;left:965px;top:53px;}  
+        .evt_banner .right_area .stick{position:absolute;left:1000px;top:45px;color:#3b3b3b;font-weight:100;font-size:25px;}
+        .evt_banner .right_area .small2{position:absolute;left:1025px;top:53px;}
+        .evt_banner .right_area .big2{position:absolute;left:1095px;top:45px;font-size:25px;;} 
+        .evt_banner .right_area .small4{position:absolute;left:1180px;top:53px;}     
+  
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/07/1332_top_bg.jpg) no-repeat center top;}
-            .evtTopInmg {position:relative; width:1120px; margin:0 auto}
-            .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px}
-            .counter span {color:#fff200; font-size:30px;}
+        .evtTopInmg {position:relative; width:1120px; margin:0 auto}
+        .counter {position:absolute; text-align:center; width:100%; z-index:1; color:#fff; font-size:18px; top:30px}
+        .counter span {color:#fff200; font-size:30px;}
         .evt01 {background:#2e3c52;}
         .evt01 div {position:relative; width:1120px; margin:0 auto}
         .evt01 div a {position:absolute; display:block; width:281px; left:50%; margin-left:-140px; top:1218px; z-index:10} 
         .evt02 {background:#f6f6f6;}
         .evt03 {background:#fff;} 
- 
+
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -39,7 +51,16 @@
             <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/07/1332_sky_banner1.png" title="토크쇼"></a></li>
             <li><a href="javascript:alert('Coming Soon!');" ><img src="https://static.willbes.net/public/images/promotion/2019/07/1332_sky_banner2.png" title="적중이벤트"></a></li>
         </ul>     
-        
+
+        <div class="evtCtnsBox evt_banner">
+            <div class="left_area">
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1332_live_camera.png" alt="">
+                <span>적중&합격예측 이용현황</span>
+            </div>
+            <div class="right_area">
+                <span class="small1">이용건수</span><span class="big1">1,770,232</span><span class="small3">건</span><span class="stick">|</span><span class="small2">채점건수</span><span class="big2">50,232</span><span class="small4">건</span>
+            </div>
+        </div>        
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">              
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1332_top.jpg" title="2019년 경찰 2차 적중&합격예측 사전예약 이벤트">

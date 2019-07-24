@@ -26,7 +26,7 @@ class CertApply extends \app\controllers\FrontController
     public function index($params = [])
     {
         // 로그인 체크
-        if ($this->isLogin() === false) {
+        if ($this->isLogin() !== true) {
             show_alert('로그인 후 이용해 주십시오.', 'close');
         }
 

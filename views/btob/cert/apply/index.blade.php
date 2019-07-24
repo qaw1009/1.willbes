@@ -175,7 +175,7 @@
             $list_table.on('click', '.btn-approval', function() {
                 $('.btn-approval').setLayer({
                     'url' : '{{ site_url('/cert/apply/create') }}/' + $(this).data('idx'),
-                    'width' : 900
+                    'width' : 1200
                 });
             });
         });

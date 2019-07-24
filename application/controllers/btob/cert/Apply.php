@@ -193,9 +193,16 @@ class Apply extends \app\controllers\BaseController
         $data['ApprovalStatusName'] = $this->_arr_approval_status[$data['ApprovalStatus']];
         $data['ApprovalStatusColor'] = $this->_arr_approval_color[$data['ApprovalStatus']];
 
+        // 신청목록 조회
+        $arr_condition = ['EQ' => ['CA.BtobIdx' => $this->_sess_btob_idx, 'CA.MemIdx' => $data['MemIdx']]];
+        $list = $this->btobCertModel->listCertApply(false, $arr_condition, null, null, $this->_getListOrderBy());
+
         return $this->load->view('cert/apply/approval', [
             'idx' => $apply_idx,
-            'data' => $data
+            'data' => $data,
+            'list' => $list,
+            'arr_approval_status' => $this->_arr_approval_status,
+            'arr_approval_color' => $this->_arr_approval_color
         ]);
     }
 

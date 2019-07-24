@@ -16,48 +16,48 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2">인증회차
+                <label class="control-label col-md-1">인증회차
                 </label>
-                <div class="col-md-2 form-control-static">
+                <div class="col-md-4 form-control-static">
                     {{ $data['ApplySeq'] }}
                 </div>
-                <label class="control-label col-md-2">회원정보
+                <label class="control-label col-md-1">회원정보
                 </label>
                 <div class="col-md-6 form-control-static">
                     {{ $data['MemName'] }} ({{ $data['MemId'] }}) | {{ $data['MemPhone'] }} | {{ $data['BirthDay'] }}({{ $data['SexKr'] }})
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2">지역
+                <label class="control-label col-md-1">지역
                 </label>
-                <div class="col-md-2 form-control-static">
+                <div class="col-md-4 form-control-static">
                     {{ $data['AreaCcdName'] }}
                 </div>
-                <label class="control-label col-md-2">지점
+                <label class="control-label col-md-1">지점
                 </label>
                 <div class="col-md-6 form-control-static">
                     {{ $data['BranchCcdName'] }}
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2">수험직렬
+                <label class="control-label col-md-1">수험직렬
                 </label>
-                <div class="col-md-2 form-control-static">
+                <div class="col-md-4 form-control-static">
                     {{ $data['TakeKindCcdName'] }}
                 </div>
-                <label class="control-label col-md-2">신청상품
+                <label class="control-label col-md-1">신청상품
                 </label>
                 <div class="col-md-6 form-control-static">
                     {{ $data['ProdName'] }}
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2">진행상태
+                <label class="control-label col-md-1">진행상태
                 </label>
-                <div class="col-md-2 form-control-static">
+                <div class="col-md-4 form-control-static">
                     <span class="{{ $data['ApprovalStatusColor'] }}">{{ $data['ApprovalStatusName'] }}</span>
                 </div>
-                <label class="control-label col-md-2">수강기간
+                <label class="control-label col-md-1">수강기간
                 </label>
                 <div class="col-md-6 form-inline">
                     <div class="input-group mb-0 item">
@@ -79,6 +79,47 @@
                 {{-- 승인완료일 경우만 노출 --}}
                 <button type="button" name="btn_approval_cancel" data-approval-status="C" data-confirm-msg="승인취소(수강취소)" class="btn btn-danger btn-approval-proc">승인취소(수강취소)</button>
             @endif
+        </div>
+    </div>
+    <div class="row mt-15">
+        <div class="col-md-12">
+            <p class="pl-5"><i class="fa fa-check-square-o"></i> 인증(수강) 내역</p>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th class="valign-middle">인증회차</th>
+                    <th class="valign-middle">지역</th>
+                    <th class="valign-middle">지점</th>
+                    <th class="valign-middle">신청일</th>
+                    <th class="valign-middle">신청상품</th>
+                    <th class="valign-middle">수강기간</th>
+                    <th class="valign-middle">진행상태</th>
+                    <th>승인완료<br/>(반려)자</th>
+                    <th>승인완료<br/>(반려)일</th>
+                    <th>승인취소<br/>(만료)자</th>
+                    <th>승인취소<br/>(만료)일</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach($list as $row)
+                        <tr class="{{ $row['ApplyIdx'] == $idx ? 'bg-info' : '' }}">
+                            <td>{{ $row['ApplySeq'] }}</td>
+                            <td>{{ $row['AreaCcdName'] }}</td>
+                            <td>{{ $row['BranchCcdName'] }}</td>
+                            <td>{{ substr($row['RegDatm'], 0, 16) }}</td>
+                            <td>{{ $row['ProdName'] }}</td>
+                            <td>{{ $row['LecStartDate'] }} ~ {{ $row['LecEndDate'] }}</td>
+                            <td class="{{ element($row['ApprovalStatus'], $arr_approval_color) }}">{{ element($row['ApprovalStatus'], $arr_approval_status) }}</td>
+                            <td>{{ empty($row['ApprovalRejectAdminName']) === false ? $row['ApprovalRejectAdminName'] : $row['ApprovalAdminName'] }}</td>
+                            <td>{{ empty($row['ApprovalRejectDatm']) === false ? $row['ApprovalRejectDatm'] : (empty($row['ApprovalDatm']) === false ? substr($row['ApprovalDatm'], 0, 16) : '') }}</td>
+                            <td>{{ empty($row['ApprovalCancelAdminName']) === false ? $row['ApprovalCancelAdminName'] : '' }}</td>
+                            <td>{{ empty($row['ApprovalCancelDatm']) === false ? $row['ApprovalCancelDatm'] : (empty($row['ApprovalExpireDatm']) === false ? substr($row['ApprovalExpireDatm'], 0, 16) : '') }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="well well-sm mt-20 mb-0">

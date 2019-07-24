@@ -324,32 +324,27 @@
                         <colgroup>
                             <col style="width: 209px;"/>
                             <col style="width: 1px;"/>
-                            <col style="width: 330px;"/>
-                            <col style="width: 260px;"/>
+                            <col style="width: 300px;"/>
+                            <col style="width: 300px;"/>
                             <col style="width: 1px;"/>
-                            <col style="width: 319px;"/>
+                            <col/>
                         </colgroup>
                         <tbody>
                         <tr>
                             <td class="mTit">고객센터</td>
                             <td class="line">-</td>
                             <td>
-                                <span class="nTit">수강문의</span><span class="nNumber tx-color">1544-5006</span><br/>
+                                <span class="nTit">수강문의</span><span class="nNumber tx-color">1544-5006</span>                                
+                            </td>
+                            <td>
                                 <span class="nTit">교재문의</span><span class="nNumber tx-color">1544-4944</span>
                             </td>
+                            <td class="line">-</td>
                             <td class="nTxt">
                                 [운영시간]<br/>
                                 평일 : 09시 ~ 18시<br/>
                                 공휴일/일요일은 휴무<br/>
                                 ※ 전화상담시 자동녹취<br/>
-                            </td>
-                            <td class="line">-</td>
-                            <td class="nInfo">
-                                <img src="{{ img_url('main/icon_info.png') }}">
-                                <span>
-                                    윌비스는 항상 열려있습니다.<br/>
-                                    다양한 의견을 올려주세요.
-                                </span>
                             </td>
                         </tr>
                         </tbody>

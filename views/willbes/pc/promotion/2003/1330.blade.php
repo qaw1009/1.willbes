@@ -94,7 +94,7 @@ to{color:#d63e4d}
         <div class="evtCtnsBox top_bg">  
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1330_top.jpg" alt="조민주 한국사" usemap="#Map1330a" border="0">
             <map name="Map1330a" id="Map1330a">
-                <area shape="rect" coords="140,1061,975,1134" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청"/>
+                <area shape="rect" coords="140,1061,975,1134" href="javascript:go_PassLecture(1);" alt="수강신청"/>
             </map>
             <div class="check">
                 <label>
@@ -120,7 +120,7 @@ to{color:#d63e4d}
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1330_04.jpg" alt="수강신청" usemap="#Map1330b" border="0">
             <map name="Map1330b" id="Map1330b">
-                <area shape="rect" coords="702,710,963,798" href="javascript:go_PassLecture(1);" target="_blank" alt="수강신청" />
+                <area shape="rect" coords="702,710,963,798" href="javascript:go_PassLecture(1);" alt="수강신청" />
             </map> 
             <div class="check">
                 <label>

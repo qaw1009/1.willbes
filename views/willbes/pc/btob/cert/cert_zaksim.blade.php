@@ -62,8 +62,9 @@ select option:before {height:20px}
             • 윌비스 회원이 아니신 분은 회원 가입 후 신청해 주세요. (로그인 필수)
             <form class="form-horizontal" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
-                {!! method_field('POST') !!}
+                {!! method_field($method) !!}
                 <input type="hidden" name="btob_id" value="{{ $btob_id }}"/>
+                <input type="hidden" name="apply_idx" value="{{ $apply_idx }}"/>
                 <table>
                     <col width="20%"/>
                     <col />
@@ -102,6 +103,10 @@ select option:before {height:20px}
                             </select>
                             <input type="hidden" name="take_kind_ccd" value=""/>
                         </td>
+                    </tr>
+                    <tr>
+                        <th>진행상태</th>
+                        <td><b>{{ $data['ApprovalStatusName'] }}</b><span class="tx-blue pl10">({{ $data['ApprovalStatusMsg'] }})</span></td>
                     </tr>
                     </tbody>
                 </table>
@@ -167,9 +172,26 @@ select option:before {height:20px}
             $regi_form.find('select[name="branch_ccd"]').chained("#area_ccd");
             $regi_form.find('select[name="prod_code"]').chained("#site_code");
 
+            {{-- 미신청 상태가 아닐 경우 기존 입력값 셋팅 --}}
+            @if($data['ApprovalStatus'] != 'X')
+                $regi_form.find('select[name="area_ccd"]').val('{{ $data['AreaCcd'] }}');
+                $regi_form.find('select[name="site_code"]').val('{{ $data['SiteCode'] }}');
+                $regi_form.find('select[name="area_ccd"]').trigger('change');
+                $regi_form.find('select[name="site_code"]').trigger('change');
+                $regi_form.find('select[name="branch_ccd"]').val('{{ $data['BranchCcd'] }}');
+                $regi_form.find('select[name="prod_code"]').val('{{ $data['ProdCode'] }}');
+            @endif
+
             // 인증신청
             $regi_form.on('click', '.btn-cert-apply', function() {
-                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+                var method = $regi_form.find('input[name="_method"]').val();
+                var method_name = method === 'PUT' ? '수정' : '신청';
+
+                // 승인완료일 경우 등록/수정 불가
+                if (method === '') {
+                    alert('{{ $data['ApprovalStatusMsg'] }}');
+                    return;
+                }
 
                 // 수험직렬 공통코드
                 $regi_form.find('input[name="take_kind_ccd"]').val($regi_form.find('select[name="site_code"] option:selected').data('take-kind-ccd'));
@@ -188,7 +210,7 @@ select option:before {height:20px}
                         return false;
                     }
 
-                    return confirm('작심회원 인증을 신청하시겠습니까?');
+                    return confirm('작심회원 인증을 ' + method_name + '하시겠습니까?');
                 }
             });
         });

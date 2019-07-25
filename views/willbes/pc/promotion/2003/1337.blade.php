@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#3d3f3d url(https://static.willbes.net/public/images/promotion/2019/07/1337_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/07/1337_top_bg.jpg) no-repeat center top; position:relative}
 
         .wb_cts00 {background:#fff; padding-bottom:100px}
         .wb_cts00 iframe {width:870px; height:480px;}

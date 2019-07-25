@@ -150,9 +150,11 @@
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
+        {{--
         <div class="skybanner" >
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_skybanner.png" alt="스카이스크래퍼" ></a>
         </div>
+        --}}
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">

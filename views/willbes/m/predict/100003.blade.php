@@ -1,6 +1,7 @@
 @extends('willbes.m.layouts.master')
 
 @section('content')
+<link href="/public/css/willbes/promotion/2002_1332M.css" rel="stylesheet">
     <!-- Container -->
     <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
@@ -37,7 +38,7 @@
                                 채점 후 ‘완료’ 버튼을 반드시 눌러야 전형정보 관리에 성적이 반영됩니다.
                             </li>
                             <li>
-                                기본정보는 사전예약 기간에만(~4/26) 수정이 가능하며, 본 서비스 오픈 후에는(4/27~) 수정이 불가합니다.
+                                기본정보는 사전예약 기간에만(~8/30) 수정이 가능하며, 본 서비스 오픈 후에는(8/31~) 수정이 불가합니다.
                             </li>
                             <li>
                                 자세한 합격예측 분석 데이터는 PC버전에서 확인 가능합니다.
@@ -154,6 +155,32 @@
                             </td>
                         </tr>
                     </table>
+
+                    <div class="eventPopS3">
+                        <p>* 개인정보 수집 및 이용에 대한 안내</p>
+                        <ul>
+                            <li>
+                                1. 개인정보 수집 이용 목적 <br>
+                                - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
+                                - 이벤트 참여에 따른 경품 지급<br>
+                                - 응시 직렬에 따른 성적 분포 통계 자료 제공<br>
+                                - 성적 처리 및 분석 후 통계자료 마케팅 등에 활용
+                            </li>
+                            <li>개인정보 수집 항목<br>
+                                - 신청인의 이름,아이디, 응시정보, 과목별 점수, 휴대폰 번호, 이메일 주소
+                            </li>
+                            <li>개인정보 이용기간 및 보유기간<br>
+                                - 본 수집, 활용목적 달성 후 바로 파기
+                            </li>
+                            <li>개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
+                                - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,
+                                위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                            </li>
+                        </ul>
+                        <div>
+                            <input name="is_chk" id="is_chk" type="checkbox" value="Y" @if($mode == 'MOD') checked @endif><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                        </div>
+                    </div>
                 </form>
 
                 <div class="markSbtn1">
@@ -255,7 +282,8 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
-                    location.href= '{{ site_url('/m/promotion/index/cate/3001/code/1332') }}';
+                    /*location.href= '{{ site_url('/m/promotion/index/cate/3001/code/1332') }}';*/
+                    window.close();
                 }
             }, showValidateError, null, false, 'alert');
         }

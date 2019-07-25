@@ -147,7 +147,7 @@
         </div>
         <!--WB_top01//-->
 
-        <div class="evtCtnsBox wb_cts02">
+        <div class="evtCtnsBox wb_cts02" id="pkglec">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_03.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797"  />
             <map name="Map1071C" id="Map1071C">
                 <area shape="rect" coords="117,808,383,912" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797" target="_blank" alt="통신기술직" onfocus="this.blur();"/>

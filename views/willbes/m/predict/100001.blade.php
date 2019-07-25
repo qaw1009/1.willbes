@@ -1,6 +1,7 @@
 @extends('willbes.m.layouts.master')
 
 @section('content')
+<link href="/public/css/willbes/promotion/2002_1332M.css" rel="stylesheet">
     <!-- Container -->
     <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}

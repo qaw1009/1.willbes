@@ -148,13 +148,11 @@
         <!--WB_top01//-->
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_03.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_03.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797"  />
             <map name="Map1071C" id="Map1071C">
-                <area shape="rect" coords="117,808,383,912" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150626') }}" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="423,809,686,912" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150625') }}" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="742,806,994,912" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150621') }}" onfocus="this.blur();" target="_blank" />
-                <area shape="rect" coords="700,1167,923,1292" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150644') }}" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="700,1397,923,1503" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150643') }}"  onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="117,808,383,912" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797" target="_blank" alt="통신기술직" onfocus="this.blur();"/>
+                <area shape="rect" coords="423,809,686,912" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155798" target="_blank" alt="전송기술직" onfocus="this.blur();"/>
+                <area shape="rect" coords="742,806,994,912" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/155799" target="_blank" alt="전기직" onfocus="this.blur();" />                
             </map>
         </div>
         <!--wb_cts02//-->

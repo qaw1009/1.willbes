@@ -153,6 +153,8 @@
                 <area shape="rect" coords="117,808,383,912" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797" target="_blank" alt="통신기술직" onfocus="this.blur();"/>
                 <area shape="rect" coords="423,809,686,912" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155798" target="_blank" alt="전송기술직" onfocus="this.blur();"/>
                 <area shape="rect" coords="742,806,994,912" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/155799" target="_blank" alt="전기직" onfocus="this.blur();" />                
+                <area shape="rect" coords="711,1228,918,1275" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/150644" target="_blank" alt="문풀패키지" />
+                <area shape="rect" coords="711,1447,919,1490" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/150643" target="_blank" alt="기출문풀패키지" />
             </map>
         </div>
         <!--wb_cts02//-->

@@ -41,7 +41,7 @@
         .wb_cts03 li {display:inline; float:left; width:16.666666%}
         .wb_cts03 li a {display:block; height:60px; line-height:60px; text-align:center; font-size:16px; position:relative; border:1px solid #1e1e1e; margin-right:5px}
         .wb_cts03 li a span {position:absolute; display:block; left:50%; top:-10px; width:90px; margin-left:-45px; padding:0 10px; font-size:12px; color:#fff; 
-        background:#1e1e1e; height:24px; line-height:24px; border:2px solid #ffd84f; border-radius:20px;
+        background:#1e1e1e; height:24px; line-height:20px; border:2px solid #ffd84f; border-radius:20px;
         }
         .wb_cts03 li a.active,
         .wb_cts03 li a:hover {background:#1e1e1e; color:#ffd84f}

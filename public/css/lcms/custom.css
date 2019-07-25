@@ -645,8 +645,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .dt-buttons.btn-group .border-radius-reset {
     border-radius: 3px !important;
 }
-.dataTables_paginate.paging_full_numbers {
-    width: 40% !important;
+.dataTables_info {
+    width: 30% !important;
+}
+.dataTables_paginate {
+    width: 70% !important;
 }
 
 /* bootstrap3 alert */

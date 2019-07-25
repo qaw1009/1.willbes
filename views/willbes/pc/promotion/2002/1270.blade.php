@@ -27,6 +27,12 @@
             right:0;
             z-index:1;
         }
+        .skybanner2{
+            position:fixed;
+            top:565px;
+            right:0;
+            z-index:1;
+        }
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#ebebeb}
@@ -86,13 +92,17 @@
         .wb_04 {background:#f3f3f3}
         .wb_05 {background:#3d3d3d url(https://static.willbes.net/public/images/promotion/2019/06/1270_05_bg.jpg) no-repeat center top; padding-bottom:100px}
         .wb_06 {background:#fff}
+        .wb_07 {background:#020f5d;}
     </style>
 
 
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1270_skybanner.png" alt="스카이배너" ></a>
-        </div>        
+        </div> 
+        <div class="skybanner2 " >
+            <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/07/1270_skybanner2.png" alt="스카이배너2" ></a>
+        </div>           
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
@@ -151,6 +161,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_05.jpg" alt="더블할인 이벤트"/><br>
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1270_05_btn.png" alt="더블할인 이벤트"/></a>
         </div>
+
+        <div class="evtCtnsBox wb_07" id="to_go">
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1270_07.jpg" alt="더블할인 이벤트"/>          
+        </div>
+        
         {{--
         <div class="evtCtnsBox wb_06">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_06.jpg" alt="언론보도 자세히 보기" usemap="#Map1270B" border="0"/>

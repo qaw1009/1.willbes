@@ -10,25 +10,26 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
-        .wb_top {background:#3d3f3d url(https://static.willbes.net/public/images/promotion/2019/07/1337_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/07/1337_top_bg.jpg) no-repeat center top; position:relative}
 
         .wb_cts00 {background:#fff; padding-bottom:100px}
         .wb_cts00 iframe {width:870px; height:480px;}
         .wb_cts00 li:last-child {
             margin-top:10px;
         }
-        .wb_cts01 {background:#f6f6f6;}
+        .wb_cts01 {background:#f6f6f6; position:relative}
+        .wb_cts01 span {position:absolute; left:50%; margin-left:-88px; bottom:223px}
         .wb_cts02 {background:#f49168;position:relative;}
         .wb_cts03 {background:#f6f6f6;}
 
@@ -113,6 +114,7 @@
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1337_01.jpg" alt="행정법 기본기"/>
+            <span><img src="https://static.willbes.net/public/images/promotion/2019/07/1337_01_01.gif" alt="한세훈"/></span>
         </div><!--WB_01//-->
 
         <div class="evtCtnsBox wb_cts02" >            

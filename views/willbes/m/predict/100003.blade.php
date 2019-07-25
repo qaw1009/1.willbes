@@ -239,6 +239,10 @@
 
         // 문항정보필드 등록,수정
         function js_submit() {
+            if($("input:checkbox[id='is_chk']").is(":checked") == false){
+                alert('개인정보 수집을 동의해 주세요');
+                return ;
+            }
 
             if($("#TakeMockPart").val() != '300'){
                 if($("input:checkbox[id=Ssubject]:checked").length != 3){

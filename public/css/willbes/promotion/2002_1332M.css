@@ -125,3 +125,12 @@ ul.sel_info li { display: inline-block; margin-right:10px; margin-bottom:5px}
     top: -1px;
     right: -1px;
 }
+
+.eventPopS3 {padding:20px}
+.eventPopS3 p {font-weight:bold; margin-bottom:10px}
+.eventPopS3 ul,
+.eventPopS3 li {padding:0; margin:0}
+.eventPopS3 ul {border:1px solid #adadad; padding:10px; overflow-y:scroll; height:100px}
+.eventPopS3 li {margin-left:15px; margin-bottom:5px}
+.eventPopS3 div {margin-top:10px;}
+.eventPopS3 input {vertical-align:middle}

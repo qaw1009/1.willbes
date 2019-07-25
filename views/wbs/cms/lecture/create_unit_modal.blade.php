@@ -54,7 +54,7 @@
                             <th>영상비율<span class="required">*</span></th>
                             <th  width="150">촬영일/교수<span class="required">*</span></th>
                             <th>활성</th>
-                            <th width="100">등록일/등록자</th>
+                            <th width="90">등록일/등록자</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -68,8 +68,8 @@
                                         <input type="text" name="wOrderNum[]" value="{{ $row['wOrderNum'] }}" size="3" required="required" class="form-control" >
                                     </td>
                                     <td>
-                                        <input type="number" name="wUnitNum[]" id="wUnitNum{{$loop->index}}" required="required"  class="form-control" title="회차" value="{{ $row['wUnitNum'] }}" style="width: 30px">회차
-                                        <input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum{{$loop->index}}" required="required"  class="form-control" title="강" value="{{ $row['wUnitLectureNum'] }}" style="width: 30px">강
+                                        <input type="text" name="wUnitNum[]" id="wUnitNum{{$loop->index}}" required="required"  class="form-control" title="회차" value="{{ $row['wUnitNum'] }}" style="width: 30px">회차
+                                        <input type="text" name="wUnitLectureNum[]" id="wUnitLectureNum{{$loop->index}}" required="required"  class="form-control" title="강" value="{{ $row['wUnitLectureNum'] }}" style="width: 30px">강
                                         <BR>
                                         <button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete('{{$loop->index}}')">삭제</button>
                                     </td>
@@ -144,8 +144,8 @@
                                     <input type="hidden" name="wUnitIdx[]" id="wUnitIdx{{$i}}" value="" >
                                     <td><input type="text" name="wOrderNum[]" value="{{$i}}" size="3" required="required" class="form-control" ></td>
                                     <td>
-                                        <input type="number" name="wUnitNum[]" id="wUnitNum{{$i}}" required="required"  class="form-control" title="회차" value="1" style="width: 30px">회차
-                                        <input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum{{$i}}" required="required"  class="form-control" title="강" value="{{$i}}" style="width: 30px">강
+                                        <input type="text" name="wUnitNum[]" id="wUnitNum{{$i}}" required="required"  class="form-control" title="회차" value="1" style="width: 30px">회차
+                                        <input type="text" name="wUnitLectureNum[]" id="wUnitLectureNum{{$i}}" required="required"  class="form-control" title="강" value="{{$i}}" style="width: 30px">강
                                         <BR>
                                         <button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete('{{$i}}')">삭제</button>
                                     </td>
@@ -243,8 +243,8 @@
                                 //+'<td>'+seq+'</td>'
                                 +'<td><input type="text" name="wOrderNum[]" value="'+seq+'" size="3" required="required" class="form-control" ></td>'
                                 +'<td>'
-                                +'<input type="number" name="wUnitNum[]" id="wUnitNum'+seq+'" required="required"  class="form-control" title="회차" value="'+(parseInt(last_wUnitNum))+'" style="width: 30px">회차'
-                                +'<input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum'+seq+'" required="required"  class="form-control" title="강" value="'+(parseInt(last_wUnitLectureNum)+(i+1))+'" style="width: 30px">강<BR>'
+                                +'<input type="text" name="wUnitNum[]" id="wUnitNum'+seq+'" required="required"  class="form-control" title="회차" value="'+(parseInt(last_wUnitNum))+'" style="width: 30px">회차'
+                                +'<input type="text" name="wUnitLectureNum[]" id="wUnitLectureNum'+seq+'" required="required"  class="form-control" title="강" value="'+(parseInt(last_wUnitLectureNum)+(i+1))+'" style="width: 30px">강<BR>'
                                 +'<button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete(\''+seq+'\')">삭제</button>'
                                 +'</td>'
                                 +'<td>'

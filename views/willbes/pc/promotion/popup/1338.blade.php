@@ -124,13 +124,13 @@
                             <input type="radio" name="etcValue4" value="가족1인" id="etcValue4_1"/> <label for="etcValue4_1">가족1인</label>
                             <input type="radio" name="etcValue4" value="가족2인" id="etcValue4_2"/> <label for="etcValue4_2">가족2인</label>
                             <input type="radio" name="etcValue4" value="친구1인" id="etcValue4_3"/> <label for="etcValue4_3">친구1인</label>
-                            <input type="radio" name="etcValue4" value="없음" id="etcValue4_4"/> <label for="etcValue4_4">없음</label>
+                            <input type="radio" name="etcValue4" value="없음" id="etcValue4_4" checked/> <label for="etcValue4_4">없음</label>
                         </td>
                     </tr>
                     <tr>
                         <th>탑승비</th>
                         <td colspan="3">
-                            <input type="text" name="etcValue5" value="" title="탑승비" readonly="readonly" style="width:100px; background-color:#f3f3f3;"/>
+                            <input type="text" name="etcValue5" value="10000" title="탑승비" readonly="readonly" style="width:100px; background-color:#f3f3f3;"/>
                         </td>
                     </tr>
                     <tr>
@@ -185,10 +185,6 @@
 
 <script>
 
-    $(document).ready(function(){
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-    });
-
     var $regi_form_register = $('#regi_form_register');
     var _url = '{!! front_url('/event/registerStore') !!}';
 
@@ -237,19 +233,29 @@
         return false;
     }
 
-    //동반인원수에 따른 탑승비 변경
-    $regi_form_register.on('change', 'input:radio[name="etcValue4"]', function() {
 
-        var $etcValue5 = $regi_form_register.find('input[name="etcValue5"]');
+    $(document).ready(function(){
 
-        switch ($(this).val()) {
-            case '가족1인' : $etcValue5.val('20000'); break;
-            case '가족2인' : $etcValue5.val('30000'); break;
-            case '친구1인' : $etcValue5.val('20000'); break;
-            case '없음' : $etcValue5.val('10000'); break;
-            default : '';
-        }
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+        //동반인원수에 따른 탑승비 변경
+        $regi_form_register.on('change', 'input:radio[name="etcValue4"]', function() {
+
+            var $etcValue5 = $regi_form_register.find('input[name="etcValue5"]');
+
+            switch ($(this).val()) {
+                case '가족1인' : $etcValue5.val('20000'); break;
+                case '가족2인' : $etcValue5.val('30000'); break;
+                case '친구1인' : $etcValue5.val('20000'); break;
+                case '없음' : $etcValue5.val('10000'); break;
+                default : '';
+            }
+        });
+
+
     });
+
+
 
 </script>
 @stop

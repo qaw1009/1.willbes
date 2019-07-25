@@ -195,11 +195,11 @@
                     </label>
                     <div class="col-md-8 form-inline">
                        <div class="item inline-block">
-                            <input type="text" id="Memo"  class="form-control" title="메모" value="{{ $data['wMemo'] }}" style="width: 400px"
-                                    @if(empty($data['wMemo']) === false) name="Memo_disable" readonly="readonly"
+                            <input type="text" id="Memo"  class="form-control" title="메모" value="{{ $data['wMemo'] }}" style="width: 400px" name="Memo">
+                                    {{--@if(empty($data['wMemo']) === false) name="Memo_disable" readonly="readonly"
                                     @else name="Memo"
                                     @endif>
-                           @if(empty($data['wMemoAdminName'])===false)({{ $data['wMemoRegDatm'] }} | {{ $data['wMemoAdminName'] }}) @endif
+                           @if(empty($data['wMemoAdminName'])===false)({{ $data['wMemoRegDatm'] }} | {{ $data['wMemoAdminName'] }}) @endif--}}
                         </div>
                     </div>
                 </div>

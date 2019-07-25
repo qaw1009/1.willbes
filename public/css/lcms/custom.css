@@ -623,11 +623,23 @@ ul.bar_tabs > li.active a:hover {
 body.modal-open {
     padding-right: 0 !important;
 }
-#pop_modal .modal-content {
-    border-radius: 0 0 6px 6px;
+
+#pop_modal .modal-body {
+    overflow-y: scroll;
+    height: 550px;
 }
-#pop_modal .modal-footer {
+
+#pop_modal .modal-content {
+    border-radius: 0 0 6px 6px; 
+    padding-bottom:60px   
+}
+#pop_modal .modal-footer {    
+    position: absolute;
+    bottom:0;
+    background:#fff;
+    width: 100%;
     border-top: 1px solid #ddd;
+    z-index: 10;    
 }
 
 /* datatable */
@@ -1659,3 +1671,4 @@ div.dataTables_wrapper div.dataTables_processing {
         padding: 5px 20px 10px;
     }
 }
+

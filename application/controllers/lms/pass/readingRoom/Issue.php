@@ -6,6 +6,8 @@ class Issue extends \app\controllers\BaseController
     protected $models = array('sys/site', 'sys/code', 'pass/readingRoom');
     protected $helpers = array();
 
+    private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+
     public function __construct()
     {
         parent::__construct();
@@ -261,7 +263,7 @@ class Issue extends \app\controllers\BaseController
         $excel_column = 'op.ProdCode, b.ReadingRoomName, b.NowMIdx, m.MemName, m.MemId, fn_dec(m.PhoneEnc) AS MemPhone,
                         o.OrderNo, o.OrderDatm, fn_ccd_name(b.CampusCcd) AS CampusName, op.OrderPrice, fn_ccd_name(op.PayStatusCcd) AS PayStatusName,
                         IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundTypeName,
-                        b.UseStartDate, b.UseEndDate';
+                        b.UseStartDate, b.UseEndDate, fn_ccd_name(b.StatusCcd) AS SeatStatusName, e.wAdminName AS RegAdminName, b.RegDatm AS SeatRegDatm';
 
         if ($count > 0) {
             $order_by = ['o.OrderIdx' => 'DESC', 'b.StatusCcd' => 'ASC', 'b.UseEndDate' => 'ASC', 'b.RrudIdx' => 'DESC'];
@@ -288,10 +290,10 @@ class Issue extends \app\controllers\BaseController
         $file_name = $file_name . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // download log
-        $this->load->library('approval');
-        if($this->approval->SysDownLog($query, $file_name, count($list)) !== true) {
-            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
-        }
+//        $this->load->library('approval');
+//        if($this->approval->SysDownLog($query, $file_name, count($list)) !== true) {
+//            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+//        }
 
         // export excel
         $this->load->library('excel');

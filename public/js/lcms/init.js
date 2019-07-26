@@ -3,7 +3,7 @@
  */
 $.extend(true, $.fn.dataTable.defaults, {
     "autoWidth": false,
-    "sPaginationType": "full_numbers",
+    "sPaginationType": "full_numbers_no_ellipses",  // full_numbers
     //"dom": 'T<"clear">lfBrtip',
     // searcing input box display
     //"dom": 'T<"clear"><<"pull-left mr-30"l><"pull-left"f><"pull-right"B>><"clear">rtip',

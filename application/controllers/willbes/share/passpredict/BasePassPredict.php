@@ -6,7 +6,7 @@ class BasePassPredict extends \app\controllers\FrontController
     protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF', 'cert/certApplyF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('indexv2','createGradeMember', 'createGradeMember2','storeFinalPoint', 'storeFinalPoint2','predictMyInfo');
+    protected $auth_methods = array('createGradeMember', 'createGradeMember2','storeFinalPoint', 'storeFinalPoint2','predictMyInfo');
 
     public function __construct()
     {

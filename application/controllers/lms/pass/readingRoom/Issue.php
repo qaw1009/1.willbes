@@ -271,7 +271,7 @@ class Issue extends \app\controllers\BaseController
         }
         $last_query = $this->readingRoomModel->getLastQuery();
 
-        $this->_makeExcel('사무실신청현황/연장', $list, $headers, true, $last_query);
+        $this->_makeExcel('사물함 신청현황', $list, $headers, true, $last_query);
     }
 
     /**

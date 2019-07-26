@@ -26,7 +26,7 @@
         
         .evt01 {background:#2a2a2a;}                  
 
-        .evt02 {ackground:#ffffff;}      
+        .evt02 {background:#fff; padding-bottom:100px}      
 
     </style>
 

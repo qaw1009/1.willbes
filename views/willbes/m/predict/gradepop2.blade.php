@@ -95,11 +95,11 @@
     var scoreIs = '{{ $scoreIs }}';
 
     $( document ).ready( function() {
-        @if(date('YmdHi') >= '201905011600')
+        {{--@if(date('YmdHi') >= '201905011600')
         alert('서비스가 종료되었습니다.');
         var url = "{{ site_url('/m/home/index') }}";
         location.href = url;
-        @endif
+        @endif--}}
 
         if(scoreIs == 'Y'){
             _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();

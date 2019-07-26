@@ -61,9 +61,9 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1339_02.jpg" title="소문내고 스타벅스고받고 ">
             </div>
 
-            {{--url댓글--}}
+            {{--홍보url댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_emoticon_url_partial')
+                @include('willbes.pc.promotion.show_comment_list_url_partial')
             @endif
 
         </form>

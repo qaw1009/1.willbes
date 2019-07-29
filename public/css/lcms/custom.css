@@ -626,7 +626,7 @@ body.modal-open {
 
 #pop_modal .modal-body {
     overflow-y: scroll;
-    height: 550px;
+    height: 750px;
 }
 
 #pop_modal .modal-content {

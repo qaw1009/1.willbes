@@ -91,6 +91,7 @@
     <script src="/public/vendor/datatables/rowgroup/js/dataTables.rowGroup.js"></script>
     <script src="/public/vendor/datatables/responsive/js/dataTables.responsive.min.js"></script>
     <script src="/public/vendor/datatables/responsive/js/responsive.bootstrap.js"></script>
+    <script src="/public/vendor/datatables/pagination/full_numbers_no_ellipses.js"></script>
     <!-- FullCalendar -->
     <!--<script src="/public/vendor/fullcalendar/fullcalendar.min.js"></script>-->
     <!-- PNotify -->

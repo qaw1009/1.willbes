@@ -223,10 +223,18 @@
 
             // 엑셀다운로드 이벤트
             $('.btn-excel').on('click', function(event) {
+
+                var search_readingroom_idx_val = $search_form.find('select[name="search_readingroom_idx"]').val();
+                var search_readingroom_idx_text = $search_form.find('select[name="search_readingroom_idx"] option:checked').text();
+                if(!search_readingroom_idx_val){
+                    alert('검색조건에서 사물함명을 선택해 주세요');
+                    return false;
+                }
                 event.preventDefault();
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                if (confirm(search_readingroom_idx_text + ' 사물함 엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/pass/readingRoom/issue/excel/?mang_type=L') }}', $search_form.serializeArray(), 'POST');
                 }
+
             });
         });
     </script>

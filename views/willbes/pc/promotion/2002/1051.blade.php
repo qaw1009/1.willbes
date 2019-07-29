@@ -63,20 +63,20 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <ul class="skybanner" >
-            <li><a href="#february"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_skybanner01.png" alt="수강신청"></a></li>
+            <li><a href="#february"><img src="https://static.willbes.net/public/images/promotion/2019/07/1051_skybanner01.png" alt="수강신청"></a></li>
             <li><a href="#memo"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_skybanner02.png" alt="수강신청"></a></li>
         </ul>
 
         <div class="evtCtnsBox wb_top" id="sparta">
-            <img src="https://static.willbes.net/public/images/promotion/sparta/1051_top.jpg" alt="스파르타" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1051_top.jpg" alt="스파르타" />
         </div>
 
         <div class="evtCtnsBox wb_spot" id="february">
-            <img src="https://static.willbes.net/public/images/promotion/sparta/1051_01.jpg" alt="개강반" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1051_01.jpg" alt="개강반" />
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/sparta/1051_02.jpg" alt="교수님들" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1051_02.jpg" alt="교수님들" />
         </div>
 
         <div class="evtCtnsBox wb_07" id="memo" >

@@ -1,6 +1,6 @@
 <ul class="skyBanner">
     <li><a href="#event">채점만해도<Br />선물증정</a></li>
-    <li><a href="javascript:tabMove(2)">빠른채점</a></li>
+    <li><a href="javascript:tabMove(2);">빠른채점</a></li>
     <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1208" target="_blank">라이브 토크쇼</a></li>
     <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank">적중이벤트</a></li>
     {{--<li><a href="#none" >합격예측</a></li>--}}
@@ -533,7 +533,7 @@
                 $( '.conut_section' ).removeClass( 'conut_sectionFixed' );
             }
         });*/
-    } );
+    });
 
     // 숫자 타입에서 쓸 수 있도록 format() 함수 추가
     Number.prototype.format = function(){
@@ -614,7 +614,7 @@
             'type' : 2,
             'event_idx' : '{{ $data['ElIdx'] }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}',
-            'sp_idx' : '{{ $arr_promotion_params['spidx2'] }}',
+            'sp_idx' : '{{ (empty($arr_promotion_params['spidx2']) === false) ? $arr_promotion_params['spidx2'] : '' }}',
             'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['PredictIdx'] : '' }}'
         };
 
@@ -635,7 +635,7 @@
             'type' : 3,
             'event_idx' : '{{ $data['ElIdx'] }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}',
-            'sp_idx' : '{{ $arr_promotion_params['spidx2'] }}',
+            'sp_idx' : '{{ (empty($arr_promotion_params['spidx2']) === false) ? $arr_promotion_params['spidx2'] : '' }}',
             'predict_idx' : '{{ (empty($arr_promotion_params) === false) ? $arr_promotion_params['PredictIdx'] : '' }}'
         };
 

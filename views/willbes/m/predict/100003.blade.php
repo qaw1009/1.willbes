@@ -50,7 +50,7 @@
 
                 <div class="markMbtn2">
                     <a href="#none">기본정보입력</a>
-                    <a href="javascript:alert('8월31일(수) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>
+                    <a href="javascript:alert('8월31일(토) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>
                     {{--27일부터 보이는 버튼--}}
                     {{--<a href="javascript:alert('기본정보를 저장하고 채점해주세요.');" class="btn2">채점 및 성적확인</a>--}}
                 </div>
@@ -244,7 +244,7 @@
                 return ;
             }
 
-            if($("#TakeMockPart").val() != '300'){
+            if($("#TakeMockPart").val() != '800'){
                 if($("input:checkbox[id=Ssubject]:checked").length != 3){
                     alert('선택과목은 3개를 선택해 주세요.');
                     return ;

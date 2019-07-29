@@ -270,7 +270,6 @@ class Issue extends \app\controllers\BaseController
             $list = $this->readingRoomModel->listSeatDetail($mang_type, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by, $excel_column);
         }
         $last_query = $this->readingRoomModel->getLastQuery();
-
         $this->_makeExcel('사물함 신청현황', $list, $headers, true, $last_query);
     }
 
@@ -290,10 +289,10 @@ class Issue extends \app\controllers\BaseController
         $file_name = $file_name . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // download log
-//        $this->load->library('approval');
-//        if($this->approval->SysDownLog($query, $file_name, count($list)) !== true) {
-//            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
-//        }
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($query, $file_name, count($list)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
 
         // export excel
         $this->load->library('excel');

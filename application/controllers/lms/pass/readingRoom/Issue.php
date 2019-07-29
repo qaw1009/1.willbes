@@ -6,6 +6,8 @@ class Issue extends \app\controllers\BaseController
     protected $models = array('sys/site', 'sys/code', 'pass/readingRoom');
     protected $helpers = array();
 
+    private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+
     public function __construct()
     {
         parent::__construct();
@@ -52,55 +54,7 @@ class Issue extends \app\controllers\BaseController
     public function listAjax()
     {
         $mang_type = $this->_req('mang_type');
-        $search_value = $this->_reqP('search_value'); // 검색어
-        $search_value_enc = $this->readingRoomModel->getEncString($search_value); // 검색어 암호화
-
-        $arr_condition = [
-            'EQ' => [
-                'b.SiteCode' => $this->_reqP('search_site_code'),       //사이트
-                'b.CampusCcd' => $this->_reqP('search_campus_ccd'),     //캠퍼스
-                'op.PayStatusCcd' => $this->_reqP('search_pay_status'), //결제상태
-                'b.StatusCcd' => $this->_reqP('search_seat_status'),    //배정여부
-                'b.LrIdx' => $this->_reqP('search_readingroom_idx'),    //독서실명
-                //예치금반환
-            ],
-            'ORG' => [
-                'LKB' => [
-                    'm.MemName' => $search_value,
-                    'm.MemID' => $search_value, // 아이디
-                    'm.PhoneEnc' => $search_value_enc, // 암호화된 전화번호
-                    'm.Phone2Enc' => $search_value_enc, // 암호화된 전화번호 중간자리
-                    'm.Phone3' => $search_value, // 전화번호 뒷자리
-                    'o.OrderNo' => $search_value, // 주문번호
-                ]
-            ]
-        ];
-
-        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
-            switch ($this->_reqP('search_date_type')) {
-                case "P" :  //결제완료일
-                    $arr_condition = array_merge($arr_condition, [
-                        'BDT' => ['o.OrderDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
-                        //'BDT' => ['b.CompleteDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
-                    ]);
-                    break;
-                case "R" :  //등록일 [자리등록일]
-                    $arr_condition = array_merge($arr_condition, [
-                        'BDT' => ['b.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
-                    ]);
-                    break;
-                case "S" :  //대여시작일
-                    $arr_condition = array_merge($arr_condition, [
-                        'BDT' => ['b.UseStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
-                    ]);
-                    break;
-                case "E" :  //대여종료일
-                    $arr_condition = array_merge($arr_condition, [
-                        'BDT' => ['b.UseEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
-                    ]);
-                    break;
-            }
-        }
+        $arr_condition = $this->_getListConditions();
 
         $list = [];
         $count = $this->readingRoomModel->listSeatDetail($mang_type,true, $arr_condition);
@@ -234,5 +188,124 @@ class Issue extends \app\controllers\BaseController
 
         $result = $this->readingRoomModel->modifyReadingRoomSeatForOut($this->_reqP(null,false));
         $this->json_result($result, '퇴실되었습니다.', $result);
+    }
+
+    /**
+     * 사무실신청현황/연장 조회 조건 리턴
+     * @return array
+     */
+    private function _getListConditions()
+    {
+        $search_value = $this->_reqP('search_value'); // 검색어
+        $search_value_enc = $this->readingRoomModel->getEncString($search_value); // 검색어 암호화
+
+        $arr_condition = [
+            'EQ' => [
+                'b.SiteCode' => $this->_reqP('search_site_code'),       //사이트
+                'b.CampusCcd' => $this->_reqP('search_campus_ccd'),     //캠퍼스
+                'op.PayStatusCcd' => $this->_reqP('search_pay_status'), //결제상태
+                'b.StatusCcd' => $this->_reqP('search_seat_status'),    //배정여부
+                'b.LrIdx' => $this->_reqP('search_readingroom_idx'),    //독서실명
+                //예치금반환
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'm.MemName' => $search_value,
+                    'm.MemID' => $search_value, // 아이디
+                    'm.PhoneEnc' => $search_value_enc, // 암호화된 전화번호
+                    'm.Phone2Enc' => $search_value_enc, // 암호화된 전화번호 중간자리
+                    'm.Phone3' => $search_value, // 전화번호 뒷자리
+                    'o.OrderNo' => $search_value, // 주문번호
+                ]
+            ]
+        ];
+
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            switch ($this->_reqP('search_date_type')) {
+                case "P" :  //결제완료일
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['o.OrderDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                        //'BDT' => ['b.CompleteDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+                case "R" :  //등록일 [자리등록일]
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['b.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+                case "S" :  //대여시작일
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['b.UseStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+                case "E" :  //대여종료일
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['b.UseEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+            }
+        }
+        return $arr_condition;
+    }
+
+    /**
+     * 사무실신청현황/연장 엑셀다운로드
+     */
+    public function excel()
+    {
+        $mang_type = $this->_req('mang_type');
+        $arr_condition = $this->_getListConditions();
+
+        $list = [];
+        $count = $this->readingRoomModel->listSeatDetail($mang_type, true, $arr_condition);
+
+        $headers = ['사물함코드', '사물함명', '좌석번호', '회원명', '아이디', '연락처', '주문번호', '결제완료일', '캠퍼스', '결제금액', '결제상태', '예치금', '대여시작일', '대여종료일', '좌성상태', '등록자', '등록일', ];
+        $excel_column = 'op.ProdCode, b.ReadingRoomName, b.NowMIdx, m.MemName, m.MemId, fn_dec(m.PhoneEnc) AS MemPhone,
+                        o.OrderNo, o.OrderDatm, fn_ccd_name(b.CampusCcd) AS CampusName, op.OrderPrice, fn_ccd_name(op.PayStatusCcd) AS PayStatusName,
+                        IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundTypeName,
+                        b.UseStartDate, b.UseEndDate, fn_ccd_name(b.StatusCcd) AS SeatStatusName, e.wAdminName AS RegAdminName, b.RegDatm AS SeatRegDatm';
+
+        if ($count > 0) {
+            $order_by = ['o.OrderIdx' => 'DESC', 'b.StatusCcd' => 'ASC', 'b.UseEndDate' => 'ASC', 'b.RrudIdx' => 'DESC'];
+            $list = $this->readingRoomModel->listSeatDetail($mang_type, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by, $excel_column);
+        }
+        $last_query = $this->readingRoomModel->getLastQuery();
+
+        $this->_makeExcel('사물함 신청현황', $list, $headers, true, $last_query);
+    }
+
+    /**
+     * @param string $file_name [확장자를 제외한 생성파일명]
+     * @param array $list [엑셀내용]
+     * @param array $headers [엑셀헤더]
+     * @param bool $is_huge [대용량 다운로드 메소드 사용여부]
+     * @param string $query [엑셀다운로드 쿼리]
+     */
+    protected function _makeExcel($file_name, $list, $headers, $is_huge = true, $query = '')
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        // 파일명 가공
+        $file_name = $file_name . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        // download log
+//        $this->load->library('approval');
+//        if($this->approval->SysDownLog($query, $file_name, count($list)) !== true) {
+//            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+//        }
+
+        // export excel
+        $this->load->library('excel');
+
+        if ($is_huge === true) {
+            $result = $this->excel->exportHugeExcel($file_name, $list, $headers);
+        } else {
+            $result = $this->excel->exportExcel($file_name, $list, $headers);
+        }
+
+        if ($result !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 }

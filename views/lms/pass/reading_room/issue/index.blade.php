@@ -143,6 +143,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-pencil mr-5"></i> {{$mang_title}}등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/pass/readingRoom/regist/create') }}' + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
                         }}
@@ -218,6 +219,14 @@
                 var param = '&target_order_idx=' + $(this).data('order-idx');
                 param += '&target_prod_code=' + $(this).data('prod-code');
                 location.href='{{ site_url('/pay/visit/create') }}/?' + param;
+            });
+
+            // 엑셀다운로드 이벤트
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/pass/readingRoom/issue/excel/?mang_type=L') }}', $search_form.serializeArray(), 'POST');
+                }
             });
         });
     </script>

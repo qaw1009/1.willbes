@@ -43,6 +43,7 @@
                             <option value="CA">결제취소</option>
                             <option value="NC">망취소</option>
                             <option value="RP">부분환불</option>
+                            <option value="MP">결제요청(모바일)</option>
                         </select>
                         <select class="form-control mr-10" id="search_is_result" name="search_is_result">
                             <option value="">연동성공여부</option>

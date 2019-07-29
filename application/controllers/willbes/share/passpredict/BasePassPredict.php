@@ -19,6 +19,10 @@ class BasePassPredict extends \app\controllers\FrontController
             show_alert('로그인 후 이용해 주세요.', 'close');
         }
 
+        if (empty($params) === true) {
+            show_alert('잘못된 접근 입니다.', 'close');
+        }
+
         $idx = $params[0];
         $memidx = $this->session->userdata('mem_idx');
 

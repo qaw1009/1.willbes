@@ -51,7 +51,7 @@
         </div>  
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1327_02.jpg" alt="즉시 4만원 할인">
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1327_02.jpg" alt="윌비스 신광은 경찰 합격수기 공모전">
             <a href="#none" onclick="javascript:popup();">내 합격수기 등록하기  ></a>
         </div>               
     </div>

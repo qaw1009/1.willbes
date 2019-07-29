@@ -7,7 +7,7 @@ class PayLog extends \app\controllers\BaseController
     protected $helpers = array();
     private $_codes = [
         'pay' => [
-            'PayType' => ['PA' => '결제요청', 'RP' => '부분환불', 'CA' => '결제취소', 'NC' => '망취소']
+            'PayType' => ['PA' => '결제요청', 'RP' => '부분환불', 'CA' => '결제취소', 'NC' => '망취소', 'MP' => '결제요청(모바일)']
         ]
     ];
 
@@ -45,15 +45,22 @@ class PayLog extends \app\controllers\BaseController
                 'PgMid' => $this->_reqP('search_pg_mid'),
                 'PayType' => $this->_reqP('search_pay_type')
             ],
-            'LKL' => [
-                'PayMethod' => $this->_reqP('search_pay_method')
-            ],
             'LKB' => [
                 $this->_reqP('search_keyword') => $this->_reqP('search_value')
             ]
         ];
+
+        // 결제/취소 결제방법 조건
+        $search_pay_method = $this->_reqP('search_pay_method');
+        if (empty($search_pay_method) === false) {
+            if ($search_pay_method == 'DirectBank') {
+                $arr_condition['IN']['PayMethod'] = ['DirectBank', 'BANK'];     // 실시간계좌이체
+            } else {
+                $arr_condition['LKL']['PayMethod'] = $search_pay_method;
+            }
+        }
         
-        // 연동오류만 보기 선택
+        // 연동성공여부 조건
         $search_is_result = $this->_reqP('search_is_result');
         if (empty($search_is_result) === false) {
             if ($search_is_result == 'Y') {

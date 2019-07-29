@@ -49,7 +49,7 @@
         to{color:#000}
         }
 
-        .wb_top {background:#353a41 url(https://static.willbes.net/public/images/promotion/2019/06/1268_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:#353a41 url(https://static.willbes.net/public/images/promotion/2019/07/1268_top_bg.jpg) no-repeat center top; position:relative}
         .wb_top span {position:absolute; left:50%; z-index:1;
             -webkit-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
             -moz-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
@@ -125,7 +125,7 @@
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1268_01.jpg" alt="문제풀이과정 커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1268_01.jpg" alt="문제풀이과정 커리큘럼" />
         </div>
 
         <div class="evtCtnsBox wb_02">

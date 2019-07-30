@@ -164,7 +164,9 @@ class BasePromotion extends \app\controllers\FrontController
         $list = [];
         $method = 'POST';
         $arr_input = array_merge($this->_reqG(null));
-        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input);
+
+        //하단 카페 링크 사용여부
+        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input) . '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input, 'Y');
         $onoff_type = element('pattern', $arr_input);
 
         $comment_create_type = '1';
@@ -204,8 +206,8 @@ class BasePromotion extends \app\controllers\FrontController
         // 공지사항 조회 (페이징 처리 없음)
         $arr_base['notice_data'] = $this->eventFModel->getEventForNotice(element('event_idx', $arr_input)
             , 'BoardIdx, ElIdx, Title, Content, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') AS RegDate');
-
         $view_file = 'willbes/pc/promotion/frame_comment_list_' . $comment_type;
+
         $this->load->view($view_file, [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,

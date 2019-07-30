@@ -23,6 +23,7 @@ class Issue extends \app\controllers\BaseController
 
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+        $offLineSite_def_code = key($offLineSite_list);
 
         //캠퍼스 조회
         $arr_search_data['campus'] = $this->siteModel->getSiteCampusArray('');
@@ -44,6 +45,7 @@ class Issue extends \app\controllers\BaseController
 
         $this->load->view("pass/reading_room/issue/index", [
             'offLineSite_list' => $offLineSite_list,
+            'offLineSite_def_code' => $offLineSite_def_code,
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
             'arr_search_data' => $arr_search_data,

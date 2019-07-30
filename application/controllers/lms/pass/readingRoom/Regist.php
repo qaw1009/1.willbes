@@ -21,6 +21,7 @@ class Regist extends \app\controllers\BaseController
     {
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+        $offLineSite_def_code = key($offLineSite_list);
 
         $mang_type = $this->_req('mang_type');
 
@@ -29,6 +30,7 @@ class Regist extends \app\controllers\BaseController
 
         $this->load->view("pass/reading_room/regist/index", [
             'offLineSite_list' => $offLineSite_list,
+            'offLineSite_def_code' => $offLineSite_def_code,
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'prod_type' => $this->readingRoomModel->arr_prod_type[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,

@@ -14,9 +14,6 @@
                 $step2 = 'on';
             }
         }
-
-    $step1 = 'on';
-    $step2 = 'on';
     @endphp
 
     <link href="/public/css/willbes/promotion/2002_1332M.css" rel="stylesheet">

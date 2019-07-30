@@ -30,7 +30,7 @@
         .evt01 .request input {height:26px;}
         .evt01 .requestL {width:49%; float:left}
         .evt01 .requestR {width:49%; float:right; }
-        .evt01 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:190px; overflow-y:scroll }
+        .evt01 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:190px; overflow-y:scroll}
         .evt01 .requestL li {display:inline-block;}
         .evt01 .requestR li {margin-bottom:5px}
         .evt01 .request:after {content:""; display:block; clear:both}
@@ -48,46 +48,6 @@
 
         .requestL .file{height:50px;line-height:50px;}
 
-        /* input file type 
-            .input-file {
-            display: inline-block;
-            }
-
-            .input-file [type="file"] {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0 none;
-            }
-            .input-file .file-label {
-            display: inline-block;
-            min-width: 53px;
-            height: 27px;
-            line-height: 24px;
-            padding: 0 10px;
-            border-radius: 2px;
-            font-size: 13px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            }
-            .input-file .file-name {
-            width: 80px;
-            background: #f5f5f5;
-            height: 27px;
-            line-height: 26px;
-            text-indent: 5px;
-            border: 1px solid #bbb;
-            }*/
-
-            /* 접근성 탭 포커스 스타일
-            .file-focus {
-            outline: 1px dotted #d2310e;
-            } */
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">

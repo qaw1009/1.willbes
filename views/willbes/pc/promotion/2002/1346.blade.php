@@ -30,7 +30,7 @@
         .evt01 .request input {height:26px;}
         .evt01 .requestL {width:49%; float:left}
         .evt01 .requestR {width:49%; float:right; }
-        .evt01 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:241px; overflow-y:scroll }
+        .evt01 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:190px; overflow-y:scroll }
         .evt01 .requestL li {display:inline-block;}
         .evt01 .requestR li {margin-bottom:5px}
         .evt01 .request:after {content:""; display:block; clear:both}
@@ -48,7 +48,7 @@
 
         .requestL .file{height:50px;line-height:50px;}
 
-        /* input file type */
+        /* input file type 
             .input-file {
             display: inline-block;
             }
@@ -82,12 +82,12 @@
             line-height: 26px;
             text-indent: 5px;
             border: 1px solid #bbb;
-            }
+            }*/
 
-            /* 접근성 탭 포커스 스타일 */
+            /* 접근성 탭 포커스 스타일
             .file-focus {
             outline: 1px dotted #d2310e;
-            }
+            } */
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -144,18 +144,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th colspan="2"class="file">* 응시표 인증파일 첨부(jpg,gif,png 파일만 등록가능)</th>                              
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="input-file">
-                                    <input type="text" readonly="readonly" class="file-name" />
-                                    <label for="upload02" class="file-label">찾아보기</label>
-                                    <input type="file" name="" id="upload02" class="file-upload" />
-                                    </div>
+                                <td colspan="2">
+                                    <input type="file" name="ATTACH_FILE" id="ATTACH_FILE">
                                 </td>
                             </tr>
                         </table>
+                        * 응시표 인증파일 첨부(jpg,gif,png 파일만 등록가능)
                     </div>
                     <div class="requestR">
                         <h3>* 개인정보 수집 및 이용에 대한 안내</h3>

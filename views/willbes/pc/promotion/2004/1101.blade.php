@@ -10,13 +10,14 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtContent span {vertical-align:auto}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
@@ -24,20 +25,20 @@
         /*2018-07-31 상단변경*/
         .layer {width:100%; height:800px; -ms-overflow:hidden;}
         .video {width:100%; height:800px; overflow:hidden; position:relative; opacity:0.4; box-shadow:0px rgba(0,0,0,0.4); background:#000}
-        .pngimg	 {width:1210px; margin:0 auto; position:relative; top:-800px;}
-        .pngimg-real {width:1210px; height:0px; position:absolute;top:0;}
-        .wb_mp4 {width:100%; text-align:center; margin:0 auto; background:#000 /*url(http://file3.willbes.net/new_cop/2018/05/180523_EV00_bg.jpg) no-repeat center*/;  min-width:1210px;}
-        .wb_mp4 ul {width:100%; margin:0 auto; min-width:1210px;}
+        .pngimg	 {width:1120px; margin:0 auto; position:relative; top:-800px;}
+        .pngimg-real {width:1120px; height:0px; position:absolute;top:0;}
+        .wb_mp4 {width:100%; text-align:center; margin:0 auto; background:#000; min-width:1120px;}
+        .wb_mp4 ul {width:100%; margin:0 auto; min-width:1120px;}
 
         /* 상단탭 */
         .wb_top {background:#ddd;}
-        .tab_box {position:relative; width:1210px; height:110px; display:block; margin:0 auto; }
-        .tab_menu {position:absolute; width:1210px; height:110px; top:0px; text-align:center;}
+        .tab_box {position:relative; width:1120px; height:110px; display:block; margin:0 auto; }
+        .tab_menu {position:absolute; width:1120px; height:110px; top:0px; text-align:center;}
         .tab_menu li {display:inline; float:left;}
         .tab_menu li a img.off {display:block}
         .tab_menu li a img.on {display:none}
 
-        .wb_cts02 {background:#000 url(http://file3.willbes.net/new_gosi/2018/08/EV180806_1_bg.png) no-repeat center;}
+        .wb_cts02 {background:#000 url(https://static.willbes.net/public/images/promotion/2019/07/1101_1_bg.png) no-repeat center;}
         .wb_cts03 {background:#eee;padding:70px 0;}
         .wb_cts04 {background:#fff;}
         .wb_cts05 {background:#eee; padding:70px 0;}
@@ -76,7 +77,7 @@
             position:fixed;
             bottom:0;
             width:100%;
-            min-width:1210px;
+            min-width:1120px;
             text-align:center;
             background: url(http://file3.willbes.net/new_gosi/2018/10/EV181030_scroll_bn_bg.png) repeat-x;
             z-index:20;}
@@ -97,67 +98,40 @@
     </form>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="skybanner" >
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180807_sky.png" alt="#" usemap="#Map_sky_go" border="0" />
-            <map name="Map_sky_go">
-                <area shape="rect" coords="10,18,90,65" href="{{ site_url('/pass/promotion/index/cate/3043/code/1100') }}" alt="자습형">
-                <area shape="rect" coords="9,93,91,144" href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}" target="_blank" alt="기숙형">
-                <area shape="rect" coords="7,165,92,222" href="{{ site_url('/pass/promotion/index/cate/3043/code/1102') }}" target="_blank" alt="영어집중형">
-            </map>
-        </div>
 
         <div class="evtCtnsBox wb_mp4" id="main">
             <div class="layer">
                 <div class="video">
                     <video style="width:100%;" autoplay loop muted="">
-                        <source src="http://file3.willbes.net/new_gosi/2018/07/180629.mp4" type="video/mp4"></source>
+                        <source src="https://static.willbes.net/public/images/promotion/2019/07//1101_bg.mp4" type="video/mp4"></source>
                     </video>
                 </div>
                 <div class="pngimg">
                     <div class="pngimg-real">
-                        <img src="http://file3.willbes.net/new_gosi/2018/07/EV180731_t.png" alt="윌비스 관리반" />
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_t.png" alt="윌비스 관리반" />
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="nav">
-            <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_scroll_bn.png" alt="예약하기" usemap="#Map_1030_lec_go" border="0"  />
-            <map name="Map_1030_lec_go">
-                <area shape="rect" coords="813,16,1127,78" href="{{ site_url('/pass/event/show/ongoing?event_idx=159') }}" target="_blank" alt="예약하기">
-            </map>
-        </div>
-
-        <div class="evtCtnsBox wb_top">
-            <div class="tab_box">
-                <div class="tab_menu">
-                    <ul>
-                        <li><a href="{{ site_url('/pass/promotion/index/cate/3043/code/1100') }}"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png'" border="0"/></a></li>
-                        <li><a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2_on.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2.png'" border="0"/></a></li>
-                        <li><a href="{{ site_url('/pass/promotion/index/cate/3043/code/1102') }}"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3.png'" border="0"/></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--WB_top//-->
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180807_1.png" alt="#" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_1.png" alt="#" />
         </div>
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180807_2.png" alt="#" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_2.png" alt="#" />
         </div>
         <!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180807_3.png"alt="#" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_3.png"alt="#" />
         </div>
         <!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts05">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180807_4.png"alt="#" usemap="#Map1101A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_4.png"alt="#" usemap="#Map1101A" border="0" />
             <map name="Map1101A" id="Map1101A">
                 <area shape="rect" coords="119,1228,443,1278" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1100" target="_blank" alt="강습반 보러가기" />
             </map>
@@ -165,34 +139,34 @@
         <!--wb_cts05//-->
 
         <div class="evtCtnsBox wb_cts07">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180807_4txt.png" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_4txt.png" alt="" />
             <div class="bannerImg1">
                 <ul id="slidesImg1">
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab1.png" alt="1"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab9.png" alt="1"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab2.png" alt="2"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab3.png" alt="3"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab4.png" alt="4"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab5.png" alt="5"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab6.png" alt="6"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab7.png" alt="7"/></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_4_tab8.png" alt="8"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab1.png" alt="1"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab2.png" alt="1"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab3.png" alt="2"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab4.png" alt="3"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab5.png" alt="4"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab6.png" alt="5"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab7.png" alt="6"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab8.png" alt="7"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_4_tab9.png" alt="8"/></li>
                 </ul>
-                <p class="left_arr"><a id="imgBannerLeft"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_arr_l.png"></a></p>
-                <p class="right_arr"><a id="imgBannerRight"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_arr_r.png"></a></p>
+                <p class="left_arr"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_arr_l.png"></a></p>
+                <p class="right_arr"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_arr_r.png"></a></p>
             </div>
         </div>
         <!--wb_cts07//-->
 
         <div class="evtCtnsBox wb_cts08">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180807_7.png"alt="#" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_7.png"alt="#" />
         </div>
         <!--wb_cts08//-->
 
         <div class="evtCtnsBox wb_cts11">
             <p id="lec_send"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_9.png" alt="신청방식" /></p>
-            <p><a onclick="go_popup()"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_btn.png" alt="입실상담신청하기"></a></p>
-            <p><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_03_6_tel.png" alt="문의및 접수" /></p>
+            <p><a onclick="go_popup()"><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_btn.png" alt="입실상담신청하기"></a></p>
+            <p><img src="https://static.willbes.net/public/images/promotion/2019/07/1101_03_6_tel.png" alt="문의및 접수" /></p>
         </div>
         <!--wb_cts11//-->
 

@@ -166,9 +166,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null));
 
         //하단 카페 링크 사용여부
-        if(empty($arr_input['bottom_cafe_type'])) $arr_input['bottom_cafe_type'] = 'Y';
-
-        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input) . '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input);
+        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input) . '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input, 'Y');
         $onoff_type = element('pattern', $arr_input);
 
         $comment_create_type = '1';

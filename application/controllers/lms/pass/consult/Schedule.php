@@ -18,6 +18,7 @@ class Schedule extends \app\controllers\BaseController
     {
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+        $offLineSite_def_code = key($offLineSite_list);
 
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
@@ -27,6 +28,7 @@ class Schedule extends \app\controllers\BaseController
 
         $this->load->view("pass/consult/schedule/index", [
             'offLineSite_list' => $offLineSite_list,
+            'offLineSite_def_code' => $offLineSite_def_code,
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
             'yoil' => $this->consultModel->yoil

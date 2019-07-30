@@ -164,7 +164,11 @@ class BasePromotion extends \app\controllers\FrontController
         $list = [];
         $method = 'POST';
         $arr_input = array_merge($this->_reqG(null));
-        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input);
+
+        //하단 카페 링크 사용여부
+        if(empty($arr_input['bottom_cafe_type'])) $arr_input['bottom_cafe_type'] = 'Y';
+
+        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input) . '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input);
         $onoff_type = element('pattern', $arr_input);
 
         $comment_create_type = '1';
@@ -205,9 +209,6 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['notice_data'] = $this->eventFModel->getEventForNotice(element('event_idx', $arr_input)
             , 'BoardIdx, ElIdx, Title, Content, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') AS RegDate');
         $view_file = 'willbes/pc/promotion/frame_comment_list_' . $comment_type;
-
-        //하단 카페 링크 사용여부
-        if(empty($arr_input['bottom_cafe_link'])) $arr_input['bottom_cafe_link'] = 'Y';
 
         $this->load->view($view_file, [
             'arr_input' => $arr_input,

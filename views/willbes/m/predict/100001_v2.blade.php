@@ -1,5 +1,6 @@
 @extends('willbes.m.layouts.master_no_footer')
 @section('content')
+<link href="/public/css/willbes/promotion/2002_1332M.css" rel="stylesheet">
 <div class="willbes-Tit">
     합격예측 풀서비스 <span class="NGEB">사전예약</span>
 </div>

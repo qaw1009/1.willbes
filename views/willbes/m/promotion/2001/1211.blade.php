@@ -1,5 +1,6 @@
 @extends('willbes.m.layouts.master')
 @section('content')
+<link href="/public/css/willbes/promotion/2002_1332M.css" rel="stylesheet">
     <!-- Container -->
     <div id="Container" class="Container NG c_both">
         <div class="predictWrap">

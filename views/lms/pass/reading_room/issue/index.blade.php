@@ -4,13 +4,13 @@
     <h5>- {{$mang_title}} 주문 내역을 확인하고, 좌석배정/변경하거나 연장하는 메뉴입니다. (좌석 신규배정 및 변경/연장배정 가능)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
+        {!! html_def_site_tabs($offLineSite_def_code, 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">조건</label>
                     <div class="col-md-10 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false) !!}
+                        {!! html_site_select($offLineSite_def_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false) !!}
                         <select class="form-control" id="search_pay_status" name="search_pay_status">
                             <option value="">결제상태</option>
                             @foreach($arr_search_data['pay_status'] as $key => $val)
@@ -33,7 +33,6 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">{{$mang_title}}검색</label>
                     <div class="col-md-4 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_search_data['campus'] as $row)

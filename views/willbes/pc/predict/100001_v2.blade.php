@@ -356,7 +356,7 @@
 
     // 문항정보필드 등록,수정
     function js_submit() {
-
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','N') !!}
         if($("#TakeMockPart").val() != '300'){
             if($("input:checkbox[id=Ssubject]:checked").length != 3){
                 alert('선택과목은 3개를 선택해 주세요.');

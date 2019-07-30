@@ -572,8 +572,8 @@ class ReadingRoomModel extends BaseReadingRoomModel
                     t_a.SiteCode, t_a.CampusCcd, t_a.LrIdx, t_a.ProdCode, t_a.SubProdCode
                     , t_b.RegAdminIdx, t_b.NowMIdx, t_b.NowOrderIdx, t_b.StatusCcd, t_b.UseEndDate, t_b.RrudIdx
                     , t_b.MasterOrderIdx, t_b.UseStartDate, t_b.RegDatm, t_a.Name AS ReadingRoomName
-                FROM {$this->_table['readingRoom']} AS t_a
-                INNER JOIN {$this->_table['readingRoom_useDetail']} AS t_b ON t_a.LrIdx = t_b.LrIdx AND t_a.MangType = '{$mang_type}' AND t_a.IsStatus = 'Y'
+                FROM {$this->_table['readingRoom_useDetail']} AS t_b
+                INNER JOIN {$this->_table['readingRoom']} AS t_a ON t_a.LrIdx = t_b.LrIdx AND t_a.MangType = '{$mang_type}' AND t_a.IsStatus = 'Y'
             ) AS b
             
             INNER JOIN {$this->_table['lms_order']} AS o ON o.OrderIdx = b.NowOrderIdx AND PayRouteCcd = '{$this->_order_route_ccd}'
@@ -582,7 +582,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON b.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             
             LEFT JOIN (
-            SELECT STRAIGHT_JOIN
+            SELECT
                 a.LrIdx, a.MasterOrderIdx, a.NowOrderIdx, a.SerialNumber, a.UseEndDate,
                 IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 7) ||
                     (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= -7), 'Y','N'
@@ -593,7 +593,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             ) AS f ON f.LrIdx = b.LrIdx AND f.SerialNumber = b.NowMIdx AND f.UseEndDate = b.UseEndDate
             
             LEFT JOIN (
-                SELECT STRAIGHT_JOIN op.OrderIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
+                SELECT op.OrderIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
                 FROM {$this->_table['product']} AS p
                 INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
                 INNER JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx

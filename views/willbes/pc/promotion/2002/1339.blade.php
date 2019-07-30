@@ -44,26 +44,23 @@
             <input type="hidden" name="target_param_names[]" value="캠퍼스"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
 
-
             <ul class="skyBanner">
                 <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268"><img src="https://static.willbes.net/public/images/promotion/2019/07/1339_skybanner.png" title="입교버스 신청 바로가기"></a></li>
             </ul>  
-        
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1339_top.jpg" title="빡공이벤트">
             </div>
-
             <div class="evtCtnsBox evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1339_01.jpg" title="초성퀴즈">
             </div>
-
             <div class="evtCtnsBox evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1339_02.jpg" title="소문내고 스타벅스고받고 ">
             </div>
 
             {{--홍보url댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial')
+                {{-- 하단 카페 링크 사용여부 --}}
+                @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
             @endif
 
         </form>

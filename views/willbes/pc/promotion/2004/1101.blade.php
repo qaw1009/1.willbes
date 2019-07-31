@@ -130,13 +130,6 @@
         </div>
         <!--wb_cts04//-->
 
-        <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_4.png"alt="#" usemap="#Map1101A" border="0" />
-            <map name="Map1101A" id="Map1101A">
-                <area shape="rect" coords="119,1228,443,1278" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1100" target="_blank" alt="강습반 보러가기" />
-            </map>
-        </div>
-        <!--wb_cts05//-->
 
         <div class="evtCtnsBox wb_cts07">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_4txt.png" alt="" />

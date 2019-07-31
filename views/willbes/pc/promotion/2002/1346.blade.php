@@ -55,17 +55,9 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
-            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_params[]" value="register_data3"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="참여일"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="캠퍼스"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="file_chk" value="Y"/>
 
-
-           
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1346_top.jpg" title="최신판례 무료특강">
             </div>                
@@ -93,19 +85,15 @@
                                 <th>* 참여캠퍼스</th>
                                 <td>
                                     <ul>
-                                        <li><input type="radio" name="register_data3" id="CP1" value="노량진" /> <label for="CP1">노량진</label></li>
-                                        <li><input type="radio" name="register_data3" id="CP2" value="신림" /> <label for="CP2">신림</label></li>
-                                        <li><input type="radio" name="register_data3" id="CP3" value="인천" /> <label for="CP3">인천</label></li>
-                                        <li><input type="radio" name="register_data3" id="CP4" value="대구" /> <label for="CP4">대구</label></li>
-                                        <li><input type="radio" name="register_data3" id="CP5" value="부산" /> <label for="CP5">부산</label></li>
-                                        <li><input type="radio" name="register_data3" id="CP6" value="광주" /> <label for="CP6">광주</label></li>   
-                                        <li><input type="radio" name="register_data3" id="CP7" value="전북" /> <label for="CP7">전북</label></li>                              
+                                        @foreach($arr_base['register_list'] as $row)
+                                            <li><input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label></li>
+                                        @endforeach
                                     </ul>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <input type="file" name="ATTACH_FILE" id="ATTACH_FILE">
+                                    <input type="file" name="attach_file" id="attach_file">
                                 </td>
                             </tr>
                         </table>
@@ -147,13 +135,39 @@
     <!-- End Container -->
 
     <script>
+        //파일 확장자 체크
+        function fileExtCheck(strfile) {
+            if( strfile != "" ){
+                var ext = strfile.split('.').pop().toLowerCase();
+                if($.inArray(ext, ['jpg','gif','png']) == -1) {
+                    alert('jpg,gif,png 파일만 업로드 할수 있습니다.');
+                    return false;
+                }
+            }
+        }
+
         function fn_submit() {
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
+            if ($('#attach_file').val() == '') {
+                alert('첨부파일은 필수입니다.'); return;
+            }else{
+                if(fileExtCheck($('#attach_file').val()) == false) {
+                    return;
+                }
+            }
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
-                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
-                return;
+                alert('개인정보 수집/이용 동의 안내에 동의 하셔야 합니다.'); return;
+            }
+            if ($.trim($regi_form_register.find('input[name="register_name"]').val()) == ''){
+                alert('이름을 입력해 주세요'); return;
+            }
+            if ($.trim($regi_form_register.find('input[name="register_tel"]').val()) == ''){
+                alert('연락처를 입력해 주세요'); return;
+            }
+            if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
+                alert('참여캠퍼스를 선택해 주세요.'); return;
             }
 
             if (!confirm('저장하시겠습니까?')) { return true; }

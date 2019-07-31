@@ -23,9 +23,12 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1347_top_bg.jpg) no-repeat center top; position:relative}
         .wb_cts01 {background:#e9eaee;}
+        .wb_cts01 ul {width:1124px; margin:0 auto}
+        .wb_cts01 li {display:inline; float:left; margin-right:5px; width:277px;}
+        .wb_cts01 li:last-child {margin:0; background:#c0c0c0; height:177px; line-height:177px; text-align:center}
+        .wb_cts01 ul:after {content:""; display:block; clear:both}
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1347_02_bg.jpg) no-repeat center top;}
-        .wb_cts03 {background:#FFF; padding-bottom:150px}  
-        
+        .wb_cts03 {background:#FFF; padding-bottom:150px}         
 
 
         /*타이머*/
@@ -75,24 +78,40 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_top.jpg" alt="윌비스 이론패키지" />            
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_top.jpg" alt="윌비스 제로백 수강후기 한줄평 이벤트" />            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01.jpg" alt="합격권 실력의 기초"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01.jpg" alt="윌비스 제로백"/>
+            <ul>
+                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t01.gif" alt="임재진 국어"/></a></li>
+                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t02.gif" alt="임재진 국어"/></a></li>
+                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t03.gif" alt="임재진 국어"/></a></li>
+                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t04.gif" alt="임재진 국어"/></a></li>
+            </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_1.jpg" alt="윌비스 제로백"/>
+            <ul>               
+                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t05.gif" alt="임재진 국어"/></a></li>
+                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t06.gif" alt="임재진 국어"/></a></li>
+                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t07.gif" alt="임재진 국어"/></a></li>
+                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t.png" alt="coming soon"/></a></li>
+            </ul>
+            <a href="https://pass.willbes.net/promotion/index/cate/3092/code/1312" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_2.jpg" alt="무료수강하기"/>
+            </a>
         </div>
 
         <div class="evtCtnsBox wb_cts02" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_02.jpg" alt="초반 이론 학습"> 
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_02.jpg" alt="등불"> 
         </div>
 
         <div class="evtCtnsBox wb_cts03" id="careful" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_03.jpg" alt="이런 분들이 수강하시면 좋아요."/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_03.jpg" alt="이벤트 상품"/>
             {{--댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
             @endif
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_04.jpg" alt="본인에게 딱 맞는 학습 전략"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_04.jpg" alt="이벤트 유의사항"/>
         </div>
     </div>
     <!-- End Container -->

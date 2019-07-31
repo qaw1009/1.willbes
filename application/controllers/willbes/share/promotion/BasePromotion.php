@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', '_lms/sys/code');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -135,6 +135,9 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_noti_condition['EQ'] = array_merge($arr_noti_condition['EQ'], ['PredictIdx' => $arr_promotion_params['predict_idx']]);
         }
         $arr_base['notice_list'] = $this->supportBoardFModel->listBoard(false, $arr_noti_condition,'','BoardIdx, IsBest, Title, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm', 4, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
+
+        //합격예측 데이터
+        $arr_base['predict_data'] = $this->_predictData((empty($arr_promotion_params['PredictIdx']) === true ? 'null' : $arr_promotion_params['PredictIdx']));
 
         //모바일체크
         $this->load->library('user_agent');
@@ -442,13 +445,17 @@ class BasePromotion extends \app\controllers\FrontController
     }
 
     /**
-     * 합격예측관련 카운트
-     * @param $event_idx
+     * 합격예측 데이터
      * @param $predict_idx
-     * @param $promotion_code
+     * @return mixed
+     * TODO : 합격예측 고도화 시 합격예측 모델 호출 메소드 확인 필요
      */
-    public function predictCntManager($event_idx, $predict_idx, $promotion_code)
+    private function _predictData($predict_idx)
     {
-
+        $column = 'PredictIdx, MockPart';
+        $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+        $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
+        $arr_condition = ['EQ' => ['PredictIdx' => $predict_idx,'IsUse' => 'Y']];
+        return $this->predictFModel->findPredictData($arr_condition, $column);
     }
 }

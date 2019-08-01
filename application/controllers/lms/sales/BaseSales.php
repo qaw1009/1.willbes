@@ -226,7 +226,7 @@ class BaseSales extends \app\controllers\BaseController
         $arr_condition = $this->_getListConditions();
         $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getListOrderBy(), $this->_add_join);
         $last_query = $this->orderSalesModel->getLastQuery();
-        $file_name = $this->_sales_name . '_매출현황리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $file_name = $this->_sales_name . '_매출현황리스트_' . $this->session->userdata('admin_idx') . '_' . date('YmdHis');
 
         // download log
         $this->load->library('approval');

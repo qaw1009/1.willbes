@@ -190,7 +190,7 @@ class BaseStats extends \app\controllers\BaseController
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderSalesModel->listStatsOrder($this->_learn_pattern, $search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getListOrderBy(true));
-        $file_name = $this->_stats_name . '_매출통계리스트_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $file_name = $this->_stats_name . '_매출통계리스트_' . $this->session->userdata('admin_idx') . '_' . date('YmdHis');
 
         // export excel
         $this->load->library('excel');
@@ -374,7 +374,7 @@ class BaseStats extends \app\controllers\BaseController
         $arr_condition = $this->_getOrderListConditions();
         $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getOrderListOrderBy());
         $last_query = $this->orderSalesModel->getLastQuery();
-        $file_name = $this->_stats_name . '_매출통계상세_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $file_name = $this->_stats_name . '_매출통계상세_' . $this->session->userdata('admin_idx') . '_' . date('YmdHis');
 
         // download log
         $this->load->library('approval');

@@ -602,10 +602,10 @@ class BaseSupportFModel extends WB_Model
                 'CASE WHEN ' =>
                     "(b.SiteCode = '2002') THEN b.CampusCcd IN (
                         SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = '2002' AND IsStatus = 'Y'
-                    ) OR CampusCcd = '605999'
+                    ) OR CampusCcd = '605999' OR ISNULL(CampusCcd)
                     WHEN (b.SiteCode = '2004') THEN b.CampusCcd IN (
                         SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = '2004' AND IsStatus = 'Y'
-                    ) OR CampusCcd = '605999'
+                    ) OR CampusCcd = '605999' OR ISNULL(CampusCcd)
                     ELSE TRUE
                     END"
             ]

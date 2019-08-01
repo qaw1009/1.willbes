@@ -573,6 +573,25 @@ class BaseSupportFModel extends WB_Model
     }
 
     /**
+     * 캠퍼스 기본 조건 셋팅
+     * @return string
+     */
+    protected function addDefConditionOfCampus()
+    {
+        $where = '
+            AND CASE WHEN (b.SiteCode = \'2002\') THEN b.CampusCcd IN (
+                SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2002\' AND IsStatus = \'Y\'
+            ) OR CampusCcd = \'605999\'
+            WHEN (b.SiteCode = \'2004\') THEN b.CampusCcd IN (
+                SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2004\' AND IsStatus = \'Y\'
+            ) OR CampusCcd = \'605999\'
+            ELSE TRUE
+            END
+        ';
+        return $where;
+    }
+
+    /**
      * 게시판 식별자 기준 파일 목록 조회
      * @param $idx
      * @param $reg_type

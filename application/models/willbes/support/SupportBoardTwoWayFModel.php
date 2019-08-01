@@ -74,6 +74,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefConditionOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;
@@ -193,6 +194,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefConditionOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;
@@ -830,6 +832,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefConditionOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;

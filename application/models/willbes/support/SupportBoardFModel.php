@@ -69,6 +69,7 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefConditionOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where;
@@ -144,6 +145,7 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefConditionOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where;
@@ -168,6 +170,7 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefConditionOfCampus();
 
         $query = /** @lang text */ '
             select * from (
@@ -245,6 +248,7 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefConditionOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;
@@ -427,6 +431,7 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition_board);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefConditionOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;

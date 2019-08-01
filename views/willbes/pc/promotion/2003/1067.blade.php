@@ -49,8 +49,7 @@
 
 <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skybanner">
-        <div><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" ></a></div>
-        <div class="mt10"><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1196" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/04/1196_popup_v2.png" title="영어지도 첨삭지도반" ></a></div>
+        <div><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" ></a></div>        
     </div>
 
     <div class="evtCtnsBox wb_top" >

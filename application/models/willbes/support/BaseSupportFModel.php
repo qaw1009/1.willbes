@@ -576,9 +576,24 @@ class BaseSupportFModel extends WB_Model
      * 캠퍼스 기본 조건 셋팅
      * @return string
      */
-    protected function addDefConditionOfCampus()
+    protected function addDefWhereOfCampus()
     {
         $where = '
+            AND CASE WHEN (b.SiteCode = \'2002\') THEN b.CampusCcd IN (
+                SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2002\' AND IsStatus = \'Y\'
+            ) OR CampusCcd = \'605999\' OR ISNULL(CampusCcd)
+            WHEN (b.SiteCode = \'2004\') THEN b.CampusCcd IN (
+                SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2004\' AND IsStatus = \'Y\'
+            ) OR CampusCcd = \'605999\' OR ISNULL(CampusCcd)
+            ELSE TRUE
+            END
+        ';
+        return $where;
+    }
+
+    protected function addDefConditionOfCampus()
+    {
+        /*$where = '
             AND CASE WHEN (b.SiteCode = \'2002\') THEN b.CampusCcd IN (
                 SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2002\' AND IsStatus = \'Y\'
             ) OR CampusCcd = \'605999\'
@@ -588,7 +603,7 @@ class BaseSupportFModel extends WB_Model
             ELSE TRUE
             END
         ';
-        return $where;
+        return $where;*/
     }
 
     /**

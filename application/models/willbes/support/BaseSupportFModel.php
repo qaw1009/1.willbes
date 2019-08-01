@@ -9,7 +9,7 @@ class BaseSupportFModel extends WB_Model
         ,'board_2' => 'vw_board_2 as b'
         ,'board_find' => 'vw_board_find as b'
         ,'twoway_board_2' => 'vw_board_twoway_2 as b'
-        ,'twoway_board_find' => 'vw_board_twoway_find'
+        ,'twoway_board_find' => 'vw_board_twoway_find as b'
         ,'board_qna' => 'vw_board_qna'
         ,'lms_board' => 'lms_board'
         ,'lms_board_log' => 'lms_board_read_log'
@@ -573,7 +573,7 @@ class BaseSupportFModel extends WB_Model
     }
 
     /**
-     * 캠퍼스 기본 조건 셋팅
+     * 캠퍼스 기본 조건 셋팅 [query string]
      * @return string
      */
     protected function addDefWhereOfCampus()
@@ -591,19 +591,27 @@ class BaseSupportFModel extends WB_Model
         return $where;
     }
 
+    /**
+     * 캠퍼스 기본 조건 셋팅 [query builder]
+     * @return array
+     */
     protected function addDefConditionOfCampus()
     {
-        /*$where = '
-            AND CASE WHEN (b.SiteCode = \'2002\') THEN b.CampusCcd IN (
-                SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2002\' AND IsStatus = \'Y\'
-            ) OR CampusCcd = \'605999\'
-            WHEN (b.SiteCode = \'2004\') THEN b.CampusCcd IN (
-                SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2004\' AND IsStatus = \'Y\'
-            ) OR CampusCcd = \'605999\'
-            ELSE TRUE
-            END
-        ';
-        return $where;*/
+        $add_condition = [
+            "RAW" => [
+                'CASE WHEN ' =>
+                    "(b.SiteCode = '2002') THEN b.CampusCcd IN (
+                        SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = '2002' AND IsStatus = 'Y'
+                    ) OR CampusCcd = '605999'
+                    WHEN (b.SiteCode = '2004') THEN b.CampusCcd IN (
+                        SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = '2004' AND IsStatus = 'Y'
+                    ) OR CampusCcd = '605999'
+                    ELSE TRUE
+                    END"
+            ]
+        ];
+
+        return $add_condition;
     }
 
     /**

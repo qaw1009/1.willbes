@@ -146,8 +146,7 @@
                 pager:true,
                 controls:false,
                 minSlides:1,
-                maxSlides:1,
-                autoHover: true,
+                maxSlides:1, 
                 moveSlides:1,
             });
 

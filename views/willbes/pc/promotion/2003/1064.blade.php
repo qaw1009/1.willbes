@@ -41,16 +41,10 @@
         } 
             
 
-        .wb_cts00 {background:#181818 url(https://static.willbes.net/public/images/promotion/2019/05/1064_top_bg.jpg) no-repeat center top;}
+        .wb_cts00 {background:#181818 url(https://static.willbes.net/public/images/promotion/2019/05/1064_top_bg.jpg) no-repeat center top; position:relative; height:1169px;}
         .wb_cts00 p {width:100%; margin:0 auto;}
         .wb_cts00 ul {width:100%; margin:0 auto:}
-        .bannerImg3 {position:relative; width:100%; max-width:1210px; margin:0 auto; padding:0px 0px 124px 0px;}
-        .bannerImg3 p {position:absolute; top:35%; width:30px; z-index:1000;}
-        .bannerImg3 img {width:100%}
-        .bannerImg3 p a {cursor:pointer}
-        .bannerImg3 p.leftBtn3 {left:8%}
-        .bannerImg3 p.rightBtn3 {right:8%}
-        .wb_cts00 ul:after {content:""; display:block; clear:both}
+        .bannerImg3 {position:absolute; width:1124px; left:50%; bottom:160px; margin-left:-560px; z-index:100}
 
         .wb_cts01 {background:#ffbc0d;}
 
@@ -145,19 +139,15 @@
     <script>
         $(document).ready(function() {
             var slidesImg3 = $("#slidesImg3").bxSlider({
-                mode:'vertical', //option : 'horizontal', 'vertical', 'fade'
+                mode:'fade', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
                 speed:750,
                 pause:3000,
                 pager:true,
                 controls:false,
                 minSlides:1,
-                maxSlides:1,
-                slideWidth:1210,
-                slideMargin:0,
-                autoHover: true,
+                maxSlides:1, 
                 moveSlides:1,
-                pager:false
             });
 
             $("#imgBannerLeft3").click(function (){

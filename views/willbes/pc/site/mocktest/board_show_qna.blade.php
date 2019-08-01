@@ -163,12 +163,12 @@
         $(document).ready(function() {
             //목록
             $('#btn_list').click(function() {
-                location.href = '{!! front_url('/mockTest/listQna/cate/'.$__cfg['CateCode'].'/?'.$get_params) !!}';
+                location.href = '{!! front_url('/mockTest/listQna/cate/'.$__cfg['CateCode'].'?'.$get_params) !!}';
             });
 
             //수정
             $('#btn_modify').click(function() {
-                location.href = '{!! front_url('/mockTest/createQna/cate/'.$__cfg['CateCode'].'/?'.$get_params.'&board_idx='.$board_idx) !!}';
+                location.href = '{!! front_url('/mockTest/createQna/cate/'.$__cfg['CateCode'].'?'.$get_params.'&board_idx='.$board_idx) !!}';
             });
 
             //삭제

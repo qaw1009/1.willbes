@@ -130,17 +130,17 @@
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
             $('#btn_list').click(function() {
-                location.href = '{!! front_url('/mockTest/board/cate/'.$__cfg['CateCode'].'/?'.$get_params) !!}';
+                location.href = '{!! front_url('/mockTest/board/cate/'.$__cfg['CateCode'].'?'.$get_params) !!}';
             });
 
             $regi_form.submit(function() {
-                var _url = '{!! front_url('/mockTest/boardQnaStore/cate/'.$__cfg['CateCode'].'/?'.$get_params) !!}';
+                var _url = '{!! front_url('/mockTest/boardQnaStore/cate/'.$__cfg['CateCode'].'?'.$get_params) !!}';
                 if (!confirm('저장하시겠습니까?')) { return true; }
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.href = '{!! front_url('/mockTest/listQna/cate/'.$__cfg['CateCode'].'/?'.$get_params) !!}';
+                        location.href = '{!! front_url('/mockTest/listQna/cate/'.$__cfg['CateCode'].'?'.$get_params) !!}';
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });

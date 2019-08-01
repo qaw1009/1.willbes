@@ -88,7 +88,7 @@ class MockTest extends \app\controllers\FrontController
 
         //var_dump($arr_condition);
 
-        $paging = $this->pagination('/mockTest/apply/cate/'.$this->_cate_code.'/?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mockTest/apply/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
 
         if($count > 0) {
             $list = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,$paging['limit'],$paging['offset'],$order_by);
@@ -307,7 +307,7 @@ class MockTest extends \app\controllers\FrontController
 
         $list = [];
         $count = $this->mockInfoFModel->listMockTestForBoard(true, $arr_condition);
-        $paging = $this->pagination('/mockTest/board/cate/'.$this->_cate_code.'/?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mockTest/board/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
         if($count > 0) {
             $list = $this->mockInfoFModel->listMockTestForBoard(false, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
         }
@@ -372,7 +372,7 @@ class MockTest extends \app\controllers\FrontController
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoardForMockTest(true, $arr_condition);
-        $paging = $this->pagination('/mockTest/listQna/cate/'.$this->_cate_code.'/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mockTest/listQna/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoardForMockTest(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -637,7 +637,7 @@ class MockTest extends \app\controllers\FrontController
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', front_url('/mocktest/listQna/cate/'.$this->_cate_code.'/?'.$get_params));
+        show_alert('삭제되었습니다.', front_url('/mocktest/listQna/cate/'.$this->_cate_code.'?'.$get_params));
     }
 
     /**
@@ -687,7 +687,7 @@ class MockTest extends \app\controllers\FrontController
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition, '');
-        $paging = $this->pagination('/mockTest/listNotice/cate/'.$this->_cate_code.'/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mockTest/listNotice/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition, '',$column,$paging['limit'],$paging['offset'],$order_by);

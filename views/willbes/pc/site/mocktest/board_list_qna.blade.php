@@ -103,7 +103,7 @@
                                         @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
                                             <a href="javascript:alert('비밀글입니다.');">
                                         @else
-                                            <a href="{{front_url('/mockTest/showQna/cate/'.$def_cate_code.'/?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                            <a href="{{front_url('/mockTest/showQna/cate/'.$def_cate_code.'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                         @endif
                                                 @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
                                                 {{hpSubString($row['Title'],0,40,'...')}}

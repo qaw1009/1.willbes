@@ -29,54 +29,12 @@
         .wb_cts01 ul:after {content:""; display:block; clear:both}
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1347_02_bg.jpg) no-repeat center top;}
         .wb_cts03 {background:#FFF; padding-bottom:150px}         
-
-
-        /*타이머*/
-        .time {width:100%; text-align:center; background:#e1e1e1}
-        .time {text-align:center; padding:20px 0}
-        .time table {width:1120px; margin:0 auto}
-        .time table td:first-child {font-size:40px}
-        .time table td img {width:80%}
-        .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px; font-weight:bold}
-        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
-        @@keyframes upDown{
-        from{color:#d63e4d}
-        50%{color:#ff6600}
-        to{color:#d63e4d}
-        }
-        @@-webkit-keyframes upDown{
-        from{color:#d63e4d}
-        50%{color:#ff6600}
-        to{color:#d63e4d}
-        } 
+ 
 
     </style>
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox time NGEB" id="newTopDday">
-            <div>
-                <table>
-                    <tr>
-                        <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} </span>마감!</td>
-                        <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
-                        <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td class="time_txt">일 </td>
-                        <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td class="time_txt">:</td>
-                        <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td class="time_txt">:</td>
-                        <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    </tr>
-                </table>                
-            </div>
-        </div>
-        <!-- 타이머 //-->
-
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_top.jpg" alt="윌비스 제로백 수강후기 한줄평 이벤트" />            
         </div>
@@ -84,17 +42,17 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01.jpg" alt="윌비스 제로백"/>
             <ul>
-                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t01.gif" alt="임재진 국어"/></a></li>
-                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t02.gif" alt="임재진 국어"/></a></li>
-                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t03.gif" alt="임재진 국어"/></a></li>
-                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t04.gif" alt="임재진 국어"/></a></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t01.gif" alt="임재진 국어"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t02.gif" alt="박초롱 영어"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t03.gif" alt="한경준 한국사"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t04.gif" alt="김헌 행정학"/></li>
             </ul>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_1.jpg" alt="윌비스 제로백"/>
             <ul>               
-                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t05.gif" alt="임재진 국어"/></a></li>
-                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t06.gif" alt="임재진 국어"/></a></li>
-                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t07.gif" alt="임재진 국어"/></a></li>
-                <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t.png" alt="coming soon"/></a></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t05.gif" alt="윤세훈 행정학"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t06.gif" alt="이석준 행정법"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t07.gif" alt="양승우 행정법"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t.png" alt="coming soon"/></li>
             </ul>
             <a href="https://pass.willbes.net/promotion/index/cate/3092/code/1312" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_2.jpg" alt="무료수강하기"/>

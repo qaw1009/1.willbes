@@ -429,7 +429,6 @@ class Qna extends Main
         }
 
         $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
@@ -442,8 +441,11 @@ class Qna extends Main
 
         $get_category_array = $this->_getCategoryArray($site_code);
 
-        foreach ($arr_cate_code as $item => $code) {
-            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        if (empty($data['CateCode']) === false){
+            $arr_cate_code = explode(',', $data['CateCode']);
+            foreach ($arr_cate_code as $item => $code) {
+                $data['arr_cate_code'][$code] = $get_category_array[$code];
+            }
         }
 
         $this->load->view("board/{$this->boardName}/create_qna_reply", [
@@ -543,7 +545,6 @@ class Qna extends Main
         $board_next = $data_PN['next'];             //다음글
 
         $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
@@ -555,8 +556,11 @@ class Qna extends Main
         $data['arr_reply_attach_file_real_name'] = explode(',', $data['reply_AttachRealFileName']);
 
         $get_category_array = $this->_getCategoryArray($site_code);
-        foreach ($arr_cate_code as $item => $code) {
-            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        if (empty($data['CateCode']) === false) {
+            $arr_cate_code = explode(',', $data['CateCode']);
+            foreach ($arr_cate_code as $item => $code) {
+                $data['arr_cate_code'][$code] = $get_category_array[$code];
+            }
         }
 
         $arr_reply_code = $this->_getCcdArray($this->_groupCcd['reply']);

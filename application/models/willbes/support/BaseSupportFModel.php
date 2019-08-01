@@ -9,7 +9,7 @@ class BaseSupportFModel extends WB_Model
         ,'board_2' => 'vw_board_2 as b'
         ,'board_find' => 'vw_board_find as b'
         ,'twoway_board_2' => 'vw_board_twoway_2 as b'
-        ,'twoway_board_find' => 'vw_board_twoway_find'
+        ,'twoway_board_find' => 'vw_board_twoway_find as b'
         ,'board_qna' => 'vw_board_qna'
         ,'lms_board' => 'lms_board'
         ,'lms_board_log' => 'lms_board_read_log'
@@ -570,6 +570,48 @@ class BaseSupportFModel extends WB_Model
             $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
         }
         return $attach_file_names;
+    }
+
+    /**
+     * 캠퍼스 기본 조건 셋팅 [query string]
+     * @return string
+     */
+    protected function addDefWhereOfCampus()
+    {
+        $where = '
+            AND CASE WHEN (b.SiteCode = \'2002\') THEN b.CampusCcd IN (
+                SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2002\' AND IsStatus = \'Y\'
+            ) OR CampusCcd = \'605999\' OR ISNULL(CampusCcd)
+            WHEN (b.SiteCode = \'2004\') THEN b.CampusCcd IN (
+                SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = \'2004\' AND IsStatus = \'Y\'
+            ) OR CampusCcd = \'605999\' OR ISNULL(CampusCcd)
+            ELSE TRUE
+            END
+        ';
+        return $where;
+    }
+
+    /**
+     * 캠퍼스 기본 조건 셋팅 [query builder]
+     * @return array
+     */
+    protected function addDefConditionOfCampus()
+    {
+        $add_condition = [
+            "RAW" => [
+                'CASE WHEN ' =>
+                    "(b.SiteCode = '2002') THEN b.CampusCcd IN (
+                        SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = '2002' AND IsStatus = 'Y'
+                    ) OR CampusCcd = '605999'
+                    WHEN (b.SiteCode = '2004') THEN b.CampusCcd IN (
+                        SELECT CampusCcd FROM lms_site_r_campus WHERE SiteCode = '2004' AND IsStatus = 'Y'
+                    ) OR CampusCcd = '605999'
+                    ELSE TRUE
+                    END"
+            ]
+        ];
+
+        return $add_condition;
     }
 
     /**

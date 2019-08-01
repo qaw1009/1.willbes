@@ -92,7 +92,7 @@
                                 <tr>
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_notice.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                     <td class="w-list tx-left pl20">
-                                        <a href="{{front_url('/mockTest/showNotice/cate/'.$def_cate_code.'/?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                        <a href="{{front_url('/mockTest/showNotice/cate/'.$def_cate_code.'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                             @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
                                         </a>
                                     </td>

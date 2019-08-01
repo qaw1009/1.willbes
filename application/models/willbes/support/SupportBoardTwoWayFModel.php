@@ -74,6 +74,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefWhereOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;
@@ -102,12 +103,13 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         ]);
 
         $from = "
-            FROM {$this->_table['twoway_board_find']} AS b
+            FROM {$this->_table['twoway_board_find']}
             left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefWhereOfCampus();
 
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -193,6 +195,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefWhereOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;
@@ -232,6 +235,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefWhereOfCampus();
 
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -452,6 +456,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefWhereOfCampus();
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where);
@@ -830,6 +835,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $where .= $this->addDefWhereOfCampus();
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;

@@ -324,19 +324,25 @@ class MockInfoFModel extends WB_Model
 
         $from = "
             FROM {$this->_table['mock_product']} AS pm
-            JOIN (
+            LEFT OUTER JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
                 GROUP BY ProdCode
             ) AS BD1 ON BD1.ProdCode = pm.ProdCode
             
-            JOIN (
+            LEFT OUTER JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '96' AND IsStatus = 'Y'
                 GROUP BY ProdCode
             ) AS BD2 ON BD2.ProdCode = pm.ProdCode
+            
+            JOIN (
+                SELECT ProdCode
+                FROM lms_mock_register
+                WHERE MemIdx = '{$this->session->userdata('mem_idx')}'
+            ) AS BD3 ON BD3.ProdCode = pm.ProdCode
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

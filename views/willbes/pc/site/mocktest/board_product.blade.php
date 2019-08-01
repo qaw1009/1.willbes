@@ -82,15 +82,15 @@
                                     <td class="w-no">{{$paging['rownum']}}</td>
                                     <td class="w-type">{{$row['CateName']}}</td>
                                     <td class="w-list tx-left pl20">{{$row['ProdName']}}</td>
-                                    <td class="w-test"><a class="tx-light-blue" href="{{front_url('/mockTest/listQna/cate/'.$def_cate_code.'/?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['qnaTotalCnt']}}개</a></td>
+                                    <td class="w-test"><a class="tx-light-blue" href="{{front_url('/mockTest/listQna/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['qnaTotalCnt']}}개</a></td>
                                     <td class="w-state">
                                         @if ($row['TakeStartDate'] <= date('Ymd') && $row['TakeEndDate'] >= date('Ymd') || $row['AcceptStatusCcd'] != '675003')
-                                            <a href="{{front_url('/mockTest/createQna/cate/'.$def_cate_code.'/?prod_code='.$row['ProdCode'].'&'.$get_params)}}">[등록]</a>
+                                            <a href="{{front_url('/mockTest/createQna/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">[등록]</a>
                                         @else
                                             <p class="tx-red">마감</p>
                                         @endif
                                     </td>
-                                    <td class="w-graph"><a class="tx-light-blue" href="{{front_url('/mockTest/listNotice/cate/'.$def_cate_code.'/?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['noticeCnt']}}개</a></td>
+                                    <td class="w-graph"><a class="tx-light-blue" href="{{front_url('/mockTest/listNotice/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['noticeCnt']}}개</a></td>
                                 </tr>
                                 @php $paging['rownum']-- @endphp
                             @endforeach

@@ -101,7 +101,7 @@
                                             @if($row['TCNT']!=null)
                                                 <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[성적확인]</a></td>
                                             @else
-                                                @if($row['TaKeFormsCcd'] == '690002')
+                                                @if($row['TakeFormsCcd'] == '690002')
                                                     <td>집계중</td>
                                                 @else
                                                     <td>미제출</td>

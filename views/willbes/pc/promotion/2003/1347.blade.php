@@ -84,7 +84,11 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03" id="careful" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_03.jpg" alt="이벤트 상품"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_03.gif" alt="이벤트 상품"/ usemap="#1347_03" />
+<map name="1347_03">
+  <area shape="rect" coords="101,1952,525,2139" href="https://www.willbes.net/classroom/pass/index" target="_blank">
+  <area shape="rect" coords="590,1947,1008,2138" href="https://pass.willbes.net/periodPackage/show/cate/3092/pack/648001/prod-code/155361" target="_blank">
+</map>
             {{--댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')

@@ -95,7 +95,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_cts00" >
-            <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_top.png" alt="2020 윌비스 김동진법원팀 PASS"/></p>
+            <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_top.gif" alt="2020 윌비스 김동진법원팀 PASS"/></p>
             <div class="bannerImg3">
                 <ul id="slidesImg3">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/05/1064_text1.png" alt=""/></li>
@@ -123,7 +123,7 @@
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1266_04.jpg" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1266_04.gif" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
             <map name="Map190108_c2" >
                 <area shape="rect" coords="872,750,1015,836" href="javascript:go_PassLecture(2);" onfocus="this.blur();" />
             </map>

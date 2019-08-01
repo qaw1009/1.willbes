@@ -261,10 +261,20 @@ class AdminModel extends WB_Model
             $_table = $this->_table['admin_r_admin_role'];
             $sess_admin_idx = $this->session->userdata('admin_idx');
 
-            // 기존 설정된 권한 삭제 처리
-            $is_update = $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $sess_admin_idx)->where('wAdminIdx', $admin_idx)->where('IsStatus', 'Y')->update($_table);
-            if ($is_update === false) {
-                throw new \Exception('기 설정된 권한유형 수정에 실패했습니다.');
+            // 기존 설정된 권한 조회
+            $chk_row = $this->_conn->getListResult($_table, 'RoleIdx', ['EQ' => ['wAdminIdx' => $admin_idx, 'IsStatus' => 'Y']], 1, 0, ['ArIdx' => 'desc']);
+            if (empty($chk_row) === false) {
+                // 기존 설정된 권한과 변경할 권한이 동일하다면 신규등록 안함
+                if ($role_idx == $chk_row[0]['RoleIdx']) {
+                    return true;
+                }
+
+                // 권한이 변경되었다면 기존 설정된 권한 삭제 처리
+                $is_update = $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $sess_admin_idx)
+                    ->where('wAdminIdx', $admin_idx)->where('IsStatus', 'Y')->update($_table);
+                if ($is_update === false) {
+                    throw new \Exception('기 설정된 권한유형 수정에 실패했습니다.');
+                }
             }
 
             // 신규 권한 등록

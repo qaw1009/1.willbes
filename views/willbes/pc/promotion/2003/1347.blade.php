@@ -67,9 +67,7 @@
                 <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t07.gif" alt="임재진 국어"/></li>
                 <li><img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_t.png" alt="coming soon"/></li>
             </ul>
-            <!--a href="https://pass.willbes.net/promotion/index/cate/3092/code/1312" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_01_2.jpg" alt="무료수강하기"/>
-            </a-->
         </div>
 
         <div class="evtCtnsBox wb_cts02" >            

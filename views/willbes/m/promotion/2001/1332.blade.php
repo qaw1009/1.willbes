@@ -49,14 +49,11 @@
                         <img src="https://static.willbes.net/public/images/promotion/2019/07/1332M_02.jpg" title="2019년 경찰 2차 합격예측 풀서비스 사전예약">
                     </div>
                     <div class="mainBtn">
-                        {{--로그인 전--}}
-                        <a href="#none">
-                            로그인 후 서비스 이용이 가능합니다.
-                        </a>
-                        {{--로그인 후--}}
-                        <a href="#none" class="btn2">
-                            채점 서비스 시작하기
-                        </a>
+                        @if(sess_data('is_login') != true)
+                            <a href="{{ app_url('/member/login/?rtnUrl='.rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www')}}">로그인 후 서비스 이용이 가능합니다.</a>
+                        @else
+                            <a href="#none" onclick="javascript:event_step_1();" class="btn2">채점 서비스 시작하기</a>
+                        @endif
                     </div>
                     <div class="marktxt1">
                         OMR 정답지에 답을 체크 하는 [일반채점] 서비스 및 합격예측 분석 데이터는 PC버전을 이용해 주세요

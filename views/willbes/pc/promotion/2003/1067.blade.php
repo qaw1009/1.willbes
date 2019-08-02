@@ -69,8 +69,8 @@
     <div class="evtCtnsBox wb_cts03" id="event">
         <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_04.jpg" title="예약 접수" usemap="#Map1067" />
         <map name="Map1067" id="Map1067">
-            <area shape="rect" coords="660,674,934,777" href="#none" onclick="{{ $goSubmit }}" />
-            {{--<area shape="rect" coords="660,674,934,777" href="#none" onclick="javascript:alert('선착순 20명 마감되었습니다.');" />--}}
+            {{--<area shape="rect" coords="660,674,934,777" href="#none" onclick="{{ $goSubmit }}" />--}}
+            <area shape="rect" coords="660,674,934,777" href="#none" onclick="javascript:alert('선착순 20명 마감되었습니다.');" />
         </map>
     </div><!--wb_cts03//-->
 

@@ -38,7 +38,9 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/3019_visual_contents.gif" alt="본인에게 딱 맞는 학습전략">
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1345" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3019_visual_contents.gif" alt="본인에게 딱 맞는 학습전략">
+                </a>
             </div>
         </div>
 

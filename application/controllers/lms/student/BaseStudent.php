@@ -253,8 +253,10 @@ class BaseStudent extends \app\controllers\BaseController
                 $this->_reqP('length'), $this->_reqP('start'));
 
             foreach($list as $key => $row){
-                $list[$key]['OrderSubProdData'] = array_data_pluck(json_decode($row['OrderSubProdData'], true), ['ProdCode', 'ProdName']);
-                $list[$key]['OrderSubProdData'] = '[' . str_replace('::', '] ', implode('<br/>[', $list[$key]['OrderSubProdData']));
+                if(empty($list[$key]['OrderSubProdData']) == false) {
+                    $list[$key]['OrderSubProdData'] = array_data_pluck(json_decode($row['OrderSubProdData'], true), ['ProdCode', 'ProdName']);
+                    $list[$key]['OrderSubProdData'] = '[' . str_replace('::', '] ', implode('<br/>[', $list[$key]['OrderSubProdData']));
+                }
             }
         }
 
@@ -321,8 +323,10 @@ class BaseStudent extends \app\controllers\BaseController
         $list = $this->studentModel->getStudentExcelList($column, $arr_condition);
 
         foreach($list as $key => $row){
-            $list[$key]['OrderSubProdData'] = array_data_pluck(json_decode($row['OrderSubProdData'], true), ['ProdCode', 'ProdName']);
-            $list[$key]['OrderSubProdData'] = '[' . str_replace('::', '] ', implode("\n[", $list[$key]['OrderSubProdData']));
+            if(empty($list[$key]['OrderSubProdData']) == false) {
+                $list[$key]['OrderSubProdData'] = array_data_pluck(json_decode($row['OrderSubProdData'], true), ['ProdCode', 'ProdName']);
+                $list[$key]['OrderSubProdData'] = '[' . str_replace('::', '] ', implode("\n[", $list[$key]['OrderSubProdData']));
+            }
         }
 
         /*----  다운로드 정보 저장  ----*/

@@ -69,7 +69,7 @@ class MockResult extends \app\controllers\FrontController
                    	  SELECT MemId FROM lms_mock_grades_log WHERE ProdCode = MR.ProdCode LIMIT 1
                    ) AS gRegister
                        ';
-        $order_by = ['MP.ProdCode'=>'Desc'];
+        $order_by = ['O.CompleteDatm'=>'DESC', 'MP.ProdCode'=>'DESC'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;

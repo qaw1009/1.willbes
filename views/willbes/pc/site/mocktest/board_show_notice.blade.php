@@ -101,7 +101,7 @@
         $(document).ready(function() {
             //목록
             $('#btn_list').click(function() {
-                location.href = '{!! front_url('/mockTest/listNotice/cate/'.$__cfg['CateCode'].'/?'.$get_params) !!}';
+                location.href = '{!! front_url('/mockTest/listNotice/cate/'.$__cfg['CateCode'].'?'.$get_params) !!}';
             });
         });
     </script>

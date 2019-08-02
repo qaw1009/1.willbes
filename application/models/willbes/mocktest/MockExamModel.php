@@ -83,6 +83,8 @@ class MockExamModel extends WB_Model
                 LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
                 LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
                 LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
+				LEFT JOIN {$this->_table['orderProduct']} AS OP ON MR.OrderProdIdx = OP.OrderProdIdx
+				LEFT JOIN {$this->_table['order']} AS O ON O.OrderIdx = OP.OrderIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -123,6 +125,8 @@ class MockExamModel extends WB_Model
                 LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
                 LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
                 LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
+                LEFT JOIN {$this->_table['orderProduct']} AS OP ON MR.OrderProdIdx = OP.OrderProdIdx
+                LEFT JOIN {$this->_table['order']} AS O ON O.OrderIdx = OP.OrderIdx                
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

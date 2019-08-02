@@ -52,9 +52,8 @@ class MockExam extends \app\controllers\FrontController
                    (SELECT SiteGroupName FROM lms_site_group WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
                    MR.RegDatm AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
-                   C1.CateName, C1.IsUse AS IsUseCate, TakeStartDatm, TakeEndDatm
-                       ';
-        $order_by = ['MP.ProdCode'=>'Desc'];
+                   C1.CateName, C1.IsUse AS IsUseCate, TakeStartDatm, TakeEndDatm';
+        $order_by = ['O.CompleteDatm'=>'DESC', 'MP.ProdCode'=>'DESC'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;

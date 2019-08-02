@@ -145,12 +145,14 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_04" id="wb_04">
-        <img src="https://static.willbes.net/public/images/promotion/2019/07/1268_04.jpg"  alt="이벤트" usemap="#Map1268A" border="0" />
+        <div class="evtCtnsBox wb_04" id="wb_04">      
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1268_04.jpg"  alt="이벤트" usemap="#Map1268A" border="0" />
             <map name="Map1268A" id="Map1268A">
-                <area shape="rect" coords="76,525,469,582" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" alt="일반경찰 신청하기" />
-                <area shape="rect" coords="644,524,1045,584" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" alt="경행경채 신청하기" />
-            </map>
+                <area shape="rect" coords="73,530,470,593" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" alt="일반경찰 신청하기" />
+                <area shape="rect" coords="642,530,1046,597" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" alt="경행경채 신청하기" />
+                <area shape="rect" coords="196,1167,348,1227" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" alt="일반경찰3 신청하기" />
+                <area shape="rect" coords="782,1169,922,1226" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&campus_ccd=605001&course_idx=1045" target="_blank" alt="경행경채3 신청하기" />
+            </map> 
         </div>
 
         <div class="evtCtnsBox wb_06" >

@@ -145,7 +145,7 @@
                                     <option value="{{$row['CourseIdx']}}" class="{{$row['SiteCode']}}" @if($data['CourseIdx'] == $row['CourseIdx']) selected="selected" @endif>{{$row['CourseName']}}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div>`
                         <div class="item inline-block">
                             <select name="SubjectIdx" id="SubjectIdx"  required="required" class="form-control" title="과목">
                                 <option value="">과목</option>

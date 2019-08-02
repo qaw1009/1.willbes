@@ -24,7 +24,7 @@
         .evt01 {background:#f6fafb}            
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1348_02_bg.jpg) no-repeat center top; position:relative}         
         .evt02 .liveWrap {position:absolute; left:50%; margin-left:-560px; top:593px; z-index:10 }
-        .evt03 {background:#2e3c52 url(https://static.willbes.net/public/images/promotion/2019/08/1348_03_bg.jpg) no-repeat center top;} 
+        .evt03 {background:#5329b1 url(https://static.willbes.net/public/images/promotion/2019/08/1348_03_bg.jpg) no-repeat center top; padding:200px 0 150px} 
         
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>
@@ -50,7 +50,7 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_03.jpg" title="무엇이든 물어보세요~">                
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_03.png" title="무엇이든 물어보세요~">                
         </div>
 	</div>
     <!-- End Container -->

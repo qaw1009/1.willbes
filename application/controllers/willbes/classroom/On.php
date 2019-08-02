@@ -10,7 +10,7 @@ class On extends \app\controllers\FrontController
 
     // 결제루트코드 온라인/학원방문/0원/무료/제휴사/온라인0원
     protected $_payroute_normal_ccd = ['670001','670002','670006'];
-    protected $_payroute_admin_ccd = ['670003','670004','670005'];
+    protected $_payroute_admin_ccd = ['670003','670004','670005','670007'];
 
     // 강의형태 단과/사용자패키지/운영자패키지/무료
     protected $_LearnPatternCcd_dan = ['615001','615002'];

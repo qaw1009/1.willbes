@@ -31,7 +31,11 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox evttop" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_top.jpg" alt="이상구 라이브 국제법/정치학" />            
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_top.jpg" alt="이상구 라이브 국제법/정치학" usemap="#Map1348_top" border="0" />
+            <map name="Map1348_top" id="Map1348_top">
+                <area shape="rect" coords="72,675,205,803" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=365" target="_blank" alt="실강신청" />
+                <area shape="rect" coords="214,675,342,804" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="자료다운" />
+            </map>            
         </div>
 
         <div class="evtCtnsBox evt01">

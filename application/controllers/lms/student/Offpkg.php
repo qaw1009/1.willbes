@@ -13,7 +13,7 @@ class Offpkg extends BaseStudent
 
     /**
      * 엑셀 읽어오기
-     */
+
     public function excel()
     {
         $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
@@ -57,16 +57,16 @@ class Offpkg extends BaseStudent
             $list[$key] = array_merge($row, $subArr);
         }
 
-        /*----  다운로드 정보 저장  ----*/
+        /*----  다운로드 정보 저장  ----
         $download_query = $this->studentModel->getLastQuery();
         $this->load->library('approval');
         if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
             show_alert('로그 저장 중 오류가 발생하였습니다.','back');
         }
-        /*----  다운로드 정보 저장  ----*/
+        /*----  다운로드 정보 저장  ----
 
         // export excel
         $this->load->library('excel');
         $this->excel->exportHugeExcel($file_name, $list, $headers);
-    }
+    } */
 }

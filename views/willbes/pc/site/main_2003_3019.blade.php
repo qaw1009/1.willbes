@@ -38,6 +38,14 @@
 
         <div class="Section">
             <div class="widthAuto">
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1345" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3019_visual_contents.gif" alt="본인에게 딱 맞는 학습전략">
+                </a>
+            </div>
+        </div>
+
+        <div class="Section">
+            <div class="widthAuto">
                 <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
                 <ul class="PBcts">
                     @for($i=1; $i<=5; $i++)

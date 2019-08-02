@@ -81,6 +81,7 @@
 .job .Section3 span.txt01 {position:absolute; left:50%; top:325px; margin-left:350px; z-index:10;}
 .job .Section3 span.prof {position:absolute; left:28px; top:253px; border:2px solid #000; z-index:10;}
 .job .Section3 span.txt02 {position:absolute; left:50%; top:325px; margin-left:420px; z-index:10;}
+.job .Section3 span.txt02_309001 {position:absolute; left:50%; top:325px; margin-left:390px; z-index:10;}
 
 /* Main Container : Notice : noticeTabs */
 .job .tabWrap.noticeWrap {

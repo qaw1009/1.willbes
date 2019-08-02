@@ -29,14 +29,15 @@
 
         <div class="Section Section2">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/309001_02.jpg" title="이재원 교수 직강">
+                <img src="https://static.willbes.net/public/images/promotion/main/309001_02.jpg" title="스포츠분야 필수 자격증, 스포츠 지도사">
             </div>
         </div>
 
         <div class="Section Section3">
             <div class="widthAuto p_re">
-                <img src="https://static.willbes.net/public/images/promotion/main/309001_03.jpg" alt="이재원 교수">                
-                <span class="prof"><img src="https://static.willbes.net/public/images/promotion/main/308902_03_t.gif" alt="이재원 교수"></span>
+                <img src="https://static.willbes.net/public/images/promotion/main/309001_03.jpg" alt="신명호 박사">
+                <span class="txt02_309001"><img src="https://static.willbes.net/public/images/promotion/main/309001_03_txt.gif" alt="언제나 누구나"></span>            
+                <span class="prof"><img src="https://static.willbes.net/public/images/promotion/main/309001_03_t.gif" alt="신명호 박사"></span>
                 <div class="curriBox NGR">
                     <h4>2급 전문/생활 스포츠지도사 필기</h4>
                     <div id="1cha" class="curri">

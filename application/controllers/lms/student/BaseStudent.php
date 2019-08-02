@@ -251,6 +251,11 @@ class BaseStudent extends \app\controllers\BaseController
         if($count > 0){
             $list = $this->studentModel->getStudentList(false, $arr_condition,
                 $this->_reqP('length'), $this->_reqP('start'));
+
+            foreach($list as $key => $row){
+                $list[$key]['OrderSubProdData'] = array_data_pluck(json_decode($row['OrderSubProdData'], true), ['ProdCode', 'ProdName']);
+                $list[$key]['OrderSubProdData'] = '[' . str_replace('::', '] ', implode('<br/>[', $list[$key]['OrderSubProdData']));
+            }
         }
 
         return $this->response([
@@ -267,13 +272,25 @@ class BaseStudent extends \app\controllers\BaseController
     {
         if($this->LearnPattern == 'lecture' ||
             $this->LearnPattern == 'freelecture' ||
-            $this->LearnPattern == 'adminpkg' ||
-            $this->LearnPattern == 'periodpkg' ){
+            $this->LearnPattern == 'periodpkg' ) {
 
-            $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
+            $headers = ['회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
                 '결제자', '결제일', '종료일', '휴대폰', '이메일'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
             ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail';
+
+        } else if($this->LearnPattern == 'adminpkg'){
+            $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '결제루트', '결제수단', '결제금액',
+                '결제자', '결제일', '종료일', '휴대폰', '이메일'];
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail';
+
+        } else if($this->LearnPattern == 'userpkg' ||
+            $this->LearnPattern == 'offpkg' ){
+            $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '결제루트', '결제수단', '결제금액',
+                '결제자', '결제일', '휴대폰', '이메일'];
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
 
         } else {
             $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
@@ -302,6 +319,11 @@ class BaseStudent extends \app\controllers\BaseController
         $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
 
         $list = $this->studentModel->getStudentExcelList($column, $arr_condition);
+
+        foreach($list as $key => $row){
+            $list[$key]['OrderSubProdData'] = array_data_pluck(json_decode($row['OrderSubProdData'], true), ['ProdCode', 'ProdName']);
+            $list[$key]['OrderSubProdData'] = '[' . str_replace('::', '] ', implode("\n[", $list[$key]['OrderSubProdData']));
+        }
 
         /*----  다운로드 정보 저장  ----*/
         $download_query = $this->studentModel->getLastQuery();

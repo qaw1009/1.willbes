@@ -123,6 +123,7 @@
                     <th>회원번호</th>
                     <th>회원명(아이디)</th>
                     <th>상품구분</th>
+                    <th>선택강좌</th>
                     <th>주문번호</th>
                     <th>결제루트</th>
                     <th>결제수단</th>
@@ -172,6 +173,7 @@
                             return '<a href="{{site_url('/member/manage/detail/')}}'+data+'" target="_blank"><u>'+row.MemId + '(' + row.MemName + ')'+'</u></a>';
                         }}, //회원명(아이디)
                     {'data' : 'SalePatternCcd_Name'},//상품구분
+                    {'data' : 'OrderSubProdData'}, // 선택강좌
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/pay/order/show/')}}'+data+'" target="_blank"><u>'+data+'</u></a>';
                         }},// 주문번호

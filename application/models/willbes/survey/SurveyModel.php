@@ -1456,53 +1456,60 @@ class SurveyModel extends WB_Model
 
     /**
      * 과목호출
+     * @param $PredictIdx
+     * @param $pridx
+     * @return mixed
      */
-    public function subjectList($PredictIdx, $pridx){
-        $column = "
-            SubjectCode  
-        ";
+    public function subjectList($PredictIdx, $pridx) {
+        try {
+            $column = 'SubjectCode';
+            $from = "
+                FROM {$this->_table['predictRegister']} AS pr
+                JOIN {$this->_table['predictRegisterR']} AS prc ON pr.PrIdx = prc.PrIdx
+            ";
+            $arr_condition = [
+                'EQ' => [
+                    'pr.PredictIdx' => $PredictIdx,
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'pr.PrIdx' => $pridx
+                ]
+            ];
 
-        $from = "
-            FROM
-                {$this->_table['predictRegister']} AS pr
-	            JOIN {$this->_table['predictRegisterR']} AS prc ON pr.PrIdx = prc.PrIdx
-        ";
-
-        $order_by = " ";
-
-        $where = " WHERE pr.PredictIdx = ". $PredictIdx ." AND MemIdx = ".$this->session->userdata('mem_idx')." AND pr.PrIdx = ".$pridx;
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $data = $query->result_array();
-        $subjectIn = '';
-        foreach($data as $key => $val){
-            $SubjectCode = $val['SubjectCode'];
-            $SubjectCode = substr($SubjectCode, 3, 3);
-            if($key == 0) {
-                $subjectIn = "100".$SubjectCode;
-            } else {
-                $subjectIn .= ", 100".$SubjectCode;
+            $where = $this->_conn->makeWhere($arr_condition);
+            $where = $where->getMakeWhere(false);
+            $query = $this->_conn->query('select ' . $column . $from . $where);
+            $data = $query->result_array();
+            if (empty($data) === true) {
+                throw new \Exception('등록된 과목이 없습니다.');
             }
+
+            $subjectIn = '';
+            foreach ($data as $key => $val) {
+                $SubjectCode = $val['SubjectCode'];
+                $SubjectCode = substr($SubjectCode, 3, 3);
+                if ($key == 0) {
+                    $subjectIn = "100" . $SubjectCode;
+                } else {
+                    $subjectIn .= ", 100" . $SubjectCode;
+                }
+            }
+
+            $column = 'TotalScore, pp.PpIdx, CcdName, pp.Type';
+            $from = "
+                FROM {$this->_table['predictPaper']} AS pp
+                LEFT JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
+            ";
+            $order_by = " ORDER BY OrderNum";
+            $where = " WHERE pp.PredictIdx = " . $PredictIdx . " AND SubjectCode IN (" . $subjectIn . ") AND pp.IsUse = 'Y'";
+            $data = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+            if (empty($data) === true) {
+                throw new \Exception('조회된 과목이 없습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
         }
 
-        $column = "
-            TotalScore, pp.PpIdx, CcdName, pp.Type
-        ";
-
-        $from = "
-            FROM
-                {$this->_table['predictPaper']} AS pp
-	            LEFT JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
-        ";
-
-        $order_by = " ORDER BY OrderNum";
-
-        $where = " WHERE pp.PredictIdx = ". $PredictIdx ." AND SubjectCode IN (" . $subjectIn . ")";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $res = $query->result_array();
-
-        return $res;
+        return $data;
     }
 
 
@@ -1538,25 +1545,19 @@ class SurveyModel extends WB_Model
 
     /**
      * 문항정보호출(시험지코드포함)
-     * @param array $MpIdx $PredictIdx
+     * @param $ppIdx
+     * @param $PredictIdx
+     * @param $pridx
      * @return mixed
      */
-    public function predictQuestionCall($ppIdx, $PredictIdx, $pridx){
-
+    public function predictQuestionCall($ppIdx, $PredictIdx, $pridx) {
         $column = "
-            pp.PpIdx,
-            pq.PqIdx,
-            AnswerNum, 
-            QuestionNO,
-            RightAnswer,
-            RealQuestionFile AS file,
-            pa.Answer,
-            pa.IsWrong,
+            pp.PpIdx, pq.PqIdx, AnswerNum, QuestionNO, RightAnswer, RealQuestionFile AS file, pa.Answer, pa.IsWrong,
             (SELECT 
                 SUM(IF(pa2.IsWrong = 'Y', Scoring, '0')) 
                 FROM 
                     {$this->_table['predictQuestion']} AS pq
-                    LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa2 ON pq.PqIdx = pa2.PqIdx AND pa2.MemIdx = ".$this->session->userdata('mem_idx')." AND pa2.PredictIdx = ".$PredictIdx." AND pa2.PrIdx = ".$pridx." 
+                    LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa2 ON pq.PqIdx = pa2.PqIdx AND pa2.MemIdx = ".$this->session->userdata('mem_idx')." AND pa2.PredictIdx = '{$PredictIdx}' AND pa2.PrIdx = '{$pridx}' 
                 WHERE pa2.PpIdx = pa.PpIdx
             ) AS OrgPoint 
         ";
@@ -1565,11 +1566,11 @@ class SurveyModel extends WB_Model
             FROM
                 {$this->_table['predictPaper']} AS pp
                 JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
-                LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa ON pq.PqIdx = pa.PqIdx AND pa.MemIdx = ".$this->session->userdata('mem_idx')." AND pp.PredictIdx = ".$PredictIdx." AND pa.PrIdx = ".$pridx."
+                LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa ON pq.PqIdx = pa.PqIdx AND pa.MemIdx = ".$this->session->userdata('mem_idx')." AND pp.PredictIdx = '{$PredictIdx}' AND pa.PrIdx = '{$pridx}'
         ";
 
         if($ppIdx){
-            $where = "WHERE pp.PpIdx = ".$ppIdx;
+            $where = "WHERE pp.PpIdx = '{$ppIdx}'";
             $order_by = " ORDER BY QuestionNO ";
         } else {
             $where = "";

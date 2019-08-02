@@ -50,7 +50,7 @@
                         <col width="25%" />
                         <col width="25%" />
                         <col width="25%" />
-                        <<col width="*" />
+                        <col width="*" />
                         <tr>
                             <th scope="col">과목</th>
                             <th scope="col">원점수</th>
@@ -293,7 +293,7 @@
                 ajaxSubmit($all_regi_form, _url, function (ret) {
                     if (ret.ret_cd) {
                         alert(ret.ret_msg);
-                        parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1210') }}');
+                        parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1332') }}');
                     }
                 }, showValidateError, null, false, 'alert');
             }

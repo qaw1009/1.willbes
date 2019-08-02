@@ -36,8 +36,8 @@
         <!-- //tg-note -->
 
         <div class="markMbtn2">
-            <a href="javascript:parent.location.reload()" class="btn2">기본정보입력</a>
-            <a href="javascript:alert('기본정보를 저장하고 채점해주세요.');" >채점 및 성적확인</a>
+            <a href="#none" onclick="javascript:event_step_1();" class="btn2">기본정보입력</a>
+            <a href="#none" onclick="javascript:alert('기본정보를 저장하고 채점해주세요.');" >채점 및 성적확인</a>
         </div>
 
         <h4 class="markingTit1">채점하기</h4>
@@ -102,8 +102,7 @@
         @endif--}}
 
         if(scoreIs == 'Y'){
-            _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();
-            location.replace(_url);
+            location.href = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();
         }
 
     });
@@ -114,9 +113,12 @@
         }
     }
 
+    function event_step_1() {
+        location.href = '{{ front_url('/predict/index/') }}' + $('#PredictIdx').val();
+    }
+
     function gotab(PredictIdx){
-        _url = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
-        location.replace(_url);
+        location.href = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
     }
 
     function lastSave(){
@@ -125,7 +127,6 @@
             ajaxSubmit($all_regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    {{--parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1210') }}');--}}
                     _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();
                     location.replace(_url);
                 }
@@ -139,7 +140,7 @@
             ajaxSubmit($all_regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1210') }}');
+                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1332') }}');
                 }
             }, showValidateError, null, false, 'alert');
         }

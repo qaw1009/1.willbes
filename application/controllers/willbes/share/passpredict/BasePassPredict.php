@@ -16,11 +16,11 @@ class BasePassPredict extends \app\controllers\FrontController
     public function index($params = [])
     {
         if ($this->isLogin() !== true) {
-            show_alert('로그인 후 이용해 주세요.', 'close');
+            show_alert('로그인 후 이용해 주세요.', 'back');
         }
 
         if (empty($params) === true) {
-            show_alert('잘못된 접근 입니다.', 'close');
+            show_alert('잘못된 접근 입니다.', 'back');
         }
 
         $idx = $params[0];
@@ -54,10 +54,12 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         $column = 'PredictIdx, MockPart';
+        $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+        $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
         $arr_condition = ['EQ' => ['PredictIdx' => $idx,'IsUse' => 'Y']];
         $arr_base['predict_data'] = $this->predictFModel->findPredictData($arr_condition, $column);
         if (empty($arr_base['predict_data']) === true) {
-            show_alert('조회된 합격예측 서비스 정보가 없습니다.', 'close');
+            show_alert('조회된 합격예측 서비스 정보가 없습니다.', 'back');
         }
 
         $serial = $this->surveyModel->getSerial(0);
@@ -149,9 +151,6 @@ class BasePassPredict extends \app\controllers\FrontController
                     $addscoreIs = 'N';
                 }
             }
-
-
-
             $subject_list = $this->surveyModel->subjectList($idx, $PrIdx);
         } else {
             $mode = 'NEW';
@@ -433,15 +432,18 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function popwin2()
     {
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', 'back');
+        }
 
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $PredictIdx = element('PredictIdx', $arr_input);
         $pridx = element('pridx', $arr_input);
-
-        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
-
         $ppidx = '';
-
+        $subject_list = $this->surveyModel->subjectList($PredictIdx, $pridx);
+        if (empty($subject_list) === true) {
+            show_alert('조회된 기본 정보가 없습니다.','back');
+        }
         $question_list= $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
 
         $j = 1;
@@ -466,7 +468,6 @@ class BasePassPredict extends \app\controllers\FrontController
                     $numstr = '';
                     if($j == 20) $j = 0;
                 }
-
                 $j++;
             }
         }
@@ -505,6 +506,11 @@ class BasePassPredict extends \app\controllers\FrontController
             } else {
                 $addscoreIs = 'N';
             }
+        }
+
+        if ($scoreIs == 'Y') {
+            //결과보기페이지로 이동
+            redirect(front_url('/predict/popwin4/') . '?PredictIdx=' . $PredictIdx . '&pridx=' . $pridx);
         }
 
         $this->load->view('willbes/'.APP_DEVICE.'/predict/gradepop2', [
@@ -547,6 +553,10 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function popwin3()
     {
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', 'back');
+        }
+
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);
@@ -590,6 +600,10 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function popwin4()
     {
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', 'back');
+        }
+
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);

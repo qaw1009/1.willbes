@@ -11,7 +11,7 @@
         <input type="hidden" name="mode" value="{{ $mode }}" />
         <input type="hidden" name="img_pass" value="Y" />
         @if($mode == 'MOD')
-            <input type="hidden" name="PrIdx" value="{{ $data['PrIdx'] }}" />
+            <input type="hidden" id="PrIdx" name="PrIdx" value="{{ $data['PrIdx'] }}" />
         @endif
         <input type="hidden" id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
 
@@ -50,7 +50,15 @@
 
                 <div class="markMbtn2">
                     <a href="#none">기본정보입력</a>
-                    <a href="javascript:alert('8월31일(토) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>
+                    @if ($arr_base['predict_data']['ServiceSDatm'] <= date('YmdHi'))
+                        @if($mode != 'MOD')
+                            <a href="javascript:alert('기본정보를 입력해주세요.')" class="btn2">채점 및 성적확인</a>
+                        @else
+                            <a href="javascript:gotab({{ $idx }})" class="btn2">채점 및 성적확인</a>
+                        @endif
+                    @else
+                        <a href="javascript:alert('8월31일(토) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>
+                    @endif
                     {{--27일부터 보이는 버튼--}}
                     {{--<a href="javascript:alert('기본정보를 저장하고 채점해주세요.');" class="btn2">채점 및 성적확인</a>--}}
                 </div>
@@ -370,6 +378,10 @@
                         //alert(ret.ret_msg);
                     }, true, 'POST', 'json');
             }
+        }
+
+        function gotab(PredictIdx){
+            location.href = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
         }
     </script>
 @stop

@@ -64,6 +64,8 @@
 
 .job .tipPopup {position: absolute; left:50%; top:20px; z-index: 1; display:none}
 
+.job .Section2 {background:#f8f7fc}
+
 .job .Section3 {background:#242b35}
 .job .Section3 .curriBox {position:absolute; left:50%; top:500px; margin-left:100px; z-index:10;}
 .job .Section3 .curriBox h4 {color:#b7b7b7; font-size:18px; font-weight: bold; margin-bottom:20px}
@@ -79,6 +81,7 @@
 .job .Section3 span.txt01 {position:absolute; left:50%; top:325px; margin-left:350px; z-index:10;}
 .job .Section3 span.prof {position:absolute; left:28px; top:253px; border:2px solid #000; z-index:10;}
 .job .Section3 span.txt02 {position:absolute; left:50%; top:325px; margin-left:420px; z-index:10;}
+.job .Section3 span.txt02_309001 {position:absolute; left:50%; top:325px; margin-left:390px; z-index:10;}
 
 /* Main Container : Notice : noticeTabs */
 .job .tabWrap.noticeWrap {

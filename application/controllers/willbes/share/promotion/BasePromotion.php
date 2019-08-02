@@ -109,7 +109,7 @@ class BasePromotion extends \app\controllers\FrontController
         $file_yn = array();
         $list_event_file = $this->eventFModel->listEventForFile($data['ElIdx']);
 
-        for($i = 1; $i <= 99; $i++){
+        for($i = 0; $i <= 99; $i++){
             $file_link[$i] = "javascript:alert('준비중입니다.')";
             $file_yn[$i] = 'N';
         }

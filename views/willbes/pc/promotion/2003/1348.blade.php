@@ -46,7 +46,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_02.jpg" usemap="#Map1348" title="라이브 특강 진행 안내" border="0">
             <map name="Map1348" id="Map1348">
                 <area shape="rect" coords="622,413,751,542" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=365" target="_blank" alt="실강신청" />
-                <area shape="rect" coords="762,414,892,542" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="자료다운" />
+                <area shape="rect" coords="762,414,892,542" href="@if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif" alt="자료다운" />
             </map>
             <div class="liveWrap">
                 @include('willbes.pc.promotion.live_video_partial') 

@@ -127,6 +127,8 @@
                         <th>종료시간</th>
                         <th>송출경로</th>
                         <th>첨부파일</th>
+                        <th>첨부파일 다운로드 가능 시작일시</th>
+                        <th>첨부파일 다운로드 가능 종료일시</th>
                         <th>사용유무</th>
                         <th>삭제</th>
                     </tr>
@@ -215,6 +217,58 @@
                                             [{{ $row['FileRealName'] }}]
                                         </a>
                                     @endif
+                                </td>
+                                <td>
+                                    <div class="input-group mb-0">
+                                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                        <input type="text" class="form-control datepicker" name="file_start_date[]" value="{{ $row['FileStartDate'] }}">
+                                    </div>
+                                    <select class="form-control ml-5" name="file_start_hour[]">
+                                        @php
+                                            $start_hour = $row['FileStartHour'];
+                                            for($i=0; $i<=23; $i++) {
+                                                $str = (strlen($i) <= 1) ? '0' : '';
+                                                $selected = ($str.$i == $start_hour) ? "selected='selected'" : "";
+                                                echo "<option value='{$str}{$i}' {$selected}>{$str}{$i}</option>";
+                                            }
+                                        @endphp
+                                    </select>
+                                    <select class="form-control ml-5" name="file_start_min[]">
+                                        @php
+                                            $start_min = $row['FileStartMin'];;
+                                            for($i=0; $i<=59; $i++) {
+                                                $str = (strlen($i) <= 1) ? '0' : '';
+                                                $selected = ($str.$i == $start_min) ? "selected='selected'" : "";
+                                                echo "<option value='{$str}{$i}' {$selected}>{$str}{$i}</option>";
+                                            }
+                                        @endphp
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="input-group mb-0">
+                                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                        <input type="text" class="form-control datepicker" name="file_end_date[]" value="{{ $row['FileEndDate'] }}">
+                                    </div>
+                                    <select class="form-control ml-5" name="file_end_hour[]">
+                                        @php
+                                            $end_hour = $row['FileEndHour'];
+                                            for($i=0; $i<=23; $i++) {
+                                                $str = (strlen($i) <= 1) ? '0' : '';
+                                                $selected = ($str.$i == $end_hour) ? "selected='selected'" : "";
+                                                echo "<option value='{$str}{$i}' {$selected}>{$str}{$i}</option>";
+                                            }
+                                        @endphp
+                                    </select>
+                                    <select class="form-control ml-5" name="file_end_min[]">
+                                        @php
+                                            $end_min = $row['FileEndMin'];;
+                                            for($i=0; $i<=59; $i++) {
+                                                $str = (strlen($i) <= 1) ? '0' : '';
+                                                $selected = ($str.$i == $end_min) ? "selected='selected'" : "";
+                                                echo "<option value='{$str}{$i}' {$selected}>{$str}{$i}</option>";
+                                            }
+                                        @endphp
+                                    </select>
                                 </td>
                                 <td>
                                     <select class="form-control ml-5" name="live_is_use[]">

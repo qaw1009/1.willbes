@@ -1210,7 +1210,13 @@ class EventLectureModel extends WB_Model
     public function listEventPromotionForLiveVideo($promotion_code)
     {
         $column = '
-            EplvIdx, PromotionCode, Title, LiveAutoType, LiveRatio, LiveDate, LiveStartTime, LiveEndTime, LiveUrl, FileFullPath, FileRealName, IsUse, IsStatus
+            EplvIdx, PromotionCode, Title, LiveAutoType, LiveRatio, LiveDate, LiveStartTime, LiveEndTime, LiveUrl, FileFullPath, FileRealName, IsUse, IsStatus, FileStartDateTime, FileEndDateTime,
+            DATE_FORMAT(FileStartDateTime, \'%Y-%m-%d\') AS FileStartDate,
+            DATE_FORMAT(FileEndDateTime, \'%Y-%m-%d\') AS FileEndDate,
+            DATE_FORMAT(FileStartDateTime, \'%H\') AS FileStartHour,
+            DATE_FORMAT(FileEndDateTime, \'%H\') AS FileEndHour,
+            DATE_FORMAT(FileStartDateTime, \'%i\') AS FileStartMin,
+            DATE_FORMAT(FileEndDateTime, \'%i\') AS FileEndMin
         ';
         $from = "
             FROM {$this->_table['event_promotion_live_video']}
@@ -1858,6 +1864,9 @@ class EventLectureModel extends WB_Model
                     $inputData['LiveEndTime'] = $input['live_end_hour'][$key].$input['live_end_min'][$key].'00';
                     $inputData['LiveUrl'] = $input['live_url'][$key];
                     $inputData['IsUse'] = $input['live_is_use'][$key];
+
+                    $inputData['FileStartDateTime'] =  str_replace('-','',$input['file_start_date'][$key].$input['file_start_hour'][$key].$input['file_start_min'][$key].'00');;
+                    $inputData['FileEndDateTime'] = str_replace('-','',$input['file_end_date'][$key].$input['file_end_hour'][$key].$input['file_end_min'][$key].'00');
 
                     if(empty($set_attach_data['FileFullPath'][$key]) === false) {
                         $inputData['FileFullPath'] = $set_attach_data['FileFullPath'][$key];

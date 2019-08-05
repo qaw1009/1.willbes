@@ -49,7 +49,21 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
 
         // 프로모션 라이브송출 조회
+        $today_now = time();
         $arr_base['promotion_live_data'] = ($data['PromotionLiveType'] == 'Y') ? $this->eventFModel->listEventPromotionForLiveVideo($data['PromotionCode']) : [];
+        $arr_base['promotion_live_file_link'] = 'javascript:alert(\'준비중입니다.\')';
+        $arr_base['promotion_live_file_yn'] = 'N';
+        if (empty($arr_base['promotion_live_data']) === false) {
+            foreach ($arr_base['promotion_live_data'] as $row) {
+                if(empty($row['FileStartDateTime']) === false && empty($row['FileEndDateTime']) === false){
+                    $arr_base['promotion_live_file_link'] = 'javascript:alert(\'라이브 당일 '.$row['FileStartHour'].'시부터 다운받으실 수 있습니다.\')';
+                    if($today_now > strtotime($row['FileStartDateTime']) && $today_now < strtotime($row['FileEndDateTime'])){
+                        $arr_base['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
+                        $arr_base['promotion_live_file_yn'] = 'Y';
+                    }
+                }
+            }
+        }
 
         $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing';
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
@@ -311,6 +325,27 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         $file_path = $file_data['FilePath'] . $file_data['FileName'];
+        $file_name = $file_data['RealFileName'];
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
+    }
+
+    /**
+     * 이벤트 프로모션 라이브 스트리밍 자료 다운로드
+     */
+    public function downloadLiveVideo()
+    {
+        $file_idx = $this->_reqG('file_idx');
+        $event_idx = $this->_reqG('event_idx');
+        $this->downloadFModel->saveLogEvent($event_idx);
+
+        $file_data = $this->downloadFModel->getFileData($event_idx, $file_idx, 'event_promotion_live_video');
+        if (empty($file_data) === true) {
+            show_alert('조회된 파일이 없습니다.', 'close', '');
+        }
+
+        $file_path = $file_data['FilePath'];
         $file_name = $file_data['RealFileName'];
         public_download($file_path, $file_name);
 

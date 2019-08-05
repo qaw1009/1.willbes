@@ -141,24 +141,7 @@
                                     <div class="w-book mb-zero">
                                         <ul>
                                             <li>
-                                                <span class="chk">
-                                                    <label>[판매]</label>
-                                                    <input type="checkbox" id="" name="">
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    주교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[판매] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span class="chk">
-                                                    <label>[품절]</label>
-                                                    <input type="checkbox" id="" name="" disabled>
-                                                </span>
-                                                <div class="priceWrap NG">
-                                                    부교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
-                                                    <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
-                                                </div>
+                                            ※ 별도 구매 가능한 교재가 없습니다.
                                             </li>
                                         </ul>
                                     </div>

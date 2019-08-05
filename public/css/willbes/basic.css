@@ -575,6 +575,10 @@ select[disabled] {
 .h1100 {
   height: 1100px !important;
 }
+.hauto {
+  height: auto !important;
+}
+
 
 .mg-zero,
 .mg0 {

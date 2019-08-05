@@ -14,7 +14,7 @@ if (!function_exists('banner')) {
     function banner($section, $css_class = '', $site_code = '', $cate_code = '', $set_class = '')
     {
         empty($site_code) === true && $site_code = config_app('SiteCode');
-        empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = config_app('CateCode');
+        empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = get_var(config_app('CateCode'), config_app('DefCateCode'));
 
         return '<script src="' . front_app_url('/banner/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . rawurlencode($section) . '&css_class=' . rawurlencode($css_class) . '&set_class=' . rawurlencode($set_class), 'www') . '"></script>';
     }
@@ -104,7 +104,7 @@ if (!function_exists('popup')) {
     function popup($section, $site_code = '', $cate_code = '')
     {
         empty($site_code) === true && $site_code = config_app('SiteCode');
-        empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = config_app('CateCode');
+        empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = get_var(config_app('CateCode'), config_app('DefCateCode'));
 
         return '<script src="' . app_url('/popup/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . $section, 'www') . '"></script>';
     }

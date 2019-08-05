@@ -1,6 +1,16 @@
 @extends('willbes.m.layouts.master')
 
 @section('content')
+@php
+    $now = date('YmdHi');
+    $yoil = array("일","월","화","수","목","금","토");
+    $service_start_datm = $arr_base['predict_data']['ServiceSDatm'];
+    $service_end_datm = $arr_base['predict_data']['ServiceEDatm'];
+    $service_start_year = substr($service_start_datm, '0','4');
+    $service_start_mon = substr($service_start_datm, '4','2');
+    $service_start_day = substr($service_start_datm, '6','2');
+    $service_yoil = $yoil[date('w', strtotime($service_start_year.'-'.$service_start_mon.'-'.$service_start_day))];
+@endphp
 <link href="/public/css/willbes/promotion/2002_1332M.css" rel="stylesheet">
     <!-- Container -->
     <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
@@ -54,10 +64,10 @@
                         @if($mode != 'MOD')
                             <a href="javascript:alert('기본정보를 입력해주세요.')" class="btn2">채점 및 성적확인</a>
                         @else
-                            <a href="javascript:gotab({{ $idx }})" class="btn2">채점 및 성적확인</a>
+                            <a href="#none" onclick="javascript:gotab({{ $idx }});" class="btn2">채점 및 성적확인</a>
                         @endif
                     @else
-                        <a href="javascript:alert('8월31일(토) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>
+                        <a href="#none" onclick="javascript:alert('{{$service_start_mon}}월{{$service_start_day}}일({{$service_yoil}}) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>
                     @endif
                     {{--27일부터 보이는 버튼--}}
                     {{--<a href="javascript:alert('기본정보를 저장하고 채점해주세요.');" class="btn2">채점 및 성적확인</a>--}}
@@ -74,7 +84,7 @@
                                 <select title="응시직렬" onChange="selSerial(this.value,'')" @if($mode=='MOD') disabled @endif>
                                     <option value="">응시직렬</option>
                                     @foreach($arr_base['arr_mock_part'] as $key => $val)
-                                        <option value="{{ $key }}" {{ ($data['TakeMockPart'] == $val) ? 'selected="selected"' : '' }}>{{ $val }}</option>
+                                        <option value="{{ $key }}" {{ ($data['TakeMockPart'] == $key) ? 'selected="selected"' : '' }}>{{ $val }}</option>
                                     @endforeach
                                 </select>
                                 <input type="hidden" id="TakeArea" name="TakeArea" @if($mode == 'MOD') value="{{ $data['TakeArea'] }}" @endif/>
@@ -164,6 +174,10 @@
                         </tr>
                     </table>
 
+                    <div>
+                        ※ 합격예측 풀서비스 기간에는 입력한 기본 정보를 수정할 수 없습니다.
+                    </div>
+
                     <div class="eventPopS3">
                         <p>* 개인정보 수집 및 이용에 대한 안내</p>
                         <ul>
@@ -192,7 +206,16 @@
                 </form>
 
                 <div class="markSbtn1">
-                    <a href="javascript:js_submit();">@if($mode == 'MOD')수정@else저장@endif</a>
+                    @if ($arr_base['predict_data']['ServiceSDatm'] <= date('YmdHi'))
+                        @if($mode != 'MOD')
+                            <a href="javascript:js_submit();">저장</a>
+                        @else
+                            <a href="#none" onclick="javascript:gotab({{ $idx }});" class="btn2">채점하기</a>
+                        @endif
+                    @else
+                            <a href="javascript:js_submit();">@if($mode == 'MOD')수정@else저장@endif</a>
+                    @endif
+
                 </div>
             </div>
             <!-- predictWrap //-->
@@ -246,7 +269,12 @@
         });
 
         // 문항정보필드 등록,수정
-        function js_submit() {
+        function js_submit(onoff_type) {
+            if (onoff_type == 'off') {
+                alert('합격예측 풀서비스 기간에는 입력한 기본 정보를 수정할 수 없습니다.');
+                return;
+            }
+
             if($("input:checkbox[id='is_chk']").is(":checked") == false){
                 alert('개인정보 수집을 동의해 주세요');
                 return ;
@@ -293,9 +321,8 @@
             //
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
-                    alert(ret.ret_msg);
-                    /*location.href= '{{ site_url('/m/promotion/index/cate/3001/code/1332') }}';*/
-                    window.close();
+                    alert(ret.ret_msg + '계속해서 성적을 입력해 주세요.');
+                    location.href = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();
                 }
             }, showValidateError, null, false, 'alert');
         }

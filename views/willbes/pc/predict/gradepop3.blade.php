@@ -28,9 +28,9 @@
                             </tr>
                             @foreach($subject_list as $key => $val)
                             <tr>
-                                <th>`</th>
+                                <th>{{$val['CcdName']}}</th>
                                 <td>
-                                    <input type="text" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
+                                    <input type="number" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
                                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                 </td>
                             </tr>
@@ -71,7 +71,7 @@
         }
 
         function examDeleteAjax() {
-            if (confirm('채점취소시 기존의 성적모든데이터는 삭제됩니다. \n 채점취소 하시겠습니까?')) {
+            /*if (confirm('채점취소시 기존의 성적모든데이터는 삭제됩니다. \n 채점취소 하시겠습니까?')) {
                 var _url = '{{ front_url('/predict/examDeleteAjax') }}';
                 ajaxSubmit($all_regi_form, _url, function (ret) {
                     if (ret.ret_cd) {
@@ -80,7 +80,8 @@
                         window.close();
                     }
                 }, showValidateError, null, false, 'alert');
-            }
+            }*/
+            window.close();
         }
     </script>
 

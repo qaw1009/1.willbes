@@ -58,7 +58,7 @@
                             <li>
                                 <div>
                                     <label>{{ $val2 }}번</label>
-                                    <input type="text" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $newQuestion['answerset'][$val['PpIdx']][$key2] }}">
+                                    <input type="number" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $newQuestion['answerset'][$val['PpIdx']][$key2] }}">
                                 </div>
                             </li>
                             @endforeach
@@ -73,7 +73,7 @@
                 </div>
                 <div class="markSbtn1">
                     <a href="javascript:lastSave()">완료</a>
-                    <a href="javascript:examDeleteAjax()" class="btn3">취소</a>
+                    {{--<a href="javascript:examDeleteAjax()" class="btn3">취소</a>--}}
                 </div>
             </div>
         </form>

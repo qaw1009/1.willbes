@@ -41,7 +41,7 @@ class Excel
             $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
             $sheet = $spreadsheet->getActiveSheet();
             // set sheet name
-            $sheet->setTitle($file_name);
+            $sheet->setTitle('Sheet1'); // $file_name => Sheet1 (시트명이 31자를 초과하면 에러 발생)
             // put data
             $sheet->fromArray($data, null, 'A1');
             // set auto size

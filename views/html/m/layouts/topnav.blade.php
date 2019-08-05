@@ -8,6 +8,9 @@
             <div class="logo">
                 <a href="{{ site_url('/home/html/m/sample') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
             </div>
+            <button type="button" class="basket">
+                <span class="hidden">장바구니</span>
+            </button>
             <button type="button" class="mypage">
                 <span class="hidden">내강의실</span>
             </button>

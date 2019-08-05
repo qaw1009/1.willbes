@@ -2,7 +2,7 @@
     a {text-decoration: none;}
     h1 {font-size:24px; font-weight:bold; height:60px; line-height:60px; border-bottom:4px double #000}
     ul {padding:0; margin:0}
-    ul li {padding:0; margin:0; list-style:none; width:20%; display:inline; float:left}
+    ul li {padding:0; margin:0; list-style:none; width:25%; display:inline; float:left}
     ul li div {border-right:1px solid #ccc; padding:0 15px; font-size:12px}
     ul li div a {display:block; margin-bottom:7px}
     ul:after {content:""; display:block; clear:both}
@@ -44,6 +44,18 @@
             <a href="{{ site_url('/home/html/m/mypage_csvideo_list') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 List page 이동</a>
             <a href="{{ site_url('/home/html/m/mypage_csvideo_write') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 Write page 이동</a>
             <a href="{{ site_url('/home/html/m/mypage_csvideo_read') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 Read page 이동</a>
+        </div>
+    </li>
+    <li>
+        <div>  
+            <a href="{{ site_url('/home/html/m/lecture_online1') }}" target="_blank">수강신청 > 단강좌</a>
+            <a href="{{ site_url('/home/html/m/lecture_online2') }}" target="_blank">수강신청 > 단강좌 > 상세보기</a>
+            <br><br>
+            <a href="{{ site_url('/home/html/m/lecture_online_pkg1') }}" target="_blank">수강신청 > 추천패키지</a>
+            <a href="{{ site_url('/home/html/m/lecture_online_pkg2') }}" target="_blank">수강신청 > 추천패키지 > 상세보기</a>
+            <br><br>
+            <a href="{{ site_url('/home/html/m/lecture_online_pkg3') }}" target="_blank">수강신청 > 선택패키지</a>
+            <a href="{{ site_url('/home/html/m/lecture_online_pkg4') }}" target="_blank">수강신청 > 선택패키지 > 상세보기</a>
         </div>
     </li>
     <li>

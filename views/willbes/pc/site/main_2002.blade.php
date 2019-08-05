@@ -57,42 +57,42 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1044&subject_idx=1057') }}">형소법 문풀2단계<span>7.29 개강</span></a></div>
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1057&course_idx=1040&campus_ccd=605001') }}">수사 문풀 2단계<span>8.2 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&campus_ccd=605001&subject_idx=1057') }}">형소법 마무리 특강<span>8.19 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3011&course_idx=1046&campus_ccd=605001&subject_idx=1059') }}">수사 마무리 특강<span>8.23 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론/행정법 장정훈">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1044&subject_idx=1058') }}">경찰학 문풀2단계<span>7.30 개강</span></a></div>
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3011&campus_ccd=605001&course_idx=1044&subject_idx=1060') }}">행정법 문풀2단계<span>7.31 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&campus_ccd=605001&subject_idx=1058') }}">경찰학 마무리 특강<span>8.20 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3011&course_idx=1046&campus_ccd=605001&subject_idx=1060') }}">행정법 마무리 특강<span>8.21 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" title="한국사 원유철">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1044&subject_idx=1058') }}">한국사 문풀2단계<span>7.31 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&campus_ccd=605001&subject_idx=1055') }}">한국사 마무리 특강<span>8.21 개강</span></a></div>
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1055&course_idx=1040&campus_ccd=605001') }}">한국사 기본<span>8.12 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" title="한국사 오태진">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1044&subject_idx=1058') }}">한국사 문풀2단계<span>7.31 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&campus_ccd=605001&subject_idx=1055') }}">한국사 마무리 특강<span>8.21 개강</span></a></div>
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1055&course_idx=1040&campus_ccd=605001') }}">한국사 기본<span>8.12 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1044&subject_idx=1056') }}">형법 문풀2단계<span>8.1 개강</span></a></div>
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1056') }}">형법 기본<span>7.22 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&campus_ccd=605001&subject_idx=1056') }}">형법 마무리 특강<span>8.22 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1056') }}">형법 기본<span>9.23 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1044&subject_idx=1054') }}">영어 문풀2단계<span>8.5 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&course_idx=1046&campus_ccd=605001&subject_idx=1054') }}">영어 마무리 특강<span>8.23 개강</span></a></div>
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1054') }}">영어 기본<span>8.5 개강</span></a></div>
                         </div>
                     </li>                                        
@@ -100,13 +100,14 @@
                         <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
                         <div class="caProfBtsn">
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1046&subject_idx=1063') }}">영어 아침특강<span>8.5 개강</span></a></div>
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1046&subject_idx=1054') }}">영어 합.기.독 특강<span>7.22 개강</span></a></div>
+                            {{--<div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1046&subject_idx=1054') }}">영어 합.기.독 특강<span>7.22 개강</span></a></div>--}}
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1046&subject_idx=1054') }}">영어 베이직<br>하이힐 독해 특강<span>7.1 개강</span></a></div>
+                            <div>Coming soon</div>
+                            {{--<div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1046&subject_idx=1054') }}">영어 베이직<br>하이힐 독해 특강<span>7.1 개강</span></a></div>--}}
                         </div>
                     </li>
                     <li>

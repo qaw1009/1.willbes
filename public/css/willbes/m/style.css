@@ -1955,6 +1955,9 @@ body.memBody #Footer {
 .willbes-Layer-PassBox600.h250.fix {
     margin-top: -125px;
 }
+.willbes-Layer-PassBox600.hauto.fix {
+    margin-top: -25%;
+}
 
 /* calendarTable */
 .calendarTable {
@@ -2394,6 +2397,26 @@ body.memBody #Footer {
 .w-data-pkg {border-top:1px solid #edebeb; padding:20px 0}
 .w-data-pkg:first-child {border-top:0; padding-top:0}
 .w-data-pkg:last-child {padding-bottom:0}
+
+#LecDetailPop h4 {
+    font-size:16px;
+    width: 90%;
+    margin-bottom:20px
+}
+#LecDetailPop .LecDetailBox {
+    border:1px solid #ccc;
+    padding:20px;
+    line-height: 1.5;    
+}
+#LecDetailPop .LecDetailBox h5 {
+    font-size: 14px;
+    margin:10px 0;
+    padding-bottom:3px;
+    border-bottom:1px dotted #ccc
+}
+#LecDetailPop .LecDetailBox h5:first-child {
+    margin:0 0 10px;
+}
 
 
 /*********************************************     MYPAGE     *********************************************/

@@ -20,7 +20,7 @@
         /*****************************************************************/  
 
         .evtTop {
-            background:url(https://static.willbes.net/public/images/promotion/2019/03/1140_top_bg.jpg) no-repeat center top
+            background:url(https://static.willbes.net/public/images/promotion/2019/08/1356_top_bg.jpg) no-repeat center top
         }
         
         .evtMenu {width:100%; background:#36374d; border-bottom:5px solid #e2be43}
@@ -112,31 +112,31 @@
 
     <div class="evtContent NG" id="evtContainer">
         <div class="evtCtnsBox evtTop" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
         </div>
 
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1140/spidx/2?tab=1#content_1') }}">
+                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=1#content_1') }}">
                         <span>합격을 위한</span>
                         <div>최종 마무리 전략</div>
                     </a>
                 </li>
                 <li>
-                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1140/spidx/2?tab=2#content_2') }}">
+                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=2#content_2') }}">
                         <span>전년도 국가직 9급</span>
                         <div>완벽분석</div>				
                     </a>
                 </li>
                 <li>
-                    <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1140/spidx/2?tab=3#content_3') }}">
+                    <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=3#content_3') }}">
                         <span>2019 국가직 9급</span>
                         <div>시험총평 및 시험후기</div>
                     </a>
                 </li>     
                 <li>
-                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1140/spidx/2?tab=4#content_4') }}">
+                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=4#content_4') }}">
                         <span>2019 국가직 9급</span>
                         <div>기출해설강의</div>
                     </a>
@@ -171,21 +171,21 @@
                 <span>
                     <a href="@if($file_yn == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif">다운로드</a>
                 </span>
-                <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_1.jpg" title="풀캐어 강사진" />            
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_01_1.jpg" title="풀캐어 강사진" />            
             </div>
                
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_2.jpg" title="점수 10점 상승을 위한 시험 전 유의사항/최상의 컨디션을 위한 시험 당일 유의사항" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_3.jpg" title="응시자 준수사항 및 필기장소 안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_01_2.jpg" title="점수 10점 상승을 위한 시험 전 유의사항/최상의 컨디션을 위한 시험 당일 유의사항" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_01_3.jpg" title="응시자 준수사항 및 필기장소 안내" />
             <div class="youtube">
                 <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn01.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
+            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_btn01.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
         </div>
 
         <!--완벽분석-->
         <div id="content_2" class="tabCts Cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_02_2.jpg" title="풀캐어 강사진" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_02_2.jpg" title="풀캐어 강사진" />
             <div class="mt20 mb100">
                 * 시험문제/가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기</a>
                 <div class="mt20">
@@ -1106,29 +1106,29 @@
 
         <!--시험총평 및 시험후기-->
         <div id="content_3" class="tabCts Cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
             @include('willbes.pc.survey.show_graph_partial')
 
             <div class="mt30 tx-center">
                 <a href="javascript:pullOpen();">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn02.png" title="설문하기" />
+                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_btn02.png" title="설문하기" />
                 </a>
             </div>
 
-            {{--<div class="Cts03_01">--}}
-                {{--<h3>2019년 4월 7일 시행 <span>국가직 9급 시험 총평</span></h3>--}}
-                {{--<div>--}}
+            <div class="Cts03_01">
+                <h3>2019년 8월 17일 시행 <span>국가직 7급 시험 총평</span></h3>
+                <div>
                     {{--{!! $data['Content'] !!}--}}
-                {{--</div>--}}
-            {{--</div>--}}
+                </div>
+            </div>
 
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
             {{--시험평가댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
             @endif
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_3.jpg" title="소름돋는 적중" /> </div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_03_3.jpg" title="소름돋는 적중" /> </div>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
@@ -1138,7 +1138,7 @@
 
         <!--기출해설강의-->
         <div id="content_4" class="tabCts Cts04">
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_04_1.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
@@ -1154,13 +1154,13 @@
                                         @else
                                             @if(empty($row['wHD']) === false)
                                             <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">
-                                                <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의">
+                                                <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_btn03.png" title="해설강의">
                                             </a>
                                             @endif
 
                                             @if(empty($row['wUnitAttachFile']) === false)
                                                 <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}" target="_blank">
-                                                    <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료">
+                                                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_btn04.png" title="해설자료">
                                                 </a>
                                             @endif
                                         @endif

@@ -452,7 +452,7 @@ select[disabled] {
   margin: 0 auto;
 }
 .widthAutoFull {
-  width: 100%;
+  width: 100% !important;
   margin: 0 auto;
 }
 
@@ -520,6 +520,9 @@ select[disabled] {
 }
 .h66 {
   height: 66px !important;
+}
+.h250 {
+  height: 250px !important;
 }
 .h350 {
   height: 350px !important;

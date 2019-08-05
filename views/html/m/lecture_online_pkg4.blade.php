@@ -86,7 +86,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -134,7 +134,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -773,7 +773,42 @@
         </div>
         <div class="dim" onclick="closeWin('LecBuyMessagePop')"></div>
     </div>
-    <!-- willbes-Layer-PassBox : 쪽지 -->
+
+    <div id="LecDetailPop" class="willbes-Layer-Black NG">
+        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 hauto fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('LecDetailPop')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <h4>
+                2020 기미진 기특한 국어 기본/심화이론(7-8월)
+            </h4>
+            <div class="LecDetailBox">
+                <h5>강좌상세정보</h5>
+                <dl class="w-info tx-gray">
+                    <dt>
+                        강의수 <span class="tx-blue">12강/56강</span><span class="row-line ml10">|</span> 
+                        수강기간 <span class="tx-blue">50일</span> 
+                        <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
+                    </dt>
+                </dl>
+                <h5>강좌소개</h5>
+                <div class="tx-dark-gray">
+                    - 2020 기미진 기특한 국어 기본/심화이론(7-8월)<br>
+                    - 강의일정 : 7/8 ~ 8/28 월, 수 09:00~13:00 [16회 완성]<br>
+                    - 강의교재 : 2020 기특한 국어 기본서(배움 출간예정)
+                </div>
+                <h5>강좌특징</h5>
+                <div class="tx-dark-gray">
+                    - 2020 기미진 기특한 국어 기본/심화이론(7-8월)<br>
+                    [수강대상]<br>
+                    - 공무원 국어를 처음 공부하시는 분과 이론을 재 복습하시는 분 모두 가능한 최적의 강좌!<br>
+                    - 7/9 급, 법원직, 각종 공무원 시험 대비로 초학자들도 충분히 수강할 수 있는 강좌!
+                </div>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('LecDetailPop')"></div>
+    </div>
+
 
 </div>
 <!-- End Container -->

@@ -67,8 +67,7 @@
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth"><span class="depth-Arrow">></span><strong>단강좌</strong></span>
     </div>
-    <div class="Content p_re">
-        
+    <div class="Content p_re">        
         <div class="curriWrap c_both">
             <ul class="curriTabs c_both">
                 <li><a class="on" href="#none">전체</a></li>

@@ -30,23 +30,29 @@
 		input:checked + label.check3:after{font-size: 20px;}		
         input {display:none}	 
         .cert04 h3{font-size:36px;color:#15365d;font-weight:bold;}
-        .cert04 .sports{width:979px;margin:0 auto;border:5px solid #15365d;margin-top:65px;background:#fff;color:#15365d;font-weight:bold;}
+        .cert04 .sports{width:979px;margin:0 auto;border:5px solid #15365d; border-bottom:0; margin-top:65px;background:#fff;color:#15365d;font-weight:bold;}
         .cert04 .sports dl{width:969px;font-weight:bold;}
-        .cert04 .sports dt{height:55px;line-height:55px;transition:all 1s;border-bottom:5px solid #15365d;position:relative;}
-        .cert04 .sports dl dt:after{background:url(https://static.willbes.net/public/images/promotion/2019/08/1350_tab_off.png)no-repeat 0px 0px;
-                                    content:"";display:inline-block;width:30px;height:30px;position:absolute;right:35px;top:10px;}                                             
+        .cert04 .sports dt{height:55px;line-height:55px;transition:all 1s;border-bottom:5px solid #15365d;position:relative;font-size:14px;}
+        .cert04 .sports dl dt:after{
+            background:url(https://static.willbes.net/public/images/promotion/2019/08/1350_tab_off.png)no-repeat 0px 0px;
+            content:"";display:inline-block;width:30px;height:30px;position:absolute;right:35px;top:10px;
+        }                                             
         .cert04 .sports dl dt:hover{background:#15365d;color:#fff;cursor:pointer;}
-        .cert04 .sports dl dt:hover:after{background:url(https://static.willbes.net/public/images/promotion/2019/08/1350_tab_on.png)no-repeat 0px 0px;
-                                    content:"";display:inline-block;width:30px;height:30px;position:absolute;right:35px;top:10px;}
-        .cert04 .sports dl dd{width:700px;margin:0 auto;}
-        .cert04 .sports dl dd table{margin:25px 0;border:2px solid #15365d;line-height:25px;} 
+        .cert04 .sports dl dt:hover:after{
+            background:url(https://static.willbes.net/public/images/promotion/2019/08/1350_tab_on.png)no-repeat 0px 0px;
+            content:"";display:inline-block;width:30px;height:30px;position:absolute;right:35px;top:10px;
+        }
+
+        .cert04 .sports dl dd{border-bottom:5px solid #15365d;}
+        .cert04 .sports dl dd table{border:1px solid #15365d; line-height:25px; width:700px; margin:50px auto} 
         .cert04 .sports dl dd table td {text-align:left;}
-        .cert04 .sports dl dd table th,.cert04 .sports dl dd table td{border-right:2px solid #15365d;border-bottom:2px solid #15365d;width:350px;}
-        .cert04 .sports dl dd table th{font-weight:700;background:#C8C6C6;}
+        .cert04 .sports dl dd table th,
+        .cert04 .sports dl dd table td{border-right:1px solid #15365d; border-bottom:1px solid #15365d; padding:10px;}
+        .cert04 .sports dl dd table th{font-weight:700;background:#C8C6C6; font-size:14px;}
         .cert05{background:#fff;}
 
     </style>
-	<div class="evtContent">	
+	<div class="evtContent NGR">	
         
 		<div class="skybanner">
 			<img src="https://static.willbes.net/public/images/promotion/2019/08/1350_skybanner.png" alt="스포츠지도사 베너">
@@ -72,8 +78,8 @@
                 <area shape="rect" coords="738,603,902,636" href="#info3" />
             </map>
             <div id="pass">
-                <input name="y_pkg1" type="checkbox" value="155934" class="hide" checked="checked">
-                <input name="y_pkg2" type="checkbox" value="155933" class="hide" checked="checked">
+                <input name="y_pkg1" type="checkbox" value="155933" class="hide" checked="checked">
+                <input name="y_pkg2" type="checkbox" value="155934" class="hide" checked="checked">
                 <input name="is_chk" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
             </div>
         </div>
@@ -83,7 +89,9 @@
                 <dl>
                     <dt>스포츠사회학</dt>         
                     <dd>
-                        <table width="200" border="1">
+                        <table>
+                            <col width="50%"/>
+                            <col/>
                             <tr>
                                 <th>주요항목</th>
                                 <th>세부항목</th>
@@ -140,7 +148,9 @@
                     </dd>
                     <dt>스포츠교육학</dt>
                     <dd>
-                        <table width="200" border="1">
+                        <table>
+                            <col width="50%"/>
+                            <col/>
                             <tr>
                                 <th>주요항목</th>
                                 <th>세부항목</th>
@@ -189,7 +199,9 @@
                     </dd>
                     <dt>스포츠심리학</dt>
                     <dd>
-                        <table width="200" border="1">
+                        <table>
+                            <col width="50%"/>
+                            <col/>
                             <tr>
                                 <th>주요항목</th>
                                 <th>세부항목</th>
@@ -239,7 +251,9 @@
                     </dd>
                     <dt>한국체육사</dt>
                     <dd>
-                        <table width="200" border="1">
+                        <table>
+                            <col width="50%"/>
+                            <col/>
                             <tr>
                                 <th>주요항목</th>
                                 <th>세부항목</th>
@@ -268,7 +282,9 @@
                     </dd>
                     <dt>운동생리학</dt>
                     <dd>
-                        <table width="200" border="1">
+                        <table>
+                            <col width="50%"/>
+                            <col/>
                             <tr>
                                 <th>주요항목</th>
                                 <th>세부항목</th>
@@ -317,7 +333,9 @@
                     </dd>
                     <dt>운동역학</dt>
                     <dd>
-                        <table width="200" border="1">
+                        <table>
+                            <col width="50%"/>
+                            <col/>
                             <tr>
                                 <th>주요항목</th>
                                 <th>세부항목</th>
@@ -361,9 +379,11 @@
                             </tr>                 
                         </table>
                     </dd>
-                    <dt style="border:0;">스포츠윤리</dt>
+                    <dt>스포츠윤리</dt>
                     <dd>
-                        <table width="200" border="1">
+                        <table>
+                            <col width="50%"/>
+                            <col/>
                             <tr>
                                 <th>주요항목</th>
                                 <th>세부항목</th>

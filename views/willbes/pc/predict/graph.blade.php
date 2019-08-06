@@ -189,36 +189,36 @@
                 <tr>
                     <th>401-500</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ $pointList['ff'] }}%"></span></div>
-                        <Expect class="ratio">{{ $pointList['ff'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['ff'] === true) ? '0' : $pointList['ff'] }}%"></span></div>
+                        <Expect class="ratio">{{ empty($pointList['ff'] === true) ? '0' : $pointList['ff'] }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>301-400</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ $pointList['tf'] }}%"></span></div>
-                        <Expect class="ratio">{{ $pointList['tf'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['tf'] === true) ? '0' : $pointList['tf'] }}%"></span></div>
+                        <Expect class="ratio">{{ empty($pointList['tf'] === true) ? '0' : $pointList['tf'] }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>201-300</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ $pointList['tt'] }}%"></span></div>
-                        <Expect class="ratio">{{ $pointList['tt'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['tt'] === true) ? '0' : $pointList['tt'] }}%"></span></div>
+                        <Expect class="ratio">{{ empty($pointList['tt'] === true) ? '0' : $pointList['tt'] }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>101-200</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ $pointList['ht'] }}%"></span></div>
-                        <Expect class="ratio">{{ $pointList['ht'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['ht'] === true) ? '0' : $pointList['ht'] }}%"></span></div>
+                        <Expect class="ratio">{{ empty($pointList['ht'] === true) ? '0' : $pointList['ht'] }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>0-100</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ $pointList['zh'] }}%"></span></div>
-                        <Expect class="ratio">{{ $pointList['zh'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['zh'] === true) ? '0' : $pointList['zh'] }}%"></span></div>
+                        <Expect class="ratio">{{ empty($pointList['zh'] === true) ? '0' : $pointList['zh'] }}%</Expect>
                     </td>
                 </tr>
             </table>
@@ -230,7 +230,7 @@
         <!--m_section3_3L//-->
 
         <div class="m_section3_3R">
-            <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt">{{ $subjectPointList[1]['PaperName'] }}</Expect></h3>
+            <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt">{{ (empty($subjectPointList[1]['PaperName']) === true ? '' : $subjectPointList[1]['PaperName']) }}</Expect></h3>
             <div class="m_section3_3R_warp">
                 @foreach($subjectPointList as $key => $val)
                     <input type="hidden" id="subject_{{ $key }}" value="{{ $val['PaperName'] }}@foreach($val['AVR'] as $key2 => $val2){{ "/".$key2 ."/".$val2 }}@endforeach" style="width:100%;"/>
@@ -243,36 +243,36 @@
                             <tr>
                                 <th>81-100</th>
                                 <td>
-                                    <div class="graph"><span id='gr5' class="graph1" style="width:{{ $subjectPointList[1]['AVR'][5] }}%"></span></div>
-                                    <Expect class="ratio" id="grt5">{{ $subjectPointList[1]['AVR'][5] }}%</Expect>
+                                    <div class="graph"><span id='gr5' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][5]) === true ? '' : $subjectPointList[1]['AVR'][5]) }}%"></span></div>
+                                    <Expect class="ratio" id="grt5">{{ (empty($subjectPointList[1]['AVR'][5]) === true ? '' : $subjectPointList[1]['AVR'][5]) }}%</Expect>
                                 </td>
                             </tr>
                             <tr>
                                 <th>61-80</th>
                                 <td>
-                                    <div class="graph"><span id='gr4' class="graph1" style="width:{{ $subjectPointList[1]['AVR'][4] }}%"></span></div>
-                                    <Expect class="ratio" id="grt4">{{ $subjectPointList[1]['AVR'][4] }}%</Expect>
+                                    <div class="graph"><span id='gr4' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][4]) === true ? '' : $subjectPointList[1]['AVR'][4]) }}%"></span></div>
+                                    <Expect class="ratio" id="grt4">{{ (empty($subjectPointList[1]['AVR'][4]) === true ? '' : $subjectPointList[1]['AVR'][4]) }}%</Expect>
                                 </td>
                             </tr>
                             <tr>
                                 <th>41-60</th>
                                 <td>
-                                    <div class="graph"><span id='gr3' class="graph1" style="width:{{ $subjectPointList[1]['AVR'][3] }}%"></span></div>
-                                    <Expect class="ratio" id="grt3">{{ $subjectPointList[1]['AVR'][3] }}%</Expect>
+                                    <div class="graph"><span id='gr3' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][3]) === true ? '' : $subjectPointList[1]['AVR'][3]) }}%"></span></div>
+                                    <Expect class="ratio" id="grt3">{{ (empty($subjectPointList[1]['AVR'][3]) === true ? '' : $subjectPointList[1]['AVR'][3]) }}%</Expect>
                                 </td>
                             </tr>
                             <tr>
                                 <th>21-40</th>
                                 <td>
-                                    <div class="graph"><span id='gr2' class="graph1" style="width:{{ $subjectPointList[1]['AVR'][2] }}%"></span></div>
-                                    <Expect class="ratio" id="grt2">{{ $subjectPointList[1]['AVR'][2] }}%</Expect>
+                                    <div class="graph"><span id='gr2' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][2]) === true ? '' : $subjectPointList[1]['AVR'][2]) }}%"></span></div>
+                                    <Expect class="ratio" id="grt2">{{ (empty($subjectPointList[1]['AVR'][2]) === true ? '' : $subjectPointList[1]['AVR'][2]) }}%</Expect>
                                 </td>
                             </tr>
                             <tr>
                                 <th>0-20</th>
                                 <td>
-                                    <div class="graph"><span id='gr1' class="graph1" style="width:{{ $subjectPointList[1]['AVR'][1] }}%"></span></div>
-                                    <Expect class="ratio" id="grt1">{{ $subjectPointList[1]['AVR'][1] }}%</Expect>
+                                    <div class="graph"><span id='gr1' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][1]) === true ? '' : $subjectPointList[1]['AVR'][1]) }}%"></span></div>
+                                    <Expect class="ratio" id="grt1">{{ (empty($subjectPointList[1]['AVR'][1]) === true ? '' : $subjectPointList[1]['AVR'][1]) }}%</Expect>
                                 </td>
                             </tr>
                         </table>
@@ -734,6 +734,7 @@
     var cnt  = '{{ COUNT($subjectPointList) }}';
     var cnt2 = '{{ COUNT($subjectPointList) + 1}}';
     function selPoint(type){
+        var arrayStr = new Array();
         if(type == 1){
             currentNum = parseInt(currentNum) - 1;
             if(currentNum == 0){
@@ -746,7 +747,10 @@
             }
         }
         var str = $('#subject_'+currentNum).val();
-        var arrayStr = str.split('/');
+        if (typeof str != "undefined") {
+            arrayStr = str.split('/');
+        }
+
         $('#grtxt').html(arrayStr[0]);
         for(var i=1; i<=5; i++){
             $('#gr'+i).css('width','0%');

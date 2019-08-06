@@ -22,9 +22,7 @@
                         <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
                         <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                         <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
-
                         @include('willbes.pc.site.professor.tab_open_lecture_partial_'.$data['OnLecViewCcd'])
-
                     </form>
                     {{-- 온라인 단강좌 footer script --}}
                     @include('willbes.pc.site.lecture.only_footer_partial')

@@ -27,7 +27,7 @@
                 <div class="w-list">{{ $data['CourseName'] }} / {{ $data['SubjectName'] }}</div>
                 <div class="w-tit tx-blue">{{ $data['ProdName'] }}</div>
                 <dl class="w-info tx-dark-gray">
-                    <dt>강의수 : <span class="tx-black">{{ $data['wUnitLectureCnt'] }}강@if(empty($data['wScheduleCount'])==false)/{{$data['wScheduleCount']}}강@endif</span></dt>
+                    <dt>강의수 : <span class="tx-black">{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false)/{{$data['wScheduleCount']}}강@endif</span></dt>
                     <dt><span class="row-line">|</span></dt>
                     <dt>수강기간 : <span class="tx-black">{{ $data['StudyPeriod'] }}일</span></dt>
                     <dt class="NSK ml15">

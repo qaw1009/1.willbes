@@ -15,8 +15,8 @@ body {
     position: fixed;
     bottom: 5px;
     right:5px;
-    width: 45px;
-    height: 48px;
+    width: 34px;
+    height: 34px;
     z-index: 11;
 }
 .goTopbtn a img {
@@ -828,7 +828,7 @@ body.memBody #Footer {
     width: 100%;
     height: 45px;
     line-height: 44px;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     color: #000;
     text-align: center;
@@ -2140,12 +2140,15 @@ body.memBody #Footer {
     float:left
 }
 .lec-info .chk label {display:none}
+.lec-info .chk2 label {
+    display:inline-block;
+    margin-left:5px;
+}
 .lec-info input[type="checkbox"] {
     float: left;
     width: 20px;
     height: 20px;
 }
-.lec-info .chk label {display:none}
 .lec-info .priceWrap {
     float: left;
     margin-left:10px;
@@ -2518,6 +2521,52 @@ body.memBody #Footer {
     margin-bottom:0;
 }
 .basketBox .basketPrice li:after {content:""; display:block; clear:both}
+
+.basketListBox {
+    margin:10px 20px 20px;
+    padding:0 0 20px;
+    font-size:14px;
+}
+.basketListBox div {
+    border-top:1px solid #c9c9c9;
+    padding:20px 0;
+}
+.basketListBox input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    float: left;
+    cursor: pointer;
+}
+.basketListBox label {
+    float:left;
+    margin-left:5px;
+}
+.basketListBox label li {
+    margin-bottom:8px;
+}
+.basketListBox label li:first-child span {
+    font-size:12;
+    border:1px solid #0d74ae;
+    padding:3px 5px;
+    color:#0d74ae;
+    font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+    display:inline-block;
+}
+.basketListBox label li:last-child {
+    margin:0;    
+}
+.basketListBox label li:last-child span {
+    margin-left:20px;
+    color:#0d74ae;
+}
+.basketListBox div:after {
+    content:""; display:block; clear:both;
+}
+.basketListBox .lecTxt li {
+    line-height: 1.5;
+    list-style-type: disc;
+    margin-left:15px;
+}
 
 /*********************************************     MYPAGE     *********************************************/
 

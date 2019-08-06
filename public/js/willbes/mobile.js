@@ -81,6 +81,21 @@ $(function() {
     });
 });
 
+$(function() {
+    $('.basketBox .MoreBtn a').click(function() {
+        var $basket_Info = $('.basketInfo');
+
+        if ($basket_Info .is(':hidden')) {
+            $basket_Info .show().css('visibility','visible');
+            $('.basketBox .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_on.png');
+        } else {
+            $basket_Info .hide().css('visibility','hidden');
+            $('.basketBox .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_off.png');
+        }
+    });
+});
+
+
 // Swiper Script
 $(function() {
     new Swiper('.swiper-container-page', {

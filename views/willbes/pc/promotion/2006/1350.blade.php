@@ -67,11 +67,15 @@
 		<div class="evtCtnsBox cert03">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1350_03.jpg" alt="수강신청" usemap="#Map" border="0" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="188,435,426,537" href="#none;" />
-                <area shape="rect" coords="688,435,925,538" href="#none;" />
+                <area shape="rect" coords="188,435,426,537" href="#none;" onclick="goCartNDirectPay('pass', 'y_pkg1', 'on_lecture', 'periodpack_lecture', 'Y');"/>
+                <area shape="rect" coords="688,435,925,538" href="#none;" onclick="goCartNDirectPay('pass', 'y_pkg2', 'on_lecture', 'periodpack_lecture', 'Y');" />
                 <area shape="rect" coords="738,603,902,636" href="#info3" />
             </map>
-            <input name="is_chk" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
+            <div id="pass">
+                <input name="y_pkg1" type="checkbox" value="155934" class="hide" checked="checked">
+                <input name="y_pkg2" type="checkbox" value="155933" class="hide" checked="checked">
+                <input name="is_chk" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
+            </div>
         </div>
         <div class="evtCtnsBox cert04">
             <h3>스포츠지도사 강의구성</h3>
@@ -416,32 +420,30 @@
 	</div>
     <!-- End Container -->
 
-	<script type="text/javascript">   
-
+	<script type="text/javascript">
     $(document).ready(function(){
         /*#####################################*/
         $("#stoggleBtn").click(function(){
             $("#textZone1").slideToggle("fast");
-        });		
+        });
+
 		$("#stoggleBtn2").click(function(){
             $("#textZone2").slideToggle("fast");
         });		
 
-         /*#####################################*/
+        /*#####################################*/
         $("dd").css({"display":"none"});
             $("dt").click(function(){
                 $("dd").css({"display":"none"});
-                $(this).next().css({"display":"block"});      
-
+                $(this).next().css({"display":"block"}
+            );
         });
-         /*#####################################*/
+
+        /*#####################################*/
         $("dt").click(function(){
-				$("dt").css({"height":"55px","lineHeight":"55px", "fontSize":"16px"});
-		
-				$(this).css({"height":"55px","lineHeight":"55px","fontSize":"20px"});		
-
-			});
-
+            $("dt").css({"height":"55px","lineHeight":"55px", "fontSize":"16px"});
+            $(this).css({"height":"55px","lineHeight":"55px","fontSize":"20px"});
+        });
     });
 	</script>
 

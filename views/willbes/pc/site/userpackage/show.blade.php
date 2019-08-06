@@ -110,7 +110,7 @@
                                                 <strong class="open-info-modal">강좌상세정보</strong>
                                             </a>
                                         </dt>
-                                        <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강</span></dt>
+                                        <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                         <dt><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="study-period tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriod'] }}일</span></dt>
                                         <dt class="NSK ml15">
@@ -230,11 +230,7 @@
         var IsSelLecCount = "{{$data['IsSelLecCount']}}";
         var SelCount = "{{$data['SelCount']}}";
 
-
-
-
         $(document).ready(function() {
-
             var tempSaleArray = [];
             var prodcode_sub_cnt = $("input:checkbox[name='prod_code_sub[]']").length;
             var pre_rate = 0;
@@ -250,20 +246,15 @@
                             pre_rate = pre_rate;
                         }
                     }
-                    //console.log(num_rate + ' - ' + pre_rate);
                     tempSaleArray.push({'DiscNum': i, 'DiscRate': num_rate});
                 }
             }
-
-//            console.log(tempSaleArray);
 
             for(i=0;i<tempSaleArray.length;i++) {
                 console.log(tempSaleArray[i]['DiscNum'] +' - '+tempSaleArray[i]['DiscRate']);
             }
 
-
             $(".chk_products,.chk_books").change( function() {
-
                 var strType = ($(this).attr('class').indexOf('chk_products') == 0) ? 'lecture' : 'book';
                 var strId = $(this).attr("id");
                 var strProdCode = $(this).data('prod-code');
@@ -279,7 +270,6 @@
                     "       <span class=\"delete\"><a href=\"#none\" onclick='gather_action(\"remove\",\""+strId+"\")'><img src=\"{{ img_url('sub/icon_delete.gif') }}\"></a></span>\n" +
                     "   </span>\n" +
                     "</div>";
-
 
                 if($(this).is(':checked')) {
                     if(strType == 'lecture') {
@@ -334,7 +324,7 @@
                 --}}
                 if(tempSaleArray.length > 0) {
                     for(i=0;i<tempSaleArray.length;i++) {
-                        if( parseInt(tempSaleArray[i]['DiscNum']) == sel_count) {       //해당갯수의 할인율이 없을 경우 . 이전에 적용된 할인율을 사용한다.
+                        if( parseInt(tempSaleArray[i]['DiscNum']) == sel_count) {       {{--해당갯수의 할인율이 없을 경우 . 이전에 적용된 할인율을 사용한다.--}}
                             sale_rate = tempSaleArray[i]['DiscRate'];
                         }
                     }
@@ -365,8 +355,6 @@
 
                 $price_total = ($lecPrice_total-$lecPrice_sale_total) + $bookPrice_total;
 
-                //alert($sale_rate);
-
                 $("#lecPrice").text(addComma($lecPrice_total)+'원');
                 $("#bookPrice").text(addComma($bookPrice_total)+'원');
                 $("#lecSalePrice").text(addComma($lecPrice_sale_total)+'원');
@@ -384,7 +372,6 @@
 
             // 교재상품 선택/해제
             $regi_form.on('click', '.chk_books', function() {
-
                 if ($(this).is(':checked') === true) {
                     if ($(this).hasClass('chk_books') === true) {
                         // 수강생 교재 체크

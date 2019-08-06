@@ -223,7 +223,7 @@
                                                             <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
-                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if(empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
+                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 :
                                                         @if(empty($sub_row['ProdPriceData']) === false)
@@ -315,7 +315,6 @@
                         <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                     </div>
 
-
                     <!-- pos2 -->
                     <div id="pos2" class="pt35 mt10">
                         <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black p_re">
@@ -362,7 +361,7 @@
                                                             <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
-                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if(empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
+                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 :
                                                         @if(empty($sub_row['ProdPriceData']) === false)
@@ -571,7 +570,6 @@
             /*
             $(".checkbox").change(function() {
 
-                alert("aaaa");
                 if(this.checked) {
                     //선택강좌
                     $check_cnt = 0;

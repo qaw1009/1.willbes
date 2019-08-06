@@ -118,25 +118,25 @@
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=1#content_1') }}">
+                    <a id='tab1' href="@if(time() >= strtotime('201908070000') && time() <= strtotime('201908082359')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=1#content_1') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
                         <span>합격을 위한</span>
                         <div>최종 마무리 전략</div>
                     </a>
                 </li>
                 <li>
-                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=2#content_2') }}">
+                    <a id='tab2' href="@if(time() >= strtotime('201908070000') && time() <= strtotime('201908082359')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=2#content_2') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
                         <span>전년도 국가직 9급</span>
                         <div>완벽분석</div>				
                     </a>
                 </li>
                 <li>
-                    <a id='tab3' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=3#content_3') }}">
+                    <a id='tab3' href="@if(time() >= strtotime('201908171140')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=3#content_3') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
                         <span>2019 국가직 9급</span>
                         <div>시험총평 및 시험후기</div>
                     </a>
                 </li>     
                 <li>
-                    <a id='tab4' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=4#content_4') }}">
+                    <a id='tab4' href="@if(time() >= strtotime('201908191500')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=4#content_4') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
                         <span>2019 국가직 9급</span>
                         <div>기출해설강의</div>
                     </a>

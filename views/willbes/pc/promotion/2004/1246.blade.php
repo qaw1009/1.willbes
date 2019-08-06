@@ -132,12 +132,8 @@
   <div class="evtCtnsBox wb_cts08">
 	  <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_07.jpg" title="선접수이벤트" /></a>
   </div>
-  <!--wb_cts08//-->
-  
-  <div class="evtCtnsBox wb_cts09">
-	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=315&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_08.jpg"title="군무원합격전략설명회" /></a>
-  </div>
-  <!--wb_cts09//-->
+  <!--wb_cts08//--> 
+
   
   <!--유의사항-->
   <div class="evtCtnsBox wb_cts10">

@@ -1084,8 +1084,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 $cnt = 1;
             }
             $fiveperSum = $arrSum[$cnt];
-
-            $onePerRank = ROUND(((float)$dataline['PickNum'] / (float)$dataline['TakeNum']),2);
+            $onePerRank = (empty($dataline) === true) ? 0 : ROUND(((float)$dataline['PickNum'] / (float)$dataline['TakeNum']),2);
             $cnt2 = ROUND(COUNT($data2) * $onePerRank);
             if($cnt2 < 0){
                 $cnt2 = 1;

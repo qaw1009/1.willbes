@@ -266,23 +266,6 @@
     width: 100%;
 }
 
-/* Main Container : Dday : Cop 
-.newTopDday {padding: 20px 0; border-bottom: 1px solid #f2f2f2}
-.newTopDday #ddaytime li {float:left; margin-right:1px; text-align:center; color:#000}
-.newTopDday #ddaytime li.txt {font-weight: 600; color: #3c3e3c}
-.newTopDday #ddaytime li.toptxt {width: 330px; text-align: right; margin-right: 10px; margin-top: 15px}
-.newTopDday #ddaytime li.lasttxt {margin-left: 25px; text-align: left;}
-.newTopDday #ddaytime li span {vertical-align: baseline}
-.newTopDday #ddaytime li .small {font-size: 14px; line-height: 18px}
-.newTopDday #ddaytime li .big {font-size: 18px}
-.newTopDday #ddaytime li .cop-color {color: #0c5dc0}
-.newTopDday #ddaytime li .btn {text-align:left; margin-top: 8px}
-.newTopDday #ddaytime li .btn a {display:inline-block; font-size:16px; padding:8px 21px; background:#0c5dc0; color:#fff; text-align:center; border-radius:7px}
-.newTopDday #ddaytime li .btn a:hover {background:#333}
-.newTopDday #ddaytime li strong {font-size: 24px; color: #3c3e3c; line-height:62px; margin: 0 7px}
-.newTopDday #ddaytime li img {width:42px}
-.newTopDday #ddaytime ul:after {content:""; display:block; clear:both}*/
-
 /**/
 .newPlaybn {width:1120px; margin:0 auto}
 .newPlaybn .layer {position:absolute; width:1120px; height:333px; position:relative; overflow:hidden; z-index:1; background:#000}
@@ -314,109 +297,6 @@
 	from{margin-top:0}
 	to{margin-top:-370px}
     }    
-/*.Flipped ul.inner a span {display:inline-block}
-.Flipped .wrap_ban {position: absolute; top: 0; left: 0; right: 0;}
-.Flipped .wrap_ban.front {visibility:visible; opacity:1; }    
-.Flipped .wrap_ban.back {visibility:hidden; opacity:0;}
-.Flipped li .f-tit {font-size:16px; font-weight: 600; line-height: 50px;}
-.Flipped li .tit1 {color: #0c5dc0}
-.Flipped li .tit2 {color: #fd6c38}
-.Flipped li .tit3 {color: #d8ab36}
-.Flipped li:hover .wrap_ban.front {visibility:hidden; opacity:0;}
-.Flipped li:hover .wrap_ban.back {visibility:visible; opacity:1}
-.Flipped li.flipped .wrap_ban.front {visibility:hidden; opacity:0}
-.Flipped li.flipped .wrap_ban.back {visibility:visible; opacity:1}*/
-
-/* Main Container : curriculumBox : Cop 
-.cswRollingSlider {
-    line-height: 20px;
-    padding-top: 20px;
-    border-top: 2px solid #c2c2c2;
-    margin-top: 100px;
-}
-.cswRollingSlider:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-.cswRollingSlider ul li {
-    position: relative;
-    float: left;
-    width: 16.66%;
-    text-align: center;
-    margin-top: -37px;
-}
-.cswRollingSlider ul li a {
-    display: block;
-    font-size: 16px;
-    font-weight: 600;
-    color: #bbb;
-    line-height: 30px;
-}
-
-.cswRollingSlider ul li.active a {
-    color: #0c5dc0;
-} 
-.cswRollingSlider ul li a.active {
-    color: #0c5dc0;
-} 
-
-.cswRollingSlider ul li img {
-    position: absolute; 
-    left: 0;
-    right: 0;
-    top: -28px;
-    margin: 0 auto;
-}
-.sliderCurriList {
-    width: 1070px;
-    margin: 0 auto;
-}
-.CurriSwipe ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.curriculumBox {
-    float: left;
-    background: #f7f7f7;
-    width: 260px;
-    height: 272px;
-    font-family: "NotoSansCJKkr-Thin", "Noto Sans KR", "sans-serif";
-    border: 1px solid #e7e7e7;
-    color: #cfcfcf;
-    text-align: center;
-    letter-spacing: 0;
-}
-.curriculumBox .Tit {
-    font-family: "NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif";
-    font-size: 26px;
-    padding-top: 40px;
-}
-.curriculumBox .subTit {
-    font-size: 19px;
-    margin-top: 15px;
-}
-.curriculumBox .info {
-    width: 160px;
-    margin: 40px auto;
-    font-weight: 600;
-    text-align: left;
-    line-height: 24px;
-}
-.curriculumBox .info li {
-    font-size: 14px;
-}
-.active .curriculumBox {
-    background: #fff;
-    border: 10px solid #0c5dc0;
-    color: #0c5dc0;
-}
-.active .curriculumBox .Tit {
-    padding-top: 31px;
-}
-*/
-
 
 /* Main Container cop : 3STEP curriculum */
 .curriculumTit {
@@ -1001,6 +881,32 @@
 .cop .willbesNumber ul li:first-child {
     margin-left: 50px;
 }
+
+/**/
+.collaborate {
+    background:url(https://static.willbes.net/public/images/promotion/main/3001_collaborate.jpg) no-repeat left top;
+    height: 124px;
+}
+.collaborate div {
+    width: 878px;   
+    height: 124px;
+    margin-left:242px;
+    border:1px solid #e2e2e2; border-left:0;    
+    padding:13px 0;
+}
+.collaborate ul {
+    overflow: hidden;
+    height:96px;
+}
+.collaborate li {   
+    display: inline ;float: left; 
+    margin-bottom:4px;  
+    width: 20%;
+}
+.collaborate li a {
+    display:block; text-align: center; 
+}
+
 
 /* Guide Container : Cop */
 /*수험가이드*/

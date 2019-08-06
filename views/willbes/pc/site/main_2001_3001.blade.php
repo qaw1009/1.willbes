@@ -8,7 +8,10 @@
 
         <div class="Section MainVisual">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190613_01.jpg" title="수험생이 증명하는 대한민국 1등 경찰학원">
+                <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_01.jpg" alt="대한민국1등 경찰학원" usemap="#Map190806" border="0">
+                <map name="Map190806" id="Map190806">
+                    <area shape="rect" coords="31,30,212,105" href="#collaboList" alt="협력기관" />
+                </map>
             </div>
             <div class="widthAutoFull summer">
                 @if (date('YmdH') < '2019071316')
@@ -302,10 +305,40 @@
             </div>
         </div>
 
+        <div class="Section Section7 mb50">
+            <div class="widthAuto">
+                <div class="collaborate">
+                    <ul id="slider1" class="bxslider">
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_01.jpg" alt="경찰청"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_02.jpg" alt="서울지방경찰청기동본부"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_03.jpg" alt="강동대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_04.jpg" alt="경일대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_05.jpg" alt="김포대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_06.jpg" alt="제주지방경찰청"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_07.jpg" alt="경찰대학"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_08.jpg" alt="경남대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_09.jpg" alt="계명문화대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_10.jpg" alt="대전대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_11.jpg" alt="서원대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_12.jpg" alt="세한대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_13.jpg" alt="전북대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_14.jpg" alt="조선대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_15.jpg" alt="특성화학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_16.jpg" alt="선문대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_17.jpg" alt="원광대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_18.jpg" alt="전주대학교"></a></li>
+                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_19.jpg" alt="중부대학교"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div id="QuickMenu" class="MainQuickMenu">
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
+
+
     </div>
     <!-- End Container --> 
 
@@ -339,7 +372,43 @@
                 return false;
             });
         }); 
-    </script>
+
+	//<![CDATA[
+		var timer_val = 2000; // 배너이동 시간 : 밀리초단위
+
+		var bannerTimer;
+
+		jQuery(function(){
+			jQuery("#collaboList").mouseenter(function() {
+				killTimer();
+			});
+
+			jQuery("#collaboList").mouseleave(function() {
+				goTimer();
+			});
+			
+			goTimer();
+		});
+
+		function timerFunc() {
+			if(bannerTimer){ clearTimeout(bannerTimer); }
+
+			jQuery("#collaboList").prepend(jQuery("#collaboList li:last").clone(true));
+			jQuery("#collaboList li:last").remove();
+
+			bannerTimer = setTimeout("timerFunc()", timer_val);
+		}
+
+		function goTimer() {
+			if(bannerTimer){ clearTimeout(bannerTimer); }
+			bannerTimer = setTimeout("timerFunc()", timer_val);
+		}
+
+		function killTimer() {
+			if(bannerTimer){ clearTimeout(bannerTimer); }
+		}
+	//]]>
+  </script>
     
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

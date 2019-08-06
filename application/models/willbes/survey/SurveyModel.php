@@ -770,23 +770,25 @@ class SurveyModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
-        $arrData = array();
-        $total = $Res[0]['CNT'] + $Res[1]['CNT'] + $Res[2]['CNT'] + $Res[3]['CNT'] + $Res[4]['CNT'] + $Res[5]['CNT'];
-        // 0 ~ 100
-        $zh = $Res[0]['CNT']?ROUND($Res[0]['CNT'] / $total * 100,2):'0';
-        $arrData['zh'] = $zh;
-        // 100 ~ 200
-        $ht = $Res[1]['CNT']?ROUND($Res[1]['CNT'] / $total * 100,2):'0';
-        $arrData['ht'] = $ht;
-        // 200 ~ 300
-        $tt = $Res[2]['CNT']?ROUND($Res[2]['CNT'] / $total * 100,2):'0';
-        $arrData['tt'] = $tt;
-        // 300 ~ 400
-        $tf = $Res[3]['CNT']?ROUND($Res[3]['CNT'] / $total * 100,2):'0';
-        $arrData['tf'] = $tf;
-        // 400 ~ 500
-        $ff = 100 - ($zh + $ht + $tt + $tf);
-        $arrData['ff'] = $ff;
+        $arrData = null;
+        if (empty($Res) === false) {
+            $total = $Res[0]['CNT'] + $Res[1]['CNT'] + $Res[2]['CNT'] + $Res[3]['CNT'] + $Res[4]['CNT'] + $Res[5]['CNT'];
+            // 0 ~ 100
+            $zh = $Res[0]['CNT'] ? ROUND($Res[0]['CNT'] / $total * 100, 2) : '0';
+            $arrData['zh'] = $zh;
+            // 100 ~ 200
+            $ht = $Res[1]['CNT'] ? ROUND($Res[1]['CNT'] / $total * 100, 2) : '0';
+            $arrData['ht'] = $ht;
+            // 200 ~ 300
+            $tt = $Res[2]['CNT'] ? ROUND($Res[2]['CNT'] / $total * 100, 2) : '0';
+            $arrData['tt'] = $tt;
+            // 300 ~ 400
+            $tf = $Res[3]['CNT'] ? ROUND($Res[3]['CNT'] / $total * 100, 2) : '0';
+            $arrData['tf'] = $tf;
+            // 400 ~ 500
+            $ff = 100 - ($zh + $ht + $tt + $tf);
+            $arrData['ff'] = $ff;
+        }
         return $arrData;
     }
 
@@ -878,22 +880,17 @@ class SurveyModel extends WB_Model
      *  합격예측용 성적입력 점수호출 타입1
      */
     public function getGradeLine($idx, $TakeMockPart, $TakeArea){
-        $column = "
-            *
-        ";
-
+        $column = "*";
         $from = "
-            FROM 
-                {$this->_table['predictGradesLine']} 
+            FROM {$this->_table['predictGradesLine']}
         ";
 
         $order_by = "";
         $where = " WHERE PredictIdx = ".$idx." AND TakeMockPart = ".$TakeMockPart." AND TakeArea = ".$TakeArea;
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        //echo "<pre>". 'select ' . $column . $from . $where . $order_by . "</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
-
         return $Res;
     }
 
@@ -1603,13 +1600,10 @@ class SurveyModel extends WB_Model
                 ${"answer$i"} = element('answer'.$i,$formData);
                 ${"PqIdx$i"}  = element('PqIdx'.$i,$formData);
 
-                $column = "
-                    PapIdx
-                ";
+                $column = "PapIdx";
 
                 $from = "
-                    FROM
-                        {$this->_table['predictAnswerPaper']}
+                    FROM {$this->_table['predictAnswerPaper']}
                 ";
 
                 $arr_condition = [

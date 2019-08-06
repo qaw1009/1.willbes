@@ -24,7 +24,7 @@ class ContractModel extends WB_Model
     {
 
         if($is_count) {
-            $column = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows ';
             $order_by_offset_limit = '';
         } else {
             $column = 'gc.*,fn_dec(gc.CompTelEnc) as CompTel,sa.wAdminId,sa.wAdminName as RegAdminName,sa2.wAdminName as UpdAdminName';
@@ -34,10 +34,10 @@ class ContractModel extends WB_Model
 
         $from = '
                     from 
-                        lms_gateway_contract gc
-                        left outer join wbs_sys_admin sa on gc.RegAdminIdx = sa.wAdminIdx
-                        left outer join wbs_sys_admin sa2 on gc.UpdAdminIdx = sa2.wAdminIdx
-                    where gc.IsStatus=\'Y\' and sa.wIsStatus=\'Y\'
+                        lms_gateway_contract gc 
+                        left outer join wbs_sys_admin sa on gc.RegAdminIdx = sa.wAdminIdx 
+                        left outer join wbs_sys_admin sa2 on gc.UpdAdminIdx = sa2.wAdminIdx 
+                    where gc.IsStatus=\'Y\' and sa.wIsStatus=\'Y\' 
         ';
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);

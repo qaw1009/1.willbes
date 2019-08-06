@@ -73,8 +73,8 @@ class GatewayModel extends WB_Model
                         '.$this->_table['gateway'].' g
                         join '.$this->_table['contact'].'  gc on g.ContIdx = gc.ContIdx
                         join lms_sys_code sc on g.GwTypeCcd = sc.Ccd and sc.IsStatus=\'Y\'
-                        left outer join wbs_sys_admin sa on gc.RegAdminIdx = sa.wAdminIdx
-                        left outer join wbs_sys_admin sa2 on gc.UpdAdminIdx = sa2.wAdminIdx
+                        left outer join wbs_sys_admin sa on g.RegAdminIdx = sa.wAdminIdx
+                        left outer join wbs_sys_admin sa2 on g.UpdAdminIdx = sa2.wAdminIdx
                         left outer join lms_site s on g.SiteCode = s.SiteCode
                     where g.IsStatus=\'Y\' and gc.IsStatus=\'Y\' and sa.wIsStatus=\'Y\'
         ';
@@ -97,7 +97,6 @@ class GatewayModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-
             $input_data = $this->_inputCommon($input);
 
             $input_data = array_merge($input_data,[
@@ -123,7 +122,6 @@ class GatewayModel extends WB_Model
      */
     public function modifyGateway($input=[])
     {
-
         $this->_conn->trans_begin();
 
         try {

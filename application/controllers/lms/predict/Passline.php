@@ -117,7 +117,7 @@ class Passline extends \app\controllers\BaseController
                         $dataSet[$SerialCcd][$TakeArea]['TakeOrigin'] = "";
                         $dataSet[$SerialCcd][$TakeArea]['TotalRegist'] = "";
                         $dataSet[$SerialCcd][$TakeArea]['AvrPoint'] = "";
-                        if(empty($dtSet)===false){
+                        if(empty($dtSet)===false && empty($dtSet[$SerialCcd][$TakeArea]) === false){
                             $dataSet[$SerialCcd][$TakeArea]['PickNum'] = $dtSet[$SerialCcd][$TakeArea]['PickNum'];
                             $dataSet[$SerialCcd][$TakeArea]['TakeNum'] = $dtSet[$SerialCcd][$TakeArea]['TakeNum'];
                             $dataSet[$SerialCcd][$TakeArea]['CompetitionRateNow'] = $dtSet[$SerialCcd][$TakeArea]['CompetitionRateNow'];
@@ -173,7 +173,7 @@ class Passline extends \app\controllers\BaseController
                     $dataSet[$SerialCcd][$TakeArea]['TakeOrigin'] = "";
                     $dataSet[$SerialCcd][$TakeArea]['TotalRegist'] = "";
                     $dataSet[$SerialCcd][$TakeArea]['AvrPoint'] = "";
-                    if(empty($dtSet)===false){
+                    if(empty($dtSet)===false && empty($dtSet[$SerialCcd][$TakeArea]) === false){
                         $dataSet[$SerialCcd][$TakeArea]['PickNum'] = $dtSet[$SerialCcd][$TakeArea]['PickNum'];
                         $dataSet[$SerialCcd][$TakeArea]['TakeNum'] = $dtSet[$SerialCcd][$TakeArea]['TakeNum'];
                         $dataSet[$SerialCcd][$TakeArea]['CompetitionRateNow'] = $dtSet[$SerialCcd][$TakeArea]['CompetitionRateNow'];

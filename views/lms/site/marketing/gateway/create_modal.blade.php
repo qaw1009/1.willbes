@@ -72,9 +72,11 @@
             </div>
             @if($method==="PUT")
                 <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2 red"><B>광고 URL 생성</B></label>
+                    <label class="control-label col-md-2 red"><B>광고접속URL</B></label>
                     <div class="col-md-10 red">
-                        <p class="form-control-static"><B>https://{{$data['SiteUrl']}}/access/gate/{{$data['GwIdx']}}</B></p>
+                        <p class="form-control-static"><B>https://{{$data['SiteUrl']}}/access/gate/{{$data['GwIdx']}}</B>
+
+                        </p>
                     </div>
                 </div>
                 <div class="form-group form-group-sm item">
@@ -94,6 +96,7 @@
                     </div>
                     <label class="control-label col-md-2">최종수정일</label>
                     <div class="col-md-4">
+
                         <p class="form-control-static"> {{ $data['UpdDatm'] }}</p>
                     </div>
                 </div>

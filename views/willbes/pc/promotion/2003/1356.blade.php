@@ -118,13 +118,13 @@
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="@if(time() >= strtotime('201908070000') && time() <= strtotime('201908082359')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=1#content_1') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
+                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=1#content_1') }}">
                         <span>합격을 위한</span>
                         <div>최종 마무리 전략</div>
                     </a>
                 </li>
                 <li>
-                    <a id='tab2' href="@if(time() >= strtotime('201908070000') && time() <= strtotime('201908082359')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=2#content_2') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
+                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=2#content_2') }}">
                         <span>전년도 국가직 9급</span>
                         <div>완벽분석</div>				
                     </a>

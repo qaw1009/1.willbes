@@ -160,6 +160,10 @@
                         alert('수강종료일을 선택해 주세요.');
                         return;
                     }
+                    if (moment().format('YYYY-MM-DD') > $_regi_form.find('input[name="lec_start_date"]').val()) {
+                        alert('수강시작일은 금일부터 그 이후 날짜이어야 합니다.');
+                        return;
+                    }
 
                     // 수강기간 계산
                     var lec_diff_days = moment($_regi_form.find('input[name="lec_end_date"]').val(), 'YYYY-MM-DD').diff($_regi_form.find('input[name="lec_start_date"]').val(), 'days');

@@ -189,7 +189,7 @@
                                             <strong class="open-info-modal">강좌상세정보</strong>
                                         </a>
                                     </dt>
-                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if(empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
+                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>정상가 :
                                     @if(empty($sub_row['ProdPriceData']) === false)
@@ -284,7 +284,6 @@
                     <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                 </div>
 
-                
             </div>
             <!-- willbes-Lec -->
             </form>
@@ -341,7 +340,6 @@
             // 장바구니, 바로결제 버튼 클릭
             $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
                 var $is_direct_pay = $(this).data('direct-pay');
-
                 cartNDirectPay($regi_form, $is_direct_pay, 'Y');
             });
         });

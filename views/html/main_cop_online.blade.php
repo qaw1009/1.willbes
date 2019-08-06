@@ -1208,13 +1208,4 @@
             });
         });       
 </script>
-{{--
-<script src="/public/js/willbes/jquery.vticker.min.js"></script>
-<script>
-$(function() {
-    $('#example').vTicker('init', {padding:2});
-});
-</script>
---}}
-
 @stop

@@ -57,9 +57,11 @@ class BasePromotion extends \app\controllers\FrontController
             foreach ($arr_base['promotion_live_data'] as $row) {
                 if(empty($row['FileStartDateTime']) === false && empty($row['FileEndDateTime']) === false){
                     $arr_base['promotion_live_file_link'] = 'javascript:alert(\'라이브 당일 '.$row['FileStartHour'].'시부터 다운받으실 수 있습니다.\')';
+                    $arr_base['promotion_live_file_yn'] = 'N';
                     if($today_now > strtotime($row['FileStartDateTime']) && $today_now < strtotime($row['FileEndDateTime'])){
                         $arr_base['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
                         $arr_base['promotion_live_file_yn'] = 'Y';
+                        break;
                     }
                 }
             }

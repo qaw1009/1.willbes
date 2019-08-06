@@ -58,7 +58,7 @@
                             <li>
                                 <div>
                                     <label>{{ $val['CcdName'] }}</label>
-                                    <input type="text" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif >
+                                    <input type="number" name="Score[]" maxlength="3" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif >
                                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                     <span>점</span>
                                 </div>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="markSbtn1">
                         <a href="javascript:lastSave();">완료</a>
-                        <a href="javascript:examDeleteAjax()" class="btn3">취소</a>
+                        {{--<a href="javascript:examDeleteAjax()" class="btn3">취소</a>--}}
                     </div>
                 </div>
 

@@ -56,6 +56,8 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/lecture_online_pkg3') }}" target="_blank">수강신청 > 선택패키지</a>
             <a href="{{ site_url('/home/html/m/lecture_online_pkg4') }}" target="_blank">수강신청 > 선택패키지 > 상세보기</a>
+            <br><br>
+            <a href="{{ site_url('/home/html/m/lecture_online_pkg5') }}" target="_blank">수강신청 > DIY패키지</a>
         </div>
     </li>
     <li>

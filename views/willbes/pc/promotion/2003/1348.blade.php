@@ -34,8 +34,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_top.jpg" alt="이상구 라이브 국제법/정치학" usemap="#Map1348_top" border="0" />
             <map name="Map1348_top" id="Map1348_top">
                 <area shape="rect" coords="72,675,205,803" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=365" target="_blank" alt="실강신청" />
-                <area shape="rect" coords="214,675,342,804" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="자료다운" />
-            </map>            
+                <area shape="rect" coords="214,675,342,804" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" alt="자료다운" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -46,7 +46,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_02.jpg" usemap="#Map1348" title="라이브 특강 진행 안내" border="0">
             <map name="Map1348" id="Map1348">
                 <area shape="rect" coords="622,413,751,542" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=365" target="_blank" alt="실강신청" />
-                <area shape="rect" coords="762,414,892,542" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="자료다운" />
+                <area shape="rect" coords="762,414,892,542" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" alt="자료다운" />
             </map>
             <div class="liveWrap">
                 @include('willbes.pc.promotion.live_video_partial') 

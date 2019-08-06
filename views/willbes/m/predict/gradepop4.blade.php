@@ -36,7 +36,7 @@
             <!-- //tg-note -->
 
             <div class="markMbtn2">
-                <a href="javascript:parent.location.reload()" class="btn2">기본정보입력</a>
+                <a href="{{ front_url('/predict/index/'.$PredictIdx) }}" class="btn2">기본정보입력</a>
                 <a href="#" >채점 및 성적확인</a>
             </div>
 
@@ -62,7 +62,7 @@
                             <td>@if($scoreIs == 'Y') {{ $scoredata['score'][0] }} @else 미입력 @endif</td>
                             {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>--}}
                             <td>집계중</td>
-                            <td rowspan="5" class="tx-center"><a href="javascript:resultPop(100001)" class="mypoint">확인 </a></td>
+                            <td rowspan="5" class="tx-center"><a href="javascript:resultPop({{$PredictIdx}})" class="mypoint">확인 </a></td>
                         </tr>
                         <tr>
                             <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][1] }}@else 미입력 @endif</td>

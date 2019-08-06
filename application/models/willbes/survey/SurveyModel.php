@@ -1705,29 +1705,39 @@ class SurveyModel extends WB_Model
 
     /**
      * 정답제출삭제
-     * @param array $formData
-     * @return mixed
+     * @param $PrIdx
+     * @return array|bool
      */
     public function examDelete($PrIdx)
     {
         try {
             $this->_conn->trans_begin();
-
             $where = ['PrIdx' => $PrIdx];
 
-            try {
-                if($this->_conn->delete($this->_table['predictAnswerPaper'], $where) === false){
-                    throw new \Exception('삭제에 실패했습니다.');
-                }
-                if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
-                    throw new \Exception('삭제에 실패했습니다.');
-                }
-                if($this->_conn->delete($this->_table['predictGrades'], $where) === false){
-                    throw new \Exception('삭제에 실패했습니다.');
-                }
-            } catch (\Exception $e) {
-                return error_result($e);
+            $register_data = $this->predictFModel->findPredictRegister($PrIdx, 'PrIdx, PointDelCnt');
+            if (empty($register_data) === true) {
+                throw new \Exception('조회된 기본정보가 없습니다.');
             }
+
+            if ($register_data['PointDelCnt'] >= 2) {
+                throw new \Exception('재채점은 최대 2회만 가능합니다.');
+            }
+            $point_del_cnt = $register_data['PointDelCnt'] + 1;
+
+            if($this->_conn->delete($this->_table['predictAnswerPaper'], $where) === false){
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+            if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+            if($this->_conn->delete($this->_table['predictGrades'], $where) === false){
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+
+            if ($this->_conn->set(['PointDelCnt'=>$point_del_cnt, 'PointDelDatm'=>date('Y-m-d H:i:s')])->where('PrIdx', $PrIdx)->update('lms_predict_register') === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

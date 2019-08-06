@@ -7,6 +7,7 @@ class DownloadFModel extends WB_Model
         'board_attach' => 'lms_board_attach',
         'event_file' => 'lms_event_file',
         'crm_send' => 'lms_crm_send',
+        'event_promotion_live_video' => 'lms_event_promotion_live_video',
         'lms_board_download_log' => 'lms_board_download_log',
         'lms_event_download_log' => 'lms_event_download_log'
     ];
@@ -82,6 +83,17 @@ class DownloadFModel extends WB_Model
                         'a.wIsUse' => 'Y', 'a.wIsStatus' => 'Y',
                         'b.wIsUse' => 'Y', 'b.wIsStatus' => 'Y'
                     ]
+                ];
+                break;
+            case "event_promotion_live_video":
+                $column = 'FileFullPath AS FilePath, FileRealName AS RealFileName';
+                $table = $this->_table['event_promotion_live_video'];
+                $arr_condition = [
+                    'RAW' => [
+                        'EplvIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx,
+                        'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $content_idx
+                    ],
+                    'EQ' => ['IsStatus' => 'Y']
                 ];
                 break;
             default:

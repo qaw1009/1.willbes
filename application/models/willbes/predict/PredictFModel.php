@@ -522,4 +522,27 @@ class PredictFModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 접수데이터 조회
+     * @param $prIdx
+     * @param string $column
+     * @return mixed
+     */
+    public function findPredictRegister($prIdx, $column = 'PrIdx')
+    {
+        $from = "
+            FROM lms_predict_register
+        ";
+        $arr_condition = [
+            'EQ' => [
+                'Pridx' => $prIdx,
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
 }

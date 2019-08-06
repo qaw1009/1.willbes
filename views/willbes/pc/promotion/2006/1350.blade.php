@@ -47,10 +47,10 @@
 
     </style>
 	<div class="evtContent">	
-        {{--
+        
 		<div class="skybanner">
 			<img src="https://static.willbes.net/public/images/promotion/2019/08/1350_skybanner.png" alt="스포츠지도사 베너">
-        </div>--}}
+        </div>
         		
 		<div class="evtCtnsBox cert_top">
 			<img src="https://static.willbes.net/public/images/promotion/2019/08/1350_top.jpg" alt="윌비스 2020 스포츠지도사" />

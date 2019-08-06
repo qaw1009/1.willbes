@@ -887,25 +887,26 @@
     background:url(https://static.willbes.net/public/images/promotion/main/3001_collaborate.jpg) no-repeat left top;
     height: 124px;
 }
-.collaborate div {
+.collaborate #collaboslides {
     width: 878px;   
-    height: 124px;
+    height: 124px !important;
     margin-left:242px;
-    border:1px solid #e2e2e2; border-left:0;    
+    border:1px solid #e2e2e2; border-left:0;  
     padding:13px 0;
 }
 .collaborate ul {
     overflow: hidden;
     height:96px;
+    
 }
-.collaborate li {   
-    display: inline ;float: left; 
-    margin-bottom:4px;  
-    width: 20%;
+.collaborate li { 
+    margin-bottom:4px; 
 }
 .collaborate li a {
-    display:block; text-align: center; 
+    display:inline-block; float:left; width:175px; text-align: center !important;
 }
+.collaborate li a img { width: 140px; margin:0 auto;}
+.collaborate li:after {content:""; display: block; clear:both}
 
 
 /* Guide Container : Cop */

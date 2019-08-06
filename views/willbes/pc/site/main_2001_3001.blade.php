@@ -375,41 +375,19 @@
             });
         }); 
 
-	//<![CDATA[
-		var timer_val = 2000; // 배너이동 시간 : 밀리초단위
-
-		var bannerTimer;
-
-		jQuery(function(){
-			jQuery("#collaboList").mouseenter(function() {
-				killTimer();
-			});
-
-			jQuery("#collaboList").mouseleave(function() {
-				goTimer();
-			});
-			
-			goTimer();
-		});
-
-		function timerFunc() {
-			if(bannerTimer){ clearTimeout(bannerTimer); }
-
-			jQuery("#collaboList").prepend(jQuery("#collaboList li:last").clone(true));
-			jQuery("#collaboList li:last").remove();
-
-			bannerTimer = setTimeout("timerFunc()", timer_val);
-		}
-
-		function goTimer() {
-			if(bannerTimer){ clearTimeout(bannerTimer); }
-			bannerTimer = setTimeout("timerFunc()", timer_val);
-		}
-
-		function killTimer() {
-			if(bannerTimer){ clearTimeout(bannerTimer); }
-		}
-	//]]>
+        $(document).ready(function() {
+            var collaboslides = $("#collaboslides ul").bxSlider({
+                mode:'fade', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:750,
+                pause:3000,
+                pager:false,
+                controls:false,
+                minSlides:1,
+                maxSlides:1, 
+                moveSlides:1,
+            });
+        }); 
   </script>
     
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}

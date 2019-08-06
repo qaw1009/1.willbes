@@ -72,8 +72,8 @@
                 <area shape="rect" coords="738,603,902,636" href="#info3" />
             </map>
             <div id="pass">
-                <input name="y_pkg1" type="checkbox" value="155934" class="hide" checked="checked">
-                <input name="y_pkg2" type="checkbox" value="155933" class="hide" checked="checked">
+                <input name="y_pkg1" type="checkbox" value="155933" class="hide" checked="checked">
+                <input name="y_pkg2" type="checkbox" value="155934" class="hide" checked="checked">
                 <input name="is_chk" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
             </div>
         </div>

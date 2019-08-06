@@ -13,10 +13,11 @@ body {
 }
 .goTopbtn {
     position: fixed;
-    bottom: 55px;
-    right: 10px;
+    bottom: 5px;
+    right:5px;
     width: 45px;
     height: 48px;
+    z-index: 11;
 }
 .goTopbtn a img {
     width: 100%;
@@ -2320,6 +2321,9 @@ body.memBody #Footer {
     float: left;
     width: 33.33333%
 }
+.lec-btns.w100p ul li {
+    width:100% !important;
+}
 .lec-btns li a {
     display: block;
     font-size:16px;
@@ -2332,8 +2336,7 @@ body.memBody #Footer {
     font-size:14px;
     line-height: 1.5;
     text-align: center;
-    padding:30px 0;
-    
+    padding:30px 0;    
 }
 .MessageBtns {
     width: 60%;
@@ -2412,12 +2415,109 @@ body.memBody #Footer {
     font-size: 14px;
     margin:10px 0;
     padding-bottom:3px;
-    border-bottom:1px dotted #ccc
+    border-bottom:1px dotted #ccc;
 }
 #LecDetailPop .LecDetailBox h5:first-child {
     margin:0 0 10px;
 }
 
+.basketBox {
+    position: fixed;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding:0 20px;
+    border-radius: 10px 10px 0 0; 
+    background: #f9f9f9;
+    width: calc(100% - 42px);
+    font-size:14px;
+    color:#666;
+    line-height: 1.5;
+    box-shadow: 0 0 8px rgba(0,0,0,.3);
+    z-index: 5;
+    }
+.basketBox .MoreBtn a {
+    display:block;
+    height: 40px;
+    text-align: center
+} 
+.basketBox .MoreBtn a img{
+    width: 40px;
+}
+
+.basketInfo {
+    padding:10px 20px 20px;
+    margin-bottom:20px;
+    background:#fff;
+    border:1px solid #ccc;
+    display: none
+}
+
+.basketBox .basketList li {
+    position: relative;
+    padding:10px 0;
+    border-bottom:1px solid #edebeb;
+}
+.basketBox .basketList li:last-child {
+    border:0;
+}
+.basketBox .basketList li p {
+    padding-right:25px
+}
+.basketBox .basketList li span {
+    font-size:12;
+    border: 1px solid #0d74ae;
+    padding:3px 5px;
+    color:#0d74ae;
+    font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+    margin-right:5px;
+}
+.basketBox .basketList li a {
+    position: absolute;
+    background:#f9f9f9 url("../../../img/willbes/m/calendar/close.png") no-repeat center center;
+    background-size: 11px;
+    height: 19px; 
+    width: 19px;
+    right:0;
+    top:10px;
+    text-indent: -9999px;
+    font-size:0;
+}
+.basketBox .basketList li strong {
+    float: right;
+    color: #0d74ae;
+}
+.basketBox .basketList li:after {
+    content:""; display: block; clear:both
+}
+.basketBox .priceBox {
+    font-size:14px;
+}
+.basketBox .basketPrice ul {
+    background:#f9f9f9;
+    color:#1d1d1d;
+    padding:20px;
+    border:1px solid #898989;
+}
+.basketBox .basketPrice li {
+    margin-bottom:10px;
+    text-align: left;
+}
+.basketBox .basketPrice li span {
+    float:right;
+    color:#ed1c24;
+}
+.basketBox .basketPrice li:last-child span {
+    color:#0d74ae;
+}
+.basketBox .basketPrice li:last-child {
+    font-size:16px;
+    padding-top:10px;
+    border-top:1px solid #898989;
+    margin-bottom:0;
+}
+.basketBox .basketPrice li:after {content:""; display:block; clear:both}
 
 /*********************************************     MYPAGE     *********************************************/
 

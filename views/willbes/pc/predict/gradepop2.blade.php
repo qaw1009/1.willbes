@@ -35,7 +35,7 @@
                             <td>답안입력 </td>
                             @foreach($newQuestion['numset'][$val['PpIdx']] as $key2 => $val2)
                             <td>
-                                <input type="text" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $newQuestion['answerset'][$val['PpIdx']][$key2] }}">
+                                <input type="number" name="Answer[]" maxlength="5" oninput="maxLengthCheck(this)" value="{{ $newQuestion['answerset'][$val['PpIdx']][$key2] }}">
                             </td>
                             @endforeach
                         </tr>
@@ -75,7 +75,7 @@
         }
 
         function examDeleteAjax() {
-            if (confirm('채점취소시 기존의 성적모든데이터는 삭제됩니다. \n 채점취소 하시겠습니까?')) {
+            /*if (confirm('채점취소시 기존의 성적모든데이터는 삭제됩니다. \n 채점취소 하시겠습니까?')) {
                 var _url = '{{ front_url('/predict/examDeleteAjax') }}';
                 ajaxSubmit($all_regi_form, _url, function (ret) {
                     if (ret.ret_cd) {
@@ -84,7 +84,8 @@
                         window.close();
                     }
                 }, showValidateError, null, false, 'alert');
-            }
+            }*/
+            window.close();
         }
     </script>
 

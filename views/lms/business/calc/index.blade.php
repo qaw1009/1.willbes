@@ -195,7 +195,7 @@
 
                         @if(in_array($prod_type, ['LE', 'AC', 'MT']) === true)
                             {{-- 단강좌, 사용자/운영자패키지, 모의고사일 경우 정산엑셀다운로드 버튼 노출 --}}
-                            btn_html += '<button name="btn_calc_excel" class="btn btn-xs btn-' + (row.IsCalcDown === 'Y' ? 'danger' : 'primary') + ' mb-0 ml-5 btn-calc-excel" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">정산엑셀다운로드</button>';
+                            btn_html += '<button name="btn_calc_excel" id="btn_calc_excel_' + meta.row + '" class="btn btn-xs btn-' + (row.IsCalcDown === 'Y' ? 'danger' : 'primary') + ' mb-0 ml-5 btn-calc-excel" data-prof-idx="' + row.ProfIdx + '" data-subject-idx="' + row.SubjectIdx + '" data-study-period="' + study_period + '">정산엑셀다운로드</button>';
                         @endif
 
                         return btn_html;
@@ -243,6 +243,9 @@
                     arr_param.push({ 'name' : 'study_period', 'value' : $(this).data('study-period') });
 
                     formCreateSubmit('{{ site_url('/business/calc/' . $calc_type . '/calcExcel') }}', arr_param, 'POST');
+
+                    // 정산엑셀다운로드 이후 다운로드여부 표기를 위해 버튼 클래스 변경
+                    $('#' + $(this).prop('id')).removeClass('btn-primary').addClass('btn-danger').blur();
                 }
             });
 

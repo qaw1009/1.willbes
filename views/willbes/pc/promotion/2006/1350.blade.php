@@ -41,7 +41,7 @@
         .cert04 .sports dl dd{width:700px;margin:0 auto;}
         .cert04 .sports dl dd table{margin:25px 0;border:2px solid #15365d;line-height:25px;} 
         .cert04 .sports dl dd table td {text-align:left;}
-        .cert04 .sports dl dd table th,.cert04 .sports dl dd table td{border-right:2px solid #15365d;border-bottom:2px solid #15365d;width:350px;}
+        .cert04 .sports dl dd table th,.cert04 .sports dl dd table td{border-right:1px solid #15365d;border-bottom:1px solid #15365d;width:350px;padding:10px;}
         .cert04 .sports dl dd table th{font-weight:700;background:#C8C6C6;}
         .cert05{background:#fff;}
 

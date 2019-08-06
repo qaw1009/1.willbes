@@ -30,7 +30,7 @@
                     </tr>
                     <tr class="bg-odd">
                         <td>수강상태</td>
-                        <td>수강한 강의 / 전체 강의</td>
+                        <td>수강한 강의(수) / 예정 강의(수)</td>
                         <td>수강한 기간 / 전체 수강기간</td>
                         <td>수강료(정상가) / 결제금액</td>
                     </tr>
@@ -52,7 +52,7 @@
         <div class="col-md-12 mt-10">
             <div class="pl-20 pt-20 bdt-line">
                 <p>
-                    <i class="fa fa-chevron-circle-right"></i> 전체 <span class="blue">강의수</span> 대비 강좌 정상가의 <span class="blue">1강</span> 이용 대금 :
+                    <i class="fa fa-chevron-circle-right"></i> 예정 <span class="blue">강의수</span> 대비 강좌 정상가의 <span class="blue">1강</span> 이용 대금 :
                     {{ number_format($data['SalePrice']) }}원 / {{ $data['TotalUnitLectureCnt'] }}강 = <span class="blue">{{ number_format($data['UnitLecturePrice']) }}원</span>
                 </p>
             </div>

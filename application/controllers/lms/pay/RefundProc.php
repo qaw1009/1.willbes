@@ -263,7 +263,7 @@ class RefundProc extends BaseOrder
         $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'PL.LearnPatternCcd' => $this->orderListModel->_learn_pattern_ccd['on_lecture']]];
         $column = 'OP.CardPayPrice, P.ProdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName
             , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice
-            , fn_product_unit_lecture_cnt(OP.ProdCode) as TotalUnitLectureCnt
+            , fn_product_schedule_lecture_cnt(OP.ProdCode) as TotalUnitLectureCnt   # 예정강의수로 변경 (fn_product_unit_lecture_cnt(OP.ProdCode))
             , fn_order_study_unit_lecture_cnt(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode) as StudyUnitLectureCnt
             , fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode, 1) as MyLecData';
         $data = $this->orderListModel->findOrderProduct($arr_condition, $column, 1, 0);
@@ -274,7 +274,7 @@ class RefundProc extends BaseOrder
         $data = element('0', $data);
         $my_lec_data = element('0', json_decode($data['MyLecData'], true), []);
 
-        $data['UnitLecturePrice'] = $data['TotalUnitLectureCnt'] > 0 ? round($data['SalePrice'] / $data['TotalUnitLectureCnt']) : $data['SalePrice'];
+        $data['UnitLecturePrice'] = $data['TotalUnitLectureCnt'] > 0 ? round($data['SalePrice'] / $data['TotalUnitLectureCnt']) : 0;
         $data['CalcCardRefundPrice'] = $data['CardPayPrice'] - ($data['UnitLecturePrice'] * $data['StudyUnitLectureCnt']);
         $data['RealLecExpireDay'] = $my_lec_data['RealLecExpireDay'];
         $data['StudyLecDay'] = 0;

@@ -27,6 +27,7 @@
     .mobileCh:after {content:""; display:block; clear:both}
 
     #myElement{position:absolute;left:0;}
+    .liveVideoNoLogin  {margin-top: 270px; font-size: 20px}
 </style>
 
 <div id="movieFrame">
@@ -74,23 +75,27 @@
         <script src="/public/vendor/jwplayer/jwplayer.js"></script>
         <div class="movieplayer">
             <div class="embedWrap">
-            @if ($ismobile == false)
-                <!--PC-->
-                    <div class="embed-container" id="myElement">
-                        <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
-                        <script type="text/javascript">
-                            jwplayer("myElement").setup({
-                                width: '100%',
-                                logo: {file: 'https://static.willbes.net/public/images/promotion/live/liveBi.png'},
-                                image: "https://static.willbes.net/public/images/promotion/live/liveIng.jpg",
-                                aspectratio: "{{ $live_ratio }}",
-                                autostart: "{{ $live_onoff_auto }}",
-                                file: "{{ $live_path }}"
-                            });
-                        </script>
-                    </div>
-            @else
-                <!--모바일용-->
+                @if ($ismobile == false)
+                    <!--PC-->
+                    @if (sess_data('is_login') !== true)
+                        <div onclick="javascript:alert('로그인 후 이용해 주세요.');" style="cursor: pointer;"><img src="https://static.willbes.net/public/images/promotion/live/liveIng.jpg" title=""></div>
+                    @else
+                        <div class="embed-container" id="myElement">
+                            <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                            <script type="text/javascript">
+                                jwplayer("myElement").setup({
+                                    width: '100%',
+                                    logo: {file: 'https://static.willbes.net/public/images/promotion/live/liveBi.png'},
+                                    image: "https://static.willbes.net/public/images/promotion/live/liveIng.jpg",
+                                    aspectratio: "{{ $live_ratio }}",
+                                    autostart: "{{ $live_onoff_auto }}",
+                                    file: "{{ $live_path }}"
+                                });
+                            </script>
+                        </div>
+                    @endif
+                @else
+                    <!--모바일용-->
                     <div class="embed-container-mobile" id="myElement"></div>
                     <ul class="mobileCh">
                         <li><a href="javascript:fn_live('hd')"><img src="https://static.willbes.net/public/images/promotion/live/livePlaybtnH.png" title="고화질 보기"></a></li>
@@ -111,10 +116,14 @@
 
 <script>
     function fn_live(p_type) {
-        if(p_type == "hd"){
-            location.href = "{{ $live_mobile_path1 }}";
-        }else{
-            location.href = "{{ $live_mobile_path2 }}";
-        }
+        @if(sess_data('is_login') != true)
+            alert('로그인 후 이용해 주세요.');
+        @else
+            if(p_type == "hd"){
+                location.href = "{{ $live_mobile_path1 }}";
+            }else{
+                location.href = "{{ $live_mobile_path2 }}";
+            }
+        @endif
     }
 </script>

@@ -6,9 +6,11 @@ class PointModel extends WB_Model
     private $_table = [
         'point_save' => 'lms_point_save',
         'point_use' => 'lms_point_use',
-        'site' => 'lms_site',
-        'member' => 'lms_member',
         'order' => 'lms_order',
+        'order_product' => 'lms_order_product',
+        'product' => 'lms_product',
+        'member' => 'lms_member',
+        'site' => 'lms_site',
         'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
@@ -131,6 +133,71 @@ class PointModel extends WB_Model
     public function listSavePoint($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         return $this->_conn->getListResult($this->_table['point_save'], $column, $arr_condition, $limit, $offset, $order_by);
+    }
+
+    /**
+     * 적립포인트금액별 적립/사용 목록 조회
+     * @param int $save_point [적립포인트금액]
+     * @param string $use_start_date [포인트사용시작일자]
+     * @param string $use_end_date [포인트사용종료일자]
+     * @param bool $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listSaveUsePointByPointAmt($save_point, $use_start_date, $use_end_date, $is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'SO.OrderNo as SaveOrderNo, SOP.ProdCode, ifnull(SP.ProdName, SO.ReprProdName) as ProdName
+                , (case when O.UseLecPoint > 0 then "강좌" when O.UseBookPoint > 0 then "교재" else "" end) as UsePointType
+                , if(PU.ReasonCcd = "' . $this->_point_use_reason_ccd['paid'] . '", "사용", "회수") as UseType
+                , M.MemId, M.MemName, O.OrderNo as UseOrderNo, PS.SaveDatm, PS.SavePoint, PU.UseDatm, TA.SumUsePoint, PS.RemainPoint 
+                , CUR.CcdName as UseReasonCcdName                                
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from (
+                select PU.PointIdx, PU.OrderIdx, sum(PU.UsePoint) as SumUsePoint, max(PU.PointUseIdx) as PointUseIdx
+                from ' . $this->_table['point_use'] . ' as PU
+                    inner join ' . $this->_table['point_save'] . ' as PS
+                        on PU.PointIdx = PS.PointIdx 
+                where PS.SavePoint in (?)
+                    and PU.UseDatm between ? and ?
+                group by PU.PointIdx, PU.OrderIdx
+            ) as TA
+                inner join ' . $this->_table['point_save'] . ' as PS
+                    on TA.PointIdx = PS.PointIdx
+                inner join ' . $this->_table['point_use'] . ' as PU
+                    on TA.PointUseIdx = PU.PointUseIdx
+                left join ' . $this->_table['order'] . ' as O
+                    on PU.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['order'] . ' as SO
+                    on PS.OrderIdx = SO.OrderIdx	
+                left join ' . $this->_table['order_product'] . ' as SOP
+                    on PS.OrderIdx = SOP.OrderIdx and PS.OrderProdIdx = SOP.OrderProdIdx
+                left join ' . $this->_table['product'] . ' as SP
+                    on SOP.ProdCode = SP.ProdCode
+                left join ' . $this->_table['member'] . ' as M
+                    on PS.MemIdx = M.MemIdx	       
+                left join ' . $this->_table['code'] . ' as CUR
+                    on PU.ReasonCcd = CUR.Ccd and CUR.IsStatus = "Y"                       
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$save_point, $use_start_date . ' 00:00:00', $use_end_date . ' 23:59:59']);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

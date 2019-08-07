@@ -8,12 +8,12 @@
 
         <div class="Section MainVisual">
             <div class="widthAuto">
-                <a href="#to_go">
+              
                     <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_01.jpg" alt="대한민국1등 경찰학원" usemap="#Map190806" border="0">
                     <map name="Map190806" id="Map190806">
-                        <area shape="rect" coords="31,30,212,105" href="#collaboList" alt="협력기관" />
+                        <area shape="rect" coords="-1,30,253,126" href="#to_go" />
                     </map>
-                </a>    
+                  
             </div>
             <div class="widthAutoFull summer">
                 @if (date('YmdH') < '2019071316')

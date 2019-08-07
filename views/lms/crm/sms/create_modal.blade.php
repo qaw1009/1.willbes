@@ -55,6 +55,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-md-4" for="add_name_chk">이름삽입</label>
+                        <div class="col-md-8 item">
+                            <div class="checkbox">
+                                <input type="checkbox" id="add_name_chk" name="add_name_chk" class="flat" value="Y"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label col-md-4" for="content">내용 <span class="required">*</span></label>
                         <div class="col-md-8 item">
                             <textarea id="send_content" name="send_content" class="form-control" rows="15" title="내용" placeholder=""></textarea>
@@ -227,11 +235,21 @@
             }
 
             $(document).ready(function() {
+                //이름 삽입
+                $modal_regi_form.on('ifChanged', '#add_name_chk', function(){
+                    var $send_content = $modal_regi_form.find('#send_content');
+                    var add_name_msg = '\{\{name\}\} 회원님 \n';
+                    if($(this).is(':checked')){
+                        $send_content.val(add_name_msg + $send_content.val());
+                    }else{
+                        $send_content.val($send_content.val().replace(new RegExp(add_name_msg,'gi'), ''));
+                    }
+                });
+
                 // 발송 타입 설정
                 $('.send_type').click(function (){
                     $modal_regi_form.find('input[name="send_type"]').val($(this).data('content-type'));
                 });
-
                 // 고객센터 전화번호
                 /*$modal_regi_form.on('change', 'select[name="site_code"]', function() {
                     var $arr_site_csTel = {!! $site_csTel !!};
@@ -244,7 +262,6 @@
                     }
                     $('#cs_tel').val(cs_tel);
                 });*/
-
                 // 일괄발송 -> 파일 등록 및 Excel Data 셋팅
                 $('#btn_file_upload').click(function (){
                     var data;
@@ -329,6 +346,7 @@
                         }
                     }, showValidateError, addValidate, 'alert', $modal_regi_form);
                 });
+
             });
 
             function addValidate() {
@@ -344,9 +362,9 @@
                     alert('수신번호는 필수입니다.');
                     return false;
                 }
-
                 return true;
             }
+
         </script>
     @stop
 

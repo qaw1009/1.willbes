@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Lecture extends \app\controllers\FrontController
 {
-    protected $models = array('product/baseProductF', 'product/lectureF');
+    protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -28,11 +28,22 @@ class Lecture extends \app\controllers\FrontController
     {
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        // 카테고리 셋팅
+        $cate_code = $this->_cate_code;
         
+        // 지정된 카테고리가 없을 경우
+        if (empty($cate_code) === true) {
+            // 카테고리 조회
+            $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+            $cate_code = element('cate_code', $arr_input, get_var(config_app('DefCateCode'), array_get($arr_base['category'], '0.CateCode')));
+        }
+        
+        // 사이트별 과목 조회
         if (config_app('SiteGroupCode') == '1002') {
             // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
-            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_cate_code);
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_cate_code, element('series_ccd', $arr_input));
+            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $cate_code);
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $cate_code, element('series_ccd', $arr_input));
 
             // 온라인공무원 단강좌일 경우 과목 디폴트 설정 (0번째 과목)
             if ($this->_site_code == '2003' && $this->_learn_pattern == 'on_lecture' && isset($arr_input['subject_idx']) === false) {
@@ -40,24 +51,24 @@ class Lecture extends \app\controllers\FrontController
             }            
         } else {
             // 카테고리별 과목 조회
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_cate_code);
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $cate_code);
         }
 
         // 과목이 선택된 경우 해당 교수 조회
         if (empty(element('subject_idx', $arr_input)) === false) {
-            $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['StudyCommentData'], $this->_cate_code, element('subject_idx', $arr_input));
+            $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['StudyCommentData'], $cate_code, element('subject_idx', $arr_input));
             $arr_base['professor'] = $arr_professor;
         } else {
-            $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['StudyCommentData'], $this->_cate_code);
+            $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['StudyCommentData'], $cate_code);
         }
 
         // 상품 기본조회 조건
-        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code], 'LKR' => ['CateCode' => $this->_cate_code]];
+        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code], 'LKR' => ['CateCode' => $cate_code]];
 
         // 과정 조회
         if ($this->_learn_pattern == 'on_lecture') {
             // 단강좌 (카테고리 소트매핑된 과정 조회)
-            $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
+            $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $cate_code);
         } else {
             // 무료강좌 (상품에 설정된 과정 조회)
             $arr_base['course'] = $this->lectureFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition, null, null, ['OrderNumCourse' => 'asc']);

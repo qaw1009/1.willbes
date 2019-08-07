@@ -1,9 +1,9 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 모의고사 구성을 위해 과목별 문제, 정답, 해설을 등록하는 메뉴입니다.</h5>
+    <h5>- 합격예측서비스 과목별 시험지 및 정답 정보를 관리합니다.</h5>
     <div class="x_panel">
-        <div class="x_title mb-20">
+        <div class="x_title">
             <h2>과목별 문제등록</h2>
         </div>
         <div class="x_content">
@@ -107,7 +107,7 @@
                 </table>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
-                    <button class="btn btn-primary" style="position:absolute; right:0;" type="button" id="goList">목록</button>
+                    <button class="btn btn-primary" type="button" id="goList">목록</button>
                 </div>
             </form>
         </div>
@@ -200,11 +200,6 @@
             </div>
         @endif
     </div>
-
-    <style>
-        .tooltip-inner { max-width: 100%; padding: 2px; background: #555; }
-        .tooltip-arrow { display: none; }
-    </style>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         var $regi_sub_form = $('#regi_sub_form');
@@ -250,7 +245,7 @@
 
             // 목록 이동
             $('#goList').on('click', function() {
-                location.replace('{{ site_url('/predict/question') }}' + getQueryString());
+                location.replace('{{ site_url('/predict/question/') }}' + getQueryString());
             });
 
             // 기본정보 등록,수정

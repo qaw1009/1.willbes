@@ -1,18 +1,22 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 주문번호 기준으로 모의고사 결제 및 응시여부를 확인하고 응시표를 출력하는 메뉴입니다.</h5>
+    <h5>- 합격예측서비스 채점서비스 참여현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {{--!!  html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, $arrtab , true, $arrsite) !!--}}
-        {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false, [] , true, []) !!}
         {!! csrf_field() !!}
-        <input type="hidden" id="search_site_code" name="search_site_code" value="{{$siteCodeDef}}">
-
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
+                            <option value="">합격예측서비스명</option>
+                            @foreach($predictList as $row)
+                                <option value="{{$row['PredictIdx']}}" class="{{$row['SiteCode']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-5" id="search_ApplyType" name="search_ApplyType">
                             <option value="">구분</option>
                             <option value="합격예측">합격예측</option>
@@ -34,26 +38,25 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group form-inline">
+                <div class="form-group">
                     <label class="col-md-1 control-label">회원검색</label>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value="{{ $search_fi }}"> 회원명, 아이디, 응시변호 검색가능
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="search_fi" name="search_fi" value="{{ $search_fi }}">
                     </div>
-                </div>
-                <div class="pt-10">
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-primary mr-50 btn-excel" id="btn-excel">엑셀다운로드</button>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <button type="submit" class="btn btn-primary" id="btn_search">검색</button>
-                        <button type="button" class="btn btn-default" id="act-searchInit">초기화</button>
+                    <div class="col-md-7">
+                        <p class="form-control-static">회원명, 아이디, 응시번호 검색 가능</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
+            </div>
+        </div>
     </form>
-
-    <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
+    <div class="x_panel mt-10">
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
@@ -88,31 +91,16 @@
         var $list_table = $('#list_table');
 
         $(document).ready(function() {
-
-
-            // 검색 초기화
-            $('#act-searchInit, #tabs_site_code > li').on('click', function () {
-                $search_form.find('[name^=search_]:not(#search_site_code)').each(function () {
-                    $(this).val('');
-                });
-                $search_form.find('#search_cateD1').trigger('change');
-
-                var eTarget = (event.target) ? event.target : event.srcElement;
-                if($(eTarget).attr('id') == 'searchInit') $datatable.draw();
-            });
+            // 합격예측서비스명 자동 변경
+            $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
 
             // DataTables
             $datatable = $list_table.DataTable({
-                info: true,
-                language: {
-                    "info": "[ 총 _MAX_건 ]"
-                },
-                dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
-                buttons: [
-                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn btn-sm btn-primary mr-15 btn-sms' },
-
-                ],
                 serverSide: true,
+                buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
+                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn btn-sm btn-primary btn-sms' }
+                ],
                 ajax: {
                     'url' : '{{ site_url('/predict/markrequest/list') }}',
                     'type' : 'POST',
@@ -122,11 +110,11 @@
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" id="checkIdx" name="checkIdx[]" class="flat target-crm-member" value="" data-mem-idx="'+data.MemIdx+'" />';
-                        }},
+                        return '<input type="checkbox" id="checkIdx" name="checkIdx[]" class="flat target-crm-member" value="" data-mem-idx="'+data.MemIdx+'" />';
+                    }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'ApplyType', 'class': 'text-center'},
                     {'data' : 'MemName', 'class': 'text-center'},
                     {'data' : 'MemId', 'class': 'text-center'},
@@ -148,8 +136,6 @@
                     formCreateSubmit('{{ site_url('/predict/markrequest/list/Y') }}', $search_form.serializeArray(), 'POST');
                 }
             });
-
-
         });
     </script>
 @stop

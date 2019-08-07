@@ -57,7 +57,7 @@
 
         .wb_00 {background:#404040}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/06/1270_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1270_top_bg.jpg) no-repeat center top; position:relative}
         .wb_top span {position:absolute; left:50%; z-index:1;
             -webkit-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
             -moz-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
@@ -86,23 +86,19 @@
         }
         .wb_top span.img3 {top:330px; margin-left:230px; width:366px;}
 
-        .wb_01 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/06/1270_01_bg.jpg) no-repeat center top;}
-        .wb_02 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/07/1270_02_bg.jpg) no-repeat center top;}
-        .wb_03 {background:#fff}
-        .wb_04 {background:#f3f3f3}
-        .wb_05 {background:#3d3d3d url(https://static.willbes.net/public/images/promotion/2019/06/1270_05_bg.jpg) no-repeat center top; padding-bottom:100px}
-        .wb_06 {background:#fff}
-        .wb_07 {background:#020f5d;}
+        .wb_01 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/08/1359_top_bg.jpg) no-repeat center top;}
+        .wb_02 {background:#c7aa7e}
+        .wb_03 {background:#ededed}
+        .wb_04 {background:#fff;}
+        .wb_05 {background:#f3f3f3;}
+        .wb_06 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/08/1359_05_bg.jpg) no-repeat center top;}
     </style>
 
 
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
-            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1270_skybanner.png" alt="스카이배너" ></a>
-        </div> 
-        <div class="skybanner2 " >
-            <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/07/1270_skybanner2.png" alt="스카이배너2" ></a>
-        </div>           
+            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1359_skybanner.png" alt="스카이배너" ></a>
+        </div>            
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
@@ -139,41 +135,35 @@
         </div>
         --}}
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1270_01.jpg" alt="여름방학 집중완성" usemap="#Map1270A" border="0" />
-            <map name="Map1270A" id="Map1270A">
-                <area shape="rect" coords="377,1340,764,1426" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&amp;course_idx=1040&amp;campus_ccd=605001" target="_blank" alt="7월 개강반 신청하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1359_top.jpg" alt="더블할인 이벤트" />          
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1270_02.jpg" alt="2달 완성" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1359_01.jpg" alt="2개월 기본이론 집중완성" usemap="#Map1359b" border="0" />
+            <map name="Map1359b" id="Map1359b">
+                <area shape="rect" coords="385,1332,762,1427" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank;" alt="수강신청하기" />
+            </map>
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1270_03.jpg" alt="교수진"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1359_02.jpg" alt="2달 완성"/>
         </div>
 
-        <div class="evtCtnsBox wb_04" id="wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_04.jpg" alt="특별한 혜택"/>
+        <div class="evtCtnsBox wb_04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1359_03.jpg" alt="기본이론은 신광은경찰"/>
         </div>
 
         <div class="evtCtnsBox wb_05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_05.jpg" alt="더블할인 이벤트"/><br>
-            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1270_05_btn.png" alt="더블할인 이벤트"/></a>
-        </div>
-
-        <div class="evtCtnsBox wb_07" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1270_07.jpg" alt="더블할인 이벤트"/>          
-        </div>
-        
-        {{--
-        <div class="evtCtnsBox wb_06">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1270_06.jpg" alt="언론보도 자세히 보기" usemap="#Map1270B" border="0"/>
-            <map name="Map1270B" id="Map1270B">
-                <area shape="rect" coords="77,517,292,581" href="https://police.willbes.net/promotion/index/cate/3001/code/1021" target="_blank" alt="언론보도" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1359_04.jpg" alt="혜택은 특별"/>
+        </div> 
+               
+        <div class="evtCtnsBox wb_06" id="to_go">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1359_05.jpg" alt="더블할인 이벤트 신청하기" usemap="#Map1359a" border="0"/>
+            <map name="Map1359a" id="Map1359a">
+                <area shape="rect" coords="435,1084,690,1293" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank;" alt="수강신청하기" />
             </map>
         </div>
-        --}}
+      
     </div>
     <!-- End Container -->
 

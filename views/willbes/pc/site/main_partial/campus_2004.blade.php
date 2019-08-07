@@ -52,7 +52,7 @@
                                 <div class="c-info">
                                     <div class="address">
                                         <span class="a-tit">주소</span>
-                                        <span>{!! $row['Addr'] !!}</span>
+                                        <span>서울시 동작구 노량진로 196 JH빌딩 10층<br>(서울특별시 동작구 노량진동 143-2)</span>
                                     </div>
                                     <div class="tel">
                                         <span class="a-tit">연락처</span>

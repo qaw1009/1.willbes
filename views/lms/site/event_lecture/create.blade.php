@@ -318,6 +318,17 @@
                                         <p class="form-control-static">• 접수 완료 시 아래의 문구가 자동 발송됩니다.</p>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <label class="control-label col-md-1">이름삽입</label>
+                                    <div class="col-md-5 form-inline">
+                                        <input type="checkbox" id="add_name_chk" name="add_name_chk" class="flat" value="Y"/>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="form-control-static"></p>
+                                    </div>
+                                </div>
+
                                 <div class="row mt-10">
                                     <label class="control-label col-md-1">내용</label>
                                     <div class="col-md-11">
@@ -713,6 +724,17 @@
             $('.file-download').click(function() {
                 var _url = '{{ site_url("/site/eventLecture/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
                 window.open(_url, '_blank');
+            });
+
+            //이름 삽입
+            $regi_form.on('ifChanged', '#add_name_chk', function(){
+                var $sms_content = $regi_form.find('#sms_content');
+                var add_name_msg = '\{\{name\}\} 회원님 \n';
+                if($(this).is(':checked')){
+                    $sms_content.val(add_name_msg + $sms_content.val());
+                }else{
+                    $sms_content.val($sms_content.val().replace(new RegExp(add_name_msg,'gi'), ''));
+                }
             });
         });
 

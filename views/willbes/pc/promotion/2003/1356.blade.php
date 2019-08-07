@@ -23,19 +23,18 @@
             background:url(https://static.willbes.net/public/images/promotion/2019/08/1356_top_bg.jpg) no-repeat center top
         }
         
-        .evtMenu {width:100%; background:#36374d; border-bottom:5px solid #e2be43}
-        .evtMenu ul {width:1120px; margin:0 auto; border-left:1px solid #686063}
+        .evtMenu {width:100%; background:#707070; border-bottom:5px solid #f8a198}
+        .evtMenu ul {width:1120px; margin:0 auto; border-left:1px solid #90887b}
         .evtMenu li {display:inline; float:left; width:25%}
         .evtMenu li a {
-            display:block; text-align:center; padding:30px 0; color:#868791; font-size:150%; font-weight:900; 
-            background:#36374d; border-right:1px solid #686063;
+            display:block; text-align:center; padding:30px 0; color:#fff; font-size:150%; font-weight:900;border-right:1px solid #90887b;
         }  
-        .evtMenu li a span {padding:3px 10px; border-radius:15px; background:#868791; color:#36374d; font-weight:normal; font-size:70%}
+        .evtMenu li a span {padding:3px 10px; border-radius:15px; background:#f8a198; color:#36374d; font-weight:normal; font-size:70%}
         .evtMenu li a div {margin-top:8px}
         .evtMenu li:hover a,
-        .evtMenu li a.active {background:#e2be43; color:#fff}
+        .evtMenu li a.active {background:#f8a198; color:#2e2e2e}
         .evtMenu li:hover a span,
-        .evtMenu li a.active span {background:#fff; color:#e2be43}
+        .evtMenu li a.active span {background:#fff; color:#000}
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {
@@ -54,12 +53,20 @@
 
         .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
         .Cts02 a:hover {background:#e50001}
+
+        .Cts02 .download{padding-bottom:20px;}       
+        .tabMenu{width:980px;margin:0 auto 80px;}
+        .tabMenu li{display:inline;float:left;width:50%;}
+        .tabMenu li a{display:block;text-align:center;border:1px solid #000;border-bottom:0;font-size:140%;
+                     font-weight:500;margin-right:2px;padding:20px 0;color: #fff;background:#000;}
+        .tabMenu li a.active{color:#000;background:#fff;}
         
+
         .boardD {width:900px; border-spacing:0px; border:1px solid #dedede; table-layout:auto; color:#666; margin:0 auto} 
         .boardD caption {display:none}
         .boardD th {padding:10px 5px; background:#f5f5f5; border-right:1px solid #dedede; border-bottom:1px solid #dedede; color:#333}
         .boardD thead th {background:#eee; color:#333}
-        .boardD td {padding:10px 5px; margin:0; border:none; text-align:center; border-right:1px solid #dedede; border-bottom:1px solid #dedede}
+        .boardD td {padding:10px 5px; margin:0; border:none; text-align:right; border-right:1px solid #dedede; border-bottom:1px solid #dedede}
         .boardD td:nth-child(4) {color:#000}
         .boardD td:last-child {color:#C00}
         .boardD tr.gray th,
@@ -125,20 +132,20 @@
                 </li>
                 <li>
                     <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=2#content_2') }}">
-                        <span>전년도 국가직 9급</span>
+                        <span>전년도 국가직 7급</span>
                         <div>완벽분석</div>				
                     </a>
                 </li>
                 <li>
                     <a id='tab3' href="@if(time() >= strtotime('201908171140')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=3#content_3') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
-                        <span>2019 국가직 9급</span>
-                        <div>시험총평 및 시험후기</div>
+                        <span>2019 국가직 7급</span>
+                        <div>후기 및 적중 이벤트</div>
                     </a>
                 </li>     
                 <li>
                     <a id='tab4' href="@if(time() >= strtotime('201908191500')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=4#content_4') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
-                        <span>2019 국가직 9급</span>
-                        <div>기출해설강의</div>
+                        <span>2019 국가직 7급</span>
+                        <div>기출해설 자료</div>
                     </a>
                 </li>
             </ul>
@@ -148,6 +155,7 @@
         <div id="content_1" class="tabCts pb90">
             <div class="download">		
                 <!--국어-->
+                {{--
                 <span>
                     <a href="@if($file_yn == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif">다운로드</a>
                 </span>
@@ -171,6 +179,7 @@
                 <span>
                     <a href="@if($file_yn == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif">다운로드</a>
                 </span>
+                --}}
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_01_1.jpg" title="풀캐어 강사진" />            
             </div>
                
@@ -187,917 +196,563 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_02_2.jpg" title="풀캐어 강사진" />
             <div class="mt20 mb100">
+                <p class="download">
                 * 시험문제/가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기</a>
-                <div class="mt20">
+                </p>
+                <ul class="tabMenu">
+                	<li><a href="#tabs1" class="active">행정직</a></li>
+                    <li><a href="#tabs2" class="">기술직</a></li>
+                </ul>
+                <div class="mt20" id="tabs1">
                     <table class="boardD">
-                    <col />
-                    <col span="5" />
-                    <col />
-                    <col />
-                    <tr>
-                        <th rowspan="2">모집단위</th>
-                        <th colspan="3">2019년</th>
-                        <th colspan="4">2018년</th>
-                    </tr>
-                    <tr>
-                        <th>선발예정인원</th>
-                        <th>접수인원</th>
-                        <th>경쟁률</th>
-                        <th>선발예정인원</th>
-                        <th>접수인원</th>
-                        <th>경쟁률</th>
-                        <th>합격선</th>
-                    </tr>
-                    <tr>
-                        <th>총 계</th>
-                        <td>           4,987 </td>
-                        <td>        195,322 </td>
-                        <td>39:1</td>
-                        <td>           4,953 </td>
-                        <td>        202,978 </td>
-                        <td>41:1</td>
-                        <td>　</td>
-                    </tr>
-                    <tr>
-                        <th>행정직 계</th>
-                        <td>           4,350 </td>
-                        <td>        171,562 </td>
-                        <td>39:1</td>
-                        <td>           4,504 </td>
-                        <td>        180,038 </td>
-                        <td>40:1</td>
-                        <td>　</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(일반행정:전국:일반)</th>
-                        <td>              294 </td>
-                        <td>          33,539 </td>
-                        <td>114:1</td>
-                        <td>              232 </td>
-                        <td>          37,543 </td>
-                        <td>162:1</td>
-                        <td>369.99</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(일반행정:전국:장애)</th>
-                        <td>               23 </td>
-                        <td>              677 </td>
-                        <td>29:1</td>
-                        <td>               16 </td>
-                        <td>              610 </td>
-                        <td>38:1</td>
-                        <td>285.28    / 280.18(양성)</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(일반행정:전국:저소득)</th>
-                        <td>                9 </td>
-                        <td>              687 </td>
-                        <td>76:1</td>
-                        <td>               11 </td>
-                        <td>              711 </td>
-                        <td>65:1</td>
-                        <td>338.10    / 333.51(양성)</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(일반행정:지역:일반)</th>
-                        <td>              123 </td>
-                        <td>          14,184 </td>
-                        <td>115:1</td>
-                        <td>              119 </td>
-                        <td>          13,492 </td>
-                        <td>113:1</td>
-                        <td>(평균)359.98</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(일반행정:지역:장애)</th>
-                        <td>                7 </td>
-                        <td>              404 </td>
-                        <td>58:1</td>
-                        <td>                9 </td>
-                        <td>              420 </td>
-                        <td>47:1</td>
-                        <td>(평균)262.87</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(우정사업본부:전국:저소득)</th>
-                        <td>               19 </td>
-                        <td>              374 </td>
-                        <td>20:1</td>
-                        <td>               20 </td>
-                        <td>              256 </td>
-                        <td>13:1</td>
-                        <td>272.13</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(우정사업본부:지역:일반)</th>
-                        <td>              595 </td>
-                        <td>          16,570 </td>
-                        <td>28:1</td>
-                        <td>              680 </td>
-                        <td>          17,968 </td>
-                        <td>26:1</td>
-                        <td>(평균)377.62</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(우정사업본부:지역:장애)</th>
-                        <td>               48 </td>
-                        <td>              392 </td>
-                        <td>8:1</td>
-                        <td>               50 </td>
-                        <td>              467 </td>
-                        <td>9:1</td>
-                        <td>(평균)242.5</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(병무청:전국:일반)</th>
-                        <td>               31 </td>
-                        <td>            1,042 </td>
-                        <td>34:1</td>
-                        <td>              100 </td>
-                        <td>            2,737 </td>
-                        <td>27:1</td>
-                        <td>350.99</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(병무청:전국:장애)</th>
-                        <td>                3 </td>
-                        <td>               21 </td>
-                        <td>7:1</td>
-                        <td>                9 </td>
-                        <td>               62 </td>
-                        <td>7:1</td>
-                        <td>231.16</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(병무청:전국:저소득)</th>
-                        <td>                1 </td>
-                        <td>               19 </td>
-                        <td>19:1</td>
-                        <td>                3 </td>
-                        <td>               33 </td>
-                        <td>11:1</td>
-                        <td>281.41</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(병무청:지역:일반)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(병무청:지역:장애)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(경찰청:전국:일반)</th>
-                        <td>              344 </td>
-                        <td>          15,894 </td>
-                        <td>46:1</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(경찰청:전국:장애)</th>
-                        <td>               27 </td>
-                        <td>              366 </td>
-                        <td>14:1</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(경찰청:전국:저소득)</th>
-                        <td>               11 </td>
-                        <td>              301 </td>
-                        <td>27:1</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(고용노동:전국:일반)</th>
-                        <td>              273 </td>
-                        <td>            6,120 </td>
-                        <td>22:1</td>
-                        <td>              520 </td>
-                        <td>          18,815 </td>
-                        <td>36:1</td>
-                        <td>349.82</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(고용노동:전국:장애)</th>
-                        <td>               22 </td>
-                        <td>              233 </td>
-                        <td>11:1</td>
-                        <td>               40 </td>
-                        <td>              566 </td>
-                        <td>14:1</td>
-                        <td>240.59</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(고용노동:전국:저소득)</th>
-                        <td>                8 </td>
-                        <td>              119 </td>
-                        <td>15:1</td>
-                        <td>               15 </td>
-                        <td>              265 </td>
-                        <td>18:1</td>
-                        <td>305.67</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(고용노동:지역:일반)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(고용노동:지역:장애)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(농림축산식품부)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(보건복지부:일반)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(보건복지부:장애인)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(교육행정:일반)</th>
-                        <td>               60 </td>
-                        <td>          10,292 </td>
-                        <td>172:1</td>
-                        <td>               45 </td>
-                        <td>            9,310 </td>
-                        <td>207:1</td>
-                        <td>368.19</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(교육행정:장애)</th>
-                        <td>                5 </td>
-                        <td>              206 </td>
-                        <td>41:1</td>
-                        <td>                4 </td>
-                        <td>              166 </td>
-                        <td>42:1</td>
-                        <td>290.93</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(교육행정:저소득)</th>
-                        <td>                1 </td>
-                        <td>              140 </td>
-                        <td>140:1</td>
-                        <td>                1 </td>
-                        <td>              119 </td>
-                        <td>119:1</td>
-                        <td>334.61</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(선거행정:일반)</th>
-                        <td>               60 </td>
-                        <td>            1,590 </td>
-                        <td>27:1</td>
-                        <td>               90 </td>
-                        <td>            1,759 </td>
-                        <td>20:1</td>
-                        <td>340.29</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(선거행정:장애)</th>
-                        <td>                5 </td>
-                        <td>               55 </td>
-                        <td>11:1</td>
-                        <td>                7 </td>
-                        <td>               67 </td>
-                        <td>10:1</td>
-                        <td>277.49</td>
-                    </tr>
-                    <tr>
-                        <th>행정직(선거행정:저소득)</th>
-                        <td>                1 </td>
-                        <td>               23 </td>
-                        <td>23:1</td>
-                        <td>                3 </td>
-                        <td>               48 </td>
-                        <td>16:1</td>
-                        <td>314.12</td>
-                    </tr>
-                    <tr>
-                        <th>직업상담직(직업상담:일반)</th>
-                        <td>               48 </td>
-                        <td>            2,660 </td>
-                        <td>55:1</td>
-                        <td>               54 </td>
-                        <td>            2,165 </td>
-                        <td>40:1</td>
-                        <td>319.63    / 316.71(양성)</td>
-                    </tr>
-                    <tr>
-                        <th>직업상담직(직업상담:장애)</th>
-                        <td>                4 </td>
-                        <td>               40 </td>
-                        <td>10:1</td>
-                        <td>                4 </td>
-                        <td>               34 </td>
-                        <td>9:1</td>
-                        <td>252.25</td>
-                    </tr>
-                    <tr>
-                        <th>직업상담직(직업상담:저소득)</th>
-                        <td>                1 </td>
-                        <td>               38 </td>
-                        <td>38:1</td>
-                        <td>                2 </td>
-                        <td>               68 </td>
-                        <td>34:1</td>
-                        <td>283.18</td>
-                    </tr>
-                    <tr>
-                        <th>세무직(세무:일반)</th>
-                        <td>              855 </td>
-                        <td>          19,319 </td>
-                        <td>23:1</td>
-                        <td>              878 </td>
-                        <td>          23,161 </td>
-                        <td>26:1</td>
-                        <td>343.59</td>
-                    </tr>
-                    <tr>
-                        <th>세무직(세무:장애)</th>
-                        <td>               69 </td>
-                        <td>              343 </td>
-                        <td>5:1</td>
-                        <td>               66 </td>
-                        <td>              356 </td>
-                        <td>5:1</td>
-                        <td>208.93</td>
-                    </tr>
-                    <tr>
-                        <th>세무직(세무:저소득)</th>
-                        <td>               27 </td>
-                        <td>              353 </td>
-                        <td>13:1</td>
-                        <td>               25 </td>
-                        <td>              447 </td>
-                        <td>18:1</td>
-                        <td>300.41</td>
-                    </tr>
-                    <tr>
-                        <th>관세직(관세:일반)</th>
-                        <td>              194 </td>
-                        <td>            4,820 </td>
-                        <td>25:1</td>
-                        <td>              155 </td>
-                        <td>            5,201 </td>
-                        <td>34:1</td>
-                        <td>350.53</td>
-                    </tr>
-                    <tr>
-                        <th>관세직(관세:장애)</th>
-                        <td>               16 </td>
-                        <td>               84 </td>
-                        <td>5:1</td>
-                        <td>               12 </td>
-                        <td>              102 </td>
-                        <td>9:1</td>
-                        <td>253.91</td>
-                    </tr>
-                    <tr>
-                        <th>관세직(관세:저소득)</th>
-                        <td>                7 </td>
-                        <td>               56 </td>
-                        <td>8:1</td>
-                        <td>                5 </td>
-                        <td>               73 </td>
-                        <td>15:1</td>
-                        <td>320.64</td>
-                    </tr>
-                    <tr>
-                        <th>통계직(통계:일반)</th>
-                        <td>               78 </td>
-                        <td>            1,331 </td>
-                        <td>17:1</td>
-                        <td>               55 </td>
-                        <td>              998 </td>
-                        <td>18:1</td>
-                        <td>351.09</td>
-                    </tr>
-                    <tr>
-                        <th>통계직(통계:장애)</th>
-                        <td>                7 </td>
-                        <td>               30 </td>
-                        <td>4:1</td>
-                        <td>                4 </td>
-                        <td>               21 </td>
-                        <td>5:1</td>
-                        <td>245.85</td>
-                    </tr>
-                    <tr>
-                        <th>통계직(통계:저소득)</th>
-                        <td>                3 </td>
-                        <td>               39 </td>
-                        <td>13:1</td>
-                        <td>                2 </td>
-                        <td>               26 </td>
-                        <td>13:1</td>
-                        <td>276.11</td>
-                    </tr>
-                    <tr>
-                        <th>교정직(교정:남)</th>
-                        <td>              219 </td>
-                        <td>            6,992 </td>
-                        <td>32:1</td>
-                        <td>              507 </td>
-                        <td>          10,839 </td>
-                        <td>21:1</td>
-                        <td>321</td>
-                    </tr>
-                    <tr>
-                        <th>교정직(교정:여)</th>
-                        <td>               20 </td>
-                        <td>            1,132 </td>
-                        <td>57:1</td>
-                        <td>               50 </td>
-                        <td>            1,560 </td>
-                        <td>31:1</td>
-                        <td>332.78</td>
-                    </tr>
-                    <tr>
-                        <th>교정직(교정:저소득)</th>
-                        <td>                7 </td>
-                        <td>              148 </td>
-                        <td>21:1</td>
-                        <td>               15 </td>
-                        <td>              231 </td>
-                        <td>15:1</td>
-                        <td>282.52</td>
-                    </tr>
-                    <tr>
-                        <th>보호직(보호:남)</th>
-                        <td>              177 </td>
-                        <td>            3,296 </td>
-                        <td>19:1</td>
-                        <td>               97 </td>
-                        <td>            2,181 </td>
-                        <td>23:1</td>
-                        <td>326.74</td>
-                    </tr>
-                    <tr>
-                        <th>보호직(보호:여)</th>
-                        <td>               77 </td>
-                        <td>            3,286 </td>
-                        <td>43:1</td>
-                        <td>               21 </td>
-                        <td>            2,705 </td>
-                        <td>129:1</td>
-                        <td>352.74</td>
-                    </tr>
-                    <tr>
-                        <th>보호직(보호:저소득)</th>
-                        <td>                7 </td>
-                        <td>              132 </td>
-                        <td>19:1</td>
-                        <td>                3 </td>
-                        <td>              106 </td>
-                        <td>35:1</td>
-                        <td>323.43</td>
-                    </tr>
-                    <tr>
-                        <th>검찰직(검찰:일반)</th>
-                        <td>              250 </td>
-                        <td>          12,031 </td>
-                        <td>48:1</td>
-                        <td>              287 </td>
-                        <td>          12,032 </td>
-                        <td>42:1</td>
-                        <td>347.04</td>
-                    </tr>
-                    <tr>
-                        <th>검찰직(검찰:저소득)</th>
-                        <td>                7 </td>
-                        <td>              213 </td>
-                        <td>30:1</td>
-                        <td>                8 </td>
-                        <td>              202 </td>
-                        <td>25:1</td>
-                        <td>317.09</td>
-                    </tr>
-                    <tr>
-                        <th>마약수사직(마약수사:일반)</th>
-                        <td>                9 </td>
-                        <td>              576 </td>
-                        <td>64:1</td>
-                        <td>               24 </td>
-                        <td>            1,327 </td>
-                        <td>55:1</td>
-                        <td>352.2</td>
-                    </tr>
-                    <tr>
-                        <th>마약수사직(마약수사:저소득)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>                1 </td>
-                        <td>               67 </td>
-                        <td>67:1</td>
-                        <td>301.89</td>
-                    </tr>
-                    <tr>
-                        <th>출입국관리직(출입국관리:일반)</th>
-                        <td>              261 </td>
-                        <td>            9,956 </td>
-                        <td>38:1</td>
-                        <td>              197 </td>
-                        <td>            8,810 </td>
-                        <td>45:1</td>
-                        <td>359.31    / 355.47(양성)</td>
-                    </tr>
-                    <tr>
-                        <th>출입국관리직(출입국관리:저소득)</th>
-                        <td>                8 </td>
-                        <td>              167 </td>
-                        <td>21:1</td>
-                        <td>                6 </td>
-                        <td>              182 </td>
-                        <td>30:1</td>
-                        <td>321.48</td>
-                    </tr>
-                    <tr>
-                        <th>철도경찰직(철도경찰:일반)</th>
-                        <td>               28 </td>
-                        <td>            1,255 </td>
-                        <td>45:1</td>
-                        <td>               50 </td>
-                        <td>            1,707 </td>
-                        <td>34:1</td>
-                        <td>333.94</td>
-                    </tr>
-                    <tr>
-                        <th>철도경찰직(철도경찰:저소득)</th>
-                        <td>                1 </td>
-                        <td>               17 </td>
-                        <td>17:1</td>
-                        <td>                2 </td>
-                        <td>               23 </td>
-                        <td>12:1</td>
-                        <td>279.03</td>
-                    </tr>
-                    <tr class="gray">
-                        <th>기술직 계</th>
-                        <td>             637 </td>
-                        <td>         23,760 </td>
-                        <td>37:1</td>
-                        <td>             449 </td>
-                        <td>         22,940 </td>
-                        <td>51:1</td>
-                        <td>　</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(일반기계:일반)</th>
-                        <td>               44 </td>
-                        <td>            2,493 </td>
-                        <td>57:1</td>
-                        <td>               35 </td>
-                        <td>            2,388 </td>
-                        <td>68:1</td>
-                        <td>70    / 69(양성)</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(일반기계:장애)</th>
-                        <td>                4 </td>
-                        <td>               31 </td>
-                        <td>8:1</td>
-                        <td>                3 </td>
-                        <td>               29 </td>
-                        <td>10:1</td>
-                        <td>53</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(일반기계:저소득)</th>
-                        <td>                1 </td>
-                        <td>               26 </td>
-                        <td>26:1</td>
-                        <td>                1 </td>
-                        <td>               27 </td>
-                        <td>27:1</td>
-                        <td>60</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(전기:일반)</th>
-                        <td>               30 </td>
-                        <td>            2,287 </td>
-                        <td>76:1</td>
-                        <td>               23 </td>
-                        <td>            2,186 </td>
-                        <td>95:1</td>
-                        <td>72    / 70(양성)</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(전기:장애)</th>
-                        <td>                3 </td>
-                        <td>               22 </td>
-                        <td>7:1</td>
-                        <td>                2 </td>
-                        <td>               28 </td>
-                        <td>14:1</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(전기:저소득)</th>
-                        <td>                1 </td>
-                        <td>               35 </td>
-                        <td>35:1</td>
-                        <td>                1 </td>
-                        <td>               22 </td>
-                        <td>22:1</td>
-                        <td>55</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(화공:일반)</th>
-                        <td>               26 </td>
-                        <td>            1,414 </td>
-                        <td>54:1</td>
-                        <td>               18 </td>
-                        <td>            1,220 </td>
-                        <td>68:1</td>
-                        <td>74</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(화공:장애)</th>
-                        <td>                3 </td>
-                        <td>                6 </td>
-                        <td>2:1</td>
-                        <td>                1 </td>
-                        <td>                5 </td>
-                        <td>5:1</td>
-                        <td>66</td>
-                    </tr>
-                    <tr>
-                        <th>공업직(화공:저소득)</th>
-                        <td>                1 </td>
-                        <td>               16 </td>
-                        <td>16:1</td>
-                        <td>                1 </td>
-                        <td>               12 </td>
-                        <td>12:1</td>
-                        <td>56</td>
-                    </tr>
-                    <tr>
-                        <th>농업직(일반농업:일반)</th>
-                        <td>              122 </td>
-                        <td>            3,452 </td>
-                        <td>28:1</td>
-                        <td>               63 </td>
-                        <td>            3,279 </td>
-                        <td>52:1</td>
-                        <td>78</td>
-                    </tr>
-                    <tr>
-                        <th>농업직(일반농업:장애)</th>
-                        <td>                9 </td>
-                        <td>               30 </td>
-                        <td>3:1</td>
-                        <td>                6 </td>
-                        <td>               37 </td>
-                        <td>6:1</td>
-                        <td>54</td>
-                    </tr>
-                    <tr>
-                        <th>농업직(일반농업:저소득)</th>
-                        <td>                4 </td>
-                        <td>               36 </td>
-                        <td>9:1</td>
-                        <td>                2 </td>
-                        <td>               33 </td>
-                        <td>17:1</td>
-                        <td>58</td>
-                    </tr>
-                    <tr>
-                        <th>임업직(산림자원:일반)</th>
-                        <td>               47 </td>
-                        <td>            1,842 </td>
-                        <td>39:1</td>
-                        <td>               76 </td>
-                        <td>            1,944 </td>
-                        <td>26:1</td>
-                        <td>71</td>
-                    </tr>
-                    <tr>
-                        <th>임업직(산림자원:장애)</th>
-                        <td>                4 </td>
-                        <td>               12 </td>
-                        <td>3:1</td>
-                        <td>                7 </td>
-                        <td>               24 </td>
-                        <td>3:1</td>
-                        <td>72</td>
-                    </tr>
-                    <tr>
-                        <th>임업직(산림자원:저소득)</th>
-                        <td>                1 </td>
-                        <td>               19 </td>
-                        <td>19:1</td>
-                        <td>                2 </td>
-                        <td>               23 </td>
-                        <td>12:1</td>
-                        <td>58</td>
-                    </tr>
-                    <tr>
-                        <th>시설직(일반토목:일반)</th>
-                        <td>               97 </td>
-                        <td>            3,863 </td>
-                        <td>40:1</td>
-                        <td>               43 </td>
-                        <td>            3,708 </td>
-                        <td>86:1</td>
-                        <td>65    / 64(양성)</td>
-                    </tr>
-                    <tr>
-                        <th>시설직(일반토목:장애)</th>
-                        <td>                8 </td>
-                        <td>               35 </td>
-                        <td>4:1</td>
-                        <td>                4 </td>
-                        <td>               34 </td>
-                        <td>9:1</td>
-                        <td>52</td>
-                    </tr>
-                    <tr>
-                        <th>시설직(일반토목:저소득)</th>
-                        <td>                3 </td>
-                        <td>               27 </td>
-                        <td>9:1</td>
-                        <td>                1 </td>
-                        <td>               30 </td>
-                        <td>30:1</td>
-                        <td>57</td>
-                    </tr>
-                    <tr>
-                        <th>시설직(건축:일반)</th>
-                        <td>               26 </td>
-                        <td>            2,660 </td>
-                        <td>102:1</td>
-                        <td>               18 </td>
-                        <td>            2,359 </td>
-                        <td>131:1</td>
-                        <td>75</td>
-                    </tr>
-                    <tr>
-                        <th>시설직(건축:장애)</th>
-                        <td>                3 </td>
-                        <td>               29 </td>
-                        <td>10:1</td>
-                        <td>                1 </td>
-                        <td>               20 </td>
-                        <td>20:1</td>
-                        <td>전원과락</td>
-                    </tr>
-                    <tr>
-                        <th>시설직(건축:저소득)</th>
-                        <td>                1 </td>
-                        <td>               25 </td>
-                        <td>25:1</td>
-                        <td>                1 </td>
-                        <td>               21 </td>
-                        <td>21:1</td>
-                        <td>61</td>
-                    </tr>
-                    <tr>
-                        <th>방재안전직(방재안전)</th>
-                        <td>                3 </td>
-                        <td>              593 </td>
-                        <td>198:1</td>
-                        <td>                9 </td>
-                        <td>              708 </td>
-                        <td>79:1</td>
-                        <td>67</td>
-                    </tr>
-                    <tr>
-                        <th>전산직(전산개발:일반)</th>
-                        <td>               83 </td>
-                        <td>            3,218 </td>
-                        <td>39:1</td>
-                        <td>               50 </td>
-                        <td>            3,138 </td>
-                        <td>63:1</td>
-                        <td>73</td>
-                    </tr>
-                    <tr>
-                        <th>전산직(전산개발:장애)</th>
-                        <td>                7 </td>
-                        <td>               55 </td>
-                        <td>8:1</td>
-                        <td>                4 </td>
-                        <td>               50 </td>
-                        <td>13:1</td>
-                        <td>48</td>
-                    </tr>
-                    <tr>
-                        <th>전산직(전산개발:저소득)</th>
-                        <td>                3 </td>
-                        <td>               39 </td>
-                        <td>13:1</td>
-                        <td>                1 </td>
-                        <td>               30 </td>
-                        <td>30:1</td>
-                        <td>66</td>
-                    </tr>
-                    <tr>
-                        <th>전산직(정보보호:일반)</th>
-                        <td>                8 </td>
-                        <td>              268 </td>
-                        <td>34:1</td>
-                        <td>                5 </td>
-                        <td>              360 </td>
-                        <td>72:1</td>
-                        <td>69    / 67(양성)</td>
-                    </tr>
-                    <tr>
-                        <th>전산직(정보보호:장애)</th>
-                        <td> - </td>
-                        <td> - </td>
-                        <td>-</td>
-                        <td>                1 </td>
-                        <td>               11 </td>
-                        <td>11:1</td>
-                        <td>전원과락</td>
-                    </tr>
-                    <tr>
-                        <th>방송통신직(전송기술:일반)</th>
-                        <td>               85 </td>
-                        <td>            1,205 </td>
-                        <td>14:1</td>
-                        <td>               63 </td>
-                        <td>            1,192 </td>
-                        <td>19:1</td>
-                        <td>65</td>
-                    </tr>
-                    <tr>
-                        <th>방송통신직(전송기술:장애)</th>
-                        <td>                7 </td>
-                        <td>               11 </td>
-                        <td>2:1</td>
-                        <td>                5 </td>
-                        <td>               14 </td>
-                        <td>3:1</td>
-                        <td>64</td>
-                    </tr>
-                    <tr>
-                        <th>방송통신직(전송기술:저소득)</th>
-                        <td>                3 </td>
-                        <td>               11 </td>
-                        <td>4:1</td>
-                        <td>                2 </td>
-                        <td>                8 </td>
-                        <td>4:1</td>
-                        <td>60</td>
-                    </tr>
+                        <col />
+                        <col span="5" />
+                        <col />
+                        <col />
+                        <tr>
+                            <th rowspan="2">모집단위</th>
+                            <th colspan="3">2019년</th>
+                            <th colspan="5">2018년</th>
+                        </tr>
+                        <tr>
+                            <th>선발예정인원</th>
+                            <th>접수인원</th>
+                            <th>경쟁률</th>
+                            <th>선발예정인원</th>
+                            <th>접수인원</th>
+                            <th>경쟁률</th>
+                            <th>응시인원</th>
+                            <th>합격선 (최고점)</th>
+                        </tr>
+                        <tr>
+                            <th>소계(행정직)</th>
+                            <td>           534 </td>
+                            <td>        30,310 </td>
+                            <td>83.71:1</td>
+                            <td>           566 </td>
+                            <td>        31,558 </td>
+                            <td>55.8:1</td>
+                            <td>22,549 　</td>
+                            <td>85.83</td>
+                        </tr>
+                        <tr>
+                            <th>행정직(일반행정:일반)</th>
+                            <td>           153 </td>
+                            <td>        13,073 </td>
+                            <td>85.44:1</td>
+                            <td>          159 </td>
+                            <td>        14,106 </td>
+                            <td>88.7:1</td>
+                            <td>9,859 　</td>
+                            <td>80 / 79.16(지방)</td>
+                        </tr>
+                        <tr>
+                            <th>행정직(일반행정:장애인)</th>
+                            <td>              11 </td>
+                            <td>          178 </td>
+                            <td>16.18:1</td>
+                            <td>              10 </td>
+                            <td>          185</td>
+                            <td>18.5:1</td>
+                            <td>127 </td>
+                            <td>63.33 / 61.66(양성)</td>
+                        </tr>
+                        <tr>
+                            <th>행정직(우정사업본부:일반)</th>
+                            <td>               27 </td>
+                            <td>              772 </td>
+                            <td>28.59:1</td>
+                            <td>               20 </td>
+                            <td>              753 </td>
+                            <td>37.7:1</td>
+                            <td>519 </td>
+                            <td>76.66</td>
+                        </tr>
+                        <tr>
+                            <th>행정직(우정사업본부:장애인)</th>
+                            <td>                2 </td>
+                            <td>              23 </td>
+                            <td>11.50:1</td>
+                            <td>               1 </td>
+                            <td>              11 </td>
+                            <td>11:1</td>
+                            <td>5 </td>
+                            <td>전원과락 </td>
+                        </tr>
+                        <tr>
+                            <th>행정직(인사조직)</th>
+                            <td>              5 </td>
+                            <td>          2,178 </td>
+                            <td>435.60:1</td>
+                            <td>              4 </td>
+                            <td>          1,457 </td>
+                            <td>364.3:1</td>
+                            <td>965 </td>
+                            <td>80 </td>
+                        </tr>
+                        <tr>
+                            <th>행정직(고용노동:일반)</th>
+                            <td>                109 </td>
+                            <td>              1100 </td>
+                            <td>10.09:1</td>
+                            <td>                117 </td>
+                            <td>              876 </td>
+                            <td>7.5:1</td>
+                            <td>610 </td>
+                            <td>69.66 / 68.33(지방)</td>
+                        </tr>
+                        <tr>
+                            <th>행정직(고용노동:장애인)</th>
+                            <td>               8 </td>
+                            <td>              52 </td>
+                            <td>6.50:1</td>
+                            <td>               8 </td>
+                            <td>              33 </td>
+                            <td>4.1:1</td>
+                            <td>23 </td>
+                            <td>49.16 </td>
+                        </tr>                   
+                        <tr>
+                            <th>행정직(교육행정:일반)</th>
+                            <td>               3 </td>
+                            <td>              689 </td>
+                            <td>229.67:1</td>
+                            <td>               3 </td>
+                            <td>              713 </td>
+                            <td>237.7:1</td>
+                            <td>439 </td>
+                            <td>81.66 </td>
+                        </tr>
+                        <tr>
+                            <th>행정직(회계:일반)</th>
+                            <td>               2 </td>
+                            <td>            68 </td>
+                            <td>34.00:1</td>
+                            <td>              6 </td>
+                            <td>            179 </td>
+                            <td>29.8:1</td>
+                            <td>113 </td>
+                            <td>75 </td>
+                        </tr>
+                        <tr>
+                            <th>행정직(선거행정:일반)</th>
+                            <td>               9 </td>
+                            <td>               1,063 </td>
+                            <td>118.11:1</td>
+                            <td>                19 </td>
+                            <td>               1,599 </td>
+                            <td>84.2:1</td>
+                            <td>1,068 </td>
+                            <td>82.5 </td>
+                        </tr>
+                        <tr>
+                            <th>행정직(선거행정:장애인)</th>
+                            <td>                1 </td>
+                            <td>               27 </td>
+                            <td>27.00:1</td>
+                            <td>                1 </td>
+                            <td>              31 </td>
+                            <td>31:1</td>
+                            <td>20</td>
+                            <td>65.83</td>
+                        </tr>
+                        <tr>
+                            <th>세무직(세무:일반)</th>
+                            <td> 76 </td>
+                            <td> 3,081 </td>
+                            <td>40.54:1</td>
+                            <td> 68 </td>
+                            <td> 3,587 </td>
+                            <td>52.8:1</td>
+                            <td>2,744 </td>
+                            <td>78.33 / 77.5(지방) </td>
+                        </tr>
+                        <tr>
+                            <th>세무직(세무:장애인)</th>
+                            <td>6 </td>
+                            <td>76 </td>
+                            <td>12.67:1</td>
+                            <td> 5 </td>
+                            <td> 77 </td>
+                            <td>15.4:1</td>
+                            <td>54 </td>
+                            <td>55.83 </td>
+                        </tr>
+                        <tr>
+                            <th>관세직(관세:일반)</th>
+                            <td>              7 </td>
+                            <td>          686 </td>
+                            <td>98.00:1</td>
+                            <td> 17 </td>
+                            <td> 886 </td>
+                            <td>52.1:1</td>
+                            <td>682 </td>
+                            <td>83.33 </td>
+                        </tr>
+                        <tr>
+                            <th>관세직(관세:장애인)</th>
+                            <td>              1 </td>
+                            <td>              15 </td>
+                            <td>15.00:1</td>
+                            <td> 1 </td>
+                            <td>26</td>
+                            <td>26:1</td>
+                            <td>15 </td>
+                            <td>65.83 </td>
+                        </tr>
+                        <tr>
+                            <th>통계직(통계:일반)</th>
+                            <td>               11 </td>
+                            <td>              295 </td>
+                            <td>26.82:1</td>
+                            <td> 7 </td>
+                            <td> 268 </td>
+                            <td>38.3:1</td>
+                            <td>211 </td>
+                            <td>83 </td>
+                        </tr>
+                        <tr>
+                            <th>통계직(통계:장애인)</th>
+                            <td>             1 </td>
+                            <td>            9 </td>
+                            <td>9.00:1</td>
+                            <td>              1 </td>
+                            <td>          2 </td>
+                            <td>2:1</td>
+                            <td>2 </td>
+                            <td>67.16 </td>
+                        </tr>
+                        <tr>
+                            <th>감사직(감사:일반)</th>
+                            <td>               26 </td>
+                            <td>              1003 </td>
+                            <td>38.58:1</td>
+                            <td>               13 </td>
+                            <td>              947 </td>
+                            <td>72.8:1</td>
+                            <td>724 </td>
+                            <td>84.16 / 83.33(양성)</td>
+                        </tr>
+                        <tr>
+                            <th>감사직(감사:장애인)</th>
+                            <td>                2 </td>
+                            <td>              23 </td>
+                            <td>11.50:1</td>
+                            <td>               1 </td>
+                            <td>              22 </td>
+                            <td>22:1</td>
+                            <td>16 </td>
+                            <td>75 </td>
+                        </tr>
+                        <tr>
+                            <th>교정직(교정)</th>
+                            <td> 30 </td>
+                            <td> 922 </td>
+                            <td>30.73:1</td>
+                            <td> 30 </td>
+                            <td> 1,047 </td>
+                            <td>34.9:1</td>
+                            <td>739 </td>
+                            <td>77.5 / 76.66(지방) </td>
+                        </tr>
+                        <tr>
+                            <th>행보호직(보호)</th>
+                            <td> - </td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td> 5 </td>
+                            <td> 95 </td>
+                            <td>19:1</td>
+                            <td>62 </td>
+                            <td>76.66 </td>
+                        </tr>
+                        <tr>
+                            <th>검찰직(검찰)</th>
+                            <td> 10 </td>
+                            <td> 1,434 </td>
+                            <td>143.40:1</td>
+                            <td> 10 </td>
+                            <td> 1,355 </td>
+                            <td>135.5:1</td>
+                            <td>863 </td>
+                            <td>83.33 </td>
+                        </tr>
+                        <tr>
+                            <th>출입국관리직(출입국관리)</th>
+                            <td> 2 </td>
+                            <td> 1096 </td>
+                            <td>548.00:1</td>
+                            <td> 20 </td>
+                            <td> 902 </td>
+                            <td>45.1:1</td>
+                            <td>656 </td>
+                            <td>77.5 </td>
+                        </tr>
+                        <tr>
+                            <th>외무영사직(일반)</th>
+                            <td>30 </td>
+                            <td> 2,415 </td>
+                            <td>80.50:1</td>
+                            <td> 37 </td>
+                            <td> 2,372 </td>
+                            <td>64.1:1</td>
+                            <td>2,012 </td>
+                            <td>85.83 / 85(양성) </td>
+                        </tr>
+                        <tr>
+                            <th>외무영사직(장애인)</th>
+                            <td>               2 </td>
+                            <td>          32 </td>
+                            <td>16.00:1</td>
+                            <td>               3 </td>
+                            <td>           29 </td>
+                            <td>9.7:1</td>
+                            <td>21 </td>
+                            <td>71.66 </td>
+                        </tr>                           
+                    </table>
+                </div>
+                <div class="mt20" id="tabs2">  
+                    <table class="boardD">
+                        <col />
+                        <col span="5" />
+                        <col />
+                        <col />
+                        <tr>
+                            <th rowspan="2">모집단위</th>
+                            <th colspan="3">2019년</th>
+                            <th colspan="5">2018년</th>
+                        </tr>
+                        <tr>
+                            <th>선발예정인원</th>
+                            <th>접수인원</th>
+                            <th>경쟁률</th>
+                            <th>선발예정인원</th>
+                            <th>접수인원</th>
+                            <th>경쟁률</th>
+                            <th>응시인원</th>
+                            <th>합격선 (최고점)</th>
+                        </tr>
+                        <tr>
+                            <th>소계(기술직)</th>
+                            <td>           210  </td>
+                            <td>        4,928  </td>
+                            <td>19.21:1</td>
+                            <td>           204 </td>
+                            <td>        5,104 </td>
+                            <td>25:1</td>
+                            <td>3,424  　</td>
+                            <td>84.16</td>
+                        </tr>
+                        <tr>
+                            <th>공업직(일반기계:일반)</th>
+                            <td>           24  </td>
+                            <td>        600  </td>
+                            <td>25.00:1</td>
+                            <td>          32 </td>
+                            <td>       672 </td>
+                            <td>21:1</td>
+                            <td>462  　</td>
+                            <td>75 / 72.5(양성)</td>
+                        </tr>
+                        <tr>
+                            <th>공업직(일반기계:장애인)</th>
+                            <td>              3  </td>
+                            <td>          5  </td>
+                            <td>1.67:1</td>
+                            <td>              2 </td>
+                            <td>          9</td>
+                            <td>4.5:1</td>
+                            <td>6  </td>
+                            <td>70.83</td>
+                        </tr>
+                        <tr>
+                            <th>공업직(전기:일반)</th>
+                            <td>               21  </td>
+                            <td>              606  </td>
+                            <td>28.86:1</td>
+                            <td>               31 </td>
+                            <td>              666 </td>
+                            <td>21.5:1</td>
+                            <td>411  </td>
+                            <td>75 / 72.5(양성)</td>
+                        </tr>
+                        <tr>
+                            <th>공업직(전기:장애인)</th>
+                            <td>               3  </td>
+                            <td>               5   </td>
+                            <td>1.67:1</td>
+                            <td>               2 </td>
+                            <td>              10 </td>
+                            <td>5:1</td>
+                            <td> 5 </td>
+                            <td>50 </td>
+                        </tr>
+                        <tr>
+                            <th>공업직(화공:일반)</th>
+                            <td>              19 </td>
+                            <td>          570  </td>
+                            <td>30.00:1</td>
+                            <td>             24 </td>
+                            <td>         586 </td>
+                            <td>24.4:1</td>
+                            <td>426  </td>
+                            <td>72.5 </td>
+                        </tr>
+                        <tr>
+                            <th>공업직(화공:장애인)</th>
+                            <td>                2  </td>
+                            <td>              3  </td>
+                            <td>1.50:1</td>
+                            <td>                2 </td>
+                            <td>              5 </td>
+                            <td>2.5:1</td>
+                            <td>5 </td>
+                            <td>68.33</td>
+                        </tr>
+                        <tr>
+                            <th>농업직(일반농업:일반)</th>
+                            <td>               18  </td>
+                            <td>              541  </td>
+                            <td>30.06:1</td>
+                            <td>               7 </td>
+                            <td>              479 </td>
+                            <td>68.4:1</td>
+                            <td>316  </td>
+                            <td>84.16 </td>
+                        </tr>                   
+                        <tr>
+                            <th>농업직(일반농업:장애인)</th>
+                            <td>               1  </td>
+                            <td>              5  </td>
+                            <td>5.00:1</td>
+                            <td>               1</td>
+                            <td>              5 </td>
+                            <td>5:1</td>
+                            <td>4 </td>
+                            <td>77.5 </td>
+                        </tr>
+                        <tr>
+                            <th>임업직(산림자원:일반)</th>
+                            <td>               5  </td>
+                            <td>            234  </td>
+                            <td>46.80:1</td>
+                            <td>              6 </td>
+                            <td>            248 </td>
+                            <td>41.3:1</td>
+                            <td>171  </td>
+                            <td>79.16 </td>
+                        </tr>
+                        <tr>
+                            <th>임업직(산림자원:장애인)</th>
+                            <td>               - </td>
+                            <td>               - </td>
+                            <td>               - </td>
+                            <td>                1 </td>
+                            <td>                1 </td>
+                            <td>1:1</td>
+                            <td>1 </td>
+                            <td>62.5 </td>
+                        </tr>
+                        <tr>
+                            <th>시설직(일반토목:일반)</th>
+                            <td>                28  </td>
+                            <td>               468  </td>
+                            <td>16.71:1</td>
+                            <td>                32 </td>
+                            <td>              484 </td>
+                            <td>15.1:1</td>
+                            <td>340 </td>
+                            <td>70.83 / 68.33(양성)</td>
+                        </tr>
+                        <tr>
+                            <th>시설직(일반토목:장애인)</th>
+                            <td>2  </td>
+                            <td>9  </td>
+                            <td>4.50:1</td>
+                            <td> 2 </td>
+                            <td>10 </td>
+                            <td>5:1</td>
+                            <td>6 </td>
+                            <td>57.5 </td>
+                        </tr>
+                        <tr>
+                            <th>시설직(건축:일반)</th>
+                            <td>30  </td>
+                            <td>497  </td>
+                            <td>16.57:1</td>
+                            <td> 16 </td>
+                            <td> 495 </td>
+                            <td>30.9:1</td>
+                            <td>306  </td>
+                            <td>76.66 / 75.83(지방) </td>
+                        </tr>
+                        <tr>
+                            <th>시설직(건축:장애인)</th>
+                            <td>              2  </td>
+                            <td>          6  </td>
+                            <td>3.00:1</td>
+                            <td> 1 </td>
+                            <td> 6 </td>
+                            <td>6:1</td>
+                            <td>4 </td>
+                            <td>61.66 </td>
+                        </tr>
+                        <tr>
+                            <th>방재안전직(방재안전:일반)</th>
+                            <td>              2 </td>
+                            <td>              152</td>
+                            <td>76.00:1</td>
+                            <td> 5 </td>
+                            <td>253</td>
+                            <td>50.6:1</td>
+                            <td>140  </td>
+                            <td>75.83 </td>
+                        </tr>
+                        <tr>
+                            <th>전산직(전산개발:일반)</th>
+                            <td>               30  </td>
+                            <td>              980  </td>
+                            <td>32.67:1</td>
+                            <td> 29 </td>
+                            <td> 929 </td>
+                            <td>32:1</td>
+                            <td>659  </td>
+                            <td>74.16 / 73.33(지방) </td>
+                        </tr>
+                        <tr>
+                            <th>전산직(전산개발:장애인)</th>
+                            <td>             2 </td>
+                            <td>            17 </td>
+                            <td>8.50:1</td>
+                            <td>              2 </td>
+                            <td>          11 </td>
+                            <td>5.5:1</td>
+                            <td>7 </td>
+                            <td>47.5 </td>
+                        </tr>
+                        <tr>
+                            <th>방송통신직(전송기술:일반)</th>
+                            <td>               17 </td>
+                            <td>              226 </td>
+                            <td>13.29:1</td>
+                            <td>               8 </td>
+                            <td>              232 </td>
+                            <td>29:1</td>
+                            <td>153  </td>
+                            <td>75</td>
+                        </tr>
+                        <tr>
+                            <th>방송통신직(전송기술:장애인)</th>
+                            <td>                1 </td>
+                            <td>              14 </td>
+                            <td>4.00:1</td>
+                            <td>               1 </td>
+                            <td>              3 </td>
+                            <td>3:1</td>
+                            <td>2 </td>
+                            <td>71.66 </td>
+                        </tr>                                          
                     </table>
                     <p>&nbsp;</p>
                 </div>  
@@ -1189,6 +844,40 @@
                 }
             });
         });
+
+            
+    /*tabs*/
+        $(document).ready(function(){
+        $('.tabMenu').each(function(){
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+        
+            $content = $($active[0].hash);
+        
+            $links.not($active).each(function () {
+            $(this.hash).hide()});
+        
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+            $active.removeClass('active');
+            $content.hide();
+        
+            $active = $(this);
+            $content = $(this.hash);
+        
+            $active.addClass('active');
+            $content.show();
+        
+            e.preventDefault()})})}
+        );
+        function fn_FileDownload(path){
+            if(confirm("다운로드 하시겠습니까?")){
+                location.href = "/download.do?path="+path;
+            }
+        }
+        
+
 
         function pullOpen(){
             var url = "{{front_url('/survey/index/2')}}";

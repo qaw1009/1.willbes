@@ -11,6 +11,12 @@ class SmsModel extends WB_Model
     private $_table_member_otherinfo = 'lms_member_otherinfo';
     private $_table_temp = '_lms_temp_table';   // 임시테이블
 
+    // 메세지 발송 치환 정보
+    private $_sms_send_content_replace = [
+        '{{name}}' => 'mem_name',
+        '{{id}}' => 'mem_id'
+    ];
+
     public function __construct()
     {
         parent::__construct('lms');
@@ -176,12 +182,23 @@ class SmsModel extends WB_Model
             // 임시테이블 삭제
             $this->dropTampTable($this->_table_temp);
 
-            /** 즉시 발송 시작 [솔루션 호출] */
-            $result = $this->_smsSend($inputData, $get_send_data);
-            if ($result === false) {
-                throw new \Exception('문자 발송 실패 입니다.');
-            }
+            //메세지 치환
+            $beforeContent = $inputData['Content'];
+            foreach($get_send_data as $i => $row){
+                $afterContent = $beforeContent;
+                foreach($this->_sms_send_content_replace as $key => $val) {
+                    if(strpos($afterContent, $key) !== false) {
+                        $afterContent = str_replace($key, $formData[$val][$i], $afterContent);
+                    }
+                }
+                $inputData['Content'] = $afterContent;
 
+                /** 즉시 발송 시작 [솔루션 호출] */
+                $result = $this->_smsSend($inputData, $get_send_data[$i]);
+                if ($result === false) {
+                    throw new \Exception('문자 발송 실패 입니다.');
+                }
+            }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

@@ -69,6 +69,12 @@ class EventFModel extends WB_Model
         ]
     ];
 
+    // 메세지 발송 치환 정보
+    private $_sms_send_content_replace = [
+        '{{name}}' => 'register_name',
+        '{{id}}' => 'register_id'
+    ];
+
     //이벤트공지사항 (댓글영역)
     public $_bm_idx = '86';
 
@@ -1005,6 +1011,13 @@ class EventFModel extends WB_Model
      */
     private function _sendSms($data, $send_data)
     {
+        //메세지 치환
+        foreach($this->_sms_send_content_replace as $key => $val) {
+            if(strpos($data['SmsContent'], $key) !== false) {
+                $data['SmsContent'] = str_replace($key, $send_data[$val], $data['SmsContent']);
+            }
+        }
+
         $this->load->library('sendSms');
         if ($this->sendsms->send($send_data['register_tel'], $data['SmsContent'], $data['SendTel']) !== true) {
             return false;

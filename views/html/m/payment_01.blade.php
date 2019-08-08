@@ -9,17 +9,20 @@
                 <button type="button" class="goback" onclick="history.back(-1); return false;">
                     <span class="hidden">뒤로가기</span>
                 </button>    
-                장바구니
+                결제하기
             </div>
         </div>
     </div>
+   
 
-    <div>
-        <ul class="tabWrap lineWrap rowlineWrap lecListWrap two mt-zero">
-            <li><a href="#leclist1" class="on">강좌</a><span class="row-line">|</span></li>
-            <li><a href="#leclist2">교재</a></li>
+    <div class="paymentWrap">
+        <ul class="paymentTxt NGR">
+            <li>해당 상품의 강좌시작일 설정은 결제일로부터 30일 범위 내로 설정 가능합니다.</li>
+            <li>해당 상품의 강좌시작일을 설정하지 않은 경우 결제일(무통장입금 결제수단의 경우 가상계좌 신청일)로부터 7일 후 강좌가 자동 시작됩니다.</li>
+            <li>해당 상품의 개강일이 설정한 강좌시작일 이후 인 경우 해당 강좌시작일은 개강일로 자동 셋팅됩니다.</li>
+            <li>배송 상품은 당일 오후 2시까지 결제한 상품에 한해 당일 발송 처리됩니다. (토,일,공휴일제외)</li>
         </ul>
-
+            
         <div class="basketWrap">
             <div id="leclist1">
                 <div class="lec-info bd-none pt-zero pb-zero">
@@ -116,12 +119,7 @@
                 </div>                
             </div>   
             
-            <ul class="lecTxt NGR">
-                <li class="tx-red">정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</li>
-                <li>장바구니 상품은 14일 안에 미구매 시 자동 삭제 처리됩니다.</li>
-                <li>장바구니 강좌 삭제 시 해당 강좌의 수강생 교재가 포함된 경우 함께 삭제 처리됩니다.</li>
-                <li>장바구니 담기 후 해당 상품의 접수기간이 지났거나, 판매상태가 '판매종료'로 변경된 경우 자동 삭제 처리됩니다.</li>
-            </ul>
+            
             
             <div class="lec-btns w100p">
                 <ul>

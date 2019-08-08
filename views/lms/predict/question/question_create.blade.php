@@ -18,7 +18,7 @@
                         <th colspan="1">합격예측 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
                             <select class="form-control mr-5" id="PredictIdx" name="PredictIdx" onChange="selPredictIdx(this.value,'')">
-                                <option value="">합격예측선택</option>
+                                <option value="">합격예측서비스명</option>
                                 @foreach($productList as $key => $val)
                                     @if($method == 'PUT')
                                         <option value="{{ $val['PredictIdx'] }}" @if($data['PredictIdx'] == $val['PredictIdx']) selected @endif>{{ $val['ProdName'] }}</option>
@@ -105,7 +105,7 @@
                         <td>@if($method == 'PUT'){{ $data['UpdDate'] }}@endif</td>
                     </tr>
                 </table>
-                <div class="form-group text-center">
+                <div class="form-group text-center mt-20 mb-30">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="goList">목록</button>
                 </div>
@@ -113,13 +113,13 @@
         </div>
 
         @if($method == 'PUT')
-            <div class="x_content mt-50" style="overflow-x: auto; overflow-y: hidden;">
+            <div class="x_content mt-20">
                 <h5 class="mb-20">
                     <span class="required">*</span>
                     '문항호출' 클릭시, 이전 회차의 과목별 문제정보에서 등록할 문제를 선택할 수 있습니다. (동일 과목, 교수정보 지난 과목별 문제만 호출)
                 </h5>
                 <div>
-                    <div class="pull-left mt-15 mb-10">[ 총 {{ count($qData) }}건 ]</div>
+                    <div class="pull-left mb-10">[ 총 {{ count($qData) }}건 ]</div>
                     <div class="pull-right text-right form-inline mb-5">
                         <select class="form-control">
                             @foreach(range(1, 20) as $n)
@@ -193,7 +193,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <div class="form-group text-center">
+                    <div class="form-group text-center mt-20 mb-30">
                         <button type="submit" class="btn btn-success mr-10">저장</button>
                     </div>
                 </form>

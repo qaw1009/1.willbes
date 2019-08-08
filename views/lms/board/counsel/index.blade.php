@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다. (괄호 안 붉은색 숫자는 미답변 카운트입니다.)</h5>
+    <h5>- {{ str_replace('게시판', '', $__menu['CURRENT']['MenuName']) }} 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, $arr_unAnswered, true) !!}
@@ -150,6 +150,7 @@
             $.each(arr_search_data,function(key,value) {
                 $search_form.find('input[name="'+key+'"]').val(value);
                 $search_form.find('select[name="'+key+'"]').val(value);
+                $search_form.find('input[name="'+key+'"]').attr('checked', true);
             });
 
             // site-code에 매핑되는 select box 자동 변경

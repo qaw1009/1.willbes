@@ -286,60 +286,75 @@ class PredictModel extends WB_Model
 
     /**
      * 합격가데이터
+     * @param $is_count
+     * @param $predict_idx
+     * @param array $arr_condition
+     * @param string $limit
+     * @param string $offset
+     * @param array $order_by
+     * @return mixed
      */
-    public function predictRegistList3($condition='', $limit='', $offset='')
+    public function predictRegistList3($is_count, $predict_idx, $arr_condition = [], $limit='', $offset='', $order_by = [])
     {
-        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $OPoint = "
+                (
+                    SELECT 
+                        GROUP_CONCAT(CONCAT('-',PaperName,':',OrgPoint)) AS OPOINT
+                    FROM 
+                        {$this->_table['predictGradesOrigin']} AS go
+                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON go.PpIDx = pp.PpIdx
+                    WHERE go.PrIdx = PR.PrIdx
+                )
+            ";
 
-        $OPoint = "
-            (
-                SELECT 
-                    GROUP_CONCAT(CONCAT('-',PaperName,':',OrgPoint)) AS OPOINT
-                FROM 
-                    {$this->_table['predictGradesOrigin']} AS go
-                    LEFT JOIN {$this->_table['predictPaper']} AS pp ON go.PpIDx = pp.PpIdx
-                WHERE go.PrIdx = PR.PrIdx
-            )
-        ";
+            $column = " 
+                ApplyType, MemName, MemIdx, MemId, AddPoint, fn_dec(PhoneEnc) AS Phone, TaKeNumber as TaKeNumber,
+                (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+                (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
+                if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
+                if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period, RegDatm,
+                ".$OPoint." AS OPOINT
+            ";
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
 
-        $column = " 
-            PR.ApplyType,
-            MemName,
-            PR.MemIdx,
-            MemId,
-            AddPoint,
-            fn_dec(M.PhoneEnc) AS Phone,
-            (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
-            (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
-            TaKeNumber,
-            if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
-            if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
-            RegDatm,
-            ".$OPoint." AS OPOINT
-        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
 
         $from = "
-            FROM 
-                {$this->_table['predictRegister']} AS PR
-                JOIN {$this->_table['member']} AS M ON PR.MemIdx = M.MemIdx
-                LEFT JOIN {$this->_table['predictGradesOrigin']} AS PG ON PR.PrIdx = PG.PrIdx
+            FROM (
+                SELECT 
+                r.*, M.MemId, M.MemName, M.PhoneEnc
+                FROM lms_predict_register AS r
+                INNER JOIN lms_member AS M ON r.MemIdx = M.MemIdx
+                LEFT JOIN (
+                    SELECT PrIdx, OrgPoint FROM lms_predict_grades_origin
+                    WHERE PredictIdx = '{$predict_idx}'
+                    GROUP BY PrIdx
+                ) AS o ON r.PrIdx = o.PrIdx
+                WHERE r.PredictIdx = '{$predict_idx}' AND o.PrIdx IS NOT NULL AND M.MemIdx = 1000000
+                {$where}
+                ORDER BY r.PrIdx DESC
+            ) AS PR
+            WHERE PrIdx IS NOT NULL
         ";
 
-        $selectCount = "SELECT COUNT(*) AS cnt FROM (SELECT PR.MemIdx ";
-        $where = " WHERE PR.IsStatus = 'Y' AND PR.MemIdx = 1000000";
-        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $where .= " AND PG.OrgPoint IS NOT NULL AND PG.PpIdx = (SELECT PpIdx FROM lms_predict_paper WHERE TYPE = 'P' LIMIT 1)";
-        $order = " ORDER BY RegDatm DESC";
-        //echo "<pre>"."SELECT * FROM (SELECT ". $column . $from . $where . $offset_limit .") AS A ".$order. "</pre>";
-
-        $data = $this->_conn->query("SELECT * FROM (SELECT ". $column . $from . $where . $offset_limit .") AS A ".$order)->result_array();
-        $count = $this->_conn->query($selectCount . $from . $where ." ) AS A")->row()->cnt;
+        $query = $this->_conn->query('select '. $column . $from . $order_by_offset_limit);
+        if ($is_count === true) {
+            return $query->row(0)->numrows;
+        } else {
+            $data = $query->result_array();
+        }
 
         foreach ($data as &$it) {
             $it['OPOINT'] = str_replace(',','<br>',$it['OPOINT']);
         }
-
-        return array($data, $count);
+        return $data;
     }
 
 

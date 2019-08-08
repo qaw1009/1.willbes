@@ -1,9 +1,9 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 합격예측서비스 기본정보를 관리합니다.</h5>
+    <h5>- 합격예측서비스 기본정보를 관리합니다.</h5>
     <div class="x_panel">
-        <div class="x_title mb-20">
+        <div class="x_title">
             <h2>합격예측기본정보등록</h2>
         </div>
         <div class="x_content">
@@ -241,9 +241,9 @@
                         <td>@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</td>
                     </tr>
                 </table>
-                <div class="form-group text-center">
+                <div class="form-group text-center mt-20 mb-30">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
-                    <button class="btn btn-primary" style="position:absolute; right:0;" type="button" id="goList">목록</button>
+                    <button class="btn btn-primary" type="button" id="goList">목록</button>
                 </div>
             </form>
         </div>

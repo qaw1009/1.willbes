@@ -917,7 +917,7 @@ class CommonLectureModel extends WB_Model
     }
 
     /**
-     * 강좌 신규/추천 변경
+     * 강좌 신규/추천/사용 변경
      * @param array $params
      * @return array|bool
      */
@@ -932,11 +932,9 @@ class CommonLectureModel extends WB_Model
 
             foreach ($params as $prod_code => $columns) {
                 $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('ProdCode', $prod_code);
-
                 if ($this->_conn->update($this->_table['product']) === false) {
                     throw new \Exception('상품 정보 수정에 실패했습니다.');
                 }
-                //echo $this->_conn->last_query();
             }
 
             $this->_conn->trans_commit();

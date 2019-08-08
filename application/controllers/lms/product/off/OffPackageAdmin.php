@@ -1,13 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class OffPackageAdmin extends \app\controllers\BaseController
+require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
+
+Class OffPackageAdmin extends CommonLecture
 {
+    /*
+   * CommonLecture 로 이관
     protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/professor','product/off/offPackageAdmin');
     protected $helpers = array('download');
-    protected $prodtypeccd = '636002';  //학원강좌
-    protected $learnpatternccd = '615007'; //종합반 [학원]
-
+    */
+    protected $prodtypeccd = '636002';                    //학원강좌
+    protected $learnpatternccd = '615007';               //종합반 [학원]
+    protected $copy_prodtype = 'offpackageadmin';   //복사 타입
 
     public function __construct()
     {
@@ -139,8 +144,6 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
 
-        //var_dump($siteList);
-
         $prodcode = null;
         $data = null;
         $data_sale = [];
@@ -167,11 +170,8 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             $data_autolec = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
             $data_autofreebie = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
 
-            //var_dump($data_autolec);
-
             $data_autocoupon = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
             $data_sublecture = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
-
         }
 
         $this->load->view('product/off/offpackageadmin/create',[
@@ -200,7 +200,6 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             ,'data_sublecture'=>$data_sublecture
         ]);
     }
-
 
      /**
      * 처리 프로세스
@@ -236,67 +235,59 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         }
 
         $result = $this->offPackageAdminModel->{$method.'Product'}($this->_reqP(null));
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-    /**
-     * 강좌복사
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-        ];
+//    /**
+//     * 강좌복사
+//     */
+//    public function copy()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
+//        ];
+//
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//
+//        $prodcode = $this->_reqP('prodCode');
+//
+//        $result = $this->offPackageAdminModel->_prodCopy($prodcode,'offpackageadmin');
+//        //var_dump($result);exit;
+//        $this->json_result($result,'복사 되었습니다.',$result);
+//    }
 
-        if ($this->validate($rules) === false) {
-            return;
-        }
+//    /**
+//     * 강좌 개설/접수 변경
+//     */
+//    public function reoption()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//        ];
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//        $result = $this->offPackageAdminModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
+//        $this->json_result($result, '저장 되었습니다.', $result);
+//    }
 
-        $prodcode = $this->_reqP('prodCode');
-
-        $result = $this->offPackageAdminModel->_prodCopy($prodcode,'offpackageadmin');
-        //var_dump($result);exit;
-        $this->json_result($result,'복사 되었습니다.',$result);
-    }
-
-    /**
-     * 강좌 개설/접수 변경
-     */
-    public function reoption()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->offPackageAdminModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
-
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
-    /**
-     * 리스트내 정렬순서 변경
-     */
-    public function reorder()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->offPackageAdminModel->_modifyLectureByOrder(json_decode($this->_reqP('params'), true));
-
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
+//    /**
+//     * 리스트내 정렬순서 변경
+//     */
+//    public function reorder()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+//        ];
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//        $result = $this->offPackageAdminModel->_modifyLectureByOrder(json_decode($this->_reqP('params'), true));
+//        $this->json_result($result, '저장 되었습니다.', $result);
+//    }
 
 }

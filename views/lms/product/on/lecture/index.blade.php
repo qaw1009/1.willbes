@@ -162,7 +162,7 @@
                     <th>추천</th>
                     <th>배수</th>
                     <th>판매여부</th>
-                    <th>사용여부</th>
+                    <th>사용</th>
                     <th>정산입력</th>
                     <!--  쿼리속도 저하로 인해 제거
                     <th>장바구니</th>
@@ -188,11 +188,8 @@
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
-
                 buttons: [
-
-                    { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
-                    /*,{ text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order'}*/
+                    { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 단강좌복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 단강좌등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('product/on/lecture/create') }}';
@@ -222,18 +219,15 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
                         }},//단강좌명
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.wProgressCcd_Name+'<BR>('+row.wUnitLectureCnt+ (row.wScheduleCount == null ? '' : '/'+row.wScheduleCount)+')';
                         }},//진행상태
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }},
                     {'data' : 'IsNew', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_new" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-new="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},
-
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_best" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-best="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},
@@ -244,7 +238,7 @@
                             return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                         }},//판매여부
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                            return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
                     {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
                             return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
@@ -259,12 +253,8 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
                         }},//복사여부
-
                 ]
-
             });
-
-
 
             // 과정, 과목, 교수 자동 변경
             $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
@@ -273,14 +263,12 @@
             $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");
 
-
             //강의복사
             $('.btn-copy').on('click',function(){
                 if ($('input:radio[name="copyProdCode"]').is(':checked') === false) {
                     alert('복사할 강좌를 선택해 주세요.');
                     return false;
                 }
-
                 if(confirm("해당 강좌를 복사하시겠습니까?")) {
 
                     var data = {
@@ -296,28 +284,27 @@
                         }
                     }, showError, false, 'POST');
                 }
-
             });
 
-            // 신규, 추천 상태 변경
+            // 신규, 추천, 사용 상태 변경
             $('.btn-new-best-modify').on('click', function() {
-                if (!confirm('신규/추천 상태를 적용하시겠습니까?')) {
+                if (!confirm('상태를 적용하시겠습니까?')) {
                     return;
                 }
-
                 var $is_new = $list_table.find('input[name="is_new"]');
                 var $is_best = $list_table.find('input[name="is_best"]');
+                var $is_use = $list_table.find('input[name="is_use"]');
                 var $params = {};
-                var origin_val, this_val, this_new_val, this_best_val;
+                var origin_val, this_val, this_new_val, this_best_val, this_use_val;
 
                 $is_new.each(function(idx) {
-                    // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
                     this_new_val = $(this).filter(':checked').val() || 'N';
                     this_best_val = $is_best.eq(idx).filter(':checked').val() || 'N';
-                    this_val = this_new_val + ':' + this_best_val;
-                    origin_val = $(this).data('origin-is-new') + ':' + $is_best.eq(idx).data('origin-is-best');
+                    this_use_val =  $is_use.eq(idx).filter(':checked').val() || 'N';
+                    this_val = this_new_val + ':' + this_best_val + ':' + this_use_val;
+                    origin_val = $(this).data('origin-is-new') + ':' + $is_best.eq(idx).data('origin-is-best') + ':' + $is_use.eq(idx).data('origin-is-use');
                     if (this_val !== origin_val) {
-                        $params[$(this).data('idx')] = { 'IsNew' : this_new_val, 'IsBest' : this_best_val };
+                        $params[$(this).data('idx')] = { 'IsNew' : this_new_val, 'IsBest' : this_best_val, 'IsUse' : this_use_val };
                     }
                 });
 
@@ -344,8 +331,6 @@
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/product/on/lecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
-
-
 
         });
     </script>

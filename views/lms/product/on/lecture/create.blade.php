@@ -65,7 +65,7 @@
                             @if($method == 'POST')
                                 <button type="button" id="searchMasterLecture" class="btn btn-sm btn-primary">마스터강좌검색</button>
                             @endif
-                                <p id="masterTitle" class="form-control-static">{{$data['wLecName']}}&nbsp;</p>
+                                @if(empty($data['wLecIdx']) == false)<p id="masterTitle" class="form-control-static">[{{$data['wLecIdx']}}] {{$data['wLecName']}}&nbsp;</p>@endif
                             <input type="hidden" name="wLecIdx" id="wLecIdx" value="{{$data['wLecIdx']}}" required="required" title="마스터강좌">
                         </div>
                     </div>
@@ -81,8 +81,9 @@
                                     [촬영형태] {{$data['wShootingCcd_Name']}} &nbsp;&nbsp;
                                     &nbsp;[진행상태] {{$data['wProgressCcd_Name']}} &nbsp;&nbsp;
                                     &nbsp;[제작월] {{$data['wMakeYM']}} &nbsp;&nbsp;
-                                    @if($data['wAttachFile'])
-                                        &nbsp;[첨부자료] <a href='{{ site_url('/product/on/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
+                                    @if(empty($data['wAttachFile']) == false)
+                                        &nbsp;[첨부자료] {{--<a href='{{ site_url('/product/on/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}} </a>--}}
+                                        <a href='{{ site_url('/product/on/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
                                     @endif
                                 @endif
 
@@ -145,7 +146,7 @@
                                     <option value="{{$row['CourseIdx']}}" class="{{$row['SiteCode']}}" @if($data['CourseIdx'] == $row['CourseIdx']) selected="selected" @endif>{{$row['CourseName']}}</option>
                                 @endforeach
                             </select>
-                        </div>`
+                        </div>
                         <div class="item inline-block">
                             <select name="SubjectIdx" id="SubjectIdx"  required="required" class="form-control" title="과목">
                                 <option value="">과목</option>

@@ -922,13 +922,13 @@ class EventFModel extends WB_Model
     public function listEventPromotionForLiveVideo($promotion_code)
     {
         $column = '
-            EplvIdx, PromotionCode, Title, LiveAutoType, LiveRatio, REPLACE(LiveDate, "-", "") AS LiveDate, LiveStartTime, LiveEndTime, LiveUrl, FileFullPath, FileRealName, FileStartDateTime, FileEndDateTime,
-            DATE_FORMAT(FileStartDateTime, \'%Y-%m-%d\') AS FileStartDate,
-            DATE_FORMAT(FileEndDateTime, \'%Y-%m-%d\') AS FileEndDate,
-            DATE_FORMAT(FileStartDateTime, \'%H\') AS FileStartHour,
-            DATE_FORMAT(FileEndDateTime, \'%H\') AS FileEndHour,
-            DATE_FORMAT(FileStartDateTime, \'%i\') AS FileStartMin,
-            DATE_FORMAT(FileEndDateTime, \'%i\') AS FileEndMin
+            EplvIdx, PromotionCode, Title, LiveAutoType, LiveRatio, REPLACE(LiveDate, "-", "") AS LiveDate, LiveStartTime, LiveEndTime, LiveUrl, FileFullPath, FileRealName, FileStartDatm, FileEndDatm,
+            DATE_FORMAT(FileStartDatm, \'%Y-%m-%d\') AS FileStartDate,
+            DATE_FORMAT(FileEndDatm, \'%Y-%m-%d\') AS FileEndDate,
+            DATE_FORMAT(FileStartDatm, \'%H\') AS FileStartHour,
+            DATE_FORMAT(FileEndDatm, \'%H\') AS FileEndHour,
+            DATE_FORMAT(FileStartDatm, \'%i\') AS FileStartMin,
+            DATE_FORMAT(FileEndDatm, \'%i\') AS FileEndMin
         ';
         $from = "
             FROM {$this->_table['event_promotion_live_video']}

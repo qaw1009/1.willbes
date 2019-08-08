@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 교수 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 교수 학습자료실 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_site_tabs('tabs_site_code') !!}
         {!! csrf_field() !!}

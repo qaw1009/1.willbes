@@ -140,6 +140,7 @@
             $.each(arr_search_data,function(key,value) {
                 $search_form.find('input[name="'+key+'"]').val(value);
                 $search_form.find('select[name="'+key+'"]').val(value);
+                $search_form.find('input[name="'+key+'"]').attr('checked', true);
             });
 
             // site-code에 매핑되는 select box 자동 변경

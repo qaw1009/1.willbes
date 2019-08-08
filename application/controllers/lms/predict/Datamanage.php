@@ -49,42 +49,34 @@ class Datamanage extends \app\controllers\BaseController
      */
     public function list()
     {
-        $rules = [
-            ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_PayStatusCcd', 'label' => '결제상태', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_TakeForm', 'label' => '응시형태', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_TakeArea', 'label' => '응시지역', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_IsStatus', 'label' => '응시여부', 'rules' => 'trim|in_list[Y,N]'],
-            ['field' => 'search_IsTicketPrint', 'label' => '응시표출력', 'rules' => 'trim|in_list[Y,N]'],
-            ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
-            ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
-            ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
-        ];
-        if ($this->validate($rules) === false) return;
-
         $condition = [
             'EQ' => [
-                'PR.ApplyType' => $this->_req('search_ApplyType'),
-                'PR.SiteCode' => $this->_req('search_site_code'),
-                'PR.TakeMockPart' => $this->_req('search_TakeMockPart'),
-                'PR.TakeArea' => $this->_req('search_TakeArea'),
+                'r.IsStatus' => 'Y',
+                'r.ApplyType' => $this->_reqP('search_ApplyType'),
+                'r.SiteCode' => $this->_reqP('search_site_code'),
+                'r.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
+                'r.TakeArea' => $this->_reqP('search_TakeArea'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'M.MemName' => $this->_req('search_fi', true),
-                    'M.MemId' => $this->_req('search_fi', true),
-                    'PR.TakeNumber' => $this->_req('search_fi', true),
-
+                    'r.MemName' => $this->_reqP('search_fi', true),
+                    'r.MemId' => $this->_reqP('search_fi', true),
+                    'r.TakeNumber' => $this->_reqP('search_fi', true),
                 ]
             ],
         ];
 
-        list($data, $count) = $this->predictModel->predictRegistList3($condition, $this->input->post('length'), $this->input->post('start'));
+        $list = [];
+        $count = $this->predictModel->predictRegistList3(true, $this->_reqP('search_predict_idx'), $condition);
+
+        if ($count > 0) {
+            $list = $this->predictModel->predictRegistList3(false, $this->_reqP('search_predict_idx'), $condition, $this->_reqP('length'), $this->_reqP('start'), ['RegDatm' => 'desc']);
+        }
 
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $data,
+            'data' => $list,
         ]);
 
     }

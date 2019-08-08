@@ -2523,8 +2523,7 @@ body.memBody #Footer {
 .basketBox .basketPrice li:after {content:""; display:block; clear:both}
 
 .basketListBox {
-    margin:10px 20px 20px;
-    padding:0 0 20px;
+    margin:10px 20px 0;
     font-size:14px;
 }
 .basketListBox div {
@@ -2556,13 +2555,26 @@ body.memBody #Footer {
     margin:0;    
 }
 .basketListBox label li:last-child span {
-    margin-left:20px;
+    margin:0 20px;
     color:#0d74ae;
 }
 .basketListBox div:after {
     content:""; display:block; clear:both;
 }
-.basketListBox .lecTxt li {
+.basketWrap .lecTxt {
+    padding:0 20px 20px;
+}
+.basketWrap .lecTxt li {
+    line-height: 1.5;
+    list-style-type: disc;
+    margin-left:15px;
+}
+
+/*결제하기*/
+.paymentTxt {
+    padding:20px;
+}
+.paymentTxt li {
     line-height: 1.5;
     list-style-type: disc;
     margin-left:15px;

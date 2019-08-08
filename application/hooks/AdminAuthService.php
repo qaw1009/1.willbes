@@ -76,6 +76,7 @@ abstract class AdminAuthService
                             'MenuIdx' => $row['MenuIdx'],
                             'GroupMenuIdx' => $row['GroupMenuIdx'],
                             'UrlRouteName' => $this->_toHtmlUrlRouteName($row['UrlRouteName']),
+                            'MenuName' => $row['MenuName']
                         ];
                     }
                 }

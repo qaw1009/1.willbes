@@ -53,8 +53,8 @@
 
         .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
 
-        .Cts02 .download{padding:75px 0 20px;}       
-        .tabMenu{width:930px;margin:0 auto 80px;}
+        .Cts02 .download{padding:40px 0 20px;}       
+        .tabMenu{width:900px;margin:0 auto 80px;}
         .tabMenu li{display:inline;float:left;width:50%;}
         .tabMenu li a{display:block;text-align:center;border:1px solid #000;border-bottom:0;font-size:140%;
                      font-weight:500;margin-right:2px;padding:20px 0;color: #fff;background:#000;}
@@ -231,7 +231,7 @@
                             <td>           566 </td>
                             <td>        31,558 </td>
                             <td>55.8:1</td>
-                            <td>22,549 　</td>
+                            <td>22,549</td>
                             <td>85.83</td>
                         </tr>
                         <tr>
@@ -242,7 +242,7 @@
                             <td>          159 </td>
                             <td>        14,106 </td>
                             <td>88.7:1</td>
-                            <td>9,859 　</td>
+                            <td>9,859</td>
                             <td>80 / 79.16(지방)</td>
                         </tr>
                         <tr>
@@ -540,7 +540,7 @@
                             <td>           204 </td>
                             <td>        5,104 </td>
                             <td>25:1</td>
-                            <td>3,424  　</td>
+                            <td>3,424</td>
                             <td>84.16</td>
                         </tr>
                         <tr>
@@ -551,7 +551,7 @@
                             <td>          32 </td>
                             <td>       672 </td>
                             <td>21:1</td>
-                            <td>462  　</td>
+                            <td>462</td>
                             <td>75 / 72.5(양성)</td>
                         </tr>
                         <tr>

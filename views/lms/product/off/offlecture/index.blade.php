@@ -194,7 +194,7 @@
                 serverSide: true,
 
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     /*{ text: '<i class="fa fa-pencil mr-5"></i> 개설여부/접수상태 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order'}*/
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 단과반복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
@@ -271,7 +271,7 @@
                         }},
 
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                            return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
                     {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
                             return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
@@ -360,23 +360,26 @@
 
             // 신규, 추천 상태 변경
             $('.btn-new-best-modify').on('click', function() {
-                if (!confirm('신규/추천 상태를 적용하시겠습니까?')) {
+                if (!confirm('신규/추천/사용 상태를 적용하시겠습니까?')) {
                     return;
                 }
 
                 var $is_new = $list_table.find('input[name="is_new"]');
                 var $is_best = $list_table.find('input[name="is_best"]');
+                var $is_use = $list_table.find('input[name="is_use"]');
                 var $params = {};
-                var origin_val, this_val, this_new_val, this_best_val;
+                var origin_val, this_val, this_new_val, this_best_val, this_use_val;
 
                 $is_new.each(function(idx) {
                     // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
                     this_new_val = $(this).filter(':checked').val() || 'N';
                     this_best_val = $is_best.eq(idx).filter(':checked').val() || 'N';
-                    this_val = this_new_val + ':' + this_best_val;
-                    origin_val = $(this).data('origin-is-new') + ':' + $is_best.eq(idx).data('origin-is-best');
+                    this_use_val = $is_use.eq(idx).filter(':checked').val() || 'N';
+
+                    this_val = this_new_val + ':' + this_best_val + ':' + this_use_val;
+                    origin_val = $(this).data('origin-is-new') + ':' + $is_best.eq(idx).data('origin-is-best') + ':' + $is_use.eq(idx).data('origin-is-use');
                     if (this_val !== origin_val) {
-                        $params[$(this).data('idx')] = { 'IsNew' : this_new_val, 'IsBest' : this_best_val };
+                        $params[$(this).data('idx')] = { 'IsNew' : this_new_val, 'IsBest' : this_best_val, 'IsUse' : this_use_val };
                     }
                 });
 

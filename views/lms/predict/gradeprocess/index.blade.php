@@ -31,6 +31,9 @@
                                 @endif
                             @endforeach
                         </select>
+                        <div class="inline-block ml-10">
+                            <span class="required">*</span> 합격예측서비스명을 먼저 선택해 주세요.
+                        </div>
                     </div>
                 </div>
             </div>

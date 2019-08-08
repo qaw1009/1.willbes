@@ -36,11 +36,14 @@ class Passline extends \app\controllers\BaseController
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-        $PredictIdx = element('PredictIdx',$arr_input);
 
+        $PredictIdx = element('PredictIdx',$arr_input);
         if(empty($PredictIdx)){
             $PredictIdx = '1';
         }
+
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = empty($arr_input['SiteCode']) === false ? $arr_input['SiteCode'] : key($arr_site_code);
 
         //합격예측 기본정보호출
         $productList = $this->predictModel->getProductALL();
@@ -316,6 +319,8 @@ class Passline extends \app\controllers\BaseController
 
         $this->load->view('predict/passline/index', [
             'productList' => $productList,
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code,
             'PredictIdx' => $PredictIdx,
             'dataSet' => $dataSet
         ]);

@@ -4,19 +4,29 @@
     <h5>- 합격예측서비스 직렬별 예상 합격선을 관리합니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
-                        <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx" onChange="selProd(this.value)">
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
                             <option value="">합격예측서비스명</option>
                             @foreach($productList as $key => $val)
                                 <option value="{{ $val['PredictIdx'] }}" class="{{ $val['SiteCode'] }}" @if($PredictIdx == $val['PredictIdx']) selected @endif>[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
                             @endforeach
                         </select>
+                        <div class="inline-block ml-10">
+                            <span class="required">*</span> 합격예측서비스명을 먼저 선택해 주세요.
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary btn-search" onclick="selProd();"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
             </div>
         </div>
     </form>
@@ -117,10 +127,14 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
+            // 합격예측서비스명 자동 변경
+            $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
         });
 
-        function selProd(value){
-            location.href = "/predict/passline/?PredictIdx="+value;
+        function selProd() {
+            var qs = '?PredictIdx=' + $search_form.find('select[name="search_PredictIdx"]').val();
+            qs += '&SiteCode=' + $search_form.find('select[name="search_site_code"]').val();
+            location.href = '/predict/passline/' + qs;
         }
 
         function registLine(PredictIdx){

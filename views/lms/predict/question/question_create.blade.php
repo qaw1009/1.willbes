@@ -18,7 +18,7 @@
                         <th colspan="1">합격예측 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
                             <select class="form-control mr-5" id="PredictIdx" name="PredictIdx" onChange="selPredictIdx(this.value,'')">
-                                <option value="">합격예측선택</option>
+                                <option value="">합격예측서비스명</option>
                                 @foreach($productList as $key => $val)
                                     @if($method == 'PUT')
                                         <option value="{{ $val['PredictIdx'] }}" @if($data['PredictIdx'] == $val['PredictIdx']) selected @endif>{{ $val['ProdName'] }}</option>

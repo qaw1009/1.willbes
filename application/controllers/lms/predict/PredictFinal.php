@@ -9,6 +9,8 @@ class PredictFinal extends \app\controllers\BaseController
 
     public function index()
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
 
         list($data, $count) = $this->predictModel->mainList();
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
@@ -17,6 +19,8 @@ class PredictFinal extends \app\controllers\BaseController
 
         $this->load->view('predict/predictFinal/index',[
             'predictList' => $data,
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code,
             'area' => $area,
             'serial' => $serial,
         ]);

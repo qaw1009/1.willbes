@@ -35,7 +35,13 @@ class Request extends \app\controllers\BaseController
      */
     public function index()
     {
-        $this->load->view('predict/request/index', []);
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
+
+        $this->load->view('predict/request/index', [
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code
+        ]);
     }
 
     /**

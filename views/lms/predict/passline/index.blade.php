@@ -1,35 +1,41 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 모의고사 구성을 위해 과목별 문제, 정답, 해설을 등록하는 메뉴입니다.</h5>
+    <h5>- 합격예측서비스 직렬별 예상 합격선을 관리합니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group form-inline">
-                    <label class="col-md-1 control-label">합격예측</label>
+                    <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
-
-                        <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx" onChange="selProd(this.value)">
-                            <option value="">합격예측명</option>
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
+                            <option value="">합격예측서비스명</option>
                             @foreach($productList as $key => $val)
-                                <option value="{{ $val['PredictIdx'] }}" @if($PredictIdx == $val['PredictIdx']) selected @endif>{{ $val['ProdName'] }}</option>
+                                <option value="{{ $val['PredictIdx'] }}" class="{{ $val['SiteCode'] }}" @if($PredictIdx == $val['PredictIdx']) selected @endif>[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
                             @endforeach
                         </select>
-
+                        <div class="inline-block ml-10">
+                            <span class="required">*</span> 합격예측서비스명을 먼저 선택해 주세요.
+                        </div>
                     </div>
                 </div>
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary btn-search" onclick="selProd();"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
             </div>
         </div>
     </form>
-    <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
-        <div class="x_content mb-20">
+    <div class="x_panel mt-10">
+        <div class="x_content">
             <form class="form-horizontal" id="regi_form" name="regi_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
                 <input type="hidden" id="PredictIdx" name="PredictIdx" value="{{ $PredictIdx }}" />
-                <div style="text-align:right; margin:10px;"><input type="button" value="예상합격선 저장" onClick="registLine('{{ $PredictIdx }}')"/></div>
+                <div class="text-right"><input type="button" value="예상합격선 저장" class="btn btn-sm btn-success mr-0" onClick="registLine('{{ $PredictIdx }}')"/></div>
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
@@ -105,7 +111,7 @@
                                         <input type="text" name="StabilityAvrPoint[]" value="{{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : ""}}" style="width:60px;" /> ~
                                     </td>
                                     <td>
-                                        <input type="button" value="계산" onClick="calculate('{{ $val2['TakeMockPart'] }}','{{ $val2['TakeArea'] }}','{{ $PredictIdx }}')" />
+                                        <input type="button" value="계산" class="btn btn-xs btn-primary mr-0" onClick="calculate('{{ $val2['TakeMockPart'] }}','{{ $val2['TakeArea'] }}','{{ $PredictIdx }}')" />
                                     </td>
                                 </tr>
                             @endforeach
@@ -117,15 +123,18 @@
     </div>
 
     <script type="text/javascript">
+        var $search_form = $('#search_form');
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
+            // 합격예측서비스명 자동 변경
+            $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
         });
 
-        function selProd(value){
-
-            location.href = "/predict/passline/?PredictIdx="+value;
-
+        function selProd() {
+            var qs = '?PredictIdx=' + $search_form.find('select[name="search_PredictIdx"]').val();
+            qs += '&SiteCode=' + $search_form.find('select[name="search_site_code"]').val();
+            location.href = '/predict/passline/' + qs;
         }
 
         function registLine(PredictIdx){
@@ -158,7 +167,7 @@
                 alert('%값을 모두 입력해주세요.');
                 return ;
             }
-            url = "{{ site_url("/predict/passline/calculateAjax") }}";
+            var url = "{{ site_url("/predict/passline/calculateAjax") }}";
             var data = {
                 '{{ csrf_token_name() }}' : $regi_form.find('[name="{{ csrf_token_name() }}"]').val(),
                 '_method' : 'POST',

@@ -36,21 +36,18 @@ class Prerequest extends \app\controllers\BaseController
      */
     public function index()
     {
-        $siteCode = get_auth_site_codes();
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
 
         $search_fi = $this->_req('search_fi', true);
         $search_site_code = $this->_req('search_site_code', true);
         $search_TakeMockPart = $this->_req('search_TakeMockPart', true);
         $search_TakeArea = $this->_req('search_TakeArea', true);
-//
+
         if($search_site_code){
             $scode = $search_site_code;
         } else {
-            $scode = $siteCode[0];
+            $scode = key($arr_site_code);
         }
-
-        $arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원'];
-        $arrtab = array();
 
         list($data, $count) = $this->predictModel->mainList();
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
@@ -58,15 +55,14 @@ class Prerequest extends \app\controllers\BaseController
         $serial = $this->predictModel->getSerialAll();
 
         $this->load->view('predict/prerequest/index', [
-              'predictList' => $data,
-              'siteCodeDef' => $scode,
-              'area' => $area,
-              'serial' => $serial,
-              'search_TakeMockPart'=> $search_TakeMockPart,
-              'search_TakeArea'=> $search_TakeArea,
-              'search_fi'=> $search_fi,
-              'arrsite' => $arrsite,
-              'arrtab' => $arrtab
+            'predictList' => $data,
+            'arr_site_code' => $arr_site_code,
+            'def_site_code' => $scode,
+            'area' => $area,
+            'serial' => $serial,
+            'search_TakeMockPart'=> $search_TakeMockPart,
+            'search_TakeArea'=> $search_TakeArea,
+            'search_fi'=> $search_fi
         ]);
     }
 

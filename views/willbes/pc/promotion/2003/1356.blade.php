@@ -52,10 +52,9 @@
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 
         .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
-        .Cts02 a:hover {background:#e50001}
 
-        .Cts02 .download{padding-bottom:20px;}       
-        .tabMenu{width:980px;margin:0 auto 80px;}
+        .Cts02 .download{padding:75px 0 20px;}       
+        .tabMenu{width:930px;margin:0 auto 80px;}
         .tabMenu li{display:inline;float:left;width:50%;}
         .tabMenu li a{display:block;text-align:center;border:1px solid #000;border-bottom:0;font-size:140%;
                      font-weight:500;margin-right:2px;padding:20px 0;color: #fff;background:#000;}

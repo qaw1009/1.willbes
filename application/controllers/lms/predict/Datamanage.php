@@ -35,16 +35,12 @@ class Datamanage extends \app\controllers\BaseController
      */
     public function index()
     {
-        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
-
-        $arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원'];
-        $arrtab = array();
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
 
         $this->load->view('predict/datamanage/index', [
-            'siteCodeDef' => $cateD1[0]['SiteCode'],
-            'cateD1' => $cateD1,
-            'arrsite' => $arrsite,
-            'arrtab' => $arrtab
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code
         ]);
     }
 

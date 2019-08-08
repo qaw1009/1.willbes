@@ -30,7 +30,7 @@
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1360_top_bg.jpg) no-repeat center top;}      
         .wb_01 {background:#fff;}
         .wb_02 {background:#5f5f5f}
-        .wb_03 {background:#464646}f
+        .wb_03 {background:#464646}
         .wb_04 {background:#5f5f5f;}
         .wb_05 {background:#e2e2e2;}
 

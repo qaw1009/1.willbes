@@ -112,6 +112,7 @@
             $.each(arr_search_data,function(key,value) {
                 $search_form.find('input[name="'+key+'"]').val(value);
                 $search_form.find('select[name="'+key+'"]').val(value);
+                $search_form.find('input[name="'+key+'"]').attr('checked', true);
             });
 
             // site-code에 매핑되는 select box 자동 변경
@@ -120,7 +121,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-copy mr-10"></i> 공지적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
+                    { text: '<i class="fa fa-copy mr-10"></i> 공지/사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
 
                     { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
 
@@ -183,7 +184,7 @@
                         }},
 
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
+                            return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},
                     {'data' : 'ReadCnt'},
                     {'data' : 'CommentCnt'},
@@ -205,22 +206,24 @@
 
             // Best 적용
             $('.btn-is-best').on('click', function() {
-                if (!confirm('상태를 적용하시겠습니까?')) {
+                if (!confirm('공지/사용 상태를 적용하시겠습니까?')) {
                     return;
                 }
 
                 var $is_best = $list_table.find('input[name="is_best"]');
-                var origin_val, this_val, this_best_val;
+                var $is_use = $list_table.find('input[name="is_use"]');
+                var origin_val, this_val, this_best_val, this_use_val;
                 var $params = {};
                 var _url = '{{ site_url("/board/exam/{$boardName}/storeIsBest/?") }}' + '{!! $boardDefaultQueryString !!}';
 
                 $is_best.each(function(idx) {
                     // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
                     this_best_val = $(this).filter(':checked').val() || '0';
-                    this_val = this_best_val;
-                    origin_val = $is_best.eq(idx).data('origin-is-best');
+                    this_use_val = $is_use.eq(idx).filter(':checked').val() || 'N';
+                    this_val = this_best_val + ':' + this_use_val;
+                    origin_val = $is_best.eq(idx).data('origin-is-best') + ':' + $is_use.eq(idx).data('origin-is-use');;
                     if (this_val != origin_val) {
-                        $params[$(this).data('is-best-idx')] = { 'IsBest' : this_best_val };
+                        $params[$(this).data('is-best-idx')] = { 'IsBest' : this_best_val, 'IsUse' : this_use_val };
                     }
                 });
 

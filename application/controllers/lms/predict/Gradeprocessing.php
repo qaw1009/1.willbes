@@ -35,16 +35,19 @@ class Gradeprocessing extends \app\controllers\BaseController
      */
     public function index()
     {
+        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $def_site_code = key($arr_site_code);
+
         //합격예측 기본정보호출
         $productList = $this->predictModel->getProductALL();
         $serialList = $this->predictModel->getSerialAll();
-
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
-
         $areaList = $this->predictModel->getArea($sysCode_Area);
 
         $this->load->view('predict/gradeprocess/index', [
             'productList' => $productList,
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code,
             'serialList' => $serialList,
             'areaList' => $areaList
         ]);

@@ -1,21 +1,20 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 최종합격예측 등록현황입니다.</h5>
+    <h5>- 합격예측서비스 최종합격자 신청현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
-
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
-                            <option value="">합격예측서비스</option>
+                            <option value="">합격예측서비스명</option>
                             @foreach($predictList as $row)
-                                <option value="{{$row['PredictIdx']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
+                                <option value="{{$row['PredictIdx']}}" class="{{$row['SiteCode']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
@@ -34,27 +33,25 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">회원검색</label>
-                    <div class="col-md-3 form-inline">
-                        <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
-                    <div class="col-md-5 alignleft">
-                        <p class="form-control-static">회원명, 회원아이디 검색 가능</p>
+                    <div class="col-md-7">
+                        <p class="form-control-static">회원명, 아이디 검색 가능</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
+            </div>
+        </div>
     </form>
-
-    <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
+    <div class="x_panel mt-10">
         <div class="x_content">
             <table id="list_ajax_table" class="table table-bordered table-striped table-head-row2 form-table">
                 <thead class="bg-white-gray">
@@ -78,7 +75,6 @@
                 <tbody>
                 </tbody>
             </table>
-
         </div>
     </div>
 
@@ -88,18 +84,15 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            // 합격예측서비스명 자동 변경
+            $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
 
             // DataTables
             $datatable = $list_table.DataTable({
-                info: true,
-                language: {
-                    "info": "[ 총 _MAX_건 ]"
-                },
-                dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
+                serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }
                 ],
-                serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/predict/predictFinal/listAjax') }}',
                     'type' : 'POST',
@@ -109,8 +102,8 @@
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'ProdName', 'class': 'text-center'},
                     {'data' : 'MemName', 'class': 'text-center'},
                     {'data' : 'MemId', 'class': 'text-center'},
@@ -120,8 +113,8 @@
                     {'data' : 'TakeAreaCcdName', 'class': 'text-center'},
                     {'data' : 'pointJson', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '체력점수 : ' + row.StrengthPoint + ' / 가산점 : ' + row.AddPoint + '</>';
-                        }},
+                        return '체력점수 : ' + row.StrengthPoint + ' / 가산점 : ' + row.AddPoint + '</>';
+                    }},
                     {'data' : 'FinalPoint', 'class': 'text-center'},
                     {'data' : 'AnnouncementType', 'class': 'text-center'},
                     {'data' : 'SetEtcValues', 'class': 'text-center'},
@@ -136,7 +129,6 @@
                     formCreateSubmit('{{site_url('predict/predictFinal/listAjax/Y')}}', $search_form.serializeArray(), 'POST');
                 }
             });
-
         });
     </script>
 @stop

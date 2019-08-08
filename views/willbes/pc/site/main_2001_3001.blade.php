@@ -7,11 +7,11 @@
         @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="Section MainVisual">
-            <div class="widthAuto">
+            <div class="widthAuto">              
                 <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_01.jpg" alt="대한민국1등 경찰학원" usemap="#Map190806" border="0">
                 <map name="Map190806" id="Map190806">
-                    <area shape="rect" coords="31,30,212,105" href="#collaboList" alt="협력기관" />
-                </map>
+                    <area shape="rect" coords="2,30,256,126" href="#collaboslides" alt="협력기관" />
+                </map>                  
             </div>
             <div class="widthAutoFull summer">
                 @if (date('YmdH') < '2019071316')
@@ -289,7 +289,7 @@
             @include('willbes.pc.site.main_partial.hot_pick_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
         </div>
         
-        <div class="Section Section6 mb50">
+        <div class="Section Section6 mb50" id="to_go">
             <div class="widthAuto">
                 {{-- best/new product include --}}
                 @include('willbes.pc.site.main_partial.lecture_' . $__cfg['SiteCode'])

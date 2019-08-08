@@ -2,13 +2,12 @@
 
 @section('content')
     <div id="content">
-        <h5 class="mt-20">- 모의고사 기준으로 오프라인 응시자 성적을 등록하는 메뉴입니다.</h5>
-
-        <div class="x_panel mt-10">
+        <h5>- 합격예측서비스 가데이터를 관리합니다.</h5>
+        <div class="x_panel mt-10 mb-0">
             <div class="x_content">
                 <form class="form-horizontal" id="invoice_form" name="invoice_form" method="POST" onsubmit="return false;">
                     {!! csrf_field() !!}
-                    <div class="form-group form-group-sm form-group-bordered mt-15">
+                    <div class="form-group form-group-sm form-group-bordered">
                         <label class="control-label col-md-1">엑셀정보</label>
                         <div class="col-md-11 form-inline">
                             <input type="file" id="attach_file" name="attach_file" class="form-control" title="송장엑셀파일" value="">
@@ -16,7 +15,7 @@
                             <button type="button" name="btn_file_download" onClick="sampledown()" class="btn btn-success btn-sm mb-0">샘플엑셀 다운로드</button>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-10">
                         <div class="col-md-12">
                             <ul class="fa-ul mb-0">
                                 <li><i class="fa-li fa fa-minus-square"></i>등록할 엑셀파일 형식 : Excel 97~2003</li>
@@ -27,8 +26,8 @@
                 </form>
             </div>
         </div>
-        <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
-            <div class="x_content mb-20">
+        <div class="x_panel mt-10">
+            <div class="x_content">
                 <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                     {!! csrf_field() !!}
                     <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
@@ -53,7 +52,6 @@
                 </form>
             </div>
         </div>
-
     </div>
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
@@ -75,16 +73,8 @@
         $(document).ready(function() {
             // DataTables
             $datatable = $list_table.DataTable({
-                info: true,
-                language: {
-                    "info": "[ 총 _MAX_건 ]"
-                },
-                dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
-                buttons: [
-                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn btn-sm btn-primary mr-15 btn-sms' },
-
-                ],
                 serverSide: true,
+                buttons: [],
                 ajax: {
                     'url' : '{{ site_url('/predict/datamanage/list') }}',
                     'type' : 'POST',
@@ -94,8 +84,8 @@
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'ApplyType', 'class': 'text-center'},
                     {'data' : 'MemName', 'class': 'text-center'},
                     {'data' : 'MemId', 'class': 'text-center'},
@@ -108,8 +98,8 @@
                     {'data' : 'RegDatm', 'class': 'text-center'}
                 ]
             });
-
         });
+
         // 목록 이동
         $('#goList').on('click', function() {
             location.replace('{{ site_url('/predict/datamanage/') }}' + getQueryString());
@@ -145,11 +135,9 @@
             }, showError, false, 'POST', 'json', is_file);
         };
 
-        // 송장엑셀다운로드 버튼 클릭
+        // 샘플엑셀다운로드 버튼 클릭
         $('button[name="btn_file_download"]').on('click', function() {
             location.replace('{{ site_url('/predict/datamanage/sampleDownload') }}');
         });
-
-
     </script>
 @stop

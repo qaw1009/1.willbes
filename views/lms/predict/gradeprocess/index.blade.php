@@ -1,28 +1,22 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 모의고사 구성을 위해 과목별 문제, 정답, 해설을 등록하는 메뉴입니다.</h5>
+    <h5>- 합격예측서비스 원점수 시험통계 처리결과를 관리합니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group form-inline">
-                    <label class="col-md-1 control-label">합격예측</label>
+                    <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
-
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx" onChange="selProd(this.value)">
-                            <option value="">합격예측명</option>
+                            <option value="">합격예측비스명</option>
                             @foreach($productList as $key => $val)
-                                <option value="{{ $val['PredictIdx'] }}">{{ $val['ProdName'] }}</option>
+                                <option value="{{ $val['PredictIdx'] }}" class="{{$val['SiteCode']}}">[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
                             @endforeach
                         </select>
-
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                    <label class="col-md-1 control-label">시험정보선택</label>
-                    <div class="col-md-6">
                         <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
                             <option value="">직렬선택</option>
                             @foreach($serialList as $key => $val)
@@ -33,16 +27,21 @@
                             <option value="">지역선택</option>
                             @foreach($areaList as $key => $val)
                                 @if($val['Ccd'] != '712018')
-                                <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
+                                    <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
                                 @endif
                             @endforeach
                         </select>
-                    </div>
-                    <div class="col-md-5 text-right">
-                        <button type="submit" class="btn btn-primary" id="btn_search">검색</button>
-                        <button type="button" class="btn btn-default" id="searchInit">초기화</button>
+                        <div class="inline-block ml-10">
+                            <span class="required">*</span> 합격예측서비스명을 먼저 선택해 주세요.
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -51,8 +50,8 @@
         <div class="col-md-9">
             <input type="hidden" id="PredictIdx" name="PredictIdx" value="" />
         </div>
-        <div class="col-md-3 text-right">
-            - 건수가 많아서 정상동작 안할시 사용해주세요.
+        <div class="col-md-3 text-right form-inline pr-0">
+            <span class="required">*</span> 건수가 많아서 정상동작 안할시 사용해주세요.
             <select class="form-control mr-5" id="TakeMockPart" name="TakeMockPart">
                 <option value="">직렬별입력</option>
                 @foreach($serialList as $key => $val)
@@ -61,7 +60,7 @@
             </select>
         </div>
     </form>
-    <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
+    <div class="x_panel mt-10">
         <div class="x_content mb-20">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
@@ -81,12 +80,6 @@
             </form>
         </div>
     </div>
-
-    <style>
-        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-            top: 14px;
-        }
-    </style>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -95,35 +88,23 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-            // 검색 초기화
-            $('#searchInit, #tabs_site_code > li').on('click', function () {
-                $search_form.find('[name^=search_]:not(#search_PredictIdx)').each(function () {
-                     $(this).val('');
-                });
-
-                var eTarget = (event.target) ? event.target : event.srcElement;
-                if($(eTarget).attr('id') == 'searchInit') $datatable.draw();
-            });
+            // 합격예측서비스명 자동 변경
+            $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
 
             // DataTables
             $datatable = $list_table.DataTable({
-                info: true,
-                language: {
-                    "info": "[ 총 _MAX_건 ]",
-                },
-                dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
+                serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 원점수입력', className: 'btn btn-sm btn-success mr-15', action: function(e, dt, node, config) {
-                            scoreMakeStep1();
-                        }},
+                        scoreMakeStep1();
+                    }},
                     { text: '<i class="fa fa-pencil mr-5"></i> 조정점수입력', className: 'btn btn-sm btn-success mr-15', action: function(e, dt, node, config) {
-                            scoreMakeStep2();
-                        }},
+                        scoreMakeStep2();
+                    }},
                     { text: '<i class="fa fa-pencil mr-5"></i> 시험통계처리', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
-                            scoreMakeStep3();
-                        }}
+                        scoreMakeStep3();
+                    }}
                 ],
-                serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/predict/gradeprocessing/list') }}',
                     'type' : 'POST',

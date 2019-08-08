@@ -45,7 +45,6 @@ Class CommonLecture extends \app\controllers\BaseController
             return;
         }
         $result = $this->commonLectureModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
-
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 
@@ -62,10 +61,9 @@ Class CommonLecture extends \app\controllers\BaseController
         if ($this->validate($rules) === false) {
             return;
         }
-
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->lectureFreeModel->_prodCopy($prodcode, $this->copy_prodtype);
+        $result = $this->commonLectureModel->_prodCopy($prodcode, $this->copy_prodtype);
         $this->json_result($result,'복사 되었습니다.',$result);
     }
 

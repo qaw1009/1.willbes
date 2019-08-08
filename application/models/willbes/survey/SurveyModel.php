@@ -772,18 +772,25 @@ class SurveyModel extends WB_Model
         $Res = $query->result_array();
         $arrData = null;
         if (empty($Res) === false) {
-            $total = $Res[0]['CNT'] + $Res[1]['CNT'] + $Res[2]['CNT'] + $Res[3]['CNT'] + $Res[4]['CNT'] + $Res[5]['CNT'];
+            $temp_cnt_0 = (empty($Res[0]['CNT']) === true) ? 0 : $Res[0]['CNT'];
+            $temp_cnt_1 = (empty($Res[1]['CNT']) === true) ? 0 : $Res[1]['CNT'];
+            $temp_cnt_2 = (empty($Res[2]['CNT']) === true) ? 0 : $Res[2]['CNT'];
+            $temp_cnt_3 = (empty($Res[3]['CNT']) === true) ? 0 : $Res[3]['CNT'];
+            $temp_cnt_4 = (empty($Res[4]['CNT']) === true) ? 0 : $Res[4]['CNT'];
+            $temp_cnt_5 = (empty($Res[5]['CNT']) === true) ? 0 : $Res[5]['CNT'];
+
+            $total = $temp_cnt_0 + $temp_cnt_1 + $temp_cnt_2 + $temp_cnt_3 + $temp_cnt_4 + $temp_cnt_5;
             // 0 ~ 100
-            $zh = $Res[0]['CNT'] ? ROUND($Res[0]['CNT'] / $total * 100, 2) : '0';
+            $zh = $temp_cnt_0 ? ROUND($temp_cnt_0 / $total * 100, 2) : '0';
             $arrData['zh'] = $zh;
             // 100 ~ 200
-            $ht = $Res[1]['CNT'] ? ROUND($Res[1]['CNT'] / $total * 100, 2) : '0';
+            $ht = $temp_cnt_1 ? ROUND($temp_cnt_1 / $total * 100, 2) : '0';
             $arrData['ht'] = $ht;
             // 200 ~ 300
-            $tt = $Res[2]['CNT'] ? ROUND($Res[2]['CNT'] / $total * 100, 2) : '0';
+            $tt = $temp_cnt_2 ? ROUND($temp_cnt_2 / $total * 100, 2) : '0';
             $arrData['tt'] = $tt;
             // 300 ~ 400
-            $tf = $Res[3]['CNT'] ? ROUND($Res[3]['CNT'] / $total * 100, 2) : '0';
+            $tf = $temp_cnt_3 ? ROUND($temp_cnt_3 / $total * 100, 2) : '0';
             $arrData['tf'] = $tf;
             // 400 ~ 500
             $ff = 100 - ($zh + $ht + $tt + $tf);

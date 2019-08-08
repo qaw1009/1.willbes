@@ -59,6 +59,7 @@
     </form>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
+        <input type="hidden" name="search_predict_idx" value="{{ $PredictIdx }}">
     </form>
     <style>
         .tooltip-inner { max-width: 100%; padding: 2px; background: #555; }

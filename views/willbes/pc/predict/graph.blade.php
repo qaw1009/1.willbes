@@ -35,7 +35,7 @@
                         <li class="dk"><a href="javascript:selArea(712003)" id="ss_712003" alt="경남">대구</a></li>
                         <li class="bs"><a href="javascript:selArea(712002)" id="ss_712002" alt="부산">부산</a></li>
                         <li class="us"><a href="javascript:selArea(712007)" id="ss_712007" alt="울산">울산</a></li>
-                        <li class="jb"><a href="javascript:selArea(712013)" id="ss_712014" alt="전북">전북</a></li>
+                        <li class="jb"><a href="javascript:selArea(712013)" id="ss_712013" alt="전북">전북</a></li>
                         <li class="jn"><a href="javascript:selArea(712014)" id="ss_712014" alt="전남">전남</a></li>
                         <li class="kj"><a href="javascript:selArea(712005)" id="ss_712005" alt="광주">광주</a></li>
                         <li class="jj"><a href="javascript:selArea(712017)" id="ss_712017" alt="제주">제주</a></li>

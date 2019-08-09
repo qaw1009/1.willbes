@@ -1,43 +1,47 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class PackageUser extends \app\controllers\BaseController
+require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
+
+Class PackageUser extends CommonLecture
 {
-    protected $models = array('sys/wCode', 'sys/site', 'sys/code', 'sys/category', 'product/on/packageUser');
-    protected $helpers = array('download');
-    protected $prodtypeccd = '636001';  //온라인강좌
-    protected $learnpatternccd = '615002'; //사용자 패키지
+    /*
+   * CommonLecture 로 이관
+   protected $models = array('sys/wCode', 'sys/site', 'sys/code', 'sys/category', 'product/on/packageUser');
+   protected $helpers = array('download');
+    */
+   protected $prodtypeccd = '636001';  //온라인강좌
+   protected $learnpatternccd = '615002'; //사용자 패키지
+   protected $copy_prodtype = 'packageuser';  //복사 타입
 
+   public function __construct()
+   {
+       parent::__construct();
+   }
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
+   public function index()
+   {
+       //공통코드      - 판매여부
+       $codes = $this->codeModel->getCcdInArray(['618']);
 
-    public function index()
-    {
-        //공통코드      - 판매여부
-        $codes = $this->codeModel->getCcdInArray(['618']);
+       $category_data = $this->categoryModel->getCategoryArray();
+       $arr_category = [];
+       foreach ($category_data as $row) {
+           $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
+           $arr_category[$arr_key][] = $row;
+       }
 
-        $category_data = $this->categoryModel->getCategoryArray();
-        //var_dump($category_data);
-        $arr_category = [];
-        foreach ($category_data as $row) {
-            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
-            $arr_category[$arr_key][] = $row;
-        }
+       $this->load->view('product/on/packageuser/index',[
+           'arr_lg_category' => element('LG', $arr_category, []),
+           'arr_md_category' => element('MD', $arr_category, []),
+           'Sales_ccd' => $codes['618'],
+       ]);
+   }
 
-        $this->load->view('product/on/packageuser/index',[
-            'arr_lg_category' => element('LG', $arr_category, []),
-            'arr_md_category' => element('MD', $arr_category, []),
-            'Sales_ccd' => $codes['618'],
-        ]);
-    }
-
-    /**
-     * 강좌목록
-     * @return CI_Output
-     */
+   /**
+    * 강좌목록
+    * @return CI_Output
+    */
     public function listAjax()
     {
         $arr_condition = [
@@ -176,30 +180,28 @@ Class PackageUser extends \app\controllers\BaseController
         }
 
         $result = $this->packageUserModel->{$method.'Product'}($this->_reqP(null),'packageuser');
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-
-    /**
-     * 강좌복사
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $prodcode = $this->_reqP('prodCode');
-
-        $result = $this->packageUserModel->_prodCopy($prodcode,'packageuser');
-        //var_dump($result);exit;
-        $this->json_result($result,'복사 되었습니다.',$result);
-    }
+//    /**
+//     * 강좌복사
+//     */
+//    public function copy()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
+//        ];
+//
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//
+//        $prodcode = $this->_reqP('prodCode');
+//
+//        $result = $this->packageUserModel->_prodCopy($prodcode,'packageuser');
+//        //var_dump($result);exit;
+//        $this->json_result($result,'복사 되었습니다.',$result);
+//    }
 
 }

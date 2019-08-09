@@ -1,17 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class Lecture extends \app\controllers\BaseController
+require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
+
+Class Lecture extends CommonLecture
 {
+    /*
+     * CommonLecture 로 이관
     protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/on/lecture');
     protected $helpers = array('download');
+    */
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615001'; //단강좌
 
-
     public function __construct()
     {
-
         parent::__construct();
     }
 
@@ -226,16 +229,14 @@ Class Lecture extends \app\controllers\BaseController
         ]);
     }
 
-    /**
-     * 마스터강의 첨부파일 다운로드
-    */
+/*
     public function download()
     {
         $filename = urldecode($this->_req('filename', false));
         $filename_ori = urldecode($this->_req('filename_ori',false));
         public_download($filename, $filename_ori);
     }
-
+*/
 
     /**
      * 처리 프로세스
@@ -245,7 +246,6 @@ Class Lecture extends \app\controllers\BaseController
         $method = 'add';
 
         $rules = [
-
             ['field'=>'ProdName', 'label' => '단강좌명', 'rules' => 'trim|required'],
             ['field'=>'SchoolYear', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field'=>'CourseIdx', 'label' => '과정', 'rules' => 'trim|required'],
@@ -253,7 +253,6 @@ Class Lecture extends \app\controllers\BaseController
             ['field'=>'LecTypeCcd', 'label' => '강좌유형', 'rules' => 'trim|required'],
             ['field'=>'PcProvisionCcd', 'label' => 'PC제공구분', 'rules' => 'trim|required'],
             ['field'=>'MobileProvisionCcd', 'label' => '모바일제공구분', 'rules' => 'trim|required'],
-            //['field'=>'PlayerTypeCcds[0]', 'label' => '플레이어선택', 'rules' => 'trim|required'],
             ['field'=>'RealSalePrice[0]', 'label' => '수강료', 'rules' => 'trim|required'],
         ];
 
@@ -293,48 +292,6 @@ Class Lecture extends \app\controllers\BaseController
         }
 
         $result = $this->lectureModel->{$method.'Product'}($this->_reqP(null));
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
-
-    /**
-     * 강좌복사
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $prodcode = $this->_reqP('prodCode');
-
-        $result = $this->lectureModel->_prodCopy($prodcode);
-        //var_dump($result);exit;
-        $this->json_result($result,'복사 되었습니다.',$result);
-    }
-
-    /**
-     * 강좌 신규/추천 수정
-     */
-    public function redata()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->lectureModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
-
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
-    
 }

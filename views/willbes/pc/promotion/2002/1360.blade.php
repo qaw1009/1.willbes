@@ -14,7 +14,7 @@
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#e2e2e2;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
@@ -33,7 +33,36 @@
         .wb_03 {background:#464646}
         .wb_04 {background:#5f5f5f;}
         .wb_05 {background:#e2e2e2;}
-        .wb_06 {background:#555;}
+
+        .wb_05_table {width:1000px; margin:0 auto;height:610px;margin-top:-50px;}
+        .wb_05_table div {margin-bottom:80px; font-size:40px;}
+        .wb_05_table div span {color:#c43f90; border-bottom:3px solid #fff2fa}
+        .wb_05_table table {background:#fff; width:90%;margin:0 auto;} 
+        .wb_05_table tr {border-bottom:1px solid #000;border-top:1px solid #000;}        
+        .wb_05_table tr.st01 {background:#e3e4e5}
+        .wb_05_table tr:hover {background:#f7e9c3;}
+        .wb_05_table th,
+        .wb_05_table td {padding:15px 20px; font-size:16px; font-weight:700;}
+        .wb_05_table th {background:#e4e4e4; color:#000;border-right:1px solid #000;}
+        .wb_05_table th:last-child{border:0;}
+        .wb_05_table td:nth-child(1) {text-align:center;border-right:1px solid #000;}
+        .wb_05_table td:nth-child(2) {border-right:1px solid #000;}
+        .wb_05_table td:nth-child(3) {border-right:1px solid #000;}
+        .wb_05_table td:last-chiild {border:0}
+        .wb_05_table td p {font-size:12px}
+        .wb_05_table a {padding:10px 15px; color:#fff; background:#ffc849; font-size:14px; display:block; border-radius:20px;}
+        .wb_05_table a:hover {background:#000;}
+        .wb_05_table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
+
+        .wb_05_table{background:#fff;}
+
+        .lecture_box{content:"zz";display:block;clear:both;}
+        .lecture_box .season{float:left;font-size:17px;width:70px;height:25px;line-height:25px;
+                            background:#966100;color:#fff;border-radius:13px;font-weight:700;margin-left:100px;margin:50px;}
+        .lecture_box .title{float:left;font-size:27px;color:#1f2327;font-weight:700;margin:50px -40px;}
+
+        .wb_06 {background:#555;margin-top:115px;}
+
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">        
@@ -68,20 +97,133 @@
         </div>
 
         <div class="evtCtnsBox wb_05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_05.jpg" alt="수강 신청하기" usemap="#Map1360b" border="0"/>
-            <map name="Map1360b" id="Map1360b">
-                <area shape="rect" coords="914,477,1007,515" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1056" target="_blank" alt="김현욱 신청하기" />
-                <area shape="rect" coords="910,527,1011,564" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1054" target="_blank" alt="하승민 신청하기" />
-                <area shape="rect" coords="911,579,1011,618" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055" target="_blank" alt="원유철 신청하기" />
-                <area shape="rect" coords="908,625,1014,669" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055" target="_blank" alt="오태진 신청하기" />
-                <area shape="rect" coords="907,676,1010,717" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1057" target="_blank" alt="신광은 신청하기" />
-                <area shape="rect" coords="909,728,1014,765" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1058" target="_blank" alt="장정훈 신청하기" />
-                <area shape="rect" coords="916,1010,1009,1052" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="오태진 종합반 신청하기" />
-                <area shape="rect" coords="915,1062,1009,1099" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="원유철 종합반 신청하기" />
-                <area shape="rect" coords="915,1348,1009,1387" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="종합반 오태진 신청하기" />
-                <area shape="rect" coords="914,1397,1009,1438" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="종합반 원유철 신청하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_05.jpg" alt="수강 신청하기"/>                   
         </div> 
+            <div class="evtCtnsBox wb_05_table">           
+                <div class="lecture_box">              
+                    <p class="season">new</p>
+                    <h3 class="title">2020년 합격대비 심화이론 강의</h3>
+                </div>     
+                <div> 
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <col width="20%" />
+                        <col width="" />
+                        <col width="20%" />
+                        <col width="15%" />
+                        <thead>
+                            <tr>
+                                <th colspan="2">강의명</th>
+                                <th>개강일</th>                        
+                                <th colspan="2">학원</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>형법 김원욱</td>
+                                <td>2020 김원욱 형법 심화이론</td>
+                                <td>9.9(월)</td>                        
+                                <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1056" target="_blank">수강신청</a></td>
+                            </tr>
+                            <tr>
+                                <td>영어 하승민</td>
+                                <td>2020 하승민 영어 심화이론</td>
+                                <td>9.9(월)</td>                        
+                                <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1054" target="_blank">수강신청</a></td>
+                            </tr>
+                            <tr>
+                                <td>한국사 원유철</td>
+                                <td>2020 원유철 한국사 심화이론</td>
+                                <td>9.25(수)</td>                       
+                                <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055" target="_blank">수강신청</a></td>
+                            </tr>
+                            <tr>
+                                <td>한국사 오태진</td>
+                                <td>2020 오태진 한국사 심화이론</td>
+                                <td>9.25(수)</td>                       
+                                <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1055" target="_blank">수강신청</a></td>
+                            </tr>                    
+                            <tr>
+                                <td>형사소송법 신광은</td>
+                                <td>2020 신광은 형사소송법 심화이론</td>
+                                <td>10.11(금)</td>                    
+                                <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1057" target="_blank">수강신청</a></td>
+                            </tr>
+                            <tr>
+                                <td>경찰학개론 장정훈</td>
+                                <td>2020 장정훈 경찰학개론 심화이론</td>
+                                <td>10.28(월)</td>                      
+                                <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1058" target="_blank">수강신청</a></td>
+                            </tr>                        
+                        </tbody>
+                    </table>        
+                </div>                                  
+            </div>    
+            <div class="evtCtnsBox wb_05_table"style="height:350px;">           
+                <div class="lecture_box">              
+                    <p class="season">new</p>
+                    <h3 class="title">2020년 합격대비 심화이론 종합반</h3>
+                </div>     
+                <div> 
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <col width="20%" />
+                        <col width="" />
+                        <col width="20%" />
+                        <col width="15%" />
+                        <thead>
+                            <tr>
+                                <th colspan="2">강의명</th>
+                                <th>개강일</th>                        
+                                <th colspan="2">학원</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">2020 경찰시험대비 심화과정 종합반 (史 오태진)</td>
+                                <td>9.9(월)</td>                        
+                                <td style="border:none;"><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">2020 경찰시험대비 심화과정 종합반 (史 원유철)</td>
+                                <td>9.9(월)</td>                        
+                                <td style="border:none;"><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
+                            </tr>                                                   
+                        </tbody>
+                    </table>        
+                </div>                                  
+            </div>    
+            <div class="evtCtnsBox wb_05_table" style="height:350px;">           
+                <div class="lecture_box">              
+                    <p class="season">new</p>
+                    <h3 class="title">2020년 합격대비 심화이론 + 심화기출 종합반</h3>
+                </div>     
+                <div> 
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <col width="20%" />
+                        <col width="" />
+                        <col width="20%" />
+                        <col width="15%" />
+                        <thead>
+                            <tr>
+                                <th colspan="2">강의명</th>
+                                <th>개강일</th>                        
+                                <th colspan="2">학원</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">2020 경찰시험대비 심화이론 + 심화기출 종합반 (史 오태진)</td>
+                                <td>9.9(월)</td>                        
+                                <td style="border:none;"><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">2020 경찰시험대비 심화이론 + 심화기출 종합반 (史 원유철)</td>
+                                <td>9.9(월)</td>                        
+                                <td style="border:none;"><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
+                            </tr>                                                  
+                        </tbody>
+                    </table>        
+                </div>                                  
+            </div>    
                
         <div class="evtCtnsBox wb_06" id="careful">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_06.jpg" alt="유의사항"/>         

@@ -1,43 +1,48 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class PackageAdmin extends \app\controllers\BaseController
+require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
+
+Class PackageAdmin extends CommonLecture
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/professor','product/on/packageAdmin');
-    protected $helpers = array('download');
-    protected $prodtypeccd = '636001';  //온라인강좌
-    protected $learnpatternccd = '615003'; //운영자 패키지
+    /*
+   * CommonLecture 로 이관
+   protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/professor','product/on/packageAdmin');
+   protected $helpers = array('download');
+    */
+   protected $prodtypeccd = '636001';              //온라인강좌
+   protected $learnpatternccd = '615003';          //운영자 패키지
+   protected $copy_prodtype = 'packageadmin';  //복사 타입
 
+   public function __construct()
+   {
+       parent::__construct();
+   }
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
+   public function index()
+   {
+       //공통코드
+       $codes = $this->codeModel->getCcdInArray(['618','648']);
 
-    public function index()
-    {
-        //공통코드
-        $codes = $this->codeModel->getCcdInArray(['618','648']);
+       $category_data = $this->categoryModel->getCategoryArray();
+       $arr_category = [];
+       foreach ($category_data as $row) {
+           $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
+           $arr_category[$arr_key][] = $row;
+       }
 
-        $category_data = $this->categoryModel->getCategoryArray();
-        $arr_category = [];
-        foreach ($category_data as $row) {
-            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
-            $arr_category[$arr_key][] = $row;
-        }
+       $this->load->view('product/on/packageadmin/index',[
+           'arr_lg_category' => element('LG', $arr_category, []),
+           'arr_md_category' => element('MD', $arr_category, []),
+           'Sales_ccd' => $codes['618'],
+           'Packtype_ccd' => $codes['648'],
+       ]);
+   }
 
-        $this->load->view('product/on/packageadmin/index',[
-            'arr_lg_category' => element('LG', $arr_category, []),
-            'arr_md_category' => element('MD', $arr_category, []),
-            'Sales_ccd' => $codes['618'],
-            'Packtype_ccd' => $codes['648'],
-        ]);
-    }
-
-    /**
-     * 강좌목록 추출
-     * @return CI_Output
-     */
+   /**
+    * 강좌목록 추출
+    * @return CI_Output
+    */
     public function listAjax()
     {
         $arr_condition = [
@@ -115,8 +120,6 @@ Class PackageAdmin extends \app\controllers\BaseController
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
-        //var_dump($siteList);
-
         $prodcode = null;
         $data = null;
         $data_sale = [];
@@ -146,8 +149,6 @@ Class PackageAdmin extends \app\controllers\BaseController
             $data_autocoupon = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
             $data_sublecture = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
-
-        //var_dump($codes['613']['613001']);
 
         $this->load->view('product/on/packageadmin/create',[
             'method'=>$method
@@ -179,15 +180,6 @@ Class PackageAdmin extends \app\controllers\BaseController
             ,'data_autofreebie'=>$data_autofreebie
             ,'data_sublecture'=>$data_sublecture
         ]);
-    }
-
-    /**
-     * 마스터강의 첨부파일 다운로드
-     * @param array $fileinfo
-     */
-    public function download($fileinfo=[])
-    {
-        public_download($fileinfo[0],$fileinfo[1]);
     }
 
     /**
@@ -226,67 +218,66 @@ Class PackageAdmin extends \app\controllers\BaseController
         }
 
         $result = $this->packageAdminModel->{$method.'Product'}($this->_reqP(null));
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-    /**
-     * 강좌복사
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $prodcode = $this->_reqP('prodCode');
-
-        $result = $this->packageAdminModel->_prodCopy($prodcode,'packageadmin');
-        //var_dump($result);exit;
-        $this->json_result($result,'복사 되었습니다.',$result);
-    }
-
-    /**
-     * 강좌 신규/추천 수정
-     */
-    public function redata()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '신규/추천', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->packageAdminModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
-
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
-    /**
-     * 리스트내 정렬순서 변경
-     */
-    public function reorder()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->packageAdminModel->_modifyLectureByOrder(json_decode($this->_reqP('params'), true));
-
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
+//    /**
+//     * 강좌복사
+//     */
+//    public function copy()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
+//        ];
+//
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//
+//        $prodcode = $this->_reqP('prodCode');
+//
+//        $result = $this->packageAdminModel->_prodCopy($prodcode,'packageadmin');
+//        //var_dump($result);exit;
+//        $this->json_result($result,'복사 되었습니다.',$result);
+//    }
+//
+//    /**
+//     * 강좌 신규/추천 수정
+//     */
+//    public function redata()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//            ['field' => 'params', 'label' => '신규/추천', 'rules' => 'trim|required']
+//        ];
+//
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//
+//        $result = $this->packageAdminModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
+//
+//        $this->json_result($result, '저장 되었습니다.', $result);
+//    }
+//
+//    /**
+//     * 리스트내 정렬순서 변경
+//     */
+//    public function reorder()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+//        ];
+//
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//
+//        $result = $this->packageAdminModel->_modifyLectureByOrder(json_decode($this->_reqP('params'), true));
+//
+//        $this->json_result($result, '저장 되었습니다.', $result);
+//    }
 
 }

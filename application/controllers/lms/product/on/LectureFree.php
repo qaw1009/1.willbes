@@ -1,17 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class LectureFree extends \app\controllers\BaseController
+require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
+
+Class LectureFree extends CommonLecture
 {
+    /*
+     * CommonLecture 로 이관
     protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/on/lectureFree');
     protected $helpers = array('download');
+    */
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615005'; //무료강좌
 
-
     public function __construct()
     {
-
         parent::__construct();
     }
 
@@ -199,10 +202,12 @@ Class LectureFree extends \app\controllers\BaseController
      * 마스터강의 첨부파일 다운로드
      * @param array $fileinfo
      */
+    /*
     public function download($fileinfo=[])
     {
         public_download($fileinfo[0],$fileinfo[1]);
     }
+    */
 
     /**
      * 처리 프로세스
@@ -246,47 +251,6 @@ Class LectureFree extends \app\controllers\BaseController
         }
 
         $result = $this->lectureFreeModel->{$method.'Product'}($this->_reqP(null));
-        //var_dump($result);exit;
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
-    /**
-     * 강좌복사
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $prodcode = $this->_reqP('prodCode');
-
-        $result = $this->lectureFreeModel->_prodCopy($prodcode);
-        //var_dump($result);exit;
-        $this->json_result($result,'복사 되었습니다.',$result);
-    }
-
-    /**
-     * 강좌 신규/추천 수정
-     */
-    public function redata()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->lectureFreeModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
-
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 

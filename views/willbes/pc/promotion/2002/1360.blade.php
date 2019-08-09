@@ -213,12 +213,12 @@
                             <tr>
                                 <td colspan="2">2020 경찰시험대비 심화이론 + 심화기출 종합반 (史 오태진)</td>
                                 <td>9.9(월)</td>                        
-                                <td style="border:none;"><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
+                                <td style="border:none;"><a href="#none;"style="font-size:12px;">Coming Soon</a></td>
                             </tr>
                             <tr>
                                 <td colspan="2">2020 경찰시험대비 심화이론 + 심화기출 종합반 (史 원유철)</td>
-                                <td>9.9(월)</td>                        
-                                <td style="border:none;"><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
+                                <td>9.9(월)</td>                         
+                                <td style="border:none;"><a href="#none;"style="font-size:12px;">Coming Soon</a></td>
                             </tr>                                                  
                         </tbody>
                     </table>        

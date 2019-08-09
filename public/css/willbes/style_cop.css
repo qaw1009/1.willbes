@@ -274,7 +274,7 @@
 .newPlaybn .layer .pngimg-real a {display:block}
 
 /* Main Container : flipped : Cop */
-.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 40px; padding-bottom:30px; /*margin-top: 60px*/}
+.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center top; padding-bottom:30px; /*margin-top: 60px*/}
 .Flipped ul.inner {height:370px}
 .Flipped ul.inner li {position: relative; float:left; width:280px; height:100%; margin-left:20px; overflow: hidden;}
 .Flipped ul.inner li:first-child {width:520px; margin-left:0}

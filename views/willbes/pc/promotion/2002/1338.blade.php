@@ -26,15 +26,16 @@
         .evt02 {background:#8f8a85 url(https://static.willbes.net/public/images/promotion/2019/07/1338_02_bg.jpg) no-repeat center top;}
         .evt02 .evt02_02 {position:relative;width:1120px;margin:0 auto;}
         .evt02 .evt02_02 span {position:absolute; left:495px; display:block; width:98px; height:30px; line-height:30px; z-index:10}
-        .evt02 .evt02_02 span:nth-child(2) {top:245px;}
-        .evt02 .evt02_02 span:nth-child(3) {top:256px}
+        .evt02 .evt02_02 span:nth-child(2) {top:240px;}
+        .evt02 .evt02_02 span:nth-child(3) {top:240px}
         .evt02 .evt02_02 span:nth-child(4) {top:305px}
         .evt02 .evt02_02 span:nth-child(5) {top:354px}
         .evt02 .evt02_02 span:nth-child(6) {top:403px}
-        .evt02 .evt02_02 span:last-child {top:295px}
+        .evt02 .evt02_02 span:last-child {top:290px}
         .evt02 .evt02_02 span a {display:block; text-align:center; color:#010100; background:#ffff01; font-size:14px; font-weight:600; border:1px solid #010100;}
         .evt02 .evt02_02 span a:hover {color:#fff; background:#000}
         .evt02 .evt02_02 span a.end {color:#fff; background:#86aee8; border:1px solid #86aee8;}
+        .evt02_02 .finish{background:#000;color:#fff;margin-top:245px;font-weight:700;font-size:14px;}
         
         .evt02 .evt02_03 {position:relative; width:1120px; margin:0 auto}
         .evt02 .evt02_03 span {position:absolute; top:577px; display:block; width:98px; height:30px; line-height:30px; z-index:10}
@@ -71,7 +72,8 @@
         <div class="evtCtnsBox evt02">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/07/1338_02.jpg" title="신청 및 출발안내"></div>
             <div class="evt02_02" id="event" >
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1338_04.jpg" title="입교버스 지역별 신청">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1338_04.jpg" title="입교버스 지역별 신청">
+                <span class="evt02_02 finish">마감</span>
                 @foreach($arr_base['register_member_list'] as $key => $val)
                     <span>
                         @if($val['RegisterExpireStatus'] == 'Y')

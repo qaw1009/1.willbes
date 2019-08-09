@@ -420,6 +420,14 @@ function init_datatable() {
         $search_form.off('click', '#btn_reset, #_btn_reset');
         $search_form.on('click', '#btn_reset, #_btn_reset', function() {
             $search_form[0].reset();
+            //기본화면셋팅 정보가 있을 경우
+            if(typeof arr_search_data != 'undefined' && arr_search_data != null && typeof $search_form != 'undefined' && $search_form != null){
+                $.each(arr_search_data,function(key,value) {
+                    $search_form.find('input[name="'+key+'"]').val(value);
+                    $search_form.find('select[name="'+key+'"]').val(value);
+                    $search_form.find('input[name="'+key+'"]').attr('checked', true);
+                });
+            }
             $datatable.draw();
         });
 

@@ -53,39 +53,15 @@ class Question extends \app\controllers\BaseController
      */
     public function list()
     {
-        $rules = [
-            ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_cateD1', 'label' => '카테고리', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_cateD2', 'label' => '직렬', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_subject', 'label' => '과목', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_professor', 'label' => '교수', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_year', 'label' => '연도', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_round', 'label' => '회차', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_use', 'label' => '사용여부', 'rules' => 'trim|in_list[Y,N]'],
-            ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
-            ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
-            ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
-        ];
-        if ($this->validate($rules) === false) return;
-
         $condition = [
             'EQ' => [
-//                'PP.SiteCode' => $this->input->post('search_site_code'),
-//                'MB.CateCode' => $this->input->post('search_cateD1'),
-//                'MB.Ccd' => $this->input->post('search_cateD2'),
-//                'MS.SubjectIdx' => $this->input->post('search_subject'),
-//                'EB.ProfIdx' => $this->input->post('search_professor'),
-//                'EB.Year' => $this->input->post('search_year'),
-//                'EB.RotationNo' => $this->input->post('search_round'),
+                'PD.SiteCode' => $this->input->post('search_site_code'),
+                'PD.PredictIdx' => $this->input->post('search_PredictIdx'),
                 'PP.IsUse' => $this->input->post('search_use'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'PP.PapaerName' => $this->input->post('search_fi', true),
-//                    'A.wAdminName' => $this->input->post('search_fi', true),
-//                    'SC.CcdName' => $this->input->post('search_fi', true),
-//                    'SJ.SubjectName' => $this->input->post('search_fi', true),
-//                    'PMS.wProfName' => $this->input->post('search_fi', true),
+                    'PP.PaperName' => $this->input->post('search_fi', true),
                 ]
             ],
         ];

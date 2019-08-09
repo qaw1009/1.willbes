@@ -1,13 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class OffLecture extends \app\controllers\BaseController
+require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
+
+Class OffLecture extends CommonLecture
 {
+    /*
+   * CommonLecture 로 이관
     protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/off/offLecture');
     protected $helpers = array('download');
-    protected $prodtypeccd = '636002';  //학원강좌
+    */
+    protected $prodtypeccd = '636002';      //학원강좌
     protected $learnpatternccd = '615006'; //단과반 [학원]
-
 
     public function __construct()
     {
@@ -110,15 +114,12 @@ Class OffLecture extends \app\controllers\BaseController
             $arr_condition_add = ' F.DivisionCount is null ';
         }
 
-        //var_dump($arr_condition);
-
         $list = [];
         $count = $this->offLectureModel->listLecture(true, $arr_condition,null,null,[],$arr_condition_add);
 
         if ($count > 0) {
             $list = $this->offLectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc'],$arr_condition_add);
         }
-
 
         return $this->response([
             'recordsTotal' => $count,
@@ -142,8 +143,6 @@ Class OffLecture extends \app\controllers\BaseController
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
-
-        //var_dump($siteList);
 
         $prodcode = null;
         $data = null;
@@ -205,15 +204,6 @@ Class OffLecture extends \app\controllers\BaseController
     }
 
     /**
-     * 마스터강의 첨부파일 다운로드
-     * @param array $fileinfo
-     */
-    public function download($fileinfo=[])
-    {
-        public_download($fileinfo[0],$fileinfo[1]);
-    }
-
-    /**
      * 처리 프로세스
      */
     public function store()
@@ -252,48 +242,43 @@ Class OffLecture extends \app\controllers\BaseController
         }
 
         $result = $this->offLectureModel->{$method.'Product'}($this->_reqP(null));
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-    /**
-     * 강좌복사
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-        ];
+//    /**
+//     * 강좌복사
+//     */
+//    public function copy()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
+//        ];
+//
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//
+//        $prodcode = $this->_reqP('prodCode');
+//
+//        $result = $this->offLectureModel->_prodCopy($prodcode);
+//        //var_dump($result);exit;
+//        $this->json_result($result,'복사 되었습니다.',$result);
+//    }
 
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $prodcode = $this->_reqP('prodCode');
-
-        $result = $this->offLectureModel->_prodCopy($prodcode);
-        //var_dump($result);exit;
-        $this->json_result($result,'복사 되었습니다.',$result);
-    }
-
-
-    /**
-     * 강좌 개설/접수 변경
-     */
-    public function reoption()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->offLectureModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
-
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
+//    /**
+//     * 강좌 개설/접수 변경
+//     */
+//    public function reoption()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//        ];
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//        $result = $this->offLectureModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
+//        $this->json_result($result, '저장 되었습니다.', $result);
+//    }
     
 }

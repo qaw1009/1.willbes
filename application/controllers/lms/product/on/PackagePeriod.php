@@ -1,43 +1,48 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class PackagePeriod extends \app\controllers\BaseController
+require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
+
+Class PackagePeriod extends CommonLecture
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/on/packagePeriod','sys/btob');
-    protected $helpers = array('download');
-    protected $prodtypeccd = '636001';  //온라인강좌
-    protected $learnpatternccd = '615004'; //기간제 패키지
+    /*
+   * CommonLecture 로 이관
+   protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/on/packagePeriod','sys/btob');
+   protected $helpers = array('download');
+    */
+   protected $prodtypeccd = '636001';               //온라인강좌
+   protected $learnpatternccd = '615004';           //기간제 패키지
+   protected $copy_prodtype = 'packageperiod';  //복사 타입
 
+   public function __construct()
+   {
+       parent::__construct();
+   }
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
+   public function index()
+   {
+       //공통코드
+       $codes = $this->codeModel->getCcdInArray(['618','648']);
 
-    public function index()
-    {
-        //공통코드
-        $codes = $this->codeModel->getCcdInArray(['618','648']);
+       $category_data = $this->categoryModel->getCategoryArray();
+       $arr_category = [];
+       foreach ($category_data as $row) {
+           $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
+           $arr_category[$arr_key][] = $row;
+       }
 
-        $category_data = $this->categoryModel->getCategoryArray();
-        $arr_category = [];
-        foreach ($category_data as $row) {
-            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
-            $arr_category[$arr_key][] = $row;
-        }
+       $this->load->view('product/on/packageperiod/index',[
+           'arr_lg_category' => element('LG', $arr_category, []),
+           'arr_md_category' => element('MD', $arr_category, []),
+           'Sales_ccd' => $codes['618'],
+           'Packtype_ccd' => $codes['648'],
+       ]);
+   }
 
-        $this->load->view('product/on/packageperiod/index',[
-            'arr_lg_category' => element('LG', $arr_category, []),
-            'arr_md_category' => element('MD', $arr_category, []),
-            'Sales_ccd' => $codes['618'],
-            'Packtype_ccd' => $codes['648'],
-        ]);
-    }
-
-    /**
-     * 강좌목록 추출
-     * @return CI_Output
-     */
+   /**
+    * 강좌목록 추출
+    * @return CI_Output
+    */
     public function listAjax()
     {
         $arr_condition = [
@@ -72,8 +77,6 @@ Class PackagePeriod extends \app\controllers\BaseController
                 ],
             ]);
         }
-
-        //var_dump($arr_condition);
 
         $list = [];
         $count = $this->packagePeriodModel->listLecture(true, $arr_condition);
@@ -162,15 +165,6 @@ Class PackagePeriod extends \app\controllers\BaseController
     }
 
     /**
-     * 마스터강의 첨부파일 다운로드
-     * @param array $fileinfo
-     */
-    public function download($fileinfo=[])
-    {
-        public_download($fileinfo[0],$fileinfo[1]);
-    }
-
-    /**
      * 처리 프로세스
      */
     public function store()
@@ -206,29 +200,28 @@ Class PackagePeriod extends \app\controllers\BaseController
         }
 
         $result = $this->packagePeriodModel->{$method.'Product'}($this->_reqP(null));
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-    /**
-     * 강좌복사
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $prodcode = $this->_reqP('prodCode');
-
-        $result = $this->packagePeriodModel->_prodCopy($prodcode,'packageperiod');
-        //var_dump($result);exit;
-        $this->json_result($result,'복사 되었습니다.',$result);
-    }
+//    /**
+//     * 강좌복사
+//     */
+//    public function copy()
+//    {
+//        $rules = [
+//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+//            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
+//        ];
+//
+//        if ($this->validate($rules) === false) {
+//            return;
+//        }
+//
+//        $prodcode = $this->_reqP('prodCode');
+//
+//        $result = $this->packagePeriodModel->_prodCopy($prodcode,'packageperiod');
+//        //var_dump($result);exit;
+//        $this->json_result($result,'복사 되었습니다.',$result);
+//    }
 
 }

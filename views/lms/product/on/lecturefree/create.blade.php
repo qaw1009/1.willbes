@@ -65,7 +65,7 @@
                             @if($method == 'POST')
                                 <button type="button" id="searchMasterLecture" class="btn btn-sm btn-primary">마스터강좌검색</button>
                             @endif
-                            <p id="masterTitle" class="form-control-static">{{$data['wLecName']}}&nbsp;</p>
+                            @if(empty($data['wLecIdx']) == false)<p id="masterTitle" class="form-control-static">[{{$data['wLecIdx']}}] {{$data['wLecName']}}&nbsp;</p>@endif
                             <input type="hidden" name="wLecIdx" id="wLecIdx" value="{{$data['wLecIdx']}}" required="required" title="마스터강좌">
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                                     &nbsp;[진행상태] {{$data['wProgressCcd_Name']}} &nbsp;&nbsp;
                                     &nbsp;[제작월] {{$data['wMakeYM']}} &nbsp;&nbsp;
                                     @if($data['wAttachFile'])
-                                        &nbsp;[첨부자료] <a href='{{ site_url('/product/on/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
+                                        &nbsp;[첨부자료] <a href='{{ site_url('/product/on/lectureFree/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
                                     @endif
                                 @endif
 

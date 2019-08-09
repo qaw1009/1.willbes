@@ -49,22 +49,6 @@ class Request extends \app\controllers\BaseController
      */
     public function list()
     {
-        $rules = [
-            ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_cateD1', 'label' => '카테고리', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_cateD2', 'label' => '직렬', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_year', 'label' => '연도', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_round', 'label' => '회차', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_TakeFormsCcd', 'label' => '응시형태', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_AcceptStatus', 'label' => '접수상태', 'rules' => 'trim|is_natural_no_zero'],
-            //['field' => 'search_TakeType', 'label' => '응시기간', 'rules' => 'trim|in_list[A,L]'],
-            ['field' => 'search_use', 'label' => '사용여부', 'rules' => 'trim|in_list[Y,N]'],
-            ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
-            ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
-            ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
-        ];
-        if ($this->validate($rules) === false) return;
-
         $s_type = $this->input->post('search_AcceptStatus');
 
         if($s_type == 1){
@@ -93,9 +77,7 @@ class Request extends \app\controllers\BaseController
             'ORG' => [
                 'LKB' => [
                     'PP.ProdName' => $this->input->post('search_fi', true),
-                    'A.wAdminName' => $this->input->post('search_fi', true),
-                    'PP.TakeStartDatm' => $this->input->post('search_fi', true),
-                    'PP.TakeEndDatm' => $this->input->post('search_fi', true),
+                    'PP.PredictIdx' => $this->input->post('search_fi', true)
                 ]
             ],
             'RAW' => [ $searchdate1 => $searchdate2 ],

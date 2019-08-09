@@ -77,23 +77,11 @@ class Markrequest extends \app\controllers\BaseController
             $excel = '';
         }
 
-        $rules = [
-            ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_PayStatusCcd', 'label' => '결제상태', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_TakeForm', 'label' => '응시형태', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_TakeArea', 'label' => '응시지역', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_IsStatus', 'label' => '응시여부', 'rules' => 'trim|in_list[Y,N]'],
-            ['field' => 'search_IsTicketPrint', 'label' => '응시표출력', 'rules' => 'trim|in_list[Y,N]'],
-            ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
-            ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
-            ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
-        ];
-        if ($this->validate($rules) === false) return;
-
         $condition = [
             'EQ' => [
                 'PR.ApplyType' => $this->_req('search_ApplyType'),
                 'PR.SiteCode' => $this->_req('search_site_code'),
+                'PR.PredictIdx' => $this->_req('search_PredictIdx'),
                 'PR.TakeMockPart' => $this->_req('search_TakeMockPart'),
                 'PR.TakeArea' => $this->_req('search_TakeArea'),
             ],

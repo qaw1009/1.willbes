@@ -54,7 +54,7 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_03.png" title="무엇이든 물어보세요~">                
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1348_03.png" title="무엇이든 물어보세요">                
         </div>
 
         {{--댓글--}}

@@ -194,7 +194,7 @@
             <div class="evtCtnsBox wb_05_table" style="height:350px;">           
                 <div class="lecture_box">              
                     <p class="season">new</p>
-                    <h3 class="title">2020년 합격대비 심화이론 강의</h3>
+                    <h3 class="title">2020년 합격대비 심화이론 + 심화기출 종합반</h3>
                 </div>     
                 <div> 
                     <table border="0" cellspacing="0" cellpadding="0">

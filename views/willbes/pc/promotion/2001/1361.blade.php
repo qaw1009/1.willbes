@@ -142,31 +142,31 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
             <ul>
                 <li>
-                    <a href="#none" class="active">
+                    <a href="#tab01" class="active">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="#none" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="#none" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03.jpg" alt="체력시험" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="#none" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="#none" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05_on.jpg" alt="최종합격" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05.jpg" alt="최종합격" class="off">
                     </a>
@@ -174,31 +174,33 @@
             </ul>
         </div>
 
-        <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_02.jpg" title="사전예약 특전">
-        </div>
-
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_03.jpg" title="봉투모의고사">
-            <div>
-                <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number4.png"></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number8.png"></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number1.png"></span>
+        <div id="tab01">
+            <div class="evtCtnsBox evt02">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_02.jpg" title="사전예약 특전">
             </div>
-        </div>
 
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_04.jpg" title="합격풀케어 서비스">
-        </div>
+            <div class="evtCtnsBox evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_03.jpg" title="봉투모의고사">
+                <div>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number4.png"></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number8.png"></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number1.png"></span>
+                </div>
+            </div>
 
-        <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_05.jpg" title="사전예약 이벤트">
-        </div>
+            <div class="evtCtnsBox evt04">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_04.jpg" title="합격풀케어 서비스">
+            </div>
 
-        {{--홍보url댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif
+            <div class="evtCtnsBox evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_05.jpg" title="사전예약 이벤트">
+            </div>
+
+            {{--홍보url댓글--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_url_partial')
+            @endif
+        </div>
 	</div>
     <!-- End Container -->
 
@@ -226,6 +228,33 @@
             var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
             window.open(url,'event2', 'scrollbars=no,toolbar=no,resizable=yes,width=665,height=629,top=50,left=100');
         }
+
+        ript>
+        /*tab*/
+        $(document).ready(function(){
+            $('.evt02 ul').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        ) 
     </script>
 
 @stop

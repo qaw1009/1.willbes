@@ -773,16 +773,13 @@ class SurveyModel extends WB_Model
         $result = $query->result_array();
 
         $arr_point_area = [];
+        if (empty($result) === false) {
+            $total = array_sum(array_pluck($result, 'CNT'));    // 총인원수
 
-        if (empty($result) === true) {
-            return $arr_point_area;
-        }
-
-        $total = array_sum(array_pluck($result, 'CNT'));    // 총인원수
-
-        // 점수대별 인원비율, (인원수/총인원수) * 100, PA0 ~ PA4
-        foreach ($result as $row) {
-            $arr_point_area['PA' . $row['Pointarea']] = $row['CNT'] < 1 ? 0 : ROUND($row['CNT'] / $total * 100, 2);
+            // 점수대별 인원비율, (인원수/총인원수) * 100, PA0 ~ PA4
+            foreach ($result as $row) {
+                $arr_point_area['PA' . $row['Pointarea']] = $row['CNT'] < 1 ? 0 : ROUND($row['CNT'] / $total * 100, 2);
+            }
         }
 
         return $arr_point_area;
@@ -1219,7 +1216,8 @@ class SurveyModel extends WB_Model
         return $data;
     }
 
-    /** 지역별현황
+    /**
+     * 지역별현황
      * @param $PredictIdx
      * @return mixed
      */

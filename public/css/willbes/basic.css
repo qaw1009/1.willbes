@@ -357,13 +357,13 @@ select[disabled] {
 	font-family: "NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif" !important;
 }
 .NG {
-	font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";
+	font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
 }
 .NGEB {
-	font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif";
+	font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
 }
 .NGR {
-	font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
+	font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
 }
 
 /* Basic Code */
@@ -885,19 +885,20 @@ select[disabled] {
 .pb130 {
   padding-bottom: 130px !important;
 }
+.pd_all_none {padding:0 !important}
 
 
 .tx11 {
   font-size: 11px;
 }
 .tx12 {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 .tx13 {
   font-size: 13px;
 }
 .tx14 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 .tx15 {
   font-size: 15px;

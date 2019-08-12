@@ -81,6 +81,7 @@ $(function() {
     });
 });
 
+// 장바구니
 $(function() {
     $('.basketBox .MoreBtn a').click(function() {
         var $basket_Info = $('.basketInfo');
@@ -94,6 +95,22 @@ $(function() {
         }
     });
 });
+
+// 결제하기 전체동의
+$(function() {
+    $('.policyInfo .MoreBtn').click(function() {
+        var $policy_Info = $(this).parents('.policyInfo li').find('.txtBox');
+
+        if ($policy_Info .is(':hidden')) {
+            $policy_Info .show().css('visibility','visible');
+            $(this).text('▲');
+        } else {
+            $policy_Info .hide().css('visibility','hidden');
+            $(this).text('▼');
+        }
+    });
+});
+
 
 
 // Swiper Script

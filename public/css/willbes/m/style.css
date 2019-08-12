@@ -1926,6 +1926,11 @@ body.memBody #Footer {
     width: 100%;
     height: 100%;
 }
+.willbes-Layer-Black h4 {
+    font-size:16px;
+    width: 90%;
+    margin-bottom:20px
+}
 .willbes-Layer-PassBox {
     float: left;
     width: 90%;
@@ -1956,8 +1961,11 @@ body.memBody #Footer {
 .willbes-Layer-PassBox600.h250.fix {
     margin-top: -125px;
 }
+.willbes-Layer-PassBox600.h510.fix {
+    margin-top: -250px;
+}
 .willbes-Layer-PassBox600.hauto.fix {
-    margin-top: -25%;
+    margin-top: -50%;
 }
 
 /* calendarTable */
@@ -2324,6 +2332,9 @@ body.memBody #Footer {
     float: left;
     width: 33.33333%
 }
+.lec-btns.w50p ul li {
+    width:50% !important;
+}
 .lec-btns.w100p ul li {
     width:100% !important;
 }
@@ -2404,15 +2415,12 @@ body.memBody #Footer {
 .w-data-pkg:first-child {border-top:0; padding-top:0}
 .w-data-pkg:last-child {padding-bottom:0}
 
-#LecDetailPop h4 {
-    font-size:16px;
-    width: 90%;
-    margin-bottom:20px
-}
 #LecDetailPop .LecDetailBox {
-    border:1px solid #ccc;
-    padding:20px;
+    border:1px solid #ccc;    
     line-height: 1.5;    
+    height: 420px; 
+    overflow-y: auto; 
+    padding:20px !important;  
 }
 #LecDetailPop .LecDetailBox h5 {
     font-size: 14px;
@@ -2498,7 +2506,7 @@ body.memBody #Footer {
     font-size:14px;
 }
 .basketBox .basketPrice ul {
-    background:#f9f9f9;
+    background:#948888;
     color:#1d1d1d;
     padding:20px;
     border:1px solid #898989;
@@ -2573,12 +2581,411 @@ body.memBody #Footer {
 /*결제하기*/
 .paymentTxt {
     padding:20px;
+    border-bottom:1px solid #898989;
 }
 .paymentTxt li {
     line-height: 1.5;
     list-style-type: disc;
     margin-left:15px;
 }
+.paymentCts .replyList {
+    font-size:16px;
+}
+.paymentCts .replyList td {
+    border-bottom:1px solid #898989;
+}
+.paymentCts .willbes-Open-List {
+    display: block;
+}
+.paymentWrap .payLecList {
+    padding:20px 0;
+    border-bottom:1px solid #c9c9c9;
+    line-height: 1.5;
+}
+.paymentWrap .payLecList:first-child {
+    padding-top:0;
+}
+.paymentWrap .payLecList:last-child {
+    border:0;
+    padding-bottom:0;
+}
+.paymentWrap .payLecList li {
+    margin-bottom:10px;
+}
+.paymentWrap .payLecList li:nth-child(2){
+    color:#1d1d1d;
+    font-size:16px;
+}
+.paymentWrap .payLecList li:first-child span {
+    border:1px solid #666;
+    color:#666;
+    padding:3px 5px;
+}
+.paymentWrap .payLecList li strong {
+    width: 80px;
+    display: inline-block;
+    font-weight: normal !important;
+}
+.paymentWrap .payLecList li input[type="text"] {
+    width: 15%; 
+    min-width: 80px;
+    height: 30px;
+    padding: 0 0.6rem;
+}
+.paymentWrap .payLecList li:last-child {
+    margin:0;
+}
+.paymentWrap .payLecList li:last-child a {
+    display: inline-block;
+    padding:8px 16px;
+    background: #333;
+    color:#fff;
+}
+
+.paymentCts input[type=radio] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.paymentCts label {
+    margin:0 10px;
+    font-size:14px;
+    cursor: pointer;
+}
+.paymentCts .delivery {
+    margin-top:25px;
+}
+.paymentCts .delivery a {
+    display: inline !important; 
+    border:1px solid #666;
+    padding: 8px 16px;
+    font-size:14px;
+    color:#666;
+}
+.paymentCts .buyerInfo {
+    margin-top:20px;
+}
+.paymentCts .buyerInfo table td {
+    border:0;
+    padding:5px 0;
+}
+.paymentCts .buyerInfo table th {
+    text-align: left;
+}
+.paymentCts input[type="number"],
+.paymentCts input[type="tel"],
+.paymentCts input[type="text"] { 
+    min-width: 80px;
+    height: 30px;
+    padding: 0 0.6rem;    
+}
+.paymentCts .buyerInfo .findaddress {
+    height: 30px;
+    line-height: 30px;
+    color:#fff;
+    background:#666;
+    display: inline-block !important;
+    vertical-align: middle;
+    padding:0 15px;
+}
+.paymentCts .paymentPoint {
+    font-size:14px;
+    margin-bottom:10px;
+    background: #f9f9f9;
+    padding:10px;
+}
+.paymentCts .paymentPoint input {
+    margin-left:20px;
+}
+.paymentCts .paymentPoint a {
+    height: 30px;
+    line-height: 30px;
+    color:#fff;
+    background:#666;
+    display: inline-block !important;
+    vertical-align: middle;
+    padding:0 15px;
+    float:right;
+}
+.paymentCts .paymentPoint:after {
+    content:""; display: block; clear:both;
+}
+.paymentCts .priceBox {
+    border:0;
+    padding:0;
+} 
+.paymentWrap .method li {
+    display: inline; float: left; width: 33.33333%;
+}
+.paymentWrap .method a {
+    display: block; 
+    background:#f9f9f9;
+    border:1px solid #999;
+    color:#1d1d1d;
+    text-align: center;
+    font-size:12px;
+    padding:15px 0;
+    margin-right:10px;
+}
+.paymentWrap .method li:last-child a {
+    margin:0;
+}
+.paymentCts .policyInfo {
+    line-height: 1.5;
+    font-size:14px;
+}
+.paymentCts .policyInfo li {
+    border-bottom:1px solid #c9c9c9;
+    padding:15px 0;
+    margin:0 20px;
+    position: relative;
+}
+.paymentCts .policyInfo li:first-child {
+    border-bottom:1px solid #898989;
+    margin:0;
+    padding:15px 20px
+}
+.paymentCts .policyInfo .txtBox {
+    display:none;
+    font-size:12px;
+    /*border:1px solid #c9c9c9;*/
+    padding:10px;
+    margin-top:10px;
+    background:#f9f9f9;
+}
+.paymentCts .policyInfo li:last-child {
+    border:0;
+}
+.paymentCts .policyInfo li .chkBox-Agree {
+    position: absolute;
+    top:15px;
+    right:0;
+}
+.paymentCts .policyInfo li:first-child .chkBox-Agree {
+    right:20px;
+}
+.paymentCts .policyInfo .AllchkBox,
+.paymentCts .policyInfo .chkBox {
+    cursor: pointer;
+}
+.paymentCts .policyInfo .MoreBtn {
+    width: 20px;
+    height: 20px;   
+    padding-right: 0;
+    display: inline-block;
+}
+
+/*배송 주소록 팝업*/
+.addressListBox {
+    overflow-y: auto;
+    height: 390px;
+    font-size:12px;
+    line-height: 1.5;
+    border-bottom:1px solid #333;
+    border-top:1px solid #333;
+}
+.addList {    
+    border-bottom:1px solid #c9c9c9;
+    padding:15px 0;
+}
+.addList label {
+    margin-left: 10px;
+    font-size:16px;
+}
+.addList input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.addList li {
+    margin-bottom:5px;
+    color:#666;
+}
+.addList li:first-child {
+    margin-bottom:10px;
+    color:#333;
+}
+.addList li:last-child {
+    margin-bottom:0;
+}
+.addInfo {margin:10px 0}
+.addInfo li {
+    margin-left:15px;
+    list-style-type: disc;
+}
+
+/*쿠폰 팝업*/
+.couponListBox {
+    overflow-y: auto;
+    height: 390px;
+    padding:15px 0;
+    border-top:1px solid #333;
+}
+.couponListBox .payLecList li {
+    margin-bottom:10px;
+    font-size:14px;
+}
+.couponListBox .payLecList li span {
+    border:1px solid #666;
+    color:#666;
+    padding:3px 5px;
+    font-size:12px;
+}
+.couponListBox .priceBox {
+    padding:0;
+    border:0;
+}
+.couponListBox .couponTab {
+    margin-top:20px;
+}
+.couponListBox .couponTab li {
+    display: inline;
+    float: left;
+    width: 50%;
+}
+.couponListBox .couponTab li a {
+    display: block;
+    text-align: center;
+    font-size:14px;
+    padding:10px 0;
+    border:1px solid #898989;
+    color:#999;
+}
+.couponListBox .couponTab li:last-child a {
+    border-left:0;
+}
+.couponListBox .couponTab li a.on {
+    color:#333;
+    border-bottom:1px solid #fff;
+}
+.couponListBox .couponTab:after {
+    content:""; 
+    display: block; 
+    clear:both;
+}
+.couponListBox .couponList {
+    padding:10px 0;
+    line-height: 1.5;
+}
+.couponListBox .couponList p { 
+    color:#ed1c24;
+    margin-bottom:10px;
+}
+.couponListBox .couponList ul {    
+    border-top:1px solid #c9c9c9;
+    border-bottom:1px solid #c9c9c9;
+    padding:15px 0;
+}
+.couponListBox .couponList label {
+    margin-left: 10px;
+    font-size:14px;
+}
+.couponListBox .couponList input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.couponListBox .couponList li {
+    margin-bottom:5px;
+    color:#666;
+}
+.couponListBox .couponList li strong {
+    display: inline-block; 
+    width:80px;
+    color:#333;
+}
+.couponListBox .couponList li:first-child {
+    margin-bottom:10px;
+    color:#333;
+}
+.couponListBox .couponList li:last-child {
+    margin-bottom:0;
+}
+.couponNo {
+    border-top:1px solid #c9c9c9;
+    border-bottom:1px solid #c9c9c9;
+    text-align: center;
+    padding:20px 0;
+}
+.couponInfo {
+    background:#f9f9f9;
+    padding:10px;
+    line-height: 1.5;
+}
+.couponInfo p {
+    font-size:14px;
+}
+.couponInfo li {
+    margin-left:15px;
+    list-style: disc;
+}
+.couponBtns {    
+}
+.couponBtns li {
+    display: inline;
+    float: left;
+    width: 50%;
+}
+.couponBtns li a {
+    display: block;
+    padding:10px 0;
+    text-align: center;
+}
+
+/*결제완료*/
+.paymentTxt02 {
+    padding:20px 0;
+    border:1px solid #898989;
+    margin:20px;
+    text-align: center;
+    font-size: 14px;
+}
+.paymentTxt02 span {
+    background:url("../../../img/willbes/login/icon_check.png") no-repeat left bottom;
+    width: 22px;
+    height: 22px;
+    margin-right:10px;
+    font-size:0;
+    text-indent: -9999px;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+.paymentCtsEnd {
+    padding:0 20px 20px;
+}
+.paymentCtsEnd h4 {
+    font-size:16px;
+    margin-bottom:10px;
+}
+.paymentCtsEnd table {
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+    margin-bottom:20px;
+}
+.paymentCtsEnd th,
+.paymentCtsEnd td {
+    padding:10px;
+    font-size: 14px;
+}
+.paymentCtsEnd th {
+    background: #f9f9f9;
+}
+.paymentCtsEnd tr {
+    border-bottom:1px solid #c9c9c9
+ }
+ .paymentCtsEnd tr:last-child {
+    border:0;
+ }
+.paymentCtsEnd .priceBox {
+    border:0;
+    padding:0;
+    margin-bottom:20px;
+}
+.paymentCtsEnd .payLecList {
+    border-top:1px solid #333;
+}
+
 
 /*********************************************     MYPAGE     *********************************************/
 

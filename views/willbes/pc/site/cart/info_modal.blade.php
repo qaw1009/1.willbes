@@ -3,14 +3,14 @@
 </a>
 <table cellspacing="0" cellpadding="0" class="productTable tx-gray">
     <colgroup>
-        <col style="width: 65px;">
-        <col style="width: 455px;">
+        <col style="width: 115px;">
+        <col style="width: 405px;">
     </colgroup>
     <tbody>
     @foreach($results['list'] as $idx => $row)
         <tr>
-            <td>{{ $row['ReprWProfName'] }}<span class="row-line">|</span></td>
-            <td class="tx-left pl20">
+            <td class="pt-zero pb-zero">{{ $row['ReprWProfName'] }}</td>
+            <td class="tx-left pl20 pt-zero pb-zero">
                 @if($results['data']['LearnPatternCcd'] == $arr_learn_pattern_ccd['adminpack_lecture'] && $results['data']['PackTypeCcd'] == $arr_adminpack_lecture_type_ccd['choice'])
                     {{-- 운영자 선택형 패키지 --}}
                     [{{ $row['IsEssential'] == 'Y' ? '필수' : '선택' }}]

@@ -82,7 +82,7 @@
                             </tr>
                             <tr>
                                 <th>입력자 평균</th>
-                                <td>{{ $val2['AvrPointAgo'] }} </td>
+                                <td>{{ $val2['AvrPoint'] }} </td>
                             </tr>
                             <tr class="bg01">
                                 <th>합격기대권</th>
@@ -130,9 +130,9 @@
                 <tr>
                     <th>참여자<br />
                         실시간평균</th>
-                    <td>{{ $gradelist2[0]['Avg'] }}</td>
-                    <td>{{ $gradelist2[1]['Avg'] }}</td>
-                    <td>{{ $gradelist2[2]['Avg'] }}</td>
+                    <td>{{ $gradelist2['100100'] }}</td>
+                    <td>{{ $gradelist2['100200'] }}</td>
+                    <td>{{ $gradelist2['100300'] }}</td>
                 </tr>
                 <tr>
                     <th scope="col">과목</th>
@@ -143,9 +143,9 @@
                 <tr>
                     <th>참여자<br />
                         실시간평균</th>
-                    <td>{{ $gradelist2[3]['Avg'] }}</td>
-                    <td>{{ $gradelist2[4]['Avg'] }}</td>
-                    <td>{{ $gradelist2[5]['Avg'] }}</td>
+                    <td>{{ $gradelist2['100400'] }}</td>
+                    <td>{{ $gradelist2['100500'] }}</td>
+                    <td>{{ $gradelist2['100600'] }}</td>
                 </tr>
                 <tr>
                     <th scope="col">과목</th>
@@ -156,9 +156,9 @@
                 <tr>
                     <th>참여자<br />
                         실시간평균</th>
-                    <td>{{ $gradelist2[6]['Avg'] }}</td>
-                    <td>{{ $gradelist2[7]['Avg'] }}</td>
-                    <td>{{ $gradelist2[8]['Avg'] }}</td>
+                    <td>{{ $gradelist2['100700'] }}</td>
+                    <td>{{ $gradelist2['100800'] }}</td>
+                    <td>{{ $gradelist2['100900'] }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -171,9 +171,7 @@
                 @endforeach
             </select>
             <div class="mt10">
-
                 <div id="Nwagon"></div>
-
             </div>
         </div>
     </div>
@@ -189,36 +187,36 @@
                 <tr>
                     <th>401-500</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['ff'] === true) ? '0' : $pointList['ff'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['ff'] === true) ? '0' : $pointList['ff'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA4', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA4', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>301-400</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['tf'] === true) ? '0' : $pointList['tf'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['tf'] === true) ? '0' : $pointList['tf'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA3', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA3', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>201-300</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['tt'] === true) ? '0' : $pointList['tt'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['tt'] === true) ? '0' : $pointList['tt'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA2', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA2', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>101-200</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['ht'] === true) ? '0' : $pointList['ht'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['ht'] === true) ? '0' : $pointList['ht'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA1', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA1', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>0-100</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['zh'] === true) ? '0' : $pointList['zh'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['zh'] === true) ? '0' : $pointList['zh'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA0', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA0', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
             </table>
@@ -592,7 +590,7 @@
                                 'dataset': {
                                     title: '전체적인 시험 체감 난이도',
                                     values: [
-                                        [{{ (float)$arrSurvey[0]['Answer1'] }},{{ (float)$arrSurvey[0]['Answer2'] }},{{ (float)$arrSurvey[0]['Answer3'] }},{{ (float)$arrSurvey[0]['Answer4'] }},{{ (float)$arrSurvey[0]['Answer5'] }}]
+                                        [{{ (float)$arrSurvey[0]['Answer1'] }}, {{ (float)$arrSurvey[0]['Answer2'] }}, {{ (float)$arrSurvey[0]['Answer3'] }}, {{ (float)$arrSurvey[0]['Answer4'] }}, {{ (float)$arrSurvey[0]['Answer5'] }}]
                                     ],
                                     colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
                                     fields: ['매우쉬움', '쉬움', '보통', '어려움', '매우어려움']
@@ -620,8 +618,8 @@
                                 'dataset': {
                                     title: '공통 과목 시험 체감 난이도',
                                     values: [
-                                        [{{ (float)$arrSurvey[1]['Answer1'] }},{{ (float)$arrSurvey[1]['Answer2'] }},{{ (float)$arrSurvey[1]['Answer3'] }},{{ (float)$arrSurvey[1]['Answer4'] }},{{ (float)$arrSurvey[1]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[2]['Answer1'] }},{{ (float)$arrSurvey[2]['Answer2'] }},{{ (float)$arrSurvey[2]['Answer3'] }},{{ (float)$arrSurvey[2]['Answer4'] }},{{ (float)$arrSurvey[2]['Answer5'] }}]
+                                        [{{ (float)$arrSurvey[1]['Answer1'] }}, {{ (float)$arrSurvey[1]['Answer2'] }}, {{ (float)$arrSurvey[1]['Answer3'] }}, {{ (float)$arrSurvey[1]['Answer4'] }}, {{ (float)$arrSurvey[1]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[2]['Answer1'] }}, {{ (float)$arrSurvey[2]['Answer2'] }}, {{ (float)$arrSurvey[2]['Answer3'] }}, {{ (float)$arrSurvey[2]['Answer4'] }}, {{ (float)$arrSurvey[2]['Answer5'] }}]
                                     ],
                                     colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
                                     fields: ['매우쉬움', '쉬움', '보통', '어려움', '매우어려움']
@@ -644,11 +642,11 @@
                                 'dataset': {
                                     title: '공통 과목 시험 체감 난이도',
                                     values: [
-                                        [{{ (float)$arrSurvey[1]['Answer1'] }},{{ (float)$arrSurvey[1]['Answer2'] }},{{ (float)$arrSurvey[1]['Answer3'] }},{{ (float)$arrSurvey[1]['Answer4'] }},{{ (float)$arrSurvey[1]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[2]['Answer1'] }},{{ (float)$arrSurvey[2]['Answer2'] }},{{ (float)$arrSurvey[2]['Answer3'] }},{{ (float)$arrSurvey[2]['Answer4'] }},{{ (float)$arrSurvey[2]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[3]['Answer1'] }},{{ (float)$arrSurvey[3]['Answer2'] }},{{ (float)$arrSurvey[3]['Answer3'] }},{{ (float)$arrSurvey[3]['Answer4'] }},{{ (float)$arrSurvey[3]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[4]['Answer1'] }},{{ (float)$arrSurvey[4]['Answer2'] }},{{ (float)$arrSurvey[4]['Answer3'] }},{{ (float)$arrSurvey[4]['Answer4'] }},{{ (float)$arrSurvey[4]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[5]['Answer1'] }},{{ (float)$arrSurvey[5]['Answer2'] }},{{ (float)$arrSurvey[5]['Answer3'] }},{{ (float)$arrSurvey[5]['Answer4'] }},{{ (float)$arrSurvey[5]['Answer5'] }}]
+                                        [{{ (float)$arrSurvey[1]['Answer1'] }}, {{ (float)$arrSurvey[1]['Answer2'] }}, {{ (float)$arrSurvey[1]['Answer3'] }}, {{ (float)$arrSurvey[1]['Answer4'] }}, {{ (float)$arrSurvey[1]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[2]['Answer1'] }}, {{ (float)$arrSurvey[2]['Answer2'] }}, {{ (float)$arrSurvey[2]['Answer3'] }}, {{ (float)$arrSurvey[2]['Answer4'] }}, {{ (float)$arrSurvey[2]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[3]['Answer1'] }}, {{ (float)$arrSurvey[3]['Answer2'] }}, {{ (float)$arrSurvey[3]['Answer3'] }}, {{ (float)$arrSurvey[3]['Answer4'] }}, {{ (float)$arrSurvey[3]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[4]['Answer1'] }}, {{ (float)$arrSurvey[4]['Answer2'] }}, {{ (float)$arrSurvey[4]['Answer3'] }}, {{ (float)$arrSurvey[4]['Answer4'] }}, {{ (float)$arrSurvey[4]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[5]['Answer1'] }}, {{ (float)$arrSurvey[5]['Answer2'] }}, {{ (float)$arrSurvey[5]['Answer3'] }}, {{ (float)$arrSurvey[5]['Answer4'] }}, {{ (float)$arrSurvey[5]['Answer5'] }}]
                                     ],
                                     colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
                                     fields: ['매우쉬움', '쉬움', '보통', '어려움', '매우어려움']
@@ -676,13 +674,13 @@
                                 'dataset': {
                                     title: '선택 과목 시험 체감 난이도',
                                     values: [
-                                        [{{ (float)$arrSurvey[3]['Answer1'] }},{{ (float)$arrSurvey[3]['Answer2'] }},{{ (float)$arrSurvey[3]['Answer3'] }},{{ (float)$arrSurvey[3]['Answer4'] }},{{ (float)$arrSurvey[3]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[4]['Answer1'] }},{{ (float)$arrSurvey[4]['Answer2'] }},{{ (float)$arrSurvey[4]['Answer3'] }},{{ (float)$arrSurvey[4]['Answer4'] }},{{ (float)$arrSurvey[4]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[5]['Answer1'] }},{{ (float)$arrSurvey[5]['Answer2'] }},{{ (float)$arrSurvey[5]['Answer3'] }},{{ (float)$arrSurvey[5]['Answer4'] }},{{ (float)$arrSurvey[5]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[6]['Answer1'] }},{{ (float)$arrSurvey[6]['Answer2'] }},{{ (float)$arrSurvey[6]['Answer3'] }},{{ (float)$arrSurvey[6]['Answer4'] }},{{ (float)$arrSurvey[6]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[7]['Answer1'] }},{{ (float)$arrSurvey[7]['Answer2'] }},{{ (float)$arrSurvey[7]['Answer3'] }},{{ (float)$arrSurvey[7]['Answer4'] }},{{ (float)$arrSurvey[7]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[8]['Answer1'] }},{{ (float)$arrSurvey[8]['Answer2'] }},{{ (float)$arrSurvey[8]['Answer3'] }},{{ (float)$arrSurvey[8]['Answer4'] }},{{ (float)$arrSurvey[8]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[9]['Answer1'] }},{{ (float)$arrSurvey[9]['Answer2'] }},{{ (float)$arrSurvey[9]['Answer3'] }},{{ (float)$arrSurvey[9]['Answer4'] }},{{ (float)$arrSurvey[9]['Answer5'] }}]
+                                        [{{ (float)$arrSurvey[3]['Answer1'] }}, {{ (float)$arrSurvey[3]['Answer2'] }}, {{ (float)$arrSurvey[3]['Answer3'] }}, {{ (float)$arrSurvey[3]['Answer4'] }}, {{ (float)$arrSurvey[3]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[4]['Answer1'] }}, {{ (float)$arrSurvey[4]['Answer2'] }}, {{ (float)$arrSurvey[4]['Answer3'] }}, {{ (float)$arrSurvey[4]['Answer4'] }}, {{ (float)$arrSurvey[4]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[5]['Answer1'] }}, {{ (float)$arrSurvey[5]['Answer2'] }}, {{ (float)$arrSurvey[5]['Answer3'] }}, {{ (float)$arrSurvey[5]['Answer4'] }}, {{ (float)$arrSurvey[5]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[6]['Answer1'] }}, {{ (float)$arrSurvey[6]['Answer2'] }}, {{ (float)$arrSurvey[6]['Answer3'] }}, {{ (float)$arrSurvey[6]['Answer4'] }}, {{ (float)$arrSurvey[6]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[7]['Answer1'] }}, {{ (float)$arrSurvey[7]['Answer2'] }}, {{ (float)$arrSurvey[7]['Answer3'] }}, {{ (float)$arrSurvey[7]['Answer4'] }}, {{ (float)$arrSurvey[7]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[8]['Answer1'] }}, {{ (float)$arrSurvey[8]['Answer2'] }}, {{ (float)$arrSurvey[8]['Answer3'] }}, {{ (float)$arrSurvey[8]['Answer4'] }}, {{ (float)$arrSurvey[8]['Answer5'] }}],
+                                        [{{ (float)$arrSurvey[9]['Answer1'] }}, {{ (float)$arrSurvey[9]['Answer2'] }}, {{ (float)$arrSurvey[9]['Answer3'] }}, {{ (float)$arrSurvey[9]['Answer4'] }}, {{ (float)$arrSurvey[9]['Answer5'] }}]
                                     ],
                                     colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
                                     fields: ['매우쉬움', '쉬움', '보통', '어려움', '매우어려움']
@@ -704,8 +702,8 @@
 </div><!--m_section3_wrap//-->
 <script>
     $(document).ready(function () {
-        var seltxt = $('#selgrade option:selected').val();
-        selGrade(seltxt);
+        $('#selgrade option').eq(0).prop('selected', 'selected');
+        selGrade($('#selgrade option:selected').val());
         best();
         selPoint(2);
     });
@@ -910,9 +908,9 @@
         var options = {
             'dataset':{
                 title: 'Web accessibility status',
-                values:[parseFloat({{ $pointList['zh'] }}), parseFloat({{ $pointList['ht'] }}) , parseFloat({{ $pointList['tt'] }}), parseFloat({{ $pointList['tf'] }}), parseFloat({{ $pointList['ff'] }})],
+                values:[parseFloat({{ element('PA0', $pointList, 0) }}), parseFloat({{ element('PA1', $pointList, 0) }}), parseFloat({{ element('PA2', $pointList, 0) }}), parseFloat({{ element('PA3', $pointList, 0) }}), parseFloat({{ element('PA4', $pointList, 0) }})],
                 colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
-                fields: ['0-100', '101-200', '201-300', '301-400', '401-500'],
+                fields: ['0-100', '101-200', '201-300', '301-400', '401-500']
             },
             'donut_width' : 35,
             'core_circle_radius':50,
@@ -943,8 +941,7 @@
     }
 
     function selGrade(val){
-        var str = val;
-        var arrStr = str.split('/');
+        var arrStr = val.split('/');
         var options = {
             'legend':{
                 names: [
@@ -962,7 +959,7 @@
                 title: 'Web accessibility status',
                 values: [[parseInt(arrStr[5]),parseInt(arrStr[6]),parseInt(arrStr[7]),parseInt(arrStr[8]),parseInt(arrStr[9])]],
                 bgColor: '#f9f9f9',
-                fgColor: '#30a1ce',
+                fgColor: '#30a1ce'
             },
             'chartDiv': 'Nwagon',
             'chartType': 'radar',

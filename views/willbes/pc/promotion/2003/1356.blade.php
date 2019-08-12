@@ -124,25 +124,25 @@
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
             <ul>
                 <li>
-                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=1#content_1') }}">
+                    <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/?tab=1#content_1') }}">
                         <span>합격을 위한</span>
                         <div>최종 마무리 전략</div>
                     </a>
                 </li>
                 <li>
-                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=2#content_2') }}">
+                    <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/?tab=2#content_2') }}">
                         <span>전년도 국가직 7급</span>
                         <div>완벽분석</div>				
                     </a>
                 </li>
                 <li>
-                    <a id='tab3' href="@if(time() >= strtotime('201908171140')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=3#content_3') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
+                    <a id='tab3' href="@if(time() >= strtotime('201908171140')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/?tab=3#content_3') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
                         <span>2019 국가직 7급</span>
                         <div>후기 및 적중 이벤트</div>
                     </a>
                 </li>     
                 <li>
-                    <a id='tab4' href="@if(time() >= strtotime('201908191500')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/spidx/2?tab=4#content_4') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
+                    <a id='tab4' href="@if(time() >= strtotime('201908191500')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1356/?tab=4#content_4') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
                         <span>2019 국가직 7급</span>
                         <div>기출해설 자료</div>
                     </a>
@@ -830,7 +830,6 @@
     <!-- End Container --> 
 
     <script type="text/javascript">
-        /*tab*/
         $(document).ready(function(){
             var cnt;
             var tab_id = '{{ $arr_base['tab_id'] }}';
@@ -842,44 +841,38 @@
                     $("#content_"+cnt).show();
                 }
             });
+
+            $('.tabMenu').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function(){
+                    $(this.hash).hide();
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault();
+                });
+            });
         });
 
-            
-    /*tabs*/
-        $(document).ready(function(){
-        $('.tabMenu').each(function(){
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
-        
-            $content = $($active[0].hash);
-        
-            $links.not($active).each(function () {
-            $(this.hash).hide()});
-        
-            // Bind the click event handler
-            $(this).on('click', 'a', function(e){
-            $active.removeClass('active');
-            $content.hide();
-        
-            $active = $(this);
-            $content = $(this.hash);
-        
-            $active.addClass('active');
-            $content.show();
-        
-            e.preventDefault()})})}
-        );
         function fn_FileDownload(path){
             if(confirm("다운로드 하시겠습니까?")){
                 location.href = "/download.do?path="+path;
             }
         }
-        
-
 
         function pullOpen(){
-            var url = "{{front_url('/survey/index/2')}}";
+            var url = "{{front_url('/survey/index/'.$arr_promotion_params['SpIdx'])}}";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
         }
     </script>

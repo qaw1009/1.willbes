@@ -1,5 +1,5 @@
-@if(empty($arr_base['spidx']) === false)
-<iframe id='frm' frameborder="0" scrolling="no" width="100%" onload="resizeIframeSurvey(this)" src="{{front_url('/survey/graph/'.$arr_base['spidx'])}}"></iframe>
+@if(empty($arr_promotion_params['SpIdx']) === false)
+<iframe id="frm" frameborder="0" scrolling="no" width="100%" onload="resizeIframeSurvey(this)" src="{{front_url('/survey/graph/'.$arr_promotion_params['SpIdx'])}}"></iframe>
 @endif
 <script>
     function resizeIframeSurvey(iframe) {

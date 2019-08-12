@@ -61,7 +61,7 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/basket_01') }}" target="_blank">장바구니</a>
             <a href="{{ site_url('/home/html/m/payment_01') }}" target="_blank">결제하기</a>
-            <a href="{{ site_url('/home/html/m/payment_02') }}" target="_blank">결제완료</a>
+            <a href="{{ site_url('/home/html/m/payment_02') }}" target="_blank">결제완료(작업중)</a>
         </div>
     </li>
     <li>

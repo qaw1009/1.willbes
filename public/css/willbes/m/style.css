@@ -2927,6 +2927,27 @@ body.memBody #Footer {
     text-align: center;
 }
 
+/*결제완료*/
+.paymentTxt02 {
+    padding:20px 0;
+    border:1px solid #898989;
+    margin:20px;
+    text-align: center;
+    font-size: 14px;
+}
+.paymentTxt02 span {
+    background:url("../../../img/willbes/login/icon_check.png") no-repeat left bottom;
+    width: 22px;
+    height: 22px;
+    margin-right:10px;
+    font-size:0;
+    text-indent: -9999px;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+
 /*********************************************     MYPAGE     *********************************************/
 
 /*게시판 신규강의리스트*/

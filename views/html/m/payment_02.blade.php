@@ -9,19 +9,16 @@
                 <button type="button" class="goback" onclick="history.back(-1); return false;">
                     <span class="hidden">뒤로가기</span>
                 </button>    
-                결제하기
+                결제완료
             </div>
         </div>
     </div>
    
 
     <div class="paymentWrap">
-        <ul class="paymentTxt NGR">
-            <li>해당 상품의 강좌시작일 설정은 결제일로부터 30일 범위 내로 설정 가능합니다.</li>
-            <li>해당 상품의 강좌시작일을 설정하지 않은 경우 결제일(무통장입금 결제수단의 경우 가상계좌 신청일)로부터 7일 후 강좌가 자동 시작됩니다.</li>
-            <li>해당 상품의 개강일이 설정한 강좌시작일 이후 인 경우 해당 강좌시작일은 개강일로 자동 셋팅됩니다.</li>
-            <li>배송 상품은 당일 오후 2시까지 결제한 상품에 한해 당일 발송 처리됩니다. (토,일,공휴일제외)</li>
-        </ul>
+        <div class="paymentTxt02 NGR">
+            <span>></span>결제가 성공적으로 완료되었습니다.
+        </div>
 
         <div class="paymentCts">
             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">

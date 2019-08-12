@@ -2332,6 +2332,9 @@ body.memBody #Footer {
     float: left;
     width: 33.33333%
 }
+.lec-btns.w50p ul li {
+    width:50% !important;
+}
 .lec-btns.w100p ul li {
     width:100% !important;
 }
@@ -2594,45 +2597,45 @@ body.memBody #Footer {
 .paymentCts .willbes-Open-List {
     display: block;
 }
-.paymentCts .payLecList {
+.paymentWrap .payLecList {
     padding:20px 0;
     border-bottom:1px solid #c9c9c9;
     line-height: 1.5;
 }
-.paymentCts .payLecList:first-child {
+.paymentWrap .payLecList:first-child {
     padding-top:0;
 }
-.paymentCts .payLecList:last-child {
+.paymentWrap .payLecList:last-child {
     border:0;
     padding-bottom:0;
 }
-.paymentCts .payLecList li {
+.paymentWrap .payLecList li {
     margin-bottom:10px;
 }
-.paymentCts .payLecList li:nth-child(2){
+.paymentWrap .payLecList li:nth-child(2){
     color:#1d1d1d;
     font-size:16px;
 }
-.paymentCts .payLecList li:first-child span {
+.paymentWrap .payLecList li:first-child span {
     border:1px solid #666;
     color:#666;
     padding:3px 5px;
 }
-.paymentCts .payLecList li strong {
+.paymentWrap .payLecList li strong {
     width: 80px;
     display: inline-block;
     font-weight: normal !important;
 }
-.paymentCts .payLecList li input[type="text"] {
+.paymentWrap .payLecList li input[type="text"] {
     width: 15%; 
     min-width: 80px;
     height: 30px;
     padding: 0 0.6rem;
 }
-.paymentCts .payLecList li:last-child {
+.paymentWrap .payLecList li:last-child {
     margin:0;
 }
-.paymentCts .payLecList li:last-child a {
+.paymentWrap .payLecList li:last-child a {
     display: inline-block;
     padding:8px 16px;
     background: #333;
@@ -2711,10 +2714,10 @@ body.memBody #Footer {
     border:0;
     padding:0;
 } 
-.paymentCts .method li {
+.paymentWrap .method li {
     display: inline; float: left; width: 33.33333%;
 }
-.paymentCts .method a {
+.paymentWrap .method a {
     display: block; 
     background:#f9f9f9;
     border:1px solid #999;
@@ -2724,7 +2727,7 @@ body.memBody #Footer {
     padding:15px 0;
     margin-right:10px;
 }
-.paymentCts .method li:last-child a {
+.paymentWrap .method li:last-child a {
     margin:0;
 }
 .paymentCts .policyInfo {
@@ -2947,6 +2950,40 @@ body.memBody #Footer {
     display: inline-block;
     vertical-align: middle;
 
+}
+.paymentCtsEnd {
+    padding:0 20px 20px;
+}
+.paymentCtsEnd h4 {
+    font-size:16px;
+    margin-bottom:10px;
+}
+.paymentCtsEnd table {
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+    margin-bottom:20px;
+}
+.paymentCtsEnd th,
+.paymentCtsEnd td {
+    padding:10px;
+    font-size: 14px;
+}
+.paymentCtsEnd th {
+    background: #f9f9f9;
+}
+.paymentCtsEnd tr {
+    border-bottom:1px solid #c9c9c9
+ }
+ .paymentCtsEnd tr:last-child {
+    border:0;
+ }
+.paymentCtsEnd .priceBox {
+    border:0;
+    padding:0;
+    margin-bottom:20px;
+}
+.paymentCtsEnd .payLecList {
+    border-top:1px solid #333;
 }
 
 

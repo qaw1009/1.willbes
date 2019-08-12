@@ -100,6 +100,10 @@ class Request extends \app\controllers\BaseController
         $method = "CREATE";
         $data = null;
 
+        //설문목록 추출 : 2019-08-12 조규호
+        list($surveyList, $count) = $this->predictModel->surveyList(null, '', '');
+
+
         if(empty($PredictIdx) === false){
             $method = "PUT";
             $data = $this->predictModel->getProduct($PredictIdx);
@@ -108,7 +112,8 @@ class Request extends \app\controllers\BaseController
         $this->load->view('predict/request/request_create', [
             'method' => $method,
             'siteCodeDef' => '',
-            'data' => $data
+            'data' => $data,
+            'surveyList' => $surveyList
         ]);
     }
 

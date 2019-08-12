@@ -206,10 +206,22 @@
 
                     <tr>
                         <th colspan="1">사용여부 <span class="required">*</span></th>
-                        <td colspan="3">
+                        <td>
                             <div>
                                 <input type="radio" name="IsUse" class="flat" value="Y" @if($method == 'PUT' && $data['IsUse'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
                                 <input type="radio" name="IsUse" class="flat" value="N" @if($method == 'PUT' && $data['IsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
+                            </div>
+                        </td>
+                        <th colspan="1">설문 </th>
+                        <td>
+                            <div>
+
+                                <select name="SpIdx" class="form-control">
+                                    <option value="">선택</option>
+                                    @foreach($surveyList as $row)
+                                        <option value="{{$row['SpIdx']}}" @if($row['SpIdx'] == $data['SpIdx']) selected @endif>[{{$row['SpIdx']}}] {{$row['SpTitle']}} ({{$row['SpUseYn'] == 'Y' ? '사용' : '미사용'}})</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </td>
                     </tr>

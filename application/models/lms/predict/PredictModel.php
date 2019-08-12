@@ -594,7 +594,7 @@ class PredictModel extends WB_Model
             PP.PreServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs, PP.PreServiceSDatm, PP.PreServiceEDatm,
             PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
-            ,pp.SuccessfulCount,pp.CertIdxArr
+            ,pp.SuccessfulCount,pp.CertIdxArr,pp.SpIdx
         ";
 
         $from = "
@@ -866,6 +866,7 @@ class PredictModel extends WB_Model
                 'RegIp'          => $this->input->ip_address(),
                 'SuccessfulCount' =>$this->input->post('SuccessfulCount'),
                 'CertIdxArr' =>$this->input->post('CertIdxArr'),
+                'SpIdx' =>$this->input->post('SpIdx'),
                 'RegDatm'        => $date,
                 'RegAdminIdx'    => $this->session->userdata('admin_idx'),
             );
@@ -925,6 +926,7 @@ class PredictModel extends WB_Model
                 'LastServiceEDatm' => $LastServiceEDatm,
                 'SuccessfulCount' =>$this->input->post('SuccessfulCount'),
                 'CertIdxArr' =>$this->input->post('CertIdxArr'),
+                'SpIdx' =>$this->input->post('SpIdx'),
                 'RegIp'          => $this->input->ip_address(),
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),
             );

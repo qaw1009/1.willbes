@@ -2413,9 +2413,11 @@ body.memBody #Footer {
 .w-data-pkg:last-child {padding-bottom:0}
 
 #LecDetailPop .LecDetailBox {
-    border:1px solid #ccc;
-    padding:20px;
+    border:1px solid #ccc;    
     line-height: 1.5;    
+    height: 420px; 
+    overflow-y: auto; 
+    padding:20px !important;  
 }
 #LecDetailPop .LecDetailBox h5 {
     font-size: 14px;

@@ -702,26 +702,8 @@ class BasePassPredict extends \app\controllers\FrontController
         $spidx1 = element('spidx1', $arr_input);
         $spidx2 = element('spidx2', $arr_input);
 
-        // 지역별 현황
+        // 1. 지역별 현황
         $arealist = $this->surveyModel->areaList($PredictIdx);
-
-        // 과목별 원점수 평균
-        $gradedata = $this->surveyModel->gradeList($PredictIdx);
-        $gradelist = array_pluck($gradedata, 'Avg', 'SubjectCode');
-        $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
-
-        // 과목별 원점수 평균 그래프
-        // 한국사/영어/형법/경찰학개론/형사소송법
-        $gradeSet[0]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100400'];
-        $gradeSet[0]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100500'] . '/' . $gradelist['100400'];
-
-        // 한국사/영어/형법/국어/형사소송법
-        $gradeSet[1]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100600'] . '/' . $gradesubject['100400'];
-        $gradeSet[1]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100600'] . '/' . $gradelist['100400'];
-
-        // 한국사/영어/경찰학개론/사회/국어
-        $gradeSet[2]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100800'] . '/' . $gradesubject['100600'];
-        $gradeSet[2]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100500'] . '/' . $gradelist['100300'] . '/' . $gradelist['100800'] . '/' . $gradelist['100600'];
 
         $dtSet = array();
         foreach ($arealist as $key => $val){
@@ -777,6 +759,31 @@ class BasePassPredict extends \app\controllers\FrontController
             $dtSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
             $dtSet[$TakeMockPart][$TakeArea]['AvrPoint'] = $AvrPoint;
         }
+
+        // 2. 과목별 원점수 평균
+        $gradedata = $this->surveyModel->gradeList($PredictIdx);
+        $gradelist = array_pluck($gradedata, 'Avg', 'SubjectCode');
+        $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
+
+        // 3. 과목별 원점수 평균 그래프
+        // 한국사/영어/형법/경찰학개론/형사소송법
+        $gradeSet[0]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100400'];
+        $gradeSet[0]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100500'] . '/' . $gradelist['100400'];
+
+        // 한국사/영어/형법/국어/형사소송법
+        $gradeSet[1]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100600'] . '/' . $gradesubject['100400'];
+        $gradeSet[1]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100600'] . '/' . $gradelist['100400'];
+
+        // 한국사/영어/경찰학개론/사회/국어
+        $gradeSet[2]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100800'] . '/' . $gradesubject['100600'];
+        $gradeSet[2]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100500'] . '/' . $gradelist['100300'] . '/' . $gradelist['100800'] . '/' . $gradelist['100600'];
+
+        // 4. 총점성적분포
+        $pointList = $this->surveyModel->pointArea($PredictIdx);
+
+        // 5. 과목별성적분포
+        $subjectPointList = $this->surveyModel->getSubjectPoint($PredictIdx);
+
         $res = $this->surveyModel->surveyAnswerCall($spidx1, $spidx2);
 
         $tempSq = '';
@@ -885,8 +892,6 @@ class BasePassPredict extends \app\controllers\FrontController
 
         //과목별선호도
         $bestList = $this->surveyModel->bestSubject($PredictIdx);
-        $pointList = $this->surveyModel->pointArea($PredictIdx);
-        $subjectPointList = $this->surveyModel->getSubjectPoint($PredictIdx);
 
         //과목별 오답랭킹
         $wrongList = $this->surveyModel->wrongRank($PredictIdx);
@@ -969,10 +974,11 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $this->load->view('willbes/pc/predict/graph', [
             'PredictIdx' => $PredictIdx,
-
             'areaList' => $dtSet,
-            'gradeList' => $gradeSet,
             'gradelist2' => $gradelist,
+            'gradeList' => $gradeSet,
+            'pointList' => $pointList,
+            'subjectPointList' => $subjectPointList,
 
             'resSet' => $resSet,
             'titleSet' => $titleSet,
@@ -985,9 +991,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
             'arrSurvey' => $arrSurvey,
 
-            'pointList' => $pointList,
-            'bestList' => $bestList,
-            'subjectPointList' => $subjectPointList
+            'bestList' => $bestList
         ], false);
     }
 

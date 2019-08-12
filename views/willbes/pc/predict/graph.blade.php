@@ -171,9 +171,7 @@
                 @endforeach
             </select>
             <div class="mt10">
-
                 <div id="Nwagon"></div>
-
             </div>
         </div>
     </div>
@@ -189,36 +187,36 @@
                 <tr>
                     <th>401-500</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['ff'] === true) ? '0' : $pointList['ff'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['ff'] === true) ? '0' : $pointList['ff'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA4', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA4', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>301-400</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['tf'] === true) ? '0' : $pointList['tf'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['tf'] === true) ? '0' : $pointList['tf'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA3', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA3', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>201-300</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['tt'] === true) ? '0' : $pointList['tt'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['tt'] === true) ? '0' : $pointList['tt'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA2', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA2', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>101-200</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['ht'] === true) ? '0' : $pointList['ht'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['ht'] === true) ? '0' : $pointList['ht'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA1', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA1', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
                 <tr>
                     <th>0-100</th>
                     <td>
-                        <div class="graph"><span class="graph1" style="width:{{ empty($pointList['zh'] === true) ? '0' : $pointList['zh'] }}%"></span></div>
-                        <Expect class="ratio">{{ empty($pointList['zh'] === true) ? '0' : $pointList['zh'] }}%</Expect>
+                        <div class="graph"><span class="graph1" style="width:{{ element('PA0', $pointList, 0) }}%"></span></div>
+                        <Expect class="ratio">{{ element('PA0', $pointList, 0) }}%</Expect>
                     </td>
                 </tr>
             </table>
@@ -910,9 +908,9 @@
         var options = {
             'dataset':{
                 title: 'Web accessibility status',
-                values:[parseFloat({{ $pointList['zh'] }}), parseFloat({{ $pointList['ht'] }}) , parseFloat({{ $pointList['tt'] }}), parseFloat({{ $pointList['tf'] }}), parseFloat({{ $pointList['ff'] }})],
+                values:[parseFloat({{ element('PA0', $pointList, 0) }}), parseFloat({{ element('PA1', $pointList, 0) }}), parseFloat({{ element('PA2', $pointList, 0) }}), parseFloat({{ element('PA3', $pointList, 0) }}), parseFloat({{ element('PA4', $pointList, 0) }})],
                 colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
-                fields: ['0-100', '101-200', '201-300', '301-400', '401-500'],
+                fields: ['0-100', '101-200', '201-300', '301-400', '401-500']
             },
             'donut_width' : 35,
             'core_circle_radius':50,

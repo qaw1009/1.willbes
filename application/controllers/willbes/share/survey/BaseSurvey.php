@@ -22,34 +22,37 @@ class BaseSurvey extends \app\controllers\FrontController
             show_alert('등록되지 않은 설문입니다.','close');
             return;
         }
+        if(empty($product['StartDate']) === false && empty($product['EndDate']) === false){
+            $today_now = time();
+            if($today_now < strtotime($product['StartDate']) || $today_now > strtotime($product['EndDate'])) {
+                show_alert('설문기간이 아닙니다.','close');
+                return;
+            }
+        }
+        $res = $this->surveyModel->surveyIs($idx);
+        if($res['CNT'] > 0){
+            show_alert('이미 설문에 참여하셨습니다.','close');
+            return;
+        }
+
         $data = $this->surveyModel->questionSetCall($SqsIdx);
         $question = array();
         $questionD = array();
         $questionD2 = array();
-
         $tempGn = '';
         foreach ($data as $key => $val){
-            $gn         = $val['GroupNumber'];
+            $gn = $val['GroupNumber'];
             $question[$gn]['SqIdx'][] = $val['SqIdx'];
             $question[$gn]['GroupNumber'][] = $val['GroupNumber'];
             $question[$gn]['SubTitle'][] = trim($val['SubTitle']);
             if($tempGn != $gn){
                 $question[$gn]['GroupTitle'] = trim($val['GroupTitle']);
             }
-
-            $sqidx      = $val['SqIdx'];
+            $sqidx = $val['SqIdx'];
             $res = $this->surveyModel->questionCall($sqidx);
             $questionD[$sqidx]['question'] = $res;
             $questionD2[] = $res;
             $tempGn = $val['GroupNumber'];
-        }
-
-        $res = $this->surveyModel->surveyIs($idx);
-
-        if($res['CNT'] > 0){
-            $Is = 'Y';
-        } else {
-            $Is = 'N';
         }
 
         $TypeT = array();
@@ -61,7 +64,7 @@ class BaseSurvey extends \app\controllers\FrontController
             }
         }
 
-        $view_file = 'willbes/pc/survey/index'.$idx;
+        $view_file = 'willbes/pc/survey/index';
         $this->load->view($view_file, [
             'Title' => $product['SpTitle'],
             'question' => $question,
@@ -69,8 +72,7 @@ class BaseSurvey extends \app\controllers\FrontController
             'StartDate' => $product['StartDate'],
             'EndDate' => $product['EndDate'],
             'TypeT' => $TypeT,
-            'SpIdx' => $idx,
-            'Is' => $Is
+            'SpIdx' => $idx
         ], false);
     }
 
@@ -100,20 +102,17 @@ class BaseSurvey extends \app\controllers\FrontController
             $CNT = $val['CNT'];
             $Answer = $val['Answer'];
             $j = $key + 1;
-
             if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
-
                 $tnum = 0;
                 if($resCnt == $j){
                     ${"num".$Answer}++;
                 }
-
                 for($i = 1; $i <= $tempCNT; $i++) {
                     $tnum = $tnum + ${"num".$i};
                 }
                 $resSet[$defnum]['SubTitle'] = $temptitle;
                 for($i = 1; $i <= $tempCNT; $i++){
-                    $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
+                    $resSet[$defnum]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0) ? round(${"num".$i} / $tnum, 2) * 100 : 0;
                 }
                 for($i = 1; $i <= $CNT; $i++){
                     if($Answer == $i){
@@ -134,7 +133,6 @@ class BaseSurvey extends \app\controllers\FrontController
                         if($val['Type'] == 'S') ${"num".$i} = 0;
                     }
                 }
-
                 $resSet[$defnum]['CNT'] = $tempCNT;
                 $titleSet[] = $temptitle;
                 $numberSet[] = $defnum;
@@ -143,7 +141,6 @@ class BaseSurvey extends \app\controllers\FrontController
                 $defnum++;
             } else {
                 if($val['Type'] == 'S'){
-
                     for($i = 1; $i <= $CNT; $i++){
                         if($Answer == $i) ${"num".$i}++;
                     }
@@ -159,20 +156,20 @@ class BaseSurvey extends \app\controllers\FrontController
                     }
                 }
             }
-
             $tempSq = $SqIdx;
             $tempType = $val['Type'];
             $temptitle = $val['SubTitle'];
             $tempCNT = $CNT;
         }
 
-        $view_file = 'willbes/pc/survey/graph'.$idx;
+        $view_file = 'willbes/pc/survey/graph';
         $this->load->view($view_file, [
             'resSet' => $resSet,
             'titleSet' => $titleSet,
             'typeSet' => $typeSet,
             'questionSet' => $questionSet,
-            'numberSet' => $numberSet
+            'numberSet' => $numberSet,
+            'SpIdx' => $idx
         ], false);
     }
 
@@ -186,20 +183,16 @@ class BaseSurvey extends \app\controllers\FrontController
         foreach($totalIdx as $key => $val) {
             // 데이터 수정
             $snum = $val;
-
             $q = element('q' . $snum, $this->_reqP(null, false));
             $totaltype = $totalType[$key];
-
             if($tyn == 'N'){
                 if(empty($q) === true){
                     $this->json_error('모든 문항을 입력해 주세요.');
                     return;
                 }
             }
-
             if($totaltype == 'T') $tyn = 'Y';
         }
-
         $result = $this->surveyModel->storeSurvey($this->_reqP(null, false));
         $this->json_result($result, '저장되었습니다.', $result, $result);
     }

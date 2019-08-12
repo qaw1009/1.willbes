@@ -84,7 +84,7 @@
   <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skybanner">
       <ul>
-          <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s1.jpg"  title="설명회" /></a></li>
+          {{--<li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s1.jpg"  title="설명회" /></a></li>--}}
           <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s2.jpg"  title="학원방문상담" /></a></li>
           <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s3.jpg" title="카카오상담하기" /></a></li>
 		  <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_s4.jpg"  title="윌비스통생반" /></a></li>
@@ -119,10 +119,12 @@
     </div>
     <!--wb_cts04//-->
   
+    {{--
     <div class="evtCtnsBox wb_cts05">
       <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_04.jpg" title="정제된 학습환경 제공" />
     </div>
     <!--wb_cts05//-->
+    --}}
   
      <div class="evtCtnsBox wb_cts06">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_05.jpg" title="수험생에게 꼭 필요한 모든 것" />
@@ -143,12 +145,14 @@
     </div>
   </div>
   <!--wb_cts07//-->
-  
+
+  {{--
   <div class="evtCtnsBox wb_cts08">
 	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_07.jpg" title="합격 전략 설명회" /></a>
   </div>
   <!--wb_cts08//-->
-
+  --}}
+  
   <!--유의사항-->
   <div class="evtCtnsBox wb_cts09">
     <div class="wb_tipBox">

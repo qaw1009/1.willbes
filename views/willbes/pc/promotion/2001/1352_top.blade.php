@@ -31,407 +31,29 @@
     <div class="tmap">
         <div class="map_visual" id="AREA_AVGGRADE">
             <div class="tmapR">
-                {{--
                 <ul id="map_area" class="bx-wrapper">
-                </ul>
-                --}}
-                <ul id="map_area2" class="bx-wrapper">
-                    <li>
-                        <p>합격안정권 예측 <span>서울</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>343.06</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>367.33</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>407.86</td>
-                            </tr>
-                            <tr>
-                                <td>101단</td>
-                                <td>332.11</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>인천</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>335.27</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>361.76</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>410.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>경기북부</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>340.15</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>358.32</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>398.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>경기남부</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>339.59</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>350.56</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>419.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>강원</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>328.22</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>340.69</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>389.28</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>충북</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>340.03</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>354.20</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>388.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>충남</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>336.13</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>354.10</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>383.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>대전</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>365.68</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>359.27</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>397.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>경북</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>347.44</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>356.19</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>428.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>경남</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>348.92</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>349.20</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>406.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>대구</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>353.55</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>360.57</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>397.19</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>부산</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>346.90</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>362.82</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>416.10</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>울산</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>346.09</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>362.85</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>385.00</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>전북</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>341.89</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>358.81</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>407.86</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>전남</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>353.59</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>351.46</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>374.36</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>광주</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:남</td>
-                                <td>350.92</td>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>346.84</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>391.44</td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>합격안정권 예측 <span>제주</span></p>
-                        <table class="boardTypeA">
-                            <col span="2" />
-                            <tr>
-                                <th>직렬/지역</th>
-                                <th>점수</th>
-                            </tr>
-                            <tr>
-                                <td>일반공채:여</td>
-                                <td>300.36</td>
-                            </tr>
-                            <tr>
-                                <td>전의경경채</td>
-                                <td>375.00</td>
-                            </tr>
-                        </table>
-                    </li>
                 </ul>
             </div>
 
             <div id="MapRollingDiv">
                 <ul>
-                    <li class="a01"><a data-slide-index="1" href="#none" class="active">서울</a></li>
-                    <li class="a02"><a data-slide-index="2" href="#none">인천</a></li>
-                    <li class="a03"><a data-slide-index="3" href="#none">경기북부</a></li>
-                    <li class="a04"><a data-slide-index="4" href="#none">경기남부</a></li>
-                    <li class="a05"><a data-slide-index="5" href="#none">강원</a></li>
-                    <li class="a06"><a data-slide-index="6" href="#none">충북</a></li>
-                    <li class="a07"><a data-slide-index="7" href="#none">충남</a></li>
-                    <li class="a08"><a data-slide-index="8" href="#none">대전</a></li>
-                    <li class="a09"><a data-slide-index="9" href="#none">경북</a></li>
-                    <li class="a10"><a data-slide-index="10" href="#none">경남</a></li>
-                    <li class="a11"><a data-slide-index="11" href="#none">대구</a></li>
-                    <li class="a12"><a data-slide-index="12" href="#none">부산</a></li>
-                    <li class="a13"><a data-slide-index="13" href="#none">울산</a></li>
-                    <li class="a14"><a data-slide-index="14" href="#none">전북</a></li>
-                    <li class="a15"><a data-slide-index="15" href="#none">전남</a></li>
-                    <li class="a16"><a data-slide-index="16" href="#none">광주</a></li>
-                    <li class="a17"><a data-slide-index="17" href="#none">제주</a></li>
+                    <li class="a01"><a id="area_712001" data-slide-index="" href="#none" class="active">서울</a></li>
+                    <li class="a02"><a id="area_712004" data-slide-index="" href="#none">인천</a></li>
+                    <li class="a03"><a id="area_712009" data-slide-index="" href="#none">경기북부</a></li>
+                    <li class="a04"><a id="area_712008" data-slide-index="" href="#none">경기남부</a></li>
+                    <li class="a05"><a id="area_712010" data-slide-index="" href="#none">강원</a></li>
+                    <li class="a06"><a id="area_712011" data-slide-index="" href="#none">충북</a></li>
+                    <li class="a07"><a id="area_712012" data-slide-index="" href="#none">충남</a></li>
+                    <li class="a08"><a id="area_712006" data-slide-index="" href="#none">대전</a></li>
+                    <li class="a09"><a id="area_712015" data-slide-index="" href="#none">경북</a></li>
+                    <li class="a10"><a id="area_712016" data-slide-index="" href="#none">경남</a></li>
+                    <li class="a11"><a id="area_712003" data-slide-index="" href="#none">대구</a></li>
+                    <li class="a12"><a id="area_712002" data-slide-index="" href="#none">부산</a></li>
+                    <li class="a13"><a id="area_712007" data-slide-index="" href="#none">울산</a></li>
+                    <li class="a14"><a id="area_712013" data-slide-index="" href="#none">전북</a></li>
+                    <li class="a15"><a id="area_712014" data-slide-index="" href="#none">전남</a></li>
+                    <li class="a16"><a id="area_712005" data-slide-index="" href="#none">광주</a></li>
+                    <li class="a17"><a id="area_712017" data-slide-index="" href="#none">제주</a></li>
                 </ul>
             </div>
         </div>
@@ -506,71 +128,29 @@
 <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 <script>
     var $ajax_form = $('#ajax_form');
+    var slideMap = null;
 
     /*서비스이용현황 */
-    $( document ).ready( function() {
-        areaAvrAjax("{{ $arr_promotion_params['PredictIdx'] }}");
-        // noticeListAjax('');
-        //
-        timer = self.setInterval('slideGo()', 5000);
-        if('{{ENVIRONMENT}}'!='local' && '{{ENVIRONMENT}}'!='development') {
+    $(document).ready(function() {
+        if('{{ENVIRONMENT}}' !== 'local' && '{{ENVIRONMENT}}' !== 'development') {
             @if(date('YmdHi') >= '201905011600')
             alert('서비스가 종료되었습니다.');
-            var url = "{{ site_url('/home/index/cate/3001') }}";
-            location.href = url;
+            location.href = '{{ site_url('/home/index/cate/3001') }}';
             @endif
         }
 
-        // get_cnt2();
-        // get_cnt3();
+        // 상단 합격안정권 예측 데이터 조회
+        areaAvrAjax('{{ $arr_promotion_params['PredictIdx'] }}');
 
-        /*var jbOffset = $( '.conut_section' ).offset();
-        $( window ).scroll( function() {
-            if ( $( document ).scrollTop() > jbOffset.top ) {
-                $( '.conut_section' ).addClass( 'conut_sectionFixed' );
-            }
-            else {
-                $( '.conut_section' ).removeClass( 'conut_sectionFixed' );
-            }
-        });*/
-    });
-
-    // 숫자 타입에서 쓸 수 있도록 format() 함수 추가
-    Number.prototype.format = function(){
-        if(this==0) return 0;
-
-        var reg = /(^[+-]?\d+)(\d{3})/;
-        var n = (this + '');
-
-        while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
-
-        return n;
-    };
-
-    // 문자열 타입에서 쓸 수 있도록 format() 함수 추가
-    String.prototype.format = function(){
-        var num = parseFloat(this);
-        if( isNaN(num) ) return "0";
-
-        return num.format();
-    };
-
-    function slideGo(){
-        $("#map_area2").bxSlider({
-            auto : true,
-            mode: 'fade',
-            pagerCustom: '#MapRollingDiv',
-            speed: 1000,
-            pause: 2000,
-            randomStart:true,
-            controls:false
+        // 지역 클릭시 슬라이드 이동
+        $('#MapRollingDiv').on('click', 'li', function() {
+            var index = $(this).find('a').data('slide-index');
+            slideMap.goToSlide(index);
         });
-    }
 
-    /*과목별 성적 분포*/
-    $(document).ready(function() {
+        // 과목별 성적분포
         var slidesImg3 = $("#slidesImg3").bxSlider({
-            mode:'fade', //option : 'horizontal', 'vertical', 'fade'
+            mode:'fade',
             auto:true,
             speed:1000,
             pause:4000,
@@ -581,17 +161,79 @@
             slideMargin:0,
             autoHover: true,
             moveSlides:1,
-            pager:false,
+            pager:false
         });
 
-        $("#imgBannerLeft3").click(function (){
+        $("#imgBannerLeft3").click(function() {
             slidesImg3.goToPrevSlide();
         });
 
-        $("#imgBannerRight3").click(function (){
+        $("#imgBannerRight3").click(function() {
             slidesImg3.goToNextSlide();
         });
     });
+
+    function areaAvrAjax(PredictIdx) {
+        var url = "{{ site_url("/predict/areaAvrAjax") }}";
+        var data = {
+            '{{ csrf_token_name() }}' : $ajax_form.find('[name="{{ csrf_token_name() }}"]').val(),
+            '_method' : 'POST',
+            'PredictIdx': PredictIdx
+        };
+
+        sendAjax(url, data, function(ret) {
+            var html = '';
+            var idx = 0;
+            if (Object.keys(ret.data).length > 0) {
+                $.each(ret.data, function (key, arr) {
+                    var arr_area = key.split(':');
+
+                    html += '<li data-area-ccd="' + arr_area[0] + '">\n' +
+                        '<p>합격안정권 예측 <span>' + arr_area[1] + '</span></p>\n' +
+                        '<table class="boardTypeA">\n' +
+                        '<col span="2" />\n' +
+                        '<tr>\n' +
+                        '<th>직렬/지역</th>\n' +
+                        '<th>점수</th>\n' +
+                        '</tr>\n';
+
+                    $.each(arr, function (name, value) {
+                        html += '<tr>\n' +
+                            '<td>' + name + '</td>\n' +
+                            '<td>' + value + '</td>\n' +
+                            '</tr>';
+                    });
+
+                    html += '</table>\n' +
+                        '</li>';
+
+                    // slide index 설정
+                    $('#area_' + arr_area[0]).data('slide-index', idx);
+                    idx++;
+                });
+            }
+
+            $('#map_area').html(html);
+
+            slideMap = $("#map_area").bxSlider({
+                auto: true,
+                mode: 'fade',
+                speed: 1000,
+                pause: 4000,
+                randomStart: false,
+                controls: false,
+                //pagerCustom: '#MapRollingDiv'
+                onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+                    var area_ccd = $slideElement.data('area-ccd');
+                    var pager = $('#MapRollingDiv li a');
+                    pager.removeClass('active');
+                    pager.filter('#area_' + area_ccd).addClass('active');
+                }
+            });
+        }, function(ret, status) {
+            alert('에러가 발생하였습니다.');
+        }, true, 'POST');
+    }
 
     function makeCount(s){
         var res = "";
@@ -643,55 +285,6 @@
                 $('#numarea2').html(makeCount(s));
             }
         }, showError, false, 'GET');
-    }
-
-    function areaAvrAjax(PredictIdx){
-        var url = "{{ site_url("/predict/areaAvrAjax") }}";
-        var data = {
-            '{{ csrf_token_name() }}' : $ajax_form.find('[name="{{ csrf_token_name() }}"]').val(),
-            '_method' : 'POST',
-            'PredictIdx': PredictIdx
-        };
-        sendAjax(url,
-            data,
-            function(d){
-                var str = ""; //d.data[0].TakeAreaName;
-                var instr2 = "";
-                var areaStr = "";
-                var tempAreaStr = "";
-                var datalen = d.data.length;
-                var j = 0;
-                for(var i=0; i < datalen; i++) {
-                    areaStr = d.data[i].TakeAreaName;
-                    j = i + 1;
-
-                    if((areaStr != tempAreaStr && i != 0) || datalen == j){
-                        if(datalen == j){
-                            str = str + "<li>";
-                            instr = "<p>합격안정권 예측 <span>"+tempAreaStr+"</span></p><table class='boardTypeA'><colgroup><col span='2'></colgroup><tbody><tr><th>직렬/지역</th><th>점수</th></tr>";
-                            str += instr;
-                            instr2 += "<tr><td>" + d.data[i].TakeMockPartName + "</td><td>" + d.data[i].AvrPoint + "</td></tr>";
-                            str += instr2;
-                            str += "</tbody></table></li>";
-                        } else {
-                            str = str + "<li>";
-                            instr = "<p>합격안정권 예측 <span>"+tempAreaStr+"</span></p><table class='boardTypeA'><colgroup><col span='2'></colgroup><tbody><tr><th>직렬/지역</th><th>점수</th></tr>";
-                            str += instr;
-                            str += instr2;
-                            str += "</tbody></table></li>";
-                            instr2 = '';
-                            instr2 += "<tr><td>" + d.data[i].TakeMockPartName + "</td><td>" + d.data[i].AvrPoint + "</td></tr>";
-                        }
-                    } else {
-                        instr2 += "<tr><td>" + d.data[i].TakeMockPartName + "</td><td>" + d.data[i].AvrPoint + "</td></tr>";
-                    }
-                    tempAreaStr = areaStr;
-                }
-                $('#map_area').html(str);
-            },
-            function(ret, status){
-                //alert(ret.ret_msg);
-            }, true, 'POST', 'json');
     }
 
     function noticeListAjax(BoardIdx){
@@ -768,4 +361,24 @@
             $('#popup').bPopup();
         }, showAlertError, false, 'GET', 'html');
     }
+
+    // 숫자 타입에서 쓸 수 있도록 format() 함수 추가
+    Number.prototype.format = function(){
+        if(this==0) return 0;
+
+        var reg = /(^[+-]?\d+)(\d{3})/;
+        var n = (this + '');
+
+        while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+
+        return n;
+    };
+
+    // 문자열 타입에서 쓸 수 있도록 format() 함수 추가
+    String.prototype.format = function(){
+        var num = parseFloat(this);
+        if( isNaN(num) ) return "0";
+
+        return num.format();
+    };
 </script>

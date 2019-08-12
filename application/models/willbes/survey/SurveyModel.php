@@ -741,7 +741,9 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     *  총점 성적분포
+     * 총점 성적분포
+     * @param $PredictIdx
+     * @return array
      */
     public function pointArea($PredictIdx)
     {
@@ -749,54 +751,38 @@ class SurveyModel extends WB_Model
             COUNT(*) AS CNT, Pointarea
         ";
 
-        $from = "
-            
+        $from = "            
             FROM 
             (
                 SELECT 
-                    SUBSTR(IF(SUM(OrgPoint) < 100, CONCAT('0',SUM(OrgPoint)), SUM(OrgPoint)),1,1) AS Pointarea
+                    (case 
+                        when SUM(OrgPoint) <= 100 then 0    # 0 ~ 100
+                        when SUM(OrgPoint) >= 500 then 4    # 500 이상
+                        else substr(SUM(OrgPoint), 1, 1)    # 101 ~ 499
+                    end) as Pointarea 
                 FROM 
                     {$this->_table['predictGrades']} 
-                WHERE PredictIdx = ".$PredictIdx."
-                GROUP BY PrIdx
-                ORDER BY Pointarea DESC
+                WHERE PredictIdx = ?
+                GROUP BY PrIdx                
             ) AS A                
         ";
 
-        $order_by = " GROUP BY Pointarea";
+        $order_by = " GROUP BY Pointarea ORDER BY Pointarea ASC";
 
-        $where = "";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $order_by, [$PredictIdx]);
+        $result = $query->result_array();
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res = $query->result_array();
-        $arrData = null;
-        if (empty($Res) === false) {
-            $temp_cnt_0 = (empty($Res[0]['CNT']) === true) ? 0 : $Res[0]['CNT'];
-            $temp_cnt_1 = (empty($Res[1]['CNT']) === true) ? 0 : $Res[1]['CNT'];
-            $temp_cnt_2 = (empty($Res[2]['CNT']) === true) ? 0 : $Res[2]['CNT'];
-            $temp_cnt_3 = (empty($Res[3]['CNT']) === true) ? 0 : $Res[3]['CNT'];
-            $temp_cnt_4 = (empty($Res[4]['CNT']) === true) ? 0 : $Res[4]['CNT'];
-            $temp_cnt_5 = (empty($Res[5]['CNT']) === true) ? 0 : $Res[5]['CNT'];
+        $arr_point_area = [];
+        if (empty($result) === false) {
+            $total = array_sum(array_pluck($result, 'CNT'));    // 총인원수
 
-            $total = $temp_cnt_0 + $temp_cnt_1 + $temp_cnt_2 + $temp_cnt_3 + $temp_cnt_4 + $temp_cnt_5;
-            // 0 ~ 100
-            $zh = $temp_cnt_0 ? ROUND($temp_cnt_0 / $total * 100, 2) : '0';
-            $arrData['zh'] = $zh;
-            // 100 ~ 200
-            $ht = $temp_cnt_1 ? ROUND($temp_cnt_1 / $total * 100, 2) : '0';
-            $arrData['ht'] = $ht;
-            // 200 ~ 300
-            $tt = $temp_cnt_2 ? ROUND($temp_cnt_2 / $total * 100, 2) : '0';
-            $arrData['tt'] = $tt;
-            // 300 ~ 400
-            $tf = $temp_cnt_3 ? ROUND($temp_cnt_3 / $total * 100, 2) : '0';
-            $arrData['tf'] = $tf;
-            // 400 ~ 500
-            $ff = 100 - ($zh + $ht + $tt + $tf);
-            $arrData['ff'] = $ff;
+            // 점수대별 인원비율, (인원수/총인원수) * 100, PA0 ~ PA4
+            foreach ($result as $row) {
+                $arr_point_area['PA' . $row['Pointarea']] = $row['CNT'] < 1 ? 0 : ROUND($row['CNT'] / $total * 100, 2);
+            }
         }
-        return $arrData;
+
+        return $arr_point_area;
     }
 
     /**
@@ -936,7 +922,10 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = "";
-        $where = " WHERE SpIdx = ".$idx;
+        $where = " 
+            WHERE SpIdx = {$idx}
+            AND SpUseYn = 'Y' 
+        ";
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
@@ -959,7 +948,10 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = " ORDER BY Ordering ASC";
-        $where = " WHERE sqs.SqsIdx = ".$idx;
+        $where = " 
+            WHERE sqs.SqsIdx = {$idx}
+            AND sqs.SqsUseYn = 'Y' 
+        ";
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
@@ -981,7 +973,10 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = "";
-        $where = " WHERE SqIdx = ".$idx;
+        $where = " 
+            WHERE SqIdx = {$idx}
+            AND SqUseYn = 'Y' 
+        ";
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
@@ -1135,7 +1130,10 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 문항세트전체호출
+     * 실시간 합격안정권 예측
+     * @param $PredictIdx
+     * @param $order
+     * @return mixed
      */
     public function statisticsListLine($PredictIdx, $order){
 
@@ -1218,13 +1216,18 @@ class SurveyModel extends WB_Model
         return $data;
     }
 
-    /***
-     * @param $PredictIdx
+    /**
      * 지역별현황
+     * @param $PredictIdx
+     * @return mixed
      */
     public function areaList($PredictIdx){
         $column = "
-            sc.CcdName AS Areaname, pc.CcdName AS Serialname, pg.*       
+            sc.CcdName AS Areaname, pc.CcdName AS Serialname, pg.*   
+            , (select round(sum(AvrPoint), 2) as AvrPoint 
+                from {$this->_table['predictGradesArea']} 
+                where PredictIdx = pg.PredictIdx and TakeMockPart = pg.TakeMockPart and TakeArea = pg.TakeArea
+              ) as AvrPoint    
         ";
 
         $from = "
@@ -1234,34 +1237,38 @@ class SurveyModel extends WB_Model
                 LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
         ";
 
-        $where = " WHERE PredictIdx = ".$PredictIdx;
+        $where = " WHERE PredictIdx = ?";
         $order_by = " ORDER BY TaKeMockPart, TakeArea";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$PredictIdx]);
         $data = $query->result_array();
 
         return $data;
     }
 
-    /***
-     * 지역별현황
+    /**
+     * 과목별 원점수 평균
+     * @param $PredictIdx
+     * @return mixed
      */
-    public function gradeList(){
+    public function gradeList($PredictIdx){
         $column = "
-            pg.PpIdx, ROUND(AVG(OrgPoInt)) AS Avg, CcdName       
+            pg.PpIdx, pg.Avg, pc.CcdName as SubjectName, pp.SubjectCode       
         ";
 
         $from = "
-            FROM 
-                {$this->_table['predictGradesOrigin']} AS pg
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
-                LEFT JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
+            from (
+                select PpIdx, ROUND(AVG(OrgPoint)) AS Avg
+                from {$this->_table['predictGradesOrigin']}
+                where PredictIdx = ?
+                    and OrgPoint > 0
+                group by PpIdx
+            ) as pg
+                left join {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                left join {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd            
         ";
 
-        $where = "";
-        $order_by = " GROUP BY pg.PpIdx ";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
         $data = $query->result_array();
 
         return $data;

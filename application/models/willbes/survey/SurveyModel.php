@@ -936,7 +936,10 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = "";
-        $where = " WHERE SpIdx = ".$idx;
+        $where = " 
+            WHERE SpIdx = {$idx}
+            AND SpUseYn = 'Y' 
+        ";
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
@@ -959,7 +962,10 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = " ORDER BY Ordering ASC";
-        $where = " WHERE sqs.SqsIdx = ".$idx;
+        $where = " 
+            WHERE sqs.SqsIdx = {$idx}
+            AND sqs.SqsUseYn = 'Y' 
+        ";
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
@@ -981,7 +987,10 @@ class SurveyModel extends WB_Model
         ";
 
         $order_by = "";
-        $where = " WHERE SqIdx = ".$idx;
+        $where = " 
+            WHERE SqIdx = {$idx}
+            AND SqUseYn = 'Y' 
+        ";
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();

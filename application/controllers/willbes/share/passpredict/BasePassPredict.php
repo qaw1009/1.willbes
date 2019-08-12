@@ -318,8 +318,15 @@ class BasePassPredict extends \app\controllers\FrontController
         $PredictIdx = $this->_req("PredictIdx");
         $order = 'area';
         $data = $this->surveyModel->statisticsListLine($PredictIdx, $order);
+        $results = [];
+
+        // 지역별 데이터 가공
+        foreach ($data as $row) {
+            $results[$row['TakeArea'] . ':' . $row['TakeAreaName']][$row['TakeMockPartName']] = $row['StabilityAvrPoint'];
+        }
+
         return $this->response([
-            'data' => $data
+            'data' => $results
         ]);
     }
 
@@ -695,18 +702,26 @@ class BasePassPredict extends \app\controllers\FrontController
         $spidx1 = element('spidx1', $arr_input);
         $spidx2 = element('spidx2', $arr_input);
 
+        // 지역별 현황
         $arealist = $this->surveyModel->areaList($PredictIdx);
-        $gradelist = $this->surveyModel->gradeList();
 
-        //한국사 영어 경찰학개론 국어 사회
-        $gradeSet[0]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[6]['CcdName']."/".$gradelist[8]['CcdName'];
-        $gradeSet[0]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[6]['Avg']."/".$gradelist[8]['Avg'];
-        //한국사 영어 경찰학개론 형법 형사소송법
-        $gradeSet[1]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[2]['CcdName']."/".$gradelist[3]['CcdName'];
-        $gradeSet[1]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[2]['Avg']."/".$gradelist[3]['Avg'];
-        //한국사 국어 영어 형법 과학
-        $gradeSet[2]['subject'] = $gradelist[0]['CcdName']."/".$gradelist[5]['CcdName']."/".$gradelist[1]['CcdName']."/".$gradelist[2]['CcdName']."/".$gradelist[8]['CcdName'];
-        $gradeSet[2]['grade'] = "/".$gradelist[0]['Avg']."/".$gradelist[5]['Avg']."/".$gradelist[1]['Avg']."/".$gradelist[2]['Avg']."/".$gradelist[8]['Avg'];
+        // 과목별 원점수 평균
+        $gradedata = $this->surveyModel->gradeList($PredictIdx);
+        $gradelist = array_pluck($gradedata, 'Avg', 'SubjectCode');
+        $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
+
+        // 과목별 원점수 평균 그래프
+        // 한국사/영어/형법/경찰학개론/형사소송법
+        $gradeSet[0]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100400'];
+        $gradeSet[0]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100500'] . '/' . $gradelist['100400'];
+
+        // 한국사/영어/형법/국어/형사소송법
+        $gradeSet[1]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100600'] . '/' . $gradesubject['100400'];
+        $gradeSet[1]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100600'] . '/' . $gradelist['100400'];
+
+        // 한국사/영어/경찰학개론/사회/국어
+        $gradeSet[2]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100800'] . '/' . $gradesubject['100600'];
+        $gradeSet[2]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100500'] . '/' . $gradelist['100300'] . '/' . $gradelist['100800'] . '/' . $gradelist['100600'];
 
         $dtSet = array();
         foreach ($arealist as $key => $val){
@@ -734,6 +749,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $ExpectAvrPoint2Ref = $val['ExpectAvrPoint2Ref'];
             $ExpectAvrPercent = $val['ExpectAvrPercent'];
             $IsUse = $val['IsUse'];
+            $AvrPoint = $val['AvrPoint'];
 
             $dtSet[$TakeMockPart][$TakeArea]['TakeMockPart'] = $TakeMockPart;
             $dtSet[$TakeMockPart][$TakeArea]['TakeArea'] = $TakeArea;
@@ -759,6 +775,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPoint2Ref'] = $ExpectAvrPoint2Ref;
             $dtSet[$TakeMockPart][$TakeArea]['ExpectAvrPercent'] = $ExpectAvrPercent;
             $dtSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
+            $dtSet[$TakeMockPart][$TakeArea]['AvrPoint'] = $AvrPoint;
         }
         $res = $this->surveyModel->surveyAnswerCall($spidx1, $spidx2);
 

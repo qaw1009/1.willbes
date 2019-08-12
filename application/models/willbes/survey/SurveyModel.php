@@ -1135,7 +1135,10 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 문항세트전체호출
+     * 실시간 합격안정권 예측
+     * @param $PredictIdx
+     * @param $order
+     * @return mixed
      */
     public function statisticsListLine($PredictIdx, $order){
 
@@ -1218,13 +1221,17 @@ class SurveyModel extends WB_Model
         return $data;
     }
 
-    /***
+    /** 지역별현황
      * @param $PredictIdx
-     * 지역별현황
+     * @return mixed
      */
     public function areaList($PredictIdx){
         $column = "
-            sc.CcdName AS Areaname, pc.CcdName AS Serialname, pg.*       
+            sc.CcdName AS Areaname, pc.CcdName AS Serialname, pg.*   
+            , (select round(sum(AvrPoint), 2) as AvrPoint 
+                from {$this->_table['predictGradesArea']} 
+                where PredictIdx = pg.PredictIdx and TakeMockPart = pg.TakeMockPart and TakeArea = pg.TakeArea
+              ) as AvrPoint    
         ";
 
         $from = "
@@ -1244,24 +1251,28 @@ class SurveyModel extends WB_Model
         return $data;
     }
 
-    /***
+    /**
      * 지역별현황
+     * @param $PredictIdx
+     * @return mixed
      */
-    public function gradeList(){
+    public function gradeList($PredictIdx){
         $column = "
-            pg.PpIdx, ROUND(AVG(OrgPoInt)) AS Avg, CcdName       
+            pg.PpIdx, pg.Avg, pc.CcdName as SubjectName, pp.SubjectCode       
         ";
 
         $from = "
-            FROM 
-                {$this->_table['predictGradesOrigin']} AS pg
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
-                LEFT JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
+            from (
+                select PpIdx, ROUND(AVG(OrgPoint)) AS Avg
+                from {$this->_table['predictGradesOrigin']}
+                where PredictIdx = ?
+                group by PpIdx
+            ) as pg
+                left join {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                left join {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd            
         ";
 
-        $where = "";
-        $order_by = " GROUP BY pg.PpIdx ";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
         $data = $query->result_array();
 
         return $data;

@@ -204,6 +204,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SearchMockTestModel $searchMockTestModel                      Search MockTest Model Class
  ***************** Predict *****************************************************************************
  * @property PredictModel $predictModel                                    Predict Model Class
+ * @property CountManageModel $countManageModel                   CountManage  Model Class
  * @property SurveyModel $surveyModel                                      Survey Model Class
  ***************** FRONT *******************************************************************************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class

@@ -207,8 +207,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_01.jpg" title="" />
             <div>
                 <ul class="NSK-Black">
-                    <li><a href="#lec1" class="active">7월 기본이론 완성반</a></li>
-                    <li><a href="#lec2">19.7월 ~ 20.3월 연간반</a></li>
+                    <li><a href="#lec1" class="active">9월 기본이론 완성반</a></li>
+                    <li><a href="#lec2">19.9월 ~ 20.3월 연간반</a></li>
                 </ul>
                 <div class="mt10" id="lec1">
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_tab1.jpg" title="7월 기본이론 완성반"></a>
@@ -217,10 +217,12 @@
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_tab2.jpg" title="연간종합반"/></a>
                 </div>             
             </div>
+            {{--
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1257_03_1.jpg" usemap="#Map1256B" title="" border="0" />
             <map name="Map1256B" id="Map1256B">
                 <area shape="rect" coords="169,1009,946,1087" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=336" target="_blank" alt="설명회신청하기" />
             </map>
+            --}}
         </div>
 
         <div class="evt06">
@@ -278,8 +280,7 @@
                             5) 수강 기간 동안 제공받은 사물함, 동영상 강좌, 자습실 등 혜택으로 제공된 서비스는 환불 즉시 이용이 정지 및 회수되며, 기사용된 부분은 환불신청하신<br />
                             해당월의 말일까지 사용한 것으로 간주하고 사용료를 환불금액에서 공제합니다. <br />
                             <span>- 사물함 사용료: 1개월-5,000원</span> <br />
-                            <span>- 동영상 강좌: 1개월-35,000원<span> <br />
-                            <span>- 자습실: 월 150,000원</span>  <br />                            
+                            <span>- 동영상 강좌: 1개월-35,000원<span> <br />                                          
                             6) 무료로 제공받은 교재 등 혜택으로 제공된 물품류(전자제품 제외)의 경우 미반환되거나, 기사용흔적/훼손이 있는 경우 환불금액에서 해당 물품류의 정가를 환불금에서 공제합니다.<br />
                             7) 태블릿 PC 등 혜택으로 제공된 전자제품류 개봉/기사용 흔적 있는 경우 환불금액에서 해당 전자제품류의 정가를 환불금에서 공제합니다<br />
                             8) 개강 이후 종합반 과목 수 변경을 원하실 경우, 구매하신 상품을 환불 규정에 의거 환불한 후 재등록하셔야합니다.<br />
@@ -301,26 +302,13 @@
                         - 개인 사물함 관리의 책임은 개인이 지며, 분실/훼손된 개인 물품에 대해서는 학원에서 책임지지 않습니다.<br />
                         - 제공된 사물함는 학원의 재산입니다. 사용 부주의에 의한 고장/훼손 시 수강생에게 배상의 책임이 있습니다.<br />
                         - 개인 사유에 의해 활용하지 못한 혜택에 대해서는 학원에서 별도로 보상하지 않습니다.<br />
-                        </li>
-                        <li>
-                        <strong>전용 자습실</strong>
-                        - 지정좌석제로 제공되며, 지정된 좌석 이외의 좌석은 원칙적으로 사용이 불가능합니다. <br />
-                        - 중도 수강 취소 시 지정된 좌석은 회수되며, 잔여 물품은 폐기처리 됩니다. 폐기된 물품에 대해서는 학원에서 책임지지않습니다.<br />
-                        - 개인 물품의 관리의 책임은 개인이 지며, 분실/훼손된 개인 물품에 대해서는 학원에서 책임지지 않습니다.<br />
-                        - 제공된 책상, 의자는 학원의 재산입니다. 임의 이동 및 분실/훼손 시 수강생에게 배상의 책임이 있습니다.<br />
-                        - 개인 사유에 의해 활용하지 못한 혜택에 대해서는 학원에서 별도로 보상하지 않습니다.<br />
-                        </li>
+                        </li>                       
                         <li>
                         <strong>복습 동영상</strong>
                         - 직급별 온라인PASS와 단강좌가 지급됩니다.<br />
                         - 수강기간 동안만 수강이 가능한 혜택이며, 중도환불 시 즉시 회수됩니다.<br />
                         - 개인 사유에 의해 활용하지 못한 혜택에 대해서는 학원에서 별도로 보상하지 않습니다.<br />
-                        </li>
-                        <li>
-                        <strong>면접반 할인권</strong>
-                        - 제공되는 혜택은 윌비스 공무원 학원 면접반에서만 사용가능합니다.- 지원되는 시험은 9급 지방직/서울시 시험입니다. (그 외 다른 시험 해당X)<br />
-                        - 중도 수강취소 시 제공되지 않습니다.- 개인 사유에 의해 수강하지 못한 경우에 대해서는 학원에서 별도로 보상하지 않습니다.<br />
-                        </li>
+                        </li>                       
                         <li>
                         <strong>추가 할인</strong>
                         - 추가 할인은 수강료 정가에서 적용됩니다.<br />

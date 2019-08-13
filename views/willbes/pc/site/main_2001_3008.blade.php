@@ -19,7 +19,7 @@
                 <ul>
                     <li>                        
                         <div class="sliderNum">
-                            <div><a href="{{ site_url('/promotion/index/cate/3007/code/1037') }}"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x292_190524.jpg" title="해양경찰 특채PASS"></a></div>
+                            {{--<div><a href="{{ site_url('/promotion/index/cate/3007/code/1037') }}"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x292_190524.jpg" title="해양경찰 특채PASS"></a></div>--}}
                             <div><a href="{{ site_url('/promotion/index/cate/3008/code/1020') }}"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x292_190524_01.jpg" title="KCG 핵심요약"></a></div>
                         </div>
                     </li>

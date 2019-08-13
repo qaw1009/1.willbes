@@ -7,6 +7,7 @@
         .willbes-Layer-PassBox {height:700px; overflow-y:scroll;}
         .eventPop {width:600px; margin:0 auto; font-size:12px; color:#333; line-height:1.5; padding-bottom:50px}
         .eventPop h3 {font-size:18px; font-weight:bold; border-bottom:2px solid #000; text-align:center; padding-bottom:15px; color:#000;}
+        .eventPop h3 span {vertical-align:top}
 
         .eventPopS1 {margin-top:1em}
         .eventPopS1 ul > li {border-bottom:1px solid #e4e4e4; padding:10px}
@@ -29,7 +30,7 @@
         .btnsSt3 a:hover {background:#fff; color:#333 !important}
 
         input[type=radio],
-        input[type=checkbox] {width:16px; height:16px;}
+        input[type=checkbox] {width:16px; height:16px; margin-right:5px}
         select,
         input[type=text] {padding:2px; margin-right:10px; height:26px; border:1px solid #e4e4e4}
         input[type=file]:focus,
@@ -293,7 +294,7 @@
                                             chkyn = 'checked';
                                         }
                                     }
-                                    str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
+                                    str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                                 }
                             }
 

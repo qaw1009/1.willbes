@@ -24,15 +24,9 @@
                             <td class="tx-left">
                                 <select style="width:120px" onchange="selSerial(this.value,'')" @if($mode=='MOD') disabled @endif >
                                     <option value="">응시직렬</option>
-                                    @if($mode == 'NEW')
-                                        @foreach($serial as $val)
-                                            <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
-                                        @endforeach
-                                    @else
-                                        @foreach($serial as $val)
-                                            <option value="{{ $val['Ccd'] }}" @if($data['TakeMockPart'] == $val['Ccd']) selected @endif>{{ $val['CcdName'] }}</option>
-                                        @endforeach
-                                    @endif
+                                    @foreach($serial as $key => $val)
+                                        <option value="{{ $key }}" {{ ($data['TakeMockPart'] == $key) ? 'selected="selected"' : '' }}>{{ $val }}</option>
+                                    @endforeach
                                 </select>
                                 <input type="hidden" id="TakeArea" name="TakeArea" @if($mode == 'MOD') value="{{ $data['TakeArea'] }}" @endif/>
                                 <span id="area1">
@@ -56,7 +50,7 @@
                                 <span id="area2" style="display:none;">
                                 <select title="지역구분" onChange="selArea(this.value,'')">
                                     <option value="">지역구분</option>
-                                    <option value="712001">서울</option>
+                                    <option value="712001" @if(empty($data['TakeArea']) === false && $data['TakeArea'] == 712001) selected @endif>서울</option>
                                 </select>
                             </span>
                                 <span class="txtRed">※ 응시직렬은 최초 선택/저장 후 수정 불가</span>
@@ -342,7 +336,7 @@
                 }
 
                 function selchk(obj){
-                    var cknum = $("input:checkbox[id=Ssubject]:checked").length;
+                    var cknum = $("input[name='Ssubject[]']:checked").length;
                     if(cknum == 4){
                         alert('선택과목은 3개까지 선택할 수 있습니다.');
                         obj.checked = false;
@@ -357,8 +351,8 @@
                 // 문항정보필드 등록,수정
                 function js_submit() {
                     {!! login_check_inner_script('로그인 후 이용하여 주십시오.','N') !!}
-                    if($("#TakeMockPart").val() != '300'){
-                        if($("input:checkbox[id=Ssubject]:checked").length != 3){
+                    if($("#TakeMockPart").val() != '800'){
+                        if($("input[name='Ssubject[]']:checked").length != 3){
                             alert('선택과목은 3개를 선택해 주세요.');
                             return ;
                         }
@@ -378,8 +372,8 @@
                             alert('올바른 응시번호가 아닙니다.');
                             return;
                         }
-                    } else if($("#TakeMockPart").val() == '300') {
-                        if(takenum<30001||takenum>39999) {
+                    } else if($("#TakeMockPart").val() == '800') {
+                        if(takenum<50001||takenum>59999) {
                             alert('올바른 응시번호가 아닙니다.');
                             return;
                         }
@@ -449,7 +443,7 @@
                                                     chkyn = 'checked';
                                                 }
                                             }
-                                            str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
+                                            str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                                         }
                                     }
 
@@ -466,7 +460,7 @@
                                                 str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
                                             }
                                         } else {
-                                            str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject' value='" + d.data[i].Ccd + "' onClick='selchk(this)'><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
+                                            str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                                         }
                                     }
 

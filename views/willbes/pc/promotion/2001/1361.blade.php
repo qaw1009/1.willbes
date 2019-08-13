@@ -83,7 +83,7 @@
         .evt01 ul:after {content:""; display:block; clear:both}
 
         .evt02 {background:#18294d;}        
-        .evt03 {background:#345993;}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_03_bg.jpg) no-repeat center top;}
         .evt03 div {
             position:absolute;
             width:408px;

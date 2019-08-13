@@ -83,7 +83,7 @@
         .evt01 ul:after {content:""; display:block; clear:both}
 
         .evt02 {background:#18294d;}        
-        .evt03 {background:#345993;}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_03_bg.jpg) no-repeat center top;}
         .evt03 div {
             position:absolute;
             width:408px;
@@ -111,8 +111,9 @@
         <ul class="skyBanner">
             <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner1.png" title="토크쇼"></a></li>
             <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
-        </ul>     
+        </ul>
 
+        <!--
         <div class="evtCtnsBox evt_counter">
             <div class="counter">
                 <div class="left_area NGEB">
@@ -120,7 +121,8 @@
                     경찰합격 풀케어 서비스 이용현황<span>1,770,232</span>건
                 </div>
             </div>
-        </div>  
+        </div>
+        -->
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">              
@@ -131,12 +133,14 @@
         <div class="evtCtnsBox evt01" id="evt01">
             <div class="d-day">
                 2019년 경찰 2차 러닝메이트 최종합격 프로젝트
-                <p>필기시험일까지 <span>D-22</span></p>
+                @if(empty($arr_base['dday_data'][0]['DDay']) === false)
+                    <p>필기시험일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                @endif
             </div>
             <div class="btnJoin">
                 <a href="#none" onclick="javascript:doEvent();">
-                    경찰 2차 시험 인증이벤트<br>
-                    <span>참여하기  ></span>
+                    경찰 2차 시험 응시생 <br>
+                    <span>인증하기  ></span>
                 </a>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
@@ -182,9 +186,9 @@
             <div class="evtCtnsBox evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_03.jpg" title="봉투모의고사">
                 <div>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number4.png"></span>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number8.png"></span>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_number1.png"></span>
+                    <span><img class="remainCnt" src="https://static.willbes.net/public/images/promotion/2019/08/1361_number0.png"></span>
+                    <span><img class="remainCnt" src="https://static.willbes.net/public/images/promotion/2019/08/1361_number0.png"></span>
+                    <span><img class="remainCnt" src="https://static.willbes.net/public/images/promotion/2019/08/1361_number0.png"></span>
                 </div>
             </div>
 
@@ -229,7 +233,6 @@
             window.open(url,'event2', 'scrollbars=no,toolbar=no,resizable=yes,width=665,height=629,top=50,left=100');
         }
 
-        ript>
         /*tab*/
         $(document).ready(function(){
             $('.evt02 ul').each(function(){
@@ -240,7 +243,8 @@
                 $content = $($active[0].hash);
 
                 $links.not($active).each(function () {
-                    $(this.hash).hide()});
+                    $(this.hash).hide()
+                });
 
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
@@ -253,8 +257,33 @@
                     $active.addClass('active');
                     $content.show();
 
-                    e.preventDefault()})})}
-        ) 
+                    e.preventDefault();
+                });
+            });
+
+            setPredictRegisterCnt(); //선착순 남은수량 세팅
+        });
+
+        //선착순 남은수량 세팅
+        function setPredictRegisterCnt(){
+            var predict_register_cnt = {{$arr_base['predict_register_cnt']}};
+            var product_limit_cnt = 815; //상품 제한갯수
+            var remain_cnt = product_limit_cnt - predict_register_cnt;
+            var remain_str = '';
+
+            //문자열 앞에 0붙이기
+            if(remain_cnt > 0){
+                for(i=String(remain_cnt).length; i<3; i++){
+                    remain_str += '0';
+                }
+                remain_str = remain_str + String(remain_cnt);
+
+                $('.remainCnt').each(function(i){
+                    $(this).attr('src','https://static.willbes.net/public/images/promotion/2019/08/1361_number'+remain_str.substr(i,1)+'.png');
+                });
+            }
+        }
+
     </script>
 
 @stop

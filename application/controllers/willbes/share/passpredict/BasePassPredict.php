@@ -702,7 +702,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $spidx1 = element('spidx1', $arr_input);
         $spidx2 = element('spidx2', $arr_input);
 
-        // 1. 지역별 현황
+        // 1. 지역별 현황 (line)
         $arealist = $this->surveyModel->areaList($PredictIdx);
 
         $dtSet = array();
@@ -760,7 +760,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $dtSet[$TakeMockPart][$TakeArea]['AvrPoint'] = $AvrPoint;
         }
 
-        // 2. 과목별 원점수 평균
+        // 2. 과목별 원점수 평균 (origin, 0점 제외)
         $gradedata = $this->surveyModel->gradeList($PredictIdx);
         $gradelist = array_pluck($gradedata, 'Avg', 'SubjectCode');
         $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
@@ -778,11 +778,17 @@ class BasePassPredict extends \app\controllers\FrontController
         $gradeSet[2]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100800'] . '/' . $gradesubject['100600'];
         $gradeSet[2]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100500'] . '/' . $gradelist['100300'] . '/' . $gradelist['100800'] . '/' . $gradelist['100600'];
 
-        // 4. 총점성적분포
+        // 4. 총점성적분포 (grade)
         $pointList = $this->surveyModel->pointArea($PredictIdx);
 
-        // 5. 과목별성적분포
+        // 5. 과목별성적분포 (origin, 0점 제외)
         $subjectPointList = $this->surveyModel->getSubjectPoint($PredictIdx);
+
+        // 6. 과목별단일선호도 (origin, 0점 제외)
+        $bestList = $this->surveyModel->bestSubject($PredictIdx);
+        
+        // 7. 과목별조합선호도 (origin, 0점 제외)
+        $bestCombList = $this->surveyModel->bestCombineSubject($PredictIdx);
 
         $res = $this->surveyModel->surveyAnswerCall($spidx1, $spidx2);
 
@@ -890,9 +896,6 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        //과목별선호도
-        $bestList = $this->surveyModel->bestSubject($PredictIdx);
-
         //과목별 오답랭킹
         $wrongList = $this->surveyModel->wrongRank($PredictIdx);
 
@@ -975,10 +978,12 @@ class BasePassPredict extends \app\controllers\FrontController
         $this->load->view('willbes/pc/predict/graph', [
             'PredictIdx' => $PredictIdx,
             'areaList' => $dtSet,
-            'gradelist2' => $gradelist,
+            'gradelist2' => $gradedata,
             'gradeList' => $gradeSet,
             'pointList' => $pointList,
             'subjectPointList' => $subjectPointList,
+            'bestList' => $bestList,
+            'bestCombList' => $bestCombList,
 
             'resSet' => $resSet,
             'titleSet' => $titleSet,
@@ -989,9 +994,7 @@ class BasePassPredict extends \app\controllers\FrontController
             'arrSubject' => $arrSubject,
             'arrWrongList' => $arrWrongList,
 
-            'arrSurvey' => $arrSurvey,
-
-            'bestList' => $bestList
+            'arrSurvey' => $arrSurvey
         ], false);
     }
 

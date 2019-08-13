@@ -65,7 +65,7 @@ class PredictFModel extends WB_Model
         if (empty($predict_idx) === false) {
             $column = "COUNT(*) AS Cnt";
             $from = " FROM lms_predict_register ";
-            $arr_condition = ['EQ' => ['ProdCode' => $predict_idx]];
+            $arr_condition = ['EQ' => ['PredictIdx' => $predict_idx]];
             $where = $this->_conn->makeWhere($arr_condition);
             $where = $where->getMakeWhere(false);
             $query = $this->_conn->query('select ' . $column . $from . $where);

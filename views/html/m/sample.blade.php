@@ -63,7 +63,10 @@
             <a href="{{ site_url('/home/html/m/payment_01') }}" target="_blank">결제하기</a>
             <a href="{{ site_url('/home/html/m/payment_02') }}" target="_blank">결제완료</a>
             <br><br>
-            <a href="{{ site_url('/home/html/m/lecture_online_free1') }}" target="_blank">무료강좌(작업중)</a>
+            <a href="{{ site_url('/home/html/m/lecture_online_free1') }}" target="_blank">무료강좌</a>
+            <a href="{{ site_url('/home/html/m/lecture_online_free2') }}" target="_blank">무료강좌 > 상세보기</a>
+            <a href="{{ site_url('/home/html/m/lecture_online_free3') }}" target="_blank">보강동영상</a>
+            <a href="{{ site_url('/home/html/m/lecture_online_free4') }}" target="_blank">보강동영상 > 상세보기</a>
         </div>
     </li>
     <li>

@@ -69,6 +69,9 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner2.png" title="합격전략 설명회 커밍쑨">
                     </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner3.png" title="합격전략 설명회 커밍쑨">
+                    </li>
                 </ul>               
             </div>
             <div class="evtCtnsBox top_police">

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'DDayF');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -154,6 +154,19 @@ class BasePromotion extends \app\controllers\FrontController
 
         //합격예측 데이터
         $arr_base['predict_data'] = $this->_predictData((empty($arr_promotion_params['PredictIdx']) === true ? 'null' : $arr_promotion_params['PredictIdx']));
+        $arr_base['predict_register_cnt'] = $this->predictFModel->getCntPreregist((empty($arr_promotion_params['PredictIdx']) === true ? 'null' : $arr_promotion_params['PredictIdx']));
+
+        //D-day 조회
+        if(empty($arr_promotion_params['DIdx']) === false) {
+            $arr_dday_condition = [
+                'EQ' => [
+                    'a.SiteCode' => $this->_site_code,
+                    'b.CateCode' => $this->_cate_code,
+                    'a.DIdx' => $arr_promotion_params['DIdx']
+                ]
+            ];
+            $arr_base['dday_data'] = $this->DDayFModel->getDDays($arr_dday_condition);
+        }
 
         //모바일체크
         $this->load->library('user_agent');

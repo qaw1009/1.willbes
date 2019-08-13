@@ -336,6 +336,17 @@ class EventFModel extends WB_Model
                     ];
                 }
 
+                //신청자 조회 추가 조건
+                if (empty($inputData['register_chk_col']) === false && is_array($inputData['register_chk_col']) === true) {
+                    foreach ($inputData['register_chk_col'] as $keyRcw => $valRcw) {
+                        $arr_condition = array_merge($arr_condition,[
+                            'LKB' => [
+                                $valRcw => $inputData['register_chk_val'][$keyRcw]
+                            ]
+                        ]);
+                    }
+                }
+
                 $register_member_info = $this->getRegisterMember($arr_condition);
                 if (count($register_member_info) > 0) {
                     throw new \Exception('등록된 신청자 정보가 있습니다.');

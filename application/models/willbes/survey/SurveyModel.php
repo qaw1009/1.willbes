@@ -595,7 +595,9 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     *  합격예측용 과목호출
+     * 과목별 성적분포 (0점 제외)
+     * @param $PredictIdx
+     * @return array
      */
     public function getSubjectPoint($PredictIdx){
         $column = "
@@ -616,10 +618,11 @@ class SurveyModel extends WB_Model
                     , count(0) as CNT 	  
                 from {$this->_table['predictGradesOrigin']}
                 where PredictIdx = ?
+                    and OrgPoint > 0
                 group by PpIdx, Pointarea
             ) as A
                 left join {$this->_table['predictPaper']} AS B ON A.PpIdx = B.PpIdx
-                LEFT JOIN {$this->_table['predictCode']} AS C ON B.SubjectCode = C.Ccd	
+                left join {$this->_table['predictCode']} AS C ON B.SubjectCode = C.Ccd	
             order by A.PpIdx, A.pointarea asc             
         ";
 
@@ -653,98 +656,95 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     *  선택과목 단일선택 선호도 Best3 / 조합선호도 Best3
+     * 과목별 단일 선호도 (0점 제외)
+     * @param $PredictIdx
+     * @return array
      */
-    public function bestSubject($PredictIdx){
-
-        //선택과목 단일선택 선호도 Best3
+    public function bestSubject($PredictIdx)
+    {
         $column = "
-            COUNT(*) AS CNT, PaperName, 
-            (
-                SELECT 
-                    COUNT(*)
-                FROM 
-                    {$this->_table['predictRegisterR']} as rc
-                    LEFT JOIN {$this->_table['predictPaper']} AS pp ON substr(rc.subjectcode,4,3) = substr(pp.subjectcode,4,3)
-                WHERE TYPE = 'S' AND rc.PredictIdx = ".$PredictIdx."
-            ) AS TOTAL
+            pc.CcdName as SubjectName, A.CNT
         ";
 
         $from = "
-            FROM 
-                {$this->_table['predictRegisterR']} AS rc
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON substr(rc.subjectcode,4,3) = substr(pp.subjectcode,4,3)
+            from (
+                select pg.PpIdx, count(0) as CNT, max(pp.SubjectCode) as SubjectCode
+                from {$this->_table['predictGradesOrigin']} as pg
+                    left join {$this->_table['predictPaper']} as pp
+                        on pg.PpIdx = pp.PpIdx
+                where pg.PredictIdx = ?
+                    and pp.Type = 'S'
+                    and pg.OrgPoint > 0
+                group by pg.PpIdx	
+            ) as A
+                left join {$this->_table['predictCode']} as pc
+                    on pc.Ccd = A.SubjectCode
+            where A.CNT > 0                    
+            order by A.CNT desc	            
         ";
 
-        $order_by = " 
-                    GROUP BY substr(rc.subjectcode,4,3)
-                    ORDER BY CNT DESC
-                    LIMIT 3";
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
+        $result = $query->result_array();
 
-        $where = " WHERE TYPE = 'S' AND rc.PredictIdx = ".$PredictIdx;
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $arr_subject = [];
+        if (empty($result) === false) {
+            $total = array_sum(array_pluck($result, 'CNT'));
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res1 = $query->result_array();
-
-        $arrResult = array();
-        foreach ($Res1 as $key => $val){
-            $CNT = $val['CNT'];
-            $PaperName = $val['PaperName'];
-            $TOTAL = $val['TOTAL'];
-            $percent = $CNT ? ROUND(($CNT / $TOTAL) * 100,2) : '0';
-            $arrResult['PaperName'][] = $PaperName;
-            $arrResult['Percent'][] = $percent ;
+            foreach ($result as $row) {
+                $arr_subject[] = [
+                    'SubjectName' => $row['SubjectName'],
+                    'SubjectRatio' => ROUND(($row['CNT'] / $total) * 100,2)
+                ];
+            }
         }
 
-        //선택과목 조합 선호도 Best3
+        return $arr_subject;
+    }
+
+    /**
+     * 과목별 조합 선호도 (0점 제외)
+     * @param $PredictIdx
+     * @return array
+     */
+    public function bestCombineSubject($PredictIdx)
+    {
         $column = "
-            COUNT(*) * 3 AS CNT, PaperName, 
-            (
-                SELECT COUNT(*)
-                from {$this->_table['predictRegisterR']} as rc
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON substr(rc.subjectcode,4,3) = substr(pp.subjectcode,4,3)
-                WHERE TYPE = 'S' AND rc.PredictIdx = ".$PredictIdx."
-            ) AS TOTAL 
+            A.SubjectName, count(0) as CNT
         ";
 
         $from = "
-            FROM 
-                (
-                    SELECT 
-                        GROUP_CONCAT(pp.PaperName order by PaperName asc) AS PaperName
-                    FROM 
-                        {$this->_table['predictRegisterR']} as rc
-                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON substr(rc.subjectcode,4,3) = substr(pp.subjectcode,4,3)
-                    WHERE 
-                        TYPE = 'S' AND rc.PredictIdx = ".$PredictIdx."
-                    GROUP BY pridx
-                ) AS A
-
+            from (
+                select pg.PrIdx, group_concat(pc.CcdName order by pp.PpIdx asc separator '/') as SubjectName
+                from {$this->_table['predictGradesOrigin']} as pg
+                    left join {$this->_table['predictPaper']} as pp
+                        on pg.PpIdx = pp.PpIdx
+                    left join {$this->_table['predictCode']} as pc
+                        on pp.SubjectCode = pc.Ccd
+                where pg.PredictIdx = ?
+                    and pp.Type = 'S'
+                    and pg.OrgPoint > 0
+                group by pg.PrIdx
+            ) as A
+            group by A.SubjectName
+            order by CNT desc	            
         ";
 
-        $order_by = " 
-                    GROUP BY PaperName
-                    ORDER BY CNT DESC 
-                    LIMIT 3";
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
+        $result = $query->result_array();
 
-        $where = " ";
+        $arr_subject = [];
+        if (empty($result) === false) {
+            $total = array_sum(array_pluck($result, 'CNT'));
 
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res2 = $query->result_array();
-
-        foreach ($Res2 as $key => $val){
-            $CNT = $val['CNT'];
-            $PaperName = $val['PaperName'];
-            $TOTAL = $val['TOTAL'];
-            $percent = $CNT ? ROUND(($CNT / $TOTAL) * 100,2) : '0';
-            $arrResult['PaperName'][] = str_replace(',','/',$PaperName);
-            $arrResult['Percent'][] = $percent ;
+            foreach ($result as $row) {
+                $arr_subject[] = [
+                    'SubjectName' => $row['SubjectName'],
+                    'SubjectRatio' => ROUND(($row['CNT'] / $total) * 100,2)
+                ];
+            }
         }
 
-        return $arrResult;
+        return $arr_subject;
     }
 
     /**
@@ -1019,7 +1019,8 @@ class SurveyModel extends WB_Model
     {
         $column = "
             SubTitle, sa.SqIdx, Answer, sa.Type, 
-            (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT
+            (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT,
+	        sr.IsDispResult
         ";
 
         $from = "
@@ -1254,7 +1255,7 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 과목별 원점수 평균
+     * 과목별 원점수 평균 (0점 제외)
      * @param $PredictIdx
      * @return mixed
      */
@@ -1272,7 +1273,8 @@ class SurveyModel extends WB_Model
                 group by PpIdx
             ) as pg
                 left join {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
-                left join {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd            
+                left join {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
+            order by pg.PpIdx asc                            
         ";
 
         $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);

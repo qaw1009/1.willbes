@@ -121,45 +121,21 @@
                 <col width="25%"/>
                 <col width="25%"/>
                 <tbody>
-                <tr>
-                    <th scope="col">과목</th>
-                    <th scope="col">한국사</th>
-                    <th scope="col">영어</th>
-                    <th scope="col">형법</th>
-                </tr>
-                <tr>
-                    <th>참여자<br />
-                        실시간평균</th>
-                    <td>{{ $gradelist2['100100'] }}</td>
-                    <td>{{ $gradelist2['100200'] }}</td>
-                    <td>{{ $gradelist2['100300'] }}</td>
-                </tr>
-                <tr>
-                    <th scope="col">과목</th>
-                    <th>형사소송법</th>
-                    <th>경찰학개론</th>
-                    <th>국어</th>
-                </tr>
-                <tr>
-                    <th>참여자<br />
-                        실시간평균</th>
-                    <td>{{ $gradelist2['100400'] }}</td>
-                    <td>{{ $gradelist2['100500'] }}</td>
-                    <td>{{ $gradelist2['100600'] }}</td>
-                </tr>
-                <tr>
-                    <th scope="col">과목</th>
-                    <th>수학</th>
-                    <th>사회</th>
-                    <th>과학</th>
-                </tr>
-                <tr>
-                    <th>참여자<br />
-                        실시간평균</th>
-                    <td>{{ $gradelist2['100700'] }}</td>
-                    <td>{{ $gradelist2['100800'] }}</td>
-                    <td>{{ $gradelist2['100900'] }}</td>
-                </tr>
+                @for($i = 0; $i < 3; $i++)
+                    @php $idx = $i * 3; @endphp
+                    <tr>
+                        <th>과목</th>
+                        <th>{{ array_get($gradelist2, ($idx + 0) . '.SubjectName') }}</th>
+                        <th>{{ array_get($gradelist2, ($idx + 1) . '.SubjectName') }}</th>
+                        <th>{{ array_get($gradelist2, ($idx + 2) . '.SubjectName') }}</th>
+                    </tr>
+                    <tr>
+                        <th>참여자<br />실시간평균</th>
+                        <td>{{ array_get($gradelist2, ($idx + 0) . '.Avg') }}</td>
+                        <td>{{ array_get($gradelist2, ($idx + 1) . '.Avg') }}</td>
+                        <td>{{ array_get($gradelist2, ($idx + 2) . '.Avg') }}</td>
+                    </tr>
+                @endfor
                 </tbody>
             </table>
         </div>
@@ -184,41 +160,16 @@
             <table class="boardTypeC">
                 <col width="20%" />
                 <col width="" />
-                <tr>
-                    <th>401-500</th>
-                    <td>
-                        <div class="graph"><span class="graph1" style="width:{{ element('PA4', $pointList, 0) }}%"></span></div>
-                        <Expect class="ratio">{{ element('PA4', $pointList, 0) }}%</Expect>
-                    </td>
-                </tr>
-                <tr>
-                    <th>301-400</th>
-                    <td>
-                        <div class="graph"><span class="graph1" style="width:{{ element('PA3', $pointList, 0) }}%"></span></div>
-                        <Expect class="ratio">{{ element('PA3', $pointList, 0) }}%</Expect>
-                    </td>
-                </tr>
-                <tr>
-                    <th>201-300</th>
-                    <td>
-                        <div class="graph"><span class="graph1" style="width:{{ element('PA2', $pointList, 0) }}%"></span></div>
-                        <Expect class="ratio">{{ element('PA2', $pointList, 0) }}%</Expect>
-                    </td>
-                </tr>
-                <tr>
-                    <th>101-200</th>
-                    <td>
-                        <div class="graph"><span class="graph1" style="width:{{ element('PA1', $pointList, 0) }}%"></span></div>
-                        <Expect class="ratio">{{ element('PA1', $pointList, 0) }}%</Expect>
-                    </td>
-                </tr>
-                <tr>
-                    <th>0-100</th>
-                    <td>
-                        <div class="graph"><span class="graph1" style="width:{{ element('PA0', $pointList, 0) }}%"></span></div>
-                        <Expect class="ratio">{{ element('PA0', $pointList, 0) }}%</Expect>
-                    </td>
-                </tr>
+                @php $_arr_pa_area = ['4' => '401-500', '3' => '301-400', '2' => '201-300', '1' => '101-200', '0' => '0-100']; @endphp
+                @foreach($_arr_pa_area as $key => $val)
+                    <tr>
+                        <th>{{ $val }}</th>
+                        <td>
+                            <div class="graph"><span class="graph1" style="width:{{ element('PA' . $key, $pointList, 0) }}%"></span></div>
+                            <Expect class="ratio"><span id="pa{{ $val }}">{{ element('PA' . $key, $pointList, 0) }}</span>%</Expect>
+                        </td>
+                    </tr>
+                @endforeach
             </table>
 
             <div class="mt10">
@@ -235,49 +186,24 @@
                         <table class="boardTypeC">
                             <col width="20%" />
                             <col width="" />
-                            <tr>
-                                <th>81-100</th>
-                                <td>
-                                    <div class="graph"><span id='gr5' class="graph1"></span></div>
-                                    <Expect class="ratio" id="grt5"></Expect>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>61-80</th>
-                                <td>
-                                    <div class="graph"><span id='gr4' class="graph1"></span></div>
-                                    <Expect class="ratio" id="grt4"></Expect>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>41-60</th>
-                                <td>
-                                    <div class="graph"><span id='gr3' class="graph1"></span></div>
-                                    <Expect class="ratio" id="grt3"></Expect>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>21-40</th>
-                                <td>
-                                    <div class="graph"><span id='gr2' class="graph1"></span></div>
-                                    <Expect class="ratio" id="grt2"></Expect>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>0-20</th>
-                                <td>
-                                    <div class="graph"><span id='gr1' class="graph1"></span></div>
-                                    <Expect class="ratio" id="grt1"></Expect>
-                                </td>
-                            </tr>
+                            @php $_arr_gr_area = ['5' => '81-100', '4' => '61-80', '3' => '41-60', '2' => '21-40', '1' => '0-20']; @endphp
+                            @foreach($_arr_gr_area as $key => $val)
+                                <tr>
+                                    <th>{{ $val }}</th>
+                                    <td>
+                                        <div class="graph"><span id='gr{{ $key }}' class="graph1"></span></div>
+                                        <Expect class="ratio" id="grt{{ $key }}"></Expect>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </table>
                         <div class="mt10">
                             <div id="pointarea2"></div>
                         </div>
                     </li>
                 </ul>
-                <p class="leftBtn"><a onClick="selPoint('P')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png"></a></p>
-                <p class="rightBtn"><a onClick="selPoint('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png"></a></p>
+                <p class="leftBtn"><a onClick="selPoint2('P')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png"></a></p>
+                <p class="rightBtn"><a onClick="selPoint2('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png"></a></p>
             </div>
         </div>
         <!--m_section3_3R//-->
@@ -293,21 +219,17 @@
                         <th scope="col">선택과목명</th>
                         <th scope="col">비율</th>
                     </tr>
-                    <tr>
-                        <th>1</th>
-                        <td>{{ $bestList['PaperName'][0] }}</td>
-                        <td>{{ $bestList['Percent'][0] }}% </td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>{{ $bestList['PaperName'][1] }}</td>
-                        <td>{{ $bestList['Percent'][1] }}% </td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>{{ $bestList['PaperName'][2] }}</td>
-                        <td>{{ $bestList['Percent'][2] }}%</td>
-                    </tr>
+                    @foreach($bestList as $row)
+                        <tr class="best-subject">
+                            <th>{{ $loop->index }}</th>
+                            <td class="best-subject-name">{{ $row['SubjectName'] }}</td>
+                            <td><span class="best-subject-ratio">{{ $row['SubjectRatio'] }}</span>%</td>
+                        </tr>
+
+                        @if($loop->index >= 3)
+                            @break;
+                        @endif
+                    @endforeach
                 </table>
 
                 <div class="mt10">
@@ -324,21 +246,17 @@
                         <th scope="col">선택과목명</th>
                         <th scope="col">비율</th>
                     </tr>
-                    <tr>
-                        <th>1</th>
-                        <td>{{ $bestList['PaperName'][3] }}</td>
-                        <td>{{ $bestList['Percent'][3] }}% </td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>{{ $bestList['PaperName'][4] }}</td>
-                        <td>{{ $bestList['Percent'][4] }}% </td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>{{ $bestList['PaperName'][5] }}</td>
-                        <td>{{ $bestList['Percent'][5] }}%</td>
-                    </tr>
+                    @foreach($bestCombList as $row)
+                        <tr class="best-comb-subject">
+                            <th>{{ $loop->index }}</th>
+                            <td class="best-comb-subject-name">{{ $row['SubjectName'] }}</td>
+                            <td><span class="best-comb-subject-ratio">{{ $row['SubjectRatio'] }}</span>%</td>
+                        </tr>
+
+                        @if($loop->index >= 3)
+                            @break;
+                        @endif
+                    @endforeach
                 </table>
 
                 <div class="mt10">
@@ -701,10 +619,13 @@
     $(document).ready(function () {
         $('#selgrade option').eq(0).prop('selected', 'selected');
         selGrade($('#selgrade option:selected').val());
-        best();
-        selPoint(0);
+        selPoint();
+        selPoint2(0);
+        bestSubject();
+        bestCombSubject();
     });
 
+    // 지역별 현황
     function selSerial(num){
         setAreaMsg(num);
         $("[id*='se_']").removeClass('active');
@@ -725,8 +646,62 @@
         }
     }
 
+    // 과목별 원점수 평균
+    function selGrade(val){
+        var arrStr = val.split('/');
+        var options = {
+            'legend':{
+                names: [
+                    arrStr[0],
+                    arrStr[1],
+                    arrStr[2],
+                    arrStr[3],
+                    arrStr[4]
+                ],
+                hrefs: []
+            },
+            'dataset': {
+                title: 'Web accessibility status',
+                values: [[parseInt(arrStr[5]),parseInt(arrStr[6]),parseInt(arrStr[7]),parseInt(arrStr[8]),parseInt(arrStr[9])]],
+                bgColor: '#f9f9f9',
+                fgColor: '#30a1ce'
+            },
+            'chartDiv': 'Nwagon',
+            'chartType': 'radar',
+            'chartSize': { width: 500, height: 300 }
+        };
+        $('#Nwagon').html('');
+        Nwagon.chart(options);
+    }
+
+    // 총점 성적분포
+    function selPoint() {
+        var fields = ['0-100', '101-200', '201-300', '301-400', '401-500'];
+        var values = [];
+        var length = fields.length;
+        for(var i = 0; i < length; i++) {
+            values.push(parseFloat($('#pa' + fields[i]).text()));
+        }
+
+        var options = {
+            'dataset':{
+                title: 'Web accessibility status',
+                values: values,
+                colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
+                fields: fields
+            },
+            'donut_width' : 35,
+            'core_circle_radius':50,
+            'chartDiv': 'pointarea',
+            'chartType': 'donut',
+            'chartSize': {width:700, height:400}
+        };
+        Nwagon.chart(options);
+    }
+
+    // 과목별 성적분포
     var currNum = 0;
-    function selPoint(type) {
+    function selPoint2(type) {
         var arrPoint = [];
         var arrCnt = 0;
         var arrGraph = '';
@@ -771,7 +746,7 @@
         var options = {
             'dataset':{
                 title: 'Web accessibility status',
-                values:[parseFloat(arrGraph[1]), parseFloat(arrGraph[2]) , parseFloat(arrGraph[3]), parseFloat(arrGraph[4]), parseFloat(arrGraph[5])],
+                values: [parseFloat(arrGraph[1]), parseFloat(arrGraph[2]) , parseFloat(arrGraph[3]), parseFloat(arrGraph[4]), parseFloat(arrGraph[5])],
                 colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93', '#f10a00'],
                 fields: ['0-20', '21-40', '41-60', '61-80', '81-100']
             },
@@ -779,6 +754,60 @@
             'core_circle_radius':50,
             'chartDiv': 'pointarea2',
             'chartType': 'donut',
+            'chartSize': {width:700, height:400}
+        };
+        Nwagon.chart(options);
+    }
+
+    // 과목별 단일 선호도
+    function bestSubject() {
+        var fields = [];
+        var values = [];
+        var obj = $('.best-subject');
+
+        $.each(obj, function(index, item) {
+            fields.push($(this).find('.best-subject-name').text());
+            values.push(parseFloat($(this).find('.best-subject-ratio').text()));
+        });
+
+        var options = {
+            'dataset':{
+                title: 'Web accessibility status',
+                values: values,
+                colorset: ['#2EB400', '#2BC8C9', "#666666"],
+                fields: fields
+            },
+            'donut_width' : 85,
+            'core_circle_radius':0,
+            'chartDiv': 'best1',
+            'chartType': 'pie',
+            'chartSize': {width:700, height:400}
+        };
+        Nwagon.chart(options);
+    }
+
+    // 과목별 조합 선호도
+    function bestCombSubject() {
+        var fields = [];
+        var values = [];
+        var obj = $('.best-comb-subject');
+
+        $.each(obj, function(index, item) {
+            fields.push($(this).find('.best-comb-subject-name').text());
+            values.push(parseFloat($(this).find('.best-comb-subject-ratio').text()));
+        });
+
+        var options = {
+            'dataset':{
+                title: 'Web accessibility status',
+                values: values,
+                colorset: ['#2EB400', '#2BC8C9', "#666666"],
+                fields: fields
+            },
+            'donut_width' : 85,
+            'core_circle_radius':0,
+            'chartDiv': 'best2',
+            'chartType': 'pie',
             'chartSize': {width:700, height:400}
         };
         Nwagon.chart(options);
@@ -794,53 +823,6 @@
         $("[id*='wtr_"+val+"']").show();
         $("#gtr_"+val).show();
         $("#ntr_"+val).show();
-    }
-
-    function best(){
-        var options = {
-            'dataset':{
-                title: 'Web accessibility status',
-                values:[parseFloat({{ $bestList['Percent'][0] }}), parseFloat({{ $bestList['Percent'][1] }}), parseFloat({{ $bestList['Percent'][2] }})],
-                colorset: ['#2EB400', '#2BC8C9', "#666666"],
-                fields: ['{{ $bestList['PaperName'][0] }}', '{{ $bestList['PaperName'][1] }}',  '{{ $bestList['PaperName'][2] }}'],
-            },
-            'donut_width' : 85,
-            'core_circle_radius':0,
-            'chartDiv': 'best1',
-            'chartType': 'pie',
-            'chartSize': {width:700, height:400}
-        };
-        Nwagon.chart(options);
-
-        var options = {
-            'dataset':{
-                title: 'Web accessibility status',
-                values:[parseFloat({{ $bestList['Percent'][3] }}), parseFloat({{ $bestList['Percent'][4] }}), parseFloat({{ $bestList['Percent'][5] }})],
-                colorset: ['#2EB400', '#2BC8C9', "#666666"],
-                fields: ['{{ $bestList['PaperName'][3] }}', '{{ $bestList['PaperName'][4] }}',  '{{ $bestList['PaperName'][5] }}'],
-            },
-            'donut_width' : 85,
-            'core_circle_radius':0,
-            'chartDiv': 'best2',
-            'chartType': 'pie',
-            'chartSize': {width:700, height:400}
-        };
-        Nwagon.chart(options);
-
-        var options = {
-            'dataset':{
-                title: 'Web accessibility status',
-                values:[parseFloat({{ element('PA0', $pointList, 0) }}), parseFloat({{ element('PA1', $pointList, 0) }}), parseFloat({{ element('PA2', $pointList, 0) }}), parseFloat({{ element('PA3', $pointList, 0) }}), parseFloat({{ element('PA4', $pointList, 0) }})],
-                colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
-                fields: ['0-100', '101-200', '201-300', '301-400', '401-500']
-            },
-            'donut_width' : 35,
-            'core_circle_radius':50,
-            'chartDiv': 'pointarea',
-            'chartType': 'donut',
-            'chartSize': {width:700, height:400}
-        };
-        Nwagon.chart(options);
     }
 
     function selSurvey(num){
@@ -860,35 +842,6 @@
 
             $('#surveyS').hide();
         }
-    }
-
-    function selGrade(val){
-        var arrStr = val.split('/');
-        var options = {
-            'legend':{
-                names: [
-                    arrStr[0],
-                    arrStr[1],
-                    arrStr[2],
-                    arrStr[3],
-                    arrStr[4]
-                ],
-                hrefs: [
-
-                ]
-            },
-            'dataset': {
-                title: 'Web accessibility status',
-                values: [[parseInt(arrStr[5]),parseInt(arrStr[6]),parseInt(arrStr[7]),parseInt(arrStr[8]),parseInt(arrStr[9])]],
-                bgColor: '#f9f9f9',
-                fgColor: '#30a1ce'
-            },
-            'chartDiv': 'Nwagon',
-            'chartType': 'radar',
-            'chartSize': { width: 500, height: 300 }
-        };
-        $('#Nwagon').html('');
-        Nwagon.chart(options);
     }
 
     function surveyOpen(){

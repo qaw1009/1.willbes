@@ -109,7 +109,7 @@
                                 <span id="area2" style="display:none;"  onChange="selArea(this.value,'')">
                                     <select title="지역구분">
                                         <option value="">지역구분</option>
-                                        <option value="712001">서울</option>
+                                        <option value="712001" @if(empty($data['TakeArea']) === false && $data['TakeArea'] == 712001) selected @endif>서울</option>
                                     </select>
                                 </span>
                             </td>

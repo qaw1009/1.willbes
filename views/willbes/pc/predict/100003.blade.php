@@ -88,7 +88,7 @@
                             <span id="area2" style="display:none;">
                                 <select title="지역구분" onChange="selArea(this.value,'')">
                                     <option value="">지역구분</option>
-                                    <option value="712001">서울</option>
+                                    <option value="712001" @if(empty($data['TakeArea']) === false && $data['TakeArea'] == 712001) selected @endif>서울</option>
                                 </select>
                             </span>
                             ※ 응시직렬은 최초 선택/저장 후 수정 불가

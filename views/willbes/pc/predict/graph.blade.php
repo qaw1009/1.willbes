@@ -228,12 +228,9 @@
         <!--m_section3_3L//-->
 
         <div class="m_section3_3R">
-            <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt">{{ (empty($subjectPointList[1]['PaperName']) === true ? '' : $subjectPointList[1]['PaperName']) }}</Expect></h3>
+            <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt"></Expect></h3>
             <div class="m_section3_3R_warp">
-                @foreach($subjectPointList as $key => $val)
-                    <input type="hidden" id="subject_{{ $key }}" value="{{ $val['PaperName'] }}@foreach($val['AVR'] as $key2 => $val2){{ "/".$key2 ."/".$val2 }}@endforeach" style="width:100%;"/>
-                @endforeach
-                <ul id="slidesImg3">
+                <ul>
                     <li>
                         <table class="boardTypeC">
                             <col width="20%" />
@@ -241,36 +238,36 @@
                             <tr>
                                 <th>81-100</th>
                                 <td>
-                                    <div class="graph"><span id='gr5' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][5]) === true ? '' : $subjectPointList[1]['AVR'][5]) }}%"></span></div>
-                                    <Expect class="ratio" id="grt5">{{ (empty($subjectPointList[1]['AVR'][5]) === true ? '' : $subjectPointList[1]['AVR'][5]) }}%</Expect>
+                                    <div class="graph"><span id='gr5' class="graph1"></span></div>
+                                    <Expect class="ratio" id="grt5"></Expect>
                                 </td>
                             </tr>
                             <tr>
                                 <th>61-80</th>
                                 <td>
-                                    <div class="graph"><span id='gr4' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][4]) === true ? '' : $subjectPointList[1]['AVR'][4]) }}%"></span></div>
-                                    <Expect class="ratio" id="grt4">{{ (empty($subjectPointList[1]['AVR'][4]) === true ? '' : $subjectPointList[1]['AVR'][4]) }}%</Expect>
+                                    <div class="graph"><span id='gr4' class="graph1"></span></div>
+                                    <Expect class="ratio" id="grt4"></Expect>
                                 </td>
                             </tr>
                             <tr>
                                 <th>41-60</th>
                                 <td>
-                                    <div class="graph"><span id='gr3' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][3]) === true ? '' : $subjectPointList[1]['AVR'][3]) }}%"></span></div>
-                                    <Expect class="ratio" id="grt3">{{ (empty($subjectPointList[1]['AVR'][3]) === true ? '' : $subjectPointList[1]['AVR'][3]) }}%</Expect>
+                                    <div class="graph"><span id='gr3' class="graph1"></span></div>
+                                    <Expect class="ratio" id="grt3"></Expect>
                                 </td>
                             </tr>
                             <tr>
                                 <th>21-40</th>
                                 <td>
-                                    <div class="graph"><span id='gr2' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][2]) === true ? '' : $subjectPointList[1]['AVR'][2]) }}%"></span></div>
-                                    <Expect class="ratio" id="grt2">{{ (empty($subjectPointList[1]['AVR'][2]) === true ? '' : $subjectPointList[1]['AVR'][2]) }}%</Expect>
+                                    <div class="graph"><span id='gr2' class="graph1"></span></div>
+                                    <Expect class="ratio" id="grt2"></Expect>
                                 </td>
                             </tr>
                             <tr>
                                 <th>0-20</th>
                                 <td>
-                                    <div class="graph"><span id='gr1' class="graph1" style="width:{{ (empty($subjectPointList[1]['AVR'][1]) === true ? '' : $subjectPointList[1]['AVR'][1]) }}%"></span></div>
-                                    <Expect class="ratio" id="grt1">{{ (empty($subjectPointList[1]['AVR'][1]) === true ? '' : $subjectPointList[1]['AVR'][1]) }}%</Expect>
+                                    <div class="graph"><span id='gr1' class="graph1"></span></div>
+                                    <Expect class="ratio" id="grt1"></Expect>
                                 </td>
                             </tr>
                         </table>
@@ -279,8 +276,8 @@
                         </div>
                     </li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3" onClick="selPoint(1)"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3" onClick="selPoint(2)"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png"></a></p>
+                <p class="leftBtn"><a onClick="selPoint('P')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png"></a></p>
+                <p class="rightBtn"><a onClick="selPoint('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png"></a></p>
             </div>
         </div>
         <!--m_section3_3R//-->
@@ -705,7 +702,7 @@
         $('#selgrade option').eq(0).prop('selected', 'selected');
         selGrade($('#selgrade option:selected').val());
         best();
-        selPoint(2);
+        selPoint(0);
     });
 
     function selSerial(num){
@@ -714,12 +711,12 @@
         $("#se_"+num).addClass('active');
         $('#selS').val(num);
 
-        //탭넘겼으니 서울다시호출
+        // 탭 이동시 서울지역 디폴트 선택
         $("[id*='area_']").hide();
         $("#area_"+num+'_712001').show();
         $("[id*='ss_']").removeClass('active');
         $("#ss_712001").addClass('active');
-        if(num == 400){
+        if(num === 400) {
             $('#areaset1').hide();
             $('#areaset2').show();
         } else {
@@ -728,130 +725,55 @@
         }
     }
 
-    var currentNum = 1;
-    var cnt  = '{{ COUNT($subjectPointList) }}';
-    var cnt2 = '{{ COUNT($subjectPointList) + 1}}';
-    function selPoint(type){
-        var arrayStr = new Array();
-        if(type == 1){
-            currentNum = parseInt(currentNum) - 1;
-            if(currentNum == 0){
-                currentNum = cnt;
-            }
-        } else {
-            currentNum = parseInt(currentNum) + 1;
-            if(parseInt(currentNum) == parseInt(cnt2)){
-                currentNum = 1;
-            }
-        }
-        var str = $('#subject_'+currentNum).val();
-        if (typeof str != "undefined") {
-            arrayStr = str.split('/');
+    var currNum = 0;
+    function selPoint(type) {
+        var arrPoint = [];
+        var arrCnt = 0;
+        var arrGraph = '';
+
+        // 그래프 데이터 배열
+        @foreach($subjectPointList as $row)
+            arrPoint.push('{{ implode('/', $row) }}');
+        @endforeach
+
+        arrCnt = arrPoint.length - 1;
+        if (arrCnt < 0) {
+            return;
         }
 
-        $('#grtxt').html(arrayStr[0]);
-        for(var i=1; i<=5; i++){
-            $('#gr'+i).css('width','0%');
-            $('#grt'+i).html('0%');
-        }
-
-        var num1 = 0;
-        var num2 = 0;
-        var num3 = 0;
-        var num4 = 0;
-        var num5 = 0;
-        if(arrayStr[1] != undefined){
-            $('#gr'+arrayStr[1]).css('width',arrayStr[2]+'%');
-            $('#grt'+arrayStr[1]).html(arrayStr[2]+'%');
-
-            if(arrayStr[1] == 1) {
-                num1 = arrayStr[2];
-            } else if(arrayStr[1] == 2) {
-                num2 = arrayStr[2];
-            } else if(arrayStr[1] == 3) {
-                num3 = arrayStr[2];
-            } else if(arrayStr[1] == 4) {
-                num4 = arrayStr[2];
-            } else if(arrayStr[1] == 5) {
-                num5 = arrayStr[2];
+        // 이전/다음 선택시 그래프번호 조회
+        if (type !== 0) {
+            if (type === 'N') {
+                currNum = currNum + 1;
+                if (currNum > arrCnt) {
+                    currNum = 0;
+                }
+            } else {
+                currNum = currNum - 1;
+                if (currNum < 0) {
+                    currNum = arrCnt;
+                }
             }
         }
 
-        if(arrayStr[3] != undefined){
-            $('#gr'+arrayStr[3]).css('width',arrayStr[4]+'%');
-            $('#grt'+arrayStr[3]).html(arrayStr[4]+'%');
+        // 해당 그래프 데이터
+        arrGraph = arrPoint[currNum].split('/');
 
-            if(arrayStr[3] == 1) {
-                num1 = arrayStr[4];
-            } else if(arrayStr[3] == 2) {
-                num2 = arrayStr[4];
-            } else if(arrayStr[3] == 3) {
-                num3 = arrayStr[4];
-            } else if(arrayStr[3] == 4) {
-                num4 = arrayStr[4];
-            } else if(arrayStr[3] == 5) {
-                num5 = arrayStr[4];
-            }
+        // 막대그래프 표기
+        $('#grtxt').html(arrGraph[0]);
+        for(var i = 1; i <= 5; i++) {
+            $('#gr' + i).css('width', arrGraph[i] + '%');
+            $('#grt' + i).html(arrGraph[i] + '%');
         }
 
-        if(arrayStr[5] != undefined){
-            $('#gr'+arrayStr[5]).css('width',arrayStr[6]+'%');
-            $('#grt'+arrayStr[5]).html(arrayStr[6]+'%');
-
-            if(arrayStr[5] == 1) {
-                num1 = arrayStr[6];
-            } else if(arrayStr[5] == 2) {
-                num2 = arrayStr[6];
-            } else if(arrayStr[5] == 3) {
-                num3 = arrayStr[6];
-            } else if(arrayStr[5] == 4) {
-                num4 = arrayStr[6];
-            } else if(arrayStr[5] == 5) {
-                num5 = arrayStr[6];
-            }
-        }
-
-        if(arrayStr[7] != undefined){
-            $('#gr'+arrayStr[7]).css('width',arrayStr[8]+'%');
-            $('#grt'+arrayStr[7]).html(arrayStr[8]+'%');
-
-            if(arrayStr[7] == 1) {
-                num1 = arrayStr[8];
-            } else if(arrayStr[7] == 2) {
-                num2 = arrayStr[8];
-            } else if(arrayStr[7] == 3) {
-                num3 = arrayStr[8];
-            } else if(arrayStr[7] == 4) {
-                num4 = arrayStr[8];
-            } else if(arrayStr[7] == 5) {
-                num5 = arrayStr[8];
-            }
-        }
-
-        if(arrayStr[9] != undefined){
-            $('#gr'+arrayStr[9]).css('width',arrayStr[10]+'%');
-            $('#grt'+arrayStr[9]).html(arrayStr[10]+'%');
-
-            if(arrayStr[9] == 1) {
-                num1 = arrayStr[10];
-            } else if(arrayStr[9] == 2) {
-                num2 = arrayStr[10];
-            } else if(arrayStr[9] == 3) {
-                num3 = arrayStr[10];
-            } else if(arrayStr[9] == 4) {
-                num4 = arrayStr[10];
-            } else if(arrayStr[9] == 5) {
-                num5 = arrayStr[10];
-            }
-        }
-
+        // 그래프 표기
         $('#pointarea2').html('');
         var options = {
             'dataset':{
                 title: 'Web accessibility status',
-                values:[parseFloat(num1), parseFloat(num2) , parseFloat(num3), parseFloat(num4), parseFloat(num5)],
-                colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
-                fields: ['0-20', '21-40', '41-60', '61-80', '81-100'],
+                values:[parseFloat(arrGraph[1]), parseFloat(arrGraph[2]) , parseFloat(arrGraph[3]), parseFloat(arrGraph[4]), parseFloat(arrGraph[5])],
+                colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93', '#f10a00'],
+                fields: ['0-20', '21-40', '41-60', '61-80', '81-100']
             },
             'donut_width' : 35,
             'core_circle_radius':50,

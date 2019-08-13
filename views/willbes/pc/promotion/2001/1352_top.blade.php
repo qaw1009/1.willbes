@@ -147,30 +147,6 @@
             var index = $(this).find('a').data('slide-index');
             slideMap.goToSlide(index);
         });
-
-        // 과목별 성적분포
-        var slidesImg3 = $("#slidesImg3").bxSlider({
-            mode:'fade',
-            auto:true,
-            speed:1000,
-            pause:4000,
-            controls:false,
-            minSlides:1,
-            maxSlides:1,
-            slideWidth:980,
-            slideMargin:0,
-            autoHover: true,
-            moveSlides:1,
-            pager:false
-        });
-
-        $("#imgBannerLeft3").click(function() {
-            slidesImg3.goToPrevSlide();
-        });
-
-        $("#imgBannerRight3").click(function() {
-            slidesImg3.goToNextSlide();
-        });
     });
 
     function areaAvrAjax(PredictIdx) {

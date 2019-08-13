@@ -83,7 +83,7 @@
         .evt01 ul:after {content:""; display:block; clear:both}
 
         .evt02 {background:#18294d;}        
-        .evt03 {background:#345993;}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_03_bg.jpg) no-repeat center top;}
         .evt03 div {
             position:absolute;
             width:408px;
@@ -139,8 +139,8 @@
             </div>
             <div class="btnJoin">
                 <a href="#none" onclick="javascript:doEvent();">
-                    경찰 2차 시험 인증이벤트<br>
-                    <span>참여하기  ></span>
+                    경찰 2차 시험 응시생 <br>
+                    <span>인증하기  ></span>
                 </a>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">

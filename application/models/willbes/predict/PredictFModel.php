@@ -60,12 +60,15 @@ class PredictFModel extends WB_Model
      * @param $predict_idx
      * @return mixed
      */
-    public function getCntPreregist($predict_idx)
+    public function getCntPreregist($predict_idx, $arr_param_condition = array())
     {
         if (empty($predict_idx) === false) {
             $column = "COUNT(*) AS Cnt";
             $from = " FROM lms_predict_register ";
             $arr_condition = ['EQ' => ['PredictIdx' => $predict_idx]];
+            if (empty($arr_param_condition) === false && is_array($arr_param_condition) === true) {
+                $arr_condition = array_merge($arr_condition, $arr_param_condition);
+            }
             $where = $this->_conn->makeWhere($arr_condition);
             $where = $where->getMakeWhere(false);
             $query = $this->_conn->query('select ' . $column . $from . $where);

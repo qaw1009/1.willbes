@@ -89,12 +89,16 @@ class BasePassPredict extends \app\controllers\FrontController
     public function indexv2($params = [])
     {
         $idx = $params[0];
-
         $memidx = $this->session->userdata('mem_idx');
-
         $openYn = $this->surveyModel->predictOpenTab2($idx);
 
+        $column = 'PredictIdx, MockPart';
+        $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
+        $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
+        $arr_condition = ['EQ' => ['PredictIdx' => $idx,'IsUse' => 'Y']];
+        $predict_data = $this->predictFModel->findPredictData($arr_condition, $column);
         $res = $this->surveyModel->predictResist($idx, $memidx);
+
         if(empty($res) === false){
             $mode = 'MOD';
             $subject = '';
@@ -166,11 +170,14 @@ class BasePassPredict extends \app\controllers\FrontController
 
         }
 
-        $serial = $this->surveyModel->getSerial(0);
+        //직렬가공처리
+        $temp_mock_part = array_flip(explode(',', $predict_data['MockPart']));
+        $mock_part_ccd = $this->surveyModel->getSerial(0);
+        $temp_mock_part_ccd = array_pluck($mock_part_ccd,'CcdName','Ccd');
+        $serial = array_intersect_key($temp_mock_part_ccd, $temp_mock_part);
+
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $area = $this->surveyModel->getArea($sysCode_Area);
-
-        //var_dump($scoredata);
 
         $view_file = 'willbes/'.APP_DEVICE.'/predict/'.$idx."_v2";
         $this->load->view($view_file, [

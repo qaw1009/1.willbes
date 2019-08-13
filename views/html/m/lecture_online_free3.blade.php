@@ -9,7 +9,7 @@
                 <button type="button" class="goback" onclick="history.back(-1); return false;">
                     <span class="hidden">뒤로가기</span>
                 </button>    
-                무료강좌
+                보강동영상
             </div>
         </div>
     </div>
@@ -107,10 +107,10 @@
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
                                 <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
                             </dl>
-                            <div class="w-buy">       
-                                <ul class="two">
-                                    <li class="btn_blue"><a href="#none">바로결제</a></li>
-                                </ul> 
+                            <div class="freeLecPass">       
+                                <p>보강동영상 비밀번호 입력</p>
+                                <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
+                                <a href="#none">확인</a>                                
                             </div>
                         </td>
                     </tr>
@@ -133,10 +133,10 @@
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">완강</span></dt><br>
                                 <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
                             </dl>
-                            <div class="w-buy">       
-                                <ul class="two">
-                                    <li class="btn_blue"><a href="#none">바로결제</a></li>
-                                </ul> 
+                            <div class="freeLecPass">       
+                                <p>보강동영상 비밀번호 입력</p>
+                                <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
+                                <a href="#none">확인</a>                                
                             </div>
                         </td>
                     </tr>
@@ -158,10 +158,10 @@
                                 <dt>강의수 : <span class="tx-blue">8강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                             </dl>
-                            <div class="w-buy">       
-                                <ul class="two">
-                                    <li class="btn_blue"><a href="#none">바로결제</a></li>
-                                </ul> 
+                            <div class="freeLecPass">       
+                                <p>보강동영상 비밀번호 입력</p>
+                                <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
+                                <a href="#none">확인</a>                                
                             </div>
                         </td>
                     </tr>                    

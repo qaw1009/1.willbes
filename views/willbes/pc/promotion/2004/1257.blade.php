@@ -55,7 +55,7 @@
         .evt01 {position:relative; background:url(https://static.willbes.net/public/images/promotion/2019/06/1257_01_bg.jpg) no-repeat center top;}              
 
         .evt02 {background:#fff; padding:0 0 100px; position:relative}
-        .slide_con1 {position:absolute; width:1055px; top:2445px; left:50%; margin-left:-527px}
+        .slide_con1 {position:absolute; width:1055px; top:2100px; left:50%; margin-left:-527px}
         .slide_con1 p {position:absolute; top:35%; width:30px; z-index:90}
         .slide_con1 img {width:100%;}
         .slide_con1 p a {cursor:pointer}
@@ -83,7 +83,7 @@
         .evtTab ul:after {content:""; display:block; clear:both}
         .evtTabCts {margin-top:10px}
 
-        .evt03 {background:#36374d}
+        .evt03 {background:#36374d; padding-bottom:100px}
         .evt03 div {width:930px; margin:0 auto}
         .evt03 div li {display:inline; float:left; width:50%}
         .evt03 div li a {display:block; text-align:center; background:#5a5b6d; color:#36374d; border-radius:10px; margin-right:10px; height:80px; line-height:80px; font-size:35px}

@@ -13,7 +13,7 @@
                     <div class="col-md-5 form-inline">
 
                         <select name="search_predict" id="search_predict" class="form-control mr-5" style="width:400px;">
-                                <option value="">합격예측서비스 선택</option>
+                                <!--option value="">합격예측서비스 선택</option//-->
                             @foreach($predict_data as $row)
                                 <option value="{{$row["PredictIdx"]}}" class="{{$row["SiteCode"]}}">[{{$row["PredictIdx"]}}] {{$row["ProdName"]}}</option>
                             @endforeach

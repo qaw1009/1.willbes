@@ -52,7 +52,7 @@
 
             <div class="eventPop">
                 <h3>
-                    2019년 경찰 2차 <span class="tx-bright-blue">합격예측 풀서비스 사전예약</span> 신청하기
+                    2019년 2차 <span class="tx-bright-blue">경찰시험 인증</span> 신청하기
                 </h3>
                 <div class="eventPopS1">
                     <ul>

@@ -60,8 +60,10 @@
             <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
+            <!--
             <input type="hidden" name="register_chk_col[]" value="EtcValue"/>
             <input type="hidden" name="register_chk_val[]" value=""/>
+            -->
 
             <div class="skyBanner">
                 <ul>
@@ -114,7 +116,7 @@
                                     <th>* 참여일</th>
                                     <td>
                                         <ul>
-                                            <li><input type="radio" name="register_data1" id="campus1" value="7.20(토)" /> <label for="campus1">8.24(토)</label></li>
+                                            <li><input type="radio" name="register_data1" id="campus1" value="8.24(토)" /> <label for="campus1">8.24(토)</label></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -201,7 +203,7 @@
             }
 
             if (!confirm('저장하시겠습니까?')) { return true; }
-            $regi_form_register.find('input[name="register_chk_val[]"]').val($regi_form_register.find('input:radio[name="register_data2"]:checked').val());//신청자 조건 추가
+            // $regi_form_register.find('input[name="register_chk_val[]"]').val($regi_form_register.find('input:radio[name="register_data2"]:checked').val());//신청자 조건 추가
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);

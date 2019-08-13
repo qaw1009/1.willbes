@@ -75,7 +75,7 @@
         .tab_inner2 {width:957px !important; margin:0 auto; height:150px; text-align:center !important;}
 
         .evtTab {width:984px; margin:50px auto 140px;}
-        .evtTab ul li {display:inline; float:left; width:33.33333%}
+        .evtTab ul li {display:inline; float:left; width:50%}
         .evtTab ul li a {display:block; text-align:center; padding:20px 0; font-weight:bold; color:#fff; font-size:18px; background:#898989; margin-right:10px; line-height:1.4}
         .evtTab ul li a:hover,
         .evtTab ul li a.active {background:#b39d6c}
@@ -197,14 +197,12 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3.jpg" title="" />
                 <div class="evtTab">
                     <ul>
-                        <li><a href="#tab1" class="active">1 DAY<br>11 HOURS</a></li>
-                        <li><a href="#tab2">효율 100%<br>복습 TEST SYSTEM</a></li>
-                        <li><a href="#tab3">DOUBLE CARE<br>PROGRAM</a></li>
+                        <li><a href="#tab1" class="active">효율 100%<br>복습 TEST SYSTEM</a></li>
+                        <li><a href="#tab2">DOUBLE CARE<br>PROGRAM</a></li>
                     </ul>
                     <div class="evtTabCts">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3_tab1.jpg" title="" id="tab1"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3_tab2.jpg" title="" id="tab2"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3_tab3.jpg" title="" id="tab3"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3_tab2.jpg" title="" id="tab1"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_02_3_tab3.jpg" title="" id="tab2"/>
                     </div>
                 </div>
             <div>
@@ -216,7 +214,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_03.jpg" title="" />
             <div>
                 <ul class="NSK-Black">
-                    <li><a href="#lec1" class="active">9월 기본이론 완성반</a></li>
+                    <li><a href="#lec1" class="active">9~10월 기본이론 완성반</a></li>
                     <li><a href="#lec2">19.9월 ~ 20.3월 연간반</a></li>
                 </ul>
                 <div class="mt10" id="lec1">

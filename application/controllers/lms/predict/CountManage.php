@@ -34,10 +34,8 @@ class CountManage extends \app\controllers\BaseController
             return $this->json_error('합격예측기본 정보가 없습니다.',_HTTP_NOT_FOUND);
         }
 
-
         $PredictIdx = $params[0];
         $data = $this->countManageModel->findCountManage($PredictIdx);
-
 
         $view_total = 0;
         $view_real = 0;
@@ -73,6 +71,5 @@ class CountManage extends \app\controllers\BaseController
         $result = $this->countManageModel->addCountManage($this->_reqP(null));
         $this->json_result($result,'저장 되었습니다.',$result);
     }
-
 
 }

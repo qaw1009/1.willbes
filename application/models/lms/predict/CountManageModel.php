@@ -14,6 +14,11 @@ class CountManageModel extends WB_Model
         parent::__construct('lms');
     }
 
+    /**
+     * 기본정보 + 조회수
+     * @param $PredictIdx
+     * @return mixed
+     */
     public function findCountManage($PredictIdx)
     {
         $column = '
@@ -49,6 +54,11 @@ class CountManageModel extends WB_Model
         return $query->row_array();
     }
 
+    /**
+     * 카운트 정보 저장
+     * @param array $input
+     * @return array|bool
+     */
     public function addCountManage($input=[])
     {
 

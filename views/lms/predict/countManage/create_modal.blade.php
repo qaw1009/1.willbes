@@ -23,14 +23,15 @@
                 <label class="control-label col-md-2" for="ContIdx">실제건수</label>
                 <div class="col-md-10  form-inline item">
                     <p class="form-control-static"><b>{{number_format($view_real)}}건</b><BR>
-                        {!! $view_real_info !!}</p>
+                        {!! $view_real_info !!}<BR></p>
+                    <p class="form-control-static"><b><span class="red">* 인증신청자, 채점자 건수에는 가데이터 건수가 포함되어 있음</span></b></p>
                 </div>
             </div>
             <div class="form-group form-group-sm item">
                 <label class="control-label col-md-2" for="GwName">+생성 <span class="required">*</span></label>
                 <div class="col-md-10 form-inline item">
                     <input type="text" id="MakeCount" name="MakeCount"  value="{{ $data['MakeCount'] }}" title="추가생성"  class="form-control" required="required" style="width:80px">
-                    * 생선한 숫자는 실제건수에 + 처리되어 노출건수에 반영됩니다.
+                    * 생성한 숫자는 실제건수에 + 처리되어 노출건수에 반영됩니다.
                 </div>
             </div>
             <div class="form-group form-group-sm item">

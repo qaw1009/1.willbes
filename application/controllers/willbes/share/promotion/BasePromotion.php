@@ -154,7 +154,14 @@ class BasePromotion extends \app\controllers\FrontController
 
         //합격예측 데이터
         $arr_base['predict_data'] = $this->_predictData((empty($arr_promotion_params['PredictIdx']) === true ? 'null' : $arr_promotion_params['PredictIdx']));
-        $arr_base['predict_register_cnt'] = $this->predictFModel->getCntPreregist((empty($arr_promotion_params['PredictIdx']) === true ? 'null' : $arr_promotion_params['PredictIdx']));
+
+        //가데이터 제외
+        $arr_preg_condition = [
+            'NOT' => [
+                'MemIdx' => '1000000'
+            ]
+        ];
+        $arr_base['predict_register_cnt'] = $this->predictFModel->getCntPreregist((empty($arr_promotion_params['PredictIdx']) === true ? 'null' : $arr_promotion_params['PredictIdx']), $arr_preg_condition);
 
         //D-day 조회
         if(empty($arr_promotion_params['DIdx']) === false) {

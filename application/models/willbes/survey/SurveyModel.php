@@ -599,50 +599,57 @@ class SurveyModel extends WB_Model
      */
     public function getSubjectPoint($PredictIdx){
         $column = "
-            A.PpIdx, pointarea, PaperName, COUNT(*) AS CNT, 
-            (SELECT COUNT(*) FROM lms_predict_grades_origin WHERE PpIdx = A.PpIdx) AS TNUM
+            A.PpIdx, A.Pointarea, A.CNT, B.SubjectCode, C.CcdName as SubjectName 
+                , (select count(0) from {$this->_table['predictGradesOrigin']} where PpIdx = A.PpIdx) as TotalCNT
         ";
 
         $from = "
-            FROM 
-                (
-                    SELECT 
-                        PpIdx, OrgPoint,
-                        IF ((OrgPoint > 0 && OrgPoint < 21),1,IF((OrgPoint > 20 && OrgPoint < 41),2,IF((OrgPoint > 40 && OrgPoint < 61),3,IF((OrgPoint > 60 && OrgPoint < 81),4,5)))) AS pointarea 
-                    FROM 
-                        {$this->_table['predictGradesOrigin']}
-                    WHERE 
-                        PredictIdx = ".$PredictIdx."	
-                ) AS A	
-                LEFT JOIN lms_predict_paper AS B ON A.PpIdx = B.PpIdx                
+            from (
+                select PpIdx
+                    , (case 
+                        when OrgPoint between 1 and 20 then 1
+                        when OrgPoint between 21 and 40 then 2
+                        when OrgPoint between 41 and 60 then 3
+                        when OrgPoint between 61 and 80 then 4
+                        else 5
+                      end) as Pointarea	
+                    , count(0) as CNT 	  
+                from {$this->_table['predictGradesOrigin']}
+                where PredictIdx = ?
+                group by PpIdx, Pointarea
+            ) as A
+                left join {$this->_table['predictPaper']} AS B ON A.PpIdx = B.PpIdx
+                LEFT JOIN {$this->_table['predictCode']} AS C ON B.SubjectCode = C.Ccd	
+            order by A.PpIdx, A.pointarea asc             
         ";
 
-        $order_by = " GROUP BY PpIdx, pointarea";
-        $where = " WHERE PredictIdx = ".$PredictIdx."";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
+        $result = $query->result_array();
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res = $query->result_array();
-        $arrRes = array();
-        $cnt = 1;
-        $tempPpIdx = '';
-        foreach ($Res AS $key => $val){
-            $PpIdx = $val['PpIdx'];
-            $PaperName = $val['PaperName'];
-            $pointarea = $val['pointarea'];
-            $CNT = $val['CNT'];
-            $TNUM = $val['TNUM'];
+        $arr_point_area = [];
+        if (empty($result) === false) {
+            $idx = 1;
+            $tmp_subject_code = '';
 
-            if($tempPpIdx != $PpIdx && $key != 0){
-                $cnt++;
+            foreach ($result as $row) {
+                if ($row['SubjectCode'] != $tmp_subject_code) {
+                    $arr_point_area[$row['SubjectCode']]['SubjectName'] = $row['SubjectName'];
+                    $idx = 1;
+                }
+
+                if ($idx != $row['Pointarea']) {
+                    $arr_point_area[$row['SubjectCode']][$idx] = 0;
+                    $idx++;
+                }
+
+                $arr_point_area[$row['SubjectCode']][$row['Pointarea']] = ROUND(($row['CNT'] / $row['TotalCNT']) * 100, 2);
+
+                $tmp_subject_code = $row['SubjectCode'];
+                $idx++;
             }
-
-            $arrRes[$cnt]['AVR'][$pointarea] = $CNT ? ROUND(($CNT / $TNUM) * 100, 2) : '0';
-            $arrRes[$cnt]['PaperName'] = $PaperName;
-
-            $tempPpIdx = $PpIdx;
         }
-        return $arrRes;
+
+        return $arr_point_area;
     }
 
     /**

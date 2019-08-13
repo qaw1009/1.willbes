@@ -66,7 +66,7 @@ class PredictModel extends WB_Model
         'predictGradesLine' => 'lms_predict_grades_line',
         'predictQuestion' => 'lms_predict_questions',
 
-        'predictCnt' => 'lms_predict_cnt',
+        'predictCnt' => 'lms_predict_cnt',      //todo 사용하지 않을 테이블 : 2019-08-13 조규호
         'predictSubTitles' => 'lms_predict_subtitles'
     ];
 
@@ -531,6 +531,9 @@ class PredictModel extends WB_Model
         return $Res;
     }
 
+    /*
+     *  todo 사용하지 않음(권순현대리 개발건) : 2019-08-13 조규호
+     */
     public function getCntVarious(){
         $column = "
             (SELECT COUNT(*) FROM lms_survey_answer_info WHERE SpIdx = '3') AS Survey, -- 설문
@@ -2583,6 +2586,7 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * todo 사용하지 않음(권순현대리 개발건) : 2019-08-13 조규호
      * 합격예측카운트관리 조회
      * @param $arr_condition
      * @return mixed
@@ -2603,6 +2607,7 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * todo 사용하지 않음(권순현대리 개발건) : 2019-08-13 조규호
      * 합격예측카운트관리 등록
      * @param $input
      * @return array|bool
@@ -2629,6 +2634,7 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * todo 사용하지 않음(권순현대리 개발건) : 2019-08-13 조규호
      * 합격예측카운트관리 수정
      * @param $input
      * @return array|bool

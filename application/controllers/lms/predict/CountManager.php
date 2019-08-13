@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/*
+ * todo 사용하지 않음(권순현대리 개발건) : 2019-08-13 조규호
+ */
 class CountManager extends \app\controllers\BaseController
 {
     protected $models = array('predict/predict');

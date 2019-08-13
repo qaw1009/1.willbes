@@ -1934,10 +1934,79 @@ class PredictModel extends WB_Model
 
     /**
      * 조정점수반영
-     * @param $MgIdx $mode = cron or web
-     * @return mixed
+     * @param $PredictIdx
+     * @param $mode
+     * @param $TakeMockPart
+     * @return array|bool
      */
     public function scoreMakeStep2($PredictIdx, $mode, $TakeMockPart)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if (empty($PredictIdx) == true) {
+                throw new \Exception('합격예측상품 미등록 상태입니다.');
+            }
+
+            if(empty($TakeMockPart) == false){
+                $this->_conn->where(['PredictIdx' => $PredictIdx, 'TakeMockPart' => $TakeMockPart]);
+
+                if ($this->_conn->delete($this->_table['predictGrades']) === false) {
+                    throw new \Exception('성적 삭제에 실패했습니다.');
+                }
+            } else {
+                $this->_conn->where(['PredictIdx' => $PredictIdx]);
+
+                if ($this->_conn->delete($this->_table['predictGrades']) === false) {
+                    throw new \Exception('성적 삭제에 실패했습니다.');
+                }
+            }
+
+            if ($mode == 'web') {
+                $data = [
+                    'MemId' => $this->session->userdata('admin_id'),
+                    'Step' => '2',
+                    'PredictIdx' => $PredictIdx
+                ];
+            } else {
+                $data = [
+                    'MemId' => 'systemcron',
+                    'Step' => '2',
+                    'PredictIdx' => $PredictIdx
+                ];
+            }
+
+            $is_insert = $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesLog']);
+            if ($is_insert === false) {
+                throw new \Exception('로그생성실패.');
+            }
+
+            //표준편차용 직렬,지역,과목별 평균점수
+            $avg_standard_list = $this->listSubjectAvgPointForStandard($PredictIdx, $TakeMockPart);
+
+            //응사자용 직렬,지역,과목별 평균점수
+            $avg_user_list = $this->listSubjectAvgPointForUser($PredictIdx, $TakeMockPart);
+
+            //유저점수
+            $user_point_list = $this->listUserForSubjectPoint($PredictIdx, $TakeMockPart);
+
+            //과목별 표준편차
+            $arr_standard_data = $this->setStandardDeviation($user_point_list, $avg_standard_list);
+
+            //유저별 조정점수 및 저장 데이터 셋팅
+            $inputData = $this->setAdjustPointForData($user_point_list, $avg_user_list, $arr_standard_data);
+
+            //저장
+            if ($this->_conn->insert_batch($this->_table['predictGrades'], $inputData) === false) {
+                throw new \Exception('시험데이터가 없습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+    public function _back_scoreMakeStep2($PredictIdx, $mode, $TakeMockPart)
     {
         try {
             $this->_conn->trans_begin();
@@ -3088,4 +3157,252 @@ class PredictModel extends WB_Model
         return $query->result_array();
     }
 
+    /**
+     * 표준편차용 직렬,지역,과목별 평균점수/카운트수 (직렬100,200인 데이터 같은 직렬로 계산)
+     * @param $PredictIdx
+     * @param $TakeMockPart
+     * @return array
+     */
+    public function listSubjectAvgPointForStandard($PredictIdx, $TakeMockPart)
+    {
+        $column = "
+                CONCAT('1@200','_', pg.TakeArea,'_', pg.PpIdx) AS addColumnKey, pg.TakeMockPart, pg.TakeArea, pg.PpIdx, ROUND(AVG(pg.OrgPoint)) AS AvgOrgPoint,
+                pp.RegistStandard, pp.RegistAvgPoint, pp.RegistStandardIsUse, pp.RegistAvgPointIsUse, COUNT(*) AS cnt
+            ";
+        $from = "
+                FROM {$this->_table['predictGradesOrigin']} AS pg
+                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+            ";
+
+        $add_condition = [
+            'EQ' => [
+                'pg.PredictIdx' => $PredictIdx,
+                'pg.TakeMockPart' => $TakeMockPart,
+            ],
+            'IN' => [
+                'pg.TakeMockPart' => ['100','200']
+            ]
+        ];
+        $where = $this->_conn->makeWhere($add_condition);
+        $where = $where->getMakeWhere(false);
+        $group_by = " GROUP BY pg.TakeArea, pg.PpIdx";
+        $query_1 = 'select ' . $column . $from . $where . $group_by;
+
+        $column = "
+                CONCAT(pg.TakeMockPart,'_', pg.TakeArea,'_', pg.PpIdx) AS addColumnKey, pg.TakeMockPart, pg.TakeArea, pg.PpIdx, ROUND(AVG(pg.OrgPoint)) AS AvgOrgPoint,
+                pp.RegistStandard, pp.RegistAvgPoint, pp.RegistStandardIsUse, pp.RegistAvgPointIsUse, COUNT(*) AS cnt
+            ";
+        $from = "
+                FROM {$this->_table['predictGradesOrigin']} AS pg
+                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+            ";
+
+        $add_condition = [
+            'EQ' => [
+                'pg.PredictIdx' => $PredictIdx,
+                'pg.TakeMockPart' => $TakeMockPart,
+            ],
+            'NOTIN' => [
+                'pg.TakeMockPart' => ['100','200']
+            ]
+        ];
+        $where = $this->_conn->makeWhere($add_condition);
+        $where = $where->getMakeWhere(false);
+        $group_by = " GROUP BY pg.TakeArea, pg.PpIdx";
+        $query_2 = 'select ' . $column . $from . $where . $group_by;
+
+        $list = $this->_conn->query($query_1 . ' UNION ALL ' . $query_2)->result_array();
+
+        $avg_list = [];
+        foreach ($list as $row) {
+            $avg_list[$row['addColumnKey']]['TakeMockPart'] = $row['TakeMockPart'];
+            $avg_list[$row['addColumnKey']]['TakeArea'] = $row['TakeArea'];
+            $avg_list[$row['addColumnKey']]['PpIdx'] = $row['PpIdx'];
+            $avg_list[$row['addColumnKey']]['AvgOrgPoint'] = $row['AvgOrgPoint'];
+            $avg_list[$row['addColumnKey']]['SubjectCnt'] = $row['cnt'];
+            $avg_list[$row['addColumnKey']]['RegistAvgPoint'] = $row['RegistAvgPoint'];
+            $avg_list[$row['addColumnKey']]['RegistStandard'] = $row['RegistStandard'];
+            $avg_list[$row['addColumnKey']]['RegistAvgPointIsUse'] = $row['RegistAvgPointIsUse'];
+            $avg_list[$row['addColumnKey']]['RegistStandardIsUse'] = $row['RegistStandardIsUse'];
+        }
+        return $avg_list;
+    }
+
+    /**
+     * 응시자용 직렬,지역,과목별 평균점수/카운트수
+     * @param $PredictIdx
+     * @param $TakeMockPart
+     * @return array
+     */
+    public function listSubjectAvgPointForUser($PredictIdx, $TakeMockPart)
+    {
+        $column = "
+                CONCAT(pg.TakeMockPart,'_', pg.TakeArea,'_', pg.PpIdx) AS addColumnKey, pg.TakeMockPart, pg.TakeArea, pg.PpIdx, ROUND(AVG(pg.OrgPoint)) AS AvgOrgPoint,
+                pp.RegistStandard, pp.RegistAvgPoint, pp.RegistStandardIsUse, pp.RegistAvgPointIsUse, COUNT(*) AS cnt
+            ";
+        $from = "
+                FROM {$this->_table['predictGradesOrigin']} AS pg
+                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+            ";
+
+        $add_condition = [
+            'EQ' => [
+                'pg.PredictIdx' => $PredictIdx,
+                'pg.TakeMockPart' => $TakeMockPart,
+            ]
+        ];
+        $where = $this->_conn->makeWhere($add_condition);
+        $where = $where->getMakeWhere(false);
+        $group_by = " GROUP BY pg.TakeMockPart, pg.TakeArea, pg.PpIdx";
+        $list = $this->_conn->query('select ' . $column . $from . $where . $group_by)->result_array();
+
+        $avg_list = [];
+        foreach ($list as $row) {
+            $avg_list[$row['addColumnKey']]['TakeMockPart'] = $row['TakeMockPart'];
+            $avg_list[$row['addColumnKey']]['TakeArea'] = $row['TakeArea'];
+            $avg_list[$row['addColumnKey']]['PpIdx'] = $row['PpIdx'];
+            $avg_list[$row['addColumnKey']]['AvgOrgPoint'] = $row['AvgOrgPoint'];
+            $avg_list[$row['addColumnKey']]['SubjectCnt'] = $row['cnt'];
+            $avg_list[$row['addColumnKey']]['RegistAvgPoint'] = $row['RegistAvgPoint'];
+            $avg_list[$row['addColumnKey']]['RegistStandard'] = $row['RegistStandard'];
+            $avg_list[$row['addColumnKey']]['RegistAvgPointIsUse'] = $row['RegistAvgPointIsUse'];
+            $avg_list[$row['addColumnKey']]['RegistStandardIsUse'] = $row['RegistStandardIsUse'];
+        }
+        return $avg_list;
+    }
+
+    /**
+     * 과목 점수 리스트    (직렬100,200인 데이터 같은 직렬로 계산)
+     * @param $PredictIdx
+     * @param $TakeMockPart
+     * @return mixed
+     */
+    public function listUserForSubjectPoint($PredictIdx, $TakeMockPart)
+    {
+        $column = "pg.MemIdx, pg.PredictIdx, pg.PrIdx, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.TakeMockPart";
+        $column .= "
+            ,CASE WHEN pg.TakeMockPart = '100' THEN '1@200'
+            WHEN pg.TakeMockPart = '200' THEN '1@200'
+            ELSE pg.TakeMockPart
+            END AS addTakeMockPart
+        ";
+        $from = "
+                FROM {$this->_table['predictGradesOrigin']} AS pg
+                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+            ";
+
+        $add_condition = [
+            'EQ' => [
+                'pg.PredictIdx' => $PredictIdx,
+                'pg.TakeMockPart' => $TakeMockPart,
+            ]
+        ];
+        $where = $this->_conn->makeWhere($add_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column . $from . $where)->result_array();
+    }
+
+    /**
+     * 과목별 표준편차계산
+     * (응시자가 선택한 과목의 점수 - 응시자가 선택한 과목의 평균)의 제곱의 총합계 => $arr_sum
+     * ---------------------------------------------------------------------------
+     *                  응시자가 선택한 과목의 응시인원수 - 1
+     *
+     * @param $user_point_list      //유저점수 리스트
+     * @param $avg_standard_list    //과목별 평균 점수
+     * @return array
+     */
+    private function setStandardDeviation($user_point_list, $avg_standard_list)
+    {
+        $data = [];
+        $arr_sum = null;
+
+        //총합계
+        foreach ($user_point_list as $row) {
+            $tmp_mapping_data = $row['addTakeMockPart'].'_'.$row['TakeArea'].'_'.$row['PpIdx'];
+            if (empty($avg_standard_list[$tmp_mapping_data]) === false) {
+                if ($avg_standard_list[$tmp_mapping_data]['RegistAvgPointIsUse'] == 'N') {
+                    $sum = pow((int)$row['OrgPoint'] - (int)$avg_standard_list[$tmp_mapping_data]['AvgOrgPoint'],2);
+                } else {
+                    $sum = pow((int)$row['OrgPoint'] - (int)$avg_standard_list[$tmp_mapping_data]['RegistAvgPoint'],2);
+                }
+                $arr_sum[$tmp_mapping_data] = (empty($arr_sum[$tmp_mapping_data]) === true ? 0 : $arr_sum[$tmp_mapping_data]) + $sum;
+            }
+        }
+
+        //계산
+        foreach ($avg_standard_list as $key => $val) {
+            if ($val['RegistStandardIsUse'] == 'N') {
+                $subject_cnt = $val['SubjectCnt'] - 1;
+                $data[$key] = (empty($arr_sum[$key]) === true || $arr_sum[$key] <= 0) ? '0' : round(sqrt($arr_sum[$key] / $subject_cnt), 2);
+            } else {
+                $data[$key] = $val['RegistStandard'];
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * 유저별 조정점수 및 저장 데이터 셋팅
+     * 응시자의 과목 점수 - 과목의 평균
+     * --------------------------------  X 10 + 50
+     *      과목의 표준편차
+     *
+     * @param $user_point_list      //유저점수 리스트
+     * @param $avg_user_list        //과목별 평균 점수
+     * @param $arr_standard_data    //과목별 표준편차
+     * @return string
+     */
+    private function setAdjustPointForData($user_point_list, $avg_user_list, $arr_standard_data)
+    {
+        $user_list = $user_point_list;
+        $arr_set_rank = $this->arrSetRank($user_list);
+        foreach ($user_list as $key => $val) {
+            $tmp_mapping_data_user = $val['TakeMockPart'].'_'.$val['TakeArea'].'_'.$val['PpIdx'];
+            $tmp_mapping_data_standard = $val['addTakeMockPart'].'_'.$val['TakeArea'].'_'.$val['PpIdx'];
+
+            if (empty($arr_standard_data[$tmp_mapping_data_standard]) === false) {
+                $avg_data = ($avg_user_list[$tmp_mapping_data_user]['RegistAvgPointIsUse'] == 'N') ? $avg_user_list[$tmp_mapping_data_user]['AvgOrgPoint'] : $avg_user_list[$tmp_mapping_data_user]['RegistAvgPoint'];
+                $user_list[$key]['AdjustPoint'] = round((($val['OrgPoint'] - $avg_data) / $arr_standard_data[$tmp_mapping_data_standard] * 10) + 50, 2);
+                $user_list[$key]['StandardDeviation'] = $arr_standard_data[$tmp_mapping_data_standard];
+            } else {
+                $user_list[$key]['AdjustPoint'] = 0;
+                $user_list[$key]['StandardDeviation'] = 0;
+            }
+
+            if (empty($arr_set_rank[$tmp_mapping_data_user]) === false) {
+                $user_list[$key]['Rank'] = $arr_set_rank[$tmp_mapping_data_user][$val['OrgPoint']] + 1;
+            }
+            unset($user_list[$key]['addTakeMockPart']);
+        }
+        return $user_list;
+    }
+
+    /**
+     * 등록된 직렬,지역,과목별 등수 셋팅
+     * @param $user_list
+     * @return array
+     */
+    private function arrSetRank($user_list)
+    {
+        $arr_set_rank = [];
+        $set_rank = [];
+
+        foreach ($user_list as $key => $val) {
+            $tmp_mapping_data = $val['TakeMockPart'].'_'.$val['TakeArea'].'_'.$val['PpIdx'];
+            $arr_set_rank[$tmp_mapping_data][] = $val['OrgPoint'];
+
+            rsort($arr_set_rank[$tmp_mapping_data]);
+            $set_rank[$tmp_mapping_data] = array_unique($arr_set_rank[$tmp_mapping_data]);
+            $set_rank[$tmp_mapping_data] = array_flip($set_rank[$tmp_mapping_data]);
+            $set_rank[$tmp_mapping_data] = array_keys($set_rank[$tmp_mapping_data]);
+            $set_rank[$tmp_mapping_data] = array_flip($set_rank[$tmp_mapping_data]);
+        }
+        return $set_rank;
+    }
 }

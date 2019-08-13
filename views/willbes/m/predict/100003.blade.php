@@ -242,7 +242,7 @@
         });
 
         function selchk(obj){
-            var cknum = $("input:checkbox[id=Ssubject]:checked").length;
+            var cknum = $("input[name='Ssubject[]']:checked").length;
             if(cknum == 4){
                 alert('선택과목은 3개까지 선택할 수 있습니다.');
                 obj.checked = false;
@@ -281,7 +281,7 @@
             }
 
             if($("#TakeMockPart").val() != '800'){
-                if($("input:checkbox[id=Ssubject]:checked").length != 3){
+                if($("input[name='Ssubject[]']:checked").length != 3){
                     alert('선택과목은 3개를 선택해 주세요.');
                     return ;
                 }
@@ -300,8 +300,8 @@
                     alert('올바른 응시번호가 아닙니다.');
                     return;
                 }
-            } else if($("#TakeMockPart").val() == '300') {
-                if(takenum<30001||takenum>39999) {
+            } else if($("#TakeMockPart").val() == '800') {
+                if(takenum<50001||takenum>59999) {
                     alert('올바른 응시번호가 아닙니다.');
                     return;
                 }
@@ -376,7 +376,7 @@
                                             chkyn = 'checked';
                                         }
                                     }
-                                    str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
+                                    str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                                 }
                             }
 
@@ -393,7 +393,7 @@
                                         str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
                                     }
                                 } else {
-                                    str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject' value='" + d.data[i].Ccd + "' onClick='selchk(this)'><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
+                                    str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                                 }
                             }
 

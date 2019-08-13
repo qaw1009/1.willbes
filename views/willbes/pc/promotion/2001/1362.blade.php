@@ -22,12 +22,9 @@
         /************************************************************/
         .evt_counter {height:100px; background:#000; font-size:18px; color:#fff}
         .evt_counter .counter {position:relative; width:1120px; margin:0 auto}
-        .evt_counter .counter .left_area {text-align:left; padding-top:25px; margin-left:100px; float:left}
-        .evt_counter .counter .left_area p {margin-top:8px}
-        .evt_counter .counter .right_area {float:left; margin-left:80px; margin-top:37px;}        
-        .evt_counter .counter span {font-family: Tahoma, Verdana, Geneva, sans-serif; font-size:42px; letter-spacing:-1px; font-weight:600; padding:0 10px}   
-        .evt_counter .counter strong {font-size:40px; font-weight:normal !important; color:#3b3b3b; padding:0 20px}
-        .evt_counter .counter:after {content:""; display:block; clear:both}  
+        .evt_counter .counter .left_area {text-align:center; padding-top:25px; font-size:24px}   
+        .evt_counter .counter .left_area img {margin-right:20px}
+        .evt_counter .counter span {font-family: Tahoma, Verdana, Geneva, sans-serif; font-size:42px; letter-spacing:-1px; font-weight:600; padding:0 10px} 
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/08/1362_top_bg.jpg) no-repeat center top;}
 
@@ -60,17 +57,16 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">      
 
+        <!--
         <div class="evtCtnsBox evt_counter">
             <div class="counter">
-                <div class="left_area">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/07/1332_live_camera.png" alt="">
-                    <p>적중&합격예측 이용현황</p>
-                </div>
-                <div class="right_area">
-                    이용건수<span>1,770,232</span>건<strong>|</strong>채점건수<span>50,232</span>건
+                <div class="left_area NGEB">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_live_camera.png" alt="">
+                    경찰합격 풀케어 서비스 이용현황<span>1,770,232</span>건
                 </div>
             </div>
-        </div>  
+        </div>
+        -->  
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">               

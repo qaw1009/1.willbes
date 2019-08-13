@@ -60,6 +60,8 @@
             <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="register_chk_col[]" value="EtcValue"/>
+            <input type="hidden" name="register_chk_val[]" value=""/>
 
             <div class="skyBanner">
                 <ul>
@@ -181,8 +183,25 @@
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;
             }
+            if ($.trim($regi_form_register.find('input[name="register_name"]').val()) == '') {
+                alert('이름을 입력하셔야 합니다.');
+                return;
+            }
+            if ($.trim($regi_form_register.find('input[name="register_tel"]').val()) == '') {
+                alert('연락처를 입력하셔야 합니다.');
+                return;
+            }
+            if ($regi_form_register.find('input[name="register_data1"]').is(':checked') === false) {
+                alert('참여일을 선택하셔야 합니다.');
+                return;
+            }
+            if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
+                alert('직렬을 선택하셔야 합니다.');
+                return;
+            }
 
             if (!confirm('저장하시겠습니까?')) { return true; }
+            $regi_form_register.find('input[name="register_chk_val[]"]').val($regi_form_register.find('input:radio[name="register_data2"]:checked').val());//신청자 조건 추가
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);

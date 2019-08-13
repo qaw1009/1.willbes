@@ -1019,7 +1019,8 @@ class SurveyModel extends WB_Model
     {
         $column = "
             SubTitle, sa.SqIdx, Answer, sa.Type, 
-            (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT
+            (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT,
+	        sr.IsDispResult
         ";
 
         $from = "

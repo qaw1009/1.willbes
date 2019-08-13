@@ -12,7 +12,6 @@
                     <div class="col-md-11 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
-                            <option value="">합격예측서비스명</option>
                             @foreach($predictList as $row)
                                 <option value="{{$row['PredictIdx']}}" class="{{$row['SiteCode']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
                             @endforeach

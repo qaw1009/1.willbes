@@ -55,7 +55,7 @@
             <div class="m_section3_R">
                 @foreach($areaList as $key => $val)
                     @foreach($areaList[$key] as $key2 => $val2)
-                        <span id="area_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" @if($val2['TakeMockPart'] == 100 && $val2['TakeArea'] == 712001) style="display:;" @else style="display:none;" @endif>
+                        <span id="area_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" @if($val2['TakeMockPart'] == 100 && $val2['TakeArea'] == 712001) style="" @else style="display:none;" @endif>
                         <h3 id="title_info">{{ $val2['Serialname'] }} - <span class="NSK">{{ $val2['Areaname'] }}</span></h3>
                         <table class="boardTypeB">
                             <col width="30%" />
@@ -202,8 +202,8 @@
                         </div>
                     </li>
                 </ul>
-                <p class="leftBtn"><a onClick="selPoint2('P')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png"></a></p>
-                <p class="rightBtn"><a onClick="selPoint2('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png"></a></p>
+                <p class="leftBtn"><a onClick="selPoint2('P')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png" alt="이전"/></a></p>
+                <p class="rightBtn"><a onClick="selPoint2('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png" alt="다음"/></a></p>
             </div>
         </div>
         <!--m_section3_3R//-->
@@ -268,34 +268,33 @@
 
     {{--과목별 체감난이도 --}}
     <div class="m_section3_3">
-        @if(empty($resSet)===false)
+        @if(empty($spSubjectList)===false)
             <h2>
                 과목별 <span>체감난이도</span>
                 <div>
-                    <select id=" " name=" " onChange="selSurvey(this.value);">
-                        @for($i=1; $i < count($titleSet[1]); $i++)
-                        <option value="{{ $i }}" >{{ $titleSet[1][$i] }}</option>
-                        @endfor
+                    <select id="selsubject" name="selsubject" class="mg-zero" onChange="selSurvey(this.value);">
+                        @foreach($spSubjectList['Now'] as $idx => $row)
+                            <option value="{{ $idx }}">{{ $row['SqTitle'] }}</option>
+                        @endforeach
                     </select>
                 </div>
             </h2>
-            @for($i=1; $i < count($titleSet[1]); $i++)
-                <div id="div_{{ $i }}" @if($i != 1) style="display:none;" @endif>
-
+            @foreach($spSubjectList['Now'] as $idx => $row)
+                <div id="sp_subject_{{ $idx }}" @if($idx > 0) style="display:none;" @endif>
                     <table class="boardTypeC" style="hieght:500px;">
                         <col width="40%" />
                         <col width="20%" />
                         <col width="40%" />
-                        @for($j=1; $j <= $resSet[0][$titleSet[1][$i]]['CNT']; $j++)
+                        @for($i = 1; $i <= 5; $i++)
                         <tr>
                             <td>
-                                <div class="graph2ch"><span class="graph2" style="width:{{ $resSet[0][$titleSet[1][$i]]['Answer'.$j] }}%"></span></div>
-                                <Expect class="ratio2ch">{{ $resSet[0][$titleSet[1][$i]]['Answer'.$j] }}%</Expect>
+                                <div class="graph2ch"><span class="graph2" style="width:{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%"></span></div>
+                                <Expect class="ratio2ch">{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%</Expect>
                             </td>
-                            <th>{{ $questionSet[$i]['Comment'.$j] }}</th>
+                            <th>{{ $row['Comment' . $i] }}</th>
                             <td>
-                                <div class="graph"><span class="graph1" style="width:{{ $resSet[1][$titleSet[1][$i]]['Answer'.$j] }}%"></span></div>
-                                <Expect class="ratio">{{ $resSet[1][$titleSet[1][$i]]['Answer'.$j] }}%</Expect>
+                                <div class="graph"><span class="graph1" style="width:{{ $row['AnswerRatio' . $i] }}%"></span></div>
+                                <Expect class="ratio">{{ $row['AnswerRatio' . $i] }}%</Expect>
                             </td>
                         </tr>
                         @endfor
@@ -306,58 +305,8 @@
                         </tr>
                     </table>
                 </div>
-            @endfor
-        @else
-            <h2>
-                과목별 <span>체감난이도</span>
-            </h2>
-            <div>
-                <table class="boardTypeC">
-                    <col width="20%" />
-                    <col width="40%" />
-                    <tr>
-                        <th>매우 쉬움</th>
-                        <td>
-                            <div class="graph"><span class="graph1" style="width:0%"></span></div>
-                            <Expect class="ratio">0%</Expect>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>쉬움</th>
-                        <td>
-                            <div class="graph"><span class="graph1" style="width:0%"></span></div>
-                            <Expect class="ratio">0%</Expect>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>보통</th>
-                        <td>
-                            <div class="graph"><span class="graph1" style="width:0%"></span></div>
-                            <Expect class="ratio">0%</Expect>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>어려움</th>
-                        <td>
-                            <div class="graph"><span class="graph1" style="width:0%"></span></div>
-                            <Expect class="ratio">0%</Expect>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>매우 어려움</th>
-                        <td>
-                            <div class="graph"><span class="graph1" style="width:0%"></span></div>
-                            <Expect class="ratio">0%</Expect>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>구분</th>
-                        <td>2019년 1차</td>
-                    </tr>
-                </table>
-            </div>
+            @endforeach
         @endif
-
     </div>
 
     {{--과목별 오답 랭킹--}}
@@ -646,18 +595,20 @@
         }
     }
 
+    // 지역별 현황 - 지역 선택
+    function selArea(num) {
+        $("[id*='area_']").hide();
+        $("[id*='ss_']").removeClass('active');
+        $("#ss_" + num).addClass('active');
+        $("#area_" + $('#selS').val() + '_' + num).show();
+    }
+
     // 과목별 원점수 평균
     function selGrade(val){
         var arrStr = val.split('/');
         var options = {
             'legend':{
-                names: [
-                    arrStr[0],
-                    arrStr[1],
-                    arrStr[2],
-                    arrStr[3],
-                    arrStr[4]
-                ],
+                names: [arrStr[0], arrStr[1], arrStr[2], arrStr[3], arrStr[4]],
                 hrefs: []
             },
             'dataset': {
@@ -813,6 +764,12 @@
         Nwagon.chart(options);
     }
 
+    // 과목별 체감 난이도
+    function selSurvey(num) {
+        $("[id*='sp_subject_']").hide();
+        $("#sp_subject_" + num).show();
+    }
+
     function selWrong(val){
         for(var i = 1; i <= 9; i++){
             $("[id*='wtr']").hide();
@@ -823,11 +780,6 @@
         $("[id*='wtr_"+val+"']").show();
         $("#gtr_"+val).show();
         $("#ntr_"+val).show();
-    }
-
-    function selSurvey(num){
-        $("[id*='div_']").hide();
-        $("#div_"+num).show();
     }
 
     function selSurvey2(num){
@@ -848,13 +800,6 @@
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
         var url = "{{ site_url('/survey/index/3') }}";
         window.open(url,'pop','width=800 height=900');
-    }
-
-    function selArea(num){
-        $("[id*='area_']").hide();
-        $("[id*='ss_']").removeClass('active');
-        $("#ss_"+num).addClass('active');
-        $("#area_"+$('#selS').val()+'_'+num).show();
     }
 
     function setAreaMsg(num)

@@ -18,9 +18,7 @@
         }
     @endphp
 
-
-
-    <h5>- 온라인 운영자패키지 상품 정보를 관리하는 메뉴입니다.(운영자패키지 : 운영자가 구성한 강좌를 할인을 적용한 패키지)</h5>
+    <h5>- 온라인 기간제패키지 상품 정보를 관리하는 메뉴입니다.(기간제패키지 : 운영자가 구성한 강좌를 할인 적용하여 프리패스 형태로 제공)</h5>
     <div class="x_panel">
         <div class="x_title">
             <h2>기간제패키지정보</h2>
@@ -187,9 +185,7 @@
                     <label class="control-label col-md-2" >필수과목강좌구성 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        <p><button type="button" class="btn btn-sm btn-primary ml-5" id="essLecAdd">단강좌검색</button>
-                            <!--button type="button" class="btn btn-sm btn-primary ml-5" id="">정렬변경</button//-->
-                        </p>
+                        <p><button type="button" class="btn btn-sm btn-primary ml-5" id="essLecAdd">단강좌검색</button></p>
                         <table class="table table-striped table-bordered" id="essLecList" width="100%">
                             <tr>
                                 <th>그룹</th>
@@ -211,7 +207,7 @@
                                         <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='Y'>
                                         <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
-                                                @for($i=1;$i<6;$i++)
+                                                @for($i=1;$i<11;$i++)
                                                     <option value='{{$i}}' @if($i ==$row['SubGroupName']) selected="selected" @endif>{{$i}}</option>
                                                 @endfor
                                             </select>
@@ -239,7 +235,6 @@
                         <p><button type="button" class="btn btn-sm btn-primary ml-5" id="selLecAdd">단강좌검색</button>
                             &nbsp;&nbsp;
                             [선택과목 선택개수] <input type="number" name="PackSelCount" id="PackSelCount" value="{{$data['PackSelCount']}}" class="form-control" style="width: 50px;" title="선택과목 선택개수">개
-                            <!--button type="button" class="btn btn-sm btn-primary ml-5" id="">정렬변경</button//-->
                         </p>
                         <table class="table table-striped table-bordered" id="selLecList" width="100%">
                             <tr>
@@ -262,7 +257,7 @@
                                         <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='N'>
                                         <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
-                                                @for($i=1;$i<6;$i++)
+                                                @for($i=1;$i<11;$i++)
                                                     <option value='{{$i}}' @if($i ==$row['SubGroupName']) selected="selected" @endif>{{$i}}</option>
                                                 @endfor
                                             </select>
@@ -898,7 +893,6 @@
                 }
                 $(this).blur();
                 if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
-
                     /*
                     $("#selected_category").html("");
                     $("#teacherDivision tbody").remove();
@@ -912,7 +906,6 @@
                     return false;
                 }
             });
-
 
             //카테고리검색
             $("#searchCategory").on('click', function () {
@@ -969,7 +962,6 @@
                 getEditorBodyContent($editor_3);
                 getEditorBodyContent($editor_4);
 
-
                 var _url = '{{ site_url('/product/on/packagePeriod/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -998,7 +990,6 @@
                         $('#selLecAdd').focus();
                         return;
                     }
-
                 }
                 return true;
             }
@@ -1034,7 +1025,6 @@
                 $('#RealSalePrice_'+strGubun).val(parseInt(salesprice));
             }
         }
-
 
         function sitecode_chained(site_code) {        //운영사이트 변경으로 인한 수동 조정
             //과정, 과목 변경

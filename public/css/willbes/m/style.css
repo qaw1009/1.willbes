@@ -3012,6 +3012,190 @@ body.memBody #Footer {
     text-align: center;
 }
 
+/*주문배송관리*/
+.paymentDate {
+    margin:20px;
+    padding:10px;
+    background:#f9f9f9;
+}
+.paymentDate .payLecList {
+    border:0;
+    padding:0 0 10px;
+}
+.paymentDate strong {
+    margin-right:10px;
+}
+.paymentDat ul {
+    margin-top:10px;
+}
+.paymentDate li {
+    display: inline;
+    float: left;
+    width: 20%;
+}
+.paymentDate li a {
+    display: block;
+    text-align: center;
+    padding:15px 10px;
+    border:1px solid #898989;
+    border-right:0;
+    background:#fff;
+    font-size:14px;
+    color:#898989;
+}
+.paymentDate li:last-child a {
+    border-right:1px solid #898989;
+}
+.paymentDate ul:after {
+    content:""; display: block; clear:both;
+}
+.paymentDate .btnSearch {
+    margin-top:10px;
+    text-align: right;
+}
+.paymentDate .btnSearch a {
+    display:inline-block;
+    width: 80px; color:#fff;
+    text-align: center;
+    background:#4f4f4f;
+    font-size: 14px;    
+    height: 30px;
+    line-height: 30px;
+}
+.paymentWrap .willbes-Lec-Selected .chk {
+    float:right;
+    margin-top:10px;
+}
+.paymentWrap .willbes-Lec-Selected .chk label {
+    margin-left:5px;
+}
+.paymentWrap .willbes-Lec-Selected .chk input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+.paymentCheck {
+    margin:0 20px;
+    font-size:14px;
+    border-bottom:1px solid #898989;
+    clear: both;
+}
+.paymentCheck h4 {
+    color:#999;    
+    border-top:1px solid #898989;
+    border-bottom:1px solid #898989;
+    padding:15px 10px;
+}
+.paymentCheck h4 a {
+    float: right;
+    color:#0d74ae;
+}
+.paymentCheck ul {
+    padding:10px;
+}
+.paymentCheck li {
+    line-height: 1.5;
+}
+.paymentCheck li:last-child {
+    font-size:12px;
+    color:#999; 
+}
+.paymentCheckInfo {
+    margin:20px;
+    padding:10px;
+    background:#f9f9f9;
+}
+.paymentCheckInfo h4 {
+    font-size:14px;
+    padding:10px 0;
+}
+.paymentCheckInfo h4:first-child {
+    padding-top:0;
+}
+.paymentCheckInfo li {
+    line-height: 1.5;
+    margin-left:15px;
+    list-style-type: disc;
+    color:#666;
+}
+
+/*포인트관리*/
+.pointHead {
+    background:#f9f9f9;
+    margin:20px 20px 0;
+    padding:20px;
+    text-align: center;
+    font-size:14px;
+}
+.pointHead h4 {
+    font-size:15px;
+}
+.pointHead ul {
+    background: #fff;
+    border:1px solid #c9c9c9;
+    border-radius:20px;
+    padding:20px;
+    margin-top:20px;
+}
+.pointHead li {
+    display: inline;
+    float:left;
+    width: 50%;
+    border-right:1px solid #c9c9c9;
+    line-height: 2;
+}
+.pointHead li:last-child {
+    border:0;
+}
+.pointHead ul:after {
+    content:""; display: block; clear:both;
+}
+
+.pointLec {
+    margin:10px 20px;
+    padding:20px 0;
+    background:#f9f9f9;
+}
+.pointLec li {
+    display: inline;
+    float:left;
+    width: 50%;
+    border-right:1px solid #c9c9c9;
+    line-height: 2;    
+    text-align: center;
+}
+.pointLec li:last-child {
+    border:0;
+}
+.pointLec:after {
+    content:""; display: block; clear:both;
+}
+
+
+.pointList {
+    margin:20px;
+    font-size:14px;
+    line-height: 1.5;
+    clear: both;
+    border-top:1px solid #c9c9c9;
+}
+
+.pointList li {
+    display: inline;
+    float: left;
+    border-bottom:1px solid #c9c9c9;
+    width: 30%;
+    padding:10px;    
+}
+.pointList li:last-child {
+    text-align: right;
+    width:40%;
+}
+.pointList ul:after {
+    content:""; display: block; clear:both;
+}  
+
 /*********************************************     MYPAGE     *********************************************/
 
 /*게시판 신규강의리스트*/

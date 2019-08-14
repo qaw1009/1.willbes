@@ -256,7 +256,7 @@
                                     +"		<input type='hidden'  name='IsEssential[]' id='IsEssential"+seq+"' value='{{$locationid === 'essLecAdd' ? 'Y' : 'N'}}'>"
                                     +"		<td>"
                                     +"     <select name='SubGroupName[]' id='SubGroupName"+seq+"' class=\"form-control mr-10\">"
-                                            @for($i=1;$i<6;$i++)
+                                            @for($i=1;$i<11;$i++)
                                     +"         <option value='{{$i}}'>{{$i}}</option>"
                                             @endfor
                                     +"     </select>"

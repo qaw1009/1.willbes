@@ -71,10 +71,10 @@
                         <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner.png" title="합격전략 설명회"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner2.png" title="합격전략 설명회 커밍쑨">
+                        <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner2.png" title="심화 커리큘럼 설명회"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner3.png" title="합격전략 설명회 커밍쑨">
+                        <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner3.png" title="합격생과 함께하는 설명회"></a>
                     </li>
                 </ul>               
             </div>
@@ -117,6 +117,8 @@
                                     <td>
                                         <ul>
                                             <li><input type="radio" name="register_data1" id="campus1" value="8.24(토)" /> <label for="campus1">8.24(토)</label></li>
+                                            <li><input type="radio" name="register_data2" id="campus2" value="9.4(수)" /> <label for="campus2">9.4(수)</label></li>
+                                            <li><input type="radio" name="register_data3" id="campus3" value="9.7(토)" /> <label for="campus3">9.7(토)</label></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -165,7 +167,7 @@
                         </div>
                     </div>
                     <div class="btn NGEB">
-                        <a href="#none" onclick="javascript:fn_submit();">2020년1차 대비 초시생합격전략설명회 신청하기    ></a>
+                        <a href="#none" onclick="javascript:fn_submit();">2020년1차 대비 합격전략설명회 신청하기    ></a>
                     </div>
             </div>
             <div class="evtCtnsBox evt04">

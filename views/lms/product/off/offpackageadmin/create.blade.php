@@ -237,7 +237,6 @@
                     </div>
                 </div>
 
-
                 <div class="form-group">
                     <label class="control-label col-md-2" >필수과목강좌구성 <span class="required">*</span>
                     </label>
@@ -268,7 +267,7 @@
                                         <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='Y'>
                                         <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
-                                                @for($i=1;$i<6;$i++)
+                                                @for($i=1;$i<11;$i++)
                                                     <option value='{{$i}}' @if($i ==$row['SubGroupName']) selected="selected" @endif>{{$i}}</option>
                                                 @endfor
                                             </select>
@@ -323,7 +322,7 @@
                                         <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='N'>
                                         <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
-                                                @for($i=1;$i<6;$i++)
+                                                @for($i=1;$i<11;$i++)
                                                     <option value='{{$i}}' @if($i ==$row['SubGroupName']) selected="selected" @endif>{{$i}}</option>
                                                 @endfor
                                             </select>
@@ -825,7 +824,6 @@
                 }
                 $(this).blur();
                 if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
-
                     /*
                     $("#selected_category").html("");
                     $("#teacherDivision tbody").remove();
@@ -839,7 +837,6 @@
                     return false;
                 }
             });
-
 
             //카테고리검색
             $("#searchCategory").on('click', function () {
@@ -944,7 +941,6 @@
                     }
                 }, showError, false, 'POST');
             });
-
 
             //필수/선택강좌 검색
             $('#essLecAdd,#selLecAdd').on('click', function(e) {
@@ -1180,8 +1176,6 @@
         $('#rateRemain').val('{{$rateRemain}}');
         $('#rateRemainProfIdx').val('{{$rateRemainProfIdx}}');
         @endif
-
-
     </script>
 
 @stop

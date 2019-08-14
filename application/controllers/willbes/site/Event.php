@@ -390,7 +390,7 @@ class Event extends \app\controllers\FrontController
             show_alert('게시글 조회시 오류가 발생되었습니다.', '/');
         }
 
-        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+        $data['AttachData'] = (empty($data['AttachData']) === true) ? null : json_decode($data['AttachData'],true);       //첨부파일
         $this->load->view('site/event/popup_show_notice',[
             'arr_input' => $arr_input,
             'data' => $data

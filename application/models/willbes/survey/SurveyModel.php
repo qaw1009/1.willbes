@@ -1323,7 +1323,13 @@ class SurveyModel extends WB_Model
     public function surveyAnswerCall($spidx, $arr_sq_idx = [])
     {
         $column = "A.SqIdx, A.Answer1, A.Answer2, A.Answer3, A.Answer4, A.Answer5, A.CNT
-            , sq.SqTitle, trim(sq.Comment1) as Comment1, trim(sq.Comment2) as Comment2, trim(sq.Comment3) as Comment3, trim(sq.Comment4) as Comment4, trim(sq.Comment5) as Comment5            
+            , round((A.Answer1 / A.CNT) * 100) as AnswerRatio1
+            , round((A.Answer2 / A.CNT) * 100) as AnswerRatio2
+            , round((A.Answer3 / A.CNT) * 100) as AnswerRatio3
+            , round((A.Answer4 / A.CNT) * 100) as AnswerRatio4
+            , round((A.Answer5 / A.CNT) * 100) as AnswerRatio5            
+            , sq.SqTitle
+            , trim(sq.Comment1) as Comment1, trim(sq.Comment2) as Comment2, trim(sq.Comment3) as Comment3, trim(sq.Comment4) as Comment4, trim(sq.Comment5) as Comment5            
         ";
 
         $from = "

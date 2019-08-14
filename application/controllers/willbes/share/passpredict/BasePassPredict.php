@@ -799,7 +799,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $bestCombList = $this->surveyModel->bestCombineSubject($PredictIdx);
 
         // 8. 과목별 체감난이도 (설문)
-        $arr_sq_idx = [6, 19, 27, 28, 29, 43];  // 비교대상 설문항목
+        $arr_sq_idx = [29, 28, 20, 19, 43, 27, 8, 6, 7];  // 비교대상 설문항목
         $spNowList = $this->surveyModel->surveyAnswerCall($spidx2, $arr_sq_idx);    // 진행설문결과
         $spPrevList = $this->surveyModel->surveyAnswerCall($spidx1, $arr_sq_idx);   // 이전설문결과
         $spInterList = array_intersect(array_pluck($spNowList, 'SqIdx'), array_pluck($spPrevList, 'SqIdx'));    // 비교 설문항목식별자 교집합
@@ -808,9 +808,6 @@ class BasePassPredict extends \app\controllers\FrontController
         // 진행 설문항목결과 셋팅
         foreach ($spNowList as $row) {
             if (in_array($row['SqIdx'], $spInterList) === true) {
-                for($i = 1; $i <= 5; $i++) {
-                    $row['AnswerRatio' . $i] = empty($row['Answer' . $i]) === true ? 0 : ROUND(($row['Answer' . $i] / $row['CNT']) * 100);
-                }
                 $spSubjectList['Now'][] = $row;
             }
         }
@@ -818,9 +815,6 @@ class BasePassPredict extends \app\controllers\FrontController
         // 이전 설문항목결과 셋팅
         foreach ($spPrevList as $row) {
             if (in_array($row['SqIdx'], $spInterList) === true) {
-                for($i = 1; $i <= 5; $i++) {
-                    $row['AnswerRatio' . $i] = empty($row['Answer' . $i]) === true ? 0 : ROUND(($row['Answer' . $i] / $row['CNT']) * 100);
-                }
                 $spSubjectList['Prev'][] = $row;
             }
         }

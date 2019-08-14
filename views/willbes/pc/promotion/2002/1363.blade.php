@@ -116,9 +116,10 @@
                                     <th>* 참여일</th>
                                     <td>
                                         <ul>
-                                            <li><input type="radio" name="register_data1" id="campus1" value="8.24(토)" /> <label for="campus1">8.24(토)</label></li>
-                                            <li><input type="radio" name="register_data2" id="campus2" value="9.4(수)" /> <label for="campus2">9.4(수)</label></li>
-                                            <li><input type="radio" name="register_data3" id="campus3" value="9.7(토)" /> <label for="campus3">9.7(토)</label></li>
+                                            <input type="hidden" name="register_data1" value=""/>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus1" value="8.24(토)" /> <label for="campus1">8.24(토)</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus2" value="9.4(수)" /> <label for="campus2">9.4(수)</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="9.7(토)" /> <label for="campus3">9.7(토)</label></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -195,7 +196,7 @@
                 alert('연락처를 입력하셔야 합니다.');
                 return;
             }
-            if ($regi_form_register.find('input[name="register_data1"]').is(':checked') === false) {
+            if ($regi_form_register.find('input[name="register_data1_tmp[]"]:checked').length == 0) {
                 alert('참여일을 선택하셔야 합니다.');
                 return;
             }
@@ -206,6 +207,13 @@
 
             if (!confirm('저장하시겠습니까?')) { return true; }
             // $regi_form_register.find('input[name="register_chk_val[]"]').val($regi_form_register.find('input:radio[name="register_data2"]:checked').val());//신청자 조건 추가
+
+            var register_data1_value = '';
+            $regi_form_register.find('input[name="register_data1_tmp[]"]:checked').each(function(i){
+                register_data1_value += (i==0? '' : ',') + $(this).val();
+            });
+            $regi_form_register.find('input[name="register_data1"]').val(register_data1_value);
+
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);

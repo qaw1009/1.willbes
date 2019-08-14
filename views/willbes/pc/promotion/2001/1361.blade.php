@@ -213,7 +213,8 @@
                     <span><img class="remainCnt" src="https://static.willbes.net/public/images/promotion/2019/08/1361_number0.png"></span>
                 </div>
                 <div class="btnlec">
-                    <a href="https://police.willbes.net/pass/event/show/ongoing?event_idx=381" target="_blank">실물 봉투 모의고사 신청하기 ></a>
+                    {{--<a href="https://police.willbes.net/pass/event/show/ongoing?event_idx=381" target="_blank">실물 봉투 모의고사 신청하기 ></a>--}}
+                    <a href="#none">실물 봉투 모의고사 마감 완료!</a>
                 </div>
             </div>            
 

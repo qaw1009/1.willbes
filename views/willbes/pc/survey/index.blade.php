@@ -69,7 +69,7 @@
         function fn_visible(obj, num1, num2, qnum){
             var cknum = $("input:checkbox[id=q"+qnum+"]:checked").length;
             if(cknum > 4){
-                alert('선택과목은 4개까지 선택할 수 있습니다.');
+                alert('직렬별 과목은 4개까지 선택할 수 있습니다.');
                 obj.checked = false;
                 return;
             }

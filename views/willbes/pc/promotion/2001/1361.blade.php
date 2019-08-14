@@ -286,7 +286,7 @@
                 });
             });
 
-            setPredictRegisterCnt(); //선착순 남은수량 세팅
+            // setPredictRegisterCnt(); //선착순 남은수량 세팅
         });
 
         //선착순 남은수량 세팅

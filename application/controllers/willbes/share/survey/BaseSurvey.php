@@ -86,11 +86,14 @@ class BaseSurvey extends \app\controllers\FrontController
         $temptitle = '';
         $tempType = '';
         $tempCNT = '';
+        $tempIsDisp = '';
         $resSet = array();
         $titleSet = array();
         $numberSet = array();
         $questionSet = array();
         $typeSet = array();
+        $isDispSet = array();
+
         for($i = 1; $i <= 25; $i++){
             ${"num".$i} = 0;
         }
@@ -137,6 +140,7 @@ class BaseSurvey extends \app\controllers\FrontController
                 $titleSet[] = $temptitle;
                 $numberSet[] = $defnum;
                 $typeSet[] = $tempType;
+                $isDispSet[] = $tempIsDisp;
                 $questionSet[] = $this->surveyModel->questionSet($tempSq);
                 $defnum++;
             } else {
@@ -159,6 +163,7 @@ class BaseSurvey extends \app\controllers\FrontController
             $tempSq = $SqIdx;
             $tempType = $val['Type'];
             $temptitle = $val['SubTitle'];
+            $tempIsDisp = $val['IsDispResult'];
             $tempCNT = $CNT;
         }
 
@@ -169,6 +174,7 @@ class BaseSurvey extends \app\controllers\FrontController
             'typeSet' => $typeSet,
             'questionSet' => $questionSet,
             'numberSet' => $numberSet,
+            'isDispSet' => $isDispSet,
             'SpIdx' => $idx
         ], false);
     }

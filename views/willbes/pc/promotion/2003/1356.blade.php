@@ -769,12 +769,14 @@
                 </a>
             </div>
 
+            <!--
             <div class="Cts03_01">
                 <h3>2019년 8월 17일 시행 <span>국가직 7급 시험 총평</span></h3>
                 <div>
                     {{--{!! $data['Content'] !!}--}}
                 </div>
             </div>
+            -->
 
             <div><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
             {{--시험평가댓글--}}

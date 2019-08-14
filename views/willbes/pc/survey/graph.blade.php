@@ -28,7 +28,7 @@
             <h3>전체 시험 난이도 </h3>
             <div>
                 <div class="graphbox">
-                    @if(empty($resSet)===false)
+                    @if(empty($resSet) === false)
                         @for($i=1; $i <= $resSet[0]['CNT']; $i++)
                             <div class="graph">
                                 <p> {{ $resSet[0]['Answer'.$i] }} %</p>
@@ -85,16 +85,27 @@
         </li>
         <li>
             <div>
-                <h3>과목별 시험 난이도 : <span id="karea">@if(empty($resSet)===false) [{{ $titleSet[1] }}] @endif </span></h3>
+                <h3>과목별 시험 난이도 :
+                    <span id="karea">
+                            @if(empty($resSet) === false) 
+                                @for($i=1; $i < count($titleSet); $i++) 
+                                    @if($typeSet[$i] == 'S' && $isDispSet[$i] != 'N') 
+                                        [{{$titleSet[$i]}}]
+                                        @break;
+                                    @endif
+                                @endfor 
+                            @endif 
+                    </span>
+                </h3>
                 <select title="과목선택" onchange="fn_sel(this)" class="maxWidth135">
-                    @if(empty($resSet)===false)
+                    @if(empty($resSet) === false)
                         @for($i=1; $i < count($titleSet); $i++)
-                            @if($typeSet[$i] == 'S') <option value="{{ $numberSet[$i] }}/{{ $titleSet[$i] }}">{{ $titleSet[$i] }}</option> @endif
+                            @if($typeSet[$i] == 'S' && $isDispSet[$i] != 'N') <option value="{{ $numberSet[$i] }}/{{ $titleSet[$i] }}">{{ $titleSet[$i] }}</option> @endif
                         @endfor
                     @endif
                 </select>
                 <div>
-                    @if(empty($resSet)===false)
+                    @if(empty($resSet) === false)
                         @for($i=1; $i < count($titleSet); $i++)
                             <div id="div{{ $i }}" class="graphbox" @if($i != 1) style="display:none;" @endif>
                                 @for($j=1; $j <= $resSet[$i]['CNT']; $j++)

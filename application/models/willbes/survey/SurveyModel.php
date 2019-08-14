@@ -1283,29 +1283,6 @@ class SurveyModel extends WB_Model
         return $data;
     }
 
-    /**
-     * 문항코멘트
-     */
-    public function surveyQuestionSet($idx){
-        $column = "
-            Comment1,Comment2,Comment3,Comment4,Comment5,Comment6,Comment7,Comment8,Comment9,Comment10,
-            Comment11, Comment12, Comment13, Comment14, Comment15, Comment16, Comment17, Comment18, Comment19, Comment20, 
-            Comment21, Comment22, Comment23, Comment24, Comment25
-        ";
-
-        $from = "
-            FROM 
-                {$this->_table['surveyQuestion']} 
-        ";
-
-        $order_by = " ";
-        $where = " WHERE SqIdx = " . $idx;
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res = $query->row_array();
-
-        return $Res;
-    }
-
     public function wrongRank($PredictIdx){
         $column = "
             COUNT(*) AS wcnt, pa.PpIdx, pq.PqIdx, Answer, IsWrong, PaperName, RightAnswer, QuestionNO,
@@ -1338,31 +1315,43 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 설문결과
+     * 설문조사 결과 리턴 (특정설문문항 결과)
+     * @param int $spidx
+     * @param array $arr_sq_idx
+     * @return mixed
      */
-    public function surveyAnswerCall($idx1,$idx2)
+    public function surveyAnswerCall($spidx, $arr_sq_idx = [])
     {
-        $column = "
-            sp.SpIdx, SubTitle, sa.SqIdx, Answer, sa.Type, 
-            (SELECT Cnt FROM {$this->_table['surveyQuestion']} WHERE SqIdx = sa.SqIdx) AS CNT
+        $column = "A.SqIdx, A.Answer1, A.Answer2, A.Answer3, A.Answer4, A.Answer5, A.CNT
+            , sq.SqTitle, trim(sq.Comment1) as Comment1, trim(sq.Comment2) as Comment2, trim(sq.Comment3) as Comment3, trim(sq.Comment4) as Comment4, trim(sq.Comment5) as Comment5            
         ";
 
         $from = "
-            FROM 
-                {$this->_table['surveyProduct']} AS sp
-                JOIN {$this->_table['surveyAnswer']} AS si ON sp.SpIdx = si.SpIdx
-                JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx = sa.SaIdx
-                LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
+            from (
+                select sq.SqIdx
+                    , sum(if(sa.Answer = 1, 1, 0)) as Answer1
+                    , sum(if(sa.Answer = 2, 1, 0)) as Answer2
+                    , sum(if(sa.Answer = 3, 1, 0)) as Answer3
+                    , sum(if(sa.Answer = 4, 1, 0)) as Answer4
+                    , sum(if(sa.Answer = 5, 1, 0)) as Answer5
+                    , count(0) as CNT
+                from {$this->_table['surveyAnswer']} as sai
+                    inner join {$this->_table['surveyAnswerDetail']} as sa
+                        on sai.SaIdx = sa.SaIdx
+                    inner join {$this->_table['surveyQuestion']} as sq
+                        on sa.SqIdx = sq.SqIdx
+                where sai.SpIdx = ?"
+                    . $this->_conn->makeWhere(['IN' => ['sq.SqIdx' => $arr_sq_idx]])->getMakeWhere(true) .
+            "   group by sq.SqIdx	
+            ) as A
+                inner join {$this->_table['surveyQuestion']} as sq
+                    on A.SqIdx = sq.SqIdx 
+            order by A.SqIdx desc                                
         ";
 
-        $order_by = " ORDER BY sp.SpIdx DESC, sr.GroupNumber ASC, sa.SqIdx ASC";
-        $where = " WHERE sp.SpIdx in (" . $idx1 . "," . $idx2 . ") AND sa.TYPE IN ('S','T')";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $query = $this->_conn->query('select ' . $column . $from, [$spidx]);
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res = $query->result_array();
-
-        return $Res;
+        return $query->result_array();
     }
 
     /**

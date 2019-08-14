@@ -702,12 +702,13 @@ class BasePassPredict extends \app\controllers\FrontController
 
     }
 
-    public function totalgraph(){
+    public function totalgraph()
+    {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx', $arr_input);
-        $spidx1 = element('spidx1', $arr_input);
-        $spidx2 = element('spidx2', $arr_input);
+        $spidx1 = element('spidx1', $arr_input);    // 이전 설문조사
+        $spidx2 = element('spidx2', $arr_input);    // 진행 설문조사
 
         // 1. 지역별 현황 (line)
         $arealist = $this->surveyModel->areaList($PredictIdx);
@@ -793,113 +794,34 @@ class BasePassPredict extends \app\controllers\FrontController
 
         // 6. 과목별단일선호도 (origin, 0점 제외)
         $bestList = $this->surveyModel->bestSubject($PredictIdx);
-        
+
         // 7. 과목별조합선호도 (origin, 0점 제외)
         $bestCombList = $this->surveyModel->bestCombineSubject($PredictIdx);
 
-        $res = $this->surveyModel->surveyAnswerCall($spidx1, $spidx2);
-
-        $tempSq = '';
-        $tempSp = '';
-        $temptitle = '';
-        $tempType = '';
-        $tempCNT = '';
-        $resSet = array();
-        $titleSet = array();
-        $numberSet = array();
-        $questionSet = array();
-        $typeSet = array();
-        for($i = 1; $i <= 25; $i++){
-            ${"num".$i} = 0;
+        // 8. 과목별 체감난이도 (설문)
+        $arr_sq_idx = [6, 19, 27, 28, 29, 43];  // 비교대상 설문항목
+        $spNowList = $this->surveyModel->surveyAnswerCall($spidx2, $arr_sq_idx);    // 진행설문결과
+        $spPrevList = $this->surveyModel->surveyAnswerCall($spidx1, $arr_sq_idx);   // 이전설문결과
+        $spInterList = array_intersect(array_pluck($spNowList, 'SqIdx'), array_pluck($spPrevList, 'SqIdx'));    // 비교 설문항목식별자 교집합
+        $spSubjectList = [];
+        
+        // 진행 설문항목결과 셋팅
+        foreach ($spNowList as $row) {
+            if (in_array($row['SqIdx'], $spInterList) === true) {
+                for($i = 1; $i <= 5; $i++) {
+                    $row['AnswerRatio' . $i] = empty($row['Answer' . $i]) === true ? 0 : ROUND(($row['Answer' . $i] / $row['CNT']) * 100);
+                }
+                $spSubjectList['Now'][] = $row;
+            }
         }
 
-        $resCnt = count($res);
-        $defnum = 0;
-        $k = 0;
-        foreach ($res as $key => $val){
-            $SpIdx = $val['SpIdx'];
-            $SqIdx = $val['SqIdx'];
-            $CNT = $val['CNT'];
-            $Answer = $val['Answer'];
-            $Type = $val['Type'];
-            $j = $key + 1;
-
-            if($Type != 'T'){
-                if(($key != 0 && $tempSq != $SqIdx) || $resCnt == $j){
-                    $tnum = 0;
-                    if($resCnt == $j){
-                        ${"num".$Answer}++;
-                    }
-
-                    for($i = 1; $i <= $tempCNT; $i++) {
-                        $tnum = $tnum + ${"num".$i};
-                    }
-
-                    $resSet[$k][$temptitle]['SubTitle'] = $temptitle;
-
-                    for($i = 1; $i <= $tempCNT; $i++){
-                        $resSet[$k][$temptitle]['Answer'.$i] = (${"num".$i} > 0 && $tnum > 0)? round(${"num".$i} / $tnum,2) * 100 : 0;
-                    }
-                    for($i = 1; $i <= $CNT; $i++){
-                        if($Answer == $i){
-                            if($val['Type'] == 'S') {
-                                ${"num" . $i} = 1;
-                            } else {
-                                $AnswerArr = explode('/',$Answer);
-                                for($i = 1; $i <= $CNT; $i++){
-                                    ${"num".$i} = 0;
-                                    for($j = 0; $j < count($AnswerArr); $j++){
-                                        if($AnswerArr[$j] == $i){
-                                            ${"num".$i}++;
-                                        }
-                                    }
-                                }
-                            }
-                        } else {
-                            if($val['Type'] == 'S') ${"num".$i} = 0;
-                        }
-                    }
-
-                    $resSet[$k][$temptitle]['CNT'] = $tempCNT;
-                    if($k == 0){
-                        $titleSet[$k][] = $temptitle;
-                    } else {
-                        if(in_array($temptitle, $titleSet[0])) $titleSet[$k][] = $temptitle;
-                    }
-
-                    $numberSet[] = $defnum;
-                    $typeSet[] = $tempType;
-                    $questionSet[] = $this->surveyModel->surveyQuestionSet($tempSq);
-
-                    if($tempSp != $SpIdx){
-                        $k++;
-                    }
-
-                    $defnum++;
-                } else {
-                    if($val['Type'] == 'S'){
-
-                        for($i = 1; $i <= $CNT; $i++){
-                            if($Answer == $i) ${"num".$i}++;
-                        }
-                    } else {
-                        //TYPE == 'T'
-                        $AnswerArr = explode('/',$Answer);
-                        for($i = 1; $i <= $CNT; $i++){
-                            for($j = 0; $j < count($AnswerArr); $j++){
-                                if($AnswerArr[$j] == $i){
-                                    ${"num".$i}++;
-                                }
-                            }
-                        }
-                    }
+        // 이전 설문항목결과 셋팅
+        foreach ($spPrevList as $row) {
+            if (in_array($row['SqIdx'], $spInterList) === true) {
+                for($i = 1; $i <= 5; $i++) {
+                    $row['AnswerRatio' . $i] = empty($row['Answer' . $i]) === true ? 0 : ROUND(($row['Answer' . $i] / $row['CNT']) * 100);
                 }
-
-                $tempSq = $SqIdx;
-                $tempSp = $SpIdx;
-                $tempType = $val['Type'];
-                $temptitle = $val['SubTitle'];
-                $tempCNT = $CNT;
+                $spSubjectList['Prev'][] = $row;
             }
         }
 
@@ -991,12 +913,7 @@ class BasePassPredict extends \app\controllers\FrontController
             'subjectPointList' => $subjectPointList,
             'bestList' => $bestList,
             'bestCombList' => $bestCombList,
-
-            'resSet' => $resSet,
-            'titleSet' => $titleSet,
-            'typeSet' => $typeSet,
-            'questionSet' => $questionSet,
-            'numberSet' => $numberSet,
+            'spSubjectList' => $spSubjectList,
 
             'arrSubject' => $arrSubject,
             'arrWrongList' => $arrWrongList,
@@ -1004,7 +921,6 @@ class BasePassPredict extends \app\controllers\FrontController
             'arrSurvey' => $arrSurvey
         ], false);
     }
-
 
     public function private($params = [])
     {

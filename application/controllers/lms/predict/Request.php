@@ -107,12 +107,14 @@ class Request extends \app\controllers\BaseController
         if(empty($PredictIdx) === false){
             $method = "PUT";
             $data = $this->predictModel->getProduct($PredictIdx);
+            $prod_data = $this->predictModel->_getPredictProduct($PredictIdx);
         }
 
         $this->load->view('predict/request/request_create', [
             'method' => $method,
             'siteCodeDef' => '',
             'data' => $data,
+            'prod_data' => $prod_data,
             'surveyList' => $surveyList
         ]);
     }

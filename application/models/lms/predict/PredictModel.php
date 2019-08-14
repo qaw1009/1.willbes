@@ -67,7 +67,9 @@ class PredictModel extends WB_Model
         'predictQuestion' => 'lms_predict_questions',
 
         'predictCnt' => 'lms_predict_cnt',      //todo 사용하지 않을 테이블 : 2019-08-13 조규호
-        'predictSubTitles' => 'lms_predict_subtitles'
+        'predictSubTitles' => 'lms_predict_subtitles',
+
+        'predict_r_product' => 'lms_predict_r_product'
     ];
 
     public $upload_path;            // 업로드 기본경로
@@ -876,6 +878,12 @@ class PredictModel extends WB_Model
 
             $this->_conn->insert($this->_table['predictProduct'], $data);
 
+            /*----------------          자동지급강좌 등록        ---------------*/
+            if($this->_setPredictProduct($this->input->post(null), $PredictIdx) !== true) {
+                throw new \Exception('자동지급강좌 등록에 실패했습니다.');
+            }
+            /*----------------          자동지급강좌 등록        ---------------*/
+
             $this->_conn->trans_complete();
             if ($this->_conn->trans_status() === false) {
                 throw new Exception('저장에 실패했습니다.');
@@ -939,6 +947,14 @@ class PredictModel extends WB_Model
             if ($this->_conn->update($this->_table['predictProduct']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
             }
+
+            $PredictIdx = $this->input->post('idx');
+
+            /*----------------          자동지급강좌 등록        ---------------*/
+            if($this->_setPredictProduct($this->input->post(null), $PredictIdx) !== true) {
+                throw new \Exception('자동지급강좌 등록에 실패했습니다.');
+            }
+            /*----------------          자동지급강좌 등록        ---------------*/
 
             $this->_conn->trans_complete();
         }
@@ -3404,5 +3420,89 @@ class PredictModel extends WB_Model
             $set_rank[$tmp_mapping_data] = array_flip($set_rank[$tmp_mapping_data]);
         }
         return $set_rank;
+    }
+
+
+    /**
+     * 자동지급강좌 추출
+     * @param array $input
+     * @param $PredictIdx
+     * @return bool|string
+     */
+    public function _getPredictProduct($PredictIdx)
+    {
+
+        $column = 'A.*, B.ProdName';
+
+        $from = '
+                from 
+                    '. $this->_table['predict_r_product'] .' A
+                    join '.$this->_table['Product'] .' B ON A.ProdCode = B.ProdCode
+                where 
+                    A.IsStatus=\'Y\' and B.IsStatus=\'Y\'
+        ';
+
+        $where = $this->_conn->makeWhere(['EQ'=>['PredictIdx'=>$PredictIdx]])->getMakeWhere(true);
+        $result = $this->_conn->query('select ' .$column .$from .$where)->result_array();
+        return $result;
+    }
+
+    /**
+     * 자동지급강좌 등록
+     * @param array $input
+     * @param $PredictIdx
+     * @return bool|string
+     */
+    public function _setPredictProduct($input=[],$PredictIdx)
+    {
+        try {
+
+            /*  기존 정보 상태값 변경 */
+            $del_data = [
+                'IsStatus' => 'N'
+                , 'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $this->_conn->set($del_data)->where('PredictIdx', $PredictIdx)->where('IsStatus', 'Y');
+            if ($this->_conn->update($this->_table['predict_r_product']) === false) {
+                //echo $this->_conn->last_query();
+                throw new \Exception('이전 자동지급강좌 정보 수정에 실패했습니다.');
+            }
+
+            $OrderNum = element('OrderNum', $input,'');
+            $StartDate_D = element('StartDate_D', $input,'');
+            $StartDate_H = element('StartDate_H', $input,'');
+            $EndDate_D = element('EndDate_D', $input,'');
+            $EndDate_H = element('EndDate_H', $input,'');
+            $ProdCode = element('prod_code', $input, '');
+
+            if(empty($OrderNum) === false) {
+
+                for($i=0;$i<count($OrderNum);$i++) {
+
+                    if($StartDate_D[$i] != '' && $EndDate_D[$i] != '' && $ProdCode[$i] != '' ) {
+
+                        $start_date= $StartDate_D[$i].' '.$StartDate_H[$i].':00:00';
+                        $end_date= $EndDate_D[$i].' '.$EndDate_H[$i].':59:00';
+                        $data = [
+                            'PredictIdx' => $PredictIdx
+                            ,'ProdCode' => $ProdCode[$i]
+                            , 'OrderNum' => $OrderNum[$i]
+                            , 'StartDate' => $start_date
+                            , 'EndDate' => $end_date
+                            , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+                        ];
+
+                        if($this->_conn->set($data)->insert($this->_table['predict_r_product']) === false) {
+                            throw new \Exception('자동지급강좌 등록에 실패했습니다.');
+                        }
+
+                    }
+                }
+            }
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
     }
 }

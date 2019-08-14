@@ -77,7 +77,7 @@
                     <ul>    
                         <li>경찰</li>
                         <li>2019-06-26</li>
-                        <li>+ 10,000</li>
+                        <li class="tx-blue">+ 10,000</li>
                     </ul>
                 </div>
                 <div>
@@ -92,6 +92,75 @@
                         <li>경찰</li>
                         <li>2019-06-10</li>
                         <li>- 3,000</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>    
+                        <li>공무원</li>
+                        <li>2019-06-26</li>
+                        <li class="tx-blue">+ 3,000</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="pointlist2" class="pointBox">
+            <ul class="pointLec">
+                <li>
+                    사용가능<br>
+                    <span class="tx-blue">10,000</span> P
+                </li>
+                <li>
+                    당월소멸예정<br>
+                    <span class="tx-blue">2,000</span> P
+                </li>
+            </ul>
+
+            <div class="paymentDate">        
+                <div class="payLecList NGR">
+                    <strong>기간검색</strong>  
+                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="20" placeholder="주문일">
+                    ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="20" placeholder="주문일"></span>                
+                </div>
+                <ul class="c_both">
+                    <li><a href="#none">전체</a></li>
+                    <li><a href="#none">15일</a></li>
+                    <li><a href="#none">1개월</a></li>
+                    <li><a href="#none">3개월</a></li>
+                    <li><a href="#none">6개월</a></li>
+                </ul>
+                <div class="btnSearch">
+                    <a href="#none">검색</a>
+                </div>
+            </div>
+
+            <div class="willbes-Lec-Selected NG c_both tx-gray pt-zero">
+                <select id="process" name="process" title="process" class="seleProcess width30p">
+                    <option selected="selected">과정</option>
+                    <option value="과정1">과정1</option>
+                </select>
+            </div>
+
+            <div class="pointList">
+                <div>
+                    <ul>    
+                        <li>교재</li>
+                        <li>2019-06-26</li>
+                        <li class="tx-blue">+ 2,500</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>    
+                        <li>교재</li>
+                        <li>2019-06-10</li>
+                        <li>- 3,000</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>    
+                        <li>교재</li>
+                        <li>2019-06-26</li>
+                        <li class="tx-blue">+ 3,000</li>
                     </ul>
                 </div>
             </div>

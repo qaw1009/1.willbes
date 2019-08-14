@@ -3151,7 +3151,6 @@ body.memBody #Footer {
 .pointHead ul:after {
     content:""; display: block; clear:both;
 }
-
 .pointLec {
     margin:10px 20px;
     padding:20px 0;
@@ -3171,8 +3170,6 @@ body.memBody #Footer {
 .pointLec:after {
     content:""; display: block; clear:both;
 }
-
-
 .pointList {
     margin:20px;
     font-size:14px;
@@ -3180,7 +3177,6 @@ body.memBody #Footer {
     clear: both;
     border-top:1px solid #c9c9c9;
 }
-
 .pointList li {
     display: inline;
     float: left;
@@ -3188,13 +3184,114 @@ body.memBody #Footer {
     width: 30%;
     padding:10px;    
 }
+.pointList li:nth-child(2) {
+    width: 40%;
+}
 .pointList li:last-child {
     text-align: right;
-    width:40%;
 }
 .pointList ul:after {
     content:""; display: block; clear:both;
 }  
+
+/*쿠폰,수강권관리*/
+.btnCoupon {
+    margin:0 20px;
+}
+.btnCoupon a {
+    display:block;
+    color:#fff;
+    text-align: center;
+    background:#4f4f4f;
+    font-size: 14px;    
+    height: 40px;
+    line-height: 40px;
+}
+.myCouponTab {
+    margin:20px 20px 0;
+}
+.myCouponTab li {
+    display: inline;
+    float: left;
+    width: 50%;
+}
+.myCouponTab li a {
+    display: block;
+    text-align: center;
+    padding:15px 0;
+    background: #fff;
+    border:1px solid #888;
+    font-size: 14px;
+    color:#999;
+}
+.myCouponTab li:last-child a {
+    border-left:0;
+}
+.myCouponTab li a.on {
+    border-bottom:1px solid #f9f9f9;
+    background: #f9f9f9;
+    color:#3a3a3a;
+}
+.myCouponTab:after {
+    content:""; display: block; clear:both;
+}
+.myCouponList {
+    clear:both;
+    padding:0 20px;
+    border-top:1px solid #898989;
+}
+.myCouponList ul {
+    border-bottom:1px solid #c9c9c9;
+    padding:10px 0;
+}
+.myCouponList li {
+    line-height: 1.5;
+    margin-bottom:5px;
+}
+.myCouponList li:first-child {
+    font-size:14px;
+}
+.myCouponList li strong {
+    display: inline-block;
+    width: 80px;
+    margin-right:10px;
+    font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+}
+.couponSingup {
+    border:1px solid #898989;
+    padding:20px;
+    margin-top:10px;
+    font-size:14px;
+}
+.couponSingup p {
+    margin-bottom:10px;
+}
+.couponSingup div {
+    margin-top:10px;
+}
+.couponSingup input[type=text] {
+    width: 70%;
+    height: 30px;
+    padding: 0 0.6rem;
+    float: left;
+    vertical-align: middle;
+}
+.couponSingup a {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin-left:5px;
+    width: 80px;
+    color:#fff;
+    text-align: center;
+    background:#4f4f4f;
+}
+.couponSingup:after {
+    content:""; display: block; clear:both;
+}
+.pointBox .couponSingup {
+    margin:20px;
+}
 
 /*********************************************     MYPAGE     *********************************************/
 

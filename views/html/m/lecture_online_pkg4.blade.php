@@ -176,7 +176,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -224,7 +224,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -283,7 +283,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -331,7 +331,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -400,7 +400,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -448,7 +448,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -507,7 +507,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -555,7 +555,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -614,7 +614,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -662,7 +662,7 @@
                                         </dt>
                                         <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
                                         <dt>
-                                            <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>

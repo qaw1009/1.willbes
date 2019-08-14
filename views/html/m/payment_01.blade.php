@@ -25,10 +25,12 @@
 
         <div class="paymentCts">
             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                {{--
                 <colgroup>
                     <col style="width: 87%;">
                     <col style="width: 13%;">
                 </colgroup>
+                --}}
                 <tbody>
                     <tr class="replyList willbes-Open-Table">
                         <td>

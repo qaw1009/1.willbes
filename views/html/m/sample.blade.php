@@ -69,7 +69,8 @@
             <a href="{{ site_url('/home/html/m/payment_02') }}" target="_blank">결제완료</a>
             <a href="{{ site_url('/home/html/m/payment_03') }}" target="_blank">주문/배송조회</a>
             <a href="{{ site_url('/home/html/m/payment_04') }}" target="_blank">주문/배송조회 > 상세보기</a> 
-            <a href="{{ site_url('/home/html/m/payment_05') }}" target="_blank">포인트관리(작업중)</a>             
+            <a href="{{ site_url('/home/html/m/payment_05') }}" target="_blank">포인트관리</a>   
+            <a href="{{ site_url('/home/html/m/payment_06') }}" target="_blank">쿠폰/수강권관리</a>           
         </div>
     </li>
     <li>

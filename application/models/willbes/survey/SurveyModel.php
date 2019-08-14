@@ -1031,8 +1031,8 @@ class SurveyModel extends WB_Model
                 LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
         ";
 
-        $order_by = "ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
-        $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T')";
+        $order_by = " ORDER BY sr.GroupNumber ASC, sa.SqIdx ASC";
+        $where = " WHERE sp.SpIdx = " . $idx . " AND sa.TYPE IN ('S','T') AND sr.SqsdIdx IS NOT NULL";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();

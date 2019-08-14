@@ -480,7 +480,7 @@ class EventFModel extends WB_Model
         FROM (
             SELECT a.*
             FROM (
-                SELECT a.BoardIdx AS Idx, '' AS MemIdx, '공지' AS MemName, a.Title AS Content, a.RegDatm, DATE_FORMAT(a.RegDatm, '%Y-%m-%d') AS RegDay, '1' AS RegType
+                SELECT '1' AS ContentOrderBy, a.BoardIdx AS Idx, '' AS MemIdx, '공지' AS MemName, a.Title AS Content, a.RegDatm, DATE_FORMAT(a.RegDatm, '%Y-%m-%d') AS RegDay, '1' AS RegType
                 FROM {$this->_table['vw_board_2']} AS a
                 INNER JOIN {$this->_table['board_r_category']} AS b ON a.BoardIdx = b.BoardIdx AND b.IsStatus = 'Y'
                 {$where_notice}
@@ -489,14 +489,15 @@ class EventFModel extends WB_Model
             UNION ALL
             SELECT b.*
             FROM (
-                SELECT a.CIdx AS Idx, IFNULL(a.MemIdx, ''), a.MemName, a.Comment AS Content, a.RegDatm, DATE_FORMAT(a.RegDatm, '%Y-%m-%d') AS RegDay, '2' AS RegType
+                SELECT '0' AS ContentOrderBy, a.CIdx AS Idx, IFNULL(a.MemIdx, ''), a.MemName, a.Comment AS Content, a.RegDatm, DATE_FORMAT(a.RegDatm, '%Y-%m-%d') AS RegDay, '2' AS RegType
                 FROM {$this->_table['event_comment']} AS a
                 INNER JOIN {$this->_table['event_lecture']} AS b ON a.ElIdx = b.ElIdx
                 INNER JOIN {$this->_table['event_r_category']} AS c ON a.ElIdx = c.ElIdx AND c.IsStatus = 'Y'
                 {$where_comment}
-                ORDER BY a.CIdx ASC
+                ORDER BY a.CIdx DESC
             ) AS b
         ) AS c
+        ORDER BY c.ContentOrderBy DESC, c.Idx DESC
         ";
 
         $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit);

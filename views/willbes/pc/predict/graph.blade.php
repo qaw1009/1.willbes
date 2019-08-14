@@ -171,7 +171,6 @@
                     </tr>
                 @endforeach
             </table>
-
             <div class="mt10">
                 <div id="pointarea"></div>
             </div>
@@ -231,7 +230,6 @@
                         @endif
                     @endforeach
                 </table>
-
                 <div class="mt10">
                     <div id="best1"></div>
                 </div>
@@ -258,7 +256,6 @@
                         @endif
                     @endforeach
                 </table>
-
                 <div class="mt10">
                     <div id="best2"></div>
                 </div>
@@ -266,51 +263,52 @@
         </div>
     </div>
 
-    {{--과목별 체감난이도 --}}
+    {{--과목별 체감난이도--}}
     <div class="m_section3_3">
-        @if(empty($spSubjectList)===false)
-            <h2>
-                과목별 <span>체감난이도</span>
-                <div>
-                    <select id="selsubject" name="selsubject" class="mg-zero" onChange="selSurvey(this.value);">
-                        @foreach($spSubjectList['Now'] as $idx => $row)
-                            <option value="{{ $idx }}">{{ $row['SqTitle'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </h2>
-            @foreach($spSubjectList['Now'] as $idx => $row)
-                <div id="sp_subject_{{ $idx }}" @if($idx > 0) style="display:none;" @endif>
-                    <table class="boardTypeC" style="hieght:500px;">
-                        <col width="40%" />
-                        <col width="20%" />
-                        <col width="40%" />
-                        @for($i = 1; $i <= 5; $i++)
-                        <tr>
-                            <td>
-                                <div class="graph2ch"><span class="graph2" style="width:{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%"></span></div>
-                                <Expect class="ratio2ch">{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%</Expect>
-                            </td>
-                            <th>{{ $row['Comment' . $i] }}</th>
-                            <td>
-                                <div class="graph"><span class="graph1" style="width:{{ $row['AnswerRatio' . $i] }}%"></span></div>
-                                <Expect class="ratio">{{ $row['AnswerRatio' . $i] }}%</Expect>
-                            </td>
-                        </tr>
-                        @endfor
-                        <tr>
-                            <td>2018년 3차</td>
-                            <th>구분</th>
-                            <td>2018년 4차</td>
-                        </tr>
-                    </table>
-                </div>
-            @endforeach
-        @endif
+    @if(empty($spSubjectList)===false)
+        <h2>
+            과목별 <span>체감난이도</span>
+            <div>
+                <select id="selsubject" name="selsubject" class="mg-zero" onChange="selSurvey(this.value);">
+                    @foreach($spSubjectList['Now'] as $idx => $row)
+                        <option value="{{ $idx }}">{{ $row['SqTitle'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </h2>
+        @foreach($spSubjectList['Now'] as $idx => $row)
+            <div id="sp_subject_{{ $idx }}" @if($idx > 0) style="display:none;" @endif>
+                <table class="boardTypeC" style="hieght:500px;">
+                    <col width="40%" />
+                    <col width="20%" />
+                    <col width="40%" />
+                    @for($i = 1; $i <= 5; $i++)
+                    <tr>
+                        <td>
+                            <div class="graph2ch"><span class="graph2" style="width:{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%"></span></div>
+                            <Expect class="ratio2ch">{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%</Expect>
+                        </td>
+                        <th>{{ $row['Comment' . $i] }}</th>
+                        <td>
+                            <div class="graph"><span class="graph1" style="width:{{ $row['AnswerRatio' . $i] }}%"></span></div>
+                            <Expect class="ratio">{{ $row['AnswerRatio' . $i] }}%</Expect>
+                        </td>
+                    </tr>
+                    @endfor
+                    <tr>
+                        <td>2018년 3차</td>
+                        <th>구분</th>
+                        <td>2018년 4차</td>
+                    </tr>
+                </table>
+            </div>
+        @endforeach
+    @endif
     </div>
 
     {{--과목별 오답 랭킹--}}
     <div class="m_section3_4">
+    @if(empty($wrongList) === false)
         <h2>
             과목별 <span>오답 랭킹</span>
             <div>
@@ -321,7 +319,6 @@
                 </select>
             </div>
         </h2>
-
         <div class="mt20">
             <table class="boardTypeB">
                 <tr>
@@ -390,6 +387,7 @@
             @endforeach
             </table>
         </div>
+    @endif
     </div>
 
     <div class="m_section3_5">

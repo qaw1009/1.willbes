@@ -631,24 +631,24 @@ class SurveyModel extends WB_Model
 
         $arr_point_area = [];
         if (empty($result) === false) {
-            $idx = 1;
             $tmp_subject_code = '';
 
-            foreach ($result as $row) {
+            foreach ($result as $idx => $row) {
                 if ($row['SubjectCode'] != $tmp_subject_code) {
                     $arr_point_area[$row['SubjectCode']]['SubjectName'] = $row['SubjectName'];
-                    $idx = 1;
                 }
 
-                if ($idx != $row['Pointarea']) {
-                    $arr_point_area[$row['SubjectCode']][$idx] = 0;
-                    $idx++;
+                for($i = 1; $i <= 5; $i++) {
+                    if ($i == $row['Pointarea']) {
+                        $arr_point_area[$row['SubjectCode']][$row['Pointarea']] = ROUND(($row['CNT'] / $row['TotalCNT']) * 100, 2);
+                    } else {
+                        if (isset($arr_point_area[$row['SubjectCode']][$i]) === false) {
+                            $arr_point_area[$row['SubjectCode']][$i] = 0;
+                        }
+                    }
                 }
-
-                $arr_point_area[$row['SubjectCode']][$row['Pointarea']] = ROUND(($row['CNT'] / $row['TotalCNT']) * 100, 2);
 
                 $tmp_subject_code = $row['SubjectCode'];
-                $idx++;
             }
         }
 

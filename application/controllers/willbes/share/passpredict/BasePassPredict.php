@@ -774,17 +774,35 @@ class BasePassPredict extends \app\controllers\FrontController
         $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
 
         // 3. 과목별 원점수 평균 그래프
-        // 한국사/영어/형법/경찰학개론/형사소송법
-        $gradeSet[0]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100400'];
-        $gradeSet[0]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100500'] . '/' . $gradelist['100400'];
+        $arr_grade_subject = [
+            ['100100', '100200', '100300', '100500', '100400'],  // 한국사/영어/형법/경찰학개론/형사소송법
+            ['100100', '100200', '100300', '100600', '100400'],  // 한국사/영어/형법/국어/형사소송법
+            ['100100', '100500', '100300', '100800', '100600'],  // 한국사/영어/경찰학개론/사회/국어
+        ];
 
-        // 한국사/영어/형법/국어/형사소송법
-        $gradeSet[1]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100600'] . '/' . $gradesubject['100400'];
-        $gradeSet[1]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100600'] . '/' . $gradelist['100400'];
+        $gradeSet = [];
+        $idx = 0;
+        foreach ($arr_grade_subject as $arr) {
+            $is_set = true;
+            $tmp_subject = '';
+            $tmp_grade = '';
 
-        // 한국사/영어/경찰학개론/사회/국어
-        $gradeSet[2]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100800'] . '/' . $gradesubject['100600'];
-        $gradeSet[2]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100500'] . '/' . $gradelist['100300'] . '/' . $gradelist['100800'] . '/' . $gradelist['100600'];
+            foreach ($arr as $subject_code) {
+                if (array_key_exists($subject_code, $gradelist) === false) {
+                    $is_set = false;
+                    break;
+                }
+
+                $tmp_subject .= '/' . $gradesubject[$subject_code];
+                $tmp_grade .= '/' . $gradelist[$subject_code];
+            }
+
+            if ($is_set === true) {
+                $gradeSet[$idx]['subject'] = substr($tmp_subject, 1);
+                $gradeSet[$idx]['grade'] = $tmp_grade;
+                $idx++;
+            }
+        }
 
         // 4. 총점성적분포 (grade)
         $pointList = $this->surveyModel->pointArea($PredictIdx);

@@ -102,6 +102,28 @@
         .evt03 div span:last-child {
             margin:0;
         }
+        .evt03 .btnlec {
+            position:absolute;
+            width:324px;
+            left:50%; 
+            top:1620px;            
+            margin-left:-164px;    
+            line-height:1.5;
+            z-index:5;
+        }
+        .evt03 .btnlec a {
+            display:block;
+            border-radius:24px;
+            padding:10px 0;
+            font-size:20px;
+            font-family: "NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif" !important;
+            text-align:center;
+            color:#fff;
+            background:#2784d2;
+        } 
+        .evt03 .btnlec a:hover {
+            background:#000;
+        }
         .evt04 {background:#f6f6f6;} 
         .evt05 {background:#fff;} 
 
@@ -190,7 +212,10 @@
                     <span><img class="remainCnt" src="https://static.willbes.net/public/images/promotion/2019/08/1361_number0.png"></span>
                     <span><img class="remainCnt" src="https://static.willbes.net/public/images/promotion/2019/08/1361_number0.png"></span>
                 </div>
-            </div>
+                <div class="btnlec">
+                    <a href="https://police.willbes.net/pass/event/show/ongoing?event_idx=381" target="_blank">실물 봉투 모의고사 신청하기 ></a>
+                </div>
+            </div>            
 
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_04.jpg" title="합격풀케어 서비스">

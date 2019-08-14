@@ -819,59 +819,15 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        //과목별 오답랭킹
-        $wrongList = $this->surveyModel->wrongRank($PredictIdx);
-
-        $tempPaperName = '';
-        $tempPpIdx = '';
-        $tempQuestionNO = '';
-        $tempRightAnswer = '';
-        $tempI = '';
-        $arrWrongList = array();
-        $arrSubject = array();
-        $perAdd = 0;
-        $i = 0;
-        foreach ($wrongList as $key => $val){
-            $wcnt  = $val['wcnt'];
-            $PpIdx = $val['PpIdx'];
-            $Answer = $val['Answer'];
-            $PaperName = $val['PaperName'];
-            $RightAnswer = $val['RightAnswer'];
-            $allcnt = $val['allcnt'];
-            $QuestionNO = $val['QuestionNO'];
-
-            if($QuestionNO != $tempQuestionNO){
-                if($key == 0){
-                    $per = $wcnt ? ROUND(($wcnt / $allcnt) * 100, 2) : '0';
-                    $arrWrongList[$PpIdx][$i]['per'][$Answer] = $per;
-                    $arrWrongList[$PpIdx][$i]['RightAnswer'] = $RightAnswer;
-                    $arrWrongList[$PpIdx][$i]['QuestionNO'] = $QuestionNO;
-                } else {
-                    $arrWrongList[$tempPpIdx][$tempI]['per'][$Answer] = ROUND(100 - $perAdd,2);
-                    $arrWrongList[$tempPpIdx][$tempI]['RightAnswer'] = $tempRightAnswer;
-                    $arrWrongList[$tempPpIdx][$tempI]['QuestionNO'] = $tempQuestionNO;
-                    $i++;
-                }
-                $perAdd = 0;
-            } else {
-                $per = $wcnt ? ROUND(($wcnt / $allcnt) * 100, 2) : '0';
-                $arrWrongList[$PpIdx][$i]['per'][$Answer] = $per;
-                $perAdd = (float)$perAdd + (float)$per;
-            }
-
-            if($tempPaperName != $PaperName && $key != 0 || ($key + 1 == count($wrongList))){
-                $arrSubject[$tempPpIdx] = $tempPaperName;
-                $i = 0;
-            }
-
-            $tempI = $i;
-            $tempPaperName = $PaperName;
-            $tempPpIdx = $PpIdx;
-            $tempRightAnswer = $RightAnswer;
-            $tempQuestionNO = $QuestionNO;
-
+        // 9. 과목별 오답랭킹
+        $wrongData = $this->surveyModel->wrongRank($PredictIdx);
+        $wrongSubject = array_unique(array_pluck($wrongData, 'PaperName', 'PpIdx'));
+        $wrongList = [];
+        foreach ($wrongData as $row) {
+            $wrongList[$row['PpIdx']][] = $row;
         }
 
+        // 10. 설문조사 결과
         $arrsqidx = array(1,20,19,43,27,8,6,7,28,29);
         $arr_condition = [
             'IN' => [
@@ -908,9 +864,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'bestList' => $bestList,
             'bestCombList' => $bestCombList,
             'spSubjectList' => $spSubjectList,
-
-            'arrSubject' => $arrSubject,
-            'arrWrongList' => $arrWrongList,
+            'wrongSubject' => $wrongSubject,
+            'wrongList' => $wrongList,
 
             'arrSurvey' => $arrSurvey
         ], false);

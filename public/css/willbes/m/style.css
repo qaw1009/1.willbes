@@ -2598,6 +2598,7 @@ body.memBody #Footer {
     display: block;
 }
 .paymentWrap .payLecList {
+    width: 100%;
     padding:20px 0;
     border-bottom:1px solid #c9c9c9;
     line-height: 1.5;

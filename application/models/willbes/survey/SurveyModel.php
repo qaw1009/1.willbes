@@ -631,24 +631,24 @@ class SurveyModel extends WB_Model
 
         $arr_point_area = [];
         if (empty($result) === false) {
-            $idx = 1;
             $tmp_subject_code = '';
 
-            foreach ($result as $row) {
+            foreach ($result as $idx => $row) {
                 if ($row['SubjectCode'] != $tmp_subject_code) {
                     $arr_point_area[$row['SubjectCode']]['SubjectName'] = $row['SubjectName'];
-                    $idx = 1;
                 }
 
-                if ($idx != $row['Pointarea']) {
-                    $arr_point_area[$row['SubjectCode']][$idx] = 0;
-                    $idx++;
+                for($i = 1; $i <= 5; $i++) {
+                    if ($i == $row['Pointarea']) {
+                        $arr_point_area[$row['SubjectCode']][$row['Pointarea']] = ROUND(($row['CNT'] / $row['TotalCNT']) * 100, 2);
+                    } else {
+                        if (isset($arr_point_area[$row['SubjectCode']][$i]) === false) {
+                            $arr_point_area[$row['SubjectCode']][$i] = 0;
+                        }
+                    }
                 }
-
-                $arr_point_area[$row['SubjectCode']][$row['Pointarea']] = ROUND(($row['CNT'] / $row['TotalCNT']) * 100, 2);
 
                 $tmp_subject_code = $row['SubjectCode'];
-                $idx++;
             }
         }
 
@@ -1249,9 +1249,8 @@ class SurveyModel extends WB_Model
         $order_by = " ORDER BY TaKeMockPart, TakeArea";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$PredictIdx]);
-        $data = $query->result_array();
 
-        return $data;
+        return $query->result_array();
     }
 
     /**
@@ -1278,40 +1277,50 @@ class SurveyModel extends WB_Model
         ";
 
         $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
-        $data = $query->result_array();
 
-        return $data;
+        return $query->result_array();
     }
 
-    public function wrongRank($PredictIdx){
-        $column = "
-            COUNT(*) AS wcnt, pa.PpIdx, pq.PqIdx, Answer, IsWrong, PaperName, RightAnswer, QuestionNO,
-            (
-                SELECT COUNT(*) FROM {$this->_table['predictAnswerPaper']}  
-                WHERE PredictIdx = ".$PredictIdx." AND PpIdx = pa.PpIdx AND PqIdx = pa.PqIdx AND IsWrong = 'N'
-            ) AS Wrong,
-            (
-                SELECT COUNT(*) FROM {$this->_table['predictAnswerPaper']}  
-                WHERE PredictIdx = ".$PredictIdx." AND PpIdx = pa.PpIdx AND PqIdx = pa.PqIdx
-            ) AS allcnt
+    /**
+     * 과목별 오답 랭킹
+     * @param $PredictIdx
+     * @return mixed
+     */
+    public function wrongRank($PredictIdx)
+    {
+        $column = "A.PpIdx, A.PqIdx, A.CNT, A.Answer1, A.Answer2, A.Answer3, A.Answer4, A.WrongCnt, A.RankNum
+            , round((A.Answer1 / A.CNT) * 100, 2) as AnswerRatio1
+            , round((A.Answer2 / A.CNT) * 100, 2) as AnswerRatio2
+            , round((A.Answer3 / A.CNT) * 100, 2) as AnswerRatio3
+            , round((A.Answer4 / A.CNT) * 100, 2) as AnswerRatio4
+            , pp.PaperName, pq.QuestionNO, pq.RightAnswer            
         ";
 
         $from = "
-            FROM 
-                {$this->_table['predictAnswerPaper']} AS pa
-                JOIN {$this->_table['predictPaper']} AS pp ON pa.PpIdx = pp.PpIdx  
-                JOIN {$this->_table['predictQuestion']} AS pq ON pq.PpIdx = pa.PpIdx AND pq.PqIdx = pa.PqIdx
+            from (
+                select PpIdx, PqIdx, count(0) as CNT
+                    , sum(if(Answer = '1', 1, 0)) as Answer1
+                    , sum(if(Answer = '2', 1, 0)) as Answer2
+                    , sum(if(Answer = '3', 1, 0)) as Answer3
+                    , sum(if(Answer = '4', 1, 0)) as Answer4
+                    , sum(if(IsWrong = 'N', 1, 0)) as WrongCNT
+                    , row_number() over (partition by PpIdx order by WrongCnt desc, PqIdx asc) as RankNum 
+                from {$this->_table['predictAnswerPaper']}
+                where PredictIdx = ?
+                    and Answer in ('1', '2', '3', '4')
+                group by PpIdx, PqIdx
+            ) as A
+                inner join {$this->_table['predictPaper']} as pp
+                    on A.PpIdx = pp.PpIdx
+                inner join {$this->_table['predictQuestion']} as pq
+                    on A.PpIdx = pq.PpIdx and A.PqIdx = pq.PqIdx
+            where A.RankNum between 1 and 5
+            order by A.PpIdx asc, A.RankNum asc            
         ";
 
-        $order_by = " GROUP BY PpIdx, PqIdx, Answer 
-                      ORDER BY PpIdx, Wrong DESC, PqIdx, Answer ";
-        $where = " WHERE pa.PredictIdx = ".$PredictIdx." AND Answer IN ('1','2','3','4')";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res = $query->result_array();
-
-        return $Res;
+        return $query->result_array();
     }
 
     /**

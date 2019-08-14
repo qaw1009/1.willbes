@@ -111,6 +111,38 @@ $(function() {
     });
 });
 
+// 쿠폰관리 탭
+$(function() {
+    $('ul.myCouponTab').each(function () {
+        var $active, $content, $links = $(this).find('a');
+        $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
+
+        $content = $($active[0].hash);
+
+        $links.not($active).each(function () {
+            $(this.hash).hide().css('display', 'none');
+        });
+
+
+        $(this).on('click', 'a', function (e) {
+            $active.removeClass('on');
+            $content.hide().css('display', 'none');
+
+            $active = $(this);
+            $content = $(this.hash);
+
+            $active.addClass('on');
+            $content.show().css('display', 'block');
+
+            e.preventDefault();
+        });
+    });
+});
+
+function openLink(tabId) {
+    $('ul.myCouponTab').find('#' + tabId).click();
+}
+
 
 
 // Swiper Script

@@ -774,17 +774,35 @@ class BasePassPredict extends \app\controllers\FrontController
         $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
 
         // 3. 과목별 원점수 평균 그래프
-        // 한국사/영어/형법/경찰학개론/형사소송법
-        $gradeSet[0]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100400'];
-        $gradeSet[0]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100500'] . '/' . $gradelist['100400'];
+        $arr_grade_subject = [
+            ['100100', '100200', '100300', '100500', '100400'],  // 한국사/영어/형법/경찰학개론/형사소송법
+            ['100100', '100200', '100300', '100600', '100400'],  // 한국사/영어/형법/국어/형사소송법
+            ['100100', '100500', '100300', '100800', '100600'],  // 한국사/영어/경찰학개론/사회/국어
+        ];
 
-        // 한국사/영어/형법/국어/형사소송법
-        $gradeSet[1]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100200'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100600'] . '/' . $gradesubject['100400'];
-        $gradeSet[1]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100200'] . '/' . $gradelist['100300'] . '/' . $gradelist['100600'] . '/' . $gradelist['100400'];
+        $gradeSet = [];
+        $idx = 0;
+        foreach ($arr_grade_subject as $arr) {
+            $is_set = true;
+            $tmp_subject = '';
+            $tmp_grade = '';
 
-        // 한국사/영어/경찰학개론/사회/국어
-        $gradeSet[2]['subject'] = $gradesubject['100100'] . '/' . $gradesubject['100500'] . '/' . $gradesubject['100300'] . '/' . $gradesubject['100800'] . '/' . $gradesubject['100600'];
-        $gradeSet[2]['grade'] = '/' . $gradelist['100100'] . '/' . $gradelist['100500'] . '/' . $gradelist['100300'] . '/' . $gradelist['100800'] . '/' . $gradelist['100600'];
+            foreach ($arr as $subject_code) {
+                if (array_key_exists($subject_code, $gradelist) === false) {
+                    $is_set = false;
+                    break;
+                }
+
+                $tmp_subject .= '/' . $gradesubject[$subject_code];
+                $tmp_grade .= '/' . $gradelist[$subject_code];
+            }
+
+            if ($is_set === true) {
+                $gradeSet[$idx]['subject'] = substr($tmp_subject, 1);
+                $gradeSet[$idx]['grade'] = $tmp_grade;
+                $idx++;
+            }
+        }
 
         // 4. 총점성적분포 (grade)
         $pointList = $this->surveyModel->pointArea($PredictIdx);
@@ -819,59 +837,15 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        //과목별 오답랭킹
-        $wrongList = $this->surveyModel->wrongRank($PredictIdx);
-
-        $tempPaperName = '';
-        $tempPpIdx = '';
-        $tempQuestionNO = '';
-        $tempRightAnswer = '';
-        $tempI = '';
-        $arrWrongList = array();
-        $arrSubject = array();
-        $perAdd = 0;
-        $i = 0;
-        foreach ($wrongList as $key => $val){
-            $wcnt  = $val['wcnt'];
-            $PpIdx = $val['PpIdx'];
-            $Answer = $val['Answer'];
-            $PaperName = $val['PaperName'];
-            $RightAnswer = $val['RightAnswer'];
-            $allcnt = $val['allcnt'];
-            $QuestionNO = $val['QuestionNO'];
-
-            if($QuestionNO != $tempQuestionNO){
-                if($key == 0){
-                    $per = $wcnt ? ROUND(($wcnt / $allcnt) * 100, 2) : '0';
-                    $arrWrongList[$PpIdx][$i]['per'][$Answer] = $per;
-                    $arrWrongList[$PpIdx][$i]['RightAnswer'] = $RightAnswer;
-                    $arrWrongList[$PpIdx][$i]['QuestionNO'] = $QuestionNO;
-                } else {
-                    $arrWrongList[$tempPpIdx][$tempI]['per'][$Answer] = ROUND(100 - $perAdd,2);
-                    $arrWrongList[$tempPpIdx][$tempI]['RightAnswer'] = $tempRightAnswer;
-                    $arrWrongList[$tempPpIdx][$tempI]['QuestionNO'] = $tempQuestionNO;
-                    $i++;
-                }
-                $perAdd = 0;
-            } else {
-                $per = $wcnt ? ROUND(($wcnt / $allcnt) * 100, 2) : '0';
-                $arrWrongList[$PpIdx][$i]['per'][$Answer] = $per;
-                $perAdd = (float)$perAdd + (float)$per;
-            }
-
-            if($tempPaperName != $PaperName && $key != 0 || ($key + 1 == count($wrongList))){
-                $arrSubject[$tempPpIdx] = $tempPaperName;
-                $i = 0;
-            }
-
-            $tempI = $i;
-            $tempPaperName = $PaperName;
-            $tempPpIdx = $PpIdx;
-            $tempRightAnswer = $RightAnswer;
-            $tempQuestionNO = $QuestionNO;
-
+        // 9. 과목별 오답랭킹
+        $wrongData = $this->surveyModel->wrongRank($PredictIdx);
+        $wrongSubject = array_unique(array_pluck($wrongData, 'PaperName', 'PpIdx'));
+        $wrongList = [];
+        foreach ($wrongData as $row) {
+            $wrongList[$row['PpIdx']][] = $row;
         }
 
+        // 10. 설문조사 결과
         $arrsqidx = array(1,20,19,43,27,8,6,7,28,29);
         $arr_condition = [
             'IN' => [
@@ -908,9 +882,8 @@ class BasePassPredict extends \app\controllers\FrontController
             'bestList' => $bestList,
             'bestCombList' => $bestCombList,
             'spSubjectList' => $spSubjectList,
-
-            'arrSubject' => $arrSubject,
-            'arrWrongList' => $arrWrongList,
+            'wrongSubject' => $wrongSubject,
+            'wrongList' => $wrongList,
 
             'arrSurvey' => $arrSurvey
         ], false);

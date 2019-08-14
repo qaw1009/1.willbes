@@ -703,6 +703,11 @@
 
             // ajax submit
             $regi_form.submit(function() {
+                var site_code_val = $regi_form.find('select[name="site_code"]').val();
+                if( (site_code_val == '2002' || site_code_val == '2004') && $regi_form.find('input[name="cate_code[]"]').length > 1 ){
+                    alert('운영사이트가 학원인 경우 카테고리는 하나만 선택 가능합니다.');
+                    return;
+                }
                 getEditorBodyContent($editor_profile);
                 getEditorBodyContent($promotion_editor_profile);
                 var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();

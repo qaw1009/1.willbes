@@ -171,7 +171,6 @@
                     </tr>
                 @endforeach
             </table>
-
             <div class="mt10">
                 <div id="pointarea"></div>
             </div>
@@ -231,7 +230,6 @@
                         @endif
                     @endforeach
                 </table>
-
                 <div class="mt10">
                     <div id="best1"></div>
                 </div>
@@ -258,7 +256,6 @@
                         @endif
                     @endforeach
                 </table>
-
                 <div class="mt10">
                     <div id="best2"></div>
                 </div>
@@ -266,62 +263,62 @@
         </div>
     </div>
 
-    {{--과목별 체감난이도 --}}
+    {{--과목별 체감난이도--}}
     <div class="m_section3_3">
-        @if(empty($spSubjectList)===false)
-            <h2>
-                과목별 <span>체감난이도</span>
-                <div>
-                    <select id="selsubject" name="selsubject" class="mg-zero" onChange="selSurvey(this.value);">
-                        @foreach($spSubjectList['Now'] as $idx => $row)
-                            <option value="{{ $idx }}">{{ $row['SqTitle'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </h2>
-            @foreach($spSubjectList['Now'] as $idx => $row)
-                <div id="sp_subject_{{ $idx }}" @if($idx > 0) style="display:none;" @endif>
-                    <table class="boardTypeC" style="hieght:500px;">
-                        <col width="40%" />
-                        <col width="20%" />
-                        <col width="40%" />
-                        @for($i = 1; $i <= 5; $i++)
-                        <tr>
-                            <td>
-                                <div class="graph2ch"><span class="graph2" style="width:{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%"></span></div>
-                                <Expect class="ratio2ch">{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%</Expect>
-                            </td>
-                            <th>{{ $row['Comment' . $i] }}</th>
-                            <td>
-                                <div class="graph"><span class="graph1" style="width:{{ $row['AnswerRatio' . $i] }}%"></span></div>
-                                <Expect class="ratio">{{ $row['AnswerRatio' . $i] }}%</Expect>
-                            </td>
-                        </tr>
-                        @endfor
-                        <tr>
-                            <td>2018년 3차</td>
-                            <th>구분</th>
-                            <td>2018년 4차</td>
-                        </tr>
-                    </table>
-                </div>
-            @endforeach
-        @endif
+    @if(empty($spSubjectList)===false)
+        <h2>
+            과목별 <span>체감난이도</span>
+            <div>
+                <select id="selsubject" name="selsubject" class="mg-zero" onChange="selSurvey(this.value);">
+                    @foreach($spSubjectList['Now'] as $idx => $row)
+                        <option value="{{ $idx }}">{{ $row['SqTitle'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </h2>
+        @foreach($spSubjectList['Now'] as $idx => $row)
+            <div id="sp_subject_{{ $idx }}" @if($idx > 0) style="display:none;" @endif>
+                <table class="boardTypeC" style="hieght:500px;">
+                    <col width="40%" />
+                    <col width="20%" />
+                    <col width="40%" />
+                    @for($i = 1; $i <= 5; $i++)
+                    <tr>
+                        <td>
+                            <div class="graph2ch"><span class="graph2" style="width:{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%"></span></div>
+                            <Expect class="ratio2ch">{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%</Expect>
+                        </td>
+                        <th>{{ $row['Comment' . $i] }}</th>
+                        <td>
+                            <div class="graph"><span class="graph1" style="width:{{ $row['AnswerRatio' . $i] }}%"></span></div>
+                            <Expect class="ratio">{{ $row['AnswerRatio' . $i] }}%</Expect>
+                        </td>
+                    </tr>
+                    @endfor
+                    <tr>
+                        <td>2018년 3차</td>
+                        <th>구분</th>
+                        <td>2018년 4차</td>
+                    </tr>
+                </table>
+            </div>
+        @endforeach
+    @endif
     </div>
 
     {{--과목별 오답 랭킹--}}
     <div class="m_section3_4">
+    @if(empty($wrongList) === false)
         <h2>
             과목별 <span>오답 랭킹</span>
             <div>
-                <select id="" name="" onchange="selWrong(this.value)">
-                    @foreach($arrSubject as $key => $val)
+                <select id="selwrong" name="selwrong" class="mg-zero" onchange="selWrong(this.value)">
+                    @foreach($wrongSubject as $key => $val)
                         <option value="{{ $key }}">{{ $val }}</option>
                     @endforeach
                 </select>
             </div>
         </h2>
-
         <div class="mt20">
             <table class="boardTypeB">
                 <tr>
@@ -336,67 +333,61 @@
                     <th>③ </th>
                     <th>④ </th>
                 </tr>
-                @foreach($arrWrongList as $key => $val)
-                    @for($i = 0; $i < COUNT($arrWrongList[$key]); $i++)
-                        @if($i < 5)
-                        <tr id="wtr_{{ $key }}" @if($key != 1) style="display:none;" @endif>
-                            <td>{{ $i + 1 }}</td>
-                            <td>{{ $arrWrongList[$key][$i]['QuestionNO'] }}</td>
-                            <td>{{ $arrWrongList[$key][$i]['RightAnswer'] }}</td>
-                            <td>@if(empty($arrWrongList[$key][$i]['per'][1])==false){{ $arrWrongList[$key][$i]['per'][1] }}% @else 0% @endif</td>
-                            <td>@if(empty($arrWrongList[$key][$i]['per'][2])==false){{ $arrWrongList[$key][$i]['per'][2] }}% @else 0% @endif</td>
-                            <td>@if(empty($arrWrongList[$key][$i]['per'][3])==false){{ $arrWrongList[$key][$i]['per'][3] }}% @else 0% @endif</td>
-                            <td>@if(empty($arrWrongList[$key][$i]['per'][4])==false){{ $arrWrongList[$key][$i]['per'][4] }}% @else 0% @endif</td>
+                @set($wrongIdx = 0)
+                @foreach($wrongList as $key => $arr)
+                    @foreach($arr as $idx => $row)
+                        <tr class="wtr_{{ $key }}" @if($wrongIdx > 0) style="display:none;" @endif>
+                            <td>{{ $row['RankNum'] }}</td>
+                            <td>{{ $row['QuestionNO'] }}</td>
+                            <td>{{ $row['RightAnswer'] }}</td>
+                            <td>{{ $row['AnswerRatio1'] }}%</td>
+                            <td>{{ $row['AnswerRatio2'] }}%</td>
+                            <td>{{ $row['AnswerRatio3'] }}%</td>
+                            <td>{{ $row['AnswerRatio4'] }}%</td>
                         </tr>
-                        @endif
-                    @endfor
+                    @endforeach
+                    @set($wrongIdx = $wrongIdx + 1)
                 @endforeach
             </table>
-
-            <table cellspacing="0" cellpadding="0" class="boardTypeD mt20" >
-                @foreach($arrWrongList as $key => $val)
-                    <tr id="gtr_{{ $key }}" @if($key != 1) style="display:none;" @endif>
-                    @for($i = 0; $i < COUNT($arrWrongList[$key]); $i++)
-                        @if($i < 5)
-                        <td>
-                            <ul class="graph graph{{ $i + 1 }}">
-                                <li>
-                                    <Expect>@if(empty($arrWrongList[$key][$i]['per'][1])==false){{ $arrWrongList[$key][$i]['per'][1] }}% @else 0% @endif</Expect>
-                                    <div><span style="height:@if(empty($arrWrongList[$key][$i]['per'][1])==false){{ $arrWrongList[$key][$i]['per'][1] }}% @else 0% @endif"></span></div>
-                                    <span>①</span>
-                                </li>
-                                <li>
-                                    <Expect>@if(empty($arrWrongList[$key][$i]['per'][2])==false){{ $arrWrongList[$key][$i]['per'][2] }}% @else 0% @endif</Expect>
-                                    <div><span style="height:@if(empty($arrWrongList[$key][$i]['per'][2])==false){{ $arrWrongList[$key][$i]['per'][2] }}% @else 0% @endif"></span></div>
-                                    <span>②</span>
-                                </li>
-                                <li>
-                                    <Expect>@if(empty($arrWrongList[$key][$i]['per'][3])==false){{ $arrWrongList[$key][$i]['per'][3] }}% @else 0% @endif</Expect>
-                                    <div><span style="height:@if(empty($arrWrongList[$key][$i]['per'][3])==false){{ $arrWrongList[$key][$i]['per'][3] }}% @else 0% @endif"></span></div>
-                                    <span>③</span>
-                                </li>
-                                <li>
-                                    <Expect>@if(empty($arrWrongList[$key][$i]['per'][4])==false){{ $arrWrongList[$key][$i]['per'][4] }}% @else 0% @endif</Expect>
-                                    <div><span style="height:@if(empty($arrWrongList[$key][$i]['per'][4])==false){{ $arrWrongList[$key][$i]['per'][4] }}% @else 0% @endif"></span></div>
-                                    <span>④</span>
-                                </li>
-                            </ul>
-                        </td>
-                        @endif
-                    @endfor
-                    </tr>
+            <table cellspacing="0" cellpadding="0" class="boardTypeD mt20">
+            @foreach($wrongList as $key => $arr)
+                <tr class="wtr_{{ $key }}" @if($loop->index > 1) style="display:none;" @endif>
+                @foreach($arr as $idx => $row)
+                    <td>
+                        <ul class="graph graph{{ $idx + 1 }}">
+                            <li>
+                                <Expect>{{ $row['AnswerRatio1'] }}%</Expect>
+                                <div><span style="height:{{ $row['AnswerRatio1'] }}%;"></span></div>
+                                <span>①</span>
+                            </li>
+                            <li>
+                                <Expect>{{ $row['AnswerRatio2'] }}%</Expect>
+                                <div><span style="height:{{ $row['AnswerRatio2'] }}%;"></span></div>
+                                <span>②</span>
+                            </li>
+                            <li>
+                                <Expect>{{ $row['AnswerRatio3'] }}%</Expect>
+                                <div><span style="height:{{ $row['AnswerRatio3'] }}%;"></span></div>
+                                <span>③</span>
+                            </li>
+                            <li>
+                                <Expect>{{ $row['AnswerRatio4'] }}%</Expect>
+                                <div><span style="height:{{ $row['AnswerRatio4'] }}%;"></span></div>
+                                <span>④</span>
+                            </li>
+                        </ul>
+                    </td>
                 @endforeach
-                @foreach($arrWrongList as $key => $val)
-                    <tr id="ntr_{{ $key }}" @if($key != 1) style="display:none;" @endif>
-                        <th scope="col">문제 {{ $arrWrongList[$key][0]['QuestionNO'] }}</th>
-                        <th scope="col">문제 {{ $arrWrongList[$key][1]['QuestionNO'] }}</th>
-                        <th scope="col">문제 {{ $arrWrongList[$key][2]['QuestionNO'] }}</th>
-                        <th scope="col">문제 {{ $arrWrongList[$key][3]['QuestionNO'] }}</th>
-                        <th scope="col">문제 {{ $arrWrongList[$key][4]['QuestionNO'] }}</th>
-                    </tr>
+                </tr>
+                <tr class="wtr_{{ $key }}" @if($loop->index > 1) style="display:none;" @endif>
+                @foreach($arr as $idx => $row)
+                    <th scope="col">문제 {{ $row['QuestionNO'] }}</th>
                 @endforeach
+                </tr>
+            @endforeach
             </table>
         </div>
+    @endif
     </div>
 
     <div class="m_section3_5">
@@ -770,16 +761,10 @@
         $("#sp_subject_" + num).show();
     }
 
-    function selWrong(val){
-        for(var i = 1; i <= 9; i++){
-            $("[id*='wtr']").hide();
-            $("[id*='gtr']").hide();
-            $("[id*='ntr']").hide();
-        }
-
-        $("[id*='wtr_"+val+"']").show();
-        $("#gtr_"+val).show();
-        $("#ntr_"+val).show();
+    // 과목별 오답 랭킹
+    function selWrong(val) {
+        $("[class*='wtr_']").hide();
+        $(".wtr_" + val).show();
     }
 
     function selSurvey2(num){

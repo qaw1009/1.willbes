@@ -58,9 +58,12 @@
     </style>
 
     <div class="evtContent NGR" id="evtContainer">
+        {{--
         <div class="skybanner">
             <a href="https://police.stage.willbes.net/promotion/index/cate/3007/code/1037" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1020_skybanner.png"  alt="T-PASS"  /></a>
         </div>
+        --}}
+        
         <div class="evtCtnsBox wb_main" id="main">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1020_top.jpg"  alt="해양경찰특채 PASS"  />
         </div>

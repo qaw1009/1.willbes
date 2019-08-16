@@ -44,8 +44,8 @@
                 <div class="paymentDate mt-zero pt20">                       
                     <div class="payLecList NGR">
                         <strong>기간검색</strong>  
-                        <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="20" placeholder="주문일">
-                        ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="20" placeholder="주문일"></span>                
+                        <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="20" style="width:120px">
+                        ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="20" style="width:120px"></span>                
                     </div>
                     <ul class="c_both">
                         <li><a href="#none">전체</a></li>
@@ -86,8 +86,8 @@
                 <div class="paymentDate mt-zero pt20">                       
                     <div class="payLecList NGR">
                         <strong>기간검색</strong>  
-                        <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="20" placeholder="주문일">
-                        ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="20" placeholder="주문일"></span>                
+                        <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="20" style="width:120px">
+                        ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="20" style="width:120px"></span>                
                     </div>
                     <ul class="c_both">
                         <li><a href="#none">전체</a></li>
@@ -143,7 +143,7 @@
         <div id="pointlist2" class="pointBox">
             <div class="couponSingup"> 
                 <p>수강권 번호</p>
-                <input type="text" id="" name="" class="iptDate" maxlength="30" >
+                <input type="text" id="" name="" maxlength="30" >
                 <a href="#none" class="btnSearch">검색</a>
                 <div>'-'를 제외한 숫자 16자리만 입력해 주세요.</div>
             </div>
@@ -152,8 +152,8 @@
                 <div class="paymentDate mt-zero pt20">                       
                     <div class="payLecList NGR">
                         <strong>기간검색</strong>  
-                        <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="20" placeholder="주문일">
-                        ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="20" placeholder="주문일"></span>                
+                        <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="20" style="width:120px">
+                        ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="20" style="width:120px"></span>                
                     </div>
                     <ul class="c_both">
                         <li><a href="#none">전체</a></li>
@@ -324,7 +324,7 @@
             </div>
             <div class="couponSingup"> 
                 <p>쿠폰 번호</p>
-                <input type="text" id="" name="" class="iptDate" maxlength="30" >
+                <input type="text" id="" name="" maxlength="30" >
                 <a href="#none" class="btnSearch">검색</a>
             </div>                                  
         </div>

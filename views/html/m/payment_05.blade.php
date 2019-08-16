@@ -50,8 +50,8 @@
             <div class="paymentDate">        
                 <div class="payLecList NGR">
                     <strong>기간검색</strong>  
-                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="20" placeholder="주문일">
-                    ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="20" placeholder="주문일"></span>                
+                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="15" style="width:120px">
+                    ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="15" style="width:120px"></span>                
                 </div>
                 <ul class="c_both">
                     <li><a href="#none">전체</a></li>
@@ -119,8 +119,8 @@
             <div class="paymentDate">        
                 <div class="payLecList NGR">
                     <strong>기간검색</strong>  
-                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="20" placeholder="주문일">
-                    ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="20" placeholder="주문일"></span>                
+                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="15" style="width:120px">
+                    ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="15" style="width:120px"></span>                
                 </div>
                 <ul class="c_both">
                     <li><a href="#none">전체</a></li>

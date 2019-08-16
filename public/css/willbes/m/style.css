@@ -3279,7 +3279,7 @@ body.memBody #Footer {
     margin-top:10px;
 }
 .couponSingup input[type=text] {
-    width: 70%;
+    width: calc(100% - 85px);
     height: 30px;
     padding: 0 0.6rem;
     float: left;
@@ -3289,7 +3289,7 @@ body.memBody #Footer {
     display: inline-block;
     height: 30px;
     line-height: 30px;
-    margin-left:5px;
+    margin-left: 5px;
     width: 80px;
     color:#fff;
     text-align: center;

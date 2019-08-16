@@ -41,8 +41,8 @@
                                 <li><strong>실 결제금액</strong> <span class="tx-blue">90,000원</span></li>
                                 <li class="NGR"><strong>수강기간</strong> 80일</li>
                                 <li class="NGR"><strong>강좌시작일</strong> 설정 
-                                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" placeholder="시작일">
-                                    ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30" placeholder="종료일"></span>
+                                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="20" placeholder="시작일">
+                                    ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="20" placeholder="종료일"></span>
                                 </li>
                                 <li><a href="#none" onclick="openWin('COUPON_LIST')">쿠폰적용</a></li>
                             </ul>

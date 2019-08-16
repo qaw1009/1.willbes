@@ -837,7 +837,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $spPrevList = $this->surveyModel->surveyAnswerCall($spidx1, $arr_sq_idx);   // 이전설문결과
         $spInterList = array_intersect(array_pluck($spNowList, 'SqIdx'), array_pluck($spPrevList, 'SqIdx'));    // 비교 설문항목식별자 교집합
         $spSubjectList = [];
-        
+
         // 진행 설문항목결과 셋팅
         foreach ($spNowList as $row) {
             if (in_array($row['SqIdx'], $spInterList) === true) {
@@ -860,31 +860,34 @@ class BasePassPredict extends \app\controllers\FrontController
             $wrongList[$row['PpIdx']][] = $row;
         }
 
-        // 10. 설문조사 결과
-        $arrsqidx = array(1,20,19,43,27,8,6,7,28,29);
-        $arr_condition = [
-            'IN' => [
-                'sq.SqIdx' => $arrsqidx
-            ]
-        ];
+        // 10. 직렬별 설문조사 결과
+        $surveyData = $this->surveyModel->surveyAnswerCallBySerial($spidx2, '44');
 
-        $svList = $this->surveyModel->surveyAnswerV2Call($arr_condition, $spidx2);
-        $arrSurvey = array();
-        foreach ($svList as $key => $val){
-            $SubTitle = $val['SubTitle'];
-            $Answer1 = $val['Answer1'];
-            $Answer2 = $val['Answer2'];
-            $Answer3 = $val['Answer3'];
-            $Answer4 = $val['Answer4'];
-            $Answer5 = $val['Answer5'];
-            $total = $val['total'];
+        // 설문조사 결과 데이터 가공
+        $surveyList = [];
+        if (empty($surveyData) === false) {
+            $tmp_serial_answer = '';
+            foreach ($surveyData as $row) {
+                $tmp_group_key = 'Group' . $row['GroupNumber'];
 
-            $arrSurvey[$key]['title'] = $SubTitle;
-            $arrSurvey[$key]['Answer1'] = $Answer1 ? ROUND(($Answer1 / $total) * 100, 2) : '0';
-            $arrSurvey[$key]['Answer2'] = $Answer2 ? ROUND(($Answer2 / $total) * 100, 2) : '0';
-            $arrSurvey[$key]['Answer3'] = $Answer3 ? ROUND(($Answer3 / $total) * 100, 2) : '0';
-            $arrSurvey[$key]['Answer4'] = $Answer4 ? ROUND(($Answer4 / $total) * 100, 2) : '0';
-            $arrSurvey[$key]['Answer5'] = $Answer5 ? ROUND(($Answer5 / $total) * 100, 2) : '0';
+                // 직렬명 추가
+                if ($tmp_serial_answer != $row['SerialAnswer']) {
+                    $surveyList[$row['SerialAnswer']]['SerialName'] = $row['SerialAnswerName'];
+                }
+
+                // 설문항목 추가
+                $surveyList[$row['SerialAnswer']][$tmp_group_key]['Title'][] = $row['SqTitle'];
+
+                // 설문보기 추가
+                if (isset($surveyList[$row['SerialAnswer']][$tmp_group_key]['Data']) === false) {
+                    $surveyList[$row['SerialAnswer']][$tmp_group_key]['Comment'] = [$row['Comment1'], $row['Comment2'], $row['Comment3'], $row['Comment4'], $row['Comment5']];
+                }
+
+                // 설문데이터 추가
+                $surveyList[$row['SerialAnswer']][$tmp_group_key]['Data'][] = [$row['AnswerRatio1'], $row['AnswerRatio2'], $row['AnswerRatio3'], $row['AnswerRatio4'], $row['AnswerRatio5']];
+
+                $tmp_serial_answer = $row['SerialAnswer'];
+            }
         }
 
         $this->load->view('willbes/pc/predict/graph', [
@@ -899,8 +902,7 @@ class BasePassPredict extends \app\controllers\FrontController
             'spSubjectList' => $spSubjectList,
             'wrongSubject' => $wrongSubject,
             'wrongList' => $wrongList,
-
-            'arrSurvey' => $arrSurvey
+            'surveyList' => $surveyList
         ], false);
     }
 

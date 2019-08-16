@@ -33,6 +33,9 @@ class SurveyModel extends WB_Model
         'admin' => 'wbs_sys_admin',
         'board' => 'lms_board',
         'member' => 'lms_member',
+
+        'Product' => 'lms_Product',
+        'predict_r_product' => 'lms_predict_r_product',
     ];
 
     public $upload_path_predict;       // 통파일 저장경로: ~/predict/{idx}/
@@ -157,7 +160,6 @@ class SurveyModel extends WB_Model
                     }
                 }
             }
-
             $this->_conn->trans_commit();
         }
         catch (Exception $e) {
@@ -1995,4 +1997,30 @@ class SurveyModel extends WB_Model
         }
         return $codes;
     }
+
+
+    /**
+     * 합격예측에 설정된 자동지급 강좌
+     * @param $PredictIdx
+     * @return mixed
+     */
+    public function getPredictProduct($PredictIdx)
+    {
+        $column = 'A.*, B.ProdName';
+        $from = '
+                from 
+                    '. $this->_table['predict_r_product'] .' A
+                    join '.$this->_table['Product'] .' B ON A.ProdCode = B.ProdCode
+                where 
+                    A.IsStatus=\'Y\' and B.IsStatus=\'Y\'
+                    And DATE_FORMAT(NOW(), "%Y-%m-%d %H:%i:%s") between A.StartDate and A.EndDate
+        ';
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['A.PrpIdx' => 'ASC'])->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset(1,null)->getMakeLimitOffset();
+        $where = $this->_conn->makeWhere(['EQ'=>['PredictIdx'=>$PredictIdx]])->getMakeWhere(true);
+
+        $result = $this->_conn->query('select ' .$column .$from .$where. $order_by_offset_limit)->row_array();
+        return $result;
+    }
+
 }

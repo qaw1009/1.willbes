@@ -188,7 +188,7 @@
                 <ul class="CurriStep">
                     <li class="active">
                         <div class="curriculumBox">
-                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/3001_icon_bubble_2020.gif" title="2020대비 진행중"> </span>
                             <div class="Tit">기본과정</div>
                             <div class="subTit">집중연강식 진행</div>
                             <ul class="info">
@@ -202,7 +202,7 @@
                     <li>&nbsp;</li>
                     <li>                           
                         <div class="curriculumBox">
-                            {{--<span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>--}}    
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/3001_icon_bubble_2019.gif" title="2019대비 진행중"> </span>--}}    
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
@@ -216,7 +216,7 @@
                     <li>&nbsp;</li>
                     <li class="active">
                         <div class="curriculumBox">                            
-                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/3001_icon_bubble_2019.gif" title="2019대비 진행중"> </span>
                             <div class="Tit">문제풀이 과정</div>
                             <div class="subTit">(실전 1+2+3 단계)</div>
                             <ul class="info">
@@ -311,7 +311,7 @@
                     <div id="collaboslides">
                         <ul>
                             <li>
-                                <a href="https://www.police.go.kr/main.html" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_01.jpg" alt="경찰청"></a>
+                                <a href="https://ap.police.go.kr/ap/main.do" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_01.jpg" alt="경찰청"></a>
                                 <a href="http://www.smpa.go.kr/home/homeIndex.do?menuCode=kidonghq" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_02.jpg" alt="서울지방경찰청기동본부"></a>
                                 <a href="http://www.gangdong.ac.kr/Home/Main.mbz" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_03.jpg" alt="강동대학교"></a>
                                 <a href="http://kollabo.kiu.ac.kr/pages/index_mapsi.htm" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3001_collaborate_04.jpg" alt="경일대학교"></a>

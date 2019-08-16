@@ -240,6 +240,76 @@
                             </div>
                         </td>
                     </tr>
+
+                    <tr>
+                        <th colspan="1">자동지급강좌 설정</th>
+                        <td colspan="4">
+                            <p># 지급정보 1부터 3까지 지급기간의 날짜는 중복되지 않도록 입력해 주세요.</p>
+                            <div class="form-group">
+                                <div class="col-md-10 form-inline">
+
+
+                                    @foreach(range(1, 3) as $orderNum)
+                                        <p>
+                                            <b>* 지급정보{{$orderNum}}</b>
+                                            <p>
+                                                @php
+                                                    $row_ordernum = '';
+                                                    $row_startdate_d = '';
+                                                    $row_startdate_h = '';
+                                                    $row_enddate_d = '';
+                                                    $row_enddate_h = '';
+                                                    $row_prodcode = '';
+                                                    $row_prodname = '';
+                                                   foreach ($prod_data as $row) {
+                                                       if($row['OrderNum'] == $orderNum) {
+                                                           $row_ordernum = $row['OrderNum'];
+                                                           $row_startdate_d = empty($row['StartDate']) ? '' : substr($row['StartDate'], 0, 10) ;
+                                                           $row_startdate_h = empty($row['StartDate']) ? '' : substr($row['StartDate'], 11, 2) ;
+                                                           $row_enddate_d = empty($row['EndDate']) ? '' : substr($row['EndDate'], 0, 10) ;
+                                                           $row_enddate_h = empty($row['EndDate']) ? '' : substr($row['EndDate'], 11, 2) ;
+                                                           $row_prodcode = $row['ProdCode'];
+                                                           $row_prodname = $row['ProdName'];
+                                                       }
+                                                   }
+                                                @endphp
+                                                <input type="hidden" name="OrderNum[]" id="OrderNum{{$orderNum}}" value="{{$orderNum}}">
+                                                [지급기간]&nbsp;
+                                                <input type="text" class="form-control datepicker" style="width:100px;" name="StartDate_D[]" value="{{$row_startdate_d}}" readonly  title="지급정보{{$orderNum}} 시작일">
+                                                <select name="StartDate_H[]" class="form-control" style="width:50px;">
+                                                    @foreach(range(0, 23) as $i)
+                                                        @php $v = sprintf("%02d", $i); @endphp
+                                                        <option value="{{$v}}" @if($row_startdate_h == $v) selected @endif>{{$v}}</option>
+                                                    @endforeach
+                                                </select> 시
+                                                ~
+                                                <input type="text" class="form-control datepicker" style="width:100px;" name="EndDate_D[]" value="{{$row_enddate_d}}" readonly  title="지급정보{{$orderNum}} 종료일">
+                                                <select name="EndDate_H[]" class="form-control" style="width:50px;">
+                                                    @foreach(range(0, 23) as $i)
+                                                        @php $v = sprintf("%02d", $i); @endphp
+                                                        <option value="{{$v}}" @if($row_enddate_h == $v) selected @endif>{{$v}}</option>
+                                                    @endforeach
+                                                </select> 시
+                                            </p>
+                                            <p>
+                                                [지급상품] <button type="button" class="btn btn-sm btn-primary ml-5 btn_product_search" id="{{$orderNum}}">상품검색</button>
+                                                <span id="selected_product{{$orderNum}}" class="pl-10">
+                                                    @if($row_prodcode != '')
+                                                        <span class="pr-10">
+                                                            [{{$row_prodcode}}] {{$row_prodname}}
+                                                            <a href="#none" data-prod-code="{{$row_prodcode}}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
+                                                            <input type="hidden" name="prod_code[]" value="{{$row_prodcode}}"/>
+                                                        </span>
+                                                    @endif
+                                                </span>
+                                            </p>
+                                        </p>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
                     <tr>
                         <th>등록자</th>
                         <td>@if($method == 'PUT'){{ $data['wAdminName'] }}@endif</td>
@@ -279,8 +349,30 @@
             // 등록,수정
             $regi_form.submit(function() {
 
-                var _url = '{{ ($method == 'PUT') ? site_url('/predict/request/update') : site_url('/predict/request/store') }}';
+                var orderNum_cnt = $regi_form.find('input[name="OrderNum[]"]').length;
+                for(i=0; i<orderNum_cnt; i++) {
+                    /*
+                    if($("input[name='StartDate_D[]']")[i].value == '') {
+                        $("input[name='StartDate_D[]']")[i].value = '0';
+                    }
+                    if($("input[name='EndDate_D[]']")[i].value == '') {
+                        $("input[name='EndDate_D[]']")[i].value = '0';
+                    }
+                    */
+                    if ($("#selected_product"+(i+1)).find('input[name="prod_code[]"]').length == 0) {
+                        $("#selected_product"+(i+1)).html('<input type="hidden" name="prod_code[]" value="">');
+                    }
+                    /*
+                    console.log(
+                        i +' - '+
+                        $("input[name='StartDate_D[]']")[i].value +' - '+
+                        $("input[name='EndDate_D[]']")[i].value +' - '+
+                        $("input[name='prod_code[]']")[i].value
+                    )
+                    */
+                }
 
+                var _url = '{{ ($method == 'PUT') ? site_url('/predict/request/update') : site_url('/predict/request/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
@@ -288,6 +380,37 @@
                     }
                 }, showValidateError, null, false, 'alert');
 
+            });
+
+            // 상품검색 버튼 클릭
+            $('.btn_product_search').on('click', function() {
+                var site_code = $regi_form.find('select[name="SiteCode"]').val();
+                var span_id =  "selected_product"+$(this).attr('id');
+
+                if (!site_code) {
+                    alert('운영사이트를 먼저 선택해 주십시오.');
+                    return false;
+                }
+
+                // 강좌 검색
+                $('.btn_product_search').setLayer({
+                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type=on&return_type=inline&target_id='+span_id+'&target_field=prod_code&is_event=Y',
+                    'width' : 1200
+                });
+
+                $('#'+span_id).html('');
+            });
+
+            $regi_form.on('change', '#selected_product1,#selected_product2,#selected_product3', function() {
+                if ($(this).find('input[name="prod_code[]"]').length > 1) {
+                    alert('등록할 상품을 1건만 선택해 주세요.');
+                    $(this).html('');
+                }
+            });
+            // 상품 삭제
+            $regi_form.on('click', '.selected-product-delete', function() {
+                var that = $(this);
+                that.parent().remove();
             });
 
         });
@@ -325,5 +448,6 @@
                     }, true, 'POST', 'json');
             }
         }
+
     </script>
 @stop

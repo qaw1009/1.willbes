@@ -2754,7 +2754,6 @@ body.memBody #Footer {
 .paymentCts .policyInfo .txtBox {
     display:none;
     font-size:12px;
-    /*border:1px solid #c9c9c9;*/
     padding:10px;
     margin-top:10px;
     background:#f9f9f9;
@@ -2776,7 +2775,7 @@ body.memBody #Footer {
     letter-spacing: -1px;
 }
 .paymentCts .policyInfo .chkBox p {
-    width: 90%;
+    padding-right:25px;
 }
 .paymentCts .policyInfo .MoreBtn {
     width: 20px;

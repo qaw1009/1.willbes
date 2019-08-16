@@ -9,7 +9,7 @@
                 <button type="button" class="goback" onclick="history.back(-1); return false;">
                     <span class="hidden">뒤로가기</span>
                 </button>    
-                수강신청 > 추천패키지
+                수강신청 > 선택패키지
             </div>
         </div>
     </div>

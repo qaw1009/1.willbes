@@ -38,6 +38,7 @@
         .evt04 td:nth-child(1) {text-align:center;border-right:1px solid #000;}
         .evt04 td:nth-child(2) {border-right:1px solid #000;}
         .evt04 td:nth-child(3) {border-right:1px solid #000;}
+        .evt04 td:nth-child(4) {border-right:1px solid #000;}
         .evt04 td:last-chiild {border:0}
         .evt04 td p {font-size:12px}
         .evt04 a {padding:10px 15px; color:#fff; background:#ffc849; font-size:14px; display:block; border-radius:20px;}
@@ -73,6 +74,7 @@
                     <tr>
                         <th colspan="2">강의명</th>
                         <th>개강일</th>                        
+                        <th>수강신청</th>
                         <th colspan="2">동영상 수강신청</th>
                     </tr>
                 </thead>
@@ -81,55 +83,62 @@
                         <td>형소법 신광은</td>
                         <td>형소법 마무리 특강</td>
                         <td>8/19(월) 14:30</td>                        
-                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156130" target="_blank">수강신청</a></td>
+                        <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1057&campus_ccd=605001" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156130" target="_blank">동영상 수강신청</a></td>
                     </tr>
                     <tr>
                         <td>경찰학 장정훈</td>
                         <td>경찰학 마무리 특강</td>
                         <td>8/20(화) 14:30</td>                        
-                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156128" target="_blank">수강신청</a></td>
+                        <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1058&campus_ccd=605001" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156128" target="_blank">동영상 수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 오태진</td>
                         <td>한국사 마무리 특강</td>
                         <td>8/21(수) 14:30</td>                       
-                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156134" target="_blank">수강신청</a></td>
+                        <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156134" target="_blank">동영상 수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 원유철</td>
                         <td>한국사 마무리 특강</td>
                         <td>8/21(수) 14:30</td>                       
-                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156136" target="_blank">수강신청</a></td>
+                        <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1055&campus_ccd=605001" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156136" target="_blank">동영상 수강신청</a></td>
                     </tr>                    
                     <tr>
                         <td>행정법 장정훈</td>
                         <td>행정법 마무리 특강</td>
                         <td>8/21(수) 14:30</td>                        
-                        <td><a href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/156123" target="_blank">수강신청</a></td>
+                        <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3011&course_idx=1046&subject_idx=1060&campus_ccd=605001" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/156123" target="_blank">동영상 수강신청</a></td>
                     </tr>
                     <tr>
                         <td>형법 김원욱</td>
                         <td>형법 마무리 특강</td>
                         <td>8/22(목) 14:30</td>                      
-                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156124" target="_blank">수강신청</a></td>
+                        <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1056&campus_ccd=605001" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156124" target="_blank">동영상 수강신청</a></td>
                     </tr>
                     <tr>
                         <td>영어 하승민</td>
                         <td>영어 마무리 특강</td>
                         <td>8/23(금) 14:30</td>                      
-                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156138" target="_blank">수강신청</a></td>
+                        <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1054&campus_ccd=605001" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156138" target="_blank">동영상 수강신청</a></td>
                     </tr>
                     <tr>
                         <td>수사 신광은</td>
                         <td>수사 마무리 특강</td>
                         <td>8/23(금) 14:30</td>                      
-                        <td><a href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/156122" target="_blank">수강신청</a></td>
+                        <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3011&course_idx=1046&subject_idx=1059&campus_ccd=605001" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3002/pattern/only/prod-code/156122" target="_blank">동영상 수강신청</a></td>
                     </tr>
                     <tr>
                         <td>학원 종합반</td>
-                        <td class="special" style="border:none">2019년 2차대비 마무리특강 종합반</td>
-                        <td></td>                      
-                        <td><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1046" target="_blank">수강신청</a></td>
+                        <td colspan="2">2019년 2차대비 마무리특강 종합반</td>                                          
+                        <td colspan="2" style="border:none;"><a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1046" target="_blank">수강신청</a></td>
                     </tr>
                 </tbody>
             </table>

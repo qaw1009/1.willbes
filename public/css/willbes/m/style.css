@@ -2696,9 +2696,10 @@ body.memBody #Footer {
     margin-bottom:10px;
     background: #f9f9f9;
     padding:10px;
+    letter-spacing: -1px;
 }
 .paymentWrap .paymentPoint input {
-    margin-left:20px;
+    margin-left:10px;
 }
 .paymentWrap .paymentPoint a {
     height: 30px;
@@ -2707,7 +2708,7 @@ body.memBody #Footer {
     background:#666;
     display: inline-block !important;
     vertical-align: middle;
-    padding:0 15px;
+    padding:0 10px;
     float:right;
 }
 .paymentWrap .paymentPoint:after {
@@ -2770,6 +2771,10 @@ body.memBody #Footer {
 .paymentCts .policyInfo .AllchkBox,
 .paymentCts .policyInfo .chkBox {
     cursor: pointer;
+    letter-spacing: -1px;
+}
+.paymentCts .policyInfo .chkBox p {
+    width: 90%;
 }
 .paymentCts .policyInfo .MoreBtn {
     width: 20px;

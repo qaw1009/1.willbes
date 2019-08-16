@@ -207,7 +207,7 @@
                     </li>
                     <li>
                         <div class="chkBox">
-                            유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span> <span class="MoreBtn tx-center">▼</span>
+                            <p>유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span> <span class="MoreBtn tx-center">▼</span></p>
                             <span class="chkBox-Agree checked">
                                 <input type="checkbox" id="" name="" class="" maxlength="30">
                             </span>

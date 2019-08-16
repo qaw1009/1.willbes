@@ -113,25 +113,25 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" title="면접 황세웅">
                         <div class="caProfBtsn">
-                            <div><a href="#none">면접 캠프<span>Coming soon</span></a></div>
+                            <div><a href="#none">면접 캠프<span>9.30 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" title="인적성검사 강인엽">
                         <div class="caProfBtsn">
-                            <div><a href="#none">면접 스파르타<span>Coming soon</span></a></div>
+                            <div><a href="#none">면접 스파르타<span>9.30 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" title="면접 정용욱">
                         <div class="caProfBtsn">
-                            <div><a href="#none">면접 캠프<span>Coming soon</span></a></div>
+                            <div><a href="#none">면접 캠프<span>9.30 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" title="면접 유봉진">
                         <div class="caProfBtsn">
-                            <div><a href="#none">면접 캠프<span>Coming soon</span></a></div>
+                            <div><a href="#none">면접 캠프<span>9.30 개강</span></a></div>
                         </div>
                     </li>                    
                 </ul>

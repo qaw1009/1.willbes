@@ -25,12 +25,6 @@
 
         <div class="paymentCts">
             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
-                {{--
-                <colgroup>
-                    <col style="width: 87%;">
-                    <col style="width: 13%;">
-                </colgroup>
-                --}}
                 <tbody>
                     <tr class="replyList willbes-Open-Table">
                         <td>
@@ -38,8 +32,8 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
-                        <td class="w-data tx-left" colspan="2">
+                    <tr>
+                        <td colspan="2">
                             <ul class="payLecList">
                                 <li><span>강좌</span></li>
                                 <li>2019 신광은 형사소송법 기본이론 (19년 6월)</li>
@@ -87,7 +81,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <ul class="payLecList buyerLecList">
                                 <li><strong>이름</strong> 한주연</li>
@@ -103,7 +97,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <div>
                                 <input type="radio" id="buyer01" name=""><label for="buyer01">구매자 정보와 동일</label>
@@ -150,7 +144,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <div class="paymentPoint">포인트 [10,000P 보유] <input type="number" id="" name="" style="width:80px" > P 차감 <a href="#none">잔액사용</a></div>
                             <ul class="paymentTxt pd_all_none bd-none">
@@ -167,7 +161,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <div class="priceBox">
                                 <ul>
@@ -189,7 +183,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <ul class="method">
                                 <li><a href="#none">신용카드</a></li>

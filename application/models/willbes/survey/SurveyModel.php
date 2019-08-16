@@ -1345,21 +1345,19 @@ class SurveyModel extends WB_Model
 
         $from = "
             from (
-                select sq.SqIdx
-                    , sum(if(sa.Answer = 1, 1, 0)) as Answer1
-                    , sum(if(sa.Answer = 2, 1, 0)) as Answer2
-                    , sum(if(sa.Answer = 3, 1, 0)) as Answer3
-                    , sum(if(sa.Answer = 4, 1, 0)) as Answer4
-                    , sum(if(sa.Answer = 5, 1, 0)) as Answer5
+                select sa.SqIdx
+                    , sum(if(sa.Answer = '1', 1, 0)) as Answer1
+                    , sum(if(sa.Answer = '2', 1, 0)) as Answer2
+                    , sum(if(sa.Answer = '3', 1, 0)) as Answer3
+                    , sum(if(sa.Answer = '4', 1, 0)) as Answer4
+                    , sum(if(sa.Answer = '5', 1, 0)) as Answer5
                     , count(0) as CNT
                 from {$this->_table['surveyAnswer']} as sai
                     inner join {$this->_table['surveyAnswerDetail']} as sa
                         on sai.SaIdx = sa.SaIdx
-                    inner join {$this->_table['surveyQuestion']} as sq
-                        on sa.SqIdx = sq.SqIdx
                 where sai.SpIdx = ?"
-                    . $this->_conn->makeWhere(['IN' => ['sq.SqIdx' => $arr_sq_idx]])->getMakeWhere(true) .
-            "   group by sq.SqIdx	
+            . $this->_conn->makeWhere(['IN' => ['sa.SqIdx' => $arr_sq_idx]])->getMakeWhere(true) .
+            "   group by sa.SqIdx	
             ) as A
                 inner join {$this->_table['surveyQuestion']} as sq
                     on A.SqIdx = sq.SqIdx 
@@ -1372,112 +1370,67 @@ class SurveyModel extends WB_Model
     }
 
     /**
-     * 조건별 설문결과
+     * 직렬별 설문결과 리턴
+     * @param $spidx
+     * @param $serial_sq_idx
+     * @return array
      */
-    public function surveyAnswerV2Call($arr_condition = [], $SpIdx)
+    public function surveyAnswerCallBySerial($spidx, $serial_sq_idx)
     {
-        $column = "
-            sq.SqIdx, SubTitle,
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 1 AND si.SpIdx = sp.SpIdx
-            ) AS Answer1,
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 2 AND si.SpIdx = sp.SpIdx
-            ) AS Answer2,
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 3 AND si.SpIdx = sp.SpIdx
-            ) AS Answer3,
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 4 AND si.SpIdx = sp.SpIdx
-            ) AS Answer4,
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 5 AND si.SpIdx = sp.SpIdx
-            ) AS Answer5,
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 1 AND si.SpIdx = sp.SpIdx
-            )+
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 2 AND si.SpIdx = sp.SpIdx
-            )+
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 3 AND si.SpIdx = sp.SpIdx
-            )+
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 4 AND si.SpIdx = sp.SpIdx
-            )+
-            (
-            	SELECT 
-						COUNT(*) 
-					FROM 
-						{$this->_table['surveyAnswer']} AS si
-						JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx= sa.SaIdx
-					WHERE SqIdx = sq.SqIdx AND Answer = 5 AND si.SpIdx = sp.SpIdx
-            ) AS total
+        // 직렬별 설문결과 조회
+        $column = "TA.SerialAnswer, TA.SerialAnswerName, TA.SqIdx, TA.CNT, TA.Answer1, TA.Answer2, TA.Answer3, TA.Answer4, TA.Answer5
+            , round((TA.Answer1 / TA.CNT) * 100) as AnswerRatio1
+            , round((TA.Answer2 / TA.CNT) * 100) as AnswerRatio2
+            , round((TA.Answer3 / TA.CNT) * 100) as AnswerRatio3
+            , round((TA.Answer4 / TA.CNT) * 100) as AnswerRatio4
+            , round((TA.Answer5 / TA.CNT) * 100) as AnswerRatio5  
+            , sqsr.GroupNumber
+            , sq.SqTitle
+            , trim(sq.Comment1) as Comment1, trim(sq.Comment2) as Comment2, trim(sq.Comment3) as Comment3, trim(sq.Comment4) as Comment4, trim(sq.Comment5) as Comment5
         ";
 
         $from = "
-            FROM 
-                {$this->_table['surveyProduct']} AS sp
-                JOIN {$this->_table['surveyQuestionSetDetail']} AS sqs ON sp.SqsIdx = sqs.SqsIdx
-                JOIN {$this->_table['surveyQuestion']} AS sq ON sqs.SqIdx = sq.SqIdx
-  
+            from (
+                select A.SpIdx, A.SerialAnswer, sa.SqIdx, count(0) as CNT, A.SerialAnswerName
+                    , sum(if(sa.Answer = '1', 1, 0)) as Answer1
+                    , sum(if(sa.Answer = '2', 1, 0)) as Answer2
+                    , sum(if(sa.Answer = '3', 1, 0)) as Answer3
+                    , sum(if(sa.Answer = '4', 1, 0)) as Answer4
+                    , sum(if(sa.Answer = '5', 1, 0)) as Answer5		
+                from (
+                    select sai.SaIdx, sai.SpIdx, sa.SqIdx as SerialSqIdx, sa.Answer as SerialAnswer
+                        , (case sa.Answer
+                            when '1' then trim(sq.Comment1)
+                            when '2' then trim(sq.Comment2)
+                            when '3' then trim(sq.Comment3)
+                            when '4' then trim(sq.Comment4)
+                            when '5' then trim(sq.Comment5)
+                            else ''
+                          end) as SerialAnswerName                    
+                    from {$this->_table['surveyAnswer']} as sai
+                        inner join {$this->_table['surveyAnswerDetail']} as sa
+                            on sai.SaIdx = sa.SaIdx
+                        inner join {$this->_table['surveyQuestion']} as sq
+                            on sa.SqIdx = sq.SqIdx                            
+                    where sai.SpIdx = ?
+                        and sa.SqIdx = ?
+                ) as A
+                    inner join {$this->_table['surveyAnswerDetail']} as sa
+                        on A.SaIdx = sa.SaIdx and A.SerialSqIdx != sa.SqIdx and sa.Type = 'S'
+                group by A.SpIdx, A.SerialAnswer, sa.SqIdx
+            ) as TA
+                inner join {$this->_table['surveyProduct']} as sp
+                    on TA.SpIdx = sp.SpIdx			
+                inner join {$this->_table['surveyQuestionSetDetail']} as sqsr
+                    on sp.SqsIdx = sqsr.SqsIdx and TA.SqIdx = sqsr.SqIdx
+                inner join {$this->_table['surveyQuestion']} as sq
+                    on TA.SqIdx = sq.SqIdx
+            order by TA.SerialAnswer, sqsr.GroupNumber, TA.SqIdx            
         ";
 
-        $order_by = "";
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-        $where .= " AND sp.SpIdx= ".$SpIdx;
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+        $query = $this->_conn->query('select ' . $column . $from, [$spidx, $serial_sq_idx]);
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res = $query->result_array();
-
-        return $Res;
+        return $query->result_array();
     }
 
     /**

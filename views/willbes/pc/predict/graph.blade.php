@@ -420,6 +420,7 @@
 
     {{--설문결과--}}
     <div class="m_section3_7">
+    @if(empty($surveyList) === false)
         <div>
             <h3>설문조사 결과</h3>
             <div class="popcontent">
@@ -427,131 +428,36 @@
                     <p>응시직렬 </p>
                     <div class="qBox">
                         <ul>
-                            <li><input type="radio" name="seri" id="CT1" onClick="selSurvey2(1)" checked><label for="CT1">일반공채 / 101단</label></li>
-                            <li><input type="radio" name="seri" id="CT2" onClick="selSurvey2(2)" /><label for="CT2">전의경 경채</label></li>
+                        @foreach($surveyList as $key => $row)
+                            <li>
+                                <input type="radio" name="sp_serial" id="sp_serial{{ $key }}" onClick="selSurvey2({{ $key }})" {{ $loop->index == 1 ? 'checked="checked"' : '' }}>
+                                <label for="sp_serial{{ $key }}">{{ $row['SerialName'] }}</label>
+                            </li>
+                        @endforeach
                         </ul>
                     </div>
                 </div>
-
                 <div class="question">
                     <p>Q1. 전체적인 시험 체감 난이도</p>
                     <div class="qBox">
                         <div id="survey1"></div>
-                        <script>
-                            var options = {
-                                'legend': {
-                                    names: ['전체시험'],
-                                },
-                                'dataset': {
-                                    title: '전체적인 시험 체감 난이도',
-                                    values: [
-                                        [{{ (float)$arrSurvey[0]['Answer1'] }}, {{ (float)$arrSurvey[0]['Answer2'] }}, {{ (float)$arrSurvey[0]['Answer3'] }}, {{ (float)$arrSurvey[0]['Answer4'] }}, {{ (float)$arrSurvey[0]['Answer5'] }}]
-                                    ],
-                                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
-                                    fields: ['매우쉬움', '쉬움', '보통', '어려움', '매우어려움']
-                                },
-                                'chartDiv': 'survey1',
-                                'chartType': 'multi_column',
-                                'chartSize': { width: 700, height: 300 },
-                                'maxValue': 100,
-                                'increment': 10
-                            };
-                            Nwagon.chart(options);
-                        </script>
                     </div>
                 </div>
-
                 <div class="question">
                     <p>Q2. 공통 과목 시험 체감 난이도</p>
                     <div class="qBox">
                         <div id="survey2"></div>
-                        <script>
-                            var options = {
-                                'legend': {
-                                    names: ['한국사', '영어'],
-                                },
-                                'dataset': {
-                                    title: '공통 과목 시험 체감 난이도',
-                                    values: [
-                                        [{{ (float)$arrSurvey[1]['Answer1'] }}, {{ (float)$arrSurvey[1]['Answer2'] }}, {{ (float)$arrSurvey[1]['Answer3'] }}, {{ (float)$arrSurvey[1]['Answer4'] }}, {{ (float)$arrSurvey[1]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[2]['Answer1'] }}, {{ (float)$arrSurvey[2]['Answer2'] }}, {{ (float)$arrSurvey[2]['Answer3'] }}, {{ (float)$arrSurvey[2]['Answer4'] }}, {{ (float)$arrSurvey[2]['Answer5'] }}]
-                                    ],
-                                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
-                                    fields: ['매우쉬움', '쉬움', '보통', '어려움', '매우어려움']
-                                },
-                                'chartDiv': 'survey2',
-                                'chartType': 'multi_column',
-                                'chartSize': { width: 700, height: 300 },
-                                'maxValue': 100,
-                                'increment': 10
-                            };
-                            Nwagon.chart(options);
-                        </script>
-
-                        <div id="survey3" style="display:none;"></div>
-                        <script>
-                            var options = {
-                                'legend': {
-                                    names: ['한국사', '영어', '형법', '형사소송법', '경찰학개론'],
-                                },
-                                'dataset': {
-                                    title: '공통 과목 시험 체감 난이도',
-                                    values: [
-                                        [{{ (float)$arrSurvey[1]['Answer1'] }}, {{ (float)$arrSurvey[1]['Answer2'] }}, {{ (float)$arrSurvey[1]['Answer3'] }}, {{ (float)$arrSurvey[1]['Answer4'] }}, {{ (float)$arrSurvey[1]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[2]['Answer1'] }}, {{ (float)$arrSurvey[2]['Answer2'] }}, {{ (float)$arrSurvey[2]['Answer3'] }}, {{ (float)$arrSurvey[2]['Answer4'] }}, {{ (float)$arrSurvey[2]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[3]['Answer1'] }}, {{ (float)$arrSurvey[3]['Answer2'] }}, {{ (float)$arrSurvey[3]['Answer3'] }}, {{ (float)$arrSurvey[3]['Answer4'] }}, {{ (float)$arrSurvey[3]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[4]['Answer1'] }}, {{ (float)$arrSurvey[4]['Answer2'] }}, {{ (float)$arrSurvey[4]['Answer3'] }}, {{ (float)$arrSurvey[4]['Answer4'] }}, {{ (float)$arrSurvey[4]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[5]['Answer1'] }}, {{ (float)$arrSurvey[5]['Answer2'] }}, {{ (float)$arrSurvey[5]['Answer3'] }}, {{ (float)$arrSurvey[5]['Answer4'] }}, {{ (float)$arrSurvey[5]['Answer5'] }}]
-                                    ],
-                                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
-                                    fields: ['매우쉬움', '쉬움', '보통', '어려움', '매우어려움']
-                                },
-                                'chartDiv': 'survey3',
-                                'chartType': 'multi_column',
-                                'chartSize': { width: 700, height: 300 },
-                                'maxValue': 100,
-                                'increment': 10
-                            };
-                            Nwagon.chart(options);
-                        </script>
                     </div>
                 </div>
-
-                <div class="question" id="surveyS">
+                <div class="question">
                     <p>Q3. 선택 과목 시험 체감 난이도</p>
                     <div class="qBox">
-                        <div id="survey4"></div>
-                        <script>
-                            var options = {
-                                'legend': {
-                                    names: ['형법', '형사소송법', '경찰학개론', '국어', '수학', '사회', '과학'],
-                                },
-                                'dataset': {
-                                    title: '선택 과목 시험 체감 난이도',
-                                    values: [
-                                        [{{ (float)$arrSurvey[3]['Answer1'] }}, {{ (float)$arrSurvey[3]['Answer2'] }}, {{ (float)$arrSurvey[3]['Answer3'] }}, {{ (float)$arrSurvey[3]['Answer4'] }}, {{ (float)$arrSurvey[3]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[4]['Answer1'] }}, {{ (float)$arrSurvey[4]['Answer2'] }}, {{ (float)$arrSurvey[4]['Answer3'] }}, {{ (float)$arrSurvey[4]['Answer4'] }}, {{ (float)$arrSurvey[4]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[5]['Answer1'] }}, {{ (float)$arrSurvey[5]['Answer2'] }}, {{ (float)$arrSurvey[5]['Answer3'] }}, {{ (float)$arrSurvey[5]['Answer4'] }}, {{ (float)$arrSurvey[5]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[6]['Answer1'] }}, {{ (float)$arrSurvey[6]['Answer2'] }}, {{ (float)$arrSurvey[6]['Answer3'] }}, {{ (float)$arrSurvey[6]['Answer4'] }}, {{ (float)$arrSurvey[6]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[7]['Answer1'] }}, {{ (float)$arrSurvey[7]['Answer2'] }}, {{ (float)$arrSurvey[7]['Answer3'] }}, {{ (float)$arrSurvey[7]['Answer4'] }}, {{ (float)$arrSurvey[7]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[8]['Answer1'] }}, {{ (float)$arrSurvey[8]['Answer2'] }}, {{ (float)$arrSurvey[8]['Answer3'] }}, {{ (float)$arrSurvey[8]['Answer4'] }}, {{ (float)$arrSurvey[8]['Answer5'] }}],
-                                        [{{ (float)$arrSurvey[9]['Answer1'] }}, {{ (float)$arrSurvey[9]['Answer2'] }}, {{ (float)$arrSurvey[9]['Answer3'] }}, {{ (float)$arrSurvey[9]['Answer4'] }}, {{ (float)$arrSurvey[9]['Answer5'] }}]
-                                    ],
-                                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
-                                    fields: ['매우쉬움', '쉬움', '보통', '어려움', '매우어려움']
-                                },
-                                'chartDiv': 'survey4',
-                                'chartType': 'multi_column',
-                                'chartSize': { width: 700, height: 300 },
-                                'maxValue': 100,
-                                'increment': 10
-                            };
-                            Nwagon.chart(options);
-                        </script>
+                        <div id="survey3"></div>
                     </div>
                 </div>
             </div>
         </div>
+    @endif
     </div>
 
 </div><!--m_section3_wrap//-->
@@ -563,6 +469,7 @@
         selPoint2(0);
         bestSubject();
         bestCombSubject();
+        selSurvey2(1);
     });
 
     // 지역별 현황
@@ -756,9 +663,9 @@
     }
 
     // 과목별 체감 난이도
-    function selSurvey(num) {
+    function selSurvey(val) {
         $("[id*='sp_subject_']").hide();
-        $("#sp_subject_" + num).show();
+        $("#sp_subject_" + val).show();
     }
 
     // 과목별 오답 랭킹
@@ -767,17 +674,85 @@
         $(".wtr_" + val).show();
     }
 
-    function selSurvey2(num){
-        if(num == 1){
-            $('#survey2').show();
-            $('#survey3').hide();
+    // 설문결과
+    function selSurvey2(val) {
+        var json = null;
+        var options = {};
+        @if(empty($surveyList) === false)
+            json = {!! json_encode($surveyList) !!};
+        @endif
 
-            $('#surveyS').show();
-        } else {
-            $('#survey2').hide();
-            $('#survey3').show();
+        if (json === null || typeof json[val] === 'undefined') {
+            return;
+        }
 
-            $('#surveyS').hide();
+        // 응시직렬별 데이터
+        json = json[val];
+
+        // 전체적인 시험 체감 난이도
+        if (typeof json['Group2'] !== 'undefined') {
+            $('#survey1').html('');
+            options = {
+                'legend': {
+                    names: ['전체시험']
+                },
+                'dataset': {
+                    title: '전체적인 시험 체감 난이도',
+                    values: json['Group2']['Data'],
+                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
+                    fields: json['Group2']['Comment']
+                },
+                'chartDiv': 'survey1',
+                'chartType': 'multi_column',
+                'chartSize': { width: 700, height: 300 },
+                'maxValue': 100,
+                'increment': 10
+            };
+            Nwagon.chart(options);
+        }
+
+        // 공통 과목 시험 체감 난이도
+        if (typeof json['Group3'] !== 'undefined') {
+            $('#survey2').html('');
+            options = {
+                'legend': {
+                    names: json['Group3']['Title']
+                },
+                'dataset': {
+                    title: '공통 과목 시험 체감 난이도',
+                    values: json['Group3']['Data'],
+                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
+                    fields: json['Group3']['Comment']
+                },
+                'chartDiv': 'survey2',
+                'chartType': 'multi_column',
+                'chartSize': { width: 700, height: 300 },
+                'maxValue': 100,
+                'increment': 10
+            };
+            Nwagon.chart(options);
+        }
+
+        // 선택 과목 시험 체감 난이도
+        if (typeof json['Group4'] !== 'undefined') {
+            $('#survey3').html('');
+            options = {
+                'legend': {
+                    names: json['Group4']['Title']
+                },
+                'dataset': {
+                    title: '선택 과목 시험 체감 난이도',
+                    values: json['Group4']['Data'],
+                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
+                    fields: json['Group4']['Comment']
+                },
+                'chartDiv': 'survey3',
+                'chartType': 'multi_column',
+                'chartSize': { width: 700, height: 300 },
+                'maxValue': 100,
+                'increment': 10
+            };
+            Nwagon.chart(options);
         }
     }
 

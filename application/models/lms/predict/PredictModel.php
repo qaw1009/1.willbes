@@ -3482,7 +3482,7 @@ class PredictModel extends WB_Model
                     if($StartDate_D[$i] != '' && $EndDate_D[$i] != '' && $ProdCode[$i] != '' ) {
 
                         $start_date= $StartDate_D[$i].' '.$StartDate_H[$i].':00:00';
-                        $end_date= $EndDate_D[$i].' '.$EndDate_H[$i].':59:00';
+                        $end_date= $EndDate_D[$i].' '.$EndDate_H[$i].':59:59';
                         $data = [
                             'PredictIdx' => $PredictIdx
                             ,'ProdCode' => $ProdCode[$i]

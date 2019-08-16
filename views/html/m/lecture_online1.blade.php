@@ -109,8 +109,8 @@
                             </dl>
                             <div class="w-buy">       
                                 <ul class="two">
-                                    <li class="btn_gray"><a href="#none">장바구니</a></li>
-                                    <li class="btn_blue"><a href="#none">수강시작</a></li>
+                                    <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                    <li><a href="#none" class="btn_blue">바로결제</a></li>
                                 </ul> 
                             </div>
                         </td>
@@ -136,8 +136,8 @@
                             </dl>
                             <div class="w-buy">       
                                 <ul class="two">
-                                    <li class="btn_gray"><a href="#none">장바구니</a></li>
-                                    <li class="btn_blue"><a href="#none">수강시작</a></li>
+                                    <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                    <li><a href="#none" class="btn_blue">바로결제</a></li>
                                 </ul> 
                             </div>
                         </td>
@@ -163,8 +163,8 @@
                             </dl>
                             <div class="w-buy">       
                                 <ul class="two">
-                                    <li class="btn_gray"><a href="#none">장바구니</a></li>
-                                    <li class="btn_blue"><a href="#none">수강시작</a></li>
+                                    <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                    <li><a href="#none" class="btn_blue">바로결제</a></li>
                                 </ul> 
                             </div>
                         </td>

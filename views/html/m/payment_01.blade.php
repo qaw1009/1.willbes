@@ -25,12 +25,6 @@
 
         <div class="paymentCts">
             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
-                {{--
-                <colgroup>
-                    <col style="width: 87%;">
-                    <col style="width: 13%;">
-                </colgroup>
-                --}}
                 <tbody>
                     <tr class="replyList willbes-Open-Table">
                         <td>
@@ -38,8 +32,8 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
-                        <td class="w-data tx-left" colspan="2">
+                    <tr>
+                        <td colspan="2">
                             <ul class="payLecList">
                                 <li><span>강좌</span></li>
                                 <li>2019 신광은 형사소송법 기본이론 (19년 6월)</li>
@@ -47,8 +41,8 @@
                                 <li><strong>실 결제금액</strong> <span class="tx-blue">90,000원</span></li>
                                 <li class="NGR"><strong>수강기간</strong> 80일</li>
                                 <li class="NGR"><strong>강좌시작일</strong> 설정 
-                                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" placeholder="시작일">
-                                    ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30" placeholder="종료일"></span>
+                                    <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="20" placeholder="시작일">
+                                    ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="20" placeholder="종료일"></span>
                                 </li>
                                 <li><a href="#none" onclick="openWin('COUPON_LIST')">쿠폰적용</a></li>
                             </ul>
@@ -87,7 +81,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <ul class="payLecList buyerLecList">
                                 <li><strong>이름</strong> 한주연</li>
@@ -103,7 +97,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <div>
                                 <input type="radio" id="buyer01" name=""><label for="buyer01">구매자 정보와 동일</label>
@@ -112,15 +106,15 @@
                             <div class="delivery"><a href="#none" onclick="openWin('ADDRESS_LIST')">배송주소록</a></div>
                             <div class="buyerInfo">
                                 <table>
-                                    <col width="90px"/>
+                                    <col width="85px"/>
                                     <col width=""/>
                                     <tr>
                                         <th scope="row">이름</th>
-                                        <td><input type="text" id="" name="" style="width:150px"></td>
+                                        <td><input type="text" id="" name="" style="width:120px"></td>
                                     </tr>
                                     <tr>
                                         <th rowspan="3" scope="row">주소</th>
-                                        <td><input type="text" id="" name="" style="width:150px"> <a href="#none" class="findaddress">주소찾기</a></td>
+                                        <td><input type="text" id="" name="" style="width:120px"> <a href="#none" class="findaddress">주소찾기</a></td>
                                     </tr>
                                     <tr>
                                         <td><input type="text" id="" name="" style="width:100%"></td>
@@ -130,11 +124,11 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">휴대폰번호</th>
-                                        <td><input type="tel" id="" name="" maxlength="11"></td>
+                                        <td><input type="tel" id="" name="" maxlength="11" style="width:120px"></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">전화</th>
-                                        <td><input type="tel" id="" name="" maxlength="11"></td>
+                                        <td><input type="tel" id="" name="" maxlength="11" style="width:120px"></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">배송요청사항</th>
@@ -150,7 +144,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <div class="paymentPoint">포인트 [10,000P 보유] <input type="number" id="" name="" style="width:80px" > P 차감 <a href="#none">잔액사용</a></div>
                             <ul class="paymentTxt pd_all_none bd-none">
@@ -167,7 +161,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <div class="priceBox">
                                 <ul>
@@ -189,7 +183,7 @@
                         </td>
                         <td class="MoreBtn tx-center">></td>
                     </tr>
-                    <tr class="willbes-Open-List">
+                    <tr>
                         <td class="w-data tx-left" colspan="2">
                             <ul class="method">
                                 <li><a href="#none">신용카드</a></li>
@@ -213,7 +207,7 @@
                     </li>
                     <li>
                         <div class="chkBox">
-                            유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span> <span class="MoreBtn tx-center">▼</span>
+                            <p>유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span> <span class="MoreBtn tx-center">▼</span></p>
                             <span class="chkBox-Agree checked">
                                 <input type="checkbox" id="" name="" class="" maxlength="30">
                             </span>
@@ -237,7 +231,7 @@
                     </li>
                     <li>
                         <div class="chkBox">
-                            개인정보 활용 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span> <span class="MoreBtn tx-center">▼</span>
+                            <p>개인정보 활용 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span> <span class="MoreBtn tx-center">▼</span></p>
                             <span class="chkBox-Agree checked">
                                 <input type="checkbox" id="" name="" class="" maxlength="30">
                             </span>
@@ -255,7 +249,7 @@
                     </li>
                     <li>
                         <div class="chkBox">
-                            환불정책 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span> <span class="MoreBtn tx-center">▼</span>
+                            <p>환불정책 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span> <span class="MoreBtn tx-center">▼</span></p>
                             <span class="chkBox-Agree checked">
                                 <input type="checkbox" id="" name="" class="" maxlength="30">
                             </span>

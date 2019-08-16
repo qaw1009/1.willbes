@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePassPredict extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF', 'cert/certApplyF');
+    protected $models = array('_lms/sys/code', '_lms/sys/site', 'survey/survey', 'predict/predictF', 'eventF', 'cert/certApplyF', 'order/orderF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('createGradeMember', 'createGradeMember2','storeFinalPoint', 'storeFinalPoint2','predictMyInfo');
@@ -234,6 +234,21 @@ class BasePassPredict extends \app\controllers\FrontController
         if ($this->validate($rules) === false) return;
 
         $result = $this->surveyModel->store();
+
+        /**
+         * 자동지급 강좌 처리
+         */
+        if($result['ret_cd'] == true) {
+            // 데이터 1개만 추출
+            $prod_data = $this->surveyModel->getPredictProduct($this->input->post('PredictIdx'));
+            if(empty($prod_data) == false) {
+                $prod_code = array($prod_data['ProdCode']);
+                if(empty($prod_code) == false) {
+                    $this->orderFModel->procAutoOrder('predict', $prod_code);
+                }
+            }
+        }
+
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
     }
 

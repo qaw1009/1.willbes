@@ -276,7 +276,7 @@
                                                 <input type="hidden" name="OrderNum[]" id="OrderNum{{$orderNum}}" value="{{$orderNum}}">
                                                 [지급기간]&nbsp;
                                                 <input type="text" class="form-control datepicker" style="width:100px;" name="StartDate_D[]" value="{{$row_startdate_d}}" readonly  title="지급정보{{$orderNum}} 시작일">
-                                                <select name="StartDate_H[]" class="form-control" style="width:50px;">
+                                                <select name="StartDate_H[]" class="form-control" style="width:65px;">
                                                     @foreach(range(0, 23) as $i)
                                                         @php $v = sprintf("%02d", $i); @endphp
                                                         <option value="{{$v}}" @if($row_startdate_h == $v) selected @endif>{{$v}}</option>
@@ -284,7 +284,7 @@
                                                 </select> 시
                                                 ~
                                                 <input type="text" class="form-control datepicker" style="width:100px;" name="EndDate_D[]" value="{{$row_enddate_d}}" readonly  title="지급정보{{$orderNum}} 종료일">
-                                                <select name="EndDate_H[]" class="form-control" style="width:50px;">
+                                                <select name="EndDate_H[]" class="form-control" style="width:65px;">
                                                     @foreach(range(0, 23) as $i)
                                                         @php $v = sprintf("%02d", $i); @endphp
                                                         <option value="{{$v}}" @if($row_enddate_h == $v) selected @endif>{{$v}}</option>

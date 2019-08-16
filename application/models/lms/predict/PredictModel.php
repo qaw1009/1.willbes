@@ -220,7 +220,8 @@ class PredictModel extends WB_Model
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = " WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = " ORDER BY PR.RegDatm DESC";
+        //$order = " ORDER BY PR.RegDatm DESC";
+        $order = " ORDER BY PR.PrIdx DESC";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $data = $this->_conn->query('Select'. $column . $from . $where . $order . $offset_limit)->result_array();

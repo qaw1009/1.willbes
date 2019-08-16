@@ -103,8 +103,7 @@
                             'data' : function(data) {
                                 return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
                             }
-                        },키
-
+                        },
                         columns: [
                                 @if(empty($wLecIdx) === true)
                             {'data' : null, 'render' : function(data, type, row, meta) {

@@ -306,10 +306,14 @@ class ProfSalesModel extends BaseOrderModel
             case 'packagePeriod' :
                 // 기간제패키지
                 $from .= '
-                    inner join ' . $this->_table['order_product_prof_subject'] . ' as OPP
-                        on OP.OrderProdIdx = OPP.OrderProdIdx                    
+                    inner join (
+                        select OrderProdIdx, ProfIdx
+                        from ' . $this->_table['order_product_prof_subject'] . '
+                        group by OrderProdIdx, ProfIdx
+                    ) as OPP
+                        on BO.OrderProdIdx = OPP.OrderProdIdx
                 ';
-                $column .= ', OPP.ProfIdx, OPP.SubjectIdx, PL.StudyPeriod, PL.PackTypeCcd';
+                $column .= ', OPP.ProfIdx, PL.StudyPeriod, PL.PackTypeCcd';
                 $where .= 'and PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['periodpack_lecture'] . '")';
                 $where .= $this->_conn->makeWhereIn('OPP.ProfIdx', $prof_idx)->getMakeWhere(true);
                 break;

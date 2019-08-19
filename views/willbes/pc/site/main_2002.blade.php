@@ -148,7 +148,7 @@
                 <ul class="CurriStep">
                     <li class="active">
                         <div class="curriculumBox">
-                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/3001_icon_bubble_2020.gif" title="2020대비 진행중"> </span>
                             <div class="Tit">기본과정</div>
                             <div class="subTit">집중연강식 진행</div>
                             <ul class="info">
@@ -162,7 +162,7 @@
                     <li>&nbsp;</li>
                     <li>
                         <div class="curriculumBox">
-                           {{--<span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>--}}
+                           {{--<span><img src="https://static.willbes.net/public/images/promotion/main/3001_icon_bubble_2019.gif" title="2019대비 진행중"> </span>--}}
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
@@ -176,7 +176,7 @@
                     <li>&nbsp;</li>
                     <li class="active">
                         <div class="curriculumBox">                            
-                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/3001_icon_bubble_2019.gif" title="2019대비 진행중"> </span>
                             <div class="Tit">문제풀이 과정</div>
                             <div class="subTit">(실전 1+2+3 단계)</div>
                             <ul class="info">

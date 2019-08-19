@@ -202,7 +202,10 @@
 
         <div id="tab01">
             <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_02.jpg" title="사전예약 특전">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_02.jpg" usemap="#Map1361A" title="사전예약 특전" border="0">
+                <map name="Map1361A" id="Map1361A">
+                    <area shape="rect" coords="245,1190,871,1237" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=382" target="_blank" alt="최신판례특강신청하기" />
+                </map>
             </div>
 
             <div class="evtCtnsBox evt03">

@@ -79,7 +79,7 @@
             <map name="Map1360a" id="Map1360a">
                 <area shape="rect" coords="456,622,664,684" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="신청하기" />
                 <area shape="rect" coords="76,1188,289,1250" href="#careful" />
-                {{--<area shape="rect" coords="459,1189,668,1250" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="신청하기" />--}}
+                <area shape="rect" coords="460,1192,663,1245" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="신청하기" />
                 <area shape="rect" coords="833,1184,1044,1250" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="신청하기" />
             </map>          
         </div>

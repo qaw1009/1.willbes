@@ -90,6 +90,11 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
                 break;
+            case "eventNotice" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                ";
+                break;
             case "counsel" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
@@ -565,6 +570,11 @@ class BoardModel extends WB_Model
             case "free" :
             case "mocktest/notice" :
             case "predictNotice" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                ";
+                break;
+            case "eventNotice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";

@@ -139,29 +139,22 @@ class BasePromotion extends \app\controllers\FrontController
             $file_yn[$fileidx] = 'Y';
         }
 
-        //공지사항조회
+        //공지사항 조회
         $arr_noti_condition = [
             'EQ' => [
-                'BmIdx' => '102',
-                'IsUse' => 'Y',
-                'PromotionCode' => $arr_base['promotion_code']
+                'IsUse' => 'Y'
             ]
         ];
-        if (empty($arr_promotion_params['predict_idx']) === false) {
-            $arr_noti_condition['EQ'] = array_merge($arr_noti_condition['EQ'], ['PredictIdx' => $arr_promotion_params['predict_idx']]);
+        if (empty($arr_promotion_params['PredictIdx']) === false) {
+            //합격예측인 경우
+            $arr_noti_condition['EQ'] = array_merge($arr_noti_condition['EQ'], ['PredictIdx' => $arr_promotion_params['PredictIdx'], 'BmIdx' => '102']);
+            $arr_base['predict_data'] = $this->_predictData($arr_promotion_params['PredictIdx']);
+            $arr_base['predict_register_cnt'] = $this->predictFModel->getCntPreregist($arr_promotion_params['PredictIdx'], ['NOT' => ['MemIdx' => '1000000']]);
+        }else{
+            //일반프로모션인 경우
+            $arr_noti_condition['EQ'] = array_merge($arr_noti_condition['EQ'], ['PromotionCode' => $arr_base['promotion_code'],'BmIdx' => '106']);
         }
-        $arr_base['notice_list'] = $this->supportBoardFModel->listBoard(false, $arr_noti_condition,'','BoardIdx, IsBest, Title, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm', 4, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
-
-        //합격예측 데이터
-        $arr_base['predict_data'] = $this->_predictData((empty($arr_promotion_params['PredictIdx']) === true ? 'null' : $arr_promotion_params['PredictIdx']));
-
-        //가데이터 제외
-        $arr_preg_condition = [
-            'NOT' => [
-                'MemIdx' => '1000000'
-            ]
-        ];
-        $arr_base['predict_register_cnt'] = $this->predictFModel->getCntPreregist((empty($arr_promotion_params['PredictIdx']) === true ? 'null' : $arr_promotion_params['PredictIdx']), $arr_preg_condition);
+        $arr_base['notice_list'] = $this->supportBoardFModel->listBoard(false, $arr_noti_condition, '', 'BoardIdx, IsBest, Title, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm', 4, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
 
         //D-day 조회
         if(empty($arr_promotion_params['DIdx']) === false) {

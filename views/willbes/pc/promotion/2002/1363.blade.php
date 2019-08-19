@@ -119,7 +119,7 @@
                                             <input type="hidden" name="register_data1" value=""/>
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus1" value="8.24(토)" /> <label for="campus1">8.24(토)</label></li>
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus2" value="9.4(수)" /> <label for="campus2">9.4(수)</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="9.7(토)" /> <label for="campus3">9.7(토)</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="9.7(토)" /> <label for="campus3">9.8(일)</label></li>
                                         </ul>
                                     </td>
                                 </tr>

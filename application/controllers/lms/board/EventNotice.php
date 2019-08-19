@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
-class PredictNotice extends BaseBoard
+class EventNotice extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'board/board', 'predict/predict');
+    protected $temp_models = array('sys/boardMaster', 'board/board');
     protected $helpers = array('download','file');
 
-    private $board_name = 'predictNotice';
+    private $board_name = 'eventNotice';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [
@@ -31,14 +31,20 @@ class PredictNotice extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+
+        //검색상태조회
+        $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
+
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
         $arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원'];
 
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
 
-        $this->load->view("predict/{$this->board_name}/index", [
+        $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
+            'arr_search_data' => $arr_search_data['arr_search_data'],
+            'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'siteCodeDef' => $cateD1[0]['SiteCode'],
             'arrsite' => $arrsite,
             'arr_category' => $arr_category,
@@ -162,9 +168,6 @@ class PredictNotice extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
-        //합격예측데이터 조회
-        list($predict_data, $predict_count) = $this->_getPredictData();
-
         $method = 'POST';
         $data = null;
         $board_idx = null;
@@ -202,12 +205,11 @@ class PredictNotice extends BaseBoard
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
         }
 
-        $this->load->view("predict/{$this->board_name}/create", [
+        $this->load->view("board/{$this->board_name}/create", [
             'arrsite' => $arrsite,
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'arr_campus' => $arr_campus,
-            'arr_predict_data' => $predict_data,
             'campus_all_ccd' => $this->codeModel->campusAllCcd,
             'method' => $method,
             'data' => $data,
@@ -230,7 +232,6 @@ class PredictNotice extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
-            ['field' => 'predict_idx', 'label' => '합격예측기본데이터', 'rules' => 'trim|required'],
             ['field' => 'promotion_code', 'label' => '프로모션코드', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -312,7 +313,7 @@ class PredictNotice extends BaseBoard
             $data['arr_cate_code'] = array_values($arr_cate_code);
         }
 
-        $this->load->view("predict/{$this->board_name}/read",[
+        $this->load->view("board/{$this->board_name}/read",[
             'bm_idx' => $this->bm_idx,
             'boardName' => $this->board_name,
             'data' => $data,
@@ -334,7 +335,7 @@ class PredictNotice extends BaseBoard
                 'PP.IsUse' => 'Y'
             ]
         ];
-        return $this->predictModel->mainList($condition);
+        return $this->boardModel->mainList($condition);
     }
 
     private function _setInputData($input){
@@ -342,7 +343,7 @@ class PredictNotice extends BaseBoard
             'board' => [
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
-                'PredictIdx' => element('predict_idx', $input),
+                'PredictIdx' => element('board_idx', $input),
                 'PromotionCode' => element('promotion_code', $input),
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
@@ -356,7 +357,6 @@ class PredictNotice extends BaseBoard
                 'site_category' => element('cate_code', $input)
             ]
         ];
-
-        return$input_data;
+        return $input_data;
     }
 }

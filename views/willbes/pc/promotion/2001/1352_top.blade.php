@@ -329,7 +329,7 @@
         var data = {
             'ele_id' : ele_id,
             'board_idx' : param,
-            'predict_idx' : '{{ $arr_base['spidx'] }}',
+            'predict_idx' : '{{ $arr_promotion_params['PredictIdx'] }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}'
         };
         sendAjax('{{ front_url('/support/predictNotice/index') }}', data, function(ret) {

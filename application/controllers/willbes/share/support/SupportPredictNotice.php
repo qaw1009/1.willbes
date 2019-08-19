@@ -41,24 +41,25 @@ class SupportPredictNotice extends BaseSupport
 
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
-                'IsUse' => 'Y',
-                'PredictIdx' => $predict_idx,
-                'PromotionCode' => $promotion_code
+                'IsUse' => 'Y'
             ]
         ];
-
+        if(empty($predict_idx) === false){
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['PredictIdx' => $predict_idx, 'BmIdx' => $this->_bm_idx]);
+        }else{
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['PromotionCode' => $promotion_code, 'BmIdx' => $this->_event_bm_idx]);
+        }
         $column = 'BoardIdx, IsBest, RegType';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ',DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $list = [];
-        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition,'');
-        $paging = $this->pagination('/support/predictNotice/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition, '');
+        $paging = $this->pagination('/support/predictNotice/listAjax/', $total_rows, $this->_paging_limit, $this->_paging_count, true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoard(false,$arr_condition,'',$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardFModel->listBoard(false, $arr_condition, '', $column, $paging['limit'], $paging['offset'], $order_by);
         }
         return $this->response([
             'paging' => $paging,

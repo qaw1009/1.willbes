@@ -262,7 +262,7 @@
         var data = {
             'ele_id' : ele_id,
             'board_idx' : param,
-            'predict_idx' : '{{ (empty($arr_promotion_params['predict_idx']) === false) ? $arr_promotion_params['predict_idx'] : '' }}',
+            'predict_idx' : '{{ (empty($arr_promotion_params['PredictIdx']) === false) ? $arr_promotion_params['PredictIdx'] : '' }}',
             'promotion_code' : '{{ $arr_base['promotion_code'] }}'
         };
         sendAjax('{{ front_url('/support/predictNotice/index') }}', data, function(ret) {

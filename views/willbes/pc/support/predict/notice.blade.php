@@ -49,7 +49,7 @@
 
     function callAjax(num) {
         listAjax(num);    //list data load
-        ajaxPaging(num);  //page data load
+        // ajaxPaging(num);  //page data load
         applyPagination();
     }
 
@@ -92,6 +92,7 @@
             }
             $('#ajax_table > tbody').html(add_table);
             $('.n-content').find("img").attr('width', '100%');
+            $('.add-paging').html(ret.paging.pagination);
         }, showError, false, 'GET');
     }
 

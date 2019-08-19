@@ -52,7 +52,7 @@
                 @if (empty($file_data_promotion) === false)
                     @foreach($file_data_promotion as $key => $row)
                         <a href="{{front_url('/promotion/download?file_idx=').$row['EfIdx'].'&event_idx='.$data['ElIdx'] }}">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1228_01_btn0{{ $loop->index }}.png" title="{{ $row['FileRealName'] }}">
+                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1368_01_btn0{{ $loop->index }}.png" title="{{ $row['FileRealName'] }}">
                         </a>
                     @endforeach
                 @endif

@@ -1,13 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>-
-        @if($bm_idx == '45')
-            고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.
-        @else
-            이달의강의 게시판을 관리하는 메뉴입니다.
-        @endif
-    </h5>
+    <h5>- 합격예측서비스 공지사항을 등록/관리 하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
@@ -156,30 +150,30 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                location.href='{{ site_url("/predict/{$boardName}") }}' + getQueryString();
+                location.href='{{ site_url("/board/{$boardName}") }}' + getQueryString();
             });
 
             //데이터 수정 폼
             $('#btn_modify').click(function() {
-                location.href='{{ site_url("/predict/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString();
+                location.href='{{ site_url("/board/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString();
             });
 
             $('#btn_previous').click(function() {
-                location.href='{{ site_url("/predict/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
+                location.href='{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('#btn_next').click(function() {
-                location.href='{{ site_url("/predict/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
+                location.href='{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('.file-download').click(function() {
-                var _url = '{{ site_url("/predict/{$boardName}/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                var _url = '{{ site_url("/board/{$boardName}/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
                 window.open(_url, '_blank');
             });
 
             //데이터 삭제
             $('#btn_delete').click(function() {
-                var _url = '{{ site_url("/predict/{$boardName}/delete") }}/' + {{$board_idx}} + getQueryString();
+                var _url = '{{ site_url("/board/{$boardName}/delete") }}/' + {{$board_idx}} + getQueryString();
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE'
@@ -191,7 +185,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.href='{{ site_url("/predict/{$boardName}") }}' + getQueryString();
+                        location.href='{{ site_url("/board/{$boardName}") }}' + getQueryString();
                     }
                 }, showError, false, 'POST');
             });

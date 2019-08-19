@@ -31,11 +31,11 @@
         .evt00 {background:#404040;}
         .evt01 {background:#342329;}
         /* 슬라이드배너 */
-        .slide_con {position:relative; width:980px; margin:0 auto}	
+        .slide_con {position:relative; width:1000px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
-        .slide_con p.leftBtn {left:-80px; top:46%; width:67px; height:67px;}
-        .slide_con p.rightBtn {right:-80px;top:46%; width:67px; height:67px;}
+        .slide_con p.leftBtn {left:-34px; top:46%; width:67px; height:67px;}
+        .slide_con p.rightBtn {right:-34px;top:46%; width:67px; height:67px;}
 
         .evt02 {background:#484c57;}
         .evt03 {background:#bc6b2a;}
@@ -98,7 +98,6 @@
                 controls:false,
                 minSlides:1,
                 maxSlides:1,
-                slideWidth:980,
                 slideMargin:0,
                 autoHover: true,
                 moveSlides:1

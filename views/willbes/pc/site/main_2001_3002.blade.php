@@ -69,7 +69,7 @@
 
         <div class="Section Section3">
             <div class="widthAuto">
-                <div><img src="{{ img_url('cop_adm/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/main/3002_visual_190820_02.jpg" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
                 <div><img src="https://static.willbes.net/public/images/promotion/main/3002_visual_190702_02_01.jpg" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
                 <div class="youtubeGod">
                     <iframe src="https://www.youtube.com/embed/1t-y10ZK6ig?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        

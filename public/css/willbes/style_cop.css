@@ -189,7 +189,7 @@
     position: relative;
     display: inline;
     float: left;
-    width: 159px;
+    width: 139px;
     height: 280px;
     margin-left: 1px;
 }
@@ -198,7 +198,7 @@
 }
 .Section .ProfCopBox .ProfBtns {
     position: absolute;
-    width: 159px;
+    width: 139px;
     bottom: 0;
     left: 0;    
     z-index: 1;

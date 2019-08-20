@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">제목/내용</label>
+                    <label class="control-label col-md-1" for="search_value">제목/내용/코드</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
@@ -66,8 +66,7 @@
                     <th>NO</th>
                     <th>운영사이트</th>
                     <th>카테고리</th>
-                    <th>합격예측코드</th>
-                    <th>프로모션코드</th>
+                    <th>프로모션</th>
                     <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
@@ -149,8 +148,16 @@
                                 return str;
                             }
                         }},
-                    {'data' : 'PredictIdx'},
-                    {'data' : 'PromotionCode'},
+                    {'data' : 'PromotionCode', 'render' : function(data, type, row, meta){
+                            var rtn_str = '';
+                            if(data != null && typeof data != 'undefined'){
+                                rtn_str += '[' + data + '] ';
+                                if(row.EventName != null && typeof row.EventName != 'undefined'){
+                                    rtn_str += row.EventName;
+                                }
+                            }
+                            return rtn_str;
+                        }},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},

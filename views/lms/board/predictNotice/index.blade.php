@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">제목/내용</label>
+                    <label class="control-label col-md-1" for="search_value">제목/내용/코드</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
@@ -56,7 +56,7 @@
             <div class="col-xs-8 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
-            </div>
+        </div>
         </div>
     </form>
     <div class="x_panel mt-10">
@@ -68,7 +68,7 @@
                     <th>NO</th>
                     <th>운영사이트</th>
                     <th>카테고리</th>
-                    <th>합격예측코드</th>
+                    <th>합격예측</th>
                     <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
@@ -150,7 +150,16 @@
                                 return str;
                             }
                         }},
-                    {'data' : 'PredictIdx'},
+                    {'data' : 'PredictIdx', 'render' : function(data, type, row, meta){
+                            var rtn_str = '';
+                            if(data != null && typeof data != 'undefined'){
+                                rtn_str += '[' + data + '] ';
+                                if(row.PredictName != null && typeof row.PredictName != 'undefined'){
+                                    rtn_str += row.PredictName;
+                                }
+                            }
+                            return rtn_str;
+                        }},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},

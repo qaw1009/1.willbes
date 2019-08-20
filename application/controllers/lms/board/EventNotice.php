@@ -74,6 +74,8 @@ class EventNotice extends BaseBoard
                 'LKB' => [
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
+                    'LB.PromotionCode' => $this->_reqP('search_value'),
+                    'EL.EventName' => $this->_reqP('search_value')
                 ]
             ]
         ];
@@ -100,7 +102,7 @@ class EventNotice extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.PredictIdx, LB.PromotionCode,
-            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, EL.EventName
         ';
 
         $list = [];

@@ -101,21 +101,21 @@
                         </ul>
                     </li>                    
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001_prof_otj.jpg" title="원유철">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2001_prof_wyc.jpg" title="원유철">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50641', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001_prof_hsm.jpg" title="오태진">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2001_prof_otj.jpg" title="오태진">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001_prof_wyc.jpg" title="하승민">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2001_prof_hsm.jpg" title="하승민">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50135', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>

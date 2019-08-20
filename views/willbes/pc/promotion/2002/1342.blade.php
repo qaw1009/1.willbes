@@ -126,7 +126,7 @@
                         <td>영어 마무리 특강</td>
                         <td>8/23(금) 14:30</td>                      
                         <td><a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1046&subject_idx=1054&campus_ccd=605001" target="_blank">수강신청</a></td>
-                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156138" target="_blank">수강신청</a></td>
+                        <td colspan="2"><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156344" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>수사 신광은</td>

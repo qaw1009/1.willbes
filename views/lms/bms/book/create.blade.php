@@ -5,10 +5,14 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>교재 정보</h2>
-            <div class="pull-right">
-                <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button" id="btn_wbook_search" class="btn btn-sm btn-success">동일한 마스터 교재로 등록된 교재 보기</button>
+                </div>
+                <div class="col-md-6 text-right pt-10">
+                    <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
+                </div>
             </div>
-            <div class="clearfix"></div>
         </div>
         <div class="x_content">
             {!! form_errors() !!}
@@ -320,6 +324,26 @@
 
                 return true;
             }
+
+            // 동일한 마스터 교재로 등록된 교재 보기 버튼 클릭
+            $('#btn_wbook_search').on('click', function() {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                var wbook_idx = $regi_form.find('input[name="wbook_idx"]').val();
+                if (!site_code) {
+                    alert('운영사이트를 먼저 선택해 주십시오.');
+                    return;
+                }
+
+                if (!wbook_idx) {
+                    alert('마스터 교재를 먼저 선택해 주십시오.');
+                    return;
+                }
+
+                $('#btn_wbook_search').setLayer({
+                    'url' : '{{ site_url('common/searchBook/') }}'+'?site_code=' + site_code + '&wbook_idx=' + wbook_idx,
+                    'width' : 1200
+                })
+            });
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {

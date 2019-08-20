@@ -24,6 +24,7 @@ class SearchBook extends \app\controllers\BaseController
             'hide_tabs' => $hide_tabs,
             'is_event' => $is_event,
             'site_code' => $this->_req('site_code'),
+            'wbook_idx' => $this->_req('wbook_idx'),
             'return_type' => $return_type,
             'target_id' => get_var($this->_req('target_id'), 'bookList'),
             'target_field' => get_var($this->_req('target_field'), 'ProdCode_book'),
@@ -45,7 +46,10 @@ class SearchBook extends \app\controllers\BaseController
     public function listAjax()
     {
         $arr_condition = [
-           'EQ' => ['P.SiteCode' => $this->_reqP('site_code')],
+            'EQ' => [
+                'P.SiteCode' => $this->_reqP('site_code'),
+                'B.wBookIdx' => $this->_reqP('wbook_idx')
+            ],
             'ORG' =>[
                 'LKB' => [
                     'P.ProdCode' => $this->_reqP('search_value'),

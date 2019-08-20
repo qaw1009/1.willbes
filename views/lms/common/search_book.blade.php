@@ -4,7 +4,11 @@
     @if(empty($prod_tabs) === false)
         상품검색
     @else
-        교재검색
+        @if(empty($wbook_idx) === false)
+            동일한 마스터 교재로 등록된 교재
+        @else
+            교재검색
+        @endif
     @endif
 @stop
 
@@ -12,6 +16,7 @@
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" id="site_code" value="{{$site_code}}"/>
+        <input type="hidden" name="wbook_idx" id="wbook_idx" value="{{$wbook_idx}}"/>
         <input type="hidden" name="prod_type" id="prod_type" value="{{$prod_type}}"/>
         <input type="hidden" name="return_type" id="return_type" value="{{$return_type}}"/>
         <input type="hidden" name="target_id" id="target_id" value="{{$target_id}}"/>
@@ -22,9 +27,11 @@
 @endsection
 
 @section('layer_content')
+    @if(empty($wbook_idx) === true)
     <div class="form-group form-group-sm no-border-bottom">
-        <p class="form-control-static"><span class="required">*</span> 검색한 교재 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
+        <p class="form-control-static pl-0"><span class="required">*</span> 검색한 교재 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
     </div>
+    @endif
     @if(empty(array_filter($prod_tabs)) === false)
         <div class="form-group no-padding no-border-bottom">
             <ul class="nav nav-tabs nav-justified mb-10">
@@ -57,8 +64,9 @@
             </ul>
         </div>
     @endif
+    @if(empty($wbook_idx) === true)
     <div class="form-group bdt-line">
-        <label class="control-label col-md-2 pt-5" for="search_value">교재검색
+        <label class="control-label col-md-1 pt-5" for="search_value">교재검색
         </label>
         <div class="col-md-4">
             <input type="text" class="form-control input-sm" id="search_value" name="search_value">
@@ -66,17 +74,21 @@
         <div class="col-md-4">
             <p class="form-control-static">명칭, 코드 검색 가능</p>
         </div>
-        <div class="col-md-2 text-right pr-5">
+        <div class="col-md-3 text-right pr-5">
             <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
         </div>
     </div>
+    @endif
     <div class="row mt-20 mb-20">
         <div class="col-md-12 clearfix">
             <table id="_list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
+                @if(empty($wbook_idx) === true)
                     <th width="3%"><input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
+                @endif
                     <th>운영사이트</th>
+                    <th>카테고리</th>
                     <th>교재코드</th>
                     <th>교재명</th>
                     <th>출판사</th>
@@ -109,10 +121,12 @@
             $datatable_modal = $list_table_modal.DataTable({
                 serverSide: true,
                 buttons: [
+                @if(empty($wbook_idx) === true)
                     { text: '적용', className: 'btn btn-success btn-sm mb-0',action : function(e, dt, node, config) {
                             sendContent();
                         }
                     }
+                @endif
                 ],
                 ajax: {
                     'url' : '{{ site_url('/common/searchBook/listAjax') }}',
@@ -122,6 +136,7 @@
                     }
                 },
                 columns: [
+                @if(empty($wbook_idx) === true)
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         var seq = meta.row;
                         var codeInfo= row.ProdCode+'@$'+row.ProdName+'@$'+addComma(row.SalePrice)+'원@$'+addComma(row.RealSalePrice)+'원@$'+row.wSaleCcdName;
@@ -129,7 +144,11 @@
 
                         return '<input type="checkbox" id="checkBook' + seq + '" name="checkBook" class="flat" value="' + codeInfo + '" data-row-idx="' + meta.row + '"' + checked + '/>';
                     }},
+                @endif
                     {'data' : 'SiteName'},
+                    {'data' : 'BCateName', 'render' : function(data, type, row, meta) {
+                        return data + (row.MCateName !== '' ? ' > ' + row.MCateName : '');
+                    }},
                     {'data' : 'ProdCode'},
                     {'data' : 'ProdName'},
                     {'data' : 'wPublName'},

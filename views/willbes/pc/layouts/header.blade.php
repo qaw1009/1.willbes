@@ -5,7 +5,8 @@
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
+    <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
     <title>{{ $__cfg['HeadTitle'] }}</title>
     <meta name="keywords" content="{{ $__cfg['MetaKeyword'] }}">
     <meta name="description" content="{{ $__cfg['MetaDesc'] }}">

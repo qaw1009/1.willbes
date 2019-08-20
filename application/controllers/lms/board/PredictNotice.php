@@ -40,6 +40,7 @@ class PredictNotice extends BaseBoard
 
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
+        list($arr_predict_data) = $this->_getPredictData();
 
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
@@ -48,6 +49,7 @@ class PredictNotice extends BaseBoard
             'siteCodeDef' => $cateD1[0]['SiteCode'],
             'arrsite' => $arrsite,
             'arr_category' => $arr_category,
+            'arr_predict_data' => $arr_predict_data,
             'boardName' => $this->board_name,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
@@ -86,6 +88,9 @@ class PredictNotice extends BaseBoard
             $arr_condition = array_merge($arr_condition, [
                 'BDT' => ['LB.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
             ]);
+        }
+        if (!empty($this->_reqP('search_predict_idx'))) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.PredictIdx' => $this->_reqP('search_predict_idx')]);
         }
         $sub_query_condition = [];
         if (empty($this->_reqP('search_category')) === false) {
@@ -357,6 +362,6 @@ class PredictNotice extends BaseBoard
             ]
         ];
 
-        return$input_data;
+        return $input_data;
     }
 }

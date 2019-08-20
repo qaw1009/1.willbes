@@ -12,13 +12,18 @@
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select($siteCodeDef, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        <select class="form-control" id="search_predict_idx" name="search_predict_idx">
+                            <option value="">합격예측</option>
+                            @foreach($arr_predict_data as $row)
+                                <option value="{{ $row['PredictIdx'] }}">[{{ $row['PredictIdx'] }}] {{ $row['ProdName'] }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control" id="search_category" name="search_category">
                             <option value="">카테고리</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>

@@ -36,7 +36,7 @@
                     </colgroup>
                     <thead>
                     <tr>
-                        <th>시행일</th>
+                        <th>응시일</th>
                         <th>응시직급</th>
                         <th>응시직렬</th>
                         <th>응시번호</th>
@@ -45,11 +45,9 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>{{ substr($productInfo['SaleStartDatm'],0,10) }}</td>
+                        <td>{{ substr($productInfo['IsDate'],0,10) }}</td>
                         <td>{{ $productInfo['CateName'] }}</td>
-                        <td>
-                            {{ $productInfo['TakeMockPartName'] }}
-                        </td>
+                        <td>{{ $productInfo['TakeMockPartName'] }}</td>
                         <td>{{ $productInfo['TakeNumber'] }}</td>
                         <td>{{ $memName }}</td>
                     </tr>

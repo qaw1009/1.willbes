@@ -417,7 +417,7 @@ class MockExamModel extends WB_Model
 
         $column = "
             MP.*, A.wAdminName, MR.IsTake AS MrIsStatus,
-                   MR.RegDatm AS IsDate,
+                   IFNULL(MR.RegDatm, MP.TakeStartDatm) AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
                    C1.CateName, C1.IsUse AS IsUseCate, MR.OrderProdIdx, MR.MrIdx, MR.TakeNumber,
                    fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName

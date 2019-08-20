@@ -63,7 +63,6 @@ class PredictNotice extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
-
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
@@ -74,20 +73,20 @@ class PredictNotice extends BaseBoard
                 'LKB' => [
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
+                    'LB.Content' => $this->_reqP('search_value'),
+                    'LB.PredictIdx' => $this->_reqP('search_value'),
+                    'PP.ProdName' => $this->_reqP('search_value')
                 ]
             ]
         ];
-
         if ($this->_reqP('search_chk_hot_display') == 1) {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
         }
-
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
                 'BDT' => ['LB.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
             ]);
         }
-
         $sub_query_condition = [];
         if (empty($this->_reqP('search_category')) === false) {
             $sub_query_condition = [
@@ -97,19 +96,15 @@ class PredictNotice extends BaseBoard
                 ]
             ];
         }
-
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.PredictIdx, LB.PromotionCode,
-            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, PP.ProdName AS PredictName
         ';
-
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
-
         if ($count > 0) {
             $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
-
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,

@@ -19,7 +19,10 @@ class BoardModel extends WB_Model
     private $_table_product = 'lms_product';                    //상품관리테이블
     private $_table_product_subject = 'lms_product_subject';    //상품과목관리테이블
     private $_table_product_course = 'lms_product_course';      //상품과정관리테이블
-    protected $_table_professor = 'lms_professor';                //교수관리테이블
+    protected $_table_professor = 'lms_professor';              //교수관리테이블
+    protected $_table_event_lecture = 'lms_event_lecture';      //이벤트 테이블
+    protected $_table_product_predict = 'lms_product_predict';  //합격예측 기본정보 테이블
+
 
     // 첨부 이미지 수
     public $_attach_img_cnt = 7;
@@ -88,11 +91,13 @@ class BoardModel extends WB_Model
             case "predictNotice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                    LEFT OUTER JOIN {$this->_table_product_predict} AS PP ON LB.PredictIdx = PP.PredictIdx AND PP.IsUse ='Y'
                 ";
                 break;
             case "eventNotice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                    LEFT OUTER JOIN {$this->_table_event_lecture} AS EL ON LB.PromotionCode = EL.PromotionCode AND EL.IsUse = 'Y'
                 ";
                 break;
             case "counsel" :
@@ -572,11 +577,13 @@ class BoardModel extends WB_Model
             case "predictNotice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                    LEFT OUTER JOIN {$this->_table_product_predict} AS PP ON LB.PredictIdx = PP.PredictIdx AND PP.IsUse ='Y'
                 ";
                 break;
             case "eventNotice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                    LEFT OUTER JOIN {$this->_table_event_lecture} AS EL ON LB.PromotionCode = EL.PromotionCode AND EL.IsUse = 'Y'
                 ";
                 break;
             case "counsel" :

@@ -341,9 +341,9 @@
                         <div id="Mypagetab4" class="tabLink">
                             <div class="PassCurriBox CurrLineiBox">
                                 <dl class="w-info tx-gray">
-                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1');" class="tx-blue strong">단강좌</a></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1',this);" class="tx-blue strong">단강좌</a></dt>
                                     <dt><span class="row-line">|</span></dt>
-                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab2');">패키지</a></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab2',this);">패키지</a></dt>
                                 </dl>
                             </div>
                             <div id="admintab1" class="willbes-Lec-Table pt20 NG admintab">
@@ -568,10 +568,12 @@
                 }, false, 'GET', 'html');
         }
 
-        function fnAdminTab(obj)
+        function fnAdminTab(obj, o)
         {
             $('.admintab').hide();
             $('#'+obj).show();
+            $(o).parent().parent().find('dt>a').removeClass('strong').removeClass('tx-blue');
+            $(o).addClass('strong').addClass('tx-blue');
         }
     </script>
 @stop

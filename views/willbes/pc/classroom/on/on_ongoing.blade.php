@@ -341,7 +341,7 @@
                         <div id="Mypagetab4" class="tabLink">
                             <div class="PassCurriBox CurrLineiBox">
                                 <dl class="w-info tx-gray">
-                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1');">단강좌</a></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1');" class="tx-blue strong">단강좌</a></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt><a href="javascript:;" onclick="fnAdminTab('admintab2');">패키지</a></dt>
                                 </dl>

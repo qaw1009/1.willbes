@@ -2181,6 +2181,7 @@ body.memBody #Footer {
     padding:20px;
     border-top:1px solid #ccc;
     font-size:14px;
+    line-height: 1.5;
 }
 .priceBox ul {
     background:#f9f9f9;
@@ -2625,9 +2626,10 @@ body.memBody #Footer {
     padding:3px 5px;
 }
 .paymentWrap .payLecList li strong {
-    width: 80px;
+    width: 85px;
     display: inline-block;
     font-weight: normal !important;
+    letter-spacing: -1px;
 }
 .paymentWrap .payLecList li input[type="text"] {
     width: 15%; 
@@ -2637,12 +2639,27 @@ body.memBody #Footer {
 }
 .paymentWrap .payLecList li:last-child {
     margin:0;
+    position: relative;
+    letter-spacing: -1px;
 }
 .paymentWrap .payLecList li:last-child a {
     display: inline-block;
-    padding:8px 16px;
+    padding:6px 12px;
     background: #333;
     color:#fff;
+    margin-right:5px;
+}
+.paymentWrap .payLecList li:last-child a.delete {
+    position: absolute;
+    top:10px;
+    right:0;
+    padding:0;
+    width: 11px;
+    height: 11px;
+    background: #fff;
+    float: right;
+    vertical-align: middle;
+    z-index: 5;
 }
 
 .paymentWrap input[type=radio] {
@@ -2678,9 +2695,12 @@ body.memBody #Footer {
 .paymentWrap input[type="number"],
 .paymentWrap input[type="tel"],
 .paymentWrap input[type="text"] { 
-    min-width: 80px;
+    min-width: 60px;
     height: 30px;
     padding: 0 0.6rem;    
+}
+.paymentWrap .buyerInfo select {
+    height: 30px !important;
 }
 .paymentWrap .buyerInfo .findaddress {
     height: 30px;

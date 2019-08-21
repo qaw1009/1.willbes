@@ -465,6 +465,12 @@ class EventLecture extends \app\controllers\BaseController
             }
         }
 
+        //프로모션 URL Domain
+        if (empty($data) === false && empty($data['SiteUrl']) === false) {
+            $event_sub_domain = explode('.', $data['SiteUrl'])[0];
+            $data['SiteDomain'] = preg_replace('/'.$event_sub_domain.'/', $event_sub_domain.ENV_DOMAIN, $data['SiteUrl'], 1);
+        }
+
         $this->load->view("site/event_lecture/read", [
             'data' => $data,
             'el_idx' => $el_idx,

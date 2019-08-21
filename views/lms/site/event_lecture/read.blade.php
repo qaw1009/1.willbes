@@ -60,12 +60,34 @@
                     {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
                     <div class="form-control-static col-md-10">
                         @if ($data['SiteCode'] == config_item('app_intg_site_code'))
-                            <p><b>[통합 사이트]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/code/'.$data['PromotionCode'].'?type=1'}}</p>
-                            <p><b>[통합 사이트]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/code/'.$data['PromotionCode']}}</p><br>
+                            <p>
+                                <b>[통합 사이트]</b> 관리자 확인용 :
+                                <a href="//{{$data['SiteDomain'].'/promotion/index/code/'.$data['PromotionCode'].'?type=1'}}">
+                                    {{$data['SiteDomain'].'/promotion/index/code/'.$data['PromotionCode'].'?type=1'}}
+                                </a>
+                            </p>
+                            <p>
+                                <b>[통합 사이트]</b> 실제 경로 :
+                                <a href="//{{$data['SiteDomain'].'/promotion/index/code/'.$data['PromotionCode']}}">
+                                    {{$data['SiteDomain'].'/promotion/index/code/'.$data['PromotionCode']}}
+                                </a>
+                            </p>
+                            <br>
                         @else
                             @foreach($arr_cate_code as $key => $val)
-                                <p><b>[{{$val}}]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}</p>
-                                <p><b>[{{$val}}]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}</p><br>
+                                <p>
+                                    <b>[{{$val}}]</b> 관리자 확인용 :
+                                    <a href="//{{$data['SiteDomain'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}">
+                                        {{$data['SiteDomain'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}
+                                    </a>
+                                </p>
+                                <p>
+                                    <b>[{{$val}}]</b> 실제 경로 :
+                                    <a href="//{{$data['SiteDomain'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}">
+                                        {{$data['SiteDomain'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}
+                                    </a>
+                                </p>
+                                <br>
                             @endforeach
                         @endif
                     </div>

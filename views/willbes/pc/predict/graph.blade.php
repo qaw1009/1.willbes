@@ -9,10 +9,9 @@
         <h2><span>지역별</span> 현황</h2>
         <div class="choice">
             <ul id="choice_ul">
-                <li><a href="javascript:selSerial(100);" id="se_100" class="active">일반공채(남)</a></li>
-                <li><a href="javascript:selSerial(200);" id="se_200">일반공채(여)</a></li>
-                <li><a href="javascript:selSerial(300);" id="se_300">전의경경채</a></li>
-                <li><a href="javascript:selSerial(400);" id="se_400">101단</a></li>
+                @foreach($serialList as $key => $val)
+                    <li><a href="javascript:selSerial({{ $key }});" id="se_{{ $key }}" class="{{ $loop->index == 1 ? 'active' : '' }}">{{ $val }}</a></li>
+                @endforeach
             </ul>
         </div>
         <input type="hidden" id="selS" value="100" />
@@ -105,7 +104,7 @@
                         </span>
                     @endforeach
                 @endforeach
-                <p class="area_txt">※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.</p>
+                <p class="area_txt"></p>
             </div>
             <!--m_section3_R//-->
         </div>
@@ -296,9 +295,9 @@
                     </tr>
                     @endfor
                     <tr>
-                        <td>2018년 3차</td>
+                        <td>2019년 1차</td>
                         <th>구분</th>
-                        <td>2018년 4차</td>
+                        <td>2019년 2차</td>
                     </tr>
                 </table>
             </div>
@@ -470,6 +469,7 @@
         bestSubject();
         bestCombSubject();
         selSurvey2(1);
+        setAreaMsg(0);
     });
 
     // 지역별 현황
@@ -758,25 +758,19 @@
 
     function surveyOpen(){
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-        var url = "{{ site_url('/survey/index/3') }}";
+        var url = "{{ site_url('/survey/index/' . $spidx2) }}";
         window.open(url,'pop','width=800 height=900');
     }
 
     function setAreaMsg(num)
     {
-        var msg = '※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.';
+        var msg = '※ 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임.';
         switch (num) {
-            case 100 :
-                msg = '※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.';
-                break;
-            case 200 :
-                msg = '※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.';
-                break;
             case 300 :
-                msg = '※ 전의경경채의 지난 시험 경쟁률, 합격선 정보는 2018년 1차 시험 기준임.';
+                msg = '※ 전의경경채의 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임.';
                 break;
             case 400 :
-                msg = '※ 일반공채(남,여)의 지난 시험 경쟁률, 합격선 정보는 2018년 2차 시험 기준임';
+                msg = '※ 일반공채(남,여)의 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임';
                 break;
             default :
                 break;

@@ -84,17 +84,14 @@
                                         [{{ $titleSet[$i] }}]
                                         <div id="div{{ $i }}" class="graphbox">
                                             @for($j=1; $j <= $resSet[$i]['CNT']; $j++)
-
                                                 <div class="graph graph2">
-                                                    <p>{{ $resSet[$i]['Answer'.$j] }}%</p>
+                                                    <p>@if(empty($resSet[$i]['Answer'.$j]) === false) {{ $resSet[$i]['Answer'.$j] }}@endif%</p>
                                                     <div>
                                                         <img src="https://static.willbes.net/public/images/promotion/common/transparent.png" height="{{ $resSet[$i]['Answer'.$j] }}%">
                                                     </div>
-                                                    <p>{{ $questionSet[$i]['Comment'.$j] }}</p>
+                                                    <p>@if(empty($questionSet[$i]['Comment'.$j]) === false) {{$questionSet[$i]['Comment'.$j] }} @endif</p>
                                                 </div>
-
                                             @endfor
-
                                         </div>
                                     @endfor
                                 @else
@@ -160,15 +157,10 @@
     <script>
         function gotab(idx){
             var uri_param;
-
             uri_param = 'spidx=' + idx;
-
             var _url = '{{ site_url('/predict/survey/surveyData') }}' + '?' + uri_param;
-
             location.href=_url;
         }
-
-
     </script>
 @stop
 

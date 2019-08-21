@@ -2691,9 +2691,12 @@ body.memBody #Footer {
 .paymentWrap input[type="number"],
 .paymentWrap input[type="tel"],
 .paymentWrap input[type="text"] { 
-    min-width: 80px;
+    min-width: 60px;
     height: 30px;
     padding: 0 0.6rem;    
+}
+.paymentWrap .buyerInfo select {
+    height: 30px !important;
 }
 .paymentWrap .buyerInfo .findaddress {
     height: 30px;

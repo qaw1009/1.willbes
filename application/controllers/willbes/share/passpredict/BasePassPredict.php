@@ -726,6 +726,16 @@ class BasePassPredict extends \app\controllers\FrontController
         $spidx2 = element('spidx2', $arr_input);    // 진행 설문조사
 
         // 1. 지역별 현황 (line)
+        // 직렬코드 조회
+        $arr_serial_ccd = array_pluck($this->surveyModel->getSerial(0), 'CcdName', 'Ccd');
+
+        // 합격예측 직렬 데이터 조회
+        $arr_predict_mock_part = explode(',', element('MockPart', $this->predictFModel->findPredictData(['EQ' => ['PredictIdx' => $PredictIdx]], 'MockPart'), ''));
+        
+        // 합격예측 직렬 데이터 가공
+        $serialList = array_filter_keys($arr_serial_ccd, $arr_predict_mock_part);
+        
+        // 지역별 응시 데이터 조회
         $arealist = $this->surveyModel->areaList($PredictIdx);
 
         $dtSet = array();
@@ -892,6 +902,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $this->load->view('willbes/pc/predict/graph', [
             'PredictIdx' => $PredictIdx,
+            'serialList' => $serialList,
             'areaList' => $dtSet,
             'gradelist2' => $gradedata,
             'gradeList' => $gradeSet,

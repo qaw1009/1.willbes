@@ -9,10 +9,9 @@
         <h2><span>지역별</span> 현황</h2>
         <div class="choice">
             <ul id="choice_ul">
-                <li><a href="javascript:selSerial(100);" id="se_100" class="active">일반공채(남)</a></li>
-                <li><a href="javascript:selSerial(200);" id="se_200">일반공채(여)</a></li>
-                <li><a href="javascript:selSerial(300);" id="se_300">전의경경채</a></li>
-                <li><a href="javascript:selSerial(400);" id="se_400">101단</a></li>
+                @foreach($serialList as $key => $val)
+                    <li><a href="javascript:selSerial({{ $key }});" id="se_{{ $key }}" class="{{ $loop->index == 1 ? 'active' : '' }}">{{ $val }}</a></li>
+                @endforeach
             </ul>
         </div>
         <input type="hidden" id="selS" value="100" />

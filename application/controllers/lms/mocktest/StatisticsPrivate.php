@@ -84,7 +84,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
             ],
             'LKB' => [
                 'MR.TakeMockPart' => $this->input->post('search_cateD2'),
-                'MR.TakeForm' => $this->input->post('search_TakeFormsCcd'),
+                'MR.TakeForm' => $this->input->post('search_TakeFormsCcd')
             ],
             'ORG' => [
                 'LKB' => [
@@ -93,6 +93,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
                     'PD.SaleStartDatm' => $this->input->post('search_fi', true),
                     'PD.SaleEndDatm' => $this->input->post('search_fi', true),
                     'PS.RealSalePrice' => $this->input->post('search_fi', true),
+                    'MB.MemId' => $this->input->post('search_fi', true),
+                    'MB.MemName' => $this->input->post('search_fi', true),
                 ]
             ],
         ];

@@ -861,7 +861,7 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         // 10. 직렬별 설문조사 결과
-        $surveyData = $this->surveyModel->surveyAnswerCallBySerial($spidx2, '68');
+        $surveyData = $this->surveyModel->surveyAnswerCallBySerial($spidx2, '1');
 
         // 설문조사 결과 데이터 가공
         $surveyList = [];

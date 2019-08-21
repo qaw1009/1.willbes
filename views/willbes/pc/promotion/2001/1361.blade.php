@@ -126,7 +126,6 @@
         }
         .evt04 {background:#f6f6f6;} 
         .evt05 {background:#fff;} 
-
     </style>
 
     <div class="evtContent NGR" id="evtContainer">
@@ -168,7 +167,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
             <ul>
                 <li>
-                    <a href="#tab01" class="active">
+                    <a href="#tab01">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
                     </a>
@@ -186,7 +185,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#none" onClick='alert("COMING SOON!! ")'>
+                    {{--<a href="#none" onClick='alert("COMING SOON!! ")'>--}}
+                    <a href="#tab04">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
                     </a>
@@ -233,6 +233,10 @@
                 @include('willbes.pc.promotion.show_comment_list_url_partial')
             @endif
         </div>
+
+        <div id="tab04">
+            @include('willbes.pc.promotion.2001.1361_cts04')
+        </div>
 	</div>
     <!-- End Container -->
 
@@ -263,7 +267,7 @@
 
         /*tab*/
         $(document).ready(function(){
-            $('.evt02 ul').each(function(){
+            $('.evt01 ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 $active.addClass('active');

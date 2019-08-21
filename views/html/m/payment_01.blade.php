@@ -37,14 +37,18 @@
                             <ul class="payLecList">
                                 <li><span>강좌</span></li>
                                 <li>2019 신광은 형사소송법 기본이론 (19년 6월)</li>
-                                <li><strong>정가(할인율)</strong> <span class="tx-blue">90,000원(↓0%)</span></li>
-                                <li><strong>실 결제금액</strong> <span class="tx-blue">90,000원</span></li>
+                                <li><strong>정가(할인율)</strong> <span class="tx-blue">90,000원(↓10%)</span></li>
+                                <li><strong>실 결제금액</strong> <span class="tx-blue">81,000원</span><span class="line-through">(90,000원)</span></li>
                                 <li class="NGR"><strong>수강기간</strong> 80일</li>
                                 <li class="NGR"><strong>강좌시작일</strong> 설정 
                                     <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="20" placeholder="시작일">
                                     ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="20" placeholder="종료일"></span>
                                 </li>
-                                <li><a href="#none" onclick="openWin('COUPON_LIST')">쿠폰적용</a></li>
+                                <li>
+                                    <a href="#none" onclick="openWin('COUPON_LIST')">쿠폰적용</a>
+                                    [웰컴팩] 동영상 단과 10% 할인쿠폰 <span class="tx-blue">(9,000원 할인)</span>
+                                    <a href="#none" class="delete"><img src="{{ img_url('m/main/close.png') }}"></a>
+                                </li>
                             </ul>
                             <ul class="payLecList">
                                 <li><span>패키지</span></li>
@@ -124,11 +128,31 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">휴대폰번호</th>
-                                        <td><input type="tel" id="" name="" maxlength="11" style="width:120px"></td>
+                                        <td>
+                                            <select id="phone" name="phone" title="010" class="selePhone">
+                                                <option selected="selected">010</option>
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="017">017</option>
+                                                <option value="018">018</option>
+                                            </select> 
+                                            - <input type="tel" id="" name="" maxlength="11" style="width:60px">
+                                            - <input type="tel" id="" name="" maxlength="11" style="width:60px">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">전화</th>
-                                        <td><input type="tel" id="" name="" maxlength="11" style="width:120px"></td>
+                                        <td>
+                                            <select id="phone" name="phone" title="02" class="selePhone">
+                                                <option selected="selected">02</option>
+                                                <option value="031">031</option>
+                                                <option value="032">032</option>
+                                                <option value="033">033</option>
+                                                <option value="041">041</option>
+                                            </select> 
+                                            - <input type="tel" id="" name="" maxlength="11" style="width:60px"> 
+                                            - <input type="tel" id="" name="" maxlength="11" style="width:60px">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">배송요청사항</th>
@@ -173,8 +197,9 @@
                                         <strong>결제예상금액</strong> <span class="tx-blue">312,000원</span>
                                         <p class="NGR tx14 pt5"><strong>적립예정포인트</strong> <span class="tx-blue">426원</span></p>
                                     </li>
-                                </ul>                
-                            </div>
+                                </ul> 
+                                <p class="mt10">※ 회원님께서는 <span class="tx-red">도서산간, 제주도 배송지 대상자로 배송료 2,500원이 추가</span>로 적용 되었습니다.</p>                                           
+                            </div>                            
                         </td>
                     </tr>
                     <tr class="replyList willbes-Open-Table">

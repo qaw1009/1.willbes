@@ -2181,6 +2181,7 @@ body.memBody #Footer {
     padding:20px;
     border-top:1px solid #ccc;
     font-size:14px;
+    line-height: 1.5;
 }
 .priceBox ul {
     background:#f9f9f9;
@@ -2637,12 +2638,24 @@ body.memBody #Footer {
 }
 .paymentWrap .payLecList li:last-child {
     margin:0;
+    position: relative;
 }
 .paymentWrap .payLecList li:last-child a {
     display: inline-block;
-    padding:8px 16px;
+    padding:8px 12px;
     background: #333;
     color:#fff;
+}
+.paymentWrap .payLecList li:last-child a.delete {
+    position: absolute;
+    top:12px;
+    right:0;
+    padding:0;
+    width: 11px;
+    height: 11px;
+    background: #fff;
+    float: right;
+    vertical-align: middle;
 }
 
 .paymentWrap input[type=radio] {

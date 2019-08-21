@@ -104,7 +104,7 @@
                         </span>
                     @endforeach
                 @endforeach
-                <p class="area_txt">※ 지난 시험 경쟁률, 합격선 정보는 2018년 3차 시험 기준임.</p>
+                <p class="area_txt"></p>
             </div>
             <!--m_section3_R//-->
         </div>
@@ -469,6 +469,7 @@
         bestSubject();
         bestCombSubject();
         selSurvey2(1);
+        setAreaMsg(0);
     });
 
     // 지역별 현황
@@ -765,12 +766,6 @@
     {
         var msg = '※ 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임.';
         switch (num) {
-            case 100 :
-                msg = '※ 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임.';
-                break;
-            case 200 :
-                msg = '※ 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임.';
-                break;
             case 300 :
                 msg = '※ 전의경경채의 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임.';
                 break;

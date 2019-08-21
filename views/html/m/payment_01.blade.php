@@ -40,7 +40,7 @@
                                 <li><strong>정가(할인율)</strong> <span class="tx-blue">90,000원(↓10%)</span></li>
                                 <li><strong>실 결제금액</strong> <span class="tx-blue">81,000원</span><span class="line-through">(90,000원)</span></li>
                                 <li class="NGR"><strong>수강기간</strong> 80일</li>
-                                <li class="NGR"><strong>강좌시작일</strong> 설정 
+                                <li class="NGR"><strong>강좌시작일 설정</strong>  
                                     <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="20" placeholder="시작일">
                                     ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="20" placeholder="종료일"></span>
                                 </li>
@@ -56,8 +56,8 @@
                                 <li><strong>정가(할인율)</strong> <span class="tx-blue">90,000원(↓0%)</span></li>
                                 <li><strong>실 결제금액</strong> <span class="tx-blue">90,000원</span></li>
                                 <li class="NGR"><strong>수강기간</strong> 80일</li>
-                                <li class="NGR"><strong>강좌시작일</strong> 설정 
-                                    <span class="tx-blue"></span>
+                                <li class="NGR"><strong>강좌시작일 설정</strong>  
+                                    <span class="tx-blue">결제완료 후 바로 수강 시작</span>
                                 </li>
                                 <li><a href="#none" onclick="openWin('COUPON_LIST')">쿠폰적용</a></li>
                             </ul>

@@ -1371,11 +1371,11 @@ class SurveyModel extends WB_Model
 
     /**
      * 직렬별 설문결과 리턴
-     * @param $spidx
-     * @param $serial_sq_idx
+     * @param int $spidx [설문식별자]
+     * @param int $serial_group_num [응시직렬 문항셋트 그룹넘버]
      * @return array
      */
-    public function surveyAnswerCallBySerial($spidx, $serial_sq_idx)
+    public function surveyAnswerCallBySerial($spidx, $serial_group_num)
     {
         // 직렬별 설문결과 조회
         $column = "TA.SerialAnswer, TA.SerialAnswerName, TA.SqIdx, TA.CNT, TA.Answer1, TA.Answer2, TA.Answer3, TA.Answer4, TA.Answer5
@@ -1411,9 +1411,13 @@ class SurveyModel extends WB_Model
                         inner join {$this->_table['surveyAnswerDetail']} as sa
                             on sai.SaIdx = sa.SaIdx
                         inner join {$this->_table['surveyQuestion']} as sq
-                            on sa.SqIdx = sq.SqIdx                            
+                            on sa.SqIdx = sq.SqIdx  
+                        inner join {$this->_table['surveyProduct']} as sp
+                            on sai.SpIdx = sp.SpIdx
+                        inner join {$this->_table['surveyQuestionSetDetail']} as sqsr
+                            on sp.SqsIdx = sqsr.SqsIdx and sq.SqIdx = sqsr.SqIdx                                                      
                     where sai.SpIdx = ?
-                        and sa.SqIdx = ?
+                        and sqsr.GroupNumber = ?
                 ) as A
                     inner join {$this->_table['surveyAnswerDetail']} as sa
                         on A.SaIdx = sa.SaIdx and A.SerialSqIdx != sa.SqIdx and sa.Type = 'S'
@@ -1428,7 +1432,7 @@ class SurveyModel extends WB_Model
             order by TA.SerialAnswer, sqsr.GroupNumber, TA.SqIdx            
         ";
 
-        $query = $this->_conn->query('select ' . $column . $from, [$spidx, $serial_sq_idx]);
+        $query = $this->_conn->query('select ' . $column . $from, [$spidx, $serial_group_num]);
 
         return $query->result_array();
     }

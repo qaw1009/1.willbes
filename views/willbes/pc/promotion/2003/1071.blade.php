@@ -83,7 +83,7 @@
             width:122px;
             z-index:10;
         }
-        
+
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">
         
@@ -561,7 +561,7 @@
                         <td>전기기기</td>
                         <td>이론</td>
                         <td>2019 최우영 전기기기 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155016" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146238" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>

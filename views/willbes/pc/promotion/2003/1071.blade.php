@@ -20,13 +20,13 @@
 
         /************************************************************/
 
-        .wb_top {background:#fef053 url(https://static.willbes.net/public/images/promotion/2019/05/1071_top_bg.jpg) no-repeat center top}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1071_top_bg.jpg) no-repeat center top;position:relative;}
 
-        .wb_cts01{background:#fff;}
+        .wb_cts01{background:#b42e39;}
         /* 탭 */
-        .tabContaier{padding-top:20px; padding-bottom:120px;}
-        .tabContaier ul {width:980px; text-align:center; margin:0 auto}
-        .tabContaier li {display:inline; float:left; margin-bottom:20px;}
+        .tabContaier{padding-top:20px; padding-bottom:120px;position:absolute;left:515px;top:825px;}
+        .tabContaier ul { text-align:center; margin:0 auto}
+        .tabContaier li {display:inline; float:left;}
         .tabContaier a img.off {display:block}
         .tabContaier a img.on {display:none}
         .tabContaier a.active img.off {display:none}
@@ -34,7 +34,9 @@
         .tabContaier ul:after {content:''; display:block; clear:both}
         .tabContentsEvt iframe {width:876px; height:480px;}
 
+        .wb_cts01s {background:#fff;}
         .wb_cts02 {background:#ffd84f;}
+      
 
         .wb_cts03 {background:#ffd84f; padding-bottom:100px}
         .wb_cts03 ul {width:960px; margin:0 auto}
@@ -67,11 +69,12 @@
         .wb_cts03 table a:hover {background:#202020; color:#fff;}
         .wb_cts03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
 
-
+        /*
         .PeMenu {width:1210px; margin:0 auto 0; padding-top:100px}
         .PeMenu li { display:inline; float:left}
         .PeMenu li a img.off {display:block}
         .PeMenu li a img.on {display:none}
+        */
 
         .skybanner {
             position:fixed;
@@ -80,11 +83,10 @@
             width:122px;
             z-index:10;
         }
-
-
+        
     </style>
-
     <div class="p_re evtContent NGR" id="evtContainer">
+        
         <div class="skybanner">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
@@ -98,54 +100,41 @@
                 </map>
             </div>
         </div>
+        
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_top_01.png" alt=" 윌비스 차원이 다른 전기/통신 기술직의 대가 최우영교수 " usemap="#Map1071B" border="0"  />
-            <map name="Map1071B" id="Map1071B" >
-                <area shape="rect" coords="216,691,341,747" href="#event01" onfocus="this.blur();"/>
-            </map>
-        </div>
-
-        <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_01.jpg" alt="기술직 수험생의 이유있는 선택 최우영교수"  ><br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02.jpg" alt="난해한 부분의 핵심포인트를 짚어주는 고득점 합격 필수 강의 최우영교수" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_gif.gif" alt="전기/통신 수험생의 이유있는 선택 최우영교수"  >
             <div class="tabContaier">
                 <ul class="youtubeTab">
                     <li>
                         <a class="active" href="#ytb01">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap01off_c.jpg"  class="off" alt="전자공학"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap01on_c.jpg" class="on"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_top_tap01off.jpg"  class="off" alt="통신직 off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_top_tap01on.jpg" class="on" alt="통신직 on" />
                         </a>
                     </li>
                     <li>
                         <a href="#ytb02">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap02off_c.jpg"  class="off"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap02on_c.jpg"  class="on"  alt="무선공학"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_top_tap02off.jpg"  class="off" alt="전기직 off"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_top_tap02on.jpg"  class="on" alt="전기직 on"/>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#ytb03">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap03off_c.jpg"  class="off" />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap03on_c.jpg"  class="on" alt="전기이론학"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#ytb04">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap04off_c.jpg"  class="off" alt="전기기기"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_02_tap04on_c.jpg" class="on" />
-                        </a>
-                    </li>
+                    </li>       
                 </ul>
 
                 <div class="tabContentsEvt" id="ytb01">
-                    <iframe width="876px" height="480px" src="https://www.youtube.com/embed/ZJG2UIJmQxc?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="876px" height="480px" src="https://www.youtube.com/embed/rPN9bxcaiLU" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="tabContentsEvt" id="ytb02"></div>
-                <div class="tabContentsEvt" id="ytb03"></div>
-                <div class="tabContentsEvt" id="ytb04"></div>
+                <div class="tabContentsEvt" id="ytb02">                 
+                </div>        
             </div><!--tabContaier//-->
         </div>
-        <!--WB_top01//-->
+
+        <div class="evtCtnsBox wb_cts01">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_01.jpg" alt="수강후기"  > 
+        </div>    
+
+        <div class="evtCtnsBox wb_cts01s">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_02.jpg" alt="커리큘럼"  > 
+        </div>    
 
         <div class="evtCtnsBox wb_cts02" id="pkglec">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_03.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797"  />
@@ -156,8 +145,7 @@
                 <area shape="rect" coords="711,1228,918,1275" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/150644" target="_blank" alt="문풀패키지" />
                 <area shape="rect" coords="711,1447,919,1490" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/150643" target="_blank" alt="기출문풀패키지" />
             </map>
-        </div>
-        <!--wb_cts02//-->
+        </div>      
 
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_04.jpg" alt="윌비스 최우영 교수 단과 수강신청"/><br>
@@ -572,7 +560,7 @@
                     <tr>
                         <td>전기기기</td>
                         <td>이론</td>
-                        <td>2020 최우영 전기이론 기본강의</td>
+                        <td>2019 최우영 전기기기 이론강의</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155016" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
@@ -866,7 +854,7 @@
                     </tr>
                     <tr>
                         <td>전기자기학</td>
-                        <td>문제풀이</td>
+                        <td>문제풀이</td>Fw
                         <td>2018 최우영 전기자기학 단원별문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146194" target="_blank">수강신청</a></td>
                     </tr>
@@ -878,10 +866,9 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        var ytb01_url = "https://www.youtube.com/embed/ZJG2UIJmQxc?rel=0";
-        var ytb02_url = "https://www.youtube.com/embed/gTLrfJBKmGI?rel=0";
-        var ytb03_url = "https://www.youtube.com/embed/8y8JNZapAB0?rel=0";
-        var ytb04_url = "https://www.youtube.com/embed/6-W1MgmE8dc?rel=0";
+        var ytb01_url = "https://www.youtube.com/embed/rPN9bxcaiLU";
+        var ytb02_url = "https://www.youtube.com/embed/eRrHTbcFBtY";
+
 
         $(document).ready(function(){
             /*영상탭*/

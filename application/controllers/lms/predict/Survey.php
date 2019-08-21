@@ -183,7 +183,9 @@ class Survey extends \app\controllers\BaseController
                     $titleSet[] = $temptitle;
                     $numberSet[] = $defnum;
                     $typeSet[] = $tempType;
-                    $questionSet[] = $this->predictModel->questionSet($tempSq);
+                    if(empty($tempSq) == false){
+                        $questionSet[] = $this->predictModel->questionSet($tempSq);
+                    }
                     $defnum++;
                 } else {
                     if($val['Type'] == 'S'){
@@ -250,7 +252,9 @@ class Survey extends \app\controllers\BaseController
                     $num = $arrAnswer[$i];
                     $sqidx = $val['SqIdx'];
                     $str = 'Comment'.$num;
-                    $ResStr .= trim($questionSet[$sqidx][$str]).",";
+                    if(empty($questionSet[$sqidx][$str]) === false){
+                        $ResStr .= trim($questionSet[$sqidx][$str]).",";
+                    }
                 }
                 $ResStr = substr($ResStr, 0, strlen($ResStr) - 1);
                 $res[$key]['ResStr'] = $ResStr;

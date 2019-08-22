@@ -234,9 +234,20 @@
             @endif
         </div>
 
-        
+        <div id="tab02">
+            
+        </div>
+
+        <div id="tab03">
+            
+        </div>
+
         <div id="tab04">
             @include('willbes.pc.promotion.2001.1361_cts04')
+        </div>
+
+        <div id="tab05">
+            
         </div>
         
 	</div>

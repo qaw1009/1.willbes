@@ -173,26 +173,26 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#none" onClick='alert("COMING SOON!! ")'>
+                    <a onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#none" onClick='alert("COMING SOON!! ")'>
+                    <a onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03.jpg" alt="체력시험" class="off">
                     </a>
                 </li>
                 <li>
-                    {{--<a href="#none" onClick='alert("COMING SOON!! ")'>--}}
+                    {{--<a onClick='alert("COMING SOON!! ")'>--}}
                     <a href="#tab04">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
                     </a>
                 </li>
                 <li>
-                    <a href="#none" onClick='alert("COMING SOON!! ")'>
+                    <a onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05_on.jpg" alt="최종합격" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05.jpg" alt="최종합격" class="off">
                     </a>

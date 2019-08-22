@@ -115,7 +115,7 @@ class Gradeprocessing extends \app\controllers\BaseController
     }
 
     /**
-     * 조정점수입력
+     * 시험통계처리
      * @return object|string
      */
     public function scoreMakeStep3Ajax()

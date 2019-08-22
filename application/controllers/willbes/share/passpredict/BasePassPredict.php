@@ -129,6 +129,7 @@ class BasePassPredict extends \app\controllers\FrontController
             if(empty($score1)===false){
                 $scoreType = 'EACH';
                 foreach ($score1 as $key => $val){
+                    $scoredata['PpIdx'][]  = $val['PpIdx'];
                     $scoredata['subject'][]  = $val['SubjectName'];
                     $scoredata['score'][]    = $val['OrgPoint'];
                     $scoredata['addscore'][] = $val['AdjustPoint'];
@@ -142,8 +143,9 @@ class BasePassPredict extends \app\controllers\FrontController
             }
 
             if(empty($score2)===false){
-                $scoreType = 'DIRECT';
-                foreach ($score2 as $key => $val){
+                $scoreType = ($scoreType == 'EACH') ? $scoreType : 'DIRECT';
+                foreach ($score2 as $key => $val) {
+                    $scoredata['PpIdx'][]  = $val['PpIdx'];
                     $scoredata['subject'][]  = $val['SubjectName'];
                     $scoredata['score'][]    = $val['OrgPoint'];
                     $scoredata['addscore'][] = $val['AdjustPoint'];
@@ -167,7 +169,6 @@ class BasePassPredict extends \app\controllers\FrontController
             $data['PrIdx'] = '';
             $scoredata = array();
             $subject_list = array();
-
         }
 
         //직렬가공처리
@@ -429,7 +430,6 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function tempSaveAjax()
     {
-        ////////////////////////////////////////////////
         $result = $this->surveyModel->answerTempAllSave($this->_reqP(null, false));
         $this->json_result($result, '저장되었습니다.', $result, $result);
     }

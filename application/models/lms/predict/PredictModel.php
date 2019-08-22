@@ -1965,17 +1965,13 @@ class PredictModel extends WB_Model
             }
 
             if(empty($TakeMockPart) == false){
-                $this->_conn->where(['PredictIdx' => $PredictIdx, 'TakeMockPart' => $TakeMockPart]);
-
-                if ($this->_conn->delete($this->_table['predictGrades']) === false) {
-                    throw new \Exception('성적 삭제에 실패했습니다.');
-                }
+                $where = ['PredictIdx' => $PredictIdx, 'TakeMockPart' => $TakeMockPart];
             } else {
-                $this->_conn->where(['PredictIdx' => $PredictIdx]);
+                $where = ['PredictIdx' => $PredictIdx];
+            }
 
-                if ($this->_conn->delete($this->_table['predictGrades']) === false) {
-                    throw new \Exception('성적 삭제에 실패했습니다.');
-                }
+            if ($this->_conn->delete($this->_table['predictGrades'], $where) === false) {
+                throw new \Exception('성적 삭제에 실패했습니다.');
             }
 
             if ($mode == 'web') {
@@ -2000,7 +1996,7 @@ class PredictModel extends WB_Model
             //표준편차용 직렬,지역,과목별 평균점수
             $avg_standard_list = $this->listSubjectAvgPointForStandard($PredictIdx, $TakeMockPart);
 
-            //응사자용 직렬,지역,과목별 평균점수
+            //응시자용 직렬,지역,과목별 평균점수
             $avg_user_list = $this->listSubjectAvgPointForUser($PredictIdx, $TakeMockPart);
 
             //유저점수
@@ -2354,10 +2350,85 @@ class PredictModel extends WB_Model
 
     /**
      * 시험통계처리
-     * @param $MgIdx $mode = cron or web
-     * @return mixed
+     * @param $PredictIdx
+     * @param $mode
+     * @param $TakeMockPart
+     * @return array|bool
      */
     public function scoreProcess($PredictIdx, $mode, $TakeMockPart)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if(empty($PredictIdx) == true){
+                throw new \Exception('합격예측상품 미등록 상태입니다.');
+            }
+
+            if(empty($TakeMockPart) == false){
+                $where = ['PredictIdx' => $PredictIdx, 'TakeMockPart' => $TakeMockPart];
+            } else {
+                $where = ['PredictIdx' => $PredictIdx];
+            }
+
+            if ($this->_conn->delete($this->_table['predictGradesArea'], $where) === false) {
+                throw new \Exception('성적 삭제에 실패했습니다.');
+            }
+
+            // 데이터 입력
+            if ($mode == 'web') {
+                $data = [
+                    'MemId' => $this->session->userdata('admin_id'),
+                    'Step' => '3',
+                    'PredictIdx' => $PredictIdx
+                ];
+            } else {
+                $data = [
+                    'MemId' => 'systemcron',
+                    'Step' => '3',
+                    'PredictIdx' => $PredictIdx
+                ];
+            }
+
+            $is_insert = $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesLog']);
+            if ($is_insert === false) {
+                throw new \Exception('로그생성실패.');
+            }
+
+            // 1. 직렬,지역,과목별 평균점수 / 응시인원 / 표준편차
+            $listSubject = $this->listSubjectAvgPoint($PredictIdx, $TakeMockPart);
+
+            // 2. 직렬,지역,과목별 상위 5% 평균 점수
+            $topFiveAvgData = $this->subjectTopFiveAvg($PredictIdx, $TakeMockPart, '0.05');
+
+            // 저장 데이터 셋팅
+            $inputData = [];
+            foreach ($listSubject as $key => $val) {
+                $tmp_mapping_data = $val['TakeMockPart'].'_'.$val['TakeArea'].'_'.$val['PpIdx'];
+
+                if (empty($topFiveAvgData[$tmp_mapping_data]) === false ) {
+                    $inputData[$key]['PredictIdx'] = $PredictIdx;
+                    $inputData[$key]['TakeMockPart'] = $val['TakeMockPart'];
+                    $inputData[$key]['TakeArea'] = $val['TakeArea'];
+                    $inputData[$key]['TakeNum'] = $val['cnt'];
+                    $inputData[$key]['PpIdx'] = $val['PpIdx'];
+                    $inputData[$key]['AvrPoint'] = $val['AvgAdjustPoint'];
+                    $inputData[$key]['FivePerPoint'] = $val['AvgAdjustPoint'];
+                    $inputData[$key]['StandardDeviation'] = $val['StandardDeviation'];
+                }
+            }
+
+            // 3. 저장
+            if ($this->_conn->insert_batch($this->_table['predictGradesArea'], $inputData) === false) {
+                throw new \Exception('시험통계처리 저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+    public function _back_scoreProcess($PredictIdx, $mode, $TakeMockPart)
     {
         try {
             $this->_conn->trans_begin();
@@ -2638,19 +2709,19 @@ class PredictModel extends WB_Model
                     'PassLineAgo' => $arrPassLineAgo[$i],
                     'AvrPointAgo' => $arrAvrPointAgo[$i],
                     'OnePerCut' => $arrOnePerCut[$i],
-                    'StabilityAvrPoint' => (float)$arrStabilityAvrPoint[$i],
-                    'StabilityAvrPointRef' => (float)$arrStabilityAvrPointRef[$i],
-                    'StabilityAvrPercent' => (float)$arrStabilityAvrPercent[$i],
-                    'StrongAvrPoint1' => (float)$arrStrongAvrPoint1[$i],
-                    'StrongAvrPoint1Ref' => (float)$arrStrongAvrPoint1Ref[$i],
-                    'StrongAvrPoint2' => (float)$arrStrongAvrPoint2[$i],
-                    'StrongAvrPoint2Ref' => (float)$arrStrongAvrPoint2Ref[$i],
-                    'StrongAvrPercent' => (float)$arrStrongAvrPercent[$i],
-                    'ExpectAvrPoint1' => (float)$arrExpectAvrPoint1[$i],
-                    'ExpectAvrPoint1Ref' => (float)$arrExpectAvrPoint1Ref[$i],
-                    'ExpectAvrPoint2' => (float)$arrExpectAvrPoint2[$i],
-                    'ExpectAvrPoint2Ref' => (float)$arrExpectAvrPoint2Ref[$i],
-                    'ExpectAvrPercent' => (float)$arrExpectAvrPercent[$i],
+                    'StabilityAvrPoint' => (array_key_exists($i, $arrStabilityAvrPoint) ? (float) $arrStabilityAvrPoint[$i] : null ),
+                    'StabilityAvrPointRef' => (array_key_exists($i, $arrStabilityAvrPointRef) ? (float) $arrStabilityAvrPointRef[$i] : null ),
+                    'StabilityAvrPercent' => (array_key_exists($i, $arrStabilityAvrPercent) ? (float) $arrStabilityAvrPercent[$i] : null ),
+                    'StrongAvrPoint1' => (array_key_exists($i, $arrStrongAvrPoint1) ? (float) $arrStrongAvrPoint1[$i] : null ),
+                    'StrongAvrPoint1Ref' => (array_key_exists($i, $arrStrongAvrPoint1Ref) ? (float) $arrStrongAvrPoint1Ref[$i] : null ),
+                    'StrongAvrPoint2' => (array_key_exists($i, $arrStrongAvrPoint2) ? (float) $arrStrongAvrPoint2[$i] : null ),
+                    'StrongAvrPoint2Ref' => (array_key_exists($i, $arrStrongAvrPoint2Ref) ? (float) $arrStrongAvrPoint2Ref[$i] : null ),
+                    'StrongAvrPercent' => (array_key_exists($i, $arrStrongAvrPercent) ? (float) $arrStrongAvrPercent[$i] : null ),
+                    'ExpectAvrPoint1' => (array_key_exists($i, $arrExpectAvrPoint1) ? (float) $arrExpectAvrPoint1[$i] : null ),
+                    'ExpectAvrPoint1Ref' => (array_key_exists($i, $arrExpectAvrPoint1Ref) ? (float) $arrExpectAvrPoint1Ref[$i] : null ),
+                    'ExpectAvrPoint2' => (array_key_exists($i, $arrExpectAvrPoint2) ? (float) $arrExpectAvrPoint2[$i] : null ),
+                    'ExpectAvrPoint2Ref' => (array_key_exists($i, $arrExpectAvrPoint2Ref) ? (float) $arrExpectAvrPoint2Ref[$i] : null ),
+                    'ExpectAvrPercent' => (array_key_exists($i, $arrExpectAvrPercent) ? (float) $arrExpectAvrPercent[$i] : null ),
                     'IsUse' => $arrIsUse[$i]
                 );
 
@@ -3299,7 +3370,7 @@ class PredictModel extends WB_Model
      */
     public function listUserForSubjectPoint($PredictIdx, $TakeMockPart)
     {
-        $column = "pg.MemIdx, pg.PredictIdx, pg.PrIdx, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.TakeMockPart";
+        $column = "pg.MemIdx, pg.PredictIdx, pg.PrIdx, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.TakeMockPart, pp.Type AS PpType";
         $column .= "
             ,CASE WHEN pg.TakeMockPart = '100' THEN '1@200'
             WHEN pg.TakeMockPart = '200' THEN '1@200'
@@ -3366,6 +3437,7 @@ class PredictModel extends WB_Model
 
     /**
      * 유저별 조정점수 및 저장 데이터 셋팅
+     * AdjustPoint => 필수과목 : 원점수, 선택과목 : 조정점수
      * 응시자의 과목 점수 - 과목의 평균
      * --------------------------------  X 10 + 50
      *      과목의 표준편차
@@ -3379,13 +3451,14 @@ class PredictModel extends WB_Model
     {
         $user_list = $user_point_list;
         $arr_set_rank = $this->arrSetRank($user_list);
+
         foreach ($user_list as $key => $val) {
             $tmp_mapping_data_user = $val['TakeMockPart'].'_'.$val['TakeArea'].'_'.$val['PpIdx'];
             $tmp_mapping_data_standard = $val['addTakeMockPart'].'_'.$val['TakeArea'].'_'.$val['PpIdx'];
 
             if (empty($arr_standard_data[$tmp_mapping_data_standard]) === false) {
                 $avg_data = ($avg_user_list[$tmp_mapping_data_user]['RegistAvgPointIsUse'] == 'N') ? $avg_user_list[$tmp_mapping_data_user]['AvgOrgPoint'] : $avg_user_list[$tmp_mapping_data_user]['RegistAvgPoint'];
-                $user_list[$key]['AdjustPoint'] = round((($val['OrgPoint'] - $avg_data) / $arr_standard_data[$tmp_mapping_data_standard] * 10) + 50, 2);
+                $user_list[$key]['AdjustPoint'] = ($val['PpType'] == 'P') ? $val['OrgPoint'] : round((($val['OrgPoint'] - $avg_data) / $arr_standard_data[$tmp_mapping_data_standard] * 10) + 50, 2);
                 $user_list[$key]['StandardDeviation'] = $arr_standard_data[$tmp_mapping_data_standard];
             } else {
                 $user_list[$key]['AdjustPoint'] = 0;
@@ -3396,7 +3469,9 @@ class PredictModel extends WB_Model
                 $user_list[$key]['Rank'] = $arr_set_rank[$tmp_mapping_data_user][$val['OrgPoint']] + 1;
             }
             unset($user_list[$key]['addTakeMockPart']);
+            unset($user_list[$key]['PpType']);
         }
+
         return $user_list;
     }
 
@@ -3505,5 +3580,87 @@ class PredictModel extends WB_Model
             return $e->getMessage();
         }
         return true;
+    }
+
+    /**
+     * 직렬,지역,과목별 -> 평균점수 / 응시인원 / 표준편차 / 조정점수 평균
+     * @param $PredictIdx
+     * @param $TakeMockPart
+     * @return mixed
+     */
+    public function listSubjectAvgPoint($PredictIdx, $TakeMockPart)
+    {
+        $add_condition = [
+            'EQ' => [
+                'pg.PredictIdx' => $PredictIdx,
+                'pg.TakeMockPart' => $TakeMockPart,
+            ]
+        ];
+        $where = $this->_conn->makeWhere($add_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "
+                CONCAT(pg.TakeMockPart,'_', pg.TakeArea,'_', pg.PpIdx) AS addColumnKey, pg.TakeMockPart, pg.TakeArea, pg.PpIdx, ROUND(AVG(pg.OrgPoint)) AS AvgOrgPoint,
+                pp.RegistStandard, pp.RegistAvgPoint, pp.RegistStandardIsUse, pp.RegistAvgPointIsUse, COUNT(*) AS cnt, pgr.StandardDeviation, pgr.AvgAdjustPoint
+            ";
+        $from = "
+                FROM {$this->_table['predictGradesOrigin']} AS pg
+                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                LEFT JOIN (
+                    SELECT TakeMockPart, TakeArea, PpIdx, StandardDeviation, ROUND(AVG(pg.AdjustPoint),2) AS AvgAdjustPoint
+                    FROM {$this->_table['predictGrades']} AS pg
+                    {$where}
+                    GROUP BY TakeMockPart, TakeArea, PpIdx
+                ) AS pgr ON pgr.TakeMockPart = pg.TakeMockPart AND pgr.TakeArea = pg.TakeArea AND pgr.PpIdx = pg.PpIdx
+            ";
+
+        $group_by = " GROUP BY pg.TakeMockPart, pg.TaKeArea, pg.PpIdx";
+        return $this->_conn->query('select ' . $column . $from . $where . $group_by)->result_array();
+    }
+
+    /**
+     * 직렬,지역,과목별 상위 {percent} 평균 점수
+     * @param $PredictIdx
+     * @param $TakeMockPart
+     * @param $percent
+     * @return array
+     */
+    public function subjectTopFiveAvg($PredictIdx, $TakeMockPart, $percent)
+    {
+        $add_condition = [
+            'EQ' => [
+                'PredictIdx' => $PredictIdx,
+                'TakeMockPart' => $TakeMockPart,
+            ]
+        ];
+        $where = $this->_conn->makeWhere($add_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "
+        CONCAT(A.TakeMockPart,'_', A.TakeArea,'_', A.PpIdx) AS addColumnKey,
+        A.TakeMockPart, A.TakeArea, A.PpIdx, SUM(A.AdjustPoint) AS TotAdjustPoint, ROUND(SUM(A.AdjustPoint) / COUNT(0), 2) AS AvgAdjustPoint
+        ";
+        $from = "
+            FROM (
+                SELECT pg.TakeMockPart, pg.TakeArea, pg.PpIdx, pg.AdjustPoint
+                    , PERCENT_RANK() OVER (PARTITION BY TakeMockPart, TakeArea, PpIdx ORDER BY AdjustPoint DESC) AS PercRank
+                FROM {$this->_table['predictGrades']} AS pg
+                {$where}
+            ) AS A
+            WHERE PercRank BETWEEN 0 AND {$percent}
+        ";
+        $group_by = " GROUP BY A.TakeMockPart, A.TakeArea, A.PpIdx";
+        $data = $this->_conn->query('select ' . $column . $from . $group_by)->result_array();
+
+        $result_data = [];
+        foreach ($data as $row) {
+            $result_data[$row['addColumnKey']]['TakeMockPart'] = $row['TakeMockPart'];
+            $result_data[$row['addColumnKey']]['TakeArea'] = $row['TakeArea'];
+            $result_data[$row['addColumnKey']]['PpIdx'] = $row['PpIdx'];
+            $result_data[$row['addColumnKey']]['TotAdjustPoint'] = $row['TotAdjustPoint'];
+            $result_data[$row['addColumnKey']]['AvgAdjustPoint'] = $row['AvgAdjustPoint'];
+        }
+        return $result_data;
     }
 }

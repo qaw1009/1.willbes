@@ -173,7 +173,7 @@
 
         // 시험통계 반영
         function scoreMakeStep3(){
-            if(!confirm("조정점수를 반영 하시겠습니까?")) return;
+            if(!confirm("시험통계처리 하시겠습니까?")) return;
 
             var _url = '{{ site_url('/predict/gradeprocessing/scoreMakeStep3Ajax') }}';
             ajaxSubmit($regi_form, _url, function(ret) {

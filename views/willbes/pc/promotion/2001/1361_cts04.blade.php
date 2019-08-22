@@ -69,9 +69,7 @@
         <div class="evtCtnsBox cts04_07" id="cts04_07">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts04_07.jpg" alt="면접캠프 일정 안내" usemap="#Map1361_cts04_07" border="0">
             <map name="Map1361_cts04_07" id="Map1361_cts04_07">
-                <area shape="rect" coords="881,431,1039,481" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1047&amp;subject_idx=1064&amp;prof_idx=50238" target="_blank" alt="황세웅" />
-                <area shape="rect" coords="881,560,1042,611" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1047&amp;subject_idx=1064&amp;prof_idx=50562" target="_blank" alt="정용옥X유봉진" />
-                <area shape="rect" coords="880,684,1042,741" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1047&amp;subject_idx=1064&amp;prof_idx=50300" target="_blank" alt="강인엽" />
+                <area shape="rect" coords="861,406,1055,770" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1047&amp;subject_idx=1064" target="_blank" alt="면접수강신청" />
             </map>
         </div>
 

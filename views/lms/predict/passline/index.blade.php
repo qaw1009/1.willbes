@@ -181,19 +181,22 @@
             sendAjax(url,
                 data,
                 function(d){
-                    var str = d.data;
-                    var arrStr = str.split('/');
-
-                    $('#exp1_'+TakeMockPart+'_'+TakeArea).val(arrStr[1]);
-                    $('#exp1_v_'+TakeMockPart+'_'+TakeArea).html(arrStr[1]);
-                    $('#exp2_'+TakeMockPart+'_'+TakeArea).val(arrStr[0]);
-                    $('#exp2_v_'+TakeMockPart+'_'+TakeArea).html("~" + arrStr[0]);
-                    $('#strong1_'+TakeMockPart+'_'+TakeArea).val(arrStr[3]);
-                    $('#strong1_v_'+TakeMockPart+'_'+TakeArea).html(arrStr[3]);
-                    $('#strong2_'+TakeMockPart+'_'+TakeArea).val(arrStr[2]);
-                    $('#strong2_v_'+TakeMockPart+'_'+TakeArea).html("~" + arrStr[2]);
-                    $('#stab_'+TakeMockPart+'_'+TakeArea).val(arrStr[4]);
-                    $('#stab_v_'+TakeMockPart+'_'+TakeArea).html(arrStr[4] + "~");
+                    if(d.data != null && typeof d.data != 'undefined'){
+                        var str = d.data;
+                        var arrStr = str.split('/');
+                        $('#exp1_'+TakeMockPart+'_'+TakeArea).val(arrStr[1]);
+                        $('#exp1_v_'+TakeMockPart+'_'+TakeArea).html(arrStr[1]);
+                        $('#exp2_'+TakeMockPart+'_'+TakeArea).val(arrStr[0]);
+                        $('#exp2_v_'+TakeMockPart+'_'+TakeArea).html("~" + arrStr[0]);
+                        $('#strong1_'+TakeMockPart+'_'+TakeArea).val(arrStr[3]);
+                        $('#strong1_v_'+TakeMockPart+'_'+TakeArea).html(arrStr[3]);
+                        $('#strong2_'+TakeMockPart+'_'+TakeArea).val(arrStr[2]);
+                        $('#strong2_v_'+TakeMockPart+'_'+TakeArea).html("~" + arrStr[2]);
+                        $('#stab_'+TakeMockPart+'_'+TakeArea).val(arrStr[4]);
+                        $('#stab_v_'+TakeMockPart+'_'+TakeArea).html(arrStr[4] + "~");
+                    }else{
+                        alert('과목별 성적통계의 조정점수 데이터가 없어서 계산되지 않았습니다.');
+                    }
                 },
                 function(ret, status){
                     //alert(ret.ret_msg);

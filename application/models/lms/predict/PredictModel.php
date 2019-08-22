@@ -2577,6 +2577,8 @@ class PredictModel extends WB_Model
      *  기대/유력/안정 점수계산
      */
     public function calculate($PredictIdx, $TakeMockPart, $TakeArea, $P1, $P2, $P3){
+        $rtnCal = null;
+
         // 응시자 개별과목 / 점수
         $column = "
                     ROUND(SUM(pg.AdjustPoint),2) AS POINT
@@ -2598,63 +2600,67 @@ class PredictModel extends WB_Model
 
         $result = $query->result_array();
 
-        // 랭킹 산정시 동일점수때문에 임시저장
-        $Rank = 1;
-        $count = 0;
-        $sum = 0;
-        $arrAdPoint = array();
-        foreach ($result AS $key => $val) {
-            $point = $val['POINT'];
-            $arrAdPoint[$Rank] = $point;
-            $sum = $sum + $point;
-            $Rank++;
-            $count++;
-        }
-
-        $Per1 = round($count * 0.01 * $P1, 1);
-        if($Per1 < 1){
-            $Per1 = 1;
-        } else {
-            $Per1 = floor($Per1);
-        }
-
-        $Per2 = round($count * 0.01 * $P2, 1);
-        if($Per2 < 1){
-            $Per2 = 1;
-        } else {
-            $Per2 = floor($Per2);
-        }
-
-        $Per3 = round($count * 0.01 * $P3, 1);
-        if($Per3 < 1){
-            $Per3 = 1;
-        } else {
-            $Per3 = floor($Per3);
-        }
-
-        $PerPoint1 = $arrAdPoint[$Per1];
-        $PerPoint2 = $arrAdPoint[$Per2];
-        $PerPoint3 = $arrAdPoint[$Per3];
-        $PerPoint3M = $PerPoint3 - 0.01;
-
-        if($PerPoint3 == $PerPoint2){
-            $ResPerPoint2 = $PerPoint2 - 0.02;
-        } else {
-            $ResPerPoint2 = $PerPoint2;
-        }
-
-        if($PerPoint2 == $PerPoint1){
-            if($PerPoint3 == $PerPoint1){
-                $ResPerPoint1 = $PerPoint1 - 0.04;
-            } else {
-                $ResPerPoint1 = $PerPoint1 - 0.02;
+        if(empty($result) === false){
+            // 랭킹 산정시 동일점수때문에 임시저장
+            $Rank = 1;
+            $count = 0;
+            $sum = 0;
+            $arrAdPoint = array();
+            foreach ($result AS $key => $val) {
+                $point = $val['POINT'];
+                $arrAdPoint[$Rank] = $point;
+                $sum = $sum + $point;
+                $Rank++;
+                $count++;
             }
-        } else {
-            $ResPerPoint1 = $PerPoint1;
+
+            $Per1 = round($count * 0.01 * $P1, 1);
+            if($Per1 < 1){
+                $Per1 = 1;
+            } else {
+                $Per1 = floor($Per1);
+            }
+
+            $Per2 = round($count * 0.01 * $P2, 1);
+            if($Per2 < 1){
+                $Per2 = 1;
+            } else {
+                $Per2 = floor($Per2);
+            }
+
+            $Per3 = round($count * 0.01 * $P3, 1);
+            if($Per3 < 1){
+                $Per3 = 1;
+            } else {
+                $Per3 = floor($Per3);
+            }
+
+            $PerPoint1 = $arrAdPoint[$Per1];
+            $PerPoint2 = $arrAdPoint[$Per2];
+            $PerPoint3 = $arrAdPoint[$Per3];
+            $PerPoint3M = $PerPoint3 - 0.01;
+
+            if($PerPoint3 == $PerPoint2){
+                $ResPerPoint2 = $PerPoint2 - 0.02;
+            } else {
+                $ResPerPoint2 = $PerPoint2;
+            }
+
+            if($PerPoint2 == $PerPoint1){
+                if($PerPoint3 == $PerPoint1){
+                    $ResPerPoint1 = $PerPoint1 - 0.04;
+                } else {
+                    $ResPerPoint1 = $PerPoint1 - 0.02;
+                }
+            } else {
+                $ResPerPoint1 = $PerPoint1;
+            }
+            $PerPoint2M = $ResPerPoint2 - 0.01;
+
+            //           고             저              고               저
+            $rtnCal = $PerPoint2M."/".$ResPerPoint1."/".$PerPoint3M."/".$ResPerPoint2."/".$PerPoint3;
         }
-        $PerPoint2M = $ResPerPoint2 - 0.01;
-        //           고             저              고               저
-        return $PerPoint2M."/".$ResPerPoint1."/".$PerPoint3M."/".$ResPerPoint2."/".$PerPoint3;
+        return $rtnCal;
     }
 
     /**

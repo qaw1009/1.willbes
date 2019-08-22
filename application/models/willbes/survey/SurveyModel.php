@@ -799,7 +799,7 @@ class SurveyModel extends WB_Model
      */
     public function getScore1($pridx, $PredictIdx){
         $column = "
-            pc2.CcdName AS SubjectName, SUM(IF(pg.IsWrong = 'Y', Scoring, '0')) AS OrgPoint, AdjustPoint  
+            pg.PpIdx, pc2.CcdName AS SubjectName, SUM(IF(pg.IsWrong = 'Y', Scoring, '0')) AS OrgPoint, AdjustPoint
         ";
 
         $from = "
@@ -1545,7 +1545,7 @@ class SurveyModel extends WB_Model
             ) AS OrgPoint 
         ";
 
-        $from = "
+        $from = " 
             FROM
                 {$this->_table['predictPaper']} AS pp
                 JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
@@ -1572,74 +1572,85 @@ class SurveyModel extends WB_Model
      */
     public function answerTempAllSave($formData = [])
     {
-
+        $this->_conn->trans_begin();
         try {
-            $this->_conn->trans_begin();
-
             $PrIdx = element('PrIdx', $formData);
             $PredictIdx = element('PredictIdx', $formData);
             $PpIdx = element('PpIdx', $formData);
-
             $qcnt = element('QCnt',$formData);
 
-            for($i = 1; $i <= $qcnt; $i++){
-                ${"answer$i"} = element('answer'.$i,$formData);
-                ${"PqIdx$i"}  = element('PqIdx'.$i,$formData);
+            //정답데이터 조회
+            $column = "PqIdx, QuestionNo, RightAnswer";
+            $from = " FROM {$this->_table['predictQuestion']} ";
+            $arr_condition = [
+                'EQ' => [
+                    'PpIdx' => $PpIdx,
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $where = $this->_conn->makeWhere($arr_condition);
+            $where = $where->getMakeWhere(false);
+            $questionResult = $this->_conn->query('select ' . $column . $from . $where)->result_array();
+            $questionData = [];
+            foreach ($questionResult as $row) {
+                $questionData[$row['QuestionNo']]['PqIdx'] = $row['PqIdx'];
+                $questionData[$row['QuestionNo']]['RightAnswer'] = $row['RightAnswer'];
+            }
+
+            //임시저장
+            foreach ($questionData as $key => $val) {
+                if (empty(element('answer'.$key,$formData)) === true) {
+                    throw new \Exception($key.'번 문항을 체크해주세요.');
+                }
 
                 $column = "PapIdx";
-
-                $from = "
-                    FROM {$this->_table['predictAnswerPaper']}
-                ";
-
+                $from = " FROM {$this->_table['predictAnswerPaper']} ";
                 $arr_condition = [
                     'EQ' => [
                         'MemIdx'   => $this->session->userdata('mem_idx'),
                         'PredictIdx' => $PredictIdx,
                         'PrIdx' => $PrIdx,
                         'PpIdx' => $PpIdx,
-                        'PqIdx' => ${"PqIdx$i"},
+                        'PqIdx' => element('PqIdx'.$key,$formData)
                     ]
                 ];
-
                 $where = $this->_conn->makeWhere($arr_condition);
                 $where = $where->getMakeWhere(false);
-                $order_by = "";
+                $result = $this->_conn->query('select ' . $column . $from . $where)->row_array();
 
-                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-
-                $result = $query->row_array();
-
-                if($result['PapIdx']){
-                    // 데이터 수정
-                    $data = [
-                        'Answer' => ${"answer$i"}
-                    ];
-
-                    $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'PredictIdx' => $PredictIdx, 'PrIdx' => $PrIdx, 'PpIdx' => $PpIdx, 'PqIdx' => ${"PqIdx$i"}]);
-
-                    if ($this->_conn->update($this->_table['predictAnswerPaper']) === false) {
-                        throw new \Exception('임시저장에 수정에 실패했습니다.');
-                    }
-
-                }else{
-                    // 데이터 입력
+                if (empty($result) === true) {
+                    //저장
                     $data = [
                         'MemIdx' => $this->session->userdata('mem_idx'),
                         'PrIdx'  => $PrIdx,
                         'PredictIdx'=> $PredictIdx,
                         'PpIdx' => $PpIdx,
-                        'PqIdx' => ${"PqIdx$i"},
-                        'Answer' => ${"answer$i"},
+                        'PqIdx' => element('PqIdx'.$key,$formData),
+                        'Answer' => element('answer'.$key,$formData),
+                        'IsWrong' => ($val['RightAnswer'] == element('answer'.$key,$formData) ? 'Y' : 'N')
                     ];
-
                     if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictAnswerPaper']) === false) {
-                        throw new \Exception('임시저장에 실패했습니다.');
+                        throw new \Exception('임시데이터 저장에 실패했습니다.');
                     }
-
+                } else {
+                    //수정
+                    $data = [
+                        'Answer' => element('answer'.$key,$formData),
+                        'IsWrong' => ($val['RightAnswer'] == element('answer'.$key,$formData) ? 'Y' : 'N')
+                    ];
+                    $where = [
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'PredictIdx' => $PredictIdx,
+                        'PrIdx' => $PrIdx,
+                        'PpIdx' => $PpIdx,
+                        'PqIdx' => element('PqIdx'.$key,$formData)
+                    ];
+                    $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where($where);
+                    if ($this->_conn->update($this->_table['predictAnswerPaper']) === false) {
+                        throw new \Exception('임시데이터 수정에 실패했습니다.');
+                    }
                 }
             }
-
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

@@ -150,10 +150,15 @@
 
         // 쿠폰 적용 버튼 클릭
         $('#_btn_coupon_apply').on('click', function() {
-            if (confirm('해당 쿠폰을 적용하시겠습니까?')) {
-                var $cart_row = $parent_regi_form.find('#cart_row_' + cart_idx);
-                var $selected_coupon = $_coupon_form.find('input[name="_coupon_detail_idx"]:checked');
+            var $cart_row = $parent_regi_form.find('#cart_row_' + cart_idx);
+            var $selected_coupon = $_coupon_form.find('input[name="_coupon_detail_idx"]:checked');
 
+            if ($selected_coupon.length < 1) {
+                alert('적용하실 쿠폰을 선택해 주세요.');
+                return;
+            }
+
+            if (confirm('해당 쿠폰을 적용하시겠습니까?')) {
                 // 주문 폼에 선택된 쿠폰정보 셋팅
                 $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').data('coupon-disc-price', coupon_disc_price);
                 $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').val($selected_coupon.val()).trigger('change');

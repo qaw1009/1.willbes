@@ -725,7 +725,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $spidx1 = element('spidx1', $arr_input);    // 이전 설문조사
         $spidx2 = element('spidx2', $arr_input);    // 진행 설문조사
 
-        // 1. 지역별 현황 (line)
+        // 1. 지역별 현황
         // 직렬코드 조회
         $arr_serial_ccd = array_pluck($this->surveyModel->getSerial(0), 'CcdName', 'Ccd');
 
@@ -735,7 +735,7 @@ class BasePassPredict extends \app\controllers\FrontController
         // 합격예측 직렬 데이터 가공
         $serialList = array_filter_keys($arr_serial_ccd, $arr_predict_mock_part);
         
-        // 지역별 응시 데이터 조회
+        // 지역별 응시 데이터 조회 (line)
         $arealist = $this->surveyModel->areaList($PredictIdx);
 
         $dtSet = array();
@@ -798,7 +798,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $gradelist = array_pluck($gradedata, 'Avg', 'SubjectCode');
         $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
 
-        // 3. 과목별 원점수 평균 그래프
+        // 3. 과목별 원점수 평균 그래프 (과목별 원점수 평균 데이터 활용)
         $arr_grade_subject = [
             ['100100', '100200', '100300', '100500', '100400'],  // 한국사/영어/형법/경찰학개론/형사소송법
             ['100100', '100200', '100300', '100600', '100400'],  // 한국사/영어/형법/국어/형사소송법
@@ -829,7 +829,7 @@ class BasePassPredict extends \app\controllers\FrontController
             }
         }
 
-        // 4. 총점성적분포 (grade)
+        // 4. 총점성적분포 (origin, 0점 포함)
         $pointList = $this->surveyModel->pointArea($PredictIdx);
 
         // 5. 과목별성적분포 (origin, 0점 제외)

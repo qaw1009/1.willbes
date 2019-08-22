@@ -770,7 +770,7 @@ class SurveyModel extends WB_Model
                         else substr(SUM(OrgPoint), 1, 1)    # 101 ~ 499
                     end) as Pointarea 
                 FROM 
-                    {$this->_table['predictGrades']} 
+                    {$this->_table['predictGradesOrigin']} 
                 WHERE PredictIdx = ?
                 GROUP BY PrIdx                
             ) AS A                

@@ -126,6 +126,7 @@
         }
         .evt04 {background:#f6f6f6;} 
         .evt05 {background:#fff;} 
+        .comingsoon {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon_bg.jpg) no-repeat center top; text-align:center}
     </style>
 
     <div class="evtContent NGR" id="evtContainer">
@@ -173,13 +174,13 @@
                     </a>
                 </li>
                 <li>
-                    <a onClick='alert("COMING SOON!! ")'>
+                    <a href="#tab02" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
                 </li>
                 <li>
-                    <a onClick='alert("COMING SOON!! ")'>
+                    <a href="#tab03" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03.jpg" alt="체력시험" class="off">
                     </a>
@@ -192,7 +193,7 @@
                     </a>
                 </li>
                 <li>
-                    <a onClick='alert("COMING SOON!! ")'>
+                    <a href="#tab05" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05_on.jpg" alt="최종합격" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05.jpg" alt="최종합격" class="off">
                     </a>
@@ -234,20 +235,20 @@
             @endif
         </div>
 
-        <div id="tab02">
-            
+        <div id="tab02" class="comingsoon">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
         </div>
 
-        <div id="tab03">
-            
+        <div id="tab03" class="comingsoon">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
         </div>
 
         <div id="tab04">
             @include('willbes.pc.promotion.2001.1361_cts04')
         </div>
 
-        <div id="tab05">
-            
+        <div id="tab05" class="comingsoon">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
         </div>
         
 	</div>

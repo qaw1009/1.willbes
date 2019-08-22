@@ -112,75 +112,58 @@
                 </div>
             </div>
         </form>
-        @if($scoreIs == 'N')
+
             <div class="sub3_1">
                 <h2>성적 입력/확인</h2>
                 {{--성적채점--}}
                 <div>
-                    <div class="sub3_1_txt" id="maskArea" style="display:none;">
-                        <div>
-                            <p>
-                                {{--4월 27일 11시40분까지--}}
-                                {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>--}}
+                    @if($scoreIs == 'N')
+                        <div class="sub3_1_txt" id="maskArea" style="display:none;">
+                            <div>
+                                <p>
+                                    {{--4월 27일 11시40분까지--}}
+                                    {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>--}}
 
-                                {{--4월 27일 11시40분이후--}}
-                                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">
+                                    {{--4월 27일 11시40분이후--}}
+                                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">
 
-                            </p>
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <ul class="tabSt1">
-                        <li><a id='t1' href="javascript:tabSel(1)" class="active">일반채점</a></li>
-                        <li><a id='t2' href="javascript:tabSel(2)">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
-                        <li><a id='t3' href="javascript:tabSel(3)">직접입력</a></li>
-                    </ul>
-                    <input type="hidden" id="selType" value="1"/>
-                    <div  id='gradeArea1'>
-                        <div class="mt10 mb10">
-                            '일반채점'은 문제창에서 바로 문제를 확인하면서 OMR 정답지에 답을 체크하는 방식입니다.<br />
-                            * 아크로뱃 리더 프로그램 설치 필요 <a href="https://get.adobe.com/reader/?loc=kr" target="_blank">[설치하기]</a>
+                        <ul class="tabSt1">
+                            <li><a id='t1' href="javascript:tabSel(1)" class="active">일반채점</a></li>
+                            <li><a id='t2' href="javascript:tabSel(2)">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
+                            <li><a id='t3' href="javascript:tabSel(3)">직접입력</a></li>
+                        </ul>
+                        <input type="hidden" id="selType" value="1"/>
+
+                        <div  id='gradeArea1'>
+                            <div class="mt10 mb10">
+                                '일반채점'은 문제창에서 바로 문제를 확인하면서 OMR 정답지에 답을 체크하는 방식입니다.<br />
+                                * 아크로뱃 리더 프로그램 설치 필요 <a href="https://get.adobe.com/reader/?loc=kr" target="_blank">[설치하기]</a>
+                            </div>
+                            <table class="boardTypeB">
+                                <col width="25%" />
+                                <col width="25%" />
+                                <col width="25%" />
+                                <col width="25%" />
+                                <tr>
+                                    <th scope="col">과목</th>
+                                    <th scope="col">채점</th>
+                                    <th scope="col">원점수</th>
+                                    <th scope="col">조정점수</th>
+                                </tr>
+                                @foreach($subject_list as $key => $val)
+                                    <tr>
+                                        <td>{{ $val['CcdName'] }}</td>
+                                        @if($loop->first)<td rowspan="5"><a href="javascript:popWindow({{ $idx }})" class="type1">채점하기 ▶</a></td>@endif
+                                        <td>미입력</td>
+                                        <td>미입력</td>
+                                    </tr>
+                                @endforeach
+                            </table>
                         </div>
-                        <table class="boardTypeB">
-                            <col width="25%" />
-                            <col width="25%" />
-                            <col width="25%" />
-                            <col width="25%" />
-                            <tr>
-                                <th scope="col">과목</th>
-                                <th scope="col">채점</th>
-                                <th scope="col">원점수</th>
-                                <th scope="col">조정점수</th>
-                            </tr>
-                            <tr>
-                                <td>@if(empty($subject_list)===false) {{ $subject_list[0]['CcdName'] }} @else 미입력 @endif</td>
-                                <td rowspan="5"><a href="javascript:popWindow({{ $idx }})" class="type1">채점하기 ▶</a></td>
-                                <td>미입력</td>
-                                <td>미입력</td>
-                            </tr>
-                            <tr>
-                                <td>@if(empty($subject_list)===false) {{ $subject_list[1]['CcdName'] }} @else 미입력 @endif</td>
-                                <td>미입력</td>
-                                <td>미입력</td>
-                            </tr>
-                            <tr>
-                                <td>@if(empty($subject_list)===false) {{ $subject_list[2]['CcdName'] }} @else 미입력 @endif</td>
-                                <td>미입력</td>
-                                <td>미입력</td>
-                            </tr>
-                            <tr>
-                                <td>@if(empty($subject_list)===false) {{ $subject_list[3]['CcdName'] }} @else 미입력 @endif</td>
-                                <td>미입력</td>
-                                <td>미입력</td>
-                            </tr>
-                            <tr>
-                                <td>@if(empty($subject_list)===false) {{ $subject_list[4]['CcdName'] }} @else 미입력 @endif</td>
-                                <td>미입력</td>
-                                <td>미입력</td>
-                            </tr>
-                        </table>
-
-                    </div>
                     @else
                         {{--성적확인--}}
                         <div id='gradeArea2'>
@@ -195,37 +178,17 @@
                                     <th scope="col">원점수</th>
                                     <th scope="col">조정점수</th>
                                 </tr>
-                                <tr>
-                                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }}@else 미입력 @endif</td>
-                                    <td rowspan="5"><a href="javascript:resultPop({{ $idx }})" class="type1">확인 ▶</a></td>
-                                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][0] }} @else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>
-                                    {{--<td>집계중</td>--}}
-                                </tr>
-                                <tr>
-                                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][1] }}@else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][1] }} @else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][1] }} @else 미입력 @endif</td>
-                                    {{--<td>집계중</td>--}}
-                                </tr>
-                                <tr>
-                                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][2] }}@else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][2] }} @else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][2] }} @else 미입력 @endif</td>
-                                    {{--<td>집계중</td>--}}
-                                </tr>
-                                <tr>
-                                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][3] }}@else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][3] }} @else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][3] }} @else 미입력 @endif</td>
-                                    {{--<td>집계중</td>--}}
-                                </tr>
-                                <tr>
-                                    <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][4] }}@else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y') {{ $scoredata['score'][4] }} @else 미입력 @endif</td>
-                                    <td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][4] }} @else 미입력 @endif</td>
-                                    {{--<td>집계중</td>--}}
-                                </tr>
+
+                                @foreach($subject_list as $key => $val)
+                                    <tr>
+                                        <td>{{ $val['CcdName'] }}</td>
+                                        @if($loop->first)<td rowspan="5"><a href="javascript:resultPop({{ $idx }})" class="type1">확인 ▶</a></td>@endif
+                                        <td>{{ (empty($scoredata['PpIdx'][$key]) === true ? '미입력' : $scoredata['score'][$key]) }}</td>
+                                        <td>
+                                            {{(empty($scoredata['PpIdx'][$key]) === true) ? '미입력' :  (empty($scoredata['addscore'][$key]) === true ? '집계중' : $scoredata['addscore'][$key])}}
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </table>
                             <div class="btns">
                                 <a href="javascript:moveMyPredict();">나의 합격예측 바로가기 &gt;</a>
@@ -233,7 +196,6 @@
                             </div>
                         </div>
                     @endif
-
                 </div>
             </div>
             <script>

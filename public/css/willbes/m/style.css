@@ -2743,7 +2743,7 @@ body.memBody #Footer {
 .paymentWrap .method li {
     display: inline; float: left; width: 33.33333%;
 }
-.paymentWrap .method a {
+.paymentWrap .method a, .paymentWrap .method label {
     display: block; 
     background:#f9f9f9;
     border:1px solid #999;
@@ -2753,7 +2753,7 @@ body.memBody #Footer {
     padding:15px 0;
     margin-right:10px;
 }
-.paymentWrap .method li:last-child a {
+.paymentWrap .method li:last-child a, .paymentWrap .method li:last-child label {
     margin:0;
 }
 .paymentCts .policyInfo {

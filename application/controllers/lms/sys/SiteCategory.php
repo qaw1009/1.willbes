@@ -84,7 +84,8 @@ class SiteCategory
         $rules = [
             ['field' => 'cate_name', 'label' => '분류명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'is_default', 'label' => '디폴트여부', 'rules' => 'trim|required|in_list[Y,N]']
+            ['field' => 'is_default', 'label' => '디폴트여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'is_front_use', 'label' => 'Front 사용여부', 'rules' => 'trim|required|in_list[Y,N]']
         ];
 
         if (empty($this->_CI->_reqP('idx')) === true) {

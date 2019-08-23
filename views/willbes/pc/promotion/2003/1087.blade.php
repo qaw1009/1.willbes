@@ -73,7 +73,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
       
         <div class="skybanner">
-            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180820_sky.png" alt="한권으로 공부하는 회계학"></a></div>
+            <div><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/08//EV180820_sky.png" alt="한권으로 공부하는 회계학"></a></div>
         </div>   
 
         <div class="evtCtnsBox wb_top">

@@ -588,7 +588,9 @@ class SurveyModel extends WB_Model
 
         $order_by = " ORDER BY OrderNum";
         $where = " WHERE IsUse = 'Y' AND GroupCcd = ".$GroupCcd."";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
+
+        //일반경채(남)의 수사, 행정법 코드 제외
+        $where .= " AND Ccd != '100901' AND Ccd != '100902'";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();

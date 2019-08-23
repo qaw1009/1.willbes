@@ -46,21 +46,20 @@
         <!--wb_cts01//-->
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1297_01.jpg" alt="기미진국어" usemap="#Map1297A" border="0" />
-            <map name="Map1297A" id="Map1297A">
-                <area shape="rect" coords="275,607,851,680" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&amp;subject_idx=1253&amp;subject_name=국어&amp;tab=open_lecture" target="_blank" alt="수강신청">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1297_02.jpg" alt="한덕현영어" usemap="#Map1297B" border="0" />
+            <map name="Map1297B" id="Map1297B">
+                <area shape="rect" coords="279,610,840,688" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&amp;subject_idx=1254&amp;subject_name=영어&amp;tab=open_lecture" target="_blank" alt="수강신청하기">
             </map>
         </div>
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1297_02.jpg" alt="한덕현영어" usemap="#Map1297B" border="0" />
-            <map name="Map1297B" id="Map1297B">
-                <area shape="rect" coords="281,747,843,819" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&amp;subject_idx=1254&amp;subject_name=영어&amp;tab=open_lecture" target="_blank" alt="수강신청하기">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1297_01.jpg" alt="기미진국어" usemap="#Map1297A" border="0" />
+            <map name="Map1297A" id="Map1297A">
+                <area shape="rect" coords="275,607,851,680" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&amp;subject_idx=1253&amp;subject_name=국어&amp;tab=open_lecture" target="_blank" alt="수강신청">
             </map>
         </div>
-        <!--wb_cts03//-->
-
+        <!--wb_cts03//-->  
 
         <div class="evtCtnsBox wb_last">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1297_last.gif" alt="#" />

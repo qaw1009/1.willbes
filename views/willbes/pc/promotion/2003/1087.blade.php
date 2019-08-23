@@ -20,12 +20,13 @@
 
         /************************************************************/
 
-        .wb_cts01 {background:#0a0a0a url(http://file3.willbes.net/new_gosi/2017/08/EV170803_bg01.jpg) no-repeat center top; margin-top:20px;  position:relative;}
-        .wb_cts02 {background:#395ec4 url(http://file3.willbes.net/new_gosi/2018/08/EV180820_c2_bg.jpg) no-repeat center top;}
-        .wb_cts03 {background:#fff url(http://file3.willbes.net/new_gosi/2017/08/EV170803_bg03.jpg) no-repeat center top;}
+        .wb_top{background:url(https://static.willbes.net/public/images/promotion/2019/08/1087_top_bg.jpg) no-repeat center top;}
+        .wb_cts01 {background:#ebebeb;position:relative;}
+        .wb_cts02 {background:#fff;}
+        .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1087_03_bg.jpg)repeat;margin-bottom:50px;}
         .wb_cts03 .btn {width:1210px; margin:0 auto}
         .wb_cts03 .btn li {float:left; display:inline}
-        .wb_cts04 {background:#82909b url(http://file3.willbes.net/new_gosi/2017/08/EV170803_bg04.jpg) repeat;}
+        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2019/08/EV170803_bg04.jpg) repeat;}
 
         .Pstyle {
             opacity:0;
@@ -70,25 +71,36 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+      
         <div class="skybanner">
             <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180820_sky.png" alt="한권으로 공부하는 회계학"></a></div>
+        </div>   
+
+        <div class="evtCtnsBox wb_top">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1087_top.jpg" alt="클래스가 다른 회계학" />          
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180820_c1.png" alt="윌비스 2019 회계학 김현식" />
-        </div><!--wb_cts01//-->
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1087_01.jpg" alt="2020 김현식 공무원 회계학" usemap="#Map1087a" border="0" />
+            <map name="Map1087a" id="Map1087a">
+                <area shape="circle" coords="946,479,118" href="#event" />
+            </map>         
+        </div>
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180820_c2.png" alt="" usemap="#Map170803_c1" border="0" />
-            <map name="Map170803_c1" >
-                <area shape="rect" coords="351,623,523,814" href="#event" />
-            </map>
-        </div><!--wb_cts02//-->
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1087_02.jpg" alt="정답은 김현식 회계학" />          
+        </div>
 
-        <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2017/08/EV170803_c3.jpg" alt="" /></li>
-            <img src="http://file3.willbes.net/new_gosi/2017/08/EV170803_c4.jpg" alt="" /></li>
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180820_c5.jpg" alt="" /></li>
+        <div class="evtCtnsBox wb_cts03 " id="event">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1087_03.jpg" alt="수강 신청하기" usemap="#Map1087b" border="0" />
+            <map name="Map1087b" id="Map1087b">
+                <area shape="rect" coords="409,465,807,572" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/156372" target="_blank"  onFocus="this.blur();" />
+            </map>          
+        </div>
+
+        {{--
+        <div class="evtCtnsBox wb_cts03">         
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/EV170803_c4.jpg" alt="" /></li>           
             <ul class="btn">
                 <li>
                     <a onclick="go_popup()">
@@ -115,14 +127,8 @@
             <div class="content">
                 <img src="http://file3.willbes.net/new_gosi/2017/08/EV170803_pop02.png" alt="찾아오시는길"/>
             </div>
-        </div>
-
-        <div class="evtCtnsBox wb_cts04" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/EV180820_c7.jpg" alt="" usemap="#Map170803_c2" border="0" />
-            <map name="Map170803_c2" >
-                <area shape="rect" coords="402,460,803,564" href="{{ site_url('/lecture/show/cate/3022/pattern/only/prod-code/146356') }}" target="_blank"  onFocus="this.blur();" />
-            </map>
-        </div><!--wb_cts04//-->
+        </div>    
+        --}}
 
     </div>
     <!-- End Container -->

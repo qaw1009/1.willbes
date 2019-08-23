@@ -345,7 +345,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         // 지역별 데이터 가공
         foreach ($data as $row) {
-            $results[$row['TakeArea'] . ':' . $row['TakeAreaName']][$row['TakeMockPartName']] = $row['StabilityAvrPoint'];
+            $results[$row['TakeArea'] . ':' . $row['TakeAreaName']][$row['TakeMockPartName']] = $row['IsUse'] == 'Y' ? $row['StabilityAvrPoint'] : '집계중';
         }
 
         return $this->response([

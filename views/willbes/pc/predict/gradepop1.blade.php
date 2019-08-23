@@ -20,7 +20,7 @@
                     @foreach($subject_list as $key => $val)
                     <li><a href="{{ front_url('/predict/popwin1/?PredictIdx=').$PredictIdx.'&ppidx='.$val['PpIdx'].'&pridx='.$pridx }}" @if($val['PpIdx'] == $ppidx) class="active" @endif>{{ $val['CcdName'] }}</a></li>
                     @endforeach
-                    <li class="tx-red">※ 과목별 답안 입력 후 저장 버튼을 꼭 클릭해주세요.</li>
+                    <li class="tx-red pt10 pl10">※ 과목별 답안 입력 후 저장 버튼을 꼭 클릭해주세요.</li>
                 </ul>
                 <div class="paper">
                 @if($question_list[0]['file'])

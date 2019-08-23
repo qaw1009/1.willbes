@@ -140,8 +140,13 @@
 
                         <div  id='gradeArea1'>
                             <div class="mt10 mb10">
+                                {{--일반채점--}}
                                 '일반채점'은 문제창에서 바로 문제를 확인하면서 OMR 정답지에 답을 체크하는 방식입니다.<br />
                                 * 아크로뱃 리더 프로그램 설치 필요 <a href="https://get.adobe.com/reader/?loc=kr" target="_blank">[설치하기]</a>
+                                {{--빠른채점--}}
+                                '빠른채점'은 시험지를 다운받아 문제를 풀어본 후, 문항별 선택 번호만 입력하는 방식입니다.
+                                {{--직접입력--}}
+                                '직접입력'은 별도 채점 없이 본인의 점수를 직접 입력하는 방식입니다.
                             </div>
                             <table class="boardTypeB">
                                 <col width="25%" />

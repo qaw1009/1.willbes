@@ -1158,9 +1158,9 @@ class SurveyModel extends WB_Model
             ) AS TakeOrigin,  
             ROUND(SUM(pg.AvrPoint),2) AS AvrPoint,
             (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
-            pl.PickNum, pl.TakeNum, CompetitionRateNow, CompetitionRateAgo, PassLineAgo, AvrPointAgo, StabilityAvrPoint, StabilityAvrPercent,
-            StrongAvrPoint1, StrongAvrPoint2, StrongAvrPercent, ExpectAvrPoint1, ExpectAvrPoint2, ExpectAvrPercent, pl.IsUse,               
-            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef             
+            pl.PickNum, pl.TakeNum, pl.CompetitionRateNow, pl.CompetitionRateAgo, pl.PassLineAgo, pl.AvrPointAgo, pl.StabilityAvrPoint, pl.StabilityAvrPercent,
+            pl.StrongAvrPoint1, pl.StrongAvrPoint2, pl.StrongAvrPercent, pl.ExpectAvrPoint1, pl.ExpectAvrPoint2, pl.ExpectAvrPercent, pl.IsUse,               
+            pl.StrongAvrPoint1Ref, pl.StrongAvrPoint2Ref, pl.ExpectAvrPoint1Ref, pl.ExpectAvrPoint2Ref, pl.StabilityAvrPointRef             
         ";
 
         $from = "

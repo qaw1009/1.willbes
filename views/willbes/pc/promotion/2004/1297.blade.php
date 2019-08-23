@@ -33,8 +33,10 @@
     <div class="p_re evtContent NGR" id="evtContainer">
         <ul class="quick">
             <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1297_q01.jpg" alt="학원문의" ></li>
+            {{--
             <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=318" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1297_q02.jpg" alt="국어 기미진 개강" ></a></li>
             <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=318" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/07/1297_q03.jpg" alt="영어 한덕현 개강" ></a></li>
+            --}}
         </ul>
         <!--//Quick-->
 

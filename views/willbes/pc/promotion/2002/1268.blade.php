@@ -115,13 +115,9 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1268_top.jpg" alt="실전 문제풀이 패키지" usemap="#Map1268TOP" border="0"/>
-            <map name="Map1268TOP" id="Map1268TOP">
-                <area shape="rect" coords="169,1075,292,1114" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1284" target="_blank" alt="1단계" />
-                <area shape="rect" coords="499,1073,622,1118" href="#wb_04" alt="2단계" />
-            </map>
-            <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2019/06/1268_top_img1.png" alt="화살표"></span>
-            <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2019/06/1268_top_img2.png" alt="손"></span>
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1268_top.jpg" alt="실전 문제풀이 패키지"/>
+            <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2019/06/1268_top_img1.png" alt=" "></span>
+            <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2019/06/1268_top_img2.png" alt=" "></span>
         </div>
 
         <div class="evtCtnsBox wb_01">

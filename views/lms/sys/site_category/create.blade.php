@@ -100,6 +100,14 @@
             <div class="col-md-3 form-control-static">
                 # 미 입력시 마지막 DP
             </div>
+            <label class="control-label col-md-2" for="is_front_use">Front 사용 여부 <span class="required">*</span>
+            </label>
+            <div class="col-md-4 item form-inline">
+                <div class="radio">
+                    <input type="radio" id="is_front_use_y" name="is_front_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsFrontUse']=='Y')checked="checked"@endif/> <label for="is_front_use_y" class="input-label">사용</label>
+                    <input type="radio" id="is_front_use_n" name="is_front_use" class="flat" value="N" @if($data['IsFrontUse']=='N')checked="checked"@endif/> <label for="is_front_use_n" class="input-label">미사용</label>
+                </div>
+            </div>
         </div>
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2">등록자

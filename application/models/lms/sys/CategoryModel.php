@@ -24,7 +24,7 @@ class CategoryModel extends WB_Model
      */
     public function listCategory($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'CateCode, SiteCode, CateName, ParentCateCode, GroupCateCode, CateDepth, OrderNum, IsUse';
+        $column = 'CateCode, SiteCode, CateName, ParentCateCode, GroupCateCode, CateDepth, OrderNum, IsUse, IsFrontUse';
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
         return $this->_conn->getListResult($this->_table['category'], $column, $arr_condition, $limit, $offset, $order_by);
@@ -94,7 +94,7 @@ class CategoryModel extends WB_Model
                 S.SiteCode, S.SiteName
                     , C.CateCode, C.CateName, ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
                     , concat(S.SiteName, if(PC.CateCode is null, "", concat(" > ", PC.CateName)), " > ", C.CateName) as CateRouteName
-                    , C.IsUse, C.RegDatm, C.RegAdminIdx, A.wAdminName as RegAdminName	                
+                    , C.IsUse, C.RegDatm, C.RegAdminIdx, C.IsFrontUse, A.wAdminName as RegAdminName	                
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -266,7 +266,7 @@ class CategoryModel extends WB_Model
      */
     public function findCategoryForModify($cate_code)
     {
-        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsDefault, C.IsUse, C.RegDatm, C.UpdDatm';
+        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsDefault, C.IsUse,C.IsFrontUse, C.RegDatm, C.UpdDatm';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
@@ -331,6 +331,7 @@ class CategoryModel extends WB_Model
                 'OrderNum' => (empty(element('order_num', $input)) === true) ? $this->getCategoryOrderNum(element('site_code', $input), $parent_cate_code) : element('order_num', $input),
                 'IsDefault' => element('is_default', $input),
                 'IsUse' => element('is_use', $input),
+                'IsFrontUse' => element('is_front_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
             ];
@@ -373,6 +374,7 @@ class CategoryModel extends WB_Model
                 'OrderNum' => (empty(element('order_num', $input)) === true) ? $this->getCategoryOrderNum($row['SiteCode'], $row['ParentCateCode']) : element('order_num', $input),
                 'IsDefault' => element('is_default', $input),
                 'IsUse' => element('is_use', $input),
+                'IsFrontUse' => element('is_front_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];
 

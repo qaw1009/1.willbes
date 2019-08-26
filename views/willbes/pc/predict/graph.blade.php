@@ -1,8 +1,9 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 @section('content')
-<link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
+<link href="/public/css/willbes/promotion/cop_2018_1ch.css" rel="stylesheet">
 <script src="/public/vendor/Nwagon/Nwagon.js"></script>
 <link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css">
+
 <div class="m_section3_wrap">
     {{--지역별 현황--}}
     <div class="m_section3_2">
@@ -114,6 +115,61 @@
     <div class="m_section3_3">
         <h2>과목별 <span>원점수 평균</span></h2>
         <div class="m_section3_3L">
+            <table class="boardTypeB">
+                <thead>
+                    <tr>
+                        <th scope="col">과목</th>
+                        <th scope="col">참여자 실시간 평균</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="thBg01">한국사</th>
+                        <td>79.17 </td>
+                    </tr>
+                    <tr>
+                        <th class="thBg01">영어</th>
+                        <td>58.96 </td>
+                    </tr>
+                    <tr>
+                        <th>형법</th>
+                        <td>66.5 </td>
+                  </tr>
+                    <tr>
+                        <th>형사소송법</th>
+                        <td>68.24 </td>
+                  </tr>
+                    <tr>
+                        <th>경찰학개론</th>
+                        <td>55.44 </td>
+                  </tr>
+                    <tr>
+                        <th>국어</th>
+                        <td>65.56 </td>
+                  </tr>
+                    <tr>
+                        <th>수학</th>
+                        <td>74.1 </td>
+                  </tr>
+                    <tr>
+                        <th>사회</th>
+                        <td>78.12 </td>
+                  </tr>
+                    <tr>
+                        <th>과학</th>
+                        <td>65.19 </td>
+                  </tr>
+                    <tr>
+                        <th>수사</th>
+                        <td>84.53 </td>
+                  </tr>
+                    <tr>
+                        <th>행정법</th>
+                        <td>72.65 </td>
+                  </tr>
+                </tbody>
+            </table>
+
             <table class="boardTypeB">
                 <col width="25%"/>
                 <col width="25%"/>

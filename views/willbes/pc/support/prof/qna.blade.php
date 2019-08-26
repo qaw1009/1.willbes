@@ -91,7 +91,7 @@
                                 </a>
                         </td>
                         <td class="w-write">
-                            {!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!}
+                            {!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : (  mb_strlen($row['RegName'], 'utf-8') < 3 ? hpSubString($row['RegName'],0,1,'*') : hpSubString($row['RegName'],0,2,'*') )  !!}
                         </td>
                         <td class="w-date">{{$row['RegDatm']}}</td>
                         <td class="w-answer">

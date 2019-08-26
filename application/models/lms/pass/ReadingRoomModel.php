@@ -321,8 +321,9 @@ class ReadingRoomModel extends BaseReadingRoomModel
             }
 
             // 독서실/사물함 좌석 정보 등록
-            if ($this->readingRoomModel->_setReadingRoomMst($input) !== true) {
-                throw new \Exception($this->readingRoomModel->arr_mang_title[element('mang_type',$input)].' 좌석 수정에 실패했습니다.');
+            $modelRtn = $this->readingRoomModel->_setReadingRoomMst($input);
+            if ($modelRtn !== true) {
+                throw new \Exception($this->readingRoomModel->arr_mang_title[element('mang_type',$input)].' 좌석 수정에 실패했습니다. '.(is_string($modelRtn) ? $modelRtn : ''));
             }
 
             $this->_conn->trans_commit();

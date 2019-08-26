@@ -1373,4 +1373,45 @@ class BaseReadingRoomModel extends WB_Model
         return $diff_month;
     }
 
+    /**
+     * 문자발송여부
+     * @param $input
+     * @return array|bool
+     */
+    public function modifyReadingRoomSmsIsUse($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if ($this->_updateSmsIsUse($input) !== true) {
+                throw new \Exception('문자발송여부 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 문자발송여부 수정
+     * @param $input
+     * @return bool|string
+     */
+    protected function _updateSmsIsUse($input)
+    {
+        try {
+            $data = [
+                'IsSmsUse' => element('sms_is_use', $input),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            if ($this->_conn->set($data)->where('LrIdx', element('lr_idx', $input))->update($this->_table['readingRoom']) === false) {
+                throw new \Exception('문자발송여부 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
 }

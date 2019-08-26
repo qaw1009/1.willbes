@@ -92,7 +92,7 @@
                                     <td class="w-list tx-left pl20 {{($row['IsBest'] == 1) ? 'strong' : ''}}">
                                         @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
                                             <a href="javascript:alert('비밀글입니다.');">
-                                        @else
+                                                @else
                                             <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                         @endif
                                                 @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
@@ -102,7 +102,7 @@
                                             </a>
                                     </td>
                                     <td class="w-write">
-                                        {!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!}
+                                        {!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : (  mb_strlen($row['RegName'], 'utf-8') < 3 ? hpSubString($row['RegName'],0,1,'*') : hpSubString($row['RegName'],0,2,'*') )  !!}
                                     </td>
                                     <td class="w-date">{{$row['RegDatm']}}</td>
                                     <td class="w-answer">

@@ -10,13 +10,13 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
@@ -69,17 +69,17 @@
 		
 		.skybanner {
             position:fixed;
-            top:200px;
+            top:100px;
             right:0;			
             width:122px;
 			z-index:1000;
         }
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
-	
+    <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1068_skybanner.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=391" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1068_skybanner.png" alt=""/></a>
+			<img src="https://static.willbes.net/public/images/promotion/2019/07/1068_skybanner.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
 			<map name="EV181030_c8" id="EV181030_c8">
 			  <area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
 			  <area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>

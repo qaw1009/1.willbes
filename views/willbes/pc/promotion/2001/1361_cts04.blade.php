@@ -56,6 +56,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts04_05.jpg" alt="인적성 검사" usemap="#Map1361_cts04_05" border="0">
             <map name="Map1361_cts04_05" id="Map1361_cts04_05">
                 <area shape="rect" coords="770,714,973,872" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1069&amp;course_idx=1047" target="_blank" alt="검사신청하기" />
+                <area shape="rect" coords="573,1186,684,1222" href="https://police.willbes.net/pass/support/notice/show?board_idx=236040" target="_blank" alt="대구캠퍼스 공지" />
             </map>
         </div>
 

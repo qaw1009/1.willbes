@@ -855,6 +855,7 @@ class SurveyModel extends WB_Model
 
     /**
      *  합격예측용 성적입력 점수호출 타입1
+     * TODO : 미사용
      */
     public function getSumAvg(){
         $column = "
@@ -882,6 +883,7 @@ class SurveyModel extends WB_Model
 
     /**
      *  합격예측용 성적입력 점수호출 타입1
+     * * TODO : 미사용
      */
     public function getGradeLine($idx, $TakeMockPart, $TakeArea){
         $column = "*";
@@ -1993,4 +1995,123 @@ class SurveyModel extends WB_Model
         return $result;
     }
 
+    /**
+     * 회원의 직렬, 과목 : 원점수, 조정점수, 내석차, 응시자수, 전체평균, 상위5%평균
+     * @param $PredictIdx
+     * @param $take_mock_part
+     * @param $member_idx
+     * @param $take_area
+     * @return mixed
+     */
+    public function AvgListForUserInfo($PredictIdx, $take_mock_part, $take_area, $member_idx)
+    {
+        $column = "pg.MemIdx, pg.TakeMockPart, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.AdjustPoint, pg.MyRank, pa.TakeNum, pa.AvrPoint, pa.FivePerPoint, pp.PaperName";
+        $from = "
+        FROM (
+            SELECT MemIdx,TakeMockPart, TakeArea, PpIdx, OrgPoint, AdjustPoint, RANK AS MyRank
+            FROM {$this->_table['predictGrades']}
+            WHERE PredictIdx = '{$PredictIdx}'
+            AND MemIdx = '{$member_idx}'
+            AND TakeMockPart = '{$take_mock_part}'
+            AND TakeArea = '{$take_area}'
+        ) AS pg
+        INNER JOIN {$this->_table['predictGradesArea']} AS pa ON pa.PredictIdx = '{$PredictIdx}' AND pg.TakeMockPart = pa.TakeMockPart AND pg.TakeArea = pa.TakeArea AND pg.PpIdx = pa.PpIdx
+        INNER JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx AND IsStatus = 'Y'
+        ";
+        $order_by = 'ORDER BY pg.PpIdx ASC';
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
+    }
+
+    /**
+     * 직렬/지역의 원점수 총점, 조정점수 총점, 평균총점, 상위5%총점
+     * @param $PredictIdx
+     * @param $pr_idx
+     * @param $take_mock_part
+     * @param $take_area
+     * @return mixed
+     */
+    public function TotalAreaAvgInfo($PredictIdx, $take_mock_part, $take_area, $pr_idx)
+    {
+        $column = "A.PrIdx, A.TakeMockPart, A.TakeArea, A.TotalOrgPoint, A.TotalAdjustPoint, A.RankNum, A.Cnt, B.TotalAvrPoint, B.TotalFivePerPoint";
+        $from = "
+        FROM (
+            SELECT *
+            FROM (
+                SELECT tmpA.PrIdx, tmpA.TakeMockPart, tmpA.TakeArea, tmpA.TotalOrgPoint, tmpA.TotalAdjustPoint, tmpA.RankNum, tmpB.Cnt
+                FROM (
+                    SELECT PrIdx, TakeMockPart, TakeArea, SUM(OrgPoint) AS TotalOrgPoint, ROUND(SUM(AdjustPoint),2) AS TotalAdjustPoint
+                        , RANK() OVER (PARTITION BY TakeMockPart, TakeArea ORDER BY AdjustPoint DESC) AS RankNum
+                    FROM {$this->_table['predictGrades']}
+                    WHERE PredictIdx = '{$PredictIdx}'
+                        AND TakeMockPart = '{$take_mock_part}'
+                        AND TakeArea = '{$take_area}'
+                    GROUP BY PrIdx, TakeMockPart, TakeArea
+                ) AS tmpA
+                INNER JOIN (
+                    SELECT PrIdx, COUNT(*) AS cnt 
+                    FROM {$this->_table['predictGrades']}
+                    WHERE PredictIdx = '{$PredictIdx}'
+                    AND TakeMockPart = '{$take_mock_part}'
+                    AND TakeArea = '{$take_area}'
+                    GROUP BY PrIdx, TakeMockPart, TakeArea	
+                ) AS tmpB
+                ON tmpA.Pridx = tmpB.PrIdx
+            ) A
+            WHERE A.PrIdx = {$pr_idx}
+        ) AS A
+        INNER JOIN (
+            SELECT TakeMockPart, TakeArea, ROUND(SUM(AvrPoint),2) AS TotalAvrPoint, ROUND(SUM(FivePerPoint),2) AS TotalFivePerPoint
+            FROM {$this->_table['predictGradesArea']}
+            WHERE PredictIdx = '{$PredictIdx}'
+            GROUP BY TakeMockPart, TakeArea
+        ) AS B ON A.TakeMockPart = B.TakeMockPart AND A.TakeArea = B.TakeArea
+        ";
+        //echo "<pre>".'select ' . $column . $from."</pre>";
+        return $this->_conn->query('select ' . $column . $from)->row_array();
+    }
+
+    /**
+     * 직렬/지역별 점수대 회원수 100, 150, 200, 250, 300, 350, 400, 450, 500 이하!
+     * @param $PredictIdx
+     * @param $take_mock_part
+     * @param $take_area
+     * @return mixed
+     */
+    public function CountAreaForMemberPoint($PredictIdx, $take_mock_part, $take_area)
+    {
+        $query = "
+            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND AdjustPoint <= 100) AS cnt_100,
+            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND (AdjustPoint BETWEEN 101 AND 200)) AS cnt_200,
+            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND (AdjustPoint BETWEEN 201 AND 300)) AS cnt_300,
+            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND (AdjustPoint BETWEEN 301 AND 400)) AS cnt_400,
+            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND (AdjustPoint BETWEEN 401 AND 500)) AS cnt_500
+        ";
+        return $this->_conn->query('select ' . $query)->row_array();
+    }
+
+    /**
+     * 합격가능성 분석결과 조회 (합격기대권, 합격유력권, 합격안정권, 일배수컷)
+     * @param $PredictIdx
+     * @param $take_mock_part
+     * @param $take_area
+     * @return mixed
+     */
+    public function getAreaForLineData($PredictIdx, $take_mock_part, $take_area)
+    {
+        $column = "ExpectAvrPoint1, ExpectAvrPoint2, StrongAvrPoint1, StrongAvrPoint2, StabilityAvrPoint, OnePerCut, IsUse";
+
+        $from = " FROM {$this->_table['predictGradesLine']} ";
+
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx' => $PredictIdx,
+                'TakeMockPart' => $take_mock_part,
+                'TakeArea' => $take_area,
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
 }

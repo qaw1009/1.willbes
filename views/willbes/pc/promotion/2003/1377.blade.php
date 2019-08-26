@@ -21,14 +21,47 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:250px;right:10px; z-index:100;}
-        .wb_top{width:100%;height:980px;position:relative;background:url(https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg)no-repeat center top;animation:ani 7s 1;}
+
+        .wb_top{background:url(https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg)no-repeat center top;position:relative;
+                z-index:2;-webkit-animation:ani 5s; animation-delay: 480ms;}
+        .wb_top2{background:url(https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg)no-repeat center top;position:absolute;top:0;bottom:0;z-index:1;
+        /*opacity:1;
+                animation:ani 5s 1;-webkit-animation:ani 5s 1;-moz-animation:ani 5s 1;-o-animation:ani 5s 1;-ms-animation:ani 5s 1;*/}
         @@keyframes ani{
+					0%{opacity:1;}							
+					75%{opacity:0.75;}
+                    100%{opacity:0;}					
+				}
+   
+              
+        /*
+        @@keyframes ani{
+					0%{ background:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}							
+					75%{background:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}
+                    100%{ background:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg");}					
+				}
+              
+                @@-webkit-keyframes ani{
 					0%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}				
-					25%{background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}
-                    50%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}				
 					75%{background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}
                     100%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg");}					
 				}
+                @@-moz-keyframes ani{
+					0%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}						
+					75%{background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}
+                    100%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg");}					
+				}
+                @@-o-keyframes ani{
+					0%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}						
+					75%{background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}
+                    100%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg");}					
+				}
+                @@-ms-keyframes ani{
+					0%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}						
+					75%{background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg");}
+                    100%{ background-image:url("https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg");}					
+				}
+                */
         .wb_cts01{background:#f4f5f6;}
         .wb_cts02 {background:#f8e8e5;}	      
         .wb_cts03 {background:#f4f5f6;}  
@@ -42,9 +75,11 @@
         </div>    
         <!--skybanner//-->
         <div class="evtCtnsBox wb_top" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_top.jpg" alt="" />
         </div>
         <!--wb_top//-->
         <div class="evtCtnsBox wb_top2" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_top2.jpg" alt="" />
         </div>        
         <!--wb_top2//-->
         <div class="evtCtnsBox wb_cts01">

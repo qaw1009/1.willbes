@@ -1,5 +1,8 @@
 @extends('lcms.layouts.master')
 @section('content')
+    <style>
+        .btn-save-is-sms-use {padding: 3px 11px !important; margin-bottom: auto !important;}
+    </style>
     <h5>- {{$mang_title}} 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
@@ -131,8 +134,9 @@
                         <div class="row-line mb-10">
                             <div class="radio">
                                 <span class="mr-5">[문자발송사용여부]</span>
-                                <input type="radio" id="sms_is_use_y" name="sms_is_use" class="flat" value="Y" required="required" title="사용여부" @if($data['IsUse']=='Y')checked="checked"@endif/> <label for="sms_is_use_y" class="input-label">사용</label>
-                                <input type="radio" id="sms_is_use_n" name="sms_is_use" class="flat" value="N" @if($method == 'POST' || $data['IsUse']=='N')checked="checked"@endif/> <label for="sms_is_use_n" class="input-label">미사용</label>
+                                <input type="radio" id="sms_is_use_y" name="sms_is_use" class="flat" value="Y" required="required" title="사용여부" @if($data['IsSmsUse']=='Y')checked="checked"@endif/> <label for="sms_is_use_y" class="input-label">사용</label>
+                                <input type="radio" id="sms_is_use_n" name="sms_is_use" class="flat" value="N" @if($method == 'POST' || $data['IsSmsUse']=='N')checked="checked"@endif/> <label for="sms_is_use_n" class="input-label">미사용</label>
+                                @if($method == 'PUT') <button class="btn-save-is-sms-use btn btn-primary" type="button" id="btn_save_is_sms_use">문자발송 사용여부 저장</button> @endif
                             </div>
                         </div>
                         <div class="row-line mb-10">
@@ -226,6 +230,20 @@
             //목록
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/pass/readingRoom/regist") }}/' + getQueryString();
+            });
+
+            //문자발송 사용여부 저장
+            $('#btn_save_is_sms_use').click(function() {sms_is_use
+                var sms_is_use = $regi_form.find('input[name="sms_is_use"]:checked').val();
+                if(!confirm('문자발송 사용여부를 '+( sms_is_use == 'Y' ? '사용' : '미사용' )+'으로 저장하시겠습니까?')) return false;
+                var _url = '{{ site_url("/pass/readingRoom/regist/storeSmsIsUse") }}' + getQueryString();
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    console.log('ret', ret);
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        //location.replace('{{ site_url("/pass/readingRoom/regist/") }}' + getQueryString());
+                    }
+                }, showValidateError, null, false, 'alert');
             });
 
             // ajax submit

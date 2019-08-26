@@ -16,7 +16,7 @@
                 </div>
                 --}}
                 <div class="sliderNum">
-                    {{--<div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1237" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_190514.jpg" alt="10일 완성 패키지"></a></div>--}}
+                    <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1357" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_190826.jpg" alt="해양경찰 공채 PASS"></a></div>
                     <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1043" target="_blank"><img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론"></a></div>
                 </div>
                 <ul>

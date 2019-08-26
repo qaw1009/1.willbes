@@ -129,7 +129,7 @@
                             <span>검색</span>
                         </button>
                     </div>
-                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                         <select id="site_group" name="site_group" title="과정" class="seleProcess f_left mr10">
                             <option value="">과정</option>
                             @foreach($arr_site_group as $key => $val)

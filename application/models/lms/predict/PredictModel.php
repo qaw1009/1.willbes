@@ -207,10 +207,10 @@ class PredictModel extends WB_Model
             TaKeNumber,
             if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
             if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
-            PR.RegDatm
+            PR.RegDatm,
+            PR.AddPoint,
+            ( SELECT GROUP_CONCAT(CcdName) FROM lms_predict_code WHERE Ccd IN ( SELECT SSPRRC.SubjectCode FROM lms_predict_register_r_code SSPRRC WHERE SSPRRC.PrIdx = PR.PrIdx GROUP BY SSPRRC.PrIdx ) ) AS SubjectName
         ";
-
-
         $from = "
             FROM 
                 {$this->_table['predictRegister']} AS PR
@@ -571,7 +571,7 @@ class PredictModel extends WB_Model
     /**
      *  합격예측용 직렬호출
      */
-    public function getSerialAll(){
+    public function getSerialAll($arr_condition = array()){
         $column = "
             Ccd, CcdName, Type  
         ";
@@ -582,9 +582,11 @@ class PredictModel extends WB_Model
         ";
 
         $order_by = " ORDER BY OrderNum";
-        $where = " WHERE IsUse = 'Y' AND GroupCcd = 0";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-
+        if(empty($arr_condition)===true){
+            $where = " WHERE IsUse = 'Y' AND GroupCcd = 0";
+        }else{
+            $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        }
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->result_array();
 
@@ -617,10 +619,9 @@ class PredictModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
 
-        $MobileServiceIsArr = explode(',',$Res['MobileServiceIs']);
-        $SurveyIsArr = explode(',',$Res['SurveyIs']);
-        $Res['MobileServiceIsArr'] = $MobileServiceIsArr;
-        $Res['SurveyIsArr'] = $SurveyIsArr;
+        $Res['MobileServiceIsArr'] = explode(',',$Res['MobileServiceIs']);
+        $Res['SurveyIsArr'] = explode(',',$Res['SurveyIs']);
+        $Res['MockPartArr'] = explode(',',$Res['MockPart']);
 
         return $Res;
     }
@@ -759,7 +760,7 @@ class PredictModel extends WB_Model
                 
         ";
 
-        $order_by = " ";
+        $order_by = " ORDER BY PP.PredictIdx DESC ";
         $where = "";
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
@@ -1786,24 +1787,18 @@ class PredictModel extends WB_Model
     /**
      * 문항세트전체호출
      */
-    public function statisticsListLine2($PredictIdx){
-
+    public function statisticsListLine2($arr_condition){
         $column = "
             *
         ";
-
         $from = "
             FROM
                 {$this->_table['predictGradesLine']}
         ";
-
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by = " ";
-        $where = " WHERE PredictIdx = ".$PredictIdx;
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $data = $query->result_array();
-
         return $data;
     }
 

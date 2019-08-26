@@ -1264,7 +1264,7 @@ class SurveyModel extends WB_Model
      */
     public function gradeList($PredictIdx){
         $column = "
-            pg.PpIdx, pg.Avg, pc.CcdName as SubjectName, pp.SubjectCode       
+            pg.PpIdx, pg.Avg, pc.CcdName as SubjectName, pp.SubjectCode, pp.Type       
         ";
 
         $from = "

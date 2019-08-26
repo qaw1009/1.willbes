@@ -123,74 +123,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th class="thBg01">한국사</th>
-                        <td>79.17 </td>
-                    </tr>
-                    <tr>
-                        <th class="thBg01">영어</th>
-                        <td>58.96 </td>
-                    </tr>
-                    <tr>
-                        <th>형법</th>
-                        <td>66.5 </td>
-                  </tr>
-                    <tr>
-                        <th>형사소송법</th>
-                        <td>68.24 </td>
-                  </tr>
-                    <tr>
-                        <th>경찰학개론</th>
-                        <td>55.44 </td>
-                  </tr>
-                    <tr>
-                        <th>국어</th>
-                        <td>65.56 </td>
-                  </tr>
-                    <tr>
-                        <th>수학</th>
-                        <td>74.1 </td>
-                  </tr>
-                    <tr>
-                        <th>사회</th>
-                        <td>78.12 </td>
-                  </tr>
-                    <tr>
-                        <th>과학</th>
-                        <td>65.19 </td>
-                  </tr>
-                    <tr>
-                        <th>수사</th>
-                        <td>84.53 </td>
-                  </tr>
-                    <tr>
-                        <th>행정법</th>
-                        <td>72.65 </td>
-                  </tr>
-                </tbody>
-            </table>
-
-            <table class="boardTypeB">
-                <col width="25%"/>
-                <col width="25%"/>
-                <col width="25%"/>
-                <col width="25%"/>
-                <tbody>
-                @for($i = 0; $i < 3; $i++)
-                    @php $idx = $i * 3; @endphp
-                    <tr>
-                        <th>과목</th>
-                        <th>{{ array_get($gradelist2, ($idx + 0) . '.SubjectName') }}</th>
-                        <th>{{ array_get($gradelist2, ($idx + 1) . '.SubjectName') }}</th>
-                        <th>{{ array_get($gradelist2, ($idx + 2) . '.SubjectName') }}</th>
-                    </tr>
-                    <tr>
-                        <th>참여자<br />실시간평균</th>
-                        <td>{{ array_get($gradelist2, ($idx + 0) . '.Avg') }}</td>
-                        <td>{{ array_get($gradelist2, ($idx + 1) . '.Avg') }}</td>
-                        <td>{{ array_get($gradelist2, ($idx + 2) . '.Avg') }}</td>
-                    </tr>
-                @endfor
+                    @foreach($gradelist2 as $row)
+                        <tr>
+                            <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">{{ $row['SubjectName'] }}</th>
+                            <td>{{ $row['Avg'] }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

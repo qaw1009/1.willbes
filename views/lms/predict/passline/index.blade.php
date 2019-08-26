@@ -1,6 +1,9 @@
 @extends('lcms.layouts.master')
 
 @section('content')
+    <style>
+        .display-none {display:none;}
+    </style>
     <h5>- 합격예측서비스 직렬별 예상 합격선을 관리합니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
@@ -12,9 +15,22 @@
                     <div class="col-md-11">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
-                            <option value="">합격예측서비스명</option>
                             @foreach($productList as $key => $val)
                                 <option value="{{ $val['PredictIdx'] }}" class="{{ $val['SiteCode'] }}" @if($PredictIdx == $val['PredictIdx']) selected @endif>[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
+                            <option value="">직렬선택</option>
+                            @foreach($serialList as $key => $val)
+                                <option value="{{ $val['Ccd'] }}" @if(empty($arr_input['TakeMockPart']) === false && $arr_input['TakeMockPart'] == $val['Ccd']) selected @endif>{{ $val['CcdName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
+                            <option value="">지역선택</option>
+                            @foreach($areaList as $key => $val)
+                                @if($val['Ccd'] != '712018')
+                                    <option value="{{ $val['Ccd'] }}" @if(empty($arr_input['TakeArea']) === false && $arr_input['TakeArea'] == $val['Ccd']) selected @endif>{{ $val['CcdName'] }}</option>
+                                @endif
                             @endforeach
                         </select>
                         <div class="inline-block ml-10">
@@ -35,7 +51,13 @@
             <form class="form-horizontal" id="regi_form" name="regi_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
                 <input type="hidden" id="PredictIdx" name="PredictIdx" value="{{ $PredictIdx }}" />
-                <div class="text-right"><input type="button" value="예상합격선 저장" class="btn btn-sm btn-success mr-0" onClick="registLine('{{ $PredictIdx }}')"/></div>
+                <div>
+                    <span class="required">*</span> 선발인원 ~ 지난평균, 전체평균 항목은  직렬/지역별 사용여부에 상관없이 사용자단 출력 (‘수정 시 ‘예상합격선 저장’ 버튼으로만 업데이트 처리) <br>
+                    <span class="required">*</span> 일배수컷, 기대권, 유력권, 안정권 항목은 직렬/지역별 사용여부를 ‘사용’으로 설정 시 사용자단 출력 (‘미사용’ 설정 시 ‘집계중’으로 출력)
+                </div>
+                <div class="text-right">
+                    <input type="button" value="예상합격선 저장" class="btn btn-sm btn-success mr-0" onClick="registLine('{{ $PredictIdx }}')"/>
+                </div>
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
@@ -60,7 +82,7 @@
                     <tbody>
                         @foreach($dataSet as $key => $val)
                             @foreach($val as $key2 => $val2)
-                                <tr>
+                                <tr class="@if($val2['display'] == 'N') display-none @endif">
                                     <td>
                                         <select name="IsUse[]" class="form-control mr-5">
                                             <option value="Y" @if($val2['IsUse'] == 'Y') selected @endif>사용</option>
@@ -79,8 +101,8 @@
                                     <td>{{ ROUND($val2['AvrPoint'],2) }}</td>
                                     <td>{{ $val2['TakeOrigin'] ? $val2['TakeOrigin'] : 0 }} / {{ $val2['TotalRegist'] ? $val2['TotalRegist'] : 0}}</td>
                                     <td>
-                                        구간 : <input type="text" id="per1_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="ExpectAvrPercent[]" value="{{ $val2['ExpectAvrPercent'] ? $val2['ExpectAvrPercent'] : ""}}" style="width:50px;" /> % <br>
-                                        참조 :
+                                        상위 : <input type="text" id="per1_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="ExpectAvrPercent[]" value="{{ $val2['ExpectAvrPercent'] ? $val2['ExpectAvrPercent'] : ""}}" style="width:50px;" /> % <br>
+                                        계산 :
                                         <input type="hidden" id="exp1_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="ExpectAvrPoint1Ref[]" value="{{ $val2['ExpectAvrPoint1Ref'] }}" style="width:60px;" />
                                         <span id="exp1_v_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}">{{ $val2['ExpectAvrPoint1Ref'] ? $val2['ExpectAvrPoint1Ref'] : "" }}</span>
                                         <input type="hidden" id="exp2_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="ExpectAvrPoint2Ref[]" value="{{ $val2['ExpectAvrPoint2Ref'] }}" style="width:60px;" />
@@ -91,8 +113,8 @@
                                         <input type="text" name="ExpectAvrPoint2[]" value="{{ $val2['ExpectAvrPoint2'] ? $val2['ExpectAvrPoint2'] : ""}}" style="width:60px;" />
                                     </td>
                                     <td>
-                                        구간 : <input type="text" id="per2_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StrongAvrPercent[]" value="{{ $val2['StrongAvrPercent'] ? $val2['StrongAvrPercent'] : ""}}" style="width:50px;" /> % <br>
-                                        참조 :
+                                        상위 : <input type="text" id="per2_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StrongAvrPercent[]" value="{{ $val2['StrongAvrPercent'] ? $val2['StrongAvrPercent'] : ""}}" style="width:50px;" /> % <br>
+                                        계산 :
                                         <input type="hidden" id="strong1_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StrongAvrPoint1Ref[]" value="{{ $val2['StrongAvrPoint1Ref'] }}" style="width:60px;" />
                                         <span id="strong1_v_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}">{{ $val2['StrongAvrPoint1Ref'] ? $val2['StrongAvrPoint1Ref'] : "" }}</span>
                                         <input type="hidden" id="strong2_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StrongAvrPoint2Ref[]" value="{{ $val2['StrongAvrPoint2Ref'] }}" style="width:60px;" />
@@ -103,8 +125,8 @@
                                         <input type="text" name="StrongAvrPoint2[]" value="{{ $val2['StrongAvrPoint2'] ? $val2['StrongAvrPoint2'] : "" }}" style="width:60px;" />
                                     </td>
                                     <td>
-                                        구간 : <input type="text" id="per3_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StabilityAvrPercent[]" value="{{ $val2['StabilityAvrPercent'] ? $val2['StabilityAvrPercent'] : "" }}" style="width:50px;" /> % <br>
-                                        참조 :
+                                        상위 : <input type="text" id="per3_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StabilityAvrPercent[]" value="{{ $val2['StabilityAvrPercent'] ? $val2['StabilityAvrPercent'] : "" }}" style="width:50px;" /> % <br>
+                                        계산 :
                                         <input type="hidden" id="stab_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StabilityAvrPointRef[]" value="{{ $val2['StabilityAvrPointRef'] }}" style="width:60px;" />
                                         <span id="stab_v_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}">{{ $val2['StabilityAvrPointRef'] ? $val2['StabilityAvrPointRef']." ~ " : ""}}</span><br>
                                         출력 :
@@ -134,6 +156,8 @@
         function selProd() {
             var qs = '?PredictIdx=' + $search_form.find('select[name="search_PredictIdx"]').val();
             qs += '&SiteCode=' + $search_form.find('select[name="search_site_code"]').val();
+            qs += '&TakeMockPart=' + $search_form.find('select[name="search_TakeMockPart"]').val();
+            qs += '&TakeArea=' + $search_form.find('select[name="search_TakeArea"]').val();
             location.href = '/predict/passline/' + qs;
         }
 

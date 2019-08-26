@@ -1,6 +1,9 @@
 @extends('lcms.layouts.master')
 
 @section('content')
+    <style>
+        .btn-make-step1 { margin-top: 5px; }
+    </style>
     <h5>- 합격예측서비스 원점수 시험통계 처리결과를 관리합니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
@@ -12,7 +15,6 @@
                     <div class="col-md-11">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx" onChange="selProd(this.value)">
-                            <option value="">합격예측비스명</option>
                             @foreach($productList as $key => $val)
                                 <option value="{{ $val['PredictIdx'] }}" class="{{$val['SiteCode']}}">[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
                             @endforeach
@@ -35,6 +37,12 @@
                             <span class="required">*</span> 합격예측서비스명을 먼저 선택해 주세요.
                         </div>
                     </div>
+                </div>
+                <div class=" btn-make-step1">
+                    <a class="btn btn-default btn-sm btn-success mr-15" href="javascript:scoreMakeStep1();">
+                        <span><i class="fa fa-pencil mr-5"></i> 원점수입력</span>
+                    </a>
+                    <span class="required">*</span> 채첨방식을 일반채점으로 진행한 채점자중 정답을 임시저장만 한 회원이 있을 경우 해당 버튼 클릭하여 채점완료 처리를 진행합니다.
                 </div>
             </div>
         </div>
@@ -95,9 +103,9 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 원점수입력', className: 'btn btn-sm btn-success mr-15', action: function(e, dt, node, config) {
-                        scoreMakeStep1();
-                    }},
+                    // { text: '<i class="fa fa-pencil mr-5"></i> 원점수입력', className: 'btn btn-sm btn-success mr-15', action: function(e, dt, node, config) {
+                    //     scoreMakeStep1();
+                    // }},
                     { text: '<i class="fa fa-pencil mr-5"></i> 조정점수입력', className: 'btn btn-sm btn-success mr-15', action: function(e, dt, node, config) {
                         scoreMakeStep2();
                     }},

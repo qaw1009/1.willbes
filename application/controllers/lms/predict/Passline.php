@@ -38,19 +38,24 @@ class Passline extends \app\controllers\BaseController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $PredictIdx = element('PredictIdx',$arr_input);
-        if(empty($PredictIdx)){
-            $PredictIdx = '1';
-        }
-
+        $productList = $this->predictModel->getProductALL();
+        if(empty($PredictIdx)) $PredictIdx = (empty($productList[0]['PredictIdx']) === false ? $productList[0]['PredictIdx'] : '1');
         $arr_site_code = get_auth_on_off_site_codes('N', true);
         $def_site_code = empty($arr_input['SiteCode']) === false ? $arr_input['SiteCode'] : key($arr_site_code);
 
         //합격예측 기본정보호출
-        $productList = $this->predictModel->getProductALL();
         $serialList = $this->predictModel->getSerialAll();
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $areaList = $this->predictModel->getArea($sysCode_Area);
-        $agoData = $this->predictModel->statisticsListLine2($PredictIdx);
+
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx' => $PredictIdx
+//                'TakeMockPart' => (empty($arr_input['TakeMockPart']) === true) ? '\'\'' : $arr_input['TakeMockPart'],
+//                'TakeArea' => (empty($arr_input['TakeArea']) === true) ? '\'\'' : $arr_input['TakeArea']
+            ]
+        ];
+        $agoData = $this->predictModel->statisticsListLine2($arr_condition);
 
         $dtSet = array();
         foreach ($agoData as $key => $val){
@@ -101,9 +106,19 @@ class Passline extends \app\controllers\BaseController
             $dtSet[$TakeMockPart][$TakeArea]['IsUse'] = $IsUse;
         }
 
-        $dataSet = array();
+        //해당 합격예측의 직렬 세팅
+        $searchSerialList = array();
+        $PredictData = $this->predictModel->getProduct($PredictIdx);
+        if(empty($PredictData) === false){
+            foreach ($PredictData['MockPartArr'] as $key => $val){
+                foreach ($serialList as $key2 => $val2) {
+                    if($val == $val2['Ccd']) array_push($searchSerialList, $serialList[$key2]);
+                }
+            }
+        }
 
-        foreach ($serialList as $key => $val) {
+        $dataSet = array();
+        foreach ($searchSerialList as $key => $val) {
             foreach ($areaList as $key2 => $val2) {
                 $SerialCcd = $val['Ccd'];
                 $SerialCcdName = $val['CcdName'];
@@ -165,8 +180,6 @@ class Passline extends \app\controllers\BaseController
                             $dataSet[$SerialCcd][$TakeArea]['ExpectAvrPercent'] = '';
                             $dataSet[$SerialCcd][$TakeArea]['IsUse'] = '';
                         }
-
-
                     }
                 } else {
                     $dataSet[$SerialCcd][$TakeArea]['TakeMockPartName'] = $SerialCcdName;
@@ -222,6 +235,35 @@ class Passline extends \app\controllers\BaseController
                         $dataSet[$SerialCcd][$TakeArea]['IsUse'] = '';
                     }
                 }
+                /*
+                 * === 리스트 조건 검색 처리 ===
+                 * 해당화면은 저장시 전부 삭제후 인서트하는 방식. 리스트 조회시 화면에 모든정보가 그려져 있어야지 정상적으로 데이터 저장 가능.
+                 * 리스트 조건검색시 해당하지않는 데이터는 display:none 하기 위한 처리. 2019-08-23 최형진
+                 */
+                $displayFlag = 'N';
+                if(empty($arr_input['TakeMockPart']) === true && empty($arr_input['TakeArea']) === true){
+                    if(array_key_exists($TakeArea, $dataSet[$SerialCcd])) {
+                        $displayFlag = 'Y'; //조회 조건 없음
+                    }
+                }else{
+                    if(array_key_exists($TakeArea, $dataSet[$SerialCcd])){
+                        if(empty($arr_input['TakeMockPart']) === false && empty($arr_input['TakeArea']) === false){
+                            if($arr_input['TakeMockPart'] == $dataSet[$SerialCcd][$TakeArea]['TakeMockPart'] && $arr_input['TakeArea'] == $dataSet[$SerialCcd][$TakeArea]['TakeArea'] ){
+                                $displayFlag = 'Y'; //직렬&지역
+                            }
+                        }else if(empty($arr_input['TakeMockPart']) === false && empty($arr_input['TakeArea']) === true){
+
+                            if($arr_input['TakeMockPart'] == $dataSet[$SerialCcd][$TakeArea]['TakeMockPart']){
+                                $displayFlag = 'Y'; //직렬
+                            }
+                        }else if(empty($arr_input['TakeMockPart']) === true && empty($arr_input['TakeArea']) === false){
+                            if($arr_input['TakeArea'] == $dataSet[$SerialCcd][$TakeArea]['TakeArea']){
+                                $displayFlag = 'Y'; //지역
+                            }
+                        }
+                    }
+                }
+                $dataSet[$SerialCcd][$TakeArea]['display'] = $displayFlag;
             }
         }
 
@@ -317,12 +359,16 @@ class Passline extends \app\controllers\BaseController
            //var_dump($dataSet);
         }
 
+//        print_r($dataSet); exit;
         $this->load->view('predict/passline/index', [
             'productList' => $productList,
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
             'PredictIdx' => $PredictIdx,
-            'dataSet' => $dataSet
+            'dataSet' => $dataSet,
+            'serialList' => $serialList,
+            'areaList' => $areaList,
+            'arr_input' => $arr_input
         ]);
     }
 

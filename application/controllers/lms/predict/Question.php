@@ -85,6 +85,11 @@ class Question extends \app\controllers\BaseController
             $idx = '0';
         }
 
+        $search_site_code = get_var($this->_reqG('search_site_code'), array_get(json_decode(base64_decode($this->_reqG('q')), true), 'search_site_code'));
+        if (empty($search_site_code) === true) {
+            $search_site_code = '2001';
+        }
+
         //합격예측 기본정보호출
         $productList = $this->predictModel->getProductALL();
 
@@ -110,6 +115,7 @@ class Question extends \app\controllers\BaseController
         }
 
         $this->load->view('predict/question/question_create', [
+            'search_site_code' => $search_site_code,
             'method' => $method,
             'siteCodeDef' => '',
             'productList' => $productList,
@@ -139,9 +145,9 @@ class Question extends \app\controllers\BaseController
             ['field' => 'RegistStandard', 'label' => '입력-표준편차', 'rules' => 'trim|required|max_length[50]'],
         ];
 
-        if( $_FILES['QuestionFile']['error'] !== UPLOAD_ERR_OK || $_FILES['QuestionFile']['size'] == 0 ) {
+        /*if( $_FILES['QuestionFile']['error'] !== UPLOAD_ERR_OK || $_FILES['QuestionFile']['size'] == 0 ) {
             $rules[] = ['field' => 'QuestionFile', 'label' => '문제통파일', 'rules' => 'required'];
-        }
+        }*/
 
         if ($this->validate($rules) === false) return;
 

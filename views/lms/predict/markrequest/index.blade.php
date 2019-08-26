@@ -71,6 +71,7 @@
                         <th class="text-center">직렬</th>
                         <th class="text-center">지역</th>
                         <th class="text-center">성적정보</th>
+                        <th class="text-center">가산점</th>
                         <th class="text-center">응시번호</th>
                         <th class="text-center">수강여부</th>
                         <th class="text-center">시험준비기간</th>
@@ -121,6 +122,7 @@
                     {'data' : 'TakeMockPart', 'class': 'text-center'},
                     {'data' : 'TaKeArea', 'class': 'text-center'},
                     {'data' : 'OPOINT', 'class': 'text-center'},
+                    {'data' : 'AddPoint', 'class': 'text-center'},
                     {'data' : 'TaKeNumber', 'class': 'text-center'},
                     {'data' : 'LectureType', 'class': 'text-center'},
                     {'data' : 'Period', 'class': 'text-center'},

@@ -67,9 +67,11 @@
 
             <div class="skyBanner">
                 <ul>
+                    {{--
                     <li>
                         <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner.png" title="합격전략 설명회"></a>
                     </li>
+                    --}}
                     <li>
                         <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/08/1363_skybanner2.png" title="심화 커리큘럼 설명회"></a>
                     </li>
@@ -117,7 +119,7 @@
                                     <td>
                                         <ul>
                                             <input type="hidden" name="register_data1" value=""/>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus1" value="8.24(토)" /> <label for="campus1">8.24(토)</label></li>
+                                            <li>8.24(토) 종료</li>
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus2" value="9.4(수)" /> <label for="campus2">9.4(수)</label></li>
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="9.8(일)" /> <label for="campus3">9.8(일)</label></li>
                                         </ul>

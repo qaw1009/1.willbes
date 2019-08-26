@@ -230,4 +230,23 @@ class Regist extends \app\controllers\BaseController
         $result = $this->readingRoomModel->modifyReadingRoomSeatType($this->_reqP(null,false));
         $this->json_result($result, '수정 완료 되었습니다.', $result);
     }
+
+    /**
+     * 문자발송여부 수정
+     */
+    public function storeSmsIsUse()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'lr_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'sms_is_use', 'label' => '문자발송여부', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->readingRoomModel->modifyReadingRoomSmsIsUse($this->_reqP(null,false));
+        $this->json_result($result, '수정 완료 되었습니다.', $result);
+    }
 }

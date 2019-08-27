@@ -49,7 +49,12 @@ class Prerequest extends \app\controllers\BaseController
             $scode = key($arr_site_code);
         }
 
-        list($data, $count) = $this->predictModel->mainList();
+        $condition = [
+            'EQ' => [
+                'PP.IsUse' => 'Y'
+            ]
+        ];
+        list($data, $count) = $this->predictModel->mainList($condition);
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $area = $this->predictModel->getArea($sysCode_Area);
         $serial = $this->predictModel->getSerialAll();

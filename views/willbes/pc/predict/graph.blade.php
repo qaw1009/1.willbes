@@ -556,7 +556,7 @@
             'core_circle_radius':50,
             'chartDiv': 'pointarea',
             'chartType': 'donut',
-            'chartSize': {width:700, height:400}
+            'chartSize': {width:700, height:300}
         };
         Nwagon.chart(options);
     }
@@ -616,7 +616,7 @@
             'core_circle_radius':50,
             'chartDiv': 'pointarea2',
             'chartType': 'donut',
-            'chartSize': {width:700, height:400}
+            'chartSize': {width:700, height:300}
         };
         Nwagon.chart(options);
     }
@@ -647,7 +647,7 @@
             'core_circle_radius':0,
             'chartDiv': 'best1',
             'chartType': 'pie',
-            'chartSize': {width:700, height:400}
+            'chartSize': {width:700, height:300}
         };
         Nwagon.chart(options);
     }
@@ -678,7 +678,7 @@
             'core_circle_radius':0,
             'chartDiv': 'best2',
             'chartType': 'pie',
-            'chartSize': {width:700, height:400}
+            'chartSize': {width:700, height:300}
         };
         Nwagon.chart(options);
     }
@@ -731,7 +731,7 @@
                 },
                 'chartDiv': 'survey1',
                 'chartType': 'multi_column',
-                'chartSize': { width: 700, height: 300 },
+                'chartSize': { width: 900, height: 300 },
                 'maxValue': 100,
                 'increment': 10
             };
@@ -753,7 +753,7 @@
                 },
                 'chartDiv': 'survey2',
                 'chartType': 'multi_column',
-                'chartSize': { width: 700, height: 300 },
+                'chartSize': { width: 900, height: 300 },
                 'maxValue': 100,
                 'increment': 10
             };
@@ -776,7 +776,7 @@
                     },
                     'chartDiv': 'survey3',
                     'chartType': 'multi_column',
-                    'chartSize': {width: 700, height: 300},
+                    'chartSize': {width: 900, height: 300},
                     'maxValue': 100,
                     'increment': 10
                 };

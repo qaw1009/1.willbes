@@ -70,12 +70,15 @@
         <div class="evtCtnsBox wb_cts04" id="event">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377" border="0" />
             <map name="Map1377" id="Map1377">
-                <area shape="rect" coords="669,320,832,371" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156478" target="_blank"alt="온라인" />
+                <area shape="rect" coords="669,320,832,371" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154887" target="_blank"alt="온라인" />
                 <area shape="rect" coords="841,320,1011,372" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank"alt="학원실강" />
-                <area shape="rect" coords="665,442,832,493" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154887" target="_blank"alt="온라인" />
+				
+                <area shape="rect" coords="665,442,832,493" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156352" target="_blank"alt="온라인" />
                 <area shape="rect" coords="838,444,1008,495" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank"alt="학원실강" />
-                <area shape="rect" coords="665,563,829,613" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156352" target="_blank"alt="온라인" />
+				
+                <area shape="rect" coords="665,563,829,613" href="javascript:alert('준비중입니다.');" alt="온라인" />
                 <area shape="rect" coords="840,563,1003,609" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank"alt="학원실강" />
+				
                 <area shape="rect" coords="671,682,830,731" href="javascript:alert('준비중입니다.');" alt="온라인" />
                 <area shape="rect" coords="837,681,1002,731" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank"alt="학원실강" />           
                 <area shape="rect" coords="665,798,1006,851" href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_blank"alt="온라인 수강신청" />

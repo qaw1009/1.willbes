@@ -12,7 +12,12 @@ class PredictFinal extends \app\controllers\BaseController
         $arr_site_code = get_auth_on_off_site_codes('N', true);
         $def_site_code = key($arr_site_code);
 
-        list($data, $count) = $this->predictModel->mainList();
+        $condition = [
+            'EQ' => [
+                'PP.IsUse' => 'Y'
+            ]
+        ];
+        list($data, $count) = $this->predictModel->mainList($condition);
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $area = $this->predictModel->getArea($sysCode_Area);
         $serial = $this->predictModel->getSerialAll();

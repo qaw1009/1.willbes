@@ -17,6 +17,7 @@
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
                             @foreach($productList as $key => $val)
                                 <option value="{{ $val['PredictIdx'] }}" class="{{ $val['SiteCode'] }}" @if($PredictIdx == $val['PredictIdx']) selected @endif>[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
+                                {{--<option value="{{ $val['PredictIdx'] }}" class="{{ $val['SiteCode'] }}" @if($PredictIdx == $val['PredictIdx'] || $loop->first === true)checked="checked"@endif>[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>--}}
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">

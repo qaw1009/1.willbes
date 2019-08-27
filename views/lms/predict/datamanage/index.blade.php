@@ -19,7 +19,6 @@
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-5 form-inline">
                         <select name="search_use" id="search_use" class="form-control mr-5">
-                            <option value="" >사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>

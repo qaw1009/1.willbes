@@ -73,7 +73,8 @@
             font-size:30px;
         }
         .evt01 ul {width:1120px; margin:0 auto;}
-        .evt01 li {display:inline; float:left; width:20%}
+        .evt01 li {display:inline; float:left; width:20%; position:relative;}
+        .evt01 li span {position:absolute; width:100%; text-align:center; top:-40px}
         .evt01 li a img.on {display:none}
         .evt01 li a img.off {display:block}
         .evt01 li a.active img.on,
@@ -170,6 +171,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
             <ul>
                 <li>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
                     <a href="#tab01">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
@@ -188,6 +190,7 @@
                     </a>
                 </li>
                 <li>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
                     {{--<a onClick='alert("COMING SOON!! ")'>--}}
                     <a href="#tab04">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">

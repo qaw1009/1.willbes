@@ -165,6 +165,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
+                    $datatable.draw();
                 }
             }, showValidateError, null, false, 'alert');
         }
@@ -177,6 +178,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
+                    $datatable.draw();
                 }
             }, showValidateError, null, false, 'alert');
         }
@@ -189,6 +191,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
+                    $datatable.draw();
                 }
             }, showValidateError, null, false, 'alert');
         }

@@ -85,6 +85,7 @@
         .evt02 {background:#18294d;}        
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_03_bg.jpg) no-repeat center top;}
         .evt03 div {
+            display:none;
             position:absolute;
             width:408px;
             left:50%; 
@@ -103,6 +104,7 @@
             margin:0;
         }
         .evt03 .btnlec {
+            display:none;
             position:absolute;
             width:324px;
             left:50%; 

@@ -2,7 +2,7 @@
     <li><a href="#event">채점만해도<Br />선물증정</a></li>
     <li><a href="javascript:tabMove(2);">빠른채점</a></li>
     <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1208" target="_blank">라이브 토크쇼</a></li>
-    <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank">적중이벤트</a></li>
+    <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1362" target="_blank">적중이벤트</a></li>
     <li><a href="#evtContainer">top</a></li>
 </ul>
 

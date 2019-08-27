@@ -131,7 +131,10 @@
   --}}
   
   <div class="evtCtnsBox wb_cts08">
-	  <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_07.jpg" title="선접수이벤트" /></a>
+    <img src="https://static.willbes.net/public/images/promotion/2019/05/1246_07.jpg" usemap="#Map190827" title="선접수이벤트" border="0" />
+    <map name="Map190827" id="Map190827">
+      <area shape="rect" coords="260,475,857,553" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&amp;campus_ccd=605001" target="_blank" alt="군무원 수강신청" />
+    </map>
   </div>
   <!--wb_cts08//--> 
 

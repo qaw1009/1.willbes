@@ -44,8 +44,15 @@ class Gradeprocessing extends \app\controllers\BaseController
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $areaList = $this->predictModel->getArea($sysCode_Area);
 
+        $condition = [
+            'EQ' => [
+                'PP.IsUse' => 'Y'
+            ]
+        ];
+        list($data, $count) = $this->predictModel->mainList($condition);
+
         $this->load->view('predict/gradeprocess/index', [
-            'productList' => $productList,
+            'productList' => $data,
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
             'serialList' => $serialList,

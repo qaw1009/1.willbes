@@ -15,6 +15,7 @@
                     <div class="col-md-11">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx" onChange="selProd(this.value)">
+                            <option value="">합격예측선택</option>
                             @foreach($productList as $key => $val)
                                 <option value="{{ $val['PredictIdx'] }}" class="{{$val['SiteCode']}}">[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
                             @endforeach

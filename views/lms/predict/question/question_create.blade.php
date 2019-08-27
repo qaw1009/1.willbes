@@ -12,6 +12,7 @@
                 {!! method_field($method) !!}
                 <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['PpIdx'] : '' }}">
                 <input type="hidden" name="isDeny" value="{{ ($method == 'PUT') ? $isDeny : '' }}">
+                {!! html_site_select($search_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
 
                 <table class="table table-bordered modal-table">
                     <tr>
@@ -21,9 +22,9 @@
                                 <option value="">합격예측서비스명</option>
                                 @foreach($productList as $key => $val)
                                     @if($method == 'PUT')
-                                        <option value="{{ $val['PredictIdx'] }}" @if($data['PredictIdx'] == $val['PredictIdx']) selected @endif>{{ $val['ProdName'] }}</option>
+                                        <option class="{{$val['SiteCode']}}" value="{{ $val['PredictIdx'] }}" @if($data['PredictIdx'] == $val['PredictIdx']) selected @endif>{{ $val['ProdName'] }}</option>
                                     @else
-                                        <option value="{{ $val['PredictIdx'] }}">{{ $val['ProdName'] }}</option>
+                                        <option class="{{$val['SiteCode']}}" value="{{ $val['PredictIdx'] }}">{{ $val['ProdName'] }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -209,6 +210,9 @@
         var chapterDel = [];
 
         $(document).ready(function() {
+            // 합격예측서비스명 자동 변경
+            $regi_form.find('select[name="PredictIdx"]').chained("#search_site_code");
+
             $('body').tooltip({
                 selector: '.img-tooltip',
                 container: 'body',
@@ -346,8 +350,7 @@
         }
 
         function selPredictIdx(num,num2){
-
-            if(num != null){
+            if(num != ''){
                 url = "{{ site_url("/predict/question/getSubjectAjax") }}";
                 data = $('#regi_form').serialize();
 
@@ -380,6 +383,9 @@
                     function(ret, status){
                         //alert(ret.ret_msg);
                     }, true, 'POST', 'json');
+            } else {
+                $('#chkArea').html('');
+                $('#chkArea2').html('');
             }
 
         }

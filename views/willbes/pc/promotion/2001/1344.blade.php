@@ -109,7 +109,7 @@
                     {{--</div>--}}
 
                     <div class="sectionEvt01" id="event">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_evt00.jpg" alt="합격예측 풀서비스 이용하고 푸짐한 혜택도 받자!" />
+                        <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_evt00.jpg" alt="합격예측 풀서비스 이용하고 푸짐한 혜택도 받자!" />
                     </div>
 
                     <div class="sectionEvt01_1">

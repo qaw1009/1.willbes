@@ -17,7 +17,7 @@
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx" onChange="selProd(this.value)">
                             {{--<option value="">합격예측선택</option>--}}
                             @foreach($productList as $key => $val)
-                                <option value="{{ $val['PredictIdx'] }}" class="{{$val['SiteCode']}}">[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
+                                <option value="{{ $val['PredictIdx'] }}" @if($loop->first === true)checked="checked"@endif class="{{$val['SiteCode']}}">[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
@@ -99,6 +99,7 @@
         $(document).ready(function() {
             // 합격예측서비스명 자동 변경
             $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
+            selProd($search_form.find('select[name="search_PredictIdx"]').val());
 
             // DataTables
             $datatable = $list_table.DataTable({

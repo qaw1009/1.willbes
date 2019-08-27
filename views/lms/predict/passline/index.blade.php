@@ -148,10 +148,20 @@
     <script type="text/javascript">
         var $search_form = $('#search_form');
         var $regi_form = $('#regi_form');
+        var $datatable;
+        var $list_table = $('#list_table');
 
         $(document).ready(function() {
             // 합격예측서비스명 자동 변경
             $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
+
+            $datatable = $list_table.DataTable({
+                responsive: false,
+                serverSide: false,
+                ajax : false,
+                paging: false,
+                searching: false
+            });
         });
 
         function selProd() {

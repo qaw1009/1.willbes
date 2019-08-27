@@ -22,21 +22,8 @@
 
         .skybanner {position:fixed;top:250px;right:10px; z-index:100;}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg) no-repeat center top; position:relative; height:980px;}
-        .wb_top span {position:absolute; width:1120px; left:50%; margin-left:-560px}
-        .wb_top span.img01 {z-index:2; animation:ani 5s; -webkit-animation:ani 5s; opacity:0;}
-        .wb_top span.img02 {z-index:1}
-        @@keyframes ani{
-            0%{opacity:1;}							
-            75%{opacity:1;}
-            100%{opacity:0;}
-        }
-        @@-webkit-keyframes ani{
-            0%{opacity:1;}							
-            75%{opacity:1;}
-            100%{opacity:0;}
-        }   
-
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg) no-repeat center top;}
+        .wb_top2 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg) no-repeat center top;}
         .wb_cts01{background:#f4f5f6;}
         .wb_cts02 {background:#f8e8e5;}	      
         .wb_cts03 {background:#f4f5f6;}  
@@ -50,10 +37,12 @@
         </div>    
         <!--skybanner//-->
         <div class="evtCtnsBox wb_top" >
-            <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_top.jpg" alt="" /></span>
-            <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_top2.jpg" alt="" /></span>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_top.jpg" alt="공무원 국어의 종착점" />           
         </div>
-        <!--wb_top//-->       
+        <!--wb_top//-->    
+        <div class="evtCtnsBox wb_top2" >     
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_top2.jpg" alt="대세를 넘어" />
+        </div>   
         <!--wb_top2//-->
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_01.jpg" alt="기미진 기특한 국어 커리큘럼" />

@@ -414,7 +414,7 @@
     {{--설문결과--}}
     <div class="m_section3_7">
     @if(empty($surveyList) === false)
-        <div>
+        <div id="survey_result">
             <h3>설문조사 결과</h3>
             <div class="popcontent">
                 <div class="question">
@@ -680,6 +680,12 @@
             return;
         }
 
+        if (val === 2) {
+            $('#survey_result #survey3').parents('.question').css('display', 'none');
+        } else {
+            $('#survey_result #survey3').parents('.question').css('display', '');
+        }
+
         // 응시직렬별 데이터
         json = json[val];
 
@@ -730,23 +736,25 @@
         // 선택 과목 시험 체감 난이도
         if (typeof json['Group4'] !== 'undefined') {
             $('#survey3').html('');
-            options = {
-                'legend': {
-                    names: json['Group4']['Title']
-                },
-                'dataset': {
-                    title: '선택 과목 시험 체감 난이도',
-                    values: json['Group4']['Data'],
-                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
-                    fields: json['Group4']['Comment']
-                },
-                'chartDiv': 'survey3',
-                'chartType': 'multi_column',
-                'chartSize': { width: 700, height: 300 },
-                'maxValue': 100,
-                'increment': 10
-            };
-            Nwagon.chart(options);
+            if (val !== 2) {
+                options = {
+                    'legend': {
+                        names: json['Group4']['Title']
+                    },
+                    'dataset': {
+                        title: '선택 과목 시험 체감 난이도',
+                        values: json['Group4']['Data'],
+                        colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
+                        fields: json['Group4']['Comment']
+                    },
+                    'chartDiv': 'survey3',
+                    'chartType': 'multi_column',
+                    'chartSize': {width: 700, height: 300},
+                    'maxValue': 100,
+                    'increment': 10
+                };
+                Nwagon.chart(options);
+            }
         }
     }
 

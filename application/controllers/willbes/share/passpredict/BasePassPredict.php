@@ -841,7 +841,7 @@ class BasePassPredict extends \app\controllers\FrontController
         // 7. 과목별조합선호도 (origin, 0점 제외)
         $bestCombList = $this->surveyModel->bestCombineSubject($PredictIdx);
 
-        // 8. 과목별 체감난이도 (설문)
+        // 8. 과목별 체감난이도 (설문문항식별자 => 한국사, 영어, 형법, 형사소송법, 경찰학개론, 국어, 수학, 사회, 과학)
         $arr_sq_idx = [29, 28, 20, 19, 43, 27, 8, 6, 7];  // 비교대상 설문항목
         $spNowList = $this->surveyModel->surveyAnswerCall($spidx2, $arr_sq_idx);    // 진행설문결과
         $spPrevList = $this->surveyModel->surveyAnswerCall($spidx1, $arr_sq_idx);   // 이전설문결과

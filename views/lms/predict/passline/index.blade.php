@@ -86,7 +86,7 @@
                                     <td>
                                         <select name="IsUse[]" class="form-control mr-5">
                                             <option value="Y" @if($val2['IsUse'] == 'Y') selected @endif>사용</option>
-                                            <option value="N" @if($val2['IsUse'] == 'N') selected @endif>미사용</option>
+                                            <option value="N" @if($val2['IsUse'] == 'N' || empty($val2['IsUse']) === true) selected @endif>미사용</option>
                                         </select>
                                     </td>
                                     <td>{{ $val2['TakeMockPartName'] }}<input type="hidden" name="TakeMockPart[]" value="{{ $val2['TakeMockPart'] }}" /></td>

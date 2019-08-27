@@ -51,6 +51,7 @@ class Datamanage extends \app\controllers\BaseController
     {
         $condition = [
             'EQ' => [
+                'r.IsUse' => 'Y',
                 'r.IsStatus' => 'Y',
                 'r.ApplyType' => $this->_reqP('search_ApplyType'),
                 'r.SiteCode' => $this->_reqP('search_site_code'),

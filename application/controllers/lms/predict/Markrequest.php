@@ -104,7 +104,7 @@ class Markrequest extends \app\controllers\BaseController
             set_time_limit(0);
             ini_set('memory_limit', $this->_memory_limit_size);
 
-            $data  = $this->predictModel->predictRegistListExcel2($condition);
+            $data  = $this->predictModel->predictRegistListExcel2($condition, ['PR.RegDatm' => 'DESC']);
             // export excel
             $file_name = '채점서비스참여현황_'.date('Y-m-d');
 

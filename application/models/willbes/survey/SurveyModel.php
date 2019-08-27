@@ -1105,7 +1105,7 @@ class SurveyModel extends WB_Model
                     $txt = $q;
                 } else {
                     $txt = implode("/",(array)$q);
-                    $txt = substr($txt,0,strlen($txt)-1);
+//                    $txt = substr($txt,0,strlen($txt)-1);
                 }
 
                 $Comment = '';

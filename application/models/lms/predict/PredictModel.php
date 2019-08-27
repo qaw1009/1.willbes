@@ -1295,7 +1295,7 @@ class PredictModel extends WB_Model
     public function answerCallDetail($idx)
     {
         $column = "
-            sa.SaIdx, SubTitle, sa.SqIdx, Answer, sa.Comment, sa.TYPE, si.MemIdx, lm.MemName, lm.MemId, si.RegDatm
+            sa.SaIdx, sq.SqTitle AS SubTitle, sa.SqIdx, Answer, sa.Comment, sa.TYPE, si.MemIdx, lm.MemName, lm.MemId, si.RegDatm
         ";
 
         $from = "
@@ -1304,10 +1304,10 @@ class PredictModel extends WB_Model
                 JOIN {$this->_table['surveyAnswer']} AS si ON sp.SpIdx = si.SpIdx
                 JOIN {$this->_table['member']} AS lm ON si.MemIdx = lm.MemIdx
                 JOIN {$this->_table['surveyAnswerDetail']} AS sa ON si.SaIdx = sa.SaIdx
-                LEFT JOIN {$this->_table['surveyQuestionSetDetail']}  sr ON sa.SqIdx = sr.SqIdx AND sp.SqsIdx = sr.SqsIdx
+                JOIN {$this->_table['surveyQuestion']} AS sq ON sa.SqIdx = sq.SqIdx
         ";
 
-        $order_by = " ORDER BY si.SaIdx, si.MemIdx, sr.GroupNumber ASC, sa.SqIdx ASC";
+        $order_by = " ORDER BY si.SaIdx, si.MemIdx, sa.SadIdx";
         $where = " WHERE sp.SpIdx = " . $idx;
         //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 

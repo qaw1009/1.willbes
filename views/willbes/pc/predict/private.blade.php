@@ -58,25 +58,30 @@
                                 <th>전체 평균</th>
                                 <th>상위 5% 평균</th>
                             </tr>
-
-                            @foreach($arr_base['user_subject_avg'] as $row)
+                            @if (empty($arr_base['user_subject_avg']) === true)
                                 <tr>
-                                    <th>{{ $row['PaperName'] }}</th>
-                                    <td>{{ $row['OrgPoint'] }}</td>
-                                    <td>{{ $row['AdjustPoint'] }}</td>
-                                    <td>{{ number_format($row['MyRank']) }} / {{ number_format($row['TakeNum']) }} </td>
-                                    <td>{{ $row['AvrPoint'] }}</td>
-                                    <td>{{ $row['FivePerPoint'] }}</td>
+                                    <td colspan="6">등록된 성적 데이터가 없습니다.</td>
                                 </tr>
-                            @endforeach
-                            <tr>
-                                <th>총점</th>
-                                <th>{{ (empty($arr_base['total_area_avg']['TotalOrgPoint']) === false ? $arr_base['total_area_avg']['TotalOrgPoint'] : '집계중') }}</th>
-                                <th>{{ (empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '집계중') }}</th>
-                                <th>{{ (empty($arr_base['total_area_avg']['RankNum']) === false ? $arr_base['total_area_avg']['RankNum'] : '집계중') }} / {{ (empty($arr_base['total_area_avg']) === false ? $arr_base['total_area_avg']['Cnt'] : '집계중') }} </th>
-                                <th>{{ (empty($arr_base['total_area_avg']['TotalAvrPoint']) === false ? $arr_base['total_area_avg']['TotalAvrPoint'] : '집계중') }}</th>
-                                <th>{{ (empty($arr_base['total_area_avg']['TotalFivePerPoint']) === false ? $arr_base['total_area_avg']['TotalFivePerPoint'] : '집계중') }}</th>
-                            </tr>
+                            @else
+                                @foreach($arr_base['user_subject_avg'] as $row)
+                                    <tr>
+                                        <th>{{ $row['PaperName'] }}</th>
+                                        <td>{{ $row['OrgPoint'] }}</td>
+                                        <td>{{ $row['AdjustPoint'] }}</td>
+                                        <td>{{ number_format($row['MyRank']) }} / {{ number_format($row['TakeNum']) }} </td>
+                                        <td>{{ $row['AvrPoint'] }}</td>
+                                        <td>{{ $row['FivePerPoint'] }}</td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <th>총점</th>
+                                    <th>{{ (empty($arr_base['total_area_avg']['TotalOrgPoint']) === false ? $arr_base['total_area_avg']['TotalOrgPoint'] : '집계중') }}</th>
+                                    <th>{{ (empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '집계중') }}</th>
+                                    <th>{{ (empty($arr_base['total_area_avg']['RankNum']) === false ? $arr_base['total_area_avg']['RankNum'] : '집계중') }} / {{ (empty($arr_base['total_area_avg']) === false ? $arr_base['total_area_avg']['Cnt'] : '집계중') }} </th>
+                                    <th>{{ (empty($arr_base['total_area_avg']['TotalAvrPoint']) === false ? $arr_base['total_area_avg']['TotalAvrPoint'] : '집계중') }}</th>
+                                    <th>{{ (empty($arr_base['total_area_avg']['TotalFivePerPoint']) === false ? $arr_base['total_area_avg']['TotalFivePerPoint'] : '집계중') }}</th>
+                                </tr>
+                            @endif
                         </table>
                         <div class="mt10">
                             * 채점결과에 따른 과목별, 총점과 응시 직렬/지역의 석차, 평균 정보입니다.<br>
@@ -154,7 +159,7 @@
                             <table class="boardTypeB">
                                 <col />
                                 <col />
-                                @if(empty($arr_base['arr_line_data']) === false && $arr_base['arr_line_data']['IsUse'] == 'Y')
+                                @if(empty($arr_base['arr_line_data']) === true || $arr_base['arr_line_data']['IsUse'] == 'Y')
                                     <tr>
                                         <th>합격기대권</th>
                                         <td>집계중</td>
@@ -179,7 +184,6 @@
                                     <tr>
                                         <th>합격기대권</th>
                                         <td>{{ $arr_base['arr_line_data']['ExpectAvrPoint1'] }} ~ {{ $arr_base['arr_line_data']['ExpectAvrPoint2'] }}</td>
-                                        <td>
                                     </tr>
                                     <tr>
                                         <th>합격유력권</th>
@@ -187,7 +191,6 @@
                                     </tr>
                                     <tr>
                                         <th>합격안정권</th>
-                                        <td>356.04 이상</td>
                                         <td>{{ $arr_base['arr_line_data']['StabilityAvrPoint'] }} 이상</td>
                                     </tr>
                                     <tr class="bg01">
@@ -196,7 +199,17 @@
                                     </tr>
                                     <tr class="bg01">
                                         <th>합격예측</th>
-                                        <th>현재 기준 <span class="tx-red">합격 유력권</span>입니다. </th>
+                                        @if ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['ExpectAvrPoint1']
+                                        && $arr_base['total_area_avg']['TotalAdjustPoint'] <= $arr_base['arr_line_data']['ExpectAvrPoint2'])
+                                            <th>현재 기준 <span class="tx-red">합격 기대권</span>입니다.</th>
+                                        @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['StrongAvrPoint1']
+                                        && $arr_base['total_area_avg']['TotalAdjustPoint'] <= $arr_base['arr_line_data']['StrongAvrPoint2'])
+                                            <th>현재 기준 <span class="tx-red">합격 유력권</span>입니다.</th>
+                                        @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['StabilityAvrPoint'])
+                                            <th>현재 기준 <span class="tx-red">합격 안정권</span>입니다.</th>
+                                        @else
+                                            <th>-</th>
+                                        @endif
                                     </tr>
                                 @endif
                             </table>

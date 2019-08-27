@@ -4,6 +4,15 @@
     <h5>- 자막 등록/관리 하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
+        <div class="form-group">
+            <div class="col-md-2 form-inline">
+                <select class="form-control" id="search_is_use" name="search_is_use">
+                    <option value="">사용유무</option>
+                    <option value="Y">사용</option>
+                    <option value="N">미사용</option>
+                </select>
+            </div>
+        </div>
     </form>
 
     <div class="x_panel mt-10">
@@ -30,6 +39,11 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            /*$search_form.on('change', '#search_is_use', function() {*/
+            $search_form.on('change', 'select[name="search_is_use"]', function() {
+                $datatable.draw();
+            });
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [

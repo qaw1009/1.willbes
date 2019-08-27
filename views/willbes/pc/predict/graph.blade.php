@@ -114,145 +114,156 @@
     {{--과목별 원점수 평균--}}
     <div class="m_section3_3">
         <h2>과목별 <span>원점수 평균</span></h2>
-        <div class="m_section3_3L">
-            <table class="boardTypeB">
-                <thead>
-                    <tr>
-                        <th scope="col">과목</th>
-                        <th scope="col">참여자 실시간 평균</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($gradelist2 as $row)
+        @if(empty($gradelist2) === false)
+            <div class="m_section3_3L">
+                <table class="boardTypeB">
+                    <thead>
                         <tr>
-                            <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">{{ $row['SubjectName'] }}</th>
-                            <td>{{ $row['Avg'] }}</td>
+                            <th scope="col">과목</th>
+                            <th scope="col">참여자 실시간 평균</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-        <div class="m_section3_3R">
-            <select id="selgrade" style="width:98%; border:#555 1px solid; height:28px; line-height:28px;" onchange="selGrade(this.value)">
-                @foreach($gradeList as $key => $val)
-                    <option value="{{ $val['subject'] }}{{ $val['grade'] }}" selected="selected">{{ $val['subject'] }}</option>
-                @endforeach
-            </select>
-            <div class="mt10">
-                <div id="Nwagon"></div>
+                    </thead>
+                    <tbody>
+                        @foreach($gradelist2 as $row)
+                            <tr>
+                                <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">{{ $row['SubjectName'] }}</th>
+                                <td>{{ $row['Avg'] }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-        </div>
+        @endif
+
+        @if(empty($gradeList) === false)
+            <div class="m_section3_3R">
+                <select id="selgrade" style="width:98%; border:#555 1px solid; height:28px; line-height:28px;" onchange="selGrade(this.value)">
+                    @foreach($gradeList as $key => $val)
+                        <option value="{{ $val['subject'] }}{{ $val['grade'] }}" selected="selected">{{ $val['subject'] }}</option>
+                    @endforeach
+                </select>
+                <div class="mt10">
+                    <div id="Nwagon"></div>
+                </div>
+            </div>
+        @endif
     </div>
 
     {{--합격예측 참여자 분석 현황--}}
     <div class="m_section3_3">
         <h2><span>합격예측 참여자</span> 분석 현황</h2>
-        <div class="m_section3_3L">
-            <h3><Expect>총점</Expect> 성적 분포</h3>
-            <table class="boardTypeC">
-                <col width="20%" />
-                <col width="" />
-                @php $_arr_pa_area = ['4' => '401-500', '3' => '301-400', '2' => '201-300', '1' => '101-200', '0' => '0-100']; @endphp
-                @foreach($_arr_pa_area as $key => $val)
-                    <tr>
-                        <th>{{ $val }}</th>
-                        <td>
-                            <div class="graph"><span class="graph1" style="width:{{ element('PA' . $key, $pointList, 0) }}%"></span></div>
-                            <Expect class="ratio"><span id="pa{{ $val }}">{{ element('PA' . $key, $pointList, 0) }}</span>%</Expect>
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
-            <div class="mt10">
-                <div id="pointarea"></div>
+        @if(empty($pointList) === false)
+            <div class="m_section3_3L">
+                <h3><Expect>총점</Expect> 성적 분포</h3>
+                <table class="boardTypeC">
+                    <col width="20%" />
+                    <col width="" />
+                    @php $_arr_pa_area = ['4' => '401-500', '3' => '301-400', '2' => '201-300', '1' => '101-200', '0' => '0-100']; @endphp
+                    @foreach($_arr_pa_area as $key => $val)
+                        <tr>
+                            <th>{{ $val }}</th>
+                            <td>
+                                <div class="graph"><span class="graph1" style="width:{{ element('PA' . $key, $pointList, 0) }}%"></span></div>
+                                <Expect class="ratio"><span id="pa{{ $val }}">{{ element('PA' . $key, $pointList, 0) }}</span>%</Expect>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+                <div class="mt10">
+                    <div id="pointarea"></div>
+                </div>
             </div>
-        </div>
+        @endif
         <!--m_section3_3L//-->
-
-        <div class="m_section3_3R">
-            <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt"></Expect></h3>
-            <div class="m_section3_3R_warp">
-                <ul>
-                    <li>
-                        <table class="boardTypeC">
-                            <col width="20%" />
-                            <col width="" />
-                            @php $_arr_gr_area = ['5' => '81-100', '4' => '61-80', '3' => '41-60', '2' => '21-40', '1' => '0-20']; @endphp
-                            @foreach($_arr_gr_area as $key => $val)
-                                <tr>
-                                    <th>{{ $val }}</th>
-                                    <td>
-                                        <div class="graph"><span id='gr{{ $key }}' class="graph1"></span></div>
-                                        <Expect class="ratio" id="grt{{ $key }}"></Expect>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </table>
-                        <div class="mt10">
-                            <div id="pointarea2"></div>
-                        </div>
-                    </li>
-                </ul>
-                <p class="leftBtn"><a onClick="selPoint2('P')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png" alt="이전"/></a></p>
-                <p class="rightBtn"><a onClick="selPoint2('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png" alt="다음"/></a></p>
+        @if(empty($subjectPointList) === false)
+            <div class="m_section3_3R">
+                <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt"></Expect></h3>
+                <div class="m_section3_3R_warp">
+                    <ul>
+                        <li>
+                            <table class="boardTypeC">
+                                <col width="20%" />
+                                <col width="" />
+                                @php $_arr_gr_area = ['5' => '81-100', '4' => '61-80', '3' => '41-60', '2' => '21-40', '1' => '0-20']; @endphp
+                                @foreach($_arr_gr_area as $key => $val)
+                                    <tr>
+                                        <th>{{ $val }}</th>
+                                        <td>
+                                            <div class="graph"><span id='gr{{ $key }}' class="graph1"></span></div>
+                                            <Expect class="ratio" id="grt{{ $key }}"></Expect>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                            <div class="mt10">
+                                <div id="pointarea2"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="leftBtn"><a onClick="selPoint2('P')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png" alt="이전"/></a></p>
+                    <p class="rightBtn"><a onClick="selPoint2('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png" alt="다음"/></a></p>
+                </div>
             </div>
-        </div>
+        @endif
         <!--m_section3_3R//-->
     </div>
 
     <div class="m_section3_3">
         <div class="mt50">
-            <div class="m_section3_3L clear">
-                <h3>선택 과목 <Expect>단일</Expect> 선택 선호도 Best3</h3>
-                <table class="boardTypeB">
-                    <tr>
-                        <th scope="col">순위</th>
-                        <th scope="col">선택과목명</th>
-                        <th scope="col">비율</th>
-                    </tr>
-                    @foreach($bestList as $row)
-                        <tr class="best-subject">
-                            <th>{{ $loop->index }}</th>
-                            <td class="best-subject-name">{{ $row['SubjectName'] }}</td>
-                            <td><span class="best-subject-ratio">{{ $row['SubjectRatio'] }}</span>%</td>
+            @if(empty($bestList) === false)
+                <div class="m_section3_3L clear">
+                    <h3>선택 과목 <Expect>단일</Expect> 선택 선호도 Best3</h3>
+                    <table class="boardTypeB">
+                        <tr>
+                            <th scope="col">순위</th>
+                            <th scope="col">선택과목명</th>
+                            <th scope="col">비율</th>
                         </tr>
+                        @foreach($bestList as $row)
+                            <tr class="best-subject">
+                                <th>{{ $loop->index }}</th>
+                                <td class="best-subject-name">{{ $row['SubjectName'] }}</td>
+                                <td><span class="best-subject-ratio">{{ $row['SubjectRatio'] }}</span>%</td>
+                            </tr>
 
-                        @if($loop->index >= 3)
-                            @break;
-                        @endif
-                    @endforeach
-                </table>
-                <div class="mt10">
-                    <div id="best1"></div>
+                            @if($loop->index >= 3)
+                                @break;
+                            @endif
+                        @endforeach
+                    </table>
+                    <div class="mt10">
+                        <div id="best1"></div>
+                    </div>
                 </div>
-            </div>
+            @endif
             <!--m_section3_3L//-->
 
-            <div class="m_section3_3R">
-                <h3>선택 과목 <Expect>조합</Expect> 선택 선호도 Best3</h3>
-                <table class="boardTypeB">
-                    <tr>
-                        <th scope="col">순위</th>
-                        <th scope="col">선택과목명</th>
-                        <th scope="col">비율</th>
-                    </tr>
-                    @foreach($bestCombList as $row)
-                        <tr class="best-comb-subject">
-                            <th>{{ $loop->index }}</th>
-                            <td class="best-comb-subject-name">{{ $row['SubjectName'] }}</td>
-                            <td><span class="best-comb-subject-ratio">{{ $row['SubjectRatio'] }}</span>%</td>
+            @if(empty($bestCombList) === false)
+                <div class="m_section3_3R">
+                    <h3>선택 과목 <Expect>조합</Expect> 선택 선호도 Best3</h3>
+                    <table class="boardTypeB">
+                        <tr>
+                            <th scope="col">순위</th>
+                            <th scope="col">선택과목명</th>
+                            <th scope="col">비율</th>
                         </tr>
+                        @foreach($bestCombList as $row)
+                            <tr class="best-comb-subject">
+                                <th>{{ $loop->index }}</th>
+                                <td class="best-comb-subject-name">{{ $row['SubjectName'] }}</td>
+                                <td><span class="best-comb-subject-ratio">{{ $row['SubjectRatio'] }}</span>%</td>
+                            </tr>
 
-                        @if($loop->index >= 3)
-                            @break;
-                        @endif
-                    @endforeach
-                </table>
-                <div class="mt10">
-                    <div id="best2"></div>
-                </div>
-            </div><!--m_section3_3R//-->
+                            @if($loop->index >= 3)
+                                @break;
+                            @endif
+                        @endforeach
+                    </table>
+                    <div class="mt10">
+                        <div id="best2"></div>
+                    </div>
+                </div><!--m_section3_3R//-->
+            @endif
         </div>
     </div>
 
@@ -497,6 +508,10 @@
 
     // 과목별 원점수 평균
     function selGrade(val){
+        if ($('#selgrade').length < 1) {
+            return;
+        }
+
         var arrStr = val.split('/');
         var options = {
             'legend':{
@@ -519,6 +534,10 @@
 
     // 총점 성적분포
     function selPoint() {
+        if ($('#pointarea').length < 1) {
+            return;
+        }
+
         var fields = ['0-100', '101-200', '201-300', '301-400', '401-500'];
         var values = [];
         var length = fields.length;
@@ -608,6 +627,10 @@
         var values = [];
         var obj = $('.best-subject');
 
+        if (obj.length < 1) {
+            return;
+        }
+
         $.each(obj, function(index, item) {
             fields.push($(this).find('.best-subject-name').text());
             values.push(parseFloat($(this).find('.best-subject-ratio').text()));
@@ -634,6 +657,10 @@
         var fields = [];
         var values = [];
         var obj = $('.best-comb-subject');
+
+        if (obj.length < 1) {
+            return;
+        }
 
         $.each(obj, function(index, item) {
             fields.push($(this).find('.best-comb-subject-name').text());

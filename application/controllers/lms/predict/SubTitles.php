@@ -21,7 +21,8 @@ class SubTitles extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'IsStatus' => 'Y',
+                'IsUse' => $this->_reqP('search_is_use'),
+                'IsStatus' => 'Y'
             ]
         ];
 

@@ -35,8 +35,7 @@
             0%{opacity:1;}							
             75%{opacity:1;}
             100%{opacity:0;}
-        } 
-   
+        }   
 
         .wb_cts01{background:#f4f5f6;}
         .wb_cts02 {background:#f8e8e5;}	      

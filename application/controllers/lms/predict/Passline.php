@@ -39,13 +39,13 @@ class Passline extends \app\controllers\BaseController
 
         $PredictIdx = element('PredictIdx',$arr_input);
         $productList = $this->predictModel->getProductALL();
-        if(empty($PredictIdx)) $PredictIdx = (empty($productList[0]['PredictIdx']) === false ? $productList[0]['PredictIdx'] : '');
-        /*$condition = [
+        $condition = [
             'EQ' => [
                 'PP.IsUse' => 'Y'
             ]
         ];
-        list($productList, $count) = $this->predictModel->mainList($condition);*/
+        list($productList, $count) = $this->predictModel->mainList($condition);
+        if(empty($PredictIdx)) $PredictIdx = (empty($productList[0]['PredictIdx']) === false ? $productList[0]['PredictIdx'] : '');
 
         $arr_site_code = get_auth_on_off_site_codes('N', true);
         $def_site_code = empty($arr_input['SiteCode']) === false ? $arr_input['SiteCode'] : key($arr_site_code);

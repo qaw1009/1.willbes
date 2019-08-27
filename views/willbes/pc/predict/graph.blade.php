@@ -425,7 +425,7 @@
     {{--설문결과--}}
     <div class="m_section3_7">
     @if(empty($surveyList) === false)
-        <div id="survey_result">
+        <div>
             <h3>설문조사 결과</h3>
             <div class="popcontent">
                 <div class="question">
@@ -434,7 +434,7 @@
                         <ul>
                         @foreach($surveyList as $key => $row)
                             <li>
-                                <input type="radio" name="sp_serial" id="sp_serial{{ $key }}" onClick="selSurvey2({{ $key }})" {{ $loop->index == 1 ? 'checked="checked"' : '' }}>
+                                <input type="radio" name="sp_serial" id="sp_serial{{ $key }}" value="{{ $key }}" onClick="selSurvey2('{{ $key }}', 'M');" {{ $loop->index == 1 ? 'checked="checked"' : '' }}>
                                 <label for="sp_serial{{ $key }}">{{ $row['SerialName'] }}</label>
                             </li>
                         @endforeach
@@ -473,7 +473,7 @@
         selPoint2(0);
         bestSubject();
         bestCombSubject();
-        selSurvey2(1);
+        selSurvey2($('input[name="sp_serial"]:checked').val(), 'A');
         setAreaMsg(0);
     });
 
@@ -696,7 +696,7 @@
     }
 
     // 설문결과
-    function selSurvey2(val) {
+    function selSurvey2(val, act) {
         var json = null;
         var options = {};
         @if(empty($surveyList) === false)
@@ -707,10 +707,13 @@
             return;
         }
 
-        if (val === 2) {
-            $('#survey_result #survey3').parents('.question').css('display', 'none');
-        } else {
-            $('#survey_result #survey3').parents('.question').css('display', '');
+        if (act === 'M') {
+            $('#survey3').parents('.question').css('display', '');
+            if (val === '2') {
+                $('#survey3').parents('.question').css('display', 'none');
+            }
+
+            parent.resizeIframe(parent.document.getElementById('frm'));
         }
 
         // 응시직렬별 데이터
@@ -763,7 +766,7 @@
         // 선택 과목 시험 체감 난이도
         if (typeof json['Group4'] !== 'undefined') {
             $('#survey3').html('');
-            if (val !== 2) {
+            if (val !== '2') {
                 options = {
                     'legend': {
                         names: json['Group4']['Title']

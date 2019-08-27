@@ -49,7 +49,12 @@ class Markrequest extends \app\controllers\BaseController
             $scode = key($arr_site_code);
         }
 
-        list($data, $count) = $this->predictModel->mainList();
+        $condition = [
+            'EQ' => [
+                'PP.IsUse' => 'Y'
+            ]
+        ];
+        list($data, $count) = $this->predictModel->mainList($condition);
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
         $area = $this->predictModel->getArea($sysCode_Area);
         $serial = $this->predictModel->getSerialAll();
@@ -99,7 +104,7 @@ class Markrequest extends \app\controllers\BaseController
             set_time_limit(0);
             ini_set('memory_limit', $this->_memory_limit_size);
 
-            $data  = $this->predictModel->predictRegistListExcel2($condition);
+            $data  = $this->predictModel->predictRegistListExcel2($condition, ['PR.RegDatm' => 'DESC']);
             // export excel
             $file_name = '채점서비스참여현황_'.date('Y-m-d');
 
@@ -110,12 +115,19 @@ class Markrequest extends \app\controllers\BaseController
                 show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
             }
         } else {
-            list($data, $count) = $this->predictModel->predictRegistList2($condition, $this->input->post('length'), $this->input->post('start'));
+            /*list($data, $count) = $this->predictModel->predictRegistList2($condition, $this->input->post('length'), $this->input->post('start'));*/
+
+            $list = [];
+            $count = $this->predictModel->predictRegistList2(true, $condition, $this->input->post('length'), $this->input->post('start'));
+
+            if ($count > 0) {
+                $list = $this->predictModel->predictRegistList2(false, $condition, $this->input->post('length'), $this->input->post('start'), ['PR.RegDatm' => 'DESC']);
+            }
 
             return $this->response([
                 'recordsTotal' => $count,
                 'recordsFiltered' => $count,
-                'data' => $data,
+                'data' => $list,
             ]);
         }
 

@@ -46,8 +46,8 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_2.png"alt="막강한할인혜택3가지" usemap="#Map_lec_go" border="0"/>
             <map name="Map_lec_go">
-                <area shape="rect" coords="227,1042,1006,1137" href="{{ site_url('/pass/promotion/index/code/1051') }}" target="_blank" alt="관리반보러가기">
-                <area shape="rect" coords="218,1564,1009,1655" href="{{ site_url('/pass/promotion/index/code/1128') }}" target="_blank" alt="체력학원보러가기">
+                <area shape="rect" coords="172,583,951,678" href="https://police.willbes.net/pass/promotion/index/code/1051" target="_blank" alt="관리반보러가기">
+                <area shape="rect" coords="177,1105,956,1200" href="https://police.willbes.net/pass/promotion/index/code/1128" target="_blank" alt="체력학원보러가기">
             </map>
         </div>
 
@@ -68,11 +68,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_02_bottom.png" alt="" />
         </div>
 
-        <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_03_1.png" alt="" />
-        </div>
-
-        <div class="evtCtnsBox wb_cts01" >
+        <div class="evtCtnsBox wb_cts01 pt100">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_03_2.png" alt="" />
         </div>
     </div>

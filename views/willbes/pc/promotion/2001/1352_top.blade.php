@@ -3,29 +3,30 @@
     <li><a href="javascript:tabMove(2);">빠른채점</a></li>
     <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1208" target="_blank">라이브 토크쇼</a></li>
     <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank">적중이벤트</a></li>
-    {{--<li><a href="#none" >합격예측</a></li>--}}
     <li><a href="#evtContainer">top</a></li>
 </ul>
 
-{{--<div class="conut_section">--}}
-{{--<div class="conut_section_wrap" id="counter">--}}
-{{--<div>--}}
-{{--<span>서비스 이용현황 :</span>--}}
-{{--<span id="numarea1"></span>--}}
+{{--
+<div class="conut_section">
+    <div class="conut_section_wrap" id="counter">
+        <div>
+            <span>서비스 이용현황 :</span>
+            <span id="numarea1"></span>
 
-{{--<span>참여 현황 :</span>--}}
-{{--<span id="numarea2"></span>--}}
-{{--</div>--}}
-{{--<p>--}}
-{{--* 서비스 이용현황 : 사전예약 및 본서비스 + 봉투모의고사 + 파이널찍기특강 + 최신판례특강 + 라이브토크쇼 + 적중이벤트 등 서비스 이용 페이지뷰 합산<Br />--}}
-{{--* 참여현황 : 사전예약, 성적채점, 설문조사, 시험후기, 토크쇼, 적중이벤트 참여건수 중복 합산 기준--}}
-{{--</p>--}}
-{{--</div>--}}
-{{--</div>--}}
+            <span>참여 현황 :</span>
+            <span id="numarea2"></span>
+        </div>
+        <p>
+            * 서비스 이용현황 : 사전예약 및 본서비스 + 봉투모의고사 + 파이널찍기특강 + 최신판례특강 + 라이브토크쇼 + 적중이벤트 등 서비스 이용 페이지뷰 합산<Br />
+            * 참여현황 : 사전예약, 성적채점, 설문조사, 시험후기, 토크쇼, 적중이벤트 참여건수 중복 합산 기준
+        </p>
+    </div>
+</div>
+--}}
 
 <div class="m_sectin1_box">
     <div class="title">
-        <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_tit.png" alt="2018 경찰 3차 시험 합격예측 풀서비스">
+        <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_top_tit.png" alt="2018 경찰 3차 시험 합격예측 풀서비스">
     </div>
 
     <div class="tmap">
@@ -61,18 +62,13 @@
 
 
     <div class="talkShow">
-        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1199" target="_blank" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_bn4.png" alt="LIVE 합격예측 토크쇼">
+        <a href="https://police.willbes.net/promotion/index/cate/3002/code/1362" target="_blank" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_top_bn4.png" alt="적중 이벤트">
         </a>
-        {{--토크쇼 종료 후 노출
-        <a href="#none" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_bn1.png" alt="기출해설특강">
-        </a>
-        --}}
     </div>
 
     <div class="wNotice">
-        <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_top_text.png" alt="최종 합격 솔루션">
+        <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_top_text.png" alt="최종 합격 솔루션">
         <div>
             <h3>
                 <a href="javascript:go_popup()">

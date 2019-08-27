@@ -123,74 +123,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th class="thBg01">한국사</th>
-                        <td>79.17 </td>
-                    </tr>
-                    <tr>
-                        <th class="thBg01">영어</th>
-                        <td>58.96 </td>
-                    </tr>
-                    <tr>
-                        <th>형법</th>
-                        <td>66.5 </td>
-                  </tr>
-                    <tr>
-                        <th>형사소송법</th>
-                        <td>68.24 </td>
-                  </tr>
-                    <tr>
-                        <th>경찰학개론</th>
-                        <td>55.44 </td>
-                  </tr>
-                    <tr>
-                        <th>국어</th>
-                        <td>65.56 </td>
-                  </tr>
-                    <tr>
-                        <th>수학</th>
-                        <td>74.1 </td>
-                  </tr>
-                    <tr>
-                        <th>사회</th>
-                        <td>78.12 </td>
-                  </tr>
-                    <tr>
-                        <th>과학</th>
-                        <td>65.19 </td>
-                  </tr>
-                    <tr>
-                        <th>수사</th>
-                        <td>84.53 </td>
-                  </tr>
-                    <tr>
-                        <th>행정법</th>
-                        <td>72.65 </td>
-                  </tr>
-                </tbody>
-            </table>
-
-            <table class="boardTypeB">
-                <col width="25%"/>
-                <col width="25%"/>
-                <col width="25%"/>
-                <col width="25%"/>
-                <tbody>
-                @for($i = 0; $i < 3; $i++)
-                    @php $idx = $i * 3; @endphp
-                    <tr>
-                        <th>과목</th>
-                        <th>{{ array_get($gradelist2, ($idx + 0) . '.SubjectName') }}</th>
-                        <th>{{ array_get($gradelist2, ($idx + 1) . '.SubjectName') }}</th>
-                        <th>{{ array_get($gradelist2, ($idx + 2) . '.SubjectName') }}</th>
-                    </tr>
-                    <tr>
-                        <th>참여자<br />실시간평균</th>
-                        <td>{{ array_get($gradelist2, ($idx + 0) . '.Avg') }}</td>
-                        <td>{{ array_get($gradelist2, ($idx + 1) . '.Avg') }}</td>
-                        <td>{{ array_get($gradelist2, ($idx + 2) . '.Avg') }}</td>
-                    </tr>
-                @endfor
+                    @foreach($gradelist2 as $row)
+                        <tr>
+                            <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">{{ $row['SubjectName'] }}</th>
+                            <td>{{ $row['Avg'] }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -466,8 +404,8 @@
         <div class="bannerWarp">
             <img src="http://file3.willbes.net/new_cop/2017/03/170306_passcop_bn1.png" alt="최종합격을 결정짓는 2차 전형 윌비스 전문가와 함께 전략적으로 준비하세요">
             <div>
-                <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1206" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/04/1187_bann_20190426.jpg" alt="면접캠프설명회">
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1361" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_tab01_bn.jpg" alt="면접캠프설명회">
                 </a>
             </div>
         </div>
@@ -476,7 +414,7 @@
     {{--설문결과--}}
     <div class="m_section3_7">
     @if(empty($surveyList) === false)
-        <div>
+        <div id="survey_result">
             <h3>설문조사 결과</h3>
             <div class="popcontent">
                 <div class="question">
@@ -742,6 +680,12 @@
             return;
         }
 
+        if (val === 2) {
+            $('#survey_result #survey3').parents('.question').css('display', 'none');
+        } else {
+            $('#survey_result #survey3').parents('.question').css('display', '');
+        }
+
         // 응시직렬별 데이터
         json = json[val];
 
@@ -792,23 +736,25 @@
         // 선택 과목 시험 체감 난이도
         if (typeof json['Group4'] !== 'undefined') {
             $('#survey3').html('');
-            options = {
-                'legend': {
-                    names: json['Group4']['Title']
-                },
-                'dataset': {
-                    title: '선택 과목 시험 체감 난이도',
-                    values: json['Group4']['Data'],
-                    colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
-                    fields: json['Group4']['Comment']
-                },
-                'chartDiv': 'survey3',
-                'chartType': 'multi_column',
-                'chartSize': { width: 700, height: 300 },
-                'maxValue': 100,
-                'increment': 10
-            };
-            Nwagon.chart(options);
+            if (val !== 2) {
+                options = {
+                    'legend': {
+                        names: json['Group4']['Title']
+                    },
+                    'dataset': {
+                        title: '선택 과목 시험 체감 난이도',
+                        values: json['Group4']['Data'],
+                        colorset: ['#DC143C', '#FF8C00', "#30a1ce", "#6ac52d", "#ae81ff"],
+                        fields: json['Group4']['Comment']
+                    },
+                    'chartDiv': 'survey3',
+                    'chartType': 'multi_column',
+                    'chartSize': {width: 700, height: 300},
+                    'maxValue': 100,
+                    'increment': 10
+                };
+                Nwagon.chart(options);
+            }
         }
     }
 

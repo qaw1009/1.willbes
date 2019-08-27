@@ -214,7 +214,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1256_03.jpg" title="" />
             <div>
                 <ul class="NSK-Black">
-                    <li><a href="#lec1" class="active">9~10월 기본이론 완성반</a></li>
+                    <li><a href="#lec1" class="active">9~10월 이론 완성반</a></li>
                     <li><a href="#lec2">19.9월 ~ 20.3월 연간반</a></li>
                 </ul>
                 <div class="mt10" id="lec1">

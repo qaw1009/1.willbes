@@ -1433,7 +1433,7 @@ class SurveyModel extends WB_Model
                     on sp.SqsIdx = sqsr.SqsIdx and TA.SqIdx = sqsr.SqIdx
                 inner join {$this->_table['surveyQuestion']} as sq
                     on TA.SqIdx = sq.SqIdx
-            order by TA.SerialAnswer, sqsr.GroupNumber, TA.SqIdx            
+            order by TA.SerialAnswer, sqsr.GroupNumber, sqsr.Ordering            
         ";
 
         $query = $this->_conn->query('select ' . $column . $from, [$spidx, $serial_group_num]);

@@ -60,6 +60,16 @@
                         <p class="NGR">강의시간: 60분 <span class="row-line">ㅣ</span> 수강시간: 60분 <span class="row-line">ㅣ</span> 잔여시간: <span class="tx-blue">60분</span></p>
                     </div>
                 </li>
+                <li>
+                    <span class="chk">
+                        <label>[판매]</label>
+                        <input type="checkbox" id="" name="">
+                    </span>
+                    <div class="priceWrap NG">
+                        [PC] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span><br>
+                        <p class="NGR">강의시간: 60분 <span class="row-line">ㅣ</span> 수강시간: 60분 <span class="row-line">ㅣ</span> 잔여시간: <span class="tx-blue">60분</span></p>
+                    </div>
+                </li>
             </ul>
         </div>
 

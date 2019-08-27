@@ -1,6 +1,10 @@
 @extends('html.m.layouts.master')
 
 @section('content')
+<style>
+.lecTable input[type="checkbox"]
+{width:15px;height:15px;}
+</style>
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
     <div id="Sticky" class="sticky-Title">
@@ -105,7 +109,8 @@
                             <dl class="w-info tx-gray">
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                <dt>PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                <input type="checkbox" id="" name=""><dt style="padding:5px;">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</dt><br>
+                                <input type="checkbox" id="" name=""><dt style="padding:5px;">PC : <span class="tx-blue">90,000원</span>(↓0%)</dt>
                             </dl>
                             <div class="w-buy">       
                                 <ul class="two">

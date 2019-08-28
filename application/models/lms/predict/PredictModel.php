@@ -620,17 +620,11 @@ class PredictModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-            $column = "
-                        PpIdx
-                    ";
-
-            $from = "
-                        FROM 
-                            {$this->_table['predictPaper']}
-                    ";
+            $column = "PpIdx";
+            $from = " FROM {$this->_table['predictPaper']} ";
 
             $order_by = " ORDER BY PpIdx";
-            $where = " WHERE PredictIdx = ".$PredictIdx."";
+            $where = " WHERE PredictIdx = ".$PredictIdx." AND IsStatus = 'Y' AND IsUse = 'Y'";
             //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
@@ -3355,7 +3349,13 @@ class PredictModel extends WB_Model
      */
     public function listUserForSubjectPoint($PredictIdx, $TakeMockPart)
     {
-        $column = "pg.MemIdx, pg.PredictIdx, pg.PrIdx, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.TakeMockPart, pp.Type AS PpType";
+        $column = "pg.MemIdx, pg.PredictIdx, pg.PrIdx, pg.TakeArea, pg.PpIdx, pg.OrgPoint, pg.TakeMockPart";
+        /*$column .= "pp.Type AS PpType";*/
+        $column .= "
+            ,CASE WHEN pg.TakeMockPart = '800' THEN 'P'
+            ELSE pp.Type
+            END AS PpType
+        ";
         $column .= "
             ,CASE WHEN pg.TakeMockPart = '100' THEN '1@200'
             WHEN pg.TakeMockPart = '200' THEN '1@200'

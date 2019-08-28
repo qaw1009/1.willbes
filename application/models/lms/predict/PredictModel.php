@@ -1737,7 +1737,7 @@ class PredictModel extends WB_Model
             pg.TakeMockPart, pg.TakeArea, OnePerCut,
             (
             SELECT COUNT(*) FROM (
-                    SELECT * FROM {$this->_table['predictGradesOrigin']} WHERE PredictIdx = '{$PredictIdx}' GROUP BY MemIdx
+                    SELECT * FROM {$this->_table['predictGradesOrigin']} WHERE PredictIdx = '{$PredictIdx}' GROUP BY PrIdx
                 ) AS A
                 WHERE PredictIdx = pg.PredictIdx AND TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart
             ) AS TakeOrigin,  

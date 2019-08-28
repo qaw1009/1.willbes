@@ -886,7 +886,7 @@ class EventLecture extends \app\controllers\BaseController
     public function commentExcel($params = [])
     {
         $file_name = '이벤트_댓글현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
-        $headers = ['댓글종류', '이름', '아이디', '연락처', '이메일', '댓글', '작성일', '사용여부'];
+        $headers = ['댓글종류', '이름', '아이디', '연락처', '이메일', '댓글', '작성일', '삭제여부'];
 
         $el_idx = $params[0];
         $arr_condition = $this->_getCommentListConditions($el_idx);

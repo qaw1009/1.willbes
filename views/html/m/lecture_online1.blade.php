@@ -1,10 +1,7 @@
 @extends('html.m.layouts.master')
 
 @section('content')
-<style>
-.lecTable input[type="checkbox"]
-{width:15px;height:15px;}
-</style>
+
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
     <div id="Sticky" class="sticky-Title">
@@ -108,11 +105,13 @@
                             </div>
                             <dl class="w-info tx-gray">
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                <input type="checkbox" id="" name=""><dt style="padding:5px;">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</dt><br>
-                                <input type="checkbox" id="" name=""><dt style="padding:5px;">PC : <span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>
-                            <div class="w-buy">       
+                            <ul class="h30">
+                                <li><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <li><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                            </ul>
+                            <div class="w-buy mt15">       
                                 <ul class="two">
                                     <li><a href="#none" class="btn_gray">장바구니</a></li>
                                     <li><a href="#none" class="btn_blue">바로결제</a></li>
@@ -129,17 +128,20 @@
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
                             <dl class="w-info">
-                                <dt>영어<span class="row-line">|</span>한덕현 <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>
+                                <dt>영어<span class="row-line">|</span>한덕현 </dt>
                             </dl>
-                            <div class="w-tit">
-                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                            <div class="w-tit tx-blue">
+                                2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                             </div>
                             <dl class="w-info tx-gray">
-                                <dt>강의수 : <span class="tx-blue">12강</span><span class="row-line">|</span></dt>
-                                <dt>잔여기간 : <span class="tx-blue">50</span>일</dt><br>
-                                <dt>PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>
-                            <div class="w-buy">       
+                            <ul class="h30">
+                                <li><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <li><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                            </ul>
+                            <div class="w-buy mt15">       
                                 <ul class="two">
                                     <li><a href="#none" class="btn_gray">장바구니</a></li>
                                     <li><a href="#none" class="btn_blue">바로결제</a></li>
@@ -156,17 +158,20 @@
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
                             <dl class="w-info">
-                                <dt>영어<span class="row-line">|</span>한덕현 <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>
+                                <dt>영어<span class="row-line">|</span>한덕현 </dt>
                             </dl>
-                            <div class="w-tit">
-                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                            <div class="w-tit tx-blue">
+                                2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
                             </div>
                             <dl class="w-info tx-gray">
-                                <dt>강의수 : <span class="tx-blue">12강</span><span class="row-line">|</span></dt>
-                                <dt>잔여기간 : <span class="tx-blue">50</span>일</dt><br>
-                                <dt>PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>
-                            <div class="w-buy">       
+                            <ul class="h30">
+                                <li><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <li><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                            </ul>
+                            <div class="w-buy mt15">       
                                 <ul class="two">
                                     <li><a href="#none" class="btn_gray">장바구니</a></li>
                                     <li><a href="#none" class="btn_blue">바로결제</a></li>

@@ -50,7 +50,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
-            <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/08/1379_skybanner.png" alt="스카이배너" ></a>
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2019/08/1379_skybanner.png" alt="스카이배너" ></a>
         </div>            
 
         <!-- 타이머 -->
@@ -92,17 +92,17 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_01.jpg" alt="교수진과 함께" />          
         </div>
 
-        <div class="evtCtnsBox wb_02">
+        <div class="evtCtnsBox wb_02" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02.jpg" alt="패키지 구성" usemap="#Map1379a" border="0" />
             <map name="Map1379a" id="Map1379a">
-                <area shape="rect" coords="370,1292,747,1402" href="#" />
+                <area shape="rect" coords="370,1292,747,1402" href="javascript:alert('PACKAGE\n수강신청\nComing soon');" alt="지금 바로 신청하기" />
             </map>
         </div>
 
         <div class="evtCtnsBox wb_03" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_03.jpg" alt="다운로드 및 바로가기" usemap="#Map1379b" border="0" />
             <map name="Map1379b" id="Map1379b">
-                <area shape="rect" coords="179,226,541,293" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="공고문 다운로드" />
+                <area shape="rect" coords="179,226,541,293" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="공고문 다운로드" />
                 <area shape="rect" coords="577,226,938,295" href="http://gosi.kcg.go.kr/" target="_blank" alt="원서접수 바로가기" />
             </map>
         </div>
@@ -119,4 +119,4 @@
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
-@stop
+@stopwsds

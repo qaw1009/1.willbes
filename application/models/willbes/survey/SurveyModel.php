@@ -2046,7 +2046,7 @@ class SurveyModel extends WB_Model
             FROM (
                 SELECT tmpA.PrIdx, tmpA.TakeMockPart, tmpA.TakeArea, tmpA.TotalOrgPoint, tmpA.TotalAdjustPoint, tmpA.RankNum, tmpB.Cnt
                 FROM (
-                    SELECT PrIdx, TakeMockPart, TakeArea, SUM(OrgPoint) AS TotalOrgPoint, ROUND(SUM(AdjustPoint),2) AS TotalAdjustPoint
+                    SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, SUM(OrgPoint) AS TotalOrgPoint, ROUND(SUM(AdjustPoint),2) AS TotalAdjustPoint
                         , RANK() OVER (PARTITION BY TakeMockPart, TakeArea ORDER BY AdjustPoint DESC) AS RankNum
                     FROM {$this->_table['predictGrades']}
                     WHERE PredictIdx = '{$PredictIdx}'
@@ -2055,14 +2055,17 @@ class SurveyModel extends WB_Model
                     GROUP BY PrIdx, TakeMockPart, TakeArea
                 ) AS tmpA
                 INNER JOIN (
-                    SELECT PrIdx, COUNT(*) AS cnt 
-                    FROM {$this->_table['predictGrades']}
-                    WHERE PredictIdx = '{$PredictIdx}'
-                    AND TakeMockPart = '{$take_mock_part}'
-                    AND TakeArea = '{$take_area}'
-                    GROUP BY PrIdx, TakeMockPart, TakeArea	
+                    SELECT PredictIdx, TakeMockPart, TakeArea, COUNT(*) AS cnt
+                    FROM (
+                        SELECT PrIdx, PredictIdx, TakeMockPart, TakeArea
+                        FROM lms_predict_grades
+                        WHERE PredictIdx = '{$PredictIdx}'
+                        AND TakeMockPart = '{$take_mock_part}'
+                        AND TakeArea = '{$take_area}'
+                        GROUP BY PrIdx
+                    ) AS A
                 ) AS tmpB
-                ON tmpA.Pridx = tmpB.PrIdx
+                ON tmpA.PredictIdx = tmpB.PredictIdx AND tmpA.TakeMockPart = tmpB.TakeMockPart AND tmpA.TakeArea = tmpB.TakeArea
             ) A
             WHERE A.PrIdx = {$pr_idx}
         ) AS A

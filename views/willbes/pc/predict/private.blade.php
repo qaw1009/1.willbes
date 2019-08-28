@@ -127,12 +127,12 @@
 
                                     <td>
                                         <div>
-                                            <span class="score" style="height:{{ (empty($arr_base['total_area_avg']['TotalAvrPoint']) === false ? $arr_base['total_area_avg']['TotalAvrPoint'] : '0') }}%"></span>
+                                            <span class="score" style="height:{{ ((empty($arr_base['total_area_avg']['TotalAvrPoint']) === false ? $arr_base['total_area_avg']['TotalAvrPoint'] : '0') / 500) * 100 }}%"></span>
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <span class="score" style="height:{{ (empty($arr_base['total_area_avg']['TotalFivePerPoint']) === false ? $arr_base['total_area_avg']['TotalFivePerPoint'] : '0') }}%"></span>
+                                            <span class="score" style="height:{{ ((empty($arr_base['total_area_avg']['TotalFivePerPoint']) === false ? $arr_base['total_area_avg']['TotalFivePerPoint'] : '0') / 500) * 100 }}%"></span>
                                         </div>
                                     </td>
                                     <td> </td>

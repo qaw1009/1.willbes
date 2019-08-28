@@ -284,7 +284,7 @@ class SurveyModel extends WB_Model
                 }
             }
 
-            $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where('PrIdx', $PrIdx);
+            $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where('PrIdx', $PrIdx);
 
             if ($this->_conn->update($this->_table['predictRegister']) === false) {
                 throw new \Exception('수정에 실패했습니다.');
@@ -1333,10 +1333,17 @@ class SurveyModel extends WB_Model
      * 설문조사 결과 리턴 (특정설문문항 결과)
      * @param int $spidx
      * @param array $arr_sq_idx
+     * @param bool $is_sq_wh_in
      * @return mixed
      */
-    public function surveyAnswerCall($spidx, $arr_sq_idx = [])
+    public function surveyAnswerCall($spidx, $arr_sq_idx = [], $is_sq_wh_in = true)
     {
+        $where = '';
+        if (empty($arr_sq_idx) === false) {
+            $wh_key = $is_sq_wh_in === true ? 'IN' : 'NOTIN';
+            $where = $this->_conn->makeWhere([$wh_key => ['sa.SqIdx' => $arr_sq_idx]])->getMakeWhere(true);
+        }
+
         $column = "A.SqIdx, A.Answer1, A.Answer2, A.Answer3, A.Answer4, A.Answer5, A.CNT
             , round((A.Answer1 / A.CNT) * 100) as AnswerRatio1
             , round((A.Answer2 / A.CNT) * 100) as AnswerRatio2
@@ -1360,12 +1367,12 @@ class SurveyModel extends WB_Model
                     inner join {$this->_table['surveyAnswerDetail']} as sa
                         on sai.SaIdx = sa.SaIdx
                 where sai.SpIdx = ?"
-            . $this->_conn->makeWhere(['IN' => ['sa.SqIdx' => $arr_sq_idx]])->getMakeWhere(true) .
+                    . $where .
             "   group by sa.SqIdx	
             ) as A
                 inner join {$this->_table['surveyQuestion']} as sq
                     on A.SqIdx = sq.SqIdx 
-            order by A.SqIdx desc                                
+            order by sq.SqTitle asc                            
         ";
 
         $query = $this->_conn->query('select ' . $column . $from, [$spidx]);

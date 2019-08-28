@@ -29,8 +29,8 @@
         }
         .skybanner2{
             position:fixed;
-            top:565px;
-            right:0;
+            top:270px;
+            left:190px;
             z-index:1;
         }
 
@@ -98,6 +98,9 @@
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1359_skybanner.png" alt="스카이배너" ></a>
+        </div>     
+        <div class="skybanner2" >
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1359_sky2.gif" alt="통합생활관리반" ></a>
         </div>            
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">

@@ -3446,15 +3446,29 @@ class PredictModel extends WB_Model
                 $user_list[$key]['AdjustPoint'] = $val['OrgPoint'];
                 $user_list[$key]['StandardDeviation'] = 0;
             } else {
-                if (empty($arr_standard_data[$tmp_mapping_data_standard]) === false) {
+                if (isset($arr_standard_data[$tmp_mapping_data_standard])) {
+                    if ($arr_standard_data[$tmp_mapping_data_standard] == 0) {
+                        $user_list[$key]['AdjustPoint'] = ( 0 * 10 ) + 50;
+                        $user_list[$key]['StandardDeviation'] = $arr_standard_data[$tmp_mapping_data_standard];
+                    } else {
+                        $avg_data = ($avg_user_list[$tmp_mapping_data_user]['RegistAvgPointIsUse'] == 'N') ? $avg_user_list[$tmp_mapping_data_user]['AvgOrgPoint'] : $avg_user_list[$tmp_mapping_data_user]['RegistAvgPoint'];
+                        $user_list[$key]['AdjustPoint'] = round((($val['OrgPoint'] - $avg_data) / $arr_standard_data[$tmp_mapping_data_standard] * 10) + 50, 2);
+                        $user_list[$key]['StandardDeviation'] = $arr_standard_data[$tmp_mapping_data_standard];
+                    }
+                } else {
+                    $user_list[$key]['AdjustPoint'] = 0;
+                    $user_list[$key]['StandardDeviation'] = 0;
+                }
+
+                /*if (empty($arr_standard_data[$tmp_mapping_data_standard]) === false) {
                     $avg_data = ($avg_user_list[$tmp_mapping_data_user]['RegistAvgPointIsUse'] == 'N') ? $avg_user_list[$tmp_mapping_data_user]['AvgOrgPoint'] : $avg_user_list[$tmp_mapping_data_user]['RegistAvgPoint'];
-                    /*$user_list[$key]['AdjustPoint'] = ($val['PpType'] == 'P') ? $val['OrgPoint'] : round((($val['OrgPoint'] - $avg_data) / $arr_standard_data[$tmp_mapping_data_standard] * 10) + 50, 2);*/
+                    //$user_list[$key]['AdjustPoint'] = ($val['PpType'] == 'P') ? $val['OrgPoint'] : round((($val['OrgPoint'] - $avg_data) / $arr_standard_data[$tmp_mapping_data_standard] * 10) + 50, 2);
                     $user_list[$key]['AdjustPoint'] = round((($val['OrgPoint'] - $avg_data) / $arr_standard_data[$tmp_mapping_data_standard] * 10) + 50, 2);
                     $user_list[$key]['StandardDeviation'] = $arr_standard_data[$tmp_mapping_data_standard];
                 } else {
                     $user_list[$key]['AdjustPoint'] = 0;
                     $user_list[$key]['StandardDeviation'] = 0;
-                }
+                }*/
             }
 
             if (empty($arr_set_rank[$tmp_mapping_data_user]) === false) {

@@ -77,6 +77,7 @@
                     <thead class="bg-white-gray">
                     <tr>
                         <th class="text-center">응시구분</th>
+                        <th class="text-center">지역</th>
                         <th class="text-center">과목</th>
                         <th class="text-center">응시인원</th>
                         <th class="text-center">평균점수</th>
@@ -126,6 +127,7 @@
                     {'data' : 'TakeMockPart', 'class': 'text-center'},
                     {'data' : 'TakeArea', 'class': 'text-center'},
                     {'data' : 'SubjectName', 'class': 'text-center'},
+                    {'data' : 'TakeNum', 'class': 'text-center'},
                     {'data' : 'AvrPoint', 'class': 'text-center'},
                     {'data' : 'FivePerPoint', 'class': 'text-center'}
                 ]
@@ -165,6 +167,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
+                    $datatable.draw();
                 }
             }, showValidateError, null, false, 'alert');
         }
@@ -177,6 +180,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
+                    $datatable.draw();
                 }
             }, showValidateError, null, false, 'alert');
         }
@@ -189,6 +193,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
+                    $datatable.draw();
                 }
             }, showValidateError, null, false, 'alert');
         }

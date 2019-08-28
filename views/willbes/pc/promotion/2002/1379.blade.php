@@ -34,9 +34,9 @@
         .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
         .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%}
-        .newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
+        .newTopDday ul li:first-child span {font-size:22px; color:#000;margin-top:4px;}
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%}
-        .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
+        .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#000; color:#FFF; text-align:center; border-radius:20px}
         .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul:after {content:""; display:block; clear:both}
         
@@ -58,8 +58,8 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">{{$arr_promotion_params['turn']}}기</span>
+                        <span>접수 마감까지</span><br />
+                        <span style="line-height:40px;font-size:22pt;color:#000">남은시간</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -73,8 +73,8 @@
                     <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
-                        <a href="#to_go" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
+                        <a href="#to_go" target="_self">신청하기 &gt;</a><br />
+                        <span style="line-height:40px;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감</span>
                     </li>
                 </ul>
             </div>
@@ -93,11 +93,18 @@
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02.jpg" alt="패키지 구성" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02.jpg" alt="패키지 구성" usemap="#Map1379a" border="0" />
+            <map name="Map1379a" id="Map1379a">
+                <area shape="rect" coords="370,1292,747,1402" href="#" />
+            </map>
         </div>
 
         <div class="evtCtnsBox wb_03" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_03.jpg" alt="다운로드 및 바로가기" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_03.jpg" alt="다운로드 및 바로가기" usemap="#Map1379b" border="0" />
+            <map name="Map1379b" id="Map1379b">
+                <area shape="rect" coords="179,226,541,293" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="공고문 다운로드" />
+                <area shape="rect" coords="577,226,938,295" href="http://gosi.kcg.go.kr/" target="_blank" alt="원서접수 바로가기" />
+            </map>
         </div>
 
     </div>

@@ -841,26 +841,47 @@ class BasePassPredict extends \app\controllers\FrontController
         // 7. 과목별조합선호도 (origin, 0점 제외)
         $bestCombList = $this->surveyModel->bestCombineSubject($PredictIdx);
 
-        // 8. 과목별 체감난이도 (설문문항식별자 => 한국사, 영어, 형법, 형사소송법, 경찰학개론, 국어, 수학, 사회, 과학)
-        $arr_sq_idx = [29, 28, 20, 19, 43, 27, 8, 6, 7];  // 비교대상 설문항목
-        $spNowList = $this->surveyModel->surveyAnswerCall($spidx2, $arr_sq_idx);    // 진행설문결과
-        $spPrevList = $this->surveyModel->surveyAnswerCall($spidx1, $arr_sq_idx);   // 이전설문결과
-        $spInterList = array_intersect(array_pluck($spNowList, 'SqIdx'), array_pluck($spPrevList, 'SqIdx'));    // 비교 설문항목식별자 교집합
+        // 8. 과목별 체감난이도
         $spSubjectList = [];
+        $arr_sq_idx = [68, 1, 45];  // 진행설문 비교 제외대상 설문항목식별자 (응시직렬, 전체적인시험난이도, 응시과목선택)
+        $spNowList = $this->surveyModel->surveyAnswerCall($spidx2, $arr_sq_idx, false);    // 진행설문결과
+        $spPrevList = $this->surveyModel->surveyAnswerCall($spidx1);   // 이전설문결과
 
+        // 진행 설문항목결과 셋팅
+        foreach ($spNowList as $row) {
+            $spSubjectList['Now'][$row['SqIdx']] = $row;
+        }
+
+        // 이전 설문항목결과 셋팅
+        foreach (array_pluck($spNowList, 'SqIdx') as $sq_idx) {
+            foreach ($spPrevList as $row) {
+                // 이전 설문항목결과가 있을 경우
+                if ($sq_idx === $row['SqIdx']) {
+                    $spSubjectList['Prev'][$sq_idx] = $row;
+                    break;
+                }
+            }
+
+            // 이전 설문항목결과가 없을 경우
+            if (isset($spSubjectList['Prev'][$sq_idx]) === false) {
+                $spSubjectList['Prev'][$sq_idx] = [];
+            }
+        }
+
+        /* 이전설문과 진행설문에 모두 있을 경우만 => 진행설문에 있는 결과 모두 출력으로 변경
+        $spInterList = array_intersect(array_pluck($spNowList, 'SqIdx'), array_pluck($spPrevList, 'SqIdx'));    // 비교 설문항목식별자 교집합
         // 진행 설문항목결과 셋팅
         foreach ($spNowList as $row) {
             if (in_array($row['SqIdx'], $spInterList) === true) {
                 $spSubjectList['Now'][] = $row;
             }
         }
-
         // 이전 설문항목결과 셋팅
         foreach ($spPrevList as $row) {
             if (in_array($row['SqIdx'], $spInterList) === true) {
                 $spSubjectList['Prev'][] = $row;
             }
-        }
+        }*/
 
         // 9. 과목별 오답랭킹
         $wrongData = $this->surveyModel->wrongRank($PredictIdx);

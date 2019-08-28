@@ -73,7 +73,7 @@
                                 <td>{{ number_format((int)$val2['PickNum']) }} ({{ number_format((int)$val2['TakeNum']) }})</td>
                             </tr>
                             <tr>
-                                <th>2019 1차 경쟁률</th>
+                                <th>2019 2차 경쟁률</th>
                                 <td>{{ $val2['CompetitionRateNow'] }}</td>
                             </tr>
                             <tr>
@@ -274,30 +274,30 @@
             과목별 <span>체감난이도</span>
             <div>
                 <select id="selsubject" name="selsubject" class="mg-zero" onChange="selSurvey(this.value);">
-                    @foreach($spSubjectList['Now'] as $idx => $row)
-                        <option value="{{ $idx }}">{{ $row['SqTitle'] }}</option>
+                    @foreach($spSubjectList['Now'] as $sq_idx => $row)
+                        <option value="{{ $sq_idx }}">{{ $row['SqTitle'] }}</option>
                     @endforeach
                 </select>
             </div>
         </h2>
-        @foreach($spSubjectList['Now'] as $idx => $row)
-            <div id="sp_subject_{{ $idx }}" @if($idx > 0) style="display:none;" @endif>
+        @foreach($spSubjectList['Now'] as $sq_idx => $row)
+            <div id="sp_subject_{{ $sq_idx }}" @if($loop->index > 1) style="display:none;" @endif>
                 <table class="boardTypeC" style="hieght:500px;">
                     <col width="40%" />
                     <col width="20%" />
                     <col width="40%" />
                     @for($i = 1; $i <= 5; $i++)
-                    <tr>
-                        <td>
-                            <div class="graph2ch"><span class="graph2" style="width:{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%"></span></div>
-                            <Expect class="ratio2ch">{{ $spSubjectList['Prev'][$idx]['AnswerRatio' . $i] }}%</Expect>
-                        </td>
-                        <th>{{ $row['Comment' . $i] }}</th>
-                        <td>
-                            <div class="graph"><span class="graph1" style="width:{{ $row['AnswerRatio' . $i] }}%"></span></div>
-                            <Expect class="ratio">{{ $row['AnswerRatio' . $i] }}%</Expect>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <div class="graph2ch"><span class="graph2" style="width:{{ array_get($spSubjectList, 'Prev.' . $sq_idx . '.AnswerRatio' . $i, 0) }}%"></span></div>
+                                <Expect class="ratio2ch">{{ array_get($spSubjectList, 'Prev.' . $sq_idx . '.AnswerRatio' . $i, 0) }}%</Expect>
+                            </td>
+                            <th>{{ $row['Comment' . $i] }}</th>
+                            <td>
+                                <div class="graph"><span class="graph1" style="width:{{ $row['AnswerRatio' . $i] }}%"></span></div>
+                                <Expect class="ratio">{{ $row['AnswerRatio' . $i] }}%</Expect>
+                            </td>
+                        </tr>
                     @endfor
                     <tr>
                         <td>2019년 1차</td>
@@ -307,8 +307,8 @@
                 </table>
             </div>
         @endforeach
-    @endif
         <div class="tx-red mt10">※ 2019년 1차 경찰시험에서는 경행경채를 진행하지 않았으므로 해당 과목에(수사,행정법) 대한 체감난이도는 제공되지 않습니다.</div>
+    @endif
     </div>
 
     {{--과목별 오답 랭킹--}}
@@ -797,13 +797,10 @@
 
     function setAreaMsg(num)
     {
-        var msg = '※ 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임.';
+        var msg = '※ 직전시험 경쟁률, 직전시험 합격선 정보는 2019년 1차 시험 기준임.';
         switch (num) {
-            case 300 :
-                msg = '※ 전의경경채의 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임.';
-                break;
-            case 400 :
-                msg = '※ 일반공채(남,여)의 지난 시험 경쟁률, 합격선 정보는 2019년 1차 시험 기준임';
+            case 800 :
+                msg = '※ 직전시험 경쟁률, 직전시험 합격선 정보는 2018년 3차 시험 기준임.';
                 break;
             default :
                 break;

@@ -91,7 +91,6 @@
                 <th>이메일</th>
                 <th>댓글</th>
                 <th>작성일</th>
-                <th>사용여부</th>
                 <th>삭제여부</th>
             </tr>
             </thead>
@@ -162,9 +161,6 @@
                         }
                     }},
                 {'data' : 'temp_RegDatm'},
-                {'data' : 'temp_isUse', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                    }},
                 {'data' : 'temp_isStatus', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '<a href="#none" class="btn-delete" data-board-comment-idx="' + row.temp_idx + '"><span class="blue"><u>사용</u></span></a>' : '<span class="red">삭제</span>';
                     }}

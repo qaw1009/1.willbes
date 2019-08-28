@@ -21,6 +21,8 @@
 
         /************************************************************/
 
+        .skyBanner {position:fixed; bottom:250px;right:0;z-index:10;}
+
         .wb_top {background:#222 url(https://static.willbes.net/public/images/promotion/2019/08/1053_top_bg.png) no-repeat center top}
         .wb_cts01 {background:#191919;}
         .wb_cts02 {background:#eee;}
@@ -35,12 +37,25 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="skyBanner">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_skybanner.png" title="경찰통합생활관리반">
+        </div>
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_top.png"alt="경찰통합생활관리반">
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1.png"alt="최적의학습환경"/>
+            <div class="pt100">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_01.jpg"alt="통합생활관리반 기본이론 과정"/>
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1A.png"alt="최적의학습환경"/><br>            
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1B.png"alt="최적의학습환경"/>
+            <div class="pt100">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_02.gif"alt="통합생활관리반 신청하기" usemap="#Map1053A" border="0"/>
+                <map name="Map1053A" id="Map1053A">
+                    <area shape="rect" coords="355,962,630,1042" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;course_idx=1093&amp;subject_idx=1473" target="_blank" alt="신청하기" />
+                </map>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -68,8 +83,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_02_bottom.png" alt="" />
         </div>
 
-        <div class="evtCtnsBox wb_cts01 pt100">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_03_2.png" alt="" />
+        <div class="evtCtnsBox wb_cts01">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_03_2.jpg" alt="" />
         </div>
     </div>
     <!-- End Container -->

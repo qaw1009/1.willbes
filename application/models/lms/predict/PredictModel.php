@@ -1737,20 +1737,20 @@ class PredictModel extends WB_Model
             pg.TakeMockPart, pg.TakeArea, OnePerCut,
             (
             SELECT COUNT(*) FROM (
-                    SELECT * FROM {$this->_table['predictGradesOrigin']} GROUP BY MemIdx
+                    SELECT * FROM {$this->_table['predictGradesOrigin']} WHERE PredictIdx = '{$PredictIdx}' GROUP BY PrIdx
                 ) AS A
-                WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart AND PredictIdx = pg.PredictIdx 
+                WHERE PredictIdx = pg.PredictIdx AND TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart
             ) AS TakeOrigin,  
-            SUM(pg.AvrPoint) AS AvrPoint,
-            (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
+            ROUND(AVG(pg.OrgPoint),2) AS AvrPoint,
+            (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE PredictIdx = pg.PredictIdx AND TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
             pl.PickNum, pl.TakeNum, CompetitionRateNow, CompetitionRateAgo, PassLineAgo, AvrPointAgo, StabilityAvrPoint, StabilityAvrPercent,
-            StrongAvrPoint1, StrongAvrPoint2, StrongAvrPercent, ExpectAvrPoint1, ExpectAvrPoint2, ExpectAvrPercent, pl.IsUse,               
-            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef             
+            StrongAvrPoint1, StrongAvrPoint2, StrongAvrPercent, ExpectAvrPoint1, ExpectAvrPoint2, ExpectAvrPercent, pl.IsUse,
+            StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef
         ";
 
         $from = "
             FROM
-                {$this->_table['predictGradesArea']} AS pg
+                {$this->_table['predictGradesOrigin']} AS pg
                 LEFT JOIN {$this->_table['predictGradesLine']} AS pl ON pg.TakeArea = pl.TakeArea AND pg.TakeMockPart = pl.TakeMockPart AND pg.PredictIdx = pl.PredictIdx
                 LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
                 LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd

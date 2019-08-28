@@ -123,7 +123,7 @@
 
                     <div class="sectionEvt02">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_evt02.jpg" alt="토크쇼 시청 인증샷 공유 이벤트" />
-                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1208" target="_blank">
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1376" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_evt02_btn.png" alt="공유 이벤트 참여하기" />
                         </a>
                     </div>

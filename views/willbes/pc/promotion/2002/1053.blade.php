@@ -25,6 +25,18 @@
 
         .wb_top {background:#222 url(https://static.willbes.net/public/images/promotion/2019/08/1053_top_bg.png) no-repeat center top}
         .wb_cts01 {background:#191919;}
+        .btnLec {padding-top:100px; position:relative;}
+        .btnLec span {position:absolute; top:70px; left:50%; margin-left:-360px; z-index:10; animation:ani 1s infinite;}
+        @@keyframes ani{
+            0%{top:70px;}
+            50%{top:90px;}
+            100%{top:70px;}
+        }
+        @@-webkit-keyframes ani{
+            0%{top:70px;}
+            50%{top:90px;}
+            100%{top:70px;}
+        }  
         .wb_cts02 {background:#eee;}
 
         /* 슬라이드배너 */
@@ -48,14 +60,18 @@
             <div class="pt100">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_01.jpg"alt="통합생활관리반 기본이론 과정"/>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1A.png"alt="최적의학습환경"/><br>            
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1A.png"alt="최적의학습환경"/><br>  
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1C.png"alt="최적의학습환경"/><br>           
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1B.png"alt="최적의학습환경"/>
-            <div class="pt100">
-                <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_02.gif"alt="통합생활관리반 신청하기" usemap="#Map1053A" border="0"/>
+            <div class="btnLec">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_02.jpg"alt="통합생활관리반 신청하기" usemap="#Map1053A" border="0"/>
                 <map name="Map1053A" id="Map1053A">
                     <area shape="rect" coords="355,962,630,1042" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;course_idx=1093&amp;subject_idx=1473" target="_blank" alt="신청하기" />
                 </map>
-            </div>
+                <span>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_02_popup.png"alt="이벤트 ~9.2 마감"/>   
+                <span>
+            </div>            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -63,7 +79,7 @@
             <map name="Map_lec_go">
                 <area shape="rect" coords="172,583,951,678" href="https://police.willbes.net/pass/promotion/index/code/1051" target="_blank" alt="관리반보러가기">
                 <area shape="rect" coords="177,1105,956,1200" href="https://police.willbes.net/pass/promotion/index/code/1128" target="_blank" alt="체력학원보러가기">
-            </map>
+            </map>            
         </div>
 
         <div class="evtCtnsBox wb_cts02" >

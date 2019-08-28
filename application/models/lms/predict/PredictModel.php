@@ -983,9 +983,9 @@ class PredictModel extends WB_Model
             if(!$this->_conn->affected_rows()) {
                 throw new Exception('저장에 실패했습니다.');
             }
+            $nowIdx = $this->_conn->insert_id();
 
             if( isset($names['QuestionFile']['error']) && $names['QuestionFile']['error'] === UPLOAD_ERR_OK && $names['QuestionFile']['size'] > 0 ) {
-                $nowIdx = $this->_conn->insert_id();
                 $uploadSubPath = $this->upload_path_predict . $nowIdx;
                 $isSave = $this->uploadFileSave($uploadSubPath, $names);
                 if ($isSave !== true) {

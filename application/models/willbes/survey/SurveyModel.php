@@ -284,7 +284,7 @@ class SurveyModel extends WB_Model
                 }
             }
 
-            $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where('PrIdx', $PrIdx);
+            $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where('PrIdx', $PrIdx);
 
             if ($this->_conn->update($this->_table['predictRegister']) === false) {
                 throw new \Exception('수정에 실패했습니다.');

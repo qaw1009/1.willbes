@@ -2090,11 +2090,16 @@ class SurveyModel extends WB_Model
     public function CountAreaForMemberPoint($PredictIdx, $take_mock_part, $take_area)
     {
         $query = "
-            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND AdjustPoint <= 100) AS cnt_100,
-            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND (AdjustPoint BETWEEN 101 AND 200)) AS cnt_200,
-            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND (AdjustPoint BETWEEN 201 AND 300)) AS cnt_300,
-            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND (AdjustPoint BETWEEN 301 AND 400)) AS cnt_400,
-            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictGrades']} WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' AND (AdjustPoint BETWEEN 401 AND 500)) AS cnt_500
+            (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx) AS A
+            WHERE A.SumAdjustPoint <= 100) AS cnt_100,
+            (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
+            WHERE A.SumAdjustPoint BETWEEN 101 AND 200 ) AS cnt_200,
+            (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
+            WHERE A.SumAdjustPoint BETWEEN 201 AND 300 ) AS cnt_300,
+            (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
+            WHERE A.SumAdjustPoint BETWEEN 301 AND 400 ) AS cnt_400,
+            (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
+            WHERE A.SumAdjustPoint BETWEEN 401 AND 500 ) AS cnt_500
         ";
         return $this->_conn->query('select ' . $query)->row_array();
     }

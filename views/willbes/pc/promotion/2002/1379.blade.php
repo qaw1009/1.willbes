@@ -73,7 +73,7 @@
                     <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
-                        <a href="#to_go" target="_self">신청하기 &gt;</a><br />
+                        <a href="#apply" target="_self">신청하기 &gt;</a><br />
                         <span style="line-height:40px;">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감</span>
                     </li>
                 </ul>
@@ -99,7 +99,7 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_03" id="to_go">
+        <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_03.jpg" alt="다운로드 및 바로가기" usemap="#Map1379b" border="0" />
             <map name="Map1379b" id="Map1379b">
                 <area shape="rect" coords="179,226,541,293" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="공고문 다운로드" />

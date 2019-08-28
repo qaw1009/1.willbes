@@ -102,7 +102,7 @@
         <div class="evtCtnsBox wb_03" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_03.jpg" alt="다운로드 및 바로가기" usemap="#Map1379b" border="0" />
             <map name="Map1379b" id="Map1379b">
-                <area shape="rect" coords="179,226,541,293" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" target="_blank" alt="공고문 다운로드" />
+                <area shape="rect" coords="179,226,541,293" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="공고문 다운로드" />
                 <area shape="rect" coords="577,226,938,295" href="http://gosi.kcg.go.kr/" target="_blank" alt="원서접수 바로가기" />
             </map>
         </div>

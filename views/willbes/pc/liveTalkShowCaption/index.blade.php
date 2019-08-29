@@ -402,6 +402,16 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
+
+            $('.slide01').bxSlider({
+                speed : 200,
+                auto : true,
+                randomStart : true,
+                //pager : false,
+                mode : 'vertical', //'horizontal', 'vertical', 'fade'
+                controls : false
+            });
+
             $('ul.tabSt1').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -429,16 +439,6 @@
                 delay : 11, // the delay time in ms
                 time : 1000 // the speed time in ms
             });
-
-            $('.slide01').bxSlider({
-                speed : 200,
-                auto : true,
-                randomStart : true,
-                //pager : false,
-                mode : 'vertical', //'horizontal', 'vertical', 'fade'
-                controls : false
-            });
-
         });
     </script>
 

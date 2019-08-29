@@ -828,7 +828,7 @@ class SurveyModel extends WB_Model
      */
     public function getScore2($pridx, $PredictIdx){
         $column = "
-            pg.PpIdx, pc2.CcdName AS SubjectName, pg.OrgPoint, AdjustPoint, Rank, FivePerPoint, AvrPoint, TakeNum
+            pg.PpIdx, pc2.CcdName AS SubjectName, pg.OrgPoint, AdjustPoint, Rank, FivePerPoint, AvrPoint, TakeNum, pg.TakeMockPart
         ";
 
         $from = "
@@ -1708,9 +1708,10 @@ class SurveyModel extends WB_Model
     /**
      * 정답제출삭제
      * @param $PrIdx
+     * @param bool $del_cnt_type
      * @return array|bool
      */
-    public function examDelete($PrIdx)
+    public function examDelete($PrIdx, $del_cnt_type = true)
     {
         try {
             $this->_conn->trans_begin();
@@ -1721,10 +1722,9 @@ class SurveyModel extends WB_Model
                 throw new \Exception('조회된 기본정보가 없습니다.');
             }
 
-            if ($register_data['PointDelCnt'] >= 2) {
-                throw new \Exception('재채점은 최대 2회만 가능합니다.');
-            }
-            $point_del_cnt = $register_data['PointDelCnt'] + 1;
+            /*if ($register_data['PointDelCnt'] >= 1) {
+                throw new \Exception('재채점은 최대 1회만 가능합니다.');
+            }*/
 
             if($this->_conn->delete($this->_table['predictAnswerPaper'], $where) === false){
                 throw new \Exception('삭제에 실패했습니다.');
@@ -1736,8 +1736,11 @@ class SurveyModel extends WB_Model
                 throw new \Exception('삭제에 실패했습니다.');
             }
 
-            if ($this->_conn->set(['PointDelCnt'=>$point_del_cnt, 'PointDelDatm'=>date('Y-m-d H:i:s')])->where('PrIdx', $PrIdx)->update('lms_predict_register') === false) {
-                throw new \Exception('수정에 실패했습니다.');
+            if ($del_cnt_type === true) {
+                $point_del_cnt = $register_data['PointDelCnt'] + 1;
+                if ($this->_conn->set(['PointDelCnt' => $point_del_cnt, 'PointDelDatm' => date('Y-m-d H:i:s')])->where('PrIdx', $PrIdx)->update('lms_predict_register') === false) {
+                    throw new \Exception('수정에 실패했습니다.');
+                }
             }
 
             $this->_conn->trans_commit();
@@ -1825,7 +1828,7 @@ class SurveyModel extends WB_Model
             $AnswerArr = element('Answer', $formData);
 
             //삭제후 입력
-            $this->examDelete($PrIdx);
+            $this->examDelete($PrIdx, false);
 
             $strAnswer = '';
             for($i = 0; $i < count($AnswerArr); $i++){
@@ -1907,7 +1910,7 @@ class SurveyModel extends WB_Model
             $MemIdx = $this->session->userdata('mem_idx');
 
             //삭제후 입력
-            $this->examDelete($PrIdx);
+            $this->examDelete($PrIdx, false);
 
 
             $column = "

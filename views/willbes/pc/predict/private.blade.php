@@ -221,32 +221,39 @@
                                 @else
                                     <tr>
                                         <th>합격기대권</th>
-                                        <td>{{ $arr_base['arr_line_data']['ExpectAvrPoint1'] }} ~ {{ $arr_base['arr_line_data']['ExpectAvrPoint2'] }}</td>
+                                        {{--<td>{{ $arr_base['arr_line_data']['ExpectAvrPoint1'] }} ~ {{ $arr_base['arr_line_data']['ExpectAvrPoint2'] }}</td>--}}
+                                        <td>{{ ((empty($arr_base['arr_line_data']['ExpectAvrPoint1']) === false && $arr_base['arr_line_data']['IsUse'] == 'Y') ? $arr_base['arr_line_data']['ExpectAvrPoint1'].'~'.$arr_base['arr_line_data']['ExpectAvrPoint2'] : '집계중') }}</td>
                                     </tr>
                                     <tr>
                                         <th>합격유력권</th>
-                                        <td>{{ $arr_base['arr_line_data']['StrongAvrPoint1'] }} ~ {{ $arr_base['arr_line_data']['StrongAvrPoint2'] }}</td>
+                                        {{--<td>{{ $arr_base['arr_line_data']['StrongAvrPoint1'] }} ~ {{ $arr_base['arr_line_data']['StrongAvrPoint2'] }}</td>--}}
+                                        <td>{{ ((empty($arr_base['arr_line_data']['StrongAvrPoint1']) === false && $arr_base['arr_line_data']['IsUse'] == 'Y') ? $arr_base['arr_line_data']['StrongAvrPoint1'].'~'.$arr_base['arr_line_data']['StrongAvrPoint2'] : '집계중') }}</td>
                                     </tr>
                                     <tr>
                                         <th>합격안정권</th>
-                                        <td>{{ $arr_base['arr_line_data']['StabilityAvrPoint'] }} 이상</td>
+                                        {{--<td>{{ $arr_base['arr_line_data']['StabilityAvrPoint'] }} 이상</td>--}}
+                                        <td>{{ ((empty($arr_base['arr_line_data']['StabilityAvrPoint']) === false && $arr_base['arr_line_data']['IsUse'] == 'Y') ? $arr_base['arr_line_data']['StabilityAvrPoint'].' 이상' : '집계중') }}</td>
                                     </tr>
                                     <tr class="bg01">
                                         <th>1배수컷</th>
-                                        <td>{{ $arr_base['arr_line_data']['OnePerCut'] }}</td>
+                                        <td>{{ ((empty($arr_base['arr_line_data']['OnePerCut']) === false && $arr_base['arr_line_data']['IsUse'] == 'Y') ? $arr_base['arr_line_data']['OnePerCut'] : '집계중') }}</td>
                                     </tr>
                                     <tr class="bg01">
                                         <th>합격예측</th>
-                                        @if ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['ExpectAvrPoint1']
-                                        && $arr_base['total_area_avg']['TotalAdjustPoint'] <= $arr_base['arr_line_data']['ExpectAvrPoint2'])
-                                            <th>현재 기준 <span class="tx-red">합격 기대권</span>입니다.</th>
-                                        @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['StrongAvrPoint1']
-                                        && $arr_base['total_area_avg']['TotalAdjustPoint'] <= $arr_base['arr_line_data']['StrongAvrPoint2'])
-                                            <th>현재 기준 <span class="tx-red">합격 유력권</span>입니다.</th>
-                                        @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['StabilityAvrPoint'])
-                                            <th>현재 기준 <span class="tx-red">합격 안정권</span>입니다.</th>
+                                        @if ($arr_base['arr_line_data']['IsUse'] == 'Y')
+                                            @if ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['ExpectAvrPoint1']
+                                            && $arr_base['total_area_avg']['TotalAdjustPoint'] <= $arr_base['arr_line_data']['ExpectAvrPoint2'])
+                                                <th>현재 기준 <span class="tx-red">합격 기대권</span>입니다.</th>
+                                            @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['StrongAvrPoint1']
+                                            && $arr_base['total_area_avg']['TotalAdjustPoint'] <= $arr_base['arr_line_data']['StrongAvrPoint2'])
+                                                <th>현재 기준 <span class="tx-red">합격 유력권</span>입니다.</th>
+                                            @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['StabilityAvrPoint'])
+                                                <th>현재 기준 <span class="tx-red">합격 안정권</span>입니다.</th>
+                                            @else
+                                                <th>-</th>
+                                            @endif
                                         @else
-                                            <th>-</th>
+                                            <th>집계중</th>
                                         @endif
                                     </tr>
                                 @endif

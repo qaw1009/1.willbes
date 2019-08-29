@@ -983,8 +983,24 @@ class BasePassPredict extends \app\controllers\FrontController
 
             //원점수 조회
             $user_point = [];
+            /*
             $user_point_result = $this->surveyModel->getScore1($PrIdx, $idx);
             foreach ($user_point_result as $key => $val) {
+                $user_point[$val['PpIdx']]['TakeMockPart'] = $arr_base['resist_data'][$PrIdx]['TakeMockPart'];
+                $user_point[$val['PpIdx']]['SubjectName'] = $val['SubjectName'];
+                $user_point[$val['PpIdx']]['OrgPoint'] = $val['OrgPoint'];
+                $user_point[$val['PpIdx']]['AdjustPoint'] = $val['AdjustPoint'];
+            }
+            */
+            $score1 = $this->surveyModel->getScore1($PrIdx, $idx);
+            $score2 = $this->surveyModel->getScore2($PrIdx, $idx);
+            foreach ($score1 as $key => $val) {
+                $user_point[$val['PpIdx']]['TakeMockPart'] = $arr_base['resist_data'][$PrIdx]['TakeMockPart'];
+                $user_point[$val['PpIdx']]['SubjectName'] = $val['SubjectName'];
+                $user_point[$val['PpIdx']]['OrgPoint'] = $val['OrgPoint'];
+                $user_point[$val['PpIdx']]['AdjustPoint'] = $val['AdjustPoint'];
+            }
+            foreach ($score2 as $key => $val) {
                 $user_point[$val['PpIdx']]['TakeMockPart'] = $arr_base['resist_data'][$PrIdx]['TakeMockPart'];
                 $user_point[$val['PpIdx']]['SubjectName'] = $val['SubjectName'];
                 $user_point[$val['PpIdx']]['OrgPoint'] = $val['OrgPoint'];

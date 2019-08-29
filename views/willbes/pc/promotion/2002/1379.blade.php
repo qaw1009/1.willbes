@@ -95,7 +95,7 @@
         <div class="evtCtnsBox wb_02" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02.jpg" alt="패키지 구성" usemap="#Map1379a" border="0" />
             <map name="Map1379a" id="Map1379a">
-                <area shape="rect" coords="370,1292,747,1402" href="javascript:alert('PACKAGE\n수강신청\nComing soon');" alt="지금 바로 신청하기" />
+                <area shape="rect" coords="371,1290,749,1401" href="javascript:alert('PACKAGE\n수강신청\nComing soon');" alt="지금 바로 신청하기" />
             </map>
         </div>
 

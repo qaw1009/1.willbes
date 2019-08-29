@@ -226,7 +226,7 @@
 
                 function moveMyPredict(){
                     {{--alert('안정화 작업중입니다!');--}}
-                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1212/spidx/'.$idx) }}');
+                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1353') }}');
                 }
 
                 function examDeleteAjax() {

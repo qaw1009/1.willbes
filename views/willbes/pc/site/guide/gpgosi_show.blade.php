@@ -14,7 +14,7 @@
                         <ul class="tabShow tabcsDepth2 tab_gpgosi_Guide p_re NGEB">
                             <li class="w-gpgosi-guide1"><a class="qBox on" href="#gpgosi_guide1"><span>군무원 안내</span></a></li>
                             <li class="w-gpgosi-guide2"><a class="qBox" href="#gpgosi_guide2"><span>군무원 시험의 모든것</span></a></li>
-                            <li class="w-gpgosi-guide3"><a class="qBox" href="#gpgosi_guide3"><span>경쟁률 및 합격선 (2018)</span></a></li>
+                            <li class="w-gpgosi-guide3"><a class="qBox" href="#gpgosi_guide3"><span>경쟁률 및 합격선 (2019)</span></a></li>
                             <li class="w-gpgosi-guide4"><a class="qBox" href="#gpgosi_guide4"><span>직렬별 주요 업무내용</span></a></li>
                         </ul>
                         <div class="tabBox mt30">
@@ -1695,62 +1695,56 @@
                                                     </dl>
                                                     <div class="mgB3">
                                                         <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
-                                                            <colgroup><col width="20%">
+                                                            <colgroup>
+                                                                <col width="20%">
                                                                 <col width="">
                                                                 <col width="">
                                                                 <col width="">
-                                                            </colgroup><thead><tr>
-                                                                <th>직렬</th>
-                                                                <th>모집인원(명)</th>
-                                                                <th>경쟁률</th>
-                                                                <th>합격선(점)&nbsp;</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                                <col width="">
+                                                            </colgroup>
                                                             <tr>
-                                                                <td class="td_13">행정&nbsp;</td>
+                                                                <th>직렬 </th>
+                                                                <th>채용인원 </th>
+                                                                <th>응시인원 </th>
+                                                                <th>경쟁률 </th>
+                                                                <th>합격선(점) </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>행정 </th>
                                                                 <td>1</td>
-                                                                <td>237:01:00</td>
-                                                                <td>83</td>
+                                                                <td>176</td>
+                                                                <td>176.0:1 </td>
+                                                                <td>90</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">군사정보</td>
+                                                                <th>군사정보 </th>
                                                                 <td>10</td>
-                                                                <td>40:01:00</td>
-                                                                <td>81</td>
+                                                                <td>243</td>
+                                                                <td>24.3:1 </td>
+                                                                <td>75</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">토목</td>
-                                                                <td>1</td>
-                                                                <td>10:01</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전기</td>
+                                                                <th>전기 </th>
                                                                 <td>2</td>
-                                                                <td>45.5:1</td>
-                                                                <td>77</td>
+                                                                <td>62</td>
+                                                                <td>31.0:1 </td>
+                                                                <td>62</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">통신</td>
-                                                                <td>3</td>
-                                                                <td>16:01</td>
+                                                                <th>전자 </th>
+                                                                <td>1</td>
+                                                                <td>14</td>
+                                                                <td>14.0:1 </td>
+                                                                <td>52</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전산 </th>
+                                                                <td>14</td>
+                                                                <td>179</td>
+                                                                <td>12.79:1 </td>
                                                                 <td>74</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td class="td_13">전산</td>
-                                                                <td>2</td>
-                                                                <td>68:01:00</td>
-                                                                <td>77</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">영상</td>
-                                                                <td>1</td>
-                                                                <td>19:01</td>
-                                                                <td>57</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
+                                                        </table> 
                                                     </div>
                                                 </div>
                                                 <div class="hTy">
@@ -1761,109 +1755,160 @@
                                                     </dl>
                                                     <div class="mgB3">
                                                         <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
-                                                            <colgroup><col width="20%">
+                                                            <colgroup>
+                                                                <col width="20%">
                                                                 <col width="">
                                                                 <col width="">
                                                                 <col width="">
-                                                            </colgroup><thead><tr>
-                                                                <th>직렬</th>
-                                                                <th>모집인원(명)</th>
-                                                                <th>경쟁률</th>
-                                                                <th>합격선(점)&nbsp;</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                                <col width="">
+                                                            </colgroup>
                                                             <tr>
-                                                                <td class="td_13">행정</td>
-                                                                <td>46</td>
-                                                                <td>184:01:00</td>
-                                                                <td>83.5</td>
+                                                                <th>직렬 </th>
+                                                                <th>채용인원 </th>
+                                                                <th>응시인원 </th>
+                                                                <th>경쟁률 </th>
+                                                                <th>합격선(점) </th>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">행정(장애)</td>
-                                                                <td>5</td>
-                                                                <td>16.8:1</td>
-                                                                <td>68</td>
+                                                                <th>행정 </th>
+                                                                <td>31</td>
+                                                                <td>4076</td>
+                                                                <td>131.48:1 </td>
+                                                                <td>86</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">군사정보</td>
-                                                                <td>2</td>
-                                                                <td>146.5:1</td>
-                                                                <td>65.3</td>
+                                                                <th>행정(장애) </th>
+                                                                <td>27</td>
+                                                                <td>76</td>
+                                                                <td>2.81:1 </td>
+                                                                <td>60</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">기술정보</td>
-                                                                <td>2</td>
-                                                                <td>100.5:1</td>
-                                                                <td>63.5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">수사</td>
-                                                                <td>1</td>
-                                                                <td>716:01:00</td>
-                                                                <td>84</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">건축</td>
+                                                                <th>기술정보 </th>
                                                                 <td>13</td>
-                                                                <td>28:01:00</td>
+                                                                <td>338</td>
+                                                                <td>26.0:1 </td>
+                                                                <td>69.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>기술정보(장애) </th>
+                                                                <td>5</td>
+                                                                <td>9</td>
+                                                                <td>1.8:1 </td>
+                                                                <td>62</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>토목 </th>
+                                                                <td>3</td>
+                                                                <td>113</td>
+                                                                <td>37.67:1 </td>
                                                                 <td>69</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">시설</td>
-                                                                <td>21</td>
-                                                                <td>13.81:1</td>
-                                                                <td>65.3</td>
+                                                                <th>건축 </th>
+                                                                <td>5</td>
+                                                                <td>173</td>
+                                                                <td>34.6:1 </td>
+                                                                <td>69</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">전기</td>
+                                                                <th>시설 </th>
                                                                 <td>12</td>
-                                                                <td>30.5:1</td>
-                                                                <td>66.6</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전자</td>
-                                                                <td>4</td>
-                                                                <td>32.75:1</td>
-                                                                <td>53.3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">통신</td>
-                                                                <td>8</td>
-                                                                <td>27.63:1</td>
-                                                                <td>66.3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전산</td>
-                                                                <td>13</td>
-                                                                <td>63.77:1</td>
-                                                                <td>77.3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">차량</td>
-                                                                <td>1</td>
-                                                                <td>43:01:00</td>
+                                                                <td>105</td>
+                                                                <td>8.75:1 </td>
                                                                 <td>61</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">병리</td>
-                                                                <td>6</td>
-                                                                <td>19.33:1</td>
-                                                                <td>72</td>
+                                                                <th>환경 </th>
+                                                                <td>1</td>
+                                                                <td>57</td>
+                                                                <td>57.0:1 </td>
+                                                                <td>66.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">치무</td>
-                                                                <td>22</td>
-                                                                <td>12.36:1</td>
-                                                                <td>68</td>
+                                                                <th>전기 </th>
+                                                                <td>8</td>
+                                                                <td>222</td>
+                                                                <td>27.75:1 </td>
+                                                                <td>71.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">의무기록</td>
-                                                                <td>14</td>
-                                                                <td>14.36:1</td>
-                                                                <td>73.3</td>
+                                                                <th>전자 </th>
+                                                                <td>4</td>
+                                                                <td>69</td>
+                                                                <td>17.25:1 </td>
+                                                                <td>61.3</td>
                                                             </tr>
-                                                            </tbody>
+                                                            <tr>
+                                                                <th>통신 </th>
+                                                                <td>11</td>
+                                                                <td>130</td>
+                                                                <td>11.82:1 </td>
+                                                                <td>58.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전산 </th>
+                                                                <td>8</td>
+                                                                <td>315</td>
+                                                                <td>39.38:1 </td>
+                                                                <td>78.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>지도 </th>
+                                                                <td>2</td>
+                                                                <td>54</td>
+                                                                <td>27.0:1 </td>
+                                                                <td>81</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>일반기계 </th>
+                                                                <td>1</td>
+                                                                <td>36</td>
+                                                                <td>36.0:1 </td>
+                                                                <td>53.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>차량 </th>
+                                                                <td>1</td>
+                                                                <td>52</td>
+                                                                <td>52.0:1 </td>
+                                                                <td>46.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>인쇄 </th>
+                                                                <td>5</td>
+                                                                <td>56</td>
+                                                                <td>11.2:1 </td>
+                                                                <td>77</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>병리 </th>
+                                                                <td>5</td>
+                                                                <td>69</td>
+                                                                <td>13.8:1 </td>
+                                                                <td>65.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>방사선 </th>
+                                                                <td>4</td>
+                                                                <td>47</td>
+                                                                <td>11.75:1 </td>
+                                                                <td>74.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>치무 </th>
+                                                                <td>3</td>
+                                                                <td>138</td>
+                                                                <td>46.0:1 </td>
+                                                                <td>70.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>치무 </th>
+                                                                <td>1</td>
+                                                                <td>29</td>
+                                                                <td>29.0:1 </td>
+                                                                <td>69.3</td>
+                                                            </tr>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -1877,43 +1922,104 @@
                                                     </dl>
                                                     <div class="mgB3">
                                                         <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
-                                                            <colgroup><col width="20%">
+                                                            <colgroup>
+                                                                <col width="20%">
                                                                 <col width="">
                                                                 <col width="">
                                                                 <col width="">
-                                                            </colgroup><thead><tr>
-                                                                <th>직렬</th>
-                                                                <th>모집인원(명)</th>
-                                                                <th>경쟁률</th>
-                                                                <th>합격선(점)&nbsp;</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                                <col width="">
+                                                            </colgroup>
                                                             <tr>
-                                                                <td class="td_13">행정</td>
-                                                                <td>8</td>
-                                                                <td>30.8:1</td>
-                                                                <td>77</td>
+                                                                <th>직렬 </th>
+                                                                <th>채용인원 </th>
+                                                                <th>응시인원 </th>
+                                                                <th>경쟁률 </th>
+                                                                <th>합격선(점) </th>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">토목</td>
-                                                                <td>5</td>
-                                                                <td>6.6:1</td>
-                                                                <td>49</td>
+                                                                <th>행정 </th>
+                                                                <td>35</td>
+                                                                <td>306</td>
+                                                                <td>8.7:1 </td>
+                                                                <td>80</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">전자</td>
+                                                                <th>군수 </th>
+                                                                <td>2</td>
+                                                                <td>12</td>
+                                                                <td>6:01</td>
+                                                                <td>62</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>군사정보 </th>
                                                                 <td>1</td>
-                                                                <td>7:01</td>
-                                                                <td>-</td>
+                                                                <td>12</td>
+                                                                <td>15:01</td>
+                                                                <td>71</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">항공기관</td>
+                                                                <th>전기 </th>
+                                                                <td>1</td>
                                                                 <td>7</td>
-                                                                <td>2.7:1</td>
-                                                                <td>40</td>
+                                                                <td>7:01</td>
+                                                                <td>54</td>
                                                             </tr>
-                                                            </tbody>
+                                                            <tr>
+                                                                <th>전자 </th>
+                                                                <td>4</td>
+                                                                <td>10</td>
+                                                                <td>2.5:1 </td>
+                                                                <td>46</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>토목 </th>
+                                                                <td>5</td>
+                                                                <td>35</td>
+                                                                <td>7:01</td>
+                                                                <td>56</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>총포 </th>
+                                                                <td>6</td>
+                                                                <td>7</td>
+                                                                <td>1.2:1 </td>
+                                                                <td>69</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전차 </th>
+                                                                <td>2</td>
+                                                                <td>3</td>
+                                                                <td>1.5:1 </td>
+                                                                <td>70</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>수사 </th>
+                                                                <td>3</td>
+                                                                <td>135</td>
+                                                                <td>45:01:00</td>
+                                                                <td>72</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>기체 </th>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                                <td>1:01</td>
+                                                                <td>55</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공기관 </th>
+                                                                <td>2</td>
+                                                                <td>6</td>
+                                                                <td>3:01</td>
+                                                                <td>64</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>환경 </th>
+                                                                <td>1</td>
+                                                                <td>10</td>
+                                                                <td>10:01</td>
+                                                                <td>58</td>
+                                                            </tr>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -1925,321 +2031,210 @@
                                                     </dl>
                                                     <div class="mgB3">
                                                         <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
-                                                            <colgroup><col width="20%">
+                                                            <colgroup>
+                                                                <col width="20%">
                                                                 <col width="">
                                                                 <col width="">
                                                                 <col width="">
-                                                            </colgroup><thead><tr>
-                                                                <th>직렬</th>
-                                                                <th>모집인원(명)</th>
-                                                                <th>경쟁률</th>
-                                                                <th>합격선(점)&nbsp;</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                                <col width="">
+                                                            </colgroup>
+                                                            <col/>
                                                             <tr>
-                                                                <td class="td_13">행정</td>
-                                                                <td>37</td>
-                                                                <td>141.5:1</td>
-                                                                <td>84</td>
+                                                                <th>직렬 </th>
+                                                                <th>채용인원 </th>
+                                                                <th>응시인원 </th>
+                                                                <th>경 쟁 률 </th>
+                                                                <th>합격선(점) </th>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">군수</td>
-                                                                <td>78</td>
-                                                                <td>48:01:00</td>
-                                                                <td>76</td>
+                                                                <th>행정 </th>
+                                                                <td>197</td>
+                                                                <td>5340</td>
+                                                                <td>27.1:1 </td>
+                                                                <td>82.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">기체</td>
-                                                                <td>6</td>
-                                                                <td>9.7:1</td>
-                                                                <td>71.6</td>
+                                                                <th>군수 </th>
+                                                                <td>161</td>
+                                                                <td>2276</td>
+                                                                <td>14.1:1 </td>
+                                                                <td>70.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">시설</td>
-                                                                <td>6</td>
-                                                                <td>17:01</td>
-                                                                <td>53</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">영상</td>
-                                                                <td>2</td>
-                                                                <td>28:01:00</td>
-                                                                <td>75</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">일반기계</td>
-                                                                <td>15</td>
-                                                                <td>28.3:1</td>
-                                                                <td>73.6</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전기</td>
-                                                                <td>19</td>
-                                                                <td>16.2:1</td>
-                                                                <td>60</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전자</td>
-                                                                <td>39</td>
-                                                                <td>10.6:1</td>
-                                                                <td>52</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전차</td>
-                                                                <td>53</td>
-                                                                <td>13.3:1</td>
-                                                                <td>74.3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">총포</td>
-                                                                <td>20</td>
-                                                                <td>12.5:1</td>
-                                                                <td>53.6</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">탄약</td>
-                                                                <td>22</td>
-                                                                <td>13.3:1</td>
+                                                                <th>군사정보 </th>
+                                                                <td>23</td>
+                                                                <td>302</td>
+                                                                <td>13.1:1 </td>
                                                                 <td>66.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">항공기관</td>
+                                                                <th>전기 </th>
+                                                                <td>26</td>
+                                                                <td>372</td>
+                                                                <td>14.3:1 </td>
+                                                                <td>67.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전자 </th>
+                                                                <td>36</td>
+                                                                <td>225</td>
+                                                                <td>6.3:1 </td>
+                                                                <td>42.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>통신 </th>
+                                                                <td>46</td>
+                                                                <td>246</td>
+                                                                <td>5.3:1 </td>
+                                                                <td>53.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>총포 </th>
+                                                                <td>83</td>
+                                                                <td>218</td>
+                                                                <td>2.6:1 </td>
+                                                                <td>41.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>유도무기 </th>
+                                                                <td>57</td>
+                                                                <td>195</td>
+                                                                <td>3.4:1 </td>
+                                                                <td>51</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전산 </th>
+                                                                <td>51</td>
+                                                                <td>662</td>
+                                                                <td>13:01</td>
+                                                                <td>77.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>병리 </th>
                                                                 <td>13</td>
-                                                                <td>10.2:1</td>
-                                                                <td>71.6</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="guide_slider">
-                                                <div class="hTy">
-                                                    <dl class="gd_txt">
-                                                        <dt>
-                                                            <h2>해군 - 공채 7급</h2>
-                                                        </dt>
-                                                    </dl>
-                                                    <div class="mgB3">
-                                                        <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
-                                                            <colgroup><col width="20%">
-                                                                <col width="">
-                                                                <col width="">
-                                                                <col width="">
-                                                            </colgroup><thead><tr>
-                                                                <th>직렬</th>
-                                                                <th>모집인원(명)</th>
-                                                                <th>경쟁률</th>
-                                                                <th>합격선(점)&nbsp;</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td class="td_13">행정</td>
-                                                                <td>8</td>
-                                                                <td>30.8:1</td>
-                                                                <td>-</td>
+                                                                <td>40</td>
+                                                                <td>1.1:1 </td>
+                                                                <td>64</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">전자</td>
+                                                                <th>사서 </th>
                                                                 <td>1</td>
-                                                                <td>7:01</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">토목</td>
-                                                                <td>5</td>
-                                                                <td>6.6:1</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">항공기관</td>
-                                                                <td>7</td>
-                                                                <td>2.7:1</td>
-                                                                <td></td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                <div class="hTy">
-                                                    <dl class="gd_txt">
-                                                        <dt>
-                                                            <h2>해군 - 공채 9급</h2>
-                                                        </dt>
-                                                    </dl>
-                                                    <div class="mgB3">
-                                                        <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
-                                                            <colgroup><col width="20%">
-                                                                <col width="">
-                                                                <col width="">
-                                                                <col width="">
-                                                            </colgroup><thead><tr>
-                                                                <th>직렬</th>
-                                                                <th>모집인원(명)</th>
-                                                                <th>경쟁률</th>
-                                                                <th>합격선(점)&nbsp;</th>
-                                                            </tr>
-                                                            <thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td class="td_13">행정</td>
-                                                                <td>20</td>
-                                                                <td>101.7:1</td>
+                                                                <td>103</td>
+                                                                <td>103:01:00</td>
                                                                 <td>84</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">행정(장애)</td>
-                                                                <td>11</td>
-                                                                <td>3.7:1</td>
-                                                                <td>61.3</td>
+                                                                <th>건축 </th>
+                                                                <td>10</td>
+                                                                <td>175</td>
+                                                                <td>17.5:1 </td>
+                                                                <td>67.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">사서</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>73</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">군수</td>
-                                                                <td>13</td>
-                                                                <td>67.8:1</td>
-                                                                <td>76</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">군수(장애인)</td>
-                                                                <td>9</td>
-                                                                <td>1.2:1</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">건축</td>
-                                                                <td>3</td>
-                                                                <td>32.3:1</td>
-                                                                <td>70</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">시설</td>
-                                                                <td>8</td>
-                                                                <td>14.4:1</td>
-                                                                <td>73</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">환경</td>
+                                                                <th>화학분석 </th>
                                                                 <td>4</td>
-                                                                <td>-</td>
-                                                                <td>72</td>
+                                                                <td>93</td>
+                                                                <td>23.3:1 </td>
+                                                                <td>79.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">전기</td>
-                                                                <td>25</td>
-                                                                <td>-</td>
-                                                                <td>66</td>
+                                                                <th>전차 </th>
+                                                                <td>47</td>
+                                                                <td>182</td>
+                                                                <td>3.9:1 </td>
+                                                                <td>59.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">전자</td>
-                                                                <td>9</td>
-                                                                <td>-</td>
-                                                                <td>60</td>
+                                                                <th>기체 </th>
+                                                                <td>44</td>
+                                                                <td>67</td>
+                                                                <td>1.5:1 </td>
+                                                                <td>50.3</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">통신</td>
-                                                                <td>4</td>
-                                                                <td>-</td>
-                                                                <td>54</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전산</td>
-                                                                <td>9</td>
-                                                                <td>-</td>
-                                                                <td>73</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">지도</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>70</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">일반기계</td>
-                                                                <td>4</td>
-                                                                <td>-</td>
-                                                                <td>65</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">금속</td>
-                                                                <td>4</td>
-                                                                <td>-</td>
-                                                                <td>63</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">용접</td>
-                                                                <td>3</td>
-                                                                <td>-</td>
-                                                                <td>57</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">물리분석</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>65</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">유도무기</td>
-                                                                <td>17</td>
-                                                                <td>-</td>
-                                                                <td>57</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">탄약</td>
-                                                                <td>11</td>
-                                                                <td>-</td>
+                                                                <th>시설 </th>
+                                                                <td>27</td>
+                                                                <td>153</td>
+                                                                <td>5.7:1 </td>
                                                                 <td>69</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">차량</td>
-                                                                <td>6</td>
-                                                                <td>-</td>
-                                                                <td>72</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">선체</td>
-                                                                <td>8</td>
-                                                                <td>-</td>
-                                                                <td>73</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">선거</td>
-                                                                <td>13</td>
-                                                                <td>-</td>
-                                                                <td>70</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">함정기관</td>
-                                                                <td>19</td>
-                                                                <td>-</td>
-                                                                <td>62</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">잠수</td>
+                                                                <th>인쇄 </th>
                                                                 <td>1</td>
-                                                                <td>-</td>
+                                                                <td>18</td>
+                                                                <td>18:01</td>
+                                                                <td>58.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>방사선 </th>
+                                                                <td>2</td>
+                                                                <td>14</td>
+                                                                <td>7:01</td>
+                                                                <td>65.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>차량 </th>
+                                                                <td>97</td>
+                                                                <td>302</td>
+                                                                <td>3.1:1 </td>
+                                                                <td>57.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>용접 </th>
+                                                                <td>7</td>
+                                                                <td>53</td>
+                                                                <td>7.6:1 </td>
+                                                                <td>48.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공기관 </th>
+                                                                <td>22</td>
+                                                                <td>30</td>
+                                                                <td>1.4:1 </td>
+                                                                <td>52</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>일반기계 </th>
+                                                                <td>39</td>
+                                                                <td>361</td>
+                                                                <td>9.3:1 </td>
+                                                                <td>62.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>환경 </th>
+                                                                <td>13</td>
+                                                                <td>308</td>
+                                                                <td>23.7:1 </td>
+                                                                <td>73.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>의공 </th>
+                                                                <td>8</td>
+                                                                <td>26</td>
+                                                                <td>3.3:1 </td>
                                                                 <td>53</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">병리</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>65</td>
+                                                                <th>금속 </th>
+                                                                <td>6</td>
+                                                                <td>24</td>
+                                                                <td>4:01</td>
+                                                                <td>55.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">영양관리</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>61</td>
+                                                                <th>영상 </th>
+                                                                <td>12</td>
+                                                                <td>5</td>
+                                                                <td>4.7:1 </td>
+                                                                <td>72</td>
                                                             </tr>
-                                                            </tbody>
+                                                            <tr>
+                                                                <th>탄약 </th>
+                                                                <td>34</td>
+                                                                <td>205</td>
+                                                                <td>6:01</td>
+                                                                <td>63.6</td>
+                                                            </tr>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -2253,37 +2248,77 @@
                                                     </dl>
                                                     <div class="mgB3">
                                                         <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
-                                                            <colgroup><col width="20%">
+                                                            <colgroup>
+                                                                <col width="20%">
                                                                 <col width="">
                                                                 <col width="">
                                                                 <col width="">
-                                                            </colgroup><thead><tr>
-                                                                <th>직렬</th>
-                                                                <th>모집인원(명)</th>
-                                                                <th>경쟁률</th>
-                                                                <th>합격선(점)&nbsp;</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                                <col width="">
+                                                            </colgroup>
+                                                            <col/>
                                                             <tr>
-                                                                <td class="td_13">토목</td>
-                                                                <td>3</td>
-                                                                <td>-</td>
-                                                                <td>50</td>
+                                                                <th>직렬 </th>
+                                                                <th>채용인원 </th>
+                                                                <th>응시인원 </th>
+                                                                <th>경 쟁 률 </th>
+                                                                <th>합격선(점) </th>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">환경</td>
+                                                                <th>수사 </th>
+                                                                <td>2</td>
+                                                                <td>128</td>
+                                                                <td>64:01:00</td>
+                                                                <td>75</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>건축 </th>
                                                                 <td>1</td>
-                                                                <td>-</td>
-                                                                <td>54</td>
+                                                                <td>28</td>
+                                                                <td>28:01:00</td>
+                                                                <td>76</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">항해</td>
-                                                                <td>3</td>
-                                                                <td>-</td>
-                                                                <td>71</td>
+                                                                <th>금속 </th>
+                                                                <td>1</td>
+                                                                <td>11</td>
+                                                                <td>11:01</td>
+                                                                <td>61</td>
                                                             </tr>
-                                                            </tbody>
+                                                            <tr>
+                                                                <th>물리분석 </th>
+                                                                <td>1</td>
+                                                                <td>15</td>
+                                                                <td>15:01</td>
+                                                                <td>68</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항해 </th>
+                                                                <td>3</td>
+                                                                <td>13</td>
+                                                                <td>4.3:1 </td>
+                                                                <td>67</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>기상 </th>
+                                                                <td>3</td>
+                                                                <td>9</td>
+                                                                <td>3:01</td>
+                                                                <td>53</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>물리분석 </th>
+                                                                <td>1</td>
+                                                                <td>15</td>
+                                                                <td>15:01</td>
+                                                                <td>68</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>금속 </th>
+                                                                <td>1</td>
+                                                                <td>11</td>
+                                                                <td>11:01</td>
+                                                                <td>61</td>
+                                                            </tr>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -2295,97 +2330,478 @@
                                                     </dl>
                                                     <div class="mgB3">
                                                         <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
-                                                            <colgroup><col width="20%">
+                                                            <colgroup>
+                                                                <col width="20%">
                                                                 <col width="">
                                                                 <col width="">
                                                                 <col width="">
-                                                            </colgroup><thead><tr>
-                                                                <th>직렬</th>
-                                                                <th>모집인원(명)</th>
-                                                                <th>경쟁률</th>
-                                                                <th>합격선(점)&nbsp;</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                                <col width="">
+                                                            </colgroup>
                                                             <tr>
-                                                                <td class="td_13">행정</td>
-                                                                <td>17</td>
-                                                                <td>146.4:1</td>
+                                                                <th>직렬 </th>
+                                                                <th>채용인원 </th>
+                                                                <th>응시인원 </th>
+                                                                <th>경 쟁 률 </th>
+                                                                <th>합격선(점) </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>행정 </th>
+                                                                <td>43</td>
+                                                                <td>2,648</td>
+                                                                <td>61.5:1 </td>
                                                                 <td>84</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">사서</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
+                                                                <th>행정(장애) </th>
+                                                                <td>18</td>
+                                                                <td>49</td>
+                                                                <td>2.7:1 </td>
+                                                                <td>60</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>군수 </th>
+                                                                <td>29</td>
+                                                                <td>1,004</td>
+                                                                <td>34.6:1 </td>
+                                                                <td>73.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>군수(장애) </th>
+                                                                <td>11</td>
+                                                                <td>11</td>
+                                                                <td>1:01</td>
+                                                                <td>64</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>군사정보 </th>
+                                                                <td>18</td>
+                                                                <td>351</td>
+                                                                <td>19.5:1 </td>
+                                                                <td>69.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>시설 </th>
+                                                                <td>21</td>
+                                                                <td>130</td>
+                                                                <td>6.1:1 </td>
+                                                                <td>59.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전기 </th>
+                                                                <td>2</td>
+                                                                <td>85</td>
+                                                                <td>42.5:1 </td>
                                                                 <td>71.6</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">군수</td>
-                                                                <td>20</td>
-                                                                <td>46.6:1</td>
-                                                                <td>77.3</td>
+                                                                <th>전자 </th>
+                                                                <td>43</td>
+                                                                <td>251</td>
+                                                                <td>5.8:1 </td>
+                                                                <td>45.3</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">군수(장애)</td>
-                                                                <td>8</td>
-                                                                <td>-</td>
-                                                                <td>61.3</td>
+                                                                <th>통신 </th>
+                                                                <td>24</td>
+                                                                <td>196</td>
+                                                                <td>8.1:1 </td>
+                                                                <td>49.3</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">군사정보</td>
-                                                                <td>1</td>
-                                                                <td>145:01:00</td>
-                                                                <td>62.6</td>
+                                                                <th>전산 </th>
+                                                                <td>14</td>
+                                                                <td>383</td>
+                                                                <td>27.3:1 </td>
+                                                                <td>76</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="td_13">시설</td>
-                                                                <td>4</td>
-                                                                <td>22.3:1</td>
-                                                                <td>62.6</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전기</td>
-                                                                <td>10</td>
-                                                                <td>29.5:1</td>
-                                                                <td>69</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전자</td>
-                                                                <td>11</td>
-                                                                <td>21.2:1</td>
-                                                                <td>61.3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">통신</td>
-                                                                <td>7</td>
-                                                                <td>22.6:1</td>
-                                                                <td>61</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">전산</td>
-                                                                <td>3</td>
-                                                                <td>-</td>
-                                                                <td>73.3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">일반기계</td>
-                                                                <td>7</td>
-                                                                <td>39:01:00</td>
-                                                                <td>73.3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">항공기관</td>
-                                                                <td>3</td>
-                                                                <td>51.7:1</td>
-                                                                <td>75.6</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="td_13">기상예보</td>
-                                                                <td>1</td>
-                                                                <td>33:01:00</td>
+                                                                <th>일반기계 </th>
+                                                                <td>17</td>
+                                                                <td>258</td>
+                                                                <td>15.1:1 </td>
                                                                 <td>66.3</td>
                                                             </tr>
-                                                            </tbody>
+                                                            <tr>
+                                                                <th>용접 </th>
+                                                                <td>6</td>
+                                                                <td>58</td>
+                                                                <td>9.6:1 </td>
+                                                                <td>54.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>유도무기 </th>
+                                                                <td>17</td>
+                                                                <td>100</td>
+                                                                <td>5.8:1 </td>
+                                                                <td>49.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>기체 </th>
+                                                                <td>70</td>
+                                                                <td>156</td>
+                                                                <td>2.2:1 </td>
+                                                                <td>41.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공기관 </th>
+                                                                <td>26</td>
+                                                                <td>40</td>
+                                                                <td>1.5:1 </td>
+                                                                <td>41.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공보기 </th>
+                                                                <td>39</td>
+                                                                <td>91</td>
+                                                                <td>2.3:1 </td>
+                                                                <td>42.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공보기(장애) </th>
+                                                                <td>3</td>
+                                                                <td>1</td>
+                                                                <td>0.3:1 </td>
+                                                                <td>74.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공지원 </th>
+                                                                <td>9</td>
+                                                                <td>27</td>
+                                                                <td>3:01</td>
+                                                                <td>52</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>기상예보 </th>
+                                                                <td>3</td>
+                                                                <td>38</td>
+                                                                <td>12.6:1 </td>
+                                                                <td>82.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>병리 </th>
+                                                                <td>1</td>
+                                                                <td>15</td>
+                                                                <td>15:01</td>
+                                                                <td>58.6</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="guide_slider">
+                                                <div class="hTy">
+                                                    <dl class="gd_txt">
+                                                        <dt>
+                                                            <h2>해군 - 9급</h2>
+                                                        </dt>
+                                                    </dl>
+                                                    <div class="mgB3">
+                                                        <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
+                                                            <colgroup>
+                                                                <col width="20%">
+                                                                <col width="">
+                                                                <col width="">
+                                                                <col width="">
+                                                                <col width="">
+                                                            </colgroup>
+                                                            <tr>
+                                                                <th>직렬 </th>
+                                                                <th>채용인원 </th>
+                                                                <th>응시인원 </th>
+                                                                <th>경 쟁 률 </th>
+                                                                <th>합격선(점) </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>행정 </th>
+                                                                <td>22</td>
+                                                                <td>1,107</td>
+                                                                <td>50.3 : 1 </td>
+                                                                <td>82.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>행정(장애인) </th>
+                                                                <td>10</td>
+                                                                <td>23</td>
+                                                                <td>2.3 : 1 </td>
+                                                                <td>60</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>군수 </th>
+                                                                <td>32</td>
+                                                                <td>898</td>
+                                                                <td>28.1 : 1 </td>
+                                                                <td>72</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>군수(장애인) </th>
+                                                                <td>11</td>
+                                                                <td>11</td>
+                                                                <td>1.0 : 1 </td>
+                                                                <td>64</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전기 </th>
+                                                                <td>30</td>
+                                                                <td>343</td>
+                                                                <td>11.4 : 1 </td>
+                                                                <td>65</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전자 </th>
+                                                                <td>13</td>
+                                                                <td>75</td>
+                                                                <td>5.8 : 1 </td>
+                                                                <td>44</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>통신 </th>
+                                                                <td>13</td>
+                                                                <td>82</td>
+                                                                <td>6.3 : 1 </td>
+                                                                <td>51.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전산 </th>
+                                                                <td>19</td>
+                                                                <td>277</td>
+                                                                <td>14.6 : 1 </td>
+                                                                <td>73.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>유도무기 </th>
+                                                                <td>12</td>
+                                                                <td>135</td>
+                                                                <td>11.3 : 1 </td>
+                                                                <td>54.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>일반기계 </th>
+                                                                <td>13</td>
+                                                                <td>190</td>
+                                                                <td>14.6 : 1 </td>
+                                                                <td>70.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>건축 </th>
+                                                                <td>7</td>
+                                                                <td>87</td>
+                                                                <td>12.4 : 1 </td>
+                                                                <td>62.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>토목 </th>
+                                                                <td>3</td>
+                                                                <td>57</td>
+                                                                <td>19.0 : 1 </td>
+                                                                <td>64</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>차량 </th>
+                                                                <td>10</td>
+                                                                <td>121</td>
+                                                                <td>12.1 : 1 </td>
+                                                                <td>59.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>기체 </th>
+                                                                <td>2</td>
+                                                                <td>2</td>
+                                                                <td>1.0 : 1 </td>
+                                                                <td>66.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>선거 </th>
+                                                                <td>23</td>
+                                                                <td>76</td>
+                                                                <td>3.3 : 1 </td>
+                                                                <td>58.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>선체 </th>
+                                                                <td>9</td>
+                                                                <td>25</td>
+                                                                <td>2.8 : 1 </td>
+                                                                <td>53.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>시설 </th>
+                                                                <td>13</td>
+                                                                <td>72</td>
+                                                                <td>5.5 : 1 </td>
+                                                                <td>63.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>영양관리 </th>
+                                                                <td>4</td>
+                                                                <td>185</td>
+                                                                <td>46.3 : 1 </td>
+                                                                <td>80</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>용접 </th>
+                                                                <td>5</td>
+                                                                <td>50</td>
+                                                                <td>10.0 : 1 </td>
+                                                                <td>43</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>탄약 </th>
+                                                                <td>33</td>
+                                                                <td>251</td>
+                                                                <td>7.6 : 1 </td>
+                                                                <td>62.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>잠수 </th>
+                                                                <td>6</td>
+                                                                <td>6</td>
+                                                                <td>1.0 : 1 </td>
+                                                                <td>67</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>함정기관 </th>
+                                                                <td>22</td>
+                                                                <td>74</td>
+                                                                <td>3.4 : 1 </td>
+                                                                <td>49.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공기관 </th>
+                                                                <td>6</td>
+                                                                <td>14</td>
+                                                                <td>2.3 : 1 </td>
+                                                                <td>49.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공보기 </th>
+                                                                <td>3</td>
+                                                                <td>14</td>
+                                                                <td>4.7 : 1 </td>
+                                                                <td>63.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>환경 </th>
+                                                                <td>2</td>
+                                                                <td>58</td>
+                                                                <td>29.0 : 1 </td>
+                                                                <td>68</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="hTy">
+                                                    <dl class="gd_txt">
+                                                        <dt>
+                                                            <h2>해병대 - 9급</h2>
+                                                        </dt>
+                                                    </dl>
+                                                    <div class="mgB3">
+                                                        <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
+                                                            <colgroup>
+                                                                <col width="20%">
+                                                                <col width="">
+                                                                <col width="">
+                                                                <col width="">
+                                                                <col width="">
+                                                            </colgroup>
+                                                            <tr>
+                                                                <th>직렬 </th>
+                                                                <th>채용인원 </th>
+                                                                <th>응시인원 </th>
+                                                                <th>경 쟁 률 </th>
+                                                                <th>합격선(점) </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>행정 </th>
+                                                                <td>14</td>
+                                                                <td>182</td>
+                                                                <td>13.0 : 1 </td>
+                                                                <td>78.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>군수 </th>
+                                                                <td>2</td>
+                                                                <td>31</td>
+                                                                <td>15.5 : 1 </td>
+                                                                <td>62.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전기 </th>
+                                                                <td>1</td>
+                                                                <td>17</td>
+                                                                <td>17.0 : 1 </td>
+                                                                <td>49.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>통신 </th>
+                                                                <td>6</td>
+                                                                <td>13</td>
+                                                                <td>2.2 : 1 </td>
+                                                                <td>45.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전산 </th>
+                                                                <td>6</td>
+                                                                <td>38</td>
+                                                                <td>6.3 : 1 </td>
+                                                                <td>70.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전차 </th>
+                                                                <td>4</td>
+                                                                <td>31</td>
+                                                                <td>7.8 : 1 </td>
+                                                                <td>60</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>차량 </th>
+                                                                <td>1</td>
+                                                                <td>11</td>
+                                                                <td>11.0 : 1 </td>
+                                                                <td>57.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>탄약 </th>
+                                                                <td>1</td>
+                                                                <td>7</td>
+                                                                <td>7.0 : 1 </td>
+                                                                <td>57</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>건축 </th>
+                                                                <td>1</td>
+                                                                <td>20</td>
+                                                                <td>20.0 : 1 </td>
+                                                                <td>58.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>기체 </th>
+                                                                <td>3</td>
+                                                                <td>3</td>
+                                                                <td>1.0 : 1 </td>
+                                                                <td>78.3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>시설 </th>
+                                                                <td>2</td>
+                                                                <td>9</td>
+                                                                <td>4.5 : 1 </td>
+                                                                <td>54.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>항공기관 </th>
+                                                                <td>1</td>
+                                                                <td>4</td>
+                                                                <td>4.0 : 1 </td>
+                                                                <td>46.6</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>환경 </th>
+                                                                <td>1</td>
+                                                                <td>8</td>
+                                                                <td>8.0 : 1 </td>
+                                                                <td>64</td>
+                                                            </tr>
                                                         </table>
                                                     </div>
                                                 </div>

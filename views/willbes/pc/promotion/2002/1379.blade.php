@@ -95,7 +95,7 @@
         <div class="evtCtnsBox wb_02" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02.jpg" alt="패키지 구성" usemap="#Map1379z" border="0" />
             <map name="Map1379z" id="Map1379z">
-                <area shape="rect" coords="368,1493,752,1614" href="javascript:alert('PACKAGE\n수강신청\nComing soon');" alt="지금 바로 신청하기" />
+                <area shape="rect" coords="368,1493,752,1614" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1095#none" target="_blank" alt="지금 바로 신청하기" />
             </map>
         </div>
         

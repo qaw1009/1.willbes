@@ -49,15 +49,15 @@
                                     <input type="hidden" id="totalType{{trim($val3['SqIdx']).$key}}" name="totalType[]" value="{{ trim($val3['Type']) }}" />
                                     @if(trim($val3['Type']) == 'S')
                                         @for($i = 1; $i <= 25; $i++)
-                                            @if(empty(trim($val3['Comment'.$i]))===false)  <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" id="q{{ trim($val3['SqIdx']) }}_1" value="{{ $i }}" data-SqIdxKey="{{trim($val3['SqIdx'].$key)}}" onclick="fn_click_serial(this, {{ $key }}, {{ $i }}, {{ $val3['SqIdx'] }})" /> {{ trim($val3['Comment'.$i]) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
+                                            @if(empty(trim($val3['Comment'.$i]))===false) <li><label><input type="radio" name="q{{ trim($val3['SqIdx']) }}" value="{{ $i }}" data-SqIdxKey="{{trim($val3['SqIdx'].$key)}}" onclick="fn_click_serial(this, {{ $key }}, {{ $i }}, {{ $val3['SqIdx'] }})" /> {{ trim($val3['Comment'.$i]) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
                                         @endfor
                                     @elseif(trim($val3['Type']) == 'M')
                                         @for($i = 1; $i <= 25; $i++)
-                                            @if(empty(trim($val3['Comment'.$i]))===false)  {{ trim($val3['Comment'.$i]) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
+                                            @if(empty(trim($val3['Comment'.$i]))===false) {{ trim($val3['Comment'.$i]) }} <textarea name="q{{ trim($val3['SqIdx']) }}[]" /></textarea><br> @endif
                                         @endfor
                                     @elseif(trim($val3['Type']) == 'T')
                                         @for($i = 1; $i <= 25; $i++)
-                                            @if(empty(trim($val3['Comment'.$i]))===false)  <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" id="q{{ trim($val3['SqIdx']) }}" value="{{ $i }}" data-SqIdxKey="{{trim($val3['SqIdx'].$key)}}" onclick="fn_visible(this, {{ $key }}, {{ $i }}, {{ $val3['SqIdx'] }})" /> {{ trim($val3['Comment'.$i]) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
+                                            @if(empty(trim($val3['Comment'.$i]))===false) <li><label><input type="checkbox" name="q{{ trim($val3['SqIdx']) }}[]" value="{{ $i }}" data-SqIdxKey="{{trim($val3['SqIdx'].$key)}}" onclick="fn_visible(this, {{ $key }}, {{ $i }}, {{ $val3['SqIdx'] }})" /> {{ trim($val3['Comment'.$i]) }}</label><br>{{ trim($val3['Hint'.$i]) }}</li> @endif
                                         @endfor
                                     @else
                                         <li><textarea name="qd{{ trim($val3['SqIdx']) }}"></textarea></li>
@@ -76,12 +76,14 @@
         </form>
     </div>
     <script>
+        var overlap_chk = true; //중복 전송 방지
+        var pick_sjt_cnt = 3;   //직렬별 선택과목 갯수
         var $regi_form = $('#regi_form');
 
         function fn_visible(obj, num1, num2, qnum){
-            var cknum = $("input:checkbox[id=q"+qnum+"]:checked").length;
-            if(cknum > 3){
-                alert('직렬별 과목은 3개까지 선택할 수 있습니다.');
+            var cknum = $('input:checkbox[name="q'+qnum+'[]"]:checked').length;
+            if(cknum > pick_sjt_cnt){
+                alert('직렬별 과목은 '+pick_sjt_cnt+'개까지 선택할 수 있습니다.');
                 obj.checked = false;
                 return;
             }
@@ -93,9 +95,27 @@
         }
 
         function fn_submit(){
-            $('.btn-submit-survey').hide(); //중복 전송 방지
+            var vali_msg = '';
+            $('input:checkbox').each(function(i){
+                if($(this).is(':visible') && $('input:checkbox[name="' + $(this).prop('name') + '"]:checked').length != pick_sjt_cnt){
+                    vali_msg = '직렬별 선택 과목은 '+pick_sjt_cnt+'개 선택하셔야 합니다.';
+                }
+            });
+            $('input:radio').each(function(i) {
+                if($(this).is(':visible') && $('input:radio[name="' + $(this).prop('name') + '"]').is(':checked') === false){
+                    vali_msg = '응답하지 않은 설문이 있습니다.';
+                }
+            });
+            if(vali_msg) { alert(vali_msg); return; }
+
+            if(overlap_chk === false){
+                alert('등록 중입니다');
+                return false;
+            }
+
             fn_input_disabled(true,function(){
                 var _url = '{{ front_url('/survey/store') }}';
+                overlap_chk = false;
                 ajaxSubmit($regi_form, _url, function(ret) {
                     fn_input_disabled(false, function(){
                         if(ret.ret_cd) {
@@ -103,9 +123,31 @@
                             opener.location.reload();
                             window.close();
                         }
+                        overlap_chk = true;
                     });
-                }, showValidateError, null, false, 'alert');
+                }, surveyPopValidationError, null, false, 'alert');
             });
+        }
+
+        //클릭 중복방지 떄문에 부득이하게 에러 콜백 추가
+        function surveyPopValidationError(result, status, error_view)
+        {
+            overlap_chk = true;
+            if(typeof error_view === 'undefined') error_view = 'alert';
+            var err_msg = result.ret_msg || '';
+            if (err_msg === '') {
+                if (status === 401) {  //권한 없음 || 미로그인
+                    err_msg = '권한이 없습니다.';
+                } else if (status === 403) {
+                    err_msg = '토큰 정보가 올바르지 않습니다.';
+                }
+            }
+            if (error_view === 'alert') {
+                alert(err_msg);
+            } else {
+                notifyAlert('error', '알림', err_msg);
+            }
+
         }
 
         function fn_click_serial(obj, num1, num2, qnum){

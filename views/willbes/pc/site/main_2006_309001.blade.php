@@ -110,4 +110,5 @@
             });
         });
     </script>
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

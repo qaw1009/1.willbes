@@ -38,9 +38,6 @@ class LiveTalkShowCaption extends \app\controllers\FrontController
             'menu' => $data_subTitles,
             'data' => $data_content
         ];
-
-        print_r($arr_input);
-
         $this->load->view('liveTalkShowCaption/index', [
             'arr_input' => $arr_input
         ]);

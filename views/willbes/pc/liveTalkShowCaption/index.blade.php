@@ -400,15 +400,6 @@
     <script src="/public/js/willbes/waypoints.min.js"></script>
     <script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script>
     <script type="text/javascript">
-        $(".slide01").bxSlider({
-            speed:200,
-            auto:true,
-            randomStart:true,
-            //pager:false,
-            mode: 'vertical', //'horizontal', 'vertical', 'fade'
-            controls:false
-        })
-
         $(document).ready(function(){
             $('ul.tabSt1').each(function(){
                 var $active, $content, $links = $(this).find('a');
@@ -417,26 +408,34 @@
 
                 $content = $($active[0].hash);
 
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
+                $links.not($active).each(function(){
+                    $(this.hash).hide()
+                });
 
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
                     $active.removeClass('active');
                     $content.hide();
-
                     $active = $(this);
                     $content = $(this.hash);
-
                     $active.addClass('active');
                     $content.show();
+                    e.preventDefault()
+                });
+            });
 
-                    e.preventDefault()})})}
-        );
-        jQuery(document).ready(function( $ ) {
             $('.counter span').counterUp({
-                delay: 11, // the delay time in ms
-                time: 1000 // the speed time in ms
+                delay : 11, // the delay time in ms
+                time : 1000 // the speed time in ms
+            });
+
+            $('.slide01').bxSlider({
+                speed : 200,
+                auto : true,
+                randomStart : true,
+                //pager : false,
+                mode : 'vertical', //'horizontal', 'vertical', 'fade'
+                controls : false
             });
         });
     </script>

@@ -1722,9 +1722,9 @@ class SurveyModel extends WB_Model
                 throw new \Exception('조회된 기본정보가 없습니다.');
             }
 
-            /*if ($register_data['PointDelCnt'] >= 1) {
+            if ($register_data['PointDelCnt'] >= 1) {
                 throw new \Exception('재채점은 최대 1회만 가능합니다.');
-            }*/
+            }
 
             if($this->_conn->delete($this->_table['predictAnswerPaper'], $where) === false){
                 throw new \Exception('삭제에 실패했습니다.');

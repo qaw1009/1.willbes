@@ -119,15 +119,8 @@
     </div>
     <!--wb_cts04//-->
   
-    {{--
-    <div class="evtCtnsBox wb_cts05">
-      <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_04.jpg" title="정제된 학습환경 제공" />
-    </div>
-    <!--wb_cts05//-->
-    --}}
-  
      <div class="evtCtnsBox wb_cts06">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_05.jpg" title="수험생에게 꼭 필요한 모든 것" />
+      <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_05.jpg" title="수험생에게 꼭 필요한 모든 것" />
      </div>
     <!--wb_cts06//-->
   
@@ -139,19 +132,15 @@
         <li><a href="#lec2">외무영사직</a></li>
       </ul>
       <div class="lecCts mb40">
-          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001&course_idx=1061" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c1.jpg" title="일반행정직 / 세무직"  id="lec1"/></a>
-          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001&course_idx=1061" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c2.jpg" title="외무영사직"  id="lec2"/></a>
+          <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c1_re.jpg" title="일반행정직 / 세무직"  id="lec1"/>
+          <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_c2_re.jpg" title="외무영사직"  id="lec2"/>
+          <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3044&campus_ccd=605001&course_idx=1061" target="_blank">
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_06_t_btn.jpg" title="수강신청"  />
+          </a>
       </div>
     </div>
   </div>
   <!--wb_cts07//-->
-
-  {{--
-  <div class="evtCtnsBox wb_cts08">
-	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1252_07.jpg" title="합격 전략 설명회" /></a>
-  </div>
-  <!--wb_cts08//-->
-  --}}
 
   <!--유의사항-->
   <div class="evtCtnsBox wb_cts09">
@@ -360,12 +349,8 @@
                     $content.show();
 
                     e.preventDefault()})})}
-        );      
+        );     
 
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);}
-		);
 
         function go_popup() {  
             $('#popup').bPopup();

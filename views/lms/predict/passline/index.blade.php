@@ -53,6 +53,7 @@
                 {!! csrf_field() !!}
                 <input type="hidden" id="PredictIdx" name="PredictIdx" value="{{ $PredictIdx }}" />
                 <div>
+                    <span class="required">*</span> 선발인원 ~ 지난평균, 전체평균 항목은  직렬/지역별 사용여부에 상관없이 사용자단 출력 (‘수정 시 ‘예상합격선 저장’ 버튼으로만 업데이트 처리<br>
                     <span class="required">*</span> 일배수컷, 기대권, 유력권, 안정권 항목은 직렬/지역별 사용여부를 ‘사용’으로 설정 시 사용자단 출력 (‘미사용’ 설정 시 ‘집계중’으로 출력)<br>
                     <span class="required">*</span> 채점수/등록수 출력 조건은 아래와 같습니다.<br>
                     - 채점수 : 실제 채점자 수, 등록수 : 실제 채점자 수 + 가데이터 등록 수

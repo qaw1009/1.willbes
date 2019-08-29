@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {position:relative; overflow:hidden;  background:#000 url("https://static.willbes.net/public/images/promotion/2019/05/1251_top_bg.jpg") center top  no-repeat}
+        .wb_cts01 {position:relative; overflow:hidden; background:#000 url("https://static.willbes.net/public/images/promotion/2019/05/1251_top_bg.jpg") center top  no-repeat}
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#fff}
         .wb_cts04 {background:#fff}
@@ -117,14 +117,8 @@
     <div class="evtCtnsBox wb_cts04">
       <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_03.jpg" title="무한회독 학습 프로그램" />
     </div>
-    <!--wb_cts04//-->
-  
-    {{--
-    <div class="evtCtnsBox wb_cts05">
-      <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_04.jpg" title="정제된 학습환경 제공" />
-    </div>
-    <!--wb_cts05//-->
-    --}}
+    <!--wb_cts04//--> 
+
   
      <div class="evtCtnsBox wb_cts06">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1251_05.jpg" title="수험생에게 꼭 필요한 모든 것" />
@@ -136,12 +130,7 @@
 	 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&course_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_06_t_c1.jpg" title=""  id="lec1"/></a>
   </div>
   <!--wb_cts07//-->
-  {{--
-  <div class="evtCtnsBox wb_cts08">
-	  <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=273" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1251_07.jpg" title="합격 전략 설명회" /></a>
-  </div>
-  <!--wb_cts08//-->
-  --}}
+
 
   <!--유의사항-->
   <div class="evtCtnsBox wb_cts09">

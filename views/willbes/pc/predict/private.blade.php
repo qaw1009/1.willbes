@@ -58,20 +58,56 @@
                                 <th>전체 평균</th>
                                 <th>상위 5% 평균</th>
                             </tr>
-                            @if (empty($arr_base['user_subject_avg']) === true)
+                            @if (empty($arr_base['user_point']) === true)
                                 <tr>
                                     <td colspan="6">등록된 성적 데이터가 없습니다.</td>
                                 </tr>
                             @else
-                                @foreach($arr_base['user_subject_avg'] as $row)
+                                @foreach($arr_base['user_point'] as $key => $val)
                                     <tr>
+                                        <th>{{ $val['SubjectName'] }}</th>
+                                        <td>{{ $val['OrgPoint'] }}</td>
+                                        <td>
+                                            @if ($val['TakeMockPart'] === 800)
+                                                {{ $val['OrgPoint'] }}
+                                            @else
+                                                @if (empty($arr_base['user_subject_avg']) === true)
+                                                    집계중
+                                                @else
+                                                    {{ $arr_base['user_subject_avg'][$key]['AdjustPoint'] }}
+                                                @endif
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (empty($arr_base['user_subject_avg']) === true)
+                                                집계중
+                                            @else
+                                                {{ number_format($arr_base['user_subject_avg'][$key]['MyRank']) }} / {{ number_format($arr_base['user_subject_avg'][$key]['TakeNum']) }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (empty($arr_base['user_subject_avg']) === true)
+                                                집계중
+                                            @else
+                                                {{ $arr_base['user_subject_avg'][$key]['AvrPoint'] }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (empty($arr_base['user_subject_avg']) === true)
+                                                집계중
+                                            @else
+                                                {{ $arr_base['user_subject_avg'][$key]['FivePerPoint'] }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    {{--<tr>
                                         <th>{{ $row['PaperName'] }}</th>
                                         <td>{{ $row['OrgPoint'] }}</td>
                                         <td>{{ $row['AdjustPoint'] }}</td>
                                         <td>{{ number_format($row['MyRank']) }} / {{ number_format($row['TakeNum']) }} </td>
                                         <td>{{ $row['AvrPoint'] }}</td>
                                         <td>{{ $row['FivePerPoint'] }}</td>
-                                    </tr>
+                                    </tr>--}}
                                 @endforeach
                                 <tr>
                                     <th>총점</th>
@@ -122,7 +158,7 @@
                                         </ul>
                                     </td>
                                     <td>
-                                        <div><span class="myscore" style="height:{{ ((empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '0') / 500) * 100 }}%"></span></div>
+                                        <div><span class="myscore" style="height:{{ (empty($arr_base['arr_line_data']['OnePerCut']) === false ? $arr_base['arr_line_data']['OnePerCut'] : '0') }}%"></span></div>
                                     </td>
 
                                     <td>

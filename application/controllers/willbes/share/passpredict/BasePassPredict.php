@@ -967,10 +967,11 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_base['resist_is'] = 'N';
         //기본정보조회
         $resist_data = $this->surveyModel->predictResist($idx, $memidx);
-
         if (empty($resist_data) === false) {
+            $PrIdx = '';
             $arr_base['resist_is'] = 'Y';
             foreach ($resist_data as $row) {
+                $PrIdx = $row['PrIdx'];
                 $arr_base['resist_data'][$row['PrIdx']]['TakeNumber'] = $row['TakeNumber'];
                 $arr_base['resist_data'][$row['PrIdx']]['TakeMockPart'] = $row['TakeMockPart'];
                 $arr_base['resist_data'][$row['PrIdx']]['TakeArea'] = $row['TakeArea'];
@@ -980,10 +981,34 @@ class BasePassPredict extends \app\controllers\FrontController
                 $arr_base['resist_data'][$row['PrIdx']]['subject'][] = $row['subject'];
             }
 
+            //원점수 조회
+            $user_point = [];
+            $user_point_result = $this->surveyModel->getScore1($PrIdx, $idx);
+            foreach ($user_point_result as $key => $val) {
+                $user_point[$val['PpIdx']]['TakeMockPart'] = $arr_base['resist_data'][$PrIdx]['TakeMockPart'];
+                $user_point[$val['PpIdx']]['SubjectName'] = $val['SubjectName'];
+                $user_point[$val['PpIdx']]['OrgPoint'] = $val['OrgPoint'];
+                $user_point[$val['PpIdx']]['AdjustPoint'] = $val['AdjustPoint'];
+            }
+            $arr_base['user_point'] = $user_point;
+
             //회원의 직렬,지역, 과목별 점수조회 (원점수, 조정점수, 내석차, 응시자수, 전체평균, 상위5%평균)
             $take_mock_part = array_values($arr_base['resist_data'])[0]['TakeMockPart'];
             $take_area = array_values($arr_base['resist_data'])[0]['TakeArea'];
-            $arr_base['user_subject_avg'] = $this->surveyModel->AvgListForUserInfo($idx, $take_mock_part, $take_area, $memidx);
+            $user_subject_avg = [];
+            $user_subject_avg_result = $this->surveyModel->AvgListForUserInfo($idx, $take_mock_part, $take_area, $memidx);
+            foreach ($user_subject_avg_result as $key => $val) {
+                $user_subject_avg[$val['PpIdx']]['MemIdx'] = $val['MemIdx'];
+                $user_subject_avg[$val['PpIdx']]['TakeMockPart'] = $val['TakeMockPart'];
+                $user_subject_avg[$val['PpIdx']]['OrgPoint'] = $val['OrgPoint'];
+                $user_subject_avg[$val['PpIdx']]['AdjustPoint'] = $val['AdjustPoint'];
+                $user_subject_avg[$val['PpIdx']]['MyRank'] = $val['MyRank'];
+                $user_subject_avg[$val['PpIdx']]['TakeNum'] = $val['TakeNum'];
+                $user_subject_avg[$val['PpIdx']]['AvrPoint'] = $val['AvrPoint'];
+                $user_subject_avg[$val['PpIdx']]['FivePerPoint'] = $val['FivePerPoint'];
+                $user_subject_avg[$val['PpIdx']]['PaperName'] = $val['PaperName'];
+            }
+            $arr_base['user_subject_avg'] = $user_subject_avg;
 
             //직렬별 조정점수 합, 조정점수 평균 합, 상위 5% 평균 합
             $arr_base['total_area_avg'] = $this->surveyModel->TotalAreaAvgInfo($idx, $take_mock_part, $take_area, key($arr_base['resist_data']));

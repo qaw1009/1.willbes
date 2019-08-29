@@ -49,6 +49,10 @@
         .cert04 .sports dl dd table th,
         .cert04 .sports dl dd table td{border-right:1px solid #15365d; border-bottom:1px solid #15365d; padding:10px;}
         .cert04 .sports dl dd table th{font-weight:700;background:#C8C6C6; font-size:14px;}
+
+        dd{display:none;}
+        dd.active{display:block;}
+
         .cert05{background:#fff;}
 
     </style>
@@ -59,7 +63,11 @@
         </div>
         		
 		<div class="evtCtnsBox cert_top">
-			<img src="https://static.willbes.net/public/images/promotion/2019/08/1350_top.jpg" alt="윌비스 2020 스포츠지도사" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1350_top.jpg" alt="윌비스 2020 스포츠지도사" usemap="#Map" border="0" />
+            <map name="Map" id="Map">
+                <area shape="rect" coords="140,666,424,783" href="#apply" alt="전문스포츠지도사 수강신청"/>
+                <area shape="rect" coords="462,665,743,786" href="#apply" alt="생활스포츠지도사 수강신청" />
+            </map>
 		</div>
 		<div class="evtCtnsBox cert_01">
 			<img src="https://static.willbes.net/public/images/promotion/2019/08/1350_01.jpg" alt="취업난 돌파" />
@@ -70,7 +78,7 @@
                 <area shape="rect" coords="551,1625,768,1693" href="#none;" />
             </map>
 		</div>
-		<div class="evtCtnsBox cert03">
+		<div class="evtCtnsBox cert03" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1350_03.jpg" alt="수강신청" usemap="#Map" border="0" />
             <map name="Map" id="Map">
                 <area shape="rect" coords="188,435,426,537" href="#none;" onclick="goCartNDirectPay('pass', 'y_pkg1', 'on_lecture', 'periodpack_lecture', 'Y');"/>
@@ -452,18 +460,17 @@
         });		
 
         /*#####################################*/
-        $("dd").css({"display":"none"});
-            $("dt").click(function(){
-                $("dd").css({"display":"none"});
-                $(this).next().css({"display":"block"}
-            );
+        $('dt').on('click',function(){
+            $(this).next().toggleClass('active');
         });
-
+        
         /*#####################################*/
         $("dt").click(function(){
             $("dt").css({"height":"55px","lineHeight":"55px", "fontSize":"16px"});
             $(this).css({"height":"55px","lineHeight":"55px","fontSize":"20px"});
         });
+        
+       
     });
 	</script>
 

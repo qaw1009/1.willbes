@@ -2567,7 +2567,63 @@ class PredictModel extends WB_Model
     /*
      *  기대/유력/안정 점수계산
      */
-    public function calculate($PredictIdx, $TakeMockPart, $TakeArea, $P1, $P2, $P3){
+    public function calculate($PredictIdx, $TakeMockPart, $TakeArea, $P1, $P2, $P3)
+    {
+        $result = [];
+        for ($i=1; $i<=3; $i++) {
+            $n = ${'P'.$i};
+            $percent = $n / 100;
+
+            $query_string = "
+                (
+                    SELECT B.SumAdjustPoint
+                    FROM 
+                    (
+                        SELECT
+                        *
+                        ,PERCENT_RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.SumAdjustPoint DESC) AS PointRank
+                        FROM (
+                            SELECT PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
+                            FROM {$this->_table['predictGrades']}
+                            WHERE PredictIdx = {$PredictIdx}
+                            AND TakeMockPart = '{$TakeMockPart}'
+                            AND TakeArea = '{$TakeArea}'
+                            GROUP BY PrIdx
+                        ) AS A
+                    ) AS B
+                    WHERE B.PointRank BETWEEN 0 AND {$percent}
+                    ORDER BY B.SumAdjustPoint DESC
+                    LIMIT 1
+                ) AS MaxPoint
+                ,
+                (
+                    SELECT B.SumAdjustPoint
+                    FROM 
+                    (
+                        SELECT
+                        *
+                        ,PERCENT_RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.SumAdjustPoint DESC) AS PointRank
+                        FROM (
+                            SELECT PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
+                            FROM {$this->_table['predictGrades']}
+                            WHERE PredictIdx = {$PredictIdx}
+                            AND TakeMockPart = '{$TakeMockPart}'
+                            AND TakeArea = '{$TakeArea}'
+                            GROUP BY PrIdx
+                        ) AS A
+                    ) AS B
+                    WHERE B.PointRank BETWEEN 0 AND {$percent}
+                    ORDER BY B.SumAdjustPoint ASC
+                    LIMIT 1
+                ) AS MinPoint
+            ";
+
+            $result[] = $this->_conn->query('select ' . $query_string)->row_array();
+        }
+
+        return $result;
+    }
+    /*public function calculate($PredictIdx, $TakeMockPart, $TakeArea, $P1, $P2, $P3){
         $rtnCal = null;
 
         // 응시자 개별과목 / 점수
@@ -2652,7 +2708,7 @@ class PredictModel extends WB_Model
             $rtnCal = $PerPoint2M."/".$ResPerPoint1."/".$PerPoint3M."/".$ResPerPoint2."/".$PerPoint3;
         }
         return $rtnCal;
-    }
+    }*/
 
     /**
      * 예상합격선저장

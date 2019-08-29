@@ -119,7 +119,7 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1266_04.gif" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
             <map name="Map190108_c2" >
-                <area shape="rect" coords="872,750,1015,836" href="javascript:go_PassLecture(2);" onfocus="this.blur();" />
+                <area shape="rect" coords="784,749,957,836" href="javascript:go_PassLecture(2);" onfocus="this.blur();" />
             </map>
             <div class="check" id="chkInfo">
                 <label>

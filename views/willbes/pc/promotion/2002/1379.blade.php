@@ -93,12 +93,12 @@
         </div>
 
         <div class="evtCtnsBox wb_02" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02.jpg" alt="패키지 구성" usemap="#Map1379a" border="0" />
-            <map name="Map1379a" id="Map1379a">
-                <area shape="rect" coords="370,1292,747,1402" href="javascript:alert('PACKAGE\n수강신청\nComing soon');" alt="지금 바로 신청하기" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02.jpg" alt="패키지 구성" usemap="#Map1379z" border="0" />
+            <map name="Map1379z" id="Map1379z">
+                <area shape="rect" coords="368,1493,752,1614" href="javascript:alert('PACKAGE\n수강신청\nComing soon');" alt="지금 바로 신청하기" />
             </map>
         </div>
-
+        
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_03.jpg" alt="다운로드 및 바로가기" usemap="#Map1379b" border="0" />
             <map name="Map1379b" id="Map1379b">

@@ -15,7 +15,7 @@
 
         .viewArea {position:fixed; bottom:0; width:100%; height:130px;}
         .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}
-        .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}
+        .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:-1 !important}
         .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important}
         .liveTab01 li {height:130px; position:relative}
         .liveTab01 span {position:absolute}
@@ -47,7 +47,7 @@
         /*크롬*/
         @@media screen and (-webkit-min-device-pixel-ratio:0) {
             .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}
-            .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:1 !important}
+            .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:-1 !important}
             .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important;}
         }
     </style>
@@ -390,7 +390,7 @@
                             </ul>
                         @endif
                     @endif
-                    <div class="bgimg"><img src="{{ $row['BgImgPath'] }}" title="{{ $row['Title'] }}"></div>
+                    <div class="bgimg"><img src="https://police.dev.willbes.net{{ $row['BgImgPath'] }}" title="{{ $row['Title'] }}"></div>
                 </div>
             @endforeach
         </div>
@@ -400,6 +400,7 @@
     <script src="/public/js/willbes/waypoints.min.js"></script>
     <script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script>
     <script type="text/javascript">
+
         $(document).ready(function(){
             $('ul.tabSt1').each(function(){
                 var $active, $content, $links = $(this).find('a');
@@ -437,6 +438,7 @@
                 mode : 'vertical', //'horizontal', 'vertical', 'fade'
                 controls : false
             });
+
         });
     </script>
 

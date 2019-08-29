@@ -1683,7 +1683,7 @@
                             </div>
                             <div id="gpgosi_guide3" class="tabContent">
                                 <div class="examInfoGu4">
-                                    <h4 class="hTy4 hTy">경쟁률 및 합격선 (2018)</h4>
+                                    <h4 class="hTy4 hTy">경쟁률 및 합격선 (2019)</h4>
                                     <div class="sliderGuide cSliderTM">
                                         <div class="sliderControlsTM">
                                             <div class="guide_slider">

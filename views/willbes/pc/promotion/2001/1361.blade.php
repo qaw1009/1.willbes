@@ -178,7 +178,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#tab02">
+                    <a href="#tab02" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
@@ -239,9 +239,15 @@
             @endif
         </div>
 
-        <div id="tab02">
-            @include('willbes.pc.promotion.2001.1361_cts02')
+        <div id="tab02"  class="comingsoon">
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
         </div>
+        
+        {{-- 2번째 탭 내용 31일 노출
+        <div id="tab02">            
+            @include('willbes.pc.promotion.2001.1361_cts02')            
+        </div>
+        --}}
 
         <div id="tab03" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">

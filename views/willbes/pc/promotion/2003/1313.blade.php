@@ -32,7 +32,7 @@
 
 .skybanner{position:fixed;top:500px;right:10px;z-index:1;}
 
-.wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") center top  no-repeat}
+.wb_cts01{background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/07/1313_top_bg.jpg") no-repeat center top}
 .wb_cts02{background:#ccc}
 .wb_cts03{background:#f4f4f4;position:relative;}
 .check {position:absolute;left:0;top:1275px;width:100%; text-align:center; margin:0 auto; padding:30px 0; color:#333; font-size:14px;}

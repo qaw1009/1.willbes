@@ -665,7 +665,6 @@ class PredictModel extends WB_Model
                     if ($this->_conn->set($addData)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictRegister']) === false) {
                         throw new \Exception('등록에 실패했습니다.');
                     }
-
                     $idx = $this->_conn->insert_id();
 
                     if($TakeMockPart == 300){
@@ -690,23 +689,27 @@ class PredictModel extends WB_Model
                     } else {
                         for($i=0; $i<count($arrPoint); $i++){
                             // 데이터 등록
-                            $addData2 = [
-                                'MemIdx' => 1000000,
-                                'PrIdx' => $idx,
-                                'PredictIdx' => $PredictIdx,
-                                'PpIdx' => $ArrPpIdx[$i]['PpIdx'],
-                                'TakeMockPart' => $TakeMockPart,
-                                'TakeArea' => $TakeArea,
-                                'OrgPoint' => $arrPoint[$i],
-                            ];
-                            if ($this->_conn->set($addData2)->insert($this->_table['predictGradesOrigin']) === false) {
-                                throw new \Exception('점수등록에 실패했습니다.');
+                            if ($arrPoint[$i] > 0) {
+                                $addData2 = [
+                                    'MemIdx' => 1000000,
+                                    'PrIdx' => $idx,
+                                    'PredictIdx' => $PredictIdx,
+                                    'PpIdx' => $ArrPpIdx[$i]['PpIdx'],
+                                    'TakeMockPart' => $TakeMockPart,
+                                    'TakeArea' => $TakeArea,
+                                    'OrgPoint' => $arrPoint[$i],
+                                ];
+
+                                if ($this->_conn->set($addData2)->insert($this->_table['predictGradesOrigin']) === false) {
+                                    throw new \Exception('점수등록에 실패했습니다.');
+                                }
                             }
                         }
                     }
                     unset($arrPoint);
                 }
             }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

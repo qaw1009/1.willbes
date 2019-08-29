@@ -75,7 +75,7 @@
         </div>
         <!-- CS센터 //-->
 
-        <div id="QuickMenu" class="MainQuickMenu">
+        <div id="QuickMenu" class="MainQuickMenu" style="right: 70px;">
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>

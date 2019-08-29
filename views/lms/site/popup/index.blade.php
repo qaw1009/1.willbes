@@ -108,7 +108,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-copy mr-10"></i> 삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-use' },
+                    { text: '<i class="fa fa-copy mr-10"></i>미사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-use' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder-open' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 팝업 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/site/popup/create') }}' + dtParamsToQueryString($datatable);

@@ -11,7 +11,7 @@
     font-size:14px;
 }
 .evtContent * {font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}
-.evtContent span {vertical-align:auto}
+.evtContent span {vertical-align: middle}
 .evtCtnsBox {width:100%; min-width:1120px; background:#fff; padding:50px 0}
 
 
@@ -21,7 +21,7 @@
 -webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
 -moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);
 box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
-.skyBanner li a {display:block; padding:15px 0; text-align:center; background:#fff; color:#000; font-size:14px; font-weight:600; border-bottom:1px solid #000; line-height:1.4}
+.skyBanner li a {display:block; padding:15px 0; text-align:center; background:#fff; color:#000; font-size:14px; font-weight:bold; border-bottom:1px solid #000; line-height:1.4}
 .skyBanner li:last-child a {height:27px; line-height:27px; padding:0; background:#000; color:#fff}
 .skyBanner li a:hover {background:#000; color:#fff;}
 
@@ -121,8 +121,8 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 
 .ddayBefore {width:980px; margin:0 auto; padding:50px 0}
 .ddayBefore h1 {margin-bottom:2em; text-align: center; font-size:30px}
-.ddayBefore h2 {clear:both; font-size:24px; font-weight:500; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
-.ddayBefore h2 span {color:#1087ef !important}
+.ddayBefore h2 {clear:both; font-size:24px; font-weight:bold; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
+.ddayBefore h2 span {color:#1087ef !important;}
 .ddayBefore .boardTypeB {margin-bottom:2em}
 .ddayBefore .boardTypeB th,
 .ddayBefore .boardTypeB td {padding:10px; line-height: 1.5}
@@ -130,13 +130,14 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .m_section3_3 tbody .thBg01 {background:#fffcd1}
 
 .m_section3 {width:100%}	
+.m_section3_wrap * {font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}
 .m_section3_wrap {width:980px; margin:0 auto 0; padding:80px 0 0}
 .m_section3_wrap .m_section3_2 {margin-bottom:100px}
-.m_section3_wrap h2 {clear:both; font-size:24px; font-weight:500; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
-.m_section3_wrap h2 span {color:#1087ef !important}
+.m_section3_wrap h2 {clear:both; font-size:24px; font-weight:bold; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
+.m_section3_wrap h2 span {color:#1087ef !important; vertical-align: top}
 .m_section3_wrap .choice {border-bottom:2px solid #000}
 .m_section3_wrap .choice li {display:inline; float:left}
-.m_section3_wrap .choice li a {display:block; padding:10px 20px; margin-right:1px; background:#e2e2e2; color:#898989; font-weight:500}
+.m_section3_wrap .choice li a {display:block; padding:10px 20px; margin-right:1px; background:#e2e2e2; color:#898989; font-weight:bold}
 .m_section3_wrap .choice li a:hover,
 .m_section3_wrap .choice li a.active {background:#000; color:#fff}
 .m_section3_wrap .choice ul:after {content:""; display:block; clear:both}
@@ -145,7 +146,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .m_section3_wrap .m_section3_box {background:#000; padding:20px; min-height:550px}	
 
 .m_section3_R {float:right; width:56%}
-.m_section3_R h3 {font-size:22px; font-weight:400; margin-bottom:10px; color:#fff}
+.m_section3_R h3 {font-size:22px; font-weight:bold; margin-bottom:10px; color:#fff}
 .m_section3_R h3 span {color:#09F}
 .m_section3_R p {color:#fff; text-align:left; margin-top:15px}
 .m_section3_R .table_type {margin-top:1em; width:99%; background:#fff}
@@ -309,7 +310,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .m_section3_6:after {content:""; display:block; clear:both}
 
 .m_section3_7 {margin-top:40px}
-.m_section3_7 h3 {clear:both; font-size:24px; font-weight:500; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
+.m_section3_7 h3 {clear:both; font-size:24px; font-weight:bold; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
 		
 .m_section4 {width:100%; text-align:center; background:url(http://file3.willbes.net/new_cop/2017/03/EV2016_sec4_bg.jpg) no-repeat center top;}
 .m_section4 img {width:980px; height:1007px}
@@ -338,7 +339,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .s_section2_wrap li:last-child {margin:0}
 
 .sub_warp {width:980px; margin:0 auto; padding:60px 0; line-height: 1.5}
-.sub_warp h2 {clear:both; font-size:24px; font-weight:500; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
+.sub_warp h2 {clear:both; font-size:24px; font-weight:bold; padding-left:30px; margin-bottom:1em; color:#464646; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_passcop_icon1.png) no-repeat left center}
 .sub_warp h2 div {position:absolute; top:5px; right:0; font-size:12px; color:#adadad; letter-spacing:normal}
 .sub_warp h2 span {color:#C03}	
 .sub_warp h2 select {padding:5px}
@@ -384,7 +385,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
     
 .btns {text-align:center; margin:30px 0}
 .btns span,
-.btns a {display:inline-block; padding:8px 16px; background:#1087ef; color:#fff !important; font-weight:400; border:1px solid #1087ef}
+.btns a {display:inline-block; padding:8px 16px; background:#1087ef; color:#fff !important; font-weight:bold; border:1px solid #1087ef}
 .btns a.btn2 {background:#464646; color:#fff !important; border:1px solid #464646}
 .btns a:hover {background:#fff; color:#1087ef !important}
 .btns a.btn2:hover {background:#fff; color:#464646 !important}
@@ -477,7 +478,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeD {width:100%; margin:0 auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid}
 .boardTypeD th,
 .boardTypeD td {letter-spacing:normal !important; font-size:14px !important; text-align:center; padding:10px 8px}
-.boardTypeD th {color:#464646; background:#f3f3f3; font-size:14px !important; font-weight:400; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid}
+.boardTypeD th {color:#464646; background:#f3f3f3; font-size:14px !important; font-weight:bold; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid}
 .boardTypeD td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646}
 .boardTypeD td.td2 {background:#fffcd1}
 .boardTypeD td input {vertical-align:middle}
@@ -485,7 +486,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeD td span.redB {font-weight:bold; color:#C00}
 .boardTypeD td label {margin-right:10px}
 .boardTypeD .lineNo {border-right:none !important}
-.boardTypeD tfoot td {background:#dae9f7; font-weight:600; color:#000}
+.boardTypeD tfoot td {background:#dae9f7; font-weight:bold; color:#000}
 
 .boardTypeD td .graph li {display:inline; float:left; width:25%; font-size:11px; text-align:center}
 .boardTypeD td .graph strong {font-weight:normal !important}
@@ -500,7 +501,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeE {width:100%; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_v40_line.gif)}
 .boardTypeE th,
 .boardTypeE td {letter-spacing:normal !important; font-size:14px !important; text-align:center}
-.boardTypeE th {font-weight:400; padding:10px 0 10px; background:#fff; border-top:1px solid #e2e2e2}
+.boardTypeE th {font-weight:bold; padding:10px 0 10px; background:#fff; border-top:1px solid #e2e2e2}
 .boardTypeE td {position:relative; vertical-align:middle; height:40px; line-height:40px; height:200px}
 .boardTypeE td ul {position:absolute; top:-18px; left:20px}
 .boardTypeE td li {height:40px; line-height:40px}
@@ -527,7 +528,7 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 
 /*채점확인*/
 .sub3_4_wrap {margin:50px 0 20px;}
-.sub3_4_wrap p {font-size:120%; font-weight:600; color:#000; margin-bottom:20px}
+.sub3_4_wrap p {font-size:120%; font-weight:bold; color:#000; margin-bottom:20px}
 .sub3_4_L {float:left; width:480px}
 .sub3_4_L_warp {position:relative}
 .sub3_4_L_warp .cutLine {position:absolute; left:60px; width:420px; z-index:10}

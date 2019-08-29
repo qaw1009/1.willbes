@@ -2042,7 +2042,7 @@ class SurveyModel extends WB_Model
      */
     public function TotalAreaAvgInfo($PredictIdx, $take_mock_part, $take_area, $pr_idx)
     {
-        $column = "A.PrIdx, A.TakeMockPart, A.TakeArea, A.TotalOrgPoint, A.TotalAdjustPoint, A.RankNum, A.Cnt, B.TotalAvrPoint, B.TotalFivePerPoint";
+        $column = "A.PrIdx, A.TakeMockPart, A.TakeArea, A.TotalOrgPoint, A.TotalAdjustPoint, A.RankNum, A.Cnt, B.TotalAvrPoint, C.TotalFivePerPoint";
         $from = "
         FROM (
             SELECT *
@@ -2072,12 +2072,40 @@ class SurveyModel extends WB_Model
             ) A
             WHERE A.PrIdx = {$pr_idx}
         ) AS A
+        
         INNER JOIN (
-            SELECT TakeMockPart, TakeArea, ROUND(SUM(AvrPoint),2) AS TotalAvrPoint, ROUND(SUM(FivePerPoint),2) AS TotalFivePerPoint
-            FROM {$this->_table['predictGradesArea']}
-            WHERE PredictIdx = '{$PredictIdx}'
-            GROUP BY TakeMockPart, TakeArea
+		SELECT A.TakeMockPart, A.TakeArea, ROUND(AVG(A.SumAdjustPoint),2) AS TotalAvrPoint
+		FROM (
+			SELECT TakeMockPart, TakeArea, SUM(AdjustPoint) AS SumAdjustPoint
+			FROM lms_predict_grades
+			WHERE PredictIdx = '{$PredictIdx}'
+            AND TakeMockPart = '{$take_mock_part}'
+            AND TakeArea = '{$take_area}'
+			GROUP BY PrIdx
+		) AS A
+		GROUP BY A.TakeMockPart, A.TakeArea        
         ) AS B ON A.TakeMockPart = B.TakeMockPart AND A.TakeArea = B.TakeArea
+        
+        INNER JOIN (
+		SELECT B.TakeMockPart, B.TakeArea, ROUND(AVG(B.SumAdjustPoint),2) AS TotalFivePerPoint
+		FROM 
+		(
+			SELECT
+			*
+			,PERCENT_RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.SumAdjustPoint DESC) AS PointRank
+			FROM (
+			    SELECT PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
+			    FROM `lms_predict_grades`
+			    WHERE PredictIdx = '{$PredictIdx}'
+                AND TakeMockPart = '{$take_mock_part}'
+                AND TakeArea = '{$take_area}'
+			    GROUP BY PrIdx
+			) AS A
+		) AS B
+
+		WHERE B.PointRank BETWEEN 0 AND 0.05
+		GROUP BY B.TakeMockPart, B.TakeArea
+        ) AS C ON A.TakeMockPart = C.TakeMockPart AND A.TakeArea = C.TakeArea
         ";
         //echo "<pre>".'select ' . $column . $from."</pre>";
         return $this->_conn->query('select ' . $column . $from)->row_array();

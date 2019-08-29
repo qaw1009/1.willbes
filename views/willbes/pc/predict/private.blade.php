@@ -158,7 +158,7 @@
                                         </ul>
                                     </td>
                                     <td>
-                                        <div><span class="myscore" style="height:{{ (empty($arr_base['arr_line_data']['OnePerCut']) === false ? $arr_base['arr_line_data']['OnePerCut'] : '0') }}%"></span></div>
+                                        <div><span class="myscore" style="height:{{ ((empty($arr_base['arr_line_data']['OnePerCut']) === false ? $arr_base['arr_line_data']['OnePerCut'] : '0') / 500) * 100 }}%"></span></div>
                                     </td>
 
                                     <td>
@@ -197,7 +197,7 @@
                             <table class="boardTypeB">
                                 <col />
                                 <col />
-                                @if(empty($arr_base['arr_line_data']) === true || $arr_base['arr_line_data']['IsUse'] == 'Y')
+                                @if(empty($arr_base['arr_line_data']) === true || $arr_base['arr_line_data']['IsUse'] == 'N')
                                     <tr>
                                         <th>합격기대권</th>
                                         <td>집계중</td>
@@ -221,18 +221,35 @@
                                 @else
                                     <tr>
                                         <th>합격기대권</th>
-                                        {{--<td>{{ $arr_base['arr_line_data']['ExpectAvrPoint1'] }} ~ {{ $arr_base['arr_line_data']['ExpectAvrPoint2'] }}</td>--}}
-                                        <td>{{ ((empty($arr_base['arr_line_data']['ExpectAvrPoint1']) === false && $arr_base['arr_line_data']['IsUse'] == 'Y') ? $arr_base['arr_line_data']['ExpectAvrPoint1'].'~'.$arr_base['arr_line_data']['ExpectAvrPoint2'] : '집계중') }}</td>
+                                        <td>
+                                            @if($arr_base['arr_line_data']['IsUse'] == 'Y')
+                                                {{ $arr_base['arr_line_data']['ExpectAvrPoint1'] ? $arr_base['arr_line_data']['ExpectAvrPoint1'] : $arr_base['arr_line_data']['ExpectAvrPoint1Ref'] }}~{{ $arr_base['arr_line_data']['ExpectAvrPoint2'] ? $arr_base['arr_line_data']['ExpectAvrPoint2'] : $arr_base['arr_line_data']['ExpectAvrPoint2Ref'] }}
+                                            @else
+                                                집계중
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>합격유력권</th>
                                         {{--<td>{{ $arr_base['arr_line_data']['StrongAvrPoint1'] }} ~ {{ $arr_base['arr_line_data']['StrongAvrPoint2'] }}</td>--}}
-                                        <td>{{ ((empty($arr_base['arr_line_data']['StrongAvrPoint1']) === false && $arr_base['arr_line_data']['IsUse'] == 'Y') ? $arr_base['arr_line_data']['StrongAvrPoint1'].'~'.$arr_base['arr_line_data']['StrongAvrPoint2'] : '집계중') }}</td>
+                                        <td>
+                                            @if($arr_base['arr_line_data']['IsUse'] == 'Y')
+                                                {{ $arr_base['arr_line_data']['StrongAvrPoint1'] ? $arr_base['arr_line_data']['StrongAvrPoint1'] : $arr_base['arr_line_data']['StrongAvrPoint1Ref'] }}~{{ $arr_base['arr_line_data']['StrongAvrPoint2'] ? $arr_base['arr_line_data']['StrongAvrPoint2'] : $arr_base['arr_line_data']['StrongAvrPoint2Ref'] }}
+                                            @else
+                                                집계중
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>합격안정권</th>
                                         {{--<td>{{ $arr_base['arr_line_data']['StabilityAvrPoint'] }} 이상</td>--}}
-                                        <td>{{ ((empty($arr_base['arr_line_data']['StabilityAvrPoint']) === false && $arr_base['arr_line_data']['IsUse'] == 'Y') ? $arr_base['arr_line_data']['StabilityAvrPoint'].' 이상' : '집계중') }}</td>
+                                        <td>
+                                            @if($arr_base['arr_line_data']['IsUse'] == 'Y')
+                                                {{ $arr_base['arr_line_data']['StabilityAvrPoint'] ? $arr_base['arr_line_data']['StabilityAvrPoint'] : $arr_base['arr_line_data']['StabilityAvrPointRef'] }} ~
+                                            @else
+                                                집계중
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr class="bg01">
                                         <th>1배수컷</th>

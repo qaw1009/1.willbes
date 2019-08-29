@@ -2116,7 +2116,7 @@ class SurveyModel extends WB_Model
      */
     public function getAreaForLineData($PredictIdx, $take_mock_part, $take_area)
     {
-        $column = "ExpectAvrPoint1, ExpectAvrPoint2, StrongAvrPoint1, StrongAvrPoint2, StabilityAvrPoint, OnePerCut, IsUse";
+        $column = "ExpectAvrPoint1, ExpectAvrPoint2, StrongAvrPoint1, StrongAvrPoint2, StabilityAvrPoint, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StrongAvrPoint1Ref, StrongAvrPoint2Ref, StabilityAvrPointRef, OnePerCut, IsUse";
 
         $from = " FROM {$this->_table['predictGradesLine']} ";
 

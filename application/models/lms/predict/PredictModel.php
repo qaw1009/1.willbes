@@ -644,6 +644,8 @@ class PredictModel extends WB_Model
                     $arrPoint[] = $val['I'];
                     $arrPoint[] = $val['J'];
                     $arrPoint[] = $val['K'];
+                    $arrPoint[] = $val['L'];
+                    $arrPoint[] = $val['M'];
 
                     // 데이터 등록
                     $addData = [
@@ -659,8 +661,6 @@ class PredictModel extends WB_Model
                         'Period' => 1,
                         'IsTake' => 'N'
                     ];
-
-                    //print_r($addData);
 
                     if ($this->_conn->set($addData)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictRegister']) === false) {
                         throw new \Exception('등록에 실패했습니다.');
@@ -699,9 +699,6 @@ class PredictModel extends WB_Model
                                 'TakeArea' => $TakeArea,
                                 'OrgPoint' => $arrPoint[$i],
                             ];
-
-                            //print_r($addData2);
-
                             if ($this->_conn->set($addData2)->insert($this->_table['predictGradesOrigin']) === false) {
                                 throw new \Exception('점수등록에 실패했습니다.');
                             }
@@ -1731,12 +1728,30 @@ class PredictModel extends WB_Model
             pg.TakeMockPart, pg.TakeArea, OnePerCut,
             (
             SELECT COUNT(*) FROM (
-                    SELECT * FROM {$this->_table['predictGradesOrigin']} WHERE PredictIdx = '{$PredictIdx}' GROUP BY PrIdx
+                    SELECT * FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND MemIdx != 1000000 GROUP BY PrIdx
                 ) AS A
                 WHERE PredictIdx = pg.PredictIdx AND TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart
-            ) AS TakeOrigin,  
-            ROUND(AVG(pg.OrgPoint),2) AS AvrPoint,
-            (SELECT COUNT(*) FROM {$this->_table['predictRegister']} WHERE PredictIdx = pg.PredictIdx AND TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart) AS TotalRegist,
+            ) AS TakeOrigin,
+            (
+            SELECT A.AvgAdjustPoint
+            FROM (
+                SELECT
+                PredictIdx, TakeMockPart, TakeArea, ROUND(AVG(t.SumAdjustPoint),2) AS AvgAdjustPoint
+                FROM (
+                    SELECT PredictIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint FROM lms_predict_grades 
+                    WHERE PredictIdx = '{$PredictIdx}'
+                    GROUP BY PrIdx
+                ) AS t
+                GROUP BY TakeMockPart, TakeArea
+            ) AS A
+            WHERE PredictIdx = pg.PredictIdx AND TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart
+            ) AS AvrPoint,            
+            (
+            SELECT COUNT(*) FROM (
+                SELECT * FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' GROUP BY PrIdx
+                ) AS A
+                WHERE PredictIdx = pg.PredictIdx AND TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart
+            ) AS TotalRegist,            
             pl.PickNum, pl.TakeNum, CompetitionRateNow, CompetitionRateAgo, PassLineAgo, AvrPointAgo, StabilityAvrPoint, StabilityAvrPercent,
             StrongAvrPoint1, StrongAvrPoint2, StrongAvrPercent, ExpectAvrPoint1, ExpectAvrPoint2, ExpectAvrPercent, pl.IsUse,
             StrongAvrPoint1Ref, StrongAvrPoint2Ref, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StabilityAvrPointRef

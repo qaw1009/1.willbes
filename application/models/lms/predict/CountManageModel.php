@@ -22,7 +22,7 @@ class CountManageModel extends WB_Model
     public function findCountManage($PredictIdx)
     {
         $column = '
-            * , (RegistCnt+ScoreCnt+SurveyCnt+PageViewCnt1+PageViewCnt2+CommentCnt1+CommentCnt2) as view_real
+            * , (RegistCnt+ScoreCnt+SurveyCnt+PageViewCnt1+PageViewCnt2+CommentCnt1+CommentCnt2+LectureClickCnt1) as view_real
         ';
 
         $from = '
@@ -44,6 +44,17 @@ class CountManageModel extends WB_Model
                         ,ifnull((SELECT ReadCnt FROM lms_event_lecture WHERE PromotionCode = pc.PageView2 ),0) AS PageViewCnt2
                         ,(SELECT count(*) FROM lms_event_lecture el join lms_event_comment ec on el.ElIdx = ec.ElIdx where ec.IsStatus=\'Y\' and el.PromotionCode=pc.Comment1) as CommentCnt1
                         ,(SELECT count(*) FROM lms_event_lecture el join lms_event_comment ec on el.ElIdx = ec.ElIdx where ec.IsStatus=\'Y\' and el.PromotionCode=pc.Comment2) as CommentCnt2
+                        ,(
+							select
+								count(*)
+							from
+								lms_event_lecture el
+								join lms_event_promotion_otherinfo epo on el.PromotionCode = epo.PromotionCode
+								join lms_lecture_sample_log lsl on epo.OtherData1 = lsl.ProdCode
+							where 
+								el.IsStatus=\'Y\' and epo.IsStatus=\'Y\'
+								and el.PromotionCode = pc.LectureClick1
+						) as LectureClickCnt1
                      from
                         lms_predict_count pc
                         join lms_product_predict pp on pc.PredictIdx = pp.PredictIdx	
@@ -104,6 +115,7 @@ class CountManageModel extends WB_Model
             ,'PageView2'  => element('PageView2',$input)
             ,'Comment1'  => element('Comment1',$input)
             ,'Comment2'  => element('Comment2',$input)
+            ,'LectureClick1'  => element('LectureClick1',$input)
         ];
 
         return $input_data;

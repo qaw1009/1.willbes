@@ -28,13 +28,13 @@
         .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
         .liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
         .liveTab02 li span {margin-right:10px; vertical-align:top}
-        .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
+        .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; /*border-bottom:2px solid #fdf9c1*/}
         .liveTab02 li span.st02 {font-family:"Times New Roman", Times, serif}
 
         .liveTab03 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
         .liveTab03 li {padding-left:260px; height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
         .liveTab03 li span {margin-right:10px; vertical-align:top}
-        .liveTab03 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
+        .liveTab03 li span.st01 {font-weight:600; color:#fdf9c1; /*border-bottom:2px solid #fdf9c1*/}
         .liveTab03 li span.st02 {font-family:"Times New Roman", Times, serif}
         .liveTab03 li div {font-size:22px; margin-bottom:12px; margin-top:26px}
         .liveTab03 li div span.st01 {border:0; letter-spacing:0;}

@@ -41,8 +41,13 @@
             @php
                 $live_type = 'standby';
                 $now_datm = date('YmdHis');
-                $start_time = '20190831135000';
-                $end_time = '20190831200000';
+                if(ENVIRONMENT == 'local' && ENVIRONMENT == 'development') {
+                    $start_time = '20190830135000';
+                    $end_time = '20190830200000';
+                } else {
+                    $start_time = '20190831135000';
+                    $end_time = '20190831200000';
+                }
 
                 if ($now_datm < $start_time) {
                     $live_type = 'standby';

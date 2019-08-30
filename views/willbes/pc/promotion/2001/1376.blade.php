@@ -22,9 +22,9 @@
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/08/1376_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#665227;}
-        .evt02 {background:#f6f6f6}
+        .evt02 {background:#f6f6f6;}
         .evt02 span {position:absolute; top:403px; left:50%; margin-left:-490px; width:980px; z-index:10}
-        .evt02 span iframe {width:980px; height:551px}
+        .evt02 span figure {width:980px; height:551px}
 
     </style>
 
@@ -64,9 +64,11 @@
             @elseif($live_type == 'on')
                 {{--방송전 31일 13시~14시까지--}}
                 {{--<span><iframe src="https://www.youtube.com/watch?v=8_TeXs4Uh_4" frameborder="0" allowfullscreen=""></iframe></span>--}}
-                <figure data-ke-type="video" data-ke-style="alignCenter" data-video-host="youtube" data-video-url="https://www.youtube.com/watch?v=8_TeXs4Uh_4" data-video-thumbnail="https://scrap.kakaocdn.net/dn/cvnOmS/hyBS2AsyJA/aeK3Xxb1QfVB3eI16KuEQ0/img.jpg?width=1280&height=720&face=0_0_1280_720"><iframe src="https://www.youtube.com/embed/8_TeXs4Uh_4" width="860" height="484" frameborder="0" allowfullscreen="true"></iframe>
-                    <figcaption></figcaption>
-                </figure>
+                    <span>
+                    <figure data-ke-type="video" data-ke-style="alignCenter" data-video-host="youtube" data-video-url="https://www.youtube.com/watch?v=8_TeXs4Uh_4" data-video-thumbnail="https://scrap.kakaocdn.net/dn/cvnOmS/hyBS2AsyJA/aeK3Xxb1QfVB3eI16KuEQ0/img.jpg?width=1280&height=720&face=0_0_1280_720"><iframe src="https://www.youtube.com/embed/8_TeXs4Uh_4" width="980" height="551" frameborder="0" allowfullscreen="true"></iframe>
+                        <figcaption></figcaption>
+                    </figure>
+                </span>
             @else
                 {{--방송전 31일 13시~14시이후--}}
                 <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1376_02_after.jpg" title="방송종료"></span>

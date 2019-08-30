@@ -5,7 +5,7 @@
     <div id="Container" class="Container NG c_both">
         <div class="predictWrap">
             <div class="willbes-Tit">
-                합격예측 풀서비스 <span class="NGEB">사전예약</span>
+                합격예측 풀서비스 <span class="NGEB"></span>
             </div>
             <div class="marktxt2">빠르고 간편한 모바일 전용 채점 서비스 입니다.</div>
             <div class="tg-note">
@@ -57,37 +57,16 @@
                             <th scope="col">조정점수</th>
                             <th scope="col">정오표</th>
                         </tr>
-                        <tr>
-                            <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }} @else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y') {{ $scoredata['score'][0] }} @else 미입력 @endif</td>
-                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>--}}
-                            <td>집계중</td>
-                            <td rowspan="5" class="tx-center"><a href="javascript:resultPop({{$PredictIdx}})" class="mypoint">확인 </a></td>
-                        </tr>
-                        <tr>
-                            <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][1] }}@else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y') {{ $scoredata['score'][1] }} @else 미입력 @endif</td>
-                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][1] }} @else 미입력 @endif</td>--}}
-                            <td>집계중</td>
-                        </tr>
-                        <tr>
-                            <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][2] }}@else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y') {{ $scoredata['score'][2] }} @else 미입력 @endif</td>
-                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][2] }} @else 미입력 @endif</td>--}}
-                            <td>집계중</td>
-                        </tr>
-                        <tr>
-                            <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][3] }}@else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y') {{ $scoredata['score'][3] }} @else 미입력 @endif</td>
-                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][3] }} @else 미입력 @endif</td>--}}
-                            <td>집계중</td>
-                        </tr>
-                        <tr>
-                            <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][4] }}@else 미입력 @endif</td>
-                            <td>@if($scoreIs == 'Y') {{ $scoredata['score'][4] }} @else 미입력 @endif</td>
-                            {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][4] }} @else 미입력 @endif</td>--}}
-                            <td>집계중</td>
-                        </tr>
+                        @foreach($subject_list as $key => $val)
+                            <tr>
+                                <td>{{ $val['CcdName'] }}</td>
+                                <td>{{ (empty($scoredata['PpIdx'][$key]) === true ? '미입력' : $scoredata['score'][$key]) }}</td>
+                                <td>
+                                    {{(empty($scoredata['PpIdx'][$key]) === true) ? '미입력' :  (empty($scoredata['addscore'][$key]) === true ? '집계중' : $scoredata['addscore'][$key])}}
+                                </td>
+                                @if($loop->first)<td rowspan="5"><a href="javascript:resultPop({{ $PredictIdx }})" class="type1">확인 ▶</a></td>@endif
+                            </tr>
+                        @endforeach
                     </table>
 
                     <div class="mt10 tx-center">

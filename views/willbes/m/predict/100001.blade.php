@@ -17,7 +17,7 @@
         <div id="Container" class="Container NG c_both">
             <div class="predictWrap">
                 <div class="willbes-Tit">
-                    합격예측 풀서비스 <span class="NGEB">사전예약</span>
+                    합격예측 풀서비스 <span class="NGEB"></span>
                 </div>
                 <div class="marktxt2">빠르고 간편한 모바일 전용 채점 서비스 입니다.</div>
                 <div class="tg-note">

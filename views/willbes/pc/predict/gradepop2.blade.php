@@ -75,7 +75,7 @@
                     return false;
                 }
             });
-            if(vali_msg){ alert(vali_msg); return false; }
+            if(vali_msg){ alert(vali_msg); return; }
 
             if (confirm('정답을 제출하시겠습니까?')) {
                 var _url = '{{ front_url('/predict/examSendAjax2') }}';

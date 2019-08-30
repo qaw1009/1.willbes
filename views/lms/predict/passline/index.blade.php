@@ -76,9 +76,9 @@
                         <th class="text-center">일배수컷</th>
                         <th class="text-center">전체평균</th>
                         <th class="text-center">채점수 / 등록수</th>
-                        <th class="text-center">기대권</th>
-                        <th class="text-center">유력권</th>
-                        <th class="text-center">안정권</th>
+                        <th class="text-center" style="width: 140px;">기대권 <br>(최고점~최저점)</th>
+                        <th class="text-center" style="width: 140px;">유력권 <br>(최고점~최저점)</th>
+                        <th class="text-center" style="width: 120px;">안정권 <br>(~최저점)</th>
                         <th class="text-center">계산</th>
                     </tr>
                     </thead>
@@ -131,9 +131,9 @@
                                         상위 : <input type="text" id="per3_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StabilityAvrPercent[]" value="{{ $val2['StabilityAvrPercent'] ? $val2['StabilityAvrPercent'] : "" }}" style="width:50px;" /> % <br>
                                         계산 :
                                         <input type="hidden" id="stab_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StabilityAvrPointRef[]" value="{{ $val2['StabilityAvrPointRef'] }}" style="width:60px;" />
-                                        <span id="stab_v_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}">{{ $val2['StabilityAvrPointRef'] ? $val2['StabilityAvrPointRef']." ~ " : ""}}</span><br>
+                                        <span id="stab_v_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}">{{ $val2['StabilityAvrPointRef'] ? "~ ".$val2['StabilityAvrPointRef'] : ""}}</span><br>
                                         출력 :
-                                        <input type="text" name="StabilityAvrPoint[]" value="{{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : ""}}" style="width:60px;" /> ~
+                                        ~ <input type="text" name="StabilityAvrPoint[]" value="{{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : ""}}" style="width:60px;" />
                                     </td>
                                     <td>
                                         <input type="button" value="계산" class="btn btn-xs btn-primary mr-0" onClick="calculate('{{ $val2['TakeMockPart'] }}','{{ $val2['TakeArea'] }}','{{ $PredictIdx }}')" />

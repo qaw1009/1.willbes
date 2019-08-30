@@ -666,7 +666,7 @@ class BasePassPredict extends \app\controllers\FrontController
                 $newQuestion['OrgPoint'][$PpIdx][] = $OrgPoint;
             }
         }
-
+        
         $score1 = $this->surveyModel->getScore1($pridx, $PredictIdx);
         $score2 = $this->surveyModel->getScore2($pridx, $PredictIdx);
         $scoredata = array();
@@ -676,6 +676,7 @@ class BasePassPredict extends \app\controllers\FrontController
         if(empty($score1)===false){
             $scoreType = 'EACH';
             foreach ($score1 as $key => $val){
+                $scoredata['PpIdx'][]  = $val['PpIdx'];
                 $scoredata['subject'][]  = $val['SubjectName'];
                 $scoredata['score'][]    = $val['OrgPoint'];
                 $scoredata['addscore'][] = $val['AdjustPoint'];
@@ -689,8 +690,9 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         if(empty($score2)===false){
-            $scoreType = 'DIRECT';
-            foreach ($score2 as $key => $val){
+            $scoreType = ($scoreType == 'EACH') ? $scoreType : 'DIRECT';
+            foreach ($score2 as $key => $val) {
+                $scoredata['PpIdx'][]  = $val['PpIdx'];
                 $scoredata['subject'][]  = $val['SubjectName'];
                 $scoredata['score'][]    = $val['OrgPoint'];
                 $scoredata['addscore'][] = $val['AdjustPoint'];

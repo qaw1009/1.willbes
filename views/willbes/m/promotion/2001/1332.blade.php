@@ -21,7 +21,7 @@
     <div id="Container" class="Container NG c_both">
         <div class="predictWrap">
             <div class="willbes-Tit">
-                합격예측 풀서비스 <span class="NGEB">사전예약</span>
+                합격예측 풀서비스 <span class="NGEB"></span>
             </div>
             {{--30일 시험일전까지 사전예약 이벤트 노출--}}
             @if ($step1 == 'on')

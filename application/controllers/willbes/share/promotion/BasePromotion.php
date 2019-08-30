@@ -150,11 +150,14 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_noti_condition['EQ'] = array_merge($arr_noti_condition['EQ'], ['PredictIdx' => $arr_promotion_params['PredictIdx'], 'BmIdx' => '102']);
             $arr_base['predict_data'] = $this->_predictData($arr_promotion_params['PredictIdx']);
             $arr_base['predict_register_cnt'] = $this->predictFModel->getCntPreregist($arr_promotion_params['PredictIdx'], ['NOT' => ['MemIdx' => '1000000']]);
+            $arr_base['predict_count'] = $this->predictFModel->getPredictMakeCount($arr_promotion_params['PredictIdx']);
         }else{
             //일반프로모션인 경우
             $arr_noti_condition['EQ'] = array_merge($arr_noti_condition['EQ'], ['PromotionCode' => $arr_base['promotion_code'],'BmIdx' => '106']);
         }
         $arr_base['notice_list'] = $this->supportBoardFModel->listBoard(false, $arr_noti_condition, '', 'BoardIdx, IsBest, Title, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm', 4, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
+
+
 
         //D-day 조회
         if(empty($arr_promotion_params['DIdx']) === false) {

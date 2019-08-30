@@ -201,7 +201,6 @@
                     </li>
                     <li>
                         <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                        {{--<a onClick='alert("COMING SOON!! ")'>--}}
                         <a href="#tab04">
                             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
                             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
@@ -215,7 +214,8 @@
                     </li>
                 </ul>
 
-                <!--{{-- 형진 작업 필요 --}}
+            <!-- {{-- 형진 개발안된걸 올렸다 --}}
+            <ul>
                 <li>
                     {{--31일 12시까지 노출
                     <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
@@ -260,8 +260,8 @@
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05.jpg" alt="최종합격" class="off">
                     </a>
                 </li>
-                //-->
             </ul>
+            //-->
         </div>
 
         <div id="tab01">

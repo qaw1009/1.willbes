@@ -25,9 +25,10 @@
 
         .evt_counter {height:100px; background:#000; font-size:18px; color:#fff}
         .evt_counter .counter {position:relative; width:1120px; margin:0 auto}
-        .evt_counter .counter .left_area {text-align:center; padding-top:25px; font-size:24px}   
+        .evt_counter .counter .left_area {text-align:center; padding-top:15px; font-size:24px}   
         .evt_counter .counter .left_area img {margin-right:20px}
-        .evt_counter .counter span {font-family: Tahoma, Verdana, Geneva, sans-serif; font-size:42px; letter-spacing:-1px; font-weight:600; padding:0 10px}   
+        .evt_counter .counter span {font-family: Tahoma, Verdana, Geneva, sans-serif; font-size:42px; letter-spacing:-1px; font-weight:600; padding:0 10px; color:#f1d58b}  
+        .evt_counter .counter p {font-size:11px; margin-top:10px; color:#ccc} 
 
   
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_top_bg.jpg) no-repeat center top;}
@@ -137,17 +138,16 @@
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1376" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner1.png" title="토크쇼"></a></li>
             <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
         </ul>
-
-        <!--
+       
         <div class="evtCtnsBox evt_counter">
             <div class="counter">
                 <div class="left_area NGEB">
                     <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_live_camera.png" alt="">
-                    경찰합격 풀케어 서비스 이용현황<span>1,770,232</span>건
+                    예측 참여건수<span>1,770,232</span>건
                 </div>
+                <p class="NSK">시험풀케어서비스 인증신청자 + 시험채점 + 설문조사 + 적중이벤트참여 + 라이브토크쇼참여 + 해설강의 수강자</p>
             </div>
-        </div>
-        -->
+        </div>        
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">              

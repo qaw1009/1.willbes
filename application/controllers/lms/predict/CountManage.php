@@ -39,14 +39,18 @@ class CountManage extends \app\controllers\BaseController
 
         $view_total = 0;
         $view_real = 0;
-        $view_real_info = "0건(인증신청자) + 0건(채점자) + 0건(설문조사) + 0건(통합 프로모션PV) + 0건(소문내기 댓글) + 0건(적중 댓글) + 0건(해설강의 PV)";
+        $view_real_info = "0건(인증신청자) + 0건(채점자) + 0건(설문조사) + 0건(페이지뷰1) + 0건(페이지뷰2)  + 0건(댓글수1) + 0건(댓글수2) + 0건(수강수)";
 
         if(empty($data) == false) {
             $view_real = $data['view_real'];
             $view_total = $data['view_real'] + $data['MakeCount'];
             $view_real_info = $data['RegistCnt'].'건(인증신청자) + '.$data['ScoreCnt'].'건(채점자) + '.$data['SurveyCnt'].'건(설문조사) 
-                                    + '.$data['PageViewCnt1'].'건(통합 프로모션PV) + '.$data['CommentCnt1'].'건(소문내기 댓글) + '.$data['CommentCnt2'].'건(적중 댓글) 
-                                    + '.$data['PageViewCnt2'].'건(해설강의 PV)';
+                                    + '.$data['PageViewCnt1'].'건(페이지뷰1)  
+                                    + '.$data['PageViewCnt2'].'건(페이지뷰2)
+                                    + '.$data['CommentCnt1'].'건(댓글수1) 
+                                    + '.$data['CommentCnt2'].'건(댓글수2)
+                                    + '.$data['LectureClickCnt1'].'건(수강수)
+                                    ';
         }
 
         $this->load->view('predict/countManage/create_modal',[

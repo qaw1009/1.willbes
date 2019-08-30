@@ -122,6 +122,21 @@
     }
 
     function lastSave(){
+        var vali_msg = '';
+        var chk = /^[1-4]+$/i;
+        $('input[name="Answer[]"]').each(function(){
+            var val = $(this).val();
+            if (val == '') {
+                vali_msg = '답안을 모두 입력해 주세요.';
+                return false;
+            }
+            if (!chk.test(val)) {
+                vali_msg = '허용되지 않은 답안입니다.';
+                return false;
+            }
+        });
+        if(vali_msg){ alert(vali_msg); return false; }
+
         if (confirm('정답을 제출하시겠습니까?')) {
             var _url = '{{ front_url('/predict/examSendAjax2') }}';
             ajaxSubmit($all_regi_form, _url, function (ret) {

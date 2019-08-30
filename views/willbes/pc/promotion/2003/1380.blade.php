@@ -23,6 +23,7 @@
       
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/08/1380_top_bg.jpg) no-repeat center top;}	
         .evt02 .youtubeGod iframe{width:644px;height:362px;margin:0 auto;}
+        .youtubeGod2 {margin-top:50px;}
         .evt05{background:#249871;margin-bottom:50px;}
 
     </style>
@@ -40,8 +41,11 @@
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1380_02.jpg" alt="왜 오태진 대각국사를 선택해야 할까요?"/>    
             <div class="youtubeGod">
-                <iframe src="https://www.youtube.com/embed/HGybJR9Rvpg" frameborder="0" allowfullscreen=""></iframe>        
-            </div>      
+                <iframe src="https://www.youtube.com/embed/HGybJR9Rvpg" frameborder="0" allowfullscreen=""></iframe>                        
+            </div>  
+            <div class="youtubeGod youtubeGod2 ">
+                <iframe src="https://www.youtube.com/embed/mTD8xSVV0zs" frameborder="0" allowfullscreen=""></iframe>                        
+            </div>         
         </div>
 
         <div class="evtCtnsBox evt03">

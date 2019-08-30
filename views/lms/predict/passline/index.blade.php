@@ -76,9 +76,9 @@
                         <th class="text-center">일배수컷</th>
                         <th class="text-center">전체평균</th>
                         <th class="text-center">채점수 / 등록수</th>
-                        <th class="text-center">기대권</th>
-                        <th class="text-center">유력권</th>
-                        <th class="text-center">안정권</th>
+                        <th class="text-center" style="width: 140px;">기대권 <br>(최고점~최저점)</th>
+                        <th class="text-center" style="width: 140px;">유력권 <br>(최고점~최저점)</th>
+                        <th class="text-center" style="width: 120px;">안정권 <br>(~최저점)</th>
                         <th class="text-center">계산</th>
                     </tr>
                     </thead>
@@ -100,7 +100,8 @@
                                     <td><input type="text" name="CompetitionRateAgo[]" value="{{ $val2['CompetitionRateAgo'] }}" style="width:50px;" /></td>
                                     <td><input type="text" name="PassLineAgo[]" value="{{ $val2['PassLineAgo'] }}" style="width:50px;" /></td>
                                     <td><input type="text" name="AvrPointAgo[]" value="{{ $val2['AvrPointAgo'] }}" style="width:50px;" /></td>
-                                    <td><input type="text" name="OnePerCut[]" value="{{ $val2['OnePerCut'] }}" style="width:50px;" /></td>
+                                    {{--<td><input type="text" name="OnePerCut[]" value="{{ $val2['OnePerCut'] }}" style="width:50px;" /></td>--}}
+                                    <td>{{ $val2['OnePerCut'] }}</td>
                                     <td>{{ ROUND($val2['AvrPoint'],2) }}</td>
                                     <td>{{ $val2['TakeOrigin'] ? $val2['TakeOrigin'] : 0 }} / {{ $val2['TotalRegist'] ? $val2['TotalRegist'] : 0}}</td>
                                     <td>
@@ -131,9 +132,9 @@
                                         상위 : <input type="text" id="per3_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StabilityAvrPercent[]" value="{{ $val2['StabilityAvrPercent'] ? $val2['StabilityAvrPercent'] : "" }}" style="width:50px;" /> % <br>
                                         계산 :
                                         <input type="hidden" id="stab_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}" name="StabilityAvrPointRef[]" value="{{ $val2['StabilityAvrPointRef'] }}" style="width:60px;" />
-                                        <span id="stab_v_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}">{{ $val2['StabilityAvrPointRef'] ? $val2['StabilityAvrPointRef']." ~ " : ""}}</span><br>
+                                        <span id="stab_v_{{ $val2['TakeMockPart'] }}_{{ $val2['TakeArea'] }}">{{ $val2['StabilityAvrPointRef'] ? "~ ".$val2['StabilityAvrPointRef'] : ""}}</span><br>
                                         출력 :
-                                        <input type="text" name="StabilityAvrPoint[]" value="{{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : ""}}" style="width:60px;" /> ~
+                                        ~ <input type="text" name="StabilityAvrPoint[]" value="{{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : ""}}" style="width:60px;" />
                                     </td>
                                     <td>
                                         <input type="button" value="계산" class="btn btn-xs btn-primary mr-0" onClick="calculate('{{ $val2['TakeMockPart'] }}','{{ $val2['TakeArea'] }}','{{ $PredictIdx }}')" />
@@ -230,7 +231,7 @@
                         $('#strong2_v_'+TakeMockPart+'_'+TakeArea).html(" ~ " + d.data[1].MinPoint);
 
                         $('#stab_'+TakeMockPart+'_'+TakeArea).val(d.data[2].MinPoint);
-                        $('#stab_v_'+TakeMockPart+'_'+TakeArea).html(d.data[2].MinPoint + " ~");
+                        $('#stab_v_'+TakeMockPart+'_'+TakeArea).html("~ " + d.data[2].MinPoint);
                     }else{
                         alert('과목별 성적통계의 조정점수 데이터가 없어서 계산되지 않았습니다.');
                     }

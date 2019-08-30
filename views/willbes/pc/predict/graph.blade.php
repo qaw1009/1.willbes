@@ -94,7 +94,7 @@
                             </tr>
                             <tr class="bg01">
                                 <th>합격안정권</th>
-                                @if($val2['IsUse'] == 'Y')<td> {{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : $val2['StabilityAvrPointRef'] }} ~ </td>@else<td>집계중</td>@endif
+                                @if($val2['IsUse'] == 'Y')<td> {{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : $val2['StabilityAvrPointRef'] }} 이상 </td>@else<td>집계중</td>@endif
                             </tr>
                             <tr class="bg01">
                                 <th>직전시험 합격선</th>
@@ -133,6 +133,8 @@
                     </tbody>
                 </table>
             </div>
+        @else
+            <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
         @endif
 
         @if(empty($gradeList) === false)
@@ -173,6 +175,8 @@
                     <div id="pointarea"></div>
                 </div>
             </div>
+        @else
+            <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
         @endif
         <!--m_section3_3L//-->
         @if(empty($subjectPointList) === false)

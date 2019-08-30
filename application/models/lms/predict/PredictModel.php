@@ -1728,7 +1728,29 @@ class PredictModel extends WB_Model
 
         $column = "
             pc.CcdName AS TakeMockPartName, sc.CcdName AS TakeAreaName, 
-            pg.TakeMockPart, pg.TakeArea, OnePerCut,
+            pg.TakeMockPart, pg.TakeArea, 
+            
+            -- OnePerCut,
+            (
+                SELECT B.SumAdjustPoint
+                FROM 
+                (
+                    SELECT
+                    *
+                    ,PERCENT_RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.SumAdjustPoint DESC) AS PointRank
+                    FROM (
+                        SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
+                        FROM lms_predict_grades
+                        WHERE PredictIdx = 100003
+                        GROUP BY PrIdx
+                    ) AS A
+                ) AS B
+                WHERE B.PointRank BETWEEN 0 AND ROUND((pl.PickNum / pl.TakeNum),2)
+                AND B.PredictIdx = pg.PredictIdx AND B.TakeArea = pg.TakeArea AND B.TakeMockPart = pg.TakeMockPart
+                ORDER BY B.SumAdjustPoint ASC
+                LIMIT 1
+		    ) AS OnePerCut,
+            
             (
             SELECT COUNT(*) FROM (
                     SELECT * FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND MemIdx != 1000000 GROUP BY PrIdx
@@ -2564,8 +2586,15 @@ class PredictModel extends WB_Model
         return true;
     }
 
-    /*
-     *  기대/유력/안정 점수계산
+    /**
+     * 기대/유력/안정 점수계산
+     * @param $PredictIdx
+     * @param $TakeMockPart
+     * @param $TakeArea
+     * @param $P1
+     * @param $P2
+     * @param $P3
+     * @return array
      */
     public function calculate($PredictIdx, $TakeMockPart, $TakeArea, $P1, $P2, $P3)
     {
@@ -2623,92 +2652,6 @@ class PredictModel extends WB_Model
 
         return $result;
     }
-    /*public function calculate($PredictIdx, $TakeMockPart, $TakeArea, $P1, $P2, $P3){
-        $rtnCal = null;
-
-        // 응시자 개별과목 / 점수
-        $column = "
-                    ROUND(SUM(pg.AdjustPoint),2) AS POINT
-                ";
-
-        $from = "
-                    FROM
-                        {$this->_table['predictGrades']} AS pg
-                        LEFT JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
-                        LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
-                ";
-
-        $order_by = " GROUP BY pg.MemIdx ORDER BY SUM(pg.AdjustPoint) DESC";
-
-        $where = " WHERE pg.PredictIdx = " . $PredictIdx . " AND pg.TakeMockPart = " . $TakeMockPart . " AND pg.TakeArea = " . $TakeArea . "";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-
-        $result = $query->result_array();
-
-        if(empty($result) === false){
-            // 랭킹 산정시 동일점수때문에 임시저장
-            $Rank = 1;
-            $count = 0;
-            $sum = 0;
-            $arrAdPoint = array();
-            foreach ($result AS $key => $val) {
-                $point = $val['POINT'];
-                $arrAdPoint[$Rank] = $point;
-                $sum = $sum + $point;
-                $Rank++;
-                $count++;
-            }
-
-            $Per1 = round($count * 0.01 * $P1, 1);
-            if($Per1 < 1){
-                $Per1 = 1;
-            } else {
-                $Per1 = floor($Per1);
-            }
-
-            $Per2 = round($count * 0.01 * $P2, 1);
-            if($Per2 < 1){
-                $Per2 = 1;
-            } else {
-                $Per2 = floor($Per2);
-            }
-
-            $Per3 = round($count * 0.01 * $P3, 1);
-            if($Per3 < 1){
-                $Per3 = 1;
-            } else {
-                $Per3 = floor($Per3);
-            }
-
-            $PerPoint1 = $arrAdPoint[$Per1];
-            $PerPoint2 = $arrAdPoint[$Per2];
-            $PerPoint3 = $arrAdPoint[$Per3];
-            $PerPoint3M = $PerPoint3 - 0.01;
-
-            if($PerPoint3 == $PerPoint2){
-                $ResPerPoint2 = $PerPoint2 - 0.02;
-            } else {
-                $ResPerPoint2 = $PerPoint2;
-            }
-
-            if($PerPoint2 == $PerPoint1){
-                if($PerPoint3 == $PerPoint1){
-                    $ResPerPoint1 = $PerPoint1 - 0.04;
-                } else {
-                    $ResPerPoint1 = $PerPoint1 - 0.02;
-                }
-            } else {
-                $ResPerPoint1 = $PerPoint1;
-            }
-            $PerPoint2M = $ResPerPoint2 - 0.01;
-
-            //           고             저              고               저
-            $rtnCal = $PerPoint2M."/".$ResPerPoint1."/".$PerPoint3M."/".$ResPerPoint2."/".$PerPoint3;
-        }
-        return $rtnCal;
-    }*/
 
     /**
      * 예상합격선저장
@@ -2733,7 +2676,7 @@ class PredictModel extends WB_Model
             $arrCompetitionRateAgo = $this->input->post('CompetitionRateAgo[]');
             $arrPassLineAgo = $this->input->post('PassLineAgo[]');
             $arrAvrPointAgo = $this->input->post('AvrPointAgo[]');
-            $arrOnePerCut = $this->input->post('OnePerCut[]');
+            /*$arrOnePerCut = $this->input->post('OnePerCut[]');*/
             $arrStabilityAvrPoint = $this->input->post('StabilityAvrPoint[]');
             $arrStabilityAvrPointRef = $this->input->post('StabilityAvrPointRef[]');
             $arrStabilityAvrPercent = $this->input->post('StabilityAvrPercent[]');
@@ -2761,7 +2704,7 @@ class PredictModel extends WB_Model
                     'CompetitionRateAgo' => $arrCompetitionRateAgo[$i],
                     'PassLineAgo' => $arrPassLineAgo[$i],
                     'AvrPointAgo' => $arrAvrPointAgo[$i],
-                    'OnePerCut' => $arrOnePerCut[$i],
+                    /*'OnePerCut' => $arrOnePerCut[$i],*/
                     'StabilityAvrPoint' => (array_key_exists($i, $arrStabilityAvrPoint) ? (float) $arrStabilityAvrPoint[$i] : null ),
                     'StabilityAvrPointRef' => (array_key_exists($i, $arrStabilityAvrPointRef) ? (float) $arrStabilityAvrPointRef[$i] : null ),
                     'StabilityAvrPercent' => (array_key_exists($i, $arrStabilityAvrPercent) ? (float) $arrStabilityAvrPercent[$i] : null ),

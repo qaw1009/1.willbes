@@ -10,6 +10,59 @@ class PredictFModel extends WB_Model
     }
 
     /**
+     * 합격예측 카운트 추출 쿼리 : 조규호 19.08.30
+     * @param $predict_idx
+     * @return mixed
+     */
+    public function getPredictMakeCount($predict_idx)
+    {
+        $column= '
+                        pc.*
+                        ,pp.ProdName
+                        ,sa.wAdminName as RegAdminName
+                        ,(SELECT COUNT(*) FROM lms_predict_register WHERE IsStatus=\'Y\' and ApplyType=\'합격예측\' and PredictIdx = pc.PredictIdx) AS RegistCnt -- 인증신청자
+                        ,(SELECT COUNT(*) FROM (
+                            SELECT PrIdx
+                            FROM lms_predict_grades_origin
+                            WHERE PredictIdx = 100003
+                            GROUP BY PrIdx) AS a
+                        ) AS ScoreCnt -- 채점자
+                        ,(SELECT COUNT(*) FROM lms_survey_answer_info WHERE SpIdx = pp.SpIdx ) AS SurveyCnt -- 설문
+                        ,ifnull((SELECT ReadCnt FROM lms_event_lecture WHERE PromotionCode = pc.PageView1 ),0) AS PageViewCnt1  -- 페이지뷰1
+                        ,ifnull((SELECT ReadCnt FROM lms_event_lecture WHERE PromotionCode = pc.PageView2 ),0) AS PageViewCnt2  -- 페이지뷰2
+                        ,(SELECT count(*) FROM lms_event_lecture el join lms_event_comment ec on el.ElIdx = ec.ElIdx where ec.IsStatus=\'Y\' and el.PromotionCode=pc.Comment1) as CommentCnt1 -- 댓글수1
+                        ,(SELECT count(*) FROM lms_event_lecture el join lms_event_comment ec on el.ElIdx = ec.ElIdx where ec.IsStatus=\'Y\' and el.PromotionCode=pc.Comment2) as CommentCnt2 -- 댓글수2
+                        ,( 
+                            select
+                                count(*)
+                            from
+                                lms_event_lecture el
+                                join lms_event_promotion_otherinfo epo on el.PromotionCode = epo.PromotionCode
+                                join lms_lecture_sample_log lsl on epo.OtherData1 = lsl.ProdCode
+                            where 
+                                el.IsStatus=\'Y\' and epo.IsStatus=\'Y\'
+                                and el.PromotionCode=pc.LectureClick1
+                        ) as LectureClickCnt1 -- 수강수
+                    ';
+        $from = '
+                    from
+                        lms_predict_count pc
+                        join lms_product_predict pp on pc.PredictIdx = pp.PredictIdx
+                        join wbs_sys_admin sa on pc.RegAdminIdx = sa.wAdminIdx
+                    where pc.IsStatus=\'Y\' ';
+
+        $where = $this->_conn->MakeWhere(['EQ'=>['pc.PredictIdx' => $predict_idx]])->getMakeWhere(true);
+
+        $query = '
+                    *, ((RegistCnt+ScoreCnt+SurveyCnt+PageViewCnt1+PageViewCnt2+CommentCnt1+CommentCnt2+LectureClickCnt1) + MakeCount) as view_count
+                    from
+                        (select ' .$column .$from .$where .') mm
+        ';
+        $result = $this->_conn->query('select ' .$query)->row_array();
+        return $result;
+    }
+
+    /**
      * 페이지 뷰
      * @param $event_idx
      * @return mixed

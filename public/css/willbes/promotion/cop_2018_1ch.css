@@ -356,14 +356,12 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .omrWarp {padding:1em 10px}
 .omrL {float:left; width:77%;}
 .omrL .paper {width:100%; height:690px; overflow-y: scroll; background:#F0F0F0}
-.omrR {float:right; width:22%; padding-left:15px; border-left:1px solid #ccc;}
-	
+.omrR {float:right; width:22%; padding-left:15px; border-left:1px solid #ccc;}	
 
 .omrR p {margin-bottom:1em}
 .omrWarp th,
 .omrWarp td {font-size:12px !important; text-align:center; padding:4px !important}
 .omrWarp tr.check {background:#eefafd} 
-
 
 .omrWarp input[type=text] {width:80%; margin:0 auto; letter-spacing:5px; text-align:center}
 .omrWarp h3 {margin-bottom:0.5em; color:#000; font-size: 14px}
@@ -382,6 +380,8 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .omrWarp:after {content:""; display:block; clear:both}
 
 /*********공통*********/
+
+.txtBox01 {padding:15px; background:#e4e4e4; text-align: center; font-size:14px; font-weight: bold}
     
 .btns {text-align:center; margin:30px 0}
 .btns span,

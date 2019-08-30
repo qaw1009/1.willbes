@@ -245,7 +245,7 @@
                                         {{--<td>{{ $arr_base['arr_line_data']['StabilityAvrPoint'] }} 이상</td>--}}
                                         <td>
                                             @if($arr_base['arr_line_data']['IsUse'] == 'Y')
-                                                {{ $arr_base['arr_line_data']['StabilityAvrPoint'] ? $arr_base['arr_line_data']['StabilityAvrPoint'] : $arr_base['arr_line_data']['StabilityAvrPointRef'] }} ~
+                                                {{ $arr_base['arr_line_data']['StabilityAvrPoint'] ? $arr_base['arr_line_data']['StabilityAvrPoint'] : $arr_base['arr_line_data']['StabilityAvrPointRef'] }} 이상
                                             @else
                                                 집계중
                                             @endif

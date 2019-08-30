@@ -390,7 +390,7 @@
                             </ul>
                         @endif
                     @endif
-                    <div class="bgimg"><img src="https://police.dev.willbes.net{{ $row['BgImgPath'] }}" title="{{ $row['Title'] }}"></div>
+                    <div class="bgimg"><img src="{{ $row['BgImgPath'] }}" title="{{ $row['Title'] }}"></div>
                 </div>
             @endforeach
         </div>

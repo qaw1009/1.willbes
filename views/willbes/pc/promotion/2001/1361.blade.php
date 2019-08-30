@@ -139,7 +139,7 @@
             <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
         </ul>
 
-        {{--
+        
         <div class="evtCtnsBox evt_counter">
             <div class="counter">
                 <div class="left_area NGEB">
@@ -152,7 +152,7 @@
                 <p class="NSK">시험풀케어서비스 인증신청자 + 시험채점 + 설문조사 + 적중이벤트참여 + 라이브토크쇼참여 + 해설강의 수강자</p>
             </div>
         </div>     
-        --}}
+
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">              
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_top.jpg" title="2019년 경찰 2차 합격 풀케어 서비스">

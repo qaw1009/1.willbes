@@ -288,8 +288,23 @@ class BasePassPredict extends \app\controllers\FrontController
 
         if ($this->validate($rules) === false) return;
 
-        $result = $this->surveyModel->update();
-        $this->json_result($result['ret_cd'], '수정되었습니다.', $result, $result);
+        $now_time = date('Ymd');
+        if ($now_time >= '20190831') {
+            $result = 'no';
+        } else {
+            $result = $this->surveyModel->update();
+        }
+
+        if ($result == 'no') {
+            $_err_data = [
+                'ret_cd' => false,
+                'ret_msg' => '수정할 수 없습니다',
+                'ret_status' => _HTTP_ERROR
+            ];
+            return $this->json_result(false, '', $_err_data);
+        } else {
+            return $this->json_result($result['ret_cd'], '수정되었습니다', $result);
+        }
     }
 
     /**

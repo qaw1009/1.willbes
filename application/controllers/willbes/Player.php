@@ -381,6 +381,17 @@ class Player extends \app\controllers\FrontController
 
         $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
 
+        // 샘플강의 수강로그 저장
+        if($this->playerFModel->storeSampleLog([
+            'ProdCode' => $prodcode,
+            'UnitIdx' => $unitidx,
+            'Url' => $url,
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'Quility' => $quility
+        ]) == false){
+            show_alert('오류가 발생했습니다. 다시 시도해주십시요.', 'close');
+        };
+
         $this->load->view('/player/sample', [
             'data' => [
                 'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',

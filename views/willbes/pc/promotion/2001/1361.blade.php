@@ -138,18 +138,21 @@
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1376" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner1.png" title="토크쇼"></a></li>
             <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
         </ul>
-       {{--
+
+        {{--
         <div class="evtCtnsBox evt_counter">
             <div class="counter">
                 <div class="left_area NGEB">
                     <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_live_camera.png" alt="">
-                    예측 참여건수<span>1,770,232</span>건
+                    예측 참여건수
+                    <span>
+                        @if(empty($arr_base['predict_count'])){{0}}@else{{number_format($arr_base['predict_count']['view_count'],0)}}@endif
+                    </span>건
                 </div>
                 <p class="NSK">시험풀케어서비스 인증신청자 + 시험채점 + 설문조사 + 적중이벤트참여 + 라이브토크쇼참여 + 해설강의 수강자</p>
             </div>
         </div>     
-        --}}   
-
+        --}}
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">              
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_top.jpg" title="2019년 경찰 2차 합격 풀케어 서비스">

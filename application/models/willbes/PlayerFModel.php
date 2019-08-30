@@ -15,7 +15,8 @@ class PlayerFModel extends WB_Model
         'lec_unit' => 'vw_unit_mylecture',
         'mylec' => 'lms_my_lecture',
         'device' => 'lms_member_device',
-        'device_log' => 'lms_lecture_study_mobile_log'
+        'device_log' => 'lms_lecture_study_mobile_log',
+        'sample_log' => 'lms_lecture_sample_log'
     ];
 
     public function __construct()
@@ -440,6 +441,28 @@ class PlayerFModel extends WB_Model
                 throw new \Exception('기기등록에 실패했습니다.');
             }
 
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+    /**
+     * 샘플강의 수강로그 기록
+     * @param $input
+     * @return bool
+     */
+    function storeSampleLog($input)
+    {
+        try{
+            if($this->_conn->set($input)
+                ->set('RegDatm', 'NOW()', false)
+                ->set('RegIp', $this->input->ip_address())
+                ->insert($this->_table['sample_log']) == false) {
+                throw new \Exception('로그등록실패');
+            }
         } catch (\Exception $e) {
             return false;
         }

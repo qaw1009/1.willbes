@@ -28,13 +28,13 @@
         .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
         .liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
         .liveTab02 li span {margin-right:10px; vertical-align:top}
-        .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
+        .liveTab02 li span.st01 {font-weight:600; color:#fdf9c1; /* border-bottom:2px solid #fdf9c1 */}
         .liveTab02 li span.st02 {font-family:"Times New Roman", Times, serif}
 
         .liveTab03 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
         .liveTab03 li {padding-left:260px; height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
         .liveTab03 li span {margin-right:10px; vertical-align:top}
-        .liveTab03 li span.st01 {font-weight:600; color:#fdf9c1; border-bottom:2px solid #fdf9c1}
+        .liveTab03 li span.st01 {font-weight:600; color:#fdf9c1; /* border-bottom:2px solid #fdf9c1 */}
         .liveTab03 li span.st02 {font-family:"Times New Roman", Times, serif}
         .liveTab03 li div {font-size:22px; margin-bottom:12px; margin-top:26px}
         .liveTab03 li div span.st01 {border:0; letter-spacing:0;}
@@ -103,7 +103,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['시험총평2'] as $arr_content)
                                     <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
+                                        <span>{{ $arr_content[0] }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -402,6 +402,16 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
+
+            $('.slide01').bxSlider({
+                speed : 200,
+                auto : true,
+                randomStart : true,
+                //pager : false,
+                mode : 'vertical', //'horizontal', 'vertical', 'fade'
+                controls : false
+            });
+
             $('ul.tabSt1').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -429,16 +439,6 @@
                 delay : 11, // the delay time in ms
                 time : 1000 // the speed time in ms
             });
-
-            $('.slide01').bxSlider({
-                speed : 200,
-                auto : true,
-                randomStart : true,
-                //pager : false,
-                mode : 'vertical', //'horizontal', 'vertical', 'fade'
-                controls : false
-            });
-
         });
     </script>
 

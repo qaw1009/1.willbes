@@ -36,8 +36,8 @@
             <!-- //tg-note -->
 
             <div class="markMbtn2">
-                <a href="javascript:parent.location.reload()" class="btn2">기본정보입력</a>
-                <a href="#" >채점 및 성적확인</a>
+                <a href="#none" onclick="javascript:event_step_1();" class="btn2">기본정보입력</a>
+                <a href="#none" onclick="javascript:alert('기본정보를 저장하고 채점해주세요.');" >채점 및 성적확인</a>
             </div>
 
             <h4 class="markingTit1">채점하기</h4>
@@ -107,6 +107,10 @@
             if (object.value.length > object.maxLength){
                 object.value = object.value.slice(0, object.maxLength);
             }
+        }
+
+        function event_step_1() {
+            location.href = '{{ front_url('/predict/index/') }}' + $('#PredictIdx').val();
         }
 
         function gotab(PredictIdx){

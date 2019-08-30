@@ -179,42 +179,42 @@
                 </a>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
-                <ul>
-                    <li>
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                        <a href="#tab01">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab02" onClick='alert("COMING SOON!! ")'>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab03" onClick='alert("COMING SOON!! ")'>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03.jpg" alt="체력시험" class="off">
-                        </a>
-                    </li>
-                    <li>
-                        <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                        <a href="#tab04">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab05" onClick='alert("COMING SOON!! ")'>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05_on.jpg" alt="최종합격" class="on">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05.jpg" alt="최종합격" class="off">
-                        </a>
-                    </li>
-                </ul>
-
-            <!-- {{-- 형진 개발안된걸 올렸다 --}}
+            <ul>
+                <li>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
+                    <a href="#tab01">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab02" onClick='alert("COMING SOON!! ")'>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab03" onClick='alert("COMING SOON!! ")'>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03.jpg" alt="체력시험" class="off">
+                    </a>
+                </li>
+                <li>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
+                    {{--<a onClick='alert("COMING SOON!! ")'>--}}
+                    <a href="#tab04">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab05" onClick='alert("COMING SOON!! ")'>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05_on.jpg" alt="최종합격" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05.jpg" alt="최종합격" class="off">
+                    </a>
+                </li>
+            </ul>
+            <!--{{-- 개발안된듯 ...--}}
             <ul>
                 <li>
                     {{--31일 12시까지 노출
@@ -297,17 +297,17 @@
             @endif
         </div>
 
-        {{-- 2번째 탭 내용 31일 12시까지 노출  
+
         <div id="tab02" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
         </div>
-        --}}
+
         
-        {{-- 2번째 탭 내용 31일 12시부터 노출--}}
+        {{-- 2번째 탭 내용 31일 12시부터 노출
         <div id="tab02">            
             @include('willbes.pc.promotion.2001.1361_cts02')            
         </div>
-        
+        --}}
 
         <div id="tab03" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">

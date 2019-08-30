@@ -2144,15 +2144,37 @@ class SurveyModel extends WB_Model
      */
     public function getAreaForLineData($PredictIdx, $take_mock_part, $take_area)
     {
-        $column = "ExpectAvrPoint1, ExpectAvrPoint2, StrongAvrPoint1, StrongAvrPoint2, StabilityAvrPoint, ExpectAvrPoint1Ref, ExpectAvrPoint2Ref, StrongAvrPoint1Ref, StrongAvrPoint2Ref, StabilityAvrPointRef, OnePerCut, IsUse";
-
-        $from = " FROM {$this->_table['predictGradesLine']} ";
+        $column = "
+            pg.ExpectAvrPoint1, pg.ExpectAvrPoint2, pg.StrongAvrPoint1, pg.StrongAvrPoint2
+            , pg.StabilityAvrPoint, pg.ExpectAvrPoint1Ref, pg.ExpectAvrPoint2Ref, pg.StrongAvrPoint1Ref, pg.StrongAvrPoint2Ref, pg.StabilityAvrPointRef, pg.IsUse
+            -- ,OnePerCut
+            ,(
+		    SELECT B.SumAdjustPoint
+		    FROM 
+		    (
+                SELECT
+                *
+                ,PERCENT_RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.SumAdjustPoint DESC) AS PointRank
+                FROM (
+                    SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
+                    FROM lms_predict_grades
+                    WHERE PredictIdx = '{$PredictIdx}'
+                    GROUP BY PrIdx
+                ) AS A
+		    ) AS B
+		    WHERE B.PointRank BETWEEN 0 AND ROUND((pg.PickNum / pg.TakeNum) * 100,2)
+		    AND B.PredictIdx = pg.PredictIdx AND B.TakeArea = pg.TakeArea AND B.TakeMockPart = pg.TakeMockPart
+		    ORDER BY B.SumAdjustPoint ASC
+		    LIMIT 1
+		    ) AS OnePerCut
+        ";
+        $from = " FROM {$this->_table['predictGradesLine']} AS pg";
 
         $arr_condition = [
             'EQ' => [
-                'PredictIdx' => $PredictIdx,
-                'TakeMockPart' => $take_mock_part,
-                'TakeArea' => $take_area,
+                'pg.PredictIdx' => $PredictIdx,
+                'pg.TakeMockPart' => $take_mock_part,
+                'pg.TakeArea' => $take_area,
             ]
         ];
         $where = $this->_conn->makeWhere($arr_condition);

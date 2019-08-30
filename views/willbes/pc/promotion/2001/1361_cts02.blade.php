@@ -1,7 +1,6 @@
     <style type="text/css">  
-        .cts02_top {background:#182b43 url(https://static.willbes.net/public/images/promotion/2019/08/1361_cts02_top_bg.jpg) repeat-x left top;}
-        .cts02_01 {background:#fff; padding:100px 0; position:}
-        .cts02_01 div {position:absolute; bottom:200px; text-align:center; z-index:10}
+        .cts02_top {background:#182b43 url(https://static.willbes.net/public/images/promotion/2019/08/1361_cts02_top_bg.jpg) repeat-x left top; position:relative; padding-bottom:100px;}
+        .cts02_top div {position:absolute; bottom:100px; text-align:center; width:426px; left:50%; margin-left:-213px; z-index:10}     
         .cts02_02 {background:#eaeaea}
         .cts02_03 {background:#fff} 
     </style>
@@ -9,7 +8,13 @@
         <div class="evtCtnsBox cts02_top">             
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts02_top.jpg" alt="합격예측 풀서비스">
             <div>
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts02_btn01.png" alt="합격예측 풀서비스 참여하기"></a>
+                {{--31일 12시까지 노출
+                <a href="#none" onClick='alert("COMING SOON!!")'>
+                --}}
+                {{--31일 12부터 노출--}}
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1344" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts02_btn01.png" alt="합격예측 풀서비스 참여하기">
+                </a>
             </div>
         </div>
 

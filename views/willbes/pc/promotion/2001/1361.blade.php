@@ -139,7 +139,7 @@
             <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
         </ul>
 
-        
+        {{-- 31일 00시부터 노출--}} 
         <div class="evtCtnsBox evt_counter">
             <div class="counter">
                 <div class="left_area NGEB">
@@ -151,7 +151,8 @@
                 </div>
                 <p class="NSK">시험풀케어서비스 인증신청자 + 시험채점 + 설문조사 + 적중이벤트참여 + 라이브토크쇼참여 + 해설강의 수강자</p>
             </div>
-        </div>     
+        </div>   
+         
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">              
@@ -163,7 +164,11 @@
             <div class="d-day">
                 2019년 경찰 2차 러닝메이트 최종합격 프로젝트
                 @if(empty($arr_base['dday_data'][0]['DDay']) === false)
+                    {{--31일 12시까지 노출
                     <p>필기시험일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    --}}
+                    {{--31일 12시까지 노출--}}
+                    <p>면접시작일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                 @endif
             </div>
             <div class="btnJoin">
@@ -175,14 +180,25 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
             <ul>
                 <li>
+                    {{--31일 12시까지 노출
                     <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
                     <a href="#tab01">
+                    --}}
+
+                    {{--31일 12시까지 노출--}}
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="종료"></span>
+                    <a href="#tab01" onClick='alert("서비스 종료 되었습니다.")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
                     </a>
                 </li>
                 <li>
+                    {{--31일 12시까지 노출
                     <a href="#tab02" onClick='alert("COMING SOON!! ")'>
+                    --}}
+                    {{--31일 12시까지 노출--}}
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
+                    <a href="#tab02">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
@@ -243,15 +259,17 @@
             @endif
         </div>
 
-        <div id="tab02"  class="comingsoon">
+        {{-- 2번째 탭 내용 31일 12시까지 노출  
+        <div id="tab02" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
         </div>
+        --}}
         
-        {{-- 2번째 탭 내용 31일 노출
+        {{-- 2번째 탭 내용 31일 12시부터 노출--}}
         <div id="tab02">            
             @include('willbes.pc.promotion.2001.1361_cts02')            
         </div>
-        --}}
+        
 
         <div id="tab03" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">

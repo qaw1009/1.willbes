@@ -114,7 +114,6 @@
     {{--과목별 원점수 평균--}}
     <div class="m_section3_3">
         <h2>과목별 <span>원점수 평균</span></h2>
-        <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
         @if(empty($gradelist2) === false)
             <div class="m_section3_3L">
                 <table class="boardTypeB">
@@ -134,6 +133,8 @@
                     </tbody>
                 </table>
             </div>
+        @else
+            <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
         @endif
 
         @if(empty($gradeList) === false)
@@ -153,7 +154,6 @@
     {{--합격예측 참여자 분석 현황--}}
     <div class="m_section3_3">
         <h2><span>합격예측 참여자</span> 분석 현황</h2>
-        <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
         @if(empty($pointList) === false)
             <div class="m_section3_3L">
                 <h3><Expect>총점</Expect> 성적 분포</h3>
@@ -175,6 +175,8 @@
                     <div id="pointarea"></div>
                 </div>
             </div>
+        @else
+            <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
         @endif
         <!--m_section3_3L//-->
         @if(empty($subjectPointList) === false)

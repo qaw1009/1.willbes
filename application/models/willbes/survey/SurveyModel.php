@@ -1722,9 +1722,9 @@ class SurveyModel extends WB_Model
                 throw new \Exception('조회된 기본정보가 없습니다.');
             }
 
-            /*if ($register_data['PointDelCnt'] >= 1) {
+            if ($register_data['PointDelCnt'] >= 1) {
                 throw new \Exception('재채점은 최대 1회만 가능합니다.');
-            }*/
+            }
 
             if($this->_conn->delete($this->_table['predictAnswerPaper'], $where) === false){
                 throw new \Exception('삭제에 실패했습니다.');
@@ -2042,7 +2042,7 @@ class SurveyModel extends WB_Model
      */
     public function TotalAreaAvgInfo($PredictIdx, $take_mock_part, $take_area, $pr_idx)
     {
-        $column = "A.PrIdx, A.TakeMockPart, A.TakeArea, A.TotalOrgPoint, A.TotalAdjustPoint, A.RankNum, A.Cnt, B.TotalAvrPoint, B.TotalFivePerPoint";
+        $column = "A.PrIdx, A.TakeMockPart, A.TakeArea, A.TotalOrgPoint, A.TotalAdjustPoint, A.RankNum, A.Cnt, B.TotalAvrPoint, C.TotalFivePerPoint";
         $from = "
         FROM (
             SELECT *
@@ -2072,12 +2072,40 @@ class SurveyModel extends WB_Model
             ) A
             WHERE A.PrIdx = {$pr_idx}
         ) AS A
+        
         INNER JOIN (
-            SELECT TakeMockPart, TakeArea, ROUND(SUM(AvrPoint),2) AS TotalAvrPoint, ROUND(SUM(FivePerPoint),2) AS TotalFivePerPoint
-            FROM {$this->_table['predictGradesArea']}
-            WHERE PredictIdx = '{$PredictIdx}'
-            GROUP BY TakeMockPart, TakeArea
+		SELECT A.TakeMockPart, A.TakeArea, ROUND(AVG(A.SumAdjustPoint),2) AS TotalAvrPoint
+		FROM (
+			SELECT TakeMockPart, TakeArea, SUM(AdjustPoint) AS SumAdjustPoint
+			FROM lms_predict_grades
+			WHERE PredictIdx = '{$PredictIdx}'
+            AND TakeMockPart = '{$take_mock_part}'
+            AND TakeArea = '{$take_area}'
+			GROUP BY PrIdx
+		) AS A
+		GROUP BY A.TakeMockPart, A.TakeArea        
         ) AS B ON A.TakeMockPart = B.TakeMockPart AND A.TakeArea = B.TakeArea
+        
+        INNER JOIN (
+		SELECT B.TakeMockPart, B.TakeArea, ROUND(AVG(B.SumAdjustPoint),2) AS TotalFivePerPoint
+		FROM 
+		(
+			SELECT
+			*
+			,PERCENT_RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.SumAdjustPoint DESC) AS PointRank
+			FROM (
+			    SELECT PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
+			    FROM `lms_predict_grades`
+			    WHERE PredictIdx = '{$PredictIdx}'
+                AND TakeMockPart = '{$take_mock_part}'
+                AND TakeArea = '{$take_area}'
+			    GROUP BY PrIdx
+			) AS A
+		) AS B
+
+		WHERE B.PointRank BETWEEN 0 AND 0.05
+		GROUP BY B.TakeMockPart, B.TakeArea
+        ) AS C ON A.TakeMockPart = C.TakeMockPart AND A.TakeArea = C.TakeArea
         ";
         //echo "<pre>".'select ' . $column . $from."</pre>";
         return $this->_conn->query('select ' . $column . $from)->row_array();
@@ -2094,15 +2122,15 @@ class SurveyModel extends WB_Model
     {
         $query = "
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx) AS A
-            WHERE A.SumAdjustPoint <= 100) AS cnt_100,
+            WHERE A.SumAdjustPoint <= 99) AS cnt_100,
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
-            WHERE A.SumAdjustPoint BETWEEN 101 AND 200 ) AS cnt_200,
+            WHERE A.SumAdjustPoint BETWEEN 100 AND 199 ) AS cnt_200,
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
-            WHERE A.SumAdjustPoint BETWEEN 201 AND 300 ) AS cnt_300,
+            WHERE A.SumAdjustPoint BETWEEN 200 AND 299 ) AS cnt_300,
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
-            WHERE A.SumAdjustPoint BETWEEN 301 AND 400 ) AS cnt_400,
+            WHERE A.SumAdjustPoint BETWEEN 300 AND 399 ) AS cnt_400,
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
-            WHERE A.SumAdjustPoint BETWEEN 401 AND 500 ) AS cnt_500
+            WHERE A.SumAdjustPoint BETWEEN 400 AND 500 ) AS cnt_500
         ";
         return $this->_conn->query('select ' . $query)->row_array();
     }

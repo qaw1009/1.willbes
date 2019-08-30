@@ -2401,8 +2401,8 @@ class PredictModel extends WB_Model
                     $inputData[$key]['TakeArea'] = $val['TakeArea'];
                     $inputData[$key]['TakeNum'] = $val['cnt'];
                     $inputData[$key]['PpIdx'] = $val['PpIdx'];
-                    $inputData[$key]['AvrPoint'] = $val['AvgAdjustPoint'];
-                    $inputData[$key]['FivePerPoint'] = $val['AvgAdjustPoint'];
+                    $inputData[$key]['AvrPoint'] = $topFiveAvgData[$tmp_mapping_data]['AvgAdjustPoint'];
+                    $inputData[$key]['FivePerPoint'] = $topFiveAvgData[$tmp_mapping_data]['Top5AvgOrgPoint'];
                     $inputData[$key]['StandardDeviation'] = $val['StandardDeviation'];
                 }
             }
@@ -3717,29 +3717,36 @@ class PredictModel extends WB_Model
         $where = $this->_conn->makeWhere($add_condition);
         $where = $where->getMakeWhere(false);
 
-        $column = "
-        CONCAT(A.TakeMockPart,'_', A.TakeArea,'_', A.PpIdx) AS addColumnKey,
-        A.TakeMockPart, A.TakeArea, A.PpIdx, SUM(A.AdjustPoint) AS TotAdjustPoint, ROUND(SUM(A.AdjustPoint) / COUNT(0), 2) AS AvgAdjustPoint
-        ";
+        $column = "CONCAT(A.TakeMockPart,'_', A.TakeArea,'_', A.PpIdx) AS addColumnKey, A.TakeMockPart, A.TakeArea, A.PpIdx, A.AvgAdjustPoint, B.Top5AvgOrgPoint";
         $from = "
             FROM (
-                SELECT pg.TakeMockPart, pg.TakeArea, pg.PpIdx, pg.AdjustPoint
-                    , PERCENT_RANK() OVER (PARTITION BY TakeMockPart, TakeArea, PpIdx ORDER BY AdjustPoint DESC) AS PercRank
-                FROM {$this->_table['predictGrades']} AS pg
+                SELECT TakeMockPart, TakeArea, PpIdx, ROUND(AVG(AdjustPoint),2) AS AvgAdjustPoint
+                FROM lms_predict_grades
                 {$where}
+                GROUP BY TakeMockPart, TakeArea, PpIdx
             ) AS A
-            WHERE PercRank BETWEEN 0 AND {$percent}
+            
+            INNER JOIN (
+                SELECT A.TakeMockPart, A.TakeArea, A.PpIdx, ROUND(AVG(A.AdjustPoint),2) AS Top5AvgOrgPoint
+                FROM (
+                    SELECT TakeMockPart, TakeArea, PpIdx, AdjustPoint
+                        , PERCENT_RANK() OVER (PARTITION BY TakeMockPart, TakeArea, PpIdx ORDER BY AdjustPoint DESC) AS PaperPercRank
+                    FROM lms_predict_grades
+                    {$where}
+                ) AS A
+                WHERE A.PaperPercRank BETWEEN 0 AND {$percent}
+                GROUP BY A.TakeMockPart, A.TakeArea, A.PpIdx
+            ) AS B ON A.TakeMockPart = B.TakeMockPart AND A.TakeArea = B.TakeArea AND A.PpIdx = B.PpIdx
         ";
-        $group_by = " GROUP BY A.TakeMockPart, A.TakeArea, A.PpIdx";
-        $data = $this->_conn->query('select ' . $column . $from . $group_by)->result_array();
+        $data = $this->_conn->query('select ' . $column . $from)->result_array();
 
         $result_data = [];
         foreach ($data as $row) {
             $result_data[$row['addColumnKey']]['TakeMockPart'] = $row['TakeMockPart'];
             $result_data[$row['addColumnKey']]['TakeArea'] = $row['TakeArea'];
             $result_data[$row['addColumnKey']]['PpIdx'] = $row['PpIdx'];
-            $result_data[$row['addColumnKey']]['TotAdjustPoint'] = $row['TotAdjustPoint'];
             $result_data[$row['addColumnKey']]['AvgAdjustPoint'] = $row['AvgAdjustPoint'];
+            $result_data[$row['addColumnKey']]['Top5AvgOrgPoint'] = $row['Top5AvgOrgPoint'];
         }
         return $result_data;
     }

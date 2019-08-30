@@ -231,7 +231,7 @@
                         $('#strong2_v_'+TakeMockPart+'_'+TakeArea).html(" ~ " + d.data[1].MinPoint);
 
                         $('#stab_'+TakeMockPart+'_'+TakeArea).val(d.data[2].MinPoint);
-                        $('#stab_v_'+TakeMockPart+'_'+TakeArea).html(d.data[2].MinPoint + " ~");
+                        $('#stab_v_'+TakeMockPart+'_'+TakeArea).html("~ " + d.data[2].MinPoint);
                     }else{
                         alert('과목별 성적통계의 조정점수 데이터가 없어서 계산되지 않았습니다.');
                     }

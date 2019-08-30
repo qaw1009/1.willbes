@@ -1,17 +1,14 @@
     <style type="text/css">  
         .cts02_top {background:#182b43 url(https://static.willbes.net/public/images/promotion/2019/08/1361_cts02_top_bg.jpg) repeat-x left top;}
-        .cts02_01 {background:#fff; padding:100px 0} 
+        .cts02_01 {background:#fff; padding:100px 0}
+        .cts02_01 div {position:absolute; bottom:200px; text-align:center; z-index:10}
         .cts02_02 {background:#eaeaea}
         .cts02_03 {background:#fff} 
     </style>
     <div>
         <div class="evtCtnsBox cts02_top">             
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts02_top.jpg" alt="합격예측 풀서비스">
-        </div>
-
-        <div class="evtCtnsBox cts02_01">
-            댓글영역
-            <div class="mt100">
+            <div>
                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts02_btn01.png" alt="합격예측 풀서비스 참여하기"></a>
             </div>
         </div>

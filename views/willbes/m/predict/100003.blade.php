@@ -322,7 +322,8 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg + '계속해서 성적을 입력해 주세요.');
-                    location.href = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();
+                    location.reload();
+                    /*location.href = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + $('#PredictIdx').val() + '&pridx='+$('#PrIdx').val();*/
                 }
             }, showValidateError, null, false, 'alert');
         }

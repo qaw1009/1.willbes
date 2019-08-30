@@ -2162,7 +2162,7 @@ class SurveyModel extends WB_Model
                     GROUP BY PrIdx
                 ) AS A
 		    ) AS B
-		    WHERE B.PointRank BETWEEN 0 AND ROUND((pg.PickNum / pg.TakeNum) * 100,2)
+		    WHERE B.PointRank BETWEEN 0 AND ROUND((pg.PickNum / pg.TakeNum),2)
 		    AND B.PredictIdx = pg.PredictIdx AND B.TakeArea = pg.TakeArea AND B.TakeMockPart = pg.TakeMockPart
 		    ORDER BY B.SumAdjustPoint ASC
 		    LIMIT 1

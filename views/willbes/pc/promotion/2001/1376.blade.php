@@ -38,13 +38,31 @@
         </div>
 
         <div class="evtCtnsBox evt02">
+            @php
+                $live_type = 'standby';
+                $now_datm = date('YmdHis');
+                $start_time = '20190830135900';
+                $end_time = '20190830160000';
+
+                if ($now_datm < $start_time) {
+                    $live_type = 'standby';
+                } else if ($now_datm >= $start_time && $now_datm < $end_time) {
+                    $live_type = 'on';
+                } else {
+                    $live_type = 'off';
+                }
+            @endphp
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1376_02.jpg" title="라이브 토크쇼">
-            {{--방송전 31일 13시까지--}}
-            <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1376_02_before.jpg" title="방송전"></span>
-            {{--방송전 31일 13시~14시까지
-            <span><iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe></span>--}}
-            {{--방송전 31일 13시~14시이후
-            <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1376_02_after.jpg" title="방송종료"></span>--}}
+            @if ($live_type == 'standby')
+                {{--방송전 31일 13시까지--}}
+                <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1376_02_before.jpg" title="방송전"></span>
+            @elseif($live_type == 'on')
+                {{--방송전 31일 13시~14시까지--}}
+                <span><iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe></span>
+            @else
+                {{--방송전 31일 13시~14시이후--}}
+                <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1376_02_after.jpg" title="방송종료"></span>
+            @endif
         </div>
 	</div>
     <!-- End Container -->

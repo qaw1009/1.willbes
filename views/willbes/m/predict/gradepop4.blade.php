@@ -58,7 +58,7 @@
                             <th scope="col">정오표</th>
                         </tr>
                         <tr>
-                            <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }}@else 미입력 @endif {{ $addscoreIs }}</td>
+                            <td>@if(empty($scoredata)===false) {{ $scoredata['subject'][0] }} @else 미입력 @endif</td>
                             <td>@if($scoreIs == 'Y') {{ $scoredata['score'][0] }} @else 미입력 @endif</td>
                             {{--<td>@if($scoreIs == 'Y'&& $addscoreIs == 'N') 집계중 @elseif($scoreIs == 'Y'&&$addscoreIs == 'Y') {{ $scoredata['addscore'][0] }} @else 미입력 @endif</td>--}}
                             <td>집계중</td>

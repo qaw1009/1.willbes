@@ -45,24 +45,30 @@
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>통합프로모션 PV</td>
+                            <td>페이지뷰1</td>
                             <td><input type="text" name="PageView1" id="PageView1" value="{{$data['PageView1']}}" title="페이지뷰1"  class="form-control"></td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>소문내기댓글</td>
-                            <td><input type="text" name="Comment1" id="Comment1" value="{{$data['Comment1']}}" title="댓글1"  class="form-control"></td>
+                            <td>페이지뷰2</td>
+                            <td><input type="text" name="PageView2" id="PageView2" value="{{$data['PageView2']}}" title="페이지뷰2"  class="form-control"></td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>적중댓글</td>
-                            <td><input type="text" name="Comment2" id="Comment2" value="{{$data['Comment2']}}" title="댓글2"  class="form-control"></td>
+                            <td>댓글수1</td>
+                            <td><input type="text" name="Comment1" id="Comment1" value="{{$data['Comment1']}}" title="댓글1"  class="form-control"></td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>해설강의 PV</td>
-                            <td><input type="text" name="PageView2" id="PageView2" value="{{$data['PageView2']}}" title="페이지뷰2"  class="form-control"></td>
+                            <td>댓글수2</td>
+                            <td><input type="text" name="Comment2" id="Comment2" value="{{$data['Comment2']}}" title="댓글2"  class="form-control"></td>
                         </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>수강수</td>
+                            <td><input type="text" name="LectureClick1" id="LectureClick1" value="{{$data['LectureClick1']}}" title="수강수"  class="form-control"></td>
+                        </tr>
+
                     </table>
                 </div>
             </div>

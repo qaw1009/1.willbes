@@ -3,7 +3,7 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">        
+    <style type="text/css">
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -21,23 +21,23 @@
 
         /************************************************************/
         .skyBanner {position:fixed; bottom:250px;right:10px;z-index:10;}
-        .skyBanner li{margin-top:15px;} 
+        .skyBanner li{margin-top:15px;}
 
         .evt_counter {height:100px; background:#000; font-size:18px; color:#fff}
         .evt_counter .counter {position:relative; width:1120px; margin:0 auto}
-        .evt_counter .counter .left_area {text-align:center; padding-top:15px; font-size:24px}   
+        .evt_counter .counter .left_area {text-align:center; padding-top:15px; font-size:24px}
         .evt_counter .counter .left_area img {margin-right:20px}
-        .evt_counter .counter span {font-family: Tahoma, Verdana, Geneva, sans-serif; font-size:42px; letter-spacing:-1px; font-weight:600; padding:0 10px; color:#f1d58b}  
-        .evt_counter .counter p {font-size:11px; margin-top:10px; color:#ccc} 
+        .evt_counter .counter span {font-family: Tahoma, Verdana, Geneva, sans-serif; font-size:42px; letter-spacing:-1px; font-weight:600; padding:0 10px; color:#f1d58b}
+        .evt_counter .counter p {font-size:11px; margin-top:10px; color:#ccc}
 
-  
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_top_bg.jpg) no-repeat center top;}
         .evtTopInmg {position:relative; width:1120px; margin:0 auto}
         .evt01 {background:#d7d7d7; border-bottom:7px solid #fff}
         .evt01 .d-day {
             position:absolute;
             width:500px;
-            left:50%; 
+            left:50%;
             top:115px;
             margin-left:-250px;
             font-size:24px;
@@ -51,9 +51,9 @@
         .evt01 .btnJoin {
             position:absolute;
             width:324px;
-            left:50%; 
-            top:890px;            
-            margin-left:-164px;    
+            left:50%;
+            top:890px;
+            margin-left:-164px;
             line-height:1.5;
             z-index:5;
         }
@@ -66,7 +66,7 @@
             text-align:center;
             color:#fff;
             background:#2784d2;
-        }        
+        }
         .evt01 .btnJoin a:hover {
             background:#000;
         }
@@ -84,13 +84,13 @@
         .evt01 li a:hover img.off {display:none}
         .evt01 ul:after {content:""; display:block; clear:both}
 
-        .evt02 {background:#18294d;}        
+        .evt02 {background:#18294d;}
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_03_bg.jpg) no-repeat center top;}
         .evt03 div {
             display:none;
             position:absolute;
             width:408px;
-            left:50%; 
+            left:50%;
             top:1436px;
             margin-left:-203px;
             font-size:24px;
@@ -100,7 +100,7 @@
             z-index:5;
         }
         .evt03 div span {
-            float:left; margin-right:13px; 
+            float:left; margin-right:13px;
         }
         .evt03 div span:last-child {
             margin:0;
@@ -109,9 +109,9 @@
             display:none;
             position:absolute;
             width:324px;
-            left:50%; 
-            top:1620px;            
-            margin-left:-164px;    
+            left:50%;
+            top:1620px;
+            margin-left:-164px;
             line-height:1.5;
             z-index:5;
         }
@@ -124,12 +124,12 @@
             text-align:center;
             color:#fff;
             background:#2784d2;
-        } 
+        }
         .evt03 .btnlec a:hover {
             background:#000;
         }
-        .evt04 {background:#f6f6f6;} 
-        .evt05 {background:#fff;} 
+        .evt04 {background:#f6f6f6;}
+        .evt05 {background:#fff;}
         .comingsoon {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon_bg.jpg) no-repeat center top; text-align:center}
     </style>
 
@@ -141,24 +141,24 @@
 
         {{-- 31일 00시부터 노출--}}
         @if(time() >= strtotime('201908311200'))
-        <div class="evtCtnsBox evt_counter">
-            <div class="counter">
-                <div class="left_area NGEB">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_live_camera.png" alt="">
-                    예측 참여건수
-                    <span>
+            <div class="evtCtnsBox evt_counter">
+                <div class="counter">
+                    <div class="left_area NGEB">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_live_camera.png" alt="">
+                        예측 참여건수
+                        <span>
                         @if(empty($arr_base['predict_count'])){{0}}@else{{number_format($arr_base['predict_count']['view_count'],0)}}@endif
                     </span>건
+                    </div>
+                    <p class="NSK">시험풀케어서비스 인증신청자 + 시험채점 + 설문조사 + 적중이벤트참여 + 라이브토크쇼참여 + 해설강의 수강자</p>
                 </div>
-                <p class="NSK">시험풀케어서비스 인증신청자 + 시험채점 + 설문조사 + 적중이벤트참여 + 라이브토크쇼참여 + 해설강의 수강자</p>
             </div>
-        </div>
         @endif
 
         <div class="evtCtnsBox evtTop">
-            <div class="evtTopInmg">              
+            <div class="evtTopInmg">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_top.jpg" title="2019년 경찰 2차 합격 풀케어 서비스">
-            </div>        
+            </div>
         </div>
 
         <div class="evtCtnsBox evt01" id="evt01">
@@ -214,7 +214,7 @@
                     </a>
                 </li>
             </ul>
-            <!--{{-- 개발안된듯 ...--}}
+            <!--{{--내일 적용해야 될게 미리 적용되어서 문제 : 형진 개발 진행--}}
             <ul>
                 <li>
                     {{--31일 12시까지 노출
@@ -278,10 +278,10 @@
                     <span><img class="remainCnt" src="https://static.willbes.net/public/images/promotion/2019/08/1361_number0.png"></span>
                 </div>
                 <div class="btnlec">
-                    <a href="https://police.willbes.net/pass/event/show/ongoing?event_idx=381" target="_blank">실물 봉투 모의고사 신청하기 ></a>                 
+                    <a href="https://police.willbes.net/pass/event/show/ongoing?event_idx=381" target="_blank">실물 봉투 모의고사 신청하기 ></a>
                 </div>
                 --}}
-            </div>            
+            </div>
 
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_04.jpg" title="합격풀케어 서비스">
@@ -298,14 +298,14 @@
         </div>
 
 
+
         <div id="tab02" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
         </div>
 
-        
         {{-- 2번째 탭 내용 31일 12시부터 노출
-        <div id="tab02">            
-            @include('willbes.pc.promotion.2001.1361_cts02')            
+        <div id="tab02">
+            @include('willbes.pc.promotion.2001.1361_cts02')
         </div>
         --}}
 
@@ -320,8 +320,8 @@
         <div id="tab05" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
         </div>
-        
-	</div>
+
+    </div>
     <!-- End Container -->
 
     <script src="/public/js/willbes/jquery.counterup.min.js"></script>
@@ -338,13 +338,13 @@
         });
 
         function doEvent() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             var url = "{{front_url('/predict/index/' . (empty($arr_promotion_params['PredictIdx']) === true ? '' : $arr_promotion_params['PredictIdx']))}}";
             window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');
         }
 
         function doEvent2() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
             var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
             window.open(url,'event2', 'scrollbars=no,toolbar=no,resizable=yes,width=665,height=629,top=50,left=100');
         }

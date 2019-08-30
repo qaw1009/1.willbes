@@ -94,7 +94,7 @@
                             </tr>
                             <tr class="bg01">
                                 <th>합격안정권</th>
-                                @if($val2['IsUse'] == 'Y')<td> {{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : $val2['StabilityAvrPointRef'] }} ~ </td>@else<td>집계중</td>@endif
+                                @if($val2['IsUse'] == 'Y')<td> {{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : $val2['StabilityAvrPointRef'] }} 이상 </td>@else<td>집계중</td>@endif
                             </tr>
                             <tr class="bg01">
                                 <th>직전시험 합격선</th>

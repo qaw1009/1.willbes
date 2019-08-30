@@ -115,6 +115,19 @@
         }
 
         function lastSave(){
+            var vali_msg = '';
+            $('input[name="Score[]"]').each(function(){
+                var scr_val = $(this).val();
+                if($.trim(scr_val) == ''){
+                    vali_msg = '점수를 입력하지 않은 과목이 있습니다';
+                }else if(scr_val < 0 || scr_val > 100){
+                    vali_msg = '점수는 0~100점 사이 이어야 합니다';
+                }else if(scr_val%5 != 0){
+                    vali_msg = '정확한 원점수를 입력해주세요'; //한문제당 5점
+                }
+            });
+            if(vali_msg){ alert(vali_msg); return false; }
+
             if (confirm('정답을 제출하시겠습니까?')) {
                 var _url = '{{ front_url('/predict/examSendAjax3') }}';
                 ajaxSubmit($all_regi_form, _url, function (ret) {

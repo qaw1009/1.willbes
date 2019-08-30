@@ -69,7 +69,7 @@
                     vali_msg = '정확한 원점수를 입력해주세요'; //한문제당 5점
                 }
             });
-            if(vali_msg){ alert(vali_msg); return false; }
+            if(vali_msg){ alert(vali_msg); return; }
 
             if (confirm('정답을 제출하시겠습니까?')) {
                 var _url = '{{ front_url('/predict/examSendAjax3') }}';

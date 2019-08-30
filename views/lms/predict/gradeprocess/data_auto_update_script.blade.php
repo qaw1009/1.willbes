@@ -48,7 +48,8 @@
     var $data_form = $("#data_form");
     var $search_form = $("#search_form");
     $(document).ready(function() {
-        var time = 1000 * 10;   //1초 * 10
+        var time = 1000 * 60 * 60;  //1시간단위
+        console.log(time);
 
         startUpdate = function() {
             starting = setInterval(function() {

@@ -139,7 +139,8 @@
             <li><a href="javascript:alert('Coming Soon!');"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
         </ul>
 
-        {{-- 31일 00시부터 노출--}} 
+        {{-- 31일 00시부터 노출--}}
+        @if(time() >= strtotime('201908311200'))
         <div class="evtCtnsBox evt_counter">
             <div class="counter">
                 <div class="left_area NGEB">
@@ -151,8 +152,8 @@
                 </div>
                 <p class="NSK">시험풀케어서비스 인증신청자 + 시험채점 + 설문조사 + 적중이벤트참여 + 라이브토크쇼참여 + 해설강의 수강자</p>
             </div>
-        </div>   
-         
+        </div>
+        @endif
 
         <div class="evtCtnsBox evtTop">
             <div class="evtTopInmg">              
@@ -168,7 +169,7 @@
                     <p>필기시험일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                     --}}
                     {{--31일 12시까지 노출--}}
-                    <p>면접시작일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    <p>@if(time() >= strtotime('201908311200')) 면접시작일까지 @endif<span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                 @endif
             </div>
             <div class="btnJoin">
@@ -315,7 +316,13 @@
         $(document).ready(function(){
             $('.evt01 ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+
+                @if(time() <= strtotime('201908311200'))
+                    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                @else
+                    $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
+                @endif
+
                 $active.addClass('active');
 
                 $content = $($active[0].hash);

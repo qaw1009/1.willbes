@@ -100,7 +100,8 @@
                                     <td><input type="text" name="CompetitionRateAgo[]" value="{{ $val2['CompetitionRateAgo'] }}" style="width:50px;" /></td>
                                     <td><input type="text" name="PassLineAgo[]" value="{{ $val2['PassLineAgo'] }}" style="width:50px;" /></td>
                                     <td><input type="text" name="AvrPointAgo[]" value="{{ $val2['AvrPointAgo'] }}" style="width:50px;" /></td>
-                                    <td><input type="text" name="OnePerCut[]" value="{{ $val2['OnePerCut'] }}" style="width:50px;" /></td>
+                                    {{--<td><input type="text" name="OnePerCut[]" value="{{ $val2['OnePerCut'] }}" style="width:50px;" /></td>--}}
+                                    <td>{{ $val2['OnePerCut'] }}</td>
                                     <td>{{ ROUND($val2['AvrPoint'],2) }}</td>
                                     <td>{{ $val2['TakeOrigin'] ? $val2['TakeOrigin'] : 0 }} / {{ $val2['TotalRegist'] ? $val2['TotalRegist'] : 0}}</td>
                                     <td>
@@ -230,7 +231,7 @@
                         $('#strong2_v_'+TakeMockPart+'_'+TakeArea).html(" ~ " + d.data[1].MinPoint);
 
                         $('#stab_'+TakeMockPart+'_'+TakeArea).val(d.data[2].MinPoint);
-                        $('#stab_v_'+TakeMockPart+'_'+TakeArea).html(d.data[2].MinPoint + " ~");
+                        $('#stab_v_'+TakeMockPart+'_'+TakeArea).html("~ " + d.data[2].MinPoint);
                     }else{
                         alert('과목별 성적통계의 조정점수 데이터가 없어서 계산되지 않았습니다.');
                     }

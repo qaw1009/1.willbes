@@ -1728,7 +1728,29 @@ class PredictModel extends WB_Model
 
         $column = "
             pc.CcdName AS TakeMockPartName, sc.CcdName AS TakeAreaName, 
-            pg.TakeMockPart, pg.TakeArea, OnePerCut,
+            pg.TakeMockPart, pg.TakeArea, 
+            
+            -- OnePerCut,
+            (
+                SELECT B.SumAdjustPoint
+                FROM 
+                (
+                    SELECT
+                    *
+                    ,PERCENT_RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.SumAdjustPoint DESC) AS PointRank
+                    FROM (
+                        SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
+                        FROM lms_predict_grades
+                        WHERE PredictIdx = 100003
+                        GROUP BY PrIdx
+                    ) AS A
+                ) AS B
+                WHERE B.PointRank BETWEEN 0 AND ROUND((pl.PickNum / pl.TakeNum),2)
+                AND B.PredictIdx = pg.PredictIdx AND B.TakeArea = pg.TakeArea AND B.TakeMockPart = pg.TakeMockPart
+                ORDER BY B.SumAdjustPoint ASC
+                LIMIT 1
+		    ) AS OnePerCut,
+            
             (
             SELECT COUNT(*) FROM (
                     SELECT * FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND MemIdx != 1000000 GROUP BY PrIdx
@@ -2654,7 +2676,7 @@ class PredictModel extends WB_Model
             $arrCompetitionRateAgo = $this->input->post('CompetitionRateAgo[]');
             $arrPassLineAgo = $this->input->post('PassLineAgo[]');
             $arrAvrPointAgo = $this->input->post('AvrPointAgo[]');
-            $arrOnePerCut = $this->input->post('OnePerCut[]');
+            /*$arrOnePerCut = $this->input->post('OnePerCut[]');*/
             $arrStabilityAvrPoint = $this->input->post('StabilityAvrPoint[]');
             $arrStabilityAvrPointRef = $this->input->post('StabilityAvrPointRef[]');
             $arrStabilityAvrPercent = $this->input->post('StabilityAvrPercent[]');
@@ -2682,7 +2704,7 @@ class PredictModel extends WB_Model
                     'CompetitionRateAgo' => $arrCompetitionRateAgo[$i],
                     'PassLineAgo' => $arrPassLineAgo[$i],
                     'AvrPointAgo' => $arrAvrPointAgo[$i],
-                    'OnePerCut' => $arrOnePerCut[$i],
+                    /*'OnePerCut' => $arrOnePerCut[$i],*/
                     'StabilityAvrPoint' => (array_key_exists($i, $arrStabilityAvrPoint) ? (float) $arrStabilityAvrPoint[$i] : null ),
                     'StabilityAvrPointRef' => (array_key_exists($i, $arrStabilityAvrPointRef) ? (float) $arrStabilityAvrPointRef[$i] : null ),
                     'StabilityAvrPercent' => (array_key_exists($i, $arrStabilityAvrPercent) ? (float) $arrStabilityAvrPercent[$i] : null ),

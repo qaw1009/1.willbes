@@ -103,7 +103,7 @@
                             <ul class="liveTab02 slide01" >
                                 @foreach($arr_input['data']['시험총평2'] as $arr_content)
                                     <li>
-                                        <span class="st01">{{ $arr_content[0] }}</span>{{ $arr_content[1] }}
+                                        <span>{{ $arr_content[0] }}</span>
                                     </li>
                                 @endforeach
                             </ul>

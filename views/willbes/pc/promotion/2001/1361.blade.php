@@ -146,12 +146,12 @@
                 <div class="counter">
                     <div class="left_area NGEB">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_live_camera.png" alt="">
-                        예측 참여건수
+                        서비스 참여 건수
                         <span>
                         @if(empty($arr_base['predict_count'])){{0}}@else{{number_format($arr_base['predict_count']['view_count'],0)}}@endif
                     </span>건
                     </div>
-                    <p class="NSK">시험풀케어서비스 인증신청자 + 시험채점 + 설문조사 + 적중이벤트참여 + 라이브토크쇼참여 + 해설강의 수강자</p>
+                    <p class="NSK">(풀케어 서비스 인증, 채점, 설문, 적중이벤트, 라이브토크쇼, 해설강의 각 참여 및 수강 건수 합산 기준)</p>
                 </div>
             </div>
         @endif

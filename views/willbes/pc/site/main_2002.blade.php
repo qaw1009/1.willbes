@@ -132,7 +132,7 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" title="면접 유봉진">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>9.30 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>9.30 개강</span></a></div>
                         </div>
                     </li>                    
                 </ul>

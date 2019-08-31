@@ -1236,12 +1236,29 @@ class SurveyModel extends WB_Model
      * @return mixed
      */
     public function areaList($PredictIdx){
-        $column = "
+        /*$column = "
             sc.CcdName AS Areaname, pc.CcdName AS Serialname, pg.*   
             , (select round(sum(AvrPoint), 2) as AvrPoint 
                 from {$this->_table['predictGradesArea']} 
                 where PredictIdx = pg.PredictIdx and TakeMockPart = pg.TakeMockPart and TakeArea = pg.TakeArea
               ) as AvrPoint    
+        ";*/
+        $column = "
+            sc.CcdName AS Areaname, pc.CcdName AS Serialname, pg.*   
+            ,(
+            SELECT A.AvgAdjustPoint
+            FROM (
+                SELECT
+                PredictIdx, TakeMockPart, TakeArea, ROUND(AVG(t.SumAdjustPoint),2) AS AvgAdjustPoint
+                FROM (
+                    SELECT PredictIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint FROM lms_predict_grades 
+                    WHERE PredictIdx = '{$PredictIdx}'
+                    GROUP BY PrIdx
+                ) AS t
+                GROUP BY TakeMockPart, TakeArea
+            ) AS A
+            WHERE PredictIdx = pg.PredictIdx AND TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart
+            ) AS AvrPoint
         ";
 
         $from = "

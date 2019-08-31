@@ -361,16 +361,19 @@
             $('.evt01 ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
 
-                @if(time() <= strtotime('201908311200'))
-                    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                @if($arr_base['tab_id'])
+                    //GET으로 Tab 번호 받았을 경우
+                    $active = $($links.filter('[href="'+location.hash+'"]')[{{$arr_base['tab_id']-1}}] || $links[{{$arr_base['tab_id']-1}}]);
                 @else
-                    $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
+                    @if(time() <= strtotime('201908311200'))
+                        $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                    @else
+                        $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
+                    @endif
                 @endif
 
                 $active.addClass('active');
-
                 $content = $($active[0].hash);
-
                 $links.not($active).each(function () {
                     $(this.hash).hide()
                 });

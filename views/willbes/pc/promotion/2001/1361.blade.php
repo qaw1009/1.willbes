@@ -165,11 +165,9 @@
             <div class="d-day">
                 2019년 경찰 2차 러닝메이트 최종합격 프로젝트
                 @if(empty($arr_base['dday_data'][0]['DDay']) === false)
-                    {{--31일 12시까지 노출
-                    <p>필기시험일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
-                    --}}
-                    {{--31일 12시까지 노출--}}
-                    <p>@if(time() >= strtotime('201908311200')) 면접시작일까지 @endif<span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    @if(time() > strtotime('201908311200'))
+                        <p>면접시작일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    @endif
                 @endif
             </div>
             <div class="btnJoin">
@@ -187,12 +185,22 @@
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
                     </a>
                 </li>
+                @if(time() < strtotime('201908311200'))
                 <li>
                     <a href="#tab02" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
                 </li>
+                @else
+                <li>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="진행중"></span>
+                    <a href="#tab02">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
+                    </a>
+                </li>
+                @endif
                 <li>
                     <a href="#tab03" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
@@ -297,17 +305,15 @@
             @endif
         </div>
 
-
-
-        <div id="tab02" class="comingsoon">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
-        </div>
-
-        {{-- 2번째 탭 내용 31일 12시부터 노출
-        <div id="tab02">
-            @include('willbes.pc.promotion.2001.1361_cts02')
-        </div>
-        --}}
+        @if(time() < strtotime('201908311200'))
+            <div id="tab02" class="comingsoon">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
+            </div>
+        @else
+            <div id="tab02">
+                @include('willbes.pc.promotion.2001.1361_cts02')
+            </div>
+        @endif
 
         <div id="tab03" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">

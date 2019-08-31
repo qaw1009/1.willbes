@@ -361,9 +361,12 @@
             $('.evt01 ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
 
-                @if($arr_base['tab_id'])
+                @php
+                    $arr_tab = empty($arr_base['get_data']['tab']) === false ? $arr_base['get_data']['tab'] : null;
+                @endphp
+                @if(empty($arr_tab) === false && ($arr_tab >= 1 && $arr_tab <=5))
                     //GET으로 Tab 번호 받았을 경우
-                    $active = $($links.filter('[href="'+location.hash+'"]')[{{$arr_base['tab_id']-1}}] || $links[{{$arr_base['tab_id']-1}}]);
+                    $active = $($links.filter('[href="'+location.hash+'"]')[{{$arr_tab-1}}] || $links[{{$arr_tab-1}}]);
                 @else
                     @if(time() <= strtotime('201908311200'))
                         $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);

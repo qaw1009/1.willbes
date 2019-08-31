@@ -132,11 +132,11 @@
                         </div>
 
                         <ul class="tabSt1">
-                            <li><a id='t1' href="javascript:tabSel(1)" class="active">일반채점</a></li>
-                            <li><a id='t2' href="javascript:tabSel(2)">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
+                            <li><a id='t1' href="javascript:tabSel(1)">일반채점</a></li>
+                            <li><a id='t2' href="javascript:tabSel(2)" class="active">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
                             <li><a id='t3' href="javascript:tabSel(3)">직접입력</a></li>
                         </ul>
-                        <input type="hidden" id="selType" value="1"/>
+                        <input type="hidden" id="selType" value="2"/>
 
                         <div  id='gradeArea1'>
                             <div class="mt10 mb10">
@@ -212,7 +212,7 @@
                 var scoreType = '{{ $scoreType }}';
 
                 $( document ).ready( function() {
-                    $("#text_2").hide();
+                    $("#text_1").hide();
                     $("#text_3").hide();
 
                     if(mode == 'MOD'){
@@ -242,6 +242,12 @@
                 }
 
                 function tabSel(num){
+                    if (num == 1 || num == 3) {
+                        alert('가답안 발표 전으로 빠른채점만 가능합니다.\n' +
+                            '원점수는 가답안이 반영된 후 확인 가능합니다.');
+                        return;
+                    }
+
                     $('#selType').val(num);
                     $('#t1').removeClass('active');
                     $('#t2').removeClass('active');

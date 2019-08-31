@@ -75,7 +75,7 @@
         }
         .evt01 ul {width:1120px; margin:0 auto;}
         .evt01 li {display:inline; float:left; width:20%; position:relative;}
-        .evt01 li span {position:absolute; width:100%; text-align:center; top:-40px}
+        .evt01 li span {position:absolute; width:100%; text-align:center; left:0; top:-40px}
         .evt01 li a img.on {display:none}
         .evt01 li a img.off {display:block}
         .evt01 li a.active img.on,

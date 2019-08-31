@@ -20,7 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
-        .skyBanner {position:fixed; bottom:250px;right:10px;z-index:10;}
+        .skyBanner {position:fixed; bottom:100px;right:10px;z-index:10;}
         .skyBanner li{margin-top:15px;}
 
         .evt_counter {height:100px; background:#000; font-size:18px; color:#fff}

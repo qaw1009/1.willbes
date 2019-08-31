@@ -194,7 +194,7 @@
                 </li>
                 @else
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="진행중"></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
                     <a href="#tab02">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">

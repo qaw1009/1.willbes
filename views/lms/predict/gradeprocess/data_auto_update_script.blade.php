@@ -13,27 +13,14 @@
     <input type="hidden" id="cnt" name="cnt" value="0">
 </form>
 
-<div style="width: 250px">
-    <div class="alignleft mt-10" style="font-size: 15px">
-        <b>원점수입력</b> : <span id="txt_depth_1">미실행</span>
-    </div>
-
-    <div class="alignleft mt-10" style="font-size: 15px">
-        <b>조정점수반영</b> : <span id="txt_depth_2">미실행</span>
-    </div>
-
-    <div class="alignleft mt-10" style="font-size: 15px">
-        <b>시험통계처리</b> : <span id="txt_depth_3">미실행</span>
-    </div>
-
-    <div class="alignleft mt-10" style="font-size: 15px">
-        <b>최종결과</b> : <span id="txt_result">미실행</span>
-    </div>
-
-    <div class="alignleft mt-10" style="font-size: 15px">
-        <b>스크립트 실행횟수</b> : <span id="txt_cnt">미실행</span>
-    </div>
+<div class="text-left mt-10">
+<b>원점수입력</b> : <span id="txt_depth_1" style="font-size: 15px;">미실행</span><br>
+<b>조정점수반영</b> : <span id="txt_depth_2" style="font-size: 15px;">미실행</span><br>
+<b>시험통계처리</b> : <span id="txt_depth_3" style="font-size: 15px;">미실행</span><br>
+<b>최종결과</b> : <span id="txt_result" style="font-size: 15px;">미실행</span><br>
+<b>스크립트 실행횟수</b> : <span id="txt_cnt" style="font-size: 15px;">미실행</span><br>
 </div>
+
 <div style="width: 500px">
 <div class="alignleft mt-10" style="font-size: 15px">
     * 새로고침할 경우 스크립트로 반영한 데이터는 모두 초기화 됨.
@@ -94,6 +81,9 @@
 
     //시험통계처리
     function depth_3() {
+        var d = new Date();
+        var d_write = d.getFullYear() + '-' + d.getMonth() + 1 + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+
         var _url = '{{ site_url('/predict/gradeprocessing/scoreMakeStep3Ajax') }}';
         /*var _url = '{{ site_url('/common/predictAutoUpdate/depth_1') }}';*/
         ajaxSubmit($data_form, _url, function(ret) {
@@ -103,7 +93,7 @@
                 $("#cnt").val(parseInt($("#cnt").val()) + 1);
 
                 $("#txt_result").text("성공");
-                $("#txt_cnt").text($("#cnt").val());
+                $("#txt_cnt").text(d_write + ' ' + $("#cnt").val());
             }
         }, showValidateError, null, false, 'alert');
     }

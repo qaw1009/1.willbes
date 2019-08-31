@@ -42,7 +42,7 @@
                 $live_type = 'standby';
                 $now_datm = date('YmdHis');
                 if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
-                    $start_time = '20190831135000';
+                    $start_time = '20190831120000';
                     $end_time = '20190831200000';
                 } else {
                     $start_time = '20190831130000';
@@ -63,9 +63,9 @@
                 <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1376_02_before.jpg" title="방송전"></span>
             @elseif($live_type == 'on')
                 {{--방송전 31일 13시~14시까지--}}
-                {{--<span><iframe src="https://www.youtube.com/watch?v=8_TeXs4Uh_4?version-2&autoplay=1&rel=0&autohide=1" frameborder="0" allowfullscreen=""></iframe></span>--}}
+                {{--<span><iframe src="https://www.youtube.com/watch?v=c3cEQX3_G3I?version-2&autoplay=1&rel=0&autohide=1" frameborder="0" allowfullscreen=""></iframe></span>--}}
                     <span>
-                    <figure data-ke-type="video" data-ke-style="alignCenter" data-video-host="youtube" data-video-url="https://www.youtube.com/watch?v=8_TeXs4Uh_4?version-2&autoplay=1&rel=0&autohide=1" data-video-thumbnail="https://scrap.kakaocdn.net/dn/cvnOmS/hyBS2AsyJA/aeK3Xxb1QfVB3eI16KuEQ0/img.jpg?width=1280&height=720&face=0_0_1280_720"><iframe src="https://www.youtube.com/embed/8_TeXs4Uh_4?version-2&autoplay=1&rel=0&autohide=1" width="980" height="551" frameborder="0" allowfullscreen="true"></iframe>
+                    <figure data-ke-type="video" data-ke-style="alignCenter" data-video-host="youtube" data-video-url="https://www.youtube.com/watch?v=c3cEQX3_G3I?version-2&autoplay=1&rel=0&autohide=1" data-video-thumbnail="https://scrap.kakaocdn.net/dn/cvnOmS/hyBS2AsyJA/aeK3Xxb1QfVB3eI16KuEQ0/img.jpg?width=1280&height=720&face=0_0_1280_720"><iframe src="https://www.youtube.com/embed/c3cEQX3_G3I?version-2&autoplay=1&rel=0&autohide=1" width="980" height="551" frameborder="0" allowfullscreen="true"></iframe>
                         <figcaption></figcaption>
                     </figure>
                 </span>

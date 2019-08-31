@@ -140,7 +140,7 @@
         </ul>
 
         {{-- 31일 00시부터 노출--}}
-        @if(time() >= strtotime('201908311120'))
+        @if(time() >= strtotime('201908311200'))
             <div class="evtCtnsBox evt_counter">
                 <div class="counter">
                     <div class="left_area NGEB">
@@ -169,7 +169,7 @@
                     <p>필기시험일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                     --}}
                     {{--31일 12시까지 노출--}}
-                    <p>@if(time() >= strtotime('201908311120')) 면접시작일까지 @endif<span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    <p>@if(time() >= strtotime('201908311200')) 면접시작일까지 @endif<span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                 @endif
             </div>
             <div class="btnJoin">
@@ -354,7 +354,7 @@
             $('.evt01 ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
 
-                @if(time() <= strtotime('201908311120'))
+                @if(time() <= strtotime('201908311200'))
                     $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 @else
                     $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);

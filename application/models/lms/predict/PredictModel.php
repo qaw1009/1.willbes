@@ -1849,7 +1849,7 @@ class PredictModel extends WB_Model
             // 데이터 입력
             if ($mode == 'web') {
                 $data = [
-                    'MemId' => $this->session->userdata('admin_id'),
+                    'MemId' => (empty($this->session->userdata('admin_id')) === true ? 'systemcron' : $this->session->userdata('admin_id')),
                     'Step' => '1',
                     'PredictIdx' => $PredictIdx
                 ];
@@ -2001,7 +2001,7 @@ class PredictModel extends WB_Model
 
             if ($mode == 'web') {
                 $data = [
-                    'MemId' => $this->session->userdata('admin_id'),
+                    'MemId' => (empty($this->session->userdata('admin_id')) === true ? 'systemcron' : $this->session->userdata('admin_id')),
                     'Step' => '2',
                     'PredictIdx' => $PredictIdx
                 ];
@@ -2401,7 +2401,7 @@ class PredictModel extends WB_Model
             // 데이터 입력
             if ($mode == 'web') {
                 $data = [
-                    'MemId' => $this->session->userdata('admin_id'),
+                    'MemId' => (empty($this->session->userdata('admin_id')) === true ? 'systemcron' : $this->session->userdata('admin_id')),
                     'Step' => '3',
                     'PredictIdx' => $PredictIdx
                 ];

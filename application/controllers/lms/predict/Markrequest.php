@@ -109,7 +109,10 @@ class Markrequest extends \app\controllers\BaseController
             // export excel
             $file_name = '채점서비스참여현황_'.date('Y-m-d');
 
-            $headers = ['구분', '이름', '회원식별자', '회원아이디', '휴대폰번호', '직렬', '지역', '가산점', '응시번호', '수강여부', '시험준비기간', '신청일', '총점', '과목1', '과목2', '과목3', '과목4', '과목5'];
+            $headers = [
+                '구분', '이름', '회원식별자', '회원아이디', '휴대폰번호', '직렬', '지역', '가산점', '응시번호', '수강여부', '시험준비기간', '신청일', '총점',
+                '한국사','영어','형법','형사소송법','경찰학개론','국어','수학','사회','과학','수사','행정법'
+            ];
 
             $this->load->library('excel');
             foreach ($data as $key => $val) {
@@ -126,10 +129,23 @@ class Markrequest extends \app\controllers\BaseController
                 $excel_data[$key][] = $val['Period'];
                 $excel_data[$key][] = $val['RegDatm'];
                 $excel_data[$key][] = $val['SumOrgPoint'];
-                $arr_opoint = explode(',', $val['OPOINT']);
+
+                $excel_data[$key][] = $val['한국사'];
+                $excel_data[$key][] = $val['영어'];
+                $excel_data[$key][] = $val['형법'];
+                $excel_data[$key][] = $val['형사소송법'];
+                $excel_data[$key][] = $val['경찰학개론'];
+                $excel_data[$key][] = $val['국어'];
+                $excel_data[$key][] = $val['수학'];
+                $excel_data[$key][] = $val['사회'];
+                $excel_data[$key][] = $val['과학'];
+                $excel_data[$key][] = $val['수사'];
+                $excel_data[$key][] = $val['행정법'];
+
+                /*$arr_opoint = explode(',', $val['OPOINT']);
                 foreach ($arr_opoint as $pKey => $pVal) {
                     $excel_data[$key][] = $pVal;   //과목
-                }
+                }*/
             }
             if ($this->excel->exportHugeExcel($file_name, $excel_data, $headers) !== true) {
                 show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');

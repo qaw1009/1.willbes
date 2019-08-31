@@ -5,6 +5,9 @@ class AdminAuthHook
 {
     protected $_CI;
 
+    /**
+     * TODO : 합격예측(predict) 자동 데이터 업데이트 경로 추가 (서비스 종류 후 삭제 검토)
+     */
     // 관리자 로그인 체크 제외 URI
     protected $excepts = [
         '/lcms/auth/login',
@@ -13,7 +16,12 @@ class AdminAuthHook
         '/lcms/auth/regist/store',
         '/crm/manageCs/noAuthList',
         '/crm/manageCs/noAuthListAjax',
-        '/crm/manageCs/updateReadCnt'
+        '/crm/manageCs/updateReadCnt',
+
+        '/common/predictAutoUpdate/index',
+        '/predict/gradeprocessing/scoreMakeStep1Ajax',
+        '/predict/gradeprocessing/scoreMakeStep2Ajax',
+        '/predict/gradeprocessing/scoreMakeStep3Ajax'
     ];
 
     // LMS 교수관리자 역할식별자

@@ -484,7 +484,7 @@ class PredictModel extends WB_Model
             ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 17 AND PrIdx = PR.PrIdx),'') AS '사회'
             ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 18 AND PrIdx = PR.PrIdx),'') AS '과학'
             ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 19 AND PrIdx = PR.PrIdx),'') AS '수사'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 19 AND PrIdx = PR.PrIdx),'') AS '행정법'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 20 AND PrIdx = PR.PrIdx),'') AS '행정법'
         ";
         $from = "
             FROM {$this->_table['predictRegister']} AS PR

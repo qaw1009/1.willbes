@@ -113,160 +113,171 @@
             </div>
         </form>
 
-            <div class="sub3_1">
-                <h2>성적 입력/확인</h2>
-                {{--성적채점--}}
-                <div>
-                    @if($scoreIs == 'N')
-                        <div class="sub3_1_txt" id="maskArea" style="display:none;">
-                            <div>
-                                <p>
-                                    {{--4월 27일 11시40분까지--}}
-                                    {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>--}}
+        <div class="sub3_1">
+            <h2>성적 입력/확인</h2>
+            {{--성적채점--}}
+            <div>
+                @if($scoreIs == 'N')
+                    <div class="sub3_1_txt" id="maskArea" style="display:none;">
+                        <div>
+                            <p>
+                                {{--4월 27일 11시40분까지--}}
+                                {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>--}}
 
-                                    {{--4월 27일 11시40분이후--}}
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">
+                                {{--4월 27일 11시40분이후--}}
+                                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">
 
-                                </p>
-                            </div>
+                            </p>
                         </div>
+                    </div>
 
-                        <ul class="tabSt1">
-                            <li><a id='t1' href="javascript:tabSel(1)">일반채점</a></li>
-                            <li><a id='t2' href="javascript:tabSel(2)" class="active">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
-                            <li><a id='t3' href="javascript:tabSel(3)">직접입력</a></li>
-                        </ul>
-                        <input type="hidden" id="selType" value="2"/>
+                    <ul class="tabSt1">
+                        <li><a id='t1' href="javascript:tabSel(1)" class="active">일반채점</a></li>
+                        <li><a id='t2' href="javascript:tabSel(2)">빠른채점 <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_iconHot.gif" alt="추천"/></a></li>
+                        <li><a id='t3' href="javascript:tabSel(3)">직접입력</a></li>
+                    </ul>
+                    <input type="hidden" id="selType" value="1"/>
 
-                        <div  id='gradeArea1'>
-                            <div class="mt10 mb10">
-                                {{--일반채점--}}
-                                <span id="text_1">'일반채점'은 문제창에서 바로 문제를 확인하면서 OMR 정답지에 답을 체크하는 방식입니다.<br /></span>
-                                {{--빠른채점--}}
-                                <span id="text_2">'빠른채점'은 시험지를 다운받아 문제를 풀어본 후, 문항별 선택 번호만 입력하는 방식입니다.<br /></span>
-                                {{--직접입력--}}
-                                <span id="text_3">'직접입력'은 별도 채점 없이 본인의 점수를 직접 입력하는 방식입니다.<br /></span>
-                                * 아크로뱃 리더 프로그램 설치 필요 <a href="https://get.adobe.com/reader/?loc=kr" target="_blank">[설치하기]</a>
-                            </div>
-                            <table class="boardTypeB">
-                                <col width="25%" />
-                                <col width="25%" />
-                                <col width="25%" />
-                                <col width="25%" />
+                    <div  id='gradeArea1'>
+                        <div class="mt10 mb10">
+                            {{--일반채점--}}
+                            <span id="text_1">'일반채점'은 문제창에서 바로 문제를 확인하면서 OMR 정답지에 답을 체크하는 방식입니다.<br /></span>
+                            {{--빠른채점--}}
+                            <span id="text_2">'빠른채점'은 시험지를 다운받아 문제를 풀어본 후, 문항별 선택 번호만 입력하는 방식입니다.<br /></span>
+                            {{--직접입력--}}
+                            <span id="text_3">'직접입력'은 별도 채점 없이 본인의 점수를 직접 입력하는 방식입니다.<br /></span>
+                            * 아크로뱃 리더 프로그램 설치 필요 <a href="https://get.adobe.com/reader/?loc=kr" target="_blank">[설치하기]</a>
+                        </div>
+                        <table class="boardTypeB">
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <tr>
+                                <th scope="col">과목</th>
+                                <th scope="col">채점</th>
+                                <th scope="col">원점수</th>
+                                <th scope="col">조정점수</th>
+                            </tr>
+                            @foreach($subject_list as $key => $val)
                                 <tr>
-                                    <th scope="col">과목</th>
-                                    <th scope="col">채점</th>
-                                    <th scope="col">원점수</th>
-                                    <th scope="col">조정점수</th>
+                                    <td>{{ $val['CcdName'] }}</td>
+                                    @if($loop->first)<td rowspan="5"><a href="javascript:popWindow({{ $idx }})" class="type1">채점하기 ▶</a></td>@endif
+                                    <td>미입력</td>
+                                    <td>미입력</td>
                                 </tr>
-                                @foreach($subject_list as $key => $val)
-                                    <tr>
-                                        <td>{{ $val['CcdName'] }}</td>
-                                        @if($loop->first)<td rowspan="5"><a href="javascript:popWindow({{ $idx }})" class="type1">채점하기 ▶</a></td>@endif
-                                        <td>미입력</td>
-                                        <td>미입력</td>
-                                    </tr>
-                                @endforeach
-                            </table>
-                        </div>
-                    @else
-                        {{--성적확인--}}
-                        <div id='gradeArea2'>
-                            <table class="boardTypeB">
-                                <col width="25%" />
-                                <col width="25%" />
-                                <col width="25%" />
-                                <col width="25%" />
-                                <tr>
-                                    <th scope="col">과목</th>
-                                    <th scope="col">성적확인</th>
-                                    <th scope="col">원점수</th>
-                                    <th scope="col">조정점수</th>
-                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                @else
+                    {{--성적확인--}}
+                    <div id='gradeArea2'>
+                        <table class="boardTypeB">
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <tr>
+                                <th scope="col">과목</th>
+                                <th scope="col">성적확인</th>
+                                <th scope="col">원점수</th>
+                                <th scope="col">조정점수</th>
+                            </tr>
 
-                                @foreach($subject_list as $key => $val)
-                                    <tr>
-                                        <td>{{ $val['CcdName'] }}</td>
-                                        @if($loop->first)<td rowspan="5"><a href="javascript:resultPop({{ $idx }})" class="type1">확인 ▶</a></td>@endif
-                                        <td>{{ (empty($scoredata['PpIdx'][$key]) === true ? '미입력' : $scoredata['score'][$key]) }}</td>
-                                        <td>
-                                            {{(empty($scoredata['PpIdx'][$key]) === true) ? '미입력' :  (empty($scoredata['addscore'][$key]) === true ? '집계중' : $scoredata['addscore'][$key])}}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </table>
-                            <div class="btns">
-                                <a href="javascript:moveMyPredict();">나의 합격예측 바로가기 &gt;</a>
-                                <a href="javascript:examDeleteAjax();" class="btn2">재 채점하기 &gt;</a>
-                            </div>
+                            @foreach($subject_list as $key => $val)
+                                <tr>
+                                    <td>{{ $val['CcdName'] }}</td>
+                                    @if($loop->first)<td rowspan="5"><a href="javascript:resultPop({{ $idx }})" class="type1">확인 ▶</a></td>@endif
+                                    <td>{{ (empty($scoredata['PpIdx'][$key]) === true ? '미입력' : $scoredata['score'][$key]) }}</td>
+                                    <td>
+                                        {{(empty($scoredata['PpIdx'][$key]) === true) ? '미입력' :  (empty($scoredata['addscore'][$key]) === true ? '집계중' : $scoredata['addscore'][$key])}}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        <div class="btns">
+                            <a href="javascript:moveMyPredict();">나의 합격예측 바로가기 &gt;</a>
+                            <a href="javascript:examDeleteAjax();" class="btn2">재 채점하기 &gt;</a>
                         </div>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
+        </div>
 
-            <script>
-                var $regi_form = $('#regi_form');
-                var mode = '{{ $mode }}';
-                var win = '';
-                var openYn = '{{ $openYn }}';
-                var scoreType = '{{ $scoreType }}';
+        <script>
+            var $regi_form = $('#regi_form');
+            var mode = '{{ $mode }}';
+            var win = '';
+            var openYn = '{{ $openYn }}';
+            var scoreType = '{{ $scoreType }}';
 
-                $( document ).ready( function() {
-                    $("#text_1").hide();
-                    $("#text_3").hide();
+            $( document ).ready( function() {
+                $("#text_2").hide();
+                $("#text_3").hide();
 
-                    if(mode == 'MOD'){
-                        selSerial('{{ $data['TakeMockPart'] }}', '{{ $data['SubjectCode'] }}');
-                    }
-
-                    if(openYn == 'N' || $('#PrIdx').val() == ''){
-                        $('#maskArea').show();
-                    }
-                });
-
-                function moveMyPredict(){
-                    {{--alert('안정화 작업중입니다!');--}}
-                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1353') }}');
+                if(mode == 'MOD'){
+                    selSerial('{{ $data['TakeMockPart'] }}', '{{ $data['SubjectCode'] }}');
                 }
 
-                function examDeleteAjax() {
-                    if (confirm('채점취소시 기존의 성적모든데이터는 삭제됩니다. \n 채점취소 하시겠습니까?')) {
-                        var _url = '{{ front_url('/predict/examDeleteAjax') }}';
-                        ajaxSubmit($regi_form, _url, function (ret) {
-                            if (ret.ret_cd) {
-                                alert(ret.ret_msg);
-                                location.reload();
-                            }
-                        }, showValidateError, null, false, 'alert');
-                    }
+                if(openYn == 'N' || $('#PrIdx').val() == ''){
+                    $('#maskArea').show();
                 }
+            });
 
-                function tabSel(num){
-                    if (num == 1 || num == 3) {
-                        alert('가답안 발표 전으로 빠른채점만 가능합니다.\n' +
-                            '원점수는 가답안이 반영된 후 확인 가능합니다.');
-                        return;
-                    }
+            function moveMyPredict(){
+                {{--alert('안정화 작업중입니다!');--}}
+                parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1353') }}');
+            }
 
-                    $('#selType').val(num);
-                    $('#t1').removeClass('active');
-                    $('#t2').removeClass('active');
-                    $('#t3').removeClass('active');
-                    $("#text_1").hide();
-                    $("#text_2").hide();
-                    $("#text_3").hide();
-
-                    $('#t'+num).addClass('active');
-                    $("#text_"+num).show();
+            function examDeleteAjax() {
+                if (confirm('채점취소시 기존의 성적모든데이터는 삭제됩니다. \n 채점취소 하시겠습니까?')) {
+                    var _url = '{{ front_url('/predict/examDeleteAjax') }}';
+                    ajaxSubmit($regi_form, _url, function (ret) {
+                        if (ret.ret_cd) {
+                            alert(ret.ret_msg);
+                            location.reload();
+                        }
+                    }, showValidateError, null, false, 'alert');
                 }
+            }
 
-                function popWindow(PredictIdx){
-                    var type = $('#selType').val();
-                    var _url = "";
-                    var width = "";
-                    var height = "";
+            function tabSel(num){
+                $('#selType').val(num);
+                $('#t1').removeClass('active');
+                $('#t2').removeClass('active');
+                $('#t3').removeClass('active');
+                $("#text_1").hide();
+                $("#text_2").hide();
+                $("#text_3").hide();
 
-                    if (win == '') {
+                $('#t'+num).addClass('active');
+                $("#text_"+num).show();
+            }
+
+            function popWindow(PredictIdx){
+                var type = $('#selType').val();
+                var _url = "";
+                var width = "";
+                var height = "";
+
+                if (win == '') {
+                    if(type == 1){
+                        _url = '{{ front_url('/predict/popwin1/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
+                        width = 1300;
+                        height = 900;
+                    } else if(type == 2){
+                        _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
+                        width = 680;
+                        height = 700;
+                    } else {
+                        _url = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
+                        width = 600;
+                        height = 420;
+                    }
+                    win = window.open(_url, 'predictpop', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
+                    win.focus();
+                }else{
+                    if(win.closed){
                         if(type == 1){
                             _url = '{{ front_url('/predict/popwin1/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                             width = 1300;
@@ -282,178 +293,161 @@
                         }
                         win = window.open(_url, 'predictpop', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
                         win.focus();
-                    }else{
-                        if(win.closed){
-                            if(type == 1){
-                                _url = '{{ front_url('/predict/popwin1/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
-                                width = 1300;
-                                height = 900;
-                            } else if(type == 2){
-                                _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
-                                width = 680;
-                                height = 700;
-                            } else {
-                                _url = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
-                                width = 600;
-                                height = 420;
-                            }
-                            win = window.open(_url, 'predictpop', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
-                            win.focus();
-                        } else {
-                            //alert('팝업떠있음');
-                        }
+                    } else {
+                        //alert('팝업떠있음');
                     }
                 }
+            }
 
-                function resultPop(PredictIdx){
-                    if(scoreType == 'DIRECT'){
-                        alert('점수를 직접입력한 경우, 정오표를 제공하지 않습니다.');
+            function resultPop(PredictIdx){
+                if(scoreType == 'DIRECT'){
+                    alert('점수를 직접입력한 경우, 정오표를 제공하지 않습니다.');
+                    return ;
+                }
+                _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
+                width = 1300;
+                height = 900;
+                win = window.open(_url, 'resultpop', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
+                win.focus();
+            }
+
+            function selchk(obj){
+                var cknum = $("input[name='Ssubject[]']:checked").length;
+                if(cknum == 4){
+                    alert('선택과목은 3개까지 선택할 수 있습니다.');
+                    obj.checked = false;
+                    return;
+                }
+            }
+
+            function selArea(obj){
+                $('#TakeArea').val(obj);
+            }
+
+            // 문항정보필드 등록,수정
+            function js_submit() {
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','N') !!}
+                if($("#TakeMockPart").val() != '800'){
+                    if($("input[name='Ssubject[]']:checked").length != 3){
+                        alert('선택과목은 3개를 선택해 주세요.');
                         return ;
                     }
-                    _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
-                    width = 1300;
-                    height = 900;
-                    win = window.open(_url, 'resultpop', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
-                    win.focus();
                 }
 
-                function selchk(obj){
-                    var cknum = $("input[name='Ssubject[]']:checked").length;
-                    if(cknum == 4){
-                        alert('선택과목은 3개까지 선택할 수 있습니다.');
-                        obj.checked = false;
+                var takenum = '';
+                takenum = $('#TakeNumber').val();
+                takenum = parseInt(takenum);
+
+                if($("#TakeMockPart").val() == '100') {
+                    if(takenum<10001||takenum>19999) {
+                        alert('올바른 응시번호가 아닙니다.');
+                        return;
+                    }
+                } else if($("#TakeMockPart").val() == '200') {
+                    if(takenum<20001||takenum>29999) {
+                        alert('올바른 응시번호가 아닙니다.');
+                        return;
+                    }
+                } else if($("#TakeMockPart").val() == '800') {
+                    if(takenum<50001||takenum>59999) {
+                        alert('올바른 응시번호가 아닙니다.');
+                        return;
+                    }
+                } else {
+                    if(takenum<40001||takenum>49999) {
+                        alert('올바른 응시번호가 아닙니다.');
                         return;
                     }
                 }
 
-                function selArea(obj){
-                    $('#TakeArea').val(obj);
+                var _url = '';
+                if(mode == 'NEW'){
+                    _url = '{{ site_url('/predict/storeV2') }}';
+                } else {
+                    _url = '{{ site_url('/predict/updateV2') }}';
                 }
 
-                // 문항정보필드 등록,수정
-                function js_submit() {
-                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','N') !!}
-                    if($("#TakeMockPart").val() != '800'){
-                        if($("input[name='Ssubject[]']:checked").length != 3){
-                            alert('선택과목은 3개를 선택해 주세요.');
-                            return ;
-                        }
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        //$('#PrIdx').val(ret.ret_data.dt.idx);
+                        alert(ret.ret_msg);
+                        location.reload();
                     }
+                }, showValidateError, null, false, 'alert');
+            }
 
-                    var takenum = '';
-                    takenum = $('#TakeNumber').val();
-                    takenum = parseInt(takenum);
-
-                    if($("#TakeMockPart").val() == '100') {
-                        if(takenum<10001||takenum>19999) {
-                            alert('올바른 응시번호가 아닙니다.');
-                            return;
-                        }
-                    } else if($("#TakeMockPart").val() == '200') {
-                        if(takenum<20001||takenum>29999) {
-                            alert('올바른 응시번호가 아닙니다.');
-                            return;
-                        }
-                    } else if($("#TakeMockPart").val() == '800') {
-                        if(takenum<50001||takenum>59999) {
-                            alert('올바른 응시번호가 아닙니다.');
-                            return;
-                        }
-                    } else {
-                        if(takenum<40001||takenum>49999) {
-                            alert('올바른 응시번호가 아닙니다.');
-                            return;
-                        }
-                    }
-
-                    var _url = '';
-                    if(mode == 'NEW'){
-                        _url = '{{ site_url('/predict/storeV2') }}';
-                    } else {
-                        _url = '{{ site_url('/predict/updateV2') }}';
-                    }
-
-                    ajaxSubmit($regi_form, _url, function(ret) {
-                        if(ret.ret_cd) {
-                            //$('#PrIdx').val(ret.ret_data.dt.idx);
-                            alert(ret.ret_msg);
-                            location.reload();
-                        }
-                    }, showValidateError, null, false, 'alert');
+            function selSerial(num,num2){
+                $("#TakeMockPart").val(num);
+                if(num != ''){
+                    $('#GroupCcd').val(num);
+                } else {
+                    $('#GroupCcd').val('');
+                    $('#karea1').html('');
+                    $('#karea2').html('');
                 }
 
-                function selSerial(num,num2){
-                    $("#TakeMockPart").val(num);
-                    if(num != ''){
-                        $('#GroupCcd').val(num);
-                    } else {
-                        $('#GroupCcd').val('');
-                        $('#karea1').html('');
-                        $('#karea2').html('');
-                    }
+                if(num == '400'){
+                    $('#area1').hide();
+                    $('#area2').show();
+                } else {
+                    $('#area1').show();
+                    $('#area2').hide();
+                }
 
-                    if(num == '400'){
-                        $('#area1').hide();
-                        $('#area2').show();
-                    } else {
-                        $('#area1').show();
-                        $('#area2').hide();
-                    }
+                if(num != null){
+                    url = "{{ site_url("/predict/getSerialAjax") }}";
+                    data = $('#regi_form').serialize();
 
-                    if(num != null){
-                        url = "{{ site_url("/predict/getSerialAjax") }}";
-                        data = $('#regi_form').serialize();
-
-                        sendAjax(url,
-                            data,
-                            function(d){
-                                if(num2 != ''){
-                                    var arrnum2 = num2.split(',');
-                                    var str = '';
-                                    var str2 = '';
-                                    for(var i=0; i < d.data.length; i++){
-                                        if(d.data[i].Type == 'P'){
-                                            if(i == 0){
-                                                str += d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
-                                            } else {
-                                                str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
-                                            }
+                    sendAjax(url,
+                        data,
+                        function(d){
+                            if(num2 != ''){
+                                var arrnum2 = num2.split(',');
+                                var str = '';
+                                var str2 = '';
+                                for(var i=0; i < d.data.length; i++){
+                                    if(d.data[i].Type == 'P'){
+                                        if(i == 0){
+                                            str += d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
                                         } else {
-                                            var chkyn = '';
-                                            for (var j = 0; j < arrnum2.length; j++) {
-                                                if(d.data[i].Ccd == arrnum2[j]){
-                                                    chkyn = 'checked';
-                                                }
-                                            }
-                                            str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
+                                            str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
                                         }
-                                    }
-
-                                    $('#karea1').html(str);
-                                    $('#karea2').html(str2);
-                                } else {
-                                    var str = '';
-                                    var str2 = '';
-                                    for(var i=0; i < d.data.length; i++){
-                                        if(d.data[i].Type == 'P'){
-                                            if(i == 0){
-                                                str += d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
-                                            } else {
-                                                str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                                    } else {
+                                        var chkyn = '';
+                                        for (var j = 0; j < arrnum2.length; j++) {
+                                            if(d.data[i].Ccd == arrnum2[j]){
+                                                chkyn = 'checked';
                                             }
-                                        } else {
-                                            str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                                         }
+                                        str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'"+ chkyn +"><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
                                     }
-
-                                    $('#karea1').html(str);
-                                    $('#karea2').html(str2);
                                 }
-                            },
-                            function(ret, status){
-                                //alert(ret.ret_msg);
-                            }, true, 'POST', 'json');
-                    }
+
+                                $('#karea1').html(str);
+                                $('#karea2').html(str2);
+                            } else {
+                                var str = '';
+                                var str2 = '';
+                                for(var i=0; i < d.data.length; i++){
+                                    if(d.data[i].Type == 'P'){
+                                        if(i == 0){
+                                            str += d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                                        } else {
+                                            str += "," + d.data[i].CcdName + "<input type='hidden' name='Psubject[]' value='" + d.data[i].Ccd + "' /> ";
+                                        }
+                                    } else {
+                                        str2 += "<li><input type='checkbox' name='Ssubject[]' id='Ssubject"+i+"' value='" + d.data[i].Ccd + "' onClick='selchk(this)'><label for='Ssubject"+i+"'>" + d.data[i].CcdName + "</label></li>";
+                                    }
+                                }
+
+                                $('#karea1').html(str);
+                                $('#karea2').html(str2);
+                            }
+                        },
+                        function(ret, status){
+                            //alert(ret.ret_msg);
+                        }, true, 'POST', 'json');
                 }
-            </script>
+            }
+        </script>
 @stop

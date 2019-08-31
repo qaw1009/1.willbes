@@ -420,8 +420,8 @@
         <div class="bannerWarp">
             <img src="http://file3.willbes.net/new_cop/2017/03/170306_passcop_bn1.png" alt="최종합격을 결정짓는 2차 전형 윌비스 전문가와 함께 전략적으로 준비하세요">
             <div>
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1361" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_tab01_bn.jpg" alt="면접캠프설명회">
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1361#tab04" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1344_tab01_bn.jpg" alt="면접캠프설명회">
                 </a>
             </div>
         </div>

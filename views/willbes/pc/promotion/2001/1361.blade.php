@@ -297,17 +297,15 @@
             @endif
         </div>
 
-
-
-        <div id="tab02" class="comingsoon">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
-        </div>
-
-        {{-- 2번째 탭 내용 31일 12시부터 노출
-        <div id="tab02">
-            @include('willbes.pc.promotion.2001.1361_cts02')
-        </div>
-        --}}
+        @if(time() < strtotime('201908311200'))
+            <div id="tab02" class="comingsoon">
+                <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
+            </div>
+        @else
+            <div id="tab02">
+                @include('willbes.pc.promotion.2001.1361_cts02')
+            </div>
+        @endif
 
         <div id="tab03" class="comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">

@@ -101,6 +101,7 @@ class Markrequest extends \app\controllers\BaseController
         ];
 
         if($excel === 'Y') {
+            $excel_data = [];
             set_time_limit(0);
             ini_set('memory_limit', $this->_memory_limit_size);
 
@@ -108,10 +109,29 @@ class Markrequest extends \app\controllers\BaseController
             // export excel
             $file_name = '채점서비스참여현황_'.date('Y-m-d');
 
-            $headers = ['구분', '이름', '회원아이디', '휴대폰번호', '직렬', '지역', '성적정보', '가산점', '응시번호', '수강여부', '시험준비기간', '신청일'];
+            $headers = ['구분', '이름', '회원식별자', '회원아이디', '휴대폰번호', '직렬', '지역', '가산점', '응시번호', '수강여부', '시험준비기간', '신청일', '총점', '과목1', '과목2', '과목3', '과목4', '과목5'];
 
             $this->load->library('excel');
-            if ($this->excel->exportHugeExcel($file_name, $data, $headers) !== true) {
+            foreach ($data as $key => $val) {
+                $excel_data[$key][] = $val['ApplyType'];
+                $excel_data[$key][] = $val['MemName'];
+                $excel_data[$key][] = $val['MemIdx'];
+                $excel_data[$key][] = $val['MemId'];
+                $excel_data[$key][] = $val['Phone'];
+                $excel_data[$key][] = $val['TakeMockPart'];
+                $excel_data[$key][] = $val['TaKeArea'];
+                $excel_data[$key][] = $val['AddPoint'];
+                $excel_data[$key][] = $val['TaKeNumber'];
+                $excel_data[$key][] = $val['LectureType'];
+                $excel_data[$key][] = $val['Period'];
+                $excel_data[$key][] = $val['RegDatm'];
+                $excel_data[$key][] = $val['SumOrgPoint'];
+                $arr_opoint = explode(',', $val['OPOINT']);
+                foreach ($arr_opoint as $pKey => $pVal) {
+                    $excel_data[$key][] = $pVal;   //과목
+                }
+            }
+            if ($this->excel->exportHugeExcel($file_name, $excel_data, $headers) !== true) {
                 show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
             }
         } else {

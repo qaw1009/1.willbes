@@ -137,6 +137,7 @@
         <ul class="skyBanner">
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1376" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner1.png" title="토크쇼"></a></li>
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1362" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
+            <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1344" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner3.png" title="적중이벤트"></a></li>
         </ul>
 
         {{-- 31일 00시부터 노출--}}

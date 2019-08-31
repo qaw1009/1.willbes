@@ -140,7 +140,7 @@
         </ul>
 
         {{-- 31일 00시부터 노출--}}
-        @if(time() >= strtotime('201908311200'))
+        @if(time() >= strtotime('201908311120'))
             <div class="evtCtnsBox evt_counter">
                 <div class="counter">
                     <div class="left_area NGEB">
@@ -169,7 +169,7 @@
                     <p>필기시험일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                     --}}
                     {{--31일 12시까지 노출--}}
-                    <p>@if(time() >= strtotime('201908311200')) 면접시작일까지 @endif<span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    <p>@if(time() >= strtotime('201908311120')) 면접시작일까지 @endif<span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                 @endif
             </div>
             <div class="btnJoin">
@@ -181,7 +181,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
             <ul>
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="진행중"></span>
                     <a href="#tab01">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
@@ -354,7 +354,7 @@
             $('.evt01 ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
 
-                @if(time() <= strtotime('201908311200'))
+                @if(time() <= strtotime('201908311120'))
                     $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 @else
                     $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);

@@ -43,10 +43,10 @@
                 $now_datm = date('YmdHis');
                 if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
                     $start_time = '20190831120000';
-                    $end_time = '20190831200000';
+                    $end_time = '20190831170000';
                 } else {
                     $start_time = '20190831130000';
-                    $end_time = '20190831200000';
+                    $end_time = '20190831170000';
                 }
 
                 if ($now_datm < $start_time) {

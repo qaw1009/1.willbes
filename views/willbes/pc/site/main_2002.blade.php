@@ -175,7 +175,7 @@
                         <a href="#none" onclick="fnPlayerSample('132216', '1019296', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
-                    <li class="active">
+                    <li>
                         <div class="curriculumBox">                            
                             {{--<span><img src="https://static.willbes.net/public/images/promotion/main/3001_icon_bubble_2019.gif" title="2019대비 진행중"> </span>--}}
                             <div class="Tit">문제풀이 과정</div>

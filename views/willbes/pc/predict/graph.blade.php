@@ -400,7 +400,7 @@
     </div>
 
     <div class="m_section3_5">
-        시험지 및 정답 다운로드 <a href="http://public.jinhakapply.com/PoliceV2/data/notice_list.aspx?ReturnSite=SC&ServiceID=19&CategoryID=3&CurrentPage=1" target="_blank">바로가기 ▶</a>
+        시험지 및 정답 다운로드 <a href="https://public.jinhakapply.com/PoliceV2/data/QuestionAnswerList.aspx?ReturnSite=SC&ServiceID=19&CategoryID=9&CurrentPage=1" target="_blank">바로가기 ▶</a>
     </div>
 
     <div class="m_section3_6">

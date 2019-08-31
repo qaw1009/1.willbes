@@ -75,7 +75,7 @@
         }
         .evt01 ul {width:1120px; margin:0 auto;}
         .evt01 li {display:inline; float:left; width:20%; position:relative;}
-        .evt01 li span {position:absolute; width:100%; text-align:center; top:-40px}
+        .evt01 li span {position:absolute; width:100%; text-align:center; left:0; top:-40px}
         .evt01 li a img.on {display:none}
         .evt01 li a img.off {display:block}
         .evt01 li a.active img.on,
@@ -361,16 +361,22 @@
             $('.evt01 ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
 
-                @if(time() <= strtotime('201908311200'))
-                    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                @php
+                    $arr_tab = empty($arr_base['get_data']['tab']) === false ? $arr_base['get_data']['tab'] : null;
+                @endphp
+                @if(empty($arr_tab) === false && ($arr_tab >= 1 && $arr_tab <=5))
+                    //GET으로 Tab 번호 받았을 경우
+                    $active = $($links.filter('[href="'+location.hash+'"]')[{{$arr_tab-1}}] || $links[{{$arr_tab-1}}]);
                 @else
-                    $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
+                    @if(time() <= strtotime('201908311200'))
+                        $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                    @else
+                        $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
+                    @endif
                 @endif
 
                 $active.addClass('active');
-
                 $content = $($active[0].hash);
-
                 $links.not($active).each(function () {
                     $(this.hash).hide()
                 });

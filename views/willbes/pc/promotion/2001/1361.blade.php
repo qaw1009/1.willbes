@@ -165,11 +165,9 @@
             <div class="d-day">
                 2019년 경찰 2차 러닝메이트 최종합격 프로젝트
                 @if(empty($arr_base['dday_data'][0]['DDay']) === false)
-                    {{--31일 12시까지 노출
-                    <p>필기시험일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
-                    --}}
-                    {{--31일 12시까지 노출--}}
-                    <p>@if(time() >= strtotime('201908311200')) 면접시작일까지 @endif<span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    @if(time() > strtotime('201908311200'))
+                        <p>면접시작일까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    @endif
                 @endif
             </div>
             <div class="btnJoin">

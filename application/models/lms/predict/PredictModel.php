@@ -3306,7 +3306,7 @@ class PredictModel extends WB_Model
         ];
         $where = $this->_conn->makeWhere($add_condition);
         $where = $where->getMakeWhere(false);
-        $group_by = " GROUP BY pg.TakeArea, pg.PpIdx";
+        $group_by = " GROUP BY pg.TakeMockPart, pg.TakeArea, pg.PpIdx";
         $query_2 = 'select ' . $column . $from . $where . $group_by;
 
         $list = $this->_conn->query($query_1 . ' UNION ALL ' . $query_2)->result_array();

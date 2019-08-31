@@ -187,12 +187,22 @@
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
                     </a>
                 </li>
+                @if(time() < strtotime('201908311200'))
                 <li>
                     <a href="#tab02" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
                 </li>
+                @else
+                <li>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="진행중"></span>
+                    <a href="#tab02">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
+                    </a>
+                </li>
+                @endif
                 <li>
                     <a href="#tab03" onClick='alert("COMING SOON!! ")'>
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">

@@ -474,17 +474,17 @@ class PredictModel extends WB_Model
             RegDatm
             ,SUM(PG.OrgPoint) AS SumOrgPoint
             ,(GROUP_CONCAT(CONCAT(PP.PaperName,':',PG.OrgPoint))) AS OPOINT
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 10 AND PrIdx = PR.PrIdx),'') AS '한국사'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 11 AND PrIdx = PR.PrIdx),'') AS '영어'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 12 AND PrIdx = PR.PrIdx),'') AS '형법'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 13 AND PrIdx = PR.PrIdx),'') AS '형사소송법'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 14 AND PrIdx = PR.PrIdx),'') AS '경찰학개론'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 15 AND PrIdx = PR.PrIdx),'') AS '국어'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 16 AND PrIdx = PR.PrIdx),'') AS '수학'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 17 AND PrIdx = PR.PrIdx),'') AS '사회'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 18 AND PrIdx = PR.PrIdx),'') AS '과학'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 19 AND PrIdx = PR.PrIdx),'') AS '수사'
-            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 20 AND PrIdx = PR.PrIdx),'') AS '행정법'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 10 AND PrIdx = PR.PrIdx limit 1),'') AS '한국사'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 11 AND PrIdx = PR.PrIdx limit 1),'') AS '영어'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 12 AND PrIdx = PR.PrIdx limit 1),'') AS '형법'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 13 AND PrIdx = PR.PrIdx limit 1),'') AS '형사소송법'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 14 AND PrIdx = PR.PrIdx limit 1),'') AS '경찰학개론'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 15 AND PrIdx = PR.PrIdx limit 1),'') AS '국어'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 16 AND PrIdx = PR.PrIdx limit 1),'') AS '수학'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 17 AND PrIdx = PR.PrIdx limit 1),'') AS '사회'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 18 AND PrIdx = PR.PrIdx limit 1),'') AS '과학'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 19 AND PrIdx = PR.PrIdx limit 1),'') AS '수사'
+            ,IFNULL((SELECT OrgPoint FROM lms_predict_grades_origin WHERE PpIdx = 20 AND PrIdx = PR.PrIdx limit 1),'') AS '행정법'
         ";
         $from = "
             FROM {$this->_table['predictRegister']} AS PR

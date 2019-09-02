@@ -123,6 +123,24 @@
             $(activeTab).fadeIn();
             return false;
             });
+<<<<<<< HEAD
         });        
+=======
+        });
+
+        function go_product(url,num) {
+            if(String(num) != ""){
+                if (!$("input:checkbox[id='chk"+num+"']").is(":checked")) {
+                    alert("이용안내를 동의하셔야 신청이 가능합니다.");
+                    $("input:checkbox[id='chk"+num+"']").focus();
+                    return;
+                }
+            }
+            if(url != '') {
+                var win = window.open(url, '_blank');
+                win.focus();
+            }
+        }
+>>>>>>> e29a9d17c7e23116f64d84e9e00daa994370bff3
     </script>
 @stop

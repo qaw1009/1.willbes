@@ -142,7 +142,7 @@
 
         <div class="Section Section2 pb110">     
             <div class="widthAuto tx-center pt80 pb80">    
-                <img src="{{ img_url('cop_acad/visual/visual_curri_tit.png') }}" title="최적의 합격 커리큘럼">
+                <img src="https://static.willbes.net/public/images/promotion/main/2002_visual_curri_tit.png" title="최적의 합격 커리큘럼">
             </div> 
             <div class="widthAuto CurriStepBox">
                 <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}" target="_blank">커리큘럼 자세히보기 &gt;</a></div>

@@ -92,8 +92,14 @@ class OffLecture extends \app\controllers\FrontController
             'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
         ];
 
+        if (element('search_order', $arr_input) == 'course') {
+            $order_by = ['OrderNum'=>'Desc','OrderNumCourse'=>'Desc'];
+        } else {
+            $order_by = ['OrderNum'=>'Desc','ProdCode'=>'Desc'];
+        }
+
         // 상품조회
-        $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
+        $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, $order_by);
 
         // 상품조회 결과 배열 초기화
         $selected_subjects = [];

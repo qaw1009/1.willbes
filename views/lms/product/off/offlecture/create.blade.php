@@ -535,8 +535,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="form-group">
                     <label class="control-label col-md-2">자동지급단강좌
                     </label>
@@ -640,7 +638,6 @@
                         <p>
                             • 해당 상품 구매시 무료 혜택으로 제공될 사은품 등록 (신청 시 장바구니 담기 또는 바로결제 시 자동 지급되어 결제 처리)
                         </p>
-
                         <p>
                             <button type="button" class="btn btn-sm btn-primary ml-5" id="freebieAdd">사은품검색</button>
                             <input type="hidden" name="MemoTypeCcd[]" id="MemoTypeCcd_634005" value="634005">
@@ -761,6 +758,17 @@
                         <div class="radio">
                             <input type="radio" name="IsUse" class="flat" value="Y" required="required" title="사용여부" @if($data['IsUse']=='Y')checked="checked"@endif/> 사용
                             &nbsp; <input type="radio" name="IsUse" class="flat" value="N" @if($method == 'POST' || $data['IsUse']=='N')checked="checked"@endif/> 미사용
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsUse">정렬순서 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="item inline-block">
+                            <input type="text" name="OrderNum" id="OrderNum" class="form-control" title="정렬순서" style="width: 30px" value="{{empty($data['OrderNum']) ==true ? '0' : $data['OrderNum']}}">
+                            [숫자가 높을수록 상위노출 - 필요시에만 입력]
                         </div>
                     </div>
                 </div>

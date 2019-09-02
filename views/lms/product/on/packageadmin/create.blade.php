@@ -204,7 +204,7 @@
                                     <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='Y'>
                                     <td>
                                         <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
-                                            @for($i=1;$i<11;$i++)
+                                            @for($i=1;$i<16;$i++)
                                                 <option value='{{$i}}' @if($i ==$row['SubGroupName']) selected="selected" @endif>{{$i}}</option>
                                             @endfor
                                         </select>
@@ -255,7 +255,7 @@
                                     <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='N'>
                                     <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
-                                                @for($i=1;$i<11;$i++)
+                                                @for($i=1;$i<16;$i++)
                                                     <option value='{{$i}}' @if($i ==$row['SubGroupName']) selected="selected" @endif>{{$i}}</option>
                                                 @endfor
                                             </select>

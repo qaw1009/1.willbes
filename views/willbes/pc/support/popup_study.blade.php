@@ -57,6 +57,7 @@
                     </table>
                 </div>
             </div>
+            <p class="mt10">*본 게시판 취지와 맞지 않는 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다.</p>
             <!-- curriWrap -->
             <div class="willbes-Leclist c_both">
                 <div class="willbes-LecreplyList tx-gray">

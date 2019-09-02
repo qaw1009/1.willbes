@@ -123,9 +123,6 @@
             $(activeTab).fadeIn();
             return false;
             });
-<<<<<<< HEAD
-        });        
-=======
         });
 
         function go_product(url,num) {
@@ -141,6 +138,6 @@
                 win.focus();
             }
         }
->>>>>>> e29a9d17c7e23116f64d84e9e00daa994370bff3
+
     </script>
 @stop

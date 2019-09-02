@@ -258,13 +258,13 @@
                                     <tr class="bg01">
                                         <th>합격예측</th>
                                         @if ($arr_base['arr_line_data']['IsUse'] == 'Y')
-                                            @if ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['ExpectAvrPoint1']
-                                            && $arr_base['total_area_avg']['TotalAdjustPoint'] < $arr_base['arr_line_data']['StrongAvrPoint1'])
+                                            @if ($arr_base['total_area_avg']['TotalAdjustPoint'] >= (($arr_base['arr_line_data']['ExpectAvrPoint2']) ? $arr_base['arr_line_data']['ExpectAvrPoint2'] : $arr_base['arr_line_data']['ExpectAvrPoint2Ref'])
+                                            && $arr_base['total_area_avg']['TotalAdjustPoint'] < (($arr_base['arr_line_data']['StrongAvrPoint2']) ? $arr_base['arr_line_data']['StrongAvrPoint2'] : $arr_base['arr_line_data']['StrongAvrPoint2Ref']))
                                                 <th>현재 기준 <span class="tx-red">합격 기대권</span>입니다.</th>
-                                            @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['StrongAvrPoint1']
-                                            && $arr_base['total_area_avg']['TotalAdjustPoint'] < $arr_base['arr_line_data']['StabilityAvrPoint'])
+                                            @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= (($arr_base['arr_line_data']['StrongAvrPoint2']) ? $arr_base['arr_line_data']['StrongAvrPoint2'] : $arr_base['arr_line_data']['StrongAvrPoint2Ref'])
+                                            && $arr_base['total_area_avg']['TotalAdjustPoint'] < (($arr_base['arr_line_data']['StabilityAvrPoint']) ? $arr_base['arr_line_data']['StabilityAvrPoint'] : $arr_base['arr_line_data']['StabilityAvrPointRef']))
                                                 <th>현재 기준 <span class="tx-red">합격 유력권</span>입니다.</th>
-                                            @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= $arr_base['arr_line_data']['StabilityAvrPoint'])
+                                            @elseif ($arr_base['total_area_avg']['TotalAdjustPoint'] >= (($arr_base['arr_line_data']['StabilityAvrPoint']) ? $arr_base['arr_line_data']['StabilityAvrPoint'] : $arr_base['arr_line_data']['StabilityAvrPointRef']))
                                                 <th>현재 기준 <span class="tx-red">합격 안정권</span>입니다.</th>
                                             @else
                                                 <th>-</th>

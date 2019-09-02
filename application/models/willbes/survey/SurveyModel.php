@@ -1725,13 +1725,12 @@ class SurveyModel extends WB_Model
     /**
      * 정답제출삭제
      * @param $PrIdx
-     * @param bool $del_cnt_type
      * @return array|bool
      */
-    public function examDelete($PrIdx, $del_cnt_type = true)
+    public function examDelete($PrIdx)
     {
+        $this->_conn->trans_begin();
         try {
-            $this->_conn->trans_begin();
             $where = ['PrIdx' => $PrIdx];
 
             $register_data = $this->predictFModel->findPredictRegister($PrIdx, 'PrIdx, PointDelCnt');
@@ -1753,16 +1752,46 @@ class SurveyModel extends WB_Model
                 throw new \Exception('삭제에 실패했습니다.');
             }
 
-            if ($del_cnt_type === true) {
-                $point_del_cnt = $register_data['PointDelCnt'] + 1;
-                if ($this->_conn->set(['PointDelCnt' => $point_del_cnt, 'PointDelDatm' => date('Y-m-d H:i:s')])->where('PrIdx', $PrIdx)->update('lms_predict_register') === false) {
-                    throw new \Exception('수정에 실패했습니다.');
-                }
+            $point_del_cnt = $register_data['PointDelCnt'] + 1;
+            if ($this->_conn->set(['PointDelCnt' => $point_del_cnt, 'PointDelDatm' => date('Y-m-d H:i:s')])->where('PrIdx', $PrIdx)->update('lms_predict_register') === false) {
+                throw new \Exception('수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 정답제출삭제
+     * @param $PrIdx
+     * @return array|bool
+     */
+    private function _examDelete($PrIdx)
+    {
+        try {
+            $where = ['PrIdx' => $PrIdx];
+
+            $register_data = $this->predictFModel->findPredictRegister($PrIdx, 'PrIdx, PointDelCnt');
+            if (empty($register_data) === true) {
+                throw new \Exception('조회된 기본정보가 없습니다.');
+            }
+
+            if($this->_conn->delete($this->_table['predictAnswerPaper'], $where) === false){
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+            if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+            if($this->_conn->delete($this->_table['predictGrades'], $where) === false){
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
             return error_result($e);
         }
 
@@ -1836,16 +1865,15 @@ class SurveyModel extends WB_Model
  */
     public function examSend2($formData = [])
     {
+        $this->_conn->trans_begin();
         try {
-            $this->_conn->trans_begin();
-
             $PredictIdx = element('PredictIdx', $formData);
             $PrIdx = element('PrIdx', $formData);
             $PpIdx = element('PpIdx', $formData);
             $AnswerArr = element('Answer', $formData);
 
             //삭제후 입력
-            $this->examDelete($PrIdx, false);
+            $this->_examDelete($PrIdx);
 
             $strAnswer = '';
             for($i = 0; $i < count($AnswerArr); $i++){
@@ -1917,18 +1945,25 @@ class SurveyModel extends WB_Model
      */
     public function examSend3($formData = [])
     {
+        $this->_conn->trans_begin();
         try {
-            $this->_conn->trans_begin();
-
             $PredictIdx = element('PredictIdx', $formData);
             $PrIdx = element('PrIdx', $formData);
             $PpIdxArr = element('PpIdx', $formData);
             $ScoreArr = element('Score', $formData);
             $MemIdx = $this->session->userdata('mem_idx');
 
-            //삭제후 입력
-            $this->examDelete($PrIdx, false);
+            $chk_cnt = $this->getPredictScoreForMemberCount($PredictIdx, $PrIdx, $PpIdxArr, $this->_table['predictGradesOrigin']);
+            if (empty($chk_cnt) === true) {
+                throw new \Exception('조회된 회원기본정보가 없습니다.');
+            }
 
+            if ($chk_cnt['Cnt'] > 1) {
+                throw new \Exception('이미 등록된 채점정보가 있습니다.');
+            }
+
+            //삭제후 입력
+            $this->_examDelete($PrIdx);
 
             $column = "
                 TakeMockPart, TakeArea
@@ -2194,6 +2229,35 @@ class SurveyModel extends WB_Model
                 'pg.TakeArea' => $take_area,
             ]
         ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 회원 채점 데이터 조회
+     * @param $PredictIdx
+     * @param $PrIdx
+     * @param $arrPpIdx
+     * @param $table_name
+     * @return mixed
+     */
+    public function getPredictScoreForMemberCount($PredictIdx, $PrIdx, $arrPpIdx, $table_name)
+    {
+        $column = "COUNT(*) as Cnt";
+        $from = " FROM {$table_name}";
+
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx' => $PredictIdx,
+                'PrIdx' => $PrIdx
+            ],
+            'IN' => [
+                'PpIdx' => $arrPpIdx
+            ]
+        ];
+
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";

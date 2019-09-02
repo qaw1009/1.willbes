@@ -341,7 +341,7 @@ strong {
 }
 .sel_disabled,
 select[disabled] {
-  background: #eee;
+  background: #eee; 
 }
 
 .GM {

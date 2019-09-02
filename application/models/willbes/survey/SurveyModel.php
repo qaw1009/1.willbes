@@ -2101,13 +2101,18 @@ class SurveyModel extends WB_Model
             FROM (
                 SELECT tmpA.PrIdx, tmpA.TakeMockPart, tmpA.TakeArea, tmpA.TotalOrgPoint, tmpA.TotalAdjustPoint, tmpA.RankNum, tmpB.Cnt
                 FROM (
-                    SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, SUM(OrgPoint) AS TotalOrgPoint, ROUND(SUM(AdjustPoint),2) AS TotalAdjustPoint
-                        , RANK() OVER (PARTITION BY TakeMockPart, TakeArea ORDER BY AdjustPoint DESC) AS RankNum
-                    FROM {$this->_table['predictGrades']}
-                    WHERE PredictIdx = '{$PredictIdx}'
+                    SELECT 
+                    A.PredictIdx, A.PrIdx, A.TakeMockPart, A.TakeArea, A.TotalOrgPoint, A.TotalAdjustPoint
+                    , RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.TotalAdjustPoint DESC) AS RankNum
+                    FROM (
+                        SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, SUM(OrgPoint) AS TotalOrgPoint, ROUND(SUM(AdjustPoint),2) AS TotalAdjustPoint
+                        #, RANK() OVER (PARTITION BY TakeMockPart, TakeArea ORDER BY AdjustPoint DESC) AS RankNum
+                        FROM lms_predict_grades
+                        WHERE PredictIdx = '{$PredictIdx}'
                         AND TakeMockPart = '{$take_mock_part}'
                         AND TakeArea = '{$take_area}'
-                    GROUP BY PrIdx, TakeMockPart, TakeArea
+                        GROUP BY PrIdx, TakeMockPart, TakeArea
+                    ) AS A
                 ) AS tmpA
                 INNER JOIN (
                     SELECT PredictIdx, TakeMockPart, TakeArea, COUNT(*) AS cnt

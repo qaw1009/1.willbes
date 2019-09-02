@@ -85,21 +85,21 @@
                 <div class="tabContents" id="tab1">
                     <img src="https://static.willbes.net/public/images/promotion/2019/08/1385_03_tab1_c1.jpg" alt="6개월" usemap="#1385b" border="0" />
                     <map name="1385b" id="1385b">
-                        <area shape="rect" coords="270,332,444,399" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156547" target="_blank"alt="1~3순환 법과목 패키지" />
-                        <area shape="rect" coords="680,330,861,400" href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/156550" target="_blank"alt="3~5순환 전과목 패키지" />
+                        <area shape="rect" coords="270,332,444,399" href="javascript:go_product('{{site_url('/package/show/cate/3035/pack/648001/prod-code/156547')}}',1)" alt="1~3순환 법과목 패키지" />
+                        <area shape="rect" coords="680,330,861,400" href="javascript:go_product('{{site_url('/package/show/cate/3035/pack/648001/prod-code/156550')}}',1)" alt="3~5순환 전과목 패키지" />
                         <area shape="rect" coords="733,454,876,487" href="#careful" alt="이용안내 확인하기" />
                     </map>
-                    <input name="is_chk" type="checkbox" value="Y" id="ischk3"><label for="ischk3" class="check3"></label>
+                    <input name="is_chk" type="checkbox" value="Y" id="chk1"><label for="chk1" class="check3"></label>
                 </div>
                 <div class="tabContents" id="tab2">
                     <img src="https://static.willbes.net/public/images/promotion/2019/08/1385_03_tab2_c2.jpg" alt="12개월" usemap="#1385c" border="0" />
                     <map name="1385c" id="1385c">
-                        <area shape="rect" coords="180,343,296,391"href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/152392" target="_blank"alt="1순환 수강신청" />
-                        <area shape="rect" coords="339,342,458,390" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/153859"target="_blank"alt="2순환 수강신청" />
-                        <area shape="rect" coords="507,343,627,393" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156534"target="_blank"alt="3순환 수강신청" />
+                        <area shape="rect" coords="180,343,296,391" href="javascript:go_product('{{site_url('/package/show/cate/3035/pack/648001/prod-code/152392')}}',2)" alt="1순환 수강신청" />
+                        <area shape="rect" coords="339,342,458,390" href="javascript:go_product('{{site_url('/package/show/cate/3035/pack/648001/prod-code/153859')}}',2)" alt="2순환 수강신청" />
+                        <area shape="rect" coords="507,343,627,393" href="javascript:go_product('{{site_url('/package/show/cate/3035/pack/648001/prod-code/156534')}}',2)" alt="3순환 수강신청" />
                         <area shape="rect" coords="732,455,878,490" href="#careful" alt="이용안내 확인하기" />
                     </map>
-                    <input name="is_chk" type="checkbox" value="Y" id="ischk4"><label for="ischk4" class="check4"></label>
+                    <input name="is_chk" type="checkbox" value="Y" id="chk2"><label for="chk2" class="check4"></label>
                 </div>
             </div>             
         </div>
@@ -123,6 +123,24 @@
             $(activeTab).fadeIn();
             return false;
             });
+<<<<<<< HEAD
         });        
+=======
+        });
+
+        function go_product(url,num) {
+            if(String(num) != ""){
+                if (!$("input:checkbox[id='chk"+num+"']").is(":checked")) {
+                    alert("이용안내를 동의하셔야 신청이 가능합니다.");
+                    $("input:checkbox[id='chk"+num+"']").focus();
+                    return;
+                }
+            }
+            if(url != '') {
+                var win = window.open(url, '_blank');
+                win.focus();
+            }
+        }
+>>>>>>> e29a9d17c7e23116f64d84e9e00daa994370bff3
     </script>
 @stop

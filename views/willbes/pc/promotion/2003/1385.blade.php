@@ -25,9 +25,9 @@
      
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1385_02_bg.jpg) no-repeat center top;}          
      
-        .wb_cts03{position:relative;}
-        label.check3 {top:930px; left:690px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
-        label.check4 {top:930px; left:690px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
+        .wb_cts03{position:relative;background:#e8dcc7;}
+        label.check3 {top:955px; left:675px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
+        label.check4 {top:955px; left:675px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
 		input + label {position:absolute; z-index:1; width:30px; height:30px; outline:5px solid #15365d; background:#fff}
 		input:checked + label:after {position: relative;content: '\2714';font-size: 30px;}
 		input:checked + label.check3:after{font-size: 20px;}	
@@ -123,6 +123,7 @@
             $(activeTab).fadeIn();
             return false;
             });
-        });        
+        });       
+        
     </script>
 @stop

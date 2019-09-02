@@ -123,7 +123,6 @@
             $(activeTab).fadeIn();
             return false;
             });
-        });       
-        
+        });        
     </script>
 @stop

@@ -65,8 +65,8 @@
                 <ul class="tipGo NSK">
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1089') }}">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1241') }}">강좌 바로가기</a></li>
-                    <li><a href="{{ site_url('/lecture/index/cate/3035/pattern/only?subject_idx=&course_idx=1055&school_year=2020') }}">강좌 바로가기</a></li>
-                    <li><a href="#none">개강 준비중</a></li>
+                    <li><a href="{{ site_url('/promotion/index/cate/3035/code/1273') }}">강좌 바로가기</a></li>
+                    <li><a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?subject_idx=&course_idx=1055">강좌 바로가기</a></li>
                     <li><a href="#none">개강 준비중</a></li>
                     <li><a href="#none">개강 준비중</a></li>
                 </ul>

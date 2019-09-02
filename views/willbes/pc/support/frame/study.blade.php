@@ -75,6 +75,7 @@
             @endforeach
             </tbody>
         </table>
+        <p class="mt10 tx-right">*본 게시판 취지와 맞지 않는 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다.</p>
     </div>
     <div class="row">
         <div class="col-xs-12">

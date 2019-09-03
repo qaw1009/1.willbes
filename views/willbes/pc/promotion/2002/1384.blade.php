@@ -245,10 +245,10 @@
                     $content.hide();
                     $active = $(this);
                     $content = $(this.hash);
-                });
                     $active.addClass('active');
                     $content.show();
                     e.preventDefault()
+                });
             });
         });
 

@@ -81,7 +81,7 @@
         </div>
 
         <div class="evtCtnsBox" id="tab02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1382_tab02.jpg" alt="신규수강생 기간연장" usemap="#map1382A" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab02.jpg" alt="신규수강생 기간연장" usemap="#map1382A" border="0">
             <map name="map1382A" id="map1382A">
                 <area shape="rect" coords="416,1190,693,1247" href="https://www.willbes.net/member/join/?ismobile=0&amp;sitecode=2000" target="_blank" alt="회원가입" />
             </map>

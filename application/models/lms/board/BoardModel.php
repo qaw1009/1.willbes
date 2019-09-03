@@ -1342,6 +1342,9 @@ class BoardModel extends WB_Model
                 'ReplyStatusCcd' => '621001',
                 'IsUse' => 'Y',
                 'IsStatus' => 'Y',
+            ],
+            'GTE' => [
+                 'RegDatm' => '2019-03-25 00:00:00'
             ]
         ];
         $where_sub = $this->_conn->makeWhere($arr_condition_sub);

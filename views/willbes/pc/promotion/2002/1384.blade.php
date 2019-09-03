@@ -259,7 +259,7 @@
                 ajaxSubmit($regi_form, _check_url, function (ret) {
                     if (ret.ret_cd) {
                         alert('온라인 모의고사 무료 응시쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
-                        location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';
+                        {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
                     }
                 }, showValidateError, null, false, 'alert');
             @endif

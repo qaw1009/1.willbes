@@ -108,9 +108,11 @@
             // 기간 조회 디폴트 셋팅
             //setDefaultDatepicker(0, 'days', 'search_start_date', 'search_end_date');
             $.each(arr_search_data,function(key,value) {
-                $search_form.find('input[name="'+key+'"]').val(value);
-                $search_form.find('select[name="'+key+'"]').val(value);
-                $search_form.find('input[name="'+key+'"]').attr('checked', true);
+                if(getQueryString().lastIndexOf('?q=') == -1){
+                    $search_form.find('input[name="'+key+'"]').val(value);
+                    $search_form.find('select[name="'+key+'"]').val(value);
+                    $search_form.find('input[name="'+key+'"]').attr('checked', true);
+                }
             });
 
             // site-code에 매핑되는 select box 자동 변경

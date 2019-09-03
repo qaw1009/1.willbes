@@ -78,7 +78,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="skybanner">
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=391" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1068_skybanner.png" alt=""/></a>
+            {{--<a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=391" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1068_skybanner.png" alt=""/></a>--}}
 			<img src="https://static.willbes.net/public/images/promotion/2019/07/1068_skybanner.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
 			<map name="EV181030_c8" id="EV181030_c8">
 			  <area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>

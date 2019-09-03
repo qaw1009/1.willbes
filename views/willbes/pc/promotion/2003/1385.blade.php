@@ -22,6 +22,37 @@
         /************************************************************/
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1385_top_bg.jpg) no-repeat center top;}
+
+        /* txt_motion */
+		.wb_top > div {width:1120px; margin:0 auto; position:relative;}
+		.wb_top > div span {position:absolute; width:120px; z-index: 1;}
+		.wb_top > div span.txt1 {top:52px; left:320px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
+		.wb_top > div span.txt2 {top:63px; left:320px; animation:slidein2 0.4s ease-in; -webkit-animation:slidein2 0.4s ease-in;}
+		.wb_top > div span.txt3 {top:140px; left:300px; animation:slidein3 0.6s ease-in; -webkit-animation:slidein3 0.6s ease-in;}
+		.wb_top > div span.txt4 {top:185px; left:320px; animation:slidein4 0.8s ease-in; -webkit-animation:slidein4 0.8s ease-in;}
+		@@keyframes slidein1 {from {left:605px; opacity: 0;}to {left:150px; opacity: 1}}
+		@@keyframes slidein2 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
+		@@keyframes slidein3 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
+		@@keyframes slidein4 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
+
+		/* txt_motion */
+		.time {width:100%; text-align:center; background:#000}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {font-size:40px}
+        .time table td img {width:70%}
+        .time .time_txt {font-size:24px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
+        .time .time_txt span {color:#ead4b5; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#ead4b5}
+        50%{color:#ff6600}
+        to{color:#ead4b5}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#ead4b5}
+        50%{color:#ff6600}
+        to{color:#ead4b5}
+        } 
      
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1385_02_bg.jpg) no-repeat center top;}          
      
@@ -50,18 +81,25 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1385_top.jpg" alt="김동진 법원팀 순환별 패키지" />            
+               
+            <div>
+                <span class="txt1"><img src="https://static.willbes.net/public/images/promotion/2019/08/1385_txt1.png"></span>
+                <span class="txt2"><img src="https://static.willbes.net/public/images/promotion/2019/08/1385_txt2.png"></span>
+                <span class="txt3"><img src="https://static.willbes.net/public/images/promotion/2019/08/1385_txt3.png"></span>
+                <span class="txt4"><img src="https://static.willbes.net/public/images/promotion/2019/08/1385_txt4.png"></span> 
+            </div>      
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1385_top.jpg" alt="김동진 법원팀 순환별 패키지" />   
         </div>
 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1385_01.jpg" alt="순환별로 자세히 보기" usemap="#Map1385a" border="0"/>
             <map name="Map1385a" id="Map1385a">
-                <area shape="rect" coords="905,460,1012,509" href="https://pass.willbes.net/promotion/index/cate/3035/code/1089" target="_blank"alt="예비순환" />
-                <area shape="rect" coords="121,662,238,712" href="https://pass.willbes.net/promotion/index/cate/3035/code/1241" target="_blank"alt="1순환" />
-                <area shape="rect" coords="899,860,1014,911" href="https://pass.willbes.net/promotion/index/cate/3035/code/1273" target="_blank"alt="2순환" />
-                <area shape="rect" coords="119,1061,238,1111" href="https://pass.willbes.net/promotion/index/cate/3035/code/1381" target="_blank"alt="3순환" />
-                <area shape="rect" coords="902,1269,1014,1321" href="javascript:alert('준비중입니다.');" alt="4순환" />
-                <area shape="rect" coords="123,1472,236,1522" href="javascript:alert('준비중입니다.');" alt="5순환" />
+                <area shape="rect" coords="902,319,1016,364" href="https://pass.willbes.net/promotion/index/cate/3035/code/1089" target="_blank"alt="예비순환" />
+                <area shape="rect" coords="120,518,235,563" href="https://pass.willbes.net/promotion/index/cate/3035/code/1241" target="_blank"alt="1순환" />
+                <area shape="rect" coords="901,717,1013,765" href="https://pass.willbes.net/promotion/index/cate/3035/code/1273" target="_blank"alt="2순환" />
+                <area shape="rect" coords="120,918,238,963" href="https://pass.willbes.net/promotion/index/cate/3035/code/1381" target="_blank"alt="3순환" />
+                <area shape="rect" coords="899,1129,1016,1174" href="javascript:alert('준비중입니다.');" alt="4순환" />
+                <area shape="rect" coords="120,1327,237,1374" href="javascript:alert('준비중입니다.');" alt="5순환" />
             </map>
         </div>
 

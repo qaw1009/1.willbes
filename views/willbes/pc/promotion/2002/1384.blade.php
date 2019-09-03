@@ -197,14 +197,14 @@
                     <li>학원일정에 따라 연기 또는 변경될수 있으며, 온라인은 진행하지 않습니다.</li>
                     <li>불금모의고사 문의 : 1544-0336</li>
                 </ul>
-                <a href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" class="NSK-Black">HALF 불금 모의고사 신청하기 ></a>                
+                <a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1096&subject_idx=1476" target="_blank" class="NSK-Black">HALF 불금 모의고사 신청하기 ></a>                
             </div>
             
         </div>
 
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1384_05.jpg" title="2020 합격대비 패키지"  />
-            <a href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" class="NSK-Black">모의고사 신청하기 ></a>
+            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1096" target="_blank" class="NSK-Black">모의고사 신청하기 ></a>
         </div>
 
         <div class="evtCtnsBox evt06">

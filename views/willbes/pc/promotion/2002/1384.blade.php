@@ -64,6 +64,10 @@
         .evt06 a:hover {background:#ff8a00;}
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <div class="p_re evtContent NGR" id="evtContainer">       
         <div class="evtCtnsBox evtTop">
@@ -197,19 +201,19 @@
                     <li>학원일정에 따라 연기 또는 변경될수 있으며, 온라인은 진행하지 않습니다.</li>
                     <li>불금모의고사 문의 : 1544-0336</li>
                 </ul>
-                <a href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" class="NSK-Black">HALF 불금 모의고사 신청하기 ></a>                
+                <a href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&campus_ccd=605001&course_idx=1096&subject_idx=1476" target="_blank" class="NSK-Black">HALF 불금 모의고사 신청하기 ></a>                
             </div>
             
         </div>
 
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1384_05.jpg" title="2020 합격대비 패키지"  />
-            <a href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" class="NSK-Black">모의고사 신청하기 ></a>
+            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1096" target="_blank" class="NSK-Black">모의고사 신청하기 ></a>
         </div>
 
         <div class="evtCtnsBox evt06">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1384_06.jpg" title="소문내고 무료쿠폰 받고"  />
-            <a href="#none" class="NSK-Black">HALF 불금 모의고사 응시쿠폰 받기 ></a>
+            <a href="#none" onclick="giveCheck();" class="NSK-Black">HALF 불금 모의고사 응시쿠폰 받기 ></a>
         </div>
 
         {{--홍보url댓글--}}
@@ -221,31 +225,45 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+        var $regi_form = $('#regi_form');
+
         /*tab*/
         $(document).ready(function(){
             $('.tabs ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 $active.addClass('active');
-
                 $content = $($active[0].hash);
 
                 $links.not($active).each(function () {
-                    $(this.hash).hide()});
+                    $(this.hash).hide();
+                });
 
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
                     $active.removeClass('active');
                     $content.hide();
-
                     $active = $(this);
                     $content = $(this.hash);
-
                     $active.addClass('active');
                     $content.show();
+                    e.preventDefault()
+                });
+            });
+        });
 
-                    e.preventDefault()})})}
-        )        
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn=N';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('온라인 모의고사 무료 응시쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                        location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';
+                    }
+                }, showValidateError, null, false, 'alert');
+            @endif
+        }
 
     </script>
 

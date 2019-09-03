@@ -125,9 +125,11 @@
         $(document).ready(function() {
             var set_group_html;
             $.each(arr_search_data,function(key,value) {
-                $search_form.find('input[name="'+key+'"]').val(value);
-                $search_form.find('select[name="'+key+'"]').val(value);
-                $search_form.find('input[name="'+key+'"]').attr('checked', true);
+                if(getQueryString().lastIndexOf('?q=') == -1){
+                    $search_form.find('input[name="'+key+'"]').val(value);
+                    $search_form.find('select[name="'+key+'"]').val(value);
+                    $search_form.find('input[name="'+key+'"]').attr('checked', true);
+                }
             });
 
             $datatable = $list_table.DataTable({

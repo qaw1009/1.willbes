@@ -94,12 +94,12 @@
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1385_01.jpg" alt="순환별로 자세히 보기" usemap="#Map1385a" border="0"/>
             <map name="Map1385a" id="Map1385a">
-                <area shape="rect" coords="898,667,1023,716" href="https://pass.willbes.net/promotion/index/cate/3035/code/1089" target="_blank"alt="예비순환" />
-                <area shape="rect" coords="120,870,241,917" href="https://pass.willbes.net/promotion/index/cate/3035/code/1241" target="_blank"alt="1순환" />
-                <area shape="rect" coords="897,1070,1020,1115" href="https://pass.willbes.net/promotion/index/cate/3035/code/1273" target="_blank"alt="2순환" />
-                <area shape="rect" coords="119,1269,237,1314" href="https://pass.willbes.net/promotion/index/cate/3035/code/1381" target="_blank"alt="3순환" />
-                <area shape="rect" coords="900,1480,1015,1527" href="javascript:alert('준비중입니다.');" alt="4순환" />
-                <area shape="rect" coords="114,1678,241,1726" href="javascript:alert('준비중입니다.');" alt="5순환" />
+                <area shape="rect" coords="902,319,1016,364" href="https://pass.willbes.net/promotion/index/cate/3035/code/1089" target="_blank"alt="예비순환" />
+                <area shape="rect" coords="120,518,235,563" href="https://pass.willbes.net/promotion/index/cate/3035/code/1241" target="_blank"alt="1순환" />
+                <area shape="rect" coords="901,717,1013,765" href="https://pass.willbes.net/promotion/index/cate/3035/code/1273" target="_blank"alt="2순환" />
+                <area shape="rect" coords="120,918,238,963" href="https://pass.willbes.net/promotion/index/cate/3035/code/1381" target="_blank"alt="3순환" />
+                <area shape="rect" coords="899,1129,1016,1174" href="javascript:alert('준비중입니다.');" alt="4순환" />
+                <area shape="rect" coords="120,1327,237,1374" href="javascript:alert('준비중입니다.');" alt="5순환" />
             </map>
         </div>
 

@@ -451,6 +451,9 @@ class BasePromotion extends \app\controllers\FrontController
         $give_type = $this->_req('give_type');
         //제공식별자 : 쿠폰식별자
         $give_idx = $this->_req('give_idx');
+
+        //댓글참여 확인 여부
+        $comment_chk_yn = $this->_req('comment_chk_yn');
         //발급 제한 갯수
         $limit_count = 1;
         
@@ -458,17 +461,19 @@ class BasePromotion extends \app\controllers\FrontController
         $el_idx = (int)$this->_req('event_code');
 
         // 댓글 참여 여부 확인
-        $arr_condition = [
-            'EQ' => [
-                'a.MemIdx' => $this->session->userdata('mem_idx'),
-                'a.ElIdx' => $el_idx,
-                'a.IsStatus' => 'Y',
-                'a.IsUse' => 'Y'
-            ]
-        ];
-        $comment_result = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, 1, 0, ['a.CIdx' => 'DESC']);
-        if (empty($comment_result) === true) {
-            return $this->json_error("소문내기 댓글을 등록해 주세요.");
+        if(empty($comment_chk_yn) || $comment_chk_yn == 'Y'){
+            $arr_condition = [
+                'EQ' => [
+                    'a.MemIdx' => $this->session->userdata('mem_idx'),
+                    'a.ElIdx' => $el_idx,
+                    'a.IsStatus' => 'Y',
+                    'a.IsUse' => 'Y'
+                ]
+            ];
+            $comment_result = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, 1, 0, ['a.CIdx' => 'DESC']);
+            if (empty($comment_result) === true) {
+                return $this->json_error("소문내기 댓글을 등록해 주세요.");
+            }
         }
 
         if(empty($give_type)) {

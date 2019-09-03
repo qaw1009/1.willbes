@@ -71,6 +71,9 @@ class Counsel extends BaseBoard
                 'BmIdx' => $this->bm_idx,
                 'IsStatus' => 'Y',
                 'ReplyStatusCcd' => $this->_Ccd['reply']['unAnswered']
+            ],
+            'GTE' => [
+                'RegDatm' => '2019-03-25 00:00:00'
             ]
         ];
         $arr_unAnswered = $this->_getUnAnswerArray($arr_condition);

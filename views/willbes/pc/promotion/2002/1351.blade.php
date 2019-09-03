@@ -33,11 +33,13 @@
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1351_p2_1.jpg" title="출제가능한 문제만 모조리 정리한다"><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1351_p2_2.jpg"><br>
+            {{--
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1351_p2_3.jpg" alt="장학생 신청서류 다운받기" usemap="#Map1351" border="0">
             <map name="Map1351" id="Map1351">
                 <area shape="rect" coords="216,291,506,368" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="7기장학생지원서" />
                 <area shape="rect" coords="509,292,766,369" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="개인정보동의서" />
             </map>
+            --}}
         </div>
 	</div>
     <!-- End Container -->

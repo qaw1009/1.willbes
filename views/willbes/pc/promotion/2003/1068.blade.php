@@ -62,7 +62,7 @@
         .LAeventB03 td:nth-child(3) {color:#5117c9}
         .LAeventB03 td:last-child {border:0}
         .LAeventB03 td p {font-size:12px}
-		.LAeventB03 table a {padding:10px 15px; color:#ffd84f; background:#5117c9; font-size:14px; display:block; border-radius:20px 20px 0 20px}
+		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#5117c9; font-size:14px; display:block; border-radius:20px 20px 0 20px}
         .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .LAeventB03 table a:hover {background:#252525; color:#fff;}
         .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
@@ -128,13 +128,13 @@
         <!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" id="event">
-			<img src="https://static.willbes.net/public/images/promotion/2019/07/1068_04.jpg" alt="윌비스 2019 농업직/농촌지도사 이론패키지" usemap="#Map1068A" border="0"  />
+			<img src="https://static.willbes.net/public/images/promotion/2019/09/1068_04.jpg" alt="윌비스 2019 농업직/농촌지도사 이론패키지" usemap="#Map1068A" border="0"  />
             <map name="Map1068A" id="Map1068A" >
-                <area shape="rect" coords="53,1152,257,1200" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150615') }}"  onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="317,1155,520,1199" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150634') }}" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="588,1153,793,1200" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150633') }}" onfocus="this.blur();" target="_blank" />
-                <area shape="rect" coords="856,1155,1057,1199" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150635') }}" onfocus="this.blur();" target="_blank"/>
-              <area shape="rect" coords="912,461,1037,549" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/155776" target="_blank" alt="모의고사패키지" />
+                <area shape="rect" coords="52,1010,256,1058" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156691" target="_blank" alt="기본심화이론패키지"  onfocus="this.blur();"/>
+                <area shape="rect" coords="319,1012,522,1056" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156692" target="_blank" alt="7급농업직이론패키지" onfocus="this.blur();"/>
+                <area shape="rect" coords="587,1010,792,1057" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156702" target="_blank" alt="농촌지도사이론패키지" onfocus="this.blur();" />
+                <area shape="rect" coords="857,1011,1058,1055" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156703" target="_blank" alt="농촌지도사" onfocus="this.blur();"/>
+              	<area shape="rect" coords="912,1149,1037,1237" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/155776" target="_blank" alt="모의고사패키지" />
             </map>
         </div>
         <!--wb_cts04//-->
@@ -154,14 +154,14 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 					  <tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2019 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146366">수강신청</a></td>
+						<td>2020 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156359">수강신청</a></td>
 					  </tr>
 					  <tr>
 						<td>재배학</td>
@@ -188,20 +188,21 @@
 						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/152218">수강신청</a></td>
 					  </tr>
 					  </table>
-					  <p  style = " font-size:1.5em;  color: #000; padding-bottom:20px; padding-top:20px;">● 식용작물</p>
+
+					  <p>● 식용작물</p>
 					  <table>
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 					  <tr>
 					  <tr>
 						<td>식용작물</td>
 						<td>이론</td>
-						<td>2019 장사원 식용작물 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146367">수강신청</a></td>
+						<td>2020 장사원 식용작물 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156362">수강신청</a></td>
 					  </tr>
 					  <tr>
 						<td>식용작물</td>
@@ -238,14 +239,14 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
 					<td>재배학</td>
 					<td>이론</td>
-					<td>2019 장사원 재배학 기본+심화이론</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146366">수강신청</a></td>
+					<td>2020 장사원 재배학 기본+심화이론</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156359">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>재배학</td>
@@ -277,14 +278,14 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
 					<td>식용작물</td>
 					<td>이론</td>
-					<td>2019 장사원 식용작물 기본+심화이론</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146367">수강신청</a></td>
+					<td>2020 장사원 식용작물 기본+심화이론</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156362">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>식용작물</td>
@@ -316,7 +317,7 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
@@ -337,14 +338,14 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
 					<td>토양학</td>
 					<td>이론</td>
-					<td>2019 장사원 토양학 이론강의</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146574">수강신청</a></td>
+					<td>2020 장사원 토양학 이론강의</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156365">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>토양학</td>
@@ -363,14 +364,14 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
 					<td>재배학</td>
 					<td>이론</td>
-					<td>2019 장사원 재배학 기본+심화이론</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146366">수강신청</a></td>
+					<td>2020 장사원 재배학 기본+심화이론</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156359">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>재배학</td>
@@ -402,7 +403,7 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
@@ -429,7 +430,7 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
@@ -450,7 +451,7 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
@@ -477,14 +478,14 @@
 					  <tr>
 						<th width="105">과목</th>
 						<th width="72">과정</th>
-						<th width="433">강좌명</th>
+						<th>강좌명</th>
 						<th width="104">수강신청</th>
 					  </tr>
 				  <tr>
 					<td>토양학</td>
 					<td>이론</td>
-					<td>2019 장사원 토양학 이론강의</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146574">수강신청</a></td>
+					<td>2020 장사원 토양학 이론강의</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156365">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>토양학</td>

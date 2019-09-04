@@ -90,14 +90,14 @@
         <div class="evtCtnsBox" id="tab03">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1382_tab03.jpg" alt="합격기원 댓글 이벤트" usemap="#Map1382B" border="0">
             <map name="Map1382B" id="Map1382B">
-                <area shape="rect" coords="970,450,1093,513" href="https://pass.willbes.net/promotion/index/cate/3019/code/1281" target="_blank" alt="윌비스 티패스" />
-                <area shape="rect" coords="971,592,1093,655" href="https://pass.willbes.net/support/notice/show/cate/3019?board_idx=235706" target="_blank" alt="9~10월 신규강좌" />
-                <area shape="rect" coords="972,719,1093,782" href="https://pass.willbes.net/promotion/index/cate/3019/code/1345" target="_blank" alt="이론패키지" />
-                <area shape="rect" coords="973,839,1092,903" href="https://pass.willbes.net/promotion/index/cate/3035/code/1385" target="_blank" alt="김동진법원팀 순환별 패키지" />
-                <area shape="rect" coords="970,945,1095,1009" href="https://pass.willbes.net/promotion/index/cate/3023/code/1060" target="_blank" alt="소방패스" />
-                <area shape="rect" coords="973,1050,1092,1088" href="https://pass.willbes.net/promotion/index/cate/3028/code/1071" target="_blank" alt="최우영패키지" />
-                <area shape="rect" coords="972,1092,1092,1133" href="https://pass.willbes.net/promotion/index/cate/3028/code/1068" target="_blank" alt="장사원패키지" />
-                <area shape="rect" coords="975,1183,1091,1240" href="https://pass.willbes.net/promotion/index/cate/3024/code/1313" target="_blank" alt="군무원0원패스" />
+                <area shape="rect" coords="943,459,1066,522" href="https://pass.willbes.net/promotion/index/cate/3019/code/1281" target="_blank" alt="윌비스 티패스" />
+                <area shape="rect" coords="944,587,1066,650" href="https://pass.willbes.net/support/notice/show/cate/3019?board_idx=235706" target="_blank" alt="9~10월 신규강좌" />
+                <area shape="rect" coords="944,768,1065,831" href="https://pass.willbes.net/promotion/index/cate/3019/code/1345" target="_blank" alt="이론패키지" />
+                <area shape="rect" coords="947,890,1066,954" href="https://pass.willbes.net/promotion/index/cate/3035/code/1385" target="_blank" alt="김동진법원팀 순환별 패키지" />
+                <area shape="rect" coords="942,996,1067,1060" href="https://pass.willbes.net/promotion/index/cate/3023/code/1060" target="_blank" alt="소방패스" />
+                <area shape="rect" coords="946,1104,1065,1142" href="https://pass.willbes.net/promotion/index/cate/3028/code/1071" target="_blank" alt="최우영패키지" />
+                <area shape="rect" coords="945,1148,1065,1189" href="https://pass.willbes.net/promotion/index/cate/3028/code/1068" target="_blank" alt="장사원패키지" />
+                <area shape="rect" coords="947,1232,1063,1289" href="https://pass.willbes.net/promotion/index/cate/3024/code/1313" target="_blank" alt="군무원0원패스" />
             </map>
         </div>
 

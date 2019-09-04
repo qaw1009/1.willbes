@@ -133,7 +133,7 @@
                         <td>행정법 장정훈</td>
                         <td>2020 장정훈 행정법 심화기출</td>
                         <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153346') }}">수강신청</a></td>
-                    </tr> 
+                    </tr>    
                     --}}                   
                 </tbody>
             </table>

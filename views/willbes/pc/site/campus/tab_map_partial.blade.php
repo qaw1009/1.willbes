@@ -11,7 +11,7 @@
             <div class="campus_info">
                 <dl>                                
                     <dt>
-                        <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">노량진</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>
@@ -41,7 +41,7 @@
             <div class="campus_info">
                 <dl>
                     <dt>
-                        <div class="c-tit"><span class="tx-color">신림</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">신림</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>
@@ -70,7 +70,7 @@
             <div class="campus_info">
                 <dl>
                     <dt>
-                        <div class="c-tit"><span class="tx-color">인천</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">인천</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>
@@ -99,7 +99,7 @@
             <div class="campus_info">
                 <dl>
                     <dt>
-                        <div class="c-tit"><span class="tx-color">대구</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">대구</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>
@@ -128,7 +128,7 @@
             <div class="campus_info">
                 <dl>
                     <dt>
-                        <div class="c-tit"><span class="tx-color">부산</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">부산</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>
@@ -157,7 +157,7 @@
             <div class="campus_info">
                 <dl>
                     <dt>
-                        <div class="c-tit"><span class="tx-color">광주</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">광주</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>
@@ -186,7 +186,7 @@
             <div class="campus_info">
                 <dl>
                     <dt>
-                        <div class="c-tit"><span class="tx-color">제주</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">제주</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>
@@ -216,7 +216,7 @@
                 <div class="campus_info">
                     <dl>
                         <dt>
-                            <div class="c-tit"><span class="tx-color">전북 전주</span> 캠퍼스 오시는 길</div>
+                            <div class="c-tit"><span class="tx-color">전북 전주</span> 학원 오시는 길</div>
                             <div class="c-info">
                                 <div class="address">
                                     <span class="a-tit">주소</span>
@@ -231,7 +231,7 @@
                             </div>
                         </dt>
                         <dt>
-                            <div class="c-tit"><span class="tx-color">전북 익산</span> 캠퍼스 오시는 길</div>
+                            <div class="c-tit"><span class="tx-color">전북 익산</span> 학원 오시는 길</div>
                             <div class="c-info">
                                 <div class="address">
                                     <span class="a-tit">주소</span>
@@ -268,7 +268,7 @@
             <div class="campus_info">
                 <dl>
                     <dt>
-                        <div class="c-tit"><span class="tx-color">진주</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">진주</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>
@@ -298,7 +298,7 @@
             <div class="campus_info">
                 <dl>
                     <dt>
-                        <div class="c-tit"><span class="tx-color">경기 광주(기숙형)</span> 캠퍼스 오시는 길</div>
+                        <div class="c-tit"><span class="tx-color">경기 광주(기숙형)</span> 학원 오시는 길</div>
                         <div class="c-info">
                             <div class="address">
                                 <span class="a-tit">주소</span>

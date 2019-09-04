@@ -100,7 +100,7 @@
                     </tr>    
                     <tr>
                         <td>경찰학개론 장정훈</td>
-                        <td>2020 장정훈 경찰학개론 심화기출</td>
+                        <td>2020 장정훈 경찰학개론 심화이론</td>
                         <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156694" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>

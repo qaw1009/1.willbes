@@ -95,7 +95,7 @@
                 <tbody>
                     <tr>
                         <td>형사소송법 신광은</td>
-                        <td>2012 신광은 사소송법 심화이론</td>
+                        <td>2020 신광은 형사소송법 심화이론</td>
                         <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156687" target="_blank">수강신청</a></td>
                     </tr>    
                     <tr>

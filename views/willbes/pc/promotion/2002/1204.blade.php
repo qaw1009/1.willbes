@@ -17,7 +17,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative}
 
         /************************************************************/
 
@@ -25,9 +25,14 @@
         .evt01 {background:#5f5f5f}
         .evt02 {background:#6d6d6d}        
         .evt03 {background:#7f7f7f}
-        .evt04 {margin:0 auto; padding:100px 0; background:#e2e2e2}
-        .evt04 div {margin-bottom:80px; font-size:40px;}
+        .evt04 {margin:0 auto; padding:100px 0; background:#e2e2e2;}
+        .evt04 div {font-size:40px;}
         .evt04 div span {color:#ce9317; border-bottom:3px solid #fdf5e4}
+        .evt04 p {font-size:14px}
+        .evt04 .popup {font-size:20px; width:200px; line-height:1.5; background:#000; color:#fff; display:block; border-radius:20px;
+        position:absolute; left:50%; margin-left:300px; top:100px; padding:10px 0; 
+        }
+        .evt04 .popup span {color:#ce9317}
         .evt04 table {background:#fff; width:1000px; margin:0 auto; background:#fff} 
         .evt04 tr {border-bottom:1px solid #ccc}        
         .evt04 tr.st01 {background:#ececec}
@@ -49,7 +54,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer"> 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1204_top.jpg" title="마무리특강">        
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1204_top.jpg" title="마무리특강">        
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -57,7 +62,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1204_02.jpg" title="마무리특강 학습전략">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1204_02.jpg" title="마무리특강 학습전략">
         </div>
 
         <div class="evtCtnsBox evt03">
@@ -65,7 +70,16 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <div class="NSK-Black">2019 2차대비 심화이론 / 기출 <span>개설 강의</span></div>
+            <div class="NSK-Black">
+            2020 대비 <span>심화이론 개설 강의</span>            
+            </div>
+            <p class="mt50 mb80">* 수강신청 클릭 시 가장 최근 진행 된 심화강좌로 연결됩니다.</p>
+            <span class="popup NSK-Black">
+                심화기출<br>
+                <span>11월 4일</span><br>
+                개강 예정!
+            </span>
+            
             <table cellspacing="0" cellpadding="0">
                 <col width="20%" />
                 <col width="" />
@@ -80,46 +94,47 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>형소법 신광은</td>
-                        <td>2019 신광은 형소법 심화이론</td>
-                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153339') }}">수강신청</a></td>
+                        <td>형사소송법 신광은</td>
+                        <td>2012 신광은 사소송법 심화이론</td>
+                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156687" target="_blank">수강신청</a></td>
                     </tr>    
                     <tr>
-                        <td>경찰학 장정훈</td>
-                        <td>2019 장정훈 경찰학 심화기출</td>
-                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153340') }}">수강신청</a></td>
+                        <td>경찰학개론 장정훈</td>
+                        <td>2020 장정훈 경찰학개론 심화기출</td>
+                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156694" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>형법 김원욱</td>
-                        <td>2019 김원욱 형법 심화이론(판례)</td>
-                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153341') }}">수강신청</a></td>
+                        <td>2020 김원욱 형법 심화이론(판례)</td>
+                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156697" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>영어 하승민</td>
-                        <td>2019 하승민 영어 심화이론</td>
-                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153342') }}">수강신청</a></td>
+                        <td>2020 하승민 영어 심화이론</td>
+                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156704" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 원유철</td>
-                        <td>2019 원유철 한국사 심화이론</td>
-                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153343') }}">수강신청</a></td>
+                        <td>2020 원유철 한국사 심화이론</td>
+                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156708" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>한국사 오태진</td>
-                        <td>2019 오태진 한국사 심화이론</td>
-                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/153344') }}">수강신청</a></td>
-                    </tr>  
+                        <td>2020 오태진 한국사 심화이론</td>
+                        <td><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/156706" target="_blank">수강신청</a></td>
+                    </tr>
+                    {{--  
                     <tr>
                         <td>수사 신광은</td>
-                        <td>2019 신광은 수사 이론 </td>
-                        <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153345') }}">수강신청</a></td>
+                        <td>2020 신광은 수사 이론 </td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153345') }}" target="_blank">수강신청</a></td>
                     </tr>                  
                     <tr>
                         <td>행정법 장정훈</td>
-                        <td>2019 장정훈 행정법 심화기출</td>
+                        <td>2020 장정훈 행정법 심화기출</td>
                         <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153346') }}">수강신청</a></td>
-                    </tr>
-                    
+                    </tr> 
+                    --}}                   
                 </tbody>
             </table>
         </div>

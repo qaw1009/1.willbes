@@ -1,6 +1,6 @@
 <div class="widthAuto">
     <a name="map_campus"></a>
-    <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 캠퍼스</div>
+    <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 학원</div>
     <div class="noticeTabs campus c_both">
         <ul class="tabWrap noticeWrap_campus">
             @foreach($data['arr_campus'] as $row)
@@ -24,7 +24,7 @@
                                 <dl>
                                     <dt>
                                         <div class="c-tit">
-                                            <span class="tx-color">전북 </span> 캠퍼스 공지사항
+                                            <span class="tx-color">전북 </span> 학원 공지사항
                                             <a href="{{front_url('/support/notice/index?s_campus='.$row['CampusCcd'])}}" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                         </div>
                                         <div class="c-info p_re">
@@ -48,7 +48,7 @@
                                         </div>
                                     </dt>
                                     <dt>
-                                        <div class="c-tit"><span class="tx-color">전북 전주</span> 캠퍼스 오시는 길</div>
+                                        <div class="c-tit"><span class="tx-color">전북 전주</span> 학원 오시는 길</div>
                                         <div class="c-info">
                                             <div class="address">
                                                 <span class="a-tit">주소</span>
@@ -63,7 +63,7 @@
                                         </div>
                                     </dt>
                                     <dt>
-                                        <div class="c-tit"><span class="tx-color">전북 익산</span> 캠퍼스 오시는 길</div>
+                                        <div class="c-tit"><span class="tx-color">전북 익산</span> 학원 오시는 길</div>
                                         <div class="c-info">
                                             <div class="address">
                                                 <span class="a-tit">주소</span>
@@ -101,7 +101,7 @@
                             <dl>
                                 <dt>
                                     <div class="c-tit">
-                                        <span class="tx-color">{{$row['CampusCcdName']}}</span> 캠퍼스 공지사항
+                                        <span class="tx-color">{{$row['CampusCcdName']}}</span> 학원 공지사항
                                         <a href="{{front_url('/support/notice/index?s_campus='.$row['CampusCcd'])}}" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
                                     </div>
                                     <div class="c-info p_re">
@@ -129,7 +129,7 @@
                                     </div>
                                 </dt>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">{{$row['CampusCcdName']}}</span> 캠퍼스 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">{{$row['CampusCcdName']}}</span> 학원 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>

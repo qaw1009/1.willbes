@@ -53,20 +53,26 @@
             <ul class="tabs">
                 <li>
                     <a href="#tab01">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1382_tab01_off.jpg" alt="합격기원 댓글 이벤트" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1382_tab01_on.jpg" alt="합격기원 댓글 이벤트" class="on"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab01_off.jpg" alt="합격기원 댓글 이벤트" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab01_on.jpg" alt="합격기원 댓글 이벤트" class="on"/> 
                     </a>
                 </li>
                 <li>
                     <a href="#tab02">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1382_tab02_off.jpg" alt="신규수강생 기간연장" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1382_tab02_on.jpg" alt="신규수강생 기간연장" class="on"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab02_off.jpg" alt="신규수강생 기간연장" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab02_on.jpg" alt="신규수강생 기간연장" class="on"/> 
                     </a>
                 </li>
                 <li>
                     <a href="#tab03">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1382_tab03_off.jpg" alt="수강지원 특별한정 강좌할인" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1382_tab03_on.jpg" alt="수강지원 특별한정 강좌할인" class="on"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab03_off.jpg" alt="수강지원 특별한정 강좌할인" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab03_on.jpg" alt="수강지원 특별한정 강좌할인" class="on"/> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab04">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab04_off.jpg" alt="추석연휴 학원강의 안내" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab04_on.jpg" alt="추석연휴 학원강의 안내" class="on"/> 
                     </a>
                 </li>
             </ul>
@@ -81,14 +87,21 @@
         </div>
 
         <div class="evtCtnsBox" id="tab02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab02.jpg" alt="신규수강생 기간연장" usemap="#map1382A" border="0">
-            <map name="map1382A" id="map1382A">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab02.jpg" alt="신규수강생 기간연장" usemap="#map1383A" border="0">
+            <map name="map1383A" id="map1383A">
                 <area shape="rect" coords="416,1190,693,1247" href="https://www.willbes.net/member/join/?ismobile=0&amp;sitecode=2000" target="_blank" alt="회원가입" />
             </map>
         </div>
 
         <div class="evtCtnsBox" id="tab03">
             할인강좌
+        </div>
+
+        <div class="evtCtnsBox" id="tab04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab04.jpg" alt="추석연휴 형법 무료특강" usemap="#Map1383B" border="0">
+            <map name="Map1383B" id="Map1383B">
+                <area shape="rect" coords="414,777,702,839" href="#none" target="_self" alt="무료특강신청하기" />
+            </map>
         </div>
 
     </div>

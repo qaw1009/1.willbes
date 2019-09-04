@@ -194,10 +194,12 @@
                         @foreach($data_sublist as $idx => $sub_row /*필수 과목*/)
                             @if($sub_row['IsEssential'] === 'Y')
                                 @php
-                                    $subGroup_array[] = $sub_row['SubGroupName'];
+                                    //$subGroup_array[] = $sub_row['SubGroupName'];
+                                    $subGroupName_Re = strlen($sub_row['SubGroupName']) == 1 ? "0".$sub_row['SubGroupName'] : $sub_row['SubGroupName'];
+                                    $subGroup_array[] = $subGroupName_Re;
                                 @endphp
                         <tr>
-                            <td class="w-list tx-center bg-light-gray row_td" >{{$sub_row['SubjectName']}}<div class="{{$sub_row['SubGroupName']}} d_none">{{$sub_row['SubGroupName']}}</div></td>
+                            <td class="w-list tx-center bg-light-gray row_td" >{{$sub_row['SubjectName']}}<div class="{{$subGroupName_Re}} d_none">{{$subGroupName_Re}}</div></td>
                             <td class="bdb-dark-gray">
                                 <div id="lec_table_{{ $sub_row['ProdCode'] }}" class="willbes-Lec-Table">
                                     <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -209,7 +211,7 @@
                                         </colgroup>
                                         <tbody>
                                         <tr>
-                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);" checked></td>
+                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$subGroupName_Re}}" onclick="checkOnly('.essSubGroup-{{$subGroupName_Re}}', this.value);" checked></td>
                                             <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
@@ -332,10 +334,11 @@
                         @foreach($data_sublist as $idx => $sub_row /*선택 과목*/)
                             @if($sub_row['IsEssential'] === 'N')
                                 @php
-                                    $subGroup_cho_array[] = $sub_row['SubGroupName'];
+                                        $subGroupName_Re = strlen($sub_row['SubGroupName']) == 1 ? "0".$sub_row['SubGroupName'] : $sub_row['SubGroupName'];
+                                        $subGroup_cho_array[] = $sub_row['SubGroupName'];
                                 @endphp
                         <tr>
-                            <td class="w-list tx-center bg-light-gray row_td2" >{{$sub_row['SubjectName']}}<div class="{{$sub_row['SubGroupName']}} d_none">{{$sub_row['SubGroupName']}}</div></td>
+                            <td class="w-list tx-center bg-light-gray row_td2" >{{$sub_row['SubjectName']}}<div class="{{$subGroupName_Re}} d_none">{{$subGroupName_Re}}</div></td>
                             <td class="bdb-dark-gray">
                                 <div id="lec_table_{{ $sub_row['ProdCode'] }}" class="willbes-Lec-Table">
                                     <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -347,7 +350,7 @@
                                         </colgroup>
                                         <tbody>
                                         <tr>
-                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup choSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.choSubGroup-{{$sub_row['SubGroupName']}}', this.value);" ></td>
+                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup choSubGroup-{{$subGroupName_Re}}" onclick="checkOnly('.choSubGroup-{{$subGroupName_Re}}', this.value);" ></td>
                                             <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">

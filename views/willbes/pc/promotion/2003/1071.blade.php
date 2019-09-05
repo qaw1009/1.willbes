@@ -69,13 +69,6 @@
         .wb_cts03 table a:hover {background:#202020; color:#fff;}
         .wb_cts03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
 
-        /*
-        .PeMenu {width:1210px; margin:0 auto 0; padding-top:100px}
-        .PeMenu li { display:inline; float:left}
-        .PeMenu li a img.off {display:block}
-        .PeMenu li a img.on {display:none}
-        */
-
         .skybanner {
             position:fixed;
             top:250px;
@@ -85,8 +78,7 @@
         }
 
     </style>
-    <div class="p_re evtContent NGR" id="evtContainer">
-        
+    <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
@@ -99,8 +91,7 @@
                     <area shape="rect" coords="5,462,116,511" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="6"/>
                 </map>
             </div>
-        </div>
-        
+        </div>        
 
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_gif.gif" alt="전기/통신 수험생의 이유있는 선택 최우영교수"  >
@@ -179,8 +170,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146362" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156377" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -234,8 +225,8 @@
                     <tr>
                         <td>무선공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 무선공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146360" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 무선공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156378" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
@@ -280,8 +271,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146362" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156377" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -335,14 +326,14 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2019 최우영 통신이론 (이론/문풀)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 통신공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156379" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 통신공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146361" target="_blank">수강신청</a></td>
+                        <td>2019 최우영 통신이론 (이론/문풀)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -393,8 +384,8 @@
                     <tr>
                         <td>통신공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 통신공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146361" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 통신공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156379" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -520,8 +511,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>이론</td>
-                        <td>2019 최우영 전기기기 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146238" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기기기 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155800" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -560,8 +551,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>이론</td>
-                        <td>2019 최우영 전기기기 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146238" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기기기 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155800" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -657,8 +648,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146362" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156377" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -745,8 +736,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146362" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156377" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -806,14 +797,14 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2019 최우영 통신이론 (이론/문풀)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 통신공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156379" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
                         <td>이론</td>
-                        <td>2019 최우영 통신공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146361" target="_blank">수강신청</a></td>
+                        <td>2019 최우영 통신이론 (이론/문풀)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146544" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -854,7 +845,7 @@
                     </tr>
                     <tr>
                         <td>전기자기학</td>
-                        <td>문제풀이</td>Fw
+                        <td>문제풀이</td>
                         <td>2018 최우영 전기자기학 단원별문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146194" target="_blank">수강신청</a></td>
                     </tr>

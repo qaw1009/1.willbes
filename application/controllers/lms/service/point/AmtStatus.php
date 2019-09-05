@@ -26,20 +26,20 @@ class AmtStatus extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-        $search_save_point = $this->_reqP('search_save_point');
+        $basic_condition = $this->_getBasicConditions();
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
         $count = 0;
         $list = [];
 
-        // 포인트금액, 포인트사용기간이 있을 경우만 조회
-        if (empty($search_save_point) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
+        // 포인트금액 또는 적립상품코드, 포인트사용기간이 있을 경우만 조회
+        if (empty(array_filter($basic_condition)) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
             $arr_condition = $this->_getListConditions();
 
-            $count = $this->pointModel->listSaveUsePointByPointAmt($search_save_point, $search_start_date, $search_end_date, true, $arr_condition);
+            $count = $this->pointModel->listSaveUsePointByBCond($basic_condition, $search_start_date, $search_end_date, true, $arr_condition);
 
             if ($count > 0) {
-                $list = $this->pointModel->listSaveUsePointByPointAmt($search_save_point, $search_start_date, $search_end_date, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy());
+                $list = $this->pointModel->listSaveUsePointByBCond($basic_condition, $search_start_date, $search_end_date, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy());
             }
         }
 
@@ -58,11 +58,11 @@ class AmtStatus extends \app\controllers\BaseController
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
-        $search_save_point = $this->_reqP('search_save_point');
+        $basic_condition = $this->_getBasicConditions();
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
 
-        if (empty($search_save_point) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
+        if (empty(array_filter($basic_condition)) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
@@ -70,9 +70,9 @@ class AmtStatus extends \app\controllers\BaseController
             , '사용시 주문번호', '적립날짜', '적립포인트', '사용날짜', '사용포인트', '남은포인트', '사용사유'];
 
         $arr_condition = $this->_getListConditions();
-        $list = $this->pointModel->listSaveUsePointByPointAmt($search_save_point, $search_start_date, $search_end_date, false, $arr_condition, null, null, $this->_getListOrderBy());
+        $list = $this->pointModel->listSaveUsePointByBCond($basic_condition, $search_start_date, $search_end_date, false, $arr_condition, null, null, $this->_getListOrderBy());
         $last_query = $this->pointModel->getLastQuery();
-        $file_name = '포인트금액별현황_' . $search_save_point . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $file_name = '포인트금액별현황_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // download log
         $this->load->library('approval');
@@ -88,6 +88,18 @@ class AmtStatus extends \app\controllers\BaseController
     }
 
     /**
+     * 포인트금액별현황 기본조건 리턴
+     * @return array
+     */
+    private function _getBasicConditions()
+    {
+        return [
+            'save_point' => $this->_reqP('search_save_point'),
+            'prod_code' => $this->_reqP('search_prod_code')
+        ];
+    }
+
+    /**
      * 포인트금액별현황 검색조건 리턴
      * @return array
      */
@@ -96,8 +108,7 @@ class AmtStatus extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'PS.SiteCode' => $this->_reqP('search_site_code'),
-                'SO.OrderNo' => $this->_reqP('search_order_no'),
-                'SOP.ProdCode' => $this->_reqP('search_prod_code')
+                'SO.OrderNo' => $this->_reqP('search_order_no')
             ],
             'IN' => [
                 'PS.SiteCode' => get_auth_site_codes()   //사이트 권한 추가

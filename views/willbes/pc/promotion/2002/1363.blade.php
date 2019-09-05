@@ -122,7 +122,7 @@
                                             <input type="hidden" name="register_data1" value=""/>
                                             <li>8.24(토) 종료</li>
                                             <li>9.4(수) 종료</li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="9.8(일)" /> <label for="campus3">9.8(일)</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="9.7(토)" /> <label for="campus3">9.7(토)</label></li>
                                         </ul>
                                     </td>
                                 </tr>

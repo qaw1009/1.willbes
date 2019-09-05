@@ -30,7 +30,7 @@
         <div class="evtCtnsBox cts03_02">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1361_cts03_02.jpg" alt="" usemap="#Map1361ct03A" border="0" />
             <map name="Map1361ct03A" id="Map1361ct03A">
-                <area shape="rect" coords="427,442,789,515" href="#none" alt="체력qna바로가기" />
+                <area shape="rect" coords="427,442,789,515" href="#none" onClick='alert("COMING SOON!!")' alt="체력qna바로가기" />
             </map>
         </div>
         <div class="evtCtnsBox cts03_03">

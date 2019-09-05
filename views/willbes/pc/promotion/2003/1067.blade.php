@@ -67,7 +67,7 @@
     </div><!--wb_cts02//-->
 
     <div class="evtCtnsBox wb_cts03" id="event">
-        @if (empty($arr_base['register_member_list'][$arr_base['register_list'][0]['ErIdx']]['mem_cnt']) === false)
+        @if (empty($arr_base['register_member_list']) === false)
             @if ($arr_base['register_list'][0]['PersonLimit'] <= $arr_base['register_member_list'][$arr_base['register_list'][0]['ErIdx']]['mem_cnt'])
                 {{--선착순 20명 마감되었을때 보여지는 이미지와 문구--}}
                 <img src="https://static.willbes.net/public/images/promotion/2019/09/1067_04_end.jpg" title="선찬순 20명 마감되었습니다." usemap="#Map1067" />

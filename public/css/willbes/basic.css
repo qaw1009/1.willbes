@@ -337,7 +337,7 @@ a, a:hover, a:active, a:link, a:visited {
 }
 strong {
 	font-weight: 700;
-	vertical-align: baseline;
+	vertical-align: baseline; 
 }
 .sel_disabled,
 select[disabled] {

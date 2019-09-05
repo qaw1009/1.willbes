@@ -173,8 +173,8 @@
             </div>
             <div class="btnJoin">
                 <a href="#none" onclick="javascript:doEvent();">
-                    <span> 필기합격생 <br>
-                    인증하기  ></span>
+                    경찰 2차 시험 응시생 <br>
+                    <span>인증하기  ></span>
                 </a>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">

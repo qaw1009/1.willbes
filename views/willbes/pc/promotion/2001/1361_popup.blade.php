@@ -51,7 +51,7 @@
                     <select name="test_subject" id="test_subject"style="width:120px">
                         <option value="AA">일반공채:남</option>
                         <option value="BA">일반공채:여</option>
-                        <option value="CA">전의경경채</option> 
+                        <option value="CA">경행경채</option> 
                         <option value="DA">101단-서울</option>
                     </select>
                     <select id="listview" name="listview" >

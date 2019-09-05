@@ -120,9 +120,9 @@
         .tabs ul:after {content:""; display:block; clear:both}
 
 
-        .wb_cts02 div iframe {position:absolute; width:410px; left:50%; height:205px; top:860px; z-index:10}
-        .wb_cts02 div iframe.play01 {margin-left:-430px}
-        .wb_cts02 div iframe.play02 {margin-right:-430px}
+        .wb_cts02 div iframe {position:absolute; width:410px; left:50%; height:205px; top:860px; z-index:10;}
+        .wb_cts02 div iframe.play01 {margin-left:-430px;}
+        .wb_cts02 div iframe.play02 {margin-right:-430px;}
 
         .wb_cts03 {background:#f8f8f8; padding-bottom:150px;}
         .wb_cts03 ul {width:1120px; margin:0 auto}
@@ -131,7 +131,9 @@
 
         .wb_cts04 {background:#f97f7a; padding-bottom:120px} 
         .wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
-        .wb_ctsInfo div {width:1000px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;letter-spacing: normal}
+        .wb_ctsInfo div {width:1000px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
+            font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+        }
         .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#f97f7a} 
         .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;
             text-decoration:underline}  
@@ -149,7 +151,7 @@
             left: 0;
             position: absolute;
             top: 8px;
-            width: 4px
+            width: 4px;
         }
         .wb_ctsInfo p {margin-top:40px;font-size:18px;}
         .wb_ctsInfo p span  {border:2px solid #fff; padding:10px 20px}
@@ -220,18 +222,17 @@
                 </li>
             </ul>
             <div id="tab01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab_con1.jpg" alt="국제법/국제정치학/헌법"/>
-                
-                <iframe class="play01" src="https://www.youtube.com/embed/feNX-me5cQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe class="play02" src="https://www.youtube.com/embed/-HAGYuZxtoQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab_con1.jpg" alt="국제법/국제정치학/헌법"/>  
+                              
+                <iframe class="play01" src="https://www.youtube.com/embed/feNX-me5cQs" frameborder="0" allowfullscreen></iframe>
+                <iframe class="play02" src="https://www.youtube.com/embed/-HAGYuZxtoQ" frameborder="0" allowfullscreen></iframe>                
             </div>
             <div id="tab02">
                 <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab_con2.jpg" alt="국어/한국사/제2외국어"/>
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts03" >
+        <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_03.jpg" alt="윌비스 7급 외무영사직 PASS"/>
             <ul>
                 <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1378_03_p01.gif" alt="기미진"/></li>
@@ -240,7 +241,7 @@
             </ul>
         </div>
 
-        <div class="evtCtnsBox wb_cts04" >
+        <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_04.jpg"  alt="윌비스 7급 외무영사직 PASS" usemap="#Map190124B" border="0"/>
             <map name="Map190124B" id="Map190124B">
                 <area shape="rect" coords="884,872,1095,962" onclick="go_PassLecture(2);" alt="외무영사직 PASS 수강신청" />
@@ -254,9 +255,9 @@
             </div>
         </div>
         
-        <div class="wb_ctsInfo NSK-Thin" id="ctsInfo">
+        <div class="wb_ctsInfo NGR" id="ctsInfo">
             <div>
-                <h3 class="NSK-Black">윌비스 7급 외무영사직 PASS 이용안내</h3>
+                <h3 class="NGEB">윌비스 7급 외무영사직 PASS 이용안내</h3>
                 <dd>
                     <dt>상품구성</dt>
                     <dl>본 PASS는 참여교수진의 전 강좌를 수강할 수 있는 상품입니다. 단, 기미진 국어 강좌의 경우, 19년 대비 아침특강 커리큘럼 과정은 본 PASS에 제공되지 않습니다.</dl>

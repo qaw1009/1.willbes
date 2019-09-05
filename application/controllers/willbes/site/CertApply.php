@@ -37,12 +37,15 @@ class CertApply extends \app\controllers\FrontController
             'A.SiteCode' => $this->_site_code
         ];
 
-        //경찰시험직렬,경찰시험지역 : 꿀팁 이벤트 때문에 추출
+        //경찰시험직렬,경찰시험지역
         $codes = $this->codeModel->getCcdInArray(['711','712']);
 
         $data = $this->certApplyFModel->findCertByCertIdx($cert_idx,$arr_condition);
         $product_list = $this->certApplyFModel->listProductByCertIdx($cert_idx,$arr_condition);
 
+        if(empty($data)){
+            show_alert('인증 설정 정보가 존재하지 않습니다.', 'close');
+        }
         $data['kind_ccd'] = $codes['711'];
         $data['area_ccd'] = $codes['712'];
 

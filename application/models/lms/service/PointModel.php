@@ -136,8 +136,8 @@ class PointModel extends WB_Model
     }
 
     /**
-     * 적립포인트금액별 적립/사용 목록 조회
-     * @param int $save_point [적립포인트금액]
+     * 조회기준별 적립/사용 목록 조회
+     * @param array $basic_condition [기본조회조건]
      * @param string $use_start_date [포인트사용시작일자]
      * @param string $use_end_date [포인트사용종료일자]
      * @param bool $is_count
@@ -147,7 +147,7 @@ class PointModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listSaveUsePointByPointAmt($save_point, $use_start_date, $use_end_date, $is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSaveUsePointByBCond($basic_condition, $use_start_date, $use_end_date, $is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -163,14 +163,34 @@ class PointModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
+        // 기본 바인딩
+        $binds = [$use_start_date . ' 00:00:00', $use_end_date . ' 23:59:59'];
+
+        // 기본 조건
+        $target_where = '';
+
+        // 포인트금액 기준
+        if (empty(element('save_point', $basic_condition)) === false) {
+            $target_where .= ' and PS.SavePoint = ?';
+            $binds[] = $basic_condition['save_point'];
+        }
+
+        // 적립상품코드 기준
+        if (empty(element('prod_code', $basic_condition)) === false) {
+            $target_where .= ' and OP.ProdCode = ?';
+            $binds[] = $basic_condition['prod_code'];
+        }
+
         $from = '
             from (
                 select PU.PointIdx, PU.OrderIdx, sum(PU.UsePoint) as SumUsePoint, max(PU.PointUseIdx) as PointUseIdx
                 from ' . $this->_table['point_use'] . ' as PU
                     inner join ' . $this->_table['point_save'] . ' as PS
                         on PU.PointIdx = PS.PointIdx 
-                where PS.SavePoint in (?)
-                    and PU.UseDatm between ? and ?
+                    left join ' . $this->_table['order_product'] . ' as OP
+                        on PS.OrderIdx = OP.OrderIdx and PS.OrderProdIdx = OP.OrderProdIdx                        
+                where PU.UseDatm between ? and ?
+                    ' . $target_where . '
                 group by PU.PointIdx, PU.OrderIdx
             ) as TA
                 inner join ' . $this->_table['point_save'] . ' as PS
@@ -195,7 +215,7 @@ class PointModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$save_point, $use_start_date . ' 00:00:00', $use_end_date . ' 23:59:59']);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, $binds);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

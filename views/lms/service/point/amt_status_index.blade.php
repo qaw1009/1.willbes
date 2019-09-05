@@ -14,11 +14,11 @@
                         <input type="number" class="form-control" id="search_save_point" name="search_save_point">
                     </div>
                     <div class="col-md-9">
-                        <p class="form-control-static"><span class="required">*</span> 포인트금액을 숫자로만 입력해 주세요.</p>
+                        <p class="form-control-static"><span class="required">*</span> 포인트금액 또는 적립상품코드를 숫자로만 입력해 주세요.</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_prod_code">적립상품코드</label>
+                    <label class="control-label col-md-1" for="search_prod_code"><span class="required">*</span> 적립상품코드</label>
                     <div class="col-md-2">
                         <input type="number" class="form-control" id="search_prod_code" name="search_prod_code">
                     </div>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1">사용일</label>
+                    <label class="control-label col-md-1"><span class="required">*</span> 사용일</label>
                     <div class="col-md-11 form-inline">
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">

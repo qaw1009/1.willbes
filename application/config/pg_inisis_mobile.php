@@ -8,8 +8,9 @@ $config = [
         'type' => 'web',
         'charset' => 'utf8',
         'next_method' => 'returnsMobile',
-        'noti_method' => 'nothingMobile',
+        'noti_method' => 'notiMobile',
         'return_method' => 'nothingMobile',
+        'cancel_method' => 'nothingMobile',
         'card_quotabase' => '2:3:4:5:6:7:8:9:10:11:12',
         'option' => 'twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N&twotrs_bank=Y&ismart_use_sign=Y&vbank_receipt=Y&bank_receipt=N&apprun_check=Y',
         'request_url' => 'https://mobile.inicis.com/smart/'

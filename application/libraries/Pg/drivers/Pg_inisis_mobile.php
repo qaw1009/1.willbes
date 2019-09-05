@@ -111,6 +111,7 @@ class Pg_inisis_mobile extends CI_Driver
                 'next_url' => trim($return_prefix_url, '/') . '/' . $this->_mode_config['next_method'],
                 'noti_url' => trim($return_prefix_url, '/') . '/' . $this->_mode_config['noti_method'],
                 'return_url' => trim($return_prefix_url, '/') . '/' . $this->_mode_config['return_method'],
+                'cancel_url' => trim($return_prefix_url, '/') . '/' . $this->_mode_config['cancel_method'],
                 'quotabase' => $this->_mode_config['card_quotabase'],
                 'vbank_dt' => substr($vbank_datm, 0, 8),
                 'vbank_tm' => substr($vbank_datm, 8),
@@ -258,48 +259,176 @@ class Pg_inisis_mobile extends CI_Driver
     }
 
     /**
-     * 이니시스 모바일 NOTI 결과 리턴
+     * 이니시스 모바일 승인결과 통보 검증 및 리턴
+     * @param array $params
      * @return array
      */
-    public function nothing()
+    public function depositResult($params = [])
     {
-        // 리턴 결과
+        // 전달 결과
         $returns = array_merge($this->_CI->input->get(null, false), $this->_CI->input->post(null, false));
+        $log_type = 'deposit';
+        $log_idx = '';
 
-        $this->_parent->saveFileLog('결제 NOTI 결과 리턴', $returns);
+        try {
+            $returns['reg_ip'] = $this->_CI->input->ip_address();   // 연동 아이피
 
-        return $returns;
+            // 승인일시 (입금일시)
+            if (empty(element('P_AUTH_DT', $returns)) === false) {
+                $returns['dtm_trans'] = date('Y-m-d H:i:s', strtotime(element('P_AUTH_DT', $returns)));
+            } else {
+                $returns['dtm_trans'] = date('Y-m-d H:i:s');
+            }
+
+            // 전달 결과 파일로그 저장
+            $this->_parent->saveFileLog('결제 승인결과 통보 데이터', $returns, 'debug', $log_type);
+
+            // 가상계좌 입금통보가 아니라면 처리사항 없음
+            if (($returns['P_TYPE'] == 'VBANK' && $returns['P_STATUS'] != '02') || $returns['P_TYPE'] != 'VBANK') {
+                $this->_parent->saveFileLog('결제 승인결과 통보 처리 해당없음', null, 'debug', $log_type);
+                return $this->depositReturn(true);
+            }
+
+            // 전문번호, 가상계좌번호, 입금은행명, 입금자명 설정
+            $returns['no_msgseq'] = 'M' . date('YmdHis') . str_pad(mt_rand(0, 999), 3, '0', STR_PAD_LEFT);
+            $returns['no_vacct'] = '';
+            $returns['nm_inputbank'] = '';
+            $returns['nm_input'] = '';
+
+            // 전달 결과 저장
+            $log_idx = $this->_saveLog($returns, $log_type);
+
+            // 로컬서버가 아닐 경우 체크 ==> TODO : 서버 환경별 실행
+            if (ENVIRONMENT != 'local') {
+                // PG사 연동 IP 체크
+                if (in_array($returns['reg_ip'], $this->_config['allow_vbank_ip']) === false) {
+                    throw new \Exception('ERR_IP');
+                }
+            }
+
+            // 전달 결과 체크
+            if (empty($returns['P_OID']) === true || empty($returns['P_MID']) === true || empty($returns['P_TID']) === true
+                || empty($returns['P_AMT']) === true) {
+                throw new \Exception('ERR_PARAM');
+            }
+
+            return [
+                'result' => true,
+                'result_msg' => '정상완료',
+                'next_method' => 'DepositComplete', // 다음 실행 메소드
+                'order_no' => $returns['P_OID'],    // 주문번호
+                'seq' => $returns['no_msgseq'],     // 전문 일련번호
+                'mid' => $returns['P_MID'],   // 상점아이디
+                'tid' => $returns['P_TID'],            // 거래번호
+                'total_pay_price' => $returns['P_AMT'],     // 입금금액
+                'vbank_code' => $returns['P_FN_CD1'],            // 가상계좌은행코드
+                'vbank_account_no' => $returns['no_vacct'],     // 가상계좌번호
+                'deposit_bank_name' => $returns['nm_inputbank'],       // 입금은행명
+                'deposit_name' => $returns['nm_input'],   // 입금자명
+                'deposit_datm' => $returns['dtm_trans'],   // 거래일시
+                'log_idx' => $log_idx       // 로그 테이블 입금식별자
+            ];
+        } catch (\Exception $e) {
+            // 오류 결과 리턴
+            $this->depositReturn(false, $e->getMessage(), $log_idx);
+
+            return [
+                'result' => false,
+                'result_msg' => $e->getMessage(),
+                'next_method' => '',
+                'order_no' => $returns['P_OID']
+            ];
+        }
+    }
+
+    /**
+     * 이니시스 모바일 승인결과 통보 처리 결과 리턴
+     * @param bool $ret_cd
+     * @param string $err_msg
+     * @param string $log_idx
+     */
+    public function depositReturn($ret_cd, $err_msg = '', $log_idx = '')
+    {
+        $log_type = 'deposit';
+
+        if ($ret_cd === true) {
+            $this->_parent->saveFileLog('결제 승인결과 통보 처리 성공', null, 'debug', $log_type);
+            $ret_msg = 'OK';
+        } else {
+            $this->_parent->saveFileLog('결제 승인결과 통보 처리 오류 발생 : ' . $err_msg, null, 'error', $log_type);
+
+            // 로그 에러 메시지 업데이트
+            $this->_saveLog(['err_msg' => $err_msg], $log_type, $log_idx);
+
+            $ret_msg = strpos($err_msg, 'ERR_') === false ? 'ERR_DB' : $err_msg;
+        }
+
+        echo $ret_msg;
     }
 
     /**
      * 로그 저장
      * @param array $params
-     * @return int|bool
+     * @param string $log_type
+     * @param null|int $log_idx [가상계좌입금통보 : 입금식별자]
+     * @return bool
      */
-    private function _saveLog($params = [])
+    private function _saveLog($params = [], $log_type = 'pay', $log_idx = null)
     {
         $_db = $this->_CI->load->database('lms', true);   // load database
 
         try {
-            $_table = $this->_parent->_log_table;
+            if ($log_type == 'pay') {
+                $_table = $this->_parent->_log_table;
 
-            $data = [
-                'OrderNo' => element('P_OID', $params),
-                'PayType' => 'MP',
-                'PgDriver' => 'inisis',
-                'PgMid' => element('P_MID', $params),
-                'PgTid' => element('P_TID', $params),
-                'PayMethod' => element('P_TYPE', $params),
-                'PayDetailCode' => element('PayDetailCode', $params),
-                'ReqPayPrice' => element('P_AMT', $params),
-                'ApprovalNo' => element('P_AUTH_NO', $params),
-                'ApprovalDatm' => element('AuthDatm', $params),
-                'ResultCode' => element('P_STATUS', $params, ''),
-                'ResultMsg' => element('P_RMESG1', $params, '')
-            ];
+                $data = [
+                    'OrderNo' => element('P_OID', $params),
+                    'PayType' => 'MP',
+                    'PgDriver' => 'inisis',
+                    'PgMid' => element('P_MID', $params),
+                    'PgTid' => element('P_TID', $params),
+                    'PayMethod' => element('P_TYPE', $params),
+                    'PayDetailCode' => element('PayDetailCode', $params),
+                    'ReqPayPrice' => element('P_AMT', $params),
+                    'ApprovalNo' => element('P_AUTH_NO', $params),
+                    'ApprovalDatm' => element('AuthDatm', $params),
+                    'ResultCode' => element('P_STATUS', $params, ''),
+                    'ResultMsg' => element('P_RMESG1', $params, '')
+                ];
 
-            if ($_db->set($data)->insert($_table) === false) {
-                throw new \Exception('결제 로그 저장에 실패했습니다.');
+                if ($_db->set($data)->insert($_table) === false) {
+                    throw new \Exception('결제 로그 저장에 실패했습니다.');
+                }
+            } elseif ($log_type == 'deposit') {
+                $_table = $this->_parent->_log_deposit_table;
+
+                if (empty($log_idx) === true) {
+                    $data = [
+                        'OrderNo' => element('P_OID', $params),
+                        'MsgSeq' => element('no_msgseq', $params),
+                        'PgDriver' => 'inisis',
+                        'PgMid' => element('P_MID', $params),
+                        'PgTid' => element('P_TID', $params),
+                        'RealPayPrice' => element('P_AMT', $params),
+                        'VBankCode' => element('P_FN_CD1', $params),
+                        'VBankAccountNo' => element('no_vacct', $params),
+                        'DepositBankName' => element('nm_inputbank', $params),
+                        'DepositName' => element('nm_input', $params),
+                        'DepositDatm' => element('dtm_trans', $params),
+                        'RegIp' => element('reg_ip', $params)
+                    ];
+
+                    if ($_db->set($data)->insert($_table) === false) {
+                        throw new \Exception('가상계좌 입금통보 결과 로그 저장에 실패했습니다.');
+                    }
+
+                    // 예외적으로 입금식별자 리턴
+                    return $_db->insert_id();
+                } else {
+                    if ($_db->set('ErrorMsg', element('err_msg', $params))->where('DepositIdx', $log_idx)->update($_table) === false) {
+                        throw new \Exception('가상계좌 입금통보 에러 메시지 업데이트에 실패했습니다.');
+                    }
+                }
             }
         } catch (\Exception $e) {
             $this->_parent->saveFileLog($e->getMessage(), null, 'error');

@@ -286,7 +286,14 @@ class Pg_inisis_mobile extends CI_Driver
             // 가상계좌 입금통보가 아니라면 처리사항 없음
             if (($returns['P_TYPE'] == 'VBANK' && $returns['P_STATUS'] != '02') || $returns['P_TYPE'] != 'VBANK') {
                 $this->_parent->saveFileLog('결제 승인결과 통보 처리 해당없음', null, 'debug', $log_type);
-                return $this->depositReturn(true);
+                $this->depositReturn(true);
+
+                return [
+                    'result' => true,
+                    'result_msg' => '해당없음',
+                    'next_method' => '',
+                    'order_no' => $returns['P_OID']
+                ];
             }
 
             // 전문번호, 가상계좌번호, 입금은행명, 입금자명 설정

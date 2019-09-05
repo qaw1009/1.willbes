@@ -72,7 +72,7 @@ class UnitTest extends \app\controllers\FrontController
         $result = $this->pg_mobile->depositResult();
         var_dump($result);
 
-        if ($result['result'] === true) {
+        if ($result['result'] === true && empty($deposit_results['next_method']) === false) {
             return $this->pg_mobile->depositReturn(true);
         }
 

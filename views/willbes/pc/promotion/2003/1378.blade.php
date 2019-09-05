@@ -107,7 +107,22 @@
         .check a.infotxt:hover {background:#f2463f}       
 
         .wb_cts01 {background:#f8f8f8}
-        .wb_cts02 {background:#223e27}
+        .wb_cts02 {background:#223e27;padding-bottom:150px;}
+        .tabs {width:920px; margin:0 auto}         
+        .tabs li {display:inline; float:left}
+        .tabs li a {display:block;}
+        .tabs li a img.off {display:block}
+        .tabs li a img.on {display:none}
+        .tabs li a:hover img.off,
+        .tabs li a.active img.off {display:none}
+        .tabs li a:hover img.on,
+        .tabs li a.active img.on {display:block}
+        .tabs ul:after {content:""; display:block; clear:both}
+
+
+        .wb_cts02 div iframe {position:absolute; width:410px; left:50%; height:205px; top:860px; z-index:10}
+        .wb_cts02 div iframe.play01 {margin-left:-430px}
+        .wb_cts02 div iframe.play02 {margin-right:-430px}
 
         .wb_cts03 {background:#f8f8f8; padding-bottom:150px;}
         .wb_cts03 ul {width:1120px; margin:0 auto}
@@ -190,10 +205,34 @@
 
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_01.jpg"  alt="윌비스 7급 외무영사직 PASS"  />
+            <ul class="tabs">
+                <li>
+                    <a href="#tab01">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab1.png" alt="국제법/국제정치학/헌법" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab1_on.png" alt="국제법/국제정치학/헌법" class="on"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab02">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab2.png" alt="국어/한국사/제2외국어" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab2_on.png" alt="국어/한국사/제2외국어" class="on"/>
+                    </a>
+                </li>
+            </ul>
+            <div id="tab01">
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab_con1.jpg" alt="국제법/국제정치학/헌법"/>
+                
+                <iframe class="play01" src="https://www.youtube.com/embed/feNX-me5cQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe class="play02" src="https://www.youtube.com/embed/-HAGYuZxtoQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+            </div>
+            <div id="tab02">
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab_con2.jpg" alt="국어/한국사/제2외국어"/>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts03" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_03.jpg"  alt="윌비스 7급 외무영사직 PASS"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_03.jpg" alt="윌비스 7급 외무영사직 PASS"/>
             <ul>
                 <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1378_03_p01.gif" alt="기미진"/></li>
                 <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1378_03_p02.gif" alt="이상구"/></li>
@@ -258,7 +297,33 @@
     </div>
     <!-- End Container -->    
 
-    <script type="text/javascript">
+    <script type="text/javascript">    
+        /*tab*/
+        $(document).ready(function(){
+            $('.tabs').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        )    
+
         function go_PassLecture(no){
 
             if(parseInt(no)==1 || parseInt(no)==2){
@@ -288,7 +353,7 @@
             }
 
             location.href = lUrl;
-        }
+        }        
         
         /*디데이카운트다운*/
         $(document).ready(function() {

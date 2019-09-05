@@ -80,7 +80,7 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox wb_top" >            
+        <div class="evtCtnsBox wb_top" >  
                
             <div>
                 <span class="txt1"><img src="https://static.willbes.net/public/images/promotion/2019/08/1385_txt1.png"></span>

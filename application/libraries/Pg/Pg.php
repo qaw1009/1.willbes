@@ -8,6 +8,7 @@ class Pg extends CI_Driver_Library
      */
     protected $valid_drivers = array(
         'inisis',
+        'inisis_mobile',
         'lgu'
     );
 

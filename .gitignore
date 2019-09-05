@@ -54,6 +54,7 @@ readme.rst
 !/storage/logs/index.html
 !/storage/logs/cron/index.html
 !/storage/logs/pg/inisis/index.html
+!/storage/logs/pg/inisis_mobile/index.html
 /storage/sessions/*
 !/storage/sessions/index.html
 /storage/uploads

@@ -93,9 +93,11 @@
         </div>
 
         <div class="evtCtnsBox wb_02" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02.jpg" alt="패키지 구성" usemap="#Map1379z" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02_2.jpg" alt="패키지 구성" usemap="#Map1379z" border="0" />
             <map name="Map1379z" id="Map1379z">
-                <area shape="rect" coords="368,1493,752,1614" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1095#none" target="_blank" alt="지금 바로 신청하기" />
+                <area shape="rect" coords="369,1927,753,2048" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1095#none" target="_blank" alt="지금 바로 신청하기" />
+                <area shape="rect" coords="915,324,1011,364" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1043&amp;subject_idx=" target="_blank" alt="핵심이론 단과" />
+                <area shape="rect" coords="914,376,1011,412" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=" target="_blank" alt="문제풀이 단과" />
             </map>
         </div>
         

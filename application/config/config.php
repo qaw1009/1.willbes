@@ -565,7 +565,8 @@ $config['csrf_cookie_name'] = 'csrf_token';
 //$config['csrf_regenerate'] = TRUE;
 $config['csrf_expire'] = 6000;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('Auth/[A-Za-z]+', 'player/StarplayerAPI', 'player/StarplayerEntAPI', 'member/mailAuth', 'member/ipin', 'payment/returns', $config['app_pass_site_prefix'] . '/payment/returns', 'deposit/results');
+$config['csrf_exclude_uris'] = array('Auth/[A-Za-z]+', 'player/StarplayerAPI', 'player/StarplayerEntAPI', 'member/mailAuth', 'member/ipin', 'payment/returns', $config['app_pass_site_prefix'] . '/payment/returns', 'deposit/results'
+    , $config['app_mobile_site_prefix'] . '/payment/returnsMobile', 'unitTest/returnsMobile');
 
 /*
 |--------------------------------------------------------------------------

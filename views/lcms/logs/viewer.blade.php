@@ -47,6 +47,7 @@
                                 <option value="api">api</option>
                                 <option value="cron">cron</option>
                                 <option value="pg">PG결제</option>
+                                <option value="pg_mobile">PG모바일</option>
                                 <option value="deposit">PG입금통보</option>
                             </select>
                         </div>

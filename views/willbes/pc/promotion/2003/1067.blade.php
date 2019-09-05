@@ -44,7 +44,7 @@
      }
 </style>
 @php
-    $goSubmit = (date('YmdHis') >= '20190801140000') ? 'doEvent(); return false;' : 'javascript:alert("8.1(목) 14시부터 접수합니다.");';
+    $goSubmit = (date('YmdHis') >= '20190905140000') ? 'doEvent(); return false;' : 'javascript:alert("9.5(목) 14시부터 접수합니다.");';
 @endphp
 
 <div class="p_re evtContent NGR" id="evtContainer">
@@ -69,9 +69,15 @@
     <div class="evtCtnsBox wb_cts03" id="event">
         <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_04.jpg" title="예약 접수" usemap="#Map1067" />
         <map name="Map1067" id="Map1067">
-            <area shape="rect" coords="660,674,934,777" href="#none" onclick="{{ $goSubmit }}" />
-            {{--<area shape="rect" coords="660,674,934,777" href="#none" onclick="javascript:alert('선착순 20명 마감되었습니다.');" />--}}
+            <area shape="rect" coords="660,674,934,777" href="#none" onclick="{{ $goSubmit }}" />            
         </map>
+        {{-- 선착순 20명 마감되었을때 보여지는 이미지와 문구
+        <img src="https://static.willbes.net/public/images/promotion/2019/09/1067_04_end.jpg" title="선찬순 20명 마감되었습니다." usemap="#Map1067" />
+        <map name="Map1067" id="Map1067">
+            <area shape="rect" coords="660,674,934,777" href="#none" onclick="javascript:alert('선착순 20명 마감되었습니다.');" />
+        </map>
+        --}}
+        
     </div><!--wb_cts03//-->
 
 </div>

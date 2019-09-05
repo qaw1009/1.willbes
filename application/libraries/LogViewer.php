@@ -188,6 +188,10 @@ class LogViewer
                 $log_path = 'pg/inisis';
                 $log_file = ($this->log_type == 'deposit' ? 'deposit' : 'log') . '-' . $log_date . '.log';
                 break;
+            case 'pg_mobile' :
+                $log_path = 'pg/inisis_mobile';
+                $log_file = 'log-' . $log_date . '.log';
+                break;
             default :
                 $log_path = strtolower($this->log_type) . ($this->log_pattern == 'log' ? '' : '/sql');
                 $log_file = $this->log_pattern == 'log' ? 'log-' . $log_date . '.log' : $this->log_pattern . '-' . $log_date . '.sql';

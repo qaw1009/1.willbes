@@ -173,8 +173,8 @@
             </div>
             <div class="btnJoin">
                 <a href="#none" onclick="javascript:doEvent();">
-                    경찰 2차 시험 응시생 <br>
-                    <span>인증하기  ></span>
+                    <span> 필기합격생 <br>
+                    인증하기  ></span>
                 </a>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
@@ -195,7 +195,7 @@
                 </li>
                 @else
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>                
                     <a href="#tab02">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
@@ -203,14 +203,14 @@
                 </li>
                 @endif
                 <li>
-                    <a href="#tab03" onClick='alert("COMING SOON!! ")'>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
+                    <a href="#tab03">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03.jpg" alt="체력시험" class="off">
                     </a>
                 </li>
                 <li>
                     <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                    {{--<a onClick='alert("COMING SOON!! ")'>--}}
                     <a href="#tab04">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
@@ -223,54 +223,6 @@
                     </a>
                 </li>
             </ul>
-            <!--{{--내일 적용해야 될게 미리 적용되어서 문제 : 형진 개발 진행--}}
-            <ul>
-                <li>
-                    {{--31일 12시까지 노출
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                    <a href="#tab01">
-                    --}}
-
-                    {{--31일 12시까지 노출--}}
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="종료"></span>
-                    <a href="#tab01" onClick='alert("서비스 종료 되었습니다.")'>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
-                    </a>
-                </li>
-                <li>
-                    {{--31일 12시까지 노출
-                    <a href="#tab02" onClick='alert("COMING SOON!! ")'>
-                    --}}
-                    {{--31일 12시까지 노출--}}
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                    <a href="#tab02">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab03" onClick='alert("COMING SOON!! ")'>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03.jpg" alt="체력시험" class="off">
-                    </a>
-                </li>
-                <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                    {{--<a onClick='alert("COMING SOON!! ")'>--}}
-                    <a href="#tab04">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab05" onClick='alert("COMING SOON!! ")'>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05_on.jpg" alt="최종합격" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05.jpg" alt="최종합격" class="off">
-                    </a>
-                </li>
-            </ul>
-            //-->
         </div>
 
         <div id="tab01">
@@ -316,8 +268,9 @@
             </div>
         @endif
 
-        <div id="tab03" class="comingsoon">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">
+        <div id="tab03">
+            {{--<img src="https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon.jpg" alt="coming soon">--}}
+            @include('willbes.pc.promotion.2001.1361_cts03')
         </div>
 
         <div id="tab04">

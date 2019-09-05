@@ -37,7 +37,7 @@
         </div>    
         <!--skybanner//-->
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_top.jpg" alt="공무원 국어의 종착점" />           
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_top.gif" alt="공무원 국어의 종착점" />           
         </div>
         <!--wb_top//-->    
         <div class="evtCtnsBox wb_top2" >     

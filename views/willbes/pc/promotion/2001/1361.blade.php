@@ -172,6 +172,7 @@
                 @endif
             </div>
             <div class="btnJoin">
+                {{--응시번호 취합 후 적용<a href="#none" onclick="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"javascript:alert('이미 이벤트에 참가하셨습니다.')"!!}@endif">=--}}
                 <a href="#none" onclick="javascript:doEvent();">
                     경찰 2차 시험 응시생 <br>
                     <span>인증하기  ></span>
@@ -296,6 +297,15 @@
                 });
             }, 1000);
         });
+
+
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '{{front_url('')}}/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+            @endif
+        }
 
         function doEvent() {
                     {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}

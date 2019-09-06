@@ -63,12 +63,29 @@ class UnitTest extends \app\controllers\FrontController
     /**
      * PG사 모바일 결제 테스트
      * @param array $params
+     * @return mixed
      */
-    public function nothingMobile($params = [])
+    public function notiMobile($params = [])
     {
         $this->load->driver('pg', ['driver' => 'inisis_mobile'], 'pg_mobile');
 
-        $result = $this->pg_mobile->nothing();
+        $result = $this->pg_mobile->depositResult();
+        var_dump($result);
+
+        if ($result['result'] === true && empty($deposit_results['next_method']) === false) {
+            return $this->pg_mobile->depositReturn(true);
+        }
+
+        return null;
+    }
+
+    /**
+     * PG사 모바일 결제 테스트
+     * @param array $params
+     */
+    public function nothingMobile($params = [])
+    {
+        $result = array_merge($this->input->get(null, false), $this->input->post(null, false));
 
         var_dump($result);
     }

@@ -189,8 +189,9 @@ class LogViewer
                 $log_file = ($this->log_type == 'deposit' ? 'deposit' : 'log') . '-' . $log_date . '.log';
                 break;
             case 'pg_mobile' :
+            case 'deposit_mobile' :
                 $log_path = 'pg/inisis_mobile';
-                $log_file = 'log-' . $log_date . '.log';
+                $log_file = ($this->log_type == 'deposit_mobile' ? 'deposit' : 'log') . '-' . $log_date . '.log';
                 break;
             default :
                 $log_path = strtolower($this->log_type) . ($this->log_pattern == 'log' ? '' : '/sql');

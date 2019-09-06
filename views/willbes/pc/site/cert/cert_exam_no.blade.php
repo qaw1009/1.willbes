@@ -78,10 +78,10 @@
                             <strong>* 응시표 인증파일 - (jpg, gif, png 파일만 등록 가능)</strong>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                         </li>
-                        <!--li>
+                        <li>
                             <strong> 추천해준 친구 윌비스 ID</strong>
                             <input type="text" name="AddContent1" id="AddContent1" >
-                        </li-->
+                        </li>
                     </ul>
                 </div>
 

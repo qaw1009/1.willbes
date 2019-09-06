@@ -175,8 +175,9 @@
             </div>
             <div class="btnJoin">
                 {{--응시번호 취합 후 적용<a href="#none" onclick="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"javascript:alert('이미 이벤트에 참가하셨습니다.')"!!}@endif">=--}}
-                <a href="#none" onclick="javascript:doEvent();">
-                    경찰 2차 시험 응시생 <br>
+                {{--<a href="#none" onclick="javascript:doEvent();">--}}
+                <a href="#none" onclick="@if(empty($cert_apply)){!!"javascript:certOpen();"!!}@else{!!"javascript:alert('이미 이벤트에 참가하셨습니다.')"!!}@endif">
+                    필기합격생
                     <span>인증하기  ></span>
                 </a>
             </div>

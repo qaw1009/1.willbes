@@ -68,16 +68,17 @@
         <div class="evtCtnsBox wb_cts02"  id="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_02.png" title="갓덕현 2019대비신규강좌" usemap="#Map1066A" border="0">
             <map name="Map1066A" id="Map1066A">
+                <area shape="rect" coords="701,397,933,454" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156354" target="_blank" alt="필살기출비법특강" />
+                <area shape="rect" coords="702,485,935,546" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156355" target="_blank" alt="독해기적" />
+                <area shape="rect" coords="705,575,936,634" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156358" target="_blank" alt="문법/어휘/독해/.모의고사" />
+                <area shape="rect" coords="703,667,936,724" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" alt="새벽실전모의고사" />
+
                 <area shape="rect" coords="697,888,948,949" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154891" target="_blank" alt="심화문법 홀수편">
                 <area shape="rect" coords="698,1068,943,1132" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154897" target="_blank" alt="실전문법464">
                 <area shape="rect" coords="699,979,945,1036" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154894" target="_blank" alt="제니스독해">
                 <area shape="rect" coords="696,1157,945,1219" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154900" target="_blank" alt="첨삭독해">
                 <area shape="rect" coords="699,1246,944,1309" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154901" target="_blank" alt="첨삭독해">
-                <area shape="rect" coords="698,1338,945,1399" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154902" target="_blank" alt="생활영어">
-                <area shape="rect" coords="701,397,933,454" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156354" target="_blank" alt="필살기출비법특강" />
-                <area shape="rect" coords="702,485,935,546" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156355" target="_blank" alt="독해기적" />
-                <area shape="rect" coords="705,575,936,634" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156358" target="_blank" alt="문법/어휘/독해/.모의고사" />
-                <area shape="rect" coords="703,667,936,724" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" alt="새벽실전모의고사" />
+                <area shape="rect" coords="698,1338,945,1399" href="#none" onClick='alert("10월 개강예정입니다.")' alt="생활영어">                
             </map>
         </div>
         <!--wb_cts02//-->

@@ -14,7 +14,7 @@
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
-            background:#f5f5f5 url(https://static.willbes.net/public/images/promotion/2019/06/1289_bg.jpg) no-repeat center top;
+            background:#f5f5f5 url(https://static.willbes.net/public/images/promotion/2019/09/1388_bg.jpg) no-repeat center top;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
@@ -54,7 +54,7 @@
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="giftPopupWrap" id="giftPopupWrap" style="display: none;">
             <div class="giftPop">
-                <img src="https://static.willbes.net/public/images/promotion/2019/06/1289_rull_popup.png" alt="당첨팝업" usemap="#Map1289pop" border="0"/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1388_rull_popup.png" alt="당첨팝업" usemap="#Map1289pop" border="0"/>
                 <map name="Map1289pop" id="Map1289pop">
                     <area shape="rect" coords="341,484,387,527" href="#none" onclick="closeWin('giftPopupWrap')" alt="닫기" />
                 </map>
@@ -64,20 +64,20 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1289_top.jpg" alt="실전 문제풀이 패키지"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1388_top.jpg" alt="실전 문제풀이 패키지"/>
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
-                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2019/06/1289_rull_start.png" alt="starg" /></button>
+                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2019/09/1388_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1289_01.png" alt="회원가입 합격 룰렛 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1388_01.png" alt="회원가입 합격 룰렛 이벤트" />
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1289_02.png" alt="회원가입" usemap="#Map1289A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1388_02.png" alt="회원가입" usemap="#Map1289A" border="0" />
             <map name="Map1289A" id="Map1289A">
                 <area shape="rect" coords="304,978,815,1058" href="https://www.willbes.net/member/join/?ismobile=0&amp;sitecode=2000" target="_blank" alt="회원가입" />
                 <area shape="rect" coords="123,1827,236,1872" href="https://police.willbes.net/home/index/cate/3001" target="_blank" alt="신광은경찰" />
@@ -88,7 +88,7 @@
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1289_03.png"  alt="소문내기 이벤트" usemap="#Map1289B" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1388_03.png"  alt="소문내기 이벤트" usemap="#Map1289B" border="0"/>
             <map name="Map1289B" id="Map1289B">
                 <area shape="rect" coords="337,998,782,1067" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="소문내기 이미지 다운로드" />
             </map>
@@ -99,7 +99,7 @@
         </div>
 
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1289_04.png"  alt="유의사항"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1388_04.png"  alt="유의사항"/>
         </div>
     </div>
     <!-- End Container -->

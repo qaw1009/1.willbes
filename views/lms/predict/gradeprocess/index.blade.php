@@ -104,6 +104,7 @@
             // DataTables
             $datatable = $list_table.DataTable({
                 serverSide: true,
+                paging: false,
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 원점수입력', className: 'btn btn-sm btn-success mr-15', action: function(e, dt, node, config) {
                         scoreMakeStep1();

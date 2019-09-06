@@ -380,39 +380,6 @@ class Passline extends \app\controllers\BaseController
     }
 
     /**
-     * 리스트
-     */
-    public function list()
-    {
-        $rules = [
-            ['field' => 'search_PredictIdx', 'label' => '코드', 'rules' => 'trim|is_natural_no_zero']
-        ];
-
-        if ($this->validate($rules) === false) return;
-
-        $PredictIdx = $this->input->post('search_PredictIdx');
-
-        $condition = [
-            'EQ' => [
-                'pg.TakeMockPart' => $this->input->post('search_TakeMockPart'),
-                'pg.TakeArea' => $this->input->post('search_TakeArea'),
-            ],
-        ];
-
-        if(empty($PredictIdx) === true) {
-            $PredictIdx = "100000";
-        }
-
-        list($data, $count) = $this->predictModel->statisticsList($PredictIdx, $condition);
-
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $data,
-        ]);
-    }
-
-    /**
      * 직렬별 예상합격선 등록
      */
     public function store()

@@ -24,7 +24,7 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/3092_visual_01.jpg" alt="제로백 안내">
+                <img src="https://static.willbes.net/public/images/promotion/main/3092_visual_01.gif" alt="제로백 안내">
             </div>
         </div>
 

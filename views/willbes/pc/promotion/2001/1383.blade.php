@@ -103,7 +103,7 @@
         <div class="evtCtnsBox" id="tab04">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab04.jpg" alt="추석연휴 형법 무료특강" usemap="#Map1383B" border="0">
             <map name="Map1383B" id="Map1383B">
-                <area shape="rect" coords="414,777,702,839" href="#none" target="_self" alt="무료특강신청하기" />
+                <area shape="rect" coords="414,777,702,839" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=405" target="_self" alt="무료특강신청하기" />
             </map>
         </div>
 

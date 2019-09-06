@@ -37,7 +37,7 @@
             <div class="widthAuto p_re">
                 <img src="https://static.willbes.net/public/images/promotion/main/309001_03.jpg" alt="신명호 박사">
                 <span class="txt02_309001"><img src="https://static.willbes.net/public/images/promotion/main/309001_03_txt.gif" alt="언제나 누구나"></span>            
-                <span class="prof"><img src="https://static.willbes.net/public/images/promotion/main/309001_03_t.gif" alt="신명호 박사"></span>
+                <span class="prof"><iframe src="https://www.youtube.com/embed/QXxWoGDG6Rk" frameborder="0" allowfullscreen=""style="width:560px;height:420px;"></iframe></span>
                 <div class="curriBox NGR">
                     <h4>2급 전문/생활 스포츠지도사 필기</h4>
                     <div id="1cha" class="curri">

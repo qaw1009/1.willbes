@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false) !!}
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)

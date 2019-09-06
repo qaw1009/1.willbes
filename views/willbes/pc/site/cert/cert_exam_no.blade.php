@@ -54,7 +54,13 @@
                             <strong>* 직렬(직류구분)</strong>
                             <select  name="TakeKind" id="TakeKind" style="width:120px" >
                                 @foreach($data['kind_ccd'] as $key => $val)
-                                    <option value="{{$key}}">{{$val}}</option>
+                                    @if($cert_idx=='24')
+                                        @if($key != '711005')
+                                        <option value="{{$key}}">{{$val}}</option>
+                                        @endif
+                                    @else
+                                        <option value="{{$key}}">{{$val}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             <select id="TakeArea" name="TakeArea" >
@@ -65,17 +71,17 @@
                             ※ 응시직렬은 최초 선택/저장 후 수정 불가
                         </li>
                         <li>
-                            <strong>* 2019년 1차 필기합격 응시번호</strong>
+                            <strong>* 2019년 2차 필기합격 응시번호</strong>
                             <input type="text" name="TakeNo" id="TakeNo"  numberOnly>
                         </li>
                         <li>
                             <strong>* 응시표 인증파일 - (jpg, gif, png 파일만 등록 가능)</strong>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                         </li>
-                        <li>
+                        <!--li>
                             <strong> 추천해준 친구 윌비스 ID</strong>
                             <input type="text" name="AddContent1" id="AddContent1" >
-                        </li>
+                        </li-->
                     </ul>
                 </div>
 

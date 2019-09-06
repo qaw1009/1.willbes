@@ -12,6 +12,7 @@
         <input type="hidden" name="P_NEXT_URL" value="{{ $data['next_url'] }}"/>
         <input type="hidden" name="P_NOTI_URL" value="{{ $data['noti_url'] }}"/>
         <input type="hidden" name="P_RETURN_URL" value="{{ $data['return_url'] }}"/>
+        <input type="hidden" name="P_CANCEL_URL" value="{{ $data['cancel_url'] }}"/>
         <input type="hidden" name="P_QUOTABASE" value="{{ $data['quotabase'] }}"/>
         <input type="hidden" name="P_VBANK_DT" value="{{ $data['vbank_dt'] }}"/>
         <input type="hidden" name="P_VBANK_TM" value="{{ $data['vbank_tm'] }}"/>

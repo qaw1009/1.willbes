@@ -94,7 +94,10 @@
         </div>
 
         <div class="evtCtnsBox" id="tab03">
-            할인강좌
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1383_tab03.jpg" alt="합격기원 댓글 이벤트" usemap="#Map1384C" border="0">
+            <map name="Map1384C" id="Map1384C">
+                <area shape="rect" coords="390,779,734,840" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" alt="텀블러받기" />
+            </map>
         </div>
 
         <div class="evtCtnsBox" id="tab04">

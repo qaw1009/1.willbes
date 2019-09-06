@@ -130,6 +130,7 @@
         .wb_cts03 ul:after {content:""; display:block; clear:both}
 
         .wb_cts04 {background:#f97f7a; padding-bottom:120px} 
+        .wb_cts04 p {margin-top:20px}
         .wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
         .wb_ctsInfo div {width:1000px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
             font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
@@ -242,10 +243,8 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_04.jpg"  alt="윌비스 7급 외무영사직 PASS" usemap="#Map190124B" border="0"/>
-            <map name="Map190124B" id="Map190124B">
-                <area shape="rect" coords="884,872,1095,962" onclick="go_PassLecture(2);" alt="외무영사직 PASS 수강신청" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_04.jpg"  alt="윌비스 7급 외무영사직 PASS">
+            <p><a onclick="go_PassLecture(2);" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1378_btn.jpg" alt="윌비스 7급 외무영사직 PASS" /></a></p>
             <div class="check mt20">
                 <label>
                     <input name="ischk2"  type="checkbox" value="Y" />

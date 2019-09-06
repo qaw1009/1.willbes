@@ -134,11 +134,13 @@
     </style>
 
     <div class="evtContent NGR" id="evtContainer">
+        {{--
         <ul class="skyBanner">
             <!--li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1376" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner1.png" title="토크쇼"></a></li//-->
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1362" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1344" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner3.png" title="적중이벤트"></a></li>
         </ul>
+        --}}
 
         {{-- 31일 00시부터 노출--}}
         @if(time() >= strtotime('201908311200'))
@@ -196,7 +198,7 @@
                 </li>
                 @else
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>                
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="진행중"></span>                
                     <a href="#tab02">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
@@ -334,7 +336,7 @@
                     @if(time() <= strtotime('201908311200'))
                         $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                     @else
-                        $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
+                        $active = $($links.filter('[href="'+location.hash+'"]')[2] || $links[2]);
                     @endif
                 @endif
 

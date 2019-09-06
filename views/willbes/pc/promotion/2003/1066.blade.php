@@ -10,13 +10,13 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
@@ -28,7 +28,7 @@
         .wb_cts06 {background:#242424}
 
         /* 슬라이드배너 */
-        .bannerImg1 {position:relative; width:1210px; margin:0 auto;}
+        .bannerImg1 {position:relative; width:1120px; margin:0 auto;}
         .bannerImg1 p {position:absolute; top:150px; width:65px; z-index:100}
         .bannerImg1 img {width:100%;}
         .bannerImg1 p a {cursor:pointer}
@@ -68,12 +68,16 @@
         <div class="evtCtnsBox wb_cts02"  id="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_02.png" title="갓덕현 2019대비신규강좌" usemap="#Map1066A" border="0">
             <map name="Map1066A" id="Map1066A">
-                <area shape="rect" coords="798,508,1049,569" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154891" target="_blank" alt="심화문법 홀수편">
-                <area shape="rect" coords="799,687,1044,751" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154897" target="_blank" alt="실전문법464">
-                <area shape="rect" coords="799,603,1045,660" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154894" target="_blank" alt="제니스독해">
-                <area shape="rect" coords="797,777,1046,839" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154900" target="_blank" alt="첨삭독해">
-                <area shape="rect" coords="797,866,1042,929" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154901" target="_blank" alt="첨삭독해">
-                <area shape="rect" coords="799,958,1046,1019" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154902" target="_blank" alt="생활영어">
+                <area shape="rect" coords="697,888,948,949" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154891" target="_blank" alt="심화문법 홀수편">
+                <area shape="rect" coords="698,1068,943,1132" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154897" target="_blank" alt="실전문법464">
+                <area shape="rect" coords="699,979,945,1036" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154894" target="_blank" alt="제니스독해">
+                <area shape="rect" coords="696,1157,945,1219" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154900" target="_blank" alt="첨삭독해">
+                <area shape="rect" coords="699,1246,944,1309" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154901" target="_blank" alt="첨삭독해">
+                <area shape="rect" coords="698,1338,945,1399" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154902" target="_blank" alt="생활영어">
+                <area shape="rect" coords="701,397,933,454" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156354" target="_blank" alt="필살기출비법특강" />
+                <area shape="rect" coords="702,485,935,546" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156355" target="_blank" alt="독해기적" />
+                <area shape="rect" coords="705,575,936,634" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156358" target="_blank" alt="문법/어휘/독해/.모의고사" />
+                <area shape="rect" coords="703,667,936,724" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" alt="새벽실전모의고사" />
             </map>
         </div>
         <!--wb_cts02//-->
@@ -81,8 +85,8 @@
         <div class="evtCtnsBox wb_cts03" id="live">
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_03.png" title="" usemap="#Map_180412_lecplay"  border="0" />
             <map name="Map_180412_lecplay">
-                <area shape="rect" coords="896,690,1141,802" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" title="한덕현 유튜브">
-                <area shape="rect" coords="628,689,875,802" href="http://play.afreecatv.com/DHLAWRENCE31" target="_blank" title="한덕현 아프리카TV">
+                <area shape="rect" coords="801,689,1046,801" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" title="한덕현 유튜브">
+                <area shape="rect" coords="539,688,786,801" href="http://play.afreecatv.com/DHLAWRENCE31" target="_blank" title="한덕현 아프리카TV">
             </map>
         </div>
         <!--wb_cts03//-->
@@ -95,11 +99,11 @@
         <div class="evtCtnsBox wb_cts06" >
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_05.png" title="학습비법패키지수강신청" usemap="#Map1066B" border="0" />
             <map name="Map1066B" id="Map1066B">
-			  <area shape="rect" coords="925,666,1100,706" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147104" target="_blank" alt="파이널" title="05.지방직" />
-			  <area shape="rect" coords="715,665,892,712" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152604" target="_blank" alt="실전실력다지기" title="04.실전실력다지기" />
-			  <area shape="rect" coords="507,664,676,711" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" alt="문제해결스킬업" title="03.문제해결스킬업" />
-			  <area shape="rect" coords="291,661,467,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="심화실전예비" title="02.심화,실전예비" />
-			  <area shape="rect" coords="87,661,258,711" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" alt="기본이론" title="01.기본이론" />
+			  <area shape="rect" coords="892,663,1071,712" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147104" target="_blank" alt="파이널" title="05.지방직" />
+			  <area shape="rect" coords="681,663,858,710" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152604" target="_blank" alt="실전실력다지기" title="04.실전실력다지기" />
+			  <area shape="rect" coords="475,663,644,710" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" alt="문제해결스킬업" title="03.문제해결스킬업" />
+			  <area shape="rect" coords="260,661,436,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="심화실전예비" title="02.심화,실전예비" />
+			  <area shape="rect" coords="56,662,227,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" alt="기본이론" title="01.기본이론" />
             </map>    
         </div>
         <!--wb_cts06//-->

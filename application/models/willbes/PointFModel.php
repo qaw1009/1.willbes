@@ -120,6 +120,68 @@ class PointFModel extends WB_Model
     }
 
     /**
+     * 회원 적립/사용 포인트 목록
+     * @param bool|string $is_count [count 조회 여부 or 조회 컬럼]
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listMemberAllPoint($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if (is_bool($is_count) === true) {
+            if ($is_count === true) {
+                $column = 'count(*) AS numrows';
+            } else {
+                $column = 'PSU.PointIdx, PSU.MemIdx, PSU.PointType, PSU.PointStatusType, PSU.SiteCode, PSU.OrderIdx, PSU.OrderProdIdx, PSU.PointAmt
+                    , PSU.RemainPoint, PSU.RegDatm, PSU.ExpireDatm, PSU.ReasonCcd
+                    , if(PSU.EtcReason is null or length(PSU.EtcReason) < 1, CR.CcdName, PSU.EtcReason) as ReasonName
+                    , SG.SiteGroupName, O.OrderNo';
+            }
+        } else {
+            $column = $is_count;
+        }
+
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        $from = '
+            from (
+                select PS.PointIdx, PS.MemIdx, PS.PointType, "S" as PointStatusType, PS.SiteCode, PS.OrderIdx, PS.OrderProdIdx, PS.`SavePoint` as PointAmt
+                    , PS.RemainPoint, PS.SaveDatm as RegDatm, PS.ExpireDatm, PS.ReasonCcd, PS.EtcReason
+                from ' . $this->_table['point_save'] . ' as PS
+                where PS.MemIdx = ?
+                union all
+                select PU.PointIdx, PS.MemIdx, PS.PointType, "U" as PointStatusType, PU.SiteCode, PU.OrderIdx, PU.OrderProdIdx, PU.UsePoint as PointAmt
+                    , 0 as RemainPoint, PU.UseDatm as RegDatm, null as ExpireDatm, PU.ReasonCcd, PU.EtcReason
+                from ' . $this->_table['point_use'] . ' as PU
+                    inner join ' . $this->_table['point_save'] . ' as PS
+                        on PU.PointIdx = PS.PointIdx
+                where PS.MemIdx = ?	    	
+            ) as PSU
+                left join ' . $this->_table['order'] . ' as O
+                    on PSU.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['site'] . ' as S
+                    on PSU.SiteCode = S.SiteCode and S.IsStatus = "Y"
+                left join ' . $this->_table['site_group'] . ' as SG
+                    on S.SiteGroupCode = SG.SiteGroupCode and SG.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CR
+                    on PSU.ReasonCcd = CR.Ccd and CR.IsStatus = "Y"            
+        ';
+
+        // where 조건
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$this->session->userdata('mem_idx'), $this->session->userdata('mem_idx')]);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
      * 회원 포인트 조회
      * @param string $point_type [포인트구분, lecture : 강좌, book : 교재, all : 전체]
      * @return mixed

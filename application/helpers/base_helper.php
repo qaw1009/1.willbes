@@ -562,6 +562,24 @@ if (!function_exists('str_mb_pad')) {
     }
 }
 
+if (!function_exists('str_replace_array')) {
+    /**
+     * 2개 이상의 대상 문자열을 치환
+     * @param array $search [치환대상 문자열]
+     * @param string $replace [치환 문자열]
+     * @param string $subject [전체 문자열]
+     * @return mixed
+     */
+    function str_replace_array(array $search, $replace, $subject)
+    {
+        foreach ($search as $value) {
+            $subject = str_replace($value, $replace, $subject);
+        }
+
+        return $subject;
+    }
+}
+
 if (!function_exists('value')) {
     /**
      * 인자값이 Closure 일 경우 Closure 결과값이 리턴

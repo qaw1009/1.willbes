@@ -128,10 +128,13 @@
             // 동영상 플레이 모달창 오픈
             $('.btn-video').click(function() {
                 var uri_param = '?video_route=' + $(this).data('dideo-route');
+                {{--
                 $('.btn-video').setLayer({
                     'url' : '{{ site_url('/live/videoManager/viewVideoModel/') }}' + uri_param,
                     'width' : 900
                 });
+                --}}
+                window.open('{{ site_url('/live/videoManager/viewVideoModel/') }}' + uri_param);
             });
 
             // 순서 변경

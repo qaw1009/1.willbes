@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1347_top_bg.jpg) no-repeat center top; position:relative}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/09/1347_top_bg.jpg) no-repeat center top; position:relative}
         .wb_cts01 {background:#e9eaee;}
         .wb_cts01 ul {width:1124px; margin:0 auto}
         .wb_cts01 li {display:inline; float:left; margin-right:5px; width:277px;}
@@ -49,7 +49,7 @@
 
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_top.png" alt="윌비스 제로백 수강후기 한줄평 이벤트" />            
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1347_top.jpg" alt="윌비스 제로백 수강후기 한줄평 이벤트" />            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -82,12 +82,12 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03" id="careful" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_03.gif" alt="이벤트 상품"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1347_03.gif" alt="이벤트 상품"/>
 		{{--댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_normal_partial')
         @endif
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1347_04.jpg" alt="이벤트 유의사항"/>
+           {{--<img src="https://static.willbes.net/public/images/promotion/2019/08/1347_04.jpg" alt="이벤트 유의사항"/>--}}
         </div>
     </div>
     <!-- End Container -->

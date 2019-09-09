@@ -39,7 +39,7 @@ class VideoManager extends \app\controllers\BaseController
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
-        $list = $this->videoManagerModel->listLiveVideo([], null, null, ['lms_live_video.LecLiveVideoIdx' => 'asc', 'lms_live_video.OrderNum' => 'asc']);
+        $list = $this->videoManagerModel->listLiveVideo([], null, null, ['lms_live_video.OrderNum' => 'asc', 'lms_live_video.LecLiveVideoIdx' => 'asc']);
 
         $this->load->view("live/video/index", [
             'def_site_code' => $def_site_code,
@@ -142,6 +142,16 @@ class VideoManager extends \app\controllers\BaseController
     public function viewVideoModel()
     {
         $this->load->view('live/video/view_video_model', [
+            'video_route' => $this->_req('video_route')
+        ]);
+    }
+
+    /**
+     * 동영상 전체 보기
+     */
+    public function viewFullVideoModel()
+    {
+        $this->load->view('live/video/view_full_video_model', [
             'video_route' => $this->_req('video_route')
         ]);
     }

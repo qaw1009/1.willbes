@@ -61,11 +61,9 @@
                         <th class="searching searching_site_code">운영 사이트</th>
                         <th class="searching_campus">캠퍼스</th>
                         <th class="searching">강의실명</th>
+                        <th>LIVE 연결 확인</th>
                         <th class="searching_is_use">사용여부</th>
                         <th>정렬</th>
-                        <th>등록자</th>
-                        <th>등록일</th>
-                        <th>LIVE 연결 확인</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,16 +73,14 @@
                             <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
                             <td>{{ $row['CampusName'] }}<span class="hide">{{ $row['CampusCcd'] }}</span></td>
                             <td><a href="javascript:void(0);" class="btn-modify" data-idx="{{ $row['LecLiveVideoIdx'] }}"><u>{{ $row['ClassRoomName'] }}</u></a></td>
+                            <td><a href="javascript:void(0);" class="btn-video" data-dideo-route="{{ $row['LiveVideoRoute'] }}"><u>수강하기</u></a></td>
                             <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['IsUse'] }}</span>
                             </td>
                             <td>
                                 <input type="text" name="order_num" class="form-control input-sm" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['LecLiveVideoIdx'] }}" style="width: 50px;" />
                             </td>
-                            <td>{{ $row['RegAdminName'] }}</td>
-                            <td>{{ $row['RegDatm'] }}</td>
                             {{--<td><a href="javascript:void(0);" onclick="javascript:liveOn('{{ $row['LiveVideoRoute'] }}');">수강하기</a></td>--}}
-                            <td><a href="javascript:void(0);" class="btn-video" data-dideo-route="{{ $row['LiveVideoRoute'] }}"><u>수강하기</u></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -128,10 +124,13 @@
             // 동영상 플레이 모달창 오픈
             $('.btn-video').click(function() {
                 var uri_param = '?video_route=' + $(this).data('dideo-route');
+                {{--
                 $('.btn-video').setLayer({
                     'url' : '{{ site_url('/live/videoManager/viewVideoModel/') }}' + uri_param,
                     'width' : 900
                 });
+                --}}
+                window.open('{{ site_url('/live/videoManager/viewFullVideoModel/') }}' + uri_param);
             });
 
             // 순서 변경

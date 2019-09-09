@@ -19,7 +19,8 @@ class AdminSettings extends \app\controllers\BaseController
         // 기 설정된 정보 조회
         $data = $this->adminSettingsModel->listSettings([
             'EQ' => ['wAdminIdx' => $this->session->userdata('admin_idx')],
-            'NOT' => ['SettingType' => 'favorite']
+            'NOT' => ['SettingType' => 'favorite'],
+            'RAW' => ['SettingType not like' => ' "searchSetting_%"']
         ]);
 
         if (count($data) > 0) {

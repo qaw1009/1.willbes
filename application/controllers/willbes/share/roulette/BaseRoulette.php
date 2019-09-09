@@ -121,7 +121,7 @@ class BaseRoulette extends \app\controllers\FrontController
             $this->_err_data['ret_msg'] = $result['ret_msg'];
             return $this->json_result(false, '', $this->_err_data);
         } else {
-            return $this->json_result($result['ret_cd'], '당첨', [], $result['ret_msg']);
+            return $this->json_result($result['ret_cd'], '당첨', [], ['ret_msg'=>$result['ret_msg'], 'ret_prod_img'=>$result['ret_prod_img']]);
         }
     }
 

@@ -6,17 +6,23 @@
                 <span class="hidden">메뉴바</span>
             </button>
             <div class="logo">
-                <a href="{{ front_url('/home/index') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
+                <a href="{{front_url('/home/index')}}"><img src="{{img_url('m/main/logo.png')}}" alt="logo"/></a>
             </div>
+            {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['IsPassSite'] === false)
+                <button type="button" class="basket" onclick="document.location='{{front_url('/cart/index')}}';">
+                    <span class="hidden">장바구니</span>
+                </button>
+            @endif--}}
             <button type="button" class="mypage" onclick="document.location='{{front_app_url('/classroom/pass/index','www')}}';">
                 <span class="hidden">내강의실</span>
             </button>
         </div>
         <div class="Login-List p_re">
-            <!-- 2차 오픈메뉴 -->
-            <!-- <button type="button" class="myacad">
-                <span class="hidden">수강신청</span>
-            </button> -->
+            {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
+                <button type="button" class="myacad" onclick="document.location='{{front_url('/lecture/index/pattern/only')}}';">
+                    <span class="hidden">수강신청</span>
+                </button>
+            @endif--}}
             <ul class="myLog tx-black NG">
             @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)
                 @if(sess_data('is_login') != true)

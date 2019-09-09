@@ -6,6 +6,8 @@
 <script src="/public/js/willbes/javascript-winwheel-2.8.0/Winwheel.min.js"></script>
 <script src="/public/js/willbes/javascript-winwheel-2.8.0/TweenMax.min.js"></script>
 <script>
+    var ret_prod_img = '';
+
     $(document).ready(function() {
         setTimeout(function () {
             rouletteData();
@@ -40,7 +42,8 @@
                     'callbackFinished' : function () {
                         $("#giftPopupWrap").css("display","block");
                         $("#temp_roulette_starting").val('1');
-                        $("#gift_box_id").html('<img src="https://static.willbes.net/public/images/promotion/2019/09/1388_rull_giftbox0'+$("#temp_prod_num").val()+'.png" alt="당첨상품"/>');
+                        // $("#gift_box_id").html('<img src="https://static.willbes.net/public/images/promotion/2019/09/1388_rull_giftbox0'+$("#temp_prod_num").val()+'.png" alt="당첨상품"/>');
+                        $("#gift_box_id").html('<img src="'+ret_prod_img+'" alt="당첨상품"/>');
                     }
                 },
         });
@@ -54,8 +57,9 @@
 
         sendAjax(_url, _data, function(ret) {
             if (ret.ret_cd) {
-                var segmentNumber = ret.ret_data;   // The segment number should be in response.
+                var segmentNumber = ret.ret_data.ret_msg;   // The segment number should be in response.
                 if (segmentNumber) {
+                    ret_prod_img = (ret.ret_data.ret_prod_img ? ret.ret_data.ret_prod_img : '')
                     $("#temp_prod_num").val(segmentNumber);
                     var stopAt = theWheel.getRandomForSegment(segmentNumber);
                     // Important thing is to set the stopAngle of the animation before stating the spin.

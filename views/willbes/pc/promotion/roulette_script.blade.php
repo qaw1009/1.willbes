@@ -42,8 +42,8 @@
                     'callbackFinished' : function () {
                         $("#giftPopupWrap").css("display","block");
                         $("#temp_roulette_starting").val('1');
-                        // $("#gift_box_id").html('<img src="https://static.willbes.net/public/images/promotion/2019/09/1388_rull_giftbox0'+$("#temp_prod_num").val()+'.png" alt="당첨상품"/>');
-                        $("#gift_box_id").html('<img src="'+ret_prod_img+'" alt="당첨상품"/>');
+                        $("#gift_box_id").html('<img src="https://static.willbes.net/public/images/promotion/2019/09/1388_rull_giftbox0'+$("#temp_prod_num").val()+'.png" alt="당첨상품"/>');
+                        // $("#gift_box_id").html('<img src="'+ret_prod_img+'" alt="당첨상품"/>');
                     }
                 },
         });

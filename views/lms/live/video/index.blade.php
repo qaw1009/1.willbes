@@ -134,7 +134,7 @@
                     'width' : 900
                 });
                 --}}
-                window.open('{{ site_url('/live/videoManager/viewVideoModel/') }}' + uri_param);
+                window.open('{{ site_url('/live/videoManager/viewFullVideoModel/') }}' + uri_param);
             });
 
             // 순서 변경

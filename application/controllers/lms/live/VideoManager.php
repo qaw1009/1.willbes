@@ -147,6 +147,16 @@ class VideoManager extends \app\controllers\BaseController
     }
 
     /**
+     * 동영상 전체 보기
+     */
+    public function viewFullVideoModel()
+    {
+        $this->load->view('live/video/view_full_video_model', [
+            'video_route' => $this->_req('video_route')
+        ]);
+    }
+
+    /**
      * 게시판 - 강의자료실
      * @param array $params
      */

@@ -40,12 +40,13 @@
         <div class="evtCtnsBox cts04_02" id="cts04_02">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts04_02A.jpg" alt="사전특강 및 설명회 신청" usemap="#Map1361_cts04_02" border="0">
             <map name="Map1361_cts04_02" id="Map1361_cts04_02">
-              <area shape="rect" coords="338,735,782,810" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=385" target="_blank" alt="사전특강&amp;설명회신청하기" />
-              <area shape="rect" coords="639,1058,733,1092" href="https://police.willbes.net/pass/campus/show/code/605005" target="_blank" alt="인천캠퍼스" />
-              <area shape="rect" coords="637,1120,733,1153" href="https://police.willbes.net/pass/support/notice/show?board_idx=236556&amp;s_cate_code=&amp;s_campus=&amp;s_keyword=&amp;prof_idx=&amp;subject_idx=&amp;view_type=&amp;page=1" target="_blank" alt="광주캠퍼스" />
-              <area shape="rect" coords="638,1179,732,1212" href="https://police.willbes.net/pass/support/notice/show?board_idx=236040" target="_blank" alt="부산캠퍼스" />
-              <area shape="rect" coords="639,1237,731,1274" href="https://police.willbes.net/pass/frame/notice/show?board_idx=236522" target="_blank" alt="대구캠퍼스" />
-              <area shape="rect" coords="639,1297,734,1336" href="https://police.willbes.net/pass/frame/notice/show?board_idx=236579" target="_blank" alt="전북캠퍼스" />
+              <area shape="rect" coords="338,717,782,792" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=385" target="_blank" alt="사전특강&amp;설명회신청하기" />
+              <area shape="rect" coords="639,1625,733,1659" href="https://police.willbes.net/pass/campus/show/code/605005" target="_blank" alt="인천캠퍼스" />
+              <area shape="rect" coords="639,1686,735,1719" href="https://police.willbes.net/pass/support/notice/show?board_idx=236556&amp;s_cate_code=&amp;s_campus=&amp;s_keyword=&amp;prof_idx=&amp;subject_idx=&amp;view_type=&amp;page=1" target="_blank" alt="광주캠퍼스" />
+              <area shape="rect" coords="639,1746,733,1779" href="https://police.willbes.net/pass/support/notice/show?board_idx=236040" target="_blank" alt="부산캠퍼스" />
+              <area shape="rect" coords="640,1804,732,1841" href="https://police.willbes.net/pass/frame/notice/show?board_idx=236522" target="_blank" alt="대구캠퍼스" />
+              <area shape="rect" coords="639,1863,734,1902" href="https://police.willbes.net/pass/frame/notice/show?board_idx=236579" target="_blank" alt="전북캠퍼스" />
+              <area shape="rect" coords="394,1312,728,1389" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=403" target="_blank" alt="무료특강 신청하기" />
             </map>
         </div>
 

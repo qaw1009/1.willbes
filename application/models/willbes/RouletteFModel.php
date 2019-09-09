@@ -143,7 +143,7 @@ class RouletteFModel extends WB_Model
             return error_result($e);
         }
 
-        return array('ret_cd' => true, 'ret_msg' => $otherinfo_data['OrderNum'], 'ret_prod_img' => $otherinfo_data['FileFullPath'] );
+        return array('ret_cd' => true, 'ret_msg' => $otherinfo_data['OrderNum'], 'ret_prod_img' => ($otherinfo_data['FinishFileFullPath'] ? $otherinfo_data['FinishFileFullPath'] : $otherinfo_data['FileFullPath']) );
     }
 
     /**
@@ -188,7 +188,7 @@ class RouletteFModel extends WB_Model
             $this->_conn->trans_rollback();
             return error_result($e);
         }
-        return array('ret_cd' => true, 'ret_msg' => $result_data['result_win_num'], 'ret_prod_img' => $result_data['result_file_full_path']);
+        return array('ret_cd' => true, 'ret_msg' => $result_data['result_win_num'], 'ret_prod_img' => ($result_data['result_finish_file_full_path'] ? $result_data['result_finish_file_full_path'] : $result_data['result_file_full_path'] ));
     }
 
     /**
@@ -208,6 +208,7 @@ class RouletteFModel extends WB_Model
             a.RroIdx, a.RouletteCode, a.ProdName, a.ProdQty, a.ProdProbability
             ,(cast(a.ProdQty as signed) - (SELECT COUNT(*) FROM lms_roulette_member WHERE RroIdx = a.RroIdx AND RegDatm > CURRENT_DATE())) AS unUsedCount
             ,a.FileFullPath
+            ,a.FinishFileFullPath
         ';
         $from = " FROM {$this->_table['roulette_otherinfo']} AS a ";
         $where = $this->_conn->makeWhere($arr_condition);
@@ -224,7 +225,7 @@ class RouletteFModel extends WB_Model
      */
     private function _findRouletteOtherInfo($arr_condition, $str_condition = '')
     {
-        $column = 'RroIdx, RouletteCode, ProdName, ProdQty, ProdProbability, OrderNum, FileFullPath';
+        $column = 'RroIdx, RouletteCode, ProdName, ProdQty, ProdProbability, OrderNum, FileFullPath, FinishFileFullPath';
         $from = " FROM {$this->_table['roulette_otherinfo']}";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -400,18 +401,21 @@ class RouletteFModel extends WB_Model
             $set_prod_data['rro_idx'][] = $row['RroIdx'];
             $set_prod_data['probability'][] = (empty($row['unUsedCount']) === true || $row['unUsedCount'] < 1) ? 0 : $row['ProdProbability'];
             $set_prod_data['file_full_path'][] = $row['FileFullPath'];
+            $set_prod_data['finish_file_full_path'][] = $row['FinishFileFullPath'];
         }
 
         if (empty($set_prod_data) === false) {
             $index = $this->_weighted_random($set_prod_data['probability']);
             $random_rro_idx = $set_prod_data['rro_idx'][$index];
             $file_full_path = $set_prod_data['file_full_path'][$index];
+            $finish_file_full_path = $set_prod_data['finish_file_full_path'][$index];
             $roulette_num = $index + 1;
 
             $result = [
                 'result_win_num' => $roulette_num,
                 'result_rro_idx' => $random_rro_idx,
                 'result_file_full_path' => $file_full_path,
+                'result_finish_file_full_path' => $finish_file_full_path
             ];
         }
         return $result;

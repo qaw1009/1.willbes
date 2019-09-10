@@ -158,8 +158,6 @@ class BasePromotion extends \app\controllers\FrontController
         }
         $arr_base['notice_list'] = $this->supportBoardFModel->listBoard(false, $arr_noti_condition, '', 'BoardIdx, IsBest, Title, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm', 4, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
 
-
-
         //D-day 조회
         if(empty($arr_promotion_params['DIdx']) === false) {
             $arr_dday_condition = [
@@ -232,11 +230,11 @@ class BasePromotion extends \app\controllers\FrontController
             ]
         ];
 
-        $total_rows = $this->eventFModel->listEventForCommentPromotion(true, $arr_condition);
+        $total_rows = $this->eventFModel->listEventForCommentPromotion(true, $arr_condition, [], [], [], element('cate_code', $arr_input));
         $paging = $this->pagination($arr_base['page_url'] . '?' . $get_page_params, $total_rows, $this->_paging_limit, $this->_paging_count, true);
 
         if ($total_rows > 0) {
-            $list = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, $paging['limit'], $paging['offset'], ['a.CIdx' => 'DESC']);
+            $list = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, $paging['limit'], $paging['offset'], ['a.CIdx' => 'DESC'], element('cate_code', $arr_input));
         }
 
         // 공지사항 조회 (페이징 처리 없음)

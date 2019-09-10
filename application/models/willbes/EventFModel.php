@@ -155,6 +155,9 @@ class EventFModel extends WB_Model
             LEFT JOIN (
                 SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
                 FROM {$this->_table['event_comment']}
+                WHERE IsUse = 'Y' 
+                AND IsStatus = 'Y'
+                GROUP BY ElIdx
             ) AS H ON H.ElIdx = A.ElIdx
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
@@ -878,7 +881,7 @@ class EventFModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listEventForCommentPromotion($is_count, $arr_condition, $limit = null, $offset = null, $order_by = [])
+    public function listEventForCommentPromotion($is_count, $arr_condition, $limit = null, $offset = null, $order_by = [], $cate_code)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -889,10 +892,11 @@ class EventFModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
+        $from_cate = (empty($cate_code) === false ? "INNER" : "LEFT")." JOIN {$this->_table['event_r_category']} AS c ON a.ElIdx = c.ElIdx AND c.IsStatus = 'Y'";
         $from = "
             FROM {$this->_table['event_comment']} AS a
             INNER JOIN {$this->_table['event_lecture']} AS b ON a.ElIdx = b.ElIdx
-            INNER JOIN {$this->_table['event_r_category']} AS c ON a.ElIdx = c.ElIdx AND c.IsStatus = 'Y'
+            {$from_cate}
             LEFT JOIN {$this->_table['lms_member']} AS m ON a.MemIdx = m.MemIdx
         ";
 

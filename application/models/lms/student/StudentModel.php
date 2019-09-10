@@ -49,10 +49,13 @@ class StudentModel extends WB_Model
                         SELECT COUNT(*) FROM
                             lms_order_product as OP
                             join lms_product_r_sublecture as rs on rs.ProdCode = OP.ProdCode and rs.IsStatus = 'Y'
+                            join lms_my_lecture as ML on ML.OrderIdx = OP.OrderIdx AND ML.OrderProdIdx = OP.OrderProdIdx
+                                                        AND ML.ProdCode = OP.ProdCode
                         WHERE
                             OP.PayStatusCcd IN ('676001', '676007')
                             AND rs.ProdCodeSub = A.ProdCode
                             AND rs.ProdCodeSub <> rs.ProdCode
+                            AND ML.ProdCodeSub = A.ProdCode
                     ) as CountPkg
                     ,B.PackTypeCCd, Bg.CcdName as PackTypeCcd_Name, B.FreeLecTypeCcd, Bh.CcdName as FreeLecTypeCcd_Name
                     ,Bi.CcdName as PackStudyPeriod_Name
@@ -246,6 +249,9 @@ class StudentModel extends WB_Model
                         join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx
                         join lms_product_lecture AS P ON P.ProdCode = OP.ProdCode
                         join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
+                        join lms_my_lecture AS ML ON ML.OrderIdx = OP.OrderIdx 
+                            AND ML.OrderProdIdx = OP.OrderProdIdx 
+                            AND ML.ProdCode = OP.ProdCode
                     WHERE OP.PayStatusCcd in ('676001', '676007')    
         ";
 
@@ -293,6 +299,7 @@ class StudentModel extends WB_Model
                         join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx
                         join lms_product_lecture AS P ON P.ProdCode = OP.ProdCode
                         join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
+                        join lms_my_lecture AS ML ON ML.OrderIdx = OP.OrderIdx AND ML.OrderProdIdx = OP.OrderProdIdx AND ML.ProdCode = OP.ProdCode                        
                     WHERE OP.PayStatusCcd in ('676001', '676007')
         ";
 

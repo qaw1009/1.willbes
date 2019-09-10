@@ -74,23 +74,23 @@
             <div class="tabContaier">
                 <ul class="NGEB">
                     <li>
-                        <a class="active" href="#tab1">숙어 문제</a>
+                        <a class="active" href="#tab1">어휘 문제</a>
                     </li>
                     <li>
-                        <a href="#tab2">어휘 문제</a>
+                        <a href="#tab2">어법 문제</a>
                     </li>
                     <li>
-                        <a href="#tab3">어법 문제</a>
+                        <a href="#tab3">숙어 문제</a>
                     </li>
                 </ul>
                 <div class="tabContents" id="tab1">
-                    <img  src="https://static.willbes.net/public/images/promotion/2019/09/1390_p5_1.jpg">
-                </div>
-                <div class="tabContents" id="tab2" >
                     <img  src="https://static.willbes.net/public/images/promotion/2019/09/1390_p5_2.jpg">
                 </div>
-                <div class="tabContents" id="tab3" >
+                <div class="tabContents" id="tab2" >
                     <img  src="https://static.willbes.net/public/images/promotion/2019/09/1390_p5_3.jpg">
+                </div>
+                <div class="tabContents" id="tab3" >
+                    <img  src="https://static.willbes.net/public/images/promotion/2019/09/1390_p5_1.jpg">
                 </div>
             </div>
         </div>

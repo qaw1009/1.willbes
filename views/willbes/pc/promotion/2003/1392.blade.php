@@ -37,8 +37,33 @@
 .sec05 .check label{color:#fff;font-size:16px;}
 .sec05 .check input {border: 2px solid #000;margin-right: 8px;height: 17px; width: 17px;} 
 .sec05 .check a {display: inline-block; padding: 5px 20px; color: #fff;background: #000;border-radius: 20px;}
+.check a:hover {background: #39167a}
 
-.sec06 {background:#424242}
+.wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
+.wb_ctsInfo div {width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
+    font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+}
+.wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#f97f7a} 
+.wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;
+    text-decoration:underline}  
+.wb_ctsInfo div dd {margin-bottom:30px}
+.wb_ctsInfo div dl {
+    position: relative;
+    padding-left:10px;
+}
+.wb_ctsInfo div dl:before{
+    background: #f97f7a none repeat scroll 0 0; 
+    border-radius: 2px;
+    content: '';
+    display: block;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 8px;
+    width: 4px;
+}
+.wb_ctsInfo p {margin-top:40px;font-size:18px;}
+.wb_ctsInfo p span  {border:2px solid #fff; padding:10px 20px}
 </style>
 
 
@@ -53,7 +78,7 @@
                     <input type="checkbox" name="ischk" value="Y">
                     페이지 하단 오태진 한국사 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다   
                 </label>
-                <a href="#careful">이용안내확인하기 ↓</a>
+                <a href="#ctsInfo">이용안내확인하기 ↓</a>
             </div>   
         </div>
         <div class="evtCtnsBox sec01">
@@ -78,11 +103,51 @@
                     <input type="checkbox" name="ischk" value="Y">
                     페이지 하단 오태진 한국사 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다   
                 </label>
-                <a href="#careful">이용안내확인하기 ↓</a>
+                <a href="#ctsInfo">이용안내확인하기 ↓</a>
             </div>   
-        </div>    
-        <div class="evtCtnsBox sec06" id="careful"> 
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_03.jpg" alt="이용안내 및 유의사항"> 
+        </div>   
+
+        <div class="wb_ctsInfo NGR" id="ctsInfo">
+            <div>
+                <h3 class="NGEB">이용안내 및 유의사항</h3>
+                <dd>
+                    <dt>상품구성</dt>
+                    <dl>교수별 제공되는 커리큘럼은 상이할 수 있으나 각 T-PASS의 수강 가능 과목을 확인 후 신청해주시기 바랍니다.</dl>
+                    <dl>수강기간은 각 교수의 T-PASS 마다 상이하니 구매전 수강기간을 확인 해 주시기 바랍니다.</dl>
+                    <dl>상품 내 포함되어 있는 강좌들은 개강 일정 및 교수님 사정에 따라 변동이 있을 수 있습니다.</dl>
+                    <dl>T-PASS는 구매일로부터 기본 6개월(유료기간) 추가 3개월(무료기간)제공됩니다. (일부 PASS 제외)<br>
+                    수강기간 혜택은 구매 즉시 제공됩니다.</dl>                    
+                </dd>                
+                <dd>
+                    <dt>교재안내</dt>
+                    <dl>교재는 별도로 제공되지 않으며, 각 강좌별 교재는 강좌 소개 및 홈페이지 상단의 [교재구매] 메뉴에서 별도로 구매 가능합니다.</dl>
+                </dd>
+                <dd>
+                    <dt>기기제한</dt>
+                    <dl>PC + Mobile : PC 2대 or PC 1대 + 모바일 1대 or 모바일 2대 가능(총 수강 가능 기기 2대, PMP는 제공하지 않습니다.)</dl>
+                </dd>
+                <dd>
+                    <dt>수강안내</dt>
+                    <dl>본 상품 이용 시 일시정지/연장/재수강이 불가합니다.</dl>
+                    <dl>[내강의실] - [무한PASS존]에 접속하여 상품명 옆의 [강좌추가]버튼을 클릭하여 수강할 수 있습니다.</dl>
+                    <dl>PC/모바일 기기 변경 시, 최조 1회 직접 변경 가능하며, 이후 특별한 사유에 의한 기기 변경 요청은 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.<br>
+                    ※ 고객센터 : 1544-5006</dl>
+                    <dl>수강 시작일 설정은 불가하며, 본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</dl>
+                </dd>
+                <dd>
+                    <dt>결제/환불</dt>
+                    <dl>결제일로부터 7일 이내 전액 환불이 가능합니다. 단, 맛보기 강좌를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다.<br>
+                    강의 자료 및 모바일 강의 다운로드 서비슬 이용 시 수강한 것으로 간주 됩니다.</dl>
+                    <dl>본 상품은 특별 기획 강좌로 환불 시에는 수강하신 상품의 정가를 기준으로 이용이간을 공제하고 환불 됩니다.</dl>
+                    <dl>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의 바랍니다.</dl>
+                    <dl>강좌 진행이 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공되며, 이로 인한 환불은 불가합니다.</dl>
+                    <dl>온.오프라인 동시 시행되는 이벤트 혹은 무료특강의 경우 해당강좌는 미지급되거나 이벤트 종료 후 제공될 수 있습니다.<br>
+                    ※ 무료 특강의 경우 추후 [무료강좌]에서 수강 가능 할 수 있습니다.</dl>
+                    <dl>유료기간은 구매일로부터 각각 상품의 수강기간을 따르며, 추가 제공되는 가긴은 무료 제공기간입니다.<br>
+                    (무료제공 기간은 환불 기간에 산입되지 않습니다.).</dl>
+                </dd>
+                <p class="NSK"><span>※ 이용문의 : 고객센터 1544-5006</span></p>
+            </div>
         </div>                           
               
     </div>
@@ -97,13 +162,13 @@
             }
             var lUrl;
             if(no == 1){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/155240') }}";
+                lUrl = "https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/156095";
             }
             location.href = lUrl;
         }
 
         function goDesc(tab){
-            location.href = '#careful';
+            location.href = '#ctsInfo';
         }
     </script>
 

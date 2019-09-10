@@ -174,7 +174,7 @@ class StudentModel extends WB_Model
     public function getStudentExcelList($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
 
-        $in_column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+        $in_column = " P.ProdName, M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
             ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
             ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
             ,O.CompleteDatm as PayDate, A.wAdminName as AdminName, OP.OrderProdIdx, OP.ProdCode
@@ -187,6 +187,7 @@ class StudentModel extends WB_Model
         $from = "
                     FROM 
                         lms_order_product AS OP
+                            join lms_product AS P ON P.ProdCode = OP.ProdCode 
                             left outer join lms_sys_code OPa on OP.SalePatternCcd = OPa.Ccd and OPa.IsStatus='Y'
                         join lms_order as O on O.OrderIdx = OP.OrderIdx
                             left outer join lms_sys_code Oa on O.PayRouteCcd = Oa.Ccd and Oa.IsStatus='Y'
@@ -302,10 +303,24 @@ class StudentModel extends WB_Model
         return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
     }
 
-    //
+    /*
+     * 학원 단과에서 종합반 코드를 구하기 위해
+     */
     public function getProdCode($ProdCode)
     {
-        $query = "SELECT DISTINCT ProdCode FROM lms_product_r_sublecture where IsStatus = 'Y' AND ProdCodeSub = {$ProdCode}";
+        if(is_array($ProdCode) == true){
+            $where = $this->_conn->makeWhere([
+                'IN' => [
+                    'ProdCodeSub' => $ProdCode
+                ]
+            ]);
+            $where = $where->getMakeWhere(true);
+            $query = "SELECT DISTINCT ProdCode FROM lms_product_r_sublecture WHERE IsStatus = 'Y' ".$where;
+
+        } else {
+            $query = "SELECT DISTINCT ProdCode FROM lms_product_r_sublecture WHERE IsStatus = 'Y' AND ProdCodeSub = {$ProdCode}";
+        }
+
         return $this->_conn->query($query)->result_array();
     }
 

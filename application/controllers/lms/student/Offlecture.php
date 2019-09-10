@@ -76,14 +76,23 @@ class Offlecture extends BaseStudent
      */
     public function excel()
     {
-        $headers = [ '회원번호', '회원명', '아이디', '상품구분', '종합반여부', '강좌명', '주문번호', '결제루트', '결제수단', '결제금액',
-            '결제자', '결제일', '휴대폰', '이메일'];
-        $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, IsPkg, ProdName, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
-        ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+        $ProdCode = $this->_reqP('ProdCode');
 
-        $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $this->_reqP('ProdCode')]]);
-        $lec = $lec[0];
-        $file_name = '수강생현황('.$lec['ProdCode'].')_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
+        if(is_array($ProdCode) == true){
+            $file_name = '수강생현황_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
+
+            $headers = [ '회원번호', '회원명', '아이디', '상품구분', '종합반여부', '강좌명', '강좌번호', '주문번호', '결제루트', '결제수단', '결제금액', '결제자', '결제일', '휴대폰', '이메일'];
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, IsPkg, ProdName, ProdCode, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price, ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+
+        } else {
+            $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $ProdCode]]);
+            $lec = $lec[0];
+            $file_name = '수강생현황('.$lec['ProdCode'].')_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
+
+            $headers = [ '회원번호', '회원명', '아이디', '상품구분', '종합반여부', '강좌명', '주문번호', '결제루트', '결제수단', '결제금액', '결제자', '결제일', '휴대폰', '이메일'];
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, IsPkg, ProdName, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price, ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+        }
+
         $arr_condition = [
             'EQ' => [
                 // 'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
@@ -99,17 +108,22 @@ class Offlecture extends BaseStudent
         $search_end_date = $this->_reqP('search_end_date');
         $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
 
-        $ProdCode = $this->studentModel->getProdCode($this->_reqP('ProdCode'));
+        $ProdCodeSub = $this->studentModel->getProdCode($ProdCode);
 
         if(empty($ProdCode) == true){
             $arr_condition = array_merge($arr_condition, [
-                'EQ' => [
-                    'OP.ProdCode' => $this->_reqP('ProdCode')
+                'IN' => [
+                    'OP.ProdCode' => $ProdCode
                 ]
             ]);
         } else {
-            $ProdCode_tmp = [$this->_reqP('ProdCode')];
-            foreach($ProdCode AS $row){
+            if(is_array($ProdCode) == true){
+                $ProdCode_tmp = $ProdCode;
+            } else {
+                $ProdCode_tmp = [$ProdCode];
+            }
+
+            foreach($ProdCodeSub AS $row){
                 $ProdCode_tmp = array_merge($ProdCode_tmp, [$row['ProdCode']]);
             }
 

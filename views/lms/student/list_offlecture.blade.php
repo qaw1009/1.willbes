@@ -145,37 +145,39 @@
                 <button type="button" class="btn btn-default btn-search" id="btn_reset_in_set_search_date">초기화</button>
             </div>
         </div>
-    </form>
-    <div class="x_panel mt-10">
-        <div class="x_content">
-            <table id="list_ajax_table" class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>No.</th>
-                    <td>캠퍼스</td>
-                    <th>기본정보</th>
-                    <th>수강형태</th>
-                    <th>수강신청구분</th>
-                    <th>개강 년/월</th>
-                    <th>과정</th>
-                    <th>과목</th>
-                    <th>교수</th>
-                    <th>단과반명</th>
-                    <th>판매가</th>
-                    <th>정원</th>
-                    <th>개강일~종강일</th>
-                    <th>개설여부</th>
-                    <th>접수기간</th>
-                    <th>접수상태</th>
-                    <th>사용여부</th>
-                    <th>수강생현황(종합반)</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+
+        <div class="x_panel mt-10">
+            <div class="x_content">
+                <table id="list_ajax_table" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>선택</th>
+                        <th>No.</th>
+                        <td>캠퍼스</td>
+                        <th>기본정보</th>
+                        <th>수강형태</th>
+                        <th>수강신청구분</th>
+                        <th>개강 년/월</th>
+                        <th>과정</th>
+                        <th>과목</th>
+                        <th>교수</th>
+                        <th>단과반명</th>
+                        <th>판매가</th>
+                        <th>정원</th>
+                        <th>개강일~종강일</th>
+                        <th>개설여부</th>
+                        <th>접수기간</th>
+                        <th>접수상태</th>
+                        <th>사용여부</th>
+                        <th>수강생현황(종합반)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    </form>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -185,7 +187,9 @@
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
-
+                buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 선택강좌 수강생 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' }
+                ],
                 ajax: {
                     'url' : '{{ site_url('/student/'.$lecType.'/listAjax/') }}'
                     ,'type' : 'post'
@@ -195,6 +199,9 @@
                 }
                 ,
                 columns: [
+                    {'data' : null, 'render' : function(date, type, row,meta){
+                            return '<input type="checkbox" id="ProdCode" name="ProdCode[]" value="'+row.ProdCode+'" />';
+                        }}, // 선택
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }}, // 번호
@@ -249,6 +256,14 @@
 
             $list_table.on('click', '.btn-view', function() {
                 location.href = '{{ site_url('/student/'.$lecType.'/view') }}/' + $(this).data('prodcode') + dtParamsToQueryString($datatable);
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/student/'.$lecType.'/excel/') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
         });

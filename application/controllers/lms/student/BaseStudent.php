@@ -272,6 +272,11 @@ class BaseStudent extends \app\controllers\BaseController
      */
     public function excel()
     {
+        $ProdCode  = $this->_reqP('ProdCode');
+        if(empty($ProdCode) == true){
+            show_alert('강좌코드를 선택해 주십시요.', 'back');
+        }
+
         if($this->LearnPattern == 'lecture' ||
             $this->LearnPattern == 'freelecture' ||
             $this->LearnPattern == 'periodpkg' ) {
@@ -301,20 +306,41 @@ class BaseStudent extends \app\controllers\BaseController
             ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
         }
 
+        // 강좌코드가 배열일때
+        if(is_array($ProdCode) == true){
+            $headers = array_merge(['강좌번호', '강좌명'], $headers);
+            $column = 'ProdCode, ProdName,'.$column;
 
-        $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $this->_reqP('ProdCode')]]);
-        $lec = $lec[0];
-        $file_name = '수강생현황('.$lec['ProdCode'].')_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
-        $arr_condition = [
-            'EQ' => [
-                'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
-                'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
-                'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
-                'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
-                'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
-            ]
-        ];
+            $file_name = '수강생현황_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
+            $arr_condition = [
+                'IN' => [
+                    'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                ],
+                'EQ' => [
+                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                ]
+            ];
+
+        } else {
+            $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $ProdCode]]);
+            $lec = $lec[0];
+            $file_name = '수강생현황('.$lec['ProdCode'].')_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
+            $arr_condition = [
+                'EQ' => [
+                    'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                ]
+            ];
+        }
+
         // 날짜 검색
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');

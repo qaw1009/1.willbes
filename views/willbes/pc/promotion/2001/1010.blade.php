@@ -114,14 +114,19 @@
                         <col width=""  />
                         <col width="15%"  />
                         <tr>
+                            <td>2019년 2차</td>
+                            <td>경찰공무원(일반/101단/경행) 채용시험 기출</td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=236667') }}" target="_blank">바로가기</a></td>
+                        </tr>
+                        <tr>
                             <td>2019년 1차</td>
                             <td>경찰공무원(일반/101단/전의경) 채용시험 기출</td>
-                            <td><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=225227&') }}" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=225227') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2018년 3차</td>
                             <td>경찰공무원(일반/경행) 채용시험 기출문제</td>
-                            <td><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=166081&') }}" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=166081') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2018년 2차 </td>

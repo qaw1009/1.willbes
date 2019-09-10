@@ -77,7 +77,7 @@
         $(document).ready(function() {
             // 날짜검색 디폴트 셋팅
             if ($search_form.find('input[name="search_start_date"]').val().length < 1 || $search_form.find('input[name="search_end_date"]').val().length < 1) {
-                setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
+                setDefaultDatepicker(-1, 'mon', 'search_start_date', 'search_end_date');
             }
 
             // 전체포인트현황 목록

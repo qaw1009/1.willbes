@@ -24,12 +24,9 @@
 .top_bg .check input {border: 2px solid #000;margin-right: 8px;height: 17px; width: 17px;} 
 .top_bg .check a {display: inline-block; padding: 5px 20px; color: #fff;background: #000;border-radius: 20px;}
 
-.sec01,.sec03{background:#fff;}
-.sec01{position:relative;}
-.youtubeGod{position:absolute;width:858px; height:484px; left:50%; top:312px; margin-left:-429px;}
-.youtubeGod iframe {width:858px; height:484px;}
-
+.sec01{background:#fff;}
 .sec02{background:#eef1f5;}
+.sec03{background:#fff;}
 
 .sec05 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1392_05_bg.jpg) no-repeat center top;position:relative;}
 .sec05 .check{position:absolute;width: 1000px;left:45%;top:750px;margin-left:-500px;z-index:1;font-size:14px;text-align:center;line-height:1.5;
@@ -83,9 +80,6 @@
         </div>
         <div class="evtCtnsBox sec01">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_01.jpg" alt="수 많은 합격생이 증명">
-            <div class="youtubeGod">
-                <iframe src="https://www.youtube.com/embed/LCziQy4uv94" frameborder="0" allowfullscreen=""></iframe> 
-            </div>
         </div>     
         <div class="evtCtnsBox sec02">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1392_02.jpg" alt="커리큘럼">  

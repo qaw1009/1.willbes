@@ -42,48 +42,48 @@
             <div class="PeMenu">
                 <ul>
                     <li>
-                        {{--<a href="{{ site_url('/promotion/index/cate/3001/code/1027') }}" >--}}
+                        {{--<a href="https://police.willbes.net/promotion/index/cate/3001/code/1027" >--}}
                         <a href="javascript:alert('19년 2차 적중,곧 공개됩니다!');">
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_6.jpg" class="off" alt="원유철 경찰한국사"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_6on.jpg" class="on" alt="원유철 경찰한국사"  />
                         </a>
                     </li>
                     <li>
-                    {{--<a href="{{ site_url('/promotion/index/cate/3001/code/1026') }}">--}}
+                    {{--<a href="https://police.willbes.net/promotion/index/cate/3001/code/1026">--}}
                         <a href="javascript:alert('19년 2차 적중,곧 공개됩니다!');">
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_5.jpg" class="off" alt="오태진 경찰한국사"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_5on.jpg" class="on" alt="오태진 경찰한국사"  />
                         </a>
                     </li>
                     <li>
-                        {{--<a href="{{ site_url('/promotion/index/cate/3001/code/1041') }}" >--}}
+                        {{--<a href="https://police.willbes.net/promotion/index/cate/3001/code/1041" >--}}
                         <a href="javascript:alert('19년 2차 적중,곧 공개됩니다!');">
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_3.jpg" class="off" alt="김원욱 형법"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_3on.jpg" class="on" alt="김원욱 형법"  />
                         </a>
                     </li>
                     <li>
-                    {{--<a href="{{ site_url('/promotion/index/cate/3001/code/1023') }}">--}}
+                    {{--<a href="https://police.willbes.net/promotion/index/cate/3001/code/1023">--}}
                         <a href="javascript:alert('19년 2차 적중,곧 공개됩니다!');">
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_1.jpg" class="off" alt="신광은 형소법"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_1on.jpg" class="on" alt="신광은 형소법"  />
                         </a>
                     </li>
                     <li>
-                    {{--<a href="{{ site_url('/promotion/index/cate/3001/code/1024') }}">--}}
+                    {{--<a href="https://police.willbes.net/promotion/index/cate/3001/code/1024">--}}
                         <a href="javascript:alert('19년 2차 적중,곧 공개됩니다!');">
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_2.jpg" class="off" alt="장정훈 경찰학"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_2on.jpg" class="on" alt="장정훈 경찰학"  />
                         </a>
                     </li>                   
                     <li>
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1390') }}" >
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1390" >
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_4.jpg" class="off" alt="하승민 경찰영어"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_4on.jpg" class="on" alt="하승민 경찰영어"  />
                         </a>
                     </li>                  
                     <li>
-                        <a href="{{ site_url('/promotion/index/cate/3007/code/1391') }}" >
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1391" >
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_7.jpg" class="off" alt="김현정 경찰영어"  />
                             <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_7on.jpg" class="on" alt="김현정 경찰영어"  />
                         </a>

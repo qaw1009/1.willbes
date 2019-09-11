@@ -369,14 +369,17 @@ class EventLecture extends \app\controllers\BaseController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'er_idx', 'label' => '접수관리식별자', 'rules' => 'trim|required|integer'],
-            ['field' => 'expire_status', 'label' => '만료상태값', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'person_limit_type', 'label' => '인원제한타입', 'rules' => 'trim|required|in_list[L,N]'],
+            ['field' => 'person_limit', 'label' => '정원수', 'rules' => 'callback_validateRequiredIf[person_limit_type,L]|integer'],
+            ['field' => 'register_name', 'label' => '특강명', 'rules' => 'trim|required'],
+            ['field' => 'expire_status', 'label' => '만료상태', 'rules' => 'trim|required|in_list[Y,N]']
         ];
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->eventLectureModel->expireRegister($this->_reqP('er_idx'), $this->_reqP('expire_status'));
+        $result = $this->eventLectureModel->expireRegister($this->_reqP(null, false));
         $this->json_result($result, '만료상태 수정 정상 처리 되었습니다.', $result);
     }
 

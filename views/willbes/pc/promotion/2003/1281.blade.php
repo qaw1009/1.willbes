@@ -27,7 +27,7 @@
         .wb_cts04 {background:#eaeaea;padding-bottom:100px; position:relative}
         .wb_cts05 {background:#494949;}
 		/* TAB */
-        .tab {width:1000px; margin:0 auto; position:absolute; bottom:120px; left:50%; margin-left:-500px; border:5px solid #000; z-index:10}		
+        .tab {width:1110px; margin:0 auto; position:absolute; bottom:120px; left:50%; margin-left:-555px; border:5px solid #000; z-index:10}		
         .tab li {display:inline; float:left;}	
         .tab a img.off {display:block}
         .tab a img.on {display:none}
@@ -117,15 +117,16 @@
   <div class="evtCtnsBox wb_cts04">
     <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03.jpg"  title="교수님"/>
     <ul class="tab">
-      <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t1.png" class="off" alt="01"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t1_on.png" class="on"  /></a></li>
-      <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t2.png" class="off" alt="02"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t2_on.png" class="on"  /></a></li>
-      <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t3.png" class="off" alt="03"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t3_on.png" class="on"  /></a></li>
-      <li><a href="#tab4"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t4.png" class="off" alt="03"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t4_on.png" class="on"  /></a></li>
-      <li><a href="#tab9"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t9.png" class="off" alt="03"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t9_on.png" class="on"  /></a></li>
-      <li><a href="#tab5"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t5.png" class="off" alt="03"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t5_on.png" class="on"  /></a></li>
-      <li><a href="#tab6"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t6.png" class="off" alt="03"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t6_on.png" class="on"  /></a></li>
-      <li><a href="#tab7"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t7.png" class="off" alt="03"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t7_on.png" class="on"  /></a></li>
-      <li><a href="#tab8"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8.png" class="off" alt="03"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8_on.png" class="on"  /></a></li>
+      <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t1.png" class="off" alt="기미진"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t1_on.png" class="on"  /></a></li>
+      <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t2.png" class="off" alt="한덕현"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t2_on.png" class="on"  /></a></li>
+      <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t3.png" class="off" alt="성기건"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t3_on.png" class="on"  /></a></li>
+      <li><a href="#tab10"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t10.png" class="off" alt="오태진"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t10_on.png" class="on"  /></a></li>
+      <li><a href="#tab4"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t4.png" class="off" alt="조민주"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t4_on.png" class="on"  /></a></li>
+      <li><a href="#tab9"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t9.png" class="off" alt="한세훈"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t9_on.png" class="on"  /></a></li>
+      <li><a href="#tab5"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t5.png" class="off" alt="기덕관"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t5_on.png" class="on"  /></a></li>
+      <li><a href="#tab6"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t6.png" class="off" alt="문병일"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t6_on.png" class="on"  /></a></li>
+      <li><a href="#tab7"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t7.png" class="off" alt="황남기"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t7_on.png" class="on"  /></a></li>
+      <li><a href="#tab8"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8.png" class="off" alt="이상구"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8_on.png" class="on"  /></a></li>
     </ul>
     <div id="tab1">
         <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1074"  target="_balnk">
@@ -140,7 +141,12 @@
     <div id="tab3">
       <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1078" target="_balnk">
       <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c3.jpg" title="성기건"/>
-    </a>
+      </a>
+    </div>
+    <div id="tab10">
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c10.jpg" title="오태진"/>
+      </a>
     </div>
     <div id="tab4">
       <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1330" target="_balnk">

@@ -21,6 +21,29 @@
             @foreach($arr_base['register_list'] as $row)
                 <tr>
                     <td class="w-list tx-left pl20" colspan="2">{{$row['Name']}}</td>
+                    {{--<td class="w-chk">
+                        @if($row['RegisterExpireStatus'] == 'Y')
+                            @if($row['PersonLimitType'] == 'L')
+                                @if($row['MemCount'] < $row['PersonLimit'])
+                                    @if($data['SelectType'] == 'S')
+                                        <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
+                                    @else
+                                        <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>
+                                    @endif
+                                @else
+                                    [신청만료2]
+                                @endif
+                            @else
+                                @if($data['SelectType'] == 'S')
+                                    <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
+                                @else
+                                    <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>
+                                @endif
+                            @endif
+                        @else
+                            [신청만료]
+                        @endif
+                    </td>--}}
                     <td class="w-chk">
                         @if($row['RegisterExpireStatus'] == 'Y')
                             @if($data['SelectType'] == 'S')
@@ -41,6 +64,9 @@
                     <input type="text" id="register_name" name="register_name" class="iptName" maxlength="20" placeholder="이름" style="width: 110px;" value="{{sess_data('mem_name')}}" @if(sess_data('is_login') === true) readonly @endif>
                     <input type="text" id="register_tel" name="register_tel" class="iptTel" maxlength="11" placeholder="휴대폰번호('-'없이 입력)" style="width: 220px;" value="{{sess_data('mem_phone')}}">
                     <input type="text" id="register_email" name="register_email" class="iptEmail" maxlength="30" placeholder="이메일" style="width: 220px;" value="{{sess_data('mem_mail')}}">
+                    {{--<button type="button" id="btn_submit_register" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
+                        <span>신청하기</span>
+                    </button>--}}
                     <button type="button" id="btn_submit_register" class="mem-Btn combine-Btn {{($arr_base['register_create_type'] == '3' || $arr_base['register_create_type'] == '4') ? 'bg-purple-gray bd-dark-gray' : 'bg-blue bd-dark-blue'}}">
                         @if($arr_base['register_create_type'] == '1')
                             <span>신청하기</span>

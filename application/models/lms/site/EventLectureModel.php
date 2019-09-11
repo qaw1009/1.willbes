@@ -806,20 +806,30 @@ class EventLectureModel extends WB_Model
 
     /**
      * 이벤트 접수 관리 단일 데이터 만료상태 수정
-     * @param $er_idx
-     * @param $expire_status
+     * @param $input
      * @return array|bool
      */
-    public function expireRegister($er_idx, $expire_status)
+    public function expireRegister($input)
     {
         $this->_conn->trans_begin();
         try {
-            $admin_idx = $this->session->userdata('admin_idx');
+            $input_data = [
+                'PersonLimitType' => $input['person_limit_type'],
+                'PersonLimit' => $input['person_limit'],
+                'Name' => $input['register_name'],
+                'RegisterExpireStatus' => $input['expire_status'],
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($input_data)->where('ErIdx', $input['er_idx']);
+            if($this->_conn->update($this->_table['event_register'])=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
 
-            $this->_conn->set('RegisterExpireStatus', $expire_status)->set('UpdAdminIdx', $admin_idx)->where('ErIdx', $er_idx);
+            /*$this->_conn->set('RegisterExpireStatus', $expire_status)->set('UpdAdminIdx', $admin_idx)->where('ErIdx', $er_idx);
             if ($this->_conn->update($this->_table['event_register']) === false) {
                 throw new \Exception('접수관리 만료 상태 수정에 실패했습니다.');
-            }
+            }*/
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

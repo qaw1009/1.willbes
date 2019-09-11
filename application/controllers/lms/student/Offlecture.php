@@ -18,7 +18,7 @@ class Offlecture extends BaseStudent
     {
         $arr_condition = [
             'EQ' => [
-                // 'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                'ML.ProdCodeSub' => $this->_reqP('ProdCode'), // 강좌코드
                 'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
                 'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
                 'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
@@ -95,7 +95,7 @@ class Offlecture extends BaseStudent
 
         $arr_condition = [
             'EQ' => [
-                // 'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                'ML.ProdCodeSub' => $this->_reqP('ProdCode'), // 강좌코드
                 'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
                 'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
                 'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단

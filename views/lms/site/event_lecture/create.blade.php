@@ -183,7 +183,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9">
-                                    <p class="form-control-static">• 한 페이지에서 여러개의 특강 접수 시 '다중리스트' 선택 <br>• <span class="red">이미 이벤트를 오픈하여 신청자를 접수 받은 경우 신청리스트 옵션 정보를 변경하더라도 변경된 정보는 반영될 수 없습니다.</span></p>
+                                    <p class="form-control-static">• 한 페이지에서 여러개의 특강 접수 시 '다중리스트' 선택</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -235,35 +235,49 @@
                                                 <th>신청자</th>
                                                 <th>특강/설명회명</th>
                                                 <th>만료</th>
+                                                <th>수정</th>
                                                 <th>삭제</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @if (empty($list_event_register['M']) === false)
+                                                @php $i=1; @endphp
                                                 @foreach($list_event_register['M'] as $row)
                                                     <tr>
                                                         <td>
-                                                            {{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}
-                                                            <input type="hidden" name="event_register_parson_limit_type[]" value="{{$row['PersonLimitType']}}">
+                                                            {{--{{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}
+                                                            <input type="hidden" name="event_register_parson_limit_type[]" value="{{$row['PersonLimitType']}}">--}}
+                                                            <select class="form-control" name="event_register_parson_limit_type[]" id="event_register_parson_limit_type_{{$i}}">
+                                                                <option value="L" @if($row['PersonLimitType'] == 'L')selected="selected"@endif>인원제한</option>
+                                                                <option value="N" @if($row['PersonLimitType'] == 'N')selected="selected"@endif>무제한</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            {{$row['PersonLimit']}}
-                                                            <input type="hidden" name="event_register_parson_limit[]" value="{{$row['PersonLimit']}}">
+                                                            {{--{{$row['PersonLimit']}}--}}
+                                                            <input type="text" name="event_register_parson_limit[]" id="event_register_parson_limit_{{$i}}" value="{{$row['PersonLimit']}}">
                                                         </td>
                                                         <td></td>
                                                         <td>
-                                                            {{$row['Name']}}
-                                                            <input type="hidden" name="event_register_name[]" value="{{$row['Name']}}">
+                                                            {{--{{$row['Name']}}--}}
+                                                            <input type="text" name="event_register_name[]" id="event_register_name_{{$i}}" value="{{$row['Name']}}">
                                                         </td>
                                                         <td>
-                                                            @if($row['RegisterExpireStatus'] == 'Y')
+                                                            {{--@if($row['RegisterExpireStatus'] == 'Y')
                                                                 <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="N">[<u>만료</u>]</a>
                                                             @else
                                                                 <a href="#none" class="btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-expire-status="Y">[<u>복구</u>]</a>
-                                                            @endif
+                                                            @endif--}}
+                                                            <select class="form-control" name="expire_status[]" id="expire_status_{{$i}}">
+                                                                <option value="Y" @if($row['RegisterExpireStatus'] == 'Y')selected="selected"@endif>복구</option>
+                                                                <option value="N" @if($row['RegisterExpireStatus'] == 'N')selected="selected"@endif>만료</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-success mr-10 btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-modify-number="{{$i}}">수정</button>
                                                         </td>
                                                         <td><a href="#none" class="btn-lecture-delete-submit" data-lecture-idx="{{$el_idx}}" data-register-idx="{{$row['ErIdx']}}"><i class="fa fa-times fa-lg red"></i></a></td>
                                                     </tr>
+                                                @php $i++; @endphp
                                                 @endforeach
                                             @endif
                                             </tbody>
@@ -587,6 +601,7 @@
                 add_lists += '<td></td>';
                 add_lists += '<td><input type="text" name="event_register_name[]" class="form-control no-border" readonly="readonly" value="'+temp_lecture_name+'"></td>';
                 add_lists += '<td></td>';
+                add_lists += '<td></td>';
                 add_lists += '<td><a href="#none" class="btn-lecture-delete" data-lecture-temp-idx="'+temp_idx+'"><i class="fa fa-times fa-lg red"></i></a></td>';
                 add_lists += '<tr>';
                 $('#table_lecture > tbody:last').append(add_lists);
@@ -624,13 +639,18 @@
 
             // 만료,복구 상태 수정
             $regi_form.on('click', '.btn-lecture-expire-submit', function() {
+                var modify_number = $(this).data('modify-number');
                 var _url = '{{ site_url("/site/eventLecture/expireRegister") }}';
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
                     'er_idx' : $(this).data('register-idx'),
-                    'expire_status' : $(this).data('expire-status')
+                    'person_limit_type' : $("#event_register_parson_limit_type_"+modify_number).val(),
+                    'person_limit' : $("#event_register_parson_limit_"+modify_number).val(),
+                    'register_name' : $("#event_register_name_"+modify_number).val(),
+                    'expire_status' : $("#expire_status_"+modify_number).val()
                 };
+
                 if (!confirm('상태를 변경 하시겠습니까?')) {
                     return;
                 }

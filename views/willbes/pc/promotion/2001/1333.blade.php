@@ -19,6 +19,13 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
 
+.skybanner {
+    position:fixed;
+    bottom:20px;
+    right:10px;
+    z-index:1;
+}
+
 /*타이머*/
 .time {width:100%; text-align:center; background:#000}
 .time {text-align:center; padding:20px 0}
@@ -38,6 +45,7 @@ from{color:#d63e4d}
 50%{color:#eebd8f}
 to{color:#d63e4d}
 }
+
 
 
 .top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/09/1333_top_bg.jpg) no-repeat center top;}
@@ -62,7 +70,11 @@ to{color:#d63e4d}
 </style>
 
 
-    <div class="evtContent NGR" id="evtContainer">  
+    <div class="evtContent NGR" id="evtContainer"> 
+        <ul class="skybanner">
+            <li><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/09/1333_sky01.png" alt="신광은 경찰팀 T-PASS"></a></li>
+            <li><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/09/1333_sky02.png" alt="신광은 경찰팀 T-PASS"></a></li>
+        </ul> 
         <!-- 타이머 -->
         <div class="evtCtnsBox time NGEB"  id="newTopDday">
             <div>
@@ -153,12 +165,12 @@ to{color:#d63e4d}
                     <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155452" target="_blank" alt="수강신청" />
                 </map>
             </div>
-            <div>
+            <div id="golec">
                 <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_bottom.jpg" alt="패스 수강신청" usemap="#map190913" border="0">
                 <map name="map190913" id="map190913">
                     <area shape="rect" coords="114,231,276,277" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/156820" target="_blank" alt="하승민/오태진" />
                     <area shape="rect" coords="321,231,488,279" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/156821" target="_blank" alt="하승민/원유철" />
-                    <area shape="rect" coords="740,231,903,278" href="#" target="_blank" alt="3법패스" />
+                    <area shape="rect" coords="740,231,903,278" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/156822" target="_blank" alt="3법패스" />
                 </map>
             </div>
         </div>

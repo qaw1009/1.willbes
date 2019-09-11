@@ -3017,7 +3017,7 @@ body.memBody #Footer {
 
 /*무료특강*/
 .freeLecPass {
-    margin-top: 10px;
+    margin: 10px 0 ;
 }
 .freeLecPass p {
     margin-bottom: 10px;
@@ -3040,6 +3040,7 @@ body.memBody #Footer {
     width: 50px;
     text-align: center;
 }
+.freeLecPass:after {content:""; display:block; clear:both}
 
 /*주문배송관리*/
 .paymentDate {

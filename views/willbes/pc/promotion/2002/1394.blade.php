@@ -137,9 +137,9 @@
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1394_01.jpg" alt="2개월 기본이론 집중완성" usemap="#Map1359b" border="0" />
-            <map name="Map1359b" id="Map1359b">
-                <area shape="rect" coords="385,1332,762,1427" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank;" alt="수강신청하기" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1394_01.jpg" alt="기본이론 집중완성" usemap="#Map1394b" border="0" />
+            <map name="Map1394b" id="Map1394b">
+                <area shape="rect" coords="366,1336,754,1431" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
             </map>
         </div>
 

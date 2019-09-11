@@ -183,7 +183,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9">
-                                    <p class="form-control-static">• 한 페이지에서 여러개의 특강 접수 시 '다중리스트' 선택 <br>• <span class="red">이미 이벤트를 오픈하여 신청자를 접수 받은 경우 신청리스트 옵션 정보를 변경하더라도 변경된 정보는 반영될 수 없습니다.</span></p>
+                                    <p class="form-control-static">• 한 페이지에서 여러개의 특강 접수 시 '다중리스트' 선택</p>
                                 </div>
                             </div>
                             <div class="row">

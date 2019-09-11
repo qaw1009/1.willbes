@@ -227,13 +227,13 @@
             <div class="passLecBuy">
                 <ul>
                     <li>
-                        <div><input type="radio" id="y_pkg1" name="y_pkg" value="155230" onClick=""/> <label for="y_pkg1"><strong>69</strong>만원</div>
+                        <div><input type="radio" id="y_pkg1" name="y_pkg" value="156810" onClick=""/> <label for="y_pkg1"><strong>69</strong>만원</div>
                     </li>
                     <li>
-                        <div><input type="radio" id="y_pkg2" name="y_pkg" value="155243" onClick=""/> <label for="y_pkg2"><strong>89</strong>만원</div>
+                        <div><input type="radio" id="y_pkg2" name="y_pkg" value="156812" onClick=""/> <label for="y_pkg2"><strong>89</strong>만원</div>
                     </li>
                     <li>
-                        <div><input type="radio" id="y_pkg3" name="y_pkg" value="155246" onClick=""/> <label for="y_pkg3"><strong>129</strong>만원</div>
+                        <div><input type="radio" id="y_pkg3" name="y_pkg" value="156808" onClick=""/> <label for="y_pkg3"><strong>129</strong>만원</div>
                     </li>
                 </ul>
                 <div>
@@ -242,8 +242,8 @@
                         <area shape="rect" coords="172,868,246,885" href="javascript:go_popup()" alt="6개월" />                        
 						<area shape="rect" coords="454,866,522,887" href="javascript:go_popup()" alt="12개월" />
                         <area shape="rect" coords="753,868,820,885" href="javascript:go_popup1()" alt="전과목" />
-                      <area shape="rect" coords="406,447,555,485" href="#" target="_blank" alt="환승이벤트 참여하기" />
-                      <area shape="rect" coords="564,445,714,487" href="#" target="_blank" alt="환승이벤트 참여방법" />
+                      <area shape="rect" coords="406,447,555,485" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
+                      <area shape="rect" coords="564,445,714,487" href="javascript:goDesc('tab3')" alt="환승이벤트 참여방법" />
                     </map>
                 </div>
                 <div> 

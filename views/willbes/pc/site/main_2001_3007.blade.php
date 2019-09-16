@@ -78,8 +78,8 @@
                     <li>
                         <img src="{{ img_url('cop_sea/prof/prof_gdi2.jpg') }}" title="공득인">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
-                            <li><a href="#none">교수소개</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50742', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}">교수소개</a></li>
                         </ul>
                     </li>
                     <li>

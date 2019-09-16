@@ -58,19 +58,21 @@
 
         <div class="evtCtnsBox wb_cts01" >
             <div class="pt100">
-                <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_01.jpg"alt="통합생활관리반 기본이론 과정"/>
+                {{--<img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_01.jpg"alt="통합생활관리반 기본이론 과정"/>--}}
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1A.png"alt="최적의학습환경"/><br>  
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1C.png"alt="최적의학습환경"/><br>           
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_01_1B.png"alt="최적의학습환경"/>
             <div class="btnLec">
-                <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_02.jpg"alt="통합생활관리반 신청하기" usemap="#Map1053A" border="0"/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1053_02.jpg"alt="통합생활관리반 신청하기" usemap="#Map1053A" border="0"/>
                 <map name="Map1053A" id="Map1053A">
-                    <area shape="rect" coords="355,962,630,1042" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;course_idx=1093&amp;subject_idx=1473" target="_blank" alt="신청하기" />
+                    <area shape="rect" coords="357,419,624,529" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;course_idx=1093&amp;subject_idx=1473" target="_blank" alt="신청하기" />
                 </map>
+                {{--
                 <span>
                     <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_190828_02_popup.png"alt="이벤트 ~9.2 마감"/>   
                 <span>
+                --}}
             </div>            
         </div>
 

@@ -58,7 +58,7 @@
                         <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
                             <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1057&course_idx=1040') }}">형소법 기본이론<span>9.3 개강</span></a></div>
-                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1057&course_idx=1041') }}">형소법 심화이론<span>9.9 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1057&course_idx=1041') }}">형소법 심화이론<span>10.11 개강</span></a></div>
                         </div>
                     </li>
                     <li>

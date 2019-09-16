@@ -22,7 +22,7 @@
 
     /************************************************************/
 
-    .wb_cts03 {background:#fb9193 url(https://static.willbes.net/public/images/promotion/2019/05/1022_top_bg.jpg) no-repeat center top;  margin-top:20px; padding-bottom:100px;}
+    .wb_cts03 {background:#fb9193 url(https://static.willbes.net/public/images/promotion/2019/05/1022_top_bg.jpg) no-repeat center top;  margin-top:20px; padding-bottom:100px;position:relative;}
 
     .menuWarp {position:relative; width:1210px; height:630px; margin:0 auto; }
     .PeMenu {position:absolute; width:1210px;  top:0px; left:0px;}
@@ -32,12 +32,22 @@
     .PeMenu li a img.on {display:none}
     .PeMenu li a:hover img.off {display:none}
     .PeMenu li a:hover img.on {display:block}
+
+    .skyBanner {position:absolute; top:150px;right:400px;z-index:10;}
+    .skyBanner ul li{padding-bottom:10px;}
 </style>
 
 <div class="evtContent NGR" id="evtContainer">
 
     <div class="evtCtnsBox wb_cts03" >
-        <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1022_top.png" alt=""  /></p>
+        <p><img src="https://static.willbes.net/public/images/promotion/2019/05/1022_top.png" alt=""  /></p>        
+        <div class="skyBanner">
+            <ul>            
+                <li>
+                    <a href="https://police.willbes.net/pass/support/notice/show?board_idx=237398&s_campus=605001"><img src="https://static.willbes.net/public/images/promotion/2019/09/1022_pop01.jpg" title="합격생과 함께하는 설명회"></a>
+                </li>
+            </ul>               
+        </div>
         <div class="menuWarp">
             <div class="PeMenu">
                 <ul>

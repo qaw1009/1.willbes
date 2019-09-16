@@ -158,7 +158,7 @@
         </div>
 		
 		<div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1283_05.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_05.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts07" >

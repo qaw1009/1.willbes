@@ -206,7 +206,7 @@
             
         </div>
 
-        <div class="evtCtnsBox evt05">
+        <div class="evtCtnsBox evt05" id="evt05">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1384_05.jpg" title="2020 합격대비 패키지"  />
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1096" target="_blank" class="NSK-Black">모의고사 신청하기 ></a>
         </div>

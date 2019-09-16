@@ -126,11 +126,10 @@
         <div class="evtCtnsBox wb_06">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1051_07.jpg" alt="기대" usemap="#go"/>
             <map name="go" id="go">
-              <area shape="rect" coords="385,1645,472,1681" href="{{ site_url('/pass/home/index') }}" target="_blank" alt="노량진"/>
+              <area shape="rect" coords="385,1645,472,1681" href="https://police.willbes.net/pass/OffVisitLecture?cate_code=3010&subject_idx=1074&campus_ccd=605001&course_idx=" target="_blank" alt="노량진"/>
               <area shape="rect" coords="385,1683,472,1715" href="{{ site_url('/pass/campus/show/code/605003') }}"  target="_blank" alt="부산" onfocus='this.blur()' />
               <area shape="rect" coords="385,1718,472,1750" href="{{ site_url('/pass/campus/show/code/605004') }}" target="_blank" alt="대구" onfocus='this.blur()' />
               <area shape="rect" coords="385,1753,472,1785" href="{{ site_url('/pass/campus/show/code/605006') }}" target="_blank" alt="광주" onfocus='this.blur()' />
-              <area shape="rect" coords="385,1787,472,1822" href="{{ site_url('/pass/campus/show/code/605002') }}" target="_blank" alt="신림" onfocus='this.blur()' />
             </map>
         </div>
 

@@ -22,11 +22,13 @@
 
         /************************************************************/
 
-        .wb_top {background:#e9e9e9 url(https://static.willbes.net/public/images/promotion/2019/09/1027_top_bg.jpg) no-repeat center;}
-        .wb_cts01 {background:#392031 url(https://static.willbes.net/public/images/promotion/2019/09/1027_01_bg.jpg) no-repeat center;}
-        .wb_cts02 {background:#2c2c2c;}
-        .wb_cts03 {background:#fff;}
-        .wb_cts04 {background:#bea97e;}
+        .wb_top {background:#e9e9e9 url(http://file3.willbes.net/new_cop/2018/04/EV180409_p1_bg.png) no-repeat center;}
+        .wb_cts01 {background:#e9e9e9;}
+        .wb_cts02 {background:#392031 url(http://file3.willbes.net/new_cop/2018/04/EV180409_p3_bg.png) no-repeat center;}
+        .wb_cts03 {background:#2c2c2c; padding-bottom:100px;}
+        .wb_cts04 {background:#bda97d; padding-bottom:100px;}
+        .wb_cts05 {background:#fff; padding:100px; 0}
+
 
         /* 슬라이드배너 */
         .slide_con {position:relative; width:1200px; margin:0 auto}
@@ -43,28 +45,35 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top"  id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1027_top.jpg" alt="한국사 적중" />
-        </div>
+            <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp1.png" alt="적중" />
+        </div><!--wb_cts01//-->
 
-        <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1027_01.jpg" alt="고득점 전략가" />
-        </div>
+{{--        <div class="evtCtnsBox wb_cts01" >
+            <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp2.png" alt="한국사정복" />
+            <a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132280') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/2018/04/EV180911_pp2_bt.png"  alt="한국사정복 " /></a>
+        </div>--}}
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1027_02.jpg" alt="한국사 해설강의" />
-            <iframe width="854" height="480" src="https://www.youtube.com/embed/GEdG7-z0BsI" frameborder="0" allowfullscreen></iframe>
+            <img src="http://file3.willbes.net/new_cop/2018/04/EV180409_p3.png"  alt="고득점 전략가" />
         </div>
 
-        <div class="evtCtnsBox wb_cts03" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1027_03.jpg" alt="한국사 해설강의" usemap="#Map1027a" border="0" />
-            <map name="Map1027a" id="Map1027a">
-                <area shape="rect" coords="390,606,818,687" href="https://drive.google.com/a/willbes.com/file/d/1hRycHVUSC7FTYowy1IAFDhhwEDVcdi0Y/view?usp=drive_web" target="_blank" />
-            </map>          
+        <div class="evtCtnsBox wb_cts03" >
+            <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp4.png"  alt="동영상" /><br>
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/-gCHGewLkEU?rel=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="evtCtnsBox wb_cts05" >
+            <!--
+            <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp5.png"  alt="적중사례" /></li>
+            <a href="{{ site_url('/support/notice/index/cate/3001') }}" target="_blank">
+                <img src="http://file3.willbes.net/new_cop/2018/04/EV180409_p5_bt.png"  alt="더 많은 적중사례 보러가기" />
+            </a>
+            -->
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1027_03_01.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1027_03_02.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1027_03_03.jpg" alt="" /></li>
+                    <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190121_p5_1.png" alt="1-2" /></li>
+                    <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190121_p5_2.png" alt="3-4" /></li>
+                    <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190121_p5_3.png" alt="5-6" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/09/EV170913_p_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/09/EV170913_p_next.png"></a></p>
@@ -72,10 +81,10 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1027_04.jpg" alt="실력완성 솔루션" usemap="#Map1027b" border="0" />
-            <map name="Map1027b" id="Map1027b">
-                <area shape="rect" coords="278,958,561,1027" href="{{ site_url('/professor/show/cate/3001/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture#none') }}" onfocus='this.blur()'  alt="온라인강의 신청" target="_blank" />
-                <area shape="rect" coords="621,957,907,1031" href="{{ site_url('/pass/professor/show/prof-idx/50642/?cate_code=3010&subject_idx=1055&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture') }}" onfocus='this.blur()'  alt="학원강의 신청" target="_blank" />
+            <img src="http://file3.willbes.net/new_cop/2018/04/EV180911_pp6.png"  alt="커리큘럼 & 강의신청" usemap="#p1"  />
+            <map name="p1" id="p1">
+                <area shape="rect" coords="179,970,453,1028" href="{{ site_url('/professor/show/cate/3001/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture#none') }}" onfocus='this.blur()'  alt="온라인강의 신청">
+                <area shape="rect" coords="522,971,795,1027" href="{{ site_url('/pass/professor/show/prof-idx/50642/?cate_code=3010&subject_idx=1055&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture') }}" onfocus='this.blur()'  alt="학원강의 신청">
             </map>
         </div>
 

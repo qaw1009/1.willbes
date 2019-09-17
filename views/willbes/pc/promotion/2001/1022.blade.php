@@ -22,7 +22,7 @@
 
     /************************************************************/
 
-    .wb_cts03 {background:#fb9193 url(https://static.willbes.net/public/images/promotion/2019/05/1022_top_bg.jpg) no-repeat center top;  margin-top:20px; padding-bottom:100px;position:relative;}
+    .wb_cts03 {background:#fb9193 url(https://static.willbes.net/public/images/promotion/2019/05/1022_top_bg.jpg) no-repeat center top;  margin-top:20px; padding-bottom:100px;}
 
     .menuWarp {position:relative; width:1210px; height:630px; margin:0 auto; }
     .PeMenu {position:absolute; width:1210px;  top:0px; left:0px;}
@@ -33,7 +33,7 @@
     .PeMenu li a:hover img.off {display:none}
     .PeMenu li a:hover img.on {display:block}
 
-    .skyBanner {position:absolute; top:150px;right:400px;z-index:10;}
+    .skyBanner {position:fixed; top:350px;right:0;z-index:10;}
     .skyBanner ul li{padding-bottom:10px;}
 </style>
 

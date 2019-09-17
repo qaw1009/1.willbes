@@ -65,15 +65,17 @@
 
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">        
+    <div class="p_re evtContent NGR" id="evtContainer">
+        {{--
         <div class="skybanner" >
             <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/08/1360_skybanner.png" alt="스카이배너" ></a>
-        </div>           
+        </div>
+        --}}
     
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_top.jpg" alt="프리미엄 심화 이론"/>       
         </div>
-       
+       {{--
         <div class="evtCtnsBox wb_01" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_01.jpg" alt="사전접수 이벤트" usemap="#Map1360a" border="0" />
             <map name="Map1360a" id="Map1360a">
@@ -83,6 +85,7 @@
                 <area shape="rect" coords="833,1184,1044,1250" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="신청하기" />
             </map>          
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_02.jpg" alt="더 늦기 전에 준비" />
@@ -190,40 +193,8 @@
                         </tbody>
                     </table>        
                 </div>                                  
-            </div>    
-            <div class="evtCtnsBox wb_05_table" style="height:350px;">           
-                <div class="lecture_box">              
-                    <p class="season">new</p>
-                    <h3 class="title">2020년 합격대비 심화이론 + 심화기출 종합반</h3>
-                </div>     
-                <div> 
-                    <table border="0" cellspacing="0" cellpadding="0">
-                        <col width="20%" />
-                        <col width="" />
-                        <col width="20%" />
-                        <col width="15%" />
-                        <thead>
-                            <tr>
-                                <th colspan="2">강의명</th>
-                                <th>개강일</th>                        
-                                <th colspan="2">학원</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="2">2020 경찰시험대비 심화이론 + 심화기출 종합반 (史 오태진)</td>
-                                <td>9.9(월)</td>                        
-                                <td style="border:none;"><a href="#none;"style="font-size:12px;">Coming Soon</a></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">2020 경찰시험대비 심화이론 + 심화기출 종합반 (史 원유철)</td>
-                                <td>9.9(월)</td>                         
-                                <td style="border:none;"><a href="#none;"style="font-size:12px;">Coming Soon</a></td>
-                            </tr>                                                  
-                        </tbody>
-                    </table>        
-                </div>                                  
-            </div>    
+            </div>   
+   
                
         <div class="evtCtnsBox wb_06" id="careful">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_06.jpg" alt="유의사항"/>         
@@ -232,9 +203,6 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-
-    </script>
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

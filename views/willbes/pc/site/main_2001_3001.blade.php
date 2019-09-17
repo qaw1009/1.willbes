@@ -27,9 +27,9 @@
                     </map>
                 @else
                     {{--7월 13일 16시 이후--}}
-                    <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190808_02.jpg" usemap="#Map190809" title="신광은 경찰 연강시스템" border="0">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_02.jpg" usemap="#Map190809" title="신광은 경찰 연강시스템" border="0">
                     <map name="Map190809" id="Map190809">
-                        <area shape="rect" coords="16,210,227,424" href="https://police.willbes.net/pass/promotion/index/cate/3011/code/1359" target="_blank" alt="기본이론" />
+                        <area shape="rect" coords="16,210,227,424" href="https://police.willbes.net/pass/promotion/index/cate/3011/code/1394" target="_blank" alt="기본이론" />
                         <area shape="rect" coords="894,212,1102,429" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1360" target="_blank" alt="프리미엄심화이론" />
                         <area shape="rect" coords="424,418,694,469" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1325" target="_blank" alt="슈퍼패스" />
                     </map>

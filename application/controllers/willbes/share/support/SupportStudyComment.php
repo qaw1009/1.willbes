@@ -35,10 +35,10 @@ class SupportStudyComment extends BaseSupport
 
         $arr_best_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
-                'IsUse' => 'Y',
-                'IsBest' => '1',
-                'ProdCode' => $prod_code,
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y',
+                'b.IsBest' => '1',
+                'b.ProdCode' => $prod_code,
                 'b.ProfSiteCode' => $this->_site_code
             ],
             'RAW' => [
@@ -48,8 +48,8 @@ class SupportStudyComment extends BaseSupport
 
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
-                'IsUse' => 'Y',
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y',
                 'ProdCode' => $prod_code,
                 'b.ProfSiteCode' => $this->_site_code
             ],
@@ -71,7 +71,7 @@ class SupportStudyComment extends BaseSupport
         $column .= ',SubjectName, ProfName, ProdName';
         $column .= ',ProdApplyTypeCcd, LecScore';
 
-        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
         $list = [];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,$cate_code);
@@ -146,6 +146,17 @@ class SupportStudyComment extends BaseSupport
     }
 
     /**
+     * 모바일 수강후기
+     */
+    public function listMobile()
+    {
+        $arr_input = array_merge($this->_reqG(null));
+        $this->load->view('support/study', [
+            'arr_input' => $arr_input
+        ]);
+    }
+
+    /**
      * ajax list
      * @return CI_Output
      */
@@ -162,17 +173,17 @@ class SupportStudyComment extends BaseSupport
 
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
-                'IsUse' => 'Y',
-                'SubjectIdx' => $subject_idx,
-                'ProfIdx' => $prof_idx,
-                'ProdCode' => $prod_code,
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y',
+                'b.SubjectIdx' => $subject_idx,
+                'b.ProfIdx' => $prof_idx,
+                'b.ProdCode' => $prod_code,
                 'b.ProfSiteCode' => $this->_site_code
             ],
             'ORG' => [
                 'LKB' => [
-                    'Title' => $s_keyword,
-                    'Content' => $s_keyword
+                    'b.Title' => $s_keyword,
+                    'b.Content' => $s_keyword
                 ]
             ],
             'RAW' => [
@@ -188,10 +199,10 @@ class SupportStudyComment extends BaseSupport
             ]);
         }*/
 
-        $column = 'BoardIdx, IsBest, RegType, RegMemIdx';
+        $column = 'b.BoardIdx, b.IsBest, b.RegType, b.RegMemIdx';
         $column .= ',IF(b.RegType=1, b.RegMemId, m.MemId) AS RegMemId, IF(b.RegType=1, b.RegMemName, m.MemName) AS RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
-        $column .= ',DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ',DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ',SubjectIdx, ProfIdx, b.ProdCode';
         $column .= ',SubjectName, ProfName, ProdName';
         $column .= ',ProdApplyTypeCcd, LecScore';
@@ -212,15 +223,16 @@ class SupportStudyComment extends BaseSupport
         }
 
         $list = [];
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,'');
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,$cate_code);
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,'',$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$cate_code,$column,$paging['limit'],$paging['offset'],$order_by);
         }
         return $this->response([
             'paging' => $paging,
             'ret_data' => $list,
+            'total_rows' => $total_rows
         ]);
     }
 
@@ -257,7 +269,7 @@ class SupportStudyComment extends BaseSupport
             ]
         ];
 
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition, '');
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition, $cate_code);
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         return $this->response([

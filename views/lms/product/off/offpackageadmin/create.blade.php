@@ -154,11 +154,11 @@
                     <label class="control-label col-md-2" for="StudyPatternCcd">수강형태 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
-                        <div class="radio">
+
                             @foreach($studypattern_ccd as $key => $val)
                                 <input type="radio" name="StudyPatternCcd" id="StudyPatternCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 1) || $data['StudyPatternCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
-                        </div>
+
                     </div>
                 </div>
 
@@ -166,16 +166,27 @@
                     <label class="control-label col-md-2" for="StudyApplyCcd">수강신청구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
-                        <div class="radio">
                             @foreach($studyapply_ccd as $key => $val)
                                 <input type="radio" name="StudyApplyCcd" id="StudyApplyCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 3) || $data['StudyApplyCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
-                        </div>
                     </div>
                     <label class="control-label col-md-2" for="FixNumber">정원 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <input type="number" name="FixNumber" id="FixNumber" value="{{$data['FixNumber']}}" required="required" class="form-control" title="정원" style="width:70px;" > 명
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">신규/추천
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="checkbox">
+                            <input type='checkbox' name='IsNew' value='Y' class="flat" @if($data['IsNew'] == 'Y') checked="checked"@endif> 신규
+                            &nbsp;&nbsp;
+                            <input type='checkbox' name='IsBest' value='Y' class="flat" @if($data['IsBest'] == 'Y') checked="checked"@endif> 추천
+                        </div>
                     </div>
                 </div>
 

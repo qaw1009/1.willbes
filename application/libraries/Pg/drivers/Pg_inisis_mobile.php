@@ -189,9 +189,7 @@ class Pg_inisis_mobile extends CI_Driver
 
                 // 결제방법별 상세코드 (신용카드, 은행)
                 $auth_results['PayDetailCode'] = null;
-                if (empty(element('P_CARD_ISSUER_CODE', $auth_results)) === false) {
-                    $auth_results['PayDetailCode'] = element('P_CARD_ISSUER_CODE', $auth_results);
-                } else if (empty(element('P_FN_CD1', $auth_results)) === false) {
+                if (empty(element('P_FN_CD1', $auth_results)) === false) {
                     $auth_results['PayDetailCode'] = element('P_FN_CD1', $auth_results);
                 } else if (empty(element('P_VACT_BANK_CODE', $auth_results)) === false) {
                     $auth_results['PayDetailCode'] = element('P_VACT_BANK_CODE', $auth_results);

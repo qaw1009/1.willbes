@@ -174,8 +174,8 @@
           
         <div class="evtCtnsBox wb_cts03" id="event">             
             <ul>
-                <li><div class="check01"><input type="radio" id="y_pkg" name="y_pkg" value="149304" onClick=""/></div></li> <!--공채 12개월 43만원-->
-                <li><div class="check02"><input type="radio" id="y_pkg" name="y_pkg" value="149305" onClick=""/></div></li> <!--특채 12개월 35만원-->
+                <li><div class="check01"><input type="radio" id="y_pkg" name="y_pkg" value="156868" onClick=""/></div></li> <!--공채 12개월 -->
+                <li><div class="check02"><input type="radio" id="y_pkg" name="y_pkg" value="156869" onClick=""/></div></li> <!--특채 12개월 -->
             </ul>
             <div>
                 <a href="{{site_url('/promotion/index/cate/3023/code/1091')}}" target="_blank">

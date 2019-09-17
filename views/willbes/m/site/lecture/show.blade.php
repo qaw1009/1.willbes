@@ -282,18 +282,20 @@
         }
 
         //수강후기 조회
-        $('#btn_study_board').on('click', function () {
-            var data = {
-                'cate_code' : '{{$__cfg['CateCode']}}',
-                'prod_code' : '{{$data['ProdCode']}}',
-                'subject_idx' : '{{$data['SubjectIdx']}}',
-                'subject_name' : encodeURIComponent('{{$data['ProdName']}}'),
-                'prof_idx' : '{{$data['ProfIdx']}}'
-            };
-            sendAjax('{{ front_url('/support/studyComment/listMobile/') }}', data, function(ret) {
-                $('.tab04-content').html(ret).show().css('display', 'block').trigger('create');
-            }, showAlertError, false, 'GET', 'html');
-        });
+        setTimeout(listStudyBoard, 1000);
     });
+
+    function listStudyBoard() {
+        var data = {
+            'cate_code': '{{$__cfg['CateCode']}}',
+            'prod_code': '{{$data['ProdCode']}}',
+            'subject_idx': '{{$data['SubjectIdx']}}',
+            'subject_name': encodeURIComponent('{{$data['ProdName']}}'),
+            'prof_idx': '{{$data['ProfIdx']}}'
+        };
+        sendAjax('{{ front_url('/support/studyComment/listMobile/') }}', data, function (ret) {
+            $('.tab04-content').html(ret).show().css('display', 'block').trigger('create');
+        }, showAlertError, false, 'GET', 'html');
+    }
 </script>
 @stop

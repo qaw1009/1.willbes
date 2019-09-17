@@ -2,10 +2,10 @@
 <div class="add-paging"></div>
 <form class="form-horizontal form-label-left" id="_ajax_search_form" name="_ajax_search_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
-    <input type="hidden" id="search_cate_code" name="search_cate_code" value="{{element('cate_code', $arr_input)}}">
-    <input type="hidden" id="search_subject_idx" name="search_subject_idx" value="{{element('subject_idx', $arr_input)}}">
-    <input type="hidden" id="search_prof_idx" name="search_prof_idx" value="{{element('prof_idx', $arr_input)}}">
-    <input type="hidden" id="search_prod_code" name="search_prod_code" value="{{element('prod_code', $arr_input)}}">
+    <input type="hidden" id="search_cate_code" value="{{element('cate_code', $arr_input)}}">
+    <input type="hidden" id="search_subject_idx" value="{{element('subject_idx', $arr_input)}}">
+    <input type="hidden" id="search_prof_idx" value="{{element('prof_idx', $arr_input)}}">
+    <input type="hidden" id="search_prod_code" value="{{element('prod_code', $arr_input)}}">
     <input type="hidden" id="orderby" name="orderby">
 </form>
 
@@ -14,12 +14,12 @@
     var $mem_id = '{{sess_data('mem_id')}}';
 
     $(document).ready(function(){
-        callAjax(1);
+        callAjax(1, false);
     });
 
-    function callAjax(num) {
+    function callAjax(num, scroll) {
         listAjax(num);    //list data load
-        ajaxPaging(num);  //page data load
+        ajaxPaging(num, scroll);  //page data load
         applyPagination();
     }
 
@@ -63,7 +63,7 @@
         }, showError, false, 'GET');
     }
 
-    function ajaxPaging(page)
+    function ajaxPaging(page, scroll)
     {
         var _url = '{{ front_url("/support/studyComment/ajaxPaging") }}';
         var data = {
@@ -74,8 +74,13 @@
             'search_prod_code' : $('#search_prod_code').val(),
             'page' : page
         };
+
         sendAjax(_url, data, function(ret) {
             $('.add-paging').html(ret.paging.pagination);
+            if (scroll == true) {
+                var offset = $(".tabWrap").offset();
+                $('html, body').animate({scrollTop: offset.top}, 100);
+            }
         }, showError, false, 'GET');
     }
 
@@ -83,20 +88,20 @@
     function applyPagination() {
         $("div.Paging a").on("click", function() {
             var link, temp_params, params, num;
-            /*var num = $(this).text();
-            callAjax(num);*/
-
             link = $(this).attr('href');
-            if (link != undefined) {
+
+            if (link == undefined || link == '#none') {
+                return false;
+            } else {
                 temp_params = link.split('?');
                 params = temp_params[1].split('=');
                 num = params[1];
             }
 
             if (num != undefined) {
-                callAjax(num);
+                callAjax(num, true);
             } else {
-                callAjax(1);
+                callAjax(1, true);
             }
             return false;
         });

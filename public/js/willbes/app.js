@@ -148,6 +148,7 @@ $(function() {
         };
         $.fn.datepicker.defaults.language = 'kr';
         $.fn.datepicker.defaults.autoclose = true;
+        $.fn.datepicker.defaults.disableTouchKeyboard = true;
 
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd'

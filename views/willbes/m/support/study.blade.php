@@ -40,6 +40,7 @@
         sendAjax(_url, data, function(ret) {
             var regName;
             var rownum = ret.paging.rownum;
+            $("#tab04 > strong").text(ret.total_rows);
 
             if (ret.ret_data.length < 1) {
                 add_table += '<div class="reply">수강후기 목록이 없습니다.</div>';
@@ -57,8 +58,6 @@
                     add_table += '</div>';
                     rownum = rownum - 1;
                 });
-
-                $("#tab04 > strong").text(ret.total_rows);
             }
             $('.add-list').html(add_table);
         }, showError, false, 'GET');

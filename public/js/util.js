@@ -289,16 +289,27 @@ function formCreateSubmit(url, params, method, target) {
 }
 
 /**
- * 온라인, 학원 사이트를 구분하여 URL 생성 (base_helper > front_url 함수와 동일한 역할 수행)
+ * 디바이스/온라인/학원 사이트를 구분하여 URL 생성 (base_helper > front_url 함수와 동일한 역할 수행)
  * @param uri
  * @returns {string}
  */
 function frontUrl(uri) {
-    if (location.pathname.indexOf('/pass/') === 0) {
-        uri = '/pass' + uri;
+    var path = location.pathname;
+    var uri_prefix = '';
+
+    // 디바이스
+    if (path.indexOf('/m/') === 0) {
+        uri_prefix += '/m';
+    } else if (path.indexOf('/app/') === 0) {
+        uri_prefix += '/app';
     }
 
-    return siteUrl(uri);
+    // 학원사이트
+    if (path.indexOf('/pass/') === 0 || path.indexOf('/m/pass/') === 0 || path.indexOf('/app/pass/') === 0) {
+        uri_prefix += '/pass';
+    }
+
+    return siteUrl(uri_prefix + uri);
 }
 
 /**

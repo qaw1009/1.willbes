@@ -57,10 +57,11 @@
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1380_05.jpg" alt="수강신청" usemap="#Map1380a" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1380_05.jpg" alt="수강신청" usemap="#Map1380a" border="0"/>
             <map name="Map1380a" id="Map1380a">
-                <area shape="rect" coords="745,539,980,608" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156171" target="_blank" alt="한국사 수강신청" />
-            </map>         
+                <area shape="rect" coords="745,561,980,630" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156930" target="_blank" alt="도사국사 심화이론" />
+                <area shape="rect" coords="746,802,977,868" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156171" target="_blank" alt="한국사기본이론" />
+            </map>      
         </div>
     </div>
     <!-- End Container -->   

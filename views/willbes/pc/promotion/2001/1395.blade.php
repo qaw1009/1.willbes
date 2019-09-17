@@ -37,7 +37,7 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1395_01.jpg" alt="적중사례 보러가기" usemap="#Map1395a" border="0"  />
             <map name="Map1395a" id="Map1395a">
-                <area shape="rect" coords="423,442,711,525" href="http://file3.willbes.net/board/201902/20190227102115134.pdf" alt="더 많은 적중사례 보러가기" target="_blank"/>
+                <area shape="rect" coords="423,442,711,525" href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=238300&" alt="더 많은 적중사례 보러가기" target="_blank"/>
             </map>           
         </div>
 

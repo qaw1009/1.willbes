@@ -881,7 +881,7 @@ class EventFModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listEventForCommentPromotion($is_count, $arr_condition, $limit = null, $offset = null, $order_by = [], $cate_code)
+    public function listEventForCommentPromotion($is_count, $arr_condition, $limit = null, $offset = null, $order_by = [], $cate_code = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';

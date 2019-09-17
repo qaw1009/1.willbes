@@ -58,7 +58,7 @@
         <div class="evtCtnsBox wb_cts03" >            
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1027_03.jpg" alt="한국사 해설강의" usemap="#Map1027a" border="0" />
             <map name="Map1027a" id="Map1027a">
-                <area shape="rect" coords="390,606,818,687" href="https://drive.google.com/a/willbes.com/file/d/1hRycHVUSC7FTYowy1IAFDhhwEDVcdi0Y/view?usp=drive_web" target="_blank" />
+                <area shape="rect" coords="390,606,818,687" href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=238346&" target="_blank" />
             </map>          
             <div class="slide_con">
                 <ul id="slidesImg3">

@@ -29,16 +29,19 @@ class Lecture extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        // 카테고리 셋팅
-        $cate_code = $this->_cate_code;
-        
+        // 카테고리 셋팅  -> 모바일의 경우 select box 로 카테고리 전달
+        //$cate_code = $this->_cate_code;
+        $cate_code = !(empty($this->_cate_code)) ? $this->_cate_code : element('cate_code', $arr_input);
+
+        // 카테고리 조회 : 모바일에서 카테고리 select box 사용
+
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+
         // 지정된 카테고리가 없을 경우
         if (empty($cate_code) === true) {
-            // 카테고리 조회
-            $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
             $cate_code = element('cate_code', $arr_input, get_var(config_app('DefCateCode'), array_get($arr_base['category'], '0.CateCode')));
         }
-        
+
         // 사이트별 과목 조회
         if (config_app('SiteGroupCode') == '1002') {
             // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회

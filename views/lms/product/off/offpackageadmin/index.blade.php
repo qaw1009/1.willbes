@@ -149,6 +149,8 @@
                     <th>개강<BR>년/월</th>
                     <th>종합반명</th>
                     <th>판매가</th>
+                    <th>신규</th>
+                    <th>추천</th>
                     <th>정원</th>
                     <th>개설여부</th>
                     <th>접수기간</th>
@@ -178,7 +180,7 @@
 
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
-                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 사용여부 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 종합반복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 종합반등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('product/off/offPackageAdmin/create') }}';
@@ -211,12 +213,16 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
                         }},//상품명
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }},
+                    {'data' : 'IsNew', 'render' : function(data, type, row, meta) {
+                            return '<input type="checkbox" class="flat" name="is_new" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-new="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                        }},
+                    {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
+                            return '<input type="checkbox" class="flat" name="is_best" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-best="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                        }},
                     {'data' : 'FixNumber'},
-
                     {'data' : 'IsLecOpen', 'render' : function(data, type, row, meta) {
                             var html = '';
                             html += '<input type="hidden" name="prodCode" value="'+row.ProdCode+'">';
@@ -226,11 +232,9 @@
                             html += '</select>';
                             return html;
                         }},
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.SaleStartDatm +' ~ '+row.SaleEndDatm;
                         }},
-
                     {'data' : 'AcceptStatusCcd', 'render' : function(data, type, row, meta) {
                             var html = '';
                             html += '<select class="form-control input-sm" name="AcceptStatusCcd" data-idx="' + row.ProdCode + '">';
@@ -240,7 +244,6 @@
                                 html += '</select>';
                             return html;
                         }},
-
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
@@ -357,22 +360,27 @@
                 }, showError, false, 'POST');
             });
 
-            // 사용 상태 변경
+            // 신규, 추천, 사용 상태 변경
             $('.btn-new-best-modify').on('click', function() {
                 if (!confirm('상태를 적용하시겠습니까?')) {
                     return;
                 }
 
+                var $is_new = $list_table.find('input[name="is_new"]');
+                var $is_best = $list_table.find('input[name="is_best"]');
                 var $is_use = $list_table.find('input[name="is_use"]');
                 var $params = {};
-                var origin_val, this_val, this_use_val;
+                var origin_val, this_val, this_new_val, this_best_val, this_use_val;
 
-                $is_use.each(function(idx) {
+                $is_new.each(function(idx) {
+                    // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
+                    this_new_val = $(this).filter(':checked').val() || 'N';
+                    this_best_val = $is_best.eq(idx).filter(':checked').val() || 'N';
                     this_use_val =  $is_use.eq(idx).filter(':checked').val() || 'N';
-                    this_val = this_use_val;
-                    origin_val = $is_use.eq(idx).data('origin-is-use');
+                    this_val = this_new_val + ':' + this_best_val + ':' + this_use_val;
+                    origin_val = $(this).data('origin-is-new') + ':' + $is_best.eq(idx).data('origin-is-best') + ':' + $is_use.eq(idx).data('origin-is-use');
                     if (this_val !== origin_val) {
-                        $params[$(this).data('idx')] = { 'IsUse' : this_use_val };
+                        $params[$(this).data('idx')] = { 'IsNew' : this_new_val, 'IsBest' : this_best_val, 'IsUse' : this_use_val };
                     }
                 });
 

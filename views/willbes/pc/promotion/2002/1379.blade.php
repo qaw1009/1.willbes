@@ -41,7 +41,7 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
         
         .wb_00 {background:#404040}
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1379_top_bg.jpg) no-repeat center top;}       
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/09/1379_top_bg.jpg) no-repeat center top;}       
         .wb_01 {background:#eee;}
         .wb_02 {background:#fff;}
         .wb_03 {background:#555;}  
@@ -85,28 +85,25 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_top.jpg" alt="해양경찰 합격 패키지"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1379_top.jpg" alt="해양경찰 합격 패키지"/>
         </div>
       
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_01.jpg" alt="교수진과 함께" />          
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1379_01.jpg" alt="교수진과 함께" />          
         </div>
 
         <div class="evtCtnsBox wb_02" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_02_2.jpg" alt="패키지 구성" usemap="#Map1379z" border="0" />
-            <map name="Map1379z" id="Map1379z">
-                <area shape="rect" coords="369,1927,753,2048" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1095#none" target="_blank" alt="지금 바로 신청하기" />
-                <area shape="rect" coords="915,324,1011,364" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1043&amp;subject_idx=" target="_blank" alt="핵심이론 단과" />
-                <area shape="rect" coords="914,376,1011,412" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1044&amp;subject_idx=" target="_blank" alt="문제풀이 단과" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1379_02.jpg" alt="패키지 구성" usemap="#Map1379a" border="0"/>
+            <map name="Map1379a" id="Map1379a">
+                <area shape="rect" coords="248,429,544,494" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=413&" target="_blank" />
+                <area shape="rect" coords="577,430,869,495" href="https://police.willbes.net/lecture/show/cate/3007/pattern/free/prod-code/156845" target="_blank" />
+                <area shape="rect" coords="790,1307,1018,1365" href="https://police.willbes.net/package/show/cate/3007/pack/648001/prod-code/156934" target="_blank" />
+                <area shape="rect" coords="785,1385,1020,1444" href="https://police.willbes.net/package/show/cate/3007/pack/648001/prod-code/156935" target="_blank" />
+            </map>            
         </div>
         
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1379_03.jpg" alt="다운로드 및 바로가기" usemap="#Map1379b" border="0" />
-            <map name="Map1379b" id="Map1379b">
-                <area shape="rect" coords="179,226,541,293" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="공고문 다운로드" />
-                <area shape="rect" coords="577,226,938,295" href="http://gosi.kcg.go.kr/" target="_blank" alt="원서접수 바로가기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1379_03.jpg" alt="강의구성"/>          
         </div>
 
     </div>

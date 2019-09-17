@@ -232,6 +232,7 @@ class SupportStudyComment extends BaseSupport
         return $this->response([
             'paging' => $paging,
             'ret_data' => $list,
+            'total_rows' => $total_rows
         ]);
     }
 

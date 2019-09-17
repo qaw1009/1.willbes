@@ -58,7 +58,7 @@
                     rownum = rownum - 1;
                 });
 
-                $("#tab04 > strong").text(ret.paging.rownum);
+                $("#tab04 > strong").text(ret.total_rows);
             }
             $('.add-list').html(add_table);
         }, showError, false, 'GET');

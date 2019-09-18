@@ -463,9 +463,9 @@ abstract class FrontController extends BaseController
                     $viewPC = $this->session->userdata('viewPC');
                     if ($viewPC != 1) { // 세션이 있으면
                         if ($this->_is_pass_site === true) {
-                            redirect(site_url('/m/pass/home/index'));
+                            redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/' . config_item('app_pass_site_prefix') . '/home/index'));
                         } else {
-                            redirect(site_url('/m/home/index'));
+                            redirect(site_url('/' . config_item('app_mobile_site_prefix') . '/home/index'));
                         }
                     }
                 }

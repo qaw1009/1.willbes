@@ -138,6 +138,8 @@ class StudentModel extends WB_Model
                 ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName
                 ,(SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate
                 ,fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData
+                ,P.ProdName, P.ProdCode
+                
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -146,6 +148,7 @@ class StudentModel extends WB_Model
         $from = "
                     FROM 
                         lms_order_product AS OP
+                            join lms_product AS P ON P.ProdCode = OP.ProdCode
                             left outer join lms_sys_code OPa on OP.SalePatternCcd = OPa.Ccd and OPa.IsStatus='Y'
                         join lms_order as O on O.OrderIdx = OP.OrderIdx
                             left outer join lms_sys_code Oa on O.PayRouteCcd = Oa.Ccd and Oa.IsStatus='Y'
@@ -231,7 +234,7 @@ class StudentModel extends WB_Model
                 ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName,
                 (SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate,
                 IF(P.LearnPatternCcd = '615007', 'Y', 'N') AS IsPkg,
-                P1.ProdName
+                P1.ProdName, P1.ProdCode
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

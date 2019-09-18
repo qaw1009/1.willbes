@@ -184,6 +184,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-database mr-5"></i> 선택강좌 수강생 보기', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-list' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 선택강좌 수강생 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' }
                 ],
                 ajax: {
@@ -259,6 +260,22 @@
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/student/'.$lecType.'/excel/') }}', $search_form.serializeArray(), 'POST');
                 }
+            });
+
+            // 수강생보기
+            $('.btn-list').on('click', function(event) {
+                if($(".ProdCode:checked").length < 1){
+                    alert("강좌를 선택해주십시요.");
+                    return;
+                }
+
+                $data = $("#search_form").formSerialize();
+
+                $('.btn-list').setLayer({
+                    url : "{{ site_url('/student/offpkg/viewLayer/') }}?"+$data,
+                    width : 1700
+                });
+
             });
 
             $("#all_check").on('change', function(event) {

@@ -185,6 +185,8 @@ class BaseStudent extends \app\controllers\BaseController
         ]);
     }
 
+
+
     /**
      * 수강생보기 레이아웃
      * @return object|string
@@ -226,16 +228,38 @@ class BaseStudent extends \app\controllers\BaseController
      */
     public function viewAjax()
     {
-        $arr_condition = [
-            'EQ' => [
-                'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
-                'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
-                'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
-                'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
-                'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
-            ]
-        ];
+        $ProdCode  = $this->_req('ProdCode');
+
+        if(empty($ProdCode) == true){
+            return $this->json_error('강좌코드를 입력해주십시요.');
+        }
+
+        if(is_array($ProdCode) == true){
+            $arr_condition = [
+                'IN' => [
+                    'OP.ProdCode' => $ProdCode, // 강좌코드
+                ],
+                'EQ' => [
+                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                ]
+            ];
+
+        } else {
+            $arr_condition = [
+                'EQ' => [
+                    'OP.ProdCode' => $ProdCode, // 강좌코드
+                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                ]
+            ];
+        }
 
         // 날짜 검색
         $search_start_date = $this->_reqP('search_start_date');

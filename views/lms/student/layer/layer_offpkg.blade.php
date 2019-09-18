@@ -51,7 +51,7 @@
         $(document).ready(function() {
             $datatable_layer = $list_table_layer.DataTable({
                 serverSide: true,
-                pageLength : 2,
+                pageLength : 20,
                 pagingType : 'simple_numbers',
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 수강생 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel-layer' }

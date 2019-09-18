@@ -1161,10 +1161,10 @@ class Player extends \app\controllers\FrontController
                 'EQ' => [
                     'MemIdx' => $MemIdx,
                     'OrderIdx' => $OrderIdx,
-                'ProdCode' => $ProdCode,
-                'ProdCodeSub' => $ProdCodeSub,
-                'wLecIdx' => $lec['wLecIdx']
-            ],
+                    'ProdCode' => $ProdCode,
+                    'ProdCodeSub' => $ProdCodeSub,
+                    'wLecIdx' => $lec['wLecIdx']
+                ],
                 'IN' => [
                     'wUnitIdx' => $wUnitIdx
                 ]
@@ -1333,103 +1333,7 @@ class Player extends \app\controllers\FrontController
      */
     function getMobileSample($params = [])
     {
-        if(empty($params[0]) === true || empty($params[1]) === true || empty($params[2]) === true ){
-            show_alert('파라미터가 잘못 되었습니다.1', 'close');
-        }
 
-        $prodcode = $params[0];
-        $unitidx = $params[1];
-        $quility = $params[2];
-
-        if($this->session->userdata('is_login') === true){
-            $MemId = $this->session->userdata('mem_id');
-        } else {
-            $MemId = "ANONYMOUS";
-        }
-
-        if(empty($quility) === true){
-            $quility = 'WD';
-        }
-
-        $data = $this->playerFModel->getLectureSample($prodcode, $unitidx);
-
-        if(empty($data) === true){
-            show_alert('샘플강좌가 없습니다.', 'close');
-        }
-
-        switch($quility){
-            case 'WD':
-                $filename = $data['wWD'];
-                $ratio = 21; // 초 와이드는 고정
-                break;
-
-            case 'HD':
-                $filename = $data['wHD'];
-                $ratio = $data['wRatio']; // 고화질은 설정한 비율
-                break;
-
-            case 'SD':
-                $filename = $data['wSD'];
-                $ratio = $data['wRatio']; // 저화질도 설정한 비율
-                break;
-
-            default:
-                $filename = $data['wWD'];
-                $ratio = 21; // 초 와이드는 고정
-                $quility = 'WD';
-                break;
-        }
-
-        // 동영상 경로가 없을때 다른 경로로 재생
-        if(empty($filename) === true){
-            $filename = $data['wWD'];
-            $ratio = 21;
-            $quility = 'WD';
-        }
-        if(empty($filename) === true){
-            $filename = $data['wHD'];
-            $ratio = $data['wRatio'];
-            $quility = 'HD';
-        }
-        if(empty($filename) === true){
-            $filename = $data['wSD'];
-            $ratio = $data['wRatio'];
-            $quility = 'SD';
-        }
-
-        // 모든 경로가 존재 없을때
-        if(empty($filename) === true){
-            show_alert('샘플파일이 없습니다.', 'close');
-        }
-
-        $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
-
-        // 샘플강의 수강로그 저장
-        if($this->playerFModel->storeSampleLog([
-                'ProdCode' => $prodcode,
-                'UnitIdx' => $unitidx,
-                'Url' => $url,
-                'MemIdx' => $this->session->userdata('mem_idx'),
-                'Quility' => $quility
-            ]) == false){
-            show_alert('오류가 발생했습니다. 다시 시도해주십시요.', 'close');
-        };
-
-        $this->load->view('/player/sample', [
-            'data' => [
-                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
-                'title' => $data['wUnitName'],
-                'quility' => $quility,
-                'startPosition' => 0,
-                'ratio' => 21,
-                'isIntro' => false,
-                'ratio' => $ratio,
-                'startPosition' => 0,
-                'url' => $url,
-                'memid' => $MemId,
-                'ip' => $this->input->ip_address()
-            ]
-        ]);
     }
 
 

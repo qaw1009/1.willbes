@@ -1568,7 +1568,9 @@ body.memBody #Footer {
     float: left;
     width: 35%;
     max-width: 85px;
+    max-height:85px;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 .passProfTabs .w-prof img {
     width: 100%;

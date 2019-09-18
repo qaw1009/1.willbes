@@ -50,7 +50,7 @@
         </div>
 
         <div class="lec-info">
-            <h4 class="NGEB">강좌신청 및 교재선택 <a href="#none" class="NGR">교재정보 전체보기</a></h4>
+            <h4 class="NGEB">강좌신청 및 교재선택 {{--<a href="#none" class="NGR">교재정보 전체보기</a>--}}</h4>
             <div class="w-data tx-left">
                 <dl class="w-info pt-zero">
                     <dt>영어<span class="row-line">|</span>한덕현</dt>

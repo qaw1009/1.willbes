@@ -145,7 +145,6 @@ class Offlecture extends BaseStudent
                         'OP.ProdCode' => $ProdCode_tmp
                     ],
                     'EQ' => [
-                        'OP.ProdCode' => $ProdCode,
                         'ML.ProdCodeSub' => $ProdCode, // 강좌코드
                         'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
                         'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
@@ -189,7 +188,7 @@ class Offlecture extends BaseStudent
             $file_name = '수강생현황_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d", time());
 
             $headers = [ '회원번호', '회원명', '아이디', '상품구분', '종합반여부', '강좌명', '강좌번호', '주문번호', '결제루트', '결제수단', '결제금액', '결제자', '결제일', '휴대폰', '이메일'];
-            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, IsPkg, ProdName, ProdCode, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price, ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+            $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, IsPkg, ProdNameSub, ProdCodeSub, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price, ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
 
         } else {
             $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $ProdCode]]);

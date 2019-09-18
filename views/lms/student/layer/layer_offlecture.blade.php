@@ -73,7 +73,7 @@
                                     return '<a href="{{site_url('/member/manage/detail/')}}'+data+'" target="_blank"><u>'+row.MemId + '(' + row.MemName + ')'+'</u></a>';
                                 }}, //회원명(아이디)
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    return data.ProdName + "(" + data.ProdCode + ")";
+                                    return data.ProdNameSub + "(" + data.ProdCodeSub + ")";
                                 }},
                             {'data' : 'IsPkg'},
                             {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {

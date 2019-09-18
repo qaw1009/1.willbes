@@ -151,7 +151,7 @@
                 <table id="list_ajax_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th>선택</th>
+                        <th><input type="checkbox" id="all_check" /> 선택</th>
                         <th>No.</th>
                         <td>캠퍼스</td>
                         <th>기본정보</th>
@@ -188,6 +188,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-database mr-5"></i> 선택강좌 수강생 보기', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-list' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 선택강좌 수강생 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' }
                 ],
                 ajax: {
@@ -200,7 +201,7 @@
                 ,
                 columns: [
                     {'data' : null, 'render' : function(date, type, row,meta){
-                            return '<input type="checkbox" id="ProdCode" name="ProdCode[]" value="'+row.ProdCode+'" />';
+                            return '<input type="checkbox" id="ProdCode" name="ProdCode[]" value="'+row.ProdCode+'" class="ProdCode" />';
                         }}, // 선택
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -260,10 +261,35 @@
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
+                if($(".ProdCode:checked").length < 1){
+                    alert("출력할 강좌를 선택해주십시요.");
+                    return;
+                }
+
                 event.preventDefault();
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/student/'.$lecType.'/excel/') }}', $search_form.serializeArray(), 'POST');
                 }
+            });
+
+
+            $('.btn-list').on('click', function(event) {
+                if($(".ProdCode:checked").length < 1){
+                    alert("강좌를 선택해주십시요.");
+                    return;
+                }
+
+                $data = $("#search_form").formSerialize();
+
+                $('.btn-list').setLayer({
+                    url : "{{ site_url('/student/offlecture/viewLayer/') }}?"+$data,
+                    width : 1700
+                });
+
+            });
+
+            $("#all_check").on('change', function(event) {
+                $(".ProdCode").prop('checked', $("#all_check").prop("checked"));
             });
 
         });

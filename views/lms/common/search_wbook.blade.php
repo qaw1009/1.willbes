@@ -133,7 +133,7 @@
                 if ($parent_selected_isbn.length > 0) { $parent_selected_isbn.text(row.wIsbn); }
                 if ($parent_selected_page_cnt.length > 0) { $parent_selected_page_cnt.text(row.wPageCnt + 'p'); }
                 if ($parent_selected_edition_ccd_name.length > 0) { $parent_selected_edition_ccd_name.text(row.wEditionCcdName); }
-                if ($parent_selected_print_edtion_cnt.length > 0) { $parent_selected_print_edtion_cnt.text(row.wPrintCnt + '판 ' + row.wEditionCnt + '쇄'); }
+                if ($parent_selected_print_edtion_cnt.length > 0) { $parent_selected_print_edtion_cnt.text(  row.wEditionCnt+ '판 ' +row.wPrintCnt + '쇄'); }
                 if ($parent_selected_edtion_size.length > 0) { $parent_selected_edtion_size.text(row.wEditionSize); }
                 if ($parent_selected_wbook_desc.length > 0) { $parent_selected_wbook_desc.html(row.wBookDesc); }
                 if ($parent_selected_wauthor_desc.length > 0) { $parent_selected_wauthor_desc.html(row.wAuthorDesc); }

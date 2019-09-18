@@ -198,7 +198,7 @@
                                 <td class="w-list">{{$row['CourseName']}}</td>
                                 <td class="w-data tx-left pl15">
                                     <div class="w-tit w-acad-tit">
-                                        <a href="{{ front_url('/OffPackage/show/').'prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                        <a href="{{ front_url('/offPackage/show/').'prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                     </div>
                                     <dl class="w-info acad">
                                         <dt>

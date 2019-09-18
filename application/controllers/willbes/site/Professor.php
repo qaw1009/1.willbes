@@ -94,7 +94,7 @@ class Professor extends \app\controllers\FrontController
     /**
      * 교수 프로필 보기 (ajax)
      * @param array $params
-     * @return CI_Output
+     * @return mixed
      */
     public function profile($params = [])
     {
@@ -105,7 +105,7 @@ class Professor extends \app\controllers\FrontController
 
         $data = $this->professorFModel->findProfessorByProfIdx($prof_idx);
 
-        $this->load->view('site/professor/profile_modal', [
+        return $this->load->view('site/professor/profile_modal', [
             'ele_id' => $this->_req('ele_id'),
             'data' => $data
         ]);
@@ -131,8 +131,8 @@ class Professor extends \app\controllers\FrontController
             show_alert('해당하는 교수정보가 없습니다.', 'back');
         }
 
-        // 학습형태
-        $learn_pattern = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';
+        // 상품구분
+        $prod_type = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';
 
         // 전체 교수 조회
         $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_def_cate_code);
@@ -147,12 +147,7 @@ class Professor extends \app\controllers\FrontController
         $data['ProfBnrData'] = $this->professorFModel->listProfessorBanner($prof_idx);
 
         // 베스트강좌 상품 조회
-        $arr_condition = [
-            'EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => element('subject_idx', $arr_input), 'IsBest' => 'Y'],
-            'LKR' => ['CateCode' => $this->_def_cate_code]
-        ];
-
-        $best_product = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, 4, 0, ['ProdCode' => 'desc']);
+        $best_product = $this->_getProfBestNewProductData($prof_idx, $prod_type, 'Best', 4, ['ProdCode' => 'desc'], $arr_input);
         $best_product = array_map(function ($arr) {
             $arr['ProdPriceData'] = json_decode($arr['ProdPriceData'], true);
             $arr['LectureSampleData'] = empty($arr['LectureSampleData']) === false ? json_decode($arr['LectureSampleData'], true) : [];
@@ -204,15 +199,12 @@ class Professor extends \app\controllers\FrontController
      */
     private function _tab_home($prof_idx, $wprof_idx, $arr_input = [])
     {
-        // 학습형태
-        $learn_pattern = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';
+        // 상품구분
+        $prod_type = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';
 
         // 게시판 기본 조건
-        $arr_condition = [
-            'EQ' => [
-                'b.IsUse' => 'Y'
-            ]
-        ];
+        $arr_condition = ['EQ' => ['b.IsUse' => 'Y']];
+
         // 공지사항 조회
         $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['b.BmIdx' => '63']]);
         $data['notice'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', 'b.BoardIdx, b.Title', 2, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
@@ -222,12 +214,7 @@ class Professor extends \app\controllers\FrontController
         $data['material'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', 'b.BoardIdx, b.Title', 2, 0, ['IsBest'=>'Desc','BoardIdx'=>'Desc']);
         
         // 신규강좌 조회
-        $arr_condition = [
-            'EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => element('subject_idx', $arr_input), 'IsNew' => 'Y'],
-            'LKR' => ['CateCode' => $this->_def_cate_code]
-        ];
-
-        $data['new_product'] = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, 2, 0, ['ProdCode' => 'desc']);
+        $data['new_product'] = $this->_getProfBestNewProductData($prof_idx, $prod_type, 'New', 2, ['ProdCode' => 'desc'], $arr_input);
 
         // 수강후기 조회
         $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 2);
@@ -332,6 +319,54 @@ class Professor extends \app\controllers\FrontController
             'on_subject' => $on_subjects,
             'selected_series' =>  element('series', $arr_input)
         ];
+    }
+
+    /**
+     * 교수별 베스트/신규강좌 조회
+     * @param int $prof_idx [교수식별자]
+     * @param string $prod_type [상품구분 (온라인강좌 : on_lecture, 학원강좌 : off_lecture)
+     * @param string $is_best_new [베스트/신규강좌 구분 (베스트강좌 : Best, 신규 : New)
+     * @param int $limit_cnt [조회건수]
+     * @param array $order_by [정렬조건]
+     * @param array $arr_input [추가파라미터]
+     * @return array|int
+     */
+    private function _getProfBestNewProductData($prof_idx, $prod_type, $is_best_new, $limit_cnt, $order_by = [], $arr_input = [])
+    {
+        // 기본조건
+        $arr_condition = [
+            'EQ' => ['SiteCode' => $this->_site_code, 'Is' . ucfirst($is_best_new) => 'Y'],
+            'LKR' => ['CateCode' => $this->_def_cate_code]
+        ];
+
+        // 단강좌/단과반 조건
+        $arr_lecture_condition = array_merge_recursive($arr_condition, ['EQ' => ['ProfIdx' => $prof_idx, 'SubjectIdx' => element('subject_idx', $arr_input)]]);
+
+        if ($prod_type == 'on_lecture') {
+            // 단강좌만 조회
+            $data = $this->lectureFModel->listSalesProduct('on_lecture', false, $arr_lecture_condition, $limit_cnt, 0, $order_by);
+            $data = array_data_fill($data, ['LearnPattern' => 'on_lecture']);
+        } else {
+            // 단과반 조회
+            $lecture_data = $this->lectureFModel->listSalesProduct('off_lecture', false, $arr_lecture_condition, $limit_cnt, 0, $order_by);
+            $lecture_data = array_data_fill($lecture_data, ['LearnPattern' => 'off_lecture']);
+
+            // 종합반 조회
+            $arr_pack_condition = array_merge_recursive($arr_condition, ['LKB' => ['ProfIdx_String' => $prof_idx]]);
+            $pack_data = $this->lectureFModel->listSalesProduct('off_pack_lecture', false, $arr_pack_condition, $limit_cnt, 0, $order_by);
+            $pack_data = array_data_fill($pack_data, ['LearnPattern' => 'off_pack_lecture']);
+
+            // 단과반/종합반 데이터 병합 후 내림차순 정렬
+            $data = array_merge($lecture_data, $pack_data);
+            usort($data, function($arr1, $arr2) {
+                return ($arr1['ProdCode'] < $arr2['ProdCode']) ? 1 : -1;
+            });
+
+            // limit_cnt 만큼 데이터 자름 
+            $data = array_slice($data, 0, $limit_cnt);
+        }
+
+        return $data;
     }
 
     /**

@@ -76,7 +76,7 @@
                             <span class="blue">[신판여부]</span>
                             <span id="selected_edition_ccd_name" class="pr-20">{{ $data['wEditionCcdName'] }}</span>
                             <span class="blue">[판/쇄]</span>
-                            <span id="selected_print_edtion_cnt" class="pr-20">@if($method == 'PUT') {{ $data['wPrintCnt'] }}판 {{ $data['wEditionCnt'] }}쇄 @endif</span>
+                            <span id="selected_print_edtion_cnt" class="pr-20">@if($method == 'PUT') {{ $data['wEditionCnt'] }}판 {{ $data['wPrintCnt'] }}쇄 @endif</span>
                             <span class="blue">[판형]</span>
                             <span id="selected_edtion_size">{{ $data['wEditionSize'] }}</span>
                         </p>

@@ -28,7 +28,7 @@
             z-index:1;            
         }
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/09/1393_top_bg.jpg) no-repeat center;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/09/1393_top_bg.jpg) no-repeat center top;}
             .nameBox {position:absolute; top:695px; left:50%; margin-left:-430px; border:7px solid #fff; width:860px; height:200px; text-align:center; background:#0a0e25; color:#fff; overflow:hidden; z-index:10}
         .wb_00 {background:#12172d;}
         .wb_01 {background:#cccfd4;}	
@@ -42,10 +42,10 @@
             .tabs div {width:840px; margin:79px 0 0 61px}
             .tabs div a {display:block; width:400px; margin:160px auto 0; background:#0a0f25; color:#fff; font-size:22px; padding:15px 0; border-radius:40px}
             .tabs div a:hover {background:#c6b269;}
-        .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1393_02_bg.jpg) no-repeat center; height:1229px;}
-        .wb_02 ul {width:980px; margin:0 auto; padding-top:414px}
-        .wb_02 li {display:inline; float:left; margin:0 15px 77px 0}
-        .wb_02 li:nth-child(3) {margin-right:0}
+        .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1393_02_bg.jpg) no-repeat center top; height:1210px;}
+        .wb_02 ul {width:1034px; margin:0 auto; padding-top:464px}
+        .wb_02 li {display:inline; float:left; margin-bottom:134px; width:33.33333%;}
+
         .wb_03 {background:#fff; padding-bottom:50px}
     </style>
 
@@ -108,12 +108,12 @@
 
 		<div class="evtCtnsBox wb_02">
             <ul>
-                <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn01.jpg" alt="패스" /></a></li>
-                <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1333" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn02.jpg" alt="패스" /></a></li>
-                <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1015" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn03.jpg" alt="패스" /></a></li>
-                <li><a href="https://police.willbes.net/pass/promotion/index/cate/3011/code/1394" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn04.jpg" alt="패스" /></a></li>
-                <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1325" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn05.jpg" alt="패스" /></a></li>
-                <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1360" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn06.jpg" alt="패스" /></a></li>
+                <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn01.png" alt="패스" /></a></li>
+                <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1333" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn02.png" alt="패스" /></a></li>
+                <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1015" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn03.png" alt="패스" /></a></li>
+                <li><a href="https://police.willbes.net/pass/promotion/index/cate/3011/code/1394" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn04.png" alt="패스" /></a></li>
+                <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1325" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn05.png" alt="패스" /></a></li>
+                <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1360" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn06.png" alt="패스" /></a></li>
             </ul>
         </div>
         

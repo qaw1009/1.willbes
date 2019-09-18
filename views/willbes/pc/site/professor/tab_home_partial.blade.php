@@ -27,7 +27,18 @@
         <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
         <ul class="List-Table GM tx-gray">
             @foreach($tab_data['new_product'] as $idx => $row)
-                <li><a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a></li>
+                <li>
+                    {{-- 상품상세 링크 --}}
+                    @if($__cfg['IsPassSite'] === false)
+                        <a href="{{ front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a>
+                    @else
+                        @if($row['LearnPattern'] == 'off_lecture')
+                            <a href="{{ front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a>
+                        @else
+                            <a href="{{ front_url('/offPackage/show/prod-code/' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a>
+                        @endif
+                    @endif
+                </li>
             @endforeach
         </ul>
     </div>

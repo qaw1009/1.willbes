@@ -74,20 +74,40 @@
                         @foreach($best_product as $idx => $row)
                             <div class="lec-profile p_re">
                                 <div class="w-tit">
-                                    <a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                                    {{-- 상품상세 링크 --}}
+                                    @if($__cfg['IsPassSite'] === false)
+                                        <a href="{{ front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                                    @else
+                                        @if($row['LearnPattern'] == 'off_lecture')
+                                            <a href="{{ front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                                        @else
+                                            <a href="{{ front_url('/offPackage/show/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                                        @endif
+                                    @endif
+
+                                    {{-- 진행중 아이콘 --}}
                                     @if(($__cfg['IsPassSite'] === false && $row['wLectureProgressCcd'] == '105001') || ($__cfg['IsPassSite'] === true && $row['AcceptStatusCcd'] == '675002'))
                                         <img src="{{ img_url('prof/icon_ing.gif') }}">
                                     @endif
                                 </div>
                                 <dl class="w-info">
                                     @if($__cfg['IsPassSite'] === false)
+                                        {{-- 단강좌 --}}
                                         <dt><span class="tx-blue">{{ $row['StudyPeriod'] }}</span>일</dt>
                                         <dt><span class="row-line">|</span></dt>
                                         <dt><span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if(empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                     @else
-                                        <dt><span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span></dt>
-                                        <dt><span class="row-line">|</span></dt>
-                                        <dt><span class="tx-blue">{{ $row['Amount'] }}</span>회차</dt>
+                                        @if($row['LearnPattern'] == 'off_lecture')
+                                            {{-- 단과반 --}}
+                                            <dt><span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span></dt>
+                                            <dt><span class="row-line">|</span></dt>
+                                            <dt><span class="tx-blue">{{ $row['Amount'] }}</span>회차</dt>
+                                        @else
+                                            {{-- 종합반 --}}
+                                            <dt><span class="tx-blue">{{ $row['SchoolStartYear'] }}-{{ $row['SchoolStartMonth'] }}</span></dt>
+                                            <dt><span class="row-line">|</span></dt>
+                                            <dt><span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
+                                        @endif
                                     @endif
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>@if(empty($row['ProdPriceData']) === false)<span class="tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}</span>원@endif</dt>

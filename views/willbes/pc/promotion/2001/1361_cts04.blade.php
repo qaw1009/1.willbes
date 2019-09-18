@@ -45,8 +45,7 @@
               <area shape="rect" coords="639,1686,735,1719" href="https://police.willbes.net/pass/support/notice/show?board_idx=236556&amp;s_cate_code=&amp;s_campus=&amp;s_keyword=&amp;prof_idx=&amp;subject_idx=&amp;view_type=&amp;page=1" target="_blank" alt="광주캠퍼스" />
               <area shape="rect" coords="639,1746,733,1779" href="https://police.willbes.net/pass/support/notice/show?board_idx=236040" target="_blank" alt="부산캠퍼스" />
               <area shape="rect" coords="640,1804,732,1841" href="https://police.willbes.net/pass/frame/notice/show?board_idx=236522" target="_blank" alt="대구캠퍼스" />
-              <area shape="rect" coords="639,1863,734,1902" href="https://police.willbes.net/pass/frame/notice/show?board_idx=236579" target="_blank" alt="전북캠퍼스" />
-              <area shape="rect" coords="394,1312,728,1389" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=403" target="_blank" alt="무료특강 신청하기" />
+              <area shape="rect" coords="639,1863,734,1902" href="https://police.willbes.net/pass/frame/notice/show?board_idx=236579" target="_blank" alt="전북캠퍼스" />              
             </map>
         </div>
 
@@ -61,16 +60,12 @@
         <div class="evtCtnsBox cts04_05" id="cts04_05">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts04_05.jpg" alt="인적성 검사" usemap="#Map1361_cts04_05" border="0">
             <map name="Map1361_cts04_05" id="Map1361_cts04_05">
-                <area shape="rect" coords="770,714,973,872" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1069&amp;course_idx=1047" target="_blank" alt="검사신청하기" />
-                <area shape="rect" coords="575,1125,686,1161" href="https://police.willbes.net/pass/support/notice/show?board_idx=236040" target="_blank" alt="대구캠퍼스 공지" />
+                <area shape="rect" coords="770,714,973,872" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1069&amp;course_idx=1047" target="_blank" alt="검사신청하기" />                
             </map>
         </div>
 
         <div class="evtCtnsBox cts04_06" id="cts04_06">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts04_06.jpg" alt="사전조사서 특강 및 첨삭" usemap="#Map1361_cts04_06" border="0">
-            <map name="Map1361_cts04_06" id="Map1361_cts04_06">
-                <area shape="rect" coords="791,861,994,1018" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1070&amp;course_idx=1047" target="_blank" alt="수강신청하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_cts04_06.jpg" alt="사전조사서 특강 및 첨삭">
         </div>
 
         <div class="evtCtnsBox cts04_07" id="cts04_07">

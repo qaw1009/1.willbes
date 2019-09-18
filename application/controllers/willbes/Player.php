@@ -1329,6 +1329,15 @@ class Player extends \app\controllers\FrontController
 
 
     /**
+     * 모바일 샘플
+     */
+    function getMobileSample($params = [])
+    {
+
+    }
+
+
+    /**
      * 하이브리드앱 플레이 정보 읽어오기
      * @return CI_Output
      */

@@ -176,7 +176,7 @@ to{color:#d63e4d}
         </div>
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_03.jpg" alt="실전 모의고사">             
-        </div>                 
+        </div>               
     </div>
     <!-- End Container --> 
 

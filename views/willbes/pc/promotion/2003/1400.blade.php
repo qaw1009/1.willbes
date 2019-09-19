@@ -39,18 +39,19 @@
             top:200px;
             right:0;
             width:290px;
+            z-index:1000;
         }
     </style>
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-    {{--
+  
         <div class="skybanner">
             <a href="{{ site_url('/promotion/index/cate/3019/code/1067') }}" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" title="환승이벤트" >
             </a>
         </div>
-        --}}
+      
 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1400_top.jpg" title="" />          

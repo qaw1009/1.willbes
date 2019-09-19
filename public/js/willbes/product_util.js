@@ -143,7 +143,15 @@ function getCartType($regi_form) {
  * @param $tab_id
  */
 function goCartPage($tab_id) {
-    location.href = frontUrl('/cart/index?tab=' + $tab_id);
+    var url = frontUrl('/cart/index?tab=');
+
+    if ($tab_id.toString().indexOf('off') === 0) {
+        url = frontPassUrl('/cart/index?tab=');
+    } else if ($tab_id.toString().indexOf('on') === 0 || $tab_id === 'book') {
+        url = siteUrl('/cart/index?tab=');
+    }
+
+    location.href = url + $tab_id;
 }
 
 /**
@@ -332,6 +340,11 @@ function checkProduct($learn_pattern, $prod_code, $is_visit_pay, $regi_form) {
 
     var is_check = false;
     var url = frontUrl('/cart/checkProduct');
+    if ($learn_pattern.toString().indexOf('off') === 0) {
+        url = frontPassUrl('/cart/checkProduct');
+    } else if ($learn_pattern.toString().indexOf('on') === 0 || $learn_pattern === 'book') {
+        url = siteUrl('/cart/checkProduct');
+    }
     var data = {
         '_csrf_token' : $regi_form.find('input[name="_csrf_token"]').val(),
         '_method' : 'POST',

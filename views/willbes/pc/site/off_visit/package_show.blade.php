@@ -72,6 +72,7 @@
                 <input type="hidden" name="learn_pattern" value="{{$learn_pattern}}"/>  {{-- 학습형태 --}}
                 <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+                <input type="hidden" name="is_visit_pay" value="Y"/>    {{-- 방문결제 여부 --}}
                 <div class="willbes-Lec-Package-Price p_re">
                     <div class="total-PriceBox NG">
                         <span class="price-tit">총 주문금액</span>
@@ -387,7 +388,6 @@
 
             // 방문접수, 바로결제 버튼 클릭
             $('button[name="btn_basket"]').on('click', function() {
-
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
                 @if($data["IsSalesAble"] !== 'Y')

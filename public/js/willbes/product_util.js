@@ -42,7 +42,7 @@ function addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, $app_url)
 
     if ($regi_form.find('input[name="learn_pattern"]').val().indexOf('off') === 0) {
         // 학원강좌일 경우 방문접수와 바로결제 동시 진행 불가
-        if (checkOffLecture($regi_form, $is_direct_pay) === false) {
+        if (checkOffLecture($regi_form) === false) {
             return;
         }
     }
@@ -105,14 +105,15 @@ function alertDirectPay($regi_form) {
 /**
  * 학원강좌일 경우 방문 접수, 온라인 접수 전용상품 관련 확인
  * @param $regi_form
- * @param $is_direct_pay
  * @returns {boolean}
  */
-function checkOffLecture($regi_form, $is_direct_pay) {
-    if ($is_direct_pay === 'Y' && $regi_form.find('.chk_products[data-study-apply-ccd="654001"]:checked').length > 0) {
+function checkOffLecture($regi_form) {
+    var $is_visit_pay = $regi_form.find('input[name="is_visit_pay"]').val() || 'N';
+
+    if ($is_visit_pay === 'N' && $regi_form.find('.chk_products[data-study-apply-ccd="654001"]:checked').length > 0) {
         alert('방문 접수 전용상품은 바로 결제 하실 수 없습니다.');
         return false;
-    } else if ($is_direct_pay === 'N' && $regi_form.find('.chk_products[data-study-apply-ccd="654002"]:checked').length > 0) {
+    } else if ($is_visit_pay === 'Y' && $regi_form.find('.chk_products[data-study-apply-ccd="654002"]:checked').length > 0) {
         alert('온라인 접수 전용상품은 방문 접수 하실 수 없습니다.');
         return false;
     }
@@ -293,6 +294,61 @@ function checkStudentBookNoUsed($regi_form, $chk_obj) {
     } else {
         is_check = true;
     }
+
+    return is_check;
+}
+
+/**
+ * 학원 단강좌 온라인접수 상품 체크
+ * @param $regi_form
+ * @param $chk_obj
+ */
+function setCheckOffLectureProduct($regi_form, $chk_obj) {
+    if ($chk_obj.is(':checked') === true) {
+        var learn_pattern = $regi_form.find('input[name="learn_pattern"]').val();
+        var prod_code = $chk_obj.data('prod-code');
+        var is_visit_pay = 'N';
+        
+        if (checkProduct(learn_pattern, prod_code, is_visit_pay, $regi_form) === false) {
+            // 선택해제
+            $chk_obj.prop('checked', false).trigger('change');
+        }
+    }
+}
+
+/**
+ * 상품 체크
+ * @param $learn_pattern
+ * @param $prod_code
+ * @param $is_visit_pay
+ * @param $regi_form
+ * @returns {boolean}
+ */
+function checkProduct($learn_pattern, $prod_code, $is_visit_pay, $regi_form) {
+    // 상품코드
+    if ($prod_code.toString().indexOf(':') !== -1) {
+        $prod_code = $prod_code.split(':')[0];
+    }
+
+    var is_check = false;
+    var url = frontUrl('/cart/checkProduct');
+    var data = {
+        '_csrf_token' : $regi_form.find('input[name="_csrf_token"]').val(),
+        '_method' : 'POST',
+        'learn_pattern' : $learn_pattern,
+        'prod_code' : $prod_code,
+        'is_visit_pay' : $is_visit_pay
+    };
+
+    sendAjax(url, data, function(ret) {
+        if (ret.ret_cd) {
+            if (ret.ret_data.is_check !== true) {
+                alert(ret.ret_data.is_check);
+            } else {
+                is_check = true;
+            }
+        }
+    }, showValidateError, false, 'POST');
 
     return is_check;
 }

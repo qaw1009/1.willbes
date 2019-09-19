@@ -50,7 +50,7 @@
                 $sale_price = $data['ProdPriceData'][0]['SalePrice'];
                 $real_sale_price = $data['ProdPriceData'][0]['RealSalePrice'];
                 $sale_info = $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'];
-           }
+            }
         @endphp
 
         <!-- willbes-Package-Detail -->
@@ -89,6 +89,11 @@
                                 </li>
                             @endif
                             @if($data['StudyApplyCcd'] != '654001')
+                                <li class="btnAuto180 h36">
+                                    <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                        <span>장바구니</span>
+                                    </button>
+                                </li>
                                 <li class="btnAuto180 h36">
                                     <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
                                         <span class="tx-light-blue">바로결제</span>
@@ -168,7 +173,6 @@
                             $subGroup_array = [];
                         @endphp
 
-
                         @foreach($data_sublist as $idx => $sub_row /*필수 과목*/)
                             @if($sub_row['IsEssential'] === 'Y')
                                 @php
@@ -216,7 +220,6 @@
                                                             $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
                                                             lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content'],$sub_row['Content5'],$sub_row['Content6'],$sub_row['Content7']);
                                                         @endphp
-
                                                     </td>
                                                     <td class="w-schedule">
                                                         <span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}}</span><br/>
@@ -377,7 +380,7 @@
         */
         function lecture_info_layer($id='', $prod_name='', $date='', $weekname='', $amount='', $content='', $content5='',$content6='',$content7='')
         {
-                $show_info = '
+            $show_info = '
                 <div id="InfoForm_'.$id.'" class="willbes-Layer-Box d3">
                     <a class="closeBtn" href="#none" onclick="closeWin(\'InfoForm_'.$id.'\')">
                         <img src="'. img_url('sub/close.png') .'">
@@ -401,49 +404,47 @@
                                 </colgroup>
                                 <tbody>';
 
-                    if(empty($content5) != true) {
-                        $show_info.= '<tr>
-                                                <td class="w-list bg-light-white">수강대상</td>
-                                                <td class="w-data tx-left pl25">
-                                                    '. $content5 .'
-                                                </td>
-                                            </tr>
-                                    ';
-                    }
-                                    $show_info.= '<tr>
-                                                <td class="w-list bg-light-white">강좌소개<Br>(강좌구성)</td>
-                                                <td class="w-data tx-left pl25">
-                                                    '. $content .'
-                                                </td>
-                                            </tr>
-                                    ';
-                if(empty($content6) != true) {
-                        $show_info.= '<tr>
-                                                <td class="w-list bg-light-white">강좌효과</td>
-                                                <td class="w-data tx-left pl25">
-                                                    '. $content6 .'
-                                                </td>
-                                            </tr>
-                                    ';
-                    }
+            if(empty($content5) != true) {
+                $show_info.= '      <tr>
+                                        <td class="w-list bg-light-white">수강대상</td>
+                                        <td class="w-data tx-left pl25">
+                                            '. $content5 .'
+                                        </td>
+                                    </tr>';
+            }
 
-                if(empty($content7) != true) {
-                    $show_info.= '<tr>
-                                            <td class="w-list bg-light-white">수강후기</td>
-                                            <td class="w-data tx-left pl25">
-                                                '. $content7 .'
-                                            </td>
-                                        </tr>
-                                ';
-                }
+            $show_info.= '          <tr>
+                                        <td class="w-list bg-light-white">강좌소개<Br>(강좌구성)</td>
+                                        <td class="w-data tx-left pl25">
+                                            '. $content .'
+                                        </td>
+                                    </tr>';
 
-                $show_info.= '
+            if(empty($content6) != true) {
+                $show_info.= '      <tr>
+                                        <td class="w-list bg-light-white">강좌효과</td>
+                                        <td class="w-data tx-left pl25">
+                                            '. $content6 .'
+                                        </td>
+                                    </tr>';
+            }
+
+            if(empty($content7) != true) {
+                $show_info.= '      <tr>
+                                        <td class="w-list bg-light-white">수강후기</td>
+                                        <td class="w-data tx-left pl25">
+                                            '. $content7 .'
+                                        </td>
+                                    </tr>';
+            }
+
+            $show_info.= '
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
-                ';
+                </div>';
+
             echo $show_info;
         }
     @endphp
@@ -451,18 +452,17 @@
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
         var $regi_off_form = $('#regi_off_form');
+
         $(document).ready(function() {
-
-            // 방문접수, 바로결제 버튼 클릭
-            $('button[name="btn_visit_pay"], button[name="btn_direct_pay"]').on('click', function() {
-
+            // 방문접수, 장바구니, 바로결제 버튼 클릭
+            $('button[name="btn_visit_pay"], button[name="btn_cart"], button[name="btn_direct_pay"]').on('click', function() {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
                 @if($data["IsSalesAble"] !== 'Y')
                 alert("신청 할 수 없는 강좌입니다.");return;
-                        @endif
+                @endif
 
-                        {{--필수강좌 체크 여부--}}
+                // 필수강좌 체크 여부
                 var groupArray = {!!json_encode($subGroup_array)!!};
                 for(i=0; i<groupArray.length;i++) {
                     $checked = "";
@@ -483,8 +483,8 @@
                     }
                 }
 
-                {{--선택강좌--}}
-                    $check_cnt = 0;
+                {{-- 선택강좌 --}}
+                $check_cnt = 0;
                 $(".lec-choice").find('.choSubGroup').each(function (){
                     if ($(this).is(':checked')) {
                         $check_cnt += 1
@@ -498,9 +498,14 @@
 
                 if ($(this).prop('name').indexOf('visit') > -1) {
                     {{-- 방문결제 --}}
-                    $regi_off_form.find('input[name="cart_type"]').val(getCartType($regi_off_form));
+                    // 상품 체크
+                    if (checkProduct($regi_off_form.find('input[name="learn_pattern"]').val(), $regi_off_form.find('input[name="prod_code[]"]').data('prod-code'), 'Y', $regi_off_form) === false) {
+                        return;
+                    }
 
                     if (confirm('방문접수를 신청하시겠습니까?')) {
+                        $regi_off_form.find('input[name="cart_type"]').val(getCartType($regi_off_form));
+
                         var url = '{{ front_url('/order/visit/direct', true) }}';
                         ajaxSubmit($regi_off_form, url, function(ret) {
                             if(ret.ret_cd) {
@@ -510,7 +515,7 @@
                         }, showValidateError, null, false, 'alert');
                     }
                 } else {
-                            {{-- 바로결제 --}}
+                    {{-- 장바구니/바로결제 --}}
                     var $is_direct_pay = $(this).data('direct-pay');
                     var $is_redirect = $(this).data('is-redirect');
                     cartNDirectPay($regi_off_form, $is_direct_pay, $is_redirect);
@@ -520,7 +525,7 @@
             setRowspan('row_td');
             setRowspan('row_td2');
 
-                    {{--같은 그룹내 2개이상의 강의 일 경우 체크박스 해제--}}
+            {{--같은 그룹내 2개이상의 강의 일 경우 체크박스 해제--}}
             var groupArray = {!!json_encode($subGroup_array)!!};
             for(i=0; i<groupArray.length;i++) {
                 $checked_group = "";
@@ -537,5 +542,4 @@
         });
     </script>
     <!-- End Container -->
-
 @stop

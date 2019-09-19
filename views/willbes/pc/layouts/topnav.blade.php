@@ -28,18 +28,16 @@
                         <li class="Login">
                             {{sess_data('mem_name')}}님
                         </li>
-                        <!--
-                        <li class="ml20">
+                        {{--<li class="ml20">
                             <a href="{{ app_url('/classroom/message/index', 'www') }}"><img src="{{ img_url('gnb/icon_memo.png') }}"> <span class="num-New">2</span></a>
-                        </li>
-                        -->
+                        </li>--}}
                         <li class="joinUs">
                             <a class="Tit" href="{{ app_url('/member/logout/', 'www') }}">로그아웃</a>
                         </li>
                     @endif
-                    @if($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['IsPassSite'] === false)
+                    @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
                         <li class="myCart">
-                            <a class="Tit" href="{{ site_url('/cart/index') }}">장바구니</a>
+                            <a class="Tit" href="{{ front_url('/cart/index') }}">장바구니</a>
                         </li>
                     @endif
                     <li class="myPage dropdown">
@@ -56,9 +54,7 @@
                                     <a href="{{ app_url('/classroom/order/index', 'www') }}">주문/배송조회</a>
                                 </li>
                                 <li>
-                                    <a href="{{ app_url('/classroom/message/index', 'www') }}">새쪽지 <!--
-                                    <span class="num-New">99+</span>
-                                    //--></a>
+                                    <a href="{{ app_url('/classroom/message/index', 'www') }}">새쪽지{{--<span class="num-New">99+</span>--}}</a>
                                 </li>
                             </ul>
                         </div>

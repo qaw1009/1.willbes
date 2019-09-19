@@ -26,7 +26,7 @@
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1401_01_bg.jpg) no-repeat center;}
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1401_02_bg.jpg) no-repeat center;}
         .wb_cts03 {background:#fff;}
-        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1401_04_bg.png) no-repeat center;}
+        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1401_04_bg.png) no-repeat center;padding-bottom:140px;}
         .wb_cts05 {background:#ecebeb;}
         .wb_cts06 {background:#fff;}
 

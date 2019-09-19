@@ -20,9 +20,10 @@ class CartFModel extends BaseOrderFModel
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
+     * @param array $arr_out_condition
      * @return mixed
      */
-    public function listCart($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listCart($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_out_condition = [])
     {
         if ($is_count === true) {
             $column = 'numrows';
@@ -74,7 +75,8 @@ class CartFModel extends BaseOrderFModel
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
                          else "etc" 
-                  end as CartProdType';
+                  end as CartProdType
+                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '", fn_product_closing_yn(CA.ProdCode, PL.FixNumber), "N") as IsClosing';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -103,8 +105,11 @@ class CartFModel extends BaseOrderFModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
 
+        $out_where = $this->_conn->makeWhere($arr_out_condition);
+        $out_where = $out_where->getMakeWhere(false);
+
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $out_where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -118,9 +123,10 @@ class CartFModel extends BaseOrderFModel
      * @param array $prod_code [상품코드 배열]
      * @param string $is_direct_pay [바로결제 여부, Y/N]
      * @param string $is_visit_pay [방문접수 여부, Y/N]
+     * @param bool $is_check_closing [정원체크 여부]
      * @return mixed
      */
-    public function listValidCart($mem_idx, $site_code, $cate_code = null, $cart_idx = [], $prod_code = [], $is_direct_pay = 'N', $is_visit_pay = 'N')
+    public function listValidCart($mem_idx, $site_code, $cate_code = null, $cart_idx = [], $prod_code = [], $is_direct_pay = 'N', $is_visit_pay = 'N', $is_check_closing = false)
     {
         $arr_condition = [
             'EQ' => [
@@ -141,6 +147,7 @@ class CartFModel extends BaseOrderFModel
                 '(P.ProdTypeCcd != ' => '"' . $this->_prod_type_ccd['book']. '" OR (P.ProdTypeCcd = "' . $this->_prod_type_ccd['book']. '" and WB.wSaleCcd = "' . $this->_available_sale_status_ccd['book']. '"))'
             ]
         ];
+        $arr_out_condition = [];
 
         // 방문결제일 경우 세션 아이디 컬럼 추가
         if ($is_visit_pay == 'Y') {
@@ -150,7 +157,12 @@ class CartFModel extends BaseOrderFModel
             $order_by =['ProdTypeCcd' => 'asc', 'CartIdx' => 'desc'];
         }
 
-        return $this->listCart(false, $arr_condition, null, null, $order_by);
+        // 정원 체크 조건
+        if ($is_check_closing === true) {
+            $arr_out_condition = ['EQ' => ['IsClosing' => 'N']];
+        }
+
+        return $this->listCart(false, $arr_condition, null, null, $order_by, $arr_out_condition);
     }
 
     /**
@@ -637,6 +649,17 @@ class CartFModel extends BaseOrderFModel
         } else {
             // 학원강좌일 경우
             if (starts_with($learn_pattern, 'off') === true) {
+                // 장바구니에서만 정원체크, 결제에서는 getMakeCartReData 메소드에서 체크
+                if ($is_cart === true) {
+                    $off_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+                        'EQ' => ['OP.ProdCode' => $prod_code, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]
+                    ]);
+
+                    if ($off_paid_cnt >= $data['FixNumber']) {
+                        return '정원이 마감된 강좌입니다.';
+                    }
+                }
+
                 if ($is_visit_pay == 'Y' && $data['StudyApplyCcd'] == $this->_off_study_apply_ccd['online']) {
                     return '온라인 접수 전용상품은 방문 접수 하실 수 없습니다.';
                 } elseif ($is_visit_pay == 'N' && $data['StudyApplyCcd'] == $this->_off_study_apply_ccd['visit']) {

@@ -58,6 +58,13 @@ class OrderFModel extends BaseOrderFModel
                 return '상품수량 정보가 올바르지 않습니다.';
             }
 
+            // 학원강좌 정원마감 확인
+            if ($row['CartType'] == 'off_lecture') {
+                if ($row['IsClosing'] == 'Y') {
+                    return '정원이 마감된 강좌입니다.';
+                }
+            }
+
             // 사용자 패키지 가격 확인
             if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture']) {
                 if (empty($row['CalcPriceData']) === true || $row['CalcPriceData'] == 'NODATA') {

@@ -39,6 +39,7 @@
 
         .evt02 {background:#484c57;}
         .evt03 {background:#bc6b2a;}
+        .evt04 {background:#203c3f; padding-bottom:150px}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -75,6 +76,11 @@
                 <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/04/1199_arrow_next.png"></a></p>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1368_01_bottom.jpg" title="이제 여러분이 광은 서포터즈 주인공입니다.">
+        </div>
+
+        <div class="evtCtnsBox evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1368_01_2.jpg" title="광은 서포터즈 어떤 활동을 하는 서포터즈인가요?">
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/1DkkUR7gA_I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox evt02">

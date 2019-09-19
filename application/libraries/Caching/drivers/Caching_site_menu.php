@@ -100,6 +100,11 @@ class Caching_site_menu extends CI_Driver
                 $menu_url = app_to_env_url($menu_url);
             }
 
+            // 외부경로일 경우 URL 초기화
+            if ($row['UrlType'] == 'link') {
+                $menu_url = $row['MenuUrl'];
+            }
+
             list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
                 //'MenuIdx' => $row['MenuIdx'],

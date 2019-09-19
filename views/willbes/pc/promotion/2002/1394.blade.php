@@ -27,12 +27,7 @@
             right:0;
             z-index:1;
         }
-        .skybanner2{
-            position:fixed;
-            top:270px;
-            left:190px;
-            z-index:1;
-        }
+        .skybanner a {display:block; margin-bottom:10px}
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#ebebeb}
@@ -56,54 +51,21 @@
         }
 
         .wb_00 {background:#404040}
-
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1270_top_bg.jpg) no-repeat center top; position:relative}
-        .wb_top span {position:absolute; left:50%; z-index:1;
-            -webkit-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
-            -moz-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
-            -ms-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
-            -o-filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
-            filter: drop-shadow(32px 32px 32px rgba(0,0,0,.5));
-        }
-        .wb_top span.img1 {top:330px; margin-left:-430px; width:366px; animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
-        .wb_top span.img2 {top:330px; margin-left:50px; width:366px; animation:iptimg2 0.5s ease-in;-webkit-animation:iptimg2 0.5s ease-in;}
-        @@keyframes iptimg1{
-        from{margin-left:-560px; opacity: 0;}
-        to{margin-left:-430px; opacity: 1;}
-        }
-        @@-webkit-keyframes iptimg1{
-        from{margin-left:-560px; opacity: 0;}
-        to{margin-left:-430px; opacity: 1;}
-        }
-        
-        @@keyframes iptimg2{
-        from{margin-left:130px; opacity: 0;}
-        to{margin-left:50px; opacity: 1;}
-        }
-        @@-webkit-keyframes iptimg2{
-        from{margin-left:130px; opacity: 0;}
-        to{margin-left:50px; opacity: 1;}
-        }
-        .wb_top span.img3 {top:330px; margin-left:230px; width:366px;}
-
         .wb_01 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/09/1394_top_bg.jpg) no-repeat center top;}
         .wb_02 {background:#3f4f5f}
         .wb_03 {background:#ededed}
         .wb_04 {background:#fff;}
         .wb_05 {background:#f3f3f3;}
         .wb_06 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/09/1394_05_bg.jpg) no-repeat center top;}
+        .wb_07 {background:#020f5d}
     </style>
 
 
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1394_sky.png" alt="스카이배너" ></a>
-        </div> 
-        {{--    
-        <div class="skybanner2" >
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1359_sky2.gif" alt="통합생활관리반" ></a>
-        </div>
-        --}}            
+            <a href="#wb_07"><img src="https://static.willbes.net/public/images/promotion/2019/09/1394_skybanner2.png" alt="튜터 신청하기" ></a>
+        </div>             
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
@@ -160,6 +122,10 @@
             <map name="Map1394a" id="Map1394a">
                 <area shape="rect" coords="435,1084,690,1293" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank;" alt="수강신청하기" />
             </map>
+        </div>
+
+        <div class="evtCtnsBox wb_07" id="wb_07">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1394_06.jpg" alt="튜터들이 온다"/>
         </div>
       
     </div>

@@ -313,12 +313,41 @@ function frontUrl(uri) {
 }
 
 /**
+ * 온라인 사이트 URL 생성
+ * @param uri
+ * @returns {string}
+ */
+function frontOnUrl(uri) {
+    var path = location.pathname;
+    var uri_prefix = '';
+
+    // 디바이스
+    if (path.indexOf('/m/') === 0) {
+        uri_prefix += '/m';
+    } else if (path.indexOf('/app/') === 0) {
+        uri_prefix += '/app';
+    }
+
+    return siteUrl(uri_prefix + uri);
+}
+
+/**
  * 학원 사이트 URL 생성
  * @param uri
  * @returns {string}
  */
 function frontPassUrl(uri) {
-    return siteUrl('/pass' + uri);
+    var path = location.pathname;
+    var uri_prefix = '';
+
+    // 디바이스
+    if (path.indexOf('/m/') === 0) {
+        uri_prefix += '/m';
+    } else if (path.indexOf('/app/') === 0) {
+        uri_prefix += '/app';
+    }
+
+    return siteUrl(uri_prefix + '/pass' + uri);
 }
 
 /**

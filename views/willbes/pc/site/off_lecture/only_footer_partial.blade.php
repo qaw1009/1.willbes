@@ -9,7 +9,7 @@
             <span>바로결제</span>
         </button>
     </div>
-    <div id="pocketBox" class="pocketBox" style="display: none;">
+    <div id="offPocketBox" class="pocketBox" style="display: none;">
         해당 상품이 장바구니에 담겼습니다.<br/>
         장바구니로 이동하시겠습니까?
         <ul class="NSK mt20">
@@ -88,7 +88,7 @@
             var $result = cartNDirectPay($regi_off_form, $is_direct_pay, $is_redirect);
 
             if ($is_redirect === 'N' && $result === true) {
-                openWin('pocketBox');
+                openWin('offPocketBox');
             }
         });
     });

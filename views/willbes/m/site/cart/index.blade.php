@@ -10,34 +10,34 @@
 
     <div>
         <ul id="tab_cart" class="tabWrap lineWrap rowlineWrap lecListWrap two mt-zero">
-            <li><a id="hover_on_lecture" href="#on_lecture">강좌</a><span class="row-line">|</span></li>
+            <li><a id="hover_lecture" href="#lecture">강좌</a><span class="row-line">|</span></li>
             <li><a id="hover_book" href="#book">교재</a></li>
         </ul>
 
         <div class="basketWrap">
-            <div id="on_lecture">
-                <form id="on_lecture_form" name="on_lecture_form" method="POST" onsubmit="return false;" novalidate>
+            <div id="lecture">
+                <form id="lecture_form" name="lecture_form" method="POST" onsubmit="return false;" novalidate>
                     {!! csrf_field() !!}
                     {!! method_field('POST') !!}
-                    <input type="hidden" name="cart_type" value="on_lecture"/>
+                    <input type="hidden" name="cart_type" value="{{ $lecture_key }}"/>
                     <div class="lec-info bd-none pt-zero pb-zero">
                         <h5>
                             <span class="chk chk2">
-                                <label for="all_on_lecture">전체선택</label>
-                                <input type="checkbox" id="all_on_lecture" name="_is_all" class="all-check" data-tab-id="on_lecture"/>
+                                <label for="all_lecture">전체선택</label>
+                                <input type="checkbox" id="all_lecture" name="_is_all" class="all-check" data-tab-id="lecture"/>
                             </span>
-                            <a href="#none" class="NGR btn-checked-delete" data-tab-id="on_lecture">선택삭제</a>
+                            <a href="#none" class="NGR btn-checked-delete" data-tab-id="lecture">선택삭제</a>
                         </h5>
                     </div>
 
                     <div class="basketListBox">
-                        @if(isset($results['list']['on_lecture']) === true)
-                            @foreach($results['list']['on_lecture'] as $idx => $row)
+                        @if(isset($results['list'][$lecture_key]) === true)
+                            @foreach($results['list'][$lecture_key] as $idx => $row)
                                 <div>
                                     <input type="checkbox" id="cart_{{ $row['CartIdx'] }}" name="cart_idx[]" value="{{ $row['CartIdx'] }}">
                                     <label for="cart_{{ $row['CartIdx'] }}">
                                         <ul>
-                                            <li><span>{{ $row['CartProdType'] == 'on_pack_lecture' ? '패키지' : '강좌' }}</span></li>
+                                            <li><span>{{ $row['CartProdTypeName'] }}</span></li>
                                             <li>{{ $row['ProdName'] }}</li>
                                             <li>판매가 <span>{{ number_format($row['RealSalePrice'], 0) }}원</span></li>
                                         </ul>
@@ -47,10 +47,10 @@
                         @endif
                         <div class="priceBox">
                             <ul>
-                                <li><strong>강좌({{ array_get($results, 'count.on_lecture', 0) }}건)</strong> <span class="tx-blue">{{ number_format(array_get($results, 'price.on_lecture', 0)) }}원</span></li>
-                                <li><strong>패키지({{ array_get($results, 'count.on_pack_lecture', 0) }}건)</strong> <span class="tx-red">{{ number_format(array_get($results, 'price.on_pack_lecture', 0)) }}원</span></li>
-                                <li><strong>배송료</strong> <span class="tx-blue">{{ number_format(array_get($results, 'delivery_price.on_lecture', 0)) }}원</span></li>
-                                <li class="NGEB"><strong>결제예상금액</strong> <span class="tx-blue">{{ number_format(array_get($results, 'price.on_lecture', 0) + array_get($results, 'price.on_pack_lecture', 0) + array_get($results, 'delivery_price.on_lecture', 0)) }}원</span></li>
+                                <li><strong>강좌({{ array_get($results, 'count.' . $lecture_key, 0) }}건)</strong> <span class="tx-blue">{{ number_format(array_get($results, 'price.' . $lecture_key, 0)) }}원</span></li>
+                                <li><strong>{{ starts_with($pack_lecture_key, 'off') === true ? '종합반' : '패키지' }}({{ array_get($results, 'count.' . $pack_lecture_key, 0) }}건)</strong> <span class="tx-red">{{ number_format(array_get($results, 'price.' . $pack_lecture_key, 0)) }}원</span></li>
+                                <li><strong>배송료</strong> <span class="tx-blue">{{ number_format(array_get($results, 'delivery_price.' . $lecture_key, 0)) }}원</span></li>
+                                <li class="NGEB"><strong>결제예상금액</strong> <span class="tx-blue">{{ number_format(array_get($results, 'price.' . $lecture_key, 0) + array_get($results, 'price.' . $pack_lecture_key, 0) + array_get($results, 'delivery_price.' . $lecture_key, 0)) }}원</span></li>
                             </ul>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                         @endif
                         <div class="priceBox">
                             <ul>
-                                <li><strong>강좌({{ array_get($results, 'count.book', 0) }}건)</strong> <span class="tx-blue">{{ number_format(array_get($results, 'price.book', 0)) }}원</span></li>
+                                <li><strong>교재({{ array_get($results, 'count.book', 0) }}건)</strong> <span class="tx-blue">{{ number_format(array_get($results, 'price.book', 0)) }}원</span></li>
                                 <li><strong>배송료</strong> <span class="tx-blue">{{ number_format(array_get($results, 'delivery_price.book', 0)) }}원</span></li>
                                 <li class="NGEB"><strong>결제예상금액</strong> <span class="tx-blue">{{ number_format(array_get($results, 'price.book', 0) + array_get($results, 'delivery_price.book', 0)) }}원</span></li>
                             </ul>
@@ -121,8 +121,9 @@
     $(document).ready(function() {
         // 장바구니 디폴트 탭 설정
         $(function() {
-            var default_tab_id = '{{ element('tab', $arr_input, 'on_lecture') }}';
+            var default_tab_id = '{{ element('tab', $arr_input, 'lecture') }}';
             if (default_tab_id.length > 0) {
+                default_tab_id = default_tab_id === 'book' ? 'book' : 'lecture';
                 $('#hover_' + default_tab_id).trigger('click');
             }
         });
@@ -157,7 +158,7 @@
                 };
                 sendAjax('{{ front_url('/cart/destroy') }}', data, function(ret) {
                     if (ret.ret_cd) {
-                        var reload_url = location.pathname + '?tab=' + $tab_id;
+                        var reload_url = location.pathname + '?tab=' + $form.find('input[name="cart_type"]').val();
                         location.replace(reload_url);
                     }
                 }, showAlertError, false, 'POST');

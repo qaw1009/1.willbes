@@ -55,14 +55,15 @@ function addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, $app_url)
 
     // url 설정
     var url = '';
+    var uri = '/cart/store';
     if ($app_url !== '') {
-        url = $app_url + '/cart/store';
+        url = $app_url + uri;
     } else {
-        url = frontUrl('/cart/store');
+        url = frontUrl(uri);
         if ($regi_form.find('input[name="cart_type"]').val().indexOf('off') === 0) {
-            url = frontPassUrl('/cart/store');
+            url = frontPassUrl(uri);
         } else if ($regi_form.find('input[name="cart_type"]').val().indexOf('on') === 0 || $regi_form.find('input[name="cart_type"]').val() === 'book') {
-            url = siteUrl('/cart/store');
+            url = frontOnUrl(uri);
         }
     }
 
@@ -143,15 +144,16 @@ function getCartType($regi_form) {
  * @param $tab_id
  */
 function goCartPage($tab_id) {
-    var url = frontUrl('/cart/index?tab=');
+    var uri = '/cart/index?tab=' + $tab_id;
+    var url = frontUrl(uri);
 
     if ($tab_id.toString().indexOf('off') === 0) {
-        url = frontPassUrl('/cart/index?tab=');
+        url = frontPassUrl(uri);
     } else if ($tab_id.toString().indexOf('on') === 0 || $tab_id === 'book') {
-        url = siteUrl('/cart/index?tab=');
+        url = frontOnUrl(uri);
     }
 
-    location.href = url + $tab_id;
+    location.href = url;
 }
 
 /**
@@ -339,11 +341,12 @@ function checkProduct($learn_pattern, $prod_code, $is_visit_pay, $regi_form) {
     }
 
     var is_check = false;
-    var url = frontUrl('/cart/checkProduct');
+    var uri = '/cart/checkProduct';
+    var url = frontUrl(uri);
     if ($learn_pattern.toString().indexOf('off') === 0) {
-        url = frontPassUrl('/cart/checkProduct');
+        url = frontPassUrl(uri);
     } else if ($learn_pattern.toString().indexOf('on') === 0 || $learn_pattern === 'book') {
-        url = siteUrl('/cart/checkProduct');
+        url = frontOnUrl(uri);
     }
     var data = {
         '_csrf_token' : $regi_form.find('input[name="_csrf_token"]').val(),

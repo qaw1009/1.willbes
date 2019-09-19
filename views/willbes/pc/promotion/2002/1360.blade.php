@@ -28,7 +28,7 @@
             z-index:1;
         }   
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1360_top_bg.jpg) no-repeat center top;}      
-        .wb_01 {background:#fff;}
+        .wb_01 {background:#fff; padding-bottom:150px}
         .wb_02 {background:#5f5f5f}
         .wb_03 {background:#464646}
         .wb_04 {background:#5f5f5f;}
@@ -75,17 +75,11 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_top.jpg" alt="프리미엄 심화 이론"/>       
         </div>
-       {{--
-        <div class="evtCtnsBox wb_01" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_01.jpg" alt="사전접수 이벤트" usemap="#Map1360a" border="0" />
-            <map name="Map1360a" id="Map1360a">
-                <area shape="rect" coords="456,622,664,684" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="신청하기" />
-                <area shape="rect" coords="76,1188,289,1250" href="#careful" />
-                <area shape="rect" coords="460,1192,663,1245" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="신청하기" />
-                <area shape="rect" coords="833,1184,1044,1250" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" alt="신청하기" />
-            </map>          
-        </div>
-        --}}
+       
+        <div class="evtCtnsBox wb_01">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1360_01_interview.jpg" alt="인터뷰" />  
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/mGt001If-5g?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>        
 
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1360_02.jpg" alt="더 늦기 전에 준비" />

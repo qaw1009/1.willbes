@@ -49,7 +49,6 @@
         50%{color:#2784d2}
         to{color:#000}
         }
-
         .wb_00 {background:#404040}
         .wb_01 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/09/1394_top_bg.jpg) no-repeat center top;}
         .wb_02 {background:#3f4f5f}

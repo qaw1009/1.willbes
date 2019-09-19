@@ -18,7 +18,7 @@ class OffVisitLecture extends OffLecture
     public function cartList()
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
-        $result = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, null, null, null, 'Y');
+        $result = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, null, null, 'N', 'Y', true);
         return $this->response([
             'data' => $result
         ]);

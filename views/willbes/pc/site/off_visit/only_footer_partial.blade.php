@@ -108,10 +108,11 @@
 
     {{-- 개별상품 장바구니 담기 --}}
     function eachProductCart(id,val) {
-        $_prod_code_array = [];
-        $_learn_pattern = '{{$learn_pattern}}';
-        $_is_direct_pay = 'N';
-        $_cart_type = 'off_lecture';
+        var $_prod_code_array = [];
+        var $_learn_pattern = '{{$learn_pattern}}';
+        var $_is_direct_pay = 'N';
+        var $_is_visit_pay = 'Y';
+        var $_cart_type = 'off_lecture';
 
         $_prod_code_array.push(val);
 
@@ -119,6 +120,7 @@
         var data = $.extend(arrToJson($regi_off_form.find('input[type="hidden"]').serializeArray()), {
             'learn_pattern' : $_learn_pattern,
             'is_direct_pay' : $_is_direct_pay,
+            'is_visit_pay' : $_is_visit_pay,
             'cart_type' : $_cart_type,
             'prod_code' : $_prod_code_array
         });
@@ -126,14 +128,14 @@
             if(ret.ret_cd) {
                 cartList();
             }
-        }, function(){
-            cartError(id);
+        }, function(ret){
+            cartError(id, ret.ret_msg);
         }, false, 'POST');
     }
 
     {{-- 장바구니 목록 --}}
     function cartList() {
-        var url = '{{ front_url('/OffVisitLecture/cartList/')}}';
+        var url = '{{ front_url('/offVisitLecture/cartList/')}}';
         var data = {
             '{{ csrf_token_name() }}' : $regi_off_form.find('input[name="{{ csrf_token_name() }}"]').val()
         };
@@ -189,17 +191,12 @@
 
     {{-- 장바구니 삭제 --}}
     function eachProductCartRemove(cart_idx) {
-        //alert(cart_idx+' - '+prod_code);
-        var data = {};
         var url = '{{ front_url('/cart/destroy')}}';
-
-        //data = { 0 : cart_idx };
-        data = {
+        var data = {
             '{{ csrf_token_name() }}' : $regi_off_form.find('input[name="{{ csrf_token_name() }}"]').val(),
             '_method' : 'DELETE',
             '_del_type' : 'each',
             'cart_idx' : cart_idx
-            //'cart_idx' : JSON.stringify(data)
         };
         sendAjax(url, data, function(ret) {
             if (ret.ret_cd) {
@@ -212,8 +209,8 @@
     }
 
     {{-- 장바구니 입력 오류 --}}
-    function cartError(id) {
-        alert("장바구니 등록시 오류가 발생되었습니다.");
+    function cartError(id, err_msg) {
+        alert(err_msg);
         $("#"+id).prop('checked',false);
         return;
     }

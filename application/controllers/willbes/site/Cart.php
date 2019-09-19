@@ -22,13 +22,21 @@ class Cart extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $sess_mem_idx = $this->session->userdata('mem_idx');
+        $on_off_type = $this->_is_pass_site === true ? 'off' : 'on';
+        $lecture_key = $on_off_type . '_lecture';
+        $pack_lecture_key = $on_off_type . '_pack_lecture';
+
+        // 모바일 학원사이트에서 접근 불가
+        if ($this->_is_mobile === true && $this->_is_pass_site === true) {
+            show_alert('잘못된 접근입니다.', site_url('/' . config_item('app_mobile_site_prefix') . '/home/index'));
+        }
 
         // 장바구니 조회
-        $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code);
+        $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, null, null, 'N', 'N', true);
 
         $results = [];
         foreach ($list as $idx => $row) {
-            // 상품 갯수, 상품 금액 배열 키 (on_lecture : 단강좌, on_pack_lecture : 패키지, book : 교재)
+            // 상품 갯수, 상품 금액 배열 키 (on_lecture : 단강좌, on_pack_lecture : 패키지, book : 교재, off_lecture : 단과반, off_pack_lecture : 종합반)
             $count_key = 'count.' . $row['CartProdType'];
             $price_key = 'price.' . $row['CartProdType'];
 
@@ -38,18 +46,24 @@ class Cart extends \app\controllers\FrontController
             // 상품 금액
             array_set($results, $price_key, array_get($results, $price_key, 0) + ($row['RealSalePrice'] * $row['ProdQty']));
 
-            // 강좌, 교재 목록 구분, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재)
+            // 상품구분명 / 상품구분명 색상 class 번호
+            $row['CartProdTypeName'] = $this->cartFModel->_cart_prod_type_name[$row['CartProdType']];
+            $row['CartProdTypeNum'] = $this->cartFModel->_cart_prod_type_idx[$row['CartProdType']];
+
+            // 강좌, 교재 목록 구분, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재, off_lecture : 학원강좌)
             $results['list'][$row['CartType']][] = $row;
         }
 
-        // 온라인 강좌 배송료
-        $results['delivery_price']['on_lecture'] = $this->cartFModel->getLectureDeliveryPrice(array_pluck(array_get($results, 'list.on_lecture', []), 'IsFreebiesTrans'));
+        // 강좌 배송료
+        $results['delivery_price'][$lecture_key] = $this->cartFModel->getLectureDeliveryPrice(array_pluck(array_get($results, 'list.' . $lecture_key, []), 'IsFreebiesTrans'));
 
         // 교재 배송료
         $results['delivery_price']['book'] = isset($results['count']['book']) === true ? $this->cartFModel->getBookDeliveryPrice(array_get($results, 'price.book', 0)) : 0;
 
         $this->load->view('site/cart/index', [
             'arr_input' => $arr_input,
+            'lecture_key' => $lecture_key,
+            'pack_lecture_key' => $pack_lecture_key,
             'results' => $results
         ]);
     }
@@ -120,6 +134,33 @@ class Cart extends \app\controllers\FrontController
 
         // 수강생교재 주문가능여부 확인
         $returns['is_check'] = $this->cartFModel->checkStudentBook($this->_site_code, $prod_book_code, $parent_prod_code, $input_prod_code);
+
+        $this->json_result(true, '', [], $returns);
+    }
+
+    /**
+     * 상품 유효성 체크 (판매여부, 사이트정보 일치여부, 학원상품 접수구분/정원 체크)
+     * @param array $params
+     */
+    public function checkProduct($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'learn_pattern', 'label' => '학습형태', 'rules' => 'trim|required'],
+            ['field' => 'prod_code', 'label' => '상품 식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        // 파라미터 셋팅
+        $learn_pattern = $this->_reqP('learn_pattern');
+        $prod_code = $this->_reqP('prod_code');
+        $is_visit_pay = get_var($this->_reqP('is_visit_pay'), 'N');
+
+        // 상품체크
+        $returns['is_check'] = $this->cartFModel->checkProduct($learn_pattern, $this->_site_code, $prod_code, $prod_code, $is_visit_pay, false, true);
 
         $this->json_result(true, '', [], $returns);
     }
@@ -242,9 +283,9 @@ class Cart extends \app\controllers\FrontController
             return '필수 파라미터 오류입니다.';
         }
 
-        // 학원강좌 방문접수 (학원상품이면서 바로결제가 아닌 경우 방문접수)
-        if (starts_with($learn_pattern, 'off') === true && $is_direct_pay == 'N') {
-            $is_visit_pay = 'Y';
+        // 학원강좌 방문접수
+        if (starts_with($learn_pattern, 'off') === true) {
+            $is_visit_pay = get_var($this->_reqP('is_visit_pay'), 'N');
         }
 
         // 기간제선택형패키지 과목/교수 정보

@@ -32,7 +32,7 @@ class BaseOrderFModel extends WB_Model
     ];
 
     // 장바구니 상품타입명
-    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_pack_lecture' => '패키지', 'off_pack_lecture' => '패키지', 'book' => '교재',
+    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_pack_lecture' => '패키지', 'off_pack_lecture' => '종합반', 'book' => '교재',
         'delivery_price' => '배송', 'delivery_add_price' => '배송', 'freebie' => '사은품', 'mock_exam' => '모의고사'
     ];
 

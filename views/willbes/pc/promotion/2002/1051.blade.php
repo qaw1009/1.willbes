@@ -86,6 +86,16 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_03_s11.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_03_s12.jpg" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_03_s13.jpg" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s01.jpg" alt="1"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s02.jpg" alt="2"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s03.jpg" alt="3"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s05.jpg" alt="5"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s06.jpg" alt="6"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s07.jpg" alt="7"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s08.jpg" alt="8"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s09.jpg" alt="9"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s10.jpg" alt="10"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_s11.jpg" alt="11"/></li>
                 </ul>
                 <p class="leftBtn1"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/sparta/1501_roll_arr_l.png"></a></p>
                 <p class="rightBtn1"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_roll_arr_r.png"></a></p>
@@ -93,6 +103,7 @@
             <img src="https://static.willbes.net/public/images/promotion/sparta/1051_03_t2.png" alt="양해" />
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/sparta/1051_04_t1.png" alt="2017 합격수기" />
             <div class="slide_con2">
@@ -114,6 +125,8 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/sparta/1051_03_t2.png" alt="양해" />
         </div>
+        --}}
+
 
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1051_05.jpg" alt="채용현황"/>
@@ -150,8 +163,7 @@
                 slideWidth:900,
                 slideMargin:0,
                 autoHover: true,
-                moveSlides:1,
-                pager:false
+                moveSlides:1
             });
 
             $("#imgBannerLeft1").click(function (){

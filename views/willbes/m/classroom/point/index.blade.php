@@ -46,8 +46,8 @@
                 <div class="paymentDate">
                     <div class="payLecList NGR">
                         <strong>기간검색</strong>
-                        <input type="text" id="search_start_date" name="search_start_date" value="{{ $arr_input['search_start_date'] or '' }}" title="검색시작일자" class="datepicker" maxlength="10" autocomplete="off" style="width:120px"/>
-                        ~ <input type="text" id="search_end_date" name="search_end_date" value="{{ $arr_input['search_end_date'] or '' }}" title="검색종료일자" class="datepicker" maxlength="10" autocomplete="off" style="width:120px">
+                        <input type="text" id="search_start_date" name="search_start_date" value="{{ $arr_input['search_start_date'] or '' }}" title="검색시작일자" class="datepicker" maxlength="10" autocomplete="off" style="width:100px"/>
+                        ~ <input type="text" id="search_end_date" name="search_end_date" value="{{ $arr_input['search_end_date'] or '' }}" title="검색종료일자" class="datepicker" maxlength="10" autocomplete="off" style="width:100px">
                     </div>
                     <ul class="c_both">
                         <li><a href="#none" class="btn-set-search-date" data-period="0-all">전체</a></li>

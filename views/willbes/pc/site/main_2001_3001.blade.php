@@ -141,7 +141,7 @@
 
         <div class="Section youtubeWrap">
             <div class="widthAuto tx-center pt100 mb100">   
-                <img src="{{ img_url('cop/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
+                <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_03.png" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
             </div>
 
             <div class="widthAuto">

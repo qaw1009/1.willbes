@@ -112,6 +112,10 @@
             <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY"><br />
             <div class="slide_con">
                 <ul id="slidesImg5">
+                    <li><a href="#interview20"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_20.jpg" alt=""/></a></li>
+					<li><a href="#interview19"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_19.jpg" alt=""/></a></li>
+					<li><a href="#interview18"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_18.jpg" alt=""/></a></li>
+                    <li><a href="#interview17"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_17.jpg" alt=""/></a></li>
                     <li><a href="#interview16"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_16.jpg" alt=""/></a></li>
 					<li><a href="#interview15"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_15.jpg" alt=""/></a></li>
 					<li><a href="#interview14"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_14.jpg" alt=""/></a></li>
@@ -135,24 +139,28 @@
 
 
             <div class="evttabWrap">
-                <div class="tabContents" id="interview16" >
-                    <iframe src="https://www.youtube.com/embed/9Th4Ur2Px-k?rel=0"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-                </div>                
-                <div class="tabContents" id="interview15" ></div>
-                <div class="tabContents" id="interview14" ></div>
-                <div class="tabContents" id="interview13" > </div>
-                <div class="tabContents" id="interview12" ></div>
-                <div class="tabContents" id="interview11" ></div>
-                <div class="tabContents" id="interview10" ></div>
-                <div class="tabContents" id="interview09" ></div>          
+                <div class="tabContents" id="interview20" >
+                    <iframe src="https://www.youtube.com/embed/gaNb0x-O7oA?rel=0"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+                </div>           
+                <div class="tabContents" id="interview19"></div>
+                <div class="tabContents" id="interview18"></div>
+                <div class="tabContents" id="interview17"></div>
+                <div class="tabContents" id="interview16"></div>              
+                <div class="tabContents" id="interview15"></div>
+                <div class="tabContents" id="interview14"></div>
+                <div class="tabContents" id="interview13"></div>
+                <div class="tabContents" id="interview12"></div>
+                <div class="tabContents" id="interview11"></div>
+                <div class="tabContents" id="interview10"></div>
+                <div class="tabContents" id="interview09"></div>          
                 <div class="tabContents" id="interview08"></div>
-                <div class="tabContents" id="interview07" ></div>
+                <div class="tabContents" id="interview07"></div>
                 <div class="tabContents" id="interview06"></div>
-                <div class="tabContents" id="interview05" ></div>
-                <div class="tabContents" id="interview04" ></div>
-                <div class="tabContents" id="interview03" ></div>
-                <div class="tabContents" id="interview02" ></div>
-                <div class="tabContents" id="interview01" ></div>  
+                <div class="tabContents" id="interview05"></div>
+                <div class="tabContents" id="interview04"></div>
+                <div class="tabContents" id="interview03"></div>
+                <div class="tabContents" id="interview02"></div>
+                <div class="tabContents" id="interview01"></div>  
             </div>
 
             <div>
@@ -455,6 +463,10 @@
             });
         });
 
+        var tab20_url = "https://www.youtube.com/embed/gaNb0x-O7oA?rel=0";
+        var tab19_url = "https://www.youtube.com/embed/KdpCHm44Yrw?rel=0";
+        var tab18_url = "https://www.youtube.com/embed/4uXR4CRf_wk?rel=0";
+        var tab17_url = "https://www.youtube.com/embed/Os4UBadJReM?rel=0";
         var tab16_url = "https://www.youtube.com/embed/9Th4Ur2Px-k?rel=0";
         var tab15_url = "https://www.youtube.com/embed/Vpe87p_O4-I?rel=0";
         var tab14_url = "https://www.youtube.com/embed/5wPsViPfppY?rel=0";
@@ -479,7 +491,15 @@
             $("#slidesImg5 li a").click(function(){ 
             var activeTab = $(this).attr("href"); 
             var html_str = "";
-            if(activeTab == "#interview16"){
+            if(activeTab == "#interview20"){
+            html_str = "<iframe src='"+tab20_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview19"){
+            html_str = "<iframe src='"+tab19_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview18"){
+            html_str = "<iframe src='"+tab18_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview17"){
+            html_str = "<iframe src='"+tab17_url+"' allowfullscreen></iframe>";
+            }else if(activeTab == "#interview16"){
             html_str = "<iframe src='"+tab16_url+"' allowfullscreen></iframe>";
             }else if(activeTab == "#interview15"){
             html_str = "<iframe src='"+tab15_url+"' allowfullscreen></iframe>";					

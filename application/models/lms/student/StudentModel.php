@@ -50,7 +50,7 @@ class StudentModel extends WB_Model
                             lms_order_product as OP
                             join lms_product_r_sublecture as rs on rs.ProdCode = OP.ProdCode and rs.IsStatus = 'Y'
                             join lms_my_lecture as ML on ML.OrderIdx = OP.OrderIdx AND ML.OrderProdIdx = OP.OrderProdIdx
-                                                        AND ML.ProdCode = OP.ProdCode
+                                                        AND ML.ProdCode = OP.ProdCode AND ML.ProdCodeSub = rs.ProdCode
                         WHERE
                             OP.PayStatusCcd IN ('676001', '676007')
                             AND rs.ProdCodeSub = A.ProdCode
@@ -185,7 +185,8 @@ class StudentModel extends WB_Model
             ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
             ,O.CompleteDatm as PayDate, A.wAdminName as AdminName, OP.OrderProdIdx, OP.ProdCode
             ,(SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate
-            ,fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData
+            ,fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData, OP.DiscReason
+            ,(SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo
         ";
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -286,7 +287,8 @@ class StudentModel extends WB_Model
             ,O.CompleteDatm as PayDate, A.wAdminName as AdminName, OP.OrderProdIdx, OP.ProdCode,
             (SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate,
             IF(P.LearnPatternCcd = '615007', 'Y', 'N') AS IsPkg,
-            CONCAT(P1.ProdName, ' [',P1.ProdCode,']') AS ProdName , P2.ProdName AS ProdNameSub, P2.ProdCode AS ProdCodeSub
+            CONCAT(P1.ProdName, ' [',P1.ProdCode,']') AS ProdName , P2.ProdName AS ProdNameSub, P2.ProdCode AS ProdCodeSub,
+            OP.DiscReason, (SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo
         ";
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

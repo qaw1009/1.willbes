@@ -42,7 +42,8 @@
         .evt04 table tr {border-bottom:1px solid #000; color:#999}
         .evt04 table tr span {padding:8px 0; border-radius:15px; background:#ccc; color:#000; display:block}
         .evt04 table tr.on {color:#000}
-        .evt04 table tr.on span {background:#fcdea2;}        
+        .evt04 table tr.on span {background:#fcdea2;}   
+        .evt04 table tr span.end {background:#333; color:#fff}     
         .evt04 table tbody tr:hover {
             background:#eee;    
         }
@@ -122,14 +123,22 @@
                             <td>한국사/형소법/형법</td>
                             <td>18:00 ~ 18:30</td>
                             <td>9.20(금)</td>
-                            <td><span>접수중</span></td>
+                            <td>
+                                @if (date('YmdH') < '2019092018')
+                                <span>접수중</span>
+                                @else
+                                <span class="end">접수마감</span>
+                                @endif
+                            </td>
                         </tr>
                         <tr class="on">
                             <td>2020년 합격대비 HALF 불금모의고사 [2회]</td>
                             <td>영어/경찰</td>
                             <td>18:00 ~ 18:30</td>
                             <td>10.4(금)</td>
-                            <td><span>접수중</span></td>
+                            <td>
+                                <span>접수중</span>
+                            </td>
                         </tr>
                         <tr class="on">
                             <td>2020년 합격대비 HALF 불금모의고사 [3회]</td>

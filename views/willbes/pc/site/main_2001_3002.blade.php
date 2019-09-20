@@ -97,7 +97,7 @@
 
         <div class="Section youtubeWrap">
             <div class="widthAuto tx-center pt100 mb100">   
-                <img src="{{ img_url('cop_adm/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
+                <img src="https://static.willbes.net/public/images/promotion/main/3002_visual_03.png" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
             </div>
 
             <div class="widthAuto mt80">
@@ -105,13 +105,13 @@
                     <ul class="youtubetab">
                         <li>
                             <a href="#tab1" class="active">
-                                신의 법칙! 2주만에 1회독?
+                            최단기간 4개월 단기합격
                                 <span>신광은경찰TV</span>
                             </a>
                         </li>
                         <li>
                             <a href="#tab2">
-                                4개월 단기합격
+                                합격생이 알려주는 심화과정=점수 UP!!
                                 <span>신광은경찰TV</span>
                             </a>
                         </li> 
@@ -130,10 +130,10 @@
                     </ul>
                 </div>
                 <div id="tab1" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/gaNb0x-O7oA?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                 </div>
                 <div id="tab2" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/NPe7NiOyA5E?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/mGt001If-5g?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                 </div> 
                 <div id="tab3" class="youtubeBox">
                     <iframe src="https://www.youtube.com/embed/my1yYcTb0ig?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
@@ -276,8 +276,8 @@
     <!-- End Container -->
     
     <script type="text/javascript">
-        var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
-        var tab2_url = "https://www.youtube.com/embed/NPe7NiOyA5E?rel=0&modestbranding=1&showinfo=0";        
+        var tab1_url = "https://www.youtube.com/embed/gaNb0x-O7oA?rel=0&modestbranding=1&showinfo=0";
+        var tab2_url = "https://www.youtube.com/embed/mGt001If-5g?rel=0&modestbranding=1&showinfo=0";        
         var tab3_url = "https://www.youtube.com/embed/my1yYcTb0ig?rel=0&modestbranding=1&showinfo=0";
         var tab4_url = "https://www.youtube.com/embed/Vldycfx-OaE?rel=0&modestbranding=1&showinfo=0";
 

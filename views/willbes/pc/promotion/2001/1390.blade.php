@@ -66,7 +66,7 @@
         <div class="evtCtnsBox wb_cts04" >
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1390_p5.jpg"  alt="100%" usemap="#more" />
             <map name="more" id="more">
-                <area shape="rect" coords="397,519,728,580" href="https://police.willbes.net/pass/support/notice/show?board_idx=237681&" onfocus='this.blur()' alt="적중사례" target="_blank">
+                <area shape="rect" coords="397,519,728,580" href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=237798&" onfocus='this.blur()' alt="적중사례" target="_blank">
             </map>          
         </div>
 

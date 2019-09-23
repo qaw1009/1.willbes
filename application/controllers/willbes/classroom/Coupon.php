@@ -78,6 +78,7 @@ class Coupon extends \app\controllers\FrontController
         $date_column = ['issue' => 'CD.IssueDatm', 'expire' => 'CD.ExpireDatm'];
         $date_orderby = ['issue' => ['CD.CdIdx' => 'desc'], 'expire' => ['CD.ExpireDatm' => 'asc']];
         $search_date_type = element('search_date_type', $arr_input, 'issue');
+        $order_date_type = element('order_date_type', $arr_input, 'issue');
         $valid_status = element('valid_status', $arr_input);
 
         // 기본 조건
@@ -124,7 +125,7 @@ class Coupon extends \app\controllers\FrontController
 
         return [
             'condition' => $arr_condition,
-            'orderby' => $date_orderby[$search_date_type]
+            'orderby' => $date_orderby[$order_date_type]
         ];
     }
 

@@ -1149,6 +1149,21 @@ class OrderModel extends BaseOrderModel
                 throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
             }
 
+            // 정원마감 체크
+            $arr_chk_prod_code = [];    // 정원마감 체크 대상 상품코드 배열
+            foreach ($arr_prod_info as $idx => $prod_info) {
+                list($prod_code, $prod_type) = explode(':', $prod_info);
+                if ($prod_type == 'off_lecture') {
+                    $arr_chk_prod_code[] = $prod_code;
+                }
+            }
+
+            $check_closing = $this->salesProductModel->getClosingProductName($arr_chk_prod_code);
+            if ($check_closing !== true) {
+                $check_closing = '정원 마감된 강좌가 있어 수강등록이 불가능합니다.' . PHP_EOL . '[정원 마감 강좌 안내]' . PHP_EOL . str_replace('::', PHP_EOL, $check_closing);
+                throw new \Exception($check_closing, _HTTP_BAD_REQUEST);
+            }
+
             // 상품코드 기준으로 주문상품 데이터 생성
             foreach ($arr_prod_info as $idx => $prod_info) {
                 // 상품정보 변수 할당
@@ -1340,6 +1355,13 @@ class OrderModel extends BaseOrderModel
             // 결제완료 처리할 주문상품식별자의 개수와 조회된 주문상품 개수가 다를 경우 에러 리턴
             if (count($order_prod_data) != count($arr_order_prod_idx)) {
                 throw new \Exception('요청된 주문상품 중에서 이미 처리된 상품이 있습니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 정원마감 체크
+            $check_closing = $this->salesProductModel->getClosingProductName(array_pluck($order_prod_data, 'ProdCode'));
+            if ($check_closing !== true) {
+                $check_closing = '정원 마감된 강좌가 있어 수강등록이 불가능합니다.' . PHP_EOL . '[정원 마감 강좌 안내]' . PHP_EOL . str_replace('::', PHP_EOL, $check_closing);
+                throw new \Exception($check_closing, _HTTP_BAD_REQUEST);
             }
 
             // 주문상품 수정

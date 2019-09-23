@@ -278,4 +278,29 @@ class SalesProductModel extends BaseOrderModel
 
         return true;
     }
+
+    /**
+     * 정원마감된 상품명 리턴
+     * @param array $prod_code [상품코드]
+     * @return bool|string
+     */
+    public function getClosingProductName($prod_code)
+    {
+        // 정원마감여부 컬럼 추가하여 상품 조회
+        $column = ', if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '", fn_product_closing_yn(P.ProdCode, PL.FixNumber), "N") as IsClosing';
+        $data = $this->findRawProductByProdCode($prod_code, $column);
+        if (empty($data) === true) {
+            return '상품 데이터가 없습니다.';
+        }
+
+        // 정원마감된 상품명 연결
+        $result = '';
+        foreach ($data as $row) {
+            if ($row['IsClosing'] == 'Y') {
+                $result .= '::' . $row['ProdName'];
+            }
+        }
+
+        return empty($result) === true ? true : substr($result, 2);
+    }
 }

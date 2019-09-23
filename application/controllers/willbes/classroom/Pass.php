@@ -299,7 +299,7 @@ class Pass extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
-        if($lec['LearnPatternCcd'] == '615003'){
+        if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
             $pkg = $this->classroomFModel->getPackage([
                 'EQ' => [
                     'MemIdx' => $this->session->userdata('mem_idx'),
@@ -321,6 +321,8 @@ class Pass extends \app\controllers\FrontController
             $lec['ExtenCount'] = $pkg['ExtenCount'];
             $lec['IsRebuy'] = $pkg['IsRebuy'];
             $lec['RebuyCount'] = $pkg['RebuyCount'];
+
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
         }
 
         if($lec['LecStartDate'] > $today){

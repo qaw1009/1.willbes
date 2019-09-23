@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Package extends \app\controllers\FrontController
 {
-    protected $models = array('product/baseProductF', 'product/packageF');
+    protected $models = array('categoryF','product/baseProductF', 'product/packageF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -22,12 +22,10 @@ class Package extends \app\controllers\FrontController
     public function index($params = [])
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
         $pack = element('pack', $params);
-
         switch ($pack) {
             case '648001':
-                $title = '추천패키지';
+                $title = $this->_site_code== '2001' ? '종합반/패키지' : ($this->_site_code== '2003' ? '추천패키지' : '');
                 break;
             case '648002':
                 $title = '선택패키지';
@@ -37,8 +35,15 @@ class Package extends \app\controllers\FrontController
                 break;
         }
 
+        /*모바일 사용을 위한 카테고리 설정*/
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        $cate_code = !(empty($this->_cate_code)) ? $this->_cate_code : element('cate_code', $arr_input);
+        if (empty($cate_code) === true) {
+            $cate_code = element('cate_code', $arr_input, get_var(config_app('DefCateCode'), array_get($arr_base['category'], '0.CateCode')));
+        }
+
         // 상품 기본조회 조건
-        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code, 'PackTypeCcd' => $pack], 'LKR' => ['CateCode' => $this->_cate_code]];
+        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code, 'PackTypeCcd' => $pack], 'LKR' => ['CateCode' => $cate_code]];
 
         // 사이트별 과정 조회 (카테고리 소트매핑된 과정 조회 => 상품에 설정된 과정 조회)
         //$arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
@@ -65,8 +70,6 @@ class Package extends \app\controllers\FrontController
         // 상품 조회
         $list = $this->packageFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, $order_by);
 
-        //$prod_codes = array_pluck($list,'ProdCode');        //추출목록 중 상품코드만 재 추출
-        //$contents = $this->packageFModel->findProductContents($prod_codes); //상품 컨텐츠 추출  : info() 로 대체
 
         $selected_list=[];
         foreach ($list as  $idx => $row) {
@@ -130,14 +133,15 @@ class Package extends \app\controllers\FrontController
 
         switch ($pack) {
             case '648001':
+                $title = $this->_site_code== '2001' ? '종합반/패키지' : ($this->_site_code== '2003' ? '추천패키지' : '');
                 $view_page = 'show_normal';
                 break;
             case '648002':
+                $title = '선택패키지';
                 $view_page = 'show_choice';
                 $order_by = ['B.IsEssential'=>'DESC', 'B.SubGroupName'=>'ASC'];
                 break;
         }
-
 
         $data = $this->packageFModel->findProductByProdCode($this->_learn_pattern, $prod_code);  //상품 정보 추출
         if (empty($data) === true) {
@@ -164,7 +168,8 @@ class Package extends \app\controllers\FrontController
         $this->load->view('site/package/'.$view_page,[
             'arr_input' => $arr_input,
             'data' => $data,
-            'data_sublist' => $data_sublist
+            'data_sublist' => $data_sublist,
+             'title' => $title,
         ]);
     }
 

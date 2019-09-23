@@ -29,12 +29,10 @@ class Lecture extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        // 카테고리 셋팅  -> 모바일의 경우 select box 로 카테고리 전달
-        //$cate_code = $this->_cate_code;
+        // 카테고리 셋팅 => 모바일의 경우 select box로 카테고리 전달
         $cate_code = !(empty($this->_cate_code)) ? $this->_cate_code : element('cate_code', $arr_input);
 
         // 카테고리 조회 : 모바일에서 카테고리 select box 사용
-
         $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
 
         // 지정된 카테고리가 없을 경우
@@ -108,8 +106,23 @@ class Lecture extends \app\controllers\FrontController
             // 상품조회 결과에 존재하는 과목 정보
             $selected_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
 
-            // 상품조회 결과에 존재하는 교수 정보
-            $selected_professor_names = array_data_pluck($list, ['ProfNickName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);    // 교수명, 슬로건
+            // 교수정보 추출
+            // 상품조회 결과에서 교수정보 추출 (교수명::슬로건)
+            $selected_prod_professor_names = array_data_pluck($list, ['ProfNickName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);
+
+            // 과목별 교수맵핑 결과에서 교수정보 추출 (교수명::슬로건, 사이트 > 카테고리 > 과목별 교수 정렬값 사용)
+            $selected_professor_names = array_data_pluck($arr_professor, ['ProfNickName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);
+
+            // 교수정보 병합 (과목별 교수맵핑 교수정보 기준으로 상품조회 결과에만 존재하는 교수정보 추가)
+            foreach ($selected_prod_professor_names as $ord_subject_idx => $ord_prof_rows) {
+                foreach ($ord_prof_rows as $ord_prof_idx => $ord_prof_info) {
+                    if (isset($selected_professor_names[$ord_subject_idx][$ord_prof_idx]) === false) {
+                        $selected_professor_names[$ord_subject_idx][$ord_prof_idx] = $ord_prof_info;
+                    }
+                }
+            }
+
+            // 상품조회 결과에 존재하는 교수 참조정보 추출
             $selected_professor_refers = array_map(function ($val) {
                 return json_decode($val, true);
             }, array_pluck($list, 'ProfReferData', 'ProfIdx'));

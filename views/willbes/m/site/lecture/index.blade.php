@@ -106,12 +106,6 @@
                         <tbody>
 
                         @foreach($data['subjects'] as $subject_idx => $subject_name)
-                            {{-- 교수별 상품 리스트 loop --}}
-                            @if(element('search_order', $arr_input) == 'course')
-                                {{-- 정렬방식이 과정순일 경우 배열키 (OrderNumCourse + ProdCode) 순으로 재정렬 --}}
-                                @php ksort($data['list'][$subject_idx][$prof_idx]); @endphp
-                            @endif
-
                                 <tr class="replyList willbes-Open-Table">
                                     <td class="w-data tx-left">
                                         <div class="w-tit">{{$subject_name}}</div>
@@ -121,6 +115,17 @@
                                 <tr class="willbes-Open-List">
                                     <td class="w-data tx-left" colspan="2">
                                         @foreach($data['professor_names'][$subject_idx] as $prof_idx => $prof_name)
+                                            {{-- 과목별 교수에 해당하는 상품이 없을 경우 --}}
+                                            @if(isset($data['list'][$subject_idx][$prof_idx]) === false)
+                                                @continue
+                                            @endif
+
+                                            {{-- 교수별 상품 리스트 loop --}}
+                                            @if(element('search_order', $arr_input) == 'course')
+                                                {{-- 정렬방식이 과정순일 경우 배열키 (OrderNumCourse + ProdCode) 순으로 재정렬 --}}
+                                                @php ksort($data['list'][$subject_idx][$prof_idx]); @endphp
+                                            @endif
+
                                             @foreach($data['list'][$subject_idx][$prof_idx] as $idx => $row)
                                                 <div>
                                                     <dl class="w-info">

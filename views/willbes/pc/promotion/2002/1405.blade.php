@@ -175,7 +175,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1405_03.jpg"  alt="전국모의고사 이벤트" usemap="#Map1405a" border="0"/>
             <map name="Map1405a" id="Map1405a">
                 <area shape="rect" coords="446,887,675,958" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
-                <area shape="rect" coords="309,1270,685,1326" href="#none" />
+                <area shape="rect" coords="309,1270,685,1326" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
             </map>
 		</div>
 

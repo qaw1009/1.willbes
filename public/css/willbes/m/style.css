@@ -2421,20 +2421,20 @@ body.memBody #Footer {
 .w-data-pkg:first-child {border-top:0; padding-top:0}
 .w-data-pkg:last-child {padding-bottom:0}
 
-#LecDetailPop .LecDetailBox {
+#InfoForm .LecDetailBox {
     border:1px solid #ccc;    
     line-height: 1.5;    
     height: 420px; 
     overflow-y: auto; 
     padding:20px !important;  
 }
-#LecDetailPop .LecDetailBox h5 {
+#InfoForm .LecDetailBox h5 {
     font-size: 14px;
     margin:10px 0;
     padding-bottom:3px;
     border-bottom:1px dotted #ccc;
 }
-#LecDetailPop .LecDetailBox h5:first-child {
+#InfoForm .LecDetailBox h5:first-child {
     margin:0 0 10px;
 }
 

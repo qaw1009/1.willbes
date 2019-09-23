@@ -157,13 +157,13 @@
                                 {{ $row['wUnitName'] }}
                                 <ul class="NGEB mt10">
                                     @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
-                                        @if(empty($row['wWD']) === false) <li><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','WD');" class="btn_black_line">WIDE</a></li>@endif
-                                        @if(empty($row['wHD']) === false) <li><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','HD');" class="btn_blue">HIGH</a></li>@endif
-                                        @if(empty($row['wSD']) === false) <li><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','SD');" class="btn_gray">LOW</a></li>@endif
+                                        @if(empty($row['wWD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileFree/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_black_line">WIDE</a></li>@endif
+                                        @if(empty($row['wHD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileFree/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_blue">HIGH</a></li>@endif
+                                        @if(empty($row['wSD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileFree/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_gray">LOW</a></li>@endif
                                     @elseif (in_array($row['wUnitIdx'], $data['LectureSampleUnitIdxs']) === true)
-                                        @if(empty($row['wWD']) === false) <li><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','WD');" class="btn_black_line">WIDE</a></li>@endif
-                                        @if(empty($row['wHD']) === false) <li><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','HD');" class="btn_blue">HIGH</a></li>@endif
-                                        @if(empty($row['wSD']) === false) <li><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','SD');" class="btn_gray">LOW</a></li>@endif
+                                        @if(empty($row['wWD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_black_line">WIDE</a></li>@endif
+                                        @if(empty($row['wHD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_blue">HIGH</a></li>@endif
+                                        @if(empty($row['wSD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_gray">LOW</a></li>@endif
                                     @endif
                                         <li>
                                             @if(empty($row['wUnitAttachFile']) === false)
@@ -209,6 +209,7 @@
 </div>
 <!-- End Container -->
 <script src="/public/js/willbes/product_util.js"></script>
+<script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
 

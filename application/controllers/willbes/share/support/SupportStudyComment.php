@@ -26,7 +26,7 @@ class SupportStudyComment extends BaseSupport
     public function listFrame()
     {
         $arr_input = array_merge($this->_reqG(null));
-        $cate_code = element('cate',$arr_input);
+        $cate_code = element('cate',$arr_input, $this->_cate_code);
         $prod_code = element('prod_code',$arr_input);
         $page = element('page',$arr_input);
 
@@ -58,15 +58,14 @@ class SupportStudyComment extends BaseSupport
             ]
         ];
 
-        $cate_code = '';
-        if ($this->_site_code != config_item('app_intg_site_code')) {
-            $cate_code = $this->_cate_code;
+        if ($this->_site_code == config_item('app_intg_site_code')) {
+            $cate_code = '';
         }
 
-        $column = 'BoardIdx, IsBest, RegType, RegMemIdx';
+        $column = 'b.BoardIdx, b.IsBest, b.RegType, b.RegMemIdx';
         $column .= ',IF(b.RegType=1, b.RegMemId, m.MemId) AS RegMemId, IF(b.RegType=1, b.RegMemName, m.MemName) AS RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
-        $column .= ',DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ',DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ',SubjectIdx, ProfIdx, b.ProdCode';
         $column .= ',SubjectName, ProfName, ProdName';
         $column .= ',ProdApplyTypeCcd, LecScore';

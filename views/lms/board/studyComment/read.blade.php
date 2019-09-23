@@ -133,7 +133,10 @@
     </div>
     </form>
 
-    <div class="x_panel">
+    {{--
+    TODO : 수강후기 뷰페이지 이전글,다음글 조건 수정으로 인한 임시 주석 처리
+    --}}
+    {{--<div class="x_panel">
         <div class="x_title">
             <div class="clearfix"></div>
         </div>
@@ -157,7 +160,7 @@
                 @endif
             </div>
         </div>
-    </div>
+    </div>--}}
 
     <!-- start rating -->
     <link href="/public/vendor/start-rating/starrating.css" rel="stylesheet">

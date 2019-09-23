@@ -179,7 +179,11 @@ class BoardModel extends WB_Model
         }
 
         if (empty($site_code) === false) {
-            $arr_condition['EQ']['LB.SiteCode'] = $site_code;
+            if ($board_type == 'studyComment') {
+                $arr_condition['EQ']['PROFESSOR.SiteCode'] = $site_code;
+            } else {
+                $arr_condition['EQ']['LB.SiteCode'] = $site_code;
+            }
         } else {
             $arr_condition['IN']['LB.SiteCode'] = get_auth_site_codes(false, true);
         }

@@ -179,7 +179,11 @@ class BoardModel extends WB_Model
         }
 
         if (empty($site_code) === false) {
-            $arr_condition['EQ']['LB.SiteCode'] = $site_code;
+            if ($board_type == 'studyComment') {
+                $arr_condition['EQ']['PROFESSOR.SiteCode'] = $site_code;
+            } else {
+                $arr_condition['EQ']['LB.SiteCode'] = $site_code;
+            }
         } else {
             $arr_condition['IN']['LB.SiteCode'] = get_auth_site_codes(false, true);
         }
@@ -702,6 +706,14 @@ class BoardModel extends WB_Model
             ) AS B ON A.BoardIdx = B.BoardIdx
             LEFT OUTER JOIN {$this->_table_member} AS MEM ON A.RegMemIdx = MEM.MemIdx
         ";
+
+        //수강후기인 경우
+        if (empty($arr_condition['EQ']['A.BmIdx']) === false && $arr_condition['EQ']['A.BmIdx'] == '85') {
+            $from .= " LEFT OUTER JOIN lms_professor AS PROFESSOR ON A.ProfIdx = PROFESSOR.ProfIdx ";
+            $arr_condition['EQ']['PROFESSOR.SiteCode'] = $arr_condition['EQ']['A.SiteCode'];
+            unset($arr_condition['EQ']['A.SiteCode']);
+        }
+
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -735,6 +747,14 @@ class BoardModel extends WB_Model
             ) AS B ON A.BoardIdx = B.BoardIdx
             LEFT OUTER JOIN {$this->_table_member} AS MEM ON A.RegMemIdx = MEM.MemIdx
         ";
+
+        //수강후기인 경우
+        if (empty($arr_condition['EQ']['A.BmIdx']) === false && $arr_condition['EQ']['A.BmIdx'] == '85') {
+            $from .= " LEFT OUTER JOIN lms_professor AS PROFESSOR ON A.ProfIdx = PROFESSOR.ProfIdx ";
+            $arr_condition['EQ']['PROFESSOR.SiteCode'] = $arr_condition['EQ']['A.SiteCode'];
+            unset($arr_condition['EQ']['A.SiteCode']);
+        }
+
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 

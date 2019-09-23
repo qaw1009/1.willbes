@@ -85,7 +85,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -133,7 +133,7 @@
                                         </dt>
                                         {{--<dt><span class="tx-blue">90,000원</span>(↓0%)</dt>--}}
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -175,7 +175,7 @@
                                         </dt>
                                         {{--<dt><span class="tx-blue">90,000원</span>(↓0%)</dt>--}}
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -222,7 +222,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -280,7 +280,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -327,7 +327,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -395,7 +395,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -442,7 +442,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -500,7 +500,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -547,7 +547,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -605,7 +605,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -652,7 +652,7 @@
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
                                         <dt>
-                                            <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
+                                            <a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>
@@ -747,9 +747,9 @@
         <div class="dim" onclick="closeWin('LecBuyMessagePop')"></div>
     </div>
 
-    <div id="LecDetailPop" class="willbes-Layer-Black NG">
+    <div id="InfoForm" class="willbes-Layer-Black NG">
         <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
-            <a class="closeBtn" href="#none" onclick="closeWin('LecDetailPop')">
+            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
                 <img src="{{ img_url('m/calendar/close.png') }}">
             </a>
             <h4>
@@ -788,7 +788,7 @@
                 </div>
             </div>
         </div>
-        <div class="dim" onclick="closeWin('LecDetailPop')"></div>
+        <div class="dim" onclick="closeWin('InfoForm')"></div>
     </div>
 
 

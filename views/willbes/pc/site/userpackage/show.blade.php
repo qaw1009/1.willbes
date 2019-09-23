@@ -250,9 +250,11 @@
                 }
             }
 
+            {{--
             for(i=0;i<tempSaleArray.length;i++) {
                 console.log(tempSaleArray[i]['DiscNum'] +' - '+tempSaleArray[i]['DiscRate']);
             }
+            --}}
 
             $(".chk_products,.chk_books").change( function() {
                 var strType = ($(this).attr('class').indexOf('chk_products') == 0) ? 'lecture' : 'book';
@@ -273,15 +275,15 @@
 
                 if($(this).is(':checked')) {
                     if(strType == 'lecture') {
-                        gather_action('only_remove', strProdCode);    //지우고 다시 등록 : 같은상품의 다른 가격으로 인한..
+                        gather_action('only_remove', strProdCode);    {{--지우고 다시 등록 : 같은상품의 다른 가격으로 인한..--}}
                     }
 
                     $("#gather-table").append(html);
 
                     if(strType == 'lecture') {
                         if (sale_count_check() == false) {
-                            $(this).prop('checked', false);              //갯수를 초과할 경우
-                            gather_action('only_remove', strId);    //갯수를 초과할 경우
+                            $(this).prop('checked', false);              {{--갯수를 초과할 경우--}}
+                            gather_action('only_remove', strId);    {{--갯수를 초과할 경우--}}
                         }
                     }
 
@@ -313,15 +315,7 @@
             sale_rate_check = function() {
                 var sel_count = parseInt($regi_form.find('.lecture-price').length);
                 var sale_rate = 0;
-                {{--
-                if(packSaleArray.length > 0) {
-                    for(i=0;i<packSaleArray.length;i++) {
-                        if( parseInt(packSaleArray[i]['DiscNum']) == sel_count) {       //해당갯수의 할인율이 없을 경우 . 이전에 적용된 할인율을 사용한다.
-                            sale_rate = packSaleArray[i]['DiscRate'];
-                        }
-                    }
-                }
-                --}}
+
                 if(tempSaleArray.length > 0) {
                     for(i=0;i<tempSaleArray.length;i++) {
                         if( parseInt(tempSaleArray[i]['DiscNum']) == sel_count) {       {{--해당갯수의 할인율이 없을 경우 . 이전에 적용된 할인율을 사용한다.--}}
@@ -359,33 +353,37 @@
                 $("#bookPrice").text(addComma($bookPrice_total)+'원');
                 $("#lecSalePrice").text(addComma($lecPrice_sale_total)+'원');
                 $("#totalPrice").text(addComma($price_total)+'원');
-                ($sale_rate == 0) ? '' : $("#lecSale").text('('+$sale_rate+'% 할인)');
+                $("#lecSale").text( $sale_rate == 0 ? '' : '('+$sale_rate+'% 할인)' );
             };
 
-            // 강좌상품 선택/해제
+            {{--강좌상품 선택/해제--}}
             $regi_form.on('click', 'input[name="prod_code_sub[]"]', function() {
                 if ($(this).is(':checked') === false) {
-                    // 연계도서상품 체크 해제
+                    {{--연계도서상품 체크 해제--}}
                     $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $(this).val() + '"]').prop('checked', false);
                 }
             });
 
-            // 교재상품 선택/해제
+            {{-- 교재상품 선택/해제 --}}
             $regi_form.on('click', '.chk_books', function() {
                 if ($(this).is(':checked') === true) {
                     if ($(this).hasClass('chk_books') === true) {
-                        // 수강생 교재 체크
+                        {{--수강생 교재 체크--}}
                         if (checkStudentBook($regi_form, $(this)) === false) {
                             return;
                         }
                     }
                 }
-                price_cal();        //가격 계산
+                price_cal();
             });
 
-            // 장바구니, 바로결제 버튼 클릭
+            {{-- 장바구니, 바로결제 버튼 클릭 --}}
             $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
                 var $is_direct_pay = $(this).data('direct-pay');
+                if($("input:checkbox[name='prod_code_sub[]']:checked").length == 0) {
+                    alert("수강하실 강좌를 선택해 주세요.");
+                    return;
+                }
                 cartNDirectPay($regi_form, $is_direct_pay, 'Y');
             });
         });

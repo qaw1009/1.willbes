@@ -1158,10 +1158,12 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
-            $check_closing = $this->salesProductModel->getClosingProductName($arr_chk_prod_code);
-            if ($check_closing !== true) {
-                $check_closing = '정원 마감된 강좌가 있어 수강등록이 불가능합니다.' . PHP_EOL . PHP_EOL . '[정원 마감 강좌 안내]' . PHP_EOL . str_replace('::', PHP_EOL, $check_closing);
-                throw new \Exception($check_closing, _HTTP_BAD_REQUEST);
+            if (empty($arr_chk_prod_code) === false) {
+                $check_closing = $this->salesProductModel->getClosingProductName($arr_chk_prod_code);
+                if ($check_closing !== true) {
+                    $check_closing = '정원 마감된 강좌가 있어 수강등록이 불가능합니다.' . PHP_EOL . PHP_EOL . '[정원 마감 강좌 안내]' . PHP_EOL . str_replace('::', PHP_EOL, $check_closing);
+                    throw new \Exception($check_closing, _HTTP_BAD_REQUEST);
+                }
             }
 
             // 상품코드 기준으로 주문상품 데이터 생성

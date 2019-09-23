@@ -207,6 +207,32 @@ class Bookmark extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
+        if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'OrderIdx' => $orderidx,
+                    'ProdCode' => $prodcode
+                ],
+                'GTE' => [
+                    'RealLecEndDate' => $today
+                ]
+            ]);
+
+            $pkg = $pkg[0];
+
+            $lec['lastPauseEndDate'] = $pkg['lastPauseEndDate'];
+            $lec['lastPauseStartDate'] = $pkg['lastPauseStartDate'];
+            $lec['PauseSum'] = $pkg['PauseSum'];
+            $lec['PauseCount'] = $pkg['PauseCount'];
+            $lec['ExtenSum'] = $pkg['ExtenSum'];
+            $lec['ExtenCount'] = $pkg['ExtenCount'];
+            $lec['IsRebuy'] = $pkg['IsRebuy'];
+            $lec['RebuyCount'] = $pkg['RebuyCount'];
+
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
+        }
+
         $curriculum = $this->classroomFModel->getCurriculumBookmark([
             'EQ' => [
                 'U.MemIdx' => $this->session->userdata('mem_idx'),

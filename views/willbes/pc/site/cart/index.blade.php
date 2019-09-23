@@ -368,7 +368,7 @@
                 var cate_code = '{{ element('DefCateCode', $__cfg, '') }}';
                 location.href = cate_code.length > 0 ? '{{ front_url('/lecture/index/cate/') }}' + cate_code + '/pattern/only' : frontUrl('');
             @else
-                location.href = '{{ front_url('/offLecture/index') }}';
+                location.href = '{{ front_url('/offLecture/index/type/all') }}';
             @endif
         });
 

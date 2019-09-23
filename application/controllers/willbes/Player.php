@@ -107,6 +107,9 @@ class Player extends \app\controllers\FrontController
             $lec['PauseCount'] = $pkg['PauseCount'];
             $lec['ExtenSum'] = $pkg['ExtenSum'];
             $lec['ExtenCount'] = $pkg['ExtenCount'];
+
+            // 배수 설정기준을 패키지 기준으로 변경
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
         }
 
         if($lec['LecStartDate'] > $today){
@@ -624,6 +627,9 @@ class Player extends \app\controllers\FrontController
             $lec['PauseCount'] = $pkg['PauseCount'];
             $lec['ExtenSum'] = $pkg['ExtenSum'];
             $lec['ExtenCount'] = $pkg['ExtenCount'];
+
+            // 배수 설정기준을 패키지 기준으로 변경
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
         }
 
         if($lec['LecStartDate'] > $today){
@@ -1130,6 +1136,9 @@ class Player extends \app\controllers\FrontController
             $lec['PauseCount'] = $pkg['PauseCount'];
             $lec['ExtenSum'] = $pkg['ExtenSum'];
             $lec['ExtenCount'] = $pkg['ExtenCount'];
+
+            // 배수 설정기준을 패키지 기준으로 변경
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
         }
 
         if($lec['LecStartDate'] > $today){
@@ -1329,9 +1338,19 @@ class Player extends \app\controllers\FrontController
 
 
     /**
-     * 모바일 샘플
+     * 모바일 샘플강의
+     * @param array $params
      */
     function getMobileSample($params = [])
+    {
+
+    }
+
+    /**
+     * 모바일 무료강의
+     * @param array $params
+     */
+    function getMobileFree($params = [])
     {
 
     }
@@ -1406,6 +1425,9 @@ class Player extends \app\controllers\FrontController
             $lec['PauseCount'] = $pkg['PauseCount'];
             $lec['ExtenSum'] = $pkg['ExtenSum'];
             $lec['ExtenCount'] = $pkg['ExtenCount'];
+
+            // 배수 설정기준을 패키지 기준으로 변경
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
         }
 
         if($lec['LecStartDate'] > $today){
@@ -1911,6 +1933,9 @@ class Player extends \app\controllers\FrontController
             $lec['PauseCount'] = $pkg['PauseCount'];
             $lec['ExtenSum'] = $pkg['ExtenSum'];
             $lec['ExtenCount'] = $pkg['ExtenCount'];
+
+            // 배수 설정기준을 패키지 기준으로 변경
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
         }
 
         if($lec['LecStartDate'] > $today){

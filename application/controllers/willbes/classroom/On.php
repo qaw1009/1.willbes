@@ -581,7 +581,7 @@ class On extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
-        if($lec['LearnPatternCcd'] == '615003'){
+        if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
             $pkg = $this->classroomFModel->getPackage([
                 'EQ' => [
                     'MemIdx' => $this->session->userdata('mem_idx'),
@@ -603,11 +603,13 @@ class On extends \app\controllers\FrontController
             $lec['ExtenCount'] = $pkg['ExtenCount'];
             $lec['IsRebuy'] = $pkg['IsRebuy'];
             $lec['RebuyCount'] = $pkg['RebuyCount'];
+
+            $lec['MultipleApply'] = $pkg['MultipleApply'];
         }
 
         if($lec['LecStartDate'] > $today){
             $isstart = 'N';
-        } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
+        } elseif ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
             $isstart = 'N';
             $ispause = 'Y';
         } else {
@@ -666,8 +668,7 @@ class On extends \app\controllers\FrontController
                 $curriculum[$idx]['timeover'] = 'N';
                 $curriculum[$idx]['limittime'] = '무제한';
                 $curriculum[$idx]['remaintime'] = '무제한';
-            }
-            else if($lec['MultipleApply'] == '1'){
+            } elseif($lec['MultipleApply'] == '1'){
                 // 무제한 
                 $curriculum[$idx]['timeover'] = 'N';
                 $curriculum[$idx]['limittime'] = '무제한';
@@ -785,7 +786,7 @@ class On extends \app\controllers\FrontController
                 ]
             ]));
 
-        } else if($prodtype === 'P') {
+        } elseif($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
                     'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
@@ -887,7 +888,7 @@ class On extends \app\controllers\FrontController
                 ]
             ]));
 
-        } else if($prodtype === 'P') {
+        } elseif($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
                     'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
@@ -975,7 +976,7 @@ class On extends \app\controllers\FrontController
                 ]
             ]));
 
-        } else if($prodtype === 'P') {
+        } elseif($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
                     'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
@@ -1077,7 +1078,7 @@ class On extends \app\controllers\FrontController
                 ]
             ]));
 
-        } else if($prodtype === 'P') {
+        } elseif($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
                     'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
@@ -1176,7 +1177,7 @@ class On extends \app\controllers\FrontController
                 ]
             ]));
 
-        } else if($prodtype === 'P') {
+        } elseif($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
                     'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
@@ -1242,7 +1243,7 @@ class On extends \app\controllers\FrontController
                 ]
             ]));
 
-        } else if ($prodtype === 'P') {
+        } elseif ($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
                     'PayRouteCcd' => ['670001', '670002','670006'] // 온, 방
@@ -1350,7 +1351,7 @@ class On extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
-        if($lec['LearnPatternCcd'] == '615003'){
+        if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
             $pkg = $this->classroomFModel->getPackage([
                 'EQ' => [
                     'MemIdx' => $this->session->userdata('mem_idx'),
@@ -1376,7 +1377,7 @@ class On extends \app\controllers\FrontController
 
         if($lec['LecStartDate'] > $today){
             show_alert('아직 시작되지 않은 강의입니다.', 'back');
-        } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
+        } elseif ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
             show_alert('일시중지중인 강의입니다.', 'back');
         }
 

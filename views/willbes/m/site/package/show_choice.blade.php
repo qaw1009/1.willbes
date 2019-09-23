@@ -332,7 +332,7 @@
             <!-- Topbtn -->
             @include('willbes.m.layouts.topbtn')
 
-            <div id="LecDetailPop" class="willbes-Layer-Black NG"></div>
+            <div id="InfoForm" class="willbes-Layer-Black NG"></div>
         </form>
     </div>
     <!-- End Container -->

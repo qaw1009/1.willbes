@@ -213,6 +213,10 @@
                 <!-- willbes-Lec-Subject -->
                 {{-- 교수명 타이틀 loop --}}
                 @foreach($data['professor_names'][$subject_idx] as $prof_idx => $prof_name)
+                    {{-- 과목별 교수에 해당하는 상품이 없을 경우 --}}
+                    @if(isset($data['list'][$subject_idx][$prof_idx]) === false)
+                        @continue
+                    @endif
                     <div class="willbes-Lec-Profdata tx-dark-black">
                         <ul>
                             <li class="ProfImg"><img src="{{ $data['professor_refers'][$prof_idx]['lec_list_img'] or '' }}"></li>

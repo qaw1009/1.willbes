@@ -324,7 +324,7 @@ class StudyComment extends BaseBoard
         $query_string = base64_decode(element('q',$this->_reqG(null)));
         $search_datas = json_decode($query_string,true);
 
-        $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas);
+        $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas, '', element('search_professor', $search_datas, ''));
         $board_previous = $data_PN['previous'];     //이전글
         $board_next = $data_PN['next'];             //다음글
 

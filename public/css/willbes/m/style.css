@@ -2635,7 +2635,7 @@ body.memBody #Footer {
 }
 .paymentWrap .payLecList li input[type="text"] {
     width: 15%; 
-    min-width: 80px;
+    min-width: 100px;
     height: 30px;
     padding: 0 0.6rem;
 }

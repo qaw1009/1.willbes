@@ -1425,7 +1425,7 @@
                                                         </colgroup>
                                                         <thead>
                                                             <tr>
-                                                                <th colspan="4"><div class="w-tit w-Infotit tx-black tx-left mb15 bd-none">▷ 선택과목 <span class="w-InfoSubtit">(전체 선태과목 중 2개를 선택해 주세요)</span></div></th>
+                                                                <th colspan="4"><div class="w-tit w-Infotit tx-black tx-left mb15 bd-none">▷ 선택과목 <span class="w-InfoSubtit">(전체 선택과목 중 2개를 선택해 주세요)</span></div></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>

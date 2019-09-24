@@ -11,13 +11,37 @@ class Payment extends \app\controllers\FrontController
     public function __construct()
     {
         parent::__construct();
-        
-        // pg 라이브러리 로드
-        $this->load->driver('pg', ['driver' => config_app('PgDriver', 'inisis')]);
     }
 
     /**
-     * PG사 결제요청
+     * load PG Driver
+     * @param bool $is_cancel [결제취소 사용여부]
+     * @return string [PG 드라이버 object명]
+     */
+    private function _loadPgDriver($is_cancel = false)
+    {
+        $driver = config_app('PgDriver', 'inisis');
+        $object_name = 'pg';
+
+        if (APP_DEVICE == 'pc') {
+            // PC 드라이버 로드
+            $this->load->driver('pg', ['driver' => $driver]);
+        } else {
+            // 모바일 드라이버 로드
+            $object_name = 'pg_mobile';
+            $this->load->driver('pg', ['driver' => $driver . '_mobile'], $object_name);
+
+            // 모바일 환경일 경우 결제취소는 PC용 드라이버 사용
+            if ($is_cancel === true) {
+                $this->load->driver('pg', ['driver' => $driver], 'pg');
+            }
+        }
+
+        return $object_name;
+    }
+
+    /**
+     * PG사 결제요청 (PC/모바일 공통)
      * @param array $params
      * @return mixed
      */
@@ -26,6 +50,14 @@ class Payment extends \app\controllers\FrontController
         // 전달 폼 데이터
         $arr_input = $this->_reqP(null, false);
         $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        // 모바일 접근시 디바이스 체크
+        if ($this->_is_mobile === true) {
+            $this->load->library('user_agent');
+            if ($this->agent->is_mobile() == false) {
+                return $this->json_error('허용된 디바이스가 아닙니다. 모바일 기기로 다시 시도해 주세요.');
+            }
+        }
 
         // 주문요청 폼 데이터 유효성 검증
         $rules = [
@@ -114,6 +146,9 @@ class Payment extends \app\controllers\FrontController
         }
 
         if ($results['total_pay_price'] > 0) {
+            // PG 드라이버 로드
+            $pg_object = $this->_loadPgDriver();
+
             // PG사 결제요청 폼 생성
             $data = [
                 'mid' => $results['cart_type'] == 'book' ? config_app('PgBookMid') : config_app('PgMid'),
@@ -129,7 +164,7 @@ class Payment extends \app\controllers\FrontController
                 'return_data' => ''
             ];
 
-            $form = $this->pg->requestForm($data);
+            $form = $this->{$pg_object}->requestForm($data);
             if ($form === false) {
                 return $this->json_error('결제요청 중 오류가 발생하였습니다.');
             } else {
@@ -157,16 +192,19 @@ class Payment extends \app\controllers\FrontController
                 return $this->json_result(true, '', [], ['ret_url' => front_url('/order/complete?order_no=' . $result['ret_data'])]);
             } else {
                 // 결제오류
-                return $this->json_result(true, $result['ret_msg'], [], ['ret_url' => site_url('/cart/index')]);
+                return $this->json_result(true, $result['ret_msg'], [], ['ret_url' => $this->_getErrUrl()]);
             }            
         }
     }
 
     /**
-     * PG사 결제완료
+     * PG사 결제완료 (PC 전용, 테스트 완료 후 삭제 예정)
      */
-    public function returns()
+    public function returnsBak()
     {
+        // PG 드라이버 로드
+        $pg_object = $this->_loadPgDriver();
+
         // 결제연동 결과 리턴
         $pay_results = $this->pg->returnResult();
         if ($pay_results['result'] === false) {
@@ -193,12 +231,49 @@ class Payment extends \app\controllers\FrontController
     }
 
     /**
-     * PG사 결제요청 취소
+     * PG사 결제완료 (PC/모바일 공통)
+     */
+    public function returns()
+    {
+        // PG 드라이버 로드
+        $pg_object = $this->_loadPgDriver(true);
+
+        // 결제연동 결과 리턴
+        $pay_results = $this->{$pg_object}->returnResult();
+        if ($pay_results['result'] === false) {
+            $err_msg = array_get($pay_results, 'result_msg', '결제연동 중 오류가 발생하였습니다.');
+            show_alert($err_msg, $this->_getErrUrl(), false);
+        }
+
+        // 결제 프로세스 실행
+        $result = $this->orderFModel->procOrder($pay_results);
+
+        // 수동 쿼리 로그 저장 (후킹 안됨)
+        $this->save_log_queries();
+
+        if ($result['ret_cd'] === true) {
+            // 결제완료 SMS 발송
+            $this->orderFModel->sendOrderSms($result['ret_data']);
+
+            // 결제완료 페이지 이동
+            redirect(front_url('/order/complete?order_no=' . $result['ret_data']));
+        } else {
+            // 결제취소
+            $this->pg->cancel(['order_no' => $pay_results['order_no'], 'mid' => $pay_results['mid'], 'tid' => $pay_results['tid'], 'cancel_reason' => $result['ret_msg']]);
+            show_alert($result['ret_msg'], $this->_getErrUrl(), false);
+        }
+    }
+
+    /**
+     * PG사 결제요청 취소 (PC 전용)
      * @param array $params
      * @return mixed
      */
     public function close($params = [])
     {
+        // PG 드라이버 로드
+        $pg_object = $this->_loadPgDriver();
+
         // 주문요청 데이터 삭제
         $order_no = $this->orderFModel->checkSessOrderNo();
         $is_delete = $this->orderFModel->removeOrderPostData($order_no, $this->session->userdata('mem_idx'));
@@ -210,7 +285,7 @@ class Payment extends \app\controllers\FrontController
     }
 
     /**
-     * PG사 결제취소
+     * PG사 결제취소 (PC 전용)
      * @param array $params
      * @return CI_Output
      */
@@ -225,5 +300,57 @@ class Payment extends \app\controllers\FrontController
         $result = $this->orderFModel->cancelOrder($order_no);
 
         return $this->json_result($result, '취소되었습니다.', $result);
+    }
+
+    /**
+     * PG사 승인결과 통보 (모바일 전용)
+     * @return mixed|null
+     */
+    public function notiMobile()
+    {
+        // PG 드라이버 로드
+        $pg_object = $this->_loadPgDriver();
+
+        // 승인결과 통보 결과 리턴
+        $deposit_results = $this->{$pg_object}->depositResult();
+
+        if ($deposit_results['result'] === true) {
+            if ($deposit_results['next_method'] == 'DepositComplete') {
+                // 가상계좌 결제완료 프로세스 진행
+                $result = $this->orderFModel->procDepositComplete($deposit_results);
+
+                if ($result['ret_cd'] === true) {
+                    return $this->{$pg_object}->depositReturn(true);
+                } else {
+                    return $this->{$pg_object}->depositReturn(false, $result['ret_msg'], $deposit_results['log_idx']);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * PG사 모바일 결제연동 미사용 메소드 (이니시스 모바일 결제 프로세스 확인용)
+     * @param array $params
+     */
+    public function nothingMobile($params = [])
+    {
+        $result = array_merge($this->input->get(null, false), $this->input->post(null, false));
+
+        // 로그 저장
+        logger('모바일 > Payment > 이니시스 모바일 > nothingMobile', $result, 'error');
+
+        // 결제오류 페이지 이동
+        show_alert('모바일 결제연동 중 허용되지 않는 경로로 접근하였습니다.', $this->_getErrUrl(), false);
+    }
+
+    /**
+     * 결제 프로세스 오류 URL 리턴
+     * @return string
+     */
+    private function _getErrUrl()
+    {
+        return front_url('/cart/index');
     }
 }

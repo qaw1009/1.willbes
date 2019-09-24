@@ -153,7 +153,7 @@
                                             <th rowspan="3" scope="row">주소</th>
                                             <td class="item">
                                                 <input type="text" id="zipcode" name="zipcode" title="우편번호" required="required" readonly="readonly" class="chk_price bg-gray" maxlength="6" style="width:120px"/>
-                                                <a href="#none" onclick="searchPost('SearchPost', 'zipcode', 'addr1', 'Y', '550', '370', 'SearchPostWrap');" class="findaddress">주소찾기</a>
+                                                <a href="#none" id="btn_search_post" class="findaddress">주소찾기</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -606,6 +606,17 @@
                 $regi_form.find('.pay-method').css('display', 'none');
                 $regi_form.find('input[name="pay_method_ccd"]').prop('disabled', true);
             }
+        });
+
+        // 주소찾기 버튼 클릭
+        $regi_form.on('click', '#btn_search_post', function() {
+            var width = 550;
+            var wrap_width = $('.paymentWrap').width();
+            if(wrap_width != null && typeof wrap_width != 'undefined' && wrap_width < 668) {
+                width = wrap_width - (wrap_width * 0.1) - 48;   // 화면너비 - 화면너비 10% - 레이어 padding값
+            }
+
+            searchPost('SearchPost', 'zipcode', 'addr1', 'Y', width, '370', 'SearchPostWrap');
         });
 
         // 나의 배송 주소록 버튼 클릭 (수정안함)

@@ -52,7 +52,7 @@
             <div class="widthAuto">
                 <div class="gosi-acadTit NSK-Thin mb50">
                     여러분의 꿈과 목표를 위해,<br />
-                    <strong class="NSK-Black">오늘도 최선을 다하는 <span class="tx-color">윌비스 고시학원</span></strong>
+                    <strong class="NSK-Black">오늘도 최선을 다하는 <span class="tx-color">윌비스 공무원학원</span></strong>
                 </div>
                 <ul class="ProfBox">
                     @for($i=1; $i<=10; $i++)

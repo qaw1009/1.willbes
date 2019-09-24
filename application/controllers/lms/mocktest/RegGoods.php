@@ -392,7 +392,7 @@ class RegGoods extends \app\controllers\BaseController
             return;
         }
         */
-        if( count($orderE) == 0 ) {     //필수과목만 적용 (선태과목 없을 수 있음)
+        if( count($orderE) == 0 ) {     //필수과목만 적용 (선택과목 없을 수 있음)
             $this->json_error('과목을 선택해 주세요.');
             return;
         }

@@ -314,7 +314,7 @@ class Player extends \app\controllers\FrontController
     public function Sample($params = [])
     {
         if(empty($params[0]) === true || empty($params[1]) === true || empty($params[2]) === true ){
-            show_alert('파라미터가 잘못 되었습니다.1', 'close');
+            show_alert('파라미터가 잘못 되었습니다.', 'close');
         }
 
         $prodcode = $params[0];
@@ -419,7 +419,7 @@ class Player extends \app\controllers\FrontController
     public function Free($params = [])
     {
         if(empty($params[0]) === true || empty($params[1]) === true || empty($params[2]) === true ){
-            show_alert('파라미터가 잘못 되었습니다.1', 'close');
+            show_alert('파라미터가 잘못 되었습니다.', 'close');
         }
 
         $prodcode = $params[0];
@@ -488,6 +488,17 @@ class Player extends \app\controllers\FrontController
         }
 
         $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
+
+        // 무료강의 수강로그 저장
+        if($this->playerFModel->storeSampleLog([
+                'ProdCode' => $prodcode,
+                'UnitIdx' => $unitidx,
+                'Url' => $url,
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'Quility' => $quility
+            ]) == false){
+            show_alert('오류가 발생했습니다. 다시 시도해주십시요.', 'close');
+        };
 
         $this->load->view('/player/sample', [
             'data' => [
@@ -1339,20 +1350,205 @@ class Player extends \app\controllers\FrontController
 
     /**
      * 모바일 샘플강의
-     * @param array $params
+     * @return CI_Output
      */
-    function getMobileSample($params = [])
+    function getMobileSample()
     {
+        $MemId = $this->_req("id");
+        $prodcode = $this->_req("p");
+        $unitidx = $this->_req("u");
+        $quility = $this->_req("q");
 
+        if(empty($prodcode) === true || empty($unitidx) === true){
+            return $this->StarplayerResult(true,'파라미터가 잘못 되었습니다.');
+        }
+
+        if(empty($MemId) === true){
+            $MemId = "ANONYMOUS";
+        }
+
+        if(empty($quility) === true){
+            $quility = 'WD';
+        }
+
+        $data = $this->playerFModel->getLectureSample($prodcode, $unitidx);
+
+        if(empty($data) === true){
+            return $this->StarplayerResult(true,'샘플파일이 없습니다.');
+        }
+
+        switch($quility){
+            case 'WD':
+                $filename = $data['wWD'];
+                break;
+
+            case 'HD':
+                $filename = $data['wHD'];
+                break;
+
+            case 'SD':
+                $filename = $data['wSD'];
+                break;
+
+            default:
+                $filename = $data['wWD'];
+                $quility = 'WD';
+                break;
+        }
+
+        // 동영상 경로가 없을때 다른 경로로 재생
+        if(empty($filename) === true){
+            $filename = $data['wWD'];
+            $quility = 'WD';
+        }
+        if(empty($filename) === true){
+            $filename = $data['wHD'];
+            $quility = 'HD';
+        }
+        if(empty($filename) === true){
+            $filename = $data['wSD'];
+            $quility = 'SD';
+        }
+
+        // 모든 경로가 존재 없을때
+        if(empty($filename) == true){
+            return $this->StarplayerResult(true,'샘플파일이 없습니다.');
+        }
+
+        $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
+
+        // 샘플강의 수강로그 저장
+        if($this->playerFModel->storeSampleLog([
+                'ProdCode' => $prodcode,
+                'UnitIdx' => $unitidx,
+                'Url' => $url,
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'Quility' => $quility
+            ]) == false){
+            return $this->StarplayerResult(true,'오류가 발생했습니다. 다시 시도해주십시요.');
+        };
+
+        $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
+        $XMLString .= "<axis-app>";
+        $XMLString .= "<security>true</security>"; // 보안설정
+        $XMLString .= "<action-type>streaming</action-type>"; // 스트리밍/다운로드
+        $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>"; // 회원 아이디
+        $XMLString .= "<content>";
+        $XMLString .= "<id><![CDATA[SAMPLE]]></id>";
+        $XMLString .= "<url><![CDATA[".$url."]]></url>";
+        $XMLString .= "<title><![CDATA[샘플강의 :  ".clean_string($data['wUnitName'])."]]></title>";
+        $XMLString .= "<position>0</position>";
+        $XMLString .= "</content>";
+        $XMLString .= "</axis-app>";
+
+        $this->load->library('Crypto', ['license' => config_item('starplayer_license')]);
+
+        echo $this->crypto->encrypt($XMLString);
+        exit(0);
     }
 
     /**
-     * 모바일 무료강의
-     * @param array $params
+     * 무료강의, 보강강의
+     * @return CI_Output
      */
-    function getMobileFree($params = [])
+    function getMobileFree()
     {
+        $MemId = $this->_req("id");
+        $prodcode = $this->_req("p");
+        $unitidx = $this->_req("u");
+        $quility = $this->_req("q");
 
+        if(empty($prodcode) === true || empty($unitidx) === true){
+            return $this->StarplayerResult(true,'파라미터가 잘못 되었습니다.');
+        }
+
+        if(empty($MemId) === true){
+            return $this->StarplayerResult(true,'로그인해야 이용이 가능합니다.');
+            $MemId = "ANONYMOUS";
+        }
+
+        if(empty($quility) === true){
+            $quility = 'WD';
+        }
+
+        if(empty($quility) === true){
+            $quility = 'WD';
+        }
+
+        $data = $this->playerFModel->getLectureFree($prodcode, $unitidx);
+
+        if(empty($data) === true){
+            return $this->StarplayerResult(true,'강의정보가 없습니다.');
+        }
+
+        switch($quility){
+            case 'WD':
+                $filename = $data['wWD'];
+                break;
+
+            case 'HD':
+                $filename = $data['wHD'];
+                break;
+
+            case 'SD':
+                $filename = $data['wSD'];
+                break;
+
+            default:
+                $filename = $data['wWD'];
+                $quility = 'WD';
+                break;
+        }
+
+        // 동영상 경로가 없을때 다른 경로로 재생
+        if(empty($filename) === true){
+            $filename = $data['wWD'];
+            $quility = 'WD';
+        }
+        if(empty($filename) === true){
+            $filename = $data['wHD'];
+            $quility = 'HD';
+        }
+        if(empty($filename) === true){
+            $filename = $data['wSD'];
+            $quility = 'SD';
+        }
+
+        // 모든 경로가 존재 없을때
+        if(empty($filename) === true){
+            return $this->StarplayerResult(true,'강의정보가 없습니다.');
+        }
+
+        $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
+
+        // 무료강의 수강로그 저장
+        if($this->playerFModel->storeSampleLog([
+                'ProdCode' => $prodcode,
+                'UnitIdx' => $unitidx,
+                'Url' => $url,
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'Quility' => $quility
+            ]) == false){
+            return $this->StarplayerResult(true,'오류가 발생했습니다. 다시 시도해주십시요.');
+        };
+
+        $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
+        $XMLString .= "<axis-app>";
+        $XMLString .= "<security>true</security>"; // 보안설정
+        $XMLString .= "<action-type>streaming</action-type>"; // 스트리밍/다운로드
+        $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>"; // 회원 아이디
+        $XMLString .= "<content>";
+        $XMLString .= "<id><![CDATA[FREE]]></id>";
+        $XMLString .= "<url><![CDATA[".$url."]]></url>";
+        $XMLString .= "<title><![CDATA[".clean_string($data['wUnitName'])."]]></title>";
+        $XMLString .= "<position>0</position>";
+        $XMLString .= "</content>";
+        $XMLString .= "</axis-app>";
+
+        $this->load->library('Crypto', ['license' => config_item('starplayer_license')]);
+
+        echo $this->crypto->encrypt($XMLString);
+        exit(0);
     }
 
 
@@ -1691,6 +1887,11 @@ class Player extends \app\controllers\FrontController
             case 'download_begin_content':
                 // 다운로드 시작할때 + 동영상시작할때
 
+                // 샘플강의나 무료강의는 그냥 완료 처리
+                if($content_id == "SAMPLE" || $content_id == "FREE"){
+                    return $this->StarplayerResult(false,'재생권한확인완료');
+                }
+
                 // 재생가능한 강좌인지 체크
                 $lec = $this->checkOrderProduct($content_id, false);
 
@@ -1719,6 +1920,11 @@ class Player extends \app\controllers\FrontController
 
             case 'playing_content':
             case 'end_content':
+                // 샘플강의나 무료강의는 그냥 완료 처리
+                if($content_id == "SAMPLE" || $content_id == "FREE"){
+                    return $this->StarplayerResult(false,'재생권한확인완료');
+                }
+
                 // 수강 기록 업데이트
                 // 수강 기록은 무조건 업데이트 한다.
                 $this->mobileLog([

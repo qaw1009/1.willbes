@@ -1437,6 +1437,7 @@ class Player extends \app\controllers\FrontController
         $XMLString .= "<id><![CDATA[SAMPLE]]></id>";
         $XMLString .= "<url><![CDATA[".$url."]]></url>";
         $XMLString .= "<title><![CDATA[샘플강의 :  ".clean_string($data['wUnitName'])."]]></title>";
+        $XMLString .= "<position>0</position>";
         $XMLString .= "</content>";
         $XMLString .= "</axis-app>";
 
@@ -1540,6 +1541,7 @@ class Player extends \app\controllers\FrontController
         $XMLString .= "<id><![CDATA[FREE]]></id>";
         $XMLString .= "<url><![CDATA[".$url."]]></url>";
         $XMLString .= "<title><![CDATA[".clean_string($data['wUnitName'])."]]></title>";
+        $XMLString .= "<position>0</position>";
         $XMLString .= "</content>";
         $XMLString .= "</axis-app>";
 

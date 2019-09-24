@@ -71,17 +71,15 @@
         .tabcts iframe {width:980px; margin:0px auto 0; height:450px; border:#000 solid 0px;}
 
         .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
-        .skybanner ul li {padding-bottom:5px; text-align:right}
+        .skybanner ul li {padding-bottom:10px; text-align:right}
 
   </style>
 
  <div class="p_re evtContent NGR" id="evtContainer">
     <div class="skybanner">
-      <ul>
-          <!--<li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=261" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky.jpg"  title="군무원합격전략설명회" /></a></li>-->
-          <li><a href="https://pass.willbes.net/guide/show/cate/3024/pattern/gpgosi" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky2.jpg"  title="군무원시험정보" /></a></li>
-          {{--<li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky3.jpg"  title="통생자습반" /></a></li>--}}
-          <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3048/code/1291" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_pop_o.png"  title="국어 오훈" /></a></li>
+      <ul>          
+          <li><a href="https://pass.willbes.net/guide/show/cate/3024/pattern/gpgosi" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/05/1246_sky2.jpg"  title="군무원시험정보" /></a></li>         
+          <li><a href="https://pass.willbes.net/support/notice/show/cate/3024?board_idx=238742" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1246_sky.png"  title="군무원 추가채용" /></a></li>
       </ul>
     </div> 
 

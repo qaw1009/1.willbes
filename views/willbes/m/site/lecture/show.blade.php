@@ -38,8 +38,8 @@
                                             @if( empty($data['LectureSampleData']) === false)
                                                 @foreach($data['LectureSampleData'] as $sample_idx => $sample_row)
                                                     @if($loop->index == 1) {{--처음 1개만 노출--}}
-                                                        @if(empty($sample_row['wHD']) === false)<a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');" class="tBox black NSK">HIGH</a>@endif
-                                                        @if(empty($sample_row['wSD']) === false)<a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');" class="tBox gray NSK">LOW</a>@endif
+                                                        @if(empty($sample_row['wHD']) === false)<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$sample_row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="tBox black NSK">HIGH</a>@endif
+                                                        @if(empty($sample_row['wSD']) === false)<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$sample_row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="tBox gray NSK">LOW</a>@endif
                                                     @endif
                                                 @endforeach
                                             @endif

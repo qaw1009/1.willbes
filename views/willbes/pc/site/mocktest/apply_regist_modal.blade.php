@@ -106,7 +106,7 @@
                                     @endforeach
                                 </select>
                             @else
-                                선태과목 없음
+                                선택과목 없음
                             @endif
                         </td>
                     </tr>
@@ -199,19 +199,19 @@
 
                 if ( $("#mock_paper_subject_2").length > 0 ) {
                     if($("#mock_paper_subject_2").val() == '') {
-                        alert('선태과목1을 선택해 주십시오.');return;
+                        alert('선택과목1을 선택해 주십시오.');return;
                     }
                 }
 
                 if ( $("#mock_paper_subject_3").length > 0 ) {
                     if($("#mock_paper_subject_3").val() == '') {
-                        alert('선태과목2를 선택해 주십시오.');return;
+                        alert('선택과목2를 선택해 주십시오.');return;
                     }
                 }
 
                 if ( $("#mock_paper_subject_2").length > 0 && $("#mock_paper_subject_3").length > 0  ) {
                     if($("#mock_paper_subject_2").val() == $("#mock_paper_subject_3").val()) {
-                        alert('\'선태과목1\' 과 \'선택과목2\'가 같습니다. 다른 과목으로 선택해 주십시오.');return;
+                        alert('\'선택과목1\' 과 \'선택과목2\'가 같습니다. 다른 과목으로 선택해 주십시오.');return;
                     }
                 }
 

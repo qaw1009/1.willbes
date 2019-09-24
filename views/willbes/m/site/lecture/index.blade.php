@@ -209,11 +209,35 @@
                 goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
             });
 
-            // 장바구니, 바로결제 버튼 클릭
-            $regi_form.on('click', 'a[name="btn_cart"], a[name="btn_direct_pay"]', function() {
-                var $is_direct_pay = $(this).data('direct-pay');
-                addCartNDirectPay($regi_form, $is_direct_pay, 'Y','{{front_url('')}}');
-            });
+            @if($pattern == 'only')
+                {{--장바구니, 바로결제 버튼 클릭--}}
+                $regi_form.on('click', 'a[name="btn_cart"], a[name="btn_direct_pay"]', function() {
+                    var $is_direct_pay = $(this).data('direct-pay');
+                    addCartNDirectPay($regi_form, $is_direct_pay, 'Y','{{front_url('')}}');
+                });
+            @elseif($pattern == 'free')
+                {{-- 바로결제 버튼 클릭--}}
+                $regi_form.on('click', 'a[name="btn_direct_pay"]', function() {
+                    var $is_redirect = $(this).data('is-redirect');
+                    var $layer_type = $regi_form.find('.chk_books:checked').length < 1 ? 'pocketBox1' : 'pocketBox2';
+
+                    // 무료강좌 지급
+                    if (applyFreeLecture($regi_form) === true) {
+                        if ($is_redirect === 'N') {
+                            openWin($layer_type);
+                        } else {
+                            // 교재상품 바로결제
+                            if ($regi_form.find('.chk_books:checked').length > 0) {
+                                $regi_form.find('.chk_products').prop('checked', false);    // 무료강좌상품 체크해제
+                                {{--cartNDirectPay($regi_form, 'Y', 'Y');--}}
+                                addCartNDirectPay($regi_form, 'Y', 'Y','{{front_url('')}}');
+                            } else {
+                                goClassRoom();
+                            }
+                        }
+                    }
+                });
+            @endif
         });
 
         function goShow(prod_code, cate_code, pattern) {
@@ -241,6 +265,38 @@
             }
         }
 
-    </script>
+        {{--내 강의실 페이지 이동--}}
+        function goClassRoom() {
+            location.href = '{{ app_url('/m/classroom/on/list/ongoing', 'www') }}';
+        }
 
+        {{--무료강좌 신청--}}
+        function applyFreeLecture($regi_form) {
+            var $result = false;
+            var $confirm_msg = $regi_form.find('.chk_books:checked').length < 1 ? '해당 강좌를 신청하시겠습니까?' : '해당 강좌 및 교재를 신청하시겠습니까?';
+
+            if($regi_form.find('.chk_products:checked').length < 1) {
+                alert('강좌를 선택해 주세요.');
+                return false;
+            }
+
+            if (confirm($confirm_msg)) {
+                var $input_prod_code = {};
+                $regi_form.find('.chk_products:checked').each(function (idx) {
+                    $input_prod_code[idx] = $(this).val();
+                });
+
+                var url = '{{ front_url('/order/free') }}';
+                var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
+                    'prod_code': JSON.stringify($input_prod_code)
+                });
+                sendAjax(url, data, function (ret) {
+                    if (ret.ret_cd) {
+                        $result = true;
+                    }
+                }, showAlertError, false, 'POST');
+            }
+            return $result;
+        }
+    </script>
 @stop

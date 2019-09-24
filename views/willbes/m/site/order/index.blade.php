@@ -119,9 +119,9 @@
                         <tr>
                             <td class="w-data tx-left" colspan="2">
                                 <ul class="payLecList buyerLecList">
-                                    <li><strong>이름</strong> {{ $results['member']['MemName'] }}</li>
-                                    <li class="tx12"><strong>휴대폰번호</strong> {{ $results['member']['Phone'] }}</li>
-                                    <li><strong>이메일</strong> {{ $results['member']['Mail'] }}</li>
+                                    <li><strong>이름</strong>{{ $results['member']['MemName'] }}</li>
+                                    <li class="tx12"><strong>휴대폰번호</strong>{{ $results['member']['Phone'] }}</li>
+                                    <li><strong>이메일</strong>{{ $results['member']['Mail'] }}</li>
                                     <li class="tx-blue">구매자 정보는 회원가입 시 등록한 정보로 셋팅되며, 수정이 필요한 경우 회원 정보 페이지에서만 가능합니다.</li>
                                 </ul>
                             </td>

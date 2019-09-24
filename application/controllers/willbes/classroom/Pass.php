@@ -309,7 +309,7 @@ class Pass extends \app\controllers\FrontController
                 'GTE' => [
                     'RealLecEndDate' => $today
                 ]
-            ], $orderby);
+            ], []);
 
             $pkg = $pkg[0];
 

@@ -133,7 +133,7 @@
     </div>
     </form>
 
-    {{--<div class="x_panel">
+    <div class="x_panel">
         <div class="x_title">
             <div class="clearfix"></div>
         </div>
@@ -157,7 +157,7 @@
                 @endif
             </div>
         </div>
-    </div>--}}
+    </div>
 
     <!-- start rating -->
     <link href="/public/vendor/start-rating/starrating.css" rel="stylesheet">

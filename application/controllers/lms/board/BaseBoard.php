@@ -89,6 +89,7 @@ class BaseBoard extends \app\controllers\BaseController
             ],
             'ORG' => [
                 'LKB' => [
+                    'subLBrC.CateCode' => element('search_category', $search_datas),
                     'A.Title' => element('search_value', $search_datas),
                     'A.Content' => element('search_value', $search_datas),
                     'A.ReplyContent' => element('search_replay_value', $search_datas),
@@ -109,18 +110,11 @@ class BaseBoard extends \app\controllers\BaseController
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['A.VocCcd' => $ccd_voc]);
         }
 
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y',
-                'subLBrC.CateCode' => element('search_category', $search_datas)
-            ]
-        ];
-
         $arr_condition_previous = array_merge($arr_condition, ['LT'=>['A.BoardIdx' => $board_idx]]);
-        $data['previous'] = $this->boardModel->findBoardPrevious($arr_condition_previous, $sub_query_condition);
+        $data['previous'] = $this->boardModel->findBoardPrevious($arr_condition_previous);
 
         $arr_condition_next = array_merge($arr_condition, ['GT'=>['A.BoardIdx' => $board_idx]]);
-        $data['next'] = $this->boardModel->findBoardNext($arr_condition_next, $sub_query_condition);
+        $data['next'] = $this->boardModel->findBoardNext($arr_condition_next);
 
         return $data;
     }

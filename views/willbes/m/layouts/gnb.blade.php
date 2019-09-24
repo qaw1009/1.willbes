@@ -21,12 +21,12 @@
             </li>
             @if($__cfg['SiteCode'] == '2001')
                 <li class="ListBox">
-                    <div class="List NGEB"><a href="{{front_app_url('/package/index/pack/648002', 'police')}}">선택패지키</a></div>
+                    <div class="List NGEB"><a href="{{front_url('/package/index/pack/648002')}}">선택패지키</a></div>
                 </li>
             @endif
             @if($__cfg['SiteCode'] == '2003')
                 <li class="ListBox">
-                    <div class="List NGEB"><a href="{{front_app_url('/userPackage/show/cate/3019/prod-code/153368', 'pass')}}">DIY패키지</a></div>
+                    <div class="List NGEB"><a href="{{front_url('/userPackage/show/cate/3019/prod-code/153368')}}">DIY패키지</a></div>
                 </li>
             @endif
         @endif

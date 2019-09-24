@@ -686,24 +686,14 @@ class BoardModel extends WB_Model
     /**
      * 게시판 이전글
      * @param $arr_condition
-     * @param $sub_query_condition
      * @return mixed
      */
-    public function findBoardPrevious($arr_condition, $sub_query_condition)
+    public function findBoardPrevious($arr_condition)
     {
-        $sub_query_where = $this->_conn->makeWhere($sub_query_condition);
-        $sub_query_where = $sub_query_where->getMakeWhere(false);
-
         $column = 'A.BoardIdx, A.Title';
         $from = "
             FROM {$this->_table} AS A
-            LEFT JOIN (
-                SELECT subLBrC.BoardIdx
-                FROM {$this->_table_r_category} AS subLBrC
-                LEFT OUTER JOIN {$this->_table_sys_category} AS subLSC ON subLBrC.CateCode = subLSC.CateCode
-                {$sub_query_where}
-                GROUP BY subLBrC.BoardIdx
-            ) AS B ON A.BoardIdx = B.BoardIdx
+            LEFT OUTER JOIN {$this->_table_r_category} AS subLBrC ON A.BoardIdx = subLBrC.BoardIdx
             LEFT OUTER JOIN {$this->_table_member} AS MEM ON A.RegMemIdx = MEM.MemIdx
         ";
 
@@ -717,34 +707,41 @@ class BoardModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
+        // 캠퍼스 권한
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+            $where_campus->or_where('A.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('A.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('A.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+            $where_campus->group_end();
+        }
+        $where_campus->or_where('A.CampusCcd', "''", false);
+        $where_campus->or_where('A.CampusCcd IS NULL');
+        $where_campus->group_end();
+        $where_campus = $where_campus->getMakeWhere(true);
+
         $order_by_offset_limit = $this->_conn->makeOrderBy(['A.BoardIdx'=>'DESC'])->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
 
-        $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
+        $query = $this->_conn->query('select '.$column . $from .$where . $where_campus . $order_by_offset_limit);
         return $query->row_array();
     }
 
     /**
      * 게시판 다음글
      * @param $arr_condition
-     * @param $sub_query_condition
      * @return mixed
      */
-    public function findBoardNext($arr_condition, $sub_query_condition)
+    public function findBoardNext($arr_condition)
     {
-        $sub_query_where = $this->_conn->makeWhere($sub_query_condition);
-        $sub_query_where = $sub_query_where->getMakeWhere(false);
-
         $column = 'A.BoardIdx, A.Title';
         $from = "
             FROM {$this->_table} AS A
-            LEFT JOIN (
-                SELECT subLBrC.BoardIdx
-                FROM {$this->_table_r_category} AS subLBrC
-                LEFT OUTER JOIN {$this->_table_sys_category} AS subLSC ON subLBrC.CateCode = subLSC.CateCode
-                {$sub_query_where}
-                GROUP BY subLBrC.BoardIdx
-            ) AS B ON A.BoardIdx = B.BoardIdx
+            LEFT OUTER JOIN {$this->_table_r_category} AS subLBrC ON A.BoardIdx = subLBrC.BoardIdx
             LEFT OUTER JOIN {$this->_table_member} AS MEM ON A.RegMemIdx = MEM.MemIdx
         ";
 
@@ -758,10 +755,27 @@ class BoardModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
+        // 캠퍼스 권한
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+            $where_campus->or_where('A.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('A.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('A.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+            $where_campus->group_end();
+        }
+        $where_campus->or_where('A.CampusCcd', "''", false);
+        $where_campus->or_where('A.CampusCcd IS NULL');
+        $where_campus->group_end();
+        $where_campus = $where_campus->getMakeWhere(true);
+
         $order_by_offset_limit = $this->_conn->makeOrderBy(['A.BoardIdx'=>'ASC'])->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
 
-        $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
+        $query = $this->_conn->query('select '.$column . $from .$where . $where_campus . $order_by_offset_limit);
         return $query->row_array();
     }
 

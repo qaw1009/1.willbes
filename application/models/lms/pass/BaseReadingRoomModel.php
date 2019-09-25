@@ -1408,6 +1408,14 @@ class BaseReadingRoomModel extends WB_Model
             if ($this->_conn->set($data)->where('LrIdx', element('lr_idx', $input))->update($this->_table['readingRoom']) === false) {
                 throw new \Exception('문자발송여부 수정에 실패했습니다.');
             }
+
+            $data = [
+                'IsSms' => element('sms_is_use', $input),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            if ($this->_conn->set($data)->where('ProdCode', element('prod_code', $input))->where('IsStatus','Y')->update($this->_table['product']) === false) {
+                throw new \Exception('상품의 문자발송여부 수정에 실패했습니다.');
+            }
         } catch (\Exception $e) {
             return $e->getMessage();
         }

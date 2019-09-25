@@ -239,6 +239,7 @@ class Regist extends \app\controllers\BaseController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'lr_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
             ['field' => 'sms_is_use', 'label' => '문자발송여부', 'rules' => 'trim|required']
         ];
 

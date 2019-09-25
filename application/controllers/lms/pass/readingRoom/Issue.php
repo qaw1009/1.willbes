@@ -245,6 +245,16 @@ class Issue extends \app\controllers\BaseController
                         'BDT' => ['b.UseEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
                     ]);
                     break;
+                case "TS" :  //대여시작일 (주문번호기준)
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['f.UseStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+                case "TE" :  //대여종료일 (주문번호기준)
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['f.UseEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
             }
         }
         return $arr_condition;

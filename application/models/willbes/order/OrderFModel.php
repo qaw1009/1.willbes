@@ -416,7 +416,7 @@ class OrderFModel extends BaseOrderFModel
             $sess_cart_idx = $this->checkSessCartIdx(false);    // 장바구니 식별자 세션 체크
             $sess_order_no = $this->checkSessOrderNo(false);    // 주문번호 세션 체크
 
-            if ($sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no || isset($pay_results['total_pay_price']) === false) {
+            if (empty($sess_mem_idx) === true || $sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no || isset($pay_results['total_pay_price']) === false) {
                 throw new \Exception('잘못된 접근입니다.', _HTTP_BAD_REQUEST);
             }
 

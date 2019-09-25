@@ -63,8 +63,10 @@
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
                             <option value="P">결제완료일</option>
                             <option value="R">등록일</option>
-                            <option value="S">대여시작일</option>
-                            <option value="E">대여종료일</option>
+                            <option value="TS">대여시작일 (주문번호기준)</option>
+                            <option value="TE">대여종료일 (주문번호기준)</option>
+                            <option value="S">대여시작일 (월별기준)</option>
+                            <option value="E">대여종료일 (월별기준)</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">

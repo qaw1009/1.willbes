@@ -32,8 +32,8 @@
                                     </div>
                                     <div class="w-info tx-gray">
                                         <dl>
-                                            <dt class="h27"><strong>개강일</strong>{{$data['StudyStartDateYM']}}</dt><br/>
-                                            <dt class="h27"><strong>수강기간</strong><span class="tx-blue">{{$data['StudyPeriod']}}일</span>
+                                            <dt class="mb5"><strong>개강일</strong>{{$data['StudyStartDateYM']}}</dt><br/>
+                                            <dt class="mb5"><strong>수강기간</strong><span class="tx-blue">{{$data['StudyPeriod']}}일</span>
                                                 <span class="NSK ml10 nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span> </dt>
                                         </dl>
                                     </div>
@@ -80,8 +80,8 @@
                                 </div>
                                 <div class="w-info tx-gray">
                                     <dl>
-                                        <dt class="h27"><strong>강의수</strong><span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span>
-                                            <strong class="ml20">정상가</strong>
+                                        <dt class="mb5"><strong>강의수</strong><span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강@if($sub_row['wLectureProgressCcd'] != '105002' && empty($sub_row['wScheduleCount'])==false)/{{$sub_row['wScheduleCount']}}강@endif</span>
+                                            <strong class="ml10">정상가</strong>
                                             @if(empty($sub_row['ProdPriceData']) === false)
                                                 @foreach($sub_row['ProdPriceData'] as $price_row)
                                                     @if($loop -> index === 1)
@@ -89,8 +89,8 @@
                                                     @endif
                                                 @endforeach
                                             @endif
-                                            <span class="NSK ml20 nBox n1">{{ $sub_row['MultipleApply'] === "1" ? '무제한' : $sub_row['MultipleApply'].'배수'}}</span> <span class="NSK nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span></dt>
-                                        <dt class="h27">
+                                            <span class="NSK ml10 nBox n1">{{ $sub_row['MultipleApply'] === "1" ? '무제한' : $sub_row['MultipleApply'].'배수'}}</span> <span class="NSK nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span></dt>
+                                        <dt class="mb5">
                                             <strong>맛보기</strong>
                                             @if(empty($sub_row['LectureSampleData']) === false)
                                                 @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)

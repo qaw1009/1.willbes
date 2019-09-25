@@ -11,6 +11,7 @@
         {!! method_field($method) !!}
         <input type="hidden" name="mang_type" value="{{$mang_type}}">
         <input type="hidden" name="lr_idx" value="{{$lr_idx}}">
+        <input type="hidden" name="prod_code" value="{{ (empty($data['ProdCode']) === true ? '' : $data['ProdCode']) }}">
         <div class="x_panel">
             <div class="x_title">
                 <h2>{{$mang_title}}등록관리 정보</h2>
@@ -233,12 +234,11 @@
             });
 
             //문자발송 사용여부 저장
-            $('#btn_save_is_sms_use').click(function() {sms_is_use
+            $('#btn_save_is_sms_use').click(function() {
                 var sms_is_use = $regi_form.find('input[name="sms_is_use"]:checked').val();
                 if(!confirm('문자발송 사용여부를 '+( sms_is_use == 'Y' ? '사용' : '미사용' )+'으로 저장하시겠습니까?')) return false;
                 var _url = '{{ site_url("/pass/readingRoom/regist/storeSmsIsUse") }}' + getQueryString();
                 ajaxSubmit($regi_form, _url, function(ret) {
-                    console.log('ret', ret);
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         //location.replace('{{ site_url("/pass/readingRoom/regist/") }}' + getQueryString());

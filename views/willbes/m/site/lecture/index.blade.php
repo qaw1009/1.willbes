@@ -146,24 +146,28 @@
                                                             <input type="password" type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
                                                             <a href="#none" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');">확인</a>
                                                         </div>
+                                                        {{--
                                                         <div class="w-buy mt15">
                                                             <ul class="two">
                                                             </ul>
                                                         </div>
+                                                        --}}
                                                     @else
                                                         <ul>
                                                             @if(empty($row['ProdPriceData']) === false)
                                                                 @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                                <li class="mb10">
                                                                     @if($row['IsCart'] == 'Y' || $pattern == 'free')
-                                                                        <li><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif>
-                                                                    @endif<label class="pl10">{{ $price_row['SaleTypeCcdName'] }} : <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</label></li>
-                                                                @endforeach
+                                                                        <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif>
+                                                                    @endif<label>{{ $price_row['SaleTypeCcdName'] }} : <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</label>
+                                                                 </li>
+                                                                 @endforeach
                                                             @endif
                                                             @if($row['IsCart'] == 'N' && $pattern == 'only')
                                                                 <li class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</li>
                                                             @endif
                                                         </ul>
-                                                        <div class="w-buy mt15">
+                                                        <div class="w-buy">
                                                             <ul class="two">
                                                                 @if($pattern == 'only')
                                                                 <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>

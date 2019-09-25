@@ -111,7 +111,7 @@
                                 <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
                                 <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
                             </ul>
-                            <div class="w-buy mt15">       
+                            <div class="w-buy">       
                                 <ul class="two">
                                     <li><a href="#none" class="btn_gray">장바구니</a></li>
                                     <li><a href="#none" class="btn_blue">바로결제</a></li>
@@ -166,7 +166,7 @@
                                 <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
                                 <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
                             </ul>
-                            <div class="w-buy mt15">       
+                            <div class="w-buy">       
                                 <ul class="two">
                                     <li><a href="#none" class="btn_gray">장바구니</a></li>
                                     <li><a href="#none" class="btn_blue">바로결제</a></li>

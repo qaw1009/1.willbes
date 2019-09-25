@@ -1286,6 +1286,7 @@ body.memBody #Footer {
     font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 12px;
     line-height: 16px;
+    margin-bottom:10px;
 }
 .lecTable .w-info span {
     vertical-align: baseline;

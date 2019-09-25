@@ -281,6 +281,20 @@ class Pg_inisis_mobile extends CI_Driver
             // 전달 결과 파일로그 저장
             $this->_parent->saveFileLog('결제 승인결과 통보 데이터', $returns, 'debug', $log_type);
 
+            // 로컬서버가 아닐 경우 체크 ==> TODO : 서버 환경별 실행
+            if (ENVIRONMENT != 'local') {
+                // PG사 연동 IP 체크
+                if (in_array($returns['reg_ip'], $this->_config['allow_vbank_ip']) === false) {
+                    throw new \Exception('ERR_IP');
+                }
+            }
+
+            // 전달 결과 체크
+            if (empty($returns['P_TYPE']) === true || empty($returns['P_STATUS']) === true || empty($returns['P_OID']) === true
+                || empty($returns['P_MID']) === true || empty($returns['P_TID']) === true || empty($returns['P_AMT']) === true) {
+                throw new \Exception('ERR_PARAM');
+            }
+
             // 가상계좌 입금통보가 아니라면 처리사항 없음
             if (($returns['P_TYPE'] == 'VBANK' && $returns['P_STATUS'] != '02') || $returns['P_TYPE'] != 'VBANK') {
                 $this->_parent->saveFileLog('결제 승인결과 통보 처리 해당없음', null, 'debug', $log_type);
@@ -302,20 +316,6 @@ class Pg_inisis_mobile extends CI_Driver
 
             // 전달 결과 저장
             $log_idx = $this->_saveLog($returns, $log_type);
-
-            // 로컬서버가 아닐 경우 체크 ==> TODO : 서버 환경별 실행
-            if (ENVIRONMENT != 'local') {
-                // PG사 연동 IP 체크
-                if (in_array($returns['reg_ip'], $this->_config['allow_vbank_ip']) === false) {
-                    throw new \Exception('ERR_IP');
-                }
-            }
-
-            // 전달 결과 체크
-            if (empty($returns['P_OID']) === true || empty($returns['P_MID']) === true || empty($returns['P_TID']) === true
-                || empty($returns['P_AMT']) === true) {
-                throw new \Exception('ERR_PARAM');
-            }
 
             return [
                 'result' => true,
@@ -341,7 +341,7 @@ class Pg_inisis_mobile extends CI_Driver
                 'result' => false,
                 'result_msg' => $e->getMessage(),
                 'next_method' => '',
-                'order_no' => $returns['P_OID']
+                'order_no' => element('P_OID', $returns)
             ];
         }
     }

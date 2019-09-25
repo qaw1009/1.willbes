@@ -151,7 +151,7 @@
                                                             </ul>
                                                         </div>
                                                     @else
-                                                        <ul class="h30">
+                                                        <ul>
                                                             @if(empty($row['ProdPriceData']) === false)
                                                                 @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                                     @if($row['IsCart'] == 'Y' || $pattern == 'free')
@@ -160,7 +160,7 @@
                                                                 @endforeach
                                                             @endif
                                                             @if($row['IsCart'] == 'N' && $pattern == 'only')
-                                                                <br/><div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
+                                                                <li class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</li>
                                                             @endif
                                                         </ul>
                                                         <div class="w-buy mt15">

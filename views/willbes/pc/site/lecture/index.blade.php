@@ -283,7 +283,7 @@
                                             </dt>
                                         </dl>
                                         @if($row['IsCart'] == 'N' && $pattern == 'only')
-                                            <div class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</div>
+                                            <div class="tx-red c_both">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</div>
                                         @endif
                                     </td>
                                     <td class="w-notice p_re">

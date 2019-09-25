@@ -63,8 +63,8 @@
                 </ul>
             </div><!-- subSection02// -->
 
-            {{-- 대구,부산 캠퍼스 --}}
-            @if($__cfg['SiteCode'] == '2002' && ($campus_code == '605003' || $campus_code == '605004'))
+            {{-- 대구,부산,인천,광주 캠퍼스 --}}
+            @if(($__cfg['SiteCode'] == '2002' || $__cfg['SiteCode'] == '2004') && ($campus_code == '605003' || $campus_code == '605004' || $campus_code == '605005' || $campus_code == '605006'))
                 <div class="subSection02 mt20">
                     <ul>
                         @if(empty($arr_base['arr_main_banner']['캠퍼스_서브3']) === false)

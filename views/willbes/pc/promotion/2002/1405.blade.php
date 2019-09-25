@@ -235,12 +235,14 @@
                     {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
                 }
             }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
         }
 
         /*디데이카운트다운*/
         $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
+            dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
         });
     </script>
 

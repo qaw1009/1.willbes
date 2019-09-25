@@ -103,3 +103,11 @@
         </div>
     </div>
 @endif
+@if($__cfg['SiteCode'] == '2004')
+    {{-- 공무원 무료인강 --}}
+    <div id="topBannerLayer" class="gosi">
+        <div class="topBanner">
+            <a href="https://pass.willbes.net/pass/offPackage/index"><img src="https://static.willbes.net/public/images/promotion/main/1119-70-2004.gif" alt="10월 대개강"></a>
+        </div>
+    </div>
+@endif

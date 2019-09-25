@@ -18,7 +18,7 @@
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
             <div>
                 <div class="lec-info bd-none pt-zero">
-                    <h5>{{--<a href="#none" class="NGR">교재정보 전체보기</a>--}}</h5>
+                    <h5 class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.{{--<a href="#none" class="NGR">교재정보 전체보기</a>--}}</h5>
                     <div class="lec-choice-pkg">
                         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                             <colgroup>

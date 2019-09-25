@@ -13,7 +13,7 @@ body {
 }
 .goTopbtn {
     position: fixed;
-    bottom: 5px;
+    bottom: 55px;
     right:5px;
     width: 34px;
     height: 34px;
@@ -828,11 +828,11 @@ body.memBody #Footer {
     width: 100%;
     height: 45px;
     line-height: 44px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     color: #000;
     text-align: center;
-    letter-spacing: 0;
+    letter-spacing: -1px;
     border-bottom: 1px solid #e4e4e4;
 }
 .rowlineWrap li a img {
@@ -1590,7 +1590,7 @@ body.memBody #Footer {
     margin-top: 5px;
 }
 .passProfTabs .w-info strong {
-    display: inline-block; width: 60px;
+    display: inline-block; width: 55px;
 }
 
 .tBox {
@@ -2385,7 +2385,7 @@ body.memBody #Footer {
     margin:10px 0 15px;
 }
 .lec-info .w-info strong {
-    display: inline-block; width: 60px;
+    display: inline-block; margin-right:10px
 }
 
 .lec-info .w-book {

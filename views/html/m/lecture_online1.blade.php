@@ -107,9 +107,9 @@
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>
-                            <ul class="h30">
-                                <li><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                <li><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                            <ul>
+                                <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
                             </ul>
                             <div class="w-buy mt15">       
                                 <ul class="two">
@@ -137,16 +137,11 @@
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>
-                            <ul class="h30">
-                                <li><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                <li><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                            <ul>
+                                <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <li class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</li>
                             </ul>
-                            <div class="w-buy mt15">       
-                                <ul class="two">
-                                    <li><a href="#none" class="btn_gray">장바구니</a></li>
-                                    <li><a href="#none" class="btn_blue">바로결제</a></li>
-                                </ul> 
-                            </div>
                         </td>
                     </tr>
                     <tr class="replyList willbes-Open-Table">
@@ -167,9 +162,9 @@
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                             </dl>
-                            <ul class="h30">
-                                <li><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                <li><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                            <ul>
+                                <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
                             </ul>
                             <div class="w-buy mt15">       
                                 <ul class="two">

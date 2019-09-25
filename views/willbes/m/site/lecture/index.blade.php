@@ -151,7 +151,7 @@
                                                             </ul>
                                                         </div>
                                                     @else
-                                                        <ul class="h30">
+                                                        <ul>
                                                             @if(empty($row['ProdPriceData']) === false)
                                                                 @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                                     @if($row['IsCart'] == 'Y' || $pattern == 'free')

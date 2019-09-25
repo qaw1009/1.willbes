@@ -584,7 +584,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             
             LEFT JOIN (
             SELECT
-                a.LrIdx, a.MasterOrderIdx, a.NowOrderIdx, a.SerialNumber, a.UseEndDate,
+                a.LrIdx, a.MasterOrderIdx, a.NowOrderIdx, a.SerialNumber, a.UseStartDate, a.UseEndDate,
                 IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 7) ||
                     (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= -7), 'Y','N'
                 ) AS ExtensionType

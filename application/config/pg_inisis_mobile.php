@@ -36,7 +36,7 @@ $config = [
         '604003' => 'vbank',
         '604004' => 'mobile',
     ],
-    'allow_ip' => [
+    'allow_vbank_ip' => [
         '203.238.37.15', '118.129.210.25', '183.109.71.153'
     ],
     'receipt_url' => 'https://iniweb.inicis.com/mall/cr/cm/mCmReceipt_head.jsp?noMethod=1&noTid={{$tid$}}'

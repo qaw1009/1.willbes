@@ -5,8 +5,8 @@ class Payment extends \app\controllers\FrontController
 {
     protected $models = array('order/cartF', 'order/orderF');
     protected $helpers = array();
-    protected $auth_controller = true;
-    protected $auth_methods = array();
+    protected $auth_controller = false;
+    protected $auth_methods = array('request', 'returns', 'close', 'cancel');
 
     public function __construct()
     {
@@ -88,7 +88,7 @@ class Payment extends \app\controllers\FrontController
 
         // 장바구니 식별자 세션 체크
         $sess_cart_idx = $this->cartFModel->checkSessCartIdx(false);
-        if ($sess_cart_idx === false || empty(array_diff((array) $sess_cart_idx, element('cart_idx', $arr_input))) === false) {
+        if (empty($sess_mem_idx) === true || $sess_cart_idx === false || empty(array_diff((array) $sess_cart_idx, element('cart_idx', $arr_input))) === false) {
             return $this->json_error('잘못된 접근입니다.');
         }
 
@@ -194,39 +194,6 @@ class Payment extends \app\controllers\FrontController
                 // 결제오류
                 return $this->json_result(true, $result['ret_msg'], [], ['ret_url' => $this->_getErrUrl()]);
             }            
-        }
-    }
-
-    /**
-     * PG사 결제완료 (PC 전용, 테스트 완료 후 삭제 예정)
-     */
-    public function returnsBak()
-    {
-        // PG 드라이버 로드
-        $pg_object = $this->_loadPgDriver();
-
-        // 결제연동 결과 리턴
-        $pay_results = $this->pg->returnResult();
-        if ($pay_results['result'] === false) {
-            show_alert('결제연동 중 오류가 발생하였습니다.', site_url('/cart/index'), false);
-        }
-
-        // 결제 프로세스 실행
-        $result = $this->orderFModel->procOrder($pay_results);
-
-        // 수동 쿼리 로그 저장 (후킹 안됨)
-        $this->save_log_queries();
-
-        if ($result['ret_cd'] === true) {
-            // 결제완료 SMS 발송
-            $this->orderFModel->sendOrderSms($result['ret_data']);
-
-            // 결제완료 페이지 이동
-            redirect(front_url('/order/complete?order_no=' . $result['ret_data']));
-        } else {
-            // 결제취소
-            $this->pg->cancel(['order_no' => $pay_results['order_no'], 'mid' => $pay_results['mid'], 'tid' => $pay_results['tid'], 'cancel_reason' => $result['ret_msg']]);
-            show_alert($result['ret_msg'], site_url('/cart/index'), false);
         }
     }
 

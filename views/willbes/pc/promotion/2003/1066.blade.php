@@ -121,7 +121,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_05.png" title="학습비법패키지수강신청" usemap="#Map1066b" border="0" />
             <map name="Map1066b" id="Map1066b">
 			  <area shape="rect" coords="892,663,1071,712" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147104" target="_blank" alt="파이널" title="05.지방직" />
-			  <area shape="rect" coords="681,663,858,710" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/152604" target="_blank" alt="실전실력다지기" title="04.실전실력다지기" />
+			  <area shape="rect" coords="681,663,858,710" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" alt="실전실력다지기" title="04.실전실력다지기" />
 			  <area shape="rect" coords="475,663,644,710" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" alt="문제해결스킬업" title="03.문제해결스킬업" />
 			  <area shape="rect" coords="260,661,436,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="심화실전예비" title="02.심화,실전예비" />
 			  <area shape="rect" coords="56,662,227,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" alt="기본이론" title="01.기본이론" />

@@ -89,7 +89,7 @@
                                                     @endif
                                                 @endforeach
                                             @endif
-                                            <span class="NSK ml20 nBox n1">{{ $sub_row['MultipleApply'] === "1" ? '무제한' : $sub_row['MultipleApply'].'배수'}}</span> <span class="NSK nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span></dt>
+                                            <span class="NSK ml10 nBox n1">{{ $sub_row['MultipleApply'] === "1" ? '무제한' : $sub_row['MultipleApply'].'배수'}}</span> <span class="NSK nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span></dt>
                                         <dt class="mb5">
                                             <strong>맛보기</strong>
                                             @if(empty($sub_row['LectureSampleData']) === false)

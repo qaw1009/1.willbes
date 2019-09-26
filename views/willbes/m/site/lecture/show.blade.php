@@ -34,8 +34,8 @@
                                     @if($pattern == 'only')
                                         <br>
                                         <dt class="h27">
-                                            <strong>맛보기</strong>
                                             @if( empty($data['LectureSampleData']) === false)
+                                            <strong>맛보기</strong>
                                                 @foreach($data['LectureSampleData'] as $sample_idx => $sample_row)
                                                     @if($loop->index == 1) {{--처음 1개만 노출--}}
                                                         @if(empty($sample_row['wHD']) === false)<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$sample_row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="tBox black NSK">HIGH</a>@endif

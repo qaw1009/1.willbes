@@ -37,7 +37,7 @@
         }
 
         .wb_cts03 {background:#fff; width:1200px; margin:0 auto; padding-bottom:100px}
-        .wb_cts03 ul {margin-bottom:30px}
+        .wb_cts03 ul {margin-bottom:30px;padding-top:40px;width:1120px;margin:0 auto;}
         .wb_cts03 li {display:inline; float:left; width:50%}
         .wb_cts03 li a {display:block; text-align:center; font-size:24px; padding:24px 0; font-weight:bold; color:#888787; background:#f4f4f4; border:1px solid #e5e5e5; border-bottom:1px solid #fff; margin-right:10px}
         .wb_cts03 li a:hover,

@@ -60,7 +60,7 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1066_01.jpg" usemap="#Map" title="" border="0" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="526,836,786,956" href="http://play.afreecatv.com/DHLAWRENCE31" target="_blank" />
+                <area shape="rect" coords="526,836,786,956" href="https://www.instagram.com/zenithenglishhan" target="_blank" />
                 <area shape="rect" coords="793,834,1048,955" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" />
             </map>
         </div>

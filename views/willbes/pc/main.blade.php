@@ -1,3 +1,12 @@
+<style>
+.main .Act1 .ProcessBox ul li.fisrt a,.main .Act1 .ProcessBox ul li.second a{
+  display:inline;padding:0;    
+}
+.main .Act1 .ProcessBox ul li.fisrt,.main .Act1 .ProcessBox ul li.second{
+    display:block;
+    padding:25px 0 0 35px;
+} 
+</style>
 @extends('willbes.pc.layouts.master')
 
 @section('content')
@@ -13,28 +22,33 @@
                 <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
                 <div class="ProcessBox">
                     <ul>
-                        <li>
-                            <a href="{{ app_url('/home/index/cate/3019', 'pass') }}" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
-                                </div>
-                                <div class="wTxt">
-                                    9급/7급/법원/소방/기술직 명가<br/>
-                                    <strong>윌비스 고시학원</strong>
-                                </div>
-                            </a>
+                        <li class="fisrt">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
+                            </div>
+                            <div class="wTxt">
+                                <span><a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">[9급]</a></span>/
+                                <span><a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">[7급]</a></span>/
+                                <span><a href="https://pass.willbes.net/home/index/cate/3035" target="_blank">[법원]</a></span>/
+                                <span><a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">[소방]</a></span>/
+                                <span><a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">[기술직] 명가</a></span>
+                                <br/>
+                                <strong>윌비스 고시학원</strong>
+                            </div>
                         </li>
-                        <li>
-                            <a href="{{ app_url('/home/index/cate/3001', 'police') }}" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
-                                </div>
-                                <div class="wTxt">
-                                    1등* 일반경찰/경행/승진/해경<br/>
-                                    <strong>윌비스 신광은경찰학원</strong><br/>
-                                    <div class="sTxt">* 2019브랜드고객충성도대상 경찰공무원부문 1위 기준</div> 
-                                </div>
-                            </a>
+                        <li class="second">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
+                            </div>
+                            <div class="wTxt">
+                                1등*<span><a href="https://police.willbes.net/home/index/cate/3001" target="_blank">[일반경찰]</a></span>/
+                                <span><a href="https://police.willbes.net/home/index/cate/3002" target="_blank">[경행]</a></span>/
+                                <span><a href="https://police.willbes.net/home/index/cate/3006" target="_blank">[승진]</a></span>/
+                                <span><a href="https://police.willbes.net/home/index/cate/3007" target="_blank">[해경]</a></span>
+                                <br/>
+                                <strong>윌비스 신광은경찰학원</strong><br/>
+                                <div class="sTxt">* 2019브랜드고객충성도대상 경찰공무원부문 1위 기준</div> 
+                            </div> 
                         </li>
                         <li>
                             <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">

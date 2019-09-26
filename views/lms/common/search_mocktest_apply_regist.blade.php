@@ -184,10 +184,17 @@
         $(document).ready(function() {
             //최종선택
             $('#btn_mocktest_apply_regist_success').click(function() {
-                var add_point, subject_ess, subject_sub = '';
+                var add_point, subject_ess = '', subject_sub = '';
                 var html = '';
                 add_point = $(":input:radio[name=AddPoint]:checked").val();
-                subject_ess = $("input[name='subject_ess[]']").val();
+
+                //필수과목데이터 가공처리
+                $('input[name="subject_ess[]"]').each(function() {
+                    subject_ess += $(this).val()+',';
+                });
+                subject_ess = subject_ess.substr(0, subject_ess.length -1);
+
+                //선택과목데이터 가공처리
                 $('select[name="subject_sub[]"] option:selected').each(function() {
                     subject_sub += $(this).val()+',';
                 });
@@ -224,11 +231,11 @@
                 html += '<input type="hidden" class="mock_{{$prod_code}}" id="mock_take_form_{{$prod_code}}" name="mock_take_form[]" value="'+$('#TakeForm').val()+'">';
                 html += '<input type="hidden" class="mock_{{$prod_code}}" id="mock_take_part_{{$prod_code}}" name="mock_take_part[]" value="'+$('#TakeMockPart').val()+'">';
                 html += '<input type="hidden" class="mock_{{$prod_code}}" id="mock_take_area_{{$prod_code}}" name="mock_take_area[]" value="'+$('#TakeArea').val()+'">';
-
                 html += '<input type="hidden" class="mock_{{$prod_code}}" id="mock_subject_ess_{{$prod_code}}" name="mock_subject_ess[]" value="'+subject_ess+'">';
                 html += '<input type="hidden" class="mock_{{$prod_code}}" id="mock_subject_sub_{{$prod_code}}" name="mock_subject_sub[]" value="'+subject_sub+'">';
                 html += '<input type="hidden" class="mock_{{$prod_code}}" id="mock_add_point_{{$prod_code}}" name="mock_add_point[]" value="'+add_point+'">';
 
+                $parent_regi_form.find('input[id="mock_prod_code_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="mock_take_form_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="mock_take_part_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="mock_take_area_{{$prod_code}}"]').remove();

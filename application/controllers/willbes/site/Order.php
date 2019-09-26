@@ -81,13 +81,13 @@ class Order extends \app\controllers\FrontController
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $order_no = $this->_req('order_no');
         if (empty($order_no) === true) {
-            show_alert('필수 파라미터 오류입니다.', site_url('/cart/index'), false);
+            show_alert('필수 파라미터 오류입니다.', front_url('/cart/index'), false);
         }
         
         // 주문정보 조회
         $results['order'] = $this->orderListFModel->findOrderByOrderNo($order_no, $sess_mem_idx);
         if (empty($results['order']) === true) {
-            show_alert('주문정보 데이터가 없습니다.', site_url('/cart/index'), false);
+            show_alert('주문정보 데이터가 없습니다.', front_url('/cart/index'), false);
         }
 
         $order_idx = $results['order']['OrderIdx']; // 주문식별자

@@ -27,11 +27,11 @@
                                 <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
                             </div>
                             <div class="wTxt">
-                                <span><a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">9급</a></span>/
-                                <span><a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">7급</a></span>/
-                                <span><a href="https://pass.willbes.net/home/index/cate/3035" target="_blank">법원</a></span>/
-                                <span><a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">소방</a></span>/
-                                <span><a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">기술직 명가</a></span>
+                                <span><a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">[9급]</a></span>/
+                                <span><a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">[7급]</a></span>/
+                                <span><a href="https://pass.willbes.net/home/index/cate/3035" target="_blank">[법원]</a></span>/
+                                <span><a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">[소방]</a></span>/
+                                <span><a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">[기술직] 명가</a></span>
                                 <br/>
                                 <strong>윌비스 고시학원</strong>
                             </div>
@@ -41,10 +41,10 @@
                                 <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
                             </div>
                             <div class="wTxt">
-                                1등*<span><a href="https://police.willbes.net/home/index/cate/3001" target="_blank">일반경찰</a></span>/
-                                <span><a href="https://police.willbes.net/home/index/cate/3002" target="_blank">경행</a></span>/
-                                <span><a href="https://police.willbes.net/home/index/cate/3006" target="_blank">승진</a></span>/
-                                <span><a href="https://police.willbes.net/home/index/cate/3007" target="_blank">해경</a></span>
+                                1등*<span><a href="https://police.willbes.net/home/index/cate/3001" target="_blank">[일반경찰]</a></span>/
+                                <span><a href="https://police.willbes.net/home/index/cate/3002" target="_blank">[경행]</a></span>/
+                                <span><a href="https://police.willbes.net/home/index/cate/3006" target="_blank">[승진]</a></span>/
+                                <span><a href="https://police.willbes.net/home/index/cate/3007" target="_blank">[해경]</a></span>
                                 <br/>
                                 <strong>윌비스 신광은경찰학원</strong><br/>
                                 <div class="sTxt">* 2019브랜드고객충성도대상 경찰공무원부문 1위 기준</div> 

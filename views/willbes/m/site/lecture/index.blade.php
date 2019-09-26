@@ -164,15 +164,17 @@
                                                                  @endforeach
                                                             @endif
                                                             @if($row['IsCart'] == 'N' && $pattern == 'only')
-                                                                <li class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</li>
+                                                                <li class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해 주세요.</li>
                                                             @endif
                                                         </ul>
                                                         <div class="w-buy">
                                                             <ul class="two">
-                                                                @if($pattern == 'only')
-                                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                                @if($row['IsCart'] == 'Y')
+                                                                    @if($pattern == 'only')
+                                                                    <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                                    @endif
+                                                                    <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                                                 @endif
-                                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                                             </ul>
                                                         </div>
                                                     @endif

@@ -91,8 +91,8 @@
                                             @endif
                                             <span class="NSK ml10 nBox n1">{{ $sub_row['MultipleApply'] === "1" ? '무제한' : $sub_row['MultipleApply'].'배수'}}</span> <span class="NSK nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span></dt>
                                         <dt class="mb5">
-                                            <strong>맛보기</strong>
                                             @if(empty($sub_row['LectureSampleData']) === false)
+                                                <strong>맛보기</strong>
                                                 @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)
                                                     @if($loop->index == 1) {{--처음 1개만 노출--}}
                                                         @if(empty($sample_row['wHD']) === false)<a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$sample_row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="tBox black NSK">HIGH</a>@endif

@@ -39,7 +39,7 @@
                                 <br/>
                                 <strong>윌비스 신광은경찰학원</strong><br/>
                                 <div class="sTxt">* 2019브랜드고객충성도대상 경찰공무원부문 1위 기준</div> 
-                            </div>
+                            </div> 
                         </li>
                         <li>
                             <a href="http://wpa.willbes.net/main_spo.asp?category_id=912" target="_blank">

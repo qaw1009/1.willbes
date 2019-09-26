@@ -301,7 +301,7 @@ class Pg_inisis_mobile extends CI_Driver
                 $this->depositReturn(true);
 
                 return [
-                    'result' => true,
+                    'result' => false,
                     'result_msg' => '해당없음',
                     'next_method' => '',
                     'order_no' => $returns['P_OID']

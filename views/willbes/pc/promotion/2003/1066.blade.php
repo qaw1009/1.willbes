@@ -40,6 +40,7 @@
             top:200px;
             right:0;
             width:290px;
+            z-index:11;
         }
        
     </style>

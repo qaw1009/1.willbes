@@ -11272,8 +11272,8 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .list-drop-Box-1120 {
     top: 38px;
-    left: 50%;
-    margin-left: -457px;
+    left:50%;
+    margin-left: -587px;
     width: 1120px;
     padding: 20px;
     text-align: left;
@@ -11304,7 +11304,6 @@ table.acadlecInfoPackageTable tr.Top td {
     display: inline-block; float: left; margin-right:10px;
 }
 .list-drop-Box-1120 li:last-child {margin-bottom:20px !important;}
-.list-drop-Box-1120 li a:hover {background:#e1eafc;}
 .list-drop-Box-1120 li:after,
 .list-drop-Box-1120:after { content:""; display: block; clear:both}
 
@@ -11312,18 +11311,18 @@ table.acadlecInfoPackageTable tr.Top td {
     width:12.5%; float: left;
 }
 .menu-List > li:nth-child(2) .list-drop-Box-1120 {
-    top: 38px;
-    left: -75px;
+    left: 50%;
+    margin-left:-690px;
 }
 .menu-List > li:nth-child(2) .drop-Box-1120:before {
-    left: 560px; 
+    left: 50%; 
 }
 .menu-List > li:nth-child(2) .drop-Box-1120:after {
-    left: 560px;
+    left: 50%; 
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .menu-List > li:nth-child(2) .list-drop-Box-1120 {
         top: 38px;
-        left: -83px;
+        left: 50%;
     }
 }

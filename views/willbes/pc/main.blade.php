@@ -25,7 +25,7 @@
                                 <span><a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">[기술직]</a></span>
                                 <span><a href="https://pass.willbes.net/home/index/cate/3024" target="_blank">[군무원]</a></span>
                                 <br/>
-                                <strong>윌비스 고시학원</strong>
+                                <strong>윌비스 공무원</strong>
                             </div>
                         </li>
                         <li class="second">

@@ -547,6 +547,7 @@ ul.bar_tabs > li.active {
 ul.bar_tabs > li.active a {
     padding-top : 11px !important;
     padding-bottom : 11px !important;
+    color:#ff0000 !important;
 }
 ul.bar_tabs > li.active a, ul.bar_tabs > li.active a:focus,
 ul.bar_tabs > li.active a:hover {

@@ -1,12 +1,3 @@
-<style>
-.main .Act1 .ProcessBox ul li.fisrt a,.main .Act1 .ProcessBox ul li.second a{
-  display:inline;padding:0;    
-}
-.main .Act1 .ProcessBox ul li.fisrt,.main .Act1 .ProcessBox ul li.second{
-    display:block;
-    padding:25px 0 0 35px;
-} 
-</style>
 @extends('willbes.pc.layouts.master')
 
 @section('content')

@@ -66,4 +66,67 @@ class SearchMockTest extends \app\controllers\BaseController
             'data' => $list
         ]);
     }
+
+    /**
+     * 모의고사 신정정보입력 팝업창
+     * @param array $params
+     */
+    public function createApplyRegistModal($params = [])
+    {
+        $mem_idx = $this->_reqG('mem_idx');
+        if (empty($params) === true) {
+            show_error('모의고사 코드가 존재하지 않습니다.');
+        }
+
+        if (empty($mem_idx) === true) {
+            show_error('회원는 필수입니다.');
+        }
+
+        $prod_code = $params[0];
+        $arr_condition = [
+            'EQ' => [
+                'PD.ProdCode' => $prod_code,
+                'PD.IsUse' => 'Y'
+            ]
+        ];
+
+        $data = $this->searchMockTestModel->listMockTest(false, $arr_condition, 1, 0, ['PD.ProdCode' => 'desc'], $mem_idx);
+        if (empty($data) === true) {
+            show_error('조회된 모의고사가 없습니다.');
+        }
+        $mock_data = $data[0];
+
+        //내결제이력 (0보다 크면 이력 존재)
+        $order_prod_idx = $mock_data['OrderProdIdx'];
+
+        //전체결제이력 (학원응시일 경우 접수마감인원 체크)
+        $all_pay_check =  $mock_data['AllPayCnt'];
+
+        //직렬 추출
+        $mock_part = $this->searchMockTestModel->listMockTestMockPart($prod_code);
+
+        //응시지역 추출
+        $mock_area = $this->searchMockTestModel->listMockTestArea($prod_code);
+
+        //필수 과목정보 추출
+        $subject_ess = $this->searchMockTestModel->listMockTestSubject($prod_code, 'E');
+
+        //선택 과목정보 추출
+        $subject_sub = $this->searchMockTestModel->listMockTestSubject($prod_code, 'S');
+
+        //가산점 추출
+        $mock_addpoint = $this->searchMockTestModel->listMockTestAddPoint($prod_code);
+
+        $this->load->view("common/search_mocktest_apply_regist", [
+            'prod_code' => $prod_code,
+            'all_pay_check' => $all_pay_check,
+            'order_prod_idx' => $order_prod_idx,
+            'mock_data' => $mock_data,
+            'mock_part' => $mock_part,
+            'mock_area' => $mock_area,
+            'subject_ess' => $subject_ess,
+            'subject_sub' => $subject_sub,
+            'mock_addpoint' => $mock_addpoint,
+        ]);
+    }
 }

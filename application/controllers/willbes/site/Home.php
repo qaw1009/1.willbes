@@ -98,7 +98,7 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus'] = $arr_campus;
-            $data['notice'] = $this->_boardNotice(5);
+            $data['notice'] = $this->_boardNotice(5, null, ['605999']);
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['onAir'] = $this->_onAir();

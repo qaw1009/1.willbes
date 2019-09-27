@@ -388,7 +388,7 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#none">PASS</a>
+                    <a href="#none">수강신청</a>
                     <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120">
                         <div class="lec-drop-Box">
                             <h5>9급</h5>

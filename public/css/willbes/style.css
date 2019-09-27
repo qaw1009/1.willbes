@@ -1022,8 +1022,8 @@ table.auTable tr td {
 }
 .drop-Box ul li a {
     display: block;
-    width: 100%;
-    height: 100%;
+    /*width: 100%;
+    height: 100%;*/
 }
 
 /* Header : left-drop-Box */
@@ -1979,6 +1979,7 @@ table.auTable tr td {
     text-align: left;
     z-index: 9999;
 }
+
 .list-drop-Box ul li {
     line-height: 22px;
     margin: 0 !important;
@@ -11243,4 +11244,86 @@ table.acadlecInfoPackageTable tr.Top td {
 .mainBottomBn div span {display:block; position:absolute; width:19px; height:19px; top:-9px; right:50%; margin-right:-700px; cursor: pointer;
     background: url(https://static.willbes.net/public/images/promotion/common/mainBottom_btnclose.png) no-repeat right center;
     font-size:0; text-indent: -9999px; z-index: 1;    
+}
+
+/*공무원 온라인 교수진소개*/
+.drop-Box-1120 {
+    display: none;
+    position: absolute;
+    background: #fff;
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #acacac;
+    box-shadow: 5px 5px 25px #e1e1e1;
+}
+.drop-Box-1120:before {
+    top: -12px;
+    left: 458px;
+    margin-left: -6px;
+    border-color: transparent transparent #acacac;
+    border-width: 6px;
+}
+.drop-Box-1120:after {
+    top: -10px;
+    left: 458px;
+    margin-left: -5px;
+    border-color: transparent transparent #fff;
+    border-width: 5px;
+}
+.list-drop-Box-1120 {
+    top: 38px;
+    left: 50%;
+    margin-left: -457px;
+    width: 1120px;
+    padding: 20px;
+    text-align: left;
+    z-index: 9999;
+}
+.list-drop-Box-1120 .prof-drop-Box {
+    width:33.33333%; float: left;
+}
+.list-drop-Box-1120 h5 {position:relative; padding-left:10px; clear:both;}
+.list-drop-Box-1120 h5:before {
+    background: #2784d2 none repeat scroll 0 0; 
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 16px;
+    width: 6px;
+}
+.list-drop-Box-1120 li {
+    font-size: 13px !important;
+}
+.list-drop-Box-1120 li span {
+    color:#2784d2; float:left; font-weight: normal; margin-right:10px;
+}
+.list-drop-Box-1120 li a {
+    display: inline-block; float: left; margin-right:10px;
+}
+.list-drop-Box-1120 li:last-child {margin-bottom:20px !important;}
+.list-drop-Box-1120 li a:hover {background:#e1eafc;}
+.list-drop-Box-1120 li:after,
+.list-drop-Box-1120:after { content:""; display: block; clear:both}
+
+.list-drop-Box-1120 .lec-drop-Box {
+    width:12.5%; float: left;
+}
+.menu-List > li:nth-child(2) .list-drop-Box-1120 {
+    top: 38px;
+    left: -75px;
+}
+.menu-List > li:nth-child(2) .drop-Box-1120:before {
+    left: 560px; 
+}
+.menu-List > li:nth-child(2) .drop-Box-1120:after {
+    left: 560px;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .menu-List > li:nth-child(2) .list-drop-Box-1120 {
+        top: 38px;
+        left: -83px;
+    }
 }

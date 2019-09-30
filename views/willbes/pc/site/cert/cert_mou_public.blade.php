@@ -52,6 +52,12 @@
                     <th><strong>형법,형사소송법 단과강의 50% 할인</strong></th>
                     <th><strong>단과강의 40% 할인 </strong></th>
                 </tr>
+                {{--
+                <tr>
+                    <th><strong>충남지방경찰청</strong></th>
+                    <th><strong>20~40% 할인 </strong></th>
+                </tr>
+                --}}
                 </tbody>
             </table>
             <ul>

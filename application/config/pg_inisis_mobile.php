@@ -12,7 +12,7 @@ $config = [
         'return_method' => 'nothingMobile',
         'cancel_method' => 'nothingMobile',
         'card_quotabase' => '02:03:04:05:06:07:08:09:10:11:12',
-        'option' => 'twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N&twotrs_bank=Y&ismart_use_sign=Y&vbank_receipt=Y&bank_receipt=N&apprun_check=Y',
+        'option' => 'twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N&twotrs_bank=Y&ismart_use_sign=Y&vbank_receipt=Y&apprun_check=Y',
         'request_url' => 'https://mobile.inicis.com/smart/'
     ],
     'real' => [
@@ -24,7 +24,7 @@ $config = [
         'return_method' => 'nothingMobile',
         'cancel_method' => 'nothingMobile',
         'card_quotabase' => '02:03:04:05:06:07:08:09:10:11:12',
-        'option' => 'twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N&twotrs_bank=Y&ismart_use_sign=Y&vbank_receipt=Y&bank_receipt=N&apprun_check=Y',
+        'option' => 'twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N&twotrs_bank=Y&ismart_use_sign=Y&vbank_receipt=Y&apprun_check=Y',
         'request_url' => 'https://mobile.inicis.com/smart/'
     ],
     'view_path' => [

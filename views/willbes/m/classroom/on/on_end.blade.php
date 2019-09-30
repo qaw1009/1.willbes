@@ -164,7 +164,7 @@
                         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                             <tbody>
                             <tr class="bg-light-blue">
-                                <td class="w-data tx-center">수강대기중인 패키지가 없습니다.</td>
+                                <td class="w-data tx-center">수강종료된 패키지 강좌가 없습니다.</td>
                             </tr>
                             </tbody>
                         </table>

@@ -25,8 +25,8 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">3순환 - 반복, 그리고 이해를 도모하라!</a></li>
-                    <li><a href="#tab02">2순환 – 충분한 이해를 위한 이론 완성</a></li>
+                    <li><a href="#tab01">4순환 – 객관식 문제해결 능력을 확인하다</a></li>
+                    <li><a href="#tab02">3순환 - 반복, 그리고 이해를 도모하라!</a></li>
                 </ul>
                 <div id="tab01">
                     <img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tit01_01.jpg" alt="기출된, 그리고 출제 가능성 있는 모든 내용 정리">
@@ -66,8 +66,8 @@
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1089') }}">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1241') }}">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1273') }}">강좌 바로가기</a></li>
-                    <li><a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?subject_idx=&course_idx=1055">강좌 바로가기</a></li>
-                    <li><a href="#none">개강 준비중</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3035/code/1381">강좌 바로가기</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3035/code/1415">강좌 바로가기</a></li>
                     <li><a href="#none">개강 준비중</a></li>
                 </ul>
             </div>

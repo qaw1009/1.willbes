@@ -29,13 +29,13 @@
                         - 일시정지(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>
                         - 1회 일시정지 기간은 수강 잔여일을 초과할 수 없으며, <span class="tx-red">일시 정지기간의 총합은 수강기간을 초과할 수 없습니다.</span><br/>
                         - 일시정지된 강좌는 일시정지강좌에서 확인할 수 있습니다.<br/>
-                        <!--
+                        {{--
                         <div class="willbes-Txt-Tit NG mt30">· 수강연장신청</div>
                         - 수강연장된 강의는 일시정지를 신청할 수 없습니다.<br/>
                         - 수강연장(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지</span> 연장이 가능합니다. (단, PC에서만 신청 가능)<br/>
                         - <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span><br/>
                         - 수강연장은 수강종료일 전까지만 신청이 가능하며 5일 단위(5일,10일,15일등)로 신청할 수 있습니다.<br/>
-                        -->
+                        --}}
                     </div>
 
                     <div class="willbes-Lec-Selected NG c_both tx-gray">
@@ -46,14 +46,15 @@
                                     <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
                                 @endforeach
                             </select>
-                        <!--
+                            {{--
                             <select id="course_ccd" name="course_ccd" title="process" class="seleProcess width21p">
                                 <option selected="selected" value="">과정</option>
                                 @foreach($course_arr as $row )
                             <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                                 @endforeach
                                 </select>
--->
+                               --}}
+
                             <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec width21p ml1p">
                                 <option selected="selected" value="">과목</option>
                                 @foreach($subject_arr as $row )
@@ -103,7 +104,7 @@
                                                 <li class="btn_white"><a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">일시정지({{$row['PauseCount']}})</a></li>
                                         @endif
 
-                                        <!--
+                                        {{--
                                             @if($row['IsExten'] == 'N')
                                             <li class="btn_blue"><a>수강연장불가</a></li>
                                             @elseif($row['RebuyCount'] >= $row['ExtenNum'])
@@ -111,7 +112,7 @@
                                             @else
                                             <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">수강연장({{$row['RebuyCount']}})</a></li>
                                             @endif
-                                                -->
+                                        --}}
                                         </ul>
                                     </div>
                                     <div class="w-line">-</div>

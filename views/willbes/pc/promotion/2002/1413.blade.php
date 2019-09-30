@@ -44,7 +44,7 @@
         .evt03 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
         .evt03 .NGEBS{font-weight:bold;}
 
-        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1363_04_bg.jpg) no-repeat center top;}
+        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1413_04_bg.jpg) no-repeat center top;}
 
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>
@@ -165,7 +165,7 @@
                     </div>
             </div>
             <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2019/08/1363_04.jpg" title="학원 위치"/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1413_04.jpg" title="학원 위치"/>
             </div>
 
         </form>

@@ -42,13 +42,26 @@ class PayLog extends \app\controllers\BaseController
         $arr_condition = [
             'BDT' => ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
             'EQ' => [
-                'PgMid' => $this->_reqP('search_pg_mid'),
-                'PayType' => $this->_reqP('search_pay_type')
+                'PgMid' => $this->_reqP('search_pg_mid')
             ],
             'LKB' => [
                 $this->_reqP('search_keyword') => $this->_reqP('search_value')
             ]
         ];
+
+        // 연동구분
+        $search_pay_type = $this->_reqP('search_pay_type');
+        if (empty($search_pay_type) === false) {
+            if ($log_type == 'pay') {
+                $arr_condition['EQ']['PayType'] = $search_pay_type;
+            } elseif ($log_type == 'deposit') {
+                if ($search_pay_type == 'PC') {
+                    $arr_condition['RAW']['MsgSeq not like'] = ' "M2%"';
+                } elseif ($search_pay_type == 'MO') {
+                    $arr_condition['RAW']['MsgSeq like'] = ' "M2%"';
+                }
+            }
+        }
 
         // 결제/취소 결제방법 조건
         $search_pay_method = $this->_reqP('search_pay_method');
@@ -65,15 +78,15 @@ class PayLog extends \app\controllers\BaseController
         if (empty($search_is_result) === false) {
             if ($search_is_result == 'Y') {
                 if ($log_type == 'pay') {
-                    $arr_condition['IN'] = ['ResultCode' => ['0000', '00']];
+                    $arr_condition['IN']['ResultCode'] = ['0000', '00'];
                 } elseif ($log_type == 'deposit') {
-                    $arr_condition['RAW'] = ['ErrorMsg is ' => 'null'];
+                    $arr_condition['RAW']['ErrorMsg is'] = ' null';
                 }
             } else {
                 if ($log_type == 'pay') {
-                    $arr_condition['NOTIN'] = ['ResultCode' => ['0000', '00']];
+                    $arr_condition['NOTIN']['ResultCode'] = ['0000', '00'];
                 } elseif ($log_type == 'deposit') {
-                    $arr_condition['RAW'] = ['ErrorMsg is ' => 'not null'];
+                    $arr_condition['RAW']['ErrorMsg is'] = ' not null';
                 }
             }
         }

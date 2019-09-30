@@ -29,6 +29,11 @@
                             <option value="willbes515">교재(willbes515)</option>
                             <option value="INIpayTest">테스트상점아이디</option>
                         </select>
+                        <select class="form-control mr-10" id="search_pay_type" name="search_pay_type">
+                            <option value="">연동구분</option>
+                            <option value="PC">PC</option>
+                            <option value="MO">모바일</option>
+                        </select>
                         <select class="form-control mr-10" id="search_is_result" name="search_is_result">
                             <option value="">연동성공여부</option>
                             <option value="Y">연동성공</option>

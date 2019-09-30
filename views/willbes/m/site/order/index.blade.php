@@ -608,7 +608,7 @@
             }
         });
 
-        // 주소찾기 버튼 클릭
+        // 주소찾기 버튼 클릭 (추가)
         $regi_form.on('click', '#btn_search_post', function() {
             var width = 550;
             var wrap_width = $('.paymentWrap').width();
@@ -698,24 +698,19 @@
 
         // 결제하기 버튼 클릭 (수정 => 결제버튼 선택자 변경)
         $('#btn_pay').on('click', function() {
-            {{-- 실서버일 경우 접근불가 (추후 삭제 필수) ==> TODO : 서버 환경별 실행 --}}
-            @if(ENVIRONMENT == 'production' || ENVIRONMENT == 'testing')
-                alert('준비 중 입니다.');
-            @else
-                var url = '{{ front_url('/payment/request') }}';
-                ajaxSubmit($regi_form, url, function(ret) {
-                    if(ret.ret_cd) {
-                        if (ret.ret_data.hasOwnProperty('ret_url') === true) {
-                            if (ret.ret_msg !== '') {
-                                alert(ret.ret_msg);
-                            }
-                            location.replace(ret.ret_data.ret_url);
-                        } else {
-                            $('body').append(ret.ret_data);
+            var url = '{{ front_url('/payment/request') }}';
+            ajaxSubmit($regi_form, url, function(ret) {
+                if(ret.ret_cd) {
+                    if (ret.ret_data.hasOwnProperty('ret_url') === true) {
+                        if (ret.ret_msg !== '') {
+                            alert(ret.ret_msg);
                         }
+                        location.replace(ret.ret_data.ret_url);
+                    } else {
+                        $('body').append(ret.ret_data);
                     }
-                }, showValidateError, null, false, 'alert');
-            @endif
+                }
+            }, showValidateError, null, false, 'alert');
         });
     });
 </script>

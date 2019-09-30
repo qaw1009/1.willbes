@@ -47,12 +47,14 @@
                             </ul>
                         </span>
                         <div class="willbes-Lec-Search GM f_right">
+                            {{--
                             <select id="course_ccd" name="course_ccd" title="process" class="seleProcess f_left">
                                 <option selected="selected" value="">과정</option>
                                 @foreach($course_arr as $row )
                                     <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                                 @endforeach
                             </select>
+                            --}}
                             <div class="inputBox p_re">
                                 <input type="text" id="search_text" name="search_text" class="labelSearch" value="@if(isset($input_arr['search_text'])){{$input_arr['search_text']}}@endif" placeholder="강좌명을 검색해 주세요" maxlength="30"  style="width: 220px;">
                                 <button type="submit" onclick="" class="search-Btn">

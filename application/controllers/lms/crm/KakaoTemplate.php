@@ -116,8 +116,13 @@ class KakaoTemplate extends \app\controllers\BaseController
             $method = 'modify';
             $idx = $this->_reqP('idx');
         }
-        $input_data = $this->_setInputData($this->_reqP(null, false));
-        $result = $this->kakaoTemplateModel->{$method.'KakaoTemplate'}($input_data, $idx);
+
+        try {
+            $input_data = $this->_setInputData($this->_reqP(null, false));
+            $result = $this->kakaoTemplateModel->{$method.'KakaoTemplate'}($input_data, $idx);
+        } catch (\Exception $e) {
+            $this->json_error('등록/수정 도중에 오류가 발생하였습니다.');
+        }
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

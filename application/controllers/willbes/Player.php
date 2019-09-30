@@ -1103,8 +1103,9 @@ class Player extends \app\controllers\FrontController
             $PlayType = 'S';
         }
 
-        if(empty($wUnitIdx) == true){
-            return $this->StarplayerResult(true, '수강할 회차 정보가 없습니다.');
+        if(empty($ProdCode) === true || empty($wUnitIdx) === true || empty($ProdCodeSub) === true
+            || empty($OrderIdx) === true || empty($MemIdx) === true ){
+            return $this->StarplayerResult(true,'파라미터가 잘못 되었습니다.');
         }
 
         // 수강가능인지 체크

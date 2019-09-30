@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="willbes-Lec-Selected NG c_both tx-gray">
-                        <form name="searchFrm" id="searchFrm" action="{{front_app_url('/classroom/on/list/standby/', 'www')}}">
+                        <form name="searchFrm" id="searchFrm" action="{{front_app_url('/classroom/on/list/end/', 'www')}}">
                             <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess width21p">
                                 <option selected="selected" value="">과정</option>
                                 @foreach($sitegroup_arr as $row )

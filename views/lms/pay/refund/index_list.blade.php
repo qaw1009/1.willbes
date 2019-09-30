@@ -11,6 +11,12 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제기본정보</label>
                     <div class="col-md-11 form-inline">
+                        <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd">
+                            <option value="">결제채널</option>
+                        @foreach($arr_pay_channel_ccd as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                        </select>
                         <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
                             <option value="">결제루트</option>
                         @foreach($arr_pay_route_ccd as $key => $val)

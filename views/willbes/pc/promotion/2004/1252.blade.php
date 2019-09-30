@@ -23,7 +23,7 @@
 
         .wb_cts01 {position:relative; overflow:hidden;  background:#000 url("https://static.willbes.net/public/images/promotion/2019/05/1252_top_bg.jpg") center top  no-repeat}
         .wb_cts02 {background:#fff}
-        .wb_cts03 {background:#fff}
+        .wb_cts03 {background:#fff; padding-bottom:150px}
         .wb_cts04 {background:#fff}
         .wb_cts05 {background:#fff}
         .wb_cts06 {background:#095e4b}
@@ -113,11 +113,13 @@
       <!--tab//--> 
     </div>
     <!--wb_cts03//-->
-    
+
+    {{--
     <div class="evtCtnsBox wb_cts04">
       <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_03.jpg" title="무한회독 학습 프로그램" />
     </div>
     <!--wb_cts04//-->
+    --}}
   
      <div class="evtCtnsBox wb_cts06">
       <img src="https://static.willbes.net/public/images/promotion/2019/05/1252_05.jpg" title="수험생에게 꼭 필요한 모든 것" />

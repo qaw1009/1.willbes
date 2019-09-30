@@ -1,8 +1,6 @@
 <!-- aside -->
 <div id="aside">
     <ul class="NG">
-    {{-- 로컬, 개발서버에서만 접근 가능 (추후 삭제 필수) ==> TODO : 서버 환경별 실행 --}}
-    @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
         <h1><a href="{{front_url('/home/index')}}"><img src="{{img_url('m/main/logo.png')}}" alt="logo"/></a></h1>
         @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
             <h2 class="NGEB">
@@ -25,12 +23,12 @@
                 </li>
             @endif
             @if($__cfg['SiteCode'] == '2003')
+                {{-- 실서버 상품코드 설정 (153368 => 154935) --}}
                 <li class="ListBox">
-                    <div class="List NGEB"><a href="{{front_url('/userPackage/show/cate/3019/prod-code/153368')}}">DIY패키지</a></div>
+                    <div class="List NGEB"><a href="{{front_url('/userPackage/show/cate/3019/prod-code/154935/lidx/3')}}">DIY패키지</a></div>
                 </li>
             @endif
         @endif
-    @endif
         <li class="ListTit"><h1 class="NGEB">내강의실</h1></li>
         <li class="ListBox">
             <div class="List NGEB"><a href="{{front_app_url('/classroom/pass/index','www')}}">무한 PASS존</a></div>
@@ -55,8 +53,6 @@
                 </ul>
             </div>
         </li>
-    {{-- 로컬, 개발서버에서만 접근 가능 (추후 삭제 필수) ==> TODO : 서버 환경별 실행 --}}
-    @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
         <li class="ListBox">
             <div class="List NGEB"><a href="{{front_app_url('/classroom/order/index','www')}}">주문/배송조회</a></div>
         </li>
@@ -66,7 +62,6 @@
         <li class="ListBox">
             <div class="List NGEB"><a href="{{front_app_url('/classroom/coupon/index','www')}}">쿠폰/수강권 관리</a></div>
         </li>
-    @endif
         <li class="ListTit"><h1 class="NGEB">고객센터</h1></li>
         <li class="ListBox">
             <div class="Depth">

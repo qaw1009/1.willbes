@@ -98,7 +98,7 @@
                 <area shape="rect" coords="120,518,235,563" href="https://pass.willbes.net/promotion/index/cate/3035/code/1241" target="_blank"alt="1순환" />
                 <area shape="rect" coords="901,717,1013,765" href="https://pass.willbes.net/promotion/index/cate/3035/code/1273" target="_blank"alt="2순환" />
                 <area shape="rect" coords="120,918,238,963" href="https://pass.willbes.net/promotion/index/cate/3035/code/1381" target="_blank"alt="3순환" />
-                <area shape="rect" coords="899,1129,1016,1174" href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/151415" alt="4순환" />
+                <area shape="rect" coords="899,1129,1016,1174" href="javascript:alert('준비중입니다.');" alt="4순환" />
                 <area shape="rect" coords="120,1327,237,1374" href="javascript:alert('준비중입니다.');" alt="5순환" />
             </map>
         </div>
@@ -124,7 +124,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2019/09/1385_03_tab1_c1.jpg" alt="6개월" usemap="#1385b" border="0" />
                     <map name="1385b" id="1385b">
                         <area shape="rect" coords="270,332,444,399" href="javascript:go_product('https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156547',1)" alt="1~3순환 법과목 패키지" />
-                        <area shape="rect" coords="680,330,861,400" href="javascript:go_product('https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/156550',1)" alt="3~5순환 전과목 패키지" />
+                        <area shape="rect" coords="680,330,861,400" href="javascript:go_product('https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/157071',1)" alt="3~5순환 전과목 패키지" />
                         <area shape="rect" coords="733,454,876,487" href="#careful" alt="이용안내 확인하기" />
                     </map>
                     <input name="is_chk" type="checkbox" value="Y" id="chk1"><label for="chk1" class="check3"></label>
@@ -135,7 +135,7 @@
                         <area shape="rect" coords="180,343,296,391" href="javascript:go_product('https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/152392',2)" alt="1순환 수강신청" />
                         <area shape="rect" coords="339,342,458,390" href="javascript:go_product('https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/153859',2)" alt="2순환 수강신청" />
                         <area shape="rect" coords="507,343,627,393" href="javascript:go_product('https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156534',2)" alt="3순환 수강신청" />
-                        <area shape="rect" coords="677,339,792,388" href="javascript:go_product('https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/157071',2)" target="_blank" alt="4순환" />
+                        <area shape="rect" coords="677,339,792,388" href="javascript:go_product('https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/157088',2)" target="_blank" alt="4순환" />
                         <area shape="rect" coords="732,455,878,490" href="#careful" alt="이용안내 확인하기" />                      
                     </map>
                     <input name="is_chk" type="checkbox" value="Y" id="chk2"><label for="chk2" class="check4"></label>

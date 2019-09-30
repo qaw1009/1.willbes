@@ -116,7 +116,7 @@
                 <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1360" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn06.png" alt="패스" /></a></li>
             </ul>
         </div>
-        
+        {{--
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1393_03.jpg" alt="고득점 노하우 이벤트" usemap="#Map1393B" border="0" />
             <map name="Map1393B" id="Map1393B">
@@ -128,11 +128,13 @@
             <area shape="rect" coords="826,2183,1032,2267" href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer" target="_blank" alt="순경마이너" />
             </map>
 		</div>
+        --}}
 
-        {{--홍보url--}}
+        {{--홍보url
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_emoticon_url_partial')
-        @endif         
+        @endif     
+        --}}    
 	</div>
     <!-- End Container -->
 

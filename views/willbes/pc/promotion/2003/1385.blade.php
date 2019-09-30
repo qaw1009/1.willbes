@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1385_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/09/1385_top_bg.jpg) no-repeat center top;}
 
         /* txt_motion */
 		.wb_top > div {width:1120px; margin:0 auto; position:relative;}
@@ -88,7 +88,7 @@
                 <span class="txt3"><img src="https://static.willbes.net/public/images/promotion/2019/08/1385_txt3.png"></span>
                 <span class="txt4"><img src="https://static.willbes.net/public/images/promotion/2019/08/1385_txt4.png"></span> 
             </div>      
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1385_top.jpg" alt="김동진 법원팀 순환별 패키지" />   
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1385_top.jpg" alt="김동진 법원팀 순환별 패키지" />   
         </div>
 
         <div class="evtCtnsBox wb_cts01">
@@ -121,7 +121,7 @@
                     </li>           
                 </ul>
                 <div class="tabContents" id="tab1">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1385_03_tab1_c1.jpg" alt="6개월" usemap="#1385b" border="0" />
+                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1385_03_tab1_c1.jpg" alt="6개월" usemap="#1385b" border="0" />
                     <map name="1385b" id="1385b">
                         <area shape="rect" coords="270,332,444,399" href="javascript:go_product('https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156547',1)" alt="1~3순환 법과목 패키지" />
                         <area shape="rect" coords="680,330,861,400" href="javascript:go_product('https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/156550',1)" alt="3~5순환 전과목 패키지" />

@@ -55,7 +55,7 @@
                                 @endforeach
                             </select>
                             <div class="resetBtn width10p ml1p">
-                                <a href="{{front_url('/classroom/on/list/ongoing/')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+                                <a href="{{front_url('/classroom/on/list/pause/')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                             </div>
                         </form>
                     </div>

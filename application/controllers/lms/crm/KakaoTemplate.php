@@ -22,7 +22,9 @@ class KakaoTemplate extends \app\controllers\BaseController
      */
     public function index()
     {
-        $this->load->view("crm/kakaoTemplate/index", []);
+        $this->load->view("crm/kakaoTemplate/index", [
+            'is_allow_modify' => $this->checkAllowRoleIdx()
+        ]);
     }
 
     /**

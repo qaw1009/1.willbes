@@ -18,8 +18,10 @@
             <ul class="tabWrap lineWrap rowlineWrap lecListWrap two mt-zero">
                 <li><a href="#leclist1" class="on">단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist2">패키지강좌 <span>{{count($pkgList)}}</span></a></li>
-                <!-- <li><a href="#leclist3">무료강좌 <span>6</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist4">관리자부여 <span>6</span></a></li> -->
+                {{--
+                }}<li><a href="#leclist3">무료강좌 <span>6</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist4">관리자부여 <span>6</span></a></li>
+                --}}
             </ul>
             <div class="tabBox lineBox lecListBox">
                 
@@ -38,14 +40,14 @@
                                     <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
                                 @endforeach
                             </select>
-                            <!--
+                            {{--
                             <select id="course_ccd" name="course_ccd" title="process" class="seleProcess width21p">
                                 <option selected="selected" value="">과정</option>
                                 @foreach($course_arr as $row )
                                     <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                                 @endforeach
                             </select>
-                            -->
+                            --}}
                             <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec width21p ml1p">
                                 <option selected="selected" value="">과목</option>
                                 @foreach($subject_arr as $row )
@@ -84,10 +86,10 @@
                                     </dl>
                                     <div class="w-start tx-gray">
                                         <ul class="f_left two">
-                                            <!--
+                                            {{--
                                             <li class="btn_white"><a href="#none">후기등록</a></li>
                                             <li class="btn_blue"><a href="#none">재수강신청</a></li>
-                                            -->
+                                            --}}
                                         </ul>
                                     </div>
                                     <div class="w-line">-</div>

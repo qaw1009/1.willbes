@@ -151,24 +151,27 @@ class KakaoTemplate extends \app\controllers\BaseController
 
         //챗버블 JSON 변환
         $chat_bubble_button1 = null; $chat_bubble_button2 = null; $chat_bubble_button3 = null; $chat_bubble_button4 = null; $chat_bubble_button5 = null;
+        $chat_bubble_button_type = element('chat_bubble_button_type', $input);
 
-        foreach(element('chat_bubble_button_type', $input) as $i => $val) {
-            $arr_bubble_temp = [];
-            $arr_bubble_temp['type'] = $val;
-            $arr_bubble_temp['name'] = element('chat_bubble_button_name', $input)[$i];
+        if(empty($chat_bubble_button_type) === false){
+            foreach($chat_bubble_button_type as $i => $val) {
+                $arr_bubble_temp = [];
+                $arr_bubble_temp['type'] = $val;
+                $arr_bubble_temp['name'] = element('chat_bubble_button_name', $input)[$i];
 
-            switch ($val) {
-                case 'WL':
-                    $arr_bubble_temp['url_mobile'] = element('chat_bubble_button_link1', $input)[$i];
-                    $arr_bubble_temp['url_pc'] = element('chat_bubble_button_link2', $input)[$i];
-                    break;
-                case 'AL':
-                    $arr_bubble_temp['scheme_ios'] = element('chat_bubble_button_link1', $input)[$i];
-                    $arr_bubble_temp['scheme_android'] = element('chat_bubble_button_link2', $input)[$i];
-                    break;
-                default: break;
+                switch ($val) {
+                    case 'WL':
+                        $arr_bubble_temp['url_mobile'] = element('chat_bubble_button_link1', $input)[$i];
+                        $arr_bubble_temp['url_pc'] = element('chat_bubble_button_link2', $input)[$i];
+                        break;
+                    case 'AL':
+                        $arr_bubble_temp['scheme_ios'] = element('chat_bubble_button_link1', $input)[$i];
+                        $arr_bubble_temp['scheme_android'] = element('chat_bubble_button_link2', $input)[$i];
+                        break;
+                    default: break;
+                }
+                ${'chat_bubble_button'.($i+1)} = json_encode($arr_bubble_temp);
             }
-            ${'chat_bubble_button'.($i+1)} = json_encode($arr_bubble_temp);
         }
 
         return [

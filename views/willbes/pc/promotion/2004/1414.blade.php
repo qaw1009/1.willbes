@@ -37,7 +37,7 @@
         .evt02 {background:#fff;}
         .evt03 {background:#f9f9f9;padding-bottom:100px;}
 
-        .skybanner{position: fixed; top: 875px;right: 2px;z-index: 1;}	
+        .skybanner{position: fixed; bottom:0;z-index: 1;background:#898989;}	
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">       
@@ -90,10 +90,10 @@
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
 
-        <div class="skybanner">
+        <div class="evtCtnsBox skybanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_underbar.png" alt="무료응시 베너" usemap="#Map1414b" border="0" />
             <map name="Map1414b" id="Map1414b">
-                <area shape="rect" coords="1310,8,1506,84" href="#to_go" />
+                <area shape="rect" coords="877,12,1059,84" href="#to_go" />
             </map>
 		</div>
 

@@ -1,4 +1,6 @@
 @if(empty($__cfg['SiteMenu']['TreeMenu']) === false)
+    {{-- 일반메뉴 (전체보기) 메뉴 설정 --}}
+    @include('willbes.pc.layouts.partial.site_mega_menu')
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
@@ -8,22 +10,27 @@
             </ul>
             <ul class="menu-List">
                 @foreach($__cfg['SiteMenu']['TreeMenu'] as $menu_idx => $menu_row)
-                    <li class="@if($menu_row['MenuType'] == 'GA') {{ SUB_DOMAIN }} @endif @if(isset($menu_row['Children']) === true) dropdown @endif">
+                    <li class="@if($menu_row['MenuType'] == 'GA') {{ SUB_DOMAIN }} @endif @if(isset($menu_row['Children']) === true || $menu_row['MenuType'] == 'GM') dropdown @endif">
                         <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">
                             {{ $menu_row['MenuName'] }}
                             @if($menu_row['MenuType'] == 'GA')
                                 <span class="arrow-Btn">></span>
                             @endif
                         </a>
-                        @if(isset($menu_row['Children']) === true)
-                            <div class="drop-Box list-drop-Box">
-                                <ul>
-                                    <li class="Tit">{{ $menu_row['MenuName'] }}</li>
-                                    @foreach($menu_row['Children'] as $child_menu_idx => $child_menu_row)
-                                        <li><a href="{{ $child_menu_row['MenuUrl'] }}" target="_{{ $child_menu_row['UrlTarget'] }}">{{ $child_menu_row['MenuName'] }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                        @if($menu_row['MenuType'] == 'GM' && empty($menu_row['MenuSubType']) === false)
+                            {{-- 일반메뉴 (전체보기) 메뉴 --}}
+                            @yield('mega_menu_' . strtolower(trim($menu_row['MenuSubType'])))
+                        @else
+                            @if(isset($menu_row['Children']) === true)
+                                <div class="drop-Box list-drop-Box">
+                                    <ul>
+                                        <li class="Tit">{{ $menu_row['MenuName'] }}</li>
+                                        @foreach($menu_row['Children'] as $child_menu_idx => $child_menu_row)
+                                            <li><a href="{{ $child_menu_row['MenuUrl'] }}" target="_{{ $child_menu_row['UrlTarget'] }}">{{ $child_menu_row['MenuName'] }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         @endif
                     </li>
                 @endforeach

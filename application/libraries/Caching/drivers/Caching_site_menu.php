@@ -124,6 +124,11 @@ class Caching_site_menu extends CI_Driver
                 $arr_menu['UrlSubDomain'] = $url_sub_domain;
             }
 
+            // 일반메뉴(전체보기) 맵핑코드 설정
+            if ($key_group != 'GNB' && $row['MenuType'] == 'GM') {
+                $arr_menu['MenuSubType'] = $row['MenuEtc'];
+            }
+
             if ($row['MenuDepth'] > 1) {
                 // $data 배열에 삽입되는 배열 키 생성
                 $child_key = $base_key;

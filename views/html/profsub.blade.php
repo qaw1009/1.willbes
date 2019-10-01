@@ -768,6 +768,7 @@
                                             <li><a href="#onlist3">선택패키지</a></li>
                                         </ul>
                                     </div>
+
                                     <div class="AcadListBox user-lec-list c_both">
                                         <div id="onlist1" class="tabContent">
                                             <div class="ListTabs">
@@ -779,6 +780,25 @@
                                                     <li><a href="#none">특강</a></li>
                                                 </ul>
                                             </div>
+
+                                            <div class="willbes-Lec-Search p_re mt30">
+                                                <div class="inputBox p_re">
+                                                    <div class="selectBox">
+                                                        <select id="select" name="select" title="직접입력" class="">
+                                                            <option selected="selected">직접입력</option>
+                                                            <option value="과정명">과정명</option>
+                                                            <option value="강좌명">강좌명</option>
+                                                            <option value="과목명">과목명</option>
+                                                            <option value="교수명">교수명</option>                                                            
+                                                        </select>
+                                                    </div>
+                                                    <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강의명" maxlength="30">
+                                                    <button type="submit" onclick="" class="search-Btn">
+                                                        <span>검색</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
                                             <div class="willbes-Lec NG c_both">
                                                 <div class="willbes-Lec-Subject tx-dark-black">· 국어<span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span></div>
                                                 <!-- willbes-Lec-Subject -->
@@ -941,6 +961,7 @@
                                             </div>
                                             <!-- willbes-Lec -->
                                         </div>
+
                                         <div id="onlist2" class="tabContent">
                                             <div class="willbes-Lec NG c_both">
                                                 <div class="willbes-Lec-Subject tx-dark-black">추천패키지</div>
@@ -1020,8 +1041,8 @@
                                                 </div>
                                                 <!-- TopBtn-->
                                             </div>
-                                            <!-- willbes-Lec -->
                                         </div>
+
                                         <div id="onlist3" class="tabContent">
                                             <div class="willbes-Lec NG c_both">
                                                 <div class="willbes-Lec-Subject tx-dark-black">선택패키지</div>
@@ -1076,6 +1097,7 @@
                                             <!-- willbes-Lec -->
                                         </div>
                                     </div>
+
                                 </div>
                                 <!-- acad1 -->
 

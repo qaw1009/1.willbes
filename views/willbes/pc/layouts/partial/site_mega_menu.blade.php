@@ -103,7 +103,7 @@
                     <a href="{{front_url('/professor/show/cate/3020/prof-idx/50227/?subject_idx=1124&subject_name=%ED%9A%8C%EA%B3%84%ED%95%99')}}">김영훈</a>
                     <a href="{{front_url('/professor/show/cate/3020/prof-idx/50057/?subject_idx=1124&subject_name=%ED%9A%8C%EA%B3%84%ED%95%99')}}">김현식</a>
                     <span>[국제법]</span>
-                    <a href="{{front_url('/professor/show/cate/3020/prof-idx/50559/?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">이상구</a>
+                    <a href="{{front_url('/professor/show/cate/3020/prof-idx/50393/?subject_idx=1127&subject_name=%EA%B5%AD%EC%A0%9C%EB%B2%95')}}">이상구</a>
                 </li>
                 <li>
                     <span>[국제정치학]</span>
@@ -268,7 +268,7 @@
                     <a href="{{front_url('/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99')}}">장사원</a>
                     <span>[식용작물]</span>
                     <a href="{{front_url('/professor/show/cate/3028/prof-idx/50429/?subject_idx=1172&subject_name=%EC%8B%9D%EC%9A%A9%EC%9E%91%EB%AC%BC')}}">장사원</a>
-                    <span>[통신이론]</span>
+                    <span>[전기이론]</span>
                     <a href="{{front_url('/professor/show/cate/3028/prof-idx/50718/?subject_idx=1173&subject_name=%EC%A0%84%EA%B8%B0%EC%9D%B4%EB%A1%A0')}}">최우영</a>
                 </li>
                 <li>

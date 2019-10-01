@@ -11326,7 +11326,19 @@ table.acadlecInfoPackageTable tr.Top td {
     .list-drop-Box-1120 {
         margin-left: -600px;
     }
-    .menu-List > li:nth-child(2) .list-drop-Box-1120 {
-        margin-left:-695px;
+    .drop-Box-1120:before {
+        margin-left: 25px;
     }
-}
+    .drop-Box-1120:after {
+        margin-left: 26px;
+    }
+    .menu-List > li:nth-child(2) .list-drop-Box-1120 {
+        margin-left:-693px;
+    }
+    .menu-List > li:nth-child(2) .drop-Box-1120:before {
+        margin-left: 100px;
+    }
+    .menu-List > li:nth-child(2) .drop-Box-1120:after {
+        margin-left: 101px;
+    }
+    

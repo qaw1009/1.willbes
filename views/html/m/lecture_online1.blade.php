@@ -67,10 +67,10 @@
                 <option value="과정순">과정순</option>
             </select>
             <select id="lecture" name="lecture" title="lecture" class="seleLec width30p ml1p">
-                <option selected="selected">강좌명</option>
+                <option selected="selected">과정명</option>
                 <option value="과목명">과목명</option>
                 <option value="교수명">교수명</option>
-                <option value="과정명">과정명</option>
+                <option value="강좌명">강좌명</option>
             </select>
         </div>
         <div class="willbes-Lec-Search NG width100p pl20 pr20 pb20 mt10">
@@ -98,7 +98,7 @@
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
                             <dl class="w-info">
-                                <dt>영어<span class="row-line">|</span>한덕현 </dt>
+                                <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
                             </dl>
                             <div class="w-tit tx-blue">
                                 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
@@ -128,7 +128,7 @@
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
                             <dl class="w-info">
-                                <dt>영어<span class="row-line">|</span>한덕현 </dt>
+                                <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
                             </dl>
                             <div class="w-tit tx-blue">
                                 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
@@ -153,7 +153,7 @@
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
                             <dl class="w-info">
-                                <dt>영어<span class="row-line">|</span>한덕현 </dt>
+                                <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
                             </dl>
                             <div class="w-tit tx-blue">
                                 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지

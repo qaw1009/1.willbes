@@ -191,7 +191,10 @@
                 </div>
                 <div> ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다.</div>
                 <div class="check04">
-                    <a href="#none" onclick="goCartNDirectPay('event', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');"><img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c7_2_1.jpg" alt="장바구니"  /></a> <!--소방패스 신청하기-->
+                    {{--<a href="#none" onclick="goCartNDirectPay('event', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">--}}
+                    <a href="#none" onclick="goPassLecture()">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c7_2_1.jpg" alt="장바구니"/>
+                    </a> <!--소방패스 신청하기-->
                 </div>
             </div>                   
         </div><!--wb_cts03//-->
@@ -233,6 +236,24 @@
                 dDayCountDown('{{$arr_promotion_params['edate']}}');
             });
         });
+
+        function goPassLecture() {
+            var frm = $('#event');
+            var prod_code = frm.find('input[name="y_pkg"]:checked');
+            var is_chk = frm.find('input[name="is_chk"]:checked');
+
+            if (is_chk.length < 1) {
+                alert('이용안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            if (prod_code.length < 1) {
+                alert('강좌를 선택해 주세요.');
+                return;
+            }
+
+            location.href = '{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + prod_code.val();
+        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

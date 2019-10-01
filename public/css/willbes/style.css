@@ -6535,24 +6535,22 @@ ul li.profList .willbes-Layer-ProfileBox {
     color: #878787;
     text-align: center;
     letter-spacing: 0;
-    border-top: 1px solid #dbdbdb;
-    border-left: 1px solid #dbdbdb;
-    border-right: 1px solid #dbdbdb;
+    border: 1px solid #dbdbdb;
+    border-bottom: 0px;
 }
 .tabWrap.tabDepthAcad li a.on {
     background: #fff;
     height: 45px;
     color: #3a3a3a;
-    border-top: 1px solid #4f4f4f;
-    border-left: 1px solid #4f4f4f;
-    border-right: 1px solid #4f4f4f;
+    border: 1px solid #4f4f4f;
+    border-bottom: 0px;
 }
 .AcadtabBox .tabContent .tabGrid {
     float: left;
     width: 100%;
     padding: 15px 35px;
     border-left: 1px solid #4f4f4f;
-    border-right: 1px solid #4f4f4f;    
+    border-right: 1px solid #4f4f4f;  
 }
 .AcadtabBox .acadline {
     border-bottom: none;
@@ -6594,7 +6592,6 @@ ul li.profList .willbes-Layer-ProfileBox {
     padding: 0 35px 20px;
     border-left: 1px solid #4f4f4f;
     border-right: 1px solid #4f4f4f;
-    border-bottom: 1px solid #4f4f4f;
 }
 .ListTabs ul li {   
     display: inline-block;

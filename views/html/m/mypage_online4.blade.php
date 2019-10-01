@@ -25,9 +25,32 @@
             <div id="leclist1" class="tabContent">
                 <div class="willbes-Txt NGR c_both mt20">
                     <div class="willbes-Txt-Tit NG">· 수강종료강좌 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
-                    - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장신청불가)<br/>
-                    - 재수강시, 20%할인된 가격으로 수강할 수 있습니다.
+                    - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)<br>
+                    - 재수강시, 20% 할인된 가격으로 수강할 수 있습니다.<br>
+                    - 폐강된 강좌는 재수강신청이 제공되지 않습니다.<br>
+                    - 수강기간은 개별 강좌에 따라 다르게 책정되며 수정 될 수 있습니다.
                 </div>
+
+                <div class="paymentWrap">
+                    <div class="paymentDate">
+                        <div class="payLecList NGR">
+                            <strong>기간검색</strong>  
+                            <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="15" style="width:120px" >
+                            ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="15" style="width:120px"></span>                
+                        </div>
+                        <ul class="c_both">
+                            <li><a href="#none">전체</a></li>
+                            <li><a href="#none">15일</a></li>
+                            <li><a href="#none">1개월</a></li>
+                            <li><a href="#none">3개월</a></li>
+                            <li><a href="#none">6개월</a></li>
+                        </ul>
+                        <div class="btnSearch">
+                            <a href="#none">검색</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
                     <select id="process" name="process" title="process" class="seleProcess width21p">
                         <option selected="selected">과정</option>
@@ -66,8 +89,7 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <ul class="f_left two">
-                                        <li class="btn_white"><a href="#none">후기등록</a></li>
-                                        <li class="btn_blue"><a href="#none">재수강신청</a></li>
+                                        <li class="btn_white"><a href="#none">재수강불가</a></li>
                                     </ul> 
                                 </div>
                                 <div class="w-line">-</div>
@@ -112,6 +134,27 @@
                     <div class="willbes-Txt-Tit NG">· 패키지강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
                     - 패키지 강좌는 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
                 </div>
+
+                <div class="paymentWrap">
+                    <div class="paymentDate">
+                        <div class="payLecList NGR">
+                            <strong>기간검색</strong>  
+                            <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="15" style="width:120px" >
+                            ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="15" style="width:120px"></span>                
+                        </div>
+                        <ul class="c_both">
+                            <li><a href="#none">전체</a></li>
+                            <li><a href="#none">15일</a></li>
+                            <li><a href="#none">1개월</a></li>
+                            <li><a href="#none">3개월</a></li>
+                            <li><a href="#none">6개월</a></li>
+                        </ul>
+                        <div class="btnSearch">
+                            <a href="#none">검색</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
                     <select id="process" name="process" title="process" class="seleProcess width21p">
                         <option selected="selected">과정</option>
@@ -219,6 +262,27 @@
                     <div class="willbes-Txt-Tit NG">· 무료강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
                     - 무료강좌는 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
                 </div>
+
+                <div class="paymentWrap">
+                    <div class="paymentDate">
+                        <div class="payLecList NGR">
+                            <strong>기간검색</strong>  
+                            <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="15" style="width:120px" >
+                            ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="15" style="width:120px"></span>                
+                        </div>
+                        <ul class="c_both">
+                            <li><a href="#none">전체</a></li>
+                            <li><a href="#none">15일</a></li>
+                            <li><a href="#none">1개월</a></li>
+                            <li><a href="#none">3개월</a></li>
+                            <li><a href="#none">6개월</a></li>
+                        </ul>
+                        <div class="btnSearch">
+                            <a href="#none">검색</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
                     <select id="process" name="process" title="process" class="seleProcess width21p">
                         <option selected="selected">과정</option>
@@ -320,6 +384,28 @@
                     <div class="willbes-Txt-Tit NG">· 관리자부여강좌 수강 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
                     - 관리자부여강좌는 무상 혜택으로 지급된 강좌이므로 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
                 </div>
+
+                <div class="paymentWrap">
+                    <div class="paymentDate">
+                        <div class="payLecList NGR">
+                            <strong>기간검색</strong>  
+                            <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="15" style="width:120px" >
+                            ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="15" style="width:120px"></span>                
+                        </div>
+                        <ul class="c_both">
+                            <li><a href="#none">전체</a></li>
+                            <li><a href="#none">15일</a></li>
+                            <li><a href="#none">1개월</a></li>
+                            <li><a href="#none">3개월</a></li>
+                            <li><a href="#none">6개월</a></li>
+                        </ul>
+                        <div class="btnSearch">
+                            <a href="#none">검색</a>
+                        </div>
+                    </div>
+                </div>
+
+                
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
                     <select id="lecture" name="lecture" title="lecture" class="seleLec width49p">
                         <option selected="selected">단강좌</option>

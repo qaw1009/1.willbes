@@ -16,34 +16,35 @@
     <li>
         <div>
             <a href="{{ site_url('/home/html/m/loading') }}" target="_blank">로딩화면</a>
-            <a href="{{ site_url('/home/html/m/intro') }}" target="_blank">인트로 page 이동</a>
-            <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인 page 이동</a>
-            <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인 page 이동</a>          
+            <a href="{{ site_url('/home/html/m/intro') }}" target="_blank">인트로</a>
+            <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인</a>
+            <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인</a>          
         </div>
     </li>
     <li>
         <div>  
-            <a href="{{ site_url('/home/html/m/mypage_pass1') }}" target="_blank">내강의실 > 무한PASS존 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_pass4') }}" target="_blank">내강의실 > 무한PASS존 > 수강중인 강좌 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_pass2') }}" target="_blank">내강의실 > 무한PASS 강좌추가 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_pass3') }}" target="_blank">내강의실 > 무한PASS 등록기기 정보 page 이동</a>
+            <a href="{{ site_url('/home/html/m/mypage_pass1') }}" target="_blank">내강의실 > 무한PASS존</a>
+            <a href="{{ site_url('/home/html/m/mypage_pass4') }}" target="_blank">내강의실 > 무한PASS존 > 수강중인 강좌</a>
+            <a href="{{ site_url('/home/html/m/mypage_pass2') }}" target="_blank">내강의실 > 무한PASS 강좌추가</a>
+            <a href="{{ site_url('/home/html/m/mypage_pass3') }}" target="_blank">내강의실 > 무한PASS 등록기기 정보</a>
             <br><br>
-            <a href="{{ site_url('/home/html/m/mypage_online1') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_online2') }}" target="_blank">내강의실 > 온라인강좌 > 수강중강좌 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_online3') }}" target="_blank">내강의실 > 온라인강좌 > 일시정지강좌 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_online4') }}" target="_blank">내강의실 > 온라인강좌 > 수강종료강좌 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_online5') }}" target="_blank">내강의실 > 온라인강좌 > 시작일변경 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_online6') }}" target="_blank">내강의실 > 온라인강좌 > 일시정지 page 이동</a>
+            <a href="{{ site_url('/home/html/m/mypage_online1') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌</a>
+            <a href="{{ site_url('/home/html/m/mypage_online2') }}" target="_blank">내강의실 > 온라인강좌 > 수강중강좌</a>
+            <a href="{{ site_url('/home/html/m/mypage_online3') }}" target="_blank">내강의실 > 온라인강좌 > 일시정지강좌</a>
+            <a href="{{ site_url('/home/html/m/mypage_online4') }}" target="_blank">내강의실 > 온라인강좌 > 수강종료강좌</a>
+            <a href="{{ site_url('/home/html/m/mypage_online5') }}" target="_blank">내강의실 > 온라인강좌 > 시작일변경</a>
+            <a href="{{ site_url('/home/html/m/mypage_online6') }}" target="_blank">내강의실 > 온라인강좌 > 일시정지</a>
+            <a href="{{ site_url('/home/html/m/mypage_online7') }}" target="_blank">내강의실 > 온라인강좌 > 수강연장</a>
             <br><br>
-            <a href="{{ site_url('/home/html/m/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌 page 이동</a>
+            <a href="{{ site_url('/home/html/m/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌</a>
+            <a href="{{ site_url('/home/html/m/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌</a>
             <br><br>
-            <a href="{{ site_url('/home/html/m/mypage_csnotice_list') }}" target="_blank">내강의실 > 고객센터 > 공지사항 List page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_csnotice_read') }}" target="_blank">내강의실 > 고객센터 > 공지사항 Read page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_csqna') }}" target="_blank">내강의실 > 고객센터 > 자주하는 질문 page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_csvideo_list') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 List page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_csvideo_write') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 Write page 이동</a>
-            <a href="{{ site_url('/home/html/m/mypage_csvideo_read') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 Read page 이동</a>
+            <a href="{{ site_url('/home/html/m/mypage_csnotice_list') }}" target="_blank">내강의실 > 고객센터 > 공지사항 List</a>
+            <a href="{{ site_url('/home/html/m/mypage_csnotice_read') }}" target="_blank">내강의실 > 고객센터 > 공지사항 Read</a>
+            <a href="{{ site_url('/home/html/m/mypage_csqna') }}" target="_blank">내강의실 > 고객센터 > 자주하는 질문</a>
+            <a href="{{ site_url('/home/html/m/mypage_csvideo_list') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 List</a>
+            <a href="{{ site_url('/home/html/m/mypage_csvideo_write') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 Write</a>
+            <a href="{{ site_url('/home/html/m/mypage_csvideo_read') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 Read</a>
         </div>
     </li>
     <li>
@@ -70,7 +71,8 @@
             <a href="{{ site_url('/home/html/m/payment_03') }}" target="_blank">주문/배송조회</a>
             <a href="{{ site_url('/home/html/m/payment_04') }}" target="_blank">주문/배송조회 > 상세보기</a> 
             <a href="{{ site_url('/home/html/m/payment_05') }}" target="_blank">포인트관리</a>   
-            <a href="{{ site_url('/home/html/m/payment_06') }}" target="_blank">쿠폰/수강권관리</a>           
+            <a href="{{ site_url('/home/html/m/payment_06') }}" target="_blank">쿠폰/수강권관리</a>      
+            <a href="{{ site_url('/home/html/m/payment_07') }}" target="_blank">수강연장 결제하기</a>     
         </div>
     </li>
     <li>

@@ -11312,15 +11312,15 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .menu-List > li:nth-child(2) .list-drop-Box-1120 {
     left: 50%;
-    margin-left:-683px;
+    margin-left:-686px;
 }
 .menu-List > li:nth-child(2) .drop-Box-1120:before {
     left: 50%;
-    margin-left: 125px;
+    margin-left: 115px;
 }
 .menu-List > li:nth-child(2) .drop-Box-1120:after {
     left: 50%; 
-    margin-left: 126px;
+    margin-left: 116px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .menu-List > li:nth-child(2) .list-drop-Box-1120 {

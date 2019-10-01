@@ -24,14 +24,14 @@
         .evtTop {background:#5a5a5a;}       
         .evt01 {background:#fff;}
             .tabs { margin-left:-490px; width:980px; z-index:10;margin:0 auto;padding-top:25px;}
-            .tabs ul{width:800px;margin:0 auto;}
+            .tabs ul{width:789px;margin:0 auto;}
             .tabs li {display:inline; float:left; width:16.6%;}
             .tabs li a {display:block; text-align:center; height:45px; line-height:45px; background:#b7b7b7; color:#fff; font-size:16px; margin-right:4px;border-radius:16px;}
             .tabs li a:hover,
             .tabs li a.active {background:#c6b269;}
             .tabs li:last-child a {margin:0}
             .tabs ul:after {content:""; display:block; clear:both}
-            .tabs div {width:840px; margin:25px 0 0 61px}
+            .tabs div {width:840px; margin:25px 0 0 70px}
             .tabs div a {display:block; width:400px; margin:160px auto 0; background:#0a0f25; color:#fff; font-size:22px; padding:15px 0; border-radius:40px}
             .tabs div a:hover {background:#c6b269;}
         .evt02 {background:#fff;}

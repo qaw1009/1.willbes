@@ -63,14 +63,14 @@
 
         <div class="willbes-Lec-Selected NG c_both tx-gray pb-zero">
             <select id="process" name="process" title="process" class="seleProcess width30p">
-                <option selected="selected">최근등록순</option>
-                <option value="과정순">과정순</option>
+                <option selected="selected">과정순</option>
+                <option value="과정순">최근등록순</option>
             </select>
             <select id="lecture" name="lecture" title="lecture" class="seleLec width30p ml1p">
-                <option selected="selected">과정명</option>
+                <option selected="selected">강좌명</option>
                 <option value="과목명">과목명</option>
                 <option value="교수명">교수명</option>
-                <option value="강좌명">강좌명</option>
+                <option value="과정명">과정명</option>
             </select>
         </div>
         <div class="willbes-Lec-Search NG width100p pl20 pr20 pb20 mt10">

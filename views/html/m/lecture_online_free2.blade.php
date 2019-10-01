@@ -26,7 +26,7 @@
                             </div>
                             <div class="w-data tx-left pl15">
                                 <dl class="w-info pt-zero">
-                                    <dt>영어<span class="row-line">|</span>한덕현</dt>
+                                    <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현</dt>
                                 </dl>
                                 <div class="w-tit">
                                     <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사 (4-5월)</a>

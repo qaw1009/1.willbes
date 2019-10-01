@@ -11323,8 +11323,10 @@ table.acadlecInfoPackageTable tr.Top td {
     margin-left: 121px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .list-drop-Box-1120 {
+        margin-left: -602px;
+    }
     .menu-List > li:nth-child(2) .list-drop-Box-1120 {
-        top: 38px;
-        left: 50%;
+        margin-left:-698px;
     }
 }

@@ -1288,6 +1288,7 @@ body.memBody #Footer {
     line-height: 16px;
     margin-bottom:10px;
 }
+
 .lecTable .w-info span {
     vertical-align: baseline;
 }
@@ -1333,9 +1334,10 @@ body.memBody #Footer {
     height: 65px;
 }
 .lecTable .w-start ul li {
-    float: left;
+    display:inline;
+    float: left;    
     height: 34px;
-    margin: 0 1%;
+    margin-right:5px;
 }
 .lecTable .w-start ul li a {
     display: block; 
@@ -1353,10 +1355,10 @@ body.memBody #Footer {
     width: 98%;
 }
 .lecTable .w-start ul.two {
-    width: 55%;
+    width: 100%;
 }
 .lecTable .w-start ul.two li {
-    width: 48%;
+    width: 120px;
 }
 .lecTable .w-start-go-pay {
     margin: 0;
@@ -1793,6 +1795,9 @@ body.memBody #Footer {
 }
 
 /* 시작일변경 */
+.daysListTabs table {
+    border-top: 1px solid #c9c9c9;
+}
 .daysListTabs table tr td {
     padding-right: 0 !important;
 }

@@ -28,11 +28,12 @@
                     - 일시정지(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>
                     - 1회 일시정지 기간은 수강 잔여일을 초과할 수 없으며, <span class="tx-red">일시 정지기간의 총합은 수강기간을 초과할 수 없습니다.</span><br/>
                     - 일시정지된 강좌는 일시정지강좌에서 확인할 수 있습니다.<br/>
-                    <div class="willbes-Txt-Tit NG mt30">· 수강연장신청</div>
+                    <div class="willbes-Txt-Tit NG mt30">· 수강연장</div>
                     - 수강연장된 강의는 일시정지를 신청할 수 없습니다.<br/>
-                    - 수강연장(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지</span> 연장이 가능합니다. (단, PC에서만 신청 가능)<br/>
+                    - 수강연장(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지</span> 연장이 가능합니다.<br/>
                     - <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span><br/>
                     - 수강연장은 수강종료일 전까지만 신청이 가능하며 5일 단위(5일,10일,15일등)로 신청할 수 있습니다.<br/>
+                    - 폐강된 강좌는 수강연장이 제공되지 않습니다.
                 </div>
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
                     <select id="process" name="process" title="process" class="seleProcess width21p">
@@ -74,8 +75,8 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <ul class="f_left two">
-                                        <li class="btn_white"><a href="#none">일시정지</a></li>
-                                        <li class="btn_blue"><a href="#none">수강연장</a></li>
+                                        <li class="btn_blue"><a href="#none">수강연장(3)</a></li>
+                                        <li class="btn_white"><a href="#none">일시정지불가</a></li>                                        
                                     </ul> 
                                 </div>
                                 <div class="w-line">-</div>
@@ -96,8 +97,29 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <ul class="f_left two">
-                                        <li class="btn_white"><a href="#none">일시정지</a></li>
-                                        <li class="btn_blue"><a href="#none">수강연장</a></li>
+                                        <li class="btn_blue"><a href="#none">연장횟수초과(3)</a></li>
+                                        <li class="btn_white"><a href="#none">일시정지불가</a></li>                                        
+                                    </ul> 
+                                </div>
+                                <div class="w-line">-</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="w-data tx-left pb-zero">
+                                <dl class="w-info">
+                                    <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n1">2배수</span></dt>
+                                </dl>
+                                <div class="w-tit">
+                                    <a href="#none"><span class="tx-red">[수강연장]</span> 2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
+                                    <dt>잔여기간 : <span class="tx-blue">100</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
+                                </dl>
+                                <div class="w-start tx-gray">                        
+                                    <ul class="f_left two">
+                                        <li class="btn_blue"><a href="#none">수강연장불가</a></li>                                      
                                     </ul> 
                                 </div>
                                 <div class="w-line">-</div>

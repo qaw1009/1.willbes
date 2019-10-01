@@ -126,7 +126,7 @@ class Caching_site_menu extends CI_Driver
 
             // 일반메뉴(전체보기) 맵핑코드 설정
             if ($key_group != 'GNB' && $row['MenuType'] == 'GM') {
-                $arr_menu['MenuSubType'] = $row['MenuEtc'];
+                $arr_menu['MenuSubType'] = strtolower(trim($row['MenuEtc']));
             }
 
             if ($row['MenuDepth'] > 1) {

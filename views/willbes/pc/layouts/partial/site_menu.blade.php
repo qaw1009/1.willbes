@@ -19,7 +19,7 @@
                         </a>
                         @if($menu_row['MenuType'] == 'GM' && empty($menu_row['MenuSubType']) === false)
                             {{-- 일반메뉴 (전체보기) 메뉴 --}}
-                            @yield('mega_menu_' . strtolower(trim($menu_row['MenuSubType'])))
+                            @yield('mega_menu_' . $menu_row['MenuSubType'])
                         @else
                             @if(isset($menu_row['Children']) === true)
                                 <div class="drop-Box list-drop-Box">

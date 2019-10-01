@@ -7,7 +7,7 @@ class SiteMenu extends \app\controllers\BaseController
     protected $helpers = array('text');
 
     private $_menu_type_code = [
-        'GN' => '일반메뉴', 'GA' => '일반메뉴 (학원)', 'PS' => '예외메뉴 (고객센터)', 'PC' => '예외메뉴 (내강의실)'
+        'GN' => '일반메뉴', 'GA' => '일반메뉴 (학원)', 'GM' => '일반메뉴 (전체보기)', 'PS' => '예외메뉴 (고객센터)', 'PC' => '예외메뉴 (내강의실)'
     ];
 
     public function __construct()

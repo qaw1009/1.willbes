@@ -65,7 +65,7 @@ to{color:#d63e4d}
 .evt02 ul li a.active,
 .evt02 ul li a:hover {background-position:right top}
 .evt02 ul:after {content:""; display:block; clear:both}
-.evt02 .tabCts { width:1120px; margin:0 auto; position:relative;}
+.evt02 .tabCts { width:1120px; margin:0 auto; height:837px; overflow:hidden; position:relative;}
 .evt03 {background:#424242}
 </style>
 
@@ -165,7 +165,8 @@ to{color:#d63e4d}
                     <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155452" target="_blank" alt="수강신청" />
                 </map>
             </div>
-            <div id="golec">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1333_02_01.jpg">
+            <div id="golec">                
                 <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_bottom.jpg" alt="패스 수강신청" usemap="#map190913" border="0">
                 <map name="map190913" id="map190913">
                     <area shape="rect" coords="114,231,276,277" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/156820" target="_blank" alt="하승민/오태진" />

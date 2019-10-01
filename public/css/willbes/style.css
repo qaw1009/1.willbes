@@ -11259,14 +11259,14 @@ table.acadlecInfoPackageTable tr.Top td {
 .drop-Box-1120:before {
     top: -12px;
     left: 50%;
-    margin-left: 75px;
+    margin-left: 30px;
     border-color: transparent transparent #acacac;
     border-width: 6px;
 }
 .drop-Box-1120:after {
     top: -10px;
     left: 50%;
-    margin-left: 76px;
+    margin-left: 31px;
     border-color: transparent transparent #fff;
     border-width: 5px;
 }
@@ -11316,11 +11316,11 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .menu-List > li:nth-child(2) .drop-Box-1120:before {
     left: 50%;
-    margin-left: 165px;
+    margin-left: 125px;
 }
 .menu-List > li:nth-child(2) .drop-Box-1120:after {
     left: 50%; 
-    margin-left: 166px;
+    margin-left: 126px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .menu-List > li:nth-child(2) .list-drop-Box-1120 {

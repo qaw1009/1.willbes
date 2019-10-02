@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select('2002', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_campus_code" name="search_campus_code">
                             <option value="">캠퍼스</option>
                             @foreach($campusList as $row)

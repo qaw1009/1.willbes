@@ -20,7 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:fixed; top:350px;right:200px;z-index:10;}
+        .skyBanner {position:fixed; top:350px;right:0;z-index:10;}
         .wb_cts00 {background:#404040}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1416_top_bg.jpg) no-repeat center top;}   
         .evt01,.evt04 {background:#fff}

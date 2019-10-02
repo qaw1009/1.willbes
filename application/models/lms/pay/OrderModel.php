@@ -1261,8 +1261,16 @@ class OrderModel extends BaseOrderModel
                 }
 
                 // 상품정보 조회
-                $column = 'ProdCode, SiteCode, ProdName';
-                $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, $column);
+                if ($learn_pattern == 'mock_exam') {
+                    // 모의고사 상품일 경우 판매기간, 접수상태 체크 안함
+                    $row = element('0', $this->salesProductModel->findRawProductByProdCode($prod_code, '', [
+                        'EQ' => ['P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N', 'P.IsUse' => 'Y']
+                    ]));
+                    $row = array_filter_keys($row, ['ProdCode', 'SiteCode', 'ProdName']);
+                } else {
+                    $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, 'ProdCode, SiteCode, ProdName');
+                }
+
                 if (empty($row) === true) {
                     throw new \Exception('판매 중인 상품만 주문하실 수 있습니다.', _HTTP_NOT_FOUND);
                 }

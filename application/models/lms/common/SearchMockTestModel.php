@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SearchMockTestModel extends WB_Model
 {
     private $_table = [
-        'mock_product' => 'vw_product_mocktest',
+        'vw_mockProduct' => 'vw_product_mocktest',
         'mockProduct' => 'lms_Product_Mock',
         'Product' => 'lms_Product',
         'ProductCate' => 'lms_Product_R_Category',
@@ -42,30 +42,25 @@ class SearchMockTestModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-                PD.ProdName, MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PD.IsCoupon, PS.SalePrice, PS.RealSalePrice,          
-                C1.CateName, C1.IsUse AS IsUseCate
-                ,SC1.CcdName As AcceptStatusCcd_Name
-                ,S.SiteName
-                ,SC2.CcdName As TakeFormCcd_Name
-                ,FN_PRODUCT_SALEPRICE_DATA(PD.ProdCode) AS ProdPriceData
-                ,( select count(*) from '.$this->_table['orderProduct'].' op 
-                        join '.$this->_table['order'].' o on op.OrderIdx = o.OrderIdx
-                    where op.PayStatusCcd=676001 and ProdCode = PD.ProdCode 
-                ) as AllPayCnt
-                ,IF(PD.IsSaleEnd = "N" AND PD.IsUse = "Y" AND PD.SaleStatusCcd = "618001" AND CURRENT_TIMESTAMP() BETWEEN PD.SaleStartDatm AND PD.SaleEndDatm AND MP.AcceptStatusCcd = "675002","Y","N") AS IsSalesAble
+            $column = 'MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PD.IsCoupon, PS.SalePrice, PS.RealSalePrice          
+                , C1.CateName, C1.IsUse AS IsUseCate
+                , SC1.CcdName As AcceptStatusCcd_Name
+                , S.SiteName
+                , SC2.CcdName As TakeFormCcd_Name                
             ';
 
             if (empty($mem_idx) === true) {
                 $column .= ", '0' as OrderProdIdx ";
             } else {
-                $column .= ", (
+                $column .= ", fn_product_count_order(PD.ProdCode, '676001') as AllPayCnt
+                , IF(PD.IsSaleEnd = 'N' AND PD.IsUse = 'Y' AND PD.SaleStatusCcd = '618001' AND CURRENT_TIMESTAMP() BETWEEN PD.SaleStartDatm AND PD.SaleEndDatm AND MP.AcceptStatusCcd = '675002', 'Y', 'N') AS IsSalesAble                
+                , (
                     select
                         IFNULL(max(OrderProdIdx),0)
                     from
                         {$this->_table['orderProduct']} op 
                         join {$this->_table['order']} o on op.OrderIdx = o.OrderIdx
-                    where op.PayStatusCcd='676001' and ProdCode = PD.ProdCode and op.MemIdx = '{$mem_idx}'
+                    where op.PayStatusCcd = '676001' and ProdCode = PD.ProdCode and op.MemIdx = '{$mem_idx}'
                 ) as OrderProdIdx";
             }
 
@@ -92,8 +87,6 @@ class SearchMockTestModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
-
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -107,14 +100,14 @@ class SearchMockTestModel extends WB_Model
         $select = "Select straight_join b.Ccd,b.CcdName ";
         $from = "
             from 
-            {$this->_table['mock_product']} a 
+            {$this->_table['vw_mockProduct']} a 
             join {$this->_table['sysCode']} b on find_in_set(b.Ccd, a.MockPart)
         ";
         $where = " where b.IsUse='Y' ";
         $where .= $this->_conn->makeWhere(['EQ'=>['A.ProdCode' => $prod_code]])->getMakeWhere(true);
         $order_by = 'order by b.OrderNum';
         $result = $this->_conn->query($select. $from. $where. $order_by)->result_array();
-        //echo $this->_conn->last_query();
+
         return $result;
     }
 
@@ -130,12 +123,12 @@ class SearchMockTestModel extends WB_Model
 
         $from = "from  (
             select straight_join b.Ccd,b.CcdName
-            from {$this->_table['mock_product']} a 
+            from {$this->_table['vw_mockProduct']} a 
                 join {$this->_table['sysCode']} b on find_in_set(b.Ccd, a.TakeAreas1CCds)
             where a.ProdCode ='".$prod_code."' 
             union all
             select straight_join b.Ccd,b.CcdName
-            from {$this->_table['mock_product']} a 
+            from {$this->_table['vw_mockProduct']} a 
                 join {$this->_table['sysCode']} b on find_in_set(b.Ccd, a.TakeAreas2CCds)
             where a.ProdCode ='".$prod_code."' 
         ) mm ";
@@ -155,7 +148,7 @@ class SearchMockTestModel extends WB_Model
         $select = 'Select b.MpIdx,b.MockType,mp.PapaerName,sj.SubjectIdx,sj.SubjectName';
 
         $from ="
-            from {$this->_table['mock_product']} A
+            from {$this->_table['vw_mockProduct']} A
             join {$this->_table['mockProductExam']} b on A.ProdCode = b.ProdCode and b.IsStatus='Y'
             join {$this->_table['mockExamBase']} mp on b.MpIdx = mp.MpIdx and mp.IsStatus='Y' and mp.IsUse='Y'
             join {$this->_table['mockAreaCate']} mrc on mp.MrcIdx = mrc.MrcIdx and mrc.IsStatus='Y'
@@ -163,10 +156,10 @@ class SearchMockTestModel extends WB_Model
             JOIN {$this->_table['subject']} AS SJ ON mrs.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
         ";
         $where = " where A.IsUse ='Y' ";
-        //$where .= $this->_conn->makeWhere(['A.ProdCode' => $prod_code, 'b.MockType'=>$mock_type])->getMakeWhere(true);
+
         $where .= $this->_conn->makeWhere(['EQ' => ['A.ProdCode'=>$prod_code, 'b.MockType' => $mock_type]])->getMakeWhere(true);
         $result = $this->_conn->query($select. $from. $where)->result_array();
-        //echo $this->_conn->last_query();exit;
+
         return $result;
     }
 
@@ -180,7 +173,7 @@ class SearchMockTestModel extends WB_Model
         $select = "Select straight_join b.Ccd,b.CcdName,b.CcdValue ";
         $from = "
             from 
-            {$this->_table['mock_product']} a 
+            {$this->_table['vw_mockProduct']} a 
             join {$this->_table['sysCode']} b on find_in_set(b.Ccd, a.AddPointCcds)";
         $where = " where b.IsUse='Y' ";
 
@@ -190,7 +183,6 @@ class SearchMockTestModel extends WB_Model
 
         $result = $this->_conn->query($select. $from. $where. $order_by)->result_array();
 
-        //echo $this->_conn->last_query();
         return $result;
     }
 }

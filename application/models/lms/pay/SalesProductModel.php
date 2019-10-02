@@ -14,6 +14,7 @@ class SalesProductModel extends BaseOrderModel
         'off_lecture' => 'vw_product_off_lecture',
         'off_pack_lecture' => 'vw_product_off_pack_lecture',
         'book' => 'vw_product_book',
+        'mock_exam' => 'vw_product_mocktest',
         'delivery_price' => 'vw_product_delivery_price',
         'delivery_add_price' => 'vw_product_delivery_add_price',
         'reading_room' => 'vw_product_reading_room',
@@ -73,17 +74,17 @@ class SalesProductModel extends BaseOrderModel
                 ]);
                 break;
 
-            //추천-선택 패키지
+            // 추천-선택 패키지
             case 'adminpack_lecture' :
                 $column .= ', CateCode, PackTypeCcd, ProdPriceData';
                 break;
 
-            //사용자패키지
+            // 사용자패키지
             case 'userpack_lecture' :
                 $column .= ', CateCode, PackSaleData';
                 break;
 
-            //기간제패키지
+            // 기간제패키지
             case 'periodpack_lecture' :
                 $column .= ', CateCode, PackTypeCcd, ProdPriceData';
                 break;
@@ -96,7 +97,15 @@ class SalesProductModel extends BaseOrderModel
                 ]);
                 break;
 
-            // 배송료, 추가배송료, 독서실, 사물함, 예치금 상품
+            // 모의고사
+            case 'mock_exam' :
+                $column .= ', CateCode, IsCart, ClosingPerson, ProdPriceData';
+                $arr_default_condition = array_merge_recursive($arr_default_condition, [
+                    'EQ' => ['AcceptStatusCcd' => $this->_available_sale_status_ccd['accept']]   // 접수상태
+                ]);
+                break;
+
+            // 배송료, 추가배송료, 독서실, 사물함, 예치금, 모의고사 상품
             case 'delivery_price' :
             case 'delivery_add_price' :
             case 'reading_room' :

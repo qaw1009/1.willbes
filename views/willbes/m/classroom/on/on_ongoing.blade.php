@@ -94,6 +94,16 @@
                                     </dl>
                                     <div class="w-start tx-gray">
                                         <ul class="f_left two">
+                                            @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                                            @if($row['IsExten'] == 'N')
+                                                <li class="btn_blue"><a>수강연장불가</a></li>
+                                            @elseif($row['RebuyCount'] >= $row['ExtenNum'])
+                                                <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
+                                            @else
+                                                <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">수강연장({{$row['RebuyCount']}})</a></li>
+                                            @endif
+                                            @endif
+
                                             @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
                                                 <li class="btn_white"><a>일시정지불가</a></li>
                                             @elseif($row['IsPause'] == 'N')
@@ -102,17 +112,7 @@
                                                 <li class="btn_white">정지횟수초과({{$row['PauseCount']}})</li>
                                             @else
                                                 <li class="btn_white"><a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">일시정지({{$row['PauseCount']}})</a></li>
-                                        @endif
-
-                                        {{--
-                                            @if($row['IsExten'] == 'N')
-                                            <li class="btn_blue"><a>수강연장불가</a></li>
-                                            @elseif($row['RebuyCount'] >= $row['ExtenNum'])
-                                            <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
-                                            @else
-                                            <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">수강연장({{$row['RebuyCount']}})</a></li>
                                             @endif
-                                        --}}
                                         </ul>
                                     </div>
                                     <div class="w-line">-</div>
@@ -145,7 +145,20 @@
                                         </dl>
                                         <div class="w-start tx-gray">
                                             <ul class="f_left two">
-                                            @if(false)
+                                                @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                                                    @if(true)
+                                                    <!-- 패키지강좌 재수강 불가 -->
+                                                    @elseif($row['IsExten'] == 'N')
+                                                        <li class="btn_blue"><a>수강연장불가</a></li>>
+                                                    @elseif($row['RebuyCount'] >= $row['ExtenNum'])
+                                                        <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
+                                                    @else
+                                                        <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">수강연장({{$row['RebuyCount']}})</a></li>
+                                                    @endif
+                                                @endif
+
+
+                                                @if(false)
                                                 <!-- 패키지강의 일시중지 불가 -->
                                                 @elseif($row['IsPause'] == 'N')
                                                     <li class="btn_white"><a>일시정지불가</a></li>
@@ -154,17 +167,6 @@
                                                 @else
                                                     <li class="btn_white"><a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">일시정지({{$row['PauseCount']}})</a></li>
                                                 @endif
-
-                                                @if(true)
-                                                <!-- 패키지강좌 재수강 불가 -->
-                                                @elseif($row['IsExten'] == 'N')
-                                                    <li class="btn_blue"><a>수강연장불가</a></li>>
-                                                @elseif($row['RebuyCount'] >= $row['ExtenNum'])
-                                                    <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
-                                                @else
-                                                    <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">수강연장({{$row['RebuyCount']}})</a></li>
-                                                @endif
-
                                             </ul>
                                             <div class="MoreBtn f_right tx-right">
                                                 <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
@@ -415,20 +417,6 @@
             $('#prodcodesub').val(sp);
             $('#prodtype').val(t);
             $("#postForm").attr("action", "{{ front_url("/classroom/on/layerPause/") }}").submit();
-            return;
-
-            url = "{{ front_url("/classroom/on/layerPause/") }}";
-            data = $('#postForm').serialize();
-
-            sendAjax(url,
-                data,
-                function(d){
-                    $("#STOPPASS").html(d).end();
-                    openWin('STOPPASS');
-                },
-                function(ret, status){
-                    alert(ret.ret_msg);
-                }, false, 'GET', 'html');
         }
 
         function fnExtend(o, p, sp, t)
@@ -438,19 +426,7 @@
             $('#prodcode').val(p);
             $('#prodcodesub').val(sp);
             $('#prodtype').val(t);
-
-            url = "{{ front_url("/classroom/on/layerExtend/") }}";
-            data = $('#postForm').serialize();
-
-            sendAjax(url,
-                data,
-                function(d){
-                    $("#EXTRAPASS").html(d).end();
-                    openWin('EXTRAPASS');
-                },
-                function(ret, status){
-                    alert(ret.ret_msg);
-                }, false, 'GET', 'html');
+            $("#postForm").attr("action", "{{ front_url("/classroom/on/layerExtend/") }}").submit();
         }
     </script>
 @stop

@@ -110,6 +110,9 @@
         </div>
     </form>
     <div class="x_panel mt-10">
+        <div class="x_title text-right">
+            <h5><span class="required">*</span> 모의고사 수강접수 정보는 `모의고사 > 모의고사접수현황 > 개별접수현황`에서 확인해 주세요.</h5>
+        </div>
         <div class="x_content">
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>

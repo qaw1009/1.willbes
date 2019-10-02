@@ -750,6 +750,14 @@ class OrderModel extends BaseOrderModel
                     throw new \Exception('주문상품 배송정보 등록에 실패했습니다.');
                 }
             }
+
+            // 모의고사 응시정보 등록
+            if ($order_prod_type == 'mock_exam') {
+                $is_mock_register = $this->addMockRegister($order_prod_idx, $prod_code, $site_code, $mem_idx, element('MockPostData', $input));
+                if ($is_mock_register !== true) {
+                    throw new \Exception($is_mock_register);
+                }
+            }
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -996,6 +1004,81 @@ class OrderModel extends BaseOrderModel
     }
 
     /**
+     * 모의고사 응시정보 등록
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param int $prod_code [상품코드]
+     * @param int $site_code [사이트코드]
+     * @param int $mem_idx [회원식별자]
+     * @param array $post_data [응시정보 데이터]
+     * @return bool|string
+     */
+    public function addMockRegister($order_prod_idx, $prod_code, $site_code, $mem_idx, $post_data = [])
+    {
+        try {
+            // 필수 파라미터 체크
+            if (empty($post_data) === true) {
+                throw new \Exception('모의고사 응시정보가 없습니다.');
+            }
+
+            // 모의고사 응시과목 설정
+            $arr_subject_ess = explode(',', element('SubjectEss', $post_data, ''));
+            $arr_subject_sub = explode(',', element('SubjectSub', $post_data, ''));
+            $arr_subject = array_unique(array_filter(array_merge($arr_subject_ess, $arr_subject_sub)));
+
+            if (empty($arr_subject) === true) {
+                throw new \Exception('모의고사 응시과목 정보가 없습니다.');
+            }
+
+            // 모의고사 접수등록
+            // 접수번호 초기값 (경찰 5자리, 공무원 7자리)
+            $first_take_number = '10001';
+            switch ($site_code) {
+                case '2002' : $first_take_number = '10001'; break;
+                case '2004' : $first_take_number = '1000001'; break;
+            }
+
+            $query = /** @lang text */ 'insert into ' . $this->_table['mock_register'] . ' (ProdCode, MemIdx, OrderProdIdx, TakeNumber, TakeMockPart, TakeForm, TakeArea, AddPoint)
+                select ?, ?, ?, ifnull(max(cast(TakeNumber as int)) + 1, ?), ?, ?, ?, ? from ' . $this->_table['mock_register'] . ' where ProdCode = ?';
+
+            $is_mock_register = $this->_conn->query($query, [
+                $prod_code, $mem_idx, $order_prod_idx, $first_take_number,
+                element('TakeMockPart', $post_data, ''), element('TakeForm', $post_data, ''),
+                element('TakeArea', $post_data, ''), element('AddPoint', $post_data, 0),
+                $prod_code
+            ]);
+
+            if ($is_mock_register === false) {
+                throw new \Exception('모의고사 접수등록에 실패했습니다.');
+            }
+
+            // 모의고사 접수식별자 조회
+            $mr_idx = array_get($this->_conn->getListResult($this->_table['mock_register'], 'MrIdx', [
+                'EQ' => ['ProdCode' => $prod_code, 'MemIdx' => $mem_idx, 'OrderProdIdx' => $order_prod_idx]
+            ], 1, 0, ['MrIdx' => 'desc']), '0.MrIdx');
+
+            if (empty($mr_idx) === true) {
+                throw new \Exception('모의고사 접수식별자 조회에 실패했습니다.');
+            }
+
+            // 모의고사 접수 시험지 연결 데이터 등록
+            foreach ($arr_subject as $subject_info) {
+                $arr_subject_info = explode('|', $subject_info);
+                $is_mock_register_paper = $this->_conn->set([
+                    'MrIdx' => $mr_idx, 'ProdCode' => $prod_code, 'MpIdx' => element('0', $arr_subject_info), 'SubjectIdx' => element('1', $arr_subject_info)
+                ])->insert($this->_table['mock_register_r_paper']);
+
+                if ($is_mock_register_paper === false) {
+                    throw new \Exception('모의고사 응시과목 등록에 실패했습니다.');
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
      * 자동지급 강좌/사은품 주문상품 등록 (사은품 배송정보 등록안함)
      * @param int $order_idx [주문식별자]
      * @param int $prod_code [상품코드]
@@ -1135,7 +1218,7 @@ class OrderModel extends BaseOrderModel
             $mem_idx = element('mem_idx', $input);
             $site_code = element('site_code', $input);
             $arr_prod_info = element('prod_code', $input, []);  // 상품코드:상품타입:학습형태공통코드
-            $arr_available_learn_pattern = ['off_lecture', 'book', 'reading_room', 'locker', 'deposit'];     // 주문가능 상품구분
+            $arr_available_learn_pattern = ['off_lecture', 'book', 'reading_room', 'locker', 'deposit', 'mock_exam'];     // 주문가능 상품구분
             $total_order_price = 0;
             $total_real_pay_price = 0;
             $total_card_pay_price = 0;
@@ -1171,10 +1254,10 @@ class OrderModel extends BaseOrderModel
                 // 상품정보 변수 할당
                 list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
 
-                // 학습형태 조회 (학원 단과, 교재, 독서실, 사물함, 예치금 상품만 주문 가능)
+                // 학습형태 조회 (학원 단과, 교재, 독서실, 사물함, 예치금, 모의고사 상품만 주문 가능)
                 $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
                 if ($learn_pattern === false || in_array($learn_pattern, $arr_available_learn_pattern) === false) {
-                    throw new \Exception('주문하실 수 없는 상품입니다.' . PHP_EOL . '학원 단과, 교재, 독서실, 사물함, 예치금 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
+                    throw new \Exception('주문하실 수 없는 상품입니다.' . PHP_EOL . '학원 단과, 교재, 독서실, 사물함, 예치금, 모의고사 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
                 }
 
                 // 상품정보 조회
@@ -1198,6 +1281,7 @@ class OrderModel extends BaseOrderModel
                 if (empty($arr_prod_price_data) === true || isset($arr_prod_price_data[0]['SaleTypeCcd']) === false) {
                     throw new \Exception('판매가격 정보가 없습니다.', _HTTP_NOT_FOUND);
                 }
+
                 $row['SaleTypeCcd'] = $arr_prod_price_data[0]['SaleTypeCcd'];
                 $row['RealSalePrice'] = $arr_prod_price_data[0]['SalePrice'];
                 $row['RealPayPrice'] = array_get($input, 'real_pay_price.' . $idx, 0);
@@ -1213,6 +1297,29 @@ class OrderModel extends BaseOrderModel
                 if (empty($row['TargetOrderIdx']) === false) {
                     $row['TargetProdCode'] = $row['ProdCode'];
                     $row['TargetProdCodeSub'] = $row['ProdCode'];
+                }
+                
+                // 모의고사 상품일 경우 응시정보 설정
+                if ($learn_pattern == 'mock_exam') {
+                    $row['MockPostData'] = [];
+
+                    foreach (element('mock_prod_code', $input, []) as $mock_idx => $mock_prod_code) {
+                        if ($mock_prod_code == $prod_code) {
+                            $row['MockPostData'] = [
+                                'TakeMockPart' => array_get($input, 'mock_take_part.' . $mock_idx, ''),
+                                'TakeForm' => array_get($input, 'mock_take_form.' . $mock_idx, ''),
+                                'TakeArea' => array_get($input, 'mock_take_area.' . $mock_idx, ''),
+                                'AddPoint' => array_get($input, 'mock_add_point.' . $mock_idx, 0),
+                                'SubjectEss' => array_get($input, 'mock_subject_ess.' . $mock_idx, ''),
+                                'SubjectSub' => array_get($input, 'mock_subject_sub.' . $mock_idx, '')
+                            ];
+                            break;
+                        }
+                    }
+
+                    if (empty($row['MockPostData']) === true) {
+                        throw new \Exception('모의고사 응시정보가 없습니다.', _HTTP_BAD_REQUEST);
+                    }
                 }
 
                 // 전체주문 관련 금액 합산

@@ -62,8 +62,8 @@
 
         <div class="willbes-Lec-Selected NG c_both tx-gray pb-zero">
             <select id="process" name="process" title="process" class="seleProcess width30p">
-                <option selected="selected">최근등록순</option>
-                <option value="과정순">과정순</option>
+                <option selected="selected">과정순</option>
+                <option value="최근등록순">최근등록순</option>
             </select>
             <select id="lecture" name="lecture" title="lecture" class="seleLec width30p ml1p">
                 <option selected="selected">강좌명</option>
@@ -98,7 +98,7 @@
                         <td class="w-data tx-left" colspan="2">
                             <div>
                                 <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현 </dt>
+                                    <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
                                 </dl>
                                 <div class="w-tit tx-blue">
                                     2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
@@ -116,7 +116,7 @@
                             </div>
                             <div>
                                 <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현 </dt>
+                                    <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
                                 </dl>
                                 <div class="w-tit tx-blue">
                                     2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
@@ -143,7 +143,7 @@
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
                             <dl class="w-info">
-                                <dt>영어<span class="row-line">|</span>한덕현</dt>
+                                <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현</dt>
                             </dl>
                             <div class="w-tit">
                                 <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
@@ -169,7 +169,7 @@
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
                             <dl class="w-info">
-                                <dt>영어<span class="row-line">|</span>한덕현</dt>
+                                <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현</dt>
                             </dl>
                             <div class="w-tit">
                                 <a href="#none">원유철 기본 한국사 6월 25일 보강 [7월2일 오전9시 삭제]</a>

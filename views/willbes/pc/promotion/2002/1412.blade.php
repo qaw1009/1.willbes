@@ -22,8 +22,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:350px;right:200px;z-index:1;}
-        .skybanner2{position:fixed;top:500px;right:200px;z-index:1;}
+        .skybanner {position:fixed;top:350px;right:0;z-index:1;}
+        .skybanner2{position:fixed;top:500px;right:0;z-index:1;}
 
         .wb_cts00 {background:#404040}
         .wb_top{background:url(https://static.willbes.net/public/images/promotion/2019/10/1412_top_bg.jpg) no-repeat center top;}

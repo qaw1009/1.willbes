@@ -86,10 +86,13 @@
                                     </dl>
                                     <div class="w-start tx-gray">
                                         <ul class="f_left two">
-                                            {{--
-                                            <li class="btn_white"><a href="#none">후기등록</a></li>
-                                            <li class="btn_blue"><a href="#none">재수강신청</a></li>
-                                            --}}
+                                            @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                                                @if($row['IsRetake'] == 'N')
+                                                    <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
+                                                @else
+                                                    <li class="btn_blue"><a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');">재수강신청</a></li>
+                                                @endif
+                                            @endif
                                         </ul>
                                     </div>
                                     <div class="w-line">-</div>
@@ -123,6 +126,9 @@
                                         <div class="w-start tx-gray">
                                             <ul class="f_left two">
                                                 <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
+                                                {{--
+                                                <li class="btn_blue"><a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','');"><span class="bBox blueBox NSK">재수강신청</span></a></li>
+                                                --}}
                                             </ul>
                                             <div class="MoreBtn f_right tx-right">
                                                 <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
@@ -184,6 +190,15 @@
 
     </div>
     <!-- End Container -->
+
+    <form name="retakeForm" id="retakeForm" method="POST" action="">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="sale_pattern" value="retake" />
+        <input type="hidden" name="target_order_idx" id="retake_orderidx" value="" />
+        <input type="hidden" name="target_prod_code" id="retake_prodcode" value="" />
+        <input type="hidden" name="target_prod_code_sub" id="retake_prodcodesub" value="" />
+    </form>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#course_ccd,#subject_ccd,#prof_ccd,#sitegroup_ccd').on('change', function (){
@@ -196,5 +211,16 @@
                 }
             });
         });
+
+        function fnRetake($site, $o, $p, $ps)
+        {
+            $('#retake_orderidx').val($o);
+            $('#retake_prodcode').val($p);
+            $('#retake_prodcodesub').val($ps);
+
+            if(window.confirm('재수강 신청하시겠습니까?') == true){
+                $('#retakeForm').prop('action', '//'+$site+'/m/cart/store').submit();
+            }
+        }
     </script>
 @stop

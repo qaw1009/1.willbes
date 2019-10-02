@@ -275,8 +275,8 @@ class Visit extends BaseOrder
         $rules = [
             ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'order_price[]', 'label' => '주문금액', 'rules' => 'trim|required'],
-            ['field' => 'disc_type[]', 'label' => '주문금액', 'rules' => 'trim|required'],
-            ['field' => 'disc_rate[]', 'label' => '주문금액', 'rules' => 'trim|required'],
+            ['field' => 'disc_type[]', 'label' => '할인구분', 'rules' => 'trim|required'],
+            ['field' => 'disc_rate[]', 'label' => '할인율', 'rules' => 'trim|required'],
             ['field' => 'card_pay_price[]', 'label' => '카드금액', 'rules' => 'trim|required'],
             ['field' => 'cash_pay_price[]', 'label' => '현금금액', 'rules' => 'trim|required'],
             ['field' => 'real_pay_price[]', 'label' => '결제금액', 'rules' => 'trim|required'],

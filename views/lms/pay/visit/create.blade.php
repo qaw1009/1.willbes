@@ -312,7 +312,42 @@
                 var real_pay_price = 0;
                 var card_pay_price = 0;
                 var cash_pay_price = 0;
+                var arr_prod_info = [];
+                var is_prod_check = true;
                 var is_pay_check = true;
+
+                {{-- 주문등록 상품 체크 --}}
+                @if($_is_order === false)
+                    if ($regi_form.find('[name="prod_code[]"]').length < 1) {
+                        alert('상품을 선택해 주세요.');
+                        return false;
+                    }
+
+                    // 상품별 추가정보 입력여부 체크
+                    $regi_form.find('[name="prod_code[]"]').each(function(index) {
+                        arr_prod_info = $(this).val().split(':');
+
+                        if (arr_prod_info[1] === 'reading_room' || arr_prod_info[1] === 'locker') {
+                            // 독서실, 사물함 좌석배정 체크
+                            if ($regi_form.find('[name="rdr_prod_code[]"][value="' + arr_prod_info[0] + '"]').length < 1) {
+                                alert((index + 1) + '번째 상품의 좌석배정 정보를 선택해 주세요.');
+                                is_prod_check = false;
+                                return false;
+                            }
+                        } else if (arr_prod_info[1] === 'mock_exam') {
+                            // 모의고사 응시정보 체크
+                            if ($regi_form.find('[name="mock_prod_code[]"][value="' + arr_prod_info[0] + '"]').length < 1) {
+                                alert((index + 1) + '번째 상품의 신청정보를 입력해 주세요.');
+                                is_prod_check = false;
+                                return false;
+                            }
+                        }
+                    });
+
+                    if (is_prod_check === false) {
+                        return false;
+                    }
+                @endif
 
                 if ($regi_form.find('[name="mem_idx"]').val().length < 1) {
                     alert('회원을 선택해 주세요.');
@@ -403,7 +438,7 @@
 
                 $('#btn_product_search').setLayer({
                     'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type=off&return_type=inline&target_id=selected_product&target_field=prod_code'
-                        + '&prod_tabs=off,book,reading_room,locker&hide_tabs=off_pack_lecture&is_event=Y',
+                        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
                     'width' : 1200
                 });
             });
@@ -490,14 +525,17 @@
                 });
             });
 
+            // 모의고사 신청정보입력 버튼 클릭
             $regi_form.on('click', 'button[name="btn_set_mock_exam"]', function() {
-                if ($regi_form.find('[name="mem_idx"]').val().length < 1) {
+                var mem_idx = $regi_form.find('[name="mem_idx"]').val();
+
+                if (mem_idx.length < 1) {
                     alert('회원을 선택해 주세요.');
                     return false;
                 }
 
                 $('button[name="btn_set_mock_exam"]').setLayer({
-                    "url" : "{{ site_url('/common/searchMockTest/createApplyRegistModal/') }}"+ $(this).data('prod-code') + '?mem_idx=' + $regi_form.find('[name="mem_idx"]').val(),
+                    "url" : "{{ site_url('/common/searchMockTest/createApplyRegistModal/') }}"+ $(this).data('prod-code') + '?mem_idx=' + mem_idx,
                     "width" : "800"
                 });
             });

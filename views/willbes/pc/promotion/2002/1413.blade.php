@@ -24,7 +24,7 @@
         .skyBanner ul li{padding-bottom:10px;}
        
         .top_police{background:url(https://static.willbes.net/public/images/promotion/2019/07/1310_police_bg.jpg) no-repeat center top;}
-        .evtTop {background:#e95020;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/09/1413_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#fff;}
         .evt02 {background:#efefef;}        
 

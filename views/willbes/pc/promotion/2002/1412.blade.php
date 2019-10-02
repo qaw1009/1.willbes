@@ -26,7 +26,7 @@
         .skybanner2{position:fixed;top:500px;right:200px;z-index:1;}
 
         .wb_cts00 {background:#404040}
-        .wb_top{background:#3c4765}
+        .wb_top{background:url(https://static.willbes.net/public/images/promotion/2019/10/1412_top_bg.jpg) no-repeat center top;}
         .wb_cts01 {background:#4f4f4f}   
         .wb_cts02 {background:#464646}
         .wb_cts03 {background:#585858}

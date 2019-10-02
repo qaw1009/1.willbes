@@ -22,8 +22,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:350px;right:0;z-index:1;}
-        .skybanner2{position:fixed;top:500px;right:0;z-index:1;}
+        .skybanner {position:fixed;top:350px; width:120px; right:0;z-index:1;}
+        .skybanner a {display:block; margin-bottom:5px}
 
         .wb_cts00 {background:#404040}
         .wb_top{background:url(https://static.willbes.net/public/images/promotion/2019/10/1412_top_bg.jpg) no-repeat center top;}
@@ -40,14 +40,10 @@
       
         <div class="skybanner" >
             <a href="#to_go1"><img src="https://static.willbes.net/public/images/promotion/2019/10/1412_skybanner01.png" alt="심화기출 이벤트" ></a>
+            <a href="#to_go2"><img src="https://static.willbes.net/public/images/promotion/2019/10/1412_skybanner02.png" alt="사전예약 이벤트" ></a>
         </div>
 
-        <div class="skybanner2" >
-            <a href="#to_go2"><img src="https://static.willbes.net/public/images/promotion/2019/10/1412_skybanner02.png" alt="사전예약 이벤트" ></a>
-        </div>         
-       
-
-		<div class="evtCtnsBox wb_cts00">
+    	<div class="evtCtnsBox wb_cts00">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1283_00.jpg" alt="슈퍼pass"/>            
         </div>
 

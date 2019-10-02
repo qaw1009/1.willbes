@@ -70,29 +70,26 @@ class SearchMockTest extends \app\controllers\BaseController
     /**
      * 모의고사 신정정보입력 팝업창
      * @param array $params
+     * @return mixed
      */
     public function createApplyRegistModal($params = [])
     {
         $mem_idx = $this->_reqG('mem_idx');
+
         if (empty($params) === true) {
-            show_error('모의고사 코드가 존재하지 않습니다.');
+            return $this->json_error('모의고사 상품코드가 없습니다.');
         }
 
         if (empty($mem_idx) === true) {
-            show_error('회원는 필수입니다.');
+            return $this->json_error('회원식별자가 없습니다.');
         }
 
         $prod_code = $params[0];
-        $arr_condition = [
-            'EQ' => [
-                'PD.ProdCode' => $prod_code,
-                'PD.IsUse' => 'Y'
-            ]
-        ];
+        $arr_condition = ['EQ' => ['PD.ProdCode' => $prod_code]];
 
         $data = $this->searchMockTestModel->listMockTest(false, $arr_condition, 1, 0, ['PD.ProdCode' => 'desc'], $mem_idx);
         if (empty($data) === true) {
-            show_error('조회된 모의고사가 없습니다.');
+            return $this->json_error('모의고사 데이터 조회에 실패했습니다.');
         }
         $mock_data = $data[0];
 
@@ -117,7 +114,7 @@ class SearchMockTest extends \app\controllers\BaseController
         //가산점 추출
         $mock_addpoint = $this->searchMockTestModel->listMockTestAddPoint($prod_code);
 
-        $this->load->view("common/search_mocktest_apply_regist", [
+        return $this->load->view("common/search_mocktest_apply_regist", [
             'prod_code' => $prod_code,
             'all_pay_check' => $all_pay_check,
             'order_prod_idx' => $order_prod_idx,

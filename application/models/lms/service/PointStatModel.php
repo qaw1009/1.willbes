@@ -89,17 +89,28 @@ class PointStatModel extends WB_Model
         $use_start_date = $use_start_date . ' 00:00:00';    // 사용시작일
         $use_end_date = $use_end_date . ' 23:59:59';        // 사용종료일
 
+        // 통합이전 포인트 적립사유
+        $arr_prev_save_etc_reason = [
+            '도서포인트 적립', '윌비스 패밀리 이벤트 포인트 적립',
+            '2019년 설이벤트 참여', '2019년 1월 학원_설명회 이벤트 포인트 추가지급', '제대군인 전용 프리패스(교재포함)  구매 이벤트',
+            '평생0원PASS 첫런칭기념 이벤트', '2019년 1월 학원 수강생 포인트 적립 이벤트', '인천캠퍼스 신규등록 이벤트 포인트(240,000점) 지급'
+        ];
+
         $column = 'U.BaseYm, U.SaveReason, sum(U.SumSavePoint) as SumSavePoint, sum(U.SumUsePoint) as SumUsePoint';
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         // 적립포인트 공통쿼리
         $save_from = /** @lang text */ '
             select PS.PointIdx, PS.SiteCode, PS.SavePoint, left(PS.SaveDatm, 7) as SaveYm
-                , if(PS.EtcReason = "도서포인트 적립", "book", "join") as SaveReason
+                , (select case PS.EtcReason
+                    when "도서포인트 적립" then "book"
+                    when "윌비스 패밀리 이벤트 포인트 적립" then "join"
+                    else "lecture"
+                  end) as SaveReason                
             from ' . $this->_table['point_save'] . ' as PS
             where PS.SaveDatm between ? and ?
                 and PS.SaveDatm < "' . $base_intg_datm . '"
-                and PS.EtcReason in ("도서포인트 적립", "윌비스 패밀리 이벤트 포인트 적립")
+                and PS.EtcReason in ?
                 and PS.PointType = "book"
             union all
             select PS.PointIdx, PS.SiteCode, PS.SavePoint, left(PS.SaveDatm, 7) as SaveYm
@@ -147,8 +158,8 @@ class PointStatModel extends WB_Model
         ';
 
         $binds = [
-            $save_start_date, $save_end_date, $save_start_date, $save_end_date
-            , $use_save_start_date, $use_save_end_date, $use_save_start_date, $use_save_end_date
+            $save_start_date, $save_end_date, $arr_prev_save_etc_reason, $save_start_date, $save_end_date
+            , $use_save_start_date, $use_save_end_date, $arr_prev_save_etc_reason, $use_save_start_date, $use_save_end_date
             , $use_start_date, $use_end_date
         ];
 

@@ -188,6 +188,26 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 어학 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2007Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+
+        if (APP_DEVICE == 'pc') {
+            $data['notice'] = $this->_boardNotice(5, $cate_code);
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $cate_code);
+            $data['exam_news'] = $this->_boardExamNews(5, $cate_code);
+            $data['arr_main_banner'] = $this->_banner($cate_code);
+        }
+
+        return $data;
+    }
+
+    /**
      * 메인 배너
      * @param int $cate_code
      * @return array

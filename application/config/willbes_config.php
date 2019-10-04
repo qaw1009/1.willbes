@@ -62,6 +62,10 @@ $config['ssam'] = array(
 $config['job'] = array(
 );
 
+// 어학사이트 설정
+$config['lang'] = array(
+);
+
 // 모의고사
 $config['mock'] = array(
     'sysCode_kind' => 686,             // 모의고사 직렬 운영코드 그룹값 (lms_sys_code)

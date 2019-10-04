@@ -29,6 +29,11 @@ class Lecture extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
+        //디폴트 과정순 적용
+        if (empty(element('search_order', $arr_input))) {
+            $arr_input['search_order'] = 'course' ;
+        }
+
         // 카테고리 셋팅 => 모바일의 경우 select box로 카테고리 전달
         $cate_code = !(empty($this->_cate_code)) ? $this->_cate_code : element('cate_code', $arr_input);
 
@@ -95,6 +100,7 @@ class Lecture extends \app\controllers\FrontController
         // 상품 조회
         $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
+
         // 상품조회 결과 배열 초기화
         $selected_subjects = [];
         $selected_professor_names = [];
@@ -140,12 +146,14 @@ class Lecture extends \app\controllers\FrontController
 
                 // 정렬방식이 과정순일 경우 배열키 재정의, 배열키 기준으로 재정렬하기 위해 필요 (OrderNumCourse + ProdCode)
                 if (element('search_order', $arr_input) == 'course') {
-                    $selected_list[$row['SubjectIdx']][$row['ProfIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . $row['ProdCode']] = $row;
+                    //$selected_list[$row['SubjectIdx']][$row['ProfIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . $row['ProdCode']] = $row;
+                    $selected_list[$row['SubjectIdx']][$row['ProfIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . (300000 - $row['ProdCode'])] = $row;
                 } else {
                     $selected_list[$row['SubjectIdx']][$row['ProfIdx']][] = $row;
                 }
             }
         }
+
 
         $this->load->view('site/lecture/index', [
             'arr_input' => $arr_input,

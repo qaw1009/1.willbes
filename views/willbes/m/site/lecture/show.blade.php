@@ -19,7 +19,7 @@
                         </div>
                         <div class="w-data tx-left pl15">
                             <dl class="w-info pt-zero">
-                                <dt>{{ $data['SubjectName'] }}<span class="row-line">|</span>{{ $data['ProfNickName'] }}</dt>
+                                <dt>{{ $data['CourseName'] }}<span class="row-line">|</span>{{ $data['SubjectName'] }}<span class="row-line">|</span>{{ $data['ProfNickName'] }}</dt>
                             </dl>
                             <div class="w-tit">
                                 {{ $data['ProdName'] }}

@@ -68,7 +68,7 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="f_right two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">시작일변경</a></li>
                                         <li class="btn_blue"><a href="#none">수강시작</a></li>
                                     </ul> 
@@ -90,7 +90,7 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="f_right two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">시작일변경</a></li>
                                         <li class="btn_blue"><a href="#none">수강시작</a></li>
                                     </ul> 
@@ -112,7 +112,7 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="f_right two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">시작일변경</a></li>
                                         <li class="btn_blue"><a href="#none">수강시작</a></li>
                                     </ul> 
@@ -134,7 +134,7 @@
                                 </dl>
                                 <div class="w-start tx-gray">                        
                                     <span class="w-subtxt">수강시작일 : 2018-00-00</span>
-                                    <ul class="f_right two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">시작일변경</a></li>
                                         <li class="btn_blue"><a href="#none">수강시작</a></li>
                                     </ul> 

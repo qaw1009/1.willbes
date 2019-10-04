@@ -71,7 +71,7 @@
                     </tr>
                     <tr>
                         <th class="w-tit bg-light-white strong">결제금액</th>
-                        <td class="w-data tx-left pl15"><span id="expPrice">{{number_format($lec['ExtenPrice'] * 5)}}원</span></td>
+                        <td class="w-data tx-left pl15"><span id="expPrice">{{number_format(floor($lec['ExtenPrice'] * 5))}}원</span></td>
                     </tr>
                     </tbody>
                 </table>
@@ -130,9 +130,9 @@
     <script>
         $(document).ready(function() {
             $('#day').on('change', function() {
-               $day = $(this).val();
-               $('#expDate').text(moment('{{$lec['RealLecEndDate']}}').add($day, 'days').format('YYYY-MM-DD'));
-               $('#expPrice').text(addComma($day * {{$lec['ExtenPrice']}}) + '원');
+                $day = $(this).val();
+                $('#expDate').text(moment('{{$lec['RealLecEndDate']}}').add($day, 'days').format('YYYY-MM-DD'));
+                $('#expPrice').text(addComma(Math.floor($day * {{$lec['ExtenPrice']}})) + '원');
             });
         });
 

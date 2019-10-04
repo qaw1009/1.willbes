@@ -1278,7 +1278,7 @@ class On extends \app\controllers\FrontController
         }
 
         $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2);
-        $lec['ExtenPrice'] = floor($lec['ExtenPrice'] / $lec['StudyPeriod']);
+        $lec['ExtenPrice'] = round($lec['ExtenPrice'] / $lec['StudyPeriod'] ,4);
         $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         if ($lec['IsRebuy'] > 0) {

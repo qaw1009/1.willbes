@@ -141,13 +141,13 @@
                     </a>
                 </li>
                 <li>
-                    <a id='tab3' href="@if(time() >= strtotime('201908171140')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1417/?tab=3#content_3') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
+                    <a id='tab3' href="@if(time() >= strtotime('201910121140')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1417/?tab=3#content_3') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
                         <span>2019 지방직/서울시 7급</span>
                         <div>후기 및 적중 이벤트</div>
                     </a>
                 </li>     
                 <li>
-                    <a id='tab4' href="@if(time() >= strtotime('201908191500')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1417/?tab=4#content_4') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
+                    <a id='tab4' href="@if(time() >= strtotime('201910140000')){{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1417/?tab=4#content_4') }} @else {{ 'javascript:alert(\'준비중입니다\');' }} @endif">
                         <span>2019 지방직/서울시 7급</span>
                         <div>기출해설 자료</div>
                     </a>

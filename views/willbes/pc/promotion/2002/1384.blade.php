@@ -137,7 +137,7 @@
                             <td>18:00 ~ 18:30</td>
                             <td>10.4(금)</td>
                             <td>
-                                @if (date('YmdH') < '2019100409')
+                                @if (date('YmdH') < '2019100418')
                                 <span>접수중</span>
                                 @else
                                 <span class="end">접수마감</span>

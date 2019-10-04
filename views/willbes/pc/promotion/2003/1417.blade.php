@@ -11,6 +11,7 @@
         .evtContent { 
             position:relative;            
             width:100% !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -20,7 +21,7 @@
         /*****************************************************************/  
 
         .evtTop {
-            background:url(https://static.willbes.net/public/images/promotion/2019/10/1417_top_bg.jpg) no-repeat center top
+            background:url(https://static.willbes.net/public/images/promotion/2019/10/1417_top_bg.jpg) no-repeat center top;
         }
         
         .evtMenu {width:100%; background:#5d5d5d;}
@@ -38,8 +39,9 @@
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {
-            position:relative; width:1120px; margin:0 auto; text-align:center; 
+            position:relative; width:1120px; margin:0 auto; text-align:center; font-size:14px;
         }
+
         .tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
         .tabCts .download span:nth-child(1) {left:160px;}
         .tabCts .download span:nth-child(2) {left:362px;}
@@ -61,7 +63,7 @@
         .tabMenu li a.active{color:#000;background:#fff;}
         
 
-        .boardD {width:900px; border-spacing:0px; border:1px solid #dedede; table-layout:auto; color:#666; margin:0 auto} 
+        .boardD {width:1000px; border-spacing:0px; border:1px solid #dedede; table-layout:auto; color:#666; margin:0 auto} 
         .boardD caption {display:none}
         .boardD th {padding:10px 5px; background:#f5f5f5; border-right:1px solid #dedede; border-bottom:1px solid #dedede; color:#333}
         .boardD thead th {background:#eee; color:#333}
@@ -71,7 +73,8 @@
         .boardD td:last-child {color:#C00}
         .boardD tr.gray th,
         .boardD tr.gray td {background:#eee}
-        .boardD tbody tr:hover {background:#f5f5f5}
+        .boardD th a {margin:0}
+        .boardD tbody th:hover {background:#fce6d8}
 
         .Cts03 {margin-bottom:100px; text-align:left}
         

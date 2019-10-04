@@ -161,7 +161,6 @@
             </tbody>
         </table>
     </div>  
-    
     <div class="mt30">
         {!! $paging['pagination'] !!}
     </div>
@@ -197,11 +196,25 @@
     });
 
     function comment_submit() {
+
+        var confirm_commnet_msg = '등록하시겠습니까?';
+        @if(empty($give_timing) === false && $give_timing == 'comment')
+            confirm_commnet_msg = '선택하신 쿠폰이 발급 됩니다. 댓글을 등록하시겠습니까?';
+        @endif
+
         var _url = '{!! front_url('/promotion/commentStore') !!}';
-        if (!confirm('등록하시겠습니까?')) { return true; }
+        if (!confirm(confirm_commnet_msg)) { return true; }
         ajaxSubmit($regi_form_comment, _url, function(ret) {
             if(ret.ret_cd) {
-                location.reload();
+                @if(empty($give_timing) === false && $give_timing == 'comment')
+                    if(parent.giveCheck){
+                        parent.giveCheck();
+                    }else{
+                        alert('쿠폰 발급 도중 오류가 발생하였습니다.');
+                    }
+                @else
+                    location.reload();
+                @endif
             }
         }, showValidateError, addValidate, false, 'alert');
     }

@@ -29,13 +29,12 @@
                         - 일시정지(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>
                         - 1회 일시정지 기간은 수강 잔여일을 초과할 수 없으며, <span class="tx-red">일시 정지기간의 총합은 수강기간을 초과할 수 없습니다.</span><br/>
                         - 일시정지된 강좌는 일시정지강좌에서 확인할 수 있습니다.<br/>
-                        {{--
-                        <div class="willbes-Txt-Tit NG mt30">· 수강연장신청</div>
+                        <div class="willbes-Txt-Tit NG mt30">· 수강연장</div>
                         - 수강연장된 강의는 일시정지를 신청할 수 없습니다.<br/>
-                        - 수강연장(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지</span> 연장이 가능합니다. (단, PC에서만 신청 가능)<br/>
+                        - 수강연장(잔여횟수)버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지</span> 연장이 가능합니다.<br/>
                         - <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span><br/>
                         - 수강연장은 수강종료일 전까지만 신청이 가능하며 5일 단위(5일,10일,15일등)로 신청할 수 있습니다.<br/>
-                        --}}
+                        - 폐강된 강좌는 수강연장이 제공되지 않습니다.
                     </div>
 
                     <div class="willbes-Lec-Selected NG c_both tx-gray">

@@ -539,7 +539,8 @@ class On extends \app\controllers\FrontController
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
             'lecList' => $leclist,
-            'pkgList' => $pkglist
+            'pkgList' => $pkglist,
+            'arr_input' => $input_arr
         ]);
     }
 

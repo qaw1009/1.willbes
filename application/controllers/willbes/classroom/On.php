@@ -1270,6 +1270,7 @@ class On extends \app\controllers\FrontController
         foreach ($lec['ProdPriceData'] as $key => $row) {
             if ($row['SaleTypeCcd'] == $lec['SaleTypeCcd']) {
                 $lec['ExtenPrice'] = $row['SalePrice'];
+                $lec['SalePrice'] = $row['SalePrice'];
             }
         }
 
@@ -1278,7 +1279,7 @@ class On extends \app\controllers\FrontController
         }
 
         $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2);
-        $lec['ExtenPrice'] = $lec['ExtenPrice'] / $lec['StudyPeriod'];
+        $lec['ExtenPrice'] = round($lec['ExtenPrice'] / $lec['StudyPeriod'] ,3);
         $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         if ($lec['IsRebuy'] > 0) {

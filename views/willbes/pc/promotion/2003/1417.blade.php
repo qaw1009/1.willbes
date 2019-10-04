@@ -20,25 +20,25 @@
         /*****************************************************************/  
 
         .evtTop {
-            background:url(https://static.willbes.net/public/images/promotion/2019/08/1356_top_bg.jpg) no-repeat center top
+            background:url(https://static.willbes.net/public/images/promotion/2019/10/1417_top_bg.jpg) no-repeat center top
         }
         
-        .evtMenu {width:100%; background:#707070; border-bottom:5px solid #f8a198}
+        .evtMenu {width:100%; background:#5d5d5d;}
         .evtMenu ul {width:1120px; margin:0 auto; border-left:1px solid #90887b}
         .evtMenu li {display:inline; float:left; width:25%}
         .evtMenu li a {
-            display:block; text-align:center; padding:30px 0; color:#fff; font-size:150%; font-weight:900;border-right:1px solid #90887b;
+            display:block; text-align:center; padding:30px 0; color:#a9a9a9; font-size:150%; font-weight:900;border-right:1px solid #90887b;
         }  
-        .evtMenu li a span {padding:3px 10px; border-radius:15px; background:#f8a198; color:#36374d; font-weight:normal; font-size:70%}
+        .evtMenu li a span {padding:3px 10px; border-radius:15px; background:#fce6d8; color:#5d5d5d; font-weight:normal; font-size:70%}
         .evtMenu li a div {margin-top:8px}
         .evtMenu li:hover a,
-        .evtMenu li a.active {background:#f8a198; color:#2e2e2e}
+        .evtMenu li a.active {background:#fce6d8; color:#4b4848}
         .evtMenu li:hover a span,
         .evtMenu li a.active span {background:#fff; color:#000}
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {
-            position:relative; width:1120px; margin:0 auto; text-align:center;
+            position:relative; width:1120px; margin:0 auto; text-align:center; 
         }
         .tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
         .tabCts .download span:nth-child(1) {left:160px;}
@@ -120,7 +120,7 @@
 
     <div class="evtContent NG" id="evtContainer">
         <div class="evtCtnsBox evtTop" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_top.jpg" title="2019 7급 풀캐어 서비스" />
         </div>
 
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
@@ -154,37 +154,7 @@
 
         <!--최종 마무리 전략-->
         <div id="content_1" class="tabCts pb90">
-            <div class="download">		
-                <!--국어-->
-                {{--
-                <span>
-                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif">다운로드</a>
-                </span>
-
-                <!--영어-->
-                <span>
-                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif">다운로드</a>
-                </span>
-                    
-                <!--한국사-->
-                <span>
-                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif">다운로드</a>
-                </span>
-    
-                <!--행정법-->
-                <span>
-                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif">다운로드</a>
-                </span>
-                    
-                <!--행정학-->
-                <span>
-                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif">다운로드</a>
-                </span>
-                --}}
-                <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_01_1.jpg" title="유의사항" />            
-            </div>
-               
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_01_2.jpg" title="유의사항" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts01_01.jpg" title="유의사항" />
             <div>
                 <table class="boardD">
                     <col span="5" />
@@ -309,18 +279,18 @@
                     </tr>
                 </table>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_01_3.jpg" title="응시자 준수사항 및 필기장소 안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts01_02.jpg" title="응시자 준수사항 및 필기장소 안내" />
             
             <div class="youtube">
                 <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_btn01.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
+            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts01_btn.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
         </div>
 
         <!--완벽분석-->
         <div id="content_2" class="tabCts Cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_02_2.jpg" title="풀캐어 강사진" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts02_01.jpg" title="전년도 7급 체감난이도" />           
+
             <div class="mt20 mb100">
                 <p class="download">
                 * 시험문제/가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기</a>
@@ -550,31 +520,31 @@
 
         <!--시험총평 및 시험후기-->
         <div id="content_3" class="tabCts Cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts03_01.jpg" title="시험 총평 및 시험후기, 적중이벤트" />
             @include('willbes.pc.survey.show_graph_partial')
 
             <div class="mt30 tx-center">
                 <a href="javascript:pullOpen();">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_btn02.png" title="설문하기" />
+                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts03_btn.png" title="설문하기" />
                 </a>
             </div>
 
-            <!--
+            {{--
             <div class="Cts03_01">
                 <h3>2019년 8월 17일 시행 <span>국가직 7급 시험 총평</span></h3>
                 <div>
-                    {{--{!! $data['Content'] !!}--}}
+                    {!! $data['Content'] !!}
                 </div>
             </div>
-            -->
+            --}}
 
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts03_02.jpg" title="시험후기 댓글 이벤트" /></div>
             {{--시험평가댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
             @endif
 
-            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_03_3.jpg" title="소름돋는 적중" /> </div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts03_03.jpg" title="소름돋는 적중" /> </div>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
@@ -584,7 +554,7 @@
 
         <!--기출해설강의-->
         <div id="content_4" class="tabCts Cts04">
-            <div><img src="https://static.willbes.net/public/images/promotion/2019/08/1356_04_1.jpg" title="기출해설강의" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts04_01.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>
                     @if(empty($arr_base['promotion_otherinfo_data']) === false)
@@ -600,13 +570,13 @@
                                         @else
                                             @if(empty($row['wHD']) === false)
                                             <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">
-                                                <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_btn03.png" title="해설강의">
+                                                <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_btn03.png" title="해설강의">
                                             </a>
                                             @endif
 
                                             @if(empty($row['wUnitAttachFile']) === false)
                                                 <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}" target="_blank">
-                                                    <img src="https://static.willbes.net/public/images/promotion/2019/08/1356_btn04.png" title="해설자료">
+                                                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_btn04.png" title="해설자료">
                                                 </a>
                                             @endif
                                         @endif

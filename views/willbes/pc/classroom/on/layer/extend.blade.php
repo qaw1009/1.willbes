@@ -132,7 +132,7 @@
             $('#day').on('change', function() {
                $day = $(this).val();
                $('#expDate').text(moment('{{$lec['RealLecEndDate']}}').add($day, 'days').format('YYYY-MM-DD'));
-               $('#expPrice').text(addComma($day * {{$lec['ExtenPrice']}}) + '원');
+               $('#expPrice').text(addComma(Math.floor($day * {{$lec['ExtenPrice']}})) + '원');
             });
         });
 

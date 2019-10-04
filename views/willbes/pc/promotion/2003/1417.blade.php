@@ -53,9 +53,9 @@
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 
+        .Cts02 {padding-bottom:150px}
         .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
-
-        .Cts02 .download{padding:40px 0 20px;}       
+        .Cts02 .download{padding:0 0 20px;}       
         .tabMenu{width:900px;margin:0 auto 80px;}
         .tabMenu li{display:inline;float:left;width:50%;}
         .tabMenu li a{display:block;text-align:center;border:1px solid #000;border-bottom:0;font-size:140%;
@@ -281,20 +281,13 @@
                         <td>12.20.(금) </td>
                     </tr>
                 </table>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts01_02.jpg" title="응시자 준수사항 및 필기장소 안내" />
-            
-            <div class="youtube">
-                <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts01_btn.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
+            </div>              
         </div>
 
         <!--완벽분석-->
         <div id="content_2" class="tabCts Cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts02_01.jpg" title="전년도 7급 체감난이도" />           
-
-            <div class="mt20 mb100">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts02_01.jpg" title="전년도 7급 체감난이도" />         
+            <div>
                 <p class="download">
                 * 시험문제/가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기</a>
                 </p>

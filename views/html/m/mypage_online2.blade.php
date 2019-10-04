@@ -74,7 +74,7 @@
                                     <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_left two">
+                                    <ul class="two">
                                         <li class="btn_blue"><a href="#none">수강연장(3)</a></li>
                                         <li class="btn_white"><a href="#none">일시정지불가</a></li>                                        
                                     </ul> 
@@ -96,7 +96,7 @@
                                     <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_left two">
+                                    <ul class="two">
                                         <li class="btn_blue"><a href="#none">연장횟수초과(3)</a></li>
                                         <li class="btn_white"><a href="#none">일시정지불가</a></li>                                        
                                     </ul> 
@@ -118,7 +118,7 @@
                                     <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_left two">
+                                    <ul class="two">
                                         <li class="btn_blue"><a href="#none">수강연장불가</a></li>                                      
                                     </ul> 
                                 </div>
@@ -174,18 +174,19 @@
                                 <td class="w-data tx-left pb-zero">
                                     <div class="w-tit">
                                         <a href="#none">2018 한덕현 제니스 영어실전 동형 모의고사 Pack 강좌명 최대 2줄 노출</a>
+                                        <div class="MoreBtn f_right tx-right">
+                                            <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                        </div> 
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
                                     </dl>
                                     <div class="w-start tx-gray">                      
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             <li class="btn_white"><a href="#none">일시정지</a></li>
                                             <li class="btn_blue"><a href="#none">수강연장</a></li>
                                         </ul> 
-                                        <div class="MoreBtn f_right tx-right">
-                                            <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                        </div>  
+                                         
                                     </div>
                                     <div class="w-line">-</div>
                                 </td>
@@ -209,7 +210,7 @@
                                         <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">                        
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             <li class="btn_white"><a href="#none">일시정지</a></li>
                                             <li class="btn_blue"><a href="#none">수강연장</a></li>
                                         </ul> 
@@ -232,7 +233,7 @@
                                         <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">                        
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             <li class="btn_white"><a href="#none">일시정지</a></li>
                                             <li class="btn_blue"><a href="#none">수강연장</a></li>
                                         </ul> 

@@ -1322,17 +1322,17 @@ body.memBody #Footer {
     height: auto !important;
     max-width: 900px;
 }
-.lecTable .w-subtxt {
-    width: 45%;
-} 
+
 .lecTable .w-start {
     font-size: 12px;
     margin: 20px -20px 0;
     padding: 15px 20px;
     border-top: 1px solid #ccc;
-    line-height: 33px;
-    height: 65px;
+    line-height: 2;
 }
+.lecTable .w-subtxt {
+    width: 45%;
+} 
 .lecTable .w-start ul li {
     display:inline;
     float: left;    
@@ -1366,7 +1366,11 @@ body.memBody #Footer {
     border: 0;
     height: auto;
 }
-
+.lecTable .w-start ul:after {
+    content:"";
+    display:block;
+    clear:both;
+}
 .lecTable .w-buy {
     font-size: 12px;
     padding: 15px 0;
@@ -1780,8 +1784,9 @@ body.memBody #Footer {
     display: none;
 }
 .willbes-Open-Table .MoreBtn {
-    width: 50%;
+    width: 34px;
     height: 34px;
+    margin-top:-20px;
 }
 .willbes-Open-Table .MoreBtn a {
     display: block;

@@ -199,7 +199,7 @@
 
         var confirm_commnet_msg = '등록하시겠습니까?';
         @if(empty($give_timing) === false && $give_timing == 'comment')
-            confirm_commnet_msg = '선택하신 쿠폰이 발급 됩니다. 댓글을 등록하시겠습니까?';
+            confirm_commnet_msg = '쿠폰이 발급 됩니다. 댓글을 등록하시겠습니까?';
         @endif
 
         var _url = '{!! front_url('/promotion/commentStore') !!}';

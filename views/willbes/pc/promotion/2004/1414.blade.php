@@ -40,6 +40,10 @@
         .skybanner{position: fixed; bottom:0;z-index: 1;background:#898989;}	
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
     <div class="p_re evtContent NGR" id="evtContainer">       
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_top.jpg" usemap="#Map1414a" title="장학생 선발 전국 모의고사" border="0"  />
@@ -100,7 +104,8 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript"> 
+    <script type="text/javascript">
+        $regi_form = $('#regi_form');
          /*tab*/
          $(document).ready(function(){
             $('.tabs ul').each(function(){
@@ -125,5 +130,29 @@
                 });
             });
         });
+
+         function giveCheck() {
+             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+             @if(empty($arr_promotion_params) === false)
+             var give_idx = "{{$arr_promotion_params['give_idx']}}";
+
+             if(!give_idx){
+                 alert('쿠폰을 선택하지 않아서 발급에 실패하였습니다.');
+                 return;
+             }
+
+             var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&give_idx='+give_idx+'&event_code={{$data['ElIdx']}}';
+             ajaxSubmit($regi_form, _check_url, function (ret) {
+                 if (ret.ret_cd) {
+                     alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                     location.reload();
+                     {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                 }
+             }, showValidateError, null, false, 'alert');
+             @else
+             alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+             @endif
+         }
+
     </script>    
 @stop

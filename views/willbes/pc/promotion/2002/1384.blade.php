@@ -137,7 +137,11 @@
                             <td>18:00 ~ 18:30</td>
                             <td>10.4(금)</td>
                             <td>
+                                @if (date('YmdH') < '2019100418')
                                 <span>접수중</span>
+                                @else
+                                <span class="end">접수마감</span>
+                                @endif
                             </td>
                         </tr>
                         <tr class="on">
@@ -220,15 +224,17 @@
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1096" target="_blank" class="NSK-Black">모의고사 신청하기 ></a>
         </div>
 
+        {{--
         <div class="evtCtnsBox evt06">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1384_06.jpg" title="소문내고 무료쿠폰 받고"  />
             <a href="#none" onclick="giveCheck();" class="NSK-Black">HALF 불금 모의고사 응시쿠폰 받기 ></a>
         </div>
-
-        {{--홍보url댓글--}}
+        --}}
+        {{--홍보url댓글
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
+        --}}
 
     </div>
     <!-- End Container -->

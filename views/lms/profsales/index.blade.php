@@ -260,7 +260,7 @@
                     {'data' : 'StudyPeriod'},
                 @endif
                     {'data' : 'RealSalePrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data) + '원<br/><s>' + addComma(row.SalePrice) + '원</s>';
+                        return (data !== null) ? addComma(data) + '원<br/><s>' + addComma(row.SalePrice) + '원</s>' : '';
                     }},
                     {'data' : 'tRealPayCnt', 'render' : function(data, type, row, meta) {
                         return '<a class="cs-pointer btn-view" data-prof-idx="' + row.ProfIdx + '" data-prod-code="' + row.ProdCode + '" data-pay-status="paid"><u>' + addComma(data) + '건</u></a>';

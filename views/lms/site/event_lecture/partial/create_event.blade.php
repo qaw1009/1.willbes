@@ -140,3 +140,17 @@
         </div>
     </div>
 </div>
+
+<div class="form-group">
+    <label class="control-label col-md-1-1" for="attach_file_R">이벤트 신청자 자료</label>
+    <div class="col-md-10 form-inline">
+        <div class="title">
+            <input type="file" id="attach_file_R" name="attach_file[]" class="form-control input-file" title="첨부파일">
+            @if(empty($file_data['R']) === false)
+                <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['R']['file_path'] }}" rel="popup-image">{{ $file_data['R']['file_real_name'] }}</a> ]
+                    <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['R']['file_idx'] }}"><i class="fa fa-times red"></i></a>
+                </p>
+            @endif
+        </div>
+    </div>
+</div>

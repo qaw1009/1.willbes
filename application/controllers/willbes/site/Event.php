@@ -673,4 +673,38 @@ class Event extends \app\controllers\FrontController
 
         return $return_type;
     }
+
+    /**
+     * 이벤트 신청자 자료 파일 다운로드
+     * @return mixed
+     */
+    public function registerFileDownload()
+    {
+        $el_idx = $this->_reqG('el_idx');
+        $mem_idx = $this->session->userdata('mem_idx');
+
+        if(empty($mem_idx) === true){
+            show_alert('로그인 후 이용 가능합니다.', 'back');
+        }
+
+        $reg_count =$this->eventFModel->getMemberForRegisterCount($el_idx, ['EQ' => ['a.MemIdx' => $mem_idx, 'b.ElIdx' => $el_idx]]);
+        if($reg_count < 1) {
+            show_alert('이벤트 신청 후 다운로드 가능합니다.','back');
+        }
+
+        $this->downloadFModel->saveLogEvent($el_idx);
+        $file_data = $this->eventFModel->findAttachData(['EQ' => ['ElIdx' => $el_idx, 'FileType' => 'R', 'IsUse' => 'Y']]);
+
+        if (empty($file_data) === true) {
+            show_alert('등록된 파일을 찾지 못했습니다.','back');
+        }
+
+        $file_path = $file_data['FileFullPath'].$file_data['FileName'];
+        $file_name = $file_data['FileRealName'];
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.','back');
+    }
+
+
 }

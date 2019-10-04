@@ -26,14 +26,33 @@
             <div class="tabBox lineBox lecListBox">
                 
                 <div id="leclist1" class="tabContent">
-                    <div class="willbes-Txt NGR c_both mt20 @if(get_cookie('moreInfo') == 'off') on @endif">
-                        <div class="willbes-Txt-Tit NG">· 수강종료강좌 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
-                        - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장신청불가)<br/>
-                        - 재수강시, 20%할인된 가격으로 수강할 수 있습니다.
+                    <div class="willbes-Txt NGR c_both mt20">
+                        <div class="willbes-Txt-Tit NG">· 수강종료강좌 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
+                        - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)<br>
+                        - 재수강시, 20% 할인된 가격으로 수강할 수 있습니다.<br>
+                        - 폐강된 강좌는 재수강신청이 제공되지 않습니다.<br>
+                        - 수강기간은 개별 강좌에 따라 다르게 책정되며 수정 될 수 있습니다.
                     </div>
-
+                    <form name="searchFrm" id="searchFrm" action="{{front_app_url('/classroom/on/list/end/', 'www')}}">
+                    <div class="paymentDate mt-zero pt20">
+                        <div class="payLecList NGR">
+                            <strong>기간검색</strong>
+                            <input type="text" id="search_start_date" name="search_start_date" value="{{ $arr_input['search_start_date'] or '' }}" title="검색시작일자" class="datepicker" maxlength="10" autocomplete="off" style="width:110px">
+                            ~ <input type="text" id="search_end_date" name="search_end_date" value="{{ $arr_input['search_end_date'] or '' }}" title="검색종료일자" class="datepicker" maxlength="10" autocomplete="off" style="width:110px">
+                        </div>
+                        <ul class="c_both">
+                            <li><a href="#none" class="btn-set-search-date" data-period="0-all">전체</a></li>
+                            <li><a href="#none" class="btn-set-search-date" data-period="15-days">15일</a></li>
+                            <li><a href="#none" class="btn-set-search-date" data-period="1-months">1개월</a></li>
+                            <li><a href="#none" class="btn-set-search-date" data-period="3-months">3개월</a></li>
+                            <li><a href="#none" class="btn-set-search-date" data-period="6-months">6개월</a></li>
+                        </ul>
+                        <div class="btnSearch">
+                            <a href="#none" id="btn_search">검색</a>
+                        </div>
+                    </div>
                     <div class="willbes-Lec-Selected NG c_both tx-gray">
-                        <form name="searchFrm" id="searchFrm" action="{{front_app_url('/classroom/on/list/end/', 'www')}}">
+
                             <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess width21p">
                                 <option selected="selected" value="">과정</option>
                                 @foreach($sitegroup_arr as $row )
@@ -60,12 +79,12 @@
                                     <option value="{{$row['wProfIdx']}}" @if(isset($input_arr['prof_ccd']) && $input_arr['prof_ccd'] == $row['wProfIdx']) selected="selected" @endif >{{$row['wProfName']}}</option>
                                 @endforeach
                             </select>
-                        </form>
+
                         <div class="resetBtn width10p ml1p">
                             <a href="{{front_url('/classroom/on/list/end/')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                         </div>
                     </div>
-
+                    </form>
 
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                         <tbody>
@@ -110,6 +129,26 @@
                     <div class="willbes-Txt NGR c_both mt20 @if(get_cookie('moreInfo') == 'off') on @endif">
                         <div class="willbes-Txt-Tit NG">· 패키지강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
                         - 패키지 강좌는 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
+                    </div>
+
+                    <div class="paymentWrap">
+                        <div class="paymentDate">
+                            <div class="payLecList NGR">
+                                <strong>기간검색</strong>
+                                <span href="#none" onclick="openWin('DATAPICKERPASS')"><input type="text" id="S-DATE" name="S-DATE" maxlength="15" style="width:120px" >
+                            ~ <input type="text" id="E-DATE" name="E-DATE" maxlength="15" style="width:120px"></span>
+                            </div>
+                            <ul class="c_both">
+                                <li><a href="#none">전체</a></li>
+                                <li><a href="#none">15일</a></li>
+                                <li><a href="#none">1개월</a></li>
+                                <li><a href="#none">3개월</a></li>
+                                <li><a href="#none">6개월</a></li>
+                            </ul>
+                            <div class="btnSearch">
+                                <a href="#none">검색</a>
+                            </div>
+                        </div>
                     </div>
                     @forelse( $pkgList as $row )
                         <div class="willbes-Open-Table">
@@ -200,6 +239,8 @@
         <input type="hidden" name="target_prod_code_sub" id="retake_prodcodesub" value="" />
     </form>
     <script type="text/javascript">
+        var $search_form = $('#searchFrm');
+
         $(document).ready(function() {
             $('#course_ccd,#subject_ccd,#prof_ccd,#sitegroup_ccd').on('change', function (){
                 $('#searchFrm').submit();
@@ -209,6 +250,11 @@
             $('#search_text').on('keyup', function() {
                 if (window.event.keyCode === 13) {
                 }
+            });
+
+            // 검색 버튼 클릭
+            $search_form.on('click', '#btn_search, .btn-set-search-date', function() {
+                $search_form.submit();
             });
         });
 

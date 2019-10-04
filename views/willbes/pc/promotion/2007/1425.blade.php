@@ -28,28 +28,31 @@
         .evt03 {background:#fff}
     </style>
 
-<div class="p_re evtContent NSK" id="evtContainer">
-    <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_top.jpg" usemap="#Map1425A" title="G-TELP 최단기 목표공략" border="0">
-        <map name="Map1425A" id="Map1425A">
-            <area shape="rect" coords="828,1081,1114,1156" href="#none" alt="수강신청" />
-        </map>
-	</div>
+    <div class="p_re evtContent NSK" id="evtContainer">
+        <div class="evtCtnsBox evtTop">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_top.jpg" usemap="#Map1425A" title="G-TELP 최단기 목표공략" border="0">
+            <map name="Map1425A" id="Map1425A">
+                <area shape="rect" coords="828,1081,1114,1156" href="#none" alt="수강신청" />
+            </map>
+        </div>
 
-	<div class="evtCtnsBox evt01">
-		<img src="https://static.willbes.net/public/images/promotion/2019/10/1425_01.jpg" title="국제 공인 영어시험 G-TELP">
-	</div>
+        <div class="evtCtnsBox evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_01.jpg" title="국제 공인 영어시험 G-TELP">
+        </div>
 
-	<div class="evtCtnsBox evt02">
-		<img src="https://static.willbes.net/public/images/promotion/2019/10/1425_02.jpg" title="1초비법">
-	</div>
+        <div class="evtCtnsBox evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_02.jpg" title="1초비법">
+        </div>
 
-	<div class="evtCtnsBox evt03" >
-        <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_03.jpg" usemap="#Map1425B" title="교재" border="0">
-        <map name="Map1425B" id="Map1425B">
-            <area shape="rect" coords="281,830,805,907" href="http://www.willstory.co.kr/book/book_list.asp?search_text=G-TELP&amp;search_type=0&amp;x=0&amp;y=0" target="_blank" alt="교재구매하기" />
-        </map>
-	</div>
-</div>
-<!-- End Container -->
+        <div class="evtCtnsBox evt03" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_03.jpg" usemap="#Map1425B" title="교재" border="0">
+            <map name="Map1425B" id="Map1425B">
+                <area shape="rect" coords="281,830,805,907" href="http://www.willstory.co.kr/book/book_list.asp?search_text=G-TELP&amp;search_type=0&amp;x=0&amp;y=0" target="_blank" alt="교재구매하기" />
+            </map>
+        </div>
+    </div>
+    <!-- End Container -->
+
+    {{-- 프로모션용 스크립트 include --}}
+	@include('willbes.pc.promotion.promotion_script')
 @stop

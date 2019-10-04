@@ -23,7 +23,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/09/1408_top_bg.jpg) no-repeat center top;}    
 
-        .skybanner{position: fixed; top: 845px;right: 2px;z-index: 1;}
+        .skybanner{position: fixed; bottom:0; text-align:center; z-index: 1; background:#51d68e; width:100%}
         
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1408_02_bg.jpg) no-repeat center top;}
 
@@ -38,21 +38,16 @@
         #slidesImg4 li img {width:100%}
         #slidesImg4:after {content::""; display:block; clear:both}           
 
-        .evt04 {background:red; padding:0 0 150px}    
-
-        .evt05 .requestL li {display:inline-block; margin-right:10px}
+        .evt04 {background:#eeede9;}  
+        .evt04_1 {background:#51d68e;}          
         
-        .evt05 {background:#fff;} 
-        .evt06 {background:#fff;} 
-        
-        .evt04 div a,      
-        .evt05 a,
-        .evt06 a {display:block; width:800px; margin:50px auto 0; padding:20px 0; border-radius:30px; font-size:24px; background:#000; color:#fff;}
-        .evt06 a {position:absolute; top:926px; left:50%; margin:0 !important; margin-left:-400px !important}
-        .evt04 div a:hover,      
-        .evt05 a:hover,  
-        .evt06 a:hover {background:#ff8a00;}
-
+        .evt05 {background:#fff;}
+        .evt05 ul {width:980px; margin:50px auto}
+        .evt05 li {display:inline; float:left; width:50%; text-align:center; background:#51d68e; height:70px; line-height:70px; font-size:18px; font-weight:bold; color:#fff}
+        .evt05 input {width:20px; height:20px;}
+        .evt05 li:last-child {background:#47bc7e}
+        .evt05 ul:after {content:""; display:block; clear:both} 
+        .evt06 {background:#fff;}   
     </style>
 
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -67,9 +62,9 @@
       
         <div class="skybanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1048_scroll_b.png" usemap="#Map1408a" title="소문내고 혜택받기" border="0"  />
-            <map name="Map1408a" id="Map1408a">
-                <area shape="rect" coords="1249,20,1472,109" href="#to_go" />
-            </map>       
+            <map name="Map1408a" id="Map1408a">                
+              <area shape="rect" coords="810,21,1030,103" href="#to_go" />
+            </map>     
         </div>
 
         <div class="evtCtnsBox evt02">
@@ -90,22 +85,21 @@
         </div>
 
         <div class="evtCtnsBox evt04">           
-            추후수정
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04.jpg" title="올백모의 고사반"  />
+        </div>
+
+        <div class="evtCtnsBox evt04_1">           
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_1.jpg" title="올백모의 고사반"  />
         </div>
 
         <div class="evtCtnsBox evt05" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_05.jpg" title="소문내고 무료쿠폰 받고"  />
-            <div class="requestL">
-                <ul>
-                    <li><input type="radio" name="register_data2" id="CT1" value="일반남자" /> <label for="CT1">올백모의고사 1회 무료응시권</label></li>
-                    <li><input type="radio" name="register_data2" id="CT2" value="일반여자" /> <label for="CT2">올백모의고사반 1만원 할인쿠폰</label></li>
-                </ul>
-            </div>    
+            <ul>
+                <li><input type="radio" name="register_data2" id="CT1" value="일반남자" /> <label for="CT1">올백모의고사 1회 무료응시권</label></li>
+                <li><input type="radio" name="register_data2" id="CT2" value="일반여자" /> <label for="CT2">올백모의고사반 1만원 할인쿠폰</label></li>
+            </ul>   
         </div>
 
-        <div class="evtCtnsBox evt06">
-            
-        </div>
 
         {{--홍보url댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

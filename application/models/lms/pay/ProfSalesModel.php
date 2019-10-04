@@ -272,6 +272,7 @@ class ProfSalesModel extends BaseOrderModel
     {
         $start_date = $arr_search_date[0] . ' 00:00:00';
         $end_date = $arr_search_date[1] . ' 23:59:59';
+        $distinct = '';
         $from = '';
         $column = '';
         $where = '';
@@ -293,6 +294,7 @@ class ProfSalesModel extends BaseOrderModel
                 break;
             case 'package' :
                 // 운영자/사용자패키지
+                $distinct = 'distinct'; // 서브강좌의 교수식별자 중복 제거
                 $from .= '
                     inner join ' . $this->_table['order_sub_product'] . ' as OSP		
                         on OP.OrderProdIdx = OSP.OrderProdIdx                
@@ -320,7 +322,7 @@ class ProfSalesModel extends BaseOrderModel
         }
 
         $query = /** @lang text */ '   
-            select if(O.CompleteDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . ', OP.RealPayPrice, null) as RealPayPrice	
+            select ' . $distinct . ' if(O.CompleteDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . ', OP.RealPayPrice, null) as RealPayPrice	
                 , if(OPR.RefundDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . ', OPR.RefundPrice, null) as RefundPrice
                 , O.CompleteDatm, OPR.RefundDatm
                 , O.OrderIdx, O.OrderNo, O.MemIdx, O.SiteCode, OP.OrderProdIdx, OP.ProdCode, P.ProdName
@@ -392,9 +394,10 @@ class ProfSalesModel extends BaseOrderModel
             ';
             $raw_query .= $this->_conn->makeWhereIn('PD.ProfIdx', $prof_idx)->getMakeWhere(true);
         } else {
+            // 서브강좌의 교수식별자 중복 제거 (미사용 서브강좌 과정/과목식별자 제거)
             $raw_query = /** @lang text */ '
-                select SPD.ProfIdx, P.ProdCode, P.ProdName, P.SiteCode
-                    , PL.CampusCcd, SPL.CourseIdx, SPL.SubjectIdx
+                select distinct SPD.ProfIdx, P.ProdCode, P.ProdName, P.SiteCode
+                    , PL.CampusCcd, 0 as CourseIdx, 0 as SubjectIdx
                     , (select json_object("StudyStartDate", min(B.StudyStartDate), "StudyEndDate", max(B.StudyEndDate)) 
                         from ' . $this->_table['product_r_sublecture'] . ' as A
                             inner join ' . $this->_table['product_lecture'] . ' as B

@@ -125,6 +125,11 @@ class Professor extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
+        //디폴트 과정순 적용
+        if (empty(element('search_order', $arr_input))) {
+            $arr_input['search_order'] = 'course' ;
+        }
+
         // 교수 정보 조회
         $data = $this->professorFModel->findProfessorByProfIdx($prof_idx);
         if (empty($data) === true) {
@@ -420,7 +425,17 @@ class Professor extends \app\controllers\FrontController
             $arr_condition ['IN']['SubjectIdx'] = $series_subjectidx;
         }
 
-        $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
+        // 상품 검색조건 추가
+        $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);  // 검색어
+        $arr_condition = array_merge_recursive($arr_condition, [
+            'LKB' => [
+                $arr_search_text[0] => element('1', $arr_search_text),
+            ]
+        ]);
+
+        (element('search_order', $arr_input) == 'course') ? $order_by=['OrderNumCourse' => 'asc','ProdCode' => 'desc'] : $order_by=['ProdCode' => 'desc'];
+
+        $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, $order_by);
 
         // 상품 json 데이터 decode
         $data = array_map(function ($row) {

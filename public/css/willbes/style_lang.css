@@ -102,6 +102,9 @@
     border:none !important;
     border-right:1px solid #999 !important;
 }
+.lang .tabBox.noticeBox .List-Table {
+    width: 520px;
+}
 .lang .tabBox.noticeBox .List-Table li a span {
     background: #db3e34;
     color:#fff;

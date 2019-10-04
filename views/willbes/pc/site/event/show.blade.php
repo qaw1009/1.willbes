@@ -85,6 +85,15 @@
         $('#btn_list').click(function() {
             location.href = '{!! front_url($arr_base['page_url']) !!}';
         });
+
+        /**
+         * 이벤트 신청자 자료 파일 다운로드
+         */
+        $('#btn_register_file_download').click(function() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.',''); !!}
+            var _url = '{!! front_url('/event/registerFileDownload') !!}';
+            location.href = _url + '/?el_idx={{$data['ElIdx']}}';
+        });
     });
 </script>
 @stop

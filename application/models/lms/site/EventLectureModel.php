@@ -55,7 +55,8 @@ class EventLectureModel extends WB_Model
         '0' => 'C',
         '1' => 'F',
         '2' => 'S',
-        '3' => 'I'
+        '3' => 'I',
+        '4' => 'R'
     ];
 
     // 원본 이미지 후첨자

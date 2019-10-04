@@ -73,7 +73,7 @@
                     </div>
                     <div class="bdt-m-gray pt15 pb15">
                         <strong>결제금액</strong>
-                        <span id="expPrice">{{number_format($lec['ExtenPrice'] * 5)}}원</span>
+                        <span id="expPrice">{{number_format(floor($lec['ExtenPrice'] * 5))}}원</span>
                     </div>
                 </td>
             </tr>
@@ -138,7 +138,7 @@
             $('#day').on('change', function() {
                 $day = $(this).val();
                 $('#expDate').text(moment('{{$lec['RealLecEndDate']}}').add($day, 'days').format('YYYY-MM-DD'));
-                $('#expPrice').text(addComma(Math.floor({{$lec['SalePrice']}} * ($day / {{$lec['StudyPeriod']}}))) + '원');
+                $('#expPrice').text(addComma(Math.floor($day * {{$lec['ExtenPrice']}})) + '원');
             });
         });
 

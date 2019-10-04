@@ -1711,6 +1711,15 @@ class EventLectureModel extends WB_Model
                 FROM {$this->_table['event_file']}
                 WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'I' ORDER BY EfIdx DESC LIMIT 1
             ) AS d
+            
+            UNION ALL
+            
+            SELECT e.*
+            FROM (
+                SELECT '4' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'R' ORDER BY EfIdx DESC LIMIT 1
+            ) AS e
         ";
 
         $data = $this->_conn->query($query)->result_array();

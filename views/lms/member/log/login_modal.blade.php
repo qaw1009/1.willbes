@@ -21,21 +21,20 @@
                 </div>
                 <div class="col-md-5">
                     <div class="input-group">
-                    <div class="input-group-addon no-border no-bgcolor"></div>
-                    <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
-                    <div class="input-group-addon no-border no-bgcolor">~</div>
-                    <div class="input-group-addon no-border-right">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                        <div class="input-group-addon no-border no-bgcolor"></div>
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                        <div class="input-group-addon no-border no-bgcolor">~</div>
+                        <div class="input-group-addon no-border-right">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
                     </div>
                 </div>
                 <div class="col-md-1">
                     <button type="submit" class="btn btn-primary btn-search" id="btn_search">검색</button>
-                </div>
                 </div>
             </div>
             <div class="x_panel mt-10">

@@ -54,7 +54,6 @@
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
     </form>
-
     <div class="p_re evtContent NGR" id="evtContainer">       
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_top.gif" title="올백 모의고사"  />
@@ -95,11 +94,10 @@
         <div class="evtCtnsBox evt05" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_05.jpg" title="소문내고 무료쿠폰 받고"  />
             <ul>
-                <li><input type="radio" name="register_data2" id="CT1" value="일반남자" /> <label for="CT1">올백모의고사 1회 무료응시권</label></li>
-                <li><input type="radio" name="register_data2" id="CT2" value="일반여자" /> <label for="CT2">올백모의고사반 1만원 할인쿠폰</label></li>
+                <li><input type="radio" name="register_data1" id="CT1" value="올백모의고사 1회 무료응시권" data-giveidx="{{$arr_promotion_params['give_idx']}}" checked="checked" /> <label for="CT1">올백모의고사 1회 무료응시권</label></li>
+                <li><input type="radio" name="register_data1" id="CT2" value="올백모의고사반 1만원 할인쿠폰"  data-giveidx="{{$arr_promotion_params['give_idx2']}}" /> <label for="CT2">올백모의고사반 1만원 할인쿠폰</label></li>
             </ul>   
         </div>
-
 
         {{--홍보url댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -108,8 +106,8 @@
 
     </div>
     <!-- End Container -->
-
     <script type="text/javascript">
+        $regi_form = $('#regi_form');
         $(document).ready(function() {
             var slidesImg4 = $("#slidesImg4").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
@@ -133,7 +131,31 @@
             $("#imgBannerRight4").click(function (){
                 slidesImg4.goToNextSlide();
             });
+
         });
+
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var give_idx = $('input:radio[name="register_data1"]:checked').data('giveidx');
+
+                if(!give_idx){
+                    alert('쿠폰을 선택하지 않아서 발급에 실패하였습니다.');
+                    return;
+                }
+
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&give_idx='+give_idx+'&event_code={{$data['ElIdx']}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                        location.reload();
+                        {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
     </script>
 
 

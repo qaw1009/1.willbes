@@ -247,7 +247,8 @@ class BasePromotion extends \app\controllers\FrontController
             'arr_base' => $arr_base,
             'list' => $list,
             'paging' => $paging,
-            'method' => $method
+            'method' => $method,
+            'give_timing' => element('give_timing', $arr_input)
         ], false);
     }
 

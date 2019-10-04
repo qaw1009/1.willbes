@@ -2,6 +2,7 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
+    
     <!-- Container -->
     <style type="text/css">        
         .subContainer {
@@ -20,8 +21,6 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:fixed; top:350px;right:0;z-index:10;}
-
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1425_top_bg.jpg) no-repeat center top;}   
         .evt01 {background:#fff}       
         .evt02 {background:#d7d7d7}
@@ -52,7 +51,4 @@
         </div>
     </div>
     <!-- End Container -->
-
-    {{-- 프로모션용 스크립트 include --}}
-	@include('willbes.pc.promotion.promotion_script')
 @stop

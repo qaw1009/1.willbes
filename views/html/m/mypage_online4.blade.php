@@ -88,7 +88,7 @@
                                     <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_left two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">재수강불가</a></li>
                                     </ul> 
                                 </div>
@@ -107,7 +107,7 @@
                                     <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_left two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">후기등록</a></li>
                                         <li class="btn_blue"><a href="#none">재수강신청</a></li>
                                     </ul> 
@@ -129,6 +129,7 @@
                     </ul>
                 </div>
             </div>
+
             <div id="leclist2" class="tabContent" style="display: none;">
                 <div class="willbes-Txt NGR c_both mt20">
                     <div class="willbes-Txt-Tit NG">· 패키지강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
@@ -178,6 +179,7 @@
                         <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                     </div>
                 </div>
+
                 <div class="willbes-Open-Table">
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                         <tbody>
@@ -185,18 +187,18 @@
                                 <td class="w-data tx-left pb-zero">
                                     <div class="w-tit">
                                         <a href="#none">2018 한덕현 제니스 영어실전 동형 모의고사 Pack 강좌명 최대 2줄 노출</a>
+                                        <div class="MoreBtn f_right tx-right">
+                                            <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                        </div> 
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">                      
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             <li class="btn_white"><a href="#none">재수강불가</a></li>
-                                        </ul> 
-                                        <div class="MoreBtn f_right tx-right">
-                                            <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                        </div>  
-                                    </div>
+                                        </ul>                                          
+                                    </div>                                    
                                     <div class="w-line">-</div>
                                 </td>
                             </tr>
@@ -216,7 +218,7 @@
                                         <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">                        
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             <li class="btn_white"><a href="#none">후기등록</a></li>
                                         </ul> 
                                     </div>
@@ -235,7 +237,7 @@
                                         <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">                        
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             <li class="btn_white"><a href="#none">후기등록</a></li>
                                         </ul> 
                                     </div>
@@ -245,6 +247,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="Paging">
                     <ul>
                         <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -257,6 +260,7 @@
                     </ul>
                 </div>
             </div>
+
             <div id="leclist3" class="tabContent" style="display: none;">
                 <div class="willbes-Txt NGR c_both mt20">
                     <div class="willbes-Txt-Tit NG">· 무료강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
@@ -320,7 +324,7 @@
                                     <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_left two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">후기등록</a></li>
                                     </ul> 
                                 </div>
@@ -339,7 +343,7 @@
                                     <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_left two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">후기등록</a></li>
                                     </ul> 
                                 </div>
@@ -358,7 +362,7 @@
                                     <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_left two">
+                                    <ul class="two">
                                         <li class="btn_white"><a href="#none">후기등록</a></li>
                                     </ul> 
                                 </div>
@@ -379,6 +383,7 @@
                     </ul>
                 </div>
             </div>
+
             <div id="leclist4" class="tabContent" style="display: none;">
                 <div class="willbes-Txt NGR c_both mt20">
                     <div class="willbes-Txt-Tit NG">· 관리자부여강좌 수강 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>

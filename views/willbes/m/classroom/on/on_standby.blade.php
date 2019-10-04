@@ -86,7 +86,7 @@
                                         </dl>
                                         <div class="w-start tx-gray">
                                             <span class="w-subtxt">수강시작일 : {{$row['LecStartDate']}}</span>
-                                            <ul class="f_right two">
+                                            <ul class="two">
                                                 @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
                                                     <li class="btn_black_line"><a>시작일변경 불가</a></li>
                                                 @elseif($row['IsLecStart'] == 'Y')
@@ -122,7 +122,7 @@
                                                 <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                             </dl>
                                             <div class="w-start tx-gray">
-                                                <ul class="f_left two">
+                                                <ul class="two">
                                                     @if($row['IsLecStart'] == 'Y')
                                                         <li class="btn_white"><a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');">시작일변경</a></li>
                                                         <li class="btn_blue"><a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');">수강시작</a></li>

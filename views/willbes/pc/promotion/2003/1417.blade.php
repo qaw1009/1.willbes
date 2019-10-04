@@ -11,6 +11,7 @@
         .evtContent { 
             position:relative;            
             width:100% !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -20,7 +21,7 @@
         /*****************************************************************/  
 
         .evtTop {
-            background:url(https://static.willbes.net/public/images/promotion/2019/10/1417_top_bg.jpg) no-repeat center top
+            background:url(https://static.willbes.net/public/images/promotion/2019/10/1417_top_bg.jpg) no-repeat center top;
         }
         
         .evtMenu {width:100%; background:#5d5d5d;}
@@ -38,8 +39,9 @@
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {
-            position:relative; width:1120px; margin:0 auto; text-align:center; 
+            position:relative; width:1120px; margin:0 auto; text-align:center; font-size:14px;
         }
+
         .tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
         .tabCts .download span:nth-child(1) {left:160px;}
         .tabCts .download span:nth-child(2) {left:362px;}
@@ -51,9 +53,9 @@
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 
+        .Cts02 {padding-bottom:150px}
         .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
-
-        .Cts02 .download{padding:40px 0 20px;}       
+        .Cts02 .download{padding:0 0 20px;}       
         .tabMenu{width:900px;margin:0 auto 80px;}
         .tabMenu li{display:inline;float:left;width:50%;}
         .tabMenu li a{display:block;text-align:center;border:1px solid #000;border-bottom:0;font-size:140%;
@@ -61,7 +63,7 @@
         .tabMenu li a.active{color:#000;background:#fff;}
         
 
-        .boardD {width:900px; border-spacing:0px; border:1px solid #dedede; table-layout:auto; color:#666; margin:0 auto} 
+        .boardD {width:1000px; border-spacing:0px; border:1px solid #dedede; table-layout:auto; color:#666; margin:0 auto} 
         .boardD caption {display:none}
         .boardD th {padding:10px 5px; background:#f5f5f5; border-right:1px solid #dedede; border-bottom:1px solid #dedede; color:#333}
         .boardD thead th {background:#eee; color:#333}
@@ -71,7 +73,8 @@
         .boardD td:last-child {color:#C00}
         .boardD tr.gray th,
         .boardD tr.gray td {background:#eee}
-        .boardD tbody tr:hover {background:#f5f5f5}
+        .boardD th a {margin:0}
+        .boardD tbody th:hover {background:#fce6d8}
 
         .Cts03 {margin-bottom:100px; text-align:left}
         
@@ -278,20 +281,13 @@
                         <td>12.20.(금) </td>
                     </tr>
                 </table>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts01_02.jpg" title="응시자 준수사항 및 필기장소 안내" />
-            
-            <div class="youtube">
-                <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts01_btn.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
+            </div>              
         </div>
 
         <!--완벽분석-->
         <div id="content_2" class="tabCts Cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts02_01.jpg" title="전년도 7급 체감난이도" />           
-
-            <div class="mt20 mb100">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1417_cts02_01.jpg" title="전년도 7급 체감난이도" />         
+            <div>
                 <p class="download">
                 * 시험문제/가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기</a>
                 </p>

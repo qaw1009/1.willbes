@@ -325,7 +325,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>서울</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239895_01_20191002095744.pdf" target="_blank">서울</a></th>
                                 <td>231</td>
                                 <td>125</td>
                                 <td>17,472</td>
@@ -336,7 +336,7 @@
                                 <td>85</td>
                             </tr>
                             <tr>
-                                <th>강원</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239895_05_20191002100623.pdf" target="_blank">강원</a></th>
                                 <td>160</td>
                                 <td>2</td>
                                 <td>1,228</td>
@@ -347,7 +347,7 @@
                                 <td>84.79</td>
                             </tr>
                             <tr>
-                                <th>경기</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239895_03_20191002095744.pdf" target="_blank">경기</a></th>
                                 <td>124</td>
                                 <td>77</td>
                                 <td>7,884</td>
@@ -358,7 +358,7 @@
                                 <td>85.28</td>
                             </tr>
                             <tr>
-                                <th>경남</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239895_04_20191002095744.pdf" target="_blank">경남</a></th>
                                 <td>160</td>
                                 <td>19</td>
                                 <td>4,257</td>
@@ -369,7 +369,7 @@
                                 <td>85.28</td>
                             </tr>
                             <tr>
-                                <th>경북</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239895_05_20191002095744.pdf" target="_blank">경북</a></th>
                                 <td>21</td>
                                 <td>21</td>
                                 <td>1,257</td>
@@ -380,7 +380,7 @@
                                 <td>87.14</td>
                             </tr>
                             <tr>
-                                <th>광주</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239895_07_20191002100623.pdf" target="_blank">광주</a></th>
                                 <td>52</td>
                                 <td>20</td>
                                 <td>1,610</td>
@@ -391,7 +391,7 @@
                                 <td>84.28</td>
                             </tr>
                             <tr>
-                                <th>대구</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239895_05_20191002100623.pdf" target="_blank">대구</a></th>
                                 <td>19</td>
                                 <td>12</td>
                                 <td>1,781</td>
@@ -402,7 +402,7 @@
                                 <td>84.57</td>
                             </tr>
                             <tr>
-                                <th>대전</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239896_04_20191002100711.pdf" target="_blank">대전</a></th>
                                 <td>24</td>
                                 <td>7</td>
                                 <td>1,106</td>
@@ -413,7 +413,7 @@
                                 <td>85.29</td>
                             </tr>
                             <tr>
-                                <th>부산</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239896_02_20191002095831.pdf" target="_blank">부산</a></th>
                                 <td>61</td>
                                 <td>15</td>
                                 <td>3,410</td>
@@ -424,7 +424,7 @@
                                 <td>84.57</td>
                             </tr>
                             <tr>
-                                <th>세종</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239896_06_20191002100711.pdf" target="_blank">세종</a></th>
                                 <td>14</td>
                                 <td>3</td>
                                 <td>424</td>
@@ -435,7 +435,7 @@
                                 <td>74.21</td>
                             </tr>
                             <tr>
-                                <th>울산</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239896_07_20191002100711.pdf" target="_blank">울산</a></th>
                                 <td>15</td>
                                 <td>3</td>
                                 <td>838</td>
@@ -446,7 +446,7 @@
                                 <td>82.64</td>
                             </tr>
                             <tr>
-                                <th>인천</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239896_07_20191002100729.pdf" target="_blank">인천</a></th>
                                 <td>99</td>
                                 <td>17</td>
                                 <td>1,751</td>
@@ -457,7 +457,7 @@
                                 <td>585 (총점)</td>
                             </tr>
                             <tr>
-                                <th>전남</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239896_06_20191002095831.pdf" target="_blank">전남</a></th>
                                 <td>120</td>
                                 <td>32</td>
                                 <td>2,108</td>
@@ -468,7 +468,7 @@
                                 <td>81</td>
                             </tr>
                             <tr>
-                                <th>전북</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239898_01_20191002100022.pdf" target="_blank">전북</a></th>
                                 <td>76</td>
                                 <td>5</td>
                                 <td>1,915</td>
@@ -479,7 +479,7 @@
                                 <td>82.86</td>
                             </tr>
                             <tr>
-                                <th>제주</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239898_02_20191002102338.pdf" target="_blank">제주</a></th>
                                 <td>14</td>
                                 <td>5</td>
                                 <td>489</td>
@@ -490,7 +490,7 @@
                                 <td>-</td>
                             </tr>
                             <tr>
-                                <th>충남</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239898_03_20191002102338.pdf" target="_blank">충남</a></th>
                                 <td>75</td>
                                 <td>12</td>
                                 <td>1,556</td>
@@ -501,7 +501,7 @@
                                 <td>81.71</td>
                             </tr>
                             <tr>
-                                <th>충북</th>
+                                <th><a href="https://pass.willbes.net/public/uploads/willbes/board/97/2019/1002/board_239898_04_20191002102643.pdf" target="_blank">충북</a></th>
                                 <td>39</td>
                                 <td>12</td>
                                 <td>1,714</td>

@@ -93,14 +93,12 @@
                                     </dl>
                                     <div class="w-start tx-gray">
                                         <ul class="f_left two">
-                                            @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
                                             @if($row['IsExten'] == 'N')
                                                 <li class="btn_blue"><a>수강연장불가</a></li>
                                             @elseif($row['RebuyCount'] >= $row['ExtenNum'])
                                                 <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
                                             @else
                                                 <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">수강연장({{$row['RebuyCount']}})</a></li>
-                                            @endif
                                             @endif
 
                                             @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
@@ -144,16 +142,14 @@
                                         </dl>
                                         <div class="w-start tx-gray">
                                             <ul class="f_left two">
-                                                @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
-                                                    @if(true)
-                                                    <!-- 패키지강좌 재수강 불가 -->
-                                                    @elseif($row['IsExten'] == 'N')
-                                                        <li class="btn_blue"><a>수강연장불가</a></li>>
-                                                    @elseif($row['RebuyCount'] >= $row['ExtenNum'])
-                                                        <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
-                                                    @else
-                                                        <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">수강연장({{$row['RebuyCount']}})</a></li>
-                                                    @endif
+                                                @if(true)
+                                                <!-- 패키지강좌 재수강 불가 -->
+                                                @elseif($row['IsExten'] == 'N')
+                                                    <li class="btn_blue"><a>수강연장불가</a></li>>
+                                                @elseif($row['RebuyCount'] >= $row['ExtenNum'])
+                                                    <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
+                                                @else
+                                                    <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">수강연장({{$row['RebuyCount']}})</a></li>
                                                 @endif
 
 

@@ -105,12 +105,10 @@
                                     </dl>
                                     <div class="w-start tx-gray">
                                         <ul class="f_left two">
-                                            @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
-                                                @if($row['IsRetake'] == 'N')
-                                                    <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
-                                                @else
-                                                    <li class="btn_blue"><a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');">재수강신청</a></li>
-                                                @endif
+                                            @if($row['IsRetake'] == 'N')
+                                                <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
+                                            @else
+                                                <li class="btn_blue"><a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');">재수강신청</a></li>
                                             @endif
                                         </ul>
                                     </div>

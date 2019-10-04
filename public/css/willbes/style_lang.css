@@ -4,96 +4,83 @@
 .lang .topBanner p img {width:100%}
 
 /*********************************************     Main Container : cert     *********************************************/
-/* Main Container : MainVisual */
-.lang .Section .bnrSec01 li {
-    display: inline;
-    float: left;   
-    width: 556px;
-    height: 292px;  
-    overflow: hidden; 
+.lang .VisualsubBox {
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;
 }
-.lang .Section .bnrSec01 li:last-child {margin-left:8px}
-.lang .Section .bnrSec01:after {
-    content:'';
-    display: block;
-    clear:both;
-}
-
-/**/
-.lang .Section .bnrSec02 li {
-    display: inline;
-    float: left;
-    margin-right: 8px;    
-}
-.lang .Section .bnrSec02 li:last-child {
-    margin:0
-}
-.lang .Section .bnrSec01:after {
-    content:'';
-    display: block;
-    clear:both;
-}
-
-/* Main Container : Prof */
-.lang .ProfBox .PBtab li {
-    display: inline;
-    float: left;
-    width: 50%;
-}
-.lang .ProfBox .PBtab li a {
-    display: block;
-    text-align: center;
-    font-size: 22px;
-    color:#b9b9b9;
-    height: 54px;
-    line-height: 54px;
-    border:1px solid #b9b9b9;
-    border-bottom:1px solid #5756a2;
-}
-.lang .ProfBox .PBtab li a.active {
-    color:#5756a2;
-    border:1px solid #5756a2;
-    border-bottom:1px solid #fff;
-    font-weight: 600;
-}
-.lang .ProfBox .PBtab:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-.lang .tipPopup {position: absolute; left:50%; top:20px; z-index: 1; display:none}
-
-.lang .Section2 {background:#f8f7fc}
-
-.lang .Section3 {background:#242b35}
-.lang .Section3 .curriBox {position:absolute; left:50%; top:500px; margin-left:100px; z-index:10;}
-.lang .Section3 .curriBox h4 {color:#b7b7b7; font-size:18px; font-weight: bold; margin-bottom:20px}
-.lang .Section3 .curriBox ul {float:left}
-.lang .Section3 .curriBox ul li a {display:block; height: 100px; line-height: 100px; text-align:center; margin-bottom:3px; font-size:16px; color:#242b35; background:#63686f;
-    border-radius:10px 0 0 10px; width: 98px; font-weight: bold;
-}
-.lang .Section3 .curriBox ul li a:hover,
-.lang .Section3 .curriBox ul li a.active {background: #fff}
-.lang .Section3 .curriBox .curri {background:#fff; padding:20px; float:left; font-size:14px; width:300px; height: 203px; line-height: 1.4}
-.lang .Section3 .curriBox .curri li {list-style-type: disc; margin-left:15px; margin-bottom:10px}
-.lang .Section3 .curriBox .curri li:last-child {margin-bottom:0}
-.lang .Section3 span.txt01 {position:absolute; left:50%; top:325px; margin-left:350px; z-index:10;}
-.lang .Section3 span.prof {position:absolute; left:28px; top:253px; border:2px solid #000; z-index:10;}
-.lang .Section3 span.txt02 {position:absolute; left:50%; top:325px; margin-left:420px; z-index:10;}
-.lang .Section3 span.txt02_309001 {position:absolute; left:50%; top:325px; margin-left:390px; z-index:10;}
-
-/* Main Container : Notice : noticeTabs */
-.lang .tabWrap.noticeWrap {
-    height: 16px;
-    border: none;
-}
-.lang .tabWrap.noticeWrap li {
-    float: left;
+.lang .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    margin: 0;
+    width: 50px;
+    z-index: 90;
+  }
+.lang .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
     width: auto;
-    height: 16px;
-    margin-right: 10px;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+    z-index: 100;
 }
+.lang .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;    
+}
+
+.lang .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #898989 !important;
+}
+.lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #fff !important;
+}
+
+.lang .Section1 {
+    background:#2a2a2a;
+    margin-top:50px;
+}
+.lang .Section2 {
+    position:relative;
+    background:#f6f6f6;
+}
+.lang .Section2 ul {
+    position:absolute;
+    top:745px;
+    left:50%;
+    width:610px;
+    margin-left:-305px;
+    z-index:1;
+}
+.lang .Section2 li {
+    display:inline;
+    float:left;
+    width:50%;
+}
+.lang .Section2 ul:after {
+    content:""; display:block; clear:both;
+}
+.lang .Section2 a {
+    display:block;
+    text-align:center;
+    color:#fff;
+    font-size:18px;
+    background:#262626;
+    height:50px;
+    line-height:50px;
+    margin:0 5px;
+}
+.lang .Section2 a:hover {
+    background:#db3e34;
+}
+.lang .Section3 {
+    background:#d6d2cc;
+}
+
 .lang .tabWrap.noticeWrap li a {
     display: block;
     width: 100%;
@@ -111,48 +98,25 @@
     height: 19px;
     line-height: 19px;
     font-weight: 600;
-    color: #643fb5;
+    color: #db3e34;
     border:none !important;
     border-right:1px solid #999 !important;
 }
-.lang .tabWrap.noticeWrap li:last-child a.on,
-.lang .tabWrap.noticeWrap li:last-child a {
-    border-right:none !important;
-}
-.lang .tabBox.noticeBox a.btn-add {
-    position: absolute;
-    top: -16px;
-    right: 0;
-}
-.lang .tabBox.noticeBox .List-Table {
-    width: 520px;
-}
-.lang .tabBox.noticeBox .List-Table li {
-    position: relative;
-    font-size: 13px;
-    color: #3a3a3a;
-    height: 37px;
-    line-height: 37px;
-    border-bottom: 1px solid #e3e3e3;
-}
-.lang .tabBox.noticeBox .List-Table li a {
-    display: inline-block;
-    width: 80%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    letter-spacing: 0;
-}
 .lang .tabBox.noticeBox .List-Table li a span {
-    background: #643fb5;
+    background: #db3e34;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
     margin-right: 5px;
 }
 
+.lang .willbesNumber ul li {
+    margin-left: 40px;
+}
+.lang .willbesNumber ul li:first-child {
+    margin-left: 0;
+}
 
-/* Main Container : Gosi */
 .lang .tx-color {
-    color: #643fb5;
+    color:#db3e34;
 }

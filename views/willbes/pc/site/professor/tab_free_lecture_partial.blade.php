@@ -1,3 +1,26 @@
+<div class="willbes-Lec-Search p_re mt30">
+    <div class="inputBox p_re">
+        <div class="selectBox">
+            <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
+                <option value="regist" @if(element('search_order', $arr_input) == 'regist') selected="selected" @endif>최근등록순</option>
+                <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
+            </select>
+        </div>
+        @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
+        <div class="selectBox">
+            <select id="search_keyword" name="search_keyword" title="직접입력" class="">
+                <option value="ProdName" @if($arr_search_text[0] == 'ProdName') selected="selected" @endif>강좌명</option>
+            <!--<option value="SubjectName" @if($arr_search_text[0] == 'SubjectName') selected="selected" @endif>과목명</option>
+                <option value="ProfNickName" @if($arr_search_text[0] == 'ProfNickName') selected="selected" @endif>교수명</option>
+                <option value="CourseName" @if($arr_search_text[0] == 'CourseName') selected="selected" @endif>과정명</option>//-->
+            </select>
+        </div>
+        <input type="text" id="search_value" name="search_value" maxlength="30" value="{{ element('1', $arr_search_text) }}">
+        <button type="button" id="btn_search" onclick="" class="search-Btn">
+            <span>검색</span>
+        </button>
+    </div>
+</div>
 <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">· 무료강좌</div>
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}

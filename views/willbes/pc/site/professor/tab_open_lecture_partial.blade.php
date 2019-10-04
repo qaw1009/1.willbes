@@ -327,3 +327,22 @@
         <!-- 학원강좌 -->
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 검색어 입력 후 엔터
+        $('#search_value').on('keyup', function() {
+            if (window.event.keyCode === 13) {
+                goSearch();
+            }
+        });
+
+        // 검색 버튼 클릭
+        $('#btn_search').on('click', function() {
+            goSearch();
+        });
+
+        var goSearch = function() {
+            goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
+        };
+    });
+</script>

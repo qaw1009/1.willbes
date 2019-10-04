@@ -129,7 +129,7 @@
                                             @foreach($data['list'][$subject_idx][$prof_idx] as $idx => $row)
                                                 <div>
                                                     <dl class="w-info">
-                                                        <dt>{{ $row['SubjectName'] }}<span class="row-line">|</span>{{ $row['ProfNickName'] }} </dt>
+                                                        <dt>{{ $row['CourseName'] }}<span class="row-line">|</span>{{ $row['SubjectName'] }}<span class="row-line">|</span>{{ $row['ProfNickName'] }} </dt>
                                                     </dl>
                                                     <div class="w-tit tx-blue">
                                                         <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');" class="prod-name">{{ $row['ProdName'] }}</a>

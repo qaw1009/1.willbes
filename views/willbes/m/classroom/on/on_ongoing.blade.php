@@ -92,7 +92,7 @@
                                         <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             @if($row['IsExten'] == 'N')
                                                 <li class="btn_blue"><a>수강연장불가</a></li>
                                             @elseif($row['RebuyCount'] >= $row['ExtenNum'])
@@ -136,12 +136,15 @@
                                     <td class="w-data tx-left pb-zero">
                                         <div class="w-tit">
                                             {{$row['ProdName']}}
+                                            <div class="MoreBtn f_right tx-right">
+                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                            </div>
                                         </div>
                                         <dl class="w-info tx-gray">
                                             <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                         </dl>
                                         <div class="w-start tx-gray">
-                                            <ul class="f_left two">
+                                            <ul class="two">
                                                 @if(true)
                                                 <!-- 패키지강좌 재수강 불가 -->
                                                 @elseif($row['IsExten'] == 'N')
@@ -162,10 +165,7 @@
                                                 @else
                                                     <li class="btn_white"><a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">일시정지({{$row['PauseCount']}})</a></li>
                                                 @endif
-                                            </ul>
-                                            <div class="MoreBtn f_right tx-right">
-                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                            </div>
+                                            </ul>                                            
                                         </div>
                                         <div class="w-line">-</div>
                                     </td>

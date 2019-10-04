@@ -1786,7 +1786,7 @@ body.memBody #Footer {
 .willbes-Open-Table .MoreBtn {
     width: 34px;
     height: 34px;
-    margin-top:-20px;
+    /*margin-top:-20px;*/
 }
 .willbes-Open-Table .MoreBtn a {
     display: block;

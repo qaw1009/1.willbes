@@ -104,7 +104,7 @@
                                         <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             @if($row['IsRetake'] == 'N')
                                                 <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
                                             @else
@@ -156,20 +156,20 @@
                                     <td class="w-data tx-left pb-zero">
                                         <div class="w-tit">
                                             {{$row['ProdName']}}
+                                            <div class="MoreBtn f_right tx-right">
+                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                            </div>
                                         </div>
                                         <dl class="w-info tx-gray">
                                             <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span></dt>
                                         </dl>
                                         <div class="w-start tx-gray">
-                                            <ul class="f_left two">
+                                            <ul class="two">
                                                 <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
                                                 {{--
                                                 <li class="btn_blue"><a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','');"><span class="bBox blueBox NSK">재수강신청</span></a></li>
                                                 --}}
-                                            </ul>
-                                            <div class="MoreBtn f_right tx-right">
-                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                            </div>
+                                            </ul>                                            
                                         </div>
                                         <div class="w-line">-</div>
                                     </td>
@@ -194,7 +194,7 @@
                                                 <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span></dt>
                                             </dl>
                                             <div class="w-start tx-gray">
-                                                <ul class="f_left two">
+                                                <ul class="two">
                                                     <li class="btn_white"><a href="javascript:;">후기등록</a></li>
                                                 </ul>
                                             </div>

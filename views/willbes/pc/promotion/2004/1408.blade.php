@@ -206,26 +206,38 @@
         function giveCheck() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             @if(empty($arr_promotion_params) === false)
-                var give_idx = $('input:radio[name="register_data1"]:checked').data('giveidx');
+            var give_idx = $('input:radio[name="register_data1"]:checked').data('giveidx');
 
-                if(!give_idx){
-                    alert('쿠폰을 선택하지 않아서 발급에 실패하였습니다.');
-                    return;
-                }
+            if(!give_idx){
+                alert('쿠폰을 선택하지 않아서 발급에 실패하였습니다.');
+                return;
+            }
 
-                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&give_idx='+give_idx+'&event_code={{$data['ElIdx']}}';
-                ajaxSubmit($regi_form, _check_url, function (ret) {
-                    if (ret.ret_cd) {
-                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
-                        location.reload();
-                        {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
-                    }
-                }, showValidateError, null, false, 'alert');
-            @else
-                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            //다건 쿠폰 중복 발급 체크
+            //arr_give_idx_chk: 콤마(,)를 붙여서 생성
+            var arr_give_idx_chk = '';
+            var give_overlap_chk = '';
+            @if(empty($arr_promotion_params['give_type']) === false && $arr_promotion_params['give_type'] == 'coupons')
+                arr_give_idx_chk = '&arr_give_idx_chk={{$arr_promotion_params['give_idx']}},{{$arr_promotion_params['give_idx2']}}';
             @endif
+            @if(empty($arr_promotion_params['give_overlap_chk']) === false)
+                give_overlap_chk = '&give_overlap_chk={{$arr_promotion_params['give_overlap_chk']}}';
+            @endif
+
+
+    var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&give_idx='+give_idx+'&event_code={{$data['ElIdx']}}'+arr_give_idx_chk;
+    ajaxSubmit($regi_form, _check_url, function (ret) {
+        if (ret.ret_cd) {
+            alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+            location.reload();
+            {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
         }
-    </script>
+    }, showValidateError, null, false, 'alert');
+    @else
+    alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+    @endif
+}
+</script>
 
 
 @stop

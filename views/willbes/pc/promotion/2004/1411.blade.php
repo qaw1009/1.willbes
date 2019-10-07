@@ -64,7 +64,7 @@
 
  <div class="p_re evtContent NGR" id="evtContainer">  
     <div class="skybanner" >
-        <a href="https://pass.willbes.net/pass/promotion/index/cate/3024/code/1419" target="blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1419_sky1.png"></a>        
+        <a href="https://pass.willbes.net/promotion/index/cate/3024/code/1419" target="blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1419_sky1.png"></a>        
     </div>
 
     <div class="evtCtnsBox wb_top">

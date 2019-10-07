@@ -50,11 +50,11 @@
         to{color:#000}
         }
         .wb_00 {background:#404040}
-        .wb_01 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/09/1406_top_bg.jpg) no-repeat center top;}
+        .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1406_top_bg.jpg) no-repeat center top;}
         .wb_02 {background:#ededed}
         .wb_03 {background:#fff}
         .wb_04 {background:#f3f3f3;}
-        .wb_05 {background:#343434 url(https://static.willbes.net/public/images/promotion/2019/09/1406_04_bg.jpg) no-repeat center top;}
+        .wb_05 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1406_04_bg.jpg) no-repeat center top;}
         .wb_06 {background:#020f5d}
 
     </style>
@@ -94,33 +94,33 @@
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1406_top.jpg" alt="기본이론 집중완성" usemap="#Map1406A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_top.jpg" alt="기본이론 집중완성" usemap="#Map1406A" border="0" />
             <map name="Map1406A" id="Map1406A">
-                <area shape="rect" coords="366,1387,754,1482" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
+                <area shape="rect" coords="365,1329,753,1424" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
             </map>        
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1406_01.jpg" alt="기본이론 집중완성"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_01.jpg" alt="기본이론 집중완성"/>
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1406_02.jpg" alt="2달 완성"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_02.jpg" alt="2달 완성"/>
         </div>
 
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1406_03.jpg" alt="기본이론은 신광은경찰"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_03.jpg" alt="기본이론은 신광은경찰"/>
         </div>
 
         <div class="evtCtnsBox wb_05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1406_04.jpg" alt="더블할인 이벤트 신청하기" usemap="#Map1406B" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_04.jpg" alt="더블할인 이벤트 신청하기" usemap="#Map1406B" border="0"/>
             <map name="Map1406B" id="Map1406B">
-                <area shape="rect" coords="431,1161,686,1370" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
+                <area shape="rect" coords="357,712,764,1038" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
             </map>
         </div> 
                
         <div class="evtCtnsBox wb_06" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1406_05.jpg" alt="튜터들이 온다"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_05.jpg" alt="튜터들이 온다"/>
         </div>
       
     </div>

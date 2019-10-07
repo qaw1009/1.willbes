@@ -38,12 +38,12 @@
         .wb_mp4 {background:#000;}
 
         .wb_cts00 {background:#404040}
-        .wb_cts01 {background:#191c22 url(https://static.willbes.net/public/images/promotion/2019/09/1325_top_bg.jpg) no-repeat center top; }   
+        .wb_cts01 {background:#191c22 url(https://static.willbes.net/public/images/promotion/2019//10/1325_top_bg.jpg) no-repeat center top; }   
 
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#abb1b9}
         .wb_cts04 {background:#696d73}
-		.wb_cts05 {background:#fff; padding-bottom:100px}
+		.wb_cts05 {background:#fff;}
         .wb_cts06 {background:#f8f9fa}
         .wb_cts07 {background:#292b31}
         
@@ -100,11 +100,11 @@
         </div>
         <!-- 타이머 //-->
         <div class="skybanner" >
-            <a href="#lect"><img src="https://static.willbes.net/public/images/promotion/2019/09/1325_skybanner.png" alt="스카이베너" usemap="#Map1325c" border="0" ></a>
+            <a href="#lect"><img src="https://static.willbes.net/public/images/promotion/2019//10/1325_skybanner.png" alt="스카이베너" usemap="#Map1325c" border="0" ></a>
         </div>
 
         <div class="skybanner2" >
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1359_sky2.gif" alt="통합생활관리반" ></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1053_popup.png" alt="통합생활관리반" ></a>
         </div>               
 
 		<div class="evtCtnsBox wb_cts00">
@@ -112,15 +112,15 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_top.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_top.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_01.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_01.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_02.gif" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_02.gif" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts04" >
@@ -128,33 +128,18 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="lect">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_04_title.jpg" alt="슈퍼pass"/>   
-            <div class="tabContaier">
-                <ul>
-                    <li>
-                        <a class="active" href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2019/09/1325_04_tab01_off.jpg" class="off" />
-                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_04_tab01_on.jpg" class="on"  /></a></li>
-                    <li>
-                        <a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/09/1325_04_tab02_off.jpg"  class="off"  />
-                        <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_04_tab02_on.jpg"  class="on" /></a>
-                    </li>                  
-                </ul>
-                <div class="tabContents" id="tab1">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_04_tab01.jpg" alt="5개월" />   
-                </div>
-                <div class="tabContents" id="tab2">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_04_tab02.jpg" alt="11개월" />
-                </div>
-                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1325_04_btn.png" alt="슈퍼pass"/></a>
-			</div> 
+            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04.jpg" alt="슈퍼pass" usemap="#Map1325A" border="0"/>
+            <map name="Map1325A" id="Map1325A">
+                <area shape="rect" coords="369,1317,748,1415" href="https://police.willbes.net/pass/OffVisitPackage?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1085" target="_blank" alt="신청하기" />
+            </map> 
         </div>
 		
 		<div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_05.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_05.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts07" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1325_last.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_06.jpg" alt="슈퍼pass"  />
         </div>
     </div>
     <!-- End Container -->
@@ -164,24 +149,6 @@
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
-
-        /*tab*/
-		$(document).ready(function(){
-			$(".tabContents").hide(); 
-			$(".tabContents:first").show();
-
-			$(".tabContaier ul li a").click(function(){ 
-
-			var activeTab = $(this).attr("href"); 
-			$(".tabContaier ul li a").removeClass("active"); 
-			$(this).addClass("active"); 
-			$(".tabContents").hide(); 
-			$(activeTab).fadeIn(); 
-
-			return false; 
-			});
-		});						
-
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

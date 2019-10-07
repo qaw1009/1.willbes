@@ -21,9 +21,17 @@
 
 /************************************************************/
 
+.skybanner {
+            position:fixed;
+            bottom:50px;
+            right:10px;
+            z-index:1;
+        }
+
 .wb_top{background:url("https://static.willbes.net/public/images/promotion/2019/09/1411_top_bg.jpg") no-repeat center top}
 .wb_cts01{background:url("https://static.willbes.net/public/images/promotion/2019/09/1411_01_bg.jpg") no-repeat center top}
-.wb_cts02,.wb_cts03{background:#eee;}
+.wb_cts02{background:#eee;}
+.wb_cts03{background:#eee;padding-bottom:150px}
 
 .tabContaier{width:980px;margin:0 auto;}
 .tabContaier li{display:inline-block;width:50%;height:84px;line-height:84px;background:#e4e4e4;color:#666;float:left;font-size:22px;font-weight:bold;}
@@ -54,7 +62,11 @@
 .tab02Cts th {font-weight:bold; color:#333; background:#f4f4f4}
  </style>
 
- <div class="p_re evtContent NGR" id="evtContainer">   
+ <div class="p_re evtContent NGR" id="evtContainer">  
+    <div class="skybanner" >
+        <a href="https://pass.willbes.net/pass/promotion/index/cate/3024/code/1419" target="blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1419_sky1.png"></a>        
+    </div>
+
     <div class="evtCtnsBox wb_top">
         <img src="https://static.willbes.net/public/images/promotion/2019/09/1411_top.gif" usemap="#Map1411a"  title="등불 문제풀이반" border="0" />
         <map name="Map1411a" id="Map1411a">
@@ -64,9 +76,11 @@
     <div class="evtCtnsBox wb_cts01">
         <img src="https://static.willbes.net/public/images/promotion/2019/09/1411_01.jpg"  title="추가채용 확정" />
     </div>
+
     <div class="evtCtnsBox wb_cts02">
         <img src="https://static.willbes.net/public/images/promotion/2019/09/1411_02.jpg"  title="윌비스와 함께" />
     </div>
+
     <div class="evtCtnsBox wb_cts03" id="to_go">
         <div class="tabContaier">    
             <ul>    

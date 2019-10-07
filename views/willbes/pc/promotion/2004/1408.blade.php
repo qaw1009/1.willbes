@@ -39,7 +39,13 @@
         #slidesImg4:after {content::""; display:block; clear:both}           
 
         .evt04 {background:#eeede9;}  
-        .evt04_1 {background:#51d68e;}          
+        .evt04_1 {background:#51d68e;}  
+        .evt04_1 ul {width:940px; margin:0 auto;} 
+        .evt04_1 li {display:inline; float:left; width:50%} 
+        .evt04_1 li a {display:block; padding:20px 0; font-size:20px; font-weight:bold; color:#fff; background:#52d58f; border:3px solid #fff; text-align:center;}    
+        .evt04_1 li a:hover,
+        .evt04_1 li a.active {background:#fff; color:#52d58f}
+        .evt04_1 li:last-child a {margin-left:10px}  
         
         .evt05 {background:#fff;}
         .evt05 ul {width:980px; margin:50px auto}
@@ -73,10 +79,13 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_03.jpg" title="올백모의 고사반"  />
             <div class="slide_con">
-                <ul id="slidesImg4">
+                <ul id="slidesImg4">                    
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_con1.jpg" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_con2.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_con2.jpg" /></li>  
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_con.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_con3.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_con4.jpg" /></li> 
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_con5.jpg" /></li>                 
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2019/09/arr_l.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2019/09/arr_r.png"></a></p>
@@ -89,6 +98,32 @@
 
         <div class="evtCtnsBox evt04_1">           
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_1.jpg" title="올백모의 고사반"  />
+            <ul class="tabs">
+                <li><a href="#tab01">일반행정직</a></li>
+                <li><a href="#tab02">세무직</a></li>
+            </ul>
+            <div id="tab01">
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_tab01.jpg" usemap="#Map1408C" title="일반행정직" border="0"/>
+                <map name="Map1408C" id="Map1408C">
+                    <area shape="rect" coords="114,734,232,842" href="#none" />
+                    <area shape="rect" coords="255,734,369,842" href="#none" />
+                    <area shape="rect" coords="436,734,545,842" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157127" target="_blank" />
+                    <area shape="rect" coords="575,733,685,841" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157122" target="_blank" />
+                    <area shape="rect" coords="751,733,872,841" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157124" target="_blank" />
+                    <area shape="rect" coords="894,734,1006,842" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157125" target="_blank" />
+                </map>
+            </div>
+            <div id="tab02">
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_tab02.jpg" usemap="#Map1408B" title="세무직" border="0"/>
+                <map name="Map1408B" id="Map1408B">
+                    <area shape="rect" coords="116,714,227,824" href="#none" />
+                    <area shape="rect" coords="259,714,359,824" href="#none" />
+                    <area shape="rect" coords="439,713,553,823" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157121" target="_blank" />
+                    <area shape="rect" coords="574,714,683,824" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157123" target="_blank" />
+                    <area shape="rect" coords="750,714,871,824" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157126" target="_blank" />
+                    <area shape="rect" coords="891,714,1012,824" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157127" target="_blank" />
+                </map>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt05" id="to_go">
@@ -132,6 +167,31 @@
                 slidesImg4.goToNextSlide();
             });
 
+        });
+
+         /*tab*/
+         $(document).ready(function(){
+            $('.tabs').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide();
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault()
+                });
+            });
         });
 
         function giveCheck() {

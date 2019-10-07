@@ -18,12 +18,13 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1425_top_bg.jpg) no-repeat center top;}   
         .evt01 {background:#fff}       
         .evt02 {background:#d7d7d7}
+        .evt02 iframe {position:absolute; top:670px; left:50%; margin-left:-280px;}
         .evt03 {background:#fff}
     </style>
 
@@ -31,7 +32,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_top.jpg" usemap="#Map1425A" title="G-TELP 최단기 목표공략" border="0">
             <map name="Map1425A" id="Map1425A">
-                <area shape="rect" coords="828,1081,1114,1156" href="#none" alt="수강신청" />
+                <area shape="rect" coords="828,1081,1114,1156" href="https://lang.willbes.net/lecture/show/cate/3093/pattern/only/prod-code/157309" target="_blank" alt="수강신청" />
             </map>
         </div>
 
@@ -41,6 +42,7 @@
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_02.jpg" title="1초비법">
+            <iframe width="720" height="364" src="https://www.youtube.com/embed/UQ720HQZ0eM" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox evt03" >

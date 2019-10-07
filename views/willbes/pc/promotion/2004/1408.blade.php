@@ -107,8 +107,8 @@
                 <map name="Map1408C" id="Map1408C">
                     <area shape="rect" coords="114,734,232,842" href="#none" />
                     <area shape="rect" coords="255,734,369,842" href="#none" />
-                    <area shape="rect" coords="436,734,545,842" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157127" target="_blank" />
-                    <area shape="rect" coords="575,733,685,841" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157122" target="_blank" />
+                    <area shape="rect" coords="436,734,545,842" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157120" target="_blank" />
+                    <area shape="rect" coords="575,733,685,841" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157123" target="_blank" />
                     <area shape="rect" coords="751,733,872,841" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157124" target="_blank" />
                     <area shape="rect" coords="894,734,1006,842" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157125" target="_blank" />
                 </map>

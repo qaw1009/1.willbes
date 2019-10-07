@@ -32,7 +32,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_top.jpg" usemap="#Map1425A" title="G-TELP 최단기 목표공략" border="0">
             <map name="Map1425A" id="Map1425A">
-                <area shape="rect" coords="828,1081,1114,1156" href="https://lang.willbes.net/lecture/show/cate/3093/pattern/only/prod-code/157309" target="_blank" alt="수강신청" />
+                <area shape="rect" coords="828,1081,1114,1156" href="{{site_url('/lecture/show/cate/3093/pattern/only/prod-code/157309')}}" target="_blank" alt="수강신청" />
             </map>
         </div>
 

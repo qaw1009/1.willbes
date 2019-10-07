@@ -35,11 +35,11 @@ class BaseSurvey extends \app\controllers\FrontController
             return;
         }
 
-        $data = $this->surveyModel->questionSetCall($SqsIdx);
-        $question = array();
-        $questionD = array();
-        $questionD2 = array();
+        $question = [];
+        $questionD = [];
         $tempGn = '';
+        $arr_sp_idx = [];
+        $data = $this->surveyModel->questionSetCall($SqsIdx);
         foreach ($data as $key => $val){
             $gn = $val['GroupNumber'];
             $question[$gn]['SqIdx'][] = $val['SqIdx'];
@@ -48,15 +48,17 @@ class BaseSurvey extends \app\controllers\FrontController
             if($tempGn != $gn){
                 $question[$gn]['GroupTitle'] = trim($val['GroupTitle']);
             }
-            $sqidx = $val['SqIdx'];
-            $res = $this->surveyModel->questionCall($sqidx);
-            $questionD[$sqidx]['question'] = $res;
-            $questionD2[] = $res;
+            $arr_sp_idx[] = $val['SqIdx'];
             $tempGn = $val['GroupNumber'];
+        }
+        $question_data = $this->surveyModel->allQuestionCall($arr_sp_idx);
+
+        foreach ($question_data as $row) {
+            $questionD[$row['SqIdx']]['question'] = $row;
         }
 
         $TypeT = array();
-        foreach($questionD2 as $key => $val){
+        foreach($question_data as $key => $val){
             if($val['Type'] == 'T'){
                 for($i = 1; $i <= 25; $i++){
                     if(empty(trim($val['Comment'.$i]))===false) $TypeT[] = trim($val['Comment'.$i]);
@@ -141,6 +143,7 @@ class BaseSurvey extends \app\controllers\FrontController
                 $numberSet[] = $defnum;
                 $typeSet[] = $tempType;
                 $isDispSet[] = $tempIsDisp;
+
                 $questionSet[] = $this->surveyModel->questionSet($tempSq);
                 $defnum++;
             } else {

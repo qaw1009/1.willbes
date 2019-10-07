@@ -408,6 +408,9 @@
                 <li>
                     <a href="{{front_url('/package/index/cate/3020/pack/648002')}}">선택패키지</a>
                 </li>
+                <li>
+                    <a href="{{front_url('/userPackage/show/cate/3020/prod-code/154961/lidx/3')}}">DIY패키지</a>
+                </li>
             </ul>
         </div>
         <div class="lec-drop-Box">

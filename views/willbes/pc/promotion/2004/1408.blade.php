@@ -20,10 +20,11 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position: relative;}
 
         /************************************************************/     
+        .skybanner{position: fixed; top:200px; right:5px; z-index: 1;}
+        .skybanner li {margin-bottom:5px}
+        .skybannerB{position: fixed; bottom:0; text-align:center; z-index: 1; background:#51d68e; width:100%}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/09/1408_top_bg.jpg) no-repeat center top;}    
-
-        .skybanner{position: fixed; bottom:0; text-align:center; z-index: 1; background:#51d68e; width:100%}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/09/1408_top_bg.jpg) no-repeat center top;}         
         
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1408_02_bg.jpg) no-repeat center top;}
 
@@ -60,17 +61,25 @@
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
     </form>
-    <div class="p_re evtContent NGR" id="evtContainer">       
-        <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_top.gif" title="올백 모의고사"  />
+    <div class="p_re evtContent NGR" id="evtContainer"> 
+        <ul class="skybanner">
+            <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_s2.jpg"/></a></li>
+            <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_s3.jpg"/></a></li>
+            <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1408_s4.jpg"/></a></li>
         </div>
-      
-        <div class="skybanner">
+
+        <div class="skybannerB">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1048_scroll_b.png" usemap="#Map1408a" title="소문내고 혜택받기" border="0"  />
             <map name="Map1408a" id="Map1408a">                
               <area shape="rect" coords="810,21,1030,103" href="#to_go" />
             </map>     
         </div>
+
+        <div class="evtCtnsBox evtTop">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_top.gif" title="올백 모의고사"  />
+        </div>
+      
+        
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_02.jpg" title="고퀄리티 문항"  />

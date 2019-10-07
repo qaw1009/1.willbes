@@ -106,33 +106,13 @@
         </div>
 
         <div class="evtCtnsBox evt04_1">           
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_1.jpg" title="올백모의 고사반"  />
-            <ul class="tabs">
-                <li><a href="#tab01">일반행정직</a></li>
-                <li><a href="#tab02">세무직</a></li>
-            </ul>
-            <div id="tab01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_tab01.jpg" usemap="#Map1408C" title="일반행정직" border="0"/>
-                <map name="Map1408C" id="Map1408C">
-                    <area shape="rect" coords="114,734,232,842" href="#none" />
-                    <area shape="rect" coords="255,734,369,842" href="#none" />
-                    <area shape="rect" coords="436,734,545,842" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157120" target="_blank" />
-                    <area shape="rect" coords="575,733,685,841" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157123" target="_blank" />
-                    <area shape="rect" coords="751,733,872,841" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157124" target="_blank" />
-                    <area shape="rect" coords="894,734,1006,842" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157125" target="_blank" />
-                </map>
-            </div>
-            <div id="tab02">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_tab02.jpg" usemap="#Map1408B" title="세무직" border="0"/>
-                <map name="Map1408B" id="Map1408B">
-                    <area shape="rect" coords="116,714,227,824" href="#none" />
-                    <area shape="rect" coords="259,714,359,824" href="#none" />
-                    <area shape="rect" coords="439,713,553,823" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157121" target="_blank" />
-                    <area shape="rect" coords="574,714,683,824" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157123" target="_blank" />
-                    <area shape="rect" coords="750,714,871,824" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157126" target="_blank" />
-                    <area shape="rect" coords="891,714,1012,824" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157127" target="_blank" />
-                </map>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_1.jpg" usemap="#Map1408B" title="올백모의 고사반" border="0"  />
+            <map name="Map1408B" id="Map1408B">
+                <area shape="rect" coords="163,523,491,587" href="#none" alt="9급" />
+                <area shape="rect" coords="635,524,961,588" href="#none" alt="군무원" />
+                <area shape="rect" coords="157,792,494,856" href="#none" alt="7급" />
+                <area shape="rect" coords="635,792,963,855" href="#none" alt="7급외무영사" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt05" id="to_go">

@@ -215,11 +215,13 @@ abstract class FrontController extends BaseController
                             $_not_match_cate_code = empty($this->_cate_code) === false ? $this->_cate_code : element('DefCateCode', $site_cache);
                             $_not_match_route_val = '//' . parse_url(current_url(), PHP_URL_HOST) . '/home/index/' . config_get('uri_segment_keys.cate') . '/' . $_not_match_cate_code;
                             $_not_match_route_idx = str_first_pos_after(array_search($_not_match_route_val, array_slice($menu_urls, 1)), '.');
-                            $_active_menu = array_get($_tree_menu, $_not_match_route_idx);
+                            $_active_menu = array_get($_tree_menu, $_not_match_route_idx, []);
                         }
 
                         if (empty($_active_menu) === true) {
-                            $_active_menu = current(current($_tree_menu)['Children']);
+                            if (isset(current($_tree_menu)['Children']) === true) {
+                                $_active_menu = current(current($_tree_menu)['Children']);
+                            }
                         }
                         $_tree_menu = element('Children', $_active_menu);
                     }

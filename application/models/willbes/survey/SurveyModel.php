@@ -997,6 +997,30 @@ class SurveyModel extends WB_Model
         return $Res;
     }
 
+    public function allQuestionCall($idxs){
+        $column = "*";
+        $from = " FROM {$this->_table['surveyQuestion']} ";
+
+        $arr_condition = [
+            'EQ' => [
+                'SqUseYn' => 'Y'
+            ],
+            'IN' => [
+                'SqIdx' => $idxs
+            ]
+        ];
+        $set_order_by = ['SqIdx' => 'ASC'];
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy($set_order_by)->getMakeOrderBy();
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        $Res = $query->result_array();
+
+        return $Res;
+    }
+
     /**
      * 설문저장
      */

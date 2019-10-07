@@ -21,6 +21,7 @@
 
         /************************************************************/
         .skyBanner {position:fixed; top:350px;right:0;z-index:10;}
+        .skyBanner2 {position:fixed; top:300px;left:50%; margin-left:-600px;z-index:10;}
         .wb_cts00 {background:#404040}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1416_top_bg.jpg) no-repeat center top;}   
         .evt01,.evt04 {background:#fff}
@@ -34,6 +35,9 @@
     <div class="skyBanner">
         <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1416_skybanner.png" title="4개월 필합 패스"></a>      
     </div> 
+    <div class="skyBanner2">
+        <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1053_popup.png" title="4개월 필합 패스"></a>      
+    </div>
 
     <div class="evtCtnsBox wb_cts00">
         <img src="https://static.willbes.net/public/images/promotion/2019/06/1283_00.jpg" alt="슈퍼pass"/>            

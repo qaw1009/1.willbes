@@ -118,6 +118,7 @@ Class PackageUser extends CommonLecture
 
             $data = $this->packageUserModel->_findProductForModify($prodcode);
             $data_memo = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_memo');
+            $data_content = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
             $data_autolec = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
@@ -140,6 +141,7 @@ Class PackageUser extends CommonLecture
             ,'arr_send_callback_ccd' =>$arr_send_callback_ccd
             ,'data'=>$data
             ,'data_memo'=>$data_memo
+            ,'data_content'=>$data_content
             ,'data_sms'=>$data_sms
             ,'data_autolec'=>$data_autolec
             ,'data_autocoupon'=>$data_autocoupon

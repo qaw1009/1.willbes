@@ -676,7 +676,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="is_use">단강좌유의사항(필독)
+                    <label class="control-label col-md-2">단강좌유의사항(필독)
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <input type="hidden" name="ContentTypeCcd[]" value="633001">
@@ -1331,7 +1331,6 @@
                     }
                 }
 
-
                 var _url = '{{ site_url('/product/on/lecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -1342,7 +1341,6 @@
             });
 
             function addValidate() {
-
                 if($('input:radio[name="StudyPeriodCcd"]:checked').val() == '616002') {
                     if($('#StudyEndDate').val()=='') {
                         alert('수강종료일을 입력하여 주십시오.');return;

@@ -42,7 +42,7 @@
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1425_02.jpg" title="1초비법">
-            <iframe width="720" height="364" src="https://www.youtube.com/embed/UQ720HQZ0eM" frameborder="0" allowfullscreen></iframe>
+            <iframe width="720" height="364" src="https://www.youtube.com/embed/afYUa3Al1Vo" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox evt03" >

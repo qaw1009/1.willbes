@@ -109,7 +109,7 @@
             width:200px !important; border:1px solid #ccc;
         }
         .Cts04 .t_tilte {
-           line-height:1.5; padding:10px 0; color:#666; width:200px; margin:0 auto
+           line-height:50px; height:50px; color:#666; width:200px; margin:0 auto;
         }
         .Cts04 .t_tilte p {border-top:1px solid #e4e4e4; padding-top:10px; margin-top:10px}
         .Cts04 .t_tilte span {

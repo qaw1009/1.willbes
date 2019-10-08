@@ -63,12 +63,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_03.jpg" alt="스텝3"  />
         </div>
 
-        <div class="evtCtnsBox wb_cts04" id="to_go1" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_04.jpg" alt="이벤트1" usemap="#Map1412a" border="0"  />
+        <div class="evtCtnsBox wb_cts04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_04_1.jpg"><br>             
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_04.jpg" alt="이벤트1" usemap="#Map1412a" border="0" id="to_go1" />
             <map name="Map1412a" id="Map1412a">
-                <area shape="rect" coords="80,694,285,752" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
-                <area shape="rect" coords="462,696,662,752" href="#to_go3" />
-                <area shape="rect" coords="833,697,1040,753" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
+                <area shape="rect" coords="80,660,285,718" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
+                <area shape="rect" coords="461,660,661,716" href="#to_go3" />
+                <area shape="rect" coords="834,661,1041,717" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
             </map>
         </div>
 
@@ -102,12 +103,4 @@
         </div>
     </div>
     <!-- End Container -->
-
-    <script type="text/javascript">  			
-
-    </script>
-
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
-
 @stop

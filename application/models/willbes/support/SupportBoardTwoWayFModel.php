@@ -66,8 +66,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             ";
 
             $arr_condition = array_merge($arr_condition,[
-                'RAW' => [
-                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                'EQ' => [
+                    'c.CateCode ' => $cate_code
                 ]
             ]);
         }
@@ -187,8 +187,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             ";
 
             $arr_condition = array_merge($arr_condition,[
-                'RAW' => [
-                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                'EQ' => [
+                    'c.CateCode ' => $cate_code
                 ]
             ]);
         }
@@ -827,8 +827,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             ";
 
             $arr_condition = array_merge($arr_condition,[
-                'RAW' => [
-                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                'EQ' => [
+                    'c.CateCode ' => $cate_code
                 ]
             ]);
         }

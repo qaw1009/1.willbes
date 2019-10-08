@@ -21,15 +21,18 @@ class BoardAttachFModel extends WB_Model
      */
     public function findAttachData($bm_idx, $board_idx, $column = '*')
     {
+        $set_int_bm_idx = (int)$bm_idx;
+        $set_int_board_idx = (int)$board_idx;
+
         $arr_condition_1 = [
-            'RAW' => ['a.BoardIdx = ' => $board_idx],
+            'RAW' => ['a.BoardIdx = ' => $set_int_board_idx],
             'EQ' => ['a.IsStatus' => 'Y']
         ];
         $where_main = $this->_conn->makeWhere($arr_condition_1);
         $where_main = $where_main->getMakeWhere(false);
 
         $arr_condition_2 = [
-            'RAW' => ['BoardIdx' => $board_idx, 'BmIdx = ' => $bm_idx,],
+            'RAW' => ['BoardIdx' => $set_int_board_idx, 'BmIdx = ' => $set_int_bm_idx,],
             'EQ' => ['IsStatus' => 'Y', 'IsUse' => 'Y']
         ];
         $where_sub = $this->_conn->makeWhere($arr_condition_2);

@@ -60,10 +60,8 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition = array_merge($arr_condition,[
-                'EQ' => [
-                    'c.CateCode ' => $cate_code
-                ]
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'c.CateCode ' => $cate_code
             ]);
         }
 
@@ -136,10 +134,8 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition = array_merge($arr_condition,[
-                'EQ' => [
-                    'c.CateCode ' => $cate_code
-                ]
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'c.CateCode ' => $cate_code
             ]);
         }
 
@@ -239,10 +235,8 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition = array_merge($arr_condition,[
-                'EQ' => [
-                    'c.CateCode ' => $cate_code
-                ]
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'c.CateCode ' => $cate_code
             ]);
         }
 
@@ -322,10 +316,8 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition = array_merge($arr_condition,[
-                'RAW' => [
-                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
-                ]
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'c.CateCode ' => $cate_code
             ]);
         }
 
@@ -427,10 +419,8 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition_board = array_merge($arr_condition_board,[
-                'RAW' => [
-                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
-                ]
+            $arr_condition_board['EQ'] = array_merge($arr_condition_board['EQ'], [
+                'c.CateCode ' => $cate_code
             ]);
         }
 

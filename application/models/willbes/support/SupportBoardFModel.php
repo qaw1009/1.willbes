@@ -60,9 +60,7 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'c.CateCode ' => $cate_code
-            ]);
+            $arr_condition['EQ']['c.CateCode'] = $cate_code;
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -134,9 +132,7 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'c.CateCode ' => $cate_code
-            ]);
+            $arr_condition['EQ']['c.CateCode'] = $cate_code;
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -235,9 +231,7 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'c.CateCode ' => $cate_code
-            ]);
+            $arr_condition['EQ']['c.CateCode'] = $cate_code;
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -316,9 +310,7 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'c.CateCode ' => $cate_code
-            ]);
+            $arr_condition['EQ']['c.CateCode'] = $cate_code;
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -419,9 +411,7 @@ class SupportBoardFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition_board['EQ'] = array_merge($arr_condition_board['EQ'], [
-                'c.CateCode ' => $cate_code
-            ]);
+            $arr_condition_board['EQ']['c.CateCode'] = $cate_code;
         }
 
         $where = $this->_conn->makeWhere($arr_condition_board);

@@ -108,10 +108,14 @@
         <div class="evtCtnsBox evt04_1">           
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1408_04_1.jpg" usemap="#Map1408B" title="올백모의 고사반" border="0"  />
             <map name="Map1408B" id="Map1408B">
-                <area shape="rect" coords="163,523,491,587" href="#none" alt="9급" />
-                <area shape="rect" coords="635,524,961,588" href="#none" alt="군무원" />
-                <area shape="rect" coords="157,792,494,856" href="#none" alt="7급" />
-                <area shape="rect" coords="635,792,963,855" href="#none" alt="7급외무영사" />
+                <area shape="rect" coords="163,521,491,585" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&amp;subject_idx=1278&amp;campus_ccd=605001&amp;course_idx=1062" target="_blank" alt="9급" />
+                <area shape="rect" coords="165,586,488,647" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3050&amp;subject_idx=1278&amp;campus_ccd=605001&amp;course_idx=1062" target="_blank" alt="소방공채" />
+                <area shape="rect" coords="634,526,963,583" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&amp;subject_idx=1278&amp;campus_ccd=605001&amp;course_idx=1062" target="_blank" alt="군무원" />
+                <area shape="rect" coords="637,584,958,646" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3050&amp;subject_idx=1278&amp;campus_ccd=605001&amp;course_idx=1062" target="_blank" alt="소방특채" />
+                <area shape="rect" coords="164,903,492,966" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&amp;subject_idx=1278&amp;campus_ccd=605001&amp;course_idx=1062" target="_blank" alt="7급" />
+                <area shape="rect" coords="634,906,962,965" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&amp;subject_idx=1278&amp;campus_ccd=605001&amp;course_idx=1062" target="_blank" alt="7급 외무영사직" />
+                <area shape="rect" coords="166,1233,489,1295" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&amp;subject_idx=1278&amp;campus_ccd=605001&amp;course_idx=1062" target="_blank" alt="9급 공통" />
+                <area shape="rect" coords="634,1235,959,1293" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&amp;subject_idx=1278&amp;campus_ccd=605001&amp;course_idx=1062" target="_blank" alt="7급공통" />
             </map>
         </div>
 

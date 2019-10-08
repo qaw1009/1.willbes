@@ -113,26 +113,26 @@
                         <img src="{{ img_url('cop_acad/prof/prof_ssc.jpg') }}" title="면접 신승철">
                         <div class="caProfBtsn">
                             {{--<div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&subject_idx=1070&course_idx=1047') }}">사전조사서 특강<span>9.9 개강<br>9.16 개강</span></a></div>--}}
-                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>9.30 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>진행중</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" title="인적성검사 강인엽">
                         <div class="caProfBtsn">
                             {{--<div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&subject_idx=1070&course_idx=1047') }}">사전조사서 특강<span>9.9 개강<br>9.11 개강</span></a></div>--}}
-                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>9.30 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>진행중</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" title="면접 정용욱">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>9.30 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>진행중</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" title="면접 유봉진">
                         <div class="caProfBtsn">
-                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>9.30 개강</span></a></div>
+                            <div><a href="{{ site_url('/pass/offLecture/index/type/interview?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064') }}">면접 캠프<span>진행중</span></a></div>
                         </div>
                     </li>                    
                 </ul>

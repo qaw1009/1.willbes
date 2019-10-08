@@ -17,8 +17,6 @@
         }
     @endphp
 
-
-
     <h5>- 온라인 사용자패키지 상품 정보를 관리하는 메뉴입니다.(사용자패키지 : 사용자가 선택한 강좌 갯수에 따라 할인을 적용하는 패키지)</h5>
     <div class="x_panel">
         <div class="x_title">
@@ -393,6 +391,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2">패키지유의사항(필독)
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <input type="hidden" name="ContentTypeCcd[]" value="633001">
+                        <textarea id="Content_633001" name="Content[]" class="form-control" rows="7" title="유의사항(필독)" placeholder="">
+                            @foreach($data_content as $row)
+                                @if($row['ContentTypeCcd'] === '633001'){{$row['Content']}}@endif
+                            @endforeach
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2">자동지급단강좌
                     </label>
                     <div class="col-md-10 form-inline item" >
@@ -666,6 +677,11 @@
 
         $(document).ready(function() {
 
+            var $editor_1 = new cheditor();
+            $editor_1.config.editorHeight = '170px';
+            $editor_1.config.editorWidth = '100%';
+            $editor_1.inputForm = 'Content_633001';
+            $editor_1.run();
 
             var prev_val;
             $('#site_code').focus(function () {
@@ -741,6 +757,8 @@
 
             // ajax submit
             $regi_form.submit(function() {
+
+                getEditorBodyContent($editor_1);
 
                 var _url = '{{ site_url('/product/on/packageUser/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {

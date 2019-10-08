@@ -28,19 +28,6 @@
             z-index:1;
         }
 
-
-        .evt01 {background:#d7d7d7; padding-top:80px; border-bottom:5px solid #fff;}
-        .evt01 ul {width:1042px; margin:0 auto;}
-        .evt01 li {display:inline; float:left; width:16.66666%; position:relative;}
-        .evt01 li span {position:absolute; width:100%; text-align:center; left:0; top:-40px; margin:0; padding:0}
-        .evt01 li a img.on {display:none}
-        .evt01 li a img.off {display:block}
-        .evt01 li a.active img.on,
-        .evt01 li a:hover img.on {display:block}
-        .evt01 li a.active img.off,
-        .evt01 li a:hover img.off {display:none}
-        .evt01 ul:after {content:""; display:block; clear:both}
-
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1424_top_bg.jpg) no-repeat center top;}	
         .wb_cts01 .wb_popWrap {width:1120px; margin:0 auto; position:relative}
 
@@ -62,51 +49,6 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox evt01" id="evt01">
-            <ul>
-                <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="진행마감"></span>
-                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/1361#tab01" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab01_on.jpg" alt="사전예약" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab01.jpg" alt="사전예약" class="off">
-                    </a>
-                </li>
-                <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="진행마감"></span>                
-                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/1361#tab02" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab02_on.jpg" alt="합격예측" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab02.jpg" alt="합격예측" class="off">
-                    </a>
-                </li>                
-                <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/1361#tab03" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab03_on.jpg" alt="체력시험" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab03.jpg" alt="체력시험" class="off">
-                    </a>
-                </li>
-                <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/1361#tab04" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab04_on.jpg" alt="면접시험" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab04.jpg" alt="면접시험" class="off">
-                    </a>
-                </li>
-                <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                    <a href="#none" class="active">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab06_on.jpg" alt="최종합격예측" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab06.jpg" alt="면접시험" class="off">
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab05" onClick='alert("COMING SOON!! ")'>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab05_on.jpg" alt="최종합격" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab05.jpg" alt="최종합격" class="off">
-                    </a>
-                </li>
-            </ul>
-        </div>
         <div class="evtCtnsBox wb_cts01" >
             <div class="wb_popWrap">
                 <div class="illust">

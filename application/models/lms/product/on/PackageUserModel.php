@@ -127,6 +127,12 @@ class PackageUserModel extends CommonLectureModel
             }
             /*----------------          메모등록        ---------------*/
 
+            /*----------------          컨텐트등록        ---------------*/
+            if($this->_setContent($input,$prodcode) !== true) {
+                throw new \Exception('컨텐트 등록에 실패했습니다.');
+            }
+            /*----------------          컨텐트등록        ---------------*/
+
             /*----------------          SMS등록        ---------------*/
             if($this->_setSms($input,$prodcode) !== true) {
                 throw new \Exception('SMS 등록에 실패했습니다.');
@@ -227,6 +233,12 @@ class PackageUserModel extends CommonLectureModel
                 throw new \Exception('메모 등록에 실패했습니다.');
             }
             /*----------------          메모등록        ---------------*/
+
+            /*----------------          컨텐트등록        ---------------*/
+            if($this->_setContent($input,$prodcode) !== true) {
+                throw new \Exception('컨텐트 등록에 실패했습니다.');
+            }
+            /*----------------          컨텐트등록        ---------------*/
 
             /*----------------          SMS등록        ---------------*/
             if($this->_setSms($input,$prodcode) !== true) {

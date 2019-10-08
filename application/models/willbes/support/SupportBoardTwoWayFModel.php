@@ -65,10 +65,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition = array_merge($arr_condition,[
-                'EQ' => [
-                    'c.CateCode ' => $cate_code
-                ]
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'c.CateCode ' => $cate_code
             ]);
         }
 
@@ -186,10 +184,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition = array_merge($arr_condition,[
-                'EQ' => [
-                    'c.CateCode ' => $cate_code
-                ]
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'c.CateCode ' => $cate_code
             ]);
         }
 
@@ -826,10 +822,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                     on c.CateCode = d.CateCode and d.IsStatus = 'Y'
             ";
 
-            $arr_condition = array_merge($arr_condition,[
-                'EQ' => [
-                    'c.CateCode ' => $cate_code
-                ]
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'c.CateCode ' => $cate_code
             ]);
         }
 

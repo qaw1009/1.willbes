@@ -98,9 +98,9 @@
             width:200px !important; border:1px solid #ccc;
         }
         .Cts04 .t_tilte {
-           line-height:1.5; padding:10px 0; color:#666; width:200px; margin:0 auto
+           color:#666; width:200px; margin:0 auto; padding:10px 0; line-height:1.5;
         }
-        .Cts04 .t_tilte p {border-top:1px solid #e4e4e4; padding-top:10px; margin-top:10px}
+        .Cts04 .t_tilte p {border-top:1px solid #e4e4e4;  line-height:50px; height:50px; margin-top:10px}
         .Cts04 .t_tilte span {
             color:#36374d; font-size:14px; ;
         }
@@ -1246,7 +1246,7 @@
                         <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" title="교수명" class="prof">
                         <div class="t_tilte">
                             국어 기미진 교수<br>
-                            <span>국어 강사의<br>NEW 패러다임</span>                               
+                            <span>국어 강사의 NEW 패러다임</span>                               
                             <p>추후 제공 예정입니다.</p>                            
                         </div>
                     </li>
@@ -1254,7 +1254,7 @@
                         <img src="https://pass.willbes.net/public/uploads/willbes/professor/50499/lec_detail_50499.png" title="교수명" class="prof">
                         <div class="t_tilte">
                             영어 한덕현 교수<br>
-                            <span>속 시원하고 진솔한<br>제니스 영어</span> 
+                            <span>속 시원하고 진솔한 제니스 영어</span> 
                             <p>
                                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
                                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
@@ -1265,7 +1265,7 @@
                         <img src="https://pass.willbes.net/public/uploads/willbes/professor/50441/lec_detail_50441.png" title="교수명" class="prof">
                         <div class="t_tilte">
                             한국사 박민주 교수<br>
-                            <span>공무원 한국사의<br>대명사</span>                               
+                            <span>공무원 한국사의 대명사</span>                               
                             <p>추후 제공 예정입니다.</p>                            
                         </div>
                     </li>
@@ -1275,7 +1275,7 @@
                             사회 문병일 교수<br>
                             <span>사회, 만점으로 가는<br>매직 로드</span> 
                             <p>
-                            <p>추후 제공 예정입니다.</p> 
+                            추후 제공 예정입니다.
                             </p>
                         </div>
                     </li>                    

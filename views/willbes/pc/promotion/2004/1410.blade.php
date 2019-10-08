@@ -56,7 +56,13 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_02.jpg" title="1만 문풀의 법칙" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_02.jpg" usemap="#Map1410C" title="1만 문풀의 법칙" border="0" />
+            <map name="Map1410C" id="Map1410C">
+                <area shape="rect" coords="162,772,331,829" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157366" target="_blank" alt="2개월 공채" />
+                <area shape="rect" coords="355,774,523,827" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157365" target="_blank" alt="2개월 특채" />
+                <area shape="rect" coords="609,775,778,828" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157369" target="_blank" alt="5개월공채" />
+                <area shape="rect" coords="798,772,970,831" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157368" target="_blank" alt="5개월 특채" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt03">

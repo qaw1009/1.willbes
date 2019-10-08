@@ -109,9 +109,9 @@
             width:200px !important; border:1px solid #ccc;
         }
         .Cts04 .t_tilte {
-           color:#666; width:200px; margin:0 auto; padding:10px 0;
+           color:#666; width:200px; margin:0 auto; padding:10px 0; line-height:1.5;
         }
-        .Cts04 .t_tilte p {border-top:1px solid #e4e4e4;  line-height:50px; height:50px;}
+        .Cts04 .t_tilte p {border-top:1px solid #e4e4e4;  line-height:50px; height:50px; margin-top:10px}
         .Cts04 .t_tilte span {
             color:#36374d; font-size:14px; ;
         }

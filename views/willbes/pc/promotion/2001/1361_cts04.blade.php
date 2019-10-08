@@ -1,5 +1,5 @@
     <style type="text/css">  
-        .cts04_top {background:url(https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_top_bg.jpg) repeat-x left top;}
+        .cts04_top {background:url(https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_top_bg.jpg) no-repeat center top;}
         .cts04_top ul {
             position:absolute; top:915px; left:50%; width:890px; margin-left:-445px;
         }

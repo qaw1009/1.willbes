@@ -876,6 +876,11 @@
                             }
                             location.replace(ret.ret_data.ret_url);
                         } else {
+                            {{-- 이전 결제폼 제거 --}}
+                            if ($('#payment_layer').length > 0) {
+                                $('#payment_layer').remove();
+                                $('#payment_js').remove();
+                            }
                             $('body').append(ret.ret_data);
                         }
                     }

@@ -1304,15 +1304,20 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_base['arr_area'] = array_pluck($arr_area,'CcdName','Ccd');
         unset($arr_base['arr_area']['712018']);     //'전국'값 제거
 
-        //필수과목
-        $add_condition = ['EQ' => ['Type' => 'P']];
+        //필수과목 (일반경채(남)의 수사, 행정법 코드 제외)
+        $add_condition = [
+            'EQ' => ['Type' => 'P'],
+            'RAW' => [
+                'Ccd !=' => ' 100901 AND Ccd != 100902'
+            ]
+        ];
         $arr_base['arr_subject_ccd']['P'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part), $add_condition);
 
         //선택과목
         $add_condition = ['EQ' => ['Type' => 'S']];
         $arr_base['arr_subject_ccd']['S'] = $this->surveyModel->getCcdInArray(array_keys($temp_mock_part), $add_condition);
 
-        $this->load->view('predict/1242_pop1', [
+        $this->load->view('predict/create_grade_member', [
             'arr_base' => $arr_base
         ]);
     }
@@ -1431,7 +1436,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $data[$row['TakeMockPart']][$row['TakeAreaCcd']] = $row['cnt'];
         }
 
-        $this->load->view('predict/1242_pop2', [
+        $this->load->view('predict/predict_info', [
             'arr_base' => $arr_base,
             'arr_total_count' => $arr_total_count,
             'data' => $data
@@ -1470,7 +1475,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_base['my_rownum'] = $result_final_count['Rownum'];
         $arr_base['my_percentage'] = $result_final_count['MyPercentage'];
 
-        $this->load->view('predict/1242_pop3', [
+        $this->load->view('predict/predict_my_info', [
             'arr_base' => $arr_base,
             'data' => $data
         ]);

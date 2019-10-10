@@ -2046,9 +2046,7 @@ class SurveyModel extends WB_Model
         $column = 'GroupCcd, Ccd, CcdName';
         $arr_condition = ['IN' => ['GroupCcd' => $group_ccds], 'EQ' => ['IsUse' => 'Y']];
         empty($add_condition) === false && $arr_condition = array_merge_recursive($arr_condition, $add_condition);
-
         $data = $this->_conn->getListResult($this->_table['predictCode'], $column, $arr_condition, null, null, ['GroupCcd' => 'asc', 'OrderNum' => 'asc']);
-
         $codes = [];
         foreach ($data as $rows) {
             $codes[$rows['GroupCcd']][(string) $rows['Ccd']] = $rows['CcdName'];

@@ -84,7 +84,7 @@
                 alert("이미 인증이 완료된 상태입니다.");return;
             @endif
             @if(empty($arr_promotion_params) === false)
-                var url = '{{ site_url('/pass/certApply/index/page/'.$arr_promotion_params['page'].'/cert/'.$arr_promotion_params['cert']) }}';
+                var url = '{{ site_url('/certApply/index/page/'.$arr_promotion_params['page'].'/cert/'.$arr_promotion_params['cert']) }}';
                 window.open(url,'cert_popup', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
             @endif
         }

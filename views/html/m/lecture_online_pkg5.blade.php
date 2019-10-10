@@ -12,9 +12,21 @@
                 수강신청 > DIY패키지
             </div>
         </div>
-    </div>
+    </div>    
 
     <div>
+        <div class="willbes-Txt2 NGR tx-blue">
+            2018 한덕현 제니스 영어 실전 동형 모의고사 (4-5월)
+        </div>
+    
+        <div class="willbes-Txt NGR c_both">
+            <div class="willbes-Txt-Tit NG">· 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
+            - DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다.<br/>
+            - DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다<br/>
+            - DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다<br/>
+        </div>
+
+
         <div class="lec-info bd-none pt-zero">
             <h5 class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.{{--<a href="#none" class="NGR">교재정보 전체보기</a>--}}</h5>
             <div class="lec-choice-pkg">

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PredictFModel extends WB_Model
 {
-    public $_mock_part_exception_ccd = '300';    //예외처리코드
+    public $_mock_part_exception_ccd = '800';    //예외처리코드
     public function __construct()
     {
         parent::__construct('lms');

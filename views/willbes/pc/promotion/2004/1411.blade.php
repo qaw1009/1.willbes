@@ -84,8 +84,8 @@
     <div class="evtCtnsBox wb_cts03" id="to_go">
         <div class="tabContaier">    
             <ul>    
-                <li><a href="#tab1" class="active">등.불문제풀이반 단과</a></li>                    
-                <li><a href="#tab2">등.불문제풀이반 종합반</a></li>                
+                <li><a href="#tab1" >등.불문제풀이반 단과</a></li>                    
+                <li><a href="#tab2" class="active">등.불문제풀이반 종합반</a></li>                
             </ul>
         </div> 
         <div id="tab1" class="tabContents">       
@@ -98,8 +98,8 @@
             </map>      
         </div>
         <div id="tab2" class="tabContents">       
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1411_02_tab2.jpg" usemap="#Map"  title="종합반 탭" border="0" />
-            <map name="Map" id="Map">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1411_02_tab2.jpg" usemap="#Map1411c"  title="종합반 탭" border="0" />
+            <map name="Map1411c" id="Map1411c">
                 <area shape="rect" coords="812,74,951,135" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157077"  target="_blank" />
                 <area shape="rect" coords="809,178,957,238" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157091"  target="_blank" />
                 <area shape="rect" coords="808,393,952,453" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157076"  target="_blank" />

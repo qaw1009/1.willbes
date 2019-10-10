@@ -1276,7 +1276,7 @@ class BasePassPredict extends \app\controllers\FrontController
         $arr_condition = ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx'), 'a.PredictIdx' => $arr_base['predict_idx'], 'a.CertIdx' => $arr_base['cert_idx'], 'a.IsStatus' => 'Y']];
         $member_ins_type = $this->predictFModel->findPredictFinalMember($arr_condition);
         if (empty($member_ins_type) === false) {
-            /*show_alert('등록된 정보가 있습니다. 실시간 참여현황에서 확인해 주세요.', site_url('/predict/predictMyInfo?predict='.$arr_base['predict_idx'].'&cert='.$arr_base['cert_idx']));*/
+            show_alert('등록된 정보가 있습니다. 실시간 참여현황에서 확인해 주세요.', site_url('/predict/predictMyInfo?predict='.$arr_base['predict_idx'].'&cert='.$arr_base['cert_idx']));
         }
 
         $add_condition = ['IN' => ['ApprovalStatus' => ['A','Y']]];

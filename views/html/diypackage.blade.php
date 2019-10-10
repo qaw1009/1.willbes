@@ -70,12 +70,38 @@
     </div>
     <div class="Content p_re">
 
-        <div class="willbes-Pm">
-            <img src="{{ img_url('sample/bnr2.jpg') }}">
+        <div class="willbes-Package-Detail NG tx-black">
+            <table cellspacing="0" cellpadding="0" class="packageDetailTable packageDetailTableDiy">
+                <colgroup>
+                    <col/>
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td class="w-list pl25">2020 9급 이론종합 [행정/세무/출관직] 선택형 내맘대로 패키지 </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <!-- willbes-Bnr -->
+        <!-- willbes-Package-Detail -->
+        <div class="willbes-Cartlist">
+            <div class="willbes-Cart-Txt p_re pt15">
+                <span class="MoreBtn underline NG" style="top: 30px;"><a href="#none">유의사항안내 닫기 ▲</a></span>
+                <table cellspacing="0" cellpadding="0" class="txtTable tx-gray">
+                    <tbody>
+                        <tr>
+                            <td>
+                                • DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다.<br/>
+                                • DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다.<br/>
+                                • DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다.<br/>
+                                • DIY패키지 유의사항이 출력됩니다. DIY패키지 유의사항이 출력됩니다.<br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+        </div>
 
-        <div id="Sticky" class="sticky-Package">
+        <div id="Sticky" class="sticky-Package mt20">
             <div class="sticky-Grid sticky-total NG">
                 <div class="willbes-Lec-Package-Price p_re">
                     <div class="total-PriceBox NG">

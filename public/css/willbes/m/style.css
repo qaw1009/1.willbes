@@ -1077,6 +1077,13 @@ body.memBody #Footer {
     padding: 0 20px 20px; 
     border-bottom: 1px solid #ccc;
 }
+.willbes-Txt2 {
+    font-size: 16px;
+    line-height: 20px;
+    padding:20px; 
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
 .willbes-Txt.on {
     height: 40px;
     overflow: hidden;

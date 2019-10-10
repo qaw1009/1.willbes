@@ -2869,6 +2869,22 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     position: relative;
     z-index: 10;  
 }
+.w-sp.btnBlue {
+    text-align: center;
+}
+.w-sp.btnBlue a {
+    color: #fff;
+    border: 1px solid #1a8ccb;
+    background:#1a8ccb;
+    width: 100px;
+    margin:0 auto;
+}
+.w-sp.btnBlue  a:hover,
+.w-sp.btnBlue  a:active {
+    color: #1a8ccb;
+    border-color: #1a8ccb; 
+    background:#fff; 
+}
 
 .w-sp100 {
     width: 100%;
@@ -4461,6 +4477,10 @@ form .LeclistTable .evtTable tr td a.w-del {
     background: #f4f5f6;
     height: 130px;
 }
+.packageDetailTableDiy {
+    background: #f4f5f6;
+    height: 80px;
+}
 .packageDetailTable td {
     line-height: 40px;
 }
@@ -5092,6 +5112,7 @@ span.calendar_btn {
     display: inline-block;
     line-height: 20px;
 }
+
 .willbes-Delivery-Info table {
     letter-spacing: 0;
 }

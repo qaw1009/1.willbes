@@ -2,10 +2,10 @@
 
 @section('content')
 <!-- Container -->
-<style type="text/css">   
+<style type="text/css">
     .willbes-Layer-PassBox span {vertical-align:auto}
     .eventPop {width:640px; margin:0 auto; font-size:12px; color:#333; line-height:1.5; padding-bottom:50px}
-    .eventPop h3 {font-size:18px; font-weight:bold; border-bottom:2px solid #000; text-align:center; padding-bottom:15px; color:#000;} 
+    .eventPop h3 {font-size:18px; font-weight:bold; border-bottom:2px solid #000; text-align:center; padding-bottom:15px; color:#000;}
 
     .eventPopS1 {margin-top:1em}
     .eventPopS1 ul > li {border-bottom:1px solid #e4e4e4; padding:15px 0}
@@ -51,7 +51,7 @@
     .btnsSt3 button:hover {background:#fff; color:#333 !important}
 
     input[type=radio],
-    input[type=checkbox] {width:16px; height:16px;}    
+    input[type=checkbox] {width:16px; height:16px;}
     select,
     input[type=text] {padding:2px; margin-right:10px; height:26px; border:1px solid #e4e4e4}
     input[type=file]:focus,
@@ -106,11 +106,11 @@
                         @foreach($arr_base['arr_subject_ccd']['P'] as $key => $rows)
                             <div class="subject-p" id="subject_p_{{ $key }}">
                                 <strong>공통과목</strong>
-                                <ul>                                  
+                                <ul>
                                     <li>
                                     @foreach($rows as $value => $name)
-                                        <input type="hidden" name="subject_p_code[{{ $key }}][]" value="{{ $value }}">  
-                                        <span>{{ $name }}</span> <input type="text" maxlength="3" name="subject_p[{{ $value }}]" id="subject_p_{{ $value }}"> 점 @if($loop->last === false) / @endif                                        
+                                        <input type="hidden" name="subject_p_code[{{ $key }}][]" value="{{ $value }}">
+                                        <span>{{ $name }}</span> <input type="text" maxlength="3" name="subject_p[{{ $value }}]" id="subject_p_{{ $value }}"> 점 @if($loop->last === false) / @endif
                                     @endforeach
                                     </li>
                                 </ul>
@@ -119,14 +119,14 @@
 
                         @foreach($arr_base['arr_subject_ccd']['S'] as $key => $rows)
                             <div class="subject-s" id="subject_s_{{ $key }}">
-                                <strong>{{($key == 300) ? '필수' : '선택'}}과목</strong>
+                                <strong>{{($key == 800) ? '필수' : '선택'}}과목</strong>
                                 <table class="viewTb">
                                     <col span="2" />
                                     <thead>
                                         <tr class="bdRno">
                                             <th>
                                                 <select id="s_subject_1_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 1, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
-                                                    <option value="">{{($key == 300) ? '필수' : '선택'}}과목1</option>
+                                                    <option value="">{{($key == 800) ? '필수' : '선택'}}과목1</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
                                                     @endforeach
@@ -134,7 +134,7 @@
                                             </th>
                                             <th>
                                                 <select id="s_subject_2_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 2, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
-                                                    <option value="">{{($key == 300) ? '필수' : '선택'}}과목2</option>
+                                                    <option value="">{{($key == 800) ? '필수' : '선택'}}과목2</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
                                                     @endforeach
@@ -142,7 +142,7 @@
                                             </th>
                                             <th>
                                                 <select id="s_subject_3_{{ $key }}" name="subject_s[{{ $key }}][]" onchange="javascript:fn_sel_subject_tmp('{{ $key }}', 3, this.options[this.selectedIndex].value,this.options[this.selectedIndex].text);" style="width:120px;">
-                                                    <option value="">{{($key == 300) ? '필수' : '선택'}}과목3</option>
+                                                    <option value="">{{($key == 800) ? '필수' : '선택'}}과목3</option>
                                                     @foreach($rows as $value => $name)
                                                         <option value="{{ $value }}">{{ $name }}</option>
                                                     @endforeach

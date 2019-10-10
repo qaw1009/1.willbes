@@ -225,7 +225,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $(".tabContents").hide();
-        $(".tabContents:first").show();
+        $(".tabContents:last").show();
         $(".tabContaier ul li a").click(function(){
         var activeTab = $(this).attr("href");
         $(".tabContaier ul li a").removeClass("active");

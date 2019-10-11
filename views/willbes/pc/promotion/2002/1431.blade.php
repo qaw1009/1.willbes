@@ -48,7 +48,7 @@
 	<div class="evtCtnsBox evt01" id="sky01">
         <img src="https://static.willbes.net/public/images/promotion/2019/10/1431_01.jpg" usemap="#Map1431a" title="해경 인.적성반" border="0">
         <map name="Map1431a" id="Map1431a">
-            <area shape="rect" coords="438,2270,685,2342" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3016&subject_idx=1069&course_idx=1047&campus_ccd=605001" target="_blank" />
+            <area shape="rect" coords="438,2270,685,2342" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3016&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" />
         </map>
 	</div>
 
@@ -56,7 +56,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2019/10/1431_02.jpg" usemap="#Map1431b" title="면접대비반" border="0">
         <map name="Map1431b" id="Map1431b">
             <area shape="rect" coords="880,397,1039,500" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3016&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank"/>
-            <area shape="rect" coords="883,854,1043,961" href="https://police.willbes.net/pass/offPackage/index?cate_code=3016&course_idx=1047&campus_ccd=605001" target="_blank" />
+            <area shape="rect" coords="883,854,1043,961" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3016&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" />
         </map>
 	</div>    
 </div>

@@ -11329,6 +11329,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .list-drop-Box-1120 .lec-drop-Box {
     width:12.5%; float: left;
 }
+
 .menu-List > li:nth-child(2) .list-drop-Box-1120 {
     left: 50%;
     margin-left:-687px;
@@ -11340,6 +11341,46 @@ table.acadlecInfoPackageTable tr.Top td {
 .menu-List > li:nth-child(2) .drop-Box-1120:after {
     left: 50%; 
     margin-left: 121px;
+}
+
+/*공무원 학원*/
+.GA .drop-Box-1120:before {
+    top: -12px;
+    left: 50%;
+    margin-left: -221px;
+    border-color: transparent transparent #acacac;
+    border-width: 6px;
+}
+.GA .drop-Box-1120:after {
+    top: -10px;
+    left: 50%;
+    margin-left: -220px;
+    border-color: transparent transparent #fff;
+    border-width: 5px;
+}
+.GA .list-drop-Box-1120 {
+    top: 38px;
+    left:50%;
+    margin-left: -343px;
+    width: 1120px;
+    padding: 20px;
+    text-align: left;
+    z-index: 9999;
+}
+.GA .list-drop-Box-1120 .lec-drop-Box {
+    width:14.28571%; float: left;
+}
+.GA .menu-List > li:nth-child(2) .list-drop-Box-1120 {
+    left: 50%;
+    margin-left:-436px;
+}
+.GA .menu-List > li:nth-child(2) .drop-Box-1120:before {
+    left: 50%;
+    margin-left: -125px;
+}
+.GA .menu-List > li:nth-child(2) .drop-Box-1120:after {
+    left: 50%; 
+    margin-left: -124px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .list-drop-Box-1120 {

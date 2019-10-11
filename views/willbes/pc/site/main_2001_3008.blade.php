@@ -37,8 +37,8 @@
         <div class="Section mt8">
             <div class="widthAuto bnrSec02">
                 <ul>
-                    <li><a href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/132255"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x124_190514_01.jpg" title="권소현 항해술"></a></li>
-                    <li><a href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/153472"><img src="https://static.willbes.net/public/images/promotion/main/3008_556x124_190514_02.jpg" title="황다혜 기관술"></a></li>
+                    <li><a href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/156170"><img src="https://static.willbes.net/public/images/promotion/main/191011_01.jpg" title="김수현 항해술"></a></li>
+                    <li><a href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/156302"><img src="https://static.willbes.net/public/images/promotion/main/191011_02.jpg" title="황영신 기관술"></a></li>
                 </ul>
             </div>
         </div>
@@ -54,7 +54,7 @@
         <div class="Section mt8">
             <div class="widthAuto">
                 <a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/152968') }}">
-                    <img src="https://static.willbes.net/public/images/promotion/main/3008_bnr_1120_02.jpg" title="올인원 면접 전공 특강">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3008_bnr_1120_03.jpg" title="해양경찰특채 면접 전공 특강">
                 </a>
             </div>
         </div>
@@ -68,32 +68,43 @@
                 </div>
                 <ul class="ProfCopBox mt60 mb100">
                     <li>
-                        <img src="{{ img_url('cop_sea_special/prof/prof_gdi.jpg') }}" title="공득인">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_gdi.jpg" title="공득인">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_sea_special/prof/prof_gdi2.jpg') }}" title="공득인">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
-                            <li><a href="/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C
 " target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_sea_special/prof/prof_hdh.jpg') }}" title="황다혜">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_gdi2.jpg" title="공득인">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50657', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50657/?subject_idx=1034&subject_name=%EA%B8%B0%EA%B4%80%EC%88%A0') }}" target="_blank">교수소개</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50742/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0
+" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_sea_special/prof/prof_ksh.jpg') }}" title="권소현">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_james.jpg" title="james kim">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50657', 'OT');">▶</a></li>
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50758/?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4
+" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_ksh.jpg" title="김수현">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50485', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50485/?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50745/?subject_idx=1033&subject_name=%ED%95%AD%ED%95%B4%EC%88%A0
+" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_hys.jpg" title="황영신">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50485', 'OT');">▶</a></li>
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50755/?subject_idx=1034&subject_name=%EA%B8%B0%EA%B4%80%EC%88%A0
+" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                 </ul>

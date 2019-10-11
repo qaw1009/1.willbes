@@ -87,13 +87,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03.jpg" title="하프 불금모의고사"  />
             <div class="tabs">
                 <ul class="NGEB">
-                    <li><a href="#tab01">9월</a></li>
-                    <li><a href="#tab02">10월</a></li>
+                    <li><a href="#tab02">9월</a></li>
+                    <li><a href="#tab01" class="active">10월</a></li>
                     <li><a href="#tab03">11월</a></li>
                     <li><a href="#tab04">12월</a></li>
                 </ul>
-                <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab01.jpg" title="9월 하프 불금모의고사"  /></div>
                 <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab02.jpg" title="10월 하프 불금모의고사"  /></div>
+                <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab01.jpg" title="9월 하프 불금모의고사"  /></div>                                                
                 <div id="tab03"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab03.jpg" title="11월 하프 불금모의고사"  /></div>
                 <div id="tab04"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab04.jpg" title="12월 하프 불금모의고사"  /></div>
             </div>
@@ -238,7 +238,7 @@
         </div>
 
         <div class="evtCtnsBox evt05" id="evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1384_05.jpg" title="2020 합격대비 패키지"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1384_05.gif" title="2020 합격대비 패키지"  />
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1096" target="_blank" class="NSK-Black">모의고사 신청하기 ></a>
         </div>
 
@@ -265,7 +265,7 @@
             $('.tabs ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
+                //$active.addClass('active');
                 $content = $($active[0].hash);
 
                 $links.not($active).each(function () {

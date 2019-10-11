@@ -234,6 +234,14 @@
                     alert('공통과목은 숫자만 입력 가능합니다.');
                     ret = false;
                     return false;
+                } else if (subject_p_val < 0 || subject_p_val > 100) {
+                    alert('점수는 0~100점 사이 이어야 합니다.');
+                    ret = false;
+                    return false;
+                } else if (subject_p_val % 5 != 0) {
+                    alert('공통과목 점수를 정확히 입력해주세요.');
+                    ret = false;
+                    return false;
                 } else {
                     ret = true;
                 }

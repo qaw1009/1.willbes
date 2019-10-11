@@ -16,10 +16,11 @@ class OnAir extends \app\controllers\FrontController
     public function onAirPlay()
     {
         $input = $this->_reqG(null);
+        $oa_idx = (int)element('oa_idx', $input);
         //on air play 검증
         $arr_condition = [
             'RAW' => [
-                'O.OaIdx = ' => element('oa_idx', $input, '\'\'')
+                'O.OaIdx = ' => (empty($oa_idx) === true) ? '\'\'' : '\''.$oa_idx.'\''
             ]
         ];
         $data = $this->onAirFModel->getLiveOnAir($this->_site_code, $arr_condition);

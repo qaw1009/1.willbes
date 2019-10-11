@@ -140,7 +140,7 @@ class MockInfoFModel extends WB_Model
         
         $where .= $this->_conn->makeWhere(['EQ'=>['A.ProdCode' => $prod_code]])->getMakeWhere(true);
         
-        $order_by = 'order by b.OrderNum';
+        $order_by = ' order by b.OrderNum';
 
         $result = $this->_conn->query($select. $from. $where. $order_by)->result_array();
 

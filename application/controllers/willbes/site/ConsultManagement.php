@@ -348,8 +348,8 @@ class ConsultManagement extends \app\controllers\FrontController
      */
     private function _findConsultScheduleTimeForOnly($arr_input)
     {
-        $cst_idx = element('cst_idx', $arr_input);
-        $s_campus = element('s_campus', $arr_input);
+        $cst_idx = (int)element('cst_idx', $arr_input);
+        $s_campus = (int)element('s_campus', $arr_input);
 
         $column = '
             STRAIGHT_JOIN a.CstIdx, b.CsIdx, b.ConsultDate, a.TimeValue, a.ConsultTargetType, a.ConsultPersonCount, IFNULL(c.memCnt, 2) AS memCnt

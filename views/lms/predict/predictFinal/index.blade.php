@@ -69,6 +69,7 @@
                     <th class="text-center">공고유형</th>
                     <th class="text-center" style="width: 120px;">기타데이터</th>
                     <th class="text-center">등록일</th>
+                    <th class="text-center">삭제</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -117,7 +118,10 @@
                     {'data' : 'FinalPoint', 'class': 'text-center'},
                     {'data' : 'AnnouncementType', 'class': 'text-center'},
                     {'data' : 'SetEtcValues', 'class': 'text-center'},
-                    {'data' : 'RegDatm', 'class': 'text-center'}
+                    {'data' : 'RegDatm', 'class': 'text-center'},
+                    {'data' : null, 'render' : function(data,type,row,meta) {
+                        return '<a href="javascript:;" class="btn-delete btn-sm btn-danger border-radius-reset" data-idx="' + data.PfIdx + '">삭제</a>';
+                    }},
                 ]
             });
 
@@ -127,6 +131,26 @@
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{site_url('predict/predictFinal/listAjax/Y')}}', $search_form.serializeArray(), 'POST');
                 }
+            });
+
+            // 삭제
+            $list_table.on('click', '.btn-delete', function() {
+                if (!confirm('삭제 하시겠습니까?')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'pf_idx' : $(this).data('idx'),
+                    'predict_idx' : $search_form.find('select[name="search_PredictIdx"]').val(),
+                };
+                sendAjax('{{ site_url('/predict/predictFinal/delFinalData') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
         });
     </script>

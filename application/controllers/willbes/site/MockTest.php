@@ -331,7 +331,7 @@ class MockTest extends \app\controllers\FrontController
         $list = [];
         $arr_input = $this->_reqG(null);
         $get_params = http_build_query($arr_input);
-        $prod_code = element('prod_code', $arr_input);
+        $prod_code = (int)element('prod_code', $arr_input);
         $s_take_mock_part = element('s_take_mock_part',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $get_page_params = 'prod_code='.$prod_code.'&s_take_mock_part='.$s_take_mock_part;
@@ -350,7 +350,7 @@ class MockTest extends \app\controllers\FrontController
                 'mr.TakeMockPart' => $s_take_mock_part
             ],
             'RAW' => [
-                'b.ProdCode' => $prod_code
+                'b.ProdCode = ' => $prod_code
             ],
             'ORG' => [
                 'LKB' => [
@@ -417,7 +417,7 @@ class MockTest extends \app\controllers\FrontController
                 'op.PayStatusCcd' => '676001'
             ],
             'RAW' => [
-                'op.MemIdx' => $this->session->userdata('mem_idx')
+                'op.MemIdx = ' => $this->session->userdata('mem_idx')
             ]
         ];
         $prod_data = $this->mockInfoFModel->findRegistForBoard($arr_condition);
@@ -593,7 +593,7 @@ class MockTest extends \app\controllers\FrontController
                     'op.PayStatusCcd' => '676001'
                 ],
                 'RAW' => [
-                    'op.MemIdx' => $this->session->userdata('mem_idx')
+                    'op.MemIdx = ' => $this->session->userdata('mem_idx')
                 ]
             ];
             $prod_data = $this->mockInfoFModel->findRegistForBoard($arr_condition);
@@ -648,7 +648,7 @@ class MockTest extends \app\controllers\FrontController
         $list = [];
         $arr_input = $this->_reqG(null);
         $get_params = http_build_query($arr_input);
-        $prod_code = element('prod_code', $arr_input);
+        $prod_code = (int)element('prod_code', $arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $get_page_params = 'prod_code='.$prod_code.'&s_keyword='.urlencode($s_keyword);
 
@@ -669,7 +669,7 @@ class MockTest extends \app\controllers\FrontController
                 'b.IsUse' => 'Y'
             ],
             'RAW' => [
-                'b.ProdCode' => $prod_code
+                'b.ProdCode = ' => $prod_code
             ],
             'ORG' => [
                 'LKB' => [

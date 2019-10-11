@@ -32,8 +32,8 @@ class DownloadFModel extends WB_Model
                 $table = $this->_table['board_attach'];
                 $arr_condition = [
                     'RAW' => [
-                        'BoardFileIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx,
-                        'BoardIdx = ' => (empty($content_idx) === true) ? '\'\'' : $content_idx
+                        'BoardFileIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
+                        'BoardIdx = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
                     'EQ' => ['IsStatus' => 'Y']
                 ];
@@ -43,7 +43,7 @@ class DownloadFModel extends WB_Model
                 $table = $this->_table['board_attach'];
                 $arr_condition = [
                     'RAW' => [
-                        'BoardFileIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx,
+                        'BoardFileIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
                     ],
                     'EQ' => ['IsStatus' => 'Y']
                 ];
@@ -53,8 +53,8 @@ class DownloadFModel extends WB_Model
                 $table = $this->_table['event_file'];
                 $arr_condition = [
                     'RAW' => [
-                        'EfIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx,
-                        'ElIdx = ' => (empty($content_idx) === true) ? '\'\'' : $content_idx
+                        'EfIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
+                        'ElIdx = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
                     'EQ' => ['IsUse' => 'Y']
                 ];
@@ -64,7 +64,7 @@ class DownloadFModel extends WB_Model
                 $table = $this->_table['crm_send'];
                 $arr_condition = [
                     'RAW' => [
-                        'SendIdx = ' => (empty($content_idx) === true) ? '\'\'' : $content_idx
+                        'SendIdx = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
                     'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
                 ];
@@ -77,7 +77,7 @@ class DownloadFModel extends WB_Model
                 ";
                 $arr_condition = [
                     'RAW' => [
-                        'a.wUnitIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx
+                        'a.wUnitIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx)
                     ],
                     'EQ' => [
                         'a.wIsUse' => 'Y', 'a.wIsStatus' => 'Y',
@@ -90,8 +90,8 @@ class DownloadFModel extends WB_Model
                 $table = $this->_table['event_promotion_live_video'];
                 $arr_condition = [
                     'RAW' => [
-                        'EplvIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx,
-                        'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $content_idx
+                        'EplvIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
+                        'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
                     'EQ' => ['IsStatus' => 'Y']
                 ];

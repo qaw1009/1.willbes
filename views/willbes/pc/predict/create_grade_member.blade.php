@@ -239,7 +239,7 @@
                     ret = false;
                     return false;
                 } else if (subject_p_val % 5 != 0) {
-                    alert('정확한 공통과목을 입력해주세요.');
+                    alert('공통과목 점수를 정확히 입력해주세요.');
                     ret = false;
                     return false;
                 } else {

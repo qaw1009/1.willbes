@@ -64,7 +64,11 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1081_02.jpg" alt="소방학/관계법규는 필수입니다." /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/05/1081_02.jpg" alt="소방학/관계법규는 필수입니다." usemap="#map1081a" border="0" />
+            <map name="map1081a" id="map1081a">
+                <area shape="rect" coords="572,302,793,362" href="https://job.willbes.net/home/index/cate/308901" target="_blank" />
+            </map>
+            <br>
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1081_03.jpg" alt="연간커리큘럼" /><br>
             <a onclick="go_popup()">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1081_04.jpg" alt=" 커리큘럼 자세히 보기" />

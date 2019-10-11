@@ -120,9 +120,9 @@
         .tabs ul:after {content:""; display:block; clear:both}
 
 
-        .wb_cts02 div iframe {position:absolute; width:410px; left:50%; height:205px; top:860px; z-index:10;}
-        .wb_cts02 div iframe.play01 {margin-left:-430px;}
-        .wb_cts02 div iframe.play02 {margin-right:-430px;}
+        .wb_cts02 div iframe {position:absolute; width:410px; left:50%; height:205px; top:940px; z-index:10;}
+        .wb_cts02 div .play01 {margin-left:-430px;}
+        .wb_cts02 div .play02 {margin-left:20px;}
 
         .wb_cts03 {background:#f8f8f8; padding-bottom:150px;}
         .wb_cts03 ul {width:1120px; margin:0 auto}
@@ -223,8 +223,7 @@
                 </li>
             </ul>
             <div id="tab01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab_con1.jpg" alt="국제법/국제정치학/헌법"/>  
-                              
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_02_tab_con1.jpg" alt="국제법/국제정치학/헌법"/>                              
                 <iframe class="play01" src="https://www.youtube.com/embed/feNX-me5cQs" frameborder="0" allowfullscreen></iframe>
                 <iframe class="play02" src="https://www.youtube.com/embed/-HAGYuZxtoQ" frameborder="0" allowfullscreen></iframe>                
             </div>

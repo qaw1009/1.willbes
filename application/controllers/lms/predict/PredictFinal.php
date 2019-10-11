@@ -95,4 +95,21 @@ class PredictFinal extends \app\controllers\BaseController
 
     }
 
+    /**
+     * 최종합격예측등록 데이터 삭제
+     */
+    public function delFinalData()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field'=>'pf_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field'=>'predict_idx', 'label' => '합격예측식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if($this->validate($rules) === false) {
+            return;
+        }
+        $result = $this->predictModel->delFinalData($this->_reqP(null));
+        $this->json_result($result,'정상 삭제 되었습니다.',$result);
+    }
 }

@@ -69,7 +69,10 @@ class PredictModel extends WB_Model
         'predictCnt' => 'lms_predict_cnt',      //todo 사용하지 않을 테이블 : 2019-08-13 조규호
         'predictSubTitles' => 'lms_predict_subtitles',
 
-        'predict_r_product' => 'lms_predict_r_product'
+        'predict_r_product' => 'lms_predict_r_product',
+
+        'predictFinal' => 'lms_predict_final',
+        'predictFinalPoint' => 'lms_predict_final_point'
     ];
 
     public $upload_path;            // 업로드 기본경로
@@ -3704,5 +3707,36 @@ class PredictModel extends WB_Model
             $result_data[$row['addColumnKey']]['Top5AvgOrgPoint'] = $row['Top5AvgOrgPoint'];
         }
         return $result_data;
+    }
+
+    /**
+     * 최종합격예측서비스 데이터 삭제
+     * @param $targetParams
+     * @return array|bool
+     */
+    public function delFinalData($targetParams)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $pf_idx = element('pf_idx',$targetParams);
+            $predict_idx = element('predict_idx',$targetParams);
+            $inputData['IsStatus'] = 'N';
+
+            $this->_conn->set($inputData)->where('PfIdx', $pf_idx)->where('PredictIdx', $predict_idx)->where('IsStatus','Y');
+            if ($this->_conn->update($this->_table['predictFinal']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->set($inputData)->where('PfIdx', $pf_idx)->where('PredictIdx', $predict_idx)->where('IsStatus','Y');
+            if ($this->_conn->update($this->_table['predictFinalPoint']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 }

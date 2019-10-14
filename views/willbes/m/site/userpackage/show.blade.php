@@ -16,7 +16,19 @@
             <input type="hidden" name="learn_pattern" value="userpack_lecture"/>  {{-- 학습형태 --}}
             <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+
             <div>
+                <div class="willbes-Txt2 NGR tx-blue">
+                    {{$data['ProdName']}}
+                </div>
+
+                @if(empty($data['contents']) == false)
+                <div class="willbes-Txt NGR c_both">
+                    <div class="willbes-Txt-Tit NG">· 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
+                    {!! $data['contents'][0]['Content'] !!}
+                </div>
+                @endif
+
                 <div class="lec-info bd-none pt-zero">
                     <h5 class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.{{--<a href="#none" class="NGR">교재정보 전체보기</a>--}}</h5>
                     <div class="lec-choice-pkg">

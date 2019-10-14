@@ -458,10 +458,6 @@ class Sms extends \app\controllers\BaseController
                     ['field' => 'tmpl_cd', 'label' => '템플릿 유형', 'rules' => 'trim|required']
                 ]);
                 break;
-            default :
-                throw new \Exception('전송구분 값이 잘못 되었습니다.');
-                break;
-
         }
 
         switch ($send_type) {

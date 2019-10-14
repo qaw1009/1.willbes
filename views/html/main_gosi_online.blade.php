@@ -3,8 +3,8 @@
 @section('content')
 <!-- Container -->
 
-<div id="Container" class="Container gosi NSK c_both">
-    <div class="Menu widthAuto NSK c_both">
+<div id="Container" class="Container gosi NGR c_both">
+    <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">공무원<span class="row-line">|</span></li>
@@ -498,7 +498,6 @@
                         </div>
                     </div>
                 </li>
-
                 <li>
                     <a href="#none">무료강좌</a>
                 </li>
@@ -516,8 +515,21 @@
                 <li>
                     <a href="#none">교재구매</a>
                 </li>
-                <li class="Acad">
-                    <a href="#none">공무원학원 <span class="arrow-Btn">></span></a>
+                <li class="pass dropdown">
+                    <a href="//pass.dev.willbes.net/pass/home/index" target="_self">
+                        공무원학원
+                        <span class="arrow-Btn">></span>
+                    </a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">공무원학원</li>
+                            <li><a href="//pass.dev.willbes.net/pass/campus/show/code/605001" target="_self">노량진(본원)</a></li>
+                            <li><a href="//pass.dev.willbes.net/pass/campus/show/code/605003" target="_self">부산</a></li>
+                            <li><a href="//pass.dev.willbes.net/pass/campus/show/code/605004" target="_self">대구</a></li>
+                            <li><a href="//pass.dev.willbes.net/pass/campus/show/code/605005" target="_self">인천</a></li>
+                            <li><a href="//pass.dev.willbes.net/pass/campus/show/code/605006" target="_self">광주</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>

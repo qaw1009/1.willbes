@@ -290,10 +290,12 @@ class SmsModel extends WB_Model
             $this->_conn->set(['SendStatusCcd' => $set_data])->where_in('SendIdx',$arr_send_idx);
 
             if($this->_conn->update($this->_table)=== false) {
-                throw new \Exception('데이터 수정에 실패했습니다.');
+                throw new \Exception('데이터 수정을 실패했습니다.');
             }
 
-            $this->removeKakao($arr_send_idx);
+            if($this->removeKakao($arr_send_idx) === false){
+                throw new \Exception('SMS 발송 삭제를 실패하였습니다.');
+            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -719,7 +721,7 @@ class SmsModel extends WB_Model
             'send_type' => 1,                               // 1:개별발송, 2:일괄발송(엑셀)
             'kakao_msg_type' => $kakao_msg_type,            // KFT:친구톡, KAT:알림톡
             'site_code' => 2000,
-            'send_pattern_ccd' => 637001,                   // 637001:일반발송, 637002:자동발송
+            'send_pattern_ccd' => 637003,                   // 637001:일반발송, 637002:예약발송, 637003:자동발송
             'cs_tel_ccd' => 706001,                         // 706001:WCA, 706002:경찰학원
             'tmpl_cd' => $tmpl_cd,                          // 알림톡 템플릿 코드
             'send_content' => $send_content,
@@ -792,11 +794,8 @@ class SmsModel extends WB_Model
 
                                 foreach($arr_send_content_value as $j => $j_val) {
                                     if(empty($j_val) === false) {
-
                                         foreach ($j_val as $k => $k_val) {
-                                            if(empty($k_val) === false) {
-                                                $temp_content = str_replace($k, $k_val, $temp_content);
-                                            }
+                                            $temp_content = str_replace($k, (empty($k_val) === false ? $k_val : '-'), $temp_content);
                                         }
                                         array_push($arr_replace_content, $temp_content);
                                     }
@@ -868,7 +867,6 @@ class SmsModel extends WB_Model
             }
             $this->dropTempTable($this->_table_temp);
 
-            //TODO $arr_sms_send_idx 넣기
             $result = $this->_kakaoSend($inputData, $set_send_data_phone, $set_send_data_msg, $send_idx);
             if ($result === false) {
                 throw new \Exception('문자 발송 실패 입니다.');
@@ -935,7 +933,6 @@ class SmsModel extends WB_Model
      * @throws Exception
      */
     public function removeKakao($send_idx){
-        $this->_db->trans_begin();
         try {
             $arr_send_idx = ( is_array($send_idx) === false ? array($send_idx) : $send_idx );
             foreach($arr_send_idx as $key => $val) {
@@ -950,10 +947,11 @@ class SmsModel extends WB_Model
                 $where = $where->getMakeWhere(false);
                 $result = $this->_db->query('DELETE '. $from . $where);
                 if ($result === 0) {
-                    throw new \Exception('SMS 발송 삭제를 실패하였습니다.');
+                    return false;
+                } else {
+                    return true;
                 }
             }
-            $this->_db->trans_commit();
         } catch (\Exception $e) {
             $this->_db->trans_rollback();
             throw new \Exception('SMS 발송 삭제를 실패하였습니다.');

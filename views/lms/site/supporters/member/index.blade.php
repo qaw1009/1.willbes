@@ -113,7 +113,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta){
-                            return '<input type="checkbox" name="srm_idx" class="flat target-crm-member" value="'+row.SrmIdx+'" data-srm-idx="' + row.SrmIdx + '">'
+                            return '<input type="checkbox" name="srm_idx" class="flat target-crm-member" value="'+row.SrmIdx+'" data-srm-idx="' + row.SrmIdx + '" data-mem-idx="' + row.MemIdx + '">'
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호

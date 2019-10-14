@@ -108,7 +108,7 @@
         $(document).ready(function() {
 
             $('.select_search').on('change', function(){
-                var $arr_reset = ['course_idx','series_ccd','subject_idx','prof_idx'];
+                var $arr_reset = ['course_idx','school_year'];
                 if($(this).attr('id') == 'cate_code') {
                     $.each($arr_reset, function(index, item) {
                         $('#url_form').find('input[type="hidden"][name="' + item + '"]').remove();
@@ -118,7 +118,6 @@
             });
 
             $('#btn_search').on('click', function() {
-                alert("aa");
                 goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
             });
 

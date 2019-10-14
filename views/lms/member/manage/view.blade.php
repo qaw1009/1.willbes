@@ -84,7 +84,8 @@
                 <tr>
                     <td>{{ $data['InterestName'] }}</td>
                     <td>({{ $data['ZipCode'] }}) {{ $data['Addr1'] }} {{ $data['Addr2'] }}</td>
-                    <td>{{ $data['Phone'] }} ({{ $data['SmsRcvStatus'] }})</td>
+                    <td>{{ $data['Phone'] }} ({{ $data['SmsRcvStatus'] }})<br>
+                        <button type="button" class="btn btn-default" id="chg_sms_log">SMS 발송내역</button></td>
                     <td>{{ $data['Mail'] }} ({{ $data['MailRcvStatus'] }})</td>
                 </tr>
                 </tbody>
@@ -160,6 +161,11 @@
 
             $('#chgname').setLayer({
                 url : "{{ site_url("member/manage/chgname/{$data['MemIdx']}") }}",
+                width : 1000
+            });
+
+            $('#chg_sms_log').setLayer({
+                url : "{{ site_url("member/manage/smsLog/{$data['MemIdx']}") }}",
                 width : 1000
             });
 

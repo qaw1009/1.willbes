@@ -332,10 +332,10 @@ class Manage extends \app\controllers\BaseController
             if(is_numeric($memIdx) == true){
                 $data = $this->manageMemberModel->getMember($memIdx);
             } else {
-                show_error('파라미터가 정확하기 않습니다.');
+                show_error('파라미터가 정확하지 않습니다.');
             }
         } else {
-            show_error('파라미터가 정확하기 않습니다.');
+            show_error('파라미터가 정확하지 않습니다.');
         }
 
         if(empty($data) == true){
@@ -364,10 +364,10 @@ class Manage extends \app\controllers\BaseController
             if(is_numeric($memIdx) == true){
                 $data = $this->manageMemberModel->getMember($memIdx);
             } else {
-                show_alert('파라미터가 정확하기 않습니다.','close');
+                show_alert('파라미터가 정확하지 않습니다.','close');
             }
         } else {
-            show_alert('파라미터가 정확하기 않습니다.','close');
+            show_alert('파라미터가 정확하지 않습니다.','close');
         }
 
         if(empty($data) == true){
@@ -412,10 +412,10 @@ class Manage extends \app\controllers\BaseController
             if (is_numeric($memIdx) == true) {
                 $data = $this->manageMemberModel->getMember($memIdx);
             } else {
-                show_error('파라미터가 정확하기 않습니다.');
+                show_error('파라미터가 정확하지 않습니다.');
             }
         } else {
-            show_error('파라미터가 정확하기 않습니다.');
+            show_error('파라미터가 정확하지 않습니다.');
         }
 
         if(empty($data) == true){
@@ -497,10 +497,10 @@ class Manage extends \app\controllers\BaseController
             if (is_numeric($memIdx) == true) {
                 $data = $this->manageMemberModel->getMember($memIdx);
             } else {
-                show_error('파라미터가 정확하기 않습니다.');
+                show_error('파라미터가 정확하지 않습니다.');
             }
         } else {
-            show_error('파라미터가 정확하기 않습니다.');
+            show_error('파라미터가 정확하지 않습니다.');
         }
 
         if(empty($data) == true){
@@ -584,10 +584,10 @@ class Manage extends \app\controllers\BaseController
             if (is_numeric($memIdx) == true) {
                 $data = $this->manageMemberModel->getMember($memIdx);
             } else {
-                show_error('파라미터가 정확하기 않습니다.');
+                show_error('파라미터가 정확하지 않습니다.');
             }
         } else {
-            show_error('파라미터가 정확하기 않습니다.');
+            show_error('파라미터가 정확하지 않습니다.');
         }
 
         if(empty($data) == true){
@@ -675,10 +675,10 @@ class Manage extends \app\controllers\BaseController
             if (is_numeric($memIdx) == true) {
                 $data = $this->manageMemberModel->getMember($memIdx);
             } else {
-                show_error('파라미터가 정확하기 않습니다.');
+                show_error('파라미터가 정확하지 않습니다.');
             }
         } else {
-            show_error('파라미터가 정확하기 않습니다.');
+            show_error('파라미터가 정확하지 않습니다.');
         }
 
         if(empty($data) == true){
@@ -767,10 +767,10 @@ class Manage extends \app\controllers\BaseController
             if (is_numeric($memIdx) == true) {
                 $data = $this->manageMemberModel->getMember($memIdx);
             } else {
-                show_error('파라미터가 정확하기 않습니다.');
+                show_error('파라미터가 정확하지 않습니다.');
             }
         } else {
-            show_error('파라미터가 정확하기 않습니다.');
+            show_error('파라미터가 정확하지 않습니다.');
         }
 
         if(empty($data) == true){
@@ -2444,4 +2444,76 @@ class Manage extends \app\controllers\BaseController
 
         $this->json_result(true, '휴면상태를 해제했습니다.');
     }
+
+    /**
+     * SMS 발송내역 팝업 페이지
+     * @param array $params
+     */
+    public function smsLog($params = [])
+    {
+        $mem_idx = null;
+        $data = [];
+
+        if (empty($params[0]) === false) {
+            $mem_idx = $params[0]; //회원번호
+            if (is_numeric($mem_idx) == true) {
+                $data = $this->manageMemberModel->getMember($mem_idx);
+            } else {
+                show_error('파라미터가 정확하지 않습니다.');
+            }
+        } else {
+            show_error('파라미터가 정확하지 않습니다.');
+        }
+
+        if(empty($data) == true){
+            show_error('회원검색에 실패했습니다.');
+        }
+
+        $this->load->view('member/log/sms_modal', [
+            'arr_send_type_ccd' => $this->codeModel->getCcd('638'),
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * SMS 발송내역 리스트 조회
+     * @return CI_Output
+     */
+    public function ajaxSmsLogList()
+    {
+        $mem_idx = $this->_reqP('MemIdx');
+        $search_value = $this->_reqP('search_value');
+        $search_send_type_ccd = $this->_reqP('search_send_type_ccd'); //todo
+        $list = [];
+
+        $arr_condition = [
+            'EQ' => [
+                'c.MemIdx' => $mem_idx,
+                'b.SendTypeCcd' => $search_send_type_ccd
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Content' => $search_value
+                ]
+            ]
+        ];
+
+        $order_by = [
+            'b.SendIdx' => 'DESC'
+        ];
+
+        $count = $this->smsModel->listSmsForMember(true, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
+        if($count > 0){
+            $list = $this->smsModel->listSmsForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+
+
 }

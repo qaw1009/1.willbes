@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/lms/pay/BaseOrder.php';
 
 class Delivery extends BaseOrder
 {
-    protected $models = array('pay/orderList', 'pay/order', 'pay/deliveryInfo', 'member/manageMember', 'service/point', 'sys/code');
+    protected $models = array('pay/orderList', 'pay/order', 'pay/deliveryInfo', 'member/manageMember', 'service/point', 'sys/code', 'crm/send/sms');
     protected $helpers = array();
     private $_prod_type = null;
     private $_tab = null;

@@ -76,7 +76,7 @@ class WB_Model extends CI_Model
      * @param string $temp_table_name
      * @return mixed
      */
-    public function createTampTable($temp_table_name = '_lms_temp_table')
+    public function createTempTable($temp_table_name = '_lms_temp_table')
     {
         $sql = "DROP TEMPORARY TABLE {$temp_table_name}";
         $this->_conn->query($sql);
@@ -96,7 +96,7 @@ class WB_Model extends CI_Model
      * 임시테이블 삭제
      * @param string $temp_table_name
      */
-    public function dropTampTable($temp_table_name = '_lms_temp_table')
+    public function dropTempTable($temp_table_name = '_lms_temp_table')
     {
         $sql = /** @lang text */ "DROP TEMPORARY TABLE {$temp_table_name}";
         $this->_conn->query($sql);
@@ -109,7 +109,7 @@ class WB_Model extends CI_Model
      * @param array $input_data2    참조 값
      * @return bool
      */
-    public function insertTampTable($temp_table_name = '_lms_temp_table', $input_data = [], $input_data2 = [])
+    public function insertTempTable($temp_table_name = '_lms_temp_table', $input_data = [], $input_data2 = [])
     {
         $result = [];
 

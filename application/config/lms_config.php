@@ -47,4 +47,5 @@ $config['predict'] = array(
 );
 
 $config['prof_role_idx'] = '1011';        //교수관리자 권한
+$config['wca_tel'] = '1544-5006';         //W.C.A 대표번호
 

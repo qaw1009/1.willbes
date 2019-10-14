@@ -1923,18 +1923,15 @@ table.auTable tr td {
 .Menu .drop-Box:before {
     display: none;
 }
-
 .Menu .dropdown > a {
     color: #363636;
     display: block;
 }
-.Menu .menu-List li:hover {
+.Menu .menu-List > li:hover {
     background: url("../../img/willbes/common/top_menu_list_arrow.png") no-repeat center bottom;
 }
-.Menu .menu-List:after {
-    content:"";
-    display: block;
-    clear:both;
+.Menu .menu-List > li:last-child:hover {
+    background: url("../../img/willbes/common/top_menu_list_arrow.png") no-repeat center 32px;
 }
 
 /*경찰*/
@@ -11281,6 +11278,7 @@ table.acadlecInfoPackageTable tr.Top td {
     background: url(https://static.willbes.net/public/images/promotion/common/mainBottom_btnclose.png) no-repeat right center;
     font-size:0; text-indent: -9999px; z-index: 1;    
 }
+
 /*공무원 온라인 교수진소개*/
 .drop-Box-1120 {
     display: none;
@@ -11294,13 +11292,28 @@ table.acadlecInfoPackageTable tr.Top td {
 
 .list-drop-Box-1120 {
     top: 38px;
-    left:50%;
-    margin-left: -592px;
     width: 1120px;
     padding: 20px;
+    left:50%;
     text-align: left;
     z-index: 9999;
 }
+
+/*공무원 온라인 상단 메뉴 팝업*/
+.list-drop-Box-1120.gosi {
+    margin-left:-592px;
+}
+.list-drop-Box-1120.gosi2 {
+   margin-left:-687px;
+}
+/*공무원 학원 상단 메뉴 팝업*/
+.list-drop-Box-1120.GA {
+    margin-left:-332px;
+}
+.list-drop-Box-1120.GA2 {
+   margin-left:-426px;
+}
+
 .list-drop-Box-1120 .prof-drop-Box {
     width:33.33333%; float: left;
 }
@@ -11333,106 +11346,3 @@ table.acadlecInfoPackageTable tr.Top td {
     width:12.5%; float: left;
 }
 
-.menu-List > li:nth-child(2) .list-drop-Box-1120 {
-    left: 50%;
-    margin-left:-687px;
-}
-/*
-.menu-List > li:nth-child(2) .drop-Box-1120:before {
-    left: 50%;
-    margin-left: 120px;
-}
-.menu-List > li:nth-child(2) .drop-Box-1120:after {
-    left: 50%; 
-    margin-left: 121px;
-}*/
-
-/*공무원 학원
-.GA .drop-Box-1120 {
-    display: none;
-    position: absolute;
-    background: #fff;
-    width: 100px;
-    padding: 10px;
-    border: 1px solid #acacac;
-    box-shadow: 5px 5px 25px #e1e1e1;
-}
-.GA .drop-Box-1120:before {
-    top: -12px;
-    left: 50%;
-    margin-left: -233px;
-    border-color: transparent transparent #acacac;
-    border-width: 6px;
-}
-.GA .drop-Box-1120:after {
-    top: -10px;
-    left: 50%;
-    margin-left: -232px;
-    border-color: transparent transparent #fff;
-    border-width: 5px;
-}
-.GA .list-drop-Box-1120 {
-    top: 38px;
-    left:50%;
-    margin-left: -331px;
-    width: 1120px;
-    padding: 20px;
-    text-align: left;
-    z-index: 9999;
-}
-.GA .list-drop-Box-1120 .lec-drop-Box {
-    width:14.28571%; float: left;
-}
-.GA .menu-List > li:nth-child(2) .list-drop-Box-1120 {
-    left: 50%;
-    margin-left:-426px;
-}
-.GA .menu-List > li:nth-child(2) .drop-Box-1120:before {
-    left: 50%;
-    margin-left: -137px;
-}
-.GA .menu-List > li:nth-child(2) .drop-Box-1120:after {
-    left: 50%; 
-    margin-left: -136px;
-}*/
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    .list-drop-Box-1120 {
-        margin-left: -600px;
-    }
-    /*
-    .drop-Box-1120:before {
-        margin-left: 35px;
-    }
-    .drop-Box-1120:after {
-        margin-left: 36px;
-    }
-    .menu-List > li:nth-child(2) .list-drop-Box-1120 {
-        margin-left:-693px;
-    }
-    .menu-List > li:nth-child(2) .drop-Box-1120:before {
-        margin-left: 130px;
-    }
-    .menu-List > li:nth-child(2) .drop-Box-1120:after {
-        margin-left: 131px;        
-    }
-
-    .GA .drop-Box-1120:before {
-        margin-left: -211px;
-    }
-    .GA .drop-Box-1120:after {
-        margin-left: -210px;
-    }
-    .GA .list-drop-Box-1120 {
-        margin-left: -355px;
-    }
-    .GA .menu-List > li:nth-child(2) .list-drop-Box-1120 {
-        margin-left:-447px;
-    }
-    .GA .menu-List > li:nth-child(2) .drop-Box-1120:before {
-        margin-left: -113px;
-    }
-    .GA .menu-List > li:nth-child(2) .drop-Box-1120:after {
-        margin-left: -112px;
-    }
-    */
-}

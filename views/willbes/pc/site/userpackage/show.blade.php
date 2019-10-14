@@ -9,8 +9,32 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-            <div class="willbes-Pm">
-                {!! $data_landing['Content'] !!}
+            <div class="willbes-Package-Detail NG tx-black">
+                <table cellspacing="0" cellpadding="0" class="packageDetailTable packageDetailTableDiy">
+                    <colgroup>
+                        <col/>
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td class="w-list pl25">{{$data['ProdName']}} </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- willbes-Package-Detail -->
+            <div class="willbes-Cartlist">
+                <div class="willbes-Cart-Txt p_re pt15">
+                    <span class="MoreBtn underline NG" style="top: 30px;"><a href="#none">유의사항안내 닫기 ▲</a></span>
+                    <table cellspacing="0" cellpadding="0" class="txtTable tx-gray">
+                        <tbody>
+                        <tr>
+                            <td>
+                                {!! empty($data['contents']) == false ? $data['contents'][0]['Content'] : '' !!}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- willbes-Bnr -->
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -23,7 +47,7 @@
                 <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
-                <div id="Sticky" class="sticky-Package">
+                <div id="Sticky" class="sticky-Package mt20">
                     <div class="sticky-Grid sticky-total NG">
 
                         <div class="willbes-Lec-Package-Price p_re">

@@ -52,8 +52,8 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <ul class="skybanner" >
-            <li><a href="#february"><img src="https://static.willbes.net/public/images/promotion/2019/09/1051_sky02.png" alt="수강신청"></a></li>
-            <li><a href="#memo"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_skybanner02.png" alt="수강신청"></a></li>
+            <li><a href="#sparta"><img src="https://static.willbes.net/public/images/promotion/2019/10/1051_sky02.png" alt="수강신청"></a></li>
+            <li><a href="#memo"><img src="https://static.willbes.net/public/images/promotion/2019/10/1051_skybanner02.png" alt="수강신청"></a></li>
         </ul>
 
         <div class="evtCtnsBox wb_top" id="sparta">

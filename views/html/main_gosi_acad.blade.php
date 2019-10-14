@@ -2,8 +2,8 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="Container GA NSK c_both">
-    <div class="Menu widthAuto NSK c_both">
+<div id="Container" class="Container GA NGR c_both">
+    <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">공무원<span class="row-line">|</span></li>

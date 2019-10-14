@@ -11347,14 +11347,14 @@ table.acadlecInfoPackageTable tr.Top td {
 .GA .drop-Box-1120:before {
     top: -12px;
     left: 50%;
-    margin-left: -221px;
+    margin-left: -233px;
     border-color: transparent transparent #acacac;
     border-width: 6px;
 }
 .GA .drop-Box-1120:after {
     top: -10px;
     left: 50%;
-    margin-left: -220px;
+    margin-left: -232px;
     border-color: transparent transparent #fff;
     border-width: 5px;
 }
@@ -11376,11 +11376,11 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .GA .menu-List > li:nth-child(2) .drop-Box-1120:before {
     left: 50%;
-    margin-left: -125px;
+    margin-left: -137px;
 }
 .GA .menu-List > li:nth-child(2) .drop-Box-1120:after {
     left: 50%; 
-    margin-left: -124px;
+    margin-left: -136px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .list-drop-Box-1120 {

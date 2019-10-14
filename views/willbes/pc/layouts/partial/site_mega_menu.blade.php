@@ -3,7 +3,7 @@
     {{-- 교수진소개 --}}
     @if($__cfg['SiteCode'] == '2003')
         {{-- 공무원 온라인 --}}
-        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120">
+        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi">
             <div class="prof-drop-Box">
                 <h5>9급</h5>
                 <ul>
@@ -378,7 +378,7 @@
         </div>
     @elseif($__cfg['SiteCode'] == '2004')
         {{-- 공무원 학원 --}}
-        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120">
+        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 GA">
             <div class="prof-drop-Box">
                 <h5>9급</h5>
                 <ul>
@@ -626,7 +626,7 @@
     {{-- 수강신청 --}}
     @if($__cfg['SiteCode'] == '2003')
         {{-- 공무원 온라인 --}}
-        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120">
+        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi2">
             <div class="lec-drop-Box">
                 <h5>9급</h5>
                 <ul>
@@ -739,7 +739,7 @@
         </div>
     @elseif($__cfg['SiteCode'] == '2004')
         {{-- 공무원 학원 --}}
-        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120">
+        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 GA2">
             <div class="lec-drop-Box">
                 <h5>9급</h5>
                 <ul>

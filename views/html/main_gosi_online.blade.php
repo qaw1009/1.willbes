@@ -13,7 +13,7 @@
             <ul class="menu-List">
                 <li class="dropdown">
                     <a href="#none">교수진소개</a>
-                    <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120">
+                    <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi">
                         <div class="prof-drop-Box">
                             <h5>9급</h5>
                             <ul>
@@ -389,7 +389,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="#none">수강신청</a>
-                    <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120">
+                    <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi2">
                         <div class="lec-drop-Box">
                             <h5>9급</h5>
                             <ul>

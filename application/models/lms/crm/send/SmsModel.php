@@ -792,11 +792,8 @@ class SmsModel extends WB_Model
 
                                 foreach($arr_send_content_value as $j => $j_val) {
                                     if(empty($j_val) === false) {
-
                                         foreach ($j_val as $k => $k_val) {
-                                            if(empty($k_val) === false) {
-                                                $temp_content = str_replace($k, $k_val, $temp_content);
-                                            }
+                                            $temp_content = str_replace($k, (empty($k_val) === false ? $k_val : '-'), $temp_content);
                                         }
                                         array_push($arr_replace_content, $temp_content);
                                     }

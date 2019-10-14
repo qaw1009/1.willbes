@@ -27,15 +27,14 @@
         }
         .skybanner li {margin-bottom:5px}
 
-        .wb_top {background:#1a1e25 url(https://static.willbes.net/public/images/promotion/sparta/1051_top_bg.jpg) no-repeat center top}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/10/1051_top_bg.jpg) no-repeat center top}
         .wb_01 {background:#3e4552}
         .wb_02 {background:#ededed; padding-bottom:80px;}
         .wb_03 {background:#2d77be url(https://static.willbes.net/public/images/promotion/sparta/1051_05_bg.jpg) no-repeat center top}
         .wb_04 {background:#e5e5e6 url(https://static.willbes.net/public/images/promotion/sparta/1051_06_bg.jpg) repeat}
         .wb_06 {background:#f7f7f7}
-        .wb_07 {background:#d7d7d7}
-        .wb_spot {background:#fff}
-
+        .wb_07 {background:#d7d7d7}    
+        .wb_schedule{background:#fff;}
 
         /* 슬라이드배너 */
         .slide_con1 {position:relative; width:900px; margin:0 auto; padding-top:10px;}
@@ -58,15 +57,15 @@
         </ul>
 
         <div class="evtCtnsBox wb_top" id="sparta">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1051_top.jpg" alt="스파르타" />
-        </div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1051_top.jpg" alt="스파르타" />
+        </div>     
 
-        <div class="evtCtnsBox wb_spot" id="february">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1051_01.jpg" alt="개강반" />
+        <div class="evtCtnsBox wb_schedule">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1051_schedule.jpg" alt="시간표" />
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1051_02.jpg" alt="교수님들" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1051_02.jpg" alt="교수님들" />
         </div>
 
         <div class="evtCtnsBox wb_07" id="memo" >

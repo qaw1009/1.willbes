@@ -11344,6 +11344,15 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /*공무원 학원*/
+.GA .drop-Box-1120 {
+    display: none;
+    position: absolute;
+    background: #fff;
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #acacac;
+    box-shadow: 5px 5px 25px #e1e1e1;
+}
 .GA .drop-Box-1120:before {
     top: -12px;
     left: 50%;

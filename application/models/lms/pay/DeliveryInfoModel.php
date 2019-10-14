@@ -139,8 +139,8 @@ class DeliveryInfoModel extends BaseOrderModel
                     if (ENVIRONMENT == 'production') {
                         // 이미 발송된 운송장번호가 아닐 경우만 발송
                         if (in_array($order_prod_row['InvoiceNo'], $sms_send_invoice_no) === false) {
-                            $delivery_address = ( empty($order_prod_row['Addr1']) === false ? $order_prod_row['Addr1'] : '' ). ' ' . ( empty($order_prod_row['Addr2']) === false ? $order_prod_row['Addr2'] : '' );
-                            $this->_sendDeliverySendSms($order_prod_row['ReceiverPhone'], $order_prod_row['DeliveryCompCcdName'], $order_prod_row['InvoiceNo'], '주문배송상품', $delivery_address, date('Y-m-d H:i:s'));
+                            $delivery_address = ( empty($order_prod_row['Addr1']) === false ? $order_prod_row['Addr1'] : '' ) . ' ' . ( empty($order_prod_row['Addr2']) === false ? $order_prod_row['Addr2'] : '' );
+                            $this->_sendDeliverySendSms($order_prod_row['ReceiverPhone'], $order_prod_row['DeliveryCompCcdName'], $order_prod_row['InvoiceNo'], $order_prod_row['ReprProdName'], $delivery_address, date('Y-m-d H:i:s'));
                             $sms_send_invoice_no[] = $order_prod_row['InvoiceNo'];
                         }
                     }
@@ -168,10 +168,10 @@ class DeliveryInfoModel extends BaseOrderModel
     private function _sendDeliverySendSms($phone, $delivery_comp_name, $invoice_no, $product_name, $delivery_address, $delivery_send_date)
     {
         if (empty($phone) === false && empty($delivery_comp_name) === false && empty($invoice_no) === false) {
-//            $callback_number = '1544-5006';
-//            $this->load->library('sendSms');
-//            $sms_msg = '[윌비스] 주문도서가 출고되었습니다. ' . $delivery_comp_name . ' 운송장번호 : ' . $invoice_no;
-//            $this->sendsms->send($phone, $sms_msg, $callback_number);
+            //$callback_number = '1544-5006';
+            //$this->load->library('sendSms');
+            //$sms_msg = '[윌비스] 주문도서가 출고되었습니다. ' . $delivery_comp_name . ' 운송장번호 : ' . $invoice_no;
+            //$this->sendsms->send($phone, $sms_msg, $callback_number);
 
             $tmpl_val = [[
                 '#{회사명}' => '윌비스',

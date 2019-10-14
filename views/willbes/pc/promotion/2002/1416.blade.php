@@ -36,7 +36,7 @@
         <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1416_skybanner.png" title="4개월 필합 패스"></a>      
     </div> 
     <div class="skyBanner2">
-        <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1053_popup.png" title="4개월 필합 패스"></a>      
+        <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1416_popup.png" title="4개월 필합 패스"></a>      
     </div>
 
     <div class="evtCtnsBox wb_cts00">

@@ -1928,7 +1928,7 @@ table.auTable tr td {
     color: #363636;
     display: block;
 }
-.Menu .dropdown > a:hover {
+.Menu .menu-List li:hover {
     background: url("../../img/willbes/common/top_menu_list_arrow.png") no-repeat center bottom;
 }
 .Menu .menu-List:after {
@@ -1943,6 +1943,8 @@ table.auTable tr td {
     font-size: 16px;
     color: #0c5dc0;
     padding-left: 26px; 
+    display:inline-block;
+    vertical-align: middle;
 }
 
 .Menu .menu-List li.police > a .arrow-Btn {
@@ -1957,7 +1959,7 @@ table.auTable tr td {
 .Menu .menu-List li.pass > a {
     background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat left center;
     color: #ba560e;
-    padding-left: 26px; 
+    padding-left: 26px;
     display:inline-block;
     vertical-align: middle;
 }
@@ -1967,8 +1969,6 @@ table.auTable tr td {
     width: 4px;
     height: 8px;
     margin: 15px 5px 0;
-    display:inline-block;
-    vertical-align: middle;
 }
 
 .Menu .menu-List-Center {

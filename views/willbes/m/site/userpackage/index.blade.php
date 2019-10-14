@@ -64,7 +64,6 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
-
             $('.select_search').on('change', function(){
                 var $arr_reset = ['course_idx','series_ccd','subject_idx','prof_idx'];
                 if($(this).attr('id') == 'cate_code') {
@@ -73,17 +72,6 @@
                     });
                 }
                 goUrl($(this).attr('id'), $(this).val());
-            });
-
-            $('#btn_search').on('click', function() {
-                alert("aa");
-                goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
-            });
-
-            // 장바구니, 바로결제 버튼 클릭
-            $regi_form.on('click', 'a[name="btn_cart"], a[name="btn_direct_pay"]', function() {
-                var $is_direct_pay = $(this).data('direct-pay');
-                addCartNDirectPay($regi_form, $is_direct_pay, 'Y','{{front_url('')}}');
             });
         });
     </script>

@@ -118,7 +118,6 @@
             });
 
             $('#btn_search').on('click', function() {
-                alert("aa");
                 goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
             });
 

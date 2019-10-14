@@ -27,11 +27,9 @@ class UserPackage extends \app\controllers\FrontController
         $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
         $cate_code = !(empty($this->_cate_code)) ? $this->_cate_code : element('cate_code', $arr_input);
 
-        /*
         if (empty($cate_code) === true) {
             $cate_code = element('cate_code', $arr_input, get_var(config_app('DefCateCode'), array_get($arr_base['category'], '0.CateCode')));
         }
-        */
 
         // 상품 기본조회 조건
         $arr_condition = [

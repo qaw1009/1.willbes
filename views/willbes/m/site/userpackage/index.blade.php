@@ -14,6 +14,15 @@
                         <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
                     @endforeach
                 </form>
+                @if(isset($arr_base['category']) === true)
+                    <li>
+                        <select id="cate_code" name="cate_code" title="카테고리" class="select_search">
+                            @foreach($arr_base['category'] as $idx => $row)
+                                <option value="{{$row['CateCode']}}" @if(element('cate_code', $arr_input) == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
+                            @endforeach
+                        </select>
+                    </li>
+                @endif
                 <li>
                     <select id="school_year" name="school_year" title="대비년도" class="select_search">
                         <option value="">대비년도전체</option>

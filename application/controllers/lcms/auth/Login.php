@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends \app\controllers\BaseController
 {
-    protected $models = array('_lcms/auth/login', '_wbs/sys/admin', '_lms/product/base/professor');
+    protected $models = array('_lcms/auth/login', '_wbs/sys/admin', '_lms/product/base/professor', '_lms/crm/send/sms');
     protected $helpers = array();
 
     public function __construct()
@@ -268,8 +268,9 @@ class Login extends \app\controllers\BaseController
     private function _sendSmsAuthNumber($to, $auth_number)
     {
         try {
-            $this->load->library('sendSms');
-            if($this->sendsms->send($to, '윌비스 본인 인증 번호입니다. ['.$auth_number.']를 입력해 주십시요.', '1544-5006') === false){
+//            $this->load->library('sendSms');
+//            if($this->sendsms->send($to, '윌비스 본인 인증 번호입니다. ['.$auth_number.']를 입력해 주십시요.', '1544-5006') === false){
+            if($this->smsModel->addKakaoMsg($to, null, null, 'KAT', 'cert001', [['#{회사명}' => '윌비스', '#{인증번호}' => $auth_number]]) === false) {
                 throw new \Exception('메세지 발송에 실패했습니다.\n다시 한번 시도해 주십시요.');
             }
         } catch (\Exception $e) {

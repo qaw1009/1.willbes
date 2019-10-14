@@ -555,10 +555,12 @@ function init_base() {
 
         if (confirm('선택한 대상자에게 ' + evt_name + '를 발송하시겠습니까?')) {
             if (evt_type === 'mail') {
-                window.open('/crm/mail/createSend/?target_idx='+target_idx, '_blank');
+                window.open('/crm/mail/createSend/?target_idx=' + target_idx, '_blank');
             } else {
+                // var send_modal_name = 'createSendModal';
+                var send_modal_name = ( evt_type === 'sms' ? 'createSendKakaoModal' : 'createSendModal' );
                 $('.btn-' + evt_type).setLayer({
-                    url: '/crm/' + evt_type + '/createSendModal?target_idx=' + target_idx,
+                    url: '/crm/' + evt_type + '/' + send_modal_name + '?target_idx=' + target_idx,
                     width: 1200,
                     modal_id: 'message_modal'
                 });

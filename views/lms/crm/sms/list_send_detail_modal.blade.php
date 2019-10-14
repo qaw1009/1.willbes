@@ -54,6 +54,8 @@
                                 <th>회원아이디</th>
                                 <th>회원명</th>
                                 <th>수신휴대폰</th>
+                                <th>수신 메세지종류</th>
+                                <th>메세지결과</th>
                                 <th>수신동의</th>
                             </tr>
                             </thead>
@@ -85,20 +87,34 @@
                         },
                         columns: [
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    // 리스트 번호
-                                    return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                                }},
+                                // 리스트 번호
+                                return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }},
                             {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                                    if (data == 0) {
-                                        return '비회원';
-                                    } else {
-                                        return row.MemId;
-                                    }
-                                }},
+                                if (data == 0) {
+                                    return '비회원';
+                                } else {
+                                    return row.MemId;
+                                }
+                            }},
                             {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                                    return row.Receive_Name;
-                                }},
+                                return row.Receive_Name;
+                            }},
                             {'data' : 'Receive_PhoneEnc'},
+                            {'render' : function(data, type, row, meta) {
+                                var rtn_str = '';
+                                if(row.log_data != null && row.log_data.RSLT_SEND_NAME != null && typeof row.log_data.RSLT_SEND_NAME != 'undefined'){
+                                    rtn_str = row.log_data.RSLT_SEND_NAME;
+                                }
+                                return rtn_str;
+                            }},
+                            {'render' : function(data, type, row, meta) {
+                                var rtn_str = '';
+                                if(row.log_data != null && row.log_data.RSLT_INFO != null && typeof row.log_data.RSLT_INFO != 'undefined'){
+                                    rtn_str = row.log_data.RSLT_INFO;
+                                }
+                                return rtn_str;
+                            }},
                             {'data' : 'SmsRcvStatus'}
                         ]
                     });

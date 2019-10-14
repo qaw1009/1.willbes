@@ -89,12 +89,12 @@ class MailModel extends WB_Model
              * 2. 회원테이블 임시테이블 조인
              * 3. 조인 데이터 발송테이블 저장
             */
-            $result = $this->createTampTable($this->_table_temp);
+            $result = $this->createTempTable($this->_table_temp);
             if ($result === false) {
                 throw new \Exception('등록에 실패했습니다.');
             }
 
-            $result = $this->insertTampTable($this->_table_temp, $get_send_data, $set_send_data_name);
+            $result = $this->insertTempTable($this->_table_temp, $get_send_data, $set_send_data_name);
             if ($result === false) {
                 throw new \Exception('등록에 실패했습니다.');
             }
@@ -119,7 +119,7 @@ class MailModel extends WB_Model
             }
 
             // 임시테이블 삭제
-            $this->dropTampTable($this->_table_temp);
+            $this->dropTempTable($this->_table_temp);
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

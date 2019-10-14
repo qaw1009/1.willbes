@@ -24,7 +24,8 @@
         .skyBanner2 {position:fixed; top:300px;left:50%; margin-left:-600px;z-index:10;}
         .wb_cts00 {background:#404040}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1416_top_bg.jpg) no-repeat center top;}   
-        .evt01,.evt04 {background:#fff}
+        .evt01,
+        .evt04 {background:#fff}
         .evt02 {background:#464646}
         .evt03 {background:#161d2c}
         .evt05 {background:#555}

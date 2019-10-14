@@ -2122,7 +2122,7 @@ class OrderFModel extends BaseOrderFModel
                         '#{입금은행}' => $data['VBankName'],
                         '#{예금주명}' => config_item('vbank_account_name'),
                         '#{입금계좌}' => $data['VBankAccountNo'],
-                        '#{결제금액}' => ( empty($data['RealPayPrice']) === false ? number_format($data['RealPayPrice']) : '-'),
+                        '#{결제금액}' => ( empty($data['RealPayPrice']) === false ? number_format($data['RealPayPrice']).'원' : '0원'),
                         '#{입금기한}' => $data['VBankExpireDatm']
                     ]];
                 } else {
@@ -2133,7 +2133,7 @@ class OrderFModel extends BaseOrderFModel
                         '#{회사명}' => '윌비스',
                         '#{결제완료일}' => $data['OrderDatm'],
                         '#{상품명외}' => $data['ReprProdName'],
-                        '#{결제금액}' => ( empty($data['RealPayPrice']) === false ? number_format($data['RealPayPrice']) : '-'),
+                        '#{결제금액}' => ( empty($data['RealPayPrice']) === false ? number_format($data['RealPayPrice']).'원' : '0원'),
                         '#{결제수단}' => ( empty($data['PayMethodCcdName']) === false ? $data['PayMethodCcdName'] : '-')
                     ]];
                 }

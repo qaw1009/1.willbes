@@ -103,13 +103,11 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-            // 기간 조회 디폴트 셋팅
-            //setDefaultDatepicker(0, 'days', 'search_start_date', 'search_end_date');
-
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-copy mr-10"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sand-create' },
+                    // { text: '<i class="fa fa-copy mr-10"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-send-create' },
+                    { text: '<i class="fa fa-copy mr-10"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-send-kakao-create' },
                     { text: '<i class="fa fa-copy mr-10"></i> 예약취소', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-send-cancel' },
                 ],
                 ajax: {
@@ -135,7 +133,11 @@
                     {'data' : 'Content', 'render' : function(data, type, row, meta){
                             return '<a href="javascript:void(0);" class="btn-send-detail-read mr-20" data-idx="' + row.SendIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'CsTelCcdName'},
+                    {'data' : 'CsTelCcdName', 'render' : function(data, type, row, meta){
+                            var rtn_row = '';
+                            if(row.CsTelCcdName) rtn_row = row.CsTelCcdName + ' (' + row.CsTelCcdValue + ')'
+                            return rtn_row;
+                        }},
                     {'data' : 'wAdminName'},
                     {'data' : 'SendDatm'},
                     {'data' : 'SendStatusCcdName', 'render' : function(data, type, row, meta){
@@ -158,10 +160,18 @@
                 });
             });
 
-            // SMS 발송
-            $('.btn-sand-create').click(function() {
-                $('.btn-sand-create').setLayer({
+            // SMS 발송 (2019-09-19 이전, TODO 제거)
+            $('.btn-send-create').click(function() {
+                $('.btn-send-create').setLayer({
                     "url" : "{{ site_url('crm/sms/createSendModal/') }}" + '?js_action=datable_draw',
+                    "width" : "1200",
+                });
+            });
+
+            // SMS 발송 (2019-09-19 이후)
+            $('.btn-send-kakao-create').click(function() {
+                $('.btn-send-kakao-create').setLayer({
+                    "url" : "{{ site_url('crm/sms/createSendKakaoModal/') }}" + '?js_action=datable_draw',
                     "width" : "1200",
                 });
             });
@@ -169,7 +179,7 @@
             // 예약취소
             $('.btn-send-cancel').click(function() {
                 var $params = {};
-                var _url = "{{ site_url('crm/sms/cancelSend') }}"
+                var _url = "{{ site_url('crm/sms/cancelSend') }}";
 
                 $('input[name="send_cancel"]:checked').each(function() {
                     $params[$(this).data('is-best-idx')] = $(this).val();

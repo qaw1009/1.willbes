@@ -5,7 +5,6 @@ class Sms extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'sys/site', 'crm/send/sms', 'member/manageMember');
     protected $helpers = array();
-
     private $_send_type = 'sms';
 
     // 메세지 발송 종류 (SMS,쪽지,메일)
@@ -28,10 +27,12 @@ class Sms extends \app\controllers\BaseController
         '1' => '640002'
     ];
 
-    // 메시지 발송 옵션 (SMS, LMS)
+    // 메시지 발송 옵션 (SMS, LMS, 친구톡, 알림톡)
     private $_send_text_length_ccd = [
         '0' => '638001',
-        '1' => '638002'
+        '1' => '638002',
+        '2' => '638003',
+        '3' => '638004'
     ];
 
     private $_groupCcd = [
@@ -168,6 +169,21 @@ class Sms extends \app\controllers\BaseController
             $count = $this->smsModel->listSmsDetail(true, $arr_condition, $params[0]);
             if ($count > 0) {
                 $list = $this->smsModel->listSmsDetail(false, $arr_condition, $params[0], $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+
+                //최종 카카오 전송결과 조회
+                if(empty($list) === false) {
+                    foreach ($list as $i => $row){
+                        try{
+                            if(empty($row['SendYyyyMm']) === false) {
+                                if(strtotime('201910') <= strtotime($row['SendYyyyMm'])){ //카카오 알림톡 적용시점
+                                    $list[$i]['log_data'] = $this->smsModel->findKakaoLog($row['SendYyyyMm'], $row['Receive_PhoneEnc'], $row['SendIdx']);
+                                }
+                            }
+                        } catch (\Exception $e) {
+                            $list[$i]['log_data'] = null;
+                        }
+                    }
+                }
             }
         }
 
@@ -179,7 +195,7 @@ class Sms extends \app\controllers\BaseController
     }
 
     /**
-     * SMS발송 등록(전송)
+     * SMS발송 등록(전송) (2019-09-19 이전, TODO 제거)
      */
     public function createSendModal()
     {
@@ -307,7 +323,7 @@ class Sms extends \app\controllers\BaseController
     }
 
     /**
-     * 발송
+     * 발송 (2019-09-19 이전, TODO 제거)
      */
     public function storeSend()
     {
@@ -339,7 +355,7 @@ class Sms extends \app\controllers\BaseController
 
         list($result, $return_count) = $this->smsModel->addSms($this->_reqP(null,false), $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);
 
-        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => $return_count]);
+        $this->json_result($result, '정상 처리되었습니다.', null, ['upload_cnt' => $return_count]);
     }
 
     /**
@@ -367,6 +383,107 @@ class Sms extends \app\controllers\BaseController
     {
         list($result, $err_data, $return) = $this->smsModel->fileUpload();
         $this->json_result($result, '성공', $err_data, $return);
+    }
+
+    /**
+     * SMS(친구톡), 알림톡 팝업 (2019-09-19 이후)
+     */
+    public function createSendKakaoModal()
+    {
+        $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd']]);
+
+        //발신번호조회
+        $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
+
+        $method = 'POST';
+        $set_row_count = '12';
+        $list_send_member = null;
+
+        $target_id = $this->_req('target_id');
+        $target_idx = $this->_req('target_idx');
+        $target_phone = $this->_req('target_phone');
+        $js_action = (empty($this->_req('js_action')) === true) ? 'NoAction' : $this->_req('js_action');
+
+        if (empty($target_id) === false || empty($target_idx) === false) {
+            $set_send_member_idx = explode(',', $target_idx);
+            $set_send_member_id = explode(',', $target_id);
+            $arr_condition = [
+                'ORG' => [
+                    'IN' => [
+                        'MemIdx' => $set_send_member_idx,
+                        'MemId' => $set_send_member_id
+                    ]
+                ]
+            ];
+            $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
+        }
+
+        $arr_kakao_template = $this->smsModel->listKakaoTemplate(false, ['EQ' => ['KT.IsStatus' => 'Y', 'KT.IsUse' => 'Y', 'KT.IsApproval' => 'Y']], null, null, []);
+
+        $this->load->view("crm/sms/create_kakao_modal", [
+            'method' => $method,
+            'arr_send_pattern_ccd' => $arr_codes[$this->_groupCcd['SendPatternCcd']],
+            'arr_send_option_ccd' => $arr_codes[$this->_groupCcd['SendOptionCcd']],
+            'arr_send_callback_ccd' => $arr_send_callback_ccd,
+            'arr_kakao_template' => $arr_kakao_template,
+            'set_row_count' => $set_row_count,
+            'list_send_member' => $list_send_member,
+            'js_action' => $js_action
+        ]);
+    }
+
+    /**
+     * SMS(친구톡), 알림톡 발송 (2019-09-19 이후)
+     */
+    public function storeSendKakao()
+    {
+        $send_type = $this->_reqP('send_type');
+        $kakao_msg_type = $this->_reqP('kakao_msg_type');
+        $rules = [
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
+            ['field' => 'send_pattern_ccd', 'label' => '발송성격', 'rules' => 'trim|required'],
+            ['field' => 'send_content', 'label' => '내용', 'rules' => 'trim|required'],
+            ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|integer'],
+            ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,N]']
+        ];
+
+        switch ($kakao_msg_type) {
+            case 'KFT' :
+                $rules = array_merge($rules,[
+                    ['field' => 'cs_tel_ccd', 'label' => '발신번호', 'rules' => 'trim|required']
+                ]);
+                break;
+            case 'KAT' :
+                $rules = array_merge($rules,[
+                    ['field' => 'tmpl_cd', 'label' => '템플릿 유형', 'rules' => 'trim|required']
+                ]);
+                break;
+            default :
+                throw new \Exception('전송구분 값이 잘못 되었습니다.');
+                break;
+
+        }
+
+        switch ($send_type) {
+            case 1 :
+                $rules = array_merge($rules,[
+                    ['field' => 'mem_name[]', 'label' => '수신정보 이름', 'rules' => 'callback_validateArrayRequired[mem_name,1]'],
+                    ['field' => 'mem_phone[]', 'label' => '수신정보 전화번호', 'rules' => 'callback_validateArrayRequired[mem_phone,1]']
+                ]);
+            break;
+            case 2 :
+                $rules = array_merge($rules,[
+                    ['field' => 'attach_file', 'label' => '수신정보파일', 'rules' => 'callback_validateFileRequired[attach_file]']
+                ]);
+            break;
+        }
+
+        if ($this->validate($rules) === false) return;
+
+//        list($result, $return_count) = $this->smsModel->addKakao($this->_reqP(null, false), $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);
+        list($result, $return_count) = $this->smsModel->addKakao($this->_reqP(null, false));
+
+        $this->json_result($result, '정상 처리되었습니다.', null, ['upload_cnt' => $return_count]);
     }
 
 }

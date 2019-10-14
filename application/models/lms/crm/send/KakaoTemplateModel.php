@@ -46,17 +46,20 @@ class KakaoTemplateModel extends WB_Model
     /**
      * 알림톡 템플릿 정보 상세 조회
      * @param $idx
+     * @param $tmpl_cd
      * @return mixed
      */
-    public function findKakaoTemplate($idx)
+    public function findKakaoTemplate($idx = null, $tmpl_cd = null)
     {
         $return_data = null;
         $arr_condition = [
             'EQ' => [
-                'KT.CktIdx' => $idx,
                 'KT.IsStatus' => 'Y'
             ]
         ];
+        if(empty($idx) === false) $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['KT.CktIdx' => $idx]);
+        if(empty($tmpl_cd) === false) $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['KT.TmplCd' => $tmpl_cd]);
+
         $column = '
             KT.*,
             fn_admin_name(KT.RegAdminIdx) AS RegAdminName,

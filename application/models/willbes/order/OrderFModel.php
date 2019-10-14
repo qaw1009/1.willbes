@@ -10,7 +10,7 @@ class OrderFModel extends BaseOrderFModel
         parent::__construct();
 
         // 사용 모델 로드
-        $this->load->loadModels(['product/productF', 'couponF', 'pointF', 'order/cartF', 'order/orderListF']);
+        $this->load->loadModels(['product/productF', 'couponF', 'pointF', 'order/cartF', 'order/orderListF', '_lms/crm/send/sms']);
     }
 
     /**
@@ -2103,27 +2103,52 @@ class OrderFModel extends BaseOrderFModel
             $data = $this->orderListFModel->findOrderByOrderNo($order_no, $sess_mem_idx);
 
             if (empty($data) === false) {
-                $this->load->library('sendSms');
 
+                $tmpl_cd = $tmpl_val = null;
                 if ($data['IsVBank'] == 'Y') {
                     //$sms_msg = '[윌비스] 가상계좌 ' . config_item('vbank_account_name') . ' ' . str_replace('은행', '', $data['VBankName']);
                     //$sms_msg .= ' ' . $data['VBankAccountNo'] . ' (' . date('n/j', strtotime($data['VBankExpireDatm'])) . '까지 유효)';
+
                     // 가상계좌 메시지 변경 (2019.05.09)
-                    $sms_msg = config_item('vbank_account_name') . ' ' . str_replace('은행', '', $data['VBankName']);
-                    $sms_msg .= ' 계좌번호 ' . $data['VBankAccountNo'] . ' 금액 : ' . number_format($data['RealPayPrice']);
-                    $sms_msg .= ' (~' . date('n/j', strtotime($data['VBankExpireDatm'])) . ')';
+                    //$sms_msg = config_item('vbank_account_name') . ' ' . str_replace('은행', '', $data['VBankName']);
+                    //$sms_msg .= ' 계좌번호 ' . $data['VBankAccountNo'] . ' 금액 : ' . number_format($data['RealPayPrice']);
+                    //$sms_msg .= ' (~' . date('n/j', strtotime($data['VBankExpireDatm'])) . ')';
+
+                    $tmpl_cd = 'pay002';  // 템플릿: 무통장입금 정보 안내
+                    $tmpl_val = [[
+                        '#{회사명}' => '윌비스',
+                        '#{신청일}' => $data['OrderDatm'],
+                        '#{상품명외}' => $data['ReprProdName'],
+                        '#{입금은행}' => $data['VBankName'],
+                        '#{예금주명}' => config_item('vbank_account_name'),
+                        '#{입금계좌}' => $data['VBankAccountNo'],
+                        '#{결제금액}' => number_format($data['RealPayPrice']),
+                        '#{입금기한}' => $data['VBankExpireDatm']
+                    ]];
                 } else {
-                    $sms_msg = '[윌비스] ' . $sess_mem_name . '님 결제완료되셨습니다. [주문번호 ' . $order_no . ']';
+                    //$sms_msg = '[윌비스] ' . $sess_mem_name . '님 결제완료되셨습니다. [주문번호 ' . $order_no . ']';
+
+                    $tmpl_cd = 'pay003';  // 템플릿: 결제완료(배송지 없음)
+                    $tmpl_val = [[
+                        '#{회사명}' => '윌비스',
+                        '#{결제완료일}' => $data['OrderDatm'],
+                        '#{상품명외}' => $data['ReprProdName'],
+                        '#{결제금액}' => number_format($data['RealPayPrice']),
+                        '#{결제수단}' => $data['PayMethodCcdName']
+                    ]];
                 }
-                
-                $this->sendsms->send($sess_mem_phone, $sms_msg, $callback_number);
+
+                //$this->load->library('sendSms');
+                //$this->sendsms->send($sess_mem_phone, $sms_msg, $callback_number);
+                $this->smsModel->addKakaoMsg($sess_mem_phone, null, null, 'KAT', $tmpl_cd, $tmpl_val);
 
                 // 주문상품 자동문자발송 메시지 조회 및 발송
                 $sms_data = $this->orderListFModel->getOrderProductAutoSmsMsg($order_no, $sess_mem_idx);
                 if (empty($sms_data) === false) {
                     foreach ($sms_data as $sms_row) {
                         if (empty($sms_row['SendSmsTel']) === false && empty($sms_row['SendSmsMsg']) === false) {
-                            $this->sendsms->send($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), $sms_row['SendSmsTel']);                   
+                            //$this->sendsms->send($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), $sms_row['SendSmsTel']);
+                            $this->smsModel->addKakaoMsg($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), null, 'KFT');
                         }
                     }
                 }

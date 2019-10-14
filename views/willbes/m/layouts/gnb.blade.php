@@ -25,7 +25,7 @@
             @if($__cfg['SiteCode'] == '2003')
                 {{-- 실서버 상품코드 설정 (153368 => 154935) --}}
                 <li class="ListBox">
-                    <div class="List NGEB"><a href="{{front_url('/userPackage/index')}}">DIY패키지</a></div>
+                    <div class="List NGEB"><a href="{{front_url('/userPackage/index/?cate_code=3019')}}">DIY패키지</a></div>
                 </li>
             @endif
         @endif

@@ -22,6 +22,7 @@
                 </table>
             </div>
             <!-- willbes-Package-Detail -->
+            @if(empty($data['contents']) == false)
             <div class="willbes-Cartlist">
                 <div class="willbes-Cart-Txt p_re pt15">
                     <span class="MoreBtn underline NG" style="top: 30px;"><a href="#none">유의사항안내 닫기 ▲</a></span>
@@ -29,13 +30,14 @@
                         <tbody>
                         <tr>
                             <td>
-                                {!! empty($data['contents']) == false ? $data['contents'][0]['Content'] : '' !!}
+                                {!! $data['contents'][0]['Content'] !!}
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            @endif
             <!-- willbes-Bnr -->
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}

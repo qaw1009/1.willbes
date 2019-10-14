@@ -1930,6 +1930,9 @@ table.auTable tr td {
 .Menu .menu-List > li:hover {
     background: url("../../img/willbes/common/top_menu_list_arrow.png") no-repeat center bottom;
 }
+.Menu .menu-List > li:last-child:hover {
+    background: url("../../img/willbes/common/top_menu_list_arrow.png") no-repeat center 32px;
+}
 
 /*경찰*/
 .Menu .menu-List li.police > a {
@@ -11275,6 +11278,7 @@ table.acadlecInfoPackageTable tr.Top td {
     background: url(https://static.willbes.net/public/images/promotion/common/mainBottom_btnclose.png) no-repeat right center;
     font-size:0; text-indent: -9999px; z-index: 1;    
 }
+
 /*공무원 온라인 교수진소개*/
 .drop-Box-1120 {
     display: none;

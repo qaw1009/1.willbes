@@ -108,7 +108,7 @@
         $(document).ready(function() {
 
             $('.select_search').on('change', function(){
-                var $arr_reset = ['course_idx','series_ccd','subject_idx','prof_idx'];
+                var $arr_reset = ['course_idx','school_year'];
                 if($(this).attr('id') == 'cate_code') {
                     $.each($arr_reset, function(index, item) {
                         $('#url_form').find('input[type="hidden"][name="' + item + '"]').remove();

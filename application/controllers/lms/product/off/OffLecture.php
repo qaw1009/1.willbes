@@ -137,7 +137,7 @@ Class OffLecture extends CommonLecture
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['653','654','613','675']);
+        $codes = $this->codeModel->getCcdInArray(['610','653','654','613','675']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.SubjectName' => 'asc' ]);
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
@@ -151,6 +151,8 @@ Class OffLecture extends CommonLecture
         $data_memo = [];
         $data_content = [];
         $data_sms = null;
+
+        $data_book = [];
         $data_autolec = [];
         $data_autocoupon = [];
         $data_autofreebie = [];
@@ -168,6 +170,7 @@ Class OffLecture extends CommonLecture
             $data_content = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
+            $data_book = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636003');
             $data_autolec = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
             $data_autofreebie = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
 
@@ -180,6 +183,7 @@ Class OffLecture extends CommonLecture
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
+            ,'bookprovision_ccd'=>$codes['610']  //교재제공구분
             ,'studypattern_ccd'=>$codes['653']       //수강형태(학원) [653]
             ,'studyapply_ccd'=>$codes['654']          //수강신청구분(학원) [654]
             ,'salestype_ccd'=>$codes['613'] //강좌제공구분
@@ -195,6 +199,7 @@ Class OffLecture extends CommonLecture
             ,'data_memo'=>$data_memo
             ,'data_content'=>$data_content
             ,'data_sms'=>$data_sms
+            ,'data_book'=>$data_book
             ,'data_autolec'=>$data_autolec
             ,'data_autocoupon'=>$data_autocoupon
             ,'data_autofreebie'=>$data_autofreebie

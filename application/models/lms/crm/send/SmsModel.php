@@ -577,54 +577,24 @@ class SmsModel extends WB_Model
 
     /**
      * 수신데이터 셋팅 (2019-09-19 이후)
-     * @param $send_type : [1 : 입력데이터, 2 : 첨부파일]
      * @param $arr_mem_phone : 입력데이터
      * @param $arr_mem_name
      * @param $arr_send_msg
      * @return array
-     * @throws \PhpOffice\PhpSpreadsheet\Exception
-     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
      */
-    private function _getSendDetailData($send_type, $arr_mem_phone, $arr_mem_name, $arr_send_msg = array())
+    private function _getSendDetailData($arr_mem_phone, $arr_mem_name, $arr_send_msg = array())
     {
         $set_send_data_phone = [];
         $set_send_data_name = [];
         $set_send_data_msg = [];
         $set_send_data_count = [];
-        switch ($send_type) {
-            case '1' :
-                foreach ($arr_mem_phone as $key => $val) {
-                    if (empty($arr_mem_phone[$key]) === false) {
-                        $set_send_data_phone[$key] = $val;
-                        $set_send_data_name[$key] = empty($arr_mem_name[$key]) == false ? $arr_mem_name[$key] : '';
-                        $set_send_data_msg[$key] = $arr_send_msg[$key];
-                        $set_send_data_count[$key] = $val;
-                    }
-                }
-                break;
-            case '2' :
-                $i = 0;
-                $this->load->library('upload');
-                $upload_sub_dir = config_item('upload_prefix_dir') . '/send/sms/' . date('Y') . '/' . date('md');
-                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
-
-                if (!empty($uploaded) === true || count($uploaded) > 0) {
-                    $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
-                    foreach ($excel_data as $key => $val) {
-                        $set_send_data_count[$key] = $val['B'];
-                        $set_send_data_phone[$i] = $val['B'];
-                        $set_send_data_name[$i] = $val['A'];
-                        $set_send_data_msg[$i] = $arr_send_msg[$i];
-                        $i++;
-                    }
-                    @unlink($uploaded[0]['full_path']); // 업로드 파일 삭제
-                }
-                break;
-            default :
-                $set_send_data_phone = [];
-                $set_send_data_name = [];
-                $set_send_data_msg = [];
-                break;
+        foreach ($arr_mem_phone as $key => $val) {
+            if (empty($arr_mem_phone[$key]) === false) {
+                $set_send_data_phone[$key] = $val;
+                $set_send_data_name[$key] = empty($arr_mem_name[$key]) == false ? $arr_mem_name[$key] : '';
+                $set_send_data_msg[$key] = $arr_send_msg[$key];
+                $set_send_data_count[$key] = $val;
+            }
         }
         return array($set_send_data_phone, $set_send_data_name, $set_send_data_msg, count($set_send_data_count));
     }
@@ -709,14 +679,30 @@ class SmsModel extends WB_Model
      * @param $kakao_msg_type
      * @param $send_content_value
      * @param $tmpl_cd
+     * @param $log_save_type
      * @return boolean
      */
-    public function addKakaoMsg($mem_phone, $send_content, $send_date = null, $kakao_msg_type = 'KFT', $tmpl_cd = null, $send_content_value = null)
+    public function addKakaoMsg($mem_phone, $send_content, $send_date = null, $kakao_msg_type = 'KFT', $tmpl_cd = null, $send_content_value = null, $log_save_type = null)
     {
         $arr_mem_phone = ( is_array($mem_phone) === false ? array($mem_phone) : $mem_phone );
         if(empty($send_date) === false){
             //TODO
         }
+
+        // *** lms_crm_send_r_receive_sms 테이블 정보 세팅 (세션) ***
+        $arr_member_data = array();
+        //if(empty($log_save_type) === false && $log_save_type === 'session') {
+            foreach ($arr_mem_phone as $key => $val) {
+                $member_data = [
+                    'MemIdx' => ( empty($this->session->userdata('mem_idx') === false) ? $this->session->userdata('mem_idx') : '0' ),
+                    'Receive_PhoneEnc' => ( empty($val) === false ? $this->getEncString($val) : '' ),
+                    'Receive_Name' => ( empty($this->session->userdata('mem_name') === false) ? $this->session->userdata('mem_name') : '비회원' ),
+                    'SmsRcvStatus' => 'N',
+                ];
+                array_push($arr_member_data, $member_data);
+            }
+        //}
+
         $param = [
             'send_type' => 1,                               // 1:개별발송, 2:일괄발송(엑셀)
             'kakao_msg_type' => $kakao_msg_type,            // KFT:친구톡, KAT:알림톡
@@ -732,7 +718,8 @@ class SmsModel extends WB_Model
             'send_datm_day' => null,
             'send_datm_h' => null,
             'send_datm_m' => null,
-            'reg_admin_idx' => 1000                         //자동문자는 발송 등록 관리자가 없음
+            'reg_admin_idx' => 1000,                        //자동문자는 발송 등록 관리자가 없음
+            'arr_member_data' => $arr_member_data           //로그 테이블에 저장될 회원 정보
         ];
         list($result, $return_count) = $this->addKakao($param);
 
@@ -753,6 +740,26 @@ class SmsModel extends WB_Model
         $this->_conn->trans_begin();
         try {
             $set_send_data_count = 0;
+
+            // *** 일괄발송일 경우 전화번호 세팅 (엑셀 업로드) ***
+            if(empty($formData['send_type']) === false && $formData['send_type'] == '2'){
+                $this->load->library('upload');
+                $upload_sub_dir = config_item('upload_prefix_dir') . '/send/sms/' . date('Y') . '/' . date('md');
+                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
+
+                if (empty($uploaded) === false || count($uploaded) > 0) {
+                    $arr_temp_mem_name = array();
+                    $arr_temp_mem_phone = array();
+                    $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
+                    foreach ($excel_data as $key => $val) {
+                        array_push($arr_temp_mem_name, $val['A']);
+                        array_push($arr_temp_mem_phone, $val['B']);
+                    }
+                    $formData['mem_name'] = $arr_temp_mem_name;
+                    $formData['mem_phone'] = $arr_temp_mem_phone;
+                    @unlink($uploaded[0]['full_path']);
+                }
+            }
 
             // *** 메세지 치환 ***
             $arr_replace_content = array(); // 치환된 메세지가 담길 배열
@@ -785,7 +792,7 @@ class SmsModel extends WB_Model
                         }
                     }
 
-                    foreach($formData['mem_phone'] as $i => $i_val){
+                    foreach($formData['mem_phone'] as $i => $i_val) {
                         if(empty($i_val) === false){
 
                             if(empty($arr_send_content_value) === false) {
@@ -812,8 +819,7 @@ class SmsModel extends WB_Model
                     break;
             }
 
-
-            list($set_send_data_phone, $set_send_data_name, $set_send_data_msg, $set_send_data_count) = $this->_getSendDetailData($formData['send_type'], $formData['mem_phone'], $formData['mem_name'], $arr_replace_content);
+            list($set_send_data_phone, $set_send_data_name, $set_send_data_msg, $set_send_data_count) = $this->_getSendDetailData($formData['mem_phone'], $formData['mem_name'], $arr_replace_content);
             $inputData = $this->_setInputData($formData, $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);
 
             if ($formData['send_option_ccd'] == $this->_send_option_ccd[0]) {
@@ -844,28 +850,38 @@ class SmsModel extends WB_Model
             }
             $send_idx = $this->_conn->insert_id();
 
-            $result = $this->createTempTable($this->_table_temp);
-            if ($result === false) {
-                throw new \Exception('등록에 실패했습니다.');
-            }
+            if(empty($formData['arr_member_data']) === false && is_array($formData['arr_member_data'])) {
+                //발송 로그 저장할 회원정보가 넘어왔을 경우
+                foreach ($formData['arr_member_data'] as $key => $val) {
+                    $formData['arr_member_data'][$key]['SendIdx'] = $send_idx;
+                }
+                $result = $this->_addTempDataForSendReceiveData($formData['arr_member_data']);
+                if ($result === false) {
+                    throw new \Exception('상세 정보 등록에 실패했습니다.');
+                }
+            } else {
+                //발송 로그 저장할 회원정보가 안넘어왔을 경우
+                $result = $this->createTempTable($this->_table_temp);
+                if ($result === false) {
+                    throw new \Exception('등록에 실패했습니다.');
+                }
 
-            $result = $this->insertTempTable($this->_table_temp, $set_send_data_phone, $set_send_data_name);
-            if ($result === false) {
-                throw new \Exception('등록에 실패했습니다.');
-            }
+                $result = $this->insertTempTable($this->_table_temp, $set_send_data_phone, $set_send_data_name);
+                if ($result === false) {
+                    throw new \Exception('등록에 실패했습니다.');
+                }
 
-            $datas = $this->_listTempTableData($send_idx);
-            if ($datas === false) {
-                throw new \Exception('상세 정보 등록에 실패했습니다.');
-            }
+                $datas = $this->_listTempTableData($send_idx);
+                if ($datas === false) {
+                    throw new \Exception('상세 정보 등록에 실패했습니다.');
+                }
 
-            $result = $this->_addTempDataForSendReceiveData($datas);
-//            list($result, $arr_sms_send_idx) = $this->_insertSendReceiveSms($datas);
-
-            if ($result === false) {
-                throw new \Exception('상세 정보 등록에 실패했습니다.');
+                $result = $this->_addTempDataForSendReceiveData($datas);
+                if ($result === false) {
+                    throw new \Exception('상세 정보 등록에 실패했습니다.');
+                }
+                $this->dropTempTable($this->_table_temp);
             }
-            $this->dropTempTable($this->_table_temp);
 
             $result = $this->_kakaoSend($inputData, $set_send_data_phone, $set_send_data_msg, $send_idx);
             if ($result === false) {

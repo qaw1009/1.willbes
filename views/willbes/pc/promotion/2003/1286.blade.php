@@ -90,14 +90,15 @@
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
         --}}
-
-        {{--기본댓글
-        <div class="m-margin">        
+        
+        <div class="evtCtnsBox"> 
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_07.jpg" alt="제로100 소문내기"/>   
+        </div>
+        {{--기본댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_normal_partial')
         @endif
-        </div>
-        --}}
+        
 
         <div class="evtCtnsBox zero100_05">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/zero100_05.jpg" alt="이벤트 유의사항"  />    

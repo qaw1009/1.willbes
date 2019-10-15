@@ -78,7 +78,7 @@ class WB_Model extends CI_Model
      */
     public function createTempTable($temp_table_name = '_lms_temp_table')
     {
-        $sql = "DROP TEMPORARY TABLE {$temp_table_name}";
+        $sql = "DROP TEMPORARY TABLE IF EXISTS {$temp_table_name}";
         $this->_conn->query($sql);
 
         $sql = /** @lang text */

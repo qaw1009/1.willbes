@@ -130,6 +130,19 @@
         }
         .evt04 {background:#f6f6f6;}
         .evt05 {background:#fff;}
+        .evt06 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1424_top_bg.jpg) no-repeat center top;}	
+        .evt06 .wb_popWrap {width:1120px; margin:0 auto; position:relative}
+        .evt06 .illust {position:absolute; width:1120px; margin:0 auto; animation:only 2s ease-in 0s infinite; z-index:11}
+        @@keyframes only{
+            0%{top:360px}
+            50%{top:380px; opacity:1}
+            100%{top:360px}
+        }
+        .evt06 a {position:absolute; width:600px; top:770px; left:50%; margin-left:-300px; padding:20px 0;
+            color:#fff; font-size:20px; font-weight:600; border:2px solid #fff; border-radius:40px;
+        }
+        .evt06 a:hover {background:#fff; color:#102b3e}
+
         .comingsoon {background:url(https://static.willbes.net/public/images/promotion/2019/08/1361_comingsoon_bg.jpg) no-repeat center top; text-align:center}
     </style>
 
@@ -221,7 +234,7 @@
                 </li>
                 <li>
                     <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
-                    <a href="https://police.willbes.net/promotion/index/cate/3002/code/1424" target="_blank">
+                    <a href="#tab06">
                         <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab06_on.jpg" alt="최종합격서비스" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab06.jpg" alt="최종합격서비스" class="off">
                     </a>
@@ -256,7 +269,7 @@
 
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_04.jpg" title="합격풀케어 서비스">
-            </div>
+            </div>           
 
             <div class="evtCtnsBox evt05">
                 <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_05.jpg" title="사전예약 이벤트">
@@ -285,6 +298,16 @@
 
         <div id="tab04">
             @include('willbes.pc.promotion.2001.1361_cts04')
+        </div>
+
+        <div id="tab06" class="evtCtnsBox evt06">
+            <div class="wb_popWrap">
+                <div class="illust">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top_img.png"  alt="" />
+                </div>      
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top.jpg"  alt="" />
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1424" target="_blank">최종합격예측! 나의 위치 파악하기 ></a>
+            </div>  
         </div>
 
         <div id="tab05" class="comingsoon">

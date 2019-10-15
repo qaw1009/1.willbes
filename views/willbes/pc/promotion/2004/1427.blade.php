@@ -89,7 +89,7 @@
         <div class="evtCtnsBox evt04" id="go_lec">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1427_04.jpg" usemap="#Map1427" title="수강신청" border="0"  />
             <map name="Map1427" id="Map1427">
-                <area shape="rect" coords="475,708,1027,757" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&amp;subject_idx=1273&amp;course_idx=1062&amp;prof_idx=50394" target="_blank" alt="수강신청" />
+                <area shape="rect" coords="129,924,988,973" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&amp;subject_idx=1273&amp;course_idx=1062&amp;prof_idx=50394" target="_blank" alt="외무영사직 수강신청" />
             </map>
         </div>       
 

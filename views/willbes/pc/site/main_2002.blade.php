@@ -106,7 +106,7 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">                           
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054">영어 구문톡해<span>11.4 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054">영어 구문독해<span>11.4 개강</span></a></div>
                             <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=&subject_idx=1095">영어 집중관리반<span>11.11 개강</span></a></div>
                         </div>
                     </li>

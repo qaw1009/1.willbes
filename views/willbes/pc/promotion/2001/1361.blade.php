@@ -73,8 +73,8 @@
         .evt01 .btnJoin a span {
             font-size:30px;
         }
-        .evt01 ul {width:1120px; margin:0 auto;}
-        .evt01 li {display:inline; float:left; width:20%; position:relative;}
+        .evt01 ul {width:1042px; margin:0 auto;}
+        .evt01 li {display:inline; float:left; width:16.66666%; position:relative;}
         .evt01 li span {position:absolute; width:100%; text-align:center; left:0; top:-40px}
         .evt01 li a img.on {display:none}
         .evt01 li a img.off {display:block}
@@ -135,8 +135,7 @@
 
     <div class="evtContent NGR" id="evtContainer">
         {{--
-        <ul class="skyBanner">
-            <!--li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1376" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner1.png" title="토크쇼"></a></li//-->
+        <ul class="skyBanner">            
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1362" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner2.png" title="적중이벤트"></a></li>
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1344" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_sky_banner3.png" title="적중이벤트"></a></li>
         </ul>
@@ -184,46 +183,53 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01.jpg" alt="이 모든 혜택을 드립니다.">
             <ul>
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="종료"></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
                     <a href="#tab01">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01_on.jpg" alt="사전예약" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab01.jpg" alt="사전예약" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab01_on.jpg" alt="사전예약" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab01.jpg" alt="사전예약" class="off">
                     </a>
                 </li>
                 @if(time() < strtotime('201908311200'))
                 <li>
                     <a href="#tab02" onClick='alert("COMING SOON!! ")'>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab02_on.jpg" alt="합격예측" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
                 </li>
                 @else
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="종료"></span>                
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>                
                     <a href="#tab02">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02_on.jpg" alt="합격예측" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab02.jpg" alt="합격예측" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab02_on.jpg" alt="합격예측" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab02.jpg" alt="합격예측" class="off">
                     </a>
                 </li>
                 @endif
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="종료"></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/10/1361_01_end.gif" alt="종료"></span>
                     <a href="#tab03">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03_on.jpg" alt="체력시험" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab03.jpg" alt="체력시험" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab03_on.jpg" alt="체력시험" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab03.jpg" alt="체력시험" class="off">
                     </a>
                 </li>
                 <li>
                     <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
                     <a href="#tab04">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04_on.jpg" alt="면접시험" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab04.jpg" alt="면접시험" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab04_on.jpg" alt="면접시험" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab04.jpg" alt="면접시험" class="off">
+                    </a>
+                </li>
+                <li>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
+                    <a href="https://police.willbes.net/promotion/index/cate/3002/code/1424" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab06_on.jpg" alt="최종합격서비스" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab06.jpg" alt="최종합격서비스" class="off">
                     </a>
                 </li>
                 <li>
                     <a href="#tab05" onClick='alert("COMING SOON!! ")'>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05_on.jpg" alt="최종합격" class="on">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/08/1361_tab05.jpg" alt="최종합격" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab05_on.jpg" alt="최종합격" class="on">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab05.jpg" alt="최종합격" class="off">
                     </a>
                 </li>
             </ul>

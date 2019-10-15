@@ -528,65 +528,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">구매교재정보
-                    </label>
-                    <div class="col-md-10 form-inline item" >
-                        <p>
-                            • 해당 상품 수강 시 필요한 교재 등록
-                        </p>
-                        <p>
-                            • 강좌 구매 시 함께 또는 별도 구매 가능하나 수강생교재는 강좌구매시에만 구매 가능 (수강생교재만 별도 구매 불가능)
-                        </p>
-                        <p>
-                            <button type="button" class="btn btn-sm btn-primary ml-5" id="bookAdd">교재검색</button>
-                            <input type="hidden" name="MemoTypeCcd[]" id="MemoTypeCcd_634002" value="634002">
-                            <input type="hidden" name="IsOutPut[]" id="IsOutPut_634002" value="Y">
-
-                            &nbsp;&nbsp;&nbsp;[코멘트] <input type="text" name="Memo[]" id="Memo_634002" value="{{$MemoTypeCcd_634002}}" class="form-control" size="70">
-                        </p>
-                        <table class="table table-striped table-bordered" id="bookList" width="100%">
-                            <colgroup>
-                                <col width="20%">
-                                <col>
-                                <col width="12%">
-                                <col width="12%">
-                                <col width="12%">
-                                <col width="5%">
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th>분류</th>
-                                <th>교재명</th>
-                                <th>정상가</th>
-                                <th>판매가</th>
-                                <th>판매상태</th>
-                                <th>삭제</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($data_book as $row)
-                                <tr id='bookTrId{{$loop->index}}'>
-                                    <input type='hidden'  name='ProdCode_book[]' id='ProdCode_book{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
-                                    <td>
-                                        <select name='OptionCcd[]' id='OptionCcd{{$loop->index}}' class="form-control">
-                                            @foreach($bookprovision_ccd as $key=>$val)
-                                                <option value='{{$key}}' @if($row['OptionCcd'] == $key) selected="selected" @endif>{{$val}}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td style='text-align:left'>[{{$row['ProdCodeSub']}}] &nbsp;{{$row['bookname']}}</td>
-                                    <td>{{number_format($row['SalePrice'])}}원</td>
-                                    <td>{{number_format($row['RealSalePrice'])}}원</td>
-                                    <td>{{$row['wSaleCcdName']}}</td>
-                                    <td><a href='javascript:;' onclick="rowDelete('bookTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
-                                </tr>
-                            @endforeach
-                            <tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="control-label col-md-2">자동지급단강좌
                     </label>
                     <div class="col-md-10 form-inline item" >
@@ -1021,15 +962,6 @@
                     'url' : '{{ site_url('common/searchOffLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615006&locationid='+id+'&ProdCode='+$('#ProdCode').val()
                     +'&cate_code='+$('#cate_code').val()
                     +'&CampusCcd='+$('#CampusCcd').val()
-                    ,'width' : 1200
-                })
-            });
-
-            //교재검색
-            $('#bookAdd').on('click', function() {
-                if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
-                $('#bookAdd').setLayer({
-                    'url' : '{{ site_url('common/searchBook/') }}'+'?site_code='+$("#site_code").val()+'&ProdCode='+$('#ProdCode').val()
                     ,'width' : 1200
                 })
             });

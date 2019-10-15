@@ -138,7 +138,7 @@ Class OffPackageAdmin extends CommonLecture
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['610','653','654','613','648','649','675']);
+        $codes = $this->codeModel->getCcdInArray(['653','654','613','648','649','675']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
         //캠퍼스
@@ -151,8 +151,6 @@ Class OffPackageAdmin extends CommonLecture
         $data_memo = [];
         $data_content = [];
         $data_sms = null;
-
-        $data_book = [];
         $data_autolec = [];
         $data_autocoupon = [];
         $data_autofreebie = [];
@@ -169,9 +167,9 @@ Class OffPackageAdmin extends CommonLecture
             $data_content = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
-            $data_book = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636003');
             $data_autolec = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
             $data_autofreebie = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+
             $data_autocoupon = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
             $data_sublecture = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
@@ -180,7 +178,6 @@ Class OffPackageAdmin extends CommonLecture
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
-            ,'bookprovision_ccd'=>$codes['610']  //교재제공구분
             ,'studypattern_ccd'=>$codes['653']       //수강형태(학원) [653]
             ,'studyapply_ccd'=>$codes['654']          //수강신청구분(학원) [654]
             ,'salestype_ccd'=>$codes['613'] //강좌제공구분
@@ -197,7 +194,6 @@ Class OffPackageAdmin extends CommonLecture
             ,'data_memo'=>$data_memo
             ,'data_content'=>$data_content
             ,'data_sms'=>$data_sms
-            ,'data_book'=>$data_book
             ,'data_autolec'=>$data_autolec
             ,'data_autocoupon'=>$data_autocoupon
             ,'data_autofreebie'=>$data_autofreebie

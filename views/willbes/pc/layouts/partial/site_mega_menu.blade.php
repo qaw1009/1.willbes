@@ -1,9 +1,19 @@
+{{-- 공무원온라인 메뉴 레이어 class 설정 --}}
+@if($__cfg['SiteCode'] == '2003')
+    @php $menu_layer_class = 'gosi'; @endphp
+    @if($__cfg['CateCode'] == '3024')
+        @php $menu_layer_class = 'gp'; @endphp
+    @elseif($__cfg['CateCode'] == '3030')
+        @php $menu_layer_class = 'noncom'; @endphp
+    @endif
+@endif
+
 {{-- 공무원온라인 메뉴 --}}
 @section('mega_menu_professor')
     {{-- 교수진소개 --}}
     @if($__cfg['SiteCode'] == '2003')
         {{-- 공무원 온라인 --}}
-        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi">
+        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 {{ $menu_layer_class }}">
             <div class="prof-drop-Box">
                 <h5>9급</h5>
                 <ul>
@@ -626,7 +636,7 @@
     {{-- 수강신청 --}}
     @if($__cfg['SiteCode'] == '2003')
         {{-- 공무원 온라인 --}}
-        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi2">
+        <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 {{ $menu_layer_class }}2">
             <div class="lec-drop-Box">
                 <h5>9급</h5>
                 <ul>

@@ -27,16 +27,7 @@
         
         .wb_cts03,.wb_cts05 {background:#fff}
 
-        .wb_cts06 {background:#e2e2e2}
-
-        .wb_cts07 {background:#f3ece6; padding-bottom:100px} 
-        .wb_cts07 div {width:980px; margin:0 auto }
-        .wb_cts07 div li {display:inline; float:left; width:50%}
-        .wb_cts07 div li a {display:block; text-align:center; background:#095e4b; color:#000; border-radius:10px; margin:10px; height:80px; line-height:80px; font-size:35px}
-        .wb_cts07 div li a.active,
-        .wb_cts07 div li a:hover {border:0px solid #000; border-bottom:0; background:#d9df01; border-radius:10px 10px 0 0; height:100px; line-height:100px; margin:0;}
-        .wb_cts07 div ul:after {content:""; display:block; clear:both} 
-        .wb_cts08 {background:#202020}
+        .wb_cts06 {background:#e2e2e2}   
 
         /* tip */
         .wb_cts09 {background:#fff; text-align:left; padding:100px 0}
@@ -77,10 +68,7 @@
         .tabWrapEvt:after {content:""; display:block; clear:both}
         .tabcts {background:none; width:980px; margin:0px auto 0; text-align:center;}
         .tabcts iframe {width:980px; margin:0px auto 0; height:450px; border:#000 solid 0px;}
-
-        .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
-        .skybanner ul li {padding-bottom:5px;}
-
+        
   </style>
 
    <div class="p_re evtContent NGR" id="evtContainer">

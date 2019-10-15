@@ -517,12 +517,15 @@ class OrderListModel extends BaseOrderModel
      */
     public function findOrderProductDeliveryInfo($order_prod_idx)
     {
-        $column = 'OP.OrderProdIdx, OP.OrderIdx, OP.MemIdx, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice
+        $column = 'O.OrderIdx, O.OrderNo, O.MemIdx, O.SiteCode, O.ReprProdName, OP.OrderProdIdx, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice
             , OPD.OrderProdDeliveryIdx, OPD.DeliveryCompCcd, OPD.DeliveryStatusCcd, OPD.InvoiceNo
             , ODA.Receiver, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone, ODA.ZipCode, ODA.Addr1, fn_dec(ODA.Addr2Enc) as Addr2, ODA.DeliveryMemo
             , CDC.CcdName as DeliveryCompCcdName, CDS.CcdName as DeliveryStatusCcdName';
+
         $from = '
-            from ' . $this->_table['order_product'] . ' as OP
+            from ' . $this->_table['order'] . ' as O
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on O.OrderIdx = OP.OrderIdx
                 inner join ' . $this->_table['order_product_delivery_info'] . ' as OPD
                     on OP.OrderProdIdx = OPD.OrderProdIdx
                 inner join ' . $this->_table['order_delivery_address'] . ' as ODA

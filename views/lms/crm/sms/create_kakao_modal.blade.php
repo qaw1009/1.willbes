@@ -26,8 +26,8 @@
                         <div class="form-group">
                             <label class="control-label col-md-4" for="kakao_msg_type">전송구분 <span class="required">*</span></label>
                             <div class="col-md-8 item">
-                                <input type="radio" id="kakao_msg_type_kft" name="kakao_msg_type" class="flat" value="KFT"/> <label for="kakao_msg_type_kft" class="input-label">SMS/LMS</label>
-                                <input type="radio" id="kakao_msg_type_kat" name="kakao_msg_type" class="flat" value="KAT" checked="checked"/> <label for="kakao_msg_type_kat" class="input-label">알림톡</label>
+                                <input type="radio" id="kakao_msg_type_kat" name="kakao_msg_type" class="flat" value="KAT"/> <label for="kakao_msg_type_kat" class="input-label">알림톡</label>
+                                <input type="radio" id="kakao_msg_type_kft" name="kakao_msg_type" class="flat" value="KFT" checked="checked"/> <label for="kakao_msg_type_kft" class="input-label">SMS/LMS</label>
                             </div>
                         </div>
                         <div class="form-group">

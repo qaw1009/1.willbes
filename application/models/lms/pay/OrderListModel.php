@@ -635,6 +635,7 @@ class OrderListModel extends BaseOrderModel
             $data['PayMethodCcdName'] = str_replace('결제(방문)', '', $data['PayMethodCcdName']);
             $data['PayMethodCcdName'] = str_replace('실시간 ', '', $data['PayMethodCcdName']);
             $data['PayMethodCcdName'] = str_replace('입금(가상계좌)', '', $data['PayMethodCcdName']);
+            $data['PayMethodCcdName'] = str_replace('(간편결제)', '', $data['PayMethodCcdName']);
             $data['ViewType'] = 'C';
         } elseif ($site_code == '2004') {
             // 공무원학원

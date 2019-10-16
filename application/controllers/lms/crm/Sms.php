@@ -476,7 +476,6 @@ class Sms extends \app\controllers\BaseController
 
         if ($this->validate($rules) === false) return;
 
-//        list($result, $return_count) = $this->smsModel->addKakao($this->_reqP(null, false), $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);
         list($result, $return_count) = $this->smsModel->addKakao($this->_reqP(null, false));
 
         $this->json_result($result, '정상 처리되었습니다.', null, ['upload_cnt' => $return_count]);

@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="ProdName">단과반명(수강증 출력용)<span class="required">*</span>
+                    <label class="control-label col-md-2" for="ProdName">단과반명(수강증 출력용)
                     </label>
                     <div class="col-md-4 form-inline">
                         <div class="item inline-block">

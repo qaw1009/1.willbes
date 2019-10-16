@@ -45,7 +45,7 @@ class OrderListModel extends BaseOrderModel
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
                     , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm 
-                    , P.ProdTypeCcd, PL.LearnPatternCcd, P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
+                    , P.ProdTypeCcd, PL.LearnPatternCcd, P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
@@ -626,7 +626,7 @@ class OrderListModel extends BaseOrderModel
 
             // 상품명 길이 조정
             $this->load->helper('text');
-            $data['ProdName'] = ellipsize($data['ProdName'], 14, 1, '') . $prof_name;
+            $data['ProdName'] = ellipsize(get_var($data['ProdNameShort'], $data['ProdName']), 14, 1, '') . $prof_name;
 
             $add_data['MinLecStartDate'] = date('m/d', strtotime($add_data['MinLecStartDate']));
             $add_data['MaxLecEndDate'] = date('m/d', strtotime($add_data['MaxLecEndDate']));
@@ -635,6 +635,7 @@ class OrderListModel extends BaseOrderModel
             $data['PayMethodCcdName'] = str_replace('결제(방문)', '', $data['PayMethodCcdName']);
             $data['PayMethodCcdName'] = str_replace('실시간 ', '', $data['PayMethodCcdName']);
             $data['PayMethodCcdName'] = str_replace('입금(가상계좌)', '', $data['PayMethodCcdName']);
+            $data['PayMethodCcdName'] = str_replace('(간편결제)', '', $data['PayMethodCcdName']);
             $data['ViewType'] = 'C';
         } elseif ($site_code == '2004') {
             // 공무원학원

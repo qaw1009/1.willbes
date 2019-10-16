@@ -217,7 +217,6 @@ Class OffLecture extends CommonLecture
 
         $rules = [
             ['field'=>'ProdName', 'label' => '단과반명', 'rules' => 'trim|required'],
-            ['field'=>'ProdNameShort', 'label' => '단과반명(수강증 출력용)', 'rules' => 'trim|required'],
             //['field'=>'CampusCcd', 'label' => '캠퍼스', 'rules' => 'trim|required'],
             ['field'=>'SchoolYear', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field'=>'CourseIdx', 'label' => '과정', 'rules' => 'trim|required'],

@@ -210,7 +210,6 @@ Class OffPackageAdmin extends CommonLecture
 
         $rules = [
             ['field'=>'ProdName', 'label' => '종합반명', 'rules' => 'trim|required'],
-            ['field'=>'ProdNameShort', 'label' => '종합반명(수강증 출력용)', 'rules' => 'trim|required'],
             ['field'=>'SchoolYear', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field'=>'FixNumber', 'label' => '정원', 'rules' => 'trim|required'],
         ];

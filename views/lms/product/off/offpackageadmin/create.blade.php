@@ -97,7 +97,7 @@
                     </label>
                     <div class="col-md-4 form-inline">
                         <div class="item inline-block">
-                            <input type="text" id="ProdNameShort" name="ProdNameShort" required="required" class="form-control" title="종합반명(수강증 출력용)" value="{{ $data['ProdNameShort'] }}" style="width: 400px">
+                            <input type="text" id="ProdNameShort" name="ProdNameShort" class="form-control" title="종합반명(수강증 출력용)" value="{{ $data['ProdNameShort'] }}" style="width: 400px">
                         </div>
                     </div>
                 </div>
@@ -894,7 +894,6 @@
                 if($("#site_code").val() == '') { alert("운영사이트를 선택해 주세요.");return;}
                 if( $("input[name='essLecAddCheck[]']").length == 0) { alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;}
 
-                //var salesprice = $("#SalePrice_613001").val();
                 var salesprice = $("#RealSalePrice_613001").val();  {{--TODO 19.04.08 최진영차장님 요청으로 정상가에서 판매가로 변경--}}
 
                 if (salesprice == '') {
@@ -916,20 +915,15 @@
 
                 sendAjax('{{ site_url('common/searchWMasterLecture/wMasterLectureProfessorFromLecture') }}', data, function(ret) {
                     if(ret.ret_cd) {
-                        //alert( (ret.ret_data).length );
-
                         if((ret.ret_data).length > 0) {
-                            //console.log(ret.ret_data);
 
                             data_array = ret.ret_data;
                             html = "";
 
                             $("#teacherDivision tbody").remove();   //기등록 내용 초기화
 
-                            $("#teacherDivision").append("<tbody>")
+                            $("#teacherDivision").append("<tbody>");
                             for(var i in data_array) {
-                                //console.log(data_array[i].wProfName + ' / ' + data_array[i].ProfIdx);
-
                                 html = "<tr id='"+i+"'>"
                                     +"<input type='hidden' name='ProfIdx[]' id='ProfIdx_"+data_array[i].ProfIdx+'-'+data_array[i].ProdCode+"' value='"+data_array[i].ProfIdx+"'>"
                                     +"<input type='hidden' name='ProdCodeDiv[]' id='ProdCodeDiv_"+data_array[i].ProfIdx+'-'+data_array[i].ProdCode+"' value='"+data_array[i].ProdCode+"'>"
@@ -955,7 +949,7 @@
                             $("#rateRemainProfIdx").val(''); //선택교수 초기화
                             $("#rateRemain").val('');//남는안분값 초기화
 
-                            radioclass();   //강제로 라디오버튼에 클래스를 먹이는데... 적용이 안됨.
+                            radioclass();
                         } else {
                             alert("등록된 교수정보가 존재하지 않습니다.");
                         }
@@ -1028,13 +1022,11 @@
             });
 
             function addValidate() {
-
                 if( $("input[name='essLecAddCheck[]']").length == 0) {
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
                 }
 
                 if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {
-
                     if ($("#PackSelCount").val() == "") {
                         alert('선택과목 선택개수 입력하여 주십시오.');
                         $('#PackSelCount').focus();
@@ -1046,7 +1038,6 @@
                         return;
                     }
                 }
-
                 return true;
             }
 
@@ -1055,10 +1046,10 @@
             });
         });
 
-        //강제로 클래스 먹임... 근데 안먹힘
         function radioclass() {
             $("input[name=mainFlag]").attr({"class":"flat"});
         }
+
         function rowDelete(strRow) {
             $('#'+strRow).remove();
         }
@@ -1081,7 +1072,6 @@
                 $('#RealSalePrice_'+strGubun).val(parseInt(salesprice));
             }
         }
-
 
         //안분율 자동 계산
         function rateCheck(strGubun) {
@@ -1169,7 +1159,6 @@
             sum_remainValue = parseFloat($("#ProdDivisionRate_"+strGubun).val()) + remainValue;
 
             $("#ProdDivisionRate_"+strGubun).val( sum_remainValue.toFixed(8) );
-
 
             sum_rate = 0;
 

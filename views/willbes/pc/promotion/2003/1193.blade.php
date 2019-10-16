@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/04/1193_top2_bg.jpg) no-repeat center top; }
+		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1193_top2_bg.jpg) no-repeat center top; }
 		.evtTop span {position:absolute; top:220px; left:50%;}
 		.evtTop ul {width:100%; margin:0 auto; }
 		.evtTop .point {text-align:center; margin-left:500px; padding:120px 50px 0px 0px; }
@@ -94,7 +94,7 @@
 		<!-- 타이머 //-->
 			
 		<div class="evtCtnsBox evtTop">
-			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_top2.png" usemap="#Map_1193_qna"  title="한덕현T-PASS" border="0"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/10/1193_top2.gif" usemap="#Map_1193_qna"  title="한덕현T-PASS" border="0"/>
 			<map name="Map_1193_qna">					
 				<area shape="rect" coords="432,177,513,202" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
 				<area shape="rect" coords="138,1071,974,1157" href="#none" onClick="go_PassLecture();">

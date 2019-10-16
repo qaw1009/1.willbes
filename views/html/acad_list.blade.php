@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
-    <div class="Menu NSK c_both">
+    <div class="Menu NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">경찰<span class="row-line">|</span></li>

@@ -127,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property WCpModel $wCpModel                                                    WCp Model Class
  * @property SearchWMasterLectureModel $searchWMasterLectureModel  Search MasterLecture Model Class
  * @property SmsModel $smsModel                                                     Search Sms Model Class
- * @property SmsModel $kakaoTemplateModel                                           Search kakaoTemplate Model Class
+ * @property KakaoTemplateModel $kakaoTemplateModel                             kakaoTemplate Model Class
  * @property MessageModel $messageModel                                         Search Message Model Class
  * @property MailModel $mailModel                                                      Search Mail Model Class
  * @property FreebieModel $freebieModel                                             Freebie Model Class
@@ -247,6 +247,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RouletteFModel $rouletteFModel                                         Roulette Model Class
  * @property SupportersFModel $supportersFModel                                 Supporters Model Class
  * @property BtobCertFModel $btobCertFModel                                     Btob Cert Apply Model Class
+ * @property SmsFModel $smsFModel                                               SmsF Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                             API Delivery Book Model Class
  ***************** BtoB **********************************************************************************

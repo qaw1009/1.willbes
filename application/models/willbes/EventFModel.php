@@ -81,7 +81,7 @@ class EventFModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
-        $this->load->loadModels(['_lms/crm/send/sms']);
+        $this->load->loadModels(['crm/smsF']);
     }
 
     public function listAllEvent($is_count, $arr_condition=[], $sub_query_condition, $limit = null, $offset = null, $order_by = [])
@@ -1037,7 +1037,7 @@ class EventFModel extends WB_Model
 
         //$this->load->library('sendSms');
         //if ($this->sendsms->send($send_data['register_tel'], $data['SmsContent'], $data['SendTel']) !== true) {
-        if($this->smsModel->addKakaoMsg($send_data['register_tel'], $data['SmsContent'], null, 'KFT') === false) {
+        if($this->smsFModel->addKakaoMsg($send_data['register_tel'], $data['SmsContent'], null, 'KFT') === false) {
             return false;
         } else {
             return true;

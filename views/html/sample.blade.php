@@ -302,9 +302,10 @@
                 <li><a href="{{ site_url('/home/html/cart3') }}" target="_blank">결제 > 결제완료</a></li>
                 <li><a href="{{ site_url('/home/html/cart4') }}" target="_blank">결제 > 결제완료(무통장)</a></li>
                 <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/acad_list') }}" target="_blank">학원수강신청 > 단과반</a></li>
-                <li><a href="{{ site_url('/home/html/acad_list_package_new') }}" target="_blank">** 학원수강신청 > 종합반</a></li>
-                <li><a href="{{ site_url('/home/html/acad_list_packagesub_new') }}" target="_blank">** 학원수강신청 > 종합반 상세</a></li>
+                <li><a href="{{ site_url('/home/html/acad_list_v2') }}" target="_blank">학원수강신청 > 단과반</a></li>
+                <li><a href="{{ site_url('/home/html/acad_listsub') }}" target="_blank">학원수강신청 > 단과반 상세</a></li>
+                <li><a href="{{ site_url('/home/html/acad_list_package_new') }}" target="_blank">학원수강신청 > 종합반</a></li>
+                <li><a href="{{ site_url('/home/html/acad_list_packagesub_new') }}" target="_blank">학원수강신청 > 종합반 상세</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/acad_memjoin') }}" target="_blank">학원 방문결제 접수 > 로그인</a></li>
                 <li><a href="{{ site_url('/home/html/acad_offline_list') }}" target="_blank">학원 방문결제 접수 > 단과반</a></li>

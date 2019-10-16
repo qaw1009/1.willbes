@@ -2676,8 +2676,7 @@ table.auTable tr td {
     color: #fff;
     text-align: center;
     line-height: 15px;
-    margin: 0 1px 0 0;
-    border-radius: 10px;
+    margin: 0 1px;
 }
 .w-info dt .nBox.n1 {
     background: #f14078;
@@ -2711,15 +2710,14 @@ table.auTable tr td {
     font-size: 14px;
     color: #2c2c2c;
 }
- .w-tit {
+.w-info .w-tit {
     letter-spacing: 0 !important;
-    line-height: 1.5;
 }
 .w-info.passzone {
     line-height: 20px !important;
     padding: 20px 0;
 }
-.w-info:after {content:""; display:block; clear:both}
+
 /* subContainer : Content : lecTable */
 table.lecTable {
     font-size: 13px;
@@ -2754,19 +2752,17 @@ table.lecTable tr td .w-tit {
     letter-spacing: -1px;
 }
 table.lecTable tr td .priceWrap {
-   /* clear: both;
+    clear: both;
     float: right;
     position: relative;
     top: 10px;
     right: 0;
     width: 240px;
     margin-right: 0;
-    height: 18px;*/    
+    height: 18px;
+    text-align: right;    
 } 
-table.lecTable tr td .priceWrap li {
-    text-align: left;
-    margin-bottom:5px;
-}
+
 table.lecTable tr td .priceWrap .chkBox {
     display: inline-block;
     line-height: 8px;
@@ -2802,7 +2798,7 @@ table.lecTable tr td .priceWrap .discount {
     width: 70px;
     color: #464646;*/
 }
-table.lecTable tr td .visitBuy {clear: both;}
+table.lecTable tr td .visitBuy {clear: both; padding-top:15px}
 table.lecTable tr td .visitBuy a {    
     display:block;
     width: 60px;
@@ -2814,48 +2810,14 @@ table.lecTable tr td .visitBuy a {
     border:1px solid #1a8ccc;    
 }
 table.lecTable tr td .MoreBtn {
-    /*position:absolute;
+    position:absolute;
     bottom: 5px;
-    right: 25px;*/
+    right: 25px;
     font-size: 11px;
     color: #808080;
-    line-height: 1.5;  
-    margin-top:10px;  
+    line-height: 18px;
 }
-table.lecTable tr td .lecBuyBtns li {
-    margin-bottom:5px;
-}
-table.lecTable tr td .lecBuyBtns li a {
-    display:block;
-    width: 60px;
-    margin:0 auto;
-    font-size: 11px;
-    padding:3px 0;
-    color: #1a8ccc;
-    text-align: center;
-    border:1px solid #1a8ccc;
-}
-table.lecTable tr td .lecBuyBtns li a.btnCart {
-    border:1px solid #7d7e85;
-    color:#fff;
-    background:#7d7e85;
-}
-table.lecTable tr td .lecBuyBtns li a.btnVisit {
-    border:1px solid #1a8ccc;
-    color:#1a8ccc;
-}
-table.lecTable tr td .lecBuyBtns li a.btnBuy {
-    color:#fff;
-    background:#1a8ccc;
-}
-table.lecTable tr td .lecBuyBtns li a:hover {
-    border:1px solid #000;
-    color:#fff;
-    background:#000;
-}
-table.lecTable tr td.w-schedule {
-    line-height: 1.5;
-}
+
 /* subContainer : Content : lecWrapTable */
 table.lecWrapTable {
     width: 100%;
@@ -2887,7 +2849,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 /* subContainer : Content : w-sp */
 .w-sp {
     width: 128px;
-    margin: 0 auto 10px;
+    margin: 0 26px 10px;
 }
 .w-sp.one {
     float: right;
@@ -2940,7 +2902,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 
 .w-sp100 {
     width: 100%;
-    margin: 0 auto 10px;
+    margin: 0 26px 10px;
 }
 .w-sp100 div {
     margin-top: 5px;
@@ -2956,7 +2918,6 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     width: 50px;
     padding: 5px;
     margin: 0;
-    vertical-align: middle;
 }
 .w-sp100 button span {
     font-size: 12px;
@@ -2966,9 +2927,8 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .viewBox {
     display: none;
     position: absolute;
-    top: 30px;
-    left: 50%;
-    margin-left:-91px;
+    top: 54px;
+    right: 26px;
     z-index: 10;
     background: #fff;
     width: 192px;
@@ -3846,8 +3806,7 @@ table.classTable tr td.w-data {
     color: #fff;
     text-align: center;
     line-height: 20px;
-    margin: 0 1px 0 0; 
-    border-radius: 10px;   
+    margin: 0 1px;
 }
 .willbes-Layer-requestInfo .nBox.n1 {
     background: #f14078;
@@ -9797,7 +9756,7 @@ table.acadlecTable .w-schedule {
     line-height: 30px;
 }
 table.acadlecTable tr td .priceWrap {
-    /*width: 165px;*/
+    width: 165px;
 }
 table.acadlecTable tr td .priceWrap .price {
     width: 90px;
@@ -9909,16 +9868,15 @@ table.acadlecInfoPackageTable tr.Top td {
     border-top: 1px solid #c9c9c9;
 }
 .w-notice .acadInfo {
-    /*float: left;*/
+    float: right;
     font-size: 10px;
     font-weight: 300;
     color: #fff;
     text-align: center;
-    line-height: 16px;
-    width: 60px;
-    /*margin-right: 70px;*/
-    margin: 0 auto 5px;
-    border-radius: 10px;
+    line-height: 15px;
+    padding: 0 7px;
+    margin-right: 70px;
+    margin-top:0;
 }
 .w-notice .acadInfo.n1 {
     background: #46a1dc;
@@ -9931,9 +9889,9 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .w-info .w-notice .acadInfo {
     float: none;
-    margin: 0 auto;
+    margin: 0;
 }
-.w-info .acadBox {
+.w-info dt .acadBox {
     display: inline-block;
     font-size: 11px;
     font-weight: 600;
@@ -9943,32 +9901,17 @@ table.acadlecInfoPackageTable tr.Top td {
     border: 1px solid #000;
     padding: 0 4px;
 }
-.w-info .acadBox.n1 {
+.w-info dt .acadBox.n1 {
     color: #1345b6;
     border-color: #1345b6;
 }
-.w-info .acadBox.n2 {
+.w-info dt .acadBox.n2 {
     color: #0a8cc2;
     border-color: #0a8cc2;
 }
-.w-info .acadBox.n3 {
+.w-info dt .acadBox.n3 {
     color: #9c3eb4;
     border-color: #9c3eb4;
-}
-.w-info .acadBox.n4 {
-    color: #fff;
-    border-color: #fe0000;
-    background: #fe0000;
-}
-.w-info .acadBox.n5 {
-    color: #fff;
-    border-color: #46a1dc;
-    background: #46a1dc;
-}
-.w-info .acadBox.n6 {
-    color: #fff;
-    border-color: #333;
-    background: #333;
 }
 
 .w-thumb a.thumb_num {
@@ -10856,8 +10799,7 @@ table.acadlecInfoPackageTable tr.Top td {
     width: 160px;
 }
 .Quick-Bnr {
-    float: left;
-    margin-left:20px;
+    /*float: left;*/
 }
 
 /* 제대군인인증팝업 */

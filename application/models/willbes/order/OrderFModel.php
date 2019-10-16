@@ -10,7 +10,7 @@ class OrderFModel extends BaseOrderFModel
         parent::__construct();
 
         // 사용 모델 로드
-        $this->load->loadModels(['product/productF', 'couponF', 'pointF', 'order/cartF', 'order/orderListF', '_lms/crm/send/sms']);
+        $this->load->loadModels(['product/productF', 'couponF', 'pointF', 'order/cartF', 'order/orderListF', 'crm/smsF']);
     }
 
     /**
@@ -2140,7 +2140,7 @@ class OrderFModel extends BaseOrderFModel
 
                 //$this->load->library('sendSms');
                 //$this->sendsms->send($sess_mem_phone, $sms_msg, $callback_number);
-                $this->smsModel->addKakaoMsg($sess_mem_phone, null, null, 'KAT', $tmpl_cd, $tmpl_val);
+                $this->smsFModel->addKakaoMsg($sess_mem_phone, null, null, 'KAT', $tmpl_cd, $tmpl_val);
 
                 // 주문상품 자동문자발송 메시지 조회 및 발송
                 $sms_data = $this->orderListFModel->getOrderProductAutoSmsMsg($order_no, $sess_mem_idx);
@@ -2148,7 +2148,7 @@ class OrderFModel extends BaseOrderFModel
                     foreach ($sms_data as $sms_row) {
                         if (empty($sms_row['SendSmsTel']) === false && empty($sms_row['SendSmsMsg']) === false) {
                             //$this->sendsms->send($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), $sms_row['SendSmsTel']);
-                            $this->smsModel->addKakaoMsg($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), null, 'KFT');
+                            $this->smsFModel->addKakaoMsg($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), null, 'KFT');
                         }
                     }
                 }

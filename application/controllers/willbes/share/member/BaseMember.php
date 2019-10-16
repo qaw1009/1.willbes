@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseMember extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF', 'pointF','classroomF', 'couponF', 'mocktest/mockExam', 'order/orderF', '_lms/crm/send/sms');
+    protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF', 'pointF','classroomF', 'couponF', 'mocktest/mockExam', 'order/orderF', 'crm/smsF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -99,7 +99,7 @@ class BaseMember extends \app\controllers\FrontController
 
 //            $this->load->library('sendSms');
 //            if($this->sendsms->send($phone, '윌비스 본인확인 번호입니다. ['.$code.']를 입력해주십시요.', '1544-5006') === false){
-            if($this->smsModel->addKakaoMsg($phone, null, null, 'KAT', 'cert001', [['#{회사명}' => '윌비스', '#{인증번호}' => $code]]) === false) {
+            if($this->smsFModel->addKakaoMsg($phone, null, null, 'KAT', 'cert001', [['#{회사명}' => '윌비스', '#{인증번호}' => $code]]) === false) {
                 return $this->json_error('메세지 발송에 실패했습니다.\n다시한번 시도해 주십시요.');
             }
 

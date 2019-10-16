@@ -25,7 +25,7 @@
         .wb_cts03 {background:#dbc8b7;}
         .wb_cts04 {background:#f8f8f8}
         .wb_cts05 {background:#f8f8f8}
-        .wb_cts06 {background:#242424}
+        .wb_cts06 {background:#242424;padding-bottom:100px;}
         .wb_cts07 {background:#f2efe3;position:relative;height:815px;}
         
         /*신버전*/
@@ -35,13 +35,8 @@
         .bannerImg1 p.left_arr {left:-15%;top:40%;width:65px; height:65px;}
         .bannerImg1 p.right_arr {right:-15%;top:40%; width:65px; height:65px;}
       
-        .skybanner {
-            position:fixed;
-            top:200px;
-            right:0;
-            width:290px;
-            z-index:11;
-        }
+        .skybanner {position:fixed;top:200px;right:0;width:290px;z-index:11;}
+        .skybanner2{position:fixed;top:480px;right:-30px;width:290px;z-index:11;}
        
     </style>
 
@@ -49,10 +44,14 @@
     <div class="p_re evtContent NSK" id="evtContainer">      
         <div class="skybanner">
             <a href="{{ site_url('/promotion/index/cate/3019/code/1067') }}" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" title="환승이벤트" >
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
             </a>
-        </div>       
-
+        </div>   
+        <div class="skybanner2">
+            <a href="{{ site_url('/promotion/index/cate/3019/code/1193') }}" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_sky.png" title="제니스영어" >
+            </a>
+        </div> 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1066_top.jpg" title="" />       
         </div>    
@@ -103,16 +102,18 @@
         </div>
 
         <div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_05.png" title="학습비법패키지수강신청" usemap="#Map1066b" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_05.png" title="학습비법패키지수강신청" usemap="#Map1066b" border="0" />
             <map name="Map1066b" id="Map1066b">
-			  <area shape="rect" coords="892,663,1071,712" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147104" target="_blank" alt="파이널" title="05.지방직" />
-			  <area shape="rect" coords="681,663,858,710" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" alt="실전실력다지기" title="04.실전실력다지기" />
-			  <area shape="rect" coords="475,663,644,710" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" alt="문제해결스킬업" title="03.문제해결스킬업" />
-			  <area shape="rect" coords="260,661,436,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="심화실전예비" title="02.심화,실전예비" />
-			  <area shape="rect" coords="56,662,227,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" alt="기본이론" title="01.기본이론" />
-            </map>    
+                <area shape="rect" coords="75,768,240,810" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" alt="기본이론" title="01.기본이론" />
+                <area shape="rect" coords="284,767,447,815" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="심화실전예비" title="02.심화,실전예비" />
+                <area shape="rect" coords="492,768,658,816" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" alt="문제해결스킬업" title="03.문제해결스킬업" />
+                <area shape="rect" coords="704,765,869,814" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" alt="실전실력다지기" title="04.실전실력다지기" />
+                <area shape="rect" coords="910,764,1086,814" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147104" target="_blank" alt="파이널" title="05.지방직" />            </map>  
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_06.gif" title="학습비법패키지수강신청" usemap="#Map1066c" border="0" />
+            <map name="Map1066c" id="Map1066c">
+                <area shape="rect" coords="682,37,1066,114" href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_blank" />
+            </map>
         </div>
-
     </div>
     <!-- End Container -->
 

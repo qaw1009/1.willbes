@@ -82,7 +82,7 @@
     </div>
     <!--wb_cts02//-->  
     <div class="evtCtnsBox wb_cts03">   
-        <img src="https://static.willbes.net/public/images/promotion/2019/10/1433_02.jpg" title="커리큘럼" />
+        <img src="https://static.willbes.net/public/images/promotion/2019/10/1433_02.gif" title="커리큘럼" />
     </div>
     <!--wb_cts03//-->    
     <div class="evtCtnsBox wb_cts04">

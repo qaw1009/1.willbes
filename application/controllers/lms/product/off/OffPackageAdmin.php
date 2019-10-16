@@ -209,7 +209,8 @@ Class OffPackageAdmin extends CommonLecture
         $method = 'add';
 
         $rules = [
-            ['field'=>'ProdName', 'label' => '운영자패키지명', 'rules' => 'trim|required'],
+            ['field'=>'ProdName', 'label' => '종합반명', 'rules' => 'trim|required'],
+            ['field'=>'ProdNameShort', 'label' => '종합반명(수강증 출력용)', 'rules' => 'trim|required'],
             ['field'=>'SchoolYear', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field'=>'FixNumber', 'label' => '정원', 'rules' => 'trim|required'],
         ];
@@ -237,57 +238,4 @@ Class OffPackageAdmin extends CommonLecture
         $result = $this->offPackageAdminModel->{$method.'Product'}($this->_reqP(null));
         $this->json_result($result, '저장 되었습니다.', $result);
     }
-
-//    /**
-//     * 강좌복사
-//     */
-//    public function copy()
-//    {
-//        $rules = [
-//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-//            ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
-//        ];
-//
-//        if ($this->validate($rules) === false) {
-//            return;
-//        }
-//
-//        $prodcode = $this->_reqP('prodCode');
-//
-//        $result = $this->offPackageAdminModel->_prodCopy($prodcode,'offpackageadmin');
-//        //var_dump($result);exit;
-//        $this->json_result($result,'복사 되었습니다.',$result);
-//    }
-
-//    /**
-//     * 강좌 개설/접수 변경
-//     */
-//    public function reoption()
-//    {
-//        $rules = [
-//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-//        ];
-//        if ($this->validate($rules) === false) {
-//            return;
-//        }
-//        $result = $this->offPackageAdminModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
-//        $this->json_result($result, '저장 되었습니다.', $result);
-//    }
-
-//    /**
-//     * 리스트내 정렬순서 변경
-//     */
-//    public function reorder()
-//    {
-//        $rules = [
-//            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-//            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
-//        ];
-//        if ($this->validate($rules) === false) {
-//            return;
-//        }
-//        $result = $this->offPackageAdminModel->_modifyLectureByOrder(json_decode($this->_reqP('params'), true));
-//        $this->json_result($result, '저장 되었습니다.', $result);
-//    }
-
 }

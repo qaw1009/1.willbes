@@ -93,6 +93,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="ProdName">종합반명(수강증 출력용)<span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline">
+                        <div class="item inline-block">
+                            <input type="text" id="ProdNameShort" name="ProdNameShort" required="required" class="form-control" title="종합반명(수강증 출력용)" value="{{ $data['ProdNameShort'] }}" style="width: 400px">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2" for="ProdName">캠퍼스 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">

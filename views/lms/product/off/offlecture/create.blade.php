@@ -118,7 +118,7 @@
                     </label>
                     <div class="col-md-4 form-inline">
                         <div class="item inline-block">
-                            <input type="text" id="ProdNameShort" name="ProdNameShort" required="required" class="form-control" title="단과반명(수강증 출력용)" value="{{ $data['ProdNameShort'] }}" style="width: 400px">
+                            <input type="text" id="ProdNameShort" name="ProdNameShort" class="form-control" title="단과반명(수강증 출력용)" value="{{ $data['ProdNameShort'] }}" style="width: 400px">
                         </div>
                     </div>
                 </div>
@@ -975,7 +975,6 @@
                     'learnpatternccd' : $("#LearnPatternCcd").val()
                 };
 
-                //var salesprice = $("#SalePrice_613001").val();
                 var salesprice = $("#RealSalePrice_613001").val();  {{--TODO 19.04.08 최진영차장님 요청으로 정상가에서 판매가로 변경--}}
 
                 if (salesprice == '') {
@@ -984,11 +983,7 @@
 
                 sendAjax('{{ site_url('common/searchWMasterLecture/wMasterLectureProfessor') }}', data, function(ret) {
                     if(ret.ret_cd) {
-                        //alert( (ret.ret_data).length );
-
                         if((ret.ret_data).length > 0) {
-                            //console.log(ret.ret_data);
-
                             data_array = ret.ret_data;
                             html = "";
 
@@ -1029,7 +1024,7 @@
                             $("#rateRemainProfIdx").val(''); //선택교수 초기화
                             $("#rateRemain").val('');//남는안분값 초기화
 
-                            radioclass();   //강제로 라디오버튼에 클래스를 먹이는데... 적용이 안됨.
+                            radioclass();
                         } else {
                             alert("등록된 교수정보가 존재하지 않습니다.");
                         }
@@ -1055,7 +1050,6 @@
                     ,'width' : 1300
                 })
             });
-
 
             //동일한 마스터강의 등록 강좌 검색 (학원 단과)
             $('#sameLecture').on('click', function() {
@@ -1136,7 +1130,6 @@
             });
         });
 
-        //강제로 클래스 먹임... 근데 안먹힘
         function radioclass() {
             $("input[name=mainFlag]").attr({"class":"flat"});
         }
@@ -1163,7 +1156,6 @@
             }
         }
 
-
         //안분율 자동 계산
         function rateCheck(strGubun) {
 
@@ -1177,7 +1169,6 @@
             }
 
             if($('#ProdDivisionPrice_'+strGubun).val() != '') {
-
                 //---   기존 단수처리 항목이 존재할경우 초기화 처리
                     remainValue = parseFloat($("#rateRemain").val());
                     //기존 선택 교수코드
@@ -1274,13 +1265,10 @@
             $("#SubjectIdx").chained(site_code);
             $("#CampusCcd").chained(site_code);
         }
-
         @if($method==='PUT')
             $('#rateRemain').val('{{$rateRemain}}');
             $('#rateRemainProfIdx').val('{{$rateRemainProfIdx}}');
         @endif
-
-
 
         var total;
         var karr;
@@ -1566,7 +1554,5 @@
         @if($method === "PUT" && !empty($data_lecturedate))
             setLecDate_modify();
         @endif
-
     </script>
-
 @stop

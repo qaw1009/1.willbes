@@ -35,13 +35,8 @@
         .bannerImg1 p.left_arr {left:-15%;top:40%;width:65px; height:65px;}
         .bannerImg1 p.right_arr {right:-15%;top:40%; width:65px; height:65px;}
       
-        .skybanner {
-            position:fixed;
-            top:200px;
-            right:0;
-            width:290px;
-            z-index:11;
-        }
+        .skybanner {position:fixed;top:200px;right:0;width:290px;z-index:11;}
+        .skybanner2{position:fixed;top:480px;right:-30px;width:290px;z-index:11;}
        
     </style>
 
@@ -49,10 +44,14 @@
     <div class="p_re evtContent NSK" id="evtContainer">      
         <div class="skybanner">
             <a href="{{ site_url('/promotion/index/cate/3019/code/1067') }}" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" title="환승이벤트" >
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
             </a>
-        </div>       
-
+        </div>   
+        <div class="skybanner2">
+            <a href="{{ site_url('/promotion/index/cate/3019/code/1193') }}" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_sky.png" title="제니스영어" >
+            </a>
+        </div> 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1066_top.jpg" title="" />       
         </div>    
@@ -111,8 +110,11 @@
 			  <area shape="rect" coords="260,661,436,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="심화실전예비" title="02.심화,실전예비" />
 			  <area shape="rect" coords="56,662,227,712" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" alt="기본이론" title="01.기본이론" />
             </map>    
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_06.gif" title="학습비법패키지수강신청" usemap="#Map1066c" border="0" />
+            <map name="Map1066c" id="Map1066c">
+                <area shape="rect" coords="682,37,1066,114" href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_blank" />
+            </map>
         </div>
-
     </div>
     <!-- End Container -->
 

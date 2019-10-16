@@ -23,7 +23,7 @@ class OffLectureModel extends CommonLectureModel
         } else {
 
             $column = ' STRAIGHT_JOIN
-                            A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
+                            A.ProdCode,A.ProdName,A.ProdNameShort,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                             ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
                             ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
@@ -357,8 +357,7 @@ class OffLectureModel extends CommonLectureModel
      * @param $input_lecture
      */
     public function inputCommon($input=[], &$input_product, &$input_lecture)
-        {
-
+    {
             $SaleStartDat = element('SaleStartDat',$input);
             $SaleStartTime = element('SaleStartTime',$input);
             if($SaleStartDat === '') {
@@ -382,6 +381,7 @@ class OffLectureModel extends CommonLectureModel
             //상품관리 테이블 입력
             $input_product = [
                 'ProdName'=>element('ProdName',$input)
+                ,'ProdNameShort'=>element('ProdNameShort',$input)
                 ,'SaleStartDatm'=>$SaleStartDatm
                 ,'SaleEndDatm'=>$SaleEndDatm
                 ,'SaleStatusCcd'=>element('SaleStatusCcd',$input,'618001')

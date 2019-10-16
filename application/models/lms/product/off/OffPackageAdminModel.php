@@ -331,7 +331,6 @@ class OffPackageAdminModel extends CommonLectureModel
      */
     public function inputCommon($input=[], &$input_product, &$input_lecture)
     {
-
         $SaleStartDat = element('SaleStartDat',$input);
         $SaleStartTime = element('SaleStartTime',$input);
         if($SaleStartDat === '') {
@@ -355,6 +354,7 @@ class OffPackageAdminModel extends CommonLectureModel
         //상품관리 테이블 입력
         $input_product = [
             'ProdName'=>element('ProdName',$input)
+            ,'ProdNameShort'=>element('ProdNameShort',$input)
             ,'SaleStartDatm'=>$SaleStartDatm
             ,'SaleEndDatm'=>$SaleEndDatm
             ,'SaleStatusCcd'=>element('SaleStatusCcd',$input,'618001')
@@ -409,6 +409,4 @@ class OffPackageAdminModel extends CommonLectureModel
             ,'OrderNum' =>element('OrderNum',$input)
         ];
     }
-
-
 }

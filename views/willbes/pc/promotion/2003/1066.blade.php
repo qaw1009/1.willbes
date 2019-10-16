@@ -25,7 +25,7 @@
         .wb_cts03 {background:#dbc8b7;}
         .wb_cts04 {background:#f8f8f8}
         .wb_cts05 {background:#f8f8f8}
-        .wb_cts06 {background:#242424;padding-bottom:50px;}
+        .wb_cts06 {background:#242424;padding-bottom:100px;}
         .wb_cts07 {background:#f2efe3;position:relative;height:815px;}
         
         /*신버전*/

@@ -995,7 +995,7 @@ class CommonLectureModel extends WB_Model
             $prodcode_new = $row['ProdCode'];
 
             //상품복사
-            $insert_column = 'ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, IsSaleEnd, IsCoupon, IsPoint, 
+            $insert_column = 'ProdCode, SiteCode, ProdName, ProdNameShort, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, IsSaleEnd, IsCoupon, IsPoint, 
                     PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, IsDeliveryInfo, Keyword, RegAdminIdx, RegIp';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);

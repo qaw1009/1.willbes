@@ -106,7 +106,10 @@ class Apply extends \app\controllers\BaseController
         // 승인상태
         $search_approval_status = $this->_reqP('search_approval_status');
         if (empty($search_approval_status) === false) {
-            if ($search_approval_status == 'E') {
+            if ($search_approval_status == 'Y') {
+                $arr_condition['EQ']['CA.ApprovalStatus'] = 'Y';
+                $arr_condition['GTE']['CA.ApprovalExpireDatm'] = date('Y-m-d H:i:s');
+            } elseif ($search_approval_status == 'E') {
                 $arr_condition['EQ']['CA.ApprovalStatus'] = 'Y';
                 $arr_condition['LT']['CA.ApprovalExpireDatm'] = date('Y-m-d H:i:s');
             } else {

@@ -72,7 +72,7 @@
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1386_05.gif" usemap="#Map1386A" title="영어 집중 관리반 신청하기" border="0">
             <map name="Map1386A" id="Map1386A">
-                <area shape="rect" coords="316,886,800,965" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1095" target="_blank" alt="신청하기" />
+                <area shape="rect" coords="316,886,800,965" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1102" target="_blank" alt="신청하기" />
             </map>
         </div>
     </div>

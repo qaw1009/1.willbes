@@ -6,53 +6,8 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section MainVisual">
-            <div class="widthAuto">              
-                <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_01.jpg" alt="대한민국1등 경찰학원" usemap="#Map190806" border="0">
-                <map name="Map190806" id="Map190806">
-                    <area shape="rect" coords="2,30,256,126" href="#collaboslides" alt="협력기관" />
-                </map>                  
-            </div>
-            <div class="widthAutoFull summer">
-                @if (date('YmdH') < '2019071316')
-                    {{--7월 13일 16시까지--}}
-                    <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190628_02.jpg" usemap="#Map190628" title="신광은 경찰 여름이벤트" border="0">
-                    <map name="Map190628" id="Map190628">
-                        <area shape="rect" coords="16,210,227,424" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1270" target="_blank" alt="기본이론" />
-                        <area shape="rect" coords="349,337,486,400" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강" />
-                        <area shape="rect" coords="894,212,1102,429" href="https://police.willbes.net/pass/promotion/index/cate/3011/code/1290" target="_blank" alt="빅매치" />
-                        <area shape="rect" coords="492,339,629,398" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268#wb_04" target="_blank" alt="2단계" />
-                        <area shape="rect" coords="635,340,772,399" href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank" alt="동영상" />
-                        <area shape="rect" coords="424,418,694,469" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1268" target="_blank" alt="학원실강신청하기" />
-                    </map>
-                @else
-                    {{--7월 13일 16시 이후--}}
-                    <img src="https://static.willbes.net/public/images/promotion/main/3001_visual_02_191010.jpg" usemap="#Map190809" title="신광은 경찰 연강시스템" border="0">
-                    <map name="Map190809" id="Map190809">
-                        <area shape="rect" coords="16,210,227,424" href="https://police.willbes.net/pass/promotion/index/cate/3011/code/1406" target="_blank" alt="기본이론" />
-                        <area shape="rect" coords="894,212,1102,429" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1360" target="_blank" alt="프리미엄심화이론" />
-                        <area shape="rect" coords="424,418,694,469" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1416" target="_blank" alt="필합패스" />
-                    </map>
-                @endif
-            </div>
-        </div>
-
-        {{--
-        <div class="newPlaybn">
-            <div class="layer">		
-                <div class="video">
-                    <video style="width:100%" autoplay loop muted="" poster="">
-                        <source src="http://sample4.hd.willbes.gscdn.com/police/190509_junhkyeong_bus_1210x360.mp4" type="video/mp4" width="1120" height="360"></source>
-                    </video>
-                </div>
-                <div class="pngimg-real">
-                    <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}">
-                        <img src="{{ img_url('cop/visual/visual_190323_junhkyeong.png') }}" title="중경입교식, 그 현장을 가다!">
-                    </a>
-                </div>		
-            </div>
-        </div>
-        --}}
+        {{--학원배너--}}
+        @include('willbes.pc.site.main_partial.offBanner_2001')
 
         <div class="Section Flipped">
             <div class="widthAuto">
@@ -73,7 +28,7 @@
         <div class="Section Section3">
             <div class="widthAuto">
                 <div><img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190820_02.jpg" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/main/3001_visual_190702_02_01.jpg" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/main/3001_visual_02_01.jpg" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
                 <div class="youtubeGod">
                     <iframe src="https://www.youtube.com/embed/1t-y10ZK6ig?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
                     <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
@@ -386,7 +341,6 @@
                 return false;
             });
         }); 
-
        
         $(document).ready(function() {
             var collaboslides = $("#collaboslides ul").bxSlider({

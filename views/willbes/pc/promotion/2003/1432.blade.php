@@ -39,7 +39,7 @@
         .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#3a0642; margin-left:50px; border-radius:20px}
         .check a:hover {background:#54ed24;}
 
-        .wb_cts04 {background:#fff;}
+        .wb_cts04 {background:#f8e9fa; padding-bottom:120px}
         .wb_cts05 {background:#fff; padding-top:120px}
         /*타이머*/
         .time {width:100%; text-align:center; background:#000}
@@ -140,16 +140,6 @@
         <div class="evtCtnsBox wb_cts05" id="passInfo">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1432_05.jpg"  alt="윌비스의 7급 커리큘럼"  />            
         </div>
-
-        {{--
-        <div class="evtCtnsBox wb_cts02" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2019/02/EV190211_03.png"  alt="윌비스 2019 윌비스 7급 PASS" usemap="#Map_190211_lecgo" border="0"/>
-            <map name="Map_190211_lecgo">
-                <area shape="rect" coords="534,596,696,658" href="javascript:go_PassLecture(5);" alt="6개월수강신청" onfocus="this.blur();">
-                <area shape="rect" coords="882,596,1060,660" href="javascript:go_PassLecture(6);" alt="12개월수강신청">
-            </map>
-            
-        </div>--}}
 
     </div>
     <!-- End Container -->

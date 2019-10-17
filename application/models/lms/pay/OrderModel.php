@@ -10,7 +10,7 @@ class OrderModel extends BaseOrderModel
         parent::__construct();
 
         // 사용 모델 로드
-        $this->load->loadModels(['_lms/pay/salesProduct', '_lms/pay/orderList', '_lms/sys/site']);
+        $this->load->loadModels(['_lms/pay/salesProduct', '_lms/pay/orderList', '_lms/sys/site', '_lms/crm/send/sms']);
     }
 
     /**
@@ -1774,10 +1774,11 @@ class OrderModel extends BaseOrderModel
             }
 
             // 자동문자 발송
-            $this->load->library('sendSms');
             foreach ($sms_row as $row) {
                 if (empty($row['SendSmsTel']) === false && empty($row['SendSmsMsg']) === false) {
-                    $this->sendsms->send($mem_row['MemPhone'], $row['SendSmsMsg'], $row['SendSmsTel']);
+                    //$this->load->library('sendSms');
+                    //$this->sendsms->send($mem_row['MemPhone'], $row['SendSmsMsg'], $row['SendSmsTel']);
+                    $this->smsModel->addKakaoMsg($mem_row['MemPhone'], $row['SendSmsMsg'], null, 'KFT');
                 }
             }
         } catch (\Exception $e) {

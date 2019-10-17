@@ -283,6 +283,12 @@ class ConsultModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
+            $get_serial_data = $this->codeModel->getCcdInArray(['666','614','668']);
+            $set_study_data = $this->codeModel->getCcd('668');
+            foreach ($get_serial_data as $row) {
+                foreach ($row as $key => $val) { $set_serial_data[$key] = $val; }
+            }
+
             $column = '
                 C.CsIdx, C.SiteCode, J.SiteName
                 ,fn_ccd_name(C.CampusCcd) as CampusName
@@ -296,9 +302,8 @@ class ConsultModel extends WB_Model
                 ,fn_ccd_name(A.CandidateAreaCcd) as CandidateAreaName ,fn_ccd_name(A.ExamPeriodCcd) as ExamPeriodName
                 ,A.SubjectName
                 ,A.Memo ,A.IsReg ,A.IsConsult ,A.ConsultMemo ,A.RegDatm, IFNULL(A.CancelDatm, \'\') AS CancelDatm
-                
-                ,IFNULL(L.CcdName, K.CcdName) AS SerialName
-                ,M.CcdName AS StudyName
+                ,IFNULL(L.CcdName, K.CcdName) AS SerialCcds
+                ,M.CcdName AS StudyCcds
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -314,7 +319,7 @@ class ConsultModel extends WB_Model
             INNER JOIN {$this->_table['site']} AS J ON C.SiteCode = J.SiteCode
             
             LEFT JOIN (
-            SELECT a.CsmIdx, GROUP_CONCAT(fn_ccd_name(a.CcdValue)) AS CcdName
+            SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
             FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
             INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
             WHERE GroupCcd = '666'
@@ -322,7 +327,7 @@ class ConsultModel extends WB_Model
             ) AS K ON A.CsmIdx = K.CsmIdx
             
             LEFT JOIN (
-            SELECT a.CsmIdx, GROUP_CONCAT(fn_ccd_name(a.CcdValue)) AS CcdName
+            SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
             FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
             INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
             WHERE GroupCcd = '614'
@@ -330,7 +335,7 @@ class ConsultModel extends WB_Model
             ) AS L ON A.CsmIdx = L.CsmIdx
             
             LEFT JOIN (
-            SELECT a.CsmIdx, GROUP_CONCAT(fn_ccd_name(a.CcdValue)) AS CcdName
+            SELECT a.CsmIdx, GROUP_CONCAT(a.CcdValue) AS CcdName
             FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
             INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
             WHERE GroupCcd = '668'
@@ -361,7 +366,30 @@ class ConsultModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+        if ($is_count === true) {
+            return $query->row(0)->numrows;
+        } else {
+            $data = $query->result_array();
+            //결과데이터 가공처리
+            foreach ($data as $key => $row) {
+                $re_serial_name = '';
+                $re_study_name = '';
+                $arr_serial_name = empty($row['SerialCcds']) === true ? [] : explode(',',$row['SerialCcds']);
+                foreach ($arr_serial_name as $c_key => $c_val) {
+                    $re_serial_name .= (empty($set_serial_data[$c_val]) === true) ? '' : $set_serial_data[$c_val].',';
+                }
+                $arr_study_name = empty($row['StudyCcds']) === true ? [] : explode(',',$row['StudyCcds']);
+                foreach ($arr_study_name as $c_key => $c_val) {
+                    $re_study_name .= (empty($set_study_data[$c_val]) === true) ? '' : $set_study_data[$c_val].',';
+                }
+
+                $re_serial_name = substr($re_serial_name, 0, -1);
+                $re_study_name = substr($re_study_name, 0, -1);
+                $data[$key]['SerialName'] = $re_serial_name;
+                $data[$key]['StudyName'] = $re_study_name;
+            }
+            return $data;
+        }
     }
 
     /**

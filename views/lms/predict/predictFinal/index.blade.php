@@ -14,15 +14,12 @@
                 </ul>
             </div>
             <div class="x_content collapse multi-collapse" id="addBox_final_data">
-                <div class="form-group form-group-sm">
-                    <label class="control-label col-md-1">가데이터 등록</label>
-                    <div class="col-md-11 form-inline">
-                        <input type="text" name="predict_idx" id="predict_idx" class="form-control" style="width:100px;" title="합격예측코드" placeholder="합격예측코드">
-                        <input type="text" name="cert_idx" id="cert_idx" class="form-control" style="width:100px;" title="수강인증코드" placeholder="수강인증코드">
-                        <input type="file" id="attach_file" name="attach_file" class="form-control" title="엑셀파일" value="">
-                        <button type="button" class="btn btn-primary btn-sm mb-0 ml-10 mr-10 btn-excel-upload">엑셀 업로드</button>
-                        <button type="button" class="btn btn-success btn-sm mb-0 btn-excel-download">샘플엑셀 다운로드</button>
-                    </div>
+                <div class="col-md-11 form-inline">
+                    <input type="text" name="predict_idx" id="predict_idx" class="form-control" style="width:100px;" title="합격예측코드" placeholder="합격예측코드">
+                    <input type="text" name="cert_idx" id="cert_idx" class="form-control" style="width:100px;" title="수강인증코드" placeholder="수강인증코드">
+                    <input type="file" id="attach_file" name="attach_file" class="form-control" title="엑셀파일" value="">
+                    <button type="button" class="btn btn-primary btn-sm mb-0 ml-10 mr-10 btn-excel-upload">엑셀 업로드</button>
+                    <button type="button" class="btn btn-success btn-sm mb-0 btn-excel-download">샘플엑셀 다운로드</button>
                 </div>
             </div>
         </form>

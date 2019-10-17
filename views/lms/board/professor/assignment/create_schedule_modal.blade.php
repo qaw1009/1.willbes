@@ -160,7 +160,10 @@
                     var kDay = (nDay < 10) ? "0"+nDay : nDay;
                     var bg_color = "";
                     var frm_value = "";
-                    if ( $('input:checkbox[name="week[]"]:eq('+j+')').prop("checked") ) {
+                    if ($('input:checkbox[name="week[]"]:eq('+j+')').prop("checked")
+                        && parseInt((Year +""+ kMonth +""+ kDay),10)  >= parseInt(replace($("#start_date").val(), "-", ""),10)
+                        && parseInt((Year +""+ kMonth +""+ kDay),10)  <= parseInt(replace($("#end_date").val(), "-", ""),10))
+                    {
                         bg_color ="yellow";
                         frm_value = Year +""+ kMonth +""+ kDay;
                         total++;
@@ -276,6 +279,14 @@
     @if($method === "PUT")setHoliday('modify');@endif
     // 기간 달력 생성 end --------------------------
 
+    function replace(str,s,d){
+        var i=0;
+        while(i > -1){
+            i = str.indexOf(s);
+            str = str.substr(0,i) + d + str.substr(i+1,str.length);
+        }
+        return str;
+    }
 </script>
 @stop
 

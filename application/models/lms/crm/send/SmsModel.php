@@ -694,9 +694,9 @@ class SmsModel extends WB_Model
         //if(empty($log_save_type) === false && $log_save_type === 'session') {
             foreach ($arr_mem_phone as $key => $val) {
                 $member_data = [
-                    'MemIdx' => ( empty($this->session->userdata('mem_idx') === false) ? $this->session->userdata('mem_idx') : '0' ),
+                    'MemIdx' => ( empty($this->session->userdata('mem_idx')) === false ? $this->session->userdata('mem_idx') : '0' ),
                     'Receive_PhoneEnc' => ( empty($val) === false ? $this->getEncString($val) : '' ),
-                    'Receive_Name' => ( empty($this->session->userdata('mem_name') === false) ? $this->session->userdata('mem_name') : '비회원' ),
+                    'Receive_Name' => ( empty($this->session->userdata('mem_name')) === false ? $this->session->userdata('mem_name') : '비회원' ),
                     'SmsRcvStatus' => 'N',
                 ];
                 array_push($arr_member_data, $member_data);

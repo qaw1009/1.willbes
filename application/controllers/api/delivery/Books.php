@@ -200,6 +200,65 @@ class Books extends \app\controllers\BaseController
     }
 
     /**
+     * 송장번호 등록, 배송상태 변경 (발송준비/발송완료), 배송정보 초기화 테스트
+     * @param array $params
+     * @return void
+     */
+    public function setTest($params = [])
+    {
+        $test_mode = element('0', $params);
+        if (empty($test_mode) === true || in_array($test_mode, ['invoice', 'prepare', 'complete', 'init']) === false) {
+            return $this->_error('필수 파라미터 오류입니다.');
+        }
+
+        // 로컬환경에서만 테스트 가능
+        if (ENVIRONMENT != 'local') {
+            return $this->_error('로컬 환경에서만 테스트 가능합니다.');
+        }
+
+        // 테스트 전달값 생성
+        $arr_order_no = ['20191016134842763105', '20191016135025573565'];   // 테스트 주문번호
+        $arr_invoice_no = ['1234567890', '9876543210'];     // 테스트 주문건에 저장될 운송장번호 (주문번호와 1대1 매칭)
+        $site_code = '2001';    // 테스트 주문건의 사이트코드
+        $data = [];
+
+        foreach ($arr_order_no as $idx => $order_no) {
+            $data[$idx] = ['OrderNum' => $order_no, 'SiteCode' => $site_code];
+
+            if ($test_mode == 'invoice') {
+                $data[$idx]['TransNum'] = element($idx, $arr_invoice_no, '1234567890');
+            }
+        }
+
+        if (empty($data) === true) {
+            return $this->_error('테스트 주문 데이터가 없습니다.');
+        }
+
+        // 테스트 메소드 실행
+        $result = '';
+        switch ($test_mode) {
+            case 'invoice' :
+                $result = $this->bookAModel->modifyInvoiceNo($data);
+                break;
+            case 'prepare' :
+                $result = $this->bookAModel->modifyDeliveryStatus('prepare', $data);
+                break;
+            case 'complete' :
+                $result = $this->bookAModel->modifyDeliveryStatus('complete', $data);
+                break;
+            case 'init' :
+                $result = $this->bookAModel->modifyDeliveryInit($data);
+                break;
+        }
+        
+        if ($result === true) {
+            var_dump('테스트 성공 ==> ', $result);
+        } else {
+            var_dump('테스트 실패 ==> ', $result);
+        }
+    }
+
+    /**
      * XML response set item value
      * @param $value
      * @return string

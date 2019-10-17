@@ -3739,4 +3739,93 @@ class PredictModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 최종합격예측서비스 가데이터입력
+     * @param $params
+     * @param array $input_data
+     * @return array|bool
+     */
+    public function tempFinalDataUpload($params, $input_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $column = "RIGHT(SubjectCode,3) AS SubjectCode";
+            $from = " FROM {$this->_table['predictPaper']} ";
+
+            $order_by = " ORDER BY PpIdx";
+            $where = " WHERE PredictIdx = ".$params['predict_idx']." AND IsStatus = 'Y' AND IsUse = 'Y'";
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+            $ArrPpIdx = $query->result_array();
+            if (empty($ArrPpIdx) === true) {
+                throw new \Exception('등록된 과목이 없습니다.');
+            }
+
+            $arrPoint = [];
+            foreach ($input_data as $key => $val) {
+                $TakeMockPart = $val['A'];
+                if(empty($TakeMockPart)===false){
+                    $TakeArea = $val['B'];
+                    $FinalPoint = $val['C'];
+                    $StrengthPoint = $val['D'];
+                    $AddPoint = $val['E'];
+
+                    $arrPoint[] = $val['F'];
+                    $arrPoint[] = $val['G'];
+                    $arrPoint[] = $val['H'];
+                    $arrPoint[] = $val['I'];
+                    $arrPoint[] = $val['J'];
+                    $arrPoint[] = $val['K'];
+                    $arrPoint[] = $val['L'];
+                    $arrPoint[] = $val['M'];
+                    $arrPoint[] = $val['N'];
+                    $arrPoint[] = $val['O'];
+                    $arrPoint[] = $val['P'];
+
+                    // 데이터 등록
+                    $addData = [
+                        'PredictIdx' => $params['predict_idx'],
+                        'CertIdx' => $params['cert_idx'],
+                        'MemIdx' => 1000000,
+                        'TakeMockPart' => $TakeMockPart,
+                        'TakeAreaCcd' => $TakeArea,
+                        'StrengthPoint' => $StrengthPoint,
+                        'AddPoint' => $AddPoint,
+                        'FinalPoint' => $FinalPoint,
+                        'IsStatus' => 'Y'
+                    ];
+
+                    if ($this->_conn->set($addData)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictFinal']) === false) {
+                        throw new \Exception('등록에 실패했습니다.');
+                    }
+                    $idx = $this->_conn->insert_id();
+
+                    foreach ($arrPoint as $key2 => $val2) {
+                        $addData2 = [];
+                        if ($val2 >= '0') {
+                            $addData2 = [
+                                'PredictIdx' => $params['predict_idx'],
+                                'PfIdx' => $idx,
+                                'MemIdx' => 1000000,
+                                'Subject' => $TakeMockPart.$ArrPpIdx[$key2]['SubjectCode'],
+                                'Point' => $val2,
+                            ];
+                        }
+                        if (empty($addData2) === false) {
+                            if ($this->_conn->set($addData2)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictFinalPoint']) === false) {
+                                throw new \Exception('점수등록에 실패했습니다.');
+                            }
+                        }
+                    }
+                    unset($arrPoint);
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
 }

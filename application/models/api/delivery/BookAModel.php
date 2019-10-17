@@ -10,6 +10,7 @@ class BookAModel extends WB_Model
         'order_delivery_address' => 'lms_order_delivery_address',
         'product' => 'lms_product',
         'member' => 'lms_member',
+        'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
 
@@ -132,15 +133,21 @@ class BookAModel extends WB_Model
      */
     public function findOrderProductDeliveryInfo($order_no, $site_code)
     {
-        $column = 'OPD.OrderProdDeliveryIdx, OPD.OrderProdIdx';
+        $column = 'OPD.OrderProdDeliveryIdx, OPD.OrderProdIdx, O.ReprProdName, OPD.InvoiceNo
+            , ODA.Receiver, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone, ODA.Addr1, fn_dec(ODA.Addr2Enc) as Addr2
+            , CDC.CcdName as DeliveryCompCcdName';
         $from = '
             from ' . $this->_table['order'] . ' as O
                 inner join ' . $this->_table['order_product'] . ' as OP
                     on O.OrderIdx = OP.OrderIdx
                 inner join ' . $this->_table['order_product_delivery_info'] . ' as OPD
                     on OP.OrderProdIdx = OPD.OrderProdIdx
+                inner join ' . $this->_table['order_delivery_address'] . ' as ODA
+                    on O.OrderIdx = ODA.OrderIdx                    
                 inner join ' . $this->_table['product'] . ' as P
                     on OP.ProdCode = P.ProdCode		
+                left join ' . $this->_table['code'] . ' as CDC
+                    on OPD.DeliveryCompCcd = CDC.Ccd and CDC.IsStatus = "Y"                    
             where O.OrderNo = ?
                 and O.SiteCode = ?
                 and P.ProdTypeCcd in ?     
@@ -264,6 +271,15 @@ class BookAModel extends WB_Model
                             throw new \Exception('상태 변경에 실패했습니다.');
                         }
 
+                        // 발송완료 SMS 발송
+                        if ($delivery_status == 'complete') {
+                            // 실서버일 경우만 실행 ==> TODO : 서버 환경별 실행
+                            if (ENVIRONMENT == 'production') {
+                                $sms_data = element('0', $info_rows, []);
+                                //$this->_sendDeliverySendSms($sms_data['ReceiverPhone'], $sms_data['DeliveryCompCcdName'], $sms_data['InvoiceNo'], $sms_data['ReprProdName'], $sms_data['Addr1'] . ' ' . $sms_data['Addr2']);
+                            }
+                        }
+
                         //if ($this->_conn->affected_rows() > 0) {
                             $upd_cnt++;
                         //}
@@ -346,5 +362,27 @@ class BookAModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 발송완료 SMS 발송
+     * @param string $phone [받는사람 휴대폰번호]
+     * @param string $delivery_comp_name [택배사명]
+     * @param string $invoice_no [운송장번호]
+     * @param string $product_name [상품명]
+     * @param string $delivery_address [배송주소]
+     */
+    private function _sendDeliverySendSms($phone, $delivery_comp_name, $invoice_no, $product_name, $delivery_address)
+    {
+        if (empty($phone) === false && empty($delivery_comp_name) === false && empty($invoice_no) === false) {
+            $tmpl_val = [[
+                '#{회사명}' => '윌비스',
+                '#{발송완료일}' => date('Y-m-d H:i:s'),
+                '#{상품명외}' => $product_name,
+                '#{송장번호}' => $invoice_no,
+                '#{택배사}' => $delivery_comp_name,
+                '#{주소}' => $delivery_address
+            ]];
+        }
     }
 }

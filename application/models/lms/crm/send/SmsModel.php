@@ -443,23 +443,28 @@ class SmsModel extends WB_Model
      * @param $inputData
      * @param $arr_send_data_phone
      * @param $arr_send_data_msg
+     * @param $from_phone
      * @param $send_idx [lms_crm_send.SendIdx]
      * @return bool
      */
-    private function _kakaoSend($inputData, $arr_send_data_phone, $arr_send_data_msg = array(), $send_idx)
+    private function _kakaoSend($inputData, $arr_send_data_phone, $arr_send_data_msg = array(), $from_phone = null, $send_idx)
     {
-        $send_call_center = $this->config->item('wca_tel');
-        $send_date = $inputData['SendDatm'];
+        $send_call_center = null;
         $send_msg = empty($arr_send_data_msg) === false ? $arr_send_data_msg : $inputData['Content'];
+        $send_date = $inputData['SendDatm'];
 
-        if(empty($inputData['CsTelCcd']) === false){
-            $arr_condition = ['EQ' => ['Ccd' => $inputData['CsTelCcd']]];
-            $arr_ccd_data = $this->codeModel->listAllCode($arr_condition)[0];
-            $send_call_center = $arr_ccd_data['CcdValue'];
+        if(empty($from_phone) === false) {
+            $send_call_center = $from_phone;
+        } else {
+            if(empty($inputData['CsTelCcd']) === false){
+                $arr_condition = ['EQ' => ['Ccd' => $inputData['CsTelCcd']]];
+                $send_call_center = $this->codeModel->listAllCode($arr_condition)[0]['CcdValue'];
+            } else {
+                $send_call_center = $this->config->item('wca_tel');
+            }
         }
-        $arr_send_phone = $arr_send_data_phone;
 
-        if ($this->sendsms->sendKakao($arr_send_phone, $send_msg, $send_call_center, $send_date, $inputData['KakaoMsgType'], $inputData['tmplCd'], $send_idx) !== true) {
+        if ($this->sendsms->sendKakao($arr_send_data_phone, $send_msg, $send_call_center, $send_date, $inputData['KakaoMsgType'], $inputData['tmplCd'], $send_idx) !== true) {
             return false;
         } else {
             return true;
@@ -675,6 +680,7 @@ class SmsModel extends WB_Model
      * 카카오 발송 데이터 등록 (2019-09-19 이후)
      * @param $mem_phone
      * @param $send_content
+     * @param $from_phone
      * @param $send_date
      * @param $kakao_msg_type
      * @param $send_content_value
@@ -682,7 +688,7 @@ class SmsModel extends WB_Model
      * @param $log_save_type
      * @return boolean
      */
-    public function addKakaoMsg($mem_phone, $send_content, $send_date = null, $kakao_msg_type = 'KFT', $tmpl_cd = null, $send_content_value = null, $log_save_type = null)
+    public function addKakaoMsg($mem_phone, $send_content, $from_phone = null, $send_date = null, $kakao_msg_type = 'KFT', $tmpl_cd = null, $send_content_value = null, $log_save_type = null)
     {
         $arr_mem_phone = ( is_array($mem_phone) === false ? array($mem_phone) : $mem_phone );
         if(empty($send_date) === false){
@@ -690,17 +696,17 @@ class SmsModel extends WB_Model
         }
 
         // *** lms_crm_send_r_receive_sms 테이블 정보 세팅 (세션) ***
-        $arr_member_data = array();
+        //$arr_member_data = array();
         //if(empty($log_save_type) === false && $log_save_type === 'session') {
-            foreach ($arr_mem_phone as $key => $val) {
-                $member_data = [
-                    'MemIdx' => ( empty($this->session->userdata('mem_idx')) === false ? $this->session->userdata('mem_idx') : '0' ),
-                    'Receive_PhoneEnc' => ( empty($val) === false ? $this->getEncString($val) : '' ),
-                    'Receive_Name' => ( empty($this->session->userdata('mem_name')) === false ? $this->session->userdata('mem_name') : '비회원' ),
-                    'SmsRcvStatus' => 'N',
-                ];
-                array_push($arr_member_data, $member_data);
-            }
+        //    foreach ($arr_mem_phone as $key => $val) {
+        //        $member_data = [
+        //            'MemIdx' => ( empty($this->session->userdata('mem_idx')) === false ? $this->session->userdata('mem_idx') : '0' ),
+        //            'Receive_PhoneEnc' => ( empty($val) === false ? $this->getEncString($val) : '' ),
+        //            'Receive_Name' => ( empty($this->session->userdata('mem_name')) === false ? $this->session->userdata('mem_name') : '비회원' ),
+        //            'SmsRcvStatus' => 'N',
+        //        ];
+        //        array_push($arr_member_data, $member_data);
+        //    }
         //}
 
         $param = [
@@ -719,7 +725,8 @@ class SmsModel extends WB_Model
             'send_datm_h' => null,
             'send_datm_m' => null,
             'reg_admin_idx' => 1000,                        //자동문자는 발송 등록 관리자가 없음
-            'arr_member_data' => $arr_member_data           //로그 테이블에 저장될 회원 정보
+            'from_phone' => $from_phone,
+            //'arr_member_data' => $arr_member_data         //로그 테이블에 저장될 회원 정보
         ];
         list($result, $return_count) = $this->addKakao($param);
 
@@ -883,7 +890,7 @@ class SmsModel extends WB_Model
                 $this->dropTempTable($this->_table_temp);
             }
 
-            $result = $this->_kakaoSend($inputData, $set_send_data_phone, $set_send_data_msg, $send_idx);
+            $result = $this->_kakaoSend($inputData, $set_send_data_phone, $set_send_data_msg, $formData['from_phone'], $send_idx);
             if ($result === false) {
                 throw new \Exception('문자 발송 실패 입니다.');
             }

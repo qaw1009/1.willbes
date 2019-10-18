@@ -5503,7 +5503,7 @@ table.couponTable .tBox {
     padding: 10px 15px;
 }
 ul.btnWrapbt {
-    float: left;
+    /*float: left;*/
     text-align: center;
 }
 ul.btnWrapbt li {
@@ -5513,7 +5513,6 @@ ul.btnWrapbt li {
 }
 ul.btnWrapbt.popbtn li {
     width: auto;
-    float: left;
     margin-left: 10px;
 }
 ul.btnWrapbt.popbtn li a {

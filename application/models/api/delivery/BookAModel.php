@@ -277,7 +277,7 @@ class BookAModel extends WB_Model
                             // 실서버일 경우만 실행 ==> TODO : 서버 환경별 실행
                             if (ENVIRONMENT == 'production') {
                                 $sms_data = element('0', $info_rows, []);
-                                $this->_sendDeliverySendSms($sms_data['ReceiverPhone'], $sms_data['DeliveryCompCcdName'], $sms_data['InvoiceNo'], $sms_data['ReprProdName'], $sms_data['Addr1'] . ' ' . $sms_data['Addr2']);
+                                //$this->_sendDeliverySendSms($sms_data['ReceiverPhone'], $sms_data['DeliveryCompCcdName'], $sms_data['InvoiceNo'], $sms_data['ReprProdName'], $sms_data['Addr1'] . ' ' . $sms_data['Addr2']);
                             }
                         }
 

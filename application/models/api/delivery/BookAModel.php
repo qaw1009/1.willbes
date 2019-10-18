@@ -29,6 +29,7 @@ class BookAModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+        $this->load->loadModels(['_lms/crm/send/sms']);
     }
 
     /**
@@ -383,6 +384,7 @@ class BookAModel extends WB_Model
                 '#{택배사}' => $delivery_comp_name,
                 '#{주소}' => $delivery_address
             ]];
+            $this->smsModel->addKakaoMsg($phone, null, '1544-4944', null, 'KAT', 'delivery001', $tmpl_val);
         }
     }
 }

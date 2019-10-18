@@ -2132,13 +2132,14 @@ table.auTable tr td {
     background: #7d7e85;
     height: 27px;
     font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: #fff;
     text-align: center;
     line-height: 18px;
     padding: 4px 12px;
     border: 1px solid #7d7e85;
+    border-radius:13px;
 }
 .subBtn.white a {
     background: #fff;
@@ -5502,7 +5503,8 @@ table.couponTable .tBox {
     padding: 10px 15px;
 }
 ul.btnWrapbt {
-    float: right;
+    /*float: left;*/
+    text-align: center;
 }
 ul.btnWrapbt li {
     display: inline-block;
@@ -5511,8 +5513,10 @@ ul.btnWrapbt li {
 }
 ul.btnWrapbt.popbtn li {
     width: auto;
-    float: left;
-    margin-left: 10px;
+    margin-left:5px;
+}
+ul.btnWrapbt.popbtn li:first-child {
+    margin:0;
 }
 ul.btnWrapbt.popbtn li a {
     font-weight: 300;
@@ -5523,7 +5527,6 @@ ul.btnWrapbt.popbtn li a:hover {
     background:#1f326a; 
     color:#fff;
 }
-
 
 /* subContainer : Cart : 결제하기 : 결제금액리스트 */
 .willbes-Buylist-Price {

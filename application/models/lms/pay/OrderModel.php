@@ -1778,7 +1778,7 @@ class OrderModel extends BaseOrderModel
                 if (empty($row['SendSmsTel']) === false && empty($row['SendSmsMsg']) === false) {
                     //$this->load->library('sendSms');
                     //$this->sendsms->send($mem_row['MemPhone'], $row['SendSmsMsg'], $row['SendSmsTel']);
-                    $this->smsModel->addKakaoMsg($mem_row['MemPhone'], $row['SendSmsMsg'], null, 'KFT');
+                    $this->smsModel->addKakaoMsg($mem_row['MemPhone'], $row['SendSmsMsg'], null, null, 'KFT');
                 }
             }
         } catch (\Exception $e) {

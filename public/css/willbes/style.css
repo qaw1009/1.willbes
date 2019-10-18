@@ -5508,7 +5508,6 @@ ul.btnWrapbt {
 }
 ul.btnWrapbt li {
     display: inline-block;
-    float: left;
     width: 52px;
     line-height: 20px;
 }
@@ -5527,9 +5526,6 @@ ul.btnWrapbt.popbtn li a:hover {
     border: 1px solid #091940; 
     background:#1f326a; 
     color:#fff;
-}
-ul.btnWrapbt:after {
-    content:""; display: block; clear:both;
 }
 
 /* subContainer : Cart : 결제하기 : 결제금액리스트 */

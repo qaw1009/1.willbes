@@ -5508,12 +5508,13 @@ ul.btnWrapbt {
 }
 ul.btnWrapbt li {
     display: inline-block;
+    float: left;
     width: 52px;
     line-height: 20px;
 }
 ul.btnWrapbt.popbtn li {
     width: auto;
-    margin-left: 10px;
+    margin-left:5px;
 }
 ul.btnWrapbt.popbtn li:first-child {
     margin:0;
@@ -5527,7 +5528,9 @@ ul.btnWrapbt.popbtn li a:hover {
     background:#1f326a; 
     color:#fff;
 }
-
+ul.btnWrapbt:after {
+    content:""; display: block; clear:both;
+}
 
 /* subContainer : Cart : 결제하기 : 결제금액리스트 */
 .willbes-Buylist-Price {

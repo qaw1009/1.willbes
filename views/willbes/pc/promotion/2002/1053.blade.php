@@ -98,7 +98,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1053_footer.gif" alt="베너" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1053_footer.gif" alt="예약접수 베너" />
         </div>
     </div>
     <!-- End Container -->

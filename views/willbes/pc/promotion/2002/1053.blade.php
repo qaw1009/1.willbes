@@ -98,7 +98,10 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1053_footer.gif" alt="예약접수 베너" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1053_footer.gif" alt="예약접수 베너" usemap="#Map" border="0" />
+            <map name="Map" id="Map">
+                <area shape="rect" coords="806,34,930,90" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=454&" target="_blank" />
+            </map>
         </div>
     </div>
     <!-- End Container -->

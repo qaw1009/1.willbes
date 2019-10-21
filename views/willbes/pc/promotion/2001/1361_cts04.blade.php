@@ -21,8 +21,13 @@
         .cts04_06 {background:#373737}
         .cts04_07 {background:#fff}
         .cts04_08 {background:#e9e7e8}
+
+        .cts04_talkshow{background:url(https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_talkshow_bg.jpg) no-repeat center top;}
     </style>
     <div>
+        <div class="evtCtnsBox cts04_talkshow">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_talkshow.jpg" alt="신광은 토크쇼">
+        </div>
         <div class="evtCtnsBox cts04_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_cts04_top.jpg" alt="3법 면접 무료특강">
         </div>

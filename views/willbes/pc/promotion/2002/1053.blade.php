@@ -38,6 +38,8 @@
             100%{top:70px;}
         }  
         .wb_cts02 {background:#eee;}
+        .wb_cts03{background:#242424;}
+    
 
         /* 슬라이드배너 */
         .bannerImg1 {position:relative; background:#eee; width:810px; margin:0 auto; z-index:50;}
@@ -93,6 +95,10 @@
 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_03_2.jpg" alt="" />
+        </div>
+
+        <div class="evtCtnsBox wb_cts03">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1053_footer.gif" alt="예약접수 베너" />
         </div>
     </div>
     <!-- End Container -->

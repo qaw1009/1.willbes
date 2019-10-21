@@ -9,6 +9,7 @@ class CertApplyModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+        $this->load->loadModels(['_lms/crm/send/sms']);
     }
 
 
@@ -496,8 +497,9 @@ class CertApplyModel extends WB_Model
                 throw new \Exception('세부 발송 등록에 실패했습니다.');
             }
             */
-            $this->load->library('sendSms');
-            if($this->sendsms->send($data['Phone'], $data['SmsContent'], $data['CsTel']) !== true) {
+            //$this->load->library('sendSms');
+            //if($this->sendsms->send($data['Phone'], $data['SmsContent'], $data['CsTel']) !== true) {
+            if($this->smsModel->addKakaoMsg($data['Phone'], $data['SmsContent'], $data['CsTel'], null, 'KFT') === false) {
                 throw new \Exception('SMS 발송에 실패했습니다.');
             }
 

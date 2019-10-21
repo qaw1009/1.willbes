@@ -154,13 +154,15 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1436_04.jpg"  title="마스터 교재" />   
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="event">            
+        <div class="evtCtnsBox wb_cts05" id="event">      
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1436_05.jpg" usemap="#Map1436_05"  title="전과목 확인하기" border="0" />
             <map name="Map1436_05" id="Map1436_05">
-                <area shape="rect" coords="364,1267,763,1371" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1412" target="_blank" />
-            </map>   
+                <area shape="rect" coords="861,541,998,588" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
+                <area shape="rect" coords="860,601,995,648" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
+                <area shape="rect" coords="860,802,997,847" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
+                <area shape="rect" coords="368,1267,748,1365" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1412" target="_blank" />
+            </map>            
         </div>
-
         
     </div>
     <!-- End evtContainer -->

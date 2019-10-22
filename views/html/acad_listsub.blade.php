@@ -94,15 +94,15 @@
                             </tr>
                             <tr>
                                 <td class="w-data tx-left">
-                                    <div class="w-tit">2017 (지방직/서울시) 정채영 국어 필살기 모의고사 시즌Ⅲ-Ⅳ(4-6월)</div>
+                                    <div class="w-tit tx-spacing">2017 (지방직/서울시) 정채영 국어 필살기 모의고사 시즌Ⅲ-Ⅳ(4-6월)</div>
                                 </td>
                                 <td class="tx-left">
                                     <div class="pl10">
                                         <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                        <label for="goods_chk" class="pl5 d_inblock">
-                                            <span>1,000,000원</span>
+                                        <label for="goods_chk" class="pl5 d_inblock tx-spacing">
+                                            <span>1,800,000원</span>
                                             <span class="discount">(↓10%) ▶ </span>
-                                            <span class="tx-blue">900,000원</span>
+                                            <span class="tx-blue">1,620,000원</span>
                                         </label>
                                     </div>
                                 </td>

@@ -96,34 +96,15 @@
                             <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
                         </div>
                     </div>
-                    <div class="form-group text-center">
-                        <button type="button" class="pull-right btn btn-primary" id="btn_list">목록</button>
-                    </div>
                 </div>
             </div>
 
             <script type="text/javascript">
-                $('#btn_list').click(function() {
-                    var bm_idx = '{{$bm_idx}}';
-                    var get_site_code = '{{$get_site_code}}';
-                    var path = '';
-
-                    if (bm_idx == '82') {
-                        path = 'ListOfflineBoardModal';
-                    } else if (bm_idx == '83') {
-                        path = 'ListLiveLectureMaterialModal';
-                    }
-
-                    var uri_route = path + '/' + bm_idx + '?site_code=' + get_site_code;
-                    replaceModal('{{ site_url('/live/videoManager/') }}' + uri_route, {});
-                });
-
                 $('.file-download').click(function() {
                     var _url = '{{ site_url("/live/videoManager/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
                     window.open(_url, '_blank');
                 });
             </script>
-
         @stop
 
         @section('add_buttons')

@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 라이브강의 송출을 위한 강의실과 영상정보를 매칭하고 기타 자료를 확인하는 페이지입니다..</h5>
+    <h5>- 라이브강의 송출을 위한 강의실과 영상정보를 매칭하고 기타 자료를 확인하는 페이지입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs('', 'tabs_site_code', 'tab', true, [], false, $offLineSite_list) !!}
@@ -39,12 +39,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-2 live">
-            @foreach($boardInfo as $key => $val)
-                <button class="btn btn-info btn_board" type="button" data-bm-idx="{{$key}}">{{$val}}</button>
-            @endforeach
-            </div>
-            <div class="col-xs-8 text-center">
+            <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
@@ -80,12 +75,20 @@
                             <td>
                                 <input type="text" name="order_num" class="form-control input-sm" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['LecLiveVideoIdx'] }}" style="width: 50px;" />
                             </td>
-                            {{--<td><a href="javascript:void(0);" onclick="javascript:liveOn('{{ $row['LiveVideoRoute'] }}');">수강하기</a></td>--}}
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-md-6" id="matial_content"></div>
+                <div class="col-md-6" id="offline_content"></div>
+            </div>
         </div>
     </div>
 
@@ -110,6 +113,12 @@
                 ]
             });
 
+            //강의자료실리스트 로드
+            materialBoardLoad($('#search_site_code').val());
+
+            //강의실배정표
+            offlineBoardLoad($('#search_site_code').val());
+
             // 등록/수정 모달창 오픈
             $('.btn-regist, .btn-modify').click(function() {
                 var is_regist = ($(this).prop('class').indexOf('btn-regist') !== -1) ? true : false;
@@ -124,12 +133,6 @@
             // 동영상 플레이 모달창 오픈
             $('.btn-video').click(function() {
                 var uri_param = '?video_route=' + $(this).data('dideo-route');
-                {{--
-                $('.btn-video').setLayer({
-                    'url' : '{{ site_url('/live/videoManager/viewVideoModel/') }}' + uri_param,
-                    'width' : 900
-                });
-                --}}
                 window.open('{{ site_url('/live/videoManager/viewFullVideoModel/') }}' + uri_param);
             });
 
@@ -166,20 +169,10 @@
                 }, showError, false, 'POST');
             });
 
-            $('.btn_board').click(function() {
-                var site_code = $('#search_site_code').val();
-                var bm_idx = $(this).data('bm-idx');
-                var modal_path = '';
-                if (bm_idx == '82') {
-                    modal_path = 'ListOfflineBoardModal';
-                } else if (bm_idx == '83') {
-                    modal_path = 'ListLiveLectureMaterialModal';
-                }
-
-                $('.btn_board').setLayer({
-                    "url" : "{{ site_url('/live/videoManager/') }}" + modal_path + '/' + bm_idx + '?site_code=' + site_code,
-                    "width" : "1200"
-                });
+            //사이트탭 클릭이벤트
+            $search_form.find('.tabs-site-code > li > a').on('click', function() {
+                materialBoardLoad($(this).data('site-code'));
+                offlineBoardLoad($(this).data('site-code'));
             });
         });
 
@@ -191,6 +184,36 @@
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
                 .column('.searching_site_code').search($search_form.find('select[name="search_site_code"]').val())
                 .draw();
+        }
+
+        //강의자료실
+        function materialBoardLoad(site_code)
+        {
+            var $url = '{{site_url('live/videoManager/ListLiveLectureMaterialModal/83?site_code=')}}' + site_code;
+            var $data = '';
+            sendAjax($url,
+                $data,
+                function(d){
+                    $("#matial_content").html(d).end()
+                },
+                function(req, status, err){
+                    showError(req, status);
+                }, false, 'GET', 'html');
+        }
+
+        //강의실배정표
+        function offlineBoardLoad(site_code)
+        {
+            var $url = '{{site_url('live/videoManager/ListOfflineBoardModal/82?site_code=')}}' + site_code;
+            var $data = '';
+            sendAjax($url,
+                $data,
+                function(d){
+                    $("#offline_content").html(d).end()
+                },
+                function(req, status, err){
+                    showError(req, status);
+                }, false, 'GET', 'html');
         }
     </script>
 @stop

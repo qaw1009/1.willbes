@@ -39,13 +39,28 @@ class VideoManager extends \app\controllers\BaseController
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
-        $list = $this->videoManagerModel->listLiveVideo([], null, null, ['lms_live_video.OrderNum' => 'asc', 'lms_live_video.LecLiveVideoIdx' => 'asc']);
+        //카테고리 조회(구분)
+        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
 
+        //과목조회
+        $arr_subject = $this->subjectModel->getSubjectArray();
+
+        //과정조회
+        $arr_course = $this->courseModel->getCourseArray();
+
+        //교수조회
+        $arr_professor = $this->professorModel->getProfessorArray();
+
+        $list = $this->videoManagerModel->listLiveVideo([], null, null, ['lms_live_video.OrderNum' => 'asc', 'lms_live_video.LecLiveVideoIdx' => 'asc']);
         $this->load->view("live/video/index", [
             'def_site_code' => $def_site_code,
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'boardInfo' => $this->boardInfo,
+            'arr_category' => $arr_category,
+            'arr_subject' => $arr_subject,
+            'arr_course' => $arr_course,
+            'arr_professor' => $arr_professor,
             'data' => $list
         ]);
     }
@@ -188,10 +203,7 @@ class VideoManager extends \app\controllers\BaseController
         $arr_professor = $this->professorModel->getProfessorArray('');
 
         $this->load->view('live/video/board/list_liveLectureMaterial_modal', [
-            'bm_idx' => $bm_idx,
-            'boardInfo' => $this->boardInfo,
             'site_code' => $site_code,
-
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
@@ -235,11 +247,11 @@ class VideoManager extends \app\controllers\BaseController
         }
 
         $sub_query_condition = [];
-        if (empty($this->_reqP('search_category')) === false) {
+        if (empty($this->_reqP('search_modal_category')) === false) {
             $sub_query_condition = [
                 'EQ' => [
                     'subLBrC.IsStatus' => 'Y',
-                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                    'subLBrC.CateCode' => $this->_reqP('search_modal_category')
                 ]
             ];
         }
@@ -287,8 +299,6 @@ class VideoManager extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryArray('');
 
         $this->load->view('live/video/board/list_offLineBoard_modal', [
-            'bm_idx' => $bm_idx,
-            'boardInfo' => $this->boardInfo,
             'site_code' => $site_code,
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
@@ -305,18 +315,18 @@ class VideoManager extends \app\controllers\BaseController
             'EQ' => [
                 'LB.BmIdx' => $bm_idx,
                 'LB.IsStatus' => 'Y',
-                'LB.CampusCcd' => $this->_reqP('search_modal_campus_ccd'),
-                'LB.IsUse' => $this->_reqP('search_modal_is_use'),
+                'LB.CampusCcd' => $this->_reqP('search_modal2_campus_ccd'),
+                'LB.IsUse' => $this->_reqP('search_modal2_is_use'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'LB.Title' => $this->_reqP('search_modal_value'),
-                    'LB.Content' => $this->_reqP('search_modal_value'),
+                    'LB.Title' => $this->_reqP('search_modal2_value'),
+                    'LB.Content' => $this->_reqP('search_modal2_value'),
                 ]
             ]
         ];
 
-        if ($this->_reqP('search_modal_chk_hot_display') == 1) {
+        if ($this->_reqP('search_modal2_chk_hot_display') == 1) {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
         }
 
@@ -327,11 +337,11 @@ class VideoManager extends \app\controllers\BaseController
         }
 
         $sub_query_condition = [];
-        if (empty($this->_reqP('search_category')) === false) {
+        if (empty($this->_reqP('search_modal2_category')) === false) {
             $sub_query_condition = [
                 'EQ' => [
                     'subLBrC.IsStatus' => 'Y',
-                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                    'subLBrC.CateCode' => $this->_reqP('search_modal2_category')
                 ]
             ];
         }

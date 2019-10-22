@@ -115,8 +115,6 @@
             </div>
 
             <script type="text/javascript">
-                var $regi_form = $('#regi_form');
-
                 $(document).ready(function() {
                     $('.file-download').click(function() {
                         var _url = '{{ site_url("/live/videoManager/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');

@@ -69,7 +69,7 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-2" for="">내용</label>
-                        <div class="form-control-static col-md-9">{!! $data['Content'] !!}</div>
+                        <div class="form-control-static col-md-9 content-img">{!! $data['Content'] !!}</div>
                     </div>
 
                     <div class="form-group">
@@ -100,9 +100,12 @@
             </div>
 
             <script type="text/javascript">
-                $('.file-download').click(function() {
-                    var _url = '{{ site_url("/live/videoManager/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
-                    window.open(_url, '_blank');
+                $(document).ready(function() {
+                    $(".content-img img").css("maxWidth", 850);
+                    $('.file-download').click(function() {
+                        var _url = '{{ site_url("/live/videoManager/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                        window.open(_url, '_blank');
+                    });
                 });
             </script>
         @stop

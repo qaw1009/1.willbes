@@ -2854,6 +2854,9 @@ table.lecTable tr td .lecBuyBtns li a:hover {
     color:#fff;
     background:#000;
 }
+
+
+
 table.lecTable tr td.w-schedule {
     line-height: 1.5;
 }
@@ -2879,10 +2882,10 @@ table.lecWrapTable .w-list {
     border-right: 1px solid #c9c9c9;   
 }
 table.lecWrapTable .lecInfoTable .w-sub {
-    margin-left: 50px;
+    /*margin-left: 50px;*/
 }
 table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
-    width: 455px;
+    /*width: 455px;*/
 }
 
 /* subContainer : Content : w-sp */
@@ -3092,7 +3095,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     margin: 7px 0;
 }
 .lecInfoTable .w-sub .priceWrap {
-    position: relative;
+   position: relative;
     width: 136px;
     margin-right: 25px;
     text-align: right;
@@ -9810,6 +9813,7 @@ table.acadlecTable tr td .priceWrap .chkBox {
     float: left;
     margin: 1px;
 }
+
 table.acadlecInfoTable {
     background: #f9f9f9;
     height: 240px;
@@ -11422,4 +11426,83 @@ table.acadlecInfoPackageTable tr.Top td {
 
 .list-drop-Box-1120 .lec-drop-Box {
     width:12.5%; float: left;
+}
+
+/*단과수강 신청 교재정보*/
+.bookInfoTable {width: 100% !important; background: #f9f9f9; padding:20px; font-size:13px}
+.bookInfoTable ul {margin-bottom:20px}
+.bookInfoTable li {
+    line-height: 1.5;
+    margin:10px 0;
+    position: relative;
+}
+.bookInfoTable li .b-obj {
+    width: 540px;
+}
+.bookInfoTable li .b-obj span {
+    display: inline-block;
+    color: #0d74ae;
+    width: 70px;
+    text-align: right;
+    padding-right: 10px;
+    font-size:12px;
+}
+.bookInfoTable .bookBuyBtns {
+    position: absolute;
+    top:0;
+    left:560px;
+    width: 130px;
+    z-index: 1;
+}
+.bookInfoTable .bookBuyBtns a {
+    display: inline-block;
+    width: 60px;
+    font-size: 11px !important;
+    height: 24px !important;
+    line-height: 24px !important;
+    color: #1a8ccc;
+    text-align: center;
+    border:1px solid #1a8ccc;
+}
+.bookInfoTable .bookBuyBtns a.btnCart {
+    border:1px solid #7d7e85;
+    color:#7d7e85;
+}
+.bookInfoTable .bookBuyBtns a.btnVisit {
+    border:1px solid #1a8ccc;
+    color:#1a8ccc;
+}
+.bookInfoTable .bookBuyBtns a.btnBuy {
+    color:#1a8ccc;
+    border:1px solid #1a8ccc;
+}
+.bookInfoTable .bookBuyBtns a:hover {
+    border:1px solid #000;
+    color:#000;
+}
+.bookInfoTableb .bookBuyBtns li:after {
+    content:""; display: block; clear:both;
+}
+
+.bookInfoTable .bookbuyInfo {
+    position: absolute;
+    top:0;
+    left:700px;
+    width: 200px;
+    z-index: 1;
+}
+
+.bookInfoTable .bookbuyInfo label {
+    display: inline-block;
+    width: 65px;
+    text-align: right;
+    margin-right: 5px;
+    font-size:12px;
+}
+.bookInfoTable a strong {
+    background: url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 10px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 18px;
+    display: inline-block;
 }

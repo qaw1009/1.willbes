@@ -22,6 +22,7 @@
         /************************************************************/
 
         .skyBanner {position:fixed; bottom:250px;right:0;z-index:10;}
+        .skybannerB{position: fixed; bottom:0; text-align:center; z-index: 101; background:#242424; width:100%}
 
         .wb_top {background:#222 url(https://static.willbes.net/public/images/promotion/2019/10/1053_top_bg.jpg) no-repeat center top}
         .wb_cts01 {background:#191919;}
@@ -37,9 +38,7 @@
             50%{top:90px;}
             100%{top:70px;}
         }  
-        .wb_cts02 {background:#eee;}
-        .wb_cts03{background:#242424;}
-    
+        .wb_cts02 {background:#eee;}  
 
         /* 슬라이드배너 */
         .bannerImg1 {position:relative; background:#eee; width:810px; margin:0 auto; z-index:50;}
@@ -54,6 +53,14 @@
         <div class="skyBanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_skybanner.png" title="경찰통합생활관리반">
         </div>
+
+        <div class="skybannerB">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1053_footer.gif" usemap="#Map1053_bottom" title="예약 접수" border="0"  />
+            <map name="Map1053_bottom" id="Map1053_bottom">
+                <area shape="rect" coords="807,35,934,90" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=454&" target="_blank" />
+            </map> 
+        </div>
+
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1053_top.jpg"alt="경찰통합생활관리반">
         </div>
@@ -95,13 +102,6 @@
 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1053_03_2.jpg" alt="" />
-        </div>
-
-        <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1053_footer.gif" alt="예약접수 베너" usemap="#Map" border="0" />
-            <map name="Map" id="Map">
-                <area shape="rect" coords="806,34,930,90" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=454&" target="_blank" />
-            </map>
         </div>
     </div>
     <!-- End Container -->

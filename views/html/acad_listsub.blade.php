@@ -99,10 +99,10 @@
                                 <td class="tx-left">
                                     <div class="pl10">
                                         <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                        <label for="goods_chk" class="pl10 d_inblock">
-                                            <span>80,000원</span>
+                                        <label for="goods_chk" class="pl5 d_inblock">
+                                            <span>1,000,000원</span>
                                             <span class="discount">(↓10%) ▶ </span>
-                                            <span class="tx-blue">72,000원</span>
+                                            <span class="tx-blue">900,000원</span>
                                         </label>
                                     </div>
                                 </td>

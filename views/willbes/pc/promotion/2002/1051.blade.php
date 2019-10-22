@@ -57,7 +57,7 @@
         </ul>
 
         <div class="evtCtnsBox wb_top" id="sparta">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1051_top.jpg" alt="스파르타" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1051_top.gif" alt="스파르타" />
         </div>     
 
         <div class="evtCtnsBox wb_schedule">

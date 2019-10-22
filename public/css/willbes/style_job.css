@@ -64,7 +64,7 @@
 
 .job .tipPopup {position: absolute; left:50%; top:20px; z-index: 1; display:none}
 
-.job .Section2 {background:#f8f7fc}
+.job .Section2 {background:#F5F5F5}
 
 .job .Section3 {background:#242b35}
 .job .Section3 .curriBox {position:absolute; left:50%; top:500px; margin-left:100px; z-index:10;}

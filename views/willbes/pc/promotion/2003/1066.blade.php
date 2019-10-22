@@ -90,7 +90,7 @@
                 <area shape="rect" coords="528,723,589,750" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154900" target="_blank" />
                 <area shape="rect" coords="533,803,583,828" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156355" target="_blank" />
                 <area shape="rect" coords="531,891,583,917" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146299" target="_blank" />
-                <area shape="rect" coords="732,672,785,694" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146969" target="_blank" />
+                <area shape="rect" coords="732,672,785,694" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146626" target="_blank" />
                 <area shape="rect" coords="733,843,784,867" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145826" target="_blank" />
                 <area shape="rect" coords="731,978,785,1005" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146969" target="_blank" />
                 <area shape="rect" coords="934,622,990,647" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146742" target="_blank" />

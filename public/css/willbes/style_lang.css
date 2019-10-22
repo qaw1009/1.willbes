@@ -102,6 +102,11 @@
     border:none !important;
     border-right:1px solid #999 !important;
 }
+.lang .tabWrap.noticeWrap li:last-child a.on,
+.lang .tabWrap.noticeWrap li:last-child a {
+    border-right:none !important;
+}
+
 .lang .tabBox.noticeBox .List-Table {
     width: 520px;
 }

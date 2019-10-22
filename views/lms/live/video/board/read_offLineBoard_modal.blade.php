@@ -43,28 +43,28 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-2" for="">사용</label>
-                        <div class="form-control-static col-md-5">
+                        <div class="form-control-static col-md-2">
                             {{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}
+                        </div>
+                        <label class="control-label col-md-2 col-lg-offset-1" for="">조회수(생성)</label>
+                        <div class="form-control-static col-md-5">
+                            {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2" for="">첨부</label>
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             @for($i = 0; $i < $attach_file_cnt; $i++)
                                 @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                    <img src="{{ $data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i] }}">
                                     <p class="form-control-static">
+                                        <img src="{{ $data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i] }}">
                                         [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
                                             {{ $data['arr_attach_file_real_name'][$i] }}
                                         </a> ]
                                     </p>
                                 @endif
                             @endfor
-                        </div>
-                        <label class="control-label col-md-2" for="">조회수(생성)</label>
-                        <div class="form-control-static col-md-5">
-                            {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                         </div>
                     </div>
 

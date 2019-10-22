@@ -447,6 +447,7 @@ class VideoManager extends \app\controllers\BaseController
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
         }
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
 
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
@@ -474,5 +475,19 @@ class VideoManager extends \app\controllers\BaseController
         $file_name = $this->_reqG('fname');
 
         public_download($file_path, $file_name);
+    }
+
+    private function _getBoardForContent($content, $file_path, $file_name, $cnt = 7)
+    {
+        $arr_file_path = explode(',', $file_path);
+        $arr_file_name = explode(',', $file_name);
+
+        $tmp_images = '';
+        for ($i=0; $i<$cnt; $i++) {
+            if (empty($arr_file_path[$i]) === false) {
+                $tmp_images .= make_image_tag($arr_file_path[$i] . $arr_file_name[$i]);
+            }
+        }
+        return $tmp_images . $content;
     }
 }

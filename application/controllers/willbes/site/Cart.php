@@ -5,8 +5,8 @@ class Cart extends \app\controllers\FrontController
 {
     protected $models = array('order/cartF', 'product/packageF', 'order/orderListF');
     protected $helpers = array();
-    protected $auth_controller = true;
-    protected $auth_methods = array();
+    protected $auth_controller = false;
+    protected $auth_methods = array('index', 'info', 'checkStudentBook', 'toOrder', 'store', '_getAddNormalData', '_getAddPatternData', 'destroy'); // checkProduct() 로그인 체크 제외. 2019-10-23 최형진
 
     public function __construct()
     {

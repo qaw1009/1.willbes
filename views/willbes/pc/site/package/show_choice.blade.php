@@ -517,6 +517,7 @@
 
             // 장바구니, 바로결제 버튼 클릭
             $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                 var $is_direct_pay = $(this).data('direct-pay');
 
                 //필수강좌 체크 여부

@@ -706,7 +706,7 @@ select[disabled] {
 }
 
 .ml-zero {
-  margin-left: 0 !important;
+  margin-left: 0 !important; 
 }
 .ml5 {
   margin-left: 5px !important;
@@ -794,6 +794,9 @@ select[disabled] {
 
 .pl-zero {
   padding-left: 0px !important;
+}
+.pl5 {
+  padding-left: 5px !important;
 }
 .pl10 {
   padding-left: 10px !important;
@@ -931,6 +934,8 @@ select[disabled] {
 .valign-base {
   vertical-align: baseline;
 }
+.tx-spacing {letter-spacing: -1px !important}
+
 .p_re {
   position: relative;
 }

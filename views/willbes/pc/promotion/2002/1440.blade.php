@@ -64,21 +64,21 @@
             -->
 
             <div class="skyBanner">
-                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/10/1440_skybanner.jpg" title="올인원 합격전략설명회"></a>                                  
+                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/10/1440_skybanner.jpg"></a>                                  
             </div>
             <div class="evtCtnsBox top_police">
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1310_police.jpg" title="신광은 경찰팀">
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1310_police.jpg" title="경찰학원 1위">
             </div>
             <div class="evtCtnsBox evtTop">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_top.jpg" title="설명회">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_top.jpg" title="광은 프리 데이">
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_01.jpg" title="스폐셜 프로그램">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_01.jpg" title="스케줄">
             </div>
 
             <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_02.jpg" title="할인이벤트 진행">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_02.jpg" title="신청접수">
                 <div class="request" id="request">
                     <div class="requestL">
                         <h3 class="NGEBS">* 광은 FREE DAY 신청접수</h3>
@@ -165,11 +165,11 @@
                 </div>
             </div>
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_01.jpg" title=""/><br>
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_02.jpg" title=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_01.jpg" title="소문내기 이벤트"/><br>
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_02.jpg" title="네이버 이벤트"/>
             </div>
             <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_04.jpg" title=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_04.jpg" title="학원위치"/>
             </div>
         </form>
 	</div>

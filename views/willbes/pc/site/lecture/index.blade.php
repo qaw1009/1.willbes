@@ -257,7 +257,7 @@
                                 <colgroup>
                                     <col style="width: 75px;">
                                     <col style="width: 85px;">
-                                    <col style="width: 490px;">
+                                    <col>
                                     <col style="width: 290px;">
                                 </colgroup>
                                 <tbody>
@@ -316,7 +316,7 @@
                                                         @if($row['IsCart'] == 'Y' || $pattern == 'free')
                                                             <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
                                                         @else
-                                                            <span class="chkBox" style="width: 14px;"></span>
+                                                            <span class="chkBox" style="width:14px;"></span>
                                                         @endif
                                                         <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
                                                         <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>

@@ -199,6 +199,8 @@ class OffLecture extends \app\controllers\FrontController
         // 상품 강의 목차
         $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prod_code);
 
+        $data['ProfReferData'] = json_decode($data['ProfReferData'], true);
+
         $this->load->view('site/off_lecture/show', [
             'learn_pattern' => $this->_learn_pattern,
             'data' => $data

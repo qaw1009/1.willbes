@@ -2712,7 +2712,7 @@ table.auTable tr td {
     font-size: 14px;
     color: #2c2c2c;
 }
- .w-tit {
+.w-tit {
     letter-spacing: 0 !important;
     line-height: 1.5;
 }
@@ -2894,10 +2894,10 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     margin: 0 auto 10px;
 }
 .w-sp.one {
-    float: right;
-    right: 26px;
+    /*float: right;
+    right: 26px;*/
     width: 64px;
-    margin: -8px 26px 0 0;
+    margin: -8px auto 0;
 }
 .w-sp li {
     float: left;

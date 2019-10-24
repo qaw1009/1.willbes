@@ -200,9 +200,7 @@
                                                     <td class="w-img"><img src="{{$prof_img['lec_list_img'] or  ''}}"></td>
                                                     <td class="w-data tx-left pl25">
                                                         <dl class="w-info">
-                                                            <dt class="w-name">{{$sub_row['ProfNickName']}}</dt>
-                                                            <dt><span class="row-line">|</span></dt>
-                                                            <dt class="w-tit">{{ $sub_row['ProdName'] }}</dt>
+                                                            <dt class="w-tit">{{$sub_row['ProfNickName']}}<span class="row-line">|</span>{{ $sub_row['ProdName'] }}</dt>
                                                         </dl>
                                                         <dl class="w-info">
                                                             <dt class="mr20">
@@ -290,9 +288,7 @@
                                                         <td class="w-img"><img src="{{$prof_img['lec_list_img'] or  ''}}"></td>
                                                         <td class="w-data tx-left pl25">
                                                             <dl class="w-info">
-                                                                <dt class="w-name">{{$sub_row['ProfNickName']}}</dt>
-                                                                <dt><span class="row-line">|</span></dt>
-                                                                <dt class="w-tit">{{ $sub_row['ProdName'] }}</dt>
+                                                                <dt class="w-tit">{{$sub_row['ProfNickName']}}<span class="row-line">|</span>{{ $sub_row['ProdName'] }}</dt>
                                                             </dl>
                                                             <dl class="w-info">
                                                                 <dt class="mr20">

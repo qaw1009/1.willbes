@@ -3505,7 +3505,7 @@ table.profTable tr td .priceWrap {
 .willbes-Buy-List table.lecTable .MoreBtn {
     float: inherit;
     position: relative;
-    top: 0;
+    top: -10px;
     left: 0;
     right: 0;
 }
@@ -9950,15 +9950,14 @@ table.acadlecInfoPackageTable tr.Top td {
     border-top: 1px solid #c9c9c9;
 }
 .w-notice .acadInfo {
-    /*float: left;*/
+    display: inline-block;
+    padding:0 6px;
+    height: 15px;
     font-size: 10px;
-    font-weight: 300;
     color: #fff;
     text-align: center;
-    line-height: 16px;
-    width: 60px;
-    /*margin-right: 70px;*/
-    margin: 0 auto 5px;
+    line-height: 15px;
+    margin: 0 1px 0 0;
     border-radius: 10px;
 }
 .w-notice .acadInfo.n1 {

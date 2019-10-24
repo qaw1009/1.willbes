@@ -446,24 +446,22 @@ class BasePromotion extends \app\controllers\FrontController
 
     public function promotionEventCheck()
     {
-        //제공구분 : 포인트, 쿠폰
-        $give_type = $this->_req('give_type');
-        //제공식별자 : 쿠폰식별자
-        $give_idx = $this->_req('give_idx');
 
-        //다건 쿠폰 중복체크 여부 : Y,N
-        $give_overlap_chk = $this->_req('give_overlap_chk');
+        $give_type = $this->_req('give_type');  //제공구분 : 포인트, 쿠폰
+        $give_idx = $this->_req('give_idx');    //제공식별자 : 쿠폰식별자
+        $give_overlap_chk = $this->_req('give_overlap_chk');    //다건 쿠폰 중복체크 여부
+        $comment_chk_yn = $this->_req('comment_chk_yn');    //댓글참여 확인 여부
+        $regist_chk_yn = $this->_req('regist_chk_yn');    //프로모션 참여 확인 여부
+        $el_idx = (int)$this->_req('event_code');   //이벤트식별자
+        $limit_count = 1;   //발급 제한 갯수
+        $result = null;
 
-        //댓글참여 확인 여부
-        $comment_chk_yn = $this->_req('comment_chk_yn');
-        //발급 제한 갯수
-        $limit_count = 1;
-        
-        //이벤트식별자
-        $el_idx = (int)$this->_req('event_code');
+        if(empty($give_type)) {
+            return $this->json_error('정보가 존재하지 않습니다.');
+        }
 
         // 댓글 참여 여부 확인
-        if(empty($comment_chk_yn) || $comment_chk_yn == 'Y'){
+        if(empty($comment_chk_yn) || $comment_chk_yn == 'Y') {
             $arr_condition = [
                 'EQ' => [
                     'a.MemIdx' => $this->session->userdata('mem_idx'),
@@ -478,11 +476,14 @@ class BasePromotion extends \app\controllers\FrontController
             }
         }
 
-        if(empty($give_type)) {
-            return $this->json_error('정보가 존재하지 않습니다.');
+        // *** 프로모션 신청여부 확인 ***
+        if(empty($regist_chk_yn) === false && $regist_chk_yn == 'Y') {
+            if ($this->eventFModel->getMemberForRegisterCount($el_idx, ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx')]]) == 0) {
+                return $this->json_error('이벤트를 먼저 신청해 주세요.');
+            }
         }
 
-        //*** 쿠폰 발급 체크 ***
+        // *** 쿠폰 발급 체크 ***
         if($give_type === 'coupon' || (empty($give_overlap_chk) === false && empty($give_overlap_chk) === 'N')) {
             if(empty($give_idx)) {
                 return $this->json_error('정보가 존재하지 않습니다.');
@@ -493,30 +494,30 @@ class BasePromotion extends \app\controllers\FrontController
                     return $this->json_error('이미 발급받은 쿠폰이 존재합니다.');
                 }
             }
-        }else if($give_type === 'coupons'){
+            $result = $this->_addPromotionCoupon($give_type, $give_idx);
+
+        } else if($give_type === 'coupons') {
             //다건 쿠폰 선택
             $arr_give_idx_chk = $this->_req('arr_give_idx_chk'); //체크할 쿠폰식별자. 콤마(,)붙인 형식으로 전송
-
-            if(empty($give_idx)) {
-                return $this->json_error('정보가 존재하지 않습니다.');
-            }else{
-                try {
-                    //한개 쿠폰 허용
-                    $arr_give_idx = explode(',', $arr_give_idx_chk);
-                    foreach($arr_give_idx as $key => $val){
-                        $check = $this->couponFModel->checkIssueCoupon($val);
-                        if((int)$check >= $limit_count) {
-                            return $this->json_error('이미 발급받은 쿠폰이 존재합니다.');
-                        }
+            try {
+                //한개 쿠폰 허용
+                $arr_give_idx = explode(',', $arr_give_idx_chk);
+                foreach($arr_give_idx as $key => $val) {
+                    $check = $this->couponFModel->checkIssueCoupon($val);
+                    if((int)$check >= $limit_count) {
+                        return $this->json_error('이미 발급받은 쿠폰이 존재합니다.');
                     }
-                } catch (\Exception $e) {
-                    return $this->json_error('쿠폰 체크 정보가 잘못 되었습니다.');
                 }
+
+                foreach($arr_give_idx as $key => $val) {
+                    $result = $this->_addPromotionCoupon('coupon', $val);
+                }
+            } catch (\Exception $e) {
+                return $this->json_error('쿠폰 발급 도중 오류가 발생 하였습니다.');
             }
-            $give_type = 'coupon'; //최종 쿠폰모델은 coupon으로 들어가야함.
         }
 
-        return $this->_addPromotionCoupon($give_type, $give_idx);
+        return $result;
     }
 
     /**

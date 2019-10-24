@@ -64,10 +64,11 @@
                 <area shape="rect" coords="798,772,970,831" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157368" target="_blank" alt="5개월 특채" />
             </map>
         </div>
-
+        {{--
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_03.jpg" title="소방설명회" />
         </div>
+        --}}
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_04.jpg" title="10월 테스트 일정" />

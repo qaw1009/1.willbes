@@ -261,9 +261,9 @@
                                 <col style="width: 85px;">
                                 <col style="width: 85px;">
                                 <col width="*">
-                                <col style="width: 140px;">
-                                <col style="width: 100px;">
-                                <col style="width: 140px;">
+                                <col style="width: 120px;">
+                                <col style="width: 70px;">
+                                <col style="width: 130px;">
                             </colgroup>
                             <tbody>
                                 <tr>
@@ -275,7 +275,7 @@
                                             <a href="#none" onclick="goShowOff('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}');" class="prod-name">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info">
-                                            <dt  class="mr20">
+                                            <dt>
                                                 <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1', '{{ front_url('/offLecture') }}')">
                                                     <strong class="open-info-modal">강좌상세정보</strong>
                                                 </a>
@@ -285,11 +285,11 @@
                                             <dt class="ml15">
                                                 <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{ $row['StudyApplyCcdName'] }}</span>
                                             </dt>
-                                        </dl><br/>
+                                        </dl>
                                     </td>
                                     <td class="w-schedule">
                                         <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> <br/>
-                                        {{ $row['WeekArrayName'] }} ({{ $row['Amount'] }}회차)
+                                        <span class="tx11">{{ $row['WeekArrayName'] }}<br/>({{ $row['Amount'] }}회차)</span>
                                     </td>
                                     <td>
                                         <ul class="lecBuyBtns">
@@ -309,11 +309,11 @@
 
                                             @if($row['IsSalesAble'] == 'Y')
                                                 @if($row['StudyApplyCcd'] != '654002')
-                                                    <li><a href="#none" class="btnVisit btn-off-visit-pay" data-prod-code="{{ $row['ProdCode'] . ':' . $saletypeccd . ':' . $row['ProdCode'] }}">방문결제</a></li>
+                                                    <li class="btnVisit btn-off-visit-pay"><a href="#none" data-prod-code="{{ $row['ProdCode'] . ':' . $saletypeccd . ':' . $row['ProdCode'] }}">방문결제</a></li>
                                                 @endif
                                                 @if($row['StudyApplyCcd'] != '654001')
-                                                    <li><a href="#none" class="btnCart" name="btn_off_cart" data-direct-pay="N" data-is-redirect="Y" data-prod-code="{{ $row['ProdCode'] }}">장바구니</a></li>
-                                                    <li><a href="#none" class="btnBuy" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-prod-code="{{ $row['ProdCode'] }}">바로결제</a></li>
+                                                    <li class="btnCart"><a href="#none" name="btn_off_cart" data-direct-pay="N" data-is-redirect="Y" data-prod-code="{{ $row['ProdCode'] }}">장바구니</a></li>
+                                                    <li class="btnBuy"><a href="#none" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-prod-code="{{ $row['ProdCode'] }}">바로결제</a></li>
                                                 @endif
                                             @endif
                                         </ul>

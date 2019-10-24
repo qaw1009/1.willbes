@@ -2552,6 +2552,7 @@ table.auTable tr td {
     font-size: 11px;
 }
 .pocketBox {
+    display:none;
     background: #fff;
     position: absolute;
     top: 0;
@@ -2563,6 +2564,7 @@ table.auTable tr td {
     line-height: 20px;
     border: 1px solid #2f2f2f;
     padding: 30px 25px;
+    z-index: 10;
 }
 .pocketBox .closeBtn {
     position: absolute;
@@ -2824,37 +2826,67 @@ table.lecTable tr td .MoreBtn {
     margin-top:10px;  
 }
 table.lecTable tr td .lecBuyBtns li {
-    margin-bottom:5px;
-}
-table.lecTable tr td .lecBuyBtns li a {
+    position: relative;
     display:block;
     width: 60px;
-    margin:0 auto;
+    margin:0 auto 5px;
     font-size: 11px;
     padding:3px 0;
     color: #1a8ccc;
     text-align: center;
     border:1px solid #1a8ccc;
 }
-table.lecTable tr td .lecBuyBtns li a.btnCart {
+table.lecTable tr td .lecBuyBtns li.btnCart {
     border:1px solid #7d7e85;
     color:#fff;
     background:#7d7e85;
 }
-table.lecTable tr td .lecBuyBtns li a.btnVisit {
+table.lecTable tr td .lecBuyBtns li.btnVisit {
     border:1px solid #1a8ccc;
     color:#1a8ccc;
 }
-table.lecTable tr td .lecBuyBtns li a.btnBuy {
+table.lecTable tr td .lecBuyBtns li.btnBuy {
     color:#fff;
     background:#1a8ccc;
 }
-table.lecTable tr td .lecBuyBtns li a:hover {
+table.lecTable tr td .lecBuyBtns li:hover {
     border:1px solid #000;
     color:#fff;
     background:#000;
 }
-
+table.lecTable tr td .lecBuyBtns .pocketBox {
+    background: #fff;
+    position: absolute;
+    top: -1px;
+    left: -280px;
+    width: 275px;
+    font-size: 13px;
+    color: #3a3a3a;
+    text-align: center;
+    line-height: 20px;
+    border: 1px solid #2f2f2f;
+    padding: 30px 25px;
+    z-index: 10;
+}
+table.lecTable tr td .lecBuyBtns .pocketBox .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 11px;
+    heighT: 11px;
+    line-height: 9px;
+}
+table.lecTable tr td .lecBuyBtns .pocketBox .aBox {
+   width: 57px;
+   height: 23px; 
+   border:none;
+}
+table.lecTable tr td .lecBuyBtns .pocketBox .aBox a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
 
 
 table.lecTable tr td.w-schedule {
@@ -2972,7 +3004,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     position: absolute;
     top: 30px;
     left: 50%;
-    margin-left:-91px;
+    margin-left:-128px;
     z-index: 10;
     background: #fff;
     width: 192px;
@@ -6804,7 +6836,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     padding-bottom: 10px;
 }
 .aBox {
-    display: inline-block;
+    display: inline-block !important;
     width: 60px;
     height: 22px;
     font-size: 12px;
@@ -6829,19 +6861,19 @@ ul li.profList .willbes-Layer-ProfileBox {
     background: #fff;
 }
 .waitBox_block {
-    border: 1px solid #4b4b51;
-    color: #4b4b51;
-    background: #fff;
+    border: 1px solid #4b4b51 !important;
+    color: #4b4b51 !important;
+    background: #fff !important;
 }
 .answerBox_block {
-    border: 1px solid #4b4b51;
-    color: #fff;
-    background: #4b4b51;
+    border: 1px solid #4b4b51 !important;
+    color: #fff !important;
+    background: #4b4b51 !important;
 }
 .closeBox_block {
-    border: 1px solid #333;
-    color: #fff;
-    background: #333;
+    border: 1px solid #333 !important;
+    color: #fff !important;
+    background: #333 !important;
 }
 .cancelBox_block {
     border: 1px solid #c9c9c9;

@@ -349,8 +349,22 @@
                             </td>
                             <td>
                                 <ul class="lecBuyBtns">
-                                    <li><a href="#none" class="btnCart">장바구니</a></li>                                    
-                                    <li><a href="#none" class="btnBuy">바로결제</a></li>
+                                    <li class="btnCart">
+                                        <a onclick="openWin('pocketBox')" >장바구니</a>
+                                        <div id="pocketBox" class="pocketBox">
+                                            <a class="closeBtn" href="#none" onclick="closeWin('pocketBox')">
+                                                <img src="{{ img_url('cart/close.png') }}">
+                                            </a>
+                                            해당 상품이 장바구니에 담겼습니다.<br/>
+                                            장바구니로 이동하시겠습니까?
+                                            <ul class="NSK mt20">
+                                                <li class="aBox answerBox_block"><a href="#none">예</a></li>
+                                                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+                                                <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('pocketBox')">닫기</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>                                    
+                                    <li class="btnBuy"><a href="#none">바로결제</a></li>
                                 </ul>
                             </td>
                             <td class="w-notice p_re">
@@ -426,9 +440,7 @@
             </div>
             <!-- willbes-Lec-Table -->
 
-            <div class="willbes-Lec-Table">
-                
-            
+            <div class="willbes-Lec-Table">               
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
                         <col style="width: 75px;">
@@ -465,8 +477,8 @@
                             </td>
                             <td>
                                 <ul class="lecBuyBtns">
-                                    <li><a href="#none" class="btnCart">장바구니</a></li>                                    
-                                    <li><a href="#none" class="btnBuy">바로결제</a></li>
+                                    <li class="btnCart"><a href="#none">장바구니</a>                                  
+                                    <li class="btnBuy"><a href="#none">바로결제</a></li>
                                 </ul>
                             </td>
                             <td class="w-notice p_re">
@@ -594,9 +606,8 @@
                             </td>
                             <td>
                                 <ul class="lecBuyBtns">
-                                    <li><a href="#none" class="btnCart">장바구니</a></li>
-                                    
-                                    <li><a href="#none" class="btnBuy">바로결제</a></li>
+                                    <li class="btnCart"><a href="#none">장바구니</a>                                  
+                                    <li class="btnBuy"><a href="#none">바로결제</a></li>
                                 </ul>
                             </td>
                             <td class="w-notice p_re">
@@ -702,8 +713,8 @@
                             </td>
                             <td>
                                 <ul class="lecBuyBtns">
-                                    <li><a href="#none" class="btnCart">장바구니</a></li>                                    
-                                    <li><a href="#none" class="btnBuy">바로결제</a></li>
+                                    <li class="btnCart"><a href="#none">장바구니</a>                                  
+                                    <li class="btnBuy"><a href="#none">바로결제</a></li>
                                 </ul>
                             </td>
                             <td class="w-notice p_re">
@@ -774,8 +785,8 @@
                             </td>
                             <td>
                                 <ul class="lecBuyBtns">
-                                    <li><a href="#none" class="btnCart">장바구니</a></li>                                    
-                                    <li><a href="#none" class="btnBuy">바로결제</a></li>
+                                    <li class="btnCart"><a href="#none">장바구니</a>                                  
+                                    <li class="btnBuy"><a href="#none">바로결제</a></li>
                                 </ul>
                             </td>
                             <td class="w-notice p_re">
@@ -1009,6 +1020,7 @@
     </div>
 </div>
 
+{{--
 <div class="willbes-Lec-buyBtn-sm NG">
     <div>
         <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">
@@ -1032,7 +1044,7 @@
             <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('pocketBox')">닫기</a></li>
         </ul>
     </div>
-    <!-- 팝업노출 다른 내용
+    <!-- 팝업노출 다른 내용-->
     <div id="pocketBox" class="pocketBox" style="display: none;">
         해당 상품이 신청되었습니다.<br/>
         강좌는 내강의실에서 수강가능합니다.
@@ -1048,9 +1060,9 @@
             <li class="aBox answerBox_block"><a href="#none">예</a></li>
             <li class="aBox waitBox_block"><a href="#none">아니오</a></li>
         </ul>
-    </div>
-    -->
+    </div>    
 </div>
+--}}
 
 <!-- End Container -->
 @stop

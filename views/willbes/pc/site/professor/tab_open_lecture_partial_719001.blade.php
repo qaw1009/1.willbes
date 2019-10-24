@@ -101,7 +101,7 @@
                     </td>
                     <td class="w-notice p_re">
                         @if( empty($row['LectureSampleData']) === false)
-                            <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
+                            <div class="w-sp"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
                             <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
                                 <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                 @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
@@ -115,16 +115,18 @@
                         @endif
                         @if(empty($row['ProdPriceData']) === false)
                             @foreach($row['ProdPriceData'] as $price_idx => $price_row)
-                                <div class="priceWrap chk buybtn p_re">
-                                    @if($row['IsCart'] == 'Y' || $pattern == 'free')
-                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
-                                    @else
-                                        <span class="chkBox" style="width: 14px;"></span>
-                                    @endif
-                                    <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
-                                    <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                    <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                </div>
+                                <ul class="priceWrap">
+                                    <li>
+                                        @if($row['IsCart'] == 'Y' || $pattern == 'free')
+                                            <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
+                                        @else
+                                            <span class="chkBox" style="width: 14px;"></span>
+                                        @endif
+                                        <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
+                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                    </li>
+                                </ul>
                             @endforeach
                         @endif
                         <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>

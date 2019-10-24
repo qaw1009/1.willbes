@@ -165,7 +165,10 @@
                 </div>
             </div>
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_01.jpg" title="소문내기 이벤트"/><br>
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_01.jpg" usemap="#Map1440A" title="소문내기 이벤트" border="0"/><br>
+                <map name="Map1440A" id="Map1440A">
+                    <area shape="rect" coords="353,1149,767,1254" href="#none" target="_blank" title="실강쿠폰받기" />
+                </map>
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_02.jpg" title="네이버 이벤트"/>
             </div>
             <div class="evtCtnsBox evt04">

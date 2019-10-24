@@ -41,7 +41,7 @@
         .evt02 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#e74e21; padding:20px 0; margin-top:50px; border-radius:50px}
         .evt02 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2); background:#000;}
         .evt02 .NGEBS{font-weight:bold;}
-        .evt03 {background:#fff; padding:100px 0 0} 
+        .evt03 {background:#fff;} 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1440_04_bg.jpg) no-repeat center top;}
 
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
@@ -166,7 +166,10 @@
             </div>
 
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_01.jpg" title="소문내기 이벤트"/><br>
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_01.jpg" usemap="#Map1441A" title="소문내기 이벤트" border="0"/><br>
+                <map name="Map1441A" id="Map1441A">
+                    <area shape="rect" coords="353,1149,767,1254" href="#none" target="_blank" title="실강쿠폰받기" />
+                </map>
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_02.jpg" title="네이버 이벤트"/>
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1441_03_01.jpg" usemap="#Map1441" title="" border="0"/>
                 <map name="Map1441" id="Map1441">

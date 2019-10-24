@@ -3937,6 +3937,7 @@ table.classTable tr td.w-data {
 .LeclistTable .listTable tr td.w-list a {
     display: block;
 }
+.LeclistTable .listTable tr td.w-lec { text-align: left;}
 .LeclistTable .listTable .w-chk input[type="checkbox"] {
     cursor: pointer;
 }

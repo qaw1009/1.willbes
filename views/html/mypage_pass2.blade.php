@@ -387,13 +387,13 @@
                 <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                     <colgroup>
                         <col style="width: 80px;">
-                        <col style="width: 200px;">
-                        <col style="width: 90px;">
-                        <col style="width: 90px;">
-                        <col style="width: 120px;">
-                        <col style="width: 100px;">
-                        <col style="width: 155px;">
-                        <col style="width: 105px;">
+                        <col>
+                        <col style="width: 80px;">
+                        <col style="width: 50px;">
+                        <col style="width: 70px;">
+                        <col style="width: 70px;">
+                        <col style="width: 130px;">
+                        <col style="width: 70px;">
                     </colgroup>
                     <thead>
                         <tr>
@@ -410,7 +410,10 @@
                     <tbody>
                         <tr>
                             <td class="w-no">1강</td>
-                            <td class="w-lec">강의명이 출력됩니다.</td>
+                            <td class="w-lec">
+                            강의명이 출력됩니다.
+                            <p>[설명] 족보 p.8</p>
+                            </td>
                             <td class="w-page">10p~15p</td>
                             <td class="w-file">
                                 <a href="#none"><img src="{{ img_url('prof/icon_down.png') }}"></a>

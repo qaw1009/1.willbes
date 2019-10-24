@@ -2707,7 +2707,7 @@ table.auTable tr td {
 .w-info .row-line {
     background: #b5b5b5;
     width: 1px;
-    height: 12px;
+    height: 13px;
     margin: 0 10px -3px;
 }
 .w-info .w-name {
@@ -2718,6 +2718,7 @@ table.auTable tr td {
     letter-spacing: 0 !important;
     line-height: 1.5;
 }
+
 .w-info.passzone {
     line-height: 20px !important;
     padding: 20px 0;

@@ -3434,10 +3434,11 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     position: absolute;
     bottom: 30px;
     left: 0;
+    width: 100%;
 }
 .lec-profile .all-view {
     float: right;
-    width: 125px;
+    margin-right:20px;
 }
 .lec-profile .all-view a {
     width: 140px;

@@ -64,21 +64,21 @@
             -->
 
             <div class="skyBanner">
-                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/10/1440_skybanner.jpg" title="올인원 합격전략설명회"></a>                                  
+                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/10/1440_skybanner.jpg"></a>                                  
             </div>
             <div class="evtCtnsBox top_police">
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1310_police.jpg" title="신광은 경찰팀">
+                <img src="https://static.willbes.net/public/images/promotion/2019/07/1310_police.jpg" title="경찰학원 1위">
             </div>
             <div class="evtCtnsBox evtTop">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_top.jpg" title="설명회">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_top.jpg" title="광은 프리 데이">
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_01.jpg" title="스폐셜 프로그램">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_01.jpg" title="스케줄">
             </div>
 
             <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_02.jpg" title="할인이벤트 진행">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_02.jpg" title="신청접수">
                 <div class="request" id="request">
                     <div class="requestL">
                         <h3 class="NGEBS">* 광은 FREE DAY 신청접수</h3>
@@ -166,11 +166,13 @@
             </div>
 
             <div class="evtCtnsBox evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_01.jpg" title="소문내기 이벤트"/><br>
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_02.jpg" title="네이버 이벤트"/>
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1441_03_01.jpg" usemap="#Map1441" title="" border="0"/>
                 <map name="Map1441" id="Map1441">
-                    <area shape="rect" coords="702,1624,780,1728" href="https://www.instagram.com" target="_blank" alt="인스타그램" />
-                    <area shape="rect" coords="793,1624,871,1728" href="https://twitter.com" target="_blank" alt="트위터" />
-                    <area shape="rect" coords="880,1624,963,1728" href="httpp://www.facebook.com" target="_blank" alt="페이스북" />
+                    <area shape="rect" coords="701,55,781,160" href="https://www.instagram.com" target="_blank" alt="인스타그램" />
+                    <area shape="rect" coords="791,55,873,160" href="https://twitter.com" target="_blank" alt="트위터" />
+                    <area shape="rect" coords="883,55,963,160" href="httpp://www.facebook.com" target="_blank" alt="페이스북" />
                 </map>
             </div>
 

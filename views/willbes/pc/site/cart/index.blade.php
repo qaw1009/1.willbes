@@ -18,7 +18,7 @@
         <div class="pocketDetailWrap pt40">
             <ul class="tabWrap tabDepth1 NG">
                 <li><a id="hover_lecture" href="#lecture" class="">강좌</a></li>
-                <li><a id="hover_book" href="#book" class="{{ $lecture_key == 'off_lecture' ? 'd_none' : '' }}">교재</a></li>
+                <li><a id="hover_book" href="#book" class="">교재</a></li>
             </ul>
             <div class="tabBox">
                 <div id="lecture" class="tabLink">

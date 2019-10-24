@@ -235,6 +235,8 @@
             <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
+            <div class="willbes-Lec-Subject tx-dark-black"><span class="MoreBtn"><a href="#none">교제정보 <span>전체보기 ▼</span></a></span></div>
+
         {{-- 과목별 상품 리스트 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both mt20">
@@ -252,15 +254,16 @@
 
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                     <a name="{{ $row['ProdCode'] }}"></a>
-                    <div class="willbes-Lec-Table">
-                        <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
+                    <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
+                        <table cellspacing="0" cellpadding="0" class="lecTable">
                             <colgroup>
-                                <col style="width: 75px;">
-                                <col style="width: 95px;">
-                                <col style="width: 75px;">
-                                <col>
-                                <col style="width: 165px;">
-                                <col style="width: 185px;">
+                                <col style="width: 65px;">
+                                <col style="width: 85px;">
+                                <col style="width: 85px;">
+                                <col width="*">
+                                <col style="width: 140px;">
+                                <col style="width: 100px;">
+                                <col style="width: 140px;">
                             </colgroup>
                             <tbody>
                                 <tr>
@@ -268,13 +271,14 @@
                                     <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                                     <td class="w-list">{{ $row['CourseName'] }}</td>
                                     <td class="w-data tx-left">
-                                        <div class="w-tit w-acad-tit">{{ $row['ProdName'] }}</div>
-                                        <dl class="w-info acad">
-                                            <dt>
-                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ front_url('/offLecture') }}')">
+                                        <div class="w-tit w-acad-tit">
+                                            <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}');" class="prod-name">{{ $row['ProdName'] }}</a>
+                                        </div>
+                                        <dl class="w-info">
+                                            <dt  class="mr20">
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1', '{{ front_url('/offLecture') }}')">
                                                     <strong class="open-info-modal">강좌상세정보</strong>
                                                 </a>
-                                                <!--a href="#none"><strong>강좌상세정보</strong></a//-->
                                             </dt>
                                             <dt><span class="row-line">|</span></dt>
                                             <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
@@ -287,43 +291,86 @@
                                         <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> <br/>
                                         {{ $row['WeekArrayName'] }} ({{ $row['Amount'] }}회차)
                                     </td>
+                                    <td>
+                                        <ul class="lecBuyBtns">
+                                            @php
+                                                if(empty($row['ProdPriceData']) == false) {
+                                                    $saletypeccd = $row['ProdPriceData'][0]['SaleTypeCcd'];
+                                                    $salerate = $row['ProdPriceData'][0]['SaleRate'];
+                                                    $salerateunit = $row['ProdPriceData'][0]['SaleRateUnit'];
+                                                    $realsaleprice = $row['ProdPriceData'][0]['RealSalePrice'];
+                                                } else {
+                                                    $saletypeccd = '';
+                                                    $salerate = '';
+                                                    $salerateunit = '';
+                                                    $realsaleprice = 0;
+                                                }
+                                            @endphp
+
+                                            @if($row['IsSalesAble'] == 'Y')
+                                                @if($row['StudyApplyCcd'] != '654002')
+                                                    <li><a href="#none" class="btnVisit btn-off-visit-pay" data-prod-code="{{ $row['ProdCode'] . ':' . $saletypeccd . ':' . $row['ProdCode'] }}">방문결제</a></li>
+                                                @endif
+                                                @if($row['StudyApplyCcd'] != '654001')
+                                                    <li><a href="#none" class="btnCart" name="btn_off_cart" data-direct-pay="N" data-is-redirect="Y" data-prod-code="{{ $row['ProdCode'] }}">장바구니</a></li>
+                                                    <li><a href="#none" class="btnBuy" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-prod-code="{{ $row['ProdCode'] }}">바로결제</a></li>
+                                                @endif
+                                            @endif
+                                        </ul>
+                                    </td>
                                     <td class="w-notice p_re">
                                         <div class="acadInfo NGR n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
-                                        @if(empty($row['ProdPriceData']) === false)
-                                            @foreach($row['ProdPriceData'] as $price_idx => $price_row)
-                                                <div class="priceWrap chk buybtn p_re">
-                                                    <span class="price tx-blue">
-                                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N' || $row['StudyApplyCcd'] == '654001' ) disabled="disabled" @endif/></span>
-                                                        {{ number_format($price_row['RealSalePrice'], 0) }}원
-                                                    </span>
-                                                    <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                                </div>
-                                            @endforeach                                        
-                                        @endif
-
-                                        {{-- 방문결제 버튼 --}}
-                                        @if($row['StudyApplyCcd'] != '654002' && $row['IsSalesAble'] == 'Y')
-                                            <div class="visitBuy"><a href="#none" class="btn-off-visit-pay" data-prod-code="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}">방문결제</a></div>
-                                        @endif
+                                            <div class="priceWrap chk buybtn p_re">
+                                                <span class="price tx-blue">
+                                                    <span class="chkBox d_none"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $saletypeccd. ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N' || $row['StudyApplyCcd'] == '654001' ) disabled="disabled" @endif/></span>
+                                                    {{ number_format($realsaleprice, 0) }}원
+                                                </span>
+                                                <span class="discount">(↓{{ $salerate . $salerateunit }})</span>
+                                            </div>
+                                        <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <!-- lecTable -->
-                        {{--<table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="w-tit tx-black">▷ 강좌정보</div>
-                                    <div class="w-txt">
-                                        <strong>{{ $row['ProdName'] }}</strong><br/>
-                                        {!! $row['Content'] !!}<br/>
-                                        * 강의일정은 학원 사정으로 인하여 추후 변동될 수 있습니다.<br/>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>--}}
+                        <div class="lecInfoTable bookInfoTable">
+                            @if(empty($row['ProdBookData']) === false)
+                                <ul>
+                                    @foreach($row['ProdBookData'] as $book_idx => $book_row)
+                                        <li>
+                                            <div class="b-obj">
+                                                <span>{{ $book_row['BookProvisionCcdName'] }}</span>
+                                                {{ $book_row['ProdBookName'] }}
+                                            </div>
+                                            <div class="bookBuyBtns">
+                                                @if($book_row['wSaleCcd'] == '112001')
+                                                    <a href="#none" class="btnCart" name="btn_off_cart" data-direct-pay="N" data-is-redirect="Y" data-prod-code="{{ $book_row['ProdBookCode']  }}">장바구니</a>
+                                                    <a href="#none" class="btnBuy" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-prod-code="{{ $book_row['ProdBookCode']  }}">바로결제</a>
+                                                @endif
+                                            </div>
+                                            <div class="bookbuyInfo">
+                                                <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003'){{'tx-red'}}@elseif($book_row['wSaleCcd'] == '112004'){{'tx-purple-gray'}}@endif">
+                                                [{{ $book_row['wSaleCcdName'] }}]</label>
+                                                <span class="d_none">
+                                                    <input type="checkbox" name="prod_code[]"  value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                </span>
+                                                <span class="tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                                <span class="tx-dark-gray">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <div class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                <div>
+                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ front_url('/offLecture') }}')">
+                                        <strong>교재상세정보</strong></a>
+                                </div>
+                            @else
+                                <div>
+                                    <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
+                                </div>
+                            @endif
+                        </div>
                         <!-- lecInfoTable -->
                     </div>
                     <!-- willbes-Lec-Table -->
@@ -331,18 +378,6 @@
             </div>
             <!-- willbes-Lec -->
         @endforeach
-
-            <div class="mb60"></div>
-            <div class="willbes-Lec-buyBtn">
-                <ul>
-                    <li class="btnAuto180 h36">
-                        <button type="submit" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
-                            <span class="tx-light-blue">바로결제</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <!-- willbes-Lec-buyBtn -->
 
             <div id="InfoForm" class="willbes-Layer-Box d3"></div>
         </form>

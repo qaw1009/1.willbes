@@ -127,16 +127,15 @@
                             return true;
                         }
 
-                        {{--장바구니, 바로결제 버튼 클릭--}}
+                    {{--장바구니, 바로결제 버튼 클릭--}}
                     } else {
                         var $is_direct_pay = $(this).data('direct-pay');
                         cartNDirectPay($regi_off_form, $is_direct_pay, 'Y');
                     }
                 });
 
-            } else {
+            } else { {{--교수 소개 페이지 내 단과반 클릭시--}}
 
-                {{--교수 소개 페이지 내 단과반 클릭시--}}
                 $regi_off_form.on('change', '.chk_products', function() {
                     showBuyLayer('off', $(this), 'buy_off_layer');
                     setCheckOffLectureProduct($regi_off_form, $(this));
@@ -198,7 +197,7 @@
     /**
      * 상세 페이지 이동
      */
-    function goShow(prod_code, cate_code) {
+    function goShowOff(prod_code, cate_code) {
         location.href = '{{ front_url('/offLecture/show') }}/cate/' + cate_code + '/prod-code/' + prod_code;
     }
 </script>

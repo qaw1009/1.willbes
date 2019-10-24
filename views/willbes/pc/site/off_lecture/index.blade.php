@@ -272,7 +272,7 @@
                                     <td class="w-list">{{ $row['CourseName'] }}</td>
                                     <td class="w-data tx-left">
                                         <div class="w-tit w-acad-tit">
-                                            <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}');" class="prod-name">{{ $row['ProdName'] }}</a>
+                                            <a href="#none" onclick="goShowOff('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}');" class="prod-name">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info">
                                             <dt  class="mr20">

@@ -57,6 +57,7 @@
 
             // 바로결제 버튼 클릭
             $('button[name="btn_direct_pay"]').on('click', function() {
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                 var $is_redirect = $(this).data('is-redirect');
                 var $layer_type = $regi_form.find('.chk_books:checked').length < 1 ? 'pocketBox1' : 'pocketBox2';
 
@@ -84,6 +85,7 @@
 
             // 바로결제 버튼 클릭
             $('button[name="btn_direct_pay"]').on('click', function() {
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                 // 무료강좌 지급
                 if (applyFreeLecture($regi_form) === true) {
                     // 교재상품 바로결제

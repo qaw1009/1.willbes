@@ -104,7 +104,7 @@
         @endforeach
 
         @if((config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002') && $arr_input['bottom_cafe_type'] != 'N')
-            {{-- 경찰온라인 사이트일 경우만 적용 --}}
+            {{-- 경찰 사이트일 경우만 적용 --}}
             <ul class="snslink">
                 <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/snsline01.png"alt="다음카페 경사모" /></a></li>
                 <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/snsline02.png" alt="네이버카페 경꿈사" /></a></li>
@@ -114,7 +114,7 @@
         @endif
 
         @if((config_app('SiteCode') == '2003' || config_app('SiteCode') == '2004') && $arr_input['bottom_cafe_type'] != 'N')
-            {{-- 경찰온라인 사이트일 경우만 적용 --}}
+            {{-- 공무원 사이트일 경우만 적용 --}}
             <ul class="snslink">
                 <li><a href="http://cafe.daum.net/9glade" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/pass_snsline01.jpg"alt="다음카페 구꿈사" /></a></li>
                 <li><a href="https://cafe.naver.com/gugrade" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/common/pass_snsline02.jpg" alt="네이버카페 공드림" /></a></li>

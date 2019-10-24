@@ -112,6 +112,7 @@ class OffLecture extends \app\controllers\FrontController
             // 상품 조회결과 재정의
             foreach ($list as $idx => $row) {
                 $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
 
                 // 정렬방식이 과정순일 경우 배열키 재정의, 배열키 기준으로 재정렬하기 위해 필요 (OrderNumCourse + ProdCode)
                 if (element('search_order', $arr_input) == 'course') {
@@ -155,9 +156,51 @@ class OffLecture extends \app\controllers\FrontController
         ';
 
         $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code,$add_column);
+        $data['salebooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
 
         $this->load->view('site/off_lecture/info_modal', [
             'ele_id' => $this->_req('ele_id'),
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 강좌 보기
+     * @param array $params
+     */
+    public function show($params = [])
+    {
+        $prod_code = element('prod-code', $params);
+        if (empty($prod_code) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        // 상품 조회
+        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code, '', ['EQ' => ['IsUse' => 'Y']]);
+        if (empty($data) === true) {
+            show_alert('데이터 조회에 실패했습니다.', 'back');
+        }
+
+        // 판매가격 정보 확인
+        $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true);
+        if (empty($data['ProdPriceData']) === true) {
+            show_alert('판매가격 정보가 없습니다.', 'back');
+        }
+
+        // 상품 데이터 가공
+        $data['ProdBookData'] = json_decode($data['ProdBookData'], true);
+
+        // 상품 컨텐츠
+        $data['ProdContents'] = $this->lectureFModel->findProductContents($prod_code);
+
+        // 상품 판매교재
+        $data['ProdSaleBooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
+
+        // 상품 강의 목차
+        $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prod_code);
+
+        $this->load->view('site/off_lecture/show', [
+            'learn_pattern' => $this->_learn_pattern,
             'data' => $data
         ]);
     }

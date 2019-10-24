@@ -104,7 +104,10 @@
                             <tr>
                                 <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                 <td class="w-data tx-left">
-                                    <div class="w-tit mb10">>1강. 강의명이 출력됩니다.</div>
+                                    <div class="w-tit mb10">
+                                        1강. 강의명이 출력됩니다.
+                                        <p>[설명] 족보 p.8</p>
+                                    </div>
                                     <dl class="w-info tx-gray mb10">
                                         <dt>강의시간 : 60분<span class="row-line">|</span></dt>
                                         <dt>수강시간 : 60분<span class="row-line">|</span></dt>

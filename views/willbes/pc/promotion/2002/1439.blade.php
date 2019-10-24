@@ -197,7 +197,7 @@
         <div class="evtCtnsBox evt_06">      
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1439_06.gif" usemap="#Map1439" title="수강신청하기" border="0" />
             <map name="Map1439" id="Map1439">
-                <area shape="rect" coords="664,14,1048,365" href="#none" target="_blank" alt="수강신청하기" />
+                <area shape="rect" coords="664,14,1048,365" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&subject_idx=1074&course_idx=&campus_ccd=605006" target="_blank" alt="수강신청하기" />
             </map>         
         </div>    
 

@@ -82,11 +82,11 @@
                     </div>
                     <div class="willbes-Lec-buyBtn">
                         <ul>
-                            <li class="btnAuto180 h36">
+                            <li class="btnAuto130 h36">
                                 <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-group-prod-code="{{$data['ProdCode']}}" data-sale-price="{{$price_row['RealSalePrice']}}"/>
                                 <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
-                                <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
-                                    <span class="tx-light-blue">바로결제</span>
+                                <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                    <span class="tx-white">바로결제</span>
                                 </button>
                             </li>
                         </ul>

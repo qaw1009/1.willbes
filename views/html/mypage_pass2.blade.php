@@ -376,9 +376,7 @@
                     
                 </div>
                 <!-- PASSZONE-List -->                
-            </div>
-            
-
+            </div>          
         </div>
         <!-- willbes-Layer-PassBox : 무한PASS 교재구매 -->
 

@@ -182,6 +182,7 @@
         var $regi_form_register = $('#regi_form_register');
 
         function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             var _url = '{!! front_url('/event/registerStore') !!}';
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {

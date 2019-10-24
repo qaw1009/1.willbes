@@ -202,8 +202,7 @@
                 };
 
                 if ($(this).data('write-type') == 'on' && is_login != true) {
-                    alert('로그인 후 이용해 주세요.');
-                    return false;
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                 }
 
                 sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {

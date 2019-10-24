@@ -69,9 +69,9 @@
                     <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
                     <div class="willbes-Lec-buyBtn">
                         <ul>
-                            <li class="btnAuto180 h36">
-                                <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
-                                    <span class="tx-light-blue">바로결제</span>
+                            <li class="btnAuto130 h36">
+                                <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                    <span class="tx-white">바로결제</span>
                                 </button>
                             </li>
                         </ul>

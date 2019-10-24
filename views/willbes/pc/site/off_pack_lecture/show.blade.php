@@ -82,21 +82,21 @@
                     <div class="willbes-Lec-buyBtn">
                         <ul>
                             @if($data['StudyApplyCcd'] != '654002')
-                                <li class="btnAuto180 h36">
-                                    <button type="button" name="btn_visit_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
-                                        <span>방문결제</span>
+                                <li class="btnAuto130 h36">
+                                    <button type="button" name="btn_visit_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
+                                        <span class="tx-light-blue">방문결제</span>
                                     </button>
                                 </li>
                             @endif
                             @if($data['StudyApplyCcd'] != '654001')
-                                <li class="btnAuto180 h36">
-                                    <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                <li class="btnAuto130 h36">
+                                    <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-heavy-gray bd-dark-gray">
                                         <span>장바구니</span>
                                     </button>
                                 </li>
-                                <li class="btnAuto180 h36">
-                                    <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
-                                        <span class="tx-light-blue">바로결제</span>
+                                <li class="btnAuto130 h36">
+                                    <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                        <span class="tx-white">바로결제</span>
                                     </button>
                                 </li>
                             @endif

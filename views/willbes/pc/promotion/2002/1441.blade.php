@@ -189,8 +189,9 @@
     <!-- End Container -->
 
     <script>
+        var $regi_form_register = $('#regi_form_register');
+
         function fn_submit() {
-            var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
@@ -230,5 +231,22 @@
                 }
             }, showValidateError, null, false, 'alert');
         }
+
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&regist_chk_yn={{$arr_promotion_params['regist_chk_yn']}}&arr_give_idx_chk={{$arr_promotion_params['arr_give_idx_chk']}}';
+                ajaxSubmit($regi_form_register, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                        location.reload();
+                        {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+
     </script>
 @stop

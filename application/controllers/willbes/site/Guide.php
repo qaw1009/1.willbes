@@ -26,6 +26,7 @@ class Guide extends \app\controllers\FrontController
             case "gosi" :
             case "gosi_success" :
             case "gpgosi" :
+            case "gtelp" :
                 $this->load->view('site/guide/'.$view_type.'_show',[]);
                 break;
             default:

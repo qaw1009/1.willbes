@@ -360,8 +360,8 @@
                         <div class="willbes-Lec-buyBtn">
                             <ul>
                                 <li class="btnAuto95 h30">
-                                    <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                                        <span class="tx-light-blue">장바구니</span>
+                                    <button type="submit" onclick="" class="mem-Btn bg-deep-gray bd-deep-gray">
+                                        <span class="tx-white">장바구니</span>
                                     </button>
                                 </li>
                                 <li class="btnAuto95 h30">

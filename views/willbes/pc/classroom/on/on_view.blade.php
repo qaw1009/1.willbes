@@ -35,9 +35,9 @@
                                 <colgroup>
                                     <col style="width: 145px;"/>
                                     <col style="width: 105px;"/>
-                                    <col style="width: 125px;"/>
+                                    <col/>
                                     <col style="width: 100px;"/>
-                                    <col style="width: 165px;"/>
+                                    <col style="width: 145px;"/>
                                 </colgroup>
                                 <tbody>
                                 <tr>

@@ -112,9 +112,9 @@
                             </div>
                         </div>
                         <div id="cop_guide4" class="tabContent NG">
-                            <table id="table1" class="mb10">
-                                <div id="gtelp_test5">
-                                    <p class="title_s">G-TELP와 타시험 점수 대비표</p>
+                            <div class="tableLangBox">
+                                <p class="title_s">G-TELP와 타시험 점수 대비표</p>
+                                <table class="table1">                                    
                                     <tbody><tr><th rowspan="2">G-TELP</th><th colspan="2">G-TELP Level 1 대비</th><th colspan="2" class="bg">G-TELP Level 2 대비</th><th colspan="2">G-TELP Level 3 대비</th></tr>
                                         <tr><th>TOEIC</th><th>TOEFL(IBT)</th><th class="bg">TOEIC</th><th class="bg">TOEFL(IBT)</th><th>TOEIC</th><th>TOEFL(IBT)</th></tr>
                                         <tr><td>99</td><td>없음</td><td rowspan="3">114-115</td><td class="bg">969</td><td class="bg">111-112</td><td>802</td><td>90-91</td></tr>
@@ -167,12 +167,11 @@
                                         <tr><td>52</td><td>821</td><td class="bg">618</td><td rowspan="3" class="bg">64</td><td>473</td><td>48</td></tr>
                                         <tr><td>51</td><td>817</td><td class="bg">610</td><td>466</td><td rowspan="2">47</td></tr>
                                         <tr><td>50</td><td>812</td><td class="bg">603</td><td class="r_line">459</td></tr>
-                                    </tbody>                                       
-                                </div>            
-                            </table>
-                            <table id="table1" class="mb10">
-                                <div id="gtelp_test5">
-                                    <p class="title_s">성적활용 비교표</p>
+                                    </tbody>                                    
+                                </table>
+
+                                <p class="title_s">성적활용 비교표</p>
+                                <table class="table1">                                    
                                     <tbody>
                                         <tr><th>구분</th><th>TOEIC</th><th class="bg">G-TELP(LEVEL 2)</th></tr>
                                         <tr><td>5급 공채</td><td>700</td><td class="bg">65</td></tr>
@@ -198,9 +197,9 @@
                                         <tr><td>한국산업인력공단(호텔관리자)</td><td>700</td><td class="bg">66</td></tr>
                                         <tr><td>한국산업인력공단(호텔서비스사)</td><td>490</td><td class="bg">39</td></tr>
                                         <tr><td>금융감독원(공인회계사)</td><td>700</td><td class="bg">65</td></tr>
-                                    </tbody>
-                                </div>    
-                            </table>
+                                    </tbody>   
+                                </table>
+                            </div>
                         </div>                        
                     </div>
                 </div>

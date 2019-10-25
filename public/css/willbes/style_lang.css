@@ -80,6 +80,15 @@
 .lang .Section3 {
     background:#d6d2cc;
 }
+.lang .Section4 {
+    background:#F6F6F6;
+}
+.lang .Section5 {
+    background:#282B30;
+}
+.lang .Section6 {
+    background:#F6F6F6;
+}
 
 .lang .tabWrap.noticeWrap li a {
     display: block;
@@ -128,3 +137,37 @@
 .lang .tx-color {
     color:#db3e34;
 }
+
+ /* 슬라이드배너 */
+ .slide_con {position:relative; width:1120px; margin:0 auto}
+ .slide_con p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
+ .slide_con p a {cursor:pointer}
+ .slide_con p.leftBtn {left:0}
+ .slide_con p.rightBtn {right:0}
+
+ .Section4 {padding-bottom:100px}
+ .Section4 .slide_con {position:relative; width:900px; margin:0 auto}
+ .Section4 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
+ .Section4 .slide_con p.leftBtn {left:-80px}
+ .Section4 .slide_con p.rightBtn {right:-80px}
+
+ .slide_cons {position:relative; width:1120px; margin:0 auto}
+ .slide_cons p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
+ .slide_cons p a {cursor:pointer}
+ .slide_cons p.leftBtn {left:0}
+ .slide_cons p.rightBtn {right:150px;}
+
+ /* th �곷떒 */
+#gtelp_test5{width: 100%;overflow: hidden;padding-top: 30px;}
+
+.title_s{padding-left: 100px;color: #8f1838;margin-bottom: 10px;font-weight: bold;font-size: 15px;}
+
+#table1 {width:80%;margin:0 auto; font-size:13px; border-top:1px solid #8f1838; margin-bottom:30px; color:#666;}
+#table1 th {border-bottom:1px solid #c1c1c1; padding:8px 20px; border-right:1px solid #c1c1c1; background:#f7f7f7; color:#222;}
+#table1 th:last-child {border-right:0px;}
+#table1 td {border-bottom:1px solid #c1c1c1; text-align:center; padding:8px 20px; border-right:1px solid #c1c1c1;}
+#table1 td:last-child {border-right:0px;}
+#table1 td.r_line {border-right:1px solid #c1c1c1;}
+
+#table1 th.bg{background:#f4edf2;}
+#table1 td.bg{background:#f4edf2;}

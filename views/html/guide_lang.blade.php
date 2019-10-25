@@ -112,7 +112,7 @@
                             </div>
                         </div>
                         <div id="cop_guide4" class="tabContent NG">
-                            <div class="tableLangBox">
+                            <div class="tableLangBox ">
                                 <p class="title_s">G-TELP와 타시험 점수 대비표</p>
                                 <table class="table1">                                    
                                     <tbody><tr><th rowspan="2">G-TELP</th><th colspan="2">G-TELP Level 1 대비</th><th colspan="2" class="bg">G-TELP Level 2 대비</th><th colspan="2">G-TELP Level 3 대비</th></tr>

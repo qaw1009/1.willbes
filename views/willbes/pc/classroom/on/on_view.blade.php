@@ -44,27 +44,27 @@
                                     <td>
                                         <div class="w-lectit">최근수강강의</div>
                                         <div class="w-lec NGEB">{{ $lec['lastStudyInfo'] == '' ? '학습이력없음' : $lec['lastStudyInfo'] }}</div>
-                                        <div class="w-date tx-gray">(수강일 : {{ $lec['lastStudyDate'] == '' ? '학습이력없음' : substr(str_replace('-', '.', $lec['lastStudyDate']), 0,10) }})</div>
+                                        <div class="w-date tx-gray">수강일: {{ $lec['lastStudyDate'] == '' ? '학습이력없음' : substr(str_replace('-', '.', $lec['lastStudyDate']), 0,10) }}</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">진도율</div>
                                         <div class="w-lec NGEB">{{$lec['StudyRate']}}%</div>
-                                        <div class="w-date tx-gray">(수강시간기준)</div>
+                                        <div class="w-date tx-gray">수강시간기준</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">일시정지</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['PauseCount']}}</span>회</div>
-                                        <div class="w-date tx-gray">@if($lec['ispause'] == 'Y')({{str_replace('-', '.', $lec['lastPauseStartDate']) }}~{{str_replace('-', '.', $lec['lastPauseEndDate'])}})@else&nbsp;@endif</div>
+                                        <div class="w-date tx-gray">@if($lec['ispause'] == 'Y'){{str_replace('-', '.', $lec['lastPauseStartDate']) }}~{{str_replace('-', '.', $lec['lastPauseEndDate'])}}@else&nbsp;@endif</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">수강연장</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['RebuyCount']}}</span>회</div>
-                                        <div class="w-date tx-gray">(최대 3회까지)</div>
+                                        <div class="w-date tx-gray">최대 3회까지</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">
-                                                @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
+                                                @ifstrtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time()))
                                                     {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
                                                 @elseif(empty($lec['lastPauseEndDate']) == true)
                                                     {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
@@ -74,7 +74,7 @@
                                                     {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
                                                 @endif
                                             </span>/ {{$lec['RealLecExpireDay']}}일</div>
-                                        <div class="w-date tx-gray">({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})</div>
+                                        <div class="w-date tx-gray">{{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}}</div>
                                     </td>
                                 </tr>
                                 </tbody>

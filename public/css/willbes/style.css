@@ -8566,18 +8566,21 @@ table.PassZoneTable .w-data {
     clear: inherit;
 }
 .ProfmypageTable {
-    width: 640px;
+    width: 100%;
     font-size: 13px;
     text-align: center;
-    letter-spacing: 0;
 }
 .ProfmypageTable tr td {
     font-size: 12px;
-    line-height: 24px;
+    line-height: 1.5;
+    padding:0 5px;
+    border-right:1px dashed #e4e4e4;
 }
+.ProfmypageTable tr td:last-child {border:0;}
 .ProfmypageTable tr td .w-lec {
     font-size: 13px;
 }
+
 .ProfmypageTable span {
     vertical-align: baseline;
 }

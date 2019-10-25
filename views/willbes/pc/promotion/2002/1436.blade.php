@@ -65,7 +65,9 @@
         .wb_04_con2 p.leftBtn {left:-70px;}
         .wb_04_con2 p.rightBtn {right:70px}
 
-        .wb_cts03{background:url("https://static.willbes.net/public/images/promotion/2019/10/1436_03_bg.jpg") center top  no-repeat}
+        .wb_cts03{background:url("https://static.willbes.net/public/images/promotion/2019/10/1436_03_bg.jpg") center top  no-repeat;position:relative;}
+        .wb_cts03 .youtubeGod{position:absolute;top:50%;width:100%;width:100%;text-align:center;}
+        .wb_cts03 .youtubeGod iframe{width:644px;height:362px;margin:0 auto;}
         .wb_cts04{background:#e2e2e2;}
         .wb_cts05{background:#f3f3f3;}
 
@@ -147,7 +149,10 @@
         </div>
         
         <div class="evtCtnsBox wb_cts03">            
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1436_03.jpg"  title="오프닝 타임" />   
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1436_03.jpg"  title="오프닝 타임" /> 
+            <div class="youtubeGod">
+                <iframe src="https://www.youtube.com/embed/WhOWMd9OKtw" frameborder="0" allowfullscreen=""></iframe> 
+            </div>  
         </div>
 
         <div class="evtCtnsBox wb_cts04">            

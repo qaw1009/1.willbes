@@ -1099,6 +1099,9 @@ select[disabled] {
 .bd-light-gray {
   border: 1px solid #c9c9c9;
 }
+.bd-deep-gray {
+  border: 1px solid #707070;
+}
 
 .bdt-bright-gray {
   border-top: 1px solid #edeeef;

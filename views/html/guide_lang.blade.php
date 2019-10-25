@@ -82,33 +82,45 @@
                     </ul>
                     <div class="tabBox mt20">
                         <div id="cop_guide1" class="tabContent">
-                            <div class="slide_cons">
-                                <ul id="slidesImg4">
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab1_1.jpg" /></li>
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab1_2.jpg" /></li>
-                                </ul>
-                                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_left.png"></a></p>
-                                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_right.png"></a></p>
+                            <div class="slide_cons examInfoGu3">
+                                <div class="sliderGuide cSliderTM">
+                                    <div class="sliderControlsTM">
+                                        <div class="guide_slider">                                             
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab1_1.jpg">                                            
+                                        </div>
+                                        <div class="guide_slider">                                          
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab1_2.jpg">                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div id="cop_guide2" class="tabContent">
-                            <div class="slide_cons">
-                                <ul id="slidesImg5">
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab2_1.jpg" /></li>
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab2_2.jpg" /></li>
-                                </ul>
-                                <p class="leftBtn"><a id="imgBannerLeft5"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_left.png"></a></p>
-                                <p class="rightBtn"><a id="imgBannerRight5"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_right.png"></a></p>
+                            <div class="slide_cons examInfoGu3">
+                                <div class="sliderGuide cSliderTM">
+                                    <div class="sliderControlsTM">
+                                        <div class="guide_slider">                                                
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab2_1.jpg">                                            
+                                        </div>
+                                        <div class="guide_slider">                                            
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab2_2.jpg">                                            
+                                        </div>
+                                    </div>
+                                </div>                       
                             </div>
                         </div>
                         <div id="cop_guide3" class="tabContent">
-                            <div class="slide_cons">
-                                <ul id="slidesImg6">
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab3_1.jpg" /></li>
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab3_2.jpg" /></li>
-                                </ul>
-                                <p class="leftBtn"><a id="imgBannerLeft6"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_left.png"></a></p>
-                                <p class="rightBtn"><a id="imgBannerRight6"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_right.png"></a></p>
+                            <div class="slide_cons examInfoGu3">
+                                <div class="sliderGuide cSliderTM">
+                                    <div class="sliderControlsTM">
+                                        <div class="guide_slider">
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab3_1.jpg">                                           
+                                        </div>
+                                        <div class="guide_slider">                                           
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab3_2.jpg">                                           
+                                        </div>
+                                    </div>
+                                </div>                       
                             </div>
                         </div>
                         <div id="cop_guide4" class="tabContent NG">
@@ -169,7 +181,6 @@
                                         <tr><td>50</td><td>812</td><td class="bg">603</td><td class="r_line">459</td></tr>
                                     </tbody>                                    
                                 </table>
-
                                 <p class="title_s">성적활용 비교표</p>
                                 <table class="table1">                                    
                                     <tbody>
@@ -213,81 +224,4 @@
 </div>
 <!-- End Container -->
 
-<script>
-    $(document).ready(function() {
-            var slidesImg4 = $("#slidesImg4").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft4").click(function (){
-                slidesImg4.goToPrevSlide();
-            });
-
-            $("#imgBannerRight4").click(function (){
-                slidesImg4.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg5 = $("#slidesImg5").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft5").click(function (){
-                slidesImg5.goToPrevSlide();
-            });
-
-            $("#imgBannerRight5").click(function (){
-                slidesImg5.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg6 = $("#slidesImg6").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft6").click(function (){
-                slidesImg6.goToPrevSlide();
-            });
-
-            $("#imgBannerRight6").click(function (){
-                slidesImg6.goToNextSlide();
-            });
-        });
-    </script>
-    
 @stop

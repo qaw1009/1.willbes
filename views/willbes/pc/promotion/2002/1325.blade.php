@@ -67,14 +67,14 @@
         to{color:#000}
         } 
 
-        .tabContaier{width:100%; text-align:center; padding-bottom:20px;}
-        .tabContaier ul {width:1120px;margin:0 auto;}		
-        .tabContaier li {display:inline; float:left;}	
-        .tabContaier a img.off {display:block}
-        .tabContaier a img.on {display:none}
-        .tabContaier a.active img.off {display:none}
-        .tabContaier a.active img.on {display:block}
-        .tabContaier ul:after {content:""; display:block; clear:both}
+        .tabs{width:100%; text-align:center; padding-bottom:20px;}
+        .tabs ul {width:1120px;margin:0 auto;}		
+        .tabs li {display:inline; float:left;}	
+        .tabs a img.off {display:block}
+        .tabs a img.on {display:none}
+        .tabs a.active img.off {display:none}
+        .tabs a.active img.on {display:block}
+        .tabs ul:after {content:""; display:block; clear:both}
 
 
     </style>
@@ -128,10 +128,35 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="lect">
-            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04.jpg" alt="슈퍼pass" usemap="#Map1325A" border="0"/>
-            <map name="Map1325A" id="Map1325A">
-                <area shape="rect" coords="369,1317,748,1415" href="https://police.willbes.net/pass/OffVisitPackage?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1085" target="_blank" alt="신청하기" />
-            </map> 
+            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_top.jpg" alt="슈퍼pass"/>
+            <div class="tabs">
+                <ul>
+                    <li>
+                        <a href="#tab01" class="active">
+                            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_01_on.jpg" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_01_off.jpg" class="off"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab02">
+                            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_02_on.jpg" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_02_off.jpg" class="off"/>
+                        </a>
+                    </li>
+                </ul>
+                <div id="tab01">
+                    <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_01.jpg" usemap="#Map132501" border="0" />
+                    <map name="Map132501" id="Map132501">
+                        <area shape="rect" coords="371,1014,749,1119" href="https://police.willbes.net/pass/OffVisitPackage?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1085" target="_blank" alt="신청하기" />
+                    </map>
+                </div>                                        
+                <div id="tab02">
+                    <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_02.jpg" usemap="#Map132502" border="0" />
+                    <map name="Map132502" id="Map132502">
+                        <area shape="rect" coords="371,1014,749,1119" href="https://police.willbes.net/pass/OffVisitPackage?cate_code=3010&amp;campus_ccd=605001&amp;course_idx=1085" target="_blank" alt="신청하기" />
+                    </map>
+                </div>
+            </div>
         </div>
 		
 		<div class="evtCtnsBox wb_cts06" >
@@ -145,6 +170,31 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+        /*tab*/
+        $(document).ready(function(){
+            $('.tabs ul').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                //$active.addClass('active');
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide();
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault()
+                });
+            });
+        });
+        
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');

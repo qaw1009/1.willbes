@@ -309,7 +309,7 @@
 
                                             @if($row['IsSalesAble'] == 'Y')
                                                 @if($row['StudyApplyCcd'] != '654002')
-                                                    <li class="btnVisit btn-off-visit-pay"><a href="#none" data-prod-code="{{ $row['ProdCode'] . ':' . $saletypeccd . ':' . $row['ProdCode'] }}">방문결제</a></li>
+                                                    <li class="btnVisit"><a class="btn-off-visit-pay" href="#none" data-prod-code="{{ $row['ProdCode'] . ':' . $saletypeccd . ':' . $row['ProdCode'] }}">방문결제</a></li>
                                                 @endif
                                                 @if($row['StudyApplyCcd'] != '654001')
                                                     <li class="btnCart"><a href="#none" name="btn_off_cart" data-direct-pay="N" data-is-redirect="Y" data-prod-code="{{ $row['ProdCode'] }}">장바구니</a></li>

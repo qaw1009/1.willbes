@@ -88,13 +88,13 @@
             <div class="tabs">
                 <ul class="NGEB">
                     <li><a href="#tab02">9월</a></li>
-                    <li><a href="#tab01" class="active">10월</a></li>
-                    <li><a href="#tab03">11월</a></li>
+                    <li><a href="#tab03">10월</a></li>
+                    <li><a href="#tab01" class="active">11월</a></li>
                     <li><a href="#tab04">12월</a></li>
                 </ul>
-                <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab02.jpg" title="10월 하프 불금모의고사"  /></div>
-                <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab01.jpg" title="9월 하프 불금모의고사"  /></div>                                                
-                <div id="tab03"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab03.jpg" title="11월 하프 불금모의고사"  /></div>
+                <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab01.jpg" title="9월 하프 불금모의고사"  /></div>
+                <div id="tab03"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab02.jpg" title="10월 하프 불금모의고사"  /></div>
+                <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab03.jpg" title="11월 하프 불금모의고사"  /></div>                                        
                 <div id="tab04"><img src="https://static.willbes.net/public/images/promotion/2019/09/1384_03_tab04.jpg" title="12월 하프 불금모의고사"  /></div>
             </div>
         </div>
@@ -144,7 +144,7 @@
                                 @endif
                             </td>
                         </tr>
-                        <tr class="on">
+                        <tr>
                             <td>2020년 합격대비 HALF 불금모의고사 [3회]</td>
                             <td>한국사/형소법/형법</td>
                             <td>18:00 ~ 18:30</td>
@@ -157,7 +157,7 @@
                                 @endif
                             </td>
                         </tr>
-                        <tr class="on">
+                        <tr>
                             <td>2020년 합격대비 HALF 불금모의고사 [4회]</td>
                             <td>영어/경찰학</td>
                             <td>18:00 ~ 18:30</td>
@@ -170,7 +170,7 @@
                                 @endif
                             </td>
                         </tr>
-                        <tr class="on">
+                        <tr>
                             <td>2020년 합격대비 HALF 불금모의고사 [5회]</td>
                             <td>한국사/형소법/형법</td>
                             <td>18:00 ~ 18:30</td>
@@ -183,26 +183,44 @@
                                 @endif
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="on">
                             <td>2020년 합격대비 HALF 불금모의고사 [6회]</td>
                             <td>영어/경찰학</td>
                             <td>18:00 ~ 18:30</td>
                             <td>11.8(금)</td>
-                            <td><span>접수 준비중</span></td>
+                            <td>
+                                @if (date('YmdH') < '2019110818')
+                                <span>접수중</span>
+                                @else
+                                <span class="end">접수마감</span>
+                                @endif
+                            </td>
                         </tr>
-                        <tr>
+                        <tr class="on">
                             <td>2020년 합격대비 HALF 불금모의고사 [7회]</td>
                             <td>한국사/형소법/형법</td>
                             <td>18:00 ~ 18:30</td>
                             <td>11.15(금)</td>
-                            <td><span>접수 준비중</span></td>
+                            <td>
+                                @if (date('YmdH') < '2019111518')
+                                <span>접수중</span>
+                                @else
+                                <span class="end">접수마감</span>
+                                @endif
+                            </td>
                         </tr>
-                        <tr>
+                        <tr class="on">
                             <td>2020년 합격대비 HALF 불금모의고사 [8회]</td>
                             <td>영어/경찰학</td>
                             <td>18:00 ~ 18:30</td>
                             <td>11.22(금)</td>
-                            <td><span>접수 준비중</span></td>
+                            <td>
+                                @if (date('YmdH') < '2019112218')
+                                <span>접수중</span>
+                                @else
+                                <span class="end">접수마감</span>
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <td>2020년 합격대비 HALF 불금모의고사 [9회]</td>

@@ -119,32 +119,32 @@
                             <colgroup>
                                 <col style="width: 145px;"/>
                                 <col style="width: 105px;"/>
-                                <col style="width: 125px;"/>
+                                <col/>
                                 <col style="width: 100px;"/>
-                                <col style="width: 165px;"/>
+                                <col style="width: 145px;"/>
                             </colgroup>
                             <tbody>
                                 <tr>
                                     <td>
                                         <div class="w-lectit">최근수강강의</div>
                                         <div class="w-lec NGEB">2강</div>
-                                        <div class="w-date tx-gray">(수강일 : 2018.3.20)</div>
+                                        <div class="w-date tx-gray">수강일: 2018.3.20</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">진도율</div>
                                         <div class="w-lec NGEB">20%</div>
-                                        <div class="w-date tx-gray">(수강시간기준)</div>
+                                        <div class="w-date tx-gray">수강시간기준</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">일시정지</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">2</span>회</div>
-                                        <div class="w-date tx-gray">(3.20~4.20)</div>
+                                        <div class="w-date tx-gray">2019.10.25~2019.11.01</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">수강연장</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">3</span>회</div>
                                         <div class="w-date tx-gray">
-                                            (* 3회까지)
+                                            최대 3회까지
                                             <!--div class="w-btn">
                                                 <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">신청</a>
                                             </div-->
@@ -153,7 +153,7 @@
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">10</span>일/ 100일</div>
-                                        <div class="w-date tx-gray">(2018.3.20~2018.6.20)</div>
+                                        <div class="w-date tx-gray">2018.11.20~2018.12.20</div>
                                     </td>
                                 </tr> 
                             </tbody>

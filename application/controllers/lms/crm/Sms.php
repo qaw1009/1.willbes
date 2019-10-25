@@ -396,7 +396,7 @@ class Sms extends \app\controllers\BaseController
         $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
         $method = 'POST';
-        $set_row_count = '12';
+        $set_row_count = 12;
         $list_send_member = null;
 
         $target_id = $this->_req('target_id');
@@ -415,7 +415,11 @@ class Sms extends \app\controllers\BaseController
                     ]
                 ]
             ];
-            $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
+            $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition, count($set_send_member_idx));
+
+            if(empty($target_idx) === false && count($set_send_member_idx) > $set_row_count) {
+                $set_row_count = count($set_send_member_idx);
+            }
         }
 
         $arr_kakao_template = $this->smsModel->listKakaoTemplate(false, ['EQ' => ['KT.IsStatus' => 'Y', 'KT.IsUse' => 'Y', 'KT.IsApproval' => 'Y']], null, null, []);

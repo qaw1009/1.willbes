@@ -113,7 +113,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @for($i = 1; $i <= $set_row_count-6; $i++)
+                                            @for($i = 1; $i <= ceil($set_row_count/2); $i++)
                                                 <tr>
                                                     <td>{{$i}}</td>
                                                     <td>
@@ -137,7 +137,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @for($i = 7; $i <= $set_row_count; $i++)
+                                            @for($i = ceil($set_row_count/2) + 1; $i <= $set_row_count; $i++)
                                                 <tr>
                                                     <td>{{$i}}</td>
                                                     <td>

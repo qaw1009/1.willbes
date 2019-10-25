@@ -169,7 +169,7 @@ class Message extends \app\controllers\BaseController
     {
         $arr_send_option_ccd = $this->codeModel->getCcd($this->_groupCcd['SendOptionCcd']);
         $method = 'POST';
-        $set_row_count = '12';
+        $set_row_count = 12;
         $list_send_member = [];
         $temp_mem_idx = '';
         $temp_mem_id = '';
@@ -183,10 +183,13 @@ class Message extends \app\controllers\BaseController
                     'MemIdx' => $set_send_member_idx
                 ]
             ];
-            $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
+            $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition, count($set_send_member_idx));
             foreach ($list_send_member as $row) {
                 $temp_mem_idx .= $row['MemIdx'].',';
                 $temp_mem_id .= $row['MemId'].',';
+            }
+            if(count($set_send_member_idx) > $set_row_count) {
+                $set_row_count = count($set_send_member_idx);
             }
         }
         $temp_mem_idx = substr($temp_mem_idx , 0, -1);

@@ -229,9 +229,7 @@
                             <td class="w-img"><img src="{{ img_url('sample/prof3.jpg') }}"></td>
                             <td class="w-data tx-left pl25">
                                 <dl class="w-info">
-                                    <dt class="w-name">이현나</dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt class="w-tit">2017 이현나 국어 기출문제(11-12월)</dt>
+                                    <dt class="w-tit">이현나<span class="row-line">|</span>2017 이현나 국어 기출문제(11-12월)</dt>
                                 </dl>
                                 <dl class="w-info">
                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>
@@ -323,9 +321,9 @@
                             <td class="w-img"><img src="{{ img_url('sample/prof3.jpg') }}"></td>
                             <td class="w-data tx-left pl25">
                                 <dl class="w-info">
-                                    <dt class="w-name">이현나</dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt class="w-tit">2017 이현나 국어 실전 동형모의고사(3월)</dt>
+                                    <dt class="w-name"></dt>
+                                    <dt></dt>
+                                    <dt class="w-tit">이현나<span class="row-line">|</span>2017 이현나 국어 실전 동형모의고사(3월)</dt>
                                 </dl>
                                 <dl class="w-info">
                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>

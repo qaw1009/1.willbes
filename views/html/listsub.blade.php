@@ -113,7 +113,7 @@
                             </dl>
                         </div>
                     </div>
-                    <div class="all-view subBtn NSK"><a href="#none" class="NSK">개설강좌 전체보기 ></a></div>
+                    <div class="all-view subBtn"><a href="#none">개설강좌 전체보기 ></a></div>
                 </div>
             </div>
         </div>

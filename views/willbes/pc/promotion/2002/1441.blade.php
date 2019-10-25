@@ -170,7 +170,7 @@
                 <map name="Map1441A" id="Map1441A">
                     <area shape="rect" coords="353,1149,767,1254" href="#none" target="_self" onclick="javascript:giveCheck();" title="실강쿠폰받기" />
                 </map>
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_02.jpg" title="네이버 이벤트"/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1440_03_02.jpg" title="네이버 이벤트"/><br>
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1441_03_01.jpg" usemap="#Map1441" title="" border="0"/>
                 <map name="Map1441" id="Map1441">
                     <area shape="rect" coords="701,55,781,160" href="https://www.instagram.com" target="_blank" alt="인스타그램" />

@@ -139,7 +139,7 @@
 }
 
  /* 슬라이드배너 */
- .slide_con {position:relative; width:1120px; margin:0 auto}
+ .slide_con {position:relative;margin:0 auto}
  .slide_con p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
  .slide_con p a {cursor:pointer}
  .slide_con p.leftBtn {left:0}
@@ -151,7 +151,7 @@
  .Section4 .slide_con p.leftBtn {left:-80px}
  .Section4 .slide_con p.rightBtn {right:-80px}
 
- .slide_cons {position:relative;margin:0 auto}
+ .slide_cons {position:relative; margin:0 auto}
  .slide_cons p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
  .slide_cons p a {cursor:pointer}
  .slide_cons p.leftBtn {left:0}

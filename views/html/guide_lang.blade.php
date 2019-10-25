@@ -82,39 +82,51 @@
                     </ul>
                     <div class="tabBox mt20">
                         <div id="cop_guide1" class="tabContent">
-                            <div class="slide_cons">
-                                <ul id="slidesImg4">
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab1_1.jpg" /></li>
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab1_2.jpg" /></li>
-                                </ul>
-                                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_left.png"></a></p>
-                                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_right.png"></a></p>
+                            <div class="slide_cons examInfoGu3">
+                                <div class="sliderGuide cSliderTM">
+                                    <div class="sliderControlsTM">
+                                        <div class="guide_slider">                                             
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab1_1.jpg">                                            
+                                        </div>
+                                        <div class="guide_slider">                                          
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab1_2.jpg">                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div id="cop_guide2" class="tabContent">
-                            <div class="slide_cons">
-                                <ul id="slidesImg5">
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab2_1.jpg" /></li>
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab2_2.jpg" /></li>
-                                </ul>
-                                <p class="leftBtn"><a id="imgBannerLeft5"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_left.png"></a></p>
-                                <p class="rightBtn"><a id="imgBannerRight5"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_right.png"></a></p>
+                            <div class="slide_cons examInfoGu3">
+                                <div class="sliderGuide cSliderTM">
+                                    <div class="sliderControlsTM">
+                                        <div class="guide_slider">                                                
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab2_1.jpg">                                            
+                                        </div>
+                                        <div class="guide_slider">                                            
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab2_2.jpg">                                            
+                                        </div>
+                                    </div>
+                                </div>                       
                             </div>
                         </div>
                         <div id="cop_guide3" class="tabContent">
-                            <div class="slide_cons">
-                                <ul id="slidesImg6">
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab3_1.jpg" /></li>
-                                    <li><img src="https://static.willbes.net/public/images/promotion/main/tab3_2.jpg" /></li>
-                                </ul>
-                                <p class="leftBtn"><a id="imgBannerLeft6"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_left.png"></a></p>
-                                <p class="rightBtn"><a id="imgBannerRight6"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_right.png"></a></p>
+                            <div class="slide_cons examInfoGu3">
+                                <div class="sliderGuide cSliderTM">
+                                    <div class="sliderControlsTM">
+                                        <div class="guide_slider">
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab3_1.jpg">                                           
+                                        </div>
+                                        <div class="guide_slider">                                           
+                                            <img class="agM" src="https://static.willbes.net/public/images/promotion/main/tab3_2.jpg">                                           
+                                        </div>
+                                    </div>
+                                </div>                       
                             </div>
                         </div>
                         <div id="cop_guide4" class="tabContent NG">
-                            <table id="table1" class="mb10">
-                                <div id="gtelp_test5">
-                                    <p class="title_s">G-TELP와 타시험 점수 대비표</p>
+                            <div class="tableLangBox ">
+                                <p class="title_s">G-TELP와 타시험 점수 대비표</p>
+                                <table class="table1">                                    
                                     <tbody><tr><th rowspan="2">G-TELP</th><th colspan="2">G-TELP Level 1 대비</th><th colspan="2" class="bg">G-TELP Level 2 대비</th><th colspan="2">G-TELP Level 3 대비</th></tr>
                                         <tr><th>TOEIC</th><th>TOEFL(IBT)</th><th class="bg">TOEIC</th><th class="bg">TOEFL(IBT)</th><th>TOEIC</th><th>TOEFL(IBT)</th></tr>
                                         <tr><td>99</td><td>없음</td><td rowspan="3">114-115</td><td class="bg">969</td><td class="bg">111-112</td><td>802</td><td>90-91</td></tr>
@@ -167,12 +179,10 @@
                                         <tr><td>52</td><td>821</td><td class="bg">618</td><td rowspan="3" class="bg">64</td><td>473</td><td>48</td></tr>
                                         <tr><td>51</td><td>817</td><td class="bg">610</td><td>466</td><td rowspan="2">47</td></tr>
                                         <tr><td>50</td><td>812</td><td class="bg">603</td><td class="r_line">459</td></tr>
-                                    </tbody>                                       
-                                </div>            
-                            </table>
-                            <table id="table1" class="mb10">
-                                <div id="gtelp_test5">
-                                    <p class="title_s">성적활용 비교표</p>
+                                    </tbody>                                    
+                                </table>
+                                <p class="title_s">성적활용 비교표</p>
+                                <table class="table1">                                    
                                     <tbody>
                                         <tr><th>구분</th><th>TOEIC</th><th class="bg">G-TELP(LEVEL 2)</th></tr>
                                         <tr><td>5급 공채</td><td>700</td><td class="bg">65</td></tr>
@@ -198,9 +208,9 @@
                                         <tr><td>한국산업인력공단(호텔관리자)</td><td>700</td><td class="bg">66</td></tr>
                                         <tr><td>한국산업인력공단(호텔서비스사)</td><td>490</td><td class="bg">39</td></tr>
                                         <tr><td>금융감독원(공인회계사)</td><td>700</td><td class="bg">65</td></tr>
-                                    </tbody>
-                                </div>    
-                            </table>
+                                    </tbody>   
+                                </table>
+                            </div>
                         </div>                        
                     </div>
                 </div>
@@ -214,81 +224,4 @@
 </div>
 <!-- End Container -->
 
-<script>
-    $(document).ready(function() {
-            var slidesImg4 = $("#slidesImg4").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft4").click(function (){
-                slidesImg4.goToPrevSlide();
-            });
-
-            $("#imgBannerRight4").click(function (){
-                slidesImg4.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg5 = $("#slidesImg5").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft5").click(function (){
-                slidesImg5.goToPrevSlide();
-            });
-
-            $("#imgBannerRight5").click(function (){
-                slidesImg5.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg6 = $("#slidesImg6").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft6").click(function (){
-                slidesImg6.goToPrevSlide();
-            });
-
-            $("#imgBannerRight6").click(function (){
-                slidesImg6.goToNextSlide();
-            });
-        });
-    </script>
-    
 @stop

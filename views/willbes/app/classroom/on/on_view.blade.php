@@ -90,7 +90,8 @@
                                                 {{$row['wUnitNum']}}회
                                                 {{$row['wUnitLectureNum']}}강
                                                 {{$row['wUnitName']}}
-                                                <p>{{$row['wUnitInfo']}}</p></div>
+                                                @if(empty($row['wUnitInfo']) == false)<p>[설명] {{$row['wUnitInfo']}}</p>@endif
+                                            </div>
                                             <dl class="w-info tx-gray mb10">
                                                 <dt>강의시간 : {{$row['wRuntime']}}분<span class="row-line">|</span></dt>
                                                 <dt>수강시간 : {{floor(intval($row['RealStudyTime'])/60)}}분<span class="row-line">|</span></dt>

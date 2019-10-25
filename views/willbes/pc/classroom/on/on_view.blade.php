@@ -128,7 +128,8 @@
                                 <td class="w-no">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
                                 <td class="w-lec tx-left">
                                     {{$row['wUnitName']}}
-                                    <p>{{$row['wUnitInfo']}}</p></td>
+                                    @if(empty($row['wUnitInfo']) == false)<p>[설명] {{$row['wUnitInfo']}}</p>@endif
+                                </td>
                                 <td class="w-page">{{$row['wBookPage']}}</td>
                                 <td class="w-file">
                                     @if(empty($row['wUnitAttachFile']) == false)

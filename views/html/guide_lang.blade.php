@@ -111,8 +111,8 @@
                                 <p class="rightBtn"><a id="imgBannerRight6"><img src="https://static.willbes.net/public/images/promotion/main/2007_arrow_right.png"></a></p>
                             </div>
                         </div>
-                        <div id="cop_guide4" class="tabContent">
-                            <table id="table1" style="margin-bottom:10px;">
+                        <div id="cop_guide4" class="tabContent NG">
+                            <table id="table1" class="mt10">
                                 <div id="gtelp_test5">
                                     <p class="title_s">G-TELP와 타시험 점수 대비표</p>
                                     <tbody><tr><th rowspan="2">G-TELP</th><th colspan="2">G-TELP Level 1 대비</th><th colspan="2" class="bg">G-TELP Level 2 대비</th><th colspan="2">G-TELP Level 3 대비</th></tr>

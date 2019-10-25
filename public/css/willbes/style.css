@@ -2838,9 +2838,9 @@ table.lecTable tr td .lecBuyBtns li {
     border:1px solid #1a8ccc;
 }
 table.lecTable tr td .lecBuyBtns li.btnCart {
-    border:1px solid #7d7e85;
+    border:1px solid #707070;
     color:#fff;
-    background:#7d7e85;
+    background:#707070;
 }
 table.lecTable tr td .lecBuyBtns li.btnVisit {
     border:1px solid #1a8ccc;

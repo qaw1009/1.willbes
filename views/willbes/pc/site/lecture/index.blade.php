@@ -393,14 +393,14 @@
                 <ul>
                     @if($pattern == 'only')
                     <li class="btnAuto180 h36">
-                        <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
-                            <span>장바구니</span>
+                        <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-deep-gray bd-deep-gray">
+                            <span class="tx-white">장바구니</span>
                         </button>
                     </li>
                     @endif
                     <li class="btnAuto180 h36">
-                        <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
-                            <span class="tx-light-blue">바로결제</span>
+                        <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
+                            <span>바로결제</span>
                         </button>
                     </li>
                 </ul>

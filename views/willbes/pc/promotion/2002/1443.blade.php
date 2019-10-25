@@ -67,9 +67,9 @@
             -->
 
             <div class="skyBanner">
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/10/1443_sky01.png" title="올인원 합격전략설명회"></a>
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/10/1443_sky02.png" title="올인원 합격전략설명회"></a>
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/10/1443_sky03.png" title="올인원 합격전략설명회"></a>
+                <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1443_sky01.png" title="올인원 합격전략설명회"></a>
+                <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1443_sky02.png" title="올인원 합격전략설명회"></a>
+                <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1443_sky03.png" title="올인원 합격전략설명회"></a>
             </div>
             <div class="evtCtnsBox evt00">
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">
@@ -85,7 +85,7 @@
             <div class="evtCtnsBox evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_02.jpg" title="할인이벤트 진행">
             </div>
-            <div class="evtCtnsBox evt03">
+            <div class="evtCtnsBox evt03" id="to_go">
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_03.jpg" title="신청접수">
                     <div class="request" id="request">
                         <div class="requestL">

@@ -72,7 +72,7 @@
                                     <img src="{{ img_url('main/icon_willbes4.png') }}"> 고등고시
                                 </div>
                                 <div class="wTxt">
-                                    5급행정/입법/외교/법원/변호사<br/>
+                                    5급행정/외교원/변호사/법행/PSAT<br/>
                                     <strong>윌비스 한림법학원</strong>
                                 </div>
                             </a>

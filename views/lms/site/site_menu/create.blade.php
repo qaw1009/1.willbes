@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    사이트 메뉴 정보
+    {{ $front_name }} 메뉴 정보
 @stop
 
 @section('layer_header')
@@ -90,10 +90,16 @@
             </div>
         </div>
         <div class="form-group form-group-sm">
-            <label class="control-label col-md-2" for="menu_etc">기타
+            <label class="control-label col-md-2" for="menu_etc1">기타
             </label>
-            <div class="col-md-9 item">
-                <input type="text" id="menu_etc" name="menu_etc" class="form-control" title="기타" value="{{ $data['MenuEtc'] }}">
+            <div class="col-md-9 form-inline item">
+                <input type="text" id="menu_etc1" name="menu_etc" class="form-control" title="기타" value="{{ $data['MenuEtc'] }}" style="width: 100%;">
+                {{-- 일반메뉴(전체보기)일 경우 노출 --}}
+                <select class="form-control hide" id="menu_etc2" name="menu_etc" title="전체보기구분" disabled="disabled">
+                    @foreach($mega_type_code as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="form-group form-group-sm">
@@ -139,6 +145,10 @@
                     $regi_form.find('select[name="menu_type"]').val('{{ $data['MenuType'] }}');
                     $regi_form.find('select[name="url_type"]').val('{{ $data['UrlType'] }}');
                     $regi_form.find('select[name="url_target"]').val('{{ $data['UrlTarget'] }}');
+
+                    // 기타필드
+                    $regi_form.find('[name="menu_etc"]').val('{{ $data['MenuEtc'] }}');
+                    setMenuEtcField('{{ $data['MenuType'] }}');
                 }
 
                 // 운영사이트 코드 셋팅
@@ -146,9 +156,14 @@
                     $('#selected_site_code').html($(this).val());
                 });
 
+                // 메뉴구분 변경
+                $regi_form.on('change', 'select[name="menu_type"]', function() {
+                    setMenuEtcField($(this).val());
+                });
+
                 // 메뉴 등록
                 $regi_form.submit(function() {
-                    var _url = '{{ site_url('/site/siteMenu/store') }}';
+                    var _url = '{{ site_url('/site/' . $contr_name . '/store') }}';
 
                     ajaxSubmit($regi_form, _url, function(ret) {
                         if(ret.ret_cd) {
@@ -158,6 +173,21 @@
                         }
                     }, showValidateError, null, false, 'alert');
                 });
+
+                // 기타필드 display, disabled 설정
+                function setMenuEtcField(menu_type) {
+                    if (menu_type === 'GM') {
+                        $regi_form.find('#menu_etc1').prop('disabled', true).addClass('hide');
+                        $regi_form.find('#menu_etc2').prop('disabled', false).removeClass('hide');
+
+                        if ($regi_form.find('#menu_etc2 option:selected').length < 1) {
+                            $regi_form.find('#menu_etc2 option:eq(0)').prop('selected', true);
+                        }
+                    } else {
+                        $regi_form.find('#menu_etc1').prop('disabled', false).removeClass('hide');
+                        $regi_form.find('#menu_etc2').prop('disabled', true).addClass('hide');
+                    }
+                }
             });
         </script>
 @stop

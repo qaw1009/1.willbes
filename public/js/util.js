@@ -929,6 +929,7 @@ function setRowspan(classname) {
 
                     pop_modal.find(".modal-content").on("click", "#btn_modal_close", function(event){
                         pop_modal.modal("toggle");
+                        if($('.modal-content').is(':visible')) $('body').addClass('modal-open');   // 2개 이상의 레이어팝업이 열린 상황일때 하나가 닫히면서 이전 팝업이 스크롤이 안되는 현상 방지
                         event.preventDefault();
                     });
                 }

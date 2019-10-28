@@ -100,20 +100,19 @@
     <!-- End Container -->
 
     <script>
-    $(document).ready(function() {
+        $(document).ready(function() {
             var slidesImg4 = $("#slidesImg4").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
                 speed:350,
                 pause:4000,
-                pager:true,
                 controls:false,
                 minSlides:1,
                 maxSlides:1,
                 slideMargin:0,
                 autoHover: true,
                 moveSlides:1,
-                pager:false,
+                pager:false
             });
 
             $("#imgBannerLeft4").click(function (){

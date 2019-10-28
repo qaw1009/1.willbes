@@ -33,7 +33,7 @@
         .slide_con p.leftBtn {left:-40px;}
         .slide_con p.rightBtn {right:-40px;}
 
-        .evt03 {background:#f4f4f4;}
+        .evt03,.evt06 {background:#f4f4f4;}
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1386_04_bg.jpg) no-repeat center top;}
         .evt05 {background:#fff000;}
     </style>
@@ -45,6 +45,14 @@
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1386_01.jpg" title="김현정/김준기 교수">
+        </div>
+
+        <div class="evtCtnsBox evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1386_04.jpg" title="영어집중관리반이 답이다!">
+        </div>
+
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1386_03.jpg" title="영어집중 관리반이란?">            
         </div>
 
         <div class="evtCtnsBox evt02">
@@ -59,15 +67,11 @@
                 <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2019/09/1386_arrowL.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/09/1386_arrowR.png"></a></p>
             </div>
-        </div>
+        </div>     
 
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1386_03.jpg" title="영어집중 관리반이란?">            
-        </div>
-
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1386_04.jpg" title="영어집중관리반이 답이다!">
-        </div>
+        <div class="evtCtnsBox evt06">
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1386_06.jpg" title="영어집중 관리반이란?">            
+        </div>        
 
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1386_05.gif" usemap="#Map1386A" title="영어 집중 관리반 신청하기" border="0">

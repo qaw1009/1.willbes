@@ -165,21 +165,16 @@
                             $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-id'), $(this).val(), $(this).data('is-checked-name')];
                         });
 
-                        if (set_mem_idx != '') {
-                            $.each(arr_set_mem_idx,function(key,value) {
-                                $params[value] = [arr_set_mem_id[key], value];
-                            });
-                        }
-
                         var $params_length = Object.keys($params).length;
                         if ($params_length <= '0') {
                             alert('수신인 명단을 선택해주세요.');
                             return false;
                         }
 
-                        if ($params_length > '12') {
-                            alert('수신인 명단은 12개까지 선택 가능합니다.');
-                            return false;
+                        if (set_mem_idx != '') {
+                            $.each(arr_set_mem_idx,function(key,value) {
+                                $params[value] = [arr_set_mem_id[key], value];
+                            });
                         }
 
                         if (!confirm('수신인 명단에 등록하시겠습니까?')) {
@@ -188,37 +183,113 @@
 
                         switch (send_type_modal) {
                             case 'sms' :
-                                var j = 1;
-                                for (var i=1; i<=12; i++) {
-                                    if ($('#mem_name_'+i).val() == '') {
-                                        j = i;
-                                        break;
+                                var arr_temp_mem_phone = new Array();
+                                var arr_temp_mem_name = new Array();
+
+                                // 이전 담기
+                                $('input[name="mem_phone[]"]').each(function(i){
+                                    var mem_phone_val = $(this).val();
+                                    var mem_name_val = $('input[name="mem_name[]"]').eq(i).val();
+                                    if(mem_phone_val != '') {
+                                        arr_temp_mem_phone.push(mem_phone_val);
+                                        arr_temp_mem_name.push(mem_name_val);
                                     }
-                                    j++;
-                                }
-                                $.each($params, function(key, value) {
-                                    $('#mem_idx_'+j).val(key);
-                                    $('#mem_phone_'+j).val(value[1]);
-                                    $('#mem_name_'+j).val(value[2]);
-                                    j++;
                                 });
+
+                                // 추가 담기
+                                $.each($params, function(i, i_val) {
+                                    // 같은 전화번호 있는지 체크
+                                    var chk_overlap = false;
+                                    $.each(arr_temp_mem_phone, function(j, j_val) {
+                                        if(i_val[1] == j_val) {
+                                            chk_overlap = true;
+                                        }
+                                    });
+                                    if(chk_overlap == false){
+                                        arr_temp_mem_phone.push(i_val[1]);
+                                        arr_temp_mem_name.push(i_val[2]);
+                                    }
+                                });
+
+                                // 그리기
+                                var list_str = '';
+                                $('#mem_phone_table_1 tbody').empty();
+                                $('#mem_phone_table_2 tbody').empty();
+                                $.each(arr_temp_mem_phone, function(i, value) {
+                                    var num = i + 1;
+                                    list_str += '<tr>';
+                                    list_str += '	<td>' + num + '</td>';
+                                    list_str += '	<td>';
+                                    list_str += '		<input type="text" id="mem_name_' + num + '" name="mem_name[]" class="form-control mb-5" title="수신이름" value="' + arr_temp_mem_name[i] + '" maxlength="6">';
+                                    list_str += '	</td>';
+                                    list_str += '	<td>';
+                                    list_str += '		<input type="text" id="mem_phone_' + num + '" name="mem_phone[]" class="form-control" title="수신번호" value="' + value + '" maxlength="11">';
+                                    list_str += '	</td>';
+                                    list_str += '</tr>';
+
+                                    if(Math.floor(arr_temp_mem_phone.length/2) == i) {
+                                        $('#mem_phone_table_1 tbody').html(list_str);   //중간
+                                        list_str = '';
+                                    } else if(arr_temp_mem_phone.length == (i+1)) {
+                                        $('#mem_phone_table_2 tbody').html(list_str);   //끝
+                                    }
+                                });
+                                break;
                             case "message" :
-                                $('input[name="mem_id[]"]').val('');
+                                // 이전 담기
+                                var temp_mem_idx_val = $('input[name=temp_mem_idx]').val();
+                                var temp_mem_id_val = $('input[name=temp_mem_id]').val()
+                                var arr_temp_mem_idx = temp_mem_idx_val != null && typeof temp_mem_idx_val != 'undefined' && temp_mem_idx_val != '' ? temp_mem_idx_val.split(',') : new Array();
+                                var arr_temp_mem_id = temp_mem_id_val != null && typeof temp_mem_id_val != 'undefined' && temp_mem_id_val != '' ? temp_mem_id_val.split(',') : new Array();
+
+                                // 추가 담기
+                                $.each($params, function(i, i_val) {
+                                    if(i_val[0] == '') return true;
+                                    // 같은 아이디가 있는지 체크
+                                    var chk_overlap = false;
+                                    $.each(arr_temp_mem_id, function(j, j_val) {
+                                        if(i_val[0] == j_val) {
+                                            chk_overlap = true;
+                                        }
+                                    });
+                                    if(chk_overlap == false){
+                                        arr_temp_mem_id.push(i_val[0]);
+                                        arr_temp_mem_idx.push(i_val[1]);
+                                    }
+                                });
+
+                                // 그리기
+                                var list_str = '', arr_choice_mem_idx = '', arr_choice_mem_id = '';
+                                $('#mem_id_table_1 tbody').empty();
+                                $('#mem_id_table_2 tbody').empty();
+                                $.each(arr_temp_mem_id, function(i, value) {
+                                    var num = i + 1;
+                                    list_str += '<tr>';
+                                    list_str += '	<td>' + num + '</td>';
+                                    list_str += '	<td class="col-md-12 form-inline">';
+                                    list_str += '		<input type="text" id="mem_id_' + num + '" name="mem_id[]" class="form-control mb-5" value="' + arr_temp_mem_id[i] + '" maxlength="11" readonly="readonly" style="width: 100px;">';
+                                    list_str += '		<a href="#none" data-del-number="' + i +'" class="btn-member-del" data-=""><i class="fa fa-times red ml-10"></i></a>';
+                                    list_str += '	</td>';
+                                    list_str += '</tr>';
+
+                                    if(Math.floor(arr_temp_mem_id.length/2) == i) {
+                                        $('#mem_id_table_1 tbody').html(list_str);   //중간
+                                        list_str = '';
+                                    } else if(arr_temp_mem_id.length == (i+1)) {
+                                        $('#mem_id_table_2 tbody').html(list_str);   //끝
+                                    }
+
+                                    if(i != 0) arr_choice_mem_idx += ',';
+                                    arr_choice_mem_idx += arr_temp_mem_idx[i];
+
+                                    if(i != 0) arr_choice_mem_id += ',';
+                                    arr_choice_mem_id += arr_temp_mem_id[i];
+                                });
+
+                                $('input[name="temp_mem_idx"]').val(arr_choice_mem_idx);
+                                $('input[name="temp_mem_id"]').val(arr_choice_mem_id);
                                 $('input[name="choice_mem_idx"]').val('');
                                 $('input[name="choice_mem_id"]').val('');
-                                $('input[name="temp_mem_idx"]').val('');
-                                $('input[name="temp_mem_id"]').val('');
-                                var i=1;
-                                var arr_temp_idx = new Array();
-                                var arr_temp_id = new Array();
-                                $.each($params, function(key, value) {
-                                    arr_temp_idx[i-1] = key;
-                                    arr_temp_id[i-1] = value[0];
-                                    $('#mem_id_'+i).val(value[0]);
-                                    i++;
-                                });
-                                $('input[name="choice_mem_idx"]').val(arr_temp_idx);
-                                $('input[name="choice_mem_id"]').val(arr_temp_id);
                                 break;
                             case "mail" :
                                 var j = 1;
@@ -241,6 +312,7 @@
                         }
 
                         $("#modal_html2").modal('toggle');
+                        if($('.modal-content').is(':visible')) $('body').addClass('modal-open');   // 2개 이상의 레이어팝업이 열린 상황일때 하나가 닫히면서 이전 팝업이 스크롤이 안되는 현상 방지
                     });
 
                     // 기존 선택된 정보 json 변수 저장

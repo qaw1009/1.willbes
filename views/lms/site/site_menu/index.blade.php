@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 윌비스 사용자 운영 사이트 메뉴를 생성하는 메뉴입니다.</h5>
+    <h5>- 윌비스 사용자 운영 {{ $front_name }} 메뉴를 생성하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], true) !!}
@@ -84,7 +84,7 @@
                     { text: '<i class="fa fa-pencil mr-5"></i> 최상위 메뉴 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/site/siteMenu/listAjax') }}',
+                    'url' : '{{ site_url('/site/' . $contr_name . '/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), {});
@@ -124,7 +124,7 @@
             });
 
             // 주의 메시지 출력
-            $('div.txt-caution-info').html('<span class="red">* 사이트 메뉴 등록/수정 이후 `수동캐시저장` 버튼을 클릭해야만 운영(프런트) 사이트에 반영됩니다.</span>');
+            $('div.txt-caution-info').html('<span class="red">* {{ $front_name }} 메뉴 등록/수정 이후 `수동캐시저장` 버튼을 클릭해야만 운영(프런트) 사이트에 반영됩니다.</span>');
 
             // 카테고리 등록/수정 모달창 오픈
             $list_form.on('click', '.btn-regist, .btn-modify', function() {
@@ -141,14 +141,14 @@
                 }
 
                 $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/site/siteMenu/create/') }}' + uri_param,
+                    'url' : '{{ site_url('/site/' . $contr_name . '/create/') }}' + uri_param,
                     'width' : 900
                 });
             });
 
             // 수동캐시저장 버튼 클릭
             $('.btn-save-cache').on('click', function() {
-                if (!confirm('수동으로 사이트 메뉴 캐시를 업데이트하시겠습니까?\n(주의요망 : 전체 사이트 메뉴 캐시가 업데이트 됨)')) {
+                if (!confirm('수동으로 {{ $front_name }} 메뉴 캐시를 업데이트하시겠습니까?\n(주의요망 : 전체 {{ $front_name }} 메뉴 캐시가 업데이트 됨)')) {
                     return;
                 }
 
@@ -156,7 +156,7 @@
                     '{{ csrf_token_name() }}' : $list_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT'
                 };
-                sendAjax('{{ site_url('/site/siteMenu/saveCache') }}', data, function(ret) {
+                sendAjax('{{ site_url('/site/' . $contr_name . '/saveCache') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                     }
@@ -188,7 +188,7 @@
                     '_method' : 'PUT',
                     'params' : JSON.stringify($params)
                 };
-                sendAjax('{{ site_url('/site/siteMenu/reorder') }}', data, function(ret) {
+                sendAjax('{{ site_url('/site/' . $contr_name . '/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();

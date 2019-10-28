@@ -22,7 +22,8 @@ class Caching extends CI_Driver_Library
     protected $valid_drivers = array(
         'site',
         'site_menu',
-        'site_subject_professor'
+        'site_subject_professor',
+        'mobile_menu'
     );
 
     /**

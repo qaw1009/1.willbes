@@ -6,6 +6,7 @@ class BannerFModel extends WB_Model
     private $_table = [
         'banner' => 'lms_banner',
         'banner_disp' => 'lms_banner_disp',
+        'banner_imagemap' => 'lms_banner_imagemap'
     ];
 
     public function __construct()
@@ -28,7 +29,12 @@ class BannerFModel extends WB_Model
         }
 
         $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.LinkUrlType, B.PopWidth, B.PopHeight, B.BannerFullPath, B.BannerImgName, B.Desc
-            , BD.DispName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
+            , BD.DispName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime
+            , (SELECT CONCAT("[", GROUP_CONCAT(JSON_OBJECT("ImgType", `ImgType`, "ImgArea", `ImgArea`, "LinkUrl", LinkUrl)), "]")
+                FROM '. $this->_table['banner_imagemap'] . '
+                WHERE BIdx = B.BIdx AND IsUse = "Y" AND IsStatus = "Y" AND ImgType != "default"
+            ) AS BannerImgMapData
+            ';
         $arr_condition = [
             'EQ' => [
                 'BD.SiteCode' => $site_code,

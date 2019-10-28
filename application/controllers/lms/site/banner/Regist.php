@@ -88,6 +88,10 @@ class Regist extends \app\controllers\BaseController
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
+
+            // 이미지맵 연결 데이터 조회
+            $arr_image_map_data = $this->bannerRegistModel->listBannerImageMap($b_idx);
+            $data['imageMaps'] = $arr_image_map_data;
         }
 
         $this->load->view("site/banner/create", [
@@ -158,6 +162,24 @@ class Regist extends \app\controllers\BaseController
         $params = json_decode($this->_req('params'), true);
         $result = $this->bannerRegistModel->delBanner($params);
         $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
+     * 이미지맵 개별 삭제
+     */
+    public function delImageMap()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'bi_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->bannerRegistModel->removeBannerImageMap($this->_reqP('bi_idx'));
+        $this->json_result($result, '삭제 처리 되었습니다.', $result);
     }
 
     /**

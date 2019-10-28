@@ -61,8 +61,9 @@ if (!function_exists('banner_html')) {
             $data[0] = $end_banner;
         }
 
+        $map_data = '';
         foreach ($data as $row) {
-            $banner_img = '<img src="' . $row['BannerFullPath'] . $row['BannerImgName'] . '" alt="' . $row['BannerName'] . '">';
+            $banner_img = '<img src="' . $row['BannerFullPath'] . $row['BannerImgName'] . '" alt="' . $row['BannerName'] . '" usemap="#BannerImgMap' . $row['BIdx'] . '">';
             $a_start = '';
             $a_end = '';
 
@@ -83,14 +84,34 @@ if (!function_exists('banner_html')) {
                 }
             }
 
+            if (empty($row['BannerImgMapData']) === false) {
+                $map_data .= "<map name='BannerImgMap{$row['BIdx']}' id='BannerImgMap{$row['BIdx']}'>";
+                $arr_img_map_data = json_decode($row['BannerImgMapData'], true);
+                foreach ($arr_img_map_data as $map_row) {
+                    $map_link = "href='#none'";
+                    if (empty($map_row['LinkUrl']) === false && $map_row['LinkUrl'] != '#') {
+                        if ($row['LinkType'] == 'layer') {
+                            $set_map_link_url = app_to_env_url($map_row['LinkUrl']) . '/event/popupRegistCreateByBanner?banner_idx=' . $row['BIdx'];
+                            $map_link = 'onclick="event_layer_popup(\'' . $set_map_link_url . '\');"';
+                        } else {
+                            $set_map_link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($map_row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www');
+                            if ($row['LinkType'] == 'popup') {
+                                $map_link = 'onclick="popupOpen(\'' . $set_map_link_url . '\');"';
+                            } else {
+                                $map_link = 'href="'.$set_map_link_url.'" target='.$row['LinkType'];
+                            }
+                        }
+                    }
+                    $map_data .= "<area shape='{$map_row['ImgType']}' coords='{$map_row['ImgArea']}' {$map_link} style='cursor: pointer;'/>";
+                }
+                $map_data .= '</map>';
+            }
             $html .= '<div>' . $a_start . $banner_img . $a_end . '</div>';
-
             if ($is_desc === true) {
                 $html .= '<p>' . $row['BannerName'] . '</p>' . $row['Desc'];
             }
         }
-
-        return $rolling_start . $html . $rolling_end;
+        return $rolling_start . $html . $rolling_end . $map_data;
     }
 }
 

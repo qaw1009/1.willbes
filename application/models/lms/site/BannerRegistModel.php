@@ -6,6 +6,7 @@ class BannerRegistModel extends WB_Model
     private $_table = [
         'banner' => 'lms_banner',
         'banner_disp' => 'lms_banner_disp',
+        'banner_imageMap' => 'lms_banner_imagemap',
         'event_lecture' => 'lms_event_lecture',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
@@ -104,6 +105,24 @@ class BannerRegistModel extends WB_Model
     }
 
     /**
+     * 이미지맵 연결 데이터 조회
+     * @param $b_idx
+     * @return mixed
+     */
+    public function listBannerImageMap($b_idx)
+    {
+        $column = "BiIdx, ImgArea, ImgType, LinkUrl";
+        $from = "
+            from {$this->_table['banner_imageMap']}
+        ";
+
+        $where = ' where BIdx = ? and IsStatus = "Y" and IsStatus = "Y"';
+        $order_by_offset_limit = ' order by BIdx asc';
+
+        return $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit, [$b_idx])->result_array();
+    }
+
+    /**
      * 배너 등록
      * @param array $input
      * @return array|bool
@@ -168,6 +187,24 @@ class BannerRegistModel extends WB_Model
                 throw new \Exception('배너 등록에 실패했습니다.');
             }
             $b_idx = $this->_conn->insert_id();
+
+            //이미지맵 저장
+            $image_map_types = element('image_map_type', $input);
+            $image_map_areas = element('image_map_area', $input);
+            $image_map_link_urls = element('image_map_link_url', $input);
+            if (count($image_map_types) >= 0) {
+                foreach ($image_map_types as $key => $val) {
+                    $imageMap_data['BIdx'] = $b_idx;
+                    $imageMap_data['ImgType'] = $val;
+                    $imageMap_data['ImgArea'] = $image_map_areas[$key];
+                    $imageMap_data['LinkUrl'] = $image_map_link_urls[$key];
+                    $imageMap_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $imageMap_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addBannerImageMap($imageMap_data) === false) {
+                        throw new \Exception('이미지맵 등록에 실패했습니다.');
+                    }
+                }
+            }
 
             //이미지 등록
             $this->load->library('upload');
@@ -256,6 +293,31 @@ class BannerRegistModel extends WB_Model
 
             if ($this->_conn->set($data)->where('BIdx', $b_idx)->update($this->_table['banner']) === false) {
                 throw new \Exception('배너 수정에 실패했습니다.');
+            }
+
+            /**
+             * 이미지맵 수정
+             * 1. 기존 데이터 N 업데이트 -> 넘어온 데이터 저장
+             * 2. 빈값이 들어올 경우에도 기존 데이터 N 업데이트 진행
+             */
+            $image_map_types = element('image_map_type', $input);
+            $image_map_areas = element('image_map_area', $input);
+            $image_map_link_urls = element('image_map_link_url', $input);
+            if (count($image_map_types) >= 0) {
+                $upd_imageMap_data['BIdx'] = $b_idx;
+                $this->_modifyBannerImageMap($upd_imageMap_data);
+
+                foreach ($image_map_types as $key => $val) {
+                    $imageMap_data['BIdx'] = $b_idx;
+                    $imageMap_data['ImgType'] = $val;
+                    $imageMap_data['ImgArea'] = $image_map_areas[$key];
+                    $imageMap_data['LinkUrl'] = $image_map_link_urls[$key];
+                    $imageMap_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $imageMap_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addBannerImageMap($imageMap_data) === false) {
+                        throw new \Exception('이미지맵 수정에 실패했습니다.');
+                    }
+                }
             }
 
             //이미지 수정
@@ -414,6 +476,25 @@ class BannerRegistModel extends WB_Model
     }
 
     /**
+     * 이미지맵 개별 삭제 (N 업데이트)
+     * @param $bi_idx
+     * @return array|bool
+     */
+    public function removeBannerImageMap($bi_idx)
+    {
+        try {
+            $upd_imageMap_data['BiIdx'] = $bi_idx;
+            if ($this->_modifyBannerImageMap($upd_imageMap_data) === false) {
+                throw new \Exception('이미지맵 개별 삭제에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 사이트 코드, 노출섹션, 배너위치 별 정렬순서 값 조회
      * @param $site_code
      * @param $cate_code
@@ -439,5 +520,45 @@ class BannerRegistModel extends WB_Model
     {
         $attach_file_names[] = 'banner_' . date('YmdHis');
         return $attach_file_names;
+    }
+
+    /**
+     * 이미지맵 등록
+     * @param $input
+     * @return bool
+     */
+    private function _addBannerImageMap($input)
+    {
+        try {
+            if ($this->_conn->set($input)->insert($this->_table['banner_imageMap']) === false) {
+                throw new \Exception('이미지맵 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 이미지맵 수정
+     * @param $whereData
+     * @return bool
+     */
+    private function _modifyBannerImageMap($whereData)
+    {
+        try {
+            $input['IsStatus'] = 'N';
+            $input['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+            $input['UpdDatm'] = date('Y-m-d H:i:s');
+
+            $this->_conn->set($input)->where($whereData);
+
+            if ($this->_conn->update($this->_table['banner_imageMap']) === false) {
+                throw new \Exception('이미지맵 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
     }
 }

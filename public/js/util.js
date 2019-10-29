@@ -46,7 +46,7 @@ function fnMobile($info_url, $license)
     StarPlayerApp.license = $license;
     StarPlayerApp.version = "1.0.0";
     StarPlayerApp.android_version = "1.7.3";
-    StarPlayerApp.ios_version = "1.6.46";
+    StarPlayerApp.ios_version = "1.0.0";
     StarPlayerApp.referer = window.location.href;
     StarPlayerApp.android_referer_return = "false";
     StarPlayerApp.debug = "false";

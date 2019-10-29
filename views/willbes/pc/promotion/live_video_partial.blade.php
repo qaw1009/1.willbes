@@ -7,7 +7,7 @@
     /*크롬*/
     @@media screen and (-webkit-min-device-pixel-ratio:0) {
     #movieFrame2 {position:relative; width:1120px; height:694px; margin:0 auto; padding-top:14px; background:url(https://static.willbes.net/public/images/promotion/live/liveTV.png) no-repeat center center;}
-    .embedWrap {position:relative; width:980px; height:551px; background:url(https://static.willbes.net/public/images/promotion/live/liveBefore.jpg) no-repeat center center;}
+    .embedWrap {position:relative; width:980px; height:551px; background:url(https://static.willbes.net/public/images/promotion/2019/10/liveIng_1.jpg) no-repeat center center;}
     .embed-container {padding-bottom:46.25%; overflow:hidden; width:980px; height:auto; margin:0 auto}
     .mobileCh {position:absolute; left:0; bottom:0; width:980px;}
     .mobileCh li {display:inline; float:left; width:490px;}
@@ -68,7 +68,7 @@
 
     @if ($live_type == 'standby')
         {{--방송 전--}}
-        <img src="https://static.willbes.net/public/images/promotion/live/liveBefore.jpg" title="방송전">
+        <img src="https://static.willbes.net/public/images/promotion/2019/10/liveIng_1.jpg" title="방송전">
 
     @elseif ($live_type == 'on' && $live_video_type == 'on')
         {{--7/2 ~ 7.15 오전 9시 30분 방송 중--}}
@@ -107,7 +107,7 @@
 
     @elseif ($live_type == 'on' && $live_video_type == 'off')
         {{--방송 전--}}
-        <img src="https://static.willbes.net/public/images/promotion/live/liveBefore.jpg" title="방송전">
+        <img src="https://static.willbes.net/public/images/promotion/2019/10/liveIng_1.jpg" title="방송전">
     @else
         {{--방송종료 00:00 부터 노출--}}
         <img src="https://static.willbes.net/public/images/promotion/live/liveAfter.jpg" title="방송종료" />

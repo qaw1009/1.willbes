@@ -22,6 +22,9 @@
         /************************************************************/     
 
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2019/10/1410_top_bg.jpg") no-repeat center top}       
+
+        .skybanner {position:fixed;top:250px;right:0;z-index:1;}
+
         .evt01 {background:#eee;}
         .evt02 {background:#dfdfdf;}
         .evt03 {background:url("https://static.willbes.net/public/images/promotion/2019/10/1410_03_bg.jpg") no-repeat center top}
@@ -46,7 +49,11 @@
         .evt06 {background:#ac3433;}	
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">       
+    <div class="p_re evtContent NGR" id="evtContainer">     
+        <ul class="skybanner">
+            <li><a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="할인받고 수강하기"></a></li>          
+        </ul> 
+
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_top.jpg" title="불꽃소방 1만 문풀의 법칙"/>
         </div>
@@ -55,7 +62,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_01.jpg" title="1만 문풀의 법칙" />       
         </div>
 
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1410_02.jpg" usemap="#Map1410C" title="1만 문풀의 법칙" border="0" />
             <map name="Map1410C" id="Map1410C">
                 <area shape="rect" coords="162,772,331,829" href="https://pass.willbes.net/pass/offPackage/show/prod-code/157366" target="_blank" alt="2개월 공채" />

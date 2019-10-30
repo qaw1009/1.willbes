@@ -104,7 +104,7 @@
                                     </dt>                                    
                                     <dt>
                                         <a href=" https://www.instagram.com/willbes_gong/" target="_blank">
-                                            <img src="https://pass.local.willbes.net/public/img/willbes/gnb/icon_instagram.png" title="인스타그램">
+                                            <img src="https://static.willbes.net/public/images/promotion/2019/10/icon_instagram.png" title="인스타그램">
                                         </a>
                                     </dt>                                   
                                     

@@ -115,6 +115,12 @@
                 <button type="button" class="btn btn-info btn-live-add" style="margin-bottom: 2px;" data-add-type="add">추가</button>
             </div>
 
+            <div class="col-md-10 form-inline mt-10">
+                <label>플레이어</label>
+                <input type="radio" class="flat" id="promotion_live_player_jw" name="promotion_live_player" value="jw" required="required" @if($data['PromotionLivePlayer'] == 'jw' || empty($data['PromotionLivePlayer']) === true)checked="checked"@endif> <label for="promotion_live_player_jw" class="input-label">내부 플레이어</label>
+                <input type="radio" class="flat" id="promotion_live_player_youtube" name="promotion_live_player" value="youtube" required="required" @if($data['PromotionLivePlayer'] == 'youtube')checked="checked"@endif> <label for="promotion_live_player_youtube" class="input-label">유튜브</label>
+            </div>
+
             <div class="col-md-12 form-inline mt-10">
                 <table class="table table-striped table-bordered" id="table_promotion_live_detail">
                     <thead>
@@ -261,7 +267,7 @@
                                     </select>
                                     <select class="form-control ml-5" name="file_end_min[]">
                                         @php
-                                            $end_min = $row['FileEndMin'];;
+                                            $end_min = $row['FileEndMin'];
                                             for($i=0; $i<=59; $i++) {
                                                 $str = (strlen($i) <= 1) ? '0' : '';
                                                 $selected = ($str.$i == $end_min) ? "selected='selected'" : "";
@@ -473,6 +479,50 @@
                 add_lists += '</td>';
                 add_lists += '<td><input type="text" class="form-control" name="live_url[]" value="'+$('#set_live_url').val()+'"></td>';
                 add_lists += '<td><input type="file" name="live_attach_file[]" class="form-control input-file" title="첨부" style="width: 200px;"/></td>';
+
+
+                add_lists += '<td>';
+                add_lists += '	<div class="input-group mb-0">';
+                add_lists += '		<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
+                add_lists += '		<input type="text" class="form-control datepicker" name="file_start_date[]" value="">';
+                add_lists += '	</div>';
+                add_lists += '	<select class="form-control ml-5" name="file_start_hour[]">';
+                for(var i=0; i<=23; i++) {
+                    var str = (String(i).length <= 1) ? '0' : '';
+                    var selected = (i == 0) ? 'selected="selected"' : '';
+                    add_lists += '<option value="'+str+i+'" '+selected+'>'+str+i+'</option>';
+                }
+                add_lists += '	</select>';
+                add_lists += '	<select class="form-control ml-5" name="file_start_min[]">';
+                for(var i=0; i<=59; i++) {
+                    var str = (String(i).length <= 1) ? '0' : '';
+                    var selected = (i == 0) ? 'selected="selected"' : '';
+                    add_lists += '<option value="'+str+i+'" '+selected+'>'+str+i+'</option>';
+                }
+                add_lists += '	</select>';
+                add_lists += '</td>';
+                add_lists += '<td>';
+                add_lists += '	<div class="input-group mb-0">';
+                add_lists += '		<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
+                add_lists += '		<input type="text" class="form-control datepicker" name="file_end_date[]" value="">';
+                add_lists += '	</div>';
+                add_lists += '	<select class="form-control ml-5" name="file_end_hour[]">';
+                for(var i=0; i<=23; i++) {
+                    var str = (String(i).length <= 1) ? '0' : '';
+                    var selected = (i == 0) ? 'selected="selected"' : '';
+                    add_lists += '<option value="'+str+i+'" '+selected+'>'+str+i+'</option>';
+                }
+                add_lists += '	</select>';
+                add_lists += '	<select class="form-control ml-5" name="file_end_min[]">';
+                for(var i=0; i<=59; i++) {
+                    var str = (String(i).length <= 1) ? '0' : '';
+                    var selected = (i == 0) ? 'selected="selected"' : '';
+                    add_lists += '<option value="'+str+i+'" '+selected+'>'+str+i+'</option>';
+                }
+                add_lists += '	</select>';
+                add_lists += '</td>';
+
+
                 add_lists += '<td>';
                 add_lists += '<select class="form-control ml-5" name="live_is_use[]">';
                 add_lists += '<option value="Y">사용</option><option value="N">미사용</option>';

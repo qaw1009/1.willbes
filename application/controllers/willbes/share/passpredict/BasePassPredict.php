@@ -354,6 +354,9 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function areaAvrAjax(){
         $PredictIdx = $this->_req("PredictIdx");
+        if (empty($PredictIdx) === true) {
+            return $this->json_error('합격예측코드가 없습니다. 관리자에게 문의해 주세요.', _HTTP_BAD_REQUEST);
+        }
         $order = 'area';
         $data = $this->surveyModel->statisticsListLine($PredictIdx, $order);
         $results = [];

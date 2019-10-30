@@ -50,7 +50,7 @@ class StudentModel extends WB_Model
                             lms_order_product as OP
                             join lms_product_r_sublecture as rs on rs.ProdCode = OP.ProdCode and rs.IsStatus = 'Y'
                             join lms_my_lecture as ML on ML.OrderIdx = OP.OrderIdx AND ML.OrderProdIdx = OP.OrderProdIdx
-                                                        AND ML.ProdCode = OP.ProdCode AND ML.ProdCodeSub = rs.ProdCode
+                                                        AND ML.ProdCode = OP.ProdCode AND ML.ProdCodeSub = rs.ProdCodeSub
                         WHERE
                             OP.PayStatusCcd IN ('676001', '676007')
                             AND rs.ProdCodeSub = A.ProdCode

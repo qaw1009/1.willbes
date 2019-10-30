@@ -276,7 +276,7 @@
                                         </div>
                                         <dl class="w-info">
                                             <dt>
-                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1', '{{ front_url('/offLecture') }}')">
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1', '{{ front_url('/offLecture') }}','','InfoFormOff')">
                                                     <strong class="open-info-modal">강좌상세정보</strong>
                                                 </a>
                                             </dt>
@@ -344,14 +344,14 @@
                                             </div>
                                             <div class="bookBuyBtns">
                                                 @if($book_row['wSaleCcd'] == '112001')
-                                                    <a href="#none" class="btnCart" name="btn_off_cart" data-direct-pay="N" data-is-redirect="Y" data-prod-code="{{ $book_row['ProdBookCode']  }}">장바구니</a>
+                                                    <a href="#none" class="btnCart" name="btn_off_cart" data-prod-type="book" data-direct-pay="N" data-is-redirect="N" data-prod-code="{{ $book_row['ProdBookCode']  }}">장바구니</a>
                                                     <a href="#none" class="btnBuy" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-prod-code="{{ $book_row['ProdBookCode']  }}">바로결제</a>
                                                 @endif
                                             </div>
                                             <div class="bookbuyInfo">
                                                 <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003'){{'tx-red'}}@elseif($book_row['wSaleCcd'] == '112004'){{'tx-purple-gray'}}@endif">
                                                 [{{ $book_row['wSaleCcdName'] }}]</label>
-                                                <span class="d_none">
+                                                <span class="">
                                                     <input type="checkbox" name="prod_code[]"  value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                                 </span>
                                                 <span class="tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
@@ -362,8 +362,8 @@
                                 </ul>
                                 <div class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                 <div>
-                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ front_url('/offLecture') }}')">
-                                        <strong>교재상세정보</strong></a>
+                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ front_url('/offLecture') }}','','InfoFormOff')">
+                                        <strong class="open-info-modal">교재상세정보</strong></a>
                                 </div>
                             @else
                                 <div>
@@ -379,7 +379,7 @@
             <!-- willbes-Lec -->
         @endforeach
 
-            <div id="InfoForm" class="willbes-Layer-Box d3"></div>
+            <div id="InfoFormOff" class="willbes-Layer-Box d3"></div>
         </form>
 
         {{-- footer script --}}
@@ -392,18 +392,14 @@
 <!-- End Container -->
 <script type="text/javascript">
     $(document).ready(function() {
-        // 검색어 입력 후 엔터
         $('#search_value').on('keyup', function() {
             if (window.event.keyCode === 13) {
                 goSearch();
             }
         });
-
-        // 검색 버튼 클릭
         $('#btn_search').on('click', function() {
             goSearch();
         });
-
         var goSearch = function() {
             goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
         };

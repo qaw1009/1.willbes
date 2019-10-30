@@ -201,7 +201,8 @@
                 }
             });
         }, function(ret, status) {
-            alert('에러가 발생하였습니다.');
+            (typeof ret.ret_msg === "undefined") ? alert('잘못된 접근 입니다.') : alert(ret.ret_msg);
+            location.href = '{{ site_url('/') }}';
         }, true, 'POST');
     }
 

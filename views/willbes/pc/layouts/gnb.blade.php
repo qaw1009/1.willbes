@@ -103,8 +103,8 @@
                                         </a>
                                     </dt>                                    
                                     <dt>
-                                        <a href="https://www.facebook.com/willbesgosi" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" title="페이스북">
+                                        <a href=" https://www.instagram.com/willbes_gong/" target="_blank">
+                                            <img src="https://pass.local.willbes.net/public/img/willbes/gnb/icon_instagram.png" title="인스타그램">
                                         </a>
                                     </dt>                                   
                                     

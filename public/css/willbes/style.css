@@ -1265,9 +1265,13 @@ table.auTable tr td {
 .List-Table {
     padding: 20px 0;
 }
-.List-Table li {
+.List-Table li {    
+    position: relative;
     font-size: 13px;
-    line-height: 24px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
 }
 .List-Table li a {
     display: inline-block;

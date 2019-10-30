@@ -36,7 +36,6 @@
         .slide_con p.leftBtn {left:0}
         .slide_con p.rightBtn {right:0}
     
-        .evt01 {padding-bottom:100px}
         .evt01 .slide_con {position:relative; width:950px; margin:0 auto}
         .evt01 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
         .evt01 .slide_con p.leftBtn {left:-80px}

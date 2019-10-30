@@ -34,7 +34,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1442_top.jpg" alt="기미진 국어 아침특강 라이브" usemap="#Map1442_top" border="0" />
             <map name="Map1442_top" id="Map1442_top">
                 <area shape="rect" coords="97,808,226,942" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=국어&tab=open_lecture" target="_blank" />
-                <area shape="rect" coords="236,809,371,944" href="javascript:alert('준비중입니다.')" />
+                <area shape="rect" coords="236,809,371,944" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" alt="자료다운" />
             </map>
         </div>
 
@@ -49,11 +49,15 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1442_02.jpg" usemap="#Map1442_b" title="라이브 특강 진행 안내" border="0">
             <map name="Map1442_b" id="Map1442_b">
                 <area shape="rect" coords="608,393,737,527" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=국어&tab=open_lecture" target="_blank" />
-                <area shape="rect" coords="746,391,883,528" href="javascript:alert('준비중입니다.')" />
-            </map>      
+                <area shape="rect" coords="746,391,883,528" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" alt="자료다운" />
+            </map>
             <div class="liveWrap">
-                @include('willbes.pc.promotion.live_video_partial') 
-            </div>                          
+                @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
+                    @include('willbes.pc.promotion.live_video_youtube_partial')
+                @else
+                    @include('willbes.pc.promotion.live_video_partial')
+                @endif
+            </div>
         </div>
 
         <div class="evtCtnsBox evt03">

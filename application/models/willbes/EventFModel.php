@@ -788,7 +788,7 @@ class EventFModel extends WB_Model
     public function findEventForPromotion($promotion_code, $test_type = '')
     {
         $column = '
-            ElIdx, Content, OptionCcds, EventName, PromotionCode, PromotionParams, PromotionLiveType, RegisterEndDate, CommentUseArea, LimitType, PromotionCnt
+            ElIdx, Content, OptionCcds, EventName, PromotionCode, PromotionParams, PromotionLiveType, PromotionLivePlayer, RegisterEndDate, CommentUseArea, LimitType, PromotionCnt
         ';
         $from = "
             FROM {$this->_table['event_lecture']}
@@ -934,6 +934,16 @@ class EventFModel extends WB_Model
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$promotion_code])->result_array();
+    }
+
+    /**
+     * 프로모션 라이브송출 기간에 맞는 데이터 1건 가져오기
+     * @param $promotion_code
+     * @return mixed
+     */
+    public function findEventPromotionForLiveVideo($promotion_code)
+    {
+        //TODO
     }
 
     public function listEventPromotionForLiveVideo($promotion_code)

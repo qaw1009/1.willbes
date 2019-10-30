@@ -63,14 +63,14 @@
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1444_02.jpg" usemap="#Map" border="0" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="396,655,731,778" href="#none" />
+                <area shape="rect" coords="396,655,731,778" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/157684" target="_blank" />
             </map>      
         </div>
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1444_03.jpg" usemap="#Map" border="0" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="359,673,766,781" href="#none" />
+                <area shape="rect" coords="359,673,766,781" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605006" target="_blank" />
             </map>        
         </div>
 

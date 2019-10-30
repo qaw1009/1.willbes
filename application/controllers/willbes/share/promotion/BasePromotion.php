@@ -51,23 +51,24 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 프로모션 라이브송출 조회
         $today_now = time();
-        $arr_base['promotion_live_data'] = ($data['PromotionLiveType'] == 'Y') ? $this->eventFModel->listEventPromotionForLiveVideo($data['PromotionCode']) : [];
-        $arr_base['promotion_live_file_link'] = 'javascript:alert(\'준비중입니다.\')';
-        $arr_base['promotion_live_file_yn'] = 'N';
-        if (empty($arr_base['promotion_live_data']) === false) {
-            foreach ($arr_base['promotion_live_data'] as $row) {
-                if(empty($row['FileStartDatm']) === false && empty($row['FileEndDatm']) === false){
-                    $arr_base['promotion_live_file_link'] = 'javascript:alert(\'라이브 당일 '.$row['FileStartHour'].'시 '.$row['FileStartMin'].'분부터 다운받으실 수 있습니다.\')';
-                    $arr_base['promotion_live_file_yn'] = 'N';
-                    if($today_now >= strtotime($row['FileStartDatm']) && $today_now < strtotime($row['FileEndDatm'])){
-                        $arr_base['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
-                        $arr_base['promotion_live_file_yn'] = 'Y';
-                        break;
+        $promotion_live_data = ($data['PromotionLiveType'] == 'Y') ? $this->eventFModel->listEventPromotionForLiveVideo($data['PromotionCode']) : [];
+        $promotion_live_file_link = 'javascript:alert(\'준비중입니다.\')';
+        $promotion_live_file_yn = 'N';
+        if (empty($promotion_live_data) === false) {
+            foreach ($promotion_live_data as $row) {
+                if(empty($row['FileStartDatm']) === false && empty($row['FileEndDatm']) === false) {
+                    $promotion_live_file_link = 'javascript:alert(\'라이브 당일 '.$row['FileStartHour'].'시 '.$row['FileStartMin'].'분부터 다운받으실 수 있습니다.\')';
+                    $promotion_live_file_yn = 'N';
+                    if($today_now >= strtotime($row['FileStartDatm']) && $today_now < strtotime($row['FileEndDatm'])) {
+                        $promotion_live_file_link = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
+                        $promotion_live_file_yn = 'Y';
                     }
                 }
             }
         }
-
+        $arr_base['promotion_live_data'] = $promotion_live_data;
+        $arr_base['promotion_live_file_link'] = $promotion_live_file_link;
+        $arr_base['promotion_live_file_yn'] = $promotion_live_file_yn;
         $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing';
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;

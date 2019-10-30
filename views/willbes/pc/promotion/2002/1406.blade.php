@@ -21,13 +21,9 @@
 
         /************************************************************/
 
-        .skybanner {
-            position:fixed;
-            top:280px;
-            right:0;
-            z-index:1;
-        }
+        .skybanner {position:fixed;top:280px;right:0;z-index:1;}
         .skybanner a {display:block; margin-bottom:10px}
+        .skybanner2{position:fixed;top:500px;right:0;z-index:1}
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#ebebeb}
@@ -56,6 +52,7 @@
         .wb_04 {background:#fff;}
         .wb_05 {background:#f3f3f3;}
         .wb_06 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1406_05_bg.jpg) no-repeat center top}
+        .wb_07{background:#40c8f4;}
 
     </style>
 
@@ -63,7 +60,11 @@
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
             <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1406_sky.png" alt="" ></a>
-        </div>             
+        </div>       
+
+        <div class="skybanner2" >
+            <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1406_sky2.png" alt="" ></a>
+        </div>          
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
@@ -115,12 +116,19 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_04.jpg" alt="더블할인 이벤트 신청하기"/>            
         </div> 
                
-        <div class="evtCtnsBox wb_06" id="to_go">
+        <div class="evtCtnsBox wb_06" >
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_05.jpg" alt="튜터들이 온다"  usemap="#Map1406B" border="0"/>
             <map name="Map1406B" id="Map1406B">
                 <area shape="rect" coords="213,999,908,1113" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
             </map>
         </div>
+
+        <div class="evtCtnsBox wb_07" id="to_go">
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_07.jpg" alt="튜터링 관리반 자세히보기" usemap="#Map" border="0"/>
+            <map name="Map" id="Map">
+                <area shape="rect" coords="351,1234,762,1358" href="https://police.willbes.net/pass/support/notice/show?board_idx=241966&" target="_blank" />
+            </map>            
+        </div> 
       
     </div>
     <!-- End Container -->

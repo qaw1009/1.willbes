@@ -344,14 +344,14 @@
                                             </div>
                                             <div class="bookBuyBtns">
                                                 @if($book_row['wSaleCcd'] == '112001')
-                                                    <a href="#none" class="btnCart" name="btn_off_cart" data-prod-type="book" data-direct-pay="N" data-is-redirect="N" data-prod-code="{{ $book_row['ProdBookCode']  }}">장바구니</a>
+                                                    <a href="#none" class="btnCart" name="btn_off_cart" data-prod-type="book" data-direct-pay="N" data-is-redirect="Y" data-prod-code="{{ $book_row['ProdBookCode']  }}">장바구니</a>
                                                     <a href="#none" class="btnBuy" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-prod-code="{{ $book_row['ProdBookCode']  }}">바로결제</a>
                                                 @endif
                                             </div>
                                             <div class="bookbuyInfo">
                                                 <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003'){{'tx-red'}}@elseif($book_row['wSaleCcd'] == '112004'){{'tx-purple-gray'}}@endif">
                                                 [{{ $book_row['wSaleCcdName'] }}]</label>
-                                                <span class="">
+                                                <span class="d_none">
                                                     <input type="checkbox" name="prod_code[]"  value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                                 </span>
                                                 <span class="tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>

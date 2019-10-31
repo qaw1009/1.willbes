@@ -2842,6 +2842,9 @@ table.lecTable tr td .lecBuyBtns li {
     text-align: center;
     border:1px solid #1a8ccc;
 }
+table.lecTable tr td .lecBuyBtns li a {
+    display: block;
+}
 table.lecTable tr td .lecBuyBtns li.btnCart {
     border:1px solid #707070;
     color:#fff;

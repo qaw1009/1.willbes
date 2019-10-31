@@ -167,6 +167,7 @@
 
     {{--상세페이지 이동--}}
     function goShowOff(prod_code, cate_code) {
-        location.href = '{{ front_url('/offLecture/show') }}/cate/' + cate_code + '/prod-code/' + prod_code;
+        {{--location.href = '{{ front_url('/offLecture/show') }}/cate/' + cate_code + '/prod-code/' + prod_code;--}}
+        location.href = frontPassUrl('/offLecture/show/cate/' + cate_code + '/prod-code/' + prod_code);
     }
 </script>

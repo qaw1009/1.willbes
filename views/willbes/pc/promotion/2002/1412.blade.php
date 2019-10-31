@@ -120,15 +120,22 @@
         </div>
 
         <div class="evtCtnsBox wb_cts07" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_07.jpg" alt="프리미엄 단과반" usemap="#Map1412c" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_07_v2.jpg" alt="프리미엄 단과반" usemap="#Map1412c" border="0"  />
             <map name="Map1412c" id="Map1412c">
-                <area shape="rect" coords="917,591,1015,628" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1056" target="_blank" />
-                <area shape="rect" coords="916,639,1015,678" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
-                <area shape="rect" coords="914,689,1018,727" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1055" target="_blank" />
-                <area shape="rect" coords="915,742,1016,779" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1055" target="_blank" />
-                <area shape="rect" coords="917,788,1018,829" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1057" target="_blank" />
-                <area shape="rect" coords="913,841,1019,878" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
-                <area shape="rect" coords="913,890,1016,927" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1058" target="_blank" />
+                <area shape="rect" coords="787,610,885,647" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1056" target="_blank" />
+                <area shape="rect" coords="786,658,885,697" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
+                <area shape="rect" coords="785,708,889,746" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1055" target="_blank" />
+                <area shape="rect" coords="785,760,886,797" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1055" target="_blank" />
+                <area shape="rect" coords="784,808,885,849" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1057" target="_blank" />
+                <area shape="rect" coords="782,859,888,896" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
+                <area shape="rect" coords="784,910,887,947" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1058" target="_blank" />
+                <area shape="rect" coords="926,611,1026,647" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157653" target="_blank" />
+                <area shape="rect" coords="927,658,1025,696" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157663" target="_blank" />
+                <area shape="rect" coords="925,710,1024,747" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157657" target="_blank" />
+                <area shape="rect" coords="926,760,1026,797" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157659" target="_blank" />
+                <area shape="rect" coords="924,810,1026,848" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157647" target="_blank" />
+                <area shape="rect" coords="926,859,1025,896" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157664" target="_blank" />
+                <area shape="rect" coords="925,912,1024,945" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157651" target="_blank" />
             </map>
         </div>
 

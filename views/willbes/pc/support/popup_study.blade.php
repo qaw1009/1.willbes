@@ -187,7 +187,7 @@
                     </table>
                     <div class="search-Btn mt20 h36 p_re">
                         <button type="submit" onclick="closeWin('AddModify'),openWin('AddList')" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
-                            <span class="tx-purple-gray">취소</span>
+                            <span class="tx-purple-gray">목록</span>
                         </button>
                         <button type="button" id="btn_submit" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
                             <span>저장</span>

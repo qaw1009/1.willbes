@@ -37,7 +37,7 @@
 
             // 장바구니 이동 버튼 클릭
             $buy_layer.on('click', '.answerBox_block', function() {
-                goCartPage(getCartType($regi_form));
+                goCartPage(getCartType($regi_form),'on');
             });
 
             // 계속구매 버튼 클릭
@@ -52,7 +52,8 @@
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
 
-                var $result = cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);
+                {{--var $result = cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);--}}
+                var $result = addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
 
                 if ($is_redirect === 'N' && $result === true) {
                     openWin('pocketBox');

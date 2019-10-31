@@ -3100,7 +3100,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .lecInfoTable .w-sub .w-obj {
     width: 65px;
-    text-align: right;
+    text-align: left;
     padding-right: 10px;
 }
 .lecInfoTable .w-sub .w-subtit {

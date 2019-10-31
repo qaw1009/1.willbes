@@ -48,7 +48,8 @@
     <div class="willbes-LecreplyList tx-gray">
         → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue underline" href="#none">{{$total_rows}}건</a> ]
         <div class="Select-Btn f_right">
-            <input type="checkbox" name="list_type" class="btn-my-list" value="0" @if(empty($arr_input['search_list_type']) === false && $arr_input['search_list_type'] == 1) checked="checked" @endif>내 수강후기
+            <input type="checkbox" name="list_type" class="btn-my-list" value="0" id="myReply" @if(empty($arr_input['search_list_type']) === false && $arr_input['search_list_type'] == 1) checked="checked" @endif>
+            <label for="myReply">내 수강후기</label>
         </div>
     </div>
     <div class="LeclistTable">

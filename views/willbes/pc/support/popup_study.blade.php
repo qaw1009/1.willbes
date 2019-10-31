@@ -68,7 +68,7 @@
                         <dt><a href="#none" id="order_by_score" class="btn-order-by" data-order-by="score">평점순</a></dt>
                     </dl>
                     <div class="Select-Btn f_right">
-                        <input type="checkbox" name="list_type" class="btn-my-list" value="1">내 수강후기
+                        <input type="checkbox" name="list_type" class="btn-my-list" value="1" id="myReply"> <label for="myReply">내 수강후기</label>
                     </div>
                     {{--<div class="search-Btn btnAuto120 h27 f_right">
                         <button type="submit" onclick="{!! (sess_data('is_login') == true) ? "closeWin('AddList'); openWin('AddModify')" : "javascript:alert('로그인 후 이용해 주십시오.');"!!}" class="mem-Btn bg-blue bd-dark-blue">
@@ -410,7 +410,7 @@
 
                     add_table += '<td>';
                     if (item.RegMemId == $mem_id) {
-                        add_table += '<div><input type="button" class="btn-del" data-board-idx="' + item.BoardIdx + '" value="삭제"></div>';
+                        add_table += '<input type="button" class="btn-del" data-board-idx="' + item.BoardIdx + '" value="삭제">';
                     }
                     add_table += '</td>';
 

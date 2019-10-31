@@ -160,12 +160,15 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="event">      
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1436_05.jpg" usemap="#Map1436_05"  title="전과목 확인하기" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1436_05_v2.jpg" usemap="#Map1436_05"  title="전과목 확인하기" border="0" />
             <map name="Map1436_05" id="Map1436_05">
-                <area shape="rect" coords="861,541,998,588" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
-                <area shape="rect" coords="860,601,995,648" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
-                <area shape="rect" coords="860,802,997,847" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />
-                <area shape="rect" coords="368,1267,748,1365" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1412" target="_blank" />
+                <area shape="rect" coords="801,551,893,594" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" alt="학원수강신청" />
+                <area shape="rect" coords="801,614,894,654" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" alt="학원수강신청" />
+                <area shape="rect" coords="803,814,897,854" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" alt="학원수강신청" />
+                <area shape="rect" coords="907,552,1002,596" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157663" target="_blank" alt="동영상수강신청" />
+                <area shape="rect" coords="907,614,1004,656" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157664" target="_blank" alt="동영상수강신청" />
+                <area shape="rect" coords="909,814,999,854" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157772" target="_blank" alt="동영상수강신청" />
+                <area shape="rect" coords="368,1276,748,1374" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1412" target="_blank" />
             </map>            
         </div>
         
@@ -173,27 +176,7 @@
     <!-- End evtContainer -->
   
     <script type="text/javascript">      
-
-       	/*tab
-		$(document).ready(function(){
-			$(".tabContents").hide(); 
-			$(".tabContents:first").show();
-
-			$(".tabContaier ul li a").click(function(){ 
-
-			var activeTab = $(this).attr("href"); 
-			$(".tabContaier ul li a").removeClass("active"); 
-			$(this).addClass("active"); 
-			$(".tabContents").hide(); 
-			$(activeTab).fadeIn(); 
-
-			return false; 
-			});
-		});		*/		
-
-       
-
-          $(document).ready(function() {
+        $(document).ready(function() {
             var slidesImg2 = $("#slidesImg2").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,

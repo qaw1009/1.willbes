@@ -169,7 +169,7 @@
                                                         </ul>
                                                         <div class="w-buy">
                                                             <ul class="two">
-                                                                @if($row['IsCart'] == 'Y')
+                                                                @if($row['IsCart'] == 'Y' || $pattern == 'free')
                                                                     @if($pattern == 'only')
                                                                     <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
                                                                     @endif

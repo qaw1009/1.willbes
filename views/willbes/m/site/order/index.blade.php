@@ -287,7 +287,7 @@
                                         <li>
                                             <label for="pay_method_ccd_{{ $key }}">
                                                 <input type="radio" id="pay_method_ccd_{{ $key }}" name="pay_method_ccd" value="{{ $key }}" class="mr5" @if($loop->index == 1) title="결제수단" required="required" checked="checked" @endif/>
-                                                {{ str_replace_array(['실시간', '(가상계좌)'], '', $val) }}
+                                                {{ str_replace_array(['(간편결제)', '실시간', '(가상계좌)'], '', $val) }}
                                             </label>
                                         </li>
                                     @endforeach

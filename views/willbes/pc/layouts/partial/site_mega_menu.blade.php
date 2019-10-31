@@ -238,7 +238,7 @@
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50181/?subject_idx=1133&subject_name=%EC%82%AC%ED%9A%8C')}}">문병일</a>
                     </li>
                     <li>
-                        <span>[소방관계법규]]</span>
+                        <span>[소방관계법규]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">김종상</a>
                         <span>[체력]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50387/?subject_idx=1399&subject_name=%EC%B2%B4%EB%A0%A5')}}">제이슨</a>
@@ -380,7 +380,7 @@
                         <a href="{{front_url('/professor/show/cate/3030/prof-idx/50231/?subject_idx=1146&subject_name=%EC%96%B8%EC%96%B4%EB%85%BC%EB%A6%AC')}}">이서연</a>
                     </li>
                     <li>
-                        <span>[자료해석/공간/지각/상환판단]</span>
+                        <span>[자료해석/공간/지각/상황판단]</span>
                         <a href="{{front_url('/professor/show/cate/3030/prof-idx/50239/?subject_idx=1197&subject_name=%EC%9E%90%EB%A3%8C%ED%95%B4%EC%84%9D%2F%EA%B3%B5%EA%B0%84%2F%EC%A7%80%EA%B0%81%2F%EC%83%81%ED%99%A9%ED%8C%90%EB%8B%A8')}}">황두기</a>
                     </li>
                 </ul>

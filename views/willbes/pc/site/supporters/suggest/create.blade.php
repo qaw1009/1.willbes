@@ -61,7 +61,7 @@
 
     <div class="search-Btn mt20 h36 p_re">
         <button type="button" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left btn-suggest-list">
-            <span class="tx-purple-gray">취소</span>
+            <span class="tx-purple-gray">목록</span>
         </button>
         <button type="submit" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center" id="btn_suggest_submit">
             <span>저장</span>

@@ -254,7 +254,7 @@
                                     </span>
                                 </div>
                                 @endforeach
-                                    <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                    <div class="w-sub tx-red">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                                     <div class="w-sub">
                                         <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture')">
                                             <strong class="open-info-modal">교재상세정보</strong>

@@ -68,7 +68,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/main/2007_sec06.jpg" alt="19년 4분기 시험 일정" usemap="#Map2007b" border="0">
                 <map name="Map2007b" id="Map2007b">
                     <area shape="rect" coords="81,763,380,832" href="{{ front_url('/guide/show/cate/3093/pattern/gtelp') }}" target="_blank" />
-                    <area shape="rect" coords="410,762,714,834" href="https://www.g-telp.co.kr:335/receipt/schedule.asp" target="_blank" />
+                    <area shape="rect" coords="410,762,714,834" href="https://lang.willbes.net/support/examAnnouncement/show/cate/3093?board_idx=240562" target="_blank" />
                     <area shape="rect" coords="737,763,1042,836" href="https://www.g-telp.co.kr:335/" target="_blank" />
                 </map>
             </div>

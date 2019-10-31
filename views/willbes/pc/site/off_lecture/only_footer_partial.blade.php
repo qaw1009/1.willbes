@@ -1,4 +1,4 @@
-{{-- 현재 강사소개 페이지 내 단과 목록에서 사용하고 있음 --}}
+{{-- 삭제예정  : 추후 확인 후 제거
 <div id="buy_off_layer" class="willbes-Lec-buyBtn-sm NG">
     <div>
         <button type="button" name="btn_off_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
@@ -19,6 +19,7 @@
         </ul>
     </div>
 </div>
+--}}
 
 {{--계속구매 레이어--}}
 <div id="buy_off_continue_layer" class="willbes-Lec-buyBtn-sm NG common_buy_layer">

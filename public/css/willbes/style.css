@@ -4333,6 +4333,9 @@ form .LeclistTable .evtTable tr td a.w-del {
     margin-top: 25px;
     letter-spacing: 0;
 }
+.willbes-LecreplyList .Select-Btn {
+    vertical-align: middle;
+}
 .willbes-LecreplyList .Select-Btn dt {
     margin-right: 10px;
 }
@@ -4340,7 +4343,11 @@ form .LeclistTable .evtTable tr td a.w-del {
     color: #0d74ae;
     text-decoration: underline;
 }
-
+.willbes-LecreplyList .Select-Btn input {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
 .willbes-LecreplyList ul {
     float: right;
 }

@@ -134,11 +134,12 @@
                 {{-- 교재 리스트 --}}
                 @foreach($data['list'] as $row)
                     <div class="willbes-Lec-Table">
-                        <table class="lecTable">
+                        <table cellspacing="0" cellpadding="0" class="lecTable">
                             <colgroup>
                                 <col style="width:200px;">
                                 <col>
-                                <col style="width:290px;">
+                                <col style="width:150px;">
+                                <col style="width:240px;">
                             </colgroup>
                             <tbody>
                                 <tr>
@@ -176,6 +177,14 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <td>
+                                        <ul class="lecBuyBtns">
+                                            @if($row['IsSalesAble'] == 'Y')
+                                                <li class="btnCart"><a href="#none" name="btn_book_cart" data-direct-pay="N" data-is-redirect="N" data-prod-code="{{ $row['ProdCode'] }}">장바구니</a></li>
+                                                <li class="btnBuy"><a href="#none" name="btn_book_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-prod-code="{{ $row['ProdCode'] }}">바로결제</a></li>
+                                            @endif
+                                        </ul>
+                                    </td>
                                     <td class="w-notice p_re">
                                         <div class="priceWrap chk buybtn p_re">
                                             <select name="prod_qty[{{ $row['ProdCode'] }}]" title="수량" class="bookselect">
@@ -183,14 +192,18 @@
                                                     <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                             </select>
-                                            <span class="chkBox">
+                                            <span class="chkBox d_none">
                                                 <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}:book" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_books" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/>
                                             </span>
-                                            <span class="select @if($row['wSaleCcd'] == '112002' || $row['wSaleCcd'] == '112003') tx-pink @elseif($row['wSaleCcd'] == '112004') tx-gray @endif">
-                                                [{{ $row['wSaleCcdName'] }}]
-                                            </span>
-                                            <span class="price tx-blue">{{ number_format($row['RealSalePrice']) }}원</span>
-                                            <span class="discount">(↓{{ $row['SaleRate'] . $row['SaleRateUnit'] }})</span>
+                                            <ul class="priceWrap">
+                                                <li>
+                                                    <span class="select @if($row['wSaleCcd'] == '112002' || $row['wSaleCcd'] == '112003') tx-pink @elseif($row['wSaleCcd'] == '112004') tx-gray @endif">
+                                                        [{{ $row['wSaleCcdName'] }}]
+                                                    </span>
+                                                    <span class="price tx-blue">{{ number_format($row['RealSalePrice']) }}원</span>
+                                                    <span class="discount">(↓{{ $row['SaleRate'] . $row['SaleRateUnit'] }})</span>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </td>
                                 </tr>
@@ -202,23 +215,6 @@
                 @endforeach
             </div>
             <!-- willbes-Lec -->
-
-            <div class="mb60"></div>
-            <div class="willbes-Lec-buyBtn">
-                <ul>
-                    <li class="btnAuto180 h36">
-                        <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
-                            <span>장바구니</span>
-                        </button>
-                    </li>
-                    <li class="btnAuto180 h36">
-                        <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
-                            <span class="tx-light-blue">바로결제</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <!-- willbes-Lec-buyBtn -->
 
             <div id="InfoForm" class="willbes-Layer-Box"></div>
             <!-- willbes-Layer-Box -->

@@ -10,6 +10,7 @@
             <input type="hidden" id="search_subject_idx" name="search_subject_idx" value="{{element('subject_idx', $arr_input)}}">
             <input type="hidden" id="search_prof_idx" name="search_prof_idx" value="{{element('prof_idx', $arr_input)}}">
             <input type="hidden" id="search_prod_code" name="search_prod_code">
+            <input type="hidden" id="search_list_type" name="search_list_type" value="0">
             <input type="hidden" id="orderby" name="orderby">
 
             <div class="curriWrap c_both">
@@ -66,6 +67,9 @@
                         <dt><a href="#none" id="order_by_date" class="btn-order-by" data-order-by="date">최신순</a></dt>
                         <dt><a href="#none" id="order_by_score" class="btn-order-by" data-order-by="score">평점순</a></dt>
                     </dl>
+                    <div class="Select-Btn f_right">
+                        <input type="checkbox" name="list_type" class="btn-my-list" value="1" id="myReply"> <label for="myReply">내 수강후기</label>
+                    </div>
                     {{--<div class="search-Btn btnAuto120 h27 f_right">
                         <button type="submit" onclick="{!! (sess_data('is_login') == true) ? "closeWin('AddList'); openWin('AddModify')" : "javascript:alert('로그인 후 이용해 주십시오.');"!!}" class="mem-Btn bg-blue bd-dark-blue">
                             <span>수강후기 작성</span>
@@ -294,6 +298,13 @@
             callAjax(1);
         });
 
+        //내수강후기
+        $_ajax_search_form.on('click', '.btn-my-list', function() {
+            var list_type = $_ajax_search_form.find('input[name="list_type"]:checked').val();
+            (list_type == 1) ? $('#search_list_type').val(1) : $('#search_list_type').val(0);
+            callAjax(1);
+        });
+
         //수강후기 등록
         $_ajax_reg_form.on('click', '#btn_submit', function() {
             @if(sess_data('is_login') != true)
@@ -308,6 +319,23 @@
                 }
             }, showValidateError, null, false, 'alert');
             @endif
+        });
+
+        //게시글삭제
+        $_ajax_search_form.on('click', '.btn-del', function() {
+            if (!confirm('삭제하시겠습니까?')) {
+                return;
+            }
+            var _url = '{{ front_url("/support/studyComment/delete") }}';
+            var data = {
+                '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE',
+                'board_idx' : $(this).data('board-idx')
+            };
+            sendAjax(_url, data, function(ret) {
+                alert(ret.ret_msg);
+                callAjax(1);
+            }, showError, false, 'POST');
         });
 
         callAjax(1);
@@ -329,6 +357,7 @@
             'search_subject_idx' : $('#search_subject_idx').val(),
             'search_prof_idx' : $('#search_prof_idx').val(),
             'search_prod_code' : $('#search_prod_code').val(),
+            'search_list_type' : $('#search_list_type').val(),
             's_keyword' : $('#s_keyword').val(),
             'page' : page,
             'orderby' : orderby
@@ -377,10 +406,17 @@
                     add_table += '<td class="w-date">' + item.RegDatm + '</td>';
                     add_table += '</tr>';
                     add_table += '<tr class="replyTxt w-replyTxt tx-gray" style="display:' + set_table_style + '">';
-                    add_table += '<td colspan="7">';
+                    add_table += '<td colspan="6">';
                     add_table += '<div class="tx-blue"><a href="' + lecture_path + item.ProdCode + '" target="_blank">' + item.ProdName + '</a></div>';
                     add_table += (item.RegType == 1) ? item.Content : nl2br(item.Content);
                     add_table += '</td>';
+
+                    add_table += '<td>';
+                    if (item.RegMemId == $mem_id) {
+                        add_table += '<input type="button" class="btn-del" data-board-idx="' + item.BoardIdx + '" value="삭제">';
+                    }
+                    add_table += '</td>';
+
                     add_table += '</tr>';
 
                     rownum = rownum - 1;
@@ -409,6 +445,7 @@
             'search_subject_idx' : $('#search_subject_idx').val(),
             'search_prof_idx' : $('#search_prof_idx').val(),
             'search_prod_code' : $('#search_prod_code').val(),
+            'search_list_type' : $('#search_list_type').val(),
             's_keyword' : $('#s_keyword').val(),
             'page' : page
         };

@@ -1047,7 +1047,7 @@ class EventFModel extends WB_Model
 
         //$this->load->library('sendSms');
         //if ($this->sendsms->send($send_data['register_tel'], $data['SmsContent'], $data['SendTel']) !== true) {
-        if($this->smsFModel->addKakaoMsg($send_data['register_tel'], $data['SmsContent'], null, 'KFT') === false) {
+        if($this->smsFModel->addKakaoMsg($send_data['register_tel'], $data['SmsContent'], $data['SendTel'], null, 'KFT') === false) {
             return false;
         } else {
             return true;

@@ -41,7 +41,7 @@
             </table>
             <div class="btnsSt3">
                 <button type="button" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray btn-myclass-list">
-                    <span class="tx-purple-gray">취소</span>
+                    <span class="tx-purple-gray">목록</span>
                 </button>
                 <button type="submit" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray btn-myclass-submit">
                     <span>저장</span>

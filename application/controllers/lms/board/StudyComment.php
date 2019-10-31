@@ -78,7 +78,7 @@ class StudyComment extends BaseBoard
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
-                'LB.IsStatus' => 'Y',
+                /*'LB.IsStatus' => 'Y',*/
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
                 'LB.ProfIdx' => $this->_reqP('search_professor'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
@@ -87,6 +87,8 @@ class StudyComment extends BaseBoard
                 'LKB' => [
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
+                    'MEM.MemId' => $this->_reqP('search_member_value'),
+                    'MEM.MemName' => $this->_reqP('search_member_value')
                 ]
             ]
         ];
@@ -121,11 +123,12 @@ class StudyComment extends BaseBoard
 
         $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.IsStatus,
             IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
             IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName,
             LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
-            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
+            LB.UpdMemIdx, LB.UpdAdminIdx
             ';
 
         $list = [];

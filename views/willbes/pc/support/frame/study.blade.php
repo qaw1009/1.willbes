@@ -1,6 +1,14 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
+<form id="_url_form" name="_url_form" method="GET">
+    @foreach($arr_input as $key => $val)
+        <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+    @endforeach
+    @if (isset($arr_input['search_list_type']) === false)
+        <input type="hidden" id="search_list_type" name="search_list_type" value="0">
+    @endif
+</form>
 <div class="willbes-Leclist c_both">
     <div class="willbes-Lec-Tit NG tx-black">수강후기</div>
     <div class="ReplylistTable tx-gray">
@@ -39,6 +47,9 @@
 <div class="willbes-Leclist c_both">
     <div class="willbes-LecreplyList tx-gray">
         → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue underline" href="#none">{{$total_rows}}건</a> ]
+        <div class="Select-Btn f_right">
+            <input type="checkbox" name="list_type" class="btn-my-list" value="0" @if(empty($arr_input['search_list_type']) === false && $arr_input['search_list_type'] == 1) checked="checked" @endif>내 수강후기
+        </div>
     </div>
     <div class="LeclistTable">
         <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
@@ -83,4 +94,23 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var $_url_form = $('#_url_form');
+
+
+    $('.btn-my-list').on('click', function() {
+        if ($("input:checkbox[name='list_type']").is(":checked") == 1) {
+            /*$('#search_list_type').val(1);*/
+            $("input[name='search_list_type']").val(1);
+        } else {
+            /*$('#search_list_type').val(0);*/
+            $("input[name='search_list_type']").val(0);
+        }
+
+        /*console.log($('#search_list_type').val());*/
+        $_url_form.submit();
+
+        /*location.href = '{{ front_url('/support/studyComment/listFrame?') }}' + '{!! $get_params !!}';*/
+    });
+</script>
 @stop

@@ -29,8 +29,9 @@ class SupportStudyComment extends BaseSupport
         $cate_code = element('cate',$arr_input, $this->_cate_code);
         $prod_code = element('prod_code',$arr_input);
         $page = element('page',$arr_input);
+        $s_list_type = element('search_list_type',$arr_input, '0');
 
-        $get_params = 'cate='.$cate_code.'&prod_code='.$prod_code;
+        $get_params = 'cate='.$cate_code.'&prod_code='.$prod_code.'&search_list_type='.$s_list_type;
         $get_params .= '&page='.$page;
 
         $arr_best_condition = [
@@ -57,6 +58,10 @@ class SupportStudyComment extends BaseSupport
                 'ProfIdx is not ' => 'null'
             ]
         ];
+
+        if ($s_list_type == '1') {
+            $arr_condition['EQ']['m.MemIdx'] = $this->session->userdata('mem_idx');
+        }
 
         if ($this->_site_code == config_item('app_intg_site_code')) {
             $cate_code = '';
@@ -86,7 +91,8 @@ class SupportStudyComment extends BaseSupport
             'paging' => $paging,
             'total_rows' => $total_rows,
             'list' => $list,
-            'list_best' => $list_best
+            'list_best' => $list_best,
+            'get_params' => $get_params
         ]);
     }
 
@@ -169,6 +175,7 @@ class SupportStudyComment extends BaseSupport
         $prod_code = element('search_prod_code',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $orderby = element('orderby',$arr_input, 'best');
+        $s_list_type = element('search_list_type',$arr_input, '0');
 
         $arr_condition = [
             'EQ' => [
@@ -189,6 +196,10 @@ class SupportStudyComment extends BaseSupport
                 'ProfIdx is not ' => 'null'
             ]
         ];
+
+        if ($s_list_type == '1') {
+            $arr_condition['EQ']['m.MemIdx'] = $this->session->userdata('mem_idx');
+        }
 
         /*if ($this->_site_code != config_item('app_intg_site_code')) {
             $arr_condition = array_merge_recursive($arr_condition, [
@@ -247,6 +258,7 @@ class SupportStudyComment extends BaseSupport
         $prof_idx = element('search_prof_idx',$arr_input);
         $prod_code = element('search_prod_code',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
+        $s_list_type = element('search_list_type',$arr_input, '0');
 
         $arr_condition = [
             'EQ' => [
@@ -267,6 +279,10 @@ class SupportStudyComment extends BaseSupport
                 'ProfIdx is not ' => 'null'
             ]
         ];
+
+        if ($s_list_type == '1') {
+            $arr_condition['EQ']['m.MemIdx'] = $this->session->userdata('mem_idx');
+        }
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition, $cate_code);
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
@@ -306,9 +322,7 @@ class SupportStudyComment extends BaseSupport
         }
 
         $inputData = $this->_setInputData($this->_reqP(null, false));
-
         $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
-
         $this->json_result($result, $msg, $result);
     }
 
@@ -319,12 +333,51 @@ class SupportStudyComment extends BaseSupport
     {
         $data = [];
         $arr_input = array_merge($this->_reqP(null));
-
         if (empty(element('cate_code', $arr_input)) === false && empty(element('subject_idx', $arr_input)) === false) {
             $data = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, element('cate_code', $arr_input), element('subject_idx', $arr_input));
         }
-
         $this->json_result(true, '', [], array_pluck($data, 'wProfName', 'ProfIdx'));
+    }
+
+    /**
+     * 게시물삭제
+     */
+    public function delete()
+    {
+        if (empty($this->session->userdata('mem_idx')) === true) {
+            $this->json_error('로그인 후 이용해주세요.');
+            return;
+        }
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'board_idx', 'label' => '게시판식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $board_idx = $this->_reqP('board_idx');
+        $arr_condition = [
+            'EQ' => [
+                'm.MemIdx' => $this->session->userdata('mem_idx'),
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y'
+            ]
+        ];
+        $data = $this->supportBoardTwoWayFModel->findBoard($board_idx, $arr_condition, 'BoardIdx');
+        if (empty($data) === true) {
+            $this->json_error('조회된 게시물이 없습니다.');
+            return;
+        }
+
+        $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx);
+        if (empty($result['ret_status']) === false) {
+            $this->json_error('삭제 실패입니다. 관리자에게 문의해주세요.');
+            return;
+        }
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
     /**

@@ -65,6 +65,16 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_member_value">회원검색</label>
+                    <div class="col-md-1">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value">
+                    </div>
+                    <div class="col-md-3">
+                        <p class="form-control-static">• 이름, 아이디 검색 기능</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -96,6 +106,7 @@
                     <th>사용</th>
                     <th>조회수</th>
                     <th>수정</th>
+                    <th>삭제(관리자)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -143,6 +154,11 @@
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    }
+                },
+                "createdRow" : function( row, data, index ) {
+                    if (data['IsStatus'] == 'N') {
+                        $(row).addClass('bg-gray-custom');
                     }
                 },
                 columns: [
@@ -202,8 +218,19 @@
                     {'data' : 'ReadCnt'},
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
-                        }}
-                ],
+                        }},
+                    {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
+                            if (row.IsStatus == 'Y') {
+                                return '<a href="javascript:void(0);" class="btn-delete" data-idx="' + row.BoardIdx + '"><u><p class="red">삭제</p></u></a>';
+                            } else {
+                                if (row.UpdMemIdx != null) {
+                                    return '회원삭제';
+                                } else {
+                                    return '관리자삭제';
+                                }
+                            }
+                        }},
+               ],
                 "drawCallback": function(settings) {
                     var api = new $.fn.dataTable.Api(settings);
                     $.each(api.rows( {page:'current'} ).data(), function(i, item) {
@@ -272,6 +299,24 @@
             // 관리자등록글 보기
             $search_form.on('ifChanged', '.create-by-admin', function() {
                 $datatable.draw();
+            });
+
+            $list_table.on('click', '.btn-delete', function() {
+                var _url = '{{ site_url("/board/{$boardName}/delete") }}/' + $(this).data('idx') + getQueryString();
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE'
+                };
+
+                if (!confirm('해당 게시물을 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw(false);
+                    }
+                }, showError, false, 'POST');
             });
         });
     </script>

@@ -40,7 +40,7 @@ class SupportStudyComment extends BaseSupport
                 'b.IsUse' => 'Y',
                 'b.IsBest' => '1',
                 'b.ProdCode' => $prod_code,
-                'b.ProfSiteCode' => $this->_site_code
+                /*'b.ProfSiteCode' => $this->_site_code*/
             ],
             'RAW' => [
                 'ProfIdx is not ' => 'null'
@@ -52,7 +52,7 @@ class SupportStudyComment extends BaseSupport
                 'b.BmIdx' => $this->_bm_idx,
                 'b.IsUse' => 'Y',
                 'ProdCode' => $prod_code,
-                'b.ProfSiteCode' => $this->_site_code
+                /*'b.ProfSiteCode' => $this->_site_code*/
             ],
             'RAW' => [
                 'ProfIdx is not ' => 'null'
@@ -184,7 +184,7 @@ class SupportStudyComment extends BaseSupport
                 'b.SubjectIdx' => $subject_idx,
                 'b.ProfIdx' => $prof_idx,
                 'b.ProdCode' => $prod_code,
-                'b.ProfSiteCode' => $this->_site_code
+                /*'b.ProfSiteCode' => $this->_site_code*/
             ],
             'ORG' => [
                 'LKB' => [
@@ -267,7 +267,7 @@ class SupportStudyComment extends BaseSupport
                 'b.SubjectIdx' => $subject_idx,
                 'b.ProfIdx' => $prof_idx,
                 'b.ProdCode' => $prod_code,
-                'b.ProfSiteCode' => $this->_site_code
+                /*'b.ProfSiteCode' => $this->_site_code*/
             ],
             'ORG' => [
                 'LKB' => [

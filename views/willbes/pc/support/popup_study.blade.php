@@ -323,6 +323,9 @@
 
         //게시글삭제
         $_ajax_search_form.on('click', '.btn-del', function() {
+            if (!confirm('삭제하시겠습니까?')) {
+                return;
+            }
             var _url = '{{ front_url("/support/studyComment/delete") }}';
             var data = {
                 '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),

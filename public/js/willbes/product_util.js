@@ -220,7 +220,7 @@ function showContinueLayer($type, $dt_type, $chk_obj, $target_id) {
             top += 6;
         }
     } else if ($type === 'book') {
-        right += 165;
+        right += 147;
     } else {
         right += 0;
     }

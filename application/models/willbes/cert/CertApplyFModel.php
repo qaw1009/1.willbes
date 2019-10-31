@@ -202,7 +202,7 @@ class CertApplyFModel extends WB_Model
                     /*sms 발송 모듈*/
                     //$this->load->library('sendSms');
                     //if($this->sendsms->send($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], $cert_data['CsTel']) !== true) {
-                    if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], null, 'KFT') === false) {
+                    if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], $cert_data['CsTel'], null, 'KFT') === false) {
                         throw new \Exception('인증 신청(SMS)에 실패했습니다.');
                     }
                 }

@@ -57,14 +57,15 @@ function addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, $app_url)
     var url = '';
     var uri = '/cart/store';
     if ($app_url !== '') {
-        url = $app_url + uri;
+        if ($app_url === 'on') {
+            url = frontOnUrl(uri);
+        } else if ($app_url === 'off') {
+            url = frontPassUrl(uri);
+        } else {
+            url = $app_url + uri;
+        }
     } else {
         url = frontUrl(uri);
-        if ($regi_form.find('input[name="cart_type"]').val().indexOf('off') === 0) {
-            url = frontPassUrl(uri);
-        } else if ($regi_form.find('input[name="cart_type"]').val().indexOf('on') === 0 || $regi_form.find('input[name="cart_type"]').val() === 'book') {
-            url = frontOnUrl(uri);
-        }
     }
 
     ajaxSubmit($regi_form, url, function(ret) {
@@ -129,28 +130,29 @@ function checkOffLecture($regi_form) {
  */
 function getCartType($regi_form) {
     var cart_type = 'on_lecture';
-    
+
     if ($regi_form.find('.chk_products:checked').length < 1 && $regi_form.find('.chk_books:checked').length > 0) {
         cart_type = 'book';
     } else if($regi_form.find('input[name="learn_pattern"]').val().indexOf('off') === 0) {
         cart_type = 'off_lecture';
     }
-    
+
     return cart_type;
 }
 
 /**
  * 장바구니 페이지 이동
  * @param $tab_id
+ * @param $on_off_type
  */
-function goCartPage($tab_id) {
+function goCartPage($tab_id, $on_off_type) {
     var uri = '/cart/index?tab=' + $tab_id;
     var url = frontUrl(uri);
 
-    if ($tab_id.toString().indexOf('off') === 0) {
-        url = frontPassUrl(uri);
-    } else if ($tab_id.toString().indexOf('on') === 0 || $tab_id === 'book') {
+    if ($on_off_type === 'on') {
         url = frontOnUrl(uri);
+    } else if ($on_off_type === 'off') {
+        url = frontPassUrl(uri);
     }
 
     location.href = url;
@@ -196,6 +198,39 @@ function showBuyLayer($type, $chk_obj, $target_id) {
         $target_layer.removeClass('active');
     }
 }
+
+/**
+ * 장바구니, 계속구매 레이어 노출
+ * @param $type
+ * @param $dt_type
+ * @param $chk_obj
+ * @param $target_id
+  */
+function showContinueLayer($type, $dt_type, $chk_obj, $target_id) {
+    var $target_layer = $('#' + $target_id);
+    var top_bn_height = $('#topBannerLayer').height();
+    var top = $chk_obj.offset().top - 187;
+    if (top_bn_height !== null && typeof top_bn_height !== 'undefined') {
+        top = top - top_bn_height;
+    }
+    var right = 202;
+    if ($type === 'off') {
+        if($dt_type === 'chk_books') {
+            right += 165;
+            top += 6;
+        }
+    } else if ($type === 'book') {
+        right += 165;
+    } else {
+        right += 0;
+    }
+    $target_layer.css({
+        'top': top,
+        'right': right,
+        'position': 'absolute'
+    }).addClass('active');
+}
+
 
 /**
  * 단강좌, 무료강좌 상품 선택/해제
@@ -318,8 +353,8 @@ function setCheckOffLectureProduct($regi_form, $chk_obj) {
         var learn_pattern = $regi_form.find('input[name="learn_pattern"]').val();
         var prod_code = $chk_obj.data('prod-code');
         var is_visit_pay = 'N';
-        
-        if (checkProduct(learn_pattern, prod_code, is_visit_pay, $regi_form) === false) {
+
+        if (checkProduct(learn_pattern, prod_code, is_visit_pay, $regi_form, 'off') === false) {
             // 선택해제
             $chk_obj.prop('checked', false).trigger('change');
         }
@@ -332,9 +367,10 @@ function setCheckOffLectureProduct($regi_form, $chk_obj) {
  * @param $prod_code
  * @param $is_visit_pay
  * @param $regi_form
+ * @param $on_off_type
  * @returns {boolean}
  */
-function checkProduct($learn_pattern, $prod_code, $is_visit_pay, $regi_form) {
+function checkProduct($learn_pattern, $prod_code, $is_visit_pay, $regi_form, $on_off_type) {
     // 상품코드
     if ($prod_code.toString().indexOf(':') !== -1) {
         $prod_code = $prod_code.split(':')[0];
@@ -343,11 +379,13 @@ function checkProduct($learn_pattern, $prod_code, $is_visit_pay, $regi_form) {
     var is_check = false;
     var uri = '/cart/checkProduct';
     var url = frontUrl(uri);
-    if ($learn_pattern.toString().indexOf('off') === 0) {
-        url = frontPassUrl(uri);
-    } else if ($learn_pattern.toString().indexOf('on') === 0 || $learn_pattern === 'book') {
+
+    if ($on_off_type === 'on') {
         url = frontOnUrl(uri);
+    } else if ($on_off_type === 'off') {
+        url = frontPassUrl(uri);
     }
+
     var data = {
         '_csrf_token' : $regi_form.find('input[name="_csrf_token"]').val(),
         '_method' : 'POST',

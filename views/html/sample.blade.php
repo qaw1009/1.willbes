@@ -69,7 +69,7 @@
                 <li><a href="{{ site_url('/home/html/list') }}" target="_blank">강좌 > 단강좌, 무료강좌 수강신청</a></li>
                 <li><a href="{{ site_url('/home/html/listsub') }}" target="_blank">강좌 > 단강좌, 무료강좌 수강신청 상세</a></li>
                 <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/book_list') }}" target="_blank">교재구매 리스트</a></li>
+                <li><a href="{{ site_url('/home/html/book_list_v2') }}" target="_blank">교재구매 리스트</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/event_ing') }}" target="_blank">이벤트 > 진행중인 이벤트</a></li>
                 <li><a href="{{ site_url('/home/html/event_ing_read') }}" target="_blank">이벤트 > 진행중인 이벤트 상세</a></li>

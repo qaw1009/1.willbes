@@ -56,7 +56,6 @@
 
         {{--목록 페이지--}}
         if ($is_off_show === false) {
-
             {{--방문결제 버튼 클릭--}}
             $regi_off_form.on('click', '.btn-off-visit-pay', function () {
 
@@ -67,12 +66,13 @@
                     return;
                 }
                 {{--상품 체크--}}
-                if (checkProduct($regi_visit_form.find('input[name="learn_pattern"]').val(), prod_code, 'Y', $regi_visit_form) === false) {
+                if (checkProduct($regi_visit_form.find('input[name="learn_pattern"]').val(), prod_code, 'Y', $regi_visit_form,'off') === false) {
                     return;
                 }
+
                 if (confirm('방문접수를 신청하시겠습니까?')) {
                     $regi_visit_form.find('input[name="prod_code[]"]').val(prod_code);
-                    var url = '{{ front_url('/order/visit/direct', true) }}';
+                    var url = frontPassUrl('/order/visit/direct');
                     ajaxSubmit($regi_visit_form, url, function (ret) {
                         if (ret.ret_cd) {
                             alert(ret.ret_msg);

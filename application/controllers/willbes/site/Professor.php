@@ -503,11 +503,12 @@ class Professor extends \app\controllers\FrontController
             $arr_condition = array_replace_recursive($arr_condition, ['LKB' => ['ProfIdx_String' => $prof_idx]]);
         }
 
-        $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
+        $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['OrderNum'=>'Desc','ProdCode'=>'Desc']);
 
         // 상품 json 데이터 decode
         $data = array_map(function ($row) {
             $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+            $row['ProdBookData'] =  (empty(element('ProdBookData',$row,[])) ?  null : json_decode($row['ProdBookData'], true));
             return $row;
         }, $data);
 

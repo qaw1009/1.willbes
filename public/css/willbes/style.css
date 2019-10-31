@@ -11485,7 +11485,7 @@ table.acadlecInfoPackageTable tr.Top td {
     display: inline-block;
     color: #0d74ae;
     width: 70px;
-    text-align: right;
+    text-align:left;
     padding-right: 10px;
     font-size:12px;
 }

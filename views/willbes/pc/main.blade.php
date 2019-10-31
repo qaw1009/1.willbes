@@ -146,19 +146,6 @@
                             </a>
                         </li>
                         <li>
-                            <a href="http://willbes.or.kr" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes9.png') }}"> 국비교육
-                                </div>
-                                <div class="wTxt">
-                                    대한민국 국비교육 기관<br/>
-                                    <strong>윌비스 평생교육원</strong>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
                             <a href="http://willbesedu.or.kr" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes10.png') }}"> 출석 학점은행
@@ -168,7 +155,7 @@
                                     <strong>윌비스 고시학원 출석학점은행</strong>
                                 </div>
                             </a>
-                        </li>
+                        </li>                        
                     </ul>
                 </div>
             </div>

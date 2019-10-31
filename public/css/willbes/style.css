@@ -2769,7 +2769,8 @@ table.lecTable tr td .priceWrap {
     right: 0;
     width: 240px;
     margin-right: 0;
-    height: 18px;*/    
+    height: 18px;*/
+    margin-top:10px; 
 } 
 table.lecTable tr td .priceWrap li {
     text-align: left;
@@ -2793,9 +2794,9 @@ table.lecTable tr td .priceWrap .select {
     text-align: right;
 }
 table.lecTable tr td .priceWrap .bookselect {
-    position: absolute;
+    /*position: absolute;
     right:0;
-    top:-35px;
+    top:-35px;*/
     width: 50px;
     height: 24px;
     border: 1px solid #d4d4d4;
@@ -3099,7 +3100,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .lecInfoTable .w-sub .w-obj {
     width: 65px;
-    text-align: right;
+    text-align: left;
     padding-right: 10px;
 }
 .lecInfoTable .w-sub .w-subtit {

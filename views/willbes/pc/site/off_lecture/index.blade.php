@@ -360,7 +360,7 @@
                                         </li>
                                     @endforeach
                                 </ul>
-                                <div class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                <div class="tx-red">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                                 <div>
                                     <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ front_url('/offLecture') }}','','InfoFormOff')">
                                         <strong class="open-info-modal">교재상세정보</strong></a>

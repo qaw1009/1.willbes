@@ -69,20 +69,14 @@
     @elseif ($live_type == 'on' && $live_video_type == 'on')
         <div class="movieplayer">
             <div class="embedWrap">
-                @if (sess_data('is_login') !== true)
-                    <div onclick="javascript:alert('로그인 후 이용해 주세요.');" style="cursor: pointer;">
-                        <img src="https://static.willbes.net/public/images/promotion/live/liveIng.jpg" title="">
-                    </div>
-                @else
-                    <div class="embed-container" id="myElement">
-                        <span>
-                            <figure data-ke-type="video" data-ke-style="alignCenter" data-video-host="youtube" data-video-url="{{$live_path}}" data-video-thumbnail="https://scrap.kakaocdn.net/dn/cvnOmS/hyBS2AsyJA/aeK3Xxb1QfVB3eI16KuEQ0/img.jpg?width=1280&height=720&face=0_0_1280_720">
-                                <iframe id="live_video_frame" src="{{$live_path}}" width="980" height="551" frameborder="0" allowfullscreen="true"></iframe>
-                                <figcaption></figcaption>
-                            </figure>
-                        </span>
-                    </div>
-                @endif
+                <div class="embed-container" id="myElement">
+                    <span>
+                        <figure data-ke-type="video" data-ke-style="alignCenter" data-video-host="youtube" data-video-url="{{$live_path}}" data-video-thumbnail="https://scrap.kakaocdn.net/dn/cvnOmS/hyBS2AsyJA/aeK3Xxb1QfVB3eI16KuEQ0/img.jpg?width=1280&height=720&face=0_0_1280_720">
+                            <iframe id="live_video_frame" src="{{$live_path}}" width="980" height="551" frameborder="0" allowfullscreen="true"></iframe>
+                            <figcaption></figcaption>
+                        </figure>
+                    </span>
+                </div>
             </div>
         </div>
     @elseif ($live_type == 'on' && $live_video_type == 'off')

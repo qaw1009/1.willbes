@@ -176,27 +176,7 @@
     <!-- End evtContainer -->
   
     <script type="text/javascript">      
-
-       	/*tab
-		$(document).ready(function(){
-			$(".tabContents").hide(); 
-			$(".tabContents:first").show();
-
-			$(".tabContaier ul li a").click(function(){ 
-
-			var activeTab = $(this).attr("href"); 
-			$(".tabContaier ul li a").removeClass("active"); 
-			$(this).addClass("active"); 
-			$(".tabContents").hide(); 
-			$(activeTab).fadeIn(); 
-
-			return false; 
-			});
-		});		*/		
-
-       
-
-          $(document).ready(function() {
+        $(document).ready(function() {
             var slidesImg2 = $("#slidesImg2").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,

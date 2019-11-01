@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point',
+    protected $models = array('member/manageMember','sys/code', 'sys/category', 'pay/orderList','service/couponRegist','service/point',
         'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageBlackConsumer', 'member/manageLecture',
         'crm/send/sms', 'crm/send/message', 'crm/send/mail'
     );
@@ -1784,6 +1784,27 @@ class Manage extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
+        ]);
+    }
+
+    public function ajaxCert()
+    {
+        $memIdx = $this->_req('memIdx');
+
+        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $codes = $this->codeModel->getCcdInArray(['684','685']);
+
+        $arr_search = [
+            'search_type' => $this->_req('search_type')
+            ,'search_no' => $this->_req('search_no')
+        ];
+
+        $this->load->view('member/layer/cert', [
+            'memIdx' => $memIdx,
+            'arr_category' => $arr_category,
+            'CertType_ccd' => $codes['684'],
+            'CertCondition_ccd' => $codes['685'],
+            'arr_search'=>$arr_search
         ]);
     }
 

@@ -113,8 +113,9 @@
                     <td>{{ $data['PwdUpdDate'] }}<br>
                         <button type="button" class="btn btn-default" id="chg_pwd_log">비밀번호변경이력</button></td>
                     <td>{{ $data['OutDate'] }}</td>
-                    <td>{{ $data['IsBlackList'] }}<br>
-                        <button type="button" class="btn btn-default" id="blacklist_log">블랙컨슈머이력</button></td>
+                    <td>
+                        <div {{$data['IsBlackList'] == 'Y' ? 'style=color:red' : ''}}>{{ $data['IsBlackList'] }}</div>
+                        <button type="button" class="btn btn-default{{$data['IsBlackList'] == 'Y' ? ' bg-red' : ''}}" id="blacklist_log">블랙컨슈머이력</button></td>
                     <td>PC : {{ $data['PcCount'] }} / 모바일 : {{ $data['MobileCount'] }}<br>
                         <button type="button" class="btn btn-default" id="device_log">기기등록정보</button></td>
                 </tr>
@@ -130,6 +131,7 @@
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCoupon');"><strong>쿠폰관리</strong></a></li>
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPointLecture');"><strong>포인트관리</strong></a></li>
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxSms');"><strong>CRM관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCert');"><strong>수강인관리</strong></a></li>
     </ul>
     <div id="tab-content"> </div>
     <script type="text/javascript">

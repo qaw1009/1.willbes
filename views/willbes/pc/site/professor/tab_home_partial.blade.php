@@ -33,7 +33,7 @@
                         <a href="{{ front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a>
                     @else
                         @if($row['LearnPattern'] == 'off_lecture')
-                            <a href="{{ front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a>
+                            <a href="{{ front_url('/offLecture/show/cate/'. $row['CateCode'].'/prod-code/'. $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a>
                         @else
                             <a href="{{ front_url('/offPackage/show/prod-code/' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a>
                         @endif

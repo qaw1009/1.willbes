@@ -87,53 +87,85 @@
             </div>
             <ul class="ProfCopBox mt60 mb100">
                 <li>
-                    <img src="{{ img_url('cop_sea/prof/prof_ske.jpg') }}" alt="신광은">
+                    <img src="{{ img_url('cop_sea/prof/prof_ske_184.jpg') }}" alt="신광은">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_sea/prof/prof_kwu.jpg') }}" alt="김원욱">
+                    <img src="{{ img_url('cop_sea/prof/prof_kwu_184.jpg') }}" alt="김원욱">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>            
                 <li>
-                    <img src="{{ img_url('cop_sea/prof/prof_hsm.jpg') }}" alt="하승민">
+                    <img src="{{ img_url('cop_sea/prof/prof_hsm_184.jpg') }}" alt="하승민">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_sea/prof/prof_otj.jpg') }}" alt="오태진">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div>
+                                <img src="{{ img_url('cop_sea/prof/prof_khj_184.jpg') }}" alt="김현정">
+                                <ul class="ProfBtns">
+                                    <li><a href="#none">▶</a></li>
+                                    <li><a href="#none" target="_blank">교수소개</a></li>
+                                </ul>
+                            </div>                            
+                            <div>
+                                <img src="{{ img_url('cop_sea/prof/prof_kjg_184.jpg') }}" alt="김준기">
+                                <ul class="ProfBtns">
+                                    <li><a href="#none">▶</a></li>
+                                    <li><a href="#none" target="_blank">교수소개</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_sea/prof/prof_wuc.jpg') }}" alt="원유철">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div>
+                                <img src="{{ img_url('cop_sea/prof/prof_otj_184.jpg') }}" alt="오태진">
+                                <ul class="ProfBtns">
+                                    <li><a href="#none">▶</a></li>
+                                    <li><a href="#none" target="_blank">교수소개</a></li>
+                                </ul>
+                            </div>                            
+                            <div>
+                                <img src="{{ img_url('cop_sea/prof/prof_wuc_184.jpg') }}" alt="원유철">
+                                <ul class="ProfBtns">
+                                    <li><a href="#none">▶</a></li>
+                                    <li><a href="#none" target="_blank">교수소개</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop_sea/prof/prof_jtj.jpg') }}" alt="정태정">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <img src="{{ img_url('cop_sea/prof/prof_gdi.jpg') }}" alt="공득인">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div>
+                                <img src="{{ img_url('cop_sea/prof/prof_gdi2_184.jpg') }}" alt="공득인">
+                                <ul class="ProfBtns">
+                                    <li><a href="#none">▶</a></li>
+                                    <li><a href="#none" target="_blank">교수소개</a></li>
+                                </ul>
+                            </div>                            
+                            <div>
+                                <img src="{{ img_url('cop_sea/prof/prof_gdi_184.jpg') }}" alt="공득인">
+                                <ul class="ProfBtns">
+                                    <li><a href="#none">▶</a></li>
+                                    <li><a href="#none" target="_blank">교수소개</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

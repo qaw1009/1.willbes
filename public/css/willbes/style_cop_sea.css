@@ -72,20 +72,40 @@
 }
 
 /* Main Container : Prof : Cop_sea */
+.sea .Section .ProfCopBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    top: -10px;
+    text-align: right;
+    z-index: 110;
+}
+.sea .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #ccc !important;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+.sea .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.sea .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.sea .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #9177d4 !important;
+}
+
 .sea .Section .ProfCopBox > li {
     position: relative;
     display: inline;
     float: left;
-    width: 159px;
-    height: 280px;
-    margin-left: 1px;
+    width: 184px;
+    height: 281px;
+    margin-left: 2px;
 }
 .sea .Section .ProfCopBox > li:first-child {
     margin-left: 0;
 }
 .sea .Section .ProfCopBox .ProfBtns {
     position: absolute;
-    width: 159px;
+    width: 100%;
     bottom: 0;
     left: 0;    
     z-index: 1;

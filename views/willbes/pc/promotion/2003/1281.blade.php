@@ -129,12 +129,13 @@
       <li><a href="#tab8"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8.png" class="off" alt="이상구"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8_on.png" class="on"  /></a></li>
     </ul>
     <div id="tab1">
-        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1074"  target="_balnk">
+        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_balnk">
         <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c1.jpg" title="기미진" />
         </a>
     </div>
     <div id="tab2">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1193"  target="_balnk">
+      {{--<a href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_balnk">--}}
+      <a href="javascript:alert('10월 31일부로 마감되었습니다.')">
       <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c2.jpg" title="한덕현"/>
       </a>
     </div>

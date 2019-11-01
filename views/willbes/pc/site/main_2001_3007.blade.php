@@ -76,7 +76,7 @@
                                     <img src="{{ img_url('cop_sea/prof/prof_kjg_184.jpg') }}" alt="김준기">
                                     <ul class="ProfBtns">
                                         <li><a href="#none" onclick="fnPlayerProf('50749', 'OT');">▶</a></li>
-                                        <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}">교수소개</a></li>
+                                        <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50749/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}">교수소개</a></li>
                                     </ul>
                                 </div>
                             </div>

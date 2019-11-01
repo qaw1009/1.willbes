@@ -350,8 +350,8 @@
 				  <tr>
 					<td>토양학</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 토양학 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146855">수강신청</a></td>
+					<td>2020 장사원 토양학 기출문제풀이</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157564">수강신청</a></td>
 				  </tr>
 				</table>
             </div>
@@ -409,8 +409,8 @@
 				  <tr>
 					<td>작물생리학</td>
 					<td>이론</td>
-					<td>2019 장사원 작물생리학 이론강의</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146573">수강신청</a></td>
+					<td>2020 장사원 작물생리학 이론강의</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156693">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>작물생리학</td>
@@ -457,8 +457,8 @@
 				  <tr>
 					<td>농촌지도론</td>
 					<td>이론</td>
-					<td>2019 장사원 농촌지도론 이론강의</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146572">수강신청</a></td>
+					<td>2020 장사원 농촌지도론 이론강의</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156696">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>농촌지도론</td>
@@ -490,8 +490,8 @@
 				  <tr>
 					<td>토양학</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 토양학 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146855">수강신청</a></td>
+					<td>2020 장사원 토양학 기출문제풀이</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157564">수강신청</a></td>
 				  </tr>
 				</table>
             </div>

@@ -480,7 +480,7 @@
                     <tr>
                         <td>전기이론</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전기이론 단원별 기출문제풀이</td>
+                        <td>2020 최우영 전기이론 단원별 문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157559" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>

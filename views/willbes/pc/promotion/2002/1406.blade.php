@@ -124,10 +124,10 @@
         </div>
 
         <div class="evtCtnsBox wb_07" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_07.jpg" alt="튜터링 관리반 자세히보기" usemap="#Map" border="0"/>
-            <map name="Map" id="Map">
-                <area shape="rect" coords="351,1234,762,1358" href="https://police.willbes.net/pass/support/notice/show?board_idx=241966&" target="_blank" />
-            </map>            
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1406_07.jpg" alt="튜터링 관리반 자세히보기" usemap="#Map1406C" border="0">
+            <map name="Map1406C" id="Map1406C">
+                <area shape="rect" coords="360,1235,765,1358" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank" />
+            </map>                        
         </div> 
       
     </div>

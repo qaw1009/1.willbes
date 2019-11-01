@@ -46,12 +46,14 @@
             <a href="{{ site_url('/promotion/index/cate/3019/code/1067') }}" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
             </a>
-        </div>   
+        </div>  
+        {{-- 
         <div class="skybanner2">
             <a href="{{ site_url('/promotion/index/cate/3019/code/1193') }}" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_sky.png" title="제니스영어" >
             </a>
-        </div> 
+        </div>
+        --}} 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1066_top.jpg" title="" />       
         </div>    
@@ -108,11 +110,14 @@
                 <area shape="rect" coords="284,767,447,815" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="심화실전예비" title="02.심화,실전예비" />
                 <area shape="rect" coords="492,768,658,816" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" alt="문제해결스킬업" title="03.문제해결스킬업" />
                 <area shape="rect" coords="704,765,869,814" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" alt="실전실력다지기" title="04.실전실력다지기" />
-                <area shape="rect" coords="910,764,1086,814" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147104" target="_blank" alt="파이널" title="05.지방직" />            </map>  
+                <area shape="rect" coords="910,764,1086,814" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147104" target="_blank" alt="파이널" title="05.지방직" />            
+            </map> 
+            {{--
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_06.gif" title="학습비법패키지수강신청" usemap="#Map1066c" border="0" />
             <map name="Map1066c" id="Map1066c">
                 <area shape="rect" coords="682,37,1066,114" href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_blank" />
             </map>
+            --}}
         </div>
     </div>
     <!-- End Container -->

@@ -4,7 +4,11 @@
             <button type="button" class="goback" onclick="history.back(-1); return false;">
                 <span class="hidden">뒤로가기</span>
             </button>
-            @yield('page_title')
+            @if(empty($__cfg['SiteMenu']['ActiveMenu']) === false)
+                {{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteName'] }}
+            @else
+                @yield('page_title')
+            @endif
         </div>
     </div>
 </div>

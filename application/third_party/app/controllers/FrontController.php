@@ -285,10 +285,65 @@ abstract class FrontController extends BaseController
         // 현재 사이트의 카테고리 코드
         $this->_cate_code = element(config_get('uri_segment_keys.cate'), $uri_segments, '');
 
+        // 모바일 메뉴 정보 배열
+        $mobile_menus = [];
+
+        if ($this->_is_mobile === true) {
+            // 전체 모바일 메뉴 캐쉬 조회
+            $all_mobile_menu_cache = $this->getCacheItem('mobile_menu');
+
+            // 현재 모바일 사이트 트리 메뉴
+            $mobile_tree_menus = array_get($all_mobile_menu_cache, 'TreeMenus.' . $this->_site_code, []);
+
+            // 현재 모바일 사이트 메뉴 URL
+            $mobile_menu_urls = array_reverse(array_get($all_mobile_menu_cache, 'MenuUrls.' . $this->_site_code, []));
+
+            // 현재 URL의 URI string (도메인 후위 path)
+            $uri_string = $this->getFinalUriString();
+
+            // 현재 URL의 디렉토리/컨트롤러까지의 URI (/{directory}/{controller}/)
+            $check_menu_prefix = str_first_pos_before($uri_string, '/' . $this->router->class . '/' . $this->router->method) . '/' . $this->router->class . '/';
+
+            // Active 메뉴 route idx
+            $_active_route_idx = '';
+            $_active_menu = [];
+
+            // 현재 URL의 메뉴정보 추출
+            foreach ($mobile_menu_urls as $menu_route_idx => $menu_url) {
+                // controller check
+                if (starts_with($menu_url, site_url() . $check_menu_prefix) === true) {
+                    // 현재 URL의 후위 uri string
+                    $uri_post_string = urldecode(str_first_pos_after($uri_string, $check_menu_prefix . $this->router->method . '/', ''));
+
+                    // 메뉴 URL에서 method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
+                    $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_url, $check_menu_prefix), '/', '');
+
+                    // controller 만으로 체크 가능 || controller + 후위 uri string 으로 체크
+                    if ((empty($check_menu_postfix) === true)
+                        || (empty($check_menu_postfix) === false && strpos($uri_post_string, $check_menu_postfix) !== false)) {
+                        $_active_route_idx = $menu_route_idx;
+                        break;
+                    }
+                }
+            }
+
+            if (empty($_active_route_idx) === false) {
+                $_active_menu = array_get($mobile_tree_menus, str_first_pos_after($_active_route_idx, '.'));
+                unset($_active_menu['Children']);
+            }
+
+            // 모바일 사이트 메뉴
+            $mobile_menus = [
+                'ActiveMenu' => $_active_menu,
+                'TreeMenu' => $mobile_tree_menus
+            ];
+        }
+
         $configs = array_merge(
             $site_cache,
             ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile, 'IsApp' => $this->_is_app],
-            config_item(SUB_DOMAIN)
+            config_get(SUB_DOMAIN, []),
+            ['SiteMenu' => $mobile_menus]
         );
         $this->config->set_item(SUB_DOMAIN, $configs);
     }

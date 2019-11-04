@@ -426,16 +426,16 @@ body.memBody #Footer {
     padding-left: 10px;
 }
 
-
-
 /*********************************************     INTRO PAGE     *********************************************/
-.introBox .Tit {
+
+.Container .Tit {
     font-size: 18px;
     padding:20px 0;
     background: #1a8ccb;
     text-align: center;
     color:#fff;
 }
+
 .introBox {
     background: #1b98ef;
 }
@@ -481,6 +481,50 @@ body.memBody #Footer {
     color:#fff;
 }
 
+
+.introBox2 {
+  border:1px solid #e4e4e4;
+  border-top:0;
+  border-right:0;
+  margin:10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+.introBox2 li {
+    display: inline-block; 
+    float:left; width:50%;     
+    position: relative;   
+}
+.introBox2 ul:after {content:''; display:block; clear:both}
+.introBox2 li div {
+    border-right:1px solid #e4e4e4;
+    border-top:1px solid #e4e4e4;    
+}
+.introBox2 li div a {display:block; height: 120px;}
+.introBox2 li div a:active, 
+.introBox2 li div a:hover {background:#e6f0f5; }
+.introBox2 .subTit {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top:30px;
+    padding:0 10px;
+    font-size: 12px;
+}
+.introBox2 .siteTit {
+    position: absolute;
+    width: 100%;
+    bottom:20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;    
+}
+.introBox2 .siteTit img {
+    vertical-align: middle;
+    margin-right:5px;
+}
 
 
 

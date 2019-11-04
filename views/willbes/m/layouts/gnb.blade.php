@@ -7,26 +7,20 @@
                 <img src="{{ img_url('m/main/icon_' . $__cfg['SiteGroupId'] . '.png') }}" class="clogo" alt=""/>
                 {{str_replace_array(['윌비스', '온라인', '학원', ' '], '', $__cfg['HeadTitle'])}}
             </h2>
-            <li class="ListTit"><h1 class="NGEB">수강신청</h1></li>
-            <li class="ListBox">
-                <div class="List NGEB"><a href="{{front_url('/lecture/index/pattern/only')}}">단강좌</a></div>
-            </li>
-            <li class="ListBox">
-                <div class="List NGEB"><a href="{{front_url('/lecture/index/pattern/free')}}">무료강좌</a></div>
-            </li>
-            <li class="ListBox">
-                <div class="List NGEB"><a href="{{front_url('/package/index/pack/648001')}}">{{ $__cfg['SiteCode'] == '2001' ? '종합반/패키지' : '추천패키지' }}</a></div>
-            </li>
-            @if($__cfg['SiteCode'] == '2001')
-                <li class="ListBox">
-                    <div class="List NGEB"><a href="{{front_url('/package/index/pack/648002')}}">선택패지키</a></div>
-                </li>
-            @endif
-            @if($__cfg['SiteCode'] == '2003')
-                {{-- 실서버 상품코드 설정 (153368 => 154935) --}}
-                <li class="ListBox">
-                    <div class="List NGEB"><a href="{{front_url('/userPackage/index/?cate_code=3019')}}">DIY패키지</a></div>
-                </li>
+            {{-- 모바일 사이트 메뉴 --}}
+            @if(empty($__cfg['SiteMenu']['TreeMenu']) === false)
+                @foreach($__cfg['SiteMenu']['TreeMenu'] as $menu_idx => $menu_row)
+                    <li class="ListTit"><h1 class="NGEB">{{ $menu_row['MenuName'] }}</h1></li>
+                    @if(isset($menu_row['Children']) === true)
+                        @foreach($menu_row['Children'] as $child_menu_idx => $child_menu_row)
+                            <li class="ListBox">
+                                <div class="List NGEB">
+                                    <a href="{{ $child_menu_row['MenuUrl'] }}" target="_{{ $child_menu_row['UrlTarget'] }}">{{ $child_menu_row['MenuName'] }}</a>
+                                </div>
+                            </li>
+                        @endforeach
+                    @endif
+                @endforeach
             @endif
         @endif
         <li class="ListTit"><h1 class="NGEB">내강의실</h1></li>

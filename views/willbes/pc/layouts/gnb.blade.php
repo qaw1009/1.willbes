@@ -26,7 +26,7 @@
         <div class="topView">
             @php $menu_group_row = $__cfg['GNBMenu']['TreeMenu'][$__cfg['GNBMenu']['ActiveGroupMenuIdx']]; @endphp
             <h1>
-                <img src="{{ img_url('gnb/icon_' . $menu_group_row['UrlSubDomain'] . '.gif') }}">{{ $menu_group_row['MenuName'] }}
+                <img src="{{ img_url('gnb/icon_' . $menu_group_row['UrlSubDomain'] . '.png') }}">{{ $menu_group_row['MenuName'] }}
             </h1>
             <h4>
                 <ul>

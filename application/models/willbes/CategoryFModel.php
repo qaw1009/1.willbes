@@ -26,6 +26,6 @@ class CategoryFModel extends WB_Model
         ];
 
         return $this->_conn->getListResult($this->_table['category'], 'SiteCode, CateCode, CateName, ParentCateCode, GroupCateCode, CateDepth',
-            $arr_condition, null, null, ['OrderNum' => 'asc']);
+            $arr_condition, null, null, ['CateDepth' => 'asc', 'OrderNum' => 'asc']);
     }
 }

@@ -38,7 +38,19 @@ class Lecture extends \app\controllers\FrontController
         $cate_code = !(empty($this->_cate_code)) ? $this->_cate_code : element('cate_code', $arr_input);
 
         // 카테고리 조회 : 모바일에서 카테고리 select box 사용
-        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        $arr_base['category'] = [];
+        if($this->_site_code === '2006') { // 자격증의 경우 2depth로 기본 카테고리 지정
+            $result_list = $this->categoryFModel->listSiteCategory($this->_site_code,'2');
+            if(empty($result_list) === false) {
+                foreach ($result_list as $row) {
+                    if($row['CateDepth'] === '2') {
+                        $arr_base['category'][] = $row;
+                    }
+                }
+            }
+        } else {
+            $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        }
 
         // 지정된 카테고리가 없을 경우
         if (empty($cate_code) === true) {

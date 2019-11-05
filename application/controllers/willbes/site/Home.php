@@ -176,13 +176,16 @@ class Home extends \app\controllers\FrontController
     private function _getSite2006Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
 
         if (APP_DEVICE == 'pc') {
-            $data['notice'] = $this->_boardNotice(5, $cate_code);
-            $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $cate_code);
-            $data['exam_news'] = $this->_boardExamNews(5, $cate_code);
-            $data['arr_main_banner'] = $this->_banner($cate_code);
+            $s_cate_code = $cate_code;
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
+
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
 
         return $data;
     }
@@ -196,14 +199,16 @@ class Home extends \app\controllers\FrontController
     private function _getSite2007Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
 
         if (APP_DEVICE == 'pc') {
+            $s_cate_code = $cate_code;
             $data['dday'] = $this->_dday();
-            $data['notice'] = $this->_boardNotice(5, $cate_code);
-            $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $cate_code);
-            $data['exam_news'] = $this->_boardExamNews(5, $cate_code);
-            $data['arr_main_banner'] = $this->_banner($cate_code);
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
 
         return $data;
     }

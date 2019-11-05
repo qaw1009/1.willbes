@@ -153,7 +153,7 @@
                 <div id="tab04s" class="white">
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab4_con.jpg" /> 
                     <div id="tab04s2">
-                        <img src="http://file3.willbes.net/new_cop/2019/03/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
                         <div class="evttab">
                             <ul>
                                 <li><a href="#tab01" class="active">기본과정</a></li>

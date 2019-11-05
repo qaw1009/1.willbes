@@ -218,12 +218,14 @@
             @if($pattern == 'only')
                 {{--장바구니, 바로결제 버튼 클릭--}}
                 $regi_form.on('click', 'a[name="btn_cart"], a[name="btn_direct_pay"]', function() {
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                     var $is_direct_pay = $(this).data('direct-pay');
                     addCartNDirectPay($regi_form, $is_direct_pay, 'Y','{{front_url('')}}');
                 });
             @elseif($pattern == 'free')
                 {{-- 바로결제 버튼 클릭--}}
                 $regi_form.on('click', 'a[name="btn_direct_pay"]', function() {
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                     var $is_redirect = $(this).data('is-redirect');
                     var $layer_type = $regi_form.find('.chk_books:checked').length < 1 ? 'pocketBox1' : 'pocketBox2';
 

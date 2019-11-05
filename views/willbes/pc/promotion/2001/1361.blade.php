@@ -366,7 +366,7 @@
                     @if(time() <= strtotime('201908311200'))
                         $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                     @else
-                        $active = $($links.filter('[href="'+location.hash+'"]')[3] || $links[3]);
+                        $active = $($links.filter('[href="'+location.hash+'"]')[4] || $links[4]);
                     @endif
                 @endif
 

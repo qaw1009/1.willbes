@@ -34,7 +34,7 @@
                         <a href="{{ front_app_url('/home/index', 'police') }}">
                             <p class="subTit">일반경찰/경행/승진/해경</p>
                             <p class="siteTit">
-                                <img src="{{ img_url('m/intro/icon_cop.gif') }}" alt="신광은경찰">
+                                <img src="{{ img_url('m/intro/icon_cop.png') }}" alt="신광은경찰">
                                 신광은 경찰
                             </p>
                         </a>
@@ -45,7 +45,7 @@
                         <a href="{{ front_app_url('/home/index', 'pass') }}">
                             <p class="subTit">9급/7급/법원/소방/기술직/군무원</p>
                             <p class="siteTit">
-                                <img src="{{ img_url('m/intro/icon_gosi.gif') }}" alt="공무원">
+                                <img src="{{ img_url('m/intro/icon_gosi.png') }}" alt="공무원">
                                 공무원
                             </p>
                         </a>
@@ -56,7 +56,7 @@
                         <a href="{{ front_app_url('/home/index', 'job') }}">
                             <p class="subTit">국가기술자격/국가전문자격</p>
                             <p class="siteTit">
-                                <img src="{{ img_url('m/intro/icon_job.gif') }}" alt="자격증">
+                                <img src="{{ img_url('m/intro/icon_job.png') }}" alt="자격증">
                                 자격증
                             </p>
                         </a>
@@ -67,7 +67,7 @@
                         <a href="{{ front_app_url('/home/index', 'lang') }}">
                             <p class="subTit">G-TELP</p>
                             <p class="siteTit">
-                                <img src="{{ img_url('m/intro/icon_lang.gif') }}" alt="어학">
+                                <img src="{{ img_url('m/intro/icon_lang.png') }}" alt="어학">
                                 어학
                             </p>
                         </a>

@@ -226,7 +226,7 @@
                     </a>
                 </li>
                 <li>
-                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_ing.gif" alt="진행중"></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2019/08/1361_01_end.gif" alt="종료"></span>
                     <a href="#tab04">
                         <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab04_on.jpg" alt="면접시험" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2019/10/1361_tab04.jpg" alt="면접시험" class="off">

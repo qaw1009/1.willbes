@@ -185,7 +185,7 @@
                                 @endif
                                 <div class="dDayBox">
                                     <a href="#none">
-                                        <span class="dTit">{{ $row['DayTitle'] }}<div class="w-date">{{ $row['DayDatm'] }}</div></span>
+                                        <span class="dTit">{{ $row['DayMainTitle'] }}<div class="w-date">{{ $row['DayDatm'] }}</div></span>
                                         <span class="dDay tx-color">D{{ $row['DDay'] }}</span>
                                     </a>
                                 </div>

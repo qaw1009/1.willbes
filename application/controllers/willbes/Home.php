@@ -31,7 +31,7 @@ class Home extends \app\controllers\FrontController
 
         if (APP_DEVICE == 'pc') {
             // 시험일정 조회 (디데이)
-            $data['dday'] = $this->dDayFModel->getDDays();
+            $data['dday'] = $this->dDayFModel->getDDays(['RAW' => ['a.DayMainTitle IS' => ' NOT NULL', 'a.DayMainTitle !=' => " ''"]]);
             
             // NOW 윌비스
             $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';

@@ -44,6 +44,8 @@ class Apply extends \app\controllers\BaseController
 
         $search_cert = $this->_reqP('search_cert'); // 인증정보
 
+        $search_member_idx = $this->_req('search_member_idx');
+
         $param_check = '';
         if(empty($params) === false) {
             $param_check = $params[0];
@@ -57,6 +59,7 @@ class Apply extends \app\controllers\BaseController
                 'A.CertConditionCcd' =>$this->_reqP('search_condition'),
                 'A.No' =>$this->_reqP('search_no'),
                 'SA.ApprovalStatus' =>$this->_reqP('search_approval'),
+                'F.MemIdx' => $search_member_idx, // 사용자 번호 검색
             ],
         ];
 

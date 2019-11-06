@@ -2536,5 +2536,59 @@ class Manage extends \app\controllers\BaseController
     }
 
 
+    /**
+     * 기기정보 메모 리스트
+     * @return CI_Output
+     */
+    public function ajaxDeviceMemo()
+    {
+        $mem_idx = $this->_reqP('mem_idx');
+        $list = [];
 
+        $arr_cond = [
+            'EQ' => [
+                'm.MemIdx' => $mem_idx
+            ]
+        ];
+
+        $order_by = [
+            'm.DeviceMemoIdx' => 'DESC'
+        ];
+
+        $count = $this->manageMemberModel->deviceMemoList(true, $arr_cond,
+            $this->_reqP('length'), $this->_reqP('start'), $order_by);
+        if($count > 0){
+            $list = $this->manageMemberModel->deviceMemoList(false, $arr_cond,
+                $this->_reqP('length'), $this->_reqP('start'), $order_by);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+
+    /**
+     * 기기정보 메모저장
+     *
+     */
+    public function storeDeviceMemo()
+    {
+        $rules = [
+            ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'device_memo', 'label' => '메모', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $input = $this->_reqP(null);
+
+        $result = $this->manageMemberModel->storeDeviceMemo($input);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
 }

@@ -188,7 +188,7 @@ class SalesProductModel extends BaseOrderModel
     {
         $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
         $column = 'ProdCode, LearnPatternCcd, StudyStartDate, StudyEndDate
-            , ifnull(StudyPeriod, if(StudyStartDate is not null and StudyEndDate is not null, datediff(StudyEndDate, StudyStartDate), 0)) as StudyPeriod
+            , ifnull(StudyPeriod, if(StudyStartDate is not null and StudyEndDate is not null, datediff(StudyEndDate, StudyStartDate) + 1, 0)) as StudyPeriod
             , if(MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(AllLecTime * 60 * MultipleApply, int), 0) as MultipleAllLecSec';
         $arr_condition = ['IN' => ['ProdCode' => (array) $prod_code]];
 

@@ -19,6 +19,11 @@
         <div class="willbes-Lec-Line">-</div>
         <!-- willbes-Lec-Line -->
 
+        {{-- 과목에 해당하는 상품이 없을 경우 --}}
+        @if(isset($tab_data['on_lecture'][$subject_idx]) === false)
+            @continue
+        @endif
+
         @foreach($tab_data['on_lecture'][$subject_idx] as $idx => $row)
             <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
                 <table cellspacing="0" cellpadding="0" class="lecTable">

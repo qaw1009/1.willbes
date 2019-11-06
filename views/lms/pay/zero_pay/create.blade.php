@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="bdt-line mb-10"></div>
-                        <p><i class="fa fa-check ml-10"></i> 상품 등록은 1건만 가능합니다. (다중 선택 불가능)</p>
+                        <p><i class="fa fa-check ml-10"></i> 상품구분이 ‘회차등록’인 경우는 상품 등록이 1건만 가능합니다. (다중 선택 불가능)</p>
                         <p><i class="fa fa-check ml-10"></i> 상품구분이 ‘교재’인 경우는 회원 등록이 1명만 가능합니다.</p>
                     </div>
                     <div class="col-md-12">
@@ -173,7 +173,7 @@
                             <div class="col-md-3 form-inline item">
                                 <input type="text" id="zipcode" name="zipcode" class="form-control" title="우편번호" required="required_if:prod_type,book" readonly="readonly" maxlength="6">
                                 <button type="button" id="btn_post_search" onclick="searchPost('post_search', 'zipcode', 'addr1', 'Y');" class="btn btn-primary mb-0">주소찾기</button>
-                                <div id="post_search" style="max-height: 446px; border:1px solid black; display: none;">
+                                <div id="post_search" style="max-height: 446px; display: none;">
                                     <div class="panel panel-primary mt-10 mb-0">
                                         <div class="panel-heading">우편번호 검색
                                             <div class="pull-right"><button type="button" class="close" onclick="closeSearchPost('post_search');"><span aria-hidden="true">×</span></button></div>
@@ -283,8 +283,8 @@
                     alert('해당 상품구분은 1명의 회원만 등록 가능합니다.');
                     return false;
                 }
-                if ($regi_form.find('input[name="prod_code[]"]').length !== 1) {
-                    alert('등록할 상품을 1건만 선택해 주세요.');
+                if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y' && $regi_form.find('input[name="prod_code[]"]').length > 1) {
+                    alert('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.');
                     return false;
                 }
                 if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y' && $regi_form.find('input[name="wUnitCode[]"]').length < 1) {
@@ -292,12 +292,13 @@
                     return false;
                 }
 
-                if (!confirm('해당 상품을 0원 결제로 등록하시겠습니까?')) {
-                    return false;
-                }
-
-                return true;
+                return confirm('해당 상품을 0원 결제로 등록하시겠습니까?');
             };
+
+            // 운영사이트 선택
+            $regi_form.on('change', 'select[name="site_code"]', function() {
+                $('#selected_product').html('');    // 기 선택 상품 초기화
+            });
 
             // 상품구분 선택
             $regi_form.on('ifChecked', 'input[name="prod_type"]', function() {
@@ -375,13 +376,13 @@
                     });
                 }
 
-                $('#selected_product').html('');    // 기 선택 상품 초기화
+                //$('#selected_product').html('');    // 기 선택 상품 초기화 => 다중선택 가능
             });
 
-            // 상품선택 결과 이벤트 (1건만 선택 가능)
+            // 상품선택 결과 이벤트 (1건만 선택 가능 ==> 회차등록 제외하고 다중선택 가능)
             $regi_form.on('change', '#selected_product', function() {
-                if ($(this).find('input[name="prod_code[]"]').length > 1) {
-                    alert('등록할 상품을 1건만 선택해 주세요.');
+                if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y' && $(this).find('input[name="prod_code[]"]').length > 1) {
+                    alert('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.');
                     $(this).html('');
                 }
             });

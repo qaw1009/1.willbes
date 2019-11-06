@@ -51,81 +51,147 @@
                     </table>
                 </div>
             </div>
-
-
-            <script type="text/javascript">
-                var $datatable;
-                var $search_form = $('#search_form_modal');
-                var $list_table = $('#list_ajax_table_modal');
-
-                $(document).ready(function() {
-                    $datatable = $list_table.DataTable({
-                        serverSide: true,
-                        paging : false,
-                        ajax: {
-                            'url' : '{{ site_url("/member/manage/ajaxdeviceList/") }}',
-                            'type' : 'POST',
-                            'data' : function(data) {
-                                return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
-                            }
-                        },
-                        columns: [
-                            {'data' : null, 'render' : function(data, type, row, meta){
-                                    // 리스트 번호
-                                    return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                                }},
-                            {'data' : 'DeviceType', 'render' : function (data, type, row, meta) {
-                                    if(data == 'P'){ return 'PC';}
-                                    else if(data == 'M'){ return 'Mobile';}
-                                    else if(data == 'A'){ return 'App';}
-                                }},
-                            {'data' : 'DeviceId'},
-                            {'data' : null, 'render' : function(data, type, row, meta){
-                                    return row.Os + ' ' + row.DeviceModel + ' (' + row.App + ')';
-
-                                }},
-                            {'data' : 'RegDatm'},
-                            {'data' : 'DelDatm'},
-                            {'data' : 'adminName'},
-                            {'data' : null, 'render' : function(data, type, row, meta) {
-                                    if(row.IsUse == 'Y'){
-                                        return '<button type="button" class="btn btn-dark bg-red mr-10" onclick="deleteDevice('+row.MdIdx+');" value="sdlkjf">삭제</botton>';
-                                    } else {
-                                        return '';
-                                    }
-
-                                }}
-                        ]
-                    });
-                });
-
-                function deleteDevice(MdIdx)
-                {
-                    var _url = '{{ site_url("/member/manage/deleteDevice") }}' + getQueryString();
-                    $('#MdIdx').val(MdIdx);
-
-                    ajaxSubmit($search_form, _url, function(ret) {
-                        if(ret.ret_cd) {
-                            notifyAlert('success', '알림', ret.ret_msg);
-                            // 성공후에 layer 안에 내용 변경하기
-                            sendAjax("{{ site_url("/member/manage/deviceLog/{$data['MemIdx']}") }}",
-                                '',
-                                function(d){
-                                    $("#pop_modal").find(".modal-content").html(d).end()
-                                },
-                                function(req, status, err){
-                                    showError(req, status);
-                                }, false, 'GET', 'html');
-                        }
-                    }, showValidateError, false, 'alert');
-                }
-            </script>
-        @stop
-
-        @section('add_buttons')
-
-        @endsection
-
-        @section('layer_footer')
     </form>
+    <div class="col-md-6">
+        <h4><strong>메모관리</strong></h4>
+    </div>
+    <div class="col-md-6 text-right">
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal form-label-left" id="regi_memo_form" name="regi_memo_form" method="POST" onsubmit="return false;" novalidate>
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="mem_idx" value="{{ $data['MemIdx']  }}"/>
+            <div class="item">
+                <textarea id="device_memo" name="device_memo" class="form-control" rows="3" title="메모" required="required" placeholder="메모 내용을 입력해 주십시오."></textarea>
+            </div>
+            <button class="btn btn-sm btn-primary mt-5">메모저장</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table id="list_memo_table" class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>메모내용</th>
+                <th>등록자</th>
+                <th>등록일</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        var $datatable;
+        var $search_form = $('#search_form_modal');
+        var $list_table = $('#list_ajax_table_modal');
+
+        var $datatable_memo;
+        var $regi_memo_form = $('#regi_memo_form');
+        var $list_memo_table = $('#list_memo_table');
+
+        $(document).ready(function() {
+            $datatable = $list_table.DataTable({
+                serverSide: true,
+                paging : false,
+                ajax: {
+                    'url' : '{{ site_url("/member/manage/ajaxdeviceList/") }}',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    }
+                },
+                columns: [
+                    {'data' : null, 'render' : function(data, type, row, meta){
+                            // 리스트 번호
+                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
+                    {'data' : 'DeviceType', 'render' : function (data, type, row, meta) {
+                            if(data == 'P'){ return 'PC';}
+                            else if(data == 'M'){ return 'Mobile';}
+                            else if(data == 'A'){ return 'App';}
+                        }},
+                    {'data' : 'DeviceId'},
+                    {'data' : null, 'render' : function(data, type, row, meta){
+                            return row.Os + ' ' + row.DeviceModel + ' (' + row.App + ')';
+
+                        }},
+                    {'data' : 'RegDatm'},
+                    {'data' : 'DelDatm'},
+                    {'data' : 'adminName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            if(row.IsUse == 'Y'){
+                                return '<button type="button" class="btn btn-dark bg-red mr-10" onclick="deleteDevice('+row.MdIdx+');" value="sdlkjf">삭제</botton>';
+                            } else {
+                                return '';
+                            }
+
+                        }}
+                ]
+            });
+
+            // 메모 목록
+            $datatable_memo = $list_memo_table.DataTable({
+                serverSide: true,
+                paging: true,
+                pagingType : 'simple_numbers',
+                lengthMenu: [5,10,20],
+                pageLength : 5,
+                ajax: {
+                    'url' : '{{ site_url('/member/manage/ajaxDeviceMemo') }}',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend(arrToJson($regi_memo_form.find('input[type="hidden"]').serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    }
+                },
+                columns: [
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            // 리스트 번호
+                            return $datatable_memo.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
+                    {'data' : 'Content', 'render' : function(data, type, row, meta) {
+                            return data.replace(/\n/gi, '<br/>');
+                        }},
+                    {'data' : 'RegAdminName'},
+                    {'data' : 'RegDate'}
+                ]
+            });
+
+            // 메모 등록
+            $regi_memo_form.submit(function() {
+                var _url = '{{ site_url('/member/manage/storeDeviceMemo') }}';
+
+                ajaxSubmit($regi_memo_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $regi_memo_form.find('textarea[name="device_memo"]').val('');
+                        $datatable_memo.draw();
+                    }
+                }, showValidateError, null, false, 'alert');
+            });
+        });
+
+        function deleteDevice(MdIdx)
+        {
+            var _url = '{{ site_url("/member/manage/deleteDevice") }}' + getQueryString();
+            $('#MdIdx').val(MdIdx);
+
+            ajaxSubmit($search_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    // 성공후에 layer 안에 내용 변경하기
+                    $datatable.draw();
+                }
+            }, showValidateError, false, 'alert');
+        }
+    </script>
+@stop
+
+@section('add_buttons')
+
+@endsection
+
+@section('layer_footer')
 @endsection

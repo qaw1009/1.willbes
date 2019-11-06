@@ -68,6 +68,7 @@
                     <label class="control-label col-md-1-1" for="day_title">제목 (통합 메인 노출)</label>
                     <div class="col-md-10 item">
                         <input type="text" id="day_main_title" name="day_main_title" class="form-control" maxlength="100" title="제목" value="{{ $data['DayMainTitle'] }}" placeholder="">
+                        <span class="mt-10">미입력 시 통합메인에 노출되지 않습니다</span>
                     </div>
                 </div>
 

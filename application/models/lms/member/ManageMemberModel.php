@@ -12,7 +12,8 @@ class ManageMemberModel extends WB_Model
         'device' => 'lms_member_device',
         'site' => 'lms_site',
         'code' => 'lms_sys_code',
-        'admin' => 'wbs_sys_admin'
+        'admin' => 'wbs_sys_admin',
+        'deviceMemo' => 'lms_member_device_memo'
     ];
 
     public function __construct()
@@ -293,6 +294,64 @@ class ManageMemberModel extends WB_Model
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
     }
+
+    public function deviceMemoList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $rows = [];
+
+        if($is_count === true) {
+            $column = ' COUNT(*) AS rownums ';
+            $order_by_offset_limit = '';
+
+        } else {
+            $column = " m.Content AS Content, a.wAdminName AS RegAdminName, m.RegDatm AS RegDate ";
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = " FROM {$this->_table['deviceMemo']} AS m
+            LEFT JOIN {$this->_table['admin']} AS a ON a.wAdminIdx = m.RegAdminIdx  
+        ";
+
+        $arr_condition['EQ']['m.IsStatus'] = 'Y';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
+    }
+
+    public function storeDeviceMemo($input)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            $data = [
+                'MemIdx' => element('mem_idx', $input),
+                'Content' => element('device_memo', $input),
+                'RegAdminIdx' => $admin_idx,
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            // 메모 등록
+            if ($this->_conn->set($data)->insert($this->_table['deviceMemo']) === false) {
+                throw new \Exception('데이터 저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
 
     /**
      * 사용자 등록 기기 삭제

@@ -27,7 +27,7 @@
         /*상단 동영상*/
         .layer {width:100%; height:800px; -ms-overflow:hidden;}
         .video {width:100%; height:800px; overflow:hidden; position:relative; opacity:0.4; box-shadow:0px rgba(0,0,0,0.4); background:#000}
-        .pngimg	 {width:1120px; margin:0 auto; position:relative; top:-800px;}
+        .pngimg	 {width:1120px; margin:0 auto; position:relative; top:-750px;}
         .pngimg-real {width:1120px; height:0px; position:absolute;top:0;}
         .wb_mp4 {width:100%; text-align:center; margin:0 auto; background:#000; min-width:1120px;}
         .wb_mp4 ul {width:100%; margin:0 auto; min-width:1120px;}
@@ -128,12 +128,12 @@
             <div class="layer">
                 <div class="video">
                     <video style="width:100%;" autoplay loop muted="">
-                        <source src="https://static.willbes.net/public/images/promotion/2019/07//1101_bg.mp4" type="video/mp4"></source>
+                        <source src="https://static.willbes.net/public/images/promotion/2019/07/1101_bg.mp4" type="video/mp4"></source>
                     </video>
                 </div>
                 <div class="pngimg">
                     <div class="pngimg-real">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_t.png" alt="윌비스 관리반" />
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1101_t.png" alt="윌비스 관리반" />
                     </div>
                 </div>
             </div>

@@ -128,12 +128,12 @@
             <div class="layer">
                 <div class="video">
                     <video style="width:100%;" autoplay loop muted="">
-                        <source src="https://static.willbes.net/public/images/promotion/2019/07//1101_bg.mp4" type="video/mp4"></source>
+                        <source src="https://static.willbes.net/public/images/promotion/2019/07/1101_bg.mp4" type="video/mp4"></source>
                     </video>
                 </div>
                 <div class="pngimg">
                     <div class="pngimg-real">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_t.png" alt="윌비스 관리반" />
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1101_t.png" alt="윌비스 관리반" />
                     </div>
                 </div>
             </div>

@@ -24,7 +24,14 @@
         .skyBanner {position:fixed; bottom:250px;right:0;z-index:10;}
         .skybannerB{position: fixed; bottom:0; text-align:center; z-index: 101; background:#242424; width:100%}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/11/1053_top_bg.jpg) no-repeat center top}
+        /*상단 동영상*/
+        .layer {width:100%; height:800px; -ms-overflow:hidden;}
+        .video {width:100%; height:800px; overflow:hidden; position:relative; opacity:0.4; box-shadow:0px rgba(0,0,0,0.4); background:#000}
+        .pngimg	 {width:1120px; margin:0 auto; position:relative; top:-800px;}
+        .pngimg-real {width:1120px; height:0px; position:absolute;top:0;}
+        .wb_mp4 {width:100%; text-align:center; margin:0 auto; background:#000; min-width:1120px;}
+        .wb_mp4 ul {width:100%; margin:0 auto; min-width:1120px;}
+       
         .wb_cts01{background:#0f44a0;}
         .white{background:#fff;}
 
@@ -88,6 +95,21 @@
         .PeMenu li a img.off {display:block} 	
         .PeMenu li a img.on {display:none} 	
         #tab04s2{background:#f7f7f7}
+
+          /* tip */
+        .wb_cts09 {background:#fff; text-align:left; padding:25px 0 100px 0;}
+        .wb_tipBox {border:1px solid #333;padding:100px; width:1120px; margin:0 auto; }
+        .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
+        .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
+        .wb_tipBox ol li {margin:25px 0 10px; line-height:1.5; list-style:decimal; margin-left:15px;font-size:14px;}
+        .wb_tipBox ul {margin-top:20px}
+        .wb_tipBox ul li {margin-bottom:5px}
+        .wb_tipBox table {width:100%; border-spacing:0px; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
+        .wb_tipBox th,
+        .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
+        .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
+        .wb_tip_orange {font-size:14px; color:#c03011;}
+        .wb_tipBox b{vertical-align:top;}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -102,8 +124,19 @@
             </map> 
         </div>
 
-        <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_top.jpg"alt="경찰통합생활관리반">
+        <div class="evtCtnsBox wb_mp4" id="main">
+            <div class="layer">
+                <div class="video">
+                    <video style="width:100%;" autoplay loop muted="">
+                        <source src="https://static.willbes.net/public/images/promotion/2019/07//1101_bg.mp4" type="video/mp4"></source>
+                    </video>
+                </div>
+                <div class="pngimg">
+                    <div class="pngimg-real">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/07/1101_t.png" alt="윌비스 관리반" />
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="evtCtnsBox wb_cts01">          
@@ -138,7 +171,81 @@
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab1_con.jpg" usemap="#Map1053tab1" border="0" />
                     <map name="Map1053tab1" id="Map1053tab1">
                         <area shape="rect" coords="267,539,945,649" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1093&subject_idx=1473&campus_ccd=" target="_blank" />
-                    </map>                  
+                    </map>     
+                    <div class="evtCtnsBox wb_cts09">
+                        <div class="wb_tipBox">
+                     
+                        <div id="txt1">
+                            <p>유의사항</p>
+                            <ol>
+                                <li><strong>[생활]</strong><br />
+                                - <b>1개월 미만 등록은 불가하고 입실일과 무관하게 이용기간은 말일까지입니다.</b><br />
+                                &nbsp;(ex: 10월 10일 입실 -> 11월 10일까지 1개월 이용 X, 10월 10일 입실 -> 11월 30일까지 이용 O)<br />
+                                - 점호 및 출결 관리는 일요일과 공휴일은 진행되지 않으며 조교 근무 일정에 따라 진행이 안 되는 날이 있을 수 있습니다.<br />
+                                - 내부 벌점 규정에 의한 생활 통제가 존재하면 점호 불참,소음,입실생간 불화,범죄 행위 등 벌점이 누적된 경우 강제 퇴실 조치가 있습니다.<br />
+                                - <span class="wb_tip_orange">매주 일요일과 식당 휴일에는 식사 이용이 불가능합니다.</span><br />
+                                </li>
+                                <li><strong>[실강 PASS]</strong><br />
+                                - <b>아침 특강, 영어집중반, 면접반 등 일부 과정은 포함되지 않습니다.</b><br />
+                                - 무료 제공되는 특강 및 모의고사의 경우 별도의 신청이 필요합니다.(비용은 발생하지 않습니다)<br />                            
+                                </li>
+                                <li><strong>[인강 PASS]</strong><br />
+                                - 불가피한 사정에 의해 진행되지 않은 강좌의 경우 대체 강좌로 제공되며, 이로 인한 환불은 불가합니다.<br />
+                                - 아이디 공유, 타인 양도 등 부정사용 적발 시 환불없이 회원 자격이 박탈되며, 불법 행위 시안에 따라 민형사상 조치가 있을 수 있습니다.<br />
+                                - 온/오프라인 동시 진행되는 이벤트성 특강의 경우 인강에 미지급되거나 이벤트가 종료된 후 제공될 수 있습니다.<br />
+                                </li>
+                                <li><strong>[환불 규정]</strong><br />
+                                - 혜택 이용 여부에 따른 환불<br />
+                                &nbsp;통합생활관리반은 숙박,식사,실강,인강 등이 통합된 패키지 상품으로 등록 시점에 담당자와 협의를 거친 경우를 제외하고<br />
+                                &nbsp;혜택 이용 여부에 따른 <b>부분적인 금액 공제는 불가</b>합니다.<br />
+                                &nbsp;<span class="wb_tip_orange">(ex: 총 6개월 과정을 등록하였는데 2개월은 식당을 이용하지 않았으니 해당 부분 환불해주세요. X)</span><br />
+                                &nbsp;<span class="wb_tip_orange">(ex: 인강PASS를 이용하지 않으니 인강 비용만큼 금액 공제해 주세요. X)</span><br /><br />
+                                - 이용 기간에 따른 환불(교육청 환불 기준 준수)                           
+                                </li>                                
+                            </ol>
+                        </div> 
+                        <table>
+                            <col />
+                            <col />
+                            <col />
+                            <tr>
+                                <th>수강료징수기간</th>
+                                <th>반환 사유발생일</th>
+                                <th>반환금액</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">교습 기간이 1개월 이내인 경우</td>
+                                <td>교습 시작 전</td>
+                                <td>이미 납부한 교습비등의 전액</td>
+                            </tr>
+                            <tr>
+                                <td>총 교습시간의 1/3경과 전</td>
+                                <td>이미 납부한 교습비등의 2/3에 해당하는 금액</td>
+                            </tr>
+                            <tr>
+                                <td>총 교습시간의 1/2경과 전</td>
+                                <td>이미 납부한 교습비등의 1/2에 해당하는 금액</td>
+                            </tr>
+                            <tr>
+                                <td>총 교습시간의 1/2경과 후</td>
+                                <td>반환하지 않음</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">교습 기간이 1개월 초과인 경우</td>
+                                <td>교습 시작 전</td>
+                                <td>이미 납부한 수강료 전액</td>
+                            </tr>
+                            <tr>
+                                <td>교습 시작 후</td>
+                                <td>반환사유가 발생한 해당 월의 반환 대상 교습비등<br />
+                                    (교습기간이 1개월 이내인 경우의 기준에 따라 산출한 금액을 말한다)과 나머지<br/>
+                                    월의 교습비등의 전액을 합산한 금액
+                                </td>
+                            </tr>
+                        </table>                      
+                        
+                        </div>
+                    </div>             
                 </div>                                        
                 <div id="tab02s" class="white">
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />

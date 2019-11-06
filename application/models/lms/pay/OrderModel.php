@@ -895,7 +895,7 @@ class OrderModel extends BaseOrderModel
 
                 foreach ($rows as $idx => $row) {
                     // 수강시작일, 수강종료일 조회
-                    $arr_lec_date = $this->getMyLectureLecStartEndDate($this->_learn_pattern_ccd[$row['LearnPatternCcd']], $row['StudyStartDate'], $row['StudyEndDate'], $row['StudyPeriod'], $user_study_start_date, $user_study_period);
+                    $arr_lec_date = $this->getMyLectureLecStartEndDate(array_search($row['LearnPatternCcd'], $this->_learn_pattern_ccd), $row['StudyStartDate'], $row['StudyEndDate'], $row['StudyPeriod'], $user_study_start_date, $user_study_period);
 
                     // 나의 강좌수강정보 등록
                     $data = [

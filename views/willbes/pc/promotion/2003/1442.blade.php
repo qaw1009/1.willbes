@@ -20,7 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1442_top_bg.jpg) no-repeat center top; }
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2019/11/1442_top_bg.jpg) no-repeat center top; }
         .evt01 {background:#e8e9ed}            
         .evt02 {background:#f5e365; position:relative}         
         .evt02 .liveWrap {position:absolute; left:50%; margin-left:-560px; top:593px; z-index:10 }
@@ -31,11 +31,11 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox evttop" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1442_top.jpg" alt="기미진 국어 아침특강 라이브" usemap="#Map1442_top" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1442_top.gif" alt="기미진 국어 아침특강 라이브" usemap="#Map1442_top" border="0" />
             <map name="Map1442_top" id="Map1442_top">
-                <area shape="rect" coords="97,808,226,942" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=국어&tab=open_lecture" target="_blank" />
-                <area shape="rect" coords="236,809,371,944" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" alt="자료다운" />
-            </map>
+                <area shape="rect" coords="98,854,225,992" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=국어&tab=open_lecture" target="_blank" />
+                <area shape="rect" coords="237,853,367,996" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" alt="자료다운" />
+            </map>   
         </div>
 
         <div class="evtCtnsBox evt01">

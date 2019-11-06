@@ -454,6 +454,11 @@ class OrderModel extends BaseOrderModel
                     throw new \Exception('상품정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
 
+                // 사이트코드 체크
+                if ($site_code != $row['SiteCode']) {
+                    throw new \Exception('사이트 정보가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
+                }
+
                 $row['OrderProdType'] = $learn_pattern;     // 주문상품타입
                 $row['IsVisitPay'] = 'N';   // 방문결제 여부
                 $row['IsDeliveryInfo'] = 'N';   // 배송여부 설정 (상품정보 데이터 무시)

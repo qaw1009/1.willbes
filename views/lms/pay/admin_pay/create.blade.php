@@ -182,7 +182,7 @@
                             <div class="col-md-3 form-inline item">
                                 <input type="text" id="zipcode" name="zipcode" class="form-control" title="우편번호" required="required_if:prod_type,book" readonly="readonly" maxlength="6">
                                 <button type="button" id="btn_post_search" onclick="searchPost('post_search', 'zipcode', 'addr1', 'Y');" class="btn btn-primary mb-0">주소찾기</button>
-                                <div id="post_search" style="max-height: 446px; border:1px solid black; display: none;">
+                                <div id="post_search" style="max-height: 446px; display: none;">
                                     <div class="panel panel-primary mt-10 mb-0">
                                         <div class="panel-heading">우편번호 검색
                                             <div class="pull-right"><button type="button" class="close" onclick="closeSearchPost('post_search');"><span aria-hidden="true">×</span></button></div>
@@ -305,12 +305,13 @@
                     return false;
                 }
 
-                if (!confirm('해당 상품을 유료 결제로 등록하시겠습니까?')) {
-                    return false;
-                }
-
-                return true;
+                return confirm('해당 상품을 유료 결제로 등록하시겠습니까?');
             };
+
+            // 운영사이트 선택
+            $regi_form.on('change', 'select[name="site_code"]', function() {
+                $('#selected_product').html('');    // 기 선택 상품 초기화
+            });
 
             // 상품구분 선택
             $regi_form.on('ifChecked', 'input[name="prod_type"]', function() {

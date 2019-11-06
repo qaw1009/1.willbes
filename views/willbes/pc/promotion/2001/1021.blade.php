@@ -22,7 +22,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#141414 url(http://file3.willbes.net/new_cop/2017/01/EV170126_p1_bg_1.jpg) repeat-y top;}
+        .wb_top {background:#141414 url(https://static.willbes.net/public/images/promotion/2019/11/1021_bg.jpg) repeat-y top;}
 
         /* 슬라이드배너 */
         .slide_con {position:relative; width:900px; margin:0 auto; padding-bottom:60px; padding-top:60px;}
@@ -45,20 +45,20 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p1.png"  alt="1"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_01.png"  alt="1"  />
             <div style="width:980px;text-align:center;margin:0 auto;">
                 <div class="tabContaier">
                     <ul class="cf">
                         <li style="padding-bottom:40px;">
                             <a class="active" href="#tab1">
-                                <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p3_tap2_off.gif"  class="off" alt="02"/>
-                                <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p3_tap2_on.gif" class="on"  />
+                                <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_tap2_off.gif"  class="off" alt="02"/>
+                                <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_tap2_on.gif" class="on"  />
                             </a>
                         </li>
                         <li>
                             <a  href="#tab2">
-                                <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p3_tap1_off.gif"  class="off" alt="01"/>
-                                <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p3_tap1_on.gif" class="on"  />
+                                <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_tap1_off.gif"  class="off" alt="01"/>
+                                <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_tap1_on.gif" class="on"  />
                             </a>
                         </li>
                     </ul>
@@ -68,35 +68,35 @@
                     <div class="tabContents" id="tab2" ></div>
                 </div>
             </div>
-            <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p3_2.png"  alt="3" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_02.png"  alt="3" />
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll1.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll3.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll4.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll6.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll7.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll8.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll9.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll10.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll11.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll12.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll13.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll14.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll15.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll16.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll17.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll18.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll19.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll20.png" alt="방송출연"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll21.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll1.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll3.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll4.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll6.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll7.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll8.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll9.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll10.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll11.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll12.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll13.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll14.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll15.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll16.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll17.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll18.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll19.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll20.png" alt="방송출연"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll21.png" alt="방송출연"/></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_l.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_r.png"></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll_arr_l.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_roll_arr_r.png"></a></p>
             </div>
-            <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p5.png"  alt="5" /><br>
-            <a href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" target="_blink"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p2_1.png"  alt="신광은경찰팀 " border="0"/></a><br>
-            <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p4_1.png"  alt="4" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_02_1.png"  alt="5" /><br>
+            <a href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" target="_blink"><img src="https://static.willbes.net/public/images/promotion/2019/11/1021_03.png"  alt="신광은경찰팀 " border="0"/></a><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_04.png"  alt="4" />
             </ul>
         </div>
 

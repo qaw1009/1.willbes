@@ -90,7 +90,7 @@ class DDayModel extends WB_Model
     public function findDDayForModify($arr_condition)
     {
         $column = '
-            A.DIdx, A.SiteCode, G.SiteName, A.DayTitle, A.DayDatm, A.DayMemo,
+            A.DIdx, A.SiteCode, G.SiteName, A.DayTitle, A.DayMainTitle, A.DayDatm, A.DayMemo,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ';
@@ -145,6 +145,7 @@ class DDayModel extends WB_Model
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'DayTitle' => element('day_title', $input),
+                'DayMainTitle' => element('day_main_title', $input),
                 'DayDatm' => element('day_datm', $input),
                 'DayMemo' => element('day_memo', $input),
                 'IsUse' => element('is_use', $input),
@@ -198,6 +199,7 @@ class DDayModel extends WB_Model
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'DayTitle' => element('day_title', $input),
+                'DayMainTitle' => element('day_main_title', $input),
                 'DayDatm' => element('day_datm', $input),
                 'DayMemo' => element('day_memo', $input),
                 'IsUse' => element('is_use', $input),

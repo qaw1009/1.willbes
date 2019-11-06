@@ -106,6 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PublisherModel $publisherModel                   Publisher Model Class
  * @property AuthorModel $authorModel                         Author Model Class
  * @property BookModel $bookModel                              Book Model Class
+ * @property OrganizationModel $organizationModel             Organization Model Class
  ***************** LMS *******************************************************************************
  * @property WCodeModel $wCodeModel                                             WBS Code Model Class
  * @property SearchWProfessorModel $searchWProfessorModel               Search WBS Professor Model Class

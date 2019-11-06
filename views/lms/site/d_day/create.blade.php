@@ -58,9 +58,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="day_title">제목<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="day_title">제목 (운영사이트 노출)<span class="required">*</span></label>
                     <div class="col-md-10 item">
                         <input type="text" id="day_title" name="day_title" class="form-control" maxlength="100" title="제목" required="required" value="{{ $data['DayTitle'] }}" placeholder="제목 입니다.">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="day_title">제목 (통합 메인 노출)</label>
+                    <div class="col-md-10 item">
+                        <input type="text" id="day_main_title" name="day_main_title" class="form-control" maxlength="100" title="제목" value="{{ $data['DayMainTitle'] }}" placeholder="">
                     </div>
                 </div>
 

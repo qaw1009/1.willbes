@@ -79,8 +79,8 @@
                         ajaxSubmit($regi_form, _url, function(ret) {
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
-                                $("#pop_modal").modal('toggle');
-                                location.replace('{{ site_url('/mocktestNew/base/code/') }}' + dtParamsToQueryString($datatable));
+                                /*$("#pop_modal").modal('toggle');
+                                location.replace('{{ site_url('/mocktestNew/base/code/') }}' + dtParamsToQueryString($datatable));*/
                             }
                         }, showValidateError, null, false, 'alert');
                     });

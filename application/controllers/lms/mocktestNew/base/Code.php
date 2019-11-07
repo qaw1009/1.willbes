@@ -126,12 +126,23 @@ class Code extends BaseMocktest
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
         if ($this->validate($rules) === false) return;
+        $result = $this->baseCodeModel->updateKind($this->_reqP(null));
+        $this->json_result($result, '변경되었습니다.', $result);
+    }
 
-        $result = $this->baseCodeModel->updateKind();
-        if ($result)
-            $this->json_result($result, '변경되었습니다.', $result);
-        else
-            $this->json_error('변경에 실패했습니다.');
+    /**
+     * 직렬 사용,미사용 전환
+     */
+    public function useToggle()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'isUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+        ];
+        if ($this->validate($rules) === false) return;
+        $result = $this->baseCodeModel->useToggle($this->_reqP(null));
+        $this->json_result($result, '변경되었습니다.', $result);
     }
 
     /**
@@ -224,21 +235,5 @@ class Code extends BaseMocktest
         $result = $this->baseCodeModel->storeSubject($this->_reqP(null));
         $msg = ($this->input->post('_method') == 'POST') ? '등록되었습니다.' : '변경되었습니다.';
         $this->json_result($result, $msg, $result);
-    }
-
-    /**
-     * 사용,미사용 전환
-     */
-    public function useToggle()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'isUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-        ];
-        if ($this->validate($rules) === false) return;
-
-        $result = $this->baseCodeModel->useToggle($this->_reqP(null));
-        $this->json_result($result, '변경되었습니다.', $result);
     }
 }

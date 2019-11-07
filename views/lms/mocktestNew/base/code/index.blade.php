@@ -53,8 +53,11 @@
                     <thead class="bg-white-gray">
                         <tr>
                             <th rowspan="2" class="rowspan hide">사이트</th>
-                            <th rowspan="2" class="text-center rowspan" style="width:14%">카테고리(대분류)</th>
-                            <th rowspan="2" class="text-center" style="width:14%">직렬 [코드] <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Kind">추가</button></th>
+                            <th rowspan="2" class="text-center rowspan" style="width:14%">카테고리(대분류)<p>(공통코드 사용여부)</p></th>
+                            <th rowspan="2" class="text-center" style="width:16%">
+                                직렬 [코드] <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Kind">추가</button>
+                                <p>(공통코드 사용여부)</p>
+                            </th>
                             <th colspan="2" class="text-center">과목</th>
                             <th rowspan="2" class="text-center" style="width:7%">사용여부</th>
                             <th rowspan="2" class="text-center" style="width:7%">등록자</th>

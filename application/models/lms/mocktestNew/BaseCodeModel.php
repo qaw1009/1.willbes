@@ -101,6 +101,66 @@ class BaseCodeModel extends WB_Model
         return true;
     }
 
+    /**
+     * 직렬 수정
+     * @param $input_data
+     * @return array|bool
+     */
+    public function updateKind($input_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input = [
+                'OrderNum' => element('orderNum',$input_data),
+                'IsUse' => element('isUse',$input_data),
+                'UpdDatm' => date("Y-m-d H:i:s"),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $where = ['MmIdx' => element('idx', $input_data)];
+            $this->_conn->set($input)->where($where);
+            if ($this->_conn->update($this->_table['mock_base']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 직렬 사용,미사용 전환
+     * @param $input_data
+     * @return bool
+     */
+    public function useToggle($input_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input = [
+                'IsUse' => (element('isUse', $input_data) == 'Y') ? 'N' : 'Y',
+                'UpdDatm' => date("Y-m-d H:i:s"),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $where = ['MmIdx' => element('idx', $input_data)];
+            $this->_conn->set($input)->where($where);
+            if ($this->_conn->update($this->_table['mock_base']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 과목 저장/수정
+     * @param $input_data
+     * @return array|bool
+     */
     public function storeSubject($input_data)
     {
         $this->_conn->trans_begin();
@@ -163,33 +223,6 @@ class BaseCodeModel extends WB_Model
             $this->_conn->trans_commit();
         }
         catch (Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
-        }
-        return true;
-    }
-
-    /**
-     * 사용,미사용 전환
-     * @param $input_data
-     * @return bool
-     */
-    public function useToggle($input_data)
-    {
-        $this->_conn->trans_begin();
-        try {
-            $input = [
-                'IsUse' => (element('isUse', $input_data) == 'Y') ? 'N' : 'Y',
-                'UpdDatm' => date("Y-m-d H:i:s"),
-                'UpdAdminIdx' => $this->session->userdata('admin_idx')
-            ];
-            $where = ['MmIdx' => element('idx', $input_data)];
-            $this->_conn->set($input)->where($where);
-            if ($this->_conn->update($this->_table['mock_base']) === false) {
-                throw new \Exception('데이터 수정에 실패했습니다.');
-            }
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
         }

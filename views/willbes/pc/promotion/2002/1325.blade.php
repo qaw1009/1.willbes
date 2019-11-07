@@ -38,12 +38,12 @@
         .wb_mp4 {background:#000;}
 
         .wb_cts00 {background:#404040}
-        .wb_cts01 {background:#191c22 url(https://static.willbes.net/public/images/promotion/2019//10/1325_top_bg.jpg) no-repeat center top; }   
+        .wb_cts01 {background:#191c22 url(https://static.willbes.net/public/images/promotion/2019/11/1325_top_bg.jpg) no-repeat center top; }   
 
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#abb1b9}
         .wb_cts04 {background:#696d73}
-		.wb_cts05 {background:#fff;}
+		.wb_cts05 {background:#fff; padding-bottom:120px}
         .wb_cts06 {background:#f8f9fa}
         .wb_cts07 {background:#292b31}
         
@@ -100,7 +100,7 @@
         </div>
         <!-- 타이머 //-->
         <div class="skybanner" >
-            <a href="#lect"><img src="https://static.willbes.net/public/images/promotion/2019//10/1325_skybanner.png" alt="스카이베너" usemap="#Map1325c" border="0" ></a>
+            <a href="#lect"><img src="https://static.willbes.net/public/images/promotion/2019/11/1325_skybanner.png" alt="스카이베너" usemap="#Map1325c" border="0" ></a>
         </div>
 
         <div class="skybanner2" >
@@ -112,15 +112,15 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_top.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_top.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_01.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_01.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_02.gif" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_02.gif" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts04" >
@@ -128,43 +128,40 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="lect">
-            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_top.jpg" alt="슈퍼pass"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_top.jpg" alt="슈퍼pass"/>
             <div class="tabs">
                 <ul>
                     <li>
                         <a href="#tab01" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_01_on.jpg" class="on"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_01_off.jpg" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_01_on.jpg" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_01_off.jpg" class="off"/>
                         </a>
                     </li>
                     <li>
                         <a href="#tab02">
-                            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_02_on.jpg" class="on"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_02_off.jpg" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_02_on.jpg" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_02_off.jpg" class="off"/>
                         </a>
                     </li>
                 </ul>
                 <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_01.jpg" usemap="#Map132501" border="0" />
-                    <map name="Map132501" id="Map132501">
-                        <area shape="rect" coords="371,1014,749,1119" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="신청하기" />
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_01.jpg" alt="기본이론 강화형"/>
                 </div>                                        
                 <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_04_02.jpg" usemap="#Map132502" border="0" />
-                    <map name="Map132502" id="Map132502">
-                        <area shape="rect" coords="371,1014,749,1119" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="신청하기" />
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_02.jpg" alt="영어 강화형" />
                 </div>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="신청하기">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_btn01.png" alt="수강신청" />
+                </a>
             </div>
         </div>
 		
 		<div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_05.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_05.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts07" >
-            <img src="https://static.willbes.net/public/images/promotion/2019//10/1325_06.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_06.jpg" alt="슈퍼pass"  />
         </div>
     </div>
     <!-- End Container -->

@@ -36,7 +36,7 @@
         .skybanner a {display:block; margin-bottom:5px}
 
         .wb_cts00 {background:#404040}
-        .wb_top{background:url(https://static.willbes.net/public/images/promotion/2019/10/1412_top_bg.jpg) no-repeat center top;}
+        .wb_top{background:url(https://static.willbes.net/public/images/promotion/2019/11/1412_top_bg.jpg) no-repeat center top;}
         .wb_cts01 {background:#4f4f4f}   
         .wb_cts02 {background:#464646}
         .wb_cts03 {background:#585858}
@@ -82,7 +82,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_top.jpg" alt="프리미엄 심화기출"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1412_top.jpg" alt="프리미엄 심화기출"  />
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -98,17 +98,16 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_04_1.jpg"><br>             
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_04.jpg" alt="이벤트1" usemap="#Map1412a" border="0" id="to_go1" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_04_1.jpg"><br>  
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1412_04.jpg" alt="이벤트1" usemap="#Map1412a" border="0" id="to_go1" />
             <map name="Map1412a" id="Map1412a">
-                <area shape="rect" coords="80,660,285,718" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
-                <area shape="rect" coords="461,660,661,716" href="#to_go3" />
-                <area shape="rect" coords="834,661,1041,717" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
-            </map>
+                <area shape="rect" coords="153,641,401,715" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
+                <area shape="rect" coords="724,638,970,716" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
+            </map>   
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="to_go2">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_05.jpg" alt="이벤트2"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1412_05.jpg" alt="이벤트2"  />
         </div>
 		
 		<div class="evtCtnsBox wb_cts06" >
@@ -140,7 +139,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts08" id="to_go3" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_08.jpg" alt="유의사항"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1412_08.jpg" alt="유의사항"  />
         </div>
     </div>
     <!-- End Container -->

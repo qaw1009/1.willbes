@@ -56,7 +56,7 @@
                             </a>
                         </li>
                         <li>
-                            <a  href="#tab2">
+                            <a href="#tab2">
                                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_tap1_off.gif"  class="off" alt="01"/>
                                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1021_tap1_on.gif" class="on"  />
                             </a>

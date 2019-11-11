@@ -269,6 +269,11 @@ table.joinTable tr td a {
     display: block; 
     line-height: 27px;
 }
+.mem-Login .slider {
+    width: 460px;
+    height: 160px;
+    overflow: hidden;
+}
 
 /* Login Form : 휴면회원 안내 */
 .mem-Dormant .user-Txt {

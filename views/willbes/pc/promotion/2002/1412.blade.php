@@ -119,7 +119,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts07" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_07_v2.jpg" alt="프리미엄 단과반" usemap="#Map1412c" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1412_07_v2.jpg" alt="프리미엄 단과반" usemap="#Map1412c" border="0"  />
             <map name="Map1412c" id="Map1412c">
                 <area shape="rect" coords="787,610,885,647" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1056" target="_blank" />
                 <area shape="rect" coords="786,658,885,697" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054" target="_blank" />

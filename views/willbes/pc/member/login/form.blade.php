@@ -55,10 +55,11 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="tx-center">
+                    {!! banner('로그인하단', '', $__cfg['SiteCode'], '0') !!}
+                </div>
             </div>
-            <div class="tx-center">
-                {!! banner('로그인하단', '', $__cfg['SiteCode'], '0') !!}
-            </div>
+           
             <!-- End 로그인 -->
             <br/><br/><br/><br/><br/><br/>
         </form>

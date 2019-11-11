@@ -66,8 +66,7 @@
             <input type="hidden" name="register_chk_val[]" value=""/>
             -->
 
-            <div class="skyBanner">
-                <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1443_sky02.png" title="올인원 합격전략설명회"></a>
+            <div class="skyBanner">               
                 <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1443_sky03.png" title="올인원 합격전략설명회"></a>
             </div>
             <div class="evtCtnsBox evt00">
@@ -110,7 +109,7 @@
                                         <ul>
                                             <input type="hidden" name="register_data1" value=""/>
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus1" value="11.2(토) 튜터링 관리반 & 영어집중반 설명회" disabled/> <label for="campus1">11.2(토) 튜터링 관리반 & 영어집중반 설명회</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus2" value="11.9(토)스파르타&생활관리 설명회" /> <label for="campus2">11.9(토) 스파르타&생활관리 설명회</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus2" value="11.9(토)스파르타&생활관리 설명회" disabled/> <label for="campus2">11.9(토) 스파르타&생활관리 설명회</label></li>
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="11.16(토)프리미엄 관리반 설명회" /> <label for="campus3">11.23(토) 프리미엄 관리반 설명회</label></li>
                                         </ul>
                                     </td>

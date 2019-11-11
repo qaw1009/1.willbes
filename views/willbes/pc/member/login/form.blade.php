@@ -26,7 +26,7 @@
                             <label for="save_id" class="labelSave tx-gray">아이디 저장</label>
                         </li>
                         <li class="chkBox-Search tx-gray">
-                            <span><a class="tx-gray" href="{{ front_app_url('/member/find/id/', 'www') }}">아이디</a>/<a class="tx-gray" href="{{ front_app_url('/member/find/pwd/', 'www') }}">비밀번호찾기</a></span>
+                            <span><a class="tx-gray mr5" href="{{ front_app_url('/member/find/id/', 'www') }}">아이디찾기</a> | <a class="tx-gray ml5" href="{{ front_app_url('/member/find/pwd/', 'www') }}">비밀번호찾기</a></span>
                         </li>
                     </ul>
                 </div>
@@ -34,10 +34,10 @@
                     <span>로그인</span>
                 </button>
                 <table cellspacing="0" cellpadding="0" class="joinTable tx-gray mt40">
-                    <colgroup>
-                        <col width="356px"/>
-                        <col width="104px"/>
-                    </colgroup>
+                <colgroup>
+                <col/>
+                <col width="20%"/>
+            </colgroup>
                     <tbody>
                     <tr>
                         <td>

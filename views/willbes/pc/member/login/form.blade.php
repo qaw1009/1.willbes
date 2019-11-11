@@ -55,7 +55,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="tx-center">
+                <div class="bSlider mt40">
                     {!! banner('로그인하단', '', $__cfg['SiteCode'], '0') !!}
                 </div>
             </div>

@@ -97,7 +97,7 @@
                                 <span id="selected_member_file" class="hide"></span>
                             </div>
                             <div class="col-md-10 col-md-offset-1 mt-5">
-                                <p class="form-control-static"># 첨부파일은 한줄에 한 개의 아이디로 구성된 TXT 파일로 생성</p>
+                                <p class="form-control-static"># 첨부파일은 한줄에 한 개의 아이디로 구성된 TXT 파일로 생성 <span class="red bold">(첨부파일 아이디는 최대 1,000개로 제한하여 등록해야만 합니다.)</span></p>
                             </div>
                             <div class="col-md-2 col-md-offset-1 mt-5">
                                 <select class="form-control" id="selected_member_file2" name="selected_member_file2" size="4">

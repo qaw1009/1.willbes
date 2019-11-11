@@ -375,12 +375,12 @@ class TmModel extends WB_Model
             ];
 
             if($this->_conn->set($tm_data)->insert('lms_tm') === false) {
-              throw new \Exception('TM 배정 등록에 실패했습니다.');
+                throw new \Exception('TM 배정 등록에 실패했습니다.');
             }
 
             $TmIdx = $this->_conn->insert_id();
 
-           //echo var_dump($memList);exit;
+            //echo var_dump($memList);exit;
 
             $total_cnt = $MemCnt;
             $start_cnt = 0;
@@ -470,9 +470,9 @@ class TmModel extends WB_Model
     public function findTm($tm_idx)
     {
         $arr_condition = [
-          'EQ' => [
-              'A.TmIdx'=>$tm_idx
-          ]
+            'EQ' => [
+                'A.TmIdx'=>$tm_idx
+            ]
         ];
 
         $query = $this->listTm(false,$arr_condition, $limit = null, $offset = null, $order_by = []);
@@ -483,7 +483,7 @@ class TmModel extends WB_Model
             return $query;
         }
     }
-    
+
     /**
      * 배정회원 리스트
      * @param $is_count
@@ -681,11 +681,11 @@ class TmModel extends WB_Model
                     and ( (p.sitecode = \'2001\' AND pl.LearnPatternCcd = \'615001\') OR (p.sitecode = \'2003\' AND pl.LearnPatternCcd IN (\'615001\',\'615002\',\'615003\',\'615004\') )) 
                 ';
 
-            $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-            $result = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-            //echo $this->_conn->last_query();exit;
-            //return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
-            return ($is_count === true) ? $result->row_array() : $result->result_array();
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        $result = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        //echo $this->_conn->last_query();exit;
+        //return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+        return ($is_count === true) ? $result->row_array() : $result->result_array();
     }
 
     /**
@@ -866,4 +866,3 @@ class TmModel extends WB_Model
     }
 
 }
-

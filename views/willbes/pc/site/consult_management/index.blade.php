@@ -20,7 +20,7 @@
 
         {{--<div id="RESERVEPASS"></div>--}}
     </div>
-    {!! banner('상담실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+    {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 </div>
 
 <script type="text/javascript">

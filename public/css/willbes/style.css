@@ -6939,6 +6939,22 @@ ul li.profList .willbes-Layer-ProfileBox {
     float: left;
     margin-right: 10px;
 }
+.willbes-Leclist-txt {
+    border:1px solid #ccc;
+    padding:20px;
+    line-height: 1.5;
+    position: relative;
+    color:#666;
+}
+.willbes-Leclist-txt a {
+    position: absolute;
+    top:20px;
+    right:20px;
+    background: #1a8ccb;
+    color:#fff;
+    display: block;
+    padding:10px 20px;
+}
 .search-Btn .center {
     position: absolute;
     left: 50%;

@@ -22,21 +22,16 @@
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1066_top_bg.jpg) center top no-repeat}
         .wb_cts02 {background:#f8f8f8}
-        .wb_cts03 {background:#dbc8b7;}
+        .wb_cts03 {background:#F3EFE4;}
         .wb_cts04 {background:#f8f8f8}
         .wb_cts05 {background:#f8f8f8}
         .wb_cts06 {background:#242424;padding-bottom:100px;}
-        .wb_cts07 {background:#f2efe3;position:relative;height:815px;}
-        
-        /*신버전*/
-        .bannerImg1 {position:relative; width:513px; margin:0 auto;z-index:10;left:50%;margin-left:50px;bottom:250px;}
-        .bannerImg1 p {position:absolute;width:65px; z-index:100;}       
-        .bannerImg1 p a {cursor:pointer}
-        .bannerImg1 p.left_arr {left:-15%;top:40%;width:65px; height:65px;}
-        .bannerImg1 p.right_arr {right:-15%;top:40%; width:65px; height:65px;}
-      
+        .wb_cts07 {background:#DBC8B7;}
+
         .skybanner {position:fixed;top:200px;right:0;width:290px;z-index:11;}
-        .skybanner2{position:fixed;top:480px;right:-30px;width:290px;z-index:11;}
+        .skybanner2{position:fixed;top:480px;right:-30px;width:290px;z-index:11;}        
+
+
        
     </style>
 
@@ -59,44 +54,36 @@
         </div>    
 
         <div class="evtCtnsBox wb_cts03" id="live">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1066_01.jpg" usemap="#Map" title="" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1066_01.jpg" usemap="#Map" border="0" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="526,836,786,956" href="https://www.instagram.com/zenithenglishhan" target="_blank" />
-                <area shape="rect" coords="793,834,1048,955" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" />
-            </map>
+                <area shape="rect" coords="658,469,946,568" href="https://www.instagram.com/zenithenglishhan/" target="_blank" />
+                <area shape="rect" coords="655,580,950,679" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" />
+            </map>          
         </div>
 
         <div class="evtCtnsBox wb_cts07" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1400_02.png" title="" />     
-            <div class="bannerImg1">
-                <ul id="slidesImg1">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1400_02_text1.png" title="1"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1400_02_text2.png" title="2"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/09/1400_02_text3.png" title="3"/></li>
-                </ul>
-                <p class="left_arr"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2019/09/1400_left.png"></a></p>
-                <p class="right_arr"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/09/1400_right.png"></a></p>
-            </div>  
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1066_02.jpg" title="" />    
+         
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1066_04.png" usemap="#Map1066a" title="제니스영어 커리큘럼" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1066_04.png" usemap="#Map1066a" title="제니스영어 커리큘럼" border="0" />
             <map name="Map1066a" id="Map1066a">
                 <area shape="rect" coords="337,672,391,698" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154891" target="_blank" />
                 <area shape="rect" coords="338,786,389,810" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154897" target="_blank" />
                 <area shape="rect" coords="336,846,391,870" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank" />
-                <area shape="rect" coords="340,905,388,930" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146632" target="_blank" />
+                <area shape="rect" coords="340,905,388,930" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157580" target="_blank" />
                 <area shape="rect" coords="335,979,390,1002" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146100" target="_blank" />
                 <area shape="rect" coords="534,608,584,630" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145623" target="_blank" />
                 <area shape="rect" coords="533,666,583,692" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156740" target="_blank" />
                 <area shape="rect" coords="528,723,589,750" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154900" target="_blank" />
                 <area shape="rect" coords="533,803,583,828" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156355" target="_blank" />
-                <area shape="rect" coords="531,891,583,917" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146299" target="_blank" />
-                <area shape="rect" coords="732,672,785,694" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146626" target="_blank" />
+                <area shape="rect" coords="531,891,583,917" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157579" target="_blank" />
+                <area shape="rect" coords="732,672,785,694" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157581" target="_blank" />
                 <area shape="rect" coords="733,843,784,867" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145826" target="_blank" />
                 <area shape="rect" coords="731,978,785,1005" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146969" target="_blank" />
                 <area shape="rect" coords="934,622,990,647" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146742" target="_blank" />
-                <area shape="rect" coords="937,714,988,737" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" />
+                <area shape="rect" coords="937,714,988,737" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157582" target="_blank" />
                 <area shape="rect" coords="936,804,990,827" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146966" target="_blank" />
                 <area shape="rect" coords="937,889,989,915" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147110" target="_blank" />
                 <area shape="rect" coords="934,980,992,1002" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154901" target="_blank" />
@@ -123,31 +110,7 @@
     <!-- End Container -->
 
     <script>
-        $(document).ready(function() {
-            var slidesImg1 = $("#slidesImg1").bxSlider({
-                mode:'fade',
-                auto:true,
-                speed:350,
-                pause:3000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:1210,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false
-            });
-
-            $("#imgBannerLeft").click(function (){
-                slidesImg1.goToPrevSlide();
-            });
-
-            $("#imgBannerRight").click(function (){
-                slidesImg1.goToNextSlide();
-            });
-        });
+      
     </script>
 
 @stop

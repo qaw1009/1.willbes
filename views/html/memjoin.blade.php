@@ -24,7 +24,7 @@
                     <label for="USER_ID_SAVE" class="labelSave tx-gray">아이디 저장</label>
                 </li>
                 <li class="chkBox-Search tx-gray">
-                    <span><a class="tx-gray" href="#none">아이디</a>/<a class="tx-gray" href="#none">비밀번호찾기</a></span>
+                    <span><a class="tx-gray mr5" href="#none">아이디찾기</a> | <a class="tx-gray ml5" href="#none">비밀번호찾기</a></span>
                 </li>
             </ul>
         </div>
@@ -33,8 +33,8 @@
         </button>
         <table cellspacing="0" cellpadding="0" class="joinTable tx-gray mt40">
             <colgroup>
-                <col width="356px"/>
-                <col width="104px"/>
+                <col/>
+                <col width="20%"/>
             </colgroup>
             <tbody>
                 <tr>
@@ -53,6 +53,16 @@
                 </tr>
             </tbody>
         </table>
+        <div class="bSlider mt40">
+            <div class="slider">
+                <div>
+                    <a href="https://www.willbes.net" target="_blank"><img src="{{ img_url('login/loginBanner.jpg') }}" alt="배너명"></a>
+                </div>                            
+                <div>
+                    <a href="https://www.willbes.net" target="_blank"><img src="{{ img_url('login/loginBanner.jpg') }}" alt="배너명"></a>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End 로그인 -->
 

@@ -121,24 +121,24 @@ class TmModel extends WB_Model
                         )
                      ';
 
-        if($assign_ccd === '687001' || $assign_ccd === '687002' || $assign_ccd === '687004' ) {
+        if($assign_ccd === '687001' || $assign_ccd === '687002' || $assign_ccd === '687003' || $assign_ccd === '687004' ) {
 
             $where .= '
-                            # 30일이내 배정여부 확인   
+                            # 30일이내 배정여부 확인 -> 1년이내 배정여부로 변경 : 최의식 차장님 요청 2019.11.08   
                             and A.MemIdx not in
                             (
                                 select 
                                 ta.MemIdx
                                 from
-                                    lms_tm t
+                                    lms_tm t 
                                     join lms_tm_assign ta on t.TmIdx = ta.TmIdx
-                                where 
+                                where  
                                         t.IsStatus=\'Y\' and ta.IsStatus=\'Y\'
                                         AND DATE_FORMAT(t.regDatm,\'%Y-%m-%d\') 
-                                                BETWEEN  DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -30 DAY),\'%Y-%m-%d\') AND DATE_FORMAT(NOW(),\'%Y-%m-%d\') 
+                                                BETWEEN  DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 YEAR),\'%Y-%m-%d\') AND DATE_FORMAT(NOW(),\'%Y-%m-%d\') 
                             )';
 
-        } else if($assign_ccd === '687003'){
+        } /*else if($assign_ccd === '687003'){ // 사용안함 : 위의 조건으로 통일
 
             $where .= '
                             #재수강의 경우 배정 내역이 없어야 함
@@ -152,7 +152,7 @@ class TmModel extends WB_Model
                                 where 
                                         t.IsStatus=\'Y\' and ta.IsStatus=\'Y\'
                              )';
-        }
+        }*/
 
         if($assign_ccd === '687001') {      // 신규 (온라인강좌 상품 주문이력이 없고, 장바구니에도 온라인강좌 상품이 없어야 함)
             $where .= ' 

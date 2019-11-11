@@ -49,6 +49,4 @@ class BaseTm extends \app\controllers\BaseController
 
     }
 
-
-
 }

@@ -119,6 +119,7 @@ class RegGoods extends \app\controllers\BaseController
             ],
             'ORG' => [
                 'LKB' => [
+                    'PD.ProdCode' => $this->input->post('search_fi', true),
                     'PD.ProdName' => $this->input->post('search_fi', true),
                     'A.wAdminName' => $this->input->post('search_fi', true),
                     'PD.SaleStartDatm' => $this->input->post('search_fi', true),
@@ -312,6 +313,7 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'TakeEndDatm_h', 'label' => '응시마감(시)', 'rules' => 'trim|numeric'],
             ['field' => 'TakeEndDatm_m', 'label' => '응시마감(분)', 'rules' => 'trim|numeric'],
             ['field' => 'TakeTime', 'label' => '응시시간', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'PaperType', 'label' => '시험지제공형태', 'rules' => 'trim|required|in_list[I,P]'],
 
             ['field' => 'MpIdx[]', 'label' => '과목선택', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockType[]', 'label' => '과목선택', 'rules' => 'trim|required|in_list[E,S]'],
@@ -513,6 +515,7 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'TakeEndDatm_h', 'label' => '응시마감(시)', 'rules' => 'trim|numeric'],
             ['field' => 'TakeEndDatm_m', 'label' => '응시마감(분)', 'rules' => 'trim|numeric'],
             ['field' => 'TakeTime', 'label' => '응시시간', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'PaperType', 'label' => '시험지제공형태', 'rules' => 'trim|required|in_list[I,P]'],
 
             ['field' => 'MpIdx[]', 'label' => '과목선택', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockType[]', 'label' => '과목선택', 'rules' => 'trim|required|in_list[E,S]'],

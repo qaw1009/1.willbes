@@ -8,9 +8,7 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-
             <div class="willbes-Mypage-TESTZONE c_both">
-
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
@@ -19,6 +17,7 @@
                             <td>
                                 - 내강의실 > 모의고사관리 > 온라인모의고사 응시메뉴에서 정답제출을 처리한 모의고사의 성적 결과만 확인 가능합니다.<br/>
                                 - 성적결과는 오프라인 시험응시일이 마감된 이후 3~5일 안에 제공됩니다.<br/>
+                                - 시험지 형태가 PDF 파일인 경우 오답 노트가 제공되지 않습니다.<br/>
                             </td>
                         </tr>
                         </tbody>
@@ -29,7 +28,6 @@
 
             <div class="willbes-Leclist c_both mt60">
                 <form id="url_form" name="url_form" method="GET">
-
                     <div class="willbes-LecreplyList tx-gray c_both">
                         <ul class="widthAutoFull">
                             <li class="f_left">
@@ -38,7 +36,7 @@
                                 <a href="javascript:popCross(2);" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">공무원 ▶</a>
                             </li>
                             <li class="f_right">
-                                <span class="willbes-Lec-Search">    
+                                <span class="willbes-Lec-Search">
                                     <div class="inputBox p_re">
                                         <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{ element('s_keyword', $arr_input) }}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
                                         <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
@@ -47,7 +45,7 @@
                                     </div>
                                 </span>
                             </li>
-                        </ul>                
+                        </ul>
                     </div>
 
                     <div class="LeclistTable pointTable">
@@ -58,7 +56,7 @@
                                 <col style="width: 70px;">
                                 <col style="width: 90px;">
                                 <col style="width: 200px;">
-                                <col style="width: 70;">
+                                <col style="width: 70px;">
                                 <col style="width: 70px;">
                                 <col style="width: 85px;">
                                 <col style="width: 95px;">
@@ -99,7 +97,7 @@
                                         </td>
                                         @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
                                             @if($row['TCNT']!=null)
-                                                <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[성적확인]</a></td>
+                                                <td class="w-report tx-red"><a href="javascript:popwin('{{ $row['ProdCode'] }}', '1', '{{ $row['MrIdx'] }}', '{{ $row['TCNT'] }}')">[성적확인]</a></td>
                                             @else
                                                 @if($row['TakeFormsCcd'] == '690002')
                                                     <td>집계중</td>
@@ -111,14 +109,16 @@
                                         <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
-                                            @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
-
-                                                @if($row['TCNT']!=null)
-                                                    <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[오답노트]</a>
-                                                @else
-                                                    <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, 0)">[오답노트]</a>
-                                                @endif
+                                            @if($row['PaperType'] == 'P')
+                                                <span class="tx-black">미제공</span>
                                             @else
+                                                @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
+                                                    @if($row['TCNT']!=null)
+                                                        <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '{{ $row['TCNT'] }}')">[오답노트]</a>
+                                                    @else
+                                                        <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '0')">[오답노트]</a>
+                                                    @endif
+                                                @endif
                                             @endif
                                         </td>
                                         <td>@if($row['MrIsStatus'] == 'Y') <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br> @endif</td>
@@ -126,7 +126,6 @@
                                     @php $paging['rownum']-- @endphp
                                 @endforeach
                             @endif
-
                             </tbody>
                         </table>
                         <div class="Paging">
@@ -142,7 +141,6 @@
                 {!! csrf_field() !!}
                 <input type="hidden" id='prodcode' name="prodcode" />
             </form>
-
 
             <div id="EXAMPASS" class="willbes-Layer-PassBox abs willbes-Layer-PassBox450 h460 abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('EXAMPASS')">
@@ -172,7 +170,6 @@
                 </div>
             </div>
             <!-- willbes-Layer-PassBox : 문제/해설 -->
-
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>

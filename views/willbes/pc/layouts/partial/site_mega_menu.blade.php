@@ -31,6 +31,7 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50383/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김영</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                     </li>
                     <li>
                         <span>[한국사]</span>
@@ -222,6 +223,7 @@
                     <li>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50479/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이현정</a>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50565/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">제니</a>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50273/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
@@ -400,6 +402,7 @@
                         <a href="{{front_url('/professor/show/prof-idx/50346/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
                         <a href="{{front_url('/professor/show/prof-idx/50274/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">김신주</a>
                         <a href="{{front_url('/professor/show/prof-idx/50310/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50072/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                     </li>
                     <li>
                         <span>[한국사]</span>
@@ -531,6 +534,7 @@
                         <a href="{{front_url('/professor/show/prof-idx/50662/?cate_code=3050&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">김세령</a>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50310/?cate_code=3050&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50072/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                         <span>[한국사]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50306/?cate_code=3050&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">한경준</a>
                     </li>

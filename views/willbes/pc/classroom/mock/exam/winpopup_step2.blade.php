@@ -45,16 +45,22 @@
 
         <div class="examPaperWp pb20">
             <div class="exam-paper mt50">
-                <ul>
-                    <!-- 문제이미지 -->
-                    @foreach($question_list as $key => $row)
-                    <li id="que{{ $key + 1 }}" name="que{{ $key + 1 }}">
-                        <a class="strong tx-black underline">{{ $key + 1 }}.</a>
-                        <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
-                    </li>
-                    @endforeach
-                    <!-- 문제이미지 -->
-                </ul>
+                @if ($productInfo['PaperType'] == 'I')
+                    <ul>
+                        <!-- 문제이미지 -->
+                        @foreach($question_list as $key => $row)
+                        <li id="que{{ $key + 1 }}" name="que{{ $key + 1 }}">
+                            <a class="strong tx-black underline">{{ $key + 1 }}.</a>
+                            <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
+                        </li>
+                        @endforeach
+                        <!-- 문제이미지 -->
+                    </ul>
+                @else
+                    @if (empty($question_list[0]['PFilePath']) === false && empty($question_list[0]['filetotal']) === false)
+                        <iframe src="{{ $question_list[0]['PFilePath'] . $question_list[0]['filetotal'] }}" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                    @endif
+                @endif
             </div>
             <form class="form-horizontal" id="url_form" name="url_form" method="POST" action="/classroom/MockExam/winpopupstep2" onsubmit="return false;">
                 {!! csrf_field() !!}
@@ -115,7 +121,9 @@
                                 @endif
                             @endforeach
                             <th class="ath6">고민중</th>
-                            <th class="ath7">문제보기</th>
+                            @if ($productInfo['PaperType'] == 'I')
+                                <th class="ath7">문제보기</th>
+                            @endif
                         </tr>
                         </thead>
                         <tbody>
@@ -127,9 +135,11 @@
                             <td><input type="radio" id="answer{{ $key + 1 }}" name="answer{{ $key + 1 }}" onClick="answerAjax('{{ $key + 1 }}','{{ $i }}', {{ $row['MqIdx'] }})" value="{{ $i }}" @if($row['Answer'] == $i) checked @endif /></td>
                             @endfor
                             <td><input type="radio" id="answer{{ $key + 1 }}" name="answer{{ $key + 1 }}" onClick="answerAjax('{{ $key + 1 }}','0', {{ $row['MqIdx'] }})" value="0" @if($row['Answer'] === '0') checked @endif /></td>
-                            <td class="btnAgR btnc"><a href="#que{{ $key + 1 }}" class="qv btnlineGray">문제보기 ></a>
-                                <input type="hidden" name="MqIdx{{ $key + 1 }}" value="{{ $row['MqIdx'] }}">
-                            </td>
+                            @if ($productInfo['PaperType'] == 'I')
+                                <td class="btnAgR btnc"><a href="#que{{ $key + 1 }}" class="qv btnlineGray">문제보기 ></a>
+                                    <input type="hidden" name="MqIdx{{ $key + 1 }}" value="{{ $row['MqIdx'] }}">
+                                </td>
+                            @endif
                         </tr>
                         @endforeach
                         <!-- 정답체크 -->

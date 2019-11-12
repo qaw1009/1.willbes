@@ -17,11 +17,11 @@
         }
     @endphp
     <h5 class="mt-20">- 모의고사 상품정보를 등록하고 관리하는 메뉴입니다.</h5>
-    <td class="x_panel">
+    <div class="x_panel">
         <div class="x_title mb-20">
             <h2>모의고사정보등록</h2>
         </div>
-        <tr class="x_content">
+        <div class="x_content">
             <form class="form-table" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
@@ -234,6 +234,14 @@
                         <th colspan="1">응시시간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
                             <input type="text" class="form-control" name="TakeTime" value="@if($method == 'PUT'){{ $data['TakeTime'] }}@endif" style="width: 100px;"> 분
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="1">시험지제공형태 <span class="required">*</span></th>
+                        <td colspan="3">
+                            <input type="radio" name="PaperType" class="flat" value="I" @if($method == 'POST' || ($method == 'PUT' && $data['PaperType'] == 'I')) checked="checked" @endif> <span class="flat-text mr-20">문항별이미지</span>
+                            <input type="radio" name="PaperType" class="flat" value="P" @if($method == 'PUT' && $data['PaperType'] == 'P') checked="checked" @endif> <span class="flat-text">통파일(PDF)</span>
+                            <span class="ml-20">• 통파일(PDF) 선택 시 '오답노트'를 제공하지 않음</span>
                         </td>
                     </tr>
                     <tr data-su-type="E">

@@ -665,10 +665,10 @@ class RegGoodsModel extends WB_Model
             $sql = "
                 INSERT INTO {$this->_table['mockProduct']}
                     (ProdCode, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointCcds, MockYear, MockRotationNo,
-                     ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, 
+                     ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, PaperType,
                      RegIp, RegAdminIdx, RegDatm)
                 SELECT ?, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointCcds, MockYear, MockRotationNo,
-                       ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, ?, ?, ?
+                       ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, PaperType, ?, ?, ?
                 FROM {$this->_table['mockProduct']}
                 WHERE ProdCode = ? ";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
@@ -833,6 +833,7 @@ class RegGoodsModel extends WB_Model
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
                 'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
                 'TakeTime'       => $this->input->post('TakeTime'), // 분
+                'PaperType'       => $this->input->post('PaperType'),
                 //'IsUse'          => $this->input->post('IsUse'),
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
@@ -964,6 +965,7 @@ class RegGoodsModel extends WB_Model
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
                 'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
                 'TakeTime'       => $this->input->post('TakeTime'), // 분
+                'PaperType'       => $this->input->post('PaperType'),
                 //'IsUse'          => $this->input->post('IsUse'),
                 'UpdDatm'        => $date,
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),

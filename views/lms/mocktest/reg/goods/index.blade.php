@@ -96,6 +96,7 @@
                         <th colspan="2" class="text-center">응시현황</th>
                         <th rowspan="2" class="text-center">접수상태</th>
                         <th rowspan="2" class="text-center">응시기간</th>
+                        <th rowspan="2" class="text-center">시험지제공형태</th>
                         <th rowspan="2" class="text-center">사용여부</th>
                         <th rowspan="2" class="text-center">등록자</th>
                         <th rowspan="2" class="text-center">등록일</th>
@@ -196,6 +197,9 @@
                     {'data' : 'AcceptStatusCcd_Name', 'class': 'text-center'},
                     {'data' : 'TakeType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return (data === 'A') ? '상시' : '기간제한';
+                        }},
+                    {'data' : 'PaperType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return (data === 'I') ? '문항별이미지' : '통파일(pdf)';
                         }},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

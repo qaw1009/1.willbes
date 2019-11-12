@@ -17,6 +17,7 @@
                             <td>
                                 - 내강의실 > 모의고사관리 > 온라인모의고사 응시메뉴에서 정답제출을 처리한 모의고사의 성적 결과만 확인 가능합니다.<br/>
                                 - 성적결과는 오프라인 시험응시일이 마감된 이후 3~5일 안에 제공됩니다.<br/>
+                                - 시험지 형태가 PDF 파일인 경우 오답 노트가 제공되지 않습니다.<br/>
                             </td>
                         </tr>
                         </tbody>
@@ -109,7 +110,7 @@
                                         @endif
                                         <td class="w-file on tx-blue">
                                             @if($row['PaperType'] == 'P')
-                                                미제공
+                                                <span class="tx-red">미제공</span>
                                             @else
                                                 @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
                                                     @if($row['TCNT']!=null)

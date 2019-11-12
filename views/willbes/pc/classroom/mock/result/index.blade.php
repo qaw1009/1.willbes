@@ -110,7 +110,7 @@
                                         @endif
                                         <td class="w-file on tx-blue">
                                             @if($row['PaperType'] == 'P')
-                                                <span class="tx-red">미제공</span>
+                                                <span class="tx-black">미제공</span>
                                             @else
                                                 @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
                                                     @if($row['TCNT']!=null)

@@ -102,6 +102,7 @@
                             <td>
                                 - 내강의실 > 모의고사관리 > 온라인모의고사 응시메뉴에서 정답제출을 처리한 모의고사의 성적 결과만 확인 가능합니다.<br/>
                                 - 성적결과는 오프라인 시험응시일이 마감된 이후 3~5일 안에 제공됩니다.<br/>
+                                - 시험지 형태가 PDF 파일인 경우 오답 노트가 제공되지 않습니다.
                             </td>
                         </tr>
                     </tbody>
@@ -133,15 +134,16 @@
             <div class="LeclistTable pointTable">
                 <table cellspacing="0" cellpadding="0" class="listTable testTable under-gray bdt-gray tx-gray">
                     <colgroup>
-                        <col style="width: 60px;">
+                        <col style="width: 50px;">
                         <col style="width: 70px;">
                         <col style="width: 90px;">
-                        <col style="width: 120px;">
-                        <col style="width: 280px;">
-                        <col style="width: 70px;">
-                        <col style="width: 70px;">
+                        <col style="width: 90px;">
+                        <col>
+                        <col style="width: 60px;">
+                        <col style="width: 60px;">
                         <col style="width: 85px;">
-                        <col style="width: 95px;">
+                        <col style="width: 85px;">
+                        <col style="width: 85px;">
                     </colgroup>
                     <thead>
                         <tr>
@@ -154,6 +156,7 @@
                             <th>평균<span class="row-line">|</span></li></th>
                             <th>성적표<span class="row-line">|</span></li></th>
                             <th>부록</th>
+                            <th>문제해설</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -166,7 +169,8 @@
                             <td class="w-t-grade">100</td>
                             <td class="w-average">60</td>
                             <td class="w-report">집계중</td>
-                            <td class="w-file">&nbsp;</td>
+                            <td class="w-file on tx-blue">&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="w-no">7</td>
@@ -177,10 +181,13 @@
                             <td class="w-t-grade">100</td>
                             <td class="w-average">60</td>
                             <td class="w-report tx-red">
-                                <a href="{{ site_url('/home/html/statsTotalList') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[성적확인]</a></td>
+                                <a href="{{ site_url('/home/html/statsTotalList') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[성적확인]</a>
+                            </td>
                             <td class="w-file on tx-blue">
-                                <a href="#none" onclick="openWin('EXAMPASS')">[문제/해설]</a><br/>
-                                <a href="{{ site_url('/home/html/answerNote') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[오답노트]</a>
+                                <a href="{{ site_url('/home/html/answerNote') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[오답노트]</a>                               
+                            </td>
+                            <td>
+                                <a href="#none" onclick="openWin('EXAMPASS')">[문제/해설]</a> 
                             </td>
                         </tr>
                         <tr>
@@ -193,9 +200,9 @@
                             <td class="w-average">50</td>
                             <td class="w-report tx-red">[성적확인]</td>
                             <td class="w-file on tx-blue">
-                                [문제/해설]<br/>
-                                [오답노트]
+                                <span class="tx-black">미제공</span>
                             </td>
+                            <td>[문제/해설]</td>
                         </tr>
                         <tr>
                             <td class="w-no">5</td>
@@ -206,7 +213,8 @@
                             <td class="w-t-grade">100</td>
                             <td class="w-average">40</td>
                             <td class="w-report tx-red">[성적확인]</td>
-                            <td class="w-file">&nbsp;</td>
+                            <td class="w-file on tx-blue">&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="w-no">4</td>
@@ -217,7 +225,8 @@
                             <td class="w-t-grade">100</td>
                             <td class="w-average">90</td>
                             <td class="w-report tx-red">[성적확인]</td>
-                            <td class="w-file">&nbsp;</td>
+                            <td class="w-file on tx-blue">&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="w-no">3</td>
@@ -228,7 +237,8 @@
                             <td class="w-t-grade">100</td>
                             <td class="w-average">60</td>
                             <td class="w-report tx-red">[성적확인]</td>
-                            <td class="w-file">&nbsp;</td>
+                            <td class="w-file on tx-blue">&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="w-no">2</td>
@@ -239,7 +249,8 @@
                             <td class="w-t-grade">100</td>
                             <td class="w-average">50</td>
                             <td class="w-report tx-red">[성적확인]</td>
-                            <td class="w-file">&nbsp;</td>
+                            <td class="w-file on tx-blue">&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="w-no">1</td>
@@ -250,7 +261,12 @@
                             <td class="w-t-grade">100</td>
                             <td class="w-average">40</td>
                             <td class="w-report tx-red">[성적확인]</td>
-                            <td class="w-file">&nbsp;</td>
+                            <td class="w-file on tx-blue">
+                            <a href="{{ site_url('/home/html/answerNote') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[오답노트]</a>
+                            </td>
+                            <td>
+                                <a href="#none" onclick="openWin('EXAMPASS')">[문제/해설]</a> 
+                            </td>
                         </tr>
                     </tbody>
                 </table>

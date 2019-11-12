@@ -41,6 +41,10 @@
                                 <dt><strong>진도율 :</strong> <span class="tx-blue">2%</span>(1강/20강)<span class="row-line">|</span> <strong>잔여기간 :</strong> <span class="tx-blue">10일</span>(~2018-00-00)</dt>
                             </dl>
                         </div>
+                        <div class="w-info tx-gray bdt-bright-gray">
+                            ※ 해당 강좌는 회차별 자료 인쇄 제한이 있습니다.<br/>
+                            자료는 PC에서만 확인 가능합니다.
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -49,14 +53,14 @@
     <div class="buttonTabs passTabs c_both">
         <ul class="tabWrap buttonWrap passWrap four">
             <li><a href="#notice1" class="on">일시정지</a></li>
+            {{--
             <li class="ready" onClick='alert("준비중 입니다.")'>수강연장</li>
             <li class="ready" onClick='alert("준비중 입니다.")'>수강후기</li>
             <li class="ready" onClick='alert("준비중 입니다.")'>학습 Q&A</li>
-            <!--
+            --}}            
             <li><a href="#notice2">수강연장</a></li>
             <li><a href="#notice3">수강후기</a></li>
-            <li><a href="#notice4">학습 Q&A</a></li>
-            -->
+            <li><a href="#notice4">학습 Q&A</a></li>            
         </ul>
         <div class="tabBox buttonBox passBox">
             <div id="notice1" class="tabContent">
@@ -84,7 +88,6 @@
                                         <li class="btn_blue"><a href="#none">바로결제</a></li>
                                     </ul> 
                                 </div>
-
                             </td>
                         </tr>
                     </tbody>

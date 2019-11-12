@@ -989,7 +989,7 @@ select[disabled] {
   color: #026f61 !important;
 }
 .tx-y-green {
-  color: #35820e;
+  color: #35820e !important;;
 }
 .tx-sky-blue {
   color: #2fb2f1 !important;

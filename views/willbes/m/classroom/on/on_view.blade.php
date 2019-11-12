@@ -51,6 +51,10 @@
                                         @endif</span>({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})</dt>
                             </dl>
                         </div>
+                        <div class="w-info tx-gray bdt-bright-gray">
+                            ※ 해당 강좌는 회차별 자료 인쇄 제한이 있습니다.<br/>
+                            자료는 PC에서만 확인 가능합니다.
+                        </div>
                     </td>
                 </tr>
                 </tbody>

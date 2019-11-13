@@ -273,6 +273,12 @@
                                             [ <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $data['wAttachPath'].'/'.$row['wUnitAttachFile'])).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
                                         </p>
                                     @endif
+
+                                    @if(empty($row['wControlCount']) === false)
+                                        <br>
+                                        보안 PDF 자료 출력 제한 횟수 : {{ $row['wControlCount'] }}
+                                    @endif
+
                                 </td>
                                 <td>
                                     {{ $row['wRuntime']  }} 분

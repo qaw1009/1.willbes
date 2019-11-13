@@ -100,8 +100,9 @@
         <div class="evtCtnsBox wb_03" >
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_03.png" usemap="#bu">
             <map name="bu" id="bu">
-                <area shape="rect" coords="205,1503,406,1551" href="https://blog.naver.com/ace5885" target="_blank"/>
-                <area shape="rect" coords="806,1504,1008,1552" href="{{ site_url('/pass/promotion/index/code/1058') }}" target="_blank" alt="실전에 강한 최준면접"/>
+                <area shape="rect" coords="160,1503,361,1551" href="https://blog.naver.com/ace5885" target="_blank"/>
+                <area shape="rect" coords="454,1435,656,1483" href="{{ site_url('/pass/promotion/index/code/1059') }}" target="_blank" alt="독한회독 바로가기"/>
+                <area shape="rect" coords="761,1504,963,1552" href="{{ site_url('/pass/promotion/index/code/1058') }}" target="_blank" alt="실전에 강한 최준면접"/>
             </map>
         </div>
 

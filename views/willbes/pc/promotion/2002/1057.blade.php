@@ -45,14 +45,16 @@
         #slidesImg3 li img {width:850px;}
         #slidesImg3:after {content::""; display:block; clear:both}
 
-        .tabsEvt {width:1210px; margin:0 auto}
-        .tabsEvt li {display:inline; float:left}
+        .tabsEvt {width:900px; margin:0 auto; border-bottom:5px solid #e62525}
+        .tabsEvt li {display:inline; float:left; width:300px}
         .tabsEvt button {margin:0; padding:0}
-        .tabsEvt a {display:block}
-        .tabsEvt a img.off{display:block}
-        .tabsEvt a img.on{display:none}
-        .tabsEvt a.active img.off{display:none}
-        .tabsEvt a.active img.on{display:block}
+        .tabsEvt button,
+        .tabsEvt a {display:block; height:62px; background:#474747; color:#fff; font-size:20px; line-height:62px; margin-right:1px}
+        .tabsEvt button:hover,
+        .tabsEvt a.active,
+        .tabsEvt a:hover {background:#e62525;}
+        
+        .tabsEvt li:last-child a {margin:0}
         .tabsEvt:after {content:""; display:block; clear:both}
     </style>
 
@@ -61,49 +63,45 @@
             <div class="layer">
                 <div class="video">
                     <video style="margin:0px auto; width:100%;" autoplay="" loop="" muted="">
-                        <source src="http://file3.willbes.net/new_gosi/2018/07/180629.mp4" type="video/mp4"></source>
+                        <source src="https://static.willbes.net/public/images/promotion/2019/11/1057_top.mp4" type="video/mp4"></source>
                     </video>
                 </div>
                 <div class="pngimg">
                     <div class="pngimg-real">
-                        <img src="http://file3.willbes.net/new_gosi/2018/07/180629_01.png"  alt="메인" usemap="#welcomepack1"  />
-                        <map name="welcomepack1" id="welcomepack1">
-                            <area shape="rect" coords="282,949,696,1005" href="http://www.willbesgosi.net/user/memberEntryProvision.html?topMenuType=O" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
-                        </map>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_01.png"  alt="메인"  />
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="http://file3.willbes.net/new_gosi/2018/07/180629_02.png"  alt="01" usemap="#zero" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_02.png"  alt="01" usemap="#zero" />
             <map name="zero" id="zero">
                 <area shape="rect" coords="847,243,931,271" href="http://busan.willbes.net/event/movie/event.html?event_cd=On_171205_c&topMenuType=O#main" onfocus='this.blur()'  alt="0원입문특강" target="_blink">
             </map>
             <div class="slide_con mb80">
                 <ul id="slidesImg3">
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/roll_01.jpg" alt="1" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/roll_02.jpg" alt="2" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/roll_03.jpg" alt="3" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/roll_04.jpg" alt="4" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/roll_05.jpg" alt="5" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/roll_06.jpg" alt="6" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/roll_07.jpg" alt="7" /></li>
-                    <li><img src="http://file3.willbes.net/new_gosi/2018/07/roll_08.jpg" alt="8" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_01.jpg" alt="1" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_02.jpg" alt="2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_03.jpg" alt="3" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_04.jpg" alt="4" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_05.jpg" alt="5" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_06.jpg" alt="6" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_07.jpg" alt="7" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_roll_08.jpg" alt="8" /></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png"></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_p_prev.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/11/1057_p_next.png"></a></p>
             </div>
             <iframe width="854" height="480" src="https://www.youtube.com/embed/4O6euEN5YrQ?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
 
 
         <div class="evtCtnsBox wb_03" >
-            <img src="http://file3.willbes.net/new_gosi/2018/07/180629_03.png" usemap="#bu">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_03.png" usemap="#bu">
             <map name="bu" id="bu">
-                <area shape="rect" coords="208,1623,409,1671" href="https://blog.naver.com/ace5885" target="_blank"/>
-                <area shape="rect" coords="500,1503,702,1551" href="{{ site_url('/pass/promotion/index/code/1059') }}" target="_blank" alt="독한회독 바로가기"/>
-                <area shape="rect" coords="806,1623,1008,1671" href="{{ site_url('/pass/promotion/index/code/1058') }}" target="_blank" alt="실전에 강한 최준면접"/>
+                <area shape="rect" coords="205,1503,406,1551" href="https://blog.naver.com/ace5885" target="_blank"/>
+                <area shape="rect" coords="806,1504,1008,1552" href="{{ site_url('/pass/promotion/index/code/1058') }}" target="_blank" alt="실전에 강한 최준면접"/>
             </map>
         </div>
 
@@ -111,27 +109,25 @@
             <ul class="tabsEvt">
                 <li>
                     <a href="#tab1">
-                        <img src="http://file3.willbes.net/new_gosi/2018/07/180629_04_1.png" class="off"/>
-                        <img src="http://file3.willbes.net/new_gosi/2018/07/180629_04_1-1.png" class="on"/>
+                        7/9급 공무원
                     </a>
                 </li>
                 <li>
                     <button type="button" onclick="window.open('{{ site_url('/pass/promotion/index/code/1051') }}')">
-                        <img src="http://file3.willbes.net/new_gosi/2018/07/180629_04_2.png">
+                        경찰/검찰/법원직
                     </button>
                 </li>
                 <li>
                     <a href="#tab2">
-                        <img src="http://file3.willbes.net/new_gosi/2018/07/180629_04_3.png" class="off"/>
-                        <img src="http://file3.willbes.net/new_gosi/2018/07/180629_04_3-1.png" class="on"/>
+                        취업준비[자격증]
                     </a>
                 </li>
             </ul>
             <div id="tab1">
-                <img src="http://file3.willbes.net/new_gosi/2018/07/180629_04_2-2.png" title="PSAT 완전정복 기본강의 동영상 종합반">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_04_2-2.png" title="PSAT 완전정복 기본강의 동영상 종합반">
             </div>
             <div id="tab2">
-                <img src="http://file3.willbes.net/new_gosi/2018/07/180629_04_3-2.png" title="PSAT 완전정복 기본강의 동영상 종합반">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_04_3-2.png" title="PSAT 완전정복 기본강의 동영상 종합반">
             </div>
         </div>
 

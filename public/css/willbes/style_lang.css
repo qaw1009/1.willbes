@@ -41,8 +41,16 @@
 }
 
 .lang .Section1 {
-    background:#2a2a2a;
+    /*background:#2a2a2a;*/
+    background:#000;
     margin-top:50px;
+    padding:50px 0;
+}
+.lang .Section1 .widthAuto iframe {
+    width: 853px;
+    height: 480px;
+    margin:0 auto;
+    display: block;
 }
 .lang .Section2 {
     position:relative;

@@ -53,7 +53,7 @@ class SearchMockTestModel extends WB_Model
                 $column .= ", '0' as OrderProdIdx ";
             } else {
                 $column .= ", fn_product_count_order(PD.ProdCode, '676001') as AllPayCnt
-                , IF(PD.IsSaleEnd = 'N' AND PD.IsUse = 'Y' AND PD.SaleStatusCcd = '618001' AND CURRENT_TIMESTAMP() BETWEEN MP.TakeStartDatm AND MP.TakeEndDatm, 'Y', 'N') AS IsSalesAble
+                , IF(PD.IsSaleEnd = 'N' AND PD.IsUse = 'Y' AND PD.SaleStatusCcd = '618001', 'Y', 'N') AS IsSalesAble
                 , (
                     select
                         IFNULL(max(OrderProdIdx),0)

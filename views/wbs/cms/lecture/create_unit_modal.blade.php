@@ -84,8 +84,13 @@
                                             <p class="form-control-static ">
                                                 [ <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $data['wAttachPath'].'/'.$row['wUnitAttachFile'])).'&filename_ori='.urlencode($row['wUnitAttachFileReal']) }}" >{{ $row['wUnitAttachFileReal'] }}</a> ]
                                                 &nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="attachFileDelete('{{$row['wUnitIdx'] }}')"><span class="red">[X]</span></a>
+                                                <input type="hidden" name="old_wUnitAttachFile[]" id="old_wUnitAttachFile{{$loop->index}}" value="{{ $row['wUnitAttachFileReal'] }}">
                                             </p>
+                                        @else
+                                            <input type="hidden" name="old_wUnitAttachFile[]" id="old_wUnitAttachFile{{$loop->index}}" value="">
                                         @endif
+                                        <BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount{{$i}}"  class="form-control file_control" data-idx="{{$i}}" title="출력 제한 횟수" value="{{$row['wControlCount']}}" style="width: 30px" maxlength="3" >
+                                        <BR>※ 빈공간 또는 0일 경우 일반 자료로 다운로드
                                     </td>
                                     <td>
                                         <input type="number" name="wRuntime[]" id="wRuntime{{$loop->index}}" class="form-control" maxlength="5" required="required" title="강의시간" value="{{ $row['wRuntime']  }}" style="width: 50px"> 분
@@ -155,6 +160,9 @@
                                         <b>[설명]</b> <input type="text" name="wUnitInfo[]" id="wUnitInfo{{$i}}"  class="form-control" title="설명" value="" style="width: 274px">
                                         <BR>
                                         <input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile{{$i}}" class="form-control" title="첨부자료">
+                                        <input type="hidden" name="old_wUnitAttachFile[]" id="old_wUnitAttachFile{{$i}}" value="">
+                                        <BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount{{$i}}"  class="form-control file_control" data-idx="{{$i}}" title="출력 제한 횟수" value="" style="width: 30px" maxlength="3" >
+                                        <BR>※ 빈공간 또는 0일 경우 일반 자료로 다운로드
                                     </td>
                                     <td>
                                         <input type="number" name="wRuntime[]" id="wRuntime{{$i}}" class="form-control" maxlength="5" required="required" title="강의시간" value="" style="width: 50px"> 분
@@ -253,6 +261,9 @@
                                 +'<b>[설명]</b> <input type="text" name="wUnitInfo[]" id="wUnitInfo'+seq+'"  class="form-control" title="설명" value="" style="width: 274px">'
                                 +'<BR>'
                                 +'<input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile'+seq+'" class="form-control" title="첨부자료">'
+                                +'<input type="hidden" name="old_wUnitAttachFile[]" id="old_wUnitAttachFile'+seq+'" value="">'
+                                +'<BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount'+seq+'"  class="form-control file_control" data-idx="'+seq+'" title="출력 제한 횟수" value="" style="width: 30px" maxlength="3"  >'
+                                +'<BR>※ 빈공간 또는 0일 경우 일반 자료로 다운로드'
                                 +'</td>'
                                 +'<td>'
                                 +'<input type="text" name="wRuntime[]" id="wRuntime'+seq+'" class="form-control" required="required" title="강의시간" value="" style="width: 50px"> 분'
@@ -311,8 +322,40 @@
                                 replaceModal(_replace_url,'');
                                 $datatable.draw();
                             }
-                        }, showValidateError, null, false, 'alert');
+                        }, showValidateError, addValidate, false, 'alert');
                     });
+
+                    function addValidate() {
+                        //pdf 및 출력 제한 횟수 체크
+                        var ctrl = $regi_form_modal.find('input[name="wControlCount[]"]');
+
+                        for(i=0;i<ctrl.length;i++) {
+                            //console.log(getExt($regi_form_modal.find('input[name="wUnitAttachFile[]"]:eq('+i+')').val()));
+                            if($regi_form_modal.find('input[name="wControlCount[]"]:eq('+i+')').val() > 0){
+                              if($regi_form_modal.find('input[name="wUnitAttachFile[]"]:eq('+i+')').val() != '') {
+                                  if(getExt($regi_form_modal.find('input[name="wUnitAttachFile[]"]:eq('+i+')').val()) != 'pdf') {
+                                      alert("출력 제한 횟수 입력 시 PDF 파일만 업로드 가능합니다.");return;
+                                  }
+                              } else {
+                                  if($regi_form_modal.find('input[name="old_wUnitAttachFile[]"]:eq('+i+')').val() != '') {
+                                      if(getExt($regi_form_modal.find('input[name="old_wUnitAttachFile[]"]:eq('+i+')').val()) != 'pdf') {
+                                          alert("출력 제한 횟수 입력 시 PDF 파일만 적용 가능합니다.");return;
+                                      }
+                                  } else {
+                                      alert("파일 선택 후 제한 횟수를 입력하여 주십시오.");return;
+                                  }
+                              }
+                            }
+                        }
+                        return true;
+                    }
+
+                    function getExt($val) {
+                        if($val != "") {
+                            return $val.split(".").pop().toLowerCase();
+                        }
+                        return;
+                    }
 
                     $("#btn_modal_close,#btn_modal_close_top").click(function(){
                         @if(empty($selected_prof_idx) == false)
@@ -322,20 +365,7 @@
                         @endif
                     })
                 });
-                /*
-                $( ".is_use" ).change(function() {
-                    alert("aa");
-                    idx = $(this).data("idx");
-                    idx_val = $(this).val();
-                    view = '';
-                    if(idx_val == "N") {
-                        view = '<b><font color=red>[비활성]</font></b>'
-                    } else {
-                        view = '';
-                    }
-                    $("#is_use_view_"+idx).html(view);
-                });
-                */
+
                 function changeView(sel,idx) {
                     var idx = idx;
                     var idx_val = sel.value;
@@ -353,7 +383,6 @@
                         return;
                     }
                     var nowRowCnt = ($("#list_table tr").length - 1); //tr 갯수 추출 : 타이틀부분 제외를 위해 -1
-                    //alert(nowRowCnt + ' - ' + delSeq);
                     if(nowRowCnt>0) {
                         var selectwUnitIdx = $("input[id='wUnitIdx"+delSeq+"']").val();
                         $regi_form_modal.append('<input name="delwUnitIdx[]" type="hidden" value="'+selectwUnitIdx+'">');
@@ -363,7 +392,6 @@
 
                 function attachFileDelete(strwUnitIdx) {
                     if(confirm('첨부파일을 삭제하시겠습니까?')) {
-
                         var data = {
                             '{{ csrf_token_name() }}' : $regi_form_modal.find('input[name="{{ csrf_token_name() }}"]').val(),
                             'method' : 'POST',
@@ -373,8 +401,6 @@
 
                         sendAjax('{{ site_url('/cms/lecture/storeUnit') }}', data, function(ret) {
                             if (ret.ret_cd) {
-                                //notifyAlert('success', '알림', ret.ret_msg);
-                                //$("#pop_modal").modal('toggle');
                                 alert("삭제되었습니다.");
                                 var _replace_url = '{{ site_url('cms/lecture/createUnitModal/').$lecidx.'/'.$selected_prof_idx }}';
                                 replaceModal(_replace_url,'');

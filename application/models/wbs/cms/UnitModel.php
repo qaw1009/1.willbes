@@ -73,6 +73,7 @@ class UnitModel extends WB_Model
                 $wContentSizeCcd = element('wContentSizeCcd', $input);
                 $wIsUse = element('wIsUse',$input);
                 $wUnitInfo= element('wUnitInfo', $input);
+                $wControlCount= element('wControlCount', $input);
 
                 $this->load->library('upload');
 
@@ -135,6 +136,7 @@ class UnitModel extends WB_Model
                             ,'wIsUse' => $wIsUse[$i]
                             ,'wUnitInfo' => $wUnitInfo[$i]
                             ,'wOrderNum' => $wOrderNum[$i]
+                            ,'wControlCount' => (empty($wControlCount[$i]) == true ? '0' : $wControlCount[$i])
                         ];
 
                         //기존 회차식별자가 존재하면 업데이트 처리

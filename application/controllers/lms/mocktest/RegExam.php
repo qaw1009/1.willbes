@@ -283,9 +283,10 @@ class RegExam extends \app\controllers\BaseController
                 //}
 
             }
-        }
+        }*/
         if ($this->validate($rules) === false) return;
 
+        /*
         foreach ($this->input->post('regKind') as $k => $v) {
             if($v == 'call') {
                 if( empty($_POST['callQuestionFile'][$k]) || empty($_POST['callExplanFile'][$k]) ||

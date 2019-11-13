@@ -11,7 +11,7 @@
         <ul class="tabSty">
             <li><a href="javascript:goLink(1);">전체 성적 분석</a></li>
             <li class="active"><a href="#none">과목별 문항분석</a></li>
-            <li><a href="javascript:goLink(2);">오답노트</a></li>
+            @if($productInfo['PaperType'] == 'I')<li><a href="javascript:goLink(2);">오답노트</a></li>@endif
         </ul>
         <!-- //tab -->
         <div class="btnAgR mgT1 mgB1 mb-zero">

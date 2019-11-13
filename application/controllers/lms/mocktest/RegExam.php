@@ -266,22 +266,27 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'regKind[]', 'label' => 'Call등록타입', 'rules' => 'trim|in_list[call]'],
             ['field' => 'callIdx[]', 'label' => 'CallIdx', 'rules' => 'trim|is_natural_no_zero'],
         ];
-        foreach ($this->input->post('chapterTotal') as $k => $v) {
+
+        /**
+         * 문항별 문제,해설 이미지 필수조건 제거
+         */
+        /*foreach ($this->input->post('chapterTotal') as $k => $v) {
             if(!$v && $_POST['regKind'][$k] != 'call') {
                 if (isset($_FILES['QuestionFile']['error'][$k]) && ($_FILES['QuestionFile']['error'][$k] !== UPLOAD_ERR_OK || $_FILES['QuestionFile']['size'][$k] == 0)) {
                     $rules[] = ['field' => 'QuestionFile', 'label' => '문제파일', 'rules' => 'required'];
                     break;
                 }
-                /*
-                if (isset($_FILES['ExplanFile']['error'][$k]) && ($_FILES['ExplanFile']['error'][$k] !== UPLOAD_ERR_OK  || $_FILES['ExplanFile']['size'][$k] == 0)) {
-                    $rules[] = ['field' => 'ExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
-                    break;
-                }
-                */
+
+                //if (isset($_FILES['ExplanFile']['error'][$k]) && ($_FILES['ExplanFile']['error'][$k] !== UPLOAD_ERR_OK  || $_FILES['ExplanFile']['size'][$k] == 0)) {
+                //    $rules[] = ['field' => 'ExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
+                //    break;
+                //}
+
             }
-        }
+        }*/
         if ($this->validate($rules) === false) return;
 
+        /*
         foreach ($this->input->post('regKind') as $k => $v) {
             if($v == 'call') {
                 if( empty($_POST['callQuestionFile'][$k]) || empty($_POST['callExplanFile'][$k]) ||
@@ -293,7 +298,7 @@ class RegExam extends \app\controllers\BaseController
                 $_POST['callQuestionFile'][$k] = $this->security->xss_clean(trim($_POST['callQuestionFile'][$k]));
                 $_POST['callExplanFile'][$k] = $this->security->xss_clean(trim($_POST['callExplanFile'][$k]));
             }
-        }
+        }*/
 
         // 조건체크
         if( count($this->input->post('QuestionNO')) != count(array_unique($this->input->post('QuestionNO'))) ) {

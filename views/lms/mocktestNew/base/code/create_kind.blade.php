@@ -19,7 +19,7 @@
                 <tr>
                     <th style="width:15%">운영사이트 <span class="required">*</span></th>
                     <td style="width:35%">
-                        {!! html_site_select('', 'kind_site', 'site') !!}
+                        {!! html_site_select($def_site_code, 'kind_site', 'site', 'show', '운영 사이트', '', '', false, $arr_site_code) !!}
                     </td>
                     <th style="width:15%">카테고리 <span class="required">*</span></th>
                     <td style="width:35%">
@@ -36,8 +36,8 @@
                     <td colspan="3">
                         <select class="form-control" style="width: 283px;" id="kind_cateD2" name="cateD2">
                             <option value="">직렬 선택</option>
-                            @foreach($arr_base['cateD2'] as $key => $val)
-                                <option value="{{ $key }}" class="">{{ $val }}</option>
+                            @foreach($arr_base['cateD2'] as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -79,8 +79,8 @@
                         ajaxSubmit($regi_form, _url, function(ret) {
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
-                                /*$("#pop_modal").modal('toggle');
-                                location.replace('{{ site_url('/mocktestNew/base/code/') }}' + dtParamsToQueryString($datatable));*/
+                                $("#pop_modal").modal('toggle');
+                                location.replace('{{ site_url('/mocktestNew/base/code/') }}' + dtParamsToQueryString($datatable));
                             }
                         }, showValidateError, null, false, 'alert');
                     });
@@ -112,10 +112,8 @@
                                 }
                             });
                         });
-
-                        $regi_form.find('#kind_site').val($search_form.find('#search_site_code').val());
-                        $regi_form.find('#kind_cateD1').val($search_form.find('#sc_cateD1').val()).trigger('change');
                         $regi_form.find('#kind_cateD1').chained('#kind_site');
+                        $regi_form.find('#kind_cateD2').chained('#kind_cateD1');
                         @endif
                     })();
                 });

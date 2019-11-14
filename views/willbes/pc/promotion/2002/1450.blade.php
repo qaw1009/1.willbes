@@ -57,15 +57,15 @@
             </div>
 
             <div class="evtCtnsBox evtTop">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_top.jpg" title="설명회">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_top.jpg" title="수능 인증샷 이벤트">
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_01.jpg" title="스폐셜 프로그램">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_01.jpg" title="경찰합격! 지금이 기회다!">
             </div>
 
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_03.jpg" title="신청접수">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_02.jpg" title="수능 인증샷 이벤트">
                 <div class="request" id="request">
                     <div class="requestL">
                         <h3 class="NGEBS">* 수능 인증샷 이벤트 참여</h3>
@@ -124,11 +124,15 @@
                 <div class="btn NGEB">
                     <a href="#none" onclick="javascript:fn_submit();">2020학년도 수능 수험표 등록하기 ></a>
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_02.jpg" title="할인이벤트 진행">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_03.jpg" usemap="#Map1450" title="인증샷 소문내기 이벤트" border="0">
+                <map name="Map1450" id="Map1450">
+                    <area shape="rect" coords="706,930,768,994" href="https://www.instagram.com" target="_blank" alt="인스타그램" />
+                    <area shape="rect" coords="776,930,840,994" href="https://twitter.com" target="_blank" alt="트위터" />
+                    <area shape="rect" coords="845,930,910,994" href="httpp://www.facebook.com" target="_blank" alt="페이스북" />
+                </map>             
                 <div class="btn NGEB mb40">
                     <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기">수능 인증샷 이벤트 이미지 다운받기 ></a>
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1450_03.jpg" title="학원 위치"/>
             </div>          
 
 
@@ -140,30 +144,5 @@
         </form>
 	</div>
     <!-- End Container -->
-
-    <script type="text/javascript">
-        $regi_form = $('#regi_form');
-
-        {{--쿠폰발급--}}
-        function giveCheck() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($arr_promotion_params) === false)
-            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}';
-            ajaxSubmit($regi_form, _check_url, function (ret) {
-                if (ret.ret_cd) {
-                    alert('전국 모의고사 무료 응시쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
-                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
-                }
-            }, showValidateError, null, false, 'alert');
-            @else
-                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
-            @endif
-        }
-
-        /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
-        });
-    </script>
 
 @stop

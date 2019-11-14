@@ -159,6 +159,10 @@
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
+                @if($stats_type == 'packagePeriod')
+                    {{-- 기간제패키지 --}}
+                    <th width="60">선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
+                @endif
                     <th>No</th>
                     <th>대분류</th>
                     <th>{{ $stats_name }}명</th>
@@ -250,6 +254,10 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                @if($stats_type == 'packagePeriod')
+                    {{-- 기간제패키지 --}}
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 선택강좌 상세매출 엑셀다운로드', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-checked-excel' },
+                @endif
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }
                 ],
                 ajax: {
@@ -260,6 +268,12 @@
                     }
                 },
                 columns: [
+                @if($stats_type == 'packagePeriod')
+                    {{-- 기간제패키지 --}}
+                    {'data' : 'ProdCode', 'render' : function(data, type, row, meta) {
+                        return '<input type="checkbox" name="prod_code" class="flat" value="' + data + '"/>';
+                    }},
+                @endif
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -386,6 +400,43 @@
                 var show_uri = '/' + $(this).data('idx') + '/' + site_code + '/' + start_date + '/' + end_date;
 
                 location.href = '{{ site_url('/sales/' . $stats_type . '/show') }}' + show_uri + dtParamsToQueryString($datatable);
+            });
+
+            // 전체선택/해제
+            $list_table.on('ifChanged', '#_is_all', function() {
+                iCheckAll($list_table.find('input[name="prod_code"]'), $(this));
+            });
+
+            // 선택강좌 상세매출 엑셀다운로드 버튼 클릭
+            $('.btn-checked-excel').on('click', function(event) {
+                event.preventDefault();
+
+                var checked_prod_code = $list_table.find('input[name="prod_code"]:checked');
+                var params = [];
+                checked_prod_code.each(function(idx) {
+                    params.push({ 'name' : 'prod_code[]', 'value' : $(this).val() });
+                });
+
+                if (params.length < 1) {
+                    alert('선택된 강좌가 없습니다.');
+                    return;
+                }
+
+                if (params.length > 50) {
+                    alert('50개까지만 선택 가능합니다.');
+                    return;
+                }
+
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    var data = [
+                        { 'name' : '{{ csrf_token_name() }}', 'value' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val() },
+                        { 'name' : 'site_code', 'value' : $search_form.find('select[name="search_site_code"]').val() },
+                        { 'name' : 'search_start_date', 'value' : $search_form.find('input[name="search_start_date"]').val() },
+                        { 'name' : 'search_end_date', 'value' : $search_form.find('input[name="search_end_date"]').val() }
+                    ];
+
+                    formCreateSubmit('{{ site_url('/sales/' . $stats_type . '/orderListExcel') }}', data.concat(params), 'POST');
+                }
             });
         });
     </script>

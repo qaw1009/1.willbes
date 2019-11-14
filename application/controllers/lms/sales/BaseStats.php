@@ -299,12 +299,12 @@ class BaseStats extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'BO.SiteCode' => $this->_reqP('site_code'),
-                'BO.ProdCode' => $this->_reqP('prod_code'),
                 'BO.PayChannelCcd' => $this->_reqP('search_pay_channel_ccd'),
                 'BO.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
                 'BO.PayMethodCcd' => $this->_reqP('search_pay_method_ccd')
             ],
             'IN' => [
+                'BO.ProdCode' => (array) $this->_reqP('prod_code'),
                 'BO.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
             ],
             'ORG1' => [
@@ -343,11 +343,12 @@ class BaseStats extends \app\controllers\BaseController
 
     /**
      * 매출통계 상세보기 매출목록 정렬조건 리턴
+     * @param bool $is_multiple [다중상품 여부]
      * @return array
      */
-    private function _getOrderListOrderBy()
+    private function _getOrderListOrderBy($is_multiple = false)
     {
-        return ['OrderIdx' => 'desc', 'OrderProdIdx' => 'asc'];
+        return $is_multiple === false ? ['OrderIdx' => 'desc', 'OrderProdIdx' => 'asc'] : ['ProdCode' => 'asc', 'OrderIdx' => 'desc', 'OrderProdIdx' => 'asc'];
     }
 
     /**
@@ -372,7 +373,8 @@ class BaseStats extends \app\controllers\BaseController
         $numerics = ['RealPayPrice', 'RefundPrice', 'PgFeePrice'];    // 숫자형 변환 대상 컬럼
 
         $arr_condition = $this->_getOrderListConditions();
-        $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $this->_getOrderListOrderBy());
+        $order_by = $this->_getOrderListOrderBy(is_array($prod_code));
+        $list = $this->orderSalesModel->listSalesOrder($search_start_date, $search_end_date, 'all', 'excel', $arr_condition, null, null, $order_by);
         $last_query = $this->orderSalesModel->getLastQuery();
         $file_name = $this->_stats_name . '_매출상세_' . $this->session->userdata('admin_idx') . '_' . date('YmdHis');
 

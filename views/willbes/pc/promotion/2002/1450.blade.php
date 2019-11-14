@@ -128,7 +128,7 @@
                 <map name="Map1450" id="Map1450">
                     <area shape="rect" coords="706,930,768,994" href="https://www.instagram.com" target="_blank" alt="인스타그램" />
                     <area shape="rect" coords="776,930,840,994" href="https://twitter.com" target="_blank" alt="트위터" />
-                    <area shape="rect" coords="845,930,910,994" href="httpp://www.facebook.com" target="_blank" alt="페이스북" />
+                    <area shape="rect" coords="845,930,910,994" href="https://www.facebook.com" target="_blank" alt="페이스북" />
                 </map>             
                 <div class="btn NGEB mb40">
                     <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기">수능 인증샷 이벤트 이미지 다운받기 ></a>

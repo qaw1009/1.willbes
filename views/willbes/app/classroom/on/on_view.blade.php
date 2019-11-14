@@ -51,6 +51,12 @@
                                         @endif</span>({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})</dt>
                             </dl>
                         </div>
+                        @if($lec['wControlCountUse'] > 0)
+                            <div class="w-info tx-gray bdt-bright-gray">
+                                ※ 해당 강좌는 회차별 자료 인쇄 제한이 있습니다.<br/>
+                                자료는 PC에서만 확인 가능합니다.
+                            </div>
+                        @endif
                     </td>
                 </tr>
                 </tbody>
@@ -117,14 +123,25 @@
                                                 @endif
                                                 <li class="w-data">
                                                     @if(empty($row['wUnitAttachFile']) == false)
-                                                        <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">
-                                                            @if($row['downcount'] > 0)
-                                                                <img src="{{ img_url('prof/icon_down.png') }}">
-                                                            @else
-                                                                <img src="{{ img_url('m/mypage/icon_lec.png') }}">
-                                                            @endif
-                                                            <span class="underline">강의자료</span>
-                                                        </a>
+                                                        @if($row['wControlCount'] > 0)
+                                                            <a href="javascript:;" onclick="alert('해당 강의자료는 PC에서만 확인 가능합니다.');">
+                                                                @if($row['downcount'] > 0)
+                                                                    <img src="{{ img_url('prof/icon_down.png') }}">
+                                                                @else
+                                                                    <img src="{{ img_url('m/mypage/icon_lec.png') }}">
+                                                                @endif
+                                                                <span class="underline">강의자료</span>
+                                                            </a>
+                                                        @else
+                                                            <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">
+                                                                @if($row['downcount'] > 0)
+                                                                    <img src="{{ img_url('prof/icon_down.png') }}">
+                                                                @else
+                                                                    <img src="{{ img_url('m/mypage/icon_lec.png') }}">
+                                                                @endif
+                                                                <span class="underline">강의자료</span>
+                                                            </a>
+                                                        @endif
                                                     @endif
                                                 </li>
                                             </ul>

@@ -22,7 +22,7 @@ class Code extends BaseMocktest
 
     public function index()
     {
-        $arr_site_code = get_auth_site_codes(true, false);
+        $arr_site_code = $this->getSiteCode();
         $def_site_code = key($arr_site_code);
 
         $arr_base['cateD1'] = $this->getCategoryArray();
@@ -68,6 +68,11 @@ class Code extends BaseMocktest
      */
     public function createKind()
     {
+        $arr_site_code = $this->getSiteCode();
+        $def_site_code = key($arr_site_code);
+        $arr_base['cateD1'] = $this->getCategoryArray();
+        $arr_base['cateD2'] = $this->getMockKind(false);
+
         if ($this->_reqG('act') == 'edit') { // 수정
             $method = 'PUT';
             $arr_condition = [
@@ -85,10 +90,9 @@ class Code extends BaseMocktest
             $data = array();
         }
 
-        $arr_base['cateD1'] = $this->getCategoryArray();
-        $arr_base['cateD2'] = $this->codeModel->getCcd($this->config->item('sysCode_kind', 'mock'));
-
         $this->load->view('mocktestNew/base/code/create_kind', [
+            'arr_site_code' => $arr_site_code,
+            'def_site_code' => $def_site_code,
             'arr_base' => $arr_base,
             'method' => $method,
             'data' => $data,
@@ -150,6 +154,9 @@ class Code extends BaseMocktest
      */
     public function createSubject()
     {
+        $arr_site_code = $this->getSiteCode();
+        $def_site_code = key($arr_site_code);
+
         $this->load->library('form_validation');
         $get = array(
             'act' => $this->_reqG('act'),
@@ -196,7 +203,7 @@ class Code extends BaseMocktest
             return;
         }
         $arr_base['cateD1'] = $this->getCategoryArray();
-        $arr_base['cateD2'] = $this->codeModel->getCcd($this->config->item('sysCode_kind', 'mock'));
+        $arr_base['cateD2'] = $this->getMockKind(false);
 
         $arr_adminInfo = null;
         foreach ($subject_data as $row) {
@@ -211,6 +218,8 @@ class Code extends BaseMocktest
         }
 
         $this->load->view('mocktestNew/base/code/create_subject', [
+            'arr_site_code' => $arr_site_code,
+            'def_site_code' => $def_site_code,
             'arr_base' => $arr_base,
             'method' => ($this->input->get('act') == 'edit') ? 'PUT' : 'POST',
             'mock_data' => $mock_data,

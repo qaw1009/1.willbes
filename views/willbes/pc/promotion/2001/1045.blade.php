@@ -52,11 +52,10 @@
         </div>
 
         <div class="evtCtnsBox WB_con04" id="0219_lecgo">
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1045_03.png" alt="#" usemap="#Map_0219_lec" border="0" />
-            <map name="Map_0219_lec">
-                <area shape="rect" coords="124,351,228,387" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1278" target="_parent" alt="50%파력할인" />
-                <area shape="rect" coords="217,709,900,760" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&subject_idx=1063&campus_ccd=605001&course_idx=1046" target="_blank">                
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/06/1045_03.png" usemap="#Map_0219_lec" border="0" />
+            <map name="Map_0219_lec" id="Map_0219_lec">
+                <area shape="rect" coords="209,687,909,790" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&subject_idx=1054&campus_ccd=605001&course_idx=1106" target="_blank" />
+            </map>          
         </div>
         <!--//WB_con04-->
 

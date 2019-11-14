@@ -20,7 +20,7 @@
                 <tr>
                     <th style="width:15%">운영사이트 <span class="required">*</span></th>
                     <td style="width:35%">
-                        {!! html_site_select('', 'subject_site', 'site') !!}
+                        {!! html_site_select((empty($mock_data['SiteCode']) === true ? $def_site_code : $mock_data['SiteCode']), 'subject_site', 'site', 'show', '운영 사이트', '', '', false, $arr_site_code) !!}
                     </td>
                     <th style="width:15%">카테고리 <span class="required">*</span></th>
                     <td style="width:35%">
@@ -37,8 +37,8 @@
                     <td colspan="3">
                         <select class="form-control" style="width: 283px;" id="subject_cateD2" name="cateD2">
                             <option value="">직렬 선택</option>
-                            @foreach($arr_base['cateD2'] as $key => $val)
-                                <option value="{{ $key }}" class="">{{ $val }}</option>
+                            @foreach($arr_base['cateD2'] as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -79,6 +79,16 @@
                 var $regi_form = $('#regi_form');
 
                 $(document).ready(function() {
+                    // select 메뉴 정리
+                    /*$regi_form.find('#subject_cateD1').val({{ $mock_data['CateCode'] }}).attr('selected');
+                    $regi_form.find('#subject_cateD2').val({{ $mock_data['Ccd'] }}).attr('selected');
+                    $regi_form.find('#subject_cateD1').chained('#subject_site');
+                    $regi_form.find('#subject_cateD2').chained('#subject_cateD1');*/
+
+                    $regi_form.find('#subject_site').val({{ $mock_data['SiteCode'] }}).prop('disabled', true);
+                    $regi_form.find('#subject_cateD1').val({{ $mock_data['CateCode'] }}).prop('disabled', true);
+                    $regi_form.find('#subject_cateD2').val({{ $mock_data['Ccd'] }}).prop('disabled', true);
+
                     $regi_form.submit(function () {
                         var _url = '{{ site_url('/mocktestNew/base/code/storeSubject') }}';
 
@@ -90,11 +100,6 @@
                             }
                         }, showValidateError, null, false, 'alert');
                     });
-
-                    // select 메뉴 정리
-                    $regi_form.find('#subject_site').val({{ $mock_data['SiteCode'] }}).prop('disabled', true);
-                    $regi_form.find('#subject_cateD1').val({{ $mock_data['CateCode'] }}).prop('disabled', true);
-                    $regi_form.find('#subject_cateD2').val({{ $mock_data['Ccd'] }}).prop('disabled', true);
                 });
             </script>
         @stop

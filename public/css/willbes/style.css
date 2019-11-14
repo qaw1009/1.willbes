@@ -9158,6 +9158,16 @@ table.testTable tr td.w-date {
     width: 33.3333%;
     margin-left: 0;
 }
+.ExamBox .popupContainer .tabSty50 li {
+    float: left;
+    width: 49.9%;
+    height: 40px;
+    margin-left: 1px;
+}
+.ExamBox .popupContainer .tabSty50 li:first-child {
+    width: 50%;
+    margin-left: 0;
+}
 .ExamBox .popupContainer .tabSty li a {
     background: #8c8c8c;
     display: block;

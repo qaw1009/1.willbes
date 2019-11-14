@@ -3,7 +3,7 @@
 @section('content')
     <h5 class="mt-20">- 모의고사 등록 및 성적처리를 위한 카테고리별 직렬 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false) !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
 
         <div class="x_panel">
             <div class="x_content">

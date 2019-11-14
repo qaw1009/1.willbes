@@ -11,6 +11,12 @@ class BaseMocktest extends \app\controllers\BaseController
         parent::__construct();
     }
 
+    protected function getSiteCode()
+    {
+        $arr_site_code = get_auth_on_off_site_codes('Y', true, false);
+        return $arr_site_code;
+    }
+
     /**
      * 카테고리 코드 목록 조회
      * @return array

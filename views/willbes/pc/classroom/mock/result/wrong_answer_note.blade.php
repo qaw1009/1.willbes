@@ -8,7 +8,7 @@
         <div class="pop-subTit">{{ $productInfo['ProdName'] }}</div>
     </div>
     <div class="popupContainer">
-        <ul class="tabSty">
+        <ul class="tabSty {{ (($productInfo['PaperType'] == 'P') ? 'tabSty50' : '') }}">
             <li><a href="javascript:goLink(1);">전체 성적 분석</a></li>
             <li><a href="javascript:goLink(2);">과목별 문항분석</a></li>
             <li class="active"><a href="#none">오답노트</a></li>

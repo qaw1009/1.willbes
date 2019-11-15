@@ -102,7 +102,10 @@
                                 </td>
                             </tr>
                         </table>
-                        <p>* 수험표 이미지 (jpg, gif, png 파일만 등록 가능)</p>
+                        <p>
+                            * 수험표 이미지 (jpg, gif, png 파일만 등록 가능)<br>
+                            * 수험표 제출시 주민등록번호 뒷자리 마스킹 필수
+                        </p>
                     </div>
                     <div class="requestR">
                         <h3 class="NGEB">* 개인정보 수집 및 이용에 대한 안내</h3>

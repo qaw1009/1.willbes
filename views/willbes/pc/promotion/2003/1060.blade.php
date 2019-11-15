@@ -42,7 +42,7 @@
         }    
         
 
-        .wb_cts00 {background:#1c1c1c url(https://static.willbes.net/public/images/promotion/2019/04/1060_c1_bg.jpg) no-repeat center top;}	
+        .wb_cts00 {background:#1c1c1c url(https://static.willbes.net/public/images/promotion/2019/11/1060_c1_bg.jpg) no-repeat center top;}	
         .wb_cts00 ul { width:100%;  margin:0 auto;}
             .bannerImg3 {position:relative; width:100%; max-width:1210px; margin:0 auto;   padding:0px 0px 124px 0px; }
             .bannerImg3 p {position:absolute; top:35%; width:30px; z-index:1000;}
@@ -62,8 +62,9 @@
 
         
         .wb_cts02 {background:#fff;}
-            .PeMenu {width:927px; margin:0 auto}
+            .PeMenu {width:1170px; margin:0 auto}
             .PeMenu li {display:inline; float:left}
+            .PeMenu li.last{margin-left:35px;}
             .PeMenu li img.off {display:block} 	
             .PeMenu li img.on {display:none}
             .PeMenu li:hover img.off {display:none} 	
@@ -89,19 +90,19 @@
         
         .wb_cts05 {width:100%; text-align:center;  min-width:1210px; background:#f3f5f7; padding-top:50px}	
 
-        .skybanner {
-            position:fixed;
-            top:250px;
-            right:0;
-            width:190px; 
-        }
+        .skybanner {position:fixed;top:600px;right:0;width:190px;}
+        .skybanner2 {position:fixed;top:250px;right:0;z-index:1;}
+        .skybanner2 li{list-style:none;}
         
     </style>
     
     <div class="p_re evtContent NGR" id="evtContainer">
+        <div class="skybanner2">
+            <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1410#to_go" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="할인받고 수강하기"></a></li>          
+        </div> 
         <div class="skybanner">
 			<div><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c11.png" alt="소방체력풀패키지런칭기념 파격할인" ></a></div>
-		</div>
+        </div>       
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
             <div>
@@ -127,7 +128,10 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_cts00" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c1_1.png" alt="소방 PASS"/><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c1_1.png" alt="소방 PASS"/><br>            
+        </div>
+
+        <div class="evtCtnsBox wb_cts00s" >    
             <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c2.jpg" alt="소방공무원, 시작부터 달라야 합니다."/>
         </div>
         
@@ -158,10 +162,14 @@
                             <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_02on.jpg" alt="국어 김세령" class="on"/>
                         </li>                        
                 		<li> 
-                        	<img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_03.jpg" alt="영어 이현정" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_03on.jpg" alt="영어 이현정" class="on"/>
+                        	<img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_03.jpg" alt="영어 이현정" class="off"/> 
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_03on.jpg" alt="영어 이현정" class="on"/>
                         </li>
                         <li> 
+                        	<img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_05.jpg" alt="영어 양익" class="off"/> 
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_05on.jpg" alt="영어 양익" class="on"/>
+                        </li>
+                        <li class="last"> 
                         	<img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_04.jpg" alt="한국사 배준환" class="off"/> 
                             <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_04on.jpg" alt="한국사 배준환" class="on"/>
                         </li>                        

@@ -416,6 +416,7 @@
         @stop
 
         @section('add_buttons')
+        <div class="form-group form-group-sm no-border-bottom">
             <div class="">
                 <div class="col-md-6 item form-inline">
                     <select name='rowNum' id='rowNum' class="form-control alignleft" title="갯수" style="width: 50px">
@@ -429,6 +430,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-success">저장</button>
+        </div>
         @endsection
 
         @section('layer_footer')

@@ -34,7 +34,7 @@
         .evt03 .request h3 {font-size:17px;}
         .evt03 .request td {padding:10px}
         .evt03 .request input {height:26px;}
-        .evt03 .requestL {width:48%; float:left}
+        .evt03 .requestL {width:48%; float:left}        
         .evt03 .requestR {width:48%; float:right; }
         .evt03 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:147px; overflow-y:scroll }
         .evt03 .requestL li {display:inline-block; margin-right:10px}
@@ -103,6 +103,7 @@
                             </tr>
                         </table>
                         <p>* 수험표 이미지 (jpg, gif, png 파일만 등록 가능)</p>
+                        <p class="mt10">* 수험표 제출시 <span class="tx-red">주민등록번호 뒷자리 마스킹</span> 필수</p>
                     </div>
                     <div class="requestR">
                         <h3 class="NGEB">* 개인정보 수집 및 이용에 대한 안내</h3>

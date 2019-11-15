@@ -175,7 +175,7 @@
                 <map name="Map1441" id="Map1441">
                     <area shape="rect" coords="701,55,781,160" href="https://www.instagram.com" target="_blank" alt="인스타그램" />
                     <area shape="rect" coords="791,55,873,160" href="https://twitter.com" target="_blank" alt="트위터" />
-                    <area shape="rect" coords="883,55,963,160" href="httpp://www.facebook.com" target="_blank" alt="페이스북" />
+                    <area shape="rect" coords="883,55,963,160" href="https://www.facebook.com" target="_blank" alt="페이스북" />
                 </map>
             </div>
 

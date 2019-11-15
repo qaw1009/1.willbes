@@ -25,7 +25,8 @@
 
         .wb_cts02,.wb_cts04 {background:#e8e7e5}
         
-        .wb_cts03,.wb_cts05 {background:#fff}
+        .wb_cts03 {padding-bottom:100px}
+        .wb_cts05 {background:#fff}
 
         .wb_cts06 {background:#e2e2e2}   
 
@@ -76,10 +77,12 @@
     <div class="evtCtnsBox wb_cts01">
         <img src="https://static.willbes.net/public/images/promotion/2019/10/1433_top.jpg" title="올백 문제풀이반" />
     </div>
-    <!--wb_cts01//-->    
+
+    <!--wb_cts01//   
     <div class="evtCtnsBox wb_cts02">
         <img src="https://static.willbes.net/public/images/promotion/2019/10/1433_01.jpg" title="이론 리마인드" />
-    </div>
+    </div>--> 
+
     <!--wb_cts02//-->  
     <div class="evtCtnsBox wb_cts03">   
         <img src="https://static.willbes.net/public/images/promotion/2019/10/1433_02.gif" title="커리큘럼" />

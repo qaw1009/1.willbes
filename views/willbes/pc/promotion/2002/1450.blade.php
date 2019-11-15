@@ -185,6 +185,7 @@
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
+                    location.reload();
                 }
             }, showValidateError, null, false, 'alert');
         }

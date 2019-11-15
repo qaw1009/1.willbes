@@ -34,7 +34,7 @@
                                 <option value="{{$i}}" @if($i===3)selected="selected"@endif>{{$i}}</option>
                             @endfor
                         </select>
-                        <button class="btn btn-sm btn-primary mr-20" type="button" id="btn-add">필드추가</button>
+                        <button class="btn btn-sm btn-primary mr-20 btn-add" type="button" id="btn-add">필드추가</button>
                         <button class="btn btn-success btn-sm mr-10 " type="submit">저장</button>
                         <button class="btn btn-default btn-sm btn_modal_close " id="btn_modal_close_top" type="button">닫기</button>
                     </div>
@@ -228,12 +228,11 @@
                         searching: false
                     });
 
-                    $('#btn-add').click(function() {
+                    $('.btn-add').click(function() {
                         var addCnt = $("#rowNum").val();		//추가할 갯수
                         var nowRowCnt = ($("#list_table tr").length - 1); //tr 갯수 추출 : 타이틀부분 제외를 위해 -1
                         var seq = nowRowCnt+1;
 
-                        //alert(  $( "input[name='seq[]']" ).length);
                         var wUnitNum_count =$( "input[name='wUnitNum[]']" ).length;
                         var last_wUnitNum = $( "input[name='wUnitNum[]']" ).eq(wUnitNum_count-1).val();
                         var last_wUnitLectureNum = $( "input[name='wUnitLectureNum[]']" ).eq(wUnitNum_count-1).val();
@@ -241,14 +240,11 @@
                         last_wUnitNum = last_wUnitNum == "" ? "0" : last_wUnitNum;
                         last_wUnitLectureNum = last_wUnitLectureNum == "" ? "0" : last_wUnitLectureNum;
 
-                        //alert(last_wUnitNum+' - '+last_wUnitLectureNum);return;
-
                         for (i=0;i<addCnt;i++ ) {
                             $list_table_modal.append(
                                 '<tr id="trID'+seq+'">'
                                 +'<input type="hidden" name="seq[]" id="seq'+seq+'" value="'+seq+'" >'
                                 +'<input type="hidden" name="wUnitIdx[]" id="wUnitIdx'+seq+'" value="">'
-                                //+'<td>'+seq+'</td>'
                                 +'<td><input type="text" name="wOrderNum[]" value="'+seq+'" size="3" required="required" class="form-control" ></td>'
                                 +'<td>'
                                 +'<input type="text" name="wUnitNum[]" id="wUnitNum'+seq+'" required="required"  class="form-control" title="회차" value="'+(parseInt(last_wUnitNum))+'" style="width: 30px">회차'
@@ -420,9 +416,18 @@
         @stop
 
         @section('add_buttons')
-            <button class="btn btn-success btn-sm mr-10 alignleft" type="submit">저장</button>
-            <button class="btn btn-default btn-sm btn_modal_close alignleft" id="btn_modal_close_top" type="button">닫기</button>
-
+            <div class="">
+                <div class="col-md-6 item form-inline">
+                    <select name='rowNum' id='rowNum' class="form-control alignleft" title="갯수" style="width: 50px">
+                        @for($i=1; $i<=10; $i++)
+                            <option value="{{$i}}" @if($i===3)selected="selected"@endif>{{$i}}</option>
+                        @endfor
+                    </select>
+                    <button class="btn btn-sm btn-primary alignleft btn-add" type="button" id="btn-add">필드추가</button>
+                    <button class="btn btn-success btn-sm mr-10 alignleft" type="submit">저장</button>
+                    <button class="btn btn-default btn-sm btn_modal_close alignleft" id="btn_modal_close_top" type="button">닫기</button>
+                </div>
+            </div>
             <button type="submit" class="btn btn-success">저장</button>
         @endsection
 
@@ -434,4 +439,4 @@
         <input type="hidden" name="LecIdx" id="LecIdx" value="{{$lecidx}}" />
         <input type="hidden" name="del_wUnitIdx" id="del_wUnitIdx" value="">
     </form>
-@endsection
+        @endsection

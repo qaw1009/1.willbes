@@ -51,7 +51,18 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        <form name="regi_form_register" id="regi_form_register">
+        <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
+            {!! csrf_field() !!}
+            <input type="hidden" name="event_idx" id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="file_chk" value="Y"/>
+            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+{{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
+{{--            <input type="hidden" name="target_params[]" value="register_data2"/> --}}{{-- 체크 항목 전송 --}}
+{{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
+{{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
+
+
             <div class="evtCtnsBox evt00">
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">
             </div>
@@ -87,7 +98,7 @@
                             <tr>
                                 <th>* 수험표 등록</th>
                                 <td>
-                                    <input name="" type="file" />
+                                    <input type="file" name="attach_file" id="attach_file"/>
                                 </td>
                             </tr>
                         </table>
@@ -133,16 +144,52 @@
                 <div class="btn NGEB mb40">
                     <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기">수능 인증샷 이벤트 이미지 다운받기 ></a>
                 </div>
-            </div>          
-
-
-            {{--홍보url--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
-            @endif
-             
+            </div>
         </form>
+        {{--홍보url--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
+        @endif
 	</div>
     <!-- End Container -->
+
+    <script>
+        function fn_submit() {
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            var is_login = '{{sess_data('is_login')}}';
+            if (is_login != true) {
+                alert('로그인 후 이용해 주세요.');
+                return;
+            }
+
+            var files = $('#attach_file')[0].files[0];
+            if (files === undefined || files == null || files == '') {
+                alert('수험표를 등록해 주세요.');
+                return;
+            } else {
+                var ext = $('#attach_file').val().split('.').pop().toLowerCase();
+                if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('등록 할수 없는 파일 확장자입니다.');
+                    return;
+                }
+            }
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+    </script>
+
 
 @stop

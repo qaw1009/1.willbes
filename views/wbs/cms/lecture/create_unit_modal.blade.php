@@ -210,23 +210,6 @@
                         @endif
                         </tbody>
                     </table>
-
-                    @section('add_buttons')
-                    <div class="col-md-6 item form-inline">
-                        <select name='rowNum' id='rowNum' class="form-control alignleft" title="갯수" style="width: 50px">
-                            @for($i=1; $i<=10; $i++)
-                                <option value="{{$i}}" @if($i===3)selected="selected"@endif>{{$i}}</option>
-                            @endfor
-                        </select>
-                        <button class="btn btn-sm btn-primary alignleft btn-add" type="button" id="btn-add">필드추가</button>
-                        <button class="btn btn-success btn-sm mr-10 alignleft" type="submit">저장</button>
-                        <button class="btn btn-default btn-sm btn_modal_close alignleft" id="btn_modal_close_top" type="button">닫기</button>
-                    </div>
-                    <div class="col-md-6 item form-inline text-right ">
-                        <button class="btn btn-success btn-sm mr-10" type="submit">저장</button>
-                        <button class="btn btn-default btn-sm btn_modal_close" id="btn_modal_close_top" type="button">닫기</button>
-                    </div>
-                @endsection
                 </div>
             </div>
             <script type="text/javascript">
@@ -432,7 +415,19 @@
             </script>
         @stop
 
-        
+        @section('add_buttons')
+            <div class="col-md-6 item form-inline">
+                <select name='rowNum' id='rowNum' class="form-control alignleft" title="갯수" style="width:50px; margin-right:5px">
+                    @for($i=1; $i<=10; $i++)
+                        <option value="{{$i}}" @if($i===3)selected="selected"@endif>{{$i}}</option>
+                    @endfor
+                </select>
+                <button class="btn btn-sm btn-primary alignleft btn-add" type="button" id="btn-add">필드추가</button>
+                <button class="btn btn-success btn-sm mr-10 alignleft" type="submit">저장</button>
+                <button class="btn btn-default btn-sm btn_modal_close alignleft" id="btn_modal_close_top" type="button">닫기</button>
+            </div>
+            <button type="submit" class="btn btn-success">저장</button>
+        @endsection
 
         @section('layer_footer')
     </form>

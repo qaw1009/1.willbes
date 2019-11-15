@@ -92,6 +92,7 @@
 
         .skybanner {position:fixed;top:600px;right:0;width:190px;}
         .skybanner2 {position:fixed;top:250px;right:0;z-index:1;}
+        .skybanner2 li{list-style:none;}
         
     </style>
     

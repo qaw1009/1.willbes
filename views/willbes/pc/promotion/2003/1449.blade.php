@@ -31,7 +31,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/11/1449_top_bg.jpg) no-repeat center top; position:relative}
         .evtTop .leclist {position:absolute; top:754px; left:50%; width:380px; height:140px; margin-left:-190px; text-align:left; z-index:10}	
-        .evtTop .leclist li {color:#ccc; font-size:16px; font-weight:bold; line-height:1.5}
+        .evtTop .leclist li {color:#ccc; font-size:16px; font-weight:bold; line-height:1.8; height:140px; overflow:hidden;}
         .evtTop .leclist li span {color:#87d2b5}
         .evt01 {background:#ac5b5a;}        
         .evt02 {background:#ebebeb;}
@@ -61,15 +61,11 @@
                     → 2020 윌비스 제로백 <span>임재진 국어</span> 이론<br>
                     → 2020 윌비스 제로백 <span>박초롱 영어</span> 문법/독해<br>
                     → 2020 윌비스 제로백 <span>한경준 한국사</span> 이론<br>
-                    </li>
-                    <li>
                     → 2020 윌비스 제로백 <span>이석준 행정법총론</span> 이론<br>
                     → 2020 윌비스 제로백 <span>양승우 행정법총론</span> 이론<br>
                     → 2020 윌비스 제로백 <span>윤세훈 행정학</span> 기출문제풀이<br>
                     → 2020 윌비스 제로백 <span>김헌 행정학</span> 기출문제풀이<br>
                     → 2020 윌비스 제로백 <span>임재진 국어</span> 기출문제풀이<br>
-                    </li>
-                    <li>
                     → 2020 윌비스 제로백 <span>박초롱 영어</span> 기출문제풀이<br>
                     → 2020 윌비스 제로백 <span>양승우 행정법</span> 기출문제풀이<br>
                     → 2020 윌비스 제로백 <span>이석준 행정법</span> 기출문제풀이<br>
@@ -113,13 +109,14 @@
     <script type="text/javascript">  
         $(document).ready(function() {
             var slides = $(".slidesLec").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                mode:'vertical', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
-                speed:350,
-                pause:4000,
+                speed:10000,
+                pause:0,
                 controls:false,
                 autoHover: true,
                 pager:false,
+                ticker:true,
             });
 
             var BxBook = $('.slidesBook').bxSlider({

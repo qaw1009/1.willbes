@@ -30,7 +30,7 @@
         .skybanner a {display:block; margin-bottom:5px}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/11/1449_top_bg.jpg) no-repeat center top; position:relative}
-        .evtTop .leclist {position:absolute; top:754px; left:50%; width:380px; height:140px; margin-left:-190px; text-align:left; z-index:10}	
+        .evtTop .leclist {position:absolute; top:760px; left:50%; width:380px; margin-left:-190px; text-align:left; z-index:10}	
         .evtTop .leclist li {color:#ccc; font-size:16px; font-weight:bold; line-height:1.8; height:140px; overflow:hidden;}
         .evtTop .leclist li span {color:#87d2b5}
         .evtTop .btnLecgo  {position:absolute; bottom:0; left:50%; width:1120px; margin-left:-560px; z-index:11}

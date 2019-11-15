@@ -33,6 +33,7 @@
         .evtTop .leclist {position:absolute; top:754px; left:50%; width:380px; height:140px; margin-left:-190px; text-align:left; z-index:10}	
         .evtTop .leclist li {color:#ccc; font-size:16px; font-weight:bold; line-height:1.8; height:140px; overflow:hidden;}
         .evtTop .leclist li span {color:#87d2b5}
+        .evtTop .btnLecgo  {position:absolute; bottom:0; left:50%; width:1120px; margin-left:-560px; z-index:11}
         .evt01 {background:#ac5b5a;}        
         .evt02 {background:#ebebeb;}
         .evt03 {background:#2b2f3a; text-align:center; position:relative}
@@ -49,10 +50,8 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1449_top.jpg" alt="윌비스 제로백 기출문제풀이" usemap="#Map1449A" border="0" />
-            <map name="Map1449A" id="Map1449A">
-                <area shape="rect" coords="355,918,764,990" href="https://pass.willbes.net/periodPackage/show/cate/3092/pack/648001/prod-code/155361" target="_blank" alt="제로백 무료 신청하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1449_top.jpg" alt="윌비스 제로백 기출문제풀이"/>
+
             <div class="leclist">
                 <ul class="slidesLec">
                     <li>
@@ -63,7 +62,7 @@
                     → 2020 윌비스 제로백 <span>한경준 한국사</span> 이론<br>
                     → 2020 윌비스 제로백 <span>이석준 행정법총론</span> 이론<br>
                     → 2020 윌비스 제로백 <span>양승우 행정법총론</span> 이론<br>
-                    → 2020 윌비스 제로백 <span>윤세훈 행정학</span> 기출문제풀이<br>
+                    → 2020 윌비스 제로백 <span>윤세훈 행정학</span> 기출문제풀이<br>                    
                     → 2020 윌비스 제로백 <span>김헌 행정학</span> 기출문제풀이<br>
                     → 2020 윌비스 제로백 <span>임재진 국어</span> 기출문제풀이<br>
                     → 2020 윌비스 제로백 <span>박초롱 영어</span> 기출문제풀이<br>
@@ -72,7 +71,14 @@
                     → 2020 윌비스 제로백 <span>한경준 한국사</span> 기출문제풀이<br>
                     </li>
                 </ul>
-            </div>                         
+            </div>
+
+            <div class="btnLecgo">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1449_top_1.gif" alt="제로백 무료 신청하기" usemap="#Map1449A" border="0"/>
+                <map name="Map1449A" id="Map1449A">
+                    <area shape="rect" coords="360,20,762,89" href="https://pass.willbes.net/periodPackage/show/cate/3092/pack/648001/prod-code/155361" target="_blank" alt="신청하기" />
+                </map>
+            </div>                      
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -111,7 +117,7 @@
             var slides = $(".slidesLec").bxSlider({
                 mode:'vertical', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
-                speed:10000,
+                speed:5000,
                 pause:0,
                 controls:false,
                 autoHover: true,

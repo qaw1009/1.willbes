@@ -327,7 +327,6 @@
                         var ctrl = $regi_form_modal.find('input[name="wControlCount[]"]');
 
                         for(i=0;i<ctrl.length;i++) {
-                            //console.log(getExt($regi_form_modal.find('input[name="wUnitAttachFile[]"]:eq('+i+')').val()));
                             if($regi_form_modal.find('input[name="wControlCount[]"]:eq('+i+')').val() > 0){
                               if($regi_form_modal.find('input[name="wUnitAttachFile[]"]:eq('+i+')').val() != '') {
                                   if(getExt($regi_form_modal.find('input[name="wUnitAttachFile[]"]:eq('+i+')').val()) != 'pdf') {

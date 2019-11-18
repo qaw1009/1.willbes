@@ -364,7 +364,8 @@ class Pass extends \app\controllers\FrontController
                         'ProdCode' => $prodcode,
                         'ProdCodeSub' => $prodcodesub,
                         'wLecIdx' => $lec['wLecIdx'],
-                        'wUnitIdx' => $row['wUnitIdx']
+                        'wUnitIdx' => $row['wUnitIdx'],
+                        'IsStatus' => 'Y'
                     ]
                 ]);
             } else {

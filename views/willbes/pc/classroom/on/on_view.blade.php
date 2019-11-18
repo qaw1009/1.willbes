@@ -94,6 +94,13 @@
                 <div id="WrapReply"></div>
             </div>
             <!-- willbes-Mypage-PASSZONE -->
+            @if(true) <!--$lec['wControlCountUse'] > 0)-->
+            <div class="willbes-Leclist-txt c_both mt40">
+                <p>※ 해당 강좌는 회차별 자료 인쇄 제한이 있는 강좌 입니다.<br>
+                    샘플파일로 프린터 연결상태, 설정(용지크기)등을 확인 후 출력하시기 바랍니다.</p>
+                <a href="javascript:;" onclick="pdfSample();">샘플 인쇄</a>
+            </div>
+            @endif
 
             <div class="willbes-Leclist c_both mt40">
                 <div class="LeclistTable">
@@ -133,13 +140,32 @@
                                 <td class="w-page">{{$row['wBookPage']}}</td>
                                 <td class="w-file">
                                     @if(empty($row['wUnitAttachFile']) == false)
-                                        <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">
-                                            @if($row['downcount'] > 0)
-                                                <img src="{{ img_url('prof/icon_down.png') }}">
+                                        @if($row['wControlCount'] > 0)
+                                            {{-- 파일 인쇄 카운트 관리 --}}
+                                            @if($row['wControlCount'] < $row['downcount'])
+                                                {{-- 인쇄가능  --}}
+                                                <a href="javascript:;" onclick="ezPrint('/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}/{{sess_data('mem_idx')}}/{{$row['wUnitIdx']}}/')">
+                                                    @if($row['downcount'] > 0)
+                                                        <img src="{{ img_url('prof/icon_down.png') }}">
+                                                    @else
+                                                        <img src="{{ img_url('prof/icon_file.gif') }}">
+                                                    @endif
+                                                </a>
                                             @else
-                                                <img src="{{ img_url('prof/icon_file.gif') }}">
+                                                {{-- 인쇄불가능 --}}
+                                                <a href="javascript:;" onclick="alert('인쇄횟수가 초과되었습니다.');"><img src="{{ img_url('prof/icon_down.png') }}"></a>
                                             @endif
-                                        </a>
+
+                                        @else
+                                            {{-- 일반 다운로드 --}}
+                                            <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">
+                                                @if($row['downcount'] > 0)
+                                                    <img src="{{ img_url('prof/icon_down.png') }}">
+                                                @else
+                                                    <img src="{{ img_url('prof/icon_file.gif') }}">
+                                                @endif
+                                            </a>
+                                        @endif
                                     @endif
                                 </td>
                                 <td class="w-free mypage">
@@ -229,6 +255,18 @@
                     alert(ret.ret_msg);
                 }, false, 'GET', 'html');
         }
+
+        function ezPrint(param)
+        {
+            var url = '{{front_url('classroom/on/downloadPopup')}}'+param;
+            popupOpen(url, 'pdfdown', 800, 500, null, null, 'no', 'no');
+        }
+
+        function pdfSample()
+        {
+            popupOpen('{{front_url('classroom/on/downloadPopup/o/p/ps/l/u/SAMPLE/t')}}', 'pdfdown', 800, 500, null, null, 'no', 'no');
+        }
+
     </script>
 
 @stop

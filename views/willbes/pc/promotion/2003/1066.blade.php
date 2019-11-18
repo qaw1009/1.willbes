@@ -29,7 +29,7 @@
         .wb_cts07 {background:#DBC8B7;}
 
         .skybanner {position:fixed;top:200px;right:0;width:290px;z-index:11;}
-        .skybanner2{position:fixed;top:480px;right:0;width:290px;z-index:11;}        
+        .skybanner2{position:fixed;top:500px;right:0;width:290px;z-index:11;}        
 
 
        

@@ -727,7 +727,7 @@ function ReRun() {
 		alert("[ezPDFWFLauncher Guide : onerror]\n\"ezPDFWFLauncher\"가 설치되지 않았거나 비정상적으로 종료되었습니다. 설치 페이지로 이동합니다.");
 		//location.href = _contextPath+"/std/com/ezPDFDownload.jsp";
 		//location.href = ezpdf._ezpdfmodule._installPage;
-		location.href = "http://ssam.willbes.net/html/user/ezPDFSetupNonax.html";
+		location.href = "https://static.willbes.net/public/uploads/ezpdf/ezPDFReaderInstall.html";
 		//location.href = "/html/user/ezPDFSetupNonax.html";
 	}
 
@@ -741,7 +741,7 @@ function SetCheckVersion(code) {
 		alert("[ezPDFWFLauncher Guide : onerror]\n\"ezPDFWFLauncher\"를 업데이트 되어야 합니다. 설치 페이지로 이동합니다.");
 		//location.href = _contextPath+"/std/com/ezPDFDownload.jsp";
 		//location.href = ezpdf._ezpdfmodule._installPage;
-		location.href = "http://ssam.willbes.net/html/user/ezPDFSetupNonax.html";
+		location.href = "https://static.willbes.net/public/uploads/ezpdf/ezPDFReaderInstall.html";
         //location.href = "/html/user/ezPDFSetupNonax.html";
 	}
 };

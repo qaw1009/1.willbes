@@ -9,7 +9,7 @@
     <script src="/public/js/util.js?ver={{time()}}"></script>
     <script type="text/javascript" src="/public/js/willbes/ezPDF_Willbes.js"></script>
     <script type="text/javascript">
-        var ezpdf = new ezPDFWFLauncher(ezPDFWSPrinter, ezPDFData, 0);
+        var ezpdf = new ezPDFWFLauncher(ezPDFWSPrinter, ezPDFData, 1);
 
         function Pr()
         {

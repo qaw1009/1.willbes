@@ -35,7 +35,7 @@
                 sendAjax(url,
                     data,
                     function (d) {
-                        var eventURL = '{{front_url('classroom/on/setPrintLog/'.$orderidx.'/'.$prodcode.'/'.$prodcodesub.'/'.$lecidx.'/'.$unitidx.'/'.sess_data('mem_idx').'/t/')}}';
+                        var eventURL = 'https:{{front_url('classroom/on/setPrintLog/'.$orderidx.'/'.$prodcode.'/'.$prodcodesub.'/'.$lecidx.'/'.$unitidx.'/'.sess_data('mem_idx').'/t/')}}';
                         ezpdf._debug = 0;
                         ezpdf.SetPDF(d.ret_data.pdfUrl, false);
                         ezpdf.SetEventURL(eventURL);

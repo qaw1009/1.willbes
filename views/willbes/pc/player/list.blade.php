@@ -44,7 +44,7 @@
                                 <div class="tt3">@if(empty($row['wUnitAttachFile']) == false)
                                         @if($row['wControlCount'] > 0)
                                             {{-- 파일 인쇄 카운트 관리 --}}
-                                            @if($row['wControlCount'] < $row['downcount'])
+                                            @if($row['wControlCount'] > $row['downcount'])
                                                 {{-- 인쇄가능  --}}
                                                 <a href="javascript:;" onclick="ezPrint('/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}/{{sess_data('mem_idx')}}/{{$row['wUnitIdx']}}/')">
                                                     @if($row['downcount'] > 0)

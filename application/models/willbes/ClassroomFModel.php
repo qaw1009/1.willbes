@@ -699,6 +699,7 @@ class ClassroomFModel extends WB_Model
             'ProdCodeSub' => element('ProdCodeSub', $input),
             'wLecIdx' => element('wLecIdx', $input),
             'wUnitIdx' => element('wUnitIdx', $input),
+            'DownloadType' => element('DownloadType', $input),
             'DownloadIp' => $this->input->ip_address()
         ];
 

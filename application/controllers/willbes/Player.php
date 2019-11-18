@@ -680,6 +680,22 @@ class Player extends \app\controllers\FrontController
 
         // 회차별 수강시간 체크
         foreach($curriculum AS $idx => $row){
+            if(empty($row['wUnitAttachFile']) == false){
+                $curriculum[$idx]['downcount'] = $this->classroomFModel->getDownLog([
+                    'EQ' => [
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'OrderIdx' => $orderidx,
+                        'ProdCode' => $prodcode,
+                        'ProdCodeSub' => $prodcodesub,
+                        'wLecIdx' => $lec['wLecIdx'],
+                        'wUnitIdx' => $row['wUnitIdx'],
+                        'IsStatus' => 'Y'
+                    ]
+                ]);
+            } else {
+                $curriculum[$idx]['downcount'] = 0;
+            }
+
             $curriculum[$idx]['isstart'] = $isstart;
             $curriculum[$idx]['ispause'] = $ispause;
 
@@ -2050,6 +2066,50 @@ class Player extends \app\controllers\FrontController
                 // 알수없는 이벤트는 에러
                 return $this->StarplayerResult(true, '알수없는정보입니다', '',true);
         }
+    }
+
+
+    /**
+     * 인쇄 회차 업데이트
+     * @return CI_Output
+     */
+    public function setPrintLog($params = [])
+    {
+        if(emptY($params) == true){
+            return $this->json_error('파라미터가 잘못되었습니다.');
+        }
+
+        // 강좌정보 읽어오기
+        $orderidx = $params[0];
+        $prodcode = $params[1];
+        $prodcodesub = $params[2];
+        $lecidx = $params[3];
+        $unitidx = $params[4];
+        $memidx = $params[5];
+
+        if(empty($memidx) === true
+            || empty($orderidx) === true
+            || empty($prodcode) === true
+            || empty($prodcodesub) === true
+            || empty($lecidx) === true
+            || empty($unitidx) === true ){
+            return $this->json_error('파라미터가 잘못되었습니다.');
+        }
+
+        // 파일 다운로드 로그남기기
+        $this->classroomFModel->storeDownloadLog(
+            [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lecidx,
+                'wUnitIdx' => $unitidx,
+                'DownloadType' => 'P'
+            ]
+        );
+
+        return $this->json_result(true,'저장되었습니다.');
     }
 
 

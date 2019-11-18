@@ -657,7 +657,8 @@ class On extends \app\controllers\FrontController
                         'ProdCode' => $prodcode,
                         'ProdCodeSub' => $prodcodesub,
                         'wLecIdx' => $lec['wLecIdx'],
-                        'wUnitIdx' => $row['wUnitIdx']
+                        'wUnitIdx' => $row['wUnitIdx'],
+                        'IsStatus' => 'Y'
                     ]
                 ]);
             } else {
@@ -1362,7 +1363,7 @@ class On extends \app\controllers\FrontController
                 'GTE' => [
                     'RealLecEndDate' => $today
                 ]
-            ], $orderby);
+            ]);
 
             $pkg = $pkg[0];
 
@@ -1414,7 +1415,8 @@ class On extends \app\controllers\FrontController
                 'ProdCode' => $prodcode,
                 'ProdCodeSub' => $prodcodesub,
                 'wLecIdx' => $lecidx,
-                'wUnitIdx' => $unitidx
+                'wUnitIdx' => $unitidx,
+                'DownloadType' => 'D'
             ]
         );
         
@@ -1456,5 +1458,152 @@ class On extends \app\controllers\FrontController
             'SiteUrl' => app_to_env_url($this->getSiteCacheItem($SiteCode, 'SiteUrl'))
         ]);
     }
+
+
+    /**
+     * 인쇄용 팝업창
+     * @param array $params
+     * @return object|string
+     */
+    public function downloadPopup($params = [])
+    {
+        $orderidx = $params[0];
+        $prodcode = $params[1];
+        $prodcodesub = $params[2];
+        $lecidx = $params[3];
+        $unitidx = $params[4];
+        $type = $params[5];
+
+        return $this->load->view('/classroom/on/popup/download', [
+            'type' => $type,
+            'orderidx' => $orderidx,
+            'prodcode' => $prodcode,
+            'prodcodesub' => $prodcodesub,
+            'lecidx' => $lecidx,
+            'unitidx' => $unitidx,
+        ]);
+    }
+
+    /**
+     * 인쇄 회차가 넘지 않았는지 확인
+     * @return CI_Output
+     */
+    public function getDownload($params = [])
+    {
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $params[0];
+        $prodcode = $params[1];
+        $prodcodesub = $params[2];
+        $lecidx = $params[3];
+        $unitidx = $params[4];
+
+        if(empty($orderidx) === true
+            || empty($prodcode) === true
+            || empty($prodcodesub) === true
+            || empty($lecidx) === true
+            || empty($unitidx) === true ){
+            return $this->json_error('강좌정보가 없습니다.');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            return $this->json_error('강좌정보가 없습니다.');
+        }
+
+        $lec = $lec[0];
+
+        if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'OrderIdx' => $orderidx,
+                    'ProdCode' => $prodcode
+                ],
+                'GTE' => [
+                    'RealLecEndDate' => $today
+                ]
+            ]);
+
+            $pkg = $pkg[0];
+
+            $lec['lastPauseEndDate'] = $pkg['lastPauseEndDate'];
+            $lec['lastPauseStartDate'] = $pkg['lastPauseStartDate'];
+            $lec['PauseSum'] = $pkg['PauseSum'];
+            $lec['PauseCount'] = $pkg['PauseCount'];
+            $lec['ExtenSum'] = $pkg['ExtenSum'];
+            $lec['ExtenCount'] = $pkg['ExtenCount'];
+            $lec['IsRebuy'] = $pkg['IsRebuy'];
+            $lec['RebuyCount'] = $pkg['RebuyCount'];
+        }
+
+        if($lec['LecStartDate'] > $today){
+            return $this->json_error('아직 시작되지 않은 강의입니다.');
+        } elseif ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
+            return $this->json_error('일시중지중인 강의입니다.');
+        }
+
+        // 커리큘럼 읽어오기
+        $curriculum = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx'],
+                'wUnitIdx' => $unitidx
+            ]
+        ]);
+
+        if(empty($curriculum) == true){
+            return $this->json_error('회차정보가 존재하지 않습니다.');
+        }
+        $curriculum = $curriculum[0];
+
+        $filepath = str_replace( '//', '/', $curriculum['wAttachPath'] .'/'. $curriculum['wUnitAttachFile']);
+        $filename = $curriculum['wUnitAttachFileReal'];
+
+        if(is_file(public_to_upload_path($filepath)) == false){
+            return $this->json_error('파일이 존재하지 않습니다.');
+        }
+
+        // 해당 최차 인쇄 회수 가져오기
+        $count = $this->classroomFModel->getDownLog([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx'],
+                'wUnitIdx' => $unitidx,
+                'DownloadType' => 'P',
+                'IsStatus' => 'Y'
+            ]
+        ]);
+
+        if($curriculum['wControlCount'] <= $count){
+            return $this->json_error('인쇄횟수를 초과하였습니다.');
+        }
+
+        return $this->json_result(true,'다운로드가 가능합니다.', null, [
+            'pdfUrl' => 'https:'.rawurlencode(front_url($filepath))
+        ]);
+    }
+
+
 
 }

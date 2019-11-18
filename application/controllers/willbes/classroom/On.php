@@ -1600,7 +1600,7 @@ class On extends \app\controllers\FrontController
         }
 
         return $this->json_result(true,'다운로드가 가능합니다.', null, [
-            'pdfUrl' => rawurlencode(front_url($filepath))
+            'pdfUrl' => 'https:'.rawurlencode(front_url($filepath))
         ]);
     }
 

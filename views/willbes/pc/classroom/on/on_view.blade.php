@@ -94,7 +94,7 @@
                 <div id="WrapReply"></div>
             </div>
             <!-- willbes-Mypage-PASSZONE -->
-            @if($lec['wControlCountUse'] > 0)-->
+            @if($lec['wControlCountUse'] > 0)
             <div class="willbes-Leclist-txt c_both mt40">
                 <p>※ 해당 강좌는 회차별 자료 인쇄 제한이 있는 강좌 입니다.<br>
                     샘플파일로 프린터 연결상태, 설정(용지크기)등을 확인 후 출력하시기 바랍니다.</p>
@@ -142,7 +142,7 @@
                                     @if(empty($row['wUnitAttachFile']) == false)
                                         @if($row['wControlCount'] > 0)
                                             {{-- 파일 인쇄 카운트 관리 --}}
-                                            @if($row['wControlCount'] < $row['downcount'])
+                                            @if($row['wControlCount'] > $row['downcount'])
                                                 {{-- 인쇄가능  --}}
                                                 <a href="javascript:;" onclick="ezPrint('/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}/{{sess_data('mem_idx')}}/{{$row['wUnitIdx']}}/')">
                                                     @if($row['downcount'] > 0)

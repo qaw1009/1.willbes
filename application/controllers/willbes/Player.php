@@ -680,6 +680,22 @@ class Player extends \app\controllers\FrontController
 
         // 회차별 수강시간 체크
         foreach($curriculum AS $idx => $row){
+            if(empty($row['wUnitAttachFile']) == false){
+                $curriculum[$idx]['downcount'] = $this->classroomFModel->getDownLog([
+                    'EQ' => [
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'OrderIdx' => $orderidx,
+                        'ProdCode' => $prodcode,
+                        'ProdCodeSub' => $prodcodesub,
+                        'wLecIdx' => $lec['wLecIdx'],
+                        'wUnitIdx' => $row['wUnitIdx'],
+                        'IsStatus' => 'Y'
+                    ]
+                ]);
+            } else {
+                $curriculum[$idx]['downcount'] = 0;
+            }
+
             $curriculum[$idx]['isstart'] = $isstart;
             $curriculum[$idx]['ispause'] = $ispause;
 

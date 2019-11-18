@@ -21,7 +21,29 @@
                 {!! banner_html(element('메인_띠배너', $data['arr_main_banner']), 'sliderPlay') !!}
             </div>
         </div>
+    </div>
 
+    <div class="SectionBook">
+        <div class="buyBook NGEB">
+            <a href="https://pass.willbes.net/book/index/cate/3092">지금 바로 교재 구매하기 ></a>
+        </div>
+        <div class="box-book">
+            <ul class="slidesBook">
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book01.jpg" alt="국어"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book02.jpg" alt="영어"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book03.jpg" alt="한국사"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book04.jpg" alt="행정학"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book05.jpg" alt="행정법총론"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book01.jpg" alt="국어"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book02.jpg" alt="영어"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book03.jpg" alt="한국사"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book04.jpg" alt="행정학"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1449_03_book05.jpg" alt="행정법총론"/></li>
+            </ul>
+        </div>  
+    </div>
+
+    <div id="Container" class="Container free NGR c_both">
         <div class="Section">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/3092_visual_01.gif" alt="제로백 안내">
@@ -82,6 +104,22 @@
                 autoHover: true,
                 onSliderLoad: function(){
                     $(".bSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            var BxBook = $('.slidesBook').bxSlider({
+                slideWidth: 153,
+                slideMargin: 40,
+                maxSlides:10,
+                minSlides:1,
+                moveSlides: 1,
+                ticker:true,
+                speed:40000,
+                onSlideAfter: function() {
+                    BxBook.stopAuto();
+                    BxBook.startAuto();
                 }
             });
         });

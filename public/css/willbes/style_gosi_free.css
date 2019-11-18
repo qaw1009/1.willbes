@@ -69,6 +69,26 @@
     background: #fff !important;
 }
 
+/*교재롤링*/
+.SectionBook {
+    background:#1c222a url(https://static.willbes.net/public/images/promotion/main/3092_book_bg.jpg) no-repeat center top; position:relative;
+    height: 596px;
+    margin-top:75px;
+    clear: both;
+}
+.SectionBook .buyBook {position:absolute; top:220px; left:50%; width:400px; margin-left:-200px; z-index:1}
+.SectionBook .buyBook a {display: block; padding:15px; font-size:20px; color:#1b1f25; text-align: center; background: #76dccf; border-radius: 40px;}
+.SectionBook .buyBook a:hover {color:#fff; background:#bb332d}
+.SectionBook .box-book {position:absolute; top:320px; left:0; width:100%; z-index:1}
+.SectionBook .box-book .bx-wrapper{max-width:100% !important;}
+.SectionBook .box-book li {display:inline; float:left; height: 250px;}
+.SectionBook .box-book li img {
+    width: 153px;
+    height: 209px;
+    -webkit-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+    -moz-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+    box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+}
 
 /**/
 .free .sliderPlay {

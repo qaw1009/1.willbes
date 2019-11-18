@@ -2070,6 +2070,50 @@ class Player extends \app\controllers\FrontController
 
 
     /**
+     * 인쇄 회차 업데이트
+     * @return CI_Output
+     */
+    public function setPrintLog($params = [])
+    {
+        if(emptY($params) == true){
+            return $this->json_error('파라미터가 잘못되었습니다.');
+        }
+
+        // 강좌정보 읽어오기
+        $orderidx = $params[0];
+        $prodcode = $params[1];
+        $prodcodesub = $params[2];
+        $lecidx = $params[3];
+        $unitidx = $params[4];
+        $memidx = $params[5];
+
+        if(empty($memidx) === true
+            || empty($orderidx) === true
+            || empty($prodcode) === true
+            || empty($prodcodesub) === true
+            || empty($lecidx) === true
+            || empty($unitidx) === true ){
+            return $this->json_error('파라미터가 잘못되었습니다.');
+        }
+
+        // 파일 다운로드 로그남기기
+        $this->classroomFModel->storeDownloadLog(
+            [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lecidx,
+                'wUnitIdx' => $unitidx,
+                'DownloadType' => 'P'
+            ]
+        );
+
+        return $this->json_result(true,'저장되었습니다.');
+    }
+
+
+    /**
      * 기기상태체크
      * @param string $state
      * @return CI_Output

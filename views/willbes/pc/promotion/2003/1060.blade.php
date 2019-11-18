@@ -62,9 +62,8 @@
 
         
         .wb_cts02 {background:#fff;}
-            .PeMenu {width:1170px; margin:0 auto}
-            .PeMenu li {display:inline; float:left}
-            .PeMenu li.last{margin-left:35px;}
+            .PeMenu {width:1120px; margin:0 auto}
+            .PeMenu li {display:inline; float:left;margin-left:13px;}         
             .PeMenu li img.off {display:block} 	
             .PeMenu li img.on {display:none}
             .PeMenu li:hover img.off {display:none} 	
@@ -154,12 +153,12 @@
             	<div class="PeMenu">
             		<ul>
                 		<li> 
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_01.jpg" alt="소방학/법규 김종상" class="off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_01on.jpg" alt="소방학/법규 김종상" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_01.jpg" alt="소방학/법규 김종상" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_01on.jpg" alt="소방학/법규 김종상" class="on"/>
                         </li>                        
                 		<li> 
-                        	<img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_02.jpg" alt="국어 김세령" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_02on.jpg" alt="국어 김세령" class="on"/>
+                        	<img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_02.jpg" alt="국어 김세령" class="off"/> 
+                            <img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_02on.jpg" alt="국어 김세령" class="on"/>
                         </li>                        
                 		<li> 
                         	<img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_03.jpg" alt="영어 이현정" class="off"/> 
@@ -169,7 +168,7 @@
                         	<img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_05.jpg" alt="영어 양익" class="off"/> 
                             <img src="https://static.willbes.net/public/images/promotion/2019/11/1060_c4_05on.jpg" alt="영어 양익" class="on"/>
                         </li>
-                        <li class="last"> 
+                        <li> 
                         	<img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_04.jpg" alt="한국사 배준환" class="off"/> 
                             <img src="https://static.willbes.net/public/images/promotion/2019/04/1060_c4_04on.jpg" alt="한국사 배준환" class="on"/>
                         </li>                        

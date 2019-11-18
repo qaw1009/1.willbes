@@ -145,14 +145,14 @@
                     </li>
                 </ul>
                 <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_01.jpg" alt="기본이론 강화형"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_01.jpg" alt="기본이론 강화형"/><br>
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="신청하기">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_btn01.png" alt="수강신청" />
+                    </a>
                 </div>                                        
                 <div id="tab02">
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_04_02.jpg" alt="영어 강화형" />
-                </div>
-                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="신청하기">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1325_btn01.png" alt="수강신청" />
-                </a>
+                </div>                
             </div>
         </div>
 		

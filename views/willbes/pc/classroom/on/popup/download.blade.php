@@ -12,10 +12,9 @@
         var ezpdf = new ezPDFWFLauncher(ezPDFWSPrinter, ezPDFData, 1);
 
         $(document).ready(function() {
-            Pr();
-            //setTimeout(function() {
-            //    Pr();
-            //}, 1000);
+            setTimeout(function() {
+                Pr();
+            }, 1000);
 
             function Pr() {
 @if($type == 'SAMPLE')

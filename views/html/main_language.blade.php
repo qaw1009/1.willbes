@@ -108,7 +108,7 @@
     </div>     
    
     <div class="Section MainVisual">        
-        <div class="widthAuto NSK mt30">
+        <div class="NSK mt30">
             <div class="VisualsubBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">

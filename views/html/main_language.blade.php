@@ -1,25 +1,39 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-<!-- Container -->
-<style type="text/css">
-/* Main Container : MainVisual */
-.lang .VisualsubBox {
-    width: 1120px;
-    height: 380px;
+<style>
+    .lang .MainVisual {
+    width: 100%;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 409px;
     overflow: hidden;
+    position: relative;
+    margin-top:30px;
+}
+
+.lang .VisualsubBox {
+    position: absolute;
+    top:0;
+    left:50%;
+    margin-left:-1000px;
+    width: 2000px;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 409px;
 }
 .lang .VisualsubBox .bx-wrapper .bx-controls-auto {
-    left:20px;
+    left:50%;
     bottom: 20px;
-    margin: 0;
+    margin-left:-540px;
     width: 50px;
     z-index: 90;
   }
 .lang .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
-    left:60px;
+    left:50%;
+    margin-left:-500px;
     bottom: 20px;
     text-align: right;
     z-index: 100;
@@ -37,99 +51,16 @@
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #fff !important;
+    background: #db3e34 !important;
 }
-
-.lang .Section1 {
-    background:#2a2a2a;
-    margin-top:50px;
-}
-.lang .Section2 {
-    position:relative;
-    background:#f6f6f6;
-}
-.lang .Section2 ul {
-    position:absolute;
-    top:745px;
-    left:50%;
-    width:610px;
-    margin-left:-305px;
-    z-index:1;
-}
-.lang .Section2 li {
-    display:inline;
-    float:left;
-    width:50%;
-}
-.lang .Section2 ul:after {
-    content:""; display:block; clear:both;
-}
-.lang .Section2 a {
-    display:block;
-    text-align:center;
-    color:#fff;
-    font-size:18px;
-    background:#262626;
-    height:50px;
-    line-height:50px;
-    margin:0 5px;
-}
-.lang .Section2 a:hover {
-    background:#db3e34;
-}
-.lang .Section3 {
-    background:#d6d2cc;
-}
-
-.lang .tabWrap.noticeWrap li a {
-    display: block;
-    width: 100%;
-    height: 19px;
-    line-height: 19px;
-    font-size: 17px;
-    color: #c5c5c5;
-    text-align: center;
-    letter-spacing: 0;
-    border:none !important;
-    border-right:1px solid #999 !important;
-    padding-right: 10px;
-}
-.lang .tabWrap.noticeWrap li a.on {
-    height: 19px;
-    line-height: 19px;
-    font-weight: 600;
-    color: #db3e34;
-    border:none !important;
-    border-right:1px solid #999 !important;
-}
-.lang .tabBox.noticeBox .List-Table li a span {
-    background: #db3e34;
-    color:#fff;
-    padding: 0 10px;
-    border-radius: 10px;
-    margin-right: 5px;
-}
-
-.lang .willbesNumber ul li {
-    margin-left: 40px;
-}
-.lang .willbesNumber ul li:first-child {
-    margin-left: 0;
-}
-
-.lang .tx-color {
-    color:#db3e34;
-}
-
-
 </style>
-
+<!-- Container -->
 <div id="Container" class="Container lang c_both">
-    <div class="Menu widthAuto NSK c_both">
+    <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">공무원<span class="row-line">|</span></li>
-                <li class="subTit">9급</li>
+                <li class="Tit">어학<span class="row-line">|</span></li>
+                <li class="subTit">G-TELP</li>
             </ul>
             <ul class="menu-List">
                 <li>
@@ -181,9 +112,12 @@
             <div class="VisualsubBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2007_1120x380.jpg" alt="g-telp 서미진"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2007_1120x380.jpg" alt="g-telp 서미진"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2007_1120x380.jpg" alt="g-telp 서미진"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_01.jpg" alt="g-telp 서미진"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_02.jpg" alt="g-telp 서미진"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_03.jpg" alt="g-telp 서미진"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_04.jpg" alt="g-telp 서미진"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_05.jpg" alt="g-telp 서미진"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_06.jpg" alt="g-telp 서미진"></a></div>
                     </div>
                 </div>
             </div>

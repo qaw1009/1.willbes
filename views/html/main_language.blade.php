@@ -260,7 +260,7 @@
 
     <div class="Section Section1">
         <div class="widthAuto">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visual01.jpg" alt=""></a>
+            <img src="https://static.willbes.net/public/images/promotion/main/3093_visual01.jpg" alt="">
         </div>
     </div>
 

@@ -17,7 +17,7 @@ class PackagePeriod extends BaseStats
      */
     public function excel()
     {
-        $headers = ['대비학년도', '패키지유형', '수강기간', '판매가', '정상가', '판매상태'];
+        $headers = ['대비학년도', '패키지유형', '수강기간', '판매가', '정상가', '판매상태', '매출건수'];
         parent::_excel($headers);
     }
 }

@@ -276,7 +276,7 @@ class OrderSalesModel extends BaseOrderModel
                     left join ' . $this->_table['code'] . ' as CPP
                         on PL.StudyPeriod = CPP.CcdValue and CPP.IsStatus = "Y"';
                 $column .= ', PL.SchoolYear, CPT.CcdName as PackTypeCcdName, CPP.CcdName as PackPeriodCcdName';
-                $excel_column .= 'SchoolYear, PackTypeCcdName, PackPeriodCcdName, RealSalePrice, SalePrice, SaleStatusCcdName';
+                $excel_column .= 'SchoolYear, PackTypeCcdName, PackPeriodCcdName, RealSalePrice, SalePrice, SaleStatusCcdName, tOrderProdCnt';
                 break;
             case 'off_lecture' :
                 // 단과반

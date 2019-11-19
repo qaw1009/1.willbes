@@ -46,6 +46,8 @@
                 <li><a href="{{ site_url('/home/html/main_2006_308901') }}" target="_blank">자격증 메인 - 소방</a></li>
                 <li><a href="{{ site_url('/home/html/main_2006_308902') }}" target="_blank">자격증 메인 - 전기</a></li>
                 <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/main_language') }}" target="_blank">어학</a></li>
+                <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memsearch') }}" target="_blank">아이디찾기</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memcombine') }}" target="_blank">통합회원가입</a></li>

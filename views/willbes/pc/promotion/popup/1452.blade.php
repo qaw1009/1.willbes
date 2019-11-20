@@ -87,7 +87,7 @@
                             <select  name="TakeKind" id="TakeKind" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
                                 @foreach($arr_cert['kind_ccd'] as $key => $val)
-                                    @if($key != '711003'){{--경행경채제외--}}
+                                    @if($key != '711005') {{-- 전의경경채 제외 --}}
                                         <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
                                     @endif
                                 @endforeach

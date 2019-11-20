@@ -112,7 +112,7 @@ class MockCommonModel extends WB_Model
     }
 
     /**
-     * 모의고사카테고리 검색 (IsUse 여부에 상관없이 전체 로드)
+     * 모의고사카테고리 검색
      * @param string $column
      * @param bool $is_count
      * @param array $conditionAdd
@@ -149,20 +149,13 @@ class MockCommonModel extends WB_Model
             $from .= " JOIN {$this->_table['mock_cate']} AS MC ON MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y'";
             $from .= " JOIN {$this->_table['mock_area']} AS MA ON MC.MaIdx = MA.MaIdx AND MA.IsStatus = 'Y'" . (($isUse === true) ? " AND MA.IsUse = 'Y'" : "");
             $from .= " LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx";
-
         }
 
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $arr_order_by = [
-                'C1.SiteCode' => 'ASC',
-                'C1.OrderNum' => 'ASC',
-                'SC.OrderNum' => 'ASC',
-                'SJ.OrderNum' => 'ASC',
-                'MS.SubjectType' => 'ASC'
-            ];
+            $arr_order_by = ['C1.SiteCode' => 'ASC', 'C1.OrderNum' => 'ASC', 'SC.OrderNum' => 'ASC', 'SJ.OrderNum' => 'ASC', 'MS.SubjectType' => 'ASC'];
             $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }

@@ -245,4 +245,72 @@ class Code extends BaseMocktest
         $msg = ($this->input->post('_method') == 'POST') ? '등록되었습니다.' : '변경되었습니다.';
         $this->json_result($result, $msg, $result);
     }
+
+    /**
+     * 모의고사카테고리 검색 팝업 메인
+     *
+     * Input  $_GET['siteCode'] OR null
+     *        $_GET['single'] OR null : 다중검색(변수없거나 N), 단일검색(Y) 여부
+     *        $_GET['reg'] : 1.모의고사 기본정보 > 문제영역관리 - null
+     *                       2.모의고사 등록 > 과목별 문제등록 - Y
+     * Output 부모창 <div id="selected_category"> 안에 생성
+     *        1.모의고사 기본정보 > 문제영역관리 - $moLink[] AND "카테고리>직렬>과목" 문자열
+     *                                           $moLink[] : lms_Mock_R_Subject의 MrsIdx
+     *        2.모의고사 등록 > 과목별문제등록 - $moLink AND "카테고리>직렬>과목 - 문제영역명" 문자열
+     *                                           $moLink : lms_Mock_R_Category의 MrcIdx
+     * @return CI_Output
+     */
+    public function moCate()
+    {
+        if (empty($this->_reqG('siteCode')) === true) {
+            return $this->json_error('잘못된 접근입니다.');
+        }
+
+        $this->load->view('mocktestNew/search_mockCategory', [
+            'siteCode' => $this->_reqG('siteCode'),
+            'isSingle' => ($this->_reqG('single') == 'Y') ? true : false,
+            'isReg' => ($this->_reqG('reg') == 'Y') ? true : false,
+        ]);
+    }
+
+    public function moCateList()
+    {
+        $rules = [
+            ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'isReg', 'label' => 'IsReg', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'sc_fi', 'label' => '검색', 'rules' => 'trim'],
+            ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
+            ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $condition = [
+            'EQ' => [
+                'MS.IsUse' => 'Y',
+                'S.SiteCode' => $this->input->post('siteCode')
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'SJ.SubjectName' => $this->input->post('sc_fi', true)
+                ]
+            ],
+        ];
+
+        $data = [];
+        $column = "
+            MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, SC.Ccd AS CateCode2,
+            CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']') AS CateRouteName,
+            (SELECT COUNT(*) FROM lms_mock_r_category AS MC WHERE MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y') AS IsExist
+        ";
+        $count = $this->mockCommonModel->moCateListAll('', true, $condition, true, $this->_reqP('isReg'));
+        if ($count > 0) {
+            $data = $this->mockCommonModel->moCateListAll($column, false, $condition, true, $this->_reqP('isReg'), $this->_reqP('length'), $this->_reqP('start'));
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $data,
+        ]);
+    }
 }

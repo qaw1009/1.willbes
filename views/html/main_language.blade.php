@@ -1,8 +1,14 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-<style>
-    .lang .MainVisual {
+<style type="text/css">
+    /* top bar banner */
+.lang .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.lang .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.lang .topBanner p img {width:100%}
+
+/*********************************************     Main Container : cert     *********************************************/
+.lang .MainVisual {
     width: 100%;
     min-width: 1120px;
     max-width: 2000px;
@@ -46,13 +52,143 @@
 }
 
 .lang .bx-wrapper .bx-pager.bx-default-pager a {
-  background: #898989 !important;
+  background: #fff !important;
 }
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #db3e34 !important;
+    background: #811b31 !important;
 }
+
+.lang .Section1 {
+    background:#f8f8f8;
+}
+.lang .Section2 {
+    position:relative;
+    background:#000;
+    padding:100px 0;
+}
+.lang .Section2 .widthAuto iframe {
+    width: 853px;
+    height: 480px;
+    margin:0 auto;
+    display: block;
+}
+.lang .Section3 {
+    background: #f8f8f8;
+}
+.lang .Section3 ul {
+    position:absolute;
+    top:745px;
+    left:50%;
+    width:610px;
+    margin-left:-305px;
+    z-index:1;
+}
+.lang .Section3 li {
+    display:inline;
+    float:left;
+    width:50%;
+}
+.lang .Section3 ul:after {
+    content:""; display:block; clear:both;
+}
+.lang .Section3 a {
+    display:block;
+    text-align:center;
+    color:#fff;
+    font-size:18px;
+    background:#262626;
+    height:50px;
+    line-height:50px;
+    margin:0 5px;
+}
+.lang .Section3 a:hover {
+    background:#811b31;
+}
+.lang .Section4 {
+    background:#fff;
+    padding-bottom:120px;
+}
+.lang .Section4 .widthAuto iframe {
+    width: 953px;
+    height: 400px;
+    margin:0 auto;
+    display: block;
+}
+.lang .Section4 p {
+    width: 953px;
+    margin:10px auto 0;
+    letter-spacing:0;
+}
+.lang .Section5 {
+    background: url("https://static.willbes.net/public/images/promotion/main/3093_visual05_bg.jpg") center top  no-repeat;
+}
+.lang .Section6 {
+    background:#f8f8f8;
+}
+
+.lang .tabWrap.noticeWrap li a {
+    display: block;
+    width: 100%;
+    height: 19px;
+    line-height: 19px;
+    font-size: 17px;
+    color: #c5c5c5;
+    text-align: center;
+    letter-spacing: 0;
+    border:none !important;
+    border-right:1px solid #999 !important;
+    padding-right: 10px;
+}
+.lang .tabWrap.noticeWrap li a.on {
+    height: 19px;
+    line-height: 19px;
+    font-weight: 600;
+    color: #811b31;
+    border:none !important;
+    border-right:1px solid #999 !important;
+}
+.lang .tabWrap.noticeWrap li:last-child a.on,
+.lang .tabWrap.noticeWrap li:last-child a {
+    border-right:none !important;
+}
+
+.lang .tabBox.noticeBox .List-Table {
+    width: 520px;
+}
+.lang .tabBox.noticeBox .List-Table li a span {
+    background: #811b31;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.lang .willbesNumber ul li {
+    margin-left: 40px;
+}
+.lang .willbesNumber ul li:first-child {
+    margin-left: 0;
+}
+
+.lang .tx-color {
+    color:#811b31;
+}
+
+
+ /* 수험가이드 테이블 */
+.tableLangBox {width:840px ;margin:50px auto 0;}
+.title_s{color: #8f1838; margin-bottom: 10px; font-weight: bold; font-size:15px; margin-top:30px}
+.table1 {font-size:13px; border-top:1px solid #8f1838; margin-bottom:30px; color:#666;}
+.table1 th, 
+.table1 td {border-bottom:1px solid #c1c1c1; border-right:1px solid #c1c1c1; padding:10px 20px; text-align:center; line-height:1.5;}
+.table1 th {background:#f7f7f7; color:#222;}
+.table1 th:last-child,
+.table1 td:last-child {border-right:0px;}
+.table1 td.r_line {border-right:1px solid #c1c1c1;}
+.table1 .bg{background:#f4edf2;}
+
 </style>
 <!-- Container -->
 <div id="Container" class="Container lang c_both">
@@ -107,18 +243,16 @@
         </h3>
     </div>     
    
-    <div class="Section MainVisual">        
-        <div class="NSK mt30">
-            <div class="VisualsubBox">
-                <div class="bSlider">
-                    <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_01.jpg" alt="g-telp 서미진"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_02.jpg" alt="g-telp 서미진"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_03.jpg" alt="g-telp 서미진"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_04.jpg" alt="g-telp 서미진"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_05.jpg" alt="g-telp 서미진"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_06.jpg" alt="g-telp 서미진"></a></div>
-                    </div>
+    <div class="Section MainVisual">
+        <div class="VisualsubBox">
+            <div class="bSlider">
+                <div class="sliderStopAutoPager">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_01.jpg" alt=""></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_02.jpg" alt=""></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_03.jpg" alt=""></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_04.jpg" alt=""></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_05.jpg" alt=""></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_06.jpg" alt=""></a></div>
                 </div>
             </div>
         </div>
@@ -126,23 +260,51 @@
 
     <div class="Section Section1">
         <div class="widthAuto">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2007_1120x200.jpg" alt="g-telp 서미진"></a>
+            <img src="https://static.willbes.net/public/images/promotion/main/3093_visual01.jpg" alt="">
         </div>
     </div>
 
-    <div class="Section Section2 NSK">
+    <div class="Section Section2">
         <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/2007_sec02.jpg" alt="g-telp를 선택해야하는 이유">
-            <ul>
-                <li><a href="https://www.g-telp.co.kr:335/receipt/schedule.asp" target="_blank">시험일정 확인하기</a></li>
-                <li><a href="https://www.g-telp.co.kr:335" target="_blank">원서접수 바로가기</a></li>
-            </ul>
+            <iframe src="https://www.youtube.com/embed/Oqc0yoIIIsw?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
 
     <div class="Section Section3">
         <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/2007_sec03.jpg" alt="g-telp를 선택해야하는 이유">
+            <img src="https://static.willbes.net/public/images/promotion/main/3093_visual03.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="Section Section4 NGR">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/3093_visual04.jpg" alt="시험 접수방법" usemap="#Map3093A" border="0">
+            <map name="Map3093A" id="Map3093A">
+                <area shape="rect" coords="837,299,1043,341" href="https://www.g-telp.co.kr:335/" target="_blank" alt="인터넷 접수 바로가기" />
+            </map>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.018409696558!2d127.11567647087642!3d37.49509369349401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca58fab795a41%3A0x2fab085681355d29!2z7ISc7Jq47Yq567OE7IucIOyGoe2MjOq1rCDqsIDrnb3rj5kg7Iah7YyM64yA66GcMzLquLggNC03!5e0!3m2!1sko!2skr!4v1537275097078" frameborder="0" allowfullscreen=""></iframe>
+            <p>문의 : (주)한국지텔프 1588-0589</p>
+            <p class="mt40 tx-red tx14">* 고사장에서는 시험접수를 받지 않습니다.</p>
+        </div>     
+    </div>
+
+    <div class="Section Section5">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/3093_visual05.jpg" alt="" usemap="#Map3093B" border="0">
+            <map name="Map3093B" id="Map3093B">
+                <area shape="rect" coords="40,380,671,595" href="https://lang.willbes.net/book/index/cate/3093" target="_blank" alt="교재 자세히 보기" />
+            </map>
+        </div>
+    </div>
+
+    <div class="Section Section6">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/3093_visual06.jpg" alt="" usemap="#Map3093C" border="0">
+            <map name="Map3093C" id="Map3093C">
+                <area shape="rect" coords="120,751,325,794" href="{{ front_url('/guide/show/cate/3093/pattern/gtelp') }}" target="_blank"/>
+                <area shape="rect" coords="452,752,655,793" href="https://lang.willbes.net/support/examAnnouncement/show/cate/3093?board_idx=240562" target="_blank" />
+                <area shape="rect" coords="785,750,979,796" href="https://www.g-telp.co.kr:335/" target="_blank"/>
+            </map>
         </div>
     </div>
 

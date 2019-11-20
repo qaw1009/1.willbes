@@ -10,11 +10,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MockCommonModel extends WB_Model
 {
     protected $_table = [
+        'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
+        'sys_category' => 'lms_sys_category',
         'admin' => 'wbs_sys_admin',
         'mock_base' => 'lms_mock',
         'subject' => 'lms_product_subject',
         'mock_subject' => 'lms_mock_r_subject',
+        'mock_cate' => 'lms_mock_r_category',
+        'mock_area' => 'lms_mock_area',
     ];
 
     public function __construct()
@@ -105,5 +109,72 @@ class MockCommonModel extends WB_Model
         ";
         $query = $this->_conn->query('select '. $column . $from . $where . $order_by);
         return $query->result_array();
+    }
+
+    /**
+     * 모의고사카테고리 검색 (IsUse 여부에 상관없이 전체 로드)
+     * @param string $column
+     * @param bool $is_count
+     * @param array $conditionAdd
+     * @param bool $isUse
+     * @param string $isReg
+     * @param null $limit
+     * @param null $offset
+     * @return mixed
+     */
+    public function moCateListAll($column = '*', $is_count = false, $conditionAdd = [], $isUse = false, $isReg = '', $limit = null, $offset = null)
+    {
+        if(empty($isReg) === true) {
+            $from = " FROM {$this->_table['mock_subject']} AS MS";
+            $from .= " JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'" . (($isUse === true) ? " AND SJ.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['mock_base']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'" . (($isUse === true) ? " AND MB.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y'" . (($isUse === true) ? " AND S.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['sys_category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'" . (($isUse === true) ? " AND C1.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['sys_code']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'" . (($isUse === true) ? " AND SC.IsUse = 'Y'" : "");
+            $from .= " LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx";
+
+        } else { // 모의고사등록 > 과목별문제등록 카테고리검색인 경우 (기본정보 > 문제영역관리에 등록된 카테고리만 로딩)
+            /*$column = "
+                MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, SC.Ccd AS CateCode2,
+                CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), '] - ', MA.QuestionArea) AS CateRouteName,
+                IF(MS.Isuse = 'N' OR SJ.IsUse = 'N' OR MB.IsUse = 'N' OR S.IsUse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N' OR MA.IsUse = 'N', 'N', 'Y') AS BaseIsUse,
+                MC.MrcIdx
+            ";*/
+            $from = " FROM {$this->_table['mock_subject']} AS MS";
+            $from .= " JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'" . (($isUse === true) ? " AND SJ.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['mock_base']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'" . (($isUse === true) ? " AND MB.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y'" . (($isUse === true) ? " AND S.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['sys_category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'" . (($isUse === true) ? " AND C1.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['sys_code']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'" . (($isUse === true) ? " AND SC.IsUse = 'Y'" : "");
+            $from .= " JOIN {$this->_table['mock_cate']} AS MC ON MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y'";
+            $from .= " JOIN {$this->_table['mock_area']} AS MA ON MC.MaIdx = MA.MaIdx AND MA.IsStatus = 'Y'" . (($isUse === true) ? " AND MA.IsUse = 'Y'" : "");
+            $from .= " LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx";
+
+        }
+
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $arr_order_by = [
+                'C1.SiteCode' => 'ASC',
+                'C1.OrderNum' => 'ASC',
+                'SC.OrderNum' => 'ASC',
+                'SJ.OrderNum' => 'ASC',
+                'MS.SubjectType' => 'ASC'
+            ];
+            $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $condition = [
+            'EQ' => ['MS.IsStatus' => 'Y'],
+            'IN' => ['S.SiteCode' => get_auth_site_codes()]
+        ];
+        $condition = array_merge_recursive($condition, $conditionAdd);
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 }

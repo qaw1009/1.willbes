@@ -2,10 +2,6 @@
 
 @section('content')
 
-@php
-    if (date('YmdH') < '2019123117') { show_alert('잘못된 접근 입니다.','close'); }
-@endphp
-
 <!-- Container -->
 <style type="text/css">    
     span {vertical-align:auto}

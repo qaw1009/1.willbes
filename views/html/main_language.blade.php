@@ -62,6 +62,8 @@
 
 .lang .Section1 {
     background:#f8f8f8;
+    padding:0;
+    margin:0;
 }
 .lang .Section2 {
     position:relative;

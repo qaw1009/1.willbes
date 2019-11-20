@@ -23,9 +23,9 @@
         
         .skybanner2{position:fixed;top:350px;right:0;z-index:1;}
 
-        .evt_police{background:#ececec url("https://static.willbes.net/public/images/promotion/2019/07/1328_police_bg.jpg") center top  no-repeat}
+        .evt_police{background:#404040 url("https://static.willbes.net/public/images/promotion/2019/07/1328_police_bg.jpg") center top  no-repeat}
 
-        .evt_top{background:url("https://static.willbes.net/public/images/promotion/2019/11/1436_top_bg.jpg") center top  no-repeat}
+        .evt_top{background:#181818 url("https://static.willbes.net/public/images/promotion/2019/11/1436_top_bg.jpg") center top  no-repeat}
 
         .evt_01{background:#ececec;padding-bottom:100px}
 
@@ -56,7 +56,7 @@
         .wb_04_con2 p.leftBtn {left:-70px;}
         .wb_04_con2 p.rightBtn {right:70px}
 
-        .wb_cts03{background:url("https://static.willbes.net/public/images/promotion/2019/11/1436_03_bg.jpg") center top  no-repeat;position:relative;}
+        .wb_cts03{background:#0B1522 url("https://static.willbes.net/public/images/promotion/2019/11/1436_03_bg.jpg") center top  no-repeat;position:relative;}
         .wb_cts04{background:#E2E2E2}
         .wb_cts05{background:#f3f3f3;}
 

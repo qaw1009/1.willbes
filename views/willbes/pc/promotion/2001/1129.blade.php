@@ -91,7 +91,7 @@
             <div class="tabContents" id="tab1" >
                 <div class="Section Section2 mt100">
                     <div class="widthAuto p_re">
-                        <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" alt="신광은경찰 합격커리큘럼">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_0.jpg" alt="신광은경찰 합격커리큘럼">
                         <div class="passCurriWrap">
                             <ul>
                                 <li class="curriStep1">

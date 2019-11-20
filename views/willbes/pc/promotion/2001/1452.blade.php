@@ -35,9 +35,10 @@
     100%{background-color:#fff}
     }
     .evt00 {background:#404040}
-    .evt01 {background:#a9a4a0 url(https://static.willbes.net/public/images/promotion/2019/11/1452_01_bg.jpg) no-repeat center top;}
-    .evt02 {background:#e1e1e1; padding-bottom:120px}
-    .evt02 a {display:block; height:64px; line-height:64px; color:#fff; font-size:28px; font-weight:bold; text-align:center; border-radius:10px; 
+    .evt01 {background:url(https://static.willbes.net/public/images/promotion/2019/11/1452_01_bg.jpg) no-repeat center top;}
+    .evt02 {background:url(https://static.willbes.net/public/images/promotion/2019/11/1452_02_bg.jpg) no-repeat center top;}
+    .evt03 {background:#e1e1e1; padding-bottom:120px}
+    .evt03 a {display:block; height:64px; line-height:64px; color:#fff; font-size:28px; font-weight:bold; text-align:center; border-radius:10px; 
         background:#000; width:460px; margin:0 auto}
     .evt02 a:hover {background:#ed1c24}
     </style>
@@ -56,7 +57,11 @@
         </div>  
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1452_02.jpg" alt="합격수기 참여이벤트">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1452_02.jpg" alt="합격을 진심으로 축하드립니다.">
+        </div>
+
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1452_03.jpg" alt="합격수기 참여이벤트">
             <a href="#none" onclick="javascript:popup();">내 합격수기 등록하기  ></a>
         </div>               
     </div>

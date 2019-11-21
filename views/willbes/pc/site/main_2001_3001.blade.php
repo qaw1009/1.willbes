@@ -11,6 +11,7 @@
 
         <div class="Section Flipped">
             <div class="widthAuto">
+                <div>2020년 경찰합격 PROGRAM <span>#PASS</span> <span>#기본</span> <span>#심화</span> <span>#문제풀이</span></div>
                 <ul class="inner">
                     {{-- 메인핵심 배너 include --}}
                     @include('willbes.pc.site.main_partial.main_point_' . $__cfg['SiteCode'])

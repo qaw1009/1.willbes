@@ -56,10 +56,10 @@
                 </div>
                 <div class="form-group form-group-sm item">
                     <label class="control-label col-md-2" for="CertConditionCcd">인증조건 <span class="required">*</span></label>
-                    <div class="col-md-10 form-inline item">
+                    <div class="col-md-10">
                         <div class="radio">
                             @foreach($CertCondition_ccd as $key=>$val)
-                                <input type="radio" name="CertConditionCcd" id="CertConditionCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($data['CertConditionCcd']==$key) checked="checked" @else @if($loop->index == 1) checked="checked" @endif @endif > {{$val}}&nbsp;&nbsp;
+                                <input type="radio" name="CertConditionCcd" id="CertConditionCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($data['CertConditionCcd']==$key) checked="checked" @else @if($loop->index == 1) checked="checked" @endif @endif > <label class="input-label">{{$val}}</label>&nbsp;&nbsp;
                             @endforeach
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     <label class="control-label col-md-2" for="No">인증회차 <span class="required">*</span></label>
                     <div class="col-md-4 form-inline item" >
                         <select class="form-control" id="No" name="No" title="인증회차" style="width:60px;">
-                            @for($i=1;$i<=10;$i++)
+                            @for($i=1;$i<=20;$i++)
                                 <option value="{{ $i }}" @if($data['No'] == $i) selected="selected"@endif>{{ $i }}</option>
                             @endfor
                         </select> 회
@@ -80,12 +80,10 @@
                         <input type="text" name="CertEndDate" id="CertEndDate" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['CertEndDate']))}}@endif" class="form-control datepicker" title="인증기간" style="width:100px;" required="required" >
                     </div>
                 </div>
-
                 <div class="form-group form-group-sm item addProduct">
-                    <label class="control-label col-md-2" for="No">무한패스선택 <span class="required">*</span></label>
+                    <label class="control-label col-md-2" for="No">선택 <span class="required">*</span></label>
                     <div class="col-md-10">
-                        <button type="button" id="searchPackage" class="btn btn-sm btn-primary">무한패스검색</button>
-
+                        <button type="button" id="searchPackage" class="btn btn-sm btn-primary btn-search-pass">무한패스검색</button>
                         <span id="selected_lecture">
                             @if(empty($data['productData_json']) === false)
                                 @foreach(json_decode($data['productData_json'], true) as $idx => $row)
@@ -112,17 +110,31 @@
                         </span>
                     </div>
                 </div>
-
+                <div class="form-group form-group-sm item">
+                    <label class="control-label col-md-2" for="IsAutoApproval">자동승인여부 <span class="required">*</span></label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <input type="radio" id="IsAutoApproval_Y" name="IsAutoApproval" class="flat" value="Y" required="required" @if($data['IsAutoApproval']=='Y')checked="checked"@endif/> <label for="IsAutoApproval_Y" class="input-label">사용</label>
+                            <input type="radio" id="IsAutoApproval_N" name="IsAutoApproval" class="flat" value="N" required="required" @if($method=="POST" || $data['IsAutoApproval']=='N')checked="checked"@endif/> <label for="IsAutoApproval_N" class="input-label">미사용</label>
+                        </div>
+                    </div>
+                    <label class="control-label col-md-2" for="IsAutoSms">자동문자발송여부 <span class="required">*</span></label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <input type="radio" id="IsAutoSms_Y" name="IsAutoSms" class="flat" value="Y" required="required" @if($data['IsAutoSms']=='Y')checked="checked"@endif/> <label for="IsAutoSms_Y" class="input-label">사용</label>
+                            <input type="radio" id="IsAutoSms_N" name="IsAutoSms" class="flat" value="N" required="required" @if($method=="POST" || $data['IsAutoSms']=='N')checked="checked"@endif/> <label for="IsAutoSms_N" class="input-label">미사용</label>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group form-group-sm item">
                     <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span></label>
                     <div class="col-md-4">
                         <div class="radio">
-                            <input type="radio" id="IsUse_Y" name="IsUse" class="flat" value="Y" required="required" @if($method=="POST" || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
-                            <input type="radio" id="IsUse_N" name="IsUse" class="flat" value="N" required="required" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                            <input type="radio" id="IsUse_Y" name="IsUse" class="flat" value="Y" required="required" @if($method=="POST" || $data['IsUse']=='Y')checked="checked"@endif/> <label for="IsUse_Y" class="input-label">사용</label>
+                            <input type="radio" id="IsUse_N" name="IsUse" class="flat" value="N" required="required" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="IsUse_N" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
-
 
             @if($method==="PUT")
                 <div class="form-group form-group-sm item">
@@ -154,28 +166,28 @@
                     $regi_form.find('select[name="CateCode"]').chained("#site_code");
 
                     $regi_form.on('ifChanged', 'input[name="CertConditionCcd"]:checked', function() {
-                        if($(this).val() == '685001') {
+                        elementHideShow($(this).val());
+                    });
+
+                    elementHideShow('{{$data['CertConditionCcd']}}');
+
+                    function elementHideShow(strVal) {
+                        if(strVal == '685001' || strVal == '685004') {
                             $('.addProduct').removeClass('hide');
                             $('.addCoupon').addClass('hide');
-                        } else if($(this).val() == '685002') {
+                            if(strVal == '685004') {
+                                $('.btn-search-pass').addClass('hide');
+                            } else {
+                                $('.btn-search-pass').removeClass('hide');
+                            }
+                        } else if(strVal == '685002') {
                             $('.addProduct').addClass('hide');
                             $('.addCoupon').removeClass('hide');
                         } else {
                             $('.addProduct').addClass('hide');
                             $('.addCoupon').addClass('hide');
                         }
-                    });
-
-                    @if( $data['CertConditionCcd'] == '685001')
-                        $('.addProduct').removeClass('hide');
-                        $('.addCoupon').addClass('hide');
-                    @elseif( $data['CertConditionCcd'] == '685002')
-                        $('.addProduct').addClass('hide');
-                        $('.addCoupon').removeClass('hide');
-                    @elseif( $data['CertConditionCcd'] == '685003')
-                        $('.addProduct').addClass('hide');
-                        $('.addCoupon').addClass('hide');
-                    @endif
+                    }
 
                     //무한패스검색
                     $('#searchPackage').on('click', function(e) {

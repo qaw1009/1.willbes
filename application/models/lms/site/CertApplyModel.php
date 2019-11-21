@@ -113,7 +113,6 @@ class CertApplyModel extends WB_Model
      */
     public function listApplyExcel($arr_condition = [], $order_by = [], $arr_condition_add = null)
     {
-
             $column = ' E.SiteName
                             ,B.CateName
                             ,A.CertIdx
@@ -166,8 +165,6 @@ class CertApplyModel extends WB_Model
                     where SA.IsStatus=\'Y\' and A.IsStatus=\'Y\'
         ';
 
-        //echo var_dump($arr_condition);
-
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
@@ -176,14 +173,10 @@ class CertApplyModel extends WB_Model
         if(empty($arr_condition_add) === false) {
             $where .= ' and '.$arr_condition_add;
         }
-
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;exit;
         return $query->result_array();
     }
-
-
 
 
     /**
@@ -316,23 +309,7 @@ class CertApplyModel extends WB_Model
                             //***************************       couponissuemodel        ****************************//
                         }
                     }
-                    
-                    /*
-                    //sms 발송하기
-                    $smsData = [];
-                    $smsData['SiteCode'] = $idx['SiteCode'];
-                    $smsData['SiteName'] = $idx['SiteName'];
-                    $smsData['CsTel'] = $idx['CsTel'];
-                    $smsData['SmsContent'] = $idx['SmsContent'];
-                    $smsData['MemIdx'] = $idx['MemIdx'];
-                    $smsData['MemName'] = $idx['MemName'];
-                    $smsData['Phone'] = $idx['Phone'];
 
-                    $is_sms = $this->addSms($smsData);
-                    if($is_sms !== true) {
-                        throw new \Exception($is_sms, _HTTP_NO_PERMISSION);
-                    }
-                    */
                     if(empty($idx['SmsContent'] == false)) {
                         $smsData = [];
                         $smsData['CsTel'] = $idx['CsTel'];
@@ -380,26 +357,9 @@ class CertApplyModel extends WB_Model
 
                             }
                             //***************************       쿠폰 지급 여부    ********************************//
-
                         }
                     }
 
-                    /*
-                    //sms 발송하기
-                    $smsData = [];
-                    $smsData['SiteCode'] = $idx['SiteCode'];
-                    $smsData['SiteName'] = $idx['SiteName'];
-                    $smsData['CsTel'] = $idx['CsTel'];
-                    $smsData['SmsContent'] = $this->_cert_cancel_sms_content;
-                    $smsData['MemIdx'] = $idx['MemIdx'];
-                    $smsData['MemName'] = $idx['MemName'];
-                    $smsData['Phone'] = $idx['Phone'];
-
-                    $is_sms = $this->addSms($smsData);
-                    if($is_sms !== true) {
-                        throw new \Exception($is_sms, _HTTP_NO_PERMISSION);
-                    }
-                    */
                     $smsData = [];
                     $smsData['CsTel'] = $idx['CsTel'];
                     $smsData['SmsContent'] = $this->_cert_cancel_sms_content;       //주의 : 취소시 공통 내용 발송
@@ -462,43 +422,7 @@ class CertApplyModel extends WB_Model
     public function addSms($data=[])
     {
         try {
-            /* 기존 : 자체 로그를 위한 로직
-            $inputData = [
-                'SendGroupTypeCcd' => '641001',
-                'SiteCode' => $data['SiteCode'],
-                'SendPatternCcd' => '637002',       //메세지성격
-                'SendTypeCcd' => '638001',          //SMS메세지종류
-                'SendOptionCcd' => '640001',        //메세지 발송옵션
-                'SendStatusCcd' => '639001',        //메세지 발송상태
-                'CsTel' => $data['CsTel'],
-                'Content' => $data['SiteName'].'-'. $data['SmsContent'],
-                'RegAdminIdx' => $this->session->userdata('admin_idx'),
-                'RegIp' => $this->input->ip_address()
-            ];
 
-            $this->_conn->set($inputData)->set('SendDatm', 'NOW()', false);
-
-            // 데이터 등록
-            if ($this->_conn->set($inputData)->insert('lms_crm_send') === false) {
-                throw new \Exception('등록에 실패했습니다.');
-            }
-            $send_idx = $this->_conn->insert_id();
-
-            $inputData_sms = [
-                'SendIdx' => $send_idx,
-                'MemIdx' => $data['MemIdx'],
-                //'Receive_PhoneEnc' => $data['Phone'],
-                'Receive_Name' => $data['MemName'],
-            ];
-            $this->_conn->set($inputData_sms)->set('Receive_PhoneEnc',  'fn_enc("' . $data['Phone'] . '")',false);
-
-            // SMS 개별등록 등록
-            if ($this->_conn->set($inputData_sms)->insert('lms_crm_send_r_receive_sms') === false) {
-                throw new \Exception('세부 발송 등록에 실패했습니다.');
-            }
-            */
-            //$this->load->library('sendSms');
-            //if($this->sendsms->send($data['Phone'], $data['SmsContent'], $data['CsTel']) !== true) {
             if($this->smsModel->addKakaoMsg($data['Phone'], $data['SmsContent'], $data['CsTel'], null, 'KFT') === false) {
                 throw new \Exception('SMS 발송에 실패했습니다.');
             }

@@ -549,7 +549,6 @@ body.memBody #Footer {
 /* Slider BASIC */
 .swiper-container {
     width: 100% !important;
-    height: 100%;
 }
 .swiper-slide {
     text-align: center;

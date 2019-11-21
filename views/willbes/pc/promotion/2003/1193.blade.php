@@ -113,8 +113,8 @@
 			<map name="Map_1193A" id="Map_1193A">					
 				<area shape="rect" coords="434,177,515,202" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
                 <area shape="rect" coords="584,343,700,381" href="#event" alt="자세히보기"/>
-				<area shape="rect" coords="142,1059,554,1156" href="#chkInfo" onClick="go_PassLecture();">
-				<area shape="rect" coords="566,1058,974,1159" href="#chkInfo">
+				<area shape="rect" coords="142,1059,554,1156" href="#chkInfo" onClick="go_PassLecture('152756');">
+				<area shape="rect" coords="566,1058,974,1159" href="#chkInfo" onclick="go_PassLecture('158055');">
 			</map>		 
 		</div>		
 

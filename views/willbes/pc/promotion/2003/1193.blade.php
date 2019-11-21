@@ -163,8 +163,8 @@
 		<div class="evtCtnsBox evt04" id="event">
 			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_04.jpg" usemap="#Map1193B" title="한덕현T-PASS" border="0" />
 			<map name="Map1193B" id="Map1193B">
-				<area shape="rect" coords="425,757,733,860"  href="#chkInfo" onclick="go_PassLecture();" title="59만원 수강신청">
-				<area shape="rect" coords="736,757,1034,862" href="#chkInfo" title="69만원 수강신청">
+				<area shape="rect" coords="425,757,733,860"  href="#chkInfo" onclick="go_PassLecture('152756');" title="59만원 수강신청">
+				<area shape="rect" coords="736,757,1034,862" href="#chkInfo" onclick="go_PassLecture('158055');" title="69만원 수강신청">
             </map>
 		</div>
 
@@ -198,13 +198,13 @@
 			});
 		});						
 
-		function go_PassLecture() {
+		function go_PassLecture(prod_code) {
 			if($("input[name='ischk']:checked").length < 1) {
 				alert("이용안내에 동의하셔야 합니다.");
 				$("#chkInfo").focus();
 				return;
 			}
-			location.href = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/158055') }}";
+			location.href = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}" + prod_code;
 		}
 
 		/*디데이카운트다운*/

@@ -259,14 +259,12 @@
                                 <th class="Tit">경찰</th>
                                 <td>
                                     <a href="{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">노량진</a>
-                                    <a href="{{ app_url('/pass/campus/show/code/605002', 'police') }}" target="_blank">신림</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">인천</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605004', 'police') }}" target="_blank">대구</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a>
                                     <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a>
                                     <a href="https://blog.naver.com/als9946" target="_blank">전북</a>
-                                    {{--<a href="{{ app_url('/pass/campus/show/code/605008', 'police') }}" target="_blank">진주</a>--}}
                                     <a href="{{ app_url('/pass/campus/show/code/605010', 'police') }}" target="_blank">경기 광주(기숙형)</a>
                                 </td>
                             </tr>

@@ -167,6 +167,7 @@ class Code extends BaseMocktest
             ['field' => 'act', 'label' => 'ACT', 'rules' => 'trim|required|in_list[create,edit]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'sjType', 'label' => '과목타입', 'rules' => 'trim|required|in_list[E,S]'],
+            ['field' => 'sdsdfsdfsjType', 'label' => '과목타입', 'rules' => 'trim|required|in_list[E,S]'],
         ];
         $this->form_validation->set_data($get);
         if ($this->validate($rules) === false) return;

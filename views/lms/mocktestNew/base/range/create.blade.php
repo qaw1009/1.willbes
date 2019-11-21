@@ -10,14 +10,13 @@
             <form class="form-table" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
-                <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['MaIdx'] : '' }}">
-                <input type="hidden" name="isCopy" value="@if($method == 'PUT'){{ $isCopy }}@endif">
+                <input type="hidden" name="idx" value="{{ $data['MaIdx'] }}">
+                <input type="hidden" name="isCopy" value="{{ $isCopy }}">
 
-                <table class="table table-bordered modal-table">
+                <table class="table table-bordered">
                     <tr>
                         <th colspan="1">운영사이트 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            {{--{!! html_site_select($siteCodeDef, 'site_code', 'siteCode', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '') !!}--}}
                             {!! html_site_select($def_site_code, 'site_code', 'siteCode', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '', false, $arr_site_code) !!}
                             <span class="ml-20">저장 후 운영사이트, 모의고사카테고리 정보는 수정이 불가능합니다.</span>
                         </td>
@@ -27,31 +26,24 @@
                         <td colspan="3">
                             <button type="button" class="btn btn-sm btn-primary act-searchCate">카테고리검색</button>
                             <div id="selected_category" class="row">
-                                @if($method == 'PUT')
-
-                                    @foreach($moCate_name as $code => $name)
-                                        <div class="col-xs-4 pb-5">
-                                            {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
-                                            @if(isset($moCate_isUse[$code]) && $moCate_isUse[$code] == 'N') <span class="ml-5 red">(미사용)</span> @endif
-                                            <a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
-                                            <input type="hidden" name="moLink[]" value="{{ $code }}">
-                                        </div>
-                                    @endforeach
-
-                                @endif
-                            </div>
-
-                            @if($method == 'PUT')
                                 @foreach($moCate_name as $code => $name)
-                                    <input type="hidden" name="moLink_be[]" value="{{ $code }}">
+                                    <div class="col-xs-4 pb-5">
+                                        {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
+                                        @if(isset($moCate_isUse[$code]) && $moCate_isUse[$code] == 'N') <span class="ml-5 red">(미사용)</span> @endif
+                                        <a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="moLink[]" value="{{ $code }}">
+                                    </div>
                                 @endforeach
-                            @endif
+                            </div>
+                            @foreach($moCate_name as $code => $name)
+                                <input type="hidden" name="moLink_be[]" value="{{ $code }}">
+                            @endforeach
                         </td>
                     </tr>
                     <tr>
                         <th style="width:15%;">문제영역명 <span class="required">*</span></th>
                         <td style="width:35%;">
-                            <input type="text" class="form-control" name="questionArea" value="@if($method == 'PUT'){{ $data['QuestionArea'] }}@endif">
+                            <input type="text" class="form-control" name="questionArea" value="{{ $data['QuestionArea'] }}">
                         </td>
                         <th style="width:15%;">사용여부 <span class="required">*</span></th>
                         <td style="width:35%;">
@@ -63,20 +55,20 @@
                     </tr>
                     <tr>
                         <th>등록자</th>
-                        <td>@if($method == 'PUT') {{ $data['RegAdminName'] }} @endif</td>
+                        <td>{{ $data['RegAdminName'] }}</td>
                         <th>등록일</th>
-                        <td>@if($method == 'PUT') {{ $data['RegDatm'] }} @endif</td>
+                        <td>{{ $data['RegDatm'] }}</td>
                     </tr>
                     <tr>
                         <th>최종수정자</th>
-                        <td>@if($method == 'PUT') {{ $data['UpdAdminName'] }} @endif</td>
+                        <td>{{ $data['UpdAdminName'] }}</td>
                         <th>최종수정일</th>
-                        <td>@if($method == 'PUT') {{ $data['UpdDatm'] }} @endif</td>
+                        <td>{{ $data['UpdDatm'] }}</td>
                     </tr>
                 </table>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
-                    <button class="btn btn-primary" style="position:absolute; right:0;" type="button" id="goList">목록</button>
+                    <button class="btn btn-primary" type="button" id="goList">목록</button>
                 </div>
             </form>
         </div>
@@ -99,7 +91,7 @@
                     {!! method_field($method) !!}
                     <input type="hidden" name="idx" value="{{ $data['MaIdx'] }}"/>
 
-                    <table class="table table-bordered modal-table">
+                    <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th class="text-center">NO</th>
@@ -171,7 +163,7 @@
             $regi_form.submit(function() {
                 //if (!confirm("저장후 사이트, 카테고리정보는 수정이 불가능합니다.\n저장하시겠습니까?")) return false;
 
-                var _url = '{{ ($method == 'PUT') ? site_url('/mocktestNew/base/range/update/') : site_url('/mocktestNew/base/range/store/') }}';
+                var _url = '{{ site_url('/mocktestNew/base/range/store/') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);

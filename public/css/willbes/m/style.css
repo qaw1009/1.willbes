@@ -608,6 +608,9 @@ body.memBody #Footer {
 .MainSlider .swiper-slide {
     height: auto;
 }
+.MainSlider .swiper-slide img {
+    width: 100%;
+}
 .MainSlider > .swiper-pagination-bullets, 
 .MainSlider .swiper-pagination-custom, 
 .MainSlider .swiper-pagination-fraction {

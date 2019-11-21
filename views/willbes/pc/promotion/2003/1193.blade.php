@@ -21,19 +21,25 @@
 
         /************************************************************/
 
-		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1193_top2_bg.jpg) no-repeat center top; }
-		.evtTop span {position:absolute; top:220px; left:50%;}
-		.evtTop ul {width:100%; margin:0 auto; }
-		.evtTop .point {text-align:center; margin-left:500px; padding:120px 50px 0px 0px; }
+		.skybanner {
+            position:fixed;
+            bottom:50px;
+            right:10px;
+            z-index:1;
+        }
+        .skybanner a {display:block; margin-bottom:5px}
+
+		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1193_top2_bg.jpg) no-repeat center top;}
+
 		.evt01 {background:#fff; position:relative}
 		.evt01 span {position:absolute; left:50%; margin-left:-442px; top:300px; width:300px; z-index:10}
 		.evt01_1 {background:#f5f5f5}
-		.evt02 {background:#fff}
+		.evt02 {background:#fff; padding-bottom:150px}
 		.evt03 {background:#f5f5f5}
 		.evt04 {background:#35385b}
 		.evt05 {background:#fff}
 		
-				/* tab */
+		/* tab */
         .tabContaier{width:100%; text-align:center; padding-bottom:20px;}
 				.tabContaier ul {margin:0 auto;  width:980px}		
 				.tabContaier li {display:inline; float:left}	
@@ -43,7 +49,7 @@
 				.tabContaier a.active img.on {display:block}
 				.tabContaier ul:after {content:""; display:block; clear:both}
 
-		 		/*타이머*/
+		/*타이머*/
         .time{width:100%; text-align:center; background:#000}
         .time_date {text-align:center; padding:20px 0}
         .time_date table {width:1120px; margin:0 auto}
@@ -92,19 +98,25 @@
 			</div>
 		</div>
 		<!-- 타이머 //-->
+
+		<div class="skybanner">
+			<a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/157982" target="_blank">
+				<img src="https://static.willbes.net/public/images/promotion/2019/11/1193_sky1.png" />
+			</a>
+			<a href="#event">
+				<img src="https://static.willbes.net/public/images/promotion/2019/11/1193_sky2.png" />
+			</a>
+		</div>
 			
 		<div class="evtCtnsBox evtTop">
-			<img src="https://static.willbes.net/public/images/promotion/2019/10/1193_top2.gif" usemap="#Map_1193_qna"  title="한덕현T-PASS" border="0"/>
-			<map name="Map_1193_qna">					
-				<area shape="rect" coords="432,177,513,202" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
-				<area shape="rect" coords="138,1071,974,1157" href="#none" onClick="go_PassLecture();">
-			</map>	 
-		</div>			
-
-		<div class="check" id="chkInfo">
-			<input name="ischk" type="checkbox" value="Y" id="txt1"/> <label for="txt1">페이지 하단 한덕현 영어 T- PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
-			<a href="#tip">이용안내확인하기 ↓</a>
-		</div>	
+			<img src="https://static.willbes.net/public/images/promotion/2019/10/1193_top2.gif" usemap="#Map_1193A"  title="한덕현T-PASS" border="0"/>
+			<map name="Map_1193A" id="Map_1193A">					
+				<area shape="rect" coords="434,177,515,202" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=영어&tab=qna" target="_blank" alt="상담바로가기">
+                <area shape="rect" coords="584,343,700,381" href="#event" alt="자세히보기"/>
+				<area shape="rect" coords="142,1059,554,1156" href="#chkInfo" onClick="go_PassLecture('152756');">
+				<area shape="rect" coords="566,1058,974,1159" href="#chkInfo" onclick="go_PassLecture('158055');">
+			</map>		 
+		</div>		
 
 		<div class="evtCtnsBox evt01" id="evt01">
 			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_1_t.gif" title="티패스 수강생 전용 특별 혜택 제공" /><br>
@@ -148,11 +160,17 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
 		</div>
 
-		<div class="evtCtnsBox evt04">
-			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_04.jpg" usemap="#Map_1193_lec2" title="한덕현T-PASS" border="0" />
-			<map name="Map_1193_lec2">
-				<area shape="rect" coords="730,774,991,880"  href="#none" onclick="go_PassLecture();" title="수강신청">
-			</map>
+		<div class="evtCtnsBox evt04" id="event">
+			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_04.jpg" usemap="#Map1193B" title="한덕현T-PASS" border="0" />
+			<map name="Map1193B" id="Map1193B">
+				<area shape="rect" coords="425,757,733,860"  href="#chkInfo" onclick="go_PassLecture('152756');" title="59만원 수강신청">
+				<area shape="rect" coords="736,757,1034,862" href="#chkInfo" onclick="go_PassLecture('158055');" title="69만원 수강신청">
+            </map>
+		</div>
+
+		<div class="check" id="chkInfo">
+			<input name="ischk" type="checkbox" value="Y" id="txt1"/> <label for="txt1">페이지 하단 한덕현 영어 T- PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+			<a href="#tip">이용안내확인하기 ↓</a>
 		</div>
 
 		<div class="evtCtnsBox evt05" id="tip">
@@ -180,13 +198,13 @@
 			});
 		});						
 
-		function go_PassLecture() {
+		function go_PassLecture(prod_code) {
 			if($("input[name='ischk']:checked").length < 1) {
 				alert("이용안내에 동의하셔야 합니다.");
 				$("#chkInfo").focus();
 				return;
 			}
-			location.href = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/152756') }}";
+			location.href = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}" + prod_code;
 		}
 
 		/*디데이카운트다운*/

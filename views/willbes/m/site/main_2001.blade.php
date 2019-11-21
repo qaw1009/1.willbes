@@ -4,7 +4,7 @@
     <!-- Container -->
     <div id="Container" class="Container NG c_both mb20">
         <div class="MainTxtBnr">적중! 적중! 또 다시 적중! <strong>신광은경찰팀</strong>은 곧, <strong>합격</strong>입니다.</div>
-        {!! banner('M_메인_01', 'MainSlider c_both', $__cfg['SiteCode'], '0') !!}
+        {!! banner('M_메인_01', 'MainSlider swiper-container swiper-container-page c_both', $__cfg['SiteCode'], '0') !!}
         <div class="MainFixBnr c_both">
             <ul>
                 <li>{!! banner('M_메인_02_01', '', $__cfg['SiteCode'], '0') !!}</li>

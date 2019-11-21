@@ -23,7 +23,7 @@ class Cert extends \app\controllers\BaseController
         $this->load->view("site/cert/cert_index", [
             'arr_category' => $arr_category,
             'CertType_ccd' => $codes['684'],
-            'CertCondition_ccd' => $codes['685']
+            'CertCondition_ccd' => $codes['685'],
         ]);
     }
 
@@ -112,9 +112,7 @@ class Cert extends \app\controllers\BaseController
         }
 
         $result = $this->certModel->{$method.'Cert'}($this->_reqP(null));
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
-
     }
 }
 

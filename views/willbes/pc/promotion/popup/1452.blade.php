@@ -118,7 +118,9 @@
                     <h3  class="tit">[합격수기 공모]</h3>
                     <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">합격수기 양식 파일 다운로드 ↓</a>
                     <input type="file" name="attach_file" id="attach_file" style="width:180px">
+                    @if(empty($arr_base['regist_member']['FileFullPath']) === false)
                     <input type="button" onclick="javascript:modifyFile();" value="파일수정">
+                    @endif
                     <div class="mt10">
                         - 반드시 위의 합격수기 양식 파일을 다운로드 받아서 작성해 주세요.<Br>
                         - 합격수기 양식은 개별 상황에 맞게 워드, 한글 파일 양식 중 하나를 첨부해 주시면 됩니다.<Br>

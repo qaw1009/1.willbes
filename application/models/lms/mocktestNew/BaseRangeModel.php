@@ -197,7 +197,7 @@ class BaseRangeModel extends WB_Model
             ];
             $this->_conn->set($input_data)->where(['MaIdx' => element('idx', $form_data)]);
             if ($this->_conn->update($this->_table['mock_area']) === false) {
-                throw new \Exception('카테고리 데이터 수정에 실패했습니다.');
+                throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

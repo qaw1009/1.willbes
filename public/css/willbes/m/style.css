@@ -570,7 +570,7 @@ body.memBody #Footer {
     align-items: center;
 }
 .swiper-slide img {
-    width: 100%;
+    width: 100% !important;
 }
 .swiper-pagination-bullet {
     width: 20px;
@@ -608,9 +608,7 @@ body.memBody #Footer {
 .MainSlider .swiper-slide {
     height: auto;
 }
-.MainSlider .swiper-slide img {
-    width: 100%;
-}
+
 .MainSlider > .swiper-pagination-bullets, 
 .MainSlider .swiper-pagination-custom, 
 .MainSlider .swiper-pagination-fraction {

@@ -14,7 +14,7 @@
         <div class="tabBox noticeBox_campus">
             @foreach($data['arr_campus'] as $row)
                 @if ($row['CampusCcd'] == '605007')
-                    <div id="campus6" class="tabContent">
+                    <div id="campus7" class="tabContent">
                         <div>
                             <div class="map_img">
                                 <img src="{{ img_url('cop_acad/map/map_cop_jbjj.jpg') }}" alt="전북 전주">

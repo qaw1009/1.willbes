@@ -607,6 +607,7 @@ body.memBody #Footer {
 .MainSlider .swiper-wrapper,
 .MainSlider .swiper-slide {
     height: auto;
+    width: 100%;;
 }
 
 .MainSlider > .swiper-pagination-bullets, 

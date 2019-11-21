@@ -573,6 +573,9 @@ body.memBody #Footer {
 .swiper-slide img {
     width: 100% !important;
 }
+.swiper-slide a img {
+    width: 100% !important;
+}
 .swiper-pagination-bullet {
     width: 20px;
     height: 20px;
@@ -645,6 +648,7 @@ body.memBody #Footer {
 .MainBnrSlider .swiper-wrapper,
 .MainBnrSlider .swiper-slide {
     height: auto;
+    width: 100% !important;
 }
 .MainBnrSlider .swiper-button-next,
 .MainBnrSlider .swiper-button-prev {

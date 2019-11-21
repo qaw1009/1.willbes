@@ -421,6 +421,12 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['arr_file'] = $list_event_file[0];
         }
 
+        //이벤트 신청 여부 조회
+        $regist_member = $this->eventFModel->getRegisterMember(['EQ' => ['B.ElIdx' => $arr_base['data']['ElIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
+        if (empty($regist_member) === false) {
+            $arr_base['regist_member'] = $regist_member[0];
+        }
+
         $this->load->view('willbes/pc/promotion/popup/' . $arr_base['promotion_code'], [
             'arr_base' => $arr_base,
             'arr_cert' => $arr_cert

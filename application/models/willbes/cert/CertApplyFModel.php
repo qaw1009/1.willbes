@@ -185,30 +185,26 @@ class CertApplyFModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if($certtypeccd === '684002' || $cert_idx === '13' || $cert_idx === '20' || $cert_idx === '23' || $cert_idx === '24' || $cert_idx === '25') { //제대군인인증, 꿀팁이벤트(추천인) 등등 자동 승인 처리
+             //if($certtypeccd === '684002' || $cert_idx === '13' || $cert_idx === '20' || $cert_idx === '23' || $cert_idx === '24' || $cert_idx === '25') { //제대군인인증, 꿀팁이벤트(추천인) 등등 자동 승인 처리
+            if($cert_data['IsAutoApproval'] === 'Y') {   // 자동승인처리
                 $data = array_merge($data,[
                     'ApprovalStatus' => 'Y'
                 ]);
             }
-            //echo var_dump($data);exit;
 
             if($this->_conn->insert('lms_cert_apply',$data) === false) {
                 throw new \Exception('인증 신청에 실패했습니다.');
             }
 
-            //제대군인인증일 경우 자동 승인 처리로 인한 문자 발송 : 꿀팁은 제외
-            if($certtypeccd === '684002' && empty($cert_data['Sms_Content']===false && empty($cert_data['CsTel'])) ) {
+            //if($certtypeccd === '684002' && empty($cert_data['Sms_Content']===false && empty($cert_data['CsTel'])) ) {    //제대군인인증일 경우 자동 승인 처리로 인한 문자 발송 : 꿀팁은 제외
+            if($cert_data['IsAutoSms'] === 'Y' && empty($cert_data['Sms_Content']===false && empty($cert_data['CsTel'])) ) { // 문자발송
                 if (empty($this->session->userdata('mem_phone')) === false) {
                     /*sms 발송 모듈*/
-                    //$this->load->library('sendSms');
-                    //if($this->sendsms->send($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], $cert_data['CsTel']) !== true) {
                     if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], $cert_data['CsTel'], null, 'KFT') === false) {
                         throw new \Exception('인증 신청(SMS)에 실패했습니다.');
                     }
                 }
             }
-            //echo $this->_conn->last_query();
-            //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

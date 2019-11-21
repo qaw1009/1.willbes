@@ -76,26 +76,6 @@ class CertModel extends WB_Model
 
             $CertIdx = element('CertIdx',$input);
 
-            /* 기존 인증정보 존재 여부 파악 : 제거 함 - element('site_code',$input) 디사블 되어 값이 안넘어옴. 추후 다시 보는 것으로...
-            $arr_condition = [
-                'EQ' => [
-                    'A.CertTypeCcd' => element('CertTypeCcd',$input),
-                    'A.No' => element('No',$input),
-                    'A.SiteCode' => element('site_code',$input)
-                ],
-
-                'NOT' => [
-                    'A.CertIdx' => $CertIdx
-                ]
-            ];
-            $check = $this->listCert(true, $arr_condition, $limit = null, $offset = null, $order_by = []);
-
-            if($check > 0) {
-                throw new \Exception('이미 등록된 인증 정보입니다.');
-            }
-            */
-
-
             $common_data = $this->inputCommon($input);
 
             $input_data = array_merge($common_data, [
@@ -133,6 +113,8 @@ class CertModel extends WB_Model
             'CateCode'=>element('CateCode',$input)
             ,'CertTypeCcd'=>element('CertTypeCcd',$input)
             ,'CertConditionCcd'=>element('CertConditionCcd',$input)
+            ,'IsAutoApproval'=>element('IsAutoApproval',$input)
+            ,'IsAutoSms'=>element('IsAutoSms',$input)
             ,'CertTitle'=>element('CertTitle',$input)
             ,'No'=>element('No',$input)
             ,'CertStartDate'=>element('CertStartDate',$input)
@@ -172,7 +154,6 @@ class CertModel extends WB_Model
 
                 }
             }
-
 
         } catch (\Exception $e) {
             return $e->getMessage();

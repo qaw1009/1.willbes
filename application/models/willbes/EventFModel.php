@@ -208,7 +208,10 @@ class EventFModel extends WB_Model
     public function getRegisterMember($arr_condition=[])
     {
         $column = 'A.EmIdx, A.ErIdx, A.MemIdx, A.UserName, A.UserTelEnc, A.UserMailEnc, A.FileFullPath, A.FileRealName';
-        $from = " FROM {$this->_table['event_member']} AS A";
+        $from = " 
+            FROM {$this->_table['event_member']} AS A
+            LEFT OUTER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx AND B.IsStatus = 'Y'
+        ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 

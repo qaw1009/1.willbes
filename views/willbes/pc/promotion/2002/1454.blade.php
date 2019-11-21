@@ -105,7 +105,7 @@
    		<div class="wbCommon wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1454_02.jpg" title=" " />
             <div class="btnBox">
-                <a href="javascript:;" onclick="javascript:popup();">합격자의 밤 신청하기 ></a>
+                <a href="#none" onclick="javascript:popup();">합격자의 밤 신청하기 ></a>
             </div>
         </div>  
     </div>

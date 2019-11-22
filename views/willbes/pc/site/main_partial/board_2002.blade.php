@@ -1,7 +1,3 @@
-@extends('willbes.pc.layouts.master')
-
-@section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
 <div class="noticeTabs acad">
     <ul class="tabWrap noticeWrap_acad two">
         <li><a href="#notice1" class="on">공지사항</a></li>

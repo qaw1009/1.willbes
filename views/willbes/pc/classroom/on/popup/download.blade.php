@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script type="text/javascript" src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
     <script src="/public/js/util.js?ver={{time()}}"></script>
-    <script type="text/javascript" src="/public/js/willbes/ezPDF_Willbes.js"></script>
+    <script type="text/javascript" src="/public/js/willbes/ezPDF_Willbes.js?ver={{time()}}"></script>
     <script type="text/javascript">
         var ezpdf = new ezPDFWFLauncher(ezPDFWSPrinter, ezPDFData, 1);
 

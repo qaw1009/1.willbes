@@ -20,16 +20,26 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2019/11/1442_top_bg.jpg) no-repeat center top; }
+        .evttop {background:#3FC0BB url(https://static.willbes.net/public/images/promotion/2019/11/1442_top_bg.jpg) no-repeat center top; }
         .evt01 {background:#e8e9ed}            
         .evt02 {background:#f5e365; position:relative}         
         .evt02 .liveWrap {position:absolute; left:50%; margin-left:-560px; top:593px; z-index:10 }
-        .evt03 {background:#f5e365; padding:200px 0 150px; margin-bottom:100px} 
+        .evt03 {background:#f5e365; padding:200px 0 150px;} 
+        .evt04 {background:#F5F4F9;margin-bottom:75px;}
         
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
-    </style>
+
+        .skybanner {position:fixed;top:250px;right:10px;z-index:1;} 
+        
+        </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
+        <div class="skybanner">		
+			<a href="#event">
+				<img src="https://static.willbes.net/public/images/promotion/2019/11/1442_sky.png" />
+			</a>
+		</div>        
+
         <div class="evtCtnsBox evttop" >            
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1442_top.gif" alt="기미진 국어 아침특강 라이브" usemap="#Map1442_top" border="0" />
             <map name="Map1442_top" id="Map1442_top">
@@ -63,6 +73,15 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1442_03.png" title="무엇이든 물어보세요">                
         </div>
+
+        <div class="evtCtnsBox evt04" id="event">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1442_event.gif" title="25일 단 하루 이벤트">                
+        </div>        
+
+        {{--홍보url--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_url_partial')
+        @endif 
 
         {{--댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

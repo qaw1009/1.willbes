@@ -69,6 +69,8 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         .skybanner {position:fixed;top:200px;right:0;z-index:1;}
+        .skybanner2 {position:fixed;top:410px;right:0;z-index:1;}
+
 
     </style>
 
@@ -77,6 +79,12 @@
         <div class="skybanner">
             <a href="#to_go">
                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_skybanner.png" alt="스카이베너" >
+            </a>
+        </div>     
+        
+        <div class="skybanner2">
+            <a href="#apply">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_skybanner2.png" alt="스카이베너2" >
             </a>
         </div>      
 
@@ -130,18 +138,18 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_4.jpg" usemap="#Map1455b" title="단계별 종합반 수강신청" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_4.jpg" usemap="#Map1455b"  title="단계별 종합반 수강신청" border="0">
             <map name="Map1455b" id="Map1455b">
-                <area shape="rect" coords="889,553,1036,786" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="891,938,1036,981" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-                <area shape="rect" coords="891,1127,1036,1173" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" />
-                <area shape="rect" coords="894,1319,1032,1361" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-                <area shape="rect" coords="892,1689,1033,1732" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="891,1879,1036,1921" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
-            </map>           
+                <area shape="rect" coords="889,555,1033,686" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
+                <area shape="rect" coords="888,841,1034,882" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+                <area shape="rect" coords="889,1030,1030,1073" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" />
+                <area shape="rect" coords="887,1219,1033,1262" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+                <area shape="rect" coords="888,1610,1037,1653" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
+                <area shape="rect" coords="890,1797,1033,1843" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
+            </map>             
         </div>
 
-        <div class="evtCtnsBox evt05" id="table">			
+        <div class="evtCtnsBox evt05" id="apply">			
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_5.jpg"  alt="시간표 및 장소" />
                 <ul>
@@ -160,7 +168,7 @@
                 <span class="area02">광주(참수리)</span>
                 <span class="area03">인천</span>
                 <span class="area04">광주</span>
-                <span class="area05">전북<em>(전주,익산)</em></span>
+                <span class="area05">전북<em>(전주)</em></span>
                 <span class="area06">대구</span>
                 <span class="area07">부산</span>
                 <span class="area09">제주</span>   

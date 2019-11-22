@@ -134,8 +134,7 @@
         </a>
     </div>
     <div id="tab2">
-      {{--<a href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_balnk">--}}
-      <a href="javascript:alert('10월 31일부로 마감되었습니다.')">
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_balnk">  
       <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c2.jpg" title="한덕현"/>
       </a>
     </div>

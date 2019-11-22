@@ -100,7 +100,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1432_01.jpg"  alt="윌비스의 7급 커리큘럼"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1432_01.gif"  alt="윌비스의 7급 커리큘럼"  />
         </div>
 
         <div class="evtCtnsBox wb_cts02" >

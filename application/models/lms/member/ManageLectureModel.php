@@ -559,6 +559,7 @@ class ManageLectureModel extends WB_Model
                 set('IsStatus', 'N')->
                 set('DelDatm', 'NOW()', false)->
                 set('DelAdminIdx', $this->session->userdata('admin_idx'))->
+                set('DelAdminIp', $this->input->ip_address())->
                 where('LddIdx', $LddIdx)->
                 update($this->_table['down_log']) === false) {
                 throw new \Exception('업데이트 실패했습니다.');

@@ -161,7 +161,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @php $down_count = 0; @endphp
+                                            @php $down_count = 0; $down_delete = 0; @endphp
                                             @foreach($lec['down_log'] as $log)
                                                 @if($log['wUnitIdx'] == $row['wUnitIdx'])
                                                     <tr>
@@ -169,6 +169,9 @@
                                                         <td>{{$log['DownloadIp']}}</td>
                                                     </tr>
                                                     @php $down_count++ ; @endphp
+                                                    @if($log['IsStatus'] == 'N')
+                                                        @php $down_delete++ ; @endphp
+                                                    @endif
                                                 @endif
                                             @endforeach
                                             </tbody>
@@ -182,9 +185,21 @@
                         </div>
 
                         @if($down_count > 0)
-                            <br/><br>
-                            총 {{$down_count}} 회 다운로드함<br/>
+                            &nbsp;<button class="btn btn-sm btn-primary border-radius-reset mr-15 btn-danger btn_downlog"
+                                        data-m="{{$row['MemIdx']}}"
+                                        data-o="{{$row['OrderIdx']}}"
+                                        data-op="{{$row['OrderProdIdx']}}"
+                                        data-p="{{$row['ProdCode']}}"
+                                        data-ps="{{$row['ProdCodeSub']}}"
+                                        data-l="{{$row['wLecIdx']}}"
+                                        data-u="{{$row['wUnitIdx']}}"
+                                        xonclick="fnDown();">다운로드이력</button>
+                            <br/>
+                            {{$down_count}}회 다운로드({{$down_delete}}회 취소)<br/>
+                            <!--
                             <button class="btn btn-sm btn-primary border-radius-reset mr-15 btn-danger" data-toggle="modal" data-target="#modal-{{$row['wUnitIdx']}}">파일다운로드 이력 보기</button>
+                            -->
+
                         @endif
                     </td>
                     <td>{{$row['FirstStudyDate']}}</td>
@@ -272,6 +287,15 @@
         $(document).ready(function() {
             $('.btn_change').setLayer({
                 url: "{{ site_url("member/manage/layerSetTime/") }}",
+                add_param_type:'attr_param',
+                add_param:[
+                    {'id':'m'},{'id':'o'},{'id':'op'},{'id':'p'},{'id':'ps'},{'id':'l'},{'id':'u'},
+                ],
+                width: 800
+            });
+
+            $('.btn_downlog').setLayer({
+                url: "{{ site_url("member/manage/layerDownlog/") }}",
                 add_param_type:'attr_param',
                 add_param:[
                     {'id':'m'},{'id':'o'},{'id':'op'},{'id':'p'},{'id':'ps'},{'id':'l'},{'id':'u'},

@@ -2591,4 +2591,99 @@ class Manage extends \app\controllers\BaseController
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
+
+
+    /**
+     * 첨부파일 다운로드 로그 모
+     * @return object|string
+     */
+    public function layerDownlog()
+    {
+        $memidx = $this->_req('m');
+        $orderidx = $this->_req('o');
+        $orderprodidx = $this->_req('op');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('ps');
+        $wlecidx = $this->_req('l');
+        $wunitidx = $this->_req('u');
+
+        $param = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $curriculum = $this->manageLectureModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $wlecidx,
+                'wUnitIdx' => $wunitidx
+            ]
+        ]);
+
+        $curriculum = $curriculum[0];
+
+        return $this->load->view('member/layer/lecture/down_modal', [
+            'curriculum' => $curriculum,
+            'param' => $param
+        ]);
+    }
+
+
+    /**
+     * 첨부파일 다운로드 로그 ajax
+     * @return CI_Output
+     */
+    public function ajaxDownlog()
+    {
+        $memidx = $this->_req('m');
+        $orderidx = $this->_req('o');
+        $orderprodidx = $this->_req('op');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('ps');
+        $wlecidx = $this->_req('l');
+        $wunitidx = $this->_req('u');
+
+        $cond = [
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $wlecidx,
+                'wUnitIdx' => $wunitidx
+            ]
+        ];
+
+        $count = $this->manageLectureModel->getDownLog($cond, true);
+
+        if($count > 0){
+            $list = $this->manageLectureModel->getDownLog($cond, false);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+
+    /**
+     * 첨부파일 다운로드 로그 삭제
+     * @param array $params
+     * @return CI_Output
+     */
+    public function deleteDownlog($params = [])
+    {
+        if(empty($params[0]) == true){
+            return $this->json_error('파라미터가 잘못되었습니다.');
+        }
+
+        if($this->manageLectureModel->deleteDownlog($params[0]) == false){
+            return $this->json_error('삭제에 실패했습니다.');
+        }
+
+        return $this->json_result(true,'삭제되었습니다.');
+
+    }
 }

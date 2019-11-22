@@ -534,16 +534,39 @@ class ManageLectureModel extends WB_Model
         if($isCount === true){
             $query = "SELECT COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT * ";
+            $query = "SELECT * , IFNULL(A.wAdminName, '') AS adminName ";
         }
 
-        $query .= " FROM {$this->_table['down_log']} AS L ";
+        $query .= " FROM {$this->_table['down_log']} AS L
+            LEFT JOIN {$this->_table['admin']} AS A ON A.wAdminIdx = L.DelAdminIdx
+        ";
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
         $result = $this->_conn->query($query);
 
         return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+    public function deleteDownlog($LddIdx)
+    {
+        if(empty($LddIdx)){
+            return false;
+        }
+
+        try{
+            if($this->_conn->
+                set('IsStatus', 'N')->
+                set('DelDatm', 'NOW()', false)->
+                set('DelAdminIdx', $this->session->userdata('admin_idx'))->
+                where('LddIdx', $LddIdx)->
+                update($this->_table['down_log']) === false) {
+                throw new \Exception('업데이트 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
     }
 
 

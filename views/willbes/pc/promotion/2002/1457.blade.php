@@ -99,6 +99,11 @@
                 <area shape="rect" coords="318,783,842,865" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="소문내기 이벤트 이미지 다운받기" />
             </map>        
 		</div>  
+
+        {{--홍보url--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_url_partial')
+        @endif 
                
 	</div>
     <!-- End Container -->

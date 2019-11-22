@@ -161,17 +161,23 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @php $down_count = 0; $down_delete = 0; @endphp
+                                            @php $count = 0;$down_count = 0; $down_delete = 0; $print_count = 0; @endphp
                                             @foreach($lec['down_log'] as $log)
                                                 @if($log['wUnitIdx'] == $row['wUnitIdx'])
                                                     <tr>
                                                         <td>{{$log['DownloadDatm']}}</td>
                                                         <td>{{$log['DownloadIp']}}</td>
                                                     </tr>
-                                                    @php $down_count++ ; @endphp
+                                                    @if($log['DownloadType'] == 'P')
+                                                        @php $print_count++ ; @endphp
+                                                    @endif
+                                                    @if($log['DownloadType'] == 'D')
+                                                        @php $down_count++ ; @endphp
+                                                    @endif
                                                     @if($log['IsStatus'] == 'N')
                                                         @php $down_delete++ ; @endphp
                                                     @endif
+                                                    @php $count++ ; @endphp
                                                 @endif
                                             @endforeach
                                             </tbody>
@@ -184,7 +190,7 @@
                             </div>
                         </div>
 
-                        @if($down_count > 0)
+                        @if($count > 0)
                             &nbsp;<button class="btn btn-sm btn-primary border-radius-reset mr-15 btn-danger btn_downlog"
                                         data-m="{{$row['MemIdx']}}"
                                         data-o="{{$row['OrderIdx']}}"
@@ -195,7 +201,9 @@
                                         data-u="{{$row['wUnitIdx']}}"
                                         xonclick="fnDown();">다운로드이력</button>
                             <br/>
-                            {{$down_count}}회 다운로드({{$down_delete}}회 취소)<br/>
+                            다운 횟수 : {{$down_count}}회<br/>
+                            인쇄 횟수 : {{$print_count}}회<br/>
+                            취소 횟수 : {{$down_delete}}회
                             <!--
                             <button class="btn btn-sm btn-primary border-radius-reset mr-15 btn-danger" data-toggle="modal" data-target="#modal-{{$row['wUnitIdx']}}">파일다운로드 이력 보기</button>
                             -->

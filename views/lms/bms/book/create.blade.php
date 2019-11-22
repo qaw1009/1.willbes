@@ -83,11 +83,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="school_year">교재기본정보 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="school_year">교재기본정보
                     </label>
                     <div class="col-md-9">
                         <div class="inline-block mr-5 item">
-                            <select class="form-control" id="school_year" name="school_year" required="required" title="대비학년도">
+                            <select class="form-control" id="school_year" name="school_year" title="대비학년도">
                                 <option value="">대비학년도</option>
                                 @for($i = (date('Y')+1); $i >= 2010; $i--)
                                     <option value="{{ $i }}" @if($i == $data['SchoolYear']) selected="selected" @endif>{{ $i }}</option>
@@ -95,7 +95,7 @@
                             </select>
                         </div>
                         <div class="inline-block mr-5 item">
-                            <select class="form-control" id="course_idx" name="course_idx" required="required" title="과정">
+                            <select class="form-control" id="course_idx" name="course_idx" title="과정">
                                 <option value="">과정</option>
                                 @foreach($arr_course as $row)
                                     <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['CourseIdx'] == $data['CourseIdx']) selected="selected" @endif>{{ $row['CourseName'] }}</option>

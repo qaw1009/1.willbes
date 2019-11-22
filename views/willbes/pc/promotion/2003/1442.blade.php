@@ -74,6 +74,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1442_03.png" title="무엇이든 물어보세요">                
         </div>
 
+        {{--댓글--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_normal_partial')
+        @endif
+
         <div class="evtCtnsBox evt04" id="event">
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1442_event.gif" title="25일 단 하루 이벤트">                
         </div>        
@@ -81,12 +86,9 @@
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif 
+        @endif y
 
-        {{--댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif
+        
 	</div>
     <!-- End Container -->
 

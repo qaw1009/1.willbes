@@ -183,8 +183,10 @@ var ezPDFWSPrinter = new function() {
 	this._moduleprint = false;
 
 	this._module = "ezPDFReaderWillbes";
-	this._version = "3.1.0.69";
-	this._key = "0E7F67724DD1BB66A7992D13654DCF0A";
+	//this._version = "3.1.0.69";
+	//this._key = "0E7F67724DD1BB66A7992D13654DCF0A";
+	this._version = "3.1.0.79";
+	this._key = "264D4533FD0B86E030C115888647F3A3";
 	this._id = "";
 
 	this._printmodule = "ezPDFPrintExWillbes";

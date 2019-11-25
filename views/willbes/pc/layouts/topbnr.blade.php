@@ -31,6 +31,16 @@
         }
     </script>
 @endif
+@if($__cfg['SiteCode'] == '2002')
+    {{-- 경찰학원--}}
+    <div id="topBannerLayer">
+        <div class="topBanner">
+            <a href="{{ site_url('/promotion/index/cate/3001/code/1022') }}">
+                <img src="https://static.willbes.net/public/images/promotion/2019/09/1022_top_ban.jpg" alt="적중! 적중! 또 다시 적중!">
+            </a>
+        </div>
+    </div>
+@endif
 @if($__cfg['CateCode'] == '3019')
     {{-- 공무원 9급 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">

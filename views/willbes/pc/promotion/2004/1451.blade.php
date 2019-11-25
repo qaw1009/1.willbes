@@ -29,19 +29,10 @@
 
         /*TAB*/
         .tabWrapEvt{width:980px; margin:0 auto}
-        .tabWrapEvt li {display:inline; float:left; width:490px; margin-left:0px;}
+        .tabWrapEvt li {display:inline; float:left; width:50%; margin-left:0px;}
         .tabWrapEvt li a {display:block; text-align:center}
-        .tabWrapEvt li a img.off {display:block}
-        .tabWrapEvt li a img.on {display:none}
-        .tabWrapEvt li a:hover img.off {display:none}
-        .tabWrapEvt li a:hover img.on {display:block}
-        .tabWrapEvt li a.active img.off {display:none}
-        .tabWrapEvt li a.active img.on {display:block}
-        .tabWrapEvt li a:hover,
-        .tabWrapEvt li a.active {}
-        .tabWrapEvt li:last-child a {margin-right:0}
         .tabWrapEvt:after {content:""; display:block; clear:both}
-        .tabcts {background:none; width:980px; margin:0px auto 0; text-align:center;}
+        .tabcts {width:980px; margin:0px auto 0; text-align:center;}
 
         /* tip */
         .evt_04 {background:#fff; text-align:left; padding:100px 0; display:none}
@@ -56,6 +47,7 @@
         .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
         .wb_tip_orange {font-size:12px; color:#c03011;}
+
         /*TAB_tip*/
         .tab02 {margin-bottom:20px}
         .tab02 li {display:inline; float:left; width:33.33333%;}

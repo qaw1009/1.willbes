@@ -34,8 +34,8 @@
         .evt03 .request h3 {font-size:17px;}
         .evt03 .request td {padding:10px}
         .evt03 .request input {height:26px;}
-        .evt03 .requestL {width:48%; float:left}        
-        .evt03 .requestR {width:48%; float:right; }
+        .evt03 .requestL {width:49.5%; float:left}        
+        .evt03 .requestR {width:49%; float:right; }
         .evt03 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:147px; overflow-y:scroll }
         .evt03 .requestL li {display:inline-block; margin-right:10px}
         .evt03 .requestR li {margin-bottom:5px}
@@ -77,16 +77,19 @@
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_01.jpg" title="경찰합격! 지금이 기회다!">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_01.jpg" usemap="#Map1453B" title="지텔프 마라톤 특강 등록하면!!" border="0">
+                <map name="Map1453B" id="Map1453B">
+                    <area shape="rect" coords="201,1519,924,1621" href="#request" />
+                </map>
             </div>
 
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_02.jpg" title="수능 인증샷 이벤트">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_02.jpg" title="지텚프 마라콘 특강 접수">
                 <div class="request" id="request">
                     <div class="requestL">
                         <h3 class="NGEBS">* G-TELP 마라톤 특강 접수</h3>
                         <table width="0" cellspacing="0" cellpadding="0" class="table_type">
-                            <col width="25%" />
+                            <col width="18%" />
                             <col  />
                             <tr>
                                 <th>* 이름</th>
@@ -139,7 +142,7 @@
                     </div>
                 </div>
 
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_03.jpg" usemap="#Map1453" title="인증샷 소문내기 이벤트" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_03.jpg" usemap="#Map1453" title="지텔프 마라톤 특강 접수하기" border="0">
                 <map name="Map1453" id="Map1453">
                   <area shape="rect" coords="147,0,966,92" href="#none" onclick="javascript:fn_submit();" />
                 </map>          

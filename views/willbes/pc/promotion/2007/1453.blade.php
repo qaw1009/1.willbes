@@ -55,7 +55,7 @@
             {!! csrf_field() !!}
             <input type="hidden" name="event_idx" id ="event_idx" value="{{ $data['ElIdx'] }}"/>
             <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" name="file_chk" value="Y"/>
+            <input type="hidden" name="file_chk" value="N"/>
             <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
 {{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_params[]" value="register_data2"/> --}}{{-- 체크 항목 전송 --}}
@@ -101,7 +101,9 @@
                                 <th>* 특강정보</th>
                                 <td>
                                     <ul>
-                                        <li><input type="checkbox" name="register_data2" id="CT1" value="11.30 (토) G-TELP 마라톤 특강" /> <label for="CT1">11.30 (토) G-TELP 마라톤 특강</label></li>
+                                        @foreach($arr_base['register_list'] as $row)
+                                            <li><input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label></li>
+                                        @endforeach
                                     </ul>
                                 </td>
                             </tr>
@@ -151,18 +153,6 @@
             if (is_login != true) {
                 alert('로그인 후 이용해 주세요.');
                 return;
-            }
-
-            var files = $('#attach_file')[0].files[0];
-            if (files === undefined || files == null || files == '') {
-                alert('수험표를 등록해 주세요.');
-                return;
-            } else {
-                var ext = $('#attach_file').val().split('.').pop().toLowerCase();
-                if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
-                    alert('등록 할수 없는 파일 확장자입니다.');
-                    return;
-                }
             }
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {

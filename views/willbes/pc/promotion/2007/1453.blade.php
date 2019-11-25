@@ -62,6 +62,9 @@
 {{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
 
+            <input type="hidden" name="register_chk_col[]" value="B.ElIdx"/>
+            <input type="hidden" name="register_chk_val[]" value="{{ $data['ElIdx'] }}"/>
+
             <div class="skyBanner">
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/11/1453_sky.png" title="바로신청하기"></a>
             </div>
@@ -149,16 +152,23 @@
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
-            {{--var is_login = '{{sess_data('is_login')}}';--}}
-            {{--if (is_login != true) {--}}
-            {{--    alert('로그인 후 이용해 주세요.');--}}
-            {{--    return;--}}
-            {{--}--}}
+            {{--
+            var is_login = '{{sess_data('is_login')}}';
+            if (is_login != true) {
+                alert('로그인 후 이용해 주세요.');
+                return;
+            }
+            --}}
+
+            if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
+                alert('특강을 선택해주세요.'); return;
+            }
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;
             }
+
 
             if (!confirm('신청하시겠습니까?')) { return true; }
             ajaxSubmit($regi_form_register, _url, function(ret) {

@@ -151,8 +151,25 @@
     margin-right: 5px;
 }
 
+/* Main Container : cscenterBox : willbesNumber */
+.job .willbesNumber {
+    background: #f6f6f6;
+    width: 720px;
+    padding: 30px 0 0 50px;
+    letter-spacing: normal;    
+}
+.job .willbesNumber ul li {   
+    margin:0;
+    vertical-align: top;
+    display: inline;
+    float:left;
+    width:50%;    
+}
+.job .willbesNumber ul:after {
+    content:""; display:block; clear:both;
+}
 
-/* Main Container : Gosi */
+/* Main Container */
 .job .tx-color {
     color: #643fb5;
 }

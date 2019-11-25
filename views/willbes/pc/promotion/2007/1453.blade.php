@@ -34,8 +34,8 @@
         .evt03 .request h3 {font-size:17px;}
         .evt03 .request td {padding:10px}
         .evt03 .request input {height:26px;}
-        .evt03 .requestL {width:48%; float:left}        
-        .evt03 .requestR {width:48%; float:right; }
+        .evt03 .requestL {width:49.5%; float:left}        
+        .evt03 .requestR {width:49%; float:right; }
         .evt03 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:147px; overflow-y:scroll }
         .evt03 .requestL li {display:inline-block; margin-right:10px}
         .evt03 .requestR li {margin-bottom:5px}
@@ -55,12 +55,15 @@
             {!! csrf_field() !!}
             <input type="hidden" name="event_idx" id ="event_idx" value="{{ $data['ElIdx'] }}"/>
             <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" name="file_chk" value="Y"/>
+            <input type="hidden" name="file_chk" value="N"/>
             <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
 {{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_params[]" value="register_data2"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
+
+            <input type="hidden" name="register_chk_col[]" value="B.ElIdx"/>
+            <input type="hidden" name="register_chk_val[]" value="{{ $data['ElIdx'] }}"/>
 
             <div class="skyBanner">
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/11/1453_sky.png" title="바로신청하기"></a>
@@ -74,16 +77,19 @@
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_01.jpg" title="경찰합격! 지금이 기회다!">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_01.jpg" usemap="#Map1453B" title="지텔프 마라톤 특강 등록하면!!" border="0">
+                <map name="Map1453B" id="Map1453B">
+                    <area shape="rect" coords="201,1519,924,1621" href="#request" />
+                </map>
             </div>
 
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_02.jpg" title="수능 인증샷 이벤트">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_02.jpg" title="지텚프 마라콘 특강 접수">
                 <div class="request" id="request">
                     <div class="requestL">
                         <h3 class="NGEBS">* G-TELP 마라톤 특강 접수</h3>
                         <table width="0" cellspacing="0" cellpadding="0" class="table_type">
-                            <col width="25%" />
+                            <col width="18%" />
                             <col  />
                             <tr>
                                 <th>* 이름</th>
@@ -101,7 +107,9 @@
                                 <th>* 특강정보</th>
                                 <td>
                                     <ul>
-                                        <li><input type="checkbox" name="register_data2" id="CT1" value="11.30 (토) G-TELP 마라톤 특강" /> <label for="CT1">11.30 (토) G-TELP 마라톤 특강</label></li>
+                                        @foreach($arr_base['register_list'] as $row)
+                                            <li><input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label></li>
+                                        @endforeach
                                     </ul>
                                 </td>
                             </tr>
@@ -134,7 +142,7 @@
                     </div>
                 </div>
 
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_03.jpg" usemap="#Map1453" title="인증샷 소문내기 이벤트" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1453_03.jpg" usemap="#Map1453" title="지텔프 마라톤 특강 접수하기" border="0">
                 <map name="Map1453" id="Map1453">
                   <area shape="rect" coords="147,0,966,92" href="#none" onclick="javascript:fn_submit();" />
                 </map>          
@@ -147,28 +155,23 @@
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
+            {{--
             var is_login = '{{sess_data('is_login')}}';
             if (is_login != true) {
                 alert('로그인 후 이용해 주세요.');
                 return;
             }
+            --}}
 
-            var files = $('#attach_file')[0].files[0];
-            if (files === undefined || files == null || files == '') {
-                alert('수험표를 등록해 주세요.');
-                return;
-            } else {
-                var ext = $('#attach_file').val().split('.').pop().toLowerCase();
-                if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
-                    alert('등록 할수 없는 파일 확장자입니다.');
-                    return;
-                }
+            if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
+                alert('특강을 선택해주세요.'); return;
             }
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;
             }
+
 
             if (!confirm('신청하시겠습니까?')) { return true; }
             ajaxSubmit($regi_form_register, _url, function(ret) {

@@ -158,6 +158,9 @@
     padding: 30px 0 0 50px;
     letter-spacing: normal;    
 }
+.job .willbesNumber ul {
+    padding:0 50px;
+}
 .job .willbesNumber ul li {   
     margin:0;
     vertical-align: top;

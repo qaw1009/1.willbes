@@ -354,6 +354,12 @@ class EventFModel extends WB_Model
                     }
                 }
 
+                //여러 특강중 하나의 특강만 신청 가능할시
+                if(empty($inputData['register_chk_el_idx']) === false) {
+                    unset($arr_condition['EQ']['A.ErIdx']); //기존 ErIdx 조회 조건 제거
+                    $arr_condition['EQ']['B.ElIdx'] = $inputData['register_chk_el_idx'];
+                }
+
                 $register_member_info = $this->getRegisterMember($arr_condition);
                 if (count($register_member_info) > 0) {
                     throw new \Exception('등록된 신청자 정보가 있습니다.');

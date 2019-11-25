@@ -56,14 +56,14 @@
             <input type="hidden" name="event_idx" id ="event_idx" value="{{ $data['ElIdx'] }}"/>
             <input type="hidden" name="register_type" value="promotion"/>
             <input type="hidden" name="file_chk" value="N"/>
-            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
 {{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_params[]" value="register_data2"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
-
-            <input type="hidden" name="register_chk_col[]" value="B.ElIdx"/>
-            <input type="hidden" name="register_chk_val[]" value="{{ $data['ElIdx'] }}"/>
+{{--            <input type="hidden" name="register_chk[]" value="">--}}
+{{--            <input type="hidden" name="register_chk_col[]" value="B.ElIdx"/>--}}
+{{--            <input type="hidden" name="register_chk_val[]" value="{{ $data['ElIdx'] }}"/>--}}
+            <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
 
             <div class="skyBanner">
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2019/11/1453_sky.png" title="바로신청하기"></a>
@@ -163,7 +163,8 @@
             }
             --}}
 
-            if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
+            var regist_chk_temp_val = $regi_form_register.find('input[name="register_chk[]"]:checked').val();
+            if (typeof regist_chk_temp_val === 'undefined') {
                 alert('특강을 선택해주세요.'); return;
             }
 
@@ -171,7 +172,6 @@
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;
             }
-
 
             if (!confirm('신청하시겠습니까?')) { return true; }
             ajaxSubmit($regi_form_register, _url, function(ret) {

@@ -62,16 +62,25 @@
         .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff}
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}
+
+        .evt_04 {background:#fff;}
+
+        /*TAB*/
+        .tabWrapEvt{width:980px; margin:0 auto}
+        .tabWrapEvt li {display:inline; float:left; width:50%; margin-left:0px;}
+        .tabWrapEvt li a {display:block; text-align:center}
+        .tabWrapEvt:after {content:""; display:block; clear:both}
+        .tabcts {width:980px; margin:0px auto 0; text-align:center;}
     </style>
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1434_top.jpg" alt="윌비스 기술직 라스트 캠프" />            
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1434_top.jpg" alt="윌비스 기술직 라스트 캠프" />            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1434_01.jpg" alt="과목별 고득점 커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1434_01.jpg" alt="과목별 고득점 커리큘럼"/>
         </div>
 
         <div class="evtCtnsBox wb_cts02" >            
@@ -83,7 +92,7 @@
                 </ul>
             </div>
             <div id="tab01" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1434_02_1.jpg" alt="9급"/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/11/1434_02_1.jpg" alt="9급"/>
             </div>
             <div id="tab02" class="tabContents">
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1428_02_2.jpg" alt="7급"/>
@@ -91,14 +100,21 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03" id="careful" >            
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1434_05.jpg" alt="이런 분들이 수강하시면 좋아요."/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1434_05.jpg" alt="이런 분들이 수강하시면 좋아요."/>
         </div>
 
-        <div class="evtCtnsBox wb_cts04">            
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1434_06.jpg" alt="윌비스 기술직 라스트 캠프 수강신청" usemap="#Map1434A" border="0"/>
-            <map name="Map1434A" id="Map1434A">
-                <area shape="rect" coords="248,707,931,800" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&course_idx=" target="_blank" />
-            </map>           
+        <div class="evtCtnsBox evt_04">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1434_03.jpg" title="무한회독 학습 프로그램" />
+            <ul class="tabWrapEvt">
+                <li><a href="#tab1" class="active"><img src="https://static.willbes.net/public/images/promotion/2019/11/1451_03_01_tab.jpg" alt=""/></a></li>
+                <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/11/1434_03_02_tab.jpg" alt=""/></a></li>
+            </ul>
+            <div id="tab1" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/11/1434_03_01.jpg" alt=""/></div>
+            <div id="tab2" class="tabcts"><img src="https://static.willbes.net/public/images/promotion/2019/11/1434_03_02.jpg" alt=""/></div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1434_04.jpg" usemap="#Map1451A" border="0">
+            <map name="Map1451A" id="Map1451A">
+                <area shape="rect" coords="255,33,925,114" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&course_idx=" target="_blank" />
+            </map>         
         </div>
 
          <!--유의사항-->
@@ -271,6 +287,31 @@
             
                 e.preventDefault()})})}
         ); 
+
+        $(document).ready(function(){
+            $('.tabWrapEvt').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+            
+                $content = $($active[0].hash);
+            
+                $links.not($active).each(function () {
+                $(this.hash).hide()});
+            
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+            
+                $active = $(this);
+                $content = $(this.hash);
+            
+                $active.addClass('active');
+                $content.show();
+            
+                e.preventDefault()})})}
+        );   
     </script>
 
 @stop

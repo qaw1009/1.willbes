@@ -22,7 +22,6 @@
         /************************************************************/
         .skyBanner {position:fixed; width:162px; top:200px; right:10px; z-index:10;}
         .skyBanner a {display:block; margin-bottom:5px}
-
        
         .evt00 {background:#404040}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/11/1450_top_bg.jpg) no-repeat center top;}

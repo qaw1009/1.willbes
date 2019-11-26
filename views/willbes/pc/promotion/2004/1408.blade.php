@@ -168,6 +168,4 @@
     @endif
 }
 </script>
-
-
 @stop

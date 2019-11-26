@@ -156,7 +156,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="image_map">이미지맵</label>
+                    <label class="control-label col-md-1-1" for="image_map">이미지맵</label>
                     <div class="col-md-7 item">
                         <div class="x_panel mb-0">
                             <div class="x_content pb-0">

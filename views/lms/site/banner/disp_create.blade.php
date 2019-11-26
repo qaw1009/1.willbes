@@ -21,7 +21,7 @@
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-10 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), true) !!}
-                        &nbsp;&nbsp;&nbsp;&nbsp;• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.
+                        <span class="required pl-20">*</span> 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     </label>
                     <div class="col-md-10 form-inline">
                         @if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['CateName'] }}</p>
+                            <p class="form-control-static">{{ $data['CateName'] or '전체카테고리' }}</p>
                         @else
                             <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
                             <span id="selected_category" class="pl-10"></span>
@@ -41,7 +41,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="disp_name">노출섹션명<span class="required">*</span></label>
                     <div class="form-inline col-md-10 item">
-                        <input type="text" id="disp_name" name="disp_name" required="required" class="form-control" maxlength="100" title="배너명" value="{{ $data['DispName'] }}" >
+                        <input type="text" id="disp_name" name="disp_name" required="required" class="form-control" maxlength="100" title="배너명" value="{{ $data['DispName'] }}">
+                        <span class="required pl-15">*</span> PC 사이트 메인에 노출되는 섹션명은 반드시 <span class="red bold">`메인_`</span>으로 시작하는 명칭으로 등록해 주세요.
                     </div>
                 </div>
 

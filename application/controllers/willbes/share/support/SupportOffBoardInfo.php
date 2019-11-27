@@ -36,6 +36,9 @@ class SupportOffBoardInfo extends BaseSupport
         if($bm_idx == '89') {
             $bm_title = '모의고사성적공지';
             $tab_menu = false;
+        } else if($bm_idx == '107') {
+            $bm_title = '통생반공지';
+            $tab_menu = false;
         } else {
             $bm_title = '학원강의정보';
             $tab_menu = true;
@@ -119,6 +122,9 @@ class SupportOffBoardInfo extends BaseSupport
 
         if($bm_idx == '89') {
             $bm_title = '모의고사성적공지';
+            $tab_menu = false;
+        } else if($bm_idx == '107') {
+            $bm_title = '통생반공지';
             $tab_menu = false;
         } else {
             $bm_title = '학원강의정보';

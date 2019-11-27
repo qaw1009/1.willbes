@@ -56,7 +56,10 @@
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #811b31 !important;
 }
-
+.lang .bSlider .sliderStopAutoPager img{
+    text-align: center;
+    margin:0 auto;
+}
 .lang .Section1 {
     background:#f8f8f8;
     padding:0;

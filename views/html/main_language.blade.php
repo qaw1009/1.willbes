@@ -59,6 +59,7 @@
         <div class="VisualsubBox">
             <div class="bSlider">
                 <div class="sliderStopAutoPager">
+                    <div><a href="#none"><img src="https://lang.dev.willbes.net/public/uploads/willbes/banner/2019/1127/banner_20191127164335.jpg" alt=""></a></div>    
                     <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_01.jpg" alt=""></a></div>
                     <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_02.jpg" alt=""></a></div>
                     <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3093_visualtop_03.jpg" alt=""></a></div>

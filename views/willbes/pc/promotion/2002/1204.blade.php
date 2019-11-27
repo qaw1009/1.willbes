@@ -50,6 +50,9 @@
         .evt04 a:hover {background:#252525; color:#fff;}
         .evt04 a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
 
+        .NSK-Black2{font-family:"NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif" !important;padding:100px 0;}
+        .NSK-Black2 .v2{color:#FF00FF;border-bottom:3px solid #000;}
+        .evt04 a.v2_color{background:#FF00FF;}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer"> 
@@ -73,12 +76,7 @@
             <div class="NSK-Black">
             2020 대비 <span>심화이론 개설 강의</span>            
             </div>
-            <p class="mt50 mb80">* 수강신청 클릭 시 가장 최근 진행 된 심화강좌로 연결됩니다.</p>
-            <span class="popup NSK-Black">
-                심화기출<br>
-                <span>11월 4일</span><br>
-                개강 예정!
-            </span>
+            <p class="mt50 mb80">* 수강신청 클릭 시 가장 최근 진행 된 심화강좌로 연결됩니다.</p>           
             
             <table cellspacing="0" cellpadding="0">
                 <col width="20%" />
@@ -135,6 +133,60 @@
                         <td><a href="{{ site_url('/lecture/show/cate/3002/pattern/only/prod-code/153346') }}">수강신청</a></td>
                     </tr>    
                     --}}                   
+                </tbody>
+            </table>
+            <div class="NSK-Black2">
+            2020 대비 <span class="v2">심화기출 개설 강의</span>            
+            </div>                   
+            
+            <table cellspacing="0" cellpadding="0">
+                <col width="20%" />
+                <col width="" />
+                <col width="20%" />
+                <col width="15%" />
+                <col width="15%" />
+                <thead>
+                    <tr>
+                        <th colspan="2">강의명</th>
+                        <th>동영상강의</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>형사소송법 신광은</td>
+                        <td>2020년 신광은 형사소송법 심화기출</td>
+                        <td><a class="v2_color" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157647" target="_blank">수강신청</a></td>
+                    </tr>    
+                    <tr>
+                        <td>경찰학개론 장정훈</td>
+                        <td>2020년 장정훈 경찰학개론 심화기출</td>
+                        <td><a class="v2_color" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157651" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>형법 김원욱</td>
+                        <td>2020년 김원욱 형법 심화기출</td>
+                        <td><a class="v2_color" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157653" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>한국사 오태진</td>
+                        <td>2020년 오태진 한국사 심화기출</td>
+                        <td><a class="v2_color" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157657" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>한국사 원유철</td>
+                        <td>2020년 원유철 한국사 심화기출</td>
+                        <td><a class="v2_color" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157659" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>영어 김준기</td>
+                        <td>2020년 김준기 영어 구문독해</td>
+                        <td><a class="v2_color" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157663" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>영어 김현정</td>
+                        <td>2020년 김현정 영어 심화기출</td>
+                        <td><a class="v2_color" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/157664" target="_blank">수강신청</a></td>
+                    </tr>                           
                 </tbody>
             </table>
         </div>

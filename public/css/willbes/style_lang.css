@@ -4,22 +4,39 @@
 .lang .topBanner p img {width:100%}
 
 /*********************************************     Main Container : cert     *********************************************/
-.lang .VisualsubBox {
-    width: 1120px;
-    height: 380px;
+.lang .MainVisual {
+    width: 100%;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 409px;
     overflow: hidden;
+    position: relative;
+    margin-top:30px;
+    text-align: center;
+}
+
+.lang .VisualsubBox {
+    position: absolute;
+    top:0;
+    left:50%;
+    margin-left:-1000px;
+    width: 2000px;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 409px;    
 }
 .lang .VisualsubBox .bx-wrapper .bx-controls-auto {
-    left:20px;
+    left:50%;
     bottom: 20px;
-    margin: 0;
+    margin-left:-540px;
     width: 50px;
     z-index: 90;
-  }
+    }
 .lang .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
-    left:60px;
+    left:50%;
+    margin-left:-500px;
     bottom: 20px;
     text-align: right;
     z-index: 100;
@@ -32,31 +49,37 @@
 }
 
 .lang .bx-wrapper .bx-pager.bx-default-pager a {
-  background: #898989 !important;
+    background: #fff !important;
 }
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .lang .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #db3e34 !important;
+    background: #811b31 !important;
 }
-
+.lang .bSlider .sliderStopAutoPager img{
+    text-align: center;
+    margin:0 auto;
+}
 .lang .Section1 {
-    /*background:#2a2a2a;*/
-    background:#000;
-    margin-top:50px;
-    padding:50px 0;
+    background:#f8f8f8;
+    padding:0;
+    margin:0;
 }
-.lang .Section1 .widthAuto iframe {
+.lang .Section2 {
+    position:relative;
+    background:#000;
+    padding:100px 0;
+}
+.lang .Section2 .widthAuto iframe {
     width: 853px;
     height: 480px;
     margin:0 auto;
     display: block;
 }
-.lang .Section2 {
-    position:relative;
-    background:#f6f6f6;
+.lang .Section3 {
+    background: #f8f8f8;
 }
-.lang .Section2 ul {
+.lang .Section3 ul {
     position:absolute;
     top:745px;
     left:50%;
@@ -64,15 +87,15 @@
     margin-left:-305px;
     z-index:1;
 }
-.lang .Section2 li {
+.lang .Section3 li {
     display:inline;
     float:left;
     width:50%;
 }
-.lang .Section2 ul:after {
+.lang .Section3 ul:after {
     content:""; display:block; clear:both;
 }
-.lang .Section2 a {
+.lang .Section3 a {
     display:block;
     text-align:center;
     color:#fff;
@@ -82,20 +105,29 @@
     line-height:50px;
     margin:0 5px;
 }
-.lang .Section2 a:hover {
-    background:#db3e34;
-}
-.lang .Section3 {
-    background:#d6d2cc;
+.lang .Section3 a:hover {
+    background:#811b31;
 }
 .lang .Section4 {
-    background:#F6F6F6;
+    background:#fff;
+    padding-bottom:120px;
+}
+.lang .Section4 .widthAuto iframe {
+    width: 953px;
+    height: 400px;
+    margin:0 auto;
+    display: block;
+}
+.lang .Section4 p {
+    width: 953px;
+    margin:10px auto 0;
+    letter-spacing:0;
 }
 .lang .Section5 {
-    background:#282B30;
+    background: url("https://static.willbes.net/public/images/promotion/main/3093_visual05_bg.jpg") center top  no-repeat;
 }
 .lang .Section6 {
-    background:#F6F6F6;
+    background:#f8f8f8;
 }
 
 .lang .tabWrap.noticeWrap li a {
@@ -115,7 +147,7 @@
     height: 19px;
     line-height: 19px;
     font-weight: 600;
-    color: #db3e34;
+    color: #811b31;
     border:none !important;
     border-right:1px solid #999 !important;
 }
@@ -128,7 +160,7 @@
     width: 520px;
 }
 .lang .tabBox.noticeBox .List-Table li a span {
-    background: #db3e34;
+    background: #811b31;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
@@ -143,29 +175,11 @@
 }
 
 .lang .tx-color {
-    color:#db3e34;
+    color:#811b31;
 }
 
- /* 슬라이드배너 */
- .slide_con {position:relative;width:940px;margin:0 auto}
- .slide_con p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
- .slide_con p a {cursor:pointer}
- .slide_con p.leftBtn {left:0}
- .slide_con p.rightBtn {right:0}
 
- .Section4 {padding-bottom:100px}
- .Section4 .slide_con {position:relative; width:900px; margin:0 auto}
- .Section4 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
- .Section4 .slide_con p.leftBtn {left:-80px}
- .Section4 .slide_con p.rightBtn {right:-80px}
-
- .slide_cons {position:relative;width:940px;margin:0 auto}
- .slide_cons p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
- .slide_cons p a {cursor:pointer}
- .slide_cons p.leftBtn {left:0}
- .slide_cons p.rightBtn {right:150px;}
-
- /* 수험가이드 테이블 */
+    /* 수험가이드 테이블 */
 .tableLangBox {width:840px ;margin:50px auto 0;}
 .title_s{color: #8f1838; margin-bottom: 10px; font-weight: bold; font-size:15px; margin-top:30px}
 .table1 {font-size:13px; border-top:1px solid #8f1838; margin-bottom:30px; color:#666;}

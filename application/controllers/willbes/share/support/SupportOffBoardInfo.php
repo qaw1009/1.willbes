@@ -37,7 +37,7 @@ class SupportOffBoardInfo extends BaseSupport
             $bm_title = '모의고사성적공지';
             $tab_menu = false;
         } else if($bm_idx == '107') {
-            $bm_title = '통생반공지';
+            $bm_title = '통합생활관리반 공지';
             $tab_menu = false;
         } else {
             $bm_title = '학원강의정보';
@@ -124,7 +124,7 @@ class SupportOffBoardInfo extends BaseSupport
             $bm_title = '모의고사성적공지';
             $tab_menu = false;
         } else if($bm_idx == '107') {
-            $bm_title = '통생반공지';
+            $bm_title = '통합생활관리반 공지';
             $tab_menu = false;
         } else {
             $bm_title = '학원강의정보';

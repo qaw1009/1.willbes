@@ -220,22 +220,26 @@ class Home extends \app\controllers\FrontController
      */
     private function _banner($cate_code = 0)
     {
+        /*// 노출섹션그룹으로 대체
         $arr_banner_disp = $this->_getBannerDispArray($cate_code);  // 배너영역 조회
         if (empty($arr_banner_disp) === true) {
             return [];
-        }
+        }*/
 
-        $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code);
+        $banner_disp_group = 'GRP:메인';
+        $result = $this->bannerFModel->findBanners($banner_disp_group, $this->_site_code, $cate_code);
 
         $data = [];
         foreach ($result as $key => $row) {
             $data[$row['DispName']][] = $result[$key];
         }
+
         return $data;
     }
 
     /**
      * 사이트, 카테고리별 메인 배너 섹션 리턴
+     * TODO : 사용안함, 안정화 확인 후 삭제 요망
      * @param $cate_code
      * @return mixed
      */

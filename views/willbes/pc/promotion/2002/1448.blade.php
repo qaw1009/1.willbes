@@ -65,7 +65,8 @@
 {{--            <input type="hidden" name="target_params[]" value="register_data2"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="수강생정보"/> --}}{{-- 체크 항목 전송 --}}
-
+{{--                <input type="hidden" name="register_chk_col[]" value="A.MemIdx"/>--}}
+{{--                <input type="hidden" name="register_chk_val[]" value="{{ $_SESSION['mem_idx'] }}"/>--}}
 
             <div class="evtCtnsBox evt00">
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">
@@ -78,12 +79,12 @@
             <div class="evtCtnsBox evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2019//11/1448_01.jpg" title="경찰합격! 지금이 기회다!">
                 <ul>
-                    <li><input type="radio" name="register_chk1" id="register_chk1" value="" /> <label for="register_chk1">신광은</label></li>
-                    <li><input type="radio" name="register_chk2" id="register_chk2" value="" /> <label for="register_chk2">신동엽</label></li>
-                    <li><input type="radio" name="register_chk3" id="register_chk3" value="" /> <label for="register_chk3">신서유기</label></li>
+                    <li><input type="radio" name="quiz" id="quiz1" value="신광은" /> <label for="quiz1">신광은</label></li>
+                    <li><input type="radio" name="quiz" id="quiz2" value="신동엽" /> <label for="quiz2">신동엽</label></li>
+                    <li><input type="radio" name="quiz" id="quiz3" value="신서유기" /> <label for="quiz3">신서유기</label></li>
                 </ul>
                 <div class="btn NGEB">
-                    <a href="#none">정답 제출하기 ></a>
+                    <a href="#none" onclick="giveCheck();">정답 제출하기 ></a>
                 </div>
             </div>
 
@@ -173,8 +174,31 @@
     <!-- End Container -->
 
     <script>
+        var $regi_form_register = $('#regi_form_register');
+
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            var quiz_val = $('input:radio[name="quiz"]:checked').val();
+            if(quiz_val === undefined) {
+                alert('정답을 선택해주세요.'); return;
+            } else {
+                if(quiz_val != '신광은'){
+                    alert('정답이 아닙니다. 다시 생각해보세요~'); return;
+                }
+            }
+
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}&event_code={{$data['ElIdx']}}';
+                ajaxSubmit($regi_form_register, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
+            @endif
+        }
+
         function fn_submit() {
-            var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
             var is_login = '{{sess_data('is_login')}}';

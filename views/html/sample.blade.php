@@ -43,8 +43,10 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_free') }}" target="_blank">공무원 무료특강</a></li>
                 <li><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
                 <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/main_2006_308901') }}" target="_blank">자격증 메인 - 소방</a></li>
-                <li><a href="{{ site_url('/home/html/main_2006_308902') }}" target="_blank">자격증 메인 - 전기</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_online') }}" target="_blank">고등고시 온라인 메인</a></li>
+                <li class="c_both"></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_2006_308901') }}" target="_blank">자격증 메인 - 소방</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_2006_308902') }}" target="_blank">자격증 메인 - 전기</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/main_language') }}" target="_blank">어학</a></li>
                 <li class="c_both"></li>

@@ -45,7 +45,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">등록자</label>
                     <div class="form-control-static col-md-4">
-                        {{$data['MemName']}}({{$data['MemId']}})
+                        <a href="/member/manage/detail/{{ $data['MemIdx'] }}">{{$data['MemName']}}({{$data['MemId']}})</a>
+                        <button type="button" class="btn bg-blue btn-auto-login ml-10" id="btn_login" data-mem-idx="{{ $data['MemIdx'] }}">자동로그인</button>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">휴대폰 번호</label>
                     <div class="form-control-static col-md-4 ml-12-dot">

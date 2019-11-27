@@ -224,14 +224,13 @@
                         }},
                     {'data' : 'RegType', 'render' : function(data, type, row, meta) {
                             if (data == 1) {
-                                return row.wAdminName;
+                                return'<a href="/member/manage/detail/' + row.wAdminIdx + '/">' + row.wAdminName + '</a>';
                             } else {
                                 if (row.RegMemName == null) {
                                     return '';
                                 } else {
-                                    return row.RegMemName+'('+row.RegMemId+')';
+                                    return '<a href="/member/manage/detail/' + row.RegMemIdx + '/">' + row.RegMemName + '(' + row.RegMemId + ')</a>';
                                 }
-
                             }
                         }},
                     {'data' : 'RegDatm'},

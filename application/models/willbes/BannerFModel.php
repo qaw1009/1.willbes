@@ -16,11 +16,11 @@ class BannerFModel extends WB_Model
 
     /**
      * 노출섹션명, 사이트코드, 대분류 카테고리 코드에 맞는 배너 조회
-     * @param string|array $disp_name [노출섹션명]
+     * @param string|array $disp_name [노출섹션명 (섹션명 앞에 `GRP:`를 추가하면 언더스코어(_)를 포함하여 후위 섹션명으로 시작(right like)하는 배너 조회)]
      * @param int $site_code [사이트코드]
-     * @param int $cate_code [대분류 카테고리 코드, `0`이면 전체카테고리]
-     * @param string $campus_code
-     * @return array|int
+     * @param int $cate_code [카테고리코드, `0`이면 전체카테고리]
+     * @param string $campus_code [캠퍼스공통코드]
+     * @return array
      */
     public function findBanners($disp_name, $site_code, $cate_code = 0, $campus_code = '')
     {
@@ -50,10 +50,15 @@ class BannerFModel extends WB_Model
             ]
         ];
 
+        // 노출섹션명 조회 조건
         if (is_array($disp_name) === true) {
             $arr_condition['IN']['BD.DispName'] = $disp_name;
         } else {
-            $arr_condition['EQ']['BD.DispName'] = $disp_name;
+            if (strpos($disp_name, 'GRP:') !== false) {
+                $arr_condition['LKR']['BD.DispName'] = substr($disp_name, 4) . '_';
+            } else {
+                $arr_condition['EQ']['BD.DispName'] = $disp_name;
+            }
         }
 
         $order_by = ['B.OrderNum' => 'asc'];

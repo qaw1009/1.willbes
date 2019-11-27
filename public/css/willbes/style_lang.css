@@ -23,6 +23,7 @@
     min-width: 1120px;
     max-width: 2000px;
     height: 409px;
+    text-align: center;
 }
 .lang .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:50%;

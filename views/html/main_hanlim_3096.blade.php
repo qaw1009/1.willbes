@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
 
-<div id="Container" class="Container hanlim NGR c_both">
+<div id="Container" class="Container psat NGR c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
@@ -518,7 +518,7 @@
                 <li>
                     <a href="#none">교재구매</a>
                 </li>
-                <li class="hanlim">
+                <li class="psat">
                     <a href="#none" target="_self">
                         학원 방문 결제 
                         <span class="arrow-Btn">></span>

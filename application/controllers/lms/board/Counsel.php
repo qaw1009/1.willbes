@@ -163,8 +163,8 @@ class Counsel extends BaseBoard
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
-            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
-            LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.MemId AS RegMemId,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, ADMIN.wAdminIdx,
+            LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.MemIdx AS RegMemIdx, MEM.MemId AS RegMemId,
             LB.IsPublic, LB.VocCcd, LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
@@ -387,7 +387,7 @@ class Counsel extends BaseBoard
             LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
+            MEM.MemName, MEM.MemId, MEM.MemIdx, fn_dec(MEM.PhoneEnc) AS MemPhone,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
             MdSysCate.CateName as MdCateName
             ';
@@ -504,7 +504,7 @@ class Counsel extends BaseBoard
             LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
+            MEM.MemName, MEM.MemId, MEM.MemIdx, fn_dec(MEM.PhoneEnc) AS MemPhone,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
             counselAdmin.wAdminName AS counselAdminName, counselAdmin2.wAdminName AS counselUpdAdminName,
             LB.ReplyRegDatm, LB.ReplyUpdDatm,

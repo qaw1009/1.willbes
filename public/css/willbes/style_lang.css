@@ -12,6 +12,7 @@
     overflow: hidden;
     position: relative;
     margin-top:30px;
+    text-align: center;
 }
 
 .lang .VisualsubBox {
@@ -22,8 +23,7 @@
     width: 2000px;
     min-width: 1120px;
     max-width: 2000px;
-    height: 409px;
-    text-align: center;
+    height: 409px;    
 }
 .lang .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:50%;

@@ -732,7 +732,9 @@ select[disabled] {
 .ml50 {
   margin-left: 50px !important;
 }
-
+.mr-zero {
+  margin-right: 0 !important;
+}
 .mr5 {
   margin-right: 5px !important;
 }

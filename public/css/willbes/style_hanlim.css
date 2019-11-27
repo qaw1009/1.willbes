@@ -3,6 +3,19 @@
 .hanlim .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .hanlim .topBanner p img {width:100%}
 
+.Menu .menu-List li.hanlim > a {
+    color: #ba560e;
+    display:inline-block;
+    vertical-align: middle;
+}
+.Menu .menu-List li.hanlim > a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+
 /*********************************************     Main Container     *********************************************/
 .hanlim .Depth .depth:last-child strong {
     color: #ba560e;
@@ -224,7 +237,7 @@
 .hanlim .tx-color {
     color: #ba560e;
 }
-.hanlim .Section3 {
+.hanlim .Section1 {
     background: #f8f8f8;
     padding-bottom:90px;
 }
@@ -250,7 +263,7 @@
     content:''; display: block; clear:both;List-Table
 }
 
-/* Main Container : QuickMenu */
+/* Main Container : QuickMenu 
 .hanlim .QuickDdayBox .q_dday {
     font-size: 24px;
     font-weight: 600;
@@ -262,7 +275,57 @@
     width: 100px;
     height: 192px;
     overflow: hidden;
+}*/
+
+/* Main Container : QuickMenu  */
+.hanlim .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 164px;
+    height: auto;
+    background: #ececec;
+    z-index: 100;
 }
+.hanlim .MainQuickMenu ul {
+    margin:0 8px 5px !important;
+}
+.hanlim .MainQuickMenu li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
+    margin: 0;
+}
+.hanlim .MainQuickMenu li:first-child {
+    border-top:0;
+}
+.hanlim .MainQuickMenu li:last-child {
+    border-bottom:0;
+}
+.hanlim .MainQuickMenu li a {
+    display: block; padding-left:30px;
+}
+.hanlim .MainQuickMenu li a:hover {
+    color:#00acec;
+}
+.hanlim .MainQuickMenu li:nth-child(1) a {
+    background: url("../../img/willbes/cop_acad/icon_rq01.png") no-repeat 3px center;
+}
+.hanlim .MainQuickMenu li:nth-child(2) a {
+    background: url("../../img/willbes/cop_acad/icon_rq07.png") no-repeat 3px center;
+}
+.hanlim .MainQuickMenu li:nth-child(3) a {
+    background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
+}
+.hanlim .MainQuickMenu li:nth-child(4) a {
+    background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
+}
+.hanlim .MainQuickMenu li:nth-child(5) a {
+    background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
+}
+
 
 /* Guide Container */
 /*수험가이드*/

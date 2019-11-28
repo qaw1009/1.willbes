@@ -42,7 +42,7 @@
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1459_sky.jpg" usemap="#Map1459B" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1459_sky.gif" usemap="#Map1459B" border="0" />
             <map name="Map1459B" id="Map1459B">
                 <area shape="rect" coords="24,200,166,300" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=477" target="_blank" alt="소방" />
                 <area shape="rect" coords="26,314,166,424" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=476&amp;" target="_blank" alt="군무원" />

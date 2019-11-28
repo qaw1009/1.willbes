@@ -224,12 +224,12 @@
                         }},
                     {'data' : 'RegType', 'render' : function(data, type, row, meta) {
                             if (data == 1) {
-                                return'<a href="/member/manage/detail/' + row.wAdminIdx + '/">' + row.wAdminName + '</a>';
+                                return'<a href="/member/manage/detail/' + row.wAdminIdx + '/" target="_blank">' + row.wAdminName + '</a>';
                             } else {
                                 if (row.RegMemName == null) {
                                     return '';
                                 } else {
-                                    return '<a href="/member/manage/detail/' + row.RegMemIdx + '/">' + row.RegMemName + '(' + row.RegMemId + ')</a>';
+                                    return '<a href="/member/manage/detail/' + row.RegMemIdx + '/" target="_blank">' + row.RegMemName + '(' + row.RegMemId + ')</a>';
                                 }
                             }
                         }},

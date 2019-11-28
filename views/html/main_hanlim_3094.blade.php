@@ -3,12 +3,12 @@
 @section('content')
 <!-- Container -->
 
-<div id="Container" class="Container psat NGR c_both">
+<div id="Container" class="Container hanlim3094 NGR c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">고등고시<span class="row-line">|</span></li>
-                <li class="subTit">PSAT</li>
+                <li class="subTit">5급행정(입법고시)</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">
@@ -533,7 +533,7 @@
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3096_725x400.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
                     </div>
                 </div>
@@ -541,13 +541,13 @@
             <div class="VisualsubBox">
                 <div class="bSlider VisualsubBoxTop">                    
                     <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3096_364x128.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
                     </div>
                 </div>   
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3096_364x248.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
                     </div>
                 </div>   

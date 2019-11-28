@@ -1,4 +1,4 @@
-/*********************************************     Main Container : tax     *********************************************/
+/*********************************************     Main Container :  *********************************************/
 .gp .Section2 {
   background: #f3f3f3;
 }
@@ -110,6 +110,7 @@
 /**/
 .gp .Section.barBnr {
   background:url("../../img/willbes/gpgosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
+  margin-top:20px;
 }
 
 /* Main Container : Prof */

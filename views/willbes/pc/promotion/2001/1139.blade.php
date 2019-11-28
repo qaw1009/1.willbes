@@ -31,12 +31,13 @@
     <div class="evtContent" id="evtContainer">
 
         <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1139_sky.png" alt="스카이베너 빠르게가기" usemap="#Map" border="0" >
-            <map name="Map" id="Map">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1139_sky.png" alt="스카이베너 빠르게가기" usemap="#Map1139" border="0" >
+            <map name="Map1139" id="Map1139">
                 <area shape="rect" coords="12,4,116,72" href="#go_top" />
-                <area shape="rect" coords="13,81,121,145" href="#go_01" />
+                <area shape="rect" coords="10,81,118,145" href="#go_01" />
                 <area shape="rect" coords="11,154,118,218" href="#go_02" />
                 <area shape="rect" coords="10,224,118,289" href="#go_03" />
+              <area shape="rect" coords="12,290,115,375" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" alt="신광은경찰패스" />
             </map>
         </div>
 

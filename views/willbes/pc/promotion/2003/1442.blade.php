@@ -33,7 +33,7 @@
     <div class="p_re evtContent NGR" id="evtContainer">                
 
         <div class="evtCtnsBox evttop" >     
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1442_top2.jpg" title="기미진&한덕현 아침특강">        
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1442_top2.gif" title="기미진&한덕현 아침특강">        
         </div>
 
         <div class="evtCtnsBox evt01">

@@ -61,7 +61,7 @@
             <div id="tab01">
                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1459_01_01.jpg" title="소방 스케줄">
             </div>
-            <div id="tab01">
+            <div id="tab02">
                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1459_01_02.jpg" title="군무원 스케줄">
             </div>
         </div>   

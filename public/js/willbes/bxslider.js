@@ -187,22 +187,22 @@ $(function(){
 function slider(ele_id, type, pause_sec) {
     var pasue_msec = pause_sec * 1000;
     // slider option
-    var option = { auto: true, controls: false, pause: pasue_msec };
+    var option = { auto: true, controls: false, pause: pasue_msec, touchEnabled: false };
     switch (type) {
         case 'cSlider' :
-                option = { auto: true, controls: true, pause: pasue_msec, pager: false };
+                option = { auto: true, controls: true, pause: pasue_msec, pager: false, touchEnabled: false };
             break;
         case 'nSlider' :
-                option = { auto: true, controls: true, pause: pasue_msec, pager: true, pagerType: 'short', moveSlides: 1 };
+                option = { auto: true, controls: true, pause: pasue_msec, pager: true, pagerType: 'short', moveSlides: 1, touchEnabled: false };
             break;
         case 'vSlider' :
-                option = { mode: 'vertical', auto: true, controls: false, pause: pasue_msec, pager: false, minSlides: 1 };
+                option = { mode: 'vertical', auto: true, controls: false, pause: pasue_msec, pager: false, minSlides: 1, touchEnabled: false };
             break;
         case 'nSliderTM' :
-                option = { mode: 'vertical', auto: false, controls: false, pause: pasue_msec, pager: false, minSlides: 1 };
+                option = { mode: 'vertical', auto: false, controls: false, pause: pasue_msec, pager: false, minSlides: 1, touchEnabled: false };
             break;
         case 'cSliderTM' :
-                option = { auto: false, controls: true, pause: pasue_msec, pager: false };
+                option = { auto: false, controls: true, pause: pasue_msec, pager: false, touchEnabled: false };
             break;
     }
 

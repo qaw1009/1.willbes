@@ -1,3 +1,7 @@
+<style>
+.video_area{position:relative;}
+.youtubeGod{position:absolute;top:40%;}
+</style>
 @extends('willbes.pc.layouts.master')
 
 @section('content')
@@ -22,6 +26,17 @@
             </div>
         </div>
     </div>
+
+    <div class="Section">
+        <div class="widthAuto">
+            <div class="video_area">
+                <img src="https://static.willbes.net/public/images/promotion/main/3092_video.jpg" alt="유튜브"/>            
+                <div class="youtubeGod">
+                    <iframe src="https://www.youtube.com/embed/81ulkDCF3ok?autoplay=1&mute=1" frameborder="0" allowfullscreen="" ></iframe>     
+                </div>
+            </div>
+        </div>
+    </div>       
 
     <div class="SectionBook">
         <div class="buyBook NGEB">

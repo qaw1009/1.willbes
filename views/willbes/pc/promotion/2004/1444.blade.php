@@ -63,15 +63,15 @@
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1444_02.jpg" usemap="#Map1444a" border="0" />
             <map name="Map1444a" id="Map1444a">
-                <area shape="rect" coords="396,655,731,778" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/157684" target="_blank" />
-            </map>      
+                <area shape="rect" coords="390,637,748,781" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/157684" target="_blank" />
+            </map>          
         </div>
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1444_03.jpg" usemap="#Map1444b" border="0" />
             <map name="Map1444b" id="Map1444b">
-                <area shape="rect" coords="361,669,757,783" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605006" target="_blank" />
-            </map>                
+                <area shape="rect" coords="344,753,785,862" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605006" target="_blank" />
+            </map>                         
         </div>
 
     </div>

@@ -73,7 +73,7 @@
 .SectionBook {
     background:#1c222a url(https://static.willbes.net/public/images/promotion/main/3092_book_bg.jpg) no-repeat center top; position:relative;
     height: 596px;
-    margin-top:75px;
+    margin-top:200px;
     clear: both;
 }
 .SectionBook .buyBook {position:absolute; top:220px; left:50%; width:400px; margin-left:-200px; z-index:1}

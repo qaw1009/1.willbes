@@ -236,8 +236,12 @@
                         <div><input type="radio" id="y_pkg3" name="y_pkg" value="156808" onClick=""/> <label for="y_pkg3"><strong>129</strong>만원</div>
                     </li>
                 </ul>
-                <div>
+                <div>                    
+                    @if (date('YmdH') < '2019113024')
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1009_05_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
+                    @else
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
+                    @endif
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="172,868,246,885" href="javascript:go_popup()" alt="4개월" />                        
 						<area shape="rect" coords="454,866,522,887" href="javascript:go_popup()" alt="12개월" />
@@ -345,6 +349,7 @@
                         </ol>
                     </dd>
 
+                    @if (date('YmdH') < '2019113024')
                     <dt>
                         <h3>이벤트</h3>
                     </dt>
@@ -353,10 +358,23 @@
                             <li>수강기간 연장은 12월 10일 일괄연장 처리예정입니다. 11월 30일까지 결제완료자에 한함</li>
                             <li>유료기간은 구매일로부터 각각 상품의 수강기간을 따르며, 추가 제공되는 기간은 무료 제공기간입니다.(무료제공기간은 환불 기간에 산입되지 않습니다.)<br>
                             *4개월 PASS : 유료 수강기간 4개월, 무료 제공기간 1개월<br>
-                            *12개월 PASS : 유료 수강기간 12개월, 무료 제공기간 1개월<br>
+                            *12개월 PASS : 유료 수강기간 12개월, 무료 제공기간 1개월
                             </li>
                         </ol>
                     </dd>
+                    @else
+                    <dt>
+                        <h3>이벤트</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>4개월 패스 구매시 수강기간 30일 연장은 12월 16일 일괄연장 처리예정입니다. 12월 5일까지 결제완료자에 한함</li>
+                            <li>유료기간은 구매일로부터 각각 상품의 수강기간을 따르며, 추가 제공되는 기간은 무료 제공기간입니다.(무료제공기간은 환불 기간에 산입되지 않습니다.)<br>
+                                *4개월 PASS : 유료 수강기간 4개월, 무료 제공기간 1개월                                
+                            </li>
+                        </ol>
+                    </dd>
+                    @endif
 
                     <dt>
                         <h3>수강관련</h3>

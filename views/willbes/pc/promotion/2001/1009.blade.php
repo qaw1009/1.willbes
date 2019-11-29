@@ -237,25 +237,25 @@
                     </li>
                 </ul>
                 <div>                    
-                    @if (date('YmdH') < '2019113024')
+                    @if (time() < strtotime('201912010000'))
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1009_05_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
                     @else
                     <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
                     @endif
                     <map name="Map1009A" id="Map1009A">
-                        <area shape="rect" coords="172,868,246,885" href="javascript:go_popup()" alt="4개월" />                        
+                        <area shape="rect" coords="172,868,246,885" href="javascript:go_popup()" alt="4개월" />
 						<area shape="rect" coords="454,866,522,887" href="javascript:go_popup()" alt="12개월" />
                         <area shape="rect" coords="753,868,820,885" href="javascript:go_popup1()" alt="전과목" />
                         <area shape="rect" coords="406,415,555,453" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
                         <area shape="rect" coords="564,413,714,455" href="javascript:goDesc('tab3')" alt="환승이벤트 참여방법" />
                     </map>
                 </div>
-                <div> 
-                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1009_05_03.jpg"  alt="체력" usemap="#Map1009B"/>                
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1009_05_03.jpg"  alt="체력" usemap="#Map1009B"/>
                     <map name="Map1009B" id="Map1009B">
                         <area shape="rect" coords="604,574,736,624" href="https://police.willbes.net/promotion/index/cate/3001/code/1030" target="_blank" alt="경찰체력패키지" />
-                    </map>  
-                </div>                                
+                    </map>
+                </div>
             </div>
 
             <!--레이어팝업-->
@@ -349,7 +349,7 @@
                         </ol>
                     </dd>
 
-                    @if (date('YmdH') < '2019113024')
+                    @if (time() < strtotime('201912010000'))
                     <dt>
                         <h3>이벤트</h3>
                     </dt>

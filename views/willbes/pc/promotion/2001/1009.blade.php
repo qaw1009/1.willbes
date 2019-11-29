@@ -227,7 +227,7 @@
             <div class="passLecBuy">
                 <ul>
                     <li>
-                        <div><input type="radio" id="y_pkg1" name="y_pkg" value="156810" onClick=""/> <label for="y_pkg1"><strong>49</strong>만원</div>
+                        <div><input type="radio" id="y_pkg1" name="y_pkg" value="158405" onClick=""/> <label for="y_pkg1"><strong>49</strong>만원</div>
                     </li>
                     <li>
                         <div><input type="radio" id="y_pkg2" name="y_pkg" value="156812" onClick=""/> <label for="y_pkg2"><strong>89</strong>만원</div>

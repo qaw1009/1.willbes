@@ -43,7 +43,12 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_free') }}" target="_blank">공무원 무료특강</a></li>
                 <li><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
                 <li class="c_both"></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3094') }}" target="_blank">고등고시 5급행정</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3095') }}" target="_blank">고등고시 국립외교원</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3096') }}" target="_blank">고등고시 PSAT</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3097') }}" target="_blank">고등고시 5급헌법</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3098') }}" target="_blank">고등고시 법원행시</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3099') }}" target="_blank">고등고시 변호사시험</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_2006_308901') }}" target="_blank">자격증 메인 - 소방</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_2006_308902') }}" target="_blank">자격증 메인 - 전기</a></li>

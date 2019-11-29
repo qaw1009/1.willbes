@@ -1,14 +1,14 @@
 /* top bar banner */
-.psat .topBanner {display:block; background:#ececec; width:100%; text-align:center}
-.psat .topBanner p {width:100%; max-width:1120px; margin:0 auto}
-.psat .topBanner p img {width:100%}
+.hanlim3096 .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.hanlim3096 .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.hanlim3096 .topBanner p img {width:100%}
 
-.Menu .menu-List li.psat > a {
-    color: #ba560e;
+.Menu .menu-List li.hanlim3096 > a {
+    color: #6440b3;
     display:inline-block;
     vertical-align: middle;
 }
-.Menu .menu-List li.psat > a .arrow-Btn {
+.Menu .menu-List li.hanlim3096 > a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
@@ -17,72 +17,72 @@
 }
 
 /*********************************************     Main Container     *********************************************/
-.psat .Depth .depth:last-child strong {
-    color: #ba560e;
+.hanlim3096 .Depth .depth:last-child strong {
+    color: #6440b3;
 }
 
 /* Main Container : MainVisual */
-.psat .MainVisual {
+.hanlim3096 .MainVisual {
     position: relative;
     width: 1120px;
     margin:40px auto 0;
     height: 400px;
 }
-.psat .MainVisual:after {
+.hanlim3096 .MainVisual:after {
     content: "";
     display: block;
     clear: both;
 }
 
-.psat .VisualBox {
+.hanlim3096 .VisualBox {
     width:725px;  
     height: 400px;
     overflow: hidden;
     float:left;
   }
-.psat .VisualBox img {
+.hanlim3096 .VisualBox img {
     height: 400px;
   }
   
-.psat .VisualBox .bx-wrapper .bx-controls-auto {
+.hanlim3096 .VisualBox .bx-wrapper .bx-controls-auto {
     left:20px;
     bottom: 20px;
     width: 50px;
     z-index: 90;
 }
-.psat .VisualBox .bx-wrapper .bx-pager {
+.hanlim3096 .VisualBox .bx-wrapper .bx-pager {
     width: auto;
     left:60px;
     bottom: 22px;
     text-align: left;
     z-index: 90;
 }
-.psat .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
+.hanlim3096 .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
   }
 
-.psat .VisualsubBox {
+.hanlim3096 .VisualsubBox {
     width: 384px;
     padding:10px;
     float:right;
     background: #ccc;
 }
 
-.psat .VisualsubBox .bSlider:nth-child(2) {
+.hanlim3096 .VisualsubBox .bSlider:nth-child(2) {
     margin-top:3px;
     width: 364px;
     height: 248px !important;
     overflow: hidden;
   }
 
-.psat .VisualsubBox .bx-wrapper .bx-controls-auto {
+.hanlim3096 .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:20px;
     bottom: 20px;
     margin: 0;
     width: 50px;
     z-index: 90;
   }
-.psat .VisualsubBox .bx-wrapper .bx-pager {
+.hanlim3096 .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
     left:60px;
@@ -90,39 +90,39 @@
     text-align: right;
     z-index: 90;
 }
-.psat .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+.hanlim3096 .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
     width: 8px;
     height: 8px;
     margin: 0 2px;
 }
 
-.psat .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+.hanlim3096 .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
 
-.psat .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
+.hanlim3096 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
     float: left;
     width: auto;
     left: 20px;
     bottom: 10px;
     text-align: left;
 }
-.psat .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
+.hanlim3096 .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
-.psat .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.psat .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
-.psat .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e !important;
+.hanlim3096 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hanlim3096 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3096 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #6440b3 !important;
 }
 
 /**/
-.psat .Section.barBnr {
+.hanlim3096 .Section.barBnr {
     background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
     margin-top:20px;
 }
 
 /* Main Container : Prof */
-.psat .PBcts li {
+.hanlim3096 .PBcts li {
     display: inline;
     float: left;    
     width: 274px;
@@ -130,82 +130,82 @@
     overflow: hidden;
     margin-left: 8px;
 }
-.psat .PBcts li:first-child {
+.hanlim3096 .PBcts li:first-child {
     margin-left: 0;
 }
 
-.psat .PBcts:after {
+.hanlim3096 .PBcts:after {
     content: "";
     display: block;
     clear: both;
 }
-.psat .PBcts .bSlider .bx-wrapper .bx-pager {
+.hanlim3096 .PBcts .bSlider .bx-wrapper .bx-pager {
     float: left;
     width: auto;
     left: 0;
     bottom: 10px;
     text-align: center;
 }
-.psat .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+.hanlim3096 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
-.psat .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.psat .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.psat .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e !important;
+.hanlim3096 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hanlim3096 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3096 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #6440b3 !important;
 }
 
 /**/
-.psat .Section .willbesLec {
+.hanlim3096 .Section .willbesLec {
     width:614px;
     float:left;
 }
-.psat .smallTit {
+.hanlim3096 .smallTit {
     border-top:1px solid #000;
     font-size: 22px;
     color:#363636;    
     position: relative;
 }
-.psat .smallTit p {
+.hanlim3096 .smallTit p {
     position: absolute;
     top:-15px;
     text-align:left;
     width: 100%;
 }
-.psat .smallTit p a {vertical-align: top; margin-left: 10px}
-.psat .smallTit span {
+.hanlim3096 .smallTit p a {vertical-align: top; margin-left: 10px}
+.hanlim3096 .smallTit span {
     font-weight: 600;
     background: #fff;
     padding:0 20px 0 0;
 }
-.psat .smallTit strong {
-    color:#ba560e;
+.hanlim3096 .smallTit strong {
+    color:#6440b3;
 }
 
-.psat .will-listTit {
+.hanlim3096 .will-listTit {
     margin-bottom: 15px;
     color:#181818;
 }
 
 
 /* Main Container : Notice : noticeTabs */
-.psat .noticeTabs {
+.hanlim3096 .noticeTabs {
     width: 345px !important;
     float:left;
     margin-right:40px;
 }
-.psat .tabBox.noticeBox {
+.hanlim3096 .tabBox.noticeBox {
     margin-top:-30px;   
 }
-.psat .tabBox.noticeBox a.btn-add {
+.hanlim3096 .tabBox.noticeBox a.btn-add {
     position: absolute;
     top: -16px;
     right: 0;
 }
-.psat .tabBox.noticeBox .List-Table {
+.hanlim3096 .tabBox.noticeBox .List-Table {
     width: 100%;
 }
-.psat .tabBox.noticeBox .List-Table li {
+.hanlim3096 .tabBox.noticeBox .List-Table li {
     position: relative;
     font-size: 13px;
     color: #3a3a3a;
@@ -213,7 +213,7 @@
     line-height: 37px;
     border-bottom: 1px solid #e3e3e3;
 }
-.psat .tabBox.noticeBox .List-Table li a {
+.hanlim3096 .tabBox.noticeBox .List-Table li a {
     display: inline-block;
     width: 80%;
     text-overflow: ellipsis;
@@ -221,78 +221,78 @@
     overflow: hidden;
     letter-spacing: 0;
 }
-.psat .tabBox.noticeBox .List-Table li a span {
-    background: #ba560e;
+.hanlim3096 .tabBox.noticeBox .List-Table li a span {
+    background: #6440b3;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
     margin-right: 5px;
 }
-.psat .willbesNumber ul li {
+.hanlim3096 .willbesNumber ul li {
     margin-left: 40px;
     vertical-align: top;
 }
 
 /* Main Container */
-.psat .tx-color {
-    color: #ba560e;
+.hanlim3096 .tx-color {
+    color: #6440b3;
 }
-.psat .Section1 {
+.hanlim3096 .Section1 {
     background: #f8f8f8;
     padding:90px 0;
 }
-.psat .copyTit {
+.hanlim3096 .copyTit {
     font-size: 33px;
     color: #363636;
     line-height: 1.2;
     text-align: center;
 }
-.psat .copyTit strong {
+.hanlim3096 .copyTit strong {
     vertical-align: baseline;
 	color:#000;
 } 
-.psat .copyTit span {
-    color:#ba560e;
+.hanlim3096 .copyTit span {
+    color:#6440b3;
 	vertical-align: baseline;
 }
-.psat .List-Table li a img,
-.psat .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.psat .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.psat .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
-.psat .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.psat .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.psat .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e;
+.hanlim3096 .List-Table li a img,
+.hanlim3096 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hanlim3096 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3096 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
+.hanlim3096 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hanlim3096 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3096 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #6440b3;
 }
-.psat .Section .SpecialBox li {
+.hanlim3096 .Section .SpecialBox li {
     display: inline; float: left;
     width: 216px; height: 143px;
     margin-right:10px; margin-bottom:10px;
 }
-.psat .Section .SpecialBox li:nth-child(5),
-.psat .Section .SpecialBox li:last-child {
+.hanlim3096 .Section .SpecialBox li:nth-child(5),
+.hanlim3096 .Section .SpecialBox li:last-child {
     margin-right:0;
 }
-.psat .Section .SpecialBox ul:after {
+.hanlim3096 .Section .SpecialBox ul:after {
     content:''; display: block; clear:both;List-Table
 }
 
 /* Main Container : QuickMenu 
-.psat .QuickDdayBox .q_dday {
+.hanlim3096 .QuickDdayBox .q_dday {
     font-size: 24px;
     font-weight: 600;
-    color: #ba560e;
+    color: #6440b3;
     padding-top: 10px;
     letter-spacing: 0;
 }
-.psat .QuickSlider .sliderNum {
+.hanlim3096 .QuickSlider .sliderNum {
     width: 100px;
     height: 192px;
     overflow: hidden;
 }*/
 
 /* Main Container : QuickMenu  */
-.psat .MainQuickMenu {
+.hanlim3096 .MainQuickMenu {
     position: fixed;
     top: 110px;
     right: 20px;
@@ -301,10 +301,10 @@
     background: #ececec;
     z-index: 100;
 }
-.psat .MainQuickMenu ul {
+.hanlim3096 .MainQuickMenu ul {
     margin:0 8px 5px !important;
 }
-.psat .MainQuickMenu li {
+.hanlim3096 .MainQuickMenu li {
     border-top:1px solid #f6f6f6;
     border-bottom:1px solid #d4d4d4;
     height: 40px;
@@ -312,31 +312,31 @@
     background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
     margin: 0;
 }
-.psat .MainQuickMenu li:first-child {
+.hanlim3096 .MainQuickMenu li:first-child {
     border-top:0;
 }
-.psat .MainQuickMenu li:last-child {
+.hanlim3096 .MainQuickMenu li:last-child {
     border-bottom:0;
 }
-.psat .MainQuickMenu li a {
+.hanlim3096 .MainQuickMenu li a {
     display: block; padding-left:30px;
 }
-.psat .MainQuickMenu li a:hover {
+.hanlim3096 .MainQuickMenu li a:hover {
     color:#00acec;
 }
-.psat .MainQuickMenu li:nth-child(1) a {
+.hanlim3096 .MainQuickMenu li:nth-child(1) a {
     background: url("../../img/willbes/cop_acad/icon_rq01.png") no-repeat 3px center;
 }
-.psat .MainQuickMenu li:nth-child(2) a {
+.hanlim3096 .MainQuickMenu li:nth-child(2) a {
     background: url("../../img/willbes/cop_acad/icon_rq07.png") no-repeat 3px center;
 }
-.psat .MainQuickMenu li:nth-child(3) a {
+.hanlim3096 .MainQuickMenu li:nth-child(3) a {
     background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
 }
-.psat .MainQuickMenu li:nth-child(4) a {
+.hanlim3096 .MainQuickMenu li:nth-child(4) a {
     background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
 }
-.psat .MainQuickMenu li:nth-child(5) a {
+.hanlim3096 .MainQuickMenu li:nth-child(5) a {
     background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
 }
 

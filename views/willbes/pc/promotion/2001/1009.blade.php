@@ -227,7 +227,7 @@
             <div class="passLecBuy">
                 <ul>
                     <li>
-                        <div><input type="radio" id="y_pkg1" name="y_pkg" value="156810" onClick=""/> <label for="y_pkg1"><strong>69</strong>만원</div>
+                        <div><input type="radio" id="y_pkg1" name="y_pkg" value="156810" onClick=""/> <label for="y_pkg1"><strong>49</strong>만원</div>
                     </li>
                     <li>
                         <div><input type="radio" id="y_pkg2" name="y_pkg" value="156812" onClick=""/> <label for="y_pkg2"><strong>89</strong>만원</div>
@@ -237,13 +237,13 @@
                     </li>
                 </ul>
                 <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1009_05_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1009_05_01.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
                     <map name="Map1009A" id="Map1009A">
-                        <area shape="rect" coords="172,868,246,885" href="javascript:go_popup()" alt="6개월" />                        
+                        <area shape="rect" coords="172,868,246,885" href="javascript:go_popup()" alt="4개월" />                        
 						<area shape="rect" coords="454,866,522,887" href="javascript:go_popup()" alt="12개월" />
                         <area shape="rect" coords="753,868,820,885" href="javascript:go_popup1()" alt="전과목" />
-                      <area shape="rect" coords="406,447,555,485" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
-                      <area shape="rect" coords="564,445,714,487" href="javascript:goDesc('tab3')" alt="환승이벤트 참여방법" />
+                        <area shape="rect" coords="406,415,555,453" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
+                        <area shape="rect" coords="564,413,714,455" href="javascript:goDesc('tab3')" alt="환승이벤트 참여방법" />
                     </map>
                 </div>
                 <div> 
@@ -326,12 +326,12 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">6,12개월 PASS</a></li>
+                <li><a href="#tab1">4,12개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
 
-            <!--6,12개월-->
+            <!--4,12개월-->
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
@@ -342,6 +342,19 @@
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.</li>
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 전 강좌를 무제한 수강 할 수 있습니다.</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>이벤트</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>수강기간 연장은 12월 10일 일괄연장 처리예정입니다. 11월 30일까지 결제완료자에 한함</li>
+                            <li>유료기간은 구매일로부터 각각 상품의 수강기간을 따르며, 추가 제공되는 기간은 무료 제공기간입니다.(무료제공기간은 환불 기간에 산입되지 않습니다.)<br>
+                            *4개월 PASS : 유료 수강기간 4개월, 무료 제공기간 1개월<br>
+                            *12개월 PASS : 유료 수강기간 12개월, 무료 제공기간 1개월<br>
+                            </li>
                         </ol>
                     </dd>
 
@@ -407,7 +420,7 @@
                     </dd>
                 </dl>
             </div>
-            <!--6,12개월//-->
+
 
             <!--평생0원PASS-->
             <div class="content_guide_box" id="tab2">
@@ -532,17 +545,17 @@
                     </dd>
                 </dl>
             </div>
-            <!--평생0원PASS//-->
+
 
             <!--환승이벤트-->
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09_01.jpg">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1009_09_01.jpg">
                     </dt>
                 </dl>
             </div>
-            <!--환승이벤트//-->
+
         </div>
         <!-- content_guide_wrap //-->
     </div>

@@ -1,6 +1,7 @@
 <style>
 .video_area{position:relative;}
-.youtubeGod{position:absolute;top:40%;}
+.youtubeGods{position:absolute;top:35%;left:12.5%;}
+.youtubeGods iframe{width:853px;height:480px;}
 </style>
 @extends('willbes.pc.layouts.master')
 
@@ -31,8 +32,8 @@
         <div class="widthAuto">
             <div class="video_area">
                 <img src="https://static.willbes.net/public/images/promotion/main/3092_video.jpg" alt="유튜브"/>            
-                <div class="youtubeGod">
-                    <iframe src="https://www.youtube.com/embed/81ulkDCF3ok?autoplay=1&mute=1" frameborder="0" allowfullscreen="" ></iframe>     
+                <div class="youtubeGods">
+                    <iframe src="https://www.youtube.com/embed/81ulkDCF3ok?rel=0&autoplay=1" frameborder="0" allowfullscreen="" ></iframe>     
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
 .hanlim3095 .topBanner p img {width:100%}
 
 .Menu .menu-List li.hanlim3095 > a {
-    color: #ba560e;
+    color: #70b04c;
     display:inline-block;
     vertical-align: middle;
 }
@@ -18,7 +18,7 @@
 
 /*********************************************     Main Container     *********************************************/
 .hanlim3095 .Depth .depth:last-child strong {
-    color: #ba560e;
+    color: #70b04c;
 }
 
 /* Main Container : MainVisual */
@@ -112,7 +112,7 @@
 .hanlim3095 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .hanlim3095 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
 .hanlim3095 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e !important;
+    background: #70b04c !important;
 }
 
 /**/
@@ -152,7 +152,7 @@
 .hanlim3095 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .hanlim3095 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .hanlim3095 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e !important;
+    background: #70b04c !important;
 }
 
 /**/
@@ -179,7 +179,7 @@
     padding:0 20px 0 0;
 }
 .hanlim3095 .smallTit strong {
-    color:#ba560e;
+    color:#70b04c;
 }
 
 .hanlim3095 .will-listTit {
@@ -222,7 +222,7 @@
     letter-spacing: 0;
 }
 .hanlim3095 .tabBox.noticeBox .List-Table li a span {
-    background: #ba560e;
+    background: #70b04c;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
@@ -235,7 +235,7 @@
 
 /* Main Container */
 .hanlim3095 .tx-color {
-    color: #ba560e;
+    color: #70b04c;
 }
 .hanlim3095 .Section1 {
     background: #f8f8f8;
@@ -252,7 +252,7 @@
 	color:#000;
 } 
 .hanlim3095 .copyTit span {
-    color:#ba560e;
+    color:#70b04c;
 	vertical-align: baseline;
 }
 .hanlim3095 .List-Table li a img,
@@ -262,7 +262,7 @@
 .hanlim3095 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .hanlim3095 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .hanlim3095 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e;
+    background: #70b04c;
 }
 .hanlim3095 .Section .SpecialBox li {
     display: inline; float: left;
@@ -281,7 +281,7 @@
 .hanlim3095 .QuickDdayBox .q_dday {
     font-size: 24px;
     font-weight: 600;
-    color: #ba560e;
+    color: #70b04c;
     padding-top: 10px;
     letter-spacing: 0;
 }

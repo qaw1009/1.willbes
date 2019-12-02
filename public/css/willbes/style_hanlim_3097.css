@@ -298,12 +298,16 @@
     top: 110px;
     right: 20px;
     width: 164px;
-    height: auto;
-    background: #ececec;
+    height: auto;    
     z-index: 100;
 }
-.hanlim3097 .MainQuickMenu ul {
-    margin:0 8px 5px !important;
+.hanlim3097 .MainQuickMenu div {
+    margin-bottom:5px;
+    text-align: right;
+}
+.hanlim3097 .MainQuickMenu ul {    
+    padding:0 8px 5px !important;
+    background: #ececec;    
 }
 .hanlim3097 .MainQuickMenu li {
     border-top:1px solid #f6f6f6;
@@ -326,18 +330,15 @@
     color:#00acec;
 }
 .hanlim3097 .MainQuickMenu li:nth-child(1) a {
-    background: url("../../img/willbes/cop_acad/icon_rq01.png") no-repeat 3px center;
-}
-.hanlim3097 .MainQuickMenu li:nth-child(2) a {
     background: url("../../img/willbes/cop_acad/icon_rq07.png") no-repeat 3px center;
 }
-.hanlim3097 .MainQuickMenu li:nth-child(3) a {
+.hanlim3097 .MainQuickMenu li:nth-child(2) a {
     background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
 }
-.hanlim3097 .MainQuickMenu li:nth-child(4) a {
+.hanlim3097 .MainQuickMenu li:nth-child(3) a {
     background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
 }
-.hanlim3097 .MainQuickMenu li:nth-child(5) a {
+.hanlim3097 .MainQuickMenu li:nth-child(4) a {
     background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
 }
 

@@ -1,8 +1,3 @@
-<style>
-.video_area{position:relative;}
-.youtubeGods{position:absolute;top:35%;left:12.5%;}
-.youtubeGods iframe{width:853px;height:480px;}
-</style>
 @extends('willbes.pc.layouts.master')
 
 @section('content')

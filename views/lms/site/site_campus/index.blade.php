@@ -53,7 +53,7 @@
                 <tbody>
                 @foreach($data as $row)
                     <tr>
-                        <td>{{ $loop->index }}</td>
+                        <td>{{ $loop->remaining }}</td>
                         <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['ScInfoIdx'] }}"><u class="blue">{{ $row['CampusCcdName'] }}{{ $row['IsOrigin'] == 'Y' ? '(본원)' : '' }}</u></a></td>
                         <td>{{ $row['DispName'] }}</td>

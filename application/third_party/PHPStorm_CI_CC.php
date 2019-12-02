@@ -110,6 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  ***************** LMS *******************************************************************************
  * @property WCodeModel $wCodeModel                                             WBS Code Model Class
  * @property SearchWProfessorModel $searchWProfessorModel               Search WBS Professor Model Class
+ * @property SearchProfessorModel $searchProfessorModel                 Search LMS Professor Model Class
  * @property SearchWBookModel $searchWBookModel                           Search WBS Book Model Class
  * @property SearchMemberModel $searchMemberModel                        Search Member Model Class
  * @property SiteModel $siteModel                                                     Site Model Class

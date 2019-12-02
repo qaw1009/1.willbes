@@ -134,12 +134,6 @@ class MockCommonModel extends WB_Model
             $from .= " LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx";
 
         } else { // 모의고사등록 > 과목별문제등록 카테고리검색인 경우 (기본정보 > 문제영역관리에 등록된 카테고리만 로딩)
-            /*$column = "
-                MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, SC.Ccd AS CateCode2,
-                CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), '] - ', MA.QuestionArea) AS CateRouteName,
-                IF(MS.Isuse = 'N' OR SJ.IsUse = 'N' OR MB.IsUse = 'N' OR S.IsUse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N' OR MA.IsUse = 'N', 'N', 'Y') AS BaseIsUse,
-                MC.MrcIdx
-            ";*/
             $from = " FROM {$this->_table['mock_subject']} AS MS";
             $from .= " JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'" . (($isUse === true) ? " AND SJ.IsUse = 'Y'" : "");
             $from .= " JOIN {$this->_table['mock_base']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'" . (($isUse === true) ? " AND MB.IsUse = 'Y'" : "");
@@ -166,8 +160,40 @@ class MockCommonModel extends WB_Model
         ];
         $condition = array_merge_recursive($condition, $conditionAdd);
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
-
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 업로드시 저장될 파일명 생성
+     * @param $in
+     * @param int $prefixLen
+     * @return mixed
+     */
+    public function makeUploadFileName($in, $prefixLen=0)
+    {
+        $names = $_FILES;
+        foreach ($names as $key => &$it) {
+            if(in_array($key, $in)) {
+                if (is_array($it['name'])) { // 업로드 배열로 받는 경우
+                    $i = 1;
+                    foreach ($it['name'] as $key_s => $it_s) {
+                        $tmp = explode('.', $it['name'][$key_s]);
+                        $ext = isset($tmp[1]) ? '.' . $tmp[1] : '';
+                        $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . $i . '_' : '';
+                        $it['real'][] = $prefix . md5(uniqid(mt_rand())) . $ext;
+                        $i++;
+                    }
+                }
+                else {
+                    $tmp = explode('.', $it['name']);
+                    $ext = isset($tmp[1]) ? '.' . $tmp[1] : '';
+                    $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . '_' : '';
+                    $it['real'] = $prefix . md5(uniqid(mt_rand())) . $ext;
+                }
+            }
+        }
+
+        return $names;
     }
 }

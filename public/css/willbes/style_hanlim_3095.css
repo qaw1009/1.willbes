@@ -3,6 +3,7 @@
 .hanlim3095 .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .hanlim3095 .topBanner p img {width:100%}
 
+.hanlim3095 .menu-List .Tit {color: #70b04c;}
 .Menu .menu-List li.hanlim3095 > a {
     color: #70b04c;
     display:inline-block;
@@ -276,20 +277,6 @@
 .hanlim3095 .Section .SpecialBox ul:after {
     content:''; display: block; clear:both;List-Table
 }
-
-/* Main Container : QuickMenu 
-.hanlim3095 .QuickDdayBox .q_dday {
-    font-size: 24px;
-    font-weight: 600;
-    color: #70b04c;
-    padding-top: 10px;
-    letter-spacing: 0;
-}
-.hanlim3095 .QuickSlider .sliderNum {
-    width: 100px;
-    height: 192px;
-    overflow: hidden;
-}*/
 
 /* Main Container : QuickMenu  */
 .hanlim3095 .MainQuickMenu {

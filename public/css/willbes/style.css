@@ -1934,6 +1934,9 @@ table.auTable tr td {
     font-weight: 600;
     margin-left: 30px;
 }
+.Menu .menu-List .Tit {
+    font-size:15px;
+}
 .Menu .drop-Box:after,
 .Menu .drop-Box:before {
     display: none;

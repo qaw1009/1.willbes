@@ -22,6 +22,7 @@
 @import url("style_hanlim_3097.css"); /*고등고시 5급헌법*/
 @import url("style_hanlim_3098.css"); /*고등고시 법원행시*/
 @import url("style_hanlim_3099.css"); /*고등고시 변호사시험*/
+@import url("style_willpass.css"); /*취업*/
 
 
 
@@ -1933,6 +1934,9 @@ table.auTable tr td {
     font-size: 16px;
     font-weight: 600;
     margin-left: 30px;
+}
+.Menu .menu-List .Tit {
+    font-size:15px;
 }
 .Menu .drop-Box:after,
 .Menu .drop-Box:before {

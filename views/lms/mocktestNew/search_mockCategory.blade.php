@@ -85,11 +85,14 @@
                         },
                         columns: [
                             {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                    var code = (isReg) ? row.MrcIdx : row.MrsIdx;
+                                    /*var code = '';*/
+                                    console.log('mrs' + row.MrsIdx);
+                                    console.log('mrc' + row.MrcIdx);
+
+                                    var code = (typeof row.MrcIdx === 'undefined') ? row.MrsIdx : row.MrcIdx;
                                     var checked = ($ori_selected_data.hasOwnProperty(code) === true) ? 'checked="checked"' : '';
                                     var inputType = (isSingle) ? 'radio' : 'checkbox';
                                     var disable = (!isReg && row.IsExist > 0 && !checked) ? 'disabled' : '';
-
                                     return '<input type="'+inputType+'" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '"' + checked + disable + '><input type="hidden" id="t'+ meta.row + '" value="' + code + '/' + disable + '" />';
                                 }},
                             {'data' : 'CateRouteName'},
@@ -103,9 +106,7 @@
 
                     // 전체선택
                     $datatable.on('ifChanged', '#_is_all', function() {
-
                         var $_cate_code = $('[name="_cate_code"]');
-
                         if ($(this).prop('checked') === true){
                             for(var i = 0; i < $_cate_code.length; i++){
                                 var res = $('#t'+i).val();
@@ -141,7 +142,6 @@
                         var route_name = '';
 
                         if(isSingle) { $selected_category.empty(); $ori_selected_data = {}; }
-
                         if (that.prop('checked') === true) {
                             if(!$ori_selected_data.hasOwnProperty(code)) {
                                 route_name = row.CateRouteName;
@@ -156,25 +156,21 @@
                         }
 
                         @if(in_array(ENVIRONMENT, ['local','development'])) console.log($ori_selected_data); @endif
-
                         if(isSingle && Object.keys($ori_selected_data).length) $('#_btn_apply').trigger('click');
                     });
 
                     // 선택한 카테고리 삭제
                     $selected_category.on('click', '._selected-category-delete', function() {
                         var code = $(this).parent().data('cate-code');
-
                         $(this).parent().remove();
                         $('input[id="_cate_code_' + code + '"]').prop('checked', false).iCheck('update');
                         delete $ori_selected_data[code];
-
                         @if(in_array(ENVIRONMENT, ['local','development'])) console.log($ori_selected_data); @endif
                     });
 
                     // 적용 버튼
                     $('#_btn_apply').on('click', function() {
                         var code, route_name, html = '';
-
                         if ($selected_category.html().trim() === '') {
                             alert('선택된 카테고리 정보가 없습니다.');
                             return;
@@ -202,7 +198,6 @@
                             }
                         });
                         $parent_selected_category.html(html);
-
                         $("#pop_modal").modal('toggle');
                     });
 
@@ -213,7 +208,6 @@
                             that = $(this);
                             code = that.find('input[name^="moLink"]').val();
                             route_name = that.text().trim();
-
                             $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="col-xs-4 pb-5">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');
 
                             // 기존 선택된 정보 json 변수에 저장
@@ -250,7 +244,6 @@
                         }
 
                         @if(in_array(ENVIRONMENT, ['local','development'])) console.log($ori_selected_data); @endif
-
                         if(isSingle && Object.keys($ori_selected_data).length) $('#_btn_apply').trigger('click');
                     }
                 });

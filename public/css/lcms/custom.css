@@ -1032,7 +1032,7 @@ select.input-sm {
 
 /* line-height */
 .no-line-height {
-    line-height: 0;
+    line-height: 0 !important;
 }
 
 /* border */

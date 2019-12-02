@@ -170,4 +170,27 @@ class Range extends BaseMocktest
         $result = $this->baseRangeModel->copyData($this->_reqP('idx'));
         $this->json_result($result['ret_cd'], '복사되었습니다.', $result, $result);
     }
+
+    public function searchArea()
+    {
+        if (empty($this->_reqG('siteCode')) === true) {
+            return $this->json_error('잘못된 접근입니다.');
+        }
+        $site_code = $this->_reqG('siteCode');
+
+        $arr_condition = [
+            'EQ' => [
+                'MB.SiteCode' => $site_code,
+                'MB.IsUse' => 'Y'
+            ]
+        ];
+        $data = $this->baseRangeModel->list($arr_condition);
+        $moData = $this->_moDataListAll();
+
+        $this->load->view('mocktestNew/search_mockArea', [
+            'siteCode' => $site_code,
+            'data' => $data,
+            'moData' => $moData
+        ]);
+    }
 }

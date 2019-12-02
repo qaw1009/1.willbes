@@ -53,6 +53,8 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_2006_308901') }}" target="_blank">자격증 메인 - 소방</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_2006_308902') }}" target="_blank">자격증 메인 - 전기</a></li>
                 <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/main_willpass') }}" target="_blank">취업-공기업</a></li>
+                <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/main_language') }}" target="_blank">어학</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인</a></li>

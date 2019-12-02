@@ -114,6 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SearchMemberModel $searchMemberModel                        Search Member Model Class
  * @property SiteModel $siteModel                                                     Site Model Class
  * @property SiteGroupModel $siteGroupModel                                      Site Group Model Class
+ * @property SiteCampusModel $siteCampusModel                                      Site Campus Info Model Class
  * @property SiteMenuModel $siteMenuModel                                       Site Menu Model Class
  * @property CategoryModel $categoryModel                                       Category Model Class
  * @property PayLogModel $payLogModel                                            Pay Log Model Class

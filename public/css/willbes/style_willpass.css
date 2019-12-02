@@ -1,15 +1,15 @@
 /* top bar banner */
-.hanlim3094 .topBanner {display:block; background:#ececec; width:100%; text-align:center}
-.hanlim3094 .topBanner p {width:100%; max-width:1120px; margin:0 auto}
-.hanlim3094 .topBanner p img {width:100%}
+.willpass .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.willpass .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.willpass .topBanner p img {width:100%}
 
-.hanlim3094 .menu-List .Tit {color: #b85712;}
-.Menu .menu-List li.hanlim3094 > a {
-    color: #b85712;
+.willpass .menu-List .Tit {color: #1e6c9a;}
+.Menu .menu-List li.willpass > a {
+    color: #1e6c9a;
     display:inline-block;
     vertical-align: middle;
 }
-.Menu .menu-List li.hanlim3094 > a .arrow-Btn {
+.Menu .menu-List li.willpass > a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
@@ -18,112 +18,68 @@
 }
 
 /*********************************************     Main Container     *********************************************/
-.hanlim3094 .Depth .depth:last-child strong {
-    color: #b85712;
+.willpass .Depth .depth:last-child strong {
+    color: #1e6c9a;
 }
 
 /* Main Container : MainVisual */
-.hanlim3094 .MainVisual {
-    position: relative;
+.willpass .VisualsubBox {
     width: 1120px;
-    margin:40px auto 0;
-    height: 400px;
-}
-.hanlim3094 .MainVisual:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-.hanlim3094 .VisualBox {
-    width:725px;  
-    height: 400px;
+    height: 380px;
     overflow: hidden;
-    float:left;
-  }
-.hanlim3094 .VisualBox img {
-    height: 400px;
-  }
-  
-.hanlim3094 .VisualBox .bx-wrapper .bx-controls-auto {
-    left:20px;
-    bottom: 20px;
-    width: 50px;
-    z-index: 90;
 }
-.hanlim3094 .VisualBox .bx-wrapper .bx-pager {
-    width: auto;
-    left:60px;
-    bottom: 22px;
-    text-align: left;
-    z-index: 90;
-}
-.hanlim3094 .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
-  }
-
-.hanlim3094 .VisualsubBox {
-    width: 384px;
-    padding:10px;
-    float:right;
-    background: #ccc;
-}
-
-.hanlim3094 .VisualsubBox .bSlider:nth-child(2) {
-    margin-top:3px;
-    width: 364px;
-    height: 248px !important;
-    overflow: hidden;
-  }
-
-.hanlim3094 .VisualsubBox .bx-wrapper .bx-controls-auto {
+.willpass .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:20px;
     bottom: 20px;
     margin: 0;
     width: 50px;
-    z-index: 90;
+    z-index:90;
   }
-.hanlim3094 .VisualsubBox .bx-wrapper .bx-pager {
+  .willpass .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
     left:60px;
     bottom: 20px;
     text-align: right;
-    z-index: 90;
+    z-index:90;
 }
-.hanlim3094 .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
+.willpass .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
     width: 8px;
     height: 8px;
     margin: 0 2px;
 }
 
-.hanlim3094 .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
-
-.hanlim3094 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
-    float: left;
-    width: auto;
-    left: 20px;
-    bottom: 10px;
-    text-align: left;
+.willpass .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #898989 !important;
 }
-.hanlim3094 .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
-}
-.hanlim3094 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hanlim3094 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim3094 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712 !important;
+.willpass .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.willpass .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.willpass .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #1e6c9a !important;
+    z-index: 10;
 }
 
 /**/
-.hanlim3094 .Section.barBnr {
-    background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
-    margin-top:20px;
+.willpass .Section .bnrSec {
+    margin-top:8px;
+}
+.willpass .Section .bnrSec li {
+    display: inline;
+    float: left;
+    margin-right: 8px;    
+}
+.willpass .Section .bnrSec li:last-child {
+    margin:0
+}
+.willpass .Section .bnrSec:after {
+    content:'';
+    display: block;
+    clear:both;
 }
 
 /* Main Container : Prof */
-.hanlim3094 .PBcts li {
+.willpass .PBcts li {
     display: inline;
     float: left;    
     width: 274px;
@@ -131,82 +87,82 @@
     overflow: hidden;
     margin-left: 8px;
 }
-.hanlim3094 .PBcts li:first-child {
+.willpass .PBcts li:first-child {
     margin-left: 0;
 }
 
-.hanlim3094 .PBcts:after {
+.willpass .PBcts:after {
     content: "";
     display: block;
     clear: both;
 }
-.hanlim3094 .PBcts .bSlider .bx-wrapper .bx-pager {
+.willpass .PBcts .bSlider .bx-wrapper .bx-pager {
     float: left;
     width: auto;
     left: 0;
     bottom: 10px;
     text-align: center;
 }
-.hanlim3094 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+.willpass .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
-.hanlim3094 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hanlim3094 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim3094 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712 !important;
+.willpass .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.willpass .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.willpass .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #1e6c9a !important;
 }
 
 /**/
-.hanlim3094 .Section .willbesLec {
+.willpass .Section .willbesLec {
     width:614px;
     float:left;
 }
-.hanlim3094 .smallTit {
+.willpass .smallTit {
     border-top:1px solid #000;
     font-size: 22px;
     color:#363636;    
     position: relative;
 }
-.hanlim3094 .smallTit p {
+.willpass .smallTit p {
     position: absolute;
     top:-15px;
     text-align:left;
     width: 100%;
 }
-.hanlim3094 .smallTit p a {vertical-align: top; margin-left: 10px}
-.hanlim3094 .smallTit span {
+.willpass .smallTit p a {vertical-align: top; margin-left: 10px}
+.willpass .smallTit span {
     font-weight: 600;
     background: #fff;
     padding:0 20px 0 0;
 }
-.hanlim3094 .smallTit strong {
-    color:#b85712;
+.willpass .smallTit strong {
+    color:#1e6c9a;
 }
 
-.hanlim3094 .will-listTit {
+.willpass .will-listTit {
     margin-bottom: 15px;
     color:#181818;
 }
 
 
 /* Main Container : Notice : noticeTabs */
-.hanlim3094 .noticeTabs {
+.willpass .noticeTabs {
     width: 345px !important;
     float:left;
     margin-right:40px;
 }
-.hanlim3094 .tabBox.noticeBox {
+.willpass .tabBox.noticeBox {
     margin-top:-30px;   
 }
-.hanlim3094 .tabBox.noticeBox a.btn-add {
+.willpass .tabBox.noticeBox a.btn-add {
     position: absolute;
     top: -16px;
     right: 0;
 }
-.hanlim3094 .tabBox.noticeBox .List-Table {
+.willpass .tabBox.noticeBox .List-Table {
     width: 100%;
 }
-.hanlim3094 .tabBox.noticeBox .List-Table li {
+.willpass .tabBox.noticeBox .List-Table li {
     position: relative;
     font-size: 13px;
     color: #3a3a3a;
@@ -214,7 +170,7 @@
     line-height: 37px;
     border-bottom: 1px solid #e3e3e3;
 }
-.hanlim3094 .tabBox.noticeBox .List-Table li a {
+.willpass .tabBox.noticeBox .List-Table li a {
     display: inline-block;
     width: 80%;
     text-overflow: ellipsis;
@@ -222,64 +178,73 @@
     overflow: hidden;
     letter-spacing: 0;
 }
-.hanlim3094 .tabBox.noticeBox .List-Table li a span {
-    background: #b85712;
+.willpass .tabBox.noticeBox .List-Table li a span {
+    background: #1e6c9a;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
     margin-right: 5px;
 }
-.hanlim3094 .willbesNumber ul li {
-    margin-left: 40px;
+.willpass .willbesNumber {
+    padding: 30px 0 0 80px;    
+}
+.willpass .willbesNumber ul li {
     vertical-align: top;
+    width:50%;
+    display: inline;
+    float: left;
+    margin:0;
 }
 
-/* Main Container */
-.hanlim3094 .tx-color {
-    color: #b85712;
+.willpass .willbesNumber ul:after {
+    content:""; display: block; clear:both;
 }
-.hanlim3094 .Section1 {
+/* Main Container */
+.willpass .tx-color {
+    color: #1e6c9a;
+}
+.willpass .Section1 {
     background: #f8f8f8;
     padding:90px 0;
 }
-.hanlim3094 .copyTit {
+.willpass .copyTit {
     font-size: 33px;
     color: #363636;
     line-height: 1.2;
     text-align: center;
 }
-.hanlim3094 .copyTit strong {
+.willpass .copyTit strong {
     vertical-align: baseline;
 	color:#000;
 } 
-.hanlim3094 .copyTit span {
-    color:#b85712;
+.willpass .copyTit span {
+    color:#1e6c9a;
 	vertical-align: baseline;
 }
-.hanlim3094 .List-Table li a img,
-.hanlim3094 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hanlim3094 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim3094 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
-.hanlim3094 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hanlim3094 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim3094 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #b85712;
+.willpass .List-Table li a img,
+.willpass .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.willpass .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.willpass .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
+.willpass .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.willpass .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.willpass .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #1e6c9a;
 }
-.hanlim3094 .Section .SpecialBox li {
+.willpass .Section .SpecialBox li {
     display: inline; float: left;
     width: 216px; height: 143px;
     margin-right:10px; margin-bottom:10px;
 }
-.hanlim3094 .Section .SpecialBox li:nth-child(5),
-.hanlim3094 .Section .SpecialBox li:last-child {
+.willpass .Section .SpecialBox li:nth-child(5),
+.willpass .Section .SpecialBox li:last-child {
     margin-right:0;
 }
-.hanlim3094 .Section .SpecialBox ul:after {
+.willpass .Section .SpecialBox ul:after {
     content:''; display: block; clear:both;List-Table
 }
 
 /* Main Container : QuickMenu  */
-.hanlim3094 .MainQuickMenu {
+.willpass .MainQuickMenu {
     position: fixed;
     top: 110px;
     right: 20px;
@@ -287,15 +252,15 @@
     height: auto;    
     z-index: 100;
 }
-.hanlim3094 .MainQuickMenu div {
+.willpass .MainQuickMenu div {
     margin-bottom:5px;
     text-align: right;
 }
-.hanlim3094 .MainQuickMenu ul {    
+.willpass .MainQuickMenu ul {    
     padding:0 8px 5px !important;
     background: #ececec;    
 }
-.hanlim3094 .MainQuickMenu li {
+.willpass .MainQuickMenu li {
     border-top:1px solid #f6f6f6;
     border-bottom:1px solid #d4d4d4;
     height: 40px;
@@ -303,28 +268,29 @@
     background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
     margin: 0;
 }
-.hanlim3094 .MainQuickMenu li:first-child {
+.willpass .MainQuickMenu li:first-child {
     border-top:0;
 }
-.hanlim3094 .MainQuickMenu li:last-child {
+.willpass .MainQuickMenu li:last-child {
     border-bottom:0;
 }
-.hanlim3094 .MainQuickMenu li a {
+.willpass .MainQuickMenu li a {
     display: block; padding-left:30px;
 }
-.hanlim3094 .MainQuickMenu li a:hover {
+.willpass .MainQuickMenu li a:hover {
     color:#00acec;
 }
-.hanlim3094 .MainQuickMenu li:nth-child(1) a {
+
+.willpass .MainQuickMenu li:nth-child(1) a {
     background: url("../../img/willbes/cop_acad/icon_rq07.png") no-repeat 3px center;
 }
-.hanlim3094 .MainQuickMenu li:nth-child(2) a {
+.willpass .MainQuickMenu li:nth-child(2) a {
     background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
 }
-.hanlim3094 .MainQuickMenu li:nth-child(3) a {
+.willpass .MainQuickMenu li:nth-child(3) a {
     background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
 }
-.hanlim3094 .MainQuickMenu li:nth-child(4) a {
+.willpass .MainQuickMenu li:nth-child(4) a {
     background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
 }
 

@@ -95,6 +95,27 @@ class SiteModel extends WB_Model
     }
 
     /**
+     * 사이트 코드별 캠퍼스 코드 목록 조회
+     * @param string $site_code
+     * @return mixed
+     */
+    public function getSiteCampusAll($site_code = '')
+    {
+        $column = 'SC.SiteCode, SC.CampusCcd, C.CcdName as CampusName';
+        $arr_condition = [
+            'EQ' => [
+                'SC.SiteCode' => $site_code, 'SC.IsStatus' => 'Y',
+                'C.IsUse' => 'Y', 'C.IsStatus' => 'Y'
+            ]
+        ];
+        $order_by = ['SC.SiteCode' => 'asc', 'SC.CampusCcd' => 'asc'];
+
+        return $this->_conn->getJoinListResult($this->_table['site_r_campus'] . ' as SC', 'inner', $this->_table['code'] . ' as C'
+            , 'SC.CampusCcd = C.Ccd and C.GroupCcd = "' . $this->_ccd['Campus'] . '"'
+            , $column, $arr_condition, null, null, $order_by);
+    }
+
+    /**
      * 사이트 코드별 운영자 권한이 있는 캠퍼스 코드 목록 조회
      * @param $site_code
      * @return array

@@ -89,7 +89,7 @@
                                         @else
                                             <input type="hidden" name="old_wUnitAttachFile[]" id="old_wUnitAttachFile{{$loop->index}}" value="">
                                         @endif
-                                        <BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount{{$i}}"  class="form-control file_control" data-idx="{{$i}}" title="출력 제한 횟수" value="{{$row['wControlCount']}}" style="width: 30px" maxlength="3" >
+                                        <BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount{{$loop->index}}"  class="form-control file_control"  title="출력 제한 횟수" value="{{$row['wControlCount']}}" style="width: 30px" maxlength="3" >
                                         <BR>※ 빈공간 또는 0일 경우 일반 자료로 다운로드
                                     </td>
                                     <td>
@@ -161,7 +161,7 @@
                                         <BR>
                                         <input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile{{$i}}" class="form-control" title="첨부자료">
                                         <input type="hidden" name="old_wUnitAttachFile[]" id="old_wUnitAttachFile{{$i}}" value="">
-                                        <BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount{{$i}}"  class="form-control file_control" data-idx="{{$i}}" title="출력 제한 횟수" value="" style="width: 30px" maxlength="3" >
+                                        <BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount{{$i}}"  class="form-control file_control" title="출력 제한 횟수" value="" style="width: 30px" maxlength="3" >
                                         <BR>※ 빈공간 또는 0일 경우 일반 자료로 다운로드
                                     </td>
                                     <td>
@@ -259,7 +259,7 @@
                                 +'<BR>'
                                 +'<input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile'+seq+'" class="form-control" title="첨부자료">'
                                 +'<input type="hidden" name="old_wUnitAttachFile[]" id="old_wUnitAttachFile'+seq+'" value="">'
-                                +'<BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount'+seq+'"  class="form-control file_control" data-idx="'+seq+'" title="출력 제한 횟수" value="" style="width: 30px" maxlength="3"  >'
+                                +'<BR>보안 PDF 자료 출력 제한 횟수 <input type="text" name="wControlCount[]" id="wControlCount'+seq+'"  class="form-control file_control" title="출력 제한 횟수" value="" style="width: 30px" maxlength="3"  >'
                                 +'<BR>※ 빈공간 또는 0일 경우 일반 자료로 다운로드'
                                 +'</td>'
                                 +'<td>'

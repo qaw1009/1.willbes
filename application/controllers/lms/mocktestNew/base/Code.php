@@ -166,8 +166,7 @@ class Code extends BaseMocktest
         $rules = [
             ['field' => 'act', 'label' => 'ACT', 'rules' => 'trim|required|in_list[create,edit]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'sjType', 'label' => '과목타입', 'rules' => 'trim|required|in_list[E,S]'],
-            ['field' => 'sdsdfsdfsjType', 'label' => '과목타입', 'rules' => 'trim|required|in_list[E,S]'],
+            ['field' => 'sjType', 'label' => '과목타입', 'rules' => 'trim|required|in_list[E,S]']
         ];
         $this->form_validation->set_data($get);
         if ($this->validate($rules) === false) return;
@@ -243,7 +242,7 @@ class Code extends BaseMocktest
         if ($this->validate($rules) === false) return;
 
         $result = $this->baseCodeModel->storeSubject($this->_reqP(null));
-        $msg = ($this->input->post('_method') == 'POST') ? '등록되었습니다.' : '변경되었습니다.';
+        $msg = ($this->_reqP('_method') == 'POST') ? '등록되었습니다.' : '변경되었습니다.';
         $this->json_result($result, $msg, $result);
     }
 
@@ -270,7 +269,7 @@ class Code extends BaseMocktest
         $this->load->view('mocktestNew/search_mockCategory', [
             'siteCode' => $this->_reqG('siteCode'),
             'isSingle' => ($this->_reqG('single') == 'Y') ? true : false,
-            'isReg' => ($this->_reqG('reg') == 'Y') ? true : false,
+            'isReg' => ($this->_reqG('reg') == 'Y') ? true : false
         ]);
     }
 
@@ -288,21 +287,30 @@ class Code extends BaseMocktest
         $condition = [
             'EQ' => [
                 'MS.IsUse' => 'Y',
-                'S.SiteCode' => $this->input->post('siteCode')
+                'S.SiteCode' => $this->_reqP('siteCode')
             ],
             'ORG' => [
                 'LKB' => [
-                    'SJ.SubjectName' => $this->input->post('sc_fi', true)
+                    'SJ.SubjectName' => $this->_reqP('sc_fi', true)
                 ]
             ],
         ];
 
         $data = [];
-        $column = "
-            MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, SC.Ccd AS CateCode2,
-            CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']') AS CateRouteName,
-            (SELECT COUNT(*) FROM lms_mock_r_category AS MC WHERE MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y') AS IsExist
-        ";
+        if (empty($this->_reqP('isReg')) === false) {
+            $column = "
+                MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, SC.Ccd AS CateCode2,
+                CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), '] - ', MA.QuestionArea) AS CateRouteName,
+                IF(MS.Isuse = 'N' OR SJ.IsUse = 'N' OR MB.IsUse = 'N' OR S.IsUse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N' OR MA.IsUse = 'N', 'N', 'Y') AS BaseIsUse,
+                MC.MrcIdx
+            ";
+        } else {
+            $column = "
+                MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, SC.Ccd AS CateCode2,
+                CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']') AS CateRouteName,
+                (SELECT COUNT(*) FROM lms_mock_r_category AS MC WHERE MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y') AS IsExist
+            ";
+        }
         $count = $this->mockCommonModel->moCateListAll('', true, $condition, true, $this->_reqP('isReg'));
         if ($count > 0) {
             $data = $this->mockCommonModel->moCateListAll($column, false, $condition, true, $this->_reqP('isReg'), $this->_reqP('length'), $this->_reqP('start'));

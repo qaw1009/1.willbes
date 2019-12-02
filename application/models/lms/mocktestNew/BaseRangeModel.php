@@ -16,12 +16,17 @@ class BaseRangeModel extends WB_Model
     }
 
     /**
-     * 문제영역수
-     * @return array
+     * 문제영역 리스트
+     * @param array $arr_condition
+     * @return mixed
      */
-    public function list()
+    public function list($arr_condition = [])
     {
-        $arr_condition = ['EQ' => ['MB.IsStatus' => 'Y']];
+        $add_condition = [
+            'EQ' => ['MB.IsStatus' => 'Y'],
+            'IN' => ['MB.SiteCode' => get_auth_site_codes()]
+        ];
+        $condition = array_merge_recursive($arr_condition, $add_condition);
         $group_by = ' group by MB.MaIdx ';
         $order_by = $this->_conn->makeOrderBy(['MB.MaIdx' => 'ASC'])->getMakeOrderBy();
 
@@ -35,10 +40,8 @@ class BaseRangeModel extends WB_Model
             LEFT JOIN {$this->_table['mock_r_category']} AS MC ON MB.MaIdx = MC.MaIdx AND MC.IsStatus = 'Y'
             LEFT JOIN {$this->_table['admin']} AS A ON MB.RegAdminIdx = A.wAdminIdx
         ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $this->_conn->makeWhere($condition);
         $where = $where->getMakeWhere(false);
-
         return $this->_conn->query('select '. $column . $from . $where . $group_by . $order_by)->result_array();
     }
 

@@ -30,10 +30,7 @@
         .newTopDday ul li img {width:50px}
         .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:10px; width:28%}
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
-        .newTopDday ul:after {content:""; display:block; clear:both}
-
-        .skybanner {position:fixed;top:350px; width:120px; right:0;z-index:1;}
-        .skybanner a {display:block; margin-bottom:5px}
+        .newTopDday ul:after {content:""; display:block; clear:both}   
 
         .wb_cts00 {background:#404040}
         .wb_top{background:url(https://static.willbes.net/public/images/promotion/2019/11/1412_top_bg.jpg) no-repeat center top;}
@@ -41,7 +38,7 @@
         .wb_cts02 {background:#464646}
         .wb_cts03 {background:#585858}
         .wb_cts04,.wb_cts05 {background:#fff}
-        .wb_cts06,.wb_cts07 {background:#e2e2e2}
+        .wb_cts07 {background:#e2e2e2}
         .wb_cts08{background:#555}
 
     </style>
@@ -70,12 +67,7 @@
                     </li>
                 </ul>
             </div>
-        </div>       
-      
-        <div class="skybanner" >
-            <a href="#to_go1"><img src="https://static.willbes.net/public/images/promotion/2019/10/1412_skybanner01.png" alt="심화기출 이벤트" ></a>
-            <a href="#to_go2"><img src="https://static.willbes.net/public/images/promotion/2019/10/1412_skybanner02.png" alt="사전예약 이벤트" ></a>
-        </div>
+        </div>     
 
     	<div class="evtCtnsBox wb_cts00">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1283_00.jpg" alt="슈퍼pass"/>            
@@ -98,25 +90,8 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_04_1.jpg"><br>  
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1412_04.jpg" alt="이벤트1" usemap="#Map1412a" border="0" id="to_go1" />
-            <map name="Map1412a" id="Map1412a">
-                <area shape="rect" coords="153,641,401,715" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
-                <area shape="rect" coords="724,638,970,716" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
-            </map>   
-        </div>
-
-        <div class="evtCtnsBox wb_cts05" id="to_go2">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1412_05.jpg" alt="이벤트2"  />
-        </div>
-		
-		<div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_06.jpg" alt="프리미엄 종합반" usemap="#Map1412b" border="0"  />
-            <map name="Map1412b" id="Map1412b">
-                <area shape="rect" coords="894,485,1033,657" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
-                <area shape="rect" coords="894,919,1034,985" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1042&campus_ccd=605001" target="_blank" />
-            </map>
-        </div>
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1412_04_1.jpg">        
+        </div>  	
 
         <div class="evtCtnsBox wb_cts07" >
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1412_07_v2.jpg" alt="프리미엄 단과반" usemap="#Map1412c" border="0"  />

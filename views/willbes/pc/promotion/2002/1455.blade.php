@@ -71,7 +71,7 @@
         .skybanner {position:fixed;top:200px;right:0;z-index:1;}
         .skybanner2 {position:fixed;top:410px;right:0;z-index:1;}    
 
-        .click{display:none;margin:0 auto;}
+        .clicks{display:none;margin:0 auto;}
 
     </style>
 
@@ -131,7 +131,7 @@
             <map name="Map1455z" id="Map1455z">
                 <area shape="rect" coords="337,847,779,918" class="confirm" />
             </map>
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2_click.jpg" alt="1단계 핵심요약.문제풀이 스케쥴" class="click">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2_click.jpg" alt="1단계 핵심요약.문제풀이 스케쥴" class="clicks">
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2s.jpg" title="2단계.3단계">
         </div>
 
@@ -192,14 +192,15 @@
  /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
-        });
+        });         
 
+        $(document).ready(function(){
+            $(".confirm").click(function(){
+                $(".clicks").toggle();
+            });
 
-        $(function(){			
-			$(".confirm").click(function(){
-				$(".click").css({"display":"block"});		
-			});
-		});  
+});
+        
  
 </script>
 

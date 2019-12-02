@@ -230,3 +230,8 @@
 .free .tx-color {
     color: #393e80;
 }
+
+/* 메인 내 유튜브 영상 추가 요청 */
+.video_area{position:relative;}
+.youtubeGods{position:absolute;top:35%;left:12.5%;}
+.youtubeGods iframe{width:853px;height:480px;}

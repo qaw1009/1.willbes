@@ -92,7 +92,7 @@ class SiteCampusModel extends WB_Model
                 throw new \Exception($uploaded);
             }
 
-            if (empty($uploaded['0']['file_name']) === false) {
+            if (empty($uploaded[0]['file_name']) === false) {
                 $map_path = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
             }
 
@@ -155,7 +155,7 @@ class SiteCampusModel extends WB_Model
                 throw new \Exception($uploaded);
             }
 
-            if (empty($uploaded['0']['file_name']) === false) {
+            if (empty($uploaded[0]['file_name']) === false) {
                 $map_path = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
             }
 

@@ -29,6 +29,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_pro_online') }}" target="_blank">경찰승진 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_online') }}" target="_blank">해양경찰 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_special_online') }}" target="_blank">해양경찰특채 온라인 메인</a></li>
+                <li><a href="{{ site_url('/home/html/main_cop_2008') }}" target="_blank">경찰간부 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 학원 메인</a></li>
                 <li><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
                 <li class="c_both"></li>

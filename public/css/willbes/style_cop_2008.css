@@ -1,0 +1,188 @@
+/*********************************************     Main Container : Cop_sea     *********************************************/
+/* Main Container : Cop_sea */
+.cop2008 .tx-color {
+    color: #9177d4;
+}
+.cop2008 .menu-List li.cop2008 > a {
+    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat left center;
+    font-size: 16px;
+    color: #0c5dc0;
+    padding-left: 26px; 
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.cop2008 .menu-List li.cop2008 > a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+.Section2 { background: #f7f7f7}
+
+/* Main Container : Tit : Cop_sea */
+.cop2008 .smallTit {
+    border-top:1px solid #b8b8b8;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.cop2008 .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align: center;
+    width: 100%;
+}
+.cop2008 .smallTit span {
+    padding:0 20px;
+    font-weight: 600;
+    background: #fff;
+}
+.cop2008 .smallTit strong {
+    color:#9177d4;
+}
+
+.cop2008 .smallTit a {
+    position: absolute;
+    width: 23px;
+    top:-12px;
+    right:0;    
+    z-index: 1;
+}
+.cop2008 .smallTit2 span {
+    background:#f7f7f7;
+}
+.cop2008 .Section .will-big-Tit .cop-color {
+    color: #9177d4;
+}
+
+/**/
+.cop2008 .Section .bnrSec01 li {
+    display: inline;
+    float: left;   
+    width: 756px;
+    height: 292px;  
+    overflow: hidden; 
+}
+.cop2008 .Section .bnrSec01 li:last-child {    
+    width: 360px;
+    float: right;  
+}
+.cop2008 .Section .bnrSec01:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+
+/* Main Container : Prof */
+.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    height: 30px;
+    left:60px;
+    top: -10px;    
+    text-align: right;
+    z-index: 110;
+}
+.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #ccc !important;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #9177d4 !important;
+}
+
+.cop2008 .Section .ProfCopBox > li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 184px;
+    height: 281px;
+    margin-left: 2px;
+}
+.cop2008 .Section .ProfCopBox > li:first-child {
+    margin-left: 0;
+}
+.cop2008 .Section .ProfCopBox .ProfBtns {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;    
+    z-index: 100;
+}
+.cop2008 .Section .ProfCopBox .ProfBtns li {    
+    display: inline;
+    float: left;
+    width: 50%;   
+    height: 40px;
+    height: 40px;          
+}
+.cop2008 .Section .ProfCopBox .ProfBtns li a {    
+    display: block;
+    line-height: 40px;    
+    color:#fff;
+    text-align: center;
+    margin-left: 1px; 
+    background: rgba(0,0,0,.5); 
+}
+.cop2008 .Section .ProfCopBox .ProfBtns li:first-child a {
+    margin-left: 0;
+}
+.cop2008 .Section .ProfCopBox .ProfBtns li a:hover {
+    background:#9177d4;
+    font-size: 14px;
+}
+.cop2008 .Section .ProfCopBox .ProfBtns li span {
+    padding-left:10px;
+}
+.cop2008 .Section .ProfCopBox .ProfBtns:after,
+.cop2008 .Section .ProfCopBox:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/**/
+.cop2008 .Section .bnrSec02 li {
+    display: inline;
+    float: left;
+    margin-right: 8px;    
+}
+.cop2008 .Section .bnrSec02 li:last-child {
+    margin:0
+}
+.cop2008 .Section .bnrSec01:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+
+/* Main Container : SpecialLecBox */
+.cop2008 .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+    background: #9177d4;
+}
+.cop2008 .Section .SpecialLecBox .infoList .List-Table li a span {
+    float: left;
+    width: 130px;
+    color: #9177d4;
+    text-align: center;
+}
+
+/* Main Container : Notice : Cop_sea */
+.cop2008 .Section .nNoticeBox .infoBox .infoTit {
+    color: #9177d4;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.cop2008 .willbesNumber ul li {
+    margin-left: 100px;
+}
+.cop2008 .willbesNumber ul li:first-child {
+    margin-left: 50px;
+}

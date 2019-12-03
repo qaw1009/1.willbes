@@ -418,7 +418,7 @@
     height: 328px;
 }
 .campus_info dl dt {
-    border-top: 1px solid #e3e3e3;
+    /*border-top: 1px solid #e3e3e3;*/
     padding: 25px 0;
 }
 .campus_info dl dt:first-child {

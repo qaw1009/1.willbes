@@ -43,7 +43,6 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <ul class="skybanner">
-            <li><a href="#go_lec"><img src="https://static.willbes.net/public/images/promotion/2019/10/1427_sky_01.png" alt="교재쏜다" /></a></li>
             <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1427_sky_02.png" alt="1:1학원상담" /></a></li>
             <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1427_sky_03.png" alt="카카오톡상담" /></a></li>
             <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1427_sky_04.png" alt="통합생활관리반" /></a></li>
@@ -89,7 +88,7 @@
         <div class="evtCtnsBox evt04" id="go_lec">
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1427_04.jpg" usemap="#Map1427" title="수강신청" border="0"  />
             <map name="Map1427" id="Map1427">
-                <area shape="rect" coords="129,924,988,973" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&amp;subject_idx=1273&amp;course_idx=1062&amp;prof_idx=50394" target="_blank" alt="외무영사직 수강신청" />
+                <area shape="rect" coords="126,722,985,771" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3044&amp;subject_idx=1273&amp;course_idx=1062&amp;prof_idx=50394" target="_blank" alt="외무영사직 수강신청" />
             </map>
         </div>       
 

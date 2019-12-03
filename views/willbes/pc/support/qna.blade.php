@@ -107,7 +107,9 @@
                                     <td class="w-date">{{$row['RegDatm']}}</td>
                                     <td class="w-answer">
                                         @if($row['IsBest'] == 0)
-                                            @if($row['ReplyStatusCcd'] == '621004')
+                                            @if($row['ReplyStatusCcd'] == '621002' || $row['ReplyStatusCcd'] == '621003')
+                                                <span class="aBox waitBox NSK">처리중</span>
+                                            @elseif($row['ReplyStatusCcd'] == '621004')
                                                 <span class="aBox answerBox NSK">답변완료</span>
                                             @else
                                                 <span class="aBox waitBox NSK">답변대기</span>

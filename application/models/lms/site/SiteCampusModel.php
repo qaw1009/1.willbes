@@ -92,8 +92,8 @@ class SiteCampusModel extends WB_Model
                 throw new \Exception($uploaded);
             }
 
-            if (empty($uploaded['0']['full_path']) === false) {
-                $map_path = upload_path_to_public($uploaded['0']['full_path']);
+            if (empty($uploaded[0]['file_name']) === false) {
+                $map_path = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
             }
 
             // 데이터 저장
@@ -155,8 +155,8 @@ class SiteCampusModel extends WB_Model
                 throw new \Exception($uploaded);
             }
 
-            if (empty($uploaded['0']['full_path']) === false) {
-                $map_path = upload_path_to_public($uploaded['0']['full_path']);
+            if (empty($uploaded[0]['file_name']) === false) {
+                $map_path = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
             }
 
             // 데이터 수정

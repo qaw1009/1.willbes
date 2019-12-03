@@ -1,0 +1,218 @@
+/*********************************************     Main Container :     *********************************************/
+/* Main Container : */
+.cop2013 .tx-color {
+    color: #ba560e;
+}
+.cop2013 .Menu .menu-List li.cop2013 a {
+    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat left center;
+    font-size: 16px;
+    color: #0c5dc0;
+    padding-left: 26px; 
+    display:inline-block;
+    vertical-align: middle;
+}
+.cop2013 .Menu .menu-List li.cop2013 a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+/* Main Container : MainVisual */
+.cop2013 .VisualsubBox {
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;
+}
+.cop2013 .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    margin: 0;
+    width: 50px;
+    z-index:90;
+  }
+.cop2013 .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+    z-index:90;
+}
+.cop2013 .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+
+.cop2013 .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #898989 !important;
+}
+.cop2013 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.cop2013 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop2013 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #1e6c9a !important;
+    z-index: 10;
+}
+
+.cop2013 .Section2 {
+    background: #f7f7f7;
+}
+
+
+/* Main Container : Prof */
+.cop2013 .PBcts li {
+    display: inline;
+    float: left;    
+    width: 274px;
+    height: 234px;
+    overflow: hidden;
+    margin-left: 8px;
+}
+.cop2013 .PBcts li:first-child {
+    margin-left: 0;
+}
+
+.cop2013 .PBcts:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.cop2013 .PBcts .bSlider .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 0;
+    bottom: 10px;
+    text-align: center;
+}
+.cop2013 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.cop2013 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.cop2013 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop2013 .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #b85712 !important;
+}
+
+
+/* Main Container : Notice : noticeTabs */
+.cop2013 .noticeTabs.acad {
+    float: left;
+    width: 668px;
+    margin-top: 27px;
+}
+.cop2013 .tabWrap.noticeWrap_acad {
+    height: 34px;
+    border:0;
+}
+.cop2013 .tabWrap.noticeWrap_acad li {
+    float: left;
+    width: 150px;
+    height: 22px;
+    margin-right: -1px;
+}
+.cop2013 .tabWrap.noticeWrap_acad li a {
+    display: block;
+    width: 100%;
+    height: 22px;
+    line-height: 22px;
+    background: none;
+    font-size: 18px;
+    color: #7c7c7c;
+    text-align: left;
+    letter-spacing: 0;
+    border:0;
+    border-right: 1px solid #e1e1e1;
+}
+.cop2013 .tabWrap.noticeWrap_acad li:last-child a {
+    border:0;
+}
+.cop2013 .tabWrap.noticeWrap_acad li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 22px;
+    line-height: 22px;
+    color: #ba560e;
+}
+.cop2013 .tabBox.noticeBox_acad a.btn-add {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+.cop2013 .tabBox.noticeBox_acad .List-Table {
+    padding:0;
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+}
+.cop2013 .tabBox.noticeBox_acad .List-Table li {
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-top: 1px solid #e3e3e3;
+}
+.cop2013 .tabBox.noticeBox_acad .List-Table li:first-child {
+    border-top: none;
+}
+.cop2013 .tabBox.noticeBox_acad .List-Table li a {
+    display: inline-block;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.cop2013 .tabBox.noticeBox_acad .List-Table li a span {
+    background: #ba560e;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.cop2013 .sliderEvt {
+    float: right;
+    width: 420px;
+}
+.cop2013 .sliderEvt .will-acadTit {
+    margin-top:10px;
+    line-height: 50px;
+}
+/* Main Container : campus : */
+.cop2013 .tabWrap.noticeWrap_campus li a.on {
+    color: #ba560e;
+}
+.cop2013 .campus_info {
+    position: relative;
+    float: right;
+    width: 350px;
+    height: 328px;
+}
+.cop2013 .campus_info .btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.cop2013 .campus_info .btn a {
+    display: inline-block; 
+    font-size: 17px; 
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    width: 168px;
+    margin-right: 5px;
+    color: #ba560e;
+    text-align: center;
+    border: 1px solid #ba560e;    
+}
+.cop2013 .campus_info .btn a:last-child {
+    background: #f9e000;
+    color:#381e1f;
+    border: 1px solid #f9e000;
+}
+.cop2013 .campus_info .btn a img {
+    vertical-align: middle;
+}

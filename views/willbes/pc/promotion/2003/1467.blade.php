@@ -24,14 +24,14 @@
         .evt01 {background:#fdfdfd}
         .evt02 {background:#ebeff0}
         .evt03 {background:#fdfdfd}
-        .evt04 {background:#222335; position:relative}
+        .evt04 {background:#96332e; position:relative}
         .evt05 {background:#fff}
 
         .check { position:absolute; bottom:20px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
         .check label {cursor:pointer; font-size:14px}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#ea263e; margin-left:50px; border-radius:20px}
-        .check a:hover {background:#fdfe0d; color:#ea263e}
+        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#911b29; margin-left:50px; border-radius:20px}
+        .check a:hover {background:#fdfe0d; color:#911b29}
 
         .time {width:100%; text-align:center; background:#e9e7e8}
         .time {text-align:center; padding:20px 0}

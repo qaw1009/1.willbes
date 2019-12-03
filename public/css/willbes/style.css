@@ -6,6 +6,8 @@
 @import url("style_cop_sea.css"); /*해양경찰*/
 @import url("style_cop_sea_special.css"); /*해양경찰특채*/
 @import url("style_cop_acad.css"); /*경찰학원*/
+@import url("style_cop_2008.css"); /*경찰간부 온라인*/
+@import url("style_cop_2013.css"); /*경찰간부학원*/
 @import url("style_gosi.css"); /*9급,7급*/
 @import url("style_gosi_acad.css"); /*공무원학원*/
 @import url("style_gosi_law.css"); /*법원직*/

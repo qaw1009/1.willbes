@@ -29,16 +29,13 @@
         .wb_cts07 {background:#DBC8B7;}
 
         .skybanner {position:fixed;top:200px;right:0;width:290px;z-index:11;}
-        .skybanner2{position:fixed;top:500px;right:0;width:290px;z-index:11;}        
-
-
-       
+        .skybanner2{position:fixed;top:500px;right:0;width:290px;z-index:11;}         
     </style>
 
 
     <div class="p_re evtContent NSK" id="evtContainer">      
         <div class="skybanner">
-            <a href="{{ site_url('/promotion/index/cate/3019/code/1067') }}" target="_blank">
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
             </a>
         </div>  

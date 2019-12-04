@@ -29,11 +29,14 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_pro_online') }}" target="_blank">경찰승진 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_online') }}" target="_blank">해양경찰 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_special_online') }}" target="_blank">해양경찰특채 온라인 메인</a></li>
-                <li><a href="{{ site_url('/home/html/main_cop_2008') }}" target="_blank">경찰간부 온라인 메인</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 학원 메인</a></li>
-                <li><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰학원 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
+                <li class="c_both"></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_2008') }}" target="_blank">경찰간부 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_2013') }}" target="_blank">경찰간부 학원 메인</a></li>                
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_3102') }}" target="_blank">공무원 7급 PSAT 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_seven') }}" target="_blank">공무원 7급 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_tex') }}" target="_blank">공무원 세무직 온라인 메인</a></li>                
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_law') }}" target="_blank">공무원 법원직 온라인 메인</a></li>
@@ -42,7 +45,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gp') }}" target="_blank">공무원 군무원 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_noncom') }}" target="_blank">공무원 부사관 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_free') }}" target="_blank">공무원 무료특강</a></li>
-                <li><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3094') }}" target="_blank">고등고시 5급행정</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3095') }}" target="_blank">고등고시 국립외교원</a></li>

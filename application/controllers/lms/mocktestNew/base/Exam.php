@@ -36,22 +36,22 @@ class Exam extends BaseMocktest
     {
         $condition = [
             'EQ' => [
-                'MP.SiteCode' => $this->input->post('search_site_code'),
-                'MB.CateCode' => $this->input->post('search_cateD1'),
-                'MB.Ccd' => $this->input->post('search_cateD2'),
-                'MS.SubjectIdx' => $this->input->post('search_subject'),
-                'MP.ProfIdx' => $this->input->post('search_professor'),
-                'MP.Year' => $this->input->post('search_year'),
-                'MP.RotationNo' => $this->input->post('search_round'),
-                'MP.IsUse' => $this->input->post('search_use'),
+                'MP.SiteCode' => $this->_reqP('search_site_code'),
+                'MB.CateCode' => $this->_reqP('search_cateD1'),
+                'MB.Ccd' => $this->_reqP('search_cateD2'),
+                'MS.SubjectIdx' => $this->_reqP('search_subject'),
+                'MP.ProfIdx' => $this->_reqP('search_professor'),
+                'MP.Year' => $this->_reqP('search_year'),
+                'MP.RotationNo' => $this->_reqP('search_round'),
+                'MP.IsUse' => $this->_reqP('search_use'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'MP.PapaerName' => $this->input->post('search_fi', true),
-                    'A.wAdminName' => $this->input->post('search_fi', true),
-                    'SC.CcdName' => $this->input->post('search_fi', true),
-                    'SJ.SubjectName' => $this->input->post('search_fi', true),
-                    'PMS.wProfName' => $this->input->post('search_fi', true),
+                    'MP.PapaerName' => $this->_reqP('search_fi', true),
+                    'A.wAdminName' => $this->_reqP('search_fi', true),
+                    'SC.CcdName' => $this->_reqP('search_fi', true),
+                    'SJ.SubjectName' => $this->_reqP('search_fi', true),
+                    'PMS.wProfName' => $this->_reqP('search_fi', true),
                 ]
             ],
         ];
@@ -69,6 +69,20 @@ class Exam extends BaseMocktest
         ]);
     }
 
+    /**
+     * 데이터 복사
+     */
+    public function copyData()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->regExamModel->copyData($this->input->post('idx'));
+        $this->json_result($result, '복사되었습니다.', $result);
+    }
 
     public function create($params = [])
     {
@@ -125,10 +139,13 @@ class Exam extends BaseMocktest
             'areaList' => $areaList,
             'upImgUrl' => $this->config->item('upload_url_mock', 'mock') . $data['MpIdx'] .'/',
             'upImgUrlQ' => $this->config->item('upload_url_mock', 'mock') . $data['MpIdx'] . $this->config->item('upload_path_mockQ', 'mock'),
-            'isDeny' => !empty($qData) ? true : false,  // 개별 문제가 등록된 경우 카테고리, 문제등록옵션, 총점 변경 불가
+            'isDeny' => empty($question_data) === false ? true : false,  // 개별 문제가 등록된 경우 카테고리, 문제등록옵션, 총점 변경 불가
         ]);
     }
 
+    /**
+     * 문제지 저장/수정
+     */
     public function store()
     {
         $method = 'add';
@@ -155,7 +172,7 @@ class Exam extends BaseMocktest
             $rules = array_merge($rules, [
                 ['field' => 'idx', 'label' => '문제지식별자', 'rules' => 'trim|required|is_natural_no_zero']
             ]);
-            if(empty($this->input->post('isDeny')) === true) {
+            if(empty($this->_reqP('isDeny')) === true) {
                 $rules = array_merge($rules, [
                     ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|in_list[S,M,J]'],
                     ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -167,5 +184,123 @@ class Exam extends BaseMocktest
 
         $result = $this->regExamModel->{$method . 'Exam'}($this->_reqP(null));
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
+    }
+
+    /**
+     * 문제항목 저장/수정
+     */
+    public function storeQuestion()
+    {
+        $Info = json_decode($this->_reqP('Info'));
+        if(is_object($Info) === false || isset($Info->chapterTotal) === false || isset($Info->chapterExist) === false || isset($Info->chapterDel) === false) {
+            $this->json_error("입력오류");
+            return;
+        } else {
+            $_POST['chapterTotal'] = $Info->chapterTotal;
+            $_POST['chapterExist'] = $Info->chapterExist;
+            $_POST['chapterDel'] = $Info->chapterDel;
+        }
+
+        $rules = [
+            ['field' => 'QuestionNO[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'MalIdx[]', 'label' => '문제영역', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'QuestionOption[]', 'label' => '문제등록옵션', 'rules' => 'trim|required|in_list[S,M,J]'],
+            ['field' => 'Scoring[]', 'label' => '배점', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'Difficulty[]', 'label' => '난이도', 'rules' => 'trim|required|in_list[T,M,B]'],
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
+            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
+            ['field' => 'chapterTotal[]', 'label' => 'tIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterExist[]', 'label' => 'eIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterDel[]', 'label' => 'dIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'regKind[]', 'label' => 'Call등록타입', 'rules' => 'trim|in_list[call]'],
+            ['field' => 'callIdx[]', 'label' => 'CallIdx', 'rules' => 'trim|is_natural_no_zero'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        // 조건체크
+        if( count($this->_reqP('QuestionNO')) != count(array_unique($this->_reqP('QuestionNO'))) ) {
+            $this->json_error('문항번호가 중복되어 있습니다.');
+            return;
+        }
+        if( $this->_reqP('TotalScore') != array_reduce($this->_reqP('Scoring'), function ($sum, $v) { $sum += $v; return $sum; }, 0) ) {
+            $this->json_error('문항별 배점의 합과 총점이 일치하지 않습니다.');
+            return;
+        }
+        foreach ($this->_reqP('QuestionOption') as $k => $v) {
+            if( $v != 'J' && !preg_match('/^[1-9,]+$/', $this->_reqP('RightAnswer')[$k]) ) {
+                $this->json_error('정답을 선택하세요');
+                return;
+            }
+        }
+
+        $error = false;
+        foreach ($this->_reqP('QuestionOption') as $k => $v) {
+            $count = empty($this->_reqP("RightAnswer")[$k]) ? 0 : count(explode(',', $this->_reqP("RightAnswer")[$k]));
+            switch ($v) {
+                case 'S': // 객관식 단일
+                    if($count !== 1) $error = true;
+                    break;
+                case 'M': // 객관식 복수
+                    if($count < 2) $error = true;
+                    break;
+                case 'J': // 주관식
+                    if($count !== 0) $error = true;
+                    break;
+            }
+            if($error === true) {
+                $this->json_error("정답갯수가 맞지 않습니다.\n\n객관식(단일): 정답 1개\n객관식(복수): 정답 2개 이상\n주관식:입력X");
+                return;
+            }
+        }
+
+        $result = $this->regExamModel->storeQuestion($this->_reqP(null));
+        $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
+    }
+
+    /**
+     * 문항호출 폼
+     */
+    public function callIndex()
+    {
+        $this->load->view('mocktestNew/base/exam/questionCall', [
+            'method' => 'GET',
+        ]);
+    }
+
+    public function callData()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'qu_year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'qu_round', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'qu_no', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'nowIdx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'area_code', 'label' => '문제영역', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'ProfIdx', 'label' => '교수', 'rules' => 'trim|required|is_natural_no_zero'],
+            /*['field' => 'QuestionOption', 'label' => '문제등록옵션', 'rules' => 'trim|in_list[S,M,J]'],*/
+            ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->regExamModel->callData($this->_reqP(null));
+        $this->json_result($result['ret_cd'], '', $result, $result);
+    }
+
+    /**
+     * 정렬변경
+     */
+    public function sort()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'sorting', 'label' => '문항정보', 'rules' => 'trim|required'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->regExamModel->sort($this->_reqP('sorting'));
+        $this->json_result($result, '정렬되었습니다.', $result);
     }
 }

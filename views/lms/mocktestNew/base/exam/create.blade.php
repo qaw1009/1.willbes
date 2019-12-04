@@ -27,7 +27,7 @@
                         <button type="button" class="btn btn-sm btn-primary act-searchCate" >카테고리검색</button>
                         <div id="selected_category" class="row mt-10">
                             @foreach($cate_data as $row)
-                                <div class="col-xs-4 pb-5">
+                                <div class="col-xs-5 pb-5">
                                     {{ preg_replace('/^(.*?\s>\s)/', '',$row['CateRouteName']) }}
                                     {!! (($row['BaseIsUse'] == 'N') ? '<span class="ml-5 red">(미사용)</span>' : '') !!}
                                     <a href="#none" data-cate-code="{{$row['MrsIdx']}}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
@@ -344,7 +344,7 @@
                                     </select>
                                 </td>
                                 <td class="text-center"><button type="button" class="btn btn-xs btn-success mt-5 act-call-unit">호출</button></td>
-                                <td class="text-center">{{ @$adminName[$row['RegAdminIdx']] }}</td>
+                                <td class="text-center">{{ $row['RegAdminName'] }}</td>
                                 <td class="text-center">{{ $row['RegDatm'] }}</td>
                                 <td class="text-center"><span class="addRow-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
                             </tr>
@@ -416,26 +416,6 @@
                 $('#selected_area').empty();
                 $('#selected_professor').empty();
             });
-
-            // 업로드파일 삭제
-            {{--$('#regi_form, #regi_sub_form').on('click', '.act-fileDel', function () {--}}
-            {{--var that = $(this);--}}
-            {{--var _url = '{{ site_url("/mocktestNew/base/exam/fileDel") }}';--}}
-            {{--var data = {--}}
-            {{--'{{ csrf_token_name() }}' : $regi_form.find('[name="{{ csrf_token_name() }}"]').val(),--}}
-            {{--'_method' : 'PUT',--}}
-            {{--'type' : $(this).data('file-type'),--}}
-            {{--'idx' : $(this).data('file-idx'),--}}
-            {{--'name' : $(this).data('file-name')--}}
-            {{--};--}}
-
-            {{--sendAjax(_url, data, function(ret) {--}}
-            {{--if (ret.ret_cd) {--}}
-            {{--that.closest('.file-wrap').remove();--}}
-            {{--notifyAlert('success', '알림', ret.ret_msg);--}}
-            {{--}--}}
-            {{--}, showValidateError, false, 'POST');--}}
-            {{--});--}}
 
             // 목록 이동
             $('#goList').on('click', function() {
@@ -555,7 +535,7 @@
                 ajaxSubmit($regi_sub_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktestNew/base/exam/edit/') }}' + ret.ret_data.dt.idx + getQueryString());
+                        location.replace('{{ site_url('/mocktestNew/base/exam/create/') }}' + ret.ret_data.dt.idx + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });
@@ -593,7 +573,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktestNew/base/exam/edit/') }}' + ret.ret_data.dt.idx + getQueryString());
+                        location.reload();
                     }
                 }, showValidateError, false, 'POST');
             });

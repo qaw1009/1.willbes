@@ -49,8 +49,7 @@ class RegExamModel extends WB_Model
     public function mainList($is_count = false, $add_condition = [], $limit = null, $offset = null)
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
-            $group_by = '';
+            $column = 'count(*) AS cnt';
             $order_by_offset_limit = '';
         } else {
             $column = "
@@ -78,7 +77,6 @@ class RegExamModel extends WB_Model
                     GROUP BY MPRC.MpIdx
                 ) AS CateRouteName
             ";
-            $group_by = ' GROUP BY MP.MpIdx';
             $arr_order_by = ['MP.MpIdx' => 'DESC'];
             $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -99,8 +97,9 @@ class RegExamModel extends WB_Model
             JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
-
-        $query = $this->_conn->query('select ' . $column . $from . $where . $group_by . $order_by_offset_limit);
+        $group_by = ' GROUP BY MP.MpIdx';
+        $query_string = 'SELECT '. (($is_count === true) ? 'COUNT(M.cnt) AS numrows ' : 'M.* ') . 'FROM (SELECT ' . $column . $from . $where . $group_by . $order_by_offset_limit . ') AS M';
+        $query = $this->_conn->query($query_string);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -167,7 +166,7 @@ class RegExamModel extends WB_Model
     }
 
     /**
-     * 문제등록
+     * 문제지 등록
      * @param $form_data
      * @return array|bool
      */
@@ -175,6 +174,7 @@ class RegExamModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
+            $this->load->library('upload');
             $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','ExplanFile'], 1);
 
             // 데이터 저장
@@ -244,10 +244,16 @@ class RegExamModel extends WB_Model
         return ['ret_cd' => true, 'dt' => ['idx' => $nowIdx]];
     }
 
+    /**
+     * 문제지 수정
+     * @param $form_data
+     * @return array|bool
+     */
     public function modifyExam($form_data)
     {
         $this->_conn->trans_begin();
         try {
+            $this->load->library('upload');
             $filePath = $this->upload_path . $this->upload_path_mock . element('idx', $form_data) . '/';
             $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','ExplanFile'], 1);
             $uploadSubPath = $this->upload_path_mock . $this->input->post('idx', $form_data);
@@ -255,7 +261,7 @@ class RegExamModel extends WB_Model
             // 기존데이터 첨부파일 이름 추출
             $fileBackup = [];
             $beforeDB = $this->_conn->select('RealQuestionFile, RealExplanFile')
-                ->where(array('MpIdx' => element('idx', $form_data), 'IsStatus' => 'Y'))
+                ->where(['MpIdx' => element('idx', $form_data), 'IsStatus' => 'Y'])
                 ->get($this->_table['mockExamBase'])->row_array();
 
             // 데이터 수정
@@ -265,7 +271,7 @@ class RegExamModel extends WB_Model
                 'PapaerName' => element('PapaerName', $form_data),
                 'Year' => element('Year', $form_data),
                 'RotationNo' => element('RotationNo', $form_data),
-                'FilePath' => PUBLICURL . 'uploads/' . $uploadSubPath . "/",
+                'FilePath' => $this->upload->_upload_url . $uploadSubPath . "/",
                 'IsUse' => element('IsUse', $form_data),
                 'UpdDate' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
@@ -310,6 +316,440 @@ class RegExamModel extends WB_Model
     }
 
     /**
+     * 데이터 복사
+     * @param $idx
+     * @return array|bool
+     */
+    public function copyData($idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if (!preg_match('/^[0-9]+$/', $idx)) {
+                throw new Exception('잘못된 식별자 입니다.');
+            }
+
+            $result = $this->_copyDataStep1($idx);
+            if ($result['ret_cd'] === false || empty($result['nowIdx']) === true) {
+                throw new \Exception('데이터 복사에 실패했습니다.(1)');
+            }
+
+            if ($this->_copyDataStep2($result['nowIdx'], $idx) === false) {
+                throw new Exception('데이터 복사에 실패했습니다.(2)');
+            }
+
+            if ($this->_copyDataStep3($result['nowIdx'], $idx) === false) {
+                throw new Exception('데이터 복사에 실패했습니다.(3)');
+            }
+
+            if ($this->_copyDataStep4($result['nowIdx'], $idx) === false) {
+                throw new Exception('파일 저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 문항정보 등록,수정
+     * (주의) 저장파일에 Q1_~ 로 번호 붙으나 삭제를 하게 되면 index가 변경됨으로 번호가 안 맞을 수도 있음 (중복은 안됨)
+     * @param $form_data
+     * @return array|bool
+     */
+    public function storeQuestion($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $this->load->library('upload');
+            $filePath = $this->upload_path . $this->upload_path_mock . element('idx', $form_data) . $this->upload_path_mockQ;
+            $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','ExplanFile'], 1);
+
+            // 기존데이터 첨부파일 이름 추출
+            $beforeDB = $fileBackup = $fileCopy = [];
+            if( element('chapterExist', $form_data) || element('chapterDel', $form_data) ) {
+                $beforeIn = array_unique(array_merge(element('chapterExist', $form_data), element('chapterDel', $form_data)));
+                $bDB = $this->_conn->select('MqIdx,RealQuestionFile,RealExplanFile')
+                    ->where_in($beforeIn)
+                    ->get($this->_table['mock_questions'])->result_array();
+
+                foreach ($bDB as $it) {
+                    $beforeDB[$it['MqIdx']] = $it;
+                }
+                unset($bDB);
+            }
+
+            $dataReg = $dataMod = $dataDel = [];
+            if(empty(element('chapterTotal', $form_data)) === false) {
+                foreach (element('chapterTotal', $form_data) as $k => $v) {
+                    if (empty(element('chapterExist', $form_data)) || !in_array($v, element('chapterExist', $form_data))) { // 신규등록
+                        $dataReg[$k] = [
+                            'MpIdx' => element('idx', $form_data),
+                            'MalIdx' => element('MalIdx', $form_data)[$k],
+                            'QuestionNO' => element('QuestionNO', $form_data)[$k],
+                            'QuestionOption' => element('QuestionOption', $form_data)[$k],
+                            'FilePath' => $this->upload->_upload_url . $this->upload_path_mock . element('idx', $form_data) . $this->upload_path_mockQ,
+                            'RightAnswer' => element('RightAnswer', $form_data)[$k],
+                            'RightAnswerRate' => 0,
+                            'Scoring' => element('Scoring', $form_data)[$k],
+                            'Difficulty' => element('Difficulty', $form_data)[$k],
+                            'RegIp' => $this->input->ip_address(),
+                            'RegDatm' => date("Y-m-d H:i:s"),
+                            'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                        ];
+                        if(element('regKind', $form_data)[$k] == 'call') { // 호출한 경우
+                            $index = $k + 1;
+                            $callRealQuestionFile = 'Q'. $index . '_'. md5(uniqid(mt_rand())) . preg_replace('/^.+(\.[a-z0-9]+)$/i', '$1', element('callRealQuestionFile', $form_data)[$k]);
+                            $callRealExplanFile = 'E'. $index . '_'. md5(uniqid(mt_rand())) . preg_replace('/^.+(\.[a-z0-9]+)$/i', '$1', element('callRealExplanFile', $form_data)[$k]);
+
+                            $dataReg[$k]['QuestionFile'] = element('callQuestionFile', $form_data)[$k];
+                            $dataReg[$k]['RealQuestionFile'] = $callRealQuestionFile;
+                            $dataReg[$k]['ExplanFile'] = element('callExplanFile', $form_data)[$k];
+                            $dataReg[$k]['RealExplanFile'] = $callRealExplanFile;
+
+                            // 복사할 파일
+                            $src = element('callIdx', $form_data)[$k] . $this->upload_path_mockQ;
+                            $dest = element('idx', $form_data) . $this->upload_path_mockQ;
+
+                            $fileCopy[] = ['src' => $src . element('callRealQuestionFile', $form_data)[$k], 'dest' => $dest . $callRealQuestionFile];
+                            $fileCopy[] = ['src' => $src . element('callRealExplanFile', $form_data)[$k], 'dest' => $dest . $callRealExplanFile];
+                        } else {
+                            if ( isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK && $names['QuestionFile']['size'][$k] > 0 ) {
+                                $dataReg[$k]['QuestionFile'] = $names['QuestionFile']['name'][$k];
+                                $dataReg[$k]['RealQuestionFile'] = $names['QuestionFile']['real'][$k];
+                            }
+                            if ( isset($names['ExplanFile']['error'][$k]) && $names['ExplanFile']['error'][$k] === UPLOAD_ERR_OK && $names['ExplanFile']['size'][$k] > 0 ) {
+                                $dataReg[$k]['ExplanFile'] = $names['ExplanFile']['name'][$k];
+                                $dataReg[$k]['RealExplanFile'] = $names['ExplanFile']['real'][$k];
+                            }
+                        }
+                    } else { // 수정
+                        $dataMod[$k] = [
+                            'MqIdx' => $v,
+                            'MalIdx' => element('MalIdx', $form_data)[$k],
+                            'QuestionNO' => element('QuestionNO', $form_data)[$k],
+                            'QuestionOption' => element('QuestionOption', $form_data)[$k],
+                            'FilePath' => $this->upload->_upload_url . $this->upload_path_mock . element('idx', $form_data) . $this->upload_path_mockQ,
+                            'RightAnswer' => element('RightAnswer', $form_data)[$k],
+                            'Scoring' => element('Scoring', $form_data)[$k],
+                            'Difficulty' => element('Difficulty', $form_data)[$k],
+                            'UpdDatm' => date("Y-m-d H:i:s"),
+                            'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                        ];
+                        if( isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK && $names['QuestionFile']['size'][$k] > 0 ) {
+                            $dataMod[$k]['QuestionFile'] = $names['QuestionFile']['name'][$k];
+                            $dataMod[$k]['RealQuestionFile'] = $names['QuestionFile']['real'][$k];
+
+                            if( !empty($beforeDB[$v]['RealQuestionFile']) ) $fileBackup[] = $filePath . $beforeDB[$v]['RealQuestionFile'];
+                        }
+                        if( isset($names['ExplanFile']['error'][$k]) && $names['ExplanFile']['error'][$k] === UPLOAD_ERR_OK && $names['ExplanFile']['size'][$k] > 0 ) {
+                            $dataMod[$k]['ExplanFile'] = $names['ExplanFile']['name'][$k];
+                            $dataMod[$k]['RealExplanFile'] = $names['ExplanFile']['real'][$k];
+
+                            if( !empty($beforeDB[$v]['RealExplanFile']) ) $fileBackup[] = $filePath . $beforeDB[$v]['RealExplanFile'];
+                        }
+                    }
+                }
+            }
+
+            // 삭제 (IsStatus Update)
+            if(empty(element('chapterDel', $form_data)) === false) {
+                foreach (element('chapterDel', $form_data) as $k => $v) {
+                    $dataDel[] = [
+                        'MqIdx' => $v,
+                        'IsStatus' => 'N',
+                        'UpdDatm' => date("Y-m-d H:i:s"),
+                        'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                    ];
+
+                    if( !empty($beforeDB[$v]['RealQuestionFile']) ) $fileBackup[] = $filePath . $beforeDB[$v]['RealQuestionFile'];
+                    if( !empty($beforeDB[$v]['RealExplanFile']) ) $fileBackup[] = $filePath . $beforeDB[$v]['RealExplanFile'];
+                }
+            }
+
+            if($dataReg) $this->_conn->insert_batch($this->_table['mock_questions'], $dataReg);
+            if($dataMod) $this->_conn->update_batch($this->_table['mock_questions'], $dataMod, 'MqIdx');
+            if($dataDel) $this->_conn->update_batch($this->_table['mock_questions'], $dataDel, 'MqIdx');
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('저장에 실패했습니다.');
+            }
+
+            // 파일 복사 (호출한 경우)
+            if($fileCopy) {
+                if ($this->_uploadFileCopy($fileCopy) !== true) {
+                    throw new Exception('파일 저장에 실패했습니다.');
+                }
+            }
+
+            // 파일 업로드 & 백업이동
+            $uploadSubPath = $this->upload_path_mock . element('idx', $form_data) . $this->upload_path_mockQ;
+            $isSave = $this->_uploadFileSave($uploadSubPath, $names, $fileBackup, 'img');
+            if($isSave !== true) {
+                throw new Exception('파일 저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'dt' => ['idx' => element('idx', $form_data)]];
+    }
+
+    public function sort($sort_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $sorting = @json_decode($sort_data, true);
+            if(!is_array($sorting)) {
+                throw new Exception('입력오류');
+            }
+
+            if( count($sorting) != count(array_unique(array_values($sorting))) ) {
+                throw new Exception('문항번호가 중복되어 있습니다.');
+            }
+
+            $data = [];
+            foreach ($sorting as $k => $v) {
+                $data[] = [
+                    'MqIdx' => $k,
+                    'QuestionNO' => $v,
+                    'UpdDatm' => date("Y-m-d H:i:s"),
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+            }
+
+            if($data) $this->_conn->update_batch($this->_table['mock_questions'], $data, 'MqIdx');
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('정렬변경에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    public function callData($form_data)
+    {
+        /*$condition = [
+            'EQ' => [
+                'EB.siteCode' => $this->input->post('siteCode'),
+                'EB.MaIdx' => $this->input->post('area_code'),
+                'EB.ProfIdx' => $this->input->post('ProfIdx'),
+                'EB.Year' => $this->input->post('qu_year'),
+                'EB.RotationNo' => $this->input->post('qu_round'),
+                'EQ.QuestionNO' => $this->input->post('qu_no'),
+            ],
+            'NOT' => [
+                'EB.MpIdx' => $this->input->post('nowIdx')
+            ],
+        ];
+
+        $sql = "
+            SELECT EQ.*, MA.AreaName, EB.QuestionOption AS EB_QuestionOption, EB.AnswerNum AS EB_AnswerNum, A.wAdminName
+            FROM {$this->_table['mockExamBase']} AS EB
+            JOIN {$this->_table['mock_questions']} AS EQ ON EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y'
+            JOIN {$this->_table['mock_area_list']} AS MA ON EQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON EQ.RegAdminIdx = A.wAdminIdx
+            WHERE EB.IsStatus = 'Y'
+        ";
+        $sql .= $this->_conn->makeWhere($condition)->getMakeWhere(true);
+
+        $data = $this->_conn->query($sql)->row();
+        if($data) {
+            $data->upImgUrlQ = $this->config->item('upload_url_mock', 'mock') . $data->MpIdx . $this->config->item('upload_path_mockQ', 'mock');
+            $data->optSame = ($data->EB_AnswerNum == $this->input->post('AnswerNum')) ? 1 : 0;
+        }*/
+
+        $arr_condition = [
+            'EQ' => [
+                'EB.siteCode' => element('siteCode', $form_data),
+                'EB.MaIdx' => element('area_code', $form_data),
+                'EB.ProfIdx' => element('ProfIdx', $form_data),
+                'EB.Year' => element('qu_year', $form_data),
+                'EB.RotationNo' => element('qu_round', $form_data),
+                'EQ.QuestionNO' => element('qu_no', $form_data),
+            ],
+            'NOT' => [
+                'EB.MpIdx' => element('nowIdx', $form_data)
+            ],
+        ];
+        $column = "
+            EQ.*, MA.AreaName, EB.QuestionOption AS EB_QuestionOption, EB.AnswerNum AS EB_AnswerNum, A.wAdminName
+        ";
+        $from = "
+            FROM {$this->_table['mockExamBase']} AS EB
+            JOIN {$this->_table['mock_questions']} AS EQ ON EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y'
+            JOIN {$this->_table['mock_area_list']} AS MA ON EQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON EQ.RegAdminIdx = A.wAdminIdx
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $data = $this->_conn->query('select ' . $column . $from . $where)->row_array();
+
+        /*if($data) {
+            $data->upImgUrlQ = $this->config->item('upload_url_mock', 'mock') . $data->MpIdx . $this->config->item('upload_path_mockQ', 'mock');
+            $data->optSame = ($data->EB_AnswerNum == $this->input->post('AnswerNum')) ? 1 : 0;
+        }*/
+
+        if($data) {
+            $data['upImgUrlQ'] = $this->config->item('upload_url_mock', 'mock') . $data['MpIdx'] . $this->config->item('upload_path_mockQ', 'mock');
+            $data['optSame'] = ($data['EB_AnswerNum'] == element('AnswerNum', $form_data)) ? 1 : 0;
+        }
+        return ['ret_cd' => true, 'dt' => $data];
+    }
+
+
+    /**
+     * 문제지 복사
+     * @param $idx
+     * @return array|bool
+     */
+    private function _copyDataStep1($idx)
+    {
+        try {
+            $this->load->library('upload');
+            $RegIp = $this->input->ip_address();
+            $RegAdminIdx = $this->session->userdata('admin_idx');
+            $RegDatm = date("Y-m-d H:i:s");
+
+            $query = "
+                {$this->_table['mockExamBase']}
+                    (SiteCode, MaIdx, ProfIdx, PapaerName, Year, RotationNo, QuestionOption, AnswerNum, TotalScore, 
+                     QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, IsUse, RegIp, RegAdminIdx, RegDate)
+                SELECT SiteCode, MaIdx, ProfIdx, CONCAT('복사-', PapaerName), Year, RotationNo, QuestionOption, AnswerNum, TotalScore,
+                       QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, 'N', ?, ?, ?
+                FROM {$this->_table['mockExamBase']}
+                WHERE MpIdx = ? AND IsStatus = 'Y'";
+            $result = $this->_conn->query('insert into' . $query, [$RegIp, $RegAdminIdx, $RegDatm, $idx]);
+            if ($result === false) {
+                throw new Exception('데이터 복사에 실패했습니다.(1)');
+            }
+            $nowIdx = $this->_conn->insert_id();
+            $uploadSubPath = $this->upload_path_mock . $nowIdx;
+
+            //복사 데이터 수정
+            $addData = [
+                'FilePath' => $this->upload->_upload_url . $uploadSubPath . "/"
+            ];
+            $this->_conn->set($addData)->where(['MpIdx' => $nowIdx]);
+            if ($this->_conn->update($this->_table['mockExamBase']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+        } catch (Exception $e) {
+            return error_result($e);
+        }
+        return ['ret_cd' => true, 'nowIdx' => $nowIdx];
+    }
+
+    /**
+     * 문제지 매핑 카테고리 복사
+     * @param $nowIdx
+     * @param $idx
+     * @return array|bool
+     */
+    private function _copyDataStep2($nowIdx, $idx)
+    {
+        try {
+            $RegIp = $this->input->ip_address();
+            $RegAdminIdx = $this->session->userdata('admin_idx');
+            $RegDatm = date("Y-m-d H:i:s");
+
+            $query = "
+                {$this->_table['mock_paper_r_category']}
+                    (MpIdx, MrcIdx, IsStatus, RegIp, RegDatm, RegAdminIdx)
+                SELECT ?, MrcIdx, IsStatus, ?, ?, ?
+                FROM {$this->_table['mock_paper_r_category']}
+                WHERE MpIdx = ? AND IsStatus = 'Y'";
+            $result = $this->_conn->query('insert into' . $query, array($nowIdx, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+
+            if ($result === false) {
+                throw new Exception('데이터 복사에 실패했습니다.(2)');
+            }
+        } catch (Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 문제항목 복사
+     * @param $nowIdx
+     * @param $idx
+     * @return array|bool
+     */
+    private function _copyDataStep3($nowIdx, $idx)
+    {
+        try {
+            $this->load->library('upload');
+            $RegIp = $this->input->ip_address();
+            $RegAdminIdx = $this->session->userdata('admin_idx');
+            $RegDatm = date("Y-m-d H:i:s");
+
+            $query = "
+                {$this->_table['mock_questions']}
+                    (MpIdx, MalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
+                     RightAnswer, Scoring, Difficulty, RegIp, RegAdminIdx, RegDatm)
+                SELECT ?, MalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
+                       RightAnswer, Scoring, Difficulty, ?, ?, ?
+                FROM {$this->_table['mock_questions']}
+                WHERE MpIdx = ? AND IsStatus = 'Y'";
+            $result = $this->_conn->query('insert into' . $query, array($nowIdx, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+            if ($result === false) {
+                throw new Exception('데이터 복사에 실패했습니다.(3)');
+            }
+
+            // 데이터 수정
+            $addData = ['FilePath' => $this->upload->_upload_url . $this->upload_path_mock . $nowIdx . $this->upload_path_mockQ];
+            $this->_conn->set($addData)->where(['MpIdx' => $nowIdx]);
+            if ($this->_conn->update($this->_table['mock_questions']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+        } catch (Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 파일 복사
+     * @param $nowIdx
+     * @param $idx
+     * @return array|bool
+     */
+    private function _copyDataStep4($nowIdx, $idx)
+    {
+        try {
+            $src = $this->upload_path . $this->upload_path_mock . $idx . "/";
+            $dest = $this->upload_path . $this->upload_path_mock . $nowIdx . "/";
+
+            if(is_dir($src) === true) {
+                exec("cp -rf $src $dest");
+                if(is_dir($dest) === false) {
+                    throw new Exception('파일 저장에 실패했습니다.');
+                }
+            }
+        } catch (Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 파일저장 및 수정
      * @param $uploadSubPath
      * @param $names
@@ -317,16 +757,15 @@ class RegExamModel extends WB_Model
      * @param string $type
      * @return bool|string
      */
-    private function _uploadFileSave($uploadSubPath, $names, $fileBackup = [], $type='file')
+    private function _uploadFileSave($uploadSubPath, $names, $fileBackup = [], $type = 'file')
     {
-        $this->load->library('upload');
-
         try {
+            /*$this->load->library('upload');*/
             if (empty($uploadSubPath) === true) {
                 throw new Exception('파라메타 오류');
             }
 
-            $realFileNames = array();
+            $realFileNames = [];
             foreach ($names as $name) {
                 if( is_array($name['real']) )
                     $realFileNames = array_merge($realFileNames, $name['real']);
@@ -351,6 +790,39 @@ class RegExamModel extends WB_Model
             return $e->getMessage();
         }
 
+        return true;
+    }
+
+    /**
+     * 파일복사
+     * @param $fileCopy
+     * @return bool|string
+     */
+    private function _uploadFileCopy($fileCopy) {
+        $mainPath = $this->upload_path . $this->upload_path_mock;
+        $destPath = $mainPath . dirname($fileCopy[0]['dest']) . '/';
+
+        try {
+            if ( !is_dir($destPath) ) {
+                if ( !mkdir($destPath, 0707, true) ) {
+                    throw new Exception('디렉토리 생성에 실패했습니다.');
+                }
+            }
+
+            foreach ($fileCopy as $it) {
+                if ( !file_exists($mainPath . $it['src']) || !copy($mainPath . $it['src'], $mainPath . $it['dest']) ) {
+                    throw new Exception('파일 복사에 실패했습니다.');
+                }
+            }
+        }
+        catch (Exception $e) {
+            foreach ($fileCopy as $it) { // 롤백
+                if ( file_exists($mainPath . $it['dest']) ) {
+                    unlink($mainPath . $it['dest']);
+                }
+            }
+            return $e->getMessage();
+        }
         return true;
     }
 }

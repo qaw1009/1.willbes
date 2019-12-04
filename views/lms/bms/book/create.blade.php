@@ -457,6 +457,8 @@
                 var dc_type = $regi_form.find('select[name="dc_type"]').val();
 
                 if (org_price < 1) {
+                    // BMS 교재가 0원인 경우
+                    $regi_form.find('input[name="sale_price"]').val('0');
                     return;
                 }
 

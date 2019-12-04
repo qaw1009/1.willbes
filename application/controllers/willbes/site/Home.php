@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('product/productF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'bannerF', 'dDayF', 'onAirF');
+    protected $models = array('product/productF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -96,8 +96,8 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
-            $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
-            $data['arr_campus'] = $arr_campus;
+            //$data['arr_campus'] = array_replace_recursive($arr_campus, $this->_getCampusInfo());
+            $data['arr_campus_info'] = $this->_getSiteCampusInfo();
             $data['notice'] = $this->_boardNotice(5, null, ['605999']);
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
@@ -155,8 +155,8 @@ class Home extends \app\controllers\FrontController
 
         if (APP_DEVICE == 'pc') {
             $data['dday'] = $this->_dday();
-            $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
-            $data['arr_campus'] = $arr_campus;
+            //$data['arr_campus'] = array_replace_recursive($arr_campus, $this->_getCampusInfo());
+            $data['arr_campus_info'] = $this->_getSiteCampusInfo();
             $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
@@ -220,12 +220,6 @@ class Home extends \app\controllers\FrontController
      */
     private function _banner($cate_code = 0)
     {
-        /*// 노출섹션그룹으로 대체
-        $arr_banner_disp = $this->_getBannerDispArray($cate_code);  // 배너영역 조회
-        if (empty($arr_banner_disp) === true) {
-            return [];
-        }*/
-
         $banner_disp_group = 'GRP:메인';
         $result = $this->bannerFModel->findBanners($banner_disp_group, $this->_site_code, $cate_code);
 
@@ -235,93 +229,6 @@ class Home extends \app\controllers\FrontController
         }
 
         return $data;
-    }
-
-    /**
-     * 사이트, 카테고리별 메인 배너 섹션 리턴
-     * TODO : 사용안함, 안정화 확인 후 삭제 요망
-     * @param $cate_code
-     * @return mixed
-     */
-    private function _getBannerDispArray($cate_code = 0)
-    {
-        $arr_banner_disp = [
-            '2001' => [
-                '0' => ['메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
-                '3001' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'
-                    , '메인_핵심배너1', '메인_핵심배너2', '메인_핵심배너3', '메인_핵심띠배너'
-                ],
-                '3002' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'
-                    , '메인_핵심배너1', '메인_핵심배너2', '메인_핵심배너3', '메인_핵심띠배너'
-                ]
-            ],
-            '2002' => [
-                '0' => ['메인_상품배너1', '메인_상품배너2', '메인_상품배너3', '메인_상품배너4', '메인_특별관리반1', '메인_특별관리반2', '메인_특별관리반3', '메인_특별관리반4', '메인_우측퀵_01', '메인_우측퀵_02']
-            ],
-            '2003' => [
-                // 9급
-                '3019' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
-                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
-                    , '메인_무료특강1', '메인_무료특강2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
-                ],
-                // 7급
-                '3020' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
-                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
-                    , '메인_무료특강1', '메인_무료특강2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
-                ],
-                // 세무직
-                '3022' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
-                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
-                    , '메인_무료특강1', '메인_무료특강2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
-                ],
-                // 법원직
-                '3035' => ['메인_빅배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'
-                    , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
-                    , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
-                ],
-                // 소방직
-                '3023' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
-                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
-                    , '메인_무료특강1', '메인_무료특강2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
-                ],
-                // 기술직
-                '3028' => ['메인_빅배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'
-                    , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
-                    , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
-                ],
-                // 군무원
-                '3024' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4'
-                    , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
-                    , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
-                ],
-                // 부사관
-                '3030' => ['메인_빅배너', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
-                // 무료인강
-                '3092' => ['메인_빅배너', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
-            ],
-            '2004' => [
-                '0' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_서브3', '메인_띠배너'
-                    , '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
-                    , '메인_미들6', '메인_미들7', '메인_미들8', '메인_미들9', '메인_미들10'
-                    , '메인_이벤트', '메인_대표교수', '메인_포커스'
-                    , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
-                ]
-            ],
-            '2006' => [
-                // 소방(산업)기사
-                '308901' => ['메인_서브1', '메인_서브2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
-                // 전기(산업)기사
-                '308902' => ['메인_서브1', '메인_서브2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
-                // 스포츠 지도사
-                '309001' => ['메인_서브1', '메인_서브2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03']
-            ],
-            '2007' => [
-                // G-TELP
-                '3093' => ['메인_빅배너', '메인_띠배너', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
-            ]
-        ];
-
-        return element($cate_code, element($this->_site_code, $arr_banner_disp, []), []);
     }
 
     /**
@@ -523,8 +430,31 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 사이트별 캠퍼스 정보 조회 및 데이터 조합
+     * @return array
+     */
+    private function _getSiteCampusInfo()
+    {
+        // 캠퍼스정보 조회
+        $result = $this->siteFModel->getSiteCampusInfo($this->_site_code);
+
+        $data = [];
+        foreach ($result as $row) {
+            if (isset($data[$row['CampusCcd']]['CampusName']) === false) {
+                $data[$row['CampusCcd']]['CampusCcdName'] = $row['CampusCcdName'];
+                $data[$row['CampusCcd']]['CampusReName'] = $row['CampusReName'];
+            }
+
+            $data[$row['CampusCcd']]['Info'][] = $row;
+        }
+
+        return $data;
+    }
+
+    /**
      * 캠퍼스별 기타 정보 설정
      * 캠퍼스 배열에 맞게 배열 셋팅
+     * TODO : 사용안함, 안정화 확인 후 삭제 요망
      * @return array
      */
     private function _getCampusInfo()

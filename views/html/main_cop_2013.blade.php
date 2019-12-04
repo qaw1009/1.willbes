@@ -159,7 +159,7 @@
             </div>
             
             <div class="sliderEvt pick">
-                <div class="will-acadTit">윌비스 <span class="tx-color">이벤트</span></div>
+                <div class="will-acadTit">Hot <span class="tx-color">Focus</span></div>
                 <div class="bSlider acad">
                     <div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2013_420x190.jpg" alt="배너명"></a></div>

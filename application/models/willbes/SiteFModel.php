@@ -7,6 +7,7 @@ class SiteFModel extends WB_Model
         'site' => 'lms_site',
         'site_group' => 'lms_site_group',
         'site_r_campus' => 'lms_site_r_campus',
+        'site_campus_info' => 'lms_site_campus_info',
         'code' => 'lms_sys_code',
     ];
 
@@ -71,5 +72,36 @@ class SiteFModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . ' ORDER BY SC.SiteCode ASC, SC.CampusCcd ASC');
         $data = $query->result_array();
         return (empty($site_code) === false) ? array_pluck($data, 'CampusName', 'CampusCcd') : $data;
+    }
+
+    /**
+     * 사이트 코드별 캠퍼스 정보 목록 조회
+     * @param int $site_code
+     * @return array
+     */
+    public function getSiteCampusInfo($site_code)
+    {
+        $column = 'SCI.SiteCode, SCI.CampusCcd, CC.CcdName as CampusCcdName, concat(CC.CcdName, if(SCI.IsOrigin = "Y", "(본원)", "")) as CampusReName
+	        , if(SCI.DispName = "", CC.CcdName, SCI.DispName) as CampusDispName
+            , SCI.Tel, SCI.Addr1, SCI.Addr2, SCI.MapPath, SCI.IsOrigin';
+
+        $from = '
+            from ' . $this->_table['site_campus_info'] . ' as SCI
+                inner join ' . $this->_table['site_r_campus'] . ' as SC
+                    on SCI.SiteCode = SC.SiteCode and SCI.CampusCcd = SC.CampusCcd	
+                inner join ' . $this->_table['code'] . ' as CC
+                    on SCI.CampusCcd = CC.Ccd and CC.GroupCcd = "' . $this->_ccd['Campus'] . '"
+            where SCI.SiteCode = ?
+                and SCI.IsUse = "Y" and SCI.IsStatus = "Y"
+                and SC.IsStatus = "Y"
+                and CC.IsUse = "Y" and CC.IsStatus = "Y"            
+        ';
+
+        $order_by = 'order by SCI.SiteCode asc, SCI.CampusCcd asc, SCI.OrderNum asc';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $order_by, [$site_code]);
+
+        return $query->result_array();
     }
 }

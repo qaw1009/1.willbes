@@ -109,12 +109,12 @@
         <div class="evtCtnsBox evt04" id="lec_go">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1467_04.jpg" usemap="#Map_1074_lec2" title="기미진T-PASS" border="0" />
 			<map name="Map_1074_lec2">
-                <area shape="rect" coords="485,771,705,825" href="javascript:go_PassLecture(1);" target="_blank" alt="아침특강 제외">
-                <area shape="rect" coords="746,773,976,823" href="javascript:go_PassLecture(2);" target="_blank" alt="아침특강 포함">
+                <area shape="rect" coords="485,771,705,825" href="javascript:go_PassLecture('158434');" alt="아침특강 제외">
+                <area shape="rect" coords="746,773,976,823" href="javascript:go_PassLecture('158433');" alt="아침특강 포함">
             </map>
             <div class="check">
                 <label>
-                    <input name="ischk2"  type="checkbox" value="Y" />
+                    <input name="ischk"  type="checkbox" value="Y" />
                     페이지 하단 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#tab1">이용안내확인하기 ↓</a>
@@ -131,33 +131,14 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        function go_PassLecture(no){
-            if(parseInt(no)==1 || parseInt(no)==2){
-                if($("input[name='ischk']:checked").size() < 1 && $("input[name='ischk2']:checked").size() < 1){
-                    alert("이용안내에 동의하셔야 합니다.");
-                    $("#chkInfo").focus();
-                    return;
-                }
-            }else if(parseInt(no)==3 || parseInt(no)==4){
-                if($("input[name='ischk']:checked").size() < 1){
-                    alert("이용안내에 동의하셔야 합니다.");
-                    return;
-                }
-            }else if(parseInt(no)==5 || parseInt(no)==6){
-                if($("input[name='ischk2']:checked").size() < 1){
-                    alert("이용안내에 동의하셔야 합니다.");
-                    return;
-                }
+        function go_PassLecture(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
             }
 
-            var lUrl = "";
-
-            if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/158434') }}"
-            }else{
-                lUrl = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/158433') }}"
-            }
-            location.href = lUrl;
+            var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
+            location.href = url;
         }
 
         /*디데이카운트다운*/

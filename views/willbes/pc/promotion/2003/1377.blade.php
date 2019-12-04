@@ -35,7 +35,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky.png" alt="기미진 국어 개강일정 알아보기"/></a><br>
-            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky2.png" alt="기미진 국어 개강일정 알아보기"/></a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1467" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky2.png" alt="기미진 국어 개강일정 알아보기"/></a>
         </div>    
         <!--skybanner//-->
         <div class="evtCtnsBox wb_top" >

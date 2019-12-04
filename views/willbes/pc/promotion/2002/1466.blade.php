@@ -31,7 +31,7 @@
         .wb_top {background:#73675b url(http://file3.willbes.net/new_gosi/2018/06/0601_bg01.png) no-repeat center;}
         .wb_01 {background:#eee;}
         .wb_02 {background:#fff;position:relative;}      
-        .wb_02 ul {width:1120px; margin:0 auto;position:absolute;left:20%;bottom:6.5%;}
+        .wb_02 ul {width:1120px; margin:0 auto;position:absolute;left:23%;bottom:6.5%;}
         .wb_02 li {display:inline;margin-right:30px;}
         .wb_02 li iframe {width:460px; height:260px; margin:0 auto}   
         .wb_02 ul:after {content:""; display:block; clear:both}

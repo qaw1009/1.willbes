@@ -21,7 +21,7 @@
 
         /************************************************************/
  
-        .evtTop {background:#a46666 url(https://static.willbes.net/public/images/promotion/2019/11/1456_top_bg.jpg) no-repeat center top; position:relative}
+        .evtTop {background:#dd6d6c url(https://static.willbes.net/public/images/promotion/2019/12/1456_top_bg.jpg) no-repeat center top; position:relative}
     
         .evt01 {background:#fff;}        
 
@@ -37,21 +37,22 @@
             box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
         }
 
-        .evt04 {background:#e89f15;padding-bottom:50px;} 
+        .evt04 {background:#079aa2;}
+        .evt05 {background:#fff;}
 
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1456_top.jpg" alt="2020 국제법/정치학 이상구" usemap="#Map1456a" border="0"/>
-            <map name="Map1456a" id="Map1456a">
-                <area shape="rect" coords="549,910,753,959" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50393/?subject_idx=1127&subject_name=%EA%B5%AD%EC%A0%9C%EB%B2%95" target="_blank" />
-                <area shape="rect" coords="759,908,963,959" href="#apply" />
-            </map>                
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1456_top.gif" alt="이상구 티패스" usemap="#Map1456z" border="0">
+            <map name="Map1456z" id="Map1456z">
+                <area shape="rect" coords="106,1121,546,1192" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50393/?subject_idx=1127&subject_name=%EA%B5%AD%EC%A0%9C%EB%B2%95" target="_blank" />  
+                <area shape="rect" coords="577,1122,1015,1192" href="#apply" />
+            </map>                         
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1456_01.jpg" alt="커리큘럼"/>          
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1456_01.jpg" alt="마지막시기 이상구 교수님과 함께"/>          
         </div>
 
         <div class="evtCtnsBox evt02">
@@ -59,7 +60,7 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1456_03.jpg" alt="퀄리티의 강의와 교재로 함께" />           
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1456_03.jpg" alt="퀄리티의 강의와 교재로 함께" />           
             <div class="box-book">
                 <ul class="slidesBook">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/11/1456_03_book1.jpg" alt="국제법2"/></li>
@@ -78,14 +79,18 @@
                 </ul>
             </div>  
         </div>
-
+        
         <div class="evtCtnsBox evt04" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1456_04.jpg" alt="수강 신청" usemap="#Map1456b" border="0"/>
-            <map name="Map1456b" id="Map1456b">
-                <area shape="rect" coords="820,653,1010,703" href="https://pass.willbes.net/periodPackage/show/cate/3020/pack/648001/prod-code/152873" target="_blank" />
-                <area shape="rect" coords="821,744,1012,792" href="https://pass.willbes.net/periodPackage/show/cate/3020/pack/648001/prod-code/152874" target="_blank" />
-                <area shape="rect" coords="820,834,1012,882" href="https://pass.willbes.net/periodPackage/show/cate/3020/pack/648001/prod-code/152872" target="_blank" />
-            </map>                    
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1456_04.jpg" alt="수강 신청" usemap="#Map1456y" border="0">
+            <map name="Map1456y" id="Map1456y">
+                <area shape="rect" coords="817,649,1007,708" href="https://pass.willbes.net/periodPackage/show/cate/3020/pack/648001/prod-code/152873" target="_blank" />
+                <area shape="rect" coords="818,740,1008,797" href="https://pass.willbes.net/periodPackage/show/cate/3020/pack/648001/prod-code/152874" target="_blank" />
+                <area shape="rect" coords="817,830,1008,888" href="https://pass.willbes.net/periodPackage/show/cate/3020/pack/648001/prod-code/152872" target="_blank" />
+            </map>                   
+        </div>
+
+        <div class="evtCtnsBox evt05">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1456_05.jpg" alt="이용안내 및 유의사항"/>          
         </div>
     </div>
     <!-- End Container -->  

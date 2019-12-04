@@ -33,6 +33,27 @@
     .evt02 ul:after {content:""; display:block; clear:both}
     .evt03 {background:url(https://static.willbes.net/public/images/promotion/2019/12/3102_03_bg.jpg) no-repeat center top; }
 
+    /*********팝업***********/
+    .Pstyle {
+            opacity: 0;
+            display: none;
+            position: relative;
+            width: 774px;        
+            background: #fff;
+            font-size:13px;
+            line-height:1.5;
+            box-shadow:0 10px 10px rgba(0,0,0,0.2);
+        }
+        .b-close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            padding: 5px;
+            display: inline-block;
+            cursor: pointer;
+            color:#fff;
+            font-size:14px;
+        }
 </style>
 
 
@@ -571,8 +592,14 @@
     <div class="evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_top.jpg" alt="2021 PSAT" usemap="#Map3102A" border="0">
         <map name="Map3102A" id="Map3102A">
-          <area shape="rect" coords="267,1299,852,1357" href="#none" alt="자세히보기" />
+          <area shape="rect" coords="267,1299,852,1357" href="javascript:go_popup()" alt="자세히보기" />
         </map>
+    </div>
+
+    {{--레이어팝업--}}
+    <div id="popup" class="Pstyle NGR">
+        <span class="b-close"><img src="{{ img_url('sub/close.png') }}"></span>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_popup.jpg" alt="">
     </div>
 
     <div class="evt01">
@@ -638,7 +665,7 @@
 </div>
 
 <!-- End Container -->
-
+<script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 <script type="text/javascript">
         $(document).ready(function(){
             $('.tab').each(function(){
@@ -664,5 +691,8 @@
             
                 e.preventDefault()})})}
         ); 
+        function go_popup() {  
+            $('#popup').bPopup();
+        }; 
     </script>
 @stop

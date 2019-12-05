@@ -17,6 +17,12 @@
 @import url("style_gpgosi.css");
 @import url("style_gosi_free.css"); /*무료인강*/
 @import url("style_job.css"); /*자격증*/
+@import url("style_3089_308903.css"); /*자격증 건설안전산업기사*/
+@import url("style_3101_310101.css"); /*자격증 소프트웨어관리사*/
+@import url("style_3090_309002.css"); /*자격증 공인노무사*/
+@import url("style_3090_309003.css"); /*자격증 감정평가사*/
+@import url("style_3090_309004.css"); /*자격증 변리사*/
+@import url("style_3090_309005.css"); /*자격증 관세사*/
 @import url("style_lang.css"); /*어학*/
 @import url("style_hanlim_3094.css"); /*고등고시 5급행정*/
 @import url("style_hanlim_3095.css"); /*고등고시 국립외교원*/
@@ -25,6 +31,7 @@
 @import url("style_hanlim_3098.css"); /*고등고시 법원행시*/
 @import url("style_hanlim_3099.css"); /*고등고시 변호사시험*/
 @import url("style_willpass.css"); /*취업*/
+
 
 
 

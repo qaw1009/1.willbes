@@ -1,0 +1,593 @@
+/* top bar banner */
+.nomu .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.nomu .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.nomu .topBanner p img {width:100%}
+
+.nomu .menu-List .Tit {color: #b85712;}
+.Menu .menu-List li.nomu > a {
+    color: #b85712;
+    display:inline-block;
+    vertical-align: middle;
+}
+.Menu .menu-List li.nomu > a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+
+/*********************************************     Main Container     *********************************************/
+.nomu .Depth .depth:last-child strong {
+    color: #b85712;
+}
+
+/* Main Container : MainVisual */
+.nomu .MainVisual {
+    position: relative;
+    width: 1120px;
+    margin:40px auto 0;
+    height: 400px;
+}
+.nomu .MainVisual:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.nomu .VisualBox {
+    width:725px;  
+    height: 400px;
+    overflow: hidden;
+    float:left;
+  }
+.nomu .VisualBox img {
+    height: 400px;
+  }
+  
+.nomu .VisualBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    width: 50px;
+    z-index: 90;
+}
+.nomu .VisualBox .bx-wrapper .bx-pager {
+    width: auto;
+    left:60px;
+    bottom: 22px;
+    text-align: left;
+    z-index: 90;
+}
+.nomu .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+  }
+
+.nomu .VisualsubBox {
+    width: 384px;
+    padding:10px;
+    float:right;
+    background: #ccc;
+}
+
+.nomu .VisualsubBox .bSlider:nth-child(2) {
+    margin-top:3px;
+    width: 364px;
+    height: 248px !important;
+    overflow: hidden;
+  }
+
+.nomu .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    margin: 0;
+    width: 50px;
+    z-index: 90;
+  }
+.nomu .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+    z-index: 90;
+}
+.nomu .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+
+.nomu .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+
+.nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 20px;
+    bottom: 10px;
+    text-align: left;
+}
+.nomu .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
+.nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #b85712 !important;
+}
+
+/**/
+.nomu .Section.barBnr {
+    background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
+    margin-top:20px;
+}
+
+/* Main Container : Prof */
+.nomu .PBcts li {
+    display: inline;
+    float: left;    
+    width: 216px;
+    height: 234px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.nomu .PBcts li:first-child {
+    margin-left: 0;
+}
+
+.nomu .PBcts:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.nomu .PBcts .bSlider .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 0;
+    bottom: 10px;
+    text-align: center;
+}
+.nomu .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.nomu .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.nomu .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.nomu .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #b85712 !important;
+}
+
+/**/
+.nomu .Section .willbesLec {
+    width:614px;
+    float:left;
+}
+.nomu .smallTit {
+    border-top:1px solid #000;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.nomu .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align:left;
+    width: 100%;
+}
+.nomu .smallTit p a {vertical-align: top; margin-left: 10px}
+.nomu .smallTit span {
+    font-weight: 600;
+    background: #fff;
+    padding:0 20px 0 0;
+}
+.nomu .smallTit strong {
+    color:#b85712;
+}
+
+.nomu .will-listTit {
+    margin-bottom: 15px;
+    color:#181818;
+}
+
+
+/* Main Container : Notice : noticeTabs */
+.nomu .noticeTabs {
+    width: 345px !important;
+    float:left;
+    margin-right:40px;
+}
+.nomu .tabBox.noticeBox {
+    margin-top:-30px;   
+}
+.nomu .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+.nomu .tabBox.noticeBox .List-Table {
+    width: 100%;
+}
+.nomu .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.nomu .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.nomu .tabBox.noticeBox .List-Table li a span {
+    background: #b85712;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.nomu .willbesNumber ul li {
+    margin-left: 30px;
+    vertical-align: top;
+}
+
+/* Main Container */
+.nomu .tx-color {
+    color: #b85712;
+}
+.nomu .Section1 {
+    background: #f8f8f8;
+    padding:90px 0;
+}
+.nomu .copyTit {
+    font-size: 33px;
+    color: #363636;
+    line-height: 1.2;
+    text-align: center;
+}
+.nomu .copyTit strong {
+    vertical-align: baseline;
+	color:#000;
+} 
+.nomu .copyTit span {
+    color:#b85712;
+	vertical-align: baseline;
+}
+.nomu .List-Table li a img,
+.nomu .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.nomu .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.nomu .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
+.nomu .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.nomu .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.nomu .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #b85712;
+}
+.nomu .Section .SpecialBox li {
+    display: inline; float: left;
+    width: 216px; height: 143px;
+    margin-right:10px; margin-bottom:10px;
+}
+.nomu .Section .SpecialBox li:nth-child(5),
+.nomu .Section .SpecialBox li:last-child {
+    margin-right:0;
+}
+.nomu .Section .SpecialBox ul:after {
+    content:''; display: block; clear:both;List-Table
+}
+
+/* Main Container : QuickMenu  */
+.nomu .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 164px;
+    height: auto;    
+    z-index: 100;
+}
+.nomu .MainQuickMenu div {
+    margin-bottom:5px;
+    text-align: right;
+}
+.nomu .MainQuickMenu ul {    
+    padding:0 8px 5px !important;
+    background: #ececec;    
+}
+.nomu .MainQuickMenu li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
+    margin: 0;
+}
+.nomu .MainQuickMenu li:first-child {
+    border-top:0;
+}
+.nomu .MainQuickMenu li:last-child {
+    border-bottom:0;
+}
+.nomu .MainQuickMenu li a {
+    display: block; padding-left:30px;
+}
+.nomu .MainQuickMenu li a:hover {
+    color:#00acec;
+}
+.nomu .MainQuickMenu li:nth-child(1) a {
+    background: url("../../img/willbes/cop_acad/icon_rq07.png") no-repeat 3px center;
+}
+.nomu .MainQuickMenu li:nth-child(2) a {
+    background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
+}
+.nomu .MainQuickMenu li:nth-child(3) a {
+    background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
+}
+.nomu .MainQuickMenu li:nth-child(4) a {
+    background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
+}
+
+
+/* Guide Container */
+/*수험가이드*/
+.tabShow.tab_gosi_Guide {
+    background: #026f61;
+    height: 62px;
+    border-bottom: none;
+}
+.tabShow.tab_gosi_Guide li {
+    width: 12.5%;
+    height: 62px;
+    padding: 0 8px;
+}
+.tabShow.tab_gosi_Guide li a.two,
+.tabShow.tab_gosi_Guide li a.on.two {
+    line-height: 17px;
+}
+.tabShow.tab_gosi_Guide li a.two span {
+    padding-top: 15px;
+    display: inline-block;
+}
+.tabShow.tab_gosi_Guide li a.on.two span {
+    line-height: 17px;
+    padding-top: 10px;
+}
+.tabShow.tab_gosi_Guide li a.on span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    color: #026f61;
+    display: inline-block;
+    height: 54px;
+    line-height: 52px;
+    border-top: 1px solid #026f61;
+    border-left: 1px solid #026f61;
+    border-right: 1px solid #026f61;
+}
+.tabShow.tab_gosi_Guide li a,
+.tabShow.tab_gosi_Guide li a.on {
+    background: #026f61;
+    color: #fff;
+    line-height: 58px;
+    font-size: 14px;
+    font-weight: 300;
+    height: 62px;
+    border: none;
+}
+.tabShow.tab_gosi_Guide li:first-child a,
+.tabShow.tab_gosi_Guide li:first-child a.on {
+    border: none;
+}
+
+.w-gosi-Guide {letter-spacing: 0}
+.w-gosi-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24606a; line-height: 30px; padding-left: 25px;}
+
+.examInfoGu3 {padding: 35px 45px 55px}
+.examInfoGu3 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
+.examInfoGu3 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
+.examInfoGu3 .hTy.txt-red {font-size: 14px; font-weight:bold; color: #d52b2b; line-height: 18px}
+.examInfoGu3 .hTy4 {width: 786px; margin: 0 auto 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
+
+.examInfoGu3 .hTy5 {width: 786px; margin: 0 auto 15px}
+.examInfoGu3 .hTy5 span {font-size: 13px}
+
+.examInfoGu3 .hTy6.center {margin: 15px 60px 0; font-size:13px}
+.examInfoGu3 .hTy6.right {margin: 0 0 5px; text-align: right;}
+.examInfoGu3 .hTy6.right span {font-size: 13px}
+.examInfoGu3 .hTy6.left span {margin: 5px 0 0; text-align: left; font-size: 12px}
+
+.sliderGuide .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.sliderGuide .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+}
+.sliderGuide .bx-wrapper .bx-controls-direction a {
+    width: 35px;
+    height: 45px;
+}
+.sliderGuide .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.5;
+}
+.sliderGuide .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/gosi/guide/guide_prev.png") no-repeat 0 0;
+    left: -45px;
+    right: inherit;
+}
+.sliderGuide .bx-wrapper .bx-next {
+    background: url("../../img/willbes/gosi/guide/guide_next.png") no-repeat 0 0;
+    left: inherit;
+    right: -45px;
+}
+.sliderGuide .bx-wrapper .bx-pager {
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0;
+    bottom: -40px;
+}
+
+.guide_slider {
+    width: 848px !important;
+}
+.basicWd {
+    width:786px;
+    margin: 0 auto;
+}
+.basicWd1 tr td {
+    padding: 20px;
+}
+.basicWd .txtL ul li {margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 6px}
+
+.mgBox {
+    background: #f0f0f0;
+    border: 1px solid #dbdbdb;
+    padding: 25px 30px;
+    width: 786px;
+    margin: 20px auto 0;
+}
+.mgBox-none {
+    background: none;
+    border: none;
+}
+.mgBox .tt {
+    background: url("../../img/willbes/gosi/guide/right_arrow.png") no-repeat 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #232323;
+    padding-left: 12px;
+    margin-bottom: 10px;
+}
+.mgBox .st {
+    margin-bottom: 5px;
+}
+.mgBox .ttx {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4d4d4d;
+}
+.mgBox ul li {
+    margin-top: 15px;
+    padding-left: 10px;
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+}
+.mgBox dl dt {
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+    padding-left: 10px;
+}
+.mgBox ul li:first-child {
+    margin-top: 0;
+}
+.mgBox_no {
+    border: 1px solid #dbdbdb;
+    padding: 40px 60px;
+    width: 786px;
+    margin: 20px auto 0;
+}
+.mgBox span {
+    vertical-align: baseline;
+}
+ul.dot li {
+    margin-top: 15px;
+    padding-left: 10px;
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+}
+
+.tableBox tr th {
+    font-size: 21px;
+    font-weight: 600;
+    color: #243553;
+    border-right: 1px solid #bfbfbf;
+}
+.tableBox tr td {
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+    border-bottom: 1px solid #bfbfbf;
+    padding: 25px 0;
+}
+.tableBox tr.hh td {
+    border: none;
+    height: 25px;
+}
+
+.tabWrap.tab_gosi_success_Guide {
+    height: 67px;
+    border: 1px solid #24606a;
+}
+.tabWrap.tab_gosi_success_Guide li {
+    width: 50%;
+    height: 65px;
+}
+.tabWrap.tab_gosi_success_Guide li a {
+    background: #fff;
+    color: #24606a;
+}
+.tabWrap.tab_gosi_success_Guide li a.on {
+    background: #24606a;
+    color: #fff;
+}
+.tabWrap.tab_gosi_success_Guide li a,
+.tabWrap.tab_gosi_success_Guide li a.on {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 63px;
+    height: 65px;
+    border: none;
+}
+.tabWrap.tab_gosi_success_Guide a.on:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 66px;
+    left: 50%;
+    margin-left: -5px;
+    border-color: #24606a transparent transparent;
+    border-width: 10px;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide {
+    float: left;
+    height: 35px;
+    border-bottom: none;
+    clear: both;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li {
+    height: 35px;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a {
+    color: #24606a;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
+    color: #8f724d;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a,
+.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
+    background: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 33px;
+    height: 35px;
+    border: none;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a,
+.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a.on {
+    border: none;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide .row-line {
+    float: right;
+    background: #b7b7b7;
+    width: 1px;
+    height: 16px;
+    margin: 11px 0;
+}

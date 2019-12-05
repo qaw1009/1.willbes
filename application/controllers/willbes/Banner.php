@@ -30,7 +30,7 @@ class Banner extends \app\controllers\BaseController
         }
 
         // 데이터 조회
-        $data = $this->bannerFModel->findBanners($arr_input['section'], $arr_input['site_code'], element('cate_code', $arr_input, 0));
+        $data = $this->bannerFModel->findBanners($arr_input['section'], $arr_input['site_code'], element('cate_code', $arr_input, 0), $arr_input['campus_code']);
         if (empty($data) === true) {
             return '';
         }

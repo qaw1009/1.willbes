@@ -228,15 +228,6 @@
                                     공휴일/일요일휴무<br/>
                                 </div>
                             </li>
-                            <li>
-                                <div class="nTit">학원 고객센터</div>
-                                <div class="nNumber tx-color">1544-3383</div>
-                                <div class="nTxt">
-                                    [운영시간]<br/>
-                                    평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
-                                </div>
-                            </li>
                         </ul>
                     </dt>    
                     <dt class="willbesCenter">

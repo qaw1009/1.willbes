@@ -3,33 +3,16 @@
 @section('content')
 <!-- Container -->
 
-<div id="Container" class="Container job308903 c_both">
+<div id="Container" class="Container job309101 c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">자격증<span class="row-line">|</span></li>
-                <li class="subTit">건설안전(산업)기사</li>
+                <li class="subTit">한국사능력시험</li>
             </ul>
             <ul class="menu-List">
-                <li class="dropdown">
+                <li>
                     <a href="#none">수강신청</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li><a href="#none">종합합격반</a></li>
-                            <li><a href="#none">필기합격반</a></li>
-                            <li><a href="#none">실기합격반</a></li>
-                            <li><a href="#none">신업기사+기사통합<br>합격반</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#none">시험안내</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li><a href="#none">시험안내</a></li>
-                            <li><a href="#none">자격안내</a></li>
-                        </ul>
-                    </div>
                 </li>
                 <li>
                     <a href="#none">교재구매</a>
@@ -131,7 +114,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="nTit">교재문의</div>
+                                <div class="nTit">교재문의 및 재료구매</div>
                                 <div class="nNumber tx-color">1544-4944</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
@@ -176,37 +159,8 @@
         </div>
     </div>
     <!-- CS센터 //-->
-
 </div>
 <!-- End Container -->
 
-<script type="text/javascript">   
-    $(document).ready(function(){
-        $('.PBtab, .curritab').each(function () {
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
-            $active.addClass('active');
 
-            $content = $($active[0].hash);
-
-            $links.not($active).each(function () {
-                $(this.hash).hide();
-            });
-
-            // Bind the click event handler
-            $(this).on('click', 'a', function (e) {
-                $active.removeClass('active');
-                $content.hide();
-
-                $active = $(this);
-                $content = $(this.hash);
-
-                $active.addClass('active');
-                $content.show();
-
-                e.preventDefault();
-            });
-        });
-    });
-</script>
 @stop

@@ -3,12 +3,12 @@
 @section('content')
 <!-- Container -->
 
-<div id="Container" class="Container job308903 c_both">
+<div id="Container" class="Container job308904 c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">자격증<span class="row-line">|</span></li>
-                <li class="subTit">건설안전(산업)기사</li>
+                <li class="subTit">산업안전(산업)기사</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">

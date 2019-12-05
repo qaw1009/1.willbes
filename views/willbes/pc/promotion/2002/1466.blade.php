@@ -22,7 +22,7 @@
         /************************************************************/
 
         .layer			{width:100%;height:800px; -ms-overflow:hidden;}
-        .video			{width:100%; height:800px; margin:0 auto; overflow:hidden;position:relative; opacity:0.4; box-shadow:0px rgba(0,0,0,0.4); background:#000}
+        .video			{width:100%; height:800px; margin:0 auto; overflow:hidden;position:relative; opacity:0.3; box-shadow:0px rgba(0,0,0,0.4); background:#000}
         .pngimg			{width:1210px; margin:0 auto; position:relative; top:-700px;}
         .pngimg-real	{width:1210px; height:800px; position:absolute;top:0;}
 
@@ -73,9 +73,10 @@
         </div>
 
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1466_04.gif"  alt="스파르타 바로가기" usemap="#Map" border="0"  />
-            <map name="Map" id="Map">
-                <area shape="rect" coords="478,1591,948,1695" href="https://police.willbes.net/pass/promotion/index/code/1057" target="_blank" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1466_04.jpg"  alt="부산윌비스 해양경찰">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1466_04s.gif"  alt="스파르타 바로가기" usemap="#Map1466q" border="0">
+            <map name="Map1466q" id="Map1466q">
+                <area shape="rect" coords="479,335,948,434" href="https://police.willbes.net/pass/promotion/index/code/1057" target="_blank" />
             </map>
         </div>
 

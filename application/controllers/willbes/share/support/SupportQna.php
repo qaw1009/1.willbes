@@ -141,7 +141,7 @@ class SupportQna extends BaseSupport
 
         // 통합사이트인 공지만 나오도록
         $arr_condition['RAW'] = [
-            ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '2000' ELSE TRUE END)"
+            ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '{$this->_site_code}' ELSE TRUE END)"
         ];
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoardForQna(true, $arr_condition, $s_cate_code);

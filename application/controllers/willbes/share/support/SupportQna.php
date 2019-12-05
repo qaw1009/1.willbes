@@ -138,12 +138,18 @@ class SupportQna extends BaseSupport
         } else {
             $paging_count = $this->_paging_count_m;
         }
-        $total_rows = $this->supportBoardTwoWayFModel->listBoardForQna(true, $arr_condition,$s_cate_code);
-        $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+
+        // 통합사이트인 공지만 나오도록
+        $arr_condition['RAW'] = [
+            ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '{$this->_site_code}' ELSE TRUE END)"
+        ];
+
+        $total_rows = $this->supportBoardTwoWayFModel->listBoardForQna(true, $arr_condition, $s_cate_code);
+        $paging = $this->pagination($this->_default_path . '/index/?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoardForQna(false,$arr_condition,$s_cate_code,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoardForQna(false,$arr_condition, $s_cate_code, $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
-                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
+                $list[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
             }
         }
 

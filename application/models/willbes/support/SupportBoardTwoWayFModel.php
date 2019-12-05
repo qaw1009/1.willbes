@@ -772,7 +772,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * @param $is_count
      * @param array $arr_condition
      * @param $cate_code
-     * @param null $column
+     * @param $column
      * @param null $limit
      * @param null $offset
      * @param array $order_by

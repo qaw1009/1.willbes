@@ -15,10 +15,8 @@
                     <a href="#none">수강신청</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
-                            <li><a href="#none">종합합격반</a></li>
-                            <li><a href="#none">필기합격반</a></li>
-                            <li><a href="#none">실기합격반</a></li>
-                            <li><a href="#none">신업긱사+기사통합<br>합격반</a></li>
+                            <li><a href="#none">합격패키지</a></li>
+                            <li><a href="#none">단과반</a></li>
                         </ul>
                     </div>
                 </li>
@@ -131,7 +129,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="nTit">교재문의 및 재료구매</div>
+                                <div class="nTit">교재문의</div>
                                 <div class="nNumber tx-color">1544-4944</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
@@ -180,33 +178,4 @@
 </div>
 <!-- End Container -->
 
-<script type="text/javascript">   
-    $(document).ready(function(){
-        $('.PBtab, .curritab').each(function () {
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
-            $active.addClass('active');
-
-            $content = $($active[0].hash);
-
-            $links.not($active).each(function () {
-                $(this.hash).hide();
-            });
-
-            // Bind the click event handler
-            $(this).on('click', 'a', function (e) {
-                $active.removeClass('active');
-                $content.hide();
-
-                $active = $(this);
-                $content = $(this.hash);
-
-                $active.addClass('active');
-                $content.show();
-
-                e.preventDefault();
-            });
-        });
-    });
-</script>
 @stop

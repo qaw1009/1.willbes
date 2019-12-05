@@ -58,9 +58,19 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309003') }}" target="_blank">전문자격증 - 감정평가사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309004') }}" target="_blank">전문자격증 - 변리사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309005') }}" target="_blank">전문자격증 - 관세사</a></li>
+                <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3089_308901') }}" target="_blank">기술자격증 - 소방</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3089_308902') }}" target="_blank">기술자격증 - 전기</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3089_308903') }}" target="_blank">기술자격증 - 건설안전(산업)기사</a></li>
+                <li class="c_both"></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3101_310101') }}" target="_blank">실무자격증 - 소프트웨어자산관리사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3101_310102') }}" target="_blank">실무자격증 - 경제교육지도사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3101_310103') }}" target="_blank">실무자격증 - 진로직업체험지도사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3101_310104') }}" target="_blank">실무자격증 - 편물기술</a></li>
+                <li class="c_both"></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3091_309101') }}" target="_blank">공인자격증 - 한국사능력시험</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3091_309102') }}" target="_blank">공인자격증 - KBS한국어능력시험</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3091_309103') }}" target="_blank">공인자격증 - 공인한자2급</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/main_willpass') }}" target="_blank">취업-공기업</a></li>
                 <li class="c_both"></li>

@@ -17,7 +17,8 @@
 @import url("style_gpgosi.css");
 @import url("style_gosi_free.css"); /*무료인강*/
 @import url("style_job.css"); /*자격증*/
-@import url("style_3089_308903.css"); /*자격증 건설안전산업기사*/
+@import url("style_3089_308903.css"); /*자격증 건설안전(산업)기사*/
+@import url("style_3089_308904.css"); /*자격증 산업안전(산업)기사*/
 @import url("style_3101_310101.css"); /*자격증 소프트웨어관리사*/
 @import url("style_3101_310102.css"); /*자격증 경제교육지도사*/
 @import url("style_3101_310103.css"); /*자격증 진로직업체험지도사*/

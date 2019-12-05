@@ -258,6 +258,33 @@
         </div>
         <!-- willbes-Cartlist-Fin -->
 
+        <div class="willbes-Cartlist-Fin c_both">
+            <div class="willbes-Lec-Tit NG tx-black">사은품정보</div>
+            <div class="LeclistTable">
+                <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray tx-gray">
+                    <colgroup>
+                        <col style="width: 100%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>사은품명</th>
+                        </tr>
+                    </thead>
+                    <tbody>                      
+                        <tr>
+                            <td class="w-info tx-left pl20">갤럭시탭</td>
+                        </tr>
+                        <tr>
+                            <td class="w-info tx-left pl20">경찰 기본서 경행 세트 (형소법,경찰학,형법,수사,행정법)</td>
+                        </tr>
+                        <tr>
+                            <td class="w-info tx-left pl20">기프티콘 (12월 말 회원정보 휴대폰번호로 일괄 발송 예정)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <div class="willbes-Delivery-Info-Fin p_re c_both">
             <div class="willbes-Lec-Tit NG tx-black">배송정보</div>
             <div class="deliveryInfoTable pb60 GM">

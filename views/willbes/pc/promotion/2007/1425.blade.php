@@ -26,7 +26,7 @@
         .evt02 iframe {position:absolute; top:670px; left:50%; margin-left:-280px;}
         .evt03 {background:#fff}
 
-        .skyBanner {position:fixed; width:320px; top:200px; right:0; z-index:5;}
+        .skyBanner {position:fixed; width:180px; top:200px; right:10px; z-index:5;}
         .skyBanner a {display:block; margin-bottom:5px}
     </style>
 

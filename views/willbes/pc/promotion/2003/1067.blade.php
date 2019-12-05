@@ -11,7 +11,6 @@
     .evtContent {
         width:100% !important;
         min-width:1120px !important;
-        background:#ccc;
         margin-top:20px !important;
         padding:0 !important;
         background:#fff;

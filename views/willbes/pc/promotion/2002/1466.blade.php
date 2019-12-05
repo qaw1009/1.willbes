@@ -74,10 +74,10 @@
 
         <div class="evtCtnsBox wb_04">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1466_04.jpg"  alt="부산윌비스 해양경찰">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1466_04s.gif"  alt="스파르타 바로가기" usemap="#Map1466q" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1466_05.gif"  alt="스파르타 바로가기" usemap="#Map1466q" border="0">
             <map name="Map1466q" id="Map1466q">
-                <area shape="rect" coords="479,335,948,434" href="https://police.willbes.net/pass/promotion/index/code/1057" target="_blank" />
-            </map>
+                <area shape="rect" coords="479,355,948,456" href="https://police.willbes.net/pass/promotion/index/code/1057" target="_blank" />
+            </map>           
         </div>
 
     </div>

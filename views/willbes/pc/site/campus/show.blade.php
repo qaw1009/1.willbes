@@ -87,7 +87,8 @@
                 </div>
             </div>
         </div>
-        {!! banner('전국캠퍼스_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('캠퍼스_메인_우측퀵_01', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0', null, $campus_code) !!}
+        {!! banner('캠퍼스_메인_우측퀵_02', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0', null, $campus_code) !!}
     </div>
 
     <script type="text/javascript">

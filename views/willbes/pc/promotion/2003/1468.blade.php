@@ -20,12 +20,12 @@
 
         /************************************************************/
 
-        .wb_top {background:#feff04 url(https://static.willbes.net/public/images/promotion/2019/12/1468_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/1468_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01{background:#eef9ff;}    
 
         .wb_cts02 {background:#2babdc;position:relative;}   
-        .gif_area{position:absolute;left:37.4%;top:29.9%;}   
+        .gif_area{position:absolute;left:36%;top:29.9%;}   
 
         .wb_cts03 {background:#fff;}
 
@@ -33,7 +33,7 @@
     <div class="p_re evtContent NGR" id="evtContainer">        
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1468_top.jpg" alt="최우영 통신/전기직 합격패키지"  >                  
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1468_top.gif" alt="최우영 통신/전기직 합격패키지"  >                  
         </div>
 
         <div class="evtCtnsBox wb_cts01">

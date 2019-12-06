@@ -34,7 +34,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <ul class="skyBanner">
-            <li><a href="#none;"><img src="https://static.willbes.net/public/images/promotion/2019/12/1470_sky.png" title="pass 구매하기"></a></li>
+            <li><a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/12/1470_sky.png" title="pass 구매하기"></a></li>
         </ul>
 
         <div class="evtCtnsBox evtTop">                
@@ -46,11 +46,12 @@
         </div>
 
         <div class="evtCtnsBox evt02">         
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_02.jpg" usemap="#Map1470a" title="신청하기" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_02.jpg" title="윌비스 신광은 경찰팀">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_02s.jpg" usemap="#Map1470a" border="0" id="to_go" />
             <map name="Map1470a" id="Map1470a">
-                <area shape="rect" coords="163,1532,553,1674" href="#none;" />
-                <area shape="rect" coords="561,1532,930,1676" href="#none;" />
-            </map>
+                <area shape="rect" coords="164,523,554,665" href="javascript:alert('Coming Soon!');" />
+                <area shape="rect" coords="562,522,933,667" href="javascript:alert('Coming Soon!');" />
+            </map>          
         </div>
 
         <div class="evtCtnsBox evt03">
@@ -58,7 +59,7 @@
             <map name="Map1470b" id="Map1470b">
                 <area shape="rect" coords="496,2059,567,2163" href="http://cafe.daum.net/policeacademy" target="_blank" alt="경시모" />
                 <area shape="rect" coords="584,2058,664,2165" href="https://cafe.naver.com/polstudy" target="_blank" alt="경꿈사" />
-                <area shape="rect" coords="685,2055,761,2167" href="#none;" target="_blank" alt="윌비스" />
+                <area shape="rect" coords="685,2055,761,2167" href="https://cafe.naver.com/willbes" target="_blank" alt="윌비스" />
                 <area shape="rect" coords="778,2053,858,2168" href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="공무원갤러리" />
                 <area shape="rect" coords="865,2052,965,2171" href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer" target="_blank" alt="순경갤러리" />
             </map>

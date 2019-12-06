@@ -14,24 +14,27 @@
     .menu-List {display:none}
 
     .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/12/3102_top_bg.jpg) no-repeat center top; margin-top:20px}
-    .evt01 {background:#fdfdfd;}
-    .evt01 .tabBox {position:relative; width:980px; margin:0 auto}
-    .evt01 .tab {border-bottom:1px solid #2c2c2c}
+    .evt01 {background:#313131;}
+    .evt01 .tabBox {position:relative; width:1120px; margin:0 auto}
     .evt01 .tab li {display:inline; float:left; width:33.333333%}
     .evt01 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#dfd6cb; color:#978169; height:60px; line-height:60px; margin-right:1px}
     .evt01 .tab li a:hover,
-    .evt01 .tab li a.active {background:#2c2c2c; color:#dfd5cb;}
+    .evt01 .tab li a.active {background:#ffb400; color:#313131;}
     .evt01 .tab li:last-child a {margin:0}
     .evt01 .tab:after {content:""; display:block; clear:both}
 
-    .evt02 {background:#efefef; padding-bottom:100px}
+    .evt02 {background:#313131;}
     .evt02 ul {width:1120px; margin:0 auto}
     .evt02 li {display:inline; float:left; width:33.333333%; text-align:center; margin-bottom:30px; font-size:14px;}
     .evt02 li iframe {width:348px; height:220px; margin:0 auto}
-    .evt02 li div {height:30px; line-height:30px;}
+    .evt02 li div {height:30px; line-height:30px;color:#d0d0d0;}
     .evt02 li div:first-child {font-size:16px; line-height:40px; height:40px;}
     .evt02 ul:after {content:""; display:block; clear:both}
-    .evt03 {background:url(https://static.willbes.net/public/images/promotion/2019/12/3102_03_bg.jpg) no-repeat center top; }
+    .btn_area {display:inline-block;margin:20px 0 80px 0;}
+    .btn_area .btn{background:#ffb400;color:#313131;font-size:18px;font-weight:bold;width:170px;}
+    .btn_area a{display:inline-block;height:38px;line-height:38px;border-radius:10px;letter-spacing:-0.5px;transition:all 0.5s linear;}
+
+    .evt03 {background:#131313 url(https://static.willbes.net/public/images/promotion/2019/12/3102_03_bg.jpg) no-repeat center top; }
 
     /*********팝업***********/
     .Pstyle {
@@ -589,11 +592,11 @@
         </h3>
     </div>
     
-    <div class="evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_top.jpg" alt="2021 PSAT" usemap="#Map3102A" border="0">
+    <div class="evtTop">    
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_top.jpg" usemap="#Map3102A" border="0" />
         <map name="Map3102A" id="Map3102A">
-          <area shape="rect" coords="267,1299,852,1357" href="javascript:go_popup()" alt="자세히보기" />
-        </map>
+            <area shape="rect" coords="254,2167,840,2257" href="javascript:go_popup()" alt="자세히보기" />
+        </map>        
     </div>
 
     {{--레이어팝업--}}
@@ -625,36 +628,55 @@
 
     <div class="evt02">
         <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_02.jpg" alt="">
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_02s.jpg" alt="">
         <ul>
             <li>
                 <div>자료해석 <strong>석치수</strong></div>
                 <iframe src="https://www.youtube.com/embed/unImcehy2dI?rel=0" frameborder="0" allowfullscreen></iframe>
                 <div>최신 기출경향 분석을 통한 전략적인 공부방법론</div>
+                <span class="btn_area">
+                    <a href="#none;" class="btn">자세히보기</a>
+                </span>            
             </li>
             <li>
                 <div>자료해석 <strong>석치수</strong></div>
                 <iframe src="https://www.youtube.com/embed/unImcehy2dI?rel=0" frameborder="0" allowfullscreen></iframe>
                 <div>기출분석을 통한 합격전략 특강 1편</div>
+                <span class="btn_area">
+                    <a href="#none;" class="btn">자세히보기</a>
+                </span>   
             </li>
             <li>
                 <div>자료해석 <strong>석치수</strong></div>
                 <iframe src="https://www.youtube.com/embed/unImcehy2dI?rel=0" frameborder="0" allowfullscreen></iframe>
                 <div>기출분석을 통한 합격전략 특강 2편</div>
+                <span class="btn_area">
+                    <a href="#none;" class="btn">자세히보기</a>
+                </span>   
             </li>
             <li>
                 <div>상황판단 <strong>박준범</strong></div>
                 <iframe src="https://www.youtube.com/embed/unImcehy2dI?rel=0" frameborder="0" allowfullscreen></iframe>
                 <div>기출분석을 통한 합격전략 특강</div>
+                <span class="btn_area">
+                    <a href="#none;" class="btn">자세히보기</a>
+                </span>   
             </li>
             <li>
                 <div>언어논리 <strong>이나우</strong></div>
                 <iframe src="https://www.youtube.com/embed/unImcehy2dI?rel=0" frameborder="0" allowfullscreen></iframe>
                 <div>기출분석을 통한 합격전략특강</div>
+                <span class="btn_area">
+                    <a href="#none;" class="btn">자세히보기</a>
+                </span>   
             </li>
             <li>
                 <div>언어논리 <strong>한승아</strong></div>
                 <iframe src="https://www.youtube.com/embed/unImcehy2dI?rel=0" frameborder="0" allowfullscreen></iframe>
                 <div>기출분석을 통한 합격전략특강</div>
+                <span class="btn_area">
+                    <a href="#none;" class="btn">자세히보기</a>
+                </span>   
             </li>
         </ul>
     </div>

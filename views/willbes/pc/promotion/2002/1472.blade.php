@@ -73,6 +73,7 @@
             <div><img src="https://static.willbes.net/public/images/promotion/2019/12/1472_02.jpg" title="신청 및 출발안내"></div>
             <div class="evt02_02" id="event" >
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1472_04.jpg" title="입교버스 지역별 신청">
+                {{--
                 <span class="evt02_02 finish">마감</span>
                 @foreach($arr_base['register_member_list'] as $key => $val)
                     <span>
@@ -96,6 +97,7 @@
                     </span>
                 </span>
                 @endforeach
+                --}}
             </div>            
         </div>
 	</div>

@@ -72,7 +72,7 @@ class Caching_site extends CI_Driver
                     on S.DeliveryCompCcd = DCC.Ccd and DCC.GroupCcd = "' . $_group_ccd['DeliveryComp'] . '" and DCC.IsStatus = "Y"
                 left join ' . $_table['code'] . ' as PGC
                     on S.PgCcd = PGC.Ccd and PGC.GroupCcd = "' . $_group_ccd['Pg'] . '" and PGC.IsStatus = "Y"                    
-            where S.IsUse = "Y" and S.IsStatus = "Y" and SG.IsUse = "Y" and SG.IsStatus = "Y"
+            where S.IsUse = "Y" and S.IsFrontUse="Y" and S.IsStatus = "Y" and SG.IsUse = "Y" and SG.IsStatus = "Y"
         ';
 
         // 쿼리 실행

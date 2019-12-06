@@ -229,9 +229,15 @@
     border-radius: 10px;
     margin-right: 5px;
 }
-.cus .willbesNumber ul li {
-    margin-left: 30px;
+.cus .willbesNumber ul {
+    padding:0 50px;
+}
+.cus .willbesNumber ul li {   
+    margin:0;
     vertical-align: top;
+    display: inline;
+    float:left;
+    width:50%;    
 }
 
 /* Main Container */

@@ -50,7 +50,7 @@
         <div class="evtCtnsBox wb_cts03"> 
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1468_03.jpg" alt="수강신청" usemap="#Map" border="0"  >
             <map name="Map" id="Map">
-                <area shape="rect" coords="778,409,1003,547" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/158470" target="_blank" />
+                <area shape="rect" coords="778,409,1003,547" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/158471" target="_blank" />
                 <area shape="rect" coords="778,636,1004,777" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/158470" target="_blank" />
             </map> 
         </div>       

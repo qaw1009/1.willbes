@@ -108,6 +108,7 @@ class SiteCode
         $rules = [
             ['field' => 'site_type_ccd', 'label' => '사이트 타입', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'is_front_use', 'label' => 'Front 사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'site_name', 'label' => '이름', 'rules' => 'trim|required'],
             ['field' => 'is_campus', 'label' => '캠퍼스 구분', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'campus_ccd[]', 'label' => '캠퍼스', 'rules' => 'callback_validateRequiredIf[is_campus,Y]'],

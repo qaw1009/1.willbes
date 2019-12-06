@@ -31,6 +31,11 @@
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
+                        <select class="form-control" id="search_is_front_use" name="search_is_front_use">
+                            <option value="">Front 사용여부</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -54,6 +59,7 @@
                     <th>사이트 그룹정보</th>
                     <th>PG사</th>
                     <th class="searching_is_use">사용여부</th>
+                    <th class="searching_is_front_use">Front 사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
                 </tr>
@@ -69,6 +75,7 @@
                         <td>{{ $row['SiteGroupName'] }}</td>
                         <td>{{ $row['PgName'] }}</td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif<span class="hide">{{ $row['IsUse'] }}</span></td>
+                        <td>@if($row['IsFrontUse'] == 'Y') 사용 @elseif($row['IsFrontUse'] == 'N') <span class="red">미사용</span> @endif<span class="hide">{{ $row['IsFrontUse'] }}</span></td>
                         <td>{{ $row['RegAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>
                     </tr>
@@ -129,6 +136,7 @@
                 .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
                 .column('.searching_is_campus').search($search_form.find('select[name="search_is_campus"]').val())
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .column('.searching_is_front_use').search($search_form.find('select[name="search_is_front_use"]').val())
                 .draw();
         }
     </script>

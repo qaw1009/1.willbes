@@ -45,7 +45,7 @@ class SiteModel extends WB_Model
      */
     public function listAllSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
+        $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.IsFrontUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['EQ']['G.IsStatus'] = 'Y';
@@ -191,7 +191,7 @@ class SiteModel extends WB_Model
         $column = '
             S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.HeaderInfo, S.MetaDesc, S.FrontCss, S.FooterInfo, S.CommPcScript, S.CommMobileScript, S.CommAppScript
-                , S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
+                , S.IsCampus, S.IsUse, S.IsFrontUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"
                   ), "") as CampusCcds
@@ -264,6 +264,7 @@ class SiteModel extends WB_Model
                 'CommAppScript' => base64_encode(element('comm_app_script', $input)),
                 'OrderNum' => $row['OrderNum'],
                 'IsUse' => element('is_use', $input),
+                'IsFrontUse' => element('is_front_use', $input),
                 'IsCampus' => element('is_campus', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -353,6 +354,7 @@ class SiteModel extends WB_Model
                 'CommMobileScript' => base64_encode(element('comm_mobile_script', $input)),
                 'CommAppScript' => base64_encode(element('comm_app_script', $input)),
                 'IsUse' => element('is_use', $input),
+                'IsFrontUse' => element('is_front_use', $input),
                 'IsCampus' => element('is_campus', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

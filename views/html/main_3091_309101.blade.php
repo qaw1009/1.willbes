@@ -114,7 +114,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="nTit">교재문의 및 재료구매</div>
+                                <div class="nTit">교재문의</div>
                                 <div class="nNumber tx-color">1544-4944</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>

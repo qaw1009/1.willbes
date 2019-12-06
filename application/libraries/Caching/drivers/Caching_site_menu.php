@@ -47,7 +47,7 @@ class Caching_site_menu extends CI_Driver
                 inner join ' . $_table['site_menu'] . ' as SM
                     on S.SiteCode = SM.SiteCode
             where SG.IsUse = "Y" and SG.IsStatus = "Y"
-                and S.IsUse = "Y" and S.IsStatus = "Y"
+                and S.IsUse = "Y" and S.IsFrontUse = "Y" and S.IsStatus = "Y"
                 and SM.IsUse = "Y" and SM.IsStatus = "Y" 
                 and SM.MenuType != "XN"                             
         ';

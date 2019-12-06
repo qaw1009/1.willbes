@@ -126,6 +126,9 @@ abstract class FrontController extends BaseController
 
         // 현재 사이트 정보 캐쉬
         $site_cache = element($this->_site_key, $all_site_cache, []);
+        if (empty($site_cache) === true) {
+            redirect(app_url('/', 'www'));
+        }
 
         // 현재 사이트 코드
         $this->_site_code = element('SiteCode', $site_cache);
@@ -278,6 +281,9 @@ abstract class FrontController extends BaseController
 
         // 현재 사이트 정보 캐쉬
         $site_cache = element($this->_site_key, $all_site_cache, []);
+        if (empty($site_cache) === true) {
+            redirect(app_url('/' . APP_DEVICE . '/', 'www'));
+        }
 
         // 현재 사이트 코드
         $this->_site_code = element('SiteCode', $site_cache);

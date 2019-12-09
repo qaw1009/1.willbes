@@ -100,7 +100,11 @@
                         <tr>
                             <th>버스탑승지역</th>
                             <td colspan="3">
-                                <input type="radio" name="etcValue6" value="서울(노량진)" id="etcValue6_1"/> <label for="etcValue3_1">서울(노량진)</label>
+{{--                                <input type="radio" name="etcValue6" value="서울(노량진)" id="etcValue6_1"/> <label for="etcValue3_1">서울(노량진)</label>--}}
+                                @foreach($arr_base['register_list'] as $row)
+                                    <input type="radio" name="register_chk[]" value="{{$row['ErIdx']}}" {{ (empty($arr_base['selected']) === false && $arr_base['selected'] == $row['ErIdx']) ? 'checked' : '' }}/>
+                                    <label for="register_chk[]">{{ $row['Name'] }}</label>
+                                @endforeach
                             </td>
                         </tr>
                         <tr>
@@ -182,7 +186,7 @@
             return;
         }
 
-        if (!confirm('2019년 1차 경찰공무원 합격생 중경 입교버스 든든이벤트를 신청하시겠습니까?')) { return true; }
+        if (!confirm('이벤트를 신청하시겠습니까?')) { return true; }
         ajaxSubmit($regi_form_register, _url, function(ret) {
             if(ret.ret_cd) {
                 alert(ret.ret_msg);
@@ -224,9 +228,9 @@
             var $etcValue5 = $regi_form_register.find('input[name="etcValue5"]');
 
             switch ($(this).val()) {
-                case '가족1인' : $etcValue5.val('20000'); break;
-                case '가족2인' : $etcValue5.val('30000'); break;
-                case '친구1인' : $etcValue5.val('20000'); break;
+                case '가족1인' : $etcValue5.val('30000'); break;
+                case '가족2인' : $etcValue5.val('45000'); break;
+                case '친구1인' : $etcValue5.val('30000'); break;
                 case '없음' : $etcValue5.val('15000'); break;
                 default : '';
             }

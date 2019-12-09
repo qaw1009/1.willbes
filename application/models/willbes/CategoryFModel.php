@@ -21,7 +21,7 @@ class CategoryFModel extends WB_Model
     public function listSiteCategory($site_code, $cate_depth = 1)
     {
         $arr_condition = [
-            'EQ' => ['SiteCode' => $site_code, 'IsUse' => 'Y', 'IsStatus' => 'Y'],
+            'EQ' => ['SiteCode' => $site_code, 'IsUse' => 'Y', 'IsStatus' => 'Y', 'IsFrontUse' => 'Y'],
             'LTE' => ['CateDepth' => $cate_depth]
         ];
 

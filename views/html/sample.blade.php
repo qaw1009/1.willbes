@@ -322,6 +322,9 @@
                 <li><a href="{{ site_url('/home/html/cart5') }}" target="_blank">수험정보 > 모의고사 > 모의고사결제</a></li>
                 <li><a href="{{ site_url('/home/html/mocktest6_3') }}" target="_blank">수험정보 > 모의고사 > 이의제기/정오표</a></li>
                 <li class="c_both"></li>     
+                <li><a href="{{ site_url('/home/html/guide_3094_01') }}" target="_blank"> 수험정보 > 5급행정 > 선발예정인원 및 과목</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3094_02') }}" target="_blank"> 수험정보 > 5급행정 > 시험일정 및 응시자격</a></li>
+                <li class="c_both"></li> 
                 <li><a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel3_1') }}" target="_blank">상담실 > 심층상담예약 > 상담일자</a></li>

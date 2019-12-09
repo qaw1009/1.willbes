@@ -73,9 +73,27 @@
             <div><img src="https://static.willbes.net/public/images/promotion/2019/12/1472_02.jpg" title="신청 및 출발안내"></div>
             <div class="evt02_02" id="event" >
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1472_04.jpg" usemap="#Map" title="입교버스 지역별 신청" border="0">
-                <map name="Map" id="Map">
-                    <area shape="rect" coords="494,245,592,274" onclick="window.open('https://police.local.willbes.net/pass/promotion/popup/1472?selected=291','window_name','width=730,height=700,location=no,status=no,scrollbars=yes');">
-                </map>
+                @foreach($arr_base['register_member_list'] as $key => $val)
+                    <span>
+                        @if($val['RegisterExpireStatus'] == 'Y')
+                            @if($val['PersonLimitType'] != 'L')
+                                <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                            @else
+                                @if($val['PersonLimit'] > $val['mem_cnt'])
+                                    <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
+                                @else
+                                    <a href="#none" class="end">신청마감</a>
+                                @endif
+                            @endif
+                        @else
+                            @if($key == '213')
+                                <a href="{{app_url('/pass/support/notice/show?board_idx=222649', 'police')}}">캠퍼스문의</a>
+                            @else
+                                <a href="#none" class="end">신청마감</a>
+                            @endif
+                        @endif
+                    </span>
+                @endforeach
             </div>            
         </div>
 	</div>

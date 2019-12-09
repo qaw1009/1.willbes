@@ -168,9 +168,9 @@
                     </li>
                 </ul>
                 <div id="tab01s" class="white">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab1_con.jpg" usemap="#Map1053tab1" border="0" />
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1053_tab1_con.jpg" usemap="#Map1053tab1" border="0" />
                     <map name="Map1053tab1" id="Map1053tab1">
-                        <area shape="rect" coords="267,539,945,649" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1093&subject_idx=1473&campus_ccd=" target="_blank" />
+                        <area shape="rect" coords="268,1184,946,1294" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&course_idx=1093&subject_idx=1473&campus_ccd=" target="_blank" />
                     </map>     
                     <div class="evtCtnsBox wb_cts09">
                         <div class="wb_tipBox">
@@ -182,7 +182,7 @@
                                 - <b>1개월 미만 등록은 불가하고 입실일과 무관하게 이용기간은 말일까지입니다.</b><br />
                                 &nbsp;(ex: 10월 10일 입실 -> 11월 10일까지 1개월 이용 X, 10월 10일 입실 -> 11월 30일까지 이용 O)<br />
                                 - 점호 및 출결 관리는 일요일과 공휴일은 진행되지 않으며 조교 근무 일정에 따라 진행이 안 되는 날이 있을 수 있습니다.<br />
-                                - 내부 벌점 규정에 의한 생활 통제가 존재하면 점호 불참,소음,입실생간 불화,범죄 행위 등 벌점이 누적된 경우 강제 퇴실 조치가 있습니다.<br />
+                                - 내부 벌점 규정에 의한 생활 통제가 존재하며 점호 불참,소음,입실생간 불화,범죄 행위 등 벌점이 누적된 경우 강제 퇴실 조치가 있습니다.<br />
                                 - <span class="wb_tip_orange">매주 일요일과 식당 휴일에는 식사 이용이 불가능합니다.</span><br />
                                 </li>
                                 <li><strong>[실강 PASS]</strong><br />
@@ -193,6 +193,22 @@
                                 - 불가피한 사정에 의해 진행되지 않은 강좌의 경우 대체 강좌로 제공되며, 이로 인한 환불은 불가합니다.<br />
                                 - 아이디 공유, 타인 양도 등 부정사용 적발 시 환불없이 회원 자격이 박탈되며, 불법 행위 시안에 따라 민형사상 조치가 있을 수 있습니다.<br />
                                 - 온/오프라인 동시 진행되는 이벤트성 특강의 경우 인강에 미지급되거나 이벤트가 종료된 후 제공될 수 있습니다.<br />
+                                </li>
+                                <li><strong>[끝장 PASS]</strong><br />
+                                - 수강기간 연장 신청<br />
+                                2020년 12월 수강기간이 종료되기 전 불합격 인증 시 21년 1차까지 학원 강의 수강기간 연장이 가능하며,
+                                21년 1차 불합격 인증 시 21년 2차까지 학원 수강기간이 연장됩니다. <br />
+                                <span class="wb_tip_orange">* 합격자 발표 후 1주일 이내에 신청하셔야 합니다.<br />
+                                * 무료 수강 기간 연장 시 기숙사(숙소+식사)는 포함되지 않으며 기숙사 연장 희망 시 별도의 이용 비용이 발생합니다.</span><br />
+                                - 불합격 성적표 인증 시 모든 과목이 0점이거나 개인사정으로 불응시한 경우 수강기간 연장이 불가합니다.<br />
+                                - 환급 신청 시 아래 조건을 충족해야 하며 기숙사(숙소+식사) 이용금액, 제세공과금 22%, 지급된 포인트 금액 차감 후 환급됩니다.<br />
+                                * 환급조건<br />
+                                ① 2020년 2차 시험 최종합격 인증(응시표)<br />
+                                ② 신광은 경찰팀 모든 전국모의고사 응시<br />
+                                ③ 필기 합격 시 합격수기 제출<br />
+                                - 등록생 전원에게 수강 기간 동안 인강패스가 지급되며, 수강기간 종료 후 연장신청한 수강생에게는 복습동영상이 제공됩니다.<br />
+                                - 중도 환불 시 수강기간만큼 차감 후, 무료혜택만큼 제하고 환불되며, 정규 수강기간 종료 후에는 환불이 불가합니다.<br />
+                                (차감액이 결제 금액을 초과할 경우 환불이 불가합니다.)
                                 </li>
                                 <li><strong>[환불 규정]</strong><br />
                                 - 혜택 이용 여부에 따른 환불<br />
@@ -248,11 +264,11 @@
                     </div>             
                 </div>                                        
                 <div id="tab02s" class="white">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
                     <map name="Map1053tab2" id="Map1053tab2">
-                        <area shape="rect" coords="224,2943,490,3014" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
-                        <area shape="rect" coords="230,3065,489,3134" href="https://police.local.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
-                    </map>            
+                        <area shape="rect" coords="226,4529,468,4576" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
+                        <area shape="rect" coords="227,4651,467,4700" href="https://police.local.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
+                    </map>             
                 </div>
                 <div id="tab03s" class="white">
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab3_con.jpg" />            

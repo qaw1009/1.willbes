@@ -97,7 +97,7 @@
             <div class="evtCtnsBox evt03" id="to_go">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1473_03.jpg" usemap="#Map1473a" title="올공반 올케어 지금 바로 신청하기" border="0">
                 <map name="Map1473a" id="Map1473a">
-                    <area shape="rect" coords="378,1002,744,1113" href="javascript:alert('Coming Soon! 12.14(토) 시작합니다.');" />
+                    <area shape="rect" coords="378,1002,744,1113" href="https://police.willbes.net/pass/offPackage/index/type/agong?cate_code=3010&campus_ccd=605001&course_idx=1094" target="_blank" alt="지금 바로 신청하기" />
                 </map>                   
             </div>          
 

@@ -31,7 +31,7 @@
         .evt02 .evt02_02 span:nth-child(4) {top:305px}
         .evt02 .evt02_02 span:nth-child(5) {top:354px}
         .evt02 .evt02_02 span:nth-child(6) {top:403px}
-        .evt02 .evt02_02 span:last-child {top:290px}
+        .evt02 .evt02_02 span:last-child {top:243px}
         .evt02 .evt02_02 span a {display:block; text-align:center; color:#010100; background:#ffff01; font-size:14px; font-weight:600; border:1px solid #010100;}
         .evt02 .evt02_02 span a:hover {color:#fff; background:#000}
         .evt02 .evt02_02 span a.end {color:#fff; background:#86aee8; border:1px solid #86aee8;}

@@ -105,7 +105,13 @@
 	</div>
     <!-- End Container -->
 
-    <script>
-       
+    <script type="text/javascript">
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
     </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

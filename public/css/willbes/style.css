@@ -11657,4 +11657,11 @@ table.acadlecInfoPackageTable tr.Top td {
 .table-Guided td {padding:10px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center;}
 .table-Guided th {background: #f3f3f3; color:#333; font-weight: bold;}
 .table-Guided tbody th {background: #f9f9f9; color:#555;} 
-.w-Guide ul li {margin-bottom:10px; list-style-type: disc; margin-left:15px;}
+.w-Guide ul.st01 li {margin-bottom:10px; list-style-type:disc; margin-left:15px;}
+.guideTab {margin:0; padding:0; margin-bottom:20px; border-bottom:2px solid #22252a}
+.guideTab li {display: inline; float:left; width:50%; padding:0; margin:0; list-style: none;}
+.guideTab li a {display:block; text-align:center; padding:14px 0; background:#e4e4e4; color:#22252a; margin-right:1px; font-size:18px; font-weight: bold; border:0; line-height: 1.5; height: auto;}
+.guideTab li a.on,
+.guideTab li a:hover {background:#22252a; color:#fff;line-height: 1.5; height: auto;}
+.guideTab li:last-child a {margin:0} 
+.guideTab:after {content:""; display: block; clear:both}

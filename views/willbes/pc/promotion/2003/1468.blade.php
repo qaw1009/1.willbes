@@ -26,6 +26,7 @@
 
         .wb_cts02 {background:#2babdc;position:relative;}   
         .gif_area{position:absolute;left:36%;top:29.9%;}   
+        .gif_area img{width:560px;height:381px;}
 
         .wb_cts03 {background:#fff;}
 

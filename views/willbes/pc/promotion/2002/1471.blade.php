@@ -137,7 +137,7 @@
                     <td class="time_txt">:</td>
                     <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</td>
+                    <td><span>남았습니다!</td>
                     </tr>
                 </table>                
             </div>

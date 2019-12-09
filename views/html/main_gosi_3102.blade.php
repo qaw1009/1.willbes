@@ -14,7 +14,7 @@
     .menu-List {display:none}
 
     .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/12/3102_top_bg.jpg) no-repeat center top; margin-top:20px}
-    .evt01 {background:#313131;}
+    .evt01 {background:#1c3646;}
     .evt01 .tabBox {position:relative; width:1120px; margin:0 auto}
     .evt01 .tab li {display:inline; float:left; width:33.333333%}
     .evt01 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#dfd6cb; color:#978169; height:60px; line-height:60px; margin-right:1px}

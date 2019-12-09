@@ -46,12 +46,13 @@ class CategoryModel extends WB_Model
                     , if(LastCateDepth = 1, BIsUse, MIsUse) as LastIsUse
                     , if(LastCateDepth = 1, BRegAdminIdx, MRegAdminIdx) as LastRegAdminIdx
                     , if(LastCateDepth = 1, BRegDatm, MRegDatm) as LastRegDatm
+                    , if(LastCateDepth = 1, BIsFrontUse, MIsFrontUse) as LastIsFrontUse
                 from (
                     select S.SiteCode, S.SiteName
                         , BC.CateCode as BCateCode, BC.CateName as BCateName, BC.CateDepth as BCateDepth, BC.OrderNum as BOrderNum
-                        , BC.IsDefault as BIsDefault, BC.IsUse as BIsUse, BC.RegAdminIdx as BRegAdminIdx, BC.RegDatm as BRegDatm
+                        , BC.IsDefault as BIsDefault, BC.IsUse as BIsUse, BC.IsFrontUse as BIsFrontUse,  BC.RegAdminIdx as BRegAdminIdx, BC.RegDatm as BRegDatm
                         , MC.CateCode as MCateCode, MC.CateName as MCateName, MC.CateDepth as MCateDepth, MC.OrderNum as MOrderNum
-                        , MC.IsDefault as MIsDefault, MC.IsUse as MIsUse, MC.RegAdminIdx as MRegAdminIdx, MC.RegDatm as MRegDatm
+                        , MC.IsDefault as MIsDefault, MC.IsUse as MIsUse, MC.IsFrontUse as MIsFrontUse, MC.RegAdminIdx as MRegAdminIdx, MC.RegDatm as MRegDatm
                         , greatest(BC.CateDepth, ifnull(MC.CateDepth, 0)) as LastCateDepth
                     from ' . $this->_table['site'] . ' as S
                         inner join ' . $this->_table['category'] . ' as BC

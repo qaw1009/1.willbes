@@ -192,6 +192,8 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b5.png" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b6.png" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b7.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b8.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b9.png" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b1.png" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b2.png" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b3.png" alt=""/></li>
@@ -199,6 +201,8 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b5.png" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b6.png" alt=""/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b7.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b8.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b9.png" alt=""/></li>
                 </ul>
             </div> 
         </div>

@@ -110,7 +110,12 @@
                                         <ul>                                       
                                             {{-- <input type="hidden" name="register_data1" value=""/> --}}
                                             @foreach($arr_base['register_list'] as $key => $val)
-                                                <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}"/> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @if($key==0)
+                                                    <li><input type="checkbox" name="tempp[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @else
+                                                    <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @endif
+
                                             @endforeach
                                         </ul>
                                     </td>

@@ -11,7 +11,6 @@
             background:#fff;
             text-align:center;
         }
-        .menu-List {display:block}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/12/3102_top_bg.jpg) no-repeat center top; margin-top:20px}
         .evt01 {background:#313131;}

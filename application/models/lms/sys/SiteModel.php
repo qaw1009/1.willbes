@@ -58,16 +58,20 @@ class SiteModel extends WB_Model
      * 사이트 코드 목록 조회
      * @param bool $is_auth
      * @param string $is_column [추가 컬럼 조회시 컬럼명 전달]
+     * @param $p_arr_condition
      * @return array
      */
-    public function getSiteArray($is_auth = true, $is_column = 'SiteName')
+    public function getSiteArray($is_auth = true, $is_column = 'SiteName', $p_arr_condition = array())
     {
         // 운영자 사이트 권한 체크
         if ($is_auth === true) {
             $data = get_auth_site_codes(true);
         } else {
             $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
-            $data = $this->_conn->getListResult($this->_table['site'], 'SiteCode,'.$is_column ,$arr_condition, null, null, [
+            if (empty($p_arr_condition) === false && is_array($p_arr_condition) === true) {
+                $arr_condition = array_merge_recursive($arr_condition, $p_arr_condition);
+            }
+            $data = $this->_conn->getListResult($this->_table['site'], 'SiteCode,'.$is_column, $arr_condition, null, null, [
                 'SiteCode' => 'asc'
             ]);
             $data = array_pluck($data, $is_column, 'SiteCode');

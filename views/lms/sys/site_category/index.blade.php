@@ -26,6 +26,11 @@
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
+                        </select>&nbsp;
+                        <select class="form-control" id="search_is_front_use" name="search_is_front_use">
+                            <option value="">Front 사용여부</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
                         </select>
                     </div>
                 </div>
@@ -47,7 +52,8 @@
                         <th class="searching searching_site_code rowspan">사이트 [<span class="blue">코드</span>]</th>
                         <th class="searching rowspan">대분류 [<span class="blue">코드</span>]</th>
                         <th class="searching">중분류 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-cate-depth="2">추가</button></th>
-                        <th class="searching_is_use">사용여부</th>
+                        <th class="searching_is_use" width="120">사용여부</th>
+                        <th class="searching_is_front_use" width="120">Front 사용여부</th>
                         <th>등록자</th>
                         <th>등록일</th>
                     </tr>
@@ -78,6 +84,9 @@
                             </td>
                             <td>@if($row['LastIsUse'] == 'Y') 사용 @elseif($row['LastIsUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['LastIsUse'] }}</span>
+                            </td>
+                            <td>@if($row['LastIsFrontUse'] == 'Y') 사용 @elseif($row['LastIsFrontUse'] == 'N') <span class="red">미사용</span> @endif
+                                <span class="hide">{{ $row['LastIsFrontUse'] }}</span>
                             </td>
                             <td>{{ $row['LastRegAdminName'] }}</td>
                             <td>{{ $row['LastRegDatm'] }}</td>
@@ -180,6 +189,7 @@
                 .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
                 .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
+                .column('.searching_is_front_use').search($search_form.find('select[name="search_is_front_use"]').val())
                 .draw();
         }
     </script>

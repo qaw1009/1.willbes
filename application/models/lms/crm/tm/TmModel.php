@@ -309,7 +309,8 @@ class TmModel extends WB_Model
                 'AssignCcd' => element('_AssignCcd',$input),
                 'SearchDate' => date("Y-m-d"),
                 'SearchEndDate' => element('SearchEndDate',$input,null),
-                'MemCnt' => count($MemIdx),
+                //'MemCnt' => count($MemIdx),
+                'MemCnt' => '1',
                 'AssignType' => '수동',
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()

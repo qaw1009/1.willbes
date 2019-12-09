@@ -121,14 +121,13 @@
                         if($("#_wAdminIdx").val() == "") {
                             alert("TM을 선택해 주세요.");return;
                         }
+                        //if( $('input:radio[name="MemIdx[]"]:checked').val() == undefined ) {
                         if($('input:radio[name=MemIdx]').is(':checked') == false) {
                             alert("회원을 선택해 주세요");return;
                         }
                         var _url = '{{ site_url('/crm/tm/TmMng/assignManual') }}';
                         ajaxSubmit($search_form_modal, _url, function(ret) {
                             if(ret.ret_cd) {
-                                //notifyAlert('success', '알림', ret.ret_msg);
-                                //$("#btn_assign").attr("disabled",true);
                                 alert("회원이 배정되었습니다.");
                                 $("#pop_modal").modal('toggle');
                                 showAssign(ret.ret_data)

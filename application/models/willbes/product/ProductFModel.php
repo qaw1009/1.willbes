@@ -34,8 +34,8 @@ class ProductFModel extends WB_Model
 
     ];
 
-    // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재)
-    public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003'];
+    // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품)
+    public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003', 'freebie' => '636004'];
 
     // 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
@@ -532,14 +532,13 @@ class ProductFModel extends WB_Model
         return $query->result_array();
     }
 
-
     /**
      * 상품 과목에 연결된 직렬 정보 추출
      * @param array $add_condition
-     * @param array $order_by
+     * @param array $order
      * @return mixed
      */
-    public function findProductSubjectSeries($add_condition=[], $order=[]) {
+    public function findProductSubjectSeries($add_condition = [], $order = []) {
 
         //$column = 'distinct B.ChildCcd,C.CcdName';
         $column =' B.ChildCcd,C.CcdName,GROUP_CONCAT(distinct B.SubjectIdx) as subject_arr';
@@ -562,7 +561,23 @@ class ProductFModel extends WB_Model
         return $query;
     }
 
-
+    /**
+     * 자동지급 사은품 조회
+     * @param array $prod_code
+     * @return array|int
+     */
+    public function findProductFreebie($prod_code = [])
+    {
+        $column = 'P.ProdCode, P.ProdName';
+        $arr_condition = [
+            'EQ' => ['PP.IsStatus' => 'Y', 'P.IsStatus' => 'Y'],
+            'IN' => ['PP.ProdCode' => (array) $prod_code, 'PP.ProdTypeCcd' => [$this->_prod_type_ccd['freebie']]]
+        ];
+        
+        return $this->_conn->getJoinListResult($this->_table['product_r_product'] . ' as PP', 'inner', $this->_table['product'] . ' as P'
+            , 'PP.ProdCodeSub = P.ProdCode and PP.ProdTypeCcd = P.ProdTypeCcd'
+            , $column, $arr_condition);
+    }
 
     /**
      * 랜딩 컨텐츠 추출

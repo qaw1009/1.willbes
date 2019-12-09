@@ -126,6 +126,19 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            {{-- 자동지급 사은품 --}}
+                            @if(empty($results['freebie']) === false)
+                                @foreach($results['freebie'] as $fb_idx => $fb_row)
+                                    <tr>
+                                        <td class="w-list tx-left pl20">
+                                            <span class="pBox p4">사은품</span> {{ $fb_row['ProdName'] }}
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -181,7 +194,7 @@
                                 <dt>
                                     <span class="u-point tx-pink">{{ number_format($results['point']) }}P 보유</span>
                                     <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
-                                    <input type="text" name="use_point" title="사용포인트" class="iptPoint chk_price" required="required" pattern="numeric" data-validate-minmax="-1" value="0" maxlength="10"> P 차감
+                                    <input type="text" name="use_point" title="사용포인트" class="iptPoint chk_price" required="required" pattern="numeric" data-validate-minmax="0" value="0" maxlength="10"> P 차감
                                 </dt>
                             </dl>
                         </div>
@@ -564,7 +577,7 @@
                 var $use_point = $regi_form.find('input[name="use_point"]');
                 if ($use_point.length > 0 && parseInt($use_point.val()) > 0) {
                     alert('이미 적용하신 포인트는 쿠폰 적용 후 재 적용해 주십시오.');
-                    $use_point.val('').trigger('change');
+                    $use_point.val('0').trigger('change');
                 }
 
                 var ele_id = 'Coupon';
@@ -639,7 +652,7 @@
                 }, showValidateError, false, 'POST');
 
                 if (is_check === false) {
-                    $regi_form.find('input[name="use_point"]').val('').trigger('change');
+                    $regi_form.find('input[name="use_point"]').val('0').trigger('change');
                 }
             });
 

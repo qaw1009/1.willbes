@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'order/orderF', 'order/orderListF', 'memberF', 'pointF', '_lms/sys/code');
+    protected $models = array('order/cartF', 'order/orderF', 'order/orderListF', 'product/productF', 'memberF', 'pointF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -35,6 +35,15 @@ class Order extends \app\controllers\FrontController
         $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows, [], 0, '', $is_visit_pay);
         if (is_array($results) === false) {
             show_alert($results, 'back');
+        }
+
+        // 상품코드 추출
+        $arr_prod_code = array_pluck($results['list'], 'ProdCode');
+
+        // 온라인강좌일 경우 자동지급 사은품 조회
+        $results['freebie'] = [];
+        if ($cart_type == 'on_lecture' && empty($arr_prod_code) === false) {
+            $results['freebie'] = $this->productFModel->findProductFreebie($arr_prod_code);
         }
 
         // 지역번호, 휴대폰번호, 결제수단 공통코드 조회

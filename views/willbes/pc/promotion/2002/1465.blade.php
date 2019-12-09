@@ -56,18 +56,16 @@
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
 {{--            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>--}}
-            @foreach($arr_base['register_list'] as $key => $val)
+            {{--@foreach($arr_base['register_list'] as $key => $val)
                 <input type="hidden" name="register_chk[]" value="{{$val['ErIdx']}}"/>
-            @endforeach
+            @endforeach--}}
 {{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> --}}{{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
-            <!--
-            <input type="hidden" name="register_chk_col[]" value="EtcValue"/>
-            <input type="hidden" name="register_chk_val[]" value=""/>
-            -->
+            <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
+            <input type="hidden" name="register_chk_val[]" value=""/>-->
 
             <div class="skyBanner">               
                 <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/12/1465_sky.png" title="설명회 베너"></a>
@@ -110,11 +108,15 @@
                                     <th>* 참여일</th>
                                     <td>
                                         <ul>                                       
-                                            <input type="hidden" name="register_data1" value=""/>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus1" value="12.7(토) 프리미엄 올.공.반 설명회 1차" disabled /> <label for="campus1">12.7(토) 프리미엄 올.공.반 설명회 1차</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus2" value="12.14(토) 프리미엄 올.공.반 설명회 2차" /> <label for="campus2">12.14(토) 프리미엄 올.공.반 설명회 2차</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="12.21(토)2020 경찰합격전략설명회 1차" /> <label for="campus3">12.21(토)2020 경찰합격전략설명회 1차</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus4" value="12.28(토)2020 경찰합격전략설명회 2차" /> <label for="campus3">12.28(토)2020 경찰합격전략설명회 2차</label></li>                            
+                                            {{-- <input type="hidden" name="register_data1" value=""/> --}}
+                                            @foreach($arr_base['register_list'] as $key => $val)
+                                                @if($key==0)
+                                                    <li><input type="checkbox" name="tempp[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @else
+                                                    <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @endif
+
+                                            @endforeach
                                         </ul>
                                     </td>
                                 </tr>
@@ -191,7 +193,7 @@
                 alert('연락처를 입력하셔야 합니다.');
                 return;
             }
-            if ($regi_form_register.find('input[name="register_data1_tmp[]"]:checked').length == 0) {
+            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
                 alert('참여일을 선택하셔야 합니다.');
                 return;
             }
@@ -201,25 +203,14 @@
             }
 
             if (!confirm('저장하시겠습니까?')) { return true; }
-            // $regi_form_register.find('input[name="register_chk_val[]"]').val($regi_form_register.find('input:radio[name="register_data2"]:checked').val());//신청자 조건 추가
 
             //전부 disabled 처리
-            $regi_form_register.find('input[name="register_chk[]"]').each(function(i){
-                $(this).attr('disabled',true);
-            });
+            $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', true);
 
-            var register_data1_value = '';
-            $regi_form_register.find('input[name="register_data1_tmp[]"]:checked').each(function(i){
-                // register_data1_value += (i==0? '' : ',') + $(this).val();
-                var register_data1_tmp_val = $(this).val();
-                $regi_form_register.find('input[name="register_chk[]"]').each(function(j){
-                    var register_chk_val = $(this).val();
-                    if(register_data1_tmp_val == register_chk_val) {
-                        $(this).attr('disabled', false);
-                    }
-                });
+            //체크 disable 해제
+            $regi_form_register.find('input[name="register_chk[]"]:checked').each(function(i){
+                $(this).attr('disabled', false);
             });
-            // $regi_form_register.find('input[name="register_data1"]').val(register_data1_value);
 
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
@@ -227,6 +218,7 @@
                     location.reload();
                 }
             }, showValidateError, null, false, 'alert');
+            $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', false); //disable 해제
         }
     </script>
 @stop

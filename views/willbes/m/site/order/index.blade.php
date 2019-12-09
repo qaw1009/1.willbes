@@ -106,6 +106,15 @@
                                     @endif
                                 </ul>
                             @endforeach
+                            {{-- 자동지급 사은품 --}}
+                            @if(empty($results['freebie']) === false)
+                                @foreach($results['freebie'] as $fb_idx => $fb_row)
+                                    <ul class="payLecList">
+                                        <li><span>사은품</span></li>
+                                        <li>{{ $fb_row['ProdName'] }}</li>
+                                    </ul>
+                                @endforeach
+                            @endif
                             </td>
                         </tr>
                     {{-- 구매자/배송정보 (배송정보여부가 Y일 경우만 노출) --}}
@@ -456,7 +465,7 @@
             var $use_point = $regi_form.find('input[name="use_point"]');
             if ($use_point.length > 0 && parseInt($use_point.val()) > 0) {
                 alert('이미 적용하신 포인트는 쿠폰 적용 후 재 적용해 주십시오.');
-                $use_point.val('').trigger('change');
+                $use_point.val('0').trigger('change');
             }
 
             var ele_id = 'Coupon';
@@ -498,7 +507,7 @@
             $use_point.val(has_point).trigger('change').trigger('blur');
         });
 
-        // 포인트 사용
+        // 포인트 사용 (수정안함)
         $regi_form.on('blur', 'input[name="use_point"]', function() {
             var use_point = parseInt($(this).val()) || 0;
             if (use_point < 1) {
@@ -531,7 +540,6 @@
             }, showValidateError, false, 'POST');
 
             if (is_check === false) {
-                // 디폴트 사용포인트 셋팅 (수정)
                 $regi_form.find('input[name="use_point"]').val('0').trigger('change');
             }
         });

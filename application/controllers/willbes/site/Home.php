@@ -96,7 +96,6 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
-            //$data['arr_campus'] = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus_info'] = $this->_getSiteCampusInfo();
             $data['notice'] = $this->_boardNotice(5, null, ['605999']);
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
@@ -155,7 +154,6 @@ class Home extends \app\controllers\FrontController
 
         if (APP_DEVICE == 'pc') {
             $data['dday'] = $this->_dday();
-            //$data['arr_campus'] = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus_info'] = $this->_getSiteCampusInfo();
             $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
@@ -452,45 +450,6 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
-     * 캠퍼스별 기타 정보 설정
-     * 캠퍼스 배열에 맞게 배열 셋팅
-     * TODO : 사용안함, 안정화 확인 후 삭제 요망
-     * @return array
-     */
-    private function _getCampusInfo()
-    {
-        switch ($this->_site_code) {
-            case "2002":
-                $temp_campus = [
-                    '0' => ['MapPath' => img_url('cop_acad/map/map_cop_origin.jpg'),'Addr' => '서울 동작구 만양로 105 2층<br/>(서울 동작구 노량진동 116-2 2층)','Tel' => '1544-0336'],
-                    /*'1' => ['MapPath' => img_url('cop_acad/map/map_cop_sl.jpg'),'Addr' => '서울 관악구 신림로 23길 16 4층','Tel' => '1544-4006'],*/
-                    '1' => ['MapPath' => img_url('cop_acad/map/map_cop_bs.jpg'),'Addr' => '부산 진구 부전동 223-8','Tel' => '1522-8112'],
-                    '2' => ['MapPath' => img_url('cop_acad/map/map_cop_dg.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
-                    '3' => ['MapPath' => img_url('cop_acad/map/map_cop_ic.jpg'),'Addr' => '인천 부평구 경원대로 1395 부평1번가 11층','Tel' => '1544-1661'],
-                    '4' => ['MapPath' => img_url('cop_acad/map/map_cop_kj.jpg'),'Addr' => '광주 북구 호동로 6-11','Tel' => '062-514-4560 / 070-7606-6060'],
-                    '5' => ['MapPath' => img_url('cop_acad/map/map_cop_jbjj.jpg'),'Addr' => '','Tel' => ''],
-                    /*'7' => ['MapPath' => img_url('cop_acad/map/map_cop_jinj.jpg'),'Addr' => '경남 진주시 칠암동 490-8 엠코아빌딩 4층','Tel' => '055-755-7771'],*/
-                    '6' => ['MapPath' => img_url('cop_acad/map/map_cop_jj.jpg'),'Addr' => '제주도 제주시 동광로 56 3층','Tel' => '064-722-8140'],
-                    '7' => ['MapPath' => img_url('cop_acad/map/map_cop_kkkj.jpg'),'Addr' => '경기도 광주시 퇴촌면 탑선길 46-22','Tel' => '1599-9361']
-                ];
-                break;
-            case "2004":
-                $temp_campus = [
-                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울 동작구 노량진로 196 JH빌딩 10층','Tel' => '1544-0330'],
-                    '1' => ['MapPath' => img_url('gosi_acad/map/mapBS.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
-                    '2' => ['MapPath' => img_url('gosi_acad/map/mapDG.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
-                    '3' => ['MapPath' => img_url('gosi_acad/map/mapIC.jpg'),'Addr' => '인천 부평구 경원대로 1395 부평1번가 11층','Tel' => '1544-1661'],
-                    '4' => ['MapPath' => img_url('gosi_acad/map/mapKJ.jpg'),'Addr' => '광주 북구 호동로 6-11','Tel' => '062-514-4560 / 070-7606-6060']
-                ];
-                break;
-            default:
-                $temp_campus = [];
-        }
-
-        return $temp_campus;
-    }
-
-    /**
      * 시험일정 조회 (디데이)
      * @return mixed
      */
@@ -503,8 +462,7 @@ class Home extends \app\controllers\FrontController
             ]
         ];
 
-        $data = $this->dDayFModel->getDDays($arr_condition);
-        return $data;
+        return $this->dDayFModel->getDDays($arr_condition);
     }
 
     /**

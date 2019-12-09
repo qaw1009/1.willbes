@@ -49,7 +49,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_02.jpg" title="윌비스 신광은 경찰팀">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_02s.jpg" usemap="#Map1470a" border="0" id="to_go" />
             <map name="Map1470a" id="Map1470a">
-                <area shape="rect" coords="164,523,554,665" href="javascript:alert('Coming Soon!');" />
+                <area shape="rect" coords="164,523,554,665" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" alt="온라인 pass 신청하기" />
                 <area shape="rect" coords="562,522,933,667" href="javascript:alert('Coming Soon!');" />
             </map>          
         </div>

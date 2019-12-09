@@ -109,17 +109,12 @@
                                 <tr>
                                     <th>* 참여일</th>
                                     <td>
-                                        <ul>
-                                            {{--
+                                        <ul>                                       
                                             <input type="hidden" name="register_data1" value=""/>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus1" value="12.7(토) 프리미엄 올.공.반 설명회 1차" /> <label for="campus1">12.7(토) 프리미엄 올.공.반 설명회 1차</label></li>
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus1" value="12.7(토) 프리미엄 올.공.반 설명회 1차" disabled /> <label for="campus1">12.7(토) 프리미엄 올.공.반 설명회 1차</label></li>
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus2" value="12.14(토) 프리미엄 올.공.반 설명회 2차" /> <label for="campus2">12.14(토) 프리미엄 올.공.반 설명회 2차</label></li>
                                             <li><input type="checkbox" name="register_data1_tmp[]" id="campus3" value="12.21(토)2020 경찰합격전략설명회 1차" /> <label for="campus3">12.21(토)2020 경찰합격전략설명회 1차</label></li>
-                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus4" value="12.28(토)2020 경찰합격전략설명회 2차" /> <label for="campus3">12.28(토)2020 경찰합격전략설명회 2차</label></li>
-                                            --}}
-                                            @foreach($arr_base['register_list'] as $key => $val)
-                                                <li><input type="checkbox" name="register_data1_tmp[]" id="campus{{$val['ErIdx']}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$val['ErIdx']}}">{{$val['Name']}}</label></li>
-                                            @endforeach
+                                            <li><input type="checkbox" name="register_data1_tmp[]" id="campus4" value="12.28(토)2020 경찰합격전략설명회 2차" /> <label for="campus3">12.28(토)2020 경찰합격전략설명회 2차</label></li>                            
                                         </ul>
                                     </td>
                                 </tr>

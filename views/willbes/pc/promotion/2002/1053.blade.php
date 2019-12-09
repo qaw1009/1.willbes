@@ -266,9 +266,9 @@
                 <div id="tab02s" class="white">
                     <img src="https://static.willbes.net/public/images/promotion/2019/12/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
                     <map name="Map1053tab2" id="Map1053tab2">
-                        <area shape="rect" coords="224,2943,490,3014" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
-                        <area shape="rect" coords="230,3065,489,3134" href="https://police.local.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
-                    </map>            
+                        <area shape="rect" coords="226,4529,468,4576" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
+                        <area shape="rect" coords="227,4651,467,4700" href="https://police.local.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
+                    </map>             
                 </div>
                 <div id="tab03s" class="white">
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab3_con.jpg" />            

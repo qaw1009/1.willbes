@@ -104,7 +104,7 @@
             <ul>
                 <li>
                     <div>자료해석 <strong>석치수</strong></div>
-                    <iframe src="https://www.youtube.com/embed/22RNa1MeyXs?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/XYzLnKOQ1SY" frameborder="0" allowfullscreen></iframe>
                     <div>최신 기출경향 분석을 통한 전략적인 공부방법론</div>
                     <span class="btn_area">
                     <a href="https://pass.willbes.net/lecture/show/cate/3020/pattern/free/prod-code/158460" target="_blank" class="btn">자세히보기</a>

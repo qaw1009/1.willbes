@@ -110,15 +110,17 @@
         .skybanner {
             position:fixed; 
             top:200px; 
-            right:0;
+            right:10px;
             width:128px;
             z-index:10;            
-        }       
+        }   
+        .skybanner a {margin-bottom:10px; display:block}    
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
+    <div class="evtContent NGR" id="evtContainer">
         <div class="skybanner"> 
             <a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_sky.jpg"  alt=""  /></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1053" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_sky02.jpg"  alt=""  /></a>
         </div>
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">

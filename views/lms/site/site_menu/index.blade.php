@@ -53,10 +53,10 @@
                         <th>메뉴구분</th>
                         <th>메뉴경로 (하위메뉴 등록)</th>
                         <th style="width: 220px;">메뉴명 (메뉴 수정)</th>
-                        <th>URL</th>
+                        <th style="width: 340px;">URL</th>
                         <th>사용여부</th>
                         <th>등록자</th>
-                        <th>등록일</th>
+                        <th style="width: 120px;">등록일</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -93,7 +93,7 @@
                 rowsGroup: ['.rowspan'],
                 columns: [
                     {'data' : 'SiteName', 'render' : function(data, type, row, meta) {
-                        return data + '[<span class="blue">' + row.SiteCode + '</span>]';
+                        return data + '<br/>[<span class="blue">' + row.SiteCode + '</span>]';
                     }},
                     {'data' : 'OrderNum', 'render' : function(data, type, row, meta) {
                         return '<input type="text" name="order_num" class="form-control input-sm" value="' + data + '" data-origin-order-num="' + data + '" data-idx="' + row.MenuIdx + '" style="width: 80px;" />';
@@ -114,7 +114,9 @@
 
                         return icon + ' <a href="#none" class="btn-modify" data-idx="' + row.MenuIdx + '"><u>' + data + '</u></a>';
                     }},
-                    {'data' : 'MenuUrl'},
+                    {'data' : 'MenuUrl', 'render' : function(data, type, row, meta) {
+                        return '<span style="word-break: break-all;">' + data + '</span>';
+                    }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return data === 'Y' ? '사용' : '<span class="red">미사용</span>';
                     }},

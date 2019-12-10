@@ -675,6 +675,13 @@ class Pass extends \app\controllers\FrontController
             'IsUse' => 'Y'
         ]]);
 
+        // 앱 등록수
+        $data['app_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'DeviceType' => 'A',
+            'IsUse' => 'Y'
+        ]]);
+
         // 총 초기화 횟수
         $data['reset_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
             'MemIdx' => $this->session->userdata('mem_idx'),

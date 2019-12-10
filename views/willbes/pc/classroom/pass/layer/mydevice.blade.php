@@ -24,7 +24,7 @@
                 <li>
                     <dl>
                         <dt class="w-tit">기기등록현황</dt>
-                        <dt>PC {{$data['pc_cnt']}}대 + 모바일 {{$data['mobile_cnt']}}대</dt>
+                        <dt>PC {{$data['pc_cnt']}}대 + 모바일 {{$data['mobile_cnt'] + $data['app_cnt']}}대</dt>
                     </dl>
                 </li>
                 <li>

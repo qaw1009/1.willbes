@@ -54,10 +54,7 @@
                 </map>
             </div>
 
-            <div class="evtCtnsBox evt00">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">
-            </div>
-
+            
             <div class="evtCtnsBox time NGEB" id="newTopDday">
                 <div>
                     <table>
@@ -80,6 +77,10 @@
                 </div>
             </div>
             <!-- 타이머 //-->
+
+            <div class="evtCtnsBox evt00">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">
+            </div>
             
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1473_top.jpg" title="올공반 올케어">

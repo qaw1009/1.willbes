@@ -107,7 +107,7 @@
                     <iframe src="https://www.youtube.com/embed/XYzLnKOQ1SY" frameborder="0" allowfullscreen></iframe>
                     <div>최신 기출경향 분석을 통한 전략적인 공부방법론</div>
                     <span class="btn_area">
-                    <a href="https://pass.willbes.net/lecture/show/cate/3020/pattern/free/prod-code/158460" target="_blank" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158460" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
@@ -115,7 +115,7 @@
                     <iframe src="https://www.youtube.com/embed/22RNa1MeyXs?rel=0" frameborder="0" allowfullscreen></iframe>
                     <div>기출분석을 통한 합격전략 특강 1편</div>
                     <span class="btn_area">
-                    <a href="https://pass.willbes.net/lecture/show/cate/3020/pattern/free/prod-code/158464" target="_blank" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158464" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
@@ -123,7 +123,7 @@
                     <iframe src="https://www.youtube.com/embed/r3SvikQP5xg?rel=0" frameborder="0" allowfullscreen></iframe>
                     <div>기출분석을 통한 합격전략 특강 2편</div>
                     <span class="btn_area">
-                    <a href="https://pass.willbes.net/lecture/show/cate/3020/pattern/free/prod-code/158465" target="_blank" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158465" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
@@ -131,7 +131,7 @@
                     <iframe src="https://www.youtube.com/embed/QzH3qWwc1rY?rel=0" frameborder="0" allowfullscreen></iframe>
                     <div>기출분석을 통한 합격전략 특강</div>
                     <span class="btn_area">
-                    <a href="https://pass.willbes.net/lecture/show/cate/3020/pattern/free/prod-code/158466" target="_blank" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158466" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
@@ -139,7 +139,7 @@
                     <iframe src="https://www.youtube.com/embed/h75cYnPppU0?rel=0" frameborder="0" allowfullscreen></iframe>
                     <div>기출분석을 통한 합격전략특강</div>
                     <span class="btn_area">
-                    <a href="https://pass.willbes.net/lecture/show/cate/3020/pattern/free/prod-code/158467" target="_blank" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158467" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
@@ -147,7 +147,7 @@
                     <iframe src="https://www.youtube.com/embed/z6aTOI2hCsc?rel=0" frameborder="0" allowfullscreen></iframe>
                     <div>기출분석을 통한 합격전략특강</div>
                     <span class="btn_area">
-                    <a href="https://pass.willbes.net/lecture/show/cate/3020/pattern/free/prod-code/158468" target="_blank" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158468" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
             </ul>

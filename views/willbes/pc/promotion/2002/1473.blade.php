@@ -42,8 +42,7 @@
 
         .evt01 {background:#fef1e0;}       
 
-        .evt03 {background:#161615;}
-  
+        .evt03 {background:#161615;}  
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -55,10 +54,7 @@
                 </map>
             </div>
 
-            <div class="evtCtnsBox evt00">
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">
-            </div>
-
+            
             <div class="evtCtnsBox time NGEB" id="newTopDday">
                 <div>
                     <table>
@@ -81,6 +77,10 @@
                 </div>
             </div>
             <!-- 타이머 //-->
+
+            <div class="evtCtnsBox evt00">
+                <img src="https://static.willbes.net/public/images/promotion/2019/10/1443_00.jpg" title="신광은 경찰팀">
+            </div>
             
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1473_top.jpg" title="올공반 올케어">
@@ -97,7 +97,7 @@
             <div class="evtCtnsBox evt03" id="to_go">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1473_03.jpg" usemap="#Map1473a" title="올공반 올케어 지금 바로 신청하기" border="0">
                 <map name="Map1473a" id="Map1473a">
-                    <area shape="rect" coords="378,1002,744,1113" href="https://police.willbes.net/pass/offPackage/index/type/agong?cate_code=3010&campus_ccd=605001&course_idx=1094" target="_blank" alt="지금 바로 신청하기" />
+                    <area shape="rect" coords="370,1485,746,1593" href="https://police.willbes.net/pass/offPackage/index/type/agong?cate_code=3010&campus_ccd=605001&course_idx=1094" target="_blank" alt="지금 바로 신청하기" />
                 </map>                   
             </div>          
 

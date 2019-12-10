@@ -328,6 +328,8 @@
                 <li><a href="{{ site_url('/home/html/guide_3095_01') }}" target="_blank"> 수험정보 > 국립외교원 > 선발예정인원 및 과목</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3095_02') }}" target="_blank"> 수험정보 > 국립외교원 > 시험일정 및 응시자격</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3095_03') }}" target="_blank"> 수험정보 > 국립외교원 > 연간학습계획</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3095_02') }}" target="_blank"> 수험정보 > PSAT > 시험일정 및 응시자격</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3095_03') }}" target="_blank"> 수험정보 > PSAT > 연간학습계획</a></li>
                 <li class="c_both"></li> 
                 <li><a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담</a></li>

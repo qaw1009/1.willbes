@@ -31,7 +31,7 @@
         .evt02 .evt02_02 span:nth-child(4) {top:305px}
         .evt02 .evt02_02 span:nth-child(5) {top:354px}
         .evt02 .evt02_02 span:nth-child(6) {top:403px}
-        .evt02 .evt02_02 span:last-child {top:243px}
+        .evt02 .evt02_02 span:last-child {top:240px}
         .evt02 .evt02_02 span a {display:block; text-align:center; color:#010100; background:#ffff01; font-size:14px; font-weight:600; border:1px solid #010100;}
         .evt02 .evt02_02 span a:hover {color:#fff; background:#000}
         .evt02 .evt02_02 span a.end {color:#fff; background:#86aee8; border:1px solid #86aee8;}
@@ -72,7 +72,9 @@
         <div class="evtCtnsBox evt02">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/12/1472_02.jpg" title="신청 및 출발안내"></div>
             <div class="evt02_02" id="event" >
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1472_04.jpg" usemap="#Map" title="입교버스 지역별 신청" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1472_04.jpg" usemap="#Map1472y" title="입교버스 지역별 신청" border="0">
+                <map name="Map1472y" id="Map1472y">
+                    <area shape="rect" coords="495,484,593,515" href="https://police.willbes.net/pass/campus/show/code/605003" target="_blank" alt="부산캠퍼스" />
                 @foreach($arr_base['register_member_list'] as $key => $val)
                     <span>
                         @if($val['RegisterExpireStatus'] == 'Y')

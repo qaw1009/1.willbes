@@ -20,12 +20,7 @@
 
         /************************************************************/
 
-        .skybanner {
-            position:fixed;
-            top:250px;
-            right:10px;
-            z-index:1;
-        }
+        .skyBanner {position:fixed; top:200px;right:0;z-index:10;}
 
         .wb_pop2 {background:url(https://static.willbes.net/public/images/promotion/2019/12/1009_top_01_bg.jpg) no-repeat center top}
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}        
@@ -154,12 +149,13 @@
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        {{--
-        <div class="skybanner" >
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1287" target="_blank"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_skybanner.png" alt="스카이스크래퍼" ></a>
-        </div>
-        --}}
-
+        <ul class="skyBanner">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_sky.png" usemap="#Map1009sky" title="pass 구매하기" border="0">
+            <map name="Map1009sky" id="Map1009sky">
+                <area shape="rect" coords="1,1,190,155" href="https://police.willbes.net/promotion/index/cate/3002/code/1470#event" target="_blank" />
+                <area shape="rect" coords="1,162,189,312" href="#event" />
+            </map>          
+        </ul>
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">
@@ -247,7 +243,7 @@
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_02.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_02.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="170,982,244,999" href="javascript:go_popup()" alt="4개월" />
 						<area shape="rect" coords="452,980,520,1001" href="javascript:go_popup()" alt="12개월" />

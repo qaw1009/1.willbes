@@ -100,7 +100,7 @@ class KakaoTemplateModel extends WB_Model
 
                 $arr_temp['type'] = $decode_data['type'];
                 $arr_temp['type_name'] = $type_name;
-                $arr_temp['name'] = $decode_data['name'];
+                $arr_temp['name'] = empty($decode_data['name']) === false ? $decode_data['name'] : null;
                 $arr_temp['link1'] = $link1;
                 $arr_temp['link2'] = $link2;
 

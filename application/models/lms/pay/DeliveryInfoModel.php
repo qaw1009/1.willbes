@@ -181,7 +181,7 @@ class DeliveryInfoModel extends BaseOrderModel
                 '#{택배사}' => $delivery_comp_name,
                 '#{주소}' => $delivery_address
             ]];
-            $this->smsModel->addKakaoMsg($phone, null, null, null, 'KAT', 'delivery001', $tmpl_val);
+            $this->smsModel->addKakaoMsg($phone, null, null, null, 'KAT', 'delivery003', $tmpl_val);
         }
     }
 }

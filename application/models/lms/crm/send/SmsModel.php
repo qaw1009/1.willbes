@@ -463,8 +463,9 @@ class SmsModel extends WB_Model
                 $send_call_center = $this->config->item('wca_tel');
             }
         }
+        $arr_chat_button = empty($inputData['arr_chat_button']) === false ? $inputData['arr_chat_button'] : null;
 
-        if ($this->sendsms->sendKakao($arr_send_data_phone, $send_msg, $send_call_center, $send_date, $inputData['KakaoMsgType'], $inputData['tmplCd'], $send_idx) !== true) {
+        if ($this->sendsms->sendKakao($arr_send_data_phone, $send_msg, $send_call_center, $send_date, $inputData['KakaoMsgType'], $inputData['tmplCd'], $send_idx, $arr_chat_button) !== true) {
             return false;
         } else {
             return true;
@@ -780,24 +781,22 @@ class SmsModel extends WB_Model
                 case 'KAT' :
                     $tmpl_msg = $arr_send_content_value = null;
 
-                    //알림톡 치환할 변수가 넘어왔을 경우 템플릿 내용 조회
+                    // 템플릿 조회
+                    $tmpl_data = $this->kakaoTemplateModel->findKakaoTemplate(null, $formData['tmpl_cd']);
+                    if(empty($tmpl_data) === true || empty($tmpl_data['Msg']) === true){
+                        throw new \Exception('템플릿코드가 잘못 되었습니다.'); break;
+                    }
+
+                    // 치환할 변수가 넘어왔을 경우
                     if(empty($formData['send_content_value']) === false) {
                         $arr_send_content_value = ( is_array($formData['send_content_value']) === false ? array($formData['send_content_value']) : $formData['send_content_value'] );
-                        $tmpl_data = $this->kakaoTemplateModel->findKakaoTemplate(null, $formData['tmpl_cd']);
-                        if(empty($tmpl_data) === true || empty($tmpl_data['Msg']) === true){
-                            throw new \Exception('템플릿코드가 잘못 되었습니다.'); break;
-                        } else {
-                            $formData['send_content'] = $tmpl_msg = $tmpl_data['Msg'];
-                        }
+                        $formData['send_content'] = $tmpl_msg = $tmpl_data['Msg'];
                     }
 
                     foreach($formData['mem_phone'] as $i => $i_val) {
                         if(empty($i_val) === false){
-
                             if(empty($arr_send_content_value) === false) {
-
                                 $temp_content = $tmpl_msg;
-
                                 foreach($arr_send_content_value as $j => $j_val) {
                                     if(empty($j_val) === false) {
                                         foreach ($j_val as $k => $k_val) {
@@ -838,7 +837,6 @@ class SmsModel extends WB_Model
                     'RegAdminIdx' => $this->session->userdata('admin_idx')
                 ]);
             }
-
             $inputData = array_merge($inputData, [
                 'RegDatm' => date('Y-m-d H:i:s'),
                 'RegIp' => $this->input->ip_address()
@@ -853,7 +851,6 @@ class SmsModel extends WB_Model
                 //발송 로그 저장할 회원정보가 넘어왔을 경우
                 foreach ($formData['arr_log_member_data'] as $key => $val) {
                     $log_member_data = $formData['arr_log_member_data'][$key];
-
                     $log_member_data['SendIdx'] = $send_idx;
                     $log_member_data['MemIdx'] = empty($val['MemIdx']) === false ? $val['MemIdx'] : '0';
                     $log_member_data['Receive_PhoneEnc'] = empty($val['Receive_PhoneEnc']) === false ? $this->getEncString($val['Receive_PhoneEnc']) : '';
@@ -887,6 +884,20 @@ class SmsModel extends WB_Model
                 }
                 $this->dropTempTable($this->_table_temp);
             }
+
+            // 챗버블
+            if(empty($tmpl_data) === false) {
+                $inputData = array_merge($inputData, [
+                    'arr_chat_button' => [
+                        'ChatBubbleButton1' => empty($tmpl_data['ChatBubbleButton1']) === false ? $tmpl_data['ChatBubbleButton1'] : null,
+                        'ChatBubbleButton2' => empty($tmpl_data['ChatBubbleButton2']) === false ? $tmpl_data['ChatBubbleButton2'] : null,
+                        'ChatBubbleButton3' => empty($tmpl_data['ChatBubbleButton3']) === false ? $tmpl_data['ChatBubbleButton3'] : null,
+                        'ChatBubbleButton4' => empty($tmpl_data['ChatBubbleButton4']) === false ? $tmpl_data['ChatBubbleButton4'] : null,
+                        'ChatBubbleButton5' => empty($tmpl_data['ChatBubbleButton5']) === false ? $tmpl_data['ChatBubbleButton5'] : null
+                    ]
+                ]);
+            }
+
             $set_from_phone = empty($formData['from_phone']) === false ? $formData['from_phone'] : null;
             $result = $this->_kakaoSend($inputData, $set_send_data_phone, $set_send_data_msg, $set_from_phone, $send_idx);
             if ($result === false) {

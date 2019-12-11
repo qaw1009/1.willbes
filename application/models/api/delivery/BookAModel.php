@@ -384,7 +384,7 @@ class BookAModel extends WB_Model
                 '#{택배사}' => $delivery_comp_name,
                 '#{주소}' => $delivery_address
             ]];
-            $this->smsModel->addKakaoMsg($phone, null, '1544-4944', null, 'KAT', 'delivery001', $tmpl_val);
+            $this->smsModel->addKakaoMsg($phone, null, '1544-4944', null, 'KAT', 'delivery003', $tmpl_val);
         }
     }
 }

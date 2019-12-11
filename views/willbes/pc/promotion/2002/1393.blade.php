@@ -114,7 +114,7 @@
                 <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1406" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1393_02_bn04.png" alt="패스" /></a></li>
                 <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1471" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1393_02_bn05.png" alt="패스" /></a></li>
                 <li><a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1455" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1393_02_bn06.png" alt="패스" /></a></li>
-            </ul>
+            </ul> 
         </div>
         {{--
         <div class="evtCtnsBox wb_03">

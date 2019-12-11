@@ -310,17 +310,6 @@ class CertApplyModel extends WB_Model
                         }
                     }
 
-                    //if(empty($idx['SmsContent'] == false)) {
-                    //    $smsData = [];
-                    //    $smsData['CsTel'] = $idx['CsTel'];
-                    //    $smsData['SmsContent'] = $idx['SmsContent'];
-                    //    $smsData['Phone'] = $idx['Phone'];
-                    //    $is_sms = $this->addSms($smsData);
-                    //    if ($is_sms !== true) {
-                    //        throw new \Exception('SMS발송 실패입니다.');
-                    //    }
-                    //}
-
                     // 알림톡
                     if(empty($idx['CertTypeCcd']) === false) {
                         switch ($idx['CertTypeCcd']) {
@@ -334,6 +323,18 @@ class CertApplyModel extends WB_Model
                         if(empty($tmpl_cd) === false) {
                             if($this->smsModel->addKakaoMsg($idx['Phone'], null, $idx['CsTel'], null, 'KAT', $tmpl_cd, [['#{회사명}' => '윌비스']]) === false) {
                                 throw new \Exception('SMS 발송에 실패했습니다.');
+                            }
+                        } else {
+                            // 알림톡 템플릿 없을 경우 SMS발송
+                            if(empty($idx['SmsContent'] == false)) {
+                                $smsData = [];
+                                $smsData['CsTel'] = $idx['CsTel'];
+                                $smsData['SmsContent'] = $idx['SmsContent'];
+                                $smsData['Phone'] = $idx['Phone'];
+                                $is_sms = $this->addSms($smsData);
+                                if ($is_sms !== true) {
+                                    throw new \Exception('SMS발송 실패입니다.');
+                                }
                             }
                         }
                     }

@@ -137,15 +137,16 @@ class SmsFModel extends WB_Model
                 case 'KAT' :
                     $tmpl_msg = $arr_send_content_value = null;
 
-                    //알림톡 치환할 변수가 넘어왔을 경우 템플릿 내용 조회
+                    // 템플릿 조회
+                    $tmpl_data = $this->findKakaoTemplate(null, $formData['tmpl_cd']);
+                    if(empty($tmpl_data) === true || empty($tmpl_data['Msg']) === true){
+                        throw new \Exception('템플릿코드가 잘못 되었습니다.'); break;
+                    }
+
+                    // 치환할 변수가 넘어왔을 경우
                     if(empty($formData['send_content_value']) === false) {
                         $arr_send_content_value = ( is_array($formData['send_content_value']) === false ? array($formData['send_content_value']) : $formData['send_content_value'] );
-                        $tmpl_data = $this->findKakaoTemplate(null, $formData['tmpl_cd']);
-                        if(empty($tmpl_data) === true || empty($tmpl_data['Msg']) === true){
-                            throw new \Exception('템플릿코드가 잘못 되었습니다.'); break;
-                        } else {
-                            $formData['send_content'] = $tmpl_msg = $tmpl_data['Msg'];
-                        }
+                        $formData['send_content'] = $tmpl_msg = $tmpl_data['Msg'];
                     }
 
                     foreach($formData['mem_phone'] as $i => $i_val) {
@@ -220,6 +221,19 @@ class SmsFModel extends WB_Model
                 throw new \Exception('상세 정보 등록에 실패했습니다.');
             }
 
+            // 챗버블
+            if(empty($tmpl_data) === false) {
+                $inputData = array_merge($inputData, [
+                    'arr_chat_button' => [
+                        'ChatBubbleButton1' => empty($tmpl_data['ChatBubbleButton1']) === false ? $tmpl_data['ChatBubbleButton1'] : null,
+                        'ChatBubbleButton2' => empty($tmpl_data['ChatBubbleButton2']) === false ? $tmpl_data['ChatBubbleButton2'] : null,
+                        'ChatBubbleButton3' => empty($tmpl_data['ChatBubbleButton3']) === false ? $tmpl_data['ChatBubbleButton3'] : null,
+                        'ChatBubbleButton4' => empty($tmpl_data['ChatBubbleButton4']) === false ? $tmpl_data['ChatBubbleButton4'] : null,
+                        'ChatBubbleButton5' => empty($tmpl_data['ChatBubbleButton5']) === false ? $tmpl_data['ChatBubbleButton5'] : null
+                    ]
+                ]);
+            }
+
             $set_from_phone = empty($formData['from_phone']) === false ? $formData['from_phone'] : null;
             $result = $this->_kakaoSend($inputData, $set_send_data_phone, $set_send_data_msg, $set_from_phone, $send_idx);
             if ($result === false) {
@@ -259,8 +273,9 @@ class SmsFModel extends WB_Model
                 $send_call_center = $this->config->item('wca_tel');
             }
         }
+        $arr_chat_button = empty($inputData['arr_chat_button']) === false ? $inputData['arr_chat_button'] : null;
 
-        if ($this->sendsms->sendKakao($arr_send_data_phone, $send_msg, $send_call_center, $send_date, $inputData['KakaoMsgType'], $inputData['tmplCd'], $send_idx) !== true) {
+        if ($this->sendsms->sendKakao($arr_send_data_phone, $send_msg, $send_call_center, $send_date, $inputData['KakaoMsgType'], $inputData['tmplCd'], $send_idx, $arr_chat_button) !== true) {
             return false;
         } else {
             return true;

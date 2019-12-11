@@ -229,7 +229,7 @@ class CertApplyModel extends WB_Model
                 ,A.CertTypeCcd,A.CertConditionCcd,A.SiteCode
                 ,F.MemId,F.MemName, concat(F.Phone1, fn_dec(F.Phone2Enc), F.Phone3) as Phone
                 ,G.SiteName, G.CsTel
-                ,H.CcdDesc As SmsContent
+                ,H.CcdDesc As SmsContent, H.CcdEtc AS tmpl_cd
                 ,J.couponData_json ';
             $from = '
                 from
@@ -312,13 +312,14 @@ class CertApplyModel extends WB_Model
 
                     // 알림톡
                     if(empty($idx['CertTypeCcd']) === false) {
-                        switch ($idx['CertTypeCcd']) {
-                            case '684001' : $tmpl_cd = 'cert002'; break;  //경찰승진인증: 인증이 완료되었습니다. 인증 페이지에서 상품을 구매해 주세요.
-                            case '684002' : $tmpl_cd = 'cert003'; break;  //제대군인인증: 인증이 완료되었습니다. 신청하신 상품을 구매해 주세요.
-                            case '684003' : $tmpl_cd = 'cert004'; break;  //경찰MOU인증: 인증이 완료되었습니다. 내강의실에서 쿠폰을 확인해 주세요.
-                            case '684004' : $tmpl_cd = 'cert004'; break;  //환승인증: 인증이 완료되었습니다. 내강의실에서 쿠폰을 확인해 주세요.
-                            default: $tmpl_cd = null; break;
-                        }
+//                        switch ($idx['CertTypeCcd']) {
+//                            case '684001' : $tmpl_cd = 'cert002'; break;  //경찰승진인증: 인증이 완료되었습니다. 인증 페이지에서 상품을 구매해 주세요.
+//                            case '684002' : $tmpl_cd = 'cert003'; break;  //제대군인인증: 인증이 완료되었습니다. 신청하신 상품을 구매해 주세요.
+//                            case '684003' : $tmpl_cd = 'cert004'; break;  //경찰MOU인증: 인증이 완료되었습니다. 내강의실에서 쿠폰을 확인해 주세요.
+//                            case '684004' : $tmpl_cd = 'cert004'; break;  //환승인증: 인증이 완료되었습니다. 내강의실에서 쿠폰을 확인해 주세요.
+//                            default: $tmpl_cd = null; break;
+//                        }
+                        $tmpl_cd = $idx['tmpl_cd'];
 
                         if(empty($tmpl_cd) === false) {
                             if($this->smsModel->addKakaoMsg($idx['Phone'], null, $idx['CsTel'], null, 'KAT', $tmpl_cd, [['#{회사명}' => '윌비스']]) === false) {

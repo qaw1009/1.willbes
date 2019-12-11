@@ -39,7 +39,10 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_01.jpg" title="문제풀이 1단계">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_01.jpg" usemap="#Map1474z" title="문제풀이 1단계" border="0">
+            <map name="Map1474z" id="Map1474z">
+                <area shape="rect" coords="337,1169,781,1253" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043#none" target="_blank" alt="문제풀이 1단계 신청하기" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt02">

@@ -11617,7 +11617,9 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /*게시판 내 링크 버튼*/
-.btn-Board-Link { padding:15px 20px !important; color:#fff !important; background:#1a8ccc !important; border-radius: 40px; font-size:16px !important; font-weight:600 !important;}
+.btn-Board-Link {padding:15px 20px !important; color:#fff !important; background:#1a8ccc !important; border-radius: 40px; font-size:16px !important; font-weight:600 !important; border:1px solid #1a8ccc;
+    font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}
+.btn-Board-Link:hover {background:#fff !important; color:#1a8ccc !important;}
 
 /*수험안내*/
 .w-Guide {color:#666; line-height: 1.5; font-size:12px; font-weight: normal; letter-spacing: normal;}

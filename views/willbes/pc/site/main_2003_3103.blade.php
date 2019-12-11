@@ -12,6 +12,7 @@
             text-align:center;
         }
 
+        .skyBanner {position:fixed; width:162px; top:200px; right:50px; z-index:10;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/12/3103_top_bg.jpg) no-repeat center top; margin-top:20px}
         .evt01 {background:#1c3647;}
         .evt01 .tabBox {position:relative; width:1120px; margin:0 auto}
@@ -65,6 +66,12 @@
     <div id="Container" class="Container gosi NGR c_both">
         <div class="Menu widthAuto NGR c_both">
                 @include('willbes.pc.layouts.partial.site_menu')
+        </div>
+
+        <div class="skyBanner">       
+            <a href="https://pass.willbes.net/support/notice/show/cate/3103?board_idx=245818" target="_blank" alt="지금 바로 확인하기">           
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_sky.png" />   
+            </a>        
         </div>
 
         <div class="evtTop">

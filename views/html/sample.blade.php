@@ -331,6 +331,12 @@
                 <li><a href="{{ site_url('/home/html/guide_3095_02') }}" target="_blank"> 수험정보 > PSAT > 시험일정 및 응시자격</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3095_03') }}" target="_blank"> 수험정보 > PSAT > 연간학습계획</a></li>
                 <li class="c_both"></li> 
+                <li><a href="{{ site_url('/home/html/guide_309002_01') }}" target="_blank"> 시험안내 > 공인노무사 > 시험안내</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309002_02') }}" target="_blank"> 시험안내 > 공인노무사 > 과목별 공부방법론</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309002_03') }}" target="_blank"> 시험안내 > 공인노무사 > 입문가이드</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309002_04') }}" target="_blank"> 시험안내 > 공인노무사 > 맞춤형가이드</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309003_01') }}" target="_blank"> 시험안내 > 감정평가사 > 시험안내</a></li>
+                <li class="c_both"></li> 
                 <li><a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel3_1') }}" target="_blank">상담실 > 심층상담예약 > 상담일자</a></li>

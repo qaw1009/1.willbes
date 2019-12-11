@@ -125,9 +125,10 @@ class SendSms
      * @param $kakao_msg_type [카카오톡 메세지 타입: KFT(친구톡), KAT(알림톡)]
      * @param $tmpl_cd [알림톡 템플릿 코드]
      * @param $send_idx [lms_crm_send.SendIdx]
+     * @param $arr_chat_button
      * @return array|bool
      */
-    public function sendKakao($send_phone, $send_msg, $send_call_center, $send_date = null, $kakao_msg_type = 'KFT', $tmpl_cd = null, $send_idx = null)
+    public function sendKakao($send_phone, $send_msg, $send_call_center, $send_date = null, $kakao_msg_type = 'KFT', $tmpl_cd = null, $send_idx = null, $arr_chat_button = null)
     {
         try {
             $result = 0;
@@ -136,7 +137,7 @@ class SendSms
                 throw new \Exception('필수 데이터 누락.');
             }
 
-            list($table, $data) = $this->_setSendKakaoData($send_phone, $send_msg, $send_call_center, $send_date, $kakao_msg_type, $tmpl_cd, $send_idx);
+            list($table, $data) = $this->_setSendKakaoData($send_phone, $send_msg, $send_call_center, $send_date, $kakao_msg_type, $tmpl_cd, $send_idx, $arr_chat_button);
             if($data) $result = $this->_db->insert_batch($table, $data);
             if ($result <= 0) {
                 throw new \Exception('발송 실패');
@@ -156,10 +157,11 @@ class SendSms
      * @param $kakao_msg_type [카카오톡 메세지 타입: KFT(친구톡), KAT(알림톡)]
      * @param $tmpl_cd [알림톡 템플릿 코드]
      * @param $send_idx [lms_crm_send.SendIdx]
+     * @param $arr_chat_button
      * @return array
      * @throws Exception
      */
-    private function _setSendKakaoData($send_phone, $send_msg, $send_call_center, $send_date, $kakao_msg_type, $tmpl_cd = null, $send_idx = null)
+    private function _setSendKakaoData($send_phone, $send_msg, $send_call_center, $send_date, $kakao_msg_type, $tmpl_cd = null, $send_idx = null, $arr_chat_button = array())
     {
         $this_table = $resend = $sms_msg = $etc2 = '';
         $data = [];
@@ -199,11 +201,11 @@ class SendSms
                 'TMPL_CD' => $tmpl_cd,
                 'MSG' => $set_send_msg[$key],
                 'SMS_MSG' => $sms_msg,
-                'CHAT_BUBBLE_BUTTON1' => null,
-                'CHAT_BUBBLE_BUTTON2' => null,
-                'CHAT_BUBBLE_BUTTON3' => null,
-                'CHAT_BUBBLE_BUTTON4' => null,
-                'CHAT_BUBBLE_BUTTON5' => null,
+                'CHAT_BUBBLE_BUTTON1' => $arr_chat_button['ChatBubbleButton1'],
+                'CHAT_BUBBLE_BUTTON2' => $arr_chat_button['ChatBubbleButton2'],
+                'CHAT_BUBBLE_BUTTON3' => $arr_chat_button['ChatBubbleButton3'],
+                'CHAT_BUBBLE_BUTTON4' => $arr_chat_button['ChatBubbleButton4'],
+                'CHAT_BUBBLE_BUTTON5' => $arr_chat_button['ChatBubbleButton5'],
                 'IMAGE_URL' => null,
                 'IMAGE_LINK' => null,
                 'PHONE' => $val,

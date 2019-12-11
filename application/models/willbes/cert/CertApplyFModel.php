@@ -22,7 +22,7 @@ class CertApplyFModel extends WB_Model
 
         $column = 'A.*
                         ,B.CateName
-                        ,C.CcdName as CertTypeCcd_Name, C.CcdDesc as Sms_Content
+                        ,C.CcdName as CertTypeCcd_Name, C.CcdDesc as Sms_Content, C.CcdEtc AS tmpl_cd
                         ,D.CcdName as CertConditionCcd_Name
                         ,E.SiteName,E.CsTel
                         ,G.productData,G.productData_json
@@ -197,11 +197,31 @@ class CertApplyFModel extends WB_Model
             }
 
             //if($certtypeccd === '684002' && empty($cert_data['Sms_Content']===false && empty($cert_data['CsTel'])) ) {    //제대군인인증일 경우 자동 승인 처리로 인한 문자 발송 : 꿀팁은 제외
-            if($cert_data['IsAutoSms'] === 'Y' && empty($cert_data['Sms_Content']===false && empty($cert_data['CsTel'])) ) { // 문자발송
+            if($cert_data['IsAutoSms'] === 'Y' && empty($cert_data['CsTel']) === false ) { // 문자발송
                 if (empty($this->session->userdata('mem_phone')) === false) {
-                    /*sms 발송 모듈*/
-                    if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], $cert_data['CsTel'], null, 'KFT') === false) {
-                        throw new \Exception('인증 신청(SMS)에 실패했습니다.');
+                    // 알림톡
+                    if(empty($certtypeccd) === false) {
+//                        switch ($certtypeccd) {
+//                            case '684001' : $tmpl_cd = 'cert002'; break;  //경찰승진인증: 인증이 완료되었습니다. 인증 페이지에서 상품을 구매해 주세요.
+//                            case '684002' : $tmpl_cd = 'cert003'; break;  //제대군인인증: 인증이 완료되었습니다. 신청하신 상품을 구매해 주세요.
+//                            case '684003' : $tmpl_cd = 'cert004'; break;  //경찰MOU인증: 인증이 완료되었습니다. 내강의실에서 쿠폰을 확인해 주세요.
+//                            case '684004' : $tmpl_cd = 'cert004'; break;  //환승인증: 인증이 완료되었습니다. 내강의실에서 쿠폰을 확인해 주세요.
+//                            default: $tmpl_cd = null; break;
+//                        }
+                        $tmpl_cd = $cert_data['tmpl_cd'];
+
+                        if(empty($tmpl_cd) === false) {
+                            if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone'), null, $cert_data['CsTel'], null, 'KAT', $tmpl_cd, [['#{회사명}' => '윌비스']]) === false) {
+                                throw new \Exception('SMS 발송에 실패했습니다.');
+                            }
+                        } else {
+                            // 알림톡 템플릿 없을 경우 SMS발송
+                            if(empty($cert_data['Sms_Content']) === false) {
+                                if($this->smsFModel->addKakaoMsg($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], $cert_data['CsTel'], null, 'KFT') === false) {
+                                    throw new \Exception('인증 신청(SMS)에 실패했습니다.');
+                                }
+                            }
+                        }
                     }
                 }
             }

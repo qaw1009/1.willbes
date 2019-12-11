@@ -37,13 +37,13 @@ class Order extends \app\controllers\FrontController
             show_alert($results, 'back');
         }
 
-        // 상품코드 추출
-        $arr_prod_code = array_pluck($results['list'], 'ProdCode');
+        // 장바구니식별자 추출
+        $arr_cart_idx = array_pluck($results['list'], 'CartIdx');
 
         // 온라인강좌일 경우 자동지급 사은품 조회
         $results['freebie'] = [];
-        if ($cart_type == 'on_lecture' && empty($arr_prod_code) === false) {
-            $results['freebie'] = $this->productFModel->findProductFreebie($arr_prod_code);
+        if ($cart_type == 'on_lecture' && empty($arr_cart_idx) === false) {
+            $results['freebie'] = $this->cartFModel->getProductFreebieByCartIdx($arr_cart_idx, $sess_mem_idx, $this->_site_code);
         }
 
         // 지역번호, 휴대폰번호, 결제수단 공통코드 조회

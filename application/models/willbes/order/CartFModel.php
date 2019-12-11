@@ -670,4 +670,33 @@ class CartFModel extends BaseOrderFModel
 
         return $is_data_return === true ? $data : true;
     }
+
+    /**
+     * 장바구니 상품에 포함된 사은품 조회
+     * @param array $arr_cart_idx
+     * @param int $mem_idx
+     * @param int $site_code
+     * @return mixed
+     */
+    public function getProductFreebieByCartIdx($arr_cart_idx, $mem_idx, $site_code)
+    {
+        $column = 'P.ProdCode, P.ProdName';
+        $from = '
+            from ' . $this->_table['cart'] . ' as CA
+                inner join ' . $this->_table['product_r_product'] . ' as PP
+                    on CA.ProdCode = PP.ProdCode
+                inner join ' . $this->_table['product'] . ' as P
+                    on PP.ProdCodeSub = P.ProdCode and PP.ProdTypeCcd = P.ProdTypeCcd
+            where CA.CartIdx in ?
+                and CA.MemIdx = ?	
+                and CA.SiteCode = ?
+                and PP.ProdTypeCcd = "' . $this->_prod_type_ccd['freebie'] . '"
+	            and PP.IsStatus = "Y" and P.IsStatus = "Y"           
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$arr_cart_idx, $mem_idx, $site_code]);
+
+        return $query->result_array();
+    }
 }

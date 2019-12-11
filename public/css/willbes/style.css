@@ -11637,7 +11637,7 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .w-Guide h4:before  {    
     position: absolute;
-    top: 8px;
+    top: 9px;
     left: 0;
     background: #2b2e78 none repeat scroll 0 0; 
     border-radius: 5px;
@@ -11646,6 +11646,7 @@ table.acadlecInfoPackageTable tr.Top td {
     height: 10px;
     width: 10px;      
 }
+.w-Guide h4 span {color:#ba560e}
 .w-Guide h5 {
     font-size:15px; color:#333;    
     margin-bottom:10px;
@@ -11662,9 +11663,21 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-Guide ul.st01 li:last-child {margin-bottom:0}
 .guideTab {margin:0; padding:0; margin-bottom:20px; border-bottom:2px solid #22252a}
 .guideTab li {display: inline; float:left; width:50%; padding:0; margin:0; list-style: none;}
+.guideTab.guideTab3ea li {width:33.333333%;}
+.guideTab.guideTab4ea li {width:25%;}
+.guideTab.guideTab5ea li {width:20%;}
+.guideTab.guideTab6ea li {width:16.666666%;}
 .guideTab li a {display:block; text-align:center; padding:14px 0; background:#e4e4e4; color:#22252a; margin-right:1px; font-size:18px; font-weight: bold; border:0; line-height: 1.5; height: auto;}
 .guideTab li a.on,
 .guideTab li a:hover {background:#22252a; color:#fff;line-height: 1.5; height: auto;}
 .guideTab li:last-child a {margin:0} 
 .guideTab:after {content:""; display: block; clear:both}
 .w-Guide .boxSt01 {border:1px solid #edeeef; padding:30px; background:#f4f9ff; margin:10px 0}
+.guideTabsm {margin:0; padding:0; margin-bottom:20px;}
+.guideTabsm li {display: inline; float:left; width:50%; padding:0; margin:0; list-style: none;}
+.guideTabsm li a {display:block; text-align:center; padding:10px 0; color:#999; font-size:16px; font-weight: bold; border:0; line-height: 1.5; height: auto; border-bottom:1px solid #ccc}
+.guideTabsm li a.on,
+.guideTabsm li a:hover {color:#2b2e78; line-height: 1.5; height: auto; border-bottom:3px solid #2b2e78}
+.guideTabsm.guideTabsm3ea li {width:33.333333%;}
+.guideTabsm:after {content:""; display: block; clear:both}
+

@@ -12,7 +12,7 @@
             text-align:center;
         }
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/12/3102_top_bg.jpg) no-repeat center top; margin-top:20px}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/12/3103_top_bg.jpg) no-repeat center top; margin-top:20px}
         .evt01 {background:#1c3647;}
         .evt01 .tabBox {position:relative; width:1120px; margin:0 auto}
         .evt01 .tab li {display:inline; float:left; width:33.333333%}
@@ -21,11 +21,14 @@
         .evt01 .tab li a.active {background:#ffb400; color:#313131;}
         .evt01 .tab li:last-child a {margin:0}
         .evt01 .tab:after {content:""; display:block; clear:both}
+        .evt01s{background:#1f8f3f;}
 
         .evt02 {background:#313131;}
         .evt02 ul {width:1120px; margin:0 auto}
         .evt02 li {display:inline; float:left; width:33.333333%; text-align:center; margin-bottom:30px; font-size:14px;}
+        .evt02 li .gif_area img{width:348px; height:220px; margin:0 auto}
         .evt02 li iframe {width:348px; height:220px; margin:0 auto}
+        
         .evt02 li div {height:30px; line-height:30px;color:#d0d0d0;}
         .evt02 li div:first-child {font-size:16px; line-height:40px; height:40px;}
         .evt02 ul:after {content:""; display:block; clear:both}
@@ -65,10 +68,11 @@
         </div>
 
         <div class="evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_top.jpg" usemap="#Map3102A" border="0" />
-            <map name="Map3102A" id="Map3102A">
-                <area shape="rect" coords="254,2167,840,2257" href="javascript:go_popup()" alt="자세히보기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_top.jpg" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_top_btn.gif" usemap="#Map3103A" border="0" />
+            <map name="Map3103A" id="Map3103A">
+                <area shape="rect" coords="146,2,943,101" href="javascript:go_popup()" alt="자세히보기" />
+            </map>          
         </div>
 
         {{--레이어팝업--}}
@@ -95,7 +99,9 @@
                     <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_01_03.jpg" alt="">
                 </div>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/3102_01_bottom.jpg" alt="">
+        </div>
+        <div class="evt01s">    
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_01_bottom.jpg" alt="">
         </div>
 
         <div class="evt02">
@@ -104,7 +110,11 @@
             <ul>
                 <li>
                     <div>자료해석 <strong>석치수</strong></div>
-                    <iframe src="https://www.youtube.com/embed/XYzLnKOQ1SY" frameborder="0" allowfullscreen></iframe>
+                    <span class="gif_area">
+                        <a href="https://www.youtube.com/watch?v=XYzLnKOQ1SY&feature=youtu.be" target="_blank" >
+                            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_1.gif"> 
+                        </a>
+                    </span>
                     <div>최신 기출경향 분석을 통한 전략적인 공부방법론</div>
                     <span class="btn_area">
                     <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158460" target="_blank" class="btn">자세히보기</a>
@@ -112,7 +122,11 @@
                 </li>
                 <li>
                     <div>자료해석 <strong>석치수</strong></div>
-                    <iframe src="https://www.youtube.com/embed/22RNa1MeyXs?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <span class="gif_area">
+                        <a href="https://youtu.be/22RNa1MeyXs" target="_blank" >
+                            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_2.gif"> 
+                        </a>
+                    </span>
                     <div>기출분석을 통한 합격전략 특강 1편</div>
                     <span class="btn_area">
                     <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158464" target="_blank" class="btn">자세히보기</a>
@@ -120,7 +134,11 @@
                 </li>
                 <li>
                     <div>자료해석 <strong>석치수</strong></div>
-                    <iframe src="https://www.youtube.com/embed/r3SvikQP5xg?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <span class="gif_area">
+                        <a href="https://youtu.be/r3SvikQP5xg" target="_blank" >
+                            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_3.gif"> 
+                        </a>
+                    </span>
                     <div>기출분석을 통한 합격전략 특강 2편</div>
                     <span class="btn_area">
                     <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158465" target="_blank" class="btn">자세히보기</a>
@@ -128,7 +146,11 @@
                 </li>
                 <li>
                     <div>상황판단 <strong>박준범</strong></div>
-                    <iframe src="https://www.youtube.com/embed/QzH3qWwc1rY?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <span class="gif_area">
+                        <a href="https://youtu.be/QzH3qWwc1rY" target="_blank" >
+                            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_4.gif"> 
+                        </a>
+                    </span>
                     <div>기출분석을 통한 합격전략 특강</div>
                     <span class="btn_area">
                     <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158466" target="_blank" class="btn">자세히보기</a>
@@ -136,7 +158,11 @@
                 </li>
                 <li>
                     <div>언어논리 <strong>이나우</strong></div>
-                    <iframe src="https://www.youtube.com/embed/h75cYnPppU0?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <span class="gif_area">
+                        <a href="https://youtu.be/h75cYnPppU0" target="_blank" >
+                            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_5.gif"> 
+                        </a>
+                    </span>
                     <div>기출분석을 통한 합격전략특강</div>
                     <span class="btn_area">
                     <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158467" target="_blank" class="btn">자세히보기</a>
@@ -144,7 +170,11 @@
                 </li>
                 <li>
                     <div>언어논리 <strong>한승아</strong></div>
-                    <iframe src="https://www.youtube.com/embed/z6aTOI2hCsc?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <span class="gif_area">
+                        <a href="https://youtu.be/z6aTOI2hCsc" target="_blank" >
+                            <img src="https://static.willbes.net/public/images/promotion/2019/12/3103_6.gif"> 
+                        </a>
+                    </span>
                     <div>기출분석을 통한 합격전략특강</div>
                     <span class="btn_area">
                     <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/158468" target="_blank" class="btn">자세히보기</a>

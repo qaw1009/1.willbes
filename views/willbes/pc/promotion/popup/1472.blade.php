@@ -95,6 +95,7 @@
                                 <input type="radio" name="etcValue3" value="일반남자" id="etcValue3_1"/> <label for="etcValue3_1">일반남자</label>
                                 <input type="radio" name="etcValue3" value="일반여자" id="etcValue3_2"/> <label for="etcValue3_2">일반여자</label>
                                 <input type="radio" name="etcValue3" value="경행경채" id="etcValue3_3"/> <label for="etcValue3_3">경행경채</label>
+                                <input type="radio" name="etcValue3" value="101단" id="etcValue3_4"/> <label for="etcValue3_4">101단</label>
                             </td>
                         </tr>
                         <tr>
@@ -213,6 +214,9 @@
                 if (etc_value2 >= 50001 && etc_value2 <= 51000) {
                     return true;
                 }
+                break;
+            case '101단' :
+                return true;
                 break;
             default :
                 return false;

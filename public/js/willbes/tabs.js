@@ -118,3 +118,26 @@ $(function() {
         });
     });
 });
+
+$(function() {
+    $('ul.guideTabsm').each(function () {
+        var $active, $content, $links = $(this).find('a');
+        $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
+        $content = $($active[0].hash);
+        $links.not($active).each(function () {
+            $(this.hash).css({visibility: 'hidden', height: '0', overflow: 'hidden'});
+        });
+
+        $(this).on('click', 'a', function (e) {
+            $active.removeClass('on');
+            $content.hide().css({visibility: 'hidden', height: '0', overflow: 'hidden'});
+
+            $active = $(this);
+            $content = $(this.hash);
+
+            $active.addClass('on');
+            $content.show().css({visibility: 'visible', height: 'auto', overflow: 'visible'});
+            e.preventDefault();
+        });
+    });
+});

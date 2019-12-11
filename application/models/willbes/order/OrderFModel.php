@@ -2114,7 +2114,7 @@ class OrderFModel extends BaseOrderFModel
                     //$sms_msg .= ' 계좌번호 ' . $data['VBankAccountNo'] . ' 금액 : ' . number_format($data['RealPayPrice']);
                     //$sms_msg .= ' (~' . date('n/j', strtotime($data['VBankExpireDatm'])) . ')';
 
-                    $tmpl_cd = 'pay002';  // 템플릿: 무통장입금 정보 안내
+                    $tmpl_cd = 'pay006';  // 템플릿: 무통장입금 정보 안내
                     $tmpl_val = [[
                         '#{회사명}' => '윌비스',
                         '#{신청일}' => $data['OrderDatm'],
@@ -2128,7 +2128,7 @@ class OrderFModel extends BaseOrderFModel
                 } else {
                     //$sms_msg = '[윌비스] ' . $sess_mem_name . '님 결제완료되셨습니다. [주문번호 ' . $order_no . ']';
 
-                    $tmpl_cd = 'pay003';  // 템플릿: 결제완료(배송지 없음)
+                    $tmpl_cd = 'pay005';  // 템플릿: 결제완료(배송지 없음)
                     $tmpl_val = [[
                         '#{회사명}' => '윌비스',
                         '#{결제완료일}' => $data['OrderDatm'],

@@ -310,14 +310,31 @@ class CertApplyModel extends WB_Model
                         }
                     }
 
-                    if(empty($idx['SmsContent'] == false)) {
-                        $smsData = [];
-                        $smsData['CsTel'] = $idx['CsTel'];
-                        $smsData['SmsContent'] = $idx['SmsContent'];
-                        $smsData['Phone'] = $idx['Phone'];
-                        $is_sms = $this->addSms($smsData);
-                        if ($is_sms !== true) {
-                            throw new \Exception('SMS발송 실패입니다.');
+                    //if(empty($idx['SmsContent'] == false)) {
+                    //    $smsData = [];
+                    //    $smsData['CsTel'] = $idx['CsTel'];
+                    //    $smsData['SmsContent'] = $idx['SmsContent'];
+                    //    $smsData['Phone'] = $idx['Phone'];
+                    //    $is_sms = $this->addSms($smsData);
+                    //    if ($is_sms !== true) {
+                    //        throw new \Exception('SMS발송 실패입니다.');
+                    //    }
+                    //}
+
+                    // 알림톡
+                    if(empty($idx['CertTypeCcd']) === false) {
+                        switch ($idx['CertTypeCcd']) {
+                            case '684001' : $tmpl_cd = 'cert002'; break;  //경찰승진인증: 인증이 완료되었습니다. 인증 페이지에서 상품을 구매해 주세요.
+                            case '684002' : $tmpl_cd = 'cert003'; break;  //제대군인인증: 인증이 완료되었습니다. 신청하신 상품을 구매해 주세요.
+                            case '684003' : $tmpl_cd = 'cert004'; break;  //경찰MOU인증: 인증이 완료되었습니다. 내강의실에서 쿠폰을 확인해 주세요.
+                            case '684004' : $tmpl_cd = 'cert004'; break;  //환승인증: 인증이 완료되었습니다. 내강의실에서 쿠폰을 확인해 주세요.
+                            default: $tmpl_cd = null; break;
+                        }
+
+                        if(empty($tmpl_cd) === false) {
+                            if($this->smsModel->addKakaoMsg($idx['Phone'], null, $idx['CsTel'], null, 'KAT', $tmpl_cd, [['#{회사명}' => '윌비스']]) === false) {
+                                throw new \Exception('SMS 발송에 실패했습니다.');
+                            }
                         }
                     }
                     
@@ -360,15 +377,18 @@ class CertApplyModel extends WB_Model
                         }
                     }
 
-                    $smsData = [];
-                    $smsData['CsTel'] = $idx['CsTel'];
-                    $smsData['SmsContent'] = $this->_cert_cancel_sms_content;       //주의 : 취소시 공통 내용 발송
-                    $smsData['Phone'] = $idx['Phone'];
-                    $is_sms = $this->addSms($smsData);
-                    if($is_sms !== true) {
-                        throw new \Exception('SMS발송 실패입니다.');
+                    //$smsData = [];
+                    //$smsData['CsTel'] = $idx['CsTel'];
+                    //$smsData['SmsContent'] = $this->_cert_cancel_sms_content;       //주의 : 취소시 공통 내용 발송
+                    //$smsData['Phone'] = $idx['Phone'];
+                    //$is_sms = $this->addSms($smsData);
+                    //if($is_sms !== true) {
+                    //    throw new \Exception('SMS발송 실패입니다.');
+                    //}
+                    // 알림톡 적용
+                    if($this->smsModel->addKakaoMsg($idx['Phone'], null, $idx['CsTel'], null, 'KAT', 'cert005', [['#{회사명}' => '윌비스']]) === false) {
+                        throw new \Exception('SMS 발송에 실패했습니다.');
                     }
-
                 }
 
             }
@@ -419,17 +439,17 @@ class CertApplyModel extends WB_Model
      * @param array $data
      * @return bool|string
      */
-    public function addSms($data=[])
-    {
-        try {
-
-            if($this->smsModel->addKakaoMsg($data['Phone'], $data['SmsContent'], $data['CsTel'], null, 'KFT') === false) {
-                throw new \Exception('SMS 발송에 실패했습니다.');
-            }
-
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-        return true;
-    }
+//    public function addSms($data=[])
+//    {
+//        try {
+//
+//            if($this->smsModel->addKakaoMsg($data['Phone'], $data['SmsContent'], $data['CsTel'], null, 'KFT') === false) {
+//                throw new \Exception('SMS 발송에 실패했습니다.');
+//            }
+//
+//        } catch (Exception $e) {
+//            return $e->getMessage();
+//        }
+//        return true;
+//    }
 }

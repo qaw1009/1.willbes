@@ -11616,6 +11616,9 @@ table.acadlecInfoPackageTable tr.Top td {
     display: inline-block;
 }
 
+/*게시판 내 링크 버튼*/
+.btn-Board-Link { padding:15px 20px !important; color:#fff !important; background:#1a8ccc !important; border-radius: 40px; font-size:16px !important; font-weight:600 !important;}
+
 /*수험안내*/
 .w-Guide {color:#666; line-height: 1.5; font-size:12px; font-weight: normal; letter-spacing: normal;}
 .w-Guide > h3 {

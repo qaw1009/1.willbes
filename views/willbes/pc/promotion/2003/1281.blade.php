@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {position:relative; overflow:hidden; background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/12/1281_top_bg.gif") center top  no-repeat}
+        .wb_cts01 {position:relative; overflow:hidden; background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/12/1281_top_bg.gif") center top  no-repeat;height:720px;}
         .wb_cts02 {background:#25c2f7 url("https://static.willbes.net/public/images/promotion/2019/12/1281_01_bg.jpg") center top  no-repeat}
   
         .wb_cts04 {background:#eaeaea;padding-bottom:100px; position:relative}
@@ -128,64 +128,76 @@
       <li><a href="#tab12"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t12.png" class="off" alt="김영훈"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t12_on.png" class="on"  /></a></li>
     </ul>
     <div id="tab1">
-        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_balnk">
-        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c1.jpg" title="기미진" />
-        </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c1.jpg" usemap="#Map1281_1" title="기미진" border="0" />
+        <map name="Map1281_1" id="Map1281_1">
+          <area shape="rect" coords="175,373,461,445" href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_balnk">
+        </map>       
     </div>
     <div id="tab2">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_balnk">  
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c2.jpg" title="한덕현"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c2.jpg" usemap="#Map1281_2" title="한덕현" border="0"/>
+        <map name="Map1281_2" id="Map1281_2">
+          <area shape="rect" coords="174,368,462,447" href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_balnk">  
+        </map>
     </div>
     <div id="tab3">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1078" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c3.jpg" title="성기건"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c3.jpg" usemap="#Map1281_3" title="성기건" border="0"/>
+        <map name="Map1281_3" id="Map1281_3">
+          <area shape="rect" coords="174,372,464,446" href="https://pass.willbes.net/promotion/index/cate/3019/code/1078" target="_balnk">
+        </map>
     </div>
     <div id="tab4">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c4.jpg" title="오태진"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c4.jpg" usemap="#Map1281_4" title="오태진" border="0"/>
+        <map name="Map1281_4" id="Map1281_4">
+          <area shape="rect" coords="171,368,463,450" href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_balnk">
+        </map>     
     </div>
     <div id="tab5">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1330" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c5.jpg" title="조민주"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c5.jpg" usemap="#Map1281_5" title="조민주" border="0"/>
+        <map name="Map1281_5" id="Map1281_5">
+            <area shape="rect" coords="171,369,465,453" href="https://pass.willbes.net/promotion/index/cate/3019/code/1330" target="_balnk">
+        </map>   
     </div>
     <div id="tab6">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1337" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c6.jpg" title="한세훈"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c6.jpg" usemap="#Map1281_6" title="한세훈" border="0"/>
+        <map name="Map1281_6" id="Map1281_6">
+          <area shape="rect" coords="173,368,464,447" href="https://pass.willbes.net/promotion/index/cate/3019/code/1337" target="_balnk">
+        </map>   
     </div>
     <div id="tab7">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c7.jpg" title="김덕관"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c7.jpg" usemap="#Map1281_7" title="김덕관" border="0"/>
+        <map name="Map1281_7" id="Map1281_7">
+          <area shape="rect" coords="177,366,458,452" href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_balnk">
+        </map>    
     </div>
     <div id="tab8">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1334" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c8.jpg" title="문병일"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c8.jpg" usemap="#Map1281_8" title="문병일" border="0"/>
+        <map name="Map1281_8" id="Map1281_8">
+          <area shape="rect" coords="176,369,464,448" href="https://pass.willbes.net/promotion/index/cate/3019/code/1334" target="_balnk">
+        </map>  
     </div>
     <div id="tab9">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c9.jpg" title="황남기"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c9.jpg" usemap="#Map1281_9" title="황남기" border="0"/>
+          <map name="Map1281_9" id="Map1281_9">
+            <area shape="rect" coords="173,371,461,447" href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_balnk">
+          </map>
     </div>
     <div id="tab10">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1079" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c10.jpg" title="이상구"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c10.jpg" usemap="#Map1281_10" title="이상구" border="0"/>
+        <map name="Map1281_10" id="Map1281_10">
+          <area shape="rect" coords="162,372,466,446" href="https://pass.willbes.net/promotion/index/cate/3020/code/1456" target="_balnk">
+        </map>   
     </div>
     <div id="tab11">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1079" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c11.jpg" title="고선미"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c11.jpg" usemap="#Map1281_11" title="고선미" border="0"/>
+        <map name="Map1281_11" id="Map1281_11">
+          <area shape="rect" coords="172,370,474,447" href="https://pass.willbes.net/periodPackage/show/cate/3022/pack/648001/prod-code/158484" target="_balnk">>
+        </map>
     </div>
     <div id="tab12">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1079" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c12.jpg" title="김영훈"/>
-      </a>
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c12.jpg" usemap="#Map1281_12" title="김영훈" border="0"/>
+        <map name="Map1281_12" id="MMap1281_12ap">
+          <area shape="rect" coords="173,369,467,450" href="https://pass.willbes.net/periodPackage/show/cate/3022/pack/648001/prod-code/158485" target="_balnk">
+        </map>    
     </div>
   </div>
   <!--wb_cts04//-->

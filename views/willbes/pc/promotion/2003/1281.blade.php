@@ -27,8 +27,9 @@
         .wb_cts04 {background:#eaeaea;padding-bottom:100px; position:relative}
         .wb_cts05 {background:#494949;}
 		/* TAB */
-        .tab {width:1110px; margin:0 auto;bottom:120px; left:50%;border:5px solid #000; z-index:10}		
-        .tab li {display:inline; float:left;}	
+        .tab {width:980px; margin:0 auto; bottom:120px; left:50%;border-left:4px solid #a8a8aa; border-right:4px solid #a8a8aa;border-top:4px solid #a8a8aa; }		
+        .tab li {display:inline; float:left; border-right:1px solid #a8a8aa}
+        /*.tab li:last-child {border:0}	*/
         .tab a img.off {display:block}
         .tab a img.on {display:none}
         .tab a.active img.off {display:none}
@@ -113,65 +114,77 @@
   <div class="evtCtnsBox wb_cts04">
     <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03.jpg"  title="교수님"/>
     <ul class="tab">
-      <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t1.png" class="off" alt="기미진"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t1_on.png" class="on"  /></a></li>
-      <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t2.png" class="off" alt="한덕현"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t2_on.png" class="on"  /></a></li>
-      <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t3.png" class="off" alt="성기건"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t3_on.png" class="on"  /></a></li>
-      <li><a href="#tab10"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t10.png" class="off" alt="오태진"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t10_on.png" class="on"  /></a></li>
-      <li><a href="#tab4"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t4.png" class="off" alt="조민주"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t4_on.png" class="on"  /></a></li>
-      <li><a href="#tab9"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t9.png" class="off" alt="한세훈"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t9_on.png" class="on"  /></a></li>
-      <li><a href="#tab5"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t5.png" class="off" alt="기덕관"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t5_on.png" class="on"  /></a></li>
-      <li><a href="#tab6"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t6.png" class="off" alt="문병일"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t6_on.png" class="on"  /></a></li>
-      <li><a href="#tab7"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t7.png" class="off" alt="황남기"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t7_on.png" class="on"  /></a></li>
-      <li><a href="#tab8"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8.png" class="off" alt="이상구"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t8_on.png" class="on"  /></a></li>
+      <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t1.png" class="off" alt="기미진"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t1_on.png" class="on"  /></a></li>
+      <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t2.png" class="off" alt="한덕현"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t2_on.png" class="on"  /></a></li>
+      <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t3.png" class="off" alt="성기건"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t3_on.png" class="on"  /></a></li>
+      <li><a href="#tab4"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t4.png" class="off" alt="오태진"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t4_on.png" class="on"  /></a></li>
+      <li><a href="#tab5"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t5.png" class="off" alt="조민주"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t5_on.png" class="on"  /></a></li>
+      <li><a href="#tab6"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t6.png" class="off" alt="한세훈"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t6_on.png" class="on"  /></a></li>
+      <li><a href="#tab7"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t7.png" class="off" alt="김덕관"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t7_on.png" class="on"  /></a></li>
+      <li><a href="#tab8"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t8.png" class="off" alt="문병일"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t8_on.png" class="on"  /></a></li>
+      <li><a href="#tab9"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t9.png" class="off" alt="황남기"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t9_on.png" class="on"  /></a></li>
+      <li><a href="#tab10"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t10.png" class="off" alt="이상구"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t10_on.png" class="on"  /></a></li>
+      <li><a href="#tab11"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t11.png" class="off" alt="고선미"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t11_on.png" class="on"  /></a></li>
+      <li><a href="#tab12"><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t12.png" class="off" alt="김영훈"/><img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t12_on.png" class="on"  /></a></li>
     </ul>
     <div id="tab1">
         <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_balnk">
-        <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c1.jpg" title="기미진" />
+        <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c1.jpg" title="기미진" />
         </a>
     </div>
     <div id="tab2">
       <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1193" target="_balnk">  
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c2.jpg" title="한덕현"/>
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c2.jpg" title="한덕현"/>
       </a>
     </div>
     <div id="tab3">
       <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1078" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c3.jpg" title="성기건"/>
-      </a>
-    </div>
-    <div id="tab10">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c10.jpg" title="오태진"/>
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c3.jpg" title="성기건"/>
       </a>
     </div>
     <div id="tab4">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1330" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c4.jpg" title="조민주"/>
-      </a>
-    </div>
-    <div id="tab9">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1337" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c9.jpg" title="한세훈"/>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c4.jpg" title="오태진"/>
       </a>
     </div>
     <div id="tab5">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c5.jpg" title="김덕관"/>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1330" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c5.jpg" title="조민주"/>
       </a>
     </div>
     <div id="tab6">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1334" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c6.jpg" title="문병일"/>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1337" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c6.jpg" title="한세훈"/>
       </a>
     </div>
     <div id="tab7">
-      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c7.jpg" title="황남기"/>
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c7.jpg" title="김덕관"/>
       </a>
     </div>
     <div id="tab8">
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1334" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c8.jpg" title="문병일"/>
+      </a>
+    </div>
+    <div id="tab9">
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c9.jpg" title="황남기"/>
+      </a>
+    </div>
+    <div id="tab10">
       <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1079" target="_balnk">
-      <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t_c8.jpg" title="이상구"/>
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c10.jpg" title="이상구"/>
+      </a>
+    </div>
+    <div id="tab11">
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1079" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c11.jpg" title="고선미"/>
+      </a>
+    </div>
+    <div id="tab12">
+      <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1079" target="_balnk">
+      <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c12.jpg" title="김영훈"/>
       </a>
     </div>
   </div>

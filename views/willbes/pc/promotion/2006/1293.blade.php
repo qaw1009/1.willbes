@@ -26,21 +26,21 @@
 		.cert02 ul li {display:inline; float:left;}
 		.cert02 ul:after {content:""; display:block; clear:both}
 		.cert03 {position:relative; width:1120px; margin:0 auto} 
-		label.check1 {top:370px; left:420px;}
-		label.check2 {top:370px; left:905px;}
-		label.check3 {top:480px; left:175px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}	
-		input + label {
+		.evtContent label.check1 {top:370px; left:420px;}
+		.evtContent label.check2 {top:370px; left:905px;}
+		.evtContent label.check3 {top:480px; left:175px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}	
+		.evtContent input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
 		}
-		input:checked + label:after {
+		.evtContent input:checked + label:after {
 			position: relative;
 			content: '\2714';
 			font-size: 30px;
 		}
-		input:checked + label.check3:after {
+		.evtContent input:checked + label.check3:after {
 			font-size: 20px;
 		}		
-		input {display:none}		
+		.evtContent input {display:none}		
 		.tipPopup{position: absolute;left: 49%;top: 100px;z-index: 1;display:none;}
            
     </style>

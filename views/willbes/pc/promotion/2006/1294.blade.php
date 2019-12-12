@@ -25,21 +25,21 @@
 		.cert02{background:#fff;}
 		.cert03{background:#f5f5f5;}
 		.cert04 {position:relative; width:1120px; margin:0 auto} 
-		label.check1 {top:380px; left:679px;}
-		label.check2 {top:518px; left:930px;}
-		label.check3 {top:645px; left:174px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
-		input + label {
+		.evtContent label.check1 {top:380px; left:679px;}
+		.evtContent label.check2 {top:518px; left:930px;}
+		.evtContent label.check3 {top:645px; left:174px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		.evtContent input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
 		}
-		input:checked + label:after {
+		.evtContent input:checked + label:after {
 			position: relative;
 			content: '\2714';
 			font-size: 30px;
 		}
-		input:checked + label.check3:after {
+		.evtContent input:checked + label.check3:after {
 			font-size: 20px;
 		}		
-		input {display:none}		
+		.evtContent input {display:none}		
 
 		.skybanner{position: fixed; top: 280px;right: 2px;z-index: 1;}	
 		.tipPopup{position: absolute;left: 49%;top: 100px;z-index:2;display:none;}   

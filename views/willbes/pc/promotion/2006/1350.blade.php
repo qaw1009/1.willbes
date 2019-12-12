@@ -24,33 +24,13 @@
 		.cert_01{background:#fff;}	
 		.cert02{background:#f5f5f5;}
 		.cert03{background:#fff;position:relative; width:1120px; margin:0 auto;}	
-		label.check3 {top:610px; left:143px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
-		input + label {position:absolute; z-index:1; width:30px; height:30px; outline:5px solid #15365d; background:#fff}
-		input:checked + label:after {position: relative;content: '\2714';font-size: 30px;}
-		input:checked + label.check3:after{font-size: 20px;}		
-        input {display:none}	 
+		.evtContent label.check3 {top:610px; left:143px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
+		.evtContent input + label {position:absolute; z-index:1; width:30px; height:30px; outline:5px solid #15365d; background:#fff}
+		.evtContent input:checked + label:after {position: relative;content: '\2714';font-size: 30px;}
+		.evtContent input:checked + label.check3:after{font-size: 20px;}		
+        .evtContent input {display:none}	 
         .cert04 h3{font-size:36px;color:#15365d;font-weight:bold;margin-bottom:50px;}
         .cert04 .sports{width:979px;margin:0 auto;border:5px solid #15365d; border-bottom:0; margin-top:65px;background:#fff;color:#15365d;font-weight:bold;}
-        /*
-        .cert04 .sports dl{width:969px;font-weight:bold;}
-        .cert04 .sports dt{height:55px;line-height:55px;transition:all 1s;border-bottom:5px solid #15365d;position:relative;font-size:14px;}
-        .cert04 .sports dl dt:after{
-            background:url(https://static.willbes.net/public/images/promotion/2019/08/1350_tab_off.png)no-repeat 0px 0px;
-            content:"";display:inline-block;width:30px;height:30px;position:absolute;right:35px;top:10px;
-        }                                             
-        .cert04 .sports dl dt:hover{background:#15365d;color:#fff;cursor:pointer;}
-        .cert04 .sports dl dt:hover:after{
-            background:url(https://static.willbes.net/public/images/promotion/2019/08/1350_tab_on.png)no-repeat 0px 0px;
-            content:"";display:inline-block;width:30px;height:30px;position:absolute;right:35px;top:10px;
-        }
-
-        .cert04 .sports dl dd{border-bottom:5px solid #15365d;}
-        .cert04 .sports dl dd table{border:1px solid #15365d; line-height:25px; width:700px; margin:50px auto} 
-        .cert04 .sports dl dd table td {text-align:left;}
-        .cert04 .sports dl dd table th,
-        .cert04 .sports dl dd table td{border-right:1px solid #15365d; border-bottom:1px solid #15365d; padding:10px;}
-        .cert04 .sports dl dd table th{font-weight:700;background:#C8C6C6; font-size:14px;}
-        */
 
         .content_guide_wrap{background:#fff; width:1210px; margin:0 auto; padding:50px 0;}
         .content_guide_wrap .guide_tit{width:1210px;margin:0 auto;text-align:center; }

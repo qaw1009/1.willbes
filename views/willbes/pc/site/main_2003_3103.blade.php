@@ -12,7 +12,7 @@
             text-align:center;
         }
 
-        .skyBanner {position:fixed; width:162px; top:200px; right:50px; z-index:10;}
+        .skyBanner {position:fixed; width:162px; top:200px; right:225px; z-index:10;}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/12/3103_top_bg.jpg) no-repeat center top; margin-top:20px}
         .evt01 {background:#1c3647;}
         .evt01 .tabBox {position:relative; width:1120px; margin:0 auto}

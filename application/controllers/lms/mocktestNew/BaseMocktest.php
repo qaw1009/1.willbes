@@ -19,11 +19,12 @@ class BaseMocktest extends \app\controllers\BaseController
 
     /**
      * 카테고리 코드 목록 조회
+     * @param string $site_code
      * @return array
      */
-    protected function getCategoryArray()
+    protected function getCategoryArray($site_code = '')
     {
-        return $this->categoryModel->getCategoryArray('', '', '', 1);
+        return $this->categoryModel->getCategoryArray($site_code, '', '', 1);
     }
 
     /**

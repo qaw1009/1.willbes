@@ -36,6 +36,7 @@ class Exam extends BaseMocktest
     {
         $condition = [
             'EQ' => [
+                'MP.IsStatus' => 'Y',
                 'MP.SiteCode' => $this->_reqP('search_site_code'),
                 'MB.CateCode' => $this->_reqP('search_cateD1'),
                 'MB.Ccd' => $this->_reqP('search_cateD2'),
@@ -44,12 +45,12 @@ class Exam extends BaseMocktest
                 'MP.Year' => $this->_reqP('search_year'),
                 'MP.RotationNo' => $this->_reqP('search_round'),
                 'MP.IsUse' => $this->_reqP('search_use'),
+                'MS.SubjectType' => $this->_reqP('search_suType'),
             ],
             'ORG' => [
                 'LKB' => [
                     'MP.PapaerName' => $this->_reqP('search_fi', true),
                     'A.wAdminName' => $this->_reqP('search_fi', true),
-                    'SC.CcdName' => $this->_reqP('search_fi', true),
                     'SJ.SubjectName' => $this->_reqP('search_fi', true),
                     'PMS.wProfName' => $this->_reqP('search_fi', true),
                 ]
@@ -303,4 +304,59 @@ class Exam extends BaseMocktest
         $result = $this->regExamModel->sort($this->_reqP('sorting'));
         $this->json_result($result, '정렬되었습니다.', $result);
     }
+
+    public function searchExam()
+    {
+        $arr_site_code = $this->getSiteCode();
+        $def_site_code = $this->_reqG('siteCode');
+        $cateD1Def = $this->_reqG('cateD1');
+        $suType = $this->_reqG('suType');
+
+        $arr_base['cateD1'] = $this->getCategoryArray($def_site_code);
+        $arr_base['cateD2'] = $this->getMockKind(false);
+        $arr_base['subject'] = $this->getSubjectArray();
+
+        $this->load->view('mocktestNew/base/exam/search_mockExam_model', [
+            'arr_site_code' => $arr_site_code,
+            'def_site_code' => $def_site_code,
+            'cateD1Def' => $cateD1Def,
+            'suType' => $suType,
+            'arr_base' => $arr_base,
+            'professor' => $this->searchProfessorModel->professorList('', '', '', false),
+        ]);
+    }
+
+    /*public function searchExamList()
+    {
+        $condition = [
+            'EQ' => [
+                'EB.SiteCode' => $this->input->post('sc_siteCode'),
+                'MB.CateCode' => $this->input->post('sc_cateD1'),
+                'MB.Ccd' => $this->input->post('sc_cateD2'),
+                'EB.Year' => $this->input->post('sc_year'),
+                'EB.RotationNo' => $this->input->post('sc_round'),
+                'MS.SubjectIdx' => $this->input->post('sc_subject'),
+                'EB.ProfIdx' => $this->input->post('sc_professor'),
+                'EB.QuestionOption' => $this->input->post('sc_questionOption'),
+
+                'MS.SubjectType' => $this->input->post('sc_suType'),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'EB.PapaerName' => $this->input->post('sc_fi', true),
+                    'C1.CateName' => $this->input->post('sc_fi', true),
+                    'SC.CcdName' => $this->input->post('sc_fi', true),
+                    'SJ.SubjectName' => $this->input->post('sc_fi', true),
+                    'PMS.wProfName' => $this->input->post('sc_fi', true),
+                ]
+            ],
+        ];
+        list($data, $count) = $this->regGoodsModel->searchExamList($condition, $this->input->post('length'), $this->input->post('start'));
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $data,
+        ]);
+    }*/
 }

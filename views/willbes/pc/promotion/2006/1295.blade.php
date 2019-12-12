@@ -29,29 +29,29 @@
 		.cert04 {position:relative; width:1120px; margin:0 auto; background:#fff;} 
 		.cert05 {background:#f5f5f5; position:relative}
 		.cert06 {position:relative; width:1120px; margin:0 auto} 
-		label.check1 {top:350px; left:420px;}
-		label.check2 {top:350px; left:910px;}
-		label.check3 {top:460px; left:180px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
-		label.check4 {top:990px; left:670px;}
-		label.check5 {top:1250px; left:205px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
-		label.check8 {top:385px; left:680px;}
-		label.check9 {top:530px; left:910px;}
-		label.check10 {top:493px; left:170px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
+		.evtContent label.check1 {top:350px; left:420px;}
+		.evtContent label.check2 {top:350px; left:910px;}
+		.evtContent label.check3 {top:460px; left:180px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
+		.evtContent label.check4 {top:990px; left:670px;}
+		.evtContent label.check5 {top:1250px; left:205px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}
+		.evtContent label.check8 {top:385px; left:680px;}
+		.evtContent label.check9 {top:530px; left:910px;}
+		.evtContent label.check10 {top:493px; left:170px; background-color: #fff; outline:2px solid #15365d; width:20px;height:20px;}		
 		
-		input + label {
+		.evtContent input + label {
 			position:absolute; z-index:1; width:20px; height:20px; width:30px;height:30px; outline:5px solid #15365d; background:#fff
 		}
-		input:checked + label:after {
+		.evtContent input:checked + label:after {
 			position: relative;
 			content: '\2714';
 			font-size: 30px;
 		}
-		input:checked + label.check3:after,
-		input:checked + label.check6:after,
-		input:checked + label.check10:after {
+		.evtContent input:checked + label.check3:after,
+		.evtContent input:checked + label.check6:after,
+		.evtContent input:checked + label.check10:after {
 			font-size: 20px;
 		}		
-		input {display:none}	 
+		.evtContent input {display:none}	 
 		
 		.skybanner{position: fixed; top: 280px;right: 2px;z-index: 1;}	
 		.tipPopup{position: absolute;left: 49%;top: 100px;z-index: 1;display:none;}

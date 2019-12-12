@@ -7,7 +7,7 @@
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">전문자격증<span class="row-line">|</span></li>
-                <li class="subTit">공인노무사</li>
+                <li class="subTit">감정평가사</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">

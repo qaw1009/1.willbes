@@ -336,6 +336,13 @@
                 <li><a href="{{ site_url('/home/html/guide_309002_03') }}" target="_blank"> 시험안내 > 공인노무사 > 입문가이드</a></li>
                 <li><a href="{{ site_url('/home/html/guide_309002_04') }}" target="_blank"> 시험안내 > 공인노무사 > 맞춤형가이드</a></li>
                 <li><a href="{{ site_url('/home/html/guide_309003_01') }}" target="_blank"> 시험안내 > 감정평가사 > 시험안내</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309003_02') }}" target="_blank"> 시험안내 > 감정평가사 > 과목별 공부방법론</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309003_03') }}" target="_blank"> 시험안내 > 감정평가사 > 입문가이드</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309003_04') }}" target="_blank"> 시험안내 > 감정평가사 > 맞춤형가이드</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309004_01') }}" target="_blank"> 시험안내 > 변리사 > 시험안내</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309004_02') }}" target="_blank"> 시험안내 > 변리사 > 과목별 공부방법론</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309004_03') }}" target="_blank"> 시험안내 > 변리사 > 입문가이드</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309004_04') }}" target="_blank"> 시험안내 > 변리사 > 맞춤형가이드</a></li>
                 <li class="c_both"></li> 
                 <li><a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담</a></li>

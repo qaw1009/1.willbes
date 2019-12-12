@@ -21,13 +21,13 @@
 
         /************************************************************/
 
-        .wb_cts01 {position:relative; overflow:hidden; background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/06/1281_top_bg.jpg") center top  no-repeat}
-        .wb_cts02 {background:#25c2f7 url("https://static.willbes.net/public/images/promotion/2019/06/1281_01_bg.jpg") center top  no-repeat}
-        .wb_cts03 {background:#f2f2f2;}
+        .wb_cts01 {position:relative; overflow:hidden; background:#1c1c1c url("https://static.willbes.net/public/images/promotion/2019/12/1281_top_bg.gif") center top  no-repeat}
+        .wb_cts02 {background:#25c2f7 url("https://static.willbes.net/public/images/promotion/2019/12/1281_01_bg.jpg") center top  no-repeat}
+  
         .wb_cts04 {background:#eaeaea;padding-bottom:100px; position:relative}
         .wb_cts05 {background:#494949;}
 		/* TAB */
-        .tab {width:1110px; margin:0 auto; position:absolute; bottom:120px; left:50%; margin-left:-555px; border:5px solid #000; z-index:10}		
+        .tab {width:1110px; margin:0 auto;bottom:120px; left:50%;border:5px solid #000; z-index:10}		
         .tab li {display:inline; float:left;}	
         .tab a img.off {display:block}
         .tab a img.on {display:none}
@@ -38,10 +38,10 @@
 		/* txt_motion */
 		.wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
 		.wb_cts01 > div span {position:absolute; width:120px; z-index: 1;}
-		.wb_cts01 > div span.txt1 {top:52px; left:150px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
-		.wb_cts01 > div span.txt2 {top:163px; left:150px; animation:slidein2 0.4s ease-in; -webkit-animation:slidein2 0.4s ease-in;}
-		.wb_cts01 > div span.txt3 {top:294px; left:150px; animation:slidein3 0.6s ease-in; -webkit-animation:slidein3 0.6s ease-in;}
-		.wb_cts01 > div span.txt4 {top:415px; left:150px; animation:slidein4 0.8s ease-in; -webkit-animation:slidein4 0.8s ease-in;}
+		.wb_cts01 > div span.txt1 {top:185px; left:150px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
+		.wb_cts01 > div span.txt2 {top:275px; left:150px; animation:slidein2 0.4s ease-in; -webkit-animation:slidein2 0.4s ease-in;}
+		.wb_cts01 > div span.txt3 {top:365px; left:150px; animation:slidein3 0.6s ease-in; -webkit-animation:slidein3 0.6s ease-in;}
+		.wb_cts01 > div span.txt4 {top:430px; left:150px; animation:slidein4 0.8s ease-in; -webkit-animation:slidein4 0.8s ease-in;}
 		@@keyframes slidein1 {from {left:605px; opacity: 0;}to {left:150px; opacity: 1}}
 		@@keyframes slidein2 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
 		@@keyframes slidein3 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
@@ -105,17 +105,13 @@
   <!--wb_cts01//-->
   
   <div class="evtCtnsBox wb_cts02">
-    <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_01.jpg"  title="윌비스 T-PASS" />
+    <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_01.jpg"  title="윌비스 T-PASS" />
   </div>
-  <!--wb_cts02//-->
-  
-  <div class="evtCtnsBox wb_cts03">
-    <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_02.jpg" title="전략적 계획 효율적 학습으로 " />
-  </div>
-  <!--wb_cts03//-->
+  <!--wb_cts02//-->  
+ 
   
   <div class="evtCtnsBox wb_cts04">
-    <img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03.jpg"  title="교수님"/>
+    <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03.jpg"  title="교수님"/>
     <ul class="tab">
       <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t1.png" class="off" alt="기미진"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t1_on.png" class="on"  /></a></li>
       <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t2.png" class="off" alt="한덕현"/><img src="https://static.willbes.net/public/images/promotion/2019/06/1281_03_t2_on.png" class="on"  /></a></li>

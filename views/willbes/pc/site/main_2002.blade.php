@@ -57,15 +57,15 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1057">형소법 심화기출<span>12.2 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1057">형소법 기본이론<span>1.6 개강</span></a></div>
                             <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043&subject_idx=1057">형소법 문풀1단계<span>12.30 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론/행정법 장정훈">
-                        <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1058">경찰학 기본이론<span>12.5 개강</span></a></div>
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1058">경찰학 심화이론<span>12.16 개강</span></a></div>
+                        <div class="caProfBtsn">                            
+                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1058">경찰학 심화기출<span>12.16 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043&subject_idx=1058">경찰학 문풀1단계<span>1.27 개강</span></a></div>
                         </div>
                     </li>
                     <li>
@@ -92,22 +92,22 @@
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
                         <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1054">영어 기본이론<span>12.2 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040&subject_idx=1054">영어 기본이론<span>1.8 개강</span></a></div>
                             <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043&subject_idx=1054">영어 문풀1단계<span>1.20 개강</span></a></div>
                         </div>
                     </li>                                        
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
                         <div class="caProfBtsn">
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1054">영어 심화기출<span>12.2 개강</span></a></div>
-                            <div><a href="#none">영어 집중관리반<span>1월 초 개강예정</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1106&subject_idx=1054">영어 아침특강<span>1.2 개강</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offPackage/index/type/eng?cate_code=3010&course_idx=1102&campus_ccd=605001">영어 집중관리반<span>1.13 개강</span></a></div>
                         </div>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">                           
-                            <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1106&subject_idx=1054">영어 아침특강<span>12.2 개강</span></a></div>
-                            <div><a href="#none">영어 집중관리반<span>1월 초 개강예정</span></a></div>
+                            <div><a href="https://police.willbes.net/pass/offPackage/index/type/eng?cate_code=3010&course_idx=1102&campus_ccd=605001">영어 집중관리반<span>1.13 개강</span></a></div>
+                            {{--<div><a href="#none">영어 집중관리반<span>1월 초 개강예정</span></a></div>--}}
                         </div>
                     </li>
                     <li>

@@ -536,8 +536,8 @@
 				  <tr>
 					<td>유기농업기능사</td>
 					<td>이론</td>
-					<td>2018 장사원 유기농업기능사(필기)</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146732">수강신청</a></td>
+					<td>2020 장사원 유기농업기능사(필기)</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/158455">수강신청</a></td>
 				  </tr>
 				</table>
             </div>

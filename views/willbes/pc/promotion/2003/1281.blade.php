@@ -130,7 +130,7 @@
     <div id="tab1">
         <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c1.jpg" usemap="#Map1281_1" title="기미진" border="0" />
         <map name="Map1281_1" id="Map1281_1">
-          <area shape="rect" coords="175,373,461,445" href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_balnk">
+          <area shape="rect" coords="175,373,461,445" href="https://pass.willbes.net/promotion/index/cate/3019/code/1467" target="_balnk">
         </map>       
     </div>
     <div id="tab2">

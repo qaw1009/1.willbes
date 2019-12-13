@@ -305,6 +305,9 @@ class Exam extends BaseMocktest
         $this->json_result($result, '정렬되었습니다.', $result);
     }
 
+    /**
+     * 과목조회
+     */
     public function searchExam()
     {
         $arr_site_code = $this->getSiteCode();
@@ -325,38 +328,4 @@ class Exam extends BaseMocktest
             'professor' => $this->searchProfessorModel->professorList('', '', '', false),
         ]);
     }
-
-    /*public function searchExamList()
-    {
-        $condition = [
-            'EQ' => [
-                'EB.SiteCode' => $this->input->post('sc_siteCode'),
-                'MB.CateCode' => $this->input->post('sc_cateD1'),
-                'MB.Ccd' => $this->input->post('sc_cateD2'),
-                'EB.Year' => $this->input->post('sc_year'),
-                'EB.RotationNo' => $this->input->post('sc_round'),
-                'MS.SubjectIdx' => $this->input->post('sc_subject'),
-                'EB.ProfIdx' => $this->input->post('sc_professor'),
-                'EB.QuestionOption' => $this->input->post('sc_questionOption'),
-
-                'MS.SubjectType' => $this->input->post('sc_suType'),
-            ],
-            'ORG' => [
-                'LKB' => [
-                    'EB.PapaerName' => $this->input->post('sc_fi', true),
-                    'C1.CateName' => $this->input->post('sc_fi', true),
-                    'SC.CcdName' => $this->input->post('sc_fi', true),
-                    'SJ.SubjectName' => $this->input->post('sc_fi', true),
-                    'PMS.wProfName' => $this->input->post('sc_fi', true),
-                ]
-            ],
-        ];
-        list($data, $count) = $this->regGoodsModel->searchExamList($condition, $this->input->post('length'), $this->input->post('start'));
-
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $data,
-        ]);
-    }*/
 }

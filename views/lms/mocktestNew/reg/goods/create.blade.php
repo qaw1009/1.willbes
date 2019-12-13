@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트 <span class="required">*</span></label>
                     <div class="col-md-10 form-inline item">
-                        {!! html_site_select('', 'site_code', 'siteCode', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '', false, $arr_site_code) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'siteCode', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '', false, $arr_site_code) !!}
                         <span class="ml-20">저장 후 운영사이트, 모의고사카테고리 정보는 수정이 불가능합니다.</span>
                     </div>
                 </div>
@@ -44,17 +44,17 @@
                     </label>
                     <div class="col-md-4 form-inline">
                         @if($method == 'PUT' && empty($data['CateCode']) === false)
-                            <p class="form-control-static">{{ $data['CateRouteName'] }}</p>
+                            <p class="form-control-static">{{ $data['CateName'] }}</p>
                         @else
                             <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                            <span id="selected_category" class="pl-10">{{ $data['CateRouteName'] }}</span>
+                            <span id="selected_category" class="pl-10">{{ $data['CateName'] }}</span>
                         @endif
                         <input type="hidden" id="cate_code" name="cate_code" value="{{ $data['CateCode'] }}" title="카테고리 선택" required="required"/>
                     </div>
                     <label class="control-label col-md-1-1">응시분야 <span class="required">*</span></th>
                     </label>
                     <div class="col-md-4 form-inline">
-                        <span class="form-control-static" id="TakePartDisp"></span>
+                        <span class="form-control-static" id="TakePartDisp">{{ $data['CateName'] }}</span>
                         <input type="hidden" name="TakePart" value="{{$data['CateCode']}}">
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                         <div class="checkbox mock-part">
                             @foreach($arr_base['cateD2'] as $row)
                                 <span class="mock-part-{{$row['ParentCateCode']}}">
-                                    <input type="checkbox" id="mock_part_{{ $loop->index }}" name="mock_part[]" class="flat" value="{{$row['CateCode']}}" title="직렬" @if(in_array($row['CateCode'], explode(',', $data['MockPart'])) === true)checked="checked"@endif/>
+                                    <input type="checkbox" id="mock_part_{{ $loop->index }}" name="mock_part[]" class="flat" value="{{$row['CateCode']}}" title="직렬" @if($method == 'PUT' && in_array($row['CateCode'], $data['arr_mock_part']) === true)checked="checked"@endif/>
                                     <label for="mock_part_{{ $loop->index }}" class="input-label mr-10">{{$row['CateName']}}</label>
                                 </span>
                             @endforeach
@@ -78,7 +78,7 @@
                     <div class="col-md-10">
                         <div class="checkbox">
                             @foreach($arr_base['apply_type'] as $key => $val)
-                                <input type="checkbox" class="flat" id="take_forms_{{$key}}" name="TakeFormsCcd[]" value="{{$key}}" data-take-forms="{{$key}}" title="응시형태" @if($method == 'PUT' && in_array($key, $data['TakeFormsCcd'])) checked @endif>
+                                <input type="checkbox" class="flat" id="take_forms_{{$key}}" name="TakeFormsCcd[]" value="{{$key}}" data-take-forms="{{$key}}" title="응시형태" @if($method == 'PUT' && in_array($key, $data['arr_take_forms_ccd'])) checked @endif>
                                 <label for="take_forms_{{$key}}" class="input-label mr-10">{{$val}}</label>
                             @endforeach
                         </div>
@@ -90,7 +90,7 @@
                     <div class="col-md-10">
                         <div class="checkbox">
                             @foreach($arr_base['apply_area1'] as $key => $val)
-                                <input type="checkbox" class="flat" id="take_areas1_{{$key}}" name="TakeAreas1CCds[]" value="{{$key}}" title="응시지역1" @if($method == 'PUT' && in_array($key, $data['TakeAreas1CCds'])) checked @endif>
+                                <input type="checkbox" class="flat" id="take_areas1_{{$key}}" name="TakeAreas1CCds[]" value="{{$key}}" title="응시지역1" @if($method == 'PUT' && in_array($key, $data['arr_take_areas1_ccds'])) checked @endif>
                                 <label for="take_areas1_{{$key}}" class="input-label mr-10">{{$val}}</label>
                             @endforeach
                         </div>
@@ -102,7 +102,7 @@
                     <div class="col-md-10">
                         <div class="checkbox">
                             @foreach($arr_base['apply_area2'] as $key => $val)
-                                <input type="checkbox" class="flat" id="take_areas1_{{$key}}" name="TakeAreas2CCds[]" value="{{$key}}" title="응시지역2" @if($method == 'PUT' && in_array($key, $data['TakeAreas2CCds'])) checked @endif>
+                                <input type="checkbox" class="flat" id="take_areas1_{{$key}}" name="TakeAreas2CCds[]" value="{{$key}}" title="응시지역2" @if($method == 'PUT' && in_array($key, $data['arr_take_areas2_ccds'])) checked @endif>
                                 <label for="take_areas2_{{$key}}" class="input-label mr-10">{{$val}}</label>
                             @endforeach
                         </div>
@@ -114,7 +114,7 @@
                     <div class="col-md-2">
                         <div class="checkbox">
                             @foreach($arr_base['add_point'] as $key => $val)
-                                <input type="checkbox" class="flat" id="add_point_{{$key}}" name="AddPointCcds[]" value="{{$key}}" title="가산점" @if($method == 'PUT' && in_array($key, $data['AddPointCcds'])) checked @endif>
+                                <input type="checkbox" class="flat" id="add_point_{{$key}}" name="AddPointCcds[]" value="{{$key}}" title="가산점" @if($method == 'PUT' && in_array($key, $data['add_point_ccds'])) checked @endif>
                                 <label for="add_point_{{$key}}" class="input-label mr-10">{{$val}}</label>
                             @endforeach
                         </div>
@@ -528,10 +528,13 @@
         var method = '{{$method}}';
         var $regi_form = $('#regi_form');
         var suAddField;
-        $(".mock-part").hide();
-        $(".mock-part > span").hide();
+        /*$(".mock-part").hide();
+        $(".mock-part > span").hide();*/
 
         $(document).ready(function () {
+            $(".mock-part > span").hide();
+            $(".mock-part-" + $("#cate_code").val()).show();
+
             // 과목리스트 초기화
             var chapterExist = [];
             var chapterDel = [];
@@ -548,6 +551,7 @@
                 var sIDX = $(this).data('subject-idx');
                 if(sIDX) chapterExist.push(sIDX);
             });
+
             // 과목리스트 삭제
             $regi_form.on('click', '.act-su-del', function () {
                 var that = $(this);

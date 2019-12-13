@@ -168,7 +168,7 @@ class Goods extends BaseMocktest
         $arr_base['acceptStatus'] = $codes[$this->regGoodsModel->_groupCcd['acceptStatus']];
         $arr_base['send_callback_ccd'] = $this->codeModel->getCcd($this->regGoodsModel->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
-        $data = $prod_code = null;
+        $data = $sData = $prod_code = null;
         $data_memo = $data_auto_coupon = [];
 
         if (empty($params[0]) === true) {
@@ -178,6 +178,17 @@ class Goods extends BaseMocktest
             $prod_code = $params[0];
             $data_auto_coupon = $this->lectureModel->_findProductEtcModify($prod_code,'lms_product_r_autocoupon');
             $data_memo = $this->lectureModel->_findProductEtcModify($prod_code,'lms_product_memo');
+
+            $arr_condition = ([
+                'EQ'=>[
+                    'MP.ProdCode' => $prod_code,
+                ]
+            ]);
+            $data = $this->regGoodsModel->findGoods($arr_condition);
+            $sData = $this->regGoodsModel->listGoodsForSubject($arr_condition);
+            if (empty($data) === true) {
+                show_error('데이터 조회에 실패했습니다.');
+            }
         }
 
         $this->load->view('mocktestNew/reg/goods/create', [
@@ -187,6 +198,7 @@ class Goods extends BaseMocktest
             'arr_base' => $arr_base,
             'prod_code' => $prod_code,
             'data' => $data,
+            'sData' => $sData,
             'data_auto_coupon'=>$data_auto_coupon,
             'data_memo'=>$data_memo,
         ]);

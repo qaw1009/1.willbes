@@ -157,17 +157,11 @@
                         var row = $datatable.row( $(this).data('row-idx')).data();
                         var target = (suType == 'E') ? $('#eSubject-wrap table > tbody') : $('#sSubject-wrap table > tbody');
                         var index = target.find('tr').length;
-
-                        var str = '';
-                        var obj = row.CateRouteName.split(',');
-                        for (key in obj) {
-                            str += obj[key] + "<br />";
-                        }
                         target.append('<tr data-subject-idx="">' + suAddField + '</tr>');
                         target.find('tr').last().find('[name="OrderNum[]"]').val(++index);
-                        target.find('tr').last().find('td:eq(1)').html(str);
-                        target.find('tr').last().find('td:eq(2)').text(row.Year);
-                        target.find('tr').last().find('td:eq(3)').text(row.RotationNo);
+                        target.find('tr').last().find('td:eq(1)').text(row.Year);
+                        target.find('tr').last().find('td:eq(2)').text(row.RotationNo);
+                        target.find('tr').last().find('td:eq(3)').text(row.SubjectName);
                         target.find('tr').last().find('td:eq(4)').text(row.wProfName);
                         target.find('tr').last().find('td:eq(5)').text('['+ row.MpIdx +'] '+ row.PapaerName);
                         target.find('tr').last().find('[name="MpIdx[]"]').val(row.MpIdx);

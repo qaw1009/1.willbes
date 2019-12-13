@@ -53,7 +53,7 @@ class RegExamModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-                MP.*, A.wAdminName, PMS.wProfName, IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor,
+                MP.*, A.wAdminName, PMS.wProfName, IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor, SJ.SubjectName,
                 (SELECT COUNT(MemIdx) 
                     FROM {$this->_table['mock_register']} AS MR
                     JOIN {$this->_table['mock_register_r_paper']} AS RR ON MR.MrIdx = RR.MrIdx

@@ -5,18 +5,26 @@ class RegGoodsModel extends WB_Model
 {
     private $_table = [
         'mock_product' => 'lms_Product_Mock',
+        'mock_paper' => 'lms_mock_paper',
+        'mock_r_category' => 'lms_Mock_R_Category',
+        'mock_r_subject' => 'lms_mock_r_subject',
+        'mock_register' => 'lms_mock_register',
+
+        'product_mock_r_paper' => 'lms_Product_Mock_R_Paper',
         'product' => 'lms_Product',
         'product_cate' => 'lms_Product_R_Category',
         'product_sale' => 'lms_Product_Sale',
-
-        'mock_register' => 'lms_mock_register',
+        'product_sms' => 'lms_Product_Sms',
+        'product_subject' => 'lms_product_subject',
 
         'order_product' => 'lms_order_product',
         'order' => 'lms_order',
 
+        'lms_professor' => 'lms_professor',
+        'pms_professor' => 'wbs_pms_professor',
         'sys_category' => 'lms_sys_category',
         'admin' => 'wbs_sys_admin',
-        'sys_code' => 'lms_sys_code',
+        'sys_code' => 'lms_sys_code'
     ];
 
     public $_groupCcd = [];
@@ -128,5 +136,75 @@ class RegGoodsModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 모의고사 상품 데이터 조회
+     * @param $arr_condition
+     * @return bool
+     */
+    public function findGoods($arr_condition)
+    {
+        $column = '
+            MP.*, PD.SiteCode, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsSms, PD.IsUse, PC.CateCode, SC.CateName
+            , PD.IsCoupon, PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice, SMS.SendTel, SMS.Memo
+            , ADMIN.wAdminName AS RegAdminName, ADMIN2.wAdminName AS UpdAdminName
+        ';
+        $from = "
+            FROM {$this->_table['mock_product']} AS MP
+            JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode  
+            JOIN {$this->_table['product_cate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
+            JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
+            JOIN {$this->_table['product_sms']} AS SMS ON MP.ProdCode = SMS.ProdCode AND SMS.IsStatus = 'Y'
+            JOIN {$this->_table['sys_category']} AS SC ON PC.CateCode = SC.CateCode AND SC.IsStatus = 'Y'
+            LEFT OUTER JOIN {$this->_table['admin']} as ADMIN ON MP.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['admin']} as ADMIN2 ON MP.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
+        ";
+
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => ['PD.IsStatus' => 'Y']
+        ]);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $data = $this->_conn->query('select '.$column .$from .$where)->row_array();
+
+        if (empty($data) === true) {
+            return false;
+        }
+
+        $data['arr_mock_part'] = explode(',', $data['MockPart']);
+        $data['arr_take_forms_ccd'] = explode(',', $data['TakeFormsCcd']);
+        $data['arr_take_areas1_ccds'] = explode(',', $data['TakeAreas1CCds']);
+        $data['arr_take_areas2_ccds'] = explode(',', $data['TakeAreas2Ccds']);
+        $data['add_point_ccds'] = explode(',', $data['AddPointCcds']);
+
+        return $data;
+    }
+
+    /**
+     * 모의고사 상품의 과목 목록 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function listGoodsForSubject($arr_condition)
+    {
+        $column = 'MPE.*, EB.Year, EB.RotationNo, EB.PapaerName, SJ.SubjectName, PMS.wProfName';
+
+        $from = "
+            FROM {$this->_table['mock_product']} AS MP
+            JOIN {$this->_table['product_mock_r_paper']} AS MPE ON MP.ProdCode = MPE.ProdCode AND MPE.IsStatus = 'Y'
+            JOIN {$this->_table['mock_paper']} AS EB ON MPE.MpIdx = EB.MpIdx AND EB.IsStatus = 'Y'
+            JOIN {$this->_table['mock_r_category']} AS MC ON EB.MrcIdx = MC.MrcIdx AND MC.IsStatus = 'Y'
+            JOIN {$this->_table['mock_r_subject']} AS MS ON MC.MrsIdx = MS.MrsIdx AND MS.IsStatus = 'Y'
+            JOIN {$this->_table['product_subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+            JOIN {$this->_table['lms_professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
+            JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = 'order by MPE.OrderNum';
+        return $this->_conn->query('select '.$column .$from .$where . $order_by)->result_array();
     }
 }

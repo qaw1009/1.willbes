@@ -253,7 +253,7 @@ class Goods extends BaseMocktest
             ['field' => 'Memo', 'label' => '문자내용', 'rules' => 'trim'],
             //['field' => 'SendTel', 'label' => '문자발신번호', 'rules' => 'trim'],
 
-            ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
         ];
 
@@ -264,5 +264,8 @@ class Goods extends BaseMocktest
         }
 
         if ($this->validate($rules) === false) return;
+
+        $result = true;
+        $this->json_result($result, '저장되었습니다.', $result);
     }
 }

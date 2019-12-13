@@ -102,7 +102,7 @@
                     <div class="col-md-10">
                         <div class="checkbox">
                             @foreach($arr_base['apply_area2'] as $key => $val)
-                                <input type="checkbox" class="flat" id="take_areas1_{{$key}}" name="TakeAreas2CCds[]" value="{{$key}}" title="응시지역2" @if($method == 'PUT' && in_array($key, $data['arr_take_areas2_ccds'])) checked @endif>
+                                <input type="checkbox" class="flat" id="take_areas2_{{$key}}" name="TakeAreas2CCds[]" value="{{$key}}" title="응시지역2" @if($method == 'PUT' && in_array($key, $data['arr_take_areas2_ccds'])) checked @endif>
                                 <label for="take_areas2_{{$key}}" class="input-label mr-10">{{$val}}</label>
                             @endforeach
                         </div>
@@ -215,7 +215,7 @@
                         </select> 분
                         <select name="AcceptStatusCcd" class="form-control ml-20">
                             @foreach($arr_base['acceptStatus'] as $key => $val)
-                                <option value="{{$key}}" @if($method == 'PUT' && $key == $data['AcceptStatusCcd']) selected @endif>{{$val}}</option>
+                                <option value="{{$key}}" @if(($method == 'POST' && $loop->index == 2) || ($method == 'PUT' && $key == $data['AcceptStatusCcd'])) selected @endif>{{$val}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -301,9 +301,9 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">정렬</th>
-                                    <th class="text-center">직렬 > 과목</th>
                                     <th class="text-center">연도</th>
                                     <th class="text-center">회차</th>
+                                    <th class="text-center">과목명</th>
                                     <th class="text-center">교수명</th>
                                     <th class="text-center">과목별시험지명</th>
                                     <th class="text-center">삭제</th>
@@ -317,11 +317,11 @@
                                         <input type="hidden" name="MpIdx[]" value="">
                                         <input type="hidden" name="MockType[]" value="">
                                     </td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
                                     <td></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
                                     <td class="text-center"><span class="act-su-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
                                 </tr>
                                 {{-- [E] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
@@ -329,7 +329,6 @@
                                 @if($method == 'PUT')
                                     @foreach($sData as $row)
                                         @continue($row['MockType'] == 'S')
-
                                         <tr data-subject-idx="{{ $row['PmrpIdx'] }}">
                                             <td class="text-center form-inline">
                                                 <input type="text" class="form-control" style="width:30px" name="OrderNum[]" value="{{ $row['OrderNum'] }}">
@@ -364,9 +363,9 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">정렬</th>
-                                    <th class="text-center">직렬 > 과목</th>
                                     <th class="text-center">연도</th>
                                     <th class="text-center">회차</th>
+                                    <th class="text-center">과목명</th>
                                     <th class="text-center">교수명</th>
                                     <th class="text-center">과목별시험지명</th>
                                     <th class="text-center">삭제</th>
@@ -376,7 +375,6 @@
                                 @if($method == 'PUT')
                                     @foreach($sData as $row)
                                         @continue($row['MockType'] == 'E')
-
                                         <tr data-subject-idx="{{ $row['PmrpIdx'] }}">
                                             <td class="text-center form-inline">
                                                 <input type="text" class="form-control" style="width:30px" name="OrderNum[]" value="{{ $row['OrderNum'] }}">
@@ -528,8 +526,6 @@
         var method = '{{$method}}';
         var $regi_form = $('#regi_form');
         var suAddField;
-        /*$(".mock-part").hide();
-        $(".mock-part > span").hide();*/
 
         $(document).ready(function () {
             $(".mock-part > span").hide();

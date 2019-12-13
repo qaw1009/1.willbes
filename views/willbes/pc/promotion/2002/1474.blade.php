@@ -124,31 +124,31 @@
                             <td>
                                 <div>
                                     @if(time() >= strtotime('201912240000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01.png" alt="형사소송법">
+                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day01_20.png" alt="형사소송법">
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     @if(time() >= strtotime('201912250000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02.png" alt="경찰학개론">
+                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day02_20.png" alt="경찰학개론">
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     @if(time() >= strtotime('201912260000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03.png" alt="형법">
+                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day03_20.png" alt="형법">
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     @if(time() >= strtotime('201912270000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04.png" alt="영어">
+                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day04_20.png" alt="영어">
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     @if(time() >= strtotime('201912280000')) <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day_end.png" alt="마감"></span> @endif
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05.png" alt="한국사">
+                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_02_day05_20.png" alt="한국사">
                                 </div>
                             </td>
                         </tr>&nbsp;</td>

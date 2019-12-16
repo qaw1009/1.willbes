@@ -22,7 +22,13 @@
        
         .evt00 {background:#404040}        
         .evtTop{background:#234dc5;}
-        .evt01 {background:#ddd;}
+        .evt01 {background:#ddd; padding-bottom:150px}
+        .evt01 ul { width:1000px; margin:50px auto 0}
+        .evt01 li {display:inline; width:50%; float:left}
+        .evt01 li a {display:block; margin:0 30px; font-size:28px; font-weight:600; background:#224dc5; color:#fff; border-radius:50px; padding:20px; text-align:center}
+        .evt01 li:last-child a {background:#4ae59f; color:#000}
+        .evt01 li a:hover {background:#102665; color:#fff}
+        .evt01 ul:after {content:""; display:block; clear:both}
         .evt02 {background:#fff url(https://static.willbes.net/public/images/promotion/2019/12/1474_02_bg.jpg) repeat-y center top}
         .evt02 > div {width:700px; margin:0 auto}
         .evt02 > div table {table-layout: auto;}
@@ -47,10 +53,11 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_01.jpg" usemap="#Map1474z" title="문제풀이 1단계" border="0">
-            <map name="Map1474z" id="Map1474z">
-                <area shape="rect" coords="337,1169,781,1253" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043#none" target="_blank" alt="문제풀이 1단계 신청하기" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1474_01_1.jpg" title="문제풀이 1단계">
+            <ul>
+                <li><a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1007" target="_blank">온라인 문풀 1단계 신청하기 ></a></li>
+                <li><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank">학원 문풀 1단계 신청하기 ></a></li>
+            </ul>
         </div>
 
         <div class="evtCtnsBox evt02">

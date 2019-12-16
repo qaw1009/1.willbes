@@ -25,8 +25,8 @@
 
        
         .evt00 {background:#404040}
-        .evtTop {background:#ab946b url(https://static.willbes.net/public/images/promotion/2019/12/1465_top_bg.jpg) no-repeat center top;}
-        .evt01 {background:#fef1e0;}
+        .evtTop {background:#3796db url(https://static.willbes.net/public/images/promotion/2019/12/1465_top_bg.jpg) no-repeat center top;}
+        .evt01 {background:#fff;}
         .evt02 {background:#efefef;}        
 
         .evt03 {background:#fff; padding-bottom:150px}
@@ -41,11 +41,11 @@
         .evt03 .requestR li {margin-bottom:5px}
         .evt03 .request:after {content:""; display:block; clear:both}
         .evt03 .btn {clear:both; width:450px; margin:0 auto;}
-        .evt03 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#887044; padding:20px 0; margin-top:30px; border-radius:50px}
+        .evt03 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#3695da; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt03 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
         .evt03 .NGEBS{font-weight:bold;}
 
-        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2019/12/1465_04_bg.jpg) no-repeat center top;}
+        .evt04 {background:#d7d7d7 url(https://static.willbes.net/public/images/promotion/2019/12/1465_04_bg.jpg) no-repeat center top;}
 
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>

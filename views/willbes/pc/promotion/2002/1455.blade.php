@@ -138,10 +138,10 @@
         </div>
 
         <div class="evtCtnsBox evt03" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_3.jpg" usemap="#Map1455a" title="1+2+3단계 종합반" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_3_1.jpg" usemap="#Map1455a" title="1+2+3단계 종합반" border="0">
             <map name="Map1455a" id="Map1455a">
                 <area shape="rect" coords="370,831,751,910" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="376,1301,753,1377" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
+                <area shape="rect" coords="370,1475,747,1551" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
             </map>     
         </div>
 

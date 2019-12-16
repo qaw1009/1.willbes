@@ -117,7 +117,7 @@
                                                     $reg_month_day = explode('.', explode(' ', $val['Name'])[0]);
                                                     $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
                                                     $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
-                                                    $reg_date = date('YmdHi', strtotime($reg_year.$reg_month.$reg_day.'0000'));
+                                                    $reg_date = $reg_year.$reg_month.$reg_day.'0000';
                                                     //echo date('YmdHi', strtotime($reg_date. '+1 days'));
                                                 @endphp
                                                 @if(time() >= strtotime($reg_date. '+1 days'))

@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- {!! $__menu['CURRENT']['MenuName'] or '' !!} 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- {!! $__menu['CURRENT']['MenuName'] or '' !!}을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
@@ -20,24 +20,13 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-1-1" for="">운영사이트</label>
-                <div class="form-control-static col-md-4">
-                    {{$data['SiteName']}}
-                </div>
-                <label class="control-label col-md-1-1 d-line" for="">카테고리</label>
-                <div class="form-control-static col-md-4 ml-12-dot">
+                <label class="control-label col-md-1-1" for="">카테고리</label>
+                <div class="form-control-static col-md-5">
                     @if(empty($data['arr_cate_code']) === false)
                         @foreach($data['arr_cate_code'] as $key => $val)
                             {{$val}} @if ($loop->last === false) | @endif
                         @endforeach
                     @endif
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-1-1" for="">캠퍼스</label>
-                <div class="form-control-static col-md-10">
-                    {{$data['CampusName']}}
                 </div>
             </div>
 
@@ -107,31 +96,33 @@
     </div>
     </form>
 
-    <div class="x_panel">
-        <div class="x_title">
-            <div class="clearfix"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-1-1" for="btn_previous" style="margin-top: 7px;">이전글</label>
-            <div class="form-control-static col-md-10">
-                @if(empty($board_previous) === true)
-                    이전글이 없습니다.
-                @else
-                    <a href='javascript:void(0);' id='btn_previous' data-idx='{{$board_previous['BoardIdx']}}'><u>{{$board_previous['Title']}}</u></a>
-                @endif
+    {{--@if($data['IsBest'] != 1)--}}
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="clearfix"></div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1-1" for="btn_previous" style="margin-top: 7px;">이전글</label>
+                <div class="form-control-static col-md-10">
+                    @if(empty($board_previous) === true)
+                        이전글이 없습니다.
+                    @else
+                        <a href='javascript:void(0);' id='btn_previous' data-idx='{{$board_previous['BoardIdx']}}'><u>{{$board_previous['Title']}}</u></a>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1-1" for="btn_next" style="margin-top: 7px;">다음글</label>
+                <div class="form-control-static col-md-10">
+                    @if(empty($board_next) === true)
+                        다음글이 없습니다.
+                    @else
+                        <a href='javascript:void(0);' id='btn_next' data-idx='{{$board_next['BoardIdx']}}'><u>{{$board_next['Title']}}</u></a>
+                    @endif
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-1-1" for="btn_next" style="margin-top: 7px;">다음글</label>
-            <div class="form-control-static col-md-10">
-                @if(empty($board_next) === true)
-                    다음글이 없습니다.
-                @else
-                    <a href='javascript:void(0);' id='btn_next' data-idx='{{$board_next['BoardIdx']}}'><u>{{$board_next['Title']}}</u></a>
-                @endif
-            </div>
-        </div>
-    </div>
+    {{--@endif--}}
 
     <!-- 댓글 리스트 -->
     @if ($data['BoardIsComment'] == 'Y')
@@ -144,30 +135,30 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                location.href='{{ site_url("/board/offline/{$boardName}") }}' + getQueryString();
+                location.href='{{ site_url("/board/gosi/notice") }}' + getQueryString();
             });
 
             //데이터 수정 폼
             $('#btn_modify').click(function() {
-                location.href='{{ site_url("/board/offline/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString();
+                location.href='{{ site_url("/board/gosi/notice/create") }}/' + {{$board_idx}} + getQueryString();
             });
 
             $('#btn_previous').click(function() {
-                location.href='{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
+                location.href='{{ site_url("/board/gosi/notice/read") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('#btn_next').click(function() {
-                location.href='{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
+                location.href='{{ site_url("/board/gosi/notice/read") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('.file-download').click(function() {
-                var _url = '{{ site_url("/board/offline/{$boardName}/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                var _url = '{{ site_url("/board/gosi/notice/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
                 window.open(_url, '_blank');
             });
 
             //데이터 삭제
             $('#btn_delete').click(function() {
-                var _url = '{{ site_url("/board/offline/{$boardName}/delete") }}/' + {{$board_idx}} + getQueryString();
+                var _url = '{{ site_url("/board/gosi/notice/delete") }}/' + {{$board_idx}} + getQueryString();
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE'
@@ -179,7 +170,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/offline/{$boardName}") }}' + getQueryString());
+                        location.href='{{ site_url("/board/gosi/notice") }}' + getQueryString();
                     }
                 }, showError, false, 'POST');
             });

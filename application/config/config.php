@@ -49,13 +49,16 @@ $config['app_app_site_prefix'] = 'app';     // 앱 사이트 구분값
 |--------------------------------------------------------------------------
 */
 $config['app_name_mapping'] = [
+    'tzone' => 'lms',
     'www' => 'willbes',
     'police' => 'willbes',
     'pass' => 'willbes',
     'ssam' => 'willbes',
     'job' => 'willbes',
     'lang' => 'willbes',
-    'tzone' => 'lms'
+    'gosi' => 'willbes',
+    'spo' => 'willbes',
+    'work' => 'willbes',
 ];
 
 /*
@@ -69,7 +72,10 @@ $config['app_front_site_except'] = [
     'pass' => ['route_add_path' => '/site'],
     'ssam' => ['route_add_path' => '/site'],
     'job' => ['route_add_path' => '/site'],
-    'lang' => ['route_add_path' => '/site']
+    'lang' => ['route_add_path' => '/site'],
+    'gosi' => ['route_add_path' => '/site'],
+    'spo' => ['route_add_path' => '/site'],
+    'work' => ['route_add_path' => '/site'],
 ];
 
 /*

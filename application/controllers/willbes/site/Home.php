@@ -166,6 +166,29 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 고등고시[온라인] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2005Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
+
+        if (APP_DEVICE == 'pc') {
+            $s_cate_code = $cate_code;
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
+        }
+
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
+
+        return $data;
+    }
+
+    /**
      * 자격증 데이터 조회
      * @param string $cate_code
      * @param array $arr_campus
@@ -207,6 +230,122 @@ class Home extends \app\controllers\FrontController
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
         $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
+
+        return $data;
+    }
+
+    /**
+     * 경찰간부[온라인] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2008Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
+
+        if (APP_DEVICE == 'pc') {
+            $s_cate_code = $cate_code;
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
+        }
+
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
+
+        return $data;
+    }
+
+    /**
+     * 취업[온라인] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2009Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
+
+        if (APP_DEVICE == 'pc') {
+            $s_cate_code = $cate_code;
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
+        }
+
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
+
+        return $data;
+    }
+
+
+    /**
+     * 고등고시[학원] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2010Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+
+        if (APP_DEVICE == 'pc') {
+            $data['dday'] = $this->_dday();
+            $data['arr_campus_info'] = $this->_getSiteCampusInfo();
+            $data['gallery'] = $this->_gallery();
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+            $data['exam_news'] = $this->_boardExamNews(5);
+            $data['arr_main_banner'] = $this->_banner('0');
+            $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+        }
+
+        return $data;
+    }
+
+    /**
+     * 자격증[학원] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2011Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+
+        if (APP_DEVICE == 'pc') {
+            $data['dday'] = $this->_dday();
+            $data['arr_campus_info'] = $this->_getSiteCampusInfo();
+            $data['gallery'] = $this->_gallery();
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+            $data['exam_news'] = $this->_boardExamNews(5);
+            $data['arr_main_banner'] = $this->_banner('0');
+            $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+        }
+
+        return $data;
+    }
+
+    /**
+     * 경찰간부[학원] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2013Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+
+        if (APP_DEVICE == 'pc') {
+            $data['dday'] = $this->_dday();
+            $data['arr_campus_info'] = $this->_getSiteCampusInfo();
+            $data['gallery'] = $this->_gallery();
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+            $data['exam_news'] = $this->_boardExamNews(5);
+            $data['arr_main_banner'] = $this->_banner('0');
+            $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+        }
 
         return $data;
     }
@@ -322,6 +461,7 @@ class Home extends \app\controllers\FrontController
         return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
 
     }
+
 
     /**
      * 캠퍼스별 공지사항 조회

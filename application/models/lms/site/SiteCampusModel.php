@@ -26,7 +26,7 @@ class SiteCampusModel extends WB_Model
      */
     public function listSiteCampusInfo($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'SC.ScInfoIdx, SC.SiteCode, SC.CampusCcd, SC.DispName, SC.Tel, SC.Addr1, SC.Addr2, SC.MapPath, SC.IsOrigin, SC.IsUse, SC.RegDatm, SC.RegAdminIdx
+        $column = 'SC.ScInfoIdx, SC.SiteCode, SC.CampusCcd, SC.DispName, SC.Tel, SC.Addr1, SC.Addr2, SC.MapPath, SC.OrderNum, SC.IsOrigin, SC.IsUse, SC.RegDatm, SC.RegAdminIdx
             , S.SiteName, CC.CcdName as CampusCcdName, A.wAdminName as RegAdminName';
 
         $from = '
@@ -69,6 +69,18 @@ class SiteCampusModel extends WB_Model
     }
 
     /**
+     * 사이트 코드별 캠퍼스 정보 다음 정렬순서 값 조회
+     * @param $site_code
+     * @return int
+     */
+    public function getSiteCampusInfoOrderNum($site_code)
+    {
+        return $this->_conn->getFindResult($this->_table['site_campus_info'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
+            'EQ' => ['SiteCode' => $site_code]
+        ])['NextOrderNum'];
+    }
+
+    /**
      * 사이트 캠퍼스 정보 등록
      * @param array $input
      * @return array|bool
@@ -105,7 +117,7 @@ class SiteCampusModel extends WB_Model
                 'Addr1' => element('addr1', $input),
                 'Addr2' => element('addr2', $input),
                 'MapPath' => $map_path,
-                'OrderNum' => element('order_num', $input, '0'),
+                'OrderNum' => get_var(element('order_num', $input), $this->getSiteCampusInfoOrderNum($site_code)),
                 'IsOrigin' => element('is_origin', $input, 'N'),
                 'IsUse' => element('is_use', $input, 'Y'),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -166,7 +178,7 @@ class SiteCampusModel extends WB_Model
                 'Tel' => element('tel', $input),
                 'Addr1' => element('addr1', $input),
                 'Addr2' => element('addr2', $input),
-                'OrderNum' => element('order_num', $input, '0'),
+                'OrderNum' => get_var(element('order_num', $input), $this->getSiteCampusInfoOrderNum($row['SiteCode'])),
                 'IsOrigin' => element('is_origin', $input, 'N'),
                 'IsUse' => element('is_use', $input, 'Y'),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
@@ -199,4 +211,37 @@ class SiteCampusModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 사이트 캠퍼스 정보 정렬변경 수정
+     * @param array $params
+     * @return array|bool
+     */
+    public function modifySiteCampusInfoReorder($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            foreach ($params as $scinfo_idx => $order_num) {
+                $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $admin_idx)->where('ScInfoIdx', $scinfo_idx);
+
+                if ($this->_conn->update($this->_table['site_campus_info']) === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }    
 }

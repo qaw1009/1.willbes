@@ -21,7 +21,7 @@ class SiteCampus extends \app\controllers\BaseController
         $arr_site_code = get_auth_on_off_site_codes('Y', true);
         
         // 캠퍼스 정보 조회
-        $list = $this->siteCampusModel->listSiteCampusInfo([], null, null, ['SC.ScInfoIdx' => 'desc']);
+        $list = $this->siteCampusModel->listSiteCampusInfo([], null, null, ['SC.SiteCode' => 'asc', 'SC.OrderNum' => 'asc', 'SC.CampusCcd' => 'asc']);
 
         $this->load->view('site/site_campus/index', [
             'arr_site_code' => $arr_site_code,
@@ -94,6 +94,25 @@ class SiteCampus extends \app\controllers\BaseController
         }
 
         $result = $this->siteCampusModel->{$method . 'SiteCampusInfo'}($this->_reqP(null, false));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 사이트 캠퍼스 정보 정렬변경
+     */
+    public function reorder()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->siteCampusModel->modifySiteCampusInfoReorder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

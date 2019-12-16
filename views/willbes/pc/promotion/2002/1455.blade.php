@@ -127,10 +127,12 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2.jpg" usemap="#Map1455z" title="합격으로 증명" border="0">
-            <map name="Map1455z" id="Map1455z">
-                <area shape="rect" coords="337,847,779,918" class="confirm" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1455_2.jpg" usemap="#Map1455_02" border="0" />
+            <map name="Map1455_02" id="Map1455_02">
+                <area shape="rect" coords="343,850,777,915" class="confirm" />
+                <area shape="rect" coords="237,970,541,1066" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1007" target="_blank" />
+                <area shape="rect" coords="569,969,880,1065" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
+            </map>        
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2_click.jpg" alt="1단계 핵심요약.문제풀이 스케쥴" class="clicks">
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_2s.jpg" title="2단계.3단계">
         </div>

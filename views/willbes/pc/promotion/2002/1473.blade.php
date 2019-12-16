@@ -47,11 +47,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
             <div class="skyBanner">               
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1473_sky.png" usemap="#Map1473sky" title="올공반 베너" border="0">
-                <map name="Map1473sky" id="Map1473sky">
-                    <area shape="rect" coords="1,2,160,171" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1465" target="_blank" />
-                    <area shape="rect" coords="2,176,164,345" href="#to_go" />
-                </map>
+                <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/12/1473_sky.png" title="올공반 베너"></a>
             </div>
 
             

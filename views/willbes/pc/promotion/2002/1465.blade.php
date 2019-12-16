@@ -115,7 +115,6 @@
                                                 @else
                                                     <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                 @endif
-
                                             @endforeach
                                         </ul>
                                     </td>

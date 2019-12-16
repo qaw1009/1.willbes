@@ -110,8 +110,18 @@
                                         <ul>                                       
                                             {{-- <input type="hidden" name="register_data1" value=""/> --}}
                                             @foreach($arr_base['register_list'] as $key => $val)
-                                                @if($key==0)
-                                                    <li><input type="checkbox" name="tempp[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @php
+                                                    // 강의 기간 지나면 자동 disabled 처리
+                                                    // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
+                                                    $reg_year = '2019';
+                                                    $reg_month_day = explode('.', explode(' ', $val['Name'])[0]);
+                                                    $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
+                                                    $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
+                                                    $reg_date = date('YmdHi', strtotime($reg_year.$reg_month.$reg_day.'0000'));
+                                                    //echo date('YmdHi', strtotime($reg_date. '+1 days'));
+                                                @endphp
+                                                @if(time() >= strtotime($reg_date. '+1 days'))
+                                                    <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                 @else
                                                     <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                 @endif

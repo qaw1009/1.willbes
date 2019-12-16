@@ -66,6 +66,19 @@ $config['job'] = array(
 $config['lang'] = array(
 );
 
+// 고등고시 설정
+$config['gosi'] = array(
+);
+
+// 경찰간부
+$config['spo'] = array(
+);
+
+// 취업
+$config['work'] = array(
+);
+
+
 // 모의고사
 $config['mock'] = array(
     'sysCode_kind' => 686,             // 모의고사 직렬 운영코드 그룹값 (lms_sys_code)

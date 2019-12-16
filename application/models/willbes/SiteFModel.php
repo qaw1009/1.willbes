@@ -97,7 +97,7 @@ class SiteFModel extends WB_Model
                 and CC.IsUse = "Y" and CC.IsStatus = "Y"            
         ';
 
-        $order_by = 'order by SCI.SiteCode asc, SCI.CampusCcd asc, SCI.OrderNum asc';
+        $order_by = 'order by SCI.SiteCode asc, SCI.OrderNum asc, SCI.CampusCcd asc';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $order_by, [$site_code]);

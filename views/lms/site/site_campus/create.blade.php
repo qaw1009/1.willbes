@@ -85,7 +85,7 @@
                         <input type="text" id="order_num" name="order_num" class="form-control" title="정렬순서" value="{{ $data['OrderNum'] }}"/>
                     </div>
                     <div class="col-md-3 pt-5">
-                        # 미 입력시 `0`값으로 등록
+                        # 미 입력시 마지막 DP
                     </div>
                 </div>
                 <div class="form-group">

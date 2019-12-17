@@ -28,10 +28,11 @@
         .wb_top {background:#242b35; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
         .wb_top .passLecBuy ul {position:absolute; top:1300px; left:128px; z-index:10}
-        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; padding-left:30px}
-        .wb_top .passLecBuy li:nth-child(1) {width:280px}
-        .wb_top .passLecBuy li:nth-child(2) {width:290px}
-        .wb_top .passLecBuy li:nth-child(3) {width:400px}
+        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; padding-left:15px}
+        .wb_top .passLecBuy li:nth-child(1) {width:190px}
+        .wb_top .passLecBuy li:nth-child(2) {width:190px}
+        .wb_top .passLecBuy li:nth-child(3) {width:254px}
+        .wb_top .passLecBuy li:nth-child(4) {width:364px}
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:16px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 20px 20px 20px; width:90%;}
         .wb_top .passLecBuy li:last-child div {background:#0d3692; width:80%} /*컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-size:16px}
@@ -226,6 +227,9 @@
                         <div><input type="radio" id="y_pkg1" name="y_pkg" value="158405" onClick=""/> <label for="y_pkg1"><strong>49</strong>만원</label></div>
                     </li>
                     <li>
+                        <div><input type="radio" id="y_pkg4" name="y_pkg" value="158784" onClick=""/> <label for="y_pkg4"><strong>79</strong>만원</label></div>
+                    </li>
+                    <li>
                         <div>
                             <strong>99</strong>만원<br>
                             <input type="radio" id="y_pkg2_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg2_1">+기본서 set (오태진史)</label><br>
@@ -243,17 +247,18 @@
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_02.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_02_191217.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
-                        <area shape="rect" coords="170,982,244,999" href="javascript:go_popup()" alt="4개월" />
-						<area shape="rect" coords="452,980,520,1001" href="javascript:go_popup()" alt="12개월" />
-                        <area shape="rect" coords="751,981,818,998" href="javascript:go_popup1()" alt="전과목" />
+                        <area shape="rect" coords="165,982,239,999" href="javascript:go_popup()" alt="4개월" />
+						<area shape="rect" coords="531,979,599,1000" href="javascript:go_popup()" alt="14개월" />
+                        <area shape="rect" coords="788,981,855,998" href="javascript:go_popup1()" alt="전과목" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
                         <area shape="rect" coords="566,492,742,535" href="javascript:goDesc('tab3')" alt="환승이벤트 참여방법" />
+                        <area shape="rect" coords="348,979,423,998" href="javascript:go_popup()" alt="10개월"  />
                     </map>
                 </div>
                 <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_03.jpg"  alt="체력" usemap="#Map1009B"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_03_191217.jpg"  alt="체력" usemap="#Map1009B"/>
                     <map name="Map1009B" id="Map1009B">
                         <area shape="rect" coords="604,574,736,624" href="https://police.willbes.net/promotion/index/cate/3001/code/1030" target="_blank" alt="경찰체력패키지" />
                     </map>
@@ -332,7 +337,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">4,14개월 PASS</a></li>
+                <li><a href="#tab1">4,10,14개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
@@ -629,7 +634,7 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1009_09_01.jpg">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1009_09_01_191217.jpg">
                     </dt>
                 </dl>
             </div>

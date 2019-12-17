@@ -57,7 +57,7 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        2020 신광은경찰 PASS 113기<br />
+                        2020 신광은경찰 PASS {{$arr_promotion_params['turn']}}기<br />
                         <span class="NGEB">지금 구성 판매 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>

@@ -634,7 +634,7 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1009_09_01_191217.jpg">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_09_01_191217.jpg">
                     </dt>
                 </dl>
             </div>

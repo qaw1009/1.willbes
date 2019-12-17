@@ -82,6 +82,8 @@
                 <li class="w50"><a href="{{ site_url('/home/html/memcombine') }}" target="_blank">통합회원가입</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memconvert') }}" target="_blank">통합회원전환</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memconvert2') }}" target="_blank">통합회원전환-고등고시,자격증 포함</a></li>
+                <li><a href="{{ site_url('/home/html/memconvert3') }}" target="_blank">통합회원전환-아이디 중복 회원 최초 로그인 시</a></li>
+                <li><a href="{{ site_url('/home/html/memcombine2') }}" target="_blank">통합회원전환-아이디+비밀번호 중복 회원 최초 로그인 시</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/prof') }}" target="_blank">교수진소개 > 교수진 </a></li>
                 <li><a href="{{ site_url('/home/html/prof_acad') }}" target="_blank">교수진소개 > 교수진 학원 </a></li>

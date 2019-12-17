@@ -329,6 +329,118 @@
                             <td class="w-date-fin">&nbsp;</td>
                         </tr>
                         <tr>
+                            <td class="w-no">4회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제4</td>
+                            <td class="w-status-send"><a href="#none" onclick="openWin('EDITPASS')"><span class="aBox waitBox_block NSK">과제제출</span></a></td>
+                            <td class="w-date">&nbsp;</td>
+                            <td class="w-status-mark">&nbsp;</td>
+                            <td class="w-date-fin">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">4회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제4</td>
+                            <td class="w-status-send"><a href="#none" onclick="openWin('EDITPASS')"><span class="aBox waitBox_block NSK">과제제출</span></a></td>
+                            <td class="w-date">&nbsp;</td>
+                            <td class="w-status-mark">&nbsp;</td>
+                            <td class="w-date-fin">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">3회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제3</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><a href="#none" onclick="markInfoModal('MARKPASS', 'edit2')"><span class="aBox answerBox NSK">채점중</span></a></td>
+                            <td class="w-date-fin">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">2회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제2</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><a href="#none" onclick="markInfoModal('MARKPASS', 'edit3')"><span class="aBox finishBox NSK">채점완료</span></a></td>
+                            <td class="w-date-fin">2018-00-00</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">1회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제1</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><span class="aBox finishBox NSK">채점완료</span></td>
+                            <td class="w-date-fin">2018-00-00</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">3회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제3</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><a href="#none" onclick="markInfoModal('MARKPASS', 'edit2')"><span class="aBox answerBox NSK">채점중</span></a></td>
+                            <td class="w-date-fin">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">2회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제2</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><a href="#none" onclick="markInfoModal('MARKPASS', 'edit3')"><span class="aBox finishBox NSK">채점완료</span></a></td>
+                            <td class="w-date-fin">2018-00-00</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">1회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제1</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><span class="aBox finishBox NSK">채점완료</span></td>
+                            <td class="w-date-fin">2018-00-00</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">3회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제3</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><a href="#none" onclick="markInfoModal('MARKPASS', 'edit2')"><span class="aBox answerBox NSK">채점중</span></a></td>
+                            <td class="w-date-fin">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">2회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제2</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><a href="#none" onclick="markInfoModal('MARKPASS', 'edit3')"><span class="aBox finishBox NSK">채점완료</span></a></td>
+                            <td class="w-date-fin">2018-00-00</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">1회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제1</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><span class="aBox finishBox NSK">채점완료</span></td>
+                            <td class="w-date-fin">2018-00-00</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">3회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제3</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><a href="#none" onclick="markInfoModal('MARKPASS', 'edit2')"><span class="aBox answerBox NSK">채점중</span></a></td>
+                            <td class="w-date-fin">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">2회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제2</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><a href="#none" onclick="markInfoModal('MARKPASS', 'edit3')"><span class="aBox finishBox NSK">채점완료</span></a></td>
+                            <td class="w-date-fin">2018-00-00</td>
+                        </tr>
+                        <tr>
+                            <td class="w-no">1회</td>
+                            <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제1</td>
+                            <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
+                            <td class="w-date">2018-00-00</td>
+                            <td class="w-status-mark"><span class="aBox finishBox NSK">채점완료</span></td>
+                            <td class="w-date-fin">2018-00-00</td>
+                        </tr>
+                        <tr>
                             <td class="w-no">3회</td>
                             <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제3</td>
                             <td class="w-status-send"><span class="aBox NSK">제출완료</span></td>
@@ -375,7 +487,7 @@
         <!-- willbes-Mypage-EDITZONE -->
 
         <div id="EDITPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix abs" style="display: block;">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h800 fix abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('EDITPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
@@ -498,7 +610,7 @@
         </div>
 
         <div id="MARKPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix abs" style="display: block;">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h800 fix abs" style="display: block;">
                 <a class="closeBtn" href="#none" onclick="closeWin('MARKPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>

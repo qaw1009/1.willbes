@@ -3197,7 +3197,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     display: none;
     background: rgba(0, 0, 0, 0.6);
     filter: alpha(opacity=60);
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -8289,6 +8289,14 @@ table.PassZoneTable .w-data {
     margin-top: -230px;
     margin-left: -370px;  
 }
+.willbes-Layer-PassBox1100.h800.fix {
+    margin-top:-400px;
+    margin-left: -550px;
+    border: 1px solid #2f2f2f;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 110; 
+}
 .willbes-Layer-PassBox740.h900.fix {
     margin-top: -450px;
     margin-left: -370px;  
@@ -11091,7 +11099,6 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 @media only screen and (max-width: 768px) {
-
     body.memBody {
         min-width: 360px;
         word-break:keep-all;

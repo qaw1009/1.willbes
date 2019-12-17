@@ -10,31 +10,22 @@
             <div class="MainVisual NSK">
                 <div class="VisualBox">
                     <div class="bSlider">
-                        <div class="sliderStopAutoPager">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
-                        </div>
+                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
                 <div class="VisualsubBox">
                     <div class="bSlider VisualsubBoxTop">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
-                        </div>
+                        {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
                     </div>
                     <div class="bSlider">
-                        <div class="sliderStopAutoPager">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
-                        </div>
+                        {!! banner_html(element('메인_서브2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
             </div>
         </div>
         <div class="Section barBnr">
             <div class="widthAuto">
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3096_1120x200.jpg" alt="배너명"></a>
+                {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
             </div>
         </div>
 
@@ -55,38 +46,15 @@
                     <strong class="NSK-Black">수강생을 위한 <span class="tx-color">맞춤형 추천 강좌</span></strong>
                 </div>
                 <ul class="PBcts">
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_274x234.jpg" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
+                    @for($i=1; $i<=5; $i++)
+                        @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
+                            <li>
+                                <div class="bSlider">
+                                    {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
+                                </div>
+                            </li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>

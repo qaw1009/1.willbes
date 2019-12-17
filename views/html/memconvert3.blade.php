@@ -12,7 +12,7 @@
     <div class="Member mem-Convert widthAuto690 mb100">
         <div class="info-Txt tx-black">
             회원님의 아이디 <strong class="tx-blue">willbes</strong>는 이미 중복된 아이디입니다.<br/>
-            번거로우시겠지만 <span class="tx-red">w윌비스 통합 서비스의 원활한 이용을 위해 아이디 변경</span>을 부탁드리겠습니다.
+            번거로우시겠지만 <span class="tx-red">윌비스 통합 서비스의 원활한 이용을 위해 아이디 변경</span>을 부탁드리겠습니다.
         </div>
         <div class="agree-user-Chk">
             <div class="agree-All-Tit tx-black p_re">

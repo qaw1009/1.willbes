@@ -102,7 +102,7 @@
     font-size: 15px;
     text-align: center;
     line-height: 24px;
-    letter-spacing: 1px;
+    letter-spacing: 0;
 }
 .Member .user-sub-Txt {
     font-size: 12px;
@@ -242,6 +242,12 @@
     color: #323232;
     border-bottom: 5px solid #0d74ae;
 }
+.Member .info-Txt-cs {
+    margin-top:50px; border-top:1px solid #e2e2e2; text-align: center;
+    font-size:20px; padding:50px 0 0;
+}
+.Member .info-Txt-cs span {border:1px solid #333; padding-left:20px; display: inline-block; height: 50px; line-height: 50px;}
+.Member .info-Txt-cs span a { display: inline-block; background: #333; color:#fff; padding:0 20px; margin-left:20px}
 
 /* Login Form : 로그인 */
 .mem-Login button.mem-Btn {

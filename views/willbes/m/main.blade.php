@@ -43,7 +43,7 @@
                 <li>
                     <div>
                         <a href="{{ front_app_url('/home/index', 'pass') }}">
-                            <p class="subTit">9급/7급/법원/소방/기술직/군무원</p>
+                            <p class="subTit">9급/7급PSAT/7급/법원/소방/기술직/군무원</p>
                             <p class="siteTit">
                                 <img src="{{ img_url('m/intro/icon_gosi.png') }}" alt="공무원">
                                 공무원

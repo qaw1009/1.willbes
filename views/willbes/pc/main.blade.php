@@ -19,9 +19,10 @@
                             </div>
                             <div class="wTxt">
                                 <span><a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">[9급]</a></span>
-                                <span><a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">[7급]</a></span>
+                                <span><a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">[7급PSAT]</a></span>
+                                <span><a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">[7급]</a></span>                                
                                 <span><a href="https://pass.willbes.net/home/index/cate/3035" target="_blank">[법원]</a></span>
-                                <span><a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">[소방]</a></span>
+                                <span><a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">[소방]</a></span><br/>
                                 <span><a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">[기술직]</a></span>
                                 <span><a href="https://pass.willbes.net/home/index/cate/3024" target="_blank">[군무원]</a></span>
                                 <br/>

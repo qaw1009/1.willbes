@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
-<div id="MARKPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix" style="display: block">
+<div id="MARKPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h800 fix">
     <a class="closeBtn" href="#none" onclick="closeWin('MARKPASS')">
         <img src="{{ img_url('sub/close.png') }}">
     </a>

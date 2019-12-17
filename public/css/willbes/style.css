@@ -8297,6 +8297,7 @@ table.PassZoneTable .w-data {
     margin-top:-450px;
     margin-left: -550px;
     border: 1px solid #2f2f2f;
+    overflow-y: scroll;
     z-index: 110; 
     /*position: absolute;*/
 }

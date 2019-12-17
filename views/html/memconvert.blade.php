@@ -212,7 +212,10 @@
                         </a>
                     </div>
                     <div class="agree-Txt">
-                        @include('willbes.pc.site.main_partial.main_point_' . $__cfg['SiteCode'])
+                        aaaaa 약관이 노출 됩니다.<br/>
+                        sssss 약관이 노출 됩니다.<br/>
+                        ddddd 약관이 노출 됩니다.<br/>
+                        {{--@include('willbes.pc.site.main_partial.main_point_' . $__cfg['SiteCode'])--}}
                     </div>
                 </li>
                 <li class="chk">

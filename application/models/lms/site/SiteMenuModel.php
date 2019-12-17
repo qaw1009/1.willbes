@@ -358,4 +358,40 @@ class SiteMenuModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 사이트 그룹메뉴 정렬변경 수정
+     * @param array $params
+     * @param $site_code
+     * @return array|bool
+     */
+    public function modifySiteGroupMenusReorder($params, $site_code)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            foreach ($params as $group_menu_idx => $group_order_num) {
+                $is_update = $this->_conn->set('GroupOrderNum', $group_order_num)->set('UpdAdminIdx', $admin_idx)
+                    ->where('GroupMenuIdx', $group_menu_idx)->where('SiteCode', $site_code)
+                    ->update($this->_table['site_menu']);
+
+                if ($is_update === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
 }

@@ -118,7 +118,7 @@
         </table>
 
         <div class="search-Btn btnAuto120 h36">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+            <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>비밀번호 변경하기</span>
             </button>
         </div>
@@ -203,7 +203,7 @@
         </table>
 
         <div class="search-Btn btnAuto120 h36">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+            <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>아이디 변경하기</span>
             </button>
         </div>
@@ -222,7 +222,7 @@
             다시 <span class="tx-red">본인인증을 진행</span>해 주시거나 고객센터로 문의해 주시기 바랍니다.
         </div>      
         <div class="search-Btn btnAuto120 h36 mt40">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+            <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>본인인증 다시 하기</span>
             </button>
         </div>

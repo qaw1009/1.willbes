@@ -157,7 +157,11 @@
                         <div class="ck">
                             <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
                         </div>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1475_apply_btn.png">
+                        <div class="btn NGEB">
+                            <a onclick="javascript:fn_submit();">
+                                <img src="https://static.willbes.net/public/images/promotion/2019/12/1475_apply_btn.png" alt="신청하기">
+                            </a>
+                        </div>
                     </div>
                 </div>                
             </div>                               

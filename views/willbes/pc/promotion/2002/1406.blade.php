@@ -45,11 +45,11 @@
         to{color:#000}
         }
         .wb_00 {background:#404040}
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/11/1406_top2_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/1406_top_bg.jpg) no-repeat center top;}
         .wb_01 {background:#ededed}
         .wb_02 {background:#fff}
         .wb_03 {background:#f3f3f3}
-        .wb_04 {background:url(https://static.willbes.net/public/images/promotion/2019/11/1406_04_bg_v2.jpg) no-repeat center top}
+        .wb_04 {background:url(https://static.willbes.net/public/images/promotion/2019/12/1406_04_bg.jpg) no-repeat center top}
         .wb_05 {background:#40c8f4;}
 
     </style>
@@ -57,9 +57,8 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner" >
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1448" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/11/1406_sky00.png" alt="누구나 이벤트 참여 시 할인쿠폰 발급" ></a>
-            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/11/1406_sky01.png" alt="12월 기본이론 종합반" ></a>
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/11/1406_sky02.jpg" alt="튜터링관리반" ></a>
+            <a href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1406_sky01.jpg" alt="12월 기본이론 종합반" ></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1406_sky02.jpg" alt="튜터링관리반" ></a>
         </div>           
 
         <div class="evtCtnsBox time NGEB" id="newTopDday">
@@ -90,34 +89,34 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1406_top2.jpg" alt="기본이론 집중완성" usemap="#Map1406A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1406_top.jpg" alt="기본이론 집중완성" usemap="#Map1406A" border="0" />
             <map name="Map1406A" id="Map1406A">
                 <area shape="rect" coords="367,1307,755,1402" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="수강신청하기" />
             </map>        
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1406_01_v2.jpg" alt="기본이론 집중완성"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1406_01.jpg" alt="기본이론 집중완성"/>
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1406_02_v2.jpg" alt="2달 완성"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1406_02.jpg" alt="2달 완성"/>
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1406_03_v2.jpg" alt="기본이론은 신광은경찰"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1406_03.jpg" alt="기본이론은 신광은경찰"/>
         </div>
                
         <div class="evtCtnsBox wb_04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1406_04_v2.jpg" alt="튜터들이 온다"  usemap="#Map1406B" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1406_04.jpg" alt="튜터들이 온다"  usemap="#Map1406B" border="0"/>
             <map name="Map1406B" id="Map1406B">
-                <area shape="rect" coords="238,987,542,1134" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="12월 기본종합반 수강신청하기(일반경찰)"/>
-                <area shape="rect" coords="574,988,886,1138" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&course_idx=1040&campus_ccd=605001" target="_blank" alt="12월 기본종합반 수강신청하기(경행경채)"/>
+                <area shape="rect" coords="238,987,542,1134" href="https://police.willbes.net/pass/offPackage/index?cate_code=3010&course_idx=1040&campus_ccd=605001" target="_blank" alt="1월 기본종합반 수강신청하기(일반경찰)"/>
+                <area shape="rect" coords="574,988,886,1138" href="https://police.willbes.net/pass/offPackage/index?cate_code=3011&course_idx=1040&campus_ccd=605001" target="_blank" alt="1월 기본종합반 수강신청하기(경행경채)"/>
             </map>       
         </div>
 
         <div class="evtCtnsBox wb_05" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1406_05.jpg" alt="튜터링 관리반 자세히보기" usemap="#Map1406C" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1406_05.jpg" alt="튜터링 관리반 자세히보기" usemap="#Map1406C" border="0">
             <map name="Map1406C" id="Map1406C">
                 <area shape="rect" coords="360,1235,765,1358" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1446" target="_blank" />
             </map>                        

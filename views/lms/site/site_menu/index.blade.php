@@ -80,6 +80,7 @@
                 dom: 'T<"clear"><<"pull-left mt-5 txt-caution-info"><"pull-right"B>><"clear">rtip',
                 buttons: [
                     { text: '<i class="fa fa-floppy-o mr-5"></i> 수동캐시저장', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
+                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 그룹메뉴 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-group-reorder' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 최상위 메뉴 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ],
@@ -196,6 +197,14 @@
                         $datatable.draw();
                     }
                 }, showError, false, 'POST');
+            });
+
+            // 그룹메뉴 정렬변경 버튼 클릭
+            $('.btn-group-reorder').on('click', function() {
+                $('.btn-group-reorder').setLayer({
+                    'url' : '{{ site_url('/site/' . $contr_name . '/groupReorderList/') }}' + $search_form.find('input[name="search_site_code"]').val(),
+                    'modal_id' : 'groupReorderModal'
+                });
             });
         });
     </script>

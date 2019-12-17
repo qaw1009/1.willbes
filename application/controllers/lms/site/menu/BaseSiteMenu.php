@@ -205,6 +205,53 @@ class BaseSiteMenu extends \app\controllers\BaseController
     }
 
     /**
+     * 사이트 그룹메뉴 정렬 폼
+     * @param array $params
+     * @return mixed
+     */
+    public function groupReorderList($params = [])
+    {
+        $site_code = element('0', $params);
+        if (empty($site_code) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 1depth 메뉴 조회
+        $menu_type = element('0', array_keys($this->_menu_type_code));  // 첫번째 메뉴타입 키값
+        $arr_condition = [
+            'EQ' => ['SiteCode' => $site_code, 'MenuDepth' => 1, 'MenuType' => $menu_type]
+        ];
+        $list = $this->siteMenuModel->listSiteMenu($arr_condition, null, null, ['GroupOrderNum' => 'asc']);
+
+        return $this->load->view('site/site_menu/group_reorder', [
+            'site_code' => $site_code,
+            'front_name' => $this->_front_name,
+            'contr_name' => $this->_contr_name,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 사이트 그룹메뉴 정렬변경
+     */
+    public function groupReorder()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->siteMenuModel->modifySiteGroupMenusReorder(json_decode($this->_reqP('params'), true), $this->_reqP('site_code'));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
      * 사이트 메뉴 캐쉬 수동 저장
      */
     public function saveCache()

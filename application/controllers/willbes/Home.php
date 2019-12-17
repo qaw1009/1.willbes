@@ -68,7 +68,12 @@ class Home extends \app\controllers\FrontController
                 }
                 //logger('token:'.$token);
                 //logger('토큰로그인준비');
-                $data = $this->memberFModel->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $tokenArr['USER_IDX'] ]]);
+                $data = $this->memberFModel->getMember(false, [ 'EQ' =>
+                    [
+                        'Mem.MemIdx' => $tokenArr['USER_IDX'],
+                        'Mem.IsStatus' => 'Y'
+                    ]
+                ]);
                 //logger('사용자정보구해옴');
 
                 // 넘어온 토큰데이타로 로그인처리

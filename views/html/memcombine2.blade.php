@@ -37,7 +37,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="search-Btn btnAuto120 h36">
+                <div class="search-Btn btnAuto h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                         <span>확인</span>
                     </button>
@@ -117,7 +117,7 @@
             </tbody>
         </table>
 
-        <div class="search-Btn btnAuto120 h36">
+        <div class="convert-Btn mt40 pt30 tx-center btnAuto h66">
             <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>비밀번호 변경하기</span>
             </button>
@@ -202,7 +202,7 @@
             </tbody>
         </table>
 
-        <div class="search-Btn btnAuto120 h36">
+        <div class="convert-Btn mt40 pt30 tx-center btnAuto h66">
             <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>아이디 변경하기</span>
             </button>
@@ -221,7 +221,7 @@
             일치하는 정보가 없습니다.<br>
             다시 <span class="tx-red">본인인증을 진행</span>해 주시거나 고객센터로 문의해 주시기 바랍니다.
         </div>      
-        <div class="search-Btn btnAuto120 h36 mt40">
+        <div class="convert-Btn mt40 pt30 tx-center btnAuto h66">
             <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>본인인증 다시 하기</span>
             </button>

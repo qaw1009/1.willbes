@@ -9,7 +9,7 @@
         <span class="tx-blue">통합 서비스 안내</span>
     </div>
     <!-- 통합 서비스 안내 -->
-    <div class="Member mem-Convert widthAuto690">
+    <div class="Member mem-Convert widthAuto690 mb100">
         <div class="user-Txt tx-black">
             윌비스공무원, 신광은경찰, 한림법학원이<br/>
             더 좋은 서비스 제공을 위해 '윌비스' 라는 이름으로 새롭게 통합되었습니다.<br/>
@@ -118,7 +118,6 @@
     <!-- End 통합 서비스 안내 -->
 
 
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
     <div class="mem-Tit">
@@ -126,7 +125,7 @@
         <span class="tx-blue">통합회원 전환이 완료되었습니다!</span>
     </div>
     <!-- 통합회원 전환 : 약관동의/정보입력 : 전환완료 -->
-    <div class="Member mem-Convert widthAuto690">
+    <div class="Member mem-Convert widthAuto690 mb100">
         <div class="user-Txt tx-black">
             <strong>윌비스 통합회원 전환을 환영합니다.</strong><br/>
             기존 수강강좌, 포인트 등은 통합된 ‘내강의실’에서 확인하실 수 있습니다.<br/>
@@ -161,9 +160,6 @@
         </div>
     </div>
     <!-- End 통합회원 전환 : 약관동의/정보입력 : 전환완료 -->
-
-    <br/><br/><br/><br/><br/><br/>
-
 
 </div>
 <!-- End Container -->

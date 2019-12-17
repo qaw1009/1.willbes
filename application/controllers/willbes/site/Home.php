@@ -181,8 +181,8 @@ class Home extends \app\controllers\FrontController
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
 
-        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
-        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
+        $data['media_notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
 
         return $data;
@@ -436,21 +436,22 @@ class Home extends \app\controllers\FrontController
             'list' => $selected_list
         ];
     }
-    
+
     /**
      * 공지사항 조회
      * @param int $limit_cnt [조회건수]
      * @param string $cate_code
      * @param array $arr_campus
+     * @param int $bm_idx
      * @return array|int
      */
-    private function _boardNotice($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    private function _boardNotice($limit_cnt = 5, $cate_code = '', $arr_campus = [], $bm_idx = 45)
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['IsBest' => 'Desc', 'BoardIdx' => 'Desc'];
         $arr_condition = [
             'EQ' => [
-                'b.BmIdx' => 45
+                'b.BmIdx' => $bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.SiteCode' => $this->_site_code
             ],

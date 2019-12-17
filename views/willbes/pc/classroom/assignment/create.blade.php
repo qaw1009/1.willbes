@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
-<div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix" style="display: block">
+<div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h800 fix">
 <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field($method) !!}

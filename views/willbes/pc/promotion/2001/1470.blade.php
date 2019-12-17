@@ -33,7 +33,8 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .evtTop {background:#2c0204 url(https://static.willbes.net/public/images/promotion/2019/12/1470_top_bg.jpg) no-repeat center top;}  
+        .evtTop {background:#2c0204 url(https://static.willbes.net/public/images/promotion/2019/12/1470_top_bg.jpg) no-repeat center top; position:relative}  
+        .evtTop span { position:absolute; top:419px; left:50%; width:513px; margin-left:-256px}
 
         .evt01 {background:#6da403 url(https://static.willbes.net/public/images/promotion/2019/12/1470_01_bg.jpg) no-repeat center top;}
         
@@ -79,7 +80,8 @@
         </div>
 
         <div class="evtCtnsBox evtTop">                
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_top.jpg" title="절호의 기회">           
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_top.jpg" title="절호의 기회">   
+            <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1470_topimg.gif" title="마감주의"></span>        
         </div>
 
         <div class="evtCtnsBox evt01">

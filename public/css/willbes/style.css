@@ -3197,7 +3197,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     display: none;
     background: rgba(0, 0, 0, 0.6);
     filter: alpha(opacity=60);
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -8294,11 +8294,11 @@ table.PassZoneTable .w-data {
     margin-left: -370px;  
 }
 .willbes-Layer-PassBox1100.h920.fix {
-    margin-top: -600px;
-    margin-left: -470px; 
+    margin-top:-450px;
+    margin-left: -550px;
     border: 1px solid #2f2f2f;
     z-index: 110; 
-    position: absolute;
+    /*position: absolute;*/
 }
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-List */

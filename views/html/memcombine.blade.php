@@ -172,10 +172,14 @@
                     <td class="combine-Tit">관심정보</td>
                     <td>
                         <div class="p_re">
-                            <input name="" type="checkbox" value="" id="a02" /> <label for="a02">공무원</label>
-                            <input name="" type="checkbox" value="" id="a03" class="ml10"/> <label for="a03">경찰</label>
+                            <input name="" type="radio" value="" id="a02" /> <label for="a02">신광은경찰</label>
+                            <input name="" type="radio" value="" id="a03" class="ml10"/> <label for="a03">공무원</label>
+                            <input name="" type="radio" value="" id="a04" class="ml10"/> <label for="a04">고등고시</label>
+                            <input name="" type="radio" value="" id="a05" class="ml10"/> <label for="a05">자격증</label>
+                            <input name="" type="radio" value="" id="a06" class="ml10"/> <label for="a06">경찰간부(간부후보생)</label>
+                            <input name="" type="radio" value="" id="a07" class="ml10"/> <label for="a07">취업</label>
+                            <input name="" type="radio" value="" id="a08" class="ml10"/> <label for="a08">어학</label>
                         </div>
-                        <div class="tx-red mt10 err_msg" style="display: block;">* 유효성메시지노출</div>
                     </td>
                 </tr>
             </tbody>

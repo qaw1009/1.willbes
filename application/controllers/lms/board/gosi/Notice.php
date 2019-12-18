@@ -45,6 +45,9 @@ class Notice extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
+        //상단탭 사이트코드 조회 (온라인만)
+        $tab_site_list = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsCampus' => 'N'], 'NOT' => ['SiteCode' => '2000']]);
+
         $this->load->view("board/gosi/notice/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
@@ -53,7 +56,8 @@ class Notice extends BaseBoard
             'arr_category' => $arr_category,
             'boardName' => $this->board_name,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
-            'gosi_site_code' => $this->gosi_site_code
+            'gosi_site_code' => $this->gosi_site_code,
+            'tab_site_list' => $tab_site_list
         ]);
     }
 
@@ -178,6 +182,9 @@ class Notice extends BaseBoard
         $data = null;
         $board_idx = null;
 
+        //상단탭 사이트코드 조회 (온라인만)
+        $tab_site_list = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsCampus' => 'N'], 'NOT' => ['SiteCode' => '2000']]);
+
         if (empty($params[0]) === false) {
             $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
@@ -221,7 +228,8 @@ class Notice extends BaseBoard
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
-            'gosi_site_code' => $this->gosi_site_code
+            'gosi_site_code' => $this->gosi_site_code,
+            'tab_site_list' => $tab_site_list
         ]);
     }
 

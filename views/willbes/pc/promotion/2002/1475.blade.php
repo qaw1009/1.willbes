@@ -59,14 +59,9 @@
         .evt_02{background:#5893bf;}
 
     
-        /*슬라이드*/
-        .slide_con {position:relative; width:1090px;height:290px; margin:0 auto}
-        .slide_con p {position:absolute; top:50%; margin-top:-30px; width:67px; height:67px; z-index:10}
-        .slide_con p a {cursor:pointer}
-        .slide_con p.leftBtn {left:0}
-        .slide_con p.rightBtn {right:0} 
+        /*슬라이드*/  
 
-        .slide_con2 {position:relative; width:1090px;height:290px; margin:0 auto;padding-left:4px;}
+        .slide_con2 {position:relative; width:1120px;height:290px; margin:0 auto;padding-left:4px;}
         .slide_con2 p {position:absolute; top:575px; margin-top:-30px; width:67px; height:67px; z-index:10}
         .slide_con2 p a {cursor:pointer}
         .slide_con2 p.leftBtn {left:0}

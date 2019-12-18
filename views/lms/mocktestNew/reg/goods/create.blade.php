@@ -14,11 +14,11 @@
 
     <h5>- 모의고사 상품정보를 등록하고 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" action="{{ site_url('/mocktestNew/reg/goods/store') }}" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>--}}
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" action="{{ site_url('/mocktestNew/reg/goods/store') }}" novalidate>--}}
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" id='ProdCode' name="idx" value="{{$prod_code}}">
+        <input type="hidden" id='ProdCode' name="prod_code" value="{{$prod_code}}">
         <input type="hidden" name="Info" value="">
 
         <div class="x_panel">
@@ -707,13 +707,13 @@
                 sList.find('tr').each(function () { chapterTotal.push($(this).data('subject-idx')); });
                 $regi_form.find('[name="Info"]').val( JSON.stringify({'chapterTotal':chapterTotal, 'chapterExist':chapterExist, 'chapterDel':chapterDel}) );
 
-                /*var _url = '{{ site_url('/mocktestNew/reg/goods/store') }}';
+                var _url = '{{ site_url('/mocktestNew/reg/goods/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktestNew/reg/goods//') }}' + getQueryString());
+                        location.replace('{{ site_url('/mocktestNew/reg/goods/') }}' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');*/
+                }, showValidateError, null, false, 'alert');
             });
 
             // 목록 이동

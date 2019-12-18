@@ -37,7 +37,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="search-Btn btnAuto h36">
+                <div class="search-Btn btnAuto120 h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                         <span>확인</span>
                     </button>

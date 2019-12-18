@@ -24,22 +24,23 @@
         <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
         <input type="hidden" name="hide_tabs" id="hide_tabs" value="{{implode(',', $hide_tabs)}}"/>
         <input type="hidden" name="is_event" id="is_event" value="{{$is_event}}"/>
+        <input type="hidden" name="is_single" id="is_single" value="{{$is_single}}"/>
 @endsection
 
 @section('layer_content')
-    <div class="form-group form-group-sm no-border-bottom">
+    <div class="form-group no-border-bottom no-padding">
         <p class="form-control-static"><span class="required">*</span> 검색한 강좌 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
     </div>
-    <div class="form-group no-padding">
-        <ul class="nav nav-tabs nav-justified mb-10">
+    <div class="form-group no-border-bottom no-padding">
+        <ul class="nav nav-tabs nav-justified">
             @if($prod_type === 'on' || in_array('on', $prod_tabs) === true)
-                <li class="{{$LearnPatternCcd == '615001' ? 'active':''}}"><a href="#none" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
+                <li class="{{$LearnPatternCcd == '615001' ? 'active':''}} {{ in_array('on_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
                 <li class="{{$LearnPatternCcd == '615003' ? 'active':''}} {{ in_array('adminpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
                 <li class="{{$LearnPatternCcd == '615004' ? 'active':''}} {{ in_array('periodpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
             @endif
 
             @if($prod_type === 'off' || in_array('off', $prod_tabs) === true)
-                <li class="{{$LearnPatternCcd == '615006' ? 'active':''}}"><a href="#none" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
+                <li class="{{$LearnPatternCcd == '615006' ? 'active':''}} {{ in_array('off_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
                 <li class="{{$LearnPatternCcd == '615007' ? 'active':''}} {{ in_array('off_pack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('off', '615007');"><strong>종합반</strong></a></li>
             @endif
 
@@ -60,8 +61,8 @@
             @endif
         </ul>
     </div>
-    <div class="form-group">
-        <label class="control-label col-md-2 pt-5" for="search_value">강좌검색
+    <div class="form-group bdt-line mt-10 pt-10 pb-5">
+        <label class="control-label col-md-1 pt-5 pl-20" for="search_value">강좌검색
         </label>
         <div class="col-md-4">
             <input type="text" class="form-control input-sm" id="search_value" name="search_value">
@@ -69,7 +70,7 @@
         <div class="col-md-4">
             <p class="form-control-static">명칭, 코드 검색 가능</p>
         </div>
-        <div class="col-md-2 text-right pr-5">
+        <div class="col-md-3 text-right pr-5">
             <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
         </div>
     </div>

@@ -4,10 +4,10 @@
             <div class="tabContent p_re">
             <a href="{{front_url('/support/gosiNotice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
-                @if(empty($data['notice']) === true)
+                @if(empty($data['off_notice']) === true)
                     <li><span>등록된 내용이 없습니다.</span></li>
                 @else
-                    @foreach($data['notice'] as $row)
+                    @foreach($data['off_notice'] as $row)
                         <li>
                             <a href="{{front_url('/support/gosiNotice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
                                 {{-- <span>EVENT</span> --}}
@@ -28,10 +28,10 @@
         <div class="tabContent p_re">
             <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
-                @if(empty($data['media_notice']) === true)
+                @if(empty($data['notice']) === true)
                     <li><span>등록된 내용이 없습니다.</span></li>
                 @else
-                    @foreach($data['media_notice'] as $row)
+                    @foreach($data['notice'] as $row)
                         <li>
                             <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
                                 {{-- <span>EVENT</span> --}}

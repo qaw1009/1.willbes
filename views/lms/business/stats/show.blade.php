@@ -70,7 +70,7 @@
                             <span id="search_period" class="pr-5"></span>
                             <span class="blue"><span id="sum_pay_price">0</span></span>
                             - <span class="red"><span id="sum_refund_price">0</span></span>
-                            = <span id="sum_total_price">0</span>원
+                            = <span id="sum_total_price">0</span>
                         </h4>
                     </td>
                 </tr>
@@ -137,9 +137,9 @@
                 $('#search_period').html('[' + $search_form.find('input[name="start_date"]').val() + ' ~ ' + $search_form.find('input[name="end_date"]').val() + ']');
 
                 if (json.sum_data !== null) {
-                    $('#sum_pay_price').html(addComma(json.sum_data.tRealPayPrice) + ' (' + addComma(json.sum_data.tRealPayCnt) + '건)');
+                    $('#sum_pay_price').html(addComma(json.sum_data.tRealPayPrice) + ' (' + addComma(json.sum_data.tOrderProdCnt) + '건)');
                     $('#sum_refund_price').html(addComma(json.sum_data.tRefundPrice) + ' (' + addComma(json.sum_data.tRefundCnt) + '건)');
-                    $('#sum_total_price').html(addComma(json.sum_data.tRealPayPrice - json.sum_data.tRefundPrice));
+                    $('#sum_total_price').html(addComma(json.sum_data.tRealPayPrice - json.sum_data.tRefundPrice) + ' (' + addComma(json.sum_data.tRealPayCnt) + '건)');
                 } else {
                     $('#sum_pay_price').html('0');
                     $('#sum_refund_price').html('0');

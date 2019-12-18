@@ -18,8 +18,15 @@
             </div>
             <div class="x_content">
 
-                <input type="hidden" name="site_code" value="{{$gosi_site_code}}">
                 <input type="hidden" name="campus_ccd" value="">
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">운영사이트 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10 form-inline">
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true, $tab_site_list) !!}
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
@@ -144,7 +151,7 @@
 
             // 카테고리 검색
             $('#btn_category_search').on('click', function(event) {
-                var site_code = $regi_form.find('input[name="site_code"]').val();
+                var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.')
                     return;

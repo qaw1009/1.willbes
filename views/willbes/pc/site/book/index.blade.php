@@ -223,7 +223,7 @@
         {{-- footer script --}}
         @include('willbes.pc.site.book.only_footer_partial')
     </div>
-    {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+    {!! banner('교재구매_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 </div>
 <!-- End Container -->
 <script type="text/javascript">

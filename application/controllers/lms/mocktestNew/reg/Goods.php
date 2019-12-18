@@ -65,7 +65,6 @@ class Goods extends BaseMocktest
                 'MP.MockYear' => $this->_reqP('search_year'),
                 'MP.MockRotationNo' => $this->_reqP('search_round'),
                 //'MP.AcceptStatusCcd' => $this->_reqP('search_AcceptStatus'),
-                'MP.TakeType' => $this->_reqP('search_TakeType'),
                 'PD.IsUse' => $this->_reqP('search_use'),
             ],
             'LKB' => [
@@ -204,18 +203,24 @@ class Goods extends BaseMocktest
         ]);
     }
 
+    /**
+     * 모의고사 상품 등록/수정
+     */
     public function store()
     {
+        $Info = @json_decode($this->_reqP('Info'));
+        if(!is_object($Info) || !isset($Info->chapterTotal) || !isset($Info->chapterExist) || !isset($Info->chapterDel)) {
+            $this->json_error("입력오류");
+            return;
+        } else {
+            $_POST['chapterTotal'] = $Info->chapterTotal;
+            $_POST['chapterExist'] = $Info->chapterExist;
+            $_POST['chapterDel'] = $Info->chapterDel;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
-            ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'cate_code', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'TakePart', 'label' => '응시분야', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'mock_part[]', 'label' => '직렬', 'rules' => 'trim|required|is_natural_no_zero'],
-
             ['field' => 'TakeFormsCcd[]', 'label' => '응시형태', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|is_natural_no_zero'],
-            //['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'AddPointCcds[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -234,7 +239,6 @@ class Goods extends BaseMocktest
             ['field' => 'SaleEndDatm_m', 'label' => '접수마감(분)', 'rules' => 'trim|required|numeric'],
             ['field' => 'AcceptStatusCcd', 'label' => '접수상태', 'rules' => 'trim|required|numeric'],
 
-            ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'AcceptStatusCcd', 'label' => '접수상태', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
             ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
@@ -250,22 +254,118 @@ class Goods extends BaseMocktest
             ['field' => 'OrderNum[]', 'label' => '과목정렬', 'rules' => 'trim|required|is_natural_no_zero'],
 
             ['field' => 'IsSms', 'label' => '문자사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'Memo', 'label' => '문자내용', 'rules' => 'trim'],
-            //['field' => 'SendTel', 'label' => '문자발신번호', 'rules' => 'trim'],
-
+            ['field' => 'Memo', 'label' => '문자내용', 'rules' => 'trim|callback_validateRequiredIf[IsSms,Y]'],
+            ['field' => 'SendTel', 'label' => '문자발신번호', 'rules' => 'callback_validateRequiredIf[IsSms,Y]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+
+            ['field' => 'chapterTotal[]', 'label' => 'tIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterExist[]', 'label' => 'eIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterDel[]', 'label' => 'dIDX', 'rules' => 'trim|is_natural_no_zero']
         ];
 
         if (empty($this->_reqP('TakeFormsCcd[]')) === false && in_array($this->regGoodsModel->_ccd['applyType_off'], $this->_reqP('TakeFormsCcd[]')) === true) {
             $rules = array_merge($rules, [
-                ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|is_natural_no_zero'],
+                ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|required|is_natural_no_zero'],
+                ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|required|is_natural_no_zero'],
             ]);
         }
-
         if ($this->validate($rules) === false) return;
 
-        $result = true;
+        if ($this->_reqP('_method') == 'POST') {
+            $method = 'add';
+            $rules = [
+                ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
+                ['field' => 'cate_code', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'],
+                ['field' => 'TakePart', 'label' => '응시분야', 'rules' => 'trim|required|is_natural_no_zero'],
+                ['field' => 'mock_part[]', 'label' => '직렬', 'rules' => 'trim|required|is_natural_no_zero'],
+            ];
+        } else {
+            $method = 'modify';
+            $rules = [
+                ['field' => 'prod_code', 'label' => '모의고사상품코드', 'rules' => 'trim|required|is_natural_no_zero']
+            ];
+        }
+        if ($this->validate($rules) === false) return;
+
+        $validate_result = $this->_validateForStore($this->_reqP(null));
+        if ($validate_result !== true) {
+            $this->json_error($validate_result);
+            return;
+        }
+
+        $result = $this->regGoodsModel->{$method . 'Goods'}($this->_reqP(null, false));
+        /*$result = true;*/
         $this->json_result($result, '저장되었습니다.', $result);
+    }
+
+    public function copyData()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|is_natural_no_zero'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->regGoodsModel->copyData($this->_reqP('prod_code'));
+        $this->json_result($result, '복사되었습니다.', $result);
+    }
+
+    /**
+     * 모의고사 데이터 검수
+     * @param $form_data
+     * @return bool|string
+     */
+    private function _validateForStore($form_data)
+    {
+        try {
+            // 날짜체크
+            $SaleStartDatm = element('SaleStartDatm_d', $form_data) .' '. element('SaleStartDatm_h', $form_data) .':'. element('SaleStartDatm_m', $form_data) .':00';
+            $SaleEndDatm = element('SaleEndDatm_d', $form_data) .' '. element('SaleEndDatm_h', $form_data) .':'. element('SaleEndDatm_m', $form_data) .':59';
+            $TakeStartDatm = element('TakeStartDatm_d', $form_data) .' '. element('TakeStartDatm_h', $form_data) .':'. element('TakeStartDatm_m', $form_data) .':00';
+            $TakeEndDatm = element('TakeEndDatm_d', $form_data) .' '. element('TakeEndDatm_h', $form_data) .':'. element('TakeEndDatm_m', $form_data) .':59';
+
+            if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', element('SaleStartDatm_d', $form_data)) ) {
+                throw new \Exception('접수시작시간이 잘못되었습니다.');
+            }
+            if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', element('SaleEndDatm_d', $form_data)) ) {
+                throw new \Exception('접수마감시간이 잘못되었습니다.');
+            }
+            if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) <= 0 ) {
+                throw new \Exception('접수마감일이 접수시작일보다 빠릅니다.');
+            }
+
+            if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', element('TakeStartDatm_d', $form_data)) || empty(element('TakeStartDatm_h', $form_data)) || empty(element('TakeStartDatm_m', $form_data))) {
+                throw new \Exception('응시시작시간이 잘못되었습니다.');
+            }
+            if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', element('TakeEndDatm_d', $form_data)) || empty(element('TakeEndDatm_h', $form_data)) || empty(element('TakeEndDatm_m', $form_data))) {
+                throw new \Exception('응시마감시간이 잘못되었습니다.');
+            }
+            if( (strtotime($TakeEndDatm) - strtotime($TakeStartDatm)) <= 0 ) {
+                throw new \Exception('응시마감일이 응시시작일보다 빠릅니다.');
+            }
+
+            // 정렬번호 체크
+            $orderE = $orderS = [];
+            foreach (element('MockType', $form_data) as $k => $v) {
+                if($v == 'E') $orderE[] = element('OrderNum', $form_data)[$k];
+                else if($v == 'S') $orderS[] = element('OrderNum', $form_data)[$k];
+            }
+
+            if( count($orderE) == 0 ) {     //필수과목만 적용 (선택과목 없을 수 있음)
+                throw new \Exception('과목을 선택해 주세요.');
+            }
+
+            if( count($orderE) != count(array_unique($orderE)) || count($orderE) != count(array_unique($orderE)) ) {
+                throw new \Exception('과목 정렬번호가 중복되어 있습니다.');
+            }
+            if( count(element('MpIdx', $form_data)) != count(array_unique(element('MpIdx', $form_data))) ) {
+                throw new \Exception('선택한 과목이 중복되어 있습니다.');
+            }
+
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 }

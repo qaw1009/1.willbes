@@ -10,6 +10,7 @@ class Lecture extends \app\controllers\FrontController
 
     private $_learn_pattern = 'on_lecture';     // 학습형태 (단강좌, 무료강좌 구분값)
     private $_pattern_name = ['only' => '단강좌', 'free' => '무료강좌'];
+    private $_pattern_banner_section = ['only' => '수강신청_우측퀵', 'free' => '무료특강_우측퀵'];
 
     public function __construct()
     {
@@ -173,6 +174,7 @@ class Lecture extends \app\controllers\FrontController
             'learn_pattern' => $this->_learn_pattern,
             'pattern' => element('pattern', $params, 'only'),
             'pattern_name' => element(element('pattern', $params, 'only'), $this->_pattern_name, '단강좌'),
+            'pattern_banner_section' => element(element('pattern', $params), $this->_pattern_banner_section),
             'data' => [
                 'subjects' => $selected_subjects,
                 'professor_names' => $selected_professor_names,
@@ -254,6 +256,7 @@ class Lecture extends \app\controllers\FrontController
             'learn_pattern' => $this->_learn_pattern,
             'pattern' => element('pattern', $params, 'only'),
             'pattern_name' => element(element('pattern', $params, 'only'), $this->_pattern_name, '단강좌'),
+            'pattern_banner_section' => element(element('pattern', $params), $this->_pattern_banner_section),
             'data' => $data
         ]);
     }

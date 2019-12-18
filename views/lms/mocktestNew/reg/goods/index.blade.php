@@ -156,7 +156,7 @@
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit" data-idx="'+row.ProdCode+'">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '<span class="blue underline-link act-edit" data-prod_code="'+row.ProdCode+'">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.RealSalePrice + '원<br><span style="text-decoration:line-through">' + row.SalePrice + '원</span>';
@@ -165,10 +165,10 @@
                             return row.SaleStartDatm.substr(0,10) + ' ~ ' + row.SaleEndDatm.substr(0,10);
                         }},
                     {'data' : 'TakePart_on', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                            return (data === 'Y') ? 'Y' : '<p class="red">N</p>';
                         }},
                     {'data' : 'TakePart_off', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                            return (data === 'Y') ? 'Y' : '<p class="red">N</p>';
                         }},
                     {'data' : 'OnlineRegCnt', 'class': 'text-center'},
                     {'data' : 'OfflineRegCnt', 'class': 'text-center'},
@@ -194,7 +194,7 @@
 
             //수정
             $list_table.on('click', '.act-edit', function () {
-                location.href = '{{ site_url('/mocktestNew/reg/goods/create/') }}' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/mocktestNew/reg/goods/create/') }}' + $(this).data('prod_code') + dtParamsToQueryString($datatable);
             });
 
             //복사
@@ -209,7 +209,7 @@
                 var data = {
                     '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
-                    'idx' : $('input:radio[name="target"]:checked').val()
+                    'prod_code' : $('input:radio[name="target"]:checked').val()
                 };
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {

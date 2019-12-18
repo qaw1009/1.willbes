@@ -35,7 +35,7 @@
                     흉내 낼 수는 있지만 <strong class="NSK-Black"><span class="tx-color">같을 수 없습니다.</span></strong><br />
                     <strong class="NSK-Black">합격을 위한 이유있는 선택!</strong> 시험을 가장 잘 아는 <strong class="NSK-Black"><span class="tx-color">한림법학원</span></strong>의 합격 최적화 강의!
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/main/3094_visual01.gif" alt="로드맵">
+                <img src="https://static.willbes.net/public/images/promotion/main/3099_visual01.gif" alt="로드맵">
             </div>
         </div>
 

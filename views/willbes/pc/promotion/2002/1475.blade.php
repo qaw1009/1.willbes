@@ -29,32 +29,30 @@
 
         .evt_01{background:#e7e7e7;padding-bottom:135px;}
         .evt_01 #apply{margin-top:525px;}
+        
+        .form_area{width:980px;background:#fff;margin:0 auto;padding:65px 100px;}
+        .form_area h4{background:#a2362a;color:#fff;width:760px;height:50px;line-height:50px;font-size:25px;font-weight:bold;}
+        .form_area h5{font-size:14px;margin-bottom:10px;}
+        .form_area strong {display:inline-block; width:120px;}
+        .form_area .star{color:#FF5A00; margin-right:5px}
+        .privacy{text-align:left;}
+        .contacts{padding:35px 10px;}
+        .contacts p{font-size:16px;padding:10px;}
 
-        .request {width:980px; margin:0 auto; background:#fff; padding:50px;position:relative;}
-        .requestL{text-align:left;}
-        .requestR{text-align:left;}
-        .request h3 {margin: auto;font-size: 25px;background: #a5a5a5;width: 650px;height: 50px;line-height: 50px;color:#fff;font-weight:bold;text-align:center;}
-        .request tr.area .areas{position: absolute;left:160px;top:250px;font-size: 17px;}
-        .request th{padding: 30px 0 0 100px;font-size: 19px;font-weight: bold;width:250px;}
-        .request td {padding: 30px 0 0 100px;text-align:left;font-size: 19px;font-weight: bold;padding-left:inherit;}
+        .contacts label{font-weight:bold;font-size:14px;display:inline-block; margin-left:5px; margin-right:10px}
+        .contacts label.username{letter-spacing:10px;letter-spacing:3.5px;}
+        .contacts input[type=text],
+        .contacts input[type=tel] { height:30px; line-height:30px}
+        .contacts input[type=radio]{padding-left:15px;}
+        .contacts .check_contact .check{font-weight:normal;}
+        input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
 
-        .request input {height:30px;}
-        .request:after {content:""; display:block; clear:both}
-        .requestL .star,.requestR .star{color:#ec5d21;vertical-align:text-top;}
+        .privacy .info{border:1px solid #DBDBDB;padding:20px;}
+        .privacy .info li{padding-bottom:15px;font-size:14px; list-style:decimal; margin-left:15px; line-height:1.4}
+        .privacy .accept{text-align: center;padding: 20px 0 30px 0;font-size: 17px;font-weight: bold;}
 
-        .requestR{padding: 30px 0 0 100px;}
-        .requestR .info{font-size:18px;padding-bottom:10px;}
-        .requestR ul{border:1px solid #dbdbdb;padding:15px;font-size:13px;line-height:1.3em;}
-        .ck{text-align:center;padding:20px 0 30px 0;font-size:17px;font-weight:bold;}
-
-        .table_type {width:100%; margin:1em auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid}
-        .table_type caption {display:none}	
-        .table_type th,
-        .table_type td {letter-spacing:normal; text-align:center; padding:5px 8px}
-        .table_type th {color:#464646; background:#f3f3f3; font-weight:400; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid} 
-        .table_type td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:left}
-        .table_type td input {vertical-align:middle}
-        .table_type td label {margin-right:10px}        
+        #btnArea{margin:25px 0 0;}
+        #btnArea #button{width:180px;height:50px;line-height:50px;background:#2A2A2A;color:#fff;font-size:23px;margin:10px;border:none;}
 
         .evt_02{background:#5893bf;}
 
@@ -106,68 +104,53 @@
                 </div>
                 <div id="apply">
                     <img src="https://static.willbes.net/public/images/promotion/2019/12/1475_01s.jpg" title="디딤돌 무료특강 신청하기">
-                    <div class="request" id="request">
-                        <div class="requestL">
-                            <h3 class="NGEBS">12.28(토) 김현정 경찰영어 무료특강 14:00</h3>
-                            <table width="0" cellspacing="0" cellpadding="0" class="table_types">
-                                <col  />
-                                <tr>
-                                    <th><span class="star">*</span> 이름</th>
-                                    <td scope="col">
-                                        <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th><span class="star">*</span> 연락처</th>
-                                    <td>
-                                        <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" placeholder="" maxlength="11">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th><span class="star">*</span> 참여캠퍼스</th>
-                                </tr>
-
-                                <tr class="area">
-                                    <th>
-                                        <td class="areas">
-{{--                                            <input type="radio" name="register_data1" id="campus1" value="노량진" /> <label for="campus1">노량진</label>--}}
-{{--                                            <input type="radio" name="register_data1" id="campus2" value="인천" /> <label for="campus2">인천</label>--}}
-{{--                                            <input type="radio" name="register_data1" id="campus3" value="대구" /> <label for="campus3">대구</label>--}}
-{{--                                            <input type="radio" name="register_data1" id="campus4" value="부산" /> <label for="campus4">부산</label>--}}
-{{--                                            <input type="radio" name="register_data1" id="campus5" value="광주" /> <label for="campus5">광주</label>--}}
-{{--                                            <input type="radio" name="register_data1" id="campus6" value="전북" /> <label for="campus6">전북</label>--}}
-{{--                                            <input type="radio" name="register_data1" id="campus7" value="제주" /> <label for="campus7">제주</label>--}}
-                                            @foreach($arr_base['register_list'] as $row)
-                                                <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
-                                            @endforeach
-                                        </td>
-                                    </th>
-                                </tr>
-                            </table>
+                    {!! csrf_field() !!}
+                    <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+                    <input type="hidden" name="register_type" value="promotion"/>
+                    <div class="form_area">
+                        <h4>12.28(토) 김현정 경찰영어 무료특강 14:00</h4>
+                        <div class="privacy">
+                            <div class="contacts">
+                                <p><strong><span class="star">*</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" /></p>
+                                <p><strong><span class="star">*</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/></p>
+                                <p class="check_contact">
+                                    <strong><span class="star">*</span>참여캠퍼스</strong><br><br>
+                                    @foreach($arr_base['register_list'] as $row)
+                                        <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
+                                    @endforeach
+                                </p>
+                            </div>
+                            <h5><span class="star">*</span>개인정보 수집 및 이용에 대한 안내</h5>
+                            <div class="info">
+                                <ul>
+                                    <li>
+                                        개인정보 수집 이용 목적<br>
+                                        - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대
+                                        - 이벤트 참여에 따른 강의 수강자 목록에 활용
+                                    </li>
+                                    <li>
+                                        개인정보 수집 항목<br>
+                                        - 신청인의 이름,연락처
+                                    </li>
+                                    <li>
+                                        개인정보 이용기간 및 보유기간<br>
+                                        - 본 수집, 활용목적 달성 후 바로 파기
+                                    </li>
+                                    <li>
+                                        개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
+                                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은
+                                        이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="accept">
+                                <input type="checkbox" name="is_chk" id="is_chk" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                            </p>
                         </div>
-                        <div class="requestR">
-                            <p class="info"><span class="star">*</span> 개인정보 수집 및 이용에 대한 안내</p>
-                            <ul>
-                                <li>
-                                    개인정보 수집 이용 목적<br>
-                                    - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
-                                    - 이벤트 참여에 따른 강의 수강자 목록에 활용<br>
-                                    개인정보 수집 항목- 신청인의 이름,연락처<br>
-                                    개인정보 이용기간 및 보유기간<br>
-                                    - 본 수집, 활용목적 달성 후 바로 파기<br>
-                                    개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                                    - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해<br>
-                                    반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.<br>
-                                </li>
-                            </ul>
-                            <div class="ck">
-                                <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-                            </div>
-                            <div class="btn NGEB">
-                                <a onclick="javascript:fn_submit();">
-                                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1475_apply_btn.png" alt="신청하기">
-                                </a>
-                            </div>
+                        <div class="btn NGEB">
+                            <a onclick="javascript:fn_submit();">
+                                <img src="https://static.willbes.net/public/images/promotion/2019/12/1475_apply_btn.png" alt="신청하기">
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -47,7 +47,7 @@ class ProfSalesModel extends BaseOrderModel
 
             if ($is_count === 'sum') {
                 $column = 'sum(U.tRealPayPrice) as tRealPayPrice, sum(U.tRefundPrice) as tRefundPrice, sum(U.tRemainPrice) as tRemainPrice
-                    , sum(U.tRealPayCnt) as tRealPayCnt, sum(U.tRefundCnt) as tRefundCnt';
+                    , sum(U.tOrderProdCnt) as tOrderProdCnt, sum(U.tRealPayCnt) as tRealPayCnt, sum(U.tRefundCnt) as tRefundCnt';
             } else {
                 if ($is_count === 'excel') {
                     $column = $this->_getListSalesQuery('excel_column', $sales_type);

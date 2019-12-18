@@ -73,7 +73,7 @@
                             <span id="search_period" class="pr-5"></span>
                             <span class="blue"><span id="sum_pay_price">0</span></span>
                             - <span class="red"><span id="sum_refund_price">0</span></span>
-                            = <span id="sum_total_price">0</span>원
+                            = <span id="sum_total_price">0</span>
                         </h4>
                     </td>
                 </tr>
@@ -125,7 +125,7 @@
                     {'data' : 'ProdTypeCcdName'},
                     {'data' : 'LgCateName'},
                     {'data' : 'tRemainPrice', 'render' : function(data, type, row, meta) {
-                        return '<a class="cs-pointer btn-view" data-site-code="' + row.SiteCode + '" data-prod-type-ccd="' + row.ProdTypeCcd + '" data-lg-cate-code="' + row.LgCateCode + '"><u>' + addComma(data) + '원</u> (' + row.tOrderProdCnt + '건)</a>';
+                        return '<a class="cs-pointer btn-view" data-site-code="' + row.SiteCode + '" data-prod-type-ccd="' + row.ProdTypeCcd + '" data-lg-cate-code="' + row.LgCateCode + '"><u>' + addComma(data) + '원</u> (' + row.tRealPayCnt + '건)</a>';
                     }}
                 ]
             });
@@ -135,9 +135,9 @@
                 $('#search_period').html('[' + $search_form.find('input[name="search_start_date"]').val() + ' ~ ' + $search_form.find('input[name="search_end_date"]').val() + ']');
 
                 if (json.sum_data !== null) {
-                    $('#sum_pay_price').html(addComma(json.sum_data.tRealPayPrice) + ' (' + addComma(json.sum_data.tRealPayCnt) + '건)');
+                    $('#sum_pay_price').html(addComma(json.sum_data.tRealPayPrice) + ' (' + addComma(json.sum_data.tOrderProdCnt) + '건)');
                     $('#sum_refund_price').html(addComma(json.sum_data.tRefundPrice) + ' (' + addComma(json.sum_data.tRefundCnt) + '건)');
-                    $('#sum_total_price').html(addComma(json.sum_data.tRemainPrice));
+                    $('#sum_total_price').html(addComma(json.sum_data.tRemainPrice) + ' (' + addComma(json.sum_data.tRealPayCnt) + '건)');
                 } else {
                     $('#sum_pay_price').html('0');
                     $('#sum_refund_price').html('0');

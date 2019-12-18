@@ -22,6 +22,7 @@ class BaseSearchReadingRoom extends \app\controllers\BaseController
         $prod_tabs = array_filter(explode(',', $this->_req('prod_tabs')));  // 노출되는 상품 탭
         $hide_tabs = array_filter(explode(',', $this->_req('hide_tabs')));  // 비노출되는 상품 탭
         $is_event = get_var($this->_req('is_event'), 'N');  // change 이벤트 발생 여부
+        $is_single = get_var($this->_req('is_single'), '');  // 단일선택 여부
         $return_type = get_var($this->_req('return_type'), 'table');
 
         $data = [
@@ -31,6 +32,7 @@ class BaseSearchReadingRoom extends \app\controllers\BaseController
             'prod_tabs' => $prod_tabs,
             'hide_tabs' => $hide_tabs,
             'is_event' => $is_event,
+            'is_single' => $is_single,
             'site_code' => $this->_req('site_code'),
             'return_type' => $return_type,
             'target_id' => get_var($this->_req('target_id'), 'bookList'),

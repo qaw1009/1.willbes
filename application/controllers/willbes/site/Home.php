@@ -181,8 +181,8 @@ class Home extends \app\controllers\FrontController
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
 
-        $data['notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
-        $data['media_notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
 
         return $data;

@@ -219,6 +219,8 @@
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
             if (typeof $regi_form_register.find('input[name="register_chk[]"]:checked').val() === 'undefined') {
                 alert('참여캠퍼스를 선택해 주세요.'); return;
             }

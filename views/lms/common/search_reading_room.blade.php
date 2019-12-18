@@ -15,117 +15,118 @@
         <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
         <input type="hidden" name="hide_tabs" id="hide_tabs" value="{{implode(',', $hide_tabs)}}"/>
         <input type="hidden" name="is_event" id="is_event" value="{{$is_event}}"/>
-        @endsection
+        <input type="hidden" name="is_single" id="is_single" value="{{$is_single}}"/>
+@endsection
 
-        @section('layer_content')
-            <div class="form-group form-group-sm no-border-bottom">
-                <p class="form-control-static"><span class="required">*</span> 검색한 {{$mang_title}}을 클릭해 주세요. (다중 선택 불가합니다.)</p>
+@section('layer_content')
+    <div class="form-group no-border-bottom no-padding">
+        <p class="form-control-static"><span class="required">*</span> 검색한 {{$mang_title}}을 클릭해 주세요. (다중 선택 불가합니다.)</p>
+    </div>
+    @if(empty(array_filter($prod_tabs)) === false)
+        <div class="form-group no-border-bottom no-padding">
+            <ul class="nav nav-tabs nav-justified mb-10">
+                @if(in_array('on', $prod_tabs) === true)
+                    <li><a href="#none" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
+                    <li class="{{ in_array('adminpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
+                    <li class="{{ in_array('periodpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
+                @endif
+
+                @if(in_array('off', $prod_tabs) === true)
+                    <li><a href="#none" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
+                    <li class="{{ in_array('off_pack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('off', '615007');"><strong>종합반</strong></a></li>
+                @endif
+
+                @if(in_array('book', $prod_tabs) === true)
+                    <li><a href="#none" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
+                @endif
+
+                @if(in_array('reading_room', $prod_tabs) === true)
+                    <li class="{{$prod_type == 'reading_room' ? 'active':''}}"><a href="#none" onclick="prodListChange('reading_room', '');"><strong>독서실</strong></a></li>
+                @endif
+
+                @if(in_array('locker', $prod_tabs) === true)
+                    <li class="{{$prod_type == 'locker' ? 'active':''}}"><a href="#none" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
+                @endif
+
+                @if(in_array('mock_exam', $prod_tabs) === true)
+                    <li><a href="#none" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
+                @endif
+            </ul>
+        </div>
+    @endif
+
+    <div class="form-group">
+        <label class="control-label col-md-1 pt-5 pl-20" for="search_value">조건
+        </label>
+        <div class="col-md-4 form-inline">
+            <select class="form-control" id="_search_campus_ccd" name="_search_campus_ccd">
+                <option value="">캠퍼스</option>
+                @foreach($arr_campus as $key => $val)
+                    <option value="{{ $key }}">{{ $val }}</option>
+                @endforeach
+            </select>
+        </div>
+        <label class="control-label col-md-1">기간검색</label>
+        <div class="col-md-5 form-inline">
+            <div class="input-group mb-0 mr-20">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control datepicker" id="_search_start_date" name="_search_start_date" value="" autocomplete="off">
+                <div class="input-group-addon no-border no-bgcolor">~</div>
+                <div class="input-group-addon no-border-right">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control datepicker" id="_search_end_date" name="_search_end_date" value="" autocomplete="off">
             </div>
-            @if(empty(array_filter($prod_tabs)) === false)
-                <div class="form-group no-padding no-border-bottom">
-                    <ul class="nav nav-tabs nav-justified mb-10">
-                        @if(in_array('on', $prod_tabs) === true)
-                            <li><a href="#none" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
-                            <li class="{{ in_array('adminpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
-                            <li class="{{ in_array('periodpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
-                        @endif
+        </div>
+    </div>
+    <div class="form-group pt-10 pb-5">
+        <label class="control-label col-md-1 pt-5 pl-20" for="_search_value">검색
+        </label>
+        <div class="col-md-4">
+            <input type="text" class="form-control input-sm" id="_search_value" name="_search_value">
+        </div>
+        <div class="col-md-4">
+            <p class="form-control-static">명칭, 코드 검색 가능</p>
+        </div>
+        <div class="col-md-1 text-right">
+            <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
+        </div>
+    </div>
 
-                        @if(in_array('off', $prod_tabs) === true)
-                            <li><a href="#none" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
-                            <li class="{{ in_array('off_pack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('off', '615007');"><strong>종합반</strong></a></li>
-                        @endif
+    <div class="row mt-20 mb-20">
+        <div class="col-md-12 clearfix">
+            <table id="_list_ajax_table" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>운영사이트</th>
+                    <th>캠퍼스</th>
+                    <th>{{$mang_title}}코드</th>
+                    <th>{{$mang_title}}명</th>
+                    <th>강의실</th>
+                    <th>예치금</th>
+                    <th>판매가</th>
+                    <th>좌석현황</th>
+                    <th>잔여석</th>
+                    <th>자동문자</th>
+                    <th>사용여부</th>
+                    <th>등록자</th>
+                    <th>등록일</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+@stop
 
-                        @if(in_array('book', $prod_tabs) === true)
-                            <li><a href="#none" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
-                        @endif
+@section('add_buttons')
+@endsection
 
-                        @if(in_array('reading_room', $prod_tabs) === true)
-                            <li class="{{$prod_type == 'reading_room' ? 'active':''}}"><a href="#none" onclick="prodListChange('reading_room', '');"><strong>독서실</strong></a></li>
-                        @endif
-
-                        @if(in_array('locker', $prod_tabs) === true)
-                            <li class="{{$prod_type == 'locker' ? 'active':''}}"><a href="#none" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
-                        @endif
-
-                        @if(in_array('mock_exam', $prod_tabs) === true)
-                            <li><a href="#none" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
-                        @endif
-                    </ul>
-                </div>
-            @endif
-
-            <div class="form-group">
-                <label class="control-label col-md-1 pt-5" for="search_value">조건
-                </label>
-                <div class="col-md-4 form-inline">
-                    <select class="form-control" id="_search_campus_ccd" name="_search_campus_ccd">
-                        <option value="">캠퍼스</option>
-                        @foreach($arr_campus as $key => $val)
-                            <option value="{{ $key }}">{{ $val }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <label class="control-label col-md-1">기간검색</label>
-                <div class="col-md-5 form-inline">
-                    <div class="input-group mb-0 mr-20">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control datepicker" id="_search_start_date" name="_search_start_date" value="" autocomplete="off">
-                        <div class="input-group-addon no-border no-bgcolor">~</div>
-                        <div class="input-group-addon no-border-right">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control datepicker" id="_search_end_date" name="_search_end_date" value="" autocomplete="off">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group pt-10 pb-5">
-                <label class="control-label col-md-1 pt-5" for="_search_value">검색
-                </label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control input-sm" id="_search_value" name="_search_value">
-                </div>
-                <div class="col-md-4">
-                    <p class="form-control-static">명칭, 코드 검색 가능</p>
-                </div>
-                <div class="col-md-1 text-right">
-                    <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
-                </div>
-            </div>
-
-            <div class="row mt-20 mb-20">
-                <div class="col-md-12 clearfix">
-                    <table id="_list_ajax_table" class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>운영사이트</th>
-                            <th>캠퍼스</th>
-                            <th>{{$mang_title}}코드</th>
-                            <th>{{$mang_title}}명</th>
-                            <th>강의실</th>
-                            <th>예치금</th>
-                            <th>판매가</th>
-                            <th>좌석현황</th>
-                            <th>잔여석</th>
-                            <th>자동문자</th>
-                            <th>사용여부</th>
-                            <th>등록자</th>
-                            <th>등록일</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        @stop
-
-        @section('add_buttons')
-        @endsection
-
-        @section('layer_footer')
+@section('layer_footer')
     </form>
 
     <script src="/public/js/lms/search_product.js"></script>

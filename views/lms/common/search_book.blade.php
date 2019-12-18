@@ -24,16 +24,17 @@
         <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
         <input type="hidden" name="hide_tabs" id="hide_tabs" value="{{implode(',', $hide_tabs)}}"/>
         <input type="hidden" name="is_event" id="is_event" value="{{$is_event}}"/>
+        <input type="hidden" name="is_single" id="is_single" value="{{$is_single}}"/>
 @endsection
 
 @section('layer_content')
     @if(empty($wbook_idx) === true)
-    <div class="form-group form-group-sm no-border-bottom">
-        <p class="form-control-static pl-0"><span class="required">*</span> 검색한 교재 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
+    <div class="form-group no-border-bottom no-padding">
+        <p class="form-control-static"><span class="required">*</span> 검색한 교재 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
     </div>
     @endif
     @if(empty(array_filter($prod_tabs)) === false)
-        <div class="form-group no-padding no-border-bottom">
+        <div class="form-group no-border-bottom no-padding">
             <ul class="nav nav-tabs nav-justified mb-10">
                 @if(in_array('on', $prod_tabs) === true)
                     <li><a href="#none" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
@@ -65,8 +66,8 @@
         </div>
     @endif
     @if(empty($wbook_idx) === true)
-    <div class="form-group bdt-line">
-        <label class="control-label col-md-1 pt-5" for="search_value">교재검색
+    <div class="form-group bdt-line pt-10 pb-5">
+        <label class="control-label col-md-1 pt-5 pl-20" for="search_value">교재검색
         </label>
         <div class="col-md-4">
             <input type="text" class="form-control input-sm" id="search_value" name="search_value">

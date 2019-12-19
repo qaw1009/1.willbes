@@ -137,7 +137,7 @@
                     <div class="willbes-listTable MyInfoBoxList widthAutoFull">
                         <div class="will-Tit NG">최근 받은 쪽지 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                         <ul class="List-Table GM tx-gray">
-                            <li><a href="#none">쪽지 제목이 노출됩니다.쪽지 제목이 노출됩니다.쪽지 제목이 노출됩니다.<img src="{{ img_url('mypage/icon_N.png') }}"></a></li>
+                            <li><a href="#none">쪽지 제목이 노출됩니다.쪽지 제목이 노출됩니다.쪽지 제목이 노출됩니다.</a><img src="{{ img_url('mypage/icon_N.png') }}"></li>
                             <li>수신된 쪽지가 없습니다.</li>
                         </ul>
                     </div>
@@ -156,10 +156,8 @@
 
                 </div>
             </div>
-            <div class="Quick-Top">
-                <div class="Quick-Bnr">
-                    <img src="{{ img_url('sample/banner_180605.jpg') }}"> 
-                </div>
+            <div class="Quick-Bnr mt20">
+                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/12/bn_160x242.gif" alt="이전 내강의실 보기"></a>
             </div>
         </div>
     </div>
@@ -310,3 +308,4 @@
 </div>
 <!-- End Container -->
 @stop
+

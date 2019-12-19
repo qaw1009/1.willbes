@@ -23,8 +23,9 @@
 
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2019/10/1410_top_bg.jpg") no-repeat center top}       
 
-        .skybanner {position:fixed;top:250px;right:0;z-index:1;}
-
+        .skybanner {position:fixed; top:200px; right:0; z-index:1;}
+        .skybanner ul li {padding-bottom:10px;}
+        
         .evt01 {background:#eee;}
         .evt02 {background:#dfdfdf;}
         .evt03 {background:url("https://static.willbes.net/public/images/promotion/2019/10/1410_03_bg.jpg") no-repeat center top}
@@ -50,9 +51,11 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">     
-        <ul class="skybanner">
-            <li><a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="할인받고 수강하기"></a></li>          
-        </ul> 
+        <div class="skybanner">
+            <ul>
+                <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=492&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1410_sky.png"  title="세령국어 실용문법특강" /></a></li>                
+            </ul>
+        </div>
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1410_top.jpg" title="불꽃소방 1만 문풀의 법칙"/>

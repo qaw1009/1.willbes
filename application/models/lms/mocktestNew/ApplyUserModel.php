@@ -30,10 +30,10 @@ class ApplyUserModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
+            $arr_order_by = ['MR.MrIdx' => 'DESC'];
+
             if ($is_count == 'excel') {
-                $arr_order_by = ['MR.MrIdx' => 'DESC'];
                 $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
-                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
                 $column = "
                     Straight_join
@@ -49,7 +49,6 @@ class ApplyUserModel extends WB_Model
                     ,case MR.IsTake when 'Y' then '응시' else '미응시' end AS IsTake
                 ";
             } else {
-                $arr_order_by = ['MR.MrIdx' => 'DESC'];
                 $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
                 $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 

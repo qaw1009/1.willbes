@@ -47,6 +47,7 @@ class MockCommonModel extends WB_Model
             'acceptStatus_end' => '675003',         //접수마감
             'sale_type' => '613001',        //상품판매구분 > PC+모바일
             'paid_pay_status' => '676001',  //결제완료 결제상태 공통코드
+            'refund_pay_status' => '676006',  //환불완료 결제상태 공통코드
             'applyType_on' => $this->config->item('sysCode_applyType_on', 'mock'),      //응시형태 온라인
             'applyType_off' => $this->config->item('sysCode_applyType_off', 'mock'),     //응시형태 오프라인
             'sysCode_ProdTypeCcd' => $this->config->item('sysCode_ProdTypeCcd', 'mock'),

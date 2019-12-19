@@ -20,10 +20,40 @@ class MockCommonModel extends WB_Model
         'mock_cate' => 'lms_mock_r_category',
         'mock_area' => 'lms_mock_area',
     ];
+    public $_groupCcd = [];
+    public $_ccd = [];
 
     public function __construct()
     {
         parent::__construct('lms');
+
+        $this->_groupCcd = [
+            'option' => '660',
+            'SerialCcd' => '666',
+            'CandidateAreaCcd' => '631',
+            'SmsSendCallBackNum' => '706',   //SMS 발송번호
+            'applyType' => $this->config->item('sysCode_applyType', 'mock'),    //응시형태
+            'applyArea1' => $this->config->item('sysCode_applyArea1', 'mock'),  //모의고사 Off 응시지역1
+            'applyArea2' => $this->config->item('sysCode_applyArea2', 'mock'),  //모의고사 Off 응시지역2
+            'addPoint' => $this->config->item('sysCode_addPoint', 'mock'),
+            'acceptStatus' => $this->config->item('sysCode_acceptStatus', 'mock'),  //접수상태
+            'sysCode_kind' => $this->config->item('sysCode_kind', 'mock'),
+            'paymentStatus' => $this->config->item('sysCode_paymentStatus', 'mock') //결제상태
+        ];
+
+        $this->_ccd = [
+            'acceptStatus_expected' => '675001',    //접수예정
+            'acceptStatus_available' => '675002',   //접수중
+            'acceptStatus_end' => '675003',         //접수마감
+            'sale_type' => '613001',        //상품판매구분 > PC+모바일
+            'paid_pay_status' => '676001',  //결제완료 결제상태 공통코드
+            'applyType_on' => $this->config->item('sysCode_applyType_on', 'mock'),      //응시형태 온라인
+            'applyType_off' => $this->config->item('sysCode_applyType_off', 'mock'),     //응시형태 오프라인
+            'sysCode_ProdTypeCcd' => $this->config->item('sysCode_ProdTypeCcd', 'mock'),
+            'sysCode_SaleStatusCcd' => $this->config->item('sysCode_SaleStatusCcd', 'mock'),
+            'sysCode_PointApplyCcd' => $this->config->item('sysCode_PointApplyCcd', 'mock'),    // 포인트 적용 공통코드 : 강좌
+            'sysCode_SaleTypeCcd' => $this->config->item('sysCode_SaleTypeCcd', 'mock'),    // 판매타입코드 입력값 (PC+모바일)
+        ];
     }
 
     /**

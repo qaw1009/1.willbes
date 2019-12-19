@@ -31,41 +31,11 @@ class RegGoodsModel extends WB_Model
         'admin' => 'wbs_sys_admin',
         'sys_code' => 'lms_sys_code'
     ];
-
-    public $_groupCcd = [];
-    public $_ccd = [];
     private $_prod_code = '';
 
     public function __construct()
     {
         parent::__construct('lms');
-
-        $this->_groupCcd = [
-            'option' => '660',
-            'SerialCcd' => '666',
-            'CandidateAreaCcd' => '631',
-            'SmsSendCallBackNum' => '706',   //SMS 발송번호
-            'applyType' => $this->config->item('sysCode_applyType', 'mock'),
-            'applyArea1' => $this->config->item('sysCode_applyArea1', 'mock'),
-            'applyArea2' => $this->config->item('sysCode_applyArea2', 'mock'),
-            'addPoint' => $this->config->item('sysCode_addPoint', 'mock'),
-            'acceptStatus' => $this->config->item('sysCode_acceptStatus', 'mock'),  //접수상태
-            'sysCode_kind' => $this->config->item('sysCode_kind', 'mock')
-        ];
-
-        $this->_ccd = [
-            'acceptStatus_expected' => '675001',    //접수예정
-            'acceptStatus_available' => '675002',   //접수중
-            'acceptStatus_end' => '675003',         //접수마감
-            'sale_type' => '613001',        //상품판매구분 > PC+모바일
-            'paid_pay_status' => '676001',  //결제완료 결제상태 공통코드
-            'applyType_on' => $this->config->item('sysCode_applyType_on', 'mock'),      //응시형태 온라인
-            'applyType_off' => $this->config->item('sysCode_applyType_off', 'mock'),     //응시형태 오프라인
-            'sysCode_ProdTypeCcd' => $this->config->item('sysCode_ProdTypeCcd', 'mock'),
-            'sysCode_SaleStatusCcd' => $this->config->item('sysCode_SaleStatusCcd', 'mock'),
-            'sysCode_PointApplyCcd' => $this->config->item('sysCode_PointApplyCcd', 'mock'),    // 포인트 적용 공통코드 : 강좌
-            'sysCode_SaleTypeCcd' => $this->config->item('sysCode_SaleTypeCcd', 'mock'),    // 판매타입코드 입력값 (PC+모바일)
-        ];
     }
 
     /**
@@ -98,7 +68,7 @@ class RegGoodsModel extends WB_Model
                         join {$this->_table['order_product']} op1 on mr1.OrderProdIdx = op1.OrderProdIdx
                         join {$this->_table['order']} o1 on op1.OrderIdx = o1.OrderIdx
                         join {$this->_table['sys_code']} sc1 on mr1.TakeForm = sc1.Ccd
-                        WHERE mr1.IsStatus = 'Y' AND mr1.IsTake = 'Y' AND mr1.ProdCode = MP.ProdCode AND mr1.TakeForm = '{$this->_ccd['applyType_on']}' and op1.PayStatusCcd='{$this->_ccd['paid_pay_status']}'
+                        WHERE mr1.IsStatus = 'Y' AND mr1.IsTake = 'Y' AND mr1.ProdCode = MP.ProdCode AND mr1.TakeForm = '{$this->mockCommonModel->_ccd['applyType_on']}' and op1.PayStatusCcd='{$this->mockCommonModel->_ccd['paid_pay_status']}'
                 ) AS OnlineCnt,
                 (
                     SELECT COUNT(mr2.MemIdx) 
@@ -107,7 +77,7 @@ class RegGoodsModel extends WB_Model
                         join {$this->_table['order_product']} op2 on mr2.OrderProdIdx = op2.OrderProdIdx
                         join {$this->_table['order']} o2 on op2.OrderIdx = o2.OrderIdx 
                         join {$this->_table['sys_code']} sc2 on mr2.TakeForm = sc2.Ccd
-                    WHERE mr2.IsStatus = 'Y' AND mr2.IsTake = 'Y' AND mr2.ProdCode = MP.ProdCode AND mr2.TakeForm = '{$this->_ccd['applyType_off']}' and op2.PayStatusCcd='{$this->_ccd['paid_pay_status']}'
+                    WHERE mr2.IsStatus = 'Y' AND mr2.IsTake = 'Y' AND mr2.ProdCode = MP.ProdCode AND mr2.TakeForm = '{$this->mockCommonModel->_ccd['applyType_off']}' and op2.PayStatusCcd='{$this->mockCommonModel->_ccd['paid_pay_status']}'
                 ) AS OfflineCnt,
                 (
                     SELECT COUNT(mr3.MemIdx) 
@@ -116,7 +86,7 @@ class RegGoodsModel extends WB_Model
                         join {$this->_table['order_product']} op3 on mr3.OrderProdIdx = op3.OrderProdIdx
                         join {$this->_table['order']} o3 on op3.OrderIdx = o3.OrderIdx
                         join {$this->_table['sys_code']} sc3 on mr3.TakeForm = sc3.Ccd
-                    WHERE mr3.IsStatus = 'Y' AND mr3.ProdCode = MP.ProdCode AND mr3.TakeForm = '{$this->_ccd['applyType_on']}' and op3.PayStatusCcd='{$this->_ccd['paid_pay_status']}'
+                    WHERE mr3.IsStatus = 'Y' AND mr3.ProdCode = MP.ProdCode AND mr3.TakeForm = '{$this->mockCommonModel->_ccd['applyType_on']}' and op3.PayStatusCcd='{$this->mockCommonModel->_ccd['paid_pay_status']}'
                 ) AS OnlineRegCnt,
                 (
                     SELECT COUNT(mr4.MemIdx) 
@@ -125,7 +95,7 @@ class RegGoodsModel extends WB_Model
                         join {$this->_table['order_product']} op4 on mr4.OrderProdIdx = op4.OrderProdIdx
                         join {$this->_table['order']} o4 on op4.OrderIdx = o4.OrderIdx 
                         join {$this->_table['sys_code']} sc4 on mr4.TakeForm = sc4.Ccd
-                    WHERE mr4.IsStatus = 'Y' AND mr4.ProdCode = MP.ProdCode AND mr4.TakeForm = '{$this->_ccd['applyType_off']}' and op4.PayStatusCcd='{$this->_ccd['paid_pay_status']}'
+                    WHERE mr4.IsStatus = 'Y' AND mr4.ProdCode = MP.ProdCode AND mr4.TakeForm = '{$this->mockCommonModel->_ccd['applyType_off']}' and op4.PayStatusCcd='{$this->mockCommonModel->_ccd['paid_pay_status']}'
                 ) AS OfflineRegCnt
             ";
         }
@@ -138,7 +108,7 @@ class RegGoodsModel extends WB_Model
             FROM {$this->_table['mock_product']} AS MP
             INNER JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode
             INNER JOIN {$this->_table['product_r_cate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
-            INNER JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y' and PS.SaleTypeCcd='{$this->_ccd['sale_type']}'
+            INNER JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y' and PS.SaleTypeCcd='{$this->mockCommonModel->_ccd['sale_type']}'
             INNER JOIN {$this->_table['sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
             LEFT JOIN {$this->_table['sys_code']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
@@ -468,12 +438,12 @@ class RegGoodsModel extends WB_Model
                 'ProdCode' => $this->_prod_code,
                 'SiteCode' => element('siteCode', $form_data),
                 'ProdName' => element('ProdName', $form_data),
-                'ProdTypeCcd' => $this->_ccd['sysCode_ProdTypeCcd'],
+                'ProdTypeCcd' => $this->mockCommonModel->_ccd['sysCode_ProdTypeCcd'],
                 'SaleStartDatm' => element('SaleStartDatm_d', $form_data) .' '. element('SaleStartDatm_h', $form_data) .':'. element('SaleStartDatm_m', $form_data) .':00',
                 'SaleEndDatm' => element('SaleEndDatm_d', $form_data) .' '. element('SaleEndDatm_h', $form_data) .':'. element('SaleEndDatm_m', $form_data) .':59',
-                'SaleStatusCcd' => $this->_ccd['sysCode_SaleStatusCcd'],
+                'SaleStatusCcd' => $this->mockCommonModel->_ccd['sysCode_SaleStatusCcd'],
                 'IsPoint' => 'N',
-                'PointApplyCcd' => $this->_ccd['sysCode_PointApplyCcd'],
+                'PointApplyCcd' => $this->mockCommonModel->_ccd['sysCode_PointApplyCcd'],
                 'PointSavePrice' => '0',
                 'PointSaveType' => 'R',
                 'IsSms' => element('IsSms', $form_data),
@@ -529,7 +499,7 @@ class RegGoodsModel extends WB_Model
         try {
             $data = [
                 'ProdCode' => $this->_prod_code,
-                'SaleTypeCcd' => $this->_ccd['sysCode_SaleTypeCcd'],
+                'SaleTypeCcd' => $this->mockCommonModel->_ccd['sysCode_SaleTypeCcd'],
                 'SalePrice' => element('SalePrice', $form_data),
                 'SaleRate' => element('SaleRate', $form_data),
                 'SaleDiscType' => element('SaleDiscType', $form_data),

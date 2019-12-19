@@ -381,6 +381,7 @@
     <li>
         <div>  
             <ul>          
+                <li><a href="{{ site_url('/home/html/mypage_pass_index_oldMypage') }}" target="_blank">내강의실 > 이전 사이트 내강의실 팝업</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_pass_index') }}" target="_blank">내강의실 > 무한PASS존 Index</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_pass1') }}" target="_blank">내강의실 > 무한PASS존</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_pass2') }}" target="_blank">내강의실 > 무한PASS존 > 수강중인 강좌</a></li>

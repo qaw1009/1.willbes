@@ -72,21 +72,14 @@
         <div class="evtCtnsBox evt02">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/12/1472_02.jpg" title="신청 및 출발안내"></div>
             <div class="evt02_02" id="event" >
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1472_04.jpg" usemap="#Map1472y" title="입교버스 지역별 신청" border="0">
+            <span class="evt02_02 finish">마감</span>
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1472_04s.jpg" usemap="#Map1472y" title="입교버스 지역별 신청" border="0">
                 <map name="Map1472y" id="Map1472y">
                     <area shape="rect" coords="495,484,593,515" href="https://police.willbes.net/pass/campus/show/code/605003" target="_blank" alt="부산캠퍼스" />
                 @foreach($arr_base['register_member_list'] as $key => $val)
                     <span>
                         @if($val['RegisterExpireStatus'] == 'Y')
-                            @if($val['PersonLimitType'] != 'L')
-                                <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
-                            @else
-                                @if($val['PersonLimit'] > $val['mem_cnt'])
-                                    <a href="javascript:requestOpen('{{ $key }}');">신청하기 > </a>
-                                @else
-                                    <a href="#none" class="end">신청마감</a>
-                                @endif
-                            @endif
+                          
                         @else
                             @if($key == '213')
                                 <a href="{{app_url('/pass/support/notice/show?board_idx=222649', 'police')}}">캠퍼스문의</a>

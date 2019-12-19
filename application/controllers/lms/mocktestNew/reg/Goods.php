@@ -1,11 +1,4 @@
 <?php
-/**
- * ======================================================================
- * 모의고사등록 > 모의고사상품등록
- * ======================================================================
- *
- * lms_Product_Mock, lms_Product_Mock_R_Paper, lms_Product, lms_Product_R_Category, lms_Product_Sale, lms_Product_Sms DB에 나눠서 분리 저장
- */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/mocktestNew/BaseMocktest.php';
@@ -27,28 +20,28 @@ class Goods extends BaseMocktest
         $def_site_code = key($arr_site_code);
         $arr_base['cateD1'] = $this->getCategoryArray();
         $arr_base['cateD2'] = $this->getMockKind(false);
-        $codes = $this->codeModel->getCcdInArray([$this->regGoodsModel->_groupCcd['applyType'], $this->regGoodsModel->_groupCcd['acceptStatus']]);
+        $codes = $this->codeModel->getCcdInArray([$this->mockCommonModel->_groupCcd['applyType'], $this->mockCommonModel->_groupCcd['acceptStatus']]);
 
         $this->load->view('mocktestNew/reg/goods/index', [
             'arr_site_code' => $arr_site_code,
             'def_site_code' => $def_site_code,
             'arr_base' => $arr_base,
-            'applyType' => $codes[$this->regGoodsModel->_groupCcd['applyType']],
-            'accept_ccd' => $codes[$this->regGoodsModel->_groupCcd['acceptStatus']],
+            'applyType' => $codes[$this->mockCommonModel->_groupCcd['applyType']],
+            'accept_ccd' => $codes[$this->mockCommonModel->_groupCcd['acceptStatus']],
         ]);
     }
 
     public function listAjax()
     {
         $accept_status_where = '';
-        if($this->_reqP('search_AcceptStatus') == $this->regGoodsModel->_ccd['acceptStatus_expected']){
+        if($this->_reqP('search_AcceptStatus') == $this->mockCommonModel->_ccd['acceptStatus_expected']){
             $search_date1 = '(PD.SaleStartDatm > "';
             $search_date2 = date('Y-m-d H:i:s') . '")';
-        } else if($this->_reqP('search_AcceptStatus') == $this->regGoodsModel->_ccd['acceptStatus_available']) {
+        } else if($this->_reqP('search_AcceptStatus') == $this->mockCommonModel->_ccd['acceptStatus_available']) {
             $search_date1 = '(PD.SaleStartDatm <= "';
             $search_date2 = date('Y-m-d H:i:s') . '" AND PD.SaleEndDatm > "' . date('Y-m-d H:i:s') . '")';
             $accept_status_where = '>';
-        } else if($this->_reqP('search_AcceptStatus') == $this->regGoodsModel->_ccd['acceptStatus_end']) {
+        } else if($this->_reqP('search_AcceptStatus') == $this->mockCommonModel->_ccd['acceptStatus_end']) {
             $search_date1 = '(PD.SaleEndDatm <= "';
             $search_date2 = date('Y-m-d H:i:s') . '")';
             $accept_status_where = '<=';
@@ -85,35 +78,35 @@ class Goods extends BaseMocktest
         ];
 
         //응시형태(오프라인) + 접수진행중, 접수마감 조건
-        if ($this->_reqP('search_TakeFormsCcd') == $this->regGoodsModel->_ccd['applyType_off'] && empty($accept_status_where) === false) {
+        if ($this->_reqP('search_TakeFormsCcd') == $this->mockCommonModel->_ccd['applyType_off'] && empty($accept_status_where) === false) {
             $arr_condition['ORG2']['RAW'] = [
                 "select COUNT(mr4.MemIdx) FROM lms_mock_register mr4
                     OIN lms_order_product op4 ON mr4.OrderProdIdx = op4.OrderProdIdx
                     JOIN lms_order o4 ON op4.OrderIdx = o4.OrderIdx 
                     JOIN lms_sys_code sc4 ON mr4.TakeForm = sc4.Ccd
-                    WHERE mr4.IsStatus = 'Y' AND mr4.ProdCode = MP.ProdCode AND mr4.TakeForm = '{$this->regGoodsModel->_ccd['applyType_off']}' AND op4.PayStatusCcd = '{$this->regGoodsModel->_ccd['paid_pay_status']}'
+                    WHERE mr4.IsStatus = 'Y' AND mr4.ProdCode = MP.ProdCode AND mr4.TakeForm = '{$this->mockCommonModel->_ccd['applyType_off']}' AND op4.PayStatusCcd = '{$this->mockCommonModel->_ccd['paid_pay_status']}'
                 )" => " {$accept_status_where}
                  ( select
                     COUNT(mr2.MemIdx) FROM lms_mock_register mr2
                     JOIN lms_order_product op2 ON mr2.OrderProdIdx = op2.OrderProdIdx
                     JOIN lms_order o2 ON op2.OrderIdx = o2.OrderIdx 
                     JOIN lms_sys_code sc2 ON mr2.TakeForm = sc2.Ccd
-                    WHERE mr2.IsStatus = 'Y' AND mr2.IsTake = 'Y' AND mr2.ProdCode = MP.ProdCode AND mr2.TakeForm = '{$this->regGoodsModel->_ccd['applyType_off']}' AND op2.PayStatusCcd = '{$this->regGoodsModel->_ccd['paid_pay_status']}'
+                    WHERE mr2.IsStatus = 'Y' AND mr2.IsTake = 'Y' AND mr2.ProdCode = MP.ProdCode AND mr2.TakeForm = '{$this->mockCommonModel->_ccd['applyType_off']}' AND op2.PayStatusCcd = '{$this->mockCommonModel->_ccd['paid_pay_status']}'
                 "
             ];
         }
 
         $data = [];
-        $count = $this->regGoodsModel->mainList(true, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+        $count = $this->regGoodsModel->mainList(true, $arr_condition);
         if ($count > 0) {
             $data = $this->regGoodsModel->mainList(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
 
             // 데이터 가공
-            $mockKindCode = $this->regGoodsModel->_groupCcd['sysCode_kind'];    //직렬 운영코드값
+            $mockKindCode = $this->mockCommonModel->_groupCcd['sysCode_kind'];    //직렬 운영코드값
             $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
 
-            $applyType_on = $this->regGoodsModel->_ccd['applyType_on'];
-            $applyType_off = $this->regGoodsModel->_ccd['applyType_off'];
+            $applyType_on = $this->mockCommonModel->_ccd['applyType_on'];
+            $applyType_off = $this->mockCommonModel->_ccd['applyType_off'];
 
             foreach ($data as &$it) {
                 $takeFormsCcds = explode(',', $it['TakeFormsCcd']);
@@ -152,20 +145,20 @@ class Goods extends BaseMocktest
         $arr_base['cateD1'] = $this->getCategoryArray();
         $arr_base['cateD2'] = $this->getMockKind(false);
         $codes = $this->codeModel->getCcdInArray([
-            $this->regGoodsModel->_groupCcd['applyType'],
-            $this->regGoodsModel->_groupCcd['applyArea1'],
-            $this->regGoodsModel->_groupCcd['applyArea2'],
-            $this->regGoodsModel->_groupCcd['addPoint'],
-            $this->regGoodsModel->_groupCcd['acceptStatus']
+            $this->mockCommonModel->_groupCcd['applyType'],
+            $this->mockCommonModel->_groupCcd['applyArea1'],
+            $this->mockCommonModel->_groupCcd['applyArea2'],
+            $this->mockCommonModel->_groupCcd['addPoint'],
+            $this->mockCommonModel->_groupCcd['acceptStatus']
         ]);
-        $arr_base['applyType_on'] = $this->regGoodsModel->_ccd['applyType_on'];
-        $arr_base['applyType_off'] = $this->regGoodsModel->_ccd['applyType_off'];
-        $arr_base['apply_type'] = $codes[$this->regGoodsModel->_groupCcd['applyType']];
-        $arr_base['apply_area1'] = $codes[$this->regGoodsModel->_groupCcd['applyArea1']];
-        $arr_base['apply_area2'] = $codes[$this->regGoodsModel->_groupCcd['applyArea2']];
-        $arr_base['add_point'] = $codes[$this->regGoodsModel->_groupCcd['addPoint']];
-        $arr_base['acceptStatus'] = $codes[$this->regGoodsModel->_groupCcd['acceptStatus']];
-        $arr_base['send_callback_ccd'] = $this->codeModel->getCcd($this->regGoodsModel->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
+        $arr_base['applyType_on'] = $this->mockCommonModel->_ccd['applyType_on'];
+        $arr_base['applyType_off'] = $this->mockCommonModel->_ccd['applyType_off'];
+        $arr_base['apply_type'] = $codes[$this->mockCommonModel->_groupCcd['applyType']];
+        $arr_base['apply_area1'] = $codes[$this->mockCommonModel->_groupCcd['applyArea1']];
+        $arr_base['apply_area2'] = $codes[$this->mockCommonModel->_groupCcd['applyArea2']];
+        $arr_base['add_point'] = $codes[$this->mockCommonModel->_groupCcd['addPoint']];
+        $arr_base['acceptStatus'] = $codes[$this->mockCommonModel->_groupCcd['acceptStatus']];
+        $arr_base['send_callback_ccd'] = $this->codeModel->getCcd($this->mockCommonModel->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
         $data = $sData = $prod_code = null;
         $data_memo = $data_auto_coupon = [];
@@ -263,7 +256,7 @@ class Goods extends BaseMocktest
             ['field' => 'chapterDel[]', 'label' => 'dIDX', 'rules' => 'trim|is_natural_no_zero']
         ];
 
-        if (empty($this->_reqP('TakeFormsCcd[]')) === false && in_array($this->regGoodsModel->_ccd['applyType_off'], $this->_reqP('TakeFormsCcd[]')) === true) {
+        if (empty($this->_reqP('TakeFormsCcd[]')) === false && in_array($this->mockCommonModel->_ccd['applyType_off'], $this->_reqP('TakeFormsCcd[]')) === true) {
             $rules = array_merge($rules, [
                 ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|required|is_natural_no_zero'],
                 ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|required|is_natural_no_zero'],

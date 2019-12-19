@@ -7755,10 +7755,13 @@ ul li.profList .willbes-Layer-ProfileBox {
     line-height: 25px;
 }
 .MyInfoBoxList .List-Table li a {
-    width: auto;
+    width:95%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis;
+    display:inline-block;
 }
-.MyInfoBoxList .List-Table li a img {
-    margin: -4px 0 0 5px;
+
+.MyInfoBoxList .List-Table li img {
+    vertical-align: top;
+    margin-top: 7px;
 }
 .MyInfoBoxList .List-Table.myTablet {
     background: url("../../img/willbes/mypage/icon_pc_n.png") no-repeat -20px 4px;

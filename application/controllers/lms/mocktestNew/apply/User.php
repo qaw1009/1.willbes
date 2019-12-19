@@ -6,7 +6,7 @@ require APPPATH . 'controllers/lms/mocktestNew/BaseMocktest.php';
 class User extends BaseMocktest
 {
     protected $temp_models = array('mocktestNew/applyUser');
-    protected $helpers = array('url');
+    protected $helpers = array();
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()

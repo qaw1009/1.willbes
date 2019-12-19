@@ -16,7 +16,6 @@
             ${"MemoTypeCcd_".$row['MemoTypeCcd']} = $row['Memo'];
             //echo  ${"MemoTypeCcd_".$row['MemoTypeCcd']};
         }
-
     @endphp
 
     <h5>- 학원 종합반 상품 정보를 관리하는 메뉴입니다.</h5>
@@ -164,11 +163,9 @@
                     <label class="control-label col-md-2" for="StudyPatternCcd">수강형태 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
-
-                            @foreach($studypattern_ccd as $key => $val)
-                                <input type="radio" name="StudyPatternCcd" id="StudyPatternCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 1) || $data['StudyPatternCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
-                            @endforeach
-
+                        @foreach($studypattern_ccd as $key => $val)
+                            <input type="radio" name="StudyPatternCcd" id="StudyPatternCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 1) || $data['StudyPatternCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                        @endforeach
                     </div>
                 </div>
 
@@ -176,9 +173,9 @@
                     <label class="control-label col-md-2" for="StudyApplyCcd">수강신청구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
-                            @foreach($studyapply_ccd as $key => $val)
-                                <input type="radio" name="StudyApplyCcd" id="StudyApplyCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 3) || $data['StudyApplyCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
-                            @endforeach
+                        @foreach($studyapply_ccd as $key => $val)
+                            <input type="radio" name="StudyApplyCcd" id="StudyApplyCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 3) || $data['StudyApplyCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                        @endforeach
                     </div>
                     <label class="control-label col-md-2" for="FixNumber">정원 <span class="required">*</span>
                     </label>
@@ -504,10 +501,22 @@
                     <label class="control-label col-md-2" for="IsCoupon">쿠폰사용결제 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
-                        <div class="radio">
-                            <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCoupon']=='Y')checked="checked"@endif/> 가능
+                        <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCoupon']=='Y')checked="checked"@endif/> 가능
+                        &nbsp;
+                        <input type="radio" name="IsCoupon" class="flat" value="N" @if($method == 'POST' || $data['IsCoupon']=='N')checked="checked"@endif/> 불가능
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsCoupon">강사배정기간
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="item inline-block">
+                            <input type="text" name="ProfChoiceStartDate" id="ProfChoiceStartDate" value="@if($method==='PUT'){{$data['ProfChoiceStartDate']}}@endif" class="form-control datepicker" title="강사배정기간" style="width:100px;" >
+                            ~
+                            <input type="text" name="ProfChoiceEndDate" id="ProfChoiceEndDate" value="@if($method==='PUT'){{$data['ProfChoiceEndDate']}}@endif"  class="form-control datepicker" title="강사배정기간" style="width:100px;" >
                             &nbsp;
-                            <input type="radio" name="IsCoupon" class="flat" value="N" @if($method == 'POST' || $data['IsCoupon']=='N')checked="checked"@endif/> 불가능
+                            • 선택형(강사배정) 의 경우 필수 설정
                         </div>
                     </div>
                 </div>
@@ -845,14 +854,7 @@
                 }
                 $(this).blur();
                 if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
-                    /*
-                    $("#selected_category").html("");
-                    $("#teacherDivision tbody").remove();
-                    $("#lecList tbody").remove();
-                    sitecode_chained($(this).val());    //과정.과목 재조정
-                    */
                     location.reload();
-
                 } else {
                     $(this).val(prev_val);
                     return false;
@@ -1025,7 +1027,6 @@
                 if( $("input[name='essLecAddCheck[]']").length == 0) {
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
                 }
-
                 if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {
                     if ($("#PackSelCount").val() == "") {
                         alert('선택과목 선택개수 입력하여 주십시오.');
@@ -1035,6 +1036,12 @@
                     if ($("input[name='selLecAddCheck[]']").length == 0) {
                         alert('선택과목강좌구성을 선택하여 주십시오.');
                         $('#selLecAdd').focus();
+                        return;
+                    }
+                } else if($('input:radio[name="PackTypeCcd"]:checked').val() == '648003') {
+                    if ($("#ProfChoiceStartDate").val() == "" || $("#ProfChoiceEndDate").val() == "") {
+                        alert('강사배정기간을 입력하여 주십시오.');
+                        $('#ProfChoiceStartDate').focus();
                         return;
                     }
                 }
@@ -1086,7 +1093,6 @@
             }
 
             if($('#ProdDivisionPrice_'+strGubun).val() != '') {
-
                 //---   기존 단수처리 항목이 존재할경우 초기화 처리
                 remainValue = parseFloat($("#rateRemain").val());
                 //기존 선택 교수코드
@@ -1187,5 +1193,4 @@
         $('#rateRemainProfIdx').val('{{$rateRemainProfIdx}}');
         @endif
     </script>
-
 @stop

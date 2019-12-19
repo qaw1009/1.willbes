@@ -21,6 +21,9 @@
 
         /************************************************************/
 
+        .skybanner {position:fixed; top:200px; right:0; z-index:1;}
+        .skybanner ul li {padding-bottom:10px;}
+
         .evt_top {position:relative; overflow:hidden;  background:#000 url("https://static.willbes.net/public/images/promotion/2019/11/1451_top_bg.jpg") center top  no-repeat}
         .evt_01 {background:#f7f7f7}
         .evt_02 {background:#095e4b;}
@@ -57,22 +60,18 @@
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}
 
-        .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
-        .skybanner ul li {padding-bottom:5px;}
-
   </style>
 
   <div class="p_re evtContent NGR" id="evtContainer">
-    {{--
+  
     <div class="skybanner">
       <ul>
-          <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=274" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/11/1451_s1.jpg"  title="설명회" /></a></li>
-          <li><a href="https://pass.willbes.net/pass/consultManagement/index" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/11/1451_s2.jpg"  title="학원방문상담" /></a></li>
-          <li><a href="https://pf.kakao.com/_kcZIu" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/11/1451_s3.jpg" title="카카오상담하기" /></a></li>
-		  <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1101" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/11/1451_s4.jpg"  title="윌비스통생반" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1427" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1451_sky.png"  title="이상구 패권반" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=국어&tab=open_lecture" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2019/12/1451_sky2.png"  title="기미진 기특한 국어" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=영어&tab=open_lecture" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1451_sky3.png" title="한덕혁 제니스 영어" /></a></li>		
       </ul>
     </div>
-    --}} 
+ 
 
     <div class="evtCtnsBox evt_top">
         <img src="https://static.willbes.net/public/images/promotion/2019/11/1451_top.jpg" title="7급 Beginners’ Class" />

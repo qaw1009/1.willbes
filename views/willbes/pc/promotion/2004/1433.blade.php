@@ -21,6 +21,9 @@
 
         /************************************************************/
 
+        .skybanner {position:fixed; top:200px; right:0; z-index:1;}
+        .skybanner ul li {padding-bottom:10px;}
+
         .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2019/10/1433_top_bg.jpg")center top  no-repeat}
 
         .wb_cts02,.wb_cts04 {background:#e8e7e5}
@@ -73,6 +76,13 @@
   </style>
 
    <div class="p_re evtContent NGR" id="evtContainer">
+
+   <div class="skybanner">
+      <ul>
+          <li><a href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=국어&tab=open_lecture" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1451_sky2.png"  title="기미진 기특한 국어" /></a></li>
+          <li><a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=영어&tab=open_lecture" target="_blank" ><<img src="https://static.willbes.net/public/images/promotion/2019/12/1451_sky3.png" title="한덕혁 제니스 영어" /></a></li>	
+      </ul>
+    </div>
 
     <div class="evtCtnsBox wb_cts01">
         <img src="https://static.willbes.net/public/images/promotion/2019/10/1433_top.jpg" title="올백 문제풀이반" />

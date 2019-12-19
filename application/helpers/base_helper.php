@@ -269,6 +269,19 @@ if (!function_exists('get_app_var')) {
     }
 }
 
+if (!function_exists('get_arr_var')) {
+    /**
+     * 배열값이 빈값일 경우 default 배열 리턴
+     * @param $arr
+     * @param string $default
+     * @return array
+     */
+    function get_arr_var($arr, $default = '')
+    {
+        return empty($arr) === false ? (array) $arr : (array) $default;
+    }
+}
+
 if (!function_exists('get_domain_to_url')) {
     /**
      * URL에서 서브 도메인을 제외한 메인 도메인 추출

@@ -33,10 +33,14 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .evtTop {background:#2c0204 url(https://static.willbes.net/public/images/promotion/2019/12/1470_top_bg.jpg) no-repeat center top; position:relative}  
+        .evtTop {background:#282c34 url(https://static.willbes.net/public/images/promotion/2019/12/1470_top_police_bg.jpg) no-repeat center top; position:relative}  
         .evtTop span { position:absolute; top:419px; left:50%; width:513px; margin-left:-256px}
 
-        .evt01 {background:#6da403 url(https://static.willbes.net/public/images/promotion/2019/12/1470_01_bg.jpg) no-repeat center top;}
+        .evt01 {background:#771417 url(https://static.willbes.net/public/images/promotion/2019/12/1470_tops_bg.jpg) no-repeat center top;}
+
+        .evt01s{background:#4d79f6;}
+
+        .evt01ss{background:#fff;}
         
         .evt02 {background:#ebebeb;}
 
@@ -46,11 +50,13 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <ul class="skyBanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_sky.png" usemap="#Map1470sky" title="pass 구매하기" border="0">
-            <map name="Map1470sky" id="Map1470sky">
-                <area shape="rect" coords="1,1,190,155" href="#event" alt="이벤트" />
-                <area shape="rect" coords="1,162,189,312" href="#pass" alt="신청하기" />
-            </map>          
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_skys.png" usemap="#Map1470skys" border="0">
+            <map name="Map1470skys" id="Map1470skys">
+                <area shape="rect" coords="1,0,217,144" href="#event" alt="이벤트" />
+                <area shape="rect" coords="3,150,195,311" href="#pass" alt="신청하기" />
+                <area shape="rect" coords="6,318,193,362" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1471" target="_blank" alt="학원 끝장 pass 구매하기" />
+                <area shape="rect" coords="4,370,194,413" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" alt="온라인 패스 구매하기" />
+            </map>                
         </ul>
 
         <!-- 타이머 -->
@@ -80,17 +86,24 @@
         </div>
 
         <div class="evtCtnsBox evtTop">                
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_top.jpg" title="절호의 기회">   
-            <span><img src="https://static.willbes.net/public/images/promotion/2019/12/1470_topimg.gif" title="마감주의"></span>        
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_top_police.jpg" title="마지막 기회">
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_01.jpg" title="정상급 라인업">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_tops.jpg" title="선착순 마감주의">
+        </div>
+
+        <div class="evtCtnsBox evt01s">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_benefit.jpg" title="역대급 혜택모음">
+        </div>
+
+        <div class="evtCtnsBox evt01ss">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_benefits.jpg" title="증정">
         </div>
 
         <div class="evtCtnsBox evt02">         
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_02.jpg" title="윌비스 신광은 경찰팀">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_02s.jpg" usemap="#Map1470a" border="0" id="pass">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_02ss.jpg" usemap="#Map1470a" border="0" id="pass">
             <map name="Map1470a" id="Map1470a">
                 <area shape="rect" coords="164,523,554,665" href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" alt="온라인 pass 신청하기" />
                 <area shape="rect" coords="562,522,933,667" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1471" target="_blank" alt="학원 pass 신청하기" />
@@ -98,7 +111,7 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_03.jpg" usemap="#Map1470b" title="신청하기" border="0" id="event">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_03s.jpg" usemap="#Map1470b" title="신청하기" border="0" id="event">
             <map name="Map1470b" id="Map1470b">
                 <area shape="rect" coords="496,2059,567,2163" href="http://cafe.daum.net/policeacademy" target="_blank" alt="경시모" />
                 <area shape="rect" coords="584,2058,664,2165" href="https://cafe.naver.com/polstudy" target="_blank" alt="경꿈사" />

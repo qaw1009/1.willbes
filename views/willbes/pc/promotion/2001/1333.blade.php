@@ -30,9 +30,11 @@
 .time {width:100%; text-align:center; background:#000}
 .time {text-align:center; padding:20px 0}
 .time table {width:1120px; margin:0 auto}
-.time table td:first-child {font-size:40px}
-.time table td img {width:80%}
+.time table td:first-child {/*font-size:40px*/}
+.time table td img {width:70%}
 .time .time_txt {font-size:28px; color:#fff; letter-spacing: -1px; font-weight:600}
+.time .time_txt a {font-size:14px; display:block; margin-top:10px; border:1px solid #fff; padding:5px; border-radius:15px}
+.time .time_txt a:hover {background:#fff; color:#000}
 .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
 .time p {text-alig:center}
 @@keyframes upDown{
@@ -79,9 +81,8 @@ to{color:#d63e4d}
         <div class="evtCtnsBox time NGEB"  id="newTopDday">
             <div>
                 <table>
-                    <tr>                        
-                        <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} </span>마감!</td>
-                        <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+                    <tr>                       
+                        <td class="time_txt">지금 구성 완전 마감까지</td>
                         <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                         <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                         <td class="time_txt">일 </td>
@@ -92,7 +93,8 @@ to{color:#d63e4d}
                         <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                         <td class="time_txt">:</td>
                         <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>                        
+                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">남았습니다.<br><a href="#evt02">지금 바로 신청하기 ></a></td>                     
                     </tr>
                 </table>                
             </div>
@@ -112,7 +114,7 @@ to{color:#d63e4d}
             </map>
         </div>  
 
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02.jpg" alt="즉시 4만원 할인">
             <ul>
                 <li><a href="#tab6">영어 하승민</a></li>

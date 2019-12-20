@@ -26,19 +26,19 @@
         .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}        
 
         .wb_top {background:#242b35; padding-bottom:150px}
-        .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
-        .wb_top .passLecBuy ul {position:absolute; top:1300px; left:128px; z-index:10}
-        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; padding-left:15px}
-        .wb_top .passLecBuy li:nth-child(1) {width:190px}
-        .wb_top .passLecBuy li:nth-child(2) {width:190px}
-        .wb_top .passLecBuy li:nth-child(3) {width:254px}
-        .wb_top .passLecBuy li:nth-child(4) {width:364px}
-        .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:16px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 20px 20px 20px; width:90%;}
-        .wb_top .passLecBuy li:last-child div {background:#0d3692; width:80%} /*컬러변경*/
+        .wb_top .passLecBuy {position:relative; width:1120px; margin:0 auto}
+        .wb_top .passLecBuy ul {position:absolute; top:1320px; left:84px; z-index:10}
+        .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; }
+        .wb_top .passLecBuy li:nth-child(1) {width:227px}
+        .wb_top .passLecBuy li:nth-child(2) {width:228px}
+        .wb_top .passLecBuy li:nth-child(3) {width:228px}
+        .wb_top .passLecBuy li:nth-child(4) {width:271px}
+        .wb_top .passLecBuy li div {font-size:14px; font-weight:bold; background:#000; color:#fff; text-align:left; padding:15px; border-radius:0 10px 10px 10px; margin:0 10px}
+        .wb_top .passLecBuy li:last-child div {background:#0d3692;} /*컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-size:16px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}        
-        .wb_top input[type="radio"] {height:24px; width:24px; vertical-align:middle}
+        .wb_top input[type="radio"] {height:18px; width:18px; vertical-align:middle}
         .wb_top input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
         .wb_top input:checked + label {border-bottom:1px dashed #fff} /*컬러변경*/
         .wb_top .passLecBuy span {position:absolute; top:1070px; left:222px; z-index:10; font-size:16px; color:#000}
@@ -224,43 +224,51 @@
             <div class="passLecBuy">
                 <ul>
                     <li>
-                        <div><input type="radio" id="y_pkg1" name="y_pkg" value="158405" onClick=""/> <label for="y_pkg1"><strong>49</strong>만원</label></div>
-                    </li>
-                    <li>
-                        <div><input type="radio" id="y_pkg4" name="y_pkg" value="158784" onClick=""/> <label for="y_pkg4"><strong>79</strong>만원</label></div>
+                        <div>
+                        <strong>69</strong>만원<br>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="156810" onClick=""/> <label for="y_pkg1">6개월 PASS</label>
+                        </div>
                     </li>
                     <li>
                         <div>
-                            <strong>99</strong>만원<br>
-                            <input type="radio" id="y_pkg2_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg2_1">+기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg2_2" name="y_pkg" value="158494" onClick=""/> <label for="y_pkg2_2">+기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg2_3" name="y_pkg" value="158495" onClick=""/> <label for="y_pkg2_3">+기본서 set (경행경채)</label><br>
+                            <strong>89</strong>만원<br>
+                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="159116" onClick=""/> <label for="y_pkg4_1">기본서set(오태진史)</label><br>
+                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="159117" onClick=""/> <label for="y_pkg4_2">기본서set(원유철史)</label><br>
+                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="159118" onClick=""/> <label for="y_pkg4_3">기본서set(경행경채)</label><br>
+                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="159119" onClick=""/> <label for="y_pkg4_4">10만원 즉시할인</label><br>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>115</strong>만원<br>
+                            <input type="radio" id="y_pkg2_1" name="y_pkg" value="159120" onClick=""/> <label for="y_pkg2_1">기본서set(오태진史)</label><br>
+                            <input type="radio" id="y_pkg2_2" name="y_pkg" value="159121" onClick=""/> <label for="y_pkg2_2">기본서set(원유철史)</label><br>
+                            <input type="radio" id="y_pkg2_3" name="y_pkg" value="159122" onClick=""/> <label for="y_pkg2_3">기본서set(경행경채)</label><br>
+                            <input type="radio" id="y_pkg2_4" name="y_pkg" value="159123" onClick=""/> <label for="y_pkg2_4">10만원 즉시할인</label><br>
                         </div>
                     </li>
                     <li>
                         <div>
                             <strong>131</strong>만원<br>
-                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="158490" onClick=""/> <label for="y_pkg3_1">+기본서 set (오태진史)</label><br>
-                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="158491" onClick=""/> <label for="y_pkg3_2">+기본서 set (원유철史)</label><br>
-                            <input type="radio" id="y_pkg3_3" name="y_pkg" value="158492" onClick=""/> <label for="y_pkg3_3">+기본서 set (경행경채)</label><br>
+                            <input type="radio" id="y_pkg3_1" name="y_pkg" value="158490" onClick=""/> <label for="y_pkg3_1">기본서set(오태진史)</label><br>
+                            <input type="radio" id="y_pkg3_2" name="y_pkg" value="158491" onClick=""/> <label for="y_pkg3_2">기본서set(원유철史)</label><br>
+                            <input type="radio" id="y_pkg3_3" name="y_pkg" value="158492" onClick=""/> <label for="y_pkg3_3">기본서set(경행경채)</label><br>
+                            <input type="radio" id="y_pkg3_4" name="y_pkg" value="159124" onClick=""/> <label for="y_pkg3_4">10만원 즉시할인</label><br>
                         </div>
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_02_191217.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_02_191220.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
-                        <area shape="rect" coords="165,982,239,999" href="javascript:go_popup()" alt="4개월" />
-						<area shape="rect" coords="531,979,599,1000" href="javascript:go_popup()" alt="14개월" />
-                        <area shape="rect" coords="788,981,855,998" href="javascript:go_popup1()" alt="전과목" />
+                        <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
                         <area shape="rect" coords="566,492,742,535" href="javascript:goDesc('tab3')" alt="환승이벤트 참여방법" />
-                        <area shape="rect" coords="348,979,423,998" href="javascript:go_popup()" alt="10개월"  />
                     </map>
                 </div>
                 <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_03_191217.jpg"  alt="체력" usemap="#Map1009B"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_03_191220.jpg"  alt="체력" usemap="#Map1009B"/>
                     <map name="Map1009B" id="Map1009B">
-                        <area shape="rect" coords="604,574,736,624" href="https://police.willbes.net/promotion/index/cate/3001/code/1030" target="_blank" alt="경찰체력패키지" />
+                        <area shape="rect" coords="604,597,736,647" href="https://police.willbes.net/promotion/index/cate/3001/code/1030" target="_blank" alt="경찰체력패키지" />
                     </map>
                 </div>
             </div>
@@ -337,7 +345,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">4,10,14개월 PASS</a></li>
+                <li><a href="#tab1">6,12,18개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
@@ -362,31 +370,34 @@
                     <dd>
                         <ol>
                             <li>
-                            구성 및 환불14개월 패스 구매시 기본서 교재 5권 무료제공 (배송비 무료)<br>
-                            -선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
-                            -선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
-                            -선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
-                            -결제 후 교재 순차배송 진행.<br>
-                            -사은품 교재 변경 불가<br>
+                            구성 및 환불<br>
+                            - 12,18개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
+                            - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
+                            - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
+                            - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
+                            - 결제 후 교재 순차배송 진행.<br>
+                            - 사은품 교재 변경 불가<br>
                             <br>
                             *패스 강좌 환불시  아래와 같이 환불처리 진행됨<br>
                              ① 결제일로부터 10일 이내 환불경우:<br>
-                             -교재 미사용일 경우만 전액환불, 교재회수 후 환불 진행<br>
-                             -교재 사용일 경우 교재비 정가 차감 후 환불 진행 (랩핑제거/사용시 반품 불가)<br>
-                             -교재 반환시 왕복배송비는 회원부담.<br>
-                             -미사용교재 반송시 환불은 교재 상태를 확인 후 환불 진행 됩니다.<br>
+                             - 교재 미사용일 경우만 전액환불, 교재회수 후 환불 진행<br>
+                             - 교재 사용일 경우 교재비 정가 차감 후 환불 진행 (랩핑제거/사용시 반품 불가)<br>
+                             - 교재 반환시 왕복배송비는 회원부담.<br>
+                             - 미사용교재 반송시 환불은 교재 상태를 확인 후 환불 진행 됩니다.<br>
                              ② 결제일로부터 10일 이후 패스는 정가기준으로 기간 차감 후 환불진행, 교재는 반품(환불)불가<br>
                              <br>
                             [교재비 차감시 가격]<br>
-                            -신광은 형사소송법 (신정9판): 47,000원,     -2019 장정훈 경찰학개론: 36,000원,     -김원욱 형법 2.1 (기본서+부록): 49,000원<br>
-                            -하승민 하이힐영어(Grammar&Reading): 36,000원,     -2020 오태진 대각국사: 40,000원<br>
-                            -2020 원유철의 역사일지[전근대]: 23,000원,     -2020 원유철의 역사일지[근현대]: 20,000원<br>
-                            -신광은 수사(신정9판): 43,000원,     -이성호,장정훈 행정법총론(신정3판): 35,000원<br>
+                            - 신광은 형사소송법 (신정9판): 47,000원,     -2019 장정훈 경찰학개론: 36,000원,     -김원욱 형법 2.1 (기본서+부록): 49,000원<br>
+                            - 하승민 하이힐영어(Grammar&Reading): 36,000원,     -2020 오태진 대각국사: 40,000원<br>
+                            - 2020 원유철의 역사일지[전근대]: 23,000원,     -2020 원유철의 역사일지[근현대]: 20,000원<br>
+                            - 신광은 수사(신정9판): 43,000원,     -이성호,장정훈 행정법총론(신정3판): 35,000원<br>
                             <br>
                             (*환불시 공통사항)<br>
-                            -강의와 별도로 교재만 환불은 불가함<br>
-                            -강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다. 학습자료 및 모바일 다운로드 이용시 수강한 것으로 간주됩니다.<br>
-                            -고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)<br>
+                            - 강의와 별도로 교재만 환불은 불가함<br>
+                            - 강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다. 학습자료 및 모바일 다운로드 이용시 수강한 것으로 간주됩니다.<br>
+                            - 고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)<br>
+                            - 할인상품의 경우 할인 전 정가 기준으로 차감됩니다.<br>
+                            <br>
                             </li>
                             <li>교재 발송<br>
                             ① 12월 13일(금) 이후 순차 발송 진행됩니다. (내강의실 >결제관리>주문/배송조회에서 확인 가능)<br>
@@ -496,32 +507,32 @@
                         <ol>
                             <li>
                             구성 및 환불<br>
-                            0원 패스 구매시 기본서 교재 5권 무료제공 (배송비 무료)<br>
-                            -선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
-                            -선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
-                            -선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
-                            -결제 후 교재 순차배송 진행.<br>
-                            -사은품 교재 변경 불가<br>
+                            - 0원 패스 구매시 기본서 교재 5권 무료제공 (배송비 무료)<br>
+                            - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
+                            - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
+                            - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
+                            - 결제 후 교재 순차배송 진행.<br>
+                            - 사은품 교재 변경 불가<br>
                             <br>
-                            *패스 강좌 환불시  아래와 같이 환불처리 진행됨<br>
+                            * 패스 강좌 환불시  아래와 같이 환불처리 진행됨<br>
                             ① 결제일로부터 7일 이내 환불경우:<br>
-                            -교재 미사용일 경우만 전액환불, 교재회수 후 환불 진행<br>
-                            -교재 사용일 경우 교재비 차감 후 환불 진행 (랩핑제거/사용시 반품 불가)<br>
-                            -교재 반환시 왕복배송비는 회원부담.<br>
-                            -미사용교재 반송시 환불은 교재 상태를 확인 후 환불 진행 됩니다.<br>
+                            - 교재 미사용일 경우만 전액환불, 교재회수 후 환불 진행<br>
+                            - 교재 사용일 경우 교재비 차감 후 환불 진행 (랩핑제거/사용시 반품 불가)<br>
+                            - 교재 반환시 왕복배송비는 회원부담.<br>
+                            - 미사용교재 반송시 환불은 교재 상태를 확인 후 환불 진행 됩니다.<br>
                             ② 결제일로부터 7일 이후 패스는 정가기준으로 기간 차감 후 환불진행, 교재는 반품(환불)불가<br>
                             <br>
                             [교재비 차감시 가격]<br>
-                            -신광은 형사소송법 (신정9판): 47,000원,     -2019 장정훈 경찰학개론: 36,000원,     -김원욱 형법 2.1 (기본서+부록): 49,000원<br>
-                            -하승민 하이힐영어(Grammar&Reading): 36,000원,     -2020 오태진 대각국사: 40,000원<br>
-                            -2020 원유철의 역사일지[전근대]: 23,000원,     -2020 원유철의 역사일지[근현대]: 20,000원<br>
-                            -신광은 수사(신정9판): 43,000원,     -이성호,장정훈 행정법총론(신정3판): 35,000원 <br>
+                            - 신광은 형사소송법 (신정9판): 47,000원,     -2019 장정훈 경찰학개론: 36,000원,     -김원욱 형법 2.1 (기본서+부록): 49,000원<br>
+                            - 하승민 하이힐영어(Grammar&Reading): 36,000원,     -2020 오태진 대각국사: 40,000원<br>
+                            - 2020 원유철의 역사일지[전근대]: 23,000원,     -2020 원유철의 역사일지[근현대]: 20,000원<br>
+                            - 신광은 수사(신정9판): 43,000원,     -이성호,장정훈 행정법총론(신정3판): 35,000원 <br>
                             <br>
                             (*환불시 공통사항)<br>
-                            -강의와 별도로 교재만 환불은 불가함<br>
-                            -강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다. 학습자료 및 모바일 다운로드 이용시 수강한 것으로 간주됩니다.<br>
-                            -고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)<br>
-
+                            - 강의와 별도로 교재만 환불은 불가함<br>
+                            - 강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다. 학습자료 및 모바일 다운로드 이용시 수강한 것으로 간주됩니다.<br>
+                            - 고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 신광은경찰PASS 정가기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.(가산점 특강, 온라인모의고사 등 이용 시에도 차감)<br>
+                            - 할인상품의 경우 할인 전 정가 기준으로 차감됩니다.<br>
                             </li>
                             <li>
                             교재 발송<br>
@@ -637,7 +648,7 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_09_01_191217.jpg">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_09_01_191220.jpg">
                     </dt>
                 </dl>
             </div>

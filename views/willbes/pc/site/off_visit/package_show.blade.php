@@ -4,7 +4,7 @@
     <!-- Container -->
     <div id="Container" class="subContainer widthAuto c_both">
         <!-- site nav -->
-        @include('willbes.pc.layouts.partial.site_menu')
+        <!--@include('willbes.pc.layouts.partial.site_menu')//-->
 
         <form id="url_form" name="url_form" method="GET">
             @foreach($arr_input as $key => $val)

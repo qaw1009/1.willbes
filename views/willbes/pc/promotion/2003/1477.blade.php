@@ -20,7 +20,8 @@
 
         /************************************************************/
 
-        .wb_top {background:#2584ec url(https://static.willbes.net/public/images/promotion/2019/12/1477_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:#2584ec url(https://static.willbes.net/public/images/promotion/2019/12/1477_top_bg.jpg) no-repeat center top;position:relative;}
+        .gif_text img{position:absolute;left:50%;top:50%;margin-left:-422px;margin-top:47px;}
 
         .wb_cts01{background:#f1f1f1;position:relative;}
         .gif_area .lecture1{position:absolute;left:50%;top:50%;margin-left:-422px;margin-top:-147px;}
@@ -35,11 +36,14 @@
     <div class="p_re evtContent NGR" id="evtContainer">        
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1477_top.gif" alt="세법 고선미 티패스" usemap="#Map1477a" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1477_top.jpg" alt="세법 고선미 티패스" usemap="#Map1477a" border="0">
             <map name="Map1477a" id="Map1477a">
                 <area shape="rect" coords="70,718,323,776" href="https://pass.willbes.net/professor/show/cate/3022/prof-idx/50187/?subject_idx=1123&subject_name=%EC%84%B8%EB%B2%95" target="_blank" alt="교수님 홈 바로가기" />
                 <area shape="rect" coords="335,718,588,775" href="#apply" alt="수강신청 바로가기" />
-            </map>                         
+            </map>     
+            <div class="gif_text">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1477_top_txt.gif" alt="2020 서울/지방직까지 수강 가능!">
+            </div>                    
         </div>
 
         <div class="evtCtnsBox wb_cts01">

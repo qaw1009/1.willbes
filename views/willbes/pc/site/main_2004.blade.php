@@ -86,7 +86,7 @@
                         <a href="{{ front_url('/consultManagement/index') }}"><span>1:1 학습컨설팅</span></a>
                     </li>
                     <li class="w-infoBox2">
-                        <a href="{{ front_url('/OffVisitLecture') }}"><span>학원실강접수</span></a>
+                        <a href="{{ front_url('/OffVisitLecture') }}" target="_blank"><span>학원실강접수</span></a>
                     </li>
                     <li class="w-infoBox3">
                         <a href="{{ front_url('/offinfo/boardInfo/index/78') }}"><span>학원개강안내</span></a>

@@ -235,7 +235,7 @@
                             <input type="radio" id="y_pkg4_1" name="y_pkg" value="159116" onClick=""/> <label for="y_pkg4_1">기본서set(오태진史)</label><br>
                             <input type="radio" id="y_pkg4_2" name="y_pkg" value="159117" onClick=""/> <label for="y_pkg4_2">기본서set(원유철史)</label><br>
                             <input type="radio" id="y_pkg4_3" name="y_pkg" value="159118" onClick=""/> <label for="y_pkg4_3">기본서set(경행경채)</label><br>
-                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="159119" onClick=""/> <label for="y_pkg4_4">10만원 즉시할인</label><br>
+                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="159119" onClick=""/> <label for="y_pkg4_4">10만원 즉시할인</label><br>
                         </div>
                     </li>
                     <li>

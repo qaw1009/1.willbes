@@ -190,13 +190,13 @@
     <div id="tab11">
         <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c11.jpg" usemap="#Map1281_11" title="고선미" border="0"/>
         <map name="Map1281_11" id="Map1281_11">
-          <area shape="rect" coords="172,370,474,447" href="https://pass.willbes.net/periodPackage/show/cate/3022/pack/648001/prod-code/158484" target="_balnk">>
+          <area shape="rect" coords="172,370,474,447" href="https://pass.willbes.net/promotion/index/cate/3022/code/1477" target="_balnk">
         </map>
     </div>
     <div id="tab12">
         <img src="https://static.willbes.net/public/images/promotion/2019/12/1281_03_t_c12.jpg" usemap="#Map1281_12" title="김영훈" border="0"/>
         <map name="Map1281_12" id="MMap1281_12ap">
-          <area shape="rect" coords="173,369,467,450" href="https://pass.willbes.net/periodPackage/show/cate/3022/pack/648001/prod-code/158485" target="_balnk">
+          <area shape="rect" coords="173,369,467,450" href="https://pass.willbes.net/promotion/index/cate/3022/code/1478" target="_balnk">
         </map>    
     </div>
   </div>

@@ -33,7 +33,7 @@
 .time table td:first-child {/*font-size:40px*/}
 .time table td img {width:70%}
 .time .time_txt {font-size:28px; color:#fff; letter-spacing: -1px; font-weight:600}
-.time .time_txt a {font-size:14px; display:block; margin-top:10px; border:1px solid #fff; padding:5px; border-radius:10px}
+.time .time_txt a {font-size:14px; display:block; margin-top:10px; border:1px solid #fff; padding:5px; border-radius:15px}
 .time .time_txt a:hover {background:#fff; color:#000}
 .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
 .time p {text-alig:center}

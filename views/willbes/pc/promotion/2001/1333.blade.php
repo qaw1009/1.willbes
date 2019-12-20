@@ -82,7 +82,7 @@ to{color:#d63e4d}
             <div>
                 <table>
                     <tr>                       
-                        <td class="time_txt">지구 구성 완전 마감까지</td>
+                        <td class="time_txt">지금 구성 완전 마감까지</td>
                         <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                         <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                         <td class="time_txt">일 </td>

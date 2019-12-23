@@ -189,14 +189,42 @@
 }
 
 
+
 /* Main Container : Notice : noticeTabs */
-.cus .noticeTabs {
-    width: 345px !important;
-    float:left;
-    margin-right:40px;
+.cus .tabWrap.noticeWrap {
+    height: 16px;
+    border: none;
 }
-.cus .tabBox.noticeBox {
-    margin-top:-30px;   
+.cus .tabWrap.noticeWrap li {
+    float: left;
+    width: auto;
+    height: 16px;
+    margin-right: 10px;
+}
+.cus .tabWrap.noticeWrap li a {
+    display: block;
+    width: 100%;
+    height: 19px;
+    line-height: 19px;
+    font-size: 17px;
+    color: #c5c5c5;
+    text-align: center;
+    letter-spacing: 0;
+    border:none !important;
+    border-right:1px solid #999 !important;
+    padding-right: 10px;
+}
+.cus .tabWrap.noticeWrap li a.on {
+    height: 19px;
+    line-height: 19px;
+    font-weight: 600;
+    color: #b85712;
+    border:none !important;
+    border-right:1px solid #999 !important;
+}
+.cus .tabWrap.noticeWrap li:last-child a.on,
+.cus .tabWrap.noticeWrap li:last-child a {
+    border-right:none !important;
 }
 .cus .tabBox.noticeBox a.btn-add {
     position: absolute;
@@ -204,7 +232,7 @@
     right: 0;
 }
 .cus .tabBox.noticeBox .List-Table {
-    width: 100%;
+    width: 520px;
 }
 .cus .tabBox.noticeBox .List-Table li {
     position: relative;
@@ -228,16 +256,6 @@
     padding: 0 10px;
     border-radius: 10px;
     margin-right: 5px;
-}
-.cus .willbesNumber ul {
-    padding:0 50px;
-}
-.cus .willbesNumber ul li {   
-    margin:0;
-    vertical-align: top;
-    display: inline;
-    float:left;
-    width:50%;    
 }
 
 /* Main Container */

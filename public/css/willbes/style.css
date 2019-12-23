@@ -11680,6 +11680,9 @@ table.acadlecInfoPackageTable tr.Top td {
 .table-Guided td {padding:10px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center;}
 .table-Guided th {background: #f3f3f3; color:#333; font-weight: bold;}
 .table-Guided tbody th {background: #f9f9f9; color:#555;} 
+.table-Guided.borderZero,
+.table-Guided.borderZero th,
+.table-Guided.borderZero td {border:0}
 .w-Guide ul.st01 {margin-bottom:20px}
 .w-Guide ul.st01 li {margin-bottom:10px; list-style-type:disc; margin-left:15px;}
 .w-Guide ul.st01 li:last-child {margin-bottom:0}
@@ -11701,5 +11704,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .guideTabsm li a.on,
 .guideTabsm li a:hover {color:#2b2e78; line-height: 1.5; height: auto; border-bottom:3px solid #2b2e78}
 .guideTabsm.guideTabsm3ea li {width:33.333333%;}
+.guideTabsm.guideTabsm4ea li {width:25%;}
 .guideTabsm:after {content:""; display: block; clear:both}
+
 

@@ -43,7 +43,7 @@
      }
 </style>
 @php
-    $goSubmit = (date('YmdHis') >= '20200106140000') ? 'doEvent(); return false;' : 'javascript:alert("1.6(월) 14시부터 접수합니다.");';
+    $goSubmit = (date('YmdHis') >= '20191220140000') ? 'doEvent(); return false;' : 'javascript:alert("12.20(금) 14시부터 접수합니다.");';
 @endphp
 
 <div class="p_re evtContent NGR" id="evtContainer">

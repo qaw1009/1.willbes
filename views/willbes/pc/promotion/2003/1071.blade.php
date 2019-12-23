@@ -20,9 +20,15 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1071_top_bg.jpg) no-repeat center top;position:relative;}
+        .skybanner {position:fixed;top:125px;right:10px;width:122px;z-index:10;}
+        .skybanner2  {position:fixed;top:650px;right:10px;width:122px;z-index:10;}
+        .skybannerB{position: fixed; bottom:0; text-align:center; z-index: 101;width:100%}
 
-        .wb_cts01{background:#b42e39;}
+        .wb_event{background:#e2cb79 url(https://static.willbes.net/public/images/promotion/2019/12/1071_top_event_bg.jpg) no-repeat center top;}
+
+        .wb_top {background:#e6e6e6 url(https://static.willbes.net/public/images/promotion/2019/12/1071_top_bg.jpg) no-repeat center top;position:relative;}
+
+        .wb_cts01{background:#451c65;}
         /* 탭 */
         .tabContaier{padding-top:20px; padding-bottom:120px;position:absolute;left:515px;top:825px;}
         .tabContaier ul { text-align:center; margin:0 auto}
@@ -34,11 +40,11 @@
         .tabContaier ul:after {content:''; display:block; clear:both}
         .tabContentsEvt iframe {width:876px; height:480px;}
 
-        .wb_cts01s {background:#fff;}
+        .wb_cts01s {background:#e4e4e4;}
         .wb_cts02 {background:#ffd84f;}
       
 
-        .wb_cts03 {background:#ffd84f; padding-bottom:100px}
+        .wb_cts03 {background:#ffd84f; padding-bottom:175px}
         .wb_cts03 ul {width:960px; margin:0 auto}
         .wb_cts03 li {display:inline; float:left; width:16.666666%}
         .wb_cts03 li a {display:block; height:60px; line-height:60px; text-align:center; font-size:16px; position:relative; border:1px solid #1e1e1e; margin-right:5px}
@@ -68,15 +74,26 @@
         .wb_cts03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .wb_cts03 table a:hover {background:#202020; color:#fff;}
         .wb_cts03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
+       
+        /*탭(텍스트)*/
+        .tabContaier2{width:960px;margin:0 auto;}
+        .tabContaier2 li{display:inline-block;width:480px;height:60px;line-height:60px;background:#e4e4e4;color:#000;float:left;font-size:18px;font-weight:bold;margin-top:-59.9px;}
+        .tabContaier2:after {content:""; display:block; clear:both}
+        .tabContaier2 li a{display:block;}
+        .tabContaier2 li a:hover,
+        .tabContaier2 li a.active {background:#e8be2d;color:#000;}
 
-        .skybanner {
-            position:fixed;
-            top:250px;
-            right:10px;
-            width:122px;
-            z-index:10;
-        }
+        .wb_cts04 {background:#e4e4e4;position:relative;padding-bottom:150px;}
 
+        .check { position:absolute; bottom:7%; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3;z-index:5;font-weight:bold;}
+        .check label {cursor:pointer; font-size:14px}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#252525; margin-left:50px; border-radius:20px}
+        .check a:hover {background:#ffc600; color:#252525}
+        
+        input[id="cb1"]:checked + label {background-color: red;}
+
+        .wb_tip{background:#fff;padding-bottom:50px;}
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner">
@@ -91,10 +108,30 @@
                     <area shape="rect" coords="5,462,116,511" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="6"/>
                 </map>
             </div>
-        </div>        
+        </div> 
+
+         <div class="skybanner2">
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1468" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_sky2.png" alt="">
+            </a>
+        </div> 
+
+        <div class="skybannerB">
+            <a href="#evt1">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_scroll_btn.png"/>      
+            </a>    
+        </div>              
+
+        <div class="evtCtnsBox wb_event">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_top_event.gif" alt="수강후기" usemap="#Map" border="0"  >
+            <map name="Map" id="Map">
+                <area shape="rect" coords="173,547,549,631" href="#evt1" onfocus="this.blur();" class="r_btn_tab" data-tab-id="7" />
+                <area shape="rect" coords="570,546,948,632" href="#evt2" onfocus="this.blur();" class="r_btn_tab" data-tab-id="8" />
+            </map>  
+        </div>    
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_gif.gif" alt="전기/통신 수험생의 이유있는 선택 최우영교수"  >
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_top.gif" alt="전기/통신 수험생의 이유있는 선택 최우영교수"  >
             <div class="tabContaier">
                 <ul class="youtubeTab">
                     <li>
@@ -120,11 +157,11 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_01.jpg" alt="수강후기"  > 
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_01.jpg" alt="수강후기"  > 
         </div>    
 
         <div class="evtCtnsBox wb_cts01s">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1071_02.jpg" alt="커리큘럼"  > 
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_02.jpg" alt="커리큘럼"  > 
         </div>    
 
         <div class="evtCtnsBox wb_cts02" id="pkglec">
@@ -827,7 +864,40 @@
                     </tr>
                 </table>
             </div>
-        </div><!--wb_cts03//-->          
+        </div><!--wb_cts03//-->   
+        
+        <div class="evtCtnsBox wb_cts04">      
+            <div class="tabContaier2">    
+                <ul>    
+                    <li><a href="#tabs1" class="active">최우영 통신직 T-PASS</a></li>                        
+                    <li><a href="#tabs2">최우영 전기직 T-PASS</a></li>           
+                </ul>
+            </div> 
+            <div id="tabs1" class="tabContents2">       
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_04_tab1.png" usemap="#Map1071z" title="" border="0" id="evt1"/>
+                <map name="Map1071z" id="Map1071z">
+                    <area shape="rect" coords="754,616,934,726" href="javascript:go_PassLecture('159161');" >
+                </map>
+            </div>
+            <div id="tabs2" class="tabContents2">       
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_04_tab2.png" usemap="#Map1071y"  title="" border="0" id="evt2"/>
+                <map name="Map1071y" id="Map1071y">
+                    <area shape="rect" coords="746,618,936,726" href="javascript:go_PassLecture('159162');" >
+                </map>
+            </div>   
+            <div class="check">
+                <label>
+                    <input type="checkbox" name="ischk" value="Y" id="cb1">
+                    페이지 하단 최우영 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다. 
+                </label>
+                <a href="#tip">이용안내확인하기 ↓</a>
+            </div>   
+        </div>  
+
+        <div class="evtCtnsBox wb_tip" id="tip">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_tip.jpg" alt="유의사항"  > 
+        </div>        
+               
     </div>
     <!-- End Container -->
 
@@ -890,6 +960,40 @@
                 return false;
             });
         });
+
+         /*탭(텍스터버전)*/
+            $(document).ready(function(){
+                $(".tabContents2").hide();
+                $(".tabContents2:first").show();
+                $(".tabContaier2 ul li a").click(function(){
+                var activeTab = $(this).attr("href");
+                $(".tabContaier2 ul li a").removeClass("active");
+                $(this).addClass("active");
+                $(".tabContents2").hide();
+                $(activeTab).fadeIn();
+                return false;
+                });
+            });
+
+            $(".tabContents2 li a").click(function(){
+                var activeTab = $(this).attr("href");
+                $(".tabs li a").removeClass("active");
+                $(this).addClass("active");
+                $(".tabContents").hide();
+                $(activeTab).fadeIn();
+                return false;
+            });
+
+    function go_PassLecture(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }
     </script>
 
 @stop
+

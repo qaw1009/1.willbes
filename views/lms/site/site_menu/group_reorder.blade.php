@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{ $loop->index }}</td>
                         <td>{{ $row['MenuName'] }}</td>
-                        <td>{{ $row['IsUse'] == 'Y' ? '사용' : '<span class="red">미사용</span>' }}</td>
+                        <td>{!! $row['IsUse'] == 'Y' ? '사용' : '<span class="red">미사용</span>' !!}</td>
                         <td><input type="text" name="group_order_num" class="form-control input-sm" value="{{ $row['GroupOrderNum'] }}" data-origin-group-order-num="{{ $row['GroupOrderNum'] }}" data-group-menu-idx="{{ $row['MenuIdx'] }}" style="width: 80px;"/></td>
                     </tr>
                 @endforeach

@@ -1030,8 +1030,8 @@
             location.href = url;
         }
 
-        /*디데이카운트다운*/
-        $(document).ready(function() {
+         /*디데이카운트다운*/
+         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
     </script>

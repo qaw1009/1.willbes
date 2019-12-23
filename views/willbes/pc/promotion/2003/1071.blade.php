@@ -77,11 +77,11 @@
        
         /*탭(텍스트)*/
         .tabContaier2{width:960px;margin:0 auto;}
-        .tabContaier2 li{display:inline-block;width:480px;height:60px;line-height:60px;background:#e4e4e4;color:#000;float:left;font-size:18px;font-weight:bold;margin-top:-59.9px;}
+        .tabContaier2 li{display:inline-block;width:480px;height:60px;line-height:60px;background:#e8be2d;color:#000;float:left;font-size:18px;font-weight:bold;margin-top:-59.9px;}
         .tabContaier2:after {content:""; display:block; clear:both}
         .tabContaier2 li a{display:block;}
         .tabContaier2 li a:hover,
-        .tabContaier2 li a.active {background:#e8be2d;color:#000;}
+        .tabContaier2 li a.active {background:#e4e4e4;color:#000;}
 
         .wb_cts04 {background:#e4e4e4;position:relative;padding-bottom:150px;}
 

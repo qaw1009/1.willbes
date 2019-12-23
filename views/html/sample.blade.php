@@ -351,6 +351,10 @@
                 <li><a href="{{ site_url('/home/html/guide_309005_03') }}" target="_blank"> 시험안내 > 관세사 > 합격자현황</a></li>
                 <li><a href="{{ site_url('/home/html/guide_309005_04') }}" target="_blank"> 시험안내 > 관세사 > 연간커리큘럼</a></li>
                 <li><a href="{{ site_url('/home/html/guide_309005_05') }}" target="_blank"> 시험안내 > 관세사 > 과목별 공부방법론</a></li>
+                <li><a href="{{ site_url('/home/html/guide_310101_01') }}" target="_blank"> 시험안내 > 소프트웨어자산관리사</a></li>
+                <li><a href="{{ site_url('/home/html/guide_310101_02') }}" target="_blank"> 자격정보 > 소프트웨어자산관리사</a></li>
+                <li><a href="{{ site_url('/home/html/guide_310102_01') }}" target="_blank"> 자격정보 > 경제교육지도사</a></li>
+                <li><a href="{{ site_url('/home/html/guide_310103_01') }}" target="_blank"> 자격정보 > 진로직업체험지도사</a></li>
                 <li class="c_both"></li> 
                 <li><a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담</a></li>

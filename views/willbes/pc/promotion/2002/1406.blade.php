@@ -46,6 +46,21 @@
         }
         .wb_00 {background:#404040}
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/1406_top_bg.jpg) no-repeat center top;}
+        .wb_top_01 {background:#333; position:relative; padding:100px 0; color:#fff} 
+        .box-book {width:100%;}
+        .box-book .bx-wrapper{max-width:100% !important;}
+        .box-book li {display:inline; float:left; height: 250px;}
+        .box-book li img {
+            width: 200px;
+            height: 286px;
+            -webkit-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+            -moz-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+            box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+        }
+        .headTit {font-size:40px; margin-bottom:50px; line-height:1.2}
+        .headTit span {color:#8799e5; text-decoration:underline}
+        .bottomTxt {font-size:14px; margin-top:50px}
+
         .wb_01 {background:#ededed}
         .wb_02 {background:#fff}
         .wb_03 {background:#f3f3f3}
@@ -95,6 +110,37 @@
             </map>        
         </div>
 
+        <div class="evtCtnsBox wb_top_01">
+            <div class="headTit NSK-Black">
+                <span>기본서 선착순 등록 무료 증정</span> [조기 마감 주의!]<br>
+                기본이 잡혀야 합격을 잡을 수 있습니다!<br>
+                <span>총 210,000원 상당</span>
+            </div>
+            <div class="box-book">
+                <ul class="slidesBook">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b1.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b2.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b3.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b4.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b5.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b6.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b7.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b8.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b9.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b1.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b2.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b3.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b4.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b5.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b6.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b7.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b8.png" alt=""/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/12/1471_04_b9.png" alt=""/></li>
+                </ul>
+            </div> 
+            <div class="bottomTxt">* 교재 비매품 또는 교수님이 구매 증정</div>
+        </div>
+
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1406_01.jpg" alt="기본이론 집중완성"/>
         </div>
@@ -125,7 +171,24 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
+
+    <script type="text/javascript">        
+        $(document).ready(function() {
+            var BxBook = $('.slidesBook').bxSlider({
+                slideWidth: 200,
+                slideMargin: 40,
+                maxSlides:10,
+                minSlides:1,
+                moveSlides: 1,
+                ticker:true,
+                speed:60000,
+                onSlideAfter: function() {
+                    BxBook.stopAuto();
+                    BxBook.startAuto();
+                }
+            });
+        });
+
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');

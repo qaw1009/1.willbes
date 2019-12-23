@@ -45,7 +45,15 @@
             .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
             .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
             .check a.infotxt:hover {background:#d9312b}   
-        .wb_03 {background:#fff;}            
+        .wb_03 {background:#fff;}  
+        
+        .skybanner {
+            position:fixed;
+            bottom:0;
+            left:50%;
+            margin-left:-1000px;
+            z-index:10;
+        }
 
     </style>
     
@@ -211,7 +219,7 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_02" >
+        <div class="evtCtnsBox wb_02" id="buyLec">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_02.jpg" alt="수강신청" usemap="#Map1480B" border="0">
             <map name="Map1480B" id="Map1480B">
                 <area shape="rect" coords="757,938,893,1011" href="javascript:go_PassLecture('159050');"  alt="수강신청" />
@@ -228,6 +236,13 @@
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_03.jpg" alt="이용안내" />
         </div>
+
+        <div class="skybanner">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_sky.png" alt="배너" usemap="#Map1480C" border="0" />
+            <map name="Map1480C" id="Map1480C">
+                <area shape="rect" coords="479,41,1490,142" href="#buyLec" alt="수강신청" />
+            </map>
+        </dvi>
 
     </div>
     <!-- End Container -->

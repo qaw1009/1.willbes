@@ -24,6 +24,18 @@
         .skybanner2  {position:fixed;top:650px;right:10px;width:122px;z-index:10;}
         .skybannerB{position: fixed; bottom:0; text-align:center; z-index: 101;width:100%}
 
+        /*타이머*/
+        .time {width:100%; text-align:center; background:#000}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {/*font-size:40px*/}
+        .time table td img {width:70%}
+        .time .time_txt {font-size:28px; color:#fff; letter-spacing: -1px; font-weight:600}
+        .time .time_txt a {font-size:14px; display:block; margin-top:10px; border:1px solid #fff; padding:5px; border-radius:15px}
+        .time .time_txt a:hover {background:#fff; color:#000}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time p {text-alig:center}
+
         .wb_event{background:#e2cb79 url(https://static.willbes.net/public/images/promotion/2019/12/1071_top_event_bg.jpg) no-repeat center top;}
 
         .wb_top {background:#e6e6e6 url(https://static.willbes.net/public/images/promotion/2019/12/1071_top_bg.jpg) no-repeat center top;position:relative;}
@@ -77,11 +89,11 @@
        
         /*탭(텍스트)*/
         .tabContaier2{width:960px;margin:0 auto;}
-        .tabContaier2 li{display:inline-block;width:480px;height:60px;line-height:60px;background:#e4e4e4;color:#000;float:left;font-size:18px;font-weight:bold;margin-top:-59.9px;}
+        .tabContaier2 li{display:inline-block;width:480px;height:60px;line-height:60px;background:#e8be2d;color:#000;float:left;font-size:18px;font-weight:bold;margin-top:-59.9px;}
         .tabContaier2:after {content:""; display:block; clear:both}
         .tabContaier2 li a{display:block;}
         .tabContaier2 li a:hover,
-        .tabContaier2 li a.active {background:#e8be2d;color:#000;}
+        .tabContaier2 li a.active {background:#e4e4e4;color:#000;}
 
         .wb_cts04 {background:#e4e4e4;position:relative;padding-bottom:150px;}
 
@@ -120,7 +132,8 @@
             <a href="#evt1">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_scroll_btn.png"/>      
             </a>    
-        </div>              
+        </div>    
+                 
 
         <div class="evtCtnsBox wb_event">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_top_event.gif" alt="수강후기" usemap="#Map" border="0"  >
@@ -894,6 +907,29 @@
             </div>   
         </div>  
 
+         <!-- 타이머 -->
+         <div class="evtCtnsBox time NGEB"  id="newTopDday">
+            <div>
+                <table>
+                    <tr>                       
+                        <td class="time_txt">마감까지</td>
+                        <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">day </td>
+                        <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">남았습니다.<br></td>                     
+                    </tr>
+                </table>                
+            </div>
+        </div>
+
         <div class="evtCtnsBox wb_tip" id="tip">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_tip.jpg" alt="유의사항"  > 
         </div>        
@@ -993,6 +1029,11 @@
             var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
+
+         /*디데이카운트다운*/
+         $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
     </script>
 
 @stop

@@ -523,7 +523,7 @@ ul.bar_tabs > li a {
     border-radius: 0;
 }
 ul.bar_tabs > li.dropdown > a {
-    padding: 10px 10px 10px 15px;
+    padding: 10px 10px 10px 10px;
     z-index: 9997;
     height: 40px;
 }

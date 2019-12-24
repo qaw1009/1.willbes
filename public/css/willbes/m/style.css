@@ -488,8 +488,8 @@ body.memBody #Footer {
   line-height: 1.5;  
 }
 .introBox2 ul {
-    border-top:1px solid #e4e4e4;
-    border-left:1px solid #e4e4e4;
+    border-top:1px solid #fff;
+    border-left:1px solid #fff;
 }
 .introBox2 li {
     display: inline-block; 
@@ -497,21 +497,33 @@ body.memBody #Footer {
     position: relative;
 }
 .introBox2 li:nth-child(1) div {
-    background:#adcaee;
+    background:#c7defb;
 }
 .introBox2 li:nth-child(2) div {
-    background:#efcdb6;
+    background:#fbdfcc;
 }
 .introBox2 li:nth-child(3) div {
-    background:#bdb8f2;
+    background:#d7d4fb;
 }
 .introBox2 li:nth-child(4) div {
-    background:#f4c1be;
+    background:#fbd7d5;
+}
+.introBox2 li:nth-child(5) div {
+    background:#f2f4be;
+}
+.introBox2 li:nth-child(6) div {
+    background:#d1f4be;
+}
+.introBox2 li:nth-child(7) div {
+    background:#d1faf7;
+}
+.introBox2 li:nth-child(8) div {
+    background:#efeeec;
 }
 .introBox2 ul:after {content:''; display:block; clear:both}
 .introBox2 li div {
-    border-right:1px solid #e4e4e4;
-    border-bottom:1px solid #e4e4e4;
+    border-right:1px solid #fff;
+    border-bottom:1px solid #fff;
 }
 .introBox2 li div a {
     display:block; height: 120px; color:#000;    

@@ -65,14 +65,14 @@
 
         <div class="Section Section3 mt100">
             <div class="widthAuto p_re">
-                <div><img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tip.jpg" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀"></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tip.gif" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀"></div>
                 <ul class="tipGo NSK">
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1089') }}">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1241') }}">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1273') }}">강좌 바로가기</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3035/code/1381">강좌 바로가기</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3035/code/1415">강좌 바로가기</a></li>
-                    <li><a href="#none">개강 준비중</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3035/code/1483">강좌 바로가기</a></li>
                 </ul>
             </div>
         </div>

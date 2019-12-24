@@ -25,12 +25,14 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">4순환 – 객관식 문제해결 능력을 확인하다</a></li>
-                    <li><a href="#tab02">3순환 - 반복, 그리고 이해를 도모하라!</a></li>
+                    <li><a href="#tab01">5순환 – 2020 합격을 위한 마지막 실전연습</a></li>
+                    <li><a href="#tab02">예비순환 - 1년차 합격을 위한 동행의 첫걸음</a></li>
                 </ul>
                 <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tit01_01.jpg" alt="기출된, 그리고 출제 가능성 있는 모든 내용 정리">
-                    <ul class="PBcts">
+                    <div class="copyTit NSK-Black mt50">
+                         다시는 틀리지 않도록 <span class="tx-color">정확히 암기하라!</span>
+                    </div>                     
+                    <ul class="PBcts mt40">
                         @for($i=1; $i<=4; $i++)
                             @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                                 <li>
@@ -43,8 +45,10 @@
                     </ul>
                 </div>
                 <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tit01_02.jpg" alt="과목별 기본 원칙을 세워 점수의 기반 형성">
-                    <ul class="PBcts">
+                    <div class="copyTit NSK-Black mt50">
+                        시행착오를 줄이고 <span class="tx-color">최적화된 컨디션을 찾아라!</span>
+                    </div>  
+                    <ul class="PBcts mt40">
                         @for($i=5; $i<=8; $i++)
                             @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                                 <li>
@@ -61,14 +65,14 @@
 
         <div class="Section Section3 mt100">
             <div class="widthAuto p_re">
-                <div><img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tip.jpg" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀"></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/main/3035_visual_tip.gif" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀"></div>
                 <ul class="tipGo NSK">
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1089') }}">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1241') }}">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1273') }}">강좌 바로가기</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3035/code/1381">강좌 바로가기</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3035/code/1415">강좌 바로가기</a></li>
-                    <li><a href="#none">개강 준비중</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3035/code/1483">강좌 바로가기</a></li>
                 </ul>
             </div>
         </div>

@@ -48,14 +48,15 @@
         .wb_cts07 {background:#292b31}
         
         /*타이머*/
-        .time {width:100%; text-align:center; background:#e1e1e1; padding:20px 0}
-        .time ul {width:1000px; margin:0 auto}     
-        .time li {display:inline; float:left; font-size:30px; line-height:70px; letter-spacing:-1px; color:#000;}   
-        .time li img {width:70%}
-        .time li span {color:#d63e4d; font-size:30px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
-        .time li:first-child {text-align:left; line-height:1; font-size:20px; padding:10px 20px 0}
-        .time li:last-child {text-align:right: padding:0 20px}
-        .time ul:after { content:""; display:block; clear:both}
+        .time {width:100%; text-align:center; background:#ebebeb}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td {line-height:1.2}        
+        .time table td img {width:65%}
+        .time .time_txt {font-size:20px; color:#000; letter-spacing: -1px; text-align:left}
+        .time span {color:#ffda39; font-size:28px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time table td:last-child,
+        .time table td:last-child span {font-size:40px}
         @@keyframes upDown{
         from{color:#000}
         50%{color:#424ac7}
@@ -81,22 +82,26 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <!-- 타이머 -->
-        <div class="evtCtnsBox time NGEB"  id="newTopDday">
-            <ul>
-                <li>마감까지<br><span>남은 시간은</span></li>
-                <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                <li>일</li>
-                <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                <li>:</li>
-                <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                <li>:</li>
-                <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                <li><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }} </span>마감!</li>
-            </ul>
+        <div class="evtCtnsBox time NGEB" id="newTopDday">
+            <div>
+                <table>
+                    <tr>                    
+                    <td class="time_txt"><span>마감까지<br>남은시간</span></td>
+                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">일 </td>
+                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                    <td><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</td>
+                    </tr>
+                </table>                
+            </div>
         </div>
         <!-- 타이머 //-->
         <div class="skybanner" >
@@ -192,13 +197,12 @@
             });
         });
         
-        /*디데이카운트다운*/
-        $(document).ready(function() {
+          /*디데이카운트다운*/
+          $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
-
 @stop

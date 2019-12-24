@@ -134,8 +134,8 @@
         <div class="evtCtnsBox wb_event">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_top_event.gif" alt="수강후기" usemap="#Map" border="0"  >
             <map name="Map" id="Map">
-                <area shape="rect" coords="173,547,549,631" href="#evt1" onfocus="this.blur();" class="r_btn_tab" data-tab-id="7" />
-                <area shape="rect" coords="570,546,948,632" href="#evt2" onfocus="this.blur();" class="r_btn_tab" data-tab-id="8" />
+                <area shape="rect" coords="173,547,549,631" href="#tabs1" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
+                <area shape="rect" coords="570,546,948,632" href="#tabs2" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
             </map>  
         </div>    
 
@@ -878,8 +878,8 @@
         <div class="evtCtnsBox wb_cts04">      
             <div class="tabContaier2">    
                 <ul>    
-                    <li><a href="#tabs1" class="active">최우영 통신직 T-PASS</a></li>                        
-                    <li><a href="#tabs2">최우영 전기직 T-PASS</a></li>           
+                    <li><a href="#tabs1" id="tabs1_btn" class="active">최우영 통신직 T-PASS</a></li>
+                    <li><a href="#tabs2" id="tabs2_btn">최우영 전기직 T-PASS</a></li>
                 </ul>
             </div> 
             <div id="tabs1" class="tabContents2">       
@@ -937,7 +937,6 @@
         var ytb01_url = "https://www.youtube.com/embed/rPN9bxcaiLU";
         var ytb02_url = "https://www.youtube.com/embed/eRrHTbcFBtY";
 
-
         $(document).ready(function(){
             /*영상탭*/
             $(".tabContentsEvt").hide();
@@ -991,20 +990,12 @@
                 $(activeTab).fadeIn();
                 return false;
             });
-        });
 
-         /*탭(텍스터버전)*/
-            $(document).ready(function(){
-                $(".tabContents2").hide();
-                $(".tabContents2:first").show();
-                $(".tabContaier2 ul li a").click(function(){
-                var activeTab = $(this).attr("href");
-                $(".tabContaier2 ul li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContents2").hide();
-                $(activeTab).fadeIn();
-                return false;
-                });
+            /*탭(텍스터버전)*/
+            $(".tabContents2").hide();
+            $(".tabContents2:first").show();
+            $(".tabContaier2 ul li a").click(function(){
+                tpassTabClick(this);
             });
 
             $(".tabContents2 li a").click(function(){
@@ -1016,20 +1007,27 @@
                 return false;
             });
 
-    function go_PassLecture(code){
+            /*디데이카운트다운*/
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
+
+        function tpassTabClick(obj) {
+            var activeTab = $(obj).attr("href");
+            $(".tabContaier2 ul li a").removeClass("active");
+            $(activeTab + '_btn').addClass("active");
+            $(".tabContents2").hide();
+            $(activeTab).fadeIn();
+            return false;
+        }
+
+        function go_PassLecture(code) {
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
-
             var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
-
-         /*디데이카운트다운*/
-         $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
-        });
     </script>
 
 {{-- 프로모션용 스크립트 include --}}

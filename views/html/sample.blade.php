@@ -236,6 +236,8 @@
     <li>
         <div>
             <ul>
+                <li><p>전문자격증 ▼</p></li>
+                <li><a href="{{ site_url('/home/html/190821_nomu_01') }}" target="_blank">2020 노무패스<span>*</span></a></li>
                 <li><p>자격증 ▼</p></li>
                 <li><a href="{{ site_url('/home/html/190619_jobA') }}" target="_blank">전기소방 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/190619_jobB') }}" target="_blank">전기소방 올패스 <span>*</span></a></li>

@@ -204,6 +204,7 @@ class Home extends \app\controllers\FrontController
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
 
+        $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
         $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
@@ -250,6 +251,7 @@ class Home extends \app\controllers\FrontController
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
 
+        $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
         $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
@@ -345,6 +347,7 @@ class Home extends \app\controllers\FrontController
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+            $data['notice'] = $this->_boardNotice(5, $cate_code);
         }
 
         return $data;

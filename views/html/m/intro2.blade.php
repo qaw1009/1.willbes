@@ -20,7 +20,7 @@
             <li>
                 <div> 
                     <a href="https://pass.willbes.net/m/home/index">   
-                        <p class="subTit">9급/7급/법원/소방/기술직/군무원</p>
+                        <p class="subTit">9급/7급PSAT/7급/법원/소방/기술직/군무원</p>
                         <p class="siteTit">
                             <img src="{{ img_url('m/intro/icon_gosi.png') }}" alt="공무원">
                             공무원
@@ -30,11 +30,44 @@
             </li>
             <li>
                 <div> 
-                    <a href="https://job.willbes.net/m/home/index">   
-                        <p class="subTit">국가기술자격/국가전문자격</p>
+                    <a href="https://gosi.willbes.net/m/home/index">   
+                        <p class="subTit">5급행정/외교원/PSAT/법행/변호사</p>
                         <p class="siteTit">
-                            <img src="{{ img_url('m/intro/icon_job.png') }}" alt="자격증">
+                            <img src="{{ img_url('m/intro/icon_gosi.png') }}" alt="고등고시">
+                            고등고시
+                        </p>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div>   
+                    <a href="https://job.willbes.net/m/home/index"> 
+                        <p class="subTit">국가기술/국가전문/국가실무/국사공인</p>
+                        <p class="siteTit">
+                            <img src="{{ img_url('m/intro/icon_job.png') }}" alt="어학">
                             자격증
+                        </p>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div>   
+                    <a href="https://spo.willbes.net/m/home/index"> 
+                        <p class="subTit">간보후보생</p>
+                        <p class="siteTit">
+                            <img src="{{ img_url('m/intro/icon_spo.png') }}" alt="경찰간부">
+                            경찰간부
+                        </p>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div> 
+                    <a href="https://willpass.willbes.net/m/home/index">   
+                        <p class="subTit">공기업</p>
+                        <p class="siteTit">
+                            <img src="{{ img_url('m/intro/icon_willpass.png') }}" alt="취업">
+                            취업
                         </p>
                     </a>
                 </div>

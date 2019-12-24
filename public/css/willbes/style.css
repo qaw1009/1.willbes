@@ -11675,6 +11675,66 @@ table.acadlecInfoPackageTable tr.Top td {
     font-weight: 600;
     color:#333;
 }
+
+/* 자격증 */
+.Menu .menu-List li.job > a {
+    color: #b85712;
+    display:inline-block;
+    vertical-align: middle;
+}
+.Menu .menu-List li.job > a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+
+/* 고등고시 */
+.Menu .menu-List li.gosi > a {
+    color: #b85712;
+    display:inline-block;
+    vertical-align: middle;
+}
+.Menu .menu-List li.gosi > a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+
+/* 경찰간부 */
+.Menu .menu-List li.spo > a {
+    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat left center;
+    font-size: 16px;
+    color: #0c5dc0;
+    padding-left: 26px;
+    display:inline-block;
+    vertical-align: middle;
+}
+.Menu .menu-List li.spo > a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+
+/* 취업 */
+.Menu .menu-List li.work > a {
+    color: #b85712;
+    display:inline-block;
+    vertical-align: middle;
+}
+.Menu .menu-List li.work > a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+
 .table-Guided {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto;}
 .table-Guided th,
 .table-Guided td {padding:10px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center;}

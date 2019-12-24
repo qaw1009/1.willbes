@@ -48,6 +48,20 @@
     z-index: 10;
 }
 
+.law .copyTit {
+    font-size: 33px;
+    color: #363636;
+    line-height: 1.2;
+    text-align: center;
+}
+.law .copyTit strong {
+    vertical-align: baseline;
+	color:#000;
+} 
+.law .copyTit span {
+	vertical-align: baseline;
+}
+
 /* Main Container : Prof */
 .law .ProfBox {
     margin-top:70px;

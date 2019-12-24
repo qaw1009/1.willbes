@@ -17,6 +17,19 @@
     margin: 15px 5px 0;
 }
 
+.Menu .menu-List li.job > a {
+    color: #b85712;
+    display:inline-block;
+    vertical-align: middle;
+}
+.Menu .menu-List li.job > a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+
 /*********************************************     Main Container     *********************************************/
 .nomu .Depth .depth:last-child strong {
     color: #b85712;

@@ -46,7 +46,7 @@
                     <area shape="rect" coords="9,326,119,386" href="https://pass.willbes.net/promotion/index/cate/3035/code/1415" target="_blank" alt="4순환" />
                     <area shape="rect" coords="9,398,119,470" href="https://pass.willbes.net/promotion/index/cate/3035/code/1483" target="_balnk "alt="5순환" />
                 </map>
-        </div>
+        </div> 
 
         <div class="evtCtnsBox WB_con01">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_1.png" alt="2020 김동진 법원팀 예비순환"/>

@@ -46,7 +46,7 @@
                 <area shape="rect" coords="9,326,119,386" href="#evtContainer" alt="4순환" />
                 <area shape="rect" coords="9,398,119,470" href="https://pass.willbes.net/promotion/index/cate/3035/code/1483" target="_balnk "alt="5순환" />
             </map>
-        </div>
+        </div> 
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1415_top.jpg" alt="김동진 법원팀 4순환 기본강의 패지키" />                         

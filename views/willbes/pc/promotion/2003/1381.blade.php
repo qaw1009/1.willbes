@@ -44,7 +44,7 @@
                 <area shape="rect" coords="9,189,118,243" href="https://pass.willbes.net/promotion/index/cate/3035/code/1273" target="_blank" alt="2순환" />
                 <area shape="rect" coords="9,254,118,319" href="#evtContainer" alt="3순환" />
                 <area shape="rect" coords="9,326,119,386" href="https://pass.willbes.net/promotion/index/cate/3035/code/1415" target="_blank" alt="4순환" />
-                <area shape="rect" coords="9,398,119,470" href="javascript:alert('준비중입니다.');" alt="5순환" />
+                <area shape="rect" coords="9,398,119,470" href="https://pass.willbes.net/promotion/index/cate/3035/code/1483" target="_balnk "alt="5순환" />
             </map>
         </div>
 
@@ -61,7 +61,7 @@
                     <area shape="rect" coords="453,694,540,721" href="https://pass.willbes.net/promotion/index/cate/3035/code/1273" target="_blank" alt="2순환" />
                     <area shape="rect" coords="583,692,673,724" href="#evtContainer" alt="3순환" />
                     <area shape="rect" coords="722,692,812,723" href="https://pass.willbes.net/promotion/index/cate/3035/code/1415" target="_blank" alt="4순환" />
-                    <area shape="rect" coords="858,694,946,722" href="javascript:alert('준비중입니다.');" alt="5순환" />
+                    <area shape="rect" coords="858,694,946,722" href="https://pass.willbes.net/promotion/index/cate/3035/code/1483" target="_balnk "alt="5순환" />
                 </map>
             </div>
             <div>

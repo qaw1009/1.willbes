@@ -658,7 +658,10 @@
                 · 면접시험 총점이 4할 미만인 경우<br>
                 · 제2호 및 제3호의 평정요소에 대하여 면접위원의 과반수가 1점을 준 경우 
             </div>
-        </div>      
+            <h4 class="NGR mt20">최종합격자 결정</h4>
+            <div>
+                <span class="tx-blue">필기시험(50%) + 체력검사(25%) + 면접시험(20%) + 가산점(5%)</span>를 합산한 성적의 고득점 순으로 선발예정인원을 최종합격자로 결정 </div>
+            </div>      
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     

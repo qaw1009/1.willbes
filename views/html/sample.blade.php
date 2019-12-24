@@ -358,6 +358,9 @@
                 <li><a href="{{ site_url('/home/html/guide_310102_01') }}" target="_blank"> 자격정보 > 경제교육지도사</a></li>
                 <li><a href="{{ site_url('/home/html/guide_310103_01') }}" target="_blank"> 자격정보 > 진로직업체험지도사</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3100_01') }}" target="_blank"> 시험정보 > 경찰간부 > 경찰간부후보생은?</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3100_02') }}" target="_blank"> 시험정보 > 경찰간부 > 시험방법</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3100_03') }}" target="_blank"> 시험정보 > 경찰간부 > 가산점</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3100_04') }}" target="_blank"> 시험정보 > 경찰간부 > 최종합격관리</a></li>
                 <li class="c_both"></li> 
                 <li><a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담</a></li>
                 <li><a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담</a></li>

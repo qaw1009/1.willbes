@@ -568,7 +568,8 @@ class RegGoodsModel extends WB_Model
                 'TakeEndDatm' => element('TakeEndDatm_d', $form_data) .' '. element('TakeEndDatm_h', $form_data) .':'. element('TakeEndDatm_m', $form_data) .':59',
                 'TakeTime' => element('TakeTime', $form_data), // 분
                 'PaperType' => element('PaperType', $form_data),
-                //'IsUse' => element('IsUse', $form_data),
+                'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
+                'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
                 'RegIp' => $this->input->ip_address(),
                 'RegDatm' => date("Y-m-d H:i:s"),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -665,6 +666,8 @@ class RegGoodsModel extends WB_Model
                 'TakeEndDatm' => element('TakeEndDatm_d', $form_data) .' '. element('TakeEndDatm_h', $form_data) .':'. element('TakeEndDatm_m', $form_data) .':59',
                 'TakeTime' => element('TakeTime', $form_data), // 분
                 'PaperType' => element('PaperType', $form_data),
+                'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
+                'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
                 'UpdDatm' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];

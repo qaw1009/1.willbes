@@ -477,6 +477,39 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="grade_open_is_use">성적오픈 사용 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10 item">
+                        <div class="radio">
+                            <input type="radio" id="grade_open_is_use_y" name="grade_open_is_use" class="flat" value="Y" required="required" title="사용여부" @if($data['GradeOpenIsUse'] == 'Y')checked="checked"@endif/> <label for="grade_open_is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="grade_open_is_use_n" name="grade_open_is_use" class="flat" value="N" @if($method == 'POST' || $data['GradeOpenIsUse'] == 'N')checked="checked"@endif/> <label for="grade_open_is_use_n" class="input-label">미사용</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="is_use">성적조회오픈일
+                    </label>
+                    <div class="col-md-10 form-inline item">
+                        <input type="text" class="form-control datepicker" style="width:100px;" name="GradeOpenDatm_d" value="@if($method == 'PUT'){{ substr($data['GradeOpenDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
+                        <select name="GradeOpenDatm_h" class="form-control">
+                            <!--option value="">선택</option//-->
+                            @foreach(range(0, 23) as $i)
+                                @php $v = sprintf("%02d", $i); @endphp
+                                <option value="{{$v}}" @if($method==='PUT' && substr($data['GradeOpenDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                            @endforeach
+                        </select> 시
+                        <select name="GradeOpenDatm_m" class="form-control">
+                            <!--option value="">선택</option//-->
+                            @foreach(range(0, 59) as $i)
+                                @php $v = sprintf("%02d", $i); @endphp
+                                <option value="{{$v}}" @if($method==='PUT' && substr($data['GradeOpenDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                            @endforeach
+                        </select> 분
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_use">사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 item">

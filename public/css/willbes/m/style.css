@@ -496,6 +496,7 @@ body.memBody #Footer {
     float:left; width:50%;     
     position: relative;
 }
+/*
 .introBox2 li:nth-child(1) div {
     background:#c7defb;
 }
@@ -520,6 +521,7 @@ body.memBody #Footer {
 .introBox2 li:nth-child(8) div {
     background:#efeeec;
 }
+*/
 .introBox2 ul:after {content:''; display:block; clear:both}
 .introBox2 li div {
     border-right:1px solid #fff;

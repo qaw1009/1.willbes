@@ -241,6 +241,11 @@
                 <li class="w50"><a href="{{ site_url('/home/html/190905_nomu_01') }}" target="_blank">노무2차 T-PASS<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/190826_nomu_01') }}" target="_blank">노무2차 GS0순환<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/190802_value_01') }}" target="_blank">2020 감평패스<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/191204_value_01') }}" target="_blank">감평 단기합격 프로젝트<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190627_value_01') }}" target="_blank">감평2차 T-PASS<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190312_value_01') }}" target="_blank">감평2차 기본강의<span>*</span></a></li>
+                <li><p>고등고시 ▼</p></li>
+                <li><a href="{{ site_url('/home/html/191205_cons') }}" target="_blank">5급헌법 진도별모의고사 <span>*</span></a></li>
                 <li><p>자격증 ▼</p></li>
                 <li><a href="{{ site_url('/home/html/190619_jobA') }}" target="_blank">전기소방 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/190619_jobB') }}" target="_blank">전기소방 올패스 <span>*</span></a></li>

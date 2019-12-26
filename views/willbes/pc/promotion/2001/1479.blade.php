@@ -82,7 +82,7 @@
         .wb_02 {background:#1c1e22 url(https://static.willbes.net/public/images/promotion/2019/12/1479_02_bg.jpg) no-repeat center top;}
         .wb_03 {background:#f98d3e; padding:150px 0}
         .wb_04 {background:#fff; position:relative}
-        .wb_04 .check {position:absolute; width:1000px; left:50%; top:610px; margin-left:-500px; z-index:1;
+        .wb_04 .check {position:absolute; width:1000px; left:50%; top:680px; margin-left:-500px; z-index:1;
             font-size:14px; text-align:center; line-height:1.5;
         }
         .wb_04 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
@@ -135,11 +135,12 @@
             </div>   
         </div>
 
-        <div class="evtCtnsBox wb_04" id="wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1479_04.jpg" usemap="#Map1479a" border="0" />
-            <map name="Map1479a" id="Map1479a">
-                <area shape="rect" coords="403,463,719,552" href="javascript:go_PassLecture('159243');" >
-            </map>
+        <div class="evtCtnsBox wb_04" id="wb_04">   
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1479_04.jpg" usemap="#Map1479x" border="0" />
+            <map name="Map1479x" id="Map1479x">
+                <area shape="rect" coords="178,550,426,619" href="javascript:go_PassLecture('159243');" >
+                <area shape="rect" coords="689,553,937,620" href="javascript:go_PassLecture('159360');" >
+            </map>      
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="#wb_05">이용안내확인하기 ↓</a> <br>

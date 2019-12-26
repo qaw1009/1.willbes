@@ -237,7 +237,10 @@
         <div>
             <ul>
                 <li><p>전문자격증 ▼</p></li>
-                <li><a href="{{ site_url('/home/html/190821_nomu_01') }}" target="_blank">2020 노무패스<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190821_nomu_01') }}" target="_blank">2020 노무패스<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190905_nomu_01') }}" target="_blank">노무2차 T-PASS<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190826_nomu_01') }}" target="_blank">노무2차 GS0순환<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190802_value_01') }}" target="_blank">2020 감평패스<span>*</span></a></li>
                 <li><p>자격증 ▼</p></li>
                 <li><a href="{{ site_url('/home/html/190619_jobA') }}" target="_blank">전기소방 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/190619_jobB') }}" target="_blank">전기소방 올패스 <span>*</span></a></li>

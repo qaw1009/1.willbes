@@ -28,17 +28,17 @@
                         </a>
                     </div>
                 </li>
-                <li>
-                    <div>
-                        <a href="{{ front_app_url('/home/index', 'gosi') }}">
-                            <p class="subTit">5급행정/외교원/PSAT/법행/변호사</p>
-                            <p class="siteTit">
-                                <img src="{{ img_url('m/intro/icon_gosi.png') }}" alt="고등고시">
-                                고등고시
-                            </p>
-                        </a>
-                    </div>
-                </li>
+{{--                <li>--}}
+{{--                    <div>--}}
+{{--                        <a href="{{ front_app_url('/home/index', 'gosi') }}">--}}
+{{--                            <p class="subTit">5급행정/외교원/PSAT/법행/변호사</p>--}}
+{{--                            <p class="siteTit">--}}
+{{--                                <img src="{{ img_url('m/intro/icon_gosi.png') }}" alt="고등고시">--}}
+{{--                                고등고시--}}
+{{--                            </p>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
                 <li>
                     <div>
                         <a href="{{ front_app_url('/home/index', 'job') }}">
@@ -50,28 +50,28 @@
                         </a>
                     </div>
                 </li>
-                <li>
-                    <div>
-                        <a href="{{ front_app_url('/home/index', 'spo') }}">
-                            <p class="subTit">간보후보생</p>
-                            <p class="siteTit">
-                                <img src="{{ img_url('m/intro/icon_spo.png') }}" alt="경찰간부">
-                                경찰간부
-                            </p>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <a href="{{ front_app_url('/home/index', 'work') }}">
-                            <p class="subTit">공기업</p>
-                            <p class="siteTit">
-                                <img src="{{ img_url('m/intro/icon_willpass.png') }}" alt="취업">
-                                취업
-                            </p>
-                        </a>
-                    </div>
-                </li>
+{{--                <li>--}}
+{{--                    <div>--}}
+{{--                        <a href="{{ front_app_url('/home/index', 'spo') }}">--}}
+{{--                            <p class="subTit">간보후보생</p>--}}
+{{--                            <p class="siteTit">--}}
+{{--                                <img src="{{ img_url('m/intro/icon_spo.png') }}" alt="경찰간부">--}}
+{{--                                경찰간부--}}
+{{--                            </p>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <div>--}}
+{{--                        <a href="{{ front_app_url('/home/index', 'work') }}">--}}
+{{--                            <p class="subTit">공기업</p>--}}
+{{--                            <p class="siteTit">--}}
+{{--                                <img src="{{ img_url('m/intro/icon_willpass.png') }}" alt="취업">--}}
+{{--                                취업--}}
+{{--                            </p>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
                 <li>
                     <div>
                         <a href="{{ front_app_url('/home/index', 'lang') }}">

@@ -114,6 +114,9 @@ class EventLecture extends \app\controllers\BaseController
         //발신번호조회
         $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
+        //포인트적립타입
+        $arr_pointapply_ccd = $this->codeModel->getCcd('635');
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $el_idx = $params[0];
@@ -183,6 +186,7 @@ class EventLecture extends \app\controllers\BaseController
             'arr_request_types' => $this->eventLectureModel->_request_type_names,
             'arr_take_types' => $this->eventLectureModel->_take_type_names,
             'arr_is_registers' => $this->eventLectureModel->_is_register_names,
+            'pointapply_ccd' => $arr_pointapply_ccd,
             'file_data' => $file_data,
             'file_data_promotion' => $file_data_promotion,
             'list_event_register' => $list_event_register,

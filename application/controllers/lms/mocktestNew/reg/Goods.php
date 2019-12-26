@@ -249,6 +249,10 @@ class Goods extends BaseMocktest
             ['field' => 'IsSms', 'label' => '문자사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'Memo', 'label' => '문자내용', 'rules' => 'trim|callback_validateRequiredIf[IsSms,Y]'],
             ['field' => 'SendTel', 'label' => '문자발신번호', 'rules' => 'callback_validateRequiredIf[IsSms,Y]'],
+            ['field' => 'grade_open_is_use', 'label' => '성적오픈일여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'GradeOpenDatm_d', 'label' => '성적조회오픈일', 'rules' => 'callback_validateRequiredIf[grade_open_is_use,Y]'],
+            ['field' => 'GradeOpenDatm_h', 'label' => '성적조회오픈일(시)', 'rules' => 'callback_validateRequiredIf[grade_open_is_use,Y]'],
+            ['field' => 'GradeOpenDatm_m', 'label' => '성적조회오픈일(분)', 'rules' => 'callback_validateRequiredIf[grade_open_is_use,Y]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
 
             ['field' => 'chapterTotal[]', 'label' => 'tIDX', 'rules' => 'trim|is_natural_no_zero'],

@@ -16,9 +16,9 @@
                 </form>
                 @if(empty($arr_base['category_top']) !== true)
                     <li>
-                        <select id="cate_code_top" name="cate_code_top" title="상위 카테고리" class="select_search">
+                        <select id="cate_code_top" name="cate_code_top" title="상위 카테고리" class="">
                             @foreach($arr_base['category_top'] as $idx => $row)
-                                <option value="{{$row['CateCode']}}" @if(element('cate_code_top', $arr_input) == $row['CateCode'] || $arr_base['category_top_default'] == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
+                                <option value="{{$row['CateCode']}}" @if($arr_base['category_top_default'] == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
                             @endforeach
                         </select>
                     </li>
@@ -215,11 +215,6 @@
 
             $('.select_search').on('change', function(){
                 var $arr_reset = ['course_idx','series_ccd','subject_idx','prof_idx'];
-                if($(this).attr('id') == 'cate_code_top') {
-                    $('#url_form').find('input[type="hidden"][name="cate_code_top"]').remove();
-                    $('#url_form').append('<input type="hidden" name="cate_code_top" value="' + $("select[name='cate_code_top']").val() + '"/>');
-                    return;
-                }
                 if($(this).attr('id') == 'cate_code') {
                     if($("select[name='cate_code']").val() === '') {
                         return;

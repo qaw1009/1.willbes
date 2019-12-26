@@ -37,15 +37,22 @@ class Lecture extends \app\controllers\FrontController
 
         // 카테고리 셋팅 => 모바일의 경우 select box로 카테고리 전달
         $cate_code = !(empty($this->_cate_code)) ? $this->_cate_code : element('cate_code', $arr_input);
+        $cate_code_top = element('cate_code_top', $arr_input);
 
         // 카테고리 조회 : 모바일에서 카테고리 select box 사용
         $arr_base['category'] = [];
+        $arr_base['category_top'] = [];
+        $arr_base['category_default'] = $cate_code;
+        $arr_base['category_top_default'] = $cate_code_top;
+
         if($this->_site_code === '2006') { // 자격증의 경우 2depth로 기본 카테고리 지정
             $result_list = $this->categoryFModel->listSiteCategory($this->_site_code,'2');
             if(empty($result_list) === false) {
                 foreach ($result_list as $row) {
                     if($row['CateDepth'] === '2') {
                         $arr_base['category'][] = $row;
+                    } else if($row['CateDepth'] === '1') {
+                        $arr_base['category_top'][] = $row;
                     }
                 }
             }
@@ -56,6 +63,11 @@ class Lecture extends \app\controllers\FrontController
         // 지정된 카테고리가 없을 경우
         if (empty($cate_code) === true) {
             $cate_code = element('cate_code', $arr_input, get_var(config_app('DefCateCode'), array_get($arr_base['category'], '0.CateCode')));
+            $arr_base['category_default'] = $cate_code;
+        }
+        // 지정된 대분류 카테고리가 없을 경우
+        if(empty($cate_code_top) === true) {
+            $arr_base['category_top_default'] = substr($arr_base['category_default'], 0, 4);
         }
 
         // 사이트별 과목 조회

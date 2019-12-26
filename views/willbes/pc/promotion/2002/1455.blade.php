@@ -138,23 +138,25 @@
         </div>
 
         <div class="evtCtnsBox evt03" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_3_1.jpg" usemap="#Map1455a" title="1+2+3단계 종합반" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1455_3_1.jpg" usemap="#Map1455a" title="1+2+3단계 종합반" border="0">
             <map name="Map1455a" id="Map1455a">
-                <area shape="rect" coords="370,831,751,910" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="370,1475,747,1551" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
-            </map>     
+                <area shape="rect" coords="514,845,722,901" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
+                <area shape="rect" coords="725,843,930,899" href="https://police.willbes.net/promotion/index/cate/3001/code/1479" target="_blank" />
+                <area shape="rect" coords="369,1483,753,1542" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
+            </map> 
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1455_4.jpg" usemap="#Map1455b"  title="단계별 종합반 수강신청" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1455_4_1.jpg" usemap="#Map1455b" border="0">
             <map name="Map1455b" id="Map1455b">
-                <area shape="rect" coords="889,555,1033,686" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="888,841,1034,882" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-                <area shape="rect" coords="889,1030,1030,1073" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" />
-                <area shape="rect" coords="887,1219,1033,1262" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-                <area shape="rect" coords="888,1610,1037,1653" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
-                <area shape="rect" coords="890,1797,1033,1843" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
-            </map>             
+                <area shape="rect" coords="791,575,892,693" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
+                <area shape="rect" coords="927,574,1027,694" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1007" target="_blank" />
+                <area shape="rect" coords="896,857,1026,892" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+                <area shape="rect" coords="898,1048,1022,1081" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" />
+                <area shape="rect" coords="897,1237,1026,1272" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
+                <area shape="rect" coords="894,1628,1028,1661" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" />
+                <area shape="rect" coords="899,1818,1024,1852" href=" https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1044" target="_blank" />
+            </map>                      
         </div>
 
         <div class="evtCtnsBox evt05" id="apply">			

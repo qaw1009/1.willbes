@@ -14,12 +14,24 @@
                         <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
                     @endforeach
                 </form>
+                @if(empty($arr_base['category_top']) !== true)
+                    <li>
+                        <select id="cate_code_top" name="cate_code_top" title="상위 카테고리" class="">
+                            @foreach($arr_base['category_top'] as $idx => $row)
+                                <option value="{{$row['CateCode']}}" @if($arr_base['category_top_default'] == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
+                            @endforeach
+                        </select>
+                    </li>
+                @endif
                 @if(isset($arr_base['category']) === true)
                 <li>
                     <select id="cate_code" name="cate_code" title="카테고리" class="select_search">
-                            @foreach($arr_base['category'] as $idx => $row)
-                                <option value="{{$row['CateCode']}}" @if(element('cate_code', $arr_input) == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
-                            @endforeach
+                        @if(empty($arr_base['category_top']) !== true)
+                        <option value="">카테고리선택</option>
+                        @endif
+                        @foreach($arr_base['category'] as $idx => $row)
+                            <option value="{{$row['CateCode']}}" @if(element('cate_code', $arr_input) == $row['CateCode'] || $arr_base['category_default'] == $row['CateCode']){{'selected'}}@endif class="{{$row['ParentCateCode']}}">{{$row['CateName']}}</option>
+                        @endforeach
                     </select>
                 </li>
                 @endif
@@ -204,6 +216,9 @@
             $('.select_search').on('change', function(){
                 var $arr_reset = ['course_idx','series_ccd','subject_idx','prof_idx'];
                 if($(this).attr('id') == 'cate_code') {
+                    if($("select[name='cate_code']").val() === '') {
+                        return;
+                    }
                     $.each($arr_reset, function(index, item) {
                         $('#url_form').find('input[type="hidden"][name="' + item + '"]').remove();
                     });
@@ -246,6 +261,8 @@
                     }
                 });
             @endif
+
+            $('#cate_code').chained('#cate_code_top');
         });
 
         function goShow(prod_code, cate_code, pattern) {

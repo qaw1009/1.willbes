@@ -18,7 +18,7 @@
                     <li>
                         <select id="cate_code" name="cate_code" title="카테고리" class="select_search">
                             @foreach($arr_base['category'] as $idx => $row)
-                                <option value="{{$row['CateCode']}}" @if(element('cate_code', $arr_input) == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
+                                <option value="{{$row['CateCode']}}" @if(element('cate_code', $arr_input) == $row['CateCode'] || $arr_base['category_default'] == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
                             @endforeach
                         </select>
                     </li>

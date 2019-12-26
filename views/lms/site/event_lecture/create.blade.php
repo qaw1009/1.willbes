@@ -318,6 +318,42 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">자동지급포인트</label>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <label class="control-label col-md-1-1">적립대상</label>
+                                        <div class="col-md-4 form-inline">
+                                            <select name="PointApplyCcd" id="PointApplyCcd"  class="form-control" title="포인트지급타입">
+                                                <option value="">포인트종류</option>
+                                                @foreach($pointapply_ccd as $key => $val)
+                                                    <option value="{{$key}}" @if($data['PointApplyCcd'] == $key) selected="selected" @endif>{{$val}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <label class="control-label col-md-1-1">적립포인트</label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="" name="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <label class="control-label col-md-1-1">유효기간</label>
+                                        <div class="col-md-6 form-inline">
+                                            <div class="input-group mb-0">
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                <input type="text" class="form-control datepicker" id="" name="" value="">
+                                            </div>
+                                            <span class="pl-5 pr-5">~</span>
+                                            <div class="input-group mb-0">
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                <input type="text" class="form-control datepicker" id="" name="" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group hide" id="limit_{{$optoins_keys[2]}}">

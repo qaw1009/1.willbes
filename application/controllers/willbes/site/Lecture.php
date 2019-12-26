@@ -51,16 +51,16 @@ class Lecture extends \app\controllers\FrontController
                 foreach ($result_list as $row) {
                     if($row['CateDepth'] === '2') {
                         $arr_base['category'][] = $row;
-                        if( empty($cate_code) === true && $row['IsDefault'] === 'Y') { // 기본 카테고리 지정
-                            $arr_base['category_default'] = $row['CateCode'];
-                        }
                     } else if($row['CateDepth'] === '1') {
                         $arr_base['category_top'][] = $row;
-                        if(empty($cate_code_top) === true && $row['IsDefault'] === 'Y') { // 기본 카테고리 지정
-                            $arr_base['category_top_default'] = $row['CateCode'];
-                        }
                     }
                 }
+            }
+            if( empty($cate_code) === true) { // 기본 카테고리 지정
+                $arr_base['category_default'] = element('cate_code', $arr_input, get_var(config_app('DefCateCode'), array_get($arr_base['category'], '0.CateCode')));
+            }
+            if(empty($cate_code_top) === true) {
+                $arr_base['category_top_default'] = substr($arr_base['category_default'], 0, 4);
             }
         } else {
             $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
@@ -71,11 +71,6 @@ class Lecture extends \app\controllers\FrontController
             $cate_code = element('cate_code', $arr_input, get_var(config_app('DefCateCode'), array_get($arr_base['category'], '0.CateCode')));
             $arr_base['category_default'] = $cate_code;
         }
-
-        /*
-        echo var_dump($arr_base['category_top_default'] ).'<BR>';
-        echo var_dump($arr_base['category_default'] ).'<BR>';
-        */
 
         // 사이트별 과목 조회
         if (config_app('SiteGroupCode') == '1002') {

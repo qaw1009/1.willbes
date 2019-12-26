@@ -25,7 +25,7 @@ class CategoryFModel extends WB_Model
             'LTE' => ['CateDepth' => $cate_depth]
         ];
 
-        return $this->_conn->getListResult($this->_table['category'], 'SiteCode, CateCode, CateName, ParentCateCode, GroupCateCode, CateDepth',
+        return $this->_conn->getListResult($this->_table['category'], 'SiteCode, CateCode, CateName, ParentCateCode, GroupCateCode, CateDepth, IsDefault',
             $arr_condition, null, null, ['CateDepth' => 'asc', 'OrderNum' => 'asc']);
     }
 }

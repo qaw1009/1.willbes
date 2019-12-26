@@ -7,7 +7,7 @@
 
         <div class="buttonTabs noticeTabs c_both">
             {{-- board include --}}
-            @include('willbes.m.site.main_partial.board_off')
+            @include('willbes.m.site.main_partial.board')
         </div>
         <div class="appPlayer c_both">
             {{-- app player include --}}

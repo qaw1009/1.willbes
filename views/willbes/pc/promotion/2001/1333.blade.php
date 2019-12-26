@@ -19,12 +19,7 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 /*****************************************************************/  
 
-.skybanner {
-    position:fixed;
-    bottom:20px;
-    right:10px;
-    z-index:1;
-}
+.skybanner {position:fixed;top:220px;right:0;z-index:1;}
 
 /*타이머*/
 .time {width:100%; text-align:center; background:#000}
@@ -50,20 +45,20 @@ to{color:#d63e4d}
 
 
 
-.top_bg {background:url(https://static.willbes.net/public/images/promotion/2019/09/1333_top_bg.jpg) no-repeat center top;}
+.top_bg {background:#514a48 url(https://static.willbes.net/public/images/promotion/2019/12/1333_top_bg.jpg) no-repeat center top;}
 .evt01 {background:#fff;}
 .evt02 {background:#bac0cc;}
 .evt02 ul {position:absolute; top:1242px; width:1014px; left:50%; margin-left:-507px; z-index:5}
 .evt02 ul li {display:inline; float:left; margin-right:8px}
 .evt02 ul li:last-child {margin-right:0}
 .evt02 ul li a {display:block; width:138px; height:209px; font-size:0; text-indent:-9999px}
-.evt02 ul li:nth-child(1) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t6_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(2) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t7_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(3) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t4_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(4) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t5_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(5) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t1_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(6) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t2_btn.jpg) no-repeat left top;}
-.evt02 ul li:nth-child(7) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t3_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(6) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t6_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(7) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t7_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(4) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t4_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(5) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t5_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(1) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t1_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(2) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t2_btn.jpg) no-repeat left top;}
+.evt02 ul li:nth-child(3) a {background:url(https://static.willbes.net/public/images/promotion/2019/07/1333_02_t3_btn.jpg) no-repeat left top;}
 .evt02 ul li a.active,
 .evt02 ul li a:hover {background-position:right top}
 .evt02 ul:after {content:""; display:block; clear:both}
@@ -74,8 +69,8 @@ to{color:#d63e4d}
 
     <div class="evtContent NGR" id="evtContainer"> 
         <ul class="skybanner">
-            <li><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/09/1333_sky01.png" alt="신광은 경찰팀 T-PASS"></a></li>
-            <li><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/09/1333_sky02.png" alt="신광은 경찰팀 T-PASS"></a></li>
+            <li><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/12/1333_sky01.png" alt="신광은 경찰팀 T-PASS"></a></li>
+            <li style="padding-top:10px;"><a href="#golec"><img src="https://static.willbes.net/public/images/promotion/2019/12/1333_sky02.png" alt="신광은 경찰팀 T-PASS"></a></li>
         </ul> 
         <!-- 타이머 -->
         <div class="evtCtnsBox time NGEB"  id="newTopDday">
@@ -101,84 +96,84 @@ to{color:#d63e4d}
         </div>
         
         <div class="evtCtnsBox top_bg">  
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_top.jpg" alt="신광은 경찰팀 T-PASS">  
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_top.jpg" alt="신광은 경찰팀 T-PASS">  
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_01.jpg" alt="커리큘럼" usemap="#Map1333_curry" border="0">
-            <map name="Map1333_curry" id="Map1333_curry">
-                <area shape="rect" coords="28,790,194,835" href="https://police.willbes.net/promotion/index/cate/3001/code/1126" target="_blank" alt="커리큘럼 자세히보기" />
-                <area shape="rect" coords="334,790,418,825" href="#none" alt="기본과정" onclick="fnPlayerSample('132199', '1019097', 'HD');" />
-                <area shape="rect" coords="620,790,711,825" href="#none" alt="심화과정" onclick="fnPlayerSample('132216', '1019296', 'HD');" />
-                <area shape="rect" coords="910,791,999,826" href="#none" alt="문제풀이과정" onclick="fnPlayerSample('131811', '1014607', 'HD');" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_01.jpg" alt="커리큘럼" usemap="#Map1333zy" border="0" />
+            <map name="Map1333zy" id="Map1333zy">
+                <area shape="rect" coords="33,707,190,745" href="https://police.willbes.net/promotion/index/cate/3001/code/1126" target="_blank" alt="커리큘럼 자세히보기" />
+                <area shape="rect" coords="335,707,416,733" href="#none" alt="기본과정" onclick="fnPlayerSample('132199', '1019097', 'HD');" />
+                <area shape="rect" coords="624,707,707,734" href="#none" alt="심화과정" onclick="fnPlayerSample('132216', '1019296', 'HD');" />
+                <area shape="rect" coords="916,706,996,735" href="#none" alt="문제풀이과정" onclick="fnPlayerSample('131811', '1014607', 'HD');" />
+            </map>          
         </div>  
 
         <div class="evtCtnsBox evt02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02.jpg" alt="즉시 4만원 할인">
             <ul>
-                <li><a href="#tab6">영어 하승민</a></li>
-                <li><a href="#tab7">영어 김현정</a></li>                
-                <li><a href="#tab4">한국사 원유철</a></li>
-                <li><a href="#tab5">한국사 오태진</a></li>
                 <li><a href="#tab1">형소법 신광은</a></li>
                 <li><a href="#tab2">형법 김원욱</a></li>
-                <li><a href="#tab3">경찰학 장정훈</a></li>               
+                <li><a href="#tab3">경찰학 장정훈</a></li>  
+                <li><a href="#tab4">한국사 원유철</a></li>   
+                <li><a href="#tab5">한국사 오태진</a></li>
+                <li><a href="#tab6">영어 하승민</a></li>
+                <li><a href="#tab7">영어 김현정</a></li>                          
             </ul>
             <div id="tab1" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_t1.jpg" alt="형소법 신광은" usemap="#Map1333A" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t1.jpg" alt="형소법 신광은" usemap="#Map1333A" border="0">
                 <map name="Map1333A" id="Map1333A">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155453" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159213" target="_blank" alt="수강신청" />
                 </map>
             </div>
             <div id="tab2" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_t2.jpg" alt="형법 김원욱" usemap="#Map1333B" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t2.jpg" alt="형법 김원욱" usemap="#Map1333B" border="0">
                 <map name="Map1333B" id="Map1333B">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155450" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159218" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab3" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_t3.jpg" alt="경찰학 장정훈" usemap="#Map1333C" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t3.jpg" alt="경찰학 장정훈" usemap="#Map1333C" border="0">
                 <map name="Map1333C" id="Map1333C">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155449" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159214" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab4" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_t4.jpg" alt="한국사 원유철" usemap="#Map1333D" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t4.jpg" alt="한국사 원유철" usemap="#Map1333D" border="0">
                 <map name="Map1333D" id="Map1333D">
-                    <area shape="rect" coords="66,528,464,572" href=https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155372" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159219" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab5" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_t5.jpg" alt="한국사 오태진" usemap="#Map1333E" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t5.jpg" alt="한국사 오태진" usemap="#Map1333E" border="0">
                 <map name="Map1333E" id="Map1333E">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3008/pack/648001/prod-code/155240" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3008/pack/648001/prod-code/159220" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab6" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_t6.jpg" alt="영어 하승민" usemap="#Map1333F" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t6.jpg" alt="영어 하승민" usemap="#Map1333F" border="0">
                 <map name="Map1333F" id="Map1333F">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155451" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159221" target="_blank" alt="수강신청" />
                 </map>
             </div> 
             <div id="tab7" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_t7.jpg" alt="영어 김현정" usemap="#Map1333G" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_02_t7.jpg" alt="영어 김현정" usemap="#Map1333G" border="0">
                 <map name="Map1333G" id="Map1333G">
-                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/155452" target="_blank" alt="수강신청" />
+                    <area shape="rect" coords="66,528,464,572" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159222" target="_blank" alt="수강신청" />
                 </map>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1333_02_01.jpg">
             <div id="golec">                
                 <img src="https://static.willbes.net/public/images/promotion/2019/09/1333_02_bottom.jpg" alt="패스 수강신청" usemap="#map190913" border="0">
                 <map name="map190913" id="map190913">
-                    <area shape="rect" coords="114,231,276,277" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/156820" target="_blank" alt="하승민/오태진" />
-                    <area shape="rect" coords="321,231,488,279" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/156821" target="_blank" alt="하승민/원유철" />
-                    <area shape="rect" coords="740,231,903,278" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/156822" target="_blank" alt="3법패스" />
+                    <area shape="rect" coords="114,231,276,277" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159223" target="_blank" alt="하승민/오태진" />
+                    <area shape="rect" coords="321,231,488,279" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159224" target="_blank" alt="하승민/원유철" />
+                    <area shape="rect" coords="740,231,903,278" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/159225" target="_blank" alt="3법패스" />
                 </map>
             </div>
         </div>
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1333_03.jpg" alt="실전 모의고사">             
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1333_03.jpg" alt="실전 모의고사">             
         </div>               
     </div>
     <!-- End Container --> 

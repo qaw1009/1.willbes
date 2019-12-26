@@ -20,9 +20,47 @@
 
         /************************************************************/
 
-        .wb_top {background:#ae9889 url(https://static.willbes.net/public/images/promotion/2019/07/1068_top_bg.jpg) no-repeat center top; position:relative;}
+		.wb_event{background:#004036 url(https://static.willbes.net/public/images/promotion/2019/12/1068_event_bg.jpg) no-repeat center top; position:relative;}
 
+        .wb_top {background:#e1e1e1 url(https://static.willbes.net/public/images/promotion/2019/12/1068_top_bg.jpg) no-repeat center top; position:relative;}
 
+		.wb_01{background:#fff;}
+
+		/*탭(텍스트)*/
+		.tabContaier2{width:1000px;margin:0 auto;}
+		.tab_area{margin-top:100px;}
+        .tabContaier2 li{display:inline-block;width:500px;height:60px;line-height:60px;background:#eaeaea;color:#b7b7b7;float:left;font-size:18px;font-weight:bold;font-size:25px;border-bottom:3px solid #2f6c64;}
+        .tabContaier2:after {content:""; display:block; clear:both}
+        .tabContaier2 li a{display:block;}
+        .tabContaier2 li a:hover,
+        .tabContaier2 li a.active {background:#f4f4f4;color:#2f6c64;border:3px solid #2f6c64;border-bottom:none;}
+
+        .wb_cts04 {background:#f4f4f4;position:relative;padding-bottom:150px;}
+
+        .check { position:absolute; bottom:7%; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3;z-index:5;font-weight:bold;}
+        .check label {cursor:pointer; font-size:14px}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#252525; margin-left:50px; border-radius:20px}
+        .check a:hover {background:#ffc600; color:#252525}
+        
+        input[id="cb1"]:checked + label {background-color: red;}
+
+        .wb_tip{background:#fff;padding-bottom:50px;}
+		  /*타이머*/
+		.time {width:100%; text-align:center; background:#000}
+        .time {text-align:center; padding:20px 0}
+        .time table {width:1120px; margin:0 auto}
+        .time table td:first-child {/*font-size:40px*/}
+        .time table td img {width:70%}
+        .time .time_txt {font-size:28px; color:#fff; letter-spacing: -1px; font-weight:600}
+        .time .time_txt a {font-size:14px; display:block; margin-top:10px; border:1px solid #fff; padding:5px; border-radius:15px}
+        .time .time_txt a:hover {background:#fff; color:#000}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time p {text-alig:center}
+
+		.wb_03{background:#27262c;}
+
+		/*
         .wb_cts01 {background:#fff url(https://static.willbes.net/public/images/promotion/2019/07/1068_01_bg.jpg) center bottom no-repeat;}
         .bannerImg3 {position:relative; width:920px; margin:0 auto; padding:10px 0px 124px 0px; }
         .bannerImg3 p {position:absolute; top:35%; width:30px; z-index:1000;}
@@ -66,17 +104,15 @@
         .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .LAeventB03 table a:hover {background:#252525; color:#fff;}
         .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
+		*/
 		
-		.skybanner {
-            position:fixed;
-            top:100px;
-            right:0;			
-            width:122px;
-			z-index:1000;
-        }
+		.skybanner {position:fixed;top:100px;right:0;width:122px;z-index:1000;}
+
+		.wb_02{background:#f4f4f4;}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">	
+		<!--
 		<div class="skybanner">
             {{--<a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=391" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1068_skybanner.png" alt=""/></a>--}}
 			<img src="https://static.willbes.net/public/images/promotion/2019/07/1068_skybanner.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
@@ -88,15 +124,98 @@
 			  <area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
 			</map>
         </div>
+		-->
+
+        <div class="evtCtnsBox wb_event">
+			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_event.gif" usemap="#Map1068event" border="0">
+			<map name="Map1068event" id="Map1068event">
+				<area shape="rect" coords="172,879,542,1011"  href="#tabs1" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
+				<area shape="rect" coords="583,879,952,1011"  href="#tabs2" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
+			</map>   
+        </div>
 		
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1068_top.png" alt=" 윌비스 농업직 절대지존 장사원교수 " usemap="#Map20181030_c1" border="0"  />
-            <map name="Map20181030_c1" >
-                <area shape="rect" coords="677,909,838,1016" href="#event" onfocus="this.blur();"/>
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_top.jpg" alt=" 윌비스 농업직 절대지존 장사원교수 ">
         </div>
         <!--WB_top//-->
 
+		<div class="evtCtnsBox wb_01">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_01.jpg" alt="커리큘럼">
+        </div>
+
+		<div class="evtCtnsBox wb_02">
+			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_02.jpg" alt="수강신청" usemap="#Map" border="0" />
+			<map name="Map" id="Map">
+				<area shape="rect" coords="51,910,250,950" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/159289" target="_blank" />
+				<area shape="rect" coords="317,912,513,947" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/159291" target="_blank" />
+				<area shape="rect" coords="587,911,784,950" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/159293" target="_blank" />
+				<area shape="rect" coords="854,913,1051,946" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/159297" target="_blank" />
+			</map>
+        </div>
+
+		<div class="evtCtnsBox wb_cts04"> 		
+			<div class="tabContaier2">    
+				<ul>    
+					<li><a href="#tabs1" id="tabs1_btn" class="active">장사원 농업직 T-PASS </a></li>
+					<li><a href="#tabs2" id="tabs2_btn">장사원 농촌지도사 T-PASS </a></li>
+				</ul>
+			</div> 	
+			<div class="tab_area">
+				<div id="tabs1" class="tabContents2">
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_02_tab1.jpg" usemap="#Map1071aa" border="0" id="evt1"/>
+					<map name="Map1071aa" id="Map1071aa">
+						<area shape="rect" coords="382,622,530,722" href="javascript:go_PassLecture('159289');" >
+						<area shape="rect" coords="785,624,931,722" href="javascript:go_PassLecture('159291');" >
+					</map>            
+				</div>
+				<div id="tabs2" class="tabContents2">       
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_02_tab2.jpg" usemap="#Map1071bb"  title="" border="0" id="evt2"/>
+					<map name="Map1071bb" id="Map1071bb">
+						<area shape="rect" coords="384,620,534,721" href="javascript:go_PassLecture('159293');" >
+						<area shape="rect" coords="784,620,935,726" href="javascript:go_PassLecture('159297');" >
+					</map>                
+				</div>   
+			</div>		
+            <div class="check">
+                <label>
+                    <input type="checkbox" name="ischk" value="Y" id="cb1">
+                    페이지 하단 장사원 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                </label>
+                <a href="#careful">이용안내확인하기 ↓</a>
+            </div>   
+        </div>  
+			
+        </div>
+
+		 <!-- 타이머 -->
+         <div class="evtCtnsBox time NGEB"  id="newTopDday">
+            <div>
+                <table>
+                    <tr>                       
+                        <td class="time_txt">마감까지</td>
+                        <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">day </td>
+                        <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">남았습니다.<br></td>                     
+                    </tr>
+                </table>                
+            </div>
+        </div>
+		
+		<div class="evtCtnsBox wb_03" id="careful">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_03.jpg" alt="유의사항">
+        </div>
+
+
+		{{--
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01.png" alt=""/>
             <div class="bannerImg3">
@@ -544,12 +663,41 @@
             <!--유기농업기능사//-->
         </div>
 		<p>&nbsp;</p><p>&nbsp;</p>
+		--}}
+		
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-       /*tab*/
+	<script type="text/javascript">
+        var ytb01_url = "https://www.youtube.com/embed/rPN9bxcaiLU";
+        var ytb02_url = "https://www.youtube.com/embed/eRrHTbcFBtY";
+
         $(document).ready(function(){
+            /*영상탭*/
+            $(".tabContentsEvt").hide();
+            $(".tabContentsEvt:first").show();
+            $(".youtubeTab a").click(function(){
+                var activeTab = $(this).attr("href");
+                var html_str = "";
+                if(activeTab == "#ytb01"){
+                    html_str = "<iframe src='"+ytb01_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#ytb02"){
+                    html_str = "<iframe src='"+ytb02_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#ytb03"){
+                    html_str = "<iframe src='"+ytb03_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#ytb04"){
+                    html_str = "<iframe src='"+ytb04_url+"' allowfullscreen></iframe>";
+                }
+                $(".youtubeTab a").removeClass("active");
+                $(this).addClass("active");
+                $(".tabContentsEvt").hide();
+                $(".tabContentsEvt").html('');
+                $(activeTab).html(html_str);
+                $(activeTab).fadeIn();
+                return false;
+            });
+
+            /*강의탭*/
             var $active, $links = $(this).find('.tabs li a');
             $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
             $active.addClass('active');
@@ -564,7 +712,7 @@
                 var activeTab = $(this).data("tab-id");
                 $(".tabs li a").removeClass("active");
                 $('#menu_tab'+activeTab).addClass("active");
-                $(".content_guide_box").hide();
+                $(".tabContents").hide();
                 $('#tab'+activeTab).fadeIn();
                 return false;
             });
@@ -573,37 +721,56 @@
                 var activeTab = $(this).attr("href");
                 $(".tabs li a").removeClass("active");
                 $(this).addClass("active");
-                $(".content_guide_box").hide();
+                $(".tabContents").hide();
                 $(activeTab).fadeIn();
                 return false;
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            var slidesImg3 = $("#slidesImg3").bxSlider({
-                mode:'fade',
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:920,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false
+
+            /*탭(텍스터버전)*/
+            $(".tabContents2").hide();
+            $(".tabContents2:first").show();
+            $(".tabContaier2 ul li a").click(function(){
+                tpassTabClick(this);
             });
 
-            $("#imgBannerLeft3").click(function (){
-                slidesImg3.goToPrevSlide();
+            $(".tabContents2 li a").click(function(){
+                var activeTab = $(this).attr("href");
+                $(".tabs li a").removeClass("active");
+                $(this).addClass("active");
+                $(".tabContents").hide();
+                $(activeTab).fadeIn();
+                return false;
             });
 
-            $("#imgBannerRight3").click(function (){
-                slidesImg3.goToNextSlide();
-            });
+            /*디데이카운트다운*/
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
+
+        function tpassTabClick(obj) {
+            var activeTab = $(obj).attr("href");
+            $(".tabContaier2 ul li a").removeClass("active");
+            $(activeTab + '_btn').addClass("active");
+            $(".tabContents2").hide();
+            $(activeTab).fadeIn();
+            return false;
+        }
+
+        function go_PassLecture(code) {
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+            var url = '{{ site_url('/periodPackage/show/cate/3028/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }
     </script>
+
+{{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
+
+    
+
 @stop
+
+
+

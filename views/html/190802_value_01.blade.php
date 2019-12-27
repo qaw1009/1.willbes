@@ -25,7 +25,7 @@
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/190802_value01_bg.jpg) no-repeat center top;}	
 		.evt_01 {background:#1d1d1d;}
 		.evt_02 {background:#fff;}
-		.tabs {border-bottom:1px solid #2e3044; width:980px; margin:0 auto 30px}
+		.tabs {border-bottom:2px solid #2e3044; width:980px; margin:0 auto 30px}
 		.tabs li {display:inline; float:left; width:20%;}
 		.tabs.tabs3ea li {display:inline; float:left; width:33.33333%;}
         .tabs.tabs4ea li {display:inline; float:left; width:25%;}
@@ -59,9 +59,9 @@
 
         /************************************************************/      
     </style> 
-	<div class="evtContent NG">
+	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/190802_value01.png" alt="2020 노무패스" />
+			<img src="https://static.willbes.net/public/images/promotion/2019/12/190802_value01.png" alt="2020 감평패스" />
 		</div>
 
 		<div class="evtCtnsBox evt_01">
@@ -133,43 +133,61 @@
 					<div>					
 						<table cellspacing="0" cellpadding="0">
 							<colgroup>
-								<col width="50%" />
+								<col width="20%" />
 								<col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
 							</colgroup>
 							<thead>
-								<tr>
-									<th colspan="2">1차 강의 선택하기</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th>경영학 선택</th>
-									<th>경제학 선택</th>
-								</tr>
-								<tr>
-									<td><input name="mgntno" id="aa1" type="checkbox" value="" />
-									<label for="aa1">노동법(김광훈) / 사회보험법(정여울)</label></td>
-									<td><input name="mgntno" id="aa2" type="checkbox" value="" />
-									<label for="aa2">노동법(김광훈) / 사회보험법(정여울)</label></td>
-								</tr>
-								<tr>
-									<td><input name="mgntno" id="aa3" type="checkbox" value="" />
-									<label for="aa3">노동법(김광훈) / 사회보험법(이주현)</label></td>
-									<td><input name="mgntno" id="aa4" type="checkbox" value="" />
-									<label for="aa4">노동법(김광훈) / 사회보험법(이주현)</label></td>
-								</tr>
-								<tr>
-									<td><input name="mgntno" id="aa5" type="checkbox" value="" />
-									<label for="aa5">노동법(박원철) / 사회보험법(정여울)</label></td>
-									<td><input name="mgntno" id="aa6" type="checkbox" value="" />
-									<label for="aa6">노동법(박원철) / 사회보험법(정여울)</label></td>
-								</tr>
-								<tr>
-									<td><input name="mgntno" id="aa7" type="checkbox" value="" />
-									<label for="aa7">노동법(박원철) / 사회보험법(이주현)</label></td>
-									<td><input name="mgntno" id="aa8" type="checkbox" value="" />
-									<label for="aa8">노동법(박원철) / 사회보험법(이주현)</label></td>
-								</tr>
+                                <tr>
+                                    <th>과목</th>
+                                    <th>강사</th>
+                                    <th colspan="4">과정</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>민법</th>
+                                    <td>김춘환</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>감정평가관계법규</th>
+                                    <td>조민수</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>부동산학원론</th>
+                                    <td>송우석</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>경제학원론</th>
+                                    <td>황정빈</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>회계학</th>
+                                    <td>김승철</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
 							</tbody>
 						</table>
 						<div class="buyLec">
@@ -183,7 +201,7 @@
 					<div>
 						<table cellspacing="0" cellpadding="0">
 							<colgroup>
-								<col width="" />
+								<col width="20%" />
 								<col width="" />
 								<col width="" />
 								<col width="" />
@@ -191,81 +209,68 @@
 								<col width="" />
 							</colgroup>
 							<thead>
-								<tr>
-									<th colspan="6">2차 GS0~GS3순환 강의 선택하기</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th colspan="3">필수과목</th>
-									<th colspan="3">선택과목(택1)</th>
-								</tr>
-								<tr>
-									<th>노동법</th>
-									<th>행정쟁송법</th>
-									<th>인사노무관리</th>
-									<th>경영조직론</th>
-									<th>민사소송법</th>
-									<th>노동경제학</th>
-								</tr>
-								<tr>
-									<td><input name="mgntno" id="ba1" type="checkbox" value="" />
-									<label for="ba1">강재민</label></td>
-									<td><input name="bb" id="bb1" type="checkbox" value="" />
-									<label for="bb1">김기홍</label></td>
-									<td><input name="bc" id="bc1" type="checkbox" value="" />
-									<label for="bc1">김유미</label></td>
-									<td><input name="bd" id="bd1" type="checkbox" value="" />
-									<label for="bd1">김유미</label></td>
-									<td><input name="bd" id="bd2" type="checkbox" value="" />
-									<label for="bd2">김춘환</label></td>
-									<td><input name="bd" id="bd6" type="checkbox" value="" />
-									<label for="bd6">강두성</label></td>
-								</tr>
-								<tr>
-									<td><input name="ba" id="ba2" type="checkbox" value="" />
-									<label for="ba2">박원철</label></td>
-									<td><input name="bb" id="bb2" type="checkbox" value="" />
-									<label for="bb2">김정일</label></td>
-									<td><input name="bc" id="bc2" type="checkbox" value="" />
-									<label for="bc2">전수환</label></td>
-									<td><input name="bd" id="bd3" type="checkbox" value="" />
-									<label for="bd3">전수환</label></td>
-									<td><input name="bd" id="bd4" type="checkbox" value="" />
-									<label for="bd4">이덕훈</label></td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td><input name="ba" id="ba3" type="checkbox" value="" />
-									<label for="ba3">방강수</label></td>
-									<td><input name="bb" id="bb3" type="checkbox" value="" />
-									<label for="bb3">이승민</label></td>
-									<td><input name="bc" id="bc3" type="checkbox" value="" />
-									<label for="bc3">정준모</label></td>
-									<td><input name="bd" id="bd5" type="checkbox" value="" />
-									<label for="bd5">정준모</label></td>
-									<td> </td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td><input name="ba" id="ba4" type="checkbox" value="" />
-									<label for="ba4">이수진</label></td>
-									<td><input name="bb" id="bb4" type="checkbox" value="" />
-									<label for="bb4">심민</label></td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td> </td>
-									<td><input name="bb" id="bb5" type="checkbox" value="" />
-									<label for="bb5">조현</label></td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-								</tr>
+                                <tr>
+                                    <th>과목</th>
+                                    <th>강사</th>
+                                    <th colspan="3">과정</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th rowspan="3">감정평가실무</th>
+                                    <td rowspan="3">여지훈</td>
+                                    <td>일반평가 기본강의</td>
+                                    <td rowspan="3">GS0~4기 스터디</td>
+                                    <td>PASS 감정평가실무 문제풀이1 (초급) </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">보상평가 기본강의</td>
+                                    <td>PASS 감정평가실무 문제풀이2 (중급)</td>
+                                </tr>
+                                <tr>
+                                    <td>PASS 감정평가실무 기출문제분석 강의</td>
+                                </tr>
+                                <tr>
+                                    <th>감정평가이론</th>
+                                    <td>최동진<br />
+                                    (어정민)</td>
+                                    <td>기본강의<br />
+                                    심화강의</td>
+                                    <td>GS0~4기 스터디</td>
+                                    <td>기출문제분석 강의(어정민)</td>
+                                </tr>
+                                <tr>
+                                    <th rowspan="6">감평행정법 및<br />
+                                    보상법규</th>
+                                    <td rowspan="2">김기홍</td>
+                                    <td>감평행정법 기본강의</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>보상법규 기본강의</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">조 현</td>
+                                    <td>감평행정법 기본강의</td>
+                                    <td rowspan="2">GS0~4기 스터디</td>
+                                    <td>행정법 기출논점 및 최신판례</td>
+                                </tr>
+                                <tr>
+                                    <td>보상법규 기본강의</td>
+                                    <td>보상법규 논점 사례연습 특강</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">이현진</td>
+                                    <td>-</td>
+                                    <td rowspan="2">GS0~4기 스터디</td>
+                                    <td rowspan="2">감정평가 및 보상법규 핵심 논점 정리 특강</td>
+                                </tr>
+                                <tr>
+                                    <td>-</td>
+                                </tr>
 							</tbody>
 						</table>
 						<div class="buyLec">
@@ -275,134 +280,113 @@
 				</div>
 
 				<div id="tab14">
-					<h3 class="NSK-Black">2020 한림 동차 감평패스 [베이직]</h3>
+					<h3 class="NSK-Black">2020 한림 동차 감평패스 1차 [베이직]</h3>
 					<div>					
 						<table cellspacing="0" cellpadding="0">
 						<colgroup>
-								<col width="50%" />
+								<col width="20%" />
 								<col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
 							</colgroup>
 							<thead>
-								<tr>
-									<th colspan="2">1차 강의 선택하기</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th>경영학 선택</th>
-									<th>경제학 선택</th>
-								</tr>								
-								<tr>
-									<td><input name="mgntno" id="ce1"type="checkbox" value="" />
-									<label for="ce1">노동법(김광훈) / 사회보험법(정여울)</label></td>
-									<td><input name="ce" id="ce2"type="checkbox" value="" />
-									<label for="ce2">노동법(김광훈) / 사회보험법(정여울</label>)</td>
-								</tr>
-								<tr>
-									<td><input name="ce" id="ce3"type="checkbox" value="" />
-									<label for="ce3">노동법(김광훈) / 사회보험법(이주현)</label></td>
-									<td><input name="ce" id="ce4"type="checkbox" value="" />
-									<label for="ce4">노동법(김광훈) / 사회보험법(이주현</label>)</td>
-								</tr>
-								<tr>
-									<td><input name="ce" id="ce5"type="checkbox" value="" />
-									<label for="ce5">노동법(박원철) / 사회보험법(정여울)</label></td>
-									<td><input name="ce" id="ce6"type="checkbox" value="" />
-									<label for="ce6">노동법(박원철) / 사회보험법(정여울)</label></td>
-								</tr>
-								<tr>
-									<td><input name="ce" id="ce7"type="checkbox" value="" />
-									<label for="ce7">노동법(박원철) / 사회보험법(이주현)</label></td>
-									<td><input name="ce" id="ce8"type="checkbox" value="" />
-									<label for="ce8">노동법(박원철) / 사회보험법(이주현)</label></td>
-								</tr>
+                                <tr>
+                                    <th>과목</th>
+                                    <th>강사</th>
+                                    <th colspan="4">과정</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>민법</th>
+                                    <td>김춘환</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>감정평가관계법규</th>
+                                    <td>조민수</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>부동산학원론</th>
+                                    <td>송우석</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>경제학원론</th>
+                                    <td>황정빈</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>회계학</th>
+                                    <td>김승철</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
 							</tbody>
-						</table>
-						<table cellspacing="0" cellpadding="0" class="mt30">
-							<colgroup>
+						</table>				
+					</div>
+
+                    <h3 class="NSK-Black mt30">2020 한림 동차 감평패스 2차 [베이직]</h3>
+					<div>					
+						<table cellspacing="0" cellpadding="0">
+						    <colgroup>
+								<col width="20%" />
 								<col width="" />
-								<col width="" />
-								<col width="" />
-								<col width="" />
-								<col width="" />
-								<col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />     
 							</colgroup>
 							<thead>
-								<tr>
-									<th colspan="6">2차 GS0순환 강의 선택하기</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th colspan="3">필수과목</th>
-									<th colspan="3">선택과목(택1)</th>
-								</tr>
-								<tr>
-									<th>노동법</th>
-									<th>행정쟁송법</th>
-									<th>인사노무관리</th>
-									<th>경영조직론</th>
-									<th>민사소송법</th>
-									<th>노동경제학</th>
-								</tr>
-								<tr>
-									<td><input name="mgntno" id="ca1" type="checkbox" value="" />
-									<label for="ca1">강재민</label></td>
-									<td><input name="cb" id="cb1" type="checkbox" value="" />
-									<label for="cb1">김기홍</label></td>
-									<td><input name="cc" id="cc1" type="checkbox" value="" />
-									<label for="cc1">김유미</label></td>
-									<td><input name="cd" id="cd1" type="checkbox" value="" />
-									<label for="cd1">김유미</label></td>
-									<td><input name="cd" id="cd2" type="checkbox" value="" />
-									<label for="cd2">김춘환</label></td>
-									<td><input name="cd" id="cd6" type="checkbox" value="" />
-									<label for="cd6">강두성</label></td>
-								</tr>
-								<tr>
-									<td><input name="ca" id="ca2" type="checkbox" value="" />
-									<label for="ca2">박원철</label></td>
-									<td><input name="cb" id="cb2" type="checkbox" value="" />
-									<label for="cb2">김정일</label></td>
-									<td><input name="cc" id="cc2" type="checkbox" value="" />
-									<label for="cc2">전수환</label></td>
-									<td><input name="cd" id="cd3" type="checkbox" value="" />
-									<label for="cd3">전수환</label></td>
-									<td><input name="cd" id="cd4" type="checkbox" value="" />
-									<label for="cd4">이덕훈</label></td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td><input name="ca" id="ca3" type="checkbox" value="" />
-									<label for="ca3">방강수</label></td>
-									<td><input name="cb" id="cb3" type="checkbox" value="" />
-									<label for="cb3">이승민</label></td>
-									<td><input name="cc" id="cc3" type="checkbox" value="" />
-									<label for="cc3">정준모</label></td>
-									<td><input name="cd" id="cd5" type="checkbox" value="" />
-									<label for="cd5">정준모</label></td>
-									<td> </td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td><input name="ca" id="ca4" type="checkbox" value="" />
-									<label for="ca4">이수진</label></td>
-									<td><input name="cb" id="cb4" type="checkbox" value="" />
-									<label for="cb4">심민</label></td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td> </td>
-									<td><input name="cb" id="cb5" type="checkbox" value="" />
-									<label for="cb5">조현</label></td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-								</tr>
+                                <tr>
+                                    <th>과목</th>
+                                    <th>강사</th>
+                                    <th>과정</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th rowspan="2">감정평가실무</th>
+                                    <td rowspan="2">여지훈</td>
+                                    <td>일반평가 기본강의</td>
+                                </tr>
+                                <tr>
+                                    <td>보상평가 기본강의</td>
+                                </tr>
+                                <tr>
+                                    <th rowspan="2">감평행정법</th>
+                                    <td>김기홍</td>
+                                    <td>기본강의</td>
+                                </tr>
+                                <tr>
+                                    <td>조  현</td>
+                                    <td>기본강의</td>
+                                </tr>
+                                <tr>
+                                    <th rowspan="2">보상법규</th>
+                                    <td>김기홍</td>
+                                    <td>기본강의</td>
+                                </tr>
+                                <tr>
+                                    <td>조  현</td>
+                                    <td>기본강의</td>
+                                </tr>
 							</tbody>
 						</table>
 						<div class="buyLec">
@@ -412,50 +396,70 @@
 				</div>
 
 				<div id="tab15">
-					<h3 class="NSK-Black">2020 한림 동차 감평패스 [프리미엄]</h3>
+					<h3 class="NSK-Black">2020 한림 동차 감평패스 1차 [프리미엄]</h3>
 					<div>					
 						<table cellspacing="0" cellpadding="0">
 							<colgroup>
-								<col width="50%" />
+								<col width="20%" />
 								<col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
 							</colgroup>
 							<thead>
-								<tr>
-									<th colspan="2">1차 강의 선택하기</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th>경영학 선택</th>
-									<th>경제학 선택</th>
-								</tr>								
-								<tr>
-									<td><input name="mgntno" id="de1" type="checkbox" value="" />
-									<label for="de1">노동법(김광훈) / 사회보험법(정여울)</label></td>
-									<td><input name="de" id="de2" type="checkbox" value="" />
-									<label for="de2">노동법(김광훈) / 사회보험법(정여울)</label></td>
-								</tr>
-								<tr>
-									<td><input name="de" id="de3" type="checkbox" value="" />
-									<label for="de3">노동법(김광훈) / 사회보험법(이주현)</label></td>
-									<td><input name="de" id="de4" type="checkbox" value="" />
-									<label for="de4">노동법(김광훈) / 사회보험법(이주현)</label></td>
-								</tr>
-								<tr>
-									<td><input name="de" id="de5" type="checkbox" value="" />
-									<label for="de5">노동법(박원철) / 사회보험법(정여울)</label></td>
-									<td><input name="de" id="de6" type="checkbox" value="" />
-									<label for="de6">노동법(박원철) / 사회보험법(정여울)</label></td>
-								</tr>
-								<tr>
-									<td><input name="de" id="de7" type="checkbox" value="" />
-									<label for="de7">노동법(박원철) / 사회보험법(이주현)</label></td>
-									<td><input name="de" id="de8" type="checkbox" value="" />
-									<label for="de8">노동법(박원철) / 사회보험법(이주현)</label></td>
-								</tr>
+                                <tr>
+                                    <th>과목</th>
+                                    <th>강사</th>
+                                    <th colspan="4">과정</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>민법</th>
+                                    <td>김춘환</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>감정평가관계법규</th>
+                                    <td>조민수</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>부동산학원론</th>
+                                    <td>송우석</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>경제학원론</th>
+                                    <td>황정빈</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
+                                <tr>
+                                    <th>회계학</th>
+                                    <td>김승철</td>
+                                    <td>기본강의</td>
+                                    <td>문제풀이</td>
+                                    <td>모의고사</td>
+                                    <td>최종정리</td>
+                                </tr>
 							</tbody>
 						</table>
-						<table cellspacing="0" cellpadding="0" class="mt30">
+                    </div>
+                    <h3 class="NSK-Black mt30">2020 한림 동차 감평패스 2차 [프리미엄]</h3>
+                    <div>
+						<table cellspacing="0" cellpadding="0">
 							<colgroup>
 								<col width="" />
 								<col width="" />
@@ -465,69 +469,68 @@
 								<col width="" />
 							</colgroup>
 							<thead>
-								<tr>
-									<th colspan="6">2차 GS0순환 강의 선택하기</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><input name="mgntno" id="da1" type="checkbox" value="" />
-									<label for="da1">강재민</label></td>
-									<td><input name="db" id="db1" type="checkbox" value="" />
-									<label for="db1">김기홍</label></td>
-									<td><input name="dc" id="dc1" type="checkbox" value="" />
-									<label for="dc1">김유미</label></td>
-									<td><input name="dd" id="dd1" type="checkbox" value="" />
-									<label for="dd1">김유미</label></td>
-									<td><input name="dd" id="dd2" type="checkbox" value="" />
-									<label for="dd2">김춘환</label></td>
-									<td><input name="dd" id="dd6" type="checkbox" value="" />
-									<label for="de1">강두성</label></td>
-								</tr>
-								<tr>
-									<td><input name="da" id="da2" type="checkbox" value="" />
-									<label for="da2">박원철</label></td>
-									<td><input name="db" id="db2" type="checkbox" value="" />
-									<label for="db2">김정일</label></td>
-									<td><input name="dc" id="dc2" type="checkbox" value="" />
-									<label for="dc2">전수환</label></td>
-									<td><input name="dd" id="dd3" type="checkbox" value="" />
-									<label for="dd3">전수환</label></td>
-									<td><input name="dd" id="dd4" type="checkbox" value="" />
-									<label for="dd4">이덕훈</label></td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td><input name="da" id="da3" type="checkbox" value="" />
-									<label for="da3">방강수</label></td>
-									<td><input name="db" id="db3" type="checkbox" value="" />
-									<label for="db3">이승민</label></td>
-									<td><input name="dc" id="dc3" type="checkbox" value="" />
-									<label for="dc3">정준모</label></td>
-									<td><input name="dd" id="dd5" type="checkbox" value="" />
-									<label for="dd5">정준모</label></td>
-									<td> </td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td><input name="da" id="da4" type="checkbox" value="" />
-									<label for="da4">이수진</label></td>
-									<td><input name="db" id="db4" type="checkbox" value="" />
-									<label for="db4">심민</label></td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td> </td>
-									<td><input name="db" id="db5" type="checkbox" value="" />
-									<label for="db5">조현</label></td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-									<td> </td>
-								</tr>
+                                <tr>
+                                    <th>과목</th>
+                                    <th>강사</th>
+                                    <th colspan="3">과정</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th rowspan="3">감정평가실무</th>
+                                    <td rowspan="3">여지훈</td>
+                                    <td>일반평가 기본강의</td>
+                                    <td rowspan="3">GS0~4기 스터디</td>
+                                    <td>PASS 감정평가실무 문제풀이1 (초급) </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">보상평가 기본강의</td>
+                                    <td>PASS 감정평가실무 문제풀이2 (중급)</td>
+                                </tr>
+                                <tr>
+                                    <td>PASS 감정평가실무 기출문제분석 강의</td>
+                                </tr>
+                                <tr>
+                                    <th>감정평가이론</th>
+                                    <td>최동진<br />
+                                    (어정민)</td>
+                                    <td>기본강의<br />
+                                    심화강의</td>
+                                    <td>GS0~4기 스터디</td>
+                                    <td>기출문제분석 강의(어정민)</td>
+                                </tr>
+                                <tr>
+                                    <th rowspan="6">감평행정법 및<br />
+                                    보상법규</th>
+                                    <td rowspan="2">김기홍</td>
+                                    <td>감평행정법 기본강의</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>보상법규 기본강의</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">조 현</td>
+                                    <td>감평행정법 기본강의</td>
+                                    <td rowspan="2">GS0~4기 스터디</td>
+                                    <td>행정법 기출논점 및 최신판례</td>
+                                </tr>
+                                <tr>
+                                    <td>보상법규 기본강의</td>
+                                    <td>보상법규 논점 사례연습 특강</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">이현진</td>
+                                    <td>-</td>
+                                    <td rowspan="2">GS0~4기 스터디</td>
+                                    <td rowspan="2">감정평가 및 보상법규 핵심 논점 정리 특강</td>
+                                </tr>
+                                <tr>
+                                    <td>-</td>
+                                </tr>
 							</tbody>
 						</table>
 						<div class="buyLec">
@@ -543,15 +546,15 @@
 				<h4 class="NGEB">상품 이용안내</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>
 				<ul>
-					<li>1차 상품구성은 2020년 1월부터 2020년 5월까지 진행될 2020년 대비 공인노무사 1차 대비 강좌로 구성됩니다.<br>
-					(2019년 기본강의 추가제공, 복수 강사진의 경우 강사 선택을 하셔야 합니다.)</li>
-					<li>2차 GS순환 강의는 순환별로 강의가 개설 된 후 순차적으로 업로드 됩니다.<br>
-					(GS0순환-2019년 9월, GS1순환-2020년 1월, GS2순환-2020년 4월, GS3순환-2020년 6월)<br>
-					강의 업로드는 실강 진행 후 다음날 오후에 업로드(공휴일/주말 제외) 됩니다. </li>
-					<li>강사의 개인사정에 따라 강의가 진행이 되지 않을 경우 다른 강사님의 강의로 변경될 수 있습니다.<br>
-					(강의는 순차적으로 업로드 예정이며, 강의 일시와 횟수는 변경될 수 있습니다.)</li>
-					<li>순환별 강의 중 주말반과 평일반 두 개의 과정이 개설된 경우 한 개의 과정만 제공됩니다.<br>
-					(기본 제공은 주말반으로 설정되어 있으며, 평일반으로 듣기 원하시면 게시판에 글을 남겨주시면 변경해드립니다.)</li>
+					<li>1차 상품구성은 2019년 9월부터 2020년 3월까지 진행될 2020년 대비 감정평가사 1차 대비 강좌로 구성됩니다.</li>
+                    <li>2차 상품구성은 2019년 3월부터 2020년 5월까지 진행될 2020년 대비 감정평가사 2차 대비 강좌로 구성됩니다.<br>
+                    ＊1차 기본강의 - 2019년 9월~11월 / 2차 기본강의 2020년 3~5월<br>
+                    ＊GS0~4기 스터디 - 2019년 7월 ~ 2020년 5월 <br>
+                    ＊문제풀이(단과) - 2019년 7월 ~ 2020년 5월<br>
+                    동영상 강의는 실강 진행 후 다음날 동영상 업로드(공휴일/주말 제외) 됩니다. <br>
+                    동영상 강의는 실강 진행 후 다음날 동영상 업로드(공휴일/주말 제외) 됩니다. </li>
+                    <li>강사 및 학원사정에 따라 강의가 진행이 되지 않을 경우 다른 강사님의 강의로 변경될 수 있습니다.<br>
+                    강의는 순차적으로 업로드 예정이며, 강의 일시와 횟수는 변경될 수 있습니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>수강관련</strong></div>
 				<ul>
@@ -567,12 +570,9 @@
 				</ul>
 				<div class="infoTit NG"><strong>결제/환불관련</strong></div>
 				<ul>
-					<li>회원의 요구 또는 귀책사유로 인하여 계약이 해지되는 경우에는 수강시작일(당일 포함)부터 해지일까지의 이용일수 또는 이용
-					회차에 해당하는 금액을 공제 후 환불하며 자세한 환불규정은 다음의 각 호의 규정에 따릅니다.<br>
-					① 강좌 파일을 열거나 강좌 자료 및 모바일 다운로드 이용 시 수강한 것으로 간주합니다.<br>
-					② PASS 상품 및 특별 기획 상품 등 할인이 적용된 상품은 해당 상품의 정가를 기준으로 환불하는 것을 원칙으로 합니다.<br>
-					③ 이용기간 기준의 온라인 강좌 상품(PASS)을 수강한 경우 환불 기준 : 결제금액-(강좌 정상가의 1일 이용대금×이용일수)<br>
-					④ 최종 완강 되지 않은 강좌의 학습 회차 계산은 공지된 예정 강좌수를 기준으로 환불 금액을 산출합니다.</li>
+					<li>본 패스 상품은 파격 할인가가 적용된 상품으로 복지할인 등 다른 쿠폰과 중복 적용되지 않습니다. </li>
+                    <li>본 패스 상품 환불시 원 수강료와 수강일수 기준으로 환불이 됩니다. </li>
+                    <li>기타 환불규정은 약관의 규정에 따릅니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>유의사항</strong></div>
 				<ul>

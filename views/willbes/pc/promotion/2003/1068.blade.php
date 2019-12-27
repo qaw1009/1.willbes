@@ -29,11 +29,11 @@
 		/*탭(텍스트)*/
 		.tabContaier2{width:1000px;margin:0 auto;}
 		.tab_area{margin-top:100px;}
-        .tabContaier2 li{display:inline-block;width:500px;height:60px;line-height:60px;background:#eaeaea;color:#b7b7b7;float:left;font-size:18px;font-weight:bold;font-size:25px;border-bottom:3px solid #2f6c64;}
+        .tabContaier2 li{display: inline;float: left;width:50%;text-align: center;}
         .tabContaier2:after {content:""; display:block; clear:both}
-        .tabContaier2 li a{display:block;}
+        .tabContaier2 li a{display:block;height: 70px;line-height: 70px;color:#757474;background:#dfdfdf;font-size: 16px;border: 1px solid #8d8d8d;margin-right: 2px;font-size:25px;font-weight:bold;}
         .tabContaier2 li a:hover,
-        .tabContaier2 li a.active {background:#f4f4f4;color:#2f6c64;border:3px solid #2f6c64;border-bottom:none;}
+        .tabContaier2 li a.active {color: #fff;background: #2f6c64;border: 3px solid #2f6c64;}
 
         .wb_cts04 {background:#f4f4f4;position:relative;padding-bottom:150px;}
 
@@ -59,6 +59,8 @@
         .time p {text-alig:center}
 
 		.wb_03{background:#27262c;}
+
+		.skybannerB{position: fixed; bottom:0; text-align:center; z-index: 101;width:100%}
 
 		/*
         .wb_cts01 {background:#fff url(https://static.willbes.net/public/images/promotion/2019/07/1068_01_bg.jpg) center bottom no-repeat;}
@@ -126,12 +128,19 @@
         </div>
 		-->
 
+		<div class="skybannerB">
+            <a href="#evt1">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_scroll_btn.png"/>      
+            </a>    
+        </div>    
+
         <div class="evtCtnsBox wb_event">
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_event.gif" usemap="#Map1068event" border="0">
-			<map name="Map1068event" id="Map1068event">
-				<area shape="rect" coords="172,879,542,1011"  href="#tabs1" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
-				<area shape="rect" coords="583,879,952,1011"  href="#tabs2" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
-			</map>   
+			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_top01.gif">
+			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_top02.jpg" usemap="#Map" border="0">
+			<map name="Map" id="Map">
+				<area shape="rect" coords="175,40,545,194" href="#tabs1" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
+				<area shape="rect" coords="586,42,955,199" href="#tabs2" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
+			</map>	 
         </div>
 		
         <div class="evtCtnsBox wb_top">
@@ -144,8 +153,8 @@
         </div>
 
 		<div class="evtCtnsBox wb_02">
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_02.jpg" alt="수강신청" usemap="#Map" border="0" />
-			<map name="Map" id="Map">
+			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
+			<map name="Map1068abc" id="Map1068abc">
 				<area shape="rect" coords="51,910,250,950" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/159289" target="_blank" />
 				<area shape="rect" coords="317,912,513,947" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/159291" target="_blank" />
 				<area shape="rect" coords="587,911,784,950" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/159293" target="_blank" />

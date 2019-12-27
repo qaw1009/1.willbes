@@ -60,7 +60,7 @@
 
         /************************************************************/      
     </style> 
-	<div class="evtContent">
+	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/190826_nomu_01.png" alt="노무2차 GS0순환" usemap="#Map190905A" border="0" />
             <map name="Map190905A" id="Map190905A">

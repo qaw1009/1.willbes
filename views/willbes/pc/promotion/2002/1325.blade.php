@@ -117,7 +117,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_top.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_top_01.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
@@ -156,7 +156,10 @@
                     </a>
                 </div>                                        
                 <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_04_02.jpg" alt="영어 강화형" />
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_04_02_1.jpg" alt="영어 강화형" /><br>
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="신청하기">
+                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_btn01.png" alt="수강신청" />
+                    </a>
                 </div>                
             </div>
         </div>
@@ -166,7 +169,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts07" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_06.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1325_06_01.jpg" alt="슈퍼pass"  />
         </div>
     </div>
     <!-- End Container -->

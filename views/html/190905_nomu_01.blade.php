@@ -54,7 +54,7 @@
 
         /************************************************************/      
     </style> 
-	<div class="evtContent">
+	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/190906_nomu01.png" alt="노무2차 T-PASS" usemap="#Map190905A" border="0" />
             <map name="Map190905A" id="Map190905A">

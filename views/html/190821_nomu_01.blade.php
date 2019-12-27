@@ -59,7 +59,7 @@
 
         /************************************************************/      
     </style> 
-	<div class="evtContent">
+	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
 			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu01.png" alt="2020 노무패스" />
 		</div>

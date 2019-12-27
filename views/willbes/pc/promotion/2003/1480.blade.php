@@ -59,7 +59,7 @@
     
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox wb_00">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_00.jpg" alt="출발부터 앞선 시작, 윌비스 김동진 법원팀!"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_00.gif" alt="출발부터 앞선 시작, 윌비스 김동진 법원팀!"/>
         </div>
 
         <!-- 타이머 -->

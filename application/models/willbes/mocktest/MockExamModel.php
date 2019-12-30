@@ -196,7 +196,7 @@ class MockExamModel extends WB_Model
                             ,fn_day_name(MP.TakeStartDatm,'') as day_name
                             ,C1.CateName
                             ,U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone
-                            ,O.OrderIdx, O.OrderNo, O.RealPayPrice, O.CompleteDatm, OP.PayStatusCcd
+                            ,O.OrderIdx, O.OrderNo, O.RealPayPrice, O.CompleteDatm, OP.PayStatusCcd, O.OrderDatm
                             ,SC1.CcdName as TakeMockPart_Name
                             ,SC2.CcdName as TakeForm_Name
                             ,SC3.CcdName as TakeArea_Name
@@ -321,7 +321,7 @@ class MockExamModel extends WB_Model
 
         $column = "
             (SELECT SubjectName FROM {$this->_table['subject']} WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,
-            MP.RealQuestionFile AS fileQ,
+            IFNULL(NULLIF(MP.FrontRealQuestionFile,''),MP.RealQuestionFile) AS fileQ,
             MP.RealExplanFile AS fileA,
             MP.FilePath AS PFilePath,
             MP.MpIdx  
@@ -331,12 +331,13 @@ class MockExamModel extends WB_Model
             FROM
                 {$this->_table['mockRegister']} AS MR    
                 JOIN {$this->_table['mockRegisterR']} AS RP ON MR.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                INNER JOIN {$this->_table['orderProduct']} AS OP ON MR.OrderProdIdx = OP.OrderProdIdx
                 LEFT OUTER JOIN {$this->_table['mockExamBase']} AS MP ON RP.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MP.IsStatus = 'Y'
         ";
 
         $order_by = " ORDER BY SubjectIdx";
 
-        $where = " WHERE MR.MemIdx = ".$this->session->userdata('mem_idx')." AND MR.ProdCode = ".$prodcode. " AND MR.IsStatus = 'Y'";
+        $where = " WHERE MR.MemIdx = ".$this->session->userdata('mem_idx')." AND MR.ProdCode = ".$prodcode. " AND MR.IsStatus = 'Y' AND OP.PayStatusCcd = '676001'";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
 
@@ -348,7 +349,6 @@ class MockExamModel extends WB_Model
      * @return mixed
      */
     public function questionCall($MpIdx, $ProdCode){
-
         $column = "
             MQ.MqIdx,
             AnswerNum, 
@@ -356,6 +356,7 @@ class MockExamModel extends WB_Model
             MQ.FilePath AS QFilePath,
             MP.FilePath AS PFilePath,
             MP.RealQuestionFile AS filetotal,
+            MP.FrontRealQuestionFile,
             MQ.RealQuestionFile AS file,
             MT.Answer
         ";
@@ -382,12 +383,12 @@ class MockExamModel extends WB_Model
      * @return mixed
      */
     public function questionResultCall($ProdCode){
-
         $column = "
             MQ.MqIdx,
             AnswerNum, 
             QuestionNO, 
             MP.RealQuestionFile AS filetotal,
+            MP.FrontRealQuestionFile,
             MQ.RealQuestionFile AS file,
             MT.Answer
         ";
@@ -1155,11 +1156,11 @@ class MockExamModel extends WB_Model
      * @return mixed
      */
     public function answerNoteCall($ProdCode, $MpIdx, $MalIdxSet){
-
         $column = "
             MP.MpIdx,
             MQ.MqIdx,
             MP.RealQuestionFile AS filetotal,
+            MP.FrontRealQuestionFile,
             MQ.RealQuestionFile AS file,
             MQ.RealExplanFile,
             MQ.FilePath AS QFilePath,

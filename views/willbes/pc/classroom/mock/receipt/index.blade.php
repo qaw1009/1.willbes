@@ -104,7 +104,7 @@
                                 <input type="hidden" id="paymethod{{$paging['rownum']}}" value="{{ $val['paymethod'] }}" />
                                 <input type="hidden" id="complete{{$paging['rownum']}}" value="{{ $val['CompleteDatm'] }}" />
                             </td>
-                            <td class="w-day">{{ $val['PDReg'] }}</td>
+                            <td class="w-day">{{ $val['OrderDatm'] }}</td>
                             <td class="w-state">{{ $paymentStatus[$val['PayStatusCcd']] }}</td>
                         </tr>
                         @endforeach

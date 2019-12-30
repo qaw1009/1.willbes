@@ -196,7 +196,7 @@ class MockExamModel extends WB_Model
                             ,fn_day_name(MP.TakeStartDatm,'') as day_name
                             ,C1.CateName
                             ,U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone
-                            ,O.OrderIdx, O.OrderNo, O.RealPayPrice, O.CompleteDatm, OP.PayStatusCcd, O.OrderDatm
+                            ,O.OrderIdx, O.OrderNo, O.RealPayPrice, O.CompleteDatm, OP.PayStatusCcd, O.CompleteDatm
                             ,SC1.CcdName as TakeMockPart_Name
                             ,SC2.CcdName as TakeForm_Name
                             ,SC3.CcdName as TakeArea_Name

@@ -39,6 +39,7 @@ class MockResult extends \app\controllers\FrontController
             'EQ' => [
                 //'MP.IsStatus' => 'Y',
                 'MR.MemIdx'   => $_SESSION['mem_idx'],
+                'OP.PayStatusCcd' => '676001',
                 'MR.IsStatus' => $s_IsStatus
             ],
             'ORG' => [

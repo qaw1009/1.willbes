@@ -155,10 +155,10 @@
 		<div class="evtCtnsBox wb_02">
 			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
 			<map name="Map1068abc" id="Map1068abc">
-				<area shape="rect" coords="51,910,250,950" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156691" target="_blank" />
-				<area shape="rect" coords="317,912,513,947" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156692" target="_blank" />
-				<area shape="rect" coords="587,911,784,950" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156702" target="_blank" />
-				<area shape="rect" coords="854,913,1051,946" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/156703" target="_blank" />
+				<area shape="rect" coords="51,910,250,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156691" target="_blank" />
+				<area shape="rect" coords="317,912,513,947" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156692" target="_blank" />
+				<area shape="rect" coords="587,911,784,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156702" target="_blank" />
+				<area shape="rect" coords="854,913,1051,946" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156703" target="_blank" />
 			</map>
         </div>
 

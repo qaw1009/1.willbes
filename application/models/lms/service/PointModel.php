@@ -47,7 +47,7 @@ class PointModel extends WB_Model
             if ($is_count === true) {
                 $column = 'count(*) AS numrows';
             } else {
-                $column = 'PSU.*, if(PointStatusCcd = "U", "차감", CPS.CcdName) as PointStatusCcdName, if(PSU.ReasonCcd like "%999", EtcReason, CR.CcdName) as ReasonCcdName
+                $column = 'PSU.*, if(PointStatusCcd = "U", "차감", CPS.CcdName) as PointStatusCcdName, if(PSU.ReasonCcd like "%999" OR PSU.ReasonCcd = "680009", EtcReason, CR.CcdName) as ReasonCcdName
                     , S.SiteName, M.MemId, M.MemName, O.OrderNo, A.wAdminName as RegAdminName';
             }
         } else {

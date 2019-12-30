@@ -258,6 +258,12 @@ class EventLecture extends \app\controllers\BaseController
                             ['field' => 'comment_use_area[]', 'label' => '댓글기능옵션', 'rules' => 'trim|required'],
                             ['field' => 'comment_ui_type_ccds[]', 'label' => '댓글Ui종류', 'rules' => 'trim|required']
                         ]);
+                        if(empty($this->_reqP('point_type')) === false) {
+                            $rules = array_merge($rules, [
+                                ['field' => 'point_amount', 'label' => '적립포인트', 'rules' => 'trim|required'],
+                                ['field' => 'point_valid_days', 'label' => '포인트 유효일수', 'rules' => 'trim|required']
+                            ]);
+                        }
                         break;
                     case $this->eventLectureModel->_event_lecture_option_ccds[2] :
                         $rules = array_merge($rules, [

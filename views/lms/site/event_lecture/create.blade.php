@@ -324,10 +324,10 @@
                                     <div class="row">
                                         <label class="control-label col-md-1-1">적립대상</label>
                                         <div class="col-md-4 form-inline">
-                                            <select name="PointApplyCcd" id="PointApplyCcd"  class="form-control" title="포인트지급타입">
+                                            <select name="comment_point_type" id="comment_point_type" class="form-control" title="포인트지급타입">
                                                 <option value="">포인트종류</option>
                                                 @foreach($pointapply_ccd as $key => $val)
-                                                    <option value="{{$key}}" @if($data['PointApplyCcd'] == $key) selected="selected" @endif>{{$val}}</option>
+                                                    <option value="{{$key}}" @if($data['CommentPointType'] == $key) selected="selected" @endif>{{$val}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -335,21 +335,13 @@
                                     <div class="row mt-5">
                                         <label class="control-label col-md-1-1">적립포인트</label>
                                         <div class="col-md-4">
-                                            <input type="text" id="" name="" class="form-control">
+                                            <input type="text" class="form-control" id="comment_point_amount" name="comment_point_amount" value="{{$data['CommentPointAmount']}}">
                                         </div>
                                     </div>
                                     <div class="row mt-5">
-                                        <label class="control-label col-md-1-1">유효기간</label>
-                                        <div class="col-md-6 form-inline">
-                                            <div class="input-group mb-0">
-                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                <input type="text" class="form-control datepicker" id="" name="" value="">
-                                            </div>
-                                            <span class="pl-5 pr-5">~</span>
-                                            <div class="input-group mb-0">
-                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                <input type="text" class="form-control datepicker" id="" name="" value="">
-                                            </div>
+                                        <label class="control-label col-md-1-1">유효일수</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="comment_point_valid_days" name="comment_point_valid_days" value="{{$data['CommentPointValidDays']}}" style="width: 70px;">
                                         </div>
                                     </div>
                                 </div>

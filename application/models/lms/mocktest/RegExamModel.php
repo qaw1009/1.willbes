@@ -115,9 +115,9 @@ class RegExamModel extends WB_Model
             $sql = "
                 INSERT INTO {$this->_table['mockExamBase']}
                     (SiteCode, MrcIdx, ProfIdx, PapaerName, Year, RotationNo, QuestionOption, AnswerNum, TotalScore, 
-                     QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, IsUse, RegIp, RegAdminIdx, RegDate)
+                     QuestionFile, RealQuestionFile, FrontQuestionFile, FrontRealQuestionFile, ExplanFile, RealExplanFile, IsUse, RegIp, RegAdminIdx, RegDate)
                 SELECT SiteCode, MrcIdx, ProfIdx, CONCAT('복사-', PapaerName), Year, RotationNo, QuestionOption, AnswerNum, TotalScore,
-                       QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, 'N', ?, ?, ?
+                       QuestionFile, RealQuestionFile, FrontQuestionFile, FrontRealQuestionFile, ExplanFile, RealExplanFile, 'N', ?, ?, ?
                 FROM {$this->_table['mockExamBase']}
                 WHERE MpIdx = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($RegIp, $RegAdminIdx, $RegDatm, $idx));
@@ -191,7 +191,7 @@ class RegExamModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
-            $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','ExplanFile'], 1);
+            $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','FrontQuestionFile','ExplanFile'], 1);
 
             // 데이터 저장
             $data = array(
@@ -204,9 +204,10 @@ class RegExamModel extends WB_Model
                 'QuestionOption' => $this->input->post('QuestionOption'),
                 'AnswerNum' => $this->input->post('AnswerNum'),
                 'TotalScore' => $this->input->post('TotalScore'),
-
                 'QuestionFile' => $names['QuestionFile']['name'],
                 'RealQuestionFile' => $names['QuestionFile']['real'],
+                'FrontQuestionFile' => $names['FrontQuestionFile']['name'],
+                'FrontRealQuestionFile' => $names['FrontQuestionFile']['real'],
                 'ExplanFile' => $names['ExplanFile']['name'],
                 'RealExplanFile' => $names['ExplanFile']['real'],
 
@@ -259,7 +260,7 @@ class RegExamModel extends WB_Model
     public function update()
     {
         $filePath = $this->upload_path . $this->upload_path_mock . $this->input->post('idx') . '/';
-        $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','ExplanFile'], 1);
+        $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile','FrontQuestionFile','ExplanFile'], 1);
 
         try {
             $this->_conn->trans_begin();
@@ -268,7 +269,7 @@ class RegExamModel extends WB_Model
 
             // 기존데이터 첨부파일 이름 추출
             $fileBackup = array();
-            $beforeDB = $this->_conn->select('RealQuestionFile, RealExplanFile')
+            $beforeDB = $this->_conn->select('RealQuestionFile, FrontRealQuestionFile, RealExplanFile')
                                     ->where(array('MpIdx' => $this->input->post('idx'), 'IsStatus' => 'Y'))
                                     ->get($this->_table['mockExamBase'])->row_array();
 
@@ -294,6 +295,12 @@ class RegExamModel extends WB_Model
 
                 if( !empty($beforeDB['RealQuestionFile']) ) $fileBackup[] = $filePath . $beforeDB['RealQuestionFile'];
             }
+            if( isset($names['FrontQuestionFile']['error']) && $names['FrontQuestionFile']['error'] === UPLOAD_ERR_OK && $names['FrontQuestionFile']['size'] > 0 ) {
+                $data['FrontQuestionFile'] = $names['FrontQuestionFile']['name'];
+                $data['FrontRealQuestionFile'] = $names['FrontQuestionFile']['real'];
+
+                if( !empty($beforeDB['FrontRealQuestionFile']) ) $fileBackup[] = $filePath . $beforeDB['FrontRealQuestionFile'];
+            }
             if( isset($names['ExplanFile']['error']) && $names['ExplanFile']['error'] === UPLOAD_ERR_OK && $names['ExplanFile']['size'] > 0 ) {
                 $data['ExplanFile'] = $names['ExplanFile']['name'];
                 $data['RealExplanFile'] = $names['ExplanFile']['real'];
@@ -308,15 +315,11 @@ class RegExamModel extends WB_Model
                 throw new Exception('변경에 실패했습니다.');
             }
 
-            // 파일 업로드 (업로드파일이 있으면)
-            if($fileBackup) {
-
-                $isSave = $this->uploadFileSave($uploadSubPath, $names, $fileBackup);
-                if ($isSave !== true) {
-                    throw new Exception('파일 저장에 실패했습니다.');
-                }
+            // 파일 업로드
+            $isSave = $this->uploadFileSave($uploadSubPath, $names, $fileBackup);
+            if ($isSave !== true) {
+                throw new Exception('파일 저장에 실패했습니다.');
             }
-
             $this->_conn->trans_commit();
         }
         catch (Exception $e) {

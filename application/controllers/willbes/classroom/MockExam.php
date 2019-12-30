@@ -37,6 +37,7 @@ class MockExam extends \app\controllers\FrontController
 
         $arr_condition = [
             'EQ' => [
+                'OP.PayStatusCcd' => '676001',
                 //'MP.IsStatus' => 'Y',
                 'MR.MemIdx'   => $_SESSION['mem_idx'],
                 'MR.IsTake' => $s_IsTake

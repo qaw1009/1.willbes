@@ -355,7 +355,7 @@ class MockExamModel extends WB_Model
             QuestionNO,
             MQ.FilePath AS QFilePath,
             MP.FilePath AS PFilePath,
-            MP.RealQuestionFile AS filetotal,
+            IFNULL(NULLIF(MP.FrontRealQuestionFile,''),MP.RealQuestionFile) AS filetotal,
             MP.FrontRealQuestionFile,
             MQ.RealQuestionFile AS file,
             MT.Answer
@@ -387,7 +387,7 @@ class MockExamModel extends WB_Model
             MQ.MqIdx,
             AnswerNum, 
             QuestionNO, 
-            MP.RealQuestionFile AS filetotal,
+            IFNULL(NULLIF(MP.FrontRealQuestionFile,''),MP.RealQuestionFile) AS filetotal,
             MP.FrontRealQuestionFile,
             MQ.RealQuestionFile AS file,
             MT.Answer
@@ -1159,7 +1159,7 @@ class MockExamModel extends WB_Model
         $column = "
             MP.MpIdx,
             MQ.MqIdx,
-            MP.RealQuestionFile AS filetotal,
+            IFNULL(NULLIF(MP.FrontRealQuestionFile,''),MP.RealQuestionFile) AS filetotal,
             MP.FrontRealQuestionFile,
             MQ.RealQuestionFile AS file,
             MQ.RealExplanFile,

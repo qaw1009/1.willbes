@@ -112,7 +112,19 @@
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="1">문제통파일</th>
+                        <th colspan="1">응시화면용문제파일</th>
+                        <td colspan="3">
+                            <input type="file" name="FrontQuestionFile">
+                            @if($method == 'PUT' && !empty($data['FrontQuestionFile']))
+                                <div class="file-wrap" style="cursor:pointer">
+                                    <a href="{{ $data['FilePath'].$data['FrontRealQuestionFile'] }}" target="_blank" class="blue underline-link">{{ $data['FrontQuestionFile'] }}</a>
+                                    {{--<span class="act-fileDel" data-file-idx="{{$data['MpIdx']}}" data-file-type="base" data-file-name="QuestionFile"><i class="fa fa-times red"></i></span>--}}
+                                </div>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="1">다운로드용문제파일</th>
                         <td colspan="3">
                             <input type="file" name="QuestionFile">
                             @if($method == 'PUT' && !empty($data['QuestionFile']))

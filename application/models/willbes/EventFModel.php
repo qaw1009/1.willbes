@@ -27,10 +27,13 @@ class EventFModel extends WB_Model
         'professor_reference' => 'lms_professor_reference',
         'lms_event_promotion_log' => 'lms_event_promotion_log',
         'lms_member' => 'lms_member',
+        'lms_member_otherinfo' => 'lms_member_otherinfo',
         'product_lecture_sample' => 'lms_product_lecture_sample',
         'pms_professor' => 'wbs_pms_professor',
         'wbs_cms_lecture_unit' => 'wbs_cms_lecture_unit',
-        'wbs_cms_lecture' => 'wbs_cms_lecture'
+        'wbs_cms_lecture' => 'wbs_cms_lecture',
+        'event_r_point' => 'lms_event_r_point',
+        'point_save' => 'lms_point_save'
     ];
 
     //등록파일 rule 설정
@@ -69,11 +72,31 @@ class EventFModel extends WB_Model
         ]
     ];
 
+    // 포인트 구분
+    private $_point_type = [
+        '635002' => 'lecture',      // 강좌 포인트
+        '635003' => 'book'          // 교재 포인트
+    ];
+
     // 메세지 발송 치환 정보
     private $_sms_send_content_replace = [
         '{{name}}' => 'register_name',
         '{{id}}' => 'register_id'
     ];
+
+    // 회원 관심직렬
+    protected $_interest_to_sitecode = [
+        '718001' => '2001',     // 경찰
+        '718002' => '2003',     // 공무원
+        '718003' => '2006',     // 자격증
+        '718004' => '2005',     // 고등고시
+        '718005' => '2008',     // 경찰간부
+        '718006' => '2009',     // 취업
+        '718007' => '2007',     // 어학
+    ];
+
+    // 회원의 관심직렬이 없을경우 default 세팅
+    private $_default_point_site_code = '2001';     // 경찰 온라인
 
     //이벤트공지사항 (댓글영역)
     public $_bm_idx = '86';
@@ -81,7 +104,7 @@ class EventFModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
-        $this->load->loadModels(['crm/smsF']);
+        $this->load->loadModels(['crm/smsF', 'pointF']);
     }
 
     public function listAllEvent($is_count, $arr_condition=[], $sub_query_condition, $limit = null, $offset = null, $order_by = [])
@@ -139,7 +162,7 @@ class EventFModel extends WB_Model
     public function findEvent($arr_condition, $add_type = null)
     {
         $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName, A.PopupTitle, A.ContentType, A.Content, A.CommentUseArea, A.LimitType, A.SelectType,
+            A.ElIdx, A.PromotionCode, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName, A.PopupTitle, A.ContentType, A.Content, A.CommentUseArea, A.LimitType, A.SelectType,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt + A.AdjuReadCnt AS ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
             A.SendTel, A.SmsContent,
@@ -148,7 +171,7 @@ class EventFModel extends WB_Model
             CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
             CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName,
-            P.SubjectName, R.wProfName
+            P.SubjectName, R.wProfName, A.CommentPointType, A.CommentPointAmount, A.CommentPointValidDays
             ';
 
         $from = "
@@ -521,9 +544,10 @@ class EventFModel extends WB_Model
      * 댓글 등록 처리
      * @param array $requestData
      * @param string $add_type
+     * @param string $site_code
      * @return array|bool
      */
-    public function addEventComment($requestData = [], $add_type = null)
+    public function addEventComment($requestData = [], $add_type = null, $site_code = null)
     {
         $this->_conn->trans_begin();
         try {
@@ -537,12 +561,46 @@ class EventFModel extends WB_Model
                 ]
             ];
             $event_data = $this->findEvent($arr_condition, $add_type);
-            if (count($event_data) < 1) {
-                throw new \Exception('조회된 이벤트 정보가 없습니다.');
+            if (empty($event_data) === true || count($event_data) < 1) {
+                throw new \Exception('이벤트 접수기간이 아니거나 이벤트 정보가 없습니다.');
             }
 
             if ($event_data['TakeType'] == '1' && empty($this->session->userdata('mem_idx')) === true) {
                 throw new \Exception('로그인 후 이용해주세요.');
+            }
+
+            // *** 댓글 포인트 지급 ***
+            if(empty($event_data['CommentPointType']) === false && empty($this->session->userdata('mem_idx')) === false && empty($site_code) === false) {
+                // 이미 포인트가 지급 되었는지 체크
+                $member_comment_point_info = $this->getMemberCommentPoint(['EQ' => ['EL.ElIdx' => element('event_idx', $requestData), 'PS.MemIdx' => $this->session->userdata('mem_idx')]]);
+                if (count($member_comment_point_info) === 0) {
+                    $comment_point_type = $this->_point_type[$event_data['CommentPointType']];
+                    if(empty($comment_point_type) === false && empty($event_data['CommentPointAmount']) === false && empty($event_data['CommentPointValidDays']) === false) {
+                        // 포인트 지급될 회원의 관심직렬 사이트코드 조회
+                        $member_info_result = $this->findMemberInfo(['EQ' => ['M.MemIdx' => $this->session->userdata('mem_idx')]]);
+                        if(empty($member_info_result) === false){
+                            if(empty($member_info_result['InterestCode']) === true || empty($this->_interest_to_sitecode[$member_info_result['InterestCode']]) === true) {
+                                // 회원의 관심직렬이 없을 경우 기본 세팅
+                                $point_site_code = $this->_default_point_site_code;
+                            } else {
+                                $point_site_code = $this->_interest_to_sitecode[$member_info_result['InterestCode']];
+                            }
+                            // 포인트 지급
+                            $add_save_point_result = $this->pointFModel->addSavePoint($comment_point_type, $event_data['CommentPointAmount'], [
+                                // 'site_code' => $site_code,   //프로모션의 사이트 코드
+                                'site_code' => $point_site_code,
+                                'etc_reason' => '기타[' . $event_data['PromotionCode'] . ']',
+                                'reason_type' => 'event_comment',
+                                'valid_days' => $event_data['CommentPointValidDays']
+                            ]);
+                            if($add_save_point_result !== true) throw new \Exception('포인트 적립에 실패했습니다.');
+                            // 이벤트와 포인트 연결 데이터 인서트
+                            if($this->addEventLinkPoint(['el_idx' => element('event_idx', $requestData), 'point_idx' => $this->_conn->insert_id()]) === false) {
+                                throw new \Exception('이벤트포인트 연결데이터 등록에 실패했습니다.');
+                            }
+                        }
+                    }
+                }
             }
 
             $inputData = [
@@ -1072,4 +1130,76 @@ class EventFModel extends WB_Model
         $attach_file_names = date("YmdHis").'-'.rand(100,999);
         return $attach_file_names;
     }
+
+    /**
+     * 댓글로 지급된 포인트가 있는지 조회
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function getMemberCommentPoint($arr_condition = [])
+    {
+        $column = 'PS.*';
+        $from = "
+            FROM lms_event_lecture AS EL
+            INNER JOIN {$this->_table['event_r_point']} AS ERP ON EL.ElIdx = ERP.ElIdx
+            INNER JOIN {$this->_table['point_save']}  AS PS ON ERP.PointIdx = PS.PointIdx        
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where);
+        return $query->result_array();
+    }
+
+    /**
+     * 이벤트와 포인트 연결데이터 등록
+     * @param array $requestData
+     * @return array|bool
+     */
+    private function addEventLinkPoint($requestData = [])
+    {
+        try {
+            $inputData = [
+                'ElIdx' => element('el_idx', $requestData),
+                'PointIdx' => element('point_idx', $requestData),
+                'IsStatus' => 'Y',
+                'RegMemIdx' => $this->session->userdata('mem_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($inputData)->insert($this->_table['event_r_point']) === false) {
+                throw new \Exception('fail');
+            }
+
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 회원정보 조회
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function findMemberInfo($arr_condition)
+    {
+        $column = ' 
+            M.*, MO.*
+        ';
+        $from = "
+            FROM {$this->_table['lms_member']} M
+            LEFT OUTER JOIN {$this->_table['lms_member_otherinfo']} MO ON M.MemIdx = MO.MemIdx
+        ";
+        $default_arr_condition = [
+            'EQ' => [
+                'M.IsStatus' => 'Y'
+            ]
+        ];
+        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('SELECT '.$column .$from .$where)->row_array();
+    }
+
 }

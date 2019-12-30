@@ -275,6 +275,9 @@ class EventLectureModel extends WB_Model
                 'Link' => element('promotion_link', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'AdjuReadCnt' => (empty(element('setting_readCnt', $input))) ? '0' : element('setting_readCnt', $input),
+                'CommentPointType' => element('comment_point_type', $input),
+                'CommentPointAmount' => element('comment_point_amount', $input),
+                'CommentPointValidDays' => element('comment_point_valid_days', $input),
                 'RegAdminIdx' => $admin_idx,
                 'RegIp' => $this->input->ip_address()
             ];
@@ -519,6 +522,9 @@ class EventLectureModel extends WB_Model
                 'Link' => element('promotion_link', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'AdjuReadCnt' => (empty(element('setting_readCnt', $input))) ? '0' : element('setting_readCnt', $input),
+                'CommentPointType' => element('comment_point_type', $input),
+                'CommentPointAmount' => element('comment_point_amount', $input),
+                'CommentPointValidDays' => element('comment_point_valid_days', $input),
                 'UpdAdminIdx' => $admin_idx
             ];
 
@@ -608,7 +614,7 @@ class EventLectureModel extends WB_Model
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
             B.SiteName, E.CcdName AS CampusName,
             G.SubjectName, H.ProfNickName,
-            B.SiteUrl
+            B.SiteUrl, A.CommentPointType, A.CommentPointAmount, A.CommentPointValidDays
             ";
 
         $from = "

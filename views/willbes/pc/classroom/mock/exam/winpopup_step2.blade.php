@@ -57,8 +57,8 @@
                         <!-- 문제이미지 -->
                     </ul>
                 @else
-                    @if (empty($question_list[0]['PFilePath']) === false && empty($question_list[0]['filetotal']) === false)
-                        <iframe src="{{ $question_list[0]['PFilePath'] . $question_list[0]['filetotal'] }}" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                    @if (empty($question_list[0]['PFilePath']) === false && empty($question_list[0]['FrontRealQuestionFile']) === false)
+                        <iframe src="{{ $question_list[0]['PFilePath'] . $question_list[0]['FrontRealQuestionFile'] }}" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
                     @endif
                 @endif
             </div>
@@ -146,7 +146,11 @@
                         </tbody>
                     </table>
                     <div class="btnAgR btnl c_both NGEB">
-                        <a class="f_left btntxtBlack" href="{{ $row['PFilePath'] }}{{ $row['filetotal'] }}" target="_blank">문제 다운로드</a>
+                        @if (empty($question_list[0]['PFilePath']) === false && empty($question_list[0]['filetotal']) === false)
+                            <a class="f_left btntxtBlack" href="{{ $row['PFilePath'] }}{{ $row['filetotal'] }}" target="_blank">문제 다운로드</a>
+                        @else
+                            <a class="f_left btntxtBlack" href="javascript:void(0);" onclick="alert('다운로드할 파일이 없습니다.');">문제 다운로드</a>
+                        @endif
                         <!-- 다음과목 -->
                         @foreach($tMpIdx as $key => $row)
                             @if(count($tMpIdx) == $key + 1)

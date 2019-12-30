@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MockTest extends \app\controllers\FrontController
 {
-    protected $models = array('mocktest/mockInfoF','_lms/sys/code', 'support/supportBoardTwoWayF', 'support/supportBoardF', 'downloadF');
+    protected $models = array('mocktest/mockInfoF', 'categoryF', '_lms/sys/code', 'support/supportBoardTwoWayF', 'support/supportBoardF', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('apply_modal','apply_cart_modal','apply_order', 'createQna');
@@ -163,6 +163,59 @@ class MockTest extends \app\controllers\FrontController
             'subject_ess' => $subject_ess,
             'subject_sub' => $subject_sub,
             'mock_addpoint' => $mock_addpoint,
+        ]);
+    }
+
+    public function applyNew()
+    {
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        $arr_base['applyType'] = $this->codeModel->getCcd('675');
+        unset($arr_base['applyType']['675001']);
+
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_type = element('s_type',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $get_page_params = 's_cate_code='.$s_cate_code.'&s_type='.$s_type.'&s_keyword='.$s_keyword;
+
+        if($s_type == 675001){
+            $search_date1 = '(pm.SaleStartDatm > "';
+            $search_date2 = date('Y-m-d H:i:s') . '")';
+        } else if($s_type == 675002) {
+            $search_date1 = '(pm.SaleStartDatm < "';
+            $search_date2 = date('Y-m-d H:i:s') . '" AND pm.SaleEndDatm > "' . date('Y-m-d H:i:s') . '")';
+        } else {
+            $search_date1 = '1=';
+            $search_date2 = '1';
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'pm.CateCode' => (empty($s_cate_code) === true) ? $this->_cate_code : $s_cate_code,
+                'pm.IsUse' => 'Y',
+                'pm.SiteCode' => $this->_site_code
+            ],
+            'LKB' => [
+                'pm.ProdName' => $s_keyword
+            ],
+            'RAW' => [ $search_date1 => $search_date2 ]
+        ];
+        $order_by = ['pm.ProdCode'=>'Desc'];
+
+        $list = [];
+        $count = $this->mockInfoFModel->listMockTest(true, $arr_condition);
+        $paging = $this->pagination('/mockTest/applyNew/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
+        if($count > 0) {
+            $list = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,$paging['limit'],$paging['offset'],$order_by);
+        }
+
+        $this->load->view('site/mocktest/apply_new',[
+            'arr_base' => $arr_base,
+            'arr_input' => $arr_input,
+            'count' => $count,
+            'list'=>$list,
+            'paging' => $paging,
+            'page_type' => 'apply',
         ]);
     }
 

@@ -13,7 +13,7 @@ class PointFModel extends WB_Model
     ];
 
     public $_point_status_ccd = ['save' => '679001', 'useall' => '679002', 'expire' => '679003'];    // 포인트상태 (적립, 소진, 소멸)
-    private $_point_save_reason_ccd = ['paid' => '680001', 'join' => '680006'];   // 포인트 적립사유 (결제완료)
+    private $_point_save_reason_ccd = ['paid' => '680001', 'join' => '680006', 'event_comment' => '680009'];   // 포인트 적립사유 (결제완료)
     private $_point_use_reason_ccd = ['paid' => '681001'];    // 포인트 사용사유 (주문결제)
 
     public function __construct()

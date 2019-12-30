@@ -270,7 +270,7 @@ class BasePromotion extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->eventFModel->addEventComment($this->_reqP(null, false), 'promotion');
+        $result = $this->eventFModel->addEventComment($this->_reqP(null, false), 'promotion', $this->_site_code);
         $this->json_result($result, '등록되었습니다.', $result);
     }
 

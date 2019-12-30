@@ -341,7 +341,7 @@ class Event extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->eventFModel->addEventComment($this->_reqP(null, false));
+        $result = $this->eventFModel->addEventComment($this->_reqP(null, false), null, $this->_site_code);
         $this->json_result($result, '등록되었습니다.', $result);
     }
 

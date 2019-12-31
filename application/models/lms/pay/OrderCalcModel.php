@@ -776,7 +776,7 @@ class OrderCalcModel extends BaseOrderModel
 					inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
 						on PRS.ProdCode = P.ProdCode and PRS.IsStatus = "Y"
 					left join ' . $this->_table['product_division'] . ' as PD
-						on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = PRS.ProdCodeSub and PD.IsStatus = "Y"
+						on PD.ProdCode = P.ProdCode and PD.ProdCodeSub = PRS.ProdCodeSub and PD.IsStatus = "Y" and PD.ProfIdx = ?
 					inner join ' . $this->_table['product'] . ' as SP
 						on SP.ProdCode = PRS.ProdCodeSub
 					inner join ' . $this->_table['product_lecture'] . ' as SPL
@@ -808,7 +808,7 @@ class OrderCalcModel extends BaseOrderModel
         ';
 
         // 교수식별자, 조회일자 바인딩
-        $raw_binds = [$prof_idx, $study_start_date, $study_end_date, $prof_idx, $study_start_date, $study_end_date];
+        $raw_binds = [$prof_idx, $study_start_date, $study_end_date, $prof_idx, $prof_idx, $study_start_date, $study_end_date];
 
         // where 조건
         $raw_query .= $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);

@@ -23,7 +23,7 @@
 
                 {{--// 팝업 링크URL --}}
                 @php $img_link_url = '#none'; @endphp
-                @if(empty($row['LinkUrl']) === false)
+                @if(empty($row['LinkUrl']) === false && $row['LinkUrl'] != '#')
                     @php $img_link_url = '//' . (strpos($row['LinkUrl'], config_item('base_domain')) === false ? $row['LinkUrl'] : app_to_env_url($row['LinkUrl'])); @endphp
                 @endif
 

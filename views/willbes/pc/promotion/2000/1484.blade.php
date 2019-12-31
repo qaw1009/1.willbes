@@ -94,16 +94,20 @@
         @endif
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1484_01.jpg" alt="신규가입 축하대잔치" id="event02"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1484_01.jpg" alt="신규가입 축하대잔치" usemap="#map1484z" id="event02" border="0"/>
+            <map name="map1484z" id="map1484z">
+                <area shape="rect" coords="435,1061,719,1134" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" />
+            </map>
             <Br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1484_02.jpg" alt="새해맞이 소문대잔치" usemap="#event03Map" id="event03" border="0"/>
-            <map name="event03Map" id="event03Map">
-                <area shape="rect" coords="175,1119,378,1205" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" alt="공무원갤러리" />
-                <area shape="rect" coords="440,1117,613,1207" href="http://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
-                <area shape="rect" coords="696,1119,884,1205" href="https://cafe.naver.com/gugrade" target="_blank" alt="공드림" />
-                <area shape="rect" coords="178,1226,375,1316" href="https://cafe.naver.com/polstudy/" target="_blank" alt="순경 갤러리" />
-                <area shape="rect" coords="442,1229,617,1312" href="http://cafe.daum.net/policeacademy?q=%B0%E6%BD%C3%B8%F0" target="_blank" alt="경시모" />
-                <area shape="rect" coords="698,1228,885,1314" href="https://cafe.naver.com/polstudy/" target="_blank" alt="경꿈사" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1484_02.jpg" alt="새해맞이 소문대잔치" usemap="#Map" border="0" />
+            <map name="Map" id="Map">
+                <area shape="rect" coords="201,1043,389,1138" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" alt="공무원갤러리" />
+                <area shape="rect" coords="196,1152,388,1245" href="https://cafe.naver.com/polstudy/" target="_blank" alt="순경 갤러리" />
+                <area shape="rect" coords="427,1040,595,1135"  href="http://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
+                <area shape="rect" coords="426,1150,595,1244" href="http://cafe.daum.net/policeacademy?q=%B0%E6%BD%C3%B8%F0" target="_blank" alt="경시모" />
+                <area shape="rect" coords="641,1035,819,1141" href="https://cafe.naver.com/gugrade" target="_blank" alt="공드림" />
+                <area shape="rect" coords="637,1149,819,1249" href="https://cafe.naver.com/polstudy/" target="_blank" alt="경꿈사" />
+                <area shape="rect" coords="857,1100,1025,1200" href="https://cafe.naver.com/willbes" target="_blank" alt="네이버카페 윌비스" />
             </map>
         </div>
 

@@ -69,50 +69,52 @@
         <div class="evtCtnsBox evt_01" id="evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1482_01.jpg" title="무료특강 이벤트">
         </div>
-        <form name="regi_form_register" id="regi_form_register">
-            {!! csrf_field() !!}
-            {!! method_field('POST') !!}
-            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
+        <div class="evtCtnsBox evt_02" id="evt_02">
+            <form name="regi_form_register" id="regi_form_register">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
 
-            <div id="apply">
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1482_02.jpg" title="무료특강 신청하기">
-                <div class="form_area">
-                    <h4>2020.1.4(토) 14:00 김원욱 형법 무료특강</h4>
-                    <div class="privacy">
-                        <div class="contacts">
-                            <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" /></p>
-                            <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/></p>
-                            <p class="check_contact">
-                                <strong><span class="star">▶</span>참여캠퍼스</strong><br><br>
-                                @foreach($arr_base['register_list'] as $row)
-                                    <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
-                                @endforeach
-                            </p>
+                <div id="apply">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1482_02.jpg" title="무료특강 신청하기">
+                    <div class="form_area">
+                        <h4>2020.1.4(토) 14:00 김원욱 형법 무료특강</h4>
+                        <div class="privacy">
+                            <div class="contacts">
+                                <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" /></p>
+                                <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11"/></p>
+                                <p class="check_contact">
+                                    <strong><span class="star">▶</span>참여캠퍼스</strong><br><br>
+                                    @foreach($arr_base['register_list'] as $row)
+                                        <input type="radio" name="register_chk[]" id="register_chk_{{ $row['ErIdx'] }}" value="{{$row['ErIdx']}}" /> <label for="register_chk_{{ $row['ErIdx'] }}">{{ $row['Name'] }}</label>
+                                    @endforeach
+                                </p>
+                            </div>
+                            <h5><span class="star">▶</span>개인정보 수집 및 이용에 대한 안내</h5>
+                            <div class="info">
+                                <p class="detail">
+                                    개인정보 수집 이용 목적 - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대 - 이벤트 참여에 따른 강의 수강자 목록에 활용 <br>
+                                    개인정보 수집 항목 - 신청인의 이름,연락처 <br>
+                                    개인정보 이용기간 및 보유기간 - 본 수집, 활용목적 달성 후 바로 파기 <br>
+                                    개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 <br> 동의 거부에 따른 불이익은 없으나, <br>
+                                    위 제공사항은 이벤트 참여를 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                                </p>
+                            </div>
                         </div>
-                        <h5><span class="star">▶</span>개인정보 수집 및 이용에 대한 안내</h5>
-                        <div class="info">
-                            <p class="detail">
-                                개인정보 수집 이용 목적 - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대 - 이벤트 참여에 따른 강의 수강자 목록에 활용 <br>
-                                개인정보 수집 항목 - 신청인의 이름,연락처 <br>
-                                개인정보 이용기간 및 보유기간 - 본 수집, 활용목적 달성 후 바로 파기 <br>
-                                개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 <br> 동의 거부에 따른 불이익은 없으나, <br>
-                                위 제공사항은 이벤트 참여를 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
-                            </p>
+                        <p class="accept">
+                            <input type="checkbox" name="is_chk" id="is_chk" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                        </p>
+                        <div class="btn NGEB">
+                            <a onclick="javascript:fn_submit();">
+                                <img src="https://static.willbes.net/public/images/promotion/2019/12/1482_apply_btn.png" alt="신청하기">
+                            </a>
                         </div>
-                     </div>
-                    <p class="accept">
-                        <input type="checkbox" name="is_chk" id="is_chk" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-                    </p>
-                    <div class="btn NGEB">
-                        <a onclick="javascript:fn_submit();">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/12/1482_apply_btn.png" alt="신청하기">
-                        </a>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>    
     </div>
     <!-- End evtContainer -->
   

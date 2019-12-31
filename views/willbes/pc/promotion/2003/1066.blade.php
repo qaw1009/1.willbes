@@ -28,8 +28,9 @@
         .wb_cts06 {background:#242424;padding-bottom:100px;}
         .wb_cts07 {background:#DBC8B7;}
 
-        .skybanner {position:fixed;top:200px;right:0;width:290px;z-index:11;}
-        .skybanner2{position:fixed;top:500px;right:0;width:290px;z-index:11;}         
+        .skybanner {position:fixed;top:150px;right:50px;width:290px;z-index:11;}
+        .sky {position:fixed;top:400px;right:0;width:290px;z-index:11;}
+        .skybanner2{position:fixed;top:700px;right:50px;width:290px;z-index:11;}         
     </style>
 
 
@@ -37,6 +38,12 @@
         <div class="skybanner">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
+            </a>
+        </div>
+
+        <div class="sky">
+            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_sky.png" title="실전문법" >
             </a>
         </div>  
     
@@ -64,39 +71,45 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1066_04.png" usemap="#Map1066a" title="제니스영어 커리큘럼" border="0" />
-            <map name="Map1066a" id="Map1066a">
-                <area shape="rect" coords="337,672,391,698" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154891" target="_blank" />
-                <area shape="rect" coords="338,786,389,810" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154897" target="_blank" />
-                <area shape="rect" coords="336,846,391,870" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank" />
-                <area shape="rect" coords="340,905,388,930" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157580" target="_blank" />
-                <area shape="rect" coords="335,979,390,1002" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146100" target="_blank" />
-                <area shape="rect" coords="534,608,584,630" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145623" target="_blank" />
-                <area shape="rect" coords="533,666,583,692" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156740" target="_blank" />
-                <area shape="rect" coords="528,723,589,750" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154900" target="_blank" />
-                <area shape="rect" coords="533,803,583,828" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156355" target="_blank" />
-                <area shape="rect" coords="531,891,583,917" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157579" target="_blank" />
-                <area shape="rect" coords="732,672,785,694" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157581" target="_blank" />
-                <area shape="rect" coordsf="733,843,784,867" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145826" target="_blank" />
-                <area shape="rect" coords="731,978,785,1005" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146969" target="_blank" />
-                <area shape="rect" coords="934,622,990,647" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146742" target="_blank" />
-                <area shape="rect" coords="937,714,988,737" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157582" target="_blank" />
-                <area shape="rect" coords="936,804,990,827" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146966" target="_blank" />
-                <area shape="rect" coords="937,889,989,915" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147110" target="_blank" />
-                <area shape="rect" coords="934,980,992,1002" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154901" target="_blank" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_04.png" usemap="#Map1066z" title="제니스영어 커리큘럼" border="0" />
+            <map name="Map1066z" id="Map1066z">
+                <area shape="rect" coords="334,672,381,689" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154891" target="_blank" />
+                <area shape="rect" coords="334,786,382,803" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank" />
+                <area shape="rect" coords="334,846,383,862" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank" />
+                <area shape="rect" coords="336,904,383,920" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157580" target="_blank" />
+                <area shape="rect" coords="336,978,380,997" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146100" target="_blank" />
+                <area shape="rect" coords="529,608,577,624" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145623" target="_blank" />
+                <area shape="rect" coords="532,665,575,683" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156740" target="_blank" />
+                <area shape="rect" coords="530,725,575,740" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154900" target="_blank" />
+                <area shape="rect" coords="530,798,577,816" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156355" target="_blank" />
+                <area shape="rect" coords="529,887,575,904" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157579" target="_blank" />
+                <area shape="rect" coords="730,672,774,688" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157581" target="_blank" />
+                <area shape="rect" coords="730,844,778,860" href="#none;" />
+                <area shape="rect" coords="729,978,780,994" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146969" target="_blank" />
+                <area shape="rect" coords="934,619,983,637" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158678" target="_blank" />
+                <area shape="rect" coords="933,710,985,727" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/159037" target="_blank" />
+                <area shape="rect" coords="932,799,985,814" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158679" target="_blank" />
+                <area shape="rect" coords="933,818,984,836" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158686" target="_blank" />
+                <area shape="rect" coords="932,886,983,902" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158685" target="_blank" />
+                <area shape="rect" coords="934,908,982,924" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158684" target="_blank" />
+                <area shape="rect" coords="935,976,983,993" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158682" target="_blank" />
+                <area shape="rect" coords="935,998,981,1014" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank" />
+            </map>      
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_04s.jpg" usemap="#Map1066x" border="0" style="padding-bottom:125px;" />
+            <map name="Map1066x" id="Map1066x">
+                <area shape="circle" coords="755,163,75" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank" />
+            </map> 
         </div>
 
         <div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_05.png"title="학습비법패키지수강신청" usemap="#Map1066b" border="0" />
-            <map name="Map1066b" id="Map1066b">
-                <area shape="rect" coords="837,356,1044,409" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/157982" target="_blank" alt="맞춤형 패키지" title="맞춤형 패키지" />
-                <area shape="rect" coords="54,844,231,893" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" alt="기본이론" title="01.기본이론" />
-                <area shape="rect" coords="267,844,437,895" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" alt="심화실전예비" title="02.심화,실전예비" />
-                <area shape="rect" coords="475,843,651,896" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" alt="문제해결스킬업" title="03.문제해결스킬업" />
-                <area shape="rect" coords="687,843,860,896" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156673" target="_blank" alt="실전실력다지기" title="04.실전실력다지기" />
-                <area shape="rect" coords="893,842,1072,895" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/147104" target="_blank" alt="파이널" title="05.지방직" />
-            </map>        
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_05.png" usemap="#Map1066y"title="학습비법패키지수강신청" border="0" />
+            <map name="Map1066y" id="Map1066y">
+                <area shape="rect" coords="63,850,225,885" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" />
+                <area shape="rect" coords="270,850,434,885" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" />
+                <area shape="rect" coords="482,850,642,886" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" />
+                <area shape="rect" coords="692,852,852,884" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158681" target="_blank" />
+                <area shape="rect" coords="899,851,1068,885" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158684" target="_blank" />
+            </map>               
             {{--
             <img src="https://static.willbes.net/public/images/promotion/2019/10/1066_06.gif" title="학습비법패키지수강신청" usemap="#Map1066c" border="0" />
             <map name="Map1066c" id="Map1066c">

@@ -21,10 +21,12 @@
 
         /************************************************************/
 
+		.sky {position:fixed;top:200px;right:0;width:290px;z-index:11;}
+
 		.skybanner {
             position:fixed;
             bottom:50px;
-            right:10px;
+            right:125px;
             z-index:1;
         }
         .skybanner a {display:block; margin-bottom:5px}
@@ -32,7 +34,7 @@
 		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/10/1193_top2_bg.jpg) no-repeat center top;}
 
 		.evt01 {background:#fff; position:relative}
-		.evt01 span {position:absolute; left:50%; margin-left:-442px; top:300px; width:300px; z-index:10}
+		.evt01 span {position:absolute; left:50%; margin-left:-442px; top:765px; width:300px; z-index:10}
 		.evt01_1 {background:#f5f5f5}
 		.evt02 {background:#fff; padding-bottom:150px}
 		.evt03 {background:#f5f5f5}
@@ -99,6 +101,12 @@
 		</div>
 		<!-- 타이머 //-->
 
+		<div class="sky">
+            <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/159396" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_sky.png" title="실전문법" >
+            </a>
+        </div>  
+
 		<div class="skybanner">
 			<a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/157982" target="_blank">
 				<img src="https://static.willbes.net/public/images/promotion/2019/11/1193_sky1.png" />
@@ -119,7 +127,7 @@
 
 		<div class="evtCtnsBox evt01" id="evt01">
 			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_1_t.gif" title="티패스 수강생 전용 특별 혜택 제공" /><br>
-			<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_1.jpg" /><br>
+			<img src="https://static.willbes.net/public/images/promotion/2019/12/1193_01_1.jpg" /><br>
 			<span><img src="https://static.willbes.net/public/images/promotion/2019/04/1193_01_mv1.gif" alt="" /></span>
 		</div>
 

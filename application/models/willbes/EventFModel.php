@@ -571,32 +571,35 @@ class EventFModel extends WB_Model
 
             // *** 댓글 포인트 지급 ***
             if(empty($event_data['CommentPointType']) === false && empty($this->session->userdata('mem_idx')) === false && empty($site_code) === false) {
-                // 이미 포인트가 지급 되었는지 체크
-                $member_comment_point_info = $this->getMemberCommentPoint(['EQ' => ['EL.ElIdx' => element('event_idx', $requestData), 'PS.MemIdx' => $this->session->userdata('mem_idx')]]);
-                if (count($member_comment_point_info) === 0) {
-                    $comment_point_type = $this->_point_type[$event_data['CommentPointType']];
-                    if(empty($comment_point_type) === false && empty($event_data['CommentPointAmount']) === false && empty($event_data['CommentPointValidDays']) === false) {
-                        // 포인트 지급될 회원의 관심직렬 사이트코드 조회
-                        $member_info_result = $this->findMemberInfo(['EQ' => ['M.MemIdx' => $this->session->userdata('mem_idx')]]);
-                        if(empty($member_info_result) === false){
-                            if(empty($member_info_result['InterestCode']) === true || empty($this->_interest_to_sitecode[$member_info_result['InterestCode']]) === true) {
-                                // 회원의 관심직렬이 없을 경우 기본 세팅
-                                $point_site_code = $this->_default_point_site_code;
-                            } else {
-                                $point_site_code = $this->_interest_to_sitecode[$member_info_result['InterestCode']];
-                            }
-                            // 포인트 지급
-                            $add_save_point_result = $this->pointFModel->addSavePoint($comment_point_type, $event_data['CommentPointAmount'], [
-                                // 'site_code' => $site_code,   //프로모션의 사이트 코드
-                                'site_code' => $point_site_code,
-                                'etc_reason' => '기타[' . $event_data['PromotionCode'] . ']',
-                                'reason_type' => 'event_comment',
-                                'valid_days' => $event_data['CommentPointValidDays']
-                            ]);
-                            if($add_save_point_result !== true) throw new \Exception('포인트 적립에 실패했습니다.');
-                            // 이벤트와 포인트 연결 데이터 인서트
-                            if($this->addEventLinkPoint(['el_idx' => element('event_idx', $requestData), 'point_idx' => $this->_conn->insert_id()]) === false) {
-                                throw new \Exception('이벤트포인트 연결데이터 등록에 실패했습니다.');
+                // 댓글 형태가 기본형(713001)일 경우에만 포인트 지급
+                if(empty($requestData['comment_ui_ccd']) === false && $requestData['comment_ui_ccd'] == '713001') {
+                    // 이미 포인트가 지급 되었는지 체크
+                    $member_comment_point_info = $this->getMemberCommentPoint(['EQ' => ['EL.ElIdx' => element('event_idx', $requestData), 'PS.MemIdx' => $this->session->userdata('mem_idx')]]);
+                    if (count($member_comment_point_info) === 0) {
+                        $comment_point_type = $this->_point_type[$event_data['CommentPointType']];
+                        if(empty($comment_point_type) === false && empty($event_data['CommentPointAmount']) === false && empty($event_data['CommentPointValidDays']) === false) {
+                            // 포인트 지급될 회원의 관심직렬 사이트코드 조회
+                            $member_info_result = $this->findMemberInfo(['EQ' => ['M.MemIdx' => $this->session->userdata('mem_idx')]]);
+                            if(empty($member_info_result) === false){
+                                if(empty($member_info_result['InterestCode']) === true || empty($this->_interest_to_sitecode[$member_info_result['InterestCode']]) === true) {
+                                    // 회원의 관심직렬이 없을 경우 기본 세팅
+                                    $point_site_code = $this->_default_point_site_code;
+                                } else {
+                                    $point_site_code = $this->_interest_to_sitecode[$member_info_result['InterestCode']];
+                                }
+                                // 포인트 지급
+                                $add_save_point_result = $this->pointFModel->addSavePoint($comment_point_type, $event_data['CommentPointAmount'], [
+                                    // 'site_code' => $site_code,   //프로모션의 사이트 코드
+                                    'site_code' => $point_site_code,
+                                    'etc_reason' => '기타[' . $event_data['PromotionCode'] . ']',
+                                    'reason_type' => 'event_comment',
+                                    'valid_days' => $event_data['CommentPointValidDays']
+                                ]);
+                                if($add_save_point_result !== true) throw new \Exception('포인트 적립에 실패했습니다.');
+                                // 이벤트와 포인트 연결 데이터 인서트
+                                if($this->addEventLinkPoint(['el_idx' => element('event_idx', $requestData), 'point_idx' => $this->_conn->insert_id()]) === false) {
+                                    throw new \Exception('이벤트포인트 연결데이터 등록에 실패했습니다.');
+                                }
                             }
                         }
                     }

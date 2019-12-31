@@ -344,6 +344,8 @@
                                             <input type="text" class="form-control" id="comment_point_valid_days" name="comment_point_valid_days" value="{{$data['CommentPointValidDays']}}" style="width: 70px;">
                                         </div>
                                     </div>
+                                    •  댓글 등록 시 지급될 포인트 정보를 등록해주세요. <br/>
+                                    •  기본형 댓글에만 자동지급 포인트 기능 사용이 가능합니다.
                                 </div>
                             </div>
                         </div>

@@ -109,4 +109,5 @@
             </div>
         </div>
     </div>
+    <font color="#FFFFF">{{ENVIRONMENT}}</font>
 @stop

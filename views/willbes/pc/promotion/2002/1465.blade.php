@@ -41,7 +41,7 @@
         .evt03 .requestR li {margin-bottom:5px}
         .evt03 .request:after {content:""; display:block; clear:both}
         .evt03 .btn {clear:both; width:450px; margin:0 auto;}
-        .evt03 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#3695da; padding:20px 0; margin-top:30px; border-radius:50px}
+        .evt03 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt03 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
         .evt03 .NGEBS{font-weight:bold;}
 
@@ -88,7 +88,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1465_03.jpg" title="신청접수">
                     <div class="request" id="request">
                         <div class="requestL">
-                            <h3 class="NGEBS">* 12월 설명회 시리즈 신청접수</h3>
+                            <h3 class="NGEBS">* 1월 설명회 시리즈 신청접수</h3>
                             <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                                 <col width="25%" />
                                 <col  />
@@ -107,23 +107,24 @@
                                 <tr>
                                     <th>* 참여일</th>
                                     <td>
-                                        <ul>                                       
-                                            {{-- <input type="hidden" name="register_data1" value=""/> --}}
+                                        <ul>
                                             @foreach($arr_base['register_list'] as $key => $val)
-                                                @php
-                                                    // 강의 기간 지나면 자동 disabled 처리
-                                                    // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
-                                                    $reg_year = '2019';
-                                                    $reg_month_day = explode('.', explode(' ', $val['Name'])[0]);
-                                                    $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
-                                                    $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
-                                                    $reg_date = $reg_year.$reg_month.$reg_day.'0000';
-                                                    //echo date('YmdHi', strtotime($reg_date. '+1 days'));
-                                                @endphp
-                                                @if(time() >= strtotime($reg_date. '+1 days'))
-                                                    <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
-                                                @else
-                                                    <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
+                                                    @php
+                                                        // 강의 기간 지나면 자동 disabled 처리
+                                                        // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
+                                                        $reg_year = '2020';
+                                                        $reg_month_day = explode('.', explode(' ', $val['Name'])[0]);
+                                                        $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
+                                                        $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
+                                                        $reg_date = $reg_year.$reg_month.$reg_day.'0000';
+                                                        //echo date('YmdHi', strtotime($reg_date. '+1 days'));
+                                                    @endphp
+                                                    @if(time() >= strtotime($reg_date. '+1 days'))
+                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                    @else
+                                                        <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                    @endif
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -174,7 +175,7 @@
                         </div>
                     </div>
                     <div class="btn NGEB">
-                        <a href="#none" onclick="javascript:fn_submit();">12월 설명회 신청하기 ></a>
+                        <a href="#none" onclick="javascript:fn_submit();">2020년 1월 설명회 신청하기></a>
                     </div>
             </div>
             <div class="evtCtnsBox evt04">

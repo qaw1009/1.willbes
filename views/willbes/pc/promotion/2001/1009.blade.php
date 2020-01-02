@@ -150,13 +150,12 @@
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        <ul class="skyBanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_sky.png" usemap="#Map1009sky" title="pass 구매하기" border="0">
-            <map name="Map1009sky" id="Map1009sky">
-                <area shape="rect" coords="1,1,190,155" href="https://police.willbes.net/promotion/index/cate/3002/code/1470#event" target="_blank" />
-                <area shape="rect" coords="1,162,189,312" href="#event" />
-            </map>          
-        </ul>
+        <div class="skyBanner">
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_sky.png" usemap="#Map" border="0">
+            <map name="Map" id="Map">
+                <area shape="rect" coords="0,-4,189,181" href="#event" />
+            </map>           
+        </div>
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">

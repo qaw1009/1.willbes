@@ -33,9 +33,10 @@ class LandingPageModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.LIdx, A.SiteCode, G.SiteName, A.Title, A.DispStartDatm, A.DispEndDatm, A.DispRoute,
+            A.LIdx, A.LCode, A.SiteCode, G.SiteName, A.Title, A.DispStartDatm, A.DispEndDatm, A.DispRoute,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
+            ,substring_index(G.SiteUrl,\'.\',1) As SiteHost
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -73,35 +74,17 @@ class LandingPageModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
-            $site_code = element('site_code', $input);
-            $admin_idx = $this->session->userdata('admin_idx');
 
-            if (empty(element('disp_start_datm', $input)) === true) {
-                $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
-            } else {
-                $disp_start_datm = element('disp_start_datm', $input) . ' ' . element('disp_start_time', $input) . ':00:00';
-            }
-
-            if (empty(element('disp_end_datm', $input)) === true) {
-                $disp_end_datm = '2100-12-31' . ' ' . '23:59:59';
-            } else {
-                $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
-            }
-
-            $data = [
-                'SiteCode' => $site_code,
-                'Title' => element('title', $input),
-                'DispStartDatm' => $disp_start_datm,
-                'DispEndDatm' => $disp_end_datm,
-                'DispRoute' => element('disp_route', $input),
-                'GuidanceNote' => element('guidance_note', $input),
-                'Css' => element('css', $input),
-                'Content' => element('content', $input),
-                'Desc' => element('desc', $input),
-                'IsUse' => element('is_use', $input),
-                'RegAdminIdx' => $admin_idx,
+            $data = array_merge($this->inputCommon($input),[
+                'SiteCode'=>element('site_code',$input),
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
-            ];
+            ]);
+
+            $check_lcode = $this->landingPageModel->findLCode('find', element('l_code',$input));
+            if(empty($check_lcode) === false) {
+                throw new \Exception('이미 존재하는 랜딩코드입니다.');
+            }
 
             //등록
             if ($this->_conn->set($data)->insert($this->_table['landing']) === false) {
@@ -111,13 +94,15 @@ class LandingPageModel extends WB_Model
 
             //카테고리 저장
             $category_code = element('cate_code', $input);
-            foreach ($category_code as $key => $val) {
-                $category_data['LIdx'] = $l_idx;
-                $category_data['CateCode'] = $val;
-                $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
-                $category_data['RegIp'] = $this->input->ip_address();
-                if ($this->_addLandingPageCategory($category_data) === false) {
-                    throw new \Exception('카테고리 등록에 실패했습니다.');
+            if(empty($category_code) === false) {
+                foreach ($category_code as $key => $val) {
+                    $category_data['LIdx'] = $l_idx;
+                    $category_data['CateCode'] = $val;
+                    $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addLandingPageCategory($category_data) === false) {
+                        throw new \Exception('카테고리 등록에 실패했습니다.');
+                    }
                 }
             }
 
@@ -133,44 +118,37 @@ class LandingPageModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
-            $admin_idx = $this->session->userdata('admin_idx');
+
             $l_idx = element('l_idx', $input);
 
-            // 기존 배너 기본정보 조회
-            $row = $this->findLandingPage('LIdx', ['EQ' => ['LIdx' => $l_idx]]);
-            if (count($row) < 1) {
-                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
-            }
-
-            if (empty(element('disp_start_datm', $input)) === true) {
-                $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
-            } else {
-                $disp_start_datm = element('disp_start_datm', $input) . ' ' . element('disp_start_time', $input) . ':00:00';
-            }
-
-            if (empty(element('disp_end_datm', $input)) === true) {
-                $disp_end_datm = '2100-12-31' . ' ' . '23:59:59';
-            } else {
-                $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
-            }
-
-            $data = [
-                'Title' => element('title', $input),
-                'DispStartDatm' => $disp_start_datm,
-                'DispEndDatm' => $disp_end_datm,
-                'DispRoute' => element('disp_route', $input),
-                'GuidanceNote' => element('guidance_note', $input),
-                'Css' => element('css', $input),
-                'Content' => element('content', $input),
-                'Desc' => element('desc', $input),
-                'IsUse' => element('is_use', $input),
-                'UpdAdminIdx' => $admin_idx
-            ];
+            $data = array_merge($this->inputCommon($input),[
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+            ]);
 
             if ($this->_conn->set($data)->where('Lidx', $l_idx)->update($this->_table['landing']) === false) {
                 throw new \Exception('랜딩페이지 수정에 실패했습니다.');
             }
 
+            //기존 카테고리 삭제
+            $del_data = [
+                'IsStatus' => 'N'
+                , 'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $this->_conn->set($del_data)->where('LIdx', $l_idx)->where('IsStatus', 'Y')->update($this->_table['landing_r_category']);
+            
+            //카테고리 저장
+            $category_code = element('cate_code', $input);
+            if(empty($category_code) === false) {
+                foreach ($category_code as $key => $val) {
+                    $category_data['LIdx'] = $l_idx;
+                    $category_data['CateCode'] = $val;
+                    $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addLandingPageCategory($category_data) === false) {
+                        throw new \Exception('카테고리 등록에 실패했습니다.');
+                    }
+                }
+            }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -180,11 +158,33 @@ class LandingPageModel extends WB_Model
         return true;
     }
 
-    public function findLandingPage($column = '*', $arr_condition = [])
+    public function inputCommon($input=[])
     {
-        $arr_condition['EQ']['IsStatus'] = 'Y';
+        if (empty(element('disp_start_datm', $input)) === true) {
+            $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
+        } else {
+            $disp_start_datm = element('disp_start_datm', $input) . ' ' . element('disp_start_time', $input) . ':00:00';
+        }
 
-        return $this->_conn->getFindResult($this->_table['landing'], $column, $arr_condition);
+        if (empty(element('disp_end_datm', $input)) === true) {
+            $disp_end_datm = '2030-12-31' . ' ' . '23:59:59';
+        } else {
+            $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
+        }
+        $input_data =  [
+            'LCode' => element('l_code', $input),
+            'Title' => element('title', $input),
+            'DispStartDatm' => $disp_start_datm,
+            'DispEndDatm' => $disp_end_datm,
+            'DispRoute' => element('disp_route', $input),
+            'GuidanceNote' => element('guidance_note', $input),
+            //'Content' => str_replace(array("\r\n","\r","\n"),'',element('content', $input)),
+            'Content' => element('content', $input),
+            'Desc' => element('desc', $input),
+            'IsUse' => element('IsUse', $input),
+        ];
+
+        return $input_data;
     }
 
     /**
@@ -194,12 +194,13 @@ class LandingPageModel extends WB_Model
     public function findLandingPageForModify($arr_condition)
     {
         $column = "
-            A.LIdx, A.SiteCode, G.SiteName, A.Title,
+            A.LIdx, A.LCode, A.SiteCode, G.SiteName, A.Title,
             A.DispStartDatm, A.DispEndDatm,
             DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
             DATE_FORMAT(A.DispEndDatm, '%Y-%m-%d') AS DispEndDay, DATE_FORMAT(A.DispEndDatm, '%H') AS DispEndHour,
-            A.DispRoute, A.GuidanceNote, A.Css, A.Desc, A.Content, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
+            A.DispRoute, A.GuidanceNote, A.Desc, A.Content, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
+            ,substring_index(G.SiteUrl,'.',1) As SiteHost
             ";
 
         $from = "
@@ -258,5 +259,15 @@ class LandingPageModel extends WB_Model
             return false;
         }
         return true;
+    }
+
+    public function findLCode($type='max', $lcode='')
+    {
+        if($type==='max') {
+            $data = $this->_conn->query('select ifnull(Max(LCode),0)+1 as LCode from '.$this->_table['landing'])->row_array(0);
+        } elseif($type==='find') {
+            $data = $this->_conn->query('select LCode from '.$this->_table['landing'].' where LCode='.$lcode)->result_array(0);
+        }
+        return $data;
     }
 }

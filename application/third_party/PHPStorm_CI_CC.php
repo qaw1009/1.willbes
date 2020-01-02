@@ -196,6 +196,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property GatewayModel $gatewayModel                                     GatewayModel Model Class
  * @property GatewayStatModel $gatewayStatModel                                     GatewayStatModel Model Class
  * @property CommonLectureModel $commonLectureModel                        Common Lecture Model Class
+ * @property LectureDiscModel $lectureDiscModel                            Lecture Discount Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class
@@ -251,6 +252,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SupportersFModel $supportersFModel                                 Supporters Model Class
  * @property BtobCertFModel $btobCertFModel                                     Btob Cert Apply Model Class
  * @property SmsFModel $smsFModel                                               SmsF Model Class
+ * @property LandingFModel $landingFModel                                       Landing Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                             API Delivery Book Model Class
  ***************** BtoB **********************************************************************************

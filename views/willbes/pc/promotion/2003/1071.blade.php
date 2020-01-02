@@ -124,11 +124,13 @@
             </a>
         </div> 
 
+        {{--
         <div class="skybannerB">
             <a href="#evt1">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1071_scroll_btn.png"/>      
             </a>    
-        </div>    
+        </div>
+        --}}    
                  
 
         <div class="evtCtnsBox wb_event">

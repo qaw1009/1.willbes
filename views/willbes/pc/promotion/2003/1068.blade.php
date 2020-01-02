@@ -24,6 +24,9 @@
 
         .wb_top {background:#e1e1e1 url(https://static.willbes.net/public/images/promotion/2019/12/1068_top_bg.jpg) no-repeat center top; position:relative;}
 
+		.wb_00 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top; position:relative;}
+
+
 		.wb_01{background:#fff;}
 
 		/*탭(텍스트)*/
@@ -62,16 +65,8 @@
 
 		.skybannerB{position: fixed; bottom:0; text-align:center; z-index: 101;width:100%}
 
-		/*
-        .wb_cts01 {background:#fff url(https://static.willbes.net/public/images/promotion/2019/07/1068_01_bg.jpg) center bottom no-repeat;}
-        .bannerImg3 {position:relative; width:920px; margin:0 auto; padding:10px 0px 124px 0px; }
-        .bannerImg3 p {position:absolute; top:35%; width:30px; z-index:1000;}
-        .bannerImg3 img {width:100%}
-        .bannerImg3 p a {cursor:pointer}
-        .bannerImg3 p.leftBtn3 {left:2%}
-        .bannerImg3 p.rightBtn3 {right:2%}
-        .wb_cts01 ul:after {content:""; display:block; clear:both}
-
+	
+     
         .wb_cts02 {background:#4c52b4;}
         .wb_cts03 {background:#fff}
         .wb_cts04 {background:#f4f4f4;}
@@ -95,45 +90,57 @@
         .LAeventB03 tr.st01 {background:#ececec}
         .LAeventB03 tr:hover {background:#f9f9f9}
         .LAeventB03 th,
-        .LAeventB03 td {padding:15px 20px; font-size:16px; font-weight:500;}
+        .LAeventB03 td {padding:15px 20px; font-size:16px; font-weight:bold;}
         .LAeventB03 th {background:#5f5f5f; color:#fff}
         .LAeventB03 td:nth-child(1) {text-align:center}
         .LAeventB03 td:nth-child(2) {text-align:left}
-        .LAeventB03 td:nth-child(3) {color:#5117c9}
+        .LAeventB03 td:nth-child(3) {color:#2f6c64;}
         .LAeventB03 td:last-child {border:0}
         .LAeventB03 td p {font-size:12px}
-		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#5117c9; font-size:14px; display:block; border-radius:20px 20px 0 20px}
+		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#2f6c64; font-size:14px; display:block; border-radius:20px 20px 0 20px}
         .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .LAeventB03 table a:hover {background:#252525; color:#fff;}
         .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
-		*/
 		
-		.skybanner {position:fixed;top:100px;right:0;width:122px;z-index:1000;}
+		.skybanner {position:fixed;top:200px;right:50px;width:122px;z-index:1000;}
 
 		.wb_02{background:#f4f4f4;}
+
+        .slide_con {position:absolute;left:500px;bottom:175px;width:920px; margin:0 auto}
+        .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn {left:-24px}
+        .slide_con p.rightBtn {right:-24px}
+        #slidesImg3 li {display:inline; float:left}
+        #slidesImg3 li img {width:100%}
+        #slidesImg3:after {content::""; display:block; clear:both}
+	
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">	
-		<!--
+	
 		<div class="skybanner">
             {{--<a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=391" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1068_skybanner.png" alt=""/></a>--}}
-			<img src="https://static.willbes.net/public/images/promotion/2019/07/1068_skybanner.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
-			<map name="EV181030_c8" id="EV181030_c8">
-			  <area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
-			  <area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>
-			  <area shape="rect" coords="8,269,114,324" href="#" class="r_btn_tab" data-tab-id="3"/>
-			  <area shape="rect" coords="6,335,114,391" href="#" class="r_btn_tab" data-tab-id="4"/>
-			  <area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
-			</map>
+			<a href="#to_go">
+				<img src="https://static.willbes.net/public/images/promotion/2020/01/1068_skybanner.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
+				<map name="EV181030_c8" id="EV181030_c8">
+				<area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
+				<area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>
+				<area shape="rect" coords="8,269,114,324" href="#" class="r_btn_tab" data-tab-id="3"/>
+				<area shape="rect" coords="6,335,114,391" href="#" class="r_btn_tab" data-tab-id="4"/>
+				<area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
+				</map>
+			</a>	
         </div>
-		-->
-
+	
+		{{--
 		<div class="skybannerB">
             <a href="#evt1">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_scroll_btn.png"/>      
             </a>    
-        </div>    
-
+        </div>
+		--}}    
+		{{--
         <div class="evtCtnsBox wb_event">
 			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_top01.gif">
 			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_top02.jpg" usemap="#Map" border="0">
@@ -142,17 +149,48 @@
 				<area shape="rect" coords="586,42,955,199" href="#tabs2" onfocus="this.blur();" onclick="tpassTabClick(this);" class=""/>
 			</map>	 
         </div>
+		--}}
 		
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_top.jpg" alt=" 윌비스 농업직 절대지존 장사원교수 ">
         </div>
         <!--WB_top//-->
+		
+        <div class="evtCtnsBox wb_00">
+			<img src="https://static.willbes.net/public/images/promotion/2020/01/1068_01.jpg" alt="">
+			<div class="slide_con">
+                <ul id="slidesImg3">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll1.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll2.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll3.jpg" alt="" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll4.jpg" alt="" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_arrow_1.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_arrow_2.png"></a></p>
+            </div>           
+        </div>
+		
+		{{--
+		<div class="evtCtnsBox wb_cts01" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01.png" alt=""/>
+			<div class="slide_con">
+                <ul id="slidesImg3">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll1.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll2.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll3.jpg" alt="" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll4.jpg" alt="" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_arrow_1.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_arrow_2.png"></a></p>
+            </div>           
+        </div>
+		--}}
 
 		<div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_01.jpg" alt="커리큘럼">
-        </div>
+        </div>		
 
-		<div class="evtCtnsBox wb_02">
+		<div class="evtCtnsBox wb_02" id="to_go">
 			<img src="https://static.willbes.net/public/images/promotion/2019/12/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
 			<map name="Map1068abc" id="Map1068abc">
 				<area shape="rect" coords="51,910,250,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/156691" target="_blank" />
@@ -162,6 +200,7 @@
 			</map>
         </div>
 
+		{{--	
 		<div class="evtCtnsBox wb_cts04"> 		
 			<div class="tabContaier2">    
 				<ul>    
@@ -193,6 +232,7 @@
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div>   
         </div>  
+		--}}
 			
         </div>
 
@@ -218,34 +258,24 @@
                 </table>                
             </div>
         </div>
-		
+		{{--
 		<div class="evtCtnsBox wb_03" id="careful">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_03.jpg" alt="유의사항">
         </div>
+		--}}
+	
+       
 
-
-		{{--
-        <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01.png" alt=""/>
-            <div class="bannerImg3">
-                <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll1.jpg" alt=""/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll2.jpg" alt=""/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll3.jpg" alt=""/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll4.jpg" alt=""/></li>
-                </ul>
-                <p class="leftBtn3"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_arrow_1.png"></a></p>
-                <p class="rightBtn3"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_arrow_2.png"></a></p>
-            </div>
-        </div>
         <!--wb_cts01//-->
-
+		
+		{{--
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1068_02.jpg" alt="윌비스 농업직 4관왕! 농업 전공자가 직접 출제한다 " />
         </div>
-        <!--wb_cts02//-->
+  
+		--}}
 
-
+		{{--		
         <div class="evtCtnsBox wb_cts03" >
             <ul>
                 <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_03.jpg" alt="윌비스 농업직렬 4관왕의 노하우가 집약된 2019 대비 윌비스 학원 강좌"  /></li>
@@ -253,8 +283,9 @@
                 <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_03_01.jpg" alt=" "  /></li>
             </ul>
         </div>
-        <!--wb_cts03//-->
+		--}}
 
+		{{--      
         <div class="evtCtnsBox wb_cts04" id="event">
 			<img src="https://static.willbes.net/public/images/promotion/2019/09/1068_04.jpg" alt="윌비스 2019 농업직/농촌지도사 이론패키지" usemap="#Map1068A" border="0"  />
             <map name="Map1068A" id="Map1068A" >
@@ -265,9 +296,10 @@
               	<area shape="rect" coords="912,1149,1037,1237" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/155776" target="_blank" alt="모의고사패키지" />
             </map>
         </div>
-        <!--wb_cts04//-->
+		--}}
+       
 		<div class="content_guide_wrap" id="tab">
-            <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_05.jpg" alt="2019 농업직렬 단과 수강신청"> </p>
+            <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/2020/01/1068_05.jpg"> </p>
             <ul class="tabs">
                 <li><a href="#tab1" id="menu_tab1">9급 농업직</a></li>
                 <li><a href="#tab2" id="menu_tab2">7급 농업직</a></li>
@@ -672,7 +704,7 @@
             <!--유기농업기능사//-->
         </div>
 		<p>&nbsp;</p><p>&nbsp;</p>
-		--}}
+
 		
     </div>
     <!-- End Container -->
@@ -772,6 +804,33 @@
             var url = '{{ site_url('/periodPackage/show/cate/3028/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
+
+		$(document).ready(function() {
+            var slidesImg3 = $("#slidesImg3").bxSlider({
+                mode:'horizontal',
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideWidth:2000,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft3").click(function (){
+                slidesImg3.goToPrevSlide();
+            });
+
+            $("#imgBannerRight3").click(function (){
+                slidesImg3.goToNextSlide();
+            });
+        });
+
     </script>
 
 {{-- 프로모션용 스크립트 include --}}

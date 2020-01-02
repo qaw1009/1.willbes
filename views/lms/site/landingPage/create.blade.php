@@ -23,40 +23,38 @@
                         <div class="form-inline inline-block item">
                             {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
                         </div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.
-
+                        <!--&nbsp;&nbsp;&nbsp;&nbsp;• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.//-->
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">카테고리정보 <span class="required">*</span>
+                    <label class="control-label col-md-1-1" for="">카테고리정보
                     </label>
                     <div class="col-md-10 form-inline">
-                        @if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['CateNames'] }}</p>
-                        @else
-                            <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                            <span id="selected_category" class="pl-10">
-                                @if(isset($data['CateCodes']) === true)
-                                    @foreach($data['CateCodes'] as $cate_code => $cate_name)
-                                        <span class="pr-10">{{ $cate_name }}
-                                            <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
-                                            <input type="hidden" name="cate_code[]" value="{{ $cate_code }}"/>
-                                        </span>
-                                    @endforeach
-                                @endif
-                            </span>
-                        @endif
+                        <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
+                        <span id="selected_category" class="pl-10">
+                            @if(isset($data['CateCodes']) === true)
+                                @foreach($data['CateCodes'] as $cate_code => $cate_name)
+                                    <span class="pr-10">{{ $cate_name }}
+                                        <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="cate_code[]" value="{{ $cate_code }}"/>
+                                    </span>
+                                @endforeach
+                            @endif
+                        </span>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">제목 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 item">
                         <input type="text" id="title" name="title" class="form-control" title="제목" required="required" value="{{$data['Title']}}">
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">랜딩코드 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">랜딩코드 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 ml-12-dot form-control-static">@if($method == 'PUT'){{$data['LIdx']}}@else # 등록 시 자동 생성 @endif</div>
+                    <div class="col-md-4 item">
+                        <input type="text" id="l_code" name="l_code" class="form-control" title="랜딩코드" required="required" style="width: 100px" value=" @if($method=="POST"){{ $max_lcode }}@else{{$data['LCode']}}@endif">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">노출기간
@@ -83,37 +81,35 @@
                                     }
                                 @endphp
                             </select> 시
-                            &nbsp;&nbsp;&nbsp;&nbsp;• 노출기간 미 입력 시 '사용여부'로 노출 여부 설정
+                            &nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">노출경로 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 item">
+                    <div class="col-md-4 item">
                         <input type="text" id="disp_route" name="disp_route" class="form-control" title="노출경로" required="required" placeholder="노출할 링크를 입력해 주세요." value="{{$data['DispRoute']}}">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">마감안내문구(alert) <span class="required">*</span>
-                    </label>
-                    <div class="col-md-10 item">
-                        <input type="text" id="guidance_note" name="guidance_note" class="form-control" title="마감안내문구(alert)" required="required" placeholder="해당 프로모션이 종료되었습니다." value="{{$data['GuidanceNote']}}">
+                    <div class="col-md-4 form-control-static">
+                        • 해당 HTML 소스가 노출될 프론트 페이지 주소
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">CSS
+                    <label class="control-label col-md-1-1" for="">종료안내문구(alert)
                     </label>
-                    <div class="col-md-10 form-inline">
-                        <textarea id="css" name="css" class="form-control" rows="7" title="CSS" placeholder="" style="width: 100%; resize: none;">{{$data['Css']}}</textarea>
+                    <div class="col-md-10 item">
+                        <input type="text" id="guidance_note" name="guidance_note" class="form-control" title="종료안내문구(alert)" placeholder="컨텐츠 제공 기간이 종료되었습니다." value="{{$data['GuidanceNote']}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1">내용 <span class="required">*</span><br/><br/>
-                        <button type="button" id="" class="btn btn-sm btn-default">미리보기</button>
+                        @if($method==="PUT")
+                        <button type="button" id="btn-preview" class="btn btn-sm btn-default" data-host="{{$data["SiteHost"]}}">미리보기</button>
+                        @endif
                     </label>
                     <div class="col-md-10 form-inline item">
-                        <textarea id="content" name="content" class="form-control" rows="7" title="프로모션소스" required="required" placeholder="프로모션 소스를 등록해 주세요." style="width: 100%; resize: none;">{{$data['Content']}}</textarea>
+                        <textarea id="content" name="content" class="form-control" rows="30" title="HTML소스" required="required" placeholder="HTML 소스를 등록해 주세요." style="width: 100%; resize: none;">{{$data['Content']}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -121,8 +117,8 @@
                     </label>
                     <div class="col-md-10 item">
                         <div class="radio">
-                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" checked="checked"/> <label for="is_use_y" class="input-label">사용</label>
-                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N"/> <label for="is_use_n" class="input-label">미사용</label>
+                            <input type="radio" id="IsUse_Y" name="IsUse" class="flat" value="Y" required="required" @if($method=="POST" || $data['IsUse']=='Y')checked="checked"@endif/> <label for="IsUse_Y" class="input-label">사용</label>
+                            <input type="radio" id="IsUse_N" name="IsUse" class="flat" value="N" required="required" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="IsUse_N" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
@@ -130,37 +126,45 @@
                     <label class="control-label col-md-1-1">설명  
                     </label>
                     <div class="col-md-10 form-inline">
-                        <textarea id="desc" name="desc" class="form-control" rows="7" title="설명" placeholder="" style="width: 100%; resize: none;">{{$data['Desc']}}</textarea>
+                        <textarea id="desc" name="desc" class="form-control" rows="5" title="설명" placeholder="" style="width: 100%; resize: none;">{{$data['Desc']}}</textarea>
                     </div>
                 </div>
+            @if($method==="PUT")
                 <div class="form-group">
                     <label class="control-label col-md-1-1">등록자
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
+                        <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-1-1 d-line">등록일
                     </label>
                     <div class="col-md-4 ml-12-dot">
-                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RegDatm'] }}@endif</p>
+                        <p class="form-control-static">{{ $data['RegDatm'] }}</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1">최종 수정자
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
+                        <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-1-1 d-line">최종 수정일
                     </label>
                     <div class="col-md-4 ml-12-dot">
-                        <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</p>
+                        <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
                     </div>
                 </div>
+            @endif
                 <div class="form-group text-center btn-wrap mt-50">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
+            </form>
+
+            <form name="preview_form" id="preview_form" method="post">
+                {!! csrf_field() !!}
+                <input type="hidden" name="preview" value="Y">
+                <input type="hidden" name="preview_content" id="preview_content" value="">
             </form>
         </div>
     </div>
@@ -174,21 +178,18 @@
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
             });
-
             // 카테고리 검색
             $('#btn_category_search').on('click', function(event) {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
                 }
-
                 $('#btn_category_search').setLayer({
                     'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
                     'width' : 900
                 });
             });
-
             // 카테고리 삭제
             $regi_form.on('click', '.selected-category-delete', function() {
                 var that = $(this);
@@ -202,27 +203,31 @@
 
             // ajax submit
             $regi_form.submit(function() {
-                var _url = '{{ site_url("/site/landingPage/store") }}' + getQueryString();
-
+                var _url = '{{ site_url("/site/landingPage/store") }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/landingPage/") }}' + getQueryString());
                     }
-                }, showValidateError, addValidate, false, 'alert');
+                }, showValidateError, null, false, 'alert');
             });
 
-            function addValidate() {
-                var site_code = $regi_form.find('select[name="site_code"]').val();
-                var site_all_code = "{{config_item('app_intg_site_code')}}";
-
-                @if($method == 'POST')
-                if(site_code != site_all_code && $regi_form.find('input[name="cate_code[]"]').length < 1) {
-                    alert('카테고리 선택 필드는 필수입니다.');
-                    return false;
-                }
-                @endif
-                    return true;
+           $('#btn-preview').click(function(){
+               var $host = $(this).data('host');
+               $("#preview_form").one("submit", function() {
+                   if($('#content').val() == '') {
+                       alert("내용을 입력하세요");return;
+                   }
+                   $('#preview_content').val($('#content').val());
+                   $env_url = '{{ENV_DOMAIN}}';
+                   var open_url = '//'+$host+$env_url+'.willbes.net/'+$('#disp_route').val();
+                   window.open('','pop_target','');
+                   this.action = open_url;
+                   this.method = 'POST';
+                   this.target = 'pop_target';
+               }).trigger("submit");
+           });
         });
     </script>
+    {{ENV_DOMAIN}}
 @stop

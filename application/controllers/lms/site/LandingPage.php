@@ -46,6 +46,7 @@ class LandingPage extends \app\controllers\BaseController
         $method = 'POST';
         $data = null;
         $l_idx = null;
+        $max_lcode = null;
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -66,13 +67,15 @@ class LandingPage extends \app\controllers\BaseController
             $arr_cate_code = $this->landingPageModel->listLandingPageCategory($l_idx);
             $data['CateCodes'] = $arr_cate_code;
             $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+        } else {
+            $max_lcode = $this->landingPageModel->findLCode()['LCode'];
         }
-
 
         $this->load->view("site/landingPage/create", [
             'method' => $method,
             'data' => $data,
-            'l_idx' => $l_idx
+            'l_idx' => $l_idx,
+            'max_lcode' =>$max_lcode
         ]);
     }
 
@@ -83,17 +86,17 @@ class LandingPage extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required'],
+            ['field' => 'l_code', 'label' => '랜딩코드', 'rules' => 'trim|required'],
             ['field' => 'disp_route', 'label' => '노출경로', 'rules' => 'trim|required'],
-            ['field' => 'guidance_note', 'label' => '마감안내문구', 'rules' => 'trim|required'],
             ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required'],
-            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
+            ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
         ];
 
         if (empty($this->_reqP('l_idx')) === true) {
             $method = 'add';
             $rules = array_merge($rules, [
                 ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
-                ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
+                //['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
             ]);
         } else {
             $method = 'modify';
@@ -126,7 +129,8 @@ class LandingPage extends \app\controllers\BaseController
             ],
             'ORG1' => [
                 'LKB' => [
-                    'A.Title' => $this->_reqP('search_value')
+                    'A.Title' => $this->_reqP('search_value'),
+                    'A.LCode' => $this->_reqP('search_value')
                 ]
             ]
         ];

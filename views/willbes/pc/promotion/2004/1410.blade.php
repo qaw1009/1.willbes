@@ -53,7 +53,8 @@
     <div class="p_re evtContent NGR" id="evtContainer">     
         <div class="skybanner">
             <ul>
-                <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=492&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1410_sky.png"  title="세령국어 실용문법특강" /></a></li>                
+                <li><a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=492&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/12/1410_sky.png"  title="세령국어 실용문법특강" /></a></li>    
+                <li><a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1486" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/01/1486_skybanner.png"  title="불꽃소방 0원 무료특강" /></a></li>                            
             </ul>
         </div>
 

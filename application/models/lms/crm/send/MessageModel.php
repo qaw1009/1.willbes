@@ -343,8 +343,22 @@ class MessageModel extends WB_Model
                     @unlink($uploaded[0]['full_path']);
                 }
                 $set_send_data = substr($set_send_data , 0, -1);
-                break;
 
+                // 식별자 memIdx 조회
+                $mem_idx_str = '';
+                if(empty($set_send_data) === false) {
+                    $memberData = $this->_listMember(false, ['EQ' => ['M.IsStatus' => 'Y'], 'IN' => ['M.MemId' => explode(',', $set_send_data)]]);
+                    if(empty($memberData) === false) {
+                        foreach($memberData as $key => $val) {
+                            if(empty($val['MemIdx']) === false) {
+                                if($key != 0) $mem_idx_str .= ',';
+                                $mem_idx_str .= $val['MemIdx'];
+                            }
+                        }
+                    }
+                }
+                $set_send_data = $mem_idx_str;
+                break;
             default :
                 $set_send_data = '';
                 break;
@@ -412,5 +426,40 @@ class MessageModel extends WB_Model
         $excel_data = $this->excel->readExcel($file_path);
 
         return $excel_data;
+    }
+
+    /**
+     * 회원 조회
+     * @param $is_count
+     * @param $arr_condition
+     * @param $limit
+     * @param $offset
+     * @param $order_by
+     * @return array
+     */
+    private function _listMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'COUNT(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                M.*
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table_member} M
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 }

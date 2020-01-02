@@ -10,7 +10,7 @@ class Books extends \app\controllers\BaseController
     private $_content_type = 'application/xml';
     private $_base_node = 'NewDataSet';
     private $_item_node = 'bookDelivery';
-    private $_allow_ip = ['122.199.222.', '59.5.87.1.', '115.94.76.', '115.90.108.245', '58.150.126.91'];
+    private $_allow_ip = ['122.199.222.', '59.5.87.1.', '115.94.76.', '115.90.108.245', '58.150.126.91','112.219.179.26'];
 
     public function __construct()
     {

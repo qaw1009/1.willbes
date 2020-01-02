@@ -134,7 +134,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>ID</th>
-                                            <th>이름</th>
                                         </tr>
                                         </thead>
                                         <tbody></tbody>
@@ -267,8 +266,7 @@
                             $.each(ret.ret_data.excel_data, function(i, item) {
                                 send_list = '<tr>';
                                 send_list += '<td>'+i+'</td>';
-                                send_list += '<td>'+item.B+'</td>';
-                                send_list += '<td>'+item.C+'</td>';
+                                send_list += '<td>'+item.A+'</td>';
                                 send_list += '</tr>';
                                 $('#mem_id_list > tbody').append(send_list);
                             });

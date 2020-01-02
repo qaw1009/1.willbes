@@ -229,5 +229,4 @@
            });
         });
     </script>
-    {{ENV_DOMAIN}}
 @stop

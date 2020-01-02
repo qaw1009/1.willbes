@@ -106,8 +106,8 @@
 
 		.wb_02{background:#f4f4f4;}
 
-        .slide_con {position:absolute;left:500px;bottom:175px;width:920px; margin:0 auto}
-        .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
+        .slide_con {position:absolute;left:50%;bottom:175px;width:920px;margin-left:-460px;}
+        .slide_con p {position:absolute; top:45%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-24px}
         .slide_con p.rightBtn {right:-24px}
@@ -235,29 +235,7 @@
 		--}}
 			
         </div>
-
-		 <!-- 타이머 -->
-         <div class="evtCtnsBox time NGEB"  id="newTopDday">
-            <div>
-                <table>
-                    <tr>                       
-                        <td class="time_txt">마감까지</td>
-                        <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td class="time_txt">day </td>
-                        <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td class="time_txt">:</td>
-                        <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td class="time_txt">:</td>
-                        <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                        <td class="time_txt">남았습니다.<br></td>                     
-                    </tr>
-                </table>                
-            </div>
-        </div>
+	
 		{{--
 		<div class="evtCtnsBox wb_03" id="careful">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_03.jpg" alt="유의사항">
@@ -301,14 +279,14 @@
 		<div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/2020/01/1068_05.jpg"> </p>
             <ul class="tabs">
-                <li><a href="#tab1" id="menu_tab1">9급 농업직</a></li>
-                <li><a href="#tab2" id="menu_tab2">7급 농업직</a></li>
-                <li><a href="#tab3" id="menu_tab3">농촌지도사</a></li>
-				<li><a href="#tab4" id="menu_tab4">생물학개론</a></li>
-				<li><a href="#tab5" id="menu_tab5">유기농업기능사</a></li>
+                <li><a href="#tab1" id="menu_tab1" data-tab-id="1">9급 농업직</a></li>
+                <li><a href="#tab2" id="menu_tab2" data-tab-id="2">7급 농업직</a></li>
+                <li><a href="#tab3" id="menu_tab3" data-tab-id="3">농촌지도사</a></li>
+				<li><a href="#tab4" id="menu_tab4" data-tab-id="4">생물학개론</a></li>
+				<li><a href="#tab5" id="menu_tab5" data-tab-id="5">유기농업기능사</a></li>
             </ul>
             <!--9급 농업직-->
-            <div class="content_guide_box  LAeventB03" id="tab1">
+            <div class="content_guide_box LAeventB03" id="tab1">
 				<p>● 재배학</p>
                 <table>
 					  <tr>
@@ -710,9 +688,33 @@
     <!-- End Container -->
 
 	<script type="text/javascript">
-        var ytb01_url = "https://www.youtube.com/embed/rPN9bxcaiLU";
-        var ytb02_url = "https://www.youtube.com/embed/eRrHTbcFBtY";
 
+		$(document).ready(function() {
+				var slidesImg3 = $("#slidesImg3").bxSlider({
+					mode:'horizontal',
+					auto:true,
+					speed:350,
+					pause:4000,
+					pager:true,
+					controls:false,
+					minSlides:1,
+					maxSlides:1,
+					slideWidth:2000,
+					slideMargin:0,
+					autoHover: true,
+					moveSlides:1,
+					pager:false,
+				});
+
+				$("#imgBannerLeft3").click(function (){
+					slidesImg3.goToPrevSlide();
+				});
+
+				$("#imgBannerRight3").click(function (){
+					slidesImg3.goToNextSlide();
+				});
+			});
+      
         $(document).ready(function(){
             /*영상탭*/
             $(".tabContentsEvt").hide();
@@ -738,6 +740,8 @@
                 return false;
             });
 
+			
+
             /*강의탭*/
             var $active, $links = $(this).find('.tabs li a');
             $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -753,83 +757,23 @@
                 var activeTab = $(this).data("tab-id");
                 $(".tabs li a").removeClass("active");
                 $('#menu_tab'+activeTab).addClass("active");
-                $(".tabContents").hide();
+                $(".content_guide_box").hide();
                 $('#tab'+activeTab).fadeIn();
                 return false;
             });
 
             $(".tabs li a").click(function(){
-                var activeTab = $(this).attr("href");
+                //var activeTab = $(this).attr("href");
+				var activeTab = $(this).data("tab-id");
                 $(".tabs li a").removeClass("active");
+
                 $(this).addClass("active");
-                $(".tabContents").hide();
-                $(activeTab).fadeIn();
+                //$(activeTab).fadeIn();
+				$(".content_guide_box").hide();
+                $('#tab'+activeTab).fadeIn();
                 return false;
-            });
-
-            /*탭(텍스터버전)*/
-            $(".tabContents2").hide();
-            $(".tabContents2:first").show();
-            $(".tabContaier2 ul li a").click(function(){
-                tpassTabClick(this);
-            });
-
-            $(".tabContents2 li a").click(function(){
-                var activeTab = $(this).attr("href");
-                $(".tabs li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContents").hide();
-                $(activeTab).fadeIn();
-                return false;
-            });
-
-            /*디데이카운트다운*/
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
-        });
-
-        function tpassTabClick(obj) {
-            var activeTab = $(obj).attr("href");
-            $(".tabContaier2 ul li a").removeClass("active");
-            $(activeTab + '_btn').addClass("active");
-            $(".tabContents2").hide();
-            $(activeTab).fadeIn();
-            return false;
-        }
-
-        function go_PassLecture(code) {
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }
-            var url = '{{ site_url('/periodPackage/show/cate/3028/pack/648001/prod-code/') }}' + code;
-            location.href = url;
-        }
-
-		$(document).ready(function() {
-            var slidesImg3 = $("#slidesImg3").bxSlider({
-                mode:'horizontal',
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:2000,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft3").click(function (){
-                slidesImg3.goToPrevSlide();
-            });
-
-            $("#imgBannerRight3").click(function (){
-                slidesImg3.goToNextSlide();
-            });
-        });
+            });			
+        });		
 
     </script>
 

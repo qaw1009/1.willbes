@@ -102,7 +102,7 @@
 		<!-- 타이머 //-->
 
 		<div class="sky">
-            <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/159396" target="_blank">
+            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_sky.png" title="실전문법" >
             </a>
         </div>  

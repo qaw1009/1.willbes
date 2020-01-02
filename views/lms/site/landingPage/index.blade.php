@@ -155,15 +155,7 @@
             });
 
             $list_table.on('click', '.btn-preview', function() {
-                @if(ENVIRONMENT === 'local')
-                    $env_url = '.local';
-                @elseif(ENVIRONMENT === 'development')
-                    $env_url = '.dev';
-                @elseif(ENVIRONMENT === 'testing')
-                    $env_url = '.stage';
-                @else
-                    $env_url = '';
-                @endif
+                $env_url = '{{ENV_DOMAIN}}';
                 $open_url = '//'+$(this).data('host')+$env_url+'.willbes.net';
                 window.open($open_url + $(this).data('val') +'/preview/Y');
             });

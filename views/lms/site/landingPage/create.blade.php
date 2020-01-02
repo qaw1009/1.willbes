@@ -213,23 +213,13 @@
             });
 
            $('#btn-preview').click(function(){
-
                var $host = $(this).data('host');
-
                $("#preview_form").one("submit", function() {
                    if($('#content').val() == '') {
                        alert("내용을 입력하세요");return;
                    }
                    $('#preview_content').val($('#content').val());
-                   @if(ENVIRONMENT === 'local')
-                       $env_url = '.local';
-                   @elseif(ENVIRONMENT === 'development')
-                       $env_url = '.dev';
-                   @elseif(ENVIRONMENT === 'testing')
-                       $env_url = '.stage';
-                   @else
-                       $env_url = '';
-                    @endif
+                   $env_url = '{{ENV_DOMAIN}}';
                    var open_url = '//'+$host+$env_url+'.willbes.net/'+$('#disp_route').val();
                    window.open('','pop_target','');
                    this.action = open_url;
@@ -237,7 +227,7 @@
                    this.target = 'pop_target';
                }).trigger("submit");
            });
-
         });
     </script>
+    {{ENV_DOMAIN}}
 @stop

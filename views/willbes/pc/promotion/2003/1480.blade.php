@@ -67,8 +67,8 @@
             <div>
                 <ul>
                     <li>
-                        2021 김동진 법원팀 - 2기<br />
-                        <span class="NGEB">12.31(화) 마감!</span>
+                        2021 김동진 법원팀 - 3기<br />
+                        <span class="NGEB">1.8(수) 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -222,7 +222,7 @@
         <div class="evtCtnsBox wb_02" id="buyLec">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_02.jpg" alt="수강신청" usemap="#Map1480B" border="0">
             <map name="Map1480B" id="Map1480B">
-                <area shape="rect" coords="757,938,893,1011" href="javascript:go_PassLecture('159050');"  alt="수강신청" />
+                <area shape="rect" coords="757,938,893,1011" href="javascript:go_PassLecture('159559');"  alt="수강신청" />
             </map>  
             <div class="check" id="chkInfo">   
                 <label>
@@ -236,13 +236,15 @@
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_03.jpg" alt="이용안내" />
         </div>
-
+        
+        {{--
         <div class="skybanner">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_sky.png" alt="배너" usemap="#Map1480C" border="0" />
             <map name="Map1480C" id="Map1480C">
                 <area shape="rect" coords="479,41,1490,142" href="#buyLec" alt="수강신청" />
             </map>
-        </dvi>
+        </div>
+        --}}
 
     </div>
     <!-- End Container -->

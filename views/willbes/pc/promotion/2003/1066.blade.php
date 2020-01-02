@@ -23,14 +23,12 @@
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/09/1066_top_bg.jpg) center top no-repeat}
         .wb_cts02 {background:#f8f8f8}
         .wb_cts03 {background:#F3EFE4;}
-        .wb_cts04 {background:#f8f8f8}
+        .wb_cts04 {background:#f8f8f8;padding-bottom:100px;}
         .wb_cts05 {background:#f8f8f8}
         .wb_cts06 {background:#242424;padding-bottom:100px;}
         .wb_cts07 {background:#DBC8B7;}
 
-        .skybanner {position:fixed;top:150px;right:50px;width:290px;z-index:11;}
-        .sky {position:fixed;top:400px;right:0;width:290px;z-index:11;}
-        .skybanner2{position:fixed;top:700px;right:50px;width:290px;z-index:11;}         
+        .skybanner {position:fixed;top:20px;right:10px;width:259px; text-align:center; z-index:11;}      
     </style>
 
 
@@ -39,15 +37,9 @@
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
             </a>
-        </div>
-
-        <div class="sky">
-            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank">
+            <a href="#cts04_A">
                 <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_sky.png" title="실전문법" >
             </a>
-        </div>  
-    
-        <div class="skybanner2">
             <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/157982" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1067_skybanner2.png" title="수강학고 합격하기" >
             </a>
@@ -95,7 +87,7 @@
                 <area shape="rect" coords="935,976,983,993" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158682" target="_blank" />
                 <area shape="rect" coords="935,998,981,1014" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank" />
             </map>      
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_04s.jpg" usemap="#Map1066x" border="0" style="padding-bottom:125px;" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_04s.jpg" usemap="#Map1066x" border="0" id="cts04_A"/>
             <map name="Map1066x" id="Map1066x">
                 <area shape="circle" coords="755,163,75" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158680" target="_blank" />
             </map> 

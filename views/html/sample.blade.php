@@ -248,6 +248,8 @@
                 <li><a href="{{ site_url('/home/html/191205_cons') }}" target="_blank">5급헌법 진도별모의고사 <span>*</span></a></li>
                 <li><p>자격증 ▼</p></li>
                 <li><a href="{{ site_url('/home/html/191227_passhaja_01') }}" target="_blank">소프트웨어자산관리사<span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/191227_passhaja_02') }}" target="_blank">경제교육지도사<span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/191227_passhaja_03') }}" target="_blank">진로직업체험지도사<span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/190619_jobA') }}" target="_blank">전기소방 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/190619_jobB') }}" target="_blank">전기소방 올패스 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/190619_jobC') }}" target="_blank">전기소방 자격증 <span>*</span></a></li>

@@ -111,7 +111,7 @@
                         return '<a href="#" class="btn-modify" data-idx="' + row.DiscIdx + '">[' + row.DiscIdx + '] <u class="blue">' + data + '</u></a>';
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                        return (data === 'Y') ? '사용' : '<span class="red no-line-height">미사용</span>';
                     }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'}

@@ -251,6 +251,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SupportersFModel $supportersFModel                                 Supporters Model Class
  * @property BtobCertFModel $btobCertFModel                                     Btob Cert Apply Model Class
  * @property SmsFModel $smsFModel                                               SmsF Model Class
+ * @property LandingFModel $landingFModel                                       Landing Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                             API Delivery Book Model Class
  ***************** BtoB **********************************************************************************

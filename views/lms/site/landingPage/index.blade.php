@@ -14,7 +14,7 @@
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">제목 검색 가능</p>
+                        <p class="form-control-static">제목/랜딩코드 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
@@ -72,11 +72,10 @@
                     <th>랜딩코드</th>
                     <th>제목</th>
                     <th>노출기간</th>
+                    <th>경로</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
-                    <th>최종수정자</th>
-                    <th>최종수정일</th>
                     <th>보기</th>
                 </tr>
                 </thead>
@@ -129,22 +128,23 @@
                                 return str;
                             }
                         }},
-                    {'data' : 'LIdx'},
+                    {'data' : 'LCode'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.LIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.DispStartDatm + ' ~ ' + row.DispEndDatm;
                         }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.DispRoute+'lcode/'+row.LCode;
+                        }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
-                    {'data' : 'UpdAdminName'},
-                    {'data' : 'UpdDatm'},
-                    {'data' : 'DispRoute', 'render' : function(data, type, row, meta){
-                            return '<a href="'+data+'" target="_blank"><u class="blue">보기</u></a>';
+                    {'data' : null, 'render' : function(data, type, row, meta){
+                            return '<a href="javascript:;" class="btn-preview" data-host="'+row.SiteHost+'" data-val="'+row.DispRoute+'/lcode/'+row.LCode+'"><u class="blue">보기</u></a>';
                         }},
                 ]
             });
@@ -152,6 +152,20 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.href='{{ site_url('/site/landingPage/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+            });
+
+            $list_table.on('click', '.btn-preview', function() {
+                @if(ENVIRONMENT === 'local')
+                    $env_url = '.local';
+                @elseif(ENVIRONMENT === 'development')
+                    $env_url = '.dev';
+                @elseif(ENVIRONMENT === 'testing')
+                    $env_url = '.stage';
+                @else
+                    $env_url = '';
+                @endif
+                $open_url = '//'+$(this).data('host')+$env_url+'.willbes.net';
+                window.open($open_url + $(this).data('val') +'/preview/Y');
             });
         });
     </script>

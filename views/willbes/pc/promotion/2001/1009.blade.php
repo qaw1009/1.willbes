@@ -239,7 +239,7 @@
                     </li>
                     <li>
                         <div>
-                            <strong>89</strong>만원<br>
+                            <strong>105</strong>만원<br>
                             <input type="radio" id="y_pkg4_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg4_1">기본서set(오태진史)</label><br>
                             <input type="radio" id="y_pkg4_2" name="y_pkg" value="158494" onClick=""/> <label for="y_pkg4_2">기본서set(원유철史)</label><br>
                             <input type="radio" id="y_pkg4_3" name="y_pkg" value="158495" onClick=""/> <label for="y_pkg4_3">기본서set(경행경채)</label><br>

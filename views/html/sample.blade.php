@@ -250,6 +250,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/200102_ncs_01') }}" target="_blank">NCS 소개<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/200102_ncs_02') }}" target="_blank">NCS 직업기초능력평가<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/200102_willpass_01') }}" target="_blank">직무수행능력<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/200102_willpass_02') }}" target="_blank">직무적성검사<span>*</span></a></li>
                 <li><p>자격증 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_01') }}" target="_blank">소프트웨어자산관리사<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_02') }}" target="_blank">경제교육지도사<span>*</span></a></li>

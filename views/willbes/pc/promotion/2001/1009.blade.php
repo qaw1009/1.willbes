@@ -23,7 +23,7 @@
 
         .skyBanner {position:fixed; top:200px;right:0;z-index:10;}
 
-        .evt_top {background:#040814 url(https://static.willbes.net/public/images/promotion/2020/01/1009_top_bg.jpg) no-repeat center top; padding-bottom:150px}      
+        .evt_top {background:#040814 url(https://static.willbes.net/public/images/promotion/2020/01/1009_top_bg.jpg) no-repeat center top; padding-bottom:150px; position:relative;}      
         .evt_top span {position:absolute; left:50%; z-index:100}
         .evt_top span.imgA {margin-left:-529px; top:1107px}
         .evt_top span.imgB {margin-left:321px; top:1291px}
@@ -379,7 +379,7 @@
                         <ol>
                             <li>
                             구성 및 환불<br>
-                            - 6,14,18개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
+                            - 14,18개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
                             - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
                             - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
                             - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>

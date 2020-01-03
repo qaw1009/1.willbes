@@ -25,8 +25,10 @@
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/01/150401_jumpingup_t_bg.png) repeat-x center top;}	
 		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150401_jumpingup_tm_bg.png) repeat center top; padding:50px 0 100px}
         .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150401_jumpingup_tm2_bg.png) repeat center top; padding:50px 0 100px}
-        .evt_03,
+        .evt_03 {background:#2e2f37; padding:50px 0 100px}
         .evt_04 {background:#2e2f37; padding:50px 0 100px}
+        .evt_05 {background:#e4e4e4; padding:0 0 100px}
+        .evt_06 {background:#931d1d; padding:0 0 50px}
 
         .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto; width:980px !important; margin:0 auto; background:#fff}
 		.evtCtnsBox table th,
@@ -75,7 +77,7 @@
                 <li><a href="#anchor3" class="hvr-shutter-out-horizontal">손세훈</a></li>
                 <li><a href="#anchor4" class="hvr-shutter-out-horizontal">박대영</a></li>
                 <li><a href="#anchor5" class="hvr-shutter-out-horizontal">김영식</a></li>
-                <li><a href="#anchor6" class="hvr-shutter-out-horizontal">A급 기밀정보</a></li>               
+                <li><a href="#anchor6" class="hvr-shutter-out-horizontal">문제유형</a></li>               
             </ul>
         </div>
 
@@ -277,18 +279,16 @@
 
         <div class="evtCtnsBox" id="anchor5">
             <div class="evt_04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150406_willtc42_6.png" alt="직무적성검사 김영식"/><BR>
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150406_willtc42_7.png" alt="직무적성검사" class="mt50"/>             
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150401_willtc18_6.jpg" alt="직무적성검사 김영식"/><BR>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150401_willtc18_7.jpg" alt="직무적성검사" class="mt50"/>             
                 <table cellspacing="0" cellpadding="0" class="mt50">
                     <colgroup>
-                    	<col width="10%">
                         <col width="">
                         <col width="10%">
                         <col width="15%">
                     </colgroup>
                     <thead>
                         <tr>
-                          <th>구분</th>
                             <th>강의명</th>
                             <th>기간</th>
                             <th>신청</th>
@@ -296,69 +296,31 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th rowspan="4">단과</th>
-                            <td class="tx-left">공기업 컴팩트 경영학(재무관리 포함)</td>
-                            <td>50일</td>
+                            <td class="tx-left">All In One 직무적성검사(추리) 실전문제풀이</td>
+                            <td>30일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>
                         <tr>
-                          <td>공기업 컴팩트 경영학</td>
+                          <td>All In One 직무적성검사(수리) 실전문제풀이</td>
                             <td>40일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>
                         <tr>
-                          <td>공기업 마무리 경영학</td>
-                            <td>25일</td>
+                          <td>All In One 직무적성검사(공간지각) 실전문제풀이</td>
+                            <td>10일</td>
                             <td><a href="#">수강신청 ></a></td>
-                        </tr>                       
-                        <tr>
-                          <td>공기업 마무리 경영학(재무관리 포함)</td>
-                            <td>30일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
+                        </tr>                  
                     </tbody>
                 </table>
             </div>
         </div>
 
         <div class="evtCtnsBox" id="anchor6">
-            <div class="evt_04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150406_willtc01_6.jpg" alt="경제학 김영식"/><BR>
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150406_willtc01_7.jpg" alt="경제학" class="mt50"/>               
-                <table cellspacing="0" cellpadding="0" class="mt50">
-                    <colgroup>
-                    	<col width="10%">
-                        <col width="">
-                        <col width="10%">
-                        <col width="15%">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                          <th>구분</th>
-                            <th>강의명</th>
-                            <th>기간</th>
-                            <th>신청</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th rowspan="3">단과</th>
-                            <td class="tx-left">공기업 경제학 문제풀이강의</td>
-                            <td>30일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                        <tr>
-                          <td>공기업 경제학 이론강의</td>
-                            <td>40일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                        <tr>
-                          <td>공기업 경제학 모의고사</td>
-                            <td>30일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="evt_05">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150403_agimil_t.png" alt="A급 기밀정보"/>            
+            </div>
+            <div class="evt_06">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150403_agimil_m.png" alt="출제기관별 문제유형"/>            
             </div>
         </div>
 

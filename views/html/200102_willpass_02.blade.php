@@ -26,7 +26,7 @@
 		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150401_jumpingup_tm_bg.png) repeat center top; padding:50px 0 100px}
         .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150401_jumpingup_tm2_bg.png) repeat center top; padding:50px 0 100px}
         .evt_03,
-        .evt_04 {background:#3a3f43; padding:50px 0 100px}
+        .evt_04 {background:#2e2f37; padding:50px 0 100px}
 
         .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto; width:980px !important; margin:0 auto; background:#fff}
 		.evtCtnsBox table th,
@@ -216,27 +216,27 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="tx-left">손세훈 | All In One 직무적성검사(언어) 실전문제풀이 4. 논리의 이해와 경우의 수</td>
+                            <td class="tx-left">All In One 직무적성검사(언어) 실전문제풀이 4. 논리의 이해와 경우의 수</td>
                             <td>10일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>
                         <tr>
-                          <td>손세훈 | All In One 직무적성검사(언어) 실전문제풀이 3. 장문독해</td>
+                          <td>All In One 직무적성검사(언어) 실전문제풀이 3. 장문독해</td>
                             <td>25일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>
                         <tr>
-                          <td>손세훈 | All In One 직무적성검사(언어) 실전문제풀이 2. 문장의 이해와 문단배열</td>
+                          <td>All In One 직무적성검사(언어) 실전문제풀이 2. 문장의 이해와 문단배열</td>
                             <td>15일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>                        
                         <tr>
-                          <td>손세훈 | All In One 직무적성검사(언어) 실전문제풀이 1. 어휘와 어법</td>
+                          <td>All In One 직무적성검사(언어) 실전문제풀이 1. 어휘와 어법</td>
                             <td>20일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>
                         <tr>
-                          <td>손세훈 | 직무적성 언어/논리/창의 핵심강의</td>
+                          <td>직무적성 언어/논리/창의 핵심강의</td>
                             <td>30일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>                        
@@ -247,12 +247,11 @@
 
         <div class="evtCtnsBox" id="anchor4">
             <div class="evt_04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150401_willtc17_6.jpg" alt="행정학 김헌"/><BR>
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150401_willtc17_7.jpg" alt="행정학" class="mt50"/>               
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150401_willtc17_6.jpg" alt="직무적성검사 수리 박대영"/><BR>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150401_willtc17_7.jpg" alt="직무적성검사 수리" class="mt50"/>               
                 
                 <table cellspacing="0" cellpadding="0" class="mt50">
                     <colgroup>
-                    	<col width="10%">
                         <col width="">
                         <col width="10%">
                         <col width="15%">
@@ -267,22 +266,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th rowspan="3">단과</th>
-                            <td class="tx-left">공기업 행정학 단원별 문제풀이 강의</td>
-                            <td>40일</td>
+                            <td>직무적성 수리/추리 핵심강의</td>
+                            <td>30일</td>
                             <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                        <tr>
-                          <td>공기업 행정학 핵심정리 강의</td>
-                            <td>20일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                        <tr>
-                          <td>공기업 행정학 핵심강의</td>
-                            <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>                       
-
+                        </tr>                     
                     </tbody>
                 </table>
             </div>
@@ -290,8 +277,8 @@
 
         <div class="evtCtnsBox" id="anchor5">
             <div class="evt_04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150406_willtc42_6.png" alt="경영학 김윤상"/><BR>
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150406_willtc42_7.png" alt="경영학" class="mt50"/>             
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150406_willtc42_6.png" alt="직무적성검사 김영식"/><BR>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150406_willtc42_7.png" alt="직무적성검사" class="mt50"/>             
                 <table cellspacing="0" cellpadding="0" class="mt50">
                     <colgroup>
                     	<col width="10%">

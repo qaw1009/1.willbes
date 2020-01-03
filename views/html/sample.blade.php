@@ -246,14 +246,20 @@
                 <li class="w50"><a href="{{ site_url('/home/html/190312_value_01') }}" target="_blank">감평2차 기본강의<span>*</span></a></li>
                 <li><p>고등고시 ▼</p></li>
                 <li><a href="{{ site_url('/home/html/191205_cons') }}" target="_blank">5급헌법 진도별모의고사 <span>*</span></a></li>
+                <li><p>취업 ▼</p></li>
+                <li class="w50"><a href="{{ site_url('/home/html/200102_ncs_01') }}" target="_blank">NCS 소개<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/200102_ncs_02') }}" target="_blank">NCS 직업기초능력평가<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/200102_willpass_01') }}" target="_blank">직무수행능력<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/200102_willpass_02') }}" target="_blank">직무적성검사<span>*</span></a></li>
                 <li><p>자격증 ▼</p></li>
-                <li><a href="{{ site_url('/home/html/191227_passhaja_01') }}" target="_blank">소프트웨어자산관리사<span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/191227_passhaja_02') }}" target="_blank">경제교육지도사<span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/191227_passhaja_03') }}" target="_blank">진로직업체험지도사<span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/190619_jobA') }}" target="_blank">전기소방 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/190619_jobB') }}" target="_blank">전기소방 올패스 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/190619_jobC') }}" target="_blank">전기소방 자격증 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/190619_jobD') }}" target="_blank">대학생 및 공시생 전용 논스톱 패스 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_01') }}" target="_blank">소프트웨어자산관리사<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_02') }}" target="_blank">경제교육지도사<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_03') }}" target="_blank">진로직업체험지도사<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_04') }}" target="_blank">한국사능력시험<span>*</span></a></li>                
+                <li class="w50"><a href="{{ site_url('/home/html/190619_jobA') }}" target="_blank">전기소방 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190619_jobB') }}" target="_blank">전기소방 올패스 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190619_jobC') }}" target="_blank">전기소방 자격증 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/190619_jobD') }}" target="_blank">논스톱 패스 <span>*</span></a></li>
                 <li><p>공무원 온라인 ▼</p></li>
                 <li>3월 19일 이후 추가분 ▼</li>
                 <li><a href="{{ site_url('/home/html/1141') }}" target="_blank">2019 국가직 9급 대비 라이브 적중 <span>*</span></a></li>

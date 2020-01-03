@@ -14,6 +14,7 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            position:relative;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
@@ -22,8 +23,13 @@
 
         .skyBanner {position:fixed; top:200px;right:0;z-index:10;}
 
-        .wb_pop2 {background:url(https://static.willbes.net/public/images/promotion/2019/12/1009_top_01_bg.jpg) no-repeat center top}
-        .wb_pop3 {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/zeropass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}        
+        .evt_top {background:#040814 url(https://static.willbes.net/public/images/promotion/2020/01/1009_top_bg.jpg) no-repeat center top; padding-bottom:150px}      
+        .evt_top span {position:absolute; left:50%; z-index:100}
+        .evt_top span.imgA {margin-left:-529px; top:1107px}
+        .evt_top span.imgB {margin-left:321px; top:1291px}
+        .evt_top span.imgC {margin-left:-296px; top:309px}
+
+        .evt_top01 {background:#4f7bf6}
 
         .wb_top {background:#242b35; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1120px; margin:0 auto}
@@ -57,13 +63,11 @@
         .wb_top .passLecbtn span {margin-left:50px}
         .wb_top .passLecbtn ul:after {content:""; display:block; clear:both}
 
-        .wb_new {background:#baadff; height:200px}
         .wb_cts01 {background:#fff;}
         .wb_cts02 {background:#252424 url(http://file3.willbes.net/new_cop/2018/02/EV180201_p3_bg.jpg) no-repeat center top;}
         .wb_cts03 {background:#eee;}
         .wb_cts04 {background:#f3f3f3;}
         .wb_cts05 {background:#eee;}
-        .wb_cts06 {background:#c4c4c4;}       
 
 
         /* 슬라이드배너 */
@@ -156,6 +160,7 @@
                 <area shape="rect" coords="0,-4,189,181" href="#event" />
             </map>           
         </div>
+
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">
@@ -183,12 +188,16 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_pop2" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_top_01.jpg"  alt="PASS" usemap="#rebound"/>
-            <map name="rebound" id="rebound">
-				<area shape="rect" coords="425,1246,557,1277" href="javascript:certOpen();" alt="수강생인증"/>
-                <area shape="rect" coords="564,1245,698,1278" href="javascript:goDesc('tab3')" alt="이용안내"/>
-            </map>
+        <div class="evtCtnsBox evt_top" id="main">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top.jpg"  alt="PASS"/>
+            <iframe width="853" height="480" src="https://www.youtube.com/embed/8hB3UhcoihY?rel=0" frameborder="0" allowfullscreen class="mt30"></iframe>
+            <span class="imgA"><img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top_img1.png"  alt="PASS"/></span>
+            <span class="imgB"><img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top_img2.png"  alt="PASS"/></span>
+            <span class="imgC"><img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top_img3.gif"  alt="PASS"/></span>
+        </div>
+
+        <div class="evtCtnsBox evt_top01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_top_01.jpg"  alt="PASS"/>
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -230,11 +239,11 @@
                     </li>
                     <li>
                         <div>
-                            <strong>89</strong>만원<br>
-                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="159116" onClick=""/> <label for="y_pkg4_1">기본서set(오태진史)</label><br>
-                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="159117" onClick=""/> <label for="y_pkg4_2">기본서set(원유철史)</label><br>
-                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="159118" onClick=""/> <label for="y_pkg4_3">기본서set(경행경채)</label><br>
-                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="159119" onClick=""/> <label for="y_pkg4_4">10만원 즉시할인</label><br>
+                            <strong>105</strong>만원<br>
+                            <input type="radio" id="y_pkg4_1" name="y_pkg" value="158493" onClick=""/> <label for="y_pkg4_1">기본서set(오태진史)</label><br>
+                            <input type="radio" id="y_pkg4_2" name="y_pkg" value="158494" onClick=""/> <label for="y_pkg4_2">기본서set(원유철史)</label><br>
+                            <input type="radio" id="y_pkg4_3" name="y_pkg" value="158495" onClick=""/> <label for="y_pkg4_3">기본서set(경행경채)</label><br>
+                            <input type="radio" id="y_pkg4_4" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg4_4">10만원 즉시할인</label><br>
                         </div>
                     </li>
                     <li>
@@ -257,7 +266,7 @@
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_02_191220.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
@@ -344,7 +353,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">6,12,18개월 PASS</a></li>
+                <li><a href="#tab1">6,14,18개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
@@ -370,7 +379,7 @@
                         <ol>
                             <li>
                             구성 및 환불<br>
-                            - 12,18개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
+                            - 6,14,18개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
                             - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
                             - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
                             - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
@@ -399,7 +408,7 @@
                             <br>
                             </li>
                             <li>교재 발송<br>
-                            ① 12월 13일(금) 이후 순차 발송 진행됩니다. (내강의실 >결제관리>주문/배송조회에서 확인 가능)<br>
+                            ① 순차 발송 진행됩니다. (내강의실 >결제관리>주문/배송조회에서 확인 가능)<br>
                             ② 사은품 교재 변경 발송 불가<br>
                             ③ 교재 발송 후 교재 배송지 수정, 변경은 불가합니다.<br>
                             ④ 배송지 오기재로 인한 재발송은 불가합니다.<br>                               
@@ -481,8 +490,7 @@
                     <dd>
                         <ol>
                             <li>0원 PASS는 갱신형 상품이며, 일반/경행경채 직렬 구분 없이 이용 가능한 상품입니다.<br>
-                            시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신 시 1년 무료연장 됩니다.(갱신횟수:1회가능)<br> 
-                            수강종료일 2020년 12월 31일은 수험생의 편의를 위해 제공되는 기간입니다.<br>
+                            시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신 시 1년 무료연장 됩니다.(갱신횟수:1회가능)<br>                             
                             유료기간은 구매일로부터 12개월이며, 추후 제공되는 강의는 모두 무료제공기간입니다.<br>
                             </li>
                             <li>수강기간 갱신이 필요한 경우 불합격 증빙(응시표, 성적표)자료를 제출하셔야 합니다.<br>
@@ -535,7 +543,7 @@
                             </li>
                             <li>
                             교재 발송<br>
-                            ① 12월 13일(금) 이후 순차 발송 진행됩니다. (내강의실 >결제관리>주문/배송조회에서 확인 가능)<br>
+                            ① 순차 발송 진행됩니다. (내강의실 >결제관리>주문/배송조회에서 확인 가능)<br>
                             ② 사은품 교재 변경 발송 불가<br>
                             ③ 교재 발송 후 교재 배송지 수정, 변경은 불가합니다.<br>
                             ④ 배송지 오기재로 인한 재발송은 불가합니다.<br>

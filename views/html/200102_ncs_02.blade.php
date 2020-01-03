@@ -30,11 +30,11 @@
 		.tabs li:last-child a {margin:0}
 		.tabs:after {content:""; display:block; clear:both}  
 
-		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_t_bg.png) repeat center top;}	
-		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_m_bg.png) repeat center top;}
-        .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_b_bg.png) repeat center top;}
-        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_bg.png) repeat center top;}
-        .evt_04 { padding:100px 0}
+		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/01/150617_willpass_ncs_t1_bg.png) repeat center top;}	
+		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150617_willpass_ncs_t2_2_bg.png) repeat center top;}
+        .evt_02 {background:#24bfc1}
+        .evt_03 {background:#329b9c}
+        .evt_04 {padding:100px 0}
         .evt_04 table {width:980px !important; margin:0 auto;}
 
         .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto;}
@@ -61,21 +61,19 @@
 	<div class="evtContent NGR">
 
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_t.png" alt="한국사 능력검정시험" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/150617_willpass_ncs_t1.png" alt="ncs를 알아야 공기업 합격이 보인다." />
         </div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_m.png" alt="출제유형" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/150617_willpass_ncs_t2_2.png" alt="출제유형" />
         </div>
 
-
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_b.png" alt="시험 안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/150617_willpass_ncs_t3_2.png" alt="소프트웨어자산관리사 2급 올인원 스피드 합격패키지" />
         </div>
 
         <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_kjj.png" alt="김진재 교수" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_ksb.png" alt="김상범 교수" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/150617_willpass_ncs_t4.png" alt="소프트웨어자산관리사 2급 올인원 스피드 합격패키지" />
         </div>
 
         <div class="evtCtnsBox evt_04">
@@ -94,30 +92,18 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>김진재 /한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사 </td>
-                        <td>30일</td>
+                        <td>김영식 / All In One NCS 직업기초능력평가 수리적/비언어적 문제해결능력 문제풀이 </td>
+                        <td>40일</td>
                         <td><a href="#">수강신청 ></a></td>
                     </tr>
                     <tr>
-                        <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론)</td>
-                        <td>60일</td>
-                        <td><a href="#">수강신청 ></a></td>
-                    </tr>
-                    <tr>
-                        <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
-                        <td>60일</td>
-                        <td><a href="#">수강신청 ></a></td>
-                    </tr>
-                    <tr>
-                        <td>김상범 /2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) </td>
-                        <td>100일</td>
+                        <td>손세훈 / All In One NCS 직업기초능력평가 언어적 문제해결능력 문제풀이  </td>
+                        <td>20일</td>
                         <td><a href="#">수강신청 ></a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
@@ -131,5 +117,4 @@
 		</div>
 	</div>
     <!-- End Container -->
-
 @stop

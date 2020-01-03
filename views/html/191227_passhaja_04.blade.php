@@ -22,22 +22,14 @@
 
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	
 
-        .tabs {width:1120px; margin:0 auto}
-		.tabs li {display:inline; float:left; width:50%;}
-		.tabs li a {display:block; color:#fff; background:#9697a1; height:60px; line-height:60px; text-align:center; margin-right:1px; font-size:20px}
-		.tabs li a:hover,
-		.tabs li a.active {background:#ffecdb; color:#d5181f}
-		.tabs li:last-child a {margin:0}
-		.tabs:after {content:""; display:block; clear:both}  
-
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_t_bg.png) repeat center top;}	
 		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_m_bg.png) repeat center top;}
         .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_b_bg.png) repeat center top;}
         .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_bg.png) repeat center top;}
-        .evt_04 { padding:100px 0}
-        .evt_04 table {width:980px !important; margin:0 auto;}
+        .evt_04 {padding:100px 0}
+        .evt_05 {background:#333439; padding:50px 0 100px}
 
-        .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto;}
+        .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto; width:980px !important; margin:0 auto; background:#fff}
 		.evtCtnsBox table th,
 		.evtCtnsBox table td {padding:15px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center; font-size:14px; line-height:1.5}
 		.evtCtnsBox table th {background: #2e3044; color:#fff; font-weight: bold;}
@@ -56,6 +48,19 @@
 		.evtInfoBox ul {margin-bottom:30px}
 		.evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
 
+        .jbMenu {width:100%; background:#000; padding:30px 0 0}
+        .jbMenu ul {width:980px; margin:0 auto}
+        .jbMenu li {display:inline; float:left; width:33.33333%}
+        .jbMenu a {display:block; text-align:center; padding:20px 0; font-size:18px; font-weight:bold; color:#333; background:#ccc; margin-right:1px}
+        .jbMenu li:last-child a {margin:0}
+        .jbMenu ul:after {content:""; display:block; clear:both}
+        .jbFixed {position: fixed; top: 0px; z-index:10}
+        .jbMenu a:hover,
+        .jbMenu a.active,
+        .hvr-shutter-out-horizontal_active a {color:#fff; background:#333439;}
+        .jbMenu li:nth-child(1) a:hover,
+        .jbMenu li:nth-child(1) a.active {background:#e0e1da; color:#e54d45;}
+
         /************************************************************/      
     </style> 
 	<div class="evtContent NGR">
@@ -64,59 +69,130 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_t.png" alt="한국사 능력검정시험" />
         </div>
 
-        <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_m.png" alt="출제유형" />
+        <div class="jbMenu">
+            <ul>
+                <li><a href="#anchor1" class="hvr-shutter-out-horizontal">한국사 능력검정시험</a></li>
+                <li><a href="#anchor2" class="hvr-shutter-out-horizontal">김진재</a></li>
+                <li><a href="#anchor3" class="hvr-shutter-out-horizontal">김상범</a></li>             
+            </ul>
+        </div>        
+
+        <div class="evtCtnsBox" id="anchor1">
+            <div class="evtCtnsBox evt_01">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_m.png" alt="출제유형" />
+            </div>            
+            <div class="evtCtnsBox evt_02">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_b.png" alt="시험 안내" />
+            </div>
+            <div class="evtCtnsBox evt_03">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_kjj.png" alt="김진재 교수" /><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_ksb.png" alt="김상범 교수" />
+            </div>
+            <div class="evtCtnsBox evt_04">
+                <table cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="">
+                        <col width="15%">
+                        <col width="15%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>교수명/강의명</th>
+                            <th>기간</th>
+                            <th>신청</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>김진재 /한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사 </td>
+                            <td>30일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론)</td>
+                            <td>60일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
+                            <td>60일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>김상범 /2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) </td>
+                            <td>100일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-
-        <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_b.png" alt="시험 안내" />
+        <div class="evtCtnsBox" id="anchor2">
+            <div class="evt_05">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_willtc35_6.jpg" alt="김진재 교수" /><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_willtc35_7.jpg" alt="강의소개" class="mt50"/>
+                <table cellspacing="0" cellpadding="0" class="mt50">
+                    <colgroup>
+                        <col width="">
+                        <col width="10%">
+                        <col width="15%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>강의명</th>
+                            <th>기간</th>
+                            <th>신청</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사)</td>
+                            <td>60일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>한국사능력검정시험 천기누설 특강[고급](이론)</td>
+                            <td>60일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
+                            <td>60일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_kjj.png" alt="김진재 교수" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_ksb.png" alt="김상범 교수" />
+        <div class="evtCtnsBox" id="anchor3">
+            <div class="evt_05">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_wcop36_20_6.png" alt="김상범 교수"/><BR>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_wcop36_20_7.png" alt="강의소개" class="mt50"/>                
+                <table cellspacing="0" cellpadding="0" class="mt50">
+                    <colgroup>
+                        <col width="">
+                        <col width="10%">
+                        <col width="15%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>강의명</th>
+                            <th>기간</th>
+                            <th>신청</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tx-left">2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) - 중급/고급 대비</td>
+                            <td>100일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>                       
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-        <div class="evtCtnsBox evt_04">
-            <table cellspacing="0" cellpadding="0">
-                <colgroup>
-                    <col width="">
-                    <col width="15%">
-                    <col width="15%">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th>교수명/강의명</th>
-                        <th>기간</th>
-                        <th>신청</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>김진재 /한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사 </td>
-                        <td>30일</td>
-                        <td><a href="#">수강신청 ></a></td>
-                    </tr>
-                    <tr>
-                        <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론)</td>
-                        <td>60일</td>
-                        <td><a href="#">수강신청 ></a></td>
-                    </tr>
-                    <tr>
-                        <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
-                        <td>60일</td>
-                        <td><a href="#">수강신청 ></a></td>
-                    </tr>
-                    <tr>
-                        <td>김상범 /2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) </td>
-                        <td>100일</td>
-                        <td><a href="#">수강신청 ></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
 
 
 		<div class="evtCtnsBox evtInfo NGR">
@@ -131,5 +207,44 @@
 		</div>
 	</div>
     <!-- End Container -->
+
+    <script>       
+        $( document ).ready( function() {
+            var jbOffset = $( '.jbMenu' ).offset();
+            $( window ).scroll( function() {
+                if ( $( document ).scrollTop() > jbOffset.top ) {
+                $( '.jbMenu' ).addClass( 'jbFixed' );
+            }
+            else {
+                $( '.jbMenu' ).removeClass( 'jbFixed' );
+            }
+            });
+        } );
+
+        $(document).ready(function(){
+            $('.jbMenu ul').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+            
+                $content = $($active[0].hash);
+            
+                $links.not($active).each(function () {
+                $(this.hash).hide()});
+            
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+            
+                $active = $(this);
+                $content = $(this.hash);
+            
+                $active.addClass('active');
+                $content.show();
+            
+                e.preventDefault()})})}
+        );        
+    </script> 
 
 @stop

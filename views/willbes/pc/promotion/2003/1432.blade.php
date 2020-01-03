@@ -93,7 +93,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1432_top.jpg" alt="윌비스 7급 PASS" usemap="#Map1432A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/10/1432_top.gif" alt="윌비스 7급 PASS" usemap="#Map1432A" border="0" />
             <map name="Map1432A" id="Map1432A">
                 <area shape="rect" coords="222,728,910,803" href="#goLec" alt="12개월수강신청">              
             </map>

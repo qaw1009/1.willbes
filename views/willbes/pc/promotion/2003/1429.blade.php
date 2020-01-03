@@ -21,7 +21,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {position:relative; overflow:hidden; background:#020203 url("https://static.willbes.net/public/images/promotion/2019/10/1429_top_bg.jpg") center top  no-repeat}
+        .wb_cts01 {position:relative; overflow:hidden; background:#020203 url("https://static.willbes.net/public/images/promotion/2020/01/1429_top_bg.gif") center top  no-repeat}
         .wb_cts02 {background:#0e0d17 url("https://static.willbes.net/public/images/promotion/2019/10/1429_01_bg.jpg") center top  no-repeat}
         .wb_cts03 {background:#f2f2f2;}
         .wb_cts04 {background:#eaeaea;padding-bottom:100px; position:relative}
@@ -38,11 +38,11 @@
 		/* txt_motion */
 		.wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
 		.wb_cts01 > div span {position:absolute; width:120px; z-index: 1;}
-		.wb_cts01 > div span.txt1 {top:52px; left:300px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
-		.wb_cts01 > div span.txt2 {top:163px; left:250px; animation:slidein2 0.4s ease-in; -webkit-animation:slidein2 0.4s ease-in;}
-		.wb_cts01 > div span.txt3 {top:294px; left:280px; animation:slidein3 0.6s ease-in; -webkit-animation:slidein3 0.6s ease-in;}
-		.wb_cts01 > div span.txt4 {top:415px; left:350px; animation:slidein4 0.8s ease-in; -webkit-animation:slidein4 0.8s ease-in;}
-        .wb_cts01 > div span.txt5 {top:510px; left:220px; animation:slidein4 0.8s ease-in; -webkit-animation:slidein4 0.8s ease-in;}
+		.wb_cts01 > div span.txt1 {top:220px; left:300px; animation:slidein1 0.2s ease-in; -webkit-animation:slidein1 0.2s ease-in;}
+		.wb_cts01 > div span.txt2 {top:300px; left:250px; animation:slidein2 0.4s ease-in; -webkit-animation:slidein2 0.4s ease-in;}
+		.wb_cts01 > div span.txt3 {top:380px; left:280px; animation:slidein3 0.6s ease-in; -webkit-animation:slidein3 0.6s ease-in;}
+		.wb_cts01 > div span.txt4 {top:440px; left:350px; animation:slidein4 0.8s ease-in; -webkit-animation:slidein4 0.8s ease-in;}
+    .wb_cts01 > div span.txt5 {top:525px; left:220px; animation:slidein4 0.8s ease-in; -webkit-animation:slidein4 0.8s ease-in;}
 		@@keyframes slidein1 {from {left:605px; opacity: 0;}to {left:150px; opacity: 1}}
 		@@keyframes slidein2 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
 		@@keyframes slidein3 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
@@ -95,7 +95,7 @@
   <!-- 타이머 //-->
   
   <div class="evtCtnsBox wb_cts01">
-    <div class style="height:640px;">
+    <div class style="height:625px;">
       <span class="txt1"><img src="https://static.willbes.net/public/images/promotion/2019/10/1429_txt1.png"></span>
       <span class="txt2"><img src="https://static.willbes.net/public/images/promotion/2019/10/1429_txt2.png"></span>
       <span class="txt3"><img src="https://static.willbes.net/public/images/promotion/2019/10/1429_txt3.png"></span>

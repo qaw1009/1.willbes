@@ -31,15 +31,9 @@
                     </label>
                     <div class="col-md-10 form-inline">
                         <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                        <span id="selected_category" class="pl-10">
-                            @if(isset($data['CateCodes']) === true)
-                                @foreach($data['CateCodes'] as $cate_code => $cate_name)
-                                    <span class="pr-10">{{ $cate_name }}
-                                        <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
-                                        <input type="hidden" name="cate_code[]" value="{{ $cate_code }}"/>
-                                    </span>
-                                @endforeach
-                            @endif
+                        <input type="hidden" name="cate_code" id="cate_code" value="{{$data['CateCode']}}" required="required" title="카테고리정보">
+                        <span id="selected_category">
+                            {{$data['CateName']}}
                         </span>
                     </div>
                 </div>
@@ -185,17 +179,25 @@
                     alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
                 }
+                /*
                 $('#btn_category_search').setLayer({
                     'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
                     'width' : 900
                 });
+                */
+                $("#btn_category_search").setLayer({
+                    'url': '{{ site_url('/common/searchCategory/index/single/site_code/') }}' + $("#site_code").val()
+                    , 'width': 800
+                })
+
             });
+            /*
             // 카테고리 삭제
             $regi_form.on('click', '.selected-category-delete', function() {
                 var that = $(this);
                 that.parent().remove();
             });
-
+            */
             //목록
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/site/landingPage/") }}' + getQueryString();

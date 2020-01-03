@@ -35,8 +35,8 @@ class LandingPageModel extends WB_Model
             $column = '
             A.LIdx, A.LCode, A.SiteCode, G.SiteName, A.Title, A.DispStartDatm, A.DispEndDatm, A.DispRoute,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
-            D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
-            ,substring_index(G.SiteUrl,\'.\',1) As SiteHost
+            B.CateCode, C.CateName, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
+            substring_index(G.SiteUrl,\'.\',1) As SiteHost
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -45,12 +45,8 @@ class LandingPageModel extends WB_Model
 
         $from = "
             FROM {$this->_table['landing']} AS A
-            LEFT JOIN (
-                SELECT B.LIdx, GROUP_CONCAT(CONCAT(C.CateName,'[',B.CateCode,']')) AS CateCode
-                FROM {$this->_table['landing_r_category']} AS B
-                INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND B.IsStatus = 'Y'
-                GROUP BY B.LIdx
-            ) AS D ON A.LIdx = D.LIdx
+            LEFT JOIN {$this->_table['landing_r_category']} AS B ON A.LIdx = B.LIdx And B.IsStatus = 'Y'
+            INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND C.IsStatus = 'Y'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
@@ -59,7 +55,6 @@ class LandingPageModel extends WB_Model
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes(false, true);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
@@ -93,7 +88,14 @@ class LandingPageModel extends WB_Model
             $l_idx = $this->_conn->insert_id();
 
             //카테고리 저장
-            $category_code = element('cate_code', $input);
+            $category_data['LIdx'] = $l_idx;
+            $category_data['CateCode'] = element('cate_code', $input);
+            $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+            $category_data['RegIp'] = $this->input->ip_address();
+            if ($this->_addLandingPageCategory($category_data) === false) {
+                throw new \Exception('카테고리 등록에 실패했습니다.');
+            }
+            /*
             if(empty($category_code) === false) {
                 foreach ($category_code as $key => $val) {
                     $category_data['LIdx'] = $l_idx;
@@ -105,7 +107,7 @@ class LandingPageModel extends WB_Model
                     }
                 }
             }
-
+            */
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -135,8 +137,15 @@ class LandingPageModel extends WB_Model
                 , 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];
             $this->_conn->set($del_data)->where('LIdx', $l_idx)->where('IsStatus', 'Y')->update($this->_table['landing_r_category']);
-            
             //카테고리 저장
+            $category_data['LIdx'] = $l_idx;
+            $category_data['CateCode'] = element('cate_code', $input);
+            $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+            $category_data['RegIp'] = $this->input->ip_address();
+            if ($this->_addLandingPageCategory($category_data) === false) {
+                throw new \Exception('카테고리 등록에 실패했습니다.');
+            }
+            /*
             $category_code = element('cate_code', $input);
             if(empty($category_code) === false) {
                 foreach ($category_code as $key => $val) {
@@ -148,7 +157,8 @@ class LandingPageModel extends WB_Model
                         throw new \Exception('카테고리 등록에 실패했습니다.');
                     }
                 }
-            }
+            }*/
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -199,12 +209,14 @@ class LandingPageModel extends WB_Model
             DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
             DATE_FORMAT(A.DispEndDatm, '%Y-%m-%d') AS DispEndDay, DATE_FORMAT(A.DispEndDatm, '%H') AS DispEndHour,
             A.DispRoute, A.GuidanceNote, A.Desc, A.Content, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
-            E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
+            B.CateCode, C.CateName, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ,substring_index(G.SiteUrl,'.',1) As SiteHost
             ";
 
         $from = "
             FROM {$this->_table['landing']} AS A
+            LEFT JOIN {$this->_table['landing_r_category']} AS B ON A.LIdx = B.LIdx And B.IsStatus = 'Y'
+            INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND C.IsStatus = 'Y'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
@@ -217,6 +229,7 @@ class LandingPageModel extends WB_Model
     }
 
     /**
+     * TODO [미사용] 카테고리  연결 구조를 1:1 로 변경함. 2020.01.03 조규호
      * 카테고리 연결 데이터 조회
      * @param $board_idx
      * @return array
@@ -264,7 +277,7 @@ class LandingPageModel extends WB_Model
     public function findLCode($type='max', $lcode='')
     {
         if($type==='max') {
-            $data = $this->_conn->query('select ifnull(Max(LCode),0)+1 as LCode from '.$this->_table['landing'])->row_array(0);
+            $data = $this->_conn->query('select ifnull(Max(LCode),1000)+1 as LCode from '.$this->_table['landing'])->row_array(0);
         } elseif($type==='find') {
             $data = $this->_conn->query('select LCode from '.$this->_table['landing'].' where LCode='.$lcode)->result_array(0);
         }

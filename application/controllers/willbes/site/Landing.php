@@ -19,9 +19,7 @@ class Landing extends \app\controllers\FrontController
         $data['Content'] = $this->_reqP('preview_content');
         $data['Preview'] = ( empty(element('preview',$params)) ? $this->_reqP('preview') : element('preview',$params) );
 
-        $cate_code = element('cate_code',$params); //TODO 사용할 필요가 있는지  의문. l_code 로 연동되는것이기 때문에 category가 필요가 없음..
         $l_code = element('lcode',$params);
-
         if($data['Preview'] === 'Y') {
             if (empty($l_code) === false) {
                 $data = $this->landingFModel->findLandingByLCode($l_code);
@@ -31,7 +29,6 @@ class Landing extends \app\controllers\FrontController
                 $data = $this->landingFModel->findLandingByLCode($l_code,['EQ' => ['mm.IsUse'=>'Y']]);
             }
         }
-
         $this->load->view('site/landing/show',[
             'data' => $data
         ]);

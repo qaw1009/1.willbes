@@ -184,7 +184,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_top.jpg" alt="윌비스 7급 외무영사직 PASS" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_top.gif" alt="윌비스 7급 외무영사직 PASS" />
 
             <div class="main_img flipInX animated">
                 <img src="https://static.willbes.net/public/images/promotion/2019/09/1378_top_img01.png" alt="윌비스 7급 외무영사직 PASS" />

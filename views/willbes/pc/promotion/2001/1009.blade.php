@@ -21,8 +21,8 @@
 
         /************************************************************/
 
-        .skyBanner {position:fixed; top:200px;right:0;z-index:10;}
-
+        .skybanner {position:fixed;top:220px;right:0;z-index:1;}
+        
         .evt_top {background:#040814 url(https://static.willbes.net/public/images/promotion/2020/01/1009_top_bg.jpg) no-repeat center top; padding-bottom:150px; position:relative;}      
         .evt_top span {position:absolute; left:50%; z-index:100}
         .evt_top span.imgA {margin-left:-529px; top:1107px}
@@ -154,13 +154,18 @@
 
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        <div class="skyBanner">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1470_sky.jpg" usemap="#Map1009sky" border="0" />
-            <map name="Map1009sky" id="Map1009sky">
-                <area shape="rect" coords="2,0,197,186" href="#event" />
-                <area shape="rect" coords="2,198,230,420" href="https://police.willbes.net/promotion/index/cate/3001/code/1479" target="_blank" />
-            </map>                      
-        </div>
+        <ul class="skybanner">
+            <li>
+                <a href="#event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1470_sky1.png" alt="pass구매하기">
+                </a>
+            </li>
+            <li style="padding-top:10px;">
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1479" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1470_sky2.png" alt="구매하기">
+                </a>
+            </li>
+        </ul> 
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">

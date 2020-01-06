@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MockTest extends \app\controllers\FrontController
+class MockTestNew extends \app\controllers\FrontController
 {
     protected $models = array('mocktest/mockInfoF', 'categoryF', '_lms/sys/code', 'support/supportBoardTwoWayF', 'support/supportBoardF', 'downloadF');
     protected $helpers = array('download');
@@ -23,7 +23,7 @@ class MockTest extends \app\controllers\FrontController
      */
     public function info()
     {
-        $this->load->view('site/mocktest/info',[
+        $this->load->view('site/mocktestNew/info',[
             'page_type' => 'info'
         ]);
     }
@@ -33,76 +33,54 @@ class MockTest extends \app\controllers\FrontController
      */
     public function apply()
     {
-        $applyType = $this->codeModel->getCcd('675');
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        $arr_base['applyType'] = $this->codeModel->getCcd('675');
+        unset($arr_base['applyType']['675001']);
 
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
+        $s_cate_code = element('s_cate_code',$arr_input);
         $s_type = element('s_type',$arr_input);
-        $state = element('state',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $get_page_params = 's_type='.$s_type.'&s_keyword='.$s_keyword;
+        $get_page_params = 's_cate_code='.$s_cate_code.'&s_type='.$s_type.'&s_keyword='.$s_keyword;
 
-        if($s_type == 1){
-            $searchdate1 = '(pm.SaleStartDatm > "';
-            $searchdate2 = date('Y-m-d H:i:s') . '")';
-        } else if($s_type == 2) {
-            $searchdate1 = '(pm.SaleStartDatm < "';
-            $searchdate2 = date('Y-m-d H:i:s') . '" AND pm.SaleEndDatm > "' . date('Y-m-d H:i:s') . '")';
+        if($s_type == 675001){
+            $search_date1 = '(pm.SaleStartDatm > "';
+            $search_date2 = date('Y-m-d H:i:s') . '")';
+        } else if($s_type == 675002) {
+            $search_date1 = '(pm.SaleStartDatm < "';
+            $search_date2 = date('Y-m-d H:i:s') . '" AND pm.SaleEndDatm > "' . date('Y-m-d H:i:s') . '")';
         } else {
-            $searchdate1 = '1=';
-            $searchdate2 = '1';
-        }
-
-        $TakeFormsCcd = '';
-        $TakeFormsCcds = array();
-        if($state == '1'){
-            $TakeFormsCcd = '690001';
-        } else if($state == '2') {
-            $TakeFormsCcd = '690002';
-        } else {
-            $TakeFormsCcds[] = '690001';
-            $TakeFormsCcds[] = '690002';
+            $search_date1 = '1=';
+            $search_date2 = '1';
         }
 
         $arr_condition = [
             'EQ' => [
-                'pm.CateCode' => $this->_cate_code
-                ,'pm.IsUse' => 'Y'
-                ,'pm.SiteCode' => $this->_site_code
-                , 'pm.TakeFormsCcd' => $TakeFormsCcd
-                //,'pm.AcceptStatusCcd' => $s_type
-            ],
-            'IN' => ['pm.TakeFormsCcd' => $TakeFormsCcds
+                'pm.CateCode' => (empty($s_cate_code) === true) ? $this->_cate_code : $s_cate_code,
+                'pm.IsUse' => 'Y',
+                'pm.SiteCode' => $this->_site_code
             ],
             'LKB' => [
                 'pm.ProdName' => $s_keyword
             ],
-
-            'RAW' => [ $searchdate1 => $searchdate2 ]
+            'RAW' => [ $search_date1 => $search_date2 ]
         ];
-
         $order_by = ['pm.ProdCode'=>'Desc'];
 
         $list = [];
         $count = $this->mockInfoFModel->listMockTest(true, $arr_condition);
-
-        //var_dump($arr_condition);
-
-        $paging = $this->pagination('/mockTest/apply/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
-
+        $paging = $this->pagination('/mocktestNew/apply/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
         if($count > 0) {
             $list = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,$paging['limit'],$paging['offset'],$order_by);
         }
 
-        $this->load->view('site/mocktest/apply',[
+        $this->load->view('site/mocktestNew/apply',[
+            'arr_base' => $arr_base,
             'arr_input' => $arr_input,
-            'applyType' => $applyType,
             'count' => $count,
             'list'=>$list,
             'paging' => $paging,
             'page_type' => 'apply',
-            's_type' => $s_type,
-            'state' => $state
         ]);
     }
 
@@ -152,7 +130,7 @@ class MockTest extends \app\controllers\FrontController
         //가산점 추출
         $mock_addpoint = $this->mockInfoFModel->listMockTestAddPoint($prod_code);
 
-        $this->load->view('site/mocktest/apply_regist_modal', [
+        $this->load->view('site/mocktestNew/apply_regist_modal', [
             'ele_id' => $this->_req('ele_id'),
             'ProdCode' => $prod_code,
             'order_prod_idx' => $order_prod_idx,
@@ -222,7 +200,7 @@ class MockTest extends \app\controllers\FrontController
         //가산점 추출
         $mock_addpoint = $this->mockInfoFModel->listMockTestAddPoint($prod_code);
 
-        $this->load->view('site/mocktest/apply_cart_modal', [
+        $this->load->view('site/mocktestNew/apply_cart_modal', [
             'ele_id' => $this->_req('ele_id'),
             'ProdCode' => $prod_code,
             'mock_data' => $mock_data,
@@ -266,8 +244,8 @@ class MockTest extends \app\controllers\FrontController
             }
         }
 
-        //$this->load->view('site/mocktest/apply_order_popup', [
-        $this->load->view('site/mocktest/apply_order_popup', [
+        //$this->load->view('site/mocktestNew/apply_order_popup', [
+        $this->load->view('site/mocktestNew/apply_order_popup', [
             'ele_id' => $this->_req('ele_id'),
             'order_info' => $order_info,
             'subject_ess' => $subject_ess,
@@ -306,12 +284,12 @@ class MockTest extends \app\controllers\FrontController
 
         $list = [];
         $count = $this->mockInfoFModel->listMockTestForBoard(true, $arr_condition);
-        $paging = $this->pagination('/mockTest/board/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mocktestNew/board/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
         if($count > 0) {
             $list = $this->mockInfoFModel->listMockTestForBoard(false, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
         }
 
-        $this->load->view('site/mocktest/board_product',[
+        $this->load->view('site/mocktestNew/board_product',[
             'page_type' => 'board',
             'arr_input' => $arr_input,
             'get_params' => $get_page_params,
@@ -371,7 +349,7 @@ class MockTest extends \app\controllers\FrontController
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoardForMockTest(true, $arr_condition);
-        $paging = $this->pagination('/mockTest/listQna/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mocktestNew/listQna/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoardForMockTest(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -379,7 +357,7 @@ class MockTest extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view('site/mocktest/board_list_qna',[
+        $this->load->view('site/mocktestNew/board_list_qna',[
             'page_type' => 'board_etc',
             'def_cate_code' => $this->_cate_code,
             'mock_part' => $mock_part,
@@ -478,7 +456,7 @@ class MockTest extends \app\controllers\FrontController
             'reg_type' => '0'
         ];
 
-        $this->load->view('site/mocktest/board_create_qna',[
+        $this->load->view('site/mocktestNew/board_create_qna',[
             'method' => $method,
             'page_type' => 'board_etc',
             'arr_input' => $arr_input,
@@ -604,7 +582,7 @@ class MockTest extends \app\controllers\FrontController
             }*/
         }
 
-        $this->load->view('site/mocktest/board_show_qna',[
+        $this->load->view('site/mocktestNew/board_show_qna',[
             'page_type' => 'board_etc',
             'arr_input' => $arr_input,
             'get_params' => $get_params,
@@ -636,7 +614,7 @@ class MockTest extends \app\controllers\FrontController
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', front_url('/mocktest/listQna/cate/'.$this->_cate_code.'?'.$get_params));
+        show_alert('삭제되었습니다.', front_url('/mocktestNew/listQna/cate/'.$this->_cate_code.'?'.$get_params));
     }
 
     /**
@@ -686,7 +664,7 @@ class MockTest extends \app\controllers\FrontController
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition, '');
-        $paging = $this->pagination('/mockTest/listNotice/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mocktestNew/listNotice/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition, '',$column,$paging['limit'],$paging['offset'],$order_by);
@@ -695,7 +673,7 @@ class MockTest extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view('site/mocktest/board_list_notice',[
+        $this->load->view('site/mocktestNew/board_list_notice',[
             'page_type' => 'board_etc',
             'def_cate_code' => $this->_cate_code,
             'prod_code' => $prod_code,
@@ -760,7 +738,7 @@ class MockTest extends \app\controllers\FrontController
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
-        $this->load->view('site/mocktest/board_show_notice',[
+        $this->load->view('site/mocktestNew/board_show_notice',[
             'page_type' => 'board_etc',
             'arr_input' => $arr_input,
             'get_params' => $get_params,

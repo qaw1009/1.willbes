@@ -96,6 +96,7 @@
         <div class="evtCtnsBox wb_cts06" >
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1066_05.png" usemap="#Map1066y"title="학습비법패키지수강신청" border="0" />
             <map name="Map1066y" id="Map1066y">
+                <area shape="rect" coords="844,358,1036,404" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/157982" target="_blank" />
                 <area shape="rect" coords="63,850,225,885" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150364" target="_blank" />
                 <area shape="rect" coords="270,850,434,885" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150363" target="_blank" />
                 <area shape="rect" coords="482,850,642,886" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/150362" target="_blank" />

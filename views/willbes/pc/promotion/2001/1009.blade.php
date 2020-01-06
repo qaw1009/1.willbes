@@ -155,10 +155,11 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="skyBanner">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1470_sky.png" usemap="#Map" border="0">
-            <map name="Map" id="Map">
-                <area shape="rect" coords="0,-4,189,181" href="#event" />
-            </map>           
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/1470_sky.jpg" usemap="#Map1009sky" border="0" />
+            <map name="Map1009sky" id="Map1009sky">
+                <area shape="rect" coords="2,0,197,186" href="#event" />
+                <area shape="rect" coords="2,198,230,420" href="https://police.willbes.net/promotion/index/cate/3001/code/1479" target="_blank" />
+            </map>                      
         </div>
 
         <!-- 타이머 -->

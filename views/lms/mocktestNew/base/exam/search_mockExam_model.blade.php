@@ -128,6 +128,13 @@
                                 return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
                             }
                         },
+                        "createdRow" : function( row, data, index ) {
+                            $('input[name="MpIdx[]"]').each(function(i){
+                                if ($(this).val() == data['MpIdx']) {
+                                    $(row).addClass('bg-gray-custom');
+                                }
+                            });
+                        },
                         columns: [
                             {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                                     if (row.CateRouteName == null) {
@@ -146,9 +153,19 @@
                             {'data' : 'ListCnt', 'class': 'text-center'},
                             {'data' : 'wProfName', 'class': 'text-center'},
                             {'data' : null, 'class': '', 'render' : function(data, type, row, meta) {
-                                    return '<div class="blue underline-link act-sub-apply" data-row-idx="' + meta.row + '">[' + row.MpIdx + '] ' + row.PapaerName + '</div>';
+                                    return '<div class="blue underline-link act-sub-apply" id="act_sub_apply_' + row.MpIdx + '" data-row-idx="' + meta.row + '">[' + row.MpIdx + '] ' + row.PapaerName + '</div>';
                                 }}
-                        ]
+                        ],
+                        "drawCallback": function(settings) {
+                            var api = new $.fn.dataTable.Api(settings);
+                            $.each(api.rows( {page:'current'} ).data(), function(i, item) {
+                                $('input[name="MpIdx[]"]').each(function(){
+                                    if ($(this).val() == item.MpIdx) {
+                                        $('#act_sub_apply_' + item.MpIdx).removeClass('blue underline-link act-sub-apply');
+                                    }
+                                });
+                            });
+                        }
                     });
 
                     // 적용
@@ -166,7 +183,9 @@
                         target.find('tr').last().find('td:eq(5)').text('['+ row.MpIdx +'] '+ row.PapaerName);
                         target.find('tr').last().find('[name="MpIdx[]"]').val(row.MpIdx);
                         target.find('tr').last().find('[name="MockType[]"]').val(suType);
-                        $("#pop_modal").modal('toggle');
+                        /*$("#pop_modal").modal('toggle');*/
+                        $(this).removeClass('blue underline-link act-sub-apply');
+                        $(this).closest('tr').addClass('bg-gray-custom');
                     });
                 });
             </script>

@@ -378,6 +378,9 @@
                 <li><a href="{{ site_url('/home/html/guide_310103_01') }}" target="_blank"> 자격정보 > 진로직업체험지도사</a></li>
                 <li><a href="{{ site_url('/home/html/guide_308903_01') }}" target="_blank"> 시험안내 > 건설안전(산업)기사</a></li>
                 <li><a href="{{ site_url('/home/html/guide_308903_02') }}" target="_blank"> 자격정보 > 건설안전(산업)기사</a></li>
+                <li><a href="{{ site_url('/home/html/guide_308904_01') }}" target="_blank"> 시험안내 > 산업안전(산업)기사</a></li>
+                <li><a href="{{ site_url('/home/html/guide_308904_02') }}" target="_blank"> 자격정보 > 산업안전(산업)기사</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3102_01') }}" target="_blank"> 시험안내 > 공기업</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3100_01') }}" target="_blank"> 시험정보 > 경찰간부 > 경찰간부후보생은?</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3100_02') }}" target="_blank"> 시험정보 > 경찰간부 > 시험방법</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3100_03') }}" target="_blank"> 시험정보 > 경찰간부 > 가산점</a></li>

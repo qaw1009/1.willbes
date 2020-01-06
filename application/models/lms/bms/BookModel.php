@@ -201,7 +201,7 @@ class BookModel extends WB_Model
     public function findBookForModify($prod_code)
     {
         $column = '
-            P.ProdCode, P.SiteCode, P.ProdName, P.IsPoint, P.PointSavePrice, P.PointSaveType, P.IsCoupon, P.IsNew, P.IsBest, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+            P.ProdCode, P.SiteCode, P.ProdName, P.IsPoint, P.PointSavePrice, P.PointSaveType, P.IsCoupon, P.IsNew, P.IsBest, P.IsFreebiesTrans, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
                 , B.wBookIdx, B.SchoolYear, B.CourseIdx, B.DispTypeCcd, B.IsFree
                 , S.SaleRate, S.SaleDiscType, S.RealSalePrice
                 , VWB.wBookName, VWB.wPublName, VWB.wPublDate, VWB.wAuthorNames, VWB.wIsbn, VWB.wPageCnt, VWB.wEditionCcdName, VWB.wPrintCnt, VWB.wEditionCnt, VWB.wEditionSize
@@ -255,7 +255,7 @@ class BookModel extends WB_Model
                 'IsNew' => element('is_new', $input, 'N'),
                 'IsCart' => 'Y',
                 'IsRefund' => 'Y',
-                'IsFreebiesTrans' => 'Y',
+                'IsFreebiesTrans' => element('is_freebies_trans', $input, 'Y'),
                 'IsDeliveryInfo' => 'Y',
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -351,6 +351,7 @@ class BookModel extends WB_Model
                 'PointSavePrice' => element('point_saving_amt', $input, 0),
                 'IsBest' => element('is_best', $input, 'N'),
                 'IsNew' => element('is_new', $input, 'N'),
+                'IsFreebiesTrans' => element('is_freebies_trans', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

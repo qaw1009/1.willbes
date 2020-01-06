@@ -118,10 +118,15 @@ class BaseOrderFModel extends WB_Model
     /**
      * 교재상품 배송료 계산 (무료교재일 경우 배송료 부과)
      * @param $price
+     * @param array $arr_is_freebies_trans [교재별 배송료 부과여부 배열]
      * @return int
      */
-    public function getBookDeliveryPrice($price)
+    public function getBookDeliveryPrice($price, $arr_is_freebies_trans = [])
     {
+        if (empty($arr_is_freebies_trans) === false && array_search('N', $arr_is_freebies_trans) !== false) {
+            return 0;
+        }
+
         return $price < config_app('DeliveryFreePrice', 0) ? config_app('DeliveryPrice', 0) : 0;
     }
 

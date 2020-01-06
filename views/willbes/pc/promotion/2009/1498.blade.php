@@ -20,14 +20,15 @@
 
 		/************************************************************/ 
 
-		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	
+		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}
 
-		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_t_bg.png) repeat center top;}	
-		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_m_bg.png) repeat center top;}
-        .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_b_bg.png) repeat center top;}
-        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_bg.png) repeat center top;}
-        .evt_04 {padding:100px 0}
-        .evt_05 {background:#333439; padding:50px 0 100px}
+		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/01/150407_interview_t_bg.png) repeat-x center top;}	
+		.evt_01 {background:#2470c1; padding:50px 0 100px}
+        .evt_02 {background:#333439; padding:50px 0 100px}
+        .evt_03 {background:#2e2f37; padding:50px 0 100px}
+        .evt_04 {background:#2e2f37; padding:50px 0 100px}
+        .evt_05 {background:#e4e4e4; padding:0 0 100px}
+        .evt_06 {background:#931d1d; padding:0 0 50px}
 
         .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto; width:980px !important; margin:0 auto; background:#fff}
 		.evtCtnsBox table th,
@@ -59,40 +60,75 @@
         .jbMenu a.active,
         .hvr-shutter-out-horizontal_active a {color:#fff; background:#333439;}
         .jbMenu li:nth-child(1) a:hover,
-        .jbMenu li:nth-child(1) a.active {background:#e0e1da; color:#e54d45;}
+        .jbMenu li:nth-child(1) a.active {background:#2470c1;}
 
         /************************************************************/      
     </style> 
 	<div class="evtContent NGR">
 
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_t.png" alt="한국사 능력검정시험" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/150407_interview_t.png" alt="면접 & 자기소개서" />
         </div>
 
         <div class="jbMenu">
             <ul>
-                <li><a href="#anchor1" class="hvr-shutter-out-horizontal">한국사 능력검정시험</a></li>
-                <li><a href="#anchor2" class="hvr-shutter-out-horizontal">김진재</a></li>
-                <li><a href="#anchor3" class="hvr-shutter-out-horizontal">김상범</a></li>             
+                <li><a href="#anchor1" class="hvr-shutter-out-horizontal">면접 및 자기소개서</a></li>
+                <li><a href="#anchor2" class="hvr-shutter-out-horizontal">박희주</a></li>
+                <li><a href="#anchor3" class="hvr-shutter-out-horizontal">손세훈</a></li>             
             </ul>
-        </div>        
+        </div>
 
         <div class="evtCtnsBox" id="anchor1">
-            <div class="evtCtnsBox evt_01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_m.png" alt="출제유형" />
-            </div>            
-            <div class="evtCtnsBox evt_02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_b.png" alt="시험 안내" />
-            </div>
-            <div class="evtCtnsBox evt_03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_kjj.png" alt="김진재 교수" /><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_ksb.png" alt="김상범 교수" />
-            </div>
-            <div class="evtCtnsBox evt_04">
-                <table cellspacing="0" cellpadding="0">
+            <div class="evt_01">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150407_interview_m2.png" alt="박희주" /><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150407_interview_m3.png" alt="손세훈" />
+                <table cellspacing="0" cellpadding="0" class="mt50">
                     <colgroup>
                         <col width="">
+                        <col width="10%">
                         <col width="15%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                          <th>교수명/강의명</th>
+                            <th>기간</th>
+                            <th>신청</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tx-left">박희주 / Case로 만나는 취업 훈련도감(이력서&자기소개서)</td>
+                            <td>30일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>박희주 / Case로 만나는 취업 훈련도감(면접)</td>
+                            <td>30일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>박희주 / Case로 만나는 취업 훈련도감(면접&자기소개서) 종합반 </td>
+                            <td>60일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>   
+                        <tr>
+                            <td>손세훈 / 소개팅의 전략으로 알아보는 취업 자기소개서 특강  </td>
+                            <td>10일</td>
+                            <td><a href="#">수강신청 ></a></td>
+                        </tr>       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox" id="anchor2">
+            <div class="evt_02">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150407_willtc09_6.jpg" alt="자기소개서&면접 박희주" /><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150407_willtc09_7.jpg" alt="강의소개" class="mt50"/>
+                <table cellspacing="0" cellpadding="0" class="mt50">
+                    <colgroup>
+                        <col width="">
+                        <col width="10%">
                         <col width="15%">
                     </colgroup>
                     <thead>
@@ -104,61 +140,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>김진재 /한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사 </td>
+                            <td>Case로 만나는 취업 훈련도감(이력서&자기소개서) </td>
                             <td>30일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>
                         <tr>
-                            <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론)</td>
-                            <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                        <tr>
-                            <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
-                            <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                        <tr>
-                            <td>김상범 /2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) </td>
-                            <td>100일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="evtCtnsBox" id="anchor2">
-            <div class="evt_05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_willtc35_6.jpg" alt="김진재 교수" /><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_willtc35_7.jpg" alt="강의소개" class="mt50"/>
-                <table cellspacing="0" cellpadding="0" class="mt50">
-                    <colgroup>
-                        <col width="">
-                        <col width="10%">
-                        <col width="15%">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>강의명</th>
-                            <th>기간</th>
-                            <th>신청</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사)</td>
-                            <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                        <tr>
-                            <td>한국사능력검정시험 천기누설 특강[고급](이론)</td>
-                            <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
-                        </tr>
-                        <tr>
-                            <td>한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
-                            <td>60일</td>
+                            <td>Case로 만나는 취업 훈련도감(면접)</td>
+                            <td>30일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>
                     </tbody>
@@ -167,9 +155,9 @@
         </div>
 
         <div class="evtCtnsBox" id="anchor3">
-            <div class="evt_05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_wcop36_20_6.png" alt="김상범 교수"/><BR>
-                <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_wcop36_20_7.png" alt="강의소개" class="mt50"/>                
+            <div class="evt_02">
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150407_willtc0701_6.jpg" alt="자기소개서 손세훈"/><BR>
+                <img src="https://static.willbes.net/public/images/promotion/2020/01/150407_willtc0701_7.jpg" alt="자기소개서" class="mt50"/>                
                 <table cellspacing="0" cellpadding="0" class="mt50">
                     <colgroup>
                         <col width="">
@@ -185,15 +173,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="tx-left">2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) - 중급/고급 대비</td>
-                            <td>100일</td>
+                            <td class="tx-left">소개팅의 전략으로 알아보는 취업 자기소개서</td>
+                            <td>10일</td>
                             <td><a href="#">수강신청 ></a></td>
                         </tr>                       
                     </tbody>
                 </table>
             </div>
         </div>
-
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
@@ -246,5 +233,4 @@
                 e.preventDefault()})})}
         );        
     </script> 
-
 @stop

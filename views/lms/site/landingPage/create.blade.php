@@ -222,7 +222,7 @@
                    }
                    $('#preview_content').val($('#content').val());
                    $env_url = '{{ENV_DOMAIN}}';
-                   var open_url = '//'+$host+$env_url+'.willbes.net/'+$('#disp_route').val();
+                   var open_url = '//'+$host+$env_url+'.willbes.net'+$('#disp_route').val();
                    window.open('','pop_target','');
                    this.action = open_url;
                    this.method = 'POST';

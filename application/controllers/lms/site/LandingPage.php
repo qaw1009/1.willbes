@@ -64,9 +64,11 @@ class LandingPage extends \app\controllers\BaseController
             }
 
             // 카테고리 연결 데이터 조회
+            /*
             $arr_cate_code = $this->landingPageModel->listLandingPageCategory($l_idx);
             $data['CateCodes'] = $arr_cate_code;
             $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+            */
         } else {
             $max_lcode = $this->landingPageModel->findLCode()['LCode'];
         }

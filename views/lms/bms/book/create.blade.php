@@ -181,7 +181,7 @@
                             <input type="radio" id="is_coupon_n" name="is_coupon" class="flat" value="N" @if($data['IsCoupon'] == 'N')checked="checked"@endif/> <label for="is_coupon_n" class="input-label">불가능</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-2 pt-15" for="is_point_saving_y">북포인트적용 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="is_point_saving_y">북포인트적용 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 item">
                         <div class="radio form-inline">
@@ -192,6 +192,16 @@
                                 <option value="P"@if('P' == $data['PointSaveType']) selected="selected" @endif>원</option>
                             </select> 적립 ]
                             &nbsp; &nbsp; <input type="radio" id="is_point_saving_n" name="is_point_saving" class="flat" value="N" @if($data['IsPoint'] == 'N')checked="checked"@endif/> <label for="is_point_saving_n" class="input-label">불가능</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="is_coupon_y">배송료부과여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9 item">
+                        <div class="radio">
+                            <input type="radio" id="is_freebies_trans_y" name="is_freebies_trans" class="flat" value="Y" required="required" title="배송료부과여부" @if($method == 'POST' || $data['IsFreebiesTrans'] == 'Y')checked="checked"@endif/> <label for="is_freebies_trans_y" class="input-label">유료</label>
+                            <input type="radio" id="is_freebies_trans_n" name="is_freebies_trans" class="flat" value="N" @if($data['IsFreebiesTrans'] == 'N')checked="checked"@endif/> <label for="is_freebies_trans_n" class="input-label">무료</label>
                         </div>
                     </div>
                 </div>
@@ -457,7 +467,7 @@
                 var dc_type = $regi_form.find('select[name="dc_type"]').val();
 
                 if (org_price < 1) {
-                    // BMS 교재가 0원인 경우
+                    // 정상가가 0원인 경우 판매가 0원 설정
                     $regi_form.find('input[name="sale_price"]').val('0');
                     return;
                 }

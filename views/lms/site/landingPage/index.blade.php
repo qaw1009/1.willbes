@@ -68,7 +68,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>카테고리</th>
+                    <th>기본정보</th>
                     <th>랜딩코드</th>
                     <th>제목</th>
                     <th>노출기간</th>
@@ -113,20 +113,14 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'CateCode', 'render' : function(data, type, row, meta){
+                    {'data' : null, 'render' : function(data, type, row, meta){
+                            site_name = row.SiteName;
                             if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
-                                return '통합';
+                                cate_name = '통합';
                             } else {
-                                var str = '없음';
-                                if (data != null) {
-                                    str = '';
-                                    var obj = data.split(',');
-                                    for (key in obj) {
-                                        str += obj[key] + "<br>";
-                                    }
-                                }
-                                return str;
+                                cate_name = row.CateName;
                             }
+                            return site_name+'<BR>'+cate_name
                         }},
                     {'data' : 'LCode'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
@@ -136,15 +130,17 @@
                             return row.DispStartDatm + ' ~ ' + row.DispEndDatm;
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.DispRoute+'lcode/'+row.LCode;
-                        }},
+                            return row.DispRoute+'/lcode/'+row.LCode + (row.CateCode !='' ? '/cate/'+row.CateCode:'');
+
+                         }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta){
-                            return '<a href="javascript:;" class="btn-preview" data-host="'+row.SiteHost+'" data-val="'+row.DispRoute+'/lcode/'+row.LCode+'"><u class="blue">보기</u></a>';
+                            cate_info = (row.CateCode != '' ? '/cate/'+row.CateCode:'');
+                            return '<a href="javascript:;" class="btn-preview" data-host="'+row.SiteHost+'" data-val="'+row.DispRoute+'/lcode/'+row.LCode+cate_info+'"><u class="blue">보기</u></a>';
                         }},
                 ]
             });

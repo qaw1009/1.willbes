@@ -152,6 +152,7 @@ class Book extends \app\controllers\BaseController
             ['field' => 'is_point_saving', 'label' => '북포인트적용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'point_saving_amt', 'label' => '적립포인트', 'rules' => 'callback_validateRequiredIf[is_point_saving,Y]'],
             ['field' => 'point_saving_type', 'label' => '적립구분', 'rules' => 'callback_validateRequiredIf[is_point_saving,Y]|in_list[R,P]'],
+            ['field' => 'is_freebies_trans', 'label' => '배송료부과여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'is_use', 'label' => '노출여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 

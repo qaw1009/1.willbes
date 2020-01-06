@@ -146,7 +146,7 @@
                             {'data' : 'ListCnt', 'class': 'text-center'},
                             {'data' : 'wProfName', 'class': 'text-center'},
                             {'data' : null, 'class': '', 'render' : function(data, type, row, meta) {
-                                    return '<div class="blue underline-link act-sub-apply" data-row-idx="' + row.MpIdx + '">[' + row.MpIdx + '] ' + row.PapaerName + '</div>';
+                                    return '<div class="blue underline-link act-sub-apply" data-row-idx="' + meta.row + '">[' + row.MpIdx + '] ' + row.PapaerName + '</div>';
                                 }}
                         ]
                     });

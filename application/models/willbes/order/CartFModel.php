@@ -473,7 +473,7 @@ class CartFModel extends BaseOrderFModel
             if ($is_delivery_info === true) {
                 // 배송료 계산
                 if ($cart_type == 'book') {
-                    $delivery_price = $this->getBookDeliveryPrice($total_prod_order_price);
+                    $delivery_price = $this->getBookDeliveryPrice($total_prod_order_price, $arr_is_freebies_trans);
                 } else {
                     $delivery_price = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
                 }
@@ -698,5 +698,40 @@ class CartFModel extends BaseOrderFModel
         $query = $this->_conn->query('select ' . $column . $from, [$arr_cart_idx, $mem_idx, $site_code]);
 
         return $query->result_array();
+    }
+
+    /**
+     * 장바구니 데이터에 단과 강좌할인율 정보를 추가하여 리턴 (재수강, 수강연장 제외)
+     * @param array $cart_rows [유효한 장바구니 데이터]
+     * @return mixed
+     */
+    public function getAddLectureDiscToCartData($cart_rows)
+    {
+        $site_code = array_get($cart_rows, '0.SiteCode');
+        $arr_prod_code = array_pluck($cart_rows, 'ProdCode');
+
+        if (empty($site_code) === true || empty($arr_prod_code) === true || count($arr_prod_code) < 2) {
+            return $cart_rows;
+        }
+
+        // 강좌할인율 조회
+        $disc_data = $this->productFModel->getLetureDiscRate($arr_prod_code, $site_code);
+        if (empty($disc_data) === false) {
+            foreach ($cart_rows as $idx => $row) {
+                if ($row['SalePatternCcd'] == $this->_sale_pattern_ccd['normal'] && array_key_exists($row['ProdCode'], $disc_data) === true) {
+                    $disc_row = $disc_data[$row['ProdCode']];
+
+                    if ($disc_row['DiscRate'] > 0) {
+                        $cart_rows[$idx]['IsLecDisc'] = 'Y';
+                        $cart_rows[$idx]['LecDiscTitle'] = $disc_row['DiscTitle'];
+                        $cart_rows[$idx]['LecDiscRate'] = $disc_row['DiscRate'];
+                        $cart_rows[$idx]['Remark'] = $disc_row['DiscTitle'] . '(' . $disc_row['DiscRate'] . '%)';
+                        $cart_rows[$idx]['RealSalePrice'] = intval($row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));
+                    }
+                }
+            }
+        }
+
+        return $cart_rows;
     }
 }

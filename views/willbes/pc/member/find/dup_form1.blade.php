@@ -82,7 +82,7 @@
                     <strong>하나의 ID로 윌비스의 전체 서비스를 이용</strong>하실 수 있습니다.
                 </div>
                 <div class="convert-chkBox mt30">
-                    <div class="mb20"><img src="{{ img_url('login/willbes_convert_user.jpg') }}"></div>
+                    <div class="mb20 tx-center"><img src="{{ img_url('login/willbes_convert_user.jpg') }}"></div>
                     <div class="info-Txt tx-black bd-none">
                         남은 포인트 경우 윌비스공무원&신광은경찰은 교재포인트로, <bR>
                         한림법학원은 강좌포인트로 일괄 이관됩니다.

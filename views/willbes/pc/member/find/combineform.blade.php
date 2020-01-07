@@ -101,7 +101,7 @@
                             <div class="AllchkBox agree-Tit tx-black">
                                 <strong>변경된 이용약관에 대한 내용은 모두 확인하고 전체 동의합니다.</strong>
                                 <div class="chkBox-Agree">
-                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                    <input type="checkbox" id="agree_all" name="agree_all" class="" maxlength="30">
                                 </div>
                             </div>
                         </li>
@@ -125,9 +125,7 @@
                                 </a>
                             </div>
                             <div class="agree-Txt">
-                                987 약관이 노출 됩니다.<br/>
-                                654 약관이 노출 됩니다.<br/>
-                                321 약관이 노출 됩니다.<br/>
+                                @include('willbes.pc.company.agreementContent')
                             </div>
                         </li>
                         <li class="chk">
@@ -140,31 +138,7 @@
                                 </a>
                             </div>
                             <div class="agree-Txt">
-                                aaaaa 약관이 노출 됩니다.<br/>
-                                sssss 약관이 노출 됩니다.<br/>
-                                ddddd 약관이 노출 됩니다.<br/>
-                            </div>
-                        </li>
-                        <li class="chk">
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="agree4" name="agree4" class="" maxlength="30" value="Y">
-                            </div>
-                            <div class="agree-Tit">
-                                <a href="#none">
-                                    (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
-                                </a>
-                            </div>
-                            <div class="agree-Txt">
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
+                                @include('willbes.pc.company.protectContent')
                             </div>
                         </li>
                     </ul>
@@ -207,15 +181,15 @@
                 messages : {
                     ChangeId : {
                         required : "아이디를 입력해주십시요.",
-                        minlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.1",
-                        maxlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.2",
-                        id_char : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.3",
+                        minlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.",
+                        maxlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.",
+                        id_char : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.",
                         id_chk : "사용 불가능한 아이디입니다."
                     },
                     ChangePassword : {
                         required : "비밀번호를 입력해주십시요.",
-                        minlength : "비밀번호는 8~20자리로 입력해주십시요.1",
-                        maxlength : "비밀번호는 8~20자리로 입력해주십시요.2",
+                        minlength : "비밀번호는 8~20자리로 입력해주십시요.",
+                        maxlength : "비밀번호는 8~20자리로 입력해주십시요.",
                         pwd_mix : "영문대소문자, 숫자, 특수문자중 2종류이상 조합해야 합니다."
                     },
                     ChangePassword_chk : {

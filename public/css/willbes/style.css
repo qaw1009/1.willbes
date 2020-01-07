@@ -607,7 +607,7 @@ table.combineTable .addbox2 {
     padding-top: 35px;
 }
 .mem-Convert .convert-chkBox {
-    text-align: center;
+    text-align: center !important;
 }
 .mem-Convert .convert-chkBox .chkBox-Save {
     position: relative;

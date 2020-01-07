@@ -74,6 +74,18 @@ class Login extends BaseMember
 
         // 로그인 가능한 회원갯수가 1 개가 아니면 오류
         if($count != 1){
+            if($count > 1){
+                // 동일한 아이디와 비밀번호로 출돌이 난 경우 본인 인증으로 넘어간다.
+                if($chklogin === true){
+                    // 동일 아이디/암호 의 회원이 1개 이상일 경우  chklogin 에서는 로그인으로 처리하고
+                    return $this->json_result(true, "");
+                } else {
+                    // chklogin 아닌 진짜 로그인 이면 중복 처리 페이지로 이동
+                    $this->session->set_userdata('combine_id', $id);
+                    redirect('/member/combine/dup');
+                }
+            }
+
             if($chklogin === true){
                 return $this->json_error("아이디 혹은 비밀번호가 일치하지 않습니다.");
             } else {
@@ -114,6 +126,7 @@ class Login extends BaseMember
                 if($this->_is_app == true){
                     show_alert('아이디 통합회원 전환이 필요합니다.\n통합회원 전환은 PC에서 가능합니다.', 'back');
                 } else {
+                    // 아이디 통합으로 이동
                     redirect('/member/combine/');
                 }
             }

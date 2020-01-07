@@ -142,6 +142,9 @@
                                         @if(empty($order_prod_row['OrderSubProdList']) === false)
                                             <button name="btn_sub_product" class="btn btn-xs btn-success ml-5 mb-0" data-toggle="popover" data-html="true" data-content="{!! $order_prod_row['OrderSubProdList'] !!}">선택강좌</button>
                                         @endif
+                                        @if(empty($order_prod_row['Remark']) === false)
+                                            <div class="red">{{ $order_prod_row['Remark'] }}</div>
+                                        @endif
                                     </td>
                                     <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
                                     <td>{{ number_format($order_prod_row['OrderPrice']) }}</td>

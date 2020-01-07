@@ -491,6 +491,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsCoupon">강사배정기간
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="item inline-block">
+                            <input type="text" name="ProfChoiceStartDate" id="ProfChoiceStartDate" value="@if($method==='PUT'){{$data['ProfChoiceStartDate']}}@endif" class="form-control datepicker" title="강사배정기간" style="width:100px;" >
+                            ~
+                            <input type="text" name="ProfChoiceEndDate" id="ProfChoiceEndDate" value="@if($method==='PUT'){{$data['ProfChoiceEndDate']}}@endif"  class="form-control datepicker" title="강사배정기간" style="width:100px;" >
+                            &nbsp;
+                            • 선택형(강사배정) 종합반의 하위 강좌로 세팅시 필수 입력
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2">수강대상

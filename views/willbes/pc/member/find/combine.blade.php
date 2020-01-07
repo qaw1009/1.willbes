@@ -10,9 +10,10 @@
             </div>
             <!-- 통합 서비스 안내 -->
             <form id="agree_form" name="agree_form" method="post" action="/member/combine/agree/">
-                <div class="Member mem-Convert widthAuto690">
+                {!! csrf_field() !!}
+                <div class="Member mem-Convert widthAuto690 mb100">
                     <div class="user-Txt tx-black">
-                        윌비스공무원, 신광은경찰이<br/>
+                        윌비스공무원, 신광은경찰, 한림법학원이<br/>
                         더 좋은 서비스 제공을 위해 '윌비스' 라는 이름으로 새롭게 통합되었습니다.<br/>
                         기존 수강 강좌 및 혜택을 유지하기 위해 윌비스 통합회원으로 전환이 필요하며,<br/>
                         <div class="tx-red">전환을 신청하지 않을 시 서비스 이용이 불가능합니다.</div>
@@ -23,33 +24,85 @@
                     </div>
                     <div class="convert-chkBox mt30">
                         <img src="{{ img_url('login/willbes_convert_user.jpg') }}">
+                        <div class="info-Txt tx-black bd-none">
+                            남은 포인트 경우 윌비스공무원&신광은경찰은 교재포인트로, <bR>
+                            한림법학원은 강좌포인트로 일괄 이관됩니다.
+                        </div>
                         <div class="chkBox-Save mt30 mb30">
                             <input type="checkbox" id="agree" name="agree" value="Y" class="iptSave">
-                            <label for="agree" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>
-                        </div>
-                        <div class="search-Btn btnAuto180 h36">
-                            <button type="button" id="btn_submit" class="mem-Btn bg-blue bd-dark-blue">
-                                <span>통합회원 신청하기</span>
-                            </button>
+                            <label for="USER_ID_SAVE" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>
                         </div>
                     </div>
-                    <div class="info-Txt tx-black mt60">
-                        <div class="tx-red">※ 기존사용하는 ID 그대로 통합 ID로 사용할 수 있습니다.</div>
-                        단, ID가 중복된 통합ID가 있을 경우, 신규 통합 ID를 생성이 필요합니다.<br/>
-                        <div class="tx-red">※ 기존 수강 강좌, 포인트, 쿠폰은 '통합ID'계정으로 이관됩니다.</div>
+                    <div class="agree-Chk mt50 toggle">
+                        <div class="agree-All-Tit tx-black p_re">
+                            통합회원 약관동의
+                        </div>
+                        <ul>
+                            <li class="top bg-light-gray">
+                                <div class="AllchkBox agree-Tit tx-black">
+                                    <strong>변경된 이용약관에 대한 내용은 모두 확인하고 전체 동의합니다.</strong>
+                                    <div class="chkBox-Agree">
+                                        <input type="checkbox" id="agree_all" name="agree_all" class="" maxlength="30">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="chk">
+                                <div class="chkBox-Agree">
+                                    <input type="checkbox" id="agree1" name="agree1" class="" maxlength="30">
+                                </div>
+                                <div class="agree-Tit">
+                                    <a href="#none">
+                                        <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx12">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="chk">
+                                <div class="chkBox-Agree">
+                                    <input type="checkbox" id="agree2" name="agree2" class="" maxlength="30">
+                                </div>
+                                <div class="agree-Tit">
+                                    <a href="#none">
+                                        <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="v_arrow">▼</span>
+                                    </a>
+                                </div>
+                                <div class="agree-Txt">
+                                    @include('willbes.pc.company.agreementContent')
+                                </div>
+                            </li>
+                            <li class="chk">
+                                <div class="chkBox-Agree">
+                                    <input type="checkbox" id="agree3" name="agree3" class="" maxlength="30">
+                                </div>
+                                <div class="agree-Tit">
+                                    <a href="#none">
+                                        <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="v_arrow">▼</span>
+                                    </a>
+                                </div>
+                                <div class="agree-Txt">
+                                    @include('willbes.pc.company.protectContent')
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="convert-Btn mt40 pt30 tx-center btnAuto h66">
+                        <button type="button" id="btn_submit" class="mem-Btn bg-blue bd-dark-blue">
+                            <span>통합회원 신청하기</span>
+                        </button>
                     </div>
                 </div>
-
-                {!! csrf_field() !!}
             </form>
             <script>
                 $(document).ready(function() {
                     $('#btn_submit').click(function () {
-                        if($('#agree').is(':checked') == true) {
-                            $('#agree_form').submit();
-                        } else {
-                            alert("전환에 동의해야 진행이 가능합니다.");
+                        if($('#agree').is(":checked") != true ||
+                            $('#agree1').is(":checked") != true ||
+                            $('#agree2').is(":checked") != true ||
+                            $('#agree3').is(":checked") != true ){
+                            alert('필수항목에 동의해야 회원가입이 가능합니다.');
+                            return;
                         }
+
+                        $('#agree_form').submit();
                     });
                 });
             </script>
@@ -69,93 +122,103 @@
                     기존 이용중인 윌비스 서비스를 확인하기 위해 본인 인증을 해 주세요.</br>
                     최초 인증된 ID는 '통합 ID'로 사용됩니다.
                 </div>
+                {{--
                 <ul class="tabWrap tabs-Certi">
-                    <li id="tab1"><a href="#convert1" class="on"><div>휴대폰 인증</div></a></li>
-                    <li id="tab2"><a href="#convert2"><div>E-mail 인증</div></a></li>
-                    <li id="tab3"><a href="#convert3"><div>아이핀 인증</div></a></li>
+                    @if($jointype == '655002')
+                        <li id="tab1"><a href="#convert1" class="on"><div>휴대폰 인증</div></a></li>
+                    @elseif($jointype == '655003')
+                        <li id="tab2"><a href="#convert2"><div>E-mail 인증</div></a></li>
+                    @elseif($jointype == '655001')
+                        <li id="tab3"><a href="#convert3"><div>아이핀 인증</div></a></li>
+                    @endif
                 </ul>
+                --}}
                 <div clsas="tabBox">
-                    <form name="phone_form" id="phone_form" method="post" onsubmit=" return false;">
-                        <input type="hidden" name="sms_stat" id="sms_stat" value="NEW" />
-                        {!! csrf_field() !!}
-                        <div id="convert1">
-                            <div class="widthAuto460 mt30">
-                                <div class="inputBox p_re item">
-                                    <input type="text" id="var_id" name="var_id" class="iptId bg-gray" value="{{sess_data('combine_id')}}" readonly required="required">
+                    @if($jointype == '655002')
+                        <form name="phone_form" id="phone_form" method="post" onsubmit=" return false;">
+                            <input type="hidden" name="sms_stat" id="sms_stat" value="NEW" />
+                            {!! csrf_field() !!}
+                            <div id="convert1">
+                                <div class="widthAuto460 mt30">
+                                    <div class="inputBox p_re item">
+                                        <input type="text" id="var_id" name="var_id" class="iptId bg-gray" value="{{sess_data('combine_id')}}" readonly required="required">
+                                    </div>
+                                    <div class="tx-red mb30" style="display: block;" for="var_name"></div>
+                                    <div class="inputBox p_re">
+                                        <input type="text" id="var_phone" name="var_phone" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="11" required="required" pattern="numeric" data-validate-length="10,11" title="휴대전화번호" />
+                                        <button type="button" id="btn_send_sms" class="mem-Btn certi bg-dark-blue bd-dark-blue">
+                                            <span>인증번호발송</span>
+                                        </button>
+                                    </div>
+                                    <div class="tx-red mb30" style="display: block;" id="sms_msg"></div>
+                                    <div class="inputBox p_re">
+                                        <input type="text" id="var_auth" name="var_auth" class="iptNumber certi" placeholder="인증번호입력" maxlength="6" disabled  required="required" pattern="numeric" data-validate-length="6" title="인증번호" />
+                                        <button type="button" class="mem-Btn certi bg-dark-blue bd-dark-blue" disabled>
+                                            <span id="remain_time">00:00</span>
+                                        </button>
+                                    </div>
+                                    <div class="tx-red mb30" style="display: block;" id="sms_msg2"></div>
                                 </div>
-                                <div class="tx-red mb30" style="display: block;" for="var_name"></div>
-                                <div class="inputBox p_re">
-                                    <input type="text" id="var_phone" name="var_phone" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="11" required="required" pattern="numeric" data-validate-length="10,11" title="휴대전화번호" />
-                                    <button type="button" id="btn_send_sms" class="mem-Btn certi bg-dark-blue bd-dark-blue">
-                                        <span>인증번호발송</span>
+                                <div class="search-Btn btnAuto120 h36">
+                                    <button type="button" id="btn_sms_auth" class="mem-Btn bg-blue bd-dark-blue" disabled>
+                                        <span>확인</span>
                                     </button>
                                 </div>
-                                <div class="tx-red mb30" style="display: block;" id="sms_msg"></div>
-                                <div class="inputBox p_re">
-                                    <input type="text" id="var_auth" name="var_auth" class="iptNumber certi" placeholder="인증번호입력" maxlength="6" disabled  required="required" pattern="numeric" data-validate-length="6" title="인증번호" />
-                                    <button type="button" class="mem-Btn certi bg-dark-blue bd-dark-blue" disabled>
-                                        <span id="remain_time">00:00</span>
-                                    </button>
-                                </div>
-                                <div class="tx-red mb30" style="display: block;" id="sms_msg2"></div>
-                            </div>
-                            <div class="search-Btn btnAuto120 h36">
-                                <button type="button" id="btn_sms_auth" class="mem-Btn bg-blue bd-dark-blue" disabled>
-                                    <span>확인</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <form name="mail_form" id="mail_form" method="post" onsubmit=" return false;">
-                        {!! csrf_field() !!}
-                        <div id="convert2">
-                            <div class="widthAuto460 mt30">
-                                <div class="inputBox p_re item">
-                                    <input type="text" id="var_id" name="var_id" class="iptId bg-gray" value="{{sess_data('combine_id')}}" readonly>
-                                </div>
-                                <div class="inputBox p_re">
-                                    <input type="text" id="mail_id" name="mail_id" class="iptEmail01" placeholder="아이디" maxlength="30" required="required" title="이메일아이디"> @
-                                    <input type="text" id="mail_domain" name="mail_domain" class="iptEmail02" maxlength="30" required="required" placeholder="메일주소" title="이메일주소">
-                                    <select id="domain" name="domain" title="직접입력" class="seleEmail">
-                                        @foreach($mail_domain_ccd as $key => $val)
-                                            <option value="{{ $key }}">{{ $val }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="tx-red" style="display: block;" id="mail_msg">가입 시 입력한 메일주소를 입력해 주세요.</div>
-                            </div>
-                            <div class="search-Btn btnAuto120 mt70 h36">
-                                <button type="button" id="btn_send_mail" class="mem-Btn bg-blue bd-dark-blue">
-                                    <span>확인</span>
-                                </button>
-                            </div>
-                            <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
-                        </div>
-                    </form>
-                    <div id="convert3">
-                        <form name="form_ipin" id="form_ipin" method="post">
-                            <input type="hidden" name="m" value="pubmain">
-                            <input type="hidden" name="enc_data" value="{{$encData}}">
-                            <input type="hidden" name="param_r1" value="combine">
-                            <input type="hidden" name="param_r3" value="">
-                            <input type="text" style="display:none;" />
-                            <div class="widthAuto460">
-                                <div class="inputBox mt30 p_re">
-                                    <input type="text" id="ipin_id" name="param_r2" class="iptId bg-gray" value="{{sess_data('combine_id')}}" readonly>
-                                </div>
-                                <div class="tx-red" style="display: block;" id="msg_ipin"></div>
-                                <br>
-                            </div>
-                            <div class="search-Btn btnAuto120 h36">
-                                <button type="button" id="btn_ipin" xonclick="ipin();" class="mem-Btn bg-blue bd-dark-blue">
-                                    <span>아이핀 인증</span>
-                                </button>
-                            </div>
-                            <div class="notice-Txt tx-gray mt40">
-                                * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
                             </div>
                         </form>
-                    </div>
+                    @elseif($jointype == '655003')
+                        <form name="mail_form" id="mail_form" method="post" onsubmit=" return false;">
+                            {!! csrf_field() !!}
+                            <div id="convert2">
+                                <div class="widthAuto460 mt30">
+                                    <div class="inputBox p_re item">
+                                        <input type="text" id="var_id" name="var_id" class="iptId bg-gray" value="{{sess_data('combine_id')}}" readonly>
+                                    </div>
+                                    <div class="inputBox p_re">
+                                        <input type="text" id="mail_id" name="mail_id" class="iptEmail01" placeholder="아이디" maxlength="30" required="required" title="이메일아이디"> @
+                                        <input type="text" id="mail_domain" name="mail_domain" class="iptEmail02" maxlength="30" required="required" placeholder="메일주소" title="이메일주소">
+                                        <select id="domain" name="domain" title="직접입력" class="seleEmail">
+                                            @foreach($mail_domain_ccd as $key => $val)
+                                                <option value="{{ $key }}">{{ $val }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="tx-red" style="display: block;" id="mail_msg">가입 시 입력한 메일주소를 입력해 주세요.</div>
+                                </div>
+                                <div class="search-Btn btnAuto120 mt70 h36">
+                                    <button type="button" id="btn_send_mail" class="mem-Btn bg-blue bd-dark-blue">
+                                        <span>확인</span>
+                                    </button>
+                                </div>
+                                <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
+                            </div>
+                        </form>
+                    @elseif($jointype == '655001')
+                        <div id="convert3">
+                            <form name="form_ipin" id="form_ipin" method="post">
+                                <input type="hidden" name="m" value="pubmain">
+                                <input type="hidden" name="enc_data" value="{{$encData}}">
+                                <input type="hidden" name="param_r1" value="combine">
+                                <input type="hidden" name="param_r3" value="">
+                                <input type="text" style="display:none;" />
+                                <div class="widthAuto460">
+                                    <div class="inputBox mt30 p_re">
+                                        <input type="text" id="ipin_id" name="param_r2" class="iptId bg-gray" value="{{sess_data('combine_id')}}" readonly>
+                                    </div>
+                                    <div class="tx-red" style="display: block;" id="msg_ipin"></div>
+                                    <br>
+                                </div>
+                                <div class="search-Btn btnAuto120 h36">
+                                    <button type="button" id="btn_ipin" xonclick="ipin();" class="mem-Btn bg-blue bd-dark-blue">
+                                        <span>아이핀 인증</span>
+                                    </button>
+                                </div>
+                                <div class="notice-Txt tx-gray mt40">
+                                    * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
+                                </div>
+                            </form>
+                        </div>
+                    @endif
                 </div>
                 <form name="vnoform" id="vnoform" method="post" action="/member/combine/form/">
                     {!! csrf_field() !!}

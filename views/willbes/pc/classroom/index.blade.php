@@ -86,6 +86,11 @@
 
                     </div>
                 </div>
+                @if(empty(sess_data('mem_hanlimid')) == false)
+                <div class="Quick-Bnr mt20">
+                    <a href="javascript:popupOpen('{{front_url('/classroom/home/gotoHanlim/')}}', 'mylec', 1000, 800, null, null, 'yes', 'no');"><img src="https://static.willbes.net/public/images/promotion/2019/12/bn_160x242.gif" alt="이전 내강의실 보기"></a>
+                </div>
+                @endif
                 <div class="Quick-Top">
                     {!! banner('내강의실_우측퀵', 'Quick-Bnr', $__cfg['SiteCode'], '0') !!}
                     {{-- 서포터즈 회원인 경우 배너 노출 --}}

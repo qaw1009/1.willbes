@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'crm/messageF', 'supportersF');
+    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'crm/messageF', 'supportersF', 'memberF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -145,6 +145,27 @@ class Home extends \app\controllers\FrontController
 
         $this->load->view('/classroom/index', [
             'data' => $data
+        ]);
+    }
+
+    /**
+     * 한림 사이트로 리다이렉트
+     */
+    public function gotoHanlim()
+    {
+        $this->load->library('Crypto', ['license' => 'willbes-open-20200113']);
+
+        $data = $this->memberFModel->getMember(false, [
+            'EQ' => [
+                'Mem.MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ]);
+
+        $plaintext = '^'.$data['HanlimID'].'^'.date('Y-m-d H:i:s').'^';
+        $enc_data = $this->crypto->encrypt($plaintext);
+
+        return $this->load->view('classroom/gotohanlim', [
+            'enc_data' => $enc_data
         ]);
     }
 

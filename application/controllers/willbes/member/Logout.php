@@ -25,6 +25,7 @@ class Logout extends BaseMember
         $this->session->set_userdata('login_key', '');
         $this->session->set_userdata('is_login', false);
         $this->session->set_userdata('free_bogang_prod_codes', '');
+        $this->session->set_userdata('mem_hanlimid', '');
 
         // 로그아웃시에 로그를 남김
         $this->memberFModel->setMemberLogout($login_key);

@@ -79,7 +79,8 @@ class MemberFModel extends WB_Model
             IFNULL((SELECT outDatm FROM {$this->_table['outlog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
-            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount             
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
+            Mem.CertifiedInfoTypeCcd, Info.HanlimID
             ";
         }
 
@@ -152,7 +153,7 @@ class MemberFModel extends WB_Model
             $query = "SELECT  
             Mem.MemIdx, Mem.MemName, Mem.MemId, 
             Mem.IsStatus, Mem.IsDup, Mem.IsChange,
-            fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone ";
+            fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone, Info.HanlimID ";
         }
 
         $query .= " FROM {$this->_table['member']} AS Mem 
@@ -211,6 +212,7 @@ class MemberFModel extends WB_Model
             $this->session->set_userdata('mem_name', $data['MemName']);
             $this->session->set_userdata('mem_mail', $data['Mail']);
             $this->session->set_userdata('mem_phone', $data['Phone']);
+            $this->session->set_userdata('mem_hanlimid', $data['HanlimID']);
             $this->session->set_userdata('login_key', $loginKey);
             $this->session->set_userdata('is_login', true);
 
@@ -685,7 +687,7 @@ class MemberFModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-            if($changeId === true){
+            if($changeId === true && empty(element('MemId', $data)) === false){
                 // 아이디변경일경우
                 // 아이디/암호/통합여부/통합날짜 업데이트
                 if($this->_conn->
@@ -702,16 +704,30 @@ class MemberFModel extends WB_Model
 
             } else {
                 // 아이디변경이 아닐경우
-                
-                // 통합여부/통합날짜 업데이트
-                if($this->_conn->set('IsChange', 'Y', true)->
-                    set('ChangeDatm', 'NOW()', false)->
-                    where('MemIdx', $MemIdx)->update($this->_table['member']) === false){
-                    throw new \Exception('업데이트 실패했습니다.');
+
+                if(empty(element('MemPassword', $data)) === true) { // 비번이없으면 통합 처
+                    // 통합여부/통합날짜 업데이트
+                    if ($this->_conn->set('IsChange', 'Y', true)->
+                        set('ChangeDatm', 'NOW()', false)->
+                        where('MemIdx', $MemIdx)->update($this->_table['member']) === false) {
+                        throw new \Exception('업데이트 실패했습니다.');
+                    }
+
+                    // 로그데이타
+                    $logdata = array_merge($logdata, ['UpdData' => '통합회원전환']);
+
+                } else { // 비번데이타가 있으면 업데이트
+                    // 통합여부/통합날짜 업데이트
+                    if ($this->_conn->
+                        set('MemPassword', "fn_hash('".$data['MemPassword']."')", false)->
+                        set('ChangeDatm', 'NOW()', false)->
+                        where('MemIdx', $MemIdx)->update($this->_table['member']) === false) {
+                        throw new \Exception('업데이트 실패했습니다.');
+                    }
+
+                    // 로그데이타
+                    $logdata = array_merge($logdata, ['UpdData' => '비밀번호변경']);
                 }
-                
-                // 로그데이타
-                $logdata = array_merge($logdata, ['UpdData' => '통합회원전환']);
             }
 
             // 선택 동의여부 저장

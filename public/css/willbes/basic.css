@@ -579,12 +579,11 @@ select[disabled] {
   height: auto !important;
 }
 
-
+.mg-auto {margin:0 auto !important}
 .mg-zero,
 .mg0 {
   margin: 0 !important;
 }
-
 .mt-zero,
 .mt0 {
   margin-top: 0px !important;

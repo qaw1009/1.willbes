@@ -44,10 +44,10 @@ class OrderListModel extends BaseOrderModel
                     , O.CompleteDatm, O.OrderDatm
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
-                    , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm 
+                    , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.Remark, OP.UpdDatm 
                     , P.ProdTypeCcd, PL.LearnPatternCcd, P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
-                    , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
+                    , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName';
 
                 $in_column .= $this->_getAddListQuery('column', $arr_add_join);
                 $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice'; // straight_join 삭제
@@ -94,7 +94,7 @@ class OrderListModel extends BaseOrderModel
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                       
             , P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
-            , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName
+            , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName
             , json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")) as PgFee';
         $in_column .= $this->_getAddListQuery('excel_column', $arr_add_join);
 
@@ -159,7 +159,10 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CPT
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType'] . '"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"';
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"
+                left join ' . $this->_table['code'] . ' as CPA
+                    on PL.PackTypeCcd = CPA.Ccd and CPA.IsStatus = "Y" and CPA.GroupCcd = "' . $this->_group_ccd['PackType'] . '"                    
+            ';
         }
 
         return $from . $this->_getAddListQuery('from', $arr_add_join, $is_all_from);
@@ -342,6 +345,15 @@ class OrderListModel extends BaseOrderModel
                 $excel_column .= '';
             }
 
+            // 주문미수금정보 추가
+            if (in_array('unpaid_info', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['order_unpaid_hist'] . ' as OUH		
+                        on O.OrderIdx = OUH.OrderIdx';
+                $column .= ', OUH.UnPaidIdx, OUH.IsFirst, if(OUH.OrderIdx is not null, "Y", "N") as IsUnPaid';
+                $excel_column .= ', if(OUH.OrderIdx is not null, "Y", "N") as IsUnPaid';
+            }
+
             // 학원접수 수강증출력 로그 추가
             if (in_array('print_cert_log', $arr_add_join) === true) {
                 $from .= '
@@ -423,7 +435,7 @@ class OrderListModel extends BaseOrderModel
                 , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm 
                 , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice           
                 , OP.DiscRate, OP.DiscType, OP.DiscReason
-                , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
+                , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.Remark, OP.UpdDatm
                 , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PL.CampusCcd
                 , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
         }
@@ -567,6 +579,118 @@ class OrderListModel extends BaseOrderModel
         $query = $this->_conn->query('select ' . $column . $from, [$refund_req_idx, $order_idx]);
 
         return $query->row_array();
+    }
+
+    /**
+     * 최초 주문미수금 정보 조회
+     * @param $prod_code
+     * @param $mem_idx
+     * @param $unpaid_idx
+     * @return array
+     */
+    public function findFirstOrderUnPaidInfo($prod_code, $mem_idx, $unpaid_idx = null)
+    {
+        $column = 'OUI.UnPaidIdx, OUI.MemIdx, OUI.ProdCode, OUI.OrgOrderPrice, OUI.OrgPayPrice, OUI.DiscPrice, OUI.DiscRate, OUI.DiscType, OUI.DiscReason
+            , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidMemo';
+        $arr_condition = [
+            'EQ' => [
+                'OUI.ProdCode' => get_var($prod_code, 0), 'OUI.MemIdx' => get_var($mem_idx, 0), 'OUH.IsFirst' => 'Y',
+                'OUI.UnPaidIdx' => $unpaid_idx
+            ]
+        ];
+
+        return $this->_conn->getJoinFindResult($this->_table['order_unpaid_info'] . ' as OUI', 'inner', $this->_table['order_unpaid_hist'] . ' as OUH'
+            , 'OUI.UnPaidIdx = OUH.UnPaidIdx'
+            , $column, $arr_condition
+        );
+    }
+
+    /**
+     * 주문미수금이력 조회
+     * @param $prod_code
+     * @param $mem_idx
+     * @param $unpaid_idx
+     * @param $limit
+     * @return mixed
+     */
+    public function findOrderUnPaidHist($prod_code, $mem_idx, $unpaid_idx = null, $limit = null)
+    {
+        $column = 'OUI.UnPaidIdx, OUI.MemIdx, OUI.ProdCode, OUI.OrgOrderPrice, OUI.OrgPayPrice, OUI.DiscPrice, OUI.DiscRate, OUI.DiscType, OUI.DiscReason
+            , OUH.OrderIdx, OUH.UnPaidPrice, OUH.UnPaidMemo, OUH.IsFirst
+	        , O.OrderNo, O.SiteCode, O.CompleteDatm, OP.PayStatusCcd, OP.RealPayPrice, ifnull(OPR.RefundPrice, 0) as RefundPrice
+	        , (OUH.UnPaidPrice + ifnull(OPR.RefundPrice, 0)) as RealUnPaidPrice
+	        , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, PL.CampusCcd, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
+
+        $from = '
+            from ' . $this->_table['order_unpaid_info'] . ' as OUI
+                inner join ' . $this->_table['order_unpaid_hist'] . ' as OUH
+                    on OUI.UnPaidIdx = OUH.UnPaidIdx
+                inner join ' . $this->_table['order'] . ' as O
+                    on OUH.OrderIdx = O.OrderIdx
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on O.OrderIdx = OP.OrderIdx
+                left join ' . $this->_table['product'] . ' as P
+                    on OUI.ProdCode = P.ProdCode and P.IsStatus = "Y"
+                left join ' . $this->_table['product_lecture'] . ' as PL
+                    on OUI.ProdCode = PL.ProdCode                    
+                left join ' . $this->_table['order_product_refund'] . ' as OPR		
+                    on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
+                left join ' . $this->_table['code'] . ' as CLP
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"
+                left join ' . $this->_table['code'] . ' as CCA
+                    on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"                 
+            where OUI.ProdCode = ?
+                and OUI.MemIdx = ?
+                and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+	    ';
+
+        $arr_condition = ['EQ' => ['OUI.UnPaidIdx' => $unpaid_idx]];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        $order_by = ['OUH.UpHistIdx' => 'desc'];
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, 0)->getMakeLimitOffset();
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$prod_code, $mem_idx]);
+
+        return $limit == 1 ? $query->row_array() : $query->result_array();
+    }
+
+    /**
+     * 최초 주문미수금 정보의 상품코드서브 리턴 (선택형(강사배정) 패키지에서만 사용)
+     * @param $prod_code
+     * @param $mem_idx
+     * @param $unpaid_idx
+     * @return string
+     */
+    public function getProdCodeSubToFirstOrderUnPaidInfo($prod_code, $mem_idx, $unpaid_idx)
+    {
+        $result = '';
+        $column = 'OSP.ProdCodeSub';
+        $from = '
+            from ' . $this->_table['order_unpaid_info'] . ' as OUI
+                inner join ' . $this->_table['order_unpaid_hist'] . ' as OUH
+                    on OUI.UnPaidIdx = OUH.UnPaidIdx
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on OUH.OrderIdx = OP.OrderIdx and OUI.ProdCode = OP.ProdCode
+                inner join ' . $this->_table['order_sub_product'] . ' as OSP
+                    on OP.OrderProdIdx = OSP.OrderProdIdx
+            where OUI.ProdCode = ?
+                and OUI.MemIdx = ?
+                and OUI.UnPaidIdx = ?
+                and OUH.IsFirst = "Y"            
+        ';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from, [$prod_code, $mem_idx, $unpaid_idx])->result_array();
+
+        if (empty($data) === false) {
+            $result = implode(',', array_pluck($data, 'ProdCodeSub'));
+        }
+
+        return $result;
     }
 
     /**

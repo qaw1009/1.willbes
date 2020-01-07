@@ -508,20 +508,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="IsCoupon">강사배정기간
-                    </label>
-                    <div class="col-md-10 form-inline item" >
-                        <div class="item inline-block">
-                            <input type="text" name="ProfChoiceStartDate" id="ProfChoiceStartDate" value="@if($method==='PUT'){{$data['ProfChoiceStartDate']}}@endif" class="form-control datepicker" title="강사배정기간" style="width:100px;" >
-                            ~
-                            <input type="text" name="ProfChoiceEndDate" id="ProfChoiceEndDate" value="@if($method==='PUT'){{$data['ProfChoiceEndDate']}}@endif"  class="form-control datepicker" title="강사배정기간" style="width:100px;" >
-                            &nbsp;
-                            • 선택형(강사배정) 의 경우 필수 설정
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="control-label col-md-2">종합반소개
                     </label>
                     <div class="col-md-10 form-inline item" >
@@ -1036,12 +1022,6 @@
                     if ($("input[name='selLecAddCheck[]']").length == 0) {
                         alert('선택과목강좌구성을 선택하여 주십시오.');
                         $('#selLecAdd').focus();
-                        return;
-                    }
-                } else if($('input:radio[name="PackTypeCcd"]:checked').val() == '648003') {
-                    if ($("#ProfChoiceStartDate").val() == "" || $("#ProfChoiceEndDate").val() == "") {
-                        alert('강사배정기간을 입력하여 주십시오.');
-                        $('#ProfChoiceStartDate').focus();
                         return;
                     }
                 }

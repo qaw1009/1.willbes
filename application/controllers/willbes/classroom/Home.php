@@ -161,7 +161,7 @@ class Home extends \app\controllers\FrontController
             ]
         ]);
 
-        $plaintext = '^'.$data['HanlimID'].'^'.time();
+        $plaintext = '^'.$data['HanlimID'].'^'.date('Y-m-d H:i:s').'^';
         $enc_data = $this->crypto->encrypt($plaintext);
 
         return $this->load->view('classroom/gotohanlim', [

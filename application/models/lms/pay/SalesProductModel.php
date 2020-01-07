@@ -24,8 +24,11 @@ class SalesProductModel extends BaseOrderModel
         'product_book' => 'lms_product_book',
         'product_lecture' => 'lms_product_lecture',
         'product_division' => 'lms_product_division',
+        'product_r_category' => 'lms_product_r_category',
         'product_r_sublecture' => 'lms_product_r_sublecture',
         'product_r_product' => 'lms_product_r_product',
+        'product_lecture_disc' => 'lms_product_lecture_disc',
+        'product_lecture_disc_info' => 'lms_product_lecture_disc_info',
         'cms_lecture_unit' => 'wbs_cms_lecture_unit'
     ];
 
@@ -186,11 +189,12 @@ class SalesProductModel extends BaseOrderModel
      */
     public function findProductLectureInfo($prod_code = [])
     {
+        $arr_prod_code = get_arr_var($prod_code, '0');
         $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
         $column = 'ProdCode, LearnPatternCcd, StudyStartDate, StudyEndDate
             , ifnull(StudyPeriod, if(StudyStartDate is not null and StudyEndDate is not null, datediff(StudyEndDate, StudyStartDate) + 1, 0)) as StudyPeriod
             , if(MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(AllLecTime * 60 * MultipleApply, int), 0) as MultipleAllLecSec';
-        $arr_condition = ['IN' => ['ProdCode' => (array) $prod_code]];
+        $arr_condition = ['IN' => ['ProdCode' => $arr_prod_code]];
 
         $data = $this->_conn->getListResult($this->_table['product_lecture'], $column, $arr_condition);
 
@@ -230,6 +234,31 @@ class SalesProductModel extends BaseOrderModel
                 and P.IsStatus = "Y"
                 and PD.IsStatus = "Y" and PD.IsReprProf = "Y"
             group by PL.SubjectIdx, PD.ProfIdx';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$prod_code]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 학원종합반 단강좌 목록 조회
+     * @param int $prod_code [학원종합반 상품코드]
+     * @return mixed
+     */
+    public function findOffPackageSubLectures($prod_code)
+    {
+        $column = 'VP.ProdCode, VP.ProdName, VP.CourseIdx, VP.CourseName, VP.SubjectIdx, VP.SubjectName, VP.ProfIdx, VP.wProfName
+            , VP.StudyStartDate, VP.StudyEndDate, VP.WeekArrayName, VP.Amount
+            , PS.IsEssential';
+        $from = '
+            from ' . $this->_table['product_r_sublecture'] . ' as PS
+                inner join ' . $this->_table['off_lecture'] . ' as VP
+                    on PS.ProdCodeSub = VP.ProdCode
+            where PS.ProdCode = ?
+                and PS.IsStatus = "Y"
+            order by VP.OrderNumCourse, VP.OrderNumSubject asc, VP.ProfIdx asc 
+        ';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from, [$prod_code]);
@@ -311,5 +340,80 @@ class SalesProductModel extends BaseOrderModel
         }
 
         return empty($result) === true ? true : substr($result, 2);
+    }
+
+    /**
+     * 강좌할인율 리턴 (단강좌, 단과반 상품만 해당)
+     * @param $arr_prod_code
+     * @param $site_code
+     * @return array|null
+     */
+    public function getLetureDiscRate($arr_prod_code, $site_code)
+    {
+        $result = null;
+
+        // 운영사이트 강좌할인율 설정여부 확인
+        $cnt_rows = $this->_conn->getListResult($this->_table['product_lecture_disc'], 'DiscIdx'
+            , ['EQ' => ['SiteCode' => get_var($site_code, '0'), 'IsUse' => 'Y', 'IsStatus' => 'Y']]);
+        if (empty($cnt_rows) === true) {
+            return null;
+        }
+
+        // 강좌할인율 조회 (사이트코드, 카테고리코드, 과정식별자 기준)
+        $column = 'A.DiscIdx, B.DiscTitle, A.DiscRate, A.BundleProdCode';
+        $from = '
+            from (
+                select P.SiteCode, PC.CateCode, PL.CourseIdx
+                    , group_concat(P.ProdCode) as BundleProdCode	
+                    , max(PDC.DiscIdx) as DiscIdx
+                    , ifnull((select DiscRate 
+                        from ' . $this->_table['product_lecture_disc_info'] . ' 
+                        where DiscIdx = max(PDC.DiscIdx)
+                            and DiscNum <= count(0)
+                            and IsApply = "Y" and IsStatus = "Y" 
+                        order by DiscNum desc limit 1
+                      ), 0) as DiscRate		
+                from ' . $this->_table['product'] . ' as P
+                    inner join ' . $this->_table['product_lecture'] . ' as PL
+                        on P.ProdCode = PL.ProdCode
+                    inner join ' . $this->_table['product_r_category'] . ' as PC
+                        on P.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
+                    inner join ' . $this->_table['product_lecture_disc'] . ' as PDC
+                        on PDC.SiteCode = P.SiteCode and PDC.CateCode = PC.CateCode and PDC.CourseIdx = PL.CourseIdx and PDC.IsUse = "Y" and PDC.IsStatus = "Y"                             
+                where P.ProdCode in ?
+                    and P.SiteCode = ?
+                    and P.ProdTypeCcd in ("' . $this->_prod_type_ccd['on_lecture'] . '", "' . $this->_prod_type_ccd['off_lecture'] . '")
+                    and PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['on_lecture'] . '", "' . $this->_learn_pattern_ccd['off_lecture'] . '")
+                    and P.IsUse = "Y"
+                    and P.IsStatus = "Y"
+                group by P.SiteCode, PC.CateCode, PL.CourseIdx
+                having count(0) > 1
+            ) A
+                inner join lms_product_lecture_disc as B
+                    on A.DiscIdx = B.DiscIdx
+            where A.DiscRate > 0
+                and B.IsUse = "Y" 
+                and B.IsStatus = "Y"                    
+        ';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from, [$arr_prod_code, $site_code])->result_array();
+        if (empty($data) === true) {
+            return null;
+        }
+
+        // 상품코드별 할인정보 설정
+        foreach ($data as $row) {
+            $bundle_prod_code = explode(',', $row['BundleProdCode']);
+            foreach ($bundle_prod_code as $prod_code) {
+                $result[$prod_code] = [
+                    'DiscIdx' => $row['DiscIdx'],
+                    'DiscRate' => $row['DiscRate'],
+                    'DiscTitle' => $row['DiscTitle']
+                ];
+            }
+        }
+
+        return $result;
     }
 }

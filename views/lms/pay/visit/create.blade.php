@@ -45,7 +45,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    @if (isset($data['mem']) === true)
+                                    @if(isset($data['mem']) === true)
                                         <td>{{ $data['mem']['MemIdx'] }} ({{ $data['mem']['SiteName'] }})</td>
                                         <td>{{ $data['mem']['JoinDate'] }}</td>
                                         <td>{{ $data['mem']['MemName'] }} ({{ $data['mem']['Sex'] == 'M' ? '남' : '여' }})</td>
@@ -77,13 +77,14 @@
                                 <thead>
                                 <tr>
                                     <th>캠퍼스</th>
-                                    <th>상품명</th>
+                                    <th width="390">상품명</th>
                                     <th>주문금액</th>
                                     <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
                                     <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>
                                     <th>카드</th>
                                     <th>현금</th>
                                     <th>결제금액</th>
+                                    <th>10원단위올림</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -92,6 +93,9 @@
                                             <td>{{ $order_prod_row['CampusCcdName'] }}</td>
                                             <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
                                                 <input type="hidden" name="order_prod_idx[]" value="{{ $order_prod_row['OrderProdIdx'] }}"/>
+                                                @if(empty($order_prod_row['Remark']) === false)
+                                                    <div class="red">{{ $order_prod_row['Remark'] }}</div>
+                                                @endif
                                             </td>
                                             <td>
                                                 <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['OrderPrice'] }}" readonly="readonly">
@@ -101,7 +105,7 @@
                                                     <option value="R">%</option>
                                                     <option value="P">원</option>
                                                 </select>
-                                                <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 160px;">
+                                                <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 120px;">
                                             </td>
                                             <td>
                                                 <input type="text" name="disc_reason[]" class="form-control input-sm" title="할인사유" value="">
@@ -115,12 +119,15 @@
                                             <td>
                                                 <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['RealPayPrice'] }}" readonly="readonly">
                                             </td>
+                                            <td>
+                                                <button type="button" name="btn_surplus_calc" class="btn btn-success">올림</button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="8" class="form-inline text-right bg-info bold">
+                                    <td colspan="9" class="form-inline text-right bg-info bold">
                                         [총 실결제금액] <input type="number" name="total_real_pay_price" class="form-control input-sm ml-10" title="총 실결제금액" value="{{ $data['order']['tRealPayPrice'] }}" readonly="readonly"> 원
                                     </td>
                                 </tr>
@@ -144,13 +151,14 @@
                                 <thead>
                                 <tr>
                                     <th>캠퍼스</th>
-                                    <th>상품명</th>
+                                    <th width="390">상품명</th>
                                     <th>주문금액</th>
                                     <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
                                     <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>
                                     <th>카드</th>
                                     <th>현금</th>
                                     <th>결제금액</th>
+                                    <th>10원단위올림</th>
                                     <th>삭제</th>
                                 </tr>
                                 </thead>
@@ -158,25 +166,28 @@
                                     @if(isset($data['order_prod']) === true)
                                         {{-- 독서실, 사물함 연장 --}}
                                         @foreach($data['order_prod'] as $order_prod_row)
-                                            <tr>
+                                            <tr id="prod_{{ $order_prod_row['ProdCode'] }}">
                                                 <td>{{ $order_prod_row['CampusCcdName'] }}</td>
                                                 <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
-                                                    <span class="red">- 연장 (<a href="{{ site_url('/pay/visit/show/') . $order_prod_row['TargetOrderIdx'] }}" class="red" target="_blank">{{ $order_prod_row['OrderNo'] }}</a>)</span>
+                                                    <div class="red inline-block">- 연장 (<a href="{{ site_url('/pay/visit/show/') . $order_prod_row['TargetOrderIdx'] }}" class="red" target="_blank">{{ $order_prod_row['OrderNo'] }}</a>)</div>
                                                     <input type="hidden" name="prod_code[]" value="{{ $order_prod_row['ProdCode'] }}:{{ $order_prod_row['ProdType'] }}:{{ $order_prod_row['LearnPatternCcd'] }}"/>
                                                     @if($order_prod_row['ProdType'] == 'reading_room' || $order_prod_row['ProdType'] == 'locker')
                                                         <br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="{{ $order_prod_row['ProdType'] }}" data-prod-code="{{ $order_prod_row['ProdCode'] }}" data-target-order-idx="{{ $order_prod_row['TargetOrderIdx'] }}"> {{ $order_prod_row['ProdTypeCcdName'] }} 배정</button>
                                                     @endif
                                                     <input type="hidden" name="target_order_idx[]" value="{{ $order_prod_row['TargetOrderIdx'] }}"/>
+                                                    <input type="hidden" name="remark[]" value=""/>
+                                                    <div class="lec_disc_info red"></div>
                                                 </td>
                                                 <td>
                                                     <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['SalePrice'] }}" readonly="readonly">
+                                                    <input type="hidden" name="sale_price[]" value="{{ $order_prod_row['SalePrice'] }}">
                                                 </td>
                                                 <td class="form-inline">
                                                     <select class="form-control input-sm set-pay-price" name="disc_type[]">
                                                         <option value="R">%</option>
                                                         <option value="P">원</option>
                                                     </select>
-                                                    <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 160px;">
+                                                    <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 120px;">
                                                 </td>
                                                 <td>
                                                     <input type="text" name="disc_reason[]" class="form-control input-sm" title="할인사유" value="">
@@ -191,6 +202,9 @@
                                                     <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['SalePrice'] }}" readonly="readonly">
                                                 </td>
                                                 <td>
+                                                    <button type="button" name="btn_surplus_calc" class="btn btn-success">올림</button>
+                                                </td>
+                                                <td>
                                                     <a href="#none" data-prod-code="{{ $order_prod_row['ProdCode'] }}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
                                                 </td>
                                             </tr>
@@ -199,7 +213,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="9" class="form-inline text-right bg-info bold">
+                                    <td colspan="10" class="form-inline text-right bg-info bold">
                                         [총 실결제금액] <input type="number" name="total_real_pay_price" class="form-control input-sm ml-10" title="총 실결제금액" value="0" readonly="readonly"> 원
                                     </td>
                                 </tr>
@@ -378,9 +392,9 @@
 
                 // 상품별 카드, 현금결제 금액 확인
                 $regi_form.find('[name="card_pay_price[]"]').each(function(index) {
-                    real_pay_price = parseInt($regi_form.find('[name="real_pay_price[]"]').eq(index).val());
-                    card_pay_price = parseInt($regi_form.find('[name="card_pay_price[]"]').eq(index).val()) || 0;
-                    cash_pay_price = parseInt($regi_form.find('[name="cash_pay_price[]"]').eq(index).val()) || 0;
+                    real_pay_price = parseInt($regi_form.find('[name="real_pay_price[]"]').eq(index).val(), 10);
+                    card_pay_price = parseInt($regi_form.find('[name="card_pay_price[]"]').eq(index).val(), 10) || 0;
+                    cash_pay_price = parseInt($regi_form.find('[name="cash_pay_price[]"]').eq(index).val(), 10) || 0;
 
                     if (real_pay_price !== (card_pay_price + cash_pay_price)) {
                         alert((index + 1) + '번째 상품의 카드, 현금 결제금액이 올바르지 않습니다.');
@@ -399,11 +413,7 @@
                     return false;
                 }
 
-                if (!confirm('해당 상품을 수강 등록하시겠습니까?')) {
-                    return false;
-                }
-
-                return true;
+                return confirm('해당 상품을 수강 등록하시겠습니까?');
             };
 
         {{-- 주문등록 --}}
@@ -439,7 +449,7 @@
                 $('#btn_product_search').setLayer({
                     'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type=off&return_type=inline&target_id=selected_product&target_field=prod_code'
                         + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
-                    'width' : 1200
+                    'width' : 1400
                 });
             });
 
@@ -460,23 +470,26 @@
                     data = $(this).data();
 
                     if ($selected_prod_code.hasOwnProperty(code) === false) {
-                        html += '<tr>\n' +
+                        html += '<tr id="prod_' + code + '">\n' +
                             '    <td>' + data.campusCcdName + '</td>\n' +
                             '    <td><div class="blue inline-block">[' + (data.learnPatternCcdName !== '' ? data.learnPatternCcdName : data.prodTypeCcdName) + ']</div> ' + Base64.decode(data.prodName) +
                             '    ' + '<input type="hidden" name="prod_code[]" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd + '"/>' +
                             '    ' + (data.prodType === 'reading_room' || data.prodType === 'locker' ? '<br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="' + data.prodType + '" data-prod-code="' + code + '" data-target-order-idx="">' + data.prodTypeCcdName + '배정</button>' : '') +
                             '    ' + (data.prodType === 'mock_exam' ? '<br/><button type="button" name="btn_set_mock_exam" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="' + data.prodType + '" data-prod-code="' + code + '" data-target-order-idx="">신청정보입력</button>' : '') +
                             '    ' + '<input type="hidden" name="target_order_idx[]" value=""/>' +
+                            '    ' + '<input type="hidden" name="remark[]" value=""/>' +
+                            '    ' + '<div class="lec_disc_info red"></div>' +
                             '    </td>\n' +
                             '    <td>\n' +
                             '       <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="' + data.salePrice + '" readonly="readonly">\n' +
+                            '       <input type="hidden" name="sale_price[]" value="' + data.salePrice + '">\n' +
                             '    </td>\n' +
                             '    <td class="form-inline">\n' +
                             '        <select class="form-control input-sm set-pay-price" name="disc_type[]">\n' +
                             '            <option value="R">%</option>\n' +
                             '            <option value="P">원</option>\n' +
                             '        </select>\n' +
-                            '        <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 160px;">\n' +
+                            '        <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 120px;">\n' +
                             '    </td>\n' +
                             '    <td>\n' +
                             '        <input type="text" name="disc_reason[]" class="form-control input-sm" title="할인사유" value="">\n' +
@@ -491,6 +504,9 @@
                             '        <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="' + data.salePrice + '" readonly="readonly">\n' +
                             '    </td>\n' +
                             '    <td>\n' +
+                            '        <button type="button" name="btn_surplus_calc" class="btn btn-success">올림</button>\n' +
+                            '    </td>\n' +
+                            '    <td>\n' +
                             '        <a href="#none" data-prod-code="' + code + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>\n' +
                             '    </td>\n' +
                             '</tr>';
@@ -499,6 +515,7 @@
 
                 $(this).html('');    // 기 선택 상품 초기화
                 $tbody.append(html);
+                getLectureDiscRate();   // 강좌할인율 조회
                 setTotalPrice();   // 결제금액 재계산
             });
 
@@ -506,12 +523,72 @@
             $regi_form.on('click', '.selected-product-delete', function() {
                 var that = $(this);
                 var prod_code = that.data('prod-code');
-                that.parent().parent().remove();
+                var remark = $regi_form.find('#prod_' + prod_code).find('[name="remark[]"]').val();
 
+                that.parent().parent().remove();
                 $regi_form.find('.rdr_' + prod_code).remove();  // 독서실, 사물함 좌석배정 정보 삭제
                 $regi_form.find('.mock_' + prod_code).remove();  // 모의고사 정보 삭제
+
+                // 할인정보가 선택된 상품을 삭제했을 경우만 강좌할인율 조회
+                if (remark.length > 0) {
+                    getLectureDiscRate();
+                }
                 setTotalPrice();   // 결제금액 재계산
             });
+
+            // 강좌할인율 조회
+            var getLectureDiscRate = function() {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                var $tbody = $('#list_pay_info_table tbody');
+                var code = '';
+                var $params = {};
+
+                // 기설정된 할인정보 초기화
+                $tbody.find('input[name="remark[]"]').each(function(idx) {
+                    if ($(this).val().length > 0) {
+                        $tbody.find('.lec_disc_info').eq(idx).html('');
+                        $tbody.find('[name="remark[]"]').eq(idx).val('');
+                        $tbody.find('[name="order_price[]"]').eq(idx).val($tbody.find('[name="sale_price[]"]').eq(idx).val());
+                        $tbody.find('[name="disc_rate[]"]').eq(idx).trigger('change');
+                    }
+                });
+
+                // 선택된 상품코드 저장
+                $tbody.find('input[name="prod_code[]"]').each(function(idx) {
+                    code = $(this).val().split(':')[0];
+                    $params[idx] = code;
+                });
+
+                // 2개 이상의 상품만 강좌할인율 조회 대상
+                if (site_code.length < 1 || Object.keys($params).length <= 1) {
+                    return;
+                }
+
+                // 강좌할인율 조회
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'POST',
+                    'site_code' : site_code,
+                    'params' : JSON.stringify($params)
+                };
+                sendAjax('{{ site_url('/pay/visit/checkDiscRate') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        if (ret.ret_data !== null && Object.keys(ret.ret_data).length > 0) {
+                            $.each(ret.ret_data, function (k, v) {
+                                var $prod_tr = $('#prod_' + k);
+                                var order_price = parseInt($prod_tr.find('[name="sale_price[]"]').val(), 10) || 0;
+                                order_price = order_price * ((100 - v.DiscRate) / 100);  // 주문금액 할인율 반영
+                                order_price = Math.ceil(order_price); // 소숫점 올림
+
+                                $prod_tr.find('.lec_disc_info').html(v.DiscTitle + ' (↓' + v.DiscRate + '%)');
+                                $prod_tr.find('[name="remark[]"]').val(v.DiscTitle + ' (' + v.DiscRate + '% 할인)');
+                                $prod_tr.find('[name="order_price[]"]').val(order_price);
+                                $prod_tr.find('[name="disc_rate[]"]').trigger('change');
+                            });
+                        }
+                    }
+                }, showValidateError, false, 'POST');
+            };
         @endif
 
             // 독서실, 사물함 좌석배정 버튼 클릭
@@ -567,14 +644,15 @@
             // 할인구분, 할인율 변경할 경우 결제금액 계산 및 셋팅
             $regi_form.on('change', '.set-pay-price', function() {
                 var index = $regi_form.find('[name="' + $(this).prop('name') + '"]').index(this);
-                var order_price = parseInt($regi_form.find('[name="order_price[]"]').eq(index).val());
+                var order_price = parseInt($regi_form.find('[name="order_price[]"]').eq(index).val(), 10);
                 var disc_type = $regi_form.find('[name="disc_type[]"]').eq(index).val();
-                var disc_rate = parseInt($regi_form.find('[name="disc_rate[]"]').eq(index).val()) || 0;
+                var disc_rate = parseInt($regi_form.find('[name="disc_rate[]"]').eq(index).val(), 10) || 0;
                 var real_pay_price = 0;
 
                 // 할인율 적용
                 if (disc_type === 'R') {
                     real_pay_price = order_price * ((100 - disc_rate) / 100);
+                    real_pay_price = Math.ceil(real_pay_price); // 소숫점 올림
                 } else {
                     real_pay_price = order_price - disc_rate;
                 }
@@ -605,15 +683,15 @@
 
                     // 금액 합산
                     input.each(function() {
-                        total_pay_price += parseInt($(this).val()) || 0;
+                        total_pay_price += parseInt($(this).val(), 10) || 0;
                     });
 
                     $regi_form.find('[name="total_' + inputs[i] + '"]').val(total_pay_price);
                 }
 
                 // 총 카드, 현금결제금액
-                var total_card_pay_price = parseInt($regi_form.find('[name="total_card_pay_price"]').val());
-                var total_cash_pay_price = parseInt($regi_form.find('[name="total_cash_pay_price"]').val());
+                var total_card_pay_price = parseInt($regi_form.find('[name="total_card_pay_price"]').val(), 10);
+                var total_cash_pay_price = parseInt($regi_form.find('[name="total_cash_pay_price"]').val(), 10);
                 var total_real_pay_price = total_card_pay_price + total_cash_pay_price;
                 $regi_form.find('[name="sum_real_pay_price"]').val(total_real_pay_price);
 
@@ -637,9 +715,39 @@
                     }
                 } else {
                     // 0원결제
+                    $regi_form.find('[name="card_ccd"]').prop('disabled', true);
                     $regi_form.find('[id="pay_method_zero"]').iCheck('enable').iCheck('check');
                 }
             };
+
+            // 10원단위올림 계산 및 결제금액 설정
+            $regi_form.on('click', 'button[name="btn_surplus_calc"]', function() {
+                var index = $regi_form.find('button[name="' + $(this).prop('name') + '"]').index(this);
+                var order_price = parseInt($regi_form.find('[name="order_price[]"]').eq(index).val(), 10);
+                var real_pay_price = parseInt($regi_form.find('[name="real_pay_price[]"]').eq(index).val(), 10);
+                var total_real_pay_price = $regi_form.find('[name="total_real_pay_price"]').val();
+                var surplus = total_real_pay_price % 100; // 총실결제금액 10원단위 금액
+                var disc_price = 0; // 할인금액
+
+                if (surplus < 1) {
+                    return;
+                }
+
+                // 결제금액 10원단위 올림
+                real_pay_price = real_pay_price + (100 - surplus);
+
+                if (order_price < real_pay_price) {
+                    // 결제금액이 주문금액보다 큰 경우 10원단위만큼 결제금액 할인
+                    disc_price = surplus;
+                } else {
+                    // 10원단위만큼 결제금액 추가
+                    disc_price = order_price - real_pay_price;
+                }
+
+                $regi_form.find('[name="disc_rate[]"]').eq(index).val(disc_price);
+                $regi_form.find('[name="disc_type[]"]').eq(index).val('P');
+                $regi_form.find('[name="disc_rate[]"]').eq(index).trigger('change');
+            });
 
             // 방문수강접수 목록
             $datatable = $list_table.DataTable({
@@ -647,6 +755,12 @@
                 ajax: {
                     'url' : '{{ site_url('/pay/visit/listAjax') }}?search_type=mem_idx',
                     'type' : 'POST',
+                    'beforeSend' : function() {
+                        if ($regi_form.find('[name="mem_idx"]').val().length < 1) {
+                            $('.dataTables_processing').css('display', 'none');
+                            return false;
+                        }
+                    },
                     'data' : function(data) {
                         return $.extend(arrToJson($regi_form.serializeArray()), { 'start' : data.start, 'length' : data.length });
                     }
@@ -655,34 +769,34 @@
                 rowsGroup: ['.rowspan'],
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            // 리스트 번호
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        // 리스트 번호
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{ site_url('/pay/visit/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
-                        }},
+                        return '<a href="{{ site_url('/pay/visit/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
+                    }},
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
-                            return (data !== null ? data : '') + '<br/>(' + row.OrderDatm + ')';
-                        }},
+                        return (data !== null ? data : '') + '<br/>(' + row.OrderDatm + ')';
+                    }},
                     {'data' : 'tRealPayPrice', 'render' : function(data, type, row, meta) {
-                            return addComma(data);
-                        }},
+                        return addComma(data);
+                    }},
                     {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
-                            return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
-                        }},
+                        return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
+                    }},
                     {'data' : 'CampusCcdName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
-                        }},
+                        return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
+                    }},
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
-                            return addComma(data);
-                        }},
+                        return addComma(data);
+                    }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                            return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
-                        }},
+                        return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
+                    }},
                     {'data' : 'RegAdminName'}
                 ]
             });

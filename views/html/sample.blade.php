@@ -352,8 +352,8 @@
                 <li><a href="{{ site_url('/home/html/guide_3095_01') }}" target="_blank"> 수험정보 > 국립외교원 > 선발예정인원 및 과목</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3095_02') }}" target="_blank"> 수험정보 > 국립외교원 > 시험일정 및 응시자격</a></li>
                 <li><a href="{{ site_url('/home/html/guide_3095_03') }}" target="_blank"> 수험정보 > 국립외교원 > 연간학습계획</a></li>
-                <li><a href="{{ site_url('/home/html/guide_3095_02') }}" target="_blank"> 수험정보 > PSAT > 시험일정 및 응시자격</a></li>
-                <li><a href="{{ site_url('/home/html/guide_3095_03') }}" target="_blank"> 수험정보 > PSAT > 연간학습계획</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3096_02') }}" target="_blank"> 수험정보 > PSAT > 시험일정 및 응시자격</a></li>
+                <li><a href="{{ site_url('/home/html/guide_3096_03') }}" target="_blank"> 수험정보 > PSAT > 연간학습계획</a></li>
                 <li class="c_both"></li> 
                 <li><a href="{{ site_url('/home/html/guide_309002_01') }}" target="_blank"> 시험안내 > 공인노무사 > 시험안내</a></li>
                 <li><a href="{{ site_url('/home/html/guide_309002_02') }}" target="_blank"> 시험안내 > 공인노무사 > 과목별 공부방법론</a></li>

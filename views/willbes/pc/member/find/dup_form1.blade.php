@@ -75,6 +75,23 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="user-Txt tx-black">
+                </div>
+                <div class="info-Txt tx-black">
+                    통합회원 전환 시<br/>
+                    <strong>하나의 ID로 윌비스의 전체 서비스를 이용</strong>하실 수 있습니다.
+                </div>
+                <div class="convert-chkBox mt30">
+                    <img src="{{ img_url('login/willbes_convert_user.jpg') }}">
+                    <div class="info-Txt tx-black bd-none">
+                        남은 포인트 경우 윌비스공무원&신광은경찰은 교재포인트로, <bR>
+                        한림법학원은 강좌포인트로 일괄 이관됩니다.
+                    </div>
+                    <div class="chkBox-Save mt30 mb30">
+                        <input type="checkbox" id="agree" name="agree" value="Y" class="iptSave">
+                        <label for="USER_ID_SAVE" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>
+                    </div>
+                </div>
                 <div class="agree-Chk mt50 toggle">
                     <div class="agree-All-Tit tx-black p_re">
                         통합회원 약관동의
@@ -229,7 +246,8 @@
                 });
 
                 $('#btn_submit').click(function(){
-                    if( $('#agree1').is(":checked") != true ||
+                    if( $('#agree').is(":checked") != true ||
+                        $('#agree1').is(":checked") != true ||
                         $('#agree2').is(":checked") != true ||
                         $('#agree3').is(":checked") != true ){
                         alert('필수항목에 동의해야 회원가입이 가능합니다.');

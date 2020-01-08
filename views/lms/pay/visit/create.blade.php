@@ -77,7 +77,7 @@
                                 <thead>
                                 <tr>
                                     <th>캠퍼스</th>
-                                    <th width="390">상품명</th>
+                                    <th width="370">상품명</th>
                                     <th>주문금액</th>
                                     <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
                                     <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>
@@ -151,7 +151,7 @@
                                 <thead>
                                 <tr>
                                     <th>캠퍼스</th>
-                                    <th width="390">상품명</th>
+                                    <th width="370">상품명</th>
                                     <th>주문금액</th>
                                     <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
                                     <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>

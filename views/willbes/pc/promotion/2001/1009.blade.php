@@ -359,7 +359,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">6,14,18개월 PASS</a></li>
+                <li><a href="#tab1">8,14개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
@@ -385,7 +385,7 @@
                         <ol>
                             <li>
                             구성 및 환불<br>
-                            - 14,18개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
+                            - 8,14개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
                             - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
                             - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
                             - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>

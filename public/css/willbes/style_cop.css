@@ -1133,4 +1133,25 @@
         .offAirBar span.offAirBarBtn {position: absolute; top:0; right: 0; z-index: 2; float:right; display:block; color:#fff; line-height:60px; margin-right:20px}
         .offAirBar ul {position:absolute; top:0; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px; width: 920px;}
         .offAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}
-
+        
+    /*커리큘럼 시간표 */   
+        .curri_schedule{position:relative;padding-top:85px;}
+        .curri_schedules li{position:absolute;left:50%;z-index:5;width:128px; height:20px;}
+        .curri_schedules span{position:absolute; left:50%; top:-20px; margin-left:-40px; width:80px; height:20px; line-height:17px;
+        border:2px solid #000;text-align:center;font-weight:bold;background:#fff; z-index:10;display:none;}
+        .curri_schedules li:hover span {display:block;}
+        .curri_schedules li:nth-child(1) {left:90px; top:290px;}
+        .curri_schedules li:nth-child(2) {left:730px; top:290px;}
+        .curri_schedules li:nth-child(3) {left:245px; top:325px;}
+        .curri_schedules li:nth-child(4) {left:890px; top:325px;}
+        .curri_schedules li:nth-child(5) {left:370px; top:355px;}
+        .curri_schedules li:nth-child(6) {left:1015px; top:355px;}
+        .curri_schedules li:nth-child(7) {left:215px; top:410px;}
+        .curri_schedules li:nth-child(8) {left:350px; top:410px;}
+        .curri_schedules li:nth-child(9) {left:675px; top:410px;}
+        .curri_schedules li:nth-child(10) {left:870px; top:410px;}
+        .curri_schedules li:nth-child(11) {left:1000px; top:410px;}
+        .curri_schedules li:nth-child(12) {left:430px; top:450px;}
+        .curri_schedules li:nth-child(13) {left:515px; top:450px;}
+        .curri_schedules li:nth-child(14) {left:955px; top:450px;}
+        .curri_schedules li:nth-child(15) {left:1015px; top:450px;} 

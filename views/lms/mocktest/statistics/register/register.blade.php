@@ -36,7 +36,11 @@
                             <td>{{ $productInfo['MockYear'] }}</td>
                             <td>{{ $productInfo['MockRotationNo'] }}</td>
                             <td>{{ $productInfo['ProdName'] }}</td>
-                            <td>{{ $productInfo['TakeFormsCcd_Name'] }}</td>
+                            <td>
+                                @foreach($productInfo['TakeFormsCcd_Name'] as $key => $row)
+                                    {{ $row }}<br>
+                                @endforeach
+                            </td>
                             <td>{{ $productInfo['USERCNT'] }}</td>
                         </tr>
                         <tr>

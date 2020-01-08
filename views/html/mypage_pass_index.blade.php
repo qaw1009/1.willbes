@@ -93,6 +93,13 @@
     <div class="ActIndex MyInfo widthAutoFull">
         <div class="widthAuto p_re">
             <div class="Content p_re">
+                <div class="oldMypage" id="oldMypage">
+                    <img src="https://static.willbes.net/public/images/promotion/sub/mypage_oldmypage_popup.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
+                    <map name="oldMypage" id="oldMypage">
+                        <area shape="rect" coords="74,232,205,262" href="#none" alt="이전 내강의실 보기"/>
+                        <area shape="rect" coords="257,0,280,24" href="#none" onclick="closeWin('oldMypage')"alt="닫기"/>
+                    </map>                    
+                </div>
                 <div class="will-Tit NG">나의 <span class="tx-light-blue">학습</span>/혜택 <span class="tx-light-blue">정보</span></div>
                 <div class="MyLecInfoBox NG">
                     <ul>

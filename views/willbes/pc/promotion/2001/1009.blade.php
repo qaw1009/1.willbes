@@ -33,12 +33,11 @@
 
         .wb_top {background:#242b35; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1120px; margin:0 auto}
-        .wb_top .passLecBuy ul {position:absolute; top:1320px; left:84px; z-index:10}
+        .wb_top .passLecBuy ul {position:absolute; top:1320px; width:954px; left:50%; margin-left:-477px; z-index:10}
         .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; }
-        .wb_top .passLecBuy li:nth-child(1) {width:227px}
-        .wb_top .passLecBuy li:nth-child(2) {width:228px}
-        .wb_top .passLecBuy li:nth-child(3) {width:228px}
-        .wb_top .passLecBuy li:nth-child(4) {width:271px}
+        .wb_top .passLecBuy li:nth-child(1) {width:312px}
+        .wb_top .passLecBuy li:nth-child(2) {width:312px}
+        .wb_top .passLecBuy li:nth-child(3) {width:328px}
         .wb_top .passLecBuy li div {font-size:14px; font-weight:bold; background:#000; color:#fff; text-align:left; padding:15px; border-radius:0 10px 10px 10px; margin:0 10px}
         .wb_top .passLecBuy li:last-child div {background:#0d3692;} /*컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-size:16px}
@@ -239,8 +238,8 @@
                 <ul>
                     <li>
                         <div>
-                        <strong>69</strong>만원<br>
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="156810" onClick=""/> <label for="y_pkg1">6개월 PASS</label>
+                        <strong>79</strong>만원<br>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="159909" onClick=""/> <label for="y_pkg1">8개월 PASS</label>
                         </div>
                     </li>
                     <li>
@@ -252,6 +251,7 @@
                             <input type="radio" id="y_pkg4_4" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg4_4">10만원 즉시할인</label><br>
                         </div>
                     </li>
+                    {{--
                     <li>
                         <div>
                             <strong>115</strong>만원<br>
@@ -261,6 +261,7 @@
                             <input type="radio" id="y_pkg2_4" name="y_pkg" value="159123" onClick=""/> <label for="y_pkg2_4">10만원 즉시할인</label><br>
                         </div>
                     </li>
+                    --}}
                     <li>
                         <div>
                             <strong>131</strong>만원<br>
@@ -272,7 +273,7 @@
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200108.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
@@ -280,7 +281,7 @@
                     </map>
                 </div>
                 <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_03_191220.jpg"  alt="체력" usemap="#Map1009B"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_03.jpg"  alt="체력" usemap="#Map1009B"/>
                     <map name="Map1009B" id="Map1009B">
                         <area shape="rect" coords="604,597,736,647" href="https://police.willbes.net/promotion/index/cate/3001/code/1030" target="_blank" alt="경찰체력패키지" />
                     </map>
@@ -359,7 +360,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">6,14,18개월 PASS</a></li>
+                <li><a href="#tab1">8,14개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
@@ -385,7 +386,7 @@
                         <ol>
                             <li>
                             구성 및 환불<br>
-                            - 14,18개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
+                            - 8,14개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
                             - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
                             - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
                             - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
@@ -661,7 +662,7 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_09_01_191220.jpg">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_09_01.jpg">
                     </dt>
                 </dl>
             </div>

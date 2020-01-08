@@ -73,7 +73,7 @@
             <input type="text" class="form-control input-sm" id="search_value" name="search_value">
         </div>
         <div class="col-md-4">
-            <p class="form-control-static">명칭, 코드 검색 가능</p>
+            <p class="form-control-static">명칭, 코드, 저자 검색 가능</p>
         </div>
         <div class="col-md-3 text-right pr-5">
             <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>

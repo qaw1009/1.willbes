@@ -7656,6 +7656,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .ActIndex.MyInfo .will-Tit {
     margin-top:-30px;
 }
+.oldMypage {position: absolute; left:50%; top:20px; margin-left:-100px; z-index:10}
 .MyLecInfoBox {
     float: left;
     background: #fff;

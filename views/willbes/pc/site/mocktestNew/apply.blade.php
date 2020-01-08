@@ -20,9 +20,7 @@
             <div class="willbes-Mypage-Tabs mt10">
                 @include('willbes.pc.site.mocktestNew.tab_menu_partial')
                 <form id="url_form" name="url_form" method="GET">
-
                     <div class="willbes-Leclist c_both mt60">
-
                         <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                             <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                 <select id="s_cate_code" name="s_cate_code" title="응시분야" class="seleState mr10 h30 f_left">
@@ -50,13 +48,11 @@
                             </span>
                         </div>
 
-
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable mockTable under-gray bdt-gray tx-gray">
                                 <colgroup>
                                     <col style="width: 40px;">
                                     <col style="width: 80px;">
-                                    <col style="width: 70px;">
                                     <col style="width: 130px;">
                                     <col style="width: 230px;">
                                     <col style="width: 70px;">
@@ -66,14 +62,13 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th>No<span class="row-line">|</span></li></th>
-                                    <th>응시분야<span class="row-line">|</span></li></th>
-                                    <th>응시형태<span class="row-line">|</span></li></th>
-                                    <th>시험응시일<span class="row-line">|</span></li></th>
-                                    <th>모의고사명<span class="row-line">|</span></li></th>
-                                    <th>응시료<span class="row-line">|</span></li></th>
-                                    <th>접수기간<span class="row-line">|</span></li></th>
-                                    <th>진행상태<span class="row-line">|</span></li></th>
+                                    <th>No<span class="row-line">|</span></th>
+                                    <th>응시분야<span class="row-line">|</span></th>
+                                    <th>시험응시일<span class="row-line">|</span></th>
+                                    <th>모의고사명<span class="row-line">|</span></th>
+                                    <th>응시료<span class="row-line">|</span></th>
+                                    <th>접수기간<span class="row-line">|</span></th>
+                                    <th>진행상태<span class="row-line">|</span></th>
                                     <th>나의 접수상태</th>
                                 </tr>
                                 </thead>
@@ -86,7 +81,6 @@
                                         <tr>
                                             <td class="w-no">{{$paging['rownum']}}</td>
                                             <td class="w-type">{{$row['CateName']}}</td>
-                                            <td class="w-form">@if($row['TakeFormsCcd_Name'] == "off(학원)")<span class="tx-red strong">Off</span>@else<span class="tx-blue strong">Online</span>@endif</td>
                                             <td class="w-date">{{$row['TakeStartDatm']}} ~<br/>{{$row['TakeEndDatm']}}</td>
                                             <td class="w-list tx-left pl15"><a href="javascript:;" onclick="applyRegist('{{$row['ProdCode']}}','{{$row['OrderProdIdx']}}')">{{$row['ProdName']}}</a></td>
                                             <td class="w-price">@if(empty($sales_info)==false){{ number_format($sales_info[0]['RealSalePrice'],0)}}원@endif</td>
@@ -133,32 +127,21 @@
         });
 
         function applyRegist(prod_code,order_prod) {
-
+            var url;
             @if( empty(sess_data('mem_idx')) )
                 alert("로그인 후 이용하실 수 있습니다.");
             @else
-
                 if(order_prod == '0') {
                     url = '{{front_url('/mocktestNew/apply_modal/')}}' + 'prod-code/' + prod_code;
-                    ele_id = 'mock_apply';
+                    var ele_id = 'mock_apply';
                     var data = { 'ele_id' : ele_id };
                     sendAjax(url, data, function(ret) {
                         $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
                     }, showAlertError, false, 'GET', 'html');
                 } else {
-                    /*
-                    url = '{{front_url('/mocktestNew/apply_order/')}}' + order_prod;
-                    ele_id = 'mock_apply';
-                    var data = { 'ele_id' : ele_id };
-                    sendAjax(url, data, function(ret) {
-                        $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
-                    }, showAlertError, false, 'GET', 'html');
-                   */
                     url = '{{front_url('/mocktestNew/apply_order/')}}' + order_prod;
                     window.open(url, '_blank', 'width=755, height=845, scrollbars=yes, resizable=no');
-
-            }
-
+                }
             @endif
         }
 

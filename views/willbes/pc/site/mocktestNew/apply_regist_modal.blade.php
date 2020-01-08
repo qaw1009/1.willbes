@@ -29,29 +29,22 @@
                     </tr>
                     <tr>
                         <th class="w-tit">응시형태</th>
-                        <td class="w-list"><input type="hidden" name="TakeForm" id="TakeForm" value="{{$mock_data['TakeFormsCcd']}}">
-                            {{$mock_data['TakeFormsCcd_Name']}}</td>
+                        <td class="w-list">
+                            <ul>
+                            @foreach($mock_data['arrTakeFormsCcd'] as $key => $val)
+                                <li>
+                                    <input type="radio" name="TakeForm" class="goods_chk" title="{{$val}}" value="{{$key}}" @if($loop->first) checked="checked" @endif>
+                                    <label>{{$val}}</label>
+                                </li>
+                            @endforeach
+                            </ul>
+                        </td>
                         <th class="w-tit">응시분야</th>
                         <td class="w-list">{{$mock_data['CateName']}}</td>
                     </tr>
                     <tr>
                         <th class="w-tit">응시지역</th>
-                        <td class="w-list">
-
-                            @if($mock_data['TakeFormsCcd'] == '690001')
-                                <input type="hidden" name="TakeArea" value="">
-                                전국
-                            @else
-                                <select id="TakeArea" name="TakeArea" title="응시지역" class="seleArea" required="required">
-                                    <option value="">지역선택</option>
-                                    @if(empty($mock_area) == false)
-                                        @foreach($mock_area as $row)
-                                            <option value="{{$row['Ccd']}}">{{$row['CcdName']}}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            @endif
-                        </td>
+                        <td class="w-list"><div id="take-area-box"></div></td>
                         <th class="w-tit">응시번호</th>
                         <td class="w-list tx-bright-gray">결제후 응시번호 확인 가능</td>
                     </tr>
@@ -137,9 +130,14 @@
             </div>
         </div>
 
-
         <div class="passzoneDayInfo tx-gray tx-center NGR mt30 mb30">[접수기간] <span class="tx-light-blue">{{$mock_data['SaleStartDatm']}} ~ {{$mock_data['SaleEndDatm']}}</span>
-            <span class="tx-red">(마감 {{floor((strtotime($mock_data['SaleEndDatm']) - strtotime(date("Y-m-d", time()))) / 86400) }}일전)</span>
+            <span class="tx-red">
+                @if(strtotime($mock_data['SaleEndDatm']) < strtotime(date("Y-m-d H:i", time())))
+                    (마감)
+                @else
+                (마감 {{floor((strtotime($mock_data['SaleEndDatm']) - strtotime(date("Y-m-d H:i", time()))) / 86400) }}일전)
+                @endif
+            </span>
         </div>
         <ul class="passzoneListInfo tx-gray GM mt20 mb20">
             <li class="tit strong">[결제시 유의사항]</li>
@@ -150,78 +148,101 @@
         </ul>
         <div class="passzonebtn tx-center">
             <span>
-                @if($mock_data['TakeFormsCcd'] =='690001')
-                    @if($order_prod_idx == 0 && $mock_data["IsSalesAble"] == 'Y')
-                        <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
-                            <span class="strong">바로결제</span>
-                        </button>
-                    @endif
-                @elseif($mock_data['TakeFormsCcd'] =='690002') {{--학원응시일경우 전체결제건수가 마감인원보다 작아야 가능--}}
-                    @if($all_pay_check < $mock_data['ClosingPerson'] && $order_prod_idx == 0 && $mock_data["IsSalesAble"] == 'Y')
-                        <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
-                            <span class="strong">바로결제</span>
-                        </button>
-                    @endif
+                @if($order_prod_idx == 0 && $mock_data["IsSalesAble"] == 'Y')
+                <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
+                    <span class="strong">바로결제</span>
+                </button>
                 @endif
             </span>
         </div>
-
     </form>
-
 </div>
 
 <script src="/public/js/willbes/product_util.js"></script>
 <script type="text/javascript">
     var $regi_mock_form = $('#_regi_mock_form');
+    $(document).ready(function() {
+        var take_forms_val = $('input:radio[name="TakeForm"]:checked').val();
+        addTakeArea(take_forms_val);
 
-        $(document).ready(function() {
-        // 바로결제 버튼 클릭
-            $('button[name="btn_direct_pay"]').on('click', function () {
-                @if($mock_data["IsSalesAble"] !== 'Y')
-                    alert("신청 할 수 없는 모의고사입니다.");return;
-                @endif
-
-                @if($order_prod_idx > 0)
-                    alert("이미 신청 하신 모의고사입니다.");return;
-                @endif
-
-                if ( $("#TakeArea").length > 0 ) {
-                    if($("#TakeArea").val() == '') {
-                        alert('응시지역을 선택해 주십시오.');return;
-                    }
-                }
-
-                if ( $("#TakeMockPart").length > 0 ) {
-                    if($("#TakeMockPart").val() == '') {
-                        alert('응시직렬을 선택해 주십시오.');return;
-                    }
-                }
-
-                if ( $("#mock_paper_subject_2").length > 0 ) {
-                    if($("#mock_paper_subject_2").val() == '') {
-                        alert('선택과목1을 선택해 주십시오.');return;
-                    }
-                }
-
-                if ( $("#mock_paper_subject_3").length > 0 ) {
-                    if($("#mock_paper_subject_3").val() == '') {
-                        alert('선택과목2를 선택해 주십시오.');return;
-                    }
-                }
-
-                if ( $("#mock_paper_subject_2").length > 0 && $("#mock_paper_subject_3").length > 0  ) {
-                    if($("#mock_paper_subject_2").val() == $("#mock_paper_subject_3").val()) {
-                        alert('\'선택과목1\' 과 \'선택과목2\'가 같습니다. 다른 과목으로 선택해 주십시오.');return;
-                    }
-                }
-
-                if ( $('input:radio[name=AddPoint]').is(':checked') == false ) {
-                        alert('가산점을 선택해 주십시오.');return;
-                }
-
-                var $is_direct_pay = $(this).data('direct-pay');
-                var $is_redirect = $(this).data('is-redirect');
-                cartNDirectPay($regi_mock_form, $is_direct_pay, $is_redirect);
-            });
+        // 응시형태 선택
+        $("input:radio[name='TakeForm']").click(function () {
+            addTakeArea($(this).val());
         });
+
+        // 바로결제 버튼 클릭
+        $('button[name="btn_direct_pay"]').on('click', function () {
+            @if($mock_data["IsSalesAble"] !== 'Y')
+                alert("신청 할 수 없는 모의고사입니다.");return;
+            @endif
+
+            @if($order_prod_idx > 0)
+                alert("이미 신청 하신 모의고사입니다.");return;
+            @endif
+
+            if ($('input:radio[name="TakeForm"]:checked').val() == '690002') {
+                @if($all_pay_check >= $mock_data['ClosingPerson'])
+                    alert("접수 마감된 모의고사입니다.");
+                    return;
+                @endif
+            }
+
+            if ( $("#TakeArea").length > 0 ) {
+                if($("#TakeArea").val() == '') {
+                    alert('응시지역을 선택해 주십시오.');return;
+                }
+            }
+
+            if ( $("#TakeMockPart").length > 0 ) {
+                if($("#TakeMockPart").val() == '') {
+                    alert('응시직렬을 선택해 주십시오.');return;
+                }
+            }
+
+            if ( $("#mock_paper_subject_2").length > 0 ) {
+                if($("#mock_paper_subject_2").val() == '') {
+                    alert('선택과목1을 선택해 주십시오.');return;
+                }
+            }
+
+            if ( $("#mock_paper_subject_3").length > 0 ) {
+                if($("#mock_paper_subject_3").val() == '') {
+                    alert('선택과목2를 선택해 주십시오.');return;
+                }
+            }
+
+            if ( $("#mock_paper_subject_2").length > 0 && $("#mock_paper_subject_3").length > 0  ) {
+                if($("#mock_paper_subject_2").val() == $("#mock_paper_subject_3").val()) {
+                    alert('\'선택과목1\' 과 \'선택과목2\'가 같습니다. 다른 과목으로 선택해 주십시오.');return;
+                }
+            }
+
+            if ( $('input:radio[name=AddPoint]').is(':checked') == false ) {
+                    alert('가산점을 선택해 주십시오.');return;
+            }
+
+            var $is_direct_pay = $(this).data('direct-pay');
+            var $is_redirect = $(this).data('is-redirect');
+            cartNDirectPay($regi_mock_form, $is_direct_pay, $is_redirect);
+        });
+
+        function addTakeArea(code)
+        {
+            var html = '';
+            if (code == '690001') {
+                html = '<input type="hidden" name="TakeArea" value=""> 전국';
+            } else {
+                html = '<select id="TakeArea" name="TakeArea" title="응시지역" class="seleArea">';
+                html += '<option value="">지역선택</option>';
+                @if(empty($mock_area) == false)
+                    @foreach($mock_area as $row)
+                        html += '<option value="{{$row['Ccd']}}">{{$row['CcdName']}}</option>';
+                    @endforeach
+                @endif
+                html += '</select>';
+            }
+
+            $("#take-area-box").html(html);
+        }
+    });
 </script>

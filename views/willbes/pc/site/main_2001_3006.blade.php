@@ -10,14 +10,14 @@
             <div class="widthAuto">
                 <!--iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=1&controls=2" frameborder="0" allowfullscreen=""></iframe-->
                 <a href="{{ site_url('/promotion/index/cate/3006/code/1019') }}">
-                    <img src="{{ img_url('cop_pro/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3006_visual_top.jpg" alt="대한민국 1등 경찰학원">
                 </a>
             </div>
         </div>
 
         <div class="Section">
             <div class="widthAuto Profinfo">
-                <img src="{{ img_url('cop_pro/visual/visual_190227_01.jpg') }}" alt="전문화된 교수진">
+                <img src="https://static.willbes.net/public/images/promotion/main/3006_visual_01.jpg" alt="전문화된 교수진">
                 <span class="btn01"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}">자세히보기 &gt;</a></span>
                 <span class="btn02"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}">자세히보기 &gt;</a></span>
                 <ul>
@@ -32,8 +32,8 @@
             <div class="widthAuto">
                 <div class="will-nTit bd-none">승진대비 <span class="tx-color">계급&amp;직렬</span> 승진 PASS</div>
                 <ul class="proPAss">
-                    <li><a href="{{ site_url('/promotion/index/cate/3006/code/1008') }}"><img src="{{ img_url('cop_pro/banner/bnr_557_01.jpg') }}" alt="계급별 12개월 PASS"></a></li>
-                    <li><a href="{{ site_url('/promotion/index/cate/3006/code/1008') }}"><img src="{{ img_url('cop_pro/banner/bnr_557_02.jpg') }}" alt="교수별 12개월 PASS"></a></li>
+                    <li><a href="javascript:alert('NEW 2021년대비 Coming soon')"><img src="{{ img_url('cop_pro/banner/bnr_557_01.jpg') }}" alt="계급별 12개월 PASS"></a></li>
+                    <li><a href="javascript:alert('NEW 2021년대비 Coming soon')"><img src="{{ img_url('cop_pro/banner/bnr_557_02.jpg') }}" alt="교수별 12개월 PASS"></a></li>
                 </ul>
             </div>
         </div>

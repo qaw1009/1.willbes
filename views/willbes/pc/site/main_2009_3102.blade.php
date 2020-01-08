@@ -45,7 +45,6 @@
         </div>
         <!-- CS센터 //-->
     </div>
-
     <!-- End Container -->
-
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

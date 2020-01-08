@@ -92,6 +92,18 @@ class MockInfoFModel extends WB_Model
    
         $result = $this->_conn->getListResult($this->_table['mock_product'].' AS pm', $column, $arr_condition, $limit, $offset, $order_by);
         //echo "<!--".$this->_conn->last_query() .'//-->';
+
+        if($is_count === false) {
+            $arr_take_forms = $this->codeModel->getCcd('690');
+            foreach ($result as $key => $val) {
+                foreach (explode(',', preg_replace("/\s+/", "", $val['TakeFormsCcd'])) as $data_key => $data_val) {
+                    if (empty($arr_take_forms[$data_val]) === false) {
+                        $result[$key]['arrTakeFormsCcd'][$data_val] = $arr_take_forms[$data_val];
+                    }
+                }
+            }
+        }
+
         return $result;
     }
 

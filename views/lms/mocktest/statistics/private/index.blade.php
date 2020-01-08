@@ -136,11 +136,6 @@
 
             // DataTables
             $datatable = $list_table.DataTable({
-                info: true,
-                language: {
-                    "info": "[ 총 _MAX_건 ]",
-                },
-                dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
                 serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/mocktest/statisticsPrivate/list') }}',

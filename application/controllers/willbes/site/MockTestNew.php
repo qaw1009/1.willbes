@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MockTestNew extends \app\controllers\FrontController
 {
-    protected $models = array('mocktest/mockInfoF', 'categoryF', '_lms/sys/code', 'support/supportBoardTwoWayF', 'support/supportBoardF', 'downloadF');
+    protected $models = array('mocktestNew/mockInfoF', 'categoryF', '_lms/sys/code', 'support/supportBoardTwoWayF', 'support/supportBoardF', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('apply_modal','apply_cart_modal','apply_order', 'createQna');
@@ -71,7 +71,7 @@ class MockTestNew extends \app\controllers\FrontController
         $count = $this->mockInfoFModel->listMockTest(true, $arr_condition);
         $paging = $this->pagination('/mocktestNew/apply/cate/'.$this->_cate_code.'?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
         if($count > 0) {
-            $list = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->mockInfoFModel->listMockTest(false, $arr_condition, null, $paging['limit'], $paging['offset'], $order_by);
         }
 
         $this->load->view('site/mocktestNew/apply',[
@@ -103,10 +103,16 @@ class MockTestNew extends \app\controllers\FrontController
             ],
         ];
 
-        $mock_data = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,null,null, null)[0];
-
+        $mock_data = $this->mockInfoFModel->findMockTest($arr_condition);
         if (empty($mock_data) === true) {
             return $this->json_error('모의고사 정보가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $arr_take_forms = $this->codeModel->getCcd('690');
+        foreach (explode(',', preg_replace("/\s+/", "", $mock_data['TakeFormsCcd'])) as $key => $val) {
+            if (empty($arr_take_forms[$val]) === false) {
+                $mock_data['arrTakeFormsCcd'][$val] = $arr_take_forms[$val];
+            }
         }
 
         //내결제이력 (0보다 크면 이력 존재)

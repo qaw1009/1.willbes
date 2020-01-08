@@ -92,6 +92,24 @@
                         </li>
                     </ul>
                 </div>
+                <div class="user-Txt tx-black">
+
+                </div>
+                <div class="info-Txt tx-black">
+                    통합회원 전환 시<br/>
+                    <strong>하나의 ID로 윌비스의 전체 서비스를 이용</strong>하실 수 있습니다.
+                </div>
+                <div class="convert-chkBox mt30">
+                    <img src="{{ img_url('login/willbes_convert_user.jpg') }}">
+                    <div class="info-Txt tx-black bd-none">
+                        남은 포인트 경우 윌비스공무원&신광은경찰은 교재포인트로, <bR>
+                        한림법학원은 강좌포인트로 일괄 이관됩니다.
+                    </div>
+                    <div class="chkBox-Save mt30 mb30">
+                        <input type="checkbox" id="agree" name="agree" value="Y" class="iptSave">
+                        <label for="USER_ID_SAVE" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>
+                    </div>
+                </div>
                 <div class="agree-Chk mt50 toggle">
                     <div class="agree-All-Tit tx-black p_re">
                         통합회원 약관동의
@@ -101,7 +119,7 @@
                             <div class="AllchkBox agree-Tit tx-black">
                                 <strong>변경된 이용약관에 대한 내용은 모두 확인하고 전체 동의합니다.</strong>
                                 <div class="chkBox-Agree">
-                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                    <input type="checkbox" id="agree_all" name="agree_all" class="" maxlength="30">
                                 </div>
                             </div>
                         </li>
@@ -125,9 +143,7 @@
                                 </a>
                             </div>
                             <div class="agree-Txt">
-                                987 약관이 노출 됩니다.<br/>
-                                654 약관이 노출 됩니다.<br/>
-                                321 약관이 노출 됩니다.<br/>
+                                @include('willbes.pc.company.agreementContent')
                             </div>
                         </li>
                         <li class="chk">
@@ -140,31 +156,7 @@
                                 </a>
                             </div>
                             <div class="agree-Txt">
-                                aaaaa 약관이 노출 됩니다.<br/>
-                                sssss 약관이 노출 됩니다.<br/>
-                                ddddd 약관이 노출 됩니다.<br/>
-                            </div>
-                        </li>
-                        <li class="chk">
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="agree4" name="agree4" class="" maxlength="30" value="Y">
-                            </div>
-                            <div class="agree-Tit">
-                                <a href="#none">
-                                    (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
-                                </a>
-                            </div>
-                            <div class="agree-Txt">
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
-                                약관이 노출 됩니다.<br/>
+                                @include('willbes.pc.company.protectContent')
                             </div>
                         </li>
                     </ul>
@@ -207,15 +199,15 @@
                 messages : {
                     ChangeId : {
                         required : "아이디를 입력해주십시요.",
-                        minlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.1",
-                        maxlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.2",
-                        id_char : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.3",
+                        minlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.",
+                        maxlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.",
+                        id_char : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.",
                         id_chk : "사용 불가능한 아이디입니다."
                     },
                     ChangePassword : {
                         required : "비밀번호를 입력해주십시요.",
-                        minlength : "비밀번호는 8~20자리로 입력해주십시요.1",
-                        maxlength : "비밀번호는 8~20자리로 입력해주십시요.2",
+                        minlength : "비밀번호는 8~20자리로 입력해주십시요.",
+                        maxlength : "비밀번호는 8~20자리로 입력해주십시요.",
                         pwd_mix : "영문대소문자, 숫자, 특수문자중 2종류이상 조합해야 합니다."
                     },
                     ChangePassword_chk : {
@@ -272,7 +264,8 @@
             });
 
             $('#btn_submit').click(function(){
-                if($('#agree1').is(":checked") != true ||
+                if($('#agree').is(":checked") != true ||
+                    $('#agree1').is(":checked") != true ||
                     $('#agree2').is(":checked") != true ||
                     $('#agree3').is(":checked") != true ){
                     alert('필수항목에 동의해야 회원가입이 가능합니다.');

@@ -29,7 +29,7 @@ class OffLectureModel extends CommonLectureModel
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                             ,Ac.CcdName as ProdTypeCcd_Name
                             ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
-                            ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd,B.OrderNum
+                            ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd,B.OrderNum,B.ProfChoiceStartDate,B.ProfChoiceEndDate
                             ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                             ,Bd.CcdName as StudyPatternCcd_Name
                             ,Be.CcdName as StudyApplyCcd_Name
@@ -436,6 +436,8 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsLecOpen'=>element('IsLecOpen',$input,'N')
                 ,'AcceptStatusCcd'=>element('AcceptStatusCcd',$input,null)
                 ,'OrderNum' =>element('OrderNum',$input,'0')
+                ,'ProfChoiceStartDate' => empty(element('ProfChoiceStartDate',$input,null)) ? NULL : element('ProfChoiceStartDate',$input)
+                ,'ProfChoiceEndDate' => empty(element('ProfChoiceEndDate',$input,null)) ? NULL : element('ProfChoiceEndDate',$input)
             ];
    }
 

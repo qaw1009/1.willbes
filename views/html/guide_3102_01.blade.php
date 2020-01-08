@@ -113,1345 +113,862 @@
     <div class="Content p_re">
         <div class="w-Guide">
             <h3 class="NSK-Black">공기업 시험안내</h3>
-            <h4 class="NGR">시험안내</h4>
-
-            <div id="tab01" class="tabCts">
-                <h5 class="NGR">가. 시험일정</h5>
-                <ul class="st01">
-                    <li>국가공인급수: 한자실력 사범, 1급, 2급, 3급(이상 4개 급수)</li>
-                    <li>교양한자급수: 준3급, 4급, 준4급, 5급, 준5급, 6급, 7급, 8급(이상 8개 급수)</li>
-                </ul>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th rowspan="2">구분</th>
-                                <th colspan="2">접수기간(인터넷 방문)</th>
-                                <th rowspan="2">시험일자</th>
-                                <th rowspan="2">발표일자</th>
-                            </tr>                        
-                            <tr>
-                                <th>부터</th>
-                                <th>까지</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>제91회</td>
-                                <td>18.01.09.(화)</td>
-                                <td>18.01.31.(수)</td>
-                                <td>18.02.24.(토)</td>
-                                <td>18.03.22.(목)</td>
-                            </tr>
-                            <tr>
-                                <td>제92회</td>
-                                <td>18.04.10.(화)</td>
-                                <td>18.05.02.(수)</td>
-                                <td>18.05.26.(토)</td>
-                                <td>18.06.21.(목)</td>
-                            </tr>
-                            <tr>
-                                <td>제93회</td>
-                                <td>18.07.10.(화)</td>
-                                <td>18.08.01.(수)</td>
-                                <td>18.08.25.(토)</td>
-                                <td>18.09.20.(목)</td>
-                            </tr>
-                            <tr>
-                                <td>제94회</td>
-                                <td>18.10.10.(수)</td>
-                                <td>18.10.31.(수)</td>
-                                <td>18.11.24.(토)</td>
-                                <td>18.12.20.(목)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt10">
-                    ※ 사정에 따라 시험 일정 및 접수기간은 조정될 수 있습니다.<br>
-                    ※ 시험시간 : 매회 전 급수(사범~8급) 오후3시
-                </div>
-
-                <h5 class="NGR mt20">나. 한자자격시험 급수현황</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th colspan="2">급수</th>
-                                <th>사범</th>
-                                <th>1급</th>
-                                <th>2급</th>
-                                <th>3급</th>
-                                <th>준3급</th>
-                                <th>4급</th>
-                                <th>준4급</th>
-                                <th>5급</th>
-                                <th>준5급</th>
-                                <th>6급</th>
-                                <th>7급</th>
-                                <th>8급<br>
-                                (첫걸음)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td rowspan="3">평가한자수</td>
-                                <td>계</td>
-                                <td>5,000자</td>
-                                <td>3,500자</td>
-                                <td>2,300자</td>
-                                <td>1,800자</td>
-                                <td>1,350자</td>
-                                <td>900자</td>
-                                <td>700자</td>
-                                <td>450자</td>
-                                <td>250자</td>
-                                <td>170자</td>
-                                <td>120자</td>
-                                <td>50자</td>
-                            </tr>
-                            <tr>
-                                <td>선정 
-                                한자</td>
-                                <td>5,000자</td>
-                                <td>3,500자</td>
-                                <td>2,300자</td>
-                                <td>1,300자</td>
-                                <td>1,000자</td>
-                                <td>700자</td>
-                                <td>500자</td>
-                                <td>300자</td>
-                                <td>150자</td>
-                                <td>70자</td>
-                                <td>50자</td>
-                                <td>30자</td>
-                            </tr>
-                            <tr>
-                                <td>교과서/실용 <br>
-                                한자어</td>
-                                <td>고전 및 
-                                한시</td>
-                                <td>500단어</td>
-                                <td>500단어</td>
-                                <td>500자<br> 
-                                (436단어)</td>
-                                <td>350자 <br>
-                                (305단어)</td>
-                                <td>200자<br> 
-                                (156단어)</td>
-                                <td>200자 <br>
-                                (139단어)</td>
-                                <td>150자<br> 
-                                (117단어)</td>
-                                <td>100자<br> 
-                                (62단어)</td>
-                                <td>100자 <br>
-                                (62단어)</td>
-                                <td>70자 <br>
-                                (43단어)</td>
-                                <td>20자 <br>
-                                (13단어)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt10">
-                    ※ 한자 자격시험은 사범 ~ 8급까지 총 12개 급수로 구성되어 있습니다.<br>
-                    ※ 국가공인 급수는 사범 ~ 3급까지 4개 급수이며, 민간자격법에 의한 교양한자급수는 준3급 ~ 8급까지 8개 급수입니다.<br>
-                    ※ 사범은 사서삼경, 명심보감, 고문진보 및 한시에서 널리 통용되는 문장이 출제됩니다.<br>
-                    ※ 1급과 2급은 직업분야별 실용한자어, 3급 이하는 교과서 한자어를 뜻합니다. 
-                </div>
-                
-                <h5 class="NGR mt20">다. 급수별 출제 문항수 및 출제기준</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th colspan="2">급수</th>
-                                <th>사범</th>
-                                <th>1급</th>
-                                <th>2급</th>
-                                <th>3급</th>
-                                <th>준3급</th>
-                                <th>4급</th>
-                                <th>준4급</th>
-                                <th>5급</th>
-                                <th>준5급</th>
-                                <th>6급</th>
-                                <th>7급</th>
-                                <th>8급 
-                                (첫걸음)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td rowspan="8">출제기본</td>
-                                <td>문항수</td>
-                                <td>200</td>
-                                <td>150</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>80</td>
-                                <td>50</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>주관식</td>
-                                <td>75%</td>
-                                <td>65%</td>
-                                <td>70%</td>
-                                <td>70%</td>
-                                <td>70%</td>
-                                <td>70%</td>
-                                <td>70%</td>
-                                <td>70%</td>
-                                <td>70%</td>
-                                <td>60%</td>
-                                <td>40%</td>
-                                <td>40%</td>
-                            </tr>
-                            <tr>
-                                <td>비율(%) </td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                                <td>이상</td>
-                            </tr>
-                            <tr>
-                                <td>주관식</td>
-                                <td rowspan="2">150</td>
-                                <td rowspan="2">100</td>
-                                <td rowspan="2">70</td>
-                                <td rowspan="2">70</td>
-                                <td rowspan="2">70</td>
-                                <td rowspan="2">70</td>
-                                <td rowspan="2">70</td>
-                                <td rowspan="2">70</td>
-                                <td rowspan="2">70</td>
-                                <td rowspan="2">50</td>
-                                <td rowspan="2">20</td>
-                                <td rowspan="2">20</td>
-                            </tr>
-                            <tr>
-                                <td>문항수</td>
-                            </tr>
-                            <tr>
-                                <td>한자쓰기</td>
-                                <td>25</td>
-                                <td>25</td>
-                                <td>25</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>10</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>객관식</td>
-                                <td rowspan="2">50</td>
-                                <td rowspan="2">50</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                                <td rowspan="2">30</td>
-                            </tr>
-                            <tr>
-                                <td>문항수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">문항별 배점</td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1.25</td>
-                                <td>2</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">만점</td>
-                                <td>400</td>
-                                <td>300</td>
-                                <td>200</td>
-                                <td>200</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h5 class="NGR mt20">라. 급수별 합격점 기준</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>급수</th>
-                                <th>사범</th>
-                                <th>1급</th>
-                                <th>2급</th>
-                                <th>3급</th>
-                                <th>준3급</th>
-                                <th>4급</th>
-                                <th>준4급</th>
-                                <th>5급</th>
-                                <th>준5급</th>
-                                <th>6급</th>
-                                <th>7급</th>
-                                <th>8급 
-                                (첫걸음)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>득점 
-                                (%) </td>
-                                <td>80% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                                <td>70% 
-                                이상</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt10">
-                    ※ 각 급수별 합격점 기준 이상의 점수를 얻어야 합격할 수 있습니다. 
-                </div>
-
-                <h5 class="NGR mt20">마. 급수별 시험시간/출제 유형별 비율</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th colspan="3">급수</th>
-                                <th>사범</th>
-                                <th>1급</th>
-                                <th>2급</th>
-                                <th>3급</th>
-                                <th>준3급</th>
-                                <th>4급</th>
-                                <th>준4급</th>
-                                <th>5급</th>
-                                <th>준5급</th>
-                                <th>6급</th>
-                                <th>7급</th>
-                                <th>8급 
-                                (첫걸음)</th>
-                            </tr>
-                            <tr>
-                                <td colspan="3">시험시간</td>
-                                <td>120분</td>
-                                <td>80분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                                <td>60분</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td rowspan="10">출제유형 
-                                · 
-                                비율(%)</td>
-                                <td rowspan="5">급수별<br>
-                                선정한자</td>
-                                <td>훈음</td>
-                                <td>25</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>20</td>
-                                <td>25</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>독음</td>
-                                <td>35</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>20</td>
-                                <td>25</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>쓰기</td>
-                                <td>25</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>10</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>기타</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <td>소계</td>
-                                <td>100</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="5">교과서/실용<br>
-                                한자어</td>
-                                <td>독음</td>
-                                <td>-</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <td>용어뜻</td>
-                                <td>-</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>쓰기</td>
-                                <td>-</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>기타</td>
-                                <td>-</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>소계</td>
-                                <td>-</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                                <td>35</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">합계</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>100</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h5 class="NGR mt20">바. 한자자격시험 응시료</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>응시급수</th>
-                                <th>사범</th>
-                                <th>1급</th>
-                                <th>2급~3급</th>
-                                <th>준3굽</th>
-                                <th>4굽~준5급</th>
-                                <th>6급</th>
-                                <th>7급~8급</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>응시료</td>
-                                <td>55,000원</td>
-                                <td>35,000원</td>
-                                <td>21,000원</td>
-                                <td>17,000원</td>
-                                <td>16,000원</td>
-                                <td>15,000원</td>
-                                <td>14,000원</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h5 class="NGR mt20">사. 자격취득시 우대사항</h5>
-                <ul class="st01">
-                    <li>자격기본법 제27조에 의거 국가자격 취득자와 동등한 대우 및 혜택을 받습니다.</li>
-                    <li>경제5단체, 신입사원 채용 때 국가공인 한자자격시험 응시 권고(3급 응시요건, 3급 이상 가산점)하고 있습니다.</li>
-                    <li>2005학년도 대학수학능력시험부터 '漢文'이 선택과목으로 채택되었습니다.</li>
-                    <li>(사)한자교육진흥회가 주관하는 국가공인 자격 취득시 아래와 같은 혜택을 받습니다. </li>                                            
-                </ul>
-                <h5 class="NGR mt10">정부기관</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>기관명</th>
-                                <th>내용</th>
-                                <th>해당급수</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>국가정보원</th>
-                                <td>신입사원 채용시 가산점 부여</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th rowspan="2">육군본부</th>
-                                <td>육군간부(대위~대령) 및 군무원(2급~5급)의 인사고과 반영</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <td>육군간부(준ㆍ부사관) 및 군무원(6급~8급)의 인사고과 반영</td>
-                                <td>4급이상</td>
-                            </tr>
-                            <tr>
-                                <th>한국자산공사</th>
-                                <td>신입사원 공채 시 가산점 부여</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th rowspan="2">한국무역협회</th>
-                                <td>필기시험 면제(3가지 시험중 한자시험 면제)</td>
-                                <td rowspan="2">3급이상</td>
-                            </tr>
-                            <tr>
-                                <td>1차면접시 한자시험 취득점수를 1차전형 총점의 10%내외에서 반영</td>
-                            </tr>
-                            <tr>
-                                <th>평생교육진흥원</th>
-                                <td>학점은행제 : 사범 6학점, 1급 5학점</td>
-                                <td>1급이상</td>
-                            </tr>
-                            <tr>
-                                <th>근로복지공단</th>
-                                <td>한자 자격증 소지자 우대</td>
-                                <td>3급이상</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h5 class="NGR mt10">민간기업</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>기관명</th>
-                                <th>내용</th>
-                                <th>해당급수</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>삼성그룹</th>
-                                <td>전 계열사 신입사원 공개 채용시 급수별 가산점 차등부여</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>(주)동아제약</th>
-                                <td>전 직원 한자자격증 의무적으로 취득하도록 자체연수 실시 중</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>우리은행</th>
-                                <td>신입사원 공개채용 시 한자자격시험 가산점 부여</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>금호아시아나,SK그룹</th>
-                                <td>국가공인 한자자격증 소지자 채용시 우대</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>현대건설</th>
-                                <td>신입사원 채용 시 한자과목 시험 실시 </td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>쌍용그룹</th>
-                                <td>사내 승진심사 시 한자자격 취득 필수</td>
-                                <td>3급이상</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h5 class="NGR mt10">대학</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>대학명</th>
-                                <th>내용</th>
-                                <th>해당급수</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>가천대학교</th>
-                                <td>특기자전형(한국어문학과)</td>
-                                <td>2급이상</td>
-                            </tr>
-                            <tr>
-                                <th rowspan="2">건양대학교</th>
-                                <td>외국어특기자전형(중국언어문화학과, 일본언어문화학과)</td>
-                                <td rowspan="2">5급이상</td>
-                            </tr>
-                            <tr>
-                                <td>관광특기자전형(글로벌관광학부)</td>
-                            </tr>
-                            <tr>
-                                <th>경상대학교</th>
-                                <td>특기자전형(한문학과)</td>
-                                <td>1급이상</td>
-                            </tr>
-                            <tr>
-                                <th>고려대학교</th>
-                                <td>전교생을 대상으로 졸업인증제</td>
-                                <td>2급이상</td>
-                            </tr>
-                            <tr>
-                                <th>극동대학교</th>
-                                <td>특별전형(중국어학과)</td>
-                                <td>5급이상</td>
-                            </tr>
-                            <tr>
-                                <th>김해대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>공인급수</td>
-                            </tr>
-                            <tr>
-                                <th>대구산업정보대학교</th>
-                                <td>특별전형(부사관과)</td>
-                                <td>4급이상</td>
-                            </tr>
-                            <tr>
-                                <th>대구한의대학교</th>
-                                <td>특별전형(한국어문학부, 중어중국학부)</td>
-                                <td>4급이상</td>
-                            </tr>
-                            <tr>
-                                <th>대전대학교</th>
-                                <td>특별전형(서예특기자-한자능력검정시험자격증소지)</td>
-                                <td>4급이상</td>
-                            </tr>
-                            <tr>
-                                <th>대전보건대학교</th>
-                                <td>특별전형(장례지도과-국가공인민간자격소지자)</td>
-                                <td>6급이상</td>
-                            </tr>
-                            <tr>
-                                <th>동덕여자대학교</th>
-                                <td>특기자전형(국어국문학과)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>동부산대학교</th>
-                                <td>어학우수장학금 입학금면제(한자능력자격증소지)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>동서울대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>배화여자대학교</th>
-                                <td>특별전형(중국어통번역과)</td>
-                                <td>2급이상</td>
-                            </tr>
-                            <tr>
-                                <th>부산대학교</th>
-                                <td>한의과 전문대학원 입시</td>
-                                <td>2급이상</td>
-                            </tr>
-                            <tr>
-                                <th>서울대학교</th>
-                                <td>정시모집(학교생활기록부 교과외영역)</td>
-                                <td>공인급수</td>
-                            </tr>
-                            <tr>
-                                <th>성결대학교</th>
-                                <td>외국어/문학특기자전형(3년이내취득)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>세명대학교</th>
-                                <td>특기자전형(중국어학과)</td>
-                                <td>준4급이상</td>
-                            </tr>
-                            <tr>
-                                <th>신구대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>안동대학교</th>
-                                <td>특별전형가산점부여(중어중문학과, 한문학과)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>안산1대학교</th>
-                                <td>특별전형(외국어특기자, 국가공인민간자격소지자)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>신안산대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>2급이상</td>
-                            </tr>
-                            <tr>
-                                <th>용인송담대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>공인급수</td>
-                            </tr>
-                            <tr>
-                                <th>원광대학교</th>
-                                <td>특기자전형(서예/문자예술학전공-3년이내취득)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>원광보건대학교</th>
-                                <td>특별전형(의무부사관과, 국방정보과)</td>
-                                <td>2급이상</td>
-                            </tr>
-                            <tr>
-                                <th>장안대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>공인급수</td>
-                            </tr>
-                            <tr>
-                                <th>전주대학교</th>
-                                <td>특기자전형(언어문화학부,한문교육과-3년이내취득)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>제주산업정보대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>공인급수</td>
-                            </tr>
-                            <tr>
-                                <th>제주한라대학교</th>
-                                <td>중국어통역학과대상 졸업인증제</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>경남과학기술대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>3급이상</td>
-                            </tr>
-                            <tr>
-                                <th>창원문성대학교</th>
-                                <td>특별전형(국가공인민간자격소지자)</td>
-                                <td>공인급수</td>
-                            </tr>
-                            <tr>
-                                <th>청운대학교</th>
-                                <td>특별전형가산점부여(국가공인민간자격소지자)</td>
-                                <td>공인급수</td>
-                            </tr>
-                            <tr>
-                                <th>충남대학교</th>
-                                <td>특별전형(한문학과-3년이내취득)</td>
-                                <td>1급이상</td>
-                            </tr>
-                            <tr>
-                                <th>한국방송통신대학교</th>
-                                <td>국어국문학과 졸업논문 대체</td>
-                                <td>1급이상</td>
-                            </tr>
-                            <tr>
-                                <th>한중대학교</th>
-                                <td>공인기관인증장학금(등록금50% 혹은 면제)</td>
-                                <td>2급이상</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <h4 class="NGR">공공기관</h4>
+            <div class="mt10">
+                공공기관은 에너지 · SOC 등의 공공서비스 제공이나 기금관리 등 정부의 위탁사업을 수행하기 위해 설립된 기관입니다. 
+                기관의 성격에 따라 공기업, 준정부기관, 기타공공기관으로 구분이 되며, ‘12.1월 현재 288개의 공공기관을 지정 · 운영하고 있습니다.
+            </div>
+            <div class="mt10">
+                <table cellspacing="0" cellpadding="0" class="table-Guided">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th colspan="2">일반공기업(28개)</th>
+                            <th colspan="2">준정부기관(83개)</th>
+                            <th rowspan="2">기타공공기관(177개)</th>
+                        </tr>
+                        <tr>
+                            <th>시장형(14)</th>
+                            <th>준시장형(14)</th>
+                            <th>기금관리형(17)</th>
+                            <th>위탁집행형(66)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                한국전력공사,
+                                한국가스공사,
+                                한국석유공사 등
+                            </td>
+                            <td>
+                                한국관광공사,
+                                한국철도공사,
+                                한국마사회 등
+                            </td>
+                            <td>
+                                국민연금공단,
+                                근로복지공단,
+                                예금보험공사 등
+                            </td>
+                            <td>
+                                한국거래소,
+                                한국소비자원,
+                                도로교통공단 등
+                            </td>
+                            <td>
+                                수출입은행,
+                                출연연구기관,
+                                국립대병원 등
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt10">
+                ※ 공공기관 지정현황 : www.alio.go.kr / 경영공시 / 공공기관 지정현황 
             </div>
 
-            <div id="tab02" class="tabCts">
-                <h5 class="NGR">가. 시행일정 및 접수안내</h5>
-                <div>
-                    2018년도 시행일정(공인등급:준2급, 2급, 준1급, 1급, 사범) 
-                </div>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th rowspan="2">회차</th>
-                                <th rowspan="2">시행일</th>
-                                <th rowspan="2">시험등급</th>
-                                <th rowspan="2">시행시간</th>
-                                <th colspan="2">접수기간</th>
-                                <th>합격자발표일</th>
-                                <th rowspan="2">자격증 교부기간</th>
-                            </tr>
-                            <tr>
-                                <th>방문접수</th>
-                                <th>인터넷접수</th>
-                                <th>(홈페이지/ARS)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>제78회</td>
-                                <td>2.24(토)</td>
-                                <td>8급 ~ 대사범</td>
-                                <td>오후 1:40</td>
-                                <td>17.12.18(월)<br />
-                                ~ 18.01.12(금)</td>
-                                <td>17.12.18(월)<br />
-                                ~ 18.01.17(수)</td>
-                                <td>3.26(월)</td>
-                                <td>03.26(월)<br />
-                                ~03.30(금)</td>
-                            </tr>
-                            <tr>
-                                <td>제79회</td>
-                                <td>5.26(토)</td>
-                                <td>8급 ~ 대사범</td>
-                                <td>오후 1:40</td>
-                                <td>3.26(월)<br />
-                                ~4.13(금)</td>
-                                <td>3.26(월)<br />
-                                ~4.18(수)</td>
-                                <td>6.25(월)</td>
-                                <td>6.25(월)<br />
-                                ~ 6.29(금)</td>
-                            </tr>
-                            <tr>
-                                <td>제80회</td>
-                                <td>8.25(토)</td>
-                                <td>8급 ~ 대사범</td>
-                                <td>오후 1:40</td>
-                                <td>6.25(월)<br />
-                                ~7.13(금)</td>
-                                <td>6.25(월)<br />
-                                ~7.18(수)</td>
-                                <td>9.17(월)</td>
-                                <td>9.17(월) <br />
-                                ~ 9.21(금)</td>
-                            </tr>
-                            <tr>
-                                <td>제81회</td>
-                                <td>11.24(토)</td>
-                                <td>8급 ~ 대사범</td>
-                                <td>오후 1:40</td>
-                                <td>9.17(월)<br />
-                                ~10.12(금)</td>
-                                <td>9.17(월)<br />
-                                ~10.17(수)</td>
-                                <td>12.24(월)</td>
-                                <td>12.24(월) <br />
-                                ~ 12.28(금)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt10">
-                    1) 한자급수자격검정 전체급수(15개 등급)의 시험시작은 오후 2시입니다.<br>
-                    2) 시행일정은 본 회 사정에 의해 변경될 수 있습니다.<br>
-                    ※ 각 지역별 지부 접수 가능
-                </div>
+            <h4 class="NGR mt20">공공기관 현황</h4>
+            <div class="mt10">
+                <table cellspacing="0" cellpadding="0" class="table-Guided">
+                    <colgroup>
+                        <col width="50%">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>SOC</th>
+                            <th>고용보건복지</th>
+                        </tr>
+                        <tr>
+                            <td>한국철도공사, 코레일네트웍스(주), 코레일테크(주), 코레일관광개발(주), 코레일로지스(주), 코레일유통(주), 한국수자원공사, 한국공항공사, 인천국제공항공사, 한국철도시설공단, 한국도로공사, 대한주택보증(주)</td>
+                            <td>국민연금공간, 건강보험심사평가단, 사립학교교직원연금공단, 한국고용정보원, 국민건강보험공단, 한국장애인고용공단, 공무원연금공단, 한국보건산업진흥원</td>
+                        </tr>
+                        <tr>
+                            <th>검사검증</th>
+                            <th>국민문화생활</th>
+                        </tr>
+                        <tr>
+                            <td>교통안전공단, 선박안전기술공단, 한국소방산업기술원, 대한지적공사, 한국시설안전공단, 한국가스안전공사, 한국산업기술시험원, 한국석유관리원</td>
+                            <td>한국관광공사, 국민체육진흥공단, 한국소비자원, 도로교통공단</td>
+                        </tr>
+                        <tr>
+                            <th>금융/관광/무역</th>
+                            <th>산업진흥정보화</th>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th>에너지</th>
+                            <th>연구교육</th>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th>외교법무</th>
+                            <th>농림수산환경</th>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <h5 class="NGR mt20">나. 등급별 선정한자 수 및 출제형식</h5>
-                <div class="mt10">
-                    ※ 상위 등급의 선정한 자 수는 하위 등급의 선정한자 수가 포함된 것임. <br>
-                    ※ 각 급수는 응시 자격 조건이 없음. 
-                </div>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>등급</th>
-                                <th>선정한자 수</th>
-                                <th>검정방법</th>
-                                <th>문항수</th>
-                                <th>시험시간</th>
-                                <th>출제형식</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>사범</th>
-                                <td>5,000자</td>
-                                <td>필기시험</td>
-                                <td>200</td>
-                                <td>140분</td>
-                                <td>객관식(50),주관식(150)</td>
-                            </tr>
-                            <tr>
-                                <th>준사범</th>
-                                <td>5,000자</td>
-                                <td>필기시험</td>
-                                <td>150</td>
-                                <td>90분</td>
-                                <td>객관식(50),주관식(150)</td>
-                            </tr>
-                            <tr>
-                                <th>1급</th>
-                                <td>3,500자</td>
-                                <td>필기시험</td>
-                                <td>150</td>
-                                <td>90분</td>
-                                <td>객관식(50),주관식(100)</td>
-                            </tr>
-                            <tr>
-                                <th>준1급</th>
-                                <td>2,500자</td>
-                                <td>필기시험</td>
-                                <td>150</td>
-                                <td>90분</td>
-                                <td>객관식(50),주관식(100)</td>
-                            </tr>
-                            <tr>
-                                <th>2급</th>
-                                <td>2,000자</td>
-                                <td>필기시험</td>
-                                <td>100</td>
-                                <td>90분</td>
-                                <td>객관식(50),주관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>준2급</th>
-                                <td>1,500자</td>
-                                <td>필기시험</td>
-                                <td>100</td>
-                                <td>60분</td>
-                                <td>객관식(50),주관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>3급</th>
-                                <td>1,000자</td>
-                                <td>필기시험</td>
-                                <td>100</td>
-                                <td>60분</td>
-                                <td>객관식(50),주관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>준3급</th>
-                                <td>800자</td>
-                                <td>필기시험</td>
-                                <td>100</td>
-                                <td>60분</td>
-                                <td>객관식(50),주관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>4급</th>
-                                <td>600자</td>
-                                <td>필기시험</td>
-                                <td>100</td>
-                                <td>60분</td>
-                                <td>객관식(50),주관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>준4급</th>
-                                <td>400자</td>
-                                <td>필기시험</td>
-                                <td>100</td>
-                                <td>60분</td>
-                                <td>객관식(50),주관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>5급</th>
-                                <td>250자</td>
-                                <td>필기시험</td>
-                                <td>100</td>
-                                <td>60분</td>
-                                <td>객관식(50),주관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>준5급</th>
-                                <td>100자</td>
-                                <td>필기시험</td>
-                                <td>50</td>
-                                <td>60분</td>
-                                <td>객관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>6급</th>
-                                <td>70자</td>
-                                <td>필기시험</td>
-                                <td>50</td>
-                                <td>60분</td>
-                                <td>객관식(50)</td>
-                            </tr>
-                            <tr>
-                                <th>7급</th>
-                                <td>50자</td>
-                                <td>필기시험</td>
-                                <td>25</td>
-                                <td>60분</td>
-                                <td>객관식(25)</td>
-                            </tr>
-                            <tr>
-                                <th>8급</th>
-                                <td>30자</td>
-                                <td>필기시험</td>
-                                <td>25</td>
-                                <td>60분</td>
-                                <td>객관식(25)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
+            <h4 class="NGR mt20">공공기관 인력채용</h4>
+            <div>
+                공공기관은 자체 인력운영계획에 따라 1~2차례 공개경쟁 절차에 따라 정기채용을 시행하고 있으며, 당초에 예상하지 못했던 인력수요가 발생한 경우에는 수시로 채용을 진행하는 경우도 있습니다.<br>
+                <br>
+                이러한 공공기관의 채용정보는 주로 당해 공공기관 홈페이지 등을 통해 공고되고 있으며, 정부는 취업 준비생들에게 편의를 제공하기 위하여 잡 알리오(www.alio.go.kr)을 통해 각 공공기관의 채용정보를 통합하여 제공하고있습니다.
+            </div>
 
-                <h5 class="NGR mt20">다. 합격기준</h5>                
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>등급</th>
-                                <th colspan="2">합격기준</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>사범</th>
-                                <td>80점 이상(1문항당 1/200*100점,100점으로 환산)</td>
-                                <td>200문항 중160문항 이상</td>
-                            </tr>
-                            <tr>
-                                <th>준사범</th>
-                                <td>70점 이상(1문항당 1/150*100점,100점으로 환산)</td>
-                                <td>150문항 중105문항 이상</td>
-                            </tr>
-                            <tr>
-                                <th>1급~준1급</th>
-                                <td>70점 이상(1문항당 1/150*100점,100점으로 환산)</td>
-                                <td>150문항 중105문항 이상</td>
-                            </tr>
-                            <tr>
-                                <th>2급~5급</th>
-                                <td>70점 이상(1문항당 1점)</td>
-                                <td>100문항 중70문항 이상</td>
-                            </tr>
-                            <tr>
-                                <th>준5급~6급</th>
-                                <td>70점 이상(1문항당 2점)</td>
-                                <td>50문항 중 35문항 이상</td>
-                            </tr>
-                            <tr>
-                                <th>7급~8급</th>
-                                <td>70점 이상(1문항당 4점)</td>
-                                <td>25문항 중 18문항 이상</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <h4 class="NGR mt20">공공기관 채용형태</h4>
+            <div>
+                공공기관은 매년 주로 공개경쟁을 통해 정규직 인력을 채용하고 있으며, 09년말부터는 청년일자기 확대를 위해 청년인턴도 채용하고 있습니다.<br>
+                <br>
+                정부는 공공기관에서 청년인턴으로 근무한 청년인턴 경력자 중 우수인턴의 정규직 전환을 지원하기 위해 정규직 신규채용인원의 20%를 청년인턴 경력자 중에서 채용토록 권고하고 있으며, 
+                각 공공기관에서는 정규직 채용시가점부여, 서류전형 면제 등 다양한 인센티브를 부여하여 인턴경험자를 정규직으로 채용하고 있습니다.
+            </div>
 
-                <h5 class="NGR mt20">라. 참가회비</h5>
-                <div>
-                    <table cellspacing="0" cellpadding="0" class="table-Guided">
-                        <colgroup>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>등급</th>
-                                <th>7급~8급</th>
-                                <th>6급~준5급</th>
-                                <th>5급~준3급</th>
-                                <th>3급~2급</th>
-                                <th>준1급~1급</th>
-                                <th>준사범~사범</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>참가회비</th>
-                                <td>14,000원</td>
-                                <td>15,000원</td>
-                                <td>16,000원</td>
-                                <td>21,000원</td>
-                                <td>36,000원</td>
-                                <td>58,000원</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <h5 class="NGR mt20">마. 한자급수자격증 취득자 우대사항</h5>
-                <div>
-                    1) 자격기본법 제 27조에 의거 국가 자격 취득자와 동등한 대우 및 혜택.<br>
-                    2) 대학 입시 수시 모집, 특별전형 및 학점인정, 졸업인증제에 반영 – 각 대학 입시요강 및 학사 기준 참조.<br>
-                    3) 삼성그룹을 비롯한 경제 5단체 신입사원채용 및 인사고과에 한자급수자격증 취득자 우대 및 가산점 부여.<br>
-                    4) 한자급수자격검정 3개 등급의 자격증 학점인정!<br>
-                    <br>
-                    학점인정 심사기관인 국가평생교육진흥원으로부터 대한민국한자교육연구회와 대한검정회가 시행 하는 한자급수자격검정 사범, 1급, 준1급의 3개 등급에 대한 학점인정을 승인하였습니다. 등급별 인정학점은 사범 6학점, 1급 5학점, 준1급 3학점입니다. <br>
-                    <br>
-                    ※ 해당 자격별 학점 및 전공 연계에 대한 자세한 사항은 국가평생교육진흥원(www.cb.or.kr) -> 게시판 -> 자료실 ->자격학점인정기준을 참고바람. 
-                </div>
+            <h4 class="NGR mt20">공공기관 인재상</h4>
+            <div>
+                1. 급변하는 외부 환경에 능동적으로 대응할 수 있는 인재 → 대기업 상동 / 기업형 공기업<br>
+                2. 기업 설립 목적에 따라 책임감과 사명감, 공익성 갖춘 인재 → 공기업 특색<br>
+                3. 범생형에서 벗어나 다양하고 폭넓게 경험한 인재 → 채용 트랜드
+            </div>
+            <div class="mt20 tx-center">
+                <img src="https://static.willbes.net/public/images/promotion/sub/3102_01_01.gif"/>
+            </div>
+
+            <h4 class="NGR mt20">공공기관 전형절차</h4>
+            <div>
+                공공기관은 일반적으로 서류전형, 필기시험, 면접의 순으로 전형이 이루어진다. 주요 평가지표는 성실성(학점, 영어성적, 출신학교), 
+                사고력(자체 직무적성시험, 경영/경제/법률/상식 ), 직무능력 (인성/전문성 면접, 영어회화면접, 기타 자격증)으로 평가한다. 
+            </div>
+            <div class="mt20 tx-center">
+                <img src="https://static.willbes.net/public/images/promotion/sub/3102_01_02.gif"/>
+            </div>
+            <ul class="st01 mt20">
+                <li>
+                    <strong class="tx-blue">서류전형</strong> : 자기소개서 + 어학성적 + 관련자격증 등의 자격조건을 심사 <br>
+                    ① 입사지원서 : 자소서 평가<br>
+                    ② 공인어학성적(TOEIC, TOEFL ,TEPS) : 기업별 표준 점수화<br>
+                    ③ 각종 자격증 취득(컴퓨터, 한자, 한국어, 금융, 회계, 국제, 보험 등) : 가산점 표준 점수화 합산
+                </li>
+                <li>
+                    <strong class="tx-blue">면접시험</strong> : 기업별 평가 및 특성에 맞는 면접시행 및 유형 상이 <br>
+                    ① 면접유형 : 개별면접 / 집단면접 / 역량면접 / 회화면접 / PT면접 / 토론면접 / CEO면접<br>
+                    ② 면접질문 : 개인태도 및 신상 / 전공 질문 / 시사 질문 / 회사 질문 등<br>
+                    * 에너지/발전 - 토론면접 비중 높음, 경제/관광분야 -회화 및 역량면접 중요도 높음
+                </li>
+                <li>
+                    <strong class="tx-blue">필기시험</strong> : 공공기관시험 난이도 (비금융권 < 금융권) 과목 수 + 수험공부 범위가 좁을 수록 난이도 높음 <br>
+                    ① 전공 : 사무직은 경영학, 경제학, 법학, 행정학 중 출제되는 경우가 일반적<br>
+                    ② 상식<br>
+                    - 일반상식 : 인문, 사회과학, 컴퓨터, 자연, 미디어, 예체능 및 최근 시사 등(난이도 높음)<br>
+                    - 시사상식 : 경제시사, 예술·문화부문시사, 우주 · 첨단시사, 정보통신시사, 국제관계 등<br>
+                    ③ 논술 : 시사논술, 일반교양논술, 해당 공기업관련논술 등 출제유형 다양
+                </li>
+            </ul> 
+
+            <h4 class="NGR mt20">분야별 전문가 지원 가능 공공기관</h4>
+            <ul class="st01">
+                <li>
+                    <strong class="tx-blue">법률전문가가 지원할 만한 공공기관</strong><br>
+                    특허청, 대한법률구조공단, 한국형사정책연구원, 국민권익위원회, 국가정보원, 중소기업청, 방송통신위원회, 조달청, 국세청, 국가보훈처, 
+                    공정거래위원회, 공탁금관리위원회, 서울보증보험, 복권위원회, 한국선원복지고용센터
+                </li>
+                <li>
+                    <strong class="tx-blue">의료분야 출신 전문가가 지원할 만한 공공기관</strong><br>
+                    건강보험심사평가원, 국립암센터, 국민건강보험관리공단, 국민연금관리공단, 대한보건사회연구원, 보건복지인력개발원, (재)한국마약퇴치운동본부, 한국보건산업진흥원, (재)한국희귀의약품센터, 식품안전정보센터
+                </li>
+                <li>
+                    <strong class="tx-blue">문화, 예술분야의 공공기관</strong><br>
+                    (재)명동,정동극장, (재)한국공연예술센터, (재)에술경영지원센터, 국립박물관문화재단, 예술의전당, 영상물등급위원회, 영화진흥위원회, ㈜강원랜드, 출판문화산업진흥원, 
+                    코레일관광개발㈜, 한국공예디자인문화진흥원, 한국관광공사, 한국마사회, 한국문학번역원, 한국문화예술교육진흥원, 한국문화예술위원회, 한국방송광고진흥공사, 한국영상자료원, 
+                    한국저작권위원회, 한국콘텐츠진흥원, 한국문화관광연구원
+                </li>
+            </ul>
+
+            <h4 class="NGR mt20">공기업전형절차</h4>
+            <div class="mt10">
+                <table cellspacing="0" cellpadding="0" class="table-Guided">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">구분</th>
+                            <th rowspan="2">기업명</th>
+                            <th colspan="5">전형절차</th>
+                            <th rowspan="2">비 고</th>
+                        </tr>
+                        <tr>
+                            <th>전공</th>
+                            <th>인적성</th>
+                            <th>논술</th>
+                            <th>상식</th>
+                            <th>면접</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th rowspan="10">금융</th>
+                            <td>IBK기업은행</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>KDB산업은행</td>
+                            <td>1과목</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>영어논술</td>
+                        </tr>
+                        <tr>
+                            <td>기술보증기금</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>면접(PT, 토론), 한국사검정시험 자격증 필수 </td>
+                        </tr>
+                        <tr>
+                            <td>대한주택보증㈜</td>
+                            <td>1과목<br />
+                            (통합4)</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>토익(700이상)은 비중↓, <br />
+                            학점 자격증, 어학, 자소서 비중↓</td>
+                        </tr>
+                        <tr>
+                            <td>신용보증기금</td>
+                            <td>1과목<br />
+                            (4중1택)</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>한국사 자격증 조금 더 가점 비중.</td>
+                        </tr>
+                        <tr>
+                            <td>예금보험공사</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>2014년 스펙초월제 도입예정</td>
+                        </tr>
+                        <tr>
+                            <td>한국무역보험공사</td>
+                            <td>1과목<br />
+                            (3중1택)</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>한국자산관리공사</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>한국장학재단</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>학점, 토익 통과 후 자소서평가.<br />
+                            한국사2급 이상 필요. </td>
+                        </tr>
+                        <tr>
+                            <td>한국투자공사</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>자기소개서(영어)</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="5">농림<br />
+                            수산환경</th>
+                            <td>국립공원관리공단</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>한국농수산식품유통공사</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>한국마사회</td>
+                            <td>1과목</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>면접(영어회화)</td>
+                        </tr>
+                        <tr>
+                            <td>한국환경공단</td>
+                            <td>o(전공택1)</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>토익(800점 이상) - 多대多 면접</td>
+                        </tr>
+                        <tr>
+                            <td>한국환경산업기술원</td>
+                            <td>x</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>중복자격증 인정. 토익700이상</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="16">에너지</th>
+                            <td>에너지관리공단</td>
+                            <td>3과목</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>토익700이상</td>
+                        </tr>
+                        <tr>
+                            <td>㈜한국가스기술공사</td>
+                            <td>4과목<br />
+                            (통합)</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>2014년 인적성 시험 도입 예정. 토익800이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국가스공사</td>
+                            <td>1과목<br />
+                            (3중1택)</td>
+                            <td>ㅇ </td>
+                            <td>ㅇ</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>스펙초월제 도입. 최소토익 300이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국광물자원공사</td>
+                            <td>2과목</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>스펙초월제 도입예정. 서류전형x 토익800이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국남동발전㈜</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>어학성적 만접은 900이상. 스펙초월제 도입 예정.</td>
+                        </tr>
+                        <tr>
+                            <td>한국남부발전㈜</td>
+                            <td>4과목<br />
+                            (통합)</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>스펙초월제 도입<br />
+                            (무서류전형(70명) 소셜리크루팅(5명),</td>
+                        </tr>
+                        <tr>
+                            <td>한국동서발전㈜ </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>한국서부발전㈜</td>
+                            <td>4과목<br />
+                            (통합)</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>어학성적(토익900이상), <br />
+                            논술시험(시사싱식+회사 관련 상식)</td>
+                        </tr>
+                        <tr>
+                            <td>한국석유공사</td>
+                            <td>1과목</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>한국수력원자력㈜</td>
+                            <td>3과목<br />
+                            (통합) </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>인성시험, 적성시험 별도 시행. 토익800이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국에너지기술평가원</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>심층면접진행(전문가) 토익 800이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국원자력환경공단</td>
+                            <td>4과목<br />
+                            (통합)</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>인성면접(영어질문포함) 토익500이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국전력공사</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>중복자격증인정. 토익(800이상)</td>
+                        </tr>
+                        <tr>
+                            <td>한국전력기술(KEPKO)</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>중복자격증인정. 토익(800이상)</td>
+                        </tr>
+                        <tr>
+                            <td>한국중부발전</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>토익(850~900), 한국사자격증 필수(1급)</td>
+                        </tr>
+                        <tr>
+                            <td>한전원자력연료</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>토익 850이상 </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">산업진흥<br />
+                            정보화</th>
+                            <td>중소기업진흥공단</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>2014년 스펙초월제 도입예정</td>
+                        </tr>
+                        <tr>
+                            <td>한국산업기술진흥원</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>토익(750이상) , 자격증 중복(3가지)적용 가능.</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="5">문화<br />
+                            국민생활</th>
+                            <td>국민체육진흥공단</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>어학시험(JLPT, OPIC), 공인노무사자격증 우대</td>
+                        </tr>
+                        <tr>
+                            <td>도로교통공단</td>
+                            <td>1과목<br />
+                            (3중1택)</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>한국관광공사</td>
+                            <td>2과목</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>영어면접(15분 프리토킹), 어학성적(토익 800이상)</td>
+                        </tr>
+                        <tr>
+                            <td>한국소비자원</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <td>한국청소년활동진흥원</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>2014년 스펙초월제 도입예정</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="3">검사검증</th>
+                            <td>교통안전공단</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>각 단계별 Zero-base. 토익800이상</td>
+                        </tr>
+                        <tr>
+                            <td>대한지적공사</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>2014년 스펙초월제 도입예정</td>
+                        </tr>
+                        <tr>
+                            <td>한국시설안전공단</td>
+                            <td>1과목</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>토익800이상</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">외교법무</th>
+                            <td>한국국제교류재단</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>2013년 인적성x (내년시험 포함은 미정)<br />
+                            토익950이상,</td>
+                        </tr>
+                        <tr>
+                            <td>한국국제협력단(KOIKA)</td>
+                            <td>1과목</td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>논술비중 높음. 토익830이상</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="7">고용<br />
+                            보건복지</th>
+                            <td>공무원연금공단</td>
+                            <td>4과목<br />
+                            (통합)</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>2014년 스펙초월제 도입예정, 토익700이상, 학점 3.5이상 자격증 중복적용o</td>
+                        </tr>
+                        <tr>
+                            <td>국민건강보험공단</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>스펙초월제/일반채용 각각 채용</td>
+                        </tr>
+                        <tr>
+                            <td>국민연금공단</td>
+                            <td>4과목</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>　</td>
+                        </tr>
+                        <tr>
+                            <td>사립학교교직원 연금공단</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>　</td>
+                        </tr>
+                        <tr>
+                            <td>한국고용정보원</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>1:多 면접. 스펙초월x, 각 전형 zero-base, 자기소개서 비중↑</td>
+                        </tr>
+                        <tr>
+                            <td>한국산업인력공단</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>　</td>
+                        </tr>
+                        <tr>
+                            <td>한국장애인고용공단</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>　</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="7">SOC</th>
+                            <td>여수항만공사</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>신설공사, 토익 800이상, 학점 3.5이상</td>
+                        </tr>
+                        <tr>
+                            <td>인천국제공항공사</td>
+                            <td>4과목<br />
+                            (통합)</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>토익 750이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국공항공사</td>
+                            <td>1과목</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>토익750이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국도로공사</td>
+                            <td>1과목</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>토익700이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국수자원공사</td>
+                            <td>4과목<br />
+                            (통합)</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>영어면접(원어민과 약 5~10분정도 프리토킹) , 토익750이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국철도공사</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>필기시험(철도공사 규정책자) 면접(1분 스피치) 시행</td>
+                        </tr>
+                        <tr>
+                            <td>기초과학연구원</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>1차 면접(전문성 심화 평가)후 최종 면접, 토익700이상</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="10">연구교육</th>
+                            <td>한국고전번역원</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>인적성 (타기관에 의뢰, SSAT형식)</td>
+                        </tr>
+                        <tr>
+                            <td>한국기술교육대학교</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>영어면접(원어민, 약 10~15분 진행), 토익900이상</td>
+                        </tr>
+                        <tr>
+                            <td>학교법인한국폴리텍</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>자기소개서(자체 내 직무역량기반서)작성, PT면접(진행 전날 주제 제공)</td>
+                        </tr>
+                        <tr>
+                            <td>한국사학진흥재단</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>면접 비중 상당히↑</td>
+                        </tr>
+                        <tr>
+                            <td>한국산업기술시험원</td>
+                            <td>3과목<br />
+                            (통합)</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>자기소개서(별도의 주제 제공), 토익700이상</td>
+                        </tr>
+                        <tr>
+                            <td>한국생산기술연구원</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>서류전형 + 인적성 동시 시행</td>
+                        </tr>
+                        <tr>
+                            <td>한국조세재정연구원</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>　</td>
+                        </tr>
+                        <tr>
+                            <td>한국직업능력개발원</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>박사학위 기본</td>
+                        </tr>
+                        <tr>
+                            <td>한국천문연구원</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>행정직(경력자 선발), PT면접(과거 업무경력 중심), 인적성(온라인 진행)</td>
+                        </tr>
+                        <tr>
+                            <td>한국표준과학연구원</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>o</td>
+                            <td>  </td>
+                            <td>o</td>
+                            <td>인적성은 SSAT형식, 토익 750이상</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>      
     </div>

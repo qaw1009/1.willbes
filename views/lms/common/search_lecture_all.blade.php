@@ -29,7 +29,7 @@
 
 @section('layer_content')
     <div class="form-group no-border-bottom no-padding">
-        <p class="form-control-static"><span class="required">*</span> 검색한 강좌 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
+        <p class="form-control-static"><span class="required">*</span> 검색한 강좌 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 {{ $is_single == 'Y' ? '불가' : '가능' }}합니다.)</p>
     </div>
     <div class="form-group no-border-bottom no-padding">
         <ul class="nav nav-tabs nav-justified">
@@ -115,8 +115,9 @@
                     @elseif($LearnPatternCcd === "615007")
                         <th>캠퍼스</th>
                         <th>수강형태</th>
-                        <th>수강신청<BR>구분</th>
-                        <th>개강<BR>년/월</th>
+                        <th>수강신청<br/>구분</th>
+                        <th>개강<br/>년/월</th>
+                        <th>종합반<br/>유형</th>
                         <th>종합반명</th>
                         <th>판매가</th>
                         <th>정원</th>
@@ -238,6 +239,7 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return row.SchoolStartYear+'/'+row.SchoolStartMonth;
                     }},
+                    {'data' : 'PackTypeCcd_Name'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return '['+row.ProdCode+ '] ' + row.ProdName + '';
                     }},//상품명
@@ -276,12 +278,25 @@
             function sendContent() {
                 var addCnt = $("input[name='checkIdx']:checked").length;		//적용할 갯수
                 var allCnt = $("input[name='checkIdx']").length;		//노출된 전체 갯수
-                if(addCnt === 0) {alert("적용할 강좌가 없습니다. 선택 후 적용하여 주십시오.");return;}
+                var is_single = '{{ $is_single }}';
+
+                if (addCnt < 1) {
+                    alert("적용할 강좌가 없습니다. 선택 후 적용하여 주십시오.");
+                    return;
+                }
+
+                if (is_single === 'Y' && addCnt > 1) {
+                    alert('한번에 1개 상품만 적용 가능합니다.');
+                    return;
+                }
+
                 var prod_type = $search_form_modal.find("input[name='prod_type']").val() + '_lecture'; // 상품타입 (on/off)
                 var learn_pattern_ccd = $search_form_modal.find("input[name='LearnPatternCcd']").val(); // 학습형태
                 var row, data, html = '';
 
-                if (!confirm('해당 강좌를 적용하시겠습니까?')) {return;}
+                if (!confirm('해당 강좌를 적용하시겠습니까?')) {
+                    return;
+                }
 
                 for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용
                     if ($("input:checkbox[id='checkIdx"+i+"']").is(":checked") === true) {

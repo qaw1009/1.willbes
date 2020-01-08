@@ -15,6 +15,8 @@ class BaseOrderModel extends WB_Model
         'order_delivery_address' => 'lms_order_delivery_address',
         'order_refund_request' => 'lms_order_refund_request',
         'order_product_refund' => 'lms_order_product_refund',
+        'order_unpaid_info' => 'lms_order_unpaid_info',
+        'order_unpaid_hist' => 'lms_order_unpaid_hist',
         'order_product_activity_log' => 'lms_order_product_activity_log',
         'order_memo' => 'lms_order_memo',
         'product' => 'lms_product',
@@ -54,10 +56,10 @@ class BaseOrderModel extends WB_Model
         'admin' => 'wbs_sys_admin'
     ];
 
-    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, PG사, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 택배사, 결제은행, 결제카드, 관리자부여사유, 모의고사응시형태, 모의고사응시지역
+    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, PG사, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 택배사, 결제은행, 결제카드, 관리자부여사유, 모의고사응시형태, 모의고사응시지역, 패키지유형
     public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'Pg' => '603', 'ProdType' => '636', 'LearnPattern' => '615', 'SalePattern' => '694'
         , 'PayStatus' => '676', 'DeliveryStatus' => '677', 'DeliveryComp' => '606', 'Bank' => '678', 'Card' => '697', 'AdminReason' => '705', 'Campus' => '605'
-        , 'MockTakeForm' => '690', 'MockTakeArea' => '691'
+        , 'MockTakeForm' => '690', 'MockTakeArea' => '691', 'PackType' => '648'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)
@@ -68,8 +70,8 @@ class BaseOrderModel extends WB_Model
     // 학습형태 공통코드 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
     public $_learn_pattern_ccd = ['on_lecture' => '615001', 'userpack_lecture' => '615002', 'adminpack_lecture' => '615003', 'periodpack_lecture' => '615004', 'on_free_lecture' => '615005', 'off_lecture' => '615006', 'off_pack_lecture' => '615007'];
 
-    // 운영자패키지 타입 공통코드 (일반형, 선택형)
-    public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002'];
+    // 운영자패키지 타입 공통코드 (일반형, 선택형, 선택형(강사배정))
+    public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002', 'choice_prof' => '648003'];
 
     // 판매형태 공통코드 (일반, 재수강, 수강연장)
     public $_sale_pattern_ccd = ['normal' => '694001', 'retake' => '694002', 'extend' => '694003', 'unit' => '694004', 'auto' => '694005'];

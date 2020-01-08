@@ -311,4 +311,28 @@ class Visit extends BaseOrder
 
         return $this->json_result($result, '수강 등록 되었습니다.', $result);
     }
+
+    /**
+     * 강좌할인율 조회
+     * @return mixed
+     */
+    public function checkDiscRate()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        // 해당 상품 강좌할인율 조회
+        $arr_prod_code = array_values(json_decode($this->_reqP('params'), true));
+        $site_code = $this->_reqP('site_code');
+        $result = $this->salesProductModel->getLetureDiscRate($arr_prod_code, $site_code);
+
+        return $this->json_result(true, '', [], $result);
+    }
 }

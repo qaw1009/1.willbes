@@ -35,9 +35,12 @@ class Combine extends BaseMember
 
         $agree = $this->_req('agree');
 
-        if($agree === 'Y'){
+        // 아이디가 중복 상태이면 본인 확인을 거쳐야합니다.
+        if($data['IsDup'] == 'Y'){
+            // 아이디가 중복이면 본인인증
             $agree = 'Y';
         } else {
+            // 아이디가 중복이 안이면 그냥 확인만
             $agree = 'N';
         }
 
@@ -46,13 +49,305 @@ class Combine extends BaseMember
 
         // 아이핀 인증 데이타
         $this->load->library('NiceAuth');
-        $data = $this->niceauth->ipinEnc();
+        $ipin = $this->niceauth->ipinEnc();
 
         $this->load->view('member/find/combine', [
             'agree' => $agree,
             'mail_domain_ccd' => $codes['661'],
-            'encData' => $data['encData']
+            'encData' => $ipin['encData'],
+            'jointype' => $data['CertifiedInfoTypeCcd']
         ]);
+    }
+
+
+    /**
+     * 중복으로 인해 오류 사용자 본인인증 페이지
+     * @return object|string
+     */
+    public function dup()
+    {
+        $MemId = $this->session->userdata('combine_id');
+        if(empty($MemId) === true){
+            redirect('/');
+        }
+
+        return $this->load->view('member/find/dup_cert',[
+            'id' => $MemId
+        ]);
+    }
+
+
+    /**
+     * 회원 통합 정보 변경 페이지
+     * @return object|string
+     */
+    public function dupform()
+    {
+        // 이미 로그인한 상태이면 초기 페이지로 돌려보낸다.
+        if($this->session->userdata('is_login') === true){
+            show_alert('이미 로그인 상태입니다.', '/', false);
+        }
+
+        $jointype = $this->_req("jointype"); // 인증방법
+        $enc_data = $this->_req("enc_data"); // 인증코드
+        $MemId = $this->_req('var_id'); // 아이디
+
+        // 핸드폰 sms 인증
+        try {
+            // 복호화
+            $this->load->library('encrypt');
+            $plainText = $this->encrypt->decode($enc_data);
+
+            if(empty($plainText)){
+                // 암호화 해제 오류 발생
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
+            }
+
+            // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+            $data_arr = explode("^", $plainText);
+            $phone = $data_arr[1];
+            $MemId = $data_arr[3];
+
+            // 검색쿼리 해당 아이디에 전화번호 확인
+            $where = [
+                'EQ' => [
+                    'MemId' => $MemId,
+                    'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone)
+                ]
+            ];
+
+            $count = $this->memberFModel->getMember(true, $where);
+
+            if($count == 1){
+                // 가입정보가 있을경우
+                $result = $this->memberFModel->getMember(false, $where);
+                if($result['IsDup'] == 'Y') {
+                    return $this->load->view('member/find/dup_form1', [
+                        'MemId' => $MemId,
+                        'Member' => $result,
+                        'enc_data' => $enc_data,
+                        'jointype' => $jointype
+                    ]);
+                } else {
+                    return $this->load->view('member/find/dup_form2', [
+                        'MemId' => $MemId,
+                        'Member' => $result,
+                        'enc_data' => $enc_data,
+                        'jointype' => $jointype
+                    ]);
+                }
+
+            }
+            // 가입정보 없음
+            return $this->load->view('member/find/dup_notfind');
+
+        } catch(Exception $e) {
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine/dup');
+        }
+    }
+
+
+    /**
+     * 회원 통합 처리 페이지
+     */
+    public function dupproc()
+    {
+        $enc_data = $this->_req("enc_data"); // 인증데이타
+        $ChangeID = $this->_req('ChangeId'); // 변경할 아이디
+        $ChangePassword = $this->_req('ChangePassword'); // 변경할 암호
+        $TrustStatus = $this->_req('agree4'); // 선택동의여부
+        $chgid = $this->_req('chgid'); // 아이디변경여부
+
+        if($chgid == 'Y'){ // 아이디변경
+            // 핸드폰 sms 인증
+            try {
+                $this->load->library('encrypt');
+                $plainText = $this->encrypt->decode($enc_data);
+
+                if(empty($plainText)){
+                    // 암호화 해제 오류 발생
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
+                }
+
+                $data_arr = explode("^", $plainText);
+                // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $phone = $data_arr[1];
+                $name = $data_arr[2];
+                $MemId = $data_arr[3];
+
+                $where = [
+                    'EQ' => [
+                        'Mem.MemId' => $MemId,
+                        'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
+                        'Mem.IsDup' => 'Y',
+                        'Mem.IsChange' => 'N'
+                    ]
+                ];
+
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count == 1){
+                    // 이미 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    $MemIdx = $result['MemIdx'];
+
+                    if(empty($ChangeID) == true || empty($ChangePassword) == true){
+                        show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/member/combine');
+                    }
+
+                    $result = $this->memberFModel->getMember(true, ['EQ'=>['MemId'=>$ChangeID]]);
+                    if($result > 0){
+                        // 존재하는 아이디
+                        show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/member/combine');
+                    }
+
+                    // 아이디가 중복 상태이므로 아이디 비밀번호 변경
+                    $result = $this->memberFModel->setCombineMember($MemIdx, [
+                        'MemId' => $ChangeID,
+                        'MemPassword' => $ChangePassword,
+                        'TrustStatus' => $TrustStatus
+                    ], true );
+
+                    if($result === true){
+                        $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+
+                        $this->session->set_tempdata('com_idx', $MemIdx, 60);
+
+                        redirect('member/combine/dupsuccess');
+
+                    } else {
+                        show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine/dup');
+                    }
+                }
+                // 가입정보 없음
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine/dup');
+
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine/dup');
+            }
+
+        } else { // 비밀번호만 변경
+            try {
+                $this->load->library('encrypt');
+                $plainText = $this->encrypt->decode($enc_data);
+
+                if(empty($plainText)){
+                    // 암호화 해제 오류 발생
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
+                }
+
+                $data_arr = explode("^", $plainText);
+                // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $phone = $data_arr[1];
+                $name = $data_arr[2];
+                $MemId = $data_arr[3];
+
+                $where = [
+                    'EQ' => [
+                        'Mem.MemId' => $MemId,
+                        'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
+                        'Mem.IsDup' => 'N',
+                        'Mem.IsChange' => 'Y'
+                    ]
+                ];
+
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count == 1){
+                    // 이미 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    $MemIdx = $result['MemIdx'];
+
+                    if(empty($ChangePassword) == true){
+                        show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/member/combine');
+                    }
+
+                    // 아이디가 중복 상태이므로 아이디 비밀번호 변경
+                    $result = $this->memberFModel->setCombineMember($MemIdx, [
+                        'MemId' => $ChangeID,
+                        'MemPassword' => $ChangePassword,
+                        'TrustStatus' => $TrustStatus
+                    ], false );
+
+                    if($result === true){
+                        $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+
+                        $this->session->set_tempdata('com_idx', $MemIdx, 60);
+
+                        redirect('member/combine/dupsuccess');
+
+                    } else {
+                        show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine/dup');
+                    }
+                }
+                // 가입정보 없음
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine/dup');
+
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine/dup');
+            }
+        }
+
+
+    }
+
+
+    /**
+     * 회원통합 완료 페이지
+     * @return object|string
+     */
+    public function dupsuccess()
+    {
+        $MemIdx = $this->session->tempdata('com_idx');
+
+        if(empty($MemIdx) == true){
+            redirect('/');
+        }
+
+        $data = $this->memberFModel->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $MemIdx]]);
+        if(empty($data) == true){
+            redirect('/');
+        }
+
+        return $this->load->view('member/find/dup_success',[
+            'MemId' => $data['MemId'],
+            'MemName' => $data['MemName'],
+            'ChgDate' => $data['ChangeDate']
+        ]);
+    }
+
+    /**
+     * 읻전에 사용하던 비밀번호인지 체크
+     *
+     */
+    public function checkPWD()
+    {
+        try {
+            $enc_data = $this->_req("enc_data"); // 인증데이타
+            $pwd = $this->_req("ChangePassword"); // 인증데이타
+
+            $this->load->library('encrypt');
+            $plainText = $this->encrypt->decode($enc_data);
+            $data_arr = explode("^", $plainText);
+            // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+            $MemId = $data_arr[3];
+
+            // 해당 아이디/비번으로 로그인 가능한 정보가 있는지
+            $count = $this->memberFModel->getMemberForLogin($MemId, $pwd, true);
+
+            // 로그인 가능한 정보가 있다면 사용할수 없는 아이디임
+            if ($count > 0) {
+                echo "0001";
+                exit(0);
+
+            } else {
+                echo "0000";
+                exit(0);
+            }
+        } catch(Exception $e) {
+            echo "0001";
+            exit(0);
+        }
     }
 
 
@@ -85,6 +380,7 @@ class Combine extends BaseMember
             show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine');
         }
     }
+
 
     /**
      * 회원통합 데이타 입력페이지
@@ -128,7 +424,7 @@ class Combine extends BaseMember
                 // 검색
                 $count = $this->memberFModel->getMember(true, $where);
 
-                if($count > 0){
+                if($count == 1){
                     //가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/combineform', [
@@ -176,7 +472,7 @@ class Combine extends BaseMember
 
                 $count = $this->memberFModel->getMember(true, $where);
 
-                if($count > 0){
+                if($count == 1){
                     // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/combineform', [
@@ -235,7 +531,7 @@ class Combine extends BaseMember
 
                 $count = $this->memberFModel->getMember(true, $where);
 
-                if($count > 0){
+                if($count == 1){
                     // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/combineform', [
@@ -310,7 +606,7 @@ class Combine extends BaseMember
                 // 검색
                 $count = $this->memberFModel->getMember(true, $where);
 
-                if($count > 0){
+                if($count == 1){
                     // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     $MemIdx = $result['MemIdx'];
@@ -346,7 +642,7 @@ class Combine extends BaseMember
                         }
 
                         // 아이디가 중복 상태이므로 아이디 비밀번호 변경
-                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [
+                        $result = $this->memberFModel->setCombineMember($MemIdx, [
                             'MemId' => $ChangeID,
                             'MemPassword' => $ChangePassword,
                             'TrustStatus' => $TrustStatus
@@ -400,7 +696,7 @@ class Combine extends BaseMember
 
                 $count = $this->memberFModel->getMember(true, $where);
 
-                if($count > 0){
+                if($count == 1){
                     // 이미 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     $MemIdx = $result['MemIdx'];
@@ -432,7 +728,7 @@ class Combine extends BaseMember
                         }
 
                         // 아이디가 중복 상태이므로 아이디 비밀번호 변경
-                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [
+                        $result = $this->memberFModel->setCombineMember($MemIdx, [
                             'MemId' => $ChangeID,
                             'MemPassword' => $ChangePassword,
                             'TrustStatus' => $TrustStatus
@@ -496,7 +792,7 @@ class Combine extends BaseMember
 
                 $count = $this->memberFModel->getMember(true, $where);
 
-                if($count > 0){
+                if($count == 1){
                     // 이미 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     $MemIdx = $result['MemIdx'];
@@ -527,7 +823,7 @@ class Combine extends BaseMember
                         }
 
                         // 아이디가 중복 상태이므로 아이디 비밀번호 변경
-                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [
+                        $result = $this->memberFModel->setCombineMember($MemIdx, [
                             'MemId' => $ChangeID,
                             'MemPassword' => $ChangePassword,
                             'TrustStatus' => $TrustStatus
@@ -562,6 +858,7 @@ class Combine extends BaseMember
 
     }
 
+
     /**
      * 통합회원 전환 SMS
      * @return CI_Output
@@ -572,25 +869,46 @@ class Combine extends BaseMember
         $authcode = $this->_req('var_auth');
         $sms_id = $this->_req('var_id');
         $sms_stat = $this->_req('sms_stat');
+        $isall = $this->_req('isall');
 
         $isNew = ($sms_stat == "NEW" ? true : false);
 
         // 이미 가입된 정보 검색
         $phoneEnc = $this->memberFModel->getEncString($phonenumber);
-        $count = $this->memberFModel->getMember(true, [
-            'EQ' => [
-                'Mem.MemId' => $sms_id,
-                'Mem.PhoneEnc' => $phoneEnc,
-                'Mem.CertifiedInfoTypeCcd' => '655002'
-            ],
-            'NOT' => [
-                'Mem.IsStatus' => 'N'
-            ]
-        ]);
+
+        // 가입 방삭에 관계없이 모두 검색
+        if($isall == 'Y') {
+            $count = $this->memberFModel->getMember(true, [
+                'EQ' => [
+                    'Mem.MemId' => $sms_id,
+                    'Mem.PhoneEnc' => $phoneEnc
+                ],
+                'NOT' => [
+                    'Mem.IsStatus' => 'N'
+                ]
+            ]);
+        } else {
+            $count = $this->memberFModel->getMember(true, [
+                'EQ' => [
+                    'Mem.MemId' => $sms_id,
+                    'Mem.PhoneEnc' => $phoneEnc,
+                    'Mem.CertifiedInfoTypeCcd' => '655002'
+                ],
+                'NOT' => [
+                    'Mem.IsStatus' => 'N'
+                ]
+            ]);
+        }
+
 
         if($count == 0){
             // 가입된정보없음
             return $this->json_error("가입된 정보가 없습니다.\n정보를 다시 확인하시거나 회원가입을 진행해주십시요.");
+        }
+
+        if($count != 1){
+            // 가입된정보가 2개 이상임 오류
+            return $this->json_error("가입된 정보에 문제가 있습니다.\n고객센터로 연락주시기 바랍니다.");
         }
 
         // SMS 인증 처리
@@ -601,6 +919,7 @@ class Combine extends BaseMember
             'isnew' => $isNew
         ]);
     }
+
 
     /**
      * 통합회원 전환 메일 전송

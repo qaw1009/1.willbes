@@ -29,8 +29,14 @@
                     </tr>
                     <tr>
                         <th class="w-tit">응시형태</th>
-                        <td class="w-list"><input type="hidden" name="TakeForm" id="TakeForm" value="{{$mock_data['TakeFormsCcd']}}">
-                            {{$mock_data['TakeFormsCcd_Name']}}</td>
+                        <td class="w-list">
+                            {{--<input type="hidden" name="TakeForm" id="TakeForm" value="{{$mock_data['TakeFormsCcd']}}">
+                            {{$mock_data['TakeFormsCcd_Name']}}--}}
+                            @foreach($mock_data['arrTakeFormsCcd'] as $key => $val)
+                                <input type="hidden" name="TakeForm" id="TakeForm" value="{{$key}}">
+                                {{$val}}
+                            @endforeach
+                        </td>
                         <th class="w-tit">응시분야</th>
                         <td class="w-list">{{$mock_data['CateName']}}</td>
                     </tr>

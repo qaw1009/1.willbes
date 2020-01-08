@@ -195,7 +195,56 @@
                 </div>
                 
             </div>
-            <!-- CurriStepBox //--> 
+            <div class="widthAuto curri_schedule">
+                <img src="https://static.willbes.net/public/images/promotion/main/3001_curri_schedule.png" alt="커리큘럼 시간표">               
+                <ul class="curri_schedules">
+                    <li>
+                        <span>12.30~1.31</span>
+                    </li>
+                    <li>
+                        <span>6월 중순 예정</span>
+                    </li>
+                    <li>
+                        <span>2.3~3.13</span>
+                    </li>    
+                    <li>
+                        <span>7월 예정</span> 
+                    </li>
+                    <li>
+                        <span>3.23~3.27</span>
+                    </li>
+                    <li>
+                        <span>8월 예정</span>
+                    </li>
+                    <li>
+                        <span>2.22</span>
+                    </li>
+                    <li>
+                        <span>3.14</span>
+                    </li>
+                    <li>
+                        <span>5~6월 예정</span>
+                    </li>
+                    <li>
+                        <span>7월 예정</span>
+                    </li>
+                    <li>
+                        <span>8월 예정</span>
+                    </li>
+                    <li>
+                        <span>예정</span>
+                    </li>
+                    <li>
+                        <span>예정</span>
+                    </li>
+                    <li>
+                        <span>예정</span>
+                    </li>
+                    <li>
+                        <span>예정</span>
+                    </li>
+                </ul>                
+            </div>
             {{--
             <div class="widthAuto tx-center pt80">    
                 <img src="https://static.willbes.net/public/images/promotion/main/2002_curri_table.png" title="최적의 합격 커리큘럼 연간 테이블">

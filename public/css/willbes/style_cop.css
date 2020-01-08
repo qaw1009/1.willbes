@@ -1133,4 +1133,25 @@
         .offAirBar span.offAirBarBtn {position: absolute; top:0; right: 0; z-index: 2; float:right; display:block; color:#fff; line-height:60px; margin-right:20px}
         .offAirBar ul {position:absolute; top:0; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px; width: 920px;}
         .offAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}
-
+        
+    /*커리큘럼 시간표 */   
+        .curri_schedule{position:relative;margin-top:85px;}
+        .curri_schedules li{position:absolute;left:50%;z-index:5; height:30px}
+        .curri_schedules span{position:absolute; left:50%; top:-16px; margin-left:-40px; width:80px; height:20px; line-height:17px;
+        border:2px solid #000;text-align:center;font-weight:bold;background:#fff; z-index:10; display:none;}
+        .curri_schedules li:hover span {display:block;}
+        .curri_schedules li:nth-child(1) {width:127px; left:88px; top:199px;}
+        .curri_schedules li:nth-child(2) {width:127px; left:734px; top:199px;}
+        .curri_schedules li:nth-child(3) {width:182px; left:218px; top:233px;}
+        .curri_schedules li:nth-child(4) {width:182px; left:863px; top:233px;}
+        .curri_schedules li:nth-child(5) {width:71px; height:44px; left:402px; top:267px;}
+        .curri_schedules li:nth-child(6) {width:71px; height:44px; left:1049px; top:267px;}
+        .curri_schedules li:nth-child(7) {width:126px; left:218px; top:322px;}
+        .curri_schedules li:nth-child(8) {width:126px; left:347px; top:322px;}
+        .curri_schedules li:nth-child(9) {width:255px; left:605px; top:322px;}
+        .curri_schedules li:nth-child(10) {width:126px; left:863px; top:322px;}
+        .curri_schedules li:nth-child(11) {width:127px; left:992px; top:322px;}
+        .curri_schedules li:nth-child(12) {width:61px; height:68px; left:476px; top:362px;}
+        .curri_schedules li:nth-child(13) {width:64px; height:68px; left:538px; top:362px;}
+        .curri_schedules li:nth-child(14) {width:62px; height:68px; left:991px; top:362px;}
+        .curri_schedules li:nth-child(15) {width:64px; height:68px; left:1054px; top:362px;} 

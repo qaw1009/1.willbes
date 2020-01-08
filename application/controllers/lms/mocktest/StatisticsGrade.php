@@ -126,8 +126,9 @@ class StatisticsGrade extends \app\controllers\BaseController
 
         // 직렬이름 추출
         $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $mockTakeForms = $this->config->item('sysCode_applyType', 'mock'); // 응시형태 코드값
 
-        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode, $mockTakeForms]);
 
         $SiteCode = $productInfo['SiteCode'];
         if(empty($productInfo)===false){
@@ -139,8 +140,14 @@ class StatisticsGrade extends \app\controllers\BaseController
                     $productInfo['MockPartName'][] = $codes[$mockKindCode][$mp];
                 }
             }
-        }
 
+            $TakeFormsCcd = explode(',', $productInfo['TakeFormsCcd']);
+            foreach ($TakeFormsCcd as $row) {
+                if( !empty($codes[$mockTakeForms][$row]) ){
+                    $productInfo['TakeFormsCcd_Name'][] = $codes[$mockTakeForms][$row];
+                }
+            }
+        }
         $listArr = $this->regGradeModel->subjectDetail($prodcode);
 
         $MpIdxSet = $listArr['MpIdxSet'];

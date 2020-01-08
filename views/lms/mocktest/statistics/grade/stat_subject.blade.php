@@ -24,7 +24,7 @@
                         <th>회차</th>
                         <th>모의고사명</th>
                         <th>응시형태</th>
-                        <th>응시현황</th>
+                        <th>응시현황ddd</th>
                     </tr>
                     <tr>
                         <td>{{ $productInfo['GroupName'] }}</td>
@@ -38,7 +38,12 @@
                         <td>{{ $productInfo['MockYear'] }}</td>
                         <td>{{ $productInfo['MockRotationNo'] }}</td>
                         <td>{{ $productInfo['ProdName'] }}</td>
-                        <td>{{ $productInfo['TakeFormsCcd_Name'] }}</td>
+                        <td>
+                            {{--{{ $productInfo['TakeFormsCcd_Name'] }}--}}
+                            @foreach($productInfo['TakeFormsCcd_Name'] as $key => $row)
+                                {{ $row }}<br>
+                            @endforeach
+                        </td>
                         <td>{{ $productInfo['USERCNT'] }}</td>
                     </tr>
                     <tr>

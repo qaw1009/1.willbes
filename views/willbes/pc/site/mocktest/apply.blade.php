@@ -64,14 +64,14 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th>No<span class="row-line">|</span></li></th>
-                                    <th>응시분야<span class="row-line">|</span></li></th>
-                                    <th>응시형태<span class="row-line">|</span></li></th>
-                                    <th>시험응시일<span class="row-line">|</span></li></th>
-                                    <th>모의고사명<span class="row-line">|</span></li></th>
-                                    <th>응시료<span class="row-line">|</span></li></th>
-                                    <th>접수기간<span class="row-line">|</span></li></th>
-                                    <th>진행상태<span class="row-line">|</span></li></th>
+                                    <th>No<span class="row-line">|</span></th>
+                                    <th>응시분야<span class="row-line">|</span></th>
+                                    <th>응시형태<span class="row-line">|</span></th>
+                                    <th>시험응시일<span class="row-line">|</span></th>
+                                    <th>모의고사명<span class="row-line">|</span></th>
+                                    <th>응시료<span class="row-line">|</span></th>
+                                    <th>접수기간<span class="row-line">|</span></th>
+                                    <th>진행상태<span class="row-line">|</span></th>
                                     <th>나의 접수상태</th>
                                 </tr>
                                 </thead>
@@ -84,7 +84,12 @@
                                         <tr>
                                             <td class="w-no">{{$paging['rownum']}}</td>
                                             <td class="w-type">{{$row['CateName']}}</td>
-                                            <td class="w-form">@if($row['TakeFormsCcd_Name'] == "off(학원)")<span class="tx-red strong">Off</span>@else<span class="tx-blue strong">Online</span>@endif</td>
+                                            <td class="w-form">
+                                                {{--@if($row['TakeFormsCcd_Name'] == "off(학원)")<span class="tx-red strong">Off</span>@else<span class="tx-blue strong">Online</span>@endif--}}
+                                                @foreach($row['arrTakeFormsCcd'] as $key => $val)
+                                                    {{$val}}
+                                                @endforeach
+                                            </td>
                                             <td class="w-date">{{$row['TakeStartDatm']}} ~<br/>{{$row['TakeEndDatm']}}</td>
                                             <td class="w-list tx-left pl15"><a href="javascript:;" onclick="applyRegist('{{$row['ProdCode']}}','{{$row['OrderProdIdx']}}')">{{$row['ProdName']}}</a></td>
                                             <td class="w-price">@if(empty($sales_info)==false){{ number_format($sales_info[0]['RealSalePrice'],0)}}원@endif</td>

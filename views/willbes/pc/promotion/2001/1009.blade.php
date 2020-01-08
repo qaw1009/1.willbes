@@ -33,12 +33,11 @@
 
         .wb_top {background:#242b35; padding-bottom:150px}
         .wb_top .passLecBuy {position:relative; width:1120px; margin:0 auto}
-        .wb_top .passLecBuy ul {position:absolute; top:1320px; left:84px; z-index:10}
+        .wb_top .passLecBuy ul {position:absolute; top:1320px; width:954px; left:50%; margin-left:-477px; z-index:10}
         .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; }
-        .wb_top .passLecBuy li:nth-child(1) {width:227px}
-        .wb_top .passLecBuy li:nth-child(2) {width:228px}
-        .wb_top .passLecBuy li:nth-child(3) {width:228px}
-        .wb_top .passLecBuy li:nth-child(4) {width:271px}
+        .wb_top .passLecBuy li:nth-child(1) {width:312px}
+        .wb_top .passLecBuy li:nth-child(2) {width:312px}
+        .wb_top .passLecBuy li:nth-child(3) {width:328px}
         .wb_top .passLecBuy li div {font-size:14px; font-weight:bold; background:#000; color:#fff; text-align:left; padding:15px; border-radius:0 10px 10px 10px; margin:0 10px}
         .wb_top .passLecBuy li:last-child div {background:#0d3692;} /*컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-size:16px}
@@ -108,6 +107,12 @@
         .content_guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
         .content_guide_box dd strong {color:#555}
         .content_guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px}
+        .content_guide_box .step {display:inline-block; float:left; width:23%; border:1px solid #c4c4c4; margin-top:10px; margin-right:2%; text-align:center; line-height:1.2}
+        .content_guide_box .step h4 {color:#fff; font-size:18px; background:#c4c4c4; padding:10px 0}
+        .content_guide_box .step h5 {font-size:18px; color:#333; font-weight:bold; margin-bottom:20px}
+        .content_guide_box .step div {padding:20px; min-height:200px; font-size:14px}
+        .content_guide_box .step span {color:#fd4e3d; font-size:10px;}
+        .content_guide_box dd:after {content:""; display:block; clear:both}
 
         .passMsg {width:930px; margin:0 auto 10px; border:0px solid #999; padding:10px}
         .passMsg strong {position:absolute; font-size:16px !important; color:#008bc2; display:inline; border-right:1px solid #008bc2; padding-right:10px; line-height:30px; line-height:30px; z-index:10;}
@@ -239,8 +244,8 @@
                 <ul>
                     <li>
                         <div>
-                        <strong>69</strong>만원<br>
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="156810" onClick=""/> <label for="y_pkg1">6개월 PASS</label>
+                        <strong>79</strong>만원<br>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="159909" onClick=""/> <label for="y_pkg1">8개월 PASS</label>
                         </div>
                     </li>
                     <li>
@@ -254,15 +259,6 @@
                     </li>
                     <li>
                         <div>
-                            <strong>115</strong>만원<br>
-                            <input type="radio" id="y_pkg2_1" name="y_pkg" value="159120" onClick=""/> <label for="y_pkg2_1">기본서set(오태진史)</label><br>
-                            <input type="radio" id="y_pkg2_2" name="y_pkg" value="159121" onClick=""/> <label for="y_pkg2_2">기본서set(원유철史)</label><br>
-                            <input type="radio" id="y_pkg2_3" name="y_pkg" value="159122" onClick=""/> <label for="y_pkg2_3">기본서set(경행경채)</label><br>
-                            <input type="radio" id="y_pkg2_4" name="y_pkg" value="159123" onClick=""/> <label for="y_pkg2_4">10만원 즉시할인</label><br>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
                             <strong>131</strong>만원<br>
                             <input type="radio" id="y_pkg3_1" name="y_pkg" value="158490" onClick=""/> <label for="y_pkg3_1">기본서set(오태진史)</label><br>
                             <input type="radio" id="y_pkg3_2" name="y_pkg" value="158491" onClick=""/> <label for="y_pkg3_2">기본서set(원유철史)</label><br>
@@ -272,7 +268,7 @@
                     </li>
                 </ul>
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_02_200108.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map1009A" id="event">
                     <map name="Map1009A" id="Map1009A">
                         <area shape="rect" coords="853,620,1034,686" href="javascript:go_popup()" alt="교수진보기" />
                         <area shape="rect" coords="375,493,552,533" href="javascript:certOpen();" alt="환승이벤트 참여하기" />
@@ -280,7 +276,7 @@
                     </map>
                 </div>
                 <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_05_03_191220.jpg"  alt="체력" usemap="#Map1009B"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_05_03.jpg"  alt="체력" usemap="#Map1009B"/>
                     <map name="Map1009B" id="Map1009B">
                         <area shape="rect" coords="604,597,736,647" href="https://police.willbes.net/promotion/index/cate/3001/code/1030" target="_blank" alt="경찰체력패키지" />
                     </map>
@@ -359,12 +355,12 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit"><img src="https://static.willbes.net/public/images/promotion/zeropass/1009_09.jpg" alt="신광은경찰 PASS 이용안내"> </p>
             <ul class="tabs">
-                <li><a href="#tab1">6,14,18개월 PASS</a></li>
+                <li><a href="#tab1">8,14개월 PASS</a></li>
                 <li><a href="#tab2">0원 PASS</a></li>
                 <li><a href="#tab3">합격 환승 이벤트</a></li>
             </ul>
 
-            <!--4,14개월-->
+            <!--8,14개월-->
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
@@ -385,7 +381,7 @@
                         <ol>
                             <li>
                             구성 및 환불<br>
-                            - 14,18개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
+                            - 14개월 패스 구매시 기본서 교재 5권 무료제공(배송비 무료)<br>
                             - 선택1: 형법, 형사소송법, 경찰학개론, 영어, 한국사(오태진 한국사)<br>
                             - 선택2: 형법, 형사소송법, 경찰학개론, 영어, 한국사(원유철 한국사)<br>
                             - 선택3: 형법, 형사소송법, 경찰학개론, 수사, 행정법 <br>
@@ -487,7 +483,7 @@
             </div>
 
 
-            <!--평생0원PASS-->
+            <!--0원PASS-->
             <div class="content_guide_box" id="tab2">
                 <dl>
                     <dt>
@@ -659,10 +655,97 @@
 
             <!--환승이벤트-->
             <div class="content_guide_box" id="tab3">
+                {{--
                 <dl>
                     <dt>
-                        <img src="https://static.willbes.net/public/images/promotion/2019/12/1009_09_01_191220.jpg">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/01/1009_09_01.jpg">
                     </dt>
+                </dl>
+                --}}
+                <dl>
+                    <dt>
+                        <h3>이벤트 참여방법 안내</h3>
+                    </dt>
+                    <dd>
+                        <div class="step">
+                            <h4>STEP 1</h4>
+                            <div>
+                                <h5>합격 환승이벤트<br>
+                                참여하기</h5>
+                                로그인후<br>
+                                <strong>타사 수강생 인증</strong><br>
+                                버튼 클릭 <br>
+                                <br>
+                                온/오프라인수강이력
+                            </div>                            
+                        </div>
+                        <div class="step">
+                            <h4>STEP 2</h4>
+                            <div>
+                                <h5>수강이력 캡쳐<br>
+                                이미지 첨부</h5>
+                                타사 사이트에서<br>
+                                수강이력을 확인 할 수<br>
+                                있는 화면 캡쳐<br>
+                                <br>
+                                <span>* PASS 수강이력(단과강의 제외)</span>
+                            </div>                            
+                        </div>
+                        <div class="step">
+                            <h4>STEP 3</h4>
+                            <div>
+                                <h5>관리자 인증</h5>
+                                관리자 인증 완료 시<br>
+                                수강생 휴대폰으로<br>
+                                SMS 개별알림
+                            </div>                            
+                        </div>
+                        <div class="step">
+                            <h4>STEP 4</h4>
+                            <div>
+                                <h5>PASS 구매</h5>
+                                합격 환승 회원<br>
+                                전용 쿠폰으로<br>
+                                PASS 구매
+                            </div>                            
+                        </div>
+                    </dd>
+
+                    <dt>
+                        <h3>혜택적용안내</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>환승 인증완료 시, 쿠폰 즉시 발급 (내강의실 쿠폰함)</li>
+                            <li>8개월 PASS 20% 할인쿠폰 발급</li>
+                            <li>쿠폰 사용기간: 발급일로부터 3일, 일반/경행 PASS 구매시에 사용가능</li>                            
+                        </ol>
+                    </dd>
+
+                    <dt>
+                        <h3>주의사항</h3>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>ID당 1회만 참여 가능합니다.</li>
+                            <li>인증 완료 처리는 신청 후, 24시간 이내에 처리 됩니다.<br/>
+                            단, 주말 및 공휴일 인증건의 경우, 휴일 다음 날 22시 이전에 일괄 처리 됩니다.</li>
+                            <li>정확하게 본인의 이름, 수강중인 강좌 수강내역, 결제내역을 캡쳐하여 업로드 해주셔야 인증이 완료됩니다.(경찰직렬에 한함)<br/>
+                            (결제내역 인증 시, 수강자 이름과 결제 금액, 강좌명이 보여야 합니다.)</li>
+                            <li>유료단과, 무료강의 및 0원 수강이력, PASS 수강종료 6개월이 넘은 경우는 환승제외 대상입니다.</li>
+                            <li>2019. 12 이후 구입한 상품은 적용되지 않습니다.</li>
+                            <li>본 이벤트는 이벤트에 참여한 당사자가 결제한 상품에 한합니다.<br/>
+                            수강 내역 확인이 어려운 증빙서류를 첨부하거나 부정한 방법으로 이벤트에 참여 했을 경우 별도 통보 없이<br/>
+                            즉시 제공된 혜택 회수 및 환불조치 됩니다.</li>
+                            <li>본 혜택은 강좌에 한하며, 교재는 별도 구매 하셔야 합니다.</li>
+                            <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
+                            <li>발급 된 쿠폰은 이벤트가 변경되거나 종료 될 경우 회수 될 수 있으며, 동일 혜택이 적용되지 않습니다.</li>
+                        </ol>
+                    </dd>
+
+                    <dd>
+                        <p>※ 이용문의 : 고객만족센터 1544-5006</p>
+                    </dd>
                 </dl>
             </div>
 

@@ -55,7 +55,8 @@ class SearchBook extends \app\controllers\BaseController
             'ORG' =>[
                 'LKB' => [
                     'P.ProdCode' => $this->_reqP('search_value'),
-                    'P.ProdName' => $this->_reqP('search_value')
+                    'P.ProdName' => $this->_reqP('search_value'),
+                    'VWB.wAuthorNames' => $this->_reqP('search_value')
                 ]
             ]
         ];

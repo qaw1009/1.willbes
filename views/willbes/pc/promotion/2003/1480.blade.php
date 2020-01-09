@@ -67,8 +67,8 @@
             <div>
                 <ul>
                     <li>
-                        2021 김동진 법원팀 - 4기<br />
-                        <span class="NGEB">1.15(수) 마감!</span>
+                        2021 김동진 법원팀 - {{$arr_promotion_params['turn']}}기<br />
+                        <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>

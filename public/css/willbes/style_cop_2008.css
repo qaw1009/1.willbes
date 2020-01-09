@@ -103,7 +103,7 @@
     float: left;
     width: 159px;
     height: 280px;
-    margin-left: 1px !important;
+    margin-left: 1px;
 }
 .cop2008 .Section .ProfCopBox > li:first-child {
     margin-left: 0 !important;;

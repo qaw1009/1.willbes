@@ -242,31 +242,6 @@ class SalesProductModel extends BaseOrderModel
     }
 
     /**
-     * 학원종합반 단강좌 목록 조회
-     * @param int $prod_code [학원종합반 상품코드]
-     * @return mixed
-     */
-    public function findOffPackageSubLectures($prod_code)
-    {
-        $column = 'VP.ProdCode, VP.ProdName, VP.CourseIdx, VP.CourseName, VP.SubjectIdx, VP.SubjectName, VP.ProfIdx, VP.wProfName
-            , VP.StudyStartDate, VP.StudyEndDate, VP.WeekArrayName, VP.Amount
-            , PS.IsEssential';
-        $from = '
-            from ' . $this->_table['product_r_sublecture'] . ' as PS
-                inner join ' . $this->_table['off_lecture'] . ' as VP
-                    on PS.ProdCodeSub = VP.ProdCode
-            where PS.ProdCode = ?
-                and PS.IsStatus = "Y"
-            order by VP.OrderNumCourse, VP.OrderNumSubject asc, VP.ProfIdx asc 
-        ';
-
-        // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from, [$prod_code]);
-
-        return $query->result_array();
-    }
-
-    /**
      * wbs 교재식별자와 연결된 구매교재정보가 있는 단강좌의 json 데이터 업데이트 (교재 판매여부, 사용여부가 변경되었을 경우만)
      * @param int $wbook_idx [wbs 교재식별자]
      * @return bool|string
@@ -389,7 +364,7 @@ class SalesProductModel extends BaseOrderModel
                 group by P.SiteCode, PC.CateCode, PL.CourseIdx
                 having count(0) > 1
             ) A
-                inner join lms_product_lecture_disc as B
+                inner join ' . $this->_table['product_lecture_disc'] . ' as B
                     on A.DiscIdx = B.DiscIdx
             where A.DiscRate > 0
                 and B.IsUse = "Y" 

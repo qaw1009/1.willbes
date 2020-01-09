@@ -8571,6 +8571,8 @@ table.PassZoneTable .w-data {
     margin: 0 10px;
 }
 
+.PASSZONE-List .lecTitle {background: #f9f9f9; font-size:18px; color:#000; padding:15px;}
+
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-Add */
 .PASSZONE-Add {
     float: right;

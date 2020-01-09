@@ -11,16 +11,11 @@
                 <ul>
                     <li>
                         <div class="sliderNum">
-{{--                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2008_756x292.jpg" title="해양경찰 특채PASS"></a></div>--}}
-{{--                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2008_756x292.jpg" title="KCG 핵심요약"></a></div>--}}
                             {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                         </div>
                     </li>
                     <li>
                         <div class="sliderNum">
-{{--                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2008_360x292.jpg" alt="10일 완성 패키지"></a></div>--}}
-{{--                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2008_360x292.jpg" title="KCG 핵심요약"></a></div>--}}
-{{--                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2008_360x292.jpg" title="KCG 마무리특강"></a></div>--}}
                             {!! banner_html(element('메인_서브', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                         </div>
                     </li>
@@ -35,49 +30,49 @@
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jjh.jpg" alt="정주형">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="/professor/show/cate/3100/prof-idx/50859/?subject_idx=1595&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_kth.jpg" alt="고태환">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="/professor/show/cate/3100/prof-idx/50863/?subject_idx=1597&subject_name=%EB%AF%BC%EB%B2%95%EC%B4%9D%EC%B9%99" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jh.jpg" alt="조현">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="/professor/show/cate/3100/prof-idx/50861/?subject_idx=1596&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_mhs.jpg" alt="문형석">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="/professor/show/cate/3100/prof-idx/50856/?subject_idx=1592&subject_name=%ED%98%95%EB%B2%95" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_ldh.jpg" alt="이동호">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="/professor/show/cate/3100/prof-idx/50858/?subject_idx=1593&subject_name=%ED%96%89%EC%A0%95%ED%95%99" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jjc.jpg" alt="정진찬">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="/professor/show/cate/3100/prof-idx/50862/?subject_idx=1594&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_ljs.jpg" alt="임진석">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="/professor/show/cate/3100/prof-idx/50855/?subject_idx=1591&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -87,8 +82,6 @@
         <div class="Section mt95">
             <div class="widthAuto bnrSec02">
                 <ul>
-{{--                    <li><a href="#"><img src="https://static.willbes.net/public/images/promotion/main/2008_556x120.jpg" alt="권소현 항해술"></a></li>--}}
-{{--                    <li><a href="#"><img src="https://static.willbes.net/public/images/promotion/main/2008_556x120.jpg" alt="황다혜 기관술"></a></li>--}}
                     @for($i=1; $i<=2; $i++)
                         @if(isset($data['arr_main_banner']['메인_강좌소개_'.$i]) === true)
                             <li>
@@ -113,34 +106,6 @@
                 @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
             </div>
         </div>
-
-        {{--
-        <div id="QuickMenu" class="MainQuickMenu">
-            <ul>
-                <li>
-                    <div class="QuickDdayBox">
-                        <div class="q_tit">3차 필기시험</div>
-                        <div class="q_day">2018.12.12</div>
-                        <div class="q_dday NSK-Blac">D-5</div>
-                    </div>
-                </li>
-                <li>
-                    <div class="QuickSlider">
-                        <div class="sliderNum">
-                            <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170911_popup" target="_blank"><img src="{{ img_url('cop/quick/quick_190108.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank"><img src="{{ img_url('cop/quick/quick_190109.jpg') }}" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_190110.jpg') }}" alt="배너명"></a>
-                </li>
-                <li>
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_talk.jpg') }}" alt="배너명"></a>
-                </li>
-            </ul>
-        </div>
-        --}}
     </div>
     <!-- End Container -->
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}

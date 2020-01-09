@@ -104,6 +104,12 @@
                                             </span>
                                         </li>
                                     @endif
+                                    {{-- 단과할인율 표기 --}}
+                                    @if(isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y')
+                                        <li>
+                                            <span class="tx-red">{{ $row['LecDiscTitle'] }} (↓{{ $row['LecDiscRate'] }}%)</span>
+                                        </li>
+                                    @endif
                                 </ul>
                             @endforeach
                             {{-- 자동지급 사은품 --}}

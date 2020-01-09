@@ -74,8 +74,8 @@
 
         {{-- checkbox 클릭시 --}}
         $regi_off_form.on('change', '.chk_products', function() {
-            $_id = $(this).data('prod-code');
-            $_val = $(this).val();
+            var $_id = $(this).data('prod-code');
+            var $_val = $(this).val();
             if ($(this).prop('checked') === true) {
                 eachProductCart($_id, $_val);
             } else {
@@ -140,19 +140,22 @@
             '{{ csrf_token_name() }}' : $regi_off_form.find('input[name="{{ csrf_token_name() }}"]').val()
         };
         sendAjax(url, data, function(ret) {
-            seq = 0;
-            price_sum = 0;
-            html = '';
+            var seq = 0;
+            var price_sum = 0;
+            var html = '';
             if(ret.data.length > 0) {
                 $.each(ret.data, function (i, item) {
-                    //console.log(item.ProdCode +' -- '+ item.ProdName);
                     html += '<div class="LecPocketlist" id="'+ item.CartIdx + '" data-prod-code="'+item.ProdCode+'" data-sub-prod-code="'+item.ProdCodeSub +'">';
-                    html += '  <span class="oBox campus_'+item.CampusCcd+' ml10 NSK">' + item.CampusCcdName + '</span>\n';
-                    html +='   &nbsp;<span class="w-tit p_re">' + item.ProdName + '\n';
-                    html +='          <a class="closeBtn" href="javascript:;" onclick="rowDelete(\'' + item.CartIdx + '\')"><img src="{{ img_url('cart/close.png') }}"></a>\n';
-                    html +='   </span>\n';
-                    html +='   <ul class="NSK"><li class="price tx-blue f_right">' + addComma(item.RealSalePrice) + '원</li></ul>\n';
-                    html +='</div>\n';
+                    html += '   <span class="oBox campus_'+item.CampusCcd+' ml10 NSK">' + item.CampusCcdName + '</span>\n';
+                    html += '   <span class="w-tit p_re">&nbsp;' + item.ProdName + '\n';
+                    html += '          <a class="closeBtn" href="javascript:;" onclick="rowDelete(\'' + item.CartIdx + '\')"><img src="{{ img_url('cart/close.png') }}"></a>\n';
+                    html += '   </span>\n';
+                    html += '   <ul class="NSK"><li class="price tx-blue f_right">' + addComma(item.RealSalePrice) + '원</li></ul>\n';
+                    {{-- 단과할인율 표기 --}}
+                    if (typeof item.IsLecDisc !== 'undefined' && item.IsLecDisc === 'Y') {
+                        html += '<div class="tx-red tx12 c_both">' + item.LecDiscTitle + ' (↓' + item.LecDiscRate + '%)</div>\n';
+                    }
+                    html += '</div>\n';
                     seq += 1;
                     price_sum += parseInt(item.RealSalePrice);
                 });

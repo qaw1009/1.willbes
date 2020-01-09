@@ -16,7 +16,7 @@ class OrderFModel extends BaseOrderFModel
     /**
      * 장바구니 데이터 가공
      * @param string $make_type [데이터 생성구분, 주문 : order, 결제 : pay, 사용포인트 체크 : check_use_point]
-     * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
+     * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book, 모의고사 : mock_exam]
      * @param array $cart_rows [유효한 장바구니 데이터]
      * @param array $arr_coupon_detail_idx [장바구니별 적용된 사용자쿠폰 식별자]
      * @param int $use_point [결제 사용 포인트]
@@ -46,6 +46,11 @@ class OrderFModel extends BaseOrderFModel
         $is_package = false;
         $arr_user_coupon_idx = [];
         $use_point = get_var($use_point, 0);
+
+        // 단과 강좌할인율 조회 (온라인강좌, 학원강좌일 경우만)
+        if ($cart_type == 'on_lecture' || $cart_type == 'off_lecture') {
+            $cart_rows = $this->cartFModel->getAddLectureDiscToCartData($cart_rows);
+        }
 
         foreach ($cart_rows as $idx => $row) {
             // 장바구니 구분과 실제 상품구분 값 비교 (온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book, 기타 : etc (배송료))
@@ -93,6 +98,12 @@ class OrderFModel extends BaseOrderFModel
             // 패키지상품 포함 여부
             if ($is_package === false && ends_with($row['CartProdType'], '_pack_lecture') === true) {
                 $is_package = true;
+            }
+
+            // 단과 강좌할인율이 적용된 경우 포인트 적립, 쿠폰 사용 불가
+            if (isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y') {
+                $row['IsCoupon'] = 'N';
+                $row['IsPoint'] = 'N';
             }
 
             // 변수 초기화
@@ -282,7 +293,7 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * 사용포인트 체크
-     * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
+     * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book, 모의고사 : mock_exam]
      * @param int $use_point [사용 포인트]
      * @param int $total_use_point_target_price [포인트 사용 가능상품의 실제 결제금액 합계, 온라인 단강좌, 온라인 수강연장, 교재 상품만 포인트 사용 가능]
      * @return bool|string
@@ -730,6 +741,7 @@ class OrderFModel extends BaseOrderFModel
                 'TargetOrderIdx' => element('TargetOrderIdx', $input),
                 'TargetProdCode' => element('TargetProdCode', $input),
                 'TargetProdCodeSub' => element('TargetProdCodeSub', $input),
+                'Remark' => element('Remark', $input),
                 'CaIdx' => $ca_idx
             ];
 
@@ -1202,6 +1214,10 @@ class OrderFModel extends BaseOrderFModel
                 // 사용자패키지, 학원 종합반 (단강좌, 학원 단과 속성 정보를 등록함)
                 // 단강좌, 학원단과 정보 조회
                 $prod_rows = $this->productFModel->findProductLectureInfo($arr_prod_code_sub);
+                if (empty($prod_rows) === true) {
+                    throw new \Exception('서브강좌 수강정보 조회에 실패했습니다.');
+                }
+
                 foreach ($prod_rows as $idx => $prod_row) {
                     // 사용자패키지일 경우 패키지 판매정보의 수강연장일수 합산
                     if ($learn_pattern == 'userpack_lecture') {

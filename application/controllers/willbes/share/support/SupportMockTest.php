@@ -30,8 +30,11 @@ class SupportMockTest extends BaseSupport
             'EQ' => [
                 'pm.SiteCode' => ($this->_site_code == config_item('app_intg_site_code')) ? '' : $this->_site_code,
                 'pm.CateCode' => $this->_cate_code,
-                'pm.IsUse' => 'Y'
-
+                'pm.IsUse' => 'Y',
+                'op.PayStatusCcd' => '676001'
+            ],
+            'RAW' => [
+                'op.MemIdx = ' => $this->session->userdata('mem_idx')
             ],
             'LKB' => [
                 'pm.ProdName' => $s_keyword
@@ -95,7 +98,7 @@ class SupportMockTest extends BaseSupport
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx_qna,
                 'b.IsUse' => 'Y',
-                'mr.TakeMockPart' => $s_take_mock_part
+                'mr.TakeMockPart' => $s_take_mock_part,
             ],
             'RAW' => [
                 'b.ProdCode = ' => $prod_code

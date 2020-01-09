@@ -244,6 +244,9 @@ class MockInfoFModel extends WB_Model
 
         $from = "
             FROM {$this->_table['mock_product']} AS pm
+            INNER JOIN {$this->_table['mock_register']} mr ON pm.ProdCode = mr.ProdCode
+            INNER JOIN {$this->_table['order_product']} op ON op.OrderProdIdx = mr.OrderProdIdx
+            INNER JOIN {$this->_table['order']} o on op.OrderIdx = o.OrderIdx
             LEFT OUTER JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
@@ -257,12 +260,6 @@ class MockInfoFModel extends WB_Model
                 WHERE BmIdx = '96' AND IsStatus = 'Y'
                 GROUP BY ProdCode
             ) AS BD2 ON BD2.ProdCode = pm.ProdCode
-            
-            JOIN (
-                SELECT ProdCode
-                FROM {$this->_table['mock_register']}
-                WHERE MemIdx = '{$this->session->userdata('mem_idx')}'
-            ) AS BD3 ON BD3.ProdCode = pm.ProdCode
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

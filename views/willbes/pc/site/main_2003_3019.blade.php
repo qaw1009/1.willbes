@@ -38,8 +38,8 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1445" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/main/3019_visual_contents.gif" alt="기출의 중요성">
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1509" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/main/1509_graph_main.gif" alt="진도별 문제풀이 비약적인 상승">
                 </a>
             </div>
         </div>

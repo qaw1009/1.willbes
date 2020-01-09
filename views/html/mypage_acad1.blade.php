@@ -138,10 +138,9 @@
                 <div class="willbes-Lec-Table NG d_block c_both">
                     <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                         <colgroup>
-                            <col style="width: 510px;">
+                            <col>
                             <col style="width: 160px;">
                             <col style="width: 150px;">
-                            <col style="width: 120px;">
                         </colgroup>
                         <tbody>
                             <tr>
@@ -151,7 +150,7 @@
                                             기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
                                             한덕현 교수님
                                         </dt>
-                                    </dl><br>
+                                    </dl>
                                     <div class="w-tit">22018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                 </td>
                                 <td class="w-period">2018.10.20 ~ 2018.11.20</td>
@@ -159,19 +158,15 @@
                                     월 ~ 금<br/>
                                     10회차
                                 </td>
-                                <td class="w-answer">
-                                    2018.00.00<br/>
-                                    개강
-                                </td>
                             </tr>
                             <tr>
                                 <td class="w-data tx-left pl10">
                                     <dl class="w-info">
                                         <dt>
-                                            영어<span class="row-line">|</span>
+                                            기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
                                             한덕현 교수님
                                         </dt>
-                                    </dl><br>
+                                    </dl>
                                     <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                 </td>
                                 <td class="w-period">2018.10.20 ~ 2018.11.20</td>
@@ -179,20 +174,16 @@
                                     월,화,금<br/>
                                     8회차
                                 </td>
-                                <td class="w-answer">
-                                    2018.00.00<br/>
-                                    개강
-                                </td>
                             </tr>
                             <tr>
                                 <td class="w-data tx-left pl10">
                                     <dl class="w-info">
                                         <dt>
-                                            영어<span class="row-line">|</span>
+                                            기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
                                             한덕현 교수님
                                             {{--<span class="NSK ml15 nBox n4">마감</span>--}}
                                         </dt>
-                                    </dl><br>
+                                    </dl>
                                     <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                 </td>
                                 <td class="w-period">2018.10.20 ~ 2018.11.20</td>
@@ -200,12 +191,9 @@
                                     화,금<br/>
                                     8회차
                                 </td>
-                                <td class="w-answer">
-                                    <a href="#none"><span class="bBox blueBox">보강동영상</span></a>
-                                </td>
                             </tr>
                             <tr>
-                                <td colspan="4" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
+                                <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -243,7 +231,7 @@
                 <div class="willbes-Lec-Table NG d_block c_both">
                     <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                         <colgroup>
-                            <col style="width: 510px;">
+                            <col>
                             <col style="width: 160px;">
                             <col style="width: 120px;">
                         </colgroup>
@@ -254,7 +242,7 @@
                                 </td>
                                 <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                                 <td class="w-answer p_re">
-                                    <a href="#none"><span class="bBox blueBox">강사선택하기</span></a>
+                                    <a href="#none" onclick="openWin('profChoice')"><span class="bBox blueBox">강사선택하기</span></a>
                                 </td>
                             </tr>
                             <tr>
@@ -292,7 +280,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
+                                <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -312,6 +300,233 @@
                             <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                         </ul>
                     </div>
+                </div>
+            </div>
+
+            <!--강사선택 팝업-->
+            <div id="profChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
+                <a class="closeBtn" href="#none" onclick="closeWin('profChoice')">
+                    <img src="{{ img_url('sub/close.png') }}">
+                </a>
+                <div class="Layer-Tit tx-dark-black NG">강사선택하기</div> 
+                <div class="lecMoreWrap of-hidden h590">                    
+                    <div class="PASSZONE-List widthAutoFull">
+                        <div class="lecTitle NG">
+                            [영어강화형_분납] 8개월 슈퍼PASS(원) [1/13~8/31] 
+                        </div>
+
+                        <div class="strong mt25 mb10 tx-gray">· 주문정보</div>
+                        <div class="LeclistTable bdt-gray">
+                            <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 8%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 10%;">
+                                    <col style="width: 10%;">
+                                    <col style="width: 10%;">
+                                    <col style="width: 15%;">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>걀제일</th>
+                                        <th>결제금액</th>
+                                        <th>환불금액</th>
+                                        <th>미납금액</th>
+                                        <th>주문번호</th>
+                                        <th>비고</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th colspan="7">[총 기결제금액] <strong class="tx-blue">150,000원</strong> [총 기환불금액] 0원 |  [총 미납금액] <strong class="tx-red">250,000원</strong> </th>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>2019-03-04 0:00</td>
+                                        <td>100,000</td>
+                                        <td>0</td>
+                                        <td>250,000</td>
+                                        <td><a href="#none" class="tx-blue">20190000000000000000</a></td>
+                                        <td> 2차 납부 </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2019-01-04 0:00</td>
+                                        <td>50,000</td>
+                                        <td>0</td>
+                                        <td>350,000</td>
+                                        <td><a href="#none" class="tx-blue">20190000000000000000</a></td>
+                                        <td> 1차 납부(3회 분납 예정) </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="PASSZONE-Lec-Section">
+                            <div class="strong mt25 tx-gray h22 mb30">
+                                · 수강할 강사를 선택해주세요. <br>
+                                · 강사 선택 및 변경은 강사선택기간에만 가능하며, 기간이 지난 이후에는 변경이 불가능합니다.
+                            </div>
+
+                            <div class="c_both mb20">
+                                <ul class="tabWrap tabDepthPass">
+                                    <li><a href="#subjecttab1" class="on">필수과목</a></li>
+                                    <li><a href="#subjecttab2">선택과목</a></li>
+                                </ul>                                
+                            </div>
+
+                            <div class="LeclistTable bdt-gray mt25 mb30 c_both" id="subjecttab1">                                
+                                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 5%;">
+                                        <col style="width: 10%;">
+                                        <col>
+                                        <col style="width: 15%;">
+                                        <col style="width: 12%;">
+                                        <col style="width: 15%;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>과정</th>
+                                            <th>과목</th>
+                                            <th>선택</th>
+                                            <th>교수</th>
+                                            <th>단과반명</th>
+                                            <th>개강일~종강일 </th>
+                                            <th>요일(회차)</th>
+                                            <th>강사선택기간</th>
+                                        </tr>
+                                    </thead>
+                                    </tbody>
+                                        <tr>
+                                            <td rowspan="5">예비순환 </td>
+                                            <td rowspan="2">형법 </td>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명1 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>월수금(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명2 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>화목(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2">민법 </td>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명3 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>수목금(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명4 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>월수금(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                        <tr>
+                                            <td>행정법 </td>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명5 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>화목(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="btnAuto130 mt20 tx-white tx14 strong"><a href="#" class="bBox blueBox">적용</a></div>
+                            </div>
+
+                            <div class="LeclistTable bdt-gray mt25 mb30 c_both" id="subjecttab2">
+                                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 5%;">
+                                        <col style="width: 10%;">
+                                        <col>
+                                        <col style="width: 15%;">
+                                        <col style="width: 12%;">
+                                        <col style="width: 15%;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>과정</th>
+                                            <th>과목</th>
+                                            <th>선택</th>
+                                            <th>교수</th>
+                                            <th>단과반명</th>
+                                            <th>개강일~종강일 </th>
+                                            <th>요일(회차)</th>
+                                            <th>강사선택기간</th>
+                                        </tr>
+                                    </thead>
+                                    </tbody>
+                                        <tr>
+                                            <td rowspan="5">기본이론</td>
+                                            <td rowspan="2">형법 </td>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명1 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>월수금(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명2 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>화목(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2">민법 </td>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명3 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>수목금(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                        <tr>
+                                            <td>○</td>
+                                            <td>교수명4 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>월수금(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                        <tr>
+                                            <td>행정법 </td>
+                                            <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                                            <td>교수명5 </td>
+                                            <td class="tx-left">단과반명이 출력됩니다. </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>화목(13회차) </td>
+                                            <td>2020-00-00~2020-00-00 </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="btnAuto130 mt20 tx-white tx14 strong"><a href="#" class="bBox blueBox">적용</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PASSZONE-List -->
                 </div>
             </div>
 

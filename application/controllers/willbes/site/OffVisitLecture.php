@@ -19,6 +19,12 @@ class OffVisitLecture extends OffLecture
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $result = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, null, null, 'N', 'Y', true);
+
+        // 단과 강좌할인율 적용
+        if (empty($result) === false) {
+            $result = $this->cartFModel->getAddLectureDiscToCartData($result);
+        }
+
         return $this->response([
             'data' => $result
         ]);

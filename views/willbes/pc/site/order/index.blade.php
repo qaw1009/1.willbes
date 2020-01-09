@@ -106,6 +106,12 @@
                                                     </span>
                                                 </dt>
                                             @endif
+                                            @if(isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y')
+                                                {{-- 단과할인율 표기 --}}
+                                                <dt class="mt5">
+                                                   <span class="tx-red">{{ $row['LecDiscTitle'] }} (↓{{ $row['LecDiscRate'] }}%)</span>
+                                                </dt>
+                                            @endif
                                         </dl>
                                     </td>
                                     <td>{{ $row['CartProdType'] == 'book' ? $row['ProdQty'] : '' }}</td>

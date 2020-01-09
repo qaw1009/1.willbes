@@ -32,85 +32,53 @@
             <div class="widthAuto">
                 <ul class="ProfCopBox mt60">
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="신광은">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2008_159x280.jpg" alt="신광은">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
                             <li><a href="#none" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="김원욱">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2008_159x280.jpg" alt="김원욱">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
                             <li><a href="#none" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="하승민">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2008_159x280.jpg" alt="하승민">
                         <ul class="ProfBtns">
                             <li><a href="#none">▶</a></li>
                             <li><a href="#none" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="김현정">
-                                    <ul class="ProfBtns">
-                                        <li><a href="#none">▶</a></li>
-                                        <li><a href="#none" target="_blank">교수소개</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="김준기">
-                                    <ul class="ProfBtns">
-                                        <li><a href="#none">▶</a></li>
-                                        <li><a href="#none" target="_blank">교수소개</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="https://static.willbes.net/public/images/promotion/main/2008_159x280.jpg" alt="하승민">
+                        <ul class="ProfBtns">
+                            <li><a href="#none">▶</a></li>
+                            <li><a href="#none" target="_blank">교수소개</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="오태진">
-                                    <ul class="ProfBtns">
-                                        <li><a href="#none">▶</a></li>
-                                        <li><a href="#none" target="_blank">교수소개</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="원유철">
-                                    <ul class="ProfBtns">
-                                        <li><a href="#none">▶</a></li>
-                                        <li><a href="#none" target="_blank">교수소개</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="https://static.willbes.net/public/images/promotion/main/2008_159x280.jpg" alt="하승민">
+                        <ul class="ProfBtns">
+                            <li><a href="#none">▶</a></li>
+                            <li><a href="#none" target="_blank">교수소개</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="공득인">
-                                    <ul class="ProfBtns">
-                                        <li><a href="#none">▶</a></li>
-                                        <li><a href="#none" target="_blank">교수소개</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2008_184x280.jpg" alt="공득인">
-                                    <ul class="ProfBtns">
-                                        <li><a href="#none">▶</a></li>
-                                        <li><a href="#none" target="_blank">교수소개</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="https://static.willbes.net/public/images/promotion/main/2008_159x280.jpg" alt="하승민">
+                        <ul class="ProfBtns">
+                            <li><a href="#none">▶</a></li>
+                            <li><a href="#none" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/main/2008_159x280.jpg" alt="하승민">
+                        <ul class="ProfBtns">
+                            <li><a href="#none">▶</a></li>
+                            <li><a href="#none" target="_blank">교수소개</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

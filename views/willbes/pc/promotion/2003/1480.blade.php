@@ -67,8 +67,8 @@
             <div>
                 <ul>
                     <li>
-                        2021 김동진 법원팀 - 3기<br />
-                        <span class="NGEB">1.8(수) 마감!</span>
+                        2021 김동진 법원팀 - 4기<br />
+                        <span class="NGEB">1.15(수) 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -212,7 +212,7 @@
 
         <div class="evtCtnsBox wb_01" >
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01.jpg" alt="예비순환과 함께라면 단 1년 만에 합격!"/><Br>
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01_01.jpg" alt="혁신적인 커리큘럼"/><Br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01_01.gif" alt="혁신적인 커리큘럼"/><Br>
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1480_01_02.jpg" alt="김동진 법원팀 교수진" usemap="#Map1480A" border="0"/>
             <map name="Map1480A" id="Map1480A">
                 <area shape="rect" coords="831,1090,922,1115" href="http://cafe.daum.net/LAW-KDJTEAM" target="_blank" alt="온라인상담" />

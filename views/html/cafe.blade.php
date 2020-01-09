@@ -22,130 +22,130 @@
         <div>
             <img src="https://static.willbes.net/public/images/cafe/cafe_s_title_01.gif" alt="직렬별소식"/>
         </div>
-        <div style="padding:0 20px 0 25px;">
+        <div style="width: 740px; padding-left: 10px;">
             <table width="700" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="235" style="padding-bottom:15px; text-align:left;">
-                        <a href="#"> 
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn01.gif" alt="7/9급"/>
-                        </a>
-                    </td>
-                    <td width="235" style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn02.gif" alt="법원직"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn03.gif" alt="경찰"/>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn04.gif" alt="기술직"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn05.gif" alt="소방"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn06.gif" alt="제로백"/>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn07.gif" alt="군무원"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn08.gif" alt="임용"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn09.gif" alt="전문자격증"/>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn10.gif" alt="고등고시"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn11.gif" alt="어학"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn12.gif" alt="여유"/>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn13.gif" alt="여유"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn14.gif" alt="여유"/>
-                        </a>
-                    </td>
-                    <td style="padding-bottom:15px; text-align:left;">
-                        <a href="#">
-                            <img src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn15.gif" alt="여유"/>
-                        </a>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td width="235" style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank"> 
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn01.gif" alt="7" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn01.gif">
+                            </a>
+                        </td>
+                        <td width="235" style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn02.gif" alt="법원직" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn02.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn03.gif" alt="경찰" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn03.gif">
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn04.gif" alt="기술직" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn04.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn05.gif" alt="소방" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn05.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn06.gif" alt="제로백" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn06.gif">
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn07.gif" alt="군무원" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn07.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn08.gif" alt="임용" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn08.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn09.gif" alt="전문자격증" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn09.gif">
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn10.gif" alt="고등고시" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn10.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn11.gif" alt="어학" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn11.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn12.gif" alt="여유" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn12.gif">
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn13.gif" alt="여유" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn13.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn14.gif" alt="여유" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn14.gif">
+                            </a>
+                        </td>
+                        <td style="text-align: left; padding-bottom: 15px;">
+                            <a target="_blank">
+                                <img id="https://static.willbes.net/public/images/cafe/cafe_230x70_bn15.gif" alt="여유" src="https://static.willbes.net/public/images/cafe/cafe_230x70_bn15.gif">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
-        <div style="margin-top:30px">
-            <img src="https://static.willbes.net/public/images/cafe/cafe_s_title_02.gif" alt="직렬별 대표교수"/>
+        <div style="margin-top: 30px;">
+            <img id="https://static.willbes.net/public/images/cafe/cafe_s_title_02.gif" alt="직렬별 대표교수" src="https://static.willbes.net/public/images/cafe/cafe_s_title_02.gif">
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=38&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro01.gif" alt="7/9급"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=38&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro01.gif" alt="7" src="https://static.willbes.net/public/images/cafe/cafe_pro01.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=41&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro02.gif" alt="법원직"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=41&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro02.gif" alt="법원직" src="https://static.willbes.net/public/images/cafe/cafe_pro02.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=43&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro03.gif" alt="신광은경찰팀"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=43&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro03.gif" alt="신광은경찰팀" src="https://static.willbes.net/public/images/cafe/cafe_pro03.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=42&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro04.gif" alt="기술직"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=42&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro04.gif" alt="기술직" src="https://static.willbes.net/public/images/cafe/cafe_pro04.gif"></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=75&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro05.gif" alt="소방" src="https://static.willbes.net/public/images/cafe/cafe_pro05.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=75&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro05.gif" alt="소방"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=37&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro06.gif" alt="제로백" src="https://static.willbes.net/public/images/cafe/cafe_pro06.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=37&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro06.gif" alt="제로백"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=64&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro07.gif" alt="군무원" src="https://static.willbes.net/public/images/cafe/cafe_pro07.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=64&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro07.gif" alt="군무원"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=82&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro08.gif" alt="임용" src="https://static.willbes.net/public/images/cafe/cafe_pro08.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=82&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro08.gif" alt="임용"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=83&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro09.gif" alt="전문자격증" src="https://static.willbes.net/public/images/cafe/cafe_pro09.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=83&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro09.gif" alt="전문자격증"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=84&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro08.gif" alt="고등고시" src="https://static.willbes.net/public/images/cafe/cafe_pro08.gif"></a>
         </div>
         <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=84&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro10.gif" alt="고등고시"/></a>
-        </div>
-        <div>
-            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&search.menuid=85&search.boardtype=L"><img src="https://static.willbes.net/public/images/cafe/cafe_pro11.gif" alt="어학"/></a>
+            <a href="https://cafe.naver.com/ArticleList.nhn?search.clubid=29933671&amp;search.menuid=85&amp;search.boardtype=L" target="_blank"><img id="https://static.willbes.net/public/images/cafe/cafe_pro09.gif" alt="어학" src="https://static.willbes.net/public/images/cafe/cafe_pro09.gif"></a>
         </div>
     </div>         
 </div>

@@ -312,7 +312,8 @@
     <!-- CS센터 //-->
 
     <div id="QuickMenu" class="MainQuickMenu">
-        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_sky01.jpg"></a></div>    
+        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2000_sky01.jpg" alt="학원보강"></a></div> 
+        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2000_sky02.jpg" alt="학원 1:1상담"></a></div>  
         <ul>
             <li><a href="#none">강의 계획서</a></li>
             <li><a href="#none">강의 시간표</a></li>

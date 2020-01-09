@@ -3977,6 +3977,49 @@ table.classTable tr td.w-data {
 }
 
 
+/* subContainer : Content : 내강의실 > 학원강좌 > 수강신청강좌 : lecList */
+.willbes-Layer-lecList {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 20px;
+    right: 125px;
+    z-index: 110;
+    width: 400px;
+    height: auto;
+    border: 1px solid #2f2f2f;
+    padding: 20px;
+}
+.willbes-Layer-lecList .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-lecList .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 25px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-lecList .Layer-Tit span {
+    vertical-align: baseline;
+}
+.willbes-Layer-lecList .Layer-SubTit {
+    font-size: 12px;
+    padding: 20px 0;
+    text-align: left;
+} 
+.willbes-Layer-lecList .Layer-SubTit li {
+    list-style: disc;
+    line-height: 1.4;
+    margin-bottom:10px;
+    margin-left:15px;
+}
+.willbes-Layer-lecList .Layer-SubTit li:last-child {
+    margin-bottom:0;
+}
+
 
 
 /* subContainer : Content : 강의목차 : LeclistTable */

@@ -10,14 +10,10 @@
             <div class="widthAuto bnrSec01 nSlider pick">
                 <ul>
                     <li>
-                        <div class="sliderNum">
-                            {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
-                        </div>
+                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderNum') !!}
                     </li>
                     <li>
-                        <div class="sliderNum">
-                            {!! banner_html(element('메인_서브', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
-                        </div>
+                        {!! banner_html(element('메인_서브', $data['arr_main_banner']), 'sliderNum') !!}
                     </li>
                 </ul>
             </div>

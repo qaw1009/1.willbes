@@ -18,8 +18,11 @@ class ProductFModel extends WB_Model
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'product_division' => 'lms_product_division',
+        'product_r_category' => 'lms_product_r_category',
         'product_r_sublecture' => 'lms_product_r_sublecture',
         'product_r_product' => 'lms_product_r_product',
+        'product_lecture_disc' => 'lms_product_lecture_disc',
+        'product_lecture_disc_info' => 'lms_product_lecture_disc_info',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
         'product_memo' => 'lms_product_memo',
@@ -336,6 +339,7 @@ class ProductFModel extends WB_Model
      */
     public function findProductLectureInfo($prod_code = [])
     {
+        $arr_prod_code = get_arr_var($prod_code, '0');
         $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
         $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, ifnull(PL.IsLecStart, "N") as IsLecStart, PL.StudyStartDate, PL.StudyEndDate
             , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate) + 1, 0)) as StudyPeriod            
@@ -343,7 +347,7 @@ class ProductFModel extends WB_Model
         	, if(PL.MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(PL.AllLecTime * 60 * PL.MultipleApply, int), 0) as MultipleAllLecSec
 	        , PL.IsPackLecStartType';
         $arr_condition = [
-            'EQ' => ['P.IsStatus' => 'Y'], 'IN' => ['P.ProdCode' => (array) $prod_code]
+            'EQ' => ['P.IsStatus' => 'Y'], 'IN' => ['P.ProdCode' => $arr_prod_code]
         ];
 
         $data = $this->_conn->getJoinListResult($this->_table['product'] . ' as P', 'inner', $this->_table['product_lecture'] . ' as PL', 'P.ProdCode = PL.ProdCode'
@@ -577,6 +581,82 @@ class ProductFModel extends WB_Model
         return $this->_conn->getJoinListResult($this->_table['product_r_product'] . ' as PP', 'inner', $this->_table['product'] . ' as P'
             , 'PP.ProdCodeSub = P.ProdCode and PP.ProdTypeCcd = P.ProdTypeCcd'
             , $column, $arr_condition);
+    }
+
+    /**
+     * 강좌할인율 리턴 (단강좌, 단과반 상품만 해당)
+     * @param $arr_prod_code
+     * @param $site_code
+     * @return array|null
+     */
+    public function getLetureDiscRate($arr_prod_code, $site_code)
+    {
+        $result = null;
+        $arr_learn_pattern_ccd = ['615001', '615006'];  // 단강좌, 단과반
+
+        // 운영사이트 강좌할인율 설정여부 확인
+        $cnt_rows = $this->_conn->getListResult($this->_table['product_lecture_disc'], 'DiscIdx'
+            , ['EQ' => ['SiteCode' => get_var($site_code, '0'), 'IsUse' => 'Y', 'IsStatus' => 'Y']]);
+        if (empty($cnt_rows) === true) {
+            return null;
+        }
+
+        // 강좌할인율 조회 (사이트코드, 카테고리코드, 과정식별자 기준)
+        $column = 'A.DiscIdx, B.DiscTitle, A.DiscRate, A.BundleProdCode';
+        $from = '
+            from (
+                select P.SiteCode, PC.CateCode, PL.CourseIdx
+                    , group_concat(P.ProdCode) as BundleProdCode	
+                    , max(PDC.DiscIdx) as DiscIdx
+                    , ifnull((select DiscRate 
+                        from ' . $this->_table['product_lecture_disc_info'] . ' 
+                        where DiscIdx = max(PDC.DiscIdx)
+                            and DiscNum <= count(0)
+                            and IsApply = "Y" and IsStatus = "Y" 
+                        order by DiscNum desc limit 1
+                      ), 0) as DiscRate		
+                from ' . $this->_table['product'] . ' as P
+                    inner join ' . $this->_table['product_lecture'] . ' as PL
+                        on P.ProdCode = PL.ProdCode
+                    inner join ' . $this->_table['product_r_category'] . ' as PC
+                        on P.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
+                    inner join ' . $this->_table['product_lecture_disc'] . ' as PDC
+                        on PDC.SiteCode = P.SiteCode and PDC.CateCode = PC.CateCode and PDC.CourseIdx = PL.CourseIdx and PDC.IsUse = "Y" and PDC.IsStatus = "Y"                             
+                where P.ProdCode in ?
+                    and P.SiteCode = ?
+                    and P.ProdTypeCcd in ("' . $this->_prod_type_ccd['on_lecture'] . '", "' . $this->_prod_type_ccd['off_lecture'] . '")
+                    and PL.LearnPatternCcd in ("' . $arr_learn_pattern_ccd[0] . '", "' . $arr_learn_pattern_ccd[1] . '")
+                    and P.IsUse = "Y"
+                    and P.IsStatus = "Y"                                        
+                group by P.SiteCode, PC.CateCode, PL.CourseIdx
+                having count(0) > 1
+            ) A
+                inner join ' . $this->_table['product_lecture_disc'] . ' as B
+                    on A.DiscIdx = B.DiscIdx
+            where A.DiscRate > 0
+                and B.IsUse = "Y" 
+                and B.IsStatus = "Y"                        
+        ';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from, [$arr_prod_code, $site_code])->result_array();
+        if (empty($data) === true) {
+            return null;
+        }
+
+        // 상품코드별 할인정보 설정
+        foreach ($data as $row) {
+            $bundle_prod_code = explode(',', $row['BundleProdCode']);
+            foreach ($bundle_prod_code as $prod_code) {
+                $result[$prod_code] = [
+                    'DiscIdx' => $row['DiscIdx'],
+                    'DiscRate' => $row['DiscRate'],
+                    'DiscTitle' => $row['DiscTitle']
+                ];
+            }
+        }
+
+        return $result;
     }
 
     /**

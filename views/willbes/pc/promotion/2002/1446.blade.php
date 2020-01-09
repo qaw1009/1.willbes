@@ -101,6 +101,8 @@
 
     <div class="evtCtnsBox wb_cts03">
         <img src="https://static.willbes.net/public/images/promotion/2019//10/1446_03.jpg" alt="튜터링 관리반 시간표"/>
+        <img src="https://static.willbes.net/public/images/promotion/2019/10/1446_03_tab1_con.png" />     
+        {{--
         <div class="tabs">
             <ul>
                 <li>
@@ -123,6 +125,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/10/1446_03_tab2_con.png" />            
             </div>
         </div>
+        --}}
     </div>
 
     <div class="evtCtnsBox wb_cts04">

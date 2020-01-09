@@ -8,16 +8,10 @@
         </div>
 
         <div class="Content p_re">
-            <div class="willbes-Mocktest INFOZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 모의고사
-                </div>
-            </div>
             <!-- "willbes-Mocktest INFOZONE -->
-
             <div class="willbes-Mypage-Tabs mt10">
                 <ul class="tabMock three">
-                    @include('willbes.pc.site.mocktestNew.tab_menu_partial')
+                    @include('willbes.pc.'.$include_path.'.tab_menu_partial')
                 </ul>
                 <div class="willbes-Cart-Txt NG mt30 p_re">
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
@@ -82,15 +76,15 @@
                                     <td class="w-no">{{$paging['rownum']}}</td>
                                     <td class="w-type">{{$row['CateName']}}</td>
                                     <td class="w-list tx-left pl20">{{$row['ProdName']}}</td>
-                                    <td class="w-test"><a class="tx-light-blue" href="{{front_url('/mocktestNew/listQna/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['qnaTotalCnt']}}개</a></td>
+                                    <td class="w-test"><a class="tx-light-blue" href="{{front_url('/'.$default_path.'/listQna/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['qnaTotalCnt']}}개</a></td>
                                     <td class="w-state">
                                         @if ($row['TakeStartDate'] <= date('Ymd') && $row['TakeEndDate'] >= date('Ymd') || $row['AcceptStatusCcd'] != '675003')
-                                            <a href="{{front_url('/mocktestNew/createQna/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">[등록]</a>
+                                            <a href="{{front_url('/'.$default_path.'/createQna/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">[등록]</a>
                                         @else
                                             <p class="tx-red">마감</p>
                                         @endif
                                     </td>
-                                    <td class="w-graph"><a class="tx-light-blue" href="{{front_url('/mocktestNew/listNotice/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['noticeCnt']}}개</a></td>
+                                    <td class="w-graph"><a class="tx-light-blue" href="{{front_url('/'.$default_path.'/listNotice/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['noticeCnt']}}개</a></td>
                                 </tr>
                                 @php $paging['rownum']-- @endphp
                             @endforeach
@@ -102,6 +96,10 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
         </div>
-        {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        @if ($default_path == 'mocktestNew')
+            {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        @else
+            {!! banner('내강의실_우측퀵', 'Quick-Bnr', $__cfg['SiteCode'], '0') !!}
+        @endif
     </div>
 @stop

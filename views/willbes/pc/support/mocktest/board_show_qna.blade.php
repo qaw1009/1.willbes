@@ -8,20 +8,14 @@
         </div>
 
         <div class="Content p_re">
-            <div class="willbes-Mocktest INFOZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 모의고사
-                </div>
-            </div>
-
             <div class="willbes-Mypage-Tabs mt10">
                 <ul class="tabMock three">
-                    @include('willbes.pc.site.mocktestNew.tab_menu_partial')
+                    @include('willbes.pc.'.$include_path.'.tab_menu_partial')
                 </ul>
                 <div class="LeclistTable">
                     <div class="willbes-Mock-Subject NG">
                         · 이의제기
-                        <div class="subBtn mock black f_right"><a href="{{front_url('/mocktestNew/board/cate/'.$__cfg['CateCode'])}}">전체 모의고사 목록</a></div>
+                        <div class="subBtn mock black f_right"><a href="{{front_url('/'.$default_path . ($default_path == 'mocktestNew' ? '/board/cate/' . $__cfg['CateCode'] : ''))}}">전체 모의고사 목록</a></div>
                     </div>
                     <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                         <colgroup>
@@ -73,7 +67,7 @@
                                     @if(empty($board_data['AttachData']) === false)
                                         @foreach($board_data['AttachData'] as $row)
                                             @if($row['FileType'] == 0)
-                                                <a href="{{front_url('/mocktestNew/boardFileDownload?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                                                <a href="{{front_url('/'.$default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                             @endif
                                         @endforeach
@@ -120,7 +114,7 @@
                                     @if(empty($board_data['AttachData']) === false)
                                         @foreach($board_data['AttachData'] as $row)
                                             @if($row['FileType'] == 1)
-                                                <a href="{{front_url('/mocktestNew/boardFileDownload?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                                                <a href="{{front_url('/'.$default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                             @endif
                                         @endforeach
@@ -156,25 +150,29 @@
 
             </div>
         </div>
-        {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        @if ($default_path == 'mocktestNew')
+            {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        @else
+            {!! banner('내강의실_우측퀵', 'Quick-Bnr', $__cfg['SiteCode'], '0') !!}
+        @endif
     </div>
 
     <script type="text/javascript">
         $(document).ready(function() {
             //목록
             $('#btn_list').click(function() {
-                location.href = '{!! front_url('/mocktestNew/listQna/cate/'.$__cfg['CateCode'].'?'.$get_params) !!}';
+                location.href = '{!! front_url('/'.$default_path.'/listQna/cate/'.$__cfg['CateCode'].'?'.$get_params) !!}';
             });
 
             //수정
             $('#btn_modify').click(function() {
-                location.href = '{!! front_url('/mocktestNew/createQna/cate/'.$__cfg['CateCode'].'?'.$get_params.'&board_idx='.$board_idx) !!}';
+                location.href = '{!! front_url('/'.$default_path.'/createQna/cate/'.$__cfg['CateCode'].'?'.$get_params.'&board_idx='.$board_idx) !!}';
             });
 
             //삭제
             $('#btn_del').click(function() {
                 if (!confirm('삭제하시겠습니까?')) { return true; }
-                location.href = '{!! front_url('/mocktestNew/deleteQna/cate/'.$__cfg['CateCode'].'?'.$get_params.'&board_idx='.$board_idx) !!}';
+                location.href = '{!! front_url('/'.$default_path.'/deleteQna/cate/'.$__cfg['CateCode'].'?'.$get_params.'&board_idx='.$board_idx) !!}';
             });
         });
     </script>

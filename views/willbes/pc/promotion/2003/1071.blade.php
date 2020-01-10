@@ -232,7 +232,13 @@
                         <td>문제풀이</td>
                         <td>2020 최우영 전자공학 단원별문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157561" target="_blank">수강신청</a></td>
-                    </tr>                    
+                    </tr> 
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2020 최우영 전자공학 기출 단원문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159135" target="_blank">수강신청</a></td>
+                    </tr>                   
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
@@ -327,6 +333,12 @@
                         <td>문제풀이</td>
                         <td>2020 최우영 전자공학 단원별문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157561" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2020 최우영 전자공학 기출 단원문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159135" target="_blank">수강신청</a></td>
                     </tr>                  
                     <tr>
                         <td>전자공학</td>
@@ -593,14 +605,14 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2019 최우영 전기기기 단원별 기출문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146364" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 전기기기 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157560" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전기기기 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157560" target="_blank">수강신청</a></td>
+                        <td>2019 최우영 전기기기 실전 동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146951" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -649,8 +661,8 @@
                     <tr>
                         <td>회로이론</td>
                         <td>이론</td>
-                        <td>2017 최우영 회로이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/145706" target="_blank">수강신청</a></td>
+                        <td>2020 최우영 회로이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159133" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>회로이론</td>
@@ -698,7 +710,13 @@
                         <td>문제풀이</td>
                         <td>2020 최우영 전자공학 단원별 문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157561" target="_blank">수강신청</a></td>
-                    </tr>                    
+                    </tr> 
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2020 최우영 전자공학 기출 단원문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159135" target="_blank">수강신청</a></td>
+                    </tr>                       
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
@@ -780,7 +798,13 @@
                         <td>문제풀이</td>
                         <td>2020 최우영 전자공학 단원별 문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157561" target="_blank">수강신청</a></td>
-                    </tr>                    
+                    </tr>
+                    <tr>
+                        <td>전자공학</td>
+                        <td>문제풀이</td>
+                        <td>2020 최우영 전자공학 기출 단원문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159135" target="_blank">수강신청</a></td>
+                    </tr>                       
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>

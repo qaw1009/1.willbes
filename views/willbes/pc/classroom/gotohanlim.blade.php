@@ -1,4 +1,4 @@
-<form name="form" id="form" method="post" action="http://pregosi.willbes.net/api/willbes.asp">
+<form name="form" id="form" method="post" action="{{$url}}/api/willbes.asp">
     <input type="hidden" name="enc_data" value="{{$enc_data}}" />
 </form>
 <script>

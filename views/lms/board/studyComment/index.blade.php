@@ -19,6 +19,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
+                            <option value="">중분류</option>
+                            @foreach($arr_m_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="search_subject" name="search_subject">
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
@@ -140,6 +147,7 @@
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
             $search_form.find('select[name="search_subject"]').chained("#search_site_code");
             $search_form.find('select[name="search_professor"]').chained("#search_site_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_category");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

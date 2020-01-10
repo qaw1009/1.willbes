@@ -17,7 +17,7 @@
                     <div class="oldMypage" id="oldMypage">
                         <img src="https://static.willbes.net/public/images/promotion/sub/mypage_oldmypage_popup.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
                         <map name="oldMypage" id="oldMypage">
-                            <area shape="rect" coords="74,232,205,262" href="javascript:popupOpen('{{front_url('/classroom/home/gotoHanlim/')}}', 'mylec', 1000, 800, null, null, 'yes', 'no');" alt="이전 내강의실 보기"/>
+                            <area shape="rect" coords="74,232,205,262" href="javascript:popupOpen('{{front_url('/classroom/home/gotoHanlim/')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');" alt="이전 내강의실 보기"/>
                             <area shape="rect" coords="257,0,280,24" href="#none" onclick="closeWin('oldMypage')"alt="닫기"/>
                         </map>
                     </div>
@@ -97,7 +97,7 @@
                 </div>
                 @if(empty(sess_data('mem_hanlimid')) == false)
                 <div class="Quick-Bnr mt20">
-                    <a href="javascript:popupOpen('{{front_url('/classroom/home/gotoHanlim/')}}', 'mylec', 1000, 800, null, null, 'yes', 'no');"><img src="https://static.willbes.net/public/images/promotion/2019/12/bn_160x242.gif" alt="이전 내강의실 보기"></a>
+                    <a href="javascript:popupOpen('{{front_url('/classroom/home/gotoHanlim/')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');"><img src="https://static.willbes.net/public/images/promotion/2019/12/bn_160x242.gif" alt="이전 내강의실 보기"></a>
                 </div>
                 @endif
                 <div class="Quick-Top">

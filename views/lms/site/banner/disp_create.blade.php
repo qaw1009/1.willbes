@@ -40,9 +40,13 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="disp_name">노출섹션명<span class="required">*</span></label>
-                    <div class="form-inline col-md-10 item">
+                    <div class="col-md-3 item">
                         <input type="text" id="disp_name" name="disp_name" required="required" class="form-control" maxlength="100" title="배너명" value="{{ $data['DispName'] }}">
-                        <span class="required pl-15">*</span> PC 사이트 메인에 노출되는 섹션명은 반드시 <span class="red bold">`메인_`</span>으로 시작하는 명칭으로 등록해 주세요.
+                    </div>
+                    <div class="col-md-7">
+                        <p class="form-control-static">
+                            <span class="required">*</span> PC 사이트 메인에 노출되는 섹션명은 반드시 <span class="red bold">`메인_`</span>으로 시작하는 명칭으로 등록해 주세요.
+                        </p>
                     </div>
                 </div>
 

@@ -37,11 +37,15 @@ class Disp extends \app\controllers\BaseController
         $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
         $category_data = array_merge($total_category_data, $category_data);
 
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
+
         //배너노출방식
         $disp_info = $this->codeModel->getCcd($this->_groupCcd['banner_disp']);
 
         $this->load->view('site/banner/disp_index',[
             'arr_cate_code' => $category_data,
+            'arr_m_category' => $arr_m_category,
             'arr_disp_info' => $disp_info
         ]);
     }
@@ -142,7 +146,8 @@ class Disp extends \app\controllers\BaseController
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'A.DispTypeCcd' => $this->_reqP('search_banner_disp_type'),
-                'A.IsUse' => $this->_reqP('search_is_use')
+                'A.IsUse' => $this->_reqP('search_is_use'),
+                'A.CateCode' => $this->_reqP('search_md_cate_code')
             ],
             'LKR' => [
                 'A.CateCode' => $this->_reqP('search_cate_code')

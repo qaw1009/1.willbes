@@ -22,8 +22,9 @@
 
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}
 
-		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/01/150403_real_t_bg.jpg) repeat-x center top;}	
-		.evt_01 {background:#dcd8d5; padding:50px 0 100px}
+		.evt_top {background:#333439; padding:50px 0}	
+        .evt_01 {background:#ffcc00; padding:50px 0 100px}
+        .evt_02 {background:#fff; padding:100px 0}
 
         .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto; width:980px !important; margin:0 auto; background:#fff}
 		.evtCtnsBox table th,
@@ -50,12 +51,15 @@
 
 	<div class="evtContent NGR">
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150403_real_t.png" alt="일반상식" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/2016_willtc34_6_jpg.png" alt="공기업 기계직" />
         </div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/150403_real_m.png" alt="김기출" />
-            <table cellspacing="0" cellpadding="0" class="mt50">
+            <img src="https://static.willbes.net/public/images/promotion/2020/01/2016_willtc34_7.jpg" alt="강의소개" />            
+        </div>
+
+        <div class="evtCtnsBox evt_02">
+            <table cellspacing="0" cellpadding="0">
                 <colgroup>
                     <col width="">
                     <col width="10%">
@@ -63,17 +67,71 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>교수명/강의명</th>
+                        <th>교수명/ 강의명</th>
                         <th>기간</th>
                         <th>신청</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>일반상식 기출핵심정리(이론+문제) 강의</td>
-                        <td>70일</td>
+                        <td>[일반기계기사] 김정배 |  기초수학 핵심강의</td>
+                        <td>5일</td>
                         <td><a href="#">수강신청 ></a></td>
-                    </tr>     
+                    </tr>      
+
+                    <tr>
+                        <td>[일반기계기사] 김정배 |  기계기사 기출문제풀이</td>
+                        <td>5일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>       
+
+                    <tr>
+                        <td>[일반기계기사] 김정배 |  동역학 핵심강의</td>
+                        <td>30일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>        
+
+                    <tr>
+                        <td>[일반기계기사] 김정배 |  유압기기 핵심강의</td>
+                        <td>12일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>        
+
+                    <tr>
+                        <td>[일반기계기사] 이현문 |  기계재료 핵심강의</td>
+                        <td>30일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>[일반기계기사] 이현문 |  기계제작법 핵심강</td>
+                        <td>60일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>        
+
+                    <tr>
+                        <td>[일반기계기사] 김정배 |  기계설계 핵심강의</td>
+                        <td>60일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>        
+
+                    <tr>
+                        <td>[일반기계기사] 김정배 |  유체역학 핵심강의</td>
+                        <td>60일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>        
+
+                    <tr>
+                        <td>[일반기계기사] 김정배 |  열역학 핵심강의</td>
+                        <td>60일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>       
+
+                    <tr>
+                        <td>[일반기계기사] 김정배 |  재료역학 핵심강의</td>
+                        <td>60일</td>
+                        <td><a href="#">수강신청 ></a></td>
+                    </tr>  
                 </tbody>
             </table>
         </div>

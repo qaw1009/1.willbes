@@ -27,9 +27,13 @@ class EventLecture extends \app\controllers\BaseController
         //카테고리 조회(구분)
         $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
 
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', 2);
+
         $this->load->view("site/event_lecture/index", [
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
+            'arr_m_category' => $arr_m_category,
             'send_option_ccd' => $this->eventLectureModel->_event_lecture_option_ccds[2],
             'arr_request_types' => $this->eventLectureModel->_request_type_names,
         ]);

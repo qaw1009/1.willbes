@@ -19,8 +19,12 @@ class Dday extends \app\controllers\BaseController
         //카테고리 조회(구분)
         $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
 
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', 2);
+
         $this->load->view("site/d_day/index", [
-            'arr_category' => $arr_category
+            'arr_category' => $arr_category,
+            'arr_m_category' => $arr_m_category
         ]);
     }
 
@@ -28,6 +32,9 @@ class Dday extends \app\controllers\BaseController
     {
         $arr_condition = $this->_getListConditions();
         $arr_condition_category = [
+            'EQ' => [
+                'B.CateCode' => $this->_reqP('search_md_cate_code')
+            ],
             'LKR' => [
                 'B.CateCode' => $this->_reqP('search_category')
             ]

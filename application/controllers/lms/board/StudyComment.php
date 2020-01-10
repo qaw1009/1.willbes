@@ -46,6 +46,9 @@ class StudyComment extends BaseBoard
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
 
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
+
         //과목조회
         $arr_subject = $this->_getSubjectArray();
 
@@ -57,6 +60,7 @@ class StudyComment extends BaseBoard
             'arr_search_data' => $arr_search_data['arr_search_data'],
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_category' => $arr_category,
+            'arr_m_category' => $arr_m_category,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
             'boardName' => $this->board_name,
@@ -113,7 +117,8 @@ class StudyComment extends BaseBoard
         if (empty($this->_reqP('search_category')) === false) {
             $sub_query_condition = [
                 'EQ' => [
-                    'subLBrC.IsStatus' => 'Y'
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_md_cate_code')
                 ],
                 'LKR' => [
                     'subLBrC.CateCode' => $this->_reqP('search_category')

@@ -59,21 +59,16 @@
         </div>
         <!--wb_cts03//-->
         <div class="evtCtnsBox wb_cts04" id="event">
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377" border="0" />
-            <map name="Map1377" id="Map1377">
-                <area shape="rect" coords="669,320,832,371" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154887" target="_blank"alt="온라인" />
-                <area shape="rect" coords="841,320,1011,372" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank"alt="학원실강" />
-				
-                <area shape="rect" coords="665,442,832,493" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/156352" target="_blank"alt="온라인" />
-                <area shape="rect" coords="838,444,1008,495" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank"alt="학원실강" />
-				
-                <area shape="rect" coords="665,563,829,613" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157583" target="_blank" alt="온라인" />
-                <area shape="rect" coords="840,563,1003,609" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank"alt="학원실강" />
-				
-                <area shape="rect" coords="671,682,830,731" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157584" target="_blank" alt="온라인" />
-                <area shape="rect" coords="837,681,1002,731" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank"alt="학원실강" />           
-                <area shape="rect" coords="665,798,1006,851" href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_blank"alt="온라인 수강신청" />
-            </map> 
+            <img src="https://static.willbes.net/public/images/promotion/2019/08/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377open" border="0" />
+            <map name="Map1377open" id="Map1377open">
+                <area shape="rect" coords="668,329,832,373" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/159038" target="_blank" />
+                <area shape="rect" coords="668,446,832,495" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/159039" target="_blank" />
+                <area shape="rect" coords="665,567,834,614" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/159143" target="_blank" />
+                <area shape="rect" coords="839,328,1001,376" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
+                <area shape="rect" coords="835,447,1003,493" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
+                <area shape="rect" coords="841,568,1001,613" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
+                <area shape="rect" coords="666,715,1000,809" href="https://pass.willbes.net/promotion/index/cate/3019/code/1074" target="_blank" />
+            </map>            
         </div>
         <!--wb_cts04//-->
     </div>

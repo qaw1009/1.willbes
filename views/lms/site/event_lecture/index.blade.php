@@ -24,6 +24,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
+                            <option value="">중분류</option>
+                            @foreach($arr_m_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="search_request_type" name="search_request_type">
                             <option value="">신청유형</option>
                             @foreach($arr_request_types as $key => $val)
@@ -122,6 +129,7 @@
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_category");
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({

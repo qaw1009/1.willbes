@@ -55,7 +55,7 @@ class Counsel extends BaseBoard
         /*print_r($arr_category);*/
 
         //사이트카테고리 중분류 조회
-        $arr_m_category = $this->categoryModel->getCategoryArray('','','','2');
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
 
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');

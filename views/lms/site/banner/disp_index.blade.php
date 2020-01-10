@@ -25,6 +25,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
+                            <option value="">중분류</option>
+                            @foreach($arr_m_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control mr-10" id="search_banner_disp_type" name="search_banner_disp_type" title="노출섹션타입">
                             <option value="">노출섹션타입</option>
                             @foreach($arr_disp_info as $key => $val)
@@ -107,6 +114,7 @@
 
             // 카테고리 자동변경
             $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_cate_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({

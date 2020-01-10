@@ -21,7 +21,15 @@
                         <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_cate_code as $row)
-                                <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                {{-- <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option> --}}
+                                <option value="{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+
+                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
+                            <option value="">중분류</option>
+                            @foreach($arr_m_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
 
@@ -121,6 +129,7 @@
             $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_banner_disp_idx"]').chained("#search_cate_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_cate_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({

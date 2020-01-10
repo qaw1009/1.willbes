@@ -1734,7 +1734,7 @@ class OrderModel extends BaseOrderModel
             $prod_row['SalePatternCcd'] = $this->_sale_pattern_ccd['normal'];
             $prod_row['PayStatusCcd'] = $this->_pay_status_ccd['paid'];
             $prod_row['SaleTypeCcd'] = $arr_prod_price_data[0]['SaleTypeCcd'];
-            $prod_row['RealSalePrice'] = $arr_prod_price_data[0]['SalePrice'];
+            $prod_row['RealSalePrice'] = element('order_price', $input, 0);  // 정상가 미사용 ($arr_prod_price_data[0]['SalePrice'])
             $prod_row['RealPayPrice'] = element('real_pay_price', $input, 0);
             $prod_row['CardPayPrice'] = element('card_pay_price', $input, 0);
             $prod_row['CashPayPrice'] = element('cash_pay_price', $input, 0);
@@ -1765,11 +1765,6 @@ class OrderModel extends BaseOrderModel
                 $prod_row['DiscRate'] = 0;
                 $prod_row['DiscType'] = 'R';
                 $prod_row['DiscReason'] = null;
-
-                // 선택형(강사배정) 종합반일 경우 이전 주문 상품코드서브 조회 (미수금 1번째 주문만 내강의실 정보 저장)
-                /*if (empty($unpaid_idx) === false && $prod_row['PackTypeCcd'] == $this->_adminpack_lecture_type_ccd['choice_prof']) {
-                    $prod_row['ProdCodeSub'] = $this->orderListModel->getProdCodeSubToFirstOrderUnPaidInfo($prod_code, $mem_idx, $unpaid_idx);
-                }*/
             }
 
             // 실결제금액이 0원이면 자동지급 안함 (0원결제(방문))
@@ -1891,11 +1886,11 @@ class OrderModel extends BaseOrderModel
 
                 $unpaid_idx = $this->_conn->insert_id();
                 $unpaid_price = $org_pay_price - $real_pay_price;
-                $is_first = 'Y';
+                $is_first_unpaid = 'Y';
             } else {
                 $unpaid_idx = $row['UnPaidIdx'];
                 $unpaid_price = $row['RealUnPaidPrice'] - $real_pay_price;
-                $is_first = 'N';
+                $is_first_unpaid = 'N';
             }
 
             // 미수금액 체크
@@ -1909,7 +1904,7 @@ class OrderModel extends BaseOrderModel
                 'OrderIdx' => $order_idx,
                 'UnPaidPrice' => $unpaid_price,
                 'UnPaidMemo' => element('UnPaidMemo', $input),
-                'IsFirst' => $is_first
+                'IsFirstUnPaid' => $is_first_unpaid
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['order_unpaid_hist']) === false) {

@@ -282,7 +282,7 @@
                 <li><a href="#tab1" id="menu_tab1" data-tab-id="1">9급 농업직</a></li>
                 <li><a href="#tab2" id="menu_tab2" data-tab-id="2">7급 농업직</a></li>
                 <li><a href="#tab3" id="menu_tab3" data-tab-id="3">농촌지도사</a></li>
-				<li><a href="#tab4" id="menu_tab4" data-tab-id="4">생물학개론</a></li>
+				<li><a href="#tab4" id="menu_tab4" data-tab-id="4">생물학</a></li>
 				<li><a href="#tab5" id="menu_tab5" data-tab-id="5">유기농업기능사</a></li>
             </ul>
             <!--9급 농업직-->
@@ -304,14 +304,14 @@
 					  <tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2019 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146812">수강신청</a></td>
+						<td>2020 장사원 재배학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159040">수강신청</a></td>
 					  </tr>
 					  <tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2019 장사원 재배학 실전 동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147057">수강신청</a></td>
+						<td>2020 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159041">수강신청</a></td>
 					  </tr>
 					  <tr>
 						<td>재배학</td>
@@ -345,14 +345,14 @@
 					  <tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2019 장사원 식용작물 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146811">수강신청</a></td>
+						<td>2020 장사원 식용작물 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159042">수강신청</a></td>
 					  </tr>
 					  <tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2019 장사원 식용작물 실전 동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147056">수강신청</a></td>
+						<td>2020 장사원 식용작물 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159043">수강신청</a></td>
 					  </tr>
 					  <tr>
 						<td>식용작물</td>
@@ -389,14 +389,14 @@
 				  <tr>
 					<td>재배학</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 재배학 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146812">수강신청</a></td>
+					<td>2020 장사원 재배학 기출문제풀이</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159040">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>재배학</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 재배학 실전    동형모의고사</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147057">수강신청</a></td>
+					<td>2020 장사원 재배학 실전동형모의고사</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159041">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>재배학</td>
@@ -428,14 +428,14 @@
 				  <tr>
 					<td>식용작물</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 식용작물 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146811">수강신청</a></td>
+					<td>2020 장사원 식용작물 기출문제풀이</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159042">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>식용작물</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 식용작물 실전    동형모의고사</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147056">수강신청</a></td>
+					<td>2020 장사원 식용작물 실전동형모의고사</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159043">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>식용작물</td>
@@ -461,8 +461,8 @@
 				  <tr>
 					<td>생물학개론</td>
 					<td>이론</td>
-					<td>2019 장사원 생물학개론 이론강의</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146810">수강신청</a></td>
+					<td>2020 장사원 생물학 이론</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159046">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>생물학개론</td>
@@ -514,14 +514,14 @@
 				  <tr>
 					<td>재배학</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 재배학 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146812">수강신청</a></td>
+					<td>2020 장사원 재배학 기출문제풀이</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159040">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>재배학</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 재배학 실전    동형모의고사</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/147057">수강신청</a></td>
+					<td>2020 장사원 재배학 실전동형모의고사</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159041">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>재배학</td>
@@ -553,8 +553,8 @@
 				  <tr>
 					<td>작물생리학</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 작물생리학 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146853">수강신청</a></td>
+					<td>2020 장사원 작물생리학 기출문제풀이</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159044">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>작물생리학</td>
@@ -601,8 +601,8 @@
 				  <tr>
 					<td>농촌지도론</td>
 					<td>문제풀이</td>
-					<td>2019 장사원 농촌지도론 기출문제풀이</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146854">수강신청</a></td>
+					<td>2020 장사원 농촌지도론 기출문제풀이</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159045">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>농촌지도론</td>
@@ -648,8 +648,8 @@
 				  <tr>
 					<td>생물학개론</td>
 					<td>이론</td>
-					<td>2019 장사원 생물학개론 이론강의</td>
-					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/146810">수강신청</a></td>
+					<td>2020 장사원 생물학 이론</td>
+					<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159046">수강신청</a></td>
 				  </tr>
 				  <tr>
 					<td>생물학개론</td>

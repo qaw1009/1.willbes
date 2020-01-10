@@ -2,12 +2,23 @@
 
 @section('content')
     <div id="Container" class="subContainer widthAuto c_both">
-        @include('willbes.pc.layouts.partial.site_menu')
+        @if ($default_path == 'mocktestNew')
+            @include('willbes.pc.layouts.partial.site_menu')
+        @else
+            @include('willbes.pc.layouts.partial.site_tab_menu')
+        @endif
         <div class="Depth">
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
 
         <div class="Content p_re">
+            @if ($default_path == 'mocktestNew')
+                <div class="willbes-Mocktest INFOZONE c_both">
+                    <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
+                        · 모의고사
+                    </div>
+                </div>
+            @endif
             <div class="willbes-Mypage-Tabs mt10">
                 <ul class="tabMock three">
                     @include('willbes.pc.'.$include_path.'.tab_menu_partial')

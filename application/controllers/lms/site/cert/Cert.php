@@ -20,8 +20,12 @@ class Cert extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
         $codes = $this->codeModel->getCcdInArray(['684','685']);
 
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
+
         $this->load->view("site/cert/cert_index", [
             'arr_category' => $arr_category,
+            'arr_m_category' => $arr_m_category,
             'CertType_ccd' => $codes['684'],
             'CertCondition_ccd' => $codes['685'],
         ]);
@@ -39,6 +43,7 @@ class Cert extends \app\controllers\BaseController
                 'A.CertConditionCcd' =>$this->_reqP('search_condition'),
                 'A.No' =>$this->_reqP('search_no'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
+                'A.CateCode' => $this->_reqP('search_md_cate_code')
             ],
             'LKR' => [
                 'A.CateCode' => $this->_reqP('search_category')

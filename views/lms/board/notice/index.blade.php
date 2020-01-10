@@ -32,6 +32,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
+                            <option value="">중분류</option>
+                            @foreach($arr_m_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -124,6 +131,7 @@
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_category");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

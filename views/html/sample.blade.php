@@ -245,6 +245,8 @@
                 <li class="w50"><a href="{{ site_url('/home/html/191204_value_01') }}" target="_blank">감평 단기합격 프로젝트<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/190627_value_01') }}" target="_blank">감평2차 T-PASS<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/190312_value_01') }}" target="_blank">감평2차 기본강의<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/191231_value_02') }}" target="_blank">감평1차 진도별 모의고사<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/191231_value') }}" target="_blank">감평1차 문풀 선택형 종합반<span>*</span></a></li>
                 <li><p>고등고시 ▼</p></li>
                 <li><a href="{{ site_url('/home/html/191205_cons') }}" target="_blank">5급헌법 진도별모의고사 <span>*</span></a></li>
                 <li><p>취업 ▼</p></li>
@@ -254,6 +256,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/200102_willpass_02') }}" target="_blank">직무적성검사<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/200103_willpass_03') }}" target="_blank">면접&자기소개<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/200103_willpass_04') }}" target="_blank">일반상식<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/200110_willpass') }}" target="_blank">공기업 기계직<span>*</span></a></li>
                 <li><p>자격증 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_01') }}" target="_blank">소프트웨어자산관리사<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_02') }}" target="_blank">경제교육지도사<span>*</span></a></li>

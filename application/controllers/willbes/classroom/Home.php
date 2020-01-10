@@ -153,6 +153,31 @@ class Home extends \app\controllers\FrontController
      */
     public function gotoHanlim()
     {
+        $site = $this->_req('site');
+
+        switch($site){
+            case '1':
+                $url = 'http://pregosi.willbes.net';
+                break;
+
+            case '2':
+                $url = 'http://prevalue.willbes.net';
+                break;
+
+            case '3':
+                $url = 'http://prewww.willpass.co.kr';
+                break;
+
+            case '4':
+                $url = 'http://precop.willbes.net';
+                break;
+
+            default:
+                $url = 'http://pregosi.willbes.net';
+                break;
+
+        }
+
         $this->load->library('Crypto', ['license' => 'willbes-open-20200113']);
 
         $data = $this->memberFModel->getMember(false, [
@@ -165,7 +190,8 @@ class Home extends \app\controllers\FrontController
         $enc_data = $this->crypto->encrypt($plaintext);
 
         return $this->load->view('classroom/gotohanlim', [
-            'enc_data' => $enc_data
+            'enc_data' => $enc_data,
+            'url' => $url
         ]);
     }
 

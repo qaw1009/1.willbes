@@ -41,6 +41,9 @@ class Free extends BaseBoard
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
 
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
+
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
@@ -50,6 +53,7 @@ class Free extends BaseBoard
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
+            'arr_m_category' => $arr_m_category,
             'boardName' => $this->board_name,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
@@ -95,7 +99,8 @@ class Free extends BaseBoard
         if (empty($this->_reqP('search_category')) === false) {
             $sub_query_condition = [
                 'EQ' => [
-                    'subLBrC.IsStatus' => 'Y'
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_md_cate_code')
                 ],
                 'LKR' => [
                     'subLBrC.CateCode' => $this->_reqP('search_category')

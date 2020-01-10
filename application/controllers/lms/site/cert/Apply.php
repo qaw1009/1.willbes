@@ -21,6 +21,9 @@ class Apply extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
         $codes = $this->codeModel->getCcdInArray(['684','685']);
 
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('', '', '', '2');
+
         $arr_search = [
             'search_type' => $this->_req('search_type')
             ,'search_no' => $this->_req('search_no')
@@ -28,6 +31,7 @@ class Apply extends \app\controllers\BaseController
 
         $this->load->view("site/cert/apply_index", [
             'arr_category' => $arr_category,
+            'arr_m_category' => $arr_m_category,
             'CertType_ccd' => $codes['684'],
             'CertCondition_ccd' => $codes['685'],
             'arr_search'=>$arr_search
@@ -55,6 +59,7 @@ class Apply extends \app\controllers\BaseController
             'EQ' => [
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'A.CateCode' => $this->_reqP('search_category'),
+                'A.CateCode' => $this->_reqP('search_md_cate_code'),
                 'A.CertTypeCcd' => !empty($this->_reqP('search_type')) ? $this->_reqP('search_type') : '!!!!',          //인증구분이 필수로 있어야 검색함
                 'A.CertConditionCcd' =>$this->_reqP('search_condition'),
                 'A.No' =>$this->_reqP('search_no'),

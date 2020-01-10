@@ -245,6 +245,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/191204_value_01') }}" target="_blank">감평 단기합격 프로젝트<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/190627_value_01') }}" target="_blank">감평2차 T-PASS<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/190312_value_01') }}" target="_blank">감평2차 기본강의<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/191231_value_02') }}" target="_blank">감평1차 진도별 모의고사<span>*</span></a></li>
                 <li><p>고등고시 ▼</p></li>
                 <li><a href="{{ site_url('/home/html/191205_cons') }}" target="_blank">5급헌법 진도별모의고사 <span>*</span></a></li>
                 <li><p>취업 ▼</p></li>

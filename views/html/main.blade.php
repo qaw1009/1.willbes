@@ -10,145 +10,141 @@
     </div>
     <div class="Section Act1 mb50">
         <div class="widthAuto">
-            <div class="will-Tit">윌비스 1등 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
+            <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
             <div class="ProcessBox">
                 <ul>
-                <li>
-                            <a href="{{ app_url('/home/index/cate/3019', 'pass') }}" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
-                                </div>
-                                <div class="wTxt">
-                                    9급/7급/법원/소방/기술직NO.1<br/>
-                                    <strong>윌비스 고시학원</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ app_url('/home/index/cate/3001', 'police') }}" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
-                                </div>
-                                <div class="wTxt">
-                                    독보적일반/경행/승진/간부/해경<br/>
-                                    <strong>윌비스 신광은경찰학원</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://ssam.willbes.net" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes3.png') }}"> 교원임용
-                                </div>
-                                <div class="wTxt">
-                                    유아/초등/중등합격을부르는<br/>
-                                    <strong>윌비스 임용</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.hanlimgosi.co.kr" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes4.png') }}"> 고등고시
-                                </div>
-                                <div class="wTxt">
-                                    5급행정/입법/외교/법원/변호사<br/>
-                                    <strong>윌비스 한림법학원</strong>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="http://value.willbes.net" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes5.png') }}"> 전문자격증
-                                </div>
-                                <div class="wTxt">
-                                    노무/감평/변리/관세/세무/회계<br/>
-                                    <strong>윌비스 한림법학원</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.namucpa.com" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes5.png') }}"> 나무경영
-                                </div>
-                                <div class="wTxt">
-                                    회계/세무/관세<br/>
-                                    <strong>윌비스 나무경영 아카데미</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://cert.willbes.net" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes6.png') }}"> 자격증
-                                </div>
-                                <div class="wTxt">
-                                    국가기술자격/분야별일반자격증<br/>
-                                    <strong>윌비스 패스하자</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.willpass.co.kr" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes7.png') }}"> 취업
-                                </div>
-                                <div class="wTxt">
-                                    공기업/대기업/NCS/능력검정<br/>
-                                    <strong>윌패스</strong>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="http://lang.willbes.net" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes8.png') }}"> 어학
-                                </div>
-                                <div class="wTxt">
-                                    토익/텝스/지텔프/영어/지2외국어<br/>
-                                    <strong>윌비스랑</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.willbeslife.net" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes10.png') }}"> 학점은행
-                                </div>
-                                <div class="wTxt">
-                                    교육부 인정 학점은행 원격교육기관<br/>
-                                    <strong>윌비스 원격평생교육원</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://willbes.or.kr" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes9.png') }}"> 국비교육
-                                </div>
-                                <div class="wTxt">
-                                    대한민국 국비교육 No.1<br/>
-                                    <strong>윌비스 평생교육원</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://willbesedu.or.kr" target="_blank">
-                                <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes10.png') }}"> 출석 학점은행
-                                </div>
-                                <div class="wTxt">
-                                    학점은행 평가인정 교육기관<br/>
-                                    <strong>윌비스 고시학원 출석학점은행</strong>
-                                </div>
-                            </a>
-                        </li>
+                    <li class="fisrt">
+                        <div class="wTit">
+                            <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
+                        </div>
+                        <div class="wTxt">
+                            <span><a href="https://pass.willbes.net/home/index/cate/3019" target="_blank">[9급]</a></span>
+                            <span><a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">[7급PSAT]</a></span>
+                            <span><a href="https://pass.willbes.net/home/index/cate/3020" target="_blank">[7급]</a></span>                                
+                            <span><a href="https://pass.willbes.net/home/index/cate/3035" target="_blank">[법원]</a></span>
+                            <span><a href="https://pass.willbes.net/home/index/cate/3023" target="_blank">[소방]</a></span><br/>
+                            <span><a href="https://pass.willbes.net/home/index/cate/3028" target="_blank">[기술직]</a></span>
+                            <span><a href="https://pass.willbes.net/home/index/cate/3024" target="_blank">[군무원]</a></span>
+                            <br/>
+                            <strong>윌비스 공무원</strong>
+                        </div>
+                    </li>
+                    <li class="second">
+                        <div class="wTit">
+                            <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
+                        </div>
+                        <div class="wTxt">
+                            1등*<span><a href="https://police.willbes.net/home/index/cate/3001" target="_blank">[일반경찰]</a></span>
+                            <span><a href="https://police.willbes.net/home/index/cate/3002" target="_blank">[경행]</a></span>
+                            <span><a href="https://police.willbes.net/home/index/cate/3006" target="_blank">[승진]</a></span>
+                            <span><a href="https://police.willbes.net/home/index/cate/3007" target="_blank">[해경]</a></span>
+                            <br/>
+                            <strong>윌비스 신광은경찰학원</strong><br/>
+                            <div class="sTxt">* 2019브랜드고객충성도대상 경찰공무원부문 1위 기준</div> 
+                        </div> 
+                    </li>
+                    <li>
+                        <a href="https://spo.willbes.net/home/index/cate/3100" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰간부
+                            </div>
+                            <div class="wTxt">
+                                간부후보생 선발시험 대비<br/>
+                                <strong>윌비스 한림법학원</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://ssam.willbes.net" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes3.png') }}"> 교원임용
+                            </div>
+                            <div class="wTxt">
+                                유아/초등/중등합격을부르는<br/>
+                                <strong>윌비스 임용</strong>
+                            </div>
+                        </a>
+                    </li>                        
+                </ul>
+                <ul>
+                    <li>
+                        <a href="https://gosi.willbes.net/home/index/cate/3094" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes4.png') }}"> 고등고시
+                            </div>
+                            <div class="wTxt">
+                                5급행정/외교원/변호사/법행/PSAT<br/>
+                                <strong>윌비스 한림법학원</strong>
+                            </div>
+                        </a>
+                    </li>    
+                    <li>
+                        <a href="https://job.willbes.net/home/index/cate/309002" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes5.png') }}"> 전문자격증
+                            </div>
+                            <div class="wTxt">
+                                노무/감평/변리/관세/스포츠<br/>
+                                <strong>윌비스 한림법학원</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.namucpa.com" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes5.png') }}"> 나무경영
+                            </div>
+                            <div class="wTxt">
+                                회계/세무/관세<br/>
+                                <strong>윌비스 나무경영 아카데미</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://work.willbes.net/home/index/cate/3102" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes7.png') }}"> 취업
+                            </div>
+                            <div class="wTxt">
+                                공기업
+                            </div>
+                        </a>
+                    </li>                    
+                </ul>
+                <ul>                            
+                    <li>
+                        <a href="http://lang.willbes.net/?sub_category=110" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes8.png') }}"> 어학
+                            </div>
+                            <div class="wTxt">
+                                토익/텝스/지텔프/영어/제2외국어<br/>
+                                <strong>윌비스랑</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.willbeslife.net" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes10.png') }}"> 학점은행
+                            </div>
+                            <div class="wTxt">
+                                교육부 인정 학점은행 원격교육기관<br/>
+                                <strong>윌비스 원격평생교육원</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://willbesedu.or.kr" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes10.png') }}"> 출석 학점은행
+                            </div>
+                            <div class="wTxt">
+                                학점은행 평가인정 교육기관<br/>
+                                <strong>윌비스 고시학원 출석학점은행</strong>
+                            </div>
+                        </a>
+                    </li>                        
                 </ul>
             </div>
         </div>

@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-7">
                         <p class="form-control-static">
-                            <span class="required pl-15">*</span> PC 사이트 메인에 노출되는 섹션명은 반드시 <span class="red bold">`메인_`</span>으로 시작하는 명칭으로 등록해 주세요.
+                            <span class="required">*</span> PC 사이트 메인에 노출되는 섹션명은 반드시 <span class="red bold">`메인_`</span>으로 시작하는 명칭으로 등록해 주세요.
                         </p>
                     </div>
                 </div>

@@ -25,12 +25,12 @@
                         <div class="willbes-Lec-Selected tx-gray mt0">
                             <div class="f_left">
                                 @if(empty($arr_base['category']) === false)
-                                <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
-                                    <option value="">카테고리</option>
-                                    @foreach($arr_base['category'] as $row)
-                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input, $__cfg['CateCode']) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
-                                    @endforeach
-                                </select>
+                                    <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
+                                        <option value="">카테고리</option>
+                                        @foreach($arr_base['category'] as $row)
+                                            <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
+                                        @endforeach
+                                    </select>
                                 @endif
 
                                 @if(empty($arr_base['campus']) === false)

@@ -42,7 +42,8 @@ class SupportNotice extends BaseSupport
         $get_page_params .= '&view_type='.$view_type;
 
         //카테고리목록
-        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+//        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
 
         //캠퍼스목록
         $arr_base['campus'] = $this->supportBoardFModel->listCampusCcd($this->_site_code);

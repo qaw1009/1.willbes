@@ -61,10 +61,12 @@ class SupportQna extends BaseSupport
             if (empty($s_site_code) === true) {
                 $arr_base['category'] = [];
             } else {
-                $arr_base['category'] = $this->categoryFModel->listSiteCategory($s_site_code);
+                //$arr_base['category'] = $this->categoryFModel->listSiteCategory($s_site_code);
+                $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($s_site_code);
             }
         } else {
-            $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+            //$arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+            $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
         }
 
         //구분목록 (학원,온라인)
@@ -194,7 +196,8 @@ class SupportQna extends BaseSupport
         unset($arr_base['site_list'][config_item('app_intg_site_code')]);
 
         // 카테고리 조회
-        $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);
+        $param_site_code = $this->_site_code == '2000' ? null : $this->_site_code;
+        $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($param_site_code);
 
         //켐퍼스목록
         $arr_base['campus'] = $this->supportBoardTwoWayFModel->listCampusCcd(null);

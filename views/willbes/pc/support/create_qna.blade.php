@@ -40,7 +40,7 @@
                                 <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCategory" style="width: 250px;">
                                     <option value="">구분</option>
                                     @foreach($arr_base['category'] as $row)
-                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
+                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
                                     @endforeach
                                 </select>
 

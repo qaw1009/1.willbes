@@ -256,6 +256,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/200102_willpass_02') }}" target="_blank">직무적성검사<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/200103_willpass_03') }}" target="_blank">면접&자기소개<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/200103_willpass_04') }}" target="_blank">일반상식<span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/200110_willpass') }}" target="_blank">공기업 기계직<span>*</span></a></li>
                 <li><p>자격증 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_01') }}" target="_blank">소프트웨어자산관리사<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/191227_passhaja_02') }}" target="_blank">경제교육지도사<span>*</span></a></li>

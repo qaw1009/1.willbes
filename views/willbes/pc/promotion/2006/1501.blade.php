@@ -35,7 +35,17 @@
 		.tabs li:last-child a {margin:0}
 		.tabs:after {content:""; display:block; clear:both}
 
-		.evt_03 {background:#1a1b2d;}
+		.evt_03 {background:#1a1b2d; padding-bottom:100px}
+		.evt_03 div,
+		.evt_03 ul {width:980px; margin:0 auto}
+		.evt_03 a {display:block; color:#fff; font-size:30px; background:#3d3461; height:80px; line-height:80px}
+		.evt_03 a:hover {background:#a5b2f6; color:#0d0f1b}
+		.evt_03 li {display:inline; float:left; width:25%; text-align:left}
+		.evt_03 li a {margin-right:15px; font-size:16px; text-align:center; width:230px; margin-bottom:5px; height:50px; line-height:50px}
+		.evt_03 li:nth-child(1) a,
+		.evt_03 li:nth-child(2) a {height:105px; line-height:105px}
+		.evt_03 li:last-child a {margin-right:0}
+		.evt_03 ul:after {content:""; display:block; clear:both}
 
 		.evt_04 {background:#fff; padding:100px 0; width:1120px; margin:0 auto}
 		.evt_04 h3 {font-size:30px; color:#2e3044; margin-bottom:30px}
@@ -46,7 +56,7 @@
 		.evt_04 table th {background: #2e3044; color:#fff; font-weight: bold;}
 		.evt_04 table tbody th {background: #9697a1; color:#fff;} 
 		.evt_04 .buyLec {margin-top:30px}
-		.evt_04 .buyLec a { display:block; text-align:cetner; font-size:30px; font-weight:600; background:#e83e3e; color:#fff; padding:20px 0; border-radius:50px}
+		.evt_04 .buyLec a {display:block; text-align:center; font-size:30px; font-weight:600; background:#e83e3e; color:#fff; padding:20px 0; border-radius:50px}
 		.evt_04 .buyLec a:hover {background:#e83e3e; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}
 
 		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
@@ -122,16 +132,32 @@
 		</div>
 
 		<div class="evtCtnsBox evt_03">
-			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05.png" alt="수강신청" usemap="#Map190821" border="0" />
-			<map name="Map190821" id="Map190821">
-				<area shape="rect" coords="9,552,969,633" href="#none" alt="한림 노무패스 신청하기" />
-				<area shape="rect" coords="7,1207,225,1259" href="#none" alt="1차노무패스" />
-				<area shape="rect" coords="254,1207,477,1259" href="#none" alt="2차노무패스" />
-				<area shape="rect" coords="505,1208,725,1258" href="#none" alt="동차노무패스" />
-				<area shape="rect" coords="757,1207,974,1256" href="#none" alt="동차노무패스 프리미엄" />
-			</map>
+			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_01.jpg" alt="한림 노무패스"/>
+			<div class="NG"><a href="#">한림 노무패스 신청하기 ></a></div>
+			<ul class="NG mt50">
+				<li>
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
+					<a href="#">1차 노무패스 신청하기</a>
+				</li>
+				<li>
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
+					<a href="#">2차 노무패스 신청하기</a>
+				</li>
+				<li>
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
+					<a href="#">동차 노무패스 베이직 [경영]</a>
+					<a href="#">동차 노무패스 베이직 [경제]</a>
+				</li>
+				<li>
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
+					<a href="#">동차 노무패스 프리미엄 [경영]</a>
+					<a href="#">동차 노무패스 프리미엄 [경제]</a>
+				</li>
+			</ul>
+
 		</div>
 
+		{{--
 		<div class="evtCtnsBox evt_04 NGR">
 			<ul class="tabs tabs4ea NG">
 				<li><a href="#tab12">2020 한림1차 노무패스</a></li>
@@ -549,6 +575,7 @@
 				</div>
 			</form>
 		</div>
+		--}}
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">

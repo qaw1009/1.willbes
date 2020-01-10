@@ -137,21 +137,21 @@
 			<ul class="NG mt50">
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
-					<a href="#">1차 노무패스 신청하기</a>
+					<a href="#">1차 노무패스 신청하기 ></a>
 				</li>
 				<li>
-					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
-					<a href="#">2차 노무패스 신청하기</a>
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_03.jpg" alt="2차 노무패스"/>
+					<a href="#">2차 노무패스 신청하기 ></a>
 				</li>
 				<li>
-					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
-					<a href="#">동차 노무패스 베이직 [경영]</a>
-					<a href="#">동차 노무패스 베이직 [경제]</a>
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_04.jpg" alt="동차 베이직 노무패스"/>
+					<a href="#">동차 노무패스 베이직 [경영] ></a>
+					<a href="#">동차 노무패스 베이직 [경제] ></a>
 				</li>
 				<li>
-					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
-					<a href="#">동차 노무패스 프리미엄 [경영]</a>
-					<a href="#">동차 노무패스 프리미엄 [경제]</a>
+					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_05.jpg" alt="동차 프리미엄 노무패스"/>
+					<a href="#">동차 노무패스 프리미엄 [경영] ></a>
+					<a href="#">동차 노무패스 프리미엄 [경제] ></a>
 				</li>
 			</ul>
 

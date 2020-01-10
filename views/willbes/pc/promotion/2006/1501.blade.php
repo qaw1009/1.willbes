@@ -24,7 +24,7 @@
 
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/190821_nomu01_bg.jpg) no-repeat center top;}	
 		.evt_01 {background:#0b0d1a;}
-		.evt_02 {background:#fff;}
+		.evt_02 {background:#fff; padding-bottom:50px}
 		.tabs {border-bottom:1px solid #2e3044; width:980px; margin:0 auto 30px}
 		.tabs li {display:inline; float:left; width:20%;}
 		.tabs.tabs4ea li {display:inline; float:left; width:25%;}

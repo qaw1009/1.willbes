@@ -88,7 +88,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_kjj.png" alt="김진재 교수" /><br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/01/150331_able_prof_ksb.png" alt="김상범 교수" />
             </div>
-            <div class="evtCtnsBox evt_04">
+            <div class="evtCtnsBox evt_04" id="anchor1">
                 <table cellspacing="0" cellpadding="0">
                     <colgroup>
                         <col width="">
@@ -106,12 +106,12 @@
                         <tr>
                             <td>김진재 /한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사 </td>
                             <td>30일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/158969">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론)</td>
                             <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/158966">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
@@ -121,7 +121,7 @@
                         <tr>
                             <td>김상범 /2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) </td>
                             <td>100일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/158955">수강신청 ></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -149,12 +149,12 @@
                         <tr>
                             <td>한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사)</td>
                             <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/158969">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>한국사능력검정시험 천기누설 특강[고급](이론)</td>
                             <td>60일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/158969 158966">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
@@ -187,7 +187,7 @@
                         <tr>
                             <td class="tx-left">2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) - 중급/고급 대비</td>
                             <td>100일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/158966">수강신청 ></a></td>
                         </tr>                       
                     </tbody>
                 </table>

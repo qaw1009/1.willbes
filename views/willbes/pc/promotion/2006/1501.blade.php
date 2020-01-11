@@ -42,7 +42,6 @@
 		.evt_03 a:hover {background:#a5b2f6; color:#0d0f1b}
 		.evt_03 li {display:inline; float:left; width:25%; text-align:left}
 		.evt_03 li a {margin-right:15px; font-size:16px; text-align:center; width:230px; margin-bottom:5px; height:50px; line-height:50px}
-		.evt_03 li:nth-child(1) a,
 		.evt_03 li:nth-child(2) a {height:105px; line-height:105px}
 		.evt_03 li:last-child a {margin-right:0}
 		.evt_03 ul:after {content:""; display:block; clear:both}
@@ -133,25 +132,26 @@
 
 		<div class="evtCtnsBox evt_03">
 			<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_01.jpg" alt="한림 노무패스"/>
-			<div class="NG"><a href="#">한림 노무패스 신청하기 ></a></div>
+			<!--div class="NG"><a href="#">한림 노무패스 신청하기 ></a></div-->
 			<ul class="NG mt50">
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_02.jpg" alt="1차 노무패스"/>
-					<a href="#">1차 노무패스 신청하기 ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160457">1차 노무패스 [경영] 신청 ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160458">1차 노무패스 [경제] 신청 ></a>
 				</li>
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_03.jpg" alt="2차 노무패스"/>
-					<a href="#">2차 노무패스 신청하기 ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160459">2차 노무패스 신청 ></a>
 				</li>
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_04.jpg" alt="동차 베이직 노무패스"/>
-					<a href="#">동차 노무패스 베이직 [경영] ></a>
-					<a href="#">동차 노무패스 베이직 [경제] ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160460">동차 노무패스 베이직 [경영] ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160462">동차 노무패스 베이직 [경제] ></a>
 				</li>
 				<li>
 					<img src="https://static.willbes.net/public/images/promotion/2019/12/190821_nomu05_05.jpg" alt="동차 프리미엄 노무패스"/>
-					<a href="#">동차 노무패스 프리미엄 [경영] ></a>
-					<a href="#">동차 노무패스 프리미엄 [경제] ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160476">동차 노무패스 프리미엄 [경영] ></a>
+					<a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/160477">동차 노무패스 프리미엄 [경제] ></a>
 				</li>
 			</ul>
 

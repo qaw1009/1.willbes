@@ -31,11 +31,11 @@
 		.tabs:after {content:""; display:block; clear:both}  
 
 		.evt_top {background:#ffecdb;}	
-		.evt_01 {background:#fff;}
+		.evt_01 {background:#fff; padding-bottom:100px}
         .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2019/12/191227_passhaja_03_bg.jpg) repeat-x center top;}
         .evt_03 {background:#fff; width:1120px; margin:0 auto; padding:100px 0}
 
-        .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto;}
+        .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto; width:980px; margin:0 auto}
 		.evtCtnsBox table th,
 		.evtCtnsBox table td {padding:15px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center; font-size:14px; line-height:1.5}
 		.evtCtnsBox table th {background: #2e3044; color:#fff; font-weight: bold;}
@@ -71,12 +71,8 @@
 
             <div class="evtCtnsBox evt_01">
                 <div class="mt50"><img src="https://static.willbes.net/public/images/promotion/2019/12/191227_passhaja_02_1.jpg" alt="소프트웨어자산관리사" /></div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/191227_passhaja_02.jpg" alt="과정안내" usemap="#Map191227" border="0" />
-                <map name="Map191227" id="Map191227">
-                    <area shape="rect" coords="697,2626,902,2681" href="#" alt="패키지1 수강신청" />
-                    <area shape="rect" coords="696,2878,902,2932" href="#" alt="패키지2 수강신청" />
-                    <area shape="rect" coords="696,3129,903,3186" href="#" alt="패키지3 수강신청" />
-                </map>
+                <img src="https://static.willbes.net/public/images/promotion/2019/12/191227_passhaja_02_01.jpg" alt="과정안내" /><Br>
+                <a href="https://job.willbes.net/package/show/cate/310101/pack/648001/prod-code/160319"><img src="https://static.willbes.net/public/images/promotion/2019/12/191227_passhaja_02_02.jpg" alt="수강신청" /></a>
             </div>
         </div>
         <div id="tab02">
@@ -102,22 +98,22 @@
                         <tr>
                             <td>유지호 / 소프트웨어 자산관리(이론+문제) 강의 </td>
                             <td>20일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/310101/pattern/only/prod-code/158806">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>유지호 / 소프트웨어 라이선스(이론+문제) 강의 </td>
                             <td>18일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/310101/pattern/only/prod-code/158804">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>유지호 / 소프트웨어 일반(이론+문제) 강의</td>
                             <td>15일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/310101/pattern/only/prod-code/158800">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>유지혜 / 소프트웨어 관련법(이론+문제) 강의</td>
                             <td>20일</td>
-                            <td><a href="#">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/310101/pattern/only/prod-code/158805">수강신청 ></a></td>
                         </tr>
                     </tbody>
                 </table>

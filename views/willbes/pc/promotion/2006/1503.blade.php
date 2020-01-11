@@ -23,7 +23,7 @@
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	  
 
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2019/12/190826_nomu_01_bg.jpg) no-repeat center top;}	
-		.evt_01 {background:#d6d6d6;}
+		.evt_01 {background:#d6d6d6; padding:100px 0;}
 
         .evt_02 {background:#fff; padding:100px 0; width:1120px; margin:0 auto}
         .total {text-align:center; font-size:18px; font-weight:bold; padding:20px 0; border:1px solid #ccc; 
@@ -38,7 +38,7 @@
 		.evtCtnsBox table th {background: #2e3044; color:#fff; font-weight: bold;}
 		.evtCtnsBox table tbody th {background: #9697a1; color:#fff;} 
         .evtCtnsBox table tbody tr.lec td:last-child {color:#de3349; font-weight:bold}
-		.evtCtnsBox .buyLec {margin-top:30px}
+		.evtCtnsBox .buyLec {width:980px; margin:0 auto}
 		.evtCtnsBox .buyLec a { display:block; text-align:cetner; font-size:30px; font-weight:600; background:#e83e3e; color:#fff; padding:20px 0; border-radius:50px}
 		.evtCtnsBox .buyLec a:hover {background:#e83e3e; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}
 
@@ -70,8 +70,12 @@
 
 		<div class="evtCtnsBox evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/190826_nomu_02.png" alt="GS0순환 특징" />
+            <div class="buyLec">
+                <a href="https://job.willbes.net/userPackage/show/cate/309002/prod-code/160305">수강신청 ></a>
+            </div>
 		</div>
 
+        {{--
         <div class="evtCtnsBox evt_02 NGR">
             <div class="total">
                 <span>[정상가] 0원</span> <span>[할인금액] 0원</span> <strong>[최종금액] 0원</strong> 
@@ -391,6 +395,7 @@
                 </div>
 			</div>
         </div>
+        --}}
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">

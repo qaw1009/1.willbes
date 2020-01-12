@@ -67,7 +67,7 @@
         </div>
 
         <div class="evtCtnsBox evt_03" id="buyLec">
-            <a href="#"><img src="https://static.willbes.net/public/images/promotion/2019/12/161011_passhaja_05.png" alt="수강신청" /></a>
+            <a href="https://job.willbes.net/lecture/show/cate/310103/pattern/only/prod-code/158796"><img src="https://static.willbes.net/public/images/promotion/2019/12/161011_passhaja_05.png" alt="수강신청" /></a>
         </div>
 
 		<div class="evtCtnsBox evtInfo NGR">

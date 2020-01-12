@@ -131,7 +131,7 @@
                     </tbody>
                 </table>
                 <div class="buyLec">
-                    <a href="#none">수강신청 ></a>
+                    <a href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160368">수강신청 ></a>
                 </div>
 			</div>
         </div>

@@ -83,6 +83,8 @@
 .job .Section3 span.txt02 {position:absolute; left:50%; top:325px; margin-left:420px; z-index:10;}
 .job .Section3 span.txt02_309001 {position:absolute; left:50%; top:325px; margin-left:390px; z-index:10;}
 
+.job .Section4 {background:#f8f7fd}
+
 /* Main Container : Notice : noticeTabs */
 .job .tabWrap.noticeWrap {
     height: 16px;

@@ -49,8 +49,8 @@
 			<img src="https://static.willbes.net/public/images/promotion/2019/12/191204_value03.png" alt="강의안내" /><br>
             <img src="https://static.willbes.net/public/images/promotion/2019/12/191204_value04.png" alt="수강신청" usemap="#Map191204" border="0" />
             <map name="Map191204" id="Map191204">
-                <area shape="rect" coords="115,335,395,407" href="#" alt="패키지1 수강신청" />
-                <area shape="rect" coords="500,335,785,406" href="#" alt="패키지2 수강신청" />
+                <area shape="rect" coords="115,335,395,407" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160346" alt="패키지1 수강신청" />
+                <area shape="rect" coords="500,335,785,406" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160349" alt="패키지2 수강신청" />
             </map>
 		</div>
 

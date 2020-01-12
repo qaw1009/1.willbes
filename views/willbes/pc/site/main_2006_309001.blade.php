@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div class="Section Section2">
+        <div class="Section Section4">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/309001_02.jpg" title="스포츠분야 필수 자격증, 스포츠 지도사">
             </div>
@@ -75,9 +75,8 @@
         </div>
         <!-- CS센터 //-->
         
-        {{--
+        {{--quick menu 
         <div id="QuickMenu" class="MainQuickMenu">
-            {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
         --}}

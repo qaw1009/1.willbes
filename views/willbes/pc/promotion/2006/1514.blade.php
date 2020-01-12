@@ -63,7 +63,7 @@
 		<div class="evtCtnsBox evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/01/191231_value02.jpg" alt="수강특전" />
             <div class="mt50">
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/01/191231_value03.jpg" alt="수강신청" /></a>
+                <a href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160355"><img src="https://static.willbes.net/public/images/promotion/2020/01/191231_value03.jpg" alt="수강신청" /></a>
             </div>
 		</div>
 
@@ -72,7 +72,7 @@
 		</div>
 
         <div class="evtCtnsBox evt_03">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/01/191231_value05.jpg" alt="수강신청" /></a>
+            <a href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160355"><img src="https://static.willbes.net/public/images/promotion/2020/01/191231_value05.jpg" alt="수강신청" /></a>
         </div>
 
 		<div class="evtCtnsBox evtInfo NGR">

@@ -70,6 +70,7 @@
 		</div>
 
         <div class="evtCtnsBox evt_03">
+            {{--
             <div class="total">
                 <span>[정상가] 0원</span> <span>[할인금액] 0원</span> <strong>[최종금액] 0원</strong> 
             </div>
@@ -178,11 +179,12 @@
                             <td>195,000원</td>
                         </tr>
                     </tbody>
-                </table>
-                <div class="buyLec">
-                    <a href="#none">수강신청 ></a>
-                </div>
+                </table>                
 			</div>
+            --}}
+            <div class="buyLec">
+                <a href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160355">수강신청 ></a>
+            </div>
         </div>
 
 		<div class="evtCtnsBox evtInfo NGR">

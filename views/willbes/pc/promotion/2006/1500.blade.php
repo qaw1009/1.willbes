@@ -116,7 +116,7 @@
                         <tr>
                             <td>김진재 /한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
                             <td>60일</td>
-                            <td><a href="https://job.stage.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/160650" target="_blank">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/160650" target="_blank">수강신청 ></a></td>
                         </tr>
                         <tr>
                             <td>김상범 /2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) </td>
@@ -159,7 +159,7 @@
                         <tr>
                             <td>한국사능력검정시험 천기누설 특강[고급](이론+단원별/전범위 기출모의고사)</td>
                             <td>60일</td>
-                            <td><a href="https://job.stage.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/160650" target="_blank">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/160650" target="_blank">수강신청 ></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -187,7 +187,7 @@
                         <tr>
                             <td class="tx-left">2018 ALL PASS 한국사능력검정시험 대비 기본강의(9월) - 중급/고급 대비</td>
                             <td>100일</td>
-                            <td><a href="https://job.stage.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/160650" target="_blank">수강신청 ></a></td>
+                            <td><a href="https://job.willbes.net/lecture/show/cate/309101/pattern/only/prod-code/160650" target="_blank">수강신청 ></a></td>
                         </tr>                       
                     </tbody>
                 </table>

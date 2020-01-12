@@ -192,7 +192,7 @@ class SupportQna extends BaseSupport
         $get_params .= '&page='.$page;
 
         //사이트목록 (과정)
-        $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
+        $arr_base['site_list'] = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsFrontUse' => 'Y']]);
         unset($arr_base['site_list'][config_item('app_intg_site_code')]);
 
         // 카테고리 조회
@@ -222,18 +222,18 @@ class SupportQna extends BaseSupport
             ];
 
             $column = '
-            BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
-            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
-            , Title, Content, ReadCnt, SettingReadCnt
-            , RegDatm, RegMemIdx, RegMemId, RegMemName
-            , ReplyContent, ReplyRegDatm, ReplyStatusCcd
-            , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
-            , VocCcd_Name, MdCateCode_Name, SubJectName
-            , IF(RegType=1, \'\', RegMemName) AS RegName
-            , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
-            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
-            , AttachData, Category_String
-        ';
+                BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
+                , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
+                , Title, Content, ReadCnt, SettingReadCnt
+                , RegDatm, RegMemIdx, RegMemId, RegMemName
+                , ReplyContent, ReplyRegDatm, ReplyStatusCcd
+                , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
+                , VocCcd_Name, MdCateCode_Name, SubJectName
+                , IF(RegType=1, \'\', RegMemName) AS RegName
+                , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+                , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
+                , AttachData, Category_String
+            ';
 
             $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
 

@@ -119,72 +119,72 @@
                     <tr>
                         <td>손세훈 / All In One NCS 직업기초능력평가 언어적 문제해결능력 문제풀이</td>
                         <td>20일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160497" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>김영식 / 직업기초능력검사 수리적/비언어적 문제해결능력 문제풀이 </td>
                         <td>40일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160513" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>임경환 / NCS 오리엔테이션 강의 </td>
                         <td>0일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158873" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>문가경 / 의사소통능력 집중강의 </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158814" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>김진재 /한국사능력검정시험 천기누설 특강[고급](단원별/전범위 기출모의고사 </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://job.stage.willbes.net/lecture/show/cate/3091/pattern/only/prod-code/158969" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>오윤상 / 수리능력 집중강의 </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158875" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>임경환 / 문제해결능력 집중강의 </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158816" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>임경환 / 자기개발능력 집중강의  </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158818" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>임경환 / 자원관리능력 집중강의  </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158817" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>문가경 / 대인관계능력 집중강의 </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158820" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>오윤상 / 정보관리능력 집중강의 </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158822" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>임경환 / 조직이해능력 집중강의  </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158827" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>문가경 / 직업윤리 집중강의  </td>
                         <td>5일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/158862" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>종합반 / NCS 직업기초능력(10영역) 패키지  </td>
                         <td>60일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/package/show/cate/3102/pack/648001/prod-code/160830" target="_blank">수강신청 ></a></td>
                     </tr>
                 </tbody>
             </table>

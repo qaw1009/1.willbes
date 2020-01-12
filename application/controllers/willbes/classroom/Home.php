@@ -165,7 +165,7 @@ class Home extends \app\controllers\FrontController
                 break;
 
             case '3':
-                $url = 'http://prewww.willpass.co.kr';
+                $url = 'http://prevalue.willbes.net';
                 break;
 
             case '4':

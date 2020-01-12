@@ -54,7 +54,7 @@
                             @php $map_link_url = '//' . (strpos($map_row['LinkUrl'], config_item('base_domain')) === false ? $map_row['LinkUrl'] : app_to_env_url($map_row['LinkUrl'])); @endphp
                             {{-- TODO : 이전 한림URL일 경우 임시 적용 (팝업 이미지맵 수정 필요) --}}
                             @if(starts_with($map_row['LinkUrl'], 'pre') === true)
-                                @php $map_link_url = 'http://' . $map_row['LinkUrl'] @endphp
+                                @php $map_link_url = 'http://' . $map_row['LinkUrl']; @endphp
                             @endif
                         @endif
 

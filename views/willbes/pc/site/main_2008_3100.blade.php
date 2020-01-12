@@ -25,49 +25,49 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jjh.jpg" alt="정주형">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
+                            <li><a href="https://www.willbes.net/Player/Professor/50859/OT/_">▶</a></li>
                             <li><a href="/professor/show/cate/3100/prof-idx/50859/?subject_idx=1595&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_kth.jpg" alt="고태환">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
+                            <li><a href="https://www.willbes.net/Player/Professor/50863/OT/_">▶</a></li>
                             <li><a href="/professor/show/cate/3100/prof-idx/50863/?subject_idx=1597&subject_name=%EB%AF%BC%EB%B2%95%EC%B4%9D%EC%B9%99" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jh.jpg" alt="조현">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
+                            <li><a href="https://www.willbes.net/Player/Professor/50861/OT/_">▶</a></li>
                             <li><a href="/professor/show/cate/3100/prof-idx/50861/?subject_idx=1596&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_mhs.jpg" alt="문형석">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
+                            <li><a href="https://www.willbes.net/Player/Professor/50856/OT/_">▶</a></li>
                             <li><a href="/professor/show/cate/3100/prof-idx/50856/?subject_idx=1592&subject_name=%ED%98%95%EB%B2%95" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_ldh.jpg" alt="이동호">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
+                            <li><a href="https://www.willbes.net/Player/Professor/50858/OT/_">▶</a></li>
                             <li><a href="/professor/show/cate/3100/prof-idx/50858/?subject_idx=1593&subject_name=%ED%96%89%EC%A0%95%ED%95%99" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jjc.jpg" alt="정진찬">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
+                            <li><a href="https://www.willbes.net/Player/Professor/50862/OT/_">▶</a></li>
                             <li><a href="/professor/show/cate/3100/prof-idx/50862/?subject_idx=1594&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_ljs.jpg" alt="임진석">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
+                            <li><a href="https://www.willbes.net/Player/Professor/50855/OT/_">▶</a></li>
                             <li><a href="/professor/show/cate/3100/prof-idx/50855/?subject_idx=1591&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC" target="_blank">교수소개</a></li>
                         </ul>
                     </li>

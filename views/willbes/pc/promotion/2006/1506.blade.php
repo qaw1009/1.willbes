@@ -80,10 +80,10 @@
         <div class="evtCtnsBox evt_03" id="evt_03">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/190627_value05.png" alt="특별혜택" usemap="#Map190627" border="0" />
             <map name="Map190627" id="Map190627">
-                <area shape="rect" coords="152,312,366,372" href="#" alt="감정평가실무" />
-                <area shape="rect" coords="614,311,825,375" href="#" alt="감정평가이론" />
-                <area shape="rect" coords="155,780,365,839" href="#" alt="조현 감평 및 보상법규" />
-                <area shape="rect" coords="614,777,822,840" href="#" alt="이현진 감평 및 보상법규" />
+                <area shape="rect" coords="152,312,366,372" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160357" alt="감정평가실무" />
+                <area shape="rect" coords="614,311,825,375" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160358" alt="감정평가이론" />
+                <area shape="rect" coords="155,780,365,839" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/ 160359" alt="조현 감평 및 보상법규" />
+                <area shape="rect" coords="614,777,822,840" href="https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/160360" alt="이현진 감평 및 보상법규" />
             </map>
 		</div>
 

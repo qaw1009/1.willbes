@@ -94,12 +94,12 @@
                     <tr>
                         <td>김영식 / All In One NCS 직업기초능력평가 수리적/비언어적 문제해결능력 문제풀이 </td>
                         <td>40일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160513" target="_blank">수강신청 ></a></td>
                     </tr>
                     <tr>
                         <td>손세훈 / All In One NCS 직업기초능력평가 언어적 문제해결능력 문제풀이  </td>
                         <td>20일</td>
-                        <td><a href="#">수강신청 ></a></td>
+                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160497" target="_blank">수강신청 ></a></td>
                     </tr>
                 </tbody>
             </table>

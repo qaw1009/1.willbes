@@ -76,61 +76,61 @@
                     <tr>
                         <td>[일반기계기사] 김정배 |  기초수학 핵심강의</td>
                         <td>5일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160498" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160498" target="_blank">수강신청 ></a></td>
                     </tr>      
 
                     <tr>
                         <td>[일반기계기사] 김정배 |  기계기사 기출문제풀이</td>
                         <td>5일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160500" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160500" target="_blank">수강신청 ></a></td>
                     </tr>       
 
                     <tr>
                         <td>[일반기계기사] 김정배 |  동역학 핵심강의</td>
                         <td>30일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160502" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160502" target="_blank">수강신청 ></a></td>
                     </tr>        
 
                     <tr>
                         <td>[일반기계기사] 김정배 |  유압기기 핵심강의</td>
                         <td>12일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160504" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160504" target="_blank">수강신청 ></a></td>
                     </tr>        
 
                     <tr>
                         <td>[일반기계기사] 이현문 |  기계재료 핵심강의</td>
                         <td>30일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160506" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160506" target="_blank">수강신청 ></a></td>
                     </tr>
                     
                     <tr>
                         <td>[일반기계기사] 이현문 |  기계제작법 핵심강</td>
                         <td>60일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160507" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160507" target="_blank">수강신청 ></a></td>
                     </tr>        
 
                     <tr>
                         <td>[일반기계기사] 김정배 |  기계설계 핵심강의</td>
                         <td>60일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160508" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160508" target="_blank">수강신청 ></a></td>
                     </tr>        
 
                     <tr>
                         <td>[일반기계기사] 김정배 |  유체역학 핵심강의</td>
                         <td>60일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160509" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160509" target="_blank">수강신청 ></a></td>
                     </tr>        
 
                     <tr>
                         <td>[일반기계기사] 김정배 |  열역학 핵심강의</td>
                         <td>60일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160510" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160510" target="_blank">수강신청 ></a></td>
                     </tr>       
 
                     <tr>
                         <td>[일반기계기사] 김정배 |  재료역학 핵심강의</td>
                         <td>60일</td>
-                        <td><a href="https://work.stage.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160511" target="_blank">수강신청 ></a></td>
+                        <td><a href="https://work.willbes.net/lecture/show/cate/3102/pattern/only/prod-code/160511" target="_blank">수강신청 ></a></td>
                     </tr>  
                 </tbody>
             </table>

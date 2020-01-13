@@ -54,7 +54,7 @@
         <div class="evtCtnsBox WB_con04" id="0219_lecgo">
             <img src="https://static.willbes.net/public/images/promotion/2019/06/1045_03.png" usemap="#Map_0219_lec" border="0" />
             <map name="Map_0219_lec" id="Map_0219_lec">
-                <area shape="rect" coords="209,687,909,790" href="https://police.willbes.net/pass/offLecture/index?cate_code=3010&subject_idx=1054&campus_ccd=605001&course_idx=1106" target="_blank" />
+                <area shape="rect" coords="209,687,909,790" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1106&subject_idx=1054" target="_blank" />
             </map>          
         </div>
         <!--//WB_con04-->

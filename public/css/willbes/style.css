@@ -886,7 +886,7 @@ table.auTable tr td {
 }
 .Gnb-md .gnb-List .gnb-List-Depth dl dt a {
     display: block;
-    padding-left: 50px;
+    padding-left: 20px;
 }
 .Gnb-md .gnb-List .gnb-List-Depth dl dt.GA a {
     color: #2784d2;

@@ -35,23 +35,8 @@
 		.tabs li a:hover,
 		.tabs li a.active {background:#aa1722}
 		.tabs li:last-child a {margin:0}
-		.tabs:after {content:""; display:block; clear:both}
+		.tabs:after {content:""; display:block; clear:both}      
 
-        .evt_03 table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout: auto; width:980px; margin:0 auto; }
-		.evt_03 table th,
-		.evt_03 table td {padding:15px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center; font-size:14px; line-height:1.5}
-		.evt_03 table th {background: #2e3044; color:#fff; font-weight: bold;}
-		.evt_03 table tbody th {background: #9697a1; color:#fff;} 
-        .evt_03 table tbody td:last-child {color:#e83e3e; font-weight:bold}
-		.evt_03 .buyLec {width:980px; margin:0 auto; margin-top:30px}
-		.evt_03 .buyLec a { display:block; text-align:cetner; font-size:30px; font-weight:600; background:#e83e3e; color:#fff; padding:20px 0; border-radius:50px}
-        .evt_03 .buyLec a:hover {background:#e83e3e; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}
-        
-        .total {text-align:center; font-size:18px; font-weight:bold; padding:20px 0; border:1px solid #ccc; 
-        background:rgba(255,255,255,0.8); margin-bottom:30px}
-        .total span {padding:0 10px;}
-        .total strong {padding:0 10px; font-size:120%; color:#de3349}
-        .fixed {position:fixed; top:0; left:0; width:100%; border:0; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}/*총합스크롤고정*/
 
 		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}

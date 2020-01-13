@@ -144,7 +144,7 @@
                                                         <dt>{{ $row['CourseName'] }}<span class="row-line">|</span>{{ $row['SubjectName'] }}<span class="row-line">|</span>{{ $row['ProfNickName'] }} </dt>
                                                     </dl>
                                                     <div class="w-tit tx-blue">
-                                                        <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');" class="prod-name">{{ $row['ProdName'] }}</a>
+                                                        <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');" class="prod-name">{{ $row['ProdName'] }}</a>
                                                     </div>
                                                     <dl class="w-info tx-gray">
                                                         <dt>강의수 : <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span><span class="row-line">|</span></dt>
@@ -156,7 +156,7 @@
                                                         <div class="freeLecPass">
                                                             <p>보강동영상 비밀번호 입력</p>
                                                             <input type="password" type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
-                                                            <a href="#none" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');">확인</a>
+                                                            <a href="#none" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">확인</a>
                                                         </div>
                                                         {{--
                                                         <div class="w-buy mt15">

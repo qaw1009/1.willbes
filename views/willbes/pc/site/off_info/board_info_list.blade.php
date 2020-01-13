@@ -73,7 +73,7 @@
                                 <thead>
                                 <tr>
                                     <th>No<span class="row-line">|</span></th>
-                                    <th>캠퍼스<span class="row-line">|</span></th>
+                                    <th>캠퍼스<span class="row-line campus_605001">|</span></th>
                                     <th>제목<span class="row-line">|</span></th>
                                     <th>첨부<span class="row-line">|</span></th>
                                     <th>작성일<span class="row-line">|</span></th>

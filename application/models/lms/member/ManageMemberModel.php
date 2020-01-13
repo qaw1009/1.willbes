@@ -126,7 +126,8 @@ class ManageMemberModel extends WB_Model
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
             (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName,
             c1.CcdName AS CertName, 
-            c2.CcdName AS InterestName               
+            c2.CcdName AS InterestName,
+            Info.HanlimID
             ";
 
         $from = "FROM {$this->_table['member']} AS Mem 
@@ -508,6 +509,7 @@ class ManageMemberModel extends WB_Model
             $this->session->set_userdata('mem_name', $data['MemName']);
             $this->session->set_userdata('mem_mail', $data['Mail']);
             $this->session->set_userdata('mem_phone', $data['Phone']);
+            $this->session->set_userdata('mem_hanlimid', $data['HanlimID']);
             $this->session->set_userdata('login_key', $loginKey);
             $this->session->set_userdata('is_login', true);
 

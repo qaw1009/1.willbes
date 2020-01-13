@@ -37,5 +37,5 @@
 <ul>
     <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/109') }}">강의 계획서</a></li>
     <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/80') }}">강의 시간표</a></li>
-    <li><a href="{{ site_url('/pass/offinfo/boardInfo/index/82') }}">강의실 배정표</a></li>
+    <li><a href="https://job.willbes.net/pass/offinfo/boardInfo/index/110">강의실 배정표</a></li>
 </ul>

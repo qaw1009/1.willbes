@@ -55,6 +55,7 @@ class Home extends \app\controllers\FrontController
 
         $this->load->view('site/main_'. $_view_path, [
             'data' => $data,
+            'cate_code' => $cate_code,
             'is_site_home' => true
         ]);
     }

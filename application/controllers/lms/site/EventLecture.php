@@ -993,10 +993,10 @@ class EventLecture extends \app\controllers\BaseController
 
         // 카테고리 대분류, 중분류 검색
         if(empty($this->_reqP('search_category')) === false || empty($this->_reqP('search_md_cate_code')) === false) {
-            if(empty($this->_reqP('search_category')) === false) {
-                $raw_cate_code = ' AND MEC.CateCode LIKE \'' . $this->_reqP('search_category') . '%\'';    //대분류
-            } else {
+            if(empty($this->_reqP('search_md_cate_code')) === false) {
                 $raw_cate_code = ' AND MEC.CateCode = \'' . $this->_reqP('search_md_cate_code') . '\'';    //중분류
+            } else {
+                $raw_cate_code = ' AND MEC.CateCode LIKE \'' . $this->_reqP('search_category') . '%\'';    //대분류
             }
             $raw_cate_query = '
                 SELECT MEC.ElIdx

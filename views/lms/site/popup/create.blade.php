@@ -185,7 +185,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="image_map">이미지맵</label>
-                    <div class="col-md-7 item">
+                    <div class="col-md-10 item">
                         <div class="x_panel mb-0">
                             <div class="x_content pb-0">
                                 <div class="form-group">
@@ -194,6 +194,8 @@
                                             <thead>
                                             <tr>
                                                 <td>이미지맵타입</td>
+                                                <td>링크방식</td>
+                                                <td>외,내부 링크타입</td>
                                                 <td>이미지맵</td>
                                                 <td>링크URL</td>
                                                 <td>필드삭제</td>
@@ -211,6 +213,18 @@
                                                             <option value="poly">다각형영역</option>
                                                         </select>
                                                     </td>
+                                                    <td>
+                                                        <select class="form-control" name="image_map_link_type[]" title="링크방식">
+                                                            <option value="self">본창</option>
+                                                            <option value="blank">새창</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" name="image_map_link_url_type[]" title="외내부 링크타입">
+                                                            <option value="I">내부링크</option>
+                                                            <option value="O">외부링크</option>
+                                                        </select>
+                                                    </td>
                                                     <td><input type="text" name="image_map_area[]" class="form-control" title="이미지맵" value=""></td>
                                                     <td><input type="text" name="image_map_link_url[]" class="form-control" title="링크주소" value=""></td>
                                                     <td colspan="2">
@@ -218,7 +232,7 @@
                                                     </td>
                                                 </tr>
                                             @else
-                                                @foreach($data['imageMaps'] as $row)
+                                                @foreach($data['imageMaps'] as $key => $row)
                                                     <tr>
                                                         <td>
                                                             <select class="form-control" name="image_map_type[]" title="이미지맵 타입">
@@ -226,6 +240,18 @@
                                                                 <option value="rect" @if($row['ImgType'] == 'rect')selected="selected"@endif>사각형영역</option>
                                                                 <option value="circle" @if($row['ImgType'] == 'circle')selected="selected"@endif>원형영역</option>
                                                                 <option value="poly" @if($row['ImgType'] == 'poly')selected="selected"@endif>다각형영역</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-control" name="image_map_link_type[]" title="링크방식">
+                                                                <option value="self" @if($row['LinkType'] == 'self')selected="selected"@endif>본창</option>
+                                                                <option value="blank" @if($row['LinkType'] == 'blank')selected="selected"@endif>새창</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-control" name="image_map_link_url_type[]" title="외내부 링크타입">
+                                                                <option value="I" @if($row['LinkUrlType'] == 'I')selected="selected"@endif>내부링크</option>
+                                                                <option value="O" @if($row['LinkUrlType'] == 'O')selected="selected"@endif>외부링크</option>
                                                             </select>
                                                         </td>
                                                         <td><input type="text" name="image_map_area[]" class="form-control" title="이미지맵" value="{{$row['ImgArea']}}"></td>
@@ -240,6 +266,10 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="col-md-10 form-inline">
+                                        <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
+                                        <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -250,8 +280,8 @@
                     <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
                     <div class="col-md-2 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>
-                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="">미사용</label>
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="order_num">정렬</label>

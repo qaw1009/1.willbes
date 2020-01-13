@@ -42,7 +42,7 @@
                 <li>
                     <div>
                         <a href="{{ front_app_url('/home/index', 'job') }}">
-                            <p class="subTit">국가기술/국가전문/국가실무/국사공인</p>
+                            <p class="subTit">국가기술/국가전문/국가실무/국가공인</p>
                             <p class="siteTit">
                                 <img src="{{ img_url('m/intro/icon_job.png') }}" alt="자격증">
                                 자격증

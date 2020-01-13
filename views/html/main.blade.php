@@ -67,27 +67,33 @@
                     </li>                        
                 </ul>
                 <ul>
-                    <li>
-                        <a href="https://gosi.willbes.net/home/index/cate/3094" target="_blank">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes4.png') }}"> 고등고시
-                            </div>
-                            <div class="wTxt">
-                                5급행정/외교원/변호사/법행/PSAT<br/>
-                                <strong>윌비스 한림법학원</strong>
-                            </div>
-                        </a>
+                    <li class="fisrt">
+                        <div class="wTit">
+                            <img src="{{ img_url('main/icon_willbes4.png') }}"> 고등고시
+                        </div>
+                        <div class="wTxt">
+                            <span><a href="https://gosi.willbes.net/home/index/cate/3094" target="_blank">[5급행정]</a></span>
+                            <span><a href="https://gosi.willbes.net/home/index/cate/3095" target="_blank">[외교원]</a></span>
+                            <span><a href="https://gosi.willbes.net/home/index/cate/3099" target="_blank">[변호사]</a></span>                                
+                            <span><a href="https://gosi.willbes.net/home/index/cate/3097" target="_blank">[5급헌법]</a></span><br/>
+                            <span><a href="https://gosi.willbes.net/home/index/cate/3098" target="_blank">[법행]</a></span>
+                            <span><a href="https://pass.willbes.net/home/index/cate/3096" target="_blank">[PSAT]</a></span>
+                            <br/>
+                            <strong>윌비스 한림법학원</strong>
+                        </div>
                     </li>    
-                    <li>
-                        <a href="https://job.willbes.net/home/index/cate/309002" target="_blank">
-                            <div class="wTit">
-                                <img src="{{ img_url('main/icon_willbes5.png') }}"> 전문자격증
-                            </div>
-                            <div class="wTxt">
-                                노무/감평/변리/관세/스포츠<br/>
-                                <strong>윌비스 한림법학원</strong>
-                            </div>
-                        </a>
+                    <li class="second">
+                        <div class="wTit">
+                            <img src="{{ img_url('main/icon_willbes5.png') }}"> 전문자격증
+                        </div>
+                        <div class="wTxt">
+                            <span><a href="https://job.willbes.net/home/index/cate/309002" target="_blank">[노무]</a></span>
+                            <span><a href="https://job.willbes.net/home/index/cate/309003" target="_blank">[감평]</a></span>
+                            <span><a href="https://job.willbes.net/home/index/cate/309004" target="_blank">[변리]</a></span>                                
+                            <span><a href="https://job.willbes.net/home/index/cate/309005" target="_blank">[관세]</a></span>
+                            <span><a href="https://job.willbes.net/home/index/cate/309001" target="_blank">[스포츠]</a></span><br/>
+                            <strong>윌비스 한림법학원</strong>
+                        </div>
                     </li>
                     <li>
                         <a href="http://www.namucpa.com" target="_blank">
